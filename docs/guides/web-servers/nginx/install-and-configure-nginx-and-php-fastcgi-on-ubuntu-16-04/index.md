@@ -1,18 +1,14 @@
 ---
 slug: install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Install and configure nginx and PHP-FastCGI on Ubuntu 16.04'
 description: 'Serve Dynamic Websites and Applications with the Lightweight Nginx Web Server and PHP-FastCGI on Ubuntu 16.04 LTS'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-06-12
+modified: 2016-09-13
 keywords: ["nginx", "ubuntu 16.04", "fastcgi", "php"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-09-13
-modified_by:
-  name: Edward Angert
-published: 2015-06-12
-title: 'Install and configure nginx and PHP-FastCGI on Ubuntu 16.04'
 external_resources:
  - '[The nginx Homepage](http://nginx.org/)'
  - '[FastCGI article on Wikipedia](https://en.wikipedia.org/wiki/FastCGI)'
@@ -23,19 +19,19 @@ relations:
         key: nginx-php-fastcgi
         keywords:
             - distribution: Ubuntu 16.04
+deprecated: true
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low- and high-traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you install and run nginx with PHP via FastCGI on your Ubuntu 16.04 Linode.
 
 ![Install and configure nginx and PHP-FastCGI on Ubuntu 16.04](nginx-php-fcgi-tg.png "Install and configure nginx and PHP-FastCGI on Ubuntu 16.04")
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-- Complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, specifically [setting the hostname](/docs/guides/getting-started/#setting-the-hostname).
+- Complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, specifically [setting the hostname](/docs/products/platform/get-started/#setting-the-hostname).
 
 - To confirm your hostname, issue the following commands on your Linode:
 

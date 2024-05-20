@@ -1,19 +1,15 @@
 ---
 slug: nginx-and-perlfastcgi-on-centos-5
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Nginx and Perl-FastCGI on CentOS 5'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-16
+modified: 2011-07-20
 keywords: ["nginx", "nginx centos 5", "nginx fastcgi", "nginx perl"]
 tags: ["centos","web server","perl","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/nginx-and-perlfastcgi-on-centos-5/','/web-servers/nginx/perl-fastcgi/centos-5/','/websites/nginx/nginx-and-perlfastcgi-on-centos-5/','/websites/nginx/nginx-and-perlfastcgi-on-centos-5/index.cfm/']
-modified: 2011-07-20
-modified_by:
-  name: Linode
-published: 2009-12-16
-title: 'Nginx and Perl-FastCGI on CentOS 5'
 external_resources:
  - '[The nginx Homepage](http://nginx.org/)'
  - '[FastCGI Project Homepage](http://www.fastcgi.com/)'
@@ -25,15 +21,16 @@ relations:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: CentOS 5
+deprecated: true
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your CentOS 5 Linode.
 
-It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
+It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

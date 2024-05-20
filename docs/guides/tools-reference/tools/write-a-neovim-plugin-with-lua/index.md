@@ -1,20 +1,15 @@
 ---
 slug: write-a-neovim-plugin-with-lua
-author:
-  name: Nathaniel Stickman
+title: "Write a Neovim Plugin with Lua"
+title_meta: "How to Write a Neovim Plugin with Lua"
 description: "Learn how to develop a plugin for Neovim. Neovim introduces first-class support for Lua, and this guide shows you how to create a plugin using the Lua programming language."
 og_description: "Learn how to develop a plugin for Neovim. Neovim introduces first-class support for Lua, and this guide shows you how to make a plugin to start taking advantage of that."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-03-18
 keywords: ['write neovim plugin','neovim plugin development','neovim lua plugin']
 tags: ['neovim']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-18
-modified_by:
-  name: Nathaniel Stickman
-title: "Write a Neovim Plugin with Lua"
-title_meta: "How to Write a Neovim Plugin with Lua"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Nvim Documentation: Lua](https://neovim.io/doc/user/lua.html)'
 - '[GitHub: jacobsimpson/nvim-example-lua-plugin](https://github.com/jacobsimpson/nvim-example-lua-plugin)'
@@ -27,9 +22,9 @@ In this tutorial you learn how to write a Neovim plugin using the Lua programmin
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
@@ -40,8 +35,7 @@ In this tutorial you learn how to write a Neovim plugin using the Lua programmin
     - On **AlmaLinux**, **CentOS** (8 or later), and **Fedora**, use the following command:
 
             sudo dnf upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

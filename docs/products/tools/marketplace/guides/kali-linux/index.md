@@ -1,15 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy Kali Linux through the Linode Marketplace"
 description: "Deploy Kali Linux, a popular Linux distribution for penetration testing and security research, on a Linode Compute Instance."
+published: 2022-07-05
 keywords: ['kali','security','pentest']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-07-05
-modified_by:
-  name: Linode
-title: "Deploy Kali Linux through the Linode Marketplace"
 aliases: ['/products/tools/marketplace/guides/kalilinux/']
 ---
 
@@ -24,9 +18,9 @@ This Marketplace App extends Linode's Kali Linux distribution image by allowing 
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Kali Linux should be fully installed within 45-60 minutes after the Compute Instance has finished provisioning.
@@ -50,7 +44,9 @@ This Marketplace App extends Linode's Kali Linux distribution image by allowing 
 - **Sudo/VNC Username** *(required)*: The VNC username you wish to create for this Compute Instance. This is used for your VNC session and will have elevated privileges (`sudo`).
 - **Sudo/VNC User Password** *(required)*: The password you wish to use for your VNC user.
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
+
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -60,7 +56,7 @@ After Kali Linux has been fully deployed, you can log in through an SSH session 
 
 If you selected the VNC installation option, [TigerVNC](https://tigervnc.org/) is installed. This allows you to connect remotely to the desktop environment and access Kali's GUI tools. Perform the steps below to access your Kali Linux desktop through a VNC client. While there are many options for OS X and Windows, this guide will use [RealVNC Viewer](https://www.realvnc.com/en/connect/download/viewer/).
 
-1. From your desktop, create an SSH tunnel to your Compute Instance with the following command. Be sure to replace *[username]* with the VNC username you created and *[ip]* with the IPv4 address of your Compute Instance. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses.
+1. From your desktop, create an SSH tunnel to your Compute Instance with the following command. Be sure to replace *[username]* with the VNC username you created and *[ip]* with the IPv4 address of your Compute Instance. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
 
     ```output
     ssh -L 61000:localhost:5901 -N -l [username] [ip]
@@ -80,4 +76,4 @@ If you selected the VNC installation option, [TigerVNC](https://tigervnc.org/) i
 
 After connecting, the Kali Linux desktop should appear.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

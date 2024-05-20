@@ -1,23 +1,18 @@
 ---
 slug: deploy-packer-image-with-terraform
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Packer automates the process of developing machine images, and Terraform automates the provisioning of infrastructure. Not surprisingly, combining the two can give you a full and robust chain for automating deployments, including CI/CD. Through this tutorial, learn what you need to put these tools together for your infrastructure."
-keywords: ['packer terraform provider','terraform packer resource','linode packer']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-10-27
-modified: 2022-11-28
-modified_by:
-  name: Nathaniel Stickman
 title: "Deploy a Packer Image with Terraform"
 title_meta: "How to Deploy a Packer Image with Terraform"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+description: "Packer automates the process of developing machine images, and Terraform automates the provisioning of infrastructure. Not surprisingly, combining the two can give you a full and robust chain for automating deployments, including CI/CD. Through this tutorial, learn what you need to put these tools together for your infrastructure."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-10-27
+modified: 2022-11-28
+keywords: ['packer terraform provider','terraform packer resource','linode packer']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Terraform - HashiCorp Learn: Provision Infrastructure with Packer](https://learn.hashicorp.com/tutorials/terraform/packer)'
 - '[Packer - Use Cases: Integrate with Terraform](https://www.packer.io/use-cases/integrate-with-terraform)'
+tags: ["saas"]
 ---
 
 Both the Packer and Terraform tools by HashiCorp stand out for remarkable infrastructure-automating. Despite some overlap, the tools have distinct and complimentary features. This makes them an effective pair, with Packer used to create images that Terraform then deploys as a complete infrastructure.
@@ -28,9 +23,9 @@ In this tutorial, find out how to use Packer and Terraform together to deploy Li
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

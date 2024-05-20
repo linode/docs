@@ -1,19 +1,14 @@
 ---
 slug: sql-server-security-part-2
-author:
-  name: Doug Hayman for NanoHertz Solutions Inc.
+title: "Part 2: SQL Server Security Best Practices"
+title_meta: "SQL Server Security Best Practices, Part 2"
 description: 'Learn about the SQL Server security best practices and guidelines to keep your server and data safe. For example, selecting a SQL Server authentication mode.'
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
+published: 2022-08-12
 keywords: ['SQL server authentication', 'Restrict SQL traffic', 'SQL Server Patches', 'Backups', 'Auditing']
 tags: ['database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-08-12
-modified_by:
-  name: Linode
-title: "Part 2: SQL Server Security Best Practices"
-title_meta: "SQL Server Security Best Practices, Part 2"
-contributor:
-  name: Doug Hayman for NanoHertz Solutions Inc.
-  link: http://nhzsolutions.com/
 ---
 
 This guide is the second in a series of articles that covers SQL Server security best practices. [Part 1 of this series](/docs/guides/sql-server-security/) discussed a SQL Server installation's physical security, operating system security, and application maintenance. Additionally, the previous guide outlined how to disable unnecessary features, enable encryption, and implement data masking.
@@ -43,7 +38,7 @@ Protection of data stored with SQL Server depends upon the ability to authentica
 
 You are prompted to select one of these SQL Server authentication modes during SQL Server setup.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You can change the SQL Server authentication mode even after the initial installation decision has been made.
 {{< /note >}}
 
@@ -71,7 +66,7 @@ If you are using [SQL Server (mixed-mode) authentication](#sql-server-and-window
 1. For the SA (or renamed) account, select a complex password, consisting of lower/upper case letters, numbers, and punctuation symbols.
 1. Do not allow applications to use the SA (or equivalently renamed) account in any of the application connection strings.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Any other user-based (lower-privileged) SQL Server accounts should also use complex, unique passwords.
 {{< /note >}}
 

@@ -1,19 +1,14 @@
 ---
 slug: manage-and-automate-systems-configuration-with-puppet
-author:
-  name: Linode
-  email: docs@linode.com
+title: Manage and Automate Systems Configuration with Puppet
 description: 'This guide shows how you can use Puppet, an open-source "configuration change management" tool that lets users automate configurations on their infrastructure.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-06-13
+modified: 2011-08-22
 keywords: ["puppet", "puppet configuration", "puppet linux", "configuration change management", "server automation"]
 tags: ["automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2011-08-22
-modified_by:
-  name: Linode
-published: 2010-06-13
-deprecated: true
-deprecated_link: applications/configuration-management/install-and-configure-puppet/
-title: Manage and Automate Systems Configuration with Puppet
 external_resources:
  - '[Puppet Labs Home Page](http://www.puppetlabs.com/)'
  - '[Basic Puppet Configuration](http://docs.puppetlabs.com/guides/configuring.html)'
@@ -21,11 +16,13 @@ external_resources:
  - '[Puppet Dashboard Documentation](http://docs.puppetlabs.com/guides/installing_dashboard.html)'
  - '[Puppet Recipe Directory](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Recipes)'
  - '[Puppet Modules](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Modules)'
+deprecated: true
+deprecated_link: applications/configuration-management/install-and-configure-puppet/
 ---
 
 Puppet is an open source "configuration change management" tool that allows users to automate and standardize the configuration of software infrastructure. Using a domain specific language for describing configuration, Puppet allows users to manage configurations in a service-oriented manner.
 
-Because of Puppet's versatility, this guide provides an overview of a number of different Puppet-based deployments. Since there is no single "right way" to integrate Puppet into your network, this document will focus on a collection of independent strategies rather than a single procedure. Before following this document, it is assumed that you have an up-to-date system, have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and have installed Puppet according to our [Puppet installation guide](/docs/guides/install-and-configure-puppet/).
+Because of Puppet's versatility, this guide provides an overview of a number of different Puppet-based deployments. Since there is no single "right way" to integrate Puppet into your network, this document will focus on a collection of independent strategies rather than a single procedure. Before following this document, it is assumed that you have an up-to-date system, have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and have installed Puppet according to our [Puppet installation guide](/docs/guides/install-and-configure-puppet/).
 
 ## Using Puppet
 

@@ -1,27 +1,24 @@
 ---
 slug: how-to-upgrade-to-ubuntu-10-10-maverick
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'How to Upgrade to Ubuntu 10.10 (Maverick)'
 description: 'How to avoid common pitfalls when upgrading your Linode to Ubuntu 10.10.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-10-13
+modified: 2020-12-01
 keywords: ["ubuntu 10.10 upgrade", "ubuntu maverick upgrade", "distro upgrade", "linux upgrade howto"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-10-10-maverick/','/upgrading/upgrade-to-ubuntu-10-10-maverick/']
-modified: 2020-12-01
-modified_by:
-  name: Linode
-published: 2010-10-13
-title: 'How to Upgrade to Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 10.10
+deprecated: true
 ---
 
-{{< content "all-linodes-kvm-shortguide" >}}
+{{% content "all-linodes-kvm-shortguide" %}}
 
 This guide explains how to upgrade your Linode to Ubuntu 10.10 (Maverick). As with any task involving major system changes, you are strongly encouraged to make backups of your data before proceeding. You should be logged in as root for these procedures. Ubuntu only officially supports direct upgrades between LTS releases. However, you may follow these steps to upgrade your system if you're willing to handle any potential snags that may occur.
 
@@ -99,7 +96,7 @@ If you were running Ubuntu 9.04 previously and have gone through this guide once
 
 ## Fixing a Broken System
 
-If you've already attempted to upgrade but your Linode is failing to boot properly, you'll need to start by creating a [Finnix rescue profile](/docs/guides/rescue-and-rebuild/). In that profile, set your Ubuntu disk to attach to `xvda`. Boot into Finnix and issue the following command to open your Linode's `fstab` file for editing:
+If you've already attempted to upgrade but your Linode is failing to boot properly, you'll need to start by creating a [Finnix rescue profile](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/). In that profile, set your Ubuntu disk to attach to `xvda`. Boot into Finnix and issue the following command to open your Linode's `fstab` file for editing:
 
     mount /dev/xvda
     nano /media/xvda/etc/fstab

@@ -1,26 +1,23 @@
 ---
 slug: hosting-a-website-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: Hosting a Website on Ubuntu 18.04
+title_meta: How to Host a Website on Ubuntu 18.04
 description: 'In this guide, you will learn how to set up a LAMP (Linux, Apache, MySQL, PHP) stack and then configure a hosted website using Ubuntu 18.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-03-13
+modified: 2021-08-16
 keywords: ["linode guide", "hosting a website", "website", "linode quickstart guide"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/hosting-a-website/','/hosting-website/', '/websites/hosting-a-website-ubuntu-18-04/']
-modified: 2021-08-16
-modified_by:
-  name: Linode
-published: 2012-03-13
-title: Hosting a Website on Ubuntu 18.04
-title_meta: How to Host a Website on Ubuntu 18.04
 ---
 
 In this guide, you learn how to host a website on Ubuntu 18.04 using the LAMP stack (Linux, Apache, MySQL and PHP). First, you install the LAMP stack and then, you create or import a database. Finally, you upload files and add DNS records. By the time you reach the end of this guide, your Linode hosts one or more websites.
 
 This guide is intended for small and medium-sized websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you need to assess your requirements and install custom packages tailored for your particular requirements.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, check the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -130,8 +127,8 @@ Apache (v6)                	ALLOW       	Anywhere (v6)
 
 Now that Apache is optimized for performance, it's time to starting hosting one or more websites. There are several possible methods of doing this. In this section, you use *name-based virtual hosts* to host websites in your home directory.
 
-{{< note respectIndent=false >}}
-You should *not* be logged in as `root` while executing these commands. To learn how to create a new user account and log in as that user, see [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+{{< note >}}
+You should *not* be logged in as `root` while executing these commands. To learn how to create a new user account and log in as that user, see [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 {{< /note >}}
 
 1.  Disable the default Apache virtual host:
@@ -424,4 +421,4 @@ Remember to remove the entries for the name-based virtual hosts from your `hosts
 
 ## Next Steps
 
-Now that you have tested your website by visiting its IP address, you can create DNS records so that you can access the website with a domain name. Read the [DNS Manager guide](/docs/products/networking/dns-manager/) for more information on how to add DNS records for your website. After you have a domain name set up, you should also add reverse DNS. Check out our [Reverse DNS guide](/docs/guides/configure-rdns/) for more information on how to set up reverse DNS.
+Now that you have tested your website by visiting its IP address, you can create DNS records so that you can access the website with a domain name. Read the [DNS Manager guide](/docs/products/networking/dns-manager/) for more information on how to add DNS records for your website. After you have a domain name set up, you should also add reverse DNS. Check out our [Reverse DNS guide](/docs/products/compute/compute-instances/guides/configure-rdns/) for more information on how to set up reverse DNS.

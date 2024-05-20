@@ -1,18 +1,10 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy OpenLiteSpeed Rails through the Linode Marketplace"
 description: "Deploy OpenLiteSpeed Rails on a Linode Compute Instance. This provides you with a high performance web server to manage your Rails application."
-keywords: ['web server','Rails','openlitespeed']
-tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy OpenLiteSpeed Rails through the Linode Marketplace"
-contributor:
-  name: Linode
+keywords: ['web server','Rails','openlitespeed']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[OpenLiteSpeed Rails](https://docs.litespeedtech.com/cloud/images/rails/)'
 aliases: ['/guides/deploying-openlitespeed-rails-marketplace-app/','/guides/openlitespeed-rails-marketplace-app/']
@@ -22,9 +14,9 @@ The OpenLiteSpeed Rails app automatically installs the performance web server Op
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** OpenLiteSpeed Rails should be fully installed within 20-25 minutes after the Compute Instance has finished provisioning.
@@ -52,4 +44,4 @@ The OpenLiteSpeed Rails app automatically installs the performance web server Op
 
 Now that you’ve accessed your OpenLiteSpeed Rails instance, check out [the official OpenLiteSpeed Rails documentation](https://docs.litespeedtech.com/cloud/images/rails/) to learn how to further configure your OpenLiteSpeed Rails instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

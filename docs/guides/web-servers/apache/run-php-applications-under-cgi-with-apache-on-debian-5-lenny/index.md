@@ -1,37 +1,32 @@
 ---
 slug: run-php-applications-under-cgi-with-apache-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Run PHP Applications under CGI with Apache on Debian 5'
 description: 'Methods for enabling dynamic content run as individual users with PHP on Debian 5 (Lenny).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-18
+modified: 2014-01-13
 keywords: ["php cgi", "php apache", "php scripts", "dynamic apache", "web applications"]
 tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/php-cgi/debian-5-lenny/','/websites/apache/run-php-applications-under-cgi-with-apache-on-debian-5-lenny/','/web-servers/apache/run-php-applications-under-cgi-with-apache-on-debian-5-lenny/']
-modified: 2014-01-13
-modified_by:
-  name: Linode
-published: 2009-12-18
-title: 'Run PHP Applications under CGI with Apache on Debian 5'
 relations:
     platform:
         key: php-cgi-apache
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
-
-
 
 In most cases, we recommend using `mod_php` module to run PHP scripts with the [Apache HTTP server](/docs/web-servers/apache/). This embeds a PHP interpreter in the Web Server process and makes running PHP applications easy. The embedded interpreter approach, however, is not without challenges; when the PHP interpreter is embedded in the web server process, PHP scripts are executed by and with the permissions of the web server's user. In smaller deployments, this is perfectly acceptable, but in larger deployments and operations it can create security risks. While Apache's `itk` message passing module (mpm) makes it possible to run Apache processes under user processes in a per-virtual host setup, this is incompatible with the embedded interpreter. The `itk` module is compatible with PHP running as a CGI process.
 
 Additionally, in our experience `mod_php` is incompatible with the `mod_rails` or Phusion Passenger method of running [Ruby On Rails](/docs/frameworks/). In these cases, if you want to run PHP and Rails applications within a single instance of Apache, you must run PHP scripts as CGI processes, using the method outlined below.
 
-Before beginning this guide we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/guides/linode-beginners-guide/), and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/). If you're interested in learning more about the Apache HTTP server, we encourage you to consider our extensive documentation on [Apache configuration](/docs/web-servers/apache/).
+Before beginning this guide we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/products/compute/compute-instances/faqs/), and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/). If you're interested in learning more about the Apache HTTP server, we encourage you to consider our extensive documentation on [Apache configuration](/docs/web-servers/apache/).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

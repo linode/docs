@@ -1,15 +1,11 @@
 ---
 slug: limited-user-note-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that displays the limited user note used in many guides.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-03
-modified_by:
-  name: Nathan Melehan
-published: 2018-08-03
 title: Limited User Alert
+description: 'Shortguide that displays the limited user note used in many guides.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-08-03
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: []
 headless: true
 show_on_rss_feed: false

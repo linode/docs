@@ -1,17 +1,14 @@
 ---
 slug: how-to-use-docker-compose
-author:
-  name: Linode
-  email: docs@linode.com
+title: How to Use Docker Compose
 description: "How to Use Docker Compose"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-01-02
+modified: 2017-12-28
 keywords: ["docker", "compose"]
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-12-28
-modified_by:
-  name: Linode
-published: 2018-01-02
-title: How to Use Docker Compose
 aliases: ['/applications/containers/how-to-use-docker-compose/']
 ---
 
@@ -32,11 +29,11 @@ Generally the containers in an application built using Docker Compose will all r
 
 You will need a Linode with Docker CE installed to follow along with the steps in this guide.
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ## Basic Usage
 

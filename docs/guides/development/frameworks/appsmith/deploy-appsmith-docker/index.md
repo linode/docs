@@ -1,19 +1,13 @@
 ---
 slug: deploy-appsmith-docker
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Use Appsmith to quickly develop web frontends using a visual, drag-and-drop interface. In this tutorial, learn what Appsmith has to offer and how to deploy a self-hosted instance with Docker."
-keywords: ['appsmith tutorial','appsmith examples','install appsmith']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-24
-modified_by:
-  name: Nathaniel Stickman
 title: "Self-host Appsmith with Docker Compose"
 title_meta: "How to Self-host Appsmith with Docker Compose"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+description: "Use Appsmith to quickly develop web frontends using a visual, drag-and-drop interface. In this tutorial, learn what Appsmith has to offer and how to deploy a self-hosted instance with Docker."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-06-24
+keywords: ['appsmith tutorial','appsmith examples','install appsmith']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Appsmith: Setup Appsmith](https://docs.appsmith.com/setup)'
 - '[The New Stack: Appsmith, an Open Source Low-code Framework to Build Internal Apps](https://thenewstack.io/appsmith-an-open-source-low-code-framework-to-build-internal-apps/)'
@@ -26,9 +20,9 @@ In this tutorial, learn how to get started with Appsmith by deploying your own s
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started with Linode](/docs/guides/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your system.
 
@@ -39,8 +33,7 @@ In this tutorial, learn how to get started with Appsmith by deploying your own s
     -   **AlmaLinux**, **CentOS Stream** (8 or later), **Fedora**, and **Rocky Linux**:
 
             sudo dnf upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -66,7 +59,7 @@ Appsmith, on the other hand, provides a solution to help developers build comple
 
 The official method supported for deploying a self-hosted Appsmith instance is through Docker Compose. That is the method used here, with all the steps you need to get your own instance up and running.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 These steps have been tested on Ubuntu 22.04. However, the Docker commands should apply equally on other distributions, such as Debian and CentOS. The section on installing Docker also includes information on how to do so for these and other distributions.
 {{< /note >}}
 

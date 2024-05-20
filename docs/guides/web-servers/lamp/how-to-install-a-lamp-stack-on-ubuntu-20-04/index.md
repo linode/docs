@@ -1,19 +1,16 @@
 ---
 slug: how-to-install-a-lamp-stack-on-ubuntu-20-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'How to Install a LAMP Stack on Ubuntu 20.04'
+title_meta: 'Installing a LAMP Stack on Ubuntu 20.04'
 description: 'This tutorial outlines the steps needed to install a LAMP (Linux, Apache, MySQL, PHP) stack on Ubuntu 20.04 Long Term Support (LTS).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-06-25
+modified: 2021-06-23
 keywords: ["install lamp ubuntu 20.04", "apache install", "mysql install", "php", "ubuntu 20.04"]
 aliases: ['/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-20-04/','/web-servers/lamp/install-lamp-stack-on-ubuntu-20-04/']
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-06-23
-modified_by:
-  name: Linode
-published: 2021-06-25
-title: 'How to Install a LAMP Stack on Ubuntu 20.04'
-title_meta: 'Installing a LAMP Stack on Ubuntu 20.04'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -34,17 +31,17 @@ This guide shows how to install and test a LAMP stack on Ubuntu 20.04 (LTS).
 
 <!-- ![Install LAMP on Ubuntu 20.04](install-lamp-on-ubuntu-20-04.png "Install LAMP on Ubuntu 20.04") -->
 
-{{< content "limited-user-note-shortguide" >}}
+{{% content "limited-user-note-shortguide" %}}
 
 Replace each instance of `example.com` in this guide with your site's domain name or IP.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you have a registered domain name for your website, then [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.
 {{< /note >}}
 
@@ -210,7 +207,7 @@ If there are additional websites you wish to host on your Linode, repeat the abo
 
         sudo mysql -u root
 
-    {{< content "mysql-authsocket-authentication-note-shortguide" >}}
+    {{% content "mysql-authsocket-authentication-note-shortguide" %}}
 
 1.  Create a database and a user with permissions for it. In this example, the database is called `webdata`, the user `webuser`, and password `password`. Be sure to enter your own password. This should be different from the root password for MySQL:
 

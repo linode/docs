@@ -1,18 +1,15 @@
 ---
 slug: how-to-install-the-lemp-stack-on-debian-10
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Installing the LEMP Stack on Debian 10'
+title_meta: 'How to Install the LEMP Stack on Debian 10'
 description: 'This guide will show you how to install the LEMP Stack (Linux, NGINX, MySQL, and PHP) which is a popular alternative to the LAMP stack, on Debian 10.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-06-04
+modified: 2020-03-18
 keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "debian"]
 tags: ["lemp","web server","php","mysql","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-18
-modified_by:
-  name: Rajakavitha Kodhandapani
-published: 2018-06-04
-title: 'Installing the LEMP Stack on Debian 10'
-title_meta: 'How to Install the LEMP Stack on Debian 10'
 image: How-to-Install-LEMP-Stack-on-Debian-10_1200x631.png
 relations:
     platform:
@@ -30,11 +27,11 @@ The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configurati
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you have a registered domain name for your website, then [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) to the Linode server on which you plan to install the LEMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.
 {{< /note >}}
 

@@ -1,16 +1,13 @@
 ---
 slug: cpanel-security
-author:
-  name: Hackersploit
+title: cPanel Security
 description: 'cPanel is a control panel that provides simple and effective management for a web server. This guide shows how to secure a cPanel installation.'
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2021-03-26
 keywords: ["how to secure cpanel", "how to protect cpanel from hackers"]
 tags: ["security","cpanel","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-03-26
-modified_by:
-  name: Linode
-published: 2021-03-26
-title: cPanel Security
 aliases: ['security/basics/securing-cpanel/']
 image: cPanelSecurity.png
 ---
@@ -40,7 +37,7 @@ Otherwise, you can find instructions on how to manually install cPanel in our gu
 
 This guide provides instructions on how to secure a cPanel account. Once cPanel is installed, log in as the `root` user and complete the steps to [Create a New Account](https://docs.cpanel.net/whm/account-functions/create-a-new-account/). If you are running cPanel on a Linode as a reseller, you can provide this guide to your account holders to assist them in managing their accounts securely.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This demonstration has been performed on a cPanel Linode application running on CentOS. All techniques demonstrated are distribution agnostic with the exception of package names and package managers.
 {{< /note >}}
 
@@ -72,7 +69,7 @@ Follow the instructions below to password-protect your cPanel website:
 
 1.  Click the **Edit** button for `public_html` or the directory you want to secure. Check the box to password protect the directory and enter a directory name, then click the **Save** button.
 
-    ![Set permissions for a directory such as public_html.](cpanel-directory-privacy-edit.png "Set permissions for a directory such as public_html.")
+    ![Set permissions for a directory](cpanel-directory-privacy-edit.png)
 
 1.  Click **Go Back**, enter a username and password to protect your directory, and click the **Save** button.
 

@@ -1,19 +1,14 @@
 ---
 slug: how-to-use-terraform-with-linode-object-storage
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide provides a brief introduction to Terraform, and explains how to use it to configure Linode Object Storage.'
-keywords: ['Linode Terraform','Terraform Linode Object Storage','Install Terraform']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-10-25
-modified: 2022-11-28
-modified_by:
-  name: Linode
 title: "Use Terraform With Linode Object Storage"
 title_meta: "How to Use Terraform With Linode Object Storage"
-contributor:
-  name: Jeff Novotny
+description: 'This guide provides a brief introduction to Terraform, and explains how to use it to configure Linode Object Storage.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-10-25
+modified: 2022-11-28
+keywords: ['Linode Terraform','Terraform Linode Object Storage','Install Terraform']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Terraform](https://www.terraform.io/)'
 - '[Terraform Downloads Portal](https://www.terraform.io/downloads)'
@@ -27,6 +22,7 @@ external_resources:
 - '[Linode Object Storage Cluster data source](https://registry.terraform.io/providers/linode/linode/latest/docs/data-sources/object_storage_cluster)'
 - '[Linode Object Storage Bucket documentation](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_bucket)'
 - '[Linode Object Storage Objects documentation](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_object)'
+tags: ["saas"]
 ---
 
 [Terraform](https://www.terraform.io/) is a powerful *Infrastructure as Code* (IaC) application for deploying and managing infrastructure. It can be used to add, modify, and delete resources including servers, networking elements, and storage objects. Linode has partnered with Terraform to provide an API to configure common Linode infrastructure items. This guide provides a brief introduction to Terraform and explains how to use it to create [Linode Object Storage](/docs/products/storage/object-storage/) solutions.
@@ -57,9 +53,9 @@ Terraform is very powerful, but it can be a difficult tool to use. Syntax errors
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Ensure all Linode servers are updated. The following commands can be used to update Ubuntu systems.
 

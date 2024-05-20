@@ -1,27 +1,22 @@
 ---
 slug: how-to-upgrade-to-debian-6-squeeze
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'How to Upgrade to Debian 6 (Squeeze)'
 description: 'How to upgrade from Debian 5 (Lenny) to Debian 6 (Squeeze).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-05
+modified: 2013-10-01
 keywords: ["debian upgrade", "upgrade distro", "squeeze upgrade", "squeeze"]
 tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/upgrading/upgrade-to-debian-6-squeeze/','/security/upgrading/how-to-upgrade-to-debian-6-squeeze/']
-modified: 2013-10-01
-modified_by:
-  name: Linode
-published: 2011-02-05
-title: 'How to Upgrade to Debian 6 (Squeeze)'
 relations:
     platform:
         key: how-to-upgrade-debian
         keywords:
             - distribution: Debian 6
+deprecated: true
 ---
-
-
 
 This guide explains how to upgrade your system to Debian 6 (Squeeze) from Debian 5 (Lenny). Before you begin, you should make sure that you have a working backup or a copy of your data. If you haven't already done so, you will also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. You should be logged in as root while performing these steps.
 
@@ -84,7 +79,7 @@ During the upgrade process, you will be asked if you want to use `dash` instead 
 
 You will also be advised that services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentication Modules) need to be restarted. In most cases the default list of services to be restarted will be fine. If you have additional services that you run that use NSS or PAM, please add them to the list.
 
-The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/guides/lish/).
+The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 ## System Errors
 

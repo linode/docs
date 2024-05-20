@@ -1,18 +1,15 @@
 ---
 slug: how-to-install-drupal-themes-and-modules-using-drush-on-ubuntu-18-04
-author:
-    name: Linode
-    email: docs@linode.com
+title: Install Drupal Themes and Modules Using Drush on Ubuntu 18.04
+title_meta: How to Install Drupal Themes & Modules on Ubuntu 18.04
 description: 'Use Drush to install and enable themes and modules on your Drupal site running on Ubuntu 18.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-12-05
+modified: 2020-03-11
 keywords: ["drupal", "cms", "content management system", "content management framework", "ubuntu", "drush"]
 tags: ["drupal","ubuntu","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-11
-modified_by:
-    name: Linode
-published: 2014-12-05
-title: Install Drupal Themes and Modules Using Drush on Ubuntu 18.04
-title_meta: How to Install Drupal Themes & Modules on Ubuntu 18.04
 image: DrupalThemesMods_DrushUbuntu1804.png
 external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'
@@ -34,11 +31,11 @@ Linode has another guide for installing Drush and creating a Drupal website, [In
 
 Before installing themes, modules, and a backup system with Drush, make sure that the following prerequisites have been met:
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for [setting your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
-1. Follow our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1. Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 1.  Install and configure a [LAMP stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/)
 
@@ -48,8 +45,7 @@ Before installing themes, modules, and a backup system with Drush, make sure tha
 1.  Make sure that your system is up to date, using:
 
         sudo apt-get update && sudo apt-get upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The Drush commands to download or enable themes and modules vary depending on the version of Drush that you have installed. This guide uses Drush 10.
 {{< /note >}}
 
@@ -68,7 +64,7 @@ In this section you will download, enable, and set a Drupal theme using Drush.
          composer require drupal/bootstrap
 
     {{< note respectIndent=false >}}
-If you receive an error related to not being able to write to the `composer.json` file, see the [Setting the Site’s Ownership and Permissions](/docs/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/#setting-the-site-s-ownership-and-permissions) section of the [Install Drupal using Drush on Ubuntu 18.04](/docs/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/) guide.
+If you receive an error related to not being able to write to the `composer.json` file, see the [Setting the Site’s Ownership and Permissions](/docs/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/#setting-the-sites-ownership-and-permissions) section of the [Install Drupal using Drush on Ubuntu 18.04](/docs/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/) guide.
 
 Ensure that your `/var/www/html/example.com/public_html` directory has user and group read, write, and execute permissions.
 
@@ -112,7 +108,6 @@ It's always important to keep regular backups of a website. Backups protect you 
 1.  To configure backup and migrate, navigate to **Administration > Configuration > Development > Backup and Migrate**
 
 1. For a quick backup, select the type of **Backup Source** and select the **Backup Destination**, and click **Backup now**
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Always download a backup prior to updating or installing modules.
 {{< /note >}}

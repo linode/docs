@@ -1,18 +1,15 @@
 ---
 slug: ruby-on-rails-with-nginx-on-debian-7-wheezy
-author:
-  name: Jonathan Frederickson
-  email: docs@linode.com
+title: 'Ruby on Rails with Nginx on Debian 7 (Wheezy)'
 description: Using the Ruby on Rails framework for Nginx web applications on Debian 7
+authors: ["Jonathan Frederickson"]
+contributors: ["Jonathan Frederickson"]
+published: 2014-02-11
+modified: 2014-12-09
 keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
 tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/ruby-on-rails-nginx/debian-7-wheezy/','/development/ror/ruby-on-rails-with-nginx-on-debian-7-wheezy/','/websites/ror/ruby-on-rails-with-nginx-on-debian-7-wheezy/']
-modified: 2014-12-09
-modified_by:
-  name: James Stewart
-published: 2014-02-11
-title: 'Ruby on Rails with Nginx on Debian 7 (Wheezy)'
 external_resources:
  - '[Ruby on Rails Home Page](http://rubyonrails.org/)'
  - '[Ruby on Rails Documentation](http://rubyonrails.org/documentation)'
@@ -30,13 +27,13 @@ relations:
 deprecated: true
 ---
 
-Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the Nginx web server on Debian 7 (Wheezy). For the purposes of this tutorial, it is assumed that you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH.
+Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the Nginx web server on Debian 7 (Wheezy). For the purposes of this tutorial, it is assumed that you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
 ![Using the Ruby on Rails framework for Nginx web applications on Debian 7](ruby_on_rails_with_nginx_debian_7_smg.png "Using the Ruby on Rails framework for Nginx web applications on Debian 7")
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

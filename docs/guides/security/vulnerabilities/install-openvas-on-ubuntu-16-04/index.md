@@ -1,18 +1,15 @@
 ---
 slug: install-openvas-on-ubuntu-16-04
-author:
-  name: Phil Zona
-  email: docs@linode.com
+title: Install OpenVAS 8 on Ubuntu 16.04
 description: 'This guide shows how to install OpenVAS, the Open Vulnerability Assessment System, which you can use to scan your system for vulnerabilities on Ubuntu 16.04.'
+authors: ["Phil Zona"]
+contributors: ["Phil Zona"]
+published: 2017-02-06
+modified: 2016-12-19
 keywords: ["openvas", "ubuntu", "install openvas"]
 aliases: ['/security/vulnerabilities/install-openvas-on-ubuntu-16-04/','/security/install-openvas-on-ubuntu-16-04/']
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-12-19
-modified_by:
-  name: Linode
-published: 2017-02-06
-title: Install OpenVAS 8 on Ubuntu 16.04
 deprecated: true
 ---
 
@@ -28,18 +25,17 @@ OpenVAS consists of:
 * the Greenbone Security Assistant, a graphical interface that allows you to manage vulnerability scans from a web application.
 
 For more information about the architecture of the software, refer to the [OpenVAS website](http://www.openvas.org/software.html).
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 OpenVAS is a powerful security tool that is capable of scanning remote hosts as well as your local machine. This guide is intended to allow you to monitor vulnerabilities on machines that you control or have permission to scan. If you use OpenVAS to scan remote servers owned by others, be sure that you have a full understanding of the responsibilities involved and the potential consequences.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

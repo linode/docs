@@ -1,17 +1,13 @@
 ---
 slug: installing-amp-game-server-management-panel
-author:
-  name: Ryan Syracuse
-  email: docs@linode.com
+title: Installing AMP for Game Server Management
 description: "AMP is a game server management panel. As the successor to McMyAdmin, it provides a web interface to install games, mods, and increases server security."
+authors: ["Ryan Syracuse"]
+contributors: ["Ryan Syracuse"]
+published: 2021-08-13
 keywords: ["minecraft", "McMyAdmin", "debian", "centos", "ubuntu", "debian 9"]
 tags: ["debian, ubuntu, centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-08-13
-modified_by:
-  name: Linode
-published: 2021-08-13
-title: Installing AMP for Game Server Management
 external_resources:
  - '[CubeCoders Homepage](https://cubecoders.com/)'
  - '[AMP Wiki](https://github.com/CubeCoders/AMP/wiki)'
@@ -22,15 +18,15 @@ dedicated_cpu_link: true
 
 While this guide will focus on installation on Debian and Ubuntu, the [same basic process](https://cubecoders.com/AMPInstall) can be applied to other distros with some minor adjustments.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 AMP is dependent on the [purchase of a separate license through CubeCoder's website](https://cubecoders.com/AMP#buyAMP).
 {{< /note >}}
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. (Optional) Configure a domain to access your management console. For more information on how to do this, see our [DNS Manager Guide](/docs/products/networking/dns-manager/)
 
@@ -76,8 +72,7 @@ When the installation script has completed, the following message will appear, p
 [Info] -- Do not close this terminal --
 [Info] Waiting for user to complete first-time setup in browser...
 {{< /output >}}
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 **Do Not** close the terminal or exit the script until the setup process is fully completed in the browser.
 {{< /note >}}
 

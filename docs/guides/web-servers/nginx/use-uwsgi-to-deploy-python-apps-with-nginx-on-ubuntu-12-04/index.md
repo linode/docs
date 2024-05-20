@@ -1,31 +1,27 @@
 ---
 slug: use-uwsgi-to-deploy-python-apps-with-nginx-on-ubuntu-12-04
-deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
+title: "Deploy Python Apps with uWSGI and Nginx on Ubuntu 12.04"
 description: 'This guide will show you how to configure the uWSGI server to deploy Python application servers in conjunction with the Nginx web server on Ubuntu 12.04.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2012-11-13
 keywords: ["uwsgi", "wsgi", "nginx", "python", "ubuntu", "install uwsgi", "deploy python applications with nginx", "virtual host"]
 tags: ["web server","python","ubuntu","web applications","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/index.cfm/','/websites/nginx/use-uwsgi-to-deploy-python-apps-with-nginx-on-ubuntu-12-04/','/web-servers/nginx/python-uwsgi/ubuntu-12-04-precise-pangolin/','/web-servers/nginx/use-uwsgi-to-deploy-python-apps-with-nginx-on-ubuntu-12-04/','/websites/nginx/how-to-install-uwsgi-with-nginx-on-ubuntu-12-04-precise-pangolin/','/websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/']
-modified: 2012-11-13
-modified_by:
-  name: Linode
-published: 2012-11-13
-title: "Deploy Python Apps with uWSGI and Nginx on Ubuntu 12.04"
 relations:
     platform:
         key: wsgi-uwsgi-nginx
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 The uWSGI server provides a non-FastCGI method for deploying Python applications with the nginx web server. In coordination with nginx, uWSGI offers great stability, flexibility, and performance. However, to deploy applications with uWSGI and nginx, you must compile nginx manually with the included uwsgi module.
 
 ## Prerequisites
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

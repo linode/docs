@@ -1,23 +1,19 @@
 ---
 slug: import-existing-infrastructure-to-terraform
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Import Existing Infrastructure to Terraform"
 description: 'This guide will describe how to import existing Linode infrastructure into Terraform using the official Linode provider plugin.'
-keywords: ['terraform','configuration management','import']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2018-12-17
 modified: 2020-12-03
-modified_by:
-  name: Linode
+keywords: ['terraform','configuration management','import']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: ImportExistingInfrastructuretoTerraform.png
-title: "Import Existing Infrastructure to Terraform"
-contributor:
-  name: Linode
 external_resources:
 - '[Terraform Import Usage](https://www.terraform.io/docs/import/usage.html)'
 - '[Terraform Linode Instance Documentation](https://www.terraform.io/docs/providers/linode/r/instance.html)'
 aliases: ['/applications/configuration-management/import-existing-infrastructure-to-terraform/','/applications/configuration-management/terraform/import-existing-infrastructure-to-terraform/']
+tags: ["saas"]
 ---
 
 Terraform is an orchestration tool that uses declarative code to build, change, and version infrastructure that is made up of server instances and services. You can use [Linode's official Terraform provider](https://www.terraform.io/docs/providers/linode/index.html) to interact with Linode services. Existing Linode infrastructure can be imported and brought under Terraform management. This guide describes how to import existing Linode infrastructure into Terraform using the official Linode provider plugin.
@@ -258,7 +254,7 @@ If your Linode uses more than two disks (for instance, if you have attached a [B
     {{< /note >}}
 
     {{< note respectIndent=false >}}
-If you have more than one [configuration profile](/docs/guides/linode-configuration-profiles/), you must choose which profile to boot from with the `boot_config_label` key. For example:
+If you have more than one [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/), you must choose which profile to boot from with the `boot_config_label` key. For example:
 
     resource "linode_instance" "example_label" {
         boot_config_label = "My Debian 9 Disk Profile"

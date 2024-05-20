@@ -1,17 +1,14 @@
 ---
 slug: install-znc-debian
-author:
-    name: Alex Fornuto
-    email: docs@linode.com
+title: 'Install ZNC from Source on Debian'
 description: 'This guide shows how to install the open-source application ZNC, a IRC bouncer designed to run on a server that remains connected to IRC, on a Linode.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2014-08-21
+modified: 2015-06-04
 keywords: ["install znc", "irc bouncer", "znc on debian", "configure znc", "znc"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-06-04
-modified_by:
-    name: 'Elle Krout'
-published: 2014-08-21
-title: 'Install ZNC from Source on Debian'
 aliases: ['/applications/messaging/install-znc-debian/']
 ---
 
@@ -165,7 +162,7 @@ Make sure to change the `username` variable.
     Once you've completed the configuration and launched ZNC, you can access the web interface by going to your Linode's IP address in your web browser. Be sure to specify the port you defined during the configuration script and prefix it with `https://` .
 
     {{< note respectIndent=false >}}
-If the [Firewall portion](/docs/guides/set-up-and-secure/#configure-a-firewall) of the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide has been completed, add a line to `/etc/iptables.firewall.rules` allowing traffic to your IRC port.
+If the [Firewall portion](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) of the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide has been completed, add a line to `/etc/iptables.firewall.rules` allowing traffic to your IRC port.
 {{< /note >}}
 
 

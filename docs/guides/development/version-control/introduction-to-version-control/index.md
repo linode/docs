@@ -1,17 +1,13 @@
 ---
 slug: introduction-to-version-control
-author:
-  name: Linode
-  email: docs@linode.com
+title: Introduction to Version Control
 description: 'This guide will help you get started with Version Control, a special application that stores and manages each revision of the files that make up your codebase.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-09-18
 keywords: ["version control", "introduction to version control", "git", "introduction to git"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/intro-version-control/','/applications/development/introduction-to-version-control/','/development/version-control/introduction-to-version-control/']
-modified: 2013-09-18
-modified_by:
-  name: Linode
-published: 2013-09-18
-title: Introduction to Version Control
 external_resources:
  - '[Version Control Systems](/docs/development/version-control/)'
 audiences: ["foundational"]
@@ -68,7 +64,7 @@ For an added layer of protection, you can store your files in *both* a local and
 
 You can install Git on your desktop computer, your Linode, or both. Getting started with Git is easy. All you have to do is install Git on your Linode, create a repository, and make an initial commit. Here's how:
 
-1.  Open a terminal window and [log in to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1.  Open a terminal window and [log in to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 2.  Install Git on your Linode by entering the following commands, one by one:
 
         sudo apt-get update

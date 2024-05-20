@@ -1,16 +1,13 @@
 ---
 slug: what-is-iptables
-author:
-  name: Hackersploit
-description: 'This guide helps you understand iptables and explains what is iptables. It gets you started with examples and an overview of commands.'
-keywords: ['understanding iptables', 'what is iptables']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-10-07
-modified_by:
-  name: Linode
-published: 2020-10-07
 title: Understanding iptables
 title_meta: What is iptables
+description: 'This guide helps you understand iptables and explains what is iptables. It gets you started with examples and an overview of commands.'
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2020-10-07
+keywords: ['understanding iptables', 'what is iptables']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ['networking','security']
 image: "Understanding_iptables.png"
 aliases: ['/security/firewalls/what-is-iptables/']
@@ -46,7 +43,7 @@ There are 5 main chains in iptables:
   - Prerouting: After the packet enters the network interface.
   - Postrouting: Before the packet leaves the network interface after the routing decision has been made.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The filter table is responsible for blocking or allowing connections and is the default filter used in iptables.
 {{< /note >}}
 
@@ -137,8 +134,7 @@ You can specify the default policy for all the chains by running the following c
 This sets the default policy for all chains to `ACCEPT`. You can also change this to `DROP` or `REJECT` if you wish to disable access to any services on the server and manually allow the services you wish to expose.
 
 ### Blocking & Allowing Connections From IP Address
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In the following examples, replace the sample 198.168.1.1 IP address with the IP address you wish to block or allow.
 {{< /note >}}
 

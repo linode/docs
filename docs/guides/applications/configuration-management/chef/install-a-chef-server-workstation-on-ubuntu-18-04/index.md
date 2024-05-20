@@ -1,18 +1,15 @@
 ---
 slug: install-a-chef-server-workstation-on-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Installing a Chef Server Workstation on Ubuntu 18.04'
+title_meta: 'How To Install a Chef Server Workstation on Ubuntu 18.04'
 description: 'Instructions on how to configure a Chef server and a virtual workstation, and how to bootstrap a client node on Ubuntu 18.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-08-06
+modified: 2019-12-03
 keywords: ["chef", "configuration management", "server automation", "chef server", "chef workstation", "chef-client"]
 tags: ["ubuntu","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-08-06
-modified: 2019-12-03
-modified_by:
-  name: Linode
-title: 'Installing a Chef Server Workstation on Ubuntu 18.04'
-title_meta: 'How To Install a Chef Server Workstation on Ubuntu 18.04'
 relations:
     platform:
         key: install-chef-workstation
@@ -39,7 +36,7 @@ This guide is written for a non-root user. Commands that require elevated privil
   - Assign a Domain to the Chef server. Ensure your domain has a corresponding domain zone, NS record, and A/AAA record. See [Create a Domain](/docs/products/networking/dns-manager/guides/create-domain/) for details.
   - Ensure your Chef server's hostname is the same as its Domain name. Your Chef server will automatically create SSL certificates based on the Linode's hostname.
 -  Two 2 GB Linodes, each running Ubuntu 18.04. One Linode will host a workstation and the other a node to be managed by Chef.
--  The workstation and Chef server should be configured per the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. Once your node is [bootstrapped](/docs/guides/install-a-chef-server-workstation-on-ubuntu-18-04/#bootstrap-a-node), you can use a Chef cookbook to secure your node. Consider using the [Users](https://supermarket.chef.io/cookbooks/users) cookbook and the [Firewall](https://supermarket.chef.io/cookbooks/firewall) cookbook for this work.
+-  The workstation and Chef server should be configured per the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. Once your node is [bootstrapped](/docs/guides/install-a-chef-server-workstation-on-ubuntu-18-04/#bootstrap-a-node), you can use a Chef cookbook to secure your node. Consider using the [Users](https://supermarket.chef.io/cookbooks/users) cookbook and the [Firewall](https://supermarket.chef.io/cookbooks/firewall) cookbook for this work.
 -  Ensure that all servers are up-to-date:
 
         sudo apt update && sudo apt upgrade
@@ -145,7 +142,7 @@ Authentication between the Chef server and workstation and/or nodes is completed
     Press **Enter** to use the default names `id_rsa` and `id_rsa.pub` in `/home/your_username/.ssh` before entering your passphrase.
 
     {{< note respectIndent=false >}}
-  If you have disabled SSH password authentication on your Chef server's Linode, as recommended by the [How to Secure Your Server](/docs/guides/set-up-and-secure/#ssh-daemon-options) guide, re-enable SSH password authentication prior to performing these steps. Be sure to disable it again once you have added your workstation's public ssh key to the Chef server's Linode.
+  If you have disabled SSH password authentication on your Chef server's Linode, as recommended by the [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) guide, re-enable SSH password authentication prior to performing these steps. Be sure to disable it again once you have added your workstation's public ssh key to the Chef server's Linode.
     {{< /note >}}
 
     Upload your workstation's public key to the Linode hosting the Chef server. Ensure you replace `example_user` with the Chef server's user account and `192.0.2.0` with its IP address:

@@ -1,29 +1,21 @@
 ---
 slug: turbocharge-wordpress-search-with-solr
-author:
-    name: Karthik Shiraly
-    email: docs@linode.com
+title: 'Turbocharge Your WordPress Search Using Solr'
 description: 'The built-in WordPress search doesn''t always provide the best search experience. This guide provides instructions for installing Solr, a better WP search engine.'
+authors: ["Karthik Shiraly"]
+contributors: ["Karthik Shiraly"]
+published: 2015-04-03
 keywords: ["wordpress", "search", "solr", "ubuntu", "debian"]
 tags: ["ubuntu","wordpress","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-contributor:
-    name: Karthik Shiraly
-    link: https://twitter.com/pathbreaksoft
-modified: 2015-04-03
-modified_by:
-    name: James Stewart
-published: 2015-04-03
-title: 'Turbocharge Your WordPress Search Using Solr'
 aliases: ['/websites/cms/solr/turbocharge-wordpress-search-with-solr/','/websites/cms/turbocharge-wordpress-search-with-solr/']
 ---
-
 
 The standard search that is built into WordPress does not provide the best search experience you can offer your visitors, given its inability to suggest search phrases, catch typos, understand word variations, organize and filter results, and index documents for search results. *Full text search engines* often offer these features and **Apache Solr** is a free, open-source option that does.
 
 In this guide, you will learn how to install Java, install and configure Solr on Ubuntu 14.x or Debian 7.x, and integrate it into your WordPress blog using the WPSolr plugin.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -182,7 +174,7 @@ By default, Solr listens for search requests on all IP addresses at port 8983. F
 
 For security purposes, Solr should run with its own user account and group.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The following commands should be run on the server where **Solr** is installed.
 {{< /note >}}
 
@@ -202,8 +194,7 @@ The following commands should be run on the server where **Solr** is installed.
 
 
 ### Configure Solr as a Startup Service
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Run the following commands on the server where **Solr** is installed.
 {{< /note >}}
 

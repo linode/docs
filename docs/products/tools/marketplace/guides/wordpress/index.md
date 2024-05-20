@@ -1,18 +1,10 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy WordPress through the Linode Marketplace"
 description: "WordPress is an industry standard CMS. Follow this guide to deploy WordPress on Linode using Marketplace Apps."
+published: 2020-09-28
+modified: 2024-04-16
 keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress with marketplace', 'easy install wordpress']
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-09-28
-modified: 2022-07-28
-modified_by:
-  name: Linode
-title: "Deploy WordPress through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[WordPress Codex (Documentation)](https://codex.wordpress.org/)'
 aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/platform/one-click/deploying-wordpress-with-one-click-apps/','/guides/deploying-wordpress-with-one-click-apps/','/guides/deploying-wordpress-with-marketplace-apps/','/guides/wordpress-marketplace-app/']
@@ -22,9 +14,9 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** WordPress should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -32,27 +24,50 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
 
 ## Configuration Options
 
-- **Supported distributions:**  Debian 11, Ubuntu 22.04 LTS
+- **Supported distributions:**  Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used, though a minimum of a 4GB Dedicated CPU Compute Instance is recommended for production websites.
 
 ### WordPress Options
 
+- **Webserver Stack** *(required)*: Choose which webserver to use for the WordPress deployment, Apache2 or NGINX.
 - **Email address** *(required)*: Enter the email address you wish to use when configuring the WordPress admin user, generating SSL certificates, and optionally creating DNS records for a custom domain.
-- **Admin Username** *(required)*: Username for your WordPress admin user account.
-- **Admin Password** *(required)*: Password for your WordPress admin user account.
-- **MySQL `root` password** *(required)*: The root password for your MySQL database.
-- **WordPress Database Password** *(required)*: The root password for your WordPress database.
+- **WordPress Admin Username** *(required)*: Username for your WordPress admin user account. Defaults to `admin` if no username is entered.
+- **WordPress Database Username** *(required)*: MySQL username for the WordPress database user. Defaults to `wordpress` if no username is entered.
+- **WordPress Database Name** *(required)*: Name for the WordPress MySQL database. Defaults to `wordpress` if no database name is defined.
 - **Website Title:** Enter a title for your WordPress site.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+    {{< note >}}
+    The passwords for the WordPress Admin User, WordPress Database User and MySQL root user are automatically generated and provided in the file `/home/$USERNAME/.credentials` when the WordPress deployment completes.
+    {{< /note >}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
+
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
+
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started After Deployment
 
+### Obtain the Credentials
+
+Once the app has been *fully* deployed, you need to obtain the credentials from the server.
+
+1.  Log in to your new Compute Instance using one of the methods below:
+
+    - **Lish Console:** Within the Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. Log in as the `root` user. See [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **SSH:** Log in to your Compute Instance over SSH using the `root` user. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
+
+1.  Once logged in, access the credentials file by running the following command:
+
+    ```command
+    cat /home/$USERNAME/.credentials
+    ```
+
+1.  This displays the passwords that were automatically generated when the instance was deployed. Once you save these passwords, you can safely delete this file.
+
 ### Accessing the WordPress Admin Dashboard
 
-1.  Open your web browser and navigate to `http://[domain]/wp-admin/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though the connection will not be secure. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1.  Open your web browser and navigate to `https://[domain]/wp-admin/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though the connection will not be secure. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
     ![Screenshot of the browser's URL bar](wordpress-browser-url.png)
 
@@ -60,7 +75,7 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
     A TLS/SSL certificate is automatically generated for your custom domain, enabling you to connect to the site over the `https` protocol. If you did not enter a custom domain, a TLS/SSL certificate is configured on the rDNS domain instead. Connections using your IP address are not secured and will use the `http` protocol.
     {{< /note >}}
 
-1.  Within the login page that appears, enter the username (*admin username*) and password (*admin password*) that you created when you deployed this instance. Then click the **Log In** button.
+1.  Within the login page that appears, enter the username (*admin username*) that you created when you deployed this instance and the associated password that was automatically generated. Then click the **Log In** button.
 
     ![Screenshot of the WordPress login form](wordpress-login.png)
 
@@ -70,7 +85,7 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
 
 ### Viewing Your Website
 
-Open a web browser and navigate to `http://[domain]`, replacing *[domain]* with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS. Your WordPress site should now be displayed.
+Open a web browser and navigate to `https://[domain]`, replacing *[domain]* with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS. Your WordPress site should now be displayed.
 
 ### Manually Configure a Domain
 
@@ -96,21 +111,27 @@ If you didn't set up a domain during the deployment process, you can add it manu
 
 If you need to reset your admin user's password and you aren't receiving the password reset request email, you can update the password from command line. This method also allows you to update the email address for your admin account without needing an email confirmation.
 
-1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
-1.  Navigate to the directory of your WordPress installation:.
+1.  Navigate to the `public_html` directory of your WordPress installation:.
 
-        cd /var/www/wordpress
+    ```command
+    cd /var/www/example.com/public_html
+    ```
 
 1.  Using the WP-CLI, update either the password or email address. You can also update other values as needed. See [WP-CLI wp user update command](https://developer.wordpress.org/cli/commands/user/update/).
 
     **Update password** (replace *[user]* with the username of the user you want to update and *[password]* with the password you wish to use):
 
-        wp user update [user] --user_pass="[password]" --allow-root
+    ```command
+    wp user update [user] --user_pass="[password]" --allow-root
+    ```
 
     **Update email** (replace *[user]* with the username of the user you want to update and *[email]* with the email address you wish to use):
 
-        wp user update [user] --user_email="[email]" --allow-root
+    ```command
+    wp user update [user] --user_email="[email]" --allow-root
+    ```
 
 ## Going Further
 
@@ -119,5 +140,6 @@ Now that your WordPress installation is deployed, you can start adding content a
 - [WordPress Support](https://wordpress.org/support/): Learn the basic workflows for using WordPress.
 - [Securing WordPress](/docs/guides/how-to-secure-wordpress/): Advice on securing WordPress through HTTPS, using a secure password, changing the admin username, and more.
 - [WordPress Themes](https://wordpress.org/themes/#): A collection of *thousands* of WordPress themes.
+- [Marketplace Apps Repository](https://github.com/linode-solutions/marketplace-apps): Review the deployment Ansible playbooks.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

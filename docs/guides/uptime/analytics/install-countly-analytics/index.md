@@ -1,21 +1,15 @@
 ---
 slug: install-countly-analytics
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Installing Countly Community Edition on Ubuntu 20.04"
 description: "Countly Community Edition is a free open source alternative to Google Analytics for your online properties. Install it with the help of this guide."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-08-23
 keywords: ['google analytics alternative','self hosted analytics','open source analytics']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-08-23
-modified_by:
-  name: Nathaniel Stickman
-title: "Installing Countly Community Edition on Ubuntu 20.04"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Countly: Community Edition](https://count.ly/community-edition)'
-- '[Vultr: How to Install Countly Analytics on Ubuntu 16.10](https://www.vultr.com/docs/how-to-install-countly-analytics-on-ubuntu-16-10)'
+tags: ["digital agencies"]
 ---
 
 The Countly analytics platform offers an alternative to the ubiquitous Google Analytics. In contrast to Google Analytics, Countly puts more emphasis on privacy and an all-in-one feature set. Countly's data gathering offers compliance with GDPR, HIPAA, and other privacy standards. Meanwhile, it provides not just visitor analytics, but also a wider range of analytics related to marketing.
@@ -24,9 +18,9 @@ This tutorial shows you how to start using Countly for your analytics needs. Cou
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started with Linode](/docs/guides/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your system.
 
@@ -37,8 +31,7 @@ This tutorial shows you how to start using Countly for your analytics needs. Cou
     ```command {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
     sudo dnf upgrade
     ```
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

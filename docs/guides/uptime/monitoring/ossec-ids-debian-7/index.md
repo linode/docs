@@ -1,21 +1,14 @@
 ---
 slug: ossec-ids-debian-7
-author:
-  name: Sunday Ogwu-Chinuwa
-  email: finid@vivaldi.net
-contributor:
-  name: Sunday Ogwu-Chinuwa
-  link: https://github.com/finid
+title: Install and Configure OSSEC on Debian 7
 description: 'This guide shows how to install and configure OSSEC HIDS, an open-source, host-based intrusion detection system which provides advanced monitoring functions, on Debian 7.'
+authors: ["Sunday Ogwu-Chinuwa"]
+contributors: ["Sunday Ogwu-Chinuwa"]
+published: 2015-02-05
 keywords: ["IDS", " Intrusion Detection System"]
 aliases: ['/security/ossec-ids-debian-7/','/uptime/monitoring/ossec-ids-debian-7/']
 tags: ["debian","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-02-05
-modified_by:
-  name: James Stewart
-published: 2015-02-05
-title: Install and Configure OSSEC on Debian 7
 external_resources:
  - '[OSSEC](https://ossec.github.io/)'
 ---
@@ -28,15 +21,15 @@ When installed and configured, OSSEC will provide a real-time view of what's tak
 
 This guide covers how to install and configure OSSEC on a single Linode running Debian 7 in such a manner that if a file is modified, added or deleted, OSSEC will notify you by email in real-time. OSSEC can also provide notifications for other activities.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. It is especially important to create and enable a firewall. On Linux, OSSEC needs an active iptables firewall for its active response feature to work.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. It is especially important to create and enable a firewall. On Linux, OSSEC needs an active iptables firewall for its active response feature to work.
 
 3.  Install `inotify-tools` and `build-essential`. OSSEC needs the first for real-time alerts and alerts on file deletions, while the latter is for compiling OSSEC. You can install both packages using:
 

@@ -1,31 +1,26 @@
 ---
 slug: manage-email-lists-with-gnu-mailman-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Manage Email Lists with GNU Mailman on Ubuntu 9.10 (Karmic)'
 description: 'This guide shows how you can use GNU Mailman a free and open source Listserv management application for managing discussion lists on Ubuntu 9.10 "Karmic".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-03-19
+modified: 2011-05-17
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-9-10-karmic/','/email/mailman/ubuntu-9-10-karmic/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2010-03-19
-title: 'Manage Email Lists with GNU Mailman on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: use-gnu-mailman
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 GNU Mailman is a commonly used Listserv Management application that allows users to create and manage discussion and announcement email lists. Mailman includes support for numerous features including a web-based administrative interface, multiple domains, lists, and complex moderation and access control tools. The Mailman software is primarily written in the Python programing language and has been a popular choice for managing email lists for more than a decade.
 
-Before installing Mailman we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Be sure to read this guide in its entirety before continuing. If you have an existing mail system configured before you begin this, take special care to ensure that installing Mailman will not conflict with delivery of existing mail.
+Before installing Mailman we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Be sure to read this guide in its entirety before continuing. If you have an existing mail system configured before you begin this, take special care to ensure that installing Mailman will not conflict with delivery of existing mail.
 
 ## Installing Mailman
 

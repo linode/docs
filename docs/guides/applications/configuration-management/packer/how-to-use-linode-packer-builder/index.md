@@ -1,20 +1,15 @@
 ---
 slug: how-to-use-linode-packer-builder
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Using the Linode Packer Builder to Create Custom Images"
+title_meta: "How to Use the Linode Packer Builder"
 description: "Packer is a HashiCorp maintained open source tool for creating machine images. Here's how to use it."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-11-12
+modified: 2021-05-21
 keywords: ['packer hashicorp','hashicorp packer','image','machine image','immutable infrastructure','continuous delivery','ansible','ansible playbook','hashicorp terraform','hashicorp']
 tags: ["automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-11-12
-modified: 2021-05-21
-modified_by:
-  name: Linode
-title: "Using the Linode Packer Builder to Create Custom Images"
-title_meta: "How to Use the Linode Packer Builder"
-contributor:
-  name: Linode
 aliases: ['/applications/configuration-management/how-to-use-linode-packer-builder/','/applications/configuration-management/packer/how-to-use-linode-packer-builder/']
 ---
 
@@ -28,7 +23,7 @@ Packer *templates* store the configuration parameters used for building an image
 
 In Packer's ecosystem, [builders](https://www.packer.io/docs/builders) are responsible for building a system and generating an image from that system. Packer has multiple different types of builders, with each one being used to create images for a specific platform.
 
-The [Linode builder](https://www.packer.io/docs/builders/linode) integrates Packer with the Linode platform. This allows Packer to deploy a temporary Linode on your account (using an APIv4 token), configure the system on the Linode according to the parameters in the provided template file, and then create an image based on that Linode. Essentially, this is a convenient way to automatically create [Linode Images](/docs/products/tools/images/) on your account that can be used for rapidly deploying new Linodes.
+The [Linode builder](https://developer.hashicorp.com/packer/integrations/linode/linode) integrates Packer with the Linode platform. This allows Packer to deploy a temporary Linode on your account (using an APIv4 token), configure the system on the Linode according to the parameters in the provided template file, and then create an image based on that Linode. Essentially, this is a convenient way to automatically create [Linode Images](/docs/products/tools/images/) on your account that can be used for rapidly deploying new Linodes.
 
 ## Before You Begin
 
@@ -131,7 +126,7 @@ The starting line of each `source` block will contain the builder plugin to be u
 
 #### Parameters for the Linode Builder
 
-This example uses the Linode Packer builder as a source. Each of the parameters within the `source` block are outlined on the [Linode Builder](https://www.packer.io/docs/builders/linode) page within Packer's documentation.
+This example uses the Linode Packer builder as a source. Each of the parameters within the `source` block are outlined on the [Linode Builder](https://developer.hashicorp.com/packer/integrations/linode/linode) page within Packer's documentation.
 
 - `image`: The ID of the "starter" image to use. This can be one of the official Linode images or any private custom images on your account. In this example, we'll use `linode/debian10` to specify the official Linode Debian 10 image. You can view all the images available to you by running the following curl command:
 
@@ -173,7 +168,7 @@ To learn how to securely store and use your API v4 token, see the [Vault](https:
 
 ## Deploying a Linode with the New Image
 
-Once the Packer build process completes, a new [Custom Image](/docs/products/tools/images/) will appear on your account. This image can be deployed a few ways:
+Once the Packer build process completes, a new [Custom Image](/docs/products/tools/images/) will appear on your account. This image can be deployed in a few ways:
 
 - **Cloud Manager:** Use the Cloud Manager to deploy a Custom Image by following the [Deploy an Image to a New Compute Instance](/docs/products/tools/images/guides/deploy-image-to-new-linode/) guide.
 

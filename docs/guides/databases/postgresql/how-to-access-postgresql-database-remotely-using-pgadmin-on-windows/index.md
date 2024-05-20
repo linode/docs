@@ -1,17 +1,14 @@
 ---
 slug: how-to-access-postgresql-database-remotely-using-pgadmin-on-windows
-author:
-  name: Linode
-  email: docs@linode.com
-description: "Use the open-source pgAdmin program to securely manage remote PostgreSQL databases from a Windows workstation."
-keywords: ["pgadmin", "pgadmin windows", "postgresql gui", "postgresql windows", "manage postgresql databases", "ssh tunnel"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-05-12
-modified_by:
-  name: Linode
-published: 2010-04-28
 title: "Access PostgreSQL Database Remotely Using pgAdmin on Windows"
 title_meta: "Use pgAdmin to Connect to Remote Database on Windows"
+description: "Use the open-source pgAdmin program to securely manage remote PostgreSQL databases from a Windows workstation."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-28
+modified: 2016-05-12
+keywords: ["pgadmin", "pgadmin windows", "postgresql gui", "postgresql windows", "manage postgresql databases", "ssh tunnel"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/postgresql/pgadmin-windows/','/databases/postgresql/how-to-access-postgresql-database-remotely-using-pgadmin-on-windows/','/databases/postgresql/securely-manage-remote-postgresql-servers-with-pgadmin-on-windows/']
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
@@ -61,7 +58,7 @@ Click the "Open" button to start your connection. If you haven't logged into you
 
 ![An unknown host key warning in PuTTY on Windows 7](371-putty-02-host-key-warning.png)
 
-PuTTY is asking you to verify that the server you're logging into is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection and posing as the server you are trying to log into. You need some "out of band" method to compare the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via [Lish](/docs/guides/lish/) and executing the following command:
+PuTTY is asking you to verify that the server you're logging into is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection and posing as the server you are trying to log into. You need some "out of band" method to compare the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via [Lish](/docs/products/compute/compute-instances/guides/lish/) and executing the following command:
 
     ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub
 

@@ -1,23 +1,20 @@
 ---
 slug: discussion-forums-with-fluxbb
-author:
-  name: Linode
-  email: docs@linode.com
+title: Discussion Forums with FluxBB
 description: 'Install the simple and lightweight Discussion forum FluxBB on your Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-03
+modified: 2013-10-01
 keywords: ["bulletin board", "forum", "discussion forum", "fluxbb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/bulletin-boards/fluxbb/','/websites/forums/discussion-forums-with-fluxbb/']
-modified: 2013-10-01
-modified_by:
-  name: Linode
-published: 2010-05-03
-title: Discussion Forums with FluxBB
 deprecated: true
 ---
 
 FluxBB is a web application that powers discussion forums. It strives to be faster and more lightweight than other contenders in this space, and its developers strive for maximum stability and security. Thus, FluxBB is a viable option for those who need a web based discussion forum and require simplicity and stability without an expansive feature set.
 
-Before beginning with this guide we assume that you have completed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). To complete this guide, you must also install a web server. This guide will assume that you have completed the appropriate [LAMP guide](/docs/lamp-guides/) for your operating system.
+Before beginning with this guide we assume that you have completed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). To complete this guide, you must also install a web server. This guide will assume that you have completed the appropriate [LAMP guide](/docs/lamp-guides/) for your operating system.
 
 ## Installing Prerequisites
 

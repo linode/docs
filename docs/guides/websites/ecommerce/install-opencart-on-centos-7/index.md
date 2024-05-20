@@ -1,18 +1,15 @@
 ---
 slug: install-opencart-on-centos-7
-author:
-  name: Jonathan Chun
-  email: docs@linode.com
+title: How to Install OpenCart on CentOS 7
 description: 'This tutorial will guide you through basic installation and set-up of popular ecommerce platform OpenCart on CentOS 7.'
+authors: ["Jonathan Chun"]
+contributors: ["Jonathan Chun"]
+published: 2017-04-29
+modified: 2017-08-21
 keywords: ["opencart", "ecommerce", "commerce", "store", "centos"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ecommerce/install-opencart-on-centos-7/','/web-applications/e-commerce/opencart/centos-7/','/websites/ecommerce/opencart-on-centos-7/']
-modified: 2017-08-21
-modified_by:
-  name: Jonathan Chun
-published: 2017-04-29
-title: How to Install OpenCart on CentOS 7
 external_resources:
  - '[OpenCart Website](https://www.opencart.com)'
  - '[OpenCart Documentation](http://docs.opencart.com/)'
@@ -24,7 +21,7 @@ relations:
            - distribution: CentOS 7
 ---
 
-![banner_image](How_to_Install_OpenCart_on_CentOS_smg.jpg)
+![Header image](How_to_Install_OpenCart_on_CentOS_smg.jpg "How to Install OpenCart on CentOS 7")
 
 ## What is OpenCart?
 
@@ -101,7 +98,7 @@ Issue the following commands to download and unpack OpenCart into your web root 
 
 In the above example, replace `/var/www/html/example.com/public_html/` with your virtual host's web root and `2.3.0.2-compiled.zip` with the file name of the latest OpenCart release.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You can find the latest version of OpenCart from their [Download Page](https://www.opencart.com/?route=cms/download).
 {{< /note >}}
 
@@ -150,7 +147,7 @@ You can now login using the administrator account details you entered previously
 
 Now that you have your OpenCart installation up and running, there are a few more steps that we recommend. Because of the security-sensitive nature of ecommerce websites, you will want to make sure your system is secure.
 
-1.  Make sure you follow our [Securing Your Server](/docs/guides/set-up-and-secure/) guide.
+1.  Make sure you follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 2.  Secure your website with SSL/TLS. Learn to [Install a SSL certificate with Apache on CentOS 7](/docs/guides/ssl-apache2-centos/). Once you've installed a certificate, enable **Use SSL** by following the [Opencart Documentation on SSL](http://docs.opencart.com/administration/ssl/).
 

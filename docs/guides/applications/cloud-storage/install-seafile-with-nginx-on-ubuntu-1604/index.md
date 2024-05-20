@@ -1,17 +1,14 @@
 ---
 slug: install-seafile-with-nginx-on-ubuntu-1604
-author:
-  name: Linode
-  email: docs@linode.com
+title: Install Seafile with NGINX on Ubuntu 16.04
 description: 'This guide shows how to install Seafile, a free and open-source cross-platform file hosting tool with server applications for Linux and Windows, on Ubuntu 16.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2017-05-23
+modified: 2017-06-21
 keywords: ["Seafile", " nginx", " Ubuntu 16.04", " file server", " media", " sharing"]
 tags: ["ubuntu", "nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-06-21
-modified_by:
-  name: Linode
-published: 2017-05-23
-title: Install Seafile with NGINX on Ubuntu 16.04
 external_resources:
  - '[Seafile Server Manual](https://manual.seafile.com/)'
 aliases: ['/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604/']
@@ -45,7 +42,7 @@ This guide is written for a non-root user. Commands that require elevated privil
         ssh sfadmin@<your_linode's_ip>
 
 
-4.  You should now be logged into your Linode as *sfadmin*. Use our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/#harden-ssh-access) guide to harden SSH access.
+4.  You should now be logged into your Linode as *sfadmin*. Use our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access) guide to harden SSH access.
 
 5.  Set up UFW rules. UFW is Ubuntu's iptables controller which makes setting up firewall rules a little easier. For more info on UFW, see our guide [Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). Set the allow rules for SSH and HTTP(S) access with:
 

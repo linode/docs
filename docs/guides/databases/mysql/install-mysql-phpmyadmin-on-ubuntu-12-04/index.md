@@ -1,18 +1,14 @@
 ---
 slug: install-mysql-phpmyadmin-on-ubuntu-12-04
-deprecated: true
-author:
-    name: James Stewart
-    email: jstewart@linode.com
+title: 'How to Install MySQL with phpMyAdmin on Ubuntu 12.04'
 description: 'This guide will show you how to install and configure phpMyAdmin to manage MySQL databases and users though a web interface and GUI on Ubuntu 12.04.'
+authors: ["James Stewart"]
+contributors: ["James Stewart"]
+published: 2013-09-12
+modified: 2015-09-16
 keywords: ["mysql", "phpmyadmin", "sql", "ubuntu", "precise", "ubuntu 12.04", "lts", "ubuntu lts", "localhost phpmyadmin", "php mysql", "http localhost phpmyadmin"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/phpmyadmin-ubuntu-12-04-precise/','/databases/mysql/install-mysql-phpmyadmin-on-ubuntu-12-04/','/databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-12-04-precise-pangolin/']
-modified: 2015-09-16
-modified_by:
-    name: Linode
-published: 2013-09-12
-title: 'How to Install MySQL with phpMyAdmin on Ubuntu 12.04'
 external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
     - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
@@ -22,6 +18,7 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 tags: ["ubuntu","php","database","mysql"]
+deprecated: true
 ---
 
 phpMyAdmin is a web application that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
@@ -32,9 +29,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
 
     To check your hostname run:
 

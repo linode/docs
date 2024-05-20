@@ -1,21 +1,19 @@
 ---
 slug: freeipa-for-identity-management
-author:
-  name: Hackersploit
+title: "Set Up a FreeIPA Server and Client"
+title_meta: "How to Set Up a FreeIPA Server and Client"
 description: "Set up a centralized identity and authentication management server with FreeIPA, the upstream open-source project for Red Hat Identity Management."
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2021-03-26
+modified: 2022-11-29
 keywords: ["freeipa","identity management", "authentication","security"]
 aliases: ['/security/authentication/free-ipa-for-identity-management/','/security/free-ipa-for-identity-management/']
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-title: "Set Up a FreeIPA Server and Client"
-title_meta: "How to Set Up a FreeIPA Server and Client"
 external_resources:
  - '[FreeIPA Documentation](https://www.freeipa.org/page/Documentation)'
  - '[Kerberos Homepage](https://web.mit.edu/kerberos/)'
-published: 2021-03-26
-modified: 2022-11-29
-modified_by:
-  name: Linode
 image: FreeIPA_IDandAuth.png
 ---
 
@@ -36,10 +34,10 @@ FreeIPA is the Linux version or implementation of Active Directory, which featur
 This guide assumes:
 
 - Two fully functional Linodes equal to a [2GB Plan](https://www.linode.com/pricing/) or greater must be created using CentOS 7 or later. One will host the FreeIPA server, while the other will host the client.
-- You have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides. One will host the FreeIPA server, while the other will host the client.
+- You have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides. One will host the FreeIPA server, while the other will host the client.
 - You are familiar with the [command line](/docs/guides/introduction-to-linux-concepts/#so-youre-staring-at-a-shell-prompt)
 - FreeIPA requires that the user has possession of their own fully qualified domain name (FQDN) with an active subdomain for both the client and server. Before proceeding, ensure that each Linode has A/AAAA records configured using a [Unique Subdomain](/docs/products/networking/dns-manager/) for both the server and client Linode respectively.
-- [Set up Reverse DNS](/docs/guides/configure-rdns/) for each Linode using their full unique subdomain.
+- [Set up Reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) for each Linode using their full unique subdomain.
 
 ## Prepare the Client and Server
 
@@ -143,7 +141,7 @@ The admin ticket created with `kinit admin` is set to expire in 24 hours followi
 
 New users can be created with the above command at any time.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Kerberos tickets associated with these users will expire similarly to admin users. Basic syntax for creating new kerberos tickets is `kinit username`.
 {{< /note >}}
 
@@ -198,7 +196,7 @@ The kerberos admin server will be freely accessible via it's domain in a web bro
 
 Once logged in, you will have access to many of the tools and utilities available to FreeIPA from the command line directly on a more user friendly web interface.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide rely on a self-signed SSL certificate, and users may see an error message in their web browser claiming that the SSL certificate is not valid. While the self-signed certificate will not be recognized by any certificate authority, it will still provide TLS/SSL encryption. Due to this, the error message can be ignored.
 {{< /note >}}
 

@@ -1,25 +1,21 @@
 ---
 slug: use-puppet-modules-to-create-a-lamp-stack
-author:
-    name: Elle Krout
-    email: ekrout@linode.com
+title: Use Puppet Modules to Create a LAMP Stack
 description: 'This guide will show you how to efficiently use Puppet modules to manage files and services, create templates, and store data in Hiera on Ubuntu 14.04 LTS.'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-11-12
 keywords: ["puppet", "automation", "puppet master", "puppet agent", "modules", "server automation", "configuration management"]
 tags: ["lamp","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack/','/applications/configuration-management/puppet/use-puppet-modules-to-create-a-lamp-stack/']
-deprecated: true
-deprecated_link: 'applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack-ubuntu-18-04-master/'
-modified: 2015-11-12
-modified_by:
-    name: Elle Krout
-published: 2015-11-12
-title: Use Puppet Modules to Create a LAMP Stack
 relations:
     platform:
         key: install-puppet-lamp-master
         keywords:
             - distribution: Ubuntu 14.04
+deprecated: true
+deprecated_link: 'applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack-ubuntu-18-04-master/'
 ---
 
 ![Use Puppet Modules to Create a LAMP Stack](Use_Puppet_Modules_to_Create_a_LAMP_Stack_smg.jpg)
@@ -28,7 +24,7 @@ Within Puppet, modules are the building blocks of your servers' configurations. 
 
 In this guide, Apache and PHP modules will be created from scratch, and a MySQL module will be adapted from the Puppet Lab's MySQL module found on the [Puppet Forge](https://forge.puppet.com/). These steps will create a full LAMP stack on your server and provide an overview of the various ways modules can be utilized.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide assumes that you are working from an Ubuntu 14.04 LTS Puppet master and CentOS 7 and Ubuntu 14.04 nodes, configured in the [Puppet Setup](/docs/guides/install-and-configure-puppet/) guide. If using a different setup, please adapt the guide accordingly.
 {{< /note >}}
 

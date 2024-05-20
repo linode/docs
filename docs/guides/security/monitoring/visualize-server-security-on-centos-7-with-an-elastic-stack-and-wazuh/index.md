@@ -1,21 +1,15 @@
 ---
 slug: visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh"
+title_meta: "How to Visualize Server Security on CentOS 7"
 description: "Learn how to use the Elastic Stack to collect, log, and visualize security data and threat alerts through Wazuh, part of OSSEC Intrusion Detection."
+authors: ["Andrew Lescher"]
+contributors: ["Andrew Lescher"]
+published: 2017-10-17
+modified: 2019-01-31
 keywords: ["ossec", "elk stack", "elk,ossec-hids"]
 tags: ["monitoring","security","lemp","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-10-17
-modified: 2019-01-31
-modified_by:
-  name: Linode
-title: "Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh"
-title_meta: "How to Visualize Server Security on CentOS 7"
-contributor:
-  name: Andrew Lescher
-  link: https://www.linkedin.com/in/andrew-lescher-87027940/
 external_resources:
   - '[Wazuh Official Documentation](https://documentation.wazuh.com/current/index.html)'
   - '[OSSEC Official Documentation](http://ossec-docs.readthedocs.io/en/latest/index.html)'
@@ -47,7 +41,7 @@ Wazuh is an open source branch of the original [OSSEC HIDS](https://ossec.github
 
 ## Before You Begin
 
-1.  Many of the steps in this guide require root privileges. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services. Use `sudo` wherever necessary.
+1.  Many of the steps in this guide require root privileges. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services. Use `sudo` wherever necessary.
 
 2. Your Linode should have at least [8GB of RAM](https://www.linode.com/pricing). While an Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
 
@@ -120,7 +114,7 @@ protect=1
 
             curl --silent --location https://rpm.nodesource.com/setup_8.x | bash -
 
-    1. Install NodeJS:
+    1. Install Node.js:
 
             yum install -y nodejs
 
@@ -435,10 +429,10 @@ server {
 
         httpd -M
 
-    - proxy_module
-    - lbmethod_byrequests_module
-    - proxy_balancer_module
-    - proxy_http_module
+    - `proxy_module`
+    - `lbmethod_byrequests_module`
+    - `proxy_balancer_module`
+    - `proxy_http_module`
 
 1. Enable the necessary mods in Apache. Open `00-proxy.conf` and verify that the lines below are included:
 
@@ -554,8 +548,7 @@ Kibana's default access port, `5601`, must be opened for TCP traffic. Instructio
 **iptables**
 
     iptables -A INPUT -p tcp --dport 5601 -m comment --comment "Kibana port" -j ACCEPT
-
-{{< note respectIndent=false >}}
+{{< note >}}
 To avoid losing iptables rules after a server reboot, save your rules to a file using `iptables-save`.
 {{< /note >}}
 
@@ -563,7 +556,7 @@ To avoid losing iptables rules after a server reboot, save your rules to a file 
 
     ufw allow 5601/tcp comment "Kibana port"
 
-{{< content "cloud-firewall-shortguide" >}}
+{{% content "cloud-firewall-shortguide" %}}
 
 ## Connect the Elastic Stack with the Wazuh API
 

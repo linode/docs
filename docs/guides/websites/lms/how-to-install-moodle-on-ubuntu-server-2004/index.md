@@ -1,19 +1,14 @@
 ---
 slug: how-to-install-moodle-on-ubuntu-server-2004
-author:
-  name: Nathaniel Stickman
+title: "Install Moodle on Ubuntu 20.04"
+title_meta: "How to Install Moodle on Ubuntu Server 20.04"
 description: 'This guide will show you how to install Moodle, a popular open-source learning management system used in online teaching, on Ubuntu 20.04.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-06-25
 keywords: ['moodle','education','training','learning management system','lms','install on ubuntu 20.04']
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-25
-modified_by:
-  name: Nathaniel Stickman
-title: "Install Moodle on Ubuntu 20.04"
-title_meta: "How to Install Moodle on Ubuntu Server 20.04"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Moodle](https://moodle.org/)'
 relations:
@@ -27,15 +22,15 @@ relations:
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Install and configure a LAMP (Linux, Apache, MySQL, and PHP) stack. Follow the [How to Install a LAMP Stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide for instructions.
 
     For this guide, you do not need to configure a virtual host for Apache. However, you should follow all other non-optional sections in the guide linked above.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

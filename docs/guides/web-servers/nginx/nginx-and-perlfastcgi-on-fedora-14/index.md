@@ -1,33 +1,28 @@
 ---
 slug: nginx-and-perlfastcgi-on-fedora-14
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Nginx and Perl-FastCGI on Fedora 14'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Fedora 14.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-01-07
+modified: 2013-10-07
 keywords: ["nginx", "nginx fedora 14", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","fedora","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/nginx-and-perlfastcgi-on-fedora-14/','/web-servers/nginx/perl-fastcgi/fedora-14/','/web-servers/nginx/nginx-and-perlfastcgi-on-fedora-14/']
-modified: 2013-10-07
-modified_by:
-  name: Linode
-published: 2011-01-07
-title: 'Nginx and Perl-FastCGI on Fedora 14'
 relations:
     platform:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Fedora 14
+deprecated: true
 ---
-
-
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your Fedora 14 system.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

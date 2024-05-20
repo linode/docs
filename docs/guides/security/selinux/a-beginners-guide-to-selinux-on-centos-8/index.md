@@ -1,20 +1,15 @@
 ---
 slug: a-beginners-guide-to-selinux-on-centos-8
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Getting Started with SELinux on CentOS 8"
+title_meta: "A Beginner's Guide to SELinux on CentOS 8"
 description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 8.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-18
 keywords: ["Security-enhanced Linux", "secure open source", " SELinux", "CentOS8"]
 bundles: ['centos-security']
 tags: ["centos","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-03-18
-modified_by:
-  name: Linode
-title: "Getting Started with SELinux on CentOS 8"
-title_meta: "A Beginner's Guide to SELinux on CentOS 8"
-contributor:
-  name: Linode
 external_resources:
  - '[Graphical Guide to Policies](https://opensource.com/business/13/11/selinux-policy-guide)'
  - '[SELinux User Resources](https://selinuxproject.org/page/User_Resources)'
@@ -38,7 +33,7 @@ SELinux defaults to denying anything that is not explicitly allowed. SELinux has
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
     {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
@@ -49,7 +44,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     {{< note respectIndent=false >}}
 The Linode kernel does not support SELinux by default. However, all new Linodes running CentOS 8 use the distribution provided kernel, which has **SELinux enabled by default**.
 
-If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
+If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
     {{< /note >}}
 
 ## Install Supporting SELinux Packages
@@ -125,7 +120,7 @@ SELinux status:                 disabled
 
 When SELinux is enabled, it can run in either *enforcing* or *permissive* modes.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If SELinux is currently disabled, update your SELinux configuration file with the `SELINUX` directive set to `enabled`, then reboot your system, and SSH back into your Linode. These steps are outlined in the [SELinux States](#selinux-states) section of the guide.
 {{< /note >}}
 

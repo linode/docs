@@ -1,18 +1,10 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy OpenLiteSpeed WordPress through the Linode Marketplace"
 description: "Deploy OpenLiteSpeed on a Linode Compute Instance. This provides you with a high performance web server to manage your WordPress site."
-keywords: [ 'openlitespeed','marketplace','hosting']
-tags: ["cloud-manager","linode platform", "marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-01-15
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy OpenLiteSpeed WordPress through the Linode Marketplace"
-contributor:
-  name: Linode
+keywords: [ 'openlitespeed','marketplace','hosting']
+tags: ["cloud-manager","linode platform", "marketplace"]
 external_resources:
 - '[OpenLiteSpeed Quick Start guide](https://docs.litespeedtech.com/cloud/images/wordpress/#quick-start)'
 - '[OpenLiteSpeed Knowledge Base](https://openlitespeed.org/kb/)'
@@ -24,9 +16,9 @@ This Marketplace App installs the OpenLiteSpeed web server, WordPress, the LiteS
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** OpenLiteSpeed WordPress should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -78,4 +70,4 @@ The OpenLiteSpeed WordPress Marketplace App installs the following required soft
 | [**WordPress**](https://wordpress.org/) | Popular content management system (CMS) for building websites. |
 | [**LiteSpeed Cache**](https://www.litespeedtech.com/products/cache-plugins/wordpress-acceleration) | Cache management plugin for WordPress. |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

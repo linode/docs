@@ -1,19 +1,14 @@
 ---
 slug: how-to-migrate-from-gcp-to-linode
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide will provide best practices when migrating GCP instances to Linode.'
-keywords: ['migrate','Google Cloud Platform','GCP','Linode']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-01-21
-modified_by:
-  name: Linode
-image: L_MigrateFromGCPtoLin.png
 title: 'Migrating a Google Cloud Platform VM Instance to Linode'
 title_meta: 'How to Migrate from Google Cloud Platform to Linode'
-contributor:
-  name: Linode
+description: 'This guide will provide best practices when migrating GCP instances to Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-01-21
+keywords: ['migrate','Google Cloud Platform','GCP','Linode']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: L_MigrateFromGCPtoLin.png
 tags: ["linode platform"]
 aliases: ['/platform/migrate-to-linode/how-to-migrate-from-gcp-to-linode/']
 ---
@@ -58,13 +53,13 @@ There are two considerations when creating a new Linode: which data center the L
 
     -  To determine which plan to choose, review the [Linode Pricing page](https://www.linode.com/pricing/). At a minimum, choose a plan which offers enough storage capacity for the data you store on your current GCP VM instance.
 
-        CPU and RAM allocations are also important since a service with a higher workload/higher traffic will require more of each. If you're not sure what your workload will require, start with a smaller Linode and then [resize your plan](/docs/guides/resizing-a-linode/) up or down as needed.
+        CPU and RAM allocations are also important since a service with a higher workload/higher traffic will require more of each. If you're not sure what your workload will require, start with a smaller Linode and then [resize your plan](/docs/products/compute/compute-instances/guides/resize/) up or down as needed.
 
 ### Deploy a Linux Distribution to your Linode
 
 Determine the Linux distribution your current GCP instance uses and deploy that to your new Linode. If your current deployment uses an older version of a Linux distribution, deploy the newest version available for your new Linode to ensure the latest security enhancements and software availability.
 
-For further details on deploying your new Linux image, follow the [Getting Started with Linode](/docs/guides/getting-started/) guide. It is also recommended that you follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide once you have deployed your new image.
+For further details on deploying your new Linux image, follow the [Getting Started with Linode](/docs/products/platform/get-started/) guide. It is also recommended that you follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide once you have deployed your new image.
 
 ### Install Software on your Linode
 
@@ -104,7 +99,7 @@ If your data is stored in a database, you will likely need to perform a *databas
 
 When you have finished setting up your software and restoring your data, test the installation to make sure it works normally. At this point, you have not yet updated DNS records to point to your Linode deployment, but there are still methods for [previewing your services without DNS](/docs/guides/previewing-websites-without-dns/).
 
-Take this time to perform load testing on your new service. [ApacheBench](https://en.wikipedia.org/wiki/ApacheBench) is a popular benchmarking tool for web services. If you discover that the hardware resource plan you chose originally is not enough when completing these load tests, then [resize your plan](/docs/guides/resizing-a-linode/) and continue testing.
+Take this time to perform load testing on your new service. [ApacheBench](https://en.wikipedia.org/wiki/ApacheBench) is a popular benchmarking tool for web services. If you discover that the hardware resource plan you chose originally is not enough when completing these load tests, then [resize your plan](/docs/products/compute/compute-instances/guides/resize/) and continue testing.
 
 When you have finished testing, move on to the last step in migrating: updating your DNS records.
 
@@ -134,13 +129,12 @@ Orchestration tools: [Pulumi](/docs/guides/deploy-in-code-with-pulumi/), [Terraf
 
 This section contains all of the preparation steps that you will need to complete on the Google Cloud Platform and on your GCP instance in order to migrate your disk images to Linode. At a high-level, you will disable Google specific daemons running on your GCP instance, create and export an image of your instance, and store the image in a GCP object storage bucket.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 While it is possible to migrate a GCP disk image to Linode, due to differences in low-level system configurations between GCP and Linode, you may encounter some unexpected results that require additional troubleshooting steps. Continue with this method only if you are confident in your understanding of the Google Cloud Platform, [GCP IAM roles](https://cloud.google.com/iam/docs/understanding-roles), and [GCP disks and images](https://cloud.google.com/solutions/image-management-best-practices).
 {{< /note >}}
 
 ### Install and Set Up gcloud
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you have already installed the Google Cloud SDK on your computer, you can skip this section.
 {{< /note >}}
 
@@ -164,7 +158,7 @@ The [Google Cloud SDK](https://cloud.google.com/sdk/docs/) gives you access to t
 
 When you create an image of your GCP instance you will temporarily store it in a [GCP object storage bucket](#create-and-export-a-disk-image). Follow the steps in this section to create the GCP object storage bucket.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Using the GCP object storage service will incur additional charges outside of the cost of your GCP instance.
 {{< /note >}}
 
@@ -287,7 +281,7 @@ If your GCP instance was not created with IP forwarding enabled, then you may se
 #### Stop Your GCP Instance
 In order to create your instance's disk image in the next section, you will first need to stop the instance. This will prevent any new data from being written to the persistent disk.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 GCP recommends stopping your instance prior to creating a disk image, however, it is possible to keep the instance running while you create your image. See their [official documentation](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#prepare_instance_for_image) for details.
 {{< /note >}}
 
@@ -355,8 +349,8 @@ You may need to respond to some command-line prompts before the image is exporte
 ### Prepare Your Linode
 In this section you will create a new Linode, add a new disk and configuration profile in order to boot the Linode from your GCP instance's image, import the GCP image to your Linode, and finally, boot your Linode using your GCP instance's image.
 
-{{< note respectIndent=false >}}
-You will be importing your GCP image onto a *raw* disk with the *direct disk* boot option. This will result in a working custom installation; however, it will not support advanced Linode features such as [disk resizing](/docs/guides/resizing-a-linode/) or the [Backup Service](/docs/products/storage/backups/) by default. These features require an `ext4` formatted disk.
+{{< note >}}
+You will be importing your GCP image onto a *raw* disk with the *direct disk* boot option. This will result in a working custom installation; however, it will not support advanced Linode features such as [disk resizing](/docs/products/compute/compute-instances/guides/resize/) or the [Backup Service](/docs/products/storage/backups/) by default. These features require an `ext4` formatted disk.
 
 If you would like access to these features after completing your migration, ensure you complete the following steps:
 
@@ -373,15 +367,15 @@ You will first create a new Linode to import your GCP image to and then, boot th
 
 1. Access the Linode create page by clicking **Create** at the top of the screen and selecting **Linode** from the dropdown menu.
 
-1. Create a Linode by making the desired selections on the Linode create page. For more detailed steps, see the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide.
+1. Create a Linode by making the desired selections on the Linode create page. For more detailed steps, see the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide.
 
     {{< note respectIndent=false >}}
-When selecting your Linode's plan, if you want to have access to advanced features like resizing your Linode and our [Backup Service](/docs/products/storage/backups/), choose one that will be large enough to hold twice the size of the entire expanded [disk image](#inspect-your-gcp-instances-disks) that you created from your GCP instance (not just the size of the compressed tar file). This is needed so that later you can  move your installation over to an ext4 formatted disk. Once the move to an ext4 formatted disk is complete, you can delete the raw disk and [resize to a smaller plan](/docs/guides/resizing-a-linode/).
+When selecting your Linode's plan, if you want to have access to advanced features like resizing your Linode and our [Backup Service](/docs/products/storage/backups/), choose one that will be large enough to hold twice the size of the entire expanded [disk image](#inspect-your-gcp-instances-disks) that you created from your GCP instance (not just the size of the compressed tar file). This is needed so that later you can  move your installation over to an ext4 formatted disk. Once the move to an ext4 formatted disk is complete, you can delete the raw disk and [resize to a smaller plan](/docs/products/compute/compute-instances/guides/resize/).
   {{< /note >}}
 
 1.  Once the Linode is finished provisioning, power it down. Click on the **Running** status at the top of the Cloud Manager and select **Power Off** from the drop down menu.
 
-1.  [Disable *Watchdog*](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog), also known as *Lassie*, which is a Linode Cloud Manager feature capable of automatically rebooting your Linode if it powers off unexpectedly. Click the **Settings** tab, then **Shutdown Watchdog**. Toggle the **Enabled** switch to **Disabled**.
+1.  [Disable *Watchdog*](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configure-shutdown-watchdog), also known as *Lassie*, which is a Linode Cloud Manager feature capable of automatically rebooting your Linode if it powers off unexpectedly. Click the **Settings** tab, then **Shutdown Watchdog**. Toggle the **Enabled** switch to **Disabled**.
 
 1.  Disable your Linode's Auto Resize capability. Click the **Resize** tab and scroll to the bottom of the screen. Uncheck the box for **Auto Resize Disk**.
 
@@ -441,7 +435,7 @@ If, for example, your GCP disk image's size is 10GB, ensure that you resize the 
 
     ![Cloud Manager Reboot Into New Configuration](migrate-gcp-to-linode-reboot-custom-config.png "Cloud Manager Reboot Into New Configuration")
 
-1.  Once booting is complete, click **Launch Console** at the top of the screen. Again, this opens the `Weblish` and `Glish` console window. This time, you should have a regular [Lish shell](/docs/guides/lish/). You should also be able to SSH to your Linode at this time.
+1.  Once booting is complete, click **Launch Console** at the top of the screen. Again, this opens the `Weblish` and `Glish` console window. This time, you should have a regular [Lish shell](/docs/products/compute/compute-instances/guides/lish/). You should also be able to SSH to your Linode at this time.
 
     {{< note respectIndent=false >}}
 If you are having trouble with ssh starting, you may have to run the following command to start the service from Lish:
@@ -458,7 +452,7 @@ You may also need to update your SSH server's configuration file to temporarily 
 
           PasswordAuthentication yes
 
-See the [SSH guide](/docs/guides/troubleshooting-ssh/) for more SSH troubleshooting tips.
+See the [SSH guide](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) for more SSH troubleshooting tips.
     {{< /note >}}
 
 ### Remove Google Packages
@@ -473,37 +467,37 @@ You disabled the Google services from calling out before creating and migrating 
 
 ### Optional: Transfer Disk to ext4
 
-As stated above, to take advantage of features like resizing your disks in Cloud Manager and Backup Service, you'll need to move your new disk to an ext4 formatted disk. To do this, follow the procedures in the Linode Manager Compatibility section of the [Install a Custom Distribution on a Linode guide](/docs/guides/install-a-custom-distribution/#linode-manager-compatibility).
+As stated above, to take advantage of features like resizing your disks in Cloud Manager and Backup Service, you'll need to move your new disk to an ext4 formatted disk. To do this, follow the procedures in the Linode Manager Compatibility section of the [Install a Custom Distribution on a Linode guide](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/#linode-manager-compatibility).
 
 ### Cleaning Up
 
 When you're done:
 
 - [Test your new Linode environment](#test-the-new-environment) as outlined in the Migration Strategy 1 section of this guide.
-- [Delete the original disk](/docs/guides/disks-and-storage/#deleting-a-disk) that was created when you first deployed the Linode. If you chose to transfer your disk to ext4, delete the raw disk you created to import the GCP image.
-- [Resize your Linode](/docs/guides/resizing-a-linode/) to a smaller plan or resize your remaining ext4 disk or raw disk to take up the rest of the storage space.
-- [Delete the Configurations for the original Linode](/docs/guides/linode-configuration-profiles/#deleting-a-configuration-profile) when it was created. Optionally, delete the configuration for the raw disk if you created a new one for the ext4 boot disk.
-- [Enable Shutdown Watchdog](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog) (Lassie) under the **Settings** tab.
+- [Delete the original disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#deleting-a-disk) that was created when you first deployed the Linode. If you chose to transfer your disk to ext4, delete the raw disk you created to import the GCP image.
+- [Resize your Linode](/docs/products/compute/compute-instances/guides/resize/) to a smaller plan or resize your remaining ext4 disk or raw disk to take up the rest of the storage space.
+- [Delete the Configurations for the original Linode](/docs/products/compute/compute-instances/guides/configuration-profiles/#deleting-a-configuration-profile) when it was created. Optionally, delete the configuration for the raw disk if you created a new one for the ext4 boot disk.
+- [Enable Shutdown Watchdog](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configure-shutdown-watchdog) (Lassie) under the **Settings** tab.
 
 ## Additional Migration Considerations
 
 ### Migrating DNS Records
 
-To direct your visitors to your Linode, associate your domain with [your new Linode's IP](/docs/guides/managing-ip-addresses/). There are two options for moving your DNS records:
+To direct your visitors to your Linode, associate your domain with [your new Linode's IP](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). There are two options for moving your DNS records:
 
 -  Use Linode's fast, stable [DNS hosting](/docs/products/networking/dns-manager/) which is free as long as you have one active Linode on your account.
 
 -  Continue to use your current nameserver authority and update your DNS records with your new Linode's IP address. You should check with your current provider to see if there are any costs for their DNS services. If you are using your domain name registrar's nameservers, then they are generally free.
 
-{{< content "use-linode-name-servers" >}}
+{{% content "use-linode-name-servers" %}}
 
 ### Alternative: Use Your Current Nameservers
 
 If you'd like to continue with your current nameservers, update all of the DNS records that are assigned to your old host's IP address to use your new Linode's IP. Contact your nameserver authority for instructions on how to update your DNS records.
 
-{{< content "update-dns-at-common-name-server-authorities" >}}
+{{% content "update-dns-at-common-name-server-authorities" %}}
 
-After DNS propagation has finished, [set reverse DNS](/docs/guides/configure-rdns/) for your domain. This is especially important if you are running a mail server.
+After DNS propagation has finished, [set reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) for your domain. This is especially important if you are running a mail server.
 
 ## Next Steps
 

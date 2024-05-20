@@ -1,17 +1,14 @@
 ---
 slug: vpn-firewall-killswitch-for-linux-and-macos-clients
-author:
-  name: Linode
-  email: docs@linode.com
-description: "This guide walks you through setting up a VPN kill switch with iptables on OpenVPN clients."
-keywords: ["vpn", "security"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-07-09
-modified_by:
-  name: Linode
-published: 2017-09-29
 title: "Configuring a VPN Kill Switch on OpenVPN Clients Using iptables"
 title_meta: "How to Configure a VPN Kill Switch on OpenVPN Clients"
+description: "This guide walks you through setting up a VPN kill switch with iptables on OpenVPN clients."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2017-09-29
+modified: 2018-07-09
+keywords: ["vpn", "security"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation.html)'
 - '[Ubuntu Help Page for iptables](https://help.ubuntu.com/community/IptablesHowTo)'
@@ -78,8 +75,7 @@ remote 198.51.100.0 1194
 The majority of GNU/Linux users use either `iptables` or `ufw` to manage their firewall. This guide will cover configuration for both of these options.
 
 ### VPN firewall using iptables
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 You may want to back up your current iptables ruleset with `iptables-save`.
 {{< /note >}}
 
@@ -114,8 +110,7 @@ This ruleset replaces the pre-exiting iptables rules and instructs the firewall 
 Your VPN firewall is now active, but this ruleset is only temporary and will be cleared when you reboot your Linode. To make the firewall permanent, you can install the `iptables-persistent` package for Debian or Ubuntu-based distributions, or you can see our [iptables](/docs/guides/control-network-traffic-with-iptables/#deploy-your-iptables-rulesets) or [Firewalld](/docs/guides/introduction-to-firewalld-on-centos/#constructing-a-ruleset-with-firewalld) guides to create permanent rulesets and/or profiles.
 
 ### VPN Firewall using ufw
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 You may want to back up your current firewall ruleset.
 {{< /note >}}
 

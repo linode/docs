@@ -1,30 +1,22 @@
 ---
 slug: how-to-install-graphite-and-grafana-on-ubuntu-14-04
-author:
-    name: Linode Community
-    email: docs@linode.com
+title: 'Deploy Graphite with Grafana on Ubuntu 14.04'
 description: 'This guide provides an introduction to the installation and basic setup of Graphite together with Grafana on Ubuntu 14.04.'
+authors: ["Sergey Pariev"]
+contributors: ["Sergey Pariev"]
+published: 2015-12-02
 keywords: ["graphite", "grafana", "monitor", "monitoring", "monitoring tool", "analytics"]
 aliases: ['/deploy-graphite-with-grafana-on-ubuntu-14-04/','/uptime/monitoring/deploy-graphite-with-grafana-on-ubuntu-14-04/','/uptime/monitoring/how-to-install-graphite-and-grafana-on-ubuntu-14-04/']
 tags: ["monitoring","postregsql","ubuntu","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-12-02
-modified_by:
-  name: Sergey Pariev
-published: 2015-12-02
-title: 'Deploy Graphite with Grafana on Ubuntu 14.04'
-deprecated: true
-deprecated_link: uptime/monitoring/install-graphite-and-grafana/
-contributor:
-  name: Sergey Pariev
-  link: https://twitter.com/spariev
 external_resources:
   - '[Installing Graphite](http://graphite.readthedocs.org/en/latest/install.html)'
   - '[Configuring Carbon](http://graphite.readthedocs.org/en/latest/config-carbon.html)'
   - '[Installing Grafana on Debian/Ubuntu](http://docs.grafana.org/installation/debian/)'
   - '[Adding Graphite data source to Grafana](http://docs.grafana.org/datasources/graphite/)'
+deprecated: true
+deprecated_link: uptime/monitoring/install-graphite-and-grafana/
 ---
-
 
 ![Graphite with Grafana](Deploy_Graphite_smg.jpg)
 
@@ -34,9 +26,9 @@ external_resources:
 
 ### Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible from an example account named `graphite`. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create the `graphite` user, harden SSH access, remove unnecessary network services and set up a firewall. You may need to create additional firewall rules for your specific application.
+2.  This guide will use `sudo` wherever possible from an example account named `graphite`. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create the `graphite` user, harden SSH access, remove unnecessary network services and set up a firewall. You may need to create additional firewall rules for your specific application.
 
 3.  Update your system:
 

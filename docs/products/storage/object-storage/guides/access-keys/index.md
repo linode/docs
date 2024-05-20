@@ -1,16 +1,9 @@
 ---
-slug: access-keys
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Manage Access Keys"
 description: "How to create an Access Key for use with Linode Object Storage."
-keywords: ['object storage']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-28
 modified: 2022-02-07
-modified_by:
-  name: Linode
-title: "Manage Access Keys"
+keywords: ['object storage']
 aliases: ['/products/storage/object-storage/guides/generate-key-pair/','/products/storage/object-storage/guides/generate-access-keys/']
 ---
 

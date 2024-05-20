@@ -1,16 +1,12 @@
 ---
 slug: google-analytics-for-websites
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
+title: Google Analytics for Websites
 description: 'Get in-depth website visitor statistics with Google Analytics on your website.'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-01-29
 keywords: ["analytics", "google analytics", "analytics", "tracking", "statistics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-01-29
-modified_by:
-  name: Elle Krout
-published: 2015-01-29
-title: Google Analytics for Websites
 external_resources:
  - '[Analytics Help](https://support.google.com/analytics/?hl=en#topic=3544906)'
  - '[Google Analytics Developers](https://developers.google.com/analytics/)'
@@ -23,7 +19,7 @@ Google Analytics offers detailed statistics related to visitor traffic and sales
 
 Although Google Analytics provides a way to add the tracking code to your webpages, if you are not using PHP includes, Server Side Includes, or another form of layout template, the process can be tedious and inefficient. This guide provides two alternatives to inserting the Google Analytics tracking code to your website, depending on your website's set-up.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 This guide also assumes you have configured your Apache server as described in our [LAMP](/docs/websites/lamp/) guides with your publicly accessible directory located at something similar to `/var/www/example.com/public_html`. Replace all instances of `example.com` with your own domain information.

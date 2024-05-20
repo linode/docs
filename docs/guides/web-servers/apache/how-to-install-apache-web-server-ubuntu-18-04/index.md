@@ -1,18 +1,15 @@
 ---
 slug: how-to-install-apache-web-server-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Installing Apache Web Server on Ubuntu 18.04 LTS'
+title_meta: 'How to Install Apache Web Server on Ubuntu 18.04 LTS'
 description: 'Install Apache on your Ubuntu 18.04 LTS server, configure virtual hosting, and set up modules and scripting.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-07-31
+modified: 2018-12-31
 keywords: ["apache", "ubuntu", "ubuntu 18.04", "http", "web server"]
 tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-12-31
-modified_by:
-  name: Linode
-published: 2015-07-31
-title: 'Installing Apache Web Server on Ubuntu 18.04 LTS'
-title_meta: 'How to Install Apache Web Server on Ubuntu 18.04 LTS'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
@@ -22,26 +19,26 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: Ubuntu 18.04
-aliases: ['/web-servers/apache/how-to-install-apache-web-server-ubuntu-18-04/']
+aliases: ['/web-servers/apache/how-to-install-apache-web-server-ubuntu-18-04/','/web-servers/apache/installation/ubuntu-10.10-maverick/','/web-servers/apache/installation/ubuntu-12.04-precise-pangolin/']
 ---
 
 The *Apache HTTP Web Sever* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on Ubuntu 18.04 LTS.
 
 If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Set up your Linode in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+1.  Set up your Linode in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/products/networking/dns-manager/) guide.
 
-    - Don't forget to update your `/etc/hosts` file with the public IP address and your site's fully qualified domain name as explained in the [Update Your System's hosts File](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file) section of the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+    - Don't forget to update your `/etc/hosts` file with the public IP address and your site's fully qualified domain name as explained in the [Update Your System's hosts File](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-file) section of the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 ## Install Apache
 
@@ -189,15 +186,14 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
 
     Repeat this process for any other domains you host.
 
-    {{< note respectIndent=false >}}
-If you would like to enable Perl support, add the following lines above the closing `</VirtualHost>` tag:
+    {{< note >}}
+    If you would like to enable Perl support, add the following lines above the closing `</VirtualHost>` tag:
 
-{{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
-Options ExecCGI
-AddHandler cgi-script .pl
-{{< /note >}}
-
-{{< /file >}}
+    ```file {title="/etc/apache2/sites-available/example.com.conf" lang="aconf"}
+    Options ExecCGI
+    AddHandler cgi-script .pl
+    ```
+    {{< /note >}}
 
 1.  Create directories for your websites and websites' logs, replacing `example.com` with your own domain information:
 

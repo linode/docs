@@ -1,17 +1,13 @@
 ---
 slug: software-security-best-practices
-author:
-  name: David Strom
-description: 'This guide to software security best practices teaches you about types of application security and how to secure a web application.'
-keywords: ['web application security best practices','application security best practices','software development security best practices']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-17
-modified_by:
-  name: Linode
 title: "The 14 Top Software Security Best Practices you Need to Implement Today"
 title_meta: "Software Security Best Practices"
-contributor:
-  name: David Strom
+description: 'This guide to software security best practices teaches you about types of application security and how to secure a web application.'
+authors: ["David Strom"]
+contributors: ["David Strom"]
+published: 2021-12-17
+keywords: ['web application security best practices','application security best practices','software development security best practices']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 The days where software developers wrote their application code in isolation of any security implications are over. Applications are exploited every minute of the day, thanks to the internet that connects them to any hacker around the planet. Application security doesn't have to be overwhelming: there are dozens if not hundreds of tools to help you improve your security posture, prevent exploits, and reduce configuration errors that let bad actors gain unauthorized access to your network.

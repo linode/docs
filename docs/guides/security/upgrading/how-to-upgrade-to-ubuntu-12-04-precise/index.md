@@ -1,24 +1,21 @@
 ---
 slug: how-to-upgrade-to-ubuntu-12-04-precise
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'How to Upgrade to Ubuntu 12.04 (Precise)'
 description: 'Our guide to upgrading to Ubuntu 12.04'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-06-01
+modified: 2013-02-05
 keywords: ["upgrading", "ubuntu", "precise"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/upgrading/upgrade-to-ubuntu-12-04-precise/','/security/upgrading/how-to-upgrade-to-ubuntu-12-04-precise/']
-modified: 2013-02-05
-modified_by:
-  name: Linode
-published: 2012-06-01
-title: 'How to Upgrade to Ubuntu 12.04 (Precise)'
 relations:
     platform:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 Ubuntu 12.04 is a long-term support (LTS) release that will be supported until April 2017. This guide explains how to upgrade your Linode from Ubuntu 10.04 LTS (Lucid) or Ubuntu 11.04 (Natty) to Ubuntu 12.04 LTS (Precise).
@@ -47,7 +44,7 @@ It's a good idea to back up your Linode before performing a major upgrade. That 
 
 ### Checking Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/guides/monitor-and-maintain-compute-instance/#applying-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#applying-kernel-updates) for more information.
 
 ### Stopping Services
 

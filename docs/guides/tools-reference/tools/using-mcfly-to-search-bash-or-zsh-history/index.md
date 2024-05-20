@@ -1,19 +1,14 @@
 ---
 slug: using-mcfly-to-search-bash-or-zsh-history
-author:
-  name: Jeff Novotny
+title: "Install and Use McFly to Search Bash or ZSH History"
+title_meta: "Installing and Using McFly to Search Bash or ZSH History"
 description: 'McFly is an alternative to ctrl-r bash search that uses a context-aware neural network to surface your most important search history. This guide shows you how to install and use the McFly Linux tool.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-11-12
 keywords: ['mcfly command','bash search history','terminal history','shell history']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-12
-modified_by:
-  name: Linode
-title: "Install and Use McFly to Search Bash or ZSH History"
-title_meta: "Installing and Using McFly to Search Bash or ZSH History"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[McFly GitHub site](https://github.com/cantino/mcfly)'
 - '[Homebrew](https://brew.sh/)'
@@ -53,11 +48,11 @@ This works well enough in many cases, but it often forces the user to cycle thro
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -65,7 +60,7 @@ The steps in this guide are written for non-root users. Commands that require el
 
 You can install McFly using the [*Homebrew*](https://brew.sh/) package manager or via McFly's install script.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 McFly can also be installed from GitHub or manually from the source. In this case, Rust must also be installed. See the [McFly GitHub page](https://github.com/cantino/mcfly#installing-manually-from-github) for more information.
 {{< /note >}}
 

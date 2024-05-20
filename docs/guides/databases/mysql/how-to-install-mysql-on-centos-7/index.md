@@ -1,17 +1,14 @@
 ---
 slug: how-to-install-mysql-on-centos-7
-author:
-  name: Linode
-  email: docs@linode.com
-description: "This article is a guide to getting started with the popular database management system software, MySQL, including how to install the service on CentOS 7."
-keywords: ["MySQL on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MySQL", "database", "MariaDB", "install MySQL", "secure MySQL", "mysqltuner"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-09-05
-modified_by:
-  name: Linode
-published: 2015-08-27
 title: "Installing MySQL on CentOS 7"
 title_meta: "Install MySQL CentOS 7: A How To"
+description: "This article is a guide to getting started with the popular database management system software, MySQL, including how to install the service on CentOS 7."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-08-27
+modified: 2017-09-05
+keywords: ["MySQL on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MySQL", "database", "MariaDB", "install MySQL", "secure MySQL", "mysqltuner"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[MySQL 5.6 Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/index.html)'
  - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
@@ -40,7 +37,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check your hostname run:
 

@@ -1,20 +1,15 @@
 ---
 slug: how-to-install-wordpress-using-wp-cli-on-centos-7
-author:
-    name: Linode Community
-    email: docs@linode.com
+title: 'Install WordPress Using WP-CLI on CentOS 7'
+title_meta: 'How to Install WordPress Using WP-CLI on CentOS 7'
 description: 'Install WordPress Using WP-CLI on CentOS 7'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-08-06
+modified: 2020-02-17
 keywords: ["install WP-CLI", "centos", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
 tags: ["centos","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-08-06
-modified: 2020-02-17
-modified_by:
-    name: Linode
-title: 'Install WordPress Using WP-CLI on CentOS 7'
-title_meta: 'How to Install WordPress Using WP-CLI on CentOS 7'
-contributor:
-    name: Linode
 external_resources:
 - '[WP-CLI Handbook](https://make.wordpress.org/cli/handbook/)'
 - '[WP-CLI Commands](https://developer.wordpress.org/cli/commands/)'
@@ -41,9 +36,9 @@ This tutorial covers how to complete the following tasks:
 
 Before moving ahead, make sure you have completed the following steps.
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
     {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -506,8 +501,7 @@ The procedure for installing and activating a theme is nearly identical to that 
 ### Update WordPress
 
 To update your WordPress site:
-
-{{< note respectIndent=false >}}
+{{< note >}}
 For more details on best practices when updating your WordPress site, see [WordPress' official documentation](https://wordpress.org/support/article/updating-wordpress/).
 {{< /note >}}
 

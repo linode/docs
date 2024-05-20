@@ -1,16 +1,10 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy phpMyAdmin through the Linode Marketplace"
 description: "Deploy phpMyAdmin on Linode using Marketplace Apps to administer your MySQL database with a convenient and powerful GUI web application."
-keywords: ['php', 'phpmyadmin', 'mysql', 'mariadb', 'database', 'GUI']
-tags: ["debian","php","mysql","database","marketplace","ssl", "web applications","linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy phpMyAdmin through the Linode Marketplace"
+keywords: ['php', 'phpmyadmin', 'mysql', 'mariadb', 'database', 'GUI']
+tags: ["debian","php","mysql","database","marketplace","ssl", "web applications","linode platform", "cloud manager"]
 external_resources:
 - '[phpMyAdmin Documentation](https://docs.phpmyadmin.net/en/latest/)'
 - '[MariaDB Documentation](https://mariadb.org/documentation/)'
@@ -21,9 +15,9 @@ aliases: ['/platform/marketplace/deploy-phpmyadmin-with-marketplace-apps/', '/pl
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** phpMyAdmin should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -44,6 +38,8 @@ aliases: ['/platform/marketplace/deploy-phpmyadmin-with-marketplace-apps/', '/pl
 phpMyAdmin doesn't handle user management itself, but passes all user information onto MySQL. The Admin User you create here is created in MySQL.
 {{< /note >}}
 
+{{% content "marketplace-special-character-limitations-shortguide" %}}
+
 ## Getting Started After Deployment
 
 After installation is complete, the phpMyAdmin dashboard is accessible at your Linode's IP address followed by `/phpmyadmin` for example:
@@ -58,7 +54,7 @@ The following sections require that you own a domain that has been configured fo
 
 ### Enable HTTPS with Certbot
 
-1.  [Connect to Your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1.  [Connect to Your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Install Certbot for authentication with Python and Apache:
 
@@ -97,4 +93,4 @@ The phpMyAdmin Marketplace App will install the following required software on y
 | [**phpMyAdmin**](https://docs.phpmyadmin.net/en/latest/) | phpMyAdmin is a free software tool written in PHP that is intended to handle the administration of a MySQL or MariaDB database server.  |
 | [**MariaDB**](https://mariadb.org/documentation/) | MariaDB is a fork of the popular cross-platform MySQL database management system and is considered a full [drop-in replacement](https://mariadb.com/kb/en/mariadb-vs-mysql-features/) for MySQL. |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

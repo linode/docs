@@ -1,6 +1,8 @@
 ---
 title: StackScripts
+title_meta: "StackScripts Product Documentation"
 description: "Linode StackScripts allow for quick and easy customization. Create your own and join the growing library of StackScripts."
+modified: 2023-09-18
 tab_group_main:
     is_root: true
     title: Overview
@@ -8,8 +10,9 @@ tab_group_main:
 cascade:
     product_description: "Custom deployment scripts used to install software or configure a system on new Compute Instances."
 aliases: ['/platform/stackscripts-classic-manager/','/platform/stackscripts/','/platform/stackscripts-new-manager/','/stackscripts/','/guides/platform/stackscripts/']
-modified: 2022-12-06
 ---
+
+{{% content "metadata-stackscripts-notice" %}}
 
 [StackScripts](http://linode.com/stackscripts/) provide Linode users with the ability to automate the deployment of custom systems. They work by running a custom script when deploying a new Compute Instance. These custom scripts store tasks that you may need to repeat often on new Compute Instances, such as:
 
@@ -40,7 +43,7 @@ StackScripts are available at no charge across [all regions](https://www.linode.
 ## Technical Specifications
 
 - Deployable on new Compute Instances
-- Use any Linode-provided Linux distribution (see [Choosing a Linux Distribution](/docs/guides/choosing-a-distribution/))
+- Use any Linode-provided Linux distribution (see [Choosing a Linux Distribution](/docs/products/compute/compute-instances/guides/distributions/))
 - Supports the bash scripting language and any other scripting language supported by your chosen Linux distribution(s) (such as Python)
 - Supports custom user-defined fields (UDFs)
 - StackScripts can be made public to share with the community

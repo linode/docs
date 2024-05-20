@@ -1,16 +1,10 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "TLS/SSL Termination on NodeBalancers"
 description: 'This guide provides you with step-by step instructions on how to force all connections to your NodeBalancer to use the secure and encrypted SSL protocol.'
+published: 2015-09-01
+modified: 2023-04-18
 keywords: ["Linode", "NodeBalancer", "SSL", "redirect", "load balancing", "install", "certificate", "configuration"]
 tags: ["linode platform","security","networking","ssl"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-09-01
-modified: 2022-10-07
-modified_by:
-  name: Linode
 aliases: ['/platform/nodebalancer/nodebalancer-ssl-configuration/','/guides/nodebalancer-ssl-configuration/']
 image: nodebalancer-ssl-configuration.png
 ---
@@ -23,12 +17,12 @@ Throughout this guide we will offer several suggested values for specific config
 
 ## Before you Begin
 
-- When first configuring back-end Linodes, you should set them up according to the instructions in our [Getting Started](/docs/guides/getting-started) guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our guide on [Securing Your Server](/docs/guides/set-up-and-secure/)
+- When first configuring back-end Linodes, you should set them up according to the instructions in our [Getting Started](/docs/products/platform/get-started/) guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our guide on [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
 
 - Generate an [SSL certificate](/docs/guides/security/ssl/) for your domain name that supports TLS version 1.2 or later. This can be done through any Certificate Authority, including Let's Encrypt using the [Certbot](https://certbot.eff.org/) tool. Since Certbot cannot run directly on the NodeBalancer, run the following command on any Linode to generate the certificate (after following [Certbot's installation instructions](https://certbot.eff.org/instructions)). This allows you to manually verify ownership by updating a DNS record on your domain:
 
     ```command
-    sudo certbot certonly --manual --preferred-challenges dns
+    sudo certbot certonly --key-type rsa --manual --preferred-challenges dns
     ```
 
     Most Certificate Authorities will generate an SSL certificate using the RSA digital signature algorithm, which is fully supported by NodeBalancers. Certificates using the ECDSA algorithm are not supported.

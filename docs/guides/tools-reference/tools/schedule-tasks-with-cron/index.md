@@ -1,25 +1,24 @@
 ---
 slug: schedule-tasks-with-cron
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Using Cron to Schedule Tasks for Certain Times or Intervals"
+title_meta: "Cron Jobs: Schedule Tasks for Certain Times or Intervals"
 description: "This guide shows how to automate a variety of tasks using Cron, a classic UNIX utility included in Linux distributions that runs tasks at specific times or intervals."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-15
+modified: 2018-03-15
 keywords: ["cron", "crontab", "automation"]
 tags: ["automation","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/schedule-tasks-with-cron/','/linux-tools/utilities/cron/']
-modified: 2018-03-15
-modified_by:
-  name: Linode
-published: 2009-12-15
-title: "Using Cron to Schedule Tasks for Certain Times or Intervals"
-title_meta: "Cron Jobs: Schedule Tasks for Certain Times or Intervals"
 image: schedule-tasks-with-cron.png
 ---
 
 ## What is Cron?
 
 Cron is a classic utility found on Linux and UNIX systems for running tasks at pre-determined times or intervals. These tasks are referred to as **Cron tasks** or **Cron jobs**. Use Cron to schedule automated updates, generate reports, check for available disk space and notify if the space is below a certain amount.
+
+{{< youtube "v952m13p-b4" >}}
 
 ## How to Use Cron and crontab - The Basics
 

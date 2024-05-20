@@ -1,18 +1,10 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy OpenLiteSpeed Django through the Linode Marketplace"
 description: "Deploy OpenLiteSpeed Django on a Linode Compute Instance. This provides you with a high performance web server to manage your Django application."
-keywords: ['web server','django','openlitespeed']
-tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy OpenLiteSpeed Django through the Linode Marketplace"
-contributor:
-  name: Linode
+keywords: ['web server','django','openlitespeed']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[OpenLiteSpeed Django](https://docs.litespeedtech.com/cloud/images/django/)'
 aliases: ['/guides/deploying-openlitespeed-django-marketplace-app/','/guides/openlitespeed-django-marketplace-app/']
@@ -22,9 +14,9 @@ The OpenLiteSpeed Django app automatically installs Linux, the performance web s
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** OpenLiteSpeed Django should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
@@ -52,4 +44,4 @@ The OpenLiteSpeed Django app automatically installs Linux, the performance web s
 
 Now that you’ve accessed your OpenLiteSpeed Django instance, check out [the official OpenLiteSpeed Django documentation](https://docs.litespeedtech.com/cloud/images/django/) to learn how to further configure your OpenLiteSpeed Django instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

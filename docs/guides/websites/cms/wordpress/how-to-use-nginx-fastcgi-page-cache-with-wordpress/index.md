@@ -1,18 +1,13 @@
 ---
 slug: how-to-use-nginx-fastcgi-page-cache-with-wordpress
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide explains how to enable NGINX page caching for WordPress.'
-keywords: ['NGINX caching','FastCGI cache','WordPress page cache','enable caching WordPress']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-11-21
-modified_by:
-  name: Linode
 title: "Use the Nginx FastCGI Page Cache With WordPress"
 title_meta: "How to Use the Nginx FastCGI Page Cache With WordPress"
-contributor:
-  name: Jeff Novotny
+description: 'This guide explains how to enable NGINX page caching for WordPress.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-11-21
+keywords: ['NGINX caching','FastCGI cache','WordPress page cache','enable caching WordPress']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[NGINX web site](https://www.nginx.com/)'
 - '[NGINX FastCGI module API](http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html)'
@@ -42,9 +37,9 @@ No additional components or applications are required to enable the NGINX cache.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Configure a LEMP stack on the server, consisting of the NGINX web server, the MariaDB database, and the PHP programming language. MySQL can be substituted in place of MariaDB. For information on how to install and configure a LEMP stack, see the Linode guide on [installing a LEMP stack on Ubuntu 22.04](/docs/guides/how-to-install-a-lemp-stack-on-ubuntu-22-04/).
 
@@ -52,7 +47,7 @@ No additional components or applications are required to enable the NGINX cache.
 
 1.  WordPress sites are almost always accessed using a domain name. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -132,7 +127,7 @@ Adding this rule means it is not possible to test caching from these addresses.
     -   The `fastcgi_cache_bypass` and `fastcgi_no_cache` are assigned based on the value of `skip_cache` from the previous section. This tells NGINX not to search the cache and not to store any new content.
     -   The `add_header` instruction is used to add a header field indicating whether the resource is taken from the cache or not. This field is handy for debug purposes, but is not strictly required in production code.
 
-    ```file {title="/etc/nginx/sites-available/example.com.conf" lang=aconf"}
+    ```file {title="/etc/nginx/sites-available/example.com.conf" lang="aconf"}
     fastcgi_cache wpcache;
     fastcgi_cache_valid 200 301 302 2h;
     fastcgi_cache_use_stale error timeout updating invalid_header http_500 http_503;

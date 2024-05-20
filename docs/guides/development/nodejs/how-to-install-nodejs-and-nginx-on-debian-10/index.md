@@ -1,18 +1,14 @@
 ---
 slug: how-to-install-nodejs-and-nginx-on-debian-10
-author:
-    name: Linode
-    email: docs@linode.com
+title: Installing Node.js and NGINX on Debian 10
+title_meta: How to Install Node.js and NGINX on Debian 10
 description: In this guide, you will learn how to install, configure, and test NGINX and Node.js to serve static site content on a Debian 10 server.
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-04-14
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", "debian", " front-end requests", " back-end requests"]
 tags: ["debian", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-04-14
-modified_by:
-    name: Linode
-published: 2020-04-14
-title: Installing Node.js and NGINX on Debian 10
-title_meta: How to Install Node.js and NGINX on Debian 10
 external_resources:
  - '[Node.js](http://nodejs.org)'
  - '[NGINX](http://nginx.com/)'
@@ -37,14 +33,14 @@ Node.js is an open-source JavaScript runtime environment that can serve dynamic 
 
 1.  If you want to use a custom domain name for your site, purchase a domain name from a trusted registrar and use Linode's [DNS Manager](/docs/products/networking/dns-manager/) to [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) and [create a domain record]/docs/products/networking/dns-manager/guides/manage-dns-records/) for it.
 
-1.  Set up your Linode using the [Getting Started](/docs/guides/getting-started/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides.
+1.  Set up your Linode using the [Getting Started](/docs/products/platform/get-started/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
 
     {{< note respectIndent=false >}}
-Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/guides/set-up-and-secure/#update-your-systems-hosts-fileupdate-your-system-s-hosts-file) section of the [Getting Started](/docs/guides/getting-started/) guide.
+Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-fileupdate-your-system-s-hosts-file) section of the [Getting Started](/docs/products/platform/get-started/) guide.
     {{< /note >}}
 
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 ## Install and Configure NGINX
 
@@ -105,8 +101,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
         sudo systemctl restart nginx
 
 ### Create Your Site's Index File
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Ensure you replace `example.com` with your own site's name or IP address in all commands and examples in this section.
 {{< /note >}}
 
@@ -179,7 +174,7 @@ Now using node v12.16.2 (npm v6.14.4)
 
 In the [Install and Configure NGINX](#install-and-configure-nginx) section you configured NGINX to listen on port `80` to serve its static content. You also configured a reverse proxy to your Linode's `localhost:3000` when a request for the `/test.js` file is made. In this section you will create the `test.js` file to be able to test your Node.js web server that you will create in the [next section](#create-your-the-node-js-web-server-file).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Ensure you replace `example.com` with your own site's name or IP address in all commands and examples in this section.
 {{< /note >}}
 

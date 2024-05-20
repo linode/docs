@@ -1,18 +1,14 @@
 ---
 slug: certbot-shortguide-ubuntu
-author:
-  name: Edward Angert
-  email: docs@linode.com
+title: 'Install Certbot for TLS on Ubuntu'
 description: "Install Certbot to obtain TLS certificates on an Ubuntu server."
+authors: ["Edward Angert"]
+contributors: ["Edward Angert"]
+published: 2018-06-28
 keywords: []
 aliases: ['/quick-answers/websites/certbot-shortguide-ubuntu/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-06-28
-modified: 2018-06-28
-modified_by:
-  name: Linode
 headless: true
-title: 'Install Certbot for TLS on Ubuntu'
 ---
 
 1. Install the Certbot and web server-specific packages, then run Certbot:

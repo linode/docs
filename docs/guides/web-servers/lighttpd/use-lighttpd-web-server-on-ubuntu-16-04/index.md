@@ -1,19 +1,16 @@
 ---
 slug: use-lighttpd-web-server-on-ubuntu-16-04
-author:
-  name: Dave Messina
-  email: docs@linode.com
+title: 'Using lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
+title_meta: 'Use lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
 description: 'Learn how to install and use Lighttpd web server on Ubuntu 16.04 (Xenial Xerus)'
+authors: ["Dave Messina"]
+contributors: ["Dave Messina"]
+published: 2016-05-19
+modified: 2021-05-26
 keywords: ["lighttpd", "web server", "web hosting"]
 aliases: ['/websites/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/','/websites/lighttpd/lighttpd-web-server-on-ubuntu-16-04/','/web-servers/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/']
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-05-26
-modified_by:
-  name: Phil Zona
-published: 2016-05-19
-title: 'Using lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
-title_meta: 'Use lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
 external_resources:
  - '[Optimizing FastCGI Performance (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI)'
  - '[mod_fastcgi Documentation (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModFastCGI)'
@@ -34,17 +31,16 @@ This guide explains how to install and configure the lighttpd ("lighty") web ser
 
 ## Before You Begin
 
-1.  Familiarize yourself with and complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/), setting your Linode's hostname and timezone.
+1.  Familiarize yourself with and complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), setting your Linode's hostname and timezone.
 
-1.  Lighttpd is a network-facing service and failing to secure your server may expose you to vulnerabilities. Consult the [Securing Your Server Guide](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Lighttpd is a network-facing service and failing to secure your server may expose you to vulnerabilities. Consult the [Securing Your Server Guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 1.  If you're switching from a different web server like Apache, remember to turn off the other server for testing purposes, or [configure lighttpd](#configure-lighttpd) to use an alternate port until it's configured properly.
 
 1.  Update your system:
 
         sudo apt-get update && apt-get upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps required in this guide require root privileges. Be sure to run the following steps as **root** or with the `sudo` prefix. For more information on privileges see the [Users and Groups guide](/docs/guides/linux-users-and-groups/).
 {{< /note >}}
 

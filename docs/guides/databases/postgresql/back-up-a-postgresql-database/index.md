@@ -1,17 +1,14 @@
 ---
 slug: back-up-a-postgresql-database
-author:
-  name: Jared Kobos
-  email: docs@linode.com
+title: "Back up a PostgreSQL Database with pg_dump"
 description: "Learn how to back up your PostgreSQL database with this guide for single database, multiple databases, and automated backups. ✓ Click & read!"
 og_description: "This guide shows how to create backups of your PostgreSQL databases using pg_dump and use them to restore a lost or broken database."
-keywords: ['postgres', 'postgresql', 'backup', 'sql dump', 'pg_dump', 'psql']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
 published: 2017-12-18
 modified: 2022-01-14
-modified_by:
-  name: Jared Kobos
-title: "Back up a PostgreSQL Database with pg_dump"
+keywords: ['postgres', 'postgresql', 'backup', 'sql dump', 'pg_dump', 'psql']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[PostgreSQL Documentation](https://www.postgresql.org/docs/9.1/static/)'
 tags: ["database","postgresql"]

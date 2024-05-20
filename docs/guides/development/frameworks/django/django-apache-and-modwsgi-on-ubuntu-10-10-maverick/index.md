@@ -1,33 +1,30 @@
 ---
 slug: django-apache-and-modwsgi-on-ubuntu-10-10-maverick
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Django, Apache and mod_wsgi on Ubuntu 10.10 (Maverick)'
 description: 'Installing and configuring the Django web application development framework for Apache on Ubuntu 10.10 Maverick.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-10-25
+modified: 2012-10-08
 keywords: ["django", "python", "apache", "mod\\_wsgi"]
 tags: ["web applications","django","apache","python","cms","ubuntu","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/django/django-apache-and-modwsgi-on-ubuntu-10-10-maverick/','/websites/frameworks/django-apache-and-modwsgi-on-ubuntu-10-10-maverick/','/frameworks/django-apache-mod-wsgi/ubuntu-10-10-maverick/','/development/frameworks/django-apache-and-modwsgi-on-ubuntu-10-10-maverick/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-10-25
-title: 'Django, Apache and mod_wsgi on Ubuntu 10.10 (Maverick)'
-deprecated: true
 relations:
     platform:
         key: django-apache-modwsgi
         keywords:
             - distribution: Ubuntu 10.10
+deprecated: true
 ---
 
 Django is a web development framework for the Python programing language. It was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.
 
-This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/guides/apache-2-web-server-on-ubuntu-10-10-maverick/) and a functional [MySQL database](/docs/guides/use-mysql-relational-databases-on-ubuntu-10-10-maverick/) system installed.
+This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/guides/apache-2-web-server-on-ubuntu-10-10-maverick/) and a functional [MySQL database](/docs/guides/use-mysql-relational-databases-on-ubuntu-10-10-maverick/) system installed.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

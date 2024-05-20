@@ -1,17 +1,13 @@
 ---
 slug: create-a-simple-microsite
-author:
-  name: Linode
-  email: docs@linode.com
+title: Create a Simple Microsite
 description: 'Combine the capabilities of the Akamai and Linode platforms to create a complete end-to-end solution for a simple microsite.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2022-10-13
 keywords: ["microsite", "cdn", "high availability"]
 tags: ["linode platform","akamai platform","web server","cdn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-10-13
-modified_by:
-  name: Linode
-published: 2022-10-13
-title: Create a Simple Microsite
 aliases: ['/guides/akamai/get-started/create-a-simple-microsite/']
 ---
 
@@ -61,7 +57,7 @@ To avoid an unexpected bill make sure to delete this Linode Compute Instance onc
 
 1.  Log in to the [Linode Cloud Manager](https://login.linode.com/login) and select the **Marketplace** link from the left navigation menu. This displays the Linode Create page with the Marketplace tab pre-selected.
 
-    You can read [An Overview of the Linode Cloud Manager](/docs/guides/an-overview-of-the-linode-cloud-manager/) to learn more about features and services available in Linode’s Cloud Manager.
+    You can read [An Overview of the Linode Cloud Manager](/docs/guides/an-overview-of-the-cloud-manager/) to learn more about features and services available in Linode’s Cloud Manager.
 
 1.  Use the **Select an App** field to search for the Node.js Marketplace App and select it.
 
@@ -85,7 +81,7 @@ If you plan to utilize Linode DNS Manager, we recommend taking steps now familia
 
 1.  Enter a root password.
 
-1.  Select any SSH keys for root access. For more information, refer to the [Cloud Manager guide: Manage SSH Keys](/docs/products/tools/cloud-manager/guides/manage-ssh-keys/).
+1.  Select any SSH keys for root access. For more information, refer to the [Cloud Manager guide: Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/).
 
 1.  Select **Private IP** under **Add-ons**.
 
@@ -96,7 +92,7 @@ If you plan to utilize Linode DNS Manager, we recommend taking steps now familia
     {{< note respectIndent=false >}}
 You can also create a Linode Compute instance using these options:
 
-* Create a new Linux machine and install and set up a custom web server. For more information and instructions, refer to [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/).
+* Create a new Linux machine and install and set up a custom web server. For more information and instructions, refer to [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/).
 
 * Select your preferred web server from Linode Marketplace to get a fully configured web server. For more information and instructions, refer to [Marketplace Apps - Get Started](/docs/products/tools/marketplace/get-started/).
 
@@ -149,7 +145,7 @@ server {
 
 1.  Next, update your origin certificate to include the Origin hostname and reload your web server.
 
-    If using the Node.js Marketplace App, access your origin server via [LISH](/docs/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) connection, replacing the example hostnames with your own:
+    If using the Node.js Marketplace App, access your origin server via [LISH](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) connection, replacing the example hostnames with your own:
 
         certbot --expand -d www.test.com -d origin-0361ece-www.test.com
 
@@ -241,19 +237,19 @@ If you want to use a solution such as [GlusterFS](https://www.gluster.org/), ins
 
 1.  Use the Linode cloning feature to create another Linode origin server in the same region.
 
-    For instructions, refer to [Cloning a Linode](/docs/guides/clone-your-linode/).
+    For instructions, refer to [Cloning a Linode](/docs/products/compute/compute-instances/guides/clone-instance/).
 
 1.  Under **Select Linode to Clone From**, click the Linode you created for the web server in [Create a Linode](#create-a-linode).
 
 1.  Select the same Linode Plan option you previously selected and click **Create Linode**.
 
-1.  [Add a Private IPv4 Address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) to the cloned Linode.
+1.  [Add a Private IPv4 Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) to the cloned Linode.
 
 1.  Select **Power On** for the cloned Linode after creation is complete.
 
 1.  Ensure that the web server is running on your cloned Linode.
 
-    If using the Node.js Marketplace App, [LISH](/docs/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) into the cloned Linode and start the Node.js server as a background process:
+    If using the Node.js Marketplace App, [LISH](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) into the cloned Linode and start the Node.js server as a background process:
 
         node /opt/nodejs/hello.js &
 
@@ -266,7 +262,7 @@ If you want to use a solution such as [GlusterFS](https://www.gluster.org/), ins
 Linode NodeBalancers distribute user requests between compute instances to improve capacity, performance, and availability. For more information, refer to the [Getting Started with NodeBalancers](/docs/products/networking/nodebalancers/get-started/) guide.
 
 {{< note >}}
-Before you start, make sure that each of your origin servers has a private IPv4 address. For more information and instructions on how to add private IPv4 addresses to your origin servers, refer to the [Managing IP addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) guide.
+Before you start, make sure that each of your origin servers has a private IPv4 address. For more information and instructions on how to add private IPv4 addresses to your origin servers, refer to the [Managing IP addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) guide.
 {{< /note >}}
 
 1.  Log in to the [Linode Cloud Manager](https://login.linode.com/login).

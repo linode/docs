@@ -1,18 +1,10 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy OpenLiteSpeed Node.js through the Linode Marketplace"
 description: "Deploy OpenLiteSpeed Node.js on a Linode Compute Instance. This provides you with a high performance web server to manage your Node.js application."
-keywords: ['web server','nodejs','openlitespeed']
-tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy OpenLiteSpeed Node.js through the Linode Marketplace"
-contributor:
-  name: Linode
+keywords: ['web server','nodejs','openlitespeed']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Node.js OpenLiteSpeed](https://docs.litespeedtech.com/cloud/images/nodejs/)'
 aliases: ['/guides/deploying-openlitespeed-nodejs-marketplace-app/','/guides/openlitespeed-nodejs-marketplace-app/']
@@ -22,9 +14,9 @@ The OpenLiteSpeed Node.js One-Click app automatically installs the performance w
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** OpenLiteSpeed Node.js should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
@@ -52,4 +44,4 @@ The OpenLiteSpeed Node.js One-Click app automatically installs the performance w
 
 Now that you’ve accessed your OpenLiteSpeed Node.js instance, check out [the official OpenLiteSpeed Node.js documentation](https://docs.litespeedtech.com/cloud/images/nodejs/) to learn how to further configure your OpenLiteSpeed Node.js instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

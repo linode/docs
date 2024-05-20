@@ -1,24 +1,17 @@
 ---
 slug: visualize-apache-web-server-logs-using-elastic-stack-on-ubuntu-18-04
-author:
-  name: Tyler Langlois
-  email: docs@linode.com
-contributor:
-  name: Tyler Langlois
-  link: https://tjll.net
+title: "Visualize Apache Logs With Elastic Stack on Ubuntu 18.04"
 description: "This guide shows how to install all three Elastic Stack components to explore Apache web server logs in Kibana."
+authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
+published: 2021-03-26
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: ["apache ubuntu 18.04", "linux web server", "elasticsearch", "logstash", "kibana", "elk stack", "elastic stack"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-26
 image: VisApacheWSL_ES_Ubuntu1804.png
-modified: 2021-03-26
-modified_by:
-  name: Linode
-title: "Visualize Apache Logs With Elastic Stack on Ubuntu 18.04"
 dedicated_cpu_link: true
-tags: ["ubuntu","analytics","database","monitoring","apache"]
+tags: ["ubuntu","analytics","database","monitoring","apache","digital agencies"]
 relations:
     platform:
         key: visualize-apache-logs-using-elastic-stack
@@ -52,13 +45,13 @@ This guide shows how to:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and create a Linode to install the Elastic stack on. Then, complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and create a Linode to install the Elastic stack on. Then, complete the steps for setting your Linode's hostname and timezone.
 
     {{< note respectIndent=false >}}
 Multiple services are run on a single Linode in this guide. We recommend using at least a 2G (or `g6-standard-1`) sized Linode instance to support these services.
 {{< /note >}}
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
 
     {{< note respectIndent=false >}}
 Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

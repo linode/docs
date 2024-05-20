@@ -1,20 +1,15 @@
 ---
 slug: how-to-use-zfs-on-ubuntu-16-04
-author:
-  name: Linode Community
-  email: docs@linode.com
-contributor:
-  name: Alexandru Andrei
+title: 'How to Use ZFS on Ubuntu 16.04'
 description: 'How to use ZFS to store data redundantly and avoid silent data corruption.'
 og_description: 'The Z File System (ZFS) helps protect against silent data corruption while improving redundancy, read/write speeds, and compression. This guide shows how to use ZFS and configure vdevs on a Linode.'
+authors: ["Alexandru Andrei"]
+contributors: ["Alexandru Andrei"]
+published: 2017-10-30
+modified: 2017-11-16
 keywords: ["zfs", "file system", "volume manager", "redundant", "silent corruption", "mirror", "raid", "pool"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-11-16
-modified_by:
-  name: Linode
-title: 'How to Use ZFS on Ubuntu 16.04'
-published: 2017-10-30
 external_resources:
  - '[Ubuntu ZFS wiki](https://wiki.ubuntu.com/Kernel/Reference/ZFS)'
  - '[RAID levels Wikipedia](https://en.wikipedia.org/wiki/Standard_RAID_levels)'
@@ -138,9 +133,9 @@ Other types of virtual devices like cache and log can be used when dealing with 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. While updating, if asked about a configuration change in GRUB's config file select **keep the local version currently installed**.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. While updating, if asked about a configuration change in GRUB's config file select **keep the local version currently installed**.
 
     {{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

@@ -1,18 +1,14 @@
 ---
 slug: install-configure-selenium-grid-ubuntu-16-04
-author:
-  name: Jared Kobos
-  email: docs@linode.com
+title: 'Use Selenium Grid for Cross-Browser Compatibility Testing'
+title_meta: 'Install and Configure Selenium Grid on Ubuntu 16.04 for Automated Testing'
 description: 'This guide shows how to set up a Selenium grid that can be used to test webpages and applications in different browsers, browser versions, and operating systems.'
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
+published: 2018-03-09
 keywords: ["selenium", "node.js", " headless browser", "automation", "webdriver"]
 tags: ["automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-03-09
-modified: 2018-03-09
-modified_by:
-  name: Linode
-title: 'Use Selenium Grid for Cross-Browser Compatibility Testing'
-title_meta: 'Install and Configure Selenium Grid on Ubuntu 16.04 for Automated Testing'
 external_resources:
   - '[Selenium Project Home](https://www.seleniumhq.org/projects/webdriver/)'
   - '[Selenium Node.js Documentation](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index.html)'
@@ -43,7 +39,7 @@ Install Java and other dependencies on each Linode that will be part of the Sele
 
 ### Install Java
 
-{{< content "install-java-8-ppa" >}}
+{{% content "install-java-8-ppa" %}}
 
 ### Install Dependencies
 
@@ -180,7 +176,7 @@ In this example, the test script will be run from your local development machine
 
 This guide uses the NPM `selenium-webdriver` package, which contains Node.js bindings for Selenium.
 
-{{< content "install-nodejs-nodesource" >}}
+{{% content "install-nodejs-nodesource" %}}
 
 ### Create an Example Test Script
 

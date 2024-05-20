@@ -1,20 +1,15 @@
 ---
 slug: write-to-a-file-from-the-shell
-author:
-  name: Nathaniel Stickman
+title: "Write to a File From the Shell"
+title_meta: "How to Write to a File From the Shell"
 description: "This guide shows you convenient and built-in commands for writing to a file direct from the shell, and walks you through some practical examples to get you started."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-08-12
 keywords: ['shell write to file', 'append to file', 'bash write output to file', 'zsh write to file', 'write to file command', 'write variable to file']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-12
 image: HowtoWritetoaFileFromtheShell.jpg
-modified_by:
-  name: Nathaniel Stickman
-title: "Write to a File From the Shell"
-title_meta: "How to Write to a File From the Shell"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Here Documents](https://tldp.org/LDP/abs/html/here-docs.html)'
 - '[Sed](https://www.gnu.org/software/sed/manual/sed.html)'
@@ -27,8 +22,7 @@ When working from the command line, it can be convenient to write to files witho
 ### The Regular Output Operator (`>`)
 
 You can use the regular output operator (`>`) to write text to a file. If it does not exist already, it creates the file.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Using the `>` operator on an existing file overwrites that file's contents.
 {{< /note >}}
 

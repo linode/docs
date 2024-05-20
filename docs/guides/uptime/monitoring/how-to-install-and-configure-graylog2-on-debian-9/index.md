@@ -1,21 +1,15 @@
 ---
 slug: how-to-install-and-configure-graylog2-on-debian-9
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: 'How to Install and Configure Graylog2 on Debian 9'
 description: 'This guide shows how to install and configure Graylog2, a log management and analysis tool with Elasticsearch and MongoDB, on Debian 9 server.'
 og_description: 'Graylog is a powerful, free, open-source log management and analysis tool that can be used for monitoring SSH logins and unusual activity to debugging applications. This guide shows you how to install and configure Graylog2 with Elasticsearch and MongoDB on a Debian 9 server.'
+authors: ["Hitesh Jethva"]
+contributors: ["Hitesh Jethva"]
+published: 2017-09-14
+modified: 2019-01-31
 keywords: ["Graylog", "Install Graylog", "Graylog Debian"]
 tags: ["java","debian","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-09-14
-modified: 2019-01-31
-modified_by:
-  name: Linode
-title: 'How to Install and Configure Graylog2 on Debian 9'
-contributor:
-  name: Hitesh Jethva
-  link: https://github.com/hitjethva
 external_resources:
 - '[Graylog Server Documentation](http://docs.graylog.org/en/2.3/)'
 - '[Elasticsearch](https://www.elastic.co/guide/index.html)'
@@ -31,13 +25,13 @@ Graylog uses Elasticsearch for searching and storing the log messages, and Mongo
 
 This guide shows you how to install and configure Graylog2 with Elasticsearch and MongoDB on a Debian 9 server.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 2.  Not all required dependencies are available in the standard repository, so you will need to add Debian Backports to the list of package sources:
 

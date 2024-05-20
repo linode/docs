@@ -1,19 +1,13 @@
 ---
 slug: host-a-terraria-server-on-your-linode
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: 'How to Setup a Terraria Linux Server'
 description: 'In this guide, you will learn how to install and configure Terraria, a two-dimensional sandbox game similar to Minecraft, on a Linode.'
-keywords: ["terraria", "steam", "minecraft", "gaming"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
 published: 2015-12-21
 modified: 2021-06-29
-modified_by:
-  name: Linode
-title: 'How to Setup a Terraria Linux Server'
-contributor:
-  name: Tyler Langlois
-  link: https://github.com/tylerjl
+keywords: ["terraria", "steam", "minecraft", "gaming"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Terraria Wiki](http://terraria.gamepedia.com/Terraria_Wiki)'
  - '[Terraria Wiki: Server](http://terraria.gamepedia.com/Server)'
@@ -36,13 +30,12 @@ Due to Terraria's system requirements, a Linode with at least two CPU cores and 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Configure a Firewall for Terraria
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Terraria only uses IPv4 and does not use IPv6.
 {{< /note >}}
 
@@ -89,7 +82,7 @@ Firewalld is the default iptables controller in CentOS 7+ and Fedora. See our [g
 
         sudo apt install ufw
 
-2.  Add SSH and a rule for Terraria. It's important you add rules before enabling UFW. If you don't, you'll terminate your SSH session and will need to access your Linode using [Lish](/docs/guides/lish/):
+2.  Add SSH and a rule for Terraria. It's important you add rules before enabling UFW. If you don't, you'll terminate your SSH session and will need to access your Linode using [Lish](/docs/products/compute/compute-instances/guides/lish/):
 
         sudo ufw allow ssh
         sudo ufw allow 7777/tcp
@@ -198,8 +191,7 @@ WantedBy=multi-user.target
 *   **ExecStart** instructs systemd to spawn a screen session containing the 64-bit `TerrariaServer` binary, which starts the daemon. `KillMode=none` is used to ensure that systemd does not prematurely kill the server before it has had a chance to save and shut down gracefully.
 
 *   **ExecStop** calls a script to send the `exit` command to Terraria, which tell the server to ensure that the world is saved before shutting down. In the next section, we'll create a script which will send the necessary commands to the running Terraria server.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 This script is intended to save your world in the event that you reboot the operating system within the Linode. It is **not** intended to save your progress if you reboot your Linode from the Linode Manager. If you must reboot your Linode, first stop the Terraria service using `sudo systemctl stop terraria`. This will save your world, and then you can reboot from the Linode Manager.
 {{< /note >}}
 
@@ -239,7 +231,7 @@ This script permits you to both:
 *  Attach to the console for direct administration, and
 *  Send the console commands like `save` or `exit` while it's running without needing to attach at all (useful when services like systemd need to send server commands).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Throughout the rest of this guide, you may encounter "command not found" errors when running the `terrariad` command. This may result from the directory `/usr/local/bin/` not being found in the `$PATH` when running sudo commands, which can occur with some Linux distributions. You can work around this problem by calling the script with the full path. For example, instead of running `sudo terrariad attach`, use `sudo /usr/local/bin/terrariad attach`.
 {{< /note >}}
 

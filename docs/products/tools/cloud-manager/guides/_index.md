@@ -1,5 +1,6 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for the Linode Cloud Manager"
 description: "These guides show you how to use the Linode Cloud Manager to access and deploy the full range of Linode services and how to complete account and user management tasks."
 tab_group_main:
     weight: 30
@@ -46,11 +47,11 @@ These introductory guides to the Linode Cloud Manager help you get up and runnin
 
 - [Invoices](/docs/products/tools/cloud-manager/guides/cloud-invoices): In the Account section you can print an invoice.
 
-- [Manage Email Notifications](/docs/products/tools/cloud-manager/guides/cloud-email-notifications): Email event notifications alert you when new events such as booting, shutting down, or updates to a Linode occur on your account.
+- [Understanding the Cloud Manager Events and Activity Feeds](/docs/products/tools/cloud-manager/guides/events-and-activity-feeds/)
 
 ### API Access
 
-- [API Keys and Tokens](/docs/products/tools/cloud-manager/guides/cloud-api-keys): You can generate and manage your API Keys and Tokens from the Cloud Manager.
+- [Manage Personal Access Tokens](/docs/products/tools/api/guides/manage-api-tokens/): You can generate and manage your API Keys and Tokens from the Cloud Manager.
 
 - [OAuth Apps](/docs/products/tools/cloud-manager/guides/cloud-oauth): An overview of OAuth 2 support in Cloud Manager.
 
@@ -60,13 +61,12 @@ These additional guides help you with targeted topics like how to manage your ac
 
 ### Manage Your Account
 
-- [An Overview of the Linode Cloud Manager](/docs/guides/an-overview-of-the-linode-cloud-manager/)
+- [An Overview of the Linode Cloud Manager](/docs/guides/an-overview-of-the-cloud-manager/)
 
 - [Understanding Common Cloud Manager Errors](/docs/guides/an-overview-of-common-cloud-manager-errors/)
 
 - [Searching in the Cloud Manager](/docs/guides/how-to-search-in-the-cloud-manager/)
 
-- [Understanding the Cloud Manager Events and Activity Feeds](/docs/guides/cloud-manager-events-and-activity-feeds/)
 
 - [Manage Billing in Cloud Manager](/docs/products/platform/billing/guides/)
 
@@ -78,13 +78,13 @@ These additional guides help you with targeted topics like how to manage your ac
 
 - [Linode Cloud Manager Security Controls](/docs/products/platform/accounts/guides/user-security-controls/)
 
-- [Manage SSH Keys](/docs/products/tools/cloud-manager/guides/manage-ssh-keys/)
+- [Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/)
 
 ### Manage Your Linodes
 
-- [Reset the Root Password on your Linode](/docs/guides/reset-the-root-password-on-your-linode/)
+- [Reset the Root Password on your Linode](/docs/products/compute/compute-instances/guides/reset-root-password/)
 
-- [Resize a Linode Disk](/docs/guides/resize-a-linode-disk/)
+- [Resize a Linode Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/)
 
 - [Deploy an Image to a Linode](/docs/products/tools/images/guides/deploy-image-to-existing-linode/)
 

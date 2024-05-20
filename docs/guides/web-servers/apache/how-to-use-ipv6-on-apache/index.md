@@ -1,18 +1,13 @@
 ---
 slug: how-to-use-ipv6-on-apache
-author:
-  name: Jeff Novotny
-  email: docs@linode.com
-description: 'This guide explains how to configure and use IPv6 on the Apache or NGINX web servers along with useful IPv6-related tools'
-keywords: ['IPv6 Apache','how to enable IPv6 on Apache','NGINX IPv6']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-16
-modified_by:
-  name: Linode
 title: "Use IPv6 With Apache and NGINX"
 title_meta: "How to Use IPv6 With Apache and NGINX"
-contributor:
-  name: Jeff Novotny
+description: 'This guide explains how to configure and use IPv6 on the Apache or NGINX web servers along with useful IPv6-related tools'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-09-16
+keywords: ['IPv6 Apache','how to enable IPv6 on Apache','NGINX IPv6']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[IPv6 rfc 8200](https://www.rfc-editor.org/rfc/rfc8200)'
 - '[Wikipedia IPv6 page](https://en.wikipedia.org/wiki/IPv6)'
@@ -47,11 +42,11 @@ Although IPv4 and IPv6 are not directly compatible, several transitional and upg
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -63,7 +58,7 @@ The following sections explain how to configure IPv6 on an Apache web server. IP
 
 Before proceeding, ensure Apache is already installed and running on the system. Enter the command `apache2 -v` to see the currently installed version. If the system displays the version number, Apache is already running on the system. If the system displays the error message `Command 'apache2' not found`, use the command `sudo apt install apache2` to install it. These instructions are geared towards Ubuntu users, but are generally valid for all Linux distributions.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 On some distributions, including CentOS/RHEL, IPv6 must be enabled on a system-wide level. See the [RHEL documentation](https://access.redhat.com/solutions/347693) for details.
 {{< /note >}}
 

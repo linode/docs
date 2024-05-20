@@ -1,19 +1,15 @@
 ---
 slug: how-to-install-ghost-on-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: Installing Ghost CMS on Ubuntu 18.04 LTS
+title_meta: How to Install Ghost CMS on Ubuntu 18.04 LTS
 description: 'This tutorial will teach you how to install Ghost, a publishing platform great for running blogs and sharing published content, on Ubuntu 18.04.'
 og_description: 'Easily publish your own professional-looking blog using Ghost on your Linode running Ubuntu 18.04 LTS.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-02-10
 keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on ubuntu 18.04", "ghost cms"]
 tags: ["nginx","ubuntu","mysql","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-10
-modified_by:
-  name: Linode
-published: 2020-02-10
-title: Installing Ghost CMS on Ubuntu 18.04 LTS
-title_meta: How to Install Ghost CMS on Ubuntu 18.04 LTS
 image: GhostCMSonUbuntu1804.png
 external_resources:
 - '[Ghost Setup Documentation](https://ghost.org/docs/setup/)'
@@ -33,7 +29,7 @@ aliases: ['/websites/cms/ghost/how-to-install-ghost-on-ubuntu-18-04/']
 
 In this guide, you'll set up, deploy, and secure a Ghost v3.5.1 blog on a Linode running Ubuntu 18.04 LTS, using NGINX, MySQL, Node.js, NPM, Ghost-CLI, and Let's Encrypt. For installation instructions for other distributions, click [here](/docs/websites/cms/ghost).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, consult our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 Replace each instance of `example.com` in this guide with your site’s domain name.
@@ -41,7 +37,7 @@ Replace each instance of `example.com` in this guide with your site’s domain n
 
 ## Before you Begin
 
-1. This guide assumes that you've followed the steps in our [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides and have created a new user for Ghost with elevated `sudo` privileges. The example username used in this guide is `ghostexample`.
+1. This guide assumes that you've followed the steps in our [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides and have created a new user for Ghost with elevated `sudo` privileges. The example username used in this guide is `ghostexample`.
 
 1. Ensure that you have a valid domain name and [properly configured DNS records](/docs/products/networking/dns-manager/) for your domain.
 

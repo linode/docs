@@ -1,28 +1,25 @@
 ---
 slug: magento-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
+title: 'Magento on Ubuntu 9.10 (Karmic)'
 description: 'This guide shows you how to install Magento, the free and open source self-hosted e-commerce solution you can use to sell products, on a Ubuntu 9.10 LAMP Stack.'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-02-05
+modified: 2011-05-17
 keywords: ["magento", "ecommerce", "store", "cart", "shop", "shopping"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ecommerce/magento-on-ubuntu-9-10-karmic/','/web-applications/e-commerce/magento/ubuntu-9-10-karmic/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2010-02-05
-title: 'Magento on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: how-to-install-magento
         keywords:
            - distribution: Ubuntu 9.10
+deprecated: true
 ---
 
 Magento is a self hosted e-commerce solution used by many people to sell products online. It runs on a [LAMP stack](/docs/guides/lamp-server-on-ubuntu-9-10-karmic/) and offers the user a wide variety of options.
 
-Before installing Magento, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) as well as our [LAMP guide](/docs/guides/lamp-server-on-ubuntu-9-10-karmic/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before installing Magento, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) as well as our [LAMP guide](/docs/guides/lamp-server-on-ubuntu-9-10-karmic/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Installing Prerequisites
 

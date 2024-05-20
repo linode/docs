@@ -1,16 +1,10 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy Cloudron through the Linode Marketplace"
 description: "Cloudron is a platform that makes it easy to install, manage and secure web apps on a server. Deploy Cloudron on a Linode with Marketplace Apps."
+published: 2020-12-15
+modified: 2023-01-30
 keywords: ['cloudron','web apps','platform','marketplace']
 tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-12-15
-modified: 2022-05-17
-modified_by:
-  name: Linode
-title: "Deploy Cloudron through the Linode Marketplace"
 external_resources:
 - '[Cloudron Documentation](https://docs.cloudron.io)'
 aliases: ['/platform/marketplace/how-to-deploy-cloudron-with-marketplace-apps/', '/platform/one-click/how-to-deploy-cloudron-with-one-click-apps/','/guides/how-to-deploy-cloudron-with-one-click-apps/','/guides/deploy-cloudron-with-marketplace-apps/','/guides/cloudron-marketplace-app/']
@@ -24,9 +18,9 @@ Cloudron offers both free and paid plans. Visit [Cloudron's website](https://www
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Cloudron should be fully installed within 10-12 minutes after the Compute Instance has finished provisioning.
@@ -34,8 +28,10 @@ Cloudron offers both free and paid plans. Visit [Cloudron's website](https://www
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
+
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -59,4 +55,4 @@ The Cloudron application is served on the Linode, however it still requires a fe
 
     ![Cloudron Post-Setup Wizard](cloudron-post-setup.png "Cloudron Post Setup")
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

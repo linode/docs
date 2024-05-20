@@ -1,22 +1,18 @@
 ---
 slug: deploy-multiple-web-servers-with-proxypass-on-ubuntu-12-04
-deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
+title: 'Deploy Multiple Web Servers with ProxyPass on Ubuntu 12.04'
 description: 'Deploy Separate Web Servers to Host Sites or Applications Using ProxyPass with Apache.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2012-11-07
 keywords: ["apache", "proxypass", "apache on ubuntu", "multiple web servers", "lighttpd"]
 tags: ["proxy","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/proxies/deploy-multiple-web-servers-with-proxypass-on-ubuntu-12-04/','/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-12-04-precise/','/websites/proxies/multiple-web-services-with-proxypass-on-ubuntu-12-04-precise-pangolin/']
-modified: 2012-11-07
-modified_by:
-  name: Linode
-published: 2012-11-07
-title: 'Deploy Multiple Web Servers with ProxyPass on Ubuntu 12.04'
 external_resources:
  - '[Apache Module mod\_proxy](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)'
  - '[Apache HTTP Server Version 2.2 Docs](http://httpd.apache.org/docs/2.2/)'
+deprecated: true
 ---
 
 In some cases, administrators find that while Apache meets most of their general-purpose web serving needs, other web or application servers are better suited for certain tasks. Fortunately, it's easy to configure Apache to pass certain requests to other web server processes. These secondary (or tertiary) web servers may be running on the same Linode or separate nodes (perhaps via private networking). Our examples use lighttpd as a secondary web server, but they apply to any web server or application you'd like to proxy HTTP requests to.
@@ -52,7 +48,7 @@ You must first edit the file `/etc/apache2/mods-available/proxy.conf` as follows
 
 This turns on proxy support in the module configuration.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The warning regarding the `ProxyRequests` directive. It should be "off" in your configuration.
 {{< /note >}}
 

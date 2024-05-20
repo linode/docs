@@ -1,23 +1,18 @@
 ---
 slug: linux-red-team-privilege-escalation-techniques
-author:
-  name: HackerSploit
-  email: hackersploit@gmail.com
+title: "Linux Red Team Privilege Escalation Techniques"
 description: 'This video covers various techniques that can be used to elevate your privileges on Linux systems.'
+authors: ["HackerSploit"]
+contributors: ["HackerSploit"]
+published: 2021-11-03
 keywords: ['security']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-03
-modified_by:
-  name: Linode
-title: "Linux Red Team Privilege Escalation Techniques"
-contributor:
-  name: HackerSploit
 ---
 
-{{< content "hackersploit-red-team-series-note-shortguide" >}}
+{{% content "hackersploit-red-team-series-note-shortguide" %}}
 
-{{< content "hackersploit-caution-shortguide" >}}
+{{% content "hackersploit-caution-shortguide" %}}
 
 ## Before You Begin
 
@@ -93,17 +88,17 @@ This can be done by following the steps outlined below:
 
         show tables;
 
-    As shown in the following screenshot, this will output a list of all the tables in the WordPress database, in this case, we are interested in the wp_users table.
+    As shown in the following screenshot, this will output a list of all the tables in the WordPress database, in this case, we are interested in the `wp_users` table.
 
     ![MySQL show tables output](mysql-show-tables-output.png "MySQL show tables output")
 
-5. We can dump the contents of the wp_users table by running the following command:
+5. We can dump the contents of the `wp_users` table by running the following command:
 
         select * from wp_users;
 
     As shown in the following screenshot, this will output a list of WordPress user accounts, their IDs, and their corresponding password hashes.
 
-    ![MySQL select from wp_users table output](mysql-select-from-wp-users-table-output.png "MySQL select from wp_users table output")
+    ![MySQL select from users table output](mysql-select-from-wp-users-table-output.png)
 
     Given the fact that we have already cracked the password for the user “michael”, we can turn our attention to cracking the password hash for the user “steven”.
 

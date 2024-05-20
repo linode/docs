@@ -1,21 +1,16 @@
 ---
 slug: introduction-to-firewalld-on-centos
-author:
-    name: Linode Community
-    email: docs@linode.com
+title: "Configure a Firewall with Firewalld"
+title_meta: "Configure a Firewall with Firewalld (Create and List Rules)"
 description: 'This guide will introduce you to firewalld, its notions of zones and services, & show you some basic configuration steps. ✓ Click here to learn more today!'
+authors: ["Florent Houbart"]
+contributors: ["Florent Houbart"]
+published: 2015-09-28
+modified: 2022-07-12
 keywords: ["centos firewall", "centos firewall config", "centos firewall gui", "centos configure firewall", "Linux", "Linode", "cloud", "firewall", "firewalld", "Fedora", "CentOS", "iptables", "security", "AlmaLinux", "Rocky Linux"]
 bundles: ['centos-security', 'network-security']
 tags: ["centos","networking","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-09-28
-modified: 2022-07-12
-modified_by:
-    name: Linode
-title: "Configure a Firewall with Firewalld"
-title_meta: "Configure a Firewall with Firewalld (Create and List Rules)"
-contributor:
-    name: Florent Houbart
 external_resources:
  - '[Firewalld Official Site](http://www.firewalld.org/)'
  - '[RHEL 9 Security guide: Using and configuring firewalld](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_firewalls_and_packet_filters/using-and-configuring-firewalld_firewall-packet-filters)'
@@ -31,7 +26,7 @@ Working with firewalld has two main differences compared to directly controlling
 1.  Firewalld uses *zones* and *services* instead of chain and rules.
 2.  It manages rulesets dynamically, allowing updates without breaking existing sessions and connections.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 While firewalld is a frontend for nftables/iptables and allows easier management of firewall rules, it is not a direct replacement for these utilities. Using nftables directly may provide you with more control. When using firewalld, its recommended to use `firewall-cmd` commands (instead of nftables or iptables commands) to interface directly with firewalld.
 {{< /note >}}
 

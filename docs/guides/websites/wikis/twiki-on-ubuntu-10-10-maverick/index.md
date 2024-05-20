@@ -1,27 +1,22 @@
 ---
 slug: twiki-on-ubuntu-10-10-maverick
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'TWiki on Ubuntu 10.10 (Maverick)'
 description: 'Twiki is a robust structured wiki compared to other solutions such as Confluence. This guide provides you with instructions for installing Twiki on Ubuntu 10.10 "Maverick".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-15
+modified: 2012-10-08
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/twiki/ubuntu-10-10-maverick/','/websites/wikis/twiki-on-ubuntu-10-10-maverick/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2011-02-15
-title: 'TWiki on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: install-twiki
         keywords:
            - distribution: Ubuntu 10.10
+deprecated: true
 ---
-
-
 
 TWiki is a robust "structured wiki" roughly comparable to other "Enterprise" wiki solutions such as [Confluence](/docs/guides/confluence-on-debian-5-lenny/). Structured wikis provide a powerful way to share, store, and work with information in task centric applications. TWiki is a foundation for supporting content-centric workflows including bug and issue tracking, knowledge management, and data entry. Written in Perl and distributed under the terms of the GNU GPL, TWiki is highly extensible and has a robust and active plug-in infrastructure. Because of this flexibility, TWiki straddles the boundary between web application and web application framework. This guide outlines a basic TWiki installation, setup, and configuration process.
 

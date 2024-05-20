@@ -1,12 +1,10 @@
 ---
 title: "Write a Custom Script for Use with StackScripts"
 description: "This guide details the StackScript system including script requirements, how to import an existing StackScript into a new StackScript, and more."
-keywords: ["automation", "scripts", "deployments", "instance"]
-tags: ["linode platform","automation","cloud manager"]
 published: 2020-05-21
 modified: 2022-11-30
-modified_by:
-  name: Linode
+keywords: ["automation", "scripts", "deployments", "instance"]
+tags: ["linode platform","automation","cloud manager"]
 image: Writing_Scripts_for_Use_with_Linode_StackScripts_1200x631.png
 aliases: ['/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/','/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/']
 ---
@@ -136,7 +134,7 @@ Linode StackScripts provide a set of default environment variables that you can 
 | -- | -- |
 | `LINODE_ID` | The deployed Linode's ID number. |
 | `LINODE_LISHUSERNAME` | The deployed Linode's full [Linode Shell (LISH)](/docs/guides/using-the-lish-console/) accessible name. |
-| `LINODE_RAM` | The [RAM available on this Linode's plan](/docs/guides/choosing-a-compute-instance-plan/#hardware-resource-definitions). |
+| `LINODE_RAM` | The [RAM available on this Linode's plan](/docs/products/compute/compute-instances/plans/choosing-a-plan/#hardware-resource-definitions). |
 | `LINODE_DATACENTERID` | The ID number of the data center containing the Linode. You can use the [Linode API](/docs/api/regions/#regions-list) to see a list of all data center IDs. |
 
 ### Set your Environment Variables Using an External File

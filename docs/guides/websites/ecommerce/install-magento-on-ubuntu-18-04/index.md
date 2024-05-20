@@ -1,17 +1,14 @@
 ---
 slug: install-magento-on-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
-description: "Install Magento Community Edition on Ubuntu 18.04 to manage your e-commerce site."
-keywords: ["magento", "ubuntu", "e-commerce", "magento ubuntu"]
-tags: ["ubuntu", "ssl", "lamp", "cms"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-29
-modified_by:
-  name: Andrew Lescher
-published: 2016-12-28T00:00:00.000Z
 title: Install Magento on Ubuntu 18.04
+description: "Install Magento Community Edition on Ubuntu 18.04 to manage your e-commerce site."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-12-28
+modified: 2018-08-29
+keywords: ["magento", "ubuntu", "e-commerce", "magento ubuntu"]
+tags: ["ubuntu", "ssl", "lamp", "cms","ecommerce"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[Magento Documentation](http://docs.magento.com/m2/ce/user_guide/getting-started.html)'
   - '[Magento Resources Library](https://magento.com/resources)'
@@ -27,13 +24,13 @@ In this guide you'll learn how to install Magento on Ubuntu 18.04\. Magento Comm
 
 Considering the resources some Magento plugins demand, we strongly recommend that you have at least a **Linode 4GB**. You'll need to allocate up to 2GB of memory for PHP and Magento; running Magento on a smaller Linode may result in server crashes or unreliability under medium to heavy traffic. For more memory-intensive Magento setups, we recommend using a [High Memory Linode](https://www.linode.com/pricing/).
 
-{{< note respectIndent=false >}} This guide explains how to install the latest Magento release at the time of publication. For the Community Edition, this will be version 2.2.x. If you plan to use data, themes, and extensions from an older Magento site, be sure to check for compatibility issues between the two versions. {{< /note >}}
+{{< note >}} This guide explains how to install the latest Magento release at the time of publication. For the Community Edition, this will be version 2.2.x. If you plan to use data, themes, and extensions from an older Magento site, be sure to check for compatibility issues between the two versions. {{< /note >}}
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 3.  Magento runs on a LAMP stack, and is **only compatible with PHP 7.0 or 7.1**. This guide contains instructions for setting up Apache, MySQL, and PHP in a manner compatible with the latest version of Magento (v. 2.2.5). Check your version of PHP with `php -v`. If your version is incompatible, refer to the included instructions for installing and setting PHP 7.0 as the default version.
 
@@ -380,7 +377,7 @@ sudo find app/etc -type d -exec chmod g-ws {} \;
 
 Depending on whether you install custom themes or extensions, you may need to do additional configuration. This will vary depending on what you have installed. Once you're ready to deploy your site into production mode, refer to [Magento's ownership and permissions guide](https://devdocs.magento.com/guides/v2.2/config-guide/prod/prod_file-sys-perms.html) for a more comprehensive set of recommendations.
 
-{{< note respectIndent=false >}} If you need to make additional configuration changes in the future, you'll need to manually add write permissions again before you can do so. For more information, see our guide on [Linux users and groups](/docs/guides/linux-users-and-groups/). {{< /note >}}
+{{< note >}} If you need to make additional configuration changes in the future, you'll need to manually add write permissions again before you can do so. For more information, see our guide on [Linux users and groups](/docs/guides/linux-users-and-groups/). {{< /note >}}
 
 ### Secure your Site with SSL
 
@@ -388,7 +385,7 @@ Secure sockets layer (SSL) certificates are a vital part of e-commerce. They ena
 
 For instructions on how to use SSL certificates in your store, see our guides on [obtaining a commercially signed SSL certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) and [using SSL certificates with Apache](/docs/guides/ssl-apache2-debian-ubuntu/).
 
-{{< note respectIndent=false >}} Many payment vendors that require SSL do not support self-signed certificates. Depending on how you handle payments, it is likely you will need to purchase a commercially signed certificate.
+{{< note >}} Many payment vendors that require SSL do not support self-signed certificates. Depending on how you handle payments, it is likely you will need to purchase a commercially signed certificate.
 
 When you [configure Apache to use the SSL certificate](/docs/guides/ssl-apache2-centos/#configure-apache-to-use-the-ssl-certificate), if you installed Magento in a subdirectory of your site, and only want that section to be encrypted, make sure to modify your `<VirtualHost *:443>` block to match. {{< /note >}}
 

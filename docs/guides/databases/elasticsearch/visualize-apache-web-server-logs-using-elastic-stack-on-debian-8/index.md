@@ -1,23 +1,17 @@
 ---
 slug: visualize-apache-web-server-logs-using-elastic-stack-on-debian-8
-author:
-  name: Linode
-  email: docs@linode.com
-contributor:
-  name: Tyler Langlois
-  link: https://tjll.net
+title: "Visualizing Apache Logs Using the Elastic Stack on Debian 8"
+title_meta: "Visualizing Apache Logs With Elastic Stack on Debian 8"
 description: 'This guide will show how to use Elasticsearch, Logstash, and Kibana to collect and visualize web server logs.'
 og_description: 'The Elastic Stack - Elasticsearch, Logstash, & Kibana - provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install all three components to explore Apache web server logs in Kibana.'
+authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
+published: 2017-09-18
+modified: 2019-01-31
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: ["apache debian 8", "linux web server", "elasticsearch", "logstash", "kibana", "elk stack", "elastic stack"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-09-18
-modified: 2019-01-31
-modified_by:
-  name: Linode
-title: "Visualizing Apache Logs Using the Elastic Stack on Debian 8"
-title_meta: "Visualizing Apache Logs With Elastic Stack on Debian 8"
 dedicated_cpu_link: true
 tags: ["debian","analytics","database","monitoring"]
 aliases: ['/databases/elasticsearch/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8/']
@@ -27,7 +21,6 @@ relations:
         keywords:
             - distribution: Debian 8
 ---
-
 
 ![Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8](elastic-stack-visualize-server-logs-title.jpg "Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8")
 
@@ -46,9 +39,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Follow the steps in our [Apache Web Server on Debian 8 (Jessie)](/docs/web-servers/apache/apache-web-server-debian-8/) guide to set up and configure Apache on your server.
 

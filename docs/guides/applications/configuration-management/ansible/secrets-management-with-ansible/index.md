@@ -1,21 +1,16 @@
 ---
 slug: secrets-management-with-ansible
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Secrets Management with Ansible"
 description: "Ansible is a powerful tool for automating server provisioning and management. But these tasks often require secrets like passwords and access tokens. To keep your secrets secure, you should implement secrets management with Ansible. Learn how to choose the best secrets management solution for your needs and how to get started using it with Ansible in this tutorial."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-12-08
 keywords: ['ansible secrets manager','ansible vault tutorial','ansible secrets best practices']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-12-08
-modified_by:
-  name: Nathaniel Stickman
-title: "Secrets Management with Ansible"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Red Hat - Enable Sysadmin: Handling Secrets in Your Ansible Playbooks](https://www.redhat.com/sysadmin/ansible-playbooks-secrets)'
 - '[Ansible Documentation: Protecting Sensitive Data with Ansible Vault](https://docs.ansible.com/ansible/latest/vault_guide/index.html)'
+tags: ["saas"]
 ---
 
 Ansible stands out for its capabilities in automating server provisioning and management. Ansible's playbooks, its ability to group and organize resources, and numerous other features make it a great asset for administering servers.
@@ -28,7 +23,7 @@ In this tutorial, learn the most useful methods for implementing secrets managem
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account. See our [Getting Started with Linode](/docs/guides/getting-started/) guide.
+1.  If you have not already done so, create a Linode account. See our [Getting Started with Linode](/docs/products/platform/get-started/) guide.
 
 1.  Follow our guide on [Getting Started With Ansible: Basic Installation and Setup](/docs/guides/getting-started-with-ansible/). Specifically, follow the sections on setting up a control node and managed nodes, configuring Ansible, and creating an Ansible inventory.
 

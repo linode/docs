@@ -1,24 +1,18 @@
 ---
 slug: how-to-install-prestashop-on-ubuntu-16-04
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Installing PrestaShop on Ubuntu 16.04"
+title_meta: "How to Install PrestaShop on Ubuntu 16.04"
 description: 'This guide shows how to install PrestaShop on LAMP (with MariaDB). It also shows how to add a TLS certificate and optimize some of the configurations.'
 og_description: 'PrestaShop is a comprehensive ecommerce solution used by thousands of merchants around the world. Use this guide to set it up with TLS on your Linode.'
+authors: ["Alexandru Andrei"]
+contributors: ["Alexandru Andrei"]
+published: 2017-08-29
+modified: 2021-06-23
 keywords: ["prestashop", "ecommerce", "cms"]
 tags: ["cms", "lamp", "ssl", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-08-29
-modified: 2021-06-23
-modified_by:
-  name: Linode
-title: "Installing PrestaShop on Ubuntu 16.04"
-title_meta: "How to Install PrestaShop on Ubuntu 16.04"
-contributor:
-  name: Alexandru Andrei
 aliases: ['/websites/ecommerce/how-to-install-prestashop-on-ubuntu-16-04/']
 ---
-
 
 ![How to Install PrestaShop of Ubuntu 16.04 LTS](PrestaShop.jpg)
 
@@ -33,9 +27,9 @@ Installing Prestashop on a remote server is more involved and time-consuming tha
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  In order to obtain a free SSL certificate from [Let's Encrypt](https://letsencrypt.org/), you will need to buy a Fully Qualified Domain Name (FQDN) and set it to point to your Linode. See our [DNS Manager Overview](/docs/products/networking/dns-manager/) guide for more information.
 
@@ -268,7 +262,7 @@ max_execution_time = 30
 
 ## Set Up Mail Delivery
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 Setting up mail delivery in PrestaShop is vital because so much happens through email: customer account confirmations, subscriptions, delivery statuses, order confirmations, etc. Although an email server [like this one](/docs/guides/email-with-postfix-dovecot-and-mysql/) can be hosted on a Linode, it can be complicated to set up and maintain.
 

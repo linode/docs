@@ -1,18 +1,10 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy Uptime Kuma through the Linode Marketplace"
 description: "Deploy Uptime Kuma on a Linode Compute Instance. This provides you with an open source monitoring tool like 'Uptime Robot'."
+published: 2022-02-22
+modified: 2023-10-27
 keywords: ['uptime','monitoring','ping']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-22
-modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy Uptime Kuma through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[Uptime Kuma](https://github.com/louislam/uptime-kuma)'
 aliases: ['/guides/uptimekuma-marketplace-app/']
@@ -22,9 +14,9 @@ aliases: ['/guides/uptimekuma-marketplace-app/']
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Uptime Kuma should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -32,22 +24,24 @@ aliases: ['/guides/uptimekuma-marketplace-app/']
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS, Debian 11
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### Uptime Kuma Options
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
+
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
 ### Accessing the Uptime Kuma App
 
-1.  Open your web browser and navigate to `http://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing rDNS.
+1.  Open your web browser and navigate to `https://DOMAIN/`, where *DOMAIN* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
 
     ![Screenshot of URL bar](uptimekuma-url.png)
 
@@ -61,4 +55,4 @@ aliases: ['/guides/uptimekuma-marketplace-app/']
 
 Now that you’ve accessed your dashboard, check out [the official Uptime Kuma Repository](https://github.com/louislam/uptime-kuma) to learn how to further utilize your Uptime Kuma instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

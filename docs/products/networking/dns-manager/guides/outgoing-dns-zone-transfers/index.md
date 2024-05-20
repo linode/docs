@@ -1,14 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Outgoing DNS Zone Transfers"
 description: "How to transfer domain zones using the Linode DNS Manager."
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-21
 modified: 2022-11-08
-modified_by:
-  name: Linode
-title: "Outgoing DNS Zone Transfers"
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/products/networking/dns-manager/guides/transfer-domain-zones/']

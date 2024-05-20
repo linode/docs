@@ -1,21 +1,16 @@
 ---
 slug: multicraft-on-debian
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
+title: 'Installing Multicraft on Debian'
 description: 'This guide will show you how to install MultiCraft, a free and open-source control panel for Minecraft servers, running on a Linode running Debian.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2015-02-04
 keywords: ["minecraft", "debian", "multicraft"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Multicraft Documentation](http://www.multicraft.org/site/userguide?view=index)'
  - '[Minecraft.net](https://minecraft.net/)'
-modified: 2015-02-04
-modified_by:
-  name: Alex Fornuto
-deprecated: true
-published: 2015-02-04
-title: 'Installing Multicraft on Debian'
 aliases: ['/game-servers/multicraft-on-debian/','/applications/game-servers/multicraft-on-debian/']
 dedicated_cpu_link: true
 relations:
@@ -23,11 +18,12 @@ relations:
         key: how-to-install-multicraft
         keywords:
             - distribution: Debian
+deprecated: true
 ---
 
 [Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers Free and paid versions are available. This guide will help you install Multicraft on a Linode running Debian 7.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -56,7 +52,7 @@ Multicraft for Linux depends on several software packages in order to run.
 {{< /file >}}
 
     {{< note respectIndent=false >}}
-If you want a dedicated Apache virtual host for Multicraft, follow the instructions [here](/docs/guides/hosting-a-website-ubuntu-18-04/#configure-name-based-virtual-hosts). Be sure to configure the `AllowOverride` option on your custom virtual host.
+If you want a dedicated Apache virtual host for Multicraft, follow the instructions [here](/docs/guides/hosting-a-website-ubuntu-18-04/#configure-name-based-virtual-hosts-in-apache-web-server). Be sure to configure the `AllowOverride` option on your custom virtual host.
 {{< /note >}}
 
 4.  Reload the Apache configuration:

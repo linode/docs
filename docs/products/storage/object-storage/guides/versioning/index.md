@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Versioning (Retain Object Version History)"
 description: "Learn how to use versioning with Linode's Object Storage to retain previous versions of an object."
 published: 2022-03-11

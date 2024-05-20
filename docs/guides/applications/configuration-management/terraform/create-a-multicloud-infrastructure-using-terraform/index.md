@@ -1,20 +1,15 @@
 ---
 slug: create-a-multicloud-infrastructure-using-terraform
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Creating a Multicloud Infrastructure Using Terraform"
+title_meta: "How to Create a Multicloud Infrastructure Using Terraform"
 description: 'This guide shows you how to use Multicloud Terraform to provide a consistent workflow so you can manage infrastructure with only a few configuration files.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-04-23
 keywords: ['Terraform','Linode','IaC','multicloud', 'automation', 'cloud manager']
 tags: ['terraform','ubuntu', 'ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-23
 image: MulticloudInfra_Terraform.png
-modified_by:
-  name: Linode
-title: "Creating a Multicloud Infrastructure Using Terraform"
-title_meta: "How to Create a Multicloud Infrastructure Using Terraform"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Terraform](https://www.terraform.io/)'
 - '[Terraform Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs)'
@@ -27,6 +22,7 @@ external_resources:
 - '[DynamoDB service](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SettingUp.DynamoWebService.html)'
 - '[AWS Provider in the Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)'
 - '[Build, update, or destroy AWS infrastructure with Terraform](https://learn.hashicorp.com/collections/terraform/aws-get-started)'
+tags: ["saas"]
 ---
 
 [*Terraform*](https://www.terraform.io/) is an open-source tool that is built by [*HashiCorp*](https://www.hashicorp.com). Using the *HashiCorp Configuration Language* (HCL), you can automate deploying your infrastructure, and provisioning its resources.
@@ -61,9 +57,9 @@ Code that declares the final state of your desired infrastructure is referred to
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. You need a personal access token for [Linode’s API v4](/docs/api/) to use with Terraform and the Terraform Linode Provider. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
 
@@ -77,7 +73,7 @@ In this section, you install Terraform on an Ubuntu 20.04 Linode. These steps ar
 
 To download Terraform on a Linode server, follow the steps below:
 
-1. [Login to the Linode server via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). This is the Linode server where you want to install Terraform. Replace `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/).
+1. [Login to the Linode server via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). This is the Linode server where you want to install Terraform. Replace `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/).
 
        ssh username@192.0.2.0
 

@@ -1,19 +1,14 @@
 ---
 slug: sql-grouping-and-totaling
-author:
-  name: Doug Hayman for NanoHertz Solutions Inc.
+title: "Introduction to SQL Grouping and Totaling"
+title_meta: "SQL Grouping and Totaling"
 description: "SQL aggregate functions calculate a set of values by using grouping and totaling. This guide uses various examples to demonstrate how to calculate values using the Where and Having clauses."
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
+published: 2022-03-18
 keywords: ['aggregate functions', 'group functions', 'where clause', 'having clause']
 tags: ['MySQL', 'PostgreSQL']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-18
-modified_by:
-  name: Linode
-title: "Introduction to SQL Grouping and Totaling"
-title_meta: "SQL Grouping and Totaling"
-contributor:
-  name: Doug Hayman for NanoHertz Solutions Inc.
-  link: http://nhzsolutions.com/
 ---
 
 One of the most powerful aspects of SQL is the ability to perform data aggregation. Two of the most powerful SQL data aggregation tools are *grouping* and *totaling*. In this guide, you learn SQL data aggregation using grouping and totaling.
@@ -22,7 +17,7 @@ One of the most powerful aspects of SQL is the ability to perform data aggregati
 
 In SQL, aggregation is the process of operating or calculating a set of values. The intent is to return a single summary value. SQL includes several very powerful Aggregate Functions such as `AVG()`, `COUNT()`, `SUM()`, `MAX()`, and `MIN()`. These functions, in turn, are most often found in SQL statements that implement a `GROUP BY` clause. However, these functions do not need to be associated with that clause.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Unless mentioned otherwise, all the database commands demonstrated in this guide work well on both **MySQL** and **PostgreSQL**.
 {{< /note >}}
 
@@ -37,7 +32,7 @@ This guide uses a `CourseTaken` table to demonstrate aggregate functions. From t
 
 The `CourseTaken` table contains the following column data:
 
-| SSNumber | CourseId | NumericGrade | YearTaken
+| `SSNumber` | `CourseId` | `NumericGrade` | `YearTaken`
 |:-:|:-:|:-:|:-:|
 | 111111111 | CSC101 | 98 | 2021|
 | 111111111 | ENG101 | 95 | 2022|
@@ -147,8 +142,7 @@ You should see the following output:
 | ENG101 | 2022 | 95        |
 +--------+------+-----------+
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The example above is slightly more complex. You group by two columns instead of one (`CourseId` within `Year`). Hence, you calculate the average grade and group by `CSC101` for the year `2021` separately from the Average Grade for `CSC101` for the year `2022`. The course `CSC101` for Year `2022` is an aggregation of two rows, while all of the other Group By rows are an aggregation of one row. Additionally, from the concept of *Ordering* (`Order By` clause) you can display ordered results (sorted) by `Course` within a given Year.
 {{< /note >}}
 

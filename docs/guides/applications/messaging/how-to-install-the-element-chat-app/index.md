@@ -1,21 +1,15 @@
 ---
 slug: how-to-install-the-element-chat-app
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Installing and Configuring the Element Chat Application"
+title_meta: "How to Install and Configure the Element Chat App"
 description: "This guide explains how to download, install, and configure the Element App and Matrix-Synapse communication layer with an NGINX web server."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-04-07
 keywords: ['Element','Matrix-Synapse','installation','chat','messaging']
 tags: ['nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-07
 image: ElementChat.jpg
-modified_by:
-  name: Linode
-title: "Installing and Configuring the Element Chat Application"
-title_meta: "How to Install and Configure the Element Chat App"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Element](https://element.io/)'
 - '[Matrix](https://matrix.org/)'
@@ -37,9 +31,9 @@ external_resources:
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Register a *Fully Qualified Domain Name* (FQDN) for your Element service. The DNS records for the domain should be set to the IP address of your Linode. Consult Linode's [DNS Records: An Introduction](/docs/guides/dns-overview/) and [DNS Manager](/docs/products/networking/dns-manager/) guides for assistance when configuring your domain.
 

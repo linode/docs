@@ -1,18 +1,15 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Attach and Detach a Volume"
-description: "Learn how to attach and detach exsting Volumes to or from Compute Instances."
-aliases: ['/products/storage/block-storage/guides/attach-volume/','/products/storage/block-storage/guides/detach-volume/']
+description: "Learn how to attach and detach existing Volumes to or from Compute Instances."
 modified: 2022-08-24
+aliases: ['/products/storage/block-storage/guides/attach-volume/','/products/storage/block-storage/guides/detach-volume/']
 ---
 
 Each Volume can to be attached to a single Compute Instance within the same data center, which enables that instance to read and write data to that Volume. Volumes can also be detached, and its data cannot be accessed until it is again attached to any Compute Instance within the same data center.
 
 ## Attach a Volume
 
-Follow these steps to attach an existing Block Storage Volume to a Compute Instance.
+Learn how to attach an existing Block Storage Volume to a Compute Instance using these steps:
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com/linodes) and click on the **Volumes** link in the sidebar.
 
@@ -28,7 +25,7 @@ Follow these steps to attach an existing Block Storage Volume to a Compute Insta
     {{< /note >}}
 
     {{< note >}}
-    If the data center has been upgraded to NVMe Block Storage and your Compute Instance was deployed prior to August 24th, 2021, you may need to reboot the instance for it to properly work with a NVMe Block Storage Volume.
+    If your Compute Instance was deployed prior to August 24th, 2021 and hasn't been rebooted since your data center was upgraded to NVMe Block Storage, you may need to reboot the instance for it to properly work with a Block Storage Volume.
     {{< /note >}}
 
 1.  Click the **Save** button to attach the Volume.
@@ -49,7 +46,7 @@ Follow these steps to safely detach a Block Storage Volume from a Compute Instan
 
 1. It's recommended to power off the instance. To do this, click **Power Off** on the top right of the Compute Instance details page.
 
-1.  If a Volume is currently mounted, detaching it while the instance is powered on could cause data loss or an unexpected reboot. You can unmount the Volume for safe live-detaching by logging in to the Compute Instance over [SSH or Lish](/docs/guides/set-up-and-secure/#connect-to-the-instance) and running the `umount` command, such as in the example below.
+1.  If a Volume is currently mounted, detaching it while the instance is powered on could cause data loss or an unexpected reboot. You can unmount the Volume for safe live-detaching by logging in to the Compute Instance over [SSH or Lish](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) and running the `umount` command, such as in the example below.
 
         umount /dev/disk/by-id/scsi-0Linode_Volume_example-volume-1
 

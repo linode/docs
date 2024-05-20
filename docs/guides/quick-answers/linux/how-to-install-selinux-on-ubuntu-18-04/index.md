@@ -1,19 +1,16 @@
 ---
 slug: how-to-install-selinux-on-ubuntu-18-04
-author:
-  name: Angel
-  email: docs@linode.com
+title: "Install SELinux on Ubuntu 18.04"
+title_meta: "How to Install SELinux on Ubuntu 18.04"
 description: 'This guide shows you how to install SELinux on Ubuntu 18.04, enable SELinux policies, and disable SELinux.'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2017-06-30
+modified: 2021-04-15
 keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
 aliases: ['/quick-answers/linux/install-selinux-on-ubuntu/','/quick-answers/linux/how-to-install-selinux-on-ubuntu-18-04/']
 tags: ["ubuntu","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-04-15
-modified_by:
-  name: Linode
-published: 2017-06-30
-title: "Install SELinux on Ubuntu 18.04"
-title_meta: "How to Install SELinux on Ubuntu 18.04"
 relations:
     platform:
         key: how-to-install-selinux
@@ -26,7 +23,7 @@ Ubuntu has a Mandatory Access Control (MAC) system similar to [SELinux](https://
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
     {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
@@ -36,7 +33,7 @@ This guide is written for a non-root user. Commands that require elevated privil
         sudo apt update
 
     {{< note respectIndent=false >}}
-The Linode kernel does not support SELinux by default. If the system is running a Linode kernel, you need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) for more steps. Once the kernel is set to the upstream kernel, continue with the steps in this guide.
+The Linode kernel does not support SELinux by default. If the system is running a Linode kernel, you need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/) for more steps. Once the kernel is set to the upstream kernel, continue with the steps in this guide.
     {{< /note >}}
 1. Install [MySQL/MariaDB on Ubuntu](/docs/guides/install-mysql-on-ubuntu-14-04)
 
@@ -151,7 +148,7 @@ For example, to enable a policy that allows MySQL requests through SELinux. MySQ
 
 **Using permissive mode**:
 
-Set `setenforce` to 0, now SELinx allows everything but also logs it.
+Set `setenforce` to 0, now SELinux allows everything but also logs it.
 
     setenforce 0
 
@@ -274,7 +271,7 @@ To disable all SELinux policies on Ubuntu temporarily, run the following command
 
 If you wish to permanently disable SELinux even when the system reboots, make changes to the `/etc/selinux/config` file and set SELINUX to disabled. Change the SELinux line as shown below:
 
-    SELINX=disbaled
+    SELINUX=disabled
 
 And, now if you restart the system, SELinux and its policies won’t be in place anymore.
 

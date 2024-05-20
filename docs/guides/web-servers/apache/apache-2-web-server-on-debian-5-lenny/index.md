@@ -1,33 +1,28 @@
 ---
 slug: apache-2-web-server-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Apache 2 Web Server on Debian 5 (Lenny)'
 description: 'Instructions for getting started with the Apache web server on Debian 5 (Lenny).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-07-27
+modified: 2012-10-08
 keywords: ["apache debian 5", "apache web server", "apache debian lenny", "web server", "apache on debian", "apache lenny"]
 tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/apache-2-web-server-on-debian-5-lenny/','/web-servers/apache/installation/debian-5-lenny/','/web-servers/apache/apache-2-web-server-on-debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2009-07-27
-title: 'Apache 2 Web Server on Debian 5 (Lenny)'
 relations:
     platform:
         key: how-to-install-apache2
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
-
-
-This tutorial explains how to install and configure the Apache web server on Debian 5 (Lenny). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Debian 5](/docs/guides/lamp-server-on-debian-5-lenny/).
+This tutorial explains how to install and configure the Apache web server on Debian 5 (Lenny). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Debian 5](/docs/guides/lamp-server-on-debian-5-lenny/).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

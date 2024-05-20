@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Using Cyberduck with Object Storage"
 description: "Learn how to use the Cyberduck desktop file transfer program to interact with Linode's Object Storage."
 ---
@@ -63,7 +60,7 @@ If you wish to perform an action on a particular file, right click that file to 
 - [Edit](https://docs.cyberduck.io/cyberduck/edit/): Useful for editing plaintext files.
 - Rename, Duplicate, and much more.
 
-{{< content "object-storage-character-warning-shortguide" >}}
+{{% content "object-storage-character-warning-shortguide" %}}
 
 ## Obtain the URL of a File
 

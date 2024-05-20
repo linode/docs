@@ -1,17 +1,14 @@
 ---
 slug: how-to-install-drupal-with-docker-compose-debian-10
-author:
-    name: Linode
-    email: docs@linode.com
+title: Installing Drupal with Docker Compose on Debian 10
+title_meta: How to Install Drupal with Docker Compose on Debian 10
 description: 'This guide will show you how to install Drupal 8, a popular free and open-source content management system, with Docker Compose on Debian.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-02-18
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "debian 10", "docker compose"]
 tags: ["drupal","docker","container","lamp","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-    name: Linode
-published: 2020-02-18
-title: Installing Drupal with Docker Compose on Debian 10
-title_meta: How to Install Drupal with Docker Compose on Debian 10
 image: Drupal_DockerComp_Debian10.png
 relations:
     platform:
@@ -39,19 +36,19 @@ Using the Drupal and PostgreSQL images from Docker Hub offers the following bene
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for [setting your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
-1. Follow our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1. Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 ### Install Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ## Set Up Drupal
 

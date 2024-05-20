@@ -1,19 +1,14 @@
 ---
 slug: if-statements-and-conditionals-in-python
-author:
-  name: Jeff Novotny
+title: "If Statements and Chained Conditionals in Python 3"
+title_meta: "Using If Statements and Chained Conditionals in Python 3"
 description: 'This guide provides an introduction to conditional statements in Python 3. It covers how to use if, if else, and elif statements to create simple and complex conditionals.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-02-04
 keywords: ['Python conditional','Python if else','Python if statement']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-04
-modified_by:
-  name: Linode
-title: "If Statements and Chained Conditionals in Python 3"
-title_meta: "Using If Statements and Chained Conditionals in Python 3"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Python control flow documentation](https://docs.python.org/3/tutorial/controlflow.html)'
 - '[PEP 8 Style Guidelines](https://www.python.org/dev/peps/pep-0008/)'
@@ -55,9 +50,9 @@ An `if then` conditional can be extended using the `else` option to form an `if 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu 20.04](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 

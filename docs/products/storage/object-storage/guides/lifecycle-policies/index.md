@@ -1,24 +1,12 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Use lifecycle policies to manage deleting objects in Linode Object Storage."
-keywords: ['object','storage','lifecycle','policy','policies','delete','bucket','version','multipart']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-10-18
-modified: 2022-03-11
-modified_by:
-  name: Linode
 title: "Lifecycle Policies"
-contributor:
-  name: Linode
+description: "Use lifecycle policies to manage deleting objects in Linode Object Storage."
+published: 2019-10-18
+modified: 2023-08-15
+keywords: ['object','storage','lifecycle','policy','policies','delete','bucket','version','multipart']
 aliases: ['/platform/object-storage/how-to-manage-objects-with-lifecycle-policies/','/platform/object-storage/lifecycle-policies/','/guides/lifecycle-policies/','/guides/how-to-manage-objects-with-lifecycle-policies/']
 tags: ["linode platform"]
 ---
-
-{{< content "object-storage-ga-shortguide" >}}
-
-{{< content "object-storage-cancellation-shortguide" >}}
 
 While deleting a few objects in an Object Storage bucket might not take that long, when the objects number in the thousands or even millions the time required to complete the delete operations can easily become unmanageable. When deleting a substantial amount of objects, it's best to use *lifecycle policies*. These policies can be represented in XML; here's an (incomplete) snippet of an action that will delete objects after 1 day:
 
@@ -47,7 +35,7 @@ This guide will first describe [when policies are enforced](#when-policies-are-e
 
 Lifecycle policies are triggered starting at midnight of the Object Storage cluster's local time. This means that if you set a lifecycle policy of **one day**, the objects will be deleted **the midnight after they become 24 hours old**.
 
-{{< content "object-storage-cluster-shortguide" >}}
+{{% content "object-storage-cluster-shortguide" %}}
 
 For example, if an object is created at 5PM on January 1, it will reach 24 hours in age at 5PM on January 2. The policy will then be enforced on the object at 12AM on January 3.
 

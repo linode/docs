@@ -1,31 +1,26 @@
 ---
 slug: lemp-server-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'LEMP Server on Ubuntu 9.10 (Karmic)'
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, MySQL, and PHP.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-12-01
+modified: 2011-05-03
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lemp-guides/ubuntu-9-10-karmic/','/websites/lemp/lemp-server-on-ubuntu-9-10-karmic/','/web-servers/lemp/lemp-server-on-ubuntu-9-10-karmic/']
-modified: 2011-05-03
-modified_by:
-  name: Linode
-published: 2010-12-01
-title: 'LEMP Server on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: install-lemp-stack
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP". The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.
 
-Prior to beginning this guide, please complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Prior to beginning this guide, please complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Prepare System For Deployment
 

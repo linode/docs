@@ -1,18 +1,15 @@
 ---
 slug: how-to-use-dockerfiles
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: 'How to Use a Dockerfile to Build a Docker Image.'
+title_meta: 'How to Use a Dockerfile to Build a Docker Image'
 description: 'A guide that introduces how to use a Dockerfile and provides examples on how to use it to build and run a Docker image on your Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2017-08-11
+modified: 2021-06-17
 keywords: ["docker", "container", "dockerfile","dockerfiles","docker image","docker images"]
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-06-17
-modified_by:
-  name: Linode
-published: 2017-08-11
-title: 'How to Use a Dockerfile to Build a Docker Image.'
-title_meta: 'How to Use a Dockerfile to Build a Docker Image'
 external_resources:
  - '[Best Practices for Writing Dockerfiles](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices)'
  - '[Official Docker Images on Docker Hub](https://hub.docker.com/search?q=&type=image&image_filter=official&page=1)'
@@ -25,9 +22,9 @@ A Dockerfile is a text file of instructions which are used to automate installat
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide, create and update a Linode, and install Docker. Alternatively, you can quickly deploy an updated, Docker-enabled Linode with the [Docker Marketplace App](https://www.linode.com/marketplace/apps/linode/docker/).
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide, create and update a Linode, and install Docker. Alternatively, you can quickly deploy an updated, Docker-enabled Linode with the [Docker Marketplace App](https://www.linode.com/marketplace/apps/linode/docker/).
 
-2.  Ensure your Linode is secure by following our guide on [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/).
+2.  Ensure your Linode is secure by following our guide on [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/).
 
 3.  This guide assumes you are comfortable with using the Docker command-line interface (CLI). To learn more about the Docker CLI, check out their [documentation](https://docs.docker.com/engine/reference/commandline/cli/).
 

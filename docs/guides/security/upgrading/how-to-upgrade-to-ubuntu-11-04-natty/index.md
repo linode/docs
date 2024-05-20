@@ -1,27 +1,22 @@
 ---
 slug: how-to-upgrade-to-ubuntu-11-04-natty
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'How to Upgrade to Ubuntu 11.04 (Natty)'
 description: 'How to upgrade from Ubuntu 10.10 (Maverick) to Ubuntu 11.04 (Natty).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-28
+modified: 2013-05-10
 keywords: ["ubuntu 11.04 upgrade", "ubuntu natty upgrade", "distro upgrade", "linux upgrade howto"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-11-04-natty/','/upgrading/upgrade-to-ubuntu-11-04-natty/']
-modified: 2013-05-10
-modified_by:
-  name: Linode
-published: 2011-04-28
-title: 'How to Upgrade to Ubuntu 11.04 (Natty)'
 relations:
     platform:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 11.04
+deprecated: true
 ---
-
-
 
 This guide explains how to upgrade your system to Ubuntu 11.04 (Natty) from Ubuntu 10.10 (Maverick). Before you begin, you should make sure that you have a working backup or a copy of your data. If you haven't already done so, you will also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. You should be logged in as root while performing these steps.
 
@@ -101,7 +96,7 @@ The upgrade will download and install numerous packages. Please be advised that 
 
 You will also be advised that some services need to be restarted. In most cases the default list of services to be restarted will be fine. If you have additional services that you would like to be restarted, please add them to the list.
 
-The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/guides/lish/). When your Linode boots up again, you may notice messages on the console regarding `ureadahead` and `plymouthd` being killed; these are not a cause for concern. You can prevent such messages from appearing again by issuing the following commands:
+The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/products/compute/compute-instances/guides/lish/). When your Linode boots up again, you may notice messages on the console regarding `ureadahead` and `plymouthd` being killed; these are not a cause for concern. You can prevent such messages from appearing again by issuing the following commands:
 
     cd /etc/init
     for i in plymouth* ureadahead*; do mv ${i} ${i}.disabled; done

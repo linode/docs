@@ -1,20 +1,15 @@
 ---
 slug: how-to-speed-up-a-wordpress-website
-author:
-  name: Nathan Melehan
-  email: docs@linode.com
+title: 'How to Speed Up a WordPress Website'
 description: 'This guide shows how to analyze performance bottlenecks for a WordPress website and describes optimization best practices for WordPress'
+authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
+published: 2018-06-26
 keywords: ["htaccess", "apache", "wordpress"]
 tags: ["docker","linux","analytics","php","wordpress","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-06-26
-modified: 2018-06-26
-modified_by:
-  name: Linode
-title: 'How to Speed Up a WordPress Website'
 external_resources:
 - '[Finding Bottlenecks in WordPress Code](https://deliciousbrains.com/finding-bottlenecks-wordpress-code/)'
-- '[Profiling WordPress Performance](https://pressjitsu.com/blog/profiling-wordpress-performance/)'
 - '[Profiling with XHProf and XHGUI](https://www.engineyard.com/blog/topic/profiling-with-xhprof-and-xhgui)'
 - '[Tideways XHProf Extension](https://github.com/tideways/php-xhprof-extension)'
 - '[XHGUI](https://github.com/perftools/xhgui)'
@@ -52,11 +47,11 @@ To install the test environment, you will need a Linode which does not have any 
 
 ### Install Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ### Download the Test Environment
 
@@ -108,7 +103,7 @@ Run these commands from your Linode:
 
 3.  Verify that you can view the visualization app by loading `http://<your-Linode-IP-address>:8080` in a web browser:
 
-    ![Visualization app started](/docs/websites/cms/how-to-speed-up-a-wordpress-website/php-profile-visualization-started.png "Visualization app started")
+    ![Visualization app started](php-profile-visualization-started.png "Visualization app started")
 
 ## Profiling the Application
 

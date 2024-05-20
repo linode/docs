@@ -1,18 +1,13 @@
 ---
 slug: install-and-configure-owncloud-on-debian-10
-author:
-  name: Jack Wallen
-  email: jlwallen@monkeypantz.net
-description: "A popular Dropbox alternative, ownCloud provides easy and secure file storage and file sharing. Here's how to install it on Debian 10."
-keywords: ['ownCloud on Debian']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-01-29
-modified_by:
-  name: Linode
 title: "Installing and Configuring ownCloud on Debian 10"
 title_meta: "How to Install and Configure ownCloud on Debian 10"
-contributor:
-  name: Jack Wallen
+description: "A popular Dropbox alternative, ownCloud provides easy and secure file storage and file sharing. Here's how to install it on Debian 10."
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2021-01-29
+keywords: ['ownCloud on Debian']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["debian"]
 aliases: ['/guides/how-to-install-owncloud-debian-10/']
 relations:
@@ -45,11 +40,15 @@ Why would you want to host your own cloud? Some common reasons are:
 
 This tutorial walks you through the steps to install ownCloud on Debian 10, one of the most reliable operating systems on the market. There are only a few steps to install ownCloud on Debian. You [install the LAMP (Linux Apache MySQL/MariaDB PHP) stack](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/); create a database and database user; configure Apache; and set up ownCloud using its graphical user interface.
 
+{{< note >}}
+To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/owncloud/).
+{{< /note >}}
+
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 If you have a registered domain name that you want to point to your ownCloud instance, then use the [Linode DNS Manager to point the domain](/docs/products/networking/dns-manager/) to the Linode server on which you plan to install ownCloud. If you do not have a registered domain name, then replace example.com with the IP address of the Linode server when following the steps in the [Create an Apache Configuration File](#create-an-apache-configuration-file) section.
@@ -60,7 +59,7 @@ If you have a registered domain name that you want to point to your ownCloud ins
 
 In this section, you install the Apache web server and all of the necessary PHP components.
 
-1. [Connect to your Linode via SSH](/docs/guides/getting-started#log-in-using-ssh).
+1. [Connect to your Linode via SSH](/docs/products/platform/get-started/#log-in-using-ssh).
 
 1. Install Apache and all the required PHP packages:
 

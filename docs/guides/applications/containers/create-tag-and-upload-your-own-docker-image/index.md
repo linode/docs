@@ -1,20 +1,13 @@
 ---
 slug: create-tag-and-upload-your-own-docker-image
-author:
-  name: Linode Community
-  email: docs@linode.com
-contributor:
-  name: Jack Wallen
-  link: https://twitter.com/jlwallen
+title: "Create, Tag, and Upload Your Own Docker Image"
 description: "Docker makes it easy to develop and deploy custom and consistent environments, called images. Here's how to create your own."
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2017-09-01
 keywords: ['docker','container','dockerfile','docker image','docker hub']
 tags: ["lamp","container","docker","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-09-01
-modified_by:
-  name: Linode
-published: 2017-09-01
-title: "Create, Tag, and Upload Your Own Docker Image"
 external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'

@@ -1,12 +1,11 @@
 ---
+title: "Deploy Docker through the Linode Marketplace"
 description: "This guide provides you with step-by-step instructions for deploying Docker, a tool which you can use to run containerized apps, from the Linode One-Click Marketplace."
+published: 2020-03-11
+modified: 2023-10-27
 keywords: ['docker','marketplace', 'container']
 tags: ["container","cloud-manager","linode platform","docker","marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-03-11
-modified: 2022-04-01
 image: Docker_oneclickapps.png
-title: "Deploy Docker through the Linode Marketplace"
 external_resources:
  - '[Docker Commands Cheat Sheet](/docs/guides/docker-commands-quick-reference-cheat-sheet/)'
  - '[Docker Documentation](https://docs.docker.com/)'
@@ -19,9 +18,9 @@ aliases: ['/platform/marketplace/deploying-docker-with-marketplace-apps/', '/pla
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Docker should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -29,20 +28,17 @@ aliases: ['/platform/marketplace/deploying-docker-with-marketplace-apps/', '/pla
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 11, Debian 10, and Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Docker Options
 
-- **Resource to Download**: The url to a hosted [Dockerfile](https://docs.docker.com/engine/reference/builder/) or [docker-compose.yml](/docs/guides/how-to-use-docker-compose/#Basic-Usage) file to be used to assemble an image as part of the application creation process.
-- **Command to run**: A [Docker Command](/docs/guides/docker-commands-quick-reference-cheat-sheet/) to be run as part of the application creation process.
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
+- **Email address for SOA Record:** This should be the email address of your server administrator.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
-
-{{< content "marketplace-custom-domain-fields-shortguide">}}
-- **Do you need an MX record for this domain?** Select `Yes` to create a basic [MX record](/docs/guides/dns-overview/#mx) for the domain. Select `No` to create no MX records
-- **Do you need an SPF record for this domain?** Select `Yes` to create a basic [SPF record](/docs/guides/dns-overview/#spf) for the domain. Select `No` to create no SPF records.
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -52,7 +48,7 @@ Docker is now installed and ready to use. The following steps provide a sample a
 
 After Docker has finished installing, you can access Docker from your terminal and deploy a sample application or any application that you intend on running.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) using the limited user account you may have created during deployment. If you do not yet have one, login as the `root` user and [create a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) using the limited user account you may have created during deployment. If you do not yet have one, login as the `root` user and [create a limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 1.  Locate the application or sample application you wish to deploy.
 
@@ -73,4 +69,4 @@ After Docker has finished installing, you can access Docker from your terminal a
     - [Manage a Docker Cluster with Kubernetes](/docs/guides/manage-a-docker-cluster-with-kubernetes/)
 
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

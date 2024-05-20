@@ -1,24 +1,21 @@
 ---
 slug: track-bugs-and-manage-development-with-flyspray
-author:
-  name: Linode
-  email: docs@linode.com
+title: Track Bugs and Manage Development with Flyspray
 description: 'Flyspray is an advanced bug tracking system for software development teams and more. This guide provides you with instructions for installing and using Flyspray.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-03
+modified: 2013-10-04
 keywords: ["bug tracking", "flyspray", "issue management", "feature development"]
 tags: ["lamp", "email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/track-bugs-and-manage-development-with-flyspray/','/development/bug-tracking/track-bugs-and-manage-development-with-flyspray/','/web-applications/project-management/flyspray/','/applications/development/track-bugs-and-manage-development-with-flyspray/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2010-05-03
-title: Track Bugs and Manage Development with Flyspray
 deprecated: true
 ---
 
 Flyspray is an advanced bug tracking system that allows software development teams, open source software projects, and other teams to manage development progress, issue reports, feature development, and other project tasks. Written against the popular LAMP stack, and including support for email and Jabber (XMPP) notifications, Flyspray is an ideal solution for teams that want an easy to use and manage issue tracking system with advanced features.
 
-Before beginning this guide we assume that you have completed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). To complete this guide, you must also install a web server. This guide will assume that you have completed the appropriate [LAMP guide](/docs/web-servers/lamp/) for your operating system. Additionally you will need to install a local [MTA to send email](/docs/guides/linux-system-administration-basics/#send-email-from-your-server) if you do not have an MTA installed.
+Before beginning this guide we assume that you have completed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). To complete this guide, you must also install a web server. This guide will assume that you have completed the appropriate [LAMP guide](/docs/web-servers/lamp/) for your operating system. Additionally you will need to install a local [MTA to send email](/docs/guides/linux-system-administration-basics/#send-email-from-your-server) if you do not have an MTA installed.
 
 ## Installing Prerequisites
 

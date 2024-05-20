@@ -1,17 +1,13 @@
 ---
 slug: migrate-a-lamp-website-to-linode
-author:
-  name: Nathan Melehan
-  email: nmelehan@linode.com
+title: How to Migrate a LAMP Website to Linode
 description: 'How to migrate a LAMP website from another hosting provider to Linode.'
+authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
+published: 2018-07-31
 keywords: ["lamp", "migrate", "website migration"]
 tags: ["linode platform","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-07-31
-modified_by:
-  name: Linode
-published: 2018-07-31
-title: How to Migrate a LAMP Website to Linode
 aliases: ['/platform/migrate-to-linode/migrate-a-lamp-website-to-linode/']
 ---
 
@@ -23,13 +19,13 @@ This guide includes commands that need to be run at the command line of your cur
 
 ### Deploy Your Linode
 
-1.  Follow Linode's [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide and choose Ubuntu 18.04 as your Linux image when deploying. Choose a Linode plan with enough storage space to accommodate the website data from your current host.
+1.  Follow Linode's [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and choose Ubuntu 18.04 as your Linux image when deploying. Choose a Linode plan with enough storage space to accommodate the website data from your current host.
 
-1.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide and create a limited Linux user with `sudo` privileges. The examples below assume this user is named `linode_user`.
+1.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide and create a limited Linux user with `sudo` privileges. The examples below assume this user is named `linode_user`.
 
 ### Install LAMP
 
-1.  [Connect to your Linode via SSH.](/docs/guides/set-up-and-secure/#connect-to-the-instance)
+1.  [Connect to your Linode via SSH.](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance)
 
 1.  If you did not do so previously, update your software:
 
@@ -52,8 +48,7 @@ The data that needs to be transferred includes:
 Your server may have relevant website data stored in other directories, but these are the common locations for most files in a LAMP deployment.
 
 Perform a *database dump* needs on your MySQL process prior to transferring the data. This will result in a file on disk that encapsulates your database data which can then be copied over the network as a normal file.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Stopping services on your current host will temporarily disable your website.
 {{< /note >}}
 
@@ -147,4 +142,4 @@ If you are seeing any other errors on your site, try reviewing Apache's error lo
 
 The last step required to migrate is to update your DNS records to reflect your new Linode's IP. Once this is done, visitors will start loading the page from your Linode.
 
-{{< content "use-linode-name-servers" >}}
+{{% content "use-linode-name-servers" %}}

@@ -1,18 +1,15 @@
 ---
 slug: install-java-on-centos
-author:
-  name: Angel Guarisma
-  email: aguarisma@linode.com
+title: Install Java on Centos 7
 description: 'This guide shows how to install the OpenJDK 8 runtime environment to support Java app execution and development on a Linode running CentOS 7.'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2017-06-01
+modified: 2017-06-01
 keywords: ["CentOS", "install Java", "CENTOS", "Java JRE", "Java JDK"]
 tags: ["java","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/installing-java-on-centos/','/development/install-java-on-centos/','/development/java/install-java-on-centos/']
-modified: 2017-06-01
-modified_by:
-  name: Angel Guarisma
-published: 2017-06-01
-title: Install Java on Centos 7
 external_resources:
 - '[Fedora Wiki Java Entry](https://fedoraproject.org/wiki/Java)'
 audiences: ["beginner"]
@@ -30,7 +27,7 @@ Java is a powerful programming language. Software written in Java can compile an
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 2.  This guide will use `sudo` wherever possible.
 

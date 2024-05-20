@@ -1,31 +1,26 @@
 ---
 slug: nginx-and-perlfastcgi-on-fedora-13
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Nginx and Perl-FastCGI on Fedora 13'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Fedora 13.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-27
+modified: 2011-05-17
 keywords: ["nginx", "nginx fedora 13", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","fedora","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/perl-fastcgi/fedora-13/','/websites/nginx/nginx-and-perlfastcgi-on-fedora-13/','/web-servers/nginx/nginx-and-perlfastcgi-on-fedora-13/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2010-05-27
-title: 'Nginx and Perl-FastCGI on Fedora 13'
 relations:
     platform:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Fedora 13
+deprecated: true
 ---
-
-
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your Fedora 13 Linode.
 
-It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
+It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
 
 ## Basic System Configuration
 

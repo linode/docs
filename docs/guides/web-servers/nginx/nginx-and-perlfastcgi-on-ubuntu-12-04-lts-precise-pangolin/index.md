@@ -1,19 +1,14 @@
 ---
 slug: nginx-and-perlfastcgi-on-ubuntu-12-04-lts-precise-pangolin
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Nginx and Perl-FastCGI on Ubuntu 12.04 LTS (Precise Pangolin)'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 12.04 LTS (Precise Pangolin).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-31
 keywords: ["nginx", "fastscgi perl", "nginx ubuntu 12.04", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/perl-fastcgi/ubuntu-12-04-precise-pangolin/','/websites/nginx/nginx-and-perlfastcgi-on-ubuntu-12-04-lts-precise-pangolin/','/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-12-04-lts-precise-pangolin/']
-modified: 2012-10-31
-modified_by:
-  name: Linode
-published: 2012-10-31
-title: 'Nginx and Perl-FastCGI on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_resources:
  - '[The nginx Homepage](http://nginx.org/)'
  - '[FastCGI Project Homepage](http://www.fastcgi.com/)'
@@ -24,15 +19,16 @@ relations:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your Ubuntu 12.04 LTS (Precise Pangolin) Linode.
 
-It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
+It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

@@ -1,18 +1,14 @@
 ---
 slug: how-to-install-apache-web-server-centos-8
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Installing Apache Web Server on CentOS 8'
+title_meta: 'How to Install Apache Web Server on CentOS 8'
 description: 'Install Apache on your CentOS 8 server, configure virtual hosting, and set up modules and scripting.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-19
 keywords: ["apache", "centos", "centos 8", "http", "web server"]
 tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-19
-modified_by:
-  name: Linode
-published: 2020-03-19
-title: 'Installing Apache Web Server on CentOS 8'
-title_meta: 'How to Install Apache Web Server on CentOS 8'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
@@ -31,17 +27,17 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) 
 
 ## Before You Begin
 
-1.  Set up your Linode in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+1.  Set up your Linode in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/products/networking/dns-manager/) guide.
 
-    - Don't forget to update your `/etc/hosts` file with your Linode's public IP address and your site's fully qualified domain name as explained in the [Update Your System's hosts File](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file) section of the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+    - Don't forget to update your `/etc/hosts` file with your Linode's public IP address and your site's fully qualified domain name as explained in the [Update Your System's hosts File](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-file) section of the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 1. Install the SELinux core policy Python utilities. This will give you the ability to manage SELinux settings in a fine-grained way.
 
         sudo yum install -y policycoreutils-python-utils
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 ## Install Apache
 

@@ -1,30 +1,24 @@
 ---
 slug: a-guide-to-elasticsearch-plugins
-author:
-  name: Linode
-  email: docs@linode.com
-contributor:
-  name: Tyler Langlois
-  link: https://tjll.net
+title: "Installing and Using Elasticsearch Plugins"
+title_meta: "How to Install and Use Elasticsearch Plugins"
 description: "Elasticsearch supports a wide variety of plugins which enable more powerful search features. Learn how to manage, install, and use them."
+authors: ["Tyler Langlois"]
+contributors: ["Tyler Langlois"]
+published: 2018-01-09
+modified: 2019-01-31
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
  - '[Elasticsearch reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html)'
  - '[Elasticsearch Plugins Reference](https://www.elastic.co/guide/en/elasticsearch/plugins/current/index.html)'
 keywords: ['elastic', 'elasticsearch', 'plugins', 'search', 'analytics', 'search engine']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-01-09
-modified: 2019-01-31
-modified_by:
-  name: Linode
-title: "Installing and Using Elasticsearch Plugins"
-title_meta: "How to Install and Use Elasticsearch Plugins"
 dedicated_cpu_link: true
 tags: ["ubuntu","debian","database","java"]
 aliases: ['/databases/elasticsearch/a-guide-to-elasticsearch-plugins/']
 ---
 
-![banner_image](How_to_Install_and_Use_Elasticsearch_Plugins_smg.jpg)
+![Header image](How_to_Install_and_Use_Elasticsearch_Plugins_smg.jpg "How to Install and Use Elasticsearch Plugins")
 
 ## What are Elasticsearch Plugins?
 
@@ -43,9 +37,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Installation
 
@@ -69,7 +63,7 @@ As of this writing, Elasticsearch requires Java 8.
 
 ### Elasticsearch
 
-{{< content "install_elasticsearch_debian_ubuntu" >}}
+{{% content "install_elasticsearch_debian_ubuntu" %}}
 
   You are now ready to install and use Elasticsearch plugins.
 

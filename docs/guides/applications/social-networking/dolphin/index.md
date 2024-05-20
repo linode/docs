@@ -1,23 +1,20 @@
 ---
 slug: dolphin
-author:
-  name: Chris Ciufo
-  email: docs@linode.com
+title: Dolphin
 description: Dolphin is an open source software tool for building social networks. This guide will show how to install Dolphin on top of a LAMP stack.
+authors: ["Chris Ciufo"]
+contributors: ["Chris Ciufo"]
+published: 2012-07-10
+modified: 2013-10-04
 keywords: ["social network", "dolphin", "boonex"]
 tags: ["lamp", "email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/social-networking/dolphin/','/web-applications/social-networking/dolphin/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2012-07-10
-title: Dolphin
-deprecated: true
 external_resources:
     - '[Boonex Home Page](http://www.boonex.com)'
     - '[Boonex Plug-in Market](http://www.boonex.com/market)'
     - '[Boonex Forums](http://www.boonex.com/forums/)'
+deprecated: true
 ---
 
 [Dolphin](http://www.boonex.com/dolphin) is an open-source software package for building social networks, dating sites and niche communities. Dolphin's features include video chat, video messenger, iPhone app, Android App, Adobe AIR desktop app, groups, events, blogs, files, media sharing, a store, and more. Dolphin also allows developers to create plugins to add additional functionality or features. You can use the [Dolphin Market](http://www.boonex.com/market) to find extensions, design templates, mods, plugins, language packs and third party software integrations.
@@ -85,7 +82,7 @@ If you'd like to run the Boonex RMS (Ray Media Server), which is a required comp
 
         sudo apt-get install openjdk-6-jre
 
-2.  RMS requires ports 1935, 1936, and 5080 to be open in your firewall. For more information, see the [Securing Your Server guide](/docs/guides/set-up-and-secure/#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls/).
+2.  RMS requires ports 1935, 1936, and 5080 to be open in your firewall. For more information, see the [Securing Your Server guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls/).
 
 You have successfully installed JRE on your Linode.
 
@@ -367,7 +364,7 @@ Dolphin comes with a free Media Server software (formerly Ray Media Server - RMS
 20. If the start was successful, you can use the [Boonex Media Server Tester](http://www.boonex.com/rms.html) to verify that your RMS install is working properly. If you get "NetConnection.Connect.Success", everything is working.
 
     {{< note>}}
-    If you receive "NetConnection.Connect.Failed", make sure you have ports 1935 and 1936 open in your firewall. For more information, see the [Securing Your Server guide](/docs/guides/set-up-and-secure/#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls).
+    If you receive "NetConnection.Connect.Failed", make sure you have ports 1935 and 1936 open in your firewall. For more information, see the [Securing Your Server guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls).
     {{< /note >}}
 
 21. If your test was successful, hold Control and press C to stop `red5.sh`.

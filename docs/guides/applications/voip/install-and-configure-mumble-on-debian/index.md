@@ -1,35 +1,28 @@
 ---
 slug: install-and-configure-mumble-on-debian
-author:
-    name: Linode Community
-    email: docs@linode.com
+title: "Installing and Configuring Mumble on Debian"
+title_meta: "How to Install and Configure Mumble on Debian"
 description: "In this tutorial, we'll walk you through how to install a Mumble server on Debian, and offer general guidelines for configuring the Mumble client."
+authors: ["Mark Weiman"]
+contributors: ["Mark Weiman"]
+published: 2015-11-09
+modified: 2019-02-01
 keywords: ["mumble", " debian", " murmur", " gaming", " voip", " voice chat"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-11-09
-modified: 2019-02-01
-modified_by:
-    name: Linode
-title: "Installing and Configuring Mumble on Debian"
-title_meta: "How to Install and Configure Mumble on Debian"
-contributor:
-    name: Mark Weiman
-    link: https://twitter.com/markzz989/
 external_resources:
  - '[Mumble Wiki](http://wiki.mumble.info/wiki/Main_Page)'
 dedicated_cpu_link: true
 aliases: ['/applications/voip/install-and-configure-mumble-on-debian/']
 ---
 
-
 [Mumble](http://wiki.mumble.info/wiki/Main_Page) is an open-source VoIP client, designed for gamers, that requires a server for all clients to connect to. This guide instructs how to install and configure the Mumble server (also called Murmur) on Debian.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system.
 

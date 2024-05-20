@@ -1,18 +1,15 @@
 ---
 slug: create-a-python-virtualenv-on-centos-8
-author:
-  name: Linode
-  email: docs@linode.com
+title: Creating a Python Virtual Environment on CentOS 8
+title_meta: How to Create a Python Virtual Environment on CentOS 8
 description: This guide provides a brief introduction to Python virtual environments using the virtualenv tool on CentOS 8.
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2017-08-13
+modified: 2020-04-07
 keywords: ["python", "python virtual environment", "virtualenv", "centos 8"]
 tags: ["python","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-04-07
-modified_by:
-  name: Linode
-published: 2017-08-13
-title: Creating a Python Virtual Environment on CentOS 8
-title_meta: How to Create a Python Virtual Environment on CentOS 8
 external_resources:
 - '[virtualenv Official Documentation](http://virtualenv.pypa.io/)'
 audiences: ["beginner"]
@@ -33,7 +30,7 @@ A Python virtual environment is an isolated project space on your system that co
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides to prepare your system.
+1.  Complete the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides to prepare your system.
 
 1.  Update your system:
 
@@ -44,8 +41,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     {{< /note >}}
 
 ## Create a Python Virtual Environment
-
-{{< note respectIndent=false >}}
+{{< note >}}
 CentOS 8 does not include any version of Python by default. To install Python on CentOS 8, read our guide on [installing Python 3 on CentOS 8](/docs/guides/how-to-install-python-on-centos-8/)
 {{< /note >}}
 

@@ -1,21 +1,16 @@
 ---
 slug: how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Provision Unmanaged Kubernetes Cluster using Terraform"
+title_meta: "Provision an Unmanaged Kubernetes Cluster using Terraform"
 description: 'How to use kubectl, Terraform, and the Linode Terraform K8s module to create and configure Terraform configuration files and deploy a Kubernetes cluster.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-03
+modified: 2021-03-11
 keywords: ['terraform','kubernetes','orchestration','containers','k8s','kubectl','Kubernetes Terraform installer for Linode Instances','terraform-linode-k8s']
 tags: ["kubernetes", "terraform", "container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-03-03
 image: UnmanagedKubernetesCluster_Terraform.png
-modified: 2021-03-11
-modified_by:
-  name: Linode
-title: "Provision Unmanaged Kubernetes Cluster using Terraform"
-title_meta: "Provision an Unmanaged Kubernetes Cluster using Terraform"
-contributor:
-  name: Linode
 external_resources:
 - '[Kubernetes Terraform installer for Linode Instances](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2)'
 aliases: ['/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/']
@@ -34,7 +29,7 @@ Before starting to deploy a Kubernetes cluster with Terraform, make sure:
 
 1. You are familiar with Terraform. You can read through [A Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/) to familiarize yourself with key concepts.
 
-2. You are familiar with Kubernetes concepts. For an introduction, see the [A Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/) series. Read through [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/getting-started-with-kubernetes/) to get familiar with kubeadm.
+2. You are familiar with Kubernetes concepts. For an introduction, see the [A Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/) series. Read through [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/deploy-kubernetes-cluster-using-kubeadm/) to get familiar with kubeadm.
 
 3. You have a personal access token for the Linode API to use with Terraform. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
 
@@ -77,7 +72,7 @@ Then, reinitialize `~/.bashrc` file for the changes to take effect.
 
 ### Install kubectl
 
-{{< content "how-to-install-kubectl" >}}
+{{% content "how-to-install-kubectl" %}}
 
 ### SSH Agent
 
@@ -93,7 +88,7 @@ By default, Terraform uses the SSH agent of the operating system to connect to a
 Agent pid 11308
    {{</ output >}}
 
-2. Add the SSH keys to the agent. For more information, see [creating an authentication key-pair](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair). This command adds keys from the default location, `~/.ssh/`
+2. Add the SSH keys to the agent. For more information, see [creating an authentication key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair). This command adds keys from the default location, `~/.ssh/`
 
         ssh-add
 

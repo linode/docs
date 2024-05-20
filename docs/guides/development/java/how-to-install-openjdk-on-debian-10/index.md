@@ -1,21 +1,15 @@
 ---
 slug: how-to-install-openjdk-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: Installing Java Development Kit 11 on Debian 10
+title_meta: How To Install Java Development Kit 11 on Debian 10
 description: Learn what's involved in installing OpenJDK on Debian 10, and how you can test your OpenKDL installation through a simple "Hello World" application.
+authors: ["Rajakavitha Kodhandapani"]
+contributors: ["Rajakavitha Kodhandapani"]
+published: 2020-03-25
 keywords: ["java", "openjdk", "jdk", "11", "Debian", "10"]
 tags: ["java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-25
 image: Installing_Java_Development_Kit_11_on_Debian10_1200x631.png
-modified_by:
-  name: Linode
-published: 2020-03-25
-title: Installing Java Development Kit 11 on Debian 10
-title_meta: How To Install Java Development Kit 11 on Debian 10
-contributor:
-  name: Rajakavitha Kodhandapani
 audiences: ["beginner"]
 languages: ["java"]
 relations:
@@ -34,9 +28,9 @@ While there are many available versions of OpenJDK, version 11 is the latest Lon
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for connecting to your Linode with SSH and setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for connecting to your Linode with SSH and setting your Linode's hostname and timezone.
 
-1.  Complete the sections of our guide on [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services. This guide will use `sudo` commands wherever possible, which should be run by a limited, non-root user on your Linode.
+1.  Complete the sections of our guide on [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services. This guide will use `sudo` commands wherever possible, which should be run by a limited, non-root user on your Linode.
 
 1.  Ensure your system is up-to-date:
 

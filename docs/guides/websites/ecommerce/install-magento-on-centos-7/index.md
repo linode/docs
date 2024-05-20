@@ -1,17 +1,13 @@
 ---
 slug: install-magento-on-centos-7
-author:
-  name: Linode
-  email: docs@linode.com
+title: Install Magento on CentOS 7
 description: 'Install Magento Community Edition on CentOS 7 to manage your e-commerce site.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-12-28
 keywords: ["magento", "centos", "e-commerce", "magento centos"]
 tags: ["centos", "lamp", "cms", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-12-28
-modified_by:
-  name: Phil Zona
-published: 2016-12-28
-title: Install Magento on CentOS 7
 external_resources:
  - '[Magento Documentation](http://docs.magento.com/m2/ce/user_guide/getting-started.html)'
  - '[Magento Resources Library](https://magento.com/resources)'
@@ -29,23 +25,22 @@ In this guide you'll learn how to install Magento on CentOS 7. Magento Community
 
 Considering the resources some Magento plugins demand, we strongly recommend that you have at least a **Linode 4GB**. You'll need to allocate up to 2GB of memory for PHP and Magento to use; running Magento on a smaller Linode may result in server crashes or unreliability under medium to heavy traffic. For more memory-intensive Magento setups, we recommend using a [High Memory Linode](https://www.linode.com/pricing/).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide explains how to install the latest Magento release at the time of publication. For the Community Edition, this will be version 2.1.x. If you plan to use data, themes and extensions from an older Magento site, be sure to check for compatibility issues between the two versions since not everything may function as it did in older releases.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Magento runs on a LAMP stack, and this guide assumes you have already installed and configured Apache. If you haven't, refer to our [Apache on CentOS 7](/docs/guides/install-and-configure-apache-on-centos-7/) guide. However, do not install MariaDB or PHP. We will explain how to install compatible versions of those packages in this guide.
 
 3.  Update your system:
 
         sudo yum update
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -171,7 +166,7 @@ date.timezone = America/New_York
 
 This sets the time zone for PHP's `date()` function and imposes a 2GB limit to the amount of memory PHP can use. This value is recommended for a 4GB Linode, but could be increased for a larger server.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The value for `date.timezone` will vary based on your system's time zone. Refer to the [PHP time zone documentation](http://php.net/manual/en/timezones.php) and ensure this value matches the time zone you set when you configured your Linode.
 {{< /note >}}
 
@@ -347,7 +342,7 @@ At a minimum, you should restrict write access to the `app/etc` directory before
 
 Depending on whether you install custom themes or extensions, you may need to do additional configuration. This will vary depending on what you have installed. Once you're ready to deploy your site into production mode, refer to [Magento's ownership and permissions guide](http://devdocs.magento.com/guides/v2.1/config-guide/prod/prod_file-sys-perms.html) for a more comprehensive set of recommendations.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you need to make additional configuration changes in the future, you'll need to manually add write permissions again before you can do so. For more information, see our guide on [Linux users and groups](/docs/guides/linux-users-and-groups/).
 {{< /note >}}
 
@@ -357,7 +352,7 @@ Secure sockets layer (SSL) certificates are a vital part of e-commerce. They ena
 
 For instructions on how to use SSL certificates in your store, see our guides on [obtaining a commercially signed SSL certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) and [using SSL certificates with Apache](/docs/guides/ssl-apache2-centos/).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Many payment vendors that require SSL do not support self-signed certificates. Depending on how you handle payments, it is likely you will need to purchase a commercially signed certificate.
 
 When you [configure Apache to use the SSL certificate](/docs/guides/ssl-apache2-centos/#configure-apache-to-use-the-ssl-certificate), if you installed Magento in a subdirectory of your site and only want that section to be encrypted, make sure to modify your `<VirtualHost *:443>` block to match.

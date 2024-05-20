@@ -1,22 +1,15 @@
 ---
 slug: install-an-odoo-13-stack-on-ubuntu-18-04
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Odoo is an open-source suite of over 10,000 business apps with a web interface for managing them. This guide shows how to install Odoo 13 on Ubuntu 18.04.'
-keywords: ["Odoo 13 install ubuntu 18.04", "install open source cms erp ubuntu"]
-tags: ["debian", "postgresql", "database", "cms"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-09-17
-modified: 2020-09-17
-modified_by:
-  name: Linode
 title: Installing an Odoo 13 Stack on Ubuntu 18.04
 title_meta: 'How to Install an Odoo 13 Stack on Ubuntu 18.04'
+description: 'Odoo is an open-source suite of over 10,000 business apps with a web interface for managing them. This guide shows how to install Odoo 13 on Ubuntu 18.04.'
+authors: ["Damaso Sanoja"]
+contributors: ["Damaso Sanoja"]
+published: 2020-09-17
+keywords: ["Odoo 13 install ubuntu 18.04", "install open source cms erp ubuntu"]
+tags: ["debian", "postgresql", "database", "cms", "digital agencies"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: InstallOdoo13Stack_Ubuntu1804.png
-contributor:
-  name: Damaso Sanoja
-  link: https://twitter.com/damasosanoja
 aliases: ['/websites/erp/install-an-odoo-13-stack-on-ubuntu-18-04/','/websites/cms/install-an-odoo-13-stack-on-ubuntu-18-04/']
 external_resources:
   - '[Odoo User Documentation](https://www.odoo.com/documentation/user/13.0/)'
@@ -52,9 +45,9 @@ All examples in this guide are for Ubuntu 18.04. If you plan to use a different 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your systems:
 
@@ -171,7 +164,7 @@ Now that you finished PostgreSQL configuration you can start the `postgresql` se
 
 Configure your Odoo 13 web application to work with the PostgreSQL database backend.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Odoo 13 uses Python 3.6+ instead of Python 3.5. If your server is running an older Ubuntu release, for instance 16.04, you will need to compile a newer Python version to meet this requirement.
 {{< /note >}}
 
@@ -378,8 +371,7 @@ Once you have backed up your production database you can update Odoo modules.
 From your **Odoo** server restart the Odoo service using the following flags to instruct the system to search for updates and apply any changes to modules:
 
     sudo service odoo-server restart -u all -d <production_database_name>
-
-{{< note respectIndent=false >}}
+{{< note >}}
 From Odoo version 12 forward it is suggested that you update modules using Odoo's web interface whatever possible.
 {{< /note >}}
 
@@ -395,7 +387,6 @@ If all your tests pass, you can safely update your installation.
 2.  Apply the changes to your repository:
 
         sudo git reset --hard origin/13.0
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Do not confuse the Odoo system update with an Odoo **version** upgrade. With the method explained above, you are updating your Odoo application within the same version rather than **upgrading** to a newer Odoo version. Migrating from one version to another often requires several tests and manual modifications on the PostgreSQL database which are highly dependent on the version of Odoo you are upgrading from.
 {{< /note >}}

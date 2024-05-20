@@ -1,18 +1,10 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy Jenkins through the Linode Marketplace"
 description: "This guide shows how to install Jenkins, an open source automation tool which system administrators can use to build, test, and deploy your infrastructure."
-keywords: ['jenkins','marketplace','pipeline','continuous delivery']
-tags: ["linode platform","automation","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-12
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy Jenkins through the Linode Marketplace"
-contributor:
-  name: Linode
+keywords: ['jenkins','marketplace','pipeline','continuous delivery']
+tags: ["linode platform","automation","marketplace","cloud-manager"]
 external_resources:
 - '[Creating Your First Jenkins Pipeline](https://jenkins.io/doc/pipeline/tour/hello-world/)'
 - '[Managing Jenkins Masters and Nodes](https://jenkins.io/doc/book/managing/)'
@@ -24,9 +16,9 @@ aliases: ['/platform/marketplace/how-to-deploy-jenkins-with-marketplace-apps/', 
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Jenkins should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -43,11 +35,13 @@ After deploying your Jenkins instance, you are ready to log in and continue the 
 
 ### Access Your Jenkins Instance
 
-1. [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1. [Connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1. Retrieve your Jenkins admin password by viewing the contents of the `/var/lib/jenkins/secrets/initialAdminPassword` file.
 
-        cat /var/lib/jenkins/secrets/initialAdminPassword
+    ```command
+    cat /var/lib/jenkins/secrets/initialAdminPassword
+    ```
 
     You should see a similar output
 
@@ -67,4 +61,4 @@ After deploying your Jenkins instance, you are ready to log in and continue the 
 
     ![Create your first Jenkins admin user.](create-admin-user.png)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

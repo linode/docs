@@ -1,24 +1,20 @@
 ---
 slug: updating-virtual-host-settings-from-apache-2-2-to-apache-2-4
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Updating Virtual Host Settings For Apache 2.4"
+title_meta: "How to Update Virtual Host Settings For Apache 2.4"
 description: "A step-by-step guide to updating virtual host settings from Apache 2.2 to Apache 2.4"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-03-12
 keywords: ["Apache 2.2", "Apache 2.4", "Ubuntu", "Debian", "CentOS", "Fedora", "Arch", "Gentoo", "update", "upgrade"]
 tags: ["apache","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/upgrading/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4/','/web-servers/apache/2-2-2-4-upgrade/']
-modified: 2014-03-12
-modified_by:
-  name: Linode
-published: 2014-03-12
-title: "Updating Virtual Host Settings For Apache 2.4"
-title_meta: "How to Update Virtual Host Settings For Apache 2.4"
 external_resources:
  - '[apache.org](http://httpd.apache.org/docs/2.4/upgrading.html)'
 ---
 
-This guide explains the configuration changes needed to update a standard virtual host setup, such as the one presented [here](/docs/guides/hosting-a-website-ubuntu-18-04/#configure-name-based-virtual-hosts), from Apache 2.2 to Apache 2.4. These configuration updates are necessary, because a working Apache 2.2 virtual host setup will break silently when you upgrade to Apache 2.4. We'll also discuss changes the new version of Apache makes to the default virtual host and module configuration.
+This guide explains the configuration changes needed to update a standard virtual host setup, such as the one presented [here](/docs/guides/hosting-a-website-ubuntu-18-04/#configure-name-based-virtual-hosts-in-apache-web-server), from Apache 2.2 to Apache 2.4. These configuration updates are necessary, because a working Apache 2.2 virtual host setup will break silently when you upgrade to Apache 2.4. We'll also discuss changes the new version of Apache makes to the default virtual host and module configuration.
 
 ![Updating Virtual Host Settings from Apache 2.2 to Apache 2.4](updating_virtual_host_settings_tg.png "Updating Virtual Host Settings from Apache 2.2 to Apache 2.4")
 

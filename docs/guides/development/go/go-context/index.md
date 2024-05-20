@@ -1,18 +1,12 @@
 ---
 slug: go-context
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
+title: 'Using the context Go package'
 description: 'This article showcases some of the use cases of the context package which is part of Go, a programming language created by Google and uised in many popular apps.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-05-31
 keywords: ["go", "golang", "context"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-05-31
-modified_by:
-  name: Linode
-title: 'Using the context Go package'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[The Go Programming Language Website](https://www.golang.com)'
 aliases: ['/development/go/go-context/']
@@ -41,7 +35,7 @@ You will need to install a recent version of Go on your computer in order to fol
 
 If you still need to install Go, you can follow our guide for Ubuntu installation [here](/docs/guides/install-go-on-ubuntu/).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to get property executed. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -227,7 +221,7 @@ The calls to `time.Sleep()` simulate a program that is slow or an operation that
 
 In this section of the guide you will learn how to timeout HTTP connections on the client side.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This example makes a request to a local web server. A suitable, simple web server is available via Python and can be started with the following commands:
 
 Python 3.X
@@ -469,6 +463,6 @@ In order to share a common context among multiple processes, you will need to pr
 
 The logic of this technique is based on the Go code of `more.go`. First use the `context.WithValue()` function to add your data into a context, serialize and send over HTTP, decode the data, get the context, and finally use `context.Value()` to check whether the desired key and desired values are in place or not.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The `http.Request` type has the `Context()` method that returns the context of the request and the `WithContext()` method that according to the Go documentation *returns a shallow copy of r with its context changed to ctx*. You can learn more about both methods at https://golang.org/pkg/net/http/.
 {{< /note >}}

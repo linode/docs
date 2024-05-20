@@ -1,18 +1,15 @@
 ---
 slug: a-beginners-guide-to-selinux-on-centos-7
-author:
-  name: Angel Guarisma
-  email: docs@linode.com
+title: Getting Started with SELinux on CentOS 7
+title_meta: A Beginner's Guide to SELinux on CentOS 7
 description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 7.'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2020-03-18
+modified: 2017-07-21
 keywords: ["Security-enhanced Linux", "secure open source", " SELinux", "CentOS 7"]
 tags: ["centos","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/license/by-nd/4.0)'
-modified: 2017-07-21
-modified_by:
-  name: Linode
-published: 2020-03-18
-title: Getting Started with SELinux on CentOS 7
-title_meta: A Beginner's Guide to SELinux on CentOS 7
 aliases: ['/security/getting-started-with-selinux/','/security/selinux/a-beginners-guide-to-selinux-on-centos-7/']
 external_resources:
  - '[Graphical Guide to Policies](https://opensource.com/business/13/11/selinux-policy-guide)'
@@ -37,7 +34,7 @@ SELinux defaults to denying anything that is not explicitly allowed. SELinux has
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
     {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
@@ -49,7 +46,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     {{< note respectIndent=false >}}
 The Linode kernel does not support SELinux by default. However, all new Linodes running CentOS 7 use the distribution provided kernel, which has **SELinux enabled by default**.
 
-If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
+If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
     {{< /note >}}
 
 ## Install Supporting SELinux Packages
@@ -125,7 +122,7 @@ SELinux status:                 disabled
 
 When SELinux is enabled, it can run in either *enforcing* or *permissive* modes.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If SELinux is currently disabled, update your SELinux configuration file with the `SELINUX` directive set to `enabled`, then reboot your system, and SSH back into your Linode. These steps are outlined in the [SELinux States](#selinux-states) section of the guide.
 {{< /note >}}
 

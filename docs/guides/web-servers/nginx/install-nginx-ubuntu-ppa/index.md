@@ -1,18 +1,15 @@
 ---
 slug: install-nginx-ubuntu-ppa
-author:
-  name: Jared Kobos
-  email: docs@linode.com
+title: Install NGINX on Ubuntu from the Official NGINX Repository
 description: 'Shortguide for installing NGINX on Ubuntu.'
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
+published: 2018-03-05
+modified: 2018-04-23
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-04-23
-modified_by:
-  name: Linode
-published: 2018-03-05
 headless: true
 show_on_rss_feed: false
-title: Install NGINX on Ubuntu from the Official NGINX Repository
 tags: ["web server","nginx"]
 aliases: ['/web-servers/nginx/install-nginx-ubuntu-ppa/']
 ---

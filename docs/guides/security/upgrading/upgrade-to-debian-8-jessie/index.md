@@ -1,31 +1,27 @@
 ---
 slug: upgrade-to-debian-8-jessie
-deprecated: true
-author:
-  name: Alex Fornuto
-  email: docs@linode.com
+title: 'Upgrading to Debian 8 (Jessie)'
 description: 'This guide provides you with step-by-step instructions on how to upgrade your Linux system from Debian 7 "Wheezy" to Debian 8 "Jessie" via command line.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2015-04-29
 keywords: ["debian", "upgrade", "wheezy", "jessie"]
 tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-04-29
-modified_by:
-  name: Alex Fornuto
-published: 2015-04-29
-title: 'Upgrading to Debian 8 (Jessie)'
 relations:
     platform:
         key: how-to-upgrade-debian
         keywords:
             - distribution: Debian 8
 aliases: ['/security/upgrading/upgrade-to-debian-8-jessie/']
+deprecated: true
 ---
 
 Debian 8 (Jessie) is the most recent version of Debian, released in April 2015. This guide explains how to upgrade your system from Debian 7 (Wheezy) to Debian 8.
 
 Bear in mind that while package and distribution maintainers try to ensure cross-compatibility and problem-free upgrades, there is always the lingering possibility of something not working out as planned. This is one reason why backing up your data is so important.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you use the Apache web server, be aware that Debian 8 moves from Apache 2.2 to 2.4. This version change requires several adjustments to configuration files, and can break an existing website. Please follow our [Upgrading Apache](/docs/guides/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4/) guide before continuing.
 {{< /note >}}
 
@@ -46,7 +42,7 @@ It's a good idea to [back up](/docs/products/storage/backups/) your Linode befor
 
 ### Checking Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/guides/monitor-and-maintain-compute-instance/#applying-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#applying-kernel-updates) for more information.
 
 ### Stopping Services
 
@@ -121,7 +117,7 @@ Check your `/etc/apt/sources.list.d` for additional package repositories, and en
         D     : show the differences between the versions
 
 
-5.  Reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/guides/lish/).
+5.  Reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 Your Linode is now running Debian 8!
 

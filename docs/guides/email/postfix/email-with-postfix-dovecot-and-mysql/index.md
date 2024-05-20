@@ -1,18 +1,15 @@
 ---
 slug: email-with-postfix-dovecot-and-mysql
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Configure an Email Server with Postfix, Dovecot, and MySQL on Debian and Ubuntu"
+title_meta: "Set up an Email Server with Postfix, Dovecot, and MySQL"
 description: "Learn how to set up an email server with Postfix, Dovecot and MySQL/MariaDB. Your step by step guide towards setting up a secure Postfix email server."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-05-13
+modified: 2022-09-29
 keywords: ["email", "mail", "server", "postfix", "dovecot", "mysql", "mariadb", "debian", "ubuntu", "dovecot 2"]
 tags: ["debian","email","ubuntu","mysql","postfix", "mariadb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-09-29
-modified_by:
-  name: Linode
-published: 2013-05-13
-title: "Configure an Email Server with Postfix, Dovecot, and MySQL on Debian and Ubuntu"
-title_meta: "Set up an Email Server with Postfix, Dovecot, and MySQL"
 external_resources:
  - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/guides/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
@@ -23,7 +20,7 @@ relations:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: Debian and Ubuntu
-aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql/']
+aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql/','/email/postfix/dovecot-mysql-ubuntu-10.04-lucid/']
 ---
 
 In this guide, you'll learn how to set up a secure email server with Postfix, Dovecot, and MySQL (or its near drop-in replacement MariaDB). It covers how to set up user email accounts in MySQL and configure Postfix/Dovecot to send and receive email.
@@ -41,7 +38,7 @@ This tutorial assumes that you are familiar with the following:
 
 For a different Linux distribution or different mail server, review our [email tutorials](/docs/email/).
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## How to Set Up an Email Server with Postfix, Dovecot and MySQL
 
@@ -59,9 +56,9 @@ Next, we will go through each step and set up our email server with Postfix, Dov
 
 ## Setting Up Your Linode
 
-1.  Set up the Linode as specified in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+1.  Set up the Linode as specified in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
-1.  Verify that the iptables [firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
+1.  Verify that the iptables [firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
 
 ## Configure DNS for Your Email Server
 
@@ -132,7 +129,7 @@ The following software versions are compatible with the instructions in this gui
 
 While other versions are possibly fully compatible as well, they may require different commands or additional configuration.
 
-## Setting Up MySQL to Send Email with Postfix and Dovecot
+## Setting Up MySQL to Send Email with Postfix and Dovecot {#set-up-mysql}
 
 Data for the mail server's users (email addresses), domains, and aliases are stored in a MySQL (or MariaDB) database. Both Dovecot and Postfix interact with this data.
 
@@ -255,7 +252,7 @@ An email alias forwards all emails it receives to another email address. While n
 
 1. If needed, repeat this process to add another email alias.
 
-## Postfix MTA Email Server
+## Postfix MTA Email Server {#postfix}
 
 Postfix is a *Mail Transfer Agent* (MTA) that relays mail between the Linode and the internet. It is highly configurable, allowing for great flexibility. This guide maintains many of Posfix's default configuration values.
 
@@ -794,7 +791,7 @@ You can set up an email client to connect to your mail server. Many clients dete
 
 See [Install SquirrelMail on Ubuntu 16.04](/docs/guides/install-squirrelmail-on-ubuntu-16-04-or-debian-8/) for details on installing an email client.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The Thunderbird email client will sometimes have trouble automatically detecting account settings when using Dovecot. After it fails to detect the appropriate account settings, you can set up your email account manually. Add in the appropriate information for each setting, using the above values, leaving no setting on **Auto** or **Autodetect**. Once you have entered all the information about your mail server and account, press **Done** rather **Re-Test** and Thunderbird should accept the settings and retrieve your mail.
 {{< /note >}}
 

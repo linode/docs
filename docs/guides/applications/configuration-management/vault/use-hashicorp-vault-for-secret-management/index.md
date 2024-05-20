@@ -1,18 +1,12 @@
 ---
 slug: use-hashicorp-vault-for-secret-management
-author:
-  name: Tyler Langlois
-  email: ty@tjll.net
+title: "Use HashiCorp Vault to Manage Secrets"
 description: 'How to configure, deploy, and use HashiCorp Vault to manage application secrets'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-03-30
 keywords: ['vault','secrets','secrets management','hcl','token','authentication']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-03-30
-modified: 2019-03-30
-modified_by:
-  name: Linode
-title: "Use HashiCorp Vault to Manage Secrets"
-contributor:
-  name: Linode
 external_resources:
 - '[Vault Documentation Overview](https://www.vaultproject.io/docs/)'
 - '[Vault Reference Architecture and Best Practices](https://learn.hashicorp.com/vault/day-one/ops-reference-architecture)'
@@ -20,6 +14,7 @@ external_resources:
 - '[Vault Auth Methods](https://www.vaultproject.io/docs/auth/index.html)'
 aliases: ['/applications/configuration-management/use-hashicorp-vault-for-secret-management/','/applications/configuration-management/vault/use-hashicorp-vault-for-secret-management/']
 tags: ["security","automation"]
+tags: ["saas"]
 ---
 
 [HashiCorp Vault](https://www.vaultproject.io/) is a secrets management tool that helps to provide secure, automated access to sensitive data. Vault meets these use cases by coupling authentication methods (such as application tokens) to secret engines (such as simple key/value pairs) using policies to control how access is granted. In this guide, you will install, configure, and access Vault in an example deployment to illustrate Vault's features and API.
@@ -67,9 +62,9 @@ The configuration outlined in this guide is suitable for small deployments. In s
 
 ### Before you Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
     {{< note respectIndent=false >}}
 Setting the full hostname correctly in `/etc/hosts` is important in this guide in order to terminate TLS on Vault correctly. Your Linode's fully qualified domain name and short hostname should be present in the `/etc/hosts` file before continuing.

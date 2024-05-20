@@ -1,20 +1,15 @@
 ---
 slug: how-to-install-and-configure-supervisor-on-centos-8
-author:
-  name: Dan Nielsen
+title: "Installing and Configuring Supervisor on CentOS 8"
+title_meta: "How to Install and Configure Supervisor on CentOS 8"
 description: "Supervisor is a process control system that's often used for services without management scripts. This guide shows how to configure Supervisor on CentOS 8."
+authors: ["Dan Nielsen"]
+contributors: ["Dan Nielsen"]
+published: 2021-02-26
 keywords: ['centos', 'system', 'supervisor', 'supervisord']
 tags: ["linux", "automation", "monitoring", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-26
 image: InstallConfig_SupervisiorCentOS8.png
-modified_by:
-  name: Linode
-title: "Installing and Configuring Supervisor on CentOS 8"
-title_meta: "How to Install and Configure Supervisor on CentOS 8"
-contributor:
-  name: Dan Nielsen
-  link: https://github.com/danielsen
 external_resources:
 - '[Configuration File — Supervisor 4.2.1 documentation](http://supervisord.org/configuration.html)'
 ---
@@ -23,7 +18,7 @@ external_resources:
 
 As an example, if you have written a custom Node.js web application, Supervisor could be used to ensure that it starts on boot. As well, Supervisor could restart the application if it quits unexpectedly.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide uses a Python program called `app.py` as an example for process control. Supervisor can control Python applications, Node.js applications, or programs written in other languages or runtimes.
 {{< /note >}}
 
@@ -41,9 +36,9 @@ This guide shows how to:
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and *CentOS 8* Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and *CentOS 8* Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
     {{< note respectIndent=false >}}
 Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -287,8 +282,7 @@ A full list of actions and other `supervisorctl` documentation can be found at [
 ## Enabling HTTP Access (Optional)
 
 You may want to add HTTP access to `supervisord`, either to enable the web interface or to allow remote RPC calls.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Enabling HTTP access exposes `supervisord` to the internet at large. If you choose to enable HTTP access, make sure to configure firewall rules that limit access to trusted IPs. As well, configure a user name and a long, complex, and unique password for service access.
 {{< /note >}}
 

@@ -1,29 +1,26 @@
 ---
 slug: manage-an-ubuntu-10-04-lucid-vps-with-ispconfig
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Manage an Ubuntu 10.04 (Lucid) Linode with ISPConfig'
 description: 'Installing and configuring the ISPConfig control panel to maintain your Ubuntu 10.04 (Lucid) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-19
+modified: 2011-04-29
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/ispconfig/manage-an-ubuntu-10-04-lucid-vps-with-ispconfig/','/web-applications/control-panels/ispconfig/ubuntu-10-04-lucid/','/websites/cms/manage-an-ubuntu-10-04-lucid-vps-with-ispconfig/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-05-19
-title: 'Manage an Ubuntu 10.04 (Lucid) Linode with ISPConfig'
 relations:
     platform:
         key: manage-a-linode-with-ISPConfig
         keywords:
            - distribution: Ubuntu 10.04
+deprecated: true
 ---
 
 ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites.
 
-Before beginning to follow this guide we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/).If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before beginning to follow this guide we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/).If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 This guide assumes you are installing this on a clean system. If you feel that you will not need certain features that are mentioned in this document, please feel free to exclude them from your setup.
 
@@ -46,7 +43,7 @@ You will be asked a series of questions during the installation; please refer to
 
 ##Install Amavisd-new and SpamAssassin
 
-The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/docs/guides/troubleshooting-memory-and-networking-issues/#reducing-spamassassin-memory-consumption). Using amavisd-new should help alleviate some of these potential issues.
+The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/#reducing-spamassassin-memory-consumption). Using amavisd-new should help alleviate some of these potential issues.
 
     apt-get install amavisd-new spamassassin zoo unzip bzip2 arj nomarch lzop cabextract apt-listchanges libnet-ldap-perl libauthen-sasl-perl clamav-docs daemon libio-string-perl libio-socket-ssl-perl libnet-ident-perl zip libnet-dns-perl
 

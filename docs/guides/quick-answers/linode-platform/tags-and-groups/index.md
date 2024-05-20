@@ -1,17 +1,12 @@
 ---
 slug: tags-and-groups
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide provides you with instructions for creating tags and groups in the Linode Cloud Manager to keep your Linodes and other services organized as needed.'
-keywords: ['list','of','keywords','and key phrases']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-02-22
-modified_by:
-  name: Linode
 title: "Tags and Groups"
-contributor:
-  name: Linode
+description: 'This guide provides you with instructions for creating tags and groups in the Linode Cloud Manager to keep your Linodes and other services organized as needed.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-02-22
+keywords: ['tags','cloud manager']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["linode platform","cloud manager"]
 aliases: ['/quick-answers/linode-platform/tags-and-groups/']
 ---
@@ -192,7 +187,7 @@ To remove a tag from a domain:
 
 ### Tag an LKE Cluster at Creation
 
-1. Navigate to the **Kubernetes** section of the Linode Cloud Manager and [create your LKE cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#create-an-lke-cluster).
+1. Navigate to the **Kubernetes** section of the Linode Cloud Manager and [create your LKE cluster](/docs/products/compute/kubernetes/guides/create-cluster/).
 
 1. After the cluster is created, your cluster's summary page will appear. Click on the **Add a tag** link to begin adding tags to your cluster.
 

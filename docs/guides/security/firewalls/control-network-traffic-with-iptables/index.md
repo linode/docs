@@ -1,21 +1,18 @@
 ---
 slug: control-network-traffic-with-iptables
-author:
-  name: Linode
-  email: docs@linode.com
+title: A Tutorial for Controlling Network Traffic with iptables
+title_meta: Controlling Network Traffic with iptables - A Tutorial
 description: "iptables is an application that allows users to configure specific rules that will be enforced by the kernel's netfilter framework. This guide will focus on the configuration and application of iptables rulesets."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-07-30
+modified: 2017-02-28
 keywords: ["iptables", "networking", "firewalls", "filtering"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/firewalls/control-network-traffic-with-iptables/','/security/firewalls/iptables/','/security/firewalls/control-network-traffic-with-iptables/']
 bundles: ['debian-security', 'centos-security', 'network-security']
-modified: 2017-02-28
-modified_by:
-  name: Linode
-published: 2010-07-30
-title: A Tutorial for Controlling Network Traffic with iptables
-title_meta: Controlling Network Traffic with iptables - A Tutorial
 external_resources:
- - '[Security Basics](/docs/guides/set-up-and-secure/)'
+ - '[Security Basics](/docs/products/compute/compute-instances/guides/set-up-and-secure/)'
  - '[Using the Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish)'
  - '[iptables: Linux firewall rules for a basic Web Server](http://bencane.com/2012/09/17/iptables-linux-firewall-rules-for-a-basic-web-server/)'
  - '[Linux Firewalls with iptables](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch14_:_Linux_Firewalls_Using_iptables)'
@@ -135,8 +132,7 @@ Replacing a rule is similar to inserting, but instead uses `iptables -R`. For ex
 Deleting a rule is also done using the rule number. For example, to delete the rule we just inserted for port 8080:
 
     sudo iptables -D INPUT 7
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Editing rules does not automatically save them. See our section on [deploying rulesets](/docs/guides/control-network-traffic-with-iptables/#deploy-your-iptables-rulesets) for the specific instructions for your distribution.
 {{< /note >}}
 
@@ -291,8 +287,7 @@ This rule breaks down as follows:
 ## Basic iptables Rulesets for IPv4 and IPv6
 
 Appropriate firewall rules depend on the services being run. Below are iptables rulesets to secure your Linode if you're running a web server.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 **These rules are given only as an example.** A real production web server may require more or less configuration, and these rules would not be appropriate for a database, Minecraft or VPN server. Iptables rules can always be modified or reset later, but these basic rulesets serve as a demonstration.
 {{< /note >}}
 
@@ -339,7 +334,7 @@ COMMIT
 {{< /file >}}
 
 
-**Optional:** If you plan to use [Linode Longview](/docs/guides/what-is-longview/) or [Linode's NodeBalancers](/docs/products/networking/nodebalancers/get-started/), add the respective rule after the section for allowing HTTP and HTTPS connections:
+**Optional:** If you plan to use [Linode Longview](/docs/products/tools/longview/get-started/) or [Linode's NodeBalancers](/docs/products/networking/nodebalancers/get-started/), add the respective rule after the section for allowing HTTP and HTTPS connections:
 
     # Allow incoming Longview connections from longview.linode.com
     -A INPUT -s 96.126.119.66 -m state --state NEW -j ACCEPT
@@ -387,8 +382,7 @@ COMMIT
 
 {{< /file >}}
 
-
-{{< note respectIndent=false >}}
+{{< note >}}
 [APT](http://linux.die.net/man/8/apt) attempts to resolve mirror domains to IPv6 as a result of `apt-get update`. If you choose to entirely disable and deny IPv6, this will slow down the update process for Debian and Ubuntu because APT waits for each resolution to time out before moving on.
 
 To remedy this, uncomment the line `precedence ::ffff:0:0/96  100` in `/etc/gai.conf`.
@@ -625,7 +619,7 @@ To verify the rules are applied and available after the system reboot use the co
 
 ## Network Lock-out
 
-When you're applying network rules, especially with both IPv4 and IPv6 and multiple interfaces, it is easy to lock yourself out. In the event you apply the rule and are unable to access your server, you may gain access through [Lish](/docs/guides/lish/) in the Linode Manager. The following steps will guide you through using the graphical interface of your Linode to gain access to your server:
+When you're applying network rules, especially with both IPv4 and IPv6 and multiple interfaces, it is easy to lock yourself out. In the event you apply the rule and are unable to access your server, you may gain access through [Lish](/docs/products/compute/compute-instances/guides/lish/) in the Linode Manager. The following steps will guide you through using the graphical interface of your Linode to gain access to your server:
 
 1.  Connect to the Linode Cloud Manager.
 2.  Select the Linode you wish to gain access to.

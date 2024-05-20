@@ -1,19 +1,14 @@
 ---
 slug: how-to-install-selinux-on-ubuntu-22-04
-author:
-  name: Cameron Laird
-  email: docs@linode.com
-description: "By default, Ubuntu 22.04 LTS uses AppArmor for security instead of SELinux. This tutorial shows you how to disable AppArmor and install and SELinux on Ubuntu 22.04. ✓ Click here!"
-keywords: ['Selinux ubuntu','SELinux for ubuntu','Install selinux ubuntu','Disable app armor', 'Disable SELinux']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-19
-modified: 2022-09-23
-modified_by:
-  name: Linode
 title: "Install SELinux on Ubuntu 22.04"
 title_meta: "How to Install SELinux on Ubuntu 22.04"
-contributor:
-  name: Cameron Laird
+description: "By default, Ubuntu 22.04 LTS uses AppArmor for security instead of SELinux. This tutorial shows you how to disable AppArmor and install and SELinux on Ubuntu 22.04. ✓ Click here!"
+authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
+published: 2022-09-19
+modified: 2022-09-23
+keywords: ['Selinux ubuntu','SELinux for ubuntu','Install selinux ubuntu','Disable app armor', 'Disable SELinux']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 relations:
   platform:
     key: how-to-install-selinux
@@ -25,11 +20,11 @@ According to [the official Security Enhanced Linux project page](http://www.seli
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-2.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+2.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -38,8 +33,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 SELinux's technical basis is [access control](https://www.linode.com/blog/cloud-computing/mandatory-access-control-in-cloud-computing/), meaning how different users can and cannot read, write, update, remove, or otherwise change different resources, and how administrators manage those differences. Over twenty years ago, [SELinux introduced tools](https://www.oreilly.com/library/view/selinux/0596007167/ch01s04.html) to enhance conventional Linux so these administrative chores are now less complex and more reliable. SELinux is currently implemented as a Mandatory Access Control (MAC) module within the kernel.
 
 A standard modern Ubuntu distribution includes [AppArmor](https://apparmor.net/), a Linux application security system which emphasizes ease-of-use and routine reliability. Both AppArmor and SELinux work through the [Linux Security Module](https://www.kernel.org/doc/html/v4.16/admin-guide/LSM/index.html) (LSM) interface. Since Linux only permits a single LSM to be active, the first step in an SELinux installation is to deactivate AppArmor.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 SELinux alters parts of Linux profoundly. An error in its installation can easily render an entire host unresponsive. Make backups, be prepared to dispose or recycle a particular instance, and work with care. Start your SELinux experiments in `permissive` mode, and make backups again before any switch to `enforcing` mode. The simplest SELinux installations are somewhat time-consuming, as they affect the entire filesystem. Each reboot takes a while, since SELinux methodically confirms the state of all filesystems and other resources.
 {{< /note >}}
 
@@ -112,8 +106,7 @@ While this output is similar to `getenforce`, once SELinux is enabled, `sestatus
 ### Configuration of Permissions to Allow for Reboot
 
 SELinux can be enabled in one of two states: `permissive` or `enforcing`. Your current SELinux installation remains disabled.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 If you connect to your host via SSH, access will be lost once SELinux is enabled. If you’re using a Linode host, you can still login via the LISH console.
 {{< /note >}}
 

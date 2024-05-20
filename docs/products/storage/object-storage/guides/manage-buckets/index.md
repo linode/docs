@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Create and Manage Buckets"
 description: "Learn how to view, create, and delete Object Storage buckets through the Cloud Manager."
 published: 2022-02-07

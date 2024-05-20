@@ -1,19 +1,14 @@
 ---
 slug: install-teamspeak
-author:
-    name: Linode Community
-    email: docs@linode.com
+title: 'Install a TeamSpeak Server on Linode'
 description: 'Set up TeamSpeak on your Linode and chat with your friends or coworkers while gaming, working, or otherwise'
+authors: ["Scott Sumner"]
+contributors: ["Scott Sumner"]
+published: 2015-07-23
+modified: 2019-02-01
 keywords: ["teamspeak", "virtual intercom", "chat", "game server"]
 aliases: ['/game-servers/install-teamspeak/','/applications/game-servers/install-teamspeak/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-07-23
-modified: 2019-02-01
-modified_by:
-    name: Linode
-title: 'Install a TeamSpeak Server on Linode'
-contributor:
-    name: Scott Somner
 external_resources:
  - '[TeamSpeak KB](https://support.teamspeakusa.com/index.php?/Knowledgebase/List/Index/10/english)'
  - '[Changing the serveradmin Password](https://support.teamspeakusa.com/index.php?/Knowledgebase/Article/View/326/0/how-do-i-change-or-reset-the-password-of-the-serveradmin-server-query-account)'
@@ -24,7 +19,7 @@ This guide shows you how to install a TeamSpeak Server on your Linode. TeamSpeak
 
 ## Before You Begin
 
-* Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
+* Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
 
 * Install the [TeamSpeak](http://www.teamspeak.com/) client on your local computer.
 
@@ -89,7 +84,6 @@ After TeamSpeak is downloaded, you're ready to start the server. TeamSpeak comes
                        Server Query Admin Account created
                  loginname= "serveradmin", password= "RQkvl+Ip"
         ------------------------------------------------------------------
-
 
         ------------------------------------------------------------------
                               I M P O R T A N T
@@ -182,7 +176,6 @@ If you use a firewall the following ports need to be opened: 9987, 30033, 10011,
     iptables -A INPUT -p tcp --dport 30033 -j ACCEPT
     iptables -A INPUT -p tcp --dport 10011 -j ACCEPT
     iptables -A INPUT -p tcp --dport 41144 -j ACCEPT
-
-{{< note respectIndent=false >}}
-If you've configured your firewall according to our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, you need to add these exceptions to `/etc/iptables.firewall.rules` to be reboot-persistent.
+{{< note >}}
+If you've configured your firewall according to our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, you need to add these exceptions to `/etc/iptables.firewall.rules` to be reboot-persistent.
 {{< /note >}}

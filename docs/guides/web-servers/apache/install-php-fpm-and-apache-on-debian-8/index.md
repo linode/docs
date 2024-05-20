@@ -1,18 +1,15 @@
 ---
 slug: install-php-fpm-and-apache-on-debian-8
-author:
-  name: Alex Fornuto
-  email: docs@linode.com
+title: 'Install PHP-FPM and Apache on Debian 8 (Jessie)'
 description: 'Install PHP-FPM and Apache on Debian 8 for Improved Website Agility and Security'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2016-02-19
+modified: 2017-02-21
 keywords: ["php-fpm", "apache", "debian 8", "php5-mysql", "fastcgi", "php", "cgi", "mod_php", "php pool"]
 tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/install-php-fpm-and-apache-on-debian-8/','/web-servers/apache/install-php-fpm-and-apache-on-debian-8/']
-modified: 2017-02-21
-modified_by:
-  name: Nick Brewer
-published: 2016-02-19
-title: 'Install PHP-FPM and Apache on Debian 8 (Jessie)'
 external_resources:
  - '[The PHP Homepage](http://php.net/)'
  - '[FastCGI Process Manager](http://php.net/manual/en/install.fpm.configuration.php)'
@@ -32,13 +29,12 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
 2.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

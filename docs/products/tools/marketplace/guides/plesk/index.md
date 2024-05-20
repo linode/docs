@@ -1,18 +1,10 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy Plesk through the Linode Marketplace"
 description: "This guide shows how to install and configure Plesk using the Linode Marketplace Apps. Plesk is a leading WordPress and website management control panel."
-keywords: ['plesk','marketplace', 'cms']
-tags: ["linode platform","cms","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-25
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy Plesk through the Linode Marketplace"
-contributor:
-  name: Linode
+keywords: ['plesk','marketplace', 'cms']
+tags: ["linode platform","cms","marketplace","cloud-manager"]
 external_resources:
  - '[Plesk Support](https://support.plesk.com/hc/en-us)'
  - '[Plesk Documentation](https://docs.plesk.com/en-US/obsidian/)'
@@ -24,9 +16,9 @@ aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/','/guide
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Plesk should be fully installed within 15 minutes after the Compute Instance has finished provisioning.
@@ -41,7 +33,7 @@ aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/','/guide
 
 ### Access your Plesk Site
 
-1.  Open a web browser and enter the following URL, where *[domain]* is either your Compute Instance's IP address, its default rDNS domain, or your domain name (if you entered one during deployment). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing the IP address and rDNS value.
+1.  Open a web browser and enter the following URL, where *[domain]* is either your Compute Instance's IP address, its default rDNS domain, or your domain name (if you entered one during deployment). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing the IP address and rDNS value.
 
         https://[domain]/login_up.php
 
@@ -64,4 +56,4 @@ aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/','/guide
 
     ![Plesk Dashboard](plesk-dashboard-screen.png)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

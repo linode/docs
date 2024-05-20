@@ -1,29 +1,26 @@
 ---
 slug: manage-distributed-source-branches-with-bazaar
-author:
-  name: Linode
-  email: docs@linode.com
+title: Manage Distributed Source Branches with Bazaar
 description: 'This guide shows how you can use the Bazaar version management system to track progress of source code and collaborate on files without the need for a central server.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-01-18
+modified: 2011-05-23
 keywords: ["bzr", "bazaar", "vcs", "scm", "dcvs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/version-control/manage-distributed-source-branches-with-bazaar/','/applications/development/manage-distributed-source-branches-with-bazaar/','/linux-tools/version-control/bazaar/']
-modified: 2011-05-23
-modified_by:
-  name: Linode
-published: 2010-01-18
-title: Manage Distributed Source Branches with Bazaar
-deprecated: true
 external_resources:
  - '[The Bazaar Project](http://bazaar.canonical.com/en/)'
  - '[Official Bazaar User Documentation](http://doc.bazaar.canonical.com/latest/en/user-guide/)'
 tags: ["version control system"]
+deprecated: true
 ---
 
 Bazaar is a distributed version control system similar to [git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/). Bazaar allows developers to track the progress of source code and collaborate on a single object of work without depending on a centralized server to coordinate their activity. Unlike git, Bazaar's interface will be familiar to users of a centralized version control system like [Subversion](/docs/guides/manage-source-code-versions-with-subversion/).
 
 Like all distributed version control systems, Bazaar can work "offline," and does not require a connection to a central repository to perform commits, consult previous versions of the history, or perform other operations on the local "branch" of project. Publishing "branches" is also straightforward.
 
-This document provides an introduction to all aspects of the Bazaar version control system: beginning with the installation of Bazaar, moving through several standard Bazaar-based workflows and concluding with a review of common Bazaar commands. However, before we begin discussing the use and operating of Bazaar we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), the [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+This document provides an introduction to all aspects of the Bazaar version control system: beginning with the installation of Bazaar, moving through several standard Bazaar-based workflows and concluding with a review of common Bazaar commands. However, before we begin discussing the use and operating of Bazaar we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), the [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Installing Bazaar
 

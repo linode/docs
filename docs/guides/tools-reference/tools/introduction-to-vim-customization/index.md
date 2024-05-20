@@ -1,19 +1,13 @@
 ---
 slug: introduction-to-vim-customization
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Introduction To Vim Customization'
 description: 'This how-to guide shows you how to configure the Vim text editor and begin to customize it.'
-keywords: ["vim", " editor"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Andrew Lescher"]
+contributors: ["Andrew Lescher"]
 published: 2017-08-21
 modified: 2019-04-17
-modified_by:
-  name: 'Linode'
-title: 'Introduction To Vim Customization'
-contributor:
-  name: 'Andrew Lescher'
-  link: https://www.linkedin.com/in/andrew-lescher-87027940/
+keywords: ["vim", " editor"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Vim official home page](http://www.vim.org)'
  - '[Vim-Config](http://vimconfig.com/)'
@@ -36,9 +30,9 @@ Fine-tune your Vim editor to behave more intelligently with this tutorial and ac
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  A basic understanding of how to work within the Vim environment is necessary to complete this tutorial. Readers should be familiar with the steps for editing documents with Vim.
 

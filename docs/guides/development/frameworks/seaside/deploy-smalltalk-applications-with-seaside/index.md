@@ -1,25 +1,22 @@
 ---
 slug: deploy-smalltalk-applications-with-seaside
-author:
-  name: Linode
-  email: docs@linode.com
+title: Deploying Smalltalk Apps with Seaside on Debian 5
+title_meta: Deploy Smalltalk Applications with Seaside
 description: An introductory guide to deploying applications with the Seaside Framework
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-01-12
+modified: 2013-09-27
 keywords: ["seaside", "smalltalk", "pharo", "squeak", "apache", "framework"]
 tags: ["web applications","apache","proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/deploy-smalltalk-applications-with-seaside/','/frameworks/seaside/','/websites/frameworks/deploy-smalltalk-applications-with-seaside/','/development/frameworks/seaside/deploy-smalltalk-applications-with-seaside/']
-modified: 2013-09-27
-modified_by:
-  name: Linode
-published: 2010-01-12
-title: Deploying Smalltalk Apps with Seaside on Debian 5
-title_meta: Deploy Smalltalk Applications with Seaside
-deprecated: true
 relations:
     platform:
         key: seaside-framework
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
 Seaside is a web development framework for the Smalltalk programing language. Seaside offers web developers a number of unique capabilities to create unique applications in an entirely object oriented manner. Seaside also provides helpful abstractions that allow developers to forgo manually generating HTML or managing URL callbacks. This also makes it possible for developers to design applications around user sessions rather than around pages.
@@ -30,7 +27,7 @@ The architecture and scaling of websites developed with Seaside is highly depend
 
 This document provides an overview of getting started with this Smalltalk web development framework. For the purposes of this example we've deployed Seaside and the "Pier" content management system on a Debian 5 (Lenny) system. Because of the image-based nature of Smalltalk environments, the strategies and approaches for running Seaside applications may not vary between distributions much. Nevertheless, there may be some differences regarding the names of packages and configuration details for the web server. Other details should remain the same between various operating system distributions.
 
-Before proceeding with Seaside and Smalltalk installations, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). You'll also need to install [Apache](/docs/web-servers/apache/) in order to serve your Seaside application. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). One final disclaimer: the Smalltalk virtual machines are all built against 32-bit architectures, so for the best performance, do not deploy a 64-bit image with your Linode.
+Before proceeding with Seaside and Smalltalk installations, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). You'll also need to install [Apache](/docs/web-servers/apache/) in order to serve your Seaside application. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). One final disclaimer: the Smalltalk virtual machines are all built against 32-bit architectures, so for the best performance, do not deploy a 64-bit image with your Linode.
 
 ## Installing Smalltalk Environments
 

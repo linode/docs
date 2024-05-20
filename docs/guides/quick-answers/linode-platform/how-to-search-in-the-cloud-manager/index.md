@@ -1,19 +1,14 @@
 ---
 slug: how-to-search-in-the-cloud-manager
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'How to Leverage the Advanced Search Function of the Linode Cloud Manager.'
-keywords: ['search','advanced search','keywords','cloud manager']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-01-08
-modified_by:
-  name: Linode
-image: L_SearchInCloudManager.png
 title: "Searching in the Cloud Manager"
 title_meta: "How to Search in the Cloud Manager"
-contributor:
-  name: Linode
+description: 'How to Leverage the Advanced Search Function of the Linode Cloud Manager.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-01-08
+keywords: ['search','advanced search','keywords','cloud manager']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: L_SearchInCloudManager.png
 tags: ["linode platform","cloud manager"]
 aliases: ['/quick-answers/linode-platform/how-to-search-in-the-cloud-manager/']
 ---

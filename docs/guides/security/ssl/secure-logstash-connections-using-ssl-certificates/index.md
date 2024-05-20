@@ -1,21 +1,14 @@
 ---
 slug: secure-logstash-connections-using-ssl-certificates
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Secure Logstash Connections Using SSL Certificates"
 description: 'This guide provides you with instructions for securing connections from Logstash, a server-side processing pipeline, using SSL certificates.'
 og_description: 'Secure Logstash connections using SSL certificates.'
+authors: ["Dan Nielsen"]
+contributors: ["Dan Nielsen"]
+published: 2020-11-05
 keywords: ['secure logstash with ssl', 'logstash ssl setup', 'logstash ssl certificate']
 tags: ['security','ssl']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-11-05
-modified: 2020-11-05
-modified_by:
-  name: Linode
-title: "Secure Logstash Connections Using SSL Certificates"
-contributor:
-  name: Dan Nielsen
-  link: https://github.com/danielsen
 external_resources:
  - '[Logstash Home Page](https://www.elastic.co/logstash)'
  - '[Filebeat Overview](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html)'
@@ -23,13 +16,12 @@ external_resources:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+2.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 <!-- Include one of the following notes if appropriate. --->
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -39,7 +31,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 This guide explores how you can generate an organization certificate authority. The certificate authority can sign server and client certificates that are used in connection authentication.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The commands in this guide are for CentOS systems but they can easily be modified for other Linux distributions.
 {{< /note >}}
 
@@ -232,61 +224,61 @@ At this point you should be able to run Logstash, push a message, and see the ou
 
 You can stop here and use the setup as is, or proceed to setup peer verification. When using peer verification Logstash requires that incoming connections present their own certificate for verification rather than a username and password. You may find this method easier to script when automatically deploying hosts or applications that push messages to Logstash.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The remote client host needs copies of the organization certificate (`org_ca.crt`), organization certificate key (`org_ca.key`), and organization certificate serial number (`org_ca.serial`) to generate its certificate. These are all located in the `/etc/pki/tls/private` directory. Make sure to copy those files before proceeding. You may have to update the host permissions with `o+r` on to be able to use `scp` to copy them. Alternatively, you can generate the client certificate on the Logstash host and copy that to the client host when complete.
 {{< /note >}}
 
 1.  On the host, begin by changing the Logstash configuration file to remove the `username` and `password` fields and add `ssl_verify_mode` and `ssl_certificate_authorities`.
 
-    {{< file "/etc/logstash/conf.d/logstash.conf" >}}
-input {
-    http {
-        ssl => true
-        ssl_certificate => "/etc/pki/tls/certs/logstash_combined.crt"
-        ssl_certificate_authorities => ["/etc/pki/tls/private/org_ca.crt"]
-        ssl_key => "/etc/pki/tls/private/logstash.key"
-        ssl_verify_mode => "force_peer"
+    ```file {title="/etc/logstash/conf.d/logstash.conf"}
+    input {
+        http {
+            ssl => true
+            ssl_certificate => "/etc/pki/tls/certs/logstash_combined.crt"
+            ssl_certificate_authorities => ["/etc/pki/tls/private/org_ca.crt"]
+            ssl_key => "/etc/pki/tls/private/logstash.key"
+            ssl_verify_mode => "force_peer"
+        }
     }
-}
-output {
-    stdout {
-        codec => rubydebug
+    output {
+        stdout {
+            codec => rubydebug
+        }
     }
-}
-{{</ file >}}
+    ```
 
 1.  On the client, create a client certificate configuration file using the text editor of your choice. Again, replace the `XX` fields with your own values.
 
-    {{< file "/etc/pki/tls/conf/client_crt.conf" >}}
-[req]
-distinguished_name = req_distinguished_name
-req_extensions = v3_req
-prompt = no
+    ```file {title="/etc/pki/tls/conf/client_crt.conf"}
+    [req]
+    distinguished_name = req_distinguished_name
+    req_extensions = v3_req
+    prompt = no
 
-[req_distinguished_name]
-countryName                     = XX
-stateOrProvinceName             = XXXXXX
-localityName                    = XXXXXX
-postalCode                      = XXXXXX
-organizationName                = XXXXXX
-organizationalUnitName          = XXXXXX
-commonName                      = XXXXXX
-emailAddress                    = XXXXXX
+    [req_distinguished_name]
+    countryName                     = XX
+    stateOrProvinceName             = XXXXXX
+    localityName                    = XXXXXX
+    postalCode                      = XXXXXX
+    organizationName                = XXXXXX
+    organizationalUnitName          = XXXXXX
+    commonName                      = XXXXXX
+    emailAddress                    = XXXXXX
 
-[usr_cert]
-# Extensions for server certificates (`man x509v3_config`).
-basicConstraints = CA:FALSE
-nsCertType = client, server
-nsComment = "OpenSSL Server / Client Certificate"
-subjectKeyIdentifier = hash
-authorityKeyIdentifier = keyid,issuer:always
-keyUsage = critical, digitalSignature, keyEncipherment, keyAgreement, nonRepudiation
-extendedKeyUsage = serverAuth, clientAuth
+    [usr_cert]
+    # Extensions for server certificates (`man x509v3_config`).
+    basicConstraints = CA:FALSE
+    nsCertType = client, server
+    nsComment = "OpenSSL Server / Client Certificate"
+    subjectKeyIdentifier = hash
+    authorityKeyIdentifier = keyid,issuer:always
+    keyUsage = critical, digitalSignature, keyEncipherment, keyAgreement, nonRepudiation
+    extendedKeyUsage = serverAuth, clientAuth
 
-[v3_req]
-keyUsage = keyEncipherment, dataEncipherment
-extendedKeyUsage = serverAuth, clientAuth
-{{</ file >}}
+    [v3_req]
+    keyUsage = keyEncipherment, dataEncipherment
+    extendedKeyUsage = serverAuth, clientAuth
+    ```
 
 1.  Change permissions to allow writing the `client.key` and `client.crt` files.
 

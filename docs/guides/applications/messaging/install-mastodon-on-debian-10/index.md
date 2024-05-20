@@ -1,22 +1,16 @@
 ---
 slug: install-mastodon-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Install a Mastodon Server on Debian 10"
+title_meta: "How to Install a Mastodon Server on Debian 10"
 description: "Learn how to install the open-source, self-hosted microblogging platform Mastodon on Debian 10 Linux."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-06-04
+modified: 2022-11-29
 keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternative','debian 10']
 tags: ['docker', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-04
-modified: 2022-11-29
-modified_by:
-  name: Linode
 image: MASTODON3.jpg
-title: "Install a Mastodon Server on Debian 10"
-title_meta: "How to Install a Mastodon Server on Debian 10"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Mastodon](https://docs.joinmastodon.org/)'
 - '[Fediverse](https://en.wikipedia.org/wiki/Fediverse)'
@@ -47,9 +41,9 @@ Mastodon servers range in size from small private instances to massive public in
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Complete the steps in the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) section to register a domain name to point to your Mastodon instance.
 
@@ -80,11 +74,11 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
 ### Install Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ## Download Mastodon
 

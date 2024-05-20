@@ -1,20 +1,14 @@
 ---
 slug: introduction-to-infrastructure-as-code
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide discusses the history, concepts, rationale behind Infrastructure as Code, as well as investigating the main design decisions and the available tools.'
-keywords: ['IaC','infrastructure','configuration','automation']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-03
-image: IntroInfastructureAsCode.png
-modified_by:
-  name: Linode
 title: "An Introduction to Infrastructure as Code"
 title_meta: "Introducing Infrastructure as Code"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+description: 'This guide discusses the history, concepts, rationale behind Infrastructure as Code, as well as investigating the main design decisions and the available tools.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-03-03
+keywords: ['IaC','infrastructure','configuration','automation']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: IntroInfastructureAsCode.png
 external_resources:
 - '[Infrastructure as Code on Wikipedia](https://en.wikipedia.org/wiki/Infrastructure_as_code)'
 ---

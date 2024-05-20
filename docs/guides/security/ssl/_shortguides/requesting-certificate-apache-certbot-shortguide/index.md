@@ -1,4 +1,10 @@
 ---
+slug: requesting-certificate-apache-certbot-shortguide
+title: "Shortguide"
+description: "Shortguide"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-07-01
 # Shortguide: Requesting a Certificate Using Certbot with Apache
 
 headless: true
@@ -6,17 +12,8 @@ show_on_rss_feed: false
 
 # Ignore the below front matter. It is included to comply with existing tests.
 
-slug: requesting-certificate-apache-certbot-shortguide
-title: "Shortguide"
-description: "Shortguide"
 keywords: ["shortguide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-01
-author:
-  name: Linode
-  email: docs@linode.com
-modified_by:
-  name: Linode
 ---
 
 ## Requesting a TLS/SSL Certificate Using Certbot

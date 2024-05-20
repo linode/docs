@@ -1,22 +1,18 @@
 ---
 slug: how-to-install-drupal-themes-and-modules-using-drush-on-debian-7
-author:
-    name: Linode
-    email: docs@linode.com
+title: 'Themes, Modules, & Backups with Drupal Drush on Debian 7'
 description: 'This article gives you step-by-step instructions for using the Drush command line tool to install themes, modules, and backup systems in the popular CMS - Drupal.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-12-05
 keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framework", "debian", "drush"]
 aliases: ['/websites/cms/drupal/themes-modules-backups-drupal-drush-on-debian-7/','/websites/cms/themes-modules-backups-drupal-drush-on-debian-7/','/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-7/']
 tags: ["drupal","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2014-12-05
-modified_by:
-    name: Linode
-published: 2014-12-05
-title: 'Themes, Modules, & Backups with Drupal Drush on Debian 7'
-deprecated: true
-deprecated_link: 'websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-10/'
 external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'
+deprecated: true
+deprecated_link: 'websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-10/'
 ---
 
 Drush is a command line tool, which can be used for various Drupal projects. This tutorial uses Drush to install themes, modules, and a manual backup system, covering some basic administration tasks for Drupal websites.
@@ -27,15 +23,15 @@ Linode has another guide for installing Drush and creating a Drupal website, [In
 
 Before installing themes, modules, and a backup system with Drush, make sure that the following prerequisites have been met:
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 3.  Configure a LAMP stack using the [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide.
 
 4.  Install Drush and a Drupal website core with the [Installing & Using Drupal Drush on Debian 7](/docs/guides/how-to-install-drush-on-ubuntu-18-04/) guide.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -115,7 +111,7 @@ It's always important to keep regular backups of a website. Backups protect you 
 
 The backup process above can be automated. You must create an SHH Pair Key, a Bash script, and use Cron automation.
 
-1.  Create SSH Key Pair Authentication *without a password* for the Linode hosting your Drupal site, and pass the public key to the backup server. This is a simple task. It's covered in the Using [SSH Key Pair Authentication](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair) section of the [Securing Your Server](/docs/guides/set-up-and-secure/) guide.
+1.  Create SSH Key Pair Authentication *without a password* for the Linode hosting your Drupal site, and pass the public key to the backup server. This is a simple task. It's covered in the Using [SSH Key Pair Authentication](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair) section of the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 2.  On the Drupal hosting Linode, create a Bash script file. In the file excerpt below, replace `example.com` and the rsync command inputs from step 2 above:
 

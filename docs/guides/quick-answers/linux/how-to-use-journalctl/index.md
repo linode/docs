@@ -1,16 +1,12 @@
 ---
 slug: how-to-use-journalctl
-author:
-  name: Linode
-  email: docs@linode.com
+title: Use journalctl to View Your System's Logs
 description: This guide shows how to use journalctl to view, search, and filter your system's logs.
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-09-05
 keywords: ["systemd","journalctl","logging"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-09-05
-modified_by:
-  name: Linode
-published: 2018-09-05
-title: Use journalctl to View Your System's Logs
 external_resources:
   - '[journalctl man page](https://www.freedesktop.org/software/systemd/man/journalctl.html)'
   - '[systemd-journald man page](https://www.freedesktop.org/software/systemd/man/systemd-journald.service.html#)'
@@ -35,7 +31,7 @@ If you do not see output, try running it with `sudo`:
 
     sudo journalctl
 
-If your Linux user does not have sudo privileges, [add your user to the sudo group](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+If your Linux user does not have sudo privileges, [add your user to the sudo group](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 ### Default Log Format and Ordering
 
@@ -55,7 +51,7 @@ journalctl pipes its output to [the `less` command](/docs/guides/how-to-use-less
 
 Furthermore, your logs can be navigated and searched by using all the same key commands available in `less`:
 
-{{< content "how-to-navigate-less-shortguide" >}}
+{{% content "how-to-navigate-less-shortguide" %}}
 
 ### View journalctl without Paging
 
@@ -178,8 +174,7 @@ Fri 2018-08-31 12:00:25.543177 EDT [s=0b341b44cf194c9ca45c99101497befa;i=70d5;b=
     _AUDIT_LOGINUID=1000
     _SOURCE_REALTIME_TIMESTAMP=1536120282543177
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 
 In addition to the types of filters listed in the previous section, you can also filter logs by specifying values for the variables in the log record structure. For example, `journalctl _UID=0` will show logs for user ID 0 (i.e. the root user).
 
@@ -217,8 +212,7 @@ You should see a line similar to the following which describes the current limit
 {{< output >}}
 Permanent journal is using 32.0M (max allowed 2.3G, trying to leave 3.5G free of 21.2G available → current limit 2.3G).
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 A parallel group of settings is used when journald.conf is set to only persist the journals in memory (instead of on disk): `RuntimeMaxUse`, `RuntimeKeepFree`, `RuntimeMaxFileSize`, and `RuntimeMaxFiles`.
 {{< /note >}}
 

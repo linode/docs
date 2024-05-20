@@ -1,23 +1,18 @@
 ---
 slug: windows-red-team-lateral-movement-techniques
-author:
-  name: HackerSploit
-  email: hackersploit@gmail.com
+title: "Windows Red Team Lateral Movement Techniques"
 description: 'This guide covers the process of performing lateral movement on Windows systems.'
+authors: ["HackerSploit"]
+contributors: ["HackerSploit"]
+published: 2021-11-03
 keywords: ['security']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-03
-modified_by:
-  name: Linode
-title: "Windows Red Team Lateral Movement Techniques"
-contributor:
-  name: HackerSploit
 ---
 
-{{< content "hackersploit-red-team-series-note-shortguide" >}}
+{{% content "hackersploit-red-team-series-note-shortguide" %}}
 
-{{< content "hackersploit-caution-shortguide" >}}
+{{% content "hackersploit-caution-shortguide" %}}
 
 ## Before You Begin
 
@@ -102,11 +97,11 @@ For this section, our target system will be running Windows 10. As a prerequisit
 
         set payload windows/x64/meterpreter/reverse_tcp
 
-1. You will also need to set the SMBPass and SMBUser options with the NTLM hash and name of the user account. This can be done by running the following commands:
+1. You will also need to set the `SMBPass` and `SMBUser` options with the NTLM hash and name of the user account. This can be done by running the following commands:
 
         set SMBUser <USERNAME>
 
-    Note: In this case, we will be setting the “SMBUser” option to “Administrator”.
+    Note: In this case, we will be setting the `SMBUser` option to “Administrator”.
 
         set SMBPass <NTLM Hash>
 

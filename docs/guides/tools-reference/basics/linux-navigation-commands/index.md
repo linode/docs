@@ -1,18 +1,13 @@
 ---
 slug: linux-navigation-commands
-author:
-  name: Jeff Novotny
+title: "Navigate the Linux Terminal and File System"
 description: 'Learn how to navigate the Linux terminal and create and remove directories and files.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-10-08
 keywords: ['ls command','change directory in linux','cp command in linux']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-08
-modified_by:
-  name: Linode
-title: "Navigate the Linux Terminal and File System"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 ---
 
 For users more familiar with a graphical user interface (GUI), the Linux command line interface can initially appear daunting. It is not always apparent how to perform common file and directory operations. Fortunately, Linux commands are very powerful and flexible, and with some practice, you can accomplish any file management operation you want. This guide explains how to navigate the Linux file structure and how to perform common management operations on files and directories.
@@ -165,8 +160,7 @@ drwxrwxr-x 3 userid userid 4096 Aug 24 17:08 phpcomposer
 1. Files inside subdirectories can be listed recursively using the `-R` option. This displays all the files and directories in the current directories and inside all child subdirectories.
 
         ls -lR
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `ls` command has many more options. Consult the [Linux manual page for ls](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/ls.html), also known as the command *man* page, for complete information.
 {{< /note >}}
 
@@ -300,8 +294,7 @@ An easy way to create a file is with the `touch` command. This method creates a 
 1. The `touch` command can create multiple files at the same time.
 
         touch newfile2.txt newfile3.txt
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `touch` command can also be used to modify timestamps on existing files. The options list for this command is fairly extensive. See the [Linux man page](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/touch.html) for more information.
 {{< /note >}}
 
@@ -373,8 +366,7 @@ baseball  basketball  football  hockey  soccer
 ## How to Delete Files and Folders in Linux
 
 Remove files using the `rm` command, and remove directories using either `rm` or `rmdir`. Consult the Linux man pages to learn more about the [rm](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/rm.html) or [rmdir](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/rmdir.html) commands.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Recovering files that have been deleted with the `rm` command is somewhere between difficult and impossible. Take great care when using the `rm` or `rmdir` commands.
 {{< /note >}}
 

@@ -1,19 +1,13 @@
 ---
 slug: migrate-to-linode-object-storage
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Want to migrate from AWS S3 to Linode Object Storage? This tutorial covers the tools needed to copy and sync objects and buckets from Amazon to Linode."
-keywords: ['amazon s3 migrate files','aws s3 migrate object','linode object storage']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-10-08
-modified_by:
-  name: Nathaniel Stickman
 title: "Migrate to Linode Object Storage"
 title_meta: "How to Migrate to Linode Object Storage"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+description: "Want to migrate from AWS S3 to Linode Object Storage? This tutorial covers the tools needed to copy and sync objects and buckets from Amazon to Linode."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-10-08
+keywords: ['amazon s3 migrate files','aws s3 migrate object','linode object storage']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[How-to Geek: How to Migrate an AWS S3 Bucket to Another Account or Service](https://www.howtogeek.com/devops/how-to-migrate-an-aws-s3-bucket-to-another-account-or-service/)'
 - '[Google Cloud: Simple migration from Amazon S3 to Cloud Storage](https://cloud.google.com/storage/docs/aws-simple-migration#storage-list-buckets-s3-go)'
@@ -30,9 +24,9 @@ This tutorial the tooling needed to make migration from AWS S3 to Linode Object 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started with Linode](/docs/guides/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your system.
 
@@ -43,8 +37,7 @@ This tutorial the tooling needed to make migration from AWS S3 to Linode Object 
     -   **AlmaLinux**, **CentOS Stream** (8 or later), **Fedora**, and **Rocky Linux**:
 
             sudo dnf upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

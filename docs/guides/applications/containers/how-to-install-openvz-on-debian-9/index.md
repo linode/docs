@@ -1,27 +1,20 @@
 ---
 slug: how-to-install-openvz-on-debian-9
-author:
-  name: Linode Community
-  email: docs@Linode.com
+title: 'How to Install OpenVZ On Debian 9'
 description: 'This guide will show you how to install OpenVZ on your Linode and deploy a virtual environment.'
 og_description: 'OpenVZ, a software-based OS virtualization tool that enables deployment, management, and modification of isolated, virtual Linux environments from within a host Linux distribution, can be installed and run on a Linode, using this guide.'
+authors: ["Andrew Lescher"]
+contributors: ["Andrew Lescher"]
+published: 2017-09-22
+modified: 2017-09-25
 keywords: ["openvz", " virtualization", " docker"]
 tags: ["container","docker","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-09-22
-modified: 2017-09-25
-modified_by:
-  name: Linode
-title: 'How to Install OpenVZ On Debian 9'
-contributor:
-   name: Andrew Lescher
-   link: https://www.linkedin.com/in/andrew-lescher-87027940
 external_resources:
   - '[Basic OpenVZ Operations](https://openvz.org/Basic_operations_in_OpenVZ_environment)'
   - '[OpenVZ User Contributed Templates](https://openvz.org/Download/template/precreated)'
 aliases: ['/applications/containers/how-to-install-openvz-on-debian-9/']
 ---
-
 
 ## What is OpenVZ?
 
@@ -29,14 +22,14 @@ OpenVZ is a software-based OS virtualization tool enabling the deployment, manag
 
 ### Before You Begin
 
-1. Working through this tutorial requires a root user account, and is written as if commands are issued as the root user. Readers choosing to use a limited user account will need to prefix commands with `sudo` where required. If you have yet to create a limited user account, follow the steps in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+1. Working through this tutorial requires a root user account, and is written as if commands are issued as the root user. Readers choosing to use a limited user account will need to prefix commands with `sudo` where required. If you have yet to create a limited user account, follow the steps in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 2. The instructions in this guide were written for and tested on Debian 9 only. They are unlikely to work for other Debian or Ubuntu distributions.
 
 3. Certain essential modifications to your Debian 9 system are required to run OpenVZ, including the removal and replacement of Systemd with SystemV, and the use of a custom Linux kernel. Before continuing, be certain that all software currently installed on the machine will be compatible with these changes.
 
     {{< note respectIndent=false >}}
-Although not required, it is recommended to create a separate Ext4 filesystem partition for OpenVZ templates. By default, both the Debian 9 installer and the Linode Manager format newly created partitions with Ext4. For information on how to accomplish this configuration, follow the steps to create a disk in the [Managing Disks and Storage on a Linode](/docs/guides/disks-and-storage/) guide.
+Although not required, it is recommended to create a separate Ext4 filesystem partition for OpenVZ templates. By default, both the Debian 9 installer and the Linode Manager format newly created partitions with Ext4. For information on how to accomplish this configuration, follow the steps to create a disk in the [Managing Disks and Storage on a Linode](/docs/products/compute/compute-instances/guides/disks-and-storage/) guide.
 {{< /note >}}
 
 ### Optional: Create A Separate Partition For OpenVZ Templates
@@ -265,7 +258,7 @@ submenu 'Advanced options for Debian GNU/Linux' $menuentry_id_option 'gnulinux-a
 
 6. By default, kernel loading is not handled by Grub, but by the Linode Manager. Login to your Linode Manager and select your Linode. Click on your configuration profile. Under the "Boot Settings" section, select "GRUB 2" from the Kernel dropdown-list (see image below). Save your changes and exit.
 
-     ![Linode Manager - Select Kernel](openvz_one.png)
+     ![Linode Manager - Select Kernel](openvz-one.png)
 
 7. Reboot your server and issue the command below to verify the OpenVZ kernel was loaded:
 

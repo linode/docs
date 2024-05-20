@@ -1,18 +1,15 @@
 ---
 slug: configure-apache-with-salt-stack
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Configure Apache with Salt Stack"
 description: 'This guide provides you with step-by-step instructions for installing and configuring the Apache Web Server on Ubuntu, Debian, and CentOS with the Salt Sack.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-10-19
+modified: 2019-01-02
 keywords: ['salt','stack','saltstack','apache','httpd','ubuntu','debian','centos']
 tags: ["automation","salt","debian","centos","ubuntu","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-10-19
-modified: 2019-01-02
-modified_by:
-  name: Linode
 image: ConfigureApachewithSaltStack.png
-title: "Configure Apache with Salt Stack"
 external_resources:
 - '[Salt Apache State Module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache.html)'
 - '[Salt Apache_Conf State Module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache_conf.html)'
@@ -29,7 +26,7 @@ You will need at least two Linodes with Salt installed. If you have not already,
 
 The following steps will be performed on your Salt master.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

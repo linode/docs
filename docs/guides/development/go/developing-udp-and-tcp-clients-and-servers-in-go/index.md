@@ -1,19 +1,13 @@
 ---
 slug: developing-udp-and-tcp-clients-and-servers-in-go
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
+title: 'Create a TCP and UDP Client and Server using Go'
 description: 'Create a TCP and UDP client and server using the Go programming language.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-06-26
 keywords: ["go", "golang", "server", "client", "TCP", "UDP", "programming", "cli"]
 tags: ["networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-06-26
-modified_by:
-  name: Linode
-title: 'Create a TCP and UDP Client and Server using Go'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[Go](https://www.golang.com)'
 aliases: ['/development/go/developing-udp-and-tcp-clients-and-servers-in-go/']
@@ -39,8 +33,7 @@ Throughout this guide you will create the following:
     This guide requires Go version 1.8 or higher. It is considered good practice to have the [latest version of Go](https://golang.org/dl/) installed. You can check your Go version by executing the following command:
 
         go version
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Depending on the TCP/IP port number that you use when running the TCP and UDP servers, you may need to prefix commands with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -59,7 +52,7 @@ Go's [`net` package](https://golang.org/pkg/net/) provides a portable interface 
 ### net Package Functions
 Use the table below as a quick reference for some of the `net` package functions used throughout this guide. To view all types and functions included in the `net` package, see [Golang's official documentation](https://golang.org/pkg/net/).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 All versions of `net.Dial()` and `net.Listen()` return data types that implement the [`io.Reader`](https://golang.org/pkg/io/#Reader) and [`io.Writer`](https://golang.org/pkg/io/#Writer) interfaces. This means that you can use regular [File I/O](https://golang.org/pkg/io/) functions to send and receive data from a TCP/IP connection.
 {{< /note >}}
 
@@ -77,7 +70,7 @@ All versions of `net.Dial()` and `net.Listen()` return data types that implement
 
 In this section, you will create a generic TCP client and server using Go. After creating the client and server, you will run them to test their connection with each other.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The [netcat command line utility](https://en.wikipedia.org/wiki/Netcat) can be used to test TCP/IP client and server connections.
 {{< /note >}}
 
@@ -250,8 +243,7 @@ If the TCP server is not running on the expected TCP port, you will get the foll
 -> Hello!
 Exiting TCP server!
     {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The TCP server waits before writing back to the TCP client, whereas the client writes to the TCP server first and then waits to receive an answer.
 This behavior is part of the protocol definition that governs a TCP or a UDP connection. In this example, you have implemented an unofficial protocol that is based on TCP.
 {{< /note >}}

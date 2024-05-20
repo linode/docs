@@ -1,20 +1,14 @@
 ---
 slug: install-an-odoo-11-stack-on-ubuntu-16-04
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Install an Odoo 11 Stack on Ubuntu 16.04"
 description: 'This guide will show you how to install and configure Odoo using Git source so that it will be easy to upgrade and maintain on Ubuntu 16.04.'
+authors: ["Damaso Sanoja"]
+contributors: ["Damaso Sanoja"]
+published: 2018-01-21
+modified: 2021-10-18
 keywords: ["Odoo", "Odoo ERP", "CMS", "Ubuntu", "CRM", "OpenERP", "Odoo 11", "Ubuntu 16.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-01-21
-modified: 2021-10-18
-modified_by:
-  name: Linode
-title: "Install an Odoo 11 Stack on Ubuntu 16.04"
-contributor:
-  name: Damaso Sanoja
-  link: https://twitter.com/damasosanoja
 aliases: ['/websites/cms/install-an-odoo-11-stack-on-ubuntu-16-04/','/websites/erp/install-an-odoo-11-stack-on-ubuntu-16-04/']
 external_resources:
   - '[Odoo User Documentation](https://www.odoo.com/documentation/user/11.0/)'
@@ -46,9 +40,9 @@ All examples in this guide are for Ubuntu 16.04. If you plan to use a different 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -264,8 +258,7 @@ These settings are:
          -D /var/lib/postgresql/9.6/main/ -U replicauser -v -P
 
     You will be prompted with the `replicauser` password. Once the transfer is complete your **Standby** will be synchronized with the **Primary** database. This puts an exact replica of the Primary database on the Standby.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Do not start the Standby's PostgreSQL service until Step 3 of the next section, when all configuration is complete.
 {{< /note >}}
 
@@ -566,7 +559,6 @@ If all your tests pass, you can safely update your installation.
 2.  Apply the changes to your repository:
 
         sudo git reset --hard origin/11.0
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Do not confuse the Odoo system update with an Odoo **version** upgrade. With the method explained above, you are updating your Odoo application within the same version rather than **upgrading** to a newer Odoo version. Migrating from one version to another often requires several tests and manual modifications on the PostgreSQL database which are highly dependent on the version of Odoo you are upgrading from.
 {{< /note >}}

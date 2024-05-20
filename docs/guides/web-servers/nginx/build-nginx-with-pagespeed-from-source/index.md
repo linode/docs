@@ -1,17 +1,14 @@
 ---
 slug: build-nginx-with-pagespeed-from-source
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Build NGINX with PageSpeed From Source'
 description: 'This guide provides you with step-by-step instructions for compiling the Nginx web server from scratch so you can use Google''s PageSpeed moduleon your website.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-02-01
+modified: 2018-02-12
 keywords: ["nginx","pagespeed","optimization"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1604/','/web-servers/nginx/nginx-with-pagespeed-on-ubuntu-14-04/','/web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1804/','/web-servers/nginx/build-nginx-with-pagespeed-from-source/']
-published: 2019-02-01
-modified: 2018-02-12
-modified_by:
-  name: Linode
-title: 'Build NGINX with PageSpeed From Source'
 dedicated_cpu_link: true
 tags: ["web server","nginx"]
 ---
@@ -40,7 +37,7 @@ This guide will show how to compile both NGINX and PageSpeed. If you would prefe
 
 -  You will need root access to the system, or a user account with `sudo` privileges.
 
--  Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
+-  Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 -  Update your system's packages.
 
@@ -74,7 +71,7 @@ configure arguments: --add-module=/root/incubator-pagespeed-ngx-latest-stable --
 
 The official [PageSpeed documentation](https://www.modpagespeed.com/doc/build_ngx_pagespeed_from_source) provides a bash script to automate the installation process.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The automated installation script will install several compilation tools needed to install PageSpeed. If you are using a production environment, ensure you uninstall any packages that are no longer needed after the installation has completed.
 {{< /note >}}
 

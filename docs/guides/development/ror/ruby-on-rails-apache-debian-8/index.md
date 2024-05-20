@@ -1,21 +1,16 @@
 ---
 slug: ruby-on-rails-apache-debian-8
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Install Ruby on Rails with Apache on Debian 8'
 description: 'Using the Apache web server with Debian 8 Wheezy to serve Ruby on Rails applications.'
+og_description: 'This tutorial will teach you how to use an Apache web server with Debian 8 to serve Ruby on Rails applications'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-07-13
+modified: 2017-09-13
 keywords: ["ruby on rails", "rails on debian", "rails apps", "rails and apache"]
 tags: ["web applications","debian","apache","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-apache-debian-8/','/websites/ror/ruby-on-rails-apache-debian-8/']
-modified: 2017-09-13
-modified_by:
-  name: Elle Krout
-published: 2013-07-13
-deprecated: true
-deprecated_link: 'development/ror/ruby-on-rails-apache-debian'
-title: 'Install Ruby on Rails with Apache on Debian 8'
-og_description: 'This tutorial will teach you how to use an Apache web server with Debian 8 to serve Ruby on Rails applications'
 external_resources:
  - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
  - '[mod_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'
@@ -27,21 +22,22 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Debian 8
+deprecated: true
+deprecated_link: 'development/ror/ruby-on-rails-apache-debian'
 ---
 
 Ruby on Rails is a rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications. This guide deploys Rails applications using the Phusion Passenger or `mod_rails` method. Passenger allows you to embed Rails apps directly in Apache applications without needing to worry about FastCGI or complex web server proxies.
 
 ![Ruby on Rails with Apache on Debian 8](ruby_on_rails_with_apache_debian_8.png "Ruby on Rails with Apache on Debian 8")
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
 
     To check your hostname run:
 

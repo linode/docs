@@ -1,19 +1,15 @@
 ---
 slug: lamp-server-on-ubuntu-10-10-maverick
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'LAMP Server on Ubuntu 10.10 (Maverick)'
 description: 'Configuring a LAMP stack with Apache, MySQL, PHP and on Ubuntu Linux 10.10 (Maverick).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-10-13
+modified: 2012-10-03
 keywords: ["ubuntu lamp server", "ubuntu 10.10 lamp", "maverick lamp", "ubuntu web server", "ubuntu maverick"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-ubuntu-10-10-maverick/','/lamp-guides/ubuntu-10-10-maverick/','/web-servers/lamp/lamp-server-on-ubuntu-10-10-maverick/']
-modified: 2012-10-03
-modified_by:
-  name: Linode
-published: 2010-10-13
-title: 'LAMP Server on Ubuntu 10.10 (Maverick)'
 external_resources:
   - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -24,9 +20,8 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 10.10
+deprecated: true
 ---
-
-
 
 This guide provides step by step instructions for installing a full featured LAMP stack on an Ubuntu 10.10 (Maverick) system. The 10.10 release is the most current release of the Ubuntu operating system, and will be supported with security updates until April of 2012.
 
@@ -34,7 +29,7 @@ In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If y
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

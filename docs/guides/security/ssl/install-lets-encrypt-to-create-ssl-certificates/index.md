@@ -1,40 +1,33 @@
 ---
 slug: install-lets-encrypt-to-create-ssl-certificates
-author:
-  name: 'Linode Community'
-  email: 'docs@linode.com'
+title: "Install Let's Encrypt to Create SSL Certificates"
 description: "This guide will show you how to install automation tool Certbot on the Ubuntu 18.04 distribution."
-keywords: ['ACME','HTTPS',"Let's Encrypt",'SSL','SSL certificates', 'renew certificate']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Sean Webber"]
+contributors: ["Sean Webber"]
 published: 2016-02-25
 modified: 2020-12-02
-modified_by:
-  name: 'Linode'
-title: "Install Let's Encrypt to Create SSL Certificates"
-contributor:
-  name: 'Sean Webber'
-  link: 'https://github.com/seanthewebber'
-deprecated: true
-deprecated_link: 'guides/enabling-https-using-certbot-with-nginx-on-ubuntu/'
+keywords: ['ACME','HTTPS',"Let's Encrypt",'SSL','SSL certificates', 'renew certificate']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - "[Let's Encrypt Homepage](https://letsencrypt.org/)"
 tags: ["security","ssl"]
 aliases: ['/security/ssl/install-lets-encrypt-to-create-ssl-certificates/']
+deprecated: true
+deprecated_link: 'guides/enabling-https-using-certbot-with-nginx-on-ubuntu/'
 ---
 
 ![Let's Encrypt](Install_Lets_Encrypt_to_Create_SSL_Certificates_smg.jpg)
 
 [Let's Encrypt](https://letsencrypt.org/) is an SSL certificate authority managed by the Internet Security Research Group (ISRG). It utilizes the [Automated Certificate Management Environment](https://github.com/ietf-wg-acme/acme/) (ACME) to automatically deploy free SSL certificates that are trusted by nearly all major browsers.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 For most situations, the recommended method for installing Let's Encrypt certificates is the official [Certbot](https://certbot.eff.org/) tool. Certbot automates the process of obtaining and installing a certificate, and can also automatically update your web server configuration. The instructions in this guide install Let's Encrypt and add certificates manually, which is not necessary for most users.
 {{< /note >}}
 
 ## Before you Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the steps in our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+2.  Complete the steps in our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 3.  Update your server's software packages:
 
@@ -177,7 +170,7 @@ IMPORTANT NOTES:
 
     Let's Encrypt has refreshed the lifespan of your certificates; in this example, March 31st, 2016 is the new expiration date.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Let's Encrypt certificates have a 90-day lifespan. [According to Let's Encrypt](https://letsencrypt.org/2015/11/09/why-90-days.html), this encourages automation and minimizes damage from key compromises. You can renew your certificates at any time during their lifespan.
 {{< /note >}}
 

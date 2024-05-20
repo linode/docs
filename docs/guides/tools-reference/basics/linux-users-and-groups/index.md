@@ -1,19 +1,16 @@
 ---
 slug: linux-users-and-groups
-author:
-  name: Linode
-  email: docs@linode.com
+title: Linux Users and Groups
 description: "Want to learn more about Linux users and groups? This guide covers the most common user and group management tasks."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-31
+modified: 2021-01-07
 keywords: ["users", "permissions", "access control lists", "chmod", "chown", "linux"]
 tags: ["security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/linux-users-and-groups/','/tools-reference/basics/linux-users-and-groups/','/docs/using-linux/users-and-groups/']
+aliases: ['/tools-reference/linux-users-and-groups/','/tools-reference/basics/linux-users-and-groups/','/docs/using-linux/users-and-groups/','/using-linux/users-and-groups/']
 bundles: ['debian-security', 'centos-security']
-modified: 2021-01-07
-modified_by:
-  name: Linode
-published: 2009-08-31
-title: Linux Users and Groups
 external_resources:
  - '[Users and Groups Administration in Linux @ DebianAdmin](http://www.debianadmin.com/users-and-groups-administration-in-linux.html)'
  - '[Online Chmod Calculator](http://www.onlineconversion.com/html_chmod_calculator.htm)'
@@ -193,15 +190,14 @@ For CentOS, the command is as follows:
 
 In order to provide a user with the `sudo` ability, they need to be added to a `sudo` enabled group, or their username needs to be added to the sudoers file with a set of permissions. This file is sensitive and important as an access and security control, and should not be edited directly with a text editor. If the sudoers file is edited incorrectly it could result in preventing access to the system or other unintended permission changes.
 
-{{< note respectIndent=false >}}
-For instructions on adding a user to a default `sudo` enabled group, see our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide
+{{< note >}}
+For instructions on adding a user to a default `sudo` enabled group, see our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide
 {{< /note >}}
 
 The `visudo` command should be used to edit the sudoers file. At a command line, log into your system as `root` and enter the command `visudo`.
 
 The following `sudoers` excerpt allows the listed users to execute any command they'd like by prefixing it with `sudo`, which gives the user full control of a system.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Users should never be added to the `sudoers` file or group with full permission if they are not trusted. You can optionally restrict what users can do with `sudo` as an additional layer of security; refer to the  [Whitelisting Commands With Sudo](#whitelisting-commands-with-sudo) for some examples on restricted usage syntax.
 {{< /note >}}
 
@@ -232,7 +228,7 @@ In many cases, while you want users to have elevated sudo permissions, you also 
 
 While the root and `sudousername` users still have full superuser permissions, the user `username` has been limited to only the `top` and `apt-get` commands as a sudo user. Additionally, all users added to the `sudo` group are separately limited only to the `less`, `ls`, and `apt` commands with sudo permissions. If you wanted to give the user `username` sudo access to the additional 3 commands allowed for the `sudo` group, you would just need to add them to the `sudo` group and they would still retain their own unique permissions, giving them sudo access to a total of 5 commands. This process can be repeated for as many users and groups as needed.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 When allowing individual commands using the above syntax, it is important to use the absolute path to the command. The `which` command can be used to find this absolute path:
 
     which command-name
@@ -285,8 +281,7 @@ The first column with the ten letters and dashes shows the permissions of the fi
     `4096` is the size
     `Jan  9 10:11` is the date/time of last access
     `documents` is the directory
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Since a directory itself is a file, any directory shows `4096` as it's size. This does not reflect the size of the contents of the directory.
 {{< /note >}}
 

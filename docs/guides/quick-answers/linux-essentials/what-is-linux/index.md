@@ -1,18 +1,12 @@
 ---
 slug: what-is-linux
-author:
-  name: Linode
-  email: docs@linode.com
+title: "What is Linux?"
 description: 'This guide provides you with an overview of the Linux Operating System, including details about its history, the Kernel, development models, lifecycles, and more.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-07-26
 keywords: ['linux','unix','kernel','open source','free software']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-07-26
-modified: 2018-07-26
-modified_by:
-  name: Linode
-title: "What is Linux?"
-contributor:
-  name: Linode
 tags: ["linux"]
 aliases: ['/quick-answers/linux-essentials/what-is-linux/']
 ---

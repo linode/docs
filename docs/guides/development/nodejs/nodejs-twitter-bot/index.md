@@ -1,19 +1,13 @@
 ---
 slug: nodejs-twitter-bot
-author:
-    name: Pj Metz
-    email: metz.pj@gmail.com
+title: "Make a Twitter Bot and Reply to Tweets in Node.js"
 description: "How to make a Twitter bot with Node.js, publish it to GitHub, and then host it on a Linode cloud instance. The guide is intended for people new to coding."
+authors: ["Pj Metz"]
+contributors: ["Pj Metz"]
+published: 2021-07-23
 keywords: ["how to make a twitter bot", "node twitter", "reply bot twitter", "node twitter api tutorial"]
 tags: ["version control system", "javascript"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-23
-modified_by:
-    name: Linode
-title: "Make a Twitter Bot and Reply to Tweets in Node.js"
-contributor:
-    name: Pj Metz
-    link: https://www.metzinaround.com
 external_resources:
     - "[Documentation Home | Docs | Twitter Developer Platform](https://developer.twitter.com/en/docs)"
     - "[npm Docs](https://docs.npmjs.com/)"
@@ -624,7 +618,7 @@ This section of code defines a `pressSelect` function that sends new Tweets with
 
 Now that the bot code has been added to your workstation's copy of the repository, we should make a new *commit*. A commit in Git records your file changes in the version control history. After making the new commit, you can then **push** it to your repository on GitHub.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 A commit that you make locally is not automatically synced to GitHub. The push operation demonstrated in this tutorial needs to be done manually.
 {{< /note >}}
 
@@ -831,7 +825,7 @@ You could certainly let this code run for a long while from your local machine, 
 
     ![Linode home screen](https://lh3.googleusercontent.com/JFNpdFMCe9A37beAwtxazN-zqcSr88Ff457bnQhbQpkQJILfqAv7g0bR_CQ6SxMu8EfKgIcaqTGuZvPTTI2hOb6dYyi3CyLMubEKOwFEZMkCaByjpk83L2o0c4W8GTwE4VPSodE-)
 
-1. Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide. When creating your instance, use the following options:
+1. Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide. When creating your instance, use the following options:
 
     - Pick Ubuntu 20.04 as your Linux distribution.
 
@@ -847,7 +841,7 @@ You could certainly let this code run for a long while from your local machine, 
 
 ### Log In and Secure the Server
 
-1. To log into the server, follow the [Connect to Your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) section of our [Getting Started](/docs/guides/getting-started/) guide. If you do not have access to an SSH client, or if SSH connections are firewalled on your local network, you can also opt to use [the Lish console](/docs/guides/lish/) from the Cloud Manager in your web browser. To do so, follow the [Use a Web Browser](/docs/guides/lish/#through-the-cloud-manager-weblish) instructions in our Lish guide.
+1. To log into the server, follow the [Connect to Your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) section of our [Getting Started](/docs/products/platform/get-started/) guide. If you do not have access to an SSH client, or if SSH connections are firewalled on your local network, you can also opt to use [the Lish console](/docs/products/compute/compute-instances/guides/lish/) from the Cloud Manager in your web browser. To do so, follow the [Use a Web Browser](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) instructions in our Lish guide.
 
     {{< note respectIndent=false >}}
 Our [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) guide series has a few other options for SSH clients, like SSH extension for the Chrome web browser.
@@ -859,7 +853,7 @@ Our [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over
 If you were to run your programs as root, and if they were to be compromised by someone malicious, then the rest of your server could be compromised. If your server isn't running anything else, then it may not be important to you. However, an attacker could install malicious programs that target other people's servers, like a botnet script that sends denial-of-service attacks.
 {{< /note >}}
 
-1. To create a non-root-user, follow the [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. This guide assumes that the name of the new user is `tutorialbotuser`, but you can name it whatever you'd like. The instructions in this section also show how to give your user `sudo` privileges, so it is still able to perform software updates and other administrative tasks.
+1. To create a non-root-user, follow the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. This guide assumes that the name of the new user is `tutorialbotuser`, but you can name it whatever you'd like. The instructions in this section also show how to give your user `sudo` privileges, so it is still able to perform software updates and other administrative tasks.
 
     {{< note respectIndent=false >}}
 Here's a video that also shows how to create a limited user: [Tech Republic: How to create a new user with admin privileges](https://youtu.be/fDHHKR0nVQg).
@@ -868,7 +862,7 @@ Here's a video that also shows how to create a limited user: [Tech Republic: How
 1. After you have created the limited user, log out of your current SSH (or Lish) session by running the `exit` command. Then, log back in as the new user.
 
     {{< note respectIndent=false >}}
-The rest of the steps in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide are optional for this tutorial, but they are still recommended if you intend to leave your server running.
+The rest of the steps in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide are optional for this tutorial, but they are still recommended if you intend to leave your server running.
 {{< /note >}}
 
 ### Perform Software Updates and Prepare for the Bot
@@ -997,7 +991,7 @@ To keep your bot running uninterrupted, you can start a Screen session. [Screen]
 
 ## Troubleshooting
 
-### Troubleshooting consumer_key Twit Config Error
+### Troubleshooting `consumer_key` Twit Config Error
 
 When starting the bot, you may see an error like this:
 
@@ -1080,10 +1074,10 @@ This error indicates that incorrect keys were copied into your `.env` file. You 
 
 | .env Key Name | Twitter Developer Portal Credential Name |
 |---------------|------------------------------------------|
-| consumer_key  | API Key                                  |
-| consumer_secret | API Secret Key                         |
-| access_token | Access Token                              |
-| access_token_secret | Access Token Secret                |
+| `consumer_key`  | API Key                                  |
+| `consumer_secret` | API Secret Key                         |
+| `access_token` | Access Token                              |
+| `access_token_secret` | Access Token Secret                |
 
 If you're not sure whether your keys are correct, you can regenerate them inside the Twitter developer portal. See the [Regenerate API Keys and Tokens](https://developer.twitter.com/en/docs/authentication/guides/authentication-best-practices) section of Twitter's documentation for instructions.
 

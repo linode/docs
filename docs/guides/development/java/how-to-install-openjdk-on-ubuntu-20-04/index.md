@@ -1,22 +1,16 @@
 ---
 slug: how-to-install-openjdk-on-ubuntu-20-04
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: Installing Java Development Kit 11 on Ubuntu 20.04
+title_meta: How To Install Java Development Kit 11 on Ubuntu 20.04
 description: 'This guide will show you how to install the free and open-source Open Java Development Kit (OpenJDK) version of the Java Runtime Environment (JRE) on Ubuntu 20.04.'
 og_description:  'This guide will show you how to install the free and open-source Open Java Development Kit (OpenJDK) version of the Java Runtime Environment (JRE) on Ubuntu 20.04.'
+authors: ["Rajakavitha Kodhandapani"]
+contributors: ["Rajakavitha Kodhandapani"]
+published: 2020-03-25
 keywords: ["java", "openjdk", "jdk", "11", "Ubuntu", "20.04"]
 tags: ["java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-25
-modified_by:
-  name: Linode
-published: 2020-03-25
 image: InstallJavaDevKit11_Ubuntu2004.png
-title: Installing Java Development Kit 11 on Ubuntu 20.04
-title_meta: How To Install Java Development Kit 11 on Ubuntu 20.04
-contributor:
-  name: Rajakavitha Kodhandapani
 audiences: ["beginner"]
 languages: ["java"]
 relations:
@@ -35,9 +29,9 @@ While there are many available versions of OpenJDK, version 11 is the latest Lon
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for connecting to your Linode with SSH and setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for connecting to your Linode with SSH and setting your Linode's hostname and timezone.
 
-1.  Complete the sections of our guide on [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services. This guide will use `sudo` commands wherever possible, which should be run by a limited, non-root user on your Linode.
+1.  Complete the sections of our guide on [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services. This guide will use `sudo` commands wherever possible, which should be run by a limited, non-root user on your Linode.
 
 1.  Ensure your system is up-to-date:
 

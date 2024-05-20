@@ -1,18 +1,10 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy Node.js through the Linode Marketplace"
 description: "Deploy Node.js on a Linode Compute Instance. This provides a JavaScript runtime to use with web applications."
-keywords: ['nodejs','development','javascript']
-tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-22
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy Node.js through the Linode Marketplace"
-contributor:
-  name: Linode
+keywords: ['nodejs','development','javascript']
+tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/guides/nodejs-marketplace-app/']
 ---
 
@@ -20,9 +12,9 @@ aliases: ['/guides/nodejs-marketplace-app/']
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Node.js should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
@@ -37,9 +29,11 @@ aliases: ['/guides/nodejs-marketplace-app/']
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
+
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -49,7 +43,7 @@ The Node.js Marketplace App is running [Nginx](https://www.nginx.com/), [Node.js
 
 The Node.js sample application is stored in the `hello.js` file within `/opt/nodejs/`. To access it within the command line, follow the instructions below.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Navigate to the directory in which the application is stored:
 
@@ -61,8 +55,8 @@ The Node.js sample application is stored in the `hello.js` file within `/opt/nod
 
 ### Viewing the Node.js App through a Web Browser
 
-Open your web browser and navigate to `http://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing rDNS.
+Open your web browser and navigate to `http://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
 
 ![Screenshot of Node.js sample application](nodejs-site.png)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

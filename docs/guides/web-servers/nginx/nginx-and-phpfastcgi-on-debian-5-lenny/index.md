@@ -1,33 +1,30 @@
 ---
 slug: nginx-and-phpfastcgi-on-debian-5-lenny
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Nginx and PHP-FastCGI on Debian 5 (Lenny)'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Debian 5 (Lenny).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-14
+modified: 2012-10-08
 keywords: ["nginx", "nginx debian", "nginx fastcgi", "nginx php"]
 tags: ["web server","debian","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/php-fastcgi/debian-5-lenny/','/web-servers/nginx/nginx-and-phpfastcgi-on-debian-5-lenny/','/websites/nginx/nginx-and-phpfastcgi-on-debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2009-12-14
-title: 'Nginx and PHP-FastCGI on Debian 5 (Lenny)'
-deprecated: true
 relations:
     platform:
         key: nginx-php-fastcgi
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI.
 
-It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
+It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

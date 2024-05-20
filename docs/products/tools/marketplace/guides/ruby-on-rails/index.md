@@ -1,19 +1,11 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy Ruby on Rails through the Linode Marketplace"
 description: "This guide provides you with installation and configuration instructions for deploying Ruby on Rails using the Lindoe One-Click Apps Marketplace."
-keywords: ['ruby on rails','marketplace', 'marketplace apps']
-tags: ["ruby","linode platform","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified: 2022-03-08
+keywords: ['ruby on rails','marketplace', 'marketplace apps']
+tags: ["ruby","linode platform","marketplace","cloud-manager"]
 image: RubyonRails_oneclickapps.png
-modified_by:
-  name: Linode
-title: "Deploy Ruby on Rails through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
  - '[Ruby on Rails Documentation](https://guides.rubyonrails.org/)'
  - '[Securing Rails Applications](https://guides.rubyonrails.org/security.html)'
@@ -25,9 +17,9 @@ aliases: ['/platform/marketplace/deploying-ruby-on-rails-with-marketplace-apps/'
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Ruby on Rails should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -48,7 +40,7 @@ aliases: ['/platform/marketplace/deploying-ruby-on-rails-with-marketplace-apps/'
 
 After Ruby on Rails has finished installing, you will be able to access Ruby on Rails from the console via ssh with your Linode's IPv4 address:
 
-1.  [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) and [create a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+1.  [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) and [create a limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 1.  Log out and log back in as your limited user account.
 
@@ -143,7 +135,7 @@ For more information on setting up a more substantial application, refer to the 
 
 ## Next Steps
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 For more on Ruby on Rails, checkout the following guides:
 

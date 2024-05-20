@@ -1,17 +1,14 @@
 ---
 slug: use-nginx-reverse-proxy
-author:
-  name: Linode
-  email: docs@linode.com
+title: Use NGINX as a Reverse Proxy
 description: 'Learn how to use NGINX as a reverse proxy. Understand how headers and buffers can help optimize your application’s performance.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-03-26
+modified: 2021-02-02
 keywords: ["nginx","reverse proxy","proxy","node.js"]
 tags: ["proxy","web server","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-02-02
-modified_by:
-  name: Linode
-published: 2018-03-26
-title: Use NGINX as a Reverse Proxy
 external_resources:
   - '[NGINX Reverse Proxy – NGINX](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)'
 aliases: ['/web-servers/nginx/use-nginx-reverse-proxy/']
@@ -38,7 +35,7 @@ Some common uses of NGINX as a reverse proxy include load balancing to maximize 
 
 ## Install NGINX
 
-{{< content "install-nginx-ubuntu-ppa" >}}
+{{% content "install-nginx-ubuntu-ppa" %}}
 
 ## Create an Example App
 
@@ -46,7 +43,7 @@ Some common uses of NGINX as a reverse proxy include load balancing to maximize 
 
 Though there are a number of options available to install Node.js, we recommend using NVM with the following steps:
 
-{{< content "how-to-install-nvm" >}}
+{{% content "how-to-install-nvm" %}}
 
 ### Configure the App
 
@@ -267,7 +264,7 @@ One advantage of a reverse proxy is that it is easy to set up HTTPS using a TLS 
 
 Follow these steps to get a certificate via Certbot. Certbot will automatically update your NGINX configuration files to use the new certificate:
 
-{{< content "certbot-shortguide-ubuntu" >}}
+{{% content "certbot-shortguide-ubuntu" %}}
 
 ## Next Steps
 

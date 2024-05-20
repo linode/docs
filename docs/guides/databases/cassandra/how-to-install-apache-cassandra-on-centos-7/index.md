@@ -1,20 +1,14 @@
 ---
 slug: how-to-install-apache-cassandra-on-centos-7
-author:
-   name: Andrew Lescher
-   email: docs@linode.com
-description: 'This guide will show you how to deploy a scalable and development-driven NoSQL database with Apache Cassandra on a Linode running CentOS 7.'
-keywords: ["cassandra", " apache cassandra", " centos 7", " ubuntu 18.04", " database", " nosql"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-06-12
-modified: 2022-05-16
-modified_by:
-  name: Linode
 title: "Installing Apache Cassandra on CentOS 7"
 title_meta: "How to Install Apache Cassandra on CentOS 7"
-contributor:
-   name: Andrew Lescher
-   link: https://www.linkedin.com/in/andrew-lescher-87027940/
+description: 'This guide will show you how to deploy a scalable and development-driven NoSQL database with Apache Cassandra on a Linode running CentOS 7.'
+authors: ["Andrew Lescher"]
+contributors: ["Andrew Lescher"]
+published: 2017-06-12
+modified: 2022-05-16
+keywords: ["cassandra", " apache cassandra", " centos 7", " ubuntu 18.04", " database", " nosql"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 relations:
     platform:
         key: install-apache-cassandra
@@ -40,8 +34,8 @@ After completing this guide, you will have a single-node, production-ready insta
 
 ### Before You Begin
 
-1. Complete the [Getting Started](/docs/guides/getting-started/) guide for setting up a new Linode.
-2. While it is recommended you complete the entire [Securing Your Server](/docs/guides/set-up-and-secure/) guide, it will be necessary at least to possess a limited user account.
+1. Complete the [Getting Started](/docs/products/platform/get-started/) guide for setting up a new Linode.
+2. While it is recommended you complete the entire [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it will be necessary at least to possess a limited user account.
 
 ### Add Repositories and GPG Keys
 
@@ -61,7 +55,7 @@ After completing this guide, you will have a single-node, production-ready insta
 
         curl -o repo_key http://rpm.datastax.com/rpm/repo_key
 
-6.  The key should now be contained in a file called "repo_key". Install the key with the package manager:
+6.  The key should now be contained in a file called `repo_key`. Install the key with the package manager:
 
         rpm --import repo_key
 
@@ -215,11 +209,11 @@ encoding = utf8
 
 Update your default cluster name from "Test Cluster" to your desired name.
 
-1.  Login to the control terminal with cqlsh. Replace [new_name] with your new cluster name:
+1.  Login to the control terminal with cqlsh. Replace `[new_name]` with your new cluster name:
 
         UPDATE system.local SET cluster_name = '[new_name]' WHERE KEY = 'local';
 
-2.  Edit the cassandra.yaml file and replace the value in the cluster_name variable with the new cluster name you just set.
+2.  Edit the cassandra.yaml file and replace the value in the `cluster_name` variable with the new cluster name you just set.
 
         vim /etc/cassandra/conf/cassandra.yaml
 

@@ -1,22 +1,17 @@
 ---
 slug: how-to-install-selinux-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Install SELinux on Debian 10"
+title_meta: "How to Install SELinux on Debian 10"
 description: "Learn how to install SELinux and use it to protect the security of your Debian 10 system"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-17
 keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
 aliases: ['/quick-answers/linux/how-to-install-selinux-on-debian-10/']
 bundles: ['debian-security']
 tags: ["debian","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
-published: 2020-03-17
 image: InstallSELinux_Deb10.png
-contributor:
-  name: Linode
-title: "Install SELinux on Debian 10"
-title_meta: "How to Install SELinux on Debian 10"
 relations:
     platform:
         key: how-to-install-selinux
@@ -28,7 +23,7 @@ Ubuntu has a Mandatory Access Control (MAC) system similar to [SELinux](https://
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
     {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
@@ -38,7 +33,7 @@ This guide is written for a non-root user. Commands that require elevated privil
         sudo apt update
 
     {{< note respectIndent=false >}}
-The Linode kernel does not support SELinux by default. If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
+The Linode kernel does not support SELinux by default. If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
     {{< /note >}}
 
 ### Remove AppArmor

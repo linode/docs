@@ -1,19 +1,14 @@
 ---
 slug: use-and-modify-official-saltstack-formulas
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Use and Modify Official SaltStack Formulas"
 description: 'Learn how to use and modify official SaltStack formulas to manage your infrastructure.'
-keywords: ['salt', 'formulas', 'git']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2018-11-12
 modified: 2019-01-02
-modified_by:
-  name: Linode
+keywords: ['salt', 'formulas', 'git']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: UseandModifyOfficialSaltStackFormulas.png
-title: "Use and Modify Official SaltStack Formulas"
-contributor:
-  name: Linode
 external_resources:
 - '[Salt Formulas](https://docs.saltproject.io/en/latest/topics/development/conventions/formulas.html)'
 - '[Git Fileserver Backend Walkthrough](https://docs.saltproject.io/en/latest/topics/tutorials/gitfs.html)'
@@ -41,9 +36,9 @@ This guide will use GitHub to fork and modify SaltStack's [timezone formula](htt
 
 1. Use the [Getting Started with Salt - Basic Installation and Setup](/docs/guides/getting-started-with-salt-basic-installation-and-setup/) guide to set up a Salt Master and two Salt minions: one running Ubuntu 18.04 and the second running CentOS 7.
 
-1.  Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

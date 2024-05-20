@@ -1,19 +1,14 @@
 ---
 slug: what-is-a-service-mesh
-author:
-  name: Nathaniel Stickman
+title: "The Benefits of a Service Mesh"
+title_meta: "What is a Service Mesh?"
 description: 'In this guide you learn when to use a service mesh and how it can help optimize your web application''s operational overhead and centralize your service management.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-22
 keywords: ['service mesh', 'what is a service mesh', 'microservices', 'service architecture']
 tags: ['web applications', 'networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-22
-modified_by:
-  name: Linode
-title: "The Benefits of a Service Mesh"
-title_meta: "What is a Service Mesh?"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - "[The Service Mesh: What Every Software Engineer Needs to Know about the World's Most Over-Hyped Technology](https://buoyant.io/service-mesh-manifesto/)"
 ---

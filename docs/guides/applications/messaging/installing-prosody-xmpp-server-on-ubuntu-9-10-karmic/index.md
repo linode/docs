@@ -1,31 +1,26 @@
 ---
 slug: installing-prosody-xmpp-server-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Installing Prosody XMPP Server on Ubuntu 9.10 (Karmic)'
 description: 'Installation and basic usage guide for Prosody, a lightweight XMPP server on Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-11-09
+modified: 2011-04-29
 keywords: ["prosody", "prosody ubuntu karmic", "prosody.im", "xmpp", "real time messaging", "lua"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/prosody/ubuntu-9-10-karmic/','/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-9-10-karmic/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2009-11-09
-title: 'Installing Prosody XMPP Server on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: how-to-install-prosody
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 Prosody is a XMPP/Jabber server programmed in Lua that is simple and lightweight. Prosody uses fewer resources than its counterparts and is designed to be easy to configure and run. [ejabberd](/docs/guides/use-ejabberd-for-instant-messaging-on-ubuntu-12-04/) or [OpenFire](/docs/guides/install-openfire-on-ubuntu-12-04-for-instant-messaging/) may be better suited for larger applications, but for most independent and small scale uses Prosody is a more resource-efficient solution. Prosody is a very good candidate for running an XMPP server for a very small base of users, or for XMPP development.
 
-Before we begin with the installation and configuration of Prosody, we assume that you have a running and up to date installation of Ubuntu Karmic, have completed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide and have logged in via SSH as root.
+Before we begin with the installation and configuration of Prosody, we assume that you have a running and up to date installation of Ubuntu Karmic, have completed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide and have logged in via SSH as root.
 
 ## Adding Software Repositories
 

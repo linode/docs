@@ -1,15 +1,13 @@
 ---
 slug: transferring-a-mern-application-to-a-new-server
-author:
-  name: Linode
+title: "Transfer a MERN application to Linode's MERN Marketplace App"
 description: "This guide discusses guidelines for quickly transferring a MERN stack application over to Linode built with Linode's Marketplace App."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2022-02-25
 keywords: ['mern stack','node.js','javascript','mongodb']
 tags: ['apache', 'nginx', 'ubuntu', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-25
-modified_by:
-  name: Linode
-title: "Transfer a MERN application to Linode's MERN Marketplace App"
 external_resources:
 - '[MongoDB MERN Stack Explained](https://www.mongodb.com/mern-stack)'
 - '[Node.js](https://nodejs.org/en/)'
@@ -27,8 +25,7 @@ Before proceeding with any migration, it is first recommended that the Marketpla
 - MongoDB
 - Node.js
 - NPM
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Users who prefer building applications with alternative package Managers for Node.js like [Yarn](/docs/guides/install-and-use-the-yarn-package-manager/) will need to install the package manager manually.
 {{< /note >}}
 
@@ -49,7 +46,7 @@ The default `hello-world` Flask application included as part of the MERN Marketp
 
 Before, proceeding with any remote transfer, it is strongly recommended the original host that will be transferring data to the Linode has [Backups](/docs/guides/backing-up-your-data/) available to restore from. While standard backup solutions will work for the majority of the MERN Stack, a database dump for MongoDB should be performed by using the [mongodump](https://docs.mongodb.com/database-tools/mongodump/) command.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If using a Cloud-Native database like **MongoDB Atlas**, the steps for transferring your database may differ, and users should consult the documentation of their database host.
 {{< /note >}}
 
@@ -97,7 +94,7 @@ The packages installed using the `npm install` command will install all node mod
 
 Once these steps are completed, your node configuration should successfully be running.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Some MERN applications are dependent on a specific version of Node in order to serve content. If you encounter errors related to your version of Node, you can additionally install tools like the [Node Version Manager(NVM)](/docs/guides/how-to-install-use-node-version-manager-nvm/) in order to easily switch to your needed version of Node.
 
 {{< /note >}}

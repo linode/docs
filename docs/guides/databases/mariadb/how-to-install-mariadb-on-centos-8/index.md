@@ -1,19 +1,15 @@
 ---
 slug: how-to-install-mariadb-on-centos-8
-author:
-    name: Linode
-    email: docs@linode.com
-description: "This guide shows how to install and configure the MariaDB server on CentOS 8."
-og_description: "MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on CentOS 8."
-keywords: ["MariaDB on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MariaDB", "database", "MySQL", "install MariaDB", "secure MariaDB", "mysqltuner"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-04
-modified_by:
-    name: Linode
-published: 2020-02-04
-image: Installing_MariaDB_on_CentOS8.png
 title: "Installing MariaDB on CentOS 8"
 title_meta: "How to Install MariaDB on CentOS 8"
+description: "This guide shows how to install and configure the MariaDB server on CentOS 8."
+og_description: "MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on CentOS 8."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-02-04
+keywords: ["MariaDB on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MariaDB", "database", "MySQL", "install MariaDB", "secure MariaDB", "mysqltuner"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: Installing_MariaDB_on_CentOS8.png
 external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
@@ -37,9 +33,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
 
     To check your hostname run:
 

@@ -1,16 +1,13 @@
 ---
 slug: configure-wordpress-remote-database
-author:
-  name: Edward Angert
-  email: docs@linode.com
+title: Configure WordPress to use a Remote Database
 description: 'This guide shows how to configure WordPress to access a database on a separate Linode.'
+authors: ["Edward Angert"]
+contributors: ["Edward Angert"]
+published: 2018-06-25
+modified: 2018-12-11
 keywords: ["mariadb", "database", "mysql", "remote database", "remote db", "remote client"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-12-11
-modified_by:
-  name: Linode
-published: 2018-06-25
-title: Configure WordPress to use a Remote Database
 external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
@@ -23,11 +20,11 @@ aliases: ['/databases/mariadb/configure-wordpress-remote-database/']
 
 ## Before You Begin
 
-- This guide uses two Linodes in the same data center to communicate via [private IP](/docs/guides/managing-ip-addresses/#adding-an-ip-address) addresses. You will need to configure a [LEMP](/docs/web-servers/lemp/) or [LAMP](/docs/web-servers/lamp/) stack on one.
+- This guide uses two Linodes in the same data center to communicate via [private IP](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) addresses. You will need to configure a [LEMP](/docs/web-servers/lemp/) or [LAMP](/docs/web-servers/lamp/) stack on one.
 
 - Ensure that all packages are up to date.
 
-- Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and [Secure your Server](/docs/guides/set-up-and-secure/) guides to create a non-root sudo user.
+- Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and [Secure your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides to create a non-root sudo user.
 
 - While the steps to configure an existing database may be similar, this guide is written for a fresh database and WordPress installation. Visit our guide on how to [backup an existing database](/docs/guides/mysqldump-backups/#creating-backups-of-a-single-database).
 
@@ -58,7 +55,7 @@ Run these steps on the database server.
 
 ### Accept Remote Connections
 
-{{< content "cloud-firewall-shortguide" >}}
+{{% content "cloud-firewall-shortguide" %}}
 
 1.  Change the `bind-address` to the database server's private IP to configure the MariaDB to accept remote connections:
 

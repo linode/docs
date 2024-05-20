@@ -1,16 +1,13 @@
 ---
 slug: install-mongodb-on-centos-7
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'This guide shows how to install Kloxo, the free web-based server control panel alternative to cPanel and Plesk, on a server running CentOS 7.'
-keywords: ["nosql", "database", "mongodb", "key store", "ubuntu", "mongodb tutorial"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
-published: 2016-12-30
 title: 'Installing MongoDB on CentOS 7'
 title_meta: 'How To Install MongoDB on CentOS 7'
+description: 'This guide shows how to install MongoDB, a document-oriented NoSQL database solution, on a server running CentOS 7.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-12-30
+keywords: ["nosql", "database", "mongodb", "key store", "ubuntu", "mongodb tutorial"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](https://www.mongodb.com/)'
@@ -36,9 +33,9 @@ Since MongoDB can require a significant amount of RAM, we recommend using a [hig
 
 ## Before You Begin
 
-- Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+- Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-- Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+- Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 - Update your system:
 

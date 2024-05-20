@@ -1,18 +1,13 @@
 ---
 slug: how-to-use-glances-system-monitoring
-author:
-  name: Nathaniel Stickman
-description: "Learn about Glances, an open-source monitoring tool. With Glances, you get a huge range of information all fit together on a single screen, helping you keep up with your system at a glance."
-keywords: ['linux glances command','unix install glances','linux monitoring tools open source']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-30
-modified_by:
-  name: Nathaniel Stickman
 title: "Use Glances for System Monitoring on Linux"
 title_meta: "How to Use Glances for System Monitoring on Linux"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+description: "Learn about Glances, an open-source monitoring tool. With Glances, you get a huge range of information all fit together on a single screen, helping you keep up with your system at a glance."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-12-30
+keywords: ['linux glances command','unix install glances','linux monitoring tools open source']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Glances GitHub Repository](https://github.com/nicolargo/glances)'
 - '[Glances Official Documentation](https://glances.readthedocs.io/en/latest/index.html)'
@@ -24,11 +19,11 @@ In this guide, learn how to install and get started with the Glances system moni
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -165,12 +160,12 @@ Before running Glances as a server, you need to open the appropriate port on the
 
 - On **Debian** and **Ubuntu**, make sure you have UFW installed and enabled, which you can learn about in our guide [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). Then, you can use the command below to open the port for Glances:
 
-        sudo ufw allow 61208
+        sudo ufw allow 61209
         sudo ufw reload
 
 - On **AlmaLinux**, **CentOS**, and **Fedora**, use the command below to open the port with FirewallD. You can read the [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/) guide for more on this firewall tool:
 
-        sudo firewall-cmd --zone=public --add-port=61208/tcp --permanent
+        sudo firewall-cmd --zone=public --add-port=61209/tcp --permanent
         sudo firewall-cmd --reload
 
 To start a Glances server for command-line access, follow these steps:

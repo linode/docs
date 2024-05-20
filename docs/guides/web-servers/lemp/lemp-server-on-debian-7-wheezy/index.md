@@ -1,20 +1,14 @@
 ---
 slug: lemp-server-on-debian-7-wheezy
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'LEMP Server on Debian 7 (Wheezy)'
 description: 'This guide shows how to install a LEMP (Linux, NGINX, MySQL, PHP) stack so you can host multiple websites or applications on a Linode running Debian 7 "Wheezy".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-02-07
 keywords: ["nginx", "lemp", "lepp", "perl", "python", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lemp/lemp-server-on-debian-7-wheezy/','/web-servers/lemp/lemp-server-on-debian-7-wheezy/','/lemp-guides/debian-7-wheezy/']
-modified: 2014-02-07
-modified_by:
-  name: Alex Fornuto
-published: 2014-02-07
-title: 'LEMP Server on Debian 7 (Wheezy)'
-deprecated: true
-deprecated_link: web-servers/lemp/install-a-lemp-stack-on-debian/
 external_resources:
  - '[Basic Nginx Configuration](/docs/guides/how-to-configure-nginx/)'
  - '[Clustered Web Servers and Software Load Balancing with Nginx](/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)'
@@ -26,17 +20,19 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Debian 7
+deprecated: true
+deprecated_link: web-servers/lemp/install-a-lemp-stack-on-debian/
 ---
 
 This document describes a compatible alternative to the **LAMP** (Linux, Apache, MySQL, and PHP) stack, known as **LEMP**. The LEMP stack replaces the Apache web server component (which is the "A" in LAMP) with Nginx (pronounced "engine x", providing the "E" in LEMP). LEMP is comprised of a variety of open source software used to build and run web servers.
 
-Prior to beginning this guide, please complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Prior to beginning this guide, please complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ![LEMP Server on Debian 7 (Wheezy)](lemp_server_on_debian_7_wheezy.png "LEMP Server on Debian 7")
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you have followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you have followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

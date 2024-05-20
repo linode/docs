@@ -1,22 +1,17 @@
 ---
 slug: introduction-to-bun
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Introduction to the Bun JavaScript Runtime"
 description: "Bun introduces a JavaScript runtime with incredible speed and built-in bundling and transpiling. Bun thus offers simplified tooling and a sharp contender to the reigning Node.js and Deno runtimes. Learn more about Bun here and see how you can get started using it for your JavaScript projects."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-08-01
 keywords: ['bun javascript','javascript runtime','bun node']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-08-01
-modified_by:
-  name: Nathaniel Stickman
-title: "Introduction to the Bun JavaScript Runtime"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[LogRocker: Bun - The JavaScript Runtime Taking on Node.js and Deno](https://blog.logrocket.com/bun-javascript-runtime-taking-node-js-deno/)'
 - '[The New Stack: Meet Bun - A JavaScript Runtime for the Whole Dev Lifecycle](https://thenewstack.io/meet-bun-a-javascript-runtime-for-the-whole-dev-lifecycle/)'
 - "[high0verEngineering: Let's Bun! - A New JavaScript Runtime](https://jenil777007.hashnode.dev/lets-bun)"
+tags: ["digital agencies"]
 ---
 
 Bun introduces a new JavaScript runtime with exceptional performance, built-in bundling & transpiling, and first-class support for TypeScript & JSX. This up-and-coming tool promises to be an asset for JavaScript developers and a strong competitor to Node.js and Deno.
@@ -25,9 +20,9 @@ In this tutorial, learn about the Bun JavaScript runtime and how it compares to 
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/guides/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your system.
 
@@ -38,8 +33,7 @@ In this tutorial, learn about the Bun JavaScript runtime and how it compares to 
     -   **AlmaLinux**, **CentOS Stream** (8 or later), **Fedora**, and **Rocky Linux**:
 
             sudo dnf upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -1,23 +1,20 @@
 ---
 slug: install-and-configure-puppet
-author:
-    name: Elle Krout
-    email: ekrout@linode.com
+title: Install and Configure Puppet
 description: 'Basic instructions to set up and configure a Puppet master and agents using Ubuntu or CentOS servers.'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-09-17
+modified: 2019-01-15
 keywords: ["puppet installation", "configuration change management", "server automation"]
 tags: ["ubuntu","automation","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/configuration-management/puppet/install-and-configure-puppet/','/applications/puppet/install-and-configure-puppet/','/applications/puppet/set-up-puppet-master-agent/','/websites/puppet/basic-puppet-setup-and-configuration/','/applications/configuration-management/install-and-configure-puppet/','/websites/puppet/manage-and-automate-systems-configuration-with-puppet/']
-deprecated: true
-deprecated_link: 'applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/'
-modified: 2019-01-15
-modified_by:
-    name: Linode
-published: 2015-09-17
-title: Install and Configure Puppet
 external_resources:
     - '[Puppet Labs](https://puppet.com/)'
     - '[Puppet Open Source Documentation](https://puppet.com/docs/open-source-puppet/)'
+deprecated: true
+deprecated_link: 'applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/'
 ---
 
 [Puppet](https://puppet.com/) is a configuration automation platform that simplifies various system administrator tasks. Puppet uses a client/server model where the managed servers, called *Puppet agents*, talk to and pull down configuration profiles from the *Puppet master*.
@@ -36,7 +33,7 @@ Begin this guide as the `root` user. A limited user with administrative privileg
 
 1.  You should have three available Linodes, one of which has at least four CPU cores for the Puppet master. A [Linode 8GB](https://www.linode.com/pricing) plan is recommended. The two other nodes can be of any plan size, depending on how you intend to use them after Puppet is installed and configured.
 
-2.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide and ensure your Linodes are configured to use the same timezone.
+2.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide and ensure your Linodes are configured to use the same timezone.
 
     {{< note respectIndent=false >}}
 For ease of use, set the Puppet master server's hostname to `puppet`, and have a valid fully-qualified domain name (FQDN).
@@ -165,7 +162,7 @@ server=puppet.example.com
 
 ## Add Modules to Configure Agent Nodes
 
-Both the Puppet master and agent nodes configured above are functional, but not secure. Based on concepts from the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
+Both the Puppet master and agent nodes configured above are functional, but not secure. Based on concepts from the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
 
 {{< note >}}
 This is not meant to provide a basis for a fully-hardened server, and is intended only as a starting point. Alter and add firewall rules and other configuration options, depending on your specific needs.

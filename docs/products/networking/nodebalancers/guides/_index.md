@@ -1,9 +1,10 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for NodeBalancers"
 description: "A collection of guides on using NodeBalancers to load balance applications hosted on the Linode platform."
+modified: 2022-10-07
 tab_group_main:
     weight: 30
-modified: 2022-10-07
 ---
 
 ## Basics
@@ -36,7 +37,7 @@ modified: 2022-10-07
 
 ## Automated Deployment Tutorials
 
-- [Deploy NodeBalancers with the Linode Cloud Controller Manager](/docs/guides/getting-started-with-load-balancing-on-a-lke-cluster/)
+- [Deploy NodeBalancers with the Linode Cloud Controller Manager](/docs/products/compute/kubernetes/guides/load-balancing/)
 
 - [Create a NodeBalancer with Terraform](/docs/guides/create-a-nodebalancer-with-terraform/)
 

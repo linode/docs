@@ -1,14 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Introduction to Load Balancing"
-description: "This guide shows you how to use Linode Node Balancers, which are services built for high availability and designed to be maintenance free once deployed."
-keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+description: "This guide shows you how to use Linode NodeBalancers, which are services built for high availability and designed to be maintenance free once deployed."
 published: 2022-10-07
-modified_by:
-  name: Linode
+keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha"]
 tags: ["linode platform","networking"]
 aliases: ['/platform/nodebalancer/what-are-nodebalancers/','/guides/what-are-nodebalancers/']
 ---
@@ -44,3 +38,4 @@ The optimal solution for a highly available site or application is to have multi
 - [Health checks](/docs/products/networking/nodebalancers/guides/configure/#health-checks) are performed to make sure that requests are only routed to healthy Linodes.
 - Backend Linodes can be added or removed seamlessly without end users noticing any downtime.
 - Client requests can be routed to the same backend Linode through [sticky sessions](/docs/products/networking/nodebalancers/guides/configure/#session-stickiness).
+- [Cloud Firewall](/docs/products/networking/cloud-firewall/) provides enhanced security by allowing you to control who can access your NodeBalancer. The optional Cloud Firewall sits between your NodeBalancer and the internet to filter out unwanted network traffic before it reaches your NodeBalancer. When used in conjunction with NodeBalancers, a Cloud Firewall’s inbound rules only apply to the NodeBalancer’s public IP, not the IPs of the backend nodes. This means you may also want to add individual backend nodes to a Cloud Firewall to protect any additional exposed IP addresses.

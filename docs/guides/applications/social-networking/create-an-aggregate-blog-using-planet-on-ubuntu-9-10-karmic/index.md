@@ -1,19 +1,15 @@
 ---
 slug: create-an-aggregate-blog-using-planet-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Create an Aggregate Blog using Planet on Ubuntu 9.10 (Karmic)'
 description: 'This guide will show you how to use The Planet feed aggregator to provide overviews of a community by collecting community feeds on Ubuntu 9.10 "Karmic".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-08-10
+modified: 2012-10-08
 keywords: ["planet", "blogs", "aggregator", "feed", "rss"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/social-networking/planet/ubuntu-9-10-karmic/','/applications/social-networking/create-an-aggregate-blog-using-planet-on-ubuntu-9-10-karmic/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-08-10
-title: 'Create an Aggregate Blog using Planet on Ubuntu 9.10 (Karmic)'
 external_resources:
     - '[The Planet''s Project''s Home Page](http://www.planetplanet.org)'
     - '[Using Cron to Schedule Tasks](/docs/guides/schedule-tasks-with-cron/)'
@@ -22,13 +18,12 @@ relations:
         key: aggregate-blog-planet
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 The Planet Feed Aggregator takes a collection of RSS feeds and generates what its founders call a "River of News" feed that combines posts from all sources into a single coherent stream. Thus, this software is useful for providing a simple and consolidated overview of ongoing output from selected blogs. Written and configured in Python and run regularly using cron, Planet is easy to configure and use.
 
-Before beginning to follow this guide, we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Beyond this, Planet requires a web server to provide access to the resources it creates, but this document does not depend on specific [web server software](/docs/web-servers/) software.
+Before beginning to follow this guide, we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Beyond this, Planet requires a web server to provide access to the resources it creates, but this document does not depend on specific [web server software](/docs/web-servers/) software.
 
 ## Enabling the Universe Repository
 

@@ -1,17 +1,14 @@
 ---
 slug: install-and-configure-phpmyadmin-on-debian-8
-author:
-    name: Linode
-    email: docs@linode.com
+title: 'How to Install and Configure phpMyAdmin on Debian 8'
 description: 'This guide will show you how to install and configure phpMyAdmin to manage MySQL databases and users though a web interface with a GUI on Debian 8.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-01-02
+modified: 2015-09-16
 keywords: ["mysql", "phpmyadmin", "localhost phpmyadmin", "php mysql", "http localhost phpmyadmin", "sql", "debian", "debian 8", "php", "mysql management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/docs/databases/mysql/install-mysql-phpmyadmin-debian-8/','/databases/mysql/install-and-configure-phpmyadmin-on-debian-8/','/docs/databases/mysql/manage-mysql-phpmyadmin-debian-8/']
-modified: 2015-09-16
-modified_by:
-    name: Elle Krout
-published: 2014-01-02
-title: 'How to Install and Configure phpMyAdmin on Debian 8'
 relations:
     platform:
         key: how-to-install-phpmyadmin
@@ -30,7 +27,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides and the Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check your hostname run:
 

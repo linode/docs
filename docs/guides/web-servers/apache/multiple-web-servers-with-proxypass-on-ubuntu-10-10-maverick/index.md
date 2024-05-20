@@ -1,27 +1,22 @@
 ---
 slug: multiple-web-servers-with-proxypass-on-ubuntu-10-10-maverick
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Multiple Web Servers with ProxyPass on Ubuntu 10.10 (Maverick)'
 description: 'This guide will show you how you can use separate web servers to host multiple websites or applications using ProxyPass with Apache on Ubuntu 10.10 "Maverick".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-10-22
+modified: 2012-10-08
 keywords: ["apache", "proxypass", "apache on ubuntu", "multiple web servers"]
 tags: ["proxy","web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/multiple-web-servers-with-proxypass-on-ubuntu-10-10-maverick/','/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-10-10-maverick/','/websites/apache/multiple-web-servers-with-proxypass-on-ubuntu-10-10-maverick/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-10-22
-title: 'Multiple Web Servers with ProxyPass on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: multiple-servers-proxypass
         keywords:
             - distribution: Ubuntu 10.10
+deprecated: true
 ---
-
-
 
 In some cases, administrators find that while Apache meets most of their general-purpose web serving needs, other web or application servers are better suited for certain tasks. Fortunately, it's easy to configure Apache to pass certain requests to other web server processes. These secondary (or tertiary) web servers may be running on the same Linode or separate nodes (perhaps via private networking). Our examples use lighttpd as a secondary web server, but they apply to any web server or application you'd like to proxy HTTP requests to.
 

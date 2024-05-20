@@ -1,22 +1,16 @@
 ---
 slug: how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: 'Unbundling NGINX from Omnibus Gitlab'
+title_meta: 'How to Unbundle NGINX from Omnibus GitLab'
 description: 'Unbundle the default NGINX server from Omnibus Gitlab and install and configure your own to enable virtual hosting.'
+authors: ["Jordi Bassagañas"]
+contributors: ["Jordi Bassagañas"]
+published: 2016-02-29
+modified: 2017-06-21
 keywords: ["version control", "git", "gitlab", "install gitlab on ubuntu", "how to manage repositories with gitlab"]
 tags: ["version control system","email","ruby","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 aliases: ['/applications/development/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites/','/development/version-control/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites/']
-contributor:
-    name: Jordi Bassagañas
-    link: https://twitter.com/programarivm
-modified: 2017-06-21
-modified_by:
-  name: Phil Zona
-published: 2016-02-29
-title: 'Unbundling NGINX from Omnibus Gitlab'
-title_meta: 'How to Unbundle NGINX from Omnibus GitLab'
 external_resources:
  - '[Updating GitLab via Omnibus GitLab](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update.md)'
  - '[Installing Passenger + NGINX](https://www.phusionpassenger.com/library/install/nginx/install/oss/trusty/)'
@@ -31,17 +25,16 @@ Preconfigured software stacks sometimes bring a series of challenges to those wh
 
 ## Before You Begin
 
-1.  Familiarize yourself with Linode's [Getting Started guide](/docs/guides/getting-started/) and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with Linode's [Getting Started guide](/docs/products/platform/get-started/) and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  This guide has been tested with Ubuntu 14.04 LTS and 16.04 LTS. Some commands will be slightly different for each version, so be sure to read each step carefully for version-specific instructions.
 
 4.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit our [Users and Groups guide](/docs/guides/linux-users-and-groups/) for more information.
 {{< /note >}}
 
@@ -57,7 +50,7 @@ Note that NGINX cannot be disabled in older versions of GitLab Community Edition
 
 2.  While installing Postfix, you'll be asked to configure a few basic settings. On the first [ncurses](https://en.wikipedia.org/wiki/Ncurses) screen, select **Internet Site** as the mail configuration. On the second screen, enter your fully qualified domain name (FQDN). This will be used to send email to users when configuring new accounts and resetting passwords. The rest of the mail options will be configured automatically.
 
-    {{< content "email-warning-shortguide" >}}
+    {{% content "email-warning-shortguide" %}}
 
 3.  Add the GitLab CE repository and install the `gitlab-ce` package:
 

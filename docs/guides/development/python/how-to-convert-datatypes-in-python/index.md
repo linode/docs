@@ -1,17 +1,13 @@
 ---
 slug: how-to-convert-datatypes-in-python
-author:
-  name: Jeff Novotny
-description: 'Learn how to convert various data types to other data types in Python using built in functions. For example, learn to convert a string to an int in Python.'
-keywords: ['convert data type python','How to convert data types in python','convert string to int python']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-03
-modified_by:
-  name: Linode
 title: "Convert Data Types in Python"
 title_meta: "How to Convert Data Types in Python"
-contributor:
-  name: Jeff Novotny
+description: 'Learn how to convert various data types to other data types in Python using built in functions. For example, learn to convert a string to an int in Python.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-06-03
+keywords: ['convert data type python','How to convert data types in python','convert string to int python']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Python String documentation](https://docs.python.org/3/library/string.html)'
 - '[Standard Python types](https://docs.python.org/3/library/stdtypes.html)'
@@ -96,7 +92,7 @@ z is 52.0 and is of type <class 'float'>
 
 As of Python 3, when two integers are divided, the result is a float. The numerator and denominator are both internally pre-converted to floats before the operation. This means the result is a float even if the modulus is zero.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Python 2 returns an integer in this case.
 {{< /note >}}
 
@@ -107,8 +103,7 @@ Python 2 returns an integer in this case.
 {{< output >}}
 z is 2.0 and is of type <class 'float'>
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The closely-related `hex()` and `oct()` methods can convert an integer to its hexadecimal or octal string equivalent.
 {{< /note >}}
 
@@ -139,8 +134,7 @@ To convert a float to the **nearest** integer, use the `round()` function instea
 {{< output >}}
 x is 51 and is of type <class 'int'>
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Some information is permanently lost whenever a float is converted to an integer. This can have drastic effects on the accuracy of future calculations. Ensure you understand the implications of this data loss within the context of your program before proceeding. When in doubt, create a new variable to store the converted value.
 {{< /note >}}
 
@@ -220,8 +214,7 @@ Strings can also be converted to floats using the `float()` function. Python can
 {{< output >}}
 z is 10.0 and is of type <class 'float'>
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Do not confuse the `int()` function with `ord()`. `ord()` converts a character to its ASCII integer representation. This function uses the [*character to ASCII conversion table*](https://www.ibm.com/docs/en/sdse/6.4.0?topic=configuration-ascii-characters-from-33-126) to determine the ASCII values.
 {{< /note >}}
 
@@ -231,7 +224,7 @@ In Python, a *list* is an ordered array of objects. The items are mutable, so th
 
 Lists and strings are conceptually very similar. Both are ordered sequences, and the individual items are accessed the same way. This makes it easy to convert a string to a list. The first letter in the string becomes item `[0]` in the list. The second letter becomes the second list item, and so on.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The elements of a list can be strings or numbers, or even compound objects. However, strings can only contain a sequence of Unicode characters. [Lists can also be converted to strings in Python](/docs/guides/python-lists-and-how-to-use-them/#convert-a-python-list-to-a-string), but the steps are more complicated.
 {{< /note >}}
 
@@ -256,8 +249,7 @@ To convert a string to a tuple, use the `tuple()` function. The characters in th
 {{< output >}}
 z is ('t', 'e', 's', 't') and is of type <class 'tuple'>
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Although it is relatively uncommon, a string can also be converted to a *set*. A set is an unordered collection of unique elements. Use the function `set()` and provide the string as a parameter.
 {{< /note >}}
 

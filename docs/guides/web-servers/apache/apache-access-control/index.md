@@ -1,18 +1,15 @@
 ---
 slug: apache-access-control
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Apache Access Control'
 description: 'Using HTTP AUTH to limit and control access to resources hosted on websites.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-07
+modified: 2015-11-20
 keywords: ["access control", "http auth", "mod_auth", "http", "apache", "web server", "security"]
 tags: ["http","web server","apache","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/configuration/http-authentication/','/websites/apache/apache-access-control/','/web-servers/apache/apache-access-control/','/guides/authbased-access-control-with-apache/','/websites/apache/authbased-access-control-with-apache/','/web-servers/apache/authbased-access-control-with-apache/']
-modified: 2015-11-20
-modified_by:
-  name: Linode
-published: 2009-12-07
-title: 'Apache Access Control'
+aliases: ['/web-servers/apache/configuration/http-authentication/','/websites/apache/apache-access-control/','/web-servers/apache/apache-access-control/','/guides/authbased-access-control-with-apache/','/websites/apache/authbased-access-control-with-apache/','/web-servers/apache/authbased-access-control-with-apache/','/websites/authbased-access-control-with-apache/']
 external_resources:
  - '[Installation of the Apache web server](/docs/web-servers/apache/)'
  - '[LAMP stack guides](/docs/web-servers/lamp/)'
@@ -26,9 +23,9 @@ This guide provides an overview of both credential-based and rule-based access c
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
 
     To check your hostname run:
 
@@ -37,7 +34,7 @@ This guide provides an overview of both credential-based and rule-based access c
 
     The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN) if you have one assigned.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 This guide uses the same example file paths as our [Apache on Debian 8](/docs/guides/apache-web-server-debian-8/) guide. Be sure to adjust for your distribution.

@@ -1,26 +1,22 @@
 ---
 slug: deploy-linodes-using-ansible
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: "In this guide, learn how to deploy and manage Linodes using Ansible and the linode_v4 module."
-keywords: ['ansible','Linode module','dynamic inventory','configuration management']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-06-04
-modified: 2021-12-30
-modified_by:
-  name: Linode
 title: "Using the Linode Ansible Module to Deploy Linodes"
 title_meta: "How to use the Linode Ansible Module to Deploy Linodes"
-deprecated: true
-deprecated_link: 'guides/deploy-linodes-using-linode-ansible-collection/'
-contributor:
-  name: Linode
+description: "In this guide, learn how to deploy and manage Linodes using Ansible and the linode_v4 module."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-06-04
+modified: 2021-12-30
+keywords: ['ansible','Linode module','dynamic inventory','configuration management']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Ansible Best Practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html)'
 aliases: ['/applications/configuration-management/ansible/deploy-linodes-using-ansible/','/applications/configuration-management/deploy-linodes-using-ansible/']
 tags: ["automation"]
 image: how-to-use-the-linode-ansible-module-to-deploy-linodes.png
+tags: ["saas"]
+deprecated: true
+deprecated_link: 'guides/deploy-linodes-using-linode-ansible-collection/'
 ---
 
 {{< note >}}
@@ -46,7 +42,7 @@ This guide’s example instructions will create a [1GB Linode](https://www.linod
 The steps outlined in this guide require [Ansible version 2.8](https://github.com/ansible/ansible/releases/tag/v2.8.0), and were created using Ubuntu 18.04.
 {{< /note >}}
 
--   Add a limited user to your Linode following the steps below, created by following the [Add a limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of our  [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. Ensure that all commands are entered as your limited user.
+-   Add a limited user to your Linode following the steps below, created by following the [Add a limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of our  [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. Ensure that all commands are entered as your limited user.
 
 -   Install Ansible on your computer. Use the steps in the [Control Node Setup](/docs/guides/getting-started-with-ansible/#set-up-the-control-node) section of the [Getting Started With Ansible - Basic Installation and Setup](/docs/guides/getting-started-with-ansible/) guide.
 
@@ -61,7 +57,7 @@ The steps outlined in this guide require [Ansible version 2.8](https://github.co
 
 -   Generate a Linode API v4 access token with permission to read and write Linodes. You can follow the [Get an Access Token](/docs/products/tools/api/get-started/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/products/tools/api/get-started/) guide if you do not already have one.
 
-- [Create an authentication Key-pair](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair) if your computer does not already have one.
+- [Create an authentication Key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair) if your computer does not already have one.
 
 ## Configure Ansible
 
@@ -73,8 +69,7 @@ The Ansible configuration file is used to adjust Ansible's default system settin
 - `/etc/ansible/ansible.cfg`
 
 In this section, you will create an Ansible configuration file and add options to disable host key checking, and to allow the Linode inventory plugin. The Ansible configuration file will be located in a development directory that you create, however, it could exist in any of the locations listed above. See [Ansible's official documentation](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#common-options) for a full list of available configuration settings.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 When storing your Ansible configuration file, ensure that its corresponding directory does not have world-writable permissions. This could pose a security risk that allows malicious users to use Ansible to exploit your local system and remote infrastructure. At minimum, the directory should restrict access to particular users and groups. For example, you can create an `ansible` group, only add privileged users to the `ansible` group, and update the Ansible configuration file's directory to have `764` permissions. See the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on permissions.
 {{< /note >}}
 
@@ -274,7 +269,7 @@ localhost                  : ok=3    changed=1    unreachable=0    failed=0    s
 | `root_pass` | string | The password for the root user. If not specified, will be generated. This generated password will be available in the task success JSON.</br></br> The root password must conform to the following constraints: </br></br> &bull; May only use alphanumerics, punctuation, spaces, and tabs.</br>&bull; Must contain at least two of the following characters classes: upper-case letters, lower-case letters, digits, punctuation. |
 | `state` | string, *required* | The desired instance state. The accepted values are `absent` and `present`. |
 | `tags` | list | The user-defined labels attached to Linodes. Tags are used for grouping Linodes in a way that is relevant to the user. |
-| `type` | string, | The Linode instance's plan type. The plan type determines your Linode's [hardware resources](/docs/guides/choosing-a-compute-instance-plan/#hardware-resource-definitions) and its [pricing](https://www.linode.com/pricing/). </br></br> To view a list of all available Linode types including pricing and specifications for each type, issue the following command: </br></br>`curl https://api.linode.com/v4/linode/types`. |
+| `type` | string, | The Linode instance's plan type. The plan type determines your Linode's [hardware resources](/docs/products/compute/compute-instances/plans/choosing-a-plan/#hardware-resource-definitions) and its [pricing](https://www.linode.com/pricing/). </br></br> To view a list of all available Linode types including pricing and specifications for each type, issue the following command: </br></br>`curl https://api.linode.com/v4/linode/types`. |
 
 ## The Linode Dynamic Inventory Plugin
 
@@ -344,7 +339,7 @@ A [pull request](https://github.com/ansible/ansible/pull/51196) currently exists
 
     -   Open the `/etc/hosts` file and add your Linode's IPv4 address and label:
 
-        ```file {title=""/etc/hosts"}
+        ```file {title="/etc/hosts"}
         127.0.0.1       localhost
         192.0.2.0 simple-linode-29
         ```

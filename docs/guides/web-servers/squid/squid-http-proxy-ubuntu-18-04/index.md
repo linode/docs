@@ -1,19 +1,15 @@
 ---
 slug: squid-http-proxy-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Creating an HTTP Proxy Using Squid on Ubuntu 18.04'
+title_meta: 'How to Create an HTTP Proxy Using Squid on Ubuntu 18.04'
 description: This guide shows how to use Squid to create an HTTP proxy server on your Linode running Ubuntu 18.04.
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-04-14
 keywords: ["squid", "proxy", "ubuntu", "18.04", "http"]
 tags: ["proxy","web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-04-14
-modified: 2020-04-14
 image: Creating_an_HTTP_Proxy_Using_Squid_on_Ubuntu1804_1200x631.png
-modified_by:
-  name: Rajakavitha Kodhandapani
-title: 'Creating an HTTP Proxy Using Squid on Ubuntu 18.04'
-title_meta: 'How to Create an HTTP Proxy Using Squid on Ubuntu 18.04'
 external_resources:
  - '[Squid Official Site](http://www.squid-cache.org/)'
  - '[Configure Proxy on Windows](https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)'
@@ -24,7 +20,7 @@ relations:
         key: install-squid-proxy
         keywords:
             - distribution: Ubuntu 18.04
-aliases: ['/web-servers/squid/squid-http-proxy-ubuntu-18-04/']
+aliases: ['/web-servers/squid/squid-http-proxy-ubuntu-18-04/','/networking/squid/squid-http-proxy-ubuntu-12-04/']
 ---
 
 This guide will show you how to create your own HTTP proxy using Squid, a highly customizable proxy/cache application, on Ubuntu 18.04. An HTTP proxy acts as an intermediary between you and the internet. While connected to your Squid HTTP proxy, you will be able to:
@@ -32,13 +28,13 @@ This guide will show you how to create your own HTTP proxy using Squid, a highly
 -   Anonymously access internet services.
 -   Bypass certain regional and local network restrictions.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The traffic passed from your client to your Squid HTTP proxy will not be encrypted and will still be visible on your local network. If you are looking for a solution that offers greater security, you may want to look at our guides on [Setting up an SSH Tunnel](/docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) or [Deploy OpenVPN Access Server with Marketplace Apps](/docs/products/tools/marketplace/guides/openvpn/).
 {{< /note >}}
 
 ## Install Squid
 
-1.  Secure your Linode by completing the instructions in our guide on [Securing Your Server](/docs/guides/set-up-and-secure/), including adding a limited user account and configuring a firewall.
+1.  Secure your Linode by completing the instructions in our guide on [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/), including adding a limited user account and configuring a firewall.
 
     {{< note respectIndent=false >}}
 This guide is written for a limited, non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

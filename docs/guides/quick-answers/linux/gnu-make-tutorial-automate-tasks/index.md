@@ -1,26 +1,22 @@
 ---
 slug: gnu-make-tutorial-automate-tasks
-author:
-  name: Stephen Savitzky
+title: "Use GNU Make to Automate Tasks"
+title_meta: "GNU Make Tutorial: Learn to Automate Tasks"
 description: 'In this tutorial, you will learn how to use GNU Make to automate any task that involves updating files or performing actions based on file changes.'
+authors: ["Stephen Savitzky"]
+contributors: ["Stephen Savitzky"]
+published: 2021-07-30
 keywords: ['gnu make tutorial']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-30
 image: GNUMakeTutorial-LearntoAutomateTasks.jpg
-modified_by:
-  name: Linode
-title: "Use GNU Make to Automate Tasks"
-title_meta: "GNU Make Tutorial: Learn to Automate Tasks"
-contributor:
-  name: Stephen Savitzky
 ---
 
 [GNU make](https://www.gnu.org/software/make/manual/make.html) is designed as a utility for building large programs. It automatically determines which parts need to be recompiled and issues the commands needed to recompile them. Its uses are not limited to compiling and linking C programs. It can also be a surprisingly effective scripting language for automating any task that involves updating files or performing actions whenever files change.
 
 In this guide `make`  or "Make" always refers to GNU Make; the version found on almost all Linux distributions. It has a number of useful extensions -- pattern rules and simply-expanded variables.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The [Features](https://www.gnu.org/software/make/manual/make.html#Features) and [ Incompatibilities and Missing Features](https://www.gnu.org/software/make/manual/make.html#Missing) sections of the [GNU Make Manual](https://www.gnu.org/software/make/manual/make.html) describe GNU Make's differences from the BSD and System V versions.
 {{< /note >}}
 
@@ -40,7 +36,7 @@ The recipe is run whenever the target does not exist or if any of its prerequisi
 - Each line of the recipe is run in a separate shell process, after removing the leading tab.
 - Shell commands are separated by a semicolon, and long lines are read until a new line is encountered. For improved readability, you can break up a long command using a backslash (`\`).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 All versions of Make use `/bin/sh` as the default shell for portability purposes. Make inherits almost all of the environment variables exported by the shell that invokes it; `SHELL` is an exception.
 {{< /note >}}
 
@@ -65,8 +61,7 @@ site/index.html: index.md | site
 site:
     mkdir -p site
 {{< /file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 A rule with no prerequisites is run only if the target does not exist. Order-only prerequisites are not rebuilt even if they have prerequisites of their own.
 {{< /note >}}
 
@@ -113,7 +108,7 @@ site/%.html: %.md | site/
 
 The rule use `$@`, which evaluates to the target, and also uses the automatic variables `$<`. The automatic variable evaluates to the first prerequisite of the rule in which it appears. You can find the complete list of automatic variables in the [Automatic Variables](https://www.gnu.org/software/make/manual/make.html#Automatic-Variables) section of the GNU Make manual.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The `$` is used for variable expansion in both Make and the Shell. For this reason, you pass a `$` to the shell in a Make recipe by doubling it (`$$`).
 {{< /note >}}
 
@@ -127,8 +122,7 @@ build: $(pages)
 site/%.html: %.md | site
         pandoc -s -o $@ $<
 {{< /file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If the parentheses around the variable name are missing, the variable name is the single character after the dollar sign. This is why most of the automatic variables used in rules, like `$@`, have single-character names.
 {{< /note >}}
 

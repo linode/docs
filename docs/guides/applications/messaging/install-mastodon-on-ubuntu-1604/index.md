@@ -1,18 +1,14 @@
 ---
 slug: install-mastodon-on-ubuntu-1604
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Installing a Mastodon Server on Ubuntu 16.04"
+title_meta: "How to Install a Mastodon Server on Ubuntu 16.04"
 description: "Installation and basic usage guide of Mastodon, an open source alternative to Twitter."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-08-16
 keywords: ["mastodon", "twitter alternative", "micro blog", "fediverse"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-16
-modified_by:
-  name: Linode
-published: 2018-08-16
-title: "Installing a Mastodon Server on Ubuntu 16.04"
-title_meta: "How to Install a Mastodon Server on Ubuntu 16.04"
 external_resources:
 - '[Mastodon GitHub - Docker Guide](https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Docker-Guide.md)'
 - '[Mastodon GitHub - Production Guide](https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Production-guide.md)'
@@ -46,13 +42,13 @@ While Mastodon servers are privately-operated, they are often open to public reg
 
 This guide will create a Mastodon server on a Linode running Ubuntu 16.04. Docker Compose is used to install Mastodon. If you prefer a different Linux distribution, you may be able to use this guide with small changes to the listed commands.
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
     {{< note respectIndent=false >}}
 Consult Mastodon's [resource usage examples](https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Resources-needed.md) when considering which Linode plan to deploy on.
 {{< /note >}}
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. Replace each instance of `example.com` in this guide with your Mastodon site’s domain name.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. Replace each instance of `example.com` in this guide with your Mastodon site’s domain name.
 
 1. Complete the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Mastodon Linode.
 
@@ -72,7 +68,7 @@ Consult Mastodon's [resource usage examples](https://github.com/tootsuite/docume
 
 1. Mastodon sends email notifications to users for different events, like when a user first signs up, or when someone else requests to follow them. You will need to supply an SMTP server which will be used to send these messages.
 
-    {{< content "email-warning-shortguide" >}}
+    {{% content "email-warning-shortguide" %}}
 
     One option is to install your own mail server using the [Email with Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) guide. You can install such a mail server on the same Linode as your Mastodon server, or on a different one. If you follow this guide, be sure to create a `notifications@example.com` email address which you will later use for notifications. If you install your mail server on the same Linode as your Mastodon deployment, you can use your Let's Encrypt certificate in `/etc/letsencrypt/live/example.com/` for the mail server too.
 
@@ -82,11 +78,11 @@ Consult Mastodon's [resource usage examples](https://github.com/tootsuite/docume
 
 ### Install Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ## Set Up Mastodon
 

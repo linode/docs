@@ -1,18 +1,14 @@
 ---
 slug: jupyter-notebook-on-jekyll
-author:
-  name: Sam Foo
-  email: docs@linode.com
+title: Display Jupyter Notebooks with Jekyll
 description: 'Share data analysis and visualizations on Jupyter Notebooks with Jekyll.'
+authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
+published: 2017-11-06
 keywords: ["Jupyter", " ruby", " Jekyll"]
 tags: ["ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/jupyter-nobook-on-jekyll/','/applications/project-management/jupyter-notebook-on-jekyll/']
-modified: 2017-11-06
-modified_by:
-  name: Linode
-published: 2017-11-06
-title: Display Jupyter Notebooks with Jekyll
 external_resources:
  - '[Jekyll](https://jekyllrb.com/)'
  - '[MathJax](https://www.mathjax.org/)'
@@ -27,9 +23,9 @@ This guide will take you through the process of installing Jekyll and configurin
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the appropriate sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account.
+2.  This guide will use `sudo` wherever possible. Complete the appropriate sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account.
 
 3.  Update your system:
 

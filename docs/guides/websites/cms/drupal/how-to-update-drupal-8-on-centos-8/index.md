@@ -1,19 +1,15 @@
 ---
 slug: how-to-update-drupal-8-on-centos-8
-author:
-    name: Linode
-    email: docs@linode.com
+title: Update Drupal 8 on Centos 8
+title_meta: How to Update Drupal 8 on CentOS 8
 description: 'This guide will show you how to update your Drupal 8 installation running on a CentOS 8 Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-02-21
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "update"]
 tags: ["drupal","centos","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-21
-modified_by:
-    name: Linode
-published: 2020-02-21
 image: Drupal8onCentOS8.png
-title: Update Drupal 8 on Centos 8
-title_meta: How to Update Drupal 8 on CentOS 8
 relations:
     platform:
         key: how-to-update-drupal-8
@@ -36,7 +32,7 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
         sudo yum update
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 ## Create Backups
 

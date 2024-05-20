@@ -1,18 +1,15 @@
 ---
 slug: remove-unused-network-facing-services
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Remove Unused Network-Facing Services"
+title_meta: "How to Remove Unused Network-Facing Services"
 description: "Learn how to remove unused services that are exposed to the network and why you should."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2022-02-16
+modified: 2022-02-15
 keywords: ["security", "secure", "remove services"]
 tags: ["security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-16
-modified: 2022-02-15
-modified_by:
-  name: Linode
-title: "Remove Unused Network-Facing Services"
-title_meta: "How to Remove Unused Network-Facing Services"
 ---
 
 Most Linux distributions install with running network services which listen for incoming connections from the internet, the loopback interface, or a combination of both. Network-facing services which are not needed should be removed from the system to reduce the attack surface of both running processes and installed packages.
@@ -45,11 +42,11 @@ UDP sockets are *[stateless](https://en.wikipedia.org/wiki/Stateless_protocol)*,
 
 A basic TCP and UDP [nmap](https://nmap.org/) scan of your Linode without a firewall enabled would show SSH and possibly other services listening for incoming connections. By [configuring a firewall](#configure-a-firewall) you can filter those ports to your requirements. Ideally, the unused services should be disabled.
 
-You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, [RSA keys](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair) and [Fail2Ban](/docs/guides/set-up-and-secure/#use-fail2ban-for-ssh-login-protection) can help protect SSH. System services like `chronyd`, `systemd-resolved`, and `dnsmasq` are usually listening on localhost and only occasionally contacting the outside world. Services like this are part of your operating system and will cause problems if removed and not properly substituted.
+You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, [RSA keys](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair) and [Fail2Ban](/docs/products/compute/compute-instances/guides/set-up-and-secure/#use-fail2ban-for-ssh-login-protection) can help protect SSH. System services like `chronyd`, `systemd-resolved`, and `dnsmasq` are usually listening on localhost and only occasionally contacting the outside world. Services like this are part of your operating system and will cause problems if removed and not properly substituted.
 
 However, some services are unnecessary and should be removed unless you have a specific need for them. Some examples could be [Exim](https://www.exim.org/), [Apache](https://httpd.apache.org/) and [RPC](https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you are using the [Apache](https://httpd.apache.org/) web server as part of your configuration, it is recommended in most cases to disable `Directory Listing` as this setting is enabled by default and can pose a security risk. For more information, see [Apache's Documentation](https://cwiki.apache.org/confluence/display/HTTPD/DirectoryListings).
 {{< /note >}}
 

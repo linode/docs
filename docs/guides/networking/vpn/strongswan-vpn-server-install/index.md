@@ -1,18 +1,14 @@
 ---
 slug: strongswan-vpn-server-install
-author:
-  name: Tom Henderson
+title: "Install and Configure a StrongSwan Gateway VPN Server on Ubuntu 20.04"
+title_meta: "Install and Configure StrongSwan on Ubuntu 20.04"
 description: 'This guide shows you how to install a StrongSwan VPN server on an Ubuntu 20.04 server. You also learn how to connect to a StrongSwan VPN server from Ubuntu, Windows, and macOS clients.'
+authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
+published: 2022-02-18
 keywords: ['install strongswan', 'strongswan client', 'connecting to strongswan VPN', 'troubleshoot strongswan']
 bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-18
-modified_by:
-  name: Linode
-title: "Install and Configure a StrongSwan Gateway VPN Server on Ubuntu 20.04"
-title_meta: "Install and Configure StrongSwan on Ubuntu 20.04"
-contributor:
-  name: Tom Henderson
 external_resources:
 - '[Introduction to StrongSwan](https://wiki.strongswan.org/projects/strongswan/wiki/IntroductionTostrongSwan)'
 ---
@@ -25,15 +21,14 @@ The steps in this section show you how to install and configure a StrongSwan gat
 
 ### Prerequisites
 
-1. Deploy an Ubuntu 20.04 server and follow our [Getting Started with Linode](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Deploy an Ubuntu 20.04 server and follow our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -284,7 +279,7 @@ The client authentication process relies on the `ipsec.secrets` file located on 
 
 #### Importing the VPN Root Certificate on macOS
 
-1. Download the `ca.cert.pem` file from the StrongSwan gateway VPN server host to your macOS computer [using scp](/docs/guides/download-files-from-your-linode/#secure-copy-protocol-scp).
+1. Download the `ca.cert.pem` file from the StrongSwan gateway VPN server host to your macOS computer [using scp](/docs/guides/download-files-from-a-compute-instance/#secure-copy-protocol-scp).
 
 1. Click on the downloaded file to open **Keychain Access**. Provide your user's administrative password, to accept the certificate. Then, click **Modify Keychain**.
 

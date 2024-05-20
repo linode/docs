@@ -1,19 +1,11 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy WireGuard through the Linode Marketplace"
 description: 'Deploy a WireGuard Server on Linode with Marketplace Apps.'
+published: 2019-03-28
+modified: 2022-03-08
 keywords: ['vpn','wireguard','tunnel']
 tags: ["cloud-manager","linode platform","security","marketplace","vpn"]
 bundles: ['network-security']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-03-28
-modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy WireGuard through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[WireGuard Quick Start](https://www.wireguard.com/quickstart/)'
 - '[WireGuard Conceptual Overview](https://www.wireguard.com/#conceptual-overview)'
@@ -36,9 +28,9 @@ Your WireGuard configuration can be adjusted after you first set up your Marketp
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** WireGuard should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -46,7 +38,7 @@ Your WireGuard configuration can be adjusted after you first set up your Marketp
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 11
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used. The plan that you select should be appropriate for the amount of data transfer, users, and other stress that may affect the performance of your VPN.
 
 ### WireGuard Options
@@ -76,7 +68,7 @@ If you did not provide a public key for WireGuard when you first set up your Mar
 
 1.   Follow the [WireGuard Client](/docs/guides/set-up-wireguard-vpn-on-ubuntu/#wireguard-client) section of our WireGuard guide to generate a public/private keypair for your client, and to set up the WireGuard network interface configuration on your client.
 
-1.  [Connect to your Marketplace App's Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1.  [Connect to your Marketplace App's Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Bring down the `wg0` interface on the server:
 
@@ -98,7 +90,7 @@ If you did not provide a public key for WireGuard when you first set up your Mar
 
 You should now have your server configuration completed. At this point, you still need to complete your client's configuration; specifically, you need to add your server as a peer to the client:
 
-1.  [Connect to your Marketplace App's Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1.  [Connect to your Marketplace App's Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Just like your client, your server also has a public/private keypair of its own. The Marketplace App script leaves a copy of these keys in the root user's home folder:
 
@@ -161,6 +153,6 @@ This test should be performed once you have configured a WireGuard client and up
 | [**WireGuard**](https://www.wireguard.com) | VPN software. |
 | [**UFW (UncomplicatedFireWall)**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. The Port assigned during the [WireGuard Options](#wireguard-options) step of the deployment will allow outgoing and incoming traffic. |
 
-{{< content "marketplace-update-note">}}
+{{% content "marketplace-update-note" %}}
 
 "WireGuard" is a registered trademark of Jason A. Donenfeld.

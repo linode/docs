@@ -1,19 +1,13 @@
 ---
 slug: twilio-email-notifications-imap
-author:
-  name: John Mueller
-  email: john@johnmuellerbooks.com
+title: "Create an Email Notification System Using Twilio (IMAP)"
 description: "Linode sends system notifications via email. This guide shows how to use the Python imaplib module to intercept those emails and forward them to text messages with the Twilio API."
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2022-01-28
 keywords: ['twilio notify']
 tags: ['email']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-28
-modified_by:
-  name: Linode
-title: "Create an Email Notification System Using Twilio (IMAP)"
-contributor:
-  name: John Mueller
-  link:
 relations:
   platform:
     key: twilio-email-notifications
@@ -50,9 +44,9 @@ The auto-forwarding system leverages the API of Twilio, a cloud communications s
 
 1. This guide shows how to set up the email-to-text forwarding system on a Linode instance. A Linode instance is used because it can remain powered on at all times.
 
-    If you want to implement the notification system, [create a Linode in the Cloud Manager](/docs/products/compute/shared-cpu/get-started/). The lowest cost Shared CPU instance type is appropriate for this guide. If you already have a Linode instance that you want to set up the notification system on, you can use that instead of a new instance. This guide was tested with Ubuntu 20.04, but should also work with other Linux distributions and versions.
+    If you want to implement the notification system, [create a Linode in the Cloud Manager](/docs/products/compute/compute-instances/get-started/). The lowest cost Shared CPU instance type is appropriate for this guide. If you already have a Linode instance that you want to set up the notification system on, you can use that instead of a new instance. This guide was tested with Ubuntu 20.04, but should also work with other Linux distributions and versions.
 
-    After you create your Linode, follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to reduce the threat of a system compromise. Specifically, make sure you [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) to the Linode. The notification system in this guide should be installed under a limited Linux user.
+    After you create your Linode, follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to reduce the threat of a system compromise. Specifically, make sure you [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) to the Linode. The notification system in this guide should be installed under a limited Linux user.
 
 1.  Another guide in our library, [How to Use the Linode API with Twilio](/docs/guides/how-to-use-the-linode-api-with-twilio/), shows the prerequisite steps for using the Twilio API. Follow this guide, starting with its [Before You Begin](/docs/guides/how-to-use-the-linode-api-with-twilio/#before-you-begin) section, up to and including the [Install the Twilio Python Helper Library](/docs/guides/how-to-use-the-linode-api-with-twilio/#install-the-twilio-python-helper-library) section.
 
@@ -105,19 +99,19 @@ except KeyError:
     sys.exit(1)
 {{< /file >}}
 
-    {{< disclosure-note "About the code" >}}
-This code imports several modules that are used later in the code:
+    {{< note type="secondary" title="About the code" isCollapsible=true >}}
+    This code imports several modules that are used later in the code:
 
-- The `os` module, which can be used to read environment variables from your terminal. The module is used in the `try` block to load your API tokens, Twilio phone numbers, and email IMAP email server credentials. A later section in this guide shows how to set those environment variables before running the script.
+    - The `os` module, which can be used to read environment variables from your terminal. The module is used in the `try` block to load your API tokens, Twilio phone numbers, and email IMAP email server credentials. A later section in this guide shows how to set those environment variables before running the script.
 
-    Alternatively, you could directly list the token and phone number values in the script. However, it's a good practice to avoid doing this. For example, if you listed your secrets inside the code and then uploaded your code to a public code repository like GitHub, they would be publicly visible.
+        Alternatively, you could directly list the token and phone number values in the script. However, it's a good practice to avoid doing this. For example, if you listed your secrets inside the code and then uploaded your code to a public code repository like GitHub, they would be publicly visible.
 
-    The `except KeyError` statement is executed if any of the environment variables are not set. A message is printed in the console that tells you which variables are expected by the script. The `sys` module an the `sys.exit()` method immediately exits the script in this case.
+        The `except KeyError` statement is executed if any of the environment variables are not set. A message is printed in the console that tells you which variables are expected by the script. The `sys` module an the `sys.exit()` method immediately exits the script in this case.
 
-- [The `imaplib` module](https://docs.python.org/3/library/imaplib.html#module-imaplib) is used to connect to an IMAP server, and [the `email` module](https://docs.python.org/3/library/email.html#module-email) is used to parse email messages. These are used in a later section in this guide.
+    - [The `imaplib` module](https://docs.python.org/3/library/imaplib.html#module-imaplib) is used to connect to an IMAP server, and [the `email` module](https://docs.python.org/3/library/email.html#module-email) is used to parse email messages. These are used in a later section in this guide.
 
-- [The `twilio` module](https://www.twilio.com/docs/libraries/python) is used to interact with the Twilio API. This is used in a later section in this guide.
-{{< /disclosure-note >}}
+    - [The `twilio` module](https://www.twilio.com/docs/libraries/python) is used to interact with the Twilio API. This is used in a later section in this guide.
+    {{< /note >}}
 
 ### Create the Twilio API Python Client
 
@@ -142,11 +136,11 @@ mail = imaplib.IMAP4_SSL(email_server)
 mail.login(email_username, email_password)
 {{< /file >}}
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 - The first line [configures a secure connection](https://docs.python.org/3/library/imaplib.html#imaplib.IMAP4_SSL) to your email server.
 
 - The second line [logs into the server](https://docs.python.org/3/library/imaplib.html#imaplib.IMAP4.login).
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Search Email by Sender with Imaplib
 
@@ -167,7 +161,7 @@ You may want to retrieve mail from a mailbox with a specific name, instead of `I
 
     mail.select('"[Gmail]/All Mail"')
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 - The first line [selects a mailbox](https://docs.python.org/3/library/imaplib.html#imaplib.IMAP4.select) that mail should be retrieved from in the subsequent `search()` command.
 
 - The second line [searches the mailbox](https://docs.python.org/3/library/imaplib.html#imaplib.IMAP4.search) and returns a list of email ID numbers. The contents of each email is not returned, and the next section shows how to fetch the email contents.
@@ -181,7 +175,7 @@ You may want to retrieve mail from a mailbox with a specific name, instead of `I
 - Lines 6-8 parse the returned list of email ID numbers in the `email_search_data` variable. The value of this variable is a space-separated list of email IDs, wrapped in an array. For example, it might look like this: `['3 9 23 51']`.
 
     Five mail IDs are listed in this example, which means that the searched mailbox contains five emails from the `Linode Alert` sender. Lines 6-8 split the string in this variable and create a new array of mail IDs. The previous example would result in a new `mail_ids` array equal to: `['3','9','23','51']`.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Fetch Email with Imaplib
 
@@ -198,7 +192,7 @@ mail_ids.reverse()
 status, email_data = mail.fetch(mail_ids[0], '(RFC822)')
 {{< /file >}}
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 - Lines 3-5 exit the script if no emails matching the search were found.
 
 - Line 7: The mail IDs array is originally ordered oldest to newest. This line reverses the array so that the first item corresponds to the newest matching email.
@@ -208,7 +202,7 @@ status, email_data = mail.fetch(mail_ids[0], '(RFC822)')
     The second argument for the `mail.fetch()` function allows you to specify which parts of the email should be retrieved. By specifying `(RFC822)`, the entire [RFC-822](https://datatracker.ietf.org/doc/html/rfc822) formatted email is returned, which includes the email headers and body.
 
     You can specify other values in the second argument to retrieve just parts of the email. For example, you could retrieve only the headers of the email. This is described in [PyMOTW's imaplib article](https://pymotw.com/3/imaplib/index.html#fetching-messages).
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Parse Email with the Python Email Module
 
@@ -233,7 +227,7 @@ mail.close()
 mail.logout()
 {{< /file >}}
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 This section of code parses the `email_data` variable returned by the `mail.fetch()` function. The value of this variable is an array that contains the contents of the fetched emails. This is an example of what the array might look like:
 
 {{< output >}}
@@ -317,7 +311,7 @@ The code parses this array as follows:
 - Line 9 composes the message body that is sent via text message in the next section. The `\n` character sequence appears in this string. These characters [insert newlines in the message](https://support.twilio.com/hc/en-us/articles/223181468-How-do-I-Add-a-Line-Break-in-my-SMS-or-MMS-Message-).
 
 - Lines 15-16 close the IMAP connection.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Create and Send a Text Message with Twilio
 
@@ -335,17 +329,17 @@ message = twilio_client.messages.create(
 print("Twilio message created with ID: %s" % (message.sid))
 {{< /file >}}
 
-    {{< disclosure-note "About the code" >}}
-The `create` method tells the Twilio API to create *and* immediately send a new text message:
+    {{< note type="secondary" title="About the code" isCollapsible=true >}}
+    The `create` method tells the Twilio API to create *and* immediately send a new text message:
 
-- The text string composed in the last section is used as the body of the message.
+    - The text string composed in the last section is used as the body of the message.
 
-- The `from_` phone number corresponds to the new number that you selected in the Twilio console earlier in the guide.
+    - The `from_` phone number corresponds to the new number that you selected in the Twilio console earlier in the guide.
 
-- The `to` number corresponds with your personal or testing phone number that you signed up to Twilio with.
+    - The `to` number corresponds with your personal or testing phone number that you signed up to Twilio with.
 
-The `create` method returns a reference to the Twilio [message resource](https://www.twilio.com/docs/sms/api/message-resource) that was created. The last line prints the unique ID of the message.
-{{< /disclosure-note >}}
+    The `create` method returns a reference to the Twilio [message resource](https://www.twilio.com/docs/sms/api/message-resource) that was created. The last line prints the unique ID of the message.
+    {{< /note >}}
 
 1. After appending the above snippet, save the file and exit your text editor.
 
@@ -533,7 +527,7 @@ As in the previous section, you may want to retrieve mail from a mailbox with a 
 
     mail.select('"[Gmail]/All Mail"')
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 The example code is similar to the code from the previous section. The updated lines of code are:
 
 - On line 5, the [`datetime` module](https://docs.python.org/3/library/datetime.html) is imported. This is used later in the code to search for email by date.
@@ -554,12 +548,12 @@ The example code is similar to the code from the previous section. The updated l
 
 - Line 69 uses the dictionary interface of the email.message.Message object to retrieve a string that represents the date and time of the email. For the example email in the previous section, this was equal to `Tue, 7 Dec 2021 12:45:10 -0500 (EST)`.
 
-- Line 70 uses the [parsedate_to_datetime](https://docs.python.org/3/library/email.utils.html#email.utils.parsedate_to_datetime) function of the Python email module to convert the datetime string to a [datetime.datetime object](https://docs.python.org/3/library/datetime.html#datetime.datetime).
+- Line 70 uses the [`parsedate_to_datetime`](https://docs.python.org/3/library/email.utils.html#email.utils.parsedate_to_datetime) function of the Python email module to convert the datetime string to a [datetime.datetime object](https://docs.python.org/3/library/datetime.html#datetime.datetime).
 
 - Line 71 gets the Unix timestamp from the datetime object.
 
 - The `if` condition on line 73 compares the age of the email and the current time for the script. This only evaluates to true for emails that are less than a minute old. If true, the text message is prepared and sent via the `send_message` function.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Set Up a Cron Job
 
@@ -656,11 +650,11 @@ Your script should now look like the code in [this file](autoforward-email-with-
 
 1.  The updated script is automatically run by the cron job. CPU usage alerts are sent when a Linode on your account exceeds a threshold percentage. The Linodes on your account may or may not currently this threshold, so you may not receive any notifications.
 
-    You can test that the update code works by temporarily [lowering the CPU usage alert threshold](/docs/products/tools/monitoring/guides/monitoring-email-alerts/) for one of your Linodes. By default, this value is set to 90%.
+    You can test that the update code works by temporarily [lowering the CPU usage alert threshold](/docs/products/compute/compute-instances/guides/resource-usage-email-alerts/) for one of your Linodes. By default, this value is set to 90%.
 
 ## Next Steps
 
-The auto-forwarding system is now complete, and it includes email filtering by subject keyword. You can make adjustments to the search criterion to change this filtering behavior. For example, you could search for the string `traffic rate` to only forward notifications about spikes in your Linodes' networking. You can also tweak the [alert threshold values](/docs/products/tools/monitoring/guides/monitoring-email-alerts/) for different resources in the Cloud Manager.
+The auto-forwarding system is now complete, and it includes email filtering by subject keyword. You can make adjustments to the search criterion to change this filtering behavior. For example, you could search for the string `traffic rate` to only forward notifications about spikes in your Linodes' networking. You can also tweak the [alert threshold values](/docs/products/compute/compute-instances/guides/resource-usage-email-alerts/) for different resources in the Cloud Manager.
 
 In addition to forwarding emails to text, you may want to forward information from the Linode API to text. The [Using the Linode API with Twilio](/docs/guides/how-to-use-the-linode-api-with-twilio/) and [Monitor your Linode's Network Transfer Pool with Twilio](/docs/guides/monitor-linode-network-transfer-pool-with-twilio/) guides show how to combine the Linode and Twilio APIs.
 
@@ -674,7 +668,7 @@ When troubleshooting email forwarding, remember that you can trigger new Linode 
 
 - Rebooting a Linode in the Cloud Manager.
 
-- Temporarily lowering [alert threshold values](/docs/products/tools/monitoring/guides/monitoring-email-alerts/).
+- Temporarily lowering [alert threshold values](/docs/products/compute/compute-instances/guides/resource-usage-email-alerts/).
 
 As well, the following possible solution may help:
 

@@ -1,16 +1,10 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy MySQL/MariaDB through the Linode Marketplace"
 description: "This guide shows how to install and configure MySQL/MariaDB so you can run databases for anything from a CRM to WordPress by using the Linode One-Click Marketplace."
-keywords: ['database','mysql','rdbms','relational database','mariadb']
-tags: ["database","cloud-manager","linode platform","mysql","marketplace","mariadb"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-13
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy MySQL/MariaDB through the Linode Marketplace"
+keywords: ['database','mysql','rdbms','relational database','mariadb']
+tags: ["database","cloud-manager","linode platform","mysql","marketplace","mariadb"]
 external_resources:
 - '[MySQL 5.6 Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/index.html)'
 - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
@@ -22,9 +16,9 @@ MySQL is an open-source database management system that uses a relational databa
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** MySQL should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -43,9 +37,11 @@ MySQL is an open-source database management system that uses a relational databa
 - **MySQL User Password** *(required)*: The user password for your MySQL database.
 - **Create Database** *(required)*: The database on your MySQL.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
+
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -53,7 +49,7 @@ MySQL is an open-source database management system that uses a relational databa
 
 After MySQL has finished installing, you will be able to access MySQL from the console via ssh with your Linode's IPv4 address:
 
-1.  [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) and [create a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+1.  [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) and [create a limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 1.  Log out and log back in as your limited user account.
 
@@ -148,7 +144,7 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
 ## Next Steps
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 For more on MySQL/MariaDB, checkout the following guides:
 

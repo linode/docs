@@ -1,18 +1,15 @@
 ---
 slug: using-google-workspace-for-email
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Using Google Workspace for Email"
+title_meta: "How to Use Google Workspace for Email"
 description: 'Setting up Google Workspace with the DNS Manager to handle email for your domains.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-08-05
+modified: 2021-06-22
 keywords: ["google email", "google apps", "google workspace", "G Suite"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/email-services/using-google-apps-for-email/','/email/google-mail/','/email/using-google-apps-for-email/','/guides/using-google-apps-for-email/']
-modified: 2021-06-22
-modified_by:
-  name: Linode
-published: 2014-08-05
-title: "Using Google Workspace for Email"
-title_meta: "How to Use Google Workspace for Email"
 tags: ["email"]
 ---
 

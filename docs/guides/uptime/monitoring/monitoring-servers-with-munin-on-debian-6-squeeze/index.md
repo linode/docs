@@ -1,31 +1,28 @@
 ---
 slug: monitoring-servers-with-munin-on-debian-6-squeeze
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Monitoring Servers with Munin on Debian 6 (Squeeze)'
 description: 'Keep track of vital system statistics and troubleshoot performance problems with Munin on Debian 6 (Squeeze).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2011-11-08
 keywords: ["munin", "monitoring"]
 tags: ["debian","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/monitoring/monitoring-servers-with-munin-on-debian-6-squeeze/','/server-monitoring/munin/debian-6-squeeze/']
-modified: 2011-11-08
-modified_by:
-  name: Tim Heckman
-published: 2011-04-05
-deprecated: true
-title: 'Monitoring Servers with Munin on Debian 6 (Squeeze)'
 relations:
     platform:
         key: install-munin-monitoring
         keywords:
             - distribution: Debian 6
+deprecated: true
 ---
 
 The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. For instance, if you need to monitor memory usage or resource consumption on a per-process level, a more precise monitoring tool like Munin might be helpful.
 
 Munin is a system and network monitoring tool that uses RRDTool to generate useful visualizations of resource usage. The primary goal of the Munin project is to provide an easy to use tool that is simple to install and configure and provides information in an accessible web based interface. Munin also makes it possible to monitor multiple "nodes" with a single installation.
 
-Before installing Munin, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Additionally, you'll need to install a web server such as [Apache](/docs/guides/apache-2-web-server-on-debian-6-squeeze/) in order to use the web interface.
+Before installing Munin, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Additionally, you'll need to install a web server such as [Apache](/docs/guides/apache-2-web-server-on-debian-6-squeeze/) in order to use the web interface.
 
 ## Installing Munin
 

@@ -1,23 +1,17 @@
 ---
 slug: yum-package-manager
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Using YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
+title_meta: "How to Use YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
 description: "This guide walks you through the core features of YUM and commands for using YUM to install, upgrade, and remove packages on your system."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-05-21
+modified: 2021-07-15
 keywords: ['yum','installing','updating','upgrading','uninstalling','removing','package repositories','centos']
 tags: ['yum',centos',]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-21
 image: YUM1.jpg
-modified: 2021-07-15
-modified_by:
-  name: Linode
-title: "Using YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
-title_meta: "How to Use YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
 aliases: ['/guides/how-to-use-yum/']
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[YUM Package Manager](http://yum.baseurl.org/)'
 ---
@@ -30,11 +24,11 @@ This guide aims to familiarize you with the YUM commands you are most likely to 
 
 Before running the commands within this guide, you will need:
 
-1. **A system running on CentOS/RHEL 7, Fedora 21, or earlier versions of either distribution.** Other Linux distributions that employ the YUM package manager can also be used. Review the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide if you do not yet have a compatible system.
+1. **A system running on CentOS/RHEL 7, Fedora 21, or earlier versions of either distribution.** Other Linux distributions that employ the YUM package manager can also be used. Review the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide if you do not yet have a compatible system.
 
-1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
+1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 

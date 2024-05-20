@@ -1,15 +1,13 @@
 ---
 slug: how-to-setup-and-use-a-vault-server
-author:
-  name: Hackersploit
-description: 'This guide will show you how to install Vault, a open source, centralized secrets management system which provides a secure and reliable way to manage secrets.'
-keywords: ['security', 'secrets', 'password', 'API keys', 'values','authentication', 'vault', 'tokens']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-26
-modified_by:
-  name: Linode
 title: "Setting Up and Using a Vault Server"
 title_meta: "How to Set Up and Use a Vault Server"
+description: 'This guide will show you how to install Vault, a open source, centralized secrets management system which provides a secure and reliable way to manage secrets.'
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2021-03-26
+keywords: ['security', 'secrets', 'password', 'API keys', 'values','authentication', 'vault', 'tokens']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/secrets-management/how-to-set-up-and-use-a-vault-server/']
 tags: ["ubuntu", "security"]
 image: SetUpVaultserver.png
@@ -28,7 +26,7 @@ This guide covers the fundamentals of using Vault and the process of setting up 
 A secret is a credential or key that allows you to gain access to a particular resource or to a system, for example: a password, API key, access token, or database passwords.
 
 ## Before You Begin
-1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides. Ensure that the Linode's [hostname is set](/docs/guides/getting-started/#set-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides. Ensure that the Linode's [hostname is set](/docs/products/platform/get-started/#set-the-hostname).
 
     Check your Linode's hostname. The first command should show your short hostname and the second should show your fully qualified domain name (FQDN).
 

@@ -1,19 +1,15 @@
 ---
 slug: create-a-python-virtualenv-on-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: Creating a Python Virtual Environment on Ubuntu 18.04
+title_meta: How to Create a Python Virtual Environment on Ubuntu 18.04
 description: This guide provides a brief introduction to Python virtual environments using the virtualenv tool on Ubuntu 18.04 Linode.
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-04-07
 keywords: ["python", "python virtual environment", "virtualenv", "ubuntu 18.04"]
 tags: ["python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-04-07
-modified_by:
-  name: Linode
-published: 2020-04-07
 image: Python_virtualenv_Ubuntu1804.png
-title: Creating a Python Virtual Environment on Ubuntu 18.04
-title_meta: How to Create a Python Virtual Environment on Ubuntu 18.04
 external_resources:
 - '[virtualenv Official Documentation](http://virtualenv.pypa.io/)'
 audiences: ["beginner"]
@@ -32,7 +28,7 @@ A Python virtual environment is an isolated project space on your system that co
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides to prepare your system.
+1.  Complete the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides to prepare your system.
 
 1.  Update your system:
 
@@ -43,8 +39,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     {{< /note >}}
 
 ## Create a Python Virtual Environment
-
-{{< note respectIndent=false >}}
+{{< note >}}
 [Python 3.6](https://docs.python.org/3.6/whatsnew/3.6.html) is the default Python interpreter for the Ubuntu 18.04 distribution.
 {{< /note >}}
 

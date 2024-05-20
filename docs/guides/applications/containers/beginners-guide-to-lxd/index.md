@@ -1,21 +1,14 @@
 ---
 slug: beginners-guide-to-lxd
-author:
-  name: Linode
-  email: docs@linode.com
+title: "A Beginner's Guide to LXD: Setting Up an Apache Web Server"
+title_meta: "How to Set Up an Apache Webserver in an LXD Container"
 description: "LXD is a container hypervisor that manages Linux Containers. In this guide, we'll show you how to install, setup, and use LXD 3."
+authors: ["Simos Xenitellis"]
+contributors: ["Simos Xenitellis"]
+published: 2019-05-01
 keywords: ["container", "lxd", "lxc", "apache", "virtual machine", "virtualization"]
 tags: ["ubuntu","container","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-05-01
-modified: 2019-05-01
-modified_by:
-  name: Linode
-title: "A Beginner's Guide to LXD: Setting Up an Apache Web Server"
-title_meta: "How to Set Up an Apache Webserver in an LXD Container"
-contributor:
-  name: Simos Xenitellis
-  link: https://blog.simos.info/
 external_resources:
   - '[What are snap packages](https://docs.snapcraft.io/getting-started/3876)'
   - '[Installing snapd](https://docs.snapcraft.io/installing-snapd/6735)'
@@ -43,9 +36,9 @@ For simplicity, the term *container* is used throughout this guide to describe t
 
 ## Before You Begin
 
-1.  Complete the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide. Select a Linode with at least 2GB of RAM memory, such as the Linode 2GB. Specify the Ubuntu 19.04 distribution. You may specify a different Linux distribution, as long as there is support for **snap packages (snapd)**; see the [More Information](#more-information) for more details.
+1.  Complete the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide. Select a Linode with at least 2GB of RAM memory, such as the Linode 2GB. Specify the Ubuntu 19.04 distribution. You may specify a different Linux distribution, as long as there is support for **snap packages (snapd)**; see the [More Information](#more-information) for more details.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Configure the Snap Package Support
 

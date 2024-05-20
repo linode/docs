@@ -1,18 +1,13 @@
 ---
 slug: data-structure
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'What is a data structure? Read our guide to learn about why data structures are important and how to choose the correct data structure for your projects.'
-keywords: ['data structure','data structures definition','what are data structures','computer data structures']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-10
-modified_by:
-  name: Linode
 title: "Data Structures in Computer Programming"
 title_meta: "Understanding Data Structures: Definition, Uses & Benefits"
-contributor:
-  name: Jeff Novotny
+description: 'What is a data structure? Read our guide to learn about why data structures are important and how to choose the correct data structure for your projects.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-06-10
+keywords: ['data structure','data structures definition','what are data structures','computer data structures']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Python core data structures](https://docs.python.org/3/tutorial/datastructures.html)'
 - '[Wikipedia page on data structures](https://en.wikipedia.org/wiki/Data_structure)'

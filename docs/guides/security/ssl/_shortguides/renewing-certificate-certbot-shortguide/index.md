@@ -1,4 +1,10 @@
 ---
+slug: renewing-certificate-certbot-shortguide
+title: "Shortguide"
+description: "Shortguide"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-07-01
 # Shortguide: Renewing a Certificate Using Certbot
 
 headless: true
@@ -6,17 +12,8 @@ show_on_rss_feed: false
 
 # Ignore the below front matter. It is included to comply with existing tests.
 
-slug: renewing-certificate-certbot-shortguide
-title: "Shortguide"
-description: "Shortguide"
 keywords: ["shortguide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-01
-author:
-  name: Linode
-  email: docs@linode.com
-modified_by:
-  name: Linode
 ---
 
 ## Renewing a TLS/SSL Certificate Using Certbot
@@ -44,7 +41,6 @@ Congratulations, all simulated renewals succeeded:
 To manually force Certbot to renew all certificates, use the `renew` command without any options.
 
     sudo certbot renew
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Certbot does not renew certificates unless they are scheduled to expire soon. However, adding the `--force-renewal` flag to the `renew` command forces all certificates to be renewed regardless of their status. However, there is usually no good reason to force renewals. Do not use the `force-renewal` option too frequently as this could exceed the Let's Encrypt [*rate limit*](https://letsencrypt.org/docs/rate-limits/) for a domain certificate.
 {{< /note >}}

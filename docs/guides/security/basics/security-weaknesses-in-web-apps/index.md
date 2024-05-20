@@ -1,18 +1,14 @@
 ---
 slug: security-weaknesses-in-web-apps
-author:
-  name: David Strom
+title: "Common Security Weaknesses in Web Applications (XSS and SQL Injections)"
+title_meta: "Common Security Weaknesses in Web Applications"
 description: "This guide provides an overview of cross-site scripting and SQL injection exploits, as well as how they happen and what you can do to prevent them."
+authors: ["David Strom"]
+contributors: ["David Strom"]
+published: 2021-06-21
 keywords: ['web app security']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-21
-modified_by:
-  name: Linode
-title: "Common Security Weaknesses in Web Applications (XSS and SQL Injections)"
-title_meta: "Common Security Weaknesses in Web Applications"
-contributor:
-  name: David Strom
 aliases: ['/guides/understanding-total-app-security/']
 ---
 

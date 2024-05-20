@@ -1,25 +1,19 @@
 ---
 slug: install-dont-starve-together-game-server-on-ubuntu
-author:
-    name: Linode Community
-    email: docs@linode.com
-description: 'Install and Configure a Don''t Starve Together Multi-player Game Server for Ubuntu 14.04'
-keywords: ["don''t starve", "don''t starve together", "game servers", "games", "ubuntu", " ubuntu 14.04", "steam cmd", "steamcmd", "token"]
-tags: ["debian", "ubuntu"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+title: "Install Don't Starve Together Game Server on Ubuntu 14.04"
+description: "Install and Configure a Don't Starve Together Multi-player Game Server for Ubuntu 14.04"
+authors: ["Andrew Gottschling"]
+contributors: ["Andrew Gottschling"]
 published: 2015-04-14
 modified: 2019-02-01
-modified_by:
-    name: Linode
-title: 'Install Don''t Starve Together Game Server on Ubuntu 14.04'
+keywords: ["don't starve", "don't starve together", "game servers", "games", "ubuntu", " ubuntu 14.04", "steam cmd", "steamcmd", "token"]
+tags: ["debian", "ubuntu"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/game-servers/dont-starve-together-on-ubuntu/','/game-servers/install-dont-starve-together-game-server-on-ubuntu/','/applications/game-servers/install-dont-starve-together-game-server-on-ubuntu/']
-contributor:
-    name: Andrew Gottschling
-    link: https://github.com/agottschling
 dedicated_cpu_link: true
 ---
 
-![banner_image](Install_Dont_Starve_Together_Game_Server_on_Ubuntu_smg.jpg)
+![Header image](Install_Dont_Starve_Together_Game_Server_on_Ubuntu_smg.jpg "Install Don't Starve Together Game Server on Ubuntu 14.04")
 
 [Don’t Starve Together](https://www.kleientertainment.com/games/dont-starve-together) is a multiplayer game written and published by Klei Entertainment, and is a multiplayer add- on to their single-player game Don’t Starve. This guide will explain how to prepare your Linode and install, then configure, Don’t Starve Together.
 
@@ -30,7 +24,7 @@ dedicated_cpu_link: true
 
 2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

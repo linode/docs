@@ -1,19 +1,14 @@
 ---
 slug: how-to-slice-and-index-strings-in-python
-author:
-  name: Jeff Novotny
+title: "Slicing and Indexing Strings in Python"
+title_meta: "How to Slice and Index Strings in Python"
 description: 'In Python, strings can be manipulated using built-in string methods. In this guide, learn how to slice and index strings in Python 3 to isolate specific characters.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-01-28
 keywords: ['Python slice string','Python string index','How to slice a string in python','Python slice string from end']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-28
-modified_by:
-  name: Linode
-title: "Slicing and Indexing Strings in Python"
-title_meta: "How to Slice and Index Strings in Python"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Python string documentation](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)'
 ---
@@ -28,9 +23,9 @@ It is possible to access any character in a Python string using array-based inde
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
 
 1. Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. For information on how to use Python, see our guide on [How to Install Python 3](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 

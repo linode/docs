@@ -1,16 +1,12 @@
 ---
 slug: how-to-install-configure-and-run-fish
-author:
-  name: Angel Guarisma
-  email: docs@linode.com
+title: 'How to Install, Configure and Run the Fish Shell'
 description: 'This article gives you step-by-step instructions for installing and configuring Fish, the Friendly Interactive Shell, a replacement shell interface.'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2017-07-18
 keywords: ["fish", "fish shell", "fish scripting", "bash", "command line shell", "The Friendly Interactive Shell"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-07-18
-modified: 2017-07-18
-modified_by:
-  name: Linode
-title: 'How to Install, Configure and Run the Fish Shell'
 external_resources:
 - '[Fish Shell](https://fishshell.com/)'
 - '[Fish Shell Tutorial](https://geowarin.github.io/the-missing-fish-shell-tutorial.html)'
@@ -103,7 +99,7 @@ For example, if you have a script that prints numbers 1-10:
 
 Using `bash -c`, you can take that same script as a string and run it without exiting Fish.
 
-![fish_script](fish_script.png)
+![Screenshot of terminal](fish_script.png)
 
 
 ## Next Steps

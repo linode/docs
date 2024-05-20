@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Configure and Mount a Volume"
 description: "Learn how to create a file system on a Block Storage Volume and mount it to a Compute Instance."
 modified: 2022-08-24
@@ -15,7 +12,7 @@ Once a Block Storage Volume has been attached to a Compute Instance, you need to
 
 1.  The **Volume Configuration** panel appears and contains the commands needed to fully configure the Volume with your Compute Instance.
 
-1.  Login to your Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1.  Login to your Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Enter each command that's shown in the **Volume Configuration** panel, modifying them if needed. These configuration steps are also listed below:
 

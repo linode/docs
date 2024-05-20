@@ -1,19 +1,14 @@
 ---
 slug: mean-stack-tutorial
-author:
-  name: Cameron Laird
+title: "Create a MEAN Stack Application"
+title_meta: "MEAN Stack Tutorial: Create an Example Application"
 description: 'This MEAN stack tutorial shows you how to build a basic model application that connects MongoDB with Angular on an Ubuntu 20.04 system.'
+authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
+published: 2021-12-10
 keywords: ['angular mongodb', 'connect mongodb with angular', 'mean stack tutorial']
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-10
-modified_by:
-  name: Linode
-title: "Create a MEAN Stack Application"
-title_meta: "MEAN Stack Tutorial: Create an Example Application"
-contributor:
-  name: Cameron Laird
-  link: https://twitter.com/Phaseit
 ---
 
 In web development, the term *full stack* refers to all the programmed parts of a web application. This includes the front end, which is seen by end-users, and the back end, where data is stored. The *MEAN* stack is one particular combination of technologies that covers the front end and the back end of an application. MEAN is widely regarded as particularly capable for large-scale, complex applications. This tutorial shows you how to build a basic application using the MEAN stack.
@@ -27,7 +22,7 @@ MEAN is an acronym for the combination of technology stacks–**M**ongoDB, **E**
 - Express.js is a web application framework based on Node.
 - Angular is a web framework for the front end.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You can learn about each technology of the MEAN stack in our guides on [Angular](/docs/guides/angular-tutorial-for-beginners/), [Node.js](/docs/guides/how-to-install-nodejs/), [MongoDB](/docs/guides/databases/mongodb/), and [Express.js](/docs/guides/express-js-tutorial/).
 {{< /note >}}
 
@@ -117,7 +112,7 @@ my-angular-app is running!
 
 This section shows you how to create a simple application that utilizes each component of the MEAN stack and demonstrates communication between each component. The example application illustrates how all the programmable pieces of a web application can be written in JavaScript. It also demonstrates how the different components exchange data between each other.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Some additional functionality you might incorporate into a production application is user authentication, reading and writing data from your MongoDB records, data backups, and load balancing.
 {{< /note >}}
 

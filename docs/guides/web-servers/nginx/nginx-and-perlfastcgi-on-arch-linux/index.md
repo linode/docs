@@ -1,33 +1,28 @@
 ---
 slug: nginx-and-perlfastcgi-on-arch-linux
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Nginx and Perl-FastCGI on Arch Linux'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Arch Linux.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-03
+modified: 2013-10-07
 keywords: ["perl fastcgi arch linux", "fastcgi", "nginx arch linux", "nginx arch", "nginx perl"]
 tags: ["web server","perl","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/nginx-and-perlfastcgi-on-arch-linux/','/web-servers/nginx/perl-fastcgi/arch-linux/','/websites/nginx/nginx-and-perlfastcgi-on-arch-linux/']
-modified: 2013-10-07
-modified_by:
-  name: Linode
-published: 2011-02-03
-title: 'Nginx and Perl-FastCGI on Arch Linux'
 relations:
     platform:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Arch Linux
+deprecated: true
 ---
-
-
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it capable of handling dynamically generated content. The process described in this document centers on the deployment of a FastCGI wrapper for CGI. This makes it possible to deploy all dynamic content that communicates using the CGI protocol. Typically this kind of script is written in Perl, but other CGI scripts will be compatible with this solution.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

@@ -1,24 +1,21 @@
 ---
 slug: provide-authoritative-dns-services-with-nsd-on-fedora-14
-deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
+title: Provide Authoritative DNS Services with NSD on Fedora 14
 description: 'This guide will show you to install and configure NSD, a lightweight and open-source name server to handle authoritative DNS queries on Fedora 14.'
+authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
+published: 2011-01-25
+modified: 2013-09-25
 keywords: ["NSD", "DNS", "resolving", "Fedora 14", "networking"]
 tags: ["dns","networking","fedora","resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/provide-authoritative-dns-services-with-nsd-on-fedora-14/','/dns-guides/nsd-authoritative-dns-fedora-14/']
-modified: 2013-09-25
-modified_by:
-  name: Linode
-published: 2011-01-25
-title: Provide Authoritative DNS Services with NSD on Fedora 14
 relations:
     platform:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Fedora 14
+deprecated: true
 ---
 
 NSD is a lightweight yet full-featured open source name server daemon created to provide an alternative to BIND.
@@ -27,7 +24,7 @@ Before beginning, you should be familiar with basic [DNS terminology and records
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

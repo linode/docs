@@ -1,33 +1,28 @@
 ---
 slug: sendonly-mail-server-with-exim-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Send-only Mail Server with Exim on Ubuntu 9.10 (Karmic)'
 description: 'Configuring Exim to serve as a lightweight, send-only SMTP server on Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-17
+modified: 2011-04-29
 keywords: ["exim", "mail server", "linux mail", "smtp server", "ubuntu exim", "ubuntu 9.10"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/exim/sendonly-mail-server-with-exim-on-ubuntu-9-10-karmic/','/email/exim/send-only-mta-ubuntu-9-10-karmic/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2009-12-17
-title: 'Send-only Mail Server with Exim on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: deploy-exim-sendonly-email
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 Many Linux server applications need to send email; cron jobs use mail services to deliver reports on jobs that have run, web applications require mail support for user registration functions, and other applications may need to send alerts via SMTP. This guide will help you install and configure the lightweight Exim MTA (Mail Transfer Agent) on your Ubuntu 9.10 (Karmic) Linode.
 
 You'll gain the ability to send mail from `localhost` through either a traditional "sendmail" style interface, or via port 25 locally. As this guide is not intended to provide a full send/receive mail solution, please refer to our other [email guides](/docs/email/) for ways to implement such configurations.
 
-We assume that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Make sure you're logged into your Linode as "root" via SSH before proceeding.
+We assume that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Make sure you're logged into your Linode as "root" via SSH before proceeding.
 
 ## Install Required Packages
 

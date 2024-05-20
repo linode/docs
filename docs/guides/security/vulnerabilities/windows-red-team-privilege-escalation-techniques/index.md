@@ -1,23 +1,18 @@
 ---
 slug: windows-red-team-privilege-escalation-techniques
-author:
-  name: HackerSploit
-  email: hackersploit@gmail.com
+title: "Windows Red Team Privilege Escalation Techniques"
 description: 'This guide covers various techniques that can be used to elevate your privileges on Windows systems.'
+authors: ["HackerSploit"]
+contributors: ["HackerSploit"]
+published: 2021-11-03
 keywords: ['security']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-03
-modified_by:
-  name: Linode
-title: "Windows Red Team Privilege Escalation Techniques"
-contributor:
-  name: HackerSploit
 ---
 
-{{< content "hackersploit-red-team-series-note-shortguide" >}}
+{{% content "hackersploit-red-team-series-note-shortguide" %}}
 
-{{< content "hackersploit-caution-shortguide" >}}
+{{% content "hackersploit-caution-shortguide" %}}
 
 ## Before You Begin
 
@@ -97,7 +92,7 @@ The following procedures outline the process of elevating privileges by bypassin
 
         search bypassuac
 
-    As highlighted in the following screenshot, we will be utilizing the “bypassuac_injection_winsxs” module as it is the only module that works on Windows 10 systems.
+    As highlighted in the following screenshot, we will be utilizing the `bypassuac_injection_winsxs` module as it is the only module that works on Windows 10 systems.
 
     ![search bypassuac output](search-bypassuac-output.png "search bypassuac output")
 
@@ -238,7 +233,7 @@ We can begin the process by following the outlined procedures:
 
     As shown in the following screenshot, we are able to identify the “NT AUTHORITY\SYSTEM” token.
 
-    ![list_tokens output](list-tokens-output.png "list_tokens output")
+    ![Screenshot of terminal output](list-tokens-output.png)
 
 1. We can impersonate the “NT AUTHORITY\SYSTEM” token by running the following command:
 

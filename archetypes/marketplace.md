@@ -1,16 +1,13 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy ___App_Name___ through the Linode Marketplace"
 description: "Two to three sentences describing your guide."
 og_description: "Two to three sentences describing your guide when shared on social media. Delete this if not needed."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: {{ now.Format "2006-01-02" }}
 keywords: ['list','of','keywords','and key phrases']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: {{ now.Format "2006-01-02" }}
-modified_by:
-  name: Linode
-title: "Deploy ___App_Name___ through the Linode Marketplace"
 external_resources:
 - '[Link Title 1](http://www.example.com)'
 - '[Link Title 2](http://www.example.net)'
@@ -20,9 +17,9 @@ external_resources:
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time for ___App_Name___:** The software should be fully installed within 2-5 minutes.
@@ -50,4 +47,4 @@ Your app is accessible at your Linode's IP address...etc.
 <!-- the following shortcode informs the user that Linode does not provide automatic updates
      to the Marketplace app, and that the user is responsible for the security and longevity
      of the installation. -->
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

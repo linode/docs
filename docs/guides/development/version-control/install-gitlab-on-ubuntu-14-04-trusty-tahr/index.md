@@ -1,23 +1,15 @@
 ---
 slug: install-gitlab-on-ubuntu-14-04-trusty-tahr
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: 'Install GitLab on Ubuntu 14.04 (Trusty Tahr)'
 description: 'This guide shows how to install GitLab, the free git repository management app based on Ruby on Rails, on a Linode running Ubuntu 14.04 "Trusty Tahr".'
+authors: ["Nashruddin Amin"]
+contributors: ["Nashruddin Amin"]
+published: 2014-09-04
+modified: 2017-06-21
 keywords: ["version control", "git", "gitlab", "ruby", "ruby on rails", "mysql", "postgresql", "nginx"]
 tags: ["version control system","email","ruby","nginx","ubuntu","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr/','/gitlab-with-ubuntu/','/development/version-control/install-gitlab-on-ubuntu-14-04-trusty-tahr/','/applications/development/gitlab-on-ubuntu-14-04/','/applications/development/install-gitlab-on-ubuntu-14-04-trusty-tahr/']
-contributor:
-    name: Nashruddin Amin
-    link: https://twitter.com/bsd_noobz
-modified: 2017-06-21
-modified_by:
-  name: Linode
-published: 2014-09-04
-title: 'Install GitLab on Ubuntu 14.04 (Trusty Tahr)'
-deprecated: true
-deprecated_link: development/version-control/install-gitlab-on-ubuntu-18-04/
 external_resources:
  - '[GitLab Community Edition](https://www.gitlab.com/gitlab-ce/)'
  - '[GitLab Documentation](https://www.gitlab.com/documentation/)'
@@ -29,8 +21,9 @@ relations:
         key: install-gitlab
         keywords:
             - distribution: Ubuntu 14.04
+deprecated: true
+deprecated_link: development/version-control/install-gitlab-on-ubuntu-18-04/
 ---
-
 
 ![Install Gitlab on Ubuntu](Install_GitLab_smg.jpg)
 
@@ -40,7 +33,7 @@ GitLab provides a [.deb package](https://www.gitlab.com/downloads/) which contai
 
 This guide will help you install and configure GitLab on your Ubuntu 14.04 (Trusty Tahr) Linode. We will be using the latest Ruby and GitLab as of this writing, so check for the latest version. We will assume that you want to install GitLab on `git.example.com` and you have configured the DNS properly. If you are new to Linux system administration, you might want to consider the [Introduction to Linux Concepts guide](/docs/guides/introduction-to-linux-concepts/) and [Linux Administration Basics guide](/docs/guides/linux-system-administration-basics/) guides. Hosting your own software projects could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with sudo. If you are not familiar with the sudo command, you can check out our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -151,7 +144,7 @@ In this section you will install GitLab and make some configuration changes.
 
         sudo nano config/gitlab.yml
 
-   You need to change the value of host to the fully-qualified domain of your server. Also set the email_from and support_email to the email addresses intended for GitLab.
+   You need to change the value of host to the fully-qualified domain of your server. Also set the `email_from` and `support_email` to the email addresses intended for GitLab.
 
    {{< file "/home/git/gitlab/config/gitlab.yml" >}}
 production: &base

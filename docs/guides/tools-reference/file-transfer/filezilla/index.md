@@ -1,17 +1,14 @@
 ---
 slug: filezilla
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Transfer Files with FileZilla'
 description: 'Securely copying files to and from your Linode with FileZilla, a free and open source file transfer client for Linux, OS X, and Windows systems.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-10-13
+modified: 2019-01-15
 keywords: ["filezilla", "ftp", "scp", "sftp", "transfer"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/file-transfer/filezilla/','/networking/file-transfer/transfer-files-filezilla/']
-modified: 2019-01-15
-modified_by:
-  name: Linode
-published: 2014-10-13
-title: 'Transfer Files with FileZilla'
 external_resources:
  - '[FileZilla Documentation](https://wiki.filezilla-project.org/Documentation)'
 ---
@@ -24,7 +21,7 @@ external_resources:
 ## Before You Begin
 
 - You will need root access to your Linode, or a user account with `sudo` privilege. Note that if you transfer files as `root`, you may need to change file [ownership and permissions](/docs/guides/linux-users-and-groups/) afterwards.
-- Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
+- Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 - Update your system.
 
 
@@ -42,7 +39,7 @@ external_resources:
 
 ## Using FileZilla
 
-1.  Launch FileZilla and enter your Linode's IP address or domain name in the `Host` field. Enter the username and password for the account on the Linode you want to connect as, and enter "22" in the `Port` field. Click **Quickconnect** to initiate the file transfer session.
+1.  Launch FileZilla and enter your Linode's IP address or domain name in the `Host` field. Enter the username and password for the account on the Linode you want to connect as and enter "22" in the `Port` field. Click **Quickconnect** to initiate the file transfer session.
 
     ![FileZilla Quickconnect](filezilla-quick-connect.png "FileZilla Quickconnect")
 
@@ -54,9 +51,9 @@ external_resources:
 
 ## FileZilla with Public Key Authentication
 
-If you followed our [Securing Your Server](/docs/guides/set-up-and-secure/) guide, you won't be able to connect to your Linode using a password. If you are using Linux or macOS, the SSH keypair generated while following that guide will be automatically used for authentication.
+If you followed our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, you won't be able to connect to your Linode using a password. If you are using Linux or macOS, the SSH keypair generated while following that guide will be automatically used for authentication.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you are using macOS, the passphrase for your key will need to be stored in your keychain to successfully connect using an SSH keypair. FileZilla will not be able to use a key that was generated without a passphrase to connect to your Linode.
 {{< /note >}}
 

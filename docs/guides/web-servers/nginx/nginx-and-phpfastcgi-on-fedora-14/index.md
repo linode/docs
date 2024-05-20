@@ -1,33 +1,30 @@
 ---
 slug: nginx-and-phpfastcgi-on-fedora-14
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Nginx and PHP-FastCGI on Fedora 14'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Fedora 14'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-01-07
+modified: 2013-10-07
 keywords: ["nginx", "nginx fedora 14", "nginx fastcgi", "nginx php"]
 tags: ["web server","fedora","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/nginx-and-phpfastcgi-on-fedora-14/','/web-servers/nginx/nginx-and-phpfastcgi-on-fedora-14/','/web-servers/nginx/php-fastcgi/fedora-14/']
-modified: 2013-10-07
-modified_by:
-  name: Linode
-published: 2011-01-07
-title: 'Nginx and PHP-FastCGI on Fedora 14'
-deprecated: true
 relations:
     platform:
         key: nginx-php-fastcgi
         keywords:
             - distribution: Fedora 13
+deprecated: true
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your Fedora 14 system.
 
-It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
+It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

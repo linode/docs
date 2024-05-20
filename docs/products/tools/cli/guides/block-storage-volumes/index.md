@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: Block Storage Volumes
 description: "How to use the Linode CLI for to manage the Block Storage service."
 published: 2020-07-20

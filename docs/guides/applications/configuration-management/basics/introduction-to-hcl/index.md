@@ -1,17 +1,14 @@
 ---
 slug: introduction-to-hcl
-author:
-    name: Linode
-    email: docs@linode.com
-description: 'This guide provides an introduction to HCL syntax and commonly used HCL terminology.'
-keywords: ["terraform", "hcl", "hashicorp", "orchestration", "HashiCorp Configuration Language"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-02-22
-modified_by:
-    name: Linode
-published: 2018-12-12
 title: "An Introduction to HashiCorp Configuration Language (HCL)"
 title_meta: Introduction to HashiCorp Configuration Language (HCL)
+description: 'This guide provides an introduction to HCL syntax and commonly used HCL terminology.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-12-12
+modified: 2021-02-22
+keywords: ["terraform", "hcl", "hashicorp", "orchestration", "HashiCorp Configuration Language"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
     - '[HCL on GitHub](https://github.com/hashicorp/hcl)'
     - '[Terraform Official Documentation - Configuration Syntax](https://www.terraform.io/docs/configuration/syntax.html)'

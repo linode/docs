@@ -1,30 +1,25 @@
 ---
 slug: installing-and-using-httpie-on-linux
-author:
-  name: Nathaniel Stickman
+title: "Install and Use HTTPie on Linux"
+title_meta: "How to Install and Use HTTPie on Linux"
 description: "Learn how to use HTTPie, a modern and user-friendly command-line HTTP client that is designed to be used with web APIs."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-09-24
 keywords: ['what is httpie','install httpie','using httpie', 'httpie', 'httpie vs curl']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-24
-modified_by:
-  name: Linode
-title: "Install and Use HTTPie on Linux"
-title_meta: "How to Install and Use HTTPie on Linux"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 ---
 
 [HTTPie](https://httpie.io/) is a command-line HTTP client built for modern web APIs. It provides intuitive commands and a user-friendly interface. In this guide, you learn about HTTPie's features and how it compares to cURL. You also learn how to install and start using HTTPie on your Linux system.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

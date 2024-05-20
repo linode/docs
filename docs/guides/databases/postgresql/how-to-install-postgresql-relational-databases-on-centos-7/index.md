@@ -1,16 +1,12 @@
 ---
 slug: how-to-install-postgresql-relational-databases-on-centos-7
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'How to Install PostgreSQL Relational Databases on CentOS 7'
 description: 'The PostgreSQL relational database is a powerful open source database platform. Learn how to install it on CentOS 7 in this simple tutorial.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-12-12
 keywords: ["postgresql", "CentOS 7", "open source database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-12-12
-modified_by:
-  name: Nick Brewer
-published: 2016-12-12
-title: 'How to Install PostgreSQL Relational Databases on CentOS 7'
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
@@ -29,9 +25,9 @@ The [PostgreSQL](http://www.postgresql.org/) relational database system is a pow
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server guide](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 

@@ -1,21 +1,16 @@
 ---
 slug: create-terraform-module
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Create a Terraform Module"
+title_meta: "How to Create a Terraform Module"
 description: 'This guide shows you how to create a Terraform module with nested root, linode_instance, and stackscripts modules using a Linode StackScripts installer.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-12-12
+modified: 2021-06-01
 keywords: ['terraform','resource','modules','provider']
 tags: ["terraform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-12-12
-modified: 2021-06-01
-modified_by:
-  name: Linode
 image: create-a-terraform-module.png
-title: "Create a Terraform Module"
-title_meta: "How to Create a Terraform Module"
-contributor:
-  name: Linode
 external_resources:
 - '[Linode Terraform Provider](https://www.terraform.io/docs/providers/linode/r/instance.html)'
 - '[Terraform - Creating Modules](https://www.terraform.io/docs/modules/create.html)'
@@ -165,7 +160,7 @@ resource "linode_sshkey" "main_key" {
       - The `linode_sshkey` resource will create Linode SSH Keys tied to your Linode account. These keys can be reused for future Linode deployments once the resource has been created. `ssh_key = chomp(file(local.key))` uses Terraform’s built-in function `file()` to provide a local file path to the public SSH key’s location. The location of the file path is the value of the local variable `key`. The `chomp()` built-in function removes trailing new lines from the SSH key.
 
         {{< note respectIndent=false >}}
-If you do not already have SSH keys, follow the steps in the **Create an Authentication Key-pair** section of the our guide [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair).
+If you do not already have SSH keys, follow the steps in the **Create an Authentication Key-pair** section of the our guide [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair).
 {{< /note >}}
 
       {{< file >}}

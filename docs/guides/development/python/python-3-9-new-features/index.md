@@ -1,18 +1,14 @@
 ---
 slug: python-3-9-new-features
-author:
-  name: John Mueller
+title: "Python 3.9: Merge Dictionaries, Time Zone Support, and Type Annotations"
+title_meta: "Python 3.9: An Overview of New Features"
 description: 'This guide highlights and showcases examples of three improved features - merge dictionaries, time zone implementation, and type annotations - of Python 3.9.'
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2021-06-25
 keywords: ['python']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-25
-modified_by:
-  name: Linode
-title: "Python 3.9: Merge Dictionaries, Time Zone Support, and Type Annotations"
-title_meta: "Python 3.9: An Overview of New Features"
-contributor:
-  name: John Mueller
 external_resources:
 - '[Python release 3.9.5 Changelog](https://www.python.org/)'
 - '[Flask](https://flask.palletsprojects.com/en/1.0.x/)'

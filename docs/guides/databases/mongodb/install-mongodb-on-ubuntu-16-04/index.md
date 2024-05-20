@@ -1,16 +1,13 @@
 ---
 slug: install-mongodb-on-ubuntu-16-04
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Install MongoDB for document-oriented data storage on Ubuntu 16.04 (Xenial).'
-keywords: ["nosql", "database", "mongodb", "key store", "ubuntu", "mongodb tutorial"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
-published: 2016-05-20
 title: 'Installing MongoDB on Ubuntu 16.04 (Xenial)'
 title_meta: 'How To Install MongoDB on Ubuntu 16.04 (Xenial)'
+description: 'Install MongoDB for document-oriented data storage on Ubuntu 16.04 (Xenial).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-05-20
+keywords: ["nosql", "database", "mongodb", "key store", "ubuntu", "mongodb tutorial"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
@@ -36,9 +33,9 @@ Since MongoDB can require a significant amount of RAM, we recommend using a [Hig
 
 ## Before You Begin
 
-- Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+- Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-- Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+- Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 - Update your system:
 
@@ -187,7 +184,7 @@ For more information on access control and user management, as well as other tip
 
 ## Manage Data and Collections
 
-{{< content "mongodb-example-shortguide" >}}
+{{% content "mongodb-example-shortguide" %}}
 
 ## Additional MongoDB Functionality
 

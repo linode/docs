@@ -1,20 +1,16 @@
 ---
 slug: how-to-install-git-and-clone-a-github-repository
-author:
-  name: Joe D.
-  email: docs@linode.com
+title: How to Install Git and Clone a GitHub Repository
 description: 'This tutorial is an introduction to developing with Git and GitHub with instructions on installing Git and creating your first GitHub test repository.'
+authors: ["Joe D."]
+contributors: ["Joe D."]
+published: 2015-02-06
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb", "github"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/development/developing-git-github/','/development/version-control/how-to-install-git-and-clone-a-github-repository/','/development/version-control/developing-git-github/']
-modified: 2015-02-06
 external_resources:
  - '[Working with the Git Repository](/docs/guides/how-to-configure-git/)'
  - '[GitHub Help Pages](https://help.github.com/)'
-modified_by:
-  name: Linode
-published: 2015-02-06
-title: How to Install Git and Clone a GitHub Repository
 audiences: ["beginner"]
 tags: ["version control system"]
 ---

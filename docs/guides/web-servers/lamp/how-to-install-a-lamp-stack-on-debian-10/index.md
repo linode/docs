@@ -1,18 +1,15 @@
 ---
 slug: how-to-install-a-lamp-stack-on-debian-10
-author:
-  name: Linode
-  email: docs@linode.com
+title: How to Install a LAMP Stack on Debian 10
+title_meta: 'Install a LAMP Stack on Debian 10 (Buster)'
 description: 'Install a LAMP stack on a Debian 10. A LAMP stack includes Linux, Apache, MariaDB, and PHP.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-06-29
+modified: 2020-02-19
 keywords: ["debian 10 LAMP server", "debian LAMP", "LAMP howto", "lamp", "debian", "debian 10", "websites", "apache", "mysql", "php", "apache 2.4", "lamp debian"]
 tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-19
-modified_by:
-  name: Linode
-published: 2015-06-29
-title: How to Install a LAMP Stack on Debian 10
-title_meta: 'Install a LAMP Stack on Debian 10 (Buster)'
 image: how-to-install-lamp-stack-on-debian-10.png
 external_resources:
  - '[Debian Linux Home Page](http://www.debian.org/)'
@@ -33,7 +30,7 @@ A *LAMP stack* is a particular bundle of software packages commonly used for hos
 
 Prior to installing your LAMP stack ensure that:
 
-1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides. Ensure that the Linode's [hostname is set](/docs/guides/getting-started/#set-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides. Ensure that the Linode's [hostname is set](/docs/products/platform/get-started/#set-the-hostname).
 
     Check your Linode's hostname. The first command should show your short hostname and the second should show your fully qualified domain name (FQDN).
 

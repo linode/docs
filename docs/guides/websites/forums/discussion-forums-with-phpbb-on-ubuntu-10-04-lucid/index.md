@@ -1,31 +1,26 @@
 ---
 slug: discussion-forums-with-phpbb-on-ubuntu-10-04-lucid
-deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
+title: 'Discussion Forums with phpBB on Ubuntu 10.04 (Lucid)'
 description: 'Configuring the phpBB system for hosting web-based discussion forums on Ubuntu 10.04 (Lucid).'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-09-22
+modified: 2013-10-01
 keywords: ["phpBB", "forum software", "web applications", "PHP"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/forums/discussion-forums-with-phpbb-on-ubuntu-10-04-lucid/','/web-applications/bulletin-boards/phpbb/ubuntu-10-04-lucid/']
-modified: 2013-10-01
-modified_by:
-  name: Linode
-published: 2010-09-22
-title: 'Discussion Forums with phpBB on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
         key: how-to-install-phpbb
         keywords:
            - distribution: Ubuntu 10.04
+deprecated: true
 ---
-
-
 
 phpBB is one of the most widely used open source forum solutions. It is easy to install and free to use, along with being fully customizable. If you don't want to spend money on other forum software like vBulletin, consider using phpBB.
 
-For this guide, we'll assume you've already completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide and have a working [LAMP stack](/docs/lamp-guides/) on your Linode. You should be connected to your server via SSH and logged in as root.
+For this guide, we'll assume you've already completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide and have a working [LAMP stack](/docs/lamp-guides/) on your Linode. You should be connected to your server via SSH and logged in as root.
 
 ## Prerequisites
 

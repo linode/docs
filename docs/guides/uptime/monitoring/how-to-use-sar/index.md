@@ -1,21 +1,15 @@
 ---
 slug: how-to-use-sar
-author:
-  name: Steven J. Vaughan-Nichols
-  email: sjvn@vna1.com
+title: "Using the System Activity Reporter (sar)"
+title_meta: "How to Use the System Activity Reporter (sar)"
 description: "This guide shows you the basics of sar, the Linux system activity reporter, including installation, configuration, and basic commands."
+authors: ["Steven J. Vaughan-Nichols"]
+contributors: ["Steven J. Vaughan-Nichols"]
+published: 2021-02-19
 keywords: ['sar command in linux']
 tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-19
 image: UseSystemActivityReporter.png
-modified_by:
-  name: Linode
-title: "Using the System Activity Reporter (sar)"
-title_meta: "How to Use the System Activity Reporter (sar)"
-contributor:
-  name: Steven J. Vaughan-Nichols
-  link: http://www.twitter.com/sjvn
 ---
 
 The System Activity Reporter ([Sar](https://linux.die.net/man/1/sar)) is a utility program for analyzing Linux system performance. Sar is a do-it-all monitoring tool that is part of the [Sysstat system resource utilities package](https://github.com/sysstat/sysstat). Linux administrators should learn sar for its wide range of utility features. It measures CPU activity; memory/paging; interrupts; device load; network; process and thread allocation; and swap space utilization. Data is gathered in the `/proc` filesystem. By default, sar collects data once for every 10-minute mark of each hour. This guide shows you how to install and configure sar on your Debian or Ubuntu Linux system. You also learn several useful commands to get you started collecting data about your Linux system's activity.
@@ -24,9 +18,9 @@ The System Activity Reporter ([Sar](https://linux.die.net/man/1/sar)) is a utili
 
 If you are using a Linode, make sure you run the steps in this section to configure your Linode, secure your server, and update your system's packages.
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Install and Configure sar
 
