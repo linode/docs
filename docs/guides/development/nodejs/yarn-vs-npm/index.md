@@ -1,14 +1,12 @@
 ---
 slug: yarn-vs-npm
-title: "Yarn vs. NPM: Which One is Right for You?"
-title_meta: "What’s the Difference Between Yarn and NPM?"
-description: 'When comparing Yarn vs. NPM, each differs in terms of security, speed and more. Read our guide to find out whether Yarn or NPM is right for you. ✓ Click here!'
+title: "Yarn vs. NPM: Comparison of Node.js Package Managers"
+description: "When comparing Yarn vs. NPM, each differs in terms of security, speed and more. Read our guide to find out whether Yarn or NPM is right for you."
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2023-06-08
 keywords: ['yarn vs npm','what is yarn','yarn npm','yarn or npm','difference between yarn and npm','what is yarn npm','why use yarn over npm','yarn add vs npm install','what does yarn do','yarn install vs npm install']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["John Mueller"]
-published: 2023-06-08
-modified_by:
-  name: Linode
 external_resources:
 - '[SitePoint: Yarn vs npm: Everything You Need to Know](https://www.sitepoint.com/yarn-vs-npm/)'
 ---
