@@ -1,12 +1,11 @@
 ---
+title: "Deploy gopaddle through the Linode Marketplace"
 description: "Learn how to deploy gopaddle, a simple low-code platform for Kubernetes developers and operators, on the Linode platform."
+published: 2023-01-23
 keywords: ['gopaddle','kubernetes','container','low code']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2023-01-23
-title: "Deploy gopaddle through the Linode Marketplace"
 external_resources:
 - '[GoPaddle](https://gopaddle.io/)'
-authors: ["Linode"]
 ---
 
 [gopaddle](https://gopaddle.io/) is a low-code Internal Developer Platform (IDP) for Kubernetes developers and operators. It provides a self-service portal through which developers can scaffold code to containers, auto-generate YAML files, build Docker images, deploy applications on to Kubernetes, and manage the application life cycle centrally.
@@ -17,9 +16,9 @@ The gopaddle Marketplace App installs gopaddle lite, which is a free community e
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{<note>}}
 **Estimated deployment time:** gopaddle should be fully installed within 15-20 minutes after the Compute Instance has finished provisioning.
@@ -27,7 +26,7 @@ The gopaddle Marketplace App installs gopaddle lite, which is a free community e
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 18.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** A minimum plan size of 8GB Shared CPU Linode is recommended for GoPaddle.
 
 ## Getting Started After Deployment
@@ -87,4 +86,4 @@ Under Templates, the Marketplace Applications hosts a variety of pre-built Kuber
 
 For more information on gopaddle configurations, please see the [documentation](https://help.gopaddle.io).
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

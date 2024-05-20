@@ -1,16 +1,15 @@
 ---
 slug: ruby-on-rails-apache-debian
+title: 'Install Ruby on Rails with Apache on Debian 9'
 description: 'Using the Apache web server with Debian to serve Ruby on Rails applications.'
 og_description: 'This tutorial will teach you how to use an Apache web server with Debian 8 to serve Ruby on Rails applications'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-03-12
 keywords: ["ruby on rails", "rails on debian", "rails apps", "rails and apache", "deploy rails"]
 tags: ["web applications","debian","apache","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-apache-debian/','/websites/ror/ruby-on-rails-apache-debian-9/','/frameworks/ruby-on-rails-apache/ubuntu-10.04-lucid/']
-published: 2018-03-12
-modified: 2018-03-12
-modified_by:
-  name: Jared Kobos
-title: 'Install Ruby on Rails with Apache on Debian 9'
 external_resources:
  - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
  - '[Phusion Passenger](https://www.phusionpassenger.com/)'
@@ -22,7 +21,6 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Debian 9
-authors: ["Linode"]
 ---
 
 ![Ruby on Rails with Apache on Debian](ruby_on_rails_with_apache_debian.jpg "Ruby on Rails with Apache on Debian")
@@ -60,7 +58,7 @@ authors: ["Linode"]
 
 Ruby will be installed with the Ruby Version Manager (RVM), which makes it easy to install and manage different versions of Ruby on the same system.
 
-{{< content "install-ruby-with-rvm" >}}
+{{% content "install-ruby-with-rvm" %}}
 
 ## Install Passenger and Dependencies
 

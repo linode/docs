@@ -1,15 +1,13 @@
 ---
 slug: backing-up-gitlab-on-linode-object-storage
+title: 'Backing up Gitlab on Linode Object Storage'
 description: "Use gitlab tooling and Linode Object Storage to seemlessly back up your Gitlab installation in a compressed image with a single command."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-10-27
 keywords: ["git", "object-storage", "gitlab"]
 tags: ["version control system","email","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-10-27
-modified_by:
-  name: Linode
-published: 2021-10-27
-title: 'Backing up Gitlab on Linode Object Storage'
-authors: ["Linode"]
 ---
 
 ## In This Guide
@@ -49,12 +47,12 @@ The following chart will explain each configuration settings in additional detai
 
 | Descriptor | Setting|
 | ------------| --------------------- |
-| provider | AWS (The provider must be set to AWS because it is dependent on [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/)) |
-| region | The region the bucket was created in. A full list of regions can be found in the [Product Documentation](/docs/products/storage/object-storage/). |
-| endpoint | The endpoint url for the datacenter. Uses the syntax of **region.linodeobjects.com** |
-| aws_access_key-id | The Object Storage [Access Key](/docs/products/storage/object-storage/guides/access-keys/) created in a previous step. |
-| aws_secret_access_key | The Object Storage [Secret Key](/docs/products/storage/object-storage/guides/access-keys/) created in a previous step. |
-| gitlab_rails['backup_upload_remote_directory'] | The [label](/docs/products/storage/object-storage/get-started/#create-a-bucket) of the bucket created during bucket creation.
+| `provider` | AWS (The provider must be set to AWS because it is dependent on [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/)) |
+| `region` | The region the bucket was created in. A full list of regions can be found in the [Product Documentation](/docs/products/storage/object-storage/). |
+| `endpoint` | The endpoint url for the data center. Uses the syntax of **region.linodeobjects.com** |
+| `aws_access_key-id` | The Object Storage [Access Key](/docs/products/storage/object-storage/guides/access-keys/) created in a previous step. |
+| `aws_secret_access_key` | The Object Storage [Secret Key](/docs/products/storage/object-storage/guides/access-keys/) created in a previous step. |
+| `gitlab_rails['backup_upload_remote_directory']` | The [label](/docs/products/storage/object-storage/get-started/#create-a-bucket) of the bucket created during bucket creation.
 
 Once the configuration settings are completed, apply the configuration with the following command:
 

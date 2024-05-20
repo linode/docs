@@ -1,17 +1,15 @@
 ---
 slug: test-kitchen-shortguide
+title: "Try This Salt Guide with KitchenSalt Shortguide"
 description: 'Try this Salt Guide with KitchenSalt'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-11-09
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-11-09
-modified: 2018-11-09
-modified_by:
-  name: Linode
-title: "Try This Salt Guide with KitchenSalt Shortguide"
 headless: true
 show_on_rss_feed: false
 aliases: ['/applications/configuration-management/test-kitchen-shortguide/']
-authors: ["Linode"]
 ---
 
 ## Try This Guide Using Test Kitchen

@@ -1,18 +1,17 @@
 ---
 slug: use-laravel-forge-to-automate-web-server-creation-on-a-linode
+title: 'Use Laravel Forge to Automate Web-Server Creation on a Linode'
 description: 'This guide shows how to use Laravel Forge to automate deployment of your PHP projects on a Linode.'
+authors: ["Onwuka Gideon"]
+contributors: ["Onwuka Gideon"]
+published: 2017-09-18
+modified: 2019-01-18
 keywords: ["content management", "web-server automation", "laravel", "php", "wordpress", "drupal", "cms", "joomla", "Laravel Forge"]
 tags: ["automation", "php", "drupal", "wordpress", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-18
-modified_by:
-    name: Linode
-published: 2017-09-18
-title: 'Use Laravel Forge to Automate Web-Server Creation on a Linode'
 external_resources:
  - '[Laravel Forge](https://forge.laravel.com)'
 aliases: ['/applications/configuration-management/use-laravel-forge-to-automate-web-server-creation-on-a-linode/','/applications/configuration-management/laravel-forge/use-laravel-forge-to-automate-web-server-creation-on-a-linode/']
-authors: ["Onwuka Gideon"]
 ---
 
 ![Laravel Forge Banner](Laravel_Forge.jpg)
@@ -114,7 +113,7 @@ If you do not want to use a domain with your website, you can configure the *def
 
     If you use another DNS provider, check their documentation for instructions.
 
-    {{< content "update-dns-at-common-name-server-authorities" >}}
+    {{% content "update-dns-at-common-name-server-authorities" %}}
 
 1.  From the **Servers** menu in the top navigation bar, choose your new server. If you don't see this menu yet, refresh your browser window:
 

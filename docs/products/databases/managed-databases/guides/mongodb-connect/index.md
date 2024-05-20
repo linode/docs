@@ -1,12 +1,13 @@
 ---
 title: "Connect to a MongoDB Database"
-description: "Learn how to connect to a MongoDB Managed Databse through the command line or Compass"
+description: "Learn how to connect to a MongoDB Managed Database through the command line or Compass"
 published: 2022-06-06
 expiryDate: 2023-05-01
-authors: ["Linode"]
 ---
 
-{{< content "managed-database-mongodb-private-notice-shortguide">}}
+{{% content "dbass-eos" %}}
+
+{{% content "managed-database-mongodb-private-notice-shortguide" %}}
 
 To connect to a MongoDB Managed Database, you need to know a few important details, such as the username, password, and host (or IP). You'll also need a MySQL client. This guide details how to access your database using popular tools.
 

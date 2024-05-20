@@ -1,20 +1,19 @@
 ---
 slug: monitor-and-configure-nagios-alerts-on-debian-10-ubuntu-2004
+title: "Configuring Nagios Alerts on Debian 10 and Ubuntu 20.04"
+title_meta: "Monitor and Configure Nagios Alerts on Debian 10 and Ubuntu 20.04"
 description: 'This guide shows how to you can install the server monitoring app Nagios and configure email alerts and IRC status updates on Ubuntu 20.04 and Debian 10.'
 og_description: 'Nagios is a popular server monitoring tool. In this guide, you learn how to monitor and configure email alerts and IRC status updates for Nagios on Ubuntu 20.04 and Debian 10.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-16
 keywords: ['nagios monitoring']
 tags: ['monitoring', 'ubuntu', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-16
 image: MonitorandConfigureNagiosAlertsonDebianandUbuntu.jpg
-modified_by:
-  name: Linode
-title: "Configuring Nagios Alerts on Debian 10 and Ubuntu 20.04"
-title_meta: "Monitor and Configure Nagios Alerts on Debian 10 and Ubuntu 20.04"
 external_resources:
 - '[Nagios](https://www.nagios.com/products/nagios-core/)'
 - '[Nagios Installation Guide](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html)'
-authors: ["Nathaniel Stickman"]
 ---
 
 [Nagios](https://www.nagios.com/products/nagios-core/), a popular tool for monitoring servers, comes with a robust web interface to help you effectively manage your server. Its dashboard makes it relatively easy to check in on the hosts and services running on your machine and quickly learn of any issues.
@@ -31,15 +30,15 @@ However, you can get even more out of Nagios by setting it up to deliver alerts 
 
 1. Replace `example.com` throughout this guide with your machine's domain name, and replace `fqdn.example.com` with your machine's fully qualified domain name (FQDN).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Set Up Nagios Email Alerts
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide also provides instructions for configuring local emails, which are not subject to the above restriction. Under this configuration, emails are only delivered to users on the same machine as Nagios.
 {{< /note >}}
 

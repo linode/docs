@@ -2,15 +2,12 @@
 title: "Setting Up and Securing a Compute Instance"
 title_meta: "How to Set Up and Secure a Compute Instance"
 description: "Learn how to set up and secure a new Compute Instance, including updating your software, creating a user account, and hardening SSH."
+published: 2022-02-25
+modified: 2024-01-04
 keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 tags: ["ssh","security"]
 bundles: ['centos-security', 'debian-security']
-published: 2022-02-25
-modified: 2023-08-08
-modified_by:
-  name: Linode
 aliases: ['/securing-your-server/','/security/linux-security-basics/','/security/securing-your-server/index.cfm/','/security/basics/securing-your-server/','/security/securing-your-server/','/guides/securing-your-server/','/guides/set-up-and-secure/']
-authors: ["Linode"]
 ---
 
 After you have successfully created a Compute Instance, there are a few initial configuration steps you should perform within your new Linux system. This includes updating your system, setting the timezone, configuring a custom hostname, adding a limited user, hardening SSH to prevent unauthorized access, and configuring a firewall. These steps ensure your instance is up to date, secure, and ready for use.
@@ -493,13 +490,19 @@ Lastly, edit the SSH configuration file to disallow root login and disable passw
 
 1.  Restart the SSH service to load the new configuration.
 
-    -   If you’re using a Linux distribution which uses systemd (CentOS 7, Debian 8, Fedora, Ubuntu 15.10+)
+    -   **Distributions with systemd:** If you’re using a Linux distribution which uses systemd (CentOS 7, Debian 8, Fedora, Ubuntu 15.10+), restart the service using systemctl:
 
         ```command
         sudo systemctl restart sshd
         ```
 
-    -   If your init system is SystemV or Upstart (CentOS 6, Debian 7, Ubuntu 14.04):
+    -   **Ubuntu 22.10+**: If you are using Ubuntu 22.10 or later, `sshd` uses socket-based activation. Run this command instead of restarting the service.
+
+        ```command
+        systemctl enable --now ssh.service
+        ```
+
+    -   **Distributions without systemd:** If your init system is SystemV or Upstart (CentOS 6, Debian 7, Ubuntu 14.04), run the command below to restart the service:
 
         ```command
         sudo service sshd restart
@@ -515,7 +518,7 @@ For complete instructions on installing and configuring Fail2Ban, see our guide:
 
 ## Configure a Firewall
 
-{{< content "cloud-firewall-shortguide" >}}
+{{% content "cloud-firewall-shortguide" %}}
 
 Using a *firewall* to block unwanted inbound traffic to your Compute Instance provides a highly effective security layer. By being very specific about the traffic you allow in, you can prevent intrusions and network mapping. A best practice is to allow only the traffic you need, and deny everything else. See our documentation on some of the most common firewall applications:
 
@@ -569,4 +572,4 @@ These are the most basic steps to harden any Linux server, but further security 
 
 Now you can begin setting up your Compute Instance for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/guides/migrate-from-shared-hosting-to-linode/) to [enabling two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/) to [hosting a website](/docs/guides/hosting-a-website-ubuntu-18-04/).
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
