@@ -1,16 +1,15 @@
 ---
 slug: create-a-python-virtualenv-on-ubuntu-1610
-deprecated: true
+title: "Create a Python Virtual Environment on Ubuntu 16.10"
 description: "This guide will show you how to create a Python virtual environment on your Ubuntu 16.10 Linode."
+authors: ["Christopher Piccini"]
+contributors: ["Christopher Piccini"]
+published: 2017-08-13
+modified: 2017-08-14
 keywords: ["python", "python virtual environment", "virtualenv"]
 tags: ["python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/python/create-a-python-virtualenv-on-ubuntu-1610/','/development/create-a-python-virtualenv-on-ubuntu-1610/']
-modified: 2017-08-14
-modified_by:
-  name: Linode
-published: 2017-08-13
-title: "Create a Python Virtual Environment on Ubuntu 16.10"
 external_resources:
 - '[virtualenv Documentation](http://virtualenv.pypa.io/)'
 audiences: ["beginner"]
@@ -20,7 +19,7 @@ relations:
         key: python-virtual-env
         keywords:
             - distribution: Ubuntu 16.10
-authors: ["Christopher Piccini"]
+deprecated: true
 ---
 
 ![Create a Python Virtual Environment on Ubuntu 16.10](python-ve-u16-title.jpg "Create a Python Virtual Environment on Ubuntu 16.10")

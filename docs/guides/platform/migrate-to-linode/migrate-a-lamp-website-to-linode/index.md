@@ -1,16 +1,14 @@
 ---
 slug: migrate-a-lamp-website-to-linode
+title: How to Migrate a LAMP Website to Linode
 description: 'How to migrate a LAMP website from another hosting provider to Linode.'
+authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
+published: 2018-07-31
 keywords: ["lamp", "migrate", "website migration"]
 tags: ["linode platform","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-07-31
-modified_by:
-  name: Linode
-published: 2018-07-31
-title: How to Migrate a LAMP Website to Linode
 aliases: ['/platform/migrate-to-linode/migrate-a-lamp-website-to-linode/']
-authors: ["Nathan Melehan"]
 ---
 
 This guide describes how to migrate a website running in a [LAMP](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#what-is-a-lamp-stack) environment on another host to a new Linode. Read the [Best Practices when Migrating to Linode](/docs/guides/best-practices-when-migrating-to-linode/) guide prior to following this guide for more information about migrating your site.
@@ -50,8 +48,7 @@ The data that needs to be transferred includes:
 Your server may have relevant website data stored in other directories, but these are the common locations for most files in a LAMP deployment.
 
 Perform a *database dump* needs on your MySQL process prior to transferring the data. This will result in a file on disk that encapsulates your database data which can then be copied over the network as a normal file.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Stopping services on your current host will temporarily disable your website.
 {{< /note >}}
 
@@ -145,4 +142,4 @@ If you are seeing any other errors on your site, try reviewing Apache's error lo
 
 The last step required to migrate is to update your DNS records to reflect your new Linode's IP. Once this is done, visitors will start loading the page from your Linode.
 
-{{< content "use-linode-name-servers" >}}
+{{% content "use-linode-name-servers" %}}

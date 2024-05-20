@@ -1,20 +1,19 @@
 ---
 slug: using-sshfs-on-linux
+title: Using SSHFS to Mount Remote Directories
 description: 'This guide shows how to use SSHFS, Secure Shell FileSystem, a tool that allows users to securely access a remote file system over SSH via the command line interface.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-10-26
+modified: 2019-08-16
 keywords: ["sshfs", "ssh filesystem", "sshfs linux", "sshfs macos"]
 tags: ["networking","ssh","security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/ssh/using-sshfs-on-linux-and-macos-x/','/networking/ssh/using-sshfs-on-linux/','/networking/ssh-filesystems/']
-modified: 2019-08-16
-modified_by:
-  name: Linode
-published: 2009-10-26
-title: Using SSHFS to Mount Remote Directories
 external_resources:
  - '[SSHFS Home Page](http://fuse.sourceforge.net/sshfs.html)'
  - '[Linux Security Basics](/docs/security/basics)'
  - '[Use Public Key Authentication with SSH](/docs/guides/use-public-key-authentication-with-ssh/)'
-authors: ["Linode"]
 ---
 
 ![SSHFS](sshfs_mount_remote.png)
@@ -33,7 +32,7 @@ Limited Linux users (non-`root`) with the same username should also exist on bot
 
 The username for this limited user is assumed to be `example_user`. Replace all instances of `example_user` in this guide with your limited user's name. As well, the IP address of the remote system is assumed to be `192.0.2.4`, so replace all instances of this IP with your remote system's address.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 `sshfs` can be installed on any Linode distribution, so you can adapt this guide if you are not using Ubuntu.
 {{< /note >}}
 
@@ -55,7 +54,7 @@ The `sshfs` package is available with every Linux package manager. Use the comma
 
 In order to mount file systems using SSHFS from a normal user account, you'll need to add the user to the `fuse` group first.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you are unfamiliar with users, groups, and file permissions, visit the [Users and Groups](/docs/guides/linux-users-and-groups/) guide for a brief introduction.
 {{< /note >}}
 
@@ -79,8 +78,7 @@ If you are unfamiliar with users, groups, and file permissions, visit the [Users
 You can use the command `sshfs` to mount a remote filesystem. The syntax for mounting a filesystem with `sshfs` is:
 
     sshfs [user@]host:[directory] mountpoint [options]
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can read more about `sshfs` in the [sshfs manual](https://linux.die.net/man/1/sshfs).
 {{< /note >}}
 
@@ -107,13 +105,12 @@ To keep your server's directory mounted on your system through reboots, create a
 ### Set Up Key-Based Authentication for SSH
 
 When setting up a mount listed in `/etc/fstab`, your client system will not be able to accept a password for the SSH connection. Instead, you can use [public/private keypairs](/docs/guides/use-public-key-authentication-with-ssh/) to authenticate with the remote server. This section describes how to create a keypair if you do not already have one.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 This command will overwrite an existing RSA key pair, potentially locking you out of other systems.
 
 If you’ve already created a key pair, skip this step. To check for existing keys, run ls ~/.ssh/id_rsa*.
 
-If you accidentally lock yourself out of your Linode, use Lish to update your authorized_keys file and regain SSH access.
+If you accidentally lock yourself out of your Linode, use Lish to update your `authorized_keys` file and regain SSH access.
 {{< /note >}}
 
 1. Generate a keypair with the `ssh-keygen` command; accept the default values for the options it presents:
@@ -124,11 +121,11 @@ If you accidentally lock yourself out of your Linode, use Lish to update your au
 
         ssh-copy-id -i ~/.ssh/id_rsa.pub example_user@192.0.2.4
 
-    {{< note respectIndent=false >}}
-If your system is older, this file may be named `authorized_keys2`. [Consult](https://www.ssh.com/ssh/sshd_config/#sec-AuthorizedKeysFile-location) your Linode's `/etc/ssh/sshd_config` if you are unsure:
+    {{< note >}}
+    If your system is older, this file may be named `authorized_keys2`. [Consult](https://www.ssh.com/ssh/sshd_config/#sec-AuthorizedKeysFile-location) your Linode's `/etc/ssh/sshd_config` if you are unsure:
 
-    grep authorized_keys /etc/ssh/sshd_config
-{{< /note >}}
+        grep authorized_keys /etc/ssh/sshd_config
+    {{< /note >}}
 
 1. At this point, you should be able to log into the remote server as `example_user` without entering a password. Confirm this:
 

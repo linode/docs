@@ -26,7 +26,7 @@ After the Compute Instance is finished provisioning and has fully booted up, you
 
 -   **Weblish (via the Cloud Manager):** Click the **Launch LISH Console** link at the top right corner of the Compute Instance's detail page. See [Using the Lish Console > Through a Browser](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish).
 
--   **SSH:** Copy the command from the *SSH Access* field that is available in Cloud Manager under the **Access** section on the Compute Instance's detail page. Paste the commmand into your local computer's terminal. The command should look similar to the following, only with the IP address of your newly created instance.
+-   **SSH:** Copy the command from the *SSH Access* field that is available in Cloud Manager under the **Access** section on the Compute Instance's detail page. Paste the command into your local computer's terminal. The command should look similar to the following, only with the IP address of your newly created instance.
 
     ```command
     ssh root@192.0.2.1
@@ -36,7 +36,7 @@ After the Compute Instance is finished provisioning and has fully booted up, you
     - **macOS:** The *Terminal* application is pre-installed on macOS. See [Connecting to a Remote Server Over SSH on a Mac](/docs/guides/connect-to-server-over-ssh-on-mac/).
     - **Linux:** You can use a terminal window, regardless of desktop environment or window manager. See [Connecting to a Remote Server Over SSH on Linux](/docs/guides/connect-to-server-over-ssh-on-linux/)
 
--   **Lish (via SSH):** Copy the command from the *LISH Console via SSH* field that is available in Cloud Manager under the **Access** section on the Compute Instance's detail page. Paste the commmand into your local computer's terminal. The command should look similar to the one below, only with your username, data center, and Compute Instance label. Review [Using the Lish Console > Through SSH](/docs/products/compute/compute-instances/guides/lish/#through-ssh-using-a-terminal) for more instructions.
+-   **Lish (via SSH):** Copy the command from the *LISH Console via SSH* field that is available in Cloud Manager under the **Access** section on the Compute Instance's detail page. Paste the command into your local computer's terminal. The command should look similar to the one below, only with your username, data center, and Compute Instance label. Review [Using the Lish Console > Through SSH](/docs/products/compute/compute-instances/guides/lish/#through-ssh-using-a-terminal) for more instructions.
 
     ```command
     ssh -t user@lish-newark.linode.com example-instance
@@ -50,4 +50,4 @@ Linode's Compute Instances (and other products and services) can run almost any 
 
 Now you can start using your Compute Instance. Whether you're just here to test things out or are looking to host a specific application with us, we may have a guide that can help you get up and running. Open the [Guides](/docs/guides/) section and start browsing or use the search tool at the top of the page to find any guides related to your use case.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}

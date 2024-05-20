@@ -1,20 +1,19 @@
 ---
 slug: install-graphite-and-grafana
+title: Monitoring Your System with Graphite and a Grafana Dashboard
+title_meta: Monitor Your System with Graphite and a Grafana Dashboard
 description: "This guide shows how to use Graphite to monitor server data and connect it to Grafana for an informative, customizable, graphical interface."
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
+published: 2018-04-30
+modified: 2021-03-04
 keywords: ['grafana','graphite','monitoring','dashboard', 'docker']
 tags: ["docker","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-04-30
-modified: 2021-03-04
-modified_by:
-  name: Linode
-title: Monitoring Your System with Graphite and a Grafana Dashboard
-title_meta: Monitor Your System with Graphite and a Grafana Dashboard
 external_resources:
  - '[Grafana Official Documentation](http://docs.grafana.org/)'
  - '[Graphite Official Documentation](https://graphite.readthedocs.io/en/latest/)'
 aliases: ['/uptime/monitoring/install-graphite-and-grafana/']
-authors: ["Jared Kobos"]
 ---
 
 ## What are Graphite and Grafana?
@@ -33,11 +32,11 @@ Both Docker and Docker Compose are necessary to complete this guide.
 
 ### Install Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ## Docker Compose Configuration for Graphite and Grafana
 

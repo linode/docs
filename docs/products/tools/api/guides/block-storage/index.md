@@ -3,8 +3,6 @@ title: "Manage Block Storage Volumes with the Linode API"
 description: "This guide demonstrate how to create, attach, clone, and resize Volumes using the Linode API."
 published: 2018-05-14
 modified: 2022-12-06
-modified_by:
-  name: Linode
 image: manage-block-storage-volumes-with-the-linode-api.png
 external_resources:
   - '[API Documentation](/docs/api/)'

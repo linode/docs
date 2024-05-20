@@ -95,3 +95,23 @@ Nostrud ea minim magna ipsum elit elit ipsum fugiat consequat dolore. Tempor min
 
 
 <!-- {{< tab "Ignore me." />}} Hugo has a bug that doesn't detect changes in inner shortcodes. I (bep) have fixed this in a Hugo dev branch, but until then, just keep this here while developing the shortcode templates. -->
+
+
+## Tab width
+
+{{< tabs >}}
+{{< tab "Tab number 1" >}}
+Foo
+{{< /tab >}}
+{{< tab "Tab number 2" >}}
+
+```output
+kube-proxy-gh6xg                           1/1     Running   0          49m
+kube-proxy-p4fkm                           1/1     Running   0          53m
+kube-proxy-pd5vb                           1/1     Running   0          51m
+```
+   
+{{< /tab >}}
+{{< /tabs >}}
+
+

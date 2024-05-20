@@ -1,18 +1,17 @@
 ---
 slug: getting-started-with-mongodb
+title: "Getting Started with MongoDB"
 description: "MongoDB gives you a flexible and less rigid way to store your data than traditional relational databases. This tutorial gives everything you need to start using MongoDB."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-02-28
 keywords: ['mongodb tutorial','getting started mongodb','basic mongodb commands']
 tags: ['database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-02-28
-modified_by:
-  name: Nathaniel Stickman
-title: "Getting Started with MongoDB"
 external_resources:
 - '[MongoDB: Getting Started](https://www.mongodb.com/docs/manual/tutorial/getting-started/)'
 - '[freeCodeCamp: How to Get Started with MongoDB in 10 Minutes](https://www.freecodecamp.org/news/learn-mongodb-a4ce205e7739/)'
 - '[GeeksforGeeks: MongoDB — Getting Started](https://www.geeksforgeeks.org/mongodb-getting-started/)'
-authors: ["Nathaniel Stickman"]
 tags: ["saas"]
 ---
 
@@ -24,9 +23,9 @@ To learn all about what MongoDB is and how it works, see out [Introduction to Mo
 
 ## Before You Begin
 
-{{< content "mongodb-deployment-methods-shortguide" >}}
+{{% content "mongodb-deployment-methods-shortguide" %}}
 
-{{< content "mongodb-shell-shortguide" >}}
+{{% content "mongodb-shell-shortguide" %}}
 
 ## Working with Databases
 
