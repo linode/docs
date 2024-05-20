@@ -87,7 +87,7 @@ Installing the public SSH key for the `root` user is the easiest way to add Lino
 
 1. Save the changes to the file and exit your text editor. In the `nano` editor, enter <kbd>Ctrl</kbd>-<kbd>X</kbd> and then <kbd>Y</kbd> to confirm.
 
-Once you've added the public key to your preferred user, you may need to allow access from our infrastructure (see [Configuring Firewall Rules](#configuring-firewall-rules)). If you wish to confirm that everything is properly configured, [open a support ticket](/docs/products/platform/get-started/guides/support/#contacting-linode-support) to have the Support team confirm that they have access. Repeat this process on every Compute Instance you want to monitor.
+Once you've added the public key to your preferred user, you may need to allow access from our infrastructure (see [Configuring Firewall Rules](#configuring-firewall-rules)). If you wish to confirm that everything is properly configured, [open a support ticket](/docs/products/platform/get-started/guides/support/#contact-customer-support) to have the Support team confirm that they have access. Repeat this process on every Compute Instance you want to monitor.
 
 ## Edit SSH Access Settings for Each Compute Instance
 

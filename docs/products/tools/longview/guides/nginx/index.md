@@ -174,7 +174,7 @@ The **RAM** graph shows the amount of RAM or memory being used by NGINX at the s
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by NGINX at the selected time. To see the total IO instead, visit the [Disks tab](/docs/products/tools/longview/get-started/#disks).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by NGINX at the selected time. To see the total IO instead, visit the [Disks tab](/docs/products/tools/longview/guides/metrics/#disks).
 
 ### Process Count
 

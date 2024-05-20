@@ -94,7 +94,7 @@ The k8s-alpha CLI is bundled with the Linode CLI, and using it requires the inst
 
 ### Install the Linode CLI
 
-Follow the [Install the CLI](/docs/products/tools/cli/get-started/#install-the-cli) section of our CLI guide to install the Linode CLI. If you already have the CLI, upgrade it to the latest version available:
+Follow the [Install and Configure the Linode CLI](/docs/products/tools/cli/guides/install/) guide to install the Linode CLI. If you already have the CLI, upgrade it to the latest version available:
 
 ```command
 pip install --upgrade linode-cli

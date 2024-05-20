@@ -65,7 +65,7 @@ If your Compute Instance isn't booting normally, you will not be able to rely on
 
 When you boot into Rescue Mode, you are booting your Compute Instance into the [Finnix recovery Linux distribution](https://www.finnix.org). This Finnix image includes a working network configuration, and you will be able to mount your Compute Instance's disks from this environment, which means that you will be able to access your files.
 
-1.  Review the Rescue and Rebuild guide for instructions and [boot into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode). If your Compute Instance does not reboot into Rescue Mode successfully, please [contact Linode Support](/docs/products/platform/get-started/guides/support/#contacting-linode-support).
+1.  Review the Rescue and Rebuild guide for instructions and [boot into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode). If your Compute Instance does not reboot into Rescue Mode successfully, please [contact Linode Support](/docs/products/platform/get-started/guides/support/#contact-customer-support).
 
 1.  Connect to Rescue Mode via the Lish console as you would normally. You will not be required to enter a username or password to start using the Lish console while in Rescue Mode.
 
@@ -224,7 +224,7 @@ If your MTR indicates a configuration issue within your Compute Instance, you ca
 
 Before opening a support ticket, you should also generate a *reverse MTR* report. The MTR tool is run from your Compute Instance and targets your machine's IP address on your local network, whether you're on your home LAN, for example, or public WiFi. To run an MTR from your Compute Instance, log in to your Lish console. To find your local IP, visit a website like https://www.whatismyip.com/.
 
-Once you have generated your original MTR and your reverse MTR, [open a Linode support ticket](/docs/products/platform/get-started/guides/support/#contacting-linode-support), and include your reports and a description of the troubleshooting you've performed so far. Linode Support will try to help further diagnose the routing issue.
+Once you have generated your original MTR and your reverse MTR, [open a Linode support ticket](/docs/products/platform/get-started/guides/support/#contact-customer-support), and include your reports and a description of the troubleshooting you've performed so far. Linode Support will try to help further diagnose the routing issue.
 
 ## Troubleshoot Network Configuration Issues
 

@@ -128,7 +128,7 @@ You should now be able to see Longview data for MySQL. If that's not the case, p
 
 You'll see the current version of MySQL listed on the upper left-hand corner.
 
-Hover over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/docs/products/tools/longview/get-started/#longview-s-data-explained). The next sections cover the Longview MySQL App in detail.
+Hover over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/docs/products/tools/longview/guides/metrics/). The next sections cover the Longview MySQL App in detail.
 
 ### Queries
 
@@ -160,7 +160,7 @@ The **RAM** graph shows the amount of RAM or memory being used by MySQL at the s
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by MySQL at the selected time. To see the total IO instead, visit the [Disks tab](/docs/products/tools/longview/get-started/#disks).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by MySQL at the selected time. To see the total IO instead, visit the [Disks tab](/docs/products/tools/longview/guides/metrics/#disks).
 
 ### Process Count
 

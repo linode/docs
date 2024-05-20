@@ -34,7 +34,7 @@ If you're not sure whether you're logged in as the account administrator, look f
 
 ### Add a User to the Linode Account
 
-Keep your account administrator credentials secret. When hiring an external individual or agency to work on your site or application, create a *restricted* user and assign specific access to the account. Learn more about how to manage users and permissions and how to recover a lost username in our [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/#users-and-permissions) guide.
+Keep your account administrator credentials secret. When hiring an external individual or agency to work on your site or application, create a *restricted* user and assign specific access to the account. Learn more about how to manage users and permissions and how to recover a lost username in our [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/#recover-a-lost-username) guide.
 
 Useful *Global Grants* for a limited access user might include the ability to:
 

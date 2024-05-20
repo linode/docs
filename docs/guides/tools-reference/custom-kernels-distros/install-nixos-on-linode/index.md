@@ -305,7 +305,7 @@ In this optional section, you'll create a deployable disk image of NixOS.
     cd /var/log
     ```
 
-1.  Create an image of the **NixOS** disk using the [Linode Images](/docs/products/tools/images/#capturing-your-image) guide. Label the image according to the release of NixOS you installed. Now that you have created an image, you can select it in the distribution menu whenever you deploy a Linode.
+1.  Create an image of the **NixOS** disk using the [Linode Images](/docs/products/tools/images/guides/capture-an-image/) guide. Label the image according to the release of NixOS you installed. Now that you have created an image, you can select it in the distribution menu whenever you deploy a Linode.
 
 ## Delete the Installer Disk and Profile
 

@@ -151,7 +151,7 @@ In this example, the `RewriteCond` controls the behavior of the `RewriteEngine` 
 
 All of the previous cases presented in this document outline configurations for using `mod_proxy` in various configurations to make it possible to use your Apache HTTP server as a frontend for a more complex architecture. This case takes this one step further, by allowing Apache to proxy requests to a group of identical backend servers, and thus be able to handle a much larger load.
 
-Ensure that you have a `/etc/httpd/conf.d/proxy.conf` file as described in [this documentation](/docs/guides/multiple-web-servers-with-proxypass-on-fedora-12/#enabling_the_proxy_module). Do not omit to reload Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
+Ensure that you have a `/etc/httpd/conf.d/proxy.conf` file as described in [this documentation](/docs/guides/multiple-web-servers-with-proxypass-on-fedora-12/#enabling-the-proxy-module). Do not omit to reload Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
 
 {{< file "Apache Virtual Host Configuration" apache >}}
 <VirtualHost example.com:80>

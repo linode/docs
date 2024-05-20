@@ -343,7 +343,7 @@ Linode recommends that you follow the instructions in [Recovering from a System 
 
 ### Restoring from a Backup
 
-If you previously enabled the [Backup Service](https://www.linode.com/backups), you may be able to restore one of the backups to the Compute Instance. Review the [Restoring from a Backup](/docs/products/storage/backups/#restore-from-a-backup) section (specifically, the [Restore to an Existing Compute Instance](/docs/products/storage/backups/guides/restore-to-an-existing-instance/) section) of the [The Backup Service](/docs/products/storage/backups/) guide for instructions.
+If you previously enabled the [Backup Service](https://www.linode.com/backups), you may be able to restore one of the backups to the Compute Instance. Review the [Restore a Backup to an Existing Compute Instance](/docs/products/storage/backups/guides/restore-to-an-existing-instance/) guide for instructions.
 
 If you created backups with an application other than Linode's Backup Service, review the application's instructions to restore a backup to the Compute Instance.
 
@@ -356,7 +356,7 @@ The Cloud Manager provides a *Rebuild* feature performs the following two action
 1.  A new set of disks is provisioned from one of the Cloud Manager's built-in Linux images, or from one of the [saved images](/docs/products/tools/images/).
 
     {{< note type="alert" >}}
-    If you use the Rebuild feature, the data from the disks that are deleted are not retrievable. You may [back up your data manually](/docs/guides/backing-up-your-data/) or [create a snapshot through Linode's Backup Service](/docs/products/storage/backups/#take-a-manual-snapshot) to preserve data before using the Rebuild feature.
+    If you use the Rebuild feature, the data from the disks that are deleted are not retrievable. You may [back up your data manually](/docs/guides/backing-up-your-data/) or [create a snapshot through Linode's Backup Service](/docs/products/storage/backups/guides/take-a-snapshot/) to preserve data before using the Rebuild feature.
 
     If you'd like to deploy a new Linux distribution without erasing the existing disks, follow the instructions in the [Creating a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#create-a-disk) guide. This is a better option if you need to create a new distribution, but also need to save the existing data.
 

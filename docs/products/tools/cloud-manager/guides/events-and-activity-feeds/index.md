@@ -14,7 +14,7 @@ aliases: ['/platform/manager/what-are-the-cloud-manager-events-and-activity-feed
 Most actions that occur on an account or to a particular service are logged as *events*. These events include services being created (or deleted), a change in a Linode's power state (such as powering off or rebooting), and many other actions. All events are stored to an account for 90 days.
 
 {{< note >}}
-Events are only shown to a logged in user if that event is within the scope of the user's permissions. This means that a restricted user only sees events for services that they have been granted access to. For more information, see our [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/#users-and-permissions) guide.
+Events are only shown to a logged in user if that event is within the scope of the user's permissions. This means that a restricted user only sees events for services that they have been granted access to. For more information, see our [Manage User Permissions](/docs/products/platform/accounts/guides/user-permissions/) guide.
 {{< /note >}}
 
 ## Viewing Events
