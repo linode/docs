@@ -1,15 +1,11 @@
 ---
 slug: cloud-email-notifications-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to manage email notifications in the Cloud Manager.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-22
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-22
 title: How to Manage Email Notifications in the Cloud Manager
+description: 'Shortguide that shows you how to manage email notifications in the Cloud Manager.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-07-22
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["cloud manager"]
 headless: true
 show_on_rss_feed: false

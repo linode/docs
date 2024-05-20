@@ -1,18 +1,12 @@
 ---
 slug: list-of-databases
-author:
-  name: Jack Wallen
-description: 'Searching for a list of the most popular databases? Our article covers what to look for in a database and top options for data storage.'
+title: "Comparing DBMSs: The 8 Most Popular Databases"
+description: "Searching for a list of the most popular databases? Our article covers what to look for in a database and top options for data storage."
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2022-02-25
 keywords: ['database',database lists'','best database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-25
-modified_by:
-  name: Linode
-title: "List of Databases - Most Popular"
-h1_title: "The 8 Most Popular Databases"
-enable_h1: true
-contributor:
-  name: Jack Wallen
 ---
 
 Databases power nearly every digital platform on the planet: From websites, to blogs, to social media, to streaming services. Most end-users know databases such as MySQL as a tool to store data. That's a pretty accurate, although fundamental, description of what a database is. However, they are much more than that.
@@ -40,7 +34,7 @@ One crucial aspect of the DBMS is the query language. This is the special langua
 
 ## Relational and Non-Relational Databases
 
-DBMS’ use two primary types of database: Relational and Non-Relational. The distinction between these two is important, as they help define the best use case for a database.
+DBMSs use two primary types of database: Relational and Non-Relational. The distinction between these two is important, as they help define the best use case for a database.
 
 A relational database is one that stores information in tables containing related data. What gives a relational database its name is that relationships can be made between two or more tables. The relationships correlate rows belonging to two different tables into a third table. Relational databases are best used when the data they contain doesn't often change and when the accuracy of the data is crucial.
 
@@ -118,19 +112,19 @@ MySQL is a relational database and does not scale to the extent of a non-relatio
 
 Some of the standout features of MySQL include:
 
-**Security** - Uses a solid data security layer to protect sensitive data and all passwords are encrypted.
-**Roll-Back** - Allows transactions to be rolled back.
-**Memory Efficient** - Has very low memory leakage.
-**Productive** - Uses Triggers, Stored Procedures, and Views for higher productivity.
-**Partitioning** - Supports partitioning to improve the performance of very large databases.
-**GUIs** - MySQL Workbench GUI manages the database.
+- **Security** - Uses a solid data security layer to protect sensitive data and all passwords are encrypted.
+- **Roll-Back** - Allows transactions to be rolled back.
+- **Memory Efficient** - Has very low memory leakage.
+- **Productive** - Uses Triggers, Stored Procedures, and Views for higher productivity.
+- **Partitioning** - Supports partitioning to improve the performance of very large databases.
+- **GUIs** - MySQL Workbench GUI manages the database.
 
 The Advantages of using MySQL include:
 
 - **Free** - this is a free, open-source database that can be installed on as many server instances as you need.
 - **Familiarity** - MySQL uses the SQL query language, so db admins familiar with the language are up to speed in no time with this DBMS. MySQL also follows the typical client/structure architecture.
 - **Speed** - Is one of the fastest relational databases, thanks to a unique storage engine.
-- **Integration** - MySQL enjoys integration into thousands of third-party applications, such as blogging systems, CRMs, HRMs, ERPs, and many other other types of applications.
+- **Integration** - MySQL enjoys integration into thousands of third-party applications, such as blogging systems, CRMs, HRMs, ERPs, and many other types of applications.
 
 Learn [how to install a MySQL instance on a Linode server](/docs/guides/installing-and-configuring-mysql-on-ubuntu-2004/).
 
@@ -194,7 +188,7 @@ As far as disadvantages, PostgreSQL suffers a few, such as:
 
 - More complicated than MySQL.
 - Slower than MySQL.
-- No easy way to migrate data from other RDBMSes.
+- No easy way to migrate data from other RDBMSs.
 - Poor data compression.
 - Complicated horizontal scaling.
 - Poor clustering support.
@@ -280,7 +274,7 @@ The disadvantages of the MongoDB database include:
 - Can be slow if indexes aren't used correctly.
 - Because relationships aren't defined well, they can lead to duplicated data.
 
-Check out our guide on [MongoDB use cases](/docs/guides/mongodb-and-its-use-cases/) for more information.
+Check out our guide on [MongoDB use cases](/docs/guides/mongodb-introduction/) for more information.
 
 #### Apache Cassandra
 

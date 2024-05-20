@@ -1,31 +1,28 @@
 ---
 slug: monitoring-servers-with-munin-on-ubuntu-10-04-lucid
-deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
+title: 'Monitoring Servers with Munin on Ubuntu 10.04 (Lucid)'
 description: 'Keep track of vital system statistics and troubleshoot performance problems with Munin on Ubuntu 10.04 (Lucid).'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-05-20
+modified: 2013-10-01
 keywords: ["munin", "monitoring"]
 tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/munin/ubuntu-10-04-lucid/','/uptime/monitoring/monitoring-servers-with-munin-on-ubuntu-10-04-lucid/']
-modified: 2013-10-01
-modified_by:
-  name: Linode
-published: 2010-05-20
-title: 'Monitoring Servers with Munin on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
         key: install-munin-monitoring
         keywords:
             - distribution: Ubuntu 10.04
+deprecated: true
 ---
 
 The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. For instance, if you need to monitor memory usage or resource consumption on a per-process level, a more precise monitoring tool like Munin might be helpful.
 
 Munin is a system and network monitoring tool that uses RRDTool to generate useful visualizations of resource usage. The primary goal of the Munin project is to provide an easy to use tool that is simple to install and configure and provides information in an accessible web based interface. Munin also makes it possible to monitor multiple "nodes" with a single installation.
 
-Before installing Munin, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Additionally, you'll need to install a web server such as [Apache](/docs/guides/apache-2-web-server-on-ubuntu-10-04-lts-lucid/) in order to use the web interface.
+Before installing Munin, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Additionally, you'll need to install a web server such as [Apache](/docs/guides/apache-2-web-server-on-ubuntu-10-04-lts-lucid/) in order to use the web interface.
 
 ## Installing Munin
 

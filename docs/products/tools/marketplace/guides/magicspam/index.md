@@ -1,20 +1,22 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy MagicSpam through the Linode Marketplace"
 description: "This guide shows you how to install and configure MagicSpam, a powerful anti-spam and email security solution using the Linode One-Click App Marketplace."
+published: 2021-08-13
+modified: 2024-01-22
 keywords: ['cPanel','Plesk','Email','Spam']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-13
-modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploying MagicSpam through the Linode Marketplace"
 aliases: ['/guides/deploying-magicspam-marketplace-app/','/guides/magicspam-marketplace-app/']
 external_resources:
 - '[MagicSpam](https://magicspam.com/)'
+_build:
+  list: false
+noindex: true
+
+deprecated: true
 ---
+{{< note type="warning" title="This app is no longer available for deployment" >}}
+MagicSpam has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only. For information on how to configure MagicSpam, see our [Using MagicSpam to Secure your Email Server](/docs/guides/using-magicspam-email-authentication) guide.
+{{< /note >}}
 
 [MagicSpam](https://magicspam.com/) is a powerful anti-spam and email security solution for Linux systems. It integrates directly with popular control panels, such as cPanel and Plesk. It's primary function is to stop inbound spam from entering your server right at the SMTP layer, which lowers bandwidth and overhead. It also secure mailboxes on your server from being compromised and used to send outbound spam.
 
@@ -22,26 +24,24 @@ MagicSpam installs directly onto an email server without any need to change A/MX
 
 {{< note >}}
 [MagicSpam](https://magicspam.com/store.php), [cPanel](https://cpanel.net/pricing/), and [Plesk](https://www.plesk.com/pricing/) all require a valid license. You can view and purchase licenses individually from each of their respective stores. Licenses are not available directly through Linode.
-{{</ note >}}
+{{< /note >}}
 
-{{< note >}}
-In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587 on all Linodes for new accounts created after November 5th, 2019. For more information, please see [Sending Email on Linode](/docs/guides/running-a-mail-server/#sending-email-on-linode).
-{{</ note >}}
+{{% content "email-warning-shortguide" %}}
 
 If you want to deploy MagicSpam onto an existing Linode Compute Instance, do not follow this guide. Instead, install MagicSpam by following one of the below guides:
 
-* [MagicSpam for cPanel Installation Guide](https://www.magicspam.com/download/products/MSWHMC/InstallationGuide.pdf)
-* [MagicSpam for Plesk Installation Guide](https://www.magicspam.com/download/products/MSPPRO/InstallationGuide.pdf)
+- [MagicSpam for cPanel Installation Guide](https://www.magicspam.com/download/products/MSWHMC/InstallationGuide.pdf)
+- [MagicSpam for Plesk Installation Guide](https://www.magicspam.com/download/products/MSPPRO/InstallationGuide.pdf)
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** MagicSpam should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -52,7 +52,7 @@ If you want to deploy MagicSpam onto an existing Linode Compute Instance, do not
 
 - **Control Panel** *(required)*: The Control Panel to deploy alongside MagicSpam.
 - **MagicSpam License Key** *(required)*: Your MagicSpam license key to for the selected Control Panel.
-- **Hostname** *(required)*: Enter a hostname for your new instance. See [Configure a Custom Hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for examples.
+- **Hostname** *(required)*: Enter a hostname for your new instance. See [Configure a Custom Hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) for examples.
 
 ## Getting Started after Deployment
 
@@ -86,9 +86,9 @@ After both the Control Panel and MagicSpam has finished installing, you will be 
 
 For more on MagicSpam, check out the following resources:
 
-* [Purchase MagicSpam License Key](https://www.magicspam.com/store)
-* [Visit the MagicSpam Official Forums](https://forums.magicspam.com)
-* [MagicSpam for cPanel](https://www.magicspam.com/anti-spam-protection-cpanel.php)
-* [MagicSpam for Plesk](https://www.magicspam.com/anti-spam-protection-plesk.php)
+- [Purchase MagicSpam License Key](https://www.magicspam.com/store)
+- [Visit the MagicSpam Official Forums](https://forums.magicspam.com)
+- [MagicSpam for cPanel](https://www.magicspam.com/anti-spam-protection-cpanel.php)
+- [MagicSpam for Plesk](https://www.magicspam.com/anti-spam-protection-plesk.php)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

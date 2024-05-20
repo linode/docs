@@ -1,17 +1,15 @@
 ---
 slug: use-puppet-modules-to-create-a-lamp-stack-ubuntu-18-04-master
-author:
-    name: Linode
+title: Use Puppet Modules to Create a LAMP Stack
 description: 'With this guide, you will learn how to efficiently use Puppet modules to manage files and services, as well as store data in Hiera on Ubuntu 18.04 "Master".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-01-25
+modified: 2019-01-25
 keywords: ["puppet", "automation", "lamp", "configuration management"]
 tags: ["lamp","ubuntu","automation","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack-ubuntu-18-04-master/','/applications/configuration-management/create-puppet-module/','/applications/configuration-management/puppet/use-puppet-modules-to-create-a-lamp-stack-ubuntu-18-04-master/','/applications/puppet/create-puppet-module/']
-modified: 2019-01-25
-modified_by:
-    name: Linode
-published: 2015-01-25
-title: Use Puppet Modules to Create a LAMP Stack
 relations:
     platform:
         key: install-puppet-lamp-master
@@ -27,7 +25,7 @@ In this guide, you will create an Apache and a PHP module. A MySQL module will b
 
 ## Before You Begin
 
-Set up a Puppet Master (Ubuntu 18.04) and two Puppet agents (Ubuntu 18.04 and CentOS 7) by following the steps in the [Getting Started with Puppet - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup) guide.
+Set up a Puppet Master (Ubuntu 18.04) and two Puppet agents (Ubuntu 18.04 and CentOS 7) by following the steps in the [Getting Started with Puppet - Basic Installation and Setup](/docs/guides/getting-started-with-puppet-6-1-basic-installation-and-setup/) guide.
 
 ## Create the Apache Module
 
@@ -91,7 +89,7 @@ class apache::params {
 
     An `if` statement is used to define the parameters, pulling from information provided by [Facter](https://puppet.com/docs/puppet/7/facter.html), which is already installed on the Puppet master. In this case, Facter will be used to pull down the operating system family (`osfamily`), to discern if it is Red Hat or Debian-based.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For the duration of this guide, when something needs to be added to the parameter list the variables needed for Red Hat and Debian will be provided, but the expanding code will not be shown. A complete copy of `params.pp` can be viewed [here](/docs/assets/params.pp).
 {{< /note >}}
 
@@ -267,7 +265,7 @@ class apache::vhosts {
 
     Both distribution families call to the `file` resource and take on the title of the virtual host's location on the respective distribution. For Debian, this once more means referencing the `$servername` value. The `content` attribute calls to the respective templates.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Values containing variables, such as the name of the Debian file resource above, need to be wrapped in double quotes (`"`). Any variables in single quotes (`'`) are parsed exactly as written and will not pull in a variable.
 {{< /note >}}
 

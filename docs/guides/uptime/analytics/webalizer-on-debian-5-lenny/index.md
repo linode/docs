@@ -1,33 +1,30 @@
 ---
 slug: webalizer-on-debian-5-lenny
-deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
+title: 'Webalizer on Debian 5 (Lenny)'
 description: 'This guide shows you how you can get more detailed website statistics by installing the open-source Webalizer application on Debian 5 "Lenny".'
+authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
+published: 2010-01-27
+modified: 2011-05-17
 keywords: ["webalizer", "statistics", "analytics", "stats", "server monitoring", "debian"]
 tags: ["debian","statistics","apache","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/analytics/webalizer-on-debian-5-lenny/','/web-applications/analytics/webalizer/debian-5-lenny/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2010-01-27
-title: 'Webalizer on Debian 5 (Lenny)'
 relations:
     platform:
         key: using-webalizer-analytics
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
 Webalizer is an industry standard statistics generation tool. It is useful to analyze traffic to your web server while still remaining lightweight enough not to hinder performance. Webalizer can even identify your user base using GeoIP services.
 
-We assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. We'll also be installing the [Apache 2 web server](/docs/guides/apache-2-web-server-on-debian-5-lenny/) with very minimal configuration. If you already have Apache installed and configured, feel free to skip these steps. If this is your first time installing Apache on this Linode, make sure to read the installation guide for additional guidance.
+We assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. We'll also be installing the [Apache 2 web server](/docs/guides/apache-2-web-server-on-debian-5-lenny/) with very minimal configuration. If you already have Apache installed and configured, feel free to skip these steps. If this is your first time installing Apache on this Linode, make sure to read the installation guide for additional guidance.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

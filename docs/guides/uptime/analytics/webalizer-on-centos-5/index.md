@@ -1,19 +1,15 @@
 ---
 slug: webalizer-on-centos-5
-deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
+title: Webalizer on Centos 5
 description: 'This guide shows how you can get detailed website statistics, such as visitor counts, page views, and more by installing the open-source Webalizer app on CentOS 5.'
+authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
+published: 2010-04-17
+modified: 2011-12-02
 keywords: ["webalizer", "statistics", "analytics", "stats", "server monitoring", "centos"]
 tags: ["centos","statistics","apache","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/analytics/webalizer-on-centos-5/','/web-applications/analytics/webalizer/centos-5/']
-modified: 2011-12-02
-modified_by:
-  name: Lee Matos
-published: 2010-04-17
-title: Webalizer on Centos 5
 external_resources:
  - '[Webalizer Homepage](http://www.mrunix.net/webalizer/)'
 relations:
@@ -21,15 +17,16 @@ relations:
         key: using-webalizer-analytics
         keywords:
             - distribution: CentOS 5
+deprecated: true
 ---
 
 Webalizer is an industry standard statistics generation tool. It is useful to analyze traffic to your web server while still remaining lightweight enough not to hinder performance. Webalizer can even identify your user base using GeoIP services.
 
-We assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. We'll also be installing the [Apache 2 web server](/docs/guides/apache-2-web-server-on-centos-5/) with very minimal configuration. If you already have Apache installed and configured, feel free to skip these steps. If this is your first time installing Apache on this Linode, make sure to read the installation guide for additional guidance.
+We assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. We'll also be installing the [Apache 2 web server](/docs/guides/apache-2-web-server-on-centos-5/) with very minimal configuration. If you already have Apache installed and configured, feel free to skip these steps. If this is your first time installing Apache on this Linode, make sure to read the installation guide for additional guidance.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

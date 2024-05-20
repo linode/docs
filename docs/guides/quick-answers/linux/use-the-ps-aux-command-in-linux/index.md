@@ -1,18 +1,13 @@
 ---
 slug: use-the-ps-aux-command-in-linux
-author:
-  name: James Turner
-  email: turner@blackbear.biz
-keywords: ["ps aux command"]
+title: Using the ps aux Command in Linux
+title_meta: How to Use the ps aux Command in Linux
 description: "The ps aux command is a tool that provides Linux system process information. This guide explain why that matters, and how to use it.'"
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-01-25
-modified_by:
-  name: Linode
+authors: ["James Turner"]
+contributors: ["James Turner"]
 published: 2021-01-25
-title: How to Use the ps aux Command in Linux
-h1_title: Using the ps aux Command in Linux
-enable_h1: true
+keywords: ["ps aux command"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[Backing Up Your Data](/docs/guides/backing-up-your-data/)'
 tags: ["linux"]

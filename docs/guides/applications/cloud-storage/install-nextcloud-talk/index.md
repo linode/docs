@@ -1,18 +1,15 @@
 ---
 slug: install-nextcloud-talk
-author:
-  name: Angel
-  email: docs@linode.com
+title: 'Introduction to Nextcloud Talk'
 description: "Nextcloud 14 brings improved UI, video and text chat, and end-to-end encryption to cloud storage. We''ll show you how to install it using Docker."
 og_description: Nextcloud 14 brings improved UI, video and text chat, and end-to-end encryption to cloud storage. We''ll show you how to install it using Docker."
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2017-03-12
+modified: 2018-12-04
 keywords: ["nextcloud", "cloud", "open source hosting", "video chat"]
 tags: ["docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-03-12
-modified: 2018-12-04
-modified_by:
-  name: Angel
-title: 'Introduction to Nextcloud Talk'
 external_resources:
   - '[Nextcloud Docker Image Documentation](https://github.com/nextcloud/docker)'
 aliases: ['/applications/cloud-storage/install-nextcloud-talk/']
@@ -26,7 +23,7 @@ Nextcloud 14 is a cloud storage platform that offers users the ability to self-h
 
 You will need a Linode with Docker CE installed to follow along with the steps in this guide.
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ## Install Nextcloud 14 and Talk
 
@@ -74,7 +71,7 @@ The basic Nextcloud Docker image is already configured for persistent data in th
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ### Create docker-compose.yaml
 
@@ -121,7 +118,6 @@ The basic Nextcloud Docker image is already configured for persistent data in th
 4.  When creating an admin account, open the **Storage & database** drop-down menu, fill in the information as shown below, and enter the MySQL password you used in the `docker-compose` file:
 
     ![Nextcloud database connection](connect-mysql-container.png "Nextcloud database connection")
-
-{{< caution >}}
+{{< note type="alert" >}}
 The setup provided by Nextcloud does not include any SSL encryption. To secure your data and communications, the Nextcloud service should be placed behind a [reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/). A Docker Compose file using a NGINX reverse proxy and Let's Encrypt is also [available](https://github.com/nextcloud/docker/blob/master/.examples/docker-compose/with-nginx-proxy/mariadb/apache/docker-compose.yml).
-{{< /caution >}}
+{{< /note >}}

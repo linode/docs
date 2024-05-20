@@ -1,22 +1,19 @@
 ---
 slug: manage-source-code-versions-with-subversion
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Manage Source Code Versions with Subversion
 description: 'This guide shows how to manage source code with Subversion, an open source version control system.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-15
+modified: 2018-01-01
 keywords: ["svn", "version control", "source control management", "subversion"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linux-tools/version-control/svn/','/development/version-control/manage-source-code-versions-with-subversion/','/applications/development/manage-source-code-versions-with-subversion/']
-modified: 2018-01-01
-modified_by:
-  name: Linode
-published: 2009-12-15
-title: Manage Source Code Versions with Subversion
 external_resources:
  - '[Subversion Project Homepage](http://subversion.tigris.org/)'
  - '[The Subversion Book from O''Reilly](http://svnbook.red-bean.com/)'
 tags: ["version control system"]
+deprecated: true
 ---
 
 Subversion (SVN) is a centralized [version control system](https://en.wikipedia.org/wiki/Version_control). Used by software developers to track changes during the production and maintenance of a project. SVN is a familiar and standard component in many development tool chains. Subversion was developed as a replacement for the Concurrent Versions System (CVS). SVN attempts to fix many of the major problems with CVS without requiring any paradigm shifts in the way software is developed:
@@ -30,16 +27,16 @@ There are many options for accessing and managing Subversion repositories on loc
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-    {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+    {{< note respectIndent=false >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Subversion
@@ -122,8 +119,8 @@ In cases where you're manipulating Subversion's data store (e.g. an upgrade or m
 
         svnadmin load /srv/svn/subversion-test-backup < /var/svn/subversion-test-1259853077.svn
 
-    {{< note >}}
-If you store critical information in a Subversion repository, you may wish to create backups automatically using a [cron job](/docs/linux-tools/utilities/cron).
+    {{< note respectIndent=false >}}
+If you store critical information in a Subversion repository, you may wish to create backups automatically using a [cron job](/docs/guides/schedule-tasks-with-cron/).
 {{< /note >}}
 
 ## Use Subversion for Version Control
@@ -169,7 +166,7 @@ If you and your developers *only* need to access your repository over SSH with t
 
 If you need to access your repository over the `http://` or `https://` protocols, configure Apache to host your Subversion repository.
 
-### Install Apache and mod\_dav\_svn
+### Install Apache and `mod_dav_svn`
 
 Developers frequently access Subversion repositories via the SSH protocol and manage permissions and authentication credentials using OpenSSH and system user accounts. This can be difficult to manage if you are hosting a large number of repositories with a large number of users on a single server. For these cases, many users provide access to their repositories using the "WebDAV" protocol over HTTP or HTTPS with the [Apache Web Server](/docs/web-servers/apache/).
 
@@ -236,9 +233,9 @@ If local system accounts need to access the repository, add those users to the g
 
         chmod -R +s /srv/svn/subversion-test
 
-    {{< caution >}}
-The sticky bit allows all users with access to the files (i.e. members of the group) to create files that are owned by the user or group that owns the directory, rather than by their own default user and group. This also allows users to execute scripts in these directories as the user that owns them, and thus poses a potential security risk. See our [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) guide for more information.
-{{< /caution >}}
+    {{< note type="alert" respectIndent=false >}}
+The sticky bit allows all users with access to the files (i.e. members of the group) to create files that are owned by the user or group that owns the directory, rather than by their own default user and group. This also allows users to execute scripts in these directories as the user that owns them, and thus poses a potential security risk. See our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information.
+{{< /note >}}
 
 ### Configure the Apache Web Server
 

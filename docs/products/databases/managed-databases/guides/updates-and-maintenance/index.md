@@ -1,22 +1,21 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Automatic Updates and Maintenance Windows"
 description: "Managed databases are automatically updated on a weekly or monthly basis. Learn how to manage these maintenance windows in the Cloud Manager"
+modified: 2023-02-10
 date: 2022-04-15
-modified: 2022-04-26
 ---
+
+{{% content "dbass-eos" %}}
 
 As part of the Managed Database service, the database cluster is updated regularly. This includes security updates and patches for the underlying operating system. These updates occur on a user-configurable *maintenance window*. By default, the maintenance window is set to start *every week* on *Sunday* at *20:00 UTC* and lasts for 3 hours.
 
-{{< caution >}}
-If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
-{{</ caution >}}
+{{< note type="warning" >}}
+If your database cluster is configured with a single node, the cluster will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that is the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan, which provides additional nodes and enables automatic failover between them. While the cluster may still experience a momentary loss of connectivity when a failover occurs, downtime is greatly reduced.
+{{< /note >}}
 
 {{< note >}}
 **The database software is not updated automatically.** To upgrade to a new version (such as from MySQL 5.7.30 or 8.0.25 to 8.0.26), consider deploying a new Managed Database with the version you wish to use. You can then [migrate your databases](/docs/products/databases/managed-databases/guides/migrate-mysql/) from the original Managed Database cluster to the new one.
-{{</ note >}}
+{{< /note >}}
 
 ## View and Modify the Maintenance Window
 

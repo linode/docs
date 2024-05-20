@@ -1,32 +1,25 @@
 ---
 slug: pflogsumm-for-postfix-monitoring-on-centos-6
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: Pflogsumm for Postfix Monitoring on CentOS 6
 description: 'This guide shows how you can configure your Postfix mail server to send you daily notification emails with the status of the server by using Pflogsumm.'
+authors: ["Robert Accettura"]
+contributors: ["Robert Accettura"]
+published: 2014-02-05
 keywords: ["pflogsumm", " postfix", " monitoring", " mail server"]
 tags: ["centos","perl","monitoring","email","postfix"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/pflogsumm-for-postfix-monitoring-on-centos-6/','/email/postfix/pflogsumm-centos-6/']
-contributor:
-    name: Robert Accettura
-modified: 2014-02-05
-modified_by:
-  name: Linode
-published: 2014-02-05
-title: Pflogsumm for Postfix Monitoring on CentOS 6
 external_resources:
  - '[Pflogsumm](http://jimsun.linxnet.com/postfix_contrib.html)'
 ---
 
-![banner_image](Pflogsumm_or_Postfix_Monitoring_on_CentOS_smg.jpg)
+![Header image](Pflogsumm_or_Postfix_Monitoring_on_CentOS_smg.jpg "Pflogsumm for Postfix Monitoring on CentOS 6")
 
 Pflogsumm is a simple Perl script that monitors your [Postfix](/docs/email/postfix/) mail server's activity. This guide will show you how to install Pflogsumm on CentOS 6 and configure it to send you a daily email with your mail server stats.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
-## Before You Begin
-{{< note >}}
+## Before You Begin{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -123,13 +116,13 @@ Now you'll set up a Cron job to run the Pflogsumm Perl script and send the mail 
 
         root's Crontab
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If this is your first time using Cron, you will have to select your preferred text editor.
 {{< /note >}}
 
 3.  Save the changes to your Cron file. For **nano**, this is `Ctrl-x y`.
 
-     {{< note >}}
+    {{< note respectIndent=false >}}
 Non-root users will not have permission to access the mail log.
 {{< /note >}}
 

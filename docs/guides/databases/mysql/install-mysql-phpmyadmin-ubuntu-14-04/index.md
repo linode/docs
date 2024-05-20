@@ -1,18 +1,14 @@
 ---
 slug: install-mysql-phpmyadmin-ubuntu-14-04
-deprecated: true
-author:
-    name: Linode
-    email: docs@linode.com
+title: 'How to Install MySQL with phpMyAdmin on Ubuntu 14.04'
 description: 'This guide will show you how to install and configure phpMyAdmin to manage MySQL databases and users though a web interface and GUI on Ubuntu 14.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-09-12
+modified: 2017-08-01
 keywords: ["mysql", "phpmyadmin", "sql", "ubuntu", "precise", "ubuntu 14.04", "lts", "ubuntu lts", "localhost phpmyadmin", "php mysql", "http localhost phpmyadmin"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/mysql-phpmyadmin-ubuntu-14-04/','/databases/mysql/install-mysql-phpmyadmin-ubuntu-14-04/']
-modified: 2017-08-01
-modified_by:
-    name: Linode
-published: 2013-09-12
-title: 'How to Install MySQL with phpMyAdmin on Ubuntu 14.04'
 external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
     - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
@@ -22,6 +18,7 @@ relations:
         keywords:
             - distribution: Ubuntu 14.04
 tags: ["ubuntu","php","database","mysql"]
+deprecated: true
 ---
 
 ![Install MySQL phpMyAdmin on Ubuntu 14.04](how-to-install-mysql-phpmyadmin-on-ubuntu-1404.png "Install MySQL phpMyAdmin on Ubuntu 14.04")
@@ -34,9 +31,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
 
     To check your hostname run:
 
@@ -47,7 +44,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 3.  Set up a working LAMP stack. Please see the [LAMP on Ubuntu 14.04](/docs/guides/lamp-on-ubuntu-14-04/) guide if needed.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you have installed the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
 {{< /note >}}
 

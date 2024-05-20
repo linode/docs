@@ -1,19 +1,15 @@
 ---
 slug: ruby-on-rails-with-apache-on-ubuntu-9-04-jaunty
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Ruby on Rails with Apache on Ubuntu 9.04 (Jaunty)'
 description: 'Using the Apache web server with Ubuntu 9.04 to serve Ruby on Rails applications.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-13
+modified: 2011-05-17
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
 tags: ["web applications","apache","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-with-apache-on-ubuntu-9-04-jaunty/','/frameworks/ruby-on-rails-apache/ubuntu-9-04-jaunty/','/websites/ror/ruby-on-rails-with-apache-on-ubuntu-9-04-jaunty/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2009-08-13
-deprecated: true
-title: 'Ruby on Rails with Apache on Ubuntu 9.04 (Jaunty)'
 external_resources:
   - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
 relations:
@@ -21,9 +17,8 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Ubuntu 9.04
+deprecated: true
 ---
-
-
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement, dynamic, fully featured web applications quickly, written in the Ruby programing language.
 
@@ -31,9 +26,9 @@ Rails enables developers to produce inventive applications on tight time scales.
 
 This guide takes us from a fresh install of Ubuntu 9.04 (Jaunty), to a running Rails stack suitable for deployment in production. There are many different ways to deploy Rails stacks; if you have experience with an alternate stack, we encourage you to deploy your application in whatever you are most familiar. We've chosen to deploy with Phusion Passenger (e.g. mod\_rails or mod\_rack,) which allows us to embed Rails apps directly in Apache applications without needing to worry about FastCGI architectures and complex web server proxies.
 
-Our goal is to provide instructions that are accessible and will have you up and running your with your Rails app as quickly as possible. We assume you've deployed and updated your Ubuntu 9.04 Jaunty Linode according to our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+Our goal is to provide instructions that are accessible and will have you up and running your with your Rails app as quickly as possible. We assume you've deployed and updated your Ubuntu 9.04 Jaunty Linode according to our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
-In addition to updating your system before beginning this guide, we recommend you review other guides in the Linode Docs so that you have a functioning installation of the [Apache web server](/docs/web-servers/apache/installation/ubuntu-9-04-jaunty) and a working installation of the [MySQL database server](/docs/databases/mysql/ubuntu-9-04-jaunty). With those prerequisites out of the way, we can get started with Rails. We will assume that you're logged in to your Linode via SSH and have a root prompt for the purpose of this tutorial.
+In addition to updating your system before beginning this guide, we recommend you review other guides in the Linode Docs so that you have a functioning installation of the [Apache web server](/docs/guides/apache-2-web-server-on-ubuntu-9-04-jaunty/) and a working installation of the [MySQL database server](/docs/guides/use-mysql-relational-databases-on-ubuntu-9-04-jaunty/). With those prerequisites out of the way, we can get started with Rails. We will assume that you're logged in to your Linode via SSH and have a root prompt for the purpose of this tutorial.
 
 ## Installing Passenger and Dependencies
 
@@ -85,7 +80,7 @@ The output of this should look like this:
 
     /etc/apache2/mods-enabled/passenger.conf  /etc/apache2/mods-enabled/passenger.load
 
-These files load and enable the Passenger module for use in your sites. If you configured Apache virtual hosting as outlined in the [Apache guide](/docs/web-servers/apache/installation/ubuntu-9-04-jaunty), the public directory for your domain (e.g. `example.com`) is located in `/srv/www/example.com/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
+These files load and enable the Passenger module for use in your sites. If you configured Apache virtual hosting as outlined in the [Apache guide](/docs/guides/apache-2-web-server-on-ubuntu-9-04-jaunty/), the public directory for your domain (e.g. `example.com`) is located in `/srv/www/example.com/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
 
 {{< file "Apache Virtual Host Configuration" apache >}}
 DocumentRoot /srv/www/example.com/public_html/
@@ -113,9 +108,9 @@ You now have a functioning environment for your Ruby on Rails application.
 
 ## Deploying Multiple Rails Apps
 
-If you need to install multiple Rails applications the easiest way to accomplish this is by installing each application in its own virtual host. Create multiple virtual hosts, as described in [Apache guide](/docs/web-servers/apache/installation/ubuntu-9-04-jaunty) and link the `public/` directory of your application to the DocumentRoot (e.g. `public_html/`) of the virtual host, as described above.
+If you need to install multiple Rails applications the easiest way to accomplish this is by installing each application in its own virtual host. Create multiple virtual hosts, as described in [Apache guide](/docs/guides/apache-2-web-server-on-ubuntu-9-04-jaunty/) and link the `public/` directory of your application to the DocumentRoot (e.g. `public_html/`) of the virtual host, as described above.
 
-This presents a number of advantages. The Apache mpm\_itk module (described in the [Apache guide](/docs/web-servers/apache/installation/ubuntu-9-04-jaunty)) allows you to isolate the permissions of each running application from Apache and each other. Furthermore, virtual hosting allows you to separate all log files for each host (and thus application) from the other applications and sites on your server.
+This presents a number of advantages. The Apache mpm\_itk module (described in the [Apache guide](/docs/guides/apache-2-web-server-on-ubuntu-9-04-jaunty/)) allows you to isolate the permissions of each running application from Apache and each other. Furthermore, virtual hosting allows you to separate all log files for each host (and thus application) from the other applications and sites on your server.
 
 Passenger also supports deploying more than one Rails application within a single virtual host configuration. By adding `RailsBaseURI` options with the path to your Application within the virtual host, you can deploy multiple applications within one site. For example:
 
@@ -140,5 +135,5 @@ In this setup the directories for each Rails application are located in the `/sr
 
 If you're new to Linux systems administration or Debian/Ubuntu based systems, we've collected some additional tips which you might find helpful.
 
--   Consider reading the Debian/Ubuntu section of our [package management guide](/docs/using-linux/package-management) to learn how to get the most out of the `apt` and `dpkg` tools.
+-   Consider reading the Debian/Ubuntu section of our [package management guide](/docs/guides/linux-package-management-overview/) to learn how to get the most out of the `apt` and `dpkg` tools.
 -   Note that if you want to use the [Git Version Control System](http://www.git-scm.com/), the package name in Ubuntu is "git-core", not "git".

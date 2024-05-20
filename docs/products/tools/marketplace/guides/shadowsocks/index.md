@@ -1,19 +1,11 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy Shadowsocks through the Linode Marketplace"
 description: "This guide provides you with instructions on how to deploy a Shadowsocks server to bypass network censorship on a Linode using the One-Click Marketplace App."
-keywords: ['shadowsocks','marketplace', 'server']
-tags: ["proxy","cloud-manager","linode platform","security","marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-18
 modified: 2022-03-08
+keywords: ['shadowsocks','marketplace', 'server']
+tags: ["proxy","cloud-manager","linode platform","security","marketplace"]
 image: DeployShadowsocksServer_oneclickapps.png
-modified_by:
-  name: Linode
-title: "Deploying Shadowsocks through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[Shadowsocks Official](https://shadowsocks.org)'
 - '[Shadowsocks-libev Github](https://github.com/shadowsocks/shadowsocks-libev)'
@@ -25,13 +17,13 @@ Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass 
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Shadowsocks should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -42,11 +34,13 @@ Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass 
 
 - **Shadowsock Password** *(required)*: Enter a *strong* password for your Shadowsocks user.
 
+{{% content "marketplace-special-character-limitations-shortguide" %}}
+
 ## Getting Started after Deployment
 
 Once the Shadowsocks server is up and running, you must install the [Shadowsocks Client](https://shadowsocks.org/en/download/clients.html) on any device or devices that you'd like to have connect to the service. There are currently client services available for [Windows](https://github.com/shadowsocks/shadowsocks-windows/releases), [Mac OS X](https://github.com/Jigsaw-Code/outline-client/), [Linux](https://github.com/Jigsaw-Code/outline-client/), [Android](https://play.google.com/store/apps/details?id=com.github.shadowsocks), and [iOS](http://apt.thebigboss.org/onepackage.php?bundleid=com.linusyang.shadowsocks).
 
-For a full set of instructions on how to install Shadowsocks on Windows and Mac OS X, see the [Install a Shadowsocks Client](/docs/networking/vpn/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/#install-a-shadowsocks-client) section of our guide for [Creating a Shadowsocks Server Manually](/docs/networking/vpn/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/).
+For a full set of instructions on how to install Shadowsocks on Windows and Mac OS X, see the [Install a Shadowsocks Client](/docs/guides/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/#install-a-shadowsocks-client) section of our guide for [Creating a Shadowsocks Server Manually](/docs/guides/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/).
 
 When the client has completed the installation process, ensure that you're setting up your client to connect using the following unique information:
 
@@ -61,4 +55,4 @@ After configuration, your `Server Preferences` should be similar to the followin
 
 ![shadowsocks-marketplace.png](shadowsocks-marketplace.png)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

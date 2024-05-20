@@ -1,33 +1,28 @@
 ---
 slug: secure-communications-with-openvpn-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Secure Communications with OpenVPN on Ubuntu 9.10 (Karmic)'
 description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 9.10 (Karmic) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-24
+modified: 2011-05-17
 keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu karmic", "ubuntu 9.10"]
 tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/vpn/secure-communications-with-openvpn-on-ubuntu-9-10-karmic/','/networking/openvpn/ubuntu-9-10-karmic/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2010-02-24
-title: 'Secure Communications with OpenVPN on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: secure-communications-openvpn
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking "tunnels" between and among groups of computers that are not on the same local network. This is useful if you have services on a local network and need to access them remotely but don't want these services to be publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.
 
 For many private networking tasks, we urge users to consider the many capabilities of the OpenSSH package which can provide easier VPN and VPN-like services. OpenSSH is also installed and configured by default on all Linodes. Nevertheless, if your deployment requires a more traditional VPN solution like OpenVPN, this document covers the installation and configuration of the OpenVPN software.
 
-Before installing OpenVPN, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). If you're concerned about securing and "hardening" the system on your Linode, you might be interested in our [security basics](/docs/guides/set-up-and-secure/) article as well.
+Before installing OpenVPN, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). If you're concerned about securing and "hardening" the system on your Linode, you might be interested in our [security basics](/docs/products/compute/compute-instances/guides/set-up-and-secure/) article as well.
 
 ## Installing OpenVPN
 

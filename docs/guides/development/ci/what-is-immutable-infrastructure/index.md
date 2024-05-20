@@ -1,18 +1,12 @@
 ---
 slug: what-is-immutable-infrastructure
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Immutable Infrastructure"
 description: 'This guide provides you with an overview of immutable server infrastructure, which is essentially infrastructure that never deviates from it''s source code.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-08-10
 keywords: ['ci','automation','immutable', infrastructure]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-08-10
-modified: 2018-08-10
-modified_by:
-  name: Linode
-title: "Immutable Infrastructure"
-contributor:
-  name: Linode
 audiences: ["intermediate"]
 tags: ["automation"]
 aliases: ['/development/ci/what-is-immutable-infrastructure/']
@@ -82,5 +76,5 @@ Here are some popular tools:
 - [Docker](https://docs.docker.com/) can be used to create and manage images and isolate application services.
 - [Docker Swarm](/docs/guides/how-to-create-a-docker-swarm-manager-and-nodes-on-linode/) helps you scale up the power of Docker by creating a cluster of Docker hosts.
 - [SaltStack](https://saltstack.com/) is a configuration management platform designed to control a number of *minion* servers from a single master server.
-- [Linode Block Storage](/docs/guides/how-to-use-block-storage-with-your-linode/) can easily store and persist date across Linodes.
+- [Linode Block Storage](/docs/products/storage/block-storage/) can easily store and persist date across Linodes.
 - [Jenkins](/docs/guides/automate-builds-with-jenkins-on-ubuntu/) is an open-source automation server that allows you to build pipelines for build, testing, and deployment automation.

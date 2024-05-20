@@ -24,8 +24,8 @@
           <div
             class="flex flex-col lg:flex-row lg:items-center flex-wrap space-y-2 mb-8">
             <h1
-              class="font-bold tracking-tighter pb-4 lg:pb-0 pr-4"
-              x-text="data.meta.title"></h1>
+              class="font-semibold tracking-tighter pb-4 lg:pb-0 pr-4"
+              x-html="data.meta.title"></h1>
             <div x-show="!uiState.noToggleGuidesLink">
               <button
                 @click="toggleShowGuides();"
@@ -221,34 +221,40 @@
           </div>
         </template>
         <template x-if="uiState.showGuidesTiles()">
-          <div class="space-y-8">
-            <template x-for="(item, i) in data.result.hits">
-              <div
-                class="bg-white rounded-md md:flex md:items-center"
-                :class="{ 'shadow-sm': i === 0 }">
-                <div class="h-full bg-gray-200">
-                  <div
-                    class="relative pb-20/9 md:pb-14/9 md:w-64 md:h-full overflow-hidden rounded-t-lg rounded-b-none md:rounded-l-lg md:rounded-r-none">
-                    <img
-                      class="absolute top-0 h-full w-full img-transparent object-cover"
-                      alt="Article thumbnail"
-                      :src="item.thumbnailUrl"
-                      @load="$event.target.classList.remove('img-transparent')"
-                      loading="lazy" />
+          {{/* Paginated tiles listing. */}}
+          <div>
+            <div class="space-y-8">
+              <template x-for="(item, i) in data.result.hits">
+                <a
+                  class="a--block bg-white block rounded-md md:flex md:items-center"
+                  :target="item.isExternalLink ? '_blank' : ''"
+                  :href="item.href"
+                  :class="{ 'shadow-sm': i === 0 }">
+                  <div class="h-full bg-gray-200">
+                    <div
+                      class="relative pb-20/9 md:pb-14/9 md:w-64 md:h-full overflow-hidden rounded-t-lg rounded-b-none md:rounded-l-lg md:rounded-r-none">
+                      <img
+                        class="absolute top-0 h-full w-full img-transparent object-cover"
+                        alt="Article thumbnail"
+                        :src="item.thumbnailUrl"
+                        @load="$event.target.classList.remove('img-transparent')"
+                        loading="lazy" />
+                    </div>
                   </div>
-                </div>
-                <div class="px-6 md:pl-10 py-4">
-                  <a
-                    class="tracking-tight cursor-pointer mb-4 text-titlecolor hover:text-gray-400"
-                    :href="item.href">
-                    <h3 class="mb-2 text-2xl " x-html="item.linkTitle"></h3>
-                  </a>
-                  <p
-                    class="text-darkgray leading-6 text-sm md:text-base"
-                    x-html="item.excerptTruncated(160)"></p>
-                </div>
-              </div>
-            </template>
+                  <div class="px-6 md:pl-10 py-4">
+                    <h3
+                      class="text-2xl tracking-tight cursor-pointer mb-6 text-titlecolor hover:text-gray-400"
+                      x-html="item.linkTitle"
+                      data-testid="tile-title"></h3>
+
+                    <p
+                      class="text-darkgray leading-6 text-sm md:text-base"
+                      x-html="item.excerptTruncated(160)"></p>
+                  </div>
+                </a>
+              </template>
+            </div>
+            {{ template "section-list-pagination" (dict "result" "data.result" "page" "data.page" "class" "mt-10") }}
           </div>
         </template>
       </div>
@@ -261,7 +267,7 @@
     <div class="mb-8">
       <div
         class="flex flex-col lg:flex-row lg:items-center flex-wrap space-y-2 mb-8">
-        <h1 class="font-bold tracking-tighter pb-4 lg:pb-0 pr-4">
+        <h1 class="font-semibold tracking-tighter pb-4 lg:pb-0 pr-4">
           {{ .Title }}
           {{ if .Sections }}
             Categories
@@ -335,4 +341,37 @@
       {{ end }}
     </div>
   </section>
+{{ end }}
+
+{{ define "section-list-pagination" }}
+  <template x-if="{{ .result }}">
+    <nav
+      class="{{ .class }} py-3 flex items-center justify-between border-t border-divider"
+      data-testid="pagination"
+      aria-label="Pagination">
+      <div class="hidden sm:block">
+        <p
+          class="text-sm text-textcolor font-medium"
+          x-text="`Showing ${ {{ .result }}.stats.hitsStart} to ${ {{ .result }}.stats.hitsEnd} of ${ {{ .result }}.stats.totalNbHits} results`"></p>
+      </div>
+      <div class="flex-1 flex justify-between sm:justify-end">
+        <button
+          :disabled="{{ .page }} === 1"
+          type="button"
+          data-testid="prev"
+          @click="incrPage(-1)"
+          class="relative inline-flex items-center px-4 py-2 rounded-md border-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none">
+          Previous
+        </button>
+        <button
+          :disabled="{{ .page }} >= {{ .result }}.stats.totalNbPages"
+          type="button"
+          data-testid="next"
+          @click="incrPage(1)"
+          class="ml-3 relative inline-flex items-center px-4 py-2 rounded-md border-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none">
+          Next
+        </button>
+      </div>
+    </nav>
+  </template>
 {{ end }}

@@ -1,17 +1,14 @@
 ---
 slug: backing-up-your-data
-author:
-  name: Linode
-  email: docs@linode.com
+title: Backing Up Your Data
 description: "This guide reviews different methods of backing up your Linode's data."
 og_description: "This guide reviews different methods of backing up your Linode's data. It also demonstrates making manual and automatic backups using rsync."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-04-04
+modified: 2017-12-27
 keywords: ["backup", "backups", "rsync", "cron", "getting started"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-12-27
-modified_by:
-  name: Linode
-published: 2013-04-04
-title: Backing Up Your Data
 external_resources:
  - '[rsync Man Page](http://linux.die.net/man/1/rsync)'
  - '[WebGnuru''s rsync Tutorial](http://webgnuru.com/linux/rsync_incremental.php)'
@@ -98,14 +95,14 @@ To configure Linode's Backup Service for your Linode, follow [these instructions
 
 ### Linode's Disks
 
-You can use the Cloud Manager to [duplicate/clone your Linode's disk](/docs/guides/clone-your-linode/#cloning-to-an-existing-linode). This is not a backup utility, but it is a quick and easy way to create a full snapshot of your Linode. Once you've duplicated the disk, you can boot it or clone it to a different Linode.
+You can use the Cloud Manager to [duplicate/clone your Linode's disk](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode). This is not a backup utility, but it is a quick and easy way to create a full snapshot of your Linode. Once you've duplicated the disk, you can boot it or clone it to a different Linode.
 
 -   **What**: Full-server file system backup.
 -   **When**: Duplicate disks are created manually. You have to shut down your server to make a new disk.
 -   **Where**: The disk is stored on your Linode.
 -   **Rotation**: Manual. The number of backups you can store at once depends on how small you make the disks.
 
-See [Managing Disks and Storage on a Linode](/docs/guides/disks-and-storage/) to learn more about disks.
+See [Managing Disks and Storage on a Linode](/docs/products/compute/compute-instances/guides/disks-and-storage/) to learn more about disks.
 
 ### Rsync
 
@@ -135,7 +132,7 @@ The data stored in your database can change quickly. Running a MySQL dump is arg
 -   **Where**: The backup file is saved on your server or downloaded to your home computer by default. You can move the file somewhere else if you want it stored in a different location.
 -   **Rotation**: Basic rotation is manual.
 
-To make human-readable backups of your databases that can be imported to a new database server, [follow these instructions](/docs/guides/use-mysqldump-to-back-up-mysql-or-mariadb/).
+To make human-readable backups of your databases that can be imported to a new database server, [follow these instructions](/docs/guides/mysqldump-backups/).
 
 ### Tar
 
@@ -186,23 +183,23 @@ The remainder of this guide will use rsync as an example; similar steps can be u
 -   **Where**: The files will get stored on the machine from which you are running the command, so make sure you're logged into the server or computer where you want to store your backups.
 -   **Rotation**: This tutorial does not include any automatic rotation.
 
-Throughout this guide, the Linode you want to back up will be referred to as your *production\_server*. The server or computer where you are storing your backups will be referred to as the *backup\_server* or *personal\_computer*. The examples given are for a *production\_server* running Ubuntu 12.04 LTS and several types of *backup\_servers* and *personal\_computers*.
+Throughout this guide, the Linode you want to back up will be referred to as your *production server*. The server or computer where you are storing your backups will be referred to as the *backup server* or *personal computer*. The examples given are for a production server running Ubuntu 12.04 LTS and several types of backup servers and personal computers.
 
 Follow these steps to make a manual backup of your Linode:
 
-1.  Install rsync on your Linode and *backup\_server* by entering the following command:
+1.  Install rsync on your Linode and backup server by entering the following command:
 
         sudo apt-get install rsync
 
-2.  Run the rsync command from your *backup\_server* or *personal\_computer*:
+2.  Run the rsync command from your backup server or personal computer:
 
         rsync -ahvz user@production_server:/path/to/source/content /path/to/local/backup/storage/
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For a deeper explanation of the rsync command's options and arguments, and to learn how to customize the command, please see the [Understanding the Rsync Command](#understanding-the-rsync-command) section of this guide.
 {{< /note >}}
 
-3.  Type your SSH password for the *production\_server* when prompted. You will be able to see your files listed as they are copied. At the end, you should see a confirmation message like this:
+3.  Type your SSH password for the production server when prompted. You will be able to see your files listed as they are copied. At the end, you should see a confirmation message like this:
 
         sent 100 bytes  received 2.76K bytes  1.90K bytes/sec
         total size is 20.73K  speedup is 7.26
@@ -226,24 +223,24 @@ Follow these steps to set up automatic backups of your Linode to a Linux server:
 
         sudo apt install rsync
 
-2.  On your *backup\_server*, generate a passwordless SSH key by entering the following command. Press Return when prompted to enter a password - *do not enter a password*.
+2.  On your backup server, generate a passwordless SSH key by entering the following command. Press Return when prompted to enter a password - *do not enter a password*.
 
         ssh-keygen
 
-3.  From your *backup\_server*, copy the public key to your *production\_server* by entering the following commands, one by one:
+3.  From your backup server, copy the public key to your production server by entering the following commands, one by one:
 
         scp ~/.ssh/id_rsa.pub user@production_server:~/.ssh/uploaded_key.pub
         ssh user@production_server 'echo `cat ~/.ssh/uploaded_key.pub` >> ~/.ssh/authorized_keys'
 
-4.  Try connecting to your *production\_server* from your *backup\_server* by entering the following command:
+4.  Try connecting to your production server from your backup server by entering the following command:
 
         ssh user@production_server 'ls -al'
 
-5.  Create a directory to store your backups on your *backup\_server* by entering the following command:
+5.  Create a directory to store your backups on your backup server by entering the following command:
 
         mkdir ~/backups/
 
-6.  Try creating a manual backup and storing it in `~/backups/public_orig/`. This is the backup against which all future backups will be checked. From your *backup\_server*, enter the following command:
+6.  Try creating a manual backup and storing it in `~/backups/public_orig/`. This is the backup against which all future backups will be checked. From your backup server, enter the following command:
 
         rsync -ahvz user@production_server:~/public ~/backups/public_orig/
 
@@ -252,21 +249,21 @@ Follow these steps to set up automatic backups of your Linode to a Linux server:
         sent 100 bytes  received 2.76K bytes  1.90K bytes/sec
         total size is 20.73K  speedup is 7.26
 
-7.  Now you need to build the command for automatic scheduled backups. We've created the example command below, but you can modify it for your needs. Run the following command manually from your *backup\_server* to make sure you don't get any errors:
+7.  Now you need to build the command for automatic scheduled backups. We've created the example command below, but you can modify it for your needs. Run the following command manually from your backup server to make sure you don't get any errors:
 
         rsync -ahvz --delete --link-dest=~/backups/public_orig user@production_server:~/public ~/backups/public_$(date -I)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For an explanation of the rsync command's options and arguments, and to learn how to customize the command, please see the [Understanding the Rsync Command](#understanding-the-rsync-command) section of this guide.
 {{< /note >}}
 
 8.  The output should be similar to the output that was generated in Step 6. Feel free to `ls` your `~/backups/` folder to make sure everything was created.
 
-9.  Add the command to cron so it gets executed automatically every day. Open the cron file on your *backup\_server* for editing by entering the following command:
+9.  Add the command to cron so it gets executed automatically every day. Open the cron file on your backup server for editing by entering the following command:
 
         crontab -e
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If this is your first time running the command, select your favorite text editor.
 {{< /note >}}
 
@@ -274,7 +271,7 @@ If this is your first time running the command, select your favorite text editor
 
         0   3   *   *   *   rsync -ahvz --delete --link-dest=~/backups/public_orig user@production_server:~/public ~/backups/public_$(date -I)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For more information about cron, and to learn how to create a custom schedule for your rsync command, see [Schedule Tasks with Cron](/docs/guides/schedule-tasks-with-cron/).
 {{< /note >}}
 
@@ -304,7 +301,6 @@ OS X users can also follow the instructions presented in the previous [Set Up Au
 Your final crontab entry in Step 9 should look like this:
 
     0      3       *       *       *       rsync -ahvz --delete --link-dest=~/backups/public_orig user@production_server:~/public ~/backups/public_$(date +\%Y-\%m-\%d)
-
 {{< note >}}
 If you run into a permissions error with cron but not when you run the command manually, you might have a password on your SSH key which doesn't normally pop up because you have it stored in the Mac OS X keychain. You might want to set up a new OS X user with a passwordless key for the purpose of this cron job.
 {{< /note >}}
@@ -351,7 +347,7 @@ Follow these steps to set up automatic backups of your Linode to a Windows deskt
 
         pscp -scp C:\Users\user\.ssh\id_rsa.pub user@production_server:/home/user/.ssh/uploaded_key.pub
 
-9.  On your *production\_server*, run this command to append your new key to the authorized\_keys file:
+9.  On your production server, run this command to append your new key to the `authorized_keys` file:
 
         echo `cat ~/.ssh/uploaded_key.pub` >> ~/.ssh/authorized_keys
 
@@ -383,7 +379,7 @@ total size is 20.73K  speedup is 7.26
 
             rsync -hrtvz --chmod u+rwx --delete --link-dest=/cygdrive/c/Users/user/backups/public_orig user@production_server:~/public /cygdrive/c/Users/user/backups/public_%DATE:~10,4%-%DATE:~4,2%-%DATE:~7,2%
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 For a deeper explanation of the rsync command's options and arguments and customizing the command, please see the [Understand the Rsync Command](#understand-the-rsync-command) section of this guide.
 {{< /note >}}
 
@@ -417,10 +413,10 @@ You have now configured daily automatic snapshot-style backups. If something goe
 
 If you followed the instructions listed in one of the sections above, your Linode is automatically being backed up to another server or a desktop computer. But what if something happens to your Linode, or you just want to restore your backup files to another computer? This section will show how to use rsync to restore from a backup.
 
-1.  Navigate to your backups directory on your *backup\_server* or desktop.
+1.  Navigate to your backups directory on your backup server or desktop.
 2.  Locate the folder with the right date.
 3.  Choose whether you want to restore the entire backup (`public/` in our example) or just specific files.
-4.  Upload your chosen files to the *production\_server* with scp, SFTP, rsync, etc.
+4.  Upload your chosen files to the production server with scp, SFTP, rsync, etc.
 5.  *Windows only:* Restore the correct Linux ownership and file permissions.
 
 ## Maintain Your Backups
@@ -446,7 +442,6 @@ Rsync is a powerful tool, but the half-dozen options in the example commands use
     rsync -ahvz user@production_server:/path/to/source/content /path/to/local/backup/storage/
 
 ### rsync
-
 {{< note >}}
 For a basic overview of rsync, [check out the manual page](http://linux.die.net/man/1/rsync).
 {{< /note >}}
@@ -493,7 +488,7 @@ When creating backups, the essential option is `-a` or `--archive`.
 
 ### Source Location
 
-The `copyfrom` location is the path to what you want to back up on your *production\_server*. This is where you should put the file path to your content on the server.
+The `copyfrom` location is the path to what you want to back up on your production server. This is where you should put the file path to your content on the server.
 
     user@production_server:~/public
     |--------------------| |------|
@@ -501,7 +496,7 @@ The `copyfrom` location is the path to what you want to back up on your *product
               |                |
          SSH login           path
 
-Since you're trying to copy from a remote server (the *production\_server*), you should provide the SSH login credentials first. Then use a colon (`:`), followed by an absolute file path to the folder you want to back up.
+Since you're trying to copy from a remote server (the production server), you should provide the SSH login credentials first. Then use a colon (`:`), followed by an absolute file path to the folder you want to back up.
 
 In this example, you're backing up the `~/public` directory, which is where your websites should be located if you followed the [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide. `~` is a shortcut for `/home/user/`. The trailing `/` is omitted from the final directory because you want to include the `public` folder itself in the backup, not just its contents.
 
@@ -513,7 +508,7 @@ You will also need to use either `root` or a sudo-capable user for the backup, i
 
 ### Target Location
 
-The `copyto` location is the path to where you want to store your backup on your *backup\_server*.
+The `copyto` location is the path to where you want to store your backup on your backup server.
 
     ~/backups/mybackup
 
@@ -526,7 +521,7 @@ In the command for automatic backups (see below), a date variable is appended to
                  |
                path
 
-This is the local file path on the *backup\_server* where you want to store the backups. The variable `$(date -I)` uses the built-in `date` function to add the current date to the end of the file path. This makes sure a new folder is created for each backup, and also makes individual backups easy to find.
+This is the local file path on the backup server where you want to store the backups. The variable `$(date -I)` uses the built-in `date` function to add the current date to the end of the file path. This makes sure a new folder is created for each backup, and also makes individual backups easy to find.
 
 ### Cron
 
@@ -574,7 +569,7 @@ The trailing `/` is omitted to match the `copyto` path.
 
 ### Different Server Locations
 
-This guide specifies a remote *production\_server* and a local *backup\_server*. However, rsync works equally well with a local *production\_server* and a remote *backup\_server*, with local backups to a different folder on the same device, or with two remote servers. Any remote server requires an SSH login before the file path.
+This guide specifies a remote production server and a local backup server. However, rsync works equally well with a local production server and a remote backup server, with local backups to a different folder on the same device, or with two remote servers. Any remote server requires an SSH login before the file path.
 
 Running the rsync command from the backup server is a "pulled" backup, while running it from the production server is a "pushed" backup.
 

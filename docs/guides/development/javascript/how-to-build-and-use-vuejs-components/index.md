@@ -1,21 +1,14 @@
 ---
 slug: how-to-build-and-use-vuejs-components
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: Building and Using VueJS Components
+title_meta: How to Build and Use VueJS Components (A Tutorial)
 description: 'In this guide, you will learn how about the components that make up VueJS, a JavaScript framework for building interfaces, and how to use them.'
+authors: ["Pavel Petrov"]
+contributors: ["Pavel Petrov"]
+published: 2020-02-14
 keywords: ['vue js','javascript','vuejs','vuejs components', 'vuejs events', 'vuejs slots']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-02-14
-modified_by:
-  name: Linode
 image: BuildingandUsingVueJSComponents.png
-title: How to Build and Use VueJS Components (A Tutorial)
-h1_title: Building and Using VueJS Components
-enable_h1: true
-contributor:
-  name: Pavel Petrov
-  link: https://github.com/WebBamboo/
 external_resources:
 - '[VueJS](https://vuejs.org/)'
 audiences: ["beginner"]
@@ -36,7 +29,6 @@ In this guide you learn how to:
  - Add custom properties to your component [with props](#using-component-props)
  - Embed content in a component [with slots](#using-slots)
  - Communicate information back to a component's parent [with events](#using-component-events)
-
 {{< note >}}
 You can [download all of the example files for this guide here](how-to-build-and-use-vuejs-components.tar.gz).
 {{< /note >}}
@@ -294,18 +286,18 @@ When loaded in a browser, the page should appear identical to the example in the
 
 On lines 6-8, notice how instead of passing the `title` prop with an argument, we pass it within the component's open and close tags:
 
-```html
+```file
 <rating-counter v-bind:parent="parentHeader"><h1>Rating 1</h1></rating-counter>
 ```
 
 On line 20, the slot is referenced with the `<slot></slot>` syntax. As shown in this example, slots support HTML. As well, they have access to the parent’s scope (not demonstrated here), and they even support [nesting more components](#nesting-slots).
 
-{{< disclosure-note "About slot scope" >}}
+{{< note type="secondary" title="About slot scope" isCollapsible=true >}}
 Slot [scope](https://vuejs.org/v2/guide/components-slots.html#Compilation-Scope) is an important concept to grasp when working with slots. Even though the content you are passing from the parent is intended for the component, you are still within the context of the parent.
 
 For example, trying to access the `count` data of the `rating-counter` component like this would fail:
 
-```html
+```file {lang=html}
 <rating-counter v-bind:parent="parentHeader">
     <h1>{{ count }}</h1>
 </rating-counter>
@@ -313,14 +305,14 @@ For example, trying to access the `count` data of the `rating-counter` component
 
 However, as you are within the scope of the parent app, you can access the `parentHeader` object (or any other app data):
 
-```html
+```file {lang=html}
 <rating-counter v-bind:parent="parentHeader">
     <h1>{{ parentHeader.label }}</h1>
 </rating-counter>
 ```
 
 Using the `parentHeader.label` string here wouldn't make much sense anyway, so this would only serve to demonstrate the scope concept.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Nesting Slots
 
@@ -396,7 +388,7 @@ Let's explore the code for this component:
 
 -   You can see how this default value is referenced for the new `rating-title` component on line 16. Whenever nothing is included between the `<rating-title></rating-title>` tags, the default value is used.
 
--   Compare this with how the component is used on lines 8 and 12. Because a title is included between the component's tags, the default text is is not rendered.
+-   Compare this with how the component is used on lines 8 and 12. Because a title is included between the component's tags, the default text is not rendered.
 
 ### Named Slots
 

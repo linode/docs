@@ -1,25 +1,19 @@
 ---
 slug: server-side-encryption
-author:
-  name: Ben Bigger
-  email: docs@linode.com
+title: "Using Server-Side Encryption with Linode Object Storage"
+title_meta: "How to Use Server-Side Encryption with Linode Object Storage"
 description: 'This guide teaches you how to secure your Linode Object Storage data with server-side encryption using an example script written in Python.'
 og_description: 'Learn how to secure your Linode Object Storage data with server-side encryption.'
+authors: ["Ben Bigger"]
+contributors: ["Ben Bigger"]
+published: 2020-08-14
+modified: 2023-08-15
 keywords: ['object','storage','security', 'sse-c', 'aes-256', 'terraform']
 tags: ["linode platform","python","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-08-14
 image: UseServerSideEnc_LinObjStorage.png
-modified_by:
-  name: Linode
-title: "How to Use Server-Side Encryption with Linode Object Storage"
-h1_title: "Using Server-Side Encryption with Linode Object Storage"
 aliases: ['/platform/object-storage/server-side-encryption/']
 ---
-
-{{< content "object-storage-ga-shortguide" >}}
-
-{{< content "object-storage-cancellation-shortguide" >}}
 
 Server-side encryption secures data on Linode Object Storage. Using your own encryption key, Linode will encrypt your data at the object level prior to storing it to disk. Once encrypted, Linode will only decrypt data if that same encryption key is provided with the retrieval request. This enables you to use Linode Object Storage to confidently handle sensitive data like [Terraform configurations](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) that contain passwords and SSH keys.
 
@@ -46,9 +40,9 @@ In this guide, you will [write an example Python script](#python-example-script)
 
         openssl rand -hex 16
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Linode destroys encryption keys immediately after your data is encrypted. Object Storage data that is encrypted with SSE-C is unrecoverable without your encryption key.
-    {{< /caution >}}
+    {{< /note >}}
 
 1.  Using a code editor, open a new file labeled `example.py` for your Python script and enter the following:
 
@@ -116,7 +110,7 @@ if r3["ResponseMetadata"]["HTTPStatusCode"] == 204:
     |`example-encryption-key-987654321` | Your 32-character encryption key. |
     |`example-bucket-name` | The name of your Object Storage bucket. |
 
-    {{< content "object-storage-cluster-shortguide" >}}
+    {{% content "object-storage-cluster-shortguide" %}}
 
 1.  From your machine's terminal, make your script file executable:
 

@@ -1,19 +1,12 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy MongoDB through the Linode Marketplace"
 description: "This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the Linode Marketplace."
-keywords: ['mongodb','marketplace', 'database']
-tags: ["linode platform","database","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploying MongoDB through the Linode Marketplace"
+keywords: ['mongodb','marketplace', 'database']
+tags: ["linode platform","database","marketplace","cloud-manager"]
+expiryDate: 2023-05-01
 image: MongoDB_oneclickapps.png
-contributor:
-  name: Linode
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
@@ -27,13 +20,13 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** MongoDB should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -43,12 +36,14 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 ### MongoDB Options
 
 - **MongoDB admin user password** *(required)*: The Mongo admin user password.
-- **MongoDB Version** *(required)*: Select the verison of MongoDB you'd like to install.
+- **MongoDB Version** *(required)*: Select the version of MongoDB you'd like to install.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 - **Email address for soa record:** The start of authority (SOA) email address for this server. This email address will be added to the SOA record for the domain. This is a required field if you want the installer to create DNS records.
+
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -56,7 +51,7 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 
 After MongoDB has finished deploying, you can access and administer it directly from the console.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
+1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Launch the [mongo shell](https://docs.mongodb.com/v4.4/mongo/) by running the following command. When prompted, enter the admin user password you set when creating this instance.
 
@@ -88,13 +83,13 @@ For more information on access control and user management, as well as other tip
 
 ### Manage Data and Collections
 
-{{< content "mongodb-example-shortguide" >}}
+{{% content "mongodb-example-shortguide" %}}
 
 ## Next Steps
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 For more on MongoDB, checkout the following guides:
 
-- [Creating a MongoDB Replica Set](/docs/databases/mongodb/create-a-mongodb-replica-set/)
-- [Building Database Clusters with MongoDB](/docs/databases/mongodb/build-database-clusters-with-mongodb/)
+- [Creating a MongoDB Replica Set](/docs/guides/create-a-mongodb-replica-set/)
+- [Building Database Clusters with MongoDB](/docs/guides/build-database-clusters-with-mongodb/)

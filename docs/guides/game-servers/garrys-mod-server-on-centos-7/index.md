@@ -1,28 +1,21 @@
 ---
 slug: garrys-mod-server-on-centos-7
-author:
-  name: Julian Meyer
-  email: --
+title: 'Garry''s Mod on CentOS 7'
 description: 'This guide provides you with step-by-step instructions for deploying a Garrys Mod Server, which enables complete control of a video game engine, on CentOS 7.'
+authors: ["Julian Meyer"]
+contributors: ["Julian Meyer"]
+published: 2015-01-21
+modified: 2019-02-01
 keywords: ["garry''s mod", "centos", "centos 7"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/game-servers/garrys-mod-server-on-centos-7/','/game-servers/garrys-mod-server-on-centos-7/']
-published: 2015-01-21
-modified: 2019-02-01
-modified_by:
-  name: Linode
-title: 'Garry''s Mod on CentOS 7'
 external_resources:
 - '[SRCDS](http://www.srcds.com/)'
 - '[GMod Forums](http://facepunch.com/forum.php)'
 - '[GMod Wiki](http://wiki.garrysmod.com/page/Main_Page)'
-contributor:
-    name: Julian Meyer
-    link: https://github.com/jmeyer2k
 dedicated_cpu_link: true
 ---
-
 
 [Garry's Mod](http://www.garrysmod.com/) enables complete control and modification of the video game engine, Source Engine. With Garry's Mod, you can create almost any game you want. Setting up a Garry's Mod server is a great way to play with friends over the internet while maintaining control over the server.
 
@@ -79,7 +72,7 @@ From the SteamCMD guide, two additional steps are needed specifically for Gmod.
 
         quit
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To update Gmod, run the above 4 commands again.
 {{< /note >}}
 
@@ -165,9 +158,9 @@ writeip
 
         cd ~/ && ./startgmod.sh
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 From this point, do not press the **Control+C** keys while in the console unless you want to stop Gmod.
-{{< /caution >}}
+{{< /note >}}
 
 2.  To detach from the screen session running the server console, press these two key combinations in succession:
 

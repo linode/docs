@@ -1,16 +1,13 @@
 ---
 slug: how-to-install-nvm
-author:
-  name: Linode
+title: "Install Node Version Manager (NVM)"
 description: 'Shortguide for installing the Node Version Manager (NVM)'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-04-24
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["nodejs", "version management"]
 tags: ["version control system"]
-modified: 2020-04-24
-modified_by:
-  name: Sam Foo
-title: "How to Install Node Version Manager (NVM)"
-published: 2020-04-24
 headless: true
 show_on_rss_feed: false
 aliases: ['/development/nodejs/how-to-install-nvm/']
@@ -38,9 +35,9 @@ aliases: ['/development/nodejs/how-to-install-nvm/']
 
 1.  Install Node.js:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 As of writing this guide, the latest LTS version of [Node.js](https://nodejs.org/en/download/) is `v12.16.2`. Update this command with the version of Node.js you would like to install.
-    {{</ note >}}
+    {{< /note >}}
 
         nvm install 12.16.2
 

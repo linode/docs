@@ -1,23 +1,16 @@
 ---
 slug: automate-a-static-site-deployment-with-salt
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Automate Static Site Deployments with Salt, Git, and Webhooks"
+title_meta: "Automate Static Site Deployments with Salt and Git"
 description: "Learn how to use Salt to configure a static site webserver and use webhooks to automatically deploy new site content."
+authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
+published: 2018-10-15
+modified: 2019-01-02
 keywords: ['salt','saltstack','github','webhooks','hugo','static site','deployment']
 tags: ["web server","automation","salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-10-15
-modified: 2019-01-02
-modified_by:
-  name: Linode
 image: Automate-Static-Site-DeploymentswithSaltGitandWebhooks.png
-title: "Automate Static Site Deployments with Salt and Git"
-h1_title: "Automate Static Site Deployments with Salt, Git, and Webhooks"
-enable_h1: true
-contributor:
-    name: "Nathan Melehan"
-    link: "https://github.com/nmelehan"
 external_resources:
 - '[Hugo Documentation](https://gohugo.io/documentation/)'
 - '[SaltStack Git Fileserver Documentation](https://docs.saltproject.io/en/latest/topics/tutorials/gitfs.html#tutorial-gitfs)'
@@ -78,15 +71,15 @@ Development of your Hugo site and your Salt formula will take place on your pers
 
 ### Deploy the Linodes
 
-1.  Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide and deploy two Linodes running Debian 9.
+1.  Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and deploy two Linodes running Debian 9.
 
 1.  In the settings tab of your Linodes' dashboards, label one of the Linodes as `salt-master` and the other as `salt-minion`. This is not required, but it will help keep track of which Linode serves which purpose.
 
-1.  Complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide on each Linode to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
+1.  Complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide on each Linode to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
-1.  Configure DNS for your site by adding a [domain zone](/docs/guides/dns-manager/#add-a-domain) and setting up [reverse DNS](/docs/guides/configure-your-linode-for-reverse-dns/) on your Salt minion's IP address.
+1.  Configure DNS for your site by adding a [domain zone](/docs/products/networking/dns-manager/guides/create-domain/) and setting up [reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on your Salt minion's IP address.
 
 ## Set Up the Salt Master and Salt Minion
 
@@ -97,15 +90,15 @@ Before you can start setting up the Salt formulas for the minion, you first need
         wget -O bootstrap-salt.sh https://bootstrap.saltproject.io
         sudo sh bootstrap-salt.sh -M -N
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `-M` option tells the script to install the Salt master software, and the `-N` option tells the script to not install the minion software.
 {{< /note >}}
 
-1.  Log into the Salt **minion** Linode via SSH and [set the hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). This guide uses `hugo-webserver` as the example hostname:
+1.  Log into the Salt **minion** Linode via SSH and [set the hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). This guide uses `hugo-webserver` as the example hostname:
 
         sudo hostnamectl set-hostname hugo-webserver
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This step needs to be completed **before installing Salt** on the minion, as Salt will use your hostname to generate the minion's Salt ID.
 {{< /note >}}
 
@@ -130,8 +123,8 @@ master: 192.0.2.2
 # [...]
 {{</ file >}}
 
-    {{< note >}}
-Linode does not charge for traffic within a datacenter across private IP addresses. If your Salt master and minion are in the same datacenter, and both have a private IP addresses, you can use your Salt master's private IP address in this step to avoid incurring data traffic charges.
+    {{< note respectIndent=false >}}
+Linode does not charge for traffic within a data center across private IP addresses. If your Salt master and minion are in the same data center, and both have a private IP addresses, you can use your Salt master's private IP address in this step to avoid incurring data traffic charges.
 {{< /note >}}
 
 1.  Restart Salt on the minion:
@@ -156,7 +149,7 @@ Unaccepted Keys:
 hugo-webserver:  29:d8:f3:ed:91:9b:51:...
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The example fingerprints in this section have been truncated for brevity.
 {{< /note >}}
 
@@ -221,7 +214,7 @@ nginx_pkg:
     - name: nginx
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Salt configurations are declared in YAML-- a markup language that incorporates whitespace/indentation in its syntax. Be sure to use the same indentation as the snippets presented in this guide.
 {{< /note >}}
 
@@ -231,7 +224,7 @@ Salt configurations are declared in YAML-- a markup language that incorporates w
 
     The string `nginx_pkg` is the *ID* for the state component, `pkg` is the name of the Salt *module* used, and `pkg.installed` is referred to as a *function declaration*. The component ID is arbitrary, so you can name it however you prefer.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you were to name the ID to be the same as the relevant installed package, then you do not need to specify the `- name` option, as it will be inferred from the ID. For example, this snippet also installs NGINX:
 
 {{< file "hugo-webserver-salt-formula/hugo/install.sls" >}}
@@ -257,7 +250,7 @@ nginx_service:
 
     The `require` lines specify that this state component should not be applied until after the `nginx_pkg` component has been applied.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Unless specified by a `require` declaration, Salt makes no guarantees about the order that different components are applied. The order that components are listed in a state file **does not** necessarily correspond with the order that they are applied.
 {{< /note >}}
 
@@ -275,7 +268,7 @@ include:
 
     The `install` and `service` states will not be applied to the minion on their own--instead, only the combined `init` state will ever be applied. In Salt, when a file named `init.sls` exists inside a directory, Salt will refer to that particular state by the name of the directory it belongs to (i.e. `hugo` in our example).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The organization of the state files used here is not mandated by Salt. Salt does not place restrictions on how you organize your states. This specific structure is presented as an example of a [best practice](https://docs.saltproject.io/en/latest/topics/best_practices.html).
 {{< /note >}}
 
@@ -324,7 +317,7 @@ Changes to be committed:
         git remote add origin https://github.com/github-username/hugo-webserver-salt-formula.git
         git push -u origin master
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you haven't pushed anything else to your GitHub account from the command line before, you may be prompted to authenticate with GitHub. If you have two-factor authentication enabled for your account, you will need to create and use a [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 {{< /note >}}
 
@@ -397,7 +390,7 @@ base:
 
     Salt as refers to this command as a *highstate*. Running a highstate can take a bit of time to complete, and the output of the command will describe what actions were taken on the minion. The output will also show if any actions failed.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you see an error similar to:
 
 {{< output >}}
@@ -676,7 +669,7 @@ build_script:
 
     This state uses more than one module. The first module will download the `deploy.sh` file from the salt master and place it on the minion. This script will be responsible for compiling your Hugo site files. The second module then calls that script. The first module is listed as a requirement of the second module, along with the Git clone command, and the creation of the document root folder.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `- creates` option in the second module ensures that Salt doesn't rebuild Hugo if the state is re-applied to the minion.
 {{< /note >}}
 
@@ -774,7 +767,6 @@ base:
 On the Salt master, apply the new states to all minions:
 
     sudo salt '*' state.apply
-
 {{< note >}}
 In this guide there is only one minion, but Salt can use shell-style globbing and regular expressions to [match against minion IDs](https://docs.saltproject.io/en/latest/topics/targeting/globbing.html) when you have more than one. For example, this command would run a highstate on all minions whose IDs begin with `hugo`:
 
@@ -809,7 +801,7 @@ webhook_pkg:
     - name: webhook
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The webhook server written in Go by adnanh is a popular implementation of the concept, but it's possible to write other HTTP servers that parse webhook payloads.
 {{< /note >}}
 
@@ -905,7 +897,7 @@ WantedBy=multi-user.target
 
     This configuration sets up a URL named `http://example.com:9000/hooks/github_push`, where the last component of the URL is derived from the value of the configuration's `id`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The webhook server runs on port 9000 and places your webhooks inside a `hooks/` directory by default.
 {{< /note >}}
 
@@ -917,7 +909,7 @@ The webhook server runs on port 9000 and places your webhooks inside a `hooks/` 
 
     -   If the rules are satisfied, then the command listed in `execute-command` is run, which is the `deploy.sh` script.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Further documentation on the webhook configuration options can be reviewed on the project's [GitHub repository](https://github.com/adnanh/webhook/).
 {{< /note >}}
 
@@ -1021,7 +1013,7 @@ Test post body text
 
 1.  Visit your domain in your browser; your test post should automatically appear.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your post does not appear, review the **Recent Deliveries** section at the bottom of your webhook configuration page on GitHub:
 
 ![GitHub Webhook - Recent Deliveries](github-webhook-recent-deliveries.png)

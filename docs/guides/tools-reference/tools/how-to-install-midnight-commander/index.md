@@ -1,18 +1,13 @@
 ---
 slug: how-to-install-midnight-commander
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: 'How to Use Midnight Commander, a Visual File Manager'
 description: 'This guide shows how to install and use Midnight Commander, a text user-interface file manager.'
-keywords: ["midnight commander", "file manager", "text user interface", "TUI"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Alexandru Andrei"]
+contributors: ["Alexandru Andrei"]
 published: 2017-09-11
 modified: 2017-09-12
-modified_by:
-  name: Linode
-title: 'How to Use Midnight Commander, a Visual File Manager'
-contributor:
-  name: Alexandru Andrei
+keywords: ["midnight commander", "file manager", "text user interface", "TUI"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Midnight Commander](https://midnight-commander.org/)'
 tags: ["linux"]
@@ -29,9 +24,8 @@ A TUI facilitates interaction between users and their systems in a visually orie
 
 
 ## Before You Begin
-
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 The methods in this tutorial have been tested on Debian 9. There is no special requirement to install Midnight Commander, and it works on all Linux distributions. While this file manager should work in almost identically on all Linux distributions, a particular distro may not package the exact same Midnight Commander version (4.8.18, in this case). This may result in small behavioral differences on other operating systems.
@@ -140,7 +134,7 @@ Choose 1-4 [1]:
 
     ![Midnight Commander's Editor mcedit with Syntax Highlighting Active](midnight-commander-mcedit.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Actions can be cancelled in MC by pressing the **ESC** key twice.
 {{< /note >}}
 

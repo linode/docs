@@ -33,18 +33,22 @@ swap:
   miniconda: Miniconda
   nodebalancer: NodeBalancer
   nodebalancers: NodeBalancers
-  pod: Pod
+  OpenSUSE: openSUSE
   slackware: Slackware
   ubuntu: Ubuntu
   wordpress: WordPress
   yaml: YAML
   urls: URLs
   uris: URIs
+  uuid: UUID
+  uuids: UUIDs
   Cuda: CUDA
   gpu: GPU
   stackscript: StackScript
+  stackscripts: StackScripts
   typescript: TypeScript
   pulumi: Pulumi
   markdown: Markdown
   vuejs: VueJS
   vue: Vue
+  Sao Paulo: São Paulo

@@ -1,20 +1,14 @@
 ---
 slug: ss
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
+title: 'Learning to Use the ss Tool to its Full Potential'
 description: 'An introduction to the ss utility.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-08-28
+modified: 2020-12-03
 keywords: ["UNIX", "shell", "AWK", "ss", "TCP/IP", "network", "socket"]
 tags: ["networking","statistics","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-08-28
-modified: 2020-12-03
-modified_by:
-  name: Linode
-title: 'Learning to Use the ss Tool to its Full Potential'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[iproute2](https://en.wikipedia.org/wiki/Iproute2)'
 aliases: ['/networking/diagnostics/ss/']
@@ -56,7 +50,6 @@ The `ss(8)` binary supports many command line options, including the following:
 | `-m` | The `-m` parameter tells `ss` to display socket memory usage information. |
 | `-p` | The `-p` parameter tells `ss` to display the process that is using a socket. |
 | `-D FILE` | The `-D` parameter tells `ss` to save the output in the `FILE` file. |
-
 {{< note >}}
 The `-A tcp` option is equivalent to `-t`, the `-A udp` option is equivalent to `-u` and the ` –A unix`
 option is equivalent to `-x`.
@@ -261,7 +254,6 @@ State  Recv-Q  Send-Q    Local Address:Port                  Peer Address:Port
 ESTAB  0       168       203-0-113-0.ip.linodeusercontent.com:ssh    ppp-2-86-7-61.home.otenet.gr:50939
 ESTAB  0       0         203-0-113-0.ip.linodeusercontent.com:https  ::ffff:216.244.66.228:37668
 {{< /output >}}
-
 {{< note >}}
 A side effect of the `-r` command line option is that it slows the execution of the `ss` command due to the DNS lookups that need to be performed.
 {{< /note >}}
@@ -333,7 +325,6 @@ tcp    LISTEN  0       128     :::http             :::*               users:(("a
 State   Recv-Q  Send-Q  Local Address:Port  Peer Address:Port
 LISTEN  0       80      127.0.0.1:mysql     *:*
 {{< /output >}}
-
 {{< note >}}
 The `ss -t -a sport \> :1024` command can be also written as `ss -t -a sport '> :1024'`.
 {{< /note >}}

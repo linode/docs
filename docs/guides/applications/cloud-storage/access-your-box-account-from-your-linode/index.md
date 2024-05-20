@@ -1,27 +1,22 @@
 ---
 slug: access-your-box-account-from-your-linode
-author:
-  name: Tyler Nelson
-  email: tylernelson12@gmail.com
+title: 'Access Your Box.com Account from Your Linode'
 description: 'Box is a popular cloud storage and file sharing service. This article will show you how to access your Box account from your Linode using WebDAV.'
+authors: ["Tyler Nelson"]
+contributors: ["Tyler Nelson"]
+published: 2015-11-06
 keywords: ["box", "box.com", "cloud", "cloud storage", "file storage", "file", "webdav", "davfs", "davfs2"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-11-06
-modified_by:
-  name: Tyler Nelson
-published: 2015-11-06
-title: 'Access Your Box.com Account from Your Linode'
 aliases: ['/applications/cloud-storage/access-your-box-account-from-your-linode/']
 ---
-
 
 If you've discovered [Box](https://www.box.com/) then you know that it can be a great tool for storage, moving and managing files. The following tutorial helps you install and configure a free piece of software that facilitates Box access from your Linode.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide requires having a Box account.
@@ -35,7 +30,7 @@ The following step will create an empty directory where Box will live and all of
 
         mkdir ~/box
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If only your `example_user` needs access to the Box account contents, making the mount point in that user's `/home` directory will be fine. If multiple system users (other than root) need access to the Box account, then the mount point should be placed in a system directory such as `/mnt/box`. For more info, see [the davfs man page](http://linux.die.net/man/8/mount.davfs).
 {{< /note >}}
 
@@ -85,7 +80,7 @@ https://dav.box.com/dav /home/example_user/box davfs rw,user,noauto 0 0
 
         echo 'https://dav.box.com/dav email password' >> ~/.davfs2/secrets
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your password contains quotation characters (`'` or `"`), you'll need to edit the secrets file directly in a text editor.
 {{< /note >}}
 

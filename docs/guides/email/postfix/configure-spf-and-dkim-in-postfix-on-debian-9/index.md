@@ -1,21 +1,15 @@
 ---
 slug: configure-spf-and-dkim-in-postfix-on-debian-9
-author:
-    name: Linode Community
-    email: contribute@linode.com
+title: 'Configure SPF and DKIM With Postfix on Debian 9'
 description: 'This guide provides you with step-by-step instructions for configuring your domains SPF and DKIM DNS records in Postfix mail server on Debian 9.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-12-13
+modified: 2021-08-20
 keywords: ["email", "postfix", "spf", "dkim", "debian 9", "opendkim", "dns", "dmarc"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-08-20
-modified_by:
-    name: Linode
-published: 2018-12-13
-title: 'Configure SPF and DKIM With Postfix on Debian 9'
-contributor:
-    name: Linode
 external_resources:
- - '[Sender Policy Framework](http://www.openspf.org/)'
  - '[DomainKeys Identified Mail](http://www.dkim.org/)'
  - '[DMARC](http://dmarc.org/)'
  - '[OpenDKIM](http://www.opendkim.org/)'
@@ -31,11 +25,11 @@ aliases: ['/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-9/']
 
 This guide provides instructions to set up SPF and DKIM with Postfix.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## What is SPF (Sender Policy Framework)?
 
-[SPF (Sender Policy Framework)](http://www.openspf.org/) is a system that identifies to mail servers what hosts are allowed to send email for a given domain. Setting up SPF helps to prevent your email from being classified as spam.
+SPF (Sender Policy Framework) is a system that identifies to mail servers what hosts are allowed to send email for a given domain. Setting up SPF helps to prevent your email from being classified as spam.
 
 ## What is DKIM (DomainKeys Identified Mail)?
 
@@ -48,14 +42,13 @@ This guide provides instructions to set up SPF and DKIM with Postfix.
 The DNS instructions for setting up SPF, DKIM and DMARC are generic. The instructions to configure the SPF policy agent and OpenDKIM into Postfix work on any distribution. You only need to make respective code adjustments for the package tool, and identify the exact path to the Unix socket file.
 
 {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
-
-{{< caution >}}
+{{< note type="alert" >}}
 You must already have Postfix installed, configured and working. Refer to the [Linode Postfix Guides](/docs/email/postfix/) for assistance.
 
 You can publish an SPF DNS record without configuring the SPF policy agent within Postfix. However, publishing DKIM DNS records without an OpenDKIM within Postfix can result in your email being discarded by the recipient's email server.
-{{< /caution >}}
+{{< /note >}}
 
 ## Install DKIM, SPF and Postfix
 
@@ -71,7 +64,7 @@ You can publish an SPF DNS record without configuring the SPF policy agent withi
 
 ### Add SPF records to DNS
 
-The value in an SPF DNS record looks similar to the following examples. The full syntax is at [the SPF record syntax page](http://www.openspf.org/SPF_Record_Syntax).
+The value in an SPF DNS record looks similar to the following examples.
 
 **Example 1**  Allow mail from all hosts listed in the MX records for the domain:
 
@@ -253,7 +246,7 @@ example     example.com:YYYYMM:/etc/opendkim/keys/example.private
     - The second section is a selector used when looking up key records in DNS.
     - The third section names the file containing the signing key for the domain.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The flow for DKIM lookup starts with the sender's address. The signing table is scanned until an entry pattern of the first item that matches the address is found. Then, the second item's value is used to locate the entry in the key table for the key information. For incoming mail the domain and selector are used to find the public key TXT record in DNS. This public key is used to validate the signature. For outgoing mail the private key is read from the named file and used to generate the signature on the message.
 {{< /note >}}
 
@@ -428,8 +421,8 @@ Content-Type: text/html; charset="UTF-8"
 {{< /output >}}
 
 From the above email it is clear that:
-- SPF is properly configured: `dkim=pass header.i=@domain.com header.s=google header.b=TDC76zp2`
-- DKIM has a pass: `spf=pass (google.com: domain of email@domain.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=email@domain.com;`
+- SPF is properly configured: `spf=pass (google.com: domain of email@domain.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=email@domain.com;`
+- DKIM has a pass: `dkim=pass header.i=@domain.com header.s=google header.b=TDC76zp2`
 - DMARC is properly set too: `dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=domain.com`
 
 

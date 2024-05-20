@@ -1,17 +1,10 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Learn how to obtain URLs to objects within Linode's Object Storage service."
-keywords: ['object','storage','bucket']
-published: 2020-01-22
-modified: 2022-02-24
-modified_by:
-  name: Linode
-image: AccessingObjectswithLinodeObjectStorage.png
 title: "Access Buckets and Files through URLs"
-contributor:
-  name: Linode
+description: "Learn how to obtain URLs to objects within Linode's Object Storage service."
+published: 2020-01-22
+modified: 2024-02-20
+keywords: ['object','storage','bucket']
+image: AccessingObjectswithLinodeObjectStorage.png
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/how-to-access-objects-with-linode-object-storage/','/guides/how-to-access-objects-with-linode-object-storage/','/products/storage/object-storage/guides/access-objects/']
 ---
@@ -29,24 +22,38 @@ Here are the types of URLs you can use to access buckets and files:
 - [Website URL](#website-urls)
 - [Custom URL](#custom-urls)
 
-## Cluster URL (S3 endpoint)
+## Cluster URL (S3 Endpoint)
 
 The cluster URL for Object Storage is unique to each data center. This URL can be used for accessing all of your Object Storage resources within a certain region. When used with third party tools, this URL might also be referred to as the *S3 endpoint*.
 
 **Cluster URL:** `https://[cluster-id].linodeobjects.com/`, replacing *[cluster-id]* with the id of your data center. The cluster URLs for each of the available data centers are listed below:
 
 | Data Center | Cluster ID | Cluster URL |
-| --| -- | -- |
-| Atlanta, GA, USA | us-southeast-1 | https://us-southeast-1.linodeobjects.com |
-| Frankfurt, Germany | eu-central-1 | https://eu-central-1.linodeobjects.com |
-| Newark, NJ, USA | us-east-1 | https://us-east-1.linodeobjects.com |
-| Singapore | ap-south-1 | https://ap-south-1.linodeobjects.com |
+| -- | -- | -- |
+| Amsterdam (Netherlands) | `nl-ams-1` | `https://nl-ams-1.linodeobjects.com` |
+| Atlanta, GA (USA) | `us-southeast-1` | `https://us-southeast-1.linodeobjects.com` |
+| Chennai (India) | `in-maa-1` | `https://in-maa-1.linodeobjects.com` |
+| Chicago, IL (USA) | `us-ord-1` | `https://us-ord-1.linodeobjects.com` |
+| Frankfurt (Germany) | `eu-central-1` | `https://eu-central-1.linodeobjects.com` |
+| Jakarta (Indonesia) | `id-cgk-1` | `https://id-cgk-1.linodeobjects.com` |
+| Los Angeles, CA (USA) | `us-lax-1` | `https://us-lax-1.linodeobjects.com` |
+| Madrid (Spain) | `es-mad-1` | `https://es-mad-1.linodeobjects.com` |
+| Miami, FL (USA) | `us-mia-1` | `https://us-mia-1.linodeobjects.com` |
+| Milan (Italy) | `it-mil-1` | `https://it-mil-1.linodeobjects.com` |
+| Newark, NJ (USA) | `us-east-1` | `https://us-east-1.linodeobjects.com` |
+| Osaka (Japan) | `jp-osa-1	` | `https://jp-osa-1.linodeobjects.com` |
+| Paris (France) | `fr-par-1` | `https://fr-par-1.linodeobjects.com` |
+| São Paulo (Brazil) | `br-gru-1` | `https://br-gru-1.linodeobjects.com` |
+| Seattle, WA (USA) | `us-sea-1` | `https://us-sea-1.linodeobjects.com` |
+| Singapore | `ap-south-1` | `https://ap-south-1.linodeobjects.com` |
+| Stockholm (Sweden) | `se-sto-1` | `https://se-sto-1.linodeobjects.com` |
+| Washington, DC (USA) | `us-iad-1` | `https://us-iad-1.linodeobjects.com` |
 
 ## Bucket URL
 
 Each bucket has its own unique URL. This URL is useful when configuring a third party application to use a specific bucket for file storage.
 
-**Bucket URL:** `https://[bucket-label].[cluster-id].linodeobjects.com/`, replacing *[bucket-label]* with the label of your bucket and *[cluster-id]* with the id of your data center (listed in the [Cluster URL](#cluster-url-s3-endpoint) section.
+**Bucket URL:** `https://[bucket-label].[cluster-id].linodeobjects.com/`, replacing *[bucket-label]* with the label of your bucket and *[cluster-id]* with the id of your data center (listed in the [Cluster URL](#cluster-url-s3-endpoint) section).
 
 For example, a bucket labeled *example-bucket* within the Atlanta data center would have the following URL:
 
@@ -98,7 +105,6 @@ You can build this URL manually or you can view the file URL through the Cloud M
 
 A **signed URL** gives anyone with the URL access to a file for a certain period of time. This is very useful when you want to share a document or file with someone, but don't wish to make the URL permanently accessible or able to be guessed by others. You can generate a signed URL through the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/#create-a-signed-url-with-the-cli) or [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/#create-a-signed-url-with-s3cmd).
 
-
 Here's an example of a signed URL:
 
     https://us-southeast-1.linodeobjects.com:443/example-bucket/example-file.txt?Signature=NUXLA378K28nMKgnaIcYjGroMXw%3D&Expires=1644600958&AWSAccessKeyId=YFULT4UZZULG82GFPQE2&x-amz-meta-mtime=1644590299284&x-amz-meta-storage-class=STANDARD
@@ -113,7 +119,7 @@ For example, if you have configured a website on a bucket labeled *example-bucke
 
     https://example-bucket.website-us-southeast-1.linodeobjects.com
 
-For more information on hosting a static website with Object Storage, read our [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
+For more information on hosting a static website with Object Storage, read our [Host a Static Site using Linode Object Storage](/docs/guides/host-static-site-object-storage/) guide.
 
 ## Custom URLs
 

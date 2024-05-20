@@ -1,19 +1,16 @@
 ---
 slug: ruby-on-rails-nginx-debian
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Ruby on Rails with NGINX On Debian 9'
 description: "This guide shows how to host a Ruby on Rails application on Debian using NGINX and Passenger."
 og_description: "This guide shows how to host a Ruby on Rails application on Debian using the NGINX web server and the Passenger app server."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-06-25
+modified: 2017-12-28
 keywords: ["ruby on rails", "ruby on nginx", "rails apps", "debian", "debian 9", " ruby", " nginx"]
 tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ror/ruby-on-rails-nginx-debian-8/','/development/ror/ruby-on-rails-nginx-debian/','/development/ror/ruby-on-rails-nginx-debian-8/']
-modified: 2017-12-28
-modified_by:
-  name: Jared Kobos
-published: 2015-06-25
-title: 'Ruby on Rails with NGINX On Debian 9'
 external_resources:
  - '[Passenger Official Debian 9 Installation Guide](https://www.phusionpassenger.com/library/install/nginx/install/oss/stretch/)'
  - '[Ruby and Passenger Quickstart](https://www.phusionpassenger.com/library/walkthroughs/start/ruby.html#preparing-the-example-application)'
@@ -21,7 +18,7 @@ external_resources:
  - '[Ruby on Rails Documentation](http://rubyonrails.org/documentation)'
  - '[NGINX Home Page](http://nginx.org/)'
  - '[NGINX Documentation](http://nginx.org/en/docs/)'
- - '[NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+ - '[NGINX Configuration](/docs/guides/how-to-configure-nginx/)'
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["ruby"]
@@ -37,12 +34,12 @@ relations:
 Ruby on Rails is a web framework that allows web designers and developers to implement dynamic, fully featured web applications. When deploying a Rails app in production, developers can choose from several popular app servers including Puma, Unicorn, and Passenger. This guide will use Passenger, because of its convenient integration with NGINX.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Follow the [Getting Started](/docs/getting-started) and [Securing the Server](/docs/security/securing-your-server) guides, and [set the Linode's hostname](/docs/getting-started#setting-the-hostname).
+1.  Follow the [Getting Started](/docs/products/platform/get-started/) and [Securing the Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and [set the Linode's hostname](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check the hostname run:
 
@@ -66,7 +63,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Use the Ruby Version Manager (RVM) to install Ruby. Be sure to install a Ruby version that is compatible with the version of Rails in your Gemfile. This guide will use Rails 5.1.4 and Ruby 2.4.2.
 
-{{< content "install-ruby-with-rvm" >}}
+{{% content "install-ruby-with-rvm" %}}
 
 ### Install Rails
 
@@ -103,7 +100,7 @@ passenger_root /usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini;
 passenger_ruby /usr/bin/passenger_free_ruby;
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the file does not already exist, you will need to create it and add the lines manually.
 {{< /note >}}
 
@@ -128,7 +125,7 @@ PID    VMSize    Private  Name
 
 ## Install MySQL Support (Optional)
 
-If the application deployed uses MySQL, install the database server by following our [MySQL on Debian 8](/docs/databases/mysql/mysql-relational-databases-debian-8) guide. Once it's installed and configured properly, issue the following command:
+If the application deployed uses MySQL, install the database server by following our [MySQL on Debian 8](/docs/guides/how-to-install-mysql-on-debian-8/) guide. Once it's installed and configured properly, issue the following command:
 
     sudo apt-get install libmysqlclient-dev
 
@@ -144,7 +141,7 @@ If the application deployed uses MySQL, install the database server by following
         sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
         sudo apt install nodejs
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your Gemfile already includes `therubyracer`, or you have another JavaScript runtime on your system, you can skip this step.
 {{< /note >}}
 

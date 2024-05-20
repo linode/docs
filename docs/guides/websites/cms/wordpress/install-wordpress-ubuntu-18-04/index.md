@@ -1,17 +1,14 @@
 ---
 slug: install-wordpress-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: Install WordPress on Ubuntu 18.04
 description: 'Install and optimize the WordPress blogging and content management system on a Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-06-04
+modified: 2021-02-19
 keywords: ["WordPress", "wordpress on ubuntu", "WordPress on Linode", "how to configure WordPress"]
 tags: ["ubuntu","lamp","wordpress","cms","lemp","mysql","php", "permalink"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-02-19
-modified_by:
-  name: Edward Angert
-published: 2018-06-04
-title: Install WordPress on Ubuntu 18.04
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
@@ -30,13 +27,13 @@ WordPress is a popular PHP-based dynamic content management system (CMS) focused
 
 <!-- ![Install WordPress on Ubuntu 18.04](wordpress-ubuntu-18-04-title.png "Install WordPress on Ubuntu 18.04") -->
 ![Install WordPress on Ubuntu](Install_WordPress_on_Ubuntu_smg.jpg)
-{{< content "limited-user-note-shortguide" >}}
+{{% content "limited-user-note-shortguide" %}}
 
 Replace each instance of `example.com` in this guide with the domain name or IP address of the website.
 
 ## Before You Begin Installing WordPress
 
--   Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, and ensure that the Linode's [hostname is set](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
+-   Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, and ensure that the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
     To check the hostname run:
 
@@ -131,7 +128,7 @@ quit
 
     WordPress tests the credentials and if authentication is successful, prompts you to **Run the install**.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If WordPress doesn't display when you visit the domain, try adding `/wp-admin` to the end of the URL. This sometimes happens if you previously created an index file in the site's home directory.
 {{< /note >}}
 

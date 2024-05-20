@@ -1,31 +1,28 @@
 ---
 slug: wsgi-using-uwsgi-and-nginx-on-centos-5
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: WSGI using uWSGI and nginx on CentOS 5
 description: 'This guide will show you how to configure the uWSGI server to deploy Python application servers in conjunction with the Nginx web server on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-11-10
+modified: 2011-05-09
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
 tags: ["centos","web server","python","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/python-uwsgi/centos-5/','/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-centos-5/','/websites/nginx/wsgi-using-uwsgi-and-nginx-on-centos-5/']
-modified: 2011-05-09
-modified_by:
-  name: Linode
-published: 2010-11-10
-title: WSGI using uWSGI and nginx on CentOS 5
 relations:
     platform:
         key: wsgi-uwsgi-nginx
         keywords:
             - distribution: CentOS 5
+deprecated: true
 ---
 
 The uWSGI server provides a non-FastCGI method for deploying Python applications with the nginx web server. In coordination with nginx, uWSGI offers great stability, flexibility, and performance. However, to deploy applications with uWSGI and nginx, you must compile nginx manually with the included uwsgi module.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -149,7 +146,7 @@ All requests to URLs ending in `/static` will be served directly from the `/srv/
 
 ## Additional Application Servers
 
-If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, see the following example:
+If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/) for more information. For a basic example configuration, see the following example:
 
 {{< file "nginx configuration" nginx >}}
 upstream uwsgicluster {
@@ -186,6 +183,6 @@ In this example, we create the `uwsgicluster` upstream, which has five component
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Installing Nginx on CentOS 5](/docs/web-servers/nginx/installation/centos-5)
+- [Installing Nginx on CentOS 5](/docs/guides/websites-with-nginx-on-centos-5/)
 - [Deploy a LEMP Server on CentOS 5](/docs/guides/lemp-server-on-centos-5/)
-- [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
+- [Configure nginx Proxy Servers](/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)

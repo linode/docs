@@ -1,21 +1,14 @@
 ---
 slug: java-development-wildfly-centos-7
-author:
-    name: Linode Community
-    email: docs@linode.com
+title: 'Java Development with WildFly on CentOS 7'
 description: 'Set up and configure WildFly as your Java Application Server to develop, test, and run, Java applications'
+authors: ["Ashraf Fouad"]
+contributors: ["Ashraf Fouad"]
+published: 2015-09-18
 keywords: ["java", "jboss", "jboss as", "wildfly", "apache", "mysql", "mariaDB"]
 tags: ["mysql","apache","java","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-09-18
 aliases: ['/applications/development/java-development-wildfly-centos-7/','/development/java-development-wildfly-centos-7/','/development/java/java-development-wildfly-centos-7/']
-modified: 2015-09-18
-modified_by:
-    name: Linode
-title: 'Java Development with WildFly on CentOS 7'
-contributor:
-    name: Ashraf Fouad
-    link: https://github.com/ashraffouad
 external_resources:
  - '[WildFly Administration Guide](https://books.google.com.sa/books?id=rufiBAAAQBAJ)'
 audiences: ["intermediate"]
@@ -50,7 +43,7 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
 
 ## Before You Begin
 
--   Please follow the steps mentioned in [Linode: Securing Your Server](/docs/guides/set-up-and-secure/) but skip the section Creating a Firewall as iptables has been replaced in CentOS 7 with [firewalld](https://fedoraproject.org/wiki/FirewallD).
+-   Please follow the steps mentioned in [Linode: Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) but skip the section Creating a Firewall as iptables has been replaced in CentOS 7 with [firewalld](https://fedoraproject.org/wiki/FirewallD).
 
 -   Start & enable Firewalld
 
@@ -61,7 +54,6 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
 
 
 ### Oracle Java 8 SE installation
-
 {{< note >}}
 Oracle is producing many updates for Java, so below steps ensures you are getting the latest updated Java version.
 {{< /note >}}
@@ -305,8 +297,8 @@ echo "Done."
 4.  You will need to add to add management user (Web and/or CLI) to be able to access the management console, this can be simply done by running the command simply run the shell script in `/opt/wildfly/bin/add-user.sh`:
 
     1.  **Select option a for Management user.**
-    2.  **Username:** type_the_username
-    3.  **Password:** type_the_password
+    2.  **Username:** Type the username
+    3.  **Password:** Type the password
     4.  **What groups do you want this user to belong to?:** Leave empty and click Enter
     5.  **About to add user ... Is this correct?:** yes
     6.  **Is this new user going to be used for one AS process to connect to another AS process:** yes (Just in-case, we need this in the future, i.e. domain setup).

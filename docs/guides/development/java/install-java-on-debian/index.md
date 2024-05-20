@@ -1,18 +1,15 @@
 ---
 slug: install-java-on-debian
-author:
-  name: Angel Guarisma
-  email: aguarisma@linode.com
+title: Install Java on Debian 8
 description: 'This guide shows how to install the OpenJDK 8 runtime environment to support Java app execution and development on a Linode running Debian or Ubuntu.'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2017-06-01
+modified: 2017-06-01
 keywords: ["install Java", "Debian", "OpenJDK", "Java JDK"]
 tags: ["java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/java/install-java-on-debian/','/development/install-java-on-debian/','/development/installing-java-on-debian/']
-modified: 2017-06-01
-modified_by:
-  name: Angel Guarisma
-published: 2017-06-01
-title: Install Java on Debian 8
 external_resources:
 - '[Java Debian Wiki](https://wiki.debian.org/Java)'
 audiences: ["beginner"]
@@ -28,7 +25,7 @@ Java is a powerful programming language. Software written in Java can be compile
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 2.  This guide will use `sudo` wherever possible.
 

@@ -1,6 +1,11 @@
 'use strict';
 
-import { newRequestCallbackFactoryTarget, SearchGroupIdentifier, RequestCallBackStatus } from '../../search/request';
+import {
+	newRequestCallback,
+	newRequestCallbackFactoryTarget,
+	SearchGroupIdentifier,
+	RequestCallBackStatus,
+} from '../../search/request';
 import { isMobile, isTouchDevice, newSwiper } from '../../helpers/index';
 
 var debug = 0 ? console.log.bind(console, '[home]') : function () {};
@@ -10,7 +15,7 @@ export function newHomeController(searchConfig, staticData) {
 
 	// The section we paginate on the home page.
 	// This maps to section.lvl0 in linode-merged.
-	const sectionLevel0s = ['guides', 'blog', 'resources', 'marketplace', 'community'];
+	const sectionLevel0s = ['guides', 'blog', 'resources', 'marketplace'];
 
 	// Avoid loading too much data when on mobile.
 	const tilesAlgoliaPreloadItems = isMobile() ? 12 : 30;
@@ -19,7 +24,7 @@ export function newHomeController(searchConfig, staticData) {
 		return {
 			page: 0,
 			params: `query=&hitsPerPage=${tilesAlgoliaPreloadItems}`,
-			indexName: searchConfig.sections_merged.index_by_pubdate,
+			indexName: searchConfig.indexName(searchConfig.sections_merged.index_by_pubdate),
 			facets: ['section.*'],
 			filters: `section.lvl0:${name} AND NOT excludeFromViews:home`,
 		};
@@ -201,13 +206,13 @@ export function newHomeController(searchConfig, staticData) {
 				this.data.sectionTiles['products'] = newPager(
 					productsStripPageSize,
 					this.$refs[`carousel-products`],
-					staticData.productItems
+					staticData.productItems,
 				);
 				// Make the developers pager the same size as the products pager.
 				this.data.sectionTiles['developers'] = newPager(
 					productsStripPageSize,
 					this.$refs[`carousel-developers`],
-					staticData.developerItems
+					staticData.developerItems,
 				);
 
 				this.loaded = true;
@@ -230,12 +235,9 @@ export function newHomeController(searchConfig, staticData) {
 							return RequestCallBackStatus.Once;
 						},
 						create: () => {
-							return {
-								request: requestFromSection(name),
-								callback: (result) => {
-									this.data.sectionTiles[name].setItems(result.hits);
-								},
-							};
+							return newRequestCallback(requestFromSection(name), (result) => {
+								this.data.sectionTiles[name].setItems(result.hits);
+							});
 						},
 					};
 

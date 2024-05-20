@@ -1,16 +1,10 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy aaPanel through the Linode Marketplace"
 description: "This tutorial will show you how to install and configure the free and open-source server app, aaPanel, using the Linode One-Click Marketplace on CentOS 7."
-keywords: ['control panel', 'web hosting']
-tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-13
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploying aaPanel through the Linode Marketplace"
+keywords: ['control panel', 'web hosting']
+tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/guides/deploying-aapanel-marketplace-app/','/guides/aapanel-marketplace-app/']
 external_resources:
 - '[aaPanel](https://www.aapanel.com/)'
@@ -21,13 +15,13 @@ external_resources:
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** aaPanel should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -38,7 +32,7 @@ external_resources:
 
 ### Access your aaPanel App
 
-1.  Log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
+1.  Log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 2.  Run the following command to obtain your login information for your aaPanel dashboard:
 
@@ -52,4 +46,4 @@ external_resources:
 
 Now that you’ve accessed your dashboard, checkout [the official aaPanel documentation](https://doc.aapanel.com/) to learn how to further configure your instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

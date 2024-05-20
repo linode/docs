@@ -1,27 +1,22 @@
 ---
 slug: apache-2-web-server-on-debian-6-squeeze
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Apache 2 Web Server on Debian 6 (Squeeze)'
 description: 'Instructions for getting started with the Apache web server on Debian 6 (Squeeze).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-23
+modified: 2013-10-04
 keywords: ["apache debian 6", "apache debian squeeze", "linux web server", "apache on debian", "apache squeeze"]
 tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/apache-2-web-server-on-debian-6-squeeze/','/web-servers/apache/installation/debian-6-squeeze/','/web-servers/apache/apache-2-web-server-on-debian-6-squeeze/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2011-02-23
-title: 'Apache 2 Web Server on Debian 6 (Squeeze)'
 relations:
     platform:
         key: how-to-install-apache2
         keywords:
             - distribution: Debian 6
+deprecated: true
 ---
-
-
 
 This tutorial explains how to install and configure the Apache web server on Debian 6 (Squeeze).
 
@@ -29,8 +24,8 @@ Note that if you're looking to install a full LAMP stack, you may want to consid
 
 ## Before You Begin
 
--   Make sure you've followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
--   As part of the Getting Started guide, make sure you [set the hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for your server.
+-   Make sure you've followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+-   As part of the Getting Started guide, make sure you [set the hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) for your server.
 
 Issue the following commands to make sure your hostname is set properly:
 
@@ -39,7 +34,7 @@ Issue the following commands to make sure your hostname is set properly:
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-All of the commands in this article should be executed either as **root** or as a [user with sudo access](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+All of the commands in this article should be executed either as **root** or as a [user with sudo access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 ## Install Apache 2
 
@@ -115,7 +110,7 @@ Follow these instructions:
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you would like to enable Perl support, add the following lines to the `VirtualHost` entry, right above the closing `</VirtualHost>` tag:
 
 {{< file "/etc/apache2/sites-available/example.net" apache >}}
@@ -143,7 +138,7 @@ AddHandler cgi-script .pl
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Some basic options are specified for both **example.net** and **example.org**, including the location for the website files: under `/srv/www/`. You can add (or remove) additional configuration options, such as the Perl support shown in Step 2, on a site-by-site basis.
 {{< /note >}}
 
@@ -193,8 +188,7 @@ An easy way to see which modules are installed is to run a list command on the d
 To enable an installed module, run the following command:
 
     a2enmod [module-name]
-
- {{< note >}}
+{{< note >}}
 In the `/etc/apache2/mods-available/` directory, files have `.load` and `.conf` extensions. Module names do not include the extensions.
 {{< /note >}}
 
@@ -228,7 +222,7 @@ We recommend that you *not* modify these files:
 
 In practice, the vast majority of your configuration options should go in site-specific virtual host configuration files. If you need to set a system-wide configuration option or aren't using virtual hosting, the best practice is to specify options in files created beneath the `conf.d/` directory.
 
-For more help with conflicting directives, see our [Apache Troubleshooting](/docs/troubleshooting/troubleshooting-common-apache-issues/#troubleshooting-conflicting-directives) article.
+For more help with conflicting directives, see our [Apache Troubleshooting](/docs/guides/troubleshooting-common-apache-issues/#troubleshooting-conflicting-directives) article.
 
 ## Multi-Processing Module
 

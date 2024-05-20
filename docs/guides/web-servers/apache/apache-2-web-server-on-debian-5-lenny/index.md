@@ -1,33 +1,28 @@
 ---
 slug: apache-2-web-server-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Apache 2 Web Server on Debian 5 (Lenny)'
 description: 'Instructions for getting started with the Apache web server on Debian 5 (Lenny).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-07-27
+modified: 2012-10-08
 keywords: ["apache debian 5", "apache web server", "apache debian lenny", "web server", "apache on debian", "apache lenny"]
 tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/apache-2-web-server-on-debian-5-lenny/','/web-servers/apache/installation/debian-5-lenny/','/web-servers/apache/apache-2-web-server-on-debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2009-07-27
-title: 'Apache 2 Web Server on Debian 5 (Lenny)'
 relations:
     platform:
         key: how-to-install-apache2
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
-
-
-This tutorial explains how to install and configure the Apache web server on Debian 5 (Lenny). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Debian 5](/docs/lamp-guides/debian-5-lenny).
+This tutorial explains how to install and configure the Apache web server on Debian 5 (Lenny). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Debian 5](/docs/guides/lamp-server-on-debian-5-lenny/).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -191,7 +186,7 @@ Apache will follow symbolic links to read configuration files, so you can create
 
 Best practices for most installations dictate that we don't recommend modifying the following default configuration files: `/etc/apache2/httpd.conf`, files in `/etc/apache2/mods-enabled/`, and in most cases `/etc/apache2/apache2.conf`. This is to avoid unnecessary confusion and unintended conflicts in the future.
 
-Generally, as specified in our [LAMP guide for Debian 5 (Lenny)](/docs/lamp-guides/debian-5-lenny) and elsewhere, files that configure virtual hosts should be located in the `/etc/apache2/sites-available/` directory (and symbolically linked to `sites-enabled/` with the `a2ensite` tool. This allows for a clear and specific per-site configuration.
+Generally, as specified in our [LAMP guide for Debian 5 (Lenny)](/docs/guides/lamp-server-on-debian-5-lenny/) and elsewhere, files that configure virtual hosts should be located in the `/etc/apache2/sites-available/` directory (and symbolically linked to `sites-enabled/` with the `a2ensite` tool. This allows for a clear and specific per-site configuration.
 
 In practice, the vast majority of configuration options will probably be located in site-specific virtual host configuration files. If you need to set a system-wide configuration option or aren't using virtual hosting, the best practice is to specify options in files created beneath the `conf.d/` directory.
 

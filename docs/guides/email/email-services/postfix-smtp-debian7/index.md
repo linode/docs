@@ -1,30 +1,26 @@
 ---
 slug: postfix-smtp-debian7
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Configure Postfix to Send Email Using External SMTP Servers"
 description: "Learn how to configure Postfix to send email using external SMTP servers like Mandrill, and SendGrid. ✓ Click here to learn more!"
+authors: ["Santiago Ti"]
+contributors: ["Santiago Ti"]
+published: 2014-05-30
+modified: 2019-01-24
 keywords: ["Postfix", "Debian", "SMTP", "Email", "Mail"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-contributor:
-    name: Santiago Ti
-modified: 2019-01-24
-modified_by:
-  name: Linode
-published: 2014-05-30
-title: "Configure Postfix to Send Email Using External SMTP Servers"
 aliases: ['/email/email-services/postfix-smtp-debian7/','/email/postfix/postfix-smtp-debian7/']
 ---
+
 {{< note >}}
 This guide was originally written for Debian 7. It has since been tested to work with Debian 9.
-{{</ note >}}
+{{< /note >}}
 
 You may want to configure Postfix to use an external SMTP provider like Mandrill, and SendGrid so you no longer have to build, maintain, and scale your own SMTP relay server. Another reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a spam list. This guide shows you how to configure Postfix to use an external SMTP provider and also shows specific examples for Mandrill, and SendGrid. However, you can apply the steps in this guide to configure Postfix to use any external SMTP provider.
 
 ![Configure Postfix to Send Mail Using an External SMTP Server](external_smtp_tg.png "Configure Postfix to Send Mail Using an External SMTP Server")
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## What is Postfix Used For?
 
@@ -45,10 +41,9 @@ At a high-level Postfix configuration involves the following steps:
 1. Set up Postfix with Mandrill, and SendGrid
 
 ## Postfix Configuration
-
 {{< note >}}
 If you’re using Gmail or Google Workspace, see our [Configure Postfix to Send Mail Using Gmail and Google Workspace on Debian or Ubuntu](/docs/guides/configure-postfix-to-send-mail-using-gmail-and-google-workspace-on-debian-or-ubuntu/) guide instead.
-{{</ note >}}
+{{< /note >}}
 
 ### Gathering Prerequisites
 
@@ -93,7 +88,7 @@ Usernames and passwords are stored in the `/etc/postfix/sasl_passwd` file. In th
 
 {{< note >}}
 The examples in this section provide the general steps to configure Postfix to use an external SMTP provider. If you want to use Mandrill or SendGrid as your SMTP provider, you can refer to the examples in the [Postfix Configuration with Mandrill, and SendGrid](/docs/guides/postfix-smtp-debian7/#postfix-configuration-with-mandrill-and-sendgrid) section of this guide.
-{{</ note >}}
+{{< /note >}}
 
 First, open or create the `/etc/postfix/sasl_passwd` file:
 
@@ -127,7 +122,7 @@ You are now ready to provide the configurations needed by Postfix to use the ext
 
 {{< note >}}
 Refer to the [Postfix Configuration with Mandrill, and SendGrid](/docs/guides/postfix-smtp-debian7/#postfix-configuration-with-mandrill-and-sendgrid) section of this guide for specific relay host configurations for Mandrill, and SendGrid.
-{{</ note >}}
+{{< /note >}}
 
 1. Using a text editor, open the `/etc/postfix/main.cf` file.
 
@@ -173,7 +168,7 @@ You can now test your Postfix Configurations by using your system's `mail` utili
 
         echo  "body of your email" | mail -s "This is a subject" -a "From:you@example.com" recipient@elsewhere.com
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 
 You can use Postfix’s own Sendmail implementation to test your Postfix configuration. Replace the example's values with your own. When you are done drafting your email type **ctrl d**.
 
@@ -181,7 +176,7 @@ You can use Postfix’s own Sendmail implementation to test your Postfix configu
     From: you@example.com
     Subject: Test mail
     This is a test email
-{{</ note >}}
+{{< /note >}}
 
 ## Postfix Configuration with Mandrill, and SendGrid
 

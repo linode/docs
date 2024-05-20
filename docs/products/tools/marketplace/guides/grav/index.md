@@ -1,19 +1,10 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy Grav through the Linode Marketplace"
 description: "Learn how to deploy Grav, a modern open source flat-file CMS, on a Linode Compute Instance."
-keywords: ['cms','blog','website']
-tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-22
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploying Grav through the Linode Marketplace"
-contributor:
-  name: Holden Morris
-  link: https://github.com/hmorris3293
+keywords: ['cms','blog','website']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Grav](https://getgrav.org/)'
 aliases: ['/guides/grav-marketplace-app/']
@@ -23,13 +14,13 @@ aliases: ['/guides/grav-marketplace-app/']
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Grav should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -40,15 +31,17 @@ aliases: ['/guides/grav-marketplace-app/']
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
+
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
 ### Accessing the Grav Admin Panel
 
-1.  Open your web browser and navigate to `http://[domain]/admin`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though your connection will not be encrypted. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1.  Open your web browser and navigate to `http://[domain]/admin`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though your connection will not be encrypted. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
     ![Screenshot of the URL bar with the Grav URL](grav-url.png)
 
@@ -62,4 +55,4 @@ aliases: ['/guides/grav-marketplace-app/']
 
 Now that you’ve accessed your dashboard, check out [the official Grav documentation](https://learn.getgrav.org/) to learn how to further utilize your Grav instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

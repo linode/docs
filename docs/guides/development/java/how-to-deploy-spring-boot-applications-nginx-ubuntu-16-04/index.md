@@ -1,19 +1,15 @@
 ---
 slug: how-to-deploy-spring-boot-applications-nginx-ubuntu-16-04
-author:
-  name: Sam Foo
-  email: docs@linode.com
+title: Deploy Spring Boot Applications with an NGINX Reverse Proxy
+title_meta: How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04
 description: 'This guide shows you how to quickly create a Spring Boot application embedded on a Tomcat server using the command line interface on your Linode.'
 og_description: "This guide shows you how to quickly create a Spring Boot application embedded on a Tomcat server using the command line interface on your Linode."
+authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
+published: 2018-03-07
 keywords: ["spring", "tomcat", "maven", "Java", "gradle"]
 tags: ["web applications","java","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-03-07
-modified_by:
-  name: Linode
-published: 2018-03-07
-title: How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04
-h1_title: Deploy Spring Boot Applications with an NGINX Reverse Proxy
 external_resources:
 - '[Spring Boot](https://projects.spring.io/spring-boot/)'
 - '[SDKMAN!](http://sdkman.io/)'
@@ -63,7 +59,7 @@ You will need a Linode with both Java 8 and NGINX. If these are already installe
 
 ### Install NGINX
 
-{{< content "install-nginx-ubuntu-ppa" >}}
+{{% content "install-nginx-ubuntu-ppa" %}}
 
 ## Install Spring Boot CLI
 The Spring Boot CLI makes creating a scaffold for a project much easier. [SDKMAN!](http://sdkman.io/) is a tool that simplifies installation of the Spring CLI and build tools such as Gradle or Maven. Using the Spring Boot CLI, a new project can be created directly from the command line.
@@ -114,7 +110,7 @@ There are many build tools available. The Spring Boot CLI uses Maven by default 
 
         spring init --build=gradle --dependencies=web --name=hello hello-world
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To see a full list of possible parameters for the Spring Boot CLI, run:
 
     spring init --list

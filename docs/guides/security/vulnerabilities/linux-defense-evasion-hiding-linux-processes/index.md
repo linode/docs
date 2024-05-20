@@ -1,25 +1,18 @@
 ---
 slug: linux-defense-evasion-hiding-linux-processes
-author:
-  name: HackerSploit
-  email: hackersploit@gmail.com
+title: "Linux Defense Evasion - Hiding Linux Processes"
 description: 'This guide covers the process of evading detection on Linux systems by hiding processes.'
+authors: ["HackerSploit"]
+contributors: ["HackerSploit"]
+published: 2021-11-03
 keywords: ['security']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-03
-modified_by:
-  name: Linode
-title: "Linux Defense Evasion - Hiding Linux Processes"
-h1_title: "Linux Defense Evasion - Hiding Linux Processes"
-enable_h1: true
-contributor:
-  name: HackerSploit
 ---
 
-{{< content "hackersploit-red-team-series-note-shortguide" >}}
+{{% content "hackersploit-red-team-series-note-shortguide" %}}
 
-{{< content "hackersploit-caution-shortguide" >}}
+{{% content "hackersploit-caution-shortguide" %}}
 
 ## Before You Begin
 
@@ -85,9 +78,9 @@ GitHub Repository: https://github.com/gianlucaborello/libprocesshider
 
         vim processhider.c
 
-1. You will then need to modify the “process_to_filter” value to the name of the process you would like to hide as shown in the screenshot below.
+1. You will then need to modify the `process_to_filter` value to the name of the process you would like to hide as shown in the screenshot below.
 
-    ![processhider.c file contents with process_to_filter variable shown](processhider-c-file-contents-with-process-to-filter-variable-shown.png "processhider.c file contents with process_to_filter variable shown")
+    ![processhider.c file contents](processhider-c-file-contents-with-process-to-filter-variable-shown.png)
 
     In this case, I will be hiding any occurrences of the “shell.py” process from the process tree. After making the change, you can save the file.
 

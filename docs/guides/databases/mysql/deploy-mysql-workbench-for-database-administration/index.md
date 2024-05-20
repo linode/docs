@@ -1,26 +1,19 @@
 ---
 slug: deploy-mysql-workbench-for-database-administration
-author:
-    name: Linode Community
-    email: docs@linode.com
+title: 'Install MySQL Workbench for Database Administration'
 description: 'This guide will show you how to deploy MySQL Workbench, which is a graphical tool for working with MySQL databases in a client/server model.'
-og_description: 'This guide will show you how to deploy MySQL Workbench, which is a graphical tool for working with MySQL databases in a client/server model.'
-keywords: ["MySQL", "MySQL Workbench", "workbench", "administer database"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Scott Sumner"]
+contributors: ["Scott Sumner"]
 published: 2015-12-04
 modified: 2018-12-10
-modified_by:
-    name: Linode
-title: 'Install MySQL Workbench for Database Administration'
-contributor:
-    name: Scott Somner
+keywords: ["MySQL", "MySQL Workbench", "workbench", "administer database"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[MySQL Workbench Documentation](https://dev.mysql.com/doc/workbench/en/)'
   - '[Resetting MySQL Root Password](https://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html)'
 tags: ["database","mysql"]
 aliases: ['/databases/mysql/deploy-mysql-workbench-for-database-administration/']
 ---
-
 
 ![Deploy MySQL Workbench for Database Administration](deploy-mysql-workbench-for-database-administration.png "Deploy MySQL Workbench for Database Administration")
 
@@ -82,13 +75,13 @@ The first step after running MySQL Workbench is to add your Linode as a database
 
     *   Default Schema - This is the default database to connect to.  It's OK to leave this blank if you haven't created a database yet or don't want one to load by default.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 Using MySQL Workbench (currently release 8.0.13) with multi-factor authentication for SSH connections is not supported at this time.
 {{< /note >}}
 
 2.  Once you've configured everything, click **Test Connection**.  If you didn't save your passwords then Workbench will prompt for them.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Pay attention to the **Service** area of each dialog.  Use the appropriate password (SSH or MySQL) or the connection will fail.
 {{< /note >}}
 
@@ -148,7 +141,7 @@ MySQL Workbench is deployed in safe mode by default. This will not allow certain
 
 3.  Uncheck the line beginning with **"Safe Updates".**
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In some instances, this may instead be found under **SQL Editor**.
 {{< /note >}}
 
@@ -217,11 +210,11 @@ MySQL stores its information in a table, which resembles a spreadsheet.
 
 8. Click between the parentheses and enter 45. Datatype **VARCHAR** is a string and the number in parentheses is the maximum length. Repeat this process to create the following fields:
 
-    *   firstName, a VARCHAR(45)
+    *   `firstName`, a VARCHAR(45)
 
-    *   phone, a VARCHAR(16)
+    *   `phone`, a VARCHAR(16)
 
-    *   email, a VARCHAR(45)
+    *   `email`, a VARCHAR(45)
 
     Once your preferred fields are set up, click the **Apply** button.  You'll get another **Apply SQL Script To Database** window.  Click **Apply** again and look for the **SQL Successful** message.
 

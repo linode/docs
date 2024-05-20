@@ -1,33 +1,30 @@
 ---
 slug: custom-compiled-kernel-with-pvgrub-centos-7
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Custom Compiled Kernel with PV-GRUB on CentOS 7'
 description: 'Instructions for configuring your Linode to run a custom compiled kernel with PV-GRUB on CentOS 7'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-07-17
+modified: 2020-12-01
 keywords: ["compile kernel", "kernel compiling", "pv-grub", "pvgrub", "custom linux kernel", "custom linode", "centos"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-12-01
-modified_by:
-  name: Linode
-published: 2010-07-17
-title: 'Custom Compiled Kernel with PV-GRUB on CentOS 7'
 relations:
     platform:
         key: custom-compiled-kernel-pvgrub
         keywords:
             - distribution: CentOS 7
 aliases: ['/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-centos-7/']
+deprecated: true
 ---
 
-{{< content "all-linodes-kvm-shortguide" >}}
+{{% content "all-linodes-kvm-shortguide" %}}
 
 Running a custom-compiled Linux kernel is useful if you need to enable or disable certain kernel features that are unavailable in Linode-supplied or distribution-supplied kernels. For example, some users desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
 
-If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub).
+If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/guides/run-a-distributionsupplied-kernel-with-pvgrub/).
 
-Prior to these instructions, follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. Then, make sure you are logged into your Linode as the `root` user.
+Prior to these instructions, follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. Then, make sure you are logged into your Linode as the `root` user.
 
 ## Prepare the System
 

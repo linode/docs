@@ -1,19 +1,15 @@
 ---
 slug: email-with-postfix-dovecot-and-mysql
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Learn how to set up an email server with Postfix, Dovecot and MySQL/MariaDB. Your step by step guide towards setting up a secure Postfix email server.'
+title: "Configure an Email Server with Postfix, Dovecot, and MySQL on Debian and Ubuntu"
+title_meta: "Set up an Email Server with Postfix, Dovecot, and MySQL"
+description: "Learn how to set up an email server with Postfix, Dovecot and MySQL/MariaDB. Your step by step guide towards setting up a secure Postfix email server."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-05-13
+modified: 2022-09-29
 keywords: ["email", "mail", "server", "postfix", "dovecot", "mysql", "mariadb", "debian", "ubuntu", "dovecot 2"]
 tags: ["debian","email","ubuntu","mysql","postfix", "mariadb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-04-16
-modified_by:
-  name: Linode
-published: 2013-05-13
-title: "Configure Email with Postfix and Dovecot on Debian and Ubuntu"
-h1_title: "Configuring an Email Server with Postfix, Dovecot, and MySQL on Debian and Ubuntu"
-enable_h1: true
 external_resources:
  - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/guides/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
@@ -24,7 +20,7 @@ relations:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: Debian and Ubuntu
-aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql/']
+aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql/','/email/postfix/dovecot-mysql-ubuntu-10.04-lucid/']
 ---
 
 In this guide, you'll learn how to set up a secure email server with Postfix, Dovecot, and MySQL (or its near drop-in replacement MariaDB). It covers how to set up user email accounts in MySQL and configure Postfix/Dovecot to send and receive email.
@@ -33,7 +29,7 @@ In this guide, you'll learn how to set up a secure email server with Postfix, Do
 
 This tutorial assumes that you are familiar with the following:
 
-1. You are familiar with GNU/Command line.
+1. You are familiar with the Linux command line.
 2. You can edit files using the Nano text editor. Refer to [Nano Commands](/docs/guides/use-nano-text-editor-commands/) guide if you aren’t familiar with it.
 3. You understand the basics of MySQL data.
 4. You have a basic understanding of email configurations. If not, you may wish to review the concepts in the [Running a Mail Server](/docs/guides/running-a-mail-server/) guide.
@@ -42,7 +38,7 @@ This tutorial assumes that you are familiar with the following:
 
 For a different Linux distribution or different mail server, review our [email tutorials](/docs/email/).
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## How to Set Up an Email Server with Postfix, Dovecot and MySQL
 
@@ -60,9 +56,9 @@ Next, we will go through each step and set up our email server with Postfix, Dov
 
 ## Setting Up Your Linode
 
-1.  Set up the Linode as specified in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+1.  Set up the Linode as specified in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
-1.  Verify that the iptables [firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
+1.  Verify that the iptables [firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
 
 ## Configure DNS for Your Email Server
 
@@ -96,7 +92,7 @@ You will need to install an SSL certificate on your mail server prior to complet
 
 While you can generate an SSL certificate through any certificate authority, we recommend using Certbot to quickly and easily generate a free certificate. Follow these [Certbot instructions](https://certbot.eff.org/instructions), selecting your Linux distribution and web server software (or "None" if this server is only functioning as a mail server). Once installed, run Certbot with the `certonly` option and type in the FQDN name of your mail server (such as *mail.example.com*):
 
-        sudo certbot certonly --standalone
+    sudo certbot certonly --standalone
 
 You can also reference the [Install an SSL Certificate with Certbot](/docs/guides/secure-http-traffic-certbot/) guide. Make a note of the file paths for the certificate and private key on the Linode. You will need the path to each during the [Dovecot](#dovecot) configuration steps.
 
@@ -111,7 +107,7 @@ You can also reference the [Install an SSL Certificate with Certbot](/docs/guide
         sudo apt-get update && sudo apt-get upgrade
         sudo apt-get install postfix postfix-mysql dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd dovecot-mysql mysql-server
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This will install the **mysql-server** package, which isn't available by default on some newer versions of Debian. If you receive a message stating that the package is not available, install **mariadb-server** instead. MariaDB is a drop-in MySQL replacement.
 {{< /note >}}
 
@@ -133,7 +129,7 @@ The following software versions are compatible with the instructions in this gui
 
 While other versions are possibly fully compatible as well, they may require different commands or additional configuration.
 
-## Setting Up MySQL to Send Email with Postfix and Dovecot
+## Setting Up MySQL to Send Email with Postfix and Dovecot {#set-up-mysql}
 
 Data for the mail server's users (email addresses), domains, and aliases are stored in a MySQL (or MariaDB) database. Both Dovecot and Postfix interact with this data.
 
@@ -141,16 +137,9 @@ Data for the mail server's users (email addresses), domains, and aliases are sto
 
 Follow the steps below to create the database and add tables for virtual users, domains and aliases:
 
-1.  Use the [*mysql_secure_installation*](https://mariadb.com/kb/en/library/mysql_secure_installation/) tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
+1.  Use the [*mysql_secure_installation*](https://mariadb.com/kb/en/library/mysql_secure_installation/) tool to configure additional security options. You will be given the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
         sudo mysql_secure_installation
-
-    Answer **Y** at the following prompts:
-
-    -   Remove anonymous users?
-    -   Disallow root login remotely?
-    -   Remove test database and access to it?
-    -   Reload privilege tables now?
 
 1.  Log in to MySQL as a root user:
 
@@ -212,7 +201,7 @@ Follow the steps below to create the database and add tables for virtual users, 
 
         INSERT INTO mailserver.virtual_domains (name) VALUES ('example.com');
 
-1. Verify the alias was added correctly by running a SELECT query on the `virtual_domains` table. Make a note of the corresponding `id` next to the domain as this will be used when adding emails and aliases.
+1.  Verify the alias was added correctly by running a SELECT query on the `virtual_domains` table. Make a note of the corresponding `id` next to the domain as this will be used when adding emails and aliases.
 
         SELECT * FROM mailserver.virtual_domains;
 
@@ -222,21 +211,21 @@ Follow the steps below to create the database and add tables for virtual users, 
 
 1. If you are still logged in to MySQL, return to your main Linux shell by typing `exit` and hitting enter.
 
-1. Generate a hash using the SHA512-CRYPT encryption scheme by running the command below, replacing `password` with the password you'd like to use for the email user.
+1.  Generate a hash using the SHA512-CRYPT encryption scheme by using the [doveadm-pw](https://wiki.dovecot.org/Tools/Doveadm/Pw) utility. Run the command below and enter the password you'd like to use for the email user when prompted.
 
-        sudo doveadm pw -s SHA512-CRYPT -p "password" -r 5000
+        sudo doveadm pw -s SHA512-CRYPT
 
     The output will look similar to `{SHA512-CRYPT}$6$hvEwQ...`. Copy this output, ignoring the first 14 characters of *{SHA512-CRYPT}*. Since the SHA512-CRYPT scheme was used, the password should start with *$6$*.
 
-1. Log back into MySQL as the root user:
+1.  Log back into MySQL as the root user:
 
         sudo mysql -u root -p
 
-1. Add the email address and password hash to the `virtual_users` table. The `domain_id` value (currently set to `'1'`) references the `virtual_domain` table's `id` value. If you added more than one domain, replace this value to correspond with the desired domain. Replace `user@example.com` with the email address that you wish to configure on the mail server. Replace `hash` with password hash generated in a previous step.
+1.  Add the email address and password hash to the `virtual_users` table. The `domain_id` value (currently set to `'1'`) references the `virtual_domain` table's `id` value. If you added more than one domain, replace this value to correspond with the desired domain. Replace `user@example.com` with the email address that you wish to configure on the mail server. Replace `hash` with password hash generated in a previous step.
 
         INSERT INTO mailserver.virtual_users (domain_id, password , email) VALUES ('1', 'hash', 'user@example.com');
 
-1. Verify the email was added correctly by running a SELECT query on the `virtual_users` table.
+1.  Verify the email was added correctly by running a SELECT query on the `virtual_users` table.
 
         SELECT * FROM mailserver.virtual_users;
 
@@ -244,8 +233,8 @@ Follow the steps below to create the database and add tables for virtual users, 
 
 Alternatively, the password hash can be generated directly within the MySQL INSERT statement above by replacing `'hash'` (deleting the single quote characters as well) with one of the following:
 
-- Using the [ENCRYPT()](https://dev.mysql.com/doc/refman/5.7/en/encryption-functions.html#function_encrypt) function: `ENCRYPT('password', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16)))`, replacing `password` with the plain text password desired for the email user. This function has been removed from MySQL 5.8 and above.
-- Using the [SHA2()](https://dev.mysql.com/doc/refman/8.0/en/encryption-functions.html#function_sha2) function: `TO_BASE64(UNHEX(SHA2('password', 512)))`, replacing `password` with the plain text password desired for the email user. This function generates the hash in a slightly different scheme. When configuring the Dovecot MYSQL settings (`/etc/dovecot/dovecot-sql.conf.ext`) in this guide, set `default_pass_scheme` to `SHA512` instead of `SHA512-CRYPT`.
+- **MySQL 5.7 and prior:** Use the [ENCRYPT()](https://dev.mysql.com/doc/refman/5.7/en/encryption-functions.html#function_encrypt) function: `ENCRYPT('password', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16)))`, replacing `password` with the plain text password desired for the email user. This function has been removed from MySQL 5.8 and above.
+- **MySQL 5.8 and above:** The [SHA2()](https://dev.mysql.com/doc/refman/8.0/en/encryption-functions.html#function_sha2) function is sometimes provided as an alternative to the deprecated [ENCRYPT()](https://dev.mysql.com/doc/refman/5.7/en/encryption-functions.html#function_encrypt) function. *This function does not use a secure method of generating a password and, as such, it is not recommended.*
 
 ### Adding an Alias within MySQL
 
@@ -253,17 +242,17 @@ An email alias forwards all emails it receives to another email address. While n
 
 1. Verify that you are still logged into the MySQL shell. If not, run `sudo mysql -u root -p` to access MySQL.
 
-1. Add the alias to the `virtual_aliases` table. The `domain_id` value (currently set to `'1'`) references the `virtual_domain` table's `id` value. If you added more than one domain, replace this value to correspond with the desired domain. Replace `alias@example.com` with the desired alias. Replace `user@example.com` with the email address that you wish to forward email to.
+1.  Add the alias to the `virtual_aliases` table. The `domain_id` value (currently set to `'1'`) references the `virtual_domain` table's `id` value. If you added more than one domain, replace this value to correspond with the desired domain. Replace `alias@example.com` with the desired alias. Replace `user@example.com` with the email address that you wish to forward email to.
 
         INSERT INTO mailserver.virtual_aliases (domain_id, source, destination) VALUES ('1', 'alias@example.com', 'user@example.com');
 
-1. Verify the alias was added correctly by running a SELECT query on the `virtual_aliases` table.
+1.  Verify the alias was added correctly by running a SELECT query on the `virtual_aliases` table.
 
         SELECT * FROM mailserver.virtual_aliases;
 
 1. If needed, repeat this process to add another email alias.
 
-## Postfix MTA Email Server
+## Postfix MTA Email Server {#postfix}
 
 Postfix is a *Mail Transfer Agent* (MTA) that relays mail between the Linode and the internet. It is highly configurable, allowing for great flexibility. This guide maintains many of Posfix's default configuration values.
 
@@ -469,7 +458,7 @@ We can test the Postfix configuration by using the  `postmap` command, which can
 
 Postfix's master program starts and monitors all of Postfix's processes. The configuration file `master.cf` lists all programs and information on how they should be started.
 
-1. Make a copy of the `/etc/postfix/master.cf` file:
+1.  Make a copy of the `/etc/postfix/master.cf` file:
 
         sudo cp /etc/postfix/master.cf /etc/postfix/master.cf.orig
 
@@ -513,11 +502,11 @@ smtps     inet  n       -       -       -       -       smtpd
 
 {{< /file >}}
 
-1. Change the permissions of the `/etc/postfix` directory to restrict permissions to allow only its owner and the corresponding group:
+1.  Change the permissions of the `/etc/postfix` directory to restrict permissions to allow only its owner and the corresponding group:
 
         sudo chmod -R o-rwx /etc/postfix
 
-1. Restart Postfix:
+1.  Restart Postfix:
 
         sudo systemctl restart postfix
 
@@ -569,7 +558,7 @@ mail_privileged_group = mail
 
     This directory will serve as storage for mail sent to your domain.
 
-1. Create the `vmail` group with ID `5000`. Add a new user `vmail` to the `vmail` group.  This system user will read mail from the server.
+1.  Create the `vmail` group with ID `5000`. Add a new user `vmail` to the `vmail` group.  This system user will read mail from the server.
 
         sudo groupadd -g 5000 vmail
         sudo useradd -g vmail -u 5000 vmail -d /var/mail
@@ -593,7 +582,7 @@ auth_mechanisms = plain login
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For reference, [view a complete `10-auth.conf` file](/docs/assets/1238-dovecot_10-auth.conf.txt).
 {{< /note >}}
 
@@ -640,21 +629,21 @@ password_query = SELECT email as user, password FROM virtual_users WHERE email='
     1.  Add the alias as the `source` and `destination` email address to the `virtual_aliases` table.
     1.  Change the `/etc/dovecot/dovecot-sql.conf.ext` file's `password_query` value to `password_query = SELECT email as user, password FROM virtual_users WHERE email=(SELECT destination FROM virtual_aliases WHERE source = '%u');`
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For reference, [view](/docs/assets/1284-dovecot__dovecot-sql.conf.ext.txt) a complete `dovecot-sql.conf.ext`file.
 {{< /note >}}
 
-1. Change the owner and group of the `/etc/dovecot/` directory to `vmail` and `dovecot`:
+1.  Change the owner and group of the `/etc/dovecot/` directory to `vmail` and `dovecot`:
 
         sudo chown -R vmail:dovecot /etc/dovecot
 
-1. Change the permissions on the `/etc/dovecot/` directory to be recursively read, write, and execute for the owner of the directory:
+1.  Change the permissions on the `/etc/dovecot/` directory to be recursively read, write, and execute for the owner of the directory:
 
         sudo chmod -R o-rwx /etc/dovecot
 
 1. Edit the service settings file `/etc/dovecot/conf.d/10-master.conf`:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When editing the file, be careful not to remove any opening or closing curly braces. If there's a syntax error, Dovecot will crash silently. You can check `/var/log/upstart/dovecot.log` to debug the error.
 
 Here is [an example of a complete `10-master.conf`](/docs/assets/1240-dovecot_10-master.conf.txt) file.
@@ -753,23 +742,23 @@ ssl_key = </etc/letsencrypt/live/example.com/privkey.pem
 
 {{< /file >}}
 
-1. Restart Dovecot to enable all configurations:
+1.  Restart Dovecot to enable all configurations:
 
         sudo systemctl restart dovecot
 
 ## Testing the Email Server with Mailutils
 
-1. To send and receive test emails to your Linode mail server, install the Mailutils package:
+1.  To send and receive test emails to your Linode mail server, install the Mailutils package:
 
         sudo apt-get install mailutils
 
-1. Send a test email to an email address outside of your mail server, like a Gmail account. Replace `email1@example.com` with an email address from your mail server:
+1.  Send a test email to an email address outside of your mail server, like a Gmail account. Replace `email1@example.com` with an email address from your mail server:
 
         echo "Email body text" | sudo mail -s "Email subject line" recipient@gmail.com -aFrom:email1@example.com
 
 1. Log in to the test email account and verify that you have received the email from the specified mail server email address.
 
-1. Send a test email to your Linode mail server from an outside email address. Log back in to your Linode and check that the email was received; substitute in the username and domain you sent the mail to:
+1.  Send a test email to your Linode mail server from an outside email address. Log back in to your Linode and check that the email was received; substitute in the username and domain you sent the mail to:
 
         sudo mail -f /var/mail/vhosts/example.com/email1
 
@@ -810,11 +799,11 @@ The Thunderbird email client will sometimes have trouble automatically detecting
 
 [Apache SpamAssassin](https://spamassassin.apache.org/) is a free and open source platform that allows us to find and filter out spam email. This software is commonly used in tandem with Postfix and Dovecot.
 
-1. Install SpamAssassin:
+1.  Install SpamAssassin:
 
         sudo apt-get install spamassassin spamc
 
-1. Next, create a user for SpamAssassin daemon(spamd):
+1.  Next, create a user for SpamAssassin daemon(spamd):
 
         sudo adduser spamd --disabled-login
 
@@ -872,13 +861,13 @@ spamassassin unix -     n       n       -       -       pipe
 /usr/sbin/sendmail -oi -f ${sender} ${recipient}
 {{< /file >}}
 
-1. Start Spamassassin and enable the service to start on boot:
+1.  Start Spamassassin and enable the service to start on boot:
 
         sudo systemctl start spamassassin
         sudo systemctl enable spamassassin
 
     If not using systemd (as is the case with Debian 7 and earlier), edit the `/etc/default/spamassassin` configuration file instead. Set the `ENABLED` parameter to `1`.
 
-1. Restart the Postfix email server to get your new anti-spam settings in place:
+1.  Restart the Postfix email server to get your new anti-spam settings in place:
 
         sudo systemctl restart postfix

@@ -1,17 +1,14 @@
 ---
 slug: rulebased-access-control-for-apache
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Rule-based Access Control for Apache'
 description: 'Deploying and configuring granular access control with the Apache web server.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-07
+modified: 2017-08-30
 keywords: ["apache", "access control", "security", "http", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/configuration/rule-based-access-control/','/websites/apache-tips-and-tricks/rulebased-access-control-for-apache/','/web-servers/apache-tips-and-tricks/rulebased-access-control-for-apache/']
-modified: 2017-08-30
-modified_by:
-  name: Linode
-published: 2009-12-07
-title: 'Rule-based Access Control for Apache'
 external_resources:
  - '[LAMP Stack Guides](/docs/lamp-guides/)'
  - '[Apache Configuration and Administration](/docs/web-servers/apache/)'
@@ -23,7 +20,6 @@ external_resources:
  - '[Apache Access Control](http://httpd.apache.org/docs/2.0/mod/mod_access.html#allow)'
 tags: ["web server","apache"]
 ---
-
 
 ![Rule-based Access Control for Apache](RBAC_Apache.jpg)
 Apache provides a number of tools that allow administrators to control access to specific resources provided by servers. You may already be familiar with [authentication based access controls](/docs/guides/apache-configuration-structure/), which requires that visitors authenticate to the server before gaining access to resources.

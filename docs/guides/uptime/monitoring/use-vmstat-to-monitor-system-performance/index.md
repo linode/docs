@@ -1,26 +1,19 @@
 ---
 slug: use-vmstat-to-monitor-system-performance
-author:
-  name: Steven J. Vaughan-Nichols
-  email: sjvn@vna1.com
+title: Use vmstat to Monitor System Performance
 description: 'VMstat is a built-in Linux system monitoring tool. This guide shows how to use it to monitor the virtual memory usage of your system from the command line.'
 og_description: 'Use the vmstat tool to monitor your system''s virtual memory usage.'
+authors: ["Steven J. Vaughan-Nichols"]
+contributors: ["Steven J. Vaughan-Nichols"]
+published: 2010-10-13
+modified: 2021-02-19
 keywords: ["virtual memory", "memory", "linux", "ram", "usage", "troubleshooting."]
 tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/monitoring/use-vmstat-to-monitor-system-performance/','/linux-tools/common-commands/vmstat/']
-modified: 2021-02-19
-modified_by:
-  name: Linode
-published: 2010-10-13
-title: Use vmstat to Monitor System Performance
-h1_title: Use vmstat to Monitor System Performance
 external_resources:
  - '[Linux Ate My Ram](http://www.linuxatemyram.com/)'
  - '[Memory Usage on Linux](http://chrisjohnston.org/2009/why-on-linux-am-i-seeing-so-much-ram-usage)'
-contributor:
-  name: Steven J. Vaughan-Nichols
-  link: http://www.twitter.com/sjvn
 ---
 
 ![Use vmstat to Monitor System Performance](use-vmstat-to-monitor-system-performance.jpg "Use vmstat to Monitor System Performance")
@@ -193,7 +186,7 @@ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
 
 ## How to Interpret vmstat Output
 
-`vmstat` reports describe the current state of a Linux system. Information regarding the running state of a system is useful when diagnosing performance related issues. Often [Linode Support](/docs/platform/support) will request `vmstat` reports in order to more conclusively diagnose some issues; however, with a little background in what all of the data represents, you can interpret this data yourself.
+`vmstat` reports describe the current state of a Linux system. Information regarding the running state of a system is useful when diagnosing performance related issues. Often [Linode Support](/docs/products/platform/get-started/guides/support/) will request `vmstat` reports in order to more conclusively diagnose some issues; however, with a little background in what all of the data represents, you can interpret this data yourself.
 
 The output of `vmstat` is displayed in a number of columns. The following sections provide brief overviews of the data reported in each column.
 
@@ -207,7 +200,7 @@ These values are often `0`.
 
 ### Memory
 
-The information displayed in the `memory` section provides the same data about [memory usage](/docs/tools-reference/linux-system-administration-basics/#check-current-memory-usage) as the command `free -m`.
+The information displayed in the `memory` section provides the same data about [memory usage](/docs/guides/linux-system-administration-basics/#check-current-memory-usage) as the command `free -m`.
 
 The `swapd` or "swapped" column reports how much memory has been swapped out to a swap file or disk. The `free` column reports the amount of unallocated memory. The `buff` or "buffers" column reports the amount of allocated memory in use. The `cache` column reports the amount of allocated memory that could be swapped to disk or unallocated if the resources are needed for another task.
 

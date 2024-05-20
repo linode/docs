@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Upload and Manage Files (Objects)"
 description: ""
 aliases: ['/products/storage/object-storage/guides/upload-objects/','/products/storage/object-storage/guides/delete-objects/','/products/storage/object-storage/guides/view-objects/']
@@ -25,7 +22,7 @@ The primary function of Object Storage is to allow you to host files, also calle
 
 Follow these steps to upload objects to a bucket using the Cloud Manager:
 
-{{< content "object-storage-character-warning-shortguide" >}}
+{{% content "object-storage-character-warning-shortguide" %}}
 
 1.  Navigate to the **Bucket** page in the Cloud Manager (see [View Files](#view-files-stored-within-a-bucket)).
 
@@ -42,8 +39,8 @@ Follow these steps to upload objects to a bucket using the Cloud Manager:
     ![](object-upload-success.png)
 
     {{< note >}}
-Individual object uploads are limited to a size of 5GB each, though larger object uploads can be facilitated with multipart uploads. [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/) and [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck/) do this for you automatically if a file exceeds this limit as part of the uploading process.
-{{< /note >}}
+    Individual object uploads are limited to a size of 5GB each, though larger object uploads can be facilitated with multipart uploads. [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/) and [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck/) do this for you automatically if a file exceeds this limit as part of the uploading process.
+    {{< /note >}}
 
 ## Download a File
 

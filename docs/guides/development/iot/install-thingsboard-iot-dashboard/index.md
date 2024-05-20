@@ -1,20 +1,14 @@
 ---
 slug: install-thingsboard-iot-dashboard
-author:
-  name: Jared Kobos
-  email: docs@linode.com
+title: "Viewing IoT Data with ThingsBoard"
+title_meta: "How to View IoT Data with ThingsBoard"
 description: "This guide shows how to install the ThingsBoard open source dashboard for Internet of Things devices using a Raspberry Pi."
-og_description: "This guide shows how to install the ThingsBoard open source dashboard for Internet of Things devices using a Raspberry Pi."
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
+published: 2018-01-30
 keywords: ["iot", "raspberry pi", "internet of things", "dashboard"]
 tags: ["postgresql", "nginx", "python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-01-30
-modified: 2018-01-30
-modified_by:
-  name: Linode
-title: "How to View IoT Data with ThingsBoard"
-h1_title: "Viewing IoT Data with ThingsBoard"
-enable_h1: true
 external_resources:
   - '[Getting Started – ThingsBoard](https://thingsboard.io/docs/getting-started-guides/helloworld)'
   - '[ThingsBoard Github Repo](https://github.com/thingsboard/thingsboard)'
@@ -38,7 +32,7 @@ This guide will use a Raspberry Pi 3 with a [Sense HAT](https://www.raspberrypi.
 
 ThingsBoard runs on Java 8, and the Oracle JDK is recommended.
 
-{{< content "install-java-jdk" >}}
+{{% content "install-java-jdk" %}}
 
 ### Set Up PostgreSQL
 
@@ -165,7 +159,6 @@ server {
 3.  After the device is added, click on its icon in the **Devices** menu. Click on **COPY ACCESS TOKEN** to copy the API key for this device (used below).
 
 ## Configure Raspberry Pi
-
 {{< note >}}
 The following steps assume that you have terminal access to a Raspberry Pi, and that Sense HAT and its libraries are already configured. For more information on getting started with Sense HAT, see the Raspberry Pi [official documentation](https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat). If you would prefer to use `curl` to send mock data to ThingsBoard, you can skip this section.
 {{< /note >}}
@@ -263,7 +256,6 @@ WantedBy=multi-user.target
         sudo systemctl status thingsdata.service
 
 ## Send Data with cURL
-
 {{< note >}}
 Skip this section if you are using a Raspberry Pi.
 {{< /note >}}

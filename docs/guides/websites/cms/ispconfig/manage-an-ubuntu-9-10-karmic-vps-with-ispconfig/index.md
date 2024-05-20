@@ -1,26 +1,21 @@
 ---
 slug: manage-an-ubuntu-9-10-karmic-vps-with-ispconfig
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Manage an Ubuntu 9.10 (Karmic) Linode with ISPConfig'
 description: 'Installing and configuring the ISPConfig control panel to maintain your Ubuntu 9.10 (Karmic) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-19
+modified: 2011-04-29
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/manage-an-ubuntu-9-10-karmic-vps-with-ispconfig/','/web-applications/control-panels/ispconfig/ubuntu-9-10-karmic/','/websites/cms/ispconfig/manage-an-ubuntu-9-10-karmic-vps-with-ispconfig/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-04-19
-title: 'Manage an Ubuntu 9.10 (Karmic) Linode with ISPConfig'
+deprecated: true
 ---
-
-
 
 ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites.
 
-Before beginning to follow this guide we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/).If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before beginning to follow this guide we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/).If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 This guide assumes you are installing this on a clean system. If you feel that you will not need certain features that are mentioned in this document, please feel free to exclude them from your setup.
 
@@ -55,17 +50,17 @@ When you have saved this file, issue the following commands to refresh your syst
 
 ## Install Postfix, Courier, MySQL, and Dependencies
 
-In order to use the email capabilities in ISPConfig, you will need to install the email applications it depends on in order to function. More information on Postfix and Courier can be found in [our documentation](/docs/email/postfix/courier-mysql-ubuntu-9-10-karmic), and you are encouraged to read it to gain a better understanding of this software. MySQL is a relational database management system (RDBMS) that is commonly used for dynamic web pages and email. If you have already installed this, you will not need to install is as part of the ISPConfig installation process. You are encouraged to read the [MySQL documentation](/docs/databases/mysql/). You will need to read the documentation for detailed installation instructions.
+In order to use the email capabilities in ISPConfig, you will need to install the email applications it depends on in order to function. More information on Postfix and Courier can be found in [our documentation](/docs/guides/email-with-postfix-courier-and-mysql-on-ubuntu-9-10-karmic/), and you are encouraged to read it to gain a better understanding of this software. MySQL is a relational database management system (RDBMS) that is commonly used for dynamic web pages and email. If you have already installed this, you will not need to install is as part of the ISPConfig installation process. You are encouraged to read the [MySQL documentation](/docs/databases/mysql/). You will need to read the documentation for detailed installation instructions.
 
 Issue the following command (all one line):
 
     apt-get install postfix postfix-mysql postfix-doc mysql-client mysql-server courier-authdaemon courier-authlib-mysql courier-pop courier-pop-ssl courier-imap courier-imap-ssl libsasl2-2 libsasl2-modules libsasl2-modules-sql sasl2-bin libpam-mysql openssl maildrop getmail4 binutils
 
-You will be asked a series of questions during the installation; please refer to the [Postfix guide](/docs/email/postfix/courier-mysql-ubuntu-9-10-karmic) to determine what the needs of your system will be. In most cases, the defaults are fine.
+You will be asked a series of questions during the installation; please refer to the [Postfix guide](/docs/guides/email-with-postfix-courier-and-mysql-on-ubuntu-9-10-karmic/) to determine what the needs of your system will be. In most cases, the defaults are fine.
 
 ## Install Amavisd-new and SpamAssassin
 
-The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/#reducing-spamassassin-memory-consumption). Using amavisd-new should help alleviate some of these potential issues.
+The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/#reducing-spamassassin-memory-consumption). Using amavisd-new should help alleviate some of these potential issues.
 
     apt-get install amavisd-new spamassassin zoo unzip bzip2 arj nomarch lzop cabextract apt-listchanges libnet-ldap-perl libauthen-sasl-perl clamav-docs daemon libio-string-perl libio-socket-ssl-perl libnet-ident-perl zip libnet-dns-perl
 
@@ -85,7 +80,7 @@ Vlogger is a tool that logs information regarding Apache. Webalizer can then be 
 
     apt-get install vlogger webalizer
 
-More information on Webalizer can be found in our [Webalizer documentation](/docs/web-applications/analytics/webalizer/debian-5-lenny).
+More information on Webalizer can be found in our [Webalizer documentation](/docs/guides/webalizer-on-debian-5-lenny/).
 
 ## Install fail2ban
 
@@ -133,7 +128,7 @@ You may wish to consult the following resources for additional information on th
 - [ISPConfig Support](http://www.ispconfig.org/page/en/support.html)
 - [ISPConfig Community](http://www.ispconfig.org/page/en/community.html)
 - [Upload Files to your Linode](/docs/networking/file-transfer)
-- [Limit User Access with SFTP Jails](/docs/security/sftp-jails)
+- [Limit User Access with SFTP Jails](/docs/guides/limiting-access-with-sftp-jails-on-debian-and-ubuntu/)
 
 
 

@@ -1,30 +1,23 @@
 ---
 slug: deploy-a-react-app-on-linode
-author:
-  name: Phil Zona
-  email: phil.b.zona@gmail.com
+title: "Deploy a React Application on Linode"
 description: 'Learn to deploy a locally developed React application to your Linode using Rsync.'
 og_description: 'Use Rsync to deploy a React application from your local computer to a Linode.'
+authors: ["Phil Zona"]
+contributors: ["Phil Zona"]
+published: 2018-01-31
 keywords: ['react','reactjs','deploy','rsync']
 tags: ["web applications","apache","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-01-31
-modified: 2018-01-31
-modified_by:
-  name: Linode
-title: "Deploy a React Application on Linode"
-contributor:
-  name: Phil Zona
-  link: https://twitter.com/philzona
 aliases: ['/development/react/deploy-a-react-app-on-linode/','/development/javascript/deploy-a-react-app-on-linode/']
-deprecated: true
-deprecated_link: '/guides/how-to-deploy-a-react-app-on-debian-10/'
 external_resources:
 - '[React - A JavaScript library for building user interfaces](https://reactjs.org/)'
 - '[Deploy a React App with Sass Using NGINX](https://web.archive.org/web/20191130010415/http://zabana.me/notes/build-deploy-react-app-with-nginx.html)'
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["javascript"]
+deprecated: true
+deprecated_link: 'guides/how-to-deploy-a-react-app-on-debian-10/'
 ---
 
 ## What is React?
@@ -35,9 +28,9 @@ Since a basic React app is static (it consists of compiled HTML, CSS, and JavaSc
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  You will need a [web server](/docs/web-servers/) configured to host a website on your Linode.
 
@@ -144,4 +137,4 @@ echo "Deployment complete"
 
 Deployment can be a complex topic and there are many factors to consider when working with production systems. This guide is meant to be a simple example for personal projects, and isn't necessarily suitable on its own for a large scale production application.
 
-More advanced build and continuous integration tools such as [Travis](https://travis-ci.org/), [Jenkins](https://jenkins.io), and [Wercker](http://www.wercker.com/) can be used to automate a more complicated deployment workflow. This can include running unit tests before proceeding with the deployment and deploying to multiple servers (such as test and production boxes). See our guides on [Jenkins](/docs/guides/automate-builds-with-jenkins-on-ubuntu/) and [Wercker](/docs/guides/how-to-develop-and-deploy-your-applications-using-wercker/) to get started.
+More advanced build and continuous integration tools such as [Jenkins](https://jenkins.io) or [Travis](https://travis-ci.org/) can be used to automate a more complicated deployment workflow. This can include running unit tests before proceeding with the deployment and deploying to multiple servers (such as test and production boxes). See our guide on [Jenkins](/docs/guides/automate-builds-with-jenkins-on-ubuntu/) to get started.

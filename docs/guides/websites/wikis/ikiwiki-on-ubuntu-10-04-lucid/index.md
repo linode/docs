@@ -1,29 +1,24 @@
 ---
 slug: ikiwiki-on-ubuntu-10-04-lucid
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Ikiwiki on Ubuntu 10.04 (Lucid)'
 description: 'Using Ikiwiki on Ubuntu 10.04 (Lucid) to power a standard wiki implementation.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2013-10-04
 keywords: ["ikiwiki", "ubuntu", "wiki", "perl", "git", "markdown", "lucid"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/wikis/ikiwiki-on-ubuntu-10-04-lucid/','/web-applications/wikis/ikiwiki/ubuntu-10-04-lucid/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2011-04-05
-title: 'Ikiwiki on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
         key: using-ikiwiki
         keywords:
            - distribution: Ubuntu 10.04
+deprecated: true
 ---
 
-
-
-Ikiwiki is a static website content management system. Originally designed as a wiki "engine", the package is built on top of plain text files and standard revision control components. Ikiwiki also contains support for blogging, an advanced template system, and an extensive plugin system and library that provide users with great flexibility and features. The installation procedure outlined in this document will guide you through deploying an ikiwiki site using [git](/docs/development/version-control/how-to-configure-git) for version control, and either the [Apache](/docs/web-servers/apache/) or [nginx](/docs/web-servers/nginx/) web server.
+Ikiwiki is a static website content management system. Originally designed as a wiki "engine", the package is built on top of plain text files and standard revision control components. Ikiwiki also contains support for blogging, an advanced template system, and an extensive plugin system and library that provide users with great flexibility and features. The installation procedure outlined in this document will guide you through deploying an ikiwiki site using [git](/docs/guides/how-to-configure-git/) for version control, and either the [Apache](/docs/web-servers/apache/) or [nginx](/docs/web-servers/nginx/) web server.
 
 ## Basic System Configuration
 

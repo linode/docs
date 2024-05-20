@@ -1,19 +1,13 @@
 ---
 slug: go-structures
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
+title: "A Tutorial for Learning Structs in Go"
 description: "Learn how to use structs in Go, including how structs use value semantics, how to handle pointers to structs, and how to associate methods with structs."
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-12-16
 keywords: [" Structs", "Golang", "Go", "Pointers"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-12-16
-modified_by:
-  name: Linode
 image: ATutorialforLearningStructsinGo.png
-title: "A Tutorial for Learning Structs in Go"
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[Go](https://golang.org)'
 aliases: ['/development/go/go-structures/']
@@ -37,7 +31,7 @@ In this guide you will:
 
 ## Before You Begin
 
-{{< content "before-you-begin-install-go-shortguide" >}}
+{{% content "before-you-begin-install-go-shortguide" %}}
 
 An introductory-level knowledge of Go is assumed by this guide. If you're just getting started with Go, check out our [Learning Go Functions, Loops, and Errors](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/) tutorial.
 
@@ -74,7 +68,6 @@ func main() {
     fmt.Println(mihalis)
 }
 {{< /file >}}
-
 {{< note >}}
  Structs, in particular, and Go types, in general, are usually defined outside the `main()` function in order to have a global scope and be available to the entire Go package, unless you want to clarify that a type is only useful within the current scope and is not expected to be used elsewhere in your code.
 {{< /note >}}
@@ -100,7 +93,7 @@ The example illustrates some (but not all) of the ways a struct can be created:
 
 - Lastly, you can also use a struct literal without listing the fields' names, as shown on line 21. The values for the fields will be assigned according to the order that the fields are defined in the struct type definition. You must supply values for all of the fields in order to use this syntax.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `mihalis` variable is defined using the `:=` syntax, which infers the `Employee` type for the variable from the assigned value.
 {{< /note >}}
 
@@ -134,7 +127,6 @@ The output of `employee.go` will be:
 {{< output >}}
 true
 {{< /output >}}
-
 {{< note >}}
 Structs cannot be ordered with operators like greater-than  `>` or less-than `<`.
 {{< /note >}}
@@ -197,7 +189,6 @@ func main() {
     fmt.Println("My name is", mihalis.FirstName, "and my employee ID is", mihalis.employeeID)
 }
 {{< /file >}}
-
 {{< note >}}
 In this example, `employee.go` is created within an `employee` directory.
 {{< /note >}}
@@ -541,7 +532,7 @@ variable := new(StructType)
 - `new` returns the memory address of the allocated object. Put simply, `new` returns a pointer.
 - `new` allocates zeroed storage.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Using `new` with a struct type is similar to assigning `structType{}` to a variable. In other words, `t := new(Telephone)` is equivalent to `t := Telephone{}`.
 {{< /note >}}
 
@@ -591,7 +582,6 @@ func main() {
     prettyPrint(telephone)
 }
 {{< /file >}}
-
 {{< note >}}
 The `prettyPrint()` function is just used for printing the contents of a struct in a readable and pleasant way with the help of the `json.MarshalIndent()` function.
 {{< /note >}}
@@ -711,7 +701,7 @@ func main() {
     - We then call the `Decode()` function for actually decoding the contents of the file and putting them into the desired variable.
     - The function uses the empty interface type (`interface{}`) in order to be able to accept any data type.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 You will learn more about interfaces in a forthcoming guide.
 {{< / note >}}
 - The `saveToJSON()` function creates a JSON encoder variable named `encodeJSON`, which is associated with a filename, which is where the data is going to be put.

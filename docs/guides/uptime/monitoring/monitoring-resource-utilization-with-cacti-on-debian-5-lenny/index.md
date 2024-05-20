@@ -1,31 +1,28 @@
 ---
 slug: monitoring-resource-utilization-with-cacti-on-debian-5-lenny
-deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
+title: 'Monitoring Resource Utilization with Cacti on Debian 5 (Lenny)'
 description: 'Monitor resource usage through the powerful server monitoring tool Cacti on Debian 5 (Lenny).'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-01-18
+modified: 2012-10-08
 keywords: ["Cacti", "Debian", "Lenny", "SNMP"]
 tags: ["debian","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/monitoring/monitoring-resource-utilization-with-cacti-on-debian-5-lenny/','/server-monitoring/cacti/debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-01-18
-title: 'Monitoring Resource Utilization with Cacti on Debian 5 (Lenny)'
 relations:
     platform:
         key: install-cacti-monitoring
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
 The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool [Munin](/docs/guides/monitoring-servers-with-munin-on-debian-6-squeeze/) is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for some advanced monitoring needs.
 
 For these kinds of deployments we encourage you to consider a tool like Cacti, which is a flexible front end for the RRDtool application. Cacti simply provides a framework and a mechanism to poll a number of sources for data regarding your systems, which can then be graphed and presented in a clear web based interface. Whereas packages like Munin provide monitoring for a specific set of metrics on systems which support the Munin plug in, Cacti provides increased freedom to monitor larger systems and more complex deployment by way of its plug in framework and web-based interface.
 
-Before installing Cacti we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before installing Cacti we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Installing Prerequisites
 
@@ -128,7 +125,7 @@ You may wish to consult the following resources for additional information on th
 
 - [Cacti Website](http://www.cacti.net/index.php)
 - [Cacti Users Plugin Community](http://cactiusers.org/index.php)
-- [Linux Security Basics](/docs/guides/set-up-and-secure/)
+- [Linux Security Basics](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
 - [Configure a Basic Firewall in Debian 5 (Lenny)](/docs/security/firewalls/configure-a-firewall-with-arno-iptables-in-debian-5-lenny/)
 
 

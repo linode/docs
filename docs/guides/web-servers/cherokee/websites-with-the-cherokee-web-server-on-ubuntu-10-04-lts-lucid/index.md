@@ -1,37 +1,32 @@
 ---
 slug: websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Websites with the Cherokee Web Server on Ubuntu 10.04 LTS (Lucid)'
 description: 'Instructions for getting started with the Cherokee web server on Ubuntu 10.04 LTS (Lucid).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-03
+modified: 2013-10-07
 keywords: ["cherokee", "web sever", "cherokee ubuntu 10.04", "cherokee ubuntu lucid", "ubuntu lucid"]
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid/','/web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid/','/web-servers/cherokee/installing-cherokee-ubuntu-10-04-lucid/']
-modified: 2013-10-07
-modified_by:
-  name: Linode
-published: 2010-05-03
-title: 'Websites with the Cherokee Web Server on Ubuntu 10.04 LTS (Lucid)'
 relations:
     platform:
         key: install-cherokee-server
         keywords:
             - distribution: Ubuntu 10.04
+deprecated: true
 ---
-
-
 
 Cherokee is a fast, flexible web server for POSIX compliant operating systems such as Linux. It's designed to be easy to administer, and includes support for a wide range of common web server functions.
 
 This tutorial explains how to install and configure the Cherokee web server on Ubuntu 10.04 LTS (Lucid). We will be performing the installation through the terminal; please make sure you are logged into your Linode as root via SSH.
 
-This document assumes that you already have a working and up to date Ubuntu 10.04 system. If you have not followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, we recommend that you do so prior to following these instructions.
+This document assumes that you already have a working and up to date Ubuntu 10.04 system. If you have not followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, we recommend that you do so prior to following these instructions.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

@@ -1,16 +1,13 @@
 ---
 slug: how-to-configure-git
-author:
-  name: Linode
-  email: docs@linode.com
+title: Getting Started with Git
 description: 'Learn the basics of distributed version control and source code management tool Git in this guide.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-04
+modified: 2019-01-15
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb", "gitolite", "ubuntu", "debian", "arch", "gentoo"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-15
-modified_by:
-  name: Linode
-published: 2009-09-04
-title: Getting Started with Git
 external_resources:
  - '[Refspec Information](https://git-scm.com/book/en/v2/Git-Internals-The-Refspec)'
  - '[Learn Git with Bitbucket Cloud](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)'
@@ -29,11 +26,11 @@ Git is a distributed version control system. Git was designed and developed by [
 
 {{< note >}}
 If you are new to version control systems (VCS), see our guide [SVN vs Git: Which Version Control System Should You Use?](/docs/guides/svn-vs-git/) to learn more about each VCS.
-{{</ note >}}
+{{< /note >}}
 
 ## Configure Git
 
-After you [install Git](/docs/development/version-control/how-to-install-git-on-mac-and-windows), configure it for first time use using `git config`, a built-in tool that obtains and sets configuration variables. These configuration variables are located in three different places on a GNU/Linux system:
+After you [install Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/), configure it for first time use using `git config`, a built-in tool that obtains and sets configuration variables. These configuration variables are located in three different places on a GNU/Linux system:
 
  - `/etc/gitconfig` - stores the configuration information for all system users and their respective repositories.
  - `~/.gitconfig` - stores user-specific configuration files on the system.
@@ -76,7 +73,6 @@ If you have an new or existing project and you want to start using Git to keep t
 After you have added the file, stage a commit and leave a commit message. Commit messages serve as a reminder of the changes that were made to a file:
 
     git commit -m "Initialized a Git repository for this project. Tracking changes to a file."
-
 {{< note >}}
 It's good practice to provide clear and descriptive commit messages for every commit you stage, as this helps collaborators to understand what a commit encompasses.
 {{< /note >}}
@@ -88,6 +84,8 @@ There may be files or folders in your project directory that you do not wish to 
 *.zip
 __doNotInclude__/
 {{< /file >}}
+
+To learn how to undo Git commit, see our guide [How to Undo a Git Commit: A Step-by-Step Guide](/docs/guides/how-to-undo-git-commit/).
 
 ### Basic Git Commands
 
@@ -148,7 +146,7 @@ Now the `master` branch has the new search feature.
 
 This section provides some basic information on navigating remote Git repositories.
 
-To copy every file from a remote repository to your local system, use `git clone` followed by the remote repo's URL:
+To copy every file from a remote repository to your local system, use `git clone` followed by the remote repository's URL:
 
     git clone https://github.com/linode/docs.git
 
@@ -218,3 +216,4 @@ Git will grab the new code from the chosen remote repository branch and merge it
 {{< note >}}
 Sometimes two developers will edit the same section of a file at the same time and attempt to merge their changes into the codebase. When this happens, Git will throw an error called a *merge conflict*. Because Git will be unable to determine which set of changes is the correct set of changes, it will prompt you to fix the merge conflict before it moves forward with the merge.
 {{< /note >}}
+

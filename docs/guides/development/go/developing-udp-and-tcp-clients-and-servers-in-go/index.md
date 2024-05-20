@@ -1,19 +1,13 @@
 ---
 slug: developing-udp-and-tcp-clients-and-servers-in-go
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
+title: 'Create a TCP and UDP Client and Server using Go'
 description: 'Create a TCP and UDP client and server using the Go programming language.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-06-26
 keywords: ["go", "golang", "server", "client", "TCP", "UDP", "programming", "cli"]
 tags: ["networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-06-26
-modified_by:
-  name: Linode
-title: 'Create a TCP and UDP Client and Server using Go'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[Go](https://www.golang.com)'
 aliases: ['/development/go/developing-udp-and-tcp-clients-and-servers-in-go/']
@@ -39,7 +33,6 @@ Throughout this guide you will create the following:
     This guide requires Go version 1.8 or higher. It is considered good practice to have the [latest version of Go](https://golang.org/dl/) installed. You can check your Go version by executing the following command:
 
         go version
-
 {{< note >}}
 This guide is written for a non-root user. Depending on the TCP/IP port number that you use when running the TCP and UDP servers, you may need to prefix commands with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -214,12 +207,12 @@ You can now test your TCP client and server. You will need to execute the TCP se
 
         go run tcpC.go 127.0.0.1:1234
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the TCP server is not running on the expected TCP port, you will get the following error message from `tcpC.go`:
 
     dial tcp [::1]:1234: connect: connection refused
 
-    {{</ note >}}
+    {{< /note >}}
 
 
 1. You will see a `>>` prompt waiting for you to enter some text. Type in `Hello!` to receive a response from the TCP server:
@@ -250,7 +243,6 @@ If the TCP server is not running on the expected TCP port, you will get the foll
 -> Hello!
 Exiting TCP server!
     {{< /output >}}
-
 {{< note >}}
 The TCP server waits before writing back to the TCP client, whereas the client writes to the TCP server first and then waits to receive an answer.
 This behavior is part of the protocol definition that governs a TCP or a UDP connection. In this example, you have implemented an unofficial protocol that is based on TCP.
@@ -579,6 +571,6 @@ Hello!
 .Hello!
       {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 From the shell session running the TCP server, type **CTRL-c** to interrupt program execution and then, **CTRL-D** to close all client connections and to stop the TCP server.
-    {{</ note >}}
+    {{< /note >}}

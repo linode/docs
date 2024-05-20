@@ -4,6 +4,7 @@ import { newCreateHref, addLangToHref } from '../navigation/index';
 import {
 	newRequestCallback,
 	newRequestCallbackFactories,
+	newRequestCallbackFactoryTarget,
 	SearchGroupIdentifier,
 	RequestCallBackStatus,
 } from './request';
@@ -16,14 +17,26 @@ export const searchGroupIdentifiers = {
 	AD_HOC: 2,
 };
 
-export function newSearchStore(searchConfig, Alpine) {
+export function newSearchStore(searchConfig, params, Alpine) {
+	let cacheWarmerUrls = params.search_cachewarmer_urls;
+
 	let results = {
 		blank: { loaded: false },
 		main: { loaded: false },
+		explorerData: { loaded: false },
+		// Holds the last Algolia queryID.
+		lastQueryID: '',
 	};
-	const searcher = new Searcher(searchConfig, results.blank, debug);
+
+	const resultCallback = (result) => {
+		if (!result.queryID) {
+			return;
+		}
+		results.lastQueryID = result.queryID;
+	};
+
+	const searcher = new Searcher(searchConfig, results.blank, cacheWarmerUrls, resultCallback, debug);
 	let searchEffectMain = null;
-	let searchEffectAdHoc = null;
 	const router = newCreateHref(searchConfig);
 	const queryHandler = new QueryHandler();
 
@@ -42,12 +55,17 @@ export function newSearchStore(searchConfig, Alpine) {
 		// The blank (needed for the explorer and section metadata) and the main search result.
 		results: results,
 
+		clearQuery: function () {
+			this.query = newQuery();
+		},
+
 		updateLocationWithQuery() {
-			let href = window.location.pathname + window.location.hash;
 			let search = queryHandler.queryAndLocationToQueryString(this.query);
+			let href = window.location.pathname;
 			if (search) {
 				href += '?' + search;
 			}
+			href += window.location.hash;
 
 			// See https://github.com/hotwired/turbo/issues/163#issuecomment-933691878
 			history.replaceState({ turbo: {} }, null, href);
@@ -61,7 +79,6 @@ export function newSearchStore(searchConfig, Alpine) {
 			requestCallBackFactoryTargets.forEach((rcf) => {
 				switch (rcf.target) {
 					case SearchGroupIdentifier.Main:
-						this.searchToggle(true);
 						this.searchGroupMain.push(rcf.factory);
 						break;
 					case SearchGroupIdentifier.AdHoc:
@@ -75,29 +92,23 @@ export function newSearchStore(searchConfig, Alpine) {
 
 		init() {
 			this.results.blank.getSectionMeta = function (key) {
-				if (!this.metaStatic) {
-					return null;
-				}
-				key = key.toLocaleLowerCase();
-				// First look in the static data set.
+				key = key.toLocaleLowerCase().replace(/&amp;/g, '&');
 				if (key.endsWith('-branches')) {
 					key = key.substring(0, key.indexOf('-branches'));
 				}
-				let m = this.metaStatic.get(key);
+
+				if (!this.metaResult) {
+					return null;
+				}
+
 				let sectionConfigIdx = searchConfig.sectionsSorted.findIndex((section) => {
 					return section.name === key.toLocaleLowerCase();
 				});
 
-				if (!m) {
-					// Then look in the Algolia data.
-					if (!this.metaResult) {
-						return null;
-					}
-					m = this.metaResult.get(key);
-					if (!m && sectionConfigIdx !== -1) {
-						let index = searchConfig.sectionsSorted[sectionConfigIdx];
-						m = { title: index.title, linkTitle: index.title };
-					}
+				m = this.metaResult.get(key);
+				if (!m && sectionConfigIdx !== -1) {
+					let index = searchConfig.sectionsSorted[sectionConfigIdx];
+					m = { title: index.title, linkTitle: index.title, excerpt: '' };
 				}
 
 				if (m) {
@@ -110,43 +121,101 @@ export function newSearchStore(searchConfig, Alpine) {
 				return m;
 			};
 
-			// Is the main search, i.e. what you see when you're typing into the search form.
-			// This will start executing once searchEffectMain activates (see searchToggle).
-			this.searchGroupMain.push({
-				status: function () {
-					// Will be active as long as searchEffectMain is active, but
-					// the cache will prevent new remote Algolia requests as long
-					// as the query does not change.
-					return RequestCallBackStatus.On;
-				},
-				create: (query) => {
-					return newRequestCallback(
-						createSectionRequest(query),
-						(result) => {
-							this.results.main.result = result;
-							this.results.main.loaded = true;
-						},
-						true
-					);
-				},
-			});
-
 			searchEffectAdHoc = Alpine.effect(() => {
 				debug('searchEffectAdHoc', this.searchGroupAdHoc.length);
 				searcher.searchFactories(this.searchGroupAdHoc, null);
 			});
+
+			this.searchInit();
 		},
-		searchToggle: function (active) {
+		searchInit: function () {
 			if (searchEffectMain === null) {
 				// Start watching.
 				searchEffectMain = Alpine.effect(() => {
 					searcher.searchFactories(this.searchGroupMain, this.query);
 				});
 			}
+		},
+		searchToggle: function (active) {
+			if (active) {
+				// This will make sure to keep the blank result (needed by explorer etc.) updated with the latest query.
+				this.searchGroupMain.push({
+					status: function () {
+						// Will be active as long as searchEffectMain is active, but
+						// the cache will prevent new remote Algolia requests as long
+						// as the query does not change.
+						return RequestCallBackStatus.On;
+					},
+					create: (query) => {
+						return newRequestCallback(
+							createSectionRequest(query),
+							(result) => {
+								this.results.main.result = result;
+								this.results.main.loaded = true;
+							},
+							{
+								query: query,
+							},
+						);
+					},
+				});
+			}
+
 			searchEffectMain.active = active;
 		},
 		isSearching: function () {
 			return searchEffectMain && searchEffectMain.active;
+		},
+
+		withExplorerData: function (callback = (data) => {}, createExplorerNodeRequest, sectionKeys = []) {
+			if (this.results.explorerData.loaded) {
+				callback(this.explorerData.data);
+				return;
+			}
+
+			this.withBlank((blank) => {
+				let data = {
+					sections: {},
+					blank: blank,
+				};
+				if (sectionKeys.length === 0) {
+					callback(data);
+					return;
+				}
+				let loadCount = 0;
+				let markLoaded = () => {
+					loadCount++;
+					if (loadCount === sectionKeys.length) {
+						this.results.explorerData.data = data;
+						this.results.explorerData.loaded = true;
+						callback(data);
+						__stopWatch('withExplorerData.done');
+					}
+				};
+				let searches = [];
+				for (let sectionKey of sectionKeys) {
+					let factory = {
+						status: function () {
+							return RequestCallBackStatus.Once;
+						},
+						create: function (query) {
+							return newRequestCallback(
+								createExplorerNodeRequest(query, sectionKey),
+								(result) => {
+									data.sections[sectionKey] = result;
+									markLoaded();
+								},
+								{
+									query: query,
+									fileCacheID: sectionKey,
+								},
+							);
+						},
+					};
+					searches.push(newRequestCallbackFactoryTarget(factory, SearchGroupIdentifier.AdHoc));
+				}
+				this.addSearches(...searches);
+			});
 		},
 
 		withBlank: async function (callback = () => {}) {
@@ -160,55 +229,46 @@ export function newSearchStore(searchConfig, Alpine) {
 			let loadCount = 0;
 			let markLoaded = () => {
 				loadCount++;
-				if (loadCount === 3) {
+				if (loadCount === 2) {
 					this.results.blank.loaded = true;
 					callback(this.results.blank);
 				}
 			};
 
-			// Section metadata from Hugo.
-			const response = await fetch('/docs/data/sections/index.json');
-			if (response.ok) {
-				const data = await response.json();
-				this.results.blank.metaStatic = data.reduce(function (m, item) {
-					item.href = router.hrefSection(item.objectID);
-					m.set(item.objectID, item);
-					return m;
-				}, new Map());
-				markLoaded();
-			}
-
 			searcher.batcher.add(
 				// Load section meta data from Algolia.
 				newRequestCallback(
 					{
-						indexName: searchConfig.meta_index,
+						indexName: searchConfig.indexName(searchConfig.meta_index),
 						params: 'query=&hitsPerPage=600',
-						// We load the Hugo data from the published JSON to save Algolia queries on
-						// load (for the breadcrumbs).
-						// This filter is just to save some bytes for when the Algolia data IS loaded,
-						// as the guides is the most populated section tree.
-						filters:
-							'NOT section:guides AND NOT section:api AND NOT section:products AND NOT section:content AND NOT section:development',
 					},
 					(result) => {
 						debug('withBlank.blank.metaResult:', result);
 						this.results.blank.metaResult = result.hits.reduce(function (m, hit) {
 							// The blog sections have mixed-case objectIDs, but we need this lookup to be case insensitive.
-							m.set(hit.objectID.toLowerCase(), hit);
+							m.set(hit.objectID.toLowerCase().replace(/&amp;/g, '&'), hit);
 							return m;
 						}, new Map());
 						markLoaded();
-					}
+					},
+					{
+						fileCacheID: 'sectionsmeta',
+					},
 				),
-				newRequestCallback(createSectionRequest(), (result) => {
-					if (result.index != 'linode-merged') {
-						throw `invalid state: ${result.index}`;
-					}
-					debug('withBlank.blank.result:', result);
-					this.results.blank.result = result;
-					markLoaded();
-				})
+				newRequestCallback(
+					createSectionRequest(null),
+					(result) => {
+						if (!result.index.endsWith('linode-merged')) {
+							throw `invalid state: ${result.index}`;
+						}
+						debug('withBlank.blank.result:', result);
+						this.results.blank.result = result;
+						markLoaded();
+					},
+					{
+						fileCacheID: 'explorer-blank',
+					},
+				),
 			);
 		},
 	};
@@ -225,9 +285,12 @@ export function newSearchStore(searchConfig, Alpine) {
 
 		let hitsPerPage = 0;
 		let q = '';
-		let filters = sectionConfig.filters || '';
+		// TODO(bep) we have removed the QA section from explorer/search, but the
+		// data is still there. The docType filter below can be remove when we have completed the migration.
+		let filters = sectionConfig.filters || 'NOT docType:community';
 		let facetFilters = [];
 		let attributesToHighlight = [];
+		let analyticsTags = [];
 		let page = 0;
 
 		if (query) {
@@ -236,13 +299,19 @@ export function newSearchStore(searchConfig, Alpine) {
 			facetFilters = query.toFacetFilters();
 			attributesToHighlight = ['title', 'excerpt', ...filteringFacetNames];
 			page = query.p;
+			if (query.isFiltered()) {
+				analyticsTags.push('active');
+			}
 		}
 
 		return {
-			indexName: sectionConfig.index,
+			indexName: searchConfig.indexName(sectionConfig.index),
+			clickAnalytics: searchConfig.click_analytics,
+			analyticsTags: analyticsTags,
 			filters: filters,
 			facetFilters: facetFilters,
 			facets: facets,
+			distinct: 1,
 			attributesToHighlight: attributesToHighlight,
 			params: `query=${q}&hitsPerPage=${hitsPerPage}&page=${page}`,
 		};
@@ -251,97 +320,30 @@ export function newSearchStore(searchConfig, Alpine) {
 	return store;
 }
 
-// Normalization of search results.
-const normalizeResult = function (self, result) {
-	let hitsStart = 0;
-	let hitsEnd = 0;
+export function normalizeAlgoliaResult(result, lang = '') {
+	let index = result.index;
+	let queryID = result.queryID ? result.queryID : '';
 
-	if (result.nbHits) {
-		hitsStart = result.page * result.hitsPerPage;
-		hitsStart = hitsStart ? hitsStart + 1 : 1;
-		hitsEnd = hitsStart + result.hits.length - 1;
-	}
-
-	result.stats = {
-		totalNbHits: result.nbHits,
-		totalNbPages: result.nbPages,
-		hitsStart: hitsStart,
-		hitsEnd: hitsEnd,
-	};
-
-	let facets = result.facets;
-	if (facets) {
-		// Apply metadata to the section facets.
-		let facetsMeta = {};
-		Object.entries(facets).forEach(([k, v]) => {
-			if (k === 'docType' || k.startsWith('section.')) {
-				let obj = {};
-				Object.entries(v).forEach(([kk, vv]) => {
-					let m = self.metaProvider.getSectionMeta(kk.toLocaleLowerCase());
-					obj[kk] = { count: vv, meta: m };
-				});
-				facetsMeta[k] = obj;
-			} else {
-				facetsMeta[k] = v;
-			}
-		});
-		result.facetsMeta = facetsMeta;
-	}
-
-	result.sections = function () {
-		let sections = [];
-
-		if (!this.facets) {
-			return sections;
+	result.hits.forEach((hit, idx) => {
+		// For event tracking
+		hit.__index = index;
+		hit.__queryID = queryID;
+		if (hit.__queryID) {
+			// Only send position if we have a queryID.
+			hit.__position = idx + 1 + result.page * result.hitsPerPage;
 		}
 
-		for (let i = 0; ; i++) {
-			// webserver
-			// webserver apache
-			let key = `section.lvl${i}`;
-			let sectionFacets = this.facets[key];
-			let facetsMeta = this.facetsMeta[key];
-
-			if (!sectionFacets) {
-				break;
-			}
-
-			for (let k in sectionFacets) {
-				let sectionLvl0 = k;
-				if (i > 0) {
-					sectionLvl0 = k.split(' > ')[0];
-				}
-				let meta;
-				let facetMeta = facetsMeta[k];
-				if (facetMeta) {
-					meta = facetMeta.meta;
-				}
-
-				let isGhostSection = k === 'community > question';
-				sections.push({
-					key: k,
-					count: sectionFacets[k],
-					isGhostSection: isGhostSection,
-					sectionLvl0: sectionLvl0,
-					meta: meta,
-				});
-			}
-		}
-
-		return sections;
-	};
-
-	let lang = getCurrentLang();
-
-	result.hits.forEach((hit) => {
 		hit.sectionTitle = hit.section;
 		if (hit.section) {
 			hit.section = hit.section.toLowerCase();
 		}
 
 		hit.rootSectionTitle = hit['section.lvl0'];
-		if (hit.rootSectionTitle && hit.rootSectionTitle.endsWith('-branches')) {
-			hit.rootSectionTitle = hit.rootSectionTitle.substring(0, hit.rootSectionTitle.indexOf('-branches'));
+		if (hit.rootSectionTitle) {
+			if (hit.rootSectionTitle.endsWith('-branches')) {
+				hit.rootSectionTitle = hit.rootSectionTitle.substring(0, hit.rootSectionTitle.indexOf('-branches'));
+			}
+			hit.rootSectionTitle = hit.rootSectionTitle.replace('-', ' ');
 		}
 
 		hit.titleHighlighted =
@@ -351,6 +353,14 @@ const normalizeResult = function (self, result) {
 			hit._highlightResult && hit._highlightResult.excerpt ? hit._highlightResult.excerpt.value : hit.excerpt;
 
 		hit.linkTitle = hit.linkTitle || hit.title;
+		hit.mainTitle = hit.title || hit.linkTitle;
+
+		if (hit.hierarchy && hit.hierarchy.length) {
+			// This is the reference-section, pick the main title from
+			// the top level.
+			let first = hit.hierarchy[0];
+			hit.mainTitle = first.title || first.linkTitle;
+		}
 
 		if (hit.href) {
 			hit.isExternalLink = hit.href.startsWith('http');
@@ -388,10 +398,110 @@ const normalizeResult = function (self, result) {
 			return Object.values(this.tags);
 		};
 	});
+}
+
+// Normalization of search results.
+const normalizeResult = function (self, result) {
+	let hitsStart = 0;
+	let hitsEnd = 0;
+
+	if (result.nbHits) {
+		hitsStart = result.page * result.hitsPerPage;
+		hitsStart = hitsStart ? hitsStart + 1 : 1;
+		hitsEnd = hitsStart + result.hits.length - 1;
+	}
+
+	result.stats = {
+		totalNbHits: result.nbHits,
+		totalNbPages: result.nbPages,
+		hitsStart: hitsStart,
+		hitsEnd: hitsEnd,
+	};
+
+	let facets = result.facets;
+	if (facets) {
+		// Apply metadata to the section facets.
+		let facetsMeta = {};
+		Object.entries(facets).forEach(([k, v]) => {
+			if (k === 'docType' || k.startsWith('section.')) {
+				let obj = {};
+				Object.entries(v).forEach(([kk, vv]) => {
+					// TODO(bep) we have removed the QA section from explorer/search, but the
+					// data is still there. The docType filter below can be remove when we have completed the migration.
+					if (k == 'docType' && kk == 'community') {
+						return;
+					}
+					let m = self.metaProvider.getSectionMeta(kk.toLocaleLowerCase());
+					obj[kk] = { count: vv, meta: m };
+				});
+				facetsMeta[k] = obj;
+			} else {
+				facetsMeta[k] = v;
+			}
+		});
+		result.facetsMeta = facetsMeta;
+	}
+
+	result.sections = function () {
+		let sections = [];
+
+		if (!this.facets) {
+			return sections;
+		}
+
+		let position = 0;
+
+		for (let i = 0; ; i++) {
+			// webserver
+			// webserver apache
+			let key = `section.lvl${i}`;
+			let sectionFacets = this.facets[key];
+			let facetsMeta = this.facetsMeta[key];
+
+			if (!sectionFacets) {
+				break;
+			}
+
+			for (let k in sectionFacets) {
+				let sectionLvl0 = k;
+				if (i > 0) {
+					sectionLvl0 = k.split(' > ')[0];
+				}
+				let meta;
+				let facetMeta = facetsMeta[k];
+				if (facetMeta) {
+					meta = facetMeta.meta;
+				}
+
+				let isGhostSection = k === 'community > question';
+				// These are also indexed on its own.
+				let hasObjectID = sectionLvl0 == 'products' || sectionLvl0 == 'guides';
+				position++;
+
+				sections.push({
+					key: k,
+					count: sectionFacets[k],
+					isGhostSection: isGhostSection,
+					sectionLvl0: sectionLvl0,
+					meta: meta,
+					// Used for Analytics.
+					hasObjectID: hasObjectID,
+					queryID: result.queryID,
+					position: position,
+				});
+			}
+		}
+
+		return sections;
+	};
+
+	let lang = getCurrentLang();
+
+	normalizeAlgoliaResult(result, lang);
 };
 
 class SearchBatcher {
-	constructor(searchConfig, metaProvider) {
+	constructor(searchConfig, metaProvider, cacheWarmerUrls, resultCallback = (result) => {}) {
 		const algoliaHost = `https://${searchConfig.app_id}-dsn.algolia.net`;
 		this.headers = {
 			'X-Algolia-Application-Id': searchConfig.app_id,
@@ -402,22 +512,24 @@ class SearchBatcher {
 		this.cache = new LRUMap(12); // Query cache.
 		this.cacheEnabled = true;
 		this.metaProvider = metaProvider;
+		this.resultCallback = resultCallback;
+		this.cacheWarmerUrls = cacheWarmerUrls;
 		this.interval = () => {
-			return this.executeCount === 0 ? 300 : 100; // in ms between batch executions.
+			return 100;
 		};
 		this.executeCount = 0;
 		this.fetchCount = 0;
 		this.queue = [];
 	}
 
-	add(...requestCallbacks) {
+	async add(...requestCallbacks) {
 		if (!this.timer) {
 			this.timer = setTimeout(() => {
 				this.executeBatch('timers');
 			}, this.interval());
 		}
 		// Search cache first, add the rest to the batch queue.
-		let cacheResult = this.searchCache(...requestCallbacks);
+		let cacheResult = await this.searchCache(...requestCallbacks);
 		if (cacheResult.cacheMisses.length === 0) {
 			return;
 		}
@@ -434,7 +546,7 @@ class SearchBatcher {
 		this.executeCount++;
 	}
 
-	searchCache(...requestCallbacks) {
+	async searchCache(...requestCallbacks) {
 		debug('searchCache, num requests:', requestCallbacks.length);
 		if (requestCallbacks.length === 0) {
 			return { cacheMisses: [], cacheMissesKeys: [] };
@@ -460,9 +572,11 @@ class SearchBatcher {
 				throw 'must provide a request';
 			}
 			let key = JSON.stringify(cb.request);
+
 			let cachedResult = this.cache.get(key);
 			if (cachedResult) {
 				cb.callback(cachedResult);
+				this.resultCallback(cachedResult);
 			} else {
 				cacheMisses.push(requestCallbacks[i]);
 				cacheMissesKeys.push(key);
@@ -472,14 +586,40 @@ class SearchBatcher {
 		return { cacheMisses: cacheMisses, cacheMissesKeys: cacheMissesKeys };
 	}
 
-	search(...requestCallbacks) {
+	async checkFileCache(fileCacheID) {
+		// Try the local file cache if found.
+		let fileCacheUrl = this.cacheWarmerUrls[fileCacheID];
+
+		if (fileCacheUrl) {
+			debug('fetch data from file cache:', fileCacheUrl);
+			const response = await fetch(fileCacheUrl, { credentials: 'same-origin' });
+			if (response.ok) {
+				let data = await response.json();
+				if (Array.isArray(data)) {
+					if (data.length > 0) {
+						// We currently don't want the branch nodes (in the explorer).
+						data = data.filter((item) => !item.isBranch);
+					}
+					data = {
+						hits: data,
+					};
+				}
+
+				normalizeResult(this, data);
+				return data;
+			}
+		}
+		return null;
+	}
+
+	async search(...requestCallbacks) {
 		debug('search, num requests:', requestCallbacks.length);
 		if (requestCallbacks.length === 0) {
 			return;
 		}
 
 		// Try the cache first
-		let cacheResult = this.searchCache(...requestCallbacks);
+		let cacheResult = await this.searchCache(...requestCallbacks);
 		if (cacheResult.cacheMisses.length === 0) {
 			return;
 		}
@@ -494,14 +634,42 @@ class SearchBatcher {
 		for (let i = 0; i < cacheMissesKeysCopy.length; i++) {
 			let rc = cacheResult.cacheMisses[i];
 			let rck = cacheMissesKeysCopy[i];
+			let req = rc.request;
 
 			if (!requestCallbackMap.has(rck)) {
-				requests.push(rc.request);
+				// Double check cache.
+				let cachedResult = this.cache.get(rck);
+				if (cachedResult) {
+					rc.callback(cachedResult);
+					this.resultCallback(cachedResult);
+					continue;
+				}
+
+				if (!rc.isFiltered()) {
+					let fileCacheID = rc.getFileCacheID();
+					if (fileCacheID) {
+						let data = await this.checkFileCache(fileCacheID);
+						if (data) {
+							rc.callback(data);
+							this.resultCallback(data);
+							if (this.cacheEnabled) {
+								this.cache.set(rck, data);
+							}
+							continue;
+						}
+					}
+				}
+
+				requests.push(req);
 				cacheResult.cacheMissesKeys.push(rck);
 				cacheResult.cacheMisses.push(rc);
 				requestCallbackMap.set(rck, []);
 			}
 			requestCallbackMap.get(rck).push(rc.callback);
+		}
+
+		if (requests.length === 0) {
+			return;
 		}
 
 		let queries = {
@@ -518,8 +686,13 @@ class SearchBatcher {
 			.then((response) => response.json())
 			.then((data) => {
 				this.fetchCount++;
+				if (!data.results) {
+					console.warn('invalid response', data);
+					return;
+				}
 				for (let i = 0; i < data.results.length; i++) {
 					let result = data.results[i];
+					this.resultCallback(result);
 					normalizeResult(this, result);
 					let key = cacheResult.cacheMissesKeys[i];
 					if (!key) {
@@ -541,11 +714,14 @@ class SearchBatcher {
 }
 
 class Searcher {
-	constructor(searchConfig, metaProvider, debug = function () {}) {
-		this.batcher = new SearchBatcher(searchConfig, metaProvider);
+	constructor(searchConfig, metaProvider, cacheWarmerUrls, resultCallback, debug = function () {}) {
+		this.batcher = new SearchBatcher(searchConfig, metaProvider, cacheWarmerUrls, resultCallback);
 	}
 
 	searchFactories(factories, query) {
+		if (!query) {
+			query = newQuery();
+		}
 		let requestCallbacks = [];
 		for (let i = factories.length - 1; i >= 0; i--) {
 			let cbf = factories[i];
@@ -594,6 +770,17 @@ export function getSearchConfig(params) {
 			return noun;
 		};
 	});
+
+	cfg.indexName = function (index) {
+		if (!cfg.index_prefix) {
+			return index;
+		}
+		let prefix = cfg.index_prefix;
+		if (!prefix.endsWith('_')) {
+			prefix += '_';
+		}
+		return `${prefix}${index}`;
+	};
 
 	return cfg;
 }

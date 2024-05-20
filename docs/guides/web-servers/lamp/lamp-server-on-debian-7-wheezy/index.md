@@ -1,18 +1,15 @@
 ---
 slug: lamp-server-on-debian-7-wheezy
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'LAMP Server on Debian 7 (Wheezy)'
 description: 'Host websites and web applications with a LAMP server on Debian 7.0 (Wheezy).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-10-09
+modified: 2015-12-01
 keywords: ["debian 7 LAMP server", "debian LAMP guide", "LAMP howto", "debian", "debian 7", "lamp server", "lamp", "apache", "mysql", "php", "linux web"]
 tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lamp/lamp-server-on-debian-7-wheezy/','/lamp-guides/debian-7-wheezy/','/websites/lamp/lamp-server-on-debian-7-wheezy/']
-modified: 2015-12-01
-modified_by:
-  name: Alex Fornuto
-published: 2013-10-09
-title: 'LAMP Server on Debian 7 (Wheezy)'
 external_resources:
  - '[Debian Linux Home Page](http://www.debian.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -29,12 +26,12 @@ deprecated: true
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack on a Debian 7 (Wheezy) Linode.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check your hostname run:
 
@@ -91,7 +88,7 @@ There are different ways to set up virtual hosts; however, the method below is r
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
 {{< /note >}}
 
@@ -104,7 +101,7 @@ The `ErrorLog` and `CustomLog` entries are suggested for more fine-grained loggi
 
         sudo a2ensite example.com.conf
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you need to disable your website later, run:
 
 sudo a2dissite example.com.conf
@@ -172,7 +169,7 @@ max_input_time = 30
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure the lines above are uncommented. Commented lines begin with a semicolon (**;**).
 {{< /note >}}
 

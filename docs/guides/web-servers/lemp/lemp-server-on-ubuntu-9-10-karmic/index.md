@@ -1,31 +1,26 @@
 ---
 slug: lemp-server-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'LEMP Server on Ubuntu 9.10 (Karmic)'
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, MySQL, and PHP.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-12-01
+modified: 2011-05-03
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lemp-guides/ubuntu-9-10-karmic/','/websites/lemp/lemp-server-on-ubuntu-9-10-karmic/','/web-servers/lemp/lemp-server-on-ubuntu-9-10-karmic/']
-modified: 2011-05-03
-modified_by:
-  name: Linode
-published: 2010-12-01
-title: 'LEMP Server on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: install-lemp-stack
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP". The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.
 
-Prior to beginning this guide, please complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Prior to beginning this guide, please complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Prepare System For Deployment
 
@@ -55,7 +50,7 @@ There are several viable and popular options for installing the nginx software. 
 
 The second option requires downloading the source for nginx from the upstream provider and compiling the software manually. Manual compilation makes it possible to run the most current version of the software at the expense of the testing and automatic updates from the Ubuntu project. All options are compatible, but in most cases we recommend using the packages from the Ubuntu repositories, unless your needs require a version newer than the one available in the Ubuntu repositories. Possible reasons for compiling nginx yourself include access to optional compile-time modules and features added in more recent versions.
 
-For more in-depth installation instructions consider our [guide to installing nginx](/docs/web-servers/nginx/installation/ubuntu-9-10-karmic).
+For more in-depth installation instructions consider our [guide to installing nginx](/docs/guides/websites-with-nginx-on-ubuntu-9-10-karmic/).
 
 ### Deploy from Ubuntu Project Packages
 
@@ -180,7 +175,7 @@ include /opt/nginx-sites.conf;
 {{< /file >}}
 
 
-Then, depending on the size and nature of your deployment, place your virtual host configurations either directly in the `/opt/nginx-sites.conf` file or include statements for server-specific configuration files in the `nginx-sites.file`. For more information regarding nginx configuration options, consider our [overview of nginx configuration](/docs/websites/nginx/basic-nginx-configuration).
+Then, depending on the size and nature of your deployment, place your virtual host configurations either directly in the `/opt/nginx-sites.conf` file or include statements for server-specific configuration files in the `nginx-sites.file`. For more information regarding nginx configuration options, consider our [overview of nginx configuration](/docs/guides/how-to-configure-nginx/).
 
 Once you've configured and loaded the nginx configuration, restart the web server to implement the new configuration by issuing the following command:
 
@@ -190,7 +185,7 @@ Make sure that the directories referenced in your configuration exist on your fi
 
 ## Deploy PHP with FastCGI
 
-In order to deploy PHP applications, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject consider our dedicated guide to [PHP FastCGI with Nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-9-10-karmic). Begin the deployment process by issuing the following command to install the required dependencies:
+In order to deploy PHP applications, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject consider our dedicated guide to [PHP FastCGI with Nginx](/docs/guides/nginx-and-phpfastcgi-on-ubuntu-9-10-karmic/). Begin the deployment process by issuing the following command to install the required dependencies:
 
     apt-get install php5-cli php5-cgi build-essential wget psmisc
 
@@ -325,8 +320,8 @@ When upstream sources offer new releases, repeat the instructions for installing
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
-- [Clustered Web Servers and Software Load Balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
-- [Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/docs/web-servers/nginx/perl-fastcgi/debian-5-lenny)
-- [Use PostgreSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/debian-5-lenny)
-- [Deploy Python Applications with uWSGI and nginx](/docs/web-servers/nginx/python-uwsgi/debian-5-lenny)
+- [Basic nginx Configuration](/docs/guides/how-to-configure-nginx/)
+- [Clustered Web Servers and Software Load Balancing with nginx](/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)
+- [Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/docs/guides/nginx-and-perlfastcgi-on-debian-5-lenny/)
+- [Use PostgreSQL as an Alternative to MySQL for data storage](/docs/guides/debian-5-lenny/)
+- [Deploy Python Applications with uWSGI and nginx](/docs/guides/wsgi-using-uwsgi-and-nginx-on-debian-5-lenny/)

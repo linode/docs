@@ -1,20 +1,15 @@
 ---
 slug: squid-http-proxy-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Creating an HTTP Proxy Using Squid on Ubuntu 18.04'
+title_meta: 'How to Create an HTTP Proxy Using Squid on Ubuntu 18.04'
 description: This guide shows how to use Squid to create an HTTP proxy server on your Linode running Ubuntu 18.04.
-og_description: This guide shows how to use Squid to create an HTTP proxy server on your Linode running Ubuntu 18.04.
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-04-14
 keywords: ["squid", "proxy", "ubuntu", "18.04", "http"]
 tags: ["proxy","web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-04-14
-modified: 2020-04-14
 image: Creating_an_HTTP_Proxy_Using_Squid_on_Ubuntu1804_1200x631.png
-modified_by:
-  name: Rajakavitha Kodhandapani
-title: 'How to Create an HTTP Proxy Using Squid on Ubuntu 18.04'
-h1_title: 'Creating an HTTP Proxy Using Squid on Ubuntu 18.04'
 external_resources:
  - '[Squid Official Site](http://www.squid-cache.org/)'
  - '[Configure Proxy on Windows](https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)'
@@ -25,7 +20,7 @@ relations:
         key: install-squid-proxy
         keywords:
             - distribution: Ubuntu 18.04
-aliases: ['/web-servers/squid/squid-http-proxy-ubuntu-18-04/']
+aliases: ['/web-servers/squid/squid-http-proxy-ubuntu-18-04/','/networking/squid/squid-http-proxy-ubuntu-12-04/']
 ---
 
 This guide will show you how to create your own HTTP proxy using Squid, a highly customizable proxy/cache application, on Ubuntu 18.04. An HTTP proxy acts as an intermediary between you and the internet. While connected to your Squid HTTP proxy, you will be able to:
@@ -39,9 +34,9 @@ The traffic passed from your client to your Squid HTTP proxy will not be encrypt
 
 ## Install Squid
 
-1.  Secure your Linode by completing the instructions in our guide on [Securing Your Server](/docs/guides/set-up-and-secure/), including adding a limited user account and configuring a firewall.
+1.  Secure your Linode by completing the instructions in our guide on [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/), including adding a limited user account and configuring a firewall.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide is written for a limited, non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -57,7 +52,7 @@ This guide is written for a limited, non-root user. Commands that require elevat
 
         sudo cp /etc/squid/squid.conf /etc/squid/squid.conf.default
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Squid configuration file includes comprehensive documentation in its commented lines, along with several uncommented rules that will remain active. These default rules should not be modified while you are following this guide. To gain a deeper understanding of Squid's options and default settings, you can review the full configuration file.
 {{< /note >}}
 
@@ -124,7 +119,7 @@ Adding password for user user1
 
 1.  Edit the Squid configuration file and add the following lines at the beginning of the file:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure that you update `/usr/lib/squid/basic_ncsa_auth` below with the location of the `nsca_auth` file that you checked in the previous step.
 {{< /note >}}
 
@@ -162,7 +157,7 @@ acl ncsa_users proxy_auth REQUIRED
 http_access allow client1 client2 ncsa_users
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Take care to avoid using multiple `http_access` rules when combining authentication methods, as Squid will follow the rules in the order that they appear. By using a single `http_access` rule for your `acl` definitions, you will ensure that several authentication methods will apply to each client that attempts to connect to your Squid HTTP proxy.
 {{< /note >}}
 

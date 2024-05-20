@@ -1,20 +1,14 @@
 ---
 slug: beginners-guide-to-go
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Getting Started with Go"
+title_meta: "A Beginner's Guide to Go"
 description: 'This guide will introduce you to the Go programming language and will also instruct you on how you can create and run your first program and more.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2020-02-11
 keywords: ['golang','go','command line arguments']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-02-11
-modified_by:
-  name: Linode
 image: GettingStartedwithGo.png
-title: "A Beginner's Guide to Go"
-h1_title: "Getting Started with Go"
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
 - '[The Go Programming Language Specification](https://golang.org/ref/spec)'
 - '[Go](https://golang.org)'
@@ -52,7 +46,7 @@ Although Go is not perfect, it has many advantages, including the following:
 
 ## Before You Begin
 
-{{< content "before-you-begin-install-go-shortguide" >}}
+{{% content "before-you-begin-install-go-shortguide" %}}
 
 {{< note >}}
 This guide was written with Go version 1.13.
@@ -82,7 +76,7 @@ func main() {
 
 * Executable programs should have a function named `main()` without any function parameters. You cannot have multiple `main()` functions in the files of a single project. Function definitions begin with the `func` keyword.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For more information on how functions in Go are formatted and used, review our [Go Functions, Loops, and Errors](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/) tutorial.
 {{< /note >}}
 
@@ -90,11 +84,11 @@ For more information on how functions in Go are formatted and used, review our [
 
     The `helloworld.go` file above imports the `fmt` package and uses the `fmt.Println()` function from that package.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 All exported package functions begin with an uppercase letter. This follows the Go rule: if you export something outside the current package, it should begin with an uppercase letter. This rule applies even if the field of the Go structure or the global variable is included in a Go package.
 
 For example, if the print function used in the above example was instead named `println()`, it would not be accessible to this program.
-{{</ note >}}
+{{< /note >}}
 
 * Go statements do not *need* to end with a semicolon, as the Go compiler will automatically insert semicolons where they are expected. You are free to use semicolons if you wish. For example, if you want to put two separate statements on a single line, a semicolon is needed between them.
 
@@ -128,7 +122,7 @@ Hello World!
 Hello World!
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `go run` command is usually used while experimenting and developing new Go projects. However, if you need to transfer an executable file to another system with the same architecture, you should use `go build`.
     {{< /note >}}
 
@@ -226,7 +220,6 @@ The output from this program is:
 {{< output >}}
 0
 {{< /output >}}
-
 {{< note >}}
 The zero value for a string variable is an empty string.
 {{< /note >}}

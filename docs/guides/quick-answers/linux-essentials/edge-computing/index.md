@@ -1,18 +1,13 @@
 ---
 slug: edge-computing
-author:
-  name: Pam Baker
+title: "What is Edge Computing and How Does It Work?"
+title_meta: "Edge Computing Architecture and Services Explained"
 description: 'Edge computing allows computation and data storage to be expedited. This guide covers how it works and why this technology should matter to you?.'
+authors: ["Pam Baker"]
+contributors: ["Pam Baker"]
+published: 2022-02-18
 keywords: ['what is edge computing','edge computing definition','edge computing example']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-18
-modified_by:
-  name: Linode
-title: "Edge Computing Architecture and Services Explained"
-h1_title: "What is Edge Computing and How Does It Work?"
-enable_h1: true
-contributor:
-  name: Pam Baker
 ---
 
 At its core, *edge computing* is distributed computing. It pushes the computing close to or on the data source, which greatly minimizes the distance data must travel to be analyzed. Not only does it shorten analysis times to real time speeds, but it also returns the output just as fast to automated systems that are located on the data source too. Because of the speed in these processes, edge computing is vital to innovative applications such as autonomous vehicles, in-hospital patient monitoring, remote asset monitoring for the oil and gas industry, movie recommendations on Smart TVs, and EKGs on smartphones. Given the versatility edge computing provides, many companies are finding it useful and even essential to their business.

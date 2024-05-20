@@ -1,15 +1,12 @@
 ---
 slug: install-steamcmd-for-a-steam-game-server
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Install SteamCMD for a Steam Game Server'
 description: 'Learn how to install SteamCMD for a Steam Game server and minimize your efforts to update the server files.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-02-15
 keywords: ["steam", "steamcmd", "steam cmd", "games", "game server", "steam server", "steampipe"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Linode
-published: 2016-02-15
-title: 'Install SteamCMD for a Steam Game Server'
 external_resources:
  - '[Valve Developer Community: SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)'
  - '[Dedicated Steam Servers for Linux](https://developer.valvesoftware.com/wiki/Dedicated_Servers_List#Linux_Dedicated_Servers)'
@@ -30,19 +27,19 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
 1.  [Install the `screen` utility](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/#installing-gnu-screen), which will be used later when running SteamCMD. For more information about how screen works, review the rest of our [Using GNU Screen to Manage Persistent Terminal Sessions](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) guide.
 
 ## Secure Your Game Server
 
-Game servers and clients are an especially ripe target for attack. Use our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to:
+Game servers and clients are an especially ripe target for attack. Use our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to:
 
-1.  [Add a limited Linux user](/docs/guides/set-up-and-secure/#add-a-limited-user-account) to your server. Make the username `steam` to coincide with the rest of [Linode's Steam guides](/docs/applications/game-servers/), as well as Valve's official documentation. Be sure to give the `steam` user `sudo` privileges.
+1.  [Add a limited Linux user](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) to your server. Make the username `steam` to coincide with the rest of [Linode's Steam guides](/docs/applications/game-servers/), as well as Valve's official documentation. Be sure to give the `steam` user `sudo` privileges.
 
-1.  [Harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access).
+1.  [Harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access).
 
-1.  [Remove unused network-facing services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services).
+1.  [Remove unused network-facing services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services).
 
 1.  If you are using [**iptables**](/docs/guides/control-network-traffic-with-iptables/) (which is set in Linode's Ubuntu and Debian images by default), follow the [Configure your Firewall Using IPTables](#configure-your-firewall-using-iptables) section.
 
@@ -106,7 +103,7 @@ COMMIT
 COMMIT
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Some Steam games require a few additional rules which can be found in our [Steam game guides](/docs/applications/game-servers/). Steam can also use multiple port ranges for various purposes, but they should only be allowed if your game(s) make use of those services. See [this](https://support.steampowered.com/kb_article.php?ref=8571-GLVN-8711) Steam Support page for more information.
 
 Steam currently supports multiplayer play over IPv4 only, so a Steam server only needs basic IPv6 firewall rules, shown below.
@@ -196,9 +193,9 @@ Installing via the package manager allows you to more easily download updates an
 
             sudo apt-get install steamcmd
 
-           {{< note >}}
+        {{< note respectIndent=false >}}
   In the window that appears, you may need to enter the keys `shift + tab` to select the `ok` option.
-           {{< /note >}}
+        {{< /note >}}
 
      1.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
 
@@ -221,9 +218,9 @@ deb-src http://mirrors.linode.com/debian stretch main non-free
             sudo apt update
             sudo apt-get install steamcmd
 
-           {{< note >}}
+        {{< note respectIndent=false >}}
   In the window that appears following the command to install steamCMD, you may need to enter the keys `shift + tab` to select the `ok` option.
-           {{< /note >}}
+        {{< /note >}}
 
 
     1.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
@@ -245,7 +242,7 @@ If your package manager does not include the `steamcmd` package, install it manu
 
             sudo apt-get install lib32gcc1
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Running `dpkg --add-architecture i386` is not necessary at this point. Our Steam game guides add [multiarch support](https://wiki.debian.org/Multiarch/HOWTO) only when a game requires it.
 {{< /note >}}
 
@@ -260,7 +257,6 @@ Running `dpkg --add-architecture i386` is not necessary at this point. Our Steam
 1.  Extract the installation and runtime files:
 
         tar -xvzf steamcmd_linux.tar.gz
-
 {{< note >}}
 When running a Steam game, you may encounter the following error:
 
@@ -320,9 +316,9 @@ The game server will still operate despite this error, and it should be somethin
 
         login example_user
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Some versions of the Steam CLI do **not** obfuscate passwords. If you're signing in with your Steam account, be aware of your local screen's security.
-{{< /caution >}}
+{{< /note >}}
 
 ## How Do I Update My SteamCMD Game Server?
 
@@ -357,7 +353,7 @@ You may encounter an error when installing or using SteamCMD. Some of these erro
         LinuxGSM Total:  68M
         Serverfiles:     40K
 
-    If you are trying to install a game that's larger than the `Available` disk space, you are going to see this error. Review your disk usage by running `df -h` and examine your [Linode's disk and storage](/docs/guides/disks-and-storage/) through the Cloud Manager. To overcome this error, you'll need to either remove files on your disk, [resize your disk](/docs/guides/resize-a-linode-disk/), or [resize your Linode](/docs/guides/resizing-a-linode/) to a larger plan.
+    If you are trying to install a game that's larger than the `Available` disk space, you are going to see this error. Review your disk usage by running `df -h` and examine your [Linode's disk and storage](/docs/products/compute/compute-instances/guides/disks-and-storage/) through the Cloud Manager. To overcome this error, you'll need to either remove files on your disk, [resize your disk](/docs/products/compute/compute-instances/guides/disks-and-storage/), or [resize your Linode](/docs/products/compute/compute-instances/guides/resize/) to a larger plan.
 - `ERROR! Failed to install app X (No subscription)` - This error code means that no authorized accounts on your SteamCMD owns the game. Verify the account on which you purchased the game and make sure that you are logged in using that account.
 - `Error! State is 0x402 after update job`  - Error code `0x402` could mean that either the update servers are down or you have an internet connectivity issue. Verify that your Linode has network connectivity by following the [Troubleshooting Basic Connection Issues
 ](/docs/guides/troubleshooting-basic-connection-issues/) guide.

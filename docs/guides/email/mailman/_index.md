@@ -1,12 +1,11 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: Mailman Guides
 description: 'Guides on using Mailman to manage mailing lists on your Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-12
 keywords: ["mailman", "listserv", "email", "postfix", "mailing list"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2010-02-12
-title: Mailman Guides
 show_in_lists: true
 aliases: ['/email/mailman/']
 ---

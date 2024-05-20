@@ -1,19 +1,13 @@
 ---
 slug: angular-animations-get-started
-author:
-  name: Cameron Laird
+title: "Getting Started with Angular Animations"
+title_meta: "Angular Animations: Get Started"
 description: 'Get started creating Angular animations using components, states, triggers, and transitions. Learn the basics of animating an HTML div element with Angular.'
+authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
+published: 2022-04-22
 keywords: ['angular animations', 'create angular component', 'angular animation trigger', 'angular animation states', 'angular animation transitions', 'toggle function']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-22
-modified_by:
-  name: Linode
-title: "Angular Animations: Get Started"
-h1_title: "Getting Started with Angular Animations"
-enable_h1: true
-contributor:
-  name: Cameron Laird
-  link: https://twitter.com/Phaseit
 external_resources:
 - '[Introduction to Angular Animations](https://angular.io/guide/animations)'
 - '[Angular Components Overview](https://angular.io/guide/component-overview)'
@@ -75,7 +69,7 @@ Ensure that the top of your `app.component.ts` file includes the following impor
 import { Component } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 {{< /file >}}
-{{</ note >}}
+{{< /note >}}
 
 ### Create the Angular Component HTML Template
 

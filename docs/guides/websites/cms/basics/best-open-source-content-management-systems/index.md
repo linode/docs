@@ -1,18 +1,13 @@
 ---
 slug: best-open-source-content-management-systems
-author:
-  name: Steven J. Vaughan-Nichols
+title: "What Are the Best Open Source Content Management Systems?"
+title_meta: "The Top Open Source Content Management Systems"
 description: "Searching for the best open source content management systems (CMS)? From what to look for in a CMS to the top options available, this guide covers it all."
+authors: ["Steven J. Vaughan-Nichols"]
+contributors: ["Steven J. Vaughan-Nichols"]
+published: 2022-03-25
 keywords: ['top 10 open source cms','top open source content management systems','top opensource cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-25
-modified_by:
-  name: Linode
-title: "The Top Open Source Content Management Systems"
-h1_title: "What Are the Best Open Source Content Management Systems?"
-enable_h1: true
-contributor:
-  name: Steven J. Vaughan-Nichols
 ---
 
 There are dozens of Linux distributions, but only one Linux. There are over a dozen open-source web servers, but only one Apache. When it comes to open-source Content Management Systems (CMS), however, there are more than a hundred choices. This guide includes a line up of the most popular CMSs, a list of features every top-rated CMS provides, and suggestions on how to choose the best one for you.

@@ -1,37 +1,32 @@
 ---
 slug: email-with-citadel-on-ubuntu-10-04-lts-lucid
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Email with Citadel on Ubuntu 10.04 LTS (Lucid)'
 description: 'Setting up an email and groupware server using Citadel on an Ubuntu 10.04 LTS (Lucid) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-09
+modified: 2013-09-25
 keywords: ["citadel", "citadel ubuntu 10.04", "ubuntu 10.04 mail server", "groupware", "email server"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/citadel/ubuntu-10-04-lucid/','/email/citadel/email-with-citadel-on-ubuntu-10-04-lts-lucid/']
-modified: 2013-09-25
-modified_by:
-  name: Linode
-published: 2010-05-09
-title: 'Email with Citadel on Ubuntu 10.04 LTS (Lucid)'
 relations:
     platform:
         key: email-with-citadel
         keywords:
             - distribution: Ubuntu 10.04
+deprecated: true
 ---
-
-
 
 Citadel is a groupware suite that provides system administrators with an easy method to set up and manage email, calendars, mailing lists and other collaboration tools. It also features an automated installation process and versatile deployment options that allow the application to be scaled across multiple servers.
 
-Before installing Citadel, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before installing Citadel, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 This guide also assumes that you wish to run Citadel by itself on this server on port 80 or 443 for browser-based access. **Please note:** If you intend to install Citadel alongside another web server package such as Apache or nginx, select the "internal" option when asked about web server integration. Be sure to specify unique ports for Citadel such as 8080 for HTTP or 4343 for HTTPS.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

@@ -1,27 +1,21 @@
 ---
 slug: configure-apache-to-run-multiple-wordpress-sites-on-one-linode
-author:
-  name: Jonathan Tsai
-  email: docs@linode.com
+title: Set Up Apache to Run Multiple WordPress Sites on a Single Linode
 description: 'This guide shows how to configure Apache Virtual Hosts to serve multiple WordPress sites from the same Linode.'
+authors: ["Jonathan Tsai"]
+contributors: ["Jonathan Tsai"]
+published: 2017-10-24
+modified: 2018-12-17
 keywords: ["install WordPress", "WordPress on Linode", "multiple WordPress", "how to configure WordPress"]
 tags: ["ubuntu","apache","lamp","wordpress","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/wordpress/configure-apache-to-run-multiple-wordpress-sites-on-one-linode/','/websites/cms/configure-apache-to-run-multiple-wordpress-sites-on-one-linode/']
-modified: 2018-12-17
-modified_by:
-  name: Linode
-contributor:
-  name: Jonathan Tsai
-published: 2017-10-24
-title: Set Up Apache to Run Multiple WordPress Sites on a Single Linode
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
 - '[Apache virtual host documentation](http://httpd.apache.org/docs/current/vhosts/)'
 ---
-
 
 ![Set Up Apache to Run Multiple WordPress Sites on a Single Linode](Multiple_WordPress.jpg)
 
@@ -31,11 +25,11 @@ WordPress is a popular, dynamic, content management system that makes it easy to
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode’s hostname and timezone.
+1. Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode’s hostname and timezone.
 
-1. This guide will use sudo wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1. This guide will use sudo wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-1. If you have not already, [assign Linode's name servers](/docs/guides/dns-manager/#use-linodes-name-servers-with-your-domain) to your domain at your domain name's registrar.
+1. If you have not already, [assign Linode's name servers](/docs/products/networking/dns-manager/guides/authoritative-name-servers/) to your domain at your domain name's registrar.
 
 1. Update your system:
 
@@ -207,7 +201,7 @@ In this section, you will configure the Apache virtual hosts file so that a visi
 
 ## Configure WordPress
 
-Follow the [Configure WordPress](/docs/websites/cms/install-wordpress-ubuntu-18-04/#configure-wordpress) section of our Install WordPress on Ubuntu 18.04 guide.
+Follow the [Configure WordPress](/docs/guides/install-wordpress-ubuntu-18-04/#configure-wordpress) section of our Install WordPress on Ubuntu 18.04 guide.
 
 If you do not yet have registered domains to use, you can still perform the WordPress installation using your Linode's IP address. For example:
 
@@ -220,7 +214,7 @@ If you do not yet have registered domains to use, you can still perform the Word
 
     ![WordPress setup-config.php](wp-config.png)
 
-1. You can begin configuring your WordPress sites. Follow the [Configure WordPress](/docs/websites/cms/install-wordpress-ubuntu-18-04/#configure-wordpress) section of our Install WordPress on Ubuntu 18.04 guide.
+1. You can begin configuring your WordPress sites. Follow the [Configure WordPress](/docs/guides/install-wordpress-ubuntu-18-04/#configure-wordpress) section of our Install WordPress on Ubuntu 18.04 guide.
 
-1. If you have not yet added DNS records for your Domains, follow Linode's [DNS Manager](/docs/guides/dns-manager/) guide.
+1. If you have not yet added DNS records for your Domains, follow Linode's [DNS Manager](/docs/products/networking/dns-manager/) guide.
 

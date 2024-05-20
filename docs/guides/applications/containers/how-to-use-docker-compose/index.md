@@ -1,17 +1,14 @@
 ---
 slug: how-to-use-docker-compose
-author:
-  name: Linode
-  email: docs@linode.com
+title: How to Use Docker Compose
 description: "How to Use Docker Compose"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-01-02
+modified: 2017-12-28
 keywords: ["docker", "compose"]
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-12-28
-modified_by:
-  name: Linode
-published: 2018-01-02
-title: How to Use Docker Compose
 aliases: ['/applications/containers/how-to-use-docker-compose/']
 ---
 
@@ -32,11 +29,11 @@ Generally the containers in an application built using Docker Compose will all r
 
 You will need a Linode with Docker CE installed to follow along with the steps in this guide.
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ## Basic Usage
 
@@ -116,9 +113,9 @@ Most of this guide will focus on setting up containers using the `services` sect
 
 Many other configuration directives are available. See the [Compose File reference](https://docs.docker.com/compose/compose-file) for details.
 
-{{< caution >}}
+{{< note type="alert" >}}
 The example `docker-compose.yml` above uses the `environment` directive to store MySQL user passwords directly in the YAML file to be imported into the container as environment variables. This is not recommended for sensitive information in production environments. Instead, sensitive information can be stored in a separate `.env` file (which is not checked into version control or made public) and accessed from within `docker-compose.yml` by using the `env_file` directive.
-{{< /caution >}}
+{{< /note >}}
 
 ## Build an Application from Scratch
 

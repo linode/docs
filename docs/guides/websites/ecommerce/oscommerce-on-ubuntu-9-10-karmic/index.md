@@ -1,28 +1,25 @@
 ---
 slug: oscommerce-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
+title: 'osCommerce on Ubuntu 9.10 (Karmic)'
 description: 'Deploying osCommerce, a popular e-commerce web application, on Ubuntu 9.10 (Karmic).'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-02-08
+modified: 2011-08-22
 keywords: ["oscommerce", "ecommerce", "store", "cart", "shop", "shopping"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/e-commerce/oscommerce/ubuntu-9-10-karmic/','/websites/ecommerce/oscommerce-on-ubuntu-9-10-karmic/']
-modified: 2011-08-22
-modified_by:
-  name: Linode
-published: 2010-02-08
-title: 'osCommerce on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: how-to-install-osCommerce
         keywords:
            - distribution: Ubuntu 9.10
+deprecated: true
 ---
 
 osCommerce is an open source solution for creating your own online store. It runs on a LAMP stack and is a strong alternative to Magento, which can be difficult to administer for some.
 
-Before installing osCommerce we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, osCommerce requires Apache, MySQL, and PHP to be installed. We assume you've followed our [Ubuntu LAMP guide](/docs/lamp-guides/ubuntu-9-10-karmic).
+Before installing osCommerce we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Additionally, osCommerce requires Apache, MySQL, and PHP to be installed. We assume you've followed our [Ubuntu LAMP guide](/docs/guides/lamp-server-on-ubuntu-9-10-karmic/).
 
 ## Installation
 
@@ -106,7 +103,7 @@ From here you can begin customizing your store. The default index page will give
 
 ## SSL Certificates
 
-You may want to install a commercial SSL certificate on your store to encrypt the data sent from your customer to your server. After [Obtaining a Commercial SSL Certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate), you'll need to make a couple of changes to your `includes/configure.php` file. Below is an example section from that file that highlights the changes you need to make:
+You may want to install a commercial SSL certificate on your store to encrypt the data sent from your customer to your server. After [Obtaining a Commercial SSL Certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/), you'll need to make a couple of changes to your `includes/configure.php` file. Below is an example section from that file that highlights the changes you need to make:
 
 {{< file "/srv/www/example.com/public\\_html/includes/configure.php" php >}}
 // Define the webserver and path parameters

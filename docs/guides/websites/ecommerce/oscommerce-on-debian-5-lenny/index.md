@@ -1,28 +1,25 @@
 ---
 slug: oscommerce-on-debian-5-lenny
-deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
+title: 'osCommerce on Debian 5 (Lenny)'
 description: 'How to set up an online store using the open source osCommerce system on Debian 5 (Lenny).'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-01-22
+modified: 2011-08-22
 keywords: ["osCommerce", "Debian", "Store", "Ecommerce"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ecommerce/oscommerce-on-debian-5-lenny/','/web-applications/e-commerce/oscommerce/debian-5-lenny/']
-modified: 2011-08-22
-modified_by:
-  name: Linode
-published: 2010-01-22
-title: 'osCommerce on Debian 5 (Lenny)'
 relations:
     platform:
         key: how-to-install-osCommerce
         keywords:
            - distribution: Debian 5
+deprecated: true
 ---
 
 osCommerce is an open source solution for creating your own online store. It runs on a LAMP stack and is a strong alternative to Magento, which can be difficult to administer for some.
 
-Before installing osCommerce we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, osCommerce requires Apache, MySQL, and PHP to be installed. We assume you've followed our [Debian LAMP guide](/docs/lamp-guides/debian-5-lenny).
+Before installing osCommerce we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Additionally, osCommerce requires Apache, MySQL, and PHP to be installed. We assume you've followed our [Debian LAMP guide](/docs/guides/lamp-server-on-debian-5-lenny/).
 
 ## Installation
 
@@ -85,7 +82,7 @@ From here you can begin customizing your store. The default index page will give
 
 ## SSL Certificates
 
-You may want to install a commercial SSL certificate on your store to encrypt the data sent from your customer to your server. After [Obtaining a Commercial SSL Certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate), you'll need to make a couple of changes to your `includes/configure.php` file. Below is an example section from that file that highlights the changes you need to make:
+You may want to install a commercial SSL certificate on your store to encrypt the data sent from your customer to your server. After [Obtaining a Commercial SSL Certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/), you'll need to make a couple of changes to your `includes/configure.php` file. Below is an example section from that file that highlights the changes you need to make:
 
 {{< file "/srv/www/example.com/public\\_html/includes/configure.php" php >}}
 // Define the webserver and path parameters

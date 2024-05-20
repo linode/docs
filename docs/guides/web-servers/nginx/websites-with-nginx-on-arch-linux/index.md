@@ -1,33 +1,30 @@
 ---
 slug: websites-with-nginx-on-arch-linux
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Websites with NGINX on Arch Linux
 description: 'Nginx is a lightweight and high performance web server designed to deliver large amounts of content with efficiency. This guide shows how to install it on Arch Linux.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-02
+modified: 2014-03-27
 keywords: ["nginx arch linux", "nginx arch", "nginx", "http server", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/websites-with-nginx-on-arch-linux/','/web-servers/nginx/installation/arch-linux/','/websites/nginx/websites-with-nginx-on-arch-linux/']
-modified: 2014-03-27
-modified_by:
-  name: Alex Fornuto
-published: 2011-02-02
-title: Websites with NGINX on Arch Linux
 relations:
     platform:
         key: websites-with-nginx
         keywords:
             - distribution: Arch Linux
 tags: ["web server","nginx"]
+deprecated: true
 ---
 
 Nginx is a lightweight and high performance web server, designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/), which uses a threaded or process-oriented approach to handling requests, NGINX uses an asynchronous event-driven model to provide more predictable performance under load.
 
-Before you begin installing the NGINX web server, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), our [beginner's guide](/docs/guides/linode-beginners-guide/), and our [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before you begin installing the NGINX web server, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), our [beginner's guide](/docs/products/compute/compute-instances/faqs/), and our [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -65,5 +62,5 @@ You may wish to consult the following resources for additional information on th
 
 - [Linode Docs NGINX Documentation](/docs/web-servers/nginx/)
 - [NGINX Community Documentation](http://wiki.nginx.org)
-- [Configure Perl and FastCGI with NGINX](/docs/web-servers/nginx/perl-fastcgi/arch-linux)
-- [Configure PHP and FastCGI with NGINX](/docs/web-servers/nginx/php-fastcgi/arch-linux)
+- [Configure Perl and FastCGI with NGINX](/docs/guides/nginx-and-perlfastcgi-on-arch-linux/)
+- [Configure PHP and FastCGI with NGINX](/docs/guides/nginx-and-phpfastcgi-on-arch-linux/)

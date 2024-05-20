@@ -1,21 +1,16 @@
 ---
 slug: sharded-database
-author:
-  name: Jeff Novotny
+title: "Database Sharding: Concepts, Examples, and Strategies"
 description: 'Database sharding divides data into smaller chunks and distributes it across different database nodes. Learn more about sharding practices and strategies.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-05-26
 keywords: ['sharded database','db sharding','sharding strategy','database sharding examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-26
-modified_by:
-  name: Linode
-title: "Database Sharding: Concepts, Examples, and Strategies"
-h1_title: "Database Sharding: Concepts, Examples, and Strategies"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Wikipedia page on database sharding](https://en.wikipedia.org/wiki/Shard_(database_architecture))'
 - '[MongoDB explanation of database sharding](https://www.mongodb.com/features/database-sharding-explained)'
+tags: ["saas"]
 ---
 
 Many software applications use a *relational database management system* (RDBMS) to store data. As the database grows, it becomes more time-and-storage intensive to store the data. One popular solution to this problem is [*database sharding*](https://en.wikipedia.org/wiki/Shard_(database_architecture)). A sharded database distributes the records in a database's tables across different databases on different computer systems. This guide explains how database sharding works and discusses some of the advantages and disadvantages of sharding. It also describes some of the main sharding strategies and provides some database sharding examples.
@@ -38,7 +33,7 @@ Each shard can be accessed independently and does not necessarily require access
 
 The following example demonstrates how horizontal sharding works in practice. Before the database is sharded, the example `store` table is organized in the following way:
 
-| store_ID | city | state | zip_code |
+| `store_ID` | `city` | `state` | `zip_code` |
 |:-:|:-:|:-:|:-:|
 | 1001 | Detroit | MI | 48201 |
 | 1350 | Chicago | IL | 60601 |
@@ -49,7 +44,7 @@ The following example demonstrates how horizontal sharding works in practice. Be
 
 After sharding, one shard has half the rows from the table.
 
-| store_ID | city | state | zip_code |
+| `store_ID` | `city` | `state` | `zip_code` |
 |:-:|:-:|:-:|:-:|
 | 1001 | Detroit | MI | 48201 |
 | 2101| Cleveland | OH | 44114 |
@@ -57,7 +52,7 @@ After sharding, one shard has half the rows from the table.
 
 The second shard contains the remainder of the rows.
 
-| store_ID | city | state | zip_code  |
+| `store_ID` | `city` | `state` | `zip_code` |
 |:-:|:-:|:-:|:-:|
 | 1350 | Chicago | IL | 60601 |
 | 2250 | Pittsburgh | PA | 15222 |
@@ -119,14 +114,14 @@ The database sharding examples below demonstrate how range sharding might work u
 
 The first shard contains the following rows:
 
-| store_ID | city | state | zip_code |
+| `store_ID` | `city` | `state` | `zip_code` |
 |:-:|:-:|:-:|:-:|
 | 1001 | Detroit | MI | 48201 |
 | 1350 | Chicago | IL | 60601 |
 
 The second shard has the following entries:
 
-| store_ID | city | state | zip_code  |
+| `store_ID` | `city` | `state` | `zip_code` |
 |:-:|:-:|:-:|:-:|
 | 2101| Cleveland | OH | 44114 |
 | 2250 | Pittsburgh | PA | 15222 |
@@ -153,7 +148,7 @@ The following database sharding example demonstrates a simple hash sharing opera
 The hash results are not actually stored inside the database. They are shown in the final column for clarity.
 {{< /note >}}
 
-| store_ID | city | state | zip_code  | hash result |
+| `store_ID` | `city` | `state` | `zip_code` | hash result |
 |:-:|:-:|:-:|:-:|:-:|
 | 1001 | Detroit | MI | 48201 | 2
 | 1350 | Chicago | IL | 60601 | 0
@@ -164,21 +159,21 @@ The hash results are not actually stored inside the database. They are shown in 
 
 Rows having a hash result of `0` map to the first shard.
 
-| store_ID | city | state | zip_code |
+| `store_ID` | `city` | `state` | `zip_code` |
 |:-:|:-:|:-:|:-:|
 | 1350 | Chicago | IL | 60601 |
 | 2250 | Pittsburgh | PA | 15222 |
 
 Those that have a hash result of `1` are assigned to shard number two.
 
-| store_ID | city | state | zip_code |
+| `store_ID` | `city` | `state` | `zip_code` |
 |:-:|:-:|:-:|:-:|
 | 2101| Cleveland | OH | 44114 |
 | 2459 | New York | NY | 10022 |
 
 The remainder are stored in the third shard.
 
-| store_ID | city | state | zip_code |
+| `store_ID` | `city` | `state` | `zip_code` |
 |:-:|:-:|:-:|:-:|
 | 1001 | Detroit | MI | 48201 |
 | 2459 | New York | NY | 10022 |
@@ -197,7 +192,7 @@ Directory-based sharding is a good choice for the `stores` database. The store e
 
 The first shard contains the entries displayed below.
 
-| store_ID | city | state | zip_code |
+| `store_ID` | `city` | `state` | `zip_code` |
 |:-:|:-:|:-:|:-:|
 | 2250 | Pittsburgh | PA | 15222 |
 | 2455 | Boston | MA | 02108 |
@@ -205,7 +200,7 @@ The first shard contains the entries displayed below.
 
 The second shard contains the remainder of the data.
 
-| store_ID | city | state | zip_code |
+| `store_ID` | `city` | `state` | `zip_code` |
 |:-:|:-:|:-:|:-:|
 | 1001 | Detroit | MI | 48201 |
 | 1350 | Chicago | IL | 60601 |
@@ -234,3 +229,5 @@ Sharding allows a database to scale horizontally, taking advantage of the increa
 Sharding can be accomplished using range sharding, hash sharding, or directory-based sharding. Range sharding is the easiest method, but is more likely to result in unequal shards. Hash sharding more effectively distributes the records, but is more difficult to implement. Directory-based sharding groups related items together on the same shard.
 
 A sharded database can be implemented using multiple Linode servers. Linode allows you to configure a full web application on a powerful Linux operating system running the industry-standard LAMP stack. Choose from a high-performance [*Dedicated CPU*](https://www.linode.com/products/dedicated-cpu/) service, or a flexible and affordable [*Shared CPU*](https://www.linode.com/products/shared/) alternative. Similarly, you can also use [Linode's Managed Database service](/docs/products/databases/managed-databases/) to deploy a database cluster without the need to install and maintain the database infrastructure.
+
+{{% content "dbass-eos" %}}

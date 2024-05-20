@@ -1,19 +1,14 @@
 ---
 slug: getting-started-with-varnish-cache
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: Getting Started with Varnish Cache
 description: Use Varnish Cache to increase your site's speed and optimize server resources
+authors: ["Kevin Cupp"]
+contributors: ["Kevin Cupp"]
+published: 2014-02-05
+modified: 2017-02-24
 keywords: ["Varnish", "Ubuntu", "Debian", "Cache", ""]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/varnish/getting-started-with-varnish-cache/','/web-servers/varnish/']
-modified: 2017-02-24
-contributor:
-    name: Kevin Cupp
-modified_by:
-  name: Edward Angert
-published: 2014-02-05
-title: Getting Started with Varnish Cache
 external_resources:
  - '[Official Varnish Documentation](https://www.varnish-cache.org/docs)'
 ---
@@ -31,9 +26,9 @@ If your web server is nginx and you plan to use Varnish cache to serve WordPress
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 3.  Install and configure a [web server](/docs/websites/) like Apache or nginx.
 
@@ -195,7 +190,7 @@ unset req.http.Cookie;
 
 You may find that a particular cookie is important for displaying content or determines if your user is logged in or not. In this case, you probably don't want to show cached content and instead, just want to send the user straight to the backend.
 
-For this case, you'll check `req.http.Cookie` for a cookie called "logged_in", and if its found, the request will be passed on to the backend with no caching. Here's our entire `vcl_recv` subroutine thus far:
+For this case, you'll check `req.http.Cookie` for a cookie called `logged_in`, and if its found, the request will be passed on to the backend with no caching. Here's our entire `vcl_recv` subroutine thus far:
 
 {{< file "/etc/varnish/user.vcl" >}}
 sub vcl_recv
@@ -267,7 +262,7 @@ set beresp.grace = 1h;
 
 #### Serve Varnish Cache from Another Linode (Optional)
 
-For added availability, consider serving Varnish cache from a separate Linode. In this case, the Varnish installation steps should be performed on a separate Linode in the same data center as the web server. Once installed, configure the Varnish backend `.host` value to point at the web server Linode's [private IP address](/docs/guides/managing-ip-addresses/). Note that DNS records for your site should be pointed at the Varnish Linode, since this is where the client connects.
+For added availability, consider serving Varnish cache from a separate Linode. In this case, the Varnish installation steps should be performed on a separate Linode in the same data center as the web server. Once installed, configure the Varnish backend `.host` value to point at the web server Linode's [private IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). Note that DNS records for your site should be pointed at the Varnish Linode, since this is where the client connects.
 
 That's it! If everything went well, visitors to your site are now being served Varnish-cached content from memory, resulting in dramatic improvements to your site's speed.
 

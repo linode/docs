@@ -1,18 +1,13 @@
 ---
 slug: sql-injection-attack
-author:
-  name: Jeff Novotny
+title: "SQL Injection Attack: What It Is and How to Prevent It"
+title_meta: "What is SQL Injection? Attack Examples & Prevention Tips"
 description: 'SQL injection is a type of attack that alters SQL queries. Learn about the different types of SQL injection attacks, how to detect them, and prevention tips.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-06-03
 keywords: ['sql injection attack','sql injection example','what is a sql injection']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-03
-modified_by:
-  name: Linode
-title: "What is SQL Injection? Attack Examples & Prevention Tips"
-h1_title: "SQL Injection Attack: What It Is and How to Prevent It"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Open Web Application Security Project website](https://owasp.org/)'
 - '[Wikipedia SQL Injection page](https://en.wikipedia.org/wiki/SQL_injection)'

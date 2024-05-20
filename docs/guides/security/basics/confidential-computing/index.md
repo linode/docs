@@ -1,19 +1,13 @@
 ---
 slug: confidential-computing
-author:
-  name: Pam Baker
+title: "Confidential Computing: A Collaborative Security Model for Data in Use"
 description: 'This guide dives into the security model, confidential computing, which seeks to better secure data in use.'
+authors: ["Pam Baker"]
+contributors: ["Pam Baker"]
+published: 2021-12-23
 keywords: ['confidential computing']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-23
-modified_by:
-  name: Linode
-title: "Confidential Computing: A Collaborative Security Model for Data in Use"
-h1_title: "Confidential Computing: A Collaborative Security Model for Data in Use"
-enable_h1: true
-contributor:
-  name: Pam Baker
 ---
 
 Cloud providers, hardware vendors, and software developers have teamed up to tackle data-in-use security issues. The result is a security model called *confidential computing*.

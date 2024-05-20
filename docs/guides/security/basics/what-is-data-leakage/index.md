@@ -1,19 +1,13 @@
 ---
 slug: what-is-data-leakage
-author:
-  name: Wayne Rash
+title: "What is Data Leakage? (Plus Detection and Protection Tips)"
+title_meta: "Data Leakage: Definition, Examples, & Protection Tips"
 description: 'Data leakage detection in machine learning involves leaking information results in overestimation of scores. Get examples plus detection and prevention tips.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
+authors: ["Wayne Rash"]
+contributors: ["Wayne Rash"]
+published: 2022-02-04
 keywords: ['what is data leak','dta leakage','data leakage machine learning']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-04
-modified_by:
-  name: Linode
-title: "Data Leakage: Definition, Examples, & Protection Tips"
-h1_title: "What is Data Leakage? (Plus Detection and Protection Tips)"
-enable_h1: true
-contributor:
-  name: Wayne Rash
 external_resources:
 - '[Cybersecurity & Infrastructure Security Agency](https://www.cisa.gov/defining-insider-threats)'
 - '[Enterprise Data Loss Prevention (DLP) Reviews and Ratings](https://www.gartner.com/reviews/market/enterprise-data-loss-prevention)'

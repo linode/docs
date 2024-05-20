@@ -1,18 +1,13 @@
 ---
 slug: linux-vs-windows
-author:
-  name: Tom Henderson
+title: "Linux vs. Windows: What’s the Difference?"
+title_meta: "What is the Difference Between Linux and Windows?"
 description: 'This guide discusses Linux vs. Windows, the difference between Linux and Windows operating systems, and which is best for your needs.'
+authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
+published: 2022-04-01
 keywords: ['windows vs linux ','linux or windows','is linux better than windows']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-01
-modified_by:
-  name: Linode
-title: "What is the Difference Between Linux and Windows?"
-h1_title: "Linux vs. Windows: What’s the Difference?"
-enable_h1: true
-contributor:
-  name: Tom Henderson
 ---
 
 Users, system administrators, developers, and system architects debate the question of whether Windows or Linux is better for any given purpose. The answers are well-reasoned, full of prejudice, and usually arrive from practical experience. This guide covers the differences between Linux and Windows operating systems and servers. It primarily focuses on the areas of differences between desktops, licensing models, web service technology, developer support, and more.
@@ -35,7 +30,7 @@ Today, Microsoft Windows dominates business desktop and laptop computing, with A
 
 Linux desktops permit cloud use, and are focused on client-side computing resources. Popular applications that look and feel like Office, do not need hosting or licensing costs, and retain large compatibility with dominant Microsoft offerings.
 
-Business use of Linux on the desktop can authenticate to Microsoft directory structure resources (Active Directory authentication via SAMBA). Linux lacks variety in specific areas of application support, but only rarely is there no FOSS-equivalent to a popular genre of Microsoft desktop application.
+Business use of Linux on the desktop can authenticate to Microsoft directory structure resources (Active Directory authentication via Samba). Linux lacks variety in specific areas of application support, but only rarely is there no FOSS-equivalent to a popular genre of Microsoft desktop application.
 
 Microsoft also ties security to a Trusted Platform Module (TPM) hardware module and the Prism chipset that serves as a core moderator of cryptography and elements of security authentication. Numerous encryption and authorization features must have the TPM hardware available in desktop and notebook resources.
 
@@ -51,7 +46,7 @@ Microsoft Windows does not publish the source to the operating system kernel, or
 
 ## Evolving GUIs: Linux vs. Microsoft
 
-Most GUIs find their origin in the [Smalltalk programming language](https://en.wikipedia.org/wiki/Smalltalk), along with Windows GUI, macOS, and XWindows roots. In the race between Windows and Linux, Windows continues to improve its GUI software, and developers are familiar with Windows GUI programming. Microsoft makes up for scripting and macro execution by adapting its PowerShell language and APIs to match the rich scripting infrastructure in Unix variants, in this case, Linux.
+Most GUIs find their origin in the [Smalltalk programming language](https://en.wikipedia.org/wiki/Smalltalk), along with Windows GUI, macOS, and X Windows roots. In the race between Windows and Linux, Windows continues to improve its GUI software, and developers are familiar with Windows GUI programming. Microsoft makes up for scripting and macro execution by adapting its PowerShell language and APIs to match the rich scripting infrastructure in Unix variants, in this case, Linux.
 
 Linux functions on 32-64 bit platforms and is less captive to different hardware platforms, providing consistency in GUI and compatibility across a wide variety of desktop hardware, including Intel, AMD, ARM, RISC-V, and other families. Older Linux versions lack many of the applications that made Windows popular. This is a problem now largely solved. Graphics, video editing, CAD, and other applications can be found on Linux using various GUIs.
 
@@ -111,7 +106,7 @@ Highly extensible farms of Docker-packaged applications are managed by orchestra
 
 Both platforms have powerful command line utilities to control desktops, servers, networking, storage, and file systems. These utilities can be executed individually, or through batch or shell-scripting languages.
 
-Microsoft does little to support external operating system connectivity except through browsers, and only offers the barest Unix or Mac support. Linux is the reverse of this policy. Linux can connect to Windows proprietary extensions of directory services, its Active Directory, through FOSS support from the [SAMBA project](https://en.wikipedia.org/wiki/Samba_(software)). As both Linux and macOS are branches of the Unix tree, Linux support for macOS and vice-versa is strong. Microsoft and Linux connectivity today are comparatively equal although Microsoft’s halting support of other platforms caused a loss in the battle between Linux vs Windows.
+Microsoft does little to support external operating system connectivity except through browsers, and only offers the barest Unix or Mac support. Linux is the reverse of this policy. Linux can connect to Windows proprietary extensions of directory services, its Active Directory, through FOSS support from the [Samba project](https://en.wikipedia.org/wiki/Samba_(software)). As both Linux and macOS are branches of the Unix tree, Linux support for macOS and vice-versa is strong. Microsoft and Linux connectivity today are comparatively equal although Microsoft’s halting support of other platforms caused a loss in the battle between Linux vs Windows.
 
 Microsoft has finally enabled both Linux and macOS to use its proprietary filesystem, NTFS. Both Linux and macOS use a variety of host and target-based filesystems. macOS is free, but its features are largely dedicated to Apple-specific hardware. Linux distributions take pride in working across a wide variety of platforms, without the proprietary chipset support required by Microsoft Windows.
 

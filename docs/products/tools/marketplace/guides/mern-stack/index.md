@@ -1,18 +1,10 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Deploy a MERN Stack through the Linode Marketplace"
 description: "This guide shows you how to install and configure a MERN (MongoDB, Express, React, Node.js) stack on a Linode using our One-Click Marketplace App."
-keywords: ['mongodb','mern','react','express', 'web app']
-tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-02
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploying a MERN Stack through the Linode Marketplace"
-contributor:
-  name: Linode
+keywords: ['mongodb','mern','react','express', 'web app']
+tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
 external_resources:
 - '[MongoDB Getting Started](https://docs.mongodb.com/manual/tutorial/getting-started/)'
 - '[Express Hello World Example](https://expressjs.com/en/starter/hello-world.html)'
@@ -35,13 +27,13 @@ All of these technologies are well-established, offer robust feature sets, and a
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** The MERN stack should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -50,15 +42,17 @@ All of these technologies are well-established, offer robust feature sets, and a
 
 ### MERN Stack Options
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
+
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started After Deployment
 
 After your MERN One-click App has finished installing, you can:
 
-- [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). You need your Linode's root password to proceed.
+- [Connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). You need your Linode's root password to proceed.
 
 - Consult the following guides to learn more about working with the various components of the MERN stack:
 
@@ -75,4 +69,4 @@ After your MERN One-click App has finished installing, you can:
 | **Node JS** | Runtime environment |
 | **UFW (UncomplicatedFirewall)** | Firewall utility. Ports 22/tcp for IPv4 and IPv6 allows incoming traffic. All other ports have the following firewall rules: deny (incoming), allow (outgoing). |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

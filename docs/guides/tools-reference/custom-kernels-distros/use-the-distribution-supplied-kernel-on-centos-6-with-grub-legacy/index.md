@@ -1,30 +1,27 @@
 ---
 slug: use-the-distribution-supplied-kernel-on-centos-6-with-grub-legacy
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Use the Distribution-Supplied Kernel on CentOS 6 with Grub Legacy'
 description: 'Configure your CentOS 6 Linode to use the distribution-supplied kernel'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2017-03-10
+modified: 2020-12-01
 keywords: ["centos 6", "custom kernel", "grub legacy"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-12-01
-modified_by:
-  name: Nick Brewer
-published: 2017-03-10
-title: 'Use the Distribution-Supplied Kernel on CentOS 6 with Grub Legacy'
-deprecated: true
 aliases: ['/tools-reference/custom-kernels-distros/use-the-distribution-supplied-kernel-on-centos-6-with-grub-legacy/']
+deprecated: true
 ---
 
 This guide will show you how to install and use the distribution-supplied kernel for CentOS 6, with our **Grub Legacy** boot option.
 
-Before you get started, make sure you follow the steps outlined in our [Getting Started](/docs/getting-started) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
+Before you get started, make sure you follow the steps outlined in our [Getting Started](/docs/products/platform/get-started/) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
 
 {{< note >}}
-This guide is intended for Linodes running on our KVM hypervisor. For older Xen Linodes, see [this](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) guide.
+This guide is intended for Linodes running on our KVM hypervisor. For older Xen Linodes, see [this](/docs/guides/run-a-distributionsupplied-kernel-with-pvgrub/) guide.
 {{< /note >}}
 
-{{< content "all-linodes-kvm-shortguide" >}}
+{{% content "all-linodes-kvm-shortguide" %}}
 
 ## Install the Kernel and Configure Grub
 
@@ -67,7 +64,7 @@ title CentOS 6
 {{< /file >}}
 
 
-5.  In the Linode Manager, edit your Linode's [configuration profile](/docs/guides/linode-configuration-profiles#editing-a-configuration-profile) by selecting the **Grub (Legacy)** option within the *Kernel* drop-down menu.
+5.  In the Linode Manager, edit your Linode's [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#editing-a-configuration-profile) by selecting the **Grub (Legacy)** option within the *Kernel* drop-down menu.
 
 6.  Make sure the root device is specified as **/dev/sda**, and click **Save Profile** at the bottom of the page to confirm your changes.
 

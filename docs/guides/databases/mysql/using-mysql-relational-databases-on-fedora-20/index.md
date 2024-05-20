@@ -1,27 +1,23 @@
 ---
 slug: using-mysql-relational-databases-on-fedora-20
-deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
+title: Using MySQL Relational Databases on Fedora 20
 description: 'Getting started with MySQL for web and server applications on Fedora 20.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2014-01-28
 keywords: ["mysql fedora 20", "mysql linux", "mysql fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/fedora-20/','/databases/mysql/using-mysql-relational-databases-on-fedora-20/']
-modified: 2014-01-28
-modified_by:
-  name: Alex Fornuto
-published: 2014-01-28
-title: Using MySQL Relational Databases on Fedora 20
 relations:
     platform:
         key: use-mysql-relationaldb
         keywords:
             - distribution: Fedora 20
 tags: ["database","mysql","fedora"]
+deprecated: true
 ---
 
-MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Fedora 14 Linode. For purposes of this tutorial, it is assumed that you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH.
+MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Fedora 14 Linode. For purposes of this tutorial, it is assumed that you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
 ## System Configuration
 

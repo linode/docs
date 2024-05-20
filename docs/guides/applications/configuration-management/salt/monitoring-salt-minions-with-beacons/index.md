@@ -1,18 +1,15 @@
 ---
 slug: monitoring-salt-minions-with-beacons
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Monitoring Salt Minions with Beacons"
 description: 'This guide shows how to monitor Salt minions with beacons. Set up alerts for different system resources to notify you over a messaging service like Slack.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-10-19
+modified: 2019-01-02
 keywords: ['salt','saltstack','minion','minions','beacon','beacons','reactor','reactors','monitor','configuration drift','slack']
 tags: ["monitoring","automation","salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-10-19
-modified: 2019-01-02
-modified_by:
-  name: Linode
 image: MonitoringSaltMinionswithBeacons.png
-title: "Monitoring Salt Minions with Beacons"
 external_resources:
 - '[Salt Beacons Documentation](https://docs.saltproject.io/en/latest/topics/beacons/)'
 - '[Salt Beacon Modules](https://docs.saltproject.io/en/latest/ref/beacons/all/index.html)'
@@ -80,7 +77,7 @@ pyinotify:
       - pkg: python-pip
         {{</ file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The inotify beacon only works on OSes that have inotify kernel support. Currently this excludes FreeBSD, macOS, and Windows.
 {{< /note >}}
 

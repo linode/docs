@@ -1,17 +1,12 @@
 ---
 slug: how-to-use-fsck-qa
-author:
-  name: Edward Angert
-  email: docs@linode.com
+title: 'How to use fsck - Quick Answer'
 description: 'Learn about some of the frequently-used fsck commands to check a system for corrupt files and bad disk sectors and repair any errors it finds.'
-og_description: 'Learn about some of the frequently-used fsck commands to check a system for corrupt files and bad disk sectors and repair any errors it finds.'
+authors: ["Edward Angert"]
+contributors: ["Edward Angert"]
+published: 2018-04-30
 keywords: ["fsck", "file system", "disk repair", "troubleshoot"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-04-30
-modified: 2018-04-30
-modified_by:
-  name: Linode
-title: 'How to use fsck - Quick Answer'
 external_resources:
 - '[fsck on man7.org](http://man7.org/linux/man-pages/man8/fsck.8.html)'
 tags: ["linux"]
@@ -29,8 +24,8 @@ On some systems, fsck runs automatically after an unclean shutdown or after a ce
 Use fsck to check your file system if your system fails to boot, if files on a specific disk become corrupt, or if an attached drive does not act as expected.
 
 {{< note >}}
-To run this utility you will want to boot into rescue mode. Please see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
-{{</ note >}}
+To run this utility you will want to boot into rescue mode. Please see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
+{{< /note >}}
 
 ### Verify Disks are Unmounted
 
@@ -53,10 +48,9 @@ devtmpfs         10M     0   10M   0% /dev
     Your primary disks should not appear in the list. As long as your device does not appear in the example output from the `df -h` command, you can run a filesystem check on it.
 
 ## How to Check for Errors on a Disk
-
-{{< caution >}}
+{{< note type="alert" >}}
 Never run fsck on a mounted disk. Do not continue unless you’re sure that the target disk is unmounted. You risk corrupting your file system and losing data if you run fsck on an active disk.
-{{</ caution >}}
+{{< /note >}}
 
 Run fsck on the target disk, using the desired options. This example checks all file systems (`-A`) on `/dev/sdb`:
 

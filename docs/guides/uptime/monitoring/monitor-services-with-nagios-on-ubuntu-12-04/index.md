@@ -1,19 +1,15 @@
 ---
 slug: monitor-services-with-nagios-on-ubuntu-12-04
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Monitor Services with Nagios on Ubuntu 12.04'
 description: 'Use Nagios to Monitor Services and Send Status Updates on Ubuntu 12.04 (Precise Pangolin).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-11-07
+modified: 2013-04-05
 keywords: ["nagios", "monitor services", "ubuntu 12.04", "smtp", "pop3", "http", "icmp", "ssh", "notifications", "alerts"]
 tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/nagios/ubuntu-12-04-precise-pangolin/','/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-12-04-precise-pangolin/','/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-12-04/']
-modified: 2013-04-05
-modified_by:
-  name: Linode
-published: 2012-11-07
-title: 'Monitor Services with Nagios on Ubuntu 12.04'
 external_resources:
  - '[Nagios Home Page](http://www.nagios.org/)'
  - '[Nagios IRC Bot](http://exchange.nagios.org/directory/Addons/Notifications/IRC/nagircbot/details)'
@@ -24,13 +20,14 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 Nagios is a monitoring tool that allows you to monitor services on a single server or a pool of servers. It can keep an eye on a broad range of network services, including SMTP and POP3 (email), HTTP (web), ICMP (ping), and SSH. In addition to simple uptime monitoring, Nagios also allows administrators to create their own plugins to monitor additional services or devices.
 
 ## Install Nagios
 
-Before installing Nagios, make sure your hostname is properly set by following the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). You also need to have a functioning [LAMP stack](/docs/lamp-guides/ubuntu-12-04-precise-pangolin) set up on your Linode.
+Before installing Nagios, make sure your hostname is properly set by following the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). You also need to have a functioning [LAMP stack](/docs/guides/lamp-server-on-ubuntu-12-04-precise-pangolin/) set up on your Linode.
 
 Now you're ready to install Nagios. Here's how:
 
@@ -45,7 +42,7 @@ Now you're ready to install Nagios. Here's how:
 
 3.  Enter an administrator password to complete the installation.
 
- {{< note >}}
+{{< note >}}
 If you do not already have an email server installed on your Linode, Postfix will be installed automatically. The *Internet Site* configuration will be used by default. You'll also have to enter a mail name for the system.
 {{< /note >}}
 
@@ -54,7 +51,7 @@ If you do not already have an email server installed on your Linode, Postfix wil
 You can now access the Nagios web interface for administration and reporting by visiting `http://example.com/nagios3/`, where `example.com` refers to your Linode's default virtual host. You may also access this interface by visiting `http://12.34.56.78/nagios3/`, where `12.34.56.78` is the IP address of your Linode. You will need to authenticate with the `nagiosadmin` user you created earlier.
 
 {{< note >}}
-The above example does not use SSL, and your password will be sent unencrypted. If you want to use encryption, you will need to generate (or purchase) and install an SSL certificate. Steps for generating and using your own certificate can be found in our [SSL guide](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
+The above example does not use SSL, and your password will be sent unencrypted. If you want to use encryption, you will need to generate (or purchase) and install an SSL certificate. Steps for generating and using your own certificate can be found in our [SSL guide](/docs/guides/create-a-self-signed-tls-certificate/).
 {{< /note >}}
 
 ## Configure Notifications
@@ -86,8 +83,8 @@ define contact{
 {{< /file >}}
 
 
-    {{< note >}}
-To send email alerts to more than one user, duplicate the `define contact` section for as many users as you want. Or, to configure notifications to a [group](/docs/tools-reference/linux-users-and-groups), edit the `define contactgroup` section.
+    {{< note respectIndent=false >}}
+To send email alerts to more than one user, duplicate the `define contact` section for as many users as you want. Or, to configure notifications to a [group](/docs/guides/linux-users-and-groups/), edit the `define contactgroup` section.
 {{< /note >}}
 
 3.  Save the changes to the configuration file by pressing `Control + x` and then pressing `y`.

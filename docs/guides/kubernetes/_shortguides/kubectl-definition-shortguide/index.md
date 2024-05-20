@@ -1,14 +1,11 @@
 ---
 slug: kubectl-definition-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that displays the definition for kubectl.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Heather Zoppetti
-published: 2019-07-12
 title: kubectl Definition
+description: 'Shortguide that displays the definition for kubectl.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-07-12
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: []
 headless: true
 show_on_rss_feed: false

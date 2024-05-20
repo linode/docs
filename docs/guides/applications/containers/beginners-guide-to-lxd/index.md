@@ -1,22 +1,14 @@
 ---
 slug: beginners-guide-to-lxd
-author:
-  name: Linode
-  email: docs@linode.com
+title: "A Beginner's Guide to LXD: Setting Up an Apache Web Server"
+title_meta: "How to Set Up an Apache Webserver in an LXD Container"
 description: "LXD is a container hypervisor that manages Linux Containers. In this guide, we'll show you how to install, setup, and use LXD 3."
+authors: ["Simos Xenitellis"]
+contributors: ["Simos Xenitellis"]
+published: 2019-05-01
 keywords: ["container", "lxd", "lxc", "apache", "virtual machine", "virtualization"]
 tags: ["ubuntu","container","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-05-01
-modified: 2019-05-01
-modified_by:
-  name: Linode
-title: "How to Set Up an Apache Webserver in an LXD Container"
-h1_title: "A Beginner's Guide to LXD: Setting Up an Apache Web Server"
-enable_h1: true
-contributor:
-  name: Simos Xenitellis
-  link: https://blog.simos.info/
 external_resources:
   - '[What are snap packages](https://docs.snapcraft.io/getting-started/3876)'
   - '[Installing snapd](https://docs.snapcraft.io/installing-snapd/6735)'
@@ -44,9 +36,9 @@ For simplicity, the term *container* is used throughout this guide to describe t
 
 ## Before You Begin
 
-1.  Complete the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide. Select a Linode with at least 2GB of RAM memory, such as the Linode 2GB. Specify the Ubuntu 19.04 distribution. You may specify a different Linux distribution, as long as there is support for **snap packages (snapd)**; see the [More Information](#more-information) for more details.
+1.  Complete the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide. Select a Linode with at least 2GB of RAM memory, such as the Linode 2GB. Specify the Ubuntu 19.04 distribution. You may specify a different Linux distribution, as long as there is support for **snap packages (snapd)**; see the [More Information](#more-information) for more details.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Configure the Snap Package Support
 
@@ -84,7 +76,7 @@ description: |
   **Run any Linux distribution you want**
 
   Pre-made images are available for Ubuntu, Alpine Linux, ArchLinux,
-  CentOS, Debian, Fedora, Gentoo, OpenSUSE and more.
+  CentOS, Debian, Fedora, Gentoo, openSUSE and more.
 
   A full list of available images can be [found
   here](https://images.linuxcontainers.org)
@@ -154,7 +146,7 @@ lxd   3.12     10601  stable    canonical✓  -
 1.  Add your non-root Unix user to the `lxd` group:
 
         sudo usermod -a -G lxd username
-    {{< note >}}
+    {{< note respectIndent=false >}}
 By adding the non-root Unix user account to the `lxd` group, you are able to run any `lxc` commands without prepending `sudo`. Without this addition, you would have needed to prepend `sudo` to each `lxc` command.
 {{< /note >}}
 
@@ -288,7 +280,7 @@ The repository `ubuntu` has container images of Ubuntu versions. The `images` re
 .....................................................................
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The first two columns for the alias and fingerprint provide an identifier that can be used to specify the container image when launching it.
 {{< /note >}}
 The output snippet shows the container images Ubuntu versions 18.04 LTS, 18.10, and 19.04. When creating a container we can just specify the short alias. For example, `ubuntu:b` means that the repository is `ubuntu` and the container image has the short alias `b` (for _bionic_, the codename of Ubuntu 18.04 LTS).
@@ -360,7 +352,7 @@ Starting mycontainer
         lxc exec mycontainer -- apt update
         lxc exec mycontainer -- apt upgrade
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The characters `--` instruct the `lxc` command not to parse any more command-line parameters.
 {{< /note >}}
 
@@ -375,7 +367,7 @@ See "man sudo_root" for details.
 ubuntu@mycontainer:~$
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Ubuntu container images have by default a non-root account with username `ubuntu`. This account can use `sudo`  and does not require a password to perform administrative tasks.
 
 The `sudo` command provides a login to the existing account `ubuntu`.
@@ -393,7 +385,7 @@ The `sudo` command provides a login to the existing account `ubuntu`.
 
         lxc delete mycontainer
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 A container needs to be stopped before it can be deleted.
 {{< /note >}}
 

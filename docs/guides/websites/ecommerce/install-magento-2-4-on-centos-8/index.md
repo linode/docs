@@ -1,22 +1,14 @@
 ---
 slug: install-magento-2-4-on-centos-8
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Install Magento 2.4 on Centos 8"
 description: 'This guide describes how to install Magento 2.4 on CentOS8, including any configuration required by the LAMP stack and the Elasticsearch software.'
-og_description: 'This guide describes how to install Magento 2.4 on CentOS8, including any configuration required by the LAMP stack and the Elasticsearch software.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-03-05
 keywords: ["magento", "centos", "e-commerce", "magento centos"]
 tags: ["centos", "lamp", "cms", "magento"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-05
 image: InstallMagento_CentOS8.png
-modified_by:
-  name: Linode
-title: "Install Magento 2.4 on Centos 8"
-h1_title: "Install Magento 2.4 on Centos 8"
-contributor:
-  name: Jeffrey Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Magento site](https://magento.com/)'
 - '[Magento developer documentation](https://devdocs.magento.com/)'
@@ -35,9 +27,9 @@ Although this guide covers installation of Magento 2.4, version 2.3 is still ava
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. It's recommended to run Magento on at least a 4GB instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. It's recommended to run Magento on at least a 4GB instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an Magento server.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an Magento server.
 
         sudo dnf update && sudo dnf upgrade
 
@@ -79,7 +71,7 @@ Magento requires as much as 2GB of free memory. If your system does not have eno
 
 If you do not have access to a system with 2GB of memory, you can create a swap file with the following commands. This swap file is temporary and only persists until the next reboot.
 
-1.  Create a directory for the swap file, and add a file within this directory to hold the swap data. The `count` parameter refers to the size of the swap file in MBs. This must be set to at least 2048, but you can configure it to an even larger amount if you want.
+1.  Create a directory for the swap file, and add a file within this directory to hold the swap data. The `count` parameter refers to the size of the swap file in megabytes. This must be set to at least 2048, but you can configure it to an even larger amount if you want.
 
         sudo mkdir /swapdir/
         sudo dd if=/dev/zero of=/swapdir/swapfile bs=1MB count=2048
@@ -116,7 +108,6 @@ Magento can run on iOS 12 or later on the following platforms:
 We recommend you make a check point backup before installing and configuring the ancillary software components. Take another checkpoint before installing Magento.
 {{< /note >}}
 
-
 ## Install and Configure Prerequisite Components
 
 Several other software components must be present and properly configured before Magento can be installed. The components are:
@@ -127,12 +118,11 @@ Several other software components must be present and properly configured before
 
 Follow the instructions in the [How to Install a LAMP Stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/) guide to install Apache, SQL, and PHP.
 
-{{< disclosure-note "Install PHP 7.4">}}
-        1. Enable the repositories by using: ```sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y```
-        2. List the available PHP version using: ``` sudo dnf module list php```
-        3. Enable the latest version of PHP using: ```sudo dnf module enable php:remi-7.4```
-{{< /disclosure-note >}}
-
+{{< note type="secondary" title="Install PHP 7.4" isCollapsible=true >}}
+1. Enable the repositories by using: ```sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y```
+2. List the available PHP version using: ``` sudo dnf module list php```
+3. Enable the latest version of PHP using: ```sudo dnf module enable php:remi-7.4```
+{{< /note >}}
 
 ### Web Server
 
@@ -156,8 +146,8 @@ Follow the instructions in the [How to Install a LAMP Stack on CentOS 8](/docs/g
 {{< /file >}}
 
 
-    {{< note >}}
-Most payment processors and financial institutions do not recognise or accept self-signed certificates. Before putting your store into production, you must obtain a commercially-signed certificate. More information can be found in [the Linode guide about SSL certificates](/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora).
+    {{< note respectIndent=false >}}
+Most payment processors and financial institutions do not recognise or accept self-signed certificates. Before putting your store into production, you must obtain a commercially-signed certificate. More information can be found in [the Linode guide about SSL certificates](/docs/guides/obtain-a-commercially-signed-tls-certificate/).
 {{< /note >}}
 
 4.  Configure the virtual host settings for your website on Apache. There are a variety of ways to structure these settings. One straightforward approach is to add them to the `/etc/httpd/conf.d/vhost.conf` file. Add the following contents to the file, replacing `example.com` with your own domain. The directory specified within the virtual host serves as your Magento root directory. Later on, you will install the Magento software from this location.
@@ -200,11 +190,9 @@ Most payment processors and financial institutions do not recognise or accept se
         sudo systemctl start httpd.service
         sudo systemctl enable httpd.service
         sudo systemctl restart httpd.service
-
 {{< note >}}
-If you require more information on setting up Apache or configuring virtual hosts, consult Linode's [Apache on CentOS 8](/docs/web-servers/apache/how-to-install-apache-web-server-centos-8) guide.
+If you require more information on setting up Apache or configuring virtual hosts, consult Linode's [Apache on CentOS 8](/docs/guides/how-to-install-apache-web-server-centos-8/) guide.
 {{< /note >}}
-
 {{< note >}}
 NGINX 1.x can also be used as the Magento web server.
 {{< /note >}}
@@ -296,8 +284,7 @@ error_log = /var/log/php/error.log
 
 Enable the PHP Opcache for better performance. This setting can be found and modified in `opcache.ini`.
 
-1.  Open the `opcache.ini` file. This file is usually found at `/etc/php.d/opcache.ini`, but you can find its exact location using the ```php --ini``` command.
-{{< note >}}If you do not find the ```opcache.ini``` file, install it using ```sudo dnf install php-opcache```{{< /note >}}
+1.  Open the `opcache.ini` file. This file is usually found at `/etc/php.d/opcache.ini`, but you can find its exact location using the ```php --ini``` command.{{< note >}}If you do not find the ```opcache.ini``` file, install it using ```sudo dnf install php-opcache```{{< /note >}}
 
 2.  Set the `opcache.save_comments` variable to 1, uncommenting it if necessary:
 
@@ -322,7 +309,7 @@ Elasticsearch provides advanced search capabilities for Magento. Magento require
 3.  Run a curl command to confirm Elasticsearch works. A "green" status indicates a successful reply. Use the following command to take an Elasticsearch health check:
 
         curl -XGET 'localhost:9200/_cat/health?v&pretty'
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Elasticsearch could potentially be in the "yellow" state if back up capabilities or other features are not available. You can still proceed with the installation in this case, but we recommend you correct this before deployment.
 {{< /note >}}
 4.  Confirm the version of the Java JDK and install or upgrade it as necessary. The Java Runtime Environment (JRE) is not required.
@@ -356,7 +343,7 @@ IncludeOptional sites-available/*.conf
 
         curl -i http://localhost:8080/_cluster/health
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Elasticsearch's default heap size of 1G is not enough for most deployments and could lead to timeouts or other failures. For production environments, set the `ES_HEAP_SIZE` variable to a higher value with the command `export ES_HEAP_SIZE=4g`
 {{< /note >}}
 
@@ -397,7 +384,7 @@ You can also download Magento using Composer via the downloads page. Composer al
 
     ![Select an archive menu from the Magento download page.](magento-download-page.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You must create an account before you can download Magento. There is no cost for either the account or the download.
 {{< /note >}}
 3.  If you have downloaded the software onto a different computer than the host, transfer the Magento files to the host via `scp`, `ftp`, or another file transfer method. Replace the `user` and `yourhost` values with your user name and host IP address:
@@ -451,7 +438,6 @@ If the Magento and web server users are different, create a shared group for bot
 8.  Restart the web server again:
 
         sudo systemctl restart httpd.service
-
 {{< note >}}
 Troubleshoot SELinux issues by changing `SELINUX=enforcing` to `SELINUX=permissive` in the `/etc/selinux/config` file. This setting relaxes security; it only logs potential violations. Ensure you understand all the security implications of this before changing this value on a production system. It is best to leave SELinux in enforcing mode and configure any exceptions on a case-by-case basis.
 {{< /note >}}
@@ -480,7 +466,6 @@ Troubleshoot SELinux issues by changing `SELINUX=enforcing` to `SELINUX=permissi
 5.  For ease of development, you can place your Magento application into development mode while you work on getting it running. See the post-installation section for information on placing your store into production mode.
 
         sudo bin/magento deploy:mode:set developer
-
 {{< note >}}
 Store the `Magento Admin URI`, the `admin-user` name, and the `admin-password` in a safe place. You will require this information to access your Magento Admin page and administer your site. It is important you keep your admin information secure.
 {{< /note >}}
@@ -550,7 +535,6 @@ The following options can also be used with any command.
 | version | -V | Displays the version of the Magento application. |
 | ansi | n/a | This forces output into the ANSI format. |
 | no-ansi | n/a | This disables ANSI formatting. |
-
 {{< note >}}
 You can always rerun the Magento installation program later on to set new options or correct errors (for example, to add an optional component such as RabbitMQ). You can also reconfigure many options on the Magento Admin page.
 {{< /note >}}
@@ -585,7 +569,7 @@ Magento relies on several regularly-scheduled tasks in order to run correctly. Y
 
     ![The Magento Admin page dashboard.](magento-admin-panel.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Magento enables two-factor authentication for the Magento Admin page by default. When you first try to access the Magento Admin page, the application sends an email to your `admin-email` address telling you how to set this up. In the interest of efficiency, you can turn this off during development. To disable two-factor authentication, run the following commands from the Magento root directory:
 
     sudo bin/magento module:disable Magento_TwoFactorAuth
@@ -620,7 +604,7 @@ We recommend you disable the ability to display your storefront within a frame t
 
 ### SSL Certificates
 
-SSL certificates encrypt and verify sensitive financial and sales data. You should use them when setting up your storefront. A self-signed certificate (as discussed earlier) is sufficient to complete the Magento installation. However, your site requires a commercially-signed certificate in order to interact with most payment processors and to avoid warning messages when customers navigate to your site. More information is available in the Linode guides to [obtaining a commercially signed SSL certificate](/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora) and [using SSL certificates with Apache](/docs/security/ssl/ssl-apache2-centos).
+SSL certificates encrypt and verify sensitive financial and sales data. You should use them when setting up your storefront. A self-signed certificate (as discussed earlier) is sufficient to complete the Magento installation. However, your site requires a commercially-signed certificate in order to interact with most payment processors and to avoid warning messages when customers navigate to your site. More information is available in the Linode guides to [obtaining a commercially signed SSL certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) and [using SSL certificates with Apache](/docs/guides/ssl-apache2-centos/).
 
 The SSL and the HTTPS protocols are enabled on the Magento Admin page.
 

@@ -1,20 +1,13 @@
 ---
 slug: using-grpc-for-remote-procedural-calls
-author:
-  name: Jeff Novotny
+title: "Use gRPC and Python for Remote Procedural Calls"
 description: 'This guide shows how you can use gRPC, a open source remote procedure call framework which enables cross-platform communications between clients and a central server.'
-og_description: 'This guide shows how you can use gRPC, a open source remote procedure call framework which enables cross-platform communications between clients and a central server.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-07-30
 keywords: ['what is grpc', 'grpc vs rest', 'grpc tutorial']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-30
-modified_by:
-  name: Linode
-title: "gRPC Tutorial: Using gRPC for Remote Procedural Calls"
-h1_title: "How to Use gRPC and Python for Remote Procedural Calls"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[gRPC](https://grpc.io/)'
 - '[Google Developers Page for Protocol Buffers](https://developers.google.com/protocol-buffers/docs/overview)'
@@ -113,9 +106,9 @@ This procedure is geared towards Ubuntu users but is generally applicable to all
 
 **### Before You Begin**
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -176,7 +169,7 @@ The next step is to complete the `.proto` file, which serves as an API between t
         touch teams.proto
 
 1. The `teams.proto` file contains a shared API that the client and server can use to communicate with one another. At the top of the file, declare the `syntax` attribute as `proto3`.
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For simplicity, this example does not use packages. If there are multiple projects in the same Python workspace, add this code to a package to avoid naming conflicts.
     {{< /note >}}
     {{< file "~/teams/protobufs/teams.proto" >}}
@@ -232,10 +225,9 @@ service Teams {
         python3 -m grpc_tools.protoc -I ./protobufs --python_out=. --grpc_python_out=. ./protobufs/teams.proto
 
 1. After compilation of the `.proto` file, the `teams` directory should contain Python files named `teams_pb2.py` and `teams_pb2_grpc.py`. These files contain auto-generated classes for the messages and the service. Make a note of these file names to reference them again later.
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Do not edit either of the auto-generated files. This could render them unusable.
-    {{< /caution >}}
-
+    {{< /note >}}
 {{< note >}}
 To create a response-streaming, request-streaming, or bidirectionally-streaming RPC, declare the message to be streamed as a `stream`. For instance, to allow `GetTeam` to return a stream of team messages, declare it using the following format:
 
@@ -350,7 +342,6 @@ if **__name__** == '**__main__**':
     logging.basicConfig()
     serve()
     {{< /file >}}
-
 {{< note >}}
 To return a stream of teams, `GetTeam` would `yield` each response message rather than returning it. Typically, the routine would iterate over the entire database or dictionary using a `for ... in` control structure and would `yield` each relevant entry in turn. This line would then become `yield teams_pb2.TeamResponse(city=tmp_city_name, nickname=tmp_team_name)`.
 {{< /note >}}
@@ -420,7 +411,6 @@ if **__name__** == '**__main__**':
     logging.basicConfig()
     run()
     {{< /file >}}
-
 {{< note >}}
 If `GetTeam` returned a stream, the `stub.GetTeam` function call would have received a list of messages in response. The client would then process these messages, possibly with a Python list comprehension or a `for ... in` control structure.
 {{< /note >}}

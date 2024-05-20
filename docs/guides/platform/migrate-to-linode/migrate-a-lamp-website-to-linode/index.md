@@ -1,21 +1,17 @@
 ---
 slug: migrate-a-lamp-website-to-linode
-author:
-  name: Nathan Melehan
-  email: nmelehan@linode.com
+title: How to Migrate a LAMP Website to Linode
 description: 'How to migrate a LAMP website from another hosting provider to Linode.'
+authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
+published: 2018-07-31
 keywords: ["lamp", "migrate", "website migration"]
 tags: ["linode platform","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-07-31
-modified_by:
-  name: Linode
-published: 2018-07-31
-title: How to Migrate a LAMP Website to Linode
 aliases: ['/platform/migrate-to-linode/migrate-a-lamp-website-to-linode/']
 ---
 
-This guide describes how to migrate a website running in a [LAMP](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/#what-is-a-lamp-stack) environment on another host to a new Linode. Read the [Best Practices when Migrating to Linode](/docs/guides/best-practices-when-migrating-to-linode/) guide prior to following this guide for more information about migrating your site.
+This guide describes how to migrate a website running in a [LAMP](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#what-is-a-lamp-stack) environment on another host to a new Linode. Read the [Best Practices when Migrating to Linode](/docs/guides/best-practices-when-migrating-to-linode/) guide prior to following this guide for more information about migrating your site.
 
 This guide includes commands that need to be run at the command line of your current host, which may not be available if you have a shared hosting environment. Ubuntu 18.04 is used as the distribution for the new Linode deployment in this guide. If you'd like to choose another distribution, us the examples here as an approximation for the commands you'll need to run.
 
@@ -23,13 +19,13 @@ This guide includes commands that need to be run at the command line of your cur
 
 ### Deploy Your Linode
 
-1.  Follow Linode's [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide and choose Ubuntu 18.04 as your Linux image when deploying. Choose a Linode plan with enough storage space to accommodate the website data from your current host.
+1.  Follow Linode's [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and choose Ubuntu 18.04 as your Linux image when deploying. Choose a Linode plan with enough storage space to accommodate the website data from your current host.
 
-1.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide and create a limited Linux user with `sudo` privileges. The examples below assume this user is named `linode_user`.
+1.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide and create a limited Linux user with `sudo` privileges. The examples below assume this user is named `linode_user`.
 
 ### Install LAMP
 
-1.  [Connect to your Linode via SSH.](/docs/guides/set-up-and-secure/#connect-to-the-instance)
+1.  [Connect to your Linode via SSH.](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance)
 
 1.  If you did not do so previously, update your software:
 
@@ -52,10 +48,9 @@ The data that needs to be transferred includes:
 Your server may have relevant website data stored in other directories, but these are the common locations for most files in a LAMP deployment.
 
 Perform a *database dump* needs on your MySQL process prior to transferring the data. This will result in a file on disk that encapsulates your database data which can then be copied over the network as a normal file.
-
-{{< caution >}}
+{{< note type="alert" >}}
 Stopping services on your current host will temporarily disable your website.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Connect to your current host via SSH.
 
@@ -75,7 +70,7 @@ Stopping services on your current host will temporarily disable your website.
 
         sudo systemctl start apache2
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If any new information is added to the database on the current host prior to fully transferring service to Linode, that new information is not included in the MySQL backup that was performed in this section.
 {{< /note >}}
 
@@ -112,9 +107,9 @@ The following commands copy files into the home directory of your Linode's Linux
 
         sudo mv document_root/* /var/www/html
         sudo chown -R www-data:www-data /var/www/html
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 This will overwrite all current data in the MySQL database system of your Linode. It is not recommended that you perform this command on a Linode with other existing websites.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Restore the database dump file. Replace `full-backup-*.sql` with the name of your file:
 
@@ -147,4 +142,4 @@ If you are seeing any other errors on your site, try reviewing Apache's error lo
 
 The last step required to migrate is to update your DNS records to reflect your new Linode's IP. Once this is done, visitors will start loading the page from your Linode.
 
-{{< content "use-linode-name-servers" >}}
+{{% content "use-linode-name-servers" %}}

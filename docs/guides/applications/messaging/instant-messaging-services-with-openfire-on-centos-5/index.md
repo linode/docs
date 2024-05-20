@@ -1,19 +1,15 @@
 ---
 slug: instant-messaging-services-with-openfire-on-centos-5
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Instant Messaging Services with Openfire on CentOS 5
 description: 'Getting started with Openfire on CentOS 5, an open source instant messaging server built on the XMPP/Jabber protocol.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-08-05
+modified: 2011-08-22
 keywords: ["openfire", "openfire centos", "openfire on linux", "instant messaging", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/openfire/centos-5/','/applications/messaging/instant-messaging-services-with-openfire-on-centos-5/']
-modified: 2011-08-22
-modified_by:
-  name: Linode
-published: 2010-08-05
-title: Instant Messaging Services with Openfire on CentOS 5
 external_resources:
  - '[Openfire Documentation](http://www.igniterealtime.org/projects/openfire/documentation.jsp)'
  - '[XMPP Standards Foundation](http://xmpp.org/)'
@@ -23,11 +19,12 @@ relations:
         key: how-to-install-openfire
         keywords:
             - distribution: CentOS 5
+deprecated: true
 ---
 
 [Openfire](http://www.igniterealtime.org/projects/openfire/) is an open source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your CentOS 5 Linode.
 
-If you haven't done so already, please follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
+If you haven't done so already, please follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
 
 ## Install Prerequisites
 
@@ -98,7 +95,7 @@ Direct your browser to your Linode's IP address or FQDN (fully qualified domain 
 
 ![Language selection in Openfire setup on CentOS 5.](407-openfire-centos-5-01-language-selection.png)
 
-Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](/docs/guides/dns-manager/).
+Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](/docs/products/networking/dns-manager/).
 
 ![Domain and admin ports selection in Openfire setup on CentOS 5.](408-openfire-centos-5-02-domain-ports-selection.png)
 

@@ -1,19 +1,15 @@
 ---
 slug: how-to-install-the-lemp-stack-on-centos-8
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Installing the LEMP Stack on CentOS 8'
+title_meta: 'How to Install the LEMP Stack on CentOS 8'
 description: 'This guide will show you how to install the LEMP Stack (Linux, NGINX, MySQL, and PHP) which is a popular alternative to the LAMP stack, on CentOS 8.'
-og_description: 'This guide will show you how to install the LEMP Stack (Linux, NGINX, MySQL, and PHP) which is a popular alternative to the LAMP stack, on CentOS 8.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-06-04
+modified: 2020-03-18
 keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "centos"]
 tags: ["lemp","web server","php","mysql","centos","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-18
-modified_by:
-  name: Linode
-published: 2018-06-04
-title: 'How to Install the LEMP Stack on CentOS 8'
-h1_title: 'Installing the LEMP Stack on CentOS 8'
 image: How-to-Install-LEMP-Stack-on-CentOS-8_1200x631.png
 relations:
     platform:
@@ -31,11 +27,11 @@ The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configurati
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}If you have a registered domain name for your website, then [add the domain](/docs/guides/dns-manager/#add-a-domain) to the Linode server on which you plan to install the LEMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
+{{< note >}}If you have a registered domain name for your website, then [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) to the Linode server on which you plan to install the LEMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
 
 ## Installation
 
@@ -81,16 +77,9 @@ GRANT ALL PRIVILEGES ON testdb.* TO 'testuser';
 quit
 {{< /highlight >}}
 
-5.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
+5.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. You will be given the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
         sudo mysql_secure_installation
-
-    Answer **Y** at the following prompts:
-
-    -  Remove anonymous users?
-    -  Disallow root login remotely?
-    -  Remove test database and access to it?
-    -  Reload privilege tables now?
 
 ### PHP
 
@@ -199,12 +188,11 @@ cockpit dhcpv6-client ssh
         sudo firewall-cmd --zone=public --add-service=http --permanent
         sudo firewall-cmd --zone=public --add-service=https --permanent
         sudo firewall-cmd --reload
-
 {{< note >}}In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use `sudo setsebool -P httpd_can_network_connect on` command.{{< /note >}}
 
 ## Test the LEMP Stack
 
-1. To ensure that your web server can be reached with your domain name, configure the [DNS records](/docs/guides/dns-manager/) for your domain to point to your Linode's IP address.
+1. To ensure that your web server can be reached with your domain name, configure the [DNS records](/docs/products/networking/dns-manager/) for your domain to point to your Linode's IP address.
 
 2.  Restart PHP and reload the NGINX configuration:
 

@@ -1,20 +1,12 @@
 ---
 slug: how-to-write-vue-js-plugins
-author:
-  name: John Au-Yeung
-  email: docs@linode.com
+title: "Write Your Own Vue.js Plugin"
 description: 'Learn how to create your own Vue.js plugin with an easy-to-use package and add functionality to your Vue apps.'
-og_description: 'Learn how to create your own Vue.js plugin with an easy-to-use package and add functionality to your Vue apps.'
+authors: ["John Au-Yeung"]
+contributors: ["John Au-Yeung"]
+published: 2021-02-09
 keywords: ['vue','vue.js','plugin','directive', 'filter', 'mixin']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-09
-modified_by:
-  name: Linode
-title: "How to Write Your Own Vue.js Plugin"
-h1_title: "How to Write Your Own Vue.js Plugin"
-contributor:
-  name: John Au-Yeung
-  link: https://twitter.com/AuMayeung
 external_resources:
 - '[VueJS](https://vuejs.org/)'
 tags: ["web applications"]
@@ -41,7 +33,6 @@ To use the plugin in the app, then call the global `Vue.use` method with the plu
 The options object in the second argument is available as the value of the `options` parameter in the `install` function.
 
 ## Creating a Simple Vue.js Plugin
-
 {{< note >}}
 The code below assumes that the Vue project is created by the [Vue CLI](https://cli.vuejs.org/).
 {{< /note >}}
@@ -328,7 +319,7 @@ export default {
 </script>
 {{< /file >}}
 
-In the code above, you defined a filter called 'timeString' with the function returning a time string if it is the value passed in is an instance of the `Date` object.
+In the code above, you defined a filter called `timeString` with the function returning a time string if it is the value passed in is an instance of the `Date` object.
 
 In `App`'s template, you applied the `timeString` filter on `new Date()`, which is the date object with the current date and time, with the pipe operator.
 

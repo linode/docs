@@ -1,27 +1,22 @@
 ---
 slug: how-to-upgrade-to-ubuntu-11-10-oneiric
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'How to Upgrade to Ubuntu 11.10 (Oneiric)'
 description: 'How to upgrade from Ubuntu 11.04 (Natty) to Ubuntu 11.10 (Oneiric).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-10-13
+modified: 2013-05-10
 keywords: ["ubuntu 11.10 upgrade", "ubuntu oneiric upgrade", "distro upgrade", "linux upgrade howto"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-11-10-oneiric/','/upgrading/upgrade-to-ubuntu-11-10-oneiric/']
-modified: 2013-05-10
-modified_by:
-  name: Linode
-published: 2011-10-13
-title: 'How to Upgrade to Ubuntu 11.10 (Oneiric)'
 relations:
     platform:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 11.10
+deprecated: true
 ---
-
-
 
 This guide explains how to upgrade your system to Ubuntu 11.10 (Oneiric) from Ubuntu 11.04 (Natty). Before you begin, you should make sure that you have a working backup or a copy of your data. If you haven't already done so, you will also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. You should be logged in as root while performing these steps.
 
@@ -40,7 +35,7 @@ Issue the following command to update your package lists:
 
     apt-get update
 
-When running system upgrades, you may want to start a [screen](/docs/linux-tools/utilities/screen) session. This will ensure that your system updates continue to run in the event that you are disconnected from the server. Issue the following command to install `screen`:
+When running system upgrades, you may want to start a [screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session. This will ensure that your system updates continue to run in the event that you are disconnected from the server. Issue the following command to install `screen`:
 
     apt-get install screen
 
@@ -68,7 +63,7 @@ You will also be advised that some services need to be restarted. In most cases 
 
 Additionally, you will also be asked if you'd like to replace some of your configuration files with the package maintainer's version. Please read through the prompts carefully and decide the best option for you.
 
-The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/guides/using-the-lish-console/).
+The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 You may now check that you're running Ubuntu 11.10 (Oneiric) by issuing the following command as root:
 

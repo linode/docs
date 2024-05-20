@@ -1,17 +1,13 @@
 ---
 slug: when-and-why-to-use-docker
-author:
-  name: Jared Kobos
-  email: docs@linode.com
+title: "When and Why to Use Docker"
 description: 'This guide discusses the pros and cons of using Docker, and when Docker is a good choice for a project.'
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
+published: 2017-11-20
 keywords: ['docker','containers','docker hub']
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-20
-modified: 2017-11-20
-modified_by:
-  name: Linode
-title: "When and Why to Use Docker"
 external_resources:
 - '[Docker](https://www.docker.com)'
 - '[Docker Hub](https://hub.docker.com)'

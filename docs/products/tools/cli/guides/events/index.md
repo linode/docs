@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Linode CLI Commands for Viewing Events"
 description: "How to use the Linode CLI to view and manage account events."
 published: 2020-07-22

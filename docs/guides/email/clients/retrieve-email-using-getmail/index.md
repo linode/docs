@@ -1,17 +1,14 @@
 ---
 slug: retrieve-email-using-getmail
-author:
-  name: Linode
-  email: docs@linode.com
+title: Retrieve Email Using Getmail
 description: 'This guide shows how-to configure getmail to download email from remote servers.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-01
+modified: 2017-08-22
 keywords: ["email", "getmail", "mda"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/getmail/','/email/clients/retrieve-email-using-getmail/']
-modified: 2017-08-22
-modified_by:
-  name: Linode
-published: 2010-02-01
-title: Retrieve Email Using Getmail
 external_resources:
  - '[Official Getmail Documentation](http://pyropus.ca/software/getmail/documentation.html)'
  - '[Mailfilter MDA](http://mailfilter.sourceforge.net/)'
@@ -24,7 +21,7 @@ Getmail is a simple mail retriever. In many ways, the software is a response to 
 
 You can use getmail to download email from your Linode's mail server powered by [Citadel](/docs/email/citadel/) or [Dovecot](/docs/email/postfix/) or you can use getmail on your Linode to download email from one or more third-party mail providers (as long as POP or IMAP is supported) and deliver it to a local email gateway.
 
-Before getting started with Getmail, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and the [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before getting started with Getmail, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and the [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Install Getmail
 

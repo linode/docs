@@ -1,21 +1,18 @@
 ---
 slug: install-freebsd-on-linode
-author:
-  name: Rainbow
-  email: rainbow@linode.com
+title: 'Install FreeBSD on Linode'
 description: 'This guide will show you how to install FreeBSD, the free and open source operating system based on the Berkeley Software Software Distribution from the late 1970s.'
+authors: ["Rainbow"]
+contributors: ["Rainbow"]
+published: 2016-03-14
+modified: 2019-01-07
 keywords: ["freebsd", "bsd"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-07
-modified_by:
-  name: Linode
-published: 2016-03-14
-title: 'Install FreeBSD on Linode'
 external_resources:
  - '[The FreeBSD Handbook](https://www.freebsd.org/doc/handbook/)'
- - '[Using the Lish Console](/docs/guides/using-the-lish-console/)'
- - '[Using the Graphic Shell (Glish)](/docs/guides/using-the-linode-graphical-shell-glish/)'
+ - '[Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/)'
+ - '[Access Your Linux Desktop Using Glish](/docs/products/compute/compute-instances/guides/glish/)'
  - '[FreeBSD Handbook - Comparing BSD and Linux](https://www.freebsd.org/doc/en/articles/explaining-bsd/comparing-bsd-and-linux.html)'
  - '[FreeBSD Handbook - Linux® Binary Compatibility](https://www.freebsd.org/doc/handbook/linuxemu.html)'
 relations:
@@ -36,21 +33,20 @@ aliases: ['/tools-reference/custom-kernels-distros/install-freebsd-on-linode/']
 
 FreeBSD is often compared to Linux. So what's the difference?
 
-Briefly, Linux is a term used for a group of operating systems that all use the Linux kernel, GNU coreutils and various distribution-specific tools. Linux OS's are offered in *distributions* and usually released under the GNU General Public License. [CentOS](https://www.centos.org/), [Debian](https://www.debian.org/) and [Ubuntu](http://www.ubuntu.com/) make up Linode's *core distribution* offerings, while Arch, Gentoo, OpenSUSE and Slackware are other popular distributions also available with Linode.
+Briefly, Linux is a term used for a group of operating systems that all use the Linux kernel, GNU coreutils and various distribution-specific tools. Linux OS's are offered in *distributions* and usually released under the GNU General Public License. [CentOS](https://www.centos.org/), [Debian](https://www.debian.org/) and [Ubuntu](http://www.ubuntu.com/) make up Linode's *core distribution* offerings, while Arch, Gentoo, openSUSE and Slackware are other popular distributions also available with Linode.
 
 Though FreeBSD grew out of the original UNIX codebase, no UNIX code currently remains. Every part of FreeBSD is developed in the same source tree and code is released under the more permissive FreeBSD License as opposed to the GNU GPL's copyleft stance. More information on the differences between these operating systems is available in the FreeBSD [Quickstart Guide for Linux Users](https://www.freebsd.org/doc/en/articles/linux-users/article.html).
-
-{{< caution >}}
-FreeBSD is not officially supported by Linode at this time. This means that the [Linode Backup](/docs/platform/backup-service) service would be unavailable to you and issues with FreeBSD on your Linode would be outside the scope of Linode Support.
-{{< /caution >}}
+{{< note type="alert" >}}
+FreeBSD is not officially supported by Linode at this time. This means that the [Linode Backup](/docs/products/storage/backups/) service would be unavailable to you and issues with FreeBSD on your Linode would be outside the scope of Linode Support.
+{{< /note >}}
 
 ## Preparing Your Linode
 
 Begin by creating the Linode and making some preliminary changes.
 
-1.  Create your Linode in your preferred data center. For the purposes of this tutorial, we recommend turning [Lassie](/docs/uptime/monitoring-and-maintaining-your-server/#configuring-shutdown-watchdog) *off* to prevent the watchdog from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
+1.  Create your Linode in your preferred data center. For the purposes of this tutorial, we recommend turning [Lassie](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configuring-shutdown-watchdog) *off* to prevent the watchdog from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
 
-2.  [Create two disk images](/docs/guides/disks-and-storage/#creating-a-disk); both should be in the RAW format.
+2.  [Create two disk images](/docs/products/compute/compute-instances/guides/disks-and-storage/#creating-a-disk); both should be in the RAW format.
 
     - The first should be a 1024 MB image labeled *Installer*.
     - The second should use the Linode's remaining space. Label it *FreeBSD*.
@@ -72,7 +68,7 @@ Begin by creating the Linode and making some preliminary changes.
     - /dev/sda: FreeBSD disk image.
     - root / boot device: Standard /dev/sda
 
-4.  [Boot into **Rescue Mode**](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) with the installer disk mounted to `/dev/sda` and access your Linode using [Lish via SSH](/docs/guides/using-the-lish-console/) by clicking on the **Launch Console** link from your Linode's dashboard of the Linode Cloud Manager.
+4.  [Boot into **Rescue Mode**](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) with the installer disk mounted to `/dev/sda` and access your Linode using [Lish via SSH](/docs/products/compute/compute-instances/guides/lish/) by clicking on the **Launch Console** link from your Linode's dashboard of the Linode Cloud Manager.
 
 5.  Once in Rescue Mode, run the following command, replacing latest with the latest `memstick.img` file from the [FreeBSD download page](ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/):
 
@@ -84,7 +80,7 @@ Begin by creating the Linode and making some preliminary changes.
 
 6.  When the command finishes, reboot into your **Installer profile**.
 
-7.  Go to the **Networking** tab in the Linode Cloud Manager. Access your Linode using [Glish](/docs/guides/using-the-linode-graphical-shell-glish/) to start the installation. Note that Glish **must** be used to complete the installation of FreeBSD.
+7.  Go to the **Networking** tab in the Linode Cloud Manager. Access your Linode using [Glish](/docs/products/compute/compute-instances/guides/glish/) to start the installation. Note that Glish **must** be used to complete the installation of FreeBSD.
 
 ## Installing FreeBSD
 
@@ -116,7 +112,7 @@ Begin by creating the Linode and making some preliminary changes.
 
 5.  At this point, the distribution files will extract and install. You'll then be asked to set a `root` user password.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 SSH logins for `root` are disabled by default in FreeBSD but standard system users have SSH access.
 {{< /note >}}
 

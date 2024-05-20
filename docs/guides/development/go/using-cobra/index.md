@@ -1,18 +1,12 @@
 ---
 slug: using-cobra
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
+title: 'Using Cobra and Go to Create Command Line Utilities'
 description: 'Cobra is a popular Go package that lets you develop command line utilities with commands, subcommands, and more. This guide shows how to use the app.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2017-11-29
 keywords: ["go", "golang", "cobra", "programming", "cli"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-29
-modified_by:
-  name: Linode
-title: 'Using Cobra and Go to Create Command Line Utilities'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[Go](https://www.golang.com)'
   - '[Cobra](https://github.com/spf13/cobra)'
@@ -124,7 +118,6 @@ output of the `tree(1)` command:
 
 1 directory, 6 files
 {{< /output >}}
-
 {{< note >}}
 `Tree` is not installed by default on many distributions. You can install it manually using your package manager, or skip the steps that use it if you feel comfortable with your understanding of your directory structure. If you're using the `apt` package manager, tree can be installed with the following command:
 
@@ -665,7 +658,6 @@ and generate the same output:
 {{< output >}}
     delete called
 {{< /output >}}
-
 {{< note >}}
 Although all three aliases are equivalent and execute the same code, the
 internal representation of the `delete` command is only defined by `deleteCmd`.

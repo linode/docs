@@ -1,29 +1,26 @@
 ---
 slug: use-mongodb-to-store-application-data-on-centos-5
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Use MongoDB to Store Application Data on CentOS 5
 description: 'MongoDB is a database engine that provides access to non-relational key-value databases. This guide provides you instructions for installing it on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-03-24
+modified: 2011-04-29
 keywords: ["nosql", "database", "mongodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/centos-5/','/databases/mongodb/use-mongodb-to-store-application-data-on-centos-5/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-03-24
-title: Use MongoDB to Store Application Data on CentOS 5
 relations:
     platform:
         key: use-mongodb-store-app-data
         keywords:
             - distribution: CentOS 5
 tags: ["nosql","database","centos"]
+deprecated: true
 ---
 
 MongoDB is a database engine that provides access to non-relational key-value databases. It is part of the growing NoSQL movement, which seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON-based output format and specialized language specific bindings that make it particularly attractive for use in custom application development. Although MongoDB is a relatively new project and has not yet been packaged by most major operating system distributions, the software has been used in a number of large scale [production deployments](http://www.mongodb.org/display/DOCS/Production+Deployments) such as "GitHub", "SourceForge", and "DISQUS".
 
-Before installing MongoDB, it is assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before installing MongoDB, it is assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Installing MongoDB
 

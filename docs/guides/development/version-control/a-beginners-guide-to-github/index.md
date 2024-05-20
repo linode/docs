@@ -1,16 +1,13 @@
 ---
 slug: a-beginners-guide-to-github
-author:
-    name: Linode
-    email: docs@linode.com
+title: "Getting Started with GitHub"
+title_meta: "A Beginner's Guide to GitHub"
 description: "Learn how to submit new articles to the Linode Guides and Tutorials website, via the Linode Docs repository on GitHub."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-12-02
 keywords: ["GitHub", "Git", "pull request", "Write For Linode", "article submissions", "linode guides and tutorials"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-    name: Linode
-published: 2015-12-02
-title: "A Beginner's Guide to GitHub"
-h1_title: "Getting Started with GitHub"
 aliases: ['/development/version-control/a-beginners-guide-to-github/','/github-guide/']
 tags: ["version control system"]
 ---
@@ -122,9 +119,9 @@ nothing to commit, working directory clean
 
 Using your preferred text editor, you should now be able to edit and create documents within your new branch. When writing your guide, you can refer to the [Linode Writer's Formatting Guide](/docs/guides/linode-writers-formatting-guide/) for help with the format of your guide and the styling of your text. Also note that our site uses the [Hugo](https://gohugo.io/) static site generator to render the website, and Hugo offers several features to enhance your Markdown files. These features are covered in our formatting guide.
 
-1.  When creating your guide, first determine where it should be located within the docs website's directory structure. For example, to create a new guide in the [https://www.linode.com/docs/guides/kubernetes/](https://www.linode.com/docs/guides/kubernetes/) section, you would create your guide within the `docs/guides/kubernetes/` subfolder inside your repository.
+1.  When creating your guide, first determine where it should be located within the docs website's directory structure. For example, to create a new guide in the [/docs/guides/kubernetes/](/docs/guides/kubernetes/) section, you would create your guide within the `docs/guides/kubernetes/` subfolder inside your repository.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To reiterate, the docs repository contains a folder that is also called `docs/`, and this folder then contains all of the content in the library:
 
 - Run `ls` while inside the root of the docs repository to see the other folders that it contains, if you'd like.
@@ -138,7 +135,7 @@ To reiterate, the docs repository contains a folder that is also called `docs/`,
 
     - This directory should contain a Markdown text file named `index.md`. This file will contain the contents of your guide. The directory can also contain any images or other assets that you'd like to include in your guide.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 While this example guide is located at `docs/guides/kubernetes/my-kubernetes-guide/`, the guide itself will later be published under the `docs/guides/my-kubernetes-guide/` URL path. Note that the URL for the guide will *not* include the `kubernetes/` section information. This is intentional, as our docs website is configured to publish guides under a flattened URL structure.
 {{< /note >}}
 
@@ -146,7 +143,7 @@ While this example guide is located at `docs/guides/kubernetes/my-kubernetes-gui
 
         hugo new -k content guides/kubernetes/my-kubernetes-guide/index.md
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 - You should *not* include the `docs/` directory at the front of the path that you pass to the `hugo new` command. Hugo will automatically know that it should place your guide under this directory.
 
 - You should replace `kubernetes/` with the section that your guide belongs to, and replace `my-kubernetes-guide/` with the appropriate directory name for your guide. This command will automatically create the `my-kubernetes-guide` directory if it does not already exist.
@@ -168,7 +165,7 @@ While this example guide is located at `docs/guides/kubernetes/my-kubernetes-gui
 
 1.  In a web browser, navigate to the location of your new guide. The example Kubernetes guide will be located at `http://localhost:1313/docs/guides/my-kubernetes-guide/`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Note that you will not be able to navigate to the new guide within the local website's Explore Docs menu, or through the search feature. This is because these features rely on a central search index, and this index is not updated until the production docs website is published.
 {{< /note >}}
 

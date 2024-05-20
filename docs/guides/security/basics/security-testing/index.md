@@ -1,18 +1,13 @@
 ---
 slug: security-testing
-author:
-  name: David Newman
+title: "Application Security Testing: Fundamentals and Best Practices"
+title_meta: "Application Security Testing Tools"
 description: 'Security testing is crucial for spotting and removing vulnerabilities. Learn about the types of application security tools and how to use them.'
+authors: ["David Newman"]
+contributors: ["David Newman"]
+published: 2022-04-29
 keywords: ['security testing','application security testing','application security tools','security testing tools']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-29
-modified_by:
-  name: Linode
-title: "Application Security Testing Tools"
-h1_title: "Application Security Testing: Fundamentals and Best Practices"
-enable_h1: true
-contributor:
-  name: David Newman
 ---
 
 Application security testing tools help you build applications that are less vulnerable to attacks by automating security testing, and by verifying your applications are secured against known vulnerabilities.
@@ -73,7 +68,7 @@ SQL injection test tools exist as a standalone category because injection attack
 
 For example, a successful SQL injection attack modifies a database by adding, updating, or deleting fields. It may expose personally identifiable information (PII) such as credit-card numbers or medical records. In some cases, SQL injection attacks also send commands to the underlying operating system.
 
-Because SQL injection attacks are so common, numerous tools exist to automate testing of this class of vulnerabilities. Some examples include [SQLMap](https://sqlmap.org/), [jSQL Injection](https://github.com/ron190/jsql-injection), and [BBQSQL](https://github.com/CiscoCXSecurity/bbqsql). Another open-source tool, [NoSQLMap](https://github.com/codingo/NoSQLMap), automates testing of code-injection vulnerabilities in NoSQL databases such as [CouchDB](/docs/guides/install-couchdb-20-on-ubuntu/) and [MongoDB](/docs/guides/mongodb-and-its-use-cases/).
+Because SQL injection attacks are so common, numerous tools exist to automate testing of this class of vulnerabilities. Some examples include [SQLmap](https://sqlmap.org/), [jSQL Injection](https://github.com/ron190/jsql-injection), and [BBQSQL](https://github.com/CiscoCXSecurity/bbqsql). Another open-source tool, [NoSQLMap](https://github.com/codingo/NoSQLMap), automates testing of code-injection vulnerabilities in NoSQL databases such as [CouchDB](/docs/guides/install-couchdb-20-on-ubuntu/) and [MongoDB](/docs/guides/mongodb-introduction/).
 
 ### Software Composition Analysis
 
