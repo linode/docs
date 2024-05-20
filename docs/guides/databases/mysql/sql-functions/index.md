@@ -1,21 +1,13 @@
 ---
 slug: sql-functions
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Learn about SQL functions and how it can be used for performing calculations on data.'
+title: "Introduction to SQL Functions"
+description: "Learn about SQL functions and how it can be used for performing calculations on data."
+authors: ["Doug Hayman for NanoHertz Solutions Inc"]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc"]
+published: 2022-06-27
 keywords: ['SQL mathematical functions', 'SQL date functions', 'SQL string functions', 'SQL conversion functions']
 tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-27
-modified_by:
-  name: Linode
-title: "SQL Functions"
-h1_title: "Introduction to SQL Functions"
-enable_h1: true
-contributor:
-  name: Doug Hayman for NanoHertz Solutions Inc.
-  link: http://nhzsolutions.com/
 ---
 
 SQL Server, MySQL server, and other commercial database systems offer a host of built-in functions that include mathematical, date, string, and conversion functions. These functions can be used for both processing and manipulating data within the server environments. These inherent functions provide valuable enhancements/extensions to the SQL language and are useful programmatic utilities that are available to a SQL developer.
