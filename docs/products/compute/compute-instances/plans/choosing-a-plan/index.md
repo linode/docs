@@ -3,7 +3,7 @@ title: "Choosing a Compute Instance Type and Plan"
 title_meta: "How to Choose a Compute Instance Plan"
 description: "Get help deciding which Compute Instance type is right for your use case and learn how to select the most appropriate plan"
 published: 2019-02-04
-modified: 2024-03-11
+modified: 2024-05-21
 linkTitle: "Choosing a Plan"
 keywords: ["choose", "help", "plan", "size", "shared", "high memory", "dedicated", "dedicated CPU", "GPU instance"]
 tags: ["linode platform"]
@@ -109,22 +109,20 @@ Starting at $60/mo ($0.09/hour). See [High Memory Pricing](https://www.linode.co
 
 ### GPU Instances
 
-All GPU plans are in limited availability.
+**32 GB - 512 GB Memory, 8 - 60 Dedicated vCPUs, 640 GB - 12 TB GB Storage**<br>
+Starting at $600/mo ($0.83/hour) for an NVIDIA RTX 4000 Ada GPU Instance with 1 GPU card, 20 vCPU cores, 64 GB of memory, and 1.5 TB of SSD storage. NVIDIA RTX 4000 Ada GPU plans are currently in Beta. You can register your interest using the [Reservation Request Form](https://www.linode.com/products/gpu/#gpu-form). For a full list of plans, resources, and pricing, see [Akamai Cloud Computing Pricing](https://www.linode.com/pricing/#compute-gpu).
 
-**32 GB - 128 GB Memory, 8 - 24 Dedicated vCPUs, 640 GB - 2560 GB Storage**<br>
-Starting at $1000/mo ($1.50/hour). See [GPU Pricing](https://www.linode.com/pricing/#compute-gpu) for a full list of plans, resources, and pricing.
-
-[GPU Instances](/docs/products/compute/compute-instances/plans/gpu/) are the only instance type equipped with [NVIDIA Quadro RTX 6000 GPU cards](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf) (up to 4) for on demand execution of complex processing workloads. These GPUs have CUDA cores, Tensor cores, and RT (Ray Tracing) cores. GPUs are designed to process large blocks of data in parallel, meaning that they are an excellent choice for any workload requiring thousands of simultaneous threads. With significantly more logical cores than a standard CPU, GPUs can perform computations that process large amounts of data in parallel more efficiently.
+[GPU Instances](/docs/products/compute/compute-instances/plans/gpu/) are the only Compute Instance type equipped with [NVIDIA RTX 4000 Ada GPU cards](https://resources.nvidia.com/en-us-design-viz-stories-ep/rtx-4000-ada-datashe?lx=CCKW39&contentType=data-sheet) or [NVIDIA Quadro RTX 6000 GPU cards](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf) for on demand execution of complex processing workloads. These GPUs have CUDA cores, Tensor cores, and RT (Ray Tracing) cores. GPUs are designed to process large blocks of data in parallel, meaning that they are an excellent choice for any workload requiring thousands of simultaneous threads. With significantly more logical cores than a standard CPU, GPUs can perform computations that process large amounts of data in parallel more efficiently.
 
 **Recommended Use Cases:**
 
-*Best for applications that require massive amounts of parallel processing power, including machine learning, AI, graphics processing, and big data analysis.*
+*Best for applications that require massive amounts of parallel processing power, including machine learning, AI inferencing, graphics processing, and big data analysis.*
 
-- [Machine Learning and AI](/docs/products/compute/compute-instances/plans/gpu/#machine-learning-and-ai)
-- [Big Data](/docs/products/compute/compute-instances/plans/gpu/#big-data)
-- [Video Encoding](/docs/products/compute/compute-instances/plans/gpu/#video-encoding)
-- [General Purpose Computing Using NVIDIA's CUDA Toolkit](/docs/products/compute/compute-instances/plans/gpu/#general-purpose-computing-using-cuda)
-- [Graphics Processing](/docs/products/compute/compute-instances/plans/gpu/#graphics-processing)
+- [Video encoding](/docs/products/compute/compute-instances/plans/gpu/#video-encoding)
+- [Graphics processing](/docs/products/compute/compute-instances/plans/gpu/#graphics-processing)
+- [AI inferencing](/docs/products/compute/compute-instances/plans/gpu/#machine-learning-and-ai)
+- [Big data analysis](/docs/products/compute/compute-instances/plans/gpu/#big-data)
+- [General Purpose computing using NVIDIA's CUDA Toolkit](/docs/products/compute/compute-instances/plans/gpu/#general-purpose-computing-using-cuda)
 
 ## Compute Resources
 
