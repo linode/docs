@@ -26,7 +26,7 @@ Correctly diagnosing a problem is the first step in solving it. At first glance,
 
 ### Are Postfix and Dovecot Running?
 
-Sometimes your mail server is not functioning correctly because the needed services are not running. For a mail server that has been running for a long time, [resource overuse](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/#diagnosing-and-fixing-memory-issues) is the most likely cause of stopped services. It doesn't hurt to check your resource use to rule out that problem. However, when you're just setting up a new mail server, it's more likely that your service startup problems are being caused by configuration errors. Some configuration errors - particularly syntax errors - are serious enough that they can prevent a service from starting.
+Sometimes your mail server is not functioning correctly because the needed services are not running. For a mail server that has been running for a long time, [resource overuse](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/) is the most likely cause of stopped services. It doesn't hurt to check your resource use to rule out that problem. However, when you're just setting up a new mail server, it's more likely that your service startup problems are being caused by configuration errors. Some configuration errors - particularly syntax errors - are serious enough that they can prevent a service from starting.
 
 To check that Postfix and Dovecot are running and to find startup errors, follow these steps:
 

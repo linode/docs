@@ -144,7 +144,7 @@ SFTP is a standard protocol for securely listing, downloading, and uploading fil
 
 ### SCP (Secure Copy Protocol)
 
-SCP is a common file transfer command line tool available on most macOS and Linux systems, including WSL on Windows 10. Review the [Download Files from Your Linode > Secure Copy Protocol (SCP)](/docs/guides/download-files-from-your-linode/#secure-copy-protocol-scp) guide for more details.
+SCP is a common file transfer command line tool available on most macOS and Linux systems, including WSL on Windows 10. Review the [Download Files from Your Compute Instance > Download Files with SCP](/docs/guides/download-files-from-a-compute-instance/#download-files-with-scp) guide for more details.
 
 ## Copy any Databases
 

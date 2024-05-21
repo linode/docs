@@ -41,7 +41,7 @@ The Domains section of the Cloud Manager can automatically add all of these reco
 
 ## Host Multiple Domains on a Single Server
 
-To host multiple domain names on a single server, create a separate domain entry for each domain name as shown below. When creating the new domain entry, we recommend that you allow the Domains section of the Cloud Manager to automatically [insert basic records](/docs/products/networking/dns-manager/#add-a-domain-zone). At a minimum, you'll need an A record for each domain name pointing to the server's IP address.
+To host multiple domain names on a single server, create a separate domain entry for each domain name as shown below. When creating the new domain entry, we recommend that you allow the Domains section of the Cloud Manager to automatically [insert basic records](/docs/products/networking/dns-manager/guides/create-domain/#pre-populate-dns-records). At a minimum, you'll need an A record for each domain name pointing to the server's IP address.
 
 ![This page shows the Domains page with three different domain zones listed.](common-dns-multiple-domains-one-server.png)
 

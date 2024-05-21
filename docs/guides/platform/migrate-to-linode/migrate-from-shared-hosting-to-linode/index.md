@@ -106,7 +106,7 @@ Once you've installed all the underlying software for your Linode, you can uploa
     Replace `example_user` with your Linode's user and `example.com` with your domain name.
     {{< /note >}}
 
-    If you have a database, you'll need to upload it to your Linode. If you're more comfortable using a control panel, you may want to [install phpMyAdmin](/docs/guides/install-mysql-phpmyadmin-ubuntu-14-04/) at this point. You can also [restore your database](/docs/guides/mysqldump-backups/#restoring-an-entire-dbms-from-backup) using the command line.
+    If you have a database, you'll need to upload it to your Linode. If you're more comfortable using a control panel, you may want to [install phpMyAdmin](/docs/guides/install-mysql-phpmyadmin-ubuntu-14-04/) at this point. You can also [restore your database](/docs/guides/mysqldump-backups/#restore-a-backup) using the command line.
 
 3.  Now check your website's IP address in your browser. Your website should be displayed.
 

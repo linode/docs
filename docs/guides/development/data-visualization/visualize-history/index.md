@@ -16,10 +16,10 @@ There are many open source tools available to create sophisticated data visualiz
 
 In this guide you will complete the following steps:
 
-* [Create three different data sets to use for your visualizations](/docs/guides/visualize-history/#create-your-data-sets).
-* [Visualize your data using R and RStudio as a pie chart](/docs/guides/visualize-history/#visualize-your-data-with-rstudio).
-* [Create a word cloud using Python and the pandas library](/docs/guides/visualize-history/#create-a-word-cloud-using-python).
-* [Develop a web browser based pie chart visualization using JavaScript and the D3.js package](/docs/guides/visualize-history/#visualize-data-using-d3-js).
+* [Create three different data sets to use for your visualizations](#create-your-data-sets).
+* [Visualize your data using R and RStudio as a pie chart](#visualize-your-data-with-r-and-rstudio).
+* [Create a word cloud using Python and the pandas library](#create-a-word-cloud-using-python).
+* [Develop a web browser based pie chart visualization using JavaScript and the D3.js package](#visualize-data-using-d3js).
 
 ## Before You Begin
 
@@ -180,13 +180,13 @@ In this section you will use the data sets you created in the previous section t
 
 [R](https://www.r-project.org/about.html) is a specialized programming language used for statistical computing and graphics. It is especially good for  creating high quality graphs, like [density plots](https://en.wikipedia.org/wiki/Density_estimation), [line charts](https://en.wikipedia.org/wiki/Line_chart), [pie charts](https://en.wikipedia.org/wiki/Pie_chart), and [scatter plots](https://en.wikipedia.org/wiki/Scatter_plot). [RStudio](https://rstudio.com/) is an integrated development environment (IDE) for R that includes debugging and plotting tools that make it easy to write, debug, and run R scripts.
 
-In this section, you will use the `command_categories.txt` file created in the [Data Set 3 - Perl Script](/docs/guides/visualize-history/#data-set-3-perl-script) section and RStudio to create a pie chart and simple spreadsheet of your data.
+In this section, you will use the `command_categories.txt` file created in the [Data Set 3 - Perl Script](#data-set-3---perl-script) section and RStudio to create a pie chart and simple spreadsheet of your data.
 
 1. Open RStudio Desktop and create a data frame. In R, a data frame is a table similar to a two-dimensional array.
 
         DATA <- read.table("~/command_categories.txt", header=TRUE)
 
-    - This command will read the `command_categories.txt` file that was created in the [Data Set 3 - Perl Script](/docs/guides/visualize-history/#data-set-3-perl-script) section of the guide and create a data frame from it that is stored in the `DATA` variable.
+    - This command will read the `command_categories.txt` file that was created in the [Data Set 3 - Perl Script](#data-set-3---perl-script) section of the guide and create a data frame from it that is stored in the `DATA` variable.
 
     - The `header=TRUE` argument indicates that the file's first row contains variable names for column values. This means that `Category Name` and `Number of Times` will be used as variable names for the two columns of values in `command_categories.txt`.
 

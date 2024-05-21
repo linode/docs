@@ -36,7 +36,7 @@ Node.js is an open-source JavaScript runtime environment that can serve dynamic 
 1.  Set up your Linode using the [Getting Started](/docs/products/platform/get-started/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
 
     {{< note respectIndent=false >}}
-Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-fileupdate-your-system-s-hosts-file) section of the [Getting Started](/docs/products/platform/get-started/) guide.
+Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-file) section of the [Getting Started](/docs/products/platform/get-started/) guide.
     {{< /note >}}
 
 

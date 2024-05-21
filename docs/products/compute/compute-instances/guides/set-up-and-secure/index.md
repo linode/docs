@@ -295,7 +295,7 @@ See our guide to [Adding DNS Records](/docs/products/networking/dns-manager/) fo
 
 ## Add a Limited User Account
 
-Up to this point, you have accessed your Compute Instance as the `root` user, which has unlimited privileges and can execute *any* command--even one that could accidentally disrupt your server. We recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges so you can administer your server. Later, when you want to restrict sudo access for users, see [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-sudo).
+Up to this point, you have accessed your Compute Instance as the `root` user, which has unlimited privileges and can execute *any* command--even one that could accidentally disrupt your server. We recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges so you can administer your server. Later, when you want to restrict sudo access for users, see [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user).
 
 {{< note >}}
 Not all Linux distributions include `sudo` on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output `sudo: command not found`, install sudo before continuing.

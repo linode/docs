@@ -111,7 +111,7 @@ The `-f` option is used to define number of [forks](https://docs.ansible.com/ans
 {{< /note >}}
 
 {{< note >}}
-If your managed node is a Linode, then [Linode's shutdown watchdog *Lassie*](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configure-shutdown-watchdog) needs to be enabled for the reboot to succeed. This is because a Linode is not able to turn itself on--instead, Linode's host environment must boot the Linode.
+If your managed node is a Linode, then [Linode's shutdown watchdog *Lassie*](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/) needs to be enabled for the reboot to succeed. This is because a Linode is not able to turn itself on--instead, Linode's host environment must boot the Linode.
 {{< /note >}}
 
 ## Collecting System Diagnostics

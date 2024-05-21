@@ -42,7 +42,7 @@ The Linux Game Server manager ([LinuxGSM](https://linuxgsm.com/)) is a command-l
         sudo adduser sdtdserver
         sudo adduser sdtdserver sudo
 
-1. Switch your terminal session to the new `sdtdserver` user. You can exit your current session by typing **exit**, then [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-filelog-in-using-ssh) using as the `sdtdserver` user. Ensure you replace the example command with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/).
+1. Switch your terminal session to the new `sdtdserver` user. You can exit your current session by typing **exit**, then [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) using as the `sdtdserver` user. Ensure you replace the example command with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/).
 
         ssh sdtdserver@192.0.2.0
 

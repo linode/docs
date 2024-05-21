@@ -118,12 +118,12 @@ For more details, see the [Understanding Events and Activity Feeds](/docs/produc
 
 The **My Profile** section of Cloud Manager provides access to various settings related to your Linode account's profile. This area of Cloud Manager contains access to the following features and settings:
 
-- [Changing your account's associated email address](/docs/products/platform/accounts/guides/manage-users/#changing-your-email-address) and timezone
-- [Resetting your Account password](/docs/products/platform/accounts/guides/manage-users/#changing-or-resetting-your-linode-cloud-manager-password)
-- [Enabling two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/#enable-two-factor-authentication)
+- [Changing your account's associated email address](/docs/products/platform/accounts/guides/change-user-email/) and timezone
+- [Resetting your Account password](/docs/products/platform/accounts/guides/reset-user-password/)
+- [Enabling two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/#2fa-two-factor-authentication)
 - [Enabling Third Party Authentication (TPA)](/docs/guides/third-party-authentication/)
 - Managing trusted devices
-- [Adding and managing public SSH keys](/docs/guides/use-public-key-authentication-with-ssh/#upload-your-ssh-key-to-the-cloud-manager)
+- [Adding and managing public SSH keys](/docs/products/platform/accounts/guides/manage-ssh-keys/)
 - [Managing LISH authentication methods](/docs/products/compute/compute-instances/guides/lish/#add-your-public-key)
 - [Adding and managing personal and third party API v4 access tokens](/docs/products/tools/api/get-started/#get-an-access-token)
 - [Creating and managing OAuth Apps](/docs/products/tools/api/guides/create-an-oauth-app-with-the-python-api-library/#obtaining-a-client-id-and-a-client-secret)

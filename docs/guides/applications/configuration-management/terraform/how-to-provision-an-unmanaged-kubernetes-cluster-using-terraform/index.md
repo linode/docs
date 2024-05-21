@@ -88,7 +88,7 @@ By default, Terraform uses the SSH agent of the operating system to connect to a
 Agent pid 11308
    {{</ output >}}
 
-2. Add the SSH keys to the agent. For more information, see [creating an authentication key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair). This command adds keys from the default location, `~/.ssh/`
+2. Add the SSH keys to the agent. For more information, see [creating an authentication key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#upload-ssh-key). This command adds keys from the default location, `~/.ssh/`
 
         ssh-add
 
