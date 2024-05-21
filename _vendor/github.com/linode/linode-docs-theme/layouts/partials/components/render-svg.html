@@ -1,7 +1,31 @@
 {{ $diagramDescriptionID := .url.Query.Get "diagram-description-id" }}
+{{ $aspectRatio :="" }}
+{{ $w := 0.0 }}
+{{ $h := 0.0 }}
+{{ with findRESubmatch `viewBox="(.*?)"` .image.Content }}
+  {{ $parts := split (index (index . 0 ) 1) " " }}
+  {{ $w = index $parts 2 | float }}
+  {{ $h = index $parts 3 | float }}
+  {{ $aspectRatio = div $w $h }}
+{{ end }}
+{{/* Default: 3/2 maximum ascpect ratio */}}
+{{ $aspectRatioClass := "aspect-[3/2]" }}
+{{ with $aspectRatio }}
+  {{ if and (gt . 1.0) (lt . 1.5) }}
+    {{/* For any SVG with an aspect ratio between 1:1 an 3:2, we don't just use the SVG's aspect ratio. */}}
+    {{/* Just add a padding above/below. */}}
+    {{ $aspectRatioClass = "py-[50px]" }}
+  {{ else if le . 0.4 }}
+    {{/* 1/1 maximum ascpect ratio */}}
+    {{ $aspectRatioClass = "aspect-[1/1]" }}
+  {{ end }}
+{{ end }}
 
 
-<div class="h-96" x-data="{ visible: false }" x-intersect.once="visible = true">
+<div
+  class="border-2 w-full {{ $aspectRatioClass }}"
+  x-data="{ visible: false }"
+  x-intersect.once="visible = true">
   <template x-if="visible">
     <div
       x-data="lnvSVGViewer({diagramDescriptionID: '{{ $diagramDescriptionID }}' })"
@@ -29,8 +53,8 @@
         </span>
       </div>
       {{ template "render-svg-tooltip" }}
-      <div class="large-diagram-svg-container diagram-animate">
-        <div class="svg-container">
+      <div class="large-diagram-svg-container diagram-animate w-full h-full">
+        <div class="svg-container  w-full h-full">
           {{ .image.Content | safeHTML }}
         </div>
       </div>

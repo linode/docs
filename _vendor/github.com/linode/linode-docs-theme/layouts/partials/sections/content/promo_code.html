@@ -1,3 +1,4 @@
+{{ if not .Params.deprecated }}
 <div
   class="flex justify-between bg-brand pull-out items-center rounded-none md:rounded-md px-4 md:px-8 py-4"
   x-data="lncPromoCodes()">
@@ -36,3 +37,4 @@
     </form>
   </div>
 </div>
+{{ end }}

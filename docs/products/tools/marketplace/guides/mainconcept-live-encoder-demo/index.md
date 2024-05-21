@@ -16,9 +16,9 @@ The version of MainConcept Live Encoder in this deployment is a free demo. It ad
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** MainConcept Live Encoder should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -33,8 +33,8 @@ The version of MainConcept Live Encoder in this deployment is a free demo. It ad
 
 - **Email address for SSL Generation (Required):** This is the contact email address used for communication regarding the SSL certificate created during deployment. This should be the email address of your web server administrator.
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -60,4 +60,4 @@ Once your MainConcept Live Encoder Marketplace App is deployed, you can log into
 
 Please see [the official documentation for MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) for more information on usage and resources. For support regarding the tool or software itself, use the information in the sidebar to contact MainConcept's support or search the [MainConcept community forum](https://forum.mainconcept.com/).
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

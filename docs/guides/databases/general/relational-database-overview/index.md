@@ -42,7 +42,7 @@ For example, consider a database for a school. This database has several tables,
 
 For instance, a simplified `Students` table can be defined using the structure displayed below. The top row represents the names of the columns in the table. The table below currently has two rows of data, one for each student.
 
-| first_name | last_name | grade | family_id | student_id |
+| `first_name` | `last_name` | `grade` | `family_id` | `student_id` |
 |:-:|:-:|:-:|:-:|:-:|
 | John | Doe | 4 | 1116 | 5005 |
 | Jane | Student | 5 | 1224 | 5350 |

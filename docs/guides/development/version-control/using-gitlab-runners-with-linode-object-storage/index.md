@@ -357,7 +357,7 @@ Your GitLab Runner needs some changes to its configuration now to support autosc
 
 ### Test the Autoscaling GitLab Runner
 
-Verifying your autoscaling setup works similarly to verifying your GitLab Runner setup overall. You can simply commit a change to one of the files in the example project created for the [Testing Your GitLab Runner](/docs/guides/using-gitlab-runners-with-linode-object-storage/#testing-your-gitlab-runner) section above.
+Verifying your autoscaling setup works similarly to verifying your GitLab Runner setup overall. You can simply commit a change to one of the files in the example project created for the [Testing Your GitLab Runner](#test-your-gitlab-runner) section above.
 
 The CI/CD pipeline automatically creates new jobs for the runner to pick up. The runner has now been configured to provision machines to fulfill the jobs, but otherwise, you can see the results just as before.
 

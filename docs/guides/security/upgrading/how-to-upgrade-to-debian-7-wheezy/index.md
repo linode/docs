@@ -39,11 +39,11 @@ Any available updates for Debian 6 will be installed on your Linode.
 
 ### Backing Up Your Linode
 
-It's a good idea to [back up](/docs/products/storage/backups/) your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/products/storage/backups/#take-a-manual-snapshot) before upgrading to Debian 7. If you use another backup service or application, we recommend that you make a manual backup now. You may also want to back up your configuration files (usually located in /etc/) in case they have changed in later versions of the software you are using.
+It's a good idea to [back up](/docs/products/storage/backups/) your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/products/storage/backups/guides/take-a-snapshot/) before upgrading to Debian 7. If you use another backup service or application, we recommend that you make a manual backup now. You may also want to back up your configuration files (usually located in /etc/) in case they have changed in later versions of the software you are using.
 
 ### Checking Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#applying-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#apply-kernel-updates) for more information.
 
 ### Stopping Services
 

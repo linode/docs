@@ -22,7 +22,7 @@ Open Web Analytics (OWA) is an open-source alternative to commercial web analyti
 
      - The [Getting Started](/docs/products/platform/get-started/) guide.
      - The [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
-     - That the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname) and has a FQDN.
+     - That the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and has a FQDN.
 
 
     {{< note respectIndent=false >}}

@@ -79,7 +79,7 @@ Your DNS records can be setup using the [DNS Manager](/docs/products/networking/
 1.  Complete the LiveKit setup's prompts as follows:
 
     - Choose either the **with Ingress** or **with both Egress and Ingress** option.
-    - Enter the LiveKit server and TURN domains as created above in [Confguring the Host](#configuring-the-host).
+    - Enter the LiveKit server and TURN domains as created above in [Configuring the Host](#configuring-the-host).
     - Leave the WHIP domain empty.
     - Select **Let's Encrypt (no account required)** for SSL.
     - Choose the **latest** version of LiveKit.

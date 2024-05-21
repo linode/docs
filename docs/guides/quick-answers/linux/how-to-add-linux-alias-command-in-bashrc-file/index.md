@@ -123,7 +123,7 @@ You can also write a Bash function like this:
         command2
     }
 
-To use the function with arguments, the syntax is function_name followed by arguments separated with spaces.
+To use the function with arguments, the syntax is `function_name` followed by arguments separated with spaces.
 
 Let's make a simple function that changes into a specified directory and then lists the directory contents.
 

@@ -20,9 +20,9 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** MongoDB should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -38,12 +38,12 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 - **MongoDB admin user password** *(required)*: The Mongo admin user password.
 - **MongoDB Version** *(required)*: Select the version of MongoDB you'd like to install.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 - **Email address for soa record:** The start of authority (SOA) email address for this server. This email address will be added to the SOA record for the domain. This is a required field if you want the installer to create DNS records.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -83,11 +83,11 @@ For more information on access control and user management, as well as other tip
 
 ### Manage Data and Collections
 
-{{< content "mongodb-example-shortguide" >}}
+{{% content "mongodb-example-shortguide" %}}
 
 ## Next Steps
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 For more on MongoDB, checkout the following guides:
 

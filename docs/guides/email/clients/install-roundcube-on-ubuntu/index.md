@@ -20,7 +20,7 @@ external_resources:
 
 Roundcube is a web-based IMAP email client that offers a user interface similar to Google’s Gmail. It is a server-side application written in PHP designed to access an email server or service. Email users interact with Roundcube using a web browser.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## Before You Begin
 

@@ -32,7 +32,7 @@ This guide uses a `CourseTaken` table to demonstrate aggregate functions. From t
 
 The `CourseTaken` table contains the following column data:
 
-| SSNumber | CourseId | NumericGrade | YearTaken
+| `SSNumber` | `CourseId` | `NumericGrade` | `YearTaken`
 |:-:|:-:|:-:|:-:|
 | 111111111 | CSC101 | 98 | 2021|
 | 111111111 | ENG101 | 95 | 2022|

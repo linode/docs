@@ -71,7 +71,7 @@ Magento requires as much as 2GB of free memory. If your system does not have eno
 
 If you do not have access to a system with 2GB of memory, you can create a swap file with the following commands. This swap file is temporary and only persists until the next reboot.
 
-1.  Create a directory for the swap file, and add a file within this directory to hold the swap data. The `count` parameter refers to the size of the swap file in MBs. This must be set to at least 2048, but you can configure it to an even larger amount if you want.
+1.  Create a directory for the swap file, and add a file within this directory to hold the swap data. The `count` parameter refers to the size of the swap file in megabytes. This must be set to at least 2048, but you can configure it to an even larger amount if you want.
 
         sudo mkdir /swapdir/
         sudo dd if=/dev/zero of=/swapdir/swapfile bs=1MB count=2048

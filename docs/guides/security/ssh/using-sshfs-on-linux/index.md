@@ -110,7 +110,7 @@ This command will overwrite an existing RSA key pair, potentially locking you ou
 
 If you’ve already created a key pair, skip this step. To check for existing keys, run ls ~/.ssh/id_rsa*.
 
-If you accidentally lock yourself out of your Linode, use Lish to update your authorized_keys file and regain SSH access.
+If you accidentally lock yourself out of your Linode, use Lish to update your `authorized_keys` file and regain SSH access.
 {{< /note >}}
 
 1. Generate a keypair with the `ssh-keygen` command; accept the default values for the options it presents:
@@ -121,11 +121,11 @@ If you accidentally lock yourself out of your Linode, use Lish to update your au
 
         ssh-copy-id -i ~/.ssh/id_rsa.pub example_user@192.0.2.4
 
-    {{< note respectIndent=false >}}
-If your system is older, this file may be named `authorized_keys2`. [Consult](https://www.ssh.com/ssh/sshd_config/#sec-AuthorizedKeysFile-location) your Linode's `/etc/ssh/sshd_config` if you are unsure:
+    {{< note >}}
+    If your system is older, this file may be named `authorized_keys2`. [Consult](https://www.ssh.com/ssh/sshd_config/#sec-AuthorizedKeysFile-location) your Linode's `/etc/ssh/sshd_config` if you are unsure:
 
-    grep authorized_keys /etc/ssh/sshd_config
-{{< /note >}}
+        grep authorized_keys /etc/ssh/sshd_config
+    {{< /note >}}
 
 1. At this point, you should be able to log into the remote server as `example_user` without entering a password. Confirm this:
 

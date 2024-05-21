@@ -17,9 +17,9 @@ aliases: ['/platform/marketplace/how-to-deploy-azuracast-with-marketplace-apps/'
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** AzuraCast should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -71,4 +71,4 @@ The AzuraCast Marketplace App installs the following software on your Linode:
 | [**InfluxDB**](https://www.influxdata.com/) | A database for capturing time-series based statistics. |
 | [**Redis**](https://redis.io/) | A database for session management and caching |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

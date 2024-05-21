@@ -25,7 +25,7 @@ While upstream maintainers try to ensure cross-compatibility and problem-free up
 
 - You will need root access to your Linode, or a user account with `sudo` privileges.
 
-- **Back up any important data stored on your Linode!** If you subscribe to the Linode Backups service, we recommend taking a [manual snapshot](/docs/products/storage/backups/#take-a-manual-snapshot) before upgrading your system. If you use a different backup service or application, you should do a manual backup now.
+- **Back up any important data stored on your Linode!** If you subscribe to the Linode Backups service, we recommend taking a [manual snapshot](/docs/products/storage/backups/guides/take-a-snapshot/) before upgrading your system. If you use a different backup service or application, you should do a manual backup now.
 
     {{< note respectIndent=false >}}
 You may also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. See our [backup guides](/docs/security/backups/) for more information.

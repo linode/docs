@@ -25,7 +25,7 @@ Since you have full root access to your Compute Instance's system, you're free t
 
 ## How can I send and receive email with my Compute Instance?
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 If you'd prefer to leave the management of your email to a third party, you may follow our [Google Workspace](/docs/guides/using-google-workspace-for-email/) guide. Those desiring to operate their own mail server will find these guides helpful:
 
@@ -53,7 +53,7 @@ First, you might want to give the [Linode Backup Service](http://www.linode.com/
 
 - [Introduction to Rsync](/docs/guides/introduction-to-rsync/): Using `rsync` to mirror files to another server.
 - [Using Rdiff-backup with SSHFS](/docs/guides/using-rdiff-backup-with-sshfs/): An easy approach to using the `rdiff-backup` utility to maintain differential backups.
-- [Cloning a Disk](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode): Creating an exact copy of a disk in the Cloud Manager.
+- [Cloning a Disk](/docs/products/compute/compute-instances/guides/clone-instance/#clone-to-an-existing-compute-instance): Creating an exact copy of a disk in the Cloud Manager.
 - [Copying a Disk Over SSH](/docs/products/compute/compute-instances/guides/copy-a-disk-image-over-ssh/): How to download an exact binary image of your Compute Instance's disk over SSH.
 
 ## How can I install software on my Compute Instance?
@@ -62,7 +62,7 @@ Please refer to our guide on [Linux package management](/docs/guides/linux-packa
 
 ## How do I add another IP address?
 
-You may add an [additional public IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) from the **Networking** tab for each Compute Instance in the Cloud Manager. After you've added a new IP address, you must [configure static networking](/docs/products/compute/compute-instances/guides/manual-network-configuration/) or enable [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) and reboot your instance before it can be used.
+You may add an [additional public IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) from the **Networking** tab for each Compute Instance in the Cloud Manager. After you've added a new IP address, you must [configure static networking](/docs/products/compute/compute-instances/guides/manual-network-configuration/) or enable [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#individual-compute-instance-setting) and reboot your instance before it can be used.
 
 {{< note >}}
 We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the [Support Tickets](https://cloud.linode.com/support/tickets) section of the Cloud Manager explaining the reason for the new IP.
@@ -82,7 +82,7 @@ If an application is crashing, be sure to check its error logs. These are typica
 
 ## Why is my connection to my Compute Instance slow or broken?
 
-First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Compute Instance runs a firewall, [check your firewall rules](/docs/guides/control-network-traffic-with-iptables/#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) to and from your Compute Instance, and [submit them](/docs/products/platform/get-started/guides/support/#contacting-linode-support) via the  [Support Tickets](https://cloud.linode.com/support/tickets)  section in the Cloud Manager. You may need to use [Lish](/docs/products/compute/compute-instances/guides/lish/) if you're having problems reaching your Compute Instance via normal networking.
+First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Compute Instance runs a firewall, [check your firewall rules](/docs/guides/control-network-traffic-with-iptables/#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) to and from your Compute Instance, and [submit them](/docs/products/platform/get-started/guides/support/#contact-customer-support) via the  [Support Tickets](https://cloud.linode.com/support/tickets)  section in the Cloud Manager. You may need to use [Lish](/docs/products/compute/compute-instances/guides/lish/) if you're having problems reaching your Compute Instance via normal networking.
 
 ## How can I upgrade or downgrade my Compute Instance?
 

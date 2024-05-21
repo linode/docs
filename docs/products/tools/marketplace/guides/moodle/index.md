@@ -14,9 +14,9 @@ Moodle is the most widely used open source learning management system. It is aim
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Moodle should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -36,9 +36,9 @@ Moodle is the most widely used open source learning management system. It is aim
 - **Limited sudo user** *(required)*: Enter your preferred username for the limited user.
 - **Password for the limited user** *(required)*: Enter a *strong* password for the new user.
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 #### Limited User SSH Options (Optional)
 
@@ -68,4 +68,4 @@ The Moodle Marketplace App installs the following required software on your Lino
 | [**Apache2**](https://httpd.apache.org) | HTTP Server. |
 
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

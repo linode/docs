@@ -38,7 +38,7 @@ This tutorial assumes that you are familiar with the following:
 
 For a different Linux distribution or different mail server, review our [email tutorials](/docs/email/).
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## How to Set Up an Email Server with Postfix, Dovecot and MySQL
 

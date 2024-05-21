@@ -116,7 +116,7 @@ Keep these considerations in mind when you use SSH tunneling.
     6.  Leave the `about:config window` by typing any URL in the location bar or closing Firefox.
 
 -   If the access to SSH is blocked in the public network you are using, it will not be possible to establish the tunnel. A workaround for this is to run your SSH server on a different port, more likely to be open; for example port 80 (HTTP).
--   If you are already in a public network that blocks your access to SSH, to edit the server settings you can use the [Linode Shell from the web](/docs/products/compute/compute-instances/guides/lish/#using-a-web-browser).
+-   If you are already in a public network that blocks your access to SSH, to edit the server settings you can use the [Lish console](/docs/products/compute/compute-instances/guides/lish/).
 -   Sometimes, the traffic through the tunnel could be a bit slower than browsing the web without it; but remember, it's a small price to pay when your privacy is at risk.
 -   This is a simple and quick way to establish a secure connection for web browsing, a kind of “poor man's VPN” solution.
 -   If you often access the web using untrusted public networks or if you need to secure other applications and not just the browser, then this method will fall short and you will need to set up a VPN on your server. Take a look at one of our [OpenVPN](/docs/networking/vpn/) guides for instructions about that topic.

@@ -12,9 +12,9 @@ ownCloud is a self-hosted file sharing and collaboration platform. It allows use
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** ownCloud should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -35,9 +35,9 @@ ownCloud is a self-hosted file sharing and collaboration platform. It allows use
 - **The name of the database** (default: "owncloud"): Enter the name you'd like to use for the ownCloud database, if different than the default value.
 - **The name of the database user to create** (default: "owncloud"): Enter the name you'd like to use for user of the ownCloud database, if different than the default value.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -71,4 +71,4 @@ After deployment, follow the instructions below to access your application.
 
 Now that you’ve accessed your ownCloud instance, check out [the official ownCloud documentation](https://doc.owncloud.com/server) to learn how to further utilize your ownCloud instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

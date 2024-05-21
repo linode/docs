@@ -222,7 +222,7 @@ We recommend that you *not* modify these files:
 
 In practice, the vast majority of your configuration options should go in site-specific virtual host configuration files. If you need to set a system-wide configuration option or aren't using virtual hosting, the best practice is to specify options in files created beneath the `conf.d/` directory.
 
-For more help with conflicting directives, see our [Apache Troubleshooting](/docs/guides/troubleshooting-common-apache-issues/#troubleshooting-conflicting-directives) article.
+For more help with conflicting directives, see our [Apache Troubleshooting](/docs/guides/troubleshooting-common-apache-issues/#troubleshoot-conflicting-directives) article.
 
 ## Multi-Processing Module
 

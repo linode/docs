@@ -60,7 +60,7 @@ If you wish to perform an action on a particular file, right click that file to 
 - [Edit](https://docs.cyberduck.io/cyberduck/edit/): Useful for editing plaintext files.
 - Rename, Duplicate, and much more.
 
-{{< content "object-storage-character-warning-shortguide" >}}
+{{% content "object-storage-character-warning-shortguide" %}}
 
 ## Obtain the URL of a File
 

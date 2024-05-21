@@ -8,7 +8,7 @@ tab_group_main:
     weight: 30
 ---
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}
 
 ## Basics
 

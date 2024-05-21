@@ -36,7 +36,7 @@ This guide covers implementing both of these methods using the Cloud Manager. Wh
 
 1. Complete the create form with any additional add-ons and settings you'd like to use. Then click the **Create Linode** button.
 
-By default, the public IP address (and, if added, the private IP address) of the Compute Instance is configured on the *eth0* network interface. The VLAN, if one was attached, is configured on the *eth1* network interface. These network interfaces can be removed or modified by editing the [Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#editing-a-configuration-profile).
+By default, the public IP address (and, if added, the private IP address) of the Compute Instance is configured on the *eth0* network interface. The VLAN, if one was attached, is configured on the *eth1* network interface. These network interfaces can be removed or modified by editing the [Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#edit-a-configuration-profile).
 
 ## Attaching a VLAN to an Existing Compute Instance
 

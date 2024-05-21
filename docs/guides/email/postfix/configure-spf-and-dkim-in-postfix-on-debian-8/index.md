@@ -28,7 +28,7 @@ We have created a [new version of this guide](/docs/guides/configure-spf-and-dki
 
 ![SPF and DKIM with Postfix](Configure_SPF_and_DKIM_with_Postfix_on_Debian_8_smg.jpg)
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 SPF (Sender Policy Framework) is a system that identifies to mail servers what hosts are allowed to send email for a given domain. Setting up SPF helps to prevent your email from being classified as spam.
 

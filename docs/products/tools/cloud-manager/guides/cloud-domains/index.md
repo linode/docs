@@ -3,4 +3,4 @@ title: Linode Domains
 description: "How to access domains in the Linode Cloud Manager."
 ---
 
-{{< content "cloud-domains-shortguide" >}}
+{{% content "cloud-domains-shortguide" %}}
