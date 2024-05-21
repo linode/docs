@@ -85,32 +85,32 @@ If the [automatic installation](#automatic-installation) instructions failed, yo
 
     {{< tabs >}}
     {{< tab "Debian and Ubuntu" >}}
-Find the codename of the distribution running on your Linode.
+    Find the codename of the distribution running on your Linode.
 
-```command
-root@localhost:~# lsb_release -sc
-```
+    ```command
+    root@localhost:~# lsb_release -sc
+    ```
 
-```output
-stretch
-```
+    ```output
+    stretch
+    ```
 
-Using the text editor of your choice, like [nano](/docs/guides/use-nano-to-edit-files-in-linux/), create a custom sources file that includes Longview's Debian repository and the Debian distribution codename. In the command below, replace *stretch* with the output of the previous step.
+    Using the text editor of your choice, like [nano](/docs/guides/use-nano-to-edit-files-in-linux/), create a custom sources file that includes Longview's Debian repository and the Debian distribution codename. In the command below, replace *stretch* with the output of the previous step.
 
-```file {title="/etc/apt/sources.list.d/longview.list" lang="config"}
-deb http://apt-longview.linode.com/ stretch main
-```
+    ```file {title="/etc/apt/sources.list.d/longview.list" lang="config"}
+    deb http://apt-longview.linode.com/ stretch main
+    ```
     {{< /tab >}}
     {{< tab "CentOS" >}}
-Using the text editor of your choice, like [nano](/docs/guides/use-nano-to-edit-files-in-linux/), create a `.repo` file and copy the contents of the example file below. Replace `REV` in the repository URL with your CentOS version (e.g., 7). If unsure, you can find your CentOS version number with `cat /etc/redhat-release`.
+    Using the text editor of your choice, like [nano](/docs/guides/use-nano-to-edit-files-in-linux/), create a `.repo` file and copy the contents of the example file below. Replace `REV` in the repository URL with your CentOS version (e.g., 7). If unsure, you can find your CentOS version number with `cat /etc/redhat-release`.
 
-```file {title="/etc/yum.repos.d/longview.repo" lang="config"}
-[longview]
-name=Longview Repo
-baseurl=https://yum-longview.linode.com/centos/REV/noarch/
-enabled=1
-gpgcheck=1
-```
+    ```file {title="/etc/yum.repos.d/longview.repo" lang="config"}
+    [longview]
+    name=Longview Repo
+    baseurl=https://yum-longview.linode.com/centos/REV/noarch/
+    enabled=1
+    gpgcheck=1
+    ```
     {{< /tab >}}
     {{< /tabs >}}
 
@@ -118,16 +118,16 @@ gpgcheck=1
 
     {{< tabs >}}
     {{< tab "Debian and Ubuntu" >}}
-```command
-sudo curl -O https://apt-longview.linode.com/linode.gpg
-sudo mv linode.gpg /etc/apt/trusted.gpg.d/linode.gpg
-```
+    ```command
+    sudo curl -O https://apt-longview.linode.com/linode.gpg
+    sudo mv linode.gpg /etc/apt/trusted.gpg.d/linode.gpg
+    ```
     {{< /tab >}}
     {{< tab "CentOS" >}}
-```command
-sudo curl -O https://yum-longview.linode.com/linode.key
-sudo rpm --import linode.key
-```
+    ```command
+    sudo curl -O https://yum-longview.linode.com/linode.key
+    sudo rpm --import linode.key
+    ```
     {{< /tab >}}
     {{< /tabs >}}
 
@@ -147,15 +147,15 @@ sudo rpm --import linode.key
 
     {{< tabs >}}
     {{< tab "Debian and Ubuntu" >}}
-```command
-sudo apt update
-sudo apt install linode-longview
-```
+    ```command
+    sudo apt update
+    sudo apt install linode-longview
+    ```
     {{< /tab >}}
     {{< tab "CentOS" >}}
-```command
-sudo yum install linode-longview
-```
+    ```command
+    sudo yum install linode-longview
+    ```
     {{< /tab >}}
     {{< /tabs >}}
 

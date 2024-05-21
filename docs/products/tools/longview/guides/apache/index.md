@@ -75,21 +75,21 @@ To enable the Apache Longview integration manually, follow these steps on your s
 
     {{< tabs >}}
     {{< tab "Debian and Ubuntu" >}}
-```command
-sudo a2enmod status
-```
+    ```command
+    sudo a2enmod status
+    ```
     {{< /tab >}}
     {{< tab "CentOS" >}}
-```command
-sudo yum install links
-httpd -M | grep status
-```
+    ```command
+    sudo yum install links
+    httpd -M | grep status
+    ```
 
-The output should be similar to:
+    The output should be similar to:
 
-```output
-status_module (shared)
-```
+    ```output
+    status_module (shared)
+    ```
     {{< /tab >}}
     {{< /tabs >}}
 
@@ -119,14 +119,14 @@ status_module (shared)
 
     {{< tabs >}}
     {{< tab "Debian and Ubuntu" >}}
-```command
-sudo systemctl restart apache2
-```
+    ```command
+    sudo systemctl restart apache2
+    ```
     {{< /tab >}}
     {{< tab "CentOS" >}}
-```command
-sudo systemctl restart httpd
-```
+    ```command
+    sudo systemctl restart httpd
+    ```
     {{< /tab >}}
     {{< /tabs >}}
 

@@ -46,18 +46,18 @@ To start capturing metrics for one of your Compute Instances (or other Linux sys
 
     {{< tabs >}}
     {{< tab "Debian and Ubuntu" >}}
-```command
-sudo apt-get remove linode-longview
-```
+    ```command
+    sudo apt-get remove linode-longview
+    ```
     {{< /tab >}}
     {{< tab "CentOS" >}}
-```command
-sudo yum remove linode-longview
-```
+    ```command
+    sudo yum remove linode-longview
+    ```
     {{< /tab >}}
     {{< tab "Other Distributions" >}}
-```command
-sudo rm -rf /opt/linode/longview
-```
+    ```command
+    sudo rm -rf /opt/linode/longview
+    ```
     {{< /tab >}}
     {{< /tabs >}}
