@@ -26,7 +26,7 @@ image: Apache_Cassandra.png
 
 ## Introduction to Apache Cassandra
 
-The Cassandra NoSQL database is ideal for situations that require maximum data redundancy and uptime, ease of horizontal scaling across multiple unique servers, and rapidly evolving project demands during the development life cycle which would otherwise be heavily restricted by traditional relational database implementations. Apache Cassandra is an open-source application that is managed in a simple command line interface using the Cassandra Query Language, or CQL. CQL is syntactically similar to the Structured Query Language, making it easy to pick up for those already familiar with SQL.
+The Cassandra NoSQL database is ideal for situations the the maintaniance that require maximum data redundancy and uptime, ease of horizontal scaling across multiple unique servers, and rapidly evolving project demands during the development life cycle which would otherwise be heavily restricted by traditional relational database implementations. Apache Cassandra is an open-source application that is managed in a simple command line interface using the Cassandra Query Language, or CQL. CQL is syntactically similar to the Structured Query Language, making it easy to pick up for those already familiar with SQL.
 
 After completing this guide, you will have a single-node, production-ready installation of Apache Cassandra hosted on your Linode. This tutorial will cover basic configuration options, as well as harden database security. In order to successfully execute the commands in this guide, you will need to run them as the "root" user or log in using an account with root privileges, prefixing each command with `sudo`.
 
