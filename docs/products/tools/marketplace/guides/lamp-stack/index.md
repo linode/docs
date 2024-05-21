@@ -72,6 +72,6 @@ The LAMP Stack Marketplace App installs the following software on your Linode:
 
 ## Going Further
 
-- [Marketplace Apps Repository](https://github.com/linode-solutions/marketplace-apps): Review the deployment Ansible playbooks.
+- [Marketplace Apps Repository](https://github.com/akamai-compute-marketplace/marketplace-apps): Review the deployment Ansible playbooks.
 
 {{< content "marketplace-update-note-shortguide">}}

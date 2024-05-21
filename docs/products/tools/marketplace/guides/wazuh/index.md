@@ -2,7 +2,7 @@
 title: "Deploy Wazuh through the Linode Marketplace"
 description: "Deploy Wazuh on a Linode Compute Instance. This provides you with an open source a security monitoring solution."
 published: 2021-11-12
-modified: 2023-09-11
+modified: 2024-05-21
 keywords: ['security','vulnerability','monitoring']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
@@ -25,13 +25,13 @@ aliases: ['/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 22.04 LTS
-- **Recommended plan:** Wazuh recommends a minimum of a 4GB Linode, though an 8-core plan (32GB and up) is recommended for production.
+- **Suggested plan:** Wazuh suggests a minimum of a 4GB Linode, though an 8-core plan (32GB and up) is recommended for production.
 
 ### Wazuh Options
 
-- **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
+- **SOA Email Address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{< content "marketplace-required-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
@@ -41,12 +41,12 @@ aliases: ['/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-
 
 ### View Credentials
 
-1.  Log into your new Compute Instance through [LISH](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) using the root user and the password you entered when creating the instance.
+1.  Log into your new Compute Instance through [LISH](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) using, `root` user and the password you entered when creating the instance, or the generated sudo user and supplied SSH key.
 
-1.  The usernames and passwords have been saved in a `.deployment-secrets.txt` file located in your root directory. You can view this file in your preferred text editor or through the `cat` command.
+1.  The usernames and passwords have been saved in the `/home/$SUDO_USER/.credentials` file, where sudo user is the user created during deployment. You can view this file in your preferred text editor or through the `cat` command.
 
     ```command
-    cat /root/.deployment-secrets.txt
+    cat /home/$SUDO_USER/.credentials
     ```
 
     This file contains all of your Wazuh credentials. The admin user and its associated password are needed when following the [Access the Wazuh App](#access-the-wazuh-app) section below.

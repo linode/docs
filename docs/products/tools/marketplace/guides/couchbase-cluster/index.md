@@ -11,15 +11,13 @@ external_resources:
 authors: ["Linode"]
 ---
 
-[Couchbase](https://www.couchbase.com/) is an enterprise class NoSQL database designed with memory-first architecture, built-in cache and workload isolation. The Couchbase One-Click cluster deploys five connected Couchbase Server nodes, split between data, index and query services. This starting configurating allows quick deployment and rapid cluster expansion with Couchbase's multi-dimensional scaling.
+[Couchbase](https://www.couchbase.com/) is an enterprise class NoSQL database designed with memory-first architecture, built-in cache and workload isolation. The Couchbase One-Click cluster deploys five connected Couchbase Enterprise Server nodes, split between data, index and query services. This starting configurating allows quick deployment and rapid cluster expansion with Couchbase's multi-dimensional scaling.
 
 {{ < note >}}
 **Couchbase Enterprise Server License**
-Couchbase Enterprise is not free to use in production. Contact [Couchbase Support](https://www.couchbase.com/pricing/) to activate your license on Akamai Connected Cloud and enable [Couchbase application support](https://support.couchbase.com/hc/en-us/articles/360043247551-Accessing-Couchbase-Support).
+Couchbase Enterprise Server is not free to use in production. Contact [Couchbase Support](https://www.couchbase.com/pricing/) to activate your license on Akamai Connected Cloud and enable [Couchbase application support](https://support.couchbase.com/hc/en-us/articles/360043247551-Accessing-Couchbase-Support).
 {{ < note >}}
     
-![Production Cluster High Level Architecutre]()
-
 ## Deploying a Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
@@ -35,6 +33,10 @@ Couchbase Enterprise is not free to use in production. Contact [Couchbase Suppor
 - **Supported distributions:** Ubuntu 22.04 LTS
 - **Minimum plan:** Couchbase Enterprise Server requires 8GB of RAM. 
 - **Suggested Plan:** 16GB of RAM is suggested for production deployments.
+
+{{< note type="warning" title="Minimum RAM Requirements" >}}
+**Minimum RAM Requirements:** Deploying the Couchbase Enterprise Server One-Click Cluster on a plan with less than 8GB of RAM will fail. Use caution, your account will be billed for any failed instances deployed with less than 8GB of RAM.
+{{< /note type="warning" title="Minimum RAM Requirements" >}}
 
 ### Couchbase Options
 
@@ -59,6 +61,10 @@ Provide the username Administrator and generated password included in `/home/$su
 While there are no buckets yet configured on this new cluster, you can see all five nodes marked ready on the bottom status bar, and verify the status of the cluster members from the Servers tab.
 
 ![Couchbase Servers Status](couchbase_servers.png)
+
+## Next Steps
+
+Now that your Couchbase Enterprise Server One-Click Cluster has been deployed, contact [Couchbase Support](https://www.couchbase.com/pricing/) to activate your license on Akamai Connected Cloud before using the cluster for testing, quality assurance, or in production. An active Enterprise License is required for any use other than solely for internal development use or evaluation of the software.
 
 ### More Information
 
