@@ -153,6 +153,7 @@ backdooring
 backdoors
 backend
 backends
+backplane
 backport
 backported
 backporting
@@ -264,6 +265,7 @@ canonicalization
 canonicalize
 captcha
 carootcert
+carryback
 cas
 ccm
 CDNs
