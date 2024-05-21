@@ -74,12 +74,12 @@ To enable the Apache Longview integration manually, follow these steps on your s
 1.  Verify that **mod\_status** is enabled for Apache (it should be by default). For more information, see the [Apache Module mod\_status](https://httpd.apache.org/docs/2.4/mod/mod_status.html) documentation.
 
     {{< tabs >}}
-    {{% tab "Debian and Ubuntu" %}}
+    {{< tab "Debian and Ubuntu" >}}
 ```command
 sudo a2enmod status
 ```
-    {{% /tab %}}
-    {{% tab "CentOS" %}}
+    {{< /tab >}}
+    {{< tab "CentOS" >}}
 ```command
 sudo yum install links
 httpd -M | grep status
@@ -90,7 +90,7 @@ The output should be similar to:
 ```output
 status_module (shared)
 ```
-    {{% /tab %}}
+    {{< /tab >}}
     {{< /tabs >}}
 
 1.  Update your Apache configuration file to include the block in the example file below. Depending on your Linux distribution and version, your Apache configuration file may be stored in one of the following locations:
@@ -118,16 +118,16 @@ status_module (shared)
 1.  Restart Apache:
 
     {{< tabs >}}
-    {{% tab "Debian and Ubuntu" %}}
+    {{< tab "Debian and Ubuntu" >}}
 ```command
 sudo systemctl restart apache2
 ```
-    {{% /tab %}}
-    {{% tab "CentOS" %}}
+    {{< /tab >}}
+    {{< tab "CentOS" >}}
 ```command
 sudo systemctl restart httpd
 ```
-    {{% /tab %}}
+    {{< /tab >}}
     {{< /tabs >}}
 
 1.  Restart Longview:
@@ -348,16 +348,16 @@ ExtendedStatus On
 When you've finished modifying the configuration file, restart Apache:
 
 {{< tabs >}}
-{{% tab "Debian and Ubuntu" %}}
+{{< tab "Debian and Ubuntu" >}}
 ```command
 sudo systemctl restart apache2
 ```
-{{% /tab %}}
-{{% tab "CentOS" %}}
+{{< /tab >}}
+{{< tab "CentOS" >}}
 ```command
 sudo systemctl restart httpd
 ```
-{{% /tab %}}
+{{< /tab >}}
 {{< /tabs >}}
 
 ### Apache Tab is Missing

@@ -45,19 +45,19 @@ To start capturing metrics for one of your Compute Instances (or other Linux sys
 5.  Uninstall the Longview Agent by removing the `linode-longview` package.
 
     {{< tabs >}}
-    {{% tab "Debian and Ubuntu" %}}
+    {{< tab "Debian and Ubuntu" >}}
 ```command
 sudo apt-get remove linode-longview
 ```
-    {{% /tab %}}
-    {{% tab "CentOS" %}}
+    {{< /tab >}}
+    {{< tab "CentOS" >}}
 ```command
 sudo yum remove linode-longview
 ```
-    {{% /tab %}}
-    {{% tab "Other Distributions" %}}
+    {{< /tab >}}
+    {{< tab "Other Distributions" >}}
 ```command
 sudo rm -rf /opt/linode/longview
 ```
-    {{% /tab %}}
+    {{< /tab >}}
     {{< /tabs >}}
