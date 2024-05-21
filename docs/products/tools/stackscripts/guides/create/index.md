@@ -53,5 +53,5 @@ Each time you make a change to a StackScript (including creating it), you can se
 Once you are finished filling out all required fields, click the **Create StackScript** button to create the StackScript. After it has been created, you can edit all of the fields as needed. See [Edit a StackScript](/docs/products/tools/stackscripts/guides/manage/#edit-a-stackscript).
 
 {{< note >}}
-To deploy a new Linode with your StackScript, follow the steps in the [Deploying a New Compute Instance Using a StackScript](/docs/products/tools/stackscripts/guides/deploy-a-compute-instance/#deploy-a-linode-from-an-account-stackscript) guide.
+To deploy a new Linode with your StackScript, follow the steps in the [Deploying a New Compute Instance Using a StackScript](/docs/products/tools/stackscripts/guides/deploy-a-compute-instance/) guide.
 {{< /note >}}

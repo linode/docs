@@ -95,7 +95,7 @@ Ensure the token you create has **Read/Write** access to **Domains**.
 
 ## Issue a certificate
 
-1. [Connect to your Linode](/docs/products/platform/get-started/#connect-to-your-linode-via-ssh) and set an environment variable for the API token you obtained in the previous section. Replace `your-api-token-here` with your own token.
+1. [Connect to your Linode](/docs/products/compute/compute-instances/get-started/#connect-to-the-instance) and set an environment variable for the API token you obtained in the previous section. Replace `your-api-token-here` with your own token.
 
         export LINODE_V4_API_KEY="your-api-token-here"
 

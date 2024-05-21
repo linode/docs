@@ -88,7 +88,7 @@ Unbound is now active and functional.
 
 Before you can begin using your Unbound instance to resolve DNS queries, you need to configure your `/etc/resolv.conf` file to point to the new resolver. You can remove all existing lines from this file or comment them by prepending hash marks (`#`) to every line.
 
-**Important:** By default, Linodes use DHCP to assign networking settings, including the public IP address and DNS resolvers. For any systems that you intend to use a custom resolver with, you must follow our instructions for [static networking](/docs/products/compute/compute-instances/guides/manual-network-configuration/#static-network-configuration). This will prevent your `/etc/resolv.conf` file getting overwritten with the default resolvers after a system reboot.
+**Important:** By default, Linodes use DHCP to assign networking settings, including the public IP address and DNS resolvers. For any systems that you intend to use a custom resolver with, you must follow our instructions for [static networking](/docs/products/compute/compute-instances/guides/manual-network-configuration/). This will prevent your `/etc/resolv.conf` file getting overwritten with the default resolvers after a system reboot.
 
 If you're accessing your Unbound instance over the local interface, make sure your `/etc/resolv.conf` resembles the following:
 

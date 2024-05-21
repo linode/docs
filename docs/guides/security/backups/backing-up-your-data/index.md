@@ -95,7 +95,7 @@ To configure Linode's Backup Service for your Linode, follow [these instructions
 
 ### Linode's Disks
 
-You can use the Cloud Manager to [duplicate/clone your Linode's disk](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode). This is not a backup utility, but it is a quick and easy way to create a full snapshot of your Linode. Once you've duplicated the disk, you can boot it or clone it to a different Linode.
+You can use the Cloud Manager to [duplicate/clone your Linode's disk](/docs/products/compute/compute-instances/guides/clone-instance/#clone-to-an-existing-compute-instance). This is not a backup utility, but it is a quick and easy way to create a full snapshot of your Linode. Once you've duplicated the disk, you can boot it or clone it to a different Linode.
 
 -   **What**: Full-server file system backup.
 -   **When**: Duplicate disks are created manually. You have to shut down your server to make a new disk.

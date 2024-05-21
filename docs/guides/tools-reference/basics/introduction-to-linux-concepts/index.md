@@ -64,7 +64,7 @@ Before you install Linux, decide which distribution to install. Linux comes in s
 
 Here at Linode, you install Linux with the [Linode Manager](https://cloud.linode.com/) dashboard. It takes just a few clicks to install Linux with this dashboard. If you don't have a particular Linux distribution in mind, install the latest release of **Ubuntu**. Ubuntu is good for Linux beginners because it is well-supported and doesn't change often.
 
-After you know which distribution you want to install, follow the instructions for installing Linux in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) article. Follow that article until you complete [Booting Your Linode](/docs/products/platform/get-started/#boot-your-linode), then come back here.
+After you know which distribution you want to install, follow the instructions for installing Linux in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) article. After your instance has been created, continue with the instructions below.
 
 ### Connecting to Your Linode
 
@@ -78,7 +78,7 @@ In this guide, we'll mostly be using the terms *terminal*, *shell*, and *SSH* to
   - **SSH**: A protocol that lets you send shell commands to your Linode securely over the Internet.
 {{< /note >}}
 
-To connect to your Linode, follow the next section of the **Getting Started** article, [Connecting to Your Linode](/docs/products/platform/get-started/#connect-to-your-linode-via-ssh). Follow along with the written instructions or watch the videos, or both. It will help you install a terminal emulator and use it to establish an SSH connection to your Linode.
+To connect to your Linode, follow the next section of the **Getting Started** article, [Connecting to Your Linode](/docs/products/compute/compute-instances/get-started/#connect-to-the-instance). Follow along with the written instructions or watch the videos, or both. It will help you install a terminal emulator and use it to establish an SSH connection to your Linode.
 
 ## So You're Staring at a Shell Prompt
 
@@ -356,7 +356,7 @@ Sometimes you want to run a program on an as-needed basis. For example, you migh
 
 1. Use the `cd` command to move into the directory where the script is located.
 
-1. Run `ls -l directory` to check that your user account has [execute permissions](/docs/guides/introduction-to-linux-concepts/#users-and-permissions-in-linux) for the script file in the directory. If you need to modify the permissions, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#what-are-user-and-group-permissions) guide.
+1. Run `ls -l directory` to check that your user account has [execute permissions](/docs/guides/introduction-to-linux-concepts/#users-and-permissions-in-linux) for the script file in the directory. If you need to modify the permissions, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#chmod-command) guide.
 
 1.  Run the script with the following syntax:
 

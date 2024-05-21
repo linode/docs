@@ -164,7 +164,7 @@ All of the previous cases presented in this document outline configurations for 
     a2enmod proxy_balancer
     /etc/init.d/apache2 restart
 
-Edit the `/etc/apache2/mods-available/proxy.conf` file as described in [this documentation](/docs/guides/multiple-web-servers-with-proxypass-on-ubuntu-10-10-maverick/#enabling-the-proxy-module/). Do not omit to reload Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
+Edit the `/etc/apache2/mods-available/proxy.conf` file as described in [this documentation](/docs/guides/multiple-web-servers-with-proxypass-on-ubuntu-10-10-maverick/). Do not omit to reload Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
 
 {{< file "Apache Virtual Host Configuration" apache >}}
 <VirtualHost example.com:80>

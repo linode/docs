@@ -61,7 +61,7 @@ When setting up LXD, you can either store container data in an [external volume]
     ![Create a Linode Disk](create-new-disk.png)
 
     {{< note respectIndent=false >}}
-If your Linode's distribution disk already has 100% of the available disk space allocated to it, you will need to resize the disk before you can create a storage disk. See [Resizing a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resizing-a-disk) for more information.
+If your Linode's distribution disk already has 100% of the available disk space allocated to it, you will need to resize the disk before you can create a storage disk. See [Resizing a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resize-a-disk) for more information.
 {{< /note >}}
 
 2.  Edit your Linode's Configuration Profile. Under **Block Device Assignment**, assign your new disk to `/dev/sdc`. Make a note of this path, which you will need when configuring LXD in the next section.

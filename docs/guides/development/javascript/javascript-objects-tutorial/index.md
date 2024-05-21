@@ -18,7 +18,7 @@ Objects play a fundamental role in JavaScript and appear just about everywhere t
 
 ## Before You Begin
 
-This guide's JavaScript examples were originally run in the Node.js interpreter. You can use our [How to Install and Use the Node Version Manager NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#installing-and-configuring-nvm) guide to install Node.js on your computer.
+This guide's JavaScript examples were originally run in the Node.js interpreter. You can use our [How to Install and Use the Node Version Manager NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide to install Node.js on your computer.
 
 Alternatively, you can use your web browser's JavaScript console to run this guide's example JavaScript code.
 

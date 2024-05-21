@@ -3,8 +3,8 @@ slug: sql-indexes
 title: "An Introduction to SQL Indexes"
 title_meta: "How to Use SQL Indexes"
 description: 'SQL indexes are used to improve a database''s performance during query lookups. This guide discusses unique indexes, primary keys, and composite primary keys.'
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
-contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
+authors: ["Doug Hayman for NanoHertz Solutions Inc"]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc"]
 published: 2022-03-25
 keywords: ['database index', 'non-unique indexes', 'database performance']
 tags: ['MySQL']

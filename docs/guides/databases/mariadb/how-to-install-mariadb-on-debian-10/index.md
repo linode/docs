@@ -6,6 +6,7 @@ description: "Want to replace MySQL? Read through this guide, which explains how
 authors: ["Ryan Syracuse"]
 contributors: ["Ryan Syracuse"]
 published: 2020-01-31
+modified: 2024-05-16
 keywords: ["mariadb", "Debian 10", "debian", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mariadb/how-to-install-mariadb-on-debian-10/','/databases/mariadb/mariadb-setup-debian-10/']
@@ -55,13 +56,13 @@ Allowing unrestricted access to MariaDB on a public IP not advised but you may c
 
 ### MariaDB Client
 
-The standard tool for interacting with MariaDB is the `mariadb` client, which installs with the `mariadb-server` package. The MariaDB client is used through a terminal using the `mysql` command.
+The standard tool for interacting with MariaDB is the `mariadb` client, which installs with the `mariadb-server` package. The MariaDB client is used through a terminal using the `mariadb` command. Review the official [MariaDB Command-Line Client](https://mariadb.com/kb/en/mariadb-command-line-client/) guide for more details on this command.
 
 ### Root Login
 
 1.  Log into MariaDB as the root user:
 
-        sudo mysql -u root -p
+        sudo mariadb -u root -p
 
 1.  When prompted for login credentials, hit enter. By default MariaDB will authenticate you via the **unix_socket plugin** and credentials are not required.
 
@@ -131,7 +132,7 @@ You will be given the choice to change the MariaDB root password, remove anonymo
 
 1.  Login to the database again. This time, if you set a password above, enter it at the prompt.
 
-        sudo mysql -u root -p
+        sudo mariadb -u root -p
 
 1. In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user's password. You should replace `password` with a secure password:
 
@@ -152,7 +153,7 @@ You will be given the choice to change the MariaDB root password, remove anonymo
 
 1.  Log back in as `testuser`, entering the password when prompted:
 
-        sudo mysql -u testuser -p
+        sudo mariadb -u testuser -p
 
 1.  Create a sample table called `customers`:
 
@@ -215,7 +216,7 @@ If you forget your root MariaDB password, it can be reset.
 
 1.  Login to the MariaDB server with the root account, this time without supplying a password:
 
-        sudo mysql -u root
+        sudo mariadb -u root
 
 1.  Use the following commands to reset root's password. Replace `password` with a strong password:
 
@@ -238,4 +239,4 @@ If you forget your root MariaDB password, it can be reset.
 
 1.  You should now be able to log into the database with your new root password:
 
-        sudo mysql -u root -p
+        sudo mariadb -u root -p

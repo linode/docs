@@ -127,7 +127,7 @@ When you've finished, click on **Save & Go to Step 5**.
 
 Step 5 of the cPanel installation covers configuration options for additional cPanel services.
 
-1. We recommend against installing an FTP server on your Linode, as FTP is an outdated and insecure protocol. Instead, we recommend using [SFTP](/docs/products/compute/compute-instances/faqs/#how-do-i-upload-files-to-my-linode) to upload and download files. However, you may install an FTP server if you wish. SFTP is available by default for any main cPanel username. If you need to add file access for multiple users, you may want to install Pure-FTPd during the configuration phase.
+1. We recommend against installing an FTP server on your Linode, as FTP is an outdated and insecure protocol. Instead, we recommend using [SFTP](/docs/guides/sftp-linux/) to upload and download files. However, you may install an FTP server if you wish. SFTP is available by default for any main cPanel username. If you need to add file access for multiple users, you may want to install Pure-FTPd during the configuration phase.
 
     ![cPanel FTP server selection.](275-cpanel-whm-05-ftp-large.png)
 

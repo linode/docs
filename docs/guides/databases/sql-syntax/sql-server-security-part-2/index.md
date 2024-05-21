@@ -3,8 +3,8 @@ slug: sql-server-security-part-2
 title: "Part 2: SQL Server Security Best Practices"
 title_meta: "SQL Server Security Best Practices, Part 2"
 description: 'Learn about the SQL Server security best practices and guidelines to keep your server and data safe. For example, selecting a SQL Server authentication mode.'
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
-contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
+authors: ["Doug Hayman for NanoHertz Solutions Inc"]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc"]
 published: 2022-08-12
 keywords: ['SQL server authentication', 'Restrict SQL traffic', 'SQL Server Patches', 'Backups', 'Auditing']
 tags: ['database']

@@ -29,7 +29,7 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 2.  Update your system:
 

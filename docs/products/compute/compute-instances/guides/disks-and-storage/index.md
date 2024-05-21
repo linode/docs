@@ -108,7 +108,7 @@ The following instructions cover how to resize a disk. For instructions regardin
 
 ## Clone a Disk
 
-A disk can be duplicated onto the same Compute Instance or any other instance on the account. See [Cloning to an Existing Compute Instance](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode) for instructions.
+A disk can be duplicated onto the same Compute Instance or any other instance on the account. See [Cloning to an Existing Compute Instance](/docs/products/compute/compute-instances/guides/clone-instance/#clone-to-an-existing-compute-instance) for instructions.
 
 ## Delete a Disk
 

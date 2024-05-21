@@ -57,7 +57,7 @@ The steps outlined in this guide require [Ansible version 2.8](https://github.co
 
 -   Generate a Linode API v4 access token with permission to read and write Linodes. You can follow the [Get an Access Token](/docs/products/tools/api/get-started/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/products/tools/api/get-started/) guide if you do not already have one.
 
-- [Create an authentication Key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair) if your computer does not already have one.
+- [Create an authentication Key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#upload-ssh-key) if your computer does not already have one.
 
 ## Configure Ansible
 
@@ -269,7 +269,7 @@ localhost                  : ok=3    changed=1    unreachable=0    failed=0    s
 | `root_pass` | string | The password for the root user. If not specified, will be generated. This generated password will be available in the task success JSON.</br></br> The root password must conform to the following constraints: </br></br> &bull; May only use alphanumerics, punctuation, spaces, and tabs.</br>&bull; Must contain at least two of the following characters classes: upper-case letters, lower-case letters, digits, punctuation. |
 | `state` | string, *required* | The desired instance state. The accepted values are `absent` and `present`. |
 | `tags` | list | The user-defined labels attached to Linodes. Tags are used for grouping Linodes in a way that is relevant to the user. |
-| `type` | string, | The Linode instance's plan type. The plan type determines your Linode's [hardware resources](/docs/products/compute/compute-instances/plans/choosing-a-plan/#hardware-resource-definitions) and its [pricing](https://www.linode.com/pricing/). </br></br> To view a list of all available Linode types including pricing and specifications for each type, issue the following command: </br></br>`curl https://api.linode.com/v4/linode/types`. |
+| `type` | string, | The Linode instance's plan type. The plan type determines your Linode's [hardware resources](/docs/products/compute/compute-instances/plans/choosing-a-plan/#compute-resources) and its [pricing](https://www.linode.com/pricing/). </br></br> To view a list of all available Linode types including pricing and specifications for each type, issue the following command: </br></br>`curl https://api.linode.com/v4/linode/types`. |
 
 ## The Linode Dynamic Inventory Plugin
 

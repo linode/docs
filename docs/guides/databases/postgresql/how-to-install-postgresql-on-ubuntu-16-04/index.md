@@ -80,7 +80,7 @@ mytestdb=#
 
 ### Create Tables
 
-This section contains examples that create a test database with an employee’s first and last name, assigning each a unique key. When creating the tables, you may specify as many parameters (columns) as you need and name them appropriately. Run the commands in this section from the PostgreSQL shell, opened in Step 2 of the [Create a Database](/docs/guides/how-to-install-postgresql-on-ubuntu-16-04/#create-a-database) section.
+This section contains examples that create a test database with an employee’s first and last name, assigning each a unique key. When creating the tables, you may specify as many parameters (columns) as you need and name them appropriately. Run the commands in this section from the PostgreSQL shell, opened in Step 2 of the [Create a Database](/docs/guides/how-to-install-postgresql-on-ubuntu-16-04/#create-a-postgresql-database) section.
 
 1.  Create a table called “employees” in the test database:
 

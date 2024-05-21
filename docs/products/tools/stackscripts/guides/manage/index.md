@@ -52,7 +52,7 @@ Making an Account StackScript public allows the rest of the Linode community to 
     {{< /note >}}
 
 {{< note >}}
-Your public [Account StackScript](/docs/products/tools/stackscripts/guides/deploy-a-compute-instance/#account-stackscripts) is available to you for use on the Account StackScripts tab. For users on other accounts, your StackScript is available to them from the [Community StackScripts](/docs/products/tools/stackscripts/guides/deploy-a-compute-instance/#community-stackscripts) tab.
+Your public StackScript is available to you for use on the Account StackScripts tab. For users on other accounts, your StackScript is available to them from the Community StackScripts tab.
 {{< /note >}}
 
 ## Delete a StackScript
