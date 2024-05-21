@@ -193,6 +193,7 @@ binlog
 bioinformaticists
 biomes
 bitbucket
+Bitly
 bitnami
 bitrate
 bitshift
@@ -666,6 +667,7 @@ eth0
 ethtool
 eugen
 eval
+Eventbrite
 evhost
 exabeam
 example1
