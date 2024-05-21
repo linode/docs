@@ -150,7 +150,7 @@ Used to manage the Salt server public keys.
 |`--gen-keys`|Set a name to generate a key-pair.|`salt-key --gen-keys newminion`|
 |`--gen-keys-dir`|Choose where to save newly generated key-pairs. Only works with `--gen-keys`.|`salt-key --gen-keys newminion --gen-keys-dir /home/salt/keypairs`|
 |`--keysize`|Set the keysize for a generated key. Must be a value of 2048 or higher. Only works with `--gen-keys`.|`salt-key --gen-keys newminion --keysize 4096`|
-|`--gen-signature`|Create a signature for the master's public key named master_pubkey_signature. This requires a new-signing-keypair which can be created with the `--auto-create` option.|`salt-key --gen-signature --auto-create`|
+|`--gen-signature`|Create a signature for the master's public key named `master_pubkey_signature`. This requires a new-signing-keypair which can be created with the `--auto-create` option.|`salt-key --gen-signature --auto-create`|
 |`--priv`|The private-key file with which to create a signature.|`salt-key --priv key.pem`|
 |`--signature-path`|The file path for the new signature.|`salt-key  --gen-signature --auto-create --signature-path /path/to/signature`|
 |`--pub`|The public-key file with which to create a signature.|`salt-key --gen-signature key.pub`|

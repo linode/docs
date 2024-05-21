@@ -27,7 +27,7 @@ This guide provides step-by-step instructions for installing a full-featured LAM
 
 ## System Configuration
 
-It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct hostname, as well as set hosts in your `/etc/hosts` file. If you haven't configured these, you should follow the directions in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Additionally, if you haven't configured your timezone yet, follow the instructions in our [administration basics](/docs/products/platform/get-started/#set-the-timezone) guide.
+It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct hostname, as well as set hosts in your `/etc/hosts` file. If you haven't configured these, you should follow the directions in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Additionally, if you haven't configured your timezone yet, follow the instructions in our [administration basics](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone) guide.
 
 If your system is configured and up to date, you may begin by installing Apache on your Linode. This guide assumes that you are logged in as the root superuser on your Linode.
 
@@ -194,7 +194,7 @@ If you need support for MySQL in PHP, then you must install the php5-mysql packa
 
     yum install php-mysql
 
-You can test PHP by creating a file with the following contents under your "public\_html" directory:
+You can test PHP by creating a file with the following contents under your `public_html` directory:
 
 {{< file "/srv/www/example.com/public\\_html/test.php" php >}}
 <?php phpinfo(); ?>

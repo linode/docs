@@ -63,13 +63,13 @@ Alternatively, a configuration with two tenants and two buckets, one each for th
 
 ### Configure the Loki cache
 
-Loki supports several tunables and configurable caching parameters. Review these recommended options to learn more.
+Loki supports several configurable caching parameters. Review these recommended options to learn more.
 
 #### Use an optimized cache store like Memcached
 
 In-memory cache is auto-enabled in Loki. It is, however, recommended than you use an optimized cache store like Memcached. To configure Memcached, refer to the [Grafana documentation](https://grafana.com/docs/loki/latest/operations/caching/).
 
-#### Configure the chunk_store_config block
+#### Configure the `chunk_store_config` block
 
 The `chunk_store_config` block lets you configure how chunks are cached and how long to wait before saving them to the backing store.
 ![Screenshot of the chunk options](loki-chunk-store.png)
@@ -97,8 +97,9 @@ The `s3_storage_config` block configures the connection to the Linode S3 Object 
 
 The `bucketnames` storage config parameter allows the Loki tenant workloads to specify more than one bucket. This enables sharding of log data chunks across multiple buckets. It’s highly recommended that you configure more than one bucket, and possibly many depending on the load. This helps with scalability and load balancing since rate limits are enforced at the bucket level.
 
-The following storage backoff settings are also important.
-![Screenshot of the chunk options](loki-backoff settings-1.png)
+The following storage `backoff` settings are also important.
+
+![Screenshot of the chunk options](loki-backoff-settings-1.png)
 
 These parameters determine how Loki manages the storage requests when Linode Object Storage enforces rate limits. Rate limits may be enforced, for example, due to request rates higher than the allowed limits. If not configured properly, there can be a cascading effect where the retries contribute further to the request rates. This can result in perpetual or longer than ideal limits enforcement.
 

@@ -212,7 +212,7 @@ Next, you will need to install PHP. Issue the following commands:
 
     apt-get install php5 php-pear php5-mysql php5-suhosin php5-cgi php-pear php-db
 
-You will need to edit PHP's configuration file in order to ensure FreePBX can function properly. In particular you need to ensure that the "memory\_limit" directive is set to "100M" or else you may run into problems.
+You will need to edit PHP's configuration file in order to ensure FreePBX can function properly. In particular you need to ensure that the `memory_limit` directive is set to "100M" or else you may run into problems.
 
 {{< file "/etc/php5/apache2/php.ini" >}}
 max_execution_time = 30

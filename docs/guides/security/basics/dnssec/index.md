@@ -134,7 +134,7 @@ This guide uses the `yourdomianhere.com` domain as an example. Replace this addr
     export KSK=`/usr/bin/ldns-keygen -k -a ECDSAP256SHA256 -b 2048 yourdomainehere.com`
     ```
 
-1.  **Optional**: Capture the ZSK and KSK variables for later reuse in the [Zone Maintenance](/docs/guides/dnssec#Zone-Maintenance) section.
+1.  **Optional**: Capture the ZSK and KSK variables for later reuse in the [Zone Maintenance](/docs/guides/dnssec/#zone-maintenance) section.
 
     ```command
     echo $ZSK > yourdomainhere.com.zsk

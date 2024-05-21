@@ -23,7 +23,7 @@ In this guide, you will learn how to install and configure a Postfix server on D
 
 ## Before You Begin
 
-1.  Complete our [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides and ensure that the Linode's [hostname is set](/docs/products/platform/get-started/#getting-started#setting-the-hostname).
+1.  Complete our [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides and ensure that the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 2.  Update your system:
 

@@ -3,8 +3,8 @@ slug: sql-joins
 title: "Introduction to SQL Joins"
 title_meta: "SQL Joins"
 description: 'SQL Joins are used to compare and select rows from tables. This guide discusses Cross Joins, Inner Joins, Left Joins, Right Joins, and Full Joins and provides examples for each SQL Join.'
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
-contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
+authors: ["Doug Hayman for NanoHertz Solutions Inc"]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc"]
 published: 2022-03-11
 keywords: ['SQL Joins', 'Cross Joins', 'Left Join', 'Right Join', 'Full Join']
 tags: ['mysql', 'postgresql', 'database']

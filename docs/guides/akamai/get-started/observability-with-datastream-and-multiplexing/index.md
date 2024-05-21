@@ -1,7 +1,7 @@
 ---
 slug: observability-with-datastream-and-multiplexing
-title: "Using Datastream 2 With Multiplexing for Observability"
-description: "This guide discusses how to achieve an observability workflow using Datastream 2 with multiplexing for log management."
+title: "Using DataStream With Multiplexing for Observability"
+description: "This guide discusses how to achieve an observability workflow using DataStream with multiplexing for log management."
 authors: ["John Dutton"]
 contributors: ["John Dutton"]
 published: 2024-05-01
@@ -11,23 +11,23 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 Having real-time visibility into log data can help determine how applications are managed and infrastructure is scaled. Obtaining logs from numerous sources (CDN, security, server-side, and more) is pivotal to identifying and resolving end-user issues. However, this can result in a complex infrastructure setup with varying levels of visibility needs and high egress costs due to large volumes of data.
 
-One way to achieve an efficient, predictable, and cost-effective observability workflow is to implement a cloud-based multiplexing solution to ingest and parse log data before it’s sent to the relevant DevOps team. Combined with Akamai’s [Datastream 2](https://techdocs.akamai.com/datastream2/docs/welcome-datastream2) edge-based log reporting, multiplexing can help manage how and where logs are transmitted, improve data security, and reduce overall cost.
+One way to achieve an efficient, predictable, and cost-effective observability workflow is to implement a cloud-based multiplexing solution to ingest and parse log data before it’s sent to the relevant DevOps team. Combined with Akamai’s [DataStream](https://techdocs.akamai.com/datastream2/docs/welcome-datastream2) edge-based log reporting, multiplexing can help manage how and where logs are transmitted, improve data security, and reduce overall cost.
 
 This guide outlines the business challenges of observability workflows, integration and migration need-to-knows, and illustrates a working multiplexing reference architecture using [Linode Kubernetes Engine (LKE)](/docs/products/compute/kubernetes/) running [Elastic Stack (ELK)](https://www.elastic.co/elastic-stack/) and [Vector](https://vector.dev/).
 
-## Datastream 2 and Multiplexing Workflow
+## DataStream and Multiplexing Workflow
 
-Below are the high-level steps on how to use multiplexing with Datastream 2 in an observability workflow.
+Below are the high-level steps on how to use multiplexing with DataStream in an observability workflow.
 
-1.  Edge servers running Datastream 2 receive client requests.
+1.  Edge servers running DataStream receive client requests.
 
-1.  Datastream 2 outputs log data as a single stream to an LKE cluster running a multiplexing software solution comprised of an ELK stack and Vector.
+1.  DataStream outputs log data as a single stream to an LKE cluster running a multiplexing software solution comprised of an ELK stack and Vector.
 
 1.  ELK and Vector ingest log data. Logs are analyzed, parsed, and output to user-defined object storage endpoints.
 
 1.  Regional Object Storage buckets are used to store parsed log data.
 
-![Datastream 2 and Multiplexing Workflow](Datastream-2-Multiplexing-Workflow.svg)
+![DataStream and Multiplexing Workflow](Datastream-2-Multiplexing-Workflow.svg)
 
 ## Overcoming Challenges
 
@@ -53,7 +53,7 @@ Multiplexing can help reduce these costs by sorting data ahead of time and direc
 
 Distributed architecture is a standard for high availability, high volume applications. With distributed architecture comes multiple regions, multiple VPCs, multiple microservices, and the logs that come with each component. In addition to large volumes of data, this can result in complex monitoring and visibility needs that may vary from region to region.
 
-Coupling cloud-based multiplexing with Datastream 2 edge logging allows you to control exactly how CDN, security, server-side, and other logs are processed and distributed across multi-region infrastructure.
+Coupling cloud-based multiplexing with DataStream edge logging allows you to control exactly how CDN, security, server-side, and other logs are processed and distributed across multi-region infrastructure.
 
 
 ### Integration and Migration Effort
@@ -62,31 +62,31 @@ The multiplexing solution in this guide does not require the migration of any ap
 
 Using the following example, you can reduce your overall egress costs by pointing your cloud multiplexing architecture to Akamai’s Object Storage rather than a third-party object storage solution.
 
-## Datastream 2 With Multiplexing Design Diagram
+## DataStream With Multiplexing Design Diagram
 
-The below diagram uses a single-region, scalable LKE cluster running ELK and Vector to ingest and parse a single stream of logs from Datastream 2. The parsed logs are then sent to regional log processing infrastructure made up of Object Storage buckets where they are processed and stored:
+The below diagram uses a single-region, scalable LKE cluster running ELK and Vector to ingest and parse a single stream of logs from DataStream. The parsed logs are then sent to regional log processing infrastructure made up of Object Storage buckets where they are processed and stored:
 
 1.  **The request is made.** An end-user submits an application request.
 
-1.  **Edge servers receive the request.** The request is received by Akamai’s edge infrastructure running Datastream 2. If not cached already on the edge, HTTP data for the end-user request is directed to a regional SaaS cluster running the application for the user-requested information.
+1.  **Edge servers receive the request.** The request is received by Akamai’s edge infrastructure running DataStream. If not cached already on the edge, HTTP data for the end-user request is directed to a regional SaaS cluster running the application for the user-requested information.
 
     {{< note title="HTTP Data" >}}
     HTTP data transmission does not affect, and is unrelated to, the log-parsing, cloud-based multiplexing solution.
     {{< /note >}}
 
-1.  **Logs are sent to cloud infrastructure for multiplexing.** Datastream 2 captures and transmits log information based on the end-user request. Rather than sending unsorted logs to regional log processing infrastructure, logs are sent in a single stream to a single-region LKE cluster on Akamai Cloud.
+1.  **Logs are sent to cloud infrastructure for multiplexing.** DataStream captures and transmits log information based on the end-user request. Rather than sending unsorted logs to regional log processing infrastructure, logs are sent in a single stream to a single-region LKE cluster on Akamai Cloud.
 
 1.  **Logs are parsed and distributed.** The LKE cluster running a multiplexing solution of ELK and Vector ingests, processes, sorts, and transmits parsed logs to regional, local log processing infrastructure.
 
 1.  **Regional buckets receive and store parsed logs.** Local log processing infrastructure consisting of object storage buckets and software ingest and store the parsed logs based on data identifiers given during the parsing process. These buckets are located in the same regions as SaaS clusters running the application queried by the end-user.
 
-![Datastream 2 With Multiplexing Design Diagram](Datastream-Multiplexing-Diagram.svg)
+![DataStream With Multiplexing Design Diagram](Datastream-Multiplexing-Diagram.svg)
 
 ### Systems and Components
 
 -   **Edge CDN & Security:** Akamai’s edge infrastructure that receives and routes end-user requests and data.
 
--   **Datastream 2:** Akamai’s edge-native log reporting service, and one of the edge solutions used in this scenario. Datastream 2 provides visibility into traffic delivery by capturing performance and security logs and then streaming that data to user-defined destinations.
+-   **DataStream:** Akamai’s edge-native log reporting service, and one of the edge solutions used in this scenario. DataStream provides visibility into traffic delivery by capturing performance and security logs and then streaming that data to user-defined destinations.
 
 -   **SaaS Clusters:** Clusters of nodes across multiple regions running application backends.
 

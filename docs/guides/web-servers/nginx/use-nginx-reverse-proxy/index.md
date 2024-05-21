@@ -150,17 +150,17 @@ With NGINX, there are now standards for serving content over HTTPS. Here are a f
 
 | Proxy Header   | Parameter |
 | ----------- | ----------- |
-| proxy_pass     | http://127.0.0.1:3000       |
-| proxy_http_version   | 1.1        |
-| proxy_cache_bypass   | $http_upgrade   |
-| proxy_set_header Upgrade    | $http_upgrade    |
-| proxy_set_header Connection   | "upgrade"   |
-| proxy_set_header Host   | $host   |
-| proxy_set_header X-Real-IP    | $remote_addr |
-| proxy_set_header X-Forwarded-For   | $proxy_add_x_forwarded_for   |
-| proxy_set_header X-Forwarded-Proto   | $scheme   |
-| proxy_set_header X-Forwarded-Host   | $host   |
-| proxy_set_header X-Forwarded-Port   | $server_port   |
+| `proxy_pass`     | `http://127.0.0.1:3000`       |
+| `proxy_http_version`   | `1.1`        |
+| `proxy_cache_bypass`   | `$http_upgrade`   |
+| `proxy_set_header Upgrade`    | `$http_upgrade`    |
+| `proxy_set_header Connection`   | `"upgrade"`   |
+| `proxy_set_header Host`   | `$host`   |
+| `proxy_set_header X-Real-IP`    | `$remote_addr` |
+| `proxy_set_header X-Forwarded-For`   | `$proxy_add_x_forwarded_for`   |
+| `proxy_set_header X-Forwarded-Proto`   | `$scheme`   |
+| `proxy_set_header X-Forwarded-Host`   | `$host`   |
+| `proxy_set_header X-Forwarded-Port`   | `$server_port`   |
 
 The following is an explanation of what each proxy header does:
 
@@ -169,7 +169,7 @@ The following is an explanation of what each proxy header does:
 *   `proxy_http_version`: It is set to HTTP version 1.0 by default, but you can change it to define your HTTP protocol version, e.g. HTTP 1.1 is for WebSockets.
 *   `proxy_cache_bypass  $http_upgrade`:   Defines when to bypass your cache when it receives a response.
 *   `proxy_set_header`: Upgrade and Connection - are required headers if you are using WebSockets.
-*   `proxy_set_header Host $host`: Preferred over proxy_set_header Host $prox_host as you don’t need to explicitly define proxy_host and it’s accounted for by default. $host contains the following: request line hostname or a Host header field hostname.
+*   `proxy_set_header Host $host`: Preferred over `proxy_set_header Host $prox_host` as you don’t need to explicitly define `proxy_host` and it’s accounted for by default. $host contains the following: request line hostname or a Host header field hostname.
 *   `proxy_set_header X-Real-IP $remote_addr`:  Send the visitors IP address to our proxy server.
 *   `proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for`: This is a list of IP addresses of servers that every client was served a proxy from.
 *   `proxy_set_header X-Forwarded-Proto $scheme`: Turns HTTP response to an HTTPS response.
@@ -232,7 +232,7 @@ map $http_forwarded $proxy_add_forwarded {
 
 {{< /file >}}
 
-Now, make changes to your proxy _pass directive to enable `Forwarded`. Add the following line:
+Now, make changes to your `proxy_pass` directive to enable `Forwarded`. Add the following line:
 
     proxy_set_header Forwarded $forwarded_proxy
 

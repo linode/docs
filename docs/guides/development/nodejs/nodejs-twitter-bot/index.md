@@ -60,7 +60,7 @@ The following software is needed on your workstation to complete the tutorial:
 
 The original [nvm](https://github.com/nvm-sh/nvm) software project is used on **Unix, Linux, and macOS**:
 
-1. Follow the [Installing and Configuring NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#installing-and-configuring-nvm) section of our [How to Install and Use the Node Version Manager](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide to install nvm.
+1. Follow the [Install NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#install-nvm) section of our [How to Install and Use the Node Version Manager](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide to install nvm.
 
 1. Run this command from your terminal. This installs the latest version of Node.js and npm:
 
@@ -765,7 +765,7 @@ If successful, the following output appears:
 SNES Soundtracks booting up
 {{< /output >}}
 
-If any errors appear, they are likely related to an authentication failure with the Twitter API. If this happens, then your `.env` file might have syntax errors, or your secret keys may have been incorrectly pasted into it. Review the [Troubleshooting consumer_key Twit Config Error](#troubleshooting-consumer_key-twit-config-error) and [Troubleshooting Twitter Error 401 Unauthorized](#troubleshooting-twitter-error-401-unauthorized) sections for solutions.
+If any errors appear, they are likely related to an authentication failure with the Twitter API. If this happens, then your `.env` file might have syntax errors, or your secret keys may have been incorrectly pasted into it. Review the [Troubleshooting `consumer_key` Twit Config Error](#troubleshooting-consumer_key-twit-config-error) and [Troubleshooting Twitter Error 401 Unauthorized](#troubleshooting-twitter-error-401-unauthorized) sections for solutions.
 
 ### Test the Tweet Function
 

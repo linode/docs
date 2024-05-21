@@ -11,7 +11,7 @@ tab_group_main:
 
 ## Determine Your Application's Networking Architecture
 
-Consider your application's requirements and determine how your application should communicate both internally and over the public internet. As part of this, review the range of options available for private and public network connectivity on the Linode platform: VPCs, VLANs, Private IPv4 addresses, and Public IPv4/IPv6 addresses. When choosing VPC for private networking (the most common product), determine if segmenting the VPC into multiple subnets is needed. Consider the number of IP addresses you need now (and might need in the future) per subnet and decide on an acceptable CIDR block as outlined with [Valid IPv4 Ranges for Subnets](/docs/products/networking/vpc/guides/manage-vpcs/#valid-ipv4-ranges).
+Consider your application's requirements and determine how your application should communicate both internally and over the public internet. As part of this, review the range of options available for private and public network connectivity on the Linode platform: VPCs, VLANs, Private IPv4 addresses, and Public IPv4/IPv6 addresses. When choosing VPC for private networking (the most common product), determine if segmenting the VPC into multiple subnets is needed. Consider the number of IP addresses you need now (and might need in the future) per subnet and decide on an acceptable CIDR block as outlined with [Valid IPv4 Ranges for Subnets](/docs/products/networking/vpc/guides/subnets/#valid-ipv4-ranges).
 
 ## Create a VPC
 

@@ -31,7 +31,7 @@ To see IO activity on your Compute Instance, you may use the following command (
 iostat -d -x 2 5
 ```
 
-This will give an extended device utilization report five times at two second intervals. If your Compute Instance is OOMing (running out of memory), Apache, MySQL, and SpamAssassin are the usual suspects.
+This will give an extended device utilization report five times at two second intervals. If your Compute Instance is running out of memory, Apache, MySQL, and SpamAssassin are the usual suspects.
 
 ## MySQL Low-Memory Settings
 

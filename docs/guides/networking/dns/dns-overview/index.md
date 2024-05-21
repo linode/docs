@@ -82,7 +82,7 @@ Here's how the DNS lookup process works:
 
 The scenario described above is what happens if the ISP has no current information about the requested domain. In actuality, ISPs cache a lot of DNS information after they've looked it up the first time. This results in faster lookups and less strain on DNS servers.
 
-Usually caching is a good thing, but it can be a problem if you've recently made a change to your DNS information, like when you move to Linode from a different hosting provider. In such a case, you'll want to pay attention to your zone file's [time to live (TTL)](/docs/networking/dns/dns-manager-overview/#set-the-time-to-live-or-ttl) so that your DNS change happens as quickly as possible.
+Usually caching is a good thing, but it can be a problem if you've recently made a change to your DNS information, like when you move to Linode from a different hosting provider. In such a case, you'll want to pay attention to your zone file's time to live (TTL) so that your DNS change happens as quickly as possible.
 
 ## Types of DNS Records
 
@@ -106,7 +106,7 @@ An *AAAA record* is just like an A record, but for IPv6 IP addresses. A typical 
 
 An *AXFR record* is a type of DNS record used for DNS replication, although there are more modern ways to do DNS replication. AXFR records are not used in ordinary zone files. Rather, they are used on a slave DNS server to replicate the zone file from a master DNS server.
 
-For an example of how to configure Linode's nameservers as slave DNS servers using AXFR, see our [guide on configuring DNS in cPanel](/docs/guides/set-up-dns-services-on-cpanel/#using-linode-s-dns-manager-as-a-slave).
+For an example of how to configure Linode's nameservers as slave DNS servers using AXFR, see our [guide on configuring DNS in cPanel](/docs/guides/set-up-dns-services-on-cpanel/#using-linodes-dns-manager-as-a-secondary-server).
 
 ### CAA
 

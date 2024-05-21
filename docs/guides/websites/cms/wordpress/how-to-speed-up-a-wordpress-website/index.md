@@ -166,7 +166,7 @@ Under the bar chart for CPU usage, the first item listed is labeled `Pi_Widget::
 0.02 sys
 {{< /output >}}
 
-### Investigate CPU Usage: mysqli_query
+### Investigate CPU Usage: `mysqli_query()`
 
 The next highest CPU usage function call displayed by XHGUI was labeled `mysqli_query`. This is the PHP-MySQL interface that WordPress uses to run database queries.
 
@@ -200,9 +200,9 @@ This name is too generic for us to search the WordPress code base for the cause 
 0.02 sys
 {{< /output >}}
 
-### Investigate Memory Usage: openssl_random_pseudo_bytes
+### Investigate Memory Usage: `openssl_random_pseudo_bytes`
 
-XHGUI showed that a function named openssl_random_pseudo_bytes was responsible for allocating 30 MB of memory. Searching the code base reveals that the High Memory Test plugin is responsible:
+XHGUI showed that a function named `openssl_random_pseudo_bytes` was responsible for allocating 30 MB of memory. Searching the code base reveals that the High Memory Test plugin is responsible:
 
     root@localhost:/var/www/html# grep -R openssl_random_pseudo_bytes .
 

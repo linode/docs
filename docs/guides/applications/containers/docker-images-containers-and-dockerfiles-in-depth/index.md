@@ -102,10 +102,10 @@ To run the Docker image as a container in detached mode:
 
         docker ps
 
-    {{< output >}}
-CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS     NAMES
-1d5e1da50a86   apache_image   "apache2ctl -D FOREG…"   3 minutes ago   Up 3 minutes   80/tcp    apache
-{{</ output>}}
+    ```output
+    CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS     NAMES
+    1d5e1da50a86   apache_image   "apache2ctl -D FOREG…"   3 minutes ago   Up 3 minutes   80/tcp    apache
+    ```
 
 3.  Now you can do your development work with the Apache server and still have access to the command line. However, your container is not publicly accessible as it lacks additional port configurations. In the next section, you will rebuild the container with port configurations that allow you to access the web server. For now, stop the container:
 

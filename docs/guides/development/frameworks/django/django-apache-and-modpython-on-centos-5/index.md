@@ -96,7 +96,7 @@ You will want to insert a `Location` block inside the virtual hosting block for 
 {{< /file >}}
 
 
-You will need to change the `mysite.settings` to correspond to the settings file for your Django application in the Python path. The pPython path is specific to the instance and version of Python that you're using and can be modified in your Python settings. If you want to store your Django application in another location, you'll need to specify a `PythonPath` variable in the `Location` block above by adding the following line:
+You will need to change the `mysite.settings` to correspond to the settings file for your Django application in the Python path. The python path is specific to the instance and version of Python that you're using and can be modified in your Python settings. If you want to store your Django application in another location, you'll need to specify a `PythonPath` variable in the `Location` block above by adding the following line:
 
 {{< file "Apache Virtual Host Configuration" apache >}}
 PythonPath "['/srv/www/brackley.net/application'] + sys.path"

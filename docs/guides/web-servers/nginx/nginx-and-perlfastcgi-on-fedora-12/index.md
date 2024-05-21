@@ -121,7 +121,7 @@ Issue the following command sequence to download the FastCGI wrapper script (cre
 
 ## Test Perl with FastCGI
 
-Create a file called "test.pl" in your site's "public\_html" directory with the following contents:
+Create a file called "test.pl" in your site's `public_html` directory with the following contents:
 
 {{< file "/srv/www/www.example.com/public\\_html/test.pl" perl >}}
 #!/usr/bin/perl

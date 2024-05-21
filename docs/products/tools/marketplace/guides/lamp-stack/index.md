@@ -47,7 +47,7 @@ After your LAMP stack has finished deploying, you can:
 
 - [Connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). You will need your Linode's root password to proceed. Note that your Linode's web root will be located in the `/var/www/html` directory.
 
-- [Navigate to the public IP address or domain entered during creation](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-filefind-your-linode-s-ip-address) of your Linode in a browser. You will see the default Apache webpage.
+- [Navigate to the public IP address or domain entered during creation](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) of your Linode in a browser. You will see the default Apache webpage.
 
 - Consult the following guides to learn more about working with the various components of the LAMP stack:
 

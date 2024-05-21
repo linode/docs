@@ -228,7 +228,7 @@ unlockkeycode=YourUnlockCode
 {{< /file >}}
 
 
-3.  Next, modify the sc_trans to sc_serv connection details:
+3.  Next, modify the `sc_trans` to `sc_serv` connection details:
 
     {{< file "/home/shoutcast/sct/sc_trans_basic.conf" conf >}}
 ; this is where we define the details required for sc_trans

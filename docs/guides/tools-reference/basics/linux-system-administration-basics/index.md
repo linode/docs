@@ -668,19 +668,19 @@ This will allow you to see new error messages as they appear. Problems can be di
 
 The *Domain Name System*, or DNS, is the service that the internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. This section will address several specific DNS-related tasks. To learn more about DNS, check out our [overview of the domain name system](/docs/guides/dns-overview/). If you are familiar with DNS and just need to figure out how to configure your DNS server, see our guide for the [Linode DNS manager](/docs/products/networking/dns-manager/).
 
-### Redirect DNS Queries with CNAMEs
+### Redirect DNS Queries with CNAME Records
 
 [CNAME DNS records](/docs/guides/dns-overview/#cname) make it possible to redirect requests for one hostname or domain to another hostname or domain. This is useful in situations where you want to direct requests for one domain to another, but don't want to set up the web server to handle requests.
 
-CNAMEs are *only* valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/docs/guides/redirect-urls-with-the-apache-web-server/) and/or virtual hosting on the server level. CNAMEs will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAMEs must point to a valid domain that has a valid A Record, or to another CNAME.
+CNAME records are *only* valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/docs/guides/redirect-urls-with-the-apache-web-server/) and/or virtual hosting on the server level. CNAME records will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAME records must point to a valid domain that has a valid A Record, or to another CNAME.
 
-Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://cloud.linode.com/), refer to our [DNS Manager Guide](/docs/products/networking/dns-manager/).
+Although limited in their capabilities, CNAME records can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAME records are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://cloud.linode.com/), refer to our [DNS Manager Guide](/docs/products/networking/dns-manager/).
 
 ### Set Up Subdomains
 
 When [reading domain names](/docs/guides/dns-overview/#domain-names), we refer to parts before the main or first-level domain as "subdomains." For example, in the domain `team.example.com`, `team` is a subdomain for the root domain `example.com`.
 
-Follow these steps to [create and host a sub-domain](/docs/products/networking/dns-manager/guides/common-dns-configurations/#configuring-subdomains):
+Follow these steps to [create and host a sub-domain](/docs/products/networking/dns-manager/guides/common-dns-configurations/#configure-subdomains):
 
 1.  First, create an [A Record](/docs/guides/dns-overview/#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](/docs/products/networking/dns-manager/). You may host the DNS for your domain with any provider you choose.
 

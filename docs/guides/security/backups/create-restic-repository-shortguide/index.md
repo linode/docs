@@ -12,7 +12,7 @@ show_on_rss_feed: false
 ---
 
 {{< note >}}
-[Create an Object Storage access key pair](/docs/products/storage/object-storage/get-started/#generate-a-key-pair) if you have not done so already. Should you choose to restrict the access key's permissions, it will require "Read/Write" permission to the bucket you will use to store your Restic repository.
+[Create an Object Storage access key pair](/docs/products/storage/object-storage/guides/access-keys/) if you have not done so already. Should you choose to restrict the access key's permissions, it will require "Read/Write" permission to the bucket you will use to store your Restic repository.
 {{< /note >}}
 
 1. Configure Restic to use your Object Storage access key pair and to use the bucket you created in the [Before You Begin](#before-you-begin) section of this guide. Replace `your-key`, `your-secret`, and `us-east-1.linodeobjects.com/your-bucket-name` with your own values.
