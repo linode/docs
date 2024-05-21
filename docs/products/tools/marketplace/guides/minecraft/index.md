@@ -79,7 +79,7 @@ With over 100 million users around the world, [Minecraft](https://www.minecraft.
 
     ![Screenshot of Minecraft multiplayer game mode](minecraft-multiplayer.png)
 
-1. Within the Mulitiplayer options, select **Add Server**.
+1. Within the Multiplayer options, select **Add Server**.
 
     ![Screenshot of Multiplayer game options](minecraft-add-server.png)
 

@@ -80,7 +80,7 @@ To enable the access:
 When switching to a child account, you become the child account parent user. By default, you have:
 
 - Read/write permission for billing. This is the only permission that can’t be modified even by a child account admin.
-- Read-only permission to all asset instances existing at the time of parent/child relationship creation, such as linodes, load balancers, longview clients. This allows the child account parent user to see existing child accounts’ assets, but not create, update, or delete them.
+- Read-only permission to all asset instances existing at the time of parent/child relationship creation, such as linodes, load balancers, Longview clients. This allows the child account parent user to see existing child accounts’ assets, but not create, update, or delete them.
 - No access to asset instances created after the creation of the parent/child relationship. The child account parent user needs to ask a child account admin to grant them access to new instances if necessary.
 - The [global permissions](/docs/products/platform/accounts/guides/user-permissions/) set off.
 
@@ -136,9 +136,9 @@ In the context of the parent/child relationship, you need to be familiar with th
 
 ### Manage account access and permissions for the child account parent user
 
-By default, a child account parent user user has:
+By default, a child account parent user has:
 - Read/write permission for billing. This is the only permission that can’t be modified even by a child account admin.
-- Read-only permission to all asset instances existing at the time of parent/child relationship creation, such as linodes, load balancers, longview clients. This allows the child account parent user to see existing child accounts’ assets, but not create, update, or delete them.
+- Read-only permission to all asset instances existing at the time of parent/child relationship creation, such as linodes, load balancers, Longview clients. This allows the child account parent user to see existing child accounts’ assets, but not create, update, or delete them.
 - No access to asset instances created after the creation of the parent/child relationship. The child account parent user needs to ask a child account admin to grant them access to new instances if necessary.
 - The [global permissions](/docs/products/platform/accounts/guides/user-permissions/) set off.
 

@@ -142,35 +142,27 @@ Next, we'll perform additional Postfix configuration to set up communication wit
 
 Create a virtual domain configuration file for Postfix called `/etc/postfix/mysql-virtual_domains.cf` with the following contents. Be sure to replace `mail_admin_password` with the password you chose earlier for the MySQL mail administrator user.
 
-{{< file >}}
-/etc/postfix/mysql-virtual\_domains.cf
-{{< /file >}}
-
-> user = mail\_admin password = mail\_admin\_password dbname = mail query = SELECT domain AS virtual FROM domains WHERE domain='%s' hosts = 127.0.0.1
+```file {title="/etc/postfix/mysql-virtual_domains.cf"}
+user = mail_admin password = mail_admin_password dbname = mail query = SELECT domain AS virtual FROM domains WHERE domain='%s' hosts = 127.0.0.1
+```
 
 Create a virtual forwarding file for Postfix called `/etc/postfix/mysql-virtual_forwardings.cf` with the following contents. Be sure to replace `mail_admin_password` with the password you chose earlier for the MySQL mail administrator user.
 
-{{< file >}}
-/etc/postfix/mysql-virtual\_forwardings.cf
-{{< /file >}}
-
-> user = mail\_admin password = mail\_admin\_password dbname = mail query = SELECT destination FROM forwardings WHERE source='%s' hosts = 127.0.0.1
+```file {title="/etc/postfix/mysql-virtual_forwardings.cf"}
+user = mail_admin password = mail_admin_password dbname = mail query = SELECT destination FROM forwardings WHERE source='%s' hosts = 127.0.0.1
+```
 
 Create a virtual mailbox configuration file for Postfix called `/etc/postfix/mysql-virtual_mailboxes.cf` with the following contents. Be sure to replace `mail_admin_password` with the password you chose earlier for the MySQL mail administrator user. Make sure the "query =" section is all on one line; it's broken up here to prevent issues with lower browser resolutions.
 
-{{< file >}}
-/etc/postfix/mysql-virtual\_mailboxes.cf
-{{< /file >}}
-
-> user = mail\_admin password = mail\_admin\_password dbname = mail query = SELECT CONCAT(SUBSTRING\_INDEX(email,<'@'>,-1),'/',SUBSTRING\_INDEX(email,<'@'>,1),'/') FROM users WHERE email='%s' hosts = 127.0.0.1
+```file {title="/etc/postfix/mysql-virtual_mailboxes.cf"}
+user = mail_admin password = mail_admin_password dbname = mail query = SELECT CONCAT(SUBSTRING_INDEX(email,<'@'>,-1),'/',SUBSTRING_INDEX(email,<'@'>,1),'/') FROM users WHERE email='%s' hosts = 127.0.0.1
+```
 
 Create a virtual email mapping file for Postfix called `/etc/postfix/mysql-virtual_email2email.cf` with the following contents. Be sure to replace `mail_admin_password` with the password you chose earlier for the MySQL mail administrator user.
 
-{{< file >}}
-/etc/postfix/mysql-virtual\_email2email.cf
-{{< /file >}}
-
-> user = mail\_admin password = mail\_admin\_password dbname = mail query = SELECT email FROM users WHERE email='%s' hosts = 127.0.0.1
+```file {title="/etc/postfix/mysql-virtual_email2email.cf"}
+user = mail_admin password = mail_admin_password dbname = mail query = SELECT email FROM users WHERE email='%s' hosts = 127.0.0.1
+```
 
 Set proper permissions and ownership for these configuration files by issuing the following commands:
 
@@ -273,11 +265,9 @@ Next, create the file `/etc/pam.d/smtp` and copy in the following two lines. For
 >
 Create a file named `/etc/postfix/sasl/smtpd.conf` with the following contents. Be sure to change `mail_admin_password` to the password you chose for your mail administration MySQL user earlier.
 
-{{< file >}}
-/etc/postfix/sasl/smtpd.conf
-{{< /file >}}
-
-> pwcheck\_method: saslauthd mech\_list: plain login allow\_plaintext: true auxprop\_plugin: mysql sql\_hostnames: 127.0.0.1 sql\_user: mail\_admin sql\_passwd: mail\_admin\_password sql\_database: mail sql\_select: select password from users where email = '%u'
+```file {title="/etc/postfix/sasl/smtpd.conf"}
+pwcheck_method: saslauthd mech_list: plain login allow_plaintext: true auxprop_plugin: mysql sql_hostnames: 127.0.0.1 sql_user: mail_admin sql_passwd: mail_admin_password sql_database: mail sql_select: select password from users where email = '%u'
+```
 
 Restrict the access for the files created above by issuing the following commands:
 
