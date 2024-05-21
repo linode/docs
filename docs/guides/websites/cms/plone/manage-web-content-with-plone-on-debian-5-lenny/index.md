@@ -164,7 +164,7 @@ Congratulations, you now have a fully functional Plone system that is ready for 
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [The Zope Book](http://docs.zope.org/zope2/zope2book//)
+- [The Zope Book](http://docs.zope.org/zope2/zope2book/)
 - [Basic nginx configuration](/docs/guides/how-to-configure-nginx/)
 - [ProxyPass Apache to Multiple Webservers](/docs/guides/multiple-web-servers-with-proxypass-on-debian-5-lenny/)
 
