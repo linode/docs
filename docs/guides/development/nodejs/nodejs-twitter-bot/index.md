@@ -60,7 +60,7 @@ The following software is needed on your workstation to complete the tutorial:
 
 The original [nvm](https://github.com/nvm-sh/nvm) software project is used on **Unix, Linux, and macOS**:
 
-1. Follow the [Installing and Configuring NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#installing-and-configuring-nvm) section of our [How to Install and Use the Node Version Manager](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide to install nvm.
+1. Follow the [Install NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#install-nvm) section of our [How to Install and Use the Node Version Manager](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide to install nvm.
 
 1. Run this command from your terminal. This installs the latest version of Node.js and npm:
 
@@ -991,7 +991,7 @@ To keep your bot running uninterrupted, you can start a Screen session. [Screen]
 
 ## Troubleshooting
 
-### Troubleshooting consumer_key Twit Config Error
+### Troubleshooting `consumer_key` Twit Config Error
 
 When starting the bot, you may see an error like this:
 
@@ -1074,10 +1074,10 @@ This error indicates that incorrect keys were copied into your `.env` file. You 
 
 | .env Key Name | Twitter Developer Portal Credential Name |
 |---------------|------------------------------------------|
-| consumer_key  | API Key                                  |
-| consumer_secret | API Secret Key                         |
-| access_token | Access Token                              |
-| access_token_secret | Access Token Secret                |
+| `consumer_key`  | API Key                                  |
+| `consumer_secret` | API Secret Key                         |
+| `access_token` | Access Token                              |
+| `access_token_secret` | Access Token Secret                |
 
 If you're not sure whether your keys are correct, you can regenerate them inside the Twitter developer portal. See the [Regenerate API Keys and Tokens](https://developer.twitter.com/en/docs/authentication/guides/authentication-best-practices) section of Twitter's documentation for instructions.
 

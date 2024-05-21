@@ -43,15 +43,15 @@ To turn Lassie on and off, see the [Recover from Unexpected Shutdowns with Lassi
 
 ### Cloud Manager
 
-{{< content "monitoring-cloud-manager-graphs-shortguide" >}}
+{{% content "monitoring-cloud-manager-graphs-shortguide" %}}
 
 ### Configure Cloud Manager Email Alerts
 
-{{< content "monitoring-configure-email-alerts-shortguide" >}}
+{{% content "monitoring-configure-email-alerts-shortguide" %}}
 
 ### Use Third-Party Tools
 
-{{< content "monitoring-third-party-tools-shortguide" >}}
+{{% content "monitoring-third-party-tools-shortguide" %}}
 
 ## Linode Managed
 
@@ -96,7 +96,7 @@ There are ways to automate the installation of software updates, but this is not
 
 ### Apply Kernel Updates
 
-When you first sign up for Linode and create a Compute Instance, the Cloud Manager automatically creates a [configuration profile](/docs/guides/linode-configuration-profiles//) that uses either the distribution's system kernel (in most cases) or uses the latest available Linode-supplied kernel.
+When you first sign up for Linode and create a Compute Instance, the Cloud Manager automatically creates a [configuration profile](/docs/guides/linode-configuration-profiles/) that uses either the distribution's system kernel (in most cases) or uses the latest available Linode-supplied kernel.
 
 If your system is using a Linode-supplied kernel, it's important to know that we [update the kernels](http://www.linode.com/kernels/) as necessary and make them available in the Cloud Manager. In most cases, new kernels are automatically selected and, once a new kernel is released, all you have to do is reboot your Compute Instance to start using it.
 

@@ -133,7 +133,7 @@ To direct your users to your new Tokyo 2 servers' IPs, you need to update your D
 
 If you use a different DNS provider, you will need to visit that provider's website to update your records.
 
-{{< content "update-dns-at-common-name-server-authorities" >}}
+{{% content "update-dns-at-common-name-server-authorities" %}}
 
 ### Update your TTL
 

@@ -49,7 +49,7 @@ If you are using Cloud Firewalls, then it's important to verify which Cloud Fire
 
 1.  If the Cloud Firewall is enabled, check to see which rules are currently active by clicking on the label of the Cloud Firewall. This takes you to your Cloud Firewall's **Rules** page.
 
-1.  The **Rules** page displays a list of all of the Cloud Firewall rules that are filtering your service's network traffic. If you notice that the Cloud Firewall rules do not allow traffic for a specific service's port that you are troubleshooting, you may consider [updating your rule's](/docs/products/networking/cloud-firewall/get-started/#edit-cloud-firewall-rules) to allow connections for that port.
+1.  The **Rules** page displays a list of all of the Cloud Firewall rules that are filtering your service's network traffic. If you notice that the Cloud Firewall rules do not allow traffic for a specific service's port that you are troubleshooting, you may consider [updating your rule's](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/) to allow connections for that port.
 
     {{< note >}}
     If the Cloud Firewall is assigned to more than one Compute Instance or NodeBalancer, modifying the Cloud Firewall rules affect all services assigned to the Cloud Firewall.

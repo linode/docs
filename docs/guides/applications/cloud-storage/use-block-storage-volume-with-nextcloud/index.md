@@ -27,11 +27,11 @@ Nextcloud is a cloud storage platform that allows you to store and access your f
 
 ### Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ## Attach a Block Storage Volume
 

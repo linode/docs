@@ -3,8 +3,8 @@ slug: sql-server-security
 title: "Part 1: SQL Server Security Best Practices"
 title_meta: SQL Server Security Best Practices
 description: "Learn about the SQL Server security best practices and guidelines to keep your server and data safe. For example, disable unused ports and SQL Server features."
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
-contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
+authors: ["Doug Hayman for NanoHertz Solutions Inc"]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc"]
 published: 2022-05-27
 keywords: ['sql server security']
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"

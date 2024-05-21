@@ -15,9 +15,9 @@ aliases: ['/guides/deploy-owncast-with-marketplace-apps/','/guides/owncast-marke
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Owncast should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -45,4 +45,4 @@ With Owncast running, you can begin to configure your new server. Visit the Admi
 
 On the server, Owncast is installed in the  `/opt/owncast` directory. You'll find all your data files there. This is also where you can upgrade your Owncast server in the future.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

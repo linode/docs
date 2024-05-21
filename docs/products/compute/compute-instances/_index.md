@@ -22,7 +22,7 @@ Compute Instances are available across [all regions](https://www.linode.com/glob
 
 Below is a table with specifications and prices for each type of Compute plan. Note that pricing and plan availability may vary between regions. See our [Pricing](https://www.linode.com/pricing/) page for a full list of pricing options.
 
-{{< content "instance-comparison-shortguide" >}}
+{{% content "instance-comparison-shortguide" %}}
 
 ## Technical Specifications
 

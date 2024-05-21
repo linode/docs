@@ -14,9 +14,9 @@ A LAMP (Linux, [Apache](https://www.apache.org), [MySQL](https://www.mysql.com),
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** The LAMP stack should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -35,11 +35,11 @@ A LAMP (Linux, [Apache](https://www.apache.org), [MySQL](https://www.mysql.com),
     The password for the MySQL root user is automatically generated and provided in the file `/home/$USERNAME/.credentials` when the LAMP deployment completes.
     {{< /note >}}
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started After Deployment
 
@@ -47,7 +47,7 @@ After your LAMP stack has finished deploying, you can:
 
 - [Connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). You will need your Linode's root password to proceed. Note that your Linode's web root will be located in the `/var/www/html` directory.
 
-- [Navigate to the public IP address or domain entered during creation](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-filefind-your-linode-s-ip-address) of your Linode in a browser. You will see the default Apache webpage.
+- [Navigate to the public IP address or domain entered during creation](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) of your Linode in a browser. You will see the default Apache webpage.
 
 - Consult the following guides to learn more about working with the various components of the LAMP stack:
 
@@ -74,4 +74,4 @@ The LAMP Stack Marketplace App installs the following software on your Linode:
 
 - [Marketplace Apps Repository](https://github.com/akamai-compute-marketplace/marketplace-apps): Review the deployment Ansible playbooks.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

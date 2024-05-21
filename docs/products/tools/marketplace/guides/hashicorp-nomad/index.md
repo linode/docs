@@ -10,9 +10,9 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Nomad should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -23,9 +23,9 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 - **Supported distributions:** Ubuntu 22.04 LTS, Debian 11
 - **Recommended plan:** We recommend a 4GB Dedicated CPU or Shared Compute instance for the Nomad Server. Nomad Clients (deployed separately from this Marketplace App) can use plans of any size.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -45,4 +45,4 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 
 1. Additional configurations are required to use the Linode Marketplace Nomad Server in a production environment. We recommend reviewing the [Configuration](https://www.nomadproject.io/docs/configuration) and [Job Spec](https://www.nomadproject.io/docs/job-specification) documentation before proceeding.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

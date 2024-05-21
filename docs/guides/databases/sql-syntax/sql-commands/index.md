@@ -3,8 +3,8 @@ slug: sql-commands
 title: "Introduction to SQL Commands"
 title_meta: "SQL Commands: Getting Started"
 description: 'SQL commands can be used across relational database systems like MySQL and PostgreSQL. Learn the fundamental SQL commands used to insert and modify data in a SQL table.'
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
-contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
+authors: ["Doug Hayman for NanoHertz Solutions Inc"]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc"]
 published: 2022-03-04
 keywords: ['create table', 'alter table', 'drop table', 'ddl commands']
 tags: ['MySQL']
@@ -29,7 +29,7 @@ This guide uses an example database for a school to further demonstrate the SQL 
 
 The example assumes that there are three students in the school, each of which has completed two courses. The sample data is shown in the table below:
 
-| SSNumber | LastName | FirstName | CourseId | NumericGrade | YearTaken |
+| `SSNumber` | `LastName` | `FirstName` | `CourseId` | `NumericGrade` | `YearTaken` |
 |:-:|:-:|:-:|:-:|:-:|:-:|
 | 111111111 | Smith | John | CSC101 | 98 | 2021 |
 | 111111111 | Smith | John | ENG101 | 95 | 2022 |

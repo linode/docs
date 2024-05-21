@@ -1,7 +1,7 @@
 ---
 slug: hackersploit-red-team-series
 title: "Hackersploit Red Team Series"
-description: 'Two to three sentences describing your guide.'
+description: "In this series, learn red team techniques to determine vulnerabilities in your organization's security."
 authors: ["HackerSploit"]
 contributors: ["HackerSploit"]
 published: 2021-11-03

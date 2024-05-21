@@ -429,10 +429,10 @@ server {
 
         httpd -M
 
-    - proxy_module
-    - lbmethod_byrequests_module
-    - proxy_balancer_module
-    - proxy_http_module
+    - `proxy_module`
+    - `lbmethod_byrequests_module`
+    - `proxy_balancer_module`
+    - `proxy_http_module`
 
 1. Enable the necessary mods in Apache. Open `00-proxy.conf` and verify that the lines below are included:
 
@@ -556,7 +556,7 @@ To avoid losing iptables rules after a server reboot, save your rules to a file 
 
     ufw allow 5601/tcp comment "Kibana port"
 
-{{< content "cloud-firewall-shortguide" >}}
+{{% content "cloud-firewall-shortguide" %}}
 
 ## Connect the Elastic Stack with the Wazuh API
 

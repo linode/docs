@@ -1,8 +1,7 @@
 ---
 slug: golang-unit-testing
-title: "An Introduction to Golang Unit Testing"
-title_meta: "Golang Testing: Unit Testing Go Applications"
-description: 'This guide provides an introduction to unit testing in the Go programming language. It also provides an example unit test from the Go testing package documentation.'
+title: "Using the Go Unit Testing Command: go test"
+description: "This guide provides an introduction to unit testing in the Go programming language. It also provides an example unit test from the Go testing package documentation."
 authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 published: 2021-12-03

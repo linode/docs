@@ -79,7 +79,7 @@ If everything is working, you should see ping replies. If not, go back and make 
 
 The instructions in this section will allow you to manually configure your IPv6 tunnel. This can permanently affect your connectivity across reboots. Read the IPv6 documentation for your distribution before proceeding.
 {{< note type="alert" >}}
-When manually modifying your network configuration, always disable [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) first to avoid having your changes overwritten on reboot.
+When manually modifying your network configuration, always disable [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#individual-compute-instance-setting) first to avoid having your changes overwritten on reboot.
 {{< /note >}}
 
 ### Debian and Ubuntu

@@ -68,7 +68,7 @@ Start the receiving Linode in rescue mode:
 
 ### Access the Linode in Rescue Mode
 
-After the Linode has booted, connect to the Linode through [LISH](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
+After the Linode has booted, connect to the Linode through [LISH](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#connecting-to-a-compute-instance-running-in-rescue-mode).
 
 1.  Select the Linode that is receiving the disk. The Linode's dashboard appears.
 1.  Click **Launch Lish Console** . A new window appears that displays the Lish console, a `Welcome to Finnix!` message, and a root prompt.

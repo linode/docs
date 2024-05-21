@@ -65,7 +65,7 @@ Your backup server will be pulling data from remote devices by SSHFS, so SSH mus
 
 1.  Add the remote device's mount point to the backup server's *fstab* file. This will allow the rdbadmin user to mount and read the remote filesystem. It will be mounted read-only as a basic safeguard.
 
-    You'll need to specify the remote device's login information so change the value for *user@remotehost* appropriately. Change *remote_path* to the top-level directory on the remote device you want to create a back up of.
+    You'll need to specify the remote device's login information so change the value for *user@remotehost* appropriately. Change `remote_path` to the top-level directory on the remote device you want to create a back up of.
 
     {{< file "/etc/fstab" >}}
 <sshfs#user@remotehost>:/remote_path /home/rdbadmin/device_hostname fuse user,noauto,ro 0 0

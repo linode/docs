@@ -27,7 +27,7 @@ The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configurati
 
 ### NGINX
 
-{{< content "install-nginx-centos" >}}
+{{% content "install-nginx-centos" %}}
 
 ### MariaDB
 

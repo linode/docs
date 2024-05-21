@@ -10,9 +10,9 @@ This Marketplace App automatically configures a new Compute Instance with a limi
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** The Secure Your Server tasks should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -25,13 +25,13 @@ This Marketplace App automatically configures a new Compute Instance with a limi
 
 ### Secure Your Server Options
 
-{{< content "marketplace-required-limited-user-shortguide">}}
+{{% content "marketplace-required-limited-user-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
 - **Email address:** The start of authority (SOA) email address for this server. This is a required field if you want the installer to create DNS records.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 #### Block Storage (Optional)
 
@@ -44,4 +44,4 @@ You can optionally specify an existing Block Storage Volume or create a new Bloc
 For more information on what Block Storage is and how to get started using it, review the [Block Storage product documentation](/docs/products/storage/block-storage/).
 {{< /note >}}
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

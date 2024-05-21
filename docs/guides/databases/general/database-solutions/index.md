@@ -66,7 +66,7 @@ After determining which database management system to use for your application, 
 
 - [Managed Databases](#managed-databases)
 
-    {{< content "dbass-eos" >}}
+    {{% content "dbass-eos" %}}
 
 - [Marketplace Apps (and Clusters)](#marketplace-apps-and-clusters)
 - [Self or custom deployment on Compute Instances](#custom-deployment)

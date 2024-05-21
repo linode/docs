@@ -24,9 +24,9 @@ In this guide, you learn what MongoDB indices are and how to use them to improve
 
 ## Before You Begin
 
-{{< content "mongodb-deployment-methods-shortguide" >}}
+{{% content "mongodb-deployment-methods-shortguide" %}}
 
-{{< content "mongodb-shell-shortguide" >}}
+{{% content "mongodb-shell-shortguide" %}}
 
 ## How Does MongoDB Indexing Work?
 

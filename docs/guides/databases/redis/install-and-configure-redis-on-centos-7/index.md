@@ -116,7 +116,7 @@ vm.overcommit_memory = 1
 
 ### Additional Swap
 
-Depending upon your usage, you may find it necessary to add extra swap disk space. You can add swap by [resizing your disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resizing-a-disk) in the Cloud Manager. The [Redis documentation](https://redis.io/topics/admin) recommends the size of your swap disk match the amount of memory available to your system.
+Depending upon your usage, you may find it necessary to add extra swap disk space. You can add swap by [resizing your disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resize-a-disk) in the Cloud Manager. The [Redis documentation](https://redis.io/topics/admin) recommends the size of your swap disk match the amount of memory available to your system.
 
 ## Distributed Redis
 
@@ -138,7 +138,7 @@ To communicate over the private network, your master and slave Linodes must resi
 
 ###  Prepare Your Linodes
 
-1.  Set up both Linodes with a Redis instance, using the [Installation](#install-redis) and [Configuration](#configure-redis) steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/products/compute/compute-instances/guides/disks-and-storage/#resizing-a-disk) option in the Cloud Manager.
+1.  Set up both Linodes with a Redis instance, using the [Installation](#install-redis) and [Configuration](#configure-redis) steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/products/compute/compute-instances/guides/disks-and-storage/#resize-a-disk) option in the Cloud Manager.
 
 2.  Configure [Private IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) on both Linodes, and make sure you can access the master Linode's private IP address from  the slave. You will use only private addresses for replication traffic for security reasons.
 
@@ -194,7 +194,7 @@ Your master/slave replication setup is working properly.
 
 ## Secure the Redis Installation
 
-{{< content "cloud-firewall-shortguide" >}}
+{{% content "cloud-firewall-shortguide" %}}
 
 Since Redis is designed to work in trusted environments and with trusted clients, you should control access to the Redis instance. Some recommended security steps include:
 

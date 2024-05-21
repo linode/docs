@@ -20,7 +20,7 @@ Create a Block Storage Volume and attach it to the desired target Compute Instan
 
 ## Copy the Primary Disk onto the Volume
 
-1.  Boot the Compute Instance into Rescue Mode and assign the Volume to `/dev/sdc` (shown below). The primary disk should remain assigned to `/dev/sda`. If your device assignments are different, you may need to adjust the commands or steps in this guide accordingly. Review the [Rescue and Rebuild guide](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) for more information on booting into Rescue Mode.
+1.  Boot the Compute Instance into Rescue Mode and assign the Volume to `/dev/sdc` (shown below). The primary disk should remain assigned to `/dev/sda`. If your device assignments are different, you may need to adjust the commands or steps in this guide accordingly. Review the [Rescue and Rebuild guide](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode) for more information on booting into Rescue Mode.
 
     ![Mount the Block Storage Volume as /dev/sdc and reboot into Rescue Mode](rescue-mode-sdc.png)
 

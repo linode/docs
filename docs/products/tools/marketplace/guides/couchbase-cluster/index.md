@@ -20,9 +20,9 @@ Couchbase Enterprise Server is not free to use in production. Contact [Couchbase
     
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Couchbase should be fully installed within 10-20 minutes after the Linode has finished provisioning.
@@ -44,9 +44,9 @@ Couchbase Enterprise Server is not free to use in production. Contact [Couchbase
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ### Getting Started after Deployment
 
@@ -73,4 +73,4 @@ You may wish to consult the following resources for additional information on th
 - [Couchbase](https://www.couchbase.com/)
 - [Couchbase Documentation](https://docs.couchbase.com/home/server.html)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
