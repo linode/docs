@@ -7,7 +7,7 @@ linkTitle: "GPU"
 aliases: ['/products/compute/gpu/','/platform/linode-gpu/why-linode-gpu/','/guides/why-linode-gpu/','/products/compute/gpu/guides/use-cases/']
 ---
 
-Scientists, artists, and engineers need access to significant parallel computational power. Akamai Cloud Computing offers GPU-optimized virtual machines accelerated by NVIDIA RTX 4000 Ada (Beta) or NVIDIA Quadro RTX 6000. These GPU compute instances harness the power of CUDA, Tensor, and RT cores to execute complex processing, transcoding, and ray tracing workloads.
+Scientists, artists, and engineers need access to significant parallel computational power. Linode offers GPU-optimized virtual machines accelerated by NVIDIA RTX 4000 Ada (Beta) or NVIDIA Quadro RTX 6000. These GPU compute instances harness the power of CUDA, Tensor, and RT cores to execute complex processing, transcoding, and ray tracing workloads.
 
 GPU plans using NVIDIA Quadro RTX 6000 were first introduced in 2019 and have limited deployment availability. The new NVIDIA RTX 4000 Ada GPU plans are being tested by Beta customers. You can register your interest in the new plans by completing the [Reservation Request Form](https://www.linode.com/products/gpu/#gpu-form).
 
@@ -19,7 +19,7 @@ When the costs associated with purchasing, installing, and maintaining GPUs are 
 
 ## Market Leading Hardware
 
-Akamai Cloud Computing uses industry-leading NVIDIA GPUs with CUDA, Tensor, and RT cores in each unit. These GPUs support use cases associated with parallel processing, transcoding, and ray tracing. See [GPU Specifications](#gpu-specifications) for more details.
+ The GPU plans use industry-leading NVIDIA GPUs with CUDA, Tensor, and RT cores in each unit. These GPUs support use cases associated with parallel processing, transcoding, and ray tracing. See [GPU Specifications](#gpu-specifications) for more details.
 
 If one GPU card isn’t enough for your projected workloads, Akamai Cloud Computing offers GPU plans with up to eight cards per instance.
 
@@ -148,7 +148,7 @@ If you're interested in using CUDA on your GPU Compute Instance, see the followi
 
 One of the most traditional use cases for a GPU is graphics processing. Transforming a large set of pixels or vertices with a shader or simulating realistic lighting via ray tracing are massive parallel processing tasks. Ray tracing is a computationally intensive process that simulates lights in a scene and renders the reflections, refractions, shadows, and indirect lighting. It's impossible to do on GPUs in real-time without hardware-based ray tracing acceleration. GPU Compute Instances offers real-time ray tracing capabilities using a single GPU.
 
-Akamai Cloud Computing GPU plans support advanced shading capabilities such as:
+The GPU plans support advanced shading capabilities such as:
 
 - Mesh shading models for vertex, tessellation, and geometry stages in the graphics pipeline
 - Variable Rate Shading to dynamically control shading rate
