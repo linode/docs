@@ -1061,6 +1061,7 @@ Indri
 inet
 inet6
 infector
+inferencing
 infographic
 infosec
 ingester
