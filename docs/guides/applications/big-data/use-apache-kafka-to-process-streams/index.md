@@ -1,7 +1,7 @@
 ---
 slug: use-apache-kafka-to-process-streams
 title: "How to Process Streams Using Kafka"
-description: 'Learn to develop process streams with Apache Kafka. This tutorial covers Kafka message broker setup, handling Kafka events, and using the Kafka API.'
+description: "Learn to develop process streams with Apache Kafka. This tutorial covers Kafka message broker setup, handling Kafka events, and using the Kafka API."
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 published: 2024-05-17
@@ -28,7 +28,7 @@ In this application model, consumers can play dual roles as subsequent producers
 
 ### The Kafka Pub/Sub Model and Terminology
 
-Kafka uses an architectural model called Publisher-Subscriber (pub/sub). In this model, a framework is established between publisher applications, which provide event information, and subscriber applications, which consume the logged data from these providers.
+Kafka uses an architectural model called [Publisher-Subscriber](/docs/guides/what-is-pub-sub/) (pub/sub). In this model, a framework is established between publisher applications, which provide event information, and subscriber applications, which consume the logged data from these providers.
 
 In the pub/sub paradigm, Kafka refers to its application server instances as *brokers*. There is usually only one *leader broker*. However, it is common to store topic data across several brokers for resiliency, redundancy, data localization, or other processing requirements. These replicas of data are called *partitions*.
 
