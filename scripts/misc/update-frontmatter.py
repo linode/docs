@@ -344,13 +344,86 @@ def sort_parameters():
                                 fp.write(line)
 
 # ------------------
+# Generate a CSV for guides
+# ------------------
+def create_csv():
+
+    guides_dir = "docs/guides"
+    output_file = "/Users/mwildman/Documents/guides.csv"
+    analytics_file = "~/Documents/analytics_data.csv"
+
+    # Iterate through each file in each docs directory
+    for root, dirs, files in os.walk(guides_dir):
+        for file in files:
+
+            # The relative file path of the file
+            file_path = os.path.join(root, file)
+            path_segments = file_path.split("/")
+
+            # If the file is markdown...
+            if file.endswith('.md'):
+
+                with open(file_path, "r") as fp:
+                    lines = fp.readlines()
+
+                slug = ""
+                title = ""
+                modified = ""
+                published = ""
+                deprecated = ""
+                deprecated_link = ""
+
+                frontmatter = False
+                yaml_token = "---"
+                yaml_token_counter = 0
+                update = False
+                duplicate_date = False
+
+                # Iterates through each line of the file and locates
+                # the title and description parameters.
+                for i, line in enumerate(lines):
+                    if line.startswith(yaml_token) and yaml_token_counter == 0:
+                        yaml_token_counter += 1
+                        frontmatter = True
+                    elif line.startswith(yaml_token) and yaml_token_counter == 1:
+                        yaml_token_counter += 1
+                        frontmatter = False
+
+                    if frontmatter == False:
+                        continue
+
+                    if line.startswith("slug:"):
+                        slug = line
+                    elif line.startswith("title:"):
+                        title = line
+                    elif line.startswith("published:"):
+                        published = line
+                    elif line.startswith("modified:"):
+                        modified = line
+                    elif line.startswith("deprecated:"):
+                        deprecated = line
+                    elif line.startswith("deprecated_link:"):
+                        deprecated_link = line
+
+                # Reset the yaml token counter
+                yaml_token_counter = 0
+
+                #with open(file_path, "r") as fp:
+                #    lines = fp.readlines()
+
+                # Write to the file
+                with open(output_file, "w") as fp:
+                    fp.write(title + "," + slug + "," + published + "," + modified + "," + deprecated + "," + deprecated_link)
+
+# ------------------
 # Main function
 # ------------------
 def main():
 
     #update_titles()
     #remove_duplicate_parameters()
-    sort_parameters()
+    #sort_parameters()
+    create_csv()
 
 if __name__ == "__main__":
     main()
