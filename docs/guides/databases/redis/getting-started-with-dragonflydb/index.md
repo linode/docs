@@ -18,7 +18,7 @@ DragonflyDB is an in-memory database similar to Redis, Memcached, and KeyDB. It 
 
 ## What Is DragonflyDB?
 
-An in-memory database is also called a Main Memory Database (MMDB), also a system (or memory) resident database. These rely mainly on memory to store data, rather than using disk storage as is usual for Relational Database Management Systems (RDBMS) and NoSQL setups. Developers often choose in-memory databases where speed is the main concern. A product like DragonflyDB makes full use of the underlying hardware without a lot of additional setup and tuning.
+An in-memory database (IMDb) primarily stores data in system memory rather than using disk storage. Developers often choose in-memory databases where speed is the main concern. A product like DragonflyDB makes full use of the underlying hardware without a lot of additional setup and tuning.
 
 As with most Redis competitors, DragonflyDB is compatible with Redis API 5.0. In addition, its utilities can use the same command line options as Redis, which helps when moving to DragonflyDB.
 
@@ -28,7 +28,7 @@ Overall, DragonflyDB focuses on maximizing CPU usage (e.g. engaging all cores) a
 
 ## Speed Comparison vs. Redis, Memcached, and KeyDB
 
-In speed tests, DragonflyDB and Redis advertise similar results. The best way to test database speed is to apply your own software and system configurations to gather real-world ideas about their performance. With that said, the following benchmark results are from a single Dedicated, 4 GB, 2-core, Ubuntu 22.04 LTS Linode. The tests use the free version of each product, don’t include any special addons, and use the vendor-suggested installation technique. In addition, each test was performed on a clean and updated installation to prevent any problems with old software.
+In speed tests, DragonflyDB and Redis advertise similar results. The best way to test database speed is to apply your own software and system configurations to gather real-world ideas about their performance. With that said, the following benchmark results are from a single 4 GB Dedicated Compute Instance running on Ubuntu 22.04 LTS. The tests use the free version of each product, don’t include any special addons, and use the vendor-suggested installation technique. In addition, each test was performed on a clean and updated installation to prevent any problems with old software.
 
 The test relies on the [Redis memtier_benchmark](https://github.com/RedisLabs/memtier_benchmark), which must be installed separately.
 
@@ -38,7 +38,7 @@ Run the following command to install the benchmark using Docker and display help
 sudo docker run --rm redislabs/memtier_benchmark:latest --help
 ```
 
-{{< note type="secondary" >}}
+{{< note >}}
 You might need to use a specific server address when performing the test. If that is the case, use the following command, substituting your IP address where necessary:
 
 ```command
@@ -50,11 +50,11 @@ The use of `--distinct-client-seed` ensures that each of the databases are teste
 
 The results output for DragonflyDB appears in the figure below:
 
-[![The Redis memtier_benchmark results for DragonflyDB.](DragonflyDB-Results_small.png "The Redis memtier_benchmark results for DragonflyDB.")](DragonflyDB-Results.png)
+![The Redis memtier_benchmark results for DragonflyDB](DragonflyDB-Results.png)
 
 Compare it with the results for [Redis 7.0](https://redis.io/download/):
 
-[![The Redis memtier_benchmark results for Redis 7.0.](Redis-Results_small.png "The Redis memtier_benchmark results for Redis 7.0")](Redis-Results.png)
+![The Redis memtier_benchmark results for Redis 7.0](Redis-Results.png)
 
 Here are the Memcached results:
 
@@ -62,11 +62,11 @@ Here are the Memcached results:
 When performing the this test on Memcached, use the `--protocol=memcache_text` command line switch.
 {{< /note >}}
 
-[![The Redis memtier_benchmark results for Memcached.](Memcached-Results_small.png "The Redis memtier_benchmark results for Memcached.")](Memcached-Results.png)
+![The Redis memtier_benchmark results for Memcached](Memcached-Results.png)
 
 Finally, the results from KeyDB:
 
-[![The Redis memtier_benchmark results for KeyDB.](KeyDB-Results_small.png "The Redis memtier_benchmark results for KeyDB.")](KeyDB-Results.png)
+![The Redis memtier_benchmark results for KeyDB](KeyDB-Results.png)
 
 As shown in the figures above, DragonflyDB and Redis are generally faster than Memcached and KeyDB using these configurations. When it comes to these products, tweaks, environment, and usage matter, so in local comparisons be sure to consider the requirements of your own workload.
 
@@ -180,32 +180,9 @@ DragonflyDB relies on Docker as a framework, so you need to install Docker befor
     A "Hello from Docker!" output message should appear if Docker is running correctly:
 
     ```output
-    Unable to find image 'hello-world:latest' locally
-    latest: Pulling from library/hello-world
-    719385e32844: Pull complete
-    Digest: sha256:dcba6daec718f547568c562956fa47e1b03673dd010fe6ee58ca806767031d1c
-    Status: Downloaded newer image for hello-world:latest
-
     Hello from Docker!
     This message shows that your installation appears to be working correctly.
-
-    To generate this message, Docker took the following steps:
-     1. The Docker client contacted the Docker daemon.
-     2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
-    (amd64)
-     3. The Docker daemon created a new container from that image which runs the
-    executable that produces the output you are currently reading.
-     4. The Docker daemon streamed that output to the Docker client, which sent it
-    to your terminal.
-
-    To try something more ambitious, you can run an Ubuntu container with:
-     $ docker run -it ubuntu bash
-
-    Share images, automate workflows, and more with a free Docker ID:
-     https://hub.docker.com/
-
-    For more examples and ideas, visit:
-     https://docs.docker.com/get-started/
+    ...
     ```
 
 ## Installing DragonflyDB
@@ -326,11 +303,11 @@ You can also use your browser to access DragonflyDB, which is something the othe
 
 1.  To access DragonflyDB, navigate to `http://EXAMPLE_IP:6379`, substituting `EXAMPLE_IP` with your Linode's actual IP address. The DragonflyDB status information should appear:
 
-    [![The DragonflyDB web interface.](DragonflyDB-Web-Browser_small.png "The DragonflyDB web interface.")](DragonflyDB-Web-Browser.png)
+    ![The DragonflyDB web interface](DragonflyDB-Web-Browser.png)
 
 1.  Access the metrics folder by appending `/metrics` to the URL, like so `http://EXAMPLE_IP:6379/metrics`. This shows a list of DragonflyDB metrics:
 
-    [![The DragonflyDB web interface metrics page.](DragonflyDB-Web-Browser-Metrics_small.png "The DragonflyDB web interface metrics page.")](DragonflyDB-Web-Browser-Metrics.png)
+    ![The DragonflyDB web interface metrics page](DragonflyDB-Web-Browser-Metrics.png)
 
     You cannot modify the database using the browser-based interface. For now, it only provides status information.
 

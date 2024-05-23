@@ -446,6 +446,7 @@ CSRs
 css
 csum
 csv
+CTAs
 ctools
 ctrl
 ctx
@@ -1051,6 +1052,7 @@ imap
 imapd
 imaplib
 imaps
+IMDb
 img
 immutant
 imperva
@@ -1425,8 +1427,8 @@ mbit
 mbits
 mBlock
 mbox
-Mbps
 MBps
+Mbps
 mbstrings
 mcrypt
 mcy
@@ -1732,6 +1734,7 @@ NVTs
 oauth
 obfuscator
 observium
+OCAs
 octopress
 ODMs
 odoo
@@ -2719,6 +2722,7 @@ virtualizing
 virtualmin
 Virustotal
 vishing
+Vite
 Vitess
 Vixie
 vlan
@@ -2926,6 +2930,3 @@ zshrc
 zxvf
 ZYpp
 Zypper
-CTAs
-OCAs
-Vite
