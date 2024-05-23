@@ -74,23 +74,23 @@ To enable the Apache Longview integration manually, follow these steps on your s
 1.  Verify that **mod\_status** is enabled for Apache (it should be by default). For more information, see the [Apache Module mod\_status](https://httpd.apache.org/docs/2.4/mod/mod_status.html) documentation.
 
     {{< tabs >}}
-    {{% tab "Debian and Ubuntu" %}}
-```command
-sudo a2enmod status
-```
-    {{% /tab %}}
-    {{% tab "CentOS" %}}
-```command
-sudo yum install links
-httpd -M | grep status
-```
+    {{< tab "Debian and Ubuntu" >}}
+    ```command
+    sudo a2enmod status
+    ```
+    {{< /tab >}}
+    {{< tab "CentOS" >}}
+    ```command
+    sudo yum install links
+    httpd -M | grep status
+    ```
 
-The output should be similar to:
+    The output should be similar to:
 
-```output
-status_module (shared)
-```
-    {{% /tab %}}
+    ```output
+    status_module (shared)
+    ```
+    {{< /tab >}}
     {{< /tabs >}}
 
 1.  Update your Apache configuration file to include the block in the example file below. Depending on your Linux distribution and version, your Apache configuration file may be stored in one of the following locations:
@@ -118,16 +118,16 @@ status_module (shared)
 1.  Restart Apache:
 
     {{< tabs >}}
-    {{% tab "Debian and Ubuntu" %}}
-```command
-sudo systemctl restart apache2
-```
-    {{% /tab %}}
-    {{% tab "CentOS" %}}
-```command
-sudo systemctl restart httpd
-```
-    {{% /tab %}}
+    {{< tab "Debian and Ubuntu" >}}
+    ```command
+    sudo systemctl restart apache2
+    ```
+    {{< /tab >}}
+    {{< tab "CentOS" >}}
+    ```command
+    sudo systemctl restart httpd
+    ```
+    {{< /tab >}}
     {{< /tabs >}}
 
 1.  Restart Longview:
@@ -179,19 +179,19 @@ The **Workers** graph shows all of the Apache workers at the selected time. The 
 
 ### CPU
 
-The **CPU** graph shows the percentage of your system's CPU being used by Apache at the selected time. If you want to see the total CPU used instead, check the [Overview tab](/docs/products/tools/longview/get-started/#overview).
+The **CPU** graph shows the percentage of your system's CPU being used by Apache at the selected time. If you want to see the total CPU used instead, check the [Overview tab](/docs/products/tools/longview/guides/metrics/#overview).
 
 ### Memory
 
-The **Memory** graph shows the amount of RAM being used by Apache at the selected time. If you want to see your system's total memory use instead, check the [Overview tab](/docs/products/tools/longview/get-started/#overview).
+The **Memory** graph shows the amount of RAM being used by Apache at the selected time. If you want to see your system's total memory use instead, check the [Overview tab](/docs/products/tools/longview/guides/metrics/#overview).
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by Apache at the selected time. To see the total IO instead, visit the [Disks tab](/docs/products/tools/longview/get-started/#disks).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by Apache at the selected time. To see the total IO instead, visit the [Disks tab](/docs/products/tools/longview/guides/metrics/#disks).
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your system spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your system, see the [Processes tab](/docs/products/tools/longview/get-started/#processes).
+The **Process Count** graph shows the total number of processes on your system spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your system, see the [Processes tab](/docs/products/tools/longview/guides/metrics/#processes).
 
 ## Troubleshooting
 
@@ -348,16 +348,16 @@ ExtendedStatus On
 When you've finished modifying the configuration file, restart Apache:
 
 {{< tabs >}}
-{{% tab "Debian and Ubuntu" %}}
+{{< tab "Debian and Ubuntu" >}}
 ```command
 sudo systemctl restart apache2
 ```
-{{% /tab %}}
-{{% tab "CentOS" %}}
+{{< /tab >}}
+{{< tab "CentOS" >}}
 ```command
 sudo systemctl restart httpd
 ```
-{{% /tab %}}
+{{< /tab >}}
 {{< /tabs >}}
 
 ### Apache Tab is Missing

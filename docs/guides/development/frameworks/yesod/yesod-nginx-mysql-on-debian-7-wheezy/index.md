@@ -161,7 +161,7 @@ Production:
 
 Your site can be started in different environments such as Development, Testing, Staging and Production, and you can give different configurations for them. The configuration for the four different environments is given in the ``Default`` section. You can modify this section, using your own host, port, username, password, database, and so on. If you need different settings in the Production environment, for example, you can write your new settings in the ``Production`` section first, and then import the default ones by ``<<: *defaults``.
 
-We don't need to modify this configuration file, it's acceptable as is. So you only need to create a user "myblog" with password "myblog", and four databases "myblog", "myblog_testing", "myblog_staging", and "myblog_production". Remember to replace "myblog" with the name of your project.
+We don't need to modify this configuration file, it's acceptable as is. So you only need to create a user "myblog" with password "myblog", and four databases `myblog`, `myblog_testing`, `myblog_staging`, and `myblog_production`. Remember to replace "myblog" with the name of your project.
 
 1.  Issue the following command to login the root account of the mysql database management system:
 

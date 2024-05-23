@@ -3,8 +3,8 @@ slug: sql-triggers-sql-server-overview
 title: "SQL Triggers in SQL Server: An Overview"
 title_meta: An Introduction to SQL Triggers in SQL Server
 description: This guide explains SQL trigger statements, special database objects, and how to enforce referential integrity for primary/foreign key relationships with them.
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
-contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
+authors: ["Doug Hayman for NanoHertz Solutions Inc"]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc"]
 published: 2023-01-17
 keywords:
   - referential integrity

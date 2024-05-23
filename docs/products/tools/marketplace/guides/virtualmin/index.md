@@ -44,7 +44,7 @@ Virtualmin has been removed from the App Marketplace and can no longer be deploy
 
 #### Additional Security Configuration
 
-- **Configure automatic security updates?** Select **Yes** to enable [automatic security updates](/docs/products/compute/compute-instances/guides/set-up-and-secure/#automatic-security-updates) for your Linode.
+- **Configure automatic security updates?** Select **Yes** to enable automatic security updates for your Linode.
 - **Use fail2ban to prevent automated instrusion attempts?** Select **Yes** to enable [SSH login protection with Fail2Ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/) as an additional security measure.
 
 {{% content "marketplace-custom-domain-fields-shortguide" %}}

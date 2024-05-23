@@ -340,7 +340,7 @@ gitfs_remotes:
   - https://github.com/git-username/timezone-formula.git
 {{</ file >}}
 
-1. Uncomment the gitfs_provider declaration and set its value to gitpython:
+1. Uncomment the `gitfs_provider` declaration and set its value to gitpython:
 
     {{< file "/etc/salt/master" >}}
 gitfs_provider: gitpython

@@ -493,7 +493,7 @@ The `v-for` syntax is similar to the following for loop: `for(let index=1;index<
 
         -   `enabled`: This will be used to disable the rating application once the user has cast a vote.
 
-        -   `ratings`: This is a structure for the votes that have been cast. We set the default value in the `data` function, and if there are any votes saved in the browser's localStorage, then we overwrite the defaults, which imitates a persistence layer. In the `created` hook (lines 58-62) you can see how we fetch the saved cast votes.
+        -   `ratings`: This is a structure for the votes that have been cast. We set the default value in the `data` function, and if there are any votes saved in the browser's local storage, then we overwrite the defaults, which imitates a persistence layer. In the `created` hook (lines 58-62) you can see how we fetch the saved cast votes.
 
 ### Star.vue and Summary.vue
 

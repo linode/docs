@@ -79,15 +79,15 @@ For Debian 7 or earlier:
 
     | Setting               | Description
     |:----------------------|:----------------------------------------------------------------------------------------|
-    | autobanAttempts   | Set how many times someone can fail to connect to the server within a given timeframe.  |
-    | autobanTimeframe  | Set the given timeframe for attempts to login to the server.                            |
-    | autobanTime       | Set the amount of time that the login ban lasts.                                        |
-    | logfile           | Set the location of the log file, if you want it to reside in a different location.     |
-    | welcometext       | Set the text that shows in the text chat log when you login.                            |
-    | port              | Set the port you wish to bind to and have your users connect to.                        |
-    | serverpassword    | Set a password that users will have to use to login.  This is not the same as the SuperUser password and therefore, should be different. |
-    | bandwidth         | Set the maximum bandwidth (in bits per second) each user can use.                        |
-    | users             | Set the maximum number of users that can connect to the server at once.                 |
+    | `autobanAttempts`   | Set how many times someone can fail to connect to the server within a given timeframe.  |
+    | `autobanTimeframe`  | Set the given timeframe for attempts to login to the server.                            |
+    | `autobanTime`       | Set the amount of time that the login ban lasts.                                        |
+    | `logfile`           | Set the location of the log file, if you want it to reside in a different location.     |
+    | `welcometext`       | Set the text that shows in the text chat log when you login.                            |
+    | `port`              | Set the port you wish to bind to and have your users connect to.                        |
+    | `serverpassword`    | Set a password that users will have to use to login.  This is not the same as the SuperUser password and therefore, should be different. |
+    | `bandwidth`         | Set the maximum bandwidth (in bits per second) each user can use.                        |
+    | `users`             | Set the maximum number of users that can connect to the server at once.                 |
 
 
 2.  Once you are done, save and restart Murmur.

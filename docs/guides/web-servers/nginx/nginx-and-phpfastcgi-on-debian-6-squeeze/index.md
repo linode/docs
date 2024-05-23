@@ -24,7 +24,7 @@ It is assumed that you've already followed the steps outlined in our [Setting Up
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -260,7 +260,7 @@ Start php-fastcgi and nginx by issuing the following commands:
 
 ## Test PHP with FastCGI
 
-Create a file called "test.php" in your site's "public\_html" directory with the following contents:
+Create a file called "test.php" in your site's `public_html` directory with the following contents:
 
 {{< file "/srv/www/example.com/public\\_html/test.php" php >}}
 <?php phpinfo(); ?>

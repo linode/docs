@@ -107,7 +107,7 @@ A Diffie-Hellman parameter is a set of randomly generated data used when establi
 According to the [OpenSSL manual](https://wiki.openssl.org/index.php/Manual:Openssl(1)#STANDARD_COMMANDS), `genpkey -genparam` supersedes `dhparam`.
 {{< /note >}}
 
-3.  Add this to the rest of your *ssl_* directives, be they in the `http` of `/etc/nginx/nginx.conf`, or an HTTPS site's `server` block:
+3.  Add this to the rest of your `ssl_` directives, be they in the `http` of `/etc/nginx/nginx.conf`, or an HTTPS site's `server` block:
 
         ssl_dhparam /root/certs/example.com/dhparam4096.pem;
 
@@ -117,7 +117,7 @@ Web browsers support many OpenSSL cipher suites, some of which are inefficient o
 
 If you have selected a good cipher suite combination with NGINX's `ssl_ciphers` directive, you are increasing the connection's security because NGINX is telling the browser it only wants to communicate through strong cipher and hashing algorithms.
 
-Add this to the rest of your *ssl_* directives, be they in the `http` of `/etc/nginx/nginx.conf`, or an HTTPS site's `server` block:
+Add this to the rest of your `ssl_` directives, be they in the `http` of `/etc/nginx/nginx.conf`, or an HTTPS site's `server` block:
 
 {{< file "/etc/nginx/nginx.conf" nginx >}}
 ssl_prefer_server_ciphers on;
@@ -133,7 +133,7 @@ keepalive_timeout 75;
 
 ## Increase TLS Session Duration
 
-Maintain a connected client's SSL/TLS session for 10 minutes before needing to re-negotiate the connection. Add these to the rest of your *ssl_* directives, be they in the `http` or an HTTPS site's `server` block:
+Maintain a connected client's SSL/TLS session for 10 minutes before needing to re-negotiate the connection. Add these to the rest of your `ssl_` directives, be they in the `http` or an HTTPS site's `server` block:
 
 {{< file "/etc/nginx/nginx.conf" nginx >}}
 ssl_session_cache shared:SSL:10m;

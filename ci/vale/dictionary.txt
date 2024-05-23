@@ -65,6 +65,7 @@ anycasted
 anycasting
 ap
 apache2
+APCu
 apfs
 api
 apis
@@ -153,6 +154,7 @@ backdooring
 backdoors
 backend
 backends
+backplane
 backport
 backported
 backporting
@@ -192,6 +194,7 @@ binlog
 bioinformaticists
 biomes
 bitbucket
+Bitly
 bitnami
 bitrate
 bitshift
@@ -256,6 +259,7 @@ cachable
 cacheable
 caddy
 caddyfile
+cAdvisor
 caffe
 cakey
 calc
@@ -264,6 +268,7 @@ canonicalization
 canonicalize
 captcha
 carootcert
+carryback
 cas
 ccm
 CDNs
@@ -346,8 +351,10 @@ CMSMap
 CMSs
 cmusieve
 cnf
+CNNs
 codebase
 codec
+codecs
 codefresh
 Codeone
 codepen
@@ -383,6 +390,7 @@ coose
 copr
 copyfrom
 copyto
+Corefile
 corepack
 coreutils
 coroutine
@@ -396,6 +404,7 @@ coverity
 covid
 cpanel
 cpanminus
+cPHulk
 cpu
 cpus
 CPython
@@ -433,6 +442,7 @@ csharpserver
 csi
 CSPs
 csr
+CSRs
 css
 csum
 csv
@@ -486,10 +496,13 @@ dav
 davfs
 davfs2
 db8
+DBAs
 dbconfig
 dbd
 dbdir
+DBeaver
 dbfiles
+DBMail
 DBMSs
 dbname
 dbs
@@ -557,6 +570,7 @@ distro
 distros
 dists
 django
+DJs
 dkim
 DLC
 DLCs
@@ -597,6 +611,7 @@ dotenv
 dotfiles
 dotnet
 doveadm
+downscaled
 dpkg
 dport
 dragos
@@ -618,6 +633,8 @@ e2fsck
 ea04
 ead
 Easypanel
+eBook
+eBooks
 ebtables
 ebuild
 ecommerce
@@ -636,6 +653,7 @@ elgg
 elif
 elisp
 elpaso
+ELRepo
 emacs
 email2email
 embeddable
@@ -665,6 +683,7 @@ eth0
 ethtool
 eugen
 eval
+Eventbrite
 evhost
 exabeam
 example1
@@ -783,6 +802,7 @@ frontend
 frontmatter
 froud
 froxlor
+FRRouting
 fs
 fsck
 fstab
@@ -797,6 +817,7 @@ gamepad
 gamepedia
 gameplay
 gandi
+GANs
 gartner
 gatik
 gatsby
@@ -924,6 +945,7 @@ hashmark
 hasn
 hba
 hd0
+HDDs
 hdfs
 healthcheck
 healthtech
@@ -1008,6 +1030,7 @@ icmpv6
 idempotence
 ident
 identrust
+iDimensionz
 idlist
 ie
 iface
@@ -1039,8 +1062,10 @@ Indri
 inet
 inet6
 infector
+inferencing
 infographic
 infosec
+ingester
 ingestible
 ingressgateway
 ini
@@ -1113,6 +1138,7 @@ istio
 istioctl
 iterable
 iterables
+iTerm
 itk
 ivanti
 jamstack
@@ -1131,6 +1157,7 @@ jenkinsx
 jessie
 jetpack
 jez
+JIDs
 jira
 jitsi
 jk
@@ -1249,6 +1276,7 @@ lbmethod
 ld
 lda
 ldap
+LDAs
 le
 leds
 lego
@@ -1351,6 +1379,7 @@ lugano
 luminus
 lunasec
 Lutz
+LWRPs
 lxd
 lxml
 lynis
@@ -1402,6 +1431,7 @@ mbits
 mBlock
 mbox
 Mbps
+MBps
 mbstrings
 mcrypt
 mcy
@@ -1477,6 +1507,7 @@ MLlib
 mnesia
 mngtmpaddr
 moby
+mod_alias
 mod_autoindex
 mod_cluster
 mod_deflate
@@ -1485,11 +1516,15 @@ mod_expires
 mod_fastcgi
 mod_fcgid
 mod_jk
+mod_mono
 mod_perl
 mod_php
 mod_proxy
 mod_python
 mod_rewrite
+mod_setenvif
+mod_ssi
+mod_status
 mod_wsgi
 moddable
 modinfo
@@ -1517,8 +1552,10 @@ mouseover
 mov
 movr
 mpapis
+MPlayer
 mpm
 MPMs
+MRs
 MRuby
 msfvenom
 msg
@@ -1531,6 +1568,7 @@ MTAs
 mtr
 mtu
 MUAs
+MUCs
 multiarch
 multibyte
 multicast
@@ -1554,6 +1592,7 @@ musl
 mutator
 mutliverse
 mv
+MXNet
 myapp
 myblog
 mydestination
@@ -1588,6 +1627,7 @@ nanode
 nanodes
 nast
 natively
+NATted
 nawk
 nbox
 ncdu
@@ -1617,6 +1657,7 @@ netplan
 netsh
 netstat
 netstumbler
+NETtalk
 netuser
 networkd
 neurophysiologist
@@ -1636,6 +1677,7 @@ ngrok
 ngular
 ngx
 nickcolor
+NICs
 Nikto
 Nirvashare
 nixcraft
@@ -1643,6 +1685,7 @@ nixpkgs
 nlris
 nmap
 nmcli
+NNs
 noarch
 node1
 node2
@@ -1675,6 +1718,7 @@ ns2
 nsd4
 nsinit
 nslookup
+NSoft
 ntop
 ntopng
 ntp
@@ -1728,6 +1772,7 @@ Opin
 ORMs
 osCommerce
 ossec
+OStatus
 ostemplate
 osx
 otomen
@@ -1787,6 +1832,7 @@ paypal
 PBCs
 pbr
 pbxs
+pCloud
 PDFs
 pem
 pentest
@@ -1869,6 +1915,7 @@ powercfg
 powershell
 ppa
 pparadis
+PPAs
 ppc64el
 pre
 pre4
@@ -1993,6 +2040,7 @@ rebase
 rebased
 rebases
 rebasing
+rEbooter
 rebootuser
 rebranded
 recompiles
@@ -2044,6 +2092,7 @@ repmgr
 repo
 repos
 reputational
+requestor
 reseller's
 resharding
 resilvering
@@ -2074,6 +2123,7 @@ rkt
 rmdir
 rmem
 rmms
+RNNs
 ro
 roadmunk
 Roblox
@@ -2093,6 +2143,7 @@ rpc
 rpcbind
 RPCs
 rpmforge
+RPMs
 rrdtool
 rrset
 rrsets
@@ -2158,6 +2209,7 @@ schroot
 schtasks
 scikit
 scm
+SCMs
 scp
 scrapy
 screenrc
@@ -2292,6 +2344,7 @@ sqrt_multiply
 squirrelmail
 src
 srv
+SSDs
 SSGs
 sshd
 sshfs
@@ -2466,6 +2519,7 @@ tmp
 tmux
 tock
 todo
+Todoist
 togami
 tokenization
 tokenize
@@ -2486,12 +2540,14 @@ torvalds
 TOTPs
 towson
 trac
+tracebacks
 traceroute
 trackbar
 traefik
 transcode
 transcoded
 transcoder
+transcoders
 transcodes
 transcoding
 transpiled
@@ -2504,6 +2560,7 @@ trojan
 truststore
 tt
 ttl
+TTLs
 ttpd
 TTPs
 ttrss
@@ -2537,16 +2594,20 @@ udp
 ufw
 ui
 uidl
+UIs
 umount
 un
 unaliased
 uname
 unarchive
 unary
+unassign
+unassigning
 unban
 unbans
 unbilled
 unbundle
+uncategorized
 uncheck
 unchecking
 uncomment
@@ -2555,6 +2616,7 @@ uncommenting
 uncompress
 uncordoned
 undelete
+underutilization
 unencrypted
 unexported
 unformatted
@@ -2574,6 +2636,7 @@ unmounting
 unmounts
 unopinionated
 unoptimized
+unparsed
 unpatched
 unregister
 unrendered
@@ -2588,6 +2651,7 @@ untrusted
 unversioned
 unvetted
 upbound
+upscaled
 upserted
 upsize
 uri
@@ -2629,6 +2693,8 @@ varnishlog
 varonis
 vaultwarden
 vBulletin
+vCPU
+vCPUs
 vcs
 vdev
 vdevs
@@ -2677,6 +2743,8 @@ VNode
 VPCs
 VPLs
 vpns
+vQmod
+vServers
 vset
 vswap
 vue
@@ -2850,6 +2918,7 @@ zimbra
 zipkin
 zipkinhost
 zix
+Zixi
 zkcluster1root
 zlib
 znc
@@ -2863,3 +2932,6 @@ zshrc
 zxvf
 ZYpp
 Zypper
+CTAs
+OCAs
+Vite

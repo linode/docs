@@ -578,7 +578,7 @@ IMPORTANT NOTES:
 The `certbot` package adds a *systemd timer* in order to activate the automated renewal of Let's Encrypt certificates. You can view the details of this timer by running `systemctl list-timers`.
 {{< /note >}}
 
-1. The certbot tool edits and changes the NGINX configuration files of your websites. In doing so, certbot does not obey initial `listen` directive (`listen 80 proxy_protocol;`) and does not add the `proxy_protocol` parameter to the newly added `listen 443 ssl;` lines. You must edit the configuration files for each website and append "proxy_protocol" to each "listen 443 ssl;" line.
+1. The certbot tool edits and changes the NGINX configuration files of your websites. In doing so, certbot does not obey initial `listen` directive (`listen 80 proxy_protocol;`) and does not add the `proxy_protocol` parameter to the newly added `listen 443 ssl;` lines. You must edit the configuration files for each website and append `proxy_protocol` to each "listen 443 ssl;" line.
 
         sudo nano /etc/nginx/sites-enabled/apache1.example.com
         sudo nano /etc/nginx/sites-enabled/nginx1.example.com

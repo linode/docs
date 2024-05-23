@@ -111,7 +111,7 @@ It's always important to keep regular backups of a website. Backups protect you 
 
 The backup process above can be automated. You must create an SHH Pair Key, a Bash script, and use Cron automation.
 
-1.  Create SSH Key Pair Authentication *without a password* for the Linode hosting your Drupal site, and pass the public key to the backup server. This is a simple task. It's covered in the Using [SSH Key Pair Authentication](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair) section of the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+1.  Create SSH Key Pair Authentication *without a password* for the Linode hosting your Drupal site, and pass the public key to the backup server. This is a simple task. It's covered in the Using [SSH Key Pair Authentication](/docs/products/compute/compute-instances/guides/set-up-and-secure/#upload-ssh-key) section of the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 2.  On the Drupal hosting Linode, create a Bash script file. In the file excerpt below, replace `example.com` and the rsync command inputs from step 2 above:
 

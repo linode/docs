@@ -191,7 +191,7 @@ Make sure your SPF records are not too strict. If you accidentally exclude a leg
 
 The reverse DNS for your mail server must match the hostname of your Linode. If your Linode's reverse DNS and hostname do not match, email from your server may get rejected with the warning "Reverse DNS does not match SMTP Banner."
 
-If you need to check or set the hostname, see our [Getting Started](/docs/products/platform/get-started/#setting-the-hostname) article.
+If you need to check or set the hostname, see our [Getting Started](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) article.
 
 ## Spam and Virus Protection, Mail Clients, and More
 

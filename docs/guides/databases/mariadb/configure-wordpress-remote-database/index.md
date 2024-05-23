@@ -26,7 +26,7 @@ aliases: ['/databases/mariadb/configure-wordpress-remote-database/']
 
 - Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and [Secure your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides to create a non-root sudo user.
 
-- While the steps to configure an existing database may be similar, this guide is written for a fresh database and WordPress installation. Visit our guide on how to [backup an existing database](/docs/guides/mysqldump-backups/#creating-backups-of-a-single-database).
+- While the steps to configure an existing database may be similar, this guide is written for a fresh database and WordPress installation. Visit our guide on how to [backup an existing database](/docs/guides/mysqldump-backups/).
 
 ### Variables Used in This Guide
 

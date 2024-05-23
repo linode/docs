@@ -160,7 +160,7 @@ server {
 }
 {{< /file >}}
 
-There are various other options available to NGINX's gzip module. See the [NGINX docs](https://nginx.org/en/docs/http/ngx_http_gzip_module.html) for more information, and if you prefer to compile your NGINX build, you can include the [*ngx_http_gzip_static_module*](https://nginx.org/en/docs/http/ngx_http_gzip_static_module.html) which further suits static content compression.
+There are various other options available to NGINX's gzip module. See the [NGINX docs](https://nginx.org/en/docs/http/ngx_http_gzip_module.html) for more information, and if you prefer to compile your NGINX build, you can include the [`ngx_http_gzip_static_module`](https://nginx.org/en/docs/http/ngx_http_gzip_static_module.html) which further suits static content compression.
 
 ## Configuration Recap
 

@@ -35,7 +35,7 @@ The data within Vault is protected by a series of encryption keys. The first lay
 
 Follow the instructions below to view the unseal key and root token.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) using the root user credientials you created during deployment.
+1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) using the root user credentials you created during deployment.
 
 1.  Run the following command to display all five portions of the unseal key. These portions can be used together to decrypt the root key and unseal Vault.
 

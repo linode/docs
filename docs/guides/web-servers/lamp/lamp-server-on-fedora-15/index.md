@@ -27,7 +27,7 @@ This guide provides step-by-step instructions for installing a full-featured LAM
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -201,7 +201,7 @@ If you need support for MySQL in PHP, then you must install the php5-mysql packa
 
     yum install php-mysql
 
-You can test PHP by creating a file with the following contents under your "public\_html" directory:
+You can test PHP by creating a file with the following contents under your `public_html` directory:
 
 {{< file "/srv/www/example.com/public\\_html/test.php" php >}}
 <?php phpinfo(); ?>

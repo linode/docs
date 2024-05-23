@@ -261,7 +261,7 @@ If you are not able to create new nodes in your cluster, you may see an error me
 Error creating a Linode Instance: [400] Account Limit reached. Please open a support ticket.
 ```
 
-This is a reference to the total number of Linode resources that can exist on your account. To create new Linode instances for your cluster, you will need to either remove other instances on your account, or request a limit increase. To request a limit increase, [contact Linode Support](/docs/products/platform/get-started/guides/support/#contacting-linode-support).
+This is a reference to the total number of Linode resources that can exist on your account. To create new Linode instances for your cluster, you will need to either remove other instances on your account, or request a limit increase. To request a limit increase, [contact Linode Support](/docs/products/platform/get-started/guides/support/#contact-customer-support).
 
 ### Insufficient CPU or Memory
 

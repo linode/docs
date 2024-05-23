@@ -137,13 +137,13 @@ Shadowsocks libev is a lightweight, purely C-based proxy implementation for embe
 
 |  **Property**  | **Description** | **Possible Values** |
 |:--------------:|:---------------:|:-------------------:|
-| server | Enter the server's public IP address. | User determined |
-| server_port | Shadowsocks listens on this port. Use the default value of `8388`. | User determined |
-| password | Connection password. Set a strong password. | User determined |
-| timeout | Connection timeout in seconds. The default value should be sufficient here. | User determined |
-| method | Encryption method. Using AEAD algorithms is recommended. | See [Stream Ciphers](https://shadowsocks.org/en/spec/Stream-Ciphers.html) and [AEAD Ciphers](https://shadowsocks.org/en/spec/AEAD-Ciphers.html) |
-| fast_open | Reduces latency when turned on. Can only be used with kernel versions 3.7.1 or higher. Check the kernel version with `uname -r`. | true, false |
-| nameserver | Name servers for internal DNS resolver. | User determined |
+| `server` | Enter the server's public IP address. | User determined |
+| `server_port` | Shadowsocks listens on this port. Use the default value of `8388`. | User determined |
+| `password` | Connection password. Set a strong password. | User determined |
+| `timeout` | Connection timeout in seconds. The default value should be sufficient here. | User determined |
+| `method` | Encryption method. Using AEAD algorithms is recommended. | See [Stream Ciphers](https://shadowsocks.org/en/spec/Stream-Ciphers.html) and [AEAD Ciphers](https://shadowsocks.org/en/spec/AEAD-Ciphers.html) |
+| `fast_open` | Reduces latency when turned on. Can only be used with kernel versions 3.7.1 or higher. Check the kernel version with `uname -r`. | true, false |
+| `nameserver` | Name servers for internal DNS resolver. | User determined |
 
 ## Optimize Shadowsocks
 

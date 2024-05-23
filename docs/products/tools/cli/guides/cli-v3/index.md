@@ -201,7 +201,7 @@ To start with, most users will want to run the configuration utility:
 Once the CLI has your Linode Manager username and password, it will generate and use a new API key automatically.
 
 {{< note >}}
-If you have [two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/#two-factor-authentication) enabled, you will receive a prompt for the code after entering your password:
+If you have [two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/#2fa-two-factor-authentication) enabled, you will receive a prompt for the code after entering your password:
 
 Two-factor authentication code
 > 123456

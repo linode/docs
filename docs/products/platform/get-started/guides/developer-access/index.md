@@ -34,7 +34,7 @@ If you're not sure whether you're logged in as the account administrator, look f
 
 ### Add a User to the Linode Account
 
-Keep your account administrator credentials secret. When hiring an external individual or agency to work on your site or application, create a *restricted* user and assign specific access to the account. Learn more about how to manage users and permissions and how to recover a lost username in our [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/#users-and-permissions) guide.
+Keep your account administrator credentials secret. When hiring an external individual or agency to work on your site or application, create a *restricted* user and assign specific access to the account. Learn more about how to manage users and permissions and how to recover a lost username in our [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/#recover-a-lost-username) guide.
 
 Useful *Global Grants* for a limited access user might include the ability to:
 
@@ -47,7 +47,7 @@ Useful *Global Grants* for a limited access user might include the ability to:
 
 ### Revoke a User's Access to the Linode Account
 
-1. If you suspect that the user may have access to the Cloud Manager password, [change that first](/docs/products/platform/accounts/guides/manage-users/#changing-your-linode-manager-password).
+1. If you suspect that the user may have access to the Cloud Manager password, [change that first](/docs/products/platform/accounts/guides/reset-user-password/).
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/) and click [**Users and Permissions**](https://cloud.linode.com/account/users) in the **Account** tab. You may be prompted to reauthenticate your password.
 
@@ -57,10 +57,10 @@ Useful *Global Grants* for a limited access user might include the ability to:
 
 The primary method for directly administering files and software on a Compute Instance is through SSH. SSH is a service that runs on a system and listens for and accepts remote terminal connections. Once an SSH connection is opened, a user can issue commands to your server. **Your Compute Instance's SSH users are not the same as your Cloud Manager users.**
 
-For the steps in this section, [connect to your Compute Instance via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance/) to log in to the system as `root`, which is the primary administrative (and most powerful) user on every Linux system. Alternatively, you can login as non-root user with *sudo* (i.e. administrative) permissions.
+For the steps in this section, [connect to your Compute Instance via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) to log in to the system as `root`, which is the primary administrative (and most powerful) user on every Linux system. Alternatively, you can login as non-root user with *sudo* (i.e. administrative) permissions.
 
 {{< note >}}
-If you don't remember your root password, [reset it through the Manager](/docs/products/platform/accounts/guides/manage-users/#resetting-your-linode-manager-password).
+If you don't remember your root password, [reset it through the Manager](/docs/products/platform/accounts/guides/reset-user-password/).
 {{< /note >}}
 
 ### Who Has SSH Access to Your Compute Instance?
