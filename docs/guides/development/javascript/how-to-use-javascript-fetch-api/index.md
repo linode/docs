@@ -2,12 +2,11 @@
 slug: how-to-use-javascript-fetch-api
 title: "How to Use the JavaScript Fetch API"
 description: "JavaScript’s fetch API gives you a built-in tool for handling requests and responses in JavaScript. Learn more about fetch and how to start using it in this guide."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-03-16
 keywords: ['javascript fetch', 'javascript fetch api', 'javascript fetch example']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-16
-modified_by:
-  name: Linode
-authors: ["Nathaniel Stickman"]
 external_resources:
 - '[MDN Web Docs: Using the Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)'
 - '[DigitalOcean: How To Use the JavaScript Fetch API to Get Data](https://www.digitalocean.com/community/tutorials/how-to-use-the-javascript-fetch-api-to-get-data)'
