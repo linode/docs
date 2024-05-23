@@ -437,9 +437,7 @@ smtps     inet  n       -       -       -       -       smtpd
 
         sudo systemctl restart postfix
 
-    If you get `fatal: 0.0.0.0:smtps: Servname not supported for ai_socktype`
-error after restarting Postfix, add following service entries to
-`/etc/services`:
+    If you get the `fatal: 0.0.0.0:smtps: Servname not supported for ai_socktype` error after restarting Postfix, add following service entries to `/etc/services`:
 
     {{< file "/etc/services">}}
 smtps 465/tcp # Secure SMTP
