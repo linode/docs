@@ -79,4 +79,4 @@ Both [VLANs](/docs/products/networking/vlans/) and [Private IP addresses](/docs/
 
 - Network traffic across a private VPC network does not count against your [monthly network transfer usage](/docs/products/platform/get-started/guides/network-transfer/). The network transfer allowance for Compute Instances configured on VPCs still counts towards the _global network transfer pool_ on your account.
 
-- Using the [Metadata service](https://www.linode.com/docs/products/compute/compute-instances/guides/metadata/) over a VPC is supported, but use of cloud-init is not.
+- Using the [Metadata service](/docs/products/compute/compute-instances/guides/metadata/) over a VPC is supported, but use of cloud-init is not.
