@@ -1,0 +1,55 @@
+name: CI Tests
+
+on: [pull_request]
+
+env:
+  hugo_image_cache_name: hugo-generated-images
+  hugo_image_cache_path: /home/runner/work/docs-publishing/docs-publishing/docs-repo/resources/_gen/images/
+
+jobs:
+  blueberry:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout docs repo
+      uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10.x'
+        architecture: 'x64'
+        cache: pip
+    - name: Install dependencies (Python)
+      run: |
+        pip install -r ./ci/requirements.txt
+    - name: blueberry
+      run: |
+        python ./ci/blueberry.py
+
+  vale:
+    name: Vale (spellchecker)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: errata-ai/vale-action@reviewdog
+        with:
+          files: docs
+          vale_flags: "--glob=!docs/contributors/*"
+          fail_on_error: true
+
+  check-links:
+    name: Check Links (Markdown)
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout docs repo
+      uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10.x'
+        architecture: 'x64'
+        cache: pip
+    - name: Install dependencies (Python)
+      run: |
+        pip install -r ./ci/requirements.txt
+    - name: Run tests
+      run: python ./ci/check-links.py ${{ steps.files.outputs.all }}

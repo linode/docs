@@ -1,0 +1,5 @@
+---
+slug: tags
+title: Tags
+---
+
