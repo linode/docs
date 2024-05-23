@@ -45,7 +45,7 @@ To set up a testbed and get started with NodeBalancer health checks, provision f
 
 The figure below illustrates the testbed topology:
 
-![A diagram showing the relationship between client and server instances and the NodeBalancer.](testbed-config-diagram.png)
+![A diagram showing the relationship between client and server instances and the NodeBalancer.](testbed-network-diagram.png)
 
 ### Deploy Back-End Servers
 
