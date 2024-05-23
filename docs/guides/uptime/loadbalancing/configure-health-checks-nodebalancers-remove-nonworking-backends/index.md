@@ -23,7 +23,7 @@ Passive checks simply monitor traffic between the NodeBalancer and back-end serv
 -   **HTTP Status**: Requires a valid HTTP `2xx` or `3xx` response from a back-end server.
 -   **HTTP Body**: Requires a match against a regular expression in the body of an HTTP response.
 
-Akamai’s [Health Check guide](https://www.linode.com/docs/products/networking/nodebalancers/guides/configure/#health-checks) offers details on additional options.
+Akamai’s [Health Check guide](/docs/products/networking/nodebalancers/guides/configure/#health-checks) offers details on additional options.
 
 ## Before You Begin
 
@@ -57,7 +57,7 @@ Use the following settings to provision each of the three back-end server instan
 -   **Details** : Enter `srv1`, `srv2`, and `srv3`, respectively, under **Linode Label** to name your server instances.
 -   **Add-ons**: It’s mandatory to check the **Private IP** box as NodeBalancers only distribute client requests to back-end servers over private networks.
 
-1.  Once your servers are up and running, log in to each using [SSH](https://www.linode.com/docs/guides/connect-to-server-over-ssh/) or [Lish](https://www.linode.com/docs/products/compute/compute-instances/guides/lish/) and install the Nginx web server:
+1.  Once your servers are up and running, log in to each using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) and install the Nginx web server:
 
     ```command {title="srv1, srv2, and srv3"}
     sudo apt install nginx
