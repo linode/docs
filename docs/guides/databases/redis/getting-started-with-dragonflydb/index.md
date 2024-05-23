@@ -1,14 +1,12 @@
 ---
 slug: getting-started-with-dragonflydb
 title: "Getting Started With DragonflyDB"
-description: 'Discover DragonflyDB and see how it performs against Redis, Memcached, and KeyDB. Setup instructions for both Docker and Docker Compose are also included.'
-og_description: 'Discover DragonflyDB and see how it performs against Redis, Memcached, and KeyDB. Setup instructions for both Docker and Docker Compose are also included.'
+description: "Discover DragonflyDB and see how it performs against Redis, Memcached, and KeyDB. Setup instructions for both Docker and Docker Compose are also included."
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2023-08-22
 keywords: ['dragonflydb','getting started with dragonflydb','dragonflydb introduction','dragonflydb vs redis','dragonflydb docker','docker compose dragonflydb','dragonflydb redis-cli','dragonflydb web browser','dragonflydb tutorial','redis alternative','dragonflydb beginner guide']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["John Mueller"]
-published: 2023-08-22
-modified_by:
-  name: Linode
 external_resources:
 - '[Dragonfly](https://www.dragonflydb.io/)'
 - '[Redis](https://redis.com/)'
