@@ -18,9 +18,9 @@ This guide explains what the JavaScript Filter API is, what role it plays, and h
 
 ## Before You Begin
 
-1. If you are not already familiar, get started with the basics of JavaScript through our guide **JavaScript Basics**. Depending on your level of familiarity, you may also want to go further and look at our guide **Javascript Objects Tutorial**.
+1.  This guide assumes you have a basic understanding of JavaScript. Depending on your level of familiarity, you may also want to go further and look at our [An Introduction to JavaScript Objects](/docs/guides/javascript-objects-tutorial/) guide.
 
-1. To follow along with the examples in this guide, you can use your browser's JavaScript console:
+1.  To follow along with the examples in this guide, you can use your browser's JavaScript console:
 
     - For **Chrome**, refer to Google's [Run JavaScript in the Console](https://developer.chrome.com/docs/devtools/console/javascript/) documentation.
 
@@ -32,9 +32,9 @@ JavaScript introduced the Fetch API to handle network requests and responses nat
 
 With the Fetch API, JavaScript enables request and response handling natively, without the need for an external library. This approach also opens up requests and responses to all of the rich features of JavaScript, including promises.
 
-To give you a sense of how the Fetch API works, here is a simple sample. The upcoming sections of this guide go into more detail, with examples explained piece by piece:
+To give you a sense of how the Fetch API works, here is a simple example. The rest of this guide goes into more detail.
 
-``` javascript
+```command
 const urlToFetchFrom = "https://example.com/";
 
 fetch(urlToFetchFrom)
@@ -55,39 +55,47 @@ The examples in the sections that follow use the HTTP services provided by [http
 
 The Fetch API defaults to `GET` requests, making them the most approachable type to start with.
 
-1. All fetch requests start with the `fetch` function, which takes as an argument the URL to request to.
+1.  All fetch requests start with the `fetch` function, which takes as an argument the URL to request to.
 
     Here, a fetch request is being made to the `/id` endpoint. This endpoint returns the requester's IP address:
 
-        fetch("/ip")
+    ```command
+    fetch("/ip")
+    ```
 
-1. The initial response needs to be parsed for JSON data, which can be done using the `then` method. The `then` method takes the response from the function or method to which it is attached, in this case, `fetch`.
+1.  The initial response needs to be parsed for JSON data, which can be done using the `then` method. The `then` method takes the response from the function or method to which it is attached, in this case, `fetch`.
 
     The `json` method can be applied to the response object to convert the object to a JSON format:
 
-        .then(response => response.json())
+    ```command
+    .then(response => response.json())
+    ```
 
-1. Another `then` method can be attached to the previous one to start handling the JSON response. This is when you can act on the response data.
+1.  Another `then` method can be attached to the previous one to start handling the JSON response. This is when you can act on the response data.
 
     This example reads the `origin` field from the response JSON and prints it in a message on the console log:
 
-        .then((data) => {
-            console.log("Successful request made from " + data.origin);
-        })
+    ```command
+    .then((data) => {
+        console.log("Successful request made from " + data.origin);
+    })
+    ```
 
     You could, alternatively, create a variable before calling `fetch`, and then assign the response data to that variable in this `then` method.
 
-1. Using a `catch` method at the end of this chain is good practice. The `catch` method lets you ensure any error encountered during the request or response process gets handled gracefully.
+1.  Using a `catch` method at the end of this chain is good practice. The `catch` method lets you ensure any error encountered during the request or response process gets handled gracefully.
 
     In this case, the `catch` method prints an alert to the console with the error's information if any error is encountered:
 
-        .catch((err) => {
-            console.log("An error occurred: " + err);
-        });
+    ```command
+    .catch((err) => {
+        console.log("An error occurred: " + err);
+    });
+    ```
 
 The full example is shown below:
 
-``` javascript
+```command
 fetch("/ip")
     .then(response => response.json())
     .then((data) => {
@@ -98,9 +106,9 @@ fetch("/ip")
     });
 ```
 
-{{< output >}}
-192.0.2.0
-{{< /output >}}
+```output
+192.0.2.17
+```
 
 ## How to Make Post Requests with the Fetch API
 
@@ -110,49 +118,59 @@ This optional object can indicate the request method, headers, and body.
 
 Otherwise, the Fetch API handles similarly for `POST`, `PUT`, and other methods as for the `GET` method seen above.
 
-1. Create an object for your request body. You do not need to do this separately, but doing so can help to keep your code clear.
+1.  Create an object for your request body. You do not need to do this separately, but doing so can help to keep your code clear.
 
     This example creates an object with a `test` property holding a string value:
 
-        let reqData = { test: "This is a test." }
+    ```command
+    let reqData = { test: "This is a test." }
+    ```
 
-1. Start the fetch request with the `fetch` function and the request URL.
+1.  Start the fetch request with the `fetch` function and the request URL.
 
     In this example, a `POST` request is being made to the `/post` endpoint. This endpoint simply returns the request object:
 
-        fetch("/post", {
+    ```command
+    fetch("/post", {
+    ```
 
-1. Notice that the above includes the start of a second argument, with a curly brace indicating the beginning of an object. Fill out the object with the method, headers, and body for the request.
+1.  Notice that the above includes the start of a second argument, with a curly brace indicating the beginning of an object. Fill out the object with the method, headers, and body for the request.
 
     Here, `POST` is the method, the headers indicate JSON content and the `reqData` variable is provided as the body:
 
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(reqData)
-        })
+    ```command
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(reqData)
+    })
+    ```
 
-1. Two consecutive `then` methods get applied. The first converts the request's response to JSON. The second takes that JSON and acts on it.
+1.  Two consecutive `then` methods get applied. The first converts the request's response to JSON. The second takes that JSON and acts on it.
 
     This example simply prints the contents of the `test` field from the response's JSON data:
 
-        .then(response => response.json())
-        .then((data) => {
-            console.log(data.json.test)
-        })
+    ```command
+    .then(response => response.json())
+    .then((data) => {
+        console.log(data.json.test)
+    })
+    ```
 
-1. Having a `catch` method is good practice to ensure that any errors in the request or response get handled gracefully.
+1.  Having a `catch` method is good practice to ensure that any errors in the request or response get handled gracefully.
 
     In this case, the `catch` method prints an alert to the console with the error's information if an error is encountered:
 
-        .catch((err) => {
-            console.log("An error occurred: " + err);
-        });
+    ```command
+    .catch((err) => {
+        console.log("An error occurred: " + err);
+    });
+    ```
 
 The full example is shown below:
 
-``` javascript
+```command
 let reqData = { test: "This is a test." }
 
 fetch("/post", {
@@ -171,9 +189,9 @@ fetch("/post", {
     });
 ```
 
-{{< output >}}
+```output
 This is a test.
-{{< /output >}}
+```
 
 ## Conclusion
 
