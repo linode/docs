@@ -1,5 +1,5 @@
 ---
-title: Tags
 slug: tags
+title: Tags
 ---
 

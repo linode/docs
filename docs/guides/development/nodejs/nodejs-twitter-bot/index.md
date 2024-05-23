@@ -1,13 +1,13 @@
 ---
 slug: nodejs-twitter-bot
+title: "Make a Twitter Bot and Reply to Tweets in Node.js"
 description: "How to make a Twitter bot with Node.js, publish it to GitHub, and then host it on a Linode cloud instance. The guide is intended for people new to coding."
+authors: ["Pj Metz"]
+contributors: ["Pj Metz"]
+published: 2021-07-23
 keywords: ["how to make a twitter bot", "node twitter", "reply bot twitter", "node twitter api tutorial"]
 tags: ["version control system", "javascript"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-23
-modified_by:
-    name: Linode
-title: "Make a Twitter Bot and Reply to Tweets in Node.js"
 external_resources:
     - "[Documentation Home | Docs | Twitter Developer Platform](https://developer.twitter.com/en/docs)"
     - "[npm Docs](https://docs.npmjs.com/)"
@@ -18,7 +18,6 @@ external_resources:
     - "[GitHub Desktop](https://desktop.github.com/)"
     - "[Creating a new User in Ubuntu](https://youtu.be/fDHHKR0nVQg)"
     - "[FileZilla](/docs/guides/filezilla/)"
-authors: ["Pj Metz"]
 ---
 
 ## Introduction
@@ -61,7 +60,7 @@ The following software is needed on your workstation to complete the tutorial:
 
 The original [nvm](https://github.com/nvm-sh/nvm) software project is used on **Unix, Linux, and macOS**:
 
-1. Follow the [Installing and Configuring NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#installing-and-configuring-nvm) section of our [How to Install and Use the Node Version Manager](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide to install nvm.
+1. Follow the [Install NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#install-nvm) section of our [How to Install and Use the Node Version Manager](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide to install nvm.
 
 1. Run this command from your terminal. This installs the latest version of Node.js and npm:
 
@@ -619,7 +618,7 @@ This section of code defines a `pressSelect` function that sends new Tweets with
 
 Now that the bot code has been added to your workstation's copy of the repository, we should make a new *commit*. A commit in Git records your file changes in the version control history. After making the new commit, you can then **push** it to your repository on GitHub.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 A commit that you make locally is not automatically synced to GitHub. The push operation demonstrated in this tutorial needs to be done manually.
 {{< /note >}}
 
@@ -766,7 +765,7 @@ If successful, the following output appears:
 SNES Soundtracks booting up
 {{< /output >}}
 
-If any errors appear, they are likely related to an authentication failure with the Twitter API. If this happens, then your `.env` file might have syntax errors, or your secret keys may have been incorrectly pasted into it. Review the [Troubleshooting consumer_key Twit Config Error](#troubleshooting-consumer_key-twit-config-error) and [Troubleshooting Twitter Error 401 Unauthorized](#troubleshooting-twitter-error-401-unauthorized) sections for solutions.
+If any errors appear, they are likely related to an authentication failure with the Twitter API. If this happens, then your `.env` file might have syntax errors, or your secret keys may have been incorrectly pasted into it. Review the [Troubleshooting `consumer_key` Twit Config Error](#troubleshooting-consumer_key-twit-config-error) and [Troubleshooting Twitter Error 401 Unauthorized](#troubleshooting-twitter-error-401-unauthorized) sections for solutions.
 
 ### Test the Tweet Function
 
@@ -992,7 +991,7 @@ To keep your bot running uninterrupted, you can start a Screen session. [Screen]
 
 ## Troubleshooting
 
-### Troubleshooting consumer_key Twit Config Error
+### Troubleshooting `consumer_key` Twit Config Error
 
 When starting the bot, you may see an error like this:
 
@@ -1075,10 +1074,10 @@ This error indicates that incorrect keys were copied into your `.env` file. You 
 
 | .env Key Name | Twitter Developer Portal Credential Name |
 |---------------|------------------------------------------|
-| consumer_key  | API Key                                  |
-| consumer_secret | API Secret Key                         |
-| access_token | Access Token                              |
-| access_token_secret | Access Token Secret                |
+| `consumer_key`  | API Key                                  |
+| `consumer_secret` | API Secret Key                         |
+| `access_token` | Access Token                              |
+| `access_token_secret` | Access Token Secret                |
 
 If you're not sure whether your keys are correct, you can regenerate them inside the Twitter developer portal. See the [Regenerate API Keys and Tokens](https://developer.twitter.com/en/docs/authentication/guides/authentication-best-practices) section of Twitter's documentation for instructions.
 

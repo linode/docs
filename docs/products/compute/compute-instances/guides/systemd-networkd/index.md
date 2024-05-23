@@ -1,20 +1,17 @@
 ---
+title: "Network Configuration Using systemd-networkd"
 description: "Learn how to configure networking using the systemd-networkd utility on Ubuntu, Arch, and other modern Linux distributions"
-keywords: ["static", "ip address", "systemd-networkd"]
 published: 2022-05-27
 modified: 2022-06-17
-modified_by:
-  name: Linode
-title: "Network Configuration Using systemd-networkd"
+keywords: ["static", "ip address", "systemd-networkd"]
 tags: ["networking","linode platform"]
 aliases: ['/guides/systemd-networkd/']
-authors: ["Linode"]
 ---
 
 The [systemd-networkd](https://wiki.archlinux.org/title/systemd-networkd) tool is a newer tool developed as part of systemd. Arch and modern versions of Ubuntu (17.10 and above) currently use systemd-networkd as their default network configuration software.
 
 {{< note >}}
-Ubuntu also has utility called Netplan that serves as a frontend for configuring either systemd-networkd or NetworkManager. By default, NetworkHelper manages networking in Ubuntu using systemd-networkd though you can decide which one works best for your needs.
+By default, Linode's Network Helper tool manages networking in Ubuntu using systemd-networkd. Ubuntu also has utility called Netplan that serves as a frontend for configuring either systemd-networkd or NetworkManager. To use Netplan instead, review the [Network Configuration Using Netplan](/docs/products/compute/compute-instances/guides/netplan/) guide.
 {{< /note >}}
 
 {{< note >}}
@@ -74,7 +71,7 @@ Address=192.0.2.123/24
     - IPv6 /64 or /56 routed range (if one has been added)
     - DNS resolvers (if you want to use Linode's resolvers)
 
-1. Disable Network Helper on the Compute Instance so that it doesn't overwrite any of your changes on the next system reboot. For instructions, see the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#single-per-linode) guide. This guide covers disabling Network Helper *globally* (for all Compute Instances on your account) or just for a single instance.
+1. Disable Network Helper on the Compute Instance so that it doesn't overwrite any of your changes on the next system reboot. For instructions, see the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#individual-compute-instance-setting) guide. This guide covers disabling Network Helper *globally* (for all Compute Instances on your account) or just for a single instance.
 
 1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). You may want to consider using Lish to avoid getting locked out in the case of a configuration error.
 

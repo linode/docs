@@ -1,22 +1,21 @@
 ---
 slug: django-apache-and-modpython-on-debian-5-lenny
+title: 'Django, Apache and mod_python on Debian 5 (Lenny)'
 description: 'This guide will show you how to configure the Django web application development framework for Apache on Debian 5 "Lenny" so you can run Django Applications.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-10
+modified: 2013-09-27
 keywords: ["django", "python", "apache", "mod\\_python"]
 tags: ["web applications","debian","django","apache","python","cms","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/django-apache-and-modpython-on-debian-5-lenny/','/frameworks/django-apache-mod-python/debian-5-lenny/','/websites/frameworks/django-apache-and-modpython-on-debian-5-lenny/','/development/frameworks/django/django-apache-and-modpython-on-debian-5-lenny/']
-modified: 2013-09-27
-modified_by:
-  name: Linode
-published: 2009-09-10
-title: 'Django, Apache and mod_python on Debian 5 (Lenny)'
-deprecated: true
 relations:
     platform:
         key: django-apache-modpython
         keywords:
             - distribution: Debian 5
-authors: ["Linode"]
+deprecated: true
 ---
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications. It's also very flexible in its ability to facilitate many complex content management operations.
@@ -27,7 +26,7 @@ We assume that you've completed the [Setting Up and Securing a Compute Instance]
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

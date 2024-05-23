@@ -3,14 +3,13 @@ title: Manage a Cluster with kubectl
 description: "Learn how to install kubectl and use it to manage a Kubernetes cluster hosted through LKE."
 published: 2023-02-09
 aliases: ['/products/compute/kubernetes/guides/download-kubeconfig/','/products/compute/kubernetes/guides/install-kubectl/']
-authors: ["Linode"]
 ---
 
 ## Install kubectl
 
 You need to install the kubectl client to your computer before proceeding. Follow the steps corresponding to your computer's operating system.
 
-{{< content "how-to-install-kubectl" >}}
+{{% content "how-to-install-kubectl" %}}
 
 ## Connect to a Cluster with kubectl
 

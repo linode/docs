@@ -1,25 +1,22 @@
 ---
 slug: websites-with-the-cherokee-web-server-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Websites with the Cherokee Web Server on Ubuntu 9.10'
 description: 'Instructions for getting started with the Cherokee web server on Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-10-29
+modified: 2011-05-09
 keywords: ["cherokee", "web sever", "cherokee ubuntu 9.10", "cherokee ubuntu karmic", "ubuntu karmic"]
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-10-karmic/','/websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-10-karmic/','/web-servers/cherokee/installing-cherokee-ubuntu-9-10-karmic/']
-modified: 2011-05-09
-modified_by:
-  name: Linode
-published: 2009-10-29
-title: 'Websites with the Cherokee Web Server on Ubuntu 9.10'
 relations:
     platform:
         key: install-cherokee-server
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 Cherokee is a fast, flexible web server for POSIX compliant operating systems such as Linux. It's designed to be easy to administer, and includes support for a wide range of common web server functions.
 
@@ -29,7 +26,7 @@ This document assumes that you already have a working and up to date Ubuntu 9.10
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

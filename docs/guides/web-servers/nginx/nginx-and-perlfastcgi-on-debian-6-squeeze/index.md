@@ -1,22 +1,21 @@
 ---
 slug: nginx-and-perlfastcgi-on-debian-6-squeeze
-deprecated: true
+title: 'Nginx and Perl-FastCGI on Debian 6 (Squeeze)'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Debian 6 (Squeeze).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-17
+modified: 2011-05-10
 keywords: ["nginx perl debian 6", "nginx perl fastcgi", "nginx debian squeeze", "fastscgi perl", "nginx debian"]
 tags: ["web server","perl","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/nginx-and-perlfastcgi-on-debian-6-squeeze/','/web-servers/nginx/nginx-and-perlfastcgi-on-debian-6-squeeze/','/web-servers/nginx/perl-fastcgi/debian-6-squeeze/']
-modified: 2011-05-10
-modified_by:
-  name: Linode
-published: 2011-02-17
-title: 'Nginx and Perl-FastCGI on Debian 6 (Squeeze)'
 relations:
     platform:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Debian 6
-authors: ["Linode"]
+deprecated: true
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your Debian 6 (Squeeze) Linode.
@@ -25,7 +24,7 @@ It is assumed that you've already followed the steps outlined in our [Setting Up
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -148,7 +147,7 @@ Start nginx and fcgiwrap by issuing the following commands:
 
 ## Test Perl with FastCGI
 
-Create a file called "test.pl" in your site's "public\_html" directory with the following contents:
+Create a file called "test.pl" in your site's `public_html` directory with the following contents:
 
 {{< file "/srv/www/www.example.com/public\\_html/test.pl" perl >}}
 #!/usr/bin/perl

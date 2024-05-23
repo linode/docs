@@ -1,17 +1,16 @@
 ---
 slug: how-to-create-a-gis-app-using-flask-stadia-maps-and-mongodb
+title: "Creating a GIS Application using Flask, Stadia Maps, and MongoDB"
+title_meta: "Creating a GIS App Using Flask, Stadia Maps, and MongoDB"
 description: "This guide will use the Stadia Maps free tier plan and hosted vector map tiles to create a GIS web app using Flask."
+authors: ["Leslie Salazar"]
+contributors: ["Leslie Salazar"]
+published: 2020-01-21
 keywords: ['maps','GIS','flask','mongodb', 'python']
 tags: ["web applications","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-01-21
-modified_by:
-  name: Linode
 image: L_CreateGISapp.png
-title: "Creating a GIS Application using Flask, Stadia Maps, and MongoDB"
-title_meta: "Creating a GIS App Using Flask, Stadia Maps, and MongoDB"
 aliases: ['/development/python/how-to-create-a-gis-app-using-flask-stadia-maps-and-mongodb/']
-authors: ["Leslie Salazar"]
 ---
 Geographic Information system (GIS) based applications require a beautiful mapping experience for users. [Stadia Maps](https://stadiamaps.com/) provides digital mapping that you can easily and affordably integrate into your web or mobile applications. They offer hosted map tiles, offline map tiles, static maps, and a few other [core products](https://stadiamaps.com/products/). If you would like to test their services, you can use a local development environment along with their free tier plan. For more details on pricing and service limits, see their [pricing plans](https://stadiamaps.com/pricing/).
 
@@ -34,8 +33,7 @@ This guide assumes a basic familiarity with programming concepts, Python, HTML, 
     {{< /note >}}
 
 ### Before you Begin
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide was written using Python version 3.7.
 {{< /note >}}
 

@@ -1,15 +1,14 @@
 ---
 slug: linux-mount-command
+title: "Quick Guide to the Linux Mount Command"
+title_meta: "Linux Mount Command: Mounting File Systems & Disks"
 description: 'In Linux, mount command attaches file systems and disks at a point in the directory tree. Learn the basics of mounting and how to mount in Linux.'
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2023-04-10
 keywords: ['linux mount command', 'linux unmount', 'linux mounted drives', 'mount disk in linux']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-04-10
-modified_by:
-  name: Linode
-title_meta: "Linux Mount Command: Mounting File Systems & Disks"
-title: "Quick Guide to the Linux Mount Command"
-authors: ["John Mueller"]
 ---
 
 This guide demonstrates how to use the Linux mount command to make data storage resources available from a single access point. This is made possible with mount points, a way to attach a disk resource (which isn’t necessarily a physical disk) to make it act as part of the current directory tree. The Linux mount command is designed to work with a number of file systems to make the file system itself transparent to the end user.

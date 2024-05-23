@@ -1,16 +1,14 @@
 ---
 slug: deploy-websites-with-a-cherokee-web-server-on-ubuntu-12-04
-deprecated: true
+title: 'Deploy Websites with a Cherokee Web Server on Ubuntu 12.04'
 description: 'This guide provides you with step-by-step instructions for deploying a Cherokee, a flexible web server that is easy to administer, on Ubuntu 12.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-10
 keywords: ["cherokee", "web sever", "ubuntu 12.04", "precise pangolin", "cherokee-admin"]
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/cherokee/deploy-websites-with-a-cherokee-web-server-on-ubuntu-12-04/','/websites/cherokee/deploy-websites-with-a-cherokee-web-server-on-ubuntu-12-04/','/web-servers/cherokee/installing-cherokee-ubuntu-12-04-precise-pangolin/','/websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-12-04-lts-precise-pangolin/']
-modified: 2012-10-10
-modified_by:
-  name: Linode
-published: 2012-10-10
-title: 'Deploy Websites with a Cherokee Web Server on Ubuntu 12.04'
 external_resources:
  - '[Cherokee Web Server Documentation](http://www.cherokee-project.com/doc/)'
  - '[Host Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid)](/docs/web-servers/cherokee/php-fastcgi-ubuntu-10-04-lucid)'
@@ -19,7 +17,7 @@ relations:
         key: install-cherokee-server
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Linode"]
+deprecated: true
 ---
 
 Cherokee is a fast, flexible web server for POSIX compliant operating systems such as Linux. It's designed to be easy to administer, and includes support for a wide range of common web server functions.
@@ -30,7 +28,7 @@ This document assumes that you already have a working and up-to-date Ubuntu 12.0
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

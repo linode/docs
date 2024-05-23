@@ -1,25 +1,22 @@
 ---
 slug: set-up-a-lamp-server-on-gentoo
-deprecated: true
+title: Set Up a LAMP Server on Gentoo
 description: 'Creating a LAMP stack with Apache, MySQL, and PHP on a Gentoo Linux powered Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-12-02
+modified: 2013-10-24
 keywords: ["LAMP", "Gentoo Linux", "Gentoo"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/set-up-a-lamp-server-on-gentoo/','/web-servers/lamp/set-up-a-lamp-server-on-gentoo/','/lamp-guides/gentoo/']
-modified: 2013-10-24
-modified_by:
-  name: Linode
-published: 2011-12-02
-title: Set Up a LAMP Server on Gentoo
 external_resources:
   - '[Gentoo Documentation](http://www.gentoo.org/doc/en/index.xml)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
   - '[MySQL Documentation](http://dev.mysql.com/doc/)'
   - '[PHP Documentation](http://www.php.net/docs.php)'
 tags: ["web server","php","mysql","apache","lamp"]
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on a Gentoo Linux system.
 
@@ -27,7 +24,7 @@ In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If y
 
 ## Set the Hostname and Configure /etc/hosts
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     echo "HOSTNAME=\"titan\"" > /etc/conf.d/hostname
     /etc/init.d/hostname restart

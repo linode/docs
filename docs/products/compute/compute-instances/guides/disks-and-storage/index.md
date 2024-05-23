@@ -1,15 +1,12 @@
 ---
-description: "A guide for understanding how local storage works on a Linode and for help performing common tasks on a Linode's disks."
-keywords: ["disks", "storage", "disk space"]
-tags: ["linode platform","cloud manager"]
-modified: 2023-01-18
-modified_by:
-  name: Linode
-published: 2021-04-30
 title: "Manage Disks and Storage on a Compute Instance"
 title_meta: "How to Manage Disks and Storage on a Compute Instance"
+description: "A guide for understanding how local storage works on a Linode and for help performing common tasks on a Linode's disks."
+published: 2021-04-30
+modified: 2023-01-18
+keywords: ["disks", "storage", "disk space"]
+tags: ["linode platform","cloud manager"]
 aliases: ['/guides/linode-disks/','/guides/disks-and-storage/','/guides/resize-a-linode-disk/']
-authors: ["Linode"]
 ---
 
 ## Understanding Storage
@@ -111,7 +108,7 @@ The following instructions cover how to resize a disk. For instructions regardin
 
 ## Clone a Disk
 
-A disk can be duplicated onto the same Compute Instance or any other instance on the account. See [Cloning to an Existing Compute Instance](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode) for instructions.
+A disk can be duplicated onto the same Compute Instance or any other instance on the account. See [Cloning to an Existing Compute Instance](/docs/products/compute/compute-instances/guides/clone-instance/#clone-to-an-existing-compute-instance) for instructions.
 
 ## Delete a Disk
 

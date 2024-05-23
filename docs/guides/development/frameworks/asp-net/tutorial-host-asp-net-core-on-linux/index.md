@@ -1,19 +1,18 @@
 ---
 slug: tutorial-host-asp-net-core-on-linux
+title: "Tutorial: Hosting ASP.NET Core on Linux"
+title_meta: "An ASP.NET Core on Linux Tutorial"
 description: "This guide shows you how to install and get started with the .NET Core for building and hosting ASP.NET applications on Linux using NGINX as a web server and reverse proxy."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-02
 keywords: ['asp net core tutorial']
 tags: ['web applications', 'nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-02
-modified_by:
-  name: Nathaniel Stickman
-title: "Tutorial: Hosting ASP.NET Core on Linux"
-title_meta: "An ASP.NET Core on Linux Tutorial"
 image: ASPNET.jpg
 external_resources:
 - '[Tutorial: Get Started with ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0)'
 - '[Microsofts ASP.NET Core Recommended Learning Path](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0#recommended-learning-path)'
-authors: ["Nathaniel Stickman"]
 ---
 
 [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0) is Microsoft's cross-platform and open-source redesign of its original ASP.NET framework. With ASP.NET Core, you can build and run .NET applications not only on Windows but also macOS and Linux.
@@ -28,7 +27,7 @@ This guide shows you how to install ASP.NET Core on your Linux server and how to
 
 1. This guide uses `example-app` as the name of the ASP.NET Core application and `example.com` as your server's domain name. Replace these with your preferred application name and actual server name, respectively.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are  written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -91,7 +90,7 @@ These installation steps work for Debian 10 and Ubuntu 20.04. If you are using a
 
     .NET Core serves the application on `localhost` port `5001`. To visit the application remotely, you can use an SSH tunnel:
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with `5001`.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Connecting to a Remote Server Over SSH using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/) guide, replacing the example port number there with `5001`.
     - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
             ssh -L5001:localhost:5001 example-user@192.0.2.0

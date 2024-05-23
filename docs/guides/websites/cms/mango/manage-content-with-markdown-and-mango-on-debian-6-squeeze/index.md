@@ -1,29 +1,28 @@
 ---
 slug: manage-content-with-markdown-and-mango-on-debian-6-squeeze
+title: 'Manage Content with Markdown and Mango on Debian 6 (Squeeze)'
 description: 'This guide will show you how Mango can publish markdown documents from plain text files into a fully customized and dynamic website using Debian 6.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2013-10-02
 keywords: ["markdown", "content management systems", "cms", "plain text"]
 tags: ["cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/manage-content-with-markdown-and-mango-on-debian-6-squeeze/','/web-applications/cms-guides/mango/debian-6-squeeze/','/websites/cms/mango/manage-content-with-markdown-and-mango-on-debian-6-squeeze/']
-modified: 2013-10-02
-modified_by:
-  name: Linode
-published: 2011-04-05
-title: 'Manage Content with Markdown and Mango on Debian 6 (Squeeze)'
-deprecated: true
 relations:
     platform:
         key: manage-content-with-markdown-and-mango
         keywords:
            - distribution: Debian 6
-authors: ["Linode"]
+deprecated: true
 ---
 
 Mango is a simple static content management system for publishing blogs from content stored in plain text files. Built as a dynamic web application using components from the Django framework, Mango is simple to deploy and administer and uses the Markdown lightweight markup language to process text. This guide describes the process for configuring a Mango-based site using the Apache HTTP Server and `mod_wsgi` to handle the dynamic aspects of the website.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

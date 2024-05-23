@@ -1,25 +1,23 @@
 ---
 slug: deploy-a-react-app-on-linode
+title: "Deploy a React Application on Linode"
 description: 'Learn to deploy a locally developed React application to your Linode using Rsync.'
 og_description: 'Use Rsync to deploy a React application from your local computer to a Linode.'
+authors: ["Phil Zona"]
+contributors: ["Phil Zona"]
+published: 2018-01-31
 keywords: ['react','reactjs','deploy','rsync']
 tags: ["web applications","apache","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-01-31
-modified: 2018-01-31
-modified_by:
-  name: Linode
-title: "Deploy a React Application on Linode"
 aliases: ['/development/react/deploy-a-react-app-on-linode/','/development/javascript/deploy-a-react-app-on-linode/']
-deprecated: true
-deprecated_link: 'guides/how-to-deploy-a-react-app-on-debian-10/'
 external_resources:
 - '[React - A JavaScript library for building user interfaces](https://reactjs.org/)'
 - '[Deploy a React App with Sass Using NGINX](https://web.archive.org/web/20191130010415/http://zabana.me/notes/build-deploy-react-app-with-nginx.html)'
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["javascript"]
-authors: ["Phil Zona"]
+deprecated: true
+deprecated_link: 'guides/how-to-deploy-a-react-app-on-debian-10/'
 ---
 
 ## What is React?

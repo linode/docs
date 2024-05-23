@@ -1,17 +1,15 @@
 ---
 slug: portage-package-manager
+title: "Using Portage to Manage Packages in Gentoo"
+title_meta: "How to Use Portage to Manage Packages in Gentoo"
 description: "This guide walks you through the core features and common features of Portage, the default package manager on Gentoo linux, so you can install software on your system."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-07-15
 keywords: ['gentoo', 'portage', 'emerge', package manager']
 tags: ['gentoo']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-15
 image: UsingPortagetoManagePackagesinGentooLinux.jpg
-modified: 2021-07-15
-modified_by:
-  name: Linode
-title: "Using Portage to Manage Packages in Gentoo"
-title_meta: "How to Use Portage to Manage Packages in Gentoo"
-authors: ["Linode"]
 ---
 
 Gentoo provides its entire operating system in source format. These source packages, in concert with `ebuild` scripts, provide a package management system that borrows and builds on many concepts from the BSD's "portage" system.
@@ -30,7 +28,7 @@ Before running the commands within this guide, you will need:
 
 1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 

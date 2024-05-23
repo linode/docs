@@ -1,14 +1,11 @@
 ---
-description: "Learn how to create domain zones to manage your DNS records using the Linode DNS Manager."
-modified: 2022-10-28
-modified_by:
-  name: Linode
-published: 2020-07-21
 title: "Create a Domain"
+description: "Learn how to create domain zones to manage your DNS records using the Linode DNS Manager."
+published: 2020-07-21
+modified: 2022-10-28
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/products/networking/dns-manager/guides/add-domains/']
-authors: ["Linode"]
 ---
 
 This guide walks you through how to create a domain through the Cloud Manager. Adding a domain only takes a few steps. Here's an outline on how to create a domain using Cloud Manager.

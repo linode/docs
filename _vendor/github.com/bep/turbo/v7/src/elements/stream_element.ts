@@ -1,6 +1,10 @@
 import { StreamActions } from "../core/streams/stream_actions"
 import { nextAnimationFrame } from "../util"
 
+type Render = (currentElement: StreamElement) => Promise<void>
+
+export type TurboBeforeStreamRenderEvent = CustomEvent<{ newStream: StreamElement; render: Render }>
+
 // <turbo-stream action=replace target=id><template>...
 
 /**
@@ -24,6 +28,10 @@ import { nextAnimationFrame } from "../util"
  *   </turbo-stream>
  */
 export class StreamElement extends HTMLElement {
+  static async renderElement(newElement: StreamElement): Promise<void> {
+    await newElement.performAction()
+  }
+
   async connectedCallback() {
     try {
       await this.render()
@@ -37,35 +45,39 @@ export class StreamElement extends HTMLElement {
   private renderPromise?: Promise<void>
 
   async render() {
-    return this.renderPromise ??= (async () => {
-      if (this.dispatchEvent(this.beforeRenderEvent)) {
+    return (this.renderPromise ??= (async () => {
+      const event = this.beforeRenderEvent
+
+      if (this.dispatchEvent(event)) {
         await nextAnimationFrame()
-        this.performAction()
+        await event.detail.render(this)
       }
-    })()
+    })())
   }
 
   disconnect() {
-    try { this.remove() } catch {}
+    try {
+      this.remove()
+      // eslint-disable-next-line no-empty
+    } catch {}
   }
- 
+
   /**
    * Removes duplicate children (by ID)
    */
   removeDuplicateTargetChildren() {
-    this.duplicateChildren.forEach(c => c.remove())
+    this.duplicateChildren.forEach((c) => c.remove())
   }
-  
+
   /**
    * Gets the list of duplicate children (i.e. those with the same ID)
    */
   get duplicateChildren() {
-    const existingChildren = this.targetElements.flatMap(e => [...e.children]).filter(c => !!c.id)
-    const newChildrenIds   = [...this.templateContent?.children].filter(c => !!c.id).map(c => c.id)
-  
-    return existingChildren.filter(c => newChildrenIds.includes(c.id))
+    const existingChildren = this.targetElements.flatMap((e) => [...e.children]).filter((c) => !!c.id)
+    const newChildrenIds = [...(this.templateContent?.children || [])].filter((c) => !!c.id).map((c) => c.id)
+
+    return existingChildren.filter((c) => newChildrenIds.includes(c.id))
   }
-  
 
   /**
    * Gets the action function to be performed.
@@ -85,7 +97,7 @@ export class StreamElement extends HTMLElement {
    * Gets the target elements which the template will be rendered to.
    */
   get targetElements() {
-    if (this.target) { 
+    if (this.target) {
       return this.targetElementsById
     } else if (this.targets) {
       return this.targetElementsByQuery
@@ -105,7 +117,11 @@ export class StreamElement extends HTMLElement {
    * Gets the main `<template>` used for rendering
    */
   get templateElement() {
-    if (this.firstElementChild instanceof HTMLTemplateElement) {
+    if (this.firstElementChild === null) {
+      const template = this.ownerDocument.createElement("template")
+      this.appendChild(template)
+      return template
+    } else if (this.firstElementChild instanceof HTMLTemplateElement) {
       return this.firstElementChild
     }
     this.raise("first child element must be a <template> element")
@@ -141,15 +157,19 @@ export class StreamElement extends HTMLElement {
     return (this.outerHTML.match(/<[^>]+>/) ?? [])[0] ?? "<turbo-stream>"
   }
 
-  private get beforeRenderEvent() {
-    return new CustomEvent("turbo:before-stream-render", { bubbles: true, cancelable: true })
+  private get beforeRenderEvent(): TurboBeforeStreamRenderEvent {
+    return new CustomEvent("turbo:before-stream-render", {
+      bubbles: true,
+      cancelable: true,
+      detail: { newStream: this, render: StreamElement.renderElement },
+    })
   }
 
   private get targetElementsById() {
     const element = this.ownerDocument?.getElementById(this.target!)
 
     if (element !== null) {
-      return [ element ]
+      return [element]
     } else {
       return []
     }

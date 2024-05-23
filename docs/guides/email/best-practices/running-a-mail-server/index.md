@@ -1,22 +1,21 @@
 ---
 slug: running-a-mail-server
+title: "Running a Mail Server"
 description: "Take control of your email with your own mail server. Learn how to install and configure it on your Linode."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-06-05
+modified: 2022-12-23
 keywords: ["mail server", "linode guide", "running a mail server", "Self-host Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/mailserver/','/email/running-a-mail-server/','/email/best-practices/running-a-mail-server/']
-modified_by:
-  name: Linode
-published: 2013-06-05
-modified: 2022-12-23
-title: "Running a Mail Server"
 tags: ["email"]
 image: mail_server_tg.png
-authors: ["Linode"]
 ---
 
 This guide offers an overview of installing a mail server on your Linode. It covers mail server configuration, creating mail accounts, and basic overviews of tools relevant to hosting an email webserver.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## Should You Run a Mail Server?
 
@@ -55,7 +54,7 @@ There are several third-party mail services available:
 - [Postmark](https://postmarkapp.com/why?utm_source=linode&utm_medium=referral&utm_campaign=awareness)
 - [Fastmail](https://www.fastmail.com)
 - [Google Workspace](https://workspace.google.com/products/gmail/) uses the familiar Gmail interface. Check out our guide to [Using Google Workspace for Email](/docs/guides/using-google-workspace-for-email/).
-- [Mirosoft 365](https://www.office.com) is the successor to Outlook.com and can support custom domains for email, amongst other services.
+- [Microsoft 365](https://www.office.com) is the successor to Outlook.com and can support custom domains for email, amongst other services.
 
 If you decide to use an outside mail service, you will still need to set up [DNS](/docs/products/networking/dns-manager/) for your mail and use the settings provided by the third-party mail service.
 
@@ -192,7 +191,7 @@ Make sure your SPF records are not too strict. If you accidentally exclude a leg
 
 The reverse DNS for your mail server must match the hostname of your Linode. If your Linode's reverse DNS and hostname do not match, email from your server may get rejected with the warning "Reverse DNS does not match SMTP Banner."
 
-If you need to check or set the hostname, see our [Getting Started](/docs/products/platform/get-started/#setting-the-hostname) article.
+If you need to check or set the hostname, see our [Getting Started](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) article.
 
 ## Spam and Virus Protection, Mail Clients, and More
 
