@@ -1,12 +1,10 @@
 ---
 title: Troubleshooting Memory Issues on Compute Instances
 description: 'Many common issues with Compute Instances are caused by excessive memory consumption or errors. This guide provides suggestions for resolving this.'
-keywords: ["Linode troubleshooting", "Linux configuration","troubleshoot"]
-tags: ["networking", "mysql", "apache"]
 published: 2009-08-05
 modified: 2023-03-14
-modified_by:
-  name: Linode
+keywords: ["Linode troubleshooting", "Linux configuration","troubleshoot"]
+tags: ["networking", "mysql", "apache"]
 bundles: ['troubleshooting']
 aliases: ['/troubleshooting/troubleshooting-memory-and-networking-issues/','/troubleshooting/memory-networking/','/guides/troubleshooting-memory-and-networking-issues/']
 ---
@@ -33,7 +31,7 @@ To see IO activity on your Compute Instance, you may use the following command (
 iostat -d -x 2 5
 ```
 
-This will give an extended device utilization report five times at two second intervals. If your Compute Instance is OOMing (running out of memory), Apache, MySQL, and SpamAssassin are the usual suspects.
+This will give an extended device utilization report five times at two second intervals. If your Compute Instance is running out of memory, Apache, MySQL, and SpamAssassin are the usual suspects.
 
 ## MySQL Low-Memory Settings
 

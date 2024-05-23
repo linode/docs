@@ -1,21 +1,19 @@
 ---
 slug: deploy-mysql-workbench-for-database-administration
+title: 'Install MySQL Workbench for Database Administration'
 description: 'This guide will show you how to deploy MySQL Workbench, which is a graphical tool for working with MySQL databases in a client/server model.'
-keywords: ["MySQL", "MySQL Workbench", "workbench", "administer database"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Scott Sumner"]
+contributors: ["Scott Sumner"]
 published: 2015-12-04
 modified: 2018-12-10
-modified_by:
-    name: Linode
-title: 'Install MySQL Workbench for Database Administration'
+keywords: ["MySQL", "MySQL Workbench", "workbench", "administer database"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[MySQL Workbench Documentation](https://dev.mysql.com/doc/workbench/en/)'
   - '[Resetting MySQL Root Password](https://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html)'
 tags: ["database","mysql"]
 aliases: ['/databases/mysql/deploy-mysql-workbench-for-database-administration/']
-authors: ["Scott Sumner"]
 ---
-
 
 ![Deploy MySQL Workbench for Database Administration](deploy-mysql-workbench-for-database-administration.png "Deploy MySQL Workbench for Database Administration")
 
@@ -212,11 +210,11 @@ MySQL stores its information in a table, which resembles a spreadsheet.
 
 8. Click between the parentheses and enter 45. Datatype **VARCHAR** is a string and the number in parentheses is the maximum length. Repeat this process to create the following fields:
 
-    *   firstName, a VARCHAR(45)
+    *   `firstName`, a VARCHAR(45)
 
-    *   phone, a VARCHAR(16)
+    *   `phone`, a VARCHAR(16)
 
-    *   email, a VARCHAR(45)
+    *   `email`, a VARCHAR(45)
 
     Once your preferred fields are set up, click the **Apply** button.  You'll get another **Apply SQL Script To Database** window.  Click **Apply** again and look for the **SQL Successful** message.
 

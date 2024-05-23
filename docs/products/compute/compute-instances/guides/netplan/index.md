@@ -1,13 +1,9 @@
 ---
-slug: netplan
 title: "Network Configuration Using Netplan"
 description: "Learn how to manually configure your Compute Instance’s networking using the netplan utility on Ubuntu 18.04 and newer."
+published: 2023-09-12
 keywords: ['netplan','network configuration','ip address']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Linode","Nathaniel Stickman"]
-published: 2023-09-12
-modified_by:
-  name: Linode
 external_resources:
 - '[Netplan Documentation](https://netplan.readthedocs.io/en/stable/)'
 ---
@@ -77,7 +73,7 @@ Learn more about the full extent of Netplan's YAML configuration options in the 
 
     -   DNS resolvers (if you want to use Linode's resolvers)
 
-1.  Disable Network Helper on the Compute Instance so that it doesn't overwrite any of your changes on the next system reboot. For instructions, see the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#single-per-linode) guide. This guide covers disabling Network Helper *globally* (for all Compute Instances on your account) or just for a single instance.
+1.  Disable Network Helper on the Compute Instance so that it doesn't overwrite any of your changes on the next system reboot. For instructions, see the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#individual-compute-instance-setting) guide. This guide covers disabling Network Helper *globally* (for all Compute Instances on your account) or just for a single instance.
 
 1.  Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). You may want to consider using Lish to avoid getting locked out in the case of a configuration error.
 

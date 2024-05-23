@@ -1,20 +1,19 @@
 ---
 slug: play-framework-build-a-website
+title: "Get Started Building a Website with the Play Framework"
+title_meta: "How to Build a Website using the Play Framework"
 description: "Learn how to get started creating Java and Scala web applications in this guide to the Play framework, complete with examples."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-06-17
 keywords: ['play framework']
 tags: ['java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-17
-modified_by:
-  name: Nathaniel Stickman
-title: "Get Started Building a Website with the Play Framework"
-title_meta: "How to Build a Website using the Play Framework"
 external_resources:
 - '[Play 2.8.x documentation](https://www.playframework.com/documentation/2.8.x/Home)'
 - '[Play official site](https://www.playframework.com/)'
 - '[Play framework example projects](https://developer.lightbend.com/start/?group=play)'
 
-authors: ["Nathaniel Stickman"]
 ---
 
 [Play](https://www.playframework.com/) is a lightweight framework for Java and Scala web applications. Play's conciseness makes it easy to develop modern and efficient web applications.
@@ -27,7 +26,7 @@ This guide helps you learn more about the Play framework and how to get started 
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -94,7 +93,7 @@ In these steps, you can see how to download and run one of these examples — th
 
     Play serves the application on `localhost:9000`. To visit the application remotely, you can use an SSH tunnel.
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with **9000**.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Connecting to a Remote Server Over SSH using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/) guide, replacing the example port number there with **9000**.
     - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
             ssh -L9000:localhost:9000 example-user@192.0.2.0

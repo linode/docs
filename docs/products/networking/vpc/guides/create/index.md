@@ -1,10 +1,9 @@
 ---
 title: "Create a VPC"
 title_meta: "Create a VPC on the Linode Platform"
-keywords: ["getting started", "deploy", "linode", "linux"]
 description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
 published: 2024-01-09
-authors: ["Linode"]
+keywords: ["getting started", "deploy", "linode", "linux"]
 ---
 
 This guide walks you through creating a VPC through the Cloud Manager, Linode CLI, and Linode API.
@@ -24,10 +23,6 @@ Open the Create Form in the Cloud Manager or start entering your Linode CLI or L
 Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Create** dropdown menu on the top bar, and select *VPC*. This opens the **Create VPC** form.
 {{< /tab >}}
 {{< tab "Linode CLI" >}}
-{{< note type="warning" noTitle=true >}}
-During the closed beta period, VPC functionality might not be enabled on the Linode CLI.
-{{< /note >}}
-
 Within your terminal, paste the command provided below. If you do not have the Linode CLI, review the [Install and Configure the Linode CLI](/docs/products/tools/cli/guides/install/) guide. **Before submitting the request, read through the rest of this document.**
 
 ```command
@@ -43,7 +38,7 @@ linode-cli vpcs create \
 Within your terminal, enter the API curl request below. Make sure to properly paste in or reference your [API token](/docs/products/tools/api/guides/manage-api-tokens/). For a complete API reference, see the [VPC API endpoints](/docs/api/vpcs/) documentation. **Before submitting the request, read through the rest of this document.**
 
 ```command
-curl https://api.linode.com/v4beta/vpcs \
+curl https://api.linode.com/v4/vpcs \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -X POST -d '{
@@ -65,11 +60,7 @@ curl https://api.linode.com/v4beta/vpcs \
 
 Select the region and enter a label and description for the VPC.
 
--   **Region:** Select the data center where the VPC should be deployed. Since VPCs do not span multiple data centers, only services within the selected data center can join the VPC.
-
-    {{< note >}}
-    VPC is limited to select data centers during the beta period. For more details, review [Availability](/docs/products/networking/vpc/#availability)
-    {{< /note >}}
+-   **Region:** Select the data center where the VPC should be deployed. Since VPCs do not span multiple data centers, only services within the selected data center can join the VPC. For a list of regions that support VPCs, review [VPCs > Availability](/docs/products/networking/vpc/#availability).
 
 -   **Label:** Enter an alphanumeric string (containing only letters, numbers, and hyphens) to identify the VPC. A good label should provide some indication as to the purpose or intended use of the VPC.
 
@@ -90,10 +81,6 @@ Follow the instructions below to create multiple subnets. You are also able to a
 For each additional subnet you wish to create, press the **Add Another Subnet** button within the **Subnets** section. This adds another set of subnet fields to the form.
 {{< /tab >}}
 {{< tab "Linode CLI" >}}
-{{< note type="warning" noTitle=true >}}
-During the closed beta period, VPC functionality might not be enabled on the Linode CLI.
-{{< /note >}}
-
 ```command
 ...
   --subnets.label backend-example-subnet \

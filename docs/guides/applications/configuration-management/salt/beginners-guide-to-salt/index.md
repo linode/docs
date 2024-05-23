@@ -1,19 +1,18 @@
 ---
 slug: beginners-guide-to-salt
+title: A Beginner's Guide to Salt
 description: 'A look into Salt''s primary components, features, and configurations for the new SaltStack user'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-10-16
+modified: 2019-01-02
 keywords: ["salt", "automation", "saltstack", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-02
-modified_by:
-  name: Linode
 image: ABeginnersGuidetoSalt.png
-published: 2018-10-16
-title: A Beginner's Guide to Salt
 external_resources:
  - '[SaltStack Documentation](https://docs.saltproject.io/)'
 aliases: ['/applications/configuration-management/beginners-guide-to-salt/','/applications/configuration-management/salt/beginners-guide-to-salt/']
 tags: ["automation","salt"]
-authors: ["Linode"]
 ---
 
 [Salt](https://www.saltproject.io) (also referred to as *SaltStack*) is a Python-based configuration management and orchestration system. Salt uses a master/client model in which a dedicated Salt *master* server manages one or more Salt *minion* servers. Two of Salt's primary jobs are:
@@ -36,7 +35,7 @@ Many other commands are available. This installs NGINX on the minion named `webs
 
 Salt minions are your servers that actually run your applications and services. Each minion has an ID assigned to it (which can be automatically generated from the minion's hostname), and the Salt master can refer to this ID to [target commands to specific minions](#targeting-minions).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 When using Salt, you should configure and manage your minion servers from the master as much as possible, instead of logging into them directly via SSH or another protocol.
 {{< /note >}}
 
@@ -61,8 +60,7 @@ The execution modules that Salt makes available represent system administration 
 -   Installing and uninstalling [software](https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.pkg.html)
 
 -   Editing or creating configuration [files](https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.file.html#module-salt.modules.file)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can also [write your own](/docs/guides/create-a-salt-execution-module/) execution modules.
 {{< /note >}}
 
@@ -74,7 +72,7 @@ The `cmd.run` function is used to run arbitrary commands on your minions from th
 
 This would return the contents of `/etc` on each minion.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Where possible, it's better to use execution modules than to "shell out" with `cmd.run`.
 {{< /note >}}
 
@@ -92,7 +90,7 @@ The distinction between the two styles is subtle; to illustrate, here's how inst
 
 Salt states are defined in *state files*. Once you have recorded your states, you then *apply* them to a minion. Salt analyzes the state file and determines what it needs to do to make sure that the minion satisfies the state's declarations.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This sometimes results in the same command that would be run via remote execution, but sometimes it doesn't. In the NGINX example, if Salt sees that NGINX was already installed previously, it won't invoke the package manager again when the state is applied.
 {{< /note >}}
 
@@ -121,7 +119,7 @@ nginx_service:
 
 State files end with the extension `.sls` (SaLt State). State files can have one or more *state declarations*, which are the top-level sections of the file (`network_utilities`, `nginx_pkg`, and `nginx_service` in the above example). State declarations IDs are arbitrary, so you can name them however you prefer.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you were to name the ID to be the same as the relevant installed package, then you do not need to specify the `- name` option, as it will be inferred from the ID. For example, this snippet also installs NGINX:
 
 {{< file >}}
@@ -134,7 +132,7 @@ The same name/ID inference convention is true for other Salt modules.
 
 State declarations contain *state modules*. State modules are distinct from execution modules but often perform similar jobs. For example, a `pkg` state module exists with functions analogous to the `pkg` execution module, as with the `pkg.installed` state function and the `pkg.install` execution function. As with execution modules, Salt provides a [wide array](https://docs.saltproject.io/en/latest/ref/states/all/) of state modules for you to use.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 State declarations are not necessarily applied in the order they appear in a state file, but you can specify that a declaration depends on another one using the `require` option. This is the case in the above example; Salt will not attempt to run and enable NGINX until it is installed.
 {{< /note >}}
 
@@ -180,8 +178,7 @@ Groups of minions are specified under the environment, and states are listed for
 If you run the `state.apply` function with no arguments, then Salt will inspect the top file and apply all states within it according to the mapping you've created:
 
     salt '*' state.apply
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This action is colloquially known as a [*highstate*](https://docs.saltproject.io/en/latest/topics/tutorials/states_pt1.html#running-highstate).
 {{< /note >}}
 
@@ -244,13 +241,13 @@ Grain information generally isn't very dynamic, but it can change occasionally, 
 
 Salt's [*pillar*](https://docs.saltproject.io/en/latest/topics/tutorials/pillar.html) feature takes data defined on the Salt master and distributes it to minions. A primary use for pillar is to store secrets, such as account credentials. Pillar is also a useful place to store non-secret data that you wouldn't want to record directly in your state files.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 In addition to storing pillar data on the master, you can also keep it in other locations, like in a [Git repository](https://docs.saltproject.io/en/latest/ref/pillar/all/salt.pillar.git_pillar.html) or [Hashicorp's Vault](https://docs.saltproject.io/en/latest/ref/pillar/all/salt.pillar.vault.html).
 {{< /note >}}
 
 Let's say that you want to create system users on a minion and assign different shells to each of them. If you were to code this information into a state file, you would need a new declaration for each user. If you store the data in pillar instead, you can then just create one state declaration and inject the pillar data into it using Salt's [Jinja templating](#jinja-templates) feature.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Salt Pillar is sometimes confused with Salt Grains, as they both keep data that is used in states and remote execution. The data that grains maintains originates *from* the minions, while the data in pillar originates on the master (or another backend) and is delivered *to* the minions.
 {{< /note >}}
 
@@ -317,8 +314,7 @@ install_apache:
     - name: apache
     {% endif %}
 {{< /file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In addition to Salt's documentation on Jinja, the [official Jinja documentation](http://jinja.pocoo.org/docs/2.10/templates/) also details the template syntax.
 {{< /note >}}
 

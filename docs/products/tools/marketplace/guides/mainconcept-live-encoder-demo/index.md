@@ -1,12 +1,9 @@
 ---
 title: "Deploy MainConcept Live Encoder Demo through the Linode Marketplace"
 description: "Deploy MainConcept Live Encoder demo, an enterprise ready live encoder for broadcast and OTT video workflows, on a Linode Compute Instance."
+published: 2023-09-14
 keywords: ['encoder','video','live','rtmp','rtsp','rtp','udp','zixi','srt','mpeg-dash','hls']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2023-09-14
-modified_by:
-  name: Linode
-authors: ["Linode"]
 ---
 
 The [MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) is an all-in-one encoding engine designed to simplify common broadcast and OTT video workflows. It features HEVC and AVC codecs with optional GPU decoding, as well as encoding powered by NVIDIA and Intel Quick Sync Video built in. MainConcept Live Encoder allows you to package content for multi-screen delivery in real-time using common input sources via a graphic user interface or REST API.
@@ -19,9 +16,9 @@ The version of MainConcept Live Encoder in this deployment is a free demo. It ad
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** MainConcept Live Encoder should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -36,8 +33,8 @@ The version of MainConcept Live Encoder in this deployment is a free demo. It ad
 
 - **Email address for SSL Generation (Required):** This is the contact email address used for communication regarding the SSL certificate created during deployment. This should be the email address of your web server administrator.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -63,4 +60,4 @@ Once your MainConcept Live Encoder Marketplace App is deployed, you can log into
 
 Please see [the official documentation for MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) for more information on usage and resources. For support regarding the tool or software itself, use the information in the sidebar to contact MainConcept's support or search the [MainConcept community forum](https://forum.mainconcept.com/).
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

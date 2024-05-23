@@ -1,25 +1,22 @@
 ---
 slug: nginx-and-perlfastcgi-on-ubuntu-10-04-lts-lucid
-deprecated: true
+title: 'Nginx and Perl-FastCGI on Ubuntu 10.04 LTS (Lucid)'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 10.04 LTS (Lucid).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-03
+modified: 2013-10-07
 keywords: ["nginx", "fastscgi perl", "nginx ubuntu 10.04", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/nginx-and-perlfastcgi-on-ubuntu-10-04-lts-lucid/','/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-10-04-lts-lucid/','/web-servers/nginx/perl-fastcgi/ubuntu-10-04-lucid/']
-modified: 2013-10-07
-modified_by:
-  name: Linode
-published: 2010-05-03
-title: 'Nginx and Perl-FastCGI on Ubuntu 10.04 LTS (Lucid)'
 relations:
     platform:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your Ubuntu 10.04 LTS (Lucid) Linode.
 
@@ -27,7 +24,7 @@ It is assumed that you've already followed the steps outlined in our [Setting Up
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -168,7 +165,7 @@ Start nginx and fcgiwrap by issuing the following commands:
 
 ## Test Perl with FastCGI
 
-Create a file called "test.pl" in your site's "public\_html" directory with the following contents:
+Create a file called "test.pl" in your site's `public_html` directory with the following contents:
 
 {{< file "/srv/www/www.example.com/public\\_html/test.pl" perl >}}
 #!/usr/bin/perl

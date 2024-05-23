@@ -1,23 +1,20 @@
 ---
 title: "Getting Started on the Linode Platform"
+description: "Learn how to create an account and use the Linode Cloud Platform."
+published: 2018-11-05
+modified: 2023-09-20
 tab_group_main:
     is_root: true
     title: Get Started
     weight: 10
 keywords: ["getting started", "intro", "basics", "first steps", "linode platform"]
-description: "Learn how to create an account and use the Linode Cloud Platform."
 aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/','/guides/getting-started-with-linode/','/products/platform/accounts/get-started/','/guides/getting-started/','/guides/platform/get-started/']
-published: 2018-11-05
-modified: 2023-09-20
-modified_by:
-  name: Linode
 show_on_frontpage: true
 linkTitle: "Get Started"
 weight: 10
 icon: "book"
 show_on_rss_feed: false
 image: getting-started.jpg
-authors: ["Linode"]
 ---
 
 Our goal at Linode is to make cloud computing simple, accessible, and affordable. To this end, the Linode platform offers a variety of user-friendly cloud solutions, all of which have clear and predictable [pricing](https://www.linode.com/pricing/) and can be managed using an intuitive browser-based interface (the [Cloud Manager](https://www.linode.com/products/cloud-manager/)), the command line (the [Linode CLI](https://www.linode.com/products/cli/)), or programmatically through an API (the [Linode API](https://www.linode.com/products/linode-api/)). This guide covers signing up for a Linode account, accessing the Cloud Manager, creating your first services, and understanding how billing works.
@@ -37,7 +34,7 @@ First, you need to create a Linode account to start using our services. If you a
 
 1.  Enter your email address, a unique username, and a strong password. Alternatively, you can sign up using your existing Google or GitHub account. When using another provider, you are prompted for a username in a separate step.
 
-    {{< content "password-requirements-shortguide" >}}
+    {{% content "password-requirements-shortguide" %}}
 
 1.  A confirmation email is sent to your email address shortly after. Click the link in that email to confirm your email address.
 
@@ -51,7 +48,7 @@ First, you need to create a Linode account to start using our services. If you a
 
 1.  Most accounts are activated instantly and you can start adding services right away. A small number of accounts may require manual review prior to activation.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 Once your account has been created, consider **enabling 2FA** to prevent unauthorized access. Anyone that has access to your account may be able to delete your services, add new ones, and reset the root password on your Compute Instances to gain access to them. See [Cloud Manager Security Controls](/docs/products/platform/accounts/guides/user-security-controls/) for instructions on enabling 2FA. If you are logging in with a third party provider, consider adding 2FA through that provider.
 
 ## Navigate the Cloud Manager
@@ -88,7 +85,7 @@ In addition to [Compute Instances](#create-your-first-compute-instance), Linode 
 
 - [Managed Databases](https://www.linode.com/products/databases/): Reliable, performant, highly available, and fully managed database clusters to support production database workloads.
 
-    {{< content "dbass-eos" >}}
+    {{% content "dbass-eos" %}}
 
 **Storage**
 

@@ -1,14 +1,13 @@
 ---
 slug: mock-testing-using-the-python-unittest-library
-description: 'The Python unittest mock object library helps you perform testing on your Python applications. This guide shows you how to create a mock object and use the patch decorator to test your code.'
-keywords: ['python unittest','unittest mock','python unittest assert','mock object', 'python mock patch']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-03
-modified_by:
-  name: Linode
 title: "An Introduction to Mock Testing Using the Python Unittest Library"
 title_meta: "Mock Testing Using the Python Unittest Library"
+description: 'The Python unittest mock object library helps you perform testing on your Python applications. This guide shows you how to create a mock object and use the patch decorator to test your code.'
 authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2021-12-03
+keywords: ['python unittest','unittest mock','python unittest assert','mock object', 'python mock patch']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 The Python unittest library helps you test your application code for errors in an automated way. It’s one of the testing methods discussed in our guide, [An Overview of Python Testing Frameworks for Unit Testing](/docs/guides/python-testing-frameworks-for-software-unit-testing/#unittest-python-testing-framework-example). Mock testing is especially useful while your code is yet to be completed and your development is progressing. It performs continuous testing during development and provides good insights into how an application might ultimately function. This guide shows you how to use the Python unittest library to create mock objects to test your code.
@@ -53,7 +52,7 @@ The [Python unittest mock object library](https://docs.python.org/3/library/unit
 
 Working with a mock is different from working with standard objects. A mock can perform assertions and create a consistent result by setting object methods to a particular value. Mock objects can also look for side effects that result from making particular calls. However, a mock isn’t real code. A mock object behaves like a "real" object, but doesn't alter your code. The following steps go through some mock object basics to exemplify what mocks can accomplish.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You can run the steps in the following sections using your computer's Python interpreter. To access the Python interpreter, issue the following command:
 
     python3
@@ -134,7 +133,7 @@ Actual: setResult(1, 2)
 
 ### Using Mock Statistics
 
-When an application is too complex to perform a step-by-step analysis of every mocked call, use mock statistics to determine the application's health. The steps in this section show you how mock object statistics work. This section relies on the `myMock` object you created in the [Instantiate a New Mock Object](/docs/guides/mock-testing-using-the-python-unittest-library/#instantiate-a-new-mock-object) section.
+When an application is too complex to perform a step-by-step analysis of every mocked call, use mock statistics to determine the application's health. The steps in this section show you how mock object statistics work. This section relies on the `myMock` object you created in the [Instantiate a New Mock Object](#creating-a-new-mock-object) section.
 
 One of the most helpful statistics is the number of times a particular mock is called. If you expect five calls to a function or object and only get four, there is a problem. Use the code below to see how the `call_count` property works.
 

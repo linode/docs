@@ -1,25 +1,22 @@
 ---
 slug: ssl-certificates-with-apache-2-on-fedora-14
-deprecated: true
+title: SSL Certificates with Apache 2 on Fedora 14
 description: 'This guide will assist you with enabling SSL for websites being served by the free and open-source Apache2 web server for better web security on Fedora 14.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2013-10-04
 keywords: ["apache ssl", "ssl on fedora", "web server", "fedora 14"]
 tags: ["fedora","apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/ssl/ssl-certificates-with-apache-2-on-fedora-14/','/web-servers/apache/ssl-guides/fedora-14/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2011-04-05
-title: SSL Certificates with Apache 2 on Fedora 14
 relations:
     platform:
         key: ssl-certificate-apache
         keywords:
             - distribution: Fedora 14
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 This guide will assist you with enabling SSL for websites served under the Apache web server. We assume you've completed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Fedora 14 guide](/docs/guides/apache-2-web-server-on-fedora-14/). These steps should be performed via an SSH session to your Linode as the root user.
 
@@ -138,7 +135,7 @@ Now you'll need to get the root certificate for the CA that you paid to sign you
 
 -   [Verisign](https://knowledge.verisign.com/support/ssl-certificates-support/index.html)
 -   [Thawte](http://www.thawte.com/roots/index.html)
--   [Globalsign](http://www.globalsign.com/en//)
+-   [Globalsign](http://www.globalsign.com/en/)
 -   [Comodo](https://support.comodo.com/index.php?_m=downloads&_a=view&parentcategoryid=1&pcid=0&nav=0)
 
 For example, if we downloaded a root cert for Verisign, we would save it to `/etc/httpd/ssl/verisign.cer`.

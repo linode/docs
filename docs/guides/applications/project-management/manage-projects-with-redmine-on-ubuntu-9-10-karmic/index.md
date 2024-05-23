@@ -1,25 +1,22 @@
 ---
 slug: manage-projects-with-redmine-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Manage Projects with Redmine on Ubuntu 9.10 (Karmic)'
 description: 'Installing and configuring Redmine, an open source project management system on an Ubuntu 9.10 (Karmic) Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-11-23
+modified: 2011-05-17
 keywords: ["redmine", "redmine ubuntu 9.10", "project management software", "redmine postgresql", "redmine linux"]
 tags: ["ubuntu", "ruby", "nginx", "postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/manage-projects-with-redmine-on-ubuntu-9-10-karmic/','/web-applications/project-management/redmine/ubuntu-9-10-karmic/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2009-11-23
-title: 'Manage Projects with Redmine on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: manage-projects-with-redmine
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 Redmine is a popular open source project management system. Written in Ruby on Rails, it gives teams the ability to track project objectives, integrates well with various source control systems, and includes customizable reporting functionality. This guide will help you install it on your Ubuntu 9.10 (Karmic) Linode. We'll be using nginx with Phusion Passenger as the web server daemon for the site. If you already have the Apache web server installed, guidance will be provided for proxying incoming Redmine requests to nginx running on a different port.
 
@@ -27,7 +24,7 @@ We assume you've already followed the steps outlined in our [Setting Up and Secu
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

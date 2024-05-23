@@ -1,19 +1,18 @@
 ---
 slug: how-to-install-apache-kafka-on-ubuntu
+title: "Install and Configure Apache Kafka on Ubuntu"
+title_meta: "How to Install Apache Kafka on Ubuntu"
 description: "Learn how to install and configure Apache Kafka, a popular open-source platform for stream management and processing first developed by LinkedIn."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-06-11
 keywords: ['Apache','Kafka','streaming','processing','events']
 tags: ['ubuntu', 'kafka', 'apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-11
-modified_by:
-  name: Linode
-title: "Install and Configure Apache Kafka on Ubuntu"
-title_meta: "How to Install Apache Kafka on Ubuntu"
 external_resources:
 - '[Apache Kafka](https://kafka.apache.org/)'
 - '[Apache Kafka Downloads](https://kafka.apache.org/downloads)'
 - '[Apache Kafka Authentication page](https://www.apache.org/info/verification.html)'
-authors: ["Jeff Novotny"]
 tags: ["saas"]
 ---
 
@@ -25,7 +24,7 @@ tags: ["saas"]
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

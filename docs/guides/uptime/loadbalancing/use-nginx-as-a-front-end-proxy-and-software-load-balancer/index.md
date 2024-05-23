@@ -1,21 +1,20 @@
 ---
 slug: use-nginx-as-a-front-end-proxy-and-software-load-balancer
+title: 'Use NGINX as a Front-end Proxy and Software Load Balancer'
 description: 'NGINX web server can function as a capable load balancer in addition to serving static and dynamic content. This guide shows how to use it as a front-end proxy as well.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-11
+modified: 2019-02-01
 keywords: ["apache", "nginx", "proxy", "load balancer", "load balancing", "web server", "http", "use nginx as proxy", "use nginx as load-balancer", "front-end proxy", "cluster"]
 tags: ["nginx", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','/websites/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/','/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','/uptime/loadbalancing/use-nginx-as-a-front-end-proxy-and-software-load-balancer/','/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/','/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer/']
-modified: 2019-02-01
-modified_by:
-  name: Linode
-published: 2010-05-11
-title: 'Use NGINX as a Front-end Proxy and Software Load Balancer'
 external_resources:
  - '[NGINX Proxy Module](http://wiki.nginx.org/NginxHttpProxyModule)'
  - '[HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)'
  - '[NGINX Configuration](/docs/guides/how-to-configure-nginx/)'
 dedicated_cpu_link: true
-authors: ["Linode"]
 ---
 
 The NGINX web server can act as a very capable software load balancer, in addition to its more traditional roles serving static content over HTTP and dynamic content using FastCGI handlers for scripts. Because NGINX uses a non-threaded, event-driven architecture, it is able to outperform web servers like Apache. This is particularly true in deployments that receive heavy loads.
@@ -48,7 +47,7 @@ When a request reaches the NGINX front-end proxy server, here's an overview of t
 
 In this section, you'll configure Apache to listen on an alternate port so it can respond to the NGINX front end.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide assumes you are using Apache 2.4. Some path names will be slightly different if you are using an older version.
 {{< /note >}}
 
@@ -281,7 +280,7 @@ upstream appcluster {
 
 Here, the `ip_hash` directive causes NGINX to attempt to match requests originating from a single IP address with the same back-end component. If a component server is unreachable, NGINX will route those connections to an alternate component.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If a server needs to be taken offline for an extended period of time, append the `down` argument, as shown in the entry for `galloway.example.com:8801`. This will prevent missed connections from attempting to hit a component of the server which is down.
 {{< /note >}}
 

@@ -2,17 +2,14 @@
 title: "Managing IP Addresses on a Compute Instance"
 description: "Instructions on viewing, adding, deleting, transferring IP addresses for Linode Compute Instances using the Cloud Manager"
 og_description: "Learn how to manage IP addresses on a Linode Compute Instance"
+published: 2016-08-23
+modified: 2024-01-30
 keywords: ["ip addresses", "ip failover", "swapping ip addresses", "add ip address", "add additional ip address"]
 tags: ["linode platform","cloud manager","networking"]
-published: 2016-08-23
-modified: 2023-09-21
-modified_by:
-  name: Linode
 aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/','/guides/managing-ip-addresses/']
-authors: ["Linode"]
 ---
 
-Each Linode Compute Instance is equipped with several IP addresses, which enable it to be accessible over the public Internet and to other Linode services. This guide covers how to manage these IP addresses (including viewing, adding, removing, transferring, or sharing them) through the Cloud Manager.
+Each Linode Compute Instance is equipped with several IP addresses, which may enable it to be accessible over the public Internet and other Linode services or accessible just to other Compute Instances within a VPC. This guide covers how to manage these IP addresses (including viewing, adding, removing, transferring, or sharing them) through the Cloud Manager.
 
 ## Viewing IP Addresses
 
@@ -24,21 +21,27 @@ Each Linode Compute Instance is equipped with several IP addresses, which enable
 
     ![Summary section with the IP addresses highlighted](compute-ip-addresses-quick.png)
 
-1.  To view all IP addresses for this Instance (along with any associated rDNS values), click the **View all IP Addresses** link or navigate to the **Network** tab and review the **IP Addresses** section.
+1.  To view all public and private IP addresses for this Instance (along with any associated rDNS values), click the **View all IP Addresses** link or navigate to the **Network** tab and review the **IP Addresses** section.
 
     ![The IP Addresses table on the Network tab](compute-ip-addresses-full.png)
+
+    IP addresses for a VPC or VLAN interface are visible in the **Configurations** tab.
 
 ## Types of IP Addresses
 
 ### IPv4
 
-- **Public IPv4 Address:** All Compute Instances are created with at least one public IPv4 address, which enables your applications to be accessible over the Internet. Additional addresses can be provided with technical justification.
+- **Public IPv4 Address:** Most Compute Instances (those created without a VPC) have a single public IPv4 address, which enables your applications to be accessible over the Internet. Additional addresses can be provided with technical justification. If a VPC interface is configured when a Compute Instance is created, that instance typically does not have a public IPv4 address _unless_ the _Assign a public IPv4 address_ option is selected.
 
-- **Private IPv4 Address:** Optionally, private IPv4 addresses can be assigned to a Compute Instance. This allows it to connect to other services located in the same data center, such as NodeBalancers or other Compute Instances.
+- **VPC IPv4 Address:** If an instance is assigned to a VPC, that instance is assigned an IPv4 address from the CIDR range configured on the subnet. This IP address can be automatically generated or manually provided. Optionally, if the _Assign a public IPv4 address_ option is selected during creation, the instance is assigned public IPv4 address as well.
 
-    {{< note >}}
-    All private IPs in the same data center can communicate with each other over the private network. This means a Compute Instance's private IP address is accessible to all other Instances in that data center. It's recommended to set up firewall rules for your Linode to secure its network traffic. See our [firewall guides](/docs/security/firewalls/) for details on setting up firewall rules. In many cases, using [Private VLANs](/docs/products/networking/vlans/) is preferred over private IPv4.
-    {{< /note >}}
+- **VLAN IPv4 Address:** When a Compute Instance is configured with a VLAN, you assign it a IPv4 address to use within the VLAN. It is also automatically assigned a public IPv4 address.
+
+- **Private IPv4 Address:** Optionally, a private IPv4 address can be assigned to a Compute Instance. This allows it to connect to other services located in the same data center, such as NodeBalancers or other Compute Instances.
+
+{{< note title="A VPC is the recommended method for network isolation" >}}
+In most cases, a VPC is the better option for true network isolation than either a VLAN or a private IP address. For a comparison between these methods, review the [VPC](/docs/products/networking/vpc/#difference-between-private-network-options-vpcs-vlans-and-private-ips) documentation.
+{{< /note >}}
 
 ### IPv6 Addresses
 
@@ -148,7 +151,7 @@ This process only transfers IPv4 addresses and IPv6 ranges, not IPv6 SLAAC addre
 
 ### Transferring an IPv6 SLAAC Address
 
-IPv6 SLAAC addresses are not able to be transferred between Compute Instances. If this is something you need to do, consider moving the applications you want to be hosted on that IPv6 address over to the Compute Instance containing that IPv6 address. One way to accomplish this is to clone the disks containing the data. See the [Cloning to an Existing Linode](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode) section of the **Cloning a Linode** guide. After the cloning process has completed, transfer any required IPv4 addresses.
+IPv6 SLAAC addresses are not able to be transferred between Compute Instances. If this is something you need to do, consider moving the applications you want to be hosted on that IPv6 address over to the Compute Instance containing that IPv6 address. One way to accomplish this is to clone the disks containing the data. See the [Cloning to an Existing Linode](/docs/products/compute/compute-instances/guides/clone-instance/#clone-to-an-existing-compute-instance) section of the **Cloning a Linode** guide. After the cloning process has completed, transfer any required IPv4 addresses.
 
 ## Configuring IP Sharing
 

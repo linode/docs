@@ -1,18 +1,16 @@
 ---
 slug: mysql-authsocket-authentication-note-shortguide
-description: 'Shortguide that describes how MySQL auth_socket authentication works.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-03
-modified_by:
-  name: Nathan Melehan
-published: 2018-08-03
 title: About MySQL auth_socket Authentication
+description: 'Shortguide that describes how MySQL auth_socket authentication works.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-08-03
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: []
 tags: ["web server","php","mysql","apache","security","lamp"]
 headless: true
 show_on_rss_feed: false
 aliases: ['/web-servers/lamp/mysql-authsocket-authentication-note-shortguide/']
-authors: ["Linode"]
 ---
 
 {{< note type="secondary" title="About MySQL authentication" isCollapsible=true >}}

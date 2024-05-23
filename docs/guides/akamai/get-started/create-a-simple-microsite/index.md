@@ -1,16 +1,14 @@
 ---
 slug: create-a-simple-microsite
+title: Create a Simple Microsite
 description: 'Combine the capabilities of the Akamai and Linode platforms to create a complete end-to-end solution for a simple microsite.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2022-10-13
 keywords: ["microsite", "cdn", "high availability"]
 tags: ["linode platform","akamai platform","web server","cdn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-10-13
-modified_by:
-  name: Linode
-published: 2022-10-13
-title: Create a Simple Microsite
 aliases: ['/guides/akamai/get-started/create-a-simple-microsite/']
-authors: ["Linode"]
 ---
 
 This use case combines Linode's and Akamai's capabilities to create a complete end-to-end solution for a simple microsite. To build this application we'll use Linode origin servers and an Akamai delivery product.
@@ -68,7 +66,7 @@ To avoid an unexpected bill make sure to delete this Linode Compute Instance onc
 1.  Enter required information under the **NodeJS Setup** section. For more information and instructions refer to [Guides - Deploying Node.js through the Linode Marketplace](/docs/products/tools/marketplace/guides/nodejs/).
 
     {{< note respectIndent=false >}}
-This guide involves configuring DNS settings and SSL certificates for your domain. These steps can be automated during the Marketplace App installation process by providing a Linode [API Token](/docs/products/tools/api/get-started/#create-an-api-token) during setup.
+This guide involves configuring DNS settings and SSL certificates for your domain. These steps can be automated during the Marketplace App installation process by providing a Linode [API Token](/docs/products/tools/api/guides/manage-api-tokens/#create-an-api-token) during setup.
 
 During installation, the API Token is used to generate a domain zone and records using Linode [DNS Manager](/docs/products/networking/dns-manager/). The Node.js Marketplace App then utilizes [certbot](https://certbot.eff.org/) to generate SSL certificates for your domain and subdomain.
 

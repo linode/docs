@@ -1,17 +1,16 @@
 ---
 slug: manage-web-content-with-plone-on-debian-5-lenny
-deprecated: true
+title: 'Manage Web Content with Plone on Debian 5 (Lenny)'
 description: 'Using the Plone Content Management System, built on the Zope framework, to deploy complex and content rich sites on Debian 5 (Lenny) systems.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-01-29
+modified: 2011-06-03
 keywords: ["plone", "zope", "python", "debian", "web framework", "content management systems", "cms"]
 tags: ["nginx","apache","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/cms-guides/plone/','/websites/cms/plone/manage-web-content-with-plone-on-debian-5-lenny/','/websites/cms/manage-web-content-with-plone-on-debian-5-lenny/']
-modified: 2011-06-03
-modified_by:
-  name: Linode
-published: 2010-01-29
-title: 'Manage Web Content with Plone on Debian 5 (Lenny)'
-authors: ["Linode"]
+deprecated: true
 ---
 
 Plone is an advanced system for managing complex and content rich websites. Written in the Python programing language using the Zope web-framework, Plone provides a flexible substrate on top of the Zope system for developing highly specialized websites and is supported by an active community of developers. Zope provides a vibrant architecture for building complex and usable tools in a Python and web-centric manner. Plone and Zope may strike systems administrators as unique in comparison to other content management systems because they generate content by modifying the behavior of the Zope application server while incoming requests are proxied through a front end server like [Apache](/docs/web-servers/apache/) or [nginx](/docs/web-servers/nginx).
@@ -165,7 +164,7 @@ Congratulations, you now have a fully functional Plone system that is ready for 
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [The Zope Book](http://docs.zope.org/zope2/zope2book//)
+- [The Zope Book](http://docs.zope.org/zope2/zope2book/)
 - [Basic nginx configuration](/docs/guides/how-to-configure-nginx/)
 - [ProxyPass Apache to Multiple Webservers](/docs/guides/multiple-web-servers-with-proxypass-on-debian-5-lenny/)
 

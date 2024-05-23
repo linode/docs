@@ -1,25 +1,22 @@
 ---
+title: "Deploy Wazuh through the Linode Marketplace"
 description: "Deploy Wazuh on a Linode Compute Instance. This provides you with an open source a security monitoring solution."
-keywords: ['security','vulnerability','monitoring']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
 modified: 2023-09-11
-modified_by:
-  name: Linode
-title: "Deploy Wazuh through the Linode Marketplace"
+keywords: ['security','vulnerability','monitoring']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Wazuh](https://wazuh.com/)'
 aliases: ['/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-app/']
-authors: ["Linode"]
 ---
 
 [Wazuh](https://wazuh.com/) provides a security solution for monitoring your infrastructure and detecting threats, intrusion attempts, system anomalies, poorly configured applications, and unauthorized user actions. It also provides a framework for incident response and regulatory compliance.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Wazuh should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
@@ -34,11 +31,11 @@ authors: ["Linode"]
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -100,4 +97,4 @@ Now that you’ve accessed your Wazuh instance, you need to configure a [Wazuh A
 
 For more documentation on Wazuh, check out [the official Wazuh documentation](https://documentation.wazuh.com/current/installation-guide/index.html) to learn how to further utilize your instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

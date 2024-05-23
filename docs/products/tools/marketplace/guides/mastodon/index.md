@@ -1,17 +1,14 @@
 ---
 title: "Deploy Mastodon through the Linode Marketplace"
 description: "Learn how to deploy Mastodon, a decentralized social network and micro-blogging platform, on the Linode Marketplace."
+published: 2022-12-12
+modified: 2024-04-16
 keywords: ['social', 'messaging', 'mastodon']
 tags: ["linode platform","mastodon","marketplace","cloud-manager",]
-published: 2022-12-12
-modified: 2023-09-11
-modified_by:
-  name: Linode
 external_resources:
   - '[Mastodon Deployment Github Repository](https://github.com/linode-solutions/mastodon-oca)'
   - '[Mastodon Official Documentation](https://docs.joinmastodon.org/)'
 aliases: ['/guides/mastodon-marketplace-app/']
-authors: ["Linode"]
 ---
 
 [Mastodon](https://docs.joinmastodon.org/) is an open-source and decentralized micro-blogging platform used to create a social network based on open web standards and principles. Like Twitter, it lets users follow other users and post text, photos, and video content. Unlike Twitter, Mastodon is decentralized, meaning that its content is not maintained by a central authority.
@@ -20,7 +17,7 @@ The Mastodon platform takes a federated approach to social networking. Each Mast
 
 Mastodon servers range in size from small private instances to massive public instances and typically center on specific interests or shared principles. The biggest Mastodon server is [Mastodon.social](https://mastodon.social/about), a general-interest server created by the developers of the Mastodon platform. It has over 540,000 users and boasts a thorough [Code of Conduct](https://mastodon.social/about/more).
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 {{< note >}}
 The Mastodon Marketplace App *requires* a custom domain. After deploying Mastodon, see the instructions within the [Configure Your Domain's Name Servers](#configure-your-domains-name-servers) section. Depending on a variety of factors, new and updated DNS records can take up to 48 hours to fully propagate, though it usually happens much sooner. The deployment fails if the DNS has still not been propagated.
@@ -29,9 +26,9 @@ The Mastodon Marketplace App *requires* a custom domain. After deploying Mastodo
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Mastodon should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
@@ -39,10 +36,12 @@ The Mastodon Marketplace App *requires* a custom domain. After deploying Mastodo
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 11
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** 2GB Shared CPU Compute Instance or higher
 
 ### Mastodon Options
+
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 - **Domain** (*required*): The domain name you wish to use for the mastodon server, such as *example.com*.
 - **Linode API Token** (*required*): A personal access token for your account. The Linode API is used to create DNS records for your custom domain through the [DNS Manager](/docs/products/networking/dns-manager/). See [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/).
@@ -97,8 +96,8 @@ Open a web browser and navigate to the custom domain you entered when deploying 
     - **Sidekiq:** `https://[domain.tld]/sidekiq`
     - **PgHero:** `https://[domain.tld]/pghero`
 
-1. The Mastodon server is configured to send emails for actions such as new users signing up or resetting a password. The installation includes only minimal DNS records and there may be limited deliverability without further configuration. Review the guide to [Sending Email on Linode](/docs/guides/running-a-mail-server/#sending-email-on-linode) for more information on DNS configurations and email best practices.
+1. The Mastodon server is configured to send emails for actions such as new users signing up or resetting a password. The installation includes only minimal DNS records and there may be limited deliverability without further configuration. Review the guide to [Sending Email on Linode](/docs/products/platform/get-started/guides/send-email/) for more information on DNS configurations and email best practices.
 
 To learn more about Mastodon, check out the [official documentation](https://docs.joinmastodon.org/) and [Mastodon blog](https://blog.joinmastodon.org/) with news and articles related to Mastodon. You can engage with the Mastodon administrative community on [Mastodon’s discussion forum](https://discourse.joinmastodon.org/), where you can peruse conversations about technical issues and community governance. When you are ready to make your instance known to the world, you can add it to the list over at [Instances.social](https://instances.social/admin) by filling out the admin form.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

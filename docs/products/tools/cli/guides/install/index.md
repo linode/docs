@@ -1,8 +1,7 @@
 ---
 title: "Install and Configure the Linode CLI"
 description: "Learn how to install the Linode CLI on most common operating systems"
-modified: 2023-06-27
-authors: ["Linode"]
+modified: 2024-01-26
 ---
 
 ## Install the Linode CLI
@@ -23,6 +22,13 @@ The [Linode CLI](https://github.com/linode/linode-cli) is officially managed thr
     ```command
     pip3 install linode-cli --upgrade
     ```
+
+    If you receive an error like the one in the output below, you will need to add your Python's bin folder to your system PATH environment variable. Instructions for adding a directory to PATH vary for each operating system.
+
+    ```output
+    WARNING: The script normalizer is installed in '/Users/{{< placeholder "USERNAME" >}}/Library/Python/3.9/bin' which is not on PATH.
+    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+    ``````
 
 1.  Install the boto library if you intend to interact with Linode's Object Storage service.
 

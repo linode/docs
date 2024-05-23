@@ -2,18 +2,19 @@
 title: VPC
 title_meta: "VPC Product Documentation"
 description: "VPCs make it easy to create your own virtual private clouds on the Akamai cloud computing platform, providing an isolated network for your applications."
+published: 2024-02-06
+modified: 2024-02-12
 bundles: ['network-security']
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
-published: 2024-01-09
 cascade:
-    product_description: "A virtual private enables private communication between Compute Instances, isolating your network traffic from other customers and the internet."
+    product_description: "A virtual private cloud enables private communication between Compute Instances, isolating your network traffic from other customers and the internet."
 ---
 
-{{< note type="warning" title="VPC Beta Notice" >}}
-VPCs are now publicly available in beta, providing customers with another method of isolating network traffic between Compute Instances (in addition to the [VLANs](/docs/products/networking/vlans/) feature). Not all data centers are currently supported. For more information, review the [Availability](#availability) section.
+{{< note title="VPC Availability" >}}
+VPCs are now publicly available to all customers in select data centers. For a list of supported regions, review the [Availability](#availability) section.
 {{</ note >}}
 
 A VPC (*Virtual Private Cloud*) is an isolated network that enables private communication between Compute Instances within the same data center. Since Cloud environments often necessitate sharing infrastructure with other users, VPCs are a critical component of many application architectures and can further isolate your workloads from other Akamai users.
@@ -24,7 +25,9 @@ Networking packets sent over a VPC are walled off from the public internet --- a
 
 ## Segment Traffic Into Separate Subnets
 
-Each VPC can further segment itself into distinct networks through the use of multiple subnets. These subnets can isolate various functionality of an application (such as separating public frontend service from private backend services) or separate out a production environment from staging or development.
+Instead of assigning a single IPv4 range for the entire VPC, Akamai's VPC design allows users to configure multiple RFC1918 ranges through the use of subnets. This has the benefit of segmenting services into distinct networks and can be useful when migrating or combining existing networking environments so that there are no changes to routing or static IPs. These subnets can isolate various functionality of an application (such as separating public frontend services from private backend services) or separate out a production environment from staging or development.
+
+Routing between subnets on a VPC is configured automatically. By default, all Compute Instances on a VPC can communicate with any other instance on that VPC, regardless of which subnet the other instance is assigned to use.
 
 ## Compatible with Cloud Firewalls
 
@@ -32,7 +35,7 @@ If a Compute Instance is assigned to a Cloud Firewall, firewall rules that limit
 
 ## Availability
 
-VPCs are available to all customers as a public beta in a small number of data centers. Additional regions will be made available throughout the beta period and after the public launch.
+VPCs are available in: Amsterdam (Netherlands), Chennai (India), Chicago IL (USA), Jakarta (Indonesia), Los Angeles CA (USA), Miami FL (USA), Milan (Italy), Paris (France), Osaka (Japan), São Paulo (Brazil), Seattle WA (USA), Stockholm (Sweden), and Washington DC (USA).
 
 ## Pricing
 
@@ -52,11 +55,13 @@ Both [VLANs](/docs/products/networking/vlans/) and [Private IP addresses](/docs/
 
 ## Technical Specifications
 
-- Users can create up to 10 VPCs per data center (by default). Each VPC can have up to 10 subnets.
+- Users can create up to 10 VPCs per data center (by default).
+
+- Each VPC can have up to 10 subnets.
 
 - Compute Instances can join a VPC by specifying the VPC as a network interface. Other services, such as NodeBalancers, LKE clusters, and Managed Databases cannot join a VPC at this time.
 
-- VPCs are deployed to a specific data center when created. Only compatible services within that data center can belong to a VPC.
+- VPCs can only be deployed to a single data center. As such, Compute Instances within different data centers cannot belong to the same VPC.
 
 - A VPC interface can be private or have public internet access through a 1:1 NAT.
 
@@ -69,3 +74,9 @@ Both [VLANs](/docs/products/networking/vlans/) and [Private IP addresses](/docs/
 - IPv6 addresses are not available on a VPC interface.
 
 - VPC IP addresses cannot use [IP Sharing](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-ip-sharing) or [IP Transfer](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#transferring-ip-addresses) features.
+
+- To facilitate routing between different subnets on the same VPC, configure the VPC network interface as the primary interface.
+
+- Network traffic across a private VPC network does not count against your [monthly network transfer usage](/docs/products/platform/get-started/guides/network-transfer/). The network transfer allowance for Compute Instances configured on VPCs still counts towards the _global network transfer pool_ on your account.
+
+- Using the [Metadata service](/docs/products/compute/compute-instances/guides/metadata/) over a VPC is not yet supported.

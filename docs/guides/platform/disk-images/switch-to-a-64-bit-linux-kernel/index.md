@@ -1,20 +1,19 @@
 ---
 slug: switch-to-a-64-bit-linux-kernel
-deprecated: true
+title: 'Switch to a 64-bit Linux Kernel'
 description: 'Learn how to Switch to a 64-bit Linux Kernel with Your Existing Distribution.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2014-04-14
+modified: 2016-10-13
 keywords: ["linux kernel", "64-bit", "switch kernel", "migrate", "disk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/switching-kernels/','/migrate-to-linode/disk-images/switch-to-a-64-bit-linux-kernel/','/platform/disk-images/switch-to-a-64-bit-linux-kernel/','/migrate-to-linode/disk-images/switching-to-a-64bit-kernel/']
-modified: 2016-10-13
-modified_by:
-  name: Edward Angert
-published: 2014-04-14
-title: 'Switch to a 64-bit Linux Kernel'
 external_resources:
  - '[ArchWiki](https://wiki.archlinux.org/index.php/Migrating_between_architectures)'
  - '[AskUbuntu](http://askubuntu.com/questions/81824/how-can-i-switch-a-32-bit-installation-to-a-64-bit-one)'
 tags: ["linode platform"]
-authors: ["Alex Fornuto"]
+deprecated: true
 ---
 
 Before an existing Linode can be migrated to a new host, you'll need to ensure that all configuration profiles on that Linode are using a 64-bit kernel. This guide will show you how to make that switch, and warn about some of the more common issues to look out for in the process.
@@ -43,7 +42,7 @@ The following is a list of software with known issues running on a 32-bit distri
 -  OpeniSCSI
 -  Java
 
-If you're ready to rebuild your Linode using a 64-bit distribution, you can start by following the steps to create a new disk and configuration profile in the [Managing Disks and Storage on a Linode](/docs/products/compute/compute-instances/guides/disks-and-storage/#creating-a-disk) and [Managing Configuration Profiles on a Linode](/docs/products/compute/compute-instances/guides/configuration-profiles/#creating-a-configuration-profile) guide. After a new disk and configuration profile has been created, you can copy your data to the new 64-bit version and then delete your old profile and disks.
+If you're ready to rebuild your Linode using a 64-bit distribution, you can start by following the steps to create a new disk and configuration profile in the [Managing Disks and Storage on a Linode](/docs/products/compute/compute-instances/guides/disks-and-storage/#create-a-disk) and [Managing Configuration Profiles on a Linode](/docs/products/compute/compute-instances/guides/configuration-profiles/#create-a-configuration-profile) guide. After a new disk and configuration profile has been created, you can copy your data to the new 64-bit version and then delete your old profile and disks.
 
 Otherwise, find your Linux distribution of choice below to check for additional known issues.
 

@@ -3,10 +3,9 @@ title: "Connect to a MySQL Managed Database"
 description: "Learn how to connect to a MySQL Managed Database through the command line or MySQL Workbench."
 published: 2022-02-23
 modified: 2022-07-22
-authors: ["Linode"]
 ---
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}
 
 To connect to a MySQL Managed Database, you need to know a few important details, such as the username, password, and host (or IP). You'll also need a MySQL client. This guide details how to access your database using popular tools.
 

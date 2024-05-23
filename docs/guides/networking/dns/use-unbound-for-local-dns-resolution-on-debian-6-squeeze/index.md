@@ -1,22 +1,21 @@
 ---
 slug: use-unbound-for-local-dns-resolution-on-debian-6-squeeze
-deprecated: true
+title: 'Use Unbound for Local DNS Resolution on Debian 6 (Squeeze)'
 description: 'Configure and run your own DNS resolver using the Unbound Server on Debian 6 (Squeeze).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-15
+modified: 2011-05-13
 keywords: ["unbound debian 6", "unbound debian squeeze", "dns debian", "dns", "resolving", "caching", "unbound", "debian"]
 tags: ["dns","networking","resolving","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/dns-guides/unbound-dns-resolver-debian-6-squeeze/','/networking/dns/use-unbound-for-local-dns-resolution-on-debian-6-squeeze/']
-modified: 2011-05-13
-modified_by:
-  name: Linode
-published: 2011-02-15
-title: 'Use Unbound for Local DNS Resolution on Debian 6 (Squeeze)'
 relations:
     platform:
         key: unbound-local-dns-resolution
         keywords:
             - distribution: Debian 6
-authors: ["Linode"]
+deprecated: true
 ---
 
 In the default configuration, Linode systems are configured to query DNS resolvers provided by Linode. If you don't want to use a third party DNS service on your system, you may consider running an independent DNS resolving and caching service such as [Unbound DNS resolver](http://unbound.net). Unbound is easy to install and configure, which makes it an ideal resolver for simple deployments.
@@ -25,7 +24,7 @@ If you are unfamiliar with DNS, you may want to consider our [introduction to th
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -89,7 +88,7 @@ Unbound is now active and functional.
 
 Before you can begin using your Unbound instance to resolve DNS queries, you need to configure your `/etc/resolv.conf` file to point to the new resolver. You can remove all existing lines from this file or comment them by prepending hash marks (e.g. `#`) to every line.
 
-**Important:** By default, Linodes use DHCP to assign networking settings, including the public IP address and DNS resolvers. For any systems that you intend to use a custom resolver with, you must follow our instructions for [static networking](/docs/products/compute/compute-instances/guides/manual-network-configuration/#static-network-configuration). This will prevent your `/etc/resolv.conf` file getting overwritten with the default resolvers after a system reboot.
+**Important:** By default, Linodes use DHCP to assign networking settings, including the public IP address and DNS resolvers. For any systems that you intend to use a custom resolver with, you must follow our instructions for [static networking](/docs/products/compute/compute-instances/guides/manual-network-configuration/). This will prevent your `/etc/resolv.conf` file getting overwritten with the default resolvers after a system reboot.
 
 If you're accessing your Unbound instance over the local interface, make sure your `/etc/resolv.conf` resembles the following:
 

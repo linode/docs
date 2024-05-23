@@ -1,9 +1,9 @@
 ---
 title: "Deploy SimpleX Chat on Linode through the Linode Marketplace"
 description: 'Deploy SimpleX Chat on Linode through the Linode Marketplace.'
+published: 2023-09-15
 keywords: [ 'simplex','chat', 'server']
 tags: ["cloud","linode platform", "marketplace"]
-published: 2023-09-15
 author:
   name: shum
   email: sh@simplex.chat
@@ -15,9 +15,9 @@ SimpleX Chat is a private messaging platform that uses temporary anonymous ident
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** SimpleX Chat should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -37,8 +37,8 @@ SimpleX Chat is a private messaging platform that uses temporary anonymous ident
 
 ### Linode Options
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -56,4 +56,4 @@ For more information on configuration and linking the SimpleX app to your SMP se
 
 - [Hosting your own XFTP Server](https://simplex.chat/docs/xftp-server.html)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

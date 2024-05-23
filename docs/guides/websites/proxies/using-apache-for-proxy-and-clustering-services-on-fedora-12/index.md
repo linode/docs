@@ -1,25 +1,22 @@
 ---
 slug: using-apache-for-proxy-and-clustering-services-on-fedora-12
-deprecated: true
+title: Using Apache for Proxy and Cluster Services on Fedora 12
 description: 'How to cluster Apache web servers and proxy requests for content to external servers on Fedora 12.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-03-08
+modified: 2011-04-29
 keywords: ["clusters", "proxy", "proxy pass", "apache", "httpd"]
 tags: ["proxy","apache","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/proxy-configuration/proxy-and-clustering-services-fedora-12/','/websites/proxies/using-apache-for-proxy-and-clustering-services-on-fedora-12/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-03-08
-title: Using Apache for Proxy and Cluster Services on Fedora 12
 relations:
     platform:
         key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: Fedora 12
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 The Apache HTTP server is a versatile and robust engine for providing access to resources over HTTP. With its modular design and standard [configuration system](/docs/guides/apache-configuration-basics/), it is a popular and familiar option for systems administrators and architects who require a potentially diverse array of HTTP services, along with a stable and predictable administrative interface. In addition to simply serving content and facilitating the generation of dynamic content, the Apache HTTP server can be deployed as a frontend server to manage clusters of web servers.
 
@@ -62,7 +59,7 @@ Now, place the static files in the `/srv/www/static.example.com/public_html/` fo
 
 ## Case Two: Using ProxyPass to Delegate Services to Alternate Machines
 
-In our guide to using [multiple web servers with ProxyPass](/docs/guides/multiple-web-servers-with-proxypass-on-fedora-12/) we outline a method for configuring multiple websites using Apache's `mod_proxy` module. Please follow that guide, particularly the section regarding [configuring mod\_proxy](/docs/guides/multiple-web-servers-with-proxypass-on-fedora-12/#enabling_the_proxy_module) to ensure that `mod_proxy` is active.
+In our guide to using [multiple web servers with ProxyPass](/docs/guides/multiple-web-servers-with-proxypass-on-fedora-12/) we outline a method for configuring multiple websites using Apache's `mod_proxy` module. Please follow that guide, particularly the section regarding [configuring mod_proxy](/docs/guides/multiple-web-servers-with-proxypass-on-fedora-12/) to ensure that `mod_proxy` is active.
 
 Once `mod_proxy` is enabled and configured, you can insert the following directives into your virtual hosting configuration:
 
@@ -154,7 +151,7 @@ In this example, the `RewriteCond` controls the behavior of the `RewriteEngine` 
 
 All of the previous cases presented in this document outline configurations for using `mod_proxy` in various configurations to make it possible to use your Apache HTTP server as a frontend for a more complex architecture. This case takes this one step further, by allowing Apache to proxy requests to a group of identical backend servers, and thus be able to handle a much larger load.
 
-Ensure that you have a `/etc/httpd/conf.d/proxy.conf` file as described in [this documentation](/docs/guides/multiple-web-servers-with-proxypass-on-fedora-12/#enabling_the_proxy_module). Do not omit to reload Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
+Ensure that you have a `/etc/httpd/conf.d/proxy.conf` file as described in [this documentation](/docs/guides/multiple-web-servers-with-proxypass-on-fedora-12/#enabling-the-proxy-module). Do not omit to reload Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
 
 {{< file "Apache Virtual Host Configuration" apache >}}
 <VirtualHost example.com:80>

@@ -1,13 +1,13 @@
 ---
 slug: how-to-install-wordpress-ubuntu-22-04
-description: 'This guide explains how to install and configure WordPress on Ubuntu 22.04.'
-keywords: ['wordpress ubuntu','wordpress download','what is wordpress','how to install wordpress', 'ubuntu wordpress install']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-19
-modified_by:
-  name: Linode
 title: "Install WordPress on Ubuntu 22.04"
 title_meta: "How to Install WordPress on Ubuntu 22.04"
+description: 'This guide explains how to install and configure WordPress on Ubuntu 22.04.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-05-19
+keywords: ['wordpress ubuntu','wordpress download','what is wordpress','how to install wordpress', 'ubuntu wordpress install']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[WordPress](https://wordpress.org/)'
 - '[WordPress documentation](https://wordpress.org/support/)'
@@ -25,7 +25,6 @@ relations:
         key: how-to-install-wordpress
         keywords:
            - distribution: Ubuntu 22.04 LTS
-authors: ["Jeff Novotny"]
 ---
 
 [WordPress](https://wordpress.org/) is one of the most common *content management systems* (CMS) in use today. WordPress allows [Ubuntu](https://ubuntu.com/server) and other Linux users to design a website and add content using its intuitive GUI. WordPress also allows site owners to install a diverse selection of themes and plug-ins to further customize their site. This guide explains how to install WordPress on Ubuntu 22.04 LTS. It also describes how to configure and start using WordPress after installation.
@@ -42,7 +41,7 @@ A Ubuntu LAMP or LEMP stack satisfies all these prerequisites. A LAMP stack incl
 
 For greater security, WordPress highly recommends HTTPS. However, these instructions work whether HTTPS is configured on the server or not. For information about enabling HTTPS on Ubuntu, see the [Linode guide on enabling HTTPS on Apache](/docs/guides/enabling-https-using-certbot-with-apache-on-ubuntu/). An alternate guide for [NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) is also available.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 WordPress sites are almost always accessed using a domain name. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 {{< /note >}}
 
@@ -54,7 +53,7 @@ WordPress sites are almost always accessed using a domain name. For more informa
 
 1.  Fully configure a LAMP or LEMP stack on the Linode and confirm it is working properly.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -62,7 +61,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 To properly configure and use WordPress on Ubuntu, a LAMP or LEMP stack must already be installed and working. However, WordPress requires a few additional modifications to the various LAMP/LEMP Stack components. In the following examples, replace `example.com` with the actual domain name wherever it appears.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 These instructions are designed for Ubuntu 22.04 LTS, but are generally valid for all recent Ubuntu releases.
 {{< /note >}}
 

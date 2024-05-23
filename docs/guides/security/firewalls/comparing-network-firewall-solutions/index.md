@@ -2,12 +2,11 @@
 slug: comparing-network-firewall-solutions
 title: "Comparing Linux-Based Network Firewall Software"
 description: 'Learn to compare the software options for configuring a firewall on your Linux system.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2024-01-03
 keywords: ['firewall', 'nftables', 'iptables', 'ufw', 'firewalld']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2024-01-03
-modified_by:
-  name: Linode
 ---
 
 Implementing a firewall is crucial for securing your Linux system. There are an array of popular software firewalls to choose from, and each offers unique features. So understanding how these tools compare can help you choose the best firewall for your needs.

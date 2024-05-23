@@ -285,7 +285,9 @@ export function newSearchStore(searchConfig, params, Alpine) {
 
 		let hitsPerPage = 0;
 		let q = '';
-		let filters = sectionConfig.filters || '';
+		// TODO(bep) we have removed the QA section from explorer/search, but the
+		// data is still there. The docType filter below can be remove when we have completed the migration.
+		let filters = sectionConfig.filters || 'NOT docType:community';
 		let facetFilters = [];
 		let attributesToHighlight = [];
 		let analyticsTags = [];
@@ -318,97 +320,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 	return store;
 }
 
-// Normalization of search results.
-const normalizeResult = function (self, result) {
-	let hitsStart = 0;
-	let hitsEnd = 0;
-
-	if (result.nbHits) {
-		hitsStart = result.page * result.hitsPerPage;
-		hitsStart = hitsStart ? hitsStart + 1 : 1;
-		hitsEnd = hitsStart + result.hits.length - 1;
-	}
-
-	result.stats = {
-		totalNbHits: result.nbHits,
-		totalNbPages: result.nbPages,
-		hitsStart: hitsStart,
-		hitsEnd: hitsEnd,
-	};
-
-	let facets = result.facets;
-	if (facets) {
-		// Apply metadata to the section facets.
-		let facetsMeta = {};
-		Object.entries(facets).forEach(([k, v]) => {
-			if (k === 'docType' || k.startsWith('section.')) {
-				let obj = {};
-				Object.entries(v).forEach(([kk, vv]) => {
-					let m = self.metaProvider.getSectionMeta(kk.toLocaleLowerCase());
-					obj[kk] = { count: vv, meta: m };
-				});
-				facetsMeta[k] = obj;
-			} else {
-				facetsMeta[k] = v;
-			}
-		});
-		result.facetsMeta = facetsMeta;
-	}
-
-	result.sections = function () {
-		let sections = [];
-
-		if (!this.facets) {
-			return sections;
-		}
-
-		let position = 0;
-
-		for (let i = 0; ; i++) {
-			// webserver
-			// webserver apache
-			let key = `section.lvl${i}`;
-			let sectionFacets = this.facets[key];
-			let facetsMeta = this.facetsMeta[key];
-
-			if (!sectionFacets) {
-				break;
-			}
-
-			for (let k in sectionFacets) {
-				let sectionLvl0 = k;
-				if (i > 0) {
-					sectionLvl0 = k.split(' > ')[0];
-				}
-				let meta;
-				let facetMeta = facetsMeta[k];
-				if (facetMeta) {
-					meta = facetMeta.meta;
-				}
-
-				let isGhostSection = k === 'community > question';
-				// These are also indexed on its own.
-				let hasObjectID = sectionLvl0 == 'products' || sectionLvl0 == 'guides';
-				position++;
-
-				sections.push({
-					key: k,
-					count: sectionFacets[k],
-					isGhostSection: isGhostSection,
-					sectionLvl0: sectionLvl0,
-					meta: meta,
-					// Used for Analytics.
-					hasObjectID: hasObjectID,
-					queryID: result.queryID,
-					position: position,
-				});
-			}
-		}
-
-		return sections;
-	};
-
-	let lang = getCurrentLang();
+export function normalizeAlgoliaResult(result, lang = '') {
 	let index = result.index;
 	let queryID = result.queryID ? result.queryID : '';
 
@@ -486,6 +398,106 @@ const normalizeResult = function (self, result) {
 			return Object.values(this.tags);
 		};
 	});
+}
+
+// Normalization of search results.
+const normalizeResult = function (self, result) {
+	let hitsStart = 0;
+	let hitsEnd = 0;
+
+	if (result.nbHits) {
+		hitsStart = result.page * result.hitsPerPage;
+		hitsStart = hitsStart ? hitsStart + 1 : 1;
+		hitsEnd = hitsStart + result.hits.length - 1;
+	}
+
+	result.stats = {
+		totalNbHits: result.nbHits,
+		totalNbPages: result.nbPages,
+		hitsStart: hitsStart,
+		hitsEnd: hitsEnd,
+	};
+
+	let facets = result.facets;
+	if (facets) {
+		// Apply metadata to the section facets.
+		let facetsMeta = {};
+		Object.entries(facets).forEach(([k, v]) => {
+			if (k === 'docType' || k.startsWith('section.')) {
+				let obj = {};
+				Object.entries(v).forEach(([kk, vv]) => {
+					// TODO(bep) we have removed the QA section from explorer/search, but the
+					// data is still there. The docType filter below can be remove when we have completed the migration.
+					if (k == 'docType' && kk == 'community') {
+						return;
+					}
+					let m = self.metaProvider.getSectionMeta(kk.toLocaleLowerCase());
+					obj[kk] = { count: vv, meta: m };
+				});
+				facetsMeta[k] = obj;
+			} else {
+				facetsMeta[k] = v;
+			}
+		});
+		result.facetsMeta = facetsMeta;
+	}
+
+	result.sections = function () {
+		let sections = [];
+
+		if (!this.facets) {
+			return sections;
+		}
+
+		let position = 0;
+
+		for (let i = 0; ; i++) {
+			// webserver
+			// webserver apache
+			let key = `section.lvl${i}`;
+			let sectionFacets = this.facets[key];
+			let facetsMeta = this.facetsMeta[key];
+
+			if (!sectionFacets) {
+				break;
+			}
+
+			for (let k in sectionFacets) {
+				let sectionLvl0 = k;
+				if (i > 0) {
+					sectionLvl0 = k.split(' > ')[0];
+				}
+				let meta;
+				let facetMeta = facetsMeta[k];
+				if (facetMeta) {
+					meta = facetMeta.meta;
+				}
+
+				let isGhostSection = k === 'community > question';
+				// These are also indexed on its own.
+				let hasObjectID = sectionLvl0 == 'products' || sectionLvl0 == 'guides';
+				position++;
+
+				sections.push({
+					key: k,
+					count: sectionFacets[k],
+					isGhostSection: isGhostSection,
+					sectionLvl0: sectionLvl0,
+					meta: meta,
+					// Used for Analytics.
+					hasObjectID: hasObjectID,
+					queryID: result.queryID,
+					position: position,
+				});
+			}
+		}
+
+		return sections;
+	};
+
+	let lang = getCurrentLang();
+
+	normalizeAlgoliaResult(result, lang);
 };
 
 class SearchBatcher {

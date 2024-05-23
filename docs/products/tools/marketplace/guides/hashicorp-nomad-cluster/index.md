@@ -1,13 +1,10 @@
 ---
+title: "Deploy HashiCorp Nomad Cluster through the Linode Marketplace"
 description: "Deploy HashiCorp Nomad Cluster, a flexible scheduling and orchestration for diverse workloads, on Linode Compute Instances.'"
-keywords: ['HashiCorp','Nomad','Scheduling', 'orchestration']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-09-11
 modified: 2023-11-13
-modified_by:
-  name: Linode
-title: "Deploy HashiCorp Nomad Cluster through the Linode Marketplace"
-authors: ["Linode"]
+keywords: ['HashiCorp','Nomad','Scheduling', 'orchestration']
+tags: ["marketplace", "linode platform", "cloud manager"]
 ---
 
 [HashiCorp Nomad](https://www.nomadproject.io/) is a workload scheduler and orchestrator that allows you to deploy and manage containerized or non-containerized, legacy applications using a single, unified workflow. Nomad uses bin packaging for efficient job scheduling and resource optimization, as well as enables developers to use declarative infrastructure-as-code for their deployments.
@@ -20,9 +17,9 @@ Please be aware that each Compute Instance will appear on your invoice as a sepa
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Nomad Cluster should be fully installed within 15-20 minutes after the Compute Instances have finished provisioning.
@@ -33,7 +30,7 @@ Please be aware that each Compute Instance will appear on your invoice as a sepa
 - **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** We recommend 8GB Dedicated CPU or 8GB Shared CPU instances for the Nomad Cluster.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ### Nomad Cluster Options
 
@@ -41,7 +38,7 @@ Please be aware that each Compute Instance will appear on your invoice as a sepa
 
 - **Limited sudo user** *(required)*: A limited user account with sudo access is created as part of this cluster deployment. Enter your preferred username for this limited user. Please note that the sudo password is automatically created and stored in the `~/.deployment_secrets.txt` file. See [Accessing the Nomad Web UI](#accessing-the-nomad-web-ui) below.
 
-- **Email Address** *(required)*: A valid SOA email address for auto-generated LetsEncrypt SSL.
+- **Email Address** *(required)*: A valid SOA email address for auto-generated Let's Encrypt SSL.
 
 - **Add SSH Keys to all nodes?** If you select *yes*, any SSH Keys that are added to the root user account (in the **SSH Keys** section), are also added to your limited user account on all deployed Compute Instances.
 
@@ -95,4 +92,4 @@ The HashiCorp Nomad Cluster provides default configurations to get you started. 
 
 If you find that you need additional Clients for your Nomad Cluster, the [Nomad Clients Cluster](/docs/products/tools/marketplace/guides/hashicorp-nomad-clients-cluster/) deployment allows you to scale horizontally by deploying 3, 5, or 7 additional Compute Instances as Clients.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

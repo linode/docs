@@ -1,20 +1,19 @@
 ---
 slug: introduction-to-linux-concepts
+title: Introduction to Linux Concepts
 description: 'An introduction to Linux and Unix-like systems covering history, system architecture, and distribution characteristics.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-31
+modified: 2013-12-19
 keywords: ["Linux", "Unix-Like systems", "history"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/basics/introduction-to-linux-concepts/','/tools-reference/introduction-to-linux-concepts/','/using-linux/linux-concepts/']
-modified: 2013-12-19
-modified_by:
-  name: Linode
-published: 2009-08-31
-title: Introduction to Linux Concepts
 external_resources:
  - '[Using the Terminal](/docs/guides/using-the-terminal/)'
  - '[LAMP Guides](/docs/lamp-guides/)'
  - '[Package Management](/docs/guides/linux-package-management-overview/)'
 tags: ["linux"]
-authors: ["Linode"]
 ---
 
 Linodes run **Linux**. Linux is an operating system that works just like Windows and Mac OS X. As an operating system, Linux manages your Linode's hardware and provides services your other software needs to run.
@@ -24,8 +23,7 @@ Linux is a very hands-on operating system. If running Windows is like driving an
 This guide is intended to be very beginner-friendly. It takes a Linux 101 approach to explanations for basic concepts. There are a few how-to sections as well, which are intended to get you on your feet with your Linode. At times we'll link off to a different guide that has more details on a particular topic.
 
 ![Introduction to Linux Concepts](introduction_to_linux_concepts_smg.png)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Everything on a Linux system is case-sensitive. That means that `photo.jpg`, `photo.JPG`, and `Photo.jpg` are all different files. Usernames and passwords are also case-sensitive.
 {{< /note >}}
 
@@ -66,13 +64,13 @@ Before you install Linux, decide which distribution to install. Linux comes in s
 
 Here at Linode, you install Linux with the [Linode Manager](https://cloud.linode.com/) dashboard. It takes just a few clicks to install Linux with this dashboard. If you don't have a particular Linux distribution in mind, install the latest release of **Ubuntu**. Ubuntu is good for Linux beginners because it is well-supported and doesn't change often.
 
-After you know which distribution you want to install, follow the instructions for installing Linux in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) article. Follow that article until you complete [Booting Your Linode](/docs/products/platform/get-started/#boot-your-linode), then come back here.
+After you know which distribution you want to install, follow the instructions for installing Linux in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) article. After your instance has been created, continue with the instructions below.
 
 ### Connecting to Your Linode
 
 Your Linode is physically housed in the Atlanta, Dallas, Frankfurt, Fremont, London, Newark, Singapore, or Tokyo data center, so you have to use the Internet and a terminal to connect to it and start using it. A *terminal* is a tool that runs a *shell* that lets you run text commands to interact with your server. The Secure Shell (**SSH**) protocol lets you send these commands to your Linode over a secure Internet connection from your local machine.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 In this guide, we'll mostly be using the terms *terminal*, *shell*, and *SSH* to refer to the interface you use to send text commands to your Linux system. These are different tools that layer on top of each other to let you interact with your server. To learn more, read these simplified definitions:
 
   - **Terminal**: A device that enters data into and displays data from a computer. The terminal has the most direct access to the operating system. Technically, most terminals these days are actually *terminal emulators* that run as software on Mac OS X, Linux, or Windows computers.
@@ -80,7 +78,7 @@ In this guide, we'll mostly be using the terms *terminal*, *shell*, and *SSH* to
   - **SSH**: A protocol that lets you send shell commands to your Linode securely over the Internet.
 {{< /note >}}
 
-To connect to your Linode, follow the next section of the **Getting Started** article, [Connecting to Your Linode](/docs/products/platform/get-started/#connect-to-your-linode-via-ssh). Follow along with the written instructions or watch the videos, or both. It will help you install a terminal emulator and use it to establish an SSH connection to your Linode.
+To connect to your Linode, follow the next section of the **Getting Started** article, [Connecting to Your Linode](/docs/products/compute/compute-instances/get-started/#connect-to-the-instance). Follow along with the written instructions or watch the videos, or both. It will help you install a terminal emulator and use it to establish an SSH connection to your Linode.
 
 ## So You're Staring at a Shell Prompt
 
@@ -97,7 +95,7 @@ What does this bit of text mean? The entire thing is the *shell prompt*. It's yo
 
 You can type any valid Linux shell command at the blinking cursor after the shell prompt. We'll go over a few practical commands in the rest of this article, but to get a really good in-depth introduction to the command-line interface, you should read the [Using the Terminal](/docs/guides/using-the-terminal/) article as well.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 These command line tips will make your Linux forays much more effective:
 
 - Press the `Return` or `Enter` key after you finish a command.
@@ -181,7 +179,7 @@ drwxr-xr-x  13 root root 4.0K Nov  6 16:04 var
 
 There are quite a few files inside this directory. The most important part is the list of directory and file names on the right, listed alphabetically. You'll notice the directories `lib` and `var`, as well as several others.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The **/root** directory is not the same as the **/** directory. **/** is the top-level directory of the server. Everything else is inside it. It is called the *root* directory when you're talking about it, but its name on the server is just **/**. On the other hand, the **/root** directory is the home directory for the **root** user. It's a sub-directory under the **/** directory, and it's where the **root** user starts after logging in to a new SSH session.
 {{< /note >}}
 
@@ -358,7 +356,7 @@ Sometimes you want to run a program on an as-needed basis. For example, you migh
 
 1. Use the `cd` command to move into the directory where the script is located.
 
-1. Run `ls -l directory` to check that your user account has [execute permissions](/docs/guides/introduction-to-linux-concepts/#users-and-permissions-in-linux) for the script file in the directory. If you need to modify the permissions, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#what-are-user-and-group-permissions) guide.
+1. Run `ls -l directory` to check that your user account has [execute permissions](/docs/guides/introduction-to-linux-concepts/#users-and-permissions-in-linux) for the script file in the directory. If you need to modify the permissions, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#chmod-command) guide.
 
 1.  Run the script with the following syntax:
 
@@ -380,8 +378,7 @@ Update a Debian or Ubuntu system:
 Update a Fedora or CentOS system:
 
     yum update
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Updating your software is good for your system security. In most cases updates will go smoothly, but it's possible that some updates may break something on your server. It's always wise to make a [backup](/docs/products/storage/backups/) of your system before updating it.
 {{< /note >}}
 

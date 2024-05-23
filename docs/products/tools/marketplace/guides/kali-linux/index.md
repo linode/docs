@@ -1,13 +1,10 @@
 ---
+title: "Deploy Kali Linux through the Linode Marketplace"
 description: "Deploy Kali Linux, a popular Linux distribution for penetration testing and security research, on a Linode Compute Instance."
+published: 2022-07-05
 keywords: ['kali','security','pentest']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2022-07-05
-modified_by:
-  name: Linode
-title: "Deploy Kali Linux through the Linode Marketplace"
 aliases: ['/products/tools/marketplace/guides/kalilinux/']
-authors: ["Linode"]
 ---
 
 [Kali Linux](https://www.kali.org/) is a specialized Debian-based Linux distribution that has become an industry-standard tool for penetration testing. Kali Linux includes hundreds of free tools for reverse engineering, penetration testing, computer forensics, security audits, and more. It is open source and prioritizes simplicity. To learn more about Kali Linux and determine if its a viable solution for your workloads, see the following resources from its official documentation site:
@@ -21,9 +18,9 @@ This Marketplace App extends Linode's Kali Linux distribution image by allowing 
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Kali Linux should be fully installed within 45-60 minutes after the Compute Instance has finished provisioning.
@@ -47,9 +44,9 @@ This Marketplace App extends Linode's Kali Linux distribution image by allowing 
 - **Sudo/VNC Username** *(required)*: The VNC username you wish to create for this Compute Instance. This is used for your VNC session and will have elevated privileges (`sudo`).
 - **Sudo/VNC User Password** *(required)*: The password you wish to use for your VNC user.
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -79,4 +76,4 @@ If you selected the VNC installation option, [TigerVNC](https://tigervnc.org/) i
 
 After connecting, the Kali Linux desktop should appear.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

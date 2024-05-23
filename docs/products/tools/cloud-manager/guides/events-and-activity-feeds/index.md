@@ -1,23 +1,20 @@
 ---
+title: "Understanding Events and the Activity Feed"
+title_meta: "What Are Cloud Manager Events and Activity Feeds"
 description: "Understanding events and a Linode's activity feed in the Linode Cloud Manager"
+published: 2019-12-26
+modified: 2021-08-25
 keywords: ["accounts", "passwords", "linode manager", "manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: UnderstandingtheCloudManagerEventsandActivityFeeds.png
-title: "Understanding Events and the Activity Feed"
-title_meta: "What Are Cloud Manager Events and Activity Feeds"
-published: 2019-12-26
-modified: 2021-08-25
-modified_by:
-  name: Linode
 tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/what-are-the-cloud-manager-events-and-activity-feeds/', '/guides/what-are-the-cloud-manager-events-and-activity-feeds/','/products/tools/cloud-manager/guides/cloud-email-notifications/','/guides/cloud-manager-events-and-activity-feeds/']
-authors: ["Linode"]
 ---
 
 Most actions that occur on an account or to a particular service are logged as *events*. These events include services being created (or deleted), a change in a Linode's power state (such as powering off or rebooting), and many other actions. All events are stored to an account for 90 days.
 
 {{< note >}}
-Events are only shown to a logged in user if that event is within the scope of the user's permissions. This means that a restricted user only sees events for services that they have been granted access to. For more information, see our [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/#users-and-permissions) guide.
+Events are only shown to a logged in user if that event is within the scope of the user's permissions. This means that a restricted user only sees events for services that they have been granted access to. For more information, see our [Manage User Permissions](/docs/products/platform/accounts/guides/user-permissions/) guide.
 {{< /note >}}
 
 ## Viewing Events

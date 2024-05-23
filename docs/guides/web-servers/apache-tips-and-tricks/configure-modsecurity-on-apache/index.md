@@ -1,21 +1,20 @@
 ---
 slug: configure-modsecurity-on-apache
+title: 'How to Configure ModSecurity on Apache'
 description: 'Learn how to install ModSecurity, a web application firewall for the Apache server, which provides logging capabilities and real time monitoring.'
-keywords: ["apache", " mod_security"]
 og_description: 'Besides providing logging capabilities, Mod_security, as a web-detection tool, can monitor the HTTP traffic in real time in order to spot attacks. This guide shows how to load and run Mod_security on your Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-11-10
+modified: 2018-12-19
+keywords: ["apache", " mod_security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache-tips-and-tricks/modsecurity-on-apache/','/web-servers/apache/mod-security/','/web-servers/apache-tips-and-tricks/modsecurity-on-apache/','/web-servers/apache-tips-and-tricks/configure-modsecurity-on-apache/']
-modified: 2018-12-19
-modified_by:
-  name: Linode
-published: 2011-11-10
-title: 'How to Configure ModSecurity on Apache'
 external_resources:
  - '[ModSecurity Home Page](http://www.modsecurity.org)'
  - '[OWASP Home Page](https://www.owasp.org/index.php/Main_Page)'
  - '[OWASP ModSecurity Core Rule Set Wiki](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project#tab=Installation)'
 tags: ["web server","apache"]
-authors: ["Linode"]
 ---
 
 ![How to Configure ModSecurity on Apache](how-to-configure-modsecurity-on-apache-smg.jpg)
@@ -42,8 +41,7 @@ Restart Apache:
 Verify the version of ModSecurity is 2.8.0 or higher:
 
     apt-cache show libapache2-mod-security2
-
-{{< note respectIndent=false >}}
+{{< note >}}
 When listing all mods using `apachectl -M`, ModSecurity is listed under the name `security2_module`.
 {{< /note >}}
 
@@ -125,7 +123,9 @@ OWASP CRS builds on top of ModSecurity so that existing rules can be extended.
 
     The response code should be 403. There should be a message in the logs that shows the defined ModSecurity rule worked. You can check using: `sudo tail -f /var/log/apache2/error.log`
 
-    > ModSecurity: Access denied with code 403 (phase 2). String match "test" at ARGS:testparam. [file "/etc/apache2/sites-enabled/000-default.conf"] [line "24"] [id "1234"] [msg "Our test rule has triggered"] [hostname "localhost"] [uri "/index.html"] [unique_id "WfnEd38AAAEAAEnQyBAAAAAB"]
+    ```output
+    ModSecurity: Access denied with code 403 (phase 2). String match "test" at ARGS:testparam. [file "/etc/apache2/sites-enabled/000-default.conf"] [line "24"] [id "1234"] [msg "Our test rule has triggered"] [hostname "localhost"] [uri "/index.html"] [unique_id "WfnEd38AAAEAAEnQyBAAAAAB"]
+    ```
 
 3.  Verify the OWASP CRS is in effect:
 
@@ -133,7 +133,9 @@ OWASP CRS builds on top of ModSecurity so that existing rules can be extended.
 
     Check the error logs again: the rule has caught the attempted execution of an arbitrary bash script.
 
-    > ModSecurity: Warning. Matched phrase "bin/bash" at ARGS:. [file "/etc/modsecurity/rules/REQUEST-932-APPLICATION-ATTACK-RCE.conf"] [line "448"] [id "932160"] [rev "1"] [msg "Remote Command Execution: Unix Shell Code Found"] [data "Matched Data: bin/bash found within ARGS:: exec/bin/bash"] [severity "CRITICAL"] [ver "OWASP_CRS/3.0.0"] [maturity "1"] [accuracy "8"] [tag "application-multi"] [tag "language-shell"] [tag "platform-unix"] [tag "attack-rce"] [tag "OWASP_CRS/WEB_ATTACK/COMMAND_INJECTION"] [tag "WASCTC/WASC-31"] [tag "OWASP_TOP_10/A1"] [tag "PCI/6.5.2"] [hostname "localhost"] [uri "/index.html"] [unique_id "WfnVf38AAAEAAEqya3YAAAAC"]
+    ```output
+    ModSecurity: Warning. Matched phrase "bin/bash" at ARGS:. [file "/etc/modsecurity/rules/REQUEST-932-APPLICATION-ATTACK-RCE.conf"] [line "448"] [id "932160"] [rev "1"] [msg "Remote Command Execution: Unix Shell Code Found"] [data "Matched Data: bin/bash found within ARGS:: exec/bin/bash"] [severity "CRITICAL"] [ver "OWASP_CRS/3.0.0"] [maturity "1"] [accuracy "8"] [tag "application-multi"] [tag "language-shell"] [tag "platform-unix"] [tag "attack-rce"] [tag "OWASP_CRS/WEB_ATTACK/COMMAND_INJECTION"] [tag "WASCTC/WASC-31"] [tag "OWASP_TOP_10/A1"] [tag "PCI/6.5.2"] [hostname "localhost"] [uri "/index.html"] [unique_id "WfnVf38AAAEAAEqya3YAAAAC"]
+    ```
 
 ## Next Steps
 

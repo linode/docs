@@ -1,31 +1,28 @@
 ---
 slug: wsgi-using-uwsgi-and-nginx-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'WSGI using uWSGI and nginx on Ubuntu 10.10 (Maverick)'
 description: 'This guide will show you how to configure the uWSGI server to deploy Python application servers in conjunction with the Nginx web server on Ubuntu 10.10 "Maverick".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-11-08
+modified: 2012-10-08
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
 tags: ["web server","python","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-10-10-maverick/','/web-servers/nginx/python-uwsgi/ubuntu-10-10-maverick/','/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-10-10-maverick/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-11-08
-title: 'WSGI using uWSGI and nginx on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: wsgi-uwsgi-nginx
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 The uWSGI server provides a non-FastCGI method for deploying Python applications with the nginx web server. In coordination with nginx, uWSGI offers great stability, flexibility, and performance. However, to deploy applications with uWSGI and nginx, you must compile nginx manually with the included uwsgi module.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

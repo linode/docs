@@ -1,12 +1,9 @@
 ---
 title: "Overview of the Metadata Service"
 description: "Learn how to automate server provisioning on the Linode platform through the new Metadata service and cloud-init."
-keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
 published: 2023-07-25
-modified: 2023-10-22
-modified_by:
-  name: Linode
-authors: ["Linode"]
+modified: 2024-02-14
+keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
 ---
 
 When deploying Compute Instances, it's almost always necessary to perform additional configuration before you can host your website or run your workloads. This configuration might include creating a new user, adding an SSH key, or installing software. It could also include more complex tasks like configuring a web server or other software that runs on the instance. Performing these tasks manually can be tedious and is not ideal at larger scales. To automate this configuration, Linode offers two provisioning automation tools: Metadata (covered in this guide) and [StackScripts](/docs/products/tools/stackscripts/).
@@ -32,7 +29,7 @@ Similar to Metadata, Linode's [StackScripts](/docs/products/tools/stackscripts/)
 
 Akamai's Metadata service is available in select data centers. Additionally, user data and cloud-init integration is currently only supported in a few distribution images. Supported data centers and distributions are listed below:
 
--   **Data centers:** Amsterdam (Netherlands), Chennai (India), Chicago (USA), Jakarta (Indonesia), Los Angeles (USA), Miami (USA), Milan (Italy), Osaka (Japan), Paris (France), São Paulo (Brazil), Seattle (USA), Stockholm (Sweden), and Washington DC (USA)
+-   **Data centers:** Amsterdam (Netherlands), Chennai (India), Chicago (USA), Jakarta (Indonesia), Los Angeles (USA), Madrid (Spain), Miami (USA), Milan (Italy), Osaka (Japan), Paris (France), São Paulo (Brazil), Seattle (USA), Stockholm (Sweden), and Washington DC (USA)
 
 -   **Distributions:** Ubuntu 22.04 LTS, Ubuntu 20.04 LTS, Debian 11
 

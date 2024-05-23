@@ -1,12 +1,9 @@
 ---
 title: "Deploy MainConcept Plugins for FFmpeg Demo through the Linode Marketplace"
 description: "Deploy MainConcept Plugins for FFmpeg demo, an enterprise ready set of FFmpeg tools for creating transcoding workflows, on a Linode Compute Instance."
+published: 2023-09-14
 keywords: ['ffmpeg','encoding','decoding','video','vvc','hevc','avc','mpeg-h','xhe-aac','mpeg-2 ts']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2023-09-14
-modified_by:
-  name: Linode
-authors: ["Linode"]
 ---
 
 The [MainConcept Plugins for FFmpeg](https://www.mainconcept.com/ffmpeg) are media encoding tools that use advanced features such as Hybrid GPU acceleration, professional production format, xHE-AAC audio, and MPEG-H 3D audio content creation to help improve visual quality and performance. Use cases include both VOD and live production workflows.
@@ -28,9 +25,9 @@ The versions of MainConcept Plugins for FFmpeg included in this deployment are f
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** MainConcept Plugins for FFmpeg should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -43,7 +40,7 @@ The versions of MainConcept Plugins for FFmpeg included in this deployment are f
 
 ### MainConcept Plugins for FFmpeg Options
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -89,4 +86,4 @@ For more information on using MainConcept Plugins for FFmpeg, including command 
 
 For support regarding the tool or software itself, use the information in the sidebar to contact MainConcept's support or search the [MainConcept community forum](https://forum.mainconcept.com/).
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

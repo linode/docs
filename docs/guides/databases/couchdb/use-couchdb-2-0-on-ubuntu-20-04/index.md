@@ -1,19 +1,18 @@
 ---
 slug: use-couchdb-2-0-on-ubuntu-20-04
+title: "Using CouchDB 2.0 on Ubuntu 20.04"
+title_meta: "How to Use CouchDB 2.0 on Ubuntu 20.04"
 description: "Learn the basic concepts of CouchDB 2.0, along with how to use it on Ubuntu."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-05-21
 keywords: ['couchdb','nosql','fauxton','database','ubuntu 20.04']
 tags: ['couchdb','fauxton', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-21
-modified_by:
-  name: Nathaniel Stickman
-title: "Using CouchDB 2.0 on Ubuntu 20.04"
-title_meta: "How to Use CouchDB 2.0 on Ubuntu 20.04"
 external_resources:
 - '[API guide](https://docs.couchdb.org/en/latest/api/index.html)'
 - '[documentation for the _find API](https://docs.couchdb.org/en/latest/api/database/find.html)'
 - '[Apache CouchDB Documentation](https://docs.couchdb.org/en/stable/)'
-authors: ["Nathaniel Stickman"]
 ---
 
 *CouchDB*, a non-relational or "NoSQL" database, uses HTTP APIs and JSON documents, making its concepts more intuitive to those familiar with web technologies. These also make CouchDB simple to integrate with web and mobile applications.

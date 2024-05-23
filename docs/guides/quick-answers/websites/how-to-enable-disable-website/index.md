@@ -1,18 +1,17 @@
 ---
 slug: how-to-enable-disable-website
+title: "Sites Enabled with NGINX or Apache"
+title_meta: "How to Enable Sites in NGINX or Apache"
 description: "Is your site enabled with NGINX or Apache? This guide explains how to quickly disable a website running on Apache/NGINX, & what's involved in re-enabling it."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-06-17
 keywords: ['enable website','disable website','apache','nginx']
 tags: ['apache', 'nginx', 'ubuntu', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-17
-modified_by:
-  name: Linode
-title: "Sites Enabled with NGINX or Apache"
-title_meta: "How to Enable Sites in NGINX or Apache"
 external_resources:
 - '[NGINX](https://www.nginx.com/)'
 - '[Apache Web Server](https://httpd.apache.org/)'
-authors: ["Jeff Novotny"]
 ---
 
 There may be times when you have to temporarily disable a website. For example, you might have to satisfy a legal requirement or make an emergency content change. Fortunately, you do not have to completely delete or radically reconfigure a website to disable it. This guide provides instructions on how to quickly disable and re-enable a website, based on the webserver and Linux distribution.

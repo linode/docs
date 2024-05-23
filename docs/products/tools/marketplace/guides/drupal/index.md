@@ -1,16 +1,13 @@
 ---
 title: "Deploy Drupal through the Linode Marketplace"
 description: "Learn how to use the Drupal Marketplace App to easily install the popular open source content management system."
-keywords: ['drupal','marketplace', 'cms']
-tags: ["cloud-manager","linode platform","drupal","cms","marketplace"]
 published: 2019-03-25
 modified: 2023-09-11
-modified_by:
-  name: Linode
+keywords: ['drupal','marketplace', 'cms']
+tags: ["cloud-manager","linode platform","drupal","cms","marketplace"]
 aliases: ['/platform/marketplace/deploying-drupal-with-marketplace-apps/','/platform/marketplace/how-to-deploy-drupal-with-marketplace-apps/', '/platform/one-click/deploying-drupal-with-one-click-apps/','/guides/deploying-drupal-with-one-click-apps/','/platform/one-click/how-to-deploy-drupal-with-one-click-apps/','/guides/how-to-deploy-drupal-with-one-click-apps/','/guides/how-to-deploy-drupal-with-marketplace-apps/','/guides/drupal-marketplace-app/']
 external_resources:
  - '[Drupal 9 Official Documentation](https://www.drupal.org/docs/understanding-drupal)'
-authors: ["Linode"]
 ---
 
 [Drupal](https://www.drupal.org/) is a content management system (CMS) designed for building custom websites for personal and business use. Built for high performance and scalability, Drupal provides the necessary tools to create rich, interactive "community" websites with forums, user blogs, and private messaging. Drupal also has support for personal publishing projects and can power podcasts, blogs, and knowledge-based systems, all within a single, unified platform.
@@ -19,9 +16,9 @@ In addition to the core infrastructure, there are a number of freely available D
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Drupal should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -37,7 +34,7 @@ In addition to the core infrastructure, there are a number of freely available D
 - **Database Root Password** *(required)*: Password for your Drupal site's MariaDB database `root` user.
 - **Database User Password** *(required)*: Password for your Drupal site's MariaDB database `drupal` user.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -70,7 +67,7 @@ The Drupal Marketplace App installs the following required software on your Lino
 | [**Apache HTTP Server**](https://httpd.apache.org) | Web Server used to serve the Drupal site. |
 | [**Drupal 10**](https://www.drupal.org/about/10) | Content management system. |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 ## Next Steps
 
