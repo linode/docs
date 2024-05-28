@@ -1,26 +1,23 @@
 ---
+title: "Deploy PostgreSQL through the Linode Marketplace"
 description: "PostgreSQL is a powerful, scalable, and standards-compliant open-source database. Here''s how to easily deploy PostgreSQL using Marketplace Apps."
-keywords: ['database','postgresql','rdbms','relational database']
-tags: ["linode platform","postgresql","marketplace","cloud-manager"]
 published: 2020-03-17
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy PostgreSQL through the Linode Marketplace"
+keywords: ['database','postgresql','rdbms','relational database']
+tags: ["linode platform","postgresql","marketplace","cloud-manager"]
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
 aliases: ['/platform/marketplace/deploy-postresql-with-marketplace-apps/', '/platform/one-click/deploy-postresql-with-one-click-apps/', '/guides/deploy-postresql-with-one-click-apps/','/guides/deploy-postresql-with-marketplace-apps/','/guides/postgresql-marketplace-app/']
-authors: ["Rajakavitha Kodhandapani"]
 ---
 
 The PostgreSQL relational database system is a powerful, scalable, and standards-compliant open-source database platform. It is designed to handle a range of workloads, from single machines to data warehouses or Web services with many concurrent users.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** PostgreSQL should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -33,9 +30,9 @@ The PostgreSQL relational database system is a powerful, scalable, and standards
 
 ### PostgreSQL Options
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -146,7 +143,7 @@ The example commands in this section should be run as the `postgres` Linux user.
 
 ## Next Steps
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 For more on PostgreSQL, checkout the following guides:
 

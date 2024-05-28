@@ -5,4 +5,3 @@ aliases: ['/remote-desktops/','/applications/remote-desktop/']
 show_in_lists: true
 ---
 
-

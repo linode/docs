@@ -1,25 +1,22 @@
 ---
 slug: use-mongodb-to-store-application-data-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Use MongoDB to Store Application Data on Ubuntu 9.10 (Karmic)'
 description: 'Install MongoDB for use in application development on Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-03-24
+modified: 2011-04-29
 keywords: ["nosql", "database", "mognodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/ubuntu-9-10-karmic/','/databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-9-10-karmic/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-03-24
-title: 'Use MongoDB to Store Application Data on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: use-mongodb-store-app-data
         keywords:
             - distribution: Ubuntu 9.10
 tags: ["ubuntu","database","nosql"]
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 MongoDB is a database engine that provides access to non-relational key-value databases. It is part of the growing NoSQL movement, which seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON-based output format and specialized language specific bindings that make it particularly attractive for use in custom application development. Although MongoDB is a relatively new project and has not yet been packaged by most major operating system distributions, the software has been used in a number of large scale [production deployments](http://www.mongodb.org/display/DOCS/Production+Deployments) such as "GitHub", "SourceForge", and "DISQUS".
 

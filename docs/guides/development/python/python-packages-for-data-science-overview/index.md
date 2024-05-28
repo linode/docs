@@ -1,14 +1,13 @@
 ---
 slug: python-packages-for-data-science-overview
+title: "An Overview of Python Packages for Data Science"
 description: This guide outlines some of the top Python packages for data science, including Pandas, NumPy, and Matplotlib.
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2021-06-11
 keywords: ['python libraries for data science']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-11
-modified_by:
-  name: Linode
-title: "An Overview of Python Packages for Data Science"
-authors: ["John Mueller"]
 ---
 
 Python is one of the most popular programming languages in the world because it provides a vast array of packages, it’s easy to learn, and it’s incredibly flexible. The data science community has adopted Python as one of its go-to programming languages, because of the many packages that help analyze and visualize large datasets. This guide discusses the strengths and use cases for the top five Python data science packages.
@@ -53,7 +52,7 @@ The [SciPy library](https://docs.scipy.org/doc/scipy/reference/) provides you wi
 - Multidimensional image processing (`scipy.ndimage`)
 - File IO (`scipy.io`)
 
-The main issue with having a single coordinator for everything is that it becomes somewhat cumbersome to manage and load times can be high. Also, you lose sight of the low-level details and start to wonder just what is going on under the hood. There are times when the package can be a little counterintuitive and confusing, such as the [Sparse eigenvalue](https://docs.scipy.org/doc/scipy/reference/tutorial/arpack.html) support, which requires the [ARnoldi PACKage (ARPACK)](https://people.sc.fsu.edu/~jburkardt/f_src/arpack/arpack.html) FORTRAN package and FORTAN knowledge.
+The main issue with having a single coordinator for everything is that it becomes somewhat cumbersome to manage and load times can be high. Also, you lose sight of the low-level details and start to wonder just what is going on under the hood. There are times when the package can be a little counterintuitive and confusing, such as the [Sparse eigenvalue](https://docs.scipy.org/doc/scipy/reference/tutorial/arpack.html) support, which requires the [arpack](https://people.sc.fsu.edu/~jburkardt/f_src/arpack/arpack.html) FORTRAN package and FORTAN knowledge.
 
 ## Pandas
 

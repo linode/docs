@@ -1,22 +1,21 @@
 ---
 slug: lemp-server-on-arch-linux
-deprecated: true
+title: LEMP Server on Arch Linux
 description: 'This guide shows you how to install and configure a LEMP (Linux, NGINX, MySQL, PHP) server to host websites and applications on the Arch Linux distro.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-07-08
+modified: 2012-06-21
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lemp/lemp-server-on-arch-linux/','/web-servers/lemp/lemp-server-on-arch-linux/','/lemp-guides/arch-linux/']
-modified: 2012-06-21
-modified_by:
-  name: Linode
-published: 2010-07-08
-title: LEMP Server on Arch Linux
 relations:
     platform:
         key: install-lemp-stack
         keywords:
             - distribution: Arch Linux
 tags: ["lemp","web server","php","mysql","nginx"]
-authors: ["Linode"]
+deprecated: true
 ---
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.
@@ -25,7 +24,7 @@ Prior to beginning this guide, please complete the [Setting Up and Securing a Co
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

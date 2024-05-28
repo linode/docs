@@ -1,20 +1,18 @@
 ---
 slug: how-to-install-drupal-using-drush-on-debian-7
+title: 'Installing & Using Drupal Drush on Debian 7'
 description: 'This article gives you step-by-step instructions for installing the widely used and popular CMS Drupal using the Drush command line tool on Debian 7.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-11-21
 keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framework", " debian"]
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-debian-7/']
 tags: ["debian","drupal","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2014-11-21
-modified_by:
-    name: Linode
-published: 2014-11-21
-title: 'Installing & Using Drupal Drush on Debian 7'
-deprecated: true
-deprecated_link: 'websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-debian-10/'
 external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'
-authors: ["Linode"]
+deprecated: true
+deprecated_link: 'websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-debian-10/'
 ---
 
 Drush is a command line tool for creating, maintaining, and modifying Drupal websites. Command line tools, like Drush, add functionality through additional command packages. Once installed, Drush is as easy to use as any of the basic Linux commands. Drush rhymes with rush or crush. The name comes from combining the words Drupal and shell. Drush is designed only for Drupal and cannot be used with other content management systems.
@@ -31,7 +29,7 @@ Before installing Drush and Drupal, ensure that the following prerequisites have
 
 3.  Configure a LAMP stack using the [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

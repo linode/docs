@@ -1,21 +1,20 @@
 ---
 slug: how-to-understand-ip-addresses
+title: "Understand and Use IP Addresses"
+title_meta: "How to Understand and Use IP Addresses"
 description: "This guide will help you understand the Internet Protocol (IP) which underpins the entire Internet, as well as IP addresses, and how to describe and use them."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-07-30
+modified: 2022-09-23
 keywords: ['IPv4','IPv6','IP address','Internet Protocol', 'what is ip address']
 tags: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-30
-modified: 2022-09-23
-modified_by:
-  name: Linode
-title: "Understand and Use IP Addresses"
-title_meta: "How to Understand and Use IP Addresses"
 external_resources:
 - '[RFC 791 for IP](https://datatracker.ietf.org/doc/html/rfc791)'
 - '[Wikipedia IPv4 Packet Description Page](https://en.wikipedia.org/wiki/IPv4#Packet_structure)'
 - '[RFC 2460 for IPv6](https://datatracker.ietf.org/doc/html/rfc2460)'
 - '[Subnet Calculator](http://www.csgnetwork.com/ipaddconv.html)'
-authors: ["Jeff Novotny"]
 tags: ["saas"]
 ---
 
@@ -30,7 +29,7 @@ Network communications are conceptualized in the *Internet Protocol Suite*, whic
 - **Transport Layer:** The third layer that establishes connectivity between hosts and handles task-specific data exchanges.
 - **Application Layer:** The top layer that provides services to the user using data from the network.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The networking layers are sometimes modeled by the seven-layer *Open Systems Interconnection Model* (OSI). The OSI model is very useful for network engineers but does not map as closely to today's internet.
 {{< /note >}}
 
@@ -63,7 +62,7 @@ A server can offer different services at the same address based on the port numb
 
 The Domain Name System (DNS) eliminates the need for users to know the IP address of the system they want to access. DNS servers translate the domain name to the associated IP address. This process is known as *resolving* the domain.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 IP addresses beginning with the octets `198.51.100` are reserved for testing and documentation. The example used in this section is taken from this address space.
 {{< /note >}}
 
@@ -89,7 +88,7 @@ A *subnet* is a portion of a larger network. For instance, all addresses on the 
 
 The first address within a subnet is frequently used to identify the subnet itself. The final address in the space is used for the broadcast address. Typically, this is an address ending with the octet `255`, such as `198.51.100.255`. The broadcast address might be different in a small subnet that does not contain an address ending with the `255` octet.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 At times, the term subnet is used to refer to the entire network, even if it is further subdivided into smaller networks. As well, the portion of an IP address describing the host is occasionally referred to as the *rest field*.
 {{< /note >}}
 
@@ -144,8 +143,7 @@ Like IPv4, IPv6 has some reserved addresses. However, the larger address space a
 A variety of inter-operability approaches between IPv4 and IPv6 are sometimes used. IPv6 addresses can be encapsulated inside IPv4 packets. More commonly, IPv4 addresses are mapped to IPv6 addresses. The first 80 bits of these IPv6 addresses are set to `0`, with the next 16 bits set to `1`. The final 32 bits contain the original IPv4 address. An example of an address with this structure is `::ffff:c6:33:64:19/96`. However, most networks use parallel networks and routing stacks for IPv4 and IPv6.
 
 ## Finding Your IP Addresses via the Linux Command Line
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you are trying to find the IP addresses of a Linode Compute Instance, you can do so from the Cloud Manager. See [Managing IP Addresses on a Compute Instance](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses).
 {{< /note >}}
 
@@ -183,7 +181,6 @@ If you are trying to find the IP addresses of a Linode Compute Instance, you can
     {{< note respectIndent=false >}}
 The actual IP address could be masked in certain circumstances, resulting in a different public IP address. With a proxy server, only the address of the proxy is shown. VPNs also hide the system address. Keeping your IP address hidden increases the security of your connection and computer.
     {{< /note >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The old `ifconfig` Linux command is now deprecated. It can still be used on Ubuntu by using `apt` to install `net-tools`, but this is not recommended.
 {{< /note >}}

@@ -1,16 +1,15 @@
 ---
 slug: install-iperf-to-diagnose-network-speed-in-linux
+title: Network Throughput Testing with iPerf
 description: 'This tutorial will teach you how to install iPerf, and use its common commands and basic configuration to diagnose your network speed.'
+authors: ["Dave R."]
+contributors: ["Dave R."]
+published: 2015-01-12
+modified: 2018-05-10
 keywords: ["diagnostics", "iperf"]
 aliases: ['/networking/diagnostics/diagnosing-network-speed-with-iperf/','/networking/diagnostics/install-iperf-to-diagnose-network-speed-in-linux/']
 tags: ["monitoring","resolving","networking","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-10
-modified_by:
-  name: Linode
-published: 2015-01-12
-title: Network Throughput Testing with iPerf
-authors: ["Dave R."]
 ---
 
 ![Install iPerf to Diagnose Network Speed in Linux](diagnosing-network-speed-with-iperf.png "Install iPerf to Diagnose Network Speed in Linux")
@@ -203,7 +202,7 @@ TCP window size:  153 KByte (default)
 
 | Option                             | Description                                                                               |
 |:-----------------------------------|:------------------------------------------------------------------------------------------|
-| -f                             | Change the format in which multiple tests are running. For example, you can use `-f k` to get results in Kbits per second instead of Mbits per second. Valid options include `m` (Mbits, default), `k` (Kbits), `K` (KBytes), and `M` (MBytes). |
+| -f                             | Change the format in which multiple tests are running. For example, you can use `-f k` to get results in kilobits per second instead of megabits per second. Valid options include `m` (megabits, default), `k` (kilobits), `K` (kilobytes), and `M` (megabytes). |
 | -V                         | Forces iPerf to use IPv6 rather than IPv4.                                |
 | -i                             | Changes the interval between periodic bandwidth tests. For example, `-i 60` makes a new bandwidth report every 60 seconds. The default is zero, which performs a single bandwidth test.                                                    |
 | -p                                 | Changes the port. When not specified, the default port is 5001. You must use this flag on both the client and server.                                                               |

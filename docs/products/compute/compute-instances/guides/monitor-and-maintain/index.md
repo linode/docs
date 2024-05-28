@@ -1,15 +1,12 @@
 ---
 title: "Monitor and Maintain a Compute Instance"
 description: "This guide introduces concepts and tools for monitoring and maintaining your server."
+published: 2012-08-22
+modified: 2024-03-11
 keywords: ["lassie", "monitor", "monitoring", "maintaining", "maintenance"]
 tags: ["cloud manager","monitoring","linode platform"]
-published: 2012-08-22
-modified: 2023-03-14
-modified_by:
-  name: Linode
 image: monitor-and-maintain-your-server.png
 aliases: ['/uptime/monitoring/monitoring-and-maintaining-your-server/','/uptime/monitoring-and-maintaining-your-server-classic-manager/','/uptime/monitoring-and-maintaining-your-server-new-manager/','/uptime/monitoring-and-maintaining-your-server/','/monitoring-and-maintaining/','/guides/monitoring-and-maintaining-your-server/','/guides/monitor-and-maintain-compute-instance/']
-authors: ["Linode"]
 ---
 
 Once you have a Compute Instance up and running, it's time to think about monitoring and maintaining your server. This guide introduces the essential tools and skills you'll need to keep your server up to date and minimize downtime. You'll learn how to monitor the availability and performance of your system, manage your logs, and update your server's software.
@@ -46,19 +43,19 @@ To turn Lassie on and off, see the [Recover from Unexpected Shutdowns with Lassi
 
 ### Cloud Manager
 
-{{< content "monitoring-cloud-manager-graphs-shortguide" >}}
+{{% content "monitoring-cloud-manager-graphs-shortguide" %}}
 
 ### Configure Cloud Manager Email Alerts
 
-{{< content "monitoring-configure-email-alerts-shortguide" >}}
+{{% content "monitoring-configure-email-alerts-shortguide" %}}
 
 ### Use Third-Party Tools
 
-{{< content "monitoring-third-party-tools-shortguide" >}}
+{{% content "monitoring-third-party-tools-shortguide" %}}
 
 ## Linode Managed
 
-[Linode Managed](https://www.linode.com/managed) is our monitoring service that offers 24x7 incident response, dashboard metrics for your Linodes, free cPanel, and an automatic backup service. With a three-month Linode Managed commitment, you also get two complimentary standard site migrations performed by our [Professional Services Team](https://www.linode.com/professional-services). If you are running more than one Compute Instance, not all are required to be managed. You can establish separate accounts (e.g., production and development) and monitor only the most critical services running on designated instance(s). Existing customers can sign up for Linode Managed by [contacting support](https://cloud.linode.com/support/tickets).
+[Linode Managed](https://www.linode.com/managed) is our monitoring service that offers 24x7 incident response, dashboard metrics for your Linodes, free cPanel, and an automatic backup service. If you are running more than one Compute Instance, not all are required to be managed. You can establish separate accounts (e.g., production and development) and monitor only the most critical services running on designated instance(s). Existing customers can sign up for Linode Managed by [contacting support](https://cloud.linode.com/support/tickets).
 
 ## Manage Logs
 
@@ -99,7 +96,7 @@ There are ways to automate the installation of software updates, but this is not
 
 ### Apply Kernel Updates
 
-When you first sign up for Linode and create a Compute Instance, the Cloud Manager automatically creates a [configuration profile](/docs/guides/linode-configuration-profiles//) that uses either the distribution's system kernel (in most cases) or uses the latest available Linode-supplied kernel.
+When you first sign up for Linode and create a Compute Instance, the Cloud Manager automatically creates a [configuration profile](/docs/guides/linode-configuration-profiles/) that uses either the distribution's system kernel (in most cases) or uses the latest available Linode-supplied kernel.
 
 If your system is using a Linode-supplied kernel, it's important to know that we [update the kernels](http://www.linode.com/kernels/) as necessary and make them available in the Cloud Manager. In most cases, new kernels are automatically selected and, once a new kernel is released, all you have to do is reboot your Compute Instance to start using it.
 

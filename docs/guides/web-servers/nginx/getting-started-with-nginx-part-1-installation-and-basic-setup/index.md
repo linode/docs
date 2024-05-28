@@ -1,17 +1,15 @@
 ---
 slug: getting-started-with-nginx-part-1-installation-and-basic-setup
+title: "Getting Started with NGINX (Part 1): Installation and Basic Setup"
+title_meta: "Getting Started with NGINX: Installation and Basic Setup"
 description: "An in-depth look at the NGINX web server. Includes assessment, installation, and configuration best practices."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-02-09
 keywords: ["nginx", "web server", "configure nginx", "optimize nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/install-nginx-web-server-on-debian-8/','/web-servers/nginx/nginx-installation-and-basic-setup/','/security/ssl/ssl-certificates-with-nginx/index.cfm/','/web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/','/guides/nginx-installation-and-basic-setup/']
-modified: 2018-02-09
-modified_by:
-  name: Linode
-published: 2018-02-09
-title: "Getting Started with NGINX (Part 1): Installation and Basic Setup"
-title_meta: "Getting Started with NGINX: Installation and Basic Setup"
 tags: ["web server","nginx"]
-authors: ["Linode"]
 ---
 
 ![Getting Started with NGINX - Part 1: Installation and Basic Setup](Getting-Started-with-NGINX-Part-1-smg.jpg)
@@ -126,8 +124,7 @@ Add a second `listen` directive for IPv6 to the `server` block of `/etc/nginx/co
 If your site uses SSL/TLS, you would add:
 
     listen [::]:443 ssl;
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can also specify your Linode's public IP addresses for NGINX to listen on. For example, the line would then be `listen 203.0.113.4:80;`.
 {{< /note >}}
 
@@ -163,7 +160,7 @@ server {
 }
 {{< /file >}}
 
-There are various other options available to NGINX's gzip module. See the [NGINX docs](https://nginx.org/en/docs/http/ngx_http_gzip_module.html) for more information, and if you prefer to compile your NGINX build, you can include the [*ngx_http_gzip_static_module*](https://nginx.org/en/docs/http/ngx_http_gzip_static_module.html) which further suits static content compression.
+There are various other options available to NGINX's gzip module. See the [NGINX docs](https://nginx.org/en/docs/http/ngx_http_gzip_module.html) for more information, and if you prefer to compile your NGINX build, you can include the [`ngx_http_gzip_static_module`](https://nginx.org/en/docs/http/ngx_http_gzip_static_module.html) which further suits static content compression.
 
 ## Configuration Recap
 

@@ -1,22 +1,21 @@
 ---
 slug: how-to-install-and-configure-fastcgi-and-php-fpm-on-centos-8
-description: "This guide will show you how to install and configure the mod_fcgid and PHP-FPM protocols for dynamic content generation and processing using Apache on CentOS 8."
-keywords: ['list','of','keywords','and key phrases']
-tags: ["centos","web server","apache","php"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-02-27
-modified: 2021-12-29
-modified_by:
-  name: Linode
 title: "Installing and Configuring FastCGI and PHP-FPM on CentOS 8"
 title_meta: "How to Install and Configure FastCGI and PHP-FPM on CentOS 8"
+description: "This guide will show you how to install and configure the mod_fcgid and PHP-FPM protocols for dynamic content generation and processing using Apache on CentOS 8."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-02-27
+modified: 2021-12-29
+keywords: ['fast-cgi','php-fpm']
+tags: ["centos","web server","apache","php"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 relations:
     platform:
         key: install-fastcgi-php-fpm
         keywords:
             - distribution: CentOS 8
 aliases: ['/web-servers/apache/how-to-install-and-configure-fastcgi-and-php-fpm-on-centos-8/']
-authors: ["Linode"]
 ---
 
 `mod_fcgid` is an [Apache module](https://httpd.apache.org/mod_fcgid/) that uses the [FastCGI](https://en.wikipedia.org/wiki/FastCGI) protocol to provide an interface between Apache and Common Gateway Interface (CGI) programs. CGI helps a web server handle dynamic content generation and processing for scripting languages like PHP. This dynamic functionality is commonly used when running content management systems like WordPress on a LAMP stack.
@@ -136,8 +135,8 @@ FcgidIOTimeout 300
 
 [PHP-FPM](https://php-fpm.org/) brings in the concept of [pools](https://www.php.net/manual/en/class.pool.php). With pools, PHP-FPM can create and manage a pool of php processes to run PHP files from a site's root directory. Each pool that is run by PHP-FPM can be run with separate user and group ID's. Pools are a great way to provide more security when you are running multiple sites on one server. Running your site's PHP scripts using dedicated user and group IDs, means that no one user can execute scripts on all sites running on your Linode. In this section you will create a pool for the domain `example.com` which is owned by the user **bob**.
 
-{{< note respectIndent=false >}}
- To create the example **bob** user, you can follow the steps outlined in our [Securing Your User](/docs/products/compute/compute-instances/guides/set-up-and-secure/#centos-fedora) guide.
+{{< note >}}
+ To create the example **bob** user, you can follow the steps outlined in our [Securing Your User](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) guide.
 {{< /note >}}
 
 1. Create a copy of your original pool file to use as the foundation for your `example.com` pool configuration.

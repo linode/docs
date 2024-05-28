@@ -1,19 +1,18 @@
 ---
 slug: how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli
+title: 'Deploy Kubernetes on Linode with the k8s-alpha CLI'
 description: 'This article gives you step-by-step instructions for deploying and managing Kubernetes clusters with the K8S-Alpha CLI, a plugin for the Linode CLI.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-04-29
 keywords: ["rancher", "docker", "kubernetes", "container"]
 tags: ["linode platform","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-04-29
-modified_by:
-  name: Linode
-title: 'Deploy Kubernetes on Linode with the k8s-alpha CLI'
 aliases: ['/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/','/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/','/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/']
 concentrations: ["Kubernetes"]
-deprecated: true
 external_resources:
   - '[Linode Kubernetes Tools](https://developers.linode.com/kubernetes/)'
-authors: ["Linode"]
+deprecated: true
 ---
 ![How to Deploy Kubernetes on Linode with the k8s-alpha CLI](how-to-deploy-kubernetes-on-linode.png)
 
@@ -25,7 +24,7 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
 ## What is the k8s-alpha CLI?
 
-{{< content "k8s-alpha-deprecation-shortguide" >}}
+{{% content "k8s-alpha-deprecation-shortguide" %}}
 
 The Linode [k8s-alpha CLI](https://developers.linode.com/kubernetes/) is a plugin for the [Linode CLI](https://github.com/linode/linode-cli) that offers quick, single-command deployments of Kubernetes clusters on your Linode account. When you have it installed, creating a cluster can be as simple as:
 
@@ -73,7 +72,7 @@ If you haven't used Kubernetes before, we recommend reading through our introduc
 
 1.  You will need to have a personal access token for Linode's API. If you don't have one already, follow the [Get an Access Token](/docs/products/tools/api/get-started/#get-an-access-token) section of our API guide and create a token with read/write permissions.
 
-1.  If you do not already have a public-private SSH key pair, you will need to generate one. Follow the [Generate a Key Pair](/docs/guides/use-public-key-authentication-with-ssh/#linux-and-macos) section of our [Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/) guide for instructions.
+1.  If you do not already have a public-private SSH key pair, you will need to generate one. Follow the [Generate a Key Pair](/docs/guides/use-public-key-authentication-with-ssh/#generate-an-ssh-key-pair) section of our [Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/) guide for instructions.
 
     {{< note >}}
     If you're unfamiliar with the concept of public-private key pairs, the introduction to our [Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/) guide explains what they are.
@@ -95,7 +94,7 @@ The k8s-alpha CLI is bundled with the Linode CLI, and using it requires the inst
 
 ### Install the Linode CLI
 
-Follow the [Install the CLI](/docs/products/tools/cli/get-started/#install-the-cli) section of our CLI guide to install the Linode CLI. If you already have the CLI, upgrade it to the latest version available:
+Follow the [Install and Configure the Linode CLI](/docs/products/tools/cli/guides/install/) guide to install the Linode CLI. If you already have the CLI, upgrade it to the latest version available:
 
 ```command
 pip install --upgrade linode-cli
@@ -107,7 +106,7 @@ Follow the instructions in the [Install Terraform](/docs/guides/how-to-build-you
 
 ### Install kubectl
 
-{{< content "how-to-install-kubectl" >}}
+{{% content "how-to-install-kubectl" %}}
 
 ### Configure your SSH Agent
 

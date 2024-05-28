@@ -1,13 +1,13 @@
 ---
 slug: twilio-email-notifications-imap
+title: "Create an Email Notification System Using Twilio (IMAP)"
 description: "Linode sends system notifications via email. This guide shows how to use the Python imaplib module to intercept those emails and forward them to text messages with the Twilio API."
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2022-01-28
 keywords: ['twilio notify']
 tags: ['email']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-28
-modified_by:
-  name: Linode
-title: "Create an Email Notification System Using Twilio (IMAP)"
 relations:
   platform:
     key: twilio-email-notifications
@@ -18,7 +18,6 @@ external_resources:
 - '[imaplib — IMAP4 protocol client — Python 3.10.2 documentation](https://docs.python.org/3/library/imaplib.html)'
 - '[email — An email and MIME handling package — Python 3.10.2 documentation](https://docs.python.org/3/library/email.html)'
 aliases: ['/guides/create-an-imap-email-notification-system-using-twilio/']
-authors: ["John Mueller"]
 ---
 
 By default, Linode sends system notifications via email. For example, email notifications are delivered when Linode Compute Instances are rebooted, when they receive hardware maintenance, and when they exceed a CPU usage threshold. You may also want to receive these notifications via text message. This guide shows how to set up a custom script that auto-forwards email notifications to text message.
@@ -100,19 +99,19 @@ except KeyError:
     sys.exit(1)
 {{< /file >}}
 
-    {{< disclosure-note "About the code" >}}
-This code imports several modules that are used later in the code:
+    {{< note type="secondary" title="About the code" isCollapsible=true >}}
+    This code imports several modules that are used later in the code:
 
-- The `os` module, which can be used to read environment variables from your terminal. The module is used in the `try` block to load your API tokens, Twilio phone numbers, and email IMAP email server credentials. A later section in this guide shows how to set those environment variables before running the script.
+    - The `os` module, which can be used to read environment variables from your terminal. The module is used in the `try` block to load your API tokens, Twilio phone numbers, and email IMAP email server credentials. A later section in this guide shows how to set those environment variables before running the script.
 
-    Alternatively, you could directly list the token and phone number values in the script. However, it's a good practice to avoid doing this. For example, if you listed your secrets inside the code and then uploaded your code to a public code repository like GitHub, they would be publicly visible.
+        Alternatively, you could directly list the token and phone number values in the script. However, it's a good practice to avoid doing this. For example, if you listed your secrets inside the code and then uploaded your code to a public code repository like GitHub, they would be publicly visible.
 
-    The `except KeyError` statement is executed if any of the environment variables are not set. A message is printed in the console that tells you which variables are expected by the script. The `sys` module an the `sys.exit()` method immediately exits the script in this case.
+        The `except KeyError` statement is executed if any of the environment variables are not set. A message is printed in the console that tells you which variables are expected by the script. The `sys` module an the `sys.exit()` method immediately exits the script in this case.
 
-- [The `imaplib` module](https://docs.python.org/3/library/imaplib.html#module-imaplib) is used to connect to an IMAP server, and [the `email` module](https://docs.python.org/3/library/email.html#module-email) is used to parse email messages. These are used in a later section in this guide.
+    - [The `imaplib` module](https://docs.python.org/3/library/imaplib.html#module-imaplib) is used to connect to an IMAP server, and [the `email` module](https://docs.python.org/3/library/email.html#module-email) is used to parse email messages. These are used in a later section in this guide.
 
-- [The `twilio` module](https://www.twilio.com/docs/libraries/python) is used to interact with the Twilio API. This is used in a later section in this guide.
-{{< /disclosure-note >}}
+    - [The `twilio` module](https://www.twilio.com/docs/libraries/python) is used to interact with the Twilio API. This is used in a later section in this guide.
+    {{< /note >}}
 
 ### Create the Twilio API Python Client
 
@@ -137,11 +136,11 @@ mail = imaplib.IMAP4_SSL(email_server)
 mail.login(email_username, email_password)
 {{< /file >}}
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 - The first line [configures a secure connection](https://docs.python.org/3/library/imaplib.html#imaplib.IMAP4_SSL) to your email server.
 
 - The second line [logs into the server](https://docs.python.org/3/library/imaplib.html#imaplib.IMAP4.login).
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Search Email by Sender with Imaplib
 
@@ -162,7 +161,7 @@ You may want to retrieve mail from a mailbox with a specific name, instead of `I
 
     mail.select('"[Gmail]/All Mail"')
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 - The first line [selects a mailbox](https://docs.python.org/3/library/imaplib.html#imaplib.IMAP4.select) that mail should be retrieved from in the subsequent `search()` command.
 
 - The second line [searches the mailbox](https://docs.python.org/3/library/imaplib.html#imaplib.IMAP4.search) and returns a list of email ID numbers. The contents of each email is not returned, and the next section shows how to fetch the email contents.
@@ -176,7 +175,7 @@ You may want to retrieve mail from a mailbox with a specific name, instead of `I
 - Lines 6-8 parse the returned list of email ID numbers in the `email_search_data` variable. The value of this variable is a space-separated list of email IDs, wrapped in an array. For example, it might look like this: `['3 9 23 51']`.
 
     Five mail IDs are listed in this example, which means that the searched mailbox contains five emails from the `Linode Alert` sender. Lines 6-8 split the string in this variable and create a new array of mail IDs. The previous example would result in a new `mail_ids` array equal to: `['3','9','23','51']`.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Fetch Email with Imaplib
 
@@ -193,7 +192,7 @@ mail_ids.reverse()
 status, email_data = mail.fetch(mail_ids[0], '(RFC822)')
 {{< /file >}}
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 - Lines 3-5 exit the script if no emails matching the search were found.
 
 - Line 7: The mail IDs array is originally ordered oldest to newest. This line reverses the array so that the first item corresponds to the newest matching email.
@@ -203,7 +202,7 @@ status, email_data = mail.fetch(mail_ids[0], '(RFC822)')
     The second argument for the `mail.fetch()` function allows you to specify which parts of the email should be retrieved. By specifying `(RFC822)`, the entire [RFC-822](https://datatracker.ietf.org/doc/html/rfc822) formatted email is returned, which includes the email headers and body.
 
     You can specify other values in the second argument to retrieve just parts of the email. For example, you could retrieve only the headers of the email. This is described in [PyMOTW's imaplib article](https://pymotw.com/3/imaplib/index.html#fetching-messages).
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Parse Email with the Python Email Module
 
@@ -228,7 +227,7 @@ mail.close()
 mail.logout()
 {{< /file >}}
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 This section of code parses the `email_data` variable returned by the `mail.fetch()` function. The value of this variable is an array that contains the contents of the fetched emails. This is an example of what the array might look like:
 
 {{< output >}}
@@ -312,7 +311,7 @@ The code parses this array as follows:
 - Line 9 composes the message body that is sent via text message in the next section. The `\n` character sequence appears in this string. These characters [insert newlines in the message](https://support.twilio.com/hc/en-us/articles/223181468-How-do-I-Add-a-Line-Break-in-my-SMS-or-MMS-Message-).
 
 - Lines 15-16 close the IMAP connection.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Create and Send a Text Message with Twilio
 
@@ -330,17 +329,17 @@ message = twilio_client.messages.create(
 print("Twilio message created with ID: %s" % (message.sid))
 {{< /file >}}
 
-    {{< disclosure-note "About the code" >}}
-The `create` method tells the Twilio API to create *and* immediately send a new text message:
+    {{< note type="secondary" title="About the code" isCollapsible=true >}}
+    The `create` method tells the Twilio API to create *and* immediately send a new text message:
 
-- The text string composed in the last section is used as the body of the message.
+    - The text string composed in the last section is used as the body of the message.
 
-- The `from_` phone number corresponds to the new number that you selected in the Twilio console earlier in the guide.
+    - The `from_` phone number corresponds to the new number that you selected in the Twilio console earlier in the guide.
 
-- The `to` number corresponds with your personal or testing phone number that you signed up to Twilio with.
+    - The `to` number corresponds with your personal or testing phone number that you signed up to Twilio with.
 
-The `create` method returns a reference to the Twilio [message resource](https://www.twilio.com/docs/sms/api/message-resource) that was created. The last line prints the unique ID of the message.
-{{< /disclosure-note >}}
+    The `create` method returns a reference to the Twilio [message resource](https://www.twilio.com/docs/sms/api/message-resource) that was created. The last line prints the unique ID of the message.
+    {{< /note >}}
 
 1. After appending the above snippet, save the file and exit your text editor.
 
@@ -528,7 +527,7 @@ As in the previous section, you may want to retrieve mail from a mailbox with a 
 
     mail.select('"[Gmail]/All Mail"')
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 The example code is similar to the code from the previous section. The updated lines of code are:
 
 - On line 5, the [`datetime` module](https://docs.python.org/3/library/datetime.html) is imported. This is used later in the code to search for email by date.
@@ -549,12 +548,12 @@ The example code is similar to the code from the previous section. The updated l
 
 - Line 69 uses the dictionary interface of the email.message.Message object to retrieve a string that represents the date and time of the email. For the example email in the previous section, this was equal to `Tue, 7 Dec 2021 12:45:10 -0500 (EST)`.
 
-- Line 70 uses the [parsedate_to_datetime](https://docs.python.org/3/library/email.utils.html#email.utils.parsedate_to_datetime) function of the Python email module to convert the datetime string to a [datetime.datetime object](https://docs.python.org/3/library/datetime.html#datetime.datetime).
+- Line 70 uses the [`parsedate_to_datetime`](https://docs.python.org/3/library/email.utils.html#email.utils.parsedate_to_datetime) function of the Python email module to convert the datetime string to a [datetime.datetime object](https://docs.python.org/3/library/datetime.html#datetime.datetime).
 
 - Line 71 gets the Unix timestamp from the datetime object.
 
 - The `if` condition on line 73 compares the age of the email and the current time for the script. This only evaluates to true for emails that are less than a minute old. If true, the text message is prepared and sent via the `send_message` function.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Set Up a Cron Job
 

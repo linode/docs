@@ -1,21 +1,18 @@
 ---
+title: "Deploy HashiCorp Nomad through the Linode Marketplace"
 description: "Deploy HashiCorp Nomad, a flexible scheduling and orchestration for diverse workloads, on a Linode Compute Instance.'"
+published: 2022-08-09
 keywords: ['HashiCorp','Nomad','Scheduling', 'orchestration']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2022-08-09
-modified_by:
-  name: Linode
-title: "Deploy HashiCorp Nomad through the Linode Marketplace"
-authors: ["Linode"]
 ---
 
 [HashiCorp Nomad](https://www.nomadproject.io/) is a simple and flexible scheduler and orchestrator to deploy and manage containers and non-containerized applications across cloud platforms (and on-premises servers) at scale.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Nomad should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -26,9 +23,9 @@ authors: ["Linode"]
 - **Supported distributions:** Ubuntu 22.04 LTS, Debian 11
 - **Recommended plan:** We recommend a 4GB Dedicated CPU or Shared Compute instance for the Nomad Server. Nomad Clients (deployed separately from this Marketplace App) can use plans of any size.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -48,4 +45,4 @@ authors: ["Linode"]
 
 1. Additional configurations are required to use the Linode Marketplace Nomad Server in a production environment. We recommend reviewing the [Configuration](https://www.nomadproject.io/docs/configuration) and [Job Spec](https://www.nomadproject.io/docs/job-specification) documentation before proceeding.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

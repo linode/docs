@@ -1,19 +1,18 @@
 ---
 slug: linux-red-team-persistence-techniques
+title: "Linux Red Team Persistence Techniques"
 description: 'This guide covers the process of setting up and maintaining persistent access on Linux targets.'
+authors: ["HackerSploit"]
+contributors: ["HackerSploit"]
+published: 2021-11-03
 keywords: ['security']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-03
-modified_by:
-  name: Linode
-title: "Linux Red Team Persistence Techniques"
-authors: ["HackerSploit"]
 ---
 
-{{< content "hackersploit-red-team-series-note-shortguide" >}}
+{{% content "hackersploit-red-team-series-note-shortguide" %}}
 
-{{< content "hackersploit-caution-shortguide" >}}
+{{% content "hackersploit-caution-shortguide" %}}
 
 ## Before You Begin
 
@@ -85,19 +84,19 @@ In order to perform this technique, you need to have obtained initial access to 
 
     ![ssh-keygen output](ssh-keygen-output.png "ssh-keygen output")
 
-1. After generating the public and private key pair, you will need to copy the content of the public key (id_rsa.pub) you generated and add it to the “authorized_keys” file in the target user account’s .ssh directory on the target system. In this case, we will be adding the public key to the “authorized_keys” file of the “root” user located in `/root/.ssh/authorized_keys`.
+1. After generating the public and private key pair, you will need to copy the content of the public key (id_rsa.pub) you generated and add it to the `authorized_keys` file in the target user account’s .ssh directory on the target system. In this case, we will be adding the public key to the `authorized_keys` file of the “root” user located in `/root/.ssh/authorized_keys`.
 
-    Note: If the .ssh directory and “authorized_keys” file don’t exist, you will need to create them, this can be done by running the following commands:
+    Note: If the .ssh directory and `authorized_keys` file don’t exist, you will need to create them, this can be done by running the following commands:
 
         mkdir ~/.ssh
 
         touch ~/.ssh/authorized_keys
 
-1. After pasting in the contents of the public key you generated into the “authorized_keys” file, it should look similar to the screenshot shown below.
+1. After pasting in the contents of the public key you generated into the `authorized_keys` file, it should look similar to the screenshot shown below.
 
-    ![authorized_keys contents](authorized-keys-contents.png "authorized_keys contents")
+    ![Contents of the authorized keys file](authorized-keys-contents.png)
 
-1. It is also recommended to apply the necessary permissions to the .ssh directory and “authorized_keys” file, this can be done by running the following commands:
+1. It is also recommended to apply the necessary permissions to the .ssh directory and `authorized_keys` file, this can be done by running the following commands:
 
         chmod 700 /root/.ssh
         chmod 600 /root/.ssh/authorized_keys
@@ -132,7 +131,7 @@ Note: You will require “root” privileges in order to create a new user accou
 
     ![/etc/password contents with ftp account](etc-password-contents-with-ftp-account.png "/etc/password contents with ftp account")
 
-1. You can now authenticate with the new user account via SSH password authentication, alternatively, you can also add the ssh public key we generated in the first section to the “authorized_keys” file in the user account’s home password.
+1. You can now authenticate with the new user account via SSH password authentication, alternatively, you can also add the ssh public key we generated in the first section to the `authorized_keys` file in the user account’s home password.
 
 1. After authenticating with the server via SSH, we can confirm that the user account has administrative privileges by using the sudo command.
 

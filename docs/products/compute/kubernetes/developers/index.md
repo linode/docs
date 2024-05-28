@@ -2,10 +2,10 @@
 title: Developers
 title_meta: "Developer Resources for LKE (Linode Kubernetes Engine)"
 description: "Linode Kubernetes Engine instances are managed easily with developer tools like the Linode API or CLI as well as third party tools and integrations."
-tab_group_main:
-    weight: 50
 published: 2020-06-02
 modified: 2023-02-09
+tab_group_main:
+    weight: 50
 ---
 
 ## Linode API
@@ -16,7 +16,7 @@ Linode’s [API v4](/docs/api) provides the ability to programmatically manage t
 
 ## Linode CLI
 
-The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the Linode API v4 that allows you to manage your Linode account and resources from the command line. Learn how to use the Linode CLI to [create and manage LKE clusters](/docs/products/tools/cli/get-started/#linode-kubernetes-engine-lke).
+The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the Linode API v4 that allows you to manage your Linode account and resources from the command line. Learn how to use the Linode CLI to [create and manage LKE clusters](/docs/products/tools/cli/guides/linode-kubernetes-engine/).
 
 ## Third Party Tools & Integrations
 
