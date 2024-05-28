@@ -1,22 +1,16 @@
 ---
 slug: salt-command-line-reference
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'A reference for the SaltStack command line interface.'
-keywords: ['salt','saltstack','cli','command line','reference']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+title: "SaltStack Command Line Reference"
+description: 'The SaltStack is a powerful configuration management tool. This guide provides you with a reference for the SaltStack command line interface.'
+authors: ["Andy Stevens"]
+contributors: ["Andy Stevens"]
 published: 2018-10-03
 modified: 2019-01-02
-modified_by:
-  name: Linode
-title: "SaltStack Command Line Reference"
-contributor:
-    name: "Andy Stevens"
-    link: "https://github.com/andystevensname"
+keywords: ['salt','saltstack','cli','command line','reference']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[SaltStack Command Line Documentation](https://docs.saltstack.com/en/latest/ref/cli/index.html)'
-- '[Linode Cloud Module](https://docs.saltstack.com/en/latest/ref/clouds/all/salt.cloud.clouds.linode.html)'
+- '[SaltStack Command Line Documentation](https://docs.saltproject.io/en/latest/ref/cli/index.html)'
+- '[Linode Cloud Module](https://docs.saltproject.io/en/latest/ref/clouds/all/salt.cloud.clouds.linode.html)'
 aliases: ['/applications/configuration-management/salt-command-line-reference/','/applications/configuration-management/salt/salt-command-line-reference/']
 tags: ["automation","salt"]
 ---
@@ -156,7 +150,7 @@ Used to manage the Salt server public keys.
 |`--gen-keys`|Set a name to generate a key-pair.|`salt-key --gen-keys newminion`|
 |`--gen-keys-dir`|Choose where to save newly generated key-pairs. Only works with `--gen-keys`.|`salt-key --gen-keys newminion --gen-keys-dir /home/salt/keypairs`|
 |`--keysize`|Set the keysize for a generated key. Must be a value of 2048 or higher. Only works with `--gen-keys`.|`salt-key --gen-keys newminion --keysize 4096`|
-|`--gen-signature`|Create a signature for the master's public key named master_pubkey_signature. This requires a new-signing-keypair which can be created with the `--auto-create` option.|`salt-key --gen-signature --auto-create`|
+|`--gen-signature`|Create a signature for the master's public key named `master_pubkey_signature`. This requires a new-signing-keypair which can be created with the `--auto-create` option.|`salt-key --gen-signature --auto-create`|
 |`--priv`|The private-key file with which to create a signature.|`salt-key --priv key.pem`|
 |`--signature-path`|The file path for the new signature.|`salt-key  --gen-signature --auto-create --signature-path /path/to/signature`|
 |`--pub`|The public-key file with which to create a signature.|`salt-key --gen-signature key.pub`|

@@ -1,15 +1,13 @@
 ---
 slug: gpg-keys-to-send-encrypted-messages
-author:
-  name: Linode
-description: 'How to Use GPG Keys to Send Encrypted Messages'
+title: "Use GPG Keys to Send Encrypted Messages"
+title_meta: "How to Use GPG Keys to Send Encrypted Messages"
+description: 'This article shows you how you can use GPG, also known as GNU Privacy Guard, keys to send and receive encrypted messages with friends and colleagues.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-08-08
 keywords: ['gpg','security','cryptography','encrypt', 'decrypt']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-08-08
-modified: 2018-08-08
-modified_by:
-  name: Linode
-title: "How to Use GPG Keys to Send Encrypted Messages"
 external_resources:
 - '[Primes, Modular Arithmetic, and Public Key Cryptography ](http://pi.math.cornell.edu/~mec/2003-2004/cryptography/diffiehellman/diffiehellman.html)'
 - '[The Mathematics of the RSA Public-Key Cryptosystem ](http://www.mathaware.org/mam/06/Kaliski.pdf)'
@@ -21,7 +19,7 @@ aliases: ['/security/encryption/gpg-keys-to-send-encrypted-messages/']
 
 GNU Privacy Guard (GnuPG), also known as GPG, is a tool for secure communication that was created by Werner Koch as [Free Software](https://www.gnu.org/philosophy/free-sw.en.html) under the [GNU Project](https://www.gnu.org/gnu/thegnuproject.en.html). GnuPG follows the [OpenPGP protocol](https://www.openpgp.org/about/standard/), which defines and standardizes all the necessary components involved in sending encrypted messages--signatures, private keys, and public key certificates. This piece of free software is notably used by journalists around the world to ensure that their sensitive email communication is kept secure and private.
 
-GPG uses a combination of symmetric-key cryptography and public-key cryptography. Public key cryptography is likely already familiar to you since it is the recommended way to authenticate when [SSHing in to your Linode](/docs/security/securing-your-server/#harden-ssh-access). Public-key cryptography uses a key-pair system where any single user has a private and public key pair. The public key can be shared with anyone, while the private key should be protected and secret to maintain the integrity of the system.
+GPG uses a combination of symmetric-key cryptography and public-key cryptography. Public key cryptography is likely already familiar to you since it is the recommended way to authenticate when [SSHing in to your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access). Public-key cryptography uses a key-pair system where any single user has a private and public key pair. The public key can be shared with anyone, while the private key should be protected and secret to maintain the integrity of the system.
 
 This asymmetric cryptographic system is ideal for secure communication, because all it requires is that the sender of the message have a copy of the receiver's public key before encrypting and sending the message. The recipient can then use their private key to decrypt the message. This means anyone can send you a secure message if they have a copy of your public key.
 

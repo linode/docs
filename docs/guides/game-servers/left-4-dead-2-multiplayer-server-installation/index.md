@@ -1,22 +1,15 @@
 ---
 slug: left-4-dead-2-multiplayer-server-installation
-author:
-    name: Linode Community
-    email: docs@linode.com
+title: "Installing a Left 4 Dead 2 Multiplayer Server"
+title_meta: "How to Install a Left 4 Dead 2 Multiplayer Server"
 description: "In this guide, learn how to install and configure a SteamCMD Left 4 Dead 2 server on Linode."
+authors: ["Andrew Gottschling"]
+contributors: ["Andrew Gottschling"]
+published: 2016-02-25
+modified: 2019-02-01
 keywords: ["left 4 dead", "l4d2", "game server", "steamCMD"]
 tags: ["ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2016-02-25
-modified: 2019-02-01
-modified_by:
-    name: Linode
-title: "How to Install a Left 4 Dead 2 Multiplayer Server"
-h1_title: "Installing a Left 4 Dead 2 Multiplayer Server"
-enable_h1: true
-contributor:
-    name: Andrew Gottschling
-    link: https://github.com/agottschling
 aliases: ['/game-servers/left-4-dead-2-multiplayer-server-installation/','/applications/game-servers/left-4-dead-2-multiplayer-server-installation/']
 dedicated_cpu_link: true
 ---
@@ -32,10 +25,10 @@ You will need the following items to get started:
 - A [Steam](http://store.steampowered.com) account.
 - OPTIONAL (needed to test the server): A copy of [Left 4 Dead 2](http://store.steampowered.com/app/550/).
 - A Linode with at least 2GB of RAM and 10GB of free disk space.
-- An up-to-date Linode running Ubuntu or Debian. We suggest you follow our [Getting Started](/docs/getting-started) guide for help configuring your Linode.
+- An up-to-date Linode running Ubuntu or Debian. We suggest you follow our [Getting Started](/docs/products/platform/get-started/) guide for help configuring your Linode.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, reference the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, reference the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Preparing your Linode
@@ -56,7 +49,7 @@ Because a current Linode runs on a 64-bit operating system, you need to download
 
         sudo apt-get install lib32gcc1 lib32stdc++6 libc6-i386 libcurl4-gnutls-dev:i386 screen
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you're running a legacy Linode on a 32-bit kernel, install these packages instead:
 
 sudo apt-get install libcurl4-gnutls-dev:i386 libc6-i386 libgcc1 screen
@@ -64,19 +57,18 @@ sudo apt-get install libcurl4-gnutls-dev:i386 libc6-i386 libgcc1 screen
 
 4.  If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
-        sudo iptables -A INPUT -p udp- m udp --sport 4380 --dport 1025:65355 -j ACCEPT
+        sudo iptables -A INPUT -p udp -m udp --sport 4380 --dport 1025:65355 -j ACCEPT
         sudo iptables -A INPUT -p udp -m udp --sport 10999 --dport 1025:65355 -j ACCEPT
         sudo iptables -A INPUT -p udp -m udp --sport 7777 --dport 1025:65355 -j ACCEPT
         sudo iptables -A INPUT -p udp -m udp --sport 27015 --dport 1025:65355 -j ACCEPT
 
-    {{< note >}}
-If you've configured your firewall according to our [Securing Your Server](/docs/security/securing-your-server) guide, be sure to add these port ranges to your `/etc/iptables.firewall.rules` file.
+    {{< note respectIndent=false >}}
+If you've configured your firewall according to our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, be sure to add these port ranges to your `/etc/iptables.firewall.rules` file.
 {{< /note >}}
 
 ## Install SteamCMD and Left 4 Dead 2
-
 {{< note >}}
-This guide requires additional libraries which are not included in our standard [SteamCMD Guide](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server).  This guide includes standalone configuration instructions for SteamCMD.  If you have already followed our SteamCMD installation guide, you can skip to step 4.
+This guide requires additional libraries which are not included in our standard [SteamCMD Guide](/docs/guides/install-steamcmd-for-a-steam-game-server/).  This guide includes standalone configuration instructions for SteamCMD.  If you have already followed our SteamCMD installation guide, you can skip to step 4.
 {{< /note >}}
 
 1.  From your user's home folder, download SteamCMD into its own directory:
@@ -168,12 +160,12 @@ screen ./srcds_run -console -game left4dead2 +port 27020 +maxplayers 8 +exec ser
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `+port 27020` parameter is not required but is recommended so that your server always starts on the same port. The port number may be changed to whichever one you prefer, so long as it is not a privileged port.
 {{< /note >}}
 
     You can change the map to whichever one you prefer.
-    This script, when run, will execute the L4D2 server in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
+    This script, when run, will execute the L4D2 server in a [Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session.
 
 5.  Make the script executable:
 
@@ -206,7 +198,7 @@ You can connect to the server in any one of three easy methods:
 
 3.  A third method is to install the following add-on: [Link](https://steamcommunity.com/sharedfiles/filedetails/?id=121088946) and then launch the game. Next, click on the new `Server Browser` option on the main menu and find your server in the long list of servers. This method only works if you have set the `hostname`, `sv_search_key`, and `sv_tags` options in the config file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Your L4D2 server will only show up in the `Custom` list of servers. Therefore, we recommend that you add it to your favorites to avoid having to look for it again.
 {{< /note >}}
 

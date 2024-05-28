@@ -1,21 +1,14 @@
 ---
 slug: how-to-authenticate-using-jwt
-author:
-  name: Nathaniel Stickman
-description: "JSON Web Tokens (JWTs) provide a compact and secure standard for sending information, especially on the web. This guide explains the key concepts behind JWTs and walks you through getting started implementing your own using Express."
-og_description: "JSON Web Tokens (JWTs) provide a compact and secure standard for sending information, especially on the web. This guide explains the key concepts behind JWTs and walks you through getting started implementing your own using Express."
+title: "User Authentication with JWTs (JSON Web Tokens) in Express and Node.js"
+title_meta: "User Authentication with JWTs in Express and Node.js"
+description: "In this guide, you will learn key concepts behind JSON Web Tokens (JWTs) and how they provide a compact and secure standard for sending information, especially on the web."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-23
 keywords: ['json web tokens','jwt','encoding jwt','decoding jwt','what is a jwt']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-23
-modified_by:
-  name: Nathaniel Stickman
-title: "How to Authenticate Users with JSON Web Tokens (JWTs), Express, and Node.js"
-h1_title: "User Authentication with JSON Web Tokens (JWTs) and Express"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[JWT.IO: Introduction to JSON Web Tokens](https://jwt.io/introduction)'
 - '[IANA JSON Web Token specifications](https://tools.ietf.org/html/rfc7519#section-4.1)'
@@ -57,7 +50,7 @@ JWTs have three parts. In the resulting encoded JWT, each part is encoded using 
 
 To see this in action, you can use the [JWT.IO debugger](https://jwt.io/#debugger-io). This lets you define JWT contents and see the signed and encoded result.
 
-[![Encoding example on the JWT.IO debugger](jwtio-encoding-example_small.png)](jwtio-encoding-example.png)
+![Encoding example on the JWT.IO debugger](jwtio-encoding-example.png)
 
 ## Example JWT Authentication
 
@@ -67,22 +60,12 @@ The JWTs encoded in this example provide a lightweight and secure means of authe
 
 ### Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system.
-
-    - On Debian and Ubuntu, use the following command:
-
-            sudo apt update && sudo apt upgrade
-
-    - On CentOS, use the following command:
-
-            sudo yum update
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ### Install Node.js
@@ -115,7 +98,7 @@ The steps in this guide are written for a non-root user. Commands that require e
 
 1. Create the example JavaScript file called `server.js`. This contains the skeleton for your Express JS server.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In a production scenario, you should not store credentials in application code and your passwords should be encrypted when stored. Additionally, use a secret that conforms to the standards for the signing algorithm you are using. For instance, the HMAC SHA256 algorithm in this example should be given a 256-bit secret. You can achieve this with a random 64-character hex string or a random 44-character Base64 string.
     {{< /note >}}
 
@@ -256,7 +239,7 @@ Follow the steps below to see the JWT process in action.
 
     Express serves the application on `localhost:3000`. To visit the application remotely, you can use an SSH tunnel.
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with `3000`.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Connecting to a Remote Server Over SSH using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/) guide, replacing the example port number there with `3000`.
     - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
             ssh -L3000:localhost:3000 example-user@192.0.2.0

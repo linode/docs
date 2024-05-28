@@ -1,22 +1,15 @@
 ---
 slug: protecting-your-linode-using-tcp-wrappers
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Enhance your server''s security through the use of TCP wrappers'
+title: Protecting Your Linode with TCP Wrappers
+description: 'This guide shows how you can enhance the security of your server by using TCP Wrappers, a host-based access control system that prevents unauthorized access.'
+authors: ["Francis McNamee"]
+contributors: ["Francis McNamee"]
+published: 2015-04-30
 keywords: ["tcp wrappers", "security", "firewall", "acl", "access control"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-04-30
-modified: 2015-04-30
-modified_by:
-  name: Elle Krout
-title: Protecting Your Linode with TCP Wrappers
-contributor:
-    name: Francis McNamee
 tags: ["networking","security"]
 aliases: ['/security/firewalls/protecting-your-linode-using-tcp-wrappers/']
 ---
-
 
 ![Protecting your Linode with TCP Wrappers](protecting-your-linode-with-tcp-wrappers.png "Protecting your Linode with TCP Wrappers")
 
@@ -24,7 +17,7 @@ TCP wrappers are a host-based access control system. They are used to prevent un
 
 ## Why use TCP wrappers?
 
-TCP wrappers create an additional layer of security between your server and any potential attacker. They provide logging and hostname verification in addition to access control features. TCP wrappers will work out-of-the-box on most Linux and UNIX-based operating systems, which makes them easy to set up, and a perfect compliment to your [existing firewall implementation](/docs/security/securing-your-server/#configure-a-firewall).
+TCP wrappers create an additional layer of security between your server and any potential attacker. They provide logging and hostname verification in addition to access control features. TCP wrappers will work out-of-the-box on most Linux and UNIX-based operating systems, which makes them easy to set up, and a perfect compliment to your [existing firewall implementation](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall).
 
 ### How do I know if a program will work with TCP wrappers?
 
@@ -88,7 +81,7 @@ This example *hosts.deny* file will block all client from all processes.
 
     ALL : ALL
 
-We could express this rule in a sentence like this, "Deny access to all daemons from all clients". This rule will deny all traffic to the server regardless of the source. Utilizing this rule on its own is not recommended, as it will deny you access to your own server, excepting [LISH](/docs/networking/using-the-linode-shell-lish).
+We could express this rule in a sentence like this, "Deny access to all daemons from all clients". This rule will deny all traffic to the server regardless of the source. Utilizing this rule on its own is not recommended, as it will deny you access to your own server, excepting [LISH](/docs/products/compute/compute-instances/guides/lish/).
 
 ### Allow exceptions
 

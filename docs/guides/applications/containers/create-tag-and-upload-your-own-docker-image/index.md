@@ -1,21 +1,13 @@
 ---
 slug: create-tag-and-upload-your-own-docker-image
-author:
-  name: Linode Community
-  email: docs@linode.com
-contributor:
-  name: Jack Wallen
-  link: https://twitter.com/jlwallen
+title: "Create, Tag, and Upload Your Own Docker Image"
 description: "Docker makes it easy to develop and deploy custom and consistent environments, called images. Here's how to create your own."
-og_description: "Docker makes it easy to develop and deploy custom and consistent environments, called images. Here's how to create your own."
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2017-09-01
 keywords: ['docker','container','dockerfile','docker image','docker hub']
 tags: ["lamp","container","docker","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-09-01
-modified_by:
-  name: Linode
-published: 2017-09-01
-title: "Create, Tag, and Upload Your Own Docker Image"
 external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
@@ -25,7 +17,7 @@ aliases: ['/applications/containers/create-tag-and-upload-your-own-docker-image/
 
 Docker makes it easy to develop and deploy custom and consistent environments that include specific applications and dependencies. Docker calls these compilations Images. Docker images can be hosted and retrieved from private locations or from the official repository, [Docker Hub](https://hub.docker.com/).
 
-This guide is part of a series of introductions to Docker concepts. The commands to create an image in this guide build on the previous guide, [How to Install and Pull Images for Container Deployment](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/). For more information about Docker and containers, visit our [guides on Containers](/docs/applications/containers/).
+This guide is part of a series of introductions to Docker concepts. The commands to create an image in this guide build on the previous guide, [How to Install and Pull Images for Container Deployment](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/). For more information about Docker and containers, visit our [guides on Containers](/docs/applications/containers/).
 
 ## Create a Docker Image
 

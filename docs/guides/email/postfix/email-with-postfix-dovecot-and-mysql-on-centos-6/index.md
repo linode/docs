@@ -1,17 +1,13 @@
 ---
 slug: email-with-postfix-dovecot-and-mysql-on-centos-6
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Installing Postfix with Dovecot and MySQL on CentOS.'
+title: 'Email with Postfix, Dovecot, and MySQL on CentOS 6'
+description: 'This guide provides you with step-by-step instructions for installing the Postfix MTA along with the Dovecot mail server and MariaDB on CentOS 6.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-03-26
 keywords: ["postfix centos 6", "dovecot centos 6", "linux mail server", "email", "centos 6"]
 tags: ["centos","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-03-26
-modified_by:
-  name: Elle Krout
-published: 2015-03-26
-title: 'Email with Postfix, Dovecot, and MySQL on CentOS 6'
 external_resources:
  - '[ISP-style Email Server with Debian-Lenny and Postfix 2.5 guide](http://workaround.org/ispmail/lenny)'
  - '[Groupware Server With Group-Office, Postfix, Dovecot And SpamAssassin On Debian Lenny (5.0)](http://www.howtoforge.com/groupware-server-with-group-office-postfix-dovecot-spamassassin-on-debian-lenny)'
@@ -25,17 +21,18 @@ relations:
         keywords:
             - distribution: CentOS 6
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql-on-centos-6/']
+deprecated: true
 ---
 
 ![Email with Postfix, Dovecot, and MySQL on CentOS](Email-with-Postfix-Dovecot-and-MySQL-on-CentOS-smg.jpg)
 
 The Postfix Mail Transfer Agent (**MTA**) is a high performance open source e-mail server system. This guide will help you get Postfix running on your CentOS 6 Linode, using Dovecot for IMAP/POP3 service, and MySQL to store information on virtual domains and users.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## Before You Begin
 
-Prior to using this guide, be sure you have followed the [getting started guide](/docs/getting-started/) and set your hostname.
+Prior to using this guide, be sure you have followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and set your hostname.
 
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root`, or use `su - root` to log in as root. Certain commands below cannot be run as `sudo` and must be run as root.
@@ -134,7 +131,6 @@ bind-address=127.0.0.1
 Next, perform additional Postfix configuration to set up communication with the database.
 
 ## Configure Postfix to work with MySQL
-
 {{< note >}}
 For the next four steps, replace `mail_admin_password` with the `mail_admin` password input earlier.
 {{< /note >}}
@@ -399,7 +395,6 @@ This completes alias configuration. Next, test Postfix to make sure it's operati
 Next, populate the MySQL database with domains and email users.
 
 ## Set Up and Test Domains and Users
-
 {{< note >}}
 Before continuing, modify the DNS records for any domains that you wish to handle email by adding an MX record that points to your mail server's fully qualified domain name. If MX records already exist for a domain you would like to handle the email for, either delete them or set them to a higher priority number than your mail server. Smaller priority numbers indicate higher priority for mail delivery, with "0" being the highest priority.
 {{< /note >}}
@@ -479,4 +474,4 @@ Now you can test to see what the users of your email server would see with their
 
 4.  If there is an email in the inbox, Postfix, Dovecot, and MySQL have been successfully configured! To quit mutt press `q`.
 
-    [![Your mailbox is working!](postfixcentos-mutt.png)](postfixcentos-mutt.png)
+    ![Your mailbox is working!](postfixcentos-mutt.png)

@@ -1,22 +1,16 @@
 ---
 slug: secrets-management-with-terraform
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Managing Secrets with Terraform"
+title_meta: "Secrets Management with Terraform"
 description: 'Learn everything you need to know about secrets management with Terraform.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-12-12
+modified: 2021-08-13
 keywords: ['terraform','secrets','secrets management','backend','hcl']
 tags: ["security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-12-12
-modified: 2021-08-13
-modified_by:
-  name: Linode
 image: SecretsManagementwithTerraform.png
-title: "Secrets Management with Terraform"
-h1_title: "Managing Secrets with Terraform"
-enable_h1: true
-contributor:
-  name: Linode
 external_resources:
 - '[Terraform Input Variable Configuration](https://www.terraform.io/docs/configuration/variables.html)'
 - '[Terraform Backend Configuration](https://www.terraform.io/docs/backends/config.html)'
@@ -24,6 +18,7 @@ external_resources:
 - '[Terraform State Storage and Locking](https://www.terraform.io/docs/backends/state.html)'
 - '[GitHub Discussion - Storing Sensitive Values in State Files](https://github.com/hashicorp/terraform/issues/516)'
 aliases: ['/applications/configuration-management/terraform/secrets-management-with-terraform/','/applications/configuration-management/secrets-management-with-terraform/']
+tags: ["saas"]
 ---
 
 Terraform is an Infrastructure as Code (IaC) tool that allows you to write declarative code to manage your infrastructure. In order to implement IaC with Terraform it is necessary to supply secrets, such as server passwords and API tokens, in the code. This guide discusses methods for securing those secrets within Terraform.
@@ -32,7 +27,7 @@ Terraform is an Infrastructure as Code (IaC) tool that allows you to write decla
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12 or later. To learn how to safely upgrade to Terraform version 0.12 or later, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
 
 The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html).
-{{</ note >}}
+{{< /note >}}
 
 ## Keeping Secrets Out of .tf Files
 
@@ -119,7 +114,7 @@ variable "database_username" {
 }
 {{< /file >}}
 
-Define another variable here named "data_password" that you intend to use later in this guide.
+Define another variable here named `data_password` that you intend to use later in this guide.
 
 {{< file >}}
 variable "database_password" {
@@ -140,9 +135,9 @@ You can also include the variable on the same line when running `terraform plan`
 
     TF_VAR_token=your-token-value terraform apply
 
-{{< caution >}}
+{{< note type="alert" >}}
 This method commits the environment variable to your shell's history, so take care when using this method.
-{{< /caution >}}
+{{< /note >}}
 
 ### Assigning Values in Command-Line Flags
 
@@ -150,9 +145,9 @@ Variable values can be set with the `-var` option:
 
     terraform apply -var 'token=your-token-value'
 
-{{< caution >}}
+{{< note type="alert" >}}
 This method commits the command-line variable to your shell's history, and exposes it to other users on the system running `ps`.
-{{< /caution >}}
+{{< /note >}}
 
 ### Supply Variables at Prompt
 
@@ -190,7 +185,7 @@ Third-party tools exist that allow you to encrypt your secrets. If you encrypt t
 
 -   [git-crypt](https://github.com/AGWA/git-crypt) allows you to encrypt files when they are committed to a Git repository. git-crypt also decrypts files when they are checked out.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You must initialize git-crypt in a repository before committing the state file or variable value files, else the files are encrypted.
 {{< /note >}}
 
@@ -259,11 +254,11 @@ After `pass` is installed, you can store your secrets by running `pass insert` f
 
         pass insert database_username
 
-Enter password for database_username: admin
+Enter password for `database_username`: admin
 
         pass insert database_password
 
-Enter password for database_password: password
+Enter password for `database_password`: password
 
 Now run the following command : `pass <your secret>`
 
@@ -284,9 +279,9 @@ data "vault_generic_secret" "linode_auth" {
 {{< /file >}}
 
 {{< note >}}
-For this example, in Vault there is a key named "auth_token" and the value is the token we need to keep secret.
+For this example, in Vault there is a key named `auth_token` and the value is the token we need to keep secret.
 
-In general usage, replace "auth_token" with the key you wish to extract from Vault.
+In general usage, replace `auth_token` with the key you wish to extract from Vault.
 
 {{< file >}}
 provider "linode" {

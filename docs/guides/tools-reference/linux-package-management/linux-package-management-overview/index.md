@@ -1,23 +1,21 @@
 ---
 slug: linux-package-management-overview
-author:
-  name: Linode
-  email: docs@linode.com
-description: Learn basics and advanced Linux package management in Debian, Ubuntu, Fedora, etc using apt, yum, aptitude and other package managers.
+title: "An Overview of Package Management in Linux"
+description: "Learn basics and advanced Linux package management in Debian, Ubuntu, Fedora, etc using apt, yum, aptitude and other package managers."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2023-09-05
+modified: 2022-05-12
 keywords: ["dnf", "rpm", "apt", "dpkg", "apt-get", "apt-cache", "pacman", "yum"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/basics/linux-package-management/','/using-linux/package-management/']
-modified: 2021-07-15
-modified_by:
-  name: Linode
-published: 2021-07-15
-title: "An Overview of Package Management in Linux"
+image: OverviewofPackageManagementinLinux.jpg
 tags: ["linux"]
+aliases: ['/guides/linux-package-management/','/tools-reference/basics/linux-package-management/','/tools-reference/linux-package-management/','/using-linux/package-management/']
 ---
 
 On Linux, software is typically built as a *package*, distributed through *repositories*, and managed on the end-user's system through *package managers*. Each Linux system typically contains thousands of packages, many of which are required dependencies for other packages.
 
-Many guides within Linode's documentation (and elsewhere online) require the installation of new software. These guides typically provide basic commands that utilize a package manager to install the package(s) corresponding to that software. In some cases, you may wish to go beyond these basic commands to install a particular version, search for previously installed packages, or perform other actions. The purpose of this guide is to provide a solid understanding of package management in Linux and an overview of the most most widely used package managers.
+Many guides within Linode's documentation (and elsewhere online) require the installation of new software. These guides typically provide basic commands that utilize a package manager to install the package(s) corresponding to that software. In some cases, you may wish to go beyond these basic commands to install a particular version, search for previously installed packages, or perform other actions. The purpose of this guide is to provide a solid understanding of package management in Linux and an overview of the most widely used package managers.
 
 ## Core Concepts for Package Management
 
@@ -54,23 +52,12 @@ There are lots of package managers in Linux, each working a bit differently. Her
 
 [Using APT to Manage Packages in Debian and Ubuntu](/docs/guides/apt-package-manager/)
 
-- **Distributions:** Debian-based, including Debian and Ubuntu
+- **Distributions:** Ubuntu, Debian, and Kali Linux
 - **Commands:** `apt`, `apt-get`, `apt-cache`
 - **Underlying package management tool:** [dpkg](https://linux.die.net/man/1/dpkg)
 - **Package file format:** `.deb`
 
 *Advanced Package Tool*, more commonly known as [APT](https://ubuntu.com/server/docs/package-management), is a package management system for Debian, Ubuntu, and other similar Linux distributions. It acts as a front-end to the lower-level [**dpkg**](https://en.wikipedia.org/wiki/Dpkg) package manager, which is used for installing, managing, and providing information on `.deb` packages. Most distributions that use APT also include a collection of command-line tools that can be used to interface with APT. These tools include `apt-get`, `apt-cache`, and the newer `apt`, which essentially combines both of the previous tools with some modified functionality.
-
-### YUM
-
-[Using YUM to Manage Packages in CentOS/RHEL 7 and Earlier](/docs/guides/yum-package-manager/)
-
-- **Distributions:** RHEL/CentOS 7, Fedora 21, and earlier versions of both distributions
-- **Command:** `yum`
-- **Underlying package management tool:** [RPM](https://linux.die.net/man/8/rpm) (*RPM Package Manager*)
-- **Package file format:** `.rpm`
-
-*Yellowdog Updater, Modified*, more commonly known as [YUM](http://yum.baseurl.org/), is a package management tool for a variety of older RHEL-based distributions (such as CentOS 7) and older versions of Fedora. It provides an easy-to-use interface on top of the low-level functions available in the RPM Package Manger (RPM). It has largely been replaced by it successor *Dandified YUM*, also called DNF, on most newer RPM-based distributions.
 
 ### DNF
 
@@ -83,7 +70,20 @@ There are lots of package managers in Linux, each working a bit differently. Her
 
 *Dandified YUM*, or simply [DNF](https://fedoraproject.org/wiki/DNF?rd=Dnf), is the successor to YUM. Just like YUM, DNF provides a user-friendly interface to the RPM Package Manager (RPM) that comes with CentOS, RHEL, Fedora, and many other Linux distributions. As the successor to YUM, DNF has several enhancements including increased performance, faster dependency resolution, and more complete documentation for its API. Most distributions still link the `yum` command to the DNF software and, since DNF maintains compatibility with much of YUM's CLI, most commands using `yum` still function as intended.
 
+### YUM
+
+[Using YUM to Manage Packages in CentOS/RHEL 7 and Earlier](/docs/guides/yum-package-manager/)
+
+- **Distributions:** RHEL/CentOS 7, Fedora 21, and earlier versions of both distributions
+- **Command:** `yum`
+- **Underlying package management tool:** [RPM](https://linux.die.net/man/8/rpm) (*RPM Package Manager*)
+- **Package file format:** `.rpm`
+
+*Yellowdog Updater, Modified*, more commonly known as [YUM](http://yum.baseurl.org/), is a package management tool for a variety of older RHEL-based distributions (such as CentOS 7) and older versions of Fedora. It provides an easy-to-use interface on top of the low-level functions available in the RPM Package Manger (RPM). It has largely been replaced by it successor *Dandified YUM*, also called DNF, on most newer RPM-based distributions.
+
 ### Zypper
+
+[Use Zypper to Manage Packages in openSUSE](/docs/guides/zypper-package-manager/)
 
 - **Distributions:** openSUSE
 - **Command:** `zypper`

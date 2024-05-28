@@ -1,17 +1,14 @@
 ---
 slug: use-nginx-reverse-proxy
-author:
-  name: Linode
-  email: docs@linode.com
+title: Use NGINX as a Reverse Proxy
 description: 'Learn how to use NGINX as a reverse proxy. Understand how headers and buffers can help optimize your application’s performance.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-03-26
+modified: 2021-02-02
 keywords: ["nginx","reverse proxy","proxy","node.js"]
 tags: ["proxy","web server","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-02-02
-modified_by:
-  name: Linode
-published: 2018-03-26
-title: Use NGINX as a Reverse Proxy
 external_resources:
   - '[NGINX Reverse Proxy – NGINX](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)'
 aliases: ['/web-servers/nginx/use-nginx-reverse-proxy/']
@@ -38,7 +35,7 @@ Some common uses of NGINX as a reverse proxy include load balancing to maximize 
 
 ## Install NGINX
 
-{{< content "install-nginx-ubuntu-ppa" >}}
+{{% content "install-nginx-ubuntu-ppa" %}}
 
 ## Create an Example App
 
@@ -46,7 +43,7 @@ Some common uses of NGINX as a reverse proxy include load balancing to maximize 
 
 Though there are a number of options available to install Node.js, we recommend using NVM with the following steps:
 
-{{< content "how-to-install-nvm" >}}
+{{% content "how-to-install-nvm" %}}
 
 ### Configure the App
 
@@ -153,17 +150,17 @@ With NGINX, there are now standards for serving content over HTTPS. Here are a f
 
 | Proxy Header   | Parameter |
 | ----------- | ----------- |
-| proxy_pass     | http://127.0.0.1:3000       |
-| proxy_http_version   | 1.1        |
-| proxy_cache_bypass   | $http_upgrade   |
-| proxy_set_header Upgrade    | $http_upgrade    |
-| proxy_set_header Connection   | "upgrade"   |
-| proxy_set_header Host   | $host   |
-| proxy_set_header X-Real-IP    | $remote_addr |
-| proxy_set_header X-Forwarded-For   | $proxy_add_x_forwarded_for   |
-| proxy_set_header X-Forwarded-Proto   | $scheme   |
-| proxy_set_header X-Forwarded-Host   | $host   |
-| proxy_set_header X-Forwarded-Port   | $server_port   |
+| `proxy_pass`     | `http://127.0.0.1:3000`       |
+| `proxy_http_version`   | `1.1`        |
+| `proxy_cache_bypass`   | `$http_upgrade`   |
+| `proxy_set_header Upgrade`    | `$http_upgrade`    |
+| `proxy_set_header Connection`   | `"upgrade"`   |
+| `proxy_set_header Host`   | `$host`   |
+| `proxy_set_header X-Real-IP`    | `$remote_addr` |
+| `proxy_set_header X-Forwarded-For`   | `$proxy_add_x_forwarded_for`   |
+| `proxy_set_header X-Forwarded-Proto`   | `$scheme`   |
+| `proxy_set_header X-Forwarded-Host`   | `$host`   |
+| `proxy_set_header X-Forwarded-Port`   | `$server_port`   |
 
 The following is an explanation of what each proxy header does:
 
@@ -172,7 +169,7 @@ The following is an explanation of what each proxy header does:
 *   `proxy_http_version`: It is set to HTTP version 1.0 by default, but you can change it to define your HTTP protocol version, e.g. HTTP 1.1 is for WebSockets.
 *   `proxy_cache_bypass  $http_upgrade`:   Defines when to bypass your cache when it receives a response.
 *   `proxy_set_header`: Upgrade and Connection - are required headers if you are using WebSockets.
-*   `proxy_set_header Host $host`: Preferred over proxy_set_header Host $prox_host as you don’t need to explicitly define proxy_host and it’s accounted for by default. $host contains the following: request line hostname or a Host header field hostname.
+*   `proxy_set_header Host $host`: Preferred over `proxy_set_header Host $prox_host` as you don’t need to explicitly define `proxy_host` and it’s accounted for by default. $host contains the following: request line hostname or a Host header field hostname.
 *   `proxy_set_header X-Real-IP $remote_addr`:  Send the visitors IP address to our proxy server.
 *   `proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for`: This is a list of IP addresses of servers that every client was served a proxy from.
 *   `proxy_set_header X-Forwarded-Proto $scheme`: Turns HTTP response to an HTTPS response.
@@ -235,7 +232,7 @@ map $http_forwarded $proxy_add_forwarded {
 
 {{< /file >}}
 
-Now, make changes to your proxy _pass directive to enable `Forwarded`. Add the following line:
+Now, make changes to your `proxy_pass` directive to enable `Forwarded`. Add the following line:
 
     proxy_set_header Forwarded $forwarded_proxy
 
@@ -267,8 +264,8 @@ One advantage of a reverse proxy is that it is easy to set up HTTPS using a TLS 
 
 Follow these steps to get a certificate via Certbot. Certbot will automatically update your NGINX configuration files to use the new certificate:
 
-{{< content "certbot-shortguide-ubuntu" >}}
+{{% content "certbot-shortguide-ubuntu" %}}
 
 ## Next Steps
 
-For more information about general NGINX configuration, see our [NGINX series](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/). For practical examples of NGINX used to reverse proxy applications, see our guides on [RStudio Server](/docs/development/r/how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy/) and [Thingsboard](/docs/development/iot/install-thingsboard-iot-dashboard).
+For more information about general NGINX configuration, see our [NGINX series](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/). For practical examples of NGINX used to reverse proxy applications, see our guides on [RStudio Server](/docs/guides/how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy/) and [Thingsboard](/docs/guides/install-thingsboard-iot-dashboard/).

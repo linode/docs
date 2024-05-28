@@ -1,16 +1,12 @@
 ---
 slug: install-nginx-debian
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide for installing NGINX on Debian.'
+title: Install NGINX on Debian from the NGINX Repository
+description: 'This guide shows how to install the popular and highly performant web server Nginx on your Linode server running the Linux Operating System.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-03-20
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-03-20
-modified_by:
-  name: Linode
-published: 2018-03-20
-title: Install NGINX on Debian from the Official NGINX Repository
 relations:
     platform:
         key: how-to-install-nginx
@@ -38,7 +34,7 @@ deb http://nginx.org/packages/mainline/debian/ stretch nginx
         sudo apt update
         sudo apt install nginx
 
-4.  Ensure NGINX is running and and enabled to start automatically on reboots:
+4.  Ensure NGINX is running and enabled to start automatically on reboots:
 
         sudo systemctl start nginx
         sudo systemctl enable nginx

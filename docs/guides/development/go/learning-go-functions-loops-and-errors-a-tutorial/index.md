@@ -1,19 +1,13 @@
 ---
 slug: learning-go-functions-loops-and-errors-a-tutorial
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
+title: 'A Tutorial for Learning Go Functions, Loops, and Errors'
+title_meta: 'Learning Go Functions, Loops, and Errors - A Tutorial'
 description: 'Learn how to use loops, how to create functions, and how to handle errors in the Go language.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-11-13
 keywords: ["Go", "Golang", "functions", "loops"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-11-13
-modified_by:
-  name: Linode
-title: 'Learning Go Functions, Loops, and Errors - A Tutorial'
-h1_title: 'A Tutorial for Learning Go Functions, Loops, and Errors'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[Go](https://golang.org)'
   - '[Effective Go](https://golang.org/doc/effective_go.html)'
@@ -29,9 +23,9 @@ After you've learned the syntax of a simple "Hello World" script in Go, you'll l
 
 ## Before You Begin
 
-If you're just starting with Go, we recommend reading our [Beginner's Guide to Go](/docs/development/go/beginners-guide-to-go/) guide first.
+If you're just starting with Go, we recommend reading our [Beginner's Guide to Go](/docs/guides/beginners-guide-to-go/) guide first.
 
-{{< content "before-you-begin-install-go-shortguide" >}}
+{{% content "before-you-begin-install-go-shortguide" %}}
 
 {{< note >}}
 This guide was written with Go version 1.13.

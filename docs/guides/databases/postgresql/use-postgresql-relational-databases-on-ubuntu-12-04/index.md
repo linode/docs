@@ -1,17 +1,12 @@
 ---
 slug: use-postgresql-relational-databases-on-ubuntu-12-04
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Use PostgreSQL Relational Databases on Ubuntu 12.04'
 description: 'Using the PostgreSQL relational database server with Ubuntu 12.04 LTS (Precise Pangolin).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-08
 keywords: ["postgresql", "ubuntu 12.04", "postgresql database", "open source database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2012-10-08
-title: 'Use PostgreSQL Relational Databases on Ubuntu 12.04'
 aliases: ['/databases/postgresql/ubuntu-12-04-precise-pangolin/','/databases/postgresql/use-postgresql-relational-databases-on-ubuntu-12-04/']
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
@@ -22,9 +17,11 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 tags: ["ubuntu","database","postgresql"]
+deprecated: true
+deprecated_link: /docs/guides/how-to-install-use-postgresql-ubuntu-20-04/
 ---
 
-The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 12.04 LTS (Precise Pangolin) Linode. We assume you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
+The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 12.04 LTS (Precise Pangolin) Linode. We assume you've followed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you're logged into your Linode as root via SSH.
 
 ## Install PostgreSQL
 
@@ -165,5 +162,5 @@ You will be prompted to enter the password for the `alison` user and given `psql
 
 PostgreSQL listens for connections on localhost, and it is not advised to reconfigure it to listen on public IP addresses. If you would like to access your databases remotely using a graphical tool, please follow one of these guides:
 
--   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/databases/postgresql/pgadmin-windows)
--   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/databases/postgresql/pgadmin-macos-x)
+-   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/guides/how-to-access-postgresql-database-remotely-using-pgadmin-on-windows/)
+-   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/guides/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/)

@@ -1,18 +1,12 @@
 ---
 slug: task-queue-celery-rabbitmq
-author:
-  name: Florent Houbart
-  email: docs@linode.com
-description: 'How to Set Up a Task Queue with Celery and RabbitMQ'
+title: 'How to Set Up a Task Queue with Celery and RabbitMQ'
+description: 'This guide provides you with instructions for configuring a task queue using Celery, a Python Task-Queue management app and RabbitMQ, an open-source messaging broker.'
+authors: ["Florent Houbart"]
+contributors: ["Florent Houbart"]
+published: 2017-11-30
 keywords: ["celery", "Python", "tasks", "asynchronous", "cluster"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-30
-modified: 2017-11-30
-modified_by:
-  name: Linode
-title: 'How to Set Up a Task Queue with Celery and RabbitMQ'
-contributor:
-  name: Florent Houbart
 external_resources:
 - '[Celery Project page](http://www.celeryproject.org/)'
 - '[Official Celery Documentation](http://docs.celeryproject.org/en/latest/index.html)'
@@ -31,21 +25,17 @@ Celery can be used in multiple configuration. Most frequent uses are horizontal 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
-
-3.  Update your system:
-
-        sudo apt update && sudo apt upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install a Python 3 Environment
 
-{{< content "install_python_miniconda" >}}
+{{% content "install_python_miniconda" %}}
 
 ## Install Celery
 
@@ -74,7 +64,6 @@ If other Python application are running on your host and you prefer to manage yo
 4. Install Celery in the virtual environment:
 
         pip install celery
-
 {{< note >}}
 If you use a virtual environment, don't forget to activate your environment with step 3 when working on your project. All command in this guide assume the Celery virtual environment is activated.
 {{< /note >}}
@@ -328,7 +317,7 @@ Flower is a web-based monitoring tool that can be used instead of the `celery` c
 
             sudo firewall-cmd --reload
 
-{{< content "cloud-firewall-shortguide" >}}
+{{% content "cloud-firewall-shortguide" %}}
 
 3.  Navigate to the directory with your Celery app and start Flower. 5555 is the default port, but this can be changed using the `--port` flag:
 
@@ -339,7 +328,7 @@ Flower is a web-based monitoring tool that can be used instead of the `celery` c
 
       ![Flower screenshot](flower-screenshot.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If Flower is exposed through a public IP address, be sure to take additional steps to secure this through a [reverse proxy](https://flower.readthedocs.io/en/latest/reverse-proxy.html).
 {{< /note >}}
 
@@ -349,7 +338,7 @@ Celery's ease of use comes from the decorator `@task` that adds Celery methods t
 
 1.  [**Webhooks**](https://en.wikipedia.org/wiki/Webhook): Flower provides an API that allow you to interact with Celery by means of REST HTTP queries.
 
-2.  [**AMQP**](https://www.amqp.org/): The `@task` decorator sends message to the broker when you call celery methods like `.delay()`. Some languages provide modules that perform this task for you, including [node-celery](https://github.com/mher/node-celery) for NodeJS, or [celery-php](https://github.com/gjedeer/celery-php) for PHP.
+2.  [**AMQP**](https://www.amqp.org/): The `@task` decorator sends message to the broker when you call celery methods like `.delay()`. Some languages provide modules that perform this task for you, including [node-celery](https://github.com/mher/node-celery) for Node.js, or [celery-php](https://github.com/gjedeer/celery-php) for PHP.
 
 You can use `curl` to practice interacting how to use the Flower API.
 

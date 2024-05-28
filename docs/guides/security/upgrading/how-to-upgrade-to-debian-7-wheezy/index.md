@@ -1,27 +1,23 @@
 ---
 slug: how-to-upgrade-to-debian-7-wheezy
-deprecated: yes
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'How to Upgrade to Debian 7 (Wheezy)'
 description: 'How to upgrade from Debian 6 (Squeeze) to Debian 7 (Wheezy).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2013-05-10
 keywords: ["debian upgrade", "upgrade distro", "wheezy upgrade", "wheezy"]
 tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/upgrading/upgrade-to-debian-7-wheezy/','/security/upgrading/how-to-upgrade-to-debian-7-wheezy/']
-modified: 2013-05-10
-modified_by:
-  name: Linode
-published: 2013-05-10
-title: 'How to Upgrade to Debian 7 (Wheezy)'
 relations:
     platform:
         key: how-to-upgrade-debian
         keywords:
             - distribution: Debian 7
+deprecated: true
 ---
 
-Debian 7 (Wheezy) was released in May 2013. This guide explains how to upgrade your system from Debian 6 (Squeeze) to Debian 7 (Wheezy). Before you begin, you should make sure that you have a working [backup](/docs/platform/backup-service) or a copy of your data.
+Debian 7 (Wheezy) was released in May 2013. This guide explains how to upgrade your system from Debian 6 (Squeeze) to Debian 7 (Wheezy). Before you begin, you should make sure that you have a working [backup](/docs/products/storage/backups/) or a copy of your data.
 
 ## Preparing to Upgrade
 
@@ -43,11 +39,11 @@ Any available updates for Debian 6 will be installed on your Linode.
 
 ### Backing Up Your Linode
 
-It's a good idea to [back up](/docs/platform/backup-service) your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/security/backups/linode-backup-service/#take-a-manual-snapshot) before upgrading to Debian 7. If you use another backup service or application, we recommend that you make a manual backup now. You may also want to back up your configuration files (usually located in /etc/) in case they have changed in later versions of the software you are using.
+It's a good idea to [back up](/docs/products/storage/backups/) your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/products/storage/backups/guides/take-a-snapshot/) before upgrading to Debian 7. If you use another backup service or application, we recommend that you make a manual backup now. You may also want to back up your configuration files (usually located in /etc/) in case they have changed in later versions of the software you are using.
 
 ### Checking Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/uptime/monitoring-and-maintaining-your-server/#applying-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#apply-kernel-updates) for more information.
 
 ### Stopping Services
 
@@ -105,11 +101,11 @@ deb-src http://ftp.us.debian.org/debian/ wheezy-updates main
 
         sudo apt-get dist-upgrade
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentication Modules) will need to be restarted. In most cases the default list of services to be restarted is fine. If you have additional services that you run that use NSS or PAM, please add them to the list.
 {{< /note >}}
 
-5.  Once the system is updated, reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/platform/manager/using-the-linode-shell-lish/).
+5.  Once the system is updated, reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 Your Linode is now running Debian 7.
 

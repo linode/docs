@@ -1,27 +1,22 @@
 ---
 slug: ruby-on-rails-with-nginx-on-ubuntu-9-04-jaunty
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Ruby on Rails with Nginx on Ubuntu 9.04 (Jaunty)'
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Ubuntu 9.04 operating system.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-19
+modified: 2011-04-29
 keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
 tags: ["web applications","nginx","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-9-04-jaunty/','/development/ror/ruby-on-rails-with-nginx-on-ubuntu-9-04-jaunty/','/frameworks/ruby-on-rails-nginx/ubuntu-9-04-jaunty/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2009-08-19
-title: 'Ruby on Rails with Nginx on Ubuntu 9.04 (Jaunty)'
 relations:
     platform:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Ubuntu 9.04
+deprecated: true
 ---
-
-
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the nginx web server on Ubuntu 9.04 (Jaunty).
 
@@ -88,7 +83,7 @@ Run the Phusion Passenger installer for Nginx:
 
 You'll be greeted by the Phusion Passenger Nginx installer program. Press "Enter" to continue with the installation.
 
-[![Phusion Passenger Nginx installer program running on Ubuntu 9.04 (Jaunty).](464-01-passenger-nginx-installer.png)](464-01-passenger-nginx-installer.png)
+![Phusion Passenger Nginx installer program running on Ubuntu 9.04 (Jaunty).](464-01-passenger-nginx-installer.png)
 
 When prompted for the Nginx installation method, we recommend you choose "1" to allow the installer to automatically download, compile, and install Nginx for you. Unless you have specific needs that would necessitate passing custom options to Nginx at compile time, this is the safest way to proceed.
 
@@ -125,7 +120,7 @@ You may wish to consult the following resources for additional information on th
 - [Ruby on Rails Documentation](http://rubyonrails.org/documentation)
 - [Nginx Home Page](http://nginx.org/)
 - [Nginx Documentation](http://nginx.org/en/docs/)
-- [Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Nginx Configuration](/docs/guides/how-to-configure-nginx/)
 
 
 

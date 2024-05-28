@@ -1,18 +1,16 @@
 ---
 slug: use-coreos-container-linux-on-linode
-author:
-  name: Linode
-  email: docs@linode.com
+title: Use CoreOS Container Linux on Linode
 description: This tutorial shows how to configure and use CoreOS Container Linux on Linode
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2017-06-08
+modified: 2017-07-17
 keywords: ["linux containers", "docker", "CoreOS"]
 aliases: ['/platform/use-coreos-container-linux-on-linode/','/platform/using-coreos-container-linux-on-your-linode/','/platform/using-coreos-container-linux-on-linode/','/applications/containers/use-coreos-container-linux-on-linode/']
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-07-17
-modified_by:
-  name: Linode
-published: 2017-06-08
-title: Use CoreOS Container Linux on Linode
+deprecated: true
 ---
 
 CoreOS Container Linux is a container-focused distribution, designed for clustered deployments, that provides automation, security, and scalability for applications. The operating system is heavily streamlined and considered minimal compared to traditional distributions, like Debian or Ubuntu. Rather than being part of the host operating system, CoreOS's runtime or development environment takes place inside a Linux container.
@@ -25,7 +23,7 @@ Container Linux supports running [Docker](https://coreos.com/os/docs/latest/gett
 
 When you deploy a Container Linux image, you'll notice the default settings in the configuration profile are different from those of other distributions.
 
-[![CoreOS configuration profile](container-linux-config-profile-small.png)](container-linux-config-profile.png)
+![CoreOS configuration profile](container-linux-config-profile.png)
 
 ### Boot Settings
 
@@ -37,10 +35,10 @@ Container Linux does not use a swap space, so while Linode's other distributions
 
 ### Filesystem/Boot Helpers
 
-These are not needed for Container Linux, and Network Helper is not compatible so they are all disabled. Linode's Container Linux images use `systemd-networkd`, so see our [static networking](/docs/networking/linux-static-ip-configuration/#arch-coreos-container-linux-ubuntu-17-10) guide if you want to configure static and/or multiple IP addresses for your deployment.
+These are not needed for Container Linux, and Network Helper is not compatible so they are all disabled. Linode's Container Linux images use `systemd-networkd`, so see our [static networking](/docs/products/compute/compute-instances/guides/systemd-networkd/) guide if you want to configure static and/or multiple IP addresses for your deployment.
 
 {{< note >}}
-The [Linode backup service](/docs/platform/disk-images/linode-backup-service/) is not available for Container Linux. You should back up your data and configurations using an [alternative backup method](/docs/security/backups/backing-up-your-data/).
+The [Linode backup service](/docs/products/storage/backups/) is not available for Container Linux. You should back up your data and configurations using an [alternative backup method](/docs/guides/backing-up-your-data/).
 {{< /note >}}
 
 ## Log into Container Linux
@@ -51,7 +49,7 @@ The default user is the `core` user, so you must log in as `core` rather than `r
 
 Container Linux has no package manager such as *apt* or *yum*, and in fact the operating system is not upgraded with individual package updates like most distributions. Instead, entire [system updates](https://coreos.com/why#updates) are pushed to the distribution and the system reboots in accordance with one of three [reboot strategies](https://coreos.com/os/docs/latest/update-strategies.html).
 
-The default configuration is to follow the *etcd-lock* strategy if [etcd](https://coreos.com/etcd/) is being used (such as if you are clustering Linodes running Container Linux). If not, the system will reboot immediately after applying the update. For the Linode to boot back up automatically, you will want [Lassie](/docs/uptime/monitoring-and-maintaining-your-server/#configuring-shutdown-watchdog) enabled in the Linode Manager.
+The default configuration is to follow the *etcd-lock* strategy if [etcd](https://coreos.com/etcd/) is being used (such as if you are clustering Linodes running Container Linux). If not, the system will reboot immediately after applying the update. For the Linode to boot back up automatically, you will want [Lassie](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/) enabled in the Linode Manager.
 
 If you find an update has undesirable effects, [roll back](https://coreos.com/os/docs/latest/manual-rollbacks.html) to the previous version you were using. Update checks will take place about 10 minutes after Container Linux boots and about every hour afterwards. Should you need to trigger a [manual update](https://coreos.com/os/docs/latest/update-strategies.html#manually-triggering-an-update), use:
 
@@ -59,7 +57,7 @@ If you find an update has undesirable effects, [roll back](https://coreos.com/os
 
 ## Recovery Mode
 
-Should you need to access your Container Linux disk using Rescue Mode, use the boot instructions shown in our [Rescue and Rebuild](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) guide. The root partition is located on `/dev/sda9`. To access it, enter:
+Should you need to access your Container Linux disk using Rescue Mode, use the boot instructions shown in our [Rescue and Rebuild](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode) guide. The root partition is located on `/dev/sda9`. To access it, enter:
 
     mount /dev/sda9 && cd /media/sda9
 

@@ -1,18 +1,15 @@
 ---
 slug: apache-web-server-on-ubuntu-14-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Apache Web Server on Ubuntu 14.04 LTS'
 description: 'Install Apache on your Ubuntu 14.04 (Trusty Tahr) server, configure virtual hosting, and set up modules and scripting.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-07-31
+modified: 2018-12-31
 keywords: ["apache", "ubuntu", "ubuntu 14.04", "trusty tahr", "http", "web server"]
 tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/apache-web-server-on-ubuntu-14-04/','/websites/apache/apache-web-server-on-ubuntu-14-04/']
-modified: 2018-12-31
-modified_by:
-  name: Linode
-published: 2015-07-31
-title: 'Apache Web Server on Ubuntu 14.04 LTS'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
@@ -21,21 +18,22 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: Ubuntu 14.04
+deprecated: true
 ---
 
 ![How to Install and Configure Apache Web Server on Ubuntu 14.04 LTS](Apache_Web_Server_on_Ubuntu_1404_LTS_smg.jpg)
 
 The *Apache HTTP Web Sever* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on Ubuntu 14.04 LTS.
 
-If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [LAMP on Ubuntu 14.04](/docs/websites/lamp/lamp-server-on-ubuntu-14-04) guide.
+If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [LAMP on Ubuntu 14.04](/docs/guides/lamp-on-ubuntu-14-04/) guide.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
     To check your hostname run:
 
@@ -148,7 +146,7 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
 
     Repeat this process for any other domains you host.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you would like to enable Perl support, add the following lines above the closing `</VirtualHost>` tag:
 
 {{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}

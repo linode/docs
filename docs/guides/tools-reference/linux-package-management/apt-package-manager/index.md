@@ -1,24 +1,20 @@
 ---
 slug: apt-package-manager
-author:
-  name: Linode
-  email: docs@linode.com
-description: "APT is the default package manager on Debian-based Linux distributions, like Ubuntu. This guide walks you through the core features of APT and common commands for using APT to install, upgrade, and remove packages."
-og_description: "APT is the default package manager on Debian-based Linux distributions, like Ubuntu. This guide walks you through the core features of APT and common commands for using APT to install, upgrade, and remove packages."
+title: "Using APT to Manage Packages in Debian and Ubuntu"
+title_meta: "How to Use APT to Manage Packages in Debian and Ubuntu"
+description: "This guide will teach you what APT is and walks you through the core features and common commands for using APT to manage packages on Linux."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2022-05-12
+modified: 2022-01-31
 keywords: ['apt', 'apt-get','installing','updating','upgrading','uninstalling','removing','package repositories','debian', 'ubuntu']
 tags: ['apt','apt-get','debian','ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-15
-modified: 2021-07-15
-modified_by:
-  name: Linode
-title: "How to Use APT to Manage Packages in Debian and Ubuntu"
-h1_title: "Using APT to Manage Packages in Debian and Ubuntu"
-enable_h1: true
+image: UsingAPTtoManagePackagesinDebianandUbuntu.jpg
 aliases: ['/guides/using-apt-package-manager/']
 ---
 
-*Advanced Package Tool*, more commonly known as [**APT**](https://en.wikipedia.org/wiki/APT_(software)), is a package management system for Debian, Ubuntu, and other similar Linux distributions. It acts as a front-end to the lower-level [**dpkg**](https://en.wikipedia.org/wiki/Dpkg) package manager, which is used for installing, managing, and providing information on `.deb` packages. In addition to these functions, APT interfaces with repositories to obtain packages and also provides very efficient dependency management.
+*Advanced Package Tool*, more commonly known as [**APT**](https://en.wikipedia.org/wiki/APT_(software)), is a package management system for Ubuntu, Debian, Kali Linux, and other Debian-based Linux distributions. It acts as a front-end to the lower-level [**dpkg**](https://en.wikipedia.org/wiki/Dpkg) package manager, which is used for installing, managing, and providing information on `.deb` packages. In addition to these functions, APT interfaces with repositories to obtain packages and also provides very efficient dependency management.
 
 Most distributions that use APT also include a collection of command-line tools that can be used to interface with APT. These tools include `apt-get`, `apt-cache`, and the newer `apt`, which essentially combines both of the previous tools with some modified functionality. Other package managers and tools also exist for interacting with APT or dpkg. A popular one is called [Aptitude](https://en.wikipedia.org/wiki/Aptitude_(software)). Aptitude includes both a command-line interface as well as an interactive user interface. While it does offer advanced functionality, it is not commonly installed by default and is not covered in this guide.
 
@@ -28,9 +24,9 @@ This guide aims to walk you through using APT and its command-line tools to perf
 
 Before running the commands within this guide, you will need:
 
-1. **A system running on Debian or Ubuntu.** Other Linux distributions that employ the APT package manager can also be used. Review the [Getting Started](/docs/getting-started/) guide if you do not yet have a compatible system.
+1. **A system running on Debian or Ubuntu.** Other Linux distributions that employ the APT package manager can also be used. Review the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide if you do not yet have a compatible system.
 
-1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/). Review the [Securing Your Server](/docs/guides/securing-your-server/) guide for assistance on creating and securing a standard user account.
+1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
 
 {{< note >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
@@ -211,10 +207,10 @@ If you wish to replicate the currently installed packages to another system with
 
     This command creates a new file using the name provided in the last step and appending `.apt-clone.tar.gz`.
 
-1.  Copy the file to your new system. See the [Download Files from Your Linode](/docs/guides/download-files-from-your-linode/) guide or the [File Transfer](/docs/guides/tools-reference/file-transfer/) section for more information.
+1.  Copy the file to your new system. See the [Download Files from Your Linode](/docs/guides/download-files-from-a-compute-instance/) guide or the [File Transfer](/docs/guides/tools-reference/file-transfer/) section for more information.
 
 1.  Install apt-clone on the new system (see Step 1).
 
 1.  Using apt-clone, run the following command to restore the packages. Replace *[name]* with the name used in the previous step (or whatever the file is called). If the file is located within a different directly than your current directory, adjust the command to include the path.
 
-        sudo apt-get restore [name]p.apt-clone.tar.gz
+        sudo apt-clone restore [name].apt-clone.tar.gz

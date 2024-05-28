@@ -1,18 +1,13 @@
 ---
 slug: use-couchdb-for-document-based-data-storage-on-ubuntu-12-04
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Deploy CouchDB on Ubuntu 12.04 (Precise Pangolin).'
+title: 'Use CouchDB for Document-Based Data Storage on Ubuntu 12.04'
+description: 'CouchDB is a non-relational document based database, also referred to as a NoSQL database. This guide instructs you on installing it on Ubuntu 12.04 "Precise Pangolin".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-09
 keywords: ["couchdb", "nosql", "json", "ubuntu", "futon"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-12-04/','/databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-12-04-precise-pangolin/','/databases/couchdb/ubuntu-12-04-precise-pangolin/']
-modified: 2012-10-09
-modified_by:
-  name: Linode
-published: 2012-10-09
-title: 'Use CouchDB for Document-Based Data Storage on Ubuntu 12.04'
 external_resources:
  - '[CouchDB Project](http://couchdb.apache.org/)'
  - '[CouchDB Community Wiki](http://wiki.apache.org/couchdb/)'
@@ -22,11 +17,12 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 tags: ["ubuntu","database","nosql"]
+deprecated: true
 ---
 
 CouchDB is a non-relational document based database. Like other entrants into the "NoSQL" field, CouchDB attempts to provide a more flexible data storage system for use in custom application development. CouchDB is written in the Erlang programing language which supports an innovative concurrency model. While CouchDB does not use an SQL interface, it uses an HTTP interface and JSON as a data format for easy integration in application development.
 
-Before installing CouchDB, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before installing CouchDB, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Install CouchDB
 
@@ -49,7 +45,7 @@ Congratulations! In most use cases, you will not need to modify CouchDB's config
 
 ## Use CouchDB
 
-Most of your interaction with CouchDB will occur by way of the system's HTTP and JSON interface. CouchDB comes with a web-based administrative interface called "Futon". Since CouchDB is only accessible over the local interface by default, you will want to [create a secure ssh tunnel](/docs/databases/couchdb/access-futon-over-ssh-using-putty-on-windows/) in order to access CouchDB or Futon from your local machine to avoid sending data in the clear.
+Most of your interaction with CouchDB will occur by way of the system's HTTP and JSON interface. CouchDB comes with a web-based administrative interface called "Futon". Since CouchDB is only accessible over the local interface by default, you will want to [create a secure ssh tunnel](/docs/guides/access-futon-over-ssh-using-putty-on-windows/) in order to access CouchDB or Futon from your local machine to avoid sending data in the clear.
 
 Once the SSH tunnel is in place or you have configured your Linode, you can access the CouchDB HTTP interface by making a request for `http://localhost:5984`. For a simple command-line HTTP client consider installing `curl` with the following command:
 

@@ -1,19 +1,14 @@
 ---
 slug: jupyter-notebook-on-jekyll
-author:
-  name: Sam Foo
-  email: docs@linode.com
+title: Display Jupyter Notebooks with Jekyll
 description: 'Share data analysis and visualizations on Jupyter Notebooks with Jekyll.'
-og_description: 'Share data analysis and visualizations on Jupyter Notebooks with Jekyll.'
+authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
+published: 2017-11-06
 keywords: ["Jupyter", " ruby", " Jekyll"]
 tags: ["ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/jupyter-nobook-on-jekyll/','/applications/project-management/jupyter-notebook-on-jekyll/']
-modified: 2017-11-06
-modified_by:
-  name: Linode
-published: 2017-11-06
-title: Display Jupyter Notebooks with Jekyll
 external_resources:
  - '[Jekyll](https://jekyllrb.com/)'
  - '[MathJax](https://www.mathjax.org/)'
@@ -28,9 +23,9 @@ This guide will take you through the process of installing Jekyll and configurin
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the appropriate sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account.
+2.  This guide will use `sudo` wherever possible. Complete the appropriate sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account.
 
 3.  Update your system:
 
@@ -112,7 +107,7 @@ Install Ruby Version Manager (RVM). RVM is recommended for a few reasons:
 
     ![First Jekyll Post](jekyll_first_post.png "First Jekyll Post")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 After starting the Jekyll server, there will be a new `_site` folder. Do not store files in this folder as it is rebuilt each time changes are made to the site.
 {{< /note >}}
 
@@ -314,7 +309,7 @@ Content Delivery Networks(CDNs) are a great way to add functionality on a websit
                         │   └── _syntax-highlighting.scss
                             └── minima.scss
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The default theme is installed as a gem. If there is another `_layouts` or `_includes` folder in the project root, those HTML files will override the theme.
 {{< /note >}}
 

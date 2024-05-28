@@ -1,31 +1,28 @@
 ---
 slug: lemp-server-on-fedora-15
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: LEMP Server on Fedora 15
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, PostgreSQL/MySQL, and Perl/Python/PHP.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-06-24
+modified: 2012-06-21
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","nginx","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lemp-guides/fedora-15/','/websites/lemp/lemp-server-on-fedora-15/','/web-servers/lemp/lemp-server-on-fedora-15/']
-modified: 2012-06-21
-modified_by:
-  name: Linode
-published: 2011-06-24
-title: LEMP Server on Fedora 15
 relations:
     platform:
         key: install-lemp-stack
         keywords:
             - distribution: Fedora 15
+deprecated: true
 ---
 
-This guide will help you get up and running quickly with a LEMP (Linux, nginx, MySQL, PHP) stack on your Linode. If you haven't done so already, please follow the instructions in our [getting started guide](/docs/getting-started/) before proceeding. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+This guide will help you get up and running quickly with a LEMP (Linux, nginx, MySQL, PHP) stack on your Linode. If you haven't done so already, please follow the instructions in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) before proceeding. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -250,7 +247,7 @@ Please follow the announcements, lists, and RSS feeds on the pages linked below 
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Basic nginx Configuration](/docs/guides/how-to-configure-nginx/)
 - [nginx Wiki](http://wiki.nginx.org/Main)
 - [PHP Documentation](http://php.net/docs.php)
 - [MySQL Documentation](http://dev.mysql.com/doc/)

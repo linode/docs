@@ -1,18 +1,14 @@
 ---
 slug: view-and-follow-the-end-of-text-files-with-tail
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'tail is a Linux utility used to view the end of text files. This guide demonstrates the syntax and basic usage of tail, as well as showing how to use follow mode to view additions to files in real time.'
-og_description: 'tail is a Linux utility used to view the end of text files. This guide demonstrates the syntax and basic usage of tail, as well as showing how to use follow mode to view additions to files in real time.'
+title: View and Follow the End of Text Files with tail
+description: 'This guide demonstrates the syntax and basic usage of the Linux utility tail, which you can use to view the end of text files, and also how to use follow mode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-11-29
+modified: 2018-04-02
 keywords: ["tail", "linux commands", "linux", "common commands", "unix", "cli"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/view-and-follow-the-end-of-text-files-with-tail/','/linux-tools/common-commands/tail/']
-modified: 2018-04-02
-modified_by:
-  name: Linode
-published: 2010-11-29
-title: View and Follow the End of Text Files with tail
 tags: ["linux"]
 ---
 
@@ -20,7 +16,7 @@ tags: ["linux"]
 
 ## What is tail?
 
-The `tail` command is a core Linux utility used to view the end of text files. You can also use **follow mode** to see new lines as they're added to a file in real time. `tail` is similar to the [head utility](/docs/tools-reference/tools/view-the-beginning-of-text-files-with-head), used for viewing the beginning of files.
+The `tail` command is a core Linux utility used to view the end of text files. You can also use **follow mode** to see new lines as they're added to a file in real time. `tail` is similar to the [head utility](/docs/guides/view-the-beginning-of-text-files-with-head/), used for viewing the beginning of files.
 
 ## Syntax and Basic Usage
 
@@ -80,12 +76,12 @@ Line 10
 
 With the `-f` option, `tail` operates in **follow mode**. Here, `tail` prints the final lines of a file, then watches for new additions to the end of the file. When new lines are added they are printed to the terminal, giving you a live feed of the end of the file.
 
-`tail` will continue to follow a file until the user sends a break (e.g. `Control+c`) to the terminal. Additionally, if the file is deleted or renamed, `tail -f` will fail. Use the `-F` option to force `tail` to follow file names rather than file objects. This can prevent problems with [log rotation](/docs/linux-tools/utilities/logrotate) and other programs that may alter file names.
+`tail` will continue to follow a file until the user sends a break (e.g. `Control+c`) to the terminal. Additionally, if the file is deleted or renamed, `tail -f` will fail. Use the `-F` option to force `tail` to follow file names rather than file objects. This can prevent problems with [log rotation](/docs/guides/use-logrotate-to-manage-log-files/) and other programs that may alter file names.
 
 Follow mode is very useful when troubleshooting issues because it allows you to watch logs in real time.
 
 ### Filter with grep
 
-`tail` can be combined with [grep](/docs/tools-reference/search-and-filter-text-with-grep) to filter the contents of a log file in real time. You can use this to track specific types of errors, such as 404 responses from an Apache web server:
+`tail` can be combined with [grep](/docs/guides/how-to-use-grep-command/) to filter the contents of a log file in real time. You can use this to track specific types of errors, such as 404 responses from an Apache web server:
 
     tail -F /var/log/apache2/access.log | grep "404"

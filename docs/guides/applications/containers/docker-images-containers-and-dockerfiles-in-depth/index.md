@@ -1,18 +1,15 @@
 ---
 slug: docker-images-containers-and-dockerfiles-in-depth
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: 'How to Use Docker Images, Containers, and Dockerfiles in Depth'
 description: 'A guide that further introduces using a Dockerfile to build Docker Images and Docker Containers and provides examples on your Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-04-29
+modified: 2021-06-17
 keywords: ["docker", "container", "docker image", "docker images", "docker container", "docker containers"]
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-06-17
-modified_by:
-  name: Linode
-published: 2021-04-29
-title: 'How to Use Docker Images, Containers, and Dockerfiles in Depth'
-h1_title: 'How to Use Docker Images, Containers, and Dockerfiles in Depth'
+image: DOCKERS.jpg
 external_resources:
  - '[Best Practices for Writing Dockerfiles](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices)'
  - '[Official Docker Images on Docker Hub](https://hub.docker.com/search?q=&type=image&image_filter=official&page=1)'
@@ -23,9 +20,9 @@ external_resources:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide, create and update a Linode, and install Docker. Alternatively, you can quickly deploy an updated, Docker-enabled Linode with the [Docker Marketplace App](https://www.linode.com/marketplace/apps/linode/docker/).
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide, create and update a Linode, and install Docker. Alternatively, you can quickly deploy an updated, Docker-enabled Linode with the [Docker Marketplace App](https://www.linode.com/marketplace/apps/linode/docker/).
 
-2.  Ensure your Linode is secure by following our guide on [How to Secure Your Server](/docs/guides/securing-your-server/).
+2.  Ensure your Linode is secure by following our guide on [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/).
 
 3.  This guide assumes you are comfortable with using the Docker command-line interface (CLI). To learn more about the Docker CLI, check out their [documentation](https://docs.docker.com/engine/reference/commandline/cli/).
 
@@ -61,7 +58,7 @@ EXPOSE 80
 CMD ["apache2ctl","-D","FOREGROUND"]
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `ARG DEBIAN_FRONTEND=noninteractive` instruction ensures that the subsequent `RUN apt-get` commands execute without requiring additional user input when building images. This instruction could also be written using `ENV` instead of `ARG` to make the environment variable persist in containers that are deployed with the image. Because non-interactivity may not be expected when working within such containers, `ARG` is recommended in this case.
 {{< /note >}}
 
@@ -85,7 +82,7 @@ apache_image   latest    7e5c14739da5   7 seconds ago   215MB
 ubuntu         latest    7e0aa2d69a15   6 weeks ago     72.7MB
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 By default, built images are tagged "latest." If you want to change the tag, such as to "development", format the command as follows:
 
     docker build ~/mydockerbuild -f apache_dockerfile -t apache_image:development
@@ -105,16 +102,16 @@ To run the Docker image as a container in detached mode:
 
         docker ps
 
-    {{< output >}}
-CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS     NAMES
-1d5e1da50a86   apache_image   "apache2ctl -D FOREG…"   3 minutes ago   Up 3 minutes   80/tcp    apache
-{{</ output>}}
+    ```output
+    CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS     NAMES
+    1d5e1da50a86   apache_image   "apache2ctl -D FOREG…"   3 minutes ago   Up 3 minutes   80/tcp    apache
+    ```
 
 3.  Now you can do your development work with the Apache server and still have access to the command line. However, your container is not publicly accessible as it lacks additional port configurations. In the next section, you will rebuild the container with port configurations that allow you to access the web server. For now, stop the container:
 
         docker stop apache
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can enter the container ID in place of `apache` in the above command.
 {{< /note >}}
 
@@ -124,13 +121,13 @@ You can enter the container ID in place of `apache` in the above command.
 
         docker rm apache
 
-{{< caution >}}
+{{< note type="alert" >}}
 Removing a container in this way deletes all data within the container. If you have made adjustments that you want to carry to a new container, you can instead use `docker commit` to build a new image that includes your updates:
 
     docker commit apache apache_image_update
 
 Then, you can deploy a new container based on the new `apache_image_update` image in the next section.
-{{< /caution >}}
+{{< /note >}}
 
 ### Configure your Docker Container's Ports
 
@@ -153,9 +150,9 @@ Each parameter is described in the following list:
 
 Now, navigate to your Linode's IP address at host port 8080 by navigating to `http://<your Linode's IP address>:8080` in a web browser. You should see the "Apache2 Ubuntu Default Page" served from your Docker container.
 
-{{< caution >}}
+{{< note type="alert" >}}
 When deploying containers with port configurations, Docker may also create host firewall rules to allow public access to those containers. This can override or conflict with the host firewall rules you have configured on your Linode.
-{{< /caution >}}
+{{< /note >}}
 
 ## Further Reading
 

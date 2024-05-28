@@ -1,19 +1,15 @@
 ---
 slug: how-to-switch-git-branches
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Switching Git Branches"
+title_meta: "How to Switch Git Branches"
 description: 'A very basic guide on how to switch a branch in Git using Ubuntu 20.10, but for any operating system with the command line git tools installed.'
-og_description: 'A very basic guide on how to switch a branch in Git using Ubuntu 20.10, but for any operating system with the command line git tools installed.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-05-28
 keywords: ['git','branch','branches','switch branch','switch branches','switch git branches']
 tags: ["git", "version control"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-28
-modified_by:
-  name: Linode
-title: "How to Switch Git Branches"
-h1_title: "Switching Git Branches"
-enable_h1: true
+image: Git.jpg
 external_resources:
 - '[Git](https://git-scm.com/)'
 - '[Git Branching - Basic Branching and Merging](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)'
@@ -23,15 +19,13 @@ Git is a distributed version control system. It supports non-linear, distributed
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-2.  This guide assumes you have Git installed, are familiar with the *command-line interface* (CLI) and Git, and have a project in Git.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-2.  Update your Linode's system:
+1.  This guide assumes you have Git installed, are familiar with the *command-line interface* (CLI) and Git, and have a project in Git.
 
-        sudo apt-get update && sudo apt-get upgrade
-
-3.  Update your local workstation's system using the tools and package managers for your operating system.
+1.  Update your local workstation's system using the tools and package managers for your operating system.
 
 ## What is a Branch in Git?
 

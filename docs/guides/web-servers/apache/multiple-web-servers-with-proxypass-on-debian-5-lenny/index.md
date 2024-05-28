@@ -1,27 +1,22 @@
 ---
 slug: multiple-web-servers-with-proxypass-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'How to use separate web servers to host sites or applications using ProxyPass with Apache.'
+title: 'Multiple Web Servers with ProxyPass on Debian 5 (Lenny)'
+description: 'This guide will show you how you can use separate web servers to host multiple websites or applications using ProxyPass with Apache on Debian 5 "Lenny".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-11-30
+modified: 2012-10-08
 keywords: ["apache", "proxypass", "apache on debian", "multiple web servers"]
 tags: ["proxy","web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/multiple-web-servers-with-proxypass-on-debian-5-lenny/','/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-debian-5-lenny/','/web-servers/apache/multiple-web-servers-with-proxypass-on-debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2009-11-30
-title: 'Multiple Web Servers with ProxyPass on Debian 5 (Lenny)'
 relations:
     platform:
         key: multiple-servers-proxypass
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
-
-
 
 In some cases, administrators find that while Apache meets most of their general-purpose web serving needs, other web or application servers are better suited for certain tasks. Fortunately, it's easy to configure Apache to pass certain requests to other web server processes. These secondary (or tertiary) web servers may be running on the same Linode or separate nodes (perhaps via private networking). Our examples use lighttpd as a secondary web server, but they apply to any web server or application you'd like to proxy HTTP requests to.
 
@@ -88,11 +83,11 @@ The `ProxyPass` directive tells Apache to forward all requests for this domain t
 
 Let's do some testing. Here's the normal Apache-served site "www.firstsite.org" in our browser:
 
-[![Website running under Apache on Debian 5 (Lenny).](199-proxypass-apache-site.png)](199-proxypass-apache-site.png)
+![Website running under Apache on Debian 5 (Lenny).](199-proxypass-apache-site.png)
 
 Here's the site "www.secondsite.org" being served by lighttpd via ProxyPass:
 
-[![Website running under Lighttpd on Debian 5 (Lenny).](200-proxypass-lighttpd-site.png)](200-proxypass-lighttpd-site.png)
+![Website running under Lighttpd on Debian 5 (Lenny).](200-proxypass-lighttpd-site.png)
 
 ## Proxying a Specific URL to Lighttpd
 
@@ -115,7 +110,7 @@ If we wanted to have `http://www.firstsite.org/myapp/` served by a web applicati
 
 Now the location "/myapp" will be served by lighttpd instead of Apache. After reloading the Apache configuration with `/etc/init.d/apache2 reload`, we can see that it's functioning correctly:
 
-[![Web application running under a directory via lighttpd on Debian 5 (Lenny).](201-proxypass-lighttpd-directory.png)](201-proxypass-lighttpd-directory.png)
+![Web application running under a directory via lighttpd on Debian 5 (Lenny).](201-proxypass-lighttpd-directory.png)
 
 This is an easy method for hosting multiple application servers (with different web server requirements) under a single domain.
 

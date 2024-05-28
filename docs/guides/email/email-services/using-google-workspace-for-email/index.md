@@ -1,31 +1,27 @@
 ---
 slug: using-google-workspace-for-email
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Using Google Workspace for Email"
+title_meta: "How to Use Google Workspace for Email"
 description: 'Setting up Google Workspace with the DNS Manager to handle email for your domains.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-08-05
+modified: 2021-06-22
 keywords: ["google email", "google apps", "google workspace", "G Suite"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/email-services/using-google-apps-for-email/','/email/google-mail/','/email/using-google-apps-for-email/','/guides/using-google-apps-for-email/']
-modified: 2021-06-22
-modified_by:
-  name: Linode
-published: 2014-08-05
-title: "How to Use Google Workspace for Email"
-h1_title: "Using Google Workspace for Email"
-enable_h1: true
 tags: ["email"]
 ---
 
 There are many options for running your own email server, and with applications like [Citadel](/docs/guides/email/citadel/), hosting your own email stack can be quite straightforward. Nevertheless, managing independent email servers can be daunting, given email's importance and potential for complexity. This is particularly true when you have multiple users and/or complex filtering schemes. Many people prefer to delegate their email to a third-party email service like Google so they can better concentrate on the administration of other, more mission critical services.
 
-The process for forwarding your email to Google's servers is a matter of redirecting the MX [DNS records](/docs/guides/dns-records-an-introduction/) which govern email routing to Google's email servers. Note that there are a number of third-party email service providers and Linode does not specifically endorse any of them.
+The process for forwarding your email to Google's servers is a matter of redirecting the MX [DNS records](/docs/guides/dns-overview/) which govern email routing to Google's email servers. Note that there are a number of third-party email service providers and Linode does not specifically endorse any of them.
 
-View the [Google Workspace](https://workspace.google.com/) website to learn more about the service, plans, and pricing. This document assumes that you are using Linode's [DNS Manager](/docs/guides/dns-manager/) to manage the DNS records for your domain name, and that you've already signed up for a Google Workspace account.
+View the [Google Workspace](https://workspace.google.com/) website to learn more about the service, plans, and pricing. This document assumes that you are using Linode's [DNS Manager](/docs/products/networking/dns-manager/) to manage the DNS records for your domain name, and that you've already signed up for a Google Workspace account.
 
 ## Creating MX Records
 
-To direct your email to Google Workspace, you'll need to set up 5 MX records for your domain. To do this to a domain that's managed through Linode's DNS Manager, see the [Add DNS Records](/docs/products/networking/dns-manager/guides/add-dns-records/) guide. When adding an MX record, the below form will appear:
+To direct your email to Google Workspace, you'll need to set up 5 MX records for your domain. To do this to a domain that's managed through Linode's DNS Manager, see the [Add DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/) guide. When adding an MX record, the below form will appear:
 
 ![Screenshot depicting the Add MX Record form within the Linode DNS Manager](add-mx-record-google-workspace.png "Add MX Record in Linode DNS Manager")
 
@@ -48,6 +44,6 @@ During the sign up process, Google will need you to verify that you have authori
 - Add a meta tag to your website's home page
 - Upload an HTML file to your website
 
-Whichever method you chose, Google will walk you through this process. If adding a TXT or CNAME record to a domain that's managed through Linode's DNS Manager, see the [Add DNS Records](/docs/products/networking/dns-manager/guides/add-dns-records/) guide.
+Whichever method you chose, Google will walk you through this process. If adding a TXT or CNAME record to a domain that's managed through Linode's DNS Manager, see the [Add DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/) guide.
 
 After the domain has been verified, the configuration is complete. You may have to wait several hours as Google indicates it could take 24 to 48 hours for DNS to redirect correctly. After that window, however, all of your email should be successfully directed towards Google's servers.

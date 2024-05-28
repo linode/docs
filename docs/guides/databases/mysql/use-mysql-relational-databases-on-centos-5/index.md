@@ -1,29 +1,24 @@
 ---
 slug: use-mysql-relational-databases-on-centos-5
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Use MySQL Relational Databases on CentOS 5
 description: 'Getting started with MySQL for web and server applications on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-11
+modified: 2014-01-22
 keywords: ["MySQL on Linux", "MySQL CentOS", "MySQL Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/centos-5/','/databases/mysql/use-mysql-relational-databases-on-centos-5/']
-modified: 2014-01-22
-modified_by:
-  name: Alex Fornuto
-published: 2009-08-11
-title: Use MySQL Relational Databases on CentOS 5
 relations:
     platform:
         key: use-mysql-relationaldb
         keywords:
             - distribution: CentOS 5
 tags: ["database","mysql","centos"]
+deprecated: true
 ---
 
-
-
-MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a CentOS 5 Linode. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
+MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a CentOS 5 Linode. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
 ## System Configuration
 
@@ -92,7 +87,7 @@ If you made any changes to MySQL's configuration, issue the following command to
 
     service mysqld restart
 
-MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secure MySQL remote access guide](/docs/databases/mysql/mysql-ssh-tunnel/) for information on connecting to your databases with local clients.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secure MySQL remote access guide](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/) for information on connecting to your databases with local clients.
 
 Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 

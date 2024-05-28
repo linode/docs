@@ -1,19 +1,15 @@
 ---
 slug: lamp-server-on-fedora-15
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: LAMP Server on Fedora 15
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on Fedora 15.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-07-22
+modified: 2013-11-19
 keywords: ["fedora 15 lamp", "lamp server", "linux lamp", "fedora 15 apache"]
 tags: ["web server","php","mysql","apache","fedora","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-fedora-15/','/lamp-guides/fedora-15/','/web-servers/lamp/lamp-server-on-fedora-15/']
-modified: 2013-11-19
-modified_by:
-  name: Linode
-published: 2011-07-22
-title: LAMP Server on Fedora 15
 external_resources:
   - '[Fedora Home Page](http://www.fedoraproject.org/)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -24,15 +20,14 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Fedora 15
+deprecated: true
 ---
-
-
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on a Fedora 15 system. In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If you don't feel that you will need MySQL or PHP, please don't feel obligated to install them.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -206,7 +201,7 @@ If you need support for MySQL in PHP, then you must install the php5-mysql packa
 
     yum install php-mysql
 
-You can test PHP by creating a file with the following contents under your "public\_html" directory:
+You can test PHP by creating a file with the following contents under your `public_html` directory:
 
 {{< file "/srv/www/example.com/public\\_html/test.php" php >}}
 <?php phpinfo(); ?>

@@ -1,38 +1,33 @@
 ---
 slug: ruby-on-rails-with-apache-on-debian-6-squeeze
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Ruby on Rails with Apache on Debian 6 (Squeeze)'
 description: 'Using the Apache web server with Debian 6 Squeeze to serve Ruby on Rails applications.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2013-09-26
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
 tags: ["web applications","debian","apache","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/ror/ruby-on-rails-with-apache-on-debian-6-squeeze/','/frameworks/ruby-on-rails-apache/debian-6-squeeze/','/websites/ror/ruby-on-rails-with-apache-on-debian-6-squeeze/']
-modified: 2013-09-26
-modified_by:
-  name: Linode
-published: 2011-04-05
-title: 'Ruby on Rails with Apache on Debian 6 (Squeeze)'
 external_resources:
 - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
 - '[mod\_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'
 - '[Install the Apache HTTP Server on Debian 6 (Squeeze)](/docs/web-servers/apache/installation/debian-6-squeeze)'
-- '[Install the MySQL Database System on Debian 6 (Squeeze)](/docs/databases/mysql/debian-6-squeeze)'
+- '[Install the MySQL Database System on Debian 6 (Squeeze)](/docs/guides/use-mysql-relational-databases-on-debian-6-squeeze/)'
 relations:
     platform:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Debian 6
+deprecated: true
 ---
-
-
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications quickly that is written in the Ruby programming language. Rails enables developers to produce inventive applications on tight time scales. Examples of well known Rails-powered sites include Hulu, GitHub, and the applications provided by 37 Signals, among many others. This guide deploys Rails applications using the Phusion Passenger or `mod_rails` method. Passenger allows you to embed Rails apps directly in Apache applications without needing to worry about FastCGI or complex web server proxies.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -77,7 +72,7 @@ After issuing this command, attempt to run `rails` again. If it works, then you 
 
 Alternatively, you can amend your global \$PATH by adding it to your "/etc/environment" file.
 
-To install support for the [MySQL database system](/docs/databases/mysql/debian-6-squeeze) in Rails, issue the following commands:
+To install support for the [MySQL database system](/docs/guides/use-mysql-relational-databases-on-debian-6-squeeze/) in Rails, issue the following commands:
 
     apt-get install mysql-server libmysqlclient16 libmysqlclient-dev mysql-client mysql-common
     gem install mysql

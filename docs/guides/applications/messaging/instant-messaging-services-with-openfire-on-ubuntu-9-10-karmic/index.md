@@ -1,31 +1,26 @@
 ---
 slug: instant-messaging-services-with-openfire-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Instant Messaging Services with Openfire on Ubuntu 9.10'
 description: 'Getting started with Openfire, an open source instant messaging server built on the XMPP/Jabber protocol for Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-10-29
+modified: 2012-10-03
 keywords: ["openfire", "openfire ubuntu 9.10", "openfire linux", "instant messaging", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-9-10-karmic/','/communications/xmpp/openfire/ubuntu-9-10-karmic/']
-modified: 2012-10-03
-modified_by:
-  name: Linode
-published: 2009-10-29
-title: 'Instant Messaging Services with Openfire on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: how-to-install-openfire
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 [Openfire](http://www.igniterealtime.org/projects/openfire/) is an open source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your Ubuntu 9.10 (Karmic) Linode.
 
-If you haven't done so already, please follow the steps outlined in our [getting started](/docs/getting-started/) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
+If you haven't done so already, please follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
 
 ## Install Prerequisites
 
@@ -116,23 +111,23 @@ This completes the initial installation steps for Openfire. Next, we'll continue
 
 Direct your browser to your Linode's IP address or FQDN (fully qualified domain name, if an entry in DNS points to your Linode's IP) on port 9090. As an example, if your Linode's IP address were "12.34.56.78", you would visit `http://12.34.56.78:9090` in your web browser. You will be presented with a language selection screen similar to this:
 
-[![Language selection in Openfire setup on Ubuntu 9.10 (Karmic).](402-openfire-ubuntu-9.10-01-language-selection.png)](402-openfire-ubuntu-9.10-01-language-selection.png)
+![Language selection in Openfire setup on Ubuntu 9.10 (Karmic).](402-openfire-ubuntu-9.10-01-language-selection.png)
 
-Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager)).
+Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](/docs/products/networking/dns-manager/guides/common-dns-configurations/)).
 
-[![Domain and admin ports selection in Openfire setup on Ubuntu 9.10 (Karmic).](403-openfire-ubuntu-9.10-02-domain-ports-selection.png)](403-openfire-ubuntu-9.10-02-domain-ports-selection.png)
+![Domain and admin ports selection in Openfire setup on Ubuntu 9.10 (Karmic).](403-openfire-ubuntu-9.10-02-domain-ports-selection.png)
 
 You may choose to use Openfire's internal database for account management, or you may connect to an external database. Most users will want to choose the built-in option.
 
-[![Database type selection in Openfire setup on Ubuntu 9.10 (Karmic).](404-openfire-ubuntu-9.10-03-database-selection.png)](404-openfire-ubuntu-9.10-03-database-selection.png)
+![Database type selection in Openfire setup on Ubuntu 9.10 (Karmic).](404-openfire-ubuntu-9.10-03-database-selection.png)
 
 User profiles may be stored in the server database, or they may be pulled from LDAP or Clearspace. Most users will want to choose the default option.
 
-[![Profile storage selection in Openfire setup on Ubuntu 9.10 (Karmic).](405-openfire-ubuntu-9.10-04-profile-settings.png)](405-openfire-ubuntu-9.10-04-profile-settings.png)
+![Profile storage selection in Openfire setup on Ubuntu 9.10 (Karmic).](405-openfire-ubuntu-9.10-04-profile-settings.png)
 
 Enter the email address of the default administrative user and select a strong password.
 
-[![Administrator account settings in Openfire setup on Ubuntu 9.10 (Karmic).](406-openfire-ubuntu-9.10-05-admin-account-settings.png)](406-openfire-ubuntu-9.10-05-admin-account-settings.png)
+![Administrator account settings in Openfire setup on Ubuntu 9.10 (Karmic).](406-openfire-ubuntu-9.10-05-admin-account-settings.png)
 
 After the initial web-based configuration is complete, restart the Openfire server before attempting to log in with the default "**admin**" user account.
 

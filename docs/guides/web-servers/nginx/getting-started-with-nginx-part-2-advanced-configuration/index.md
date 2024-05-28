@@ -1,31 +1,28 @@
 ---
 slug: getting-started-with-nginx-part-2-advanced-configuration
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Getting Started with NGINX (Part 2): Advanced Configuration"
+title_meta: "Getting Started with NGINX: Advanced Configuration"
 description: "Configure and optimize NGINX to best suit your web server needs. Host multiple sites, configure caching, disable content sniffing, and more."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-02-09
+modified: 2021-12-29
 keywords: ["nginx", "web server", "nginx configuration", "multiple sites", "configure caching"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/configure-nginx-for-optimized-performance/','/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/','/websites/nginx/configure-nginx-for-optimized-performance/', '/guides/slightly-more-advanced-configurations-for-nginx/']
-modified: 2018-02-09
-modified_by:
-  name: Linode
-published: 2018-02-09
-title: "Getting Started with NGINX: Advanced Configuration"
-h1_title: "Getting Started with NGINX (Part 2): Advanced Configuration"
-enable_h1: true
 tags: ["web server","nginx"]
+image: Getting-Started-with-NGINX-Part-2-smg.jpg
 ---
 
 ![Getting Started with NGINX - Part 2](Getting-Started-with-NGINX-Part-2-smg.jpg)
 
 ## Before You Begin
 
-* This guide is Part 2 of our *Getting Started with NGINX* series, and you will need a working NGINX setup with a website accessible via HTTP. If you do not already have that, complete [Part 1: Basic Installation and Setup](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
+-   This guide is Part 2 of our *Getting Started with NGINX* series, and you will need a working NGINX setup with a website accessible via HTTP. If you do not already have that, complete [Part 1: Basic Installation and Setup](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
 
-* You will need root access to the system, or a user account with `sudo` privilege.
+-   You will need root access to the system, or a user account with `sudo` privilege.
 
-* You may want to make another backup of your `nginx.conf` so you have a snapshot of the work you've done up to this point:
+-   You may want to make another backup of your `nginx.conf` so you have a snapshot of the work you've done up to this point:
 
         cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup-pt2
 
@@ -56,8 +53,7 @@ server {
     error_log    logs/example2.error error;
 
     root         /var/www/example2.com/;
-
-    }
+}
 {{< /file >}}
 
 2.  Reload NGINX:
@@ -72,7 +68,7 @@ NGINX can cache files served by web applications and frameworks such as WordPres
 
 For more information, see the [NGINX docs](https://nginx.org/en/docs/http/ngx_http_proxy_module.html), [NGINX admin guide](https://www.nginx.com/resources/admin-guide/content-caching/), and the [NGINX blog](https://www.nginx.com/blog/nginx-caching-guide/).
 
-1. Create a folder to store cached content:
+1.  Create a folder to store cached content:
 
         mkdir /var/www/example.com/cache/
 
@@ -105,11 +101,11 @@ proxy_cache one;
 
         find /var/www/example.com/cache/ -type f -delete
 
-    If you want more than just a basic cache clear, you can use the [proxy_cache_purge](https://www.nginx.com/products/nginx/caching/#purging) directive.
+    If you want more than just a basic cache clear, you can use the [`proxy_cache_purge`](https://www.nginx.com/products/nginx/caching/#purging) directive.
 
 ## HTTP Response Header Fields
 
-Use [*add_header*](https://nginx.org/en/docs/http/ngx_http_headers_module.html) directives in your configuration carefully. Unlike other directives, an `add_header` directive is not inherited from parent configuration blocks. If you have the directive in both, an `add_header` directive in a `server` block will override any in your `http` area.
+Use [`add_header`](https://nginx.org/en/docs/http/ngx_http_headers_module.html) directives in your configuration carefully. Unlike other directives, an `add_header` directive is not inherited from parent configuration blocks. If you have the directive in both, an `add_header` directive in a `server` block will override any in your `http` area.
 
 For this reason, you should include them in one of two different ways:
 
@@ -145,6 +141,30 @@ This header signals to a connecting browser to enable its cross-site scripting f
 
     add_header X-XSS-Protection "1; mode=block";
 
+See the [X-XSS-Protection](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection) page on MDN for more information and other options.
+
+### Referrer Policy
+
+This header controls policy of referrer information that should be included with requests. The example below sends the origin, path, and query string when performing a *same-origin* request. For secure (HTTPS -> HTTPS) *cross-origin* requests, only the origin is sent.
+
+    add_header Referrer-Policy strict-origin-when-cross-origin;
+
+See the [Referrer-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy) page on MDN for more information and other options.
+
+### Content Security Policy
+
+Another way to minimize cross-site scripting attacks is by only allowing user agents to load resources specified in the directives of this header. For example, to only allow loading resources from the same origin (URL and port number), and to upgrade insecure requests (HTTP) to HTTPS:
+
+    add_header Content-Security-Policy "default-src 'self'; upgrade-insecure-requests;";
+
+See the [Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) on MDN for complete list of directives.
+
+### Feature Policy (Experimental)
+
+You can allow or deny browser features with this header, depending on whether your site and browser supports the feature. This header should be set on a per site basis. For example, to allow the site to use encrypted media on the same origin and deny automatic playing media without user actions, you could add the following line:
+
+    add_header Feature-Policy "encrypted-media 'self'; autoplay 'none'";
+
 ## Configuration Recap
 
 To summarize where we are so far:
@@ -171,6 +191,8 @@ server {
     gzip             on;
     gzip_comp_level  3;
     gzip_types       text/html text/plain text/css image/*;
+
+    add_header     Feature-Policy "encrypted-media 'self'; autoplay 'none'"
 }
 {{< /file >}}
 
@@ -211,6 +233,8 @@ http {
     add_header    X-Content-Type-Options nosniff;
     add_header    X-Frame-Options SAMEORIGIN;
     add_header    X-XSS-Protection "1; mode=block";
+    add_header    Referrer-Policy strict-origin-when-cross-origin;
+    add_header    Content-Security-Policy "default-src 'self'; upgrade-insecure-requests;";
 
     proxy_cache_path    /var/www/example.com/cache/ keys_zone=one:10m inactive=60m use_temp_path=off;
     server_tokens       off;

@@ -1,22 +1,19 @@
 ---
 slug: meltdown-and-spectre
-author:
-  name: Linode
-  email: docs@linode.com
-description: "Intel recently disclosed two vulnerabilities that affect processors in most devices over the last 23 years. Here's how that affects you and what you can do about it."
+title: 'What You Need to Do to Mitigate Meltdown and Spectre'
+description: "This guide details the recent vulnerabilities disclosed by intel which affect processors installed in most devices from the last 23 years and what you can do about it."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-01-11
+modified: 2018-11-08
 keywords: ["meltdown", "spectre", "vulnerability", "kernel"]
 aliases: ['/security/security-patches/meltdown-and-spectre/','/security/meltdown-and-spectre/','/platform/meltdown_statement/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-01-11
-modified: 2018-11-08
-modified_by:
-  name: Linode
-title: 'What You Need to Do to Mitigate Meltdown and Spectre'
 promo_default: false
 external_resources:
   - '[MeltdownAttack.com](https://meltdownattack.com/)'
-  - '[How to Install Software Updates](/docs/getting-started/#install-software-updates)'
-  - '[Reboot Survival Guide](/docs/uptime/reboot-survival-guide/)'
+  - '[How to Install Software Updates](/docs/products/compute/compute-instances/guides/set-up-and-secure/#perform-system-updates)'
+  - '[Reboot Survival Guide](/docs/guides/reboot-survival-guide/)'
   - '[Linode Blog: CPU Vulnerabilities: Meltdown & Spectre](https://blog.linode.com/2018/01/03/cpu-vulnerabilities-meltdown-spectre/)'
 tags: ["security"]
 ---
@@ -61,7 +58,7 @@ Yes, but while rebooting with the new kernel will help prepare your Linode for t
 
 ## What Should I Do?
 
-* Visit our [Reboot Survival Guide](/docs/uptime/reboot-survival-guide/) to prepare for a graceful reboot.
+* Visit our [Reboot Survival Guide](/docs/guides/reboot-survival-guide/) to prepare for a graceful reboot.
 * [Update your kernel](#how-to-reboot-into-an-updated-linode-kernel) and reboot.
 * [Follow our blog for updates](https://blog.linode.com/2018/01/03/cpu-vulnerabilities-meltdown-spectre/).
 

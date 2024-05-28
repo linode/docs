@@ -1,6 +1,6 @@
-{{$file := .Get 0}}
+{{ $file := .Get 0 }}
 {{ if .Page.Params.os }}
-  {{ $class := .Get 1}}
+  {{ $class := .Get 1 }}
   {{ $p := .Site.GetPage $file }}
   {{ if $p }}
     <div class="{{ $class }}install">
@@ -9,10 +9,11 @@
   {{ else }}
     {{/* warnf "Content shortcode is empty: %s" .Position */}}
   {{ end }}
-{{else}}
+{{ else }}
   {{ $p := .Site.GetPage $file }}
   {{ if $p }}
-    {{ $p.Content }}
+{{/* Note: The indendation matters here and we want none, and especially not 4 spaces, which will render it as a code block. */}}
+{{ $p.RenderShortcodes }}
   {{ else }}
     {{/* warnf "Content shortcode is empty: %s" .Position */}}
   {{ end }}

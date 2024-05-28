@@ -1,16 +1,14 @@
 ---
 slug: install-direnv
-author:
-  name: Leslie Salazar
+title: "Install direnv"
 description: 'Shortguide for installing direnv'
+authors: ["Leslie Salazar"]
+contributors: ["Leslie Salazar"]
+published: 2018-06-12
+modified: 2018-11-06
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["python", "bash", "direnv", "automation"]
 tags: ["automation","python"]
-modified: 2018-11-06
-modified_by:
-  name: Leslie Salazar
-title: "How to install direnv"
-published: 2018-06-12
 headless: true
 show_on_rss_feed: false
 aliases: ['/development/python/install-direnv/']
@@ -69,7 +67,6 @@ Direnv modifies the shell environment depending on your current directory. This 
 1. Use your text editor to add directory specific environment variables to the `.envrc` file.
 
         vim ~/my-project-directory/.envrc
-
 {{< note >}}
 You must use bash syntax within `.envrc` file.
 {{< /note >}}

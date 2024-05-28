@@ -1,21 +1,15 @@
 ---
 slug: yaml-anchors-aliases-overrides-extensions
-author:
-  name: Cameron Laird
-  email: claird@phaseit.net
-description: 'YAML anchors, aliases, and overrides are features of the YAML language that help keep your code DRY. Anchors and aliases allow you to reference data for reuse. YAML overrides allow you to provide a custom value for an alias. This guide gives you examples for using YAML anchors, aliases, and overrides.'
-og_description: 'YAML anchors, aliases, and overrides are features of the YAML language that help keep your code DRY. Anchors and aliases allow you to reference data for reuse. YAML overrides allow you to provide a custom value for an alias. This guide gives you examples for using YAML anchors, aliases, and overrides.'
+title: "YAML Anchors, Aliases, and Overrides"
+title_meta: "YAML Examples for Anchors, Aliases, and Overrides"
+description: 'This guide gives you examples for using YAML anchors, aliases, and overrides, which are features of the YAML language that help keep your code DRY.'
+authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
+published: 2021-07-02
 keywords: ['YAML anchors']
 tags: ['docker', 'kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-02
-modified_by:
-  name: Linode
-title: "YAML Examples for Anchors, Aliases, and Overrides"
-h1_title: "YAML Anchors, Aliases, and Overrides"
-enable_h1: true
-contributor:
-  name: Cameron Laird
+image: YAML.jpg
 external_resources:
 - '[Docker Compose](https://docs.docker.com/compose/)'
 - '[Quickstart-Compose and WordPress](https://docs.docker.com/compose/wordpress/)'
@@ -53,7 +47,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     restart: always
-          environment:
+    environment:
   MYSQL_ROOT_PASSWORD: somewordpress
   MYSQL_DATABASE: wordpress
   MYSQL_USER: wordpress
@@ -64,11 +58,11 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     restart: always
-          environment:
-  MYSQL_ROOT_PASSWORD: somewordpress
-  MYSQL_DATABASE: wordpress
-  MYSQL_USER: wordpress
-  MYSQL_PASSWORD: wordpress
+    environment:
+    MYSQL_ROOT_PASSWORD: somewordpress
+    MYSQL_DATABASE: wordpress
+    MYSQL_USER: wordpress
+    MYSQL_PASSWORD: wordpress
 {{< /file >}}
 
 An *anchor* (`&`) and *alias* (`*`) abbreviate these definitions down to:
@@ -82,7 +76,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     restart: always
-          environment:
+    environment:
   MYSQL_ROOT_PASSWORD: somewordpress
   MYSQL_DATABASE: wordpress
   MYSQL_USER: wordpress
@@ -110,7 +104,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     restart: always
-          environment: &environment-definition
+    environment: &environment-definition
   MYSQL_ROOT_PASSWORD: somewordpress
   MYSQL_DATABASE: wordpress
   MYSQL_USER: wordpress
@@ -118,10 +112,10 @@ services:
       ...
   test-db:
     <<: *database-definition
-      environment:
+    environment:
         <<: *environment-definition
-          MYSQL_PASSWORD: test-password
-...
+  MYSQL_PASSWORD: test-password
+  ...
 {{</ file >}}
 
 The `<<` is a special *override* syntax that effectively allows for an alias whose individual values can be updated.

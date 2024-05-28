@@ -1,19 +1,15 @@
 ---
 slug: install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy
-author:
-    name: Sam Foo
-    email: docs@linode.com
+title: 'Installing a Jupyter Notebook on a Linode Behind an Apache Reverse Proxy'
+title_meta: 'How to Install a Jupyter Notebook Server on a Reverse Proxy'
 description: 'This guide shows you how to install and access a Jupyter notebook on a Linode remotely and securely through an Apache reverse proxy.'
+authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
+published: 2017-08-22
+modified: 2022-12-23
 keywords: ["Apache2", "Jupyter notebook", "SSL", "websocket"]
 tags: ["ssl", "proxy", "apache"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-published: 2017-08-22
-modified: 2019-02-01
-modified_by:
-    name: Sam Foo
-title: 'How to Install a Jupyter Notebook Server on a Reverse Proxy'
-h1_title: 'Installing a Jupyter Notebook on a Linode Behind an Apache Reverse Proxy'
-enable_h1: true
 external_resources:
  - '[Jupyter Notebook Documentation](https://jupyter-notebook.readthedocs.io/en/stable/)'
  - '[Anaconda Documentation](https://docs.continuum.io/)'
@@ -26,14 +22,15 @@ Jupyter Notebook is an interactive, enhanced shell that can be run within a web 
 
 {{< note >}}
 Jupyter Notebook is being replaced by [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html), the next-generation solution that includes Notebooks. Before continuing, consider if JupyterLab better suits your needs.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 
 Because this guide is written for Linodes running Ubuntu 16.04, you should:
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and log into your server via SSH.
-2.  Have [Apache 2.4.18 or higher](https://help.ubuntu.com/lts/serverguide/httpd.html) installed.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Install Anaconda Package Manager
 
@@ -55,11 +52,11 @@ Anaconda is a package manager with built-in support for virtual environments. It
 
 ## Create a Self-Signed Certificate
 
-The official documentation recommends generating a self-signed SSL certificate to prevent sending unencrypted passwords in the Notebook from the browser. This is especially important because Jupyter Notebooks can run bash scripts. If you have a domain name, consider using [Certbot](/docs/quick-answers/websites/secure-http-traffic-certbot/) rather than a self-signed certificate.
+The official documentation recommends generating a self-signed SSL certificate to prevent sending unencrypted passwords in the Notebook from the browser. This is especially important because Jupyter Notebooks can run bash scripts. If you have a domain name, consider using [Certbot](/docs/guides/secure-http-traffic-certbot/) rather than a self-signed certificate.
 
 1.  Create a self-signed certificate valid for 365 days:
 
-        openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mykey.key -out mycert.pem
+        openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem
 
     This command will create a `mykey.key` and `mycert.pem`.
 
@@ -82,7 +79,7 @@ The official documentation recommends generating a self-signed SSL certificate t
 
 4.  Uncomment the following lines in the configuration file:
 
-    {{< file "/.jupyter/jupyter-notebook-config.py" py >}}
+    {{< file "~/.jupyter/jupyter_notebook_config.py" py >}}
 c.NotebookApp.allow_origin = '*'
 c.NotebookApp.base_url = '/jupyter'
 c.NotebookApp.certfile = '/absolute/path/to/mycert.pem'
@@ -107,7 +104,7 @@ c.NotebookApp.trust_xheaders = True
 
     A prompt will appear with a list of mods for Apache:
 
-        Your choices are: access_compat actions alias allowmethods asis auth_basic auth_digest auth_form authn_anon authn_core authn_dbd authn_dbm authn_file authn_socache authnz_fcgi authnz_ldap authz_core authz_dbd authz_dbm authz_groupfile authz_host authz_owner authz_user autoindex buffer cache cache_disk cache_socache cgi cgid charset_lite data dav dav_fs dav_lock dbd deflate dialup dir dump_io echo env expires ext_filter file_cache filter headers heartbeat heartmonitor ident include info lbmethod_bybusyness lbmethod_byrequests lbmethod_bytraffic lbmethod_heartbeat ldap log_debug log_forensic lua macro mime mime_magic mpm_event mpm_prefork mpm_worker negotiation proxy proxy_ajp proxy_balancer proxy_connect proxy_express proxy_fcgi proxy_fdpass proxy_ftp proxy_html proxy_http proxy_scgi proxy_wstunnel ratelimit reflector remoteip reqtimeout request rewrite sed session session_cookie session_crypto session_dbd setenvif slotmem_plain slotmem_shm socache_dbm socache_memcache socache_shmcb speling ssl status substitute suexec unique_id userdir usertrack vhost_alias xml2enc
+        Your choices are: access_compat actions alias allowmethods asis auth_basic auth_digest auth_form authn_anon authn_core authn_dbd authn_dbm authn_file authn_socache authnz_fcgi authnz_ldap authz_core authz_dbd authz_dbm authz_groupfile authz_host authz_owner authz_user autoindex buffer cache cache_disk cache_socache cgi cgid charset_lite data dav dav_fs dav_lock dbd deflate dialup dir dump_io echo env expires ext_filter file_cache filter headers heartbeat heartmonitor ident include info lbmethod_bybusyness lbmethod_byrequests lbmethod_bytraffic lbmethod_heartbeat ldap log_debug log_forensic lua macro mime mime_magic mpm_event mpm_prefork mpm_worker negotiation proxy proxy_ajp proxy_balancer proxy_connect proxy_express proxy_fcgi proxy_fdpass proxy_ftp proxy_html proxy_http proxy_scgi proxy_wstunnel ratelimit reflector remoteip reqtimeout request rewrite sed session session_cookie session_crypto session_dbd setenvif slotmem_plain slotmem_shm socache_dbm socache_memcache socache_shmcb spelling ssl status substitute suexec unique_id userdir usertrack vhost_alias xml2enc
 
         Which module(s) do you want to enable (wildcards ok)?
 
@@ -157,7 +154,7 @@ c.NotebookApp.trust_xheaders = True
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `/jupyter` url path can have any name as long as it matches the base url path defined in the Jupyter notebook configuration file.
 {{< /note >}}
 

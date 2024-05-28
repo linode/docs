@@ -1,21 +1,16 @@
 ---
 slug: use-a-linode-for-web-development-on-remote-devices
-author:
-  name: Linode Community
-  email: docs@linode.com
-contributor:
-  name: Damaso Sanoja
-  link: https://twitter.com/damasosanoja
+title: "Use a Linode for Web Development on Remote Devices"
 description: "This guide shows how to set up a remote development environment on your Linode. You can then connect to it from a remote device such as a tablet or laptop."
 og_description: "This guide will show you how to create a remote development environment on your Linode."
+authors: ["Damaso Sanoja"]
+contributors: ["Damaso Sanoja"]
+published: 2017-12-14
+modified: 2021-12-30
 keywords: ["docker","container","portainer","linode","remote", "devices"]
 tags: ["docker", "container", "nginx", "ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-12-14
-modified: 2017-12-14
-modified_by:
-  name: Linode
-title: 'Use a Linode for Web Development on Remote Devices'
+image: Linode_WebDev.jpg
 external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Portainer](https://portainer.io/)'
@@ -26,7 +21,6 @@ aliases: ['/development/tips-and-tricks/use-a-linode-for-web-development-on-remo
 ![Use a Linode for Web Development on Remote Devices](Linode_WebDev.jpg "WebDev_Title Graphic")
 
 This guide will walk you through the necessary steps to configure your Linode to be an efficient remote development environment. You will then connect to this environment using a tablet and edit a simple web application using `ssh` and a text editor.
-
 
 ## Development Environments
 
@@ -62,7 +56,7 @@ By using Docker, you can ensure that your development is fully portable: contain
 
 ### Install Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Portainer
 
@@ -78,10 +72,10 @@ The easiest way to install Portainer is by deploying the official image.
         docker run -d -p 9000:9000 \
         --name portainer --restart unless-stopped \
         -v /var/run/docker.sock:/var/run/docker.sock \
-        -v portainer_data:/data portainer/portainer
+        -v portainer_data:/data portainer/portainer-ce
 
 
-    The `-v /var/run/docker.sock:/var/run/docker.sock` directive allows the Docker container to communicate with the host Docker environment. `-v portainer_data:/data portainer/portainer` mounts the previously created Portainer data volume.
+    The `-v /var/run/docker.sock:/var/run/docker.sock` directive allows the Docker container to communicate with the host Docker environment. `-v portainer_data:/data portainer/portainer-ce` mounts the previously created Portainer data volume. For more information, see [Portainer documentation](https://documentation.portainer.io/).
 
 3. Point your browser to http://192.0.0.0:9000, replacing `192.0.0.0` with the IP address or FQDN of your workstation Linode. You should see a screen similar to this:
 
@@ -94,7 +88,6 @@ The easiest way to install Portainer is by deploying the official image.
 5. If everything goes as expected you will be presented with the Portainer Dashboard.
 
     ![Portainer Dashboard](linode-on-remote-devices-03.png "Portainer Dashboard")
-
 {{< note >}}
 By default your connection with Portainer GUI is not encrypted. If you need to use SSL then you must install the corresponding certificates on your Linode and pass their location to the Docker container on start. For more information please read how to [Secure Portainer using SSL](https://portainer.readthedocs.io/en/stable/deployment.html#secure-portainer-using-ssl) in the Portainer official documentation.
 {{< /note >}}
@@ -229,4 +222,4 @@ With everything set up it's time to work with your remote development environmen
 
 You now have a basic but powerful setup that allows you to work from any device with an internet connection.
 
-The main limitation of a tablet is its storage capacity. An efficient way to set up a centralized storage space is by using OwnCloud on a Linode with [block storage](/docs/platform/how-to-use-block-storage-with-your-linode/). This way you can host all your archives, dotfiles, scripts, images and more in a scalable Linode. An additional benefit is the possibility to connect external storage services like Dropbox, Google Drive or OneDrive. OwnCloud has native applications for Android and iOS so managing your assets won't be a problem. You can install and configure ownCloud by following our [ownCloud guide](/docs/applications/cloud-storage/install-and-configure-owncloud-on-ubuntu-16-04/).
+The main limitation of a tablet is its storage capacity. An efficient way to set up a centralized storage space is by using OwnCloud on a Linode with [Block Storage](/docs/products/storage/block-storage/). This way you can host all your archives, dotfiles, scripts, images and more in a scalable Linode. An additional benefit is the possibility to connect external storage services like Dropbox, Google Drive or OneDrive. OwnCloud has native applications for Android and iOS so managing your assets won't be a problem. You can install and configure ownCloud by following our [ownCloud guide](/docs/guides/install-and-configure-owncloud-on-ubuntu-16-04/).

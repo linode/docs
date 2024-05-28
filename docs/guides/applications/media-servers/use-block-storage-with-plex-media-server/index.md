@@ -1,19 +1,15 @@
 ---
 slug: use-block-storage-with-plex-media-server
-author:
-  name: Sam Foo
-  email: docs@linode.com
+title: "Using a Block Storage Volume with Plex Media Server"
+title_meta: "How to Use a Block Storage Volume with Plex Media Server"
 description: "Combine Plex and Block Storage to make the most out of your media server by adding expandable storage. This guide will show you how."
+authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
+published: 2018-03-01
+modified: 2019-01-31
 keywords: ["plex", "streaming", "netflix", "roku", "block storage"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-31
-modified_by:
-  name: Linode
-published: 2018-03-01
-title: "How to Use a Block Storage Volume with Plex Media Server"
-h1_title: "Using a Block Storage Volume with Plex Media Server"
-enable_h1: true
 external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
 dedicated_cpu_link: true
@@ -28,13 +24,13 @@ Plex is a media server that allows you to store your media on a remote server an
 
 ## Before You Begin
 
-The examples in this guide assume the Plex Server is installed and running on a Linode. See how to [Install Plex Media Server on Ubuntu 16.04](/docs/applications/media-servers/install-plex-media-server-on-ubuntu-16-04/) if it is not already installed. After installation, follow the steps in the [Initial Setup](/docs/applications/media-servers/install-plex-media-server-on-ubuntu-16-04/#initial-setup) section to create an SSH tunnel to your Linode and configure the Plex server.
+The examples in this guide assume the Plex Server is installed and running on a Linode. See how to [Install Plex Media Server on Ubuntu 16.04](/docs/guides/install-plex-media-server-on-ubuntu-18-04/) if it is not already installed. After installation, follow the steps in the [Configuring Plex](/docs/guides/install-plex-media-server-on-ubuntu-18-04/#configuring-plex-media-server-on-ubuntu-1804) section to create an SSH tunnel to your Linode and configure the Plex server.
 
 This guide also assumes you already have a Plex account since Plex Media Player will require login.
 
 ## Attach a Block Storage Volume to a Linode
 
-1.  Create a Block Storage Volume and attach it to the Linode running Plex Media Server. See [How to Add a Block Storage Volume to a Linode](/docs/platform/how-to-use-block-storage-with-your-linode/#how-to-add-a-block-storage-volume-to-a-linode) for instructions on how to do this from the Linode Manager.
+1.  Create a Block Storage Volume and attach it to the Linode running Plex Media Server. See [View, Create, and Delete Block Storage Volumes](/docs/products/storage/block-storage/guides/manage-volumes/) for instructions on how to do this from the Linode Manager.
 
     To use the Linode CLI, create a new Volume and attach it to a Linode. The command below creates a 20GB Volume with the label `plex-volume` and attaches to a Linode labeled `plex-linode`. Adjust the command as needed:
 
@@ -91,7 +87,7 @@ Moving media to the Volume can be done with `scp` using the following syntax:
 Depending on the file size(s), this may take a few minutes.
 
 {{< note >}}
-There are other ways to upload files to a remote server. See our section in [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics/#upload-files-to-a-remote-server) for more information.
+There are other ways to upload files to a remote server. See our section in [Linux System Administration Basics](/docs/guides/linux-system-administration-basics/#upload-files-to-a-remote-server) for more information.
 {{< /note >}}
 
 ## Scan for New Media on the Volume

@@ -1,32 +1,27 @@
 ---
 slug: ruby-on-rails-with-apache-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Ruby on Rails with Apache on Ubuntu 9.10 (Karmic)'
 description: 'Using the Apache web server with Ubuntu 9.10 to serve Ruby on Rails applications.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-07-29
+modified: 2011-05-17
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
 tags: ["web applications","apache","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ror/ruby-on-rails-with-apache-on-ubuntu-9-10-karmic/','/frameworks/ruby-on-rails-apache/ubuntu-9-10-karmic/','/development/ror/ruby-on-rails-with-apache-on-ubuntu-9-10-karmic/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2010-07-29
-title: 'Ruby on Rails with Apache on Ubuntu 9.10 (Karmic)'
 external_resources:
     - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
     - '[mod\_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'
     - '[Install the Apache HTTP Server on Ubuntu 9.10 (Karmic)](/docs/web-servers/apache/installation/ubuntu-9-10-karmic)'
-    - '[Install the MySQL Database System on Ubuntu 9.10 (Karmic)](/docs/databases/mysql/ubuntu-9-10-karmic)'
+    - '[Install the MySQL Database System on Ubuntu 9.10 (Karmic)](/docs/guides/use-mysql-relational-databases-on-ubuntu-9-10-karmic/)'
 relations:
     platform:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications quickly that is written in the Ruby programming language. Rails enables developers to produce inventive applications on tight time scales. Examples of well known Rails-powered sites include Hulu, GitHub, and the applications provided by 37 Signals, among many others. This guide deploys Rails applications using the Phusion Passenger or `mod_rails` method. Passenger allows you to embed Rails apps directly in Apache applications without needing to worry about FastCGI or complex web server proxies.
 
@@ -82,7 +77,7 @@ If you are unsure of the version you require, you can install the default latest
 
     gem install rails
 
-This should install the appropriate versions of all required packages, including ruby, rack, and other dependencies needed for basic Rails development. To install support for the [MySQL database system](/docs/databases/mysql/ubuntu-9-10-karmic) in Rails, issue the following commands:
+This should install the appropriate versions of all required packages, including ruby, rack, and other dependencies needed for basic Rails development. To install support for the [MySQL database system](/docs/guides/use-mysql-relational-databases-on-ubuntu-9-10-karmic/) in Rails, issue the following commands:
 
     apt-get install mysql-server libmysqlclient15off libmysqlclient15-dev mysql-client mysql-common
     gem install mysql

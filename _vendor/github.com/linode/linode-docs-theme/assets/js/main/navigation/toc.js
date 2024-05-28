@@ -1,59 +1,69 @@
 'use strict';
 
-import { isMobile, isScreenLargerThan, sendEvent, toggleBooleanClass } from '../helpers/index';
+import { isDesktop, isMobile } from '../helpers/index';
 
-var debug = 0 ? console.log.bind(console, '[toc]') : function() {};
+var debug = 0 ? console.log.bind(console, '[toc]') : function () {};
+var devMode = false;
 
-const setOpenStatus = function(self, open) {
-	debug('setOpenStatus', open);
-	self.open = open;
-	self.$nextTick(() => {
-		sendEvent('nav:toggle', { what: 'toc', open: self.open });
-	});
-};
-
-const headerEls = () => document.querySelectorAll('#main__content h2, #main__content h3, #main__content h4');
-
-const setProgress = function(self, el) {
+const setProgress = function (self, el) {
 	let mainEl = document.querySelector('#main__content');
 	let mainHeight = mainEl.offsetHeight;
 	let mainStart = mainEl.offsetTop;
-	let progress = Math.round((el.offsetTop - mainStart) / mainHeight * 100);
+	let progress = Math.round(((el.offsetTop - mainStart) / mainHeight) * 100);
 	self.activeHeading.title = el.innerText;
 	self.activeHeading.progress = progress;
 };
 
-export function newToCController() {
+export function newToCController(
+	opts = {
+		level2Only: false,
+		setProgress: true,
+		desktopOnly: false,
+	},
+) {
 	return {
 		activeHeading: {
 			title: '',
-			progress: 0
+			progress: 0,
 		},
-		open: false,
 		enabled: false,
 		showHeading: true,
-		initData: {},
-		init: function(initData) {
-			this.initData = initData;
-			this.createTOC();
-			if (isScreenLargerThan(1711)) {
-				this.open = true;
+		opts: opts,
+		isActive: function () {
+			if (this.opts.desktopOnly && !isDesktop()) {
+				return false;
+			}
+			return true;
+		},
+		initToC: function () {
+			let { level2Only } = this.opts;
+			if (level2Only) {
+				this.headerEls = () => document.querySelectorAll('#main__content h2');
+			} else {
+				this.headerEls = () => document.querySelectorAll('#main__content h2, #main__content h3');
 			}
 
-			var self = this;
-			return function() {
-				self.createTOC();
-			};
-		},
-		createTOC: function() {
-			var self = this;
-			self.activeHeading.title = '';
-			var nav = this.$el.querySelector('.toc__inner');
-			nav.innerHTML = '';
-			var ol = document.createElement('ol');
-			var row = [];
+			this.createTOC();
+			if (devMode) {
+				this.$store.nav.open.toc = true;
+			}
 
-			headerEls().forEach((el) => {
+			this.$nextTick(() => {
+				this.createTOC();
+			});
+		},
+		createTOC: function () {
+			let self = this;
+			self.activeHeading.title = '';
+			let ol = this.$refs.ol;
+			let olFragment = document.createDocumentFragment();
+			let row = [];
+			let prevLevel = 0;
+
+			this.headerEls().forEach((el) => {
+				if (el.hasAttribute('data-toc-ignore')) {
+					return;
+				}
 				// Skip hidden elements and headers without ID.
 				if (!el || el.offsetParent === null || !el.id) {
 					return;
@@ -62,12 +72,17 @@ export function newToCController() {
 				let id = el.id;
 				let level = parseInt(el.nodeName.substring(1), 10);
 
-				var li = document.createElement('li');
+				// We need to start out with a level 2 header for the logic
+				// below to work.
+				if (prevLevel === 0 && level != 2) {
+					return;
+				}
+
+				let li = document.createElement('li');
 
 				li.classList.add(`level-${level}`);
-				li.classList.add('truncate');
 
-				var a = document.createElement('a');
+				let a = document.createElement('a');
 
 				a.setAttribute('href', `#${id}`);
 				a.addEventListener('click', (e) => {
@@ -77,10 +92,15 @@ export function newToCController() {
 					self.closeIfMobile();
 					if (heading) {
 						e.preventDefault();
+						// 24 px whitespace
+						// + 56 px for pinned topbar
+						// OR
+						// + 97 px for unpinned topbar
+						let spaceAbove = 24 + (document.body.classList.contains('is-topbar-pinned') ? 56 : 97);
 						window.scrollTo({
 							left: 0,
-							top: heading.offsetTop - 80,
-							behavior: 'smooth'
+							top: heading.offsetTop - spaceAbove,
+							behavior: 'smooth',
 						});
 						// We want the smooth scroll AND the hash to be updated -- without triggering any hashchange event.
 						if (history.pushState) {
@@ -96,100 +116,87 @@ export function newToCController() {
 
 				li.appendChild(a);
 
-				let ol2 = document.createElement('ol');
-				li.appendChild(ol2);
 				if (level == 2) {
 					row.length = 0;
-					row.push(ol2);
+					row.push(olFragment);
+					olFragment.appendChild(li);
+				} else if (level === prevLevel) {
+					let ol = row[row.length - 1];
 					ol.appendChild(li);
-				} else {
-					// Attach it to the closest parent.
-					let relativeLevel = level - 2;
-					let rowIdx = Math.min(relativeLevel - 1, row.length - 1);
-					let ol3 = row[rowIdx];
-					ol3.appendChild(li);
-					if (rowIdx > 1) {
-						row[rowIdx - 1] = ol2;
-					}
+				} else if (level > prevLevel) {
+					let ol = document.createElement('ol');
+					let li2 = row[row.length - 1].lastChild;
+					li2.appendChild(ol);
+					ol.appendChild(li);
+					row.push(ol);
+				} else if (level < prevLevel) {
+					let diff = prevLevel - level;
+					row.length = row.length - diff;
+					let ol = row[row.length - 1];
+					ol.appendChild(li);
 				}
+				prevLevel = level;
 			});
+
 			if (!this.enabled) {
-				toggleBooleanClass('toc', document.body, false);
+				this.$store.nav.open.toc = false;
 				return;
 			}
 
 			// On mobile, add close/open to h2 headers with descendants.
-			if (isMobile()) {
-				ol.querySelectorAll('.level-2').forEach((li) => {
+			if (isMobile() && this.$refs.headerCloseButton) {
+				olFragment.querySelectorAll('.level-2').forEach((li) => {
 					if (li.querySelector('li') !== null) {
 						li.setAttribute('x-data', '{ open: false }');
 						let ol = li.querySelector('ol');
-						ol.setAttribute('x-show.transition', 'open');
-						let closeEl = document.importNode(
-							this.initData.headerCloseButton.content.querySelector('button'),
-							true
-						);
+						ol.setAttribute('x-show', 'open');
+						ol.setAttribute('x-transition', '');
+						let closeEl = document.importNode(this.$refs.headerCloseButton.content.querySelector('button'), true);
 						li.appendChild(closeEl);
 					}
 				});
 			}
-			nav.appendChild(ol);
+			ol.replaceChildren(olFragment);
 		},
-		toggleOpen: function() {
-			setOpenStatus(this, !this.open);
+		toggleOpen: function () {
+			this.$store.nav.open.toc = !this.$store.nav.open.toc;
 		},
-		close: function() {
-			if (this.open) {
-				setOpenStatus(this, false);
+		close: function () {
+			if (this.$store.nav.open.toc) {
+				this.$store.nav.open.toc = false;
 			}
 		},
-		closeIfMobile: function() {
+		closeIfMobile: function () {
 			if (isMobile()) {
 				this.close();
 			}
 		},
-		receiveToggle: function(detail) {
-			debug('receiveToggle', detail);
-			switch (detail.what) {
-				case 'search-input':
-					this.showHeading = !detail.open;
-					if (detail.open) {
-						setOpenStatus(this, false);
-					}
-					break;
-				case 'toc':
-					this.open = detail.open;
-					break;
-				default:
-				// Ignore
-			}
-		},
-		onTurbolinksRender: function(data) {
-			// Rebuild ToC if needed.
-			this.createTOC();
-		},
-		onHashchange: function() {
+		onHashchange: function () {
 			let id = document.location.hash.slice(1);
 			let self = this;
-			headerEls().forEach((el) => {
+			this.headerEls().forEach((el) => {
 				if (el.id === id) {
 					setProgress(self, el);
 				}
 			});
 		},
-		onScroll: function() {
+		onScroll: function () {
 			if (!this.enabled) {
 				return;
 			}
+			if (!this.isActive()) {
+				return;
+			}
 			let scrollpos = window.scrollY;
-			var self = this;
+			let self = this;
+			document.activeElement.blur();
 
-			headerEls().forEach((el) => {
+			this.headerEls().forEach((el) => {
 				let offset = el.offsetTop;
 
 				if (offset > scrollpos && offset < scrollpos + 200) {
-					var toc = self.$el.querySelector('.toc__inner');
-					toc.querySelectorAll('li').forEach((liEl) => {
+					let ol = this.$refs.ol;
+					ol.querySelectorAll('li').forEach((liEl) => {
 						let a = liEl.querySelector('a');
 						if (!a.attributes || !a.attributes.href) {
 							return;
@@ -209,6 +216,6 @@ export function newToCController() {
 					this.activeHeading.progress = 100;
 				}
 			});
-		}
+		},
 	};
 }

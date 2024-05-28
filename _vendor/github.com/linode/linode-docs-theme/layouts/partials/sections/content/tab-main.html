@@ -1,5 +1,5 @@
 <div class="flex justify-start">
-  {{ $iconDir := "media/images/product-tabs-icons" }}
+  {{ $iconDir := "images/product-tabs-icons" }}
   {{ $root := false }}
 
   {{ if .Params.tab_group_main.is_root }}
@@ -11,12 +11,12 @@
   {{ end }}
 
   {{ if $root }}
-    {{ $pages := where ($root.Pages) ".Params.tab_group_main" "!=" nil | append $root  }}
+    {{ $pages := where ($root.Pages) ".Params.tab_group_main" "!=" nil | append $root }}
     {{ $pages = $pages.ByParam "tab_group_main.weight" }}
     {{ $items := slice }}
     {{ $selectedPage := false }}
     {{ range $pages }}
-      {{ if eq . $}}
+      {{ if eq . $ }}
         {{ $selectedPage = . }}
       {{ end }}
       {{ if and (not $selectedPage) (eq . $.Parent) }}
@@ -30,12 +30,34 @@
       {{ $title := $tabData.title | default .Title }}
       {{ $selected := eq . $selectedPage }}
       {{ $href := .RelPermalink }}
-      {{ $item := dict  "title" $title "href" $href "selected" $selected }}
+      {{/* For the tab icon, first look in the page bundle for a "tab.svg" in the root. */}}
+      {{ $icon := "" }}
+      {{ $iconStr := "" }}
+      {{ $icon = .Resources.Get "tab.svg" }}
+      {{ if not $icon }}
+        {{ $iconName := $title | urlize }}
+        {{/* 36 x 36 */}}
+        {{ $iconPath := printf "%s/%s.svg" $iconDir $iconName }}
+        {{ $icon = resources.Get $iconPath }}
+      {{ end }}
+      {{ if $icon }}
+        {{ if (ne hugo.Environment "development") }}
+          {{/* There's a cache bug in Hugo with minify and some others where changes isn't refreshed on changes when running the sever.
+            I (bep) have a fix for this in a upcoming Hugo version, but until then, do the minification only  when building the production version.
+          */}}
+          {{ $icon  = $icon | minify }}
+        {{ end }}
+        {{ $iconStr = $icon.Content | safeHTML }}
+      {{ else }}
+        {{ warnf "Icon not found for %s" $href }}
+      {{ end }}
+      {{ $item := dict  "title" $title "href" $href "selected" $selected "icon" $iconStr }}
       {{ $items = $items | append $item }}
       {{ if $selected }}
         {{ $selectedItem = $item }}
       {{ end }}
     {{ end }}
+
 
     <div class="md:hidden pb-4">
       {{ if $selectedItem }}
@@ -46,18 +68,24 @@
       <nav class="flex">
         {{ range $i, $e := $items }}
           {{ $activeClasses := "border-brand border-b-2" }}
-          {{ $inactiveClasses := "border-transparent border-b-2" }}
-          <a href="{{ .href }}"
-                class="{{ if .selected }}{{ $activeClasses }}{{ else }}{{ $inactiveClasses }}{{ end }} pb-2 truncate text-center leading-5 text-lg text-titlecolor letter-tight font-semibold focus:outline-none"
-                {{ if .selected }}aria-current="page" {{ end }}>
+          {{ $inactiveClasses := "border-transparent border-b-2 hover:border-gray-400" }}
+          <a
+            href="{{ .href }}"
+            class="group {{ if .selected }}
+              {{ $activeClasses }}
+            {{ else }}
+              {{ $inactiveClasses }}
+            {{ end }} pb-2 truncate text-center leading-5 text-lg text-titlecolor letter-tight font-semibold focus:outline-none"
+            {{ if .selected }}aria-current="page"{{ end }}>
             <div class="flex flex-col items-center">
-              <div class="pb-2">
-                {{ $iconName := $e.title | urlize }}
-                {{ $iconPath := printf "%s/%s.svg" $iconDir $iconName }}
-                {{ if .selected }}
-                  {{ $iconPath = printf "%s/%s-active.svg" $iconDir $iconName }}
+              <div
+                class="mb-2 w-9 h-9 {{ if .selected }}
+                  text-brand
+                {{ else }}
+                  text-gray-400 group-hover:text-gray-600
                 {{ end }}
-                <img src="{{ $iconPath | relURL }}" alt="Icon" style="width: 36px; height: 36px;">
+                ">
+                {{ $e.icon }}
               </div>
               <div class="leading-6">
                 {{ .title }}

@@ -1,17 +1,13 @@
 ---
 slug: how-to-use-tail
-author:
-  name: Phil Zona
-  email: docs@linode.com
+title: How to Use the Tail Command
 description: 'View and follow the end of files with the tail command.'
+authors: ["Phil Zona"]
+contributors: ["Phil Zona"]
+published: 2017-04-10
 keywords: ["linux", "how to", "tail", "last lines", "file"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/quick-answers/linux/how-to-use-tail/','/quick-answers/how-to-use-tail/']
-modified: 2017-04-10
-modified_by:
-  name: Phil Zona
-published: 2017-04-10
-title: How to Use the Tail Command
 tags: ["linux"]
 ---
 
@@ -44,4 +40,4 @@ In this guide, you'll learn how to use the `tail` command. Using `tail` is a sim
 
     This command would search the last ten lines of your access log and only display those that contain the IP address `198.51.100.1`. You can also apply options to `tail` in order to show more or less lines, view the filtered results in real time, and more.
 
-These are just the basics of how to use `tail`. It is an incredibly useful tool with many more options than we've listed here. To learn more advanced techniques, please check out our full guide on [the tail command](/docs/tools-reference/tools/view-and-follow-the-end-of-text-files-with-tail/).
+These are just the basics of how to use `tail`. It is an incredibly useful tool with many more options than we've listed here. To learn more advanced techniques, please check out our full guide on [the tail command](/docs/guides/view-and-follow-the-end-of-text-files-with-tail/).

@@ -1,27 +1,24 @@
 ---
 slug: use-mysql-relational-databases-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Use MySQL Relational Databases on Debian 5 (Lenny)'
 description: 'Getting started with MySQL for web and server applications on Debian Lenny.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-07
+modified: 2012-10-08
 keywords: ["MySQL on Linux", "MySQL Debian", "MySQL Lenny", "MySQL Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/debian-5-lenny/','/databases/mysql/use-mysql-relational-databases-on-debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2009-08-07
-title: 'Use MySQL Relational Databases on Debian 5 (Lenny)'
 relations:
     platform:
         key: use-mysql-relationaldb
         keywords:
             - distribution: Debian 5
 tags: ["debian","database","mysql"]
+deprecated: true
 ---
 
-MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Debian Lenny Linode. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
+MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Debian Lenny Linode. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
 ## Installing MySQL
 
@@ -36,7 +33,7 @@ Begin by issuing the following command in your terminal:
 
 You will be prompted to set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password in Debian Lenny.](358-lenny-01-mysql-root-password.png)](358-lenny-01-mysql-root-password.png)
+![Setting the MySQL root password in Debian Lenny.](358-lenny-01-mysql-root-password.png)
 
 The MySQL server package will be installed on your server, along with dependencies and client libraries.
 
