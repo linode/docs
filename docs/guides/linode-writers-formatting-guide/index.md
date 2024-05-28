@@ -5,7 +5,7 @@ description: 'This guide provides formatting and style guidelines for documentat
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2014-01-15
-modified: 2024-04-18
+modified: 2024-05-28
 keywords: ["style guide", "format", "formatting", "how to write", "write for us", "write for linode", "linode docs", "submissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
@@ -74,7 +74,19 @@ Introductions should be concise; explain what the goal of the guide is and why. 
 
 ### Before You Begin
 
-The *Before You Begin* section is an area for basic prerequisites a reader should know or have completed before proceeding further in your guide. Use the example below and edit as needed:
+The *Before You Begin* section is used to inform the reader of any prerequisites needed to successfully complete the guide. This may include, but is not limited to, the following examples:
+
+- Signing up for a Linode account
+
+- Creating specific services like Compute Instances, Kubernetes Clusters, or Object Storage buckets
+
+- Any service-specific tasks such as securing a Compute Instance or setting up non-root sudo users
+
+- Any hardware or [Linode plan](https://www.linode.com/pricing/) requirements
+
+- A list of software or applications that need to be installed or configured beforehand (i.e. LAMP stack, Docker, etc.)
+
+Below is an example *Before You Begin* section. You may copy the example and edit it as needed:
 
 ```file {title="Author Submission"}
 ## Before You Begin
