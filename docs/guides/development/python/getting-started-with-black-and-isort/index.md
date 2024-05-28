@@ -5,11 +5,12 @@ description: "Discover how Black and isort can help you to maintain readability 
 authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 published: 2023-06-15
+modified: 2024-05-28
 keywords: ['getting started with black and isort','python','black','isort','development']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-[Python](/docs/guides/development/python/) is one of the world's most widely used programming languages, with general acceptance in web development, data science, and embedded systems. Python's formal syntax is somewhat open, as it permits a considerable range of styles. This allows programmers to indent, punctuate, and name according to their personal preferences.
+[Python](/docs/guides/development/python/) is one of the world's most widely used programming languages, widely adopted in web development, data science, and embedded systems. Python's formal syntax is somewhat open, as it permits a considerable range of styles. This allows programmers to indent, punctuate, and name according to their personal preferences.
 
 However, projects spanning larger teams benefit from consistency. While an application written in a number of different styles is no less correct, these different styles becomes a distraction to those maintaining the code. For instance, the following two example Python fragments execute identically:
 
@@ -29,7 +30,7 @@ else:
 
 However, the unusual punctuation of the first example draws attention away from what the code actually accomplishes.
 
-Many organizations respond to such realities by adopting written [Style Guides](https://google.github.io/styleguide/). These internal policies dictate the inclusion of copyright notices, choice of tab stop, and more. Experience shows that Style Guides are most closely observed when their adherence is automatic. That's where [Black](https://github.com/psf/black) and [isort](https://github.com/PyCQA/isort) come into play. Both are formatting tools that automatically apply to Python code. They help Python programmers express themselves in a consistent and readable style that promotes clear understanding across an entire team.
+Many organizations respond to such realities by adopting written style guides. These internal policies dictate the inclusion of copyright notices, choice of tab stop, and more. Experience shows that style guides are most closely observed when their adherence is automatic. That's where [Black](https://github.com/psf/black) and [isort](https://github.com/PyCQA/isort) come into play. Both are formatting tools that automatically apply to Python code. They help Python programmers express themselves in a consistent and readable style that promotes clear understanding across an entire team.
 
 isort's scope is narrow. It mostly concentrates on `import` statements, which Python programs use to refer to external packages.
 
@@ -53,9 +54,9 @@ print ( 'Hello, World.' )
 Hello, World.
 ```
 
-Open a web browser and navigate to [this URL](https://black.vercel.app/?version=stable&state=_Td6WFoAAATm1rRGAgAhARYAAAB0L-Wj4AB9AFNdAD2IimZxl1N_WmOQqEcOUg5PabNV_4VCnlTimMkQYl49QWCrlz2TpRZTkGLPX6fSXiLn3AB5RNZFp-lv2yEhf3pqorrWzVuXIUI6dF-MWQb_ELsAAADgXdNgINz_0AABb354nl51H7bzfQEAAAAABFla):
+Open a web browser and navigate to the [Black Playground](https://black.vercel.app/?version=stable&state=_Td6WFoAAATm1rRGAgAhARYAAAB0L-Wj4AB9AFNdAD2IimZxl1N_WmOQqEcOUg5PabNV_4VCnlTimMkQYl49QWCrlz2TpRZTkGLPX6fSXiLn3AB5RNZFp-lv2yEhf3pqorrWzVuXIUI6dF-MWQb_ELsAAADgXdNgINz_0AABb354nl51H7bzfQEAAAAABFla) website, shown in the screenshot below:
 
-[![Python Hello, World in the online Black Playground.](Black-Playground_small.png "Python Hello, World in the online Black Playground.")](Black-Playground.png)
+![Python Hello, World in the online Black Playground.](Black-Playground.png)
 
 The "Hello, World" Python program from above appears in the left-hand pane. Meanwhile, the right-hand pane displays this subtly transformed version:
 
@@ -63,15 +64,15 @@ The "Hello, World" Python program from above appears in the left-hand pane. Mean
 print("Hello, world")
 ```
 
-It eliminated blank spaces and replaced single quotes with double quotes. This Guide explains how the [Black](https://github.com/psf/black) and [isort](https://pycqa.github.io/isort/) Python formatting tools work, and their implications for your own programming.
+It eliminated blank spaces and replaced single quotes with double quotes. This guide explains how the [Black](https://github.com/psf/black) and [isort](https://pycqa.github.io/isort/) Python formatting tools work, and their implications for your own programming.
 
 The web application above is able to do much more. Enter any Python code in the left-hand pane, and the right-hand pane outputs slightly different formatting without affecting the code's function.
 
-[The Black Playground web application](https://black.vercel.app/) and the similar [live isort editor](https://pycqa.github.io/isort/docs/quick_start/0.-try.html) are wonderful assets. They allow anyone with web access to use Black and isort within seconds.
+[The Black Playground web application](https://black.vercel.app/) and the similar [live isort editor](https://pycqa.github.io/isort/docs/quick_start/0.-try.html) are useful assets. They allow anyone with web access to use Black and isort within seconds.
 
 ### Installing Black and isort Locally
 
-While the web-based tools are easily accessible, frequent use of Black and isort deserves local installation. Despite the extra effort involved, a local installation integrated within your working environment is far more efficient. This might entail configuration of an [Integrated Development Environment (IDE)](https://www.linode.com/docs/guides/development/), a [Continuous Integration (CI)](https://www.linode.com/docs/guides/development/ci/) platform, or other minor complexities.
+While the web-based tools are easily accessible, frequent use of Black and isort deserves a local installation. Despite the extra effort involved, a local installation integrated within your working environment is far more efficient. This might entail configuration of an [Integrated Development Environment (IDE)](https://www.linode.com/docs/guides/development/), a [Continuous Integration (CI)](https://www.linode.com/docs/guides/development/ci/) platform, or other minor complexities.
 
 Any environment with [Package Installer for Python (pip)](https://pypi.org/project/pip/) can immediately install Black and isort.
 
@@ -121,12 +122,6 @@ Any environment with [Package Installer for Python (pip)](https://pypi.org/proje
 
 In broad terms, stylistic standardization is desirable in many programming contexts. Python is a flexible language as many possible variations can end in the same result equally well. However, adopting conventions simplifies programming chores, allowing you to focus on the end result.
 
-### Benefits of Consistent Coding Practices
-
-There is extensive research published on ["Why you should use Black …"](http://www.locallyoptimal.com/blog/2019/08/23/why-you-should-use-black-for-your-python-style-linting/), and the benefits of ["Consistent Python code with Black"](https://www.mattlayman.com/blog/2018/python-code-black/). ["Using Black …"](https://hackernoon.com/using-black-to-auto-format-your-python-8cu338f) even floats the possibility that an employer might choose you for your well-formatted source. If you are ["Tired of Pointless Discussions on Code Formatting …"](https://towardsdatascience.com/tired-of-pointless-discussions-on-code-formatting-a-simple-solution-exists-af11ea442bdc), Black is a simple low-cost response. ["Why Prettier?"](https://towardsdatascience.com/tired-of-pointless-discussions-on-code-formatting-a-simple-solution-exists-af11ea442bdc) summarizes these arguments concisely, and while it applies to JavaScript, nearly all of the arguments apply equally to Python.
-
-For even more from people with real-world experience, study these threads on [HackerNews](https://news.ycombinator.com/item?id=30130315) and [Reddit](https://www.reddit.com/r/Python/comments/8lmnzr/thoughts_on_black/). As one of the contributors declares, ["...Black is truly a huge blessing in the Python ecosystem"](https://news.ycombinator.com/item?id=30131185).
-
 ### Black vs. isort
 
 As both Black and isort are Python formatters, their usage is quite similar.
@@ -161,7 +156,7 @@ Many of the most celebrated open source [Python projects use Black](https://gith
 
 ### When to Use Black and isort
 
-If your programming work is [collaborative](https://simpleprogrammer.com/working-on-a-team/), you're likely to benefit from using Black and isort. For example, if you're a member of a larger project, cooperate with others on a common goal, or simply want to [style your work more consistently](https://sunnysingh.io/blog/readable-code).
+If your programming work is collaborative, you're likely to benefit from using Black and isort. For example, if you're a member of a larger project, cooperate with others on a common goal, or simply want to style your work more consistently.
 
 Black and isort's potential goes far beyond what's been demonstrated so far. Experiment with them both for a few minutes to learn their actions and discover what they can do for you. You might find why [celebrated Python contributors testify](https://github.com/psf/black#testimonials) that Black is the single greatest productivity tool for their programming.
 
