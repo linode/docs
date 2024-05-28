@@ -1,13 +1,12 @@
 ---
 slug: getting-started-with-black-and-isort
 title: "Getting Started with Black and isort"
-description: 'Discover how Black and isort can help you to maintain readability and consistency in your Python code. ✓ Click here to learn how!'
+description: "Discover how Black and isort can help you to maintain readability and consistency in your Python code."
+authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
+published: 2023-06-15
 keywords: ['getting started with black and isort','python','black','isort','development']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Cameron Laird"]
-published: 2023-06-15
-modified_by:
-  name: Linode
 ---
 
 [Python](/docs/guides/development/python/) is one of the world's most widely used programming languages, with general acceptance in web development, data science, and embedded systems. Python's formal syntax is somewhat open, as it permits a considerable range of styles. This allows programmers to indent, punctuate, and name according to their personal preferences.
