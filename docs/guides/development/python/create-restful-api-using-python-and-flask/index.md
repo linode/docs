@@ -1,14 +1,13 @@
 ---
 slug: create-restful-api-using-python-and-flask
+title: "Create a RESTful API Using Python and Flask"
 description: 'In this guide, you learn how to create a REST API using Python and Flask. The example API serves up information about programming languages.'
+authors: ["Chelsea Troy"]
+contributors: ["Chelsea Troy"]
+published: 2021-09-24
 keywords: ['python flask api']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-24
-modified_by:
-  name: Linode
-title: "Create a RESTful API Using Python and Flask"
-authors: ["Chelsea Troy"]
 ---
 
 [Flask](https://flask.palletsprojects.com/en/2.0.x/) is a Python micro-framework for building web applications and web APIs. The framework provides pared-down core functionality, however, it is highly extensible. This guide shows you how to use Flask to build a REST API that serves up information about different programming languages. The data information exposed by the API can also be referred to as a *resource*. The API’s data comes from [Hillel Wayne’s research](https://www.hillelwayne.com/post/influential-dead-languages/) on influential programming languages. At the end of the guide, you have an API that allows clients to complete the following:
@@ -17,8 +16,7 @@ authors: ["Chelsea Troy"]
 - GET a specific instance of a programming language
 - Filter the programming language resources based on the publication year field
 - POST, PUT, and DELETE a programming language instance
-
-{{< note respectIndent=false >}}
+{{< note >}}
 GET, POST, PUT, and DELETE are [HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) used to perform an action on a resource.
 {{< /note >}}
 
@@ -27,8 +25,7 @@ GET, POST, PUT, and DELETE are [HTTP request methods](https://developer.mozilla.
 The REST protocol gives clients access to resources stored in a database and allows clients to perform operations on the stored data. The operations are known as *CRUD operations* (create, read, update, and delete). The following sections show you how to create the CRUD operations for your Flask web API.
 
 ### Install Flask
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This section makes use of the [virtualenv](https://pypi.org/project/virtualenv/) tool to create a virtual environment on your system. Follow the installation steps in our [How to Create a Python Virtual Environment](/docs/guides/create-a-python-virtualenv-on-debian-10/) guide if you do not have virtualenv installed on your computer.
 {{< /note >}}
 
@@ -54,7 +51,7 @@ In order to run a Flask server, you install Flask first using the [Python Packag
 
 RESTful services typically have two endpoints used to retrieve (GET) resources. One endpoint *lists* all resources or filters them according to some criterion. The second endpoint retrieves the *details* of a specific resource based on a unique identifier. In this section, you create two endpoints to GET resources from your API. This section may refer to these endpoints as the `list` and `details` endpoints.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 All the steps in this section edit the same file, `prog_lang_app.py`.
 {{< /note >}}
 

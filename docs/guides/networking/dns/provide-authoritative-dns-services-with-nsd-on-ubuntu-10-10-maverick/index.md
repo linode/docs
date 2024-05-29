@@ -1,22 +1,21 @@
 ---
 slug: provide-authoritative-dns-services-with-nsd-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Authoritative DNS Services with NSD on Ubuntu 10.10 '
 description: 'This guide shows how you can install and configure NSD, a lightweight name server daemon and alternative to BIND, to provide authoritative DNS on Ubuntu 10.10 "Maverick".'
+authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
+published: 2011-01-25
+modified: 2012-10-08
 keywords: ["NSD", "DNS", "resolving", "Ubuntu", "networking"]
 tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-10-10-maverick/','/dns-guides/nsd-authoritative-dns-ubuntu-10-10-maverick/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2011-01-25
-title: 'Authoritative DNS Services with NSD on Ubuntu 10.10 '
 relations:
     platform:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Brett Kaplan"]
+deprecated: true
 ---
 
 NSD is a light-weight yet full-featured open source name server daemon created to provide an alternative to BIND.
@@ -25,7 +24,7 @@ Before beginning, you should be familiar with basic [DNS terminology and records
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

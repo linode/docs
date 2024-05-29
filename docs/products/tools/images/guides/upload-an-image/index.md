@@ -1,8 +1,7 @@
 ---
-image: UploadAnImage.png
 title: Upload an Image
 description: "How to upload an image with Linode Images."
-authors: ["Linode"]
+image: UploadAnImage.png
 ---
 
 ## Requirements and Considerations
@@ -38,13 +37,13 @@ After the image file has been created, it needs to be compressed using the gzip 
 
 -   **Linux and macOS**: Run the following command, replacing *[file.img.gz]* with the file name of your image. See [Archiving and Compressing files with GNU Tar and GNU Zip](/docs/guides/archiving-and-compressing-files-with-gnu-tar-and-gnu-zip/) for additional information on gzip.
 
-        gzip [file.img] [file.img.gz]
+        gzip [file.img]
 
 -   **Windows**: Use a third party tool that supports gzip compression, such as [7-Zip](https://www.7-zip.org/).
 
 #### Determining the Uncompressed File Size
 
-Knowing the *uncompressed* size of an image file is helpful for planning the storage requirements of Linodes deployed using that image. This information also ensures you stay within the [limits of the Images service](/docs/products/tools/images/#limits). The best way to determine the uncompressed size of a gzip archive is to uncompress that archive and then examine its file size. Alternatively, use the zcat utility by run the following command, replacing *[file.img.gz]* with the file name of your image.
+Knowing the *uncompressed* size of an image file is helpful for planning the storage requirements of Linodes deployed using that image. This information also ensures you stay within the [limits of the Images service](/docs/products/tools/images/guides/upload-an-image/#requirements-and-considerations). The best way to determine the uncompressed size of a gzip archive is to uncompress that archive and then examine its file size. Alternatively, use the zcat utility by run the following command, replacing *[file.img.gz]* with the file name of your image.
 
     zcat [file.img.gz] | wc -c
 

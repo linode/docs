@@ -1,73 +1,51 @@
-name: CI Tests
+name: Update Hugo image cache
 
 on:
   push:
     branches:
       - develop
 
-env:
-  hugo-image-cache-name: hugo-generated-images
-  hugo-image-cache-path: /home/runner/work/docs/docs/resources/_gen/images/
-  repo-name: docs
-  repo-owner: linode
-
 jobs:
   cache-images:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          path: docs-repo
+
+      - name: Print current docs repo branch/ref/commit
+        working-directory: ./docs-repo
+        run: |
+          git status
+          git log -1
 
       - name: List contents of images dir
         continue-on-error: true
-        run: ls -al ${{ env.hugo-image-cache-path }}
+        run: ls -al ${{ vars.HUGO_IMAGE_CACHE_PATH }}
 
       - name: Cache images dir
         uses: actions/cache@v2
         with:
-          path: ${{ env.hugo-image-cache-path }}
-          key: ${{ env.hugo-image-cache-name }}-${{ github.run_id }}
+          path: ${{ vars.HUGO_IMAGE_CACHE_PATH }}
+          key: ${{ vars.HUGO_IMAGE_CACHE_NAME }}-${{ github.run_id }}
           restore-keys: |
-            ${{ env.hugo-image-cache-name }}
+            ${{ vars.HUGO_IMAGE_CACHE_NAME }}
 
       - name: List contents of images dir
         continue-on-error: true
-        run: ls -al ${{ env.hugo-image-cache-path }}
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.10.x'
-          architecture: 'x64'
-
-      - name: Cache pip
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/pip
-          # Look to see if there is a cache hit for the corresponding requirements file
-          key: ${{ runner.os }}-pip-${{ hashFiles('./ci/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-            ${{ runner.os }}-
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r ./ci/requirements.txt
-
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
+        run: ls -al ${{ vars.HUGO_IMAGE_CACHE_PATH }}
 
       - name: Install dependencies (Node)
-        run: npm install
+        working-directory: ./docs-repo
+        run: npm ci
 
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.105.0'
+          hugo-version: ${{ vars.HUGO_VERSION }}
 
       - name: Build Hugo
+        working-directory: ./docs-repo
         run: hugo --gc
 
       - name: List existing Hugo image caches
@@ -75,7 +53,7 @@ jobs:
           curl \
           -H "Accept: application/vnd.github+json" \
           -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-          https://api.github.com/repos/${{ env.repo-owner }}/${{ env.repo-name }}/actions/caches?key=${{ env.hugo-image-cache-name }} \
+          https://api.github.com/repos/$GITHUB_REPOSITORY_OWNER/${GITHUB_REPOSITORY#*/}/actions/caches?key=${{ vars.HUGO_IMAGE_CACHE_NAME }} \
           -o cache-list.json
 
           echo "The following caches will be deleted:"
@@ -89,5 +67,5 @@ jobs:
             -X DELETE \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/repos/${{ env.repo-owner }}/${{ env.repo-name }}/actions/caches/$id
+            https://api.github.com/repos/$GITHUB_REPOSITORY_OWNER/${GITHUB_REPOSITORY#*/}/actions/caches/$id
           done

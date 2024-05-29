@@ -2,12 +2,10 @@
 title: "Help & Support"
 description: "Information about Linode support, including the scope of support and how to get help."
 published: 2023-03-14
-modified_by:
-  name: Linode
+modified: 2024-03-11
 keywords: ["support", "tech support", "tickets", "help desk"]
 tags: ["linode platform"]
 aliases: ['/platform/billing-and-support/support/','/support/','/platform/support/','/platform/billing-and-support/support-classic-manager/','/platform/billing-and-support/support-new-manager/','/guides/support/']
-authors: ["Linode"]
 ---
 
 Linode provides a variety of support options so that you get the answers you need, in the timeframe you need them, and in the way that works best for you -- all at no cost. Linode users have access to all of our support resources, including our extensive documentation library, our community questions site, and our award-winning Customer Support team - offering *self-service* and *live support* whenever you need it. This guide aims to point you in the right direction for whichever issue you may need assistance resolving.
@@ -46,7 +44,7 @@ Whenever you need assistance with software that's installed on your Compute Inst
 
 ### Infrastructure Deployment and Configuration.
 
-For guidance on your architecture, migrations, and software deployments, consider working with our Professional Services team. To get started, [contact us](https://www.linode.com/products/pro-services/#speakwithus) or [request a free quote](https://proservices.typeform.com/to/xJiIEy).
+For guidance on your architecture, migrations, and software deployments, consider working with our Professional Services team. You can reach out to that team through the [Contact Sales](https://www.linode.com/company/contact/) form.
 
 If you're looking for a partner to help guide your transition to the Cloud or help build your platform, our [Partner Directory](https://partner-directory.linode.com/s/) offers a list of trusted partners.
 
@@ -56,7 +54,7 @@ Security, privacy, and compliance are important to us. To help you find answers 
 
 ### Infrastructure Status Inquiries
 
-For all emergent issues, as well as, planned maintenance within our infrastructure, our team will post to (and regularly update) our [Linode status page](https://status.linode.com/) until the issue has been resolved or maintenance completed. If you are experiencing a connectivity issue, or having troubles accessing one of our services, check this page for any system-wide outages. You can also subscribe to receive updates via email/SMS by clicking Subscribe To Updates in the top right corner of the page.
+For all emergent issues and planned maintenance within our infrastructure, our team will post to (and regularly update) the [Linode status page](https://status.linode.com/) until the issue has been resolved or maintenance completed. If you are experiencing a connectivity issue, or having troubles accessing one of our services, check this page for any system-wide outages. You can also subscribe to receive updates via email/SMS by clicking Subscribe To Updates in the top right corner of the page.
 
 ### Report Abuse On Our Platform
 

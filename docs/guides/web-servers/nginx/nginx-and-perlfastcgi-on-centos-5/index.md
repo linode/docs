@@ -1,16 +1,15 @@
 ---
 slug: nginx-and-perlfastcgi-on-centos-5
-deprecated: true
+title: 'Nginx and Perl-FastCGI on CentOS 5'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-16
+modified: 2011-07-20
 keywords: ["nginx", "nginx centos 5", "nginx fastcgi", "nginx perl"]
 tags: ["centos","web server","perl","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/nginx-and-perlfastcgi-on-centos-5/','/web-servers/nginx/perl-fastcgi/centos-5/','/websites/nginx/nginx-and-perlfastcgi-on-centos-5/','/websites/nginx/nginx-and-perlfastcgi-on-centos-5/index.cfm/']
-modified: 2011-07-20
-modified_by:
-  name: Linode
-published: 2009-12-16
-title: 'Nginx and Perl-FastCGI on CentOS 5'
 external_resources:
  - '[The nginx Homepage](http://nginx.org/)'
  - '[FastCGI Project Homepage](http://www.fastcgi.com/)'
@@ -22,7 +21,7 @@ relations:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: CentOS 5
-authors: ["Linode"]
+deprecated: true
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your CentOS 5 Linode.
@@ -31,7 +30,7 @@ It is assumed that you've already followed the steps outlined in our [Setting Up
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -109,7 +108,7 @@ Issue the following commands to enable the site:
     ln -s /etc/nginx/sites-available/www.example.com
     /etc/init.d/nginx restart
 
-You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/docs/products/networking/dns-manager/guides/common-dns-configurations/) pointing your domain name to your Linode's IP address (found on the **Networking** tab in the [Linode Manager](http://cloud.linode.com//)).
+You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/docs/products/networking/dns-manager/guides/common-dns-configurations/) pointing your domain name to your Linode's IP address (found on the **Networking** tab in the [Linode Manager](http://cloud.linode.com/)).
 
 ## Configure FastCGI Wrapper
 
@@ -332,7 +331,7 @@ Next issue the following commands to make the scripts executable and set the per
 
 ## Test Perl with FastCGI
 
-Create a file called "test.pl" in your site's "public\_html" directory with the following contents:
+Create a file called "test.pl" in your site's `public_html` directory with the following contents:
 
 {{< file "/srv/www/www.example.com/public\\_html/test.pl" perl >}}
 #!/usr/bin/perl

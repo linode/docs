@@ -1,14 +1,13 @@
 ---
 slug: mongodb-community-shell-installation
+title: "Install and Use the MongoDB Community Shell"
 description: 'This tutorial explains how to install the MongoDB Community Shell on macOS, Windows 10, and Debian-based Linux systems.'
+authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
+published: 2021-12-10
 keywords: ['mongodb community shell', 'mongosh', 'mongodb']
 tags: ['debian', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-10
-modified_by:
-  name: Linode
-title: "Install and Use the MongoDB Community Shell"
-authors: ["Tom Henderson"]
 tags: ["saas"]
 ---
 
@@ -18,7 +17,7 @@ MongoDB is a non-relational, document-oriented database that can operate over ma
 
 ### Prerequisites
 
-- Ensure you have deployed a MongoDB server instance. You can use the [Linode Marketplace App](/docs/products/tools/marketplace/guides/mongodb/) to deploy a MongoDB server instance.
+- Ensure you have deployed a MongoDB server instance.
 
 - You must have access to your MongoDB server instance and the necessary credentials to connect to your database.
 
@@ -57,7 +56,7 @@ If, upon invocation, `mongosh` doesn't execute, it may be necessary (depending o
 
 ### Install the MongoDB Shell on Debian Linux
 
-MongoDB server instances installed with a Linux package manager (`apt` or `rpm`) often have the MongoDB Shell already installed. This also includes the [Linode Marketplace MondoDB Server instance](/docs/products/tools/marketplace/guides/mongodb/). To verify that `mongosh` is installed, issue the following command to connect to your MongoDB server:
+MongoDB server instances installed with a Linux package manager (`apt` or `rpm`) often have the MongoDB Shell already installed. To verify that `mongosh` is installed, issue the following command to connect to your MongoDB server:
 
     mongosh
 

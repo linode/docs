@@ -1,8 +1,9 @@
 ---
 title: "Manage SSH Keys"
 description: "Learn how to view, upload, and remove your public SSH keys in the Cloud Manager."
+published: 2022-03-18
+modified: 2023-05-22
 aliases: ['/products/tools/cloud-manager/guides/manage-ssh-keys/']
-authors: ["Linode"]
 ---
 
 When creating a Compute Instance, you have the opportunity to select one or more SSH keys, which are added to the root user account of the new instance. This allows you to login over SSH using your associated private key instead of the root password.
@@ -23,7 +24,11 @@ These SSH keys are stored within your Linode account and can be easily accessed 
 
 ## Add a Public Key
 
-Follow the instructions below to add your public key to your Linode account. This *does not* configure the SSH Key onto existing Compute Instances, but instead allows you to select the key when deploying *new* instances.
+Add a public SSH key to your Linode user account so that you can easily install it on *new* Compute Instances (see [Create a Compute Instance](/docs/products/compute/compute-instances/guides/create/#create-a-password-and-add-ssh-keys)).
+
+{{< note >}}
+The following SSH key formats are supported: **ssh-rsa**, **ssh-dss**, **ecdsa-sha2-nistp**, **ssh-ed25519**, and **sk-ecdsa-sha2-nistp256** (an Akamai-specific format).
+{{< /note >}}
 
 1.  Access the **SSH Keys** page in the Cloud Manager. See [View SSH Keys](#view-ssh-keys) above.
 
@@ -33,11 +38,13 @@ Follow the instructions below to add your public key to your Linode account. Thi
 
 1.  Within the **Add an SSH Key** panel that appears, enter a descriptive label for your key and paste your public key into the **SSH Pulic Key** field. To find and copy your public key on your local machine, use one of the following methods:
 
-    -   **Windows 11 (or 10), MacOS, Linux:** If you created your key pair using most command-line tools, your public key is likely stored in a `.ssh` directory within your home folder and is likely called `id_rsa.pub`. You can view your public key by opening PowerShell (Windows) or the terminal (macOS and Linux) and running the following command:
+    -   **Windows 11 (or 10), macOS, Linux:** If you created your key pair using most command-line tools, your public key is likely stored in a `.ssh` directory within your home folder and is likely called `id_rsa.pub`. You can view your public key by opening PowerShell (Windows) or the terminal (macOS and Linux) and running the following command:
 
-            cat ~/.ssh/id_rsa.pub
+        ```command
+        cat ~/.ssh/id_rsa.pub
+        ```
 
-    - **Windows (through PuTTY):** When using PuTTY to generate your key pair, the public key is stored as a `.ppk` file. Open this file using PuTTY to view your public key.
+    -   **Windows (through PuTTY):** When using PuTTY to generate your key pair, the public key is stored as a `.ppk` file. Open this file using PuTTY to view your public key.
 
     If you haven't yet generated a key pair to use with SSH, follow the instructions within the [Creating an SSH Key Pair and Configuring Public Key Authentication on a Server](/docs/guides/use-public-key-authentication-with-ssh/) guide.
 

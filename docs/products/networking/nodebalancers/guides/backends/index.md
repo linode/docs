@@ -2,7 +2,6 @@
 title: "Backend Nodes (Compute Instances)"
 description: "Instructions for adding and configuring backend nodes on a NodeBalancer"
 published: 2022-10-07
-authors: ["Linode"]
 ---
 
 Load balancers work by distributing traffic to a pool of servers. For NodeBalancers, these servers are Linode Compute Instances and they are configured as *backend nodes*. Each Compute Instance operating as a backend node needs to be located within the same data center as the NodeBalancer and be assigned a private IPv4 address. See [Managing IP addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for instructions on adding a private IP address to an existing Compute Instance.
@@ -13,7 +12,7 @@ While only a single backend node is required, *at least* two backends need to be
 
 ## Add, Edit, and Remove Backend Nodes
 
-Backends nodes can be defined through a NodeBalancer's [Configurations](/docs/products/networking/nodebalancers/guides/configure/), which contain all the settings and parameters for a particular *inbound* port.
+Backend nodes can be defined through a NodeBalancer's [Configurations](/docs/products/networking/nodebalancers/guides/configure/), which contain all the settings and parameters for a particular *inbound* port.
 
 1. Log in to the [Cloud Manager](http://cloud.linode.com), click **NodeBalancers** in the left menu, and select the NodeBalancer you wish to edit. See [Manage NodeBalancers](/docs/products/networking/nodebalancers/guides/manage/).
 

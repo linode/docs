@@ -1,5 +1,5 @@
 ---
-title: Object Storage
 slug: object-storage
+title: Object Storage
 ---
 

@@ -1,16 +1,15 @@
 ---
 slug: how-to-install-ghost-cms-with-docker-compose-on-ubuntu-18-04
+title: Installing Ghost CMS with Docker Compose on Ubuntu 18.04
+title_meta: How to Install Ghost CMS with Docker on Ubuntu 18.04
 description: "Learn how to install Ghost, a publishing platform great for running blogs and sharing published content, on Ubuntu 18.04."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-08-20
 keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on ubuntu 18.04", "docker", "docker compose"]
 tags: ["nginx","ubuntu","docker","mysql","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/ghost/how-to-install-ghost-cms-with-docker-compose-on-ubuntu-18-04/','/websites/cms/how-to-install-ghost-cms-with-docker-compose-on-ubuntu-18-04/']
-modified: 2018-08-20
-modified_by:
-  name: Linode
-published: 2018-08-20
-title: Installing Ghost CMS with Docker Compose on Ubuntu 18.04
-title_meta: How to Install Ghost CMS with Docker on Ubuntu 18.04
 external_resources:
 - '[Ghost Setup Documentation](https://ghost.org/docs/)'
 - '[Ghost Theme Documentation](https://ghost.org/docs/themes/)'
@@ -21,7 +20,6 @@ relations:
         key: how-to-install-ghost-cms
         keywords:
            - distribution: Docker
-authors: ["Linode"]
 ---
 
 <!-- ![How to Install Ghost CMS on Ubuntu 16.04](ghost-blog-ubuntu-16-04-title-graphic.png "How to Install Ghost CMS on Ubuntu 16.04") -->
@@ -54,21 +52,21 @@ Replace each instance of example.com in this guide with your Ghost site’s doma
 
     These commands will download a certificate to `/etc/letsencrypt/live/example.com/` on your Linode.
 
-    {{< disclosure-note "Why not use Certbot's Docker container?" >}}
-When your certificate is periodically renewed, your web server needs to be reloaded in order to use the new certificate. This is usually accomplished by passing a web server reload command through Certbot's [`--deploy-hook` option](https://certbot.eff.org/docs/api/hooks.html#certbot.hooks.deploy_hook).
+    {{< note type="secondary" title="Why not use Certbot's Docker container?" isCollapsible=true >}}
+    When your certificate is periodically renewed, your web server needs to be reloaded in order to use the new certificate. This is usually accomplished by passing a web server reload command through Certbot's [`--deploy-hook` option](https://certbot.eff.org/docs/api/hooks.html#certbot.hooks.deploy_hook).
 
-In your deployment, the web server will run in its own container, and the Certbot container would not be able to directly reload it. A workaround for this limitation would be needed to enable this architecture.
-{{< /disclosure-note >}}
+    In your deployment, the web server will run in its own container, and the Certbot container would not be able to directly reload it. A workaround for this limitation would be needed to enable this architecture.
+    {{< /note >}}
 
 1.  Install Docker and Docker Compose before proceeding. If you haven't used Docker before, review the [Introduction to Docker](/docs/guides/introduction-to-docker/), [When and Why to Use Docker](/docs/guides/when-and-why-to-use-docker/), and [How to Use Docker Compose](/docs/guides/how-to-use-docker-compose/) guides for some context on how these technologies work.
 
 ### Install Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ## Install Ghost
 

@@ -1,25 +1,22 @@
 ---
 slug: web-apps-with-cherokee-and-phpfastcgi-on-fedora-13
-deprecated: true
+title: 'Web Apps with Cherokee and PHP-FastCGI on Fedora 13'
 description: 'This guide shows how to use the fast, flexible, open-source Cherokee web server with PHP-FastCGI to serve dynamic website content on Fedora 13.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-09-17
+modified: 2011-05-17
 keywords: ["cherokee php-fastcgi", "cherokee fastcgi", "cherokee fedora 13", "cherokee", "fedora 13 web server"]
 tags: ["web server","fedora","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-fedora-13/','/websites/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-fedora-13/','/web-servers/cherokee/php-fastcgi-fedora-13/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2010-09-17
-title: 'Web Apps with Cherokee and PHP-FastCGI on Fedora 13'
 relations:
     platform:
         key: cherokee-php-fastcgi
         keywords:
             - distribution: Fedora 13
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 Cherokee is a fast, flexible web server for POSIX compliant operating systems such as Linux. It's designed to be easy to administer, and includes support for a wide range of common web server functions. This tutorial explains how to configure Cherokee to serve dynamic content with PHP via FastCGI on Fedora 13.
 
@@ -76,7 +73,7 @@ On the "Permissions" tab, change the user and group.
 
 ![Permissions tab on the general page of the Cherokee admin panel on Fedora 13.](252-fedora-13-03-general-permissions-large.png)
 
-Navigate to the "vServers" page and click the "New" button. Supply your domain name and the path to your site's document root.
+Navigate to the vServers page and click the "New" button. Supply your domain name and the path to your site's document root.
 
 ![Adding a new virtual server on the vServers page of the Cherokee admin panel on Fedora 13.](253-fedora-13-04-vservers-new-manual-large.png)
 

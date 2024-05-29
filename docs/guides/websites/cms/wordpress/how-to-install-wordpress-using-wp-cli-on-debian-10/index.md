@@ -1,15 +1,15 @@
 ---
 slug: how-to-install-wordpress-using-wp-cli-on-debian-10
+title: 'Install WordPress Using WP-CLI on Debian 10'
+title_meta: 'How to Install WordPress Using WP-CLI on Debian 10'
 description: 'Install WordPress Using WP-CLI on Debian 10'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-08-06
+modified: 2020-02-17
 keywords: ["install WP-CLI", "ubuntu", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
 tags: ["debian","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-08-06
-modified: 2020-02-17
-modified_by:
-    name: Linode
-title: 'Install WordPress Using WP-CLI on Debian 10'
-title_meta: 'How to Install WordPress Using WP-CLI on Debian 10'
 external_resources:
 - '[WP-CLI Handbook](https://make.wordpress.org/cli/handbook/)'
 - '[WP-CLI Commands](https://developer.wordpress.org/cli/commands/)'
@@ -20,7 +20,6 @@ relations:
         keywords:
            - distribution: Debian 10
 aliases: ['/websites/cms/wordpress/how-to-install-wordpress-using-wp-cli-on-debian-10/','/websites/cms/wp-cli/how-to-install-wordpress-using-wp-cli-on-debian-10/']
-authors: ["Linode"]
 ---
 
 WordPress is well-known for its rich content management feature set, ease of use, and quick installation time. The [WordPress command line interface (WP-CLI)](https://wp-cli.org/) provides useful commands and utilities to install, configure, and manage a WordPress site. This guide walks you through some common tasks you can complete using the WP-CLI.
@@ -47,7 +46,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  If you'd like to use your own [Domain Name](/docs/guides/dns-overview/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/products/networking/dns-manager/get-started/) to point to your Linode's IP address.
 
-1.  Follow the [Install a LAMP Stack on Debian 10 (Buster)](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide. Skip the steps in the [Configure Name-Based Virtual Hosts](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/#configure-name-based-virtual-hosts), the [Set Up a MariaDB Database](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/#set-up-mariadb-database), and the [Optional: Test and Troubleshoot the LAMP Stack](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/#optional-test-and-troubleshoot-the-lmap-stack) section. Those steps will be covered later on in this guide.
+1.  Follow the [Install a LAMP Stack on Debian 10 (Buster)](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide. Skip the steps in the [Configure Name-Based Virtual Hosts](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/#configure-name-based-virtual-hosts), the [Set Up a MariaDB Database](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/#mariadb), and the [Optional: Test and Troubleshoot the LAMP Stack](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/#optional-test-and-troubleshoot-the-lamp-stack) section. Those steps will be covered later on in this guide.
 
 ## Install WP-CLI
 
@@ -427,8 +426,7 @@ The procedure for installing and activating a theme is nearly identical to that 
 ### Update WordPress
 
 To update your WordPress site:
-
-{{< note respectIndent=false >}}
+{{< note >}}
 For more details on best practices when updating your WordPress site, see [WordPress' official documentation](https://wordpress.org/support/article/updating-wordpress/).
 {{< /note >}}
 

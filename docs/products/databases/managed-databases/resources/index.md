@@ -5,6 +5,8 @@ tab_group_main:
     weight: 40
 ---
 
+{{% content "dbass-eos" %}}
+
 ## Blog Posts
 
 - [Popular Databases for Building Modern Linux Applications](https://www.linode.com/blog/databases/popular-databases-for-building-modern-linux-applications/)
@@ -16,5 +18,3 @@ tab_group_main:
 - [What is MySQL?](https://dev.mysql.com/doc/refman/8.0/en/what-is-mysql.html) (from MySQL's documentation)
 
 - [About PostgreSQL](https://www.postgresql.org/about/) (from the PostgreSQL website)
-
-- [Introduction to MongoDB](https://docs.mongodb.com/manual/introduction/) (from MongoDB's documentation)

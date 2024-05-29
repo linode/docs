@@ -2,6 +2,7 @@
 title: NodeBalancers
 title_meta: "NodeBalancer Product Documentation"
 description: "Linode's managed cloud-based load balancing service, designed to provide high availability and horizontal scaling to any application."
+modified: 2023-11-14
 tab_group_main:
     is_root: true
     title: Overview
@@ -9,7 +10,6 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "Managed cloud-based load balancing service that provides high availability and horizontal scaling to any application."
-modified: 2022-08-24
 aliases: ['/platform/nodebalancer/','/nodebalancers/','/guides/platform/nodebalancer/']
 ---
 
@@ -21,9 +21,11 @@ In a typical single machine configuration, issues with the machine may cause the
 
 ## Horizontal Scaling
 
-There are two main ways to scale an application to increase the performance and capacity within your applications. *Vertical scaling* increases or decreases the resources on the existing machines. This is achieved by [resizing](/docs/products/compute/compute-instances/guides/resize/) your Compute Instances. *Horizontal scaling* adds or remove machines that are identically configured to serve your application or perform a certain task. This is commonly accomplished through a load balancing solution, like NodeBalancers. Horizontal scaling can be much more flexible and allows you to scale as needed without taking down your site while upgrading or downgrading.
+There are two main ways to scale an application to increase the performance and capacity within your applications. *Vertical scaling* increases or decreases the resources on the existing machines. This is achieved by [resizing](/docs/products/compute/compute-instances/guides/resize/) your Compute Instances. *Horizontal scaling* adds or removes machines that are identically configured to serve your application or perform a certain task. This is commonly accomplished through a load balancing solution, like NodeBalancers. Horizontal scaling can be much more flexible and allows you to scale as needed without taking down your site while upgrading or downgrading.
 
 ## Additional Features
+
+- **Firewall Security:** [Cloud Firewall](/docs/products/networking/cloud-firewall/) provides enhanced security by allowing you to control who can access your NodeBalancer. The optional Cloud Firewall sits between your NodeBalancer and the internet to filter out unwanted network traffic before it reaches your NodeBalancer. When used in conjunction with NodeBalancers, a Cloud Firewall’s inbound rules only apply to the NodeBalancer’s public IP, not the IPs of the backend nodes. This means you may also want to add individual backend nodes to a Cloud Firewall to protect any additional exposed IP addresses.
 
 - **Managed:** NodeBalancers take the infrastructure management out of load balancing. They are designed to be maintenance free after initial configuration.
 
@@ -51,7 +53,9 @@ NodeBalancers are available across [all regions](https://www.linode.com/global-i
 
 ## Pricing
 
-Each NodeBalancer on an account costs $10/mo ($0.015/hr).
+Each NodeBalancer on an account starts at $10/mo ($0.015/hr). [Price](https://www.linode.com/pricing/) may vary by region.
+
+Cloud Firewall is available at no additional charge to customers.
 
 ## Technical Specifications
 
@@ -63,6 +67,7 @@ Each NodeBalancer on an account costs $10/mo ($0.015/hr).
 - Supports HTTP and HTTPS (layer 7) load balancing through the HTTP/1.1 protocol (HTTP/2 is not yet available)
 - Supports both SSL termination (using the HTTPS protocol mode) and SSL pass-through (using the TCP protocol mode)
 - Equipped with both public IPv4 and IPv6 addresses
+- Supports inbound Cloud Firewall rules such as IPv4 and IPv6 access control lists (ACLs) to *Accept* or *Drop* ingress traffic.
 - Fully customizable health checks to ensure traffic lands on a functioning backend
 - 40 Gbps inbound network bandwidth
 - Free inbound network transfer
@@ -71,7 +76,7 @@ Each NodeBalancer on an account costs $10/mo ($0.015/hr).
 
 ## Limits and Considerations
 
-- **Maximum number of concurrent connections:** Each NodeBalancer support up to 10,000 concurrent connections. If your application needs to support more than that, [contact support](https://www.linode.com/support/) to determine additional options or consider using multiple NodeBalancers behind a DNS load balancing solution such as [Round-Robin DNS](/docs/guides/setting-up-round-robin-dns/).
+- **Maximum number of concurrent connections:** NodeBalancers each support up to 10,000 concurrent connections. If your application needs to support more than that, [contact support](https://www.linode.com/support/) to determine additional options or consider using multiple NodeBalancers behind a DNS load balancing solution such as [Round-Robin DNS](/docs/guides/setting-up-round-robin-dns/).
 - **Connections per second:** There are no defined rate limits for the number of connections over a given time period, though certain modes are more performant. A port configured in **TCP** mode allows for the most number of connections. A port configured in **HTTPS** mode is the most resource intensive and accommodates fewer connections.
 - **IP addresses:** A public IPv4 address and IPv6 address are configured on each NodeBalancer. Additional addresses are not available.
 - **Private network:** Communication with backend Linodes occurs over a data center's private network. As such, backend Linodes must be located within the same data center as the NodeBalancer.
@@ -82,3 +87,9 @@ Each NodeBalancer on an account costs $10/mo ($0.015/hr).
     - While operating in **HTTPS** mode, internal traffic sent to the backend Linodes will be unencrypted.
 
     For applications that require a very high connection rate or otherwise need to overcome the above considerations present in **HTTPS** mode, consider operating in **TCP** mode and terminating TLS on the backend Linodes.
+
+- **Cloud Firewall support:** When a Cloud Firewall is assigned to a NodeBalancer, the firewall only looks at incoming requests, this means that only inbound Cloud Firewall rules apply and outbound rules are not applicable.
+
+    {{< note >}}
+    A service (Linode) can be accessed from other interfaces (not just the NodeBalancer). To filter traffic from other interfaces, backend Linodes require their own firewalls.
+    {{< /note >}}

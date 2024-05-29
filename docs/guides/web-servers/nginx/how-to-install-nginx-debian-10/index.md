@@ -1,16 +1,16 @@
 ---
 slug: how-to-install-nginx-debian-10
+title: "Installing NGINX on Debian 10"
+title_meta: "How to Install NGINX on Debian 10"
 description: "Learn the basics of installing and configuring NGINX on your Debian 10 server in this quick guide."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-04-16
+modified: 2020-02-14
 keywords: ["nginx", "load balancing", "debian", "debian 10", "web server", "static content", "install nginx"]
 tags: ["web server","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-14
-modified_by:
-  name: Linode
-published: 2018-04-16
 image: L_NGINX_on_Debian10.png
-title: "Installing NGINX on Debian 10"
-title_meta: "How to Install NGINX on Debian 10"
 external_resources:
   - '[NGINX Official Installation Docs](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)'
 relations:
@@ -19,7 +19,6 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/web-servers/nginx/how-to-install-nginx-debian-10/']
-authors: ["Linode"]
 ---
 
 ## What is NGINX?
@@ -34,7 +33,7 @@ NGINX is an open source web server with powerful load balancing, reverse proxy, 
 
     - Don't forget to update your `/etc/hosts` file with the public IP address and your site's fully qualified domain name as explained in the [Update Your System's hosts File](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-file) section of the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 ## Install NGINX
 

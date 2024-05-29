@@ -1,20 +1,19 @@
 ---
 slug: manage-source-code-versions-with-subversion
-deprecated: true
+title: Manage Source Code Versions with Subversion
 description: 'This guide shows how to manage source code with Subversion, an open source version control system.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-15
+modified: 2018-01-01
 keywords: ["svn", "version control", "source control management", "subversion"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linux-tools/version-control/svn/','/development/version-control/manage-source-code-versions-with-subversion/','/applications/development/manage-source-code-versions-with-subversion/']
-modified: 2018-01-01
-modified_by:
-  name: Linode
-published: 2009-12-15
-title: Manage Source Code Versions with Subversion
 external_resources:
  - '[Subversion Project Homepage](http://subversion.tigris.org/)'
  - '[The Subversion Book from O''Reilly](http://svnbook.red-bean.com/)'
 tags: ["version control system"]
-authors: ["Linode"]
+deprecated: true
 ---
 
 Subversion (SVN) is a centralized [version control system](https://en.wikipedia.org/wiki/Version_control). Used by software developers to track changes during the production and maintenance of a project. SVN is a familiar and standard component in many development tool chains. Subversion was developed as a replacement for the Concurrent Versions System (CVS). SVN attempts to fix many of the major problems with CVS without requiring any paradigm shifts in the way software is developed:
@@ -167,7 +166,7 @@ If you and your developers *only* need to access your repository over SSH with t
 
 If you need to access your repository over the `http://` or `https://` protocols, configure Apache to host your Subversion repository.
 
-### Install Apache and mod\_dav\_svn
+### Install Apache and `mod_dav_svn`
 
 Developers frequently access Subversion repositories via the SSH protocol and manage permissions and authentication credentials using OpenSSH and system user accounts. This can be difficult to manage if you are hosting a large number of repositories with a large number of users on a single server. For these cases, many users provide access to their repositories using the "WebDAV" protocol over HTTP or HTTPS with the [Apache Web Server](/docs/web-servers/apache/).
 

@@ -1,19 +1,18 @@
 ---
 slug: how-to-setup-a-private-docker-registry-with-lke-and-object-storage
+title: "Setting Up a Private Docker Registry with LKE and Object Storage"
+title_meta: "How to Set Up a Docker Registry with LKE and Object Storage"
 description: "In this guide, you will create a private Docker registry on Linode Kubernetes Engine where you can securely store your Docker images."
 og_description: "In this guide you will create a private Docker registry on Linode Kubernetes Engine where you can securely store your Docker images. Your Docker images will be stored in a Linode Object Storage bucket. You will use Let's Encrypt and cert-manager to create a TLS certificate for your private registry. To route your registry's traffic your will use the NGINX Ingress Controller and a Linode NodeBalancer. Finally, you will create a test deployment to ensure that your Linode Kubernetes Engine cluster can pull images from your Docker registry"
+authors: ["Leslie Salazar"]
+contributors: ["Leslie Salazar"]
+published: 2020-03-26
+modified: 2023-07-26
 keywords: ['docker registry','kubernetes','object storage', 'lke', 'linode kubernetes engine']
 tags: ["docker","kubernetes","container","nginx","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: PrivateDockerReg.png
-published: 2020-03-26
-modified: 2022-08-05
-modified_by:
-  name: Linode
-title: "Setting Up a Private Docker Registry with LKE and Object Storage"
-title_meta: "How to Set Up a Docker Registry with LKE and Object Storage"
 aliases: ['/kubernetes/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/']
-authors: ["Leslie Salazar"]
 ---
 
 Hosting a private Docker registry alongside your Kubernetes cluster allows you to securely manage your Docker images while also providing quick deployment of your apps. This guide will walk you through the steps needed to deploy a private Docker registry on a Linode Kubernetes Engine (LKE) cluster. At the end of this tutorial, you will be able to locally push and pull Docker images to your registry. Similarly, your LKE cluster's pods will also be able to pull Docker images from the registry to complete their deployments.
@@ -341,7 +340,6 @@ If you have not yet [generated an Object Storage key pair](/docs/products/storag
       hosts:
         - registry.example.com
       annotations:
-        kubernetes.io/ingress.class: nginx
         cert-manager.io/cluster-issuer: letsencrypt-prod
         nginx.ingress.kubernetes.io/proxy-body-size: "0"
         nginx.ingress.kubernetes.io/proxy-read-timeout: "6000"
@@ -369,7 +367,9 @@ If you have not yet [generated an Object Storage key pair](/docs/products/storag
 1.  Deploy your Docker registry using the configurations you created in the previous step:
 
     ```command
-    helm install docker-registry stable/docker-registry -f docker-configs.yaml
+    helm repo add twuni https://helm.twun.io
+    helm repo update
+    helm install twuni/docker-registry -f docker-configs.yaml
     ```
 
     {{< note >}}
@@ -443,22 +443,25 @@ In this section, you will create a test deployment using the image that you push
 1.  Using a text editor, create the `static-site-test.yaml` file with the example configurations. This file will create a deployment, service, and an ingress.
 
     ```file {title="~/registry/staic-site-test.yaml" lang=yaml}
-    apiVersion: extensions/v1beta1
+    apiVersion: networking.k8s.io/v1
     kind: Ingress
     metadata:
       name: static-site-ingress
       annotations:
-        kubernetes.io/ingress.class: nginx
         nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     spec:
+      ingressClassName: nginx
       rules:
       - host: static.example.com
         http:
           paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: static-site
-              servicePort: 80
+              service:
+               name: static-site
+               port:
+                number:80
     ---
     apiVersion: v1
     kind: Service
@@ -508,4 +511,4 @@ In this section, you will create a test deployment using the image that you push
 
 ## (Optional) Tear Down your Kubernetes Cluster
 
-To avoid being further billed for your Kubernetes cluster and NodeBlancer, [delete your cluster using the Linode Cloud Manager](/docs/products/compute/kubernetes/#delete-a-cluster). Similarly, to avoid being further billed for our registry's Object Storage bucket, see [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/).
+To avoid being further billed for your Kubernetes cluster and NodeBlancer, [delete your cluster using the Linode Cloud Manager](/docs/products/compute/kubernetes/guides/manage-clusters/#delete-a-cluster). Similarly, to avoid being further billed for our registry's Object Storage bucket, see [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/).

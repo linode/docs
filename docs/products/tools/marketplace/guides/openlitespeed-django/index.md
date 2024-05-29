@@ -1,25 +1,22 @@
 ---
+title: "Deploy OpenLiteSpeed Django through the Linode Marketplace"
 description: "Deploy OpenLiteSpeed Django on a Linode Compute Instance. This provides you with a high performance web server to manage your Django application."
-keywords: ['web server','django','openlitespeed']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy OpenLiteSpeed Django through the Linode Marketplace"
+keywords: ['web server','django','openlitespeed']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[OpenLiteSpeed Django](https://docs.litespeedtech.com/cloud/images/django/)'
 aliases: ['/guides/deploying-openlitespeed-django-marketplace-app/','/guides/openlitespeed-django-marketplace-app/']
-authors: ["Linode"]
 ---
 
 The OpenLiteSpeed Django app automatically installs Linux, the performance web server OpenLiteSpeed, Python LSAPI, and CertBot. OpenLiteSpeed Django features HTTP/3 support and easy setup for SSL and RewriteRules. It’s flexible enough to host multiple Django apps and supports many other apps including Node.js, Ruby, and CMS software like WordPress.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** OpenLiteSpeed Django should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
@@ -47,4 +44,4 @@ The OpenLiteSpeed Django app automatically installs Linux, the performance web s
 
 Now that you’ve accessed your OpenLiteSpeed Django instance, check out [the official OpenLiteSpeed Django documentation](https://docs.litespeedtech.com/cloud/images/django/) to learn how to further configure your OpenLiteSpeed Django instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

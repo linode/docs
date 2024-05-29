@@ -1,15 +1,12 @@
 ---
-description: "Information on finding your Compute Instance's kernel version (and type) as well as changing and updating the kernel."
-keywords: ["kernel", "grub"]
-tags: ["linode platform","cloud manager"]
-published: 2021-08-13
-modified: 2023-01-18
-modified_by:
-  name: Linode
 title: "Manage the Kernel on a Compute Instance"
 title_meta: "How to Manage the Kernel on a Compute Instance"
+description: "Information on finding your Compute Instance's kernel version (and type) as well as changing and updating the kernel."
+published: 2021-08-13
+modified: 2024-02-22
+keywords: ["kernel", "grub"]
+tags: ["linode platform","cloud manager"]
 aliases: ['/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/','/platform/how-to-change-your-linodes-kernel/','/run-a-distribution-supplied-kernel-with-kvm/','/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel/','/platform/update-kernel/', '/guides/how-to-change-your-linodes-kernel/', '/guides/update-kernel/','/guides/managing-the-kernel-on-a-linode/']
-authors: ["Linode"]
 ---
 
 The primary component of every Linux system is the *Linux kernel*. The kernel interfaces with the system's hardware and it controls the operating system's core functionality. This guide covers the types of kernels that can be assigned to a Compute Instance and how to view, update, or change the kernel.
@@ -90,13 +87,13 @@ Follow these steps if the Compute Instance is using an upstream kernel (the defa
     -   **Ubuntu**
 
         ```command
-        sudo apt-get update && sudo apt-get upgrade linux-generic
+        sudo apt update && sudo apt install linux-generic
         ```
 
     -   **Debian**
 
         ```command
-        sudo apt-get update && sudo apt-get upgrade linux-base
+        sudo apt update && sudo apt install linux-base
         ```
 
     -   **CentOS Stream, CentOS 8, AlmaLinux 8, Rocky Linux 8, and Fedora**
@@ -147,7 +144,7 @@ Once completed, the disks should be read by GRUB2 correctly.
 
 ### SELinux
 
-In older systems created prior to August 2018, CentOS 7 and Fedora ship with [SELinux](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) running in enforcing mode by default. When switching from the Linode kernel to the upstream kernel, SELinux may need to relabel your filesystem at boot. When the relabeling completes, the Compute Instance will shut down. If you have [Lassie](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configure-shutdown-watchdog) enabled, the instance will automatically boot back up following the shut down. If you do not have Lassie enabled, you will need to manually reboot from the Cloud Manager.
+In older systems created prior to August 2018, CentOS 7 and Fedora ship with [SELinux](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) running in enforcing mode by default. When switching from the Linode kernel to the upstream kernel, SELinux may need to relabel your filesystem at boot. When the relabeling completes, the Compute Instance will shut down. If you have [Lassie](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/) enabled, the instance will automatically boot back up following the shut down. If you do not have Lassie enabled, you will need to manually reboot from the Cloud Manager.
 
 ![SELinux filesystem relabel](selinux-filesystem-relabel.png "SELinux filesystem relabel")
 

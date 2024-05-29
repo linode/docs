@@ -1,16 +1,21 @@
 ---
+title: "Deploy Percona Monitoring and Management (PMM) through the Linode Marketplace"
 description: "Learn how to deploy Percona Monitoring & Management with Marketplace Apps and basic configuration steps to get you started monitoring your database."
+published: 2020-06-11
+modified: 2024-01-22
 keywords: ['percona','marketplace apps','monitoring', 'database']
 tags: ["database","monitoring","cloud-manager","linode platform","marketplace"]
-published: 2020-06-11
-modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy Percona Monitoring and Management (PMM) through the Linode Marketplace"
 image: 'deploy-percona-marketplace.png'
 aliases: ['/platform/marketplace/how-to-deploy-percona-monitoring-management-with-marketplace-apps/', '/platform/one-click/how-to-deploy-percona-monitoring-management-with-one-click-apps/','/guides/how-to-deploy-percona-monitoring-management-with-one-click-apps/','/guides/how-to-deploy-percona-monitoring-management-with-marketplace-apps/','/guides/percona-marketplace-app/']
-authors: ["Linode"]
+_build:
+  list: false
+noindex: true
+
+deprecated: true
 ---
+{{< note type="warning" title="This app is no longer available for deployment" >}}
+Percona Monitoring and Management has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only.
+{{< /note >}}
 
 Percona Monitoring and Management (PMM) is an open-source tool which provides a GUI powered by [Grafana](https://grafana.com/) for monitoring and managing MySQL, MariaDB, PostgreSQL, and MongoDB databases. You can use PMM to easily observe important metrics, logging, and statistics related to your databases and the hosts they run on. Additionally, it includes a number of tools which can help to optimize your database's performance, manage all database instances, and track and identify potential security threats. Linode's Percona (PMM) Marketplace App deploys a Linode with PMM installed and ready for you to begin monitoring your databases.
 
@@ -29,9 +34,9 @@ For a more detailed information on PMM's architecture see [Percona's official do
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** PMM should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -83,7 +88,6 @@ To begin monitoring a database node, you will need to install the [PMM Client](h
 
 -   [Deploying MySQL/MariaDB with Marketplace Apps](/docs/products/tools/marketplace/guides/mysql/)
 -   [Deploying PostgreSQL with Marketplace Apps](/docs/products/tools/marketplace/guides/postgresql/)
--   [Deploying MongoDB with Marketplace Apps](/docs/products/tools/marketplace/guides/mongodb/)
 
 {{< note >}}
 The PMM Server deployed with Linode's Percona (PMM) Marketplace App is compatible with [**PMM Client version 2**](https://www.percona.com/doc/percona-monitoring-and-management/2.x/index.html).
@@ -186,7 +190,7 @@ The Percona (PMM) Marketplace App installs the following required software on yo
 | [**PMM Server**](https://www.percona.com/doc/percona-monitoring-and-management/2.x/install/docker.html) | PMM Server is the central part of PMM that aggregates collected data and presents it in the form of tables, dashboards, and graphs in a web interface.  |
 | [**Grafana**](https://grafana.com/) | Grafana is the visualization tool used by PMM to provides charts, graphs, and alerts for the databases that are being monitored. |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 ## Next Steps
 

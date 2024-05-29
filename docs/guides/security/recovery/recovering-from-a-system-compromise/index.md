@@ -1,16 +1,15 @@
 ---
 slug: recovering-from-a-system-compromise
+title: Recovering from a System Compromise
 description: 'This guide outlines steps to protect your data and recover your system in the event of a suspected system compromise.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-26
+modified: 2018-04-18
 keywords: ["root compromise", "troubleshooting", "recovery", "security"]
 tags: ["security","resolving","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/recovery/recovering-from-a-system-compromise/','/troubleshooting/compromise-recovery/','/security/recovering-from-a-system-compromise/']
-modified: 2018-04-18
-modified_by:
-  name: Linode
-published: 2009-08-26
-title: Recovering from a System Compromise
-authors: ["Linode"]
 ---
 
 ![Recovering from a System Compromise](recovering-from-system-compromise-title.jpg "Recovering from a System Compromise")
@@ -87,11 +86,11 @@ If you're not comfortable copying from the compromised system prior to auditing 
 
 Swap IP addresses so the new Linode uses the IP address assigned to the old Linode. If you have configured any network services to use the new Linode's IP address, you should modify their configurations to use the old Linode's IP instead. For instructions, see [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#transferring-ip-addresses).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 To swap IP addresses, both Linodes must be located in the same data center.
 {{< /note >}}
 
-Alternatively, you can [update your DNS entries](/docs/guides/hosting-a-website-ubuntu-18-04/#add-dns-records) to point to the new Linode's IP address instead. DNS propagation across the Internet may take some time. Boot the new Linode to resume normal operations.
+Alternatively, you can [update your DNS entries](/docs/products/networking/dns-manager/guides/manage-dns-records/) to point to the new Linode's IP address instead. DNS propagation across the Internet may take some time. Boot the new Linode to resume normal operations.
 
 ### Preserving Data for Forensics and Linode Cancellation
 

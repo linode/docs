@@ -1,16 +1,15 @@
 ---
 slug: linux-system-administration-basics
+title: "Linux System Administration Basics"
 description: "This guide covers almost everything you wanted to know about Linux system administration but were afraid to ask about."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-13
+modified: 2021-05-14
 keywords: ["linux tips", "linux beginners", "systems administration", "admin", "linux", "mail", "http", "troubleshooting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/basics/linux-system-administration-basics/','/using-linux/administration-basics/','/tools-reference/linux-system-administration-basics/']
-modified: 2021-05-14
-modified_by:
-  name: Linode
-published: 2009-12-13
-title: "Linux System Administration Basics"
 tags: ["linux"]
-authors: ["Linode"]
 ---
 
 This guide presents a collection of common issues and useful tips for Linux system administration. Whether you're new to system administration or have been maintaining systems for some time, we hope this collection of basic Linux commands will help you manage your system from the command line.
@@ -20,7 +19,7 @@ This guide presents a collection of common issues and useful tips for Linux syst
 ## What is Linux Administration?
 Linux administration is about setting up disaster recovery, managing new system builds, creating a backup to restore data, Linux hardware management, managing storage,  handling file systems, and managing the security of Linux systems. A big part of Linux administration is ensuring that Linux powered systems are stable and secure.
 
-## What Should a Linux Administrator Should Know?
+## What Should a Linux Administrator Know?
 
 Typically Linux system administrators are expected to handle Linux file systems, manage the root user, have a working knowledge of bash commands, and an ability to manage users.
 
@@ -282,8 +281,7 @@ You can quit at any time by pressing the `F10` or `Q` keys. There are a couple o
 Web developers and editors often use the FTP protocol to transfer and manage files on a remote system. FTP, however, is very insecure and inefficient for managing the files on a system when you have SSH access.
 
 If you're new to Linux systems administration, consider our "[Tools & Reference](/docs/tools-reference/)" section and articles including: [installing and using WinSCP](/docs/guides/transfer-files-with-winscp-on-windows/), [using rsync to synchronize files](/docs/guides/introduction-to-rsync/) and [using SSH and the terminal](/docs/guides/using-the-terminal/).
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 If you are giving other users access to upload files to your server, consider the [security implications](/docs/products/compute/compute-instances/guides/set-up-and-secure/) of all additional access that you grant to third parties.
 {{< /note >}}
 
@@ -564,7 +562,7 @@ You can use `grep` to filter the results of another command that sends output to
 
     ls /home/username/data | grep "1257"
 
-In this example, we assume that the `/home/username/data` directory contains a large number of files that have a UNIX time stamp in their file names. The above command will filter the output to only display those tiles that have the four digits "1257" in their file names. In these cases, `grep` only filters the output of `ls` and does not look into file contents. For more information regarding `grep`, refer to our full documentation of the [grep command](/docs/guides/how-to-grep-for-text-in-files/).
+In this example, we assume that the `/home/username/data` directory contains a large number of files that have a UNIX time stamp in their file names. The above command will filter the output to only display those tiles that have the four digits "1257" in their file names. In these cases, `grep` only filters the output of `ls` and does not look into file contents. For more information regarding `grep`, refer to our full documentation of the [grep command](/docs/guides/how-to-use-grep-command/).
 
 ### Search and Replace Across a Group of Files
 
@@ -670,19 +668,19 @@ This will allow you to see new error messages as they appear. Problems can be di
 
 The *Domain Name System*, or DNS, is the service that the internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. This section will address several specific DNS-related tasks. To learn more about DNS, check out our [overview of the domain name system](/docs/guides/dns-overview/). If you are familiar with DNS and just need to figure out how to configure your DNS server, see our guide for the [Linode DNS manager](/docs/products/networking/dns-manager/).
 
-### Redirect DNS Queries with CNAMEs
+### Redirect DNS Queries with CNAME Records
 
 [CNAME DNS records](/docs/guides/dns-overview/#cname) make it possible to redirect requests for one hostname or domain to another hostname or domain. This is useful in situations where you want to direct requests for one domain to another, but don't want to set up the web server to handle requests.
 
-CNAMEs are *only* valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/docs/guides/redirect-urls-with-the-apache-web-server/) and/or virtual hosting on the server level. CNAMEs will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAMEs must point to a valid domain that has a valid A Record, or to another CNAME.
+CNAME records are *only* valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/docs/guides/redirect-urls-with-the-apache-web-server/) and/or virtual hosting on the server level. CNAME records will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAME records must point to a valid domain that has a valid A Record, or to another CNAME.
 
-Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://cloud.linode.com/), refer to our [DNS Manager Guide](/docs/products/networking/dns-manager/).
+Although limited in their capabilities, CNAME records can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAME records are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://cloud.linode.com/), refer to our [DNS Manager Guide](/docs/products/networking/dns-manager/).
 
 ### Set Up Subdomains
 
 When [reading domain names](/docs/guides/dns-overview/#domain-names), we refer to parts before the main or first-level domain as "subdomains." For example, in the domain `team.example.com`, `team` is a subdomain for the root domain `example.com`.
 
-Follow these steps to [create and host a sub-domain](/docs/products/networking/dns-manager/guides/common-dns-configurations/#configuring-subdomains):
+Follow these steps to [create and host a sub-domain](/docs/products/networking/dns-manager/guides/common-dns-configurations/#configure-subdomains):
 
 1.  First, create an [A Record](/docs/guides/dns-overview/#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](/docs/products/networking/dns-manager/). You may host the DNS for your domain with any provider you choose.
 
@@ -694,7 +692,7 @@ Follow these steps to [create and host a sub-domain](/docs/products/networking/d
 
 We provide a number of guides that cover [email-related topics](/docs/email/). In this section, we'll explain how to choose an email setup that fits your needs and how to configure your Linode to send email.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ### Choose an Email Solution
 

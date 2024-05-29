@@ -1,25 +1,22 @@
 ---
 slug: using-apache-for-proxy-and-clustering-services-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Using Apache for Proxy and Clustering Services on Ubuntu 10.10 (Maverick)'
 description: 'How to cluster Apache web servers and proxy requests for content to external servers on Ubuntu 10.10 (Maverick).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-12-06
+modified: 2012-10-08
 keywords: ["clusters", "proxy", "proxy pass", "apache", "httpd"]
 tags: ["proxy","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-10-10-maverick/','/web-servers/apache/proxy-configuration/proxy-and-clustering-services-ubuntu-10-10-maverick/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-12-06
-title: 'Using Apache for Proxy and Clustering Services on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: Ubuntu 10.10
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 The Apache HTTP server is a versatile and robust engine for providing access to resources over HTTP. With its modular design and standard [configuration system](/docs/guides/apache-configuration-basics/), it is a popular and familiar option for systems administrators and architects who require a potentially diverse array of HTTP services, along with a stable and predictable administrative interface. In addition to simply serving content and facilitating the generation of dynamic content, the Apache HTTP server can be deployed as a frontend server to manage clusters of web servers.
 
@@ -52,7 +49,7 @@ Reload the web server configuration to create the virtual host. Issue the follow
 
     /etc/init.d/apache2 reload
 
-Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/guides/dns-overview/#a_aaaa_records) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
+Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/guides/dns-overview/#a-and-aaaa) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
 
 ## Case Two: Using ProxyPass to Delegate Services to Alternate Machines
 
@@ -167,7 +164,7 @@ All of the previous cases presented in this document outline configurations for 
     a2enmod proxy_balancer
     /etc/init.d/apache2 restart
 
-Edit the `/etc/apache2/mods-available/proxy.conf` file as described in [this documentation](/docs/guides/multiple-web-servers-with-proxypass-on-ubuntu-10-10-maverick/#enabling-the-proxy-module/). Do not omit to reload Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
+Edit the `/etc/apache2/mods-available/proxy.conf` file as described in [this documentation](/docs/guides/multiple-web-servers-with-proxypass-on-ubuntu-10-10-maverick/). Do not omit to reload Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
 
 {{< file "Apache Virtual Host Configuration" apache >}}
 <VirtualHost example.com:80>

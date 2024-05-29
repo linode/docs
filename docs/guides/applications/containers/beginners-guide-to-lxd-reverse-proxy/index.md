@@ -1,15 +1,15 @@
 ---
 slug: beginners-guide-to-lxd-reverse-proxy
+title: "A Beginner's Guide to LXD: Setting Up a Reverse Proxy to Host Mulitple Websites"
+title_meta: "How to Set Up a Reverse Proxy to Host Websites in LXD"
 description: "In this tutorial, we explain how to create a reverse proxy in an LXD container in order to host multiple websites, each in their own additional containers."
+authors: ["Simos Xenitellis"]
+contributors: ["Simos Xenitellis"]
+published: 2019-08-28
+modified: 2021-12-26
 keywords: ["container", "lxd", "lxc", "apache", "nginx", "reverse proxy", "virtual machine", "virtualization"]
 tags: ["proxy","ubuntu","container","apache","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-08-28
-modified: 2021-12-26
-modified_by:
-  name: Linode
-title: "A Beginner's Guide to LXD: Setting Up a Reverse Proxy to Host Mulitple Websites"
-title_meta: "How to Set Up a Reverse Proxy to Host Websites in LXD"
 external_resources:
   - '[LXD Introduction](https://linuxcontainers.org/lxd/)'
   - '[LXD support community](https://discuss.linuxcontainers.org/)'
@@ -20,7 +20,6 @@ external_resources:
   - '[Proxy Protocol](https://www.haproxy.com/blog/haproxy/proxy-protocol/)'
   - '[TLS Termination Proxy](https://en.wikipedia.org/wiki/TLS_termination_proxy)'
 aliases: ['/applications/containers/beginners-guide-to-lxd-reverse-proxy/']
-authors: ["Simos Xenitellis"]
 ---
 
 ## Introduction
@@ -33,17 +32,17 @@ This guide explains the creation of a reverse proxy in an LXD container in order
 
 Please refer to the following diagram to understand the reverse proxy created in this guide.
 
-![Diagram of LXD reverse proxy and web servers](reverse-proxy-lxd-diagram.png "Diagram of LXD reverse proxy and web servers")
+![Diagram of LXD reverse proxy and web servers](reverse-proxy-lxd-diagram.png)
 
 In this guide you will:
 
- - [Install and configure containers](/docs/guides/beginners-guide-to-lxd-reverse-proxy/#creating-the-containers) for both NGINX and Apache web servers.
+ - [Install and configure containers](#creating-the-containers) for both NGINX and Apache web servers.
 
- - [Learn how to install and configure a reverse proxy in a container](/docs/guides/beginners-guide-to-lxd-reverse-proxy/#setting-up-the-reverse-proxy).
+ - [Learn how to install and configure a reverse proxy in a container](#setting-up-the-reverse-proxy).
 
- - [Get SSL/TLS support through Let's Encrypt certificates with automated certificate renewal](/docs/guides/beginners-guide-to-lxd-reverse-proxy/#adding-support-for-https-with-let-s-encrypt).
+ - [Get SSL/TLS support through Let's Encrypt certificates with automated certificate renewal](#adding-support-for-https-with-lets-encrypt).
 
-- [Troubleshooting common errors](/docs/guides/beginners-guide-to-lxd-reverse-proxy/#troubleshooting).
+- [Troubleshooting common errors](#troubleshooting).
 
 {{< note >}}
 For simplicity, the term *container* is used throughout this guide to describe the LXD system containers.
@@ -579,7 +578,7 @@ IMPORTANT NOTES:
 The `certbot` package adds a *systemd timer* in order to activate the automated renewal of Let's Encrypt certificates. You can view the details of this timer by running `systemctl list-timers`.
 {{< /note >}}
 
-1. The certbot tool edits and changes the NGINX configuration files of your websites. In doing so, certbot does not obey initial `listen` directive (`listen 80 proxy_protocol;`) and does not add the `proxy_protocol` parameter to the newly added `listen 443 ssl;` lines. You must edit the configuration files for each website and append "proxy_protocol" to each "listen 443 ssl;" line.
+1. The certbot tool edits and changes the NGINX configuration files of your websites. In doing so, certbot does not obey initial `listen` directive (`listen 80 proxy_protocol;`) and does not add the `proxy_protocol` parameter to the newly added `listen 443 ssl;` lines. You must edit the configuration files for each website and append `proxy_protocol` to each "listen 443 ssl;" line.
 
         sudo nano /etc/nginx/sites-enabled/apache1.example.com
         sudo nano /etc/nginx/sites-enabled/nginx1.example.com

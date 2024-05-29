@@ -1,17 +1,16 @@
 ---
 slug: understanding-docker-volumes
+title: "Understanding Docker Volumes"
 description: 'An explanation of Docker volumes, their use, and how to mount volumes and host system directories within a container.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-08-13
 keywords: ["docker", "volume", "docker volume", "docker volumes", "docker container", "docker containers", "docker volume", "docker volumes"]
 tags: ["volume","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-13
-modified_by:
-  name: Linode
-title: "Understanding Docker Volumes"
 external_resources:
 - '[Use volumes at Docker Docs](https://docs.docker.com/storage/volumes/)'
 - '[Troubleshoot volume errors at Docker Docs](https://docs.docker.com/storage/troubleshooting_volume_errors/)'
-authors: ["Linode"]
 ---
 
 Files (and other data) stored within a Docker container does not persist if the container is deleted. To overcome this, Docker *volumes* and *bind mounts* can be used. This guide discusses using [Docker volumes](https://docs.docker.com/storage/volumes/) as a way to store persistent data. Think of volumes as an external hard drive; if the internal hard drive is erased, the external hard drive still retain its own data. Volumes are stored on the host and independent of any container or image. They can be mounted to different containers as needed and, since volumes are separate from the image, they do not increase the image size.
@@ -35,7 +34,7 @@ To start understanding Docker Volumes, you'll need a volume to work on.
 
 1.  Log in to your Linode (or other Linux server) through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
-1.  Create a volume by entering the following command, replacing *example_volume* with the label for your volume.
+1.  Create a volume by entering the following command, replacing `example_volume` with the label for your volume.
 
         docker volume create example_volume
 
@@ -82,11 +81,11 @@ For a container's data to persist, you need to have a Docker Volume mounted usin
     docker run --mount source=[volume_name],destination=[path] [docker_image]
 
 
-As an example, the following command mounts the volume named *example_volume* to the path `/example_volume` inside a container using the `ubuntu` image.
+As an example, the following command mounts the volume named `example_volume` to the path `/example_volume` inside a container using the `ubuntu` image.
 
     docker run -it --name=example --mount source=example_volume,destination=/example_volume ubuntu
 
-This command runs the image, mounts the volume, and logs the user in as root on the Ubuntu image. Once in as root, you can verify the "example_volume" is mounted with just `ls`. The output for all of this should look something like this:
+This command runs the image, mounts the volume, and logs the user in as root on the Ubuntu image. Once in as root, you can verify the `example_volume` is mounted with just `ls`. The output for all of this should look something like this:
 
 {{< output >}}
 [mumbly@linode ~]$ docker run -it --name=example --mount source=example_volume,destination=/example_volume ubuntu

@@ -1,17 +1,16 @@
 ---
 slug: working-with-cors-linode-object-storage
+title: "Working with CORS Policies on Linode Object Storage"
 description: "Linode Object Storage provides efficient S3-compatible storage. Cross-origin resource sharing policies can make accessing storage across domains more difficult. But you can learn everything you need to make it easier in this tutorial on CORS and Linode Object Storage."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-09-25
 keywords: ['enable cors s3','allow cors s3 bucket','cors policy']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-25
-modified_by:
-  name: Nathaniel Stickman
-title: "Working with CORS Policies on Linode Object Storage"
 external_resources:
 - '[AWS Documentation - Amazon Simple Storage Service: Using Cross-origin Resource Sharing (CORS)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html)'
 - '[AWS Documentation - Amazon Simple Storage Service: Troubleshooting CORS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors-troubleshooting.html)'
 - '[DreamHost Knowledge Base: Configuring (CORS) on a DreamObjects Bucket](https://help.dreamhost.com/hc/en-us/articles/216201557-How-to-setup-Cross-Origin-Resource-Sharing-CORS-on-DreamObjects)'
-authors: ["Nathaniel Stickman"]
 ---
 
 [Linode Object Storage](/docs/products/storage/object-storage/) offers a globally-available, S3-compatible storage solution. Whether you are storing critical backup files or data for a static website, S3 object storage can efficiently answer the call.
@@ -34,7 +33,7 @@ This is where managing CORS policies on your object storage service becomes impe
 
 ## Working with CORS Policies on Linode Object Storage
 
-One of the best tools for managing policies on your S3, including Linode Object Storage, is `s3cmd`. Follow along with our guide [Using S3cmd with Object Storage](/docs/products/storage/object-storage/guides/s3cmd) to:
+One of the best tools for managing policies on your S3, including Linode Object Storage, is `s3cmd`. Follow along with our guide [Using S3cmd with Object Storage](/docs/products/storage/object-storage/guides/s3cmd/) to:
 
 1.  Install `s3cmd` on your system. The installation takes place on the system from which you intend to manage your S3 instance.
 

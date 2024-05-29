@@ -1,29 +1,28 @@
 ---
 slug: postfix-dovecot-and-system-user-accounts-on-debian-6-squeeze
+title: 'Postfix, Dovecot, and System User Accounts on Debian 6 (Squeeze)'
 description: 'Use system user accounts, postfix, and dovecot to provide'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-17
+modified: 2013-09-25
 keywords: ["postfix", "dovecot", "system users", "email"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/dovecot-system-users-debian-6-squeeze/','/email/postfix/postfix-dovecot-and-system-user-accounts-on-debian-6-squeeze/']
-modified: 2013-09-25
-modified_by:
-  name: Linode
-published: 2011-02-17
-title: 'Postfix, Dovecot, and System User Accounts on Debian 6 (Squeeze)'
-deprecated: true
 relations:
     platform:
         key: postfix-dovecot-user-accounts
         keywords:
             - distribution: Debian 6
-authors: ["Linode"]
+deprecated: true
 ---
 
 Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [Basic Email Gateway with Postfix](/docs/guides/basic-postfix-email-gateway-on-debian-6-squeeze/) document to install a more minimal email system. If you plan to host a larger number of domains and email aliases, you may want to consider a more sophisticated hosting solution like the [Email Server with Postfix, MySQL and Dovecot](/docs/email/postfix/).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

@@ -1,19 +1,17 @@
 ---
 slug: configure-postgresql
+title: Configure PostgreSQL
 description: 'This guide will show you how to tune PostgreSQL for better performance on your Linode'
 og_description: 'PostgreSQL is a database server that focuses on standards compliance. Follow this guide to optimize PostgreSQL performance.'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2017-12-07
 keywords: ["postgresql", "clusters", "databases", "postgres", "database configuration", "database tuning", "configure postgres"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-12-07
-modified_by:
-  name: Linode
-published: 2017-12-07
-title: Configure PostgreSQL
 external_resources:
  - '[PostgreSQL Documentation](https://www.postgresql.org/docs/)'
 tags: ["database","postgresql"]
 aliases: ['/databases/postgresql/configure-postgresql/']
-authors: ["Angel Guarisma"]
 tags: ["saas"]
 ---
 
@@ -28,6 +26,7 @@ PostgreSQL can be configured and tuned through a series of configuration files. 
 ## Before You Begin
 
 You should have a working installation of PostgreSQL on your system before beginning this guide. Go through our [How to Install PostgreSQL on Ubuntu guide](/docs/guides/how-to-install-postgresql-on-ubuntu-16-04/) to install PostgreSQL and create a sample database.
+
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -120,7 +119,7 @@ host    example         exampleuser      192.0.2.0             password
 The entries in this table are read in order for each incoming connection attempt. The first entry that matches will be applied to the connection. As a result, more general configurations (matching all users, all databases, or all IP addresses) should come at the end of the file, and should generally have tighter restrictions. More specific matches with less stringent authentication methods (such as the example above) should be placed at the beginning of the list.
 
 {{< note >}}
-See the [official pg_hba documentation](https://www.postgresql.org/docs/9.3/static/auth-pg-hba-conf.html) for details about each of the configuration options.
+See the [official documentation](https://www.postgresql.org/docs/9.3/static/auth-pg-hba-conf.html) for `pg_hba` for details about each of the configuration options.
 {{< /note >}}
 
 ### Match System Users to Database Users with pg_ident.conf

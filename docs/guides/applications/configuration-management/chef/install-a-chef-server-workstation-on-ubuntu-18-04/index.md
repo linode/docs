@@ -1,22 +1,21 @@
 ---
 slug: install-a-chef-server-workstation-on-ubuntu-18-04
+title: 'Installing a Chef Server Workstation on Ubuntu 18.04'
+title_meta: 'How To Install a Chef Server Workstation on Ubuntu 18.04'
 description: 'Instructions on how to configure a Chef server and a virtual workstation, and how to bootstrap a client node on Ubuntu 18.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-08-06
+modified: 2019-12-03
 keywords: ["chef", "configuration management", "server automation", "chef server", "chef workstation", "chef-client"]
 tags: ["ubuntu","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-08-06
-modified: 2019-12-03
-modified_by:
-  name: Linode
-title: 'Installing a Chef Server Workstation on Ubuntu 18.04'
-title_meta: 'How To Install a Chef Server Workstation on Ubuntu 18.04'
 relations:
     platform:
         key: install-chef-workstation
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/applications/configuration-management/chef/install-a-chef-server-workstation-on-ubuntu-18-04/','/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/']
-authors: ["Linode"]
 ---
 
 [Chef](http://www.chef.io) is a Ruby based configuration management tool used to define infrastructure as code. This enables users to automate the management of many *nodes* and maintain consistency across those nodes. *Recipes* declare the desired state for managed nodes and are created on a user's *workstation* using the *Chef Workstation* package. Your recipes are distributed across nodes via a *Chef server*. A *Chef client*, installed on each node, is in charge of applying the recipe to its corresponding node.
@@ -28,7 +27,7 @@ This guide will show you how to create and configure a Chef server and workstati
 See [A Beginner's Guide to Chef](/docs/guides/beginners-guide-chef/) for an introduction to Chef concepts.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/#understanding-sudo) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 
 ## Prerequisites

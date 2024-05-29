@@ -1,21 +1,20 @@
 ---
 slug: deploy-container-image-to-kubernetes
+title: "Create and Deploy a Docker Container Image to a Kubernetes Cluster"
+title_meta: "Build & Deploy a Docker Image to Kubernetes Cluster"
 description: "This guide shows how to package a Hugo static site in a Docker container image, host the image on Docker Hub, and deploy it on a Linode Kubernetes cluster."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-05-07
 keywords: ['kubernetes','docker','docker hub','hugo', 'static site']
 tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-05-07
-modified_by:
-  name: Linode
-title: "Create and Deploy a Docker Container Image to a Kubernetes Cluster"
-title_meta: "Build & Deploy a Docker Image to Kubernetes Cluster"
 aliases: ['/applications/containers/kubernetes/deploy-container-image-to-kubernetes/','/applications/containers/deploy-container-image-to-kubernetes/','/kubernetes/deploy-container-image-to-kubernetes/']
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 - '[Official Hugo Documentation](https://gohugo.io/getting-started/installing/)'
 - '[Official Docker Documentation](https://docs.docker.com/docker-hub/builds/)'
-authors: ["Linode"]
 ---
 
 ## Kubernetes and Docker
@@ -43,7 +42,7 @@ This guide was written using version 1.14 of Kubectl.
         - You will need to deploy two Linodes. One will serve as the master node and the other will serve as a worker node.
     1. Deploy a Kubernetes cluster using [k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/).
 
-    {{< content "k8s-alpha-deprecation-shortguide" >}}
+    {{% content "k8s-alpha-deprecation-shortguide" %}}
 
 1. [Create a GitHub account](https://github.com/join) if you don't already have one.
 
@@ -75,7 +74,7 @@ Development of your Hugo site and Docker image will take place locally on your p
         brew install hugo
         ```
 
-1. {{< content "installing-docker-shortguide" >}}
+1. {{% content "installing-docker-shortguide" %}}
 
 ## Create a Hugo Site
 
