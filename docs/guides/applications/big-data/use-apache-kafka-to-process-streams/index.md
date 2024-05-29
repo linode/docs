@@ -4,7 +4,7 @@ title: "How to Process Streams Using Kafka"
 description: "Learn to develop process streams with Apache Kafka. This tutorial covers Kafka message broker setup, handling Kafka events, and using the Kafka API."
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
-published: 2024-05-17
+published: 2024-05-29
 keywords: ['Kafka process streams', 'Apache Kafka', 'Kafka message broker', 'Kafka events', 'Kafka API', 'Kafka stream setup', 'Kafka tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -24,7 +24,9 @@ Kafka’s API is distributed as either a Java Archive File (JAR) or library that
 
 In this application model, consumers can play dual roles as subsequent producers, publishing their processed results to other subscribers in the pub/sub model. Consumer-retrieved messages are processed and become a new Kafka-produced input topic for another message consumer. This allows Kafka to be the immutable log keeper of a variety of data for various business data processing tasks throughout the transaction cycle.
 
-[Kafka is designed for speed, scale, and reliable distributed infrastructure](/docs/guides/what-is-apache-kafka/). It is well-suited for frameworks constructed for Big Data, complex multi-partner trading, log accumulation & processing, and traditional transaction tracking systems.
+Kafka is designed for speed, scale, and reliable distributed infrastructure. It is well-suited for frameworks constructed for Big Data, complex multi-partner trading, log accumulation & processing, and traditional transaction tracking systems.
+
+For more information, see [An Introduction to Apache Kafka](/docs/guides/what-is-apache-kafka/).
 
 ### The Kafka Pub/Sub Model and Terminology
 
