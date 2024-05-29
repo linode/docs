@@ -14,9 +14,7 @@ external_resources:
 - '[Official Nmap Project Guide to Network Discovery and Security Scanning](https://nmap.org/book/toc.html)'
 ---
 
-[*Nmap*](https://nmap.org/) is a popular, open source network scanning tool. It has a wide array of scanning options and capabilities, making it highly efficient and adaptable. Nmap helps system administers monitor a network's host and port usage, and helps security auditors catch potential vulnerabilities.
-
-In this guide, learn how to get started using Nmap for your network.
+[*Nmap*](https://nmap.org/) is a popular, open source network scanning tool. It has a wide array of scanning options and capabilities, making it highly efficient and adaptable. Nmap helps system administers monitor a network's host and port usage, and helps security auditors catch potential vulnerabilities. In this guide, learn how to get started using Nmap for your network.
 
 ## Before You Begin
 
@@ -132,15 +130,15 @@ In addition, Nmap can attempt to provide more detailed information about what is
 
 ### Basic Port Scan
 
-Conducting a port scan with Nmap is very simple. Replace `192.0.2.0` in the following command (and all subsequent examples) with the actual IP address you want to scan:
+Conducting a port scan with Nmap is very simple. Replace {{< placeholder "192.0.2.58" >}} in the following command (and all subsequent examples) with the actual IP address you want to scan:
 
 ```command
-sudo nmap 192.0.2.0
+sudo nmap {{< placeholder "192.0.2.58" >}}
 ```
 
 ```output
 Starting Nmap 7.80 ( https://nmap.org ) at 2023-09-01 13:05 EDT
-Nmap scan report for EXAMPLE_HOSTNAME (192.0.2.0)
+Nmap scan report for EXAMPLE_HOSTNAME (192.0.2.58)
 Host is up (0.0000060s latency).
 Not shown: 999 closed ports
 PORT   STATE SERVICE
@@ -180,14 +178,14 @@ Service scan Timing: About 50.00% done; ETC: 12:00 (0:00:25 remaining)
 Here is an example of a useful Nmap command to get an in-depth view of a particular host:
 
 ```command
-sudo nmap -p0- -A 192.0.2.0
+sudo nmap -p0- -A {{< placeholder "192.0.2.58" >}}
 ```
 
-This commands scans all ports on `192.0.2.0` and tries to gather additional details on the host and the ports' services.
+This commands scans all ports on {{< placeholder "192.0.2.58" >}} and tries to gather additional details on the host and the ports' services.
 
 ```output
 Starting Nmap 7.80 ( https://nmap.org ) at 2023-09-01 13:07 EDT
-Nmap scan report for EXAMPLE_HOSTNAME (192.0.2.0)
+Nmap scan report for EXAMPLE_HOSTNAME (192.0.2.58)
 Host is up (0.00010s latency).
 Not shown: 65535 closed ports
 PORT   STATE SERVICE VERSION
