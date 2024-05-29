@@ -12,15 +12,11 @@ external_resources:
 - '[MDN Web Docs: Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)'
 ---
 
-JavaScript's arrays include a `filter` method, designed to conveniently create new arrays out of existing ones. So how does it work, and how can you start using it on your arrays?
-
-Find out in this guide. It explains JavaScript's `filter` method and how to use it to filter arrays containing numbers, strings, and even objects.
+JavaScript's arrays include a `filter` method, designed to conveniently create new arrays out of existing ones. So how does it work, and how can you start using it on your arrays? This guide explains JavaScript's `filter` method and how to use it to filter arrays containing numbers, strings, and even objects.
 
 ## What Is the JavaScript filter Method?
 
-In JavaScript, arrays each come with a `filter` method, which can be used to generate a new array from the original given a set of criteria.
-
-The method accomplishes this by taking a function as an argument and applying that function to each item in the original array. Each item for which the function returns `true` gets added to a new array, which the `filter` method returns at the end.
+In JavaScript, arrays each come with a `filter` method, which can be used to generate a new array from the original given a set of criteria. The method accomplishes this by taking a function as an argument and applying that function to each item in the original array. Each item for which the function returns `true` gets added to a new array, which the `filter` method returns at the end.
 
 To break that down, here is an example. Follow along with the comments in the example to see how each part works:
 
@@ -51,9 +47,7 @@ These are not the only kinds of arrays that the `filter` method works on, howeve
 
 ### Using the filter Method for Arrays of Numbers
 
-The best place to start is the simplest of the arrays: arrays containing only numbers.
-
-The `filter` method lets you create a new number array from an existing array based on the criteria you provide. Part of what makes a number array easier to start with is that the criteria typically use frequently-used and widely-known operators.
+The best place to start is the simplest of the arrays: arrays containing only numbers. The `filter` method lets you create a new number array from an existing array based on the criteria you provide. Part of what makes a number array easier to start with is that the criteria typically use frequently-used and widely-known operators.
 
 For instance, you can create a new array of all numbers below 20 in an existing array by filtering for `< 20`. This is exactly what is done for the `smallNumberArray` in the example below. The example then does the opposite for the `largeNumberArray`, filtering for numbers equal to or greater than 20, using `>= 20`.
 
