@@ -1,13 +1,12 @@
 ---
 slug: what-is-microblogpub
 title: "What Is Microblog.pub?"
-description: 'Self-hosted Microblog.pub offers lightweight, secure, and privacy-aware microblogging with Federated social media on the ActivityPub platform.'
+description: "Self-hosted Microblog.pub offers lightweight, secure, and privacy-aware microblogging with Federated social media on the ActivityPub platform."
+authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
+published: 2023-04-24
 keywords: ['microblog.pub','mastodon alternatives','federated social media','activitypub platform','self-hosted microblogging',;lightweight micrblogging','indie web citizenry']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Martin Heller"]
-published: 2023-04-24
-modified_by:
-  name: Linode
 ---
 
 [Microblog.pub](https://microblog.pub/) is a self-hosted social media server application/microblog that leverages the federated social media model and is powered by the ActivityPub platform. The Microblog.pub server can be installed by compiling a Docker instance from its github source or by performing a Python 3.10 developer installation. Microblog.pub uses a SQLite3 database as content storage and relies on ActivityPub as its communications federation engine.
