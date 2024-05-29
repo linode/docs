@@ -2,7 +2,6 @@
 title: "Upload and Manage Files (Objects)"
 description: ""
 aliases: ['/products/storage/object-storage/guides/upload-objects/','/products/storage/object-storage/guides/delete-objects/','/products/storage/object-storage/guides/view-objects/']
-authors: ["Linode"]
 ---
 
 The primary function of Object Storage is to allow you to host files, also called objects. This guide walks you through using the Cloud Manager to view, upload, download, and delete files.
@@ -23,7 +22,7 @@ The primary function of Object Storage is to allow you to host files, also calle
 
 Follow these steps to upload objects to a bucket using the Cloud Manager:
 
-{{< content "object-storage-character-warning-shortguide" >}}
+{{% content "object-storage-character-warning-shortguide" %}}
 
 1.  Navigate to the **Bucket** page in the Cloud Manager (see [View Files](#view-files-stored-within-a-bucket)).
 

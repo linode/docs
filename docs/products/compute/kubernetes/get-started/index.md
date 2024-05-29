@@ -2,10 +2,10 @@
 title: Get Started
 title_meta: "Getting Started with LKE (Linode Kubernetes Engine)"
 description: "Get Started with the Linode Kubernetes Engine with this quick start guide. Install kubectl, create an LKE Cluster, and access and download your kubeconfig."
-tab_group_main:
-    weight: 20
 published: 2020-06-02
 modified: 2023-02-09
+tab_group_main:
+    weight: 20
 keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster"]
 tags: ["linode platform","kubernetes","cloud manager"]
 aliases: ['/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/','/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/','/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/','/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/']
@@ -59,7 +59,7 @@ Visit the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/inst
 
       - From the **Version** dropdown menu, select a Kubernetes version to deploy to your cluster.
 
-1. In the **Add Node Pools** section, select the [hardware resources](/docs/products/compute/compute-instances/plans/choosing-a-plan/#hardware-resource-definitions) for the Linode worker node(s) that make up your LKE cluster. To the right of each plan, select the plus `+` and minus `-` to add or remove a Linode to a node pool one at time.
+1. In the **Add Node Pools** section, select the [hardware resources](/docs/products/compute/compute-instances/plans/choosing-a-plan/#compute-resources) for the Linode worker node(s) that make up your LKE cluster. To the right of each plan, select the plus `+` and minus `-` to add or remove a Linode to a node pool one at time.
 
 1. Once you're satisfied with the number of nodes in a node pool, select **Add** to include it in your configuration. If you decide that you need more or fewer hardware resources after you deploy your cluster, you can always [edit your Node Pool](#edit-or-remove-existing-node-pools).
 
@@ -87,7 +87,7 @@ Visit the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/inst
 
 ## General Network and Firewall Information
 
-{{< content "lke-network-firewall-information-shortguide" >}}
+{{% content "lke-network-firewall-information-shortguide" %}}
 
 ## Next Steps
 

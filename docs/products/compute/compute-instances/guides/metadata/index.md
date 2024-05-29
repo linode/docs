@@ -1,17 +1,12 @@
 ---
 title: "Overview of the Metadata Service"
 description: "Learn how to automate server provisioning on the Linode platform through the new Metadata service and cloud-init."
-keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
 published: 2023-07-25
-modified: 2023-08-29
-modified_by:
-  name: Linode
-authors: ["Linode"]
+modified: 2024-02-14
+keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
 ---
 
-{{< content "metadata-beta-notice" >}}
-
-When deploying Compute Instances, it's almost always necessary to perform additional configuration before you can host your website or run your workloads. This configuration might include creating a new user, adding an SSH key, or installing software. It could also include more complex tasks like configuring a web server or other software that runs on the instance. Performing these tasks manually can be tedious and is not ideal at larger scales. To automate this configuration, Linode offers two provisioning automation tools: Metadata (covered in this guide), and [StackScripts](/docs/products/tools/stackscripts/).
+When deploying Compute Instances, it's almost always necessary to perform additional configuration before you can host your website or run your workloads. This configuration might include creating a new user, adding an SSH key, or installing software. It could also include more complex tasks like configuring a web server or other software that runs on the instance. Performing these tasks manually can be tedious and is not ideal at larger scales. To automate this configuration, Linode offers two provisioning automation tools: Metadata (covered in this guide) and [StackScripts](/docs/products/tools/stackscripts/).
 
 ## Overview
 
@@ -32,14 +27,15 @@ Similar to Metadata, Linode's [StackScripts](/docs/products/tools/stackscripts/)
 
 ## Availability
 
-Akamai's Metadata service is available in beta and limited to select data centers. Additionally, user-submitted user data and cloud-init integration is currently only supported in a few distribution images. Supported data centers and distributions are listed below:
+Akamai's Metadata service is available in select data centers. Additionally, user data and cloud-init integration is currently only supported in a few distribution images. Supported data centers and distributions are listed below:
 
-- **Data centers:** Washington, DC (`us-iad`) and Paris (`fr-par`)
-- **Distributions:** Ubuntu 22.04 LTS and Ubuntu 20.04 LTS
+-   **Data centers:** Amsterdam (Netherlands), Chennai (India), Chicago (USA), Jakarta (Indonesia), Los Angeles (USA), Madrid (Spain), Miami (USA), Milan (Italy), Osaka (Japan), Paris (France), São Paulo (Brazil), Seattle (USA), Stockholm (Sweden), and Washington DC (USA)
 
-Additional regions and distributions may be added throughout the beta period. When selecting a distribution in the Cloud Manager, the following icon designates distributions that *do not* yet have cloud-init support:
+-   **Distributions:** Ubuntu 22.04 LTS, Ubuntu 20.04 LTS, Debian 11
 
-![Icon that means a distribution does not support user data and cloud-init](cloud-init-not-supported.png)
+When selecting a distribution in the Cloud Manager, the following icon designates distributions that fully support the Metadata service:
+
+![Screenshot showing icon that indicates user data and cloud-init support for a distribution](cloud-init-supported-image.png)
 
 {{< note >}}
 Compute Instances deployed in a supported region can always access the [Metadata Service API](#access-the-metadata-service-api) to obtain instance data, regardless of the distribution. However, user data cannot be submitted for distributions that do not yet have cloud-init support.
@@ -74,11 +70,7 @@ linode-cli linodes create \
   --metadata.user_data [your-user-data]
 ```
 
-Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the cloud-config data or script you wish to use. When using the API or CLI, user data must be a [base64-encoded string](https://en.wikipedia.org/wiki/Base64). You can output your cloud-config or script file as base64 by running the following command:
-
-```command
-cat *[file-path]* | base64
-```
+Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the cloud-config data or script you wish to use. When using the CLI, user data must be a Base64-encoded string. Review the [Base64 Encoded](#base64-encoded) section below to generate the string.
 {{< /tab >}}
 {{< tab "Linode API" >}}
 Run the API curl request below, making sure to properly paste in or reference your [API token](/docs/products/tools/api/guides/manage-api-tokens/).
@@ -99,11 +91,7 @@ curl -H "Content-Type: application/json" \
     https://api.linode.com/v4/linode/instances
 ```
 
-Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the cloud-config data or script you wish to use. When using the API or CLI, user data must be a [base64-encoded string](https://en.wikipedia.org/wiki/Base64). You can output your cloud-config or script file as base64 by running the following command:
-
-```command
-cat *[file-path]* | base64
-```
+Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the cloud-config data or script you wish to use. When using the API, user data must be a Base64-encoded string. Review the [Base64 Encoded](#base64-encoded) section below to generate the string.
 {{< /tab >}}
 {{< /tabs >}}
 
@@ -138,6 +126,23 @@ User data can be provided in many different formats, with the most common being 
 
 -   **Other formats:** Review the [User data formats](https://cloudinit.readthedocs.io/en/latest/explanation/format.html#user-data-formats) guide within the official documentation to learn more about other types of formats supported by cloud-init.
 
+#### Base64 Encoded
+
+When submitting user data through the Linode CLI or API, you first need to encode it into [Base64](https://en.wikipedia.org/wiki/Base64) (without any line breaks/wraps). To do that, run the command below that corresponds with your local operating system. Replace *[file]* with the name (and path, if needed) of your cloud-config or script file.
+
+{{< tabs >}}
+{{< tab "macOS" >}}
+```command
+base64 --break=0 --input=[file]
+```
+{{< /tab >}}
+{{< tab "Linux" >}}
+```command
+base64 --wrap=0 [file]
+```
+{{< /tab >}}
+{{< /tabs >}}
+
 ## Modify Cloud-Init Configuration and Save a Custom Image {#modify-cloud-init}
 
 Our supported distribution images have cloud-init pre-installed and configured to interact with our Metadata service. Beyond submitting user data, you are not able to adjust cloud-init settings directly through the Cloud Manager, Linode CLI, or Linode API. If you do wish to deploy Compute Instances using a modified cloud-init configuration, you can use our [Images](/docs/products/tools/images/) service.
@@ -155,7 +160,7 @@ Now, when you wish to deploy a new Compute Instance, you can select your custom 
 
 ## Access the Metadata Service API
 
-In addition to being consumed by cloud-init, the Metadata service can also be accessed through an API. The API is available on industry standard link-local IP addresses (`169.254.169.254` and `fd00:a9fe:a9fe::1`) and returns only instance data and user data for that Compute Instance.
+In addition to being consumed by cloud-init, the Metadata service can also be accessed through an API. The API is available on industry standard link-local IP addresses (`169.254.169.254` and `fd00:a9fe:a9fe::1`) and returns only instance data and user data for that Compute Instance. For more details on using the API, review the [How to Use the Metadata Service API](/docs/products/compute/compute-instances/guides/metadata-api/) guide.
 
 1.  Log in to a Compute Instance that has been deployed in a supported data center using a supported distribution image.
 

@@ -1,25 +1,22 @@
 ---
 slug: use-unbound-for-local-dns-resolution-on-fedora-13
-deprecated: true
+title: Use Unbound for Local DNS Resolution on Fedora 13
 description: 'Configure and run your own DNS resolver using the Unbound Server on Ubuntu Fedora 13.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-09-07
+modified: 2013-07-15
 keywords: ["fedora dns", "open source dns", "dns", "resolving", "caching", "unbound"]
 tags: ["dns","networking","fedora","resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/dns-guides/unbound-dns-resolver-fedora-13/','/networking/dns/use-unbound-for-local-dns-resolution-on-fedora-13/']
-modified: 2013-07-15
-modified_by:
-  name: Linode
-published: 2010-09-07
-title: Use Unbound for Local DNS Resolution on Fedora 13
 relations:
     platform:
         key: unbound-local-dns-resolution
         keywords:
             - distribution: Fedora 13
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 In the default configuration, Linode systems are configured to query DNS resolvers provided by Linode. If you don't want to use a third party DNS service on your system, you may consider running an independent DNS resolving and caching service such as [Unbound DNS resolver](http://unbound.net). Unbound is easy to install and configure, which makes it an ideal resolver for simple deployments.
 
@@ -91,7 +88,7 @@ Unbound is now active and functional.
 
 Before you can begin using your Unbound instance to resolve DNS queries, you need to configure your `/etc/resolv.conf` file to point to the new resolver. You can remove all existing lines from this file or comment them by prepending hash marks (`#`) to every line.
 
-**Important:** By default, Linodes use DHCP to assign networking settings, including the public IP address and DNS resolvers. For any systems that you intend to use a custom resolver with, you must follow our instructions for [static networking](/docs/products/compute/compute-instances/guides/manual-network-configuration/#static-network-configuration). This will prevent your `/etc/resolv.conf` file getting overwritten with the default resolvers after a system reboot.
+**Important:** By default, Linodes use DHCP to assign networking settings, including the public IP address and DNS resolvers. For any systems that you intend to use a custom resolver with, you must follow our instructions for [static networking](/docs/products/compute/compute-instances/guides/manual-network-configuration/). This will prevent your `/etc/resolv.conf` file getting overwritten with the default resolvers after a system reboot.
 
 If you're accessing your Unbound instance over the local interface, make sure your `/etc/resolv.conf` resembles the following:
 

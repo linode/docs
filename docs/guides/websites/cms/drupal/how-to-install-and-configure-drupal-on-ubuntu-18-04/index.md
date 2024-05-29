@@ -1,14 +1,14 @@
 ---
 slug: how-to-install-and-configure-drupal-on-ubuntu-18-04
+title: Install and Configure Drupal on Ubuntu 18.04
+title_meta: How to Install and Configure Drupal on Ubuntu 18.04 LTS
 description: 'This guide will show you how to install and configure the very popular content management system, Drupal 8, on your Linode running Ubuntu 18.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-02-18
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "ubuntu 18.04"]
 tags: ["drupal","ubuntu","apache","lamp","php","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-    name: Linode
-published: 2020-02-18
-title: Install and Configure Drupal on Ubuntu 18.04
-title_meta: How to Install and Configure Drupal on Ubuntu 18.04 LTS
 image: L_Drupal_on_Ubuntu1804.png
 relations:
     platform:
@@ -16,7 +16,6 @@ relations:
         keywords:
            - distribution: Ubuntu 18.04
 aliases: ['/websites/cms/drupal/how-to-install-and-configure-drupal-on-ubuntu-18-04/']
-authors: ["Linode"]
 ---
 
 Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Ubuntu 18.04.
@@ -25,9 +24,9 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
 1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
-1. Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1. Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 3.  Install and configure a [LAMP stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/)
 

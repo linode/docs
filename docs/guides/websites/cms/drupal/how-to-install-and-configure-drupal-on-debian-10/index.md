@@ -1,14 +1,14 @@
 ---
 slug: how-to-install-and-configure-drupal-on-debian-10
+title: Install and Configure Drupal on Debian 10 (Buster)
+title_meta: How to Install and Configure Drupal on Debian 10
 description: 'This guide will show you how to install and configure the very popular content management system, Drupal 8, on your Linode running Debian 10.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-02-18
 keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8", "debian 10"]
 tags: ["drupal","apache","lamp","php","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-    name: Linode
-published: 2020-02-18
-title: Install and Configure Drupal on Debian 10 (Buster)
-title_meta: How to Install and Configure Drupal on Debian 10
 image: L_Drupal_on_Debian10.png
 relations:
     platform:
@@ -16,12 +16,11 @@ relations:
         keywords:
            - distribution: Debian 10
 aliases: ['/websites/cms/drupal/how-to-install-and-configure-drupal-on-debian-10/']
-authors: ["Linode"]
 ---
 
 Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Debian 10.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you are not using Debian 10, you can view different Linux distribution versions of this guide in the [Drupal](/docs/websites/cms/drupal/) section of our documentation site.
 {{< /note >}}
 
@@ -29,9 +28,9 @@ If you are not using Debian 10, you can view different Linux distribution versio
 
 1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
-1. Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1. Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 3.  Install and configure a [LAMP stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/)
 

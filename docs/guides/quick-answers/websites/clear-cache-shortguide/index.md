@@ -1,17 +1,15 @@
 ---
 slug: clear-cache-shortguide
-description: 'This guide provides you with step-by--step instructions for clearing your cache and cookies in various web browsers, such as Google Chrome and Microsoft Edge.'
-keywords: []
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-06-28
-image: ClearCacheAndCookies.png
-modified: 2018-06-28
-modified_by:
-  name: Rajakavitha Kodhandapani
 title: 'Clearing Cache and Cookies in a Browser'
 title_meta: 'How to Clear Cache and Cookies in a Browser'
-aliases: ['/quick-answers/websites/clear-cache-shortguide/']
+description: 'This guide provides you with step-by--step instructions for clearing your cache and cookies in various web browsers, such as Google Chrome and Microsoft Edge.'
 authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-06-28
+keywords: []
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: ClearCacheAndCookies.png
+aliases: ['/quick-answers/websites/clear-cache-shortguide/']
 ---
 
 A browser's cache improves website loading performance by reducing the data processing and fetching.  When a sizeable amount of cached content is  stored, it slows down the system and reduces the performance of the application.

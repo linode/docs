@@ -1,18 +1,17 @@
 ---
 slug: solid-principles-programming
-description: 'The SOLID principles in programming refer to the five principles of object-oriented class design. Learn more about each principle and its benefits here.'
-keywords: ['solid principles programming', 'solid principles', 'solid design principles', 'solid programming']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-04
-modified_by:
-  name: Linode
 title: "SOLID Principles in Programming: A Comprehensive Guide"
 title_meta: "SOLID Principles of Object-Oriented Programming"
+description: 'The SOLID principles in programming refer to the five principles of object-oriented class design. Learn more about each principle and its benefits here.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-03-04
+keywords: ['solid principles programming', 'solid principles', 'solid design principles', 'solid programming']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Wikipedia article on SOLID Principles](https://en.wikipedia.org/wiki/SOLID)'
 - '[Robert Martin article on OOD Principles](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod)'
 - '[Wikipedia page on Inheritance](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming))'
-authors: ["Jeff Novotny"]
 ---
 
 Most new software applications are developed using *Object-oriented Programming* (OOP) techniques. This paradigm is very powerful, but can also be confusing, and can lead to complex code that is difficult to debug, change, or extend. To simplify and strengthen the development process, developers can apply the [*SOLID Principles of Programming*](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod). This guide describes the SOLID principles and why programmers should use them and explains each principle in detail using examples.
@@ -43,7 +42,7 @@ Each of the SOLID principles of programming summarizes a best practice within so
 
 Each principle represents a design goal, not an absolute law. Perfect adherence to every principle might not be possible in every case. Sometimes there might be valid reasons to take a different approach. But this should be only done after careful consideration, after determining the principle is impractical.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The examples in this section use Python-based pseudocode. They are designed to clearly demonstrate the principles rather than represent complete interfaces, executable code, or realistic programs.
 {{< /note >}}
 
@@ -194,7 +193,7 @@ Another way of phrasing this is:
 
 This principle emphasizes the importance of clean interfaces and "black box" design. Liskov's principle explains how inheritance should work in a properly-designed object-oriented design model. Any time a parent class can be used, a subclass must be able to replace it without any loss of functionality. Whenever a method expects an object from the base class, it should also be able to accept an object representing a subclass. The subclass must accept the same number of arguments and the return values from all methods must have the same type.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This is the most technical subject on the list and requires some background in object-oriented programming. For more information on inheritance and an introduction to the OOP concepts discussed in this section, see the [Wikipedia page on inheritance](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)).
 {{< /note >}}
 

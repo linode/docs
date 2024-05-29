@@ -1,13 +1,13 @@
 ---
 slug: introduction-to-pyspark
+title: "Introduction to PySpark"
 description: "In this guide, we'll use an example of counting words in a corpus to learn the PySpark API."
+authors: ["Sam Foo"]
+contributors: ["Sam Foo"]
+published: 2018-02-05
+modified: 2019-01-31
 keywords: ["big data", "spark", "nltk", "mapreduce", "pyspark", "hadoop"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-31
-modified_by:
-  name: Linode
-title: "Introduction to PySpark"
-published: 2018-02-05
 external_resources:
 - '[AMPLab Paper on RDDs](https://www.usenix.org/system/files/conference/nsdi12/nsdi12-final138.pdf)'
 - '[Spark Documentation](https://spark.apache.org/)'
@@ -18,7 +18,6 @@ languages: ["python"]
 dedicated_cpu_link: true
 tags: ["python"]
 aliases: ['/development/python/introduction-to-pyspark/']
-authors: ["Sam Foo"]
 ---
 
 ![Introduction to PySpark](PySpark.jpg)
@@ -35,11 +34,11 @@ The installation process requires the installation of Scala, which has Java JDK 
 
 ### Miniconda
 
-{{< content "install_python_miniconda" >}}
+{{% content "install_python_miniconda" %}}
 
 ### Java JDK 8
 
-{{< content "install-java-8-ppa" >}}
+{{% content "install-java-8-ppa" %}}
 
 ### Scala
 

@@ -1,15 +1,12 @@
 ---
 title: "Troubleshooting SSH on Compute Instances"
 description: "Troubleshooting steps for when you can't connect to your Compute Instance via SSH."
-keywords: ['linux','reboot','lish','ssh','troubleshoot']
-tags: ["ssh"]
 published: 2019-02-01
 modified: 2023-03-14
-modified_by:
-  name: Linode
+keywords: ['linux','reboot','lish','ssh','troubleshoot']
+tags: ["ssh"]
 bundles: ['troubleshooting']
 aliases: ['/troubleshooting/troubleshooting-ssh/','/guides/troubleshooting-ssh/']
-authors: ["Linode"]
 ---
 
 This guide presents troubleshooting strategies for when you can't connect to your Compute Instance via SSH. If you currently cannot [ping](/docs/guides/linux-system-administration-basics/#the-ping-command) your Compute Instance, then your server also likely has more basic connection issues. If this is the case, you should instead follow the [Troubleshooting Basic Connection Issues](/docs/products/compute/compute-instances/guides/troubleshooting-connection-issues/) guide. If you restore basic networking to your Compute Instance but still can't access SSH, return to this guide.
@@ -263,7 +260,7 @@ SSH can be configured to not accept passwords and instead accept public key auth
 grep PasswordAuthentication /etc/ssh/sshd_config
 ```
 
-If the value of the `PasswordAuthentication` is `no`, [create a key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair). Or, set the value in `/etc/ssh/sshd_config` to `yes`, restart SSH, and try logging in with your password again.
+If the value of the `PasswordAuthentication` is `no`, [create a key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#upload-ssh-key). Or, set the value in `/etc/ssh/sshd_config` to `yes`, restart SSH, and try logging in with your password again.
 
 ### Is your Public Key Stored on the Server?
 

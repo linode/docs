@@ -1,19 +1,14 @@
 ---
 title: "Choosing a Compute Instance Type and Plan"
 title_meta: "How to Choose a Compute Instance Plan"
-linkTitle: "Choosing a Plan"
 description: "Get help deciding which Compute Instance type is right for your use case and learn how to select the most appropriate plan"
-keywords: ["choose", "help", "plan", "size", "shared", "high memory", "dedicated", "dedicated CPU", "GPU instance"]
 published: 2019-02-04
-modified: 2023-07-06
-modified_by:
-    name: Linode
+modified: 2024-05-21
+linkTitle: "Choosing a Plan"
+keywords: ["choose", "help", "plan", "size", "shared", "high memory", "dedicated", "dedicated CPU", "GPU instance"]
 tags: ["linode platform"]
 aliases: ['/platform/how-to-choose-a-linode-plan/','/guides/how-to-choose-a-linode-plan/','/guides/choosing-a-compute-instance-plan/']
-authors: ["Linode"]
 ---
-
-{{< content "new-data-center-notice" >}}
 
 Linode offers multiple Compute Instance types, each of which can be equipped with various amounts of resources. This allows you to create a Compute Instance tailored to the requirements of your application or workload. For example, some applications may need to store a lot of data but require less processing power. Others may need more memory than CPU. Some may be especially CPU-intensive and require more computing power.
 
@@ -27,11 +22,12 @@ You can easily change between instance types and plans on an existing Compute In
 
 These are the instance types offered by Linode:
 
-- [Shared CPU instances](#shared-cpu-instances)
-- [Dedicated CPU instances](#dedicated-cpu-instances)
-- [Premium instances](#premium-instances)
-- [High Memory instances](#high-memory-instances)
-- [GPU instances](#gpu-instances)
+<!-- no toc -->
+- [Shared CPU Instances](#shared-cpu-instances)
+- [Dedicated CPU Instances](#dedicated-cpu-instances)
+- [Premium Instances](#premium-instances)
+- [High Memory Instances](#high-memory-instances)
+- [GPU Instances](#gpu-instances)
 
 They each have unique characteristics and their resources are optimized for different types of workloads. Learn about each of these instance types below, along with the resources provided and their suggested use cases.
 
@@ -56,8 +52,10 @@ Starting at $5/mo ($0.0075/hour). See [Shared CPU Pricing](https://www.linode.co
 
 ### Dedicated CPU Instances
 
-**4 GB - 512 GB Memory, 2 - 64 Dedicated vCPUs, 80 GB - 7200 GB Storage**<br>
-Starting at $36/mo ($0.05/hour). See [Dedicated CPU Pricing](https://www.linode.com/pricing/#compute-dedicated) for a full list of plans, resources, and pricing.
+**4 GB - 512 GB\* Memory, 2 - 64 Dedicated vCPUs, 80 GB - 7200 GB Storage**<br>
+Starting at $36/mo ($0.05/hour). See [Dedicated CPU Pricing](https://www.linode.com/pricing/#compute-dedicated) for a full list of plans, resources, and pricing.<br>
+
+\*512 GB plans are in limited availability.
 
 [Dedicated CPU Instances](/docs/products/compute/compute-instances/plans/dedicated-cpu/) reserve physical CPU cores that you can utilize at 100% load 24/7 for as long as you need. This provides competition free guaranteed CPU resources and ensures your software can run at peak speed and efficiency. With Dedicated CPU instances, you can run your software for prolonged periods of maximum CPU usage, and you can ensure the lowest latency possible for latency-sensitive operations. These instances offer a perfectly balanced set of resources for most production applications.
 
@@ -76,8 +74,10 @@ Starting at $36/mo ($0.05/hour). See [Dedicated CPU Pricing](https://www.linode.
 
 ### Premium Instances
 
-**4 GB - 512 GB Memory, 2 - 64 Dedicated vCPUs, 80 GB - 7200 GB Storage**<br>
+**4 GB - 512 GB\* Memory, 2 - 64 Dedicated vCPUs, 80 GB - 7200 GB Storage**<br>
 Starting at $43/mo ($0.06/hr). See [Premium Pricing](https://www.linode.com/pricing/#premium) for a full list of plans, resources, and pricing.
+
+\*512 GB plans are in limited availability.
 
 [Premium Instances](/docs/products/compute/compute-instances/plans/premium/) build off our Dedicated CPU instances and guarantee a minimum hardware class utilizing the latest available [AMD EPYC™](https://www.linode.com/amd/) CPUs. This provides consistent performance to your workloads and is suitable for running mission-critical applications. Premium instances are available in select data centers (see [Premium Instance Availability](/docs/products/compute/compute-instances/plans/premium/#availability)).
 
@@ -109,20 +109,20 @@ Starting at $60/mo ($0.09/hour). See [High Memory Pricing](https://www.linode.co
 
 ### GPU Instances
 
-**32 GB - 128 GB Memory, 8 - 24 Dedicated vCPUs, 640 GB - 2560 GB Storage**<br>
-Starting at $1000/mo ($1.50/hour). See [GPU Pricing](https://www.linode.com/pricing/#compute-gpu) for a full list of plans, resources, and pricing.
+**32 GB - 512 GB Memory, 8 - 60 Dedicated vCPUs, 640 GB - 12 TB GB Storage**<br>
+NVIDIA RTX 4000 Ada GPU plans (Beta) starting at $600/mo ($0.83/hour) with 1 GPU card, 20 vCPU cores, 64 GB of memory, and 1.5 TB of SSD storage. NVIDIA Quadro RTX 6000 plans starting at $1000/mo ($1.50/hr) with 1 GPU card, 8 vCPU cores, 32 GB of memory, and 640 GB of storage. For a full list of plans, resources, and pricing, see [Akamai Cloud Computing Pricing](https://www.linode.com/pricing/#compute-gpu).
 
-[GPU Instances](/docs/products/compute/compute-instances/plans/gpu/) are the only instance type equipped with [NVIDIA Quadro RTX 6000 GPU cards](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf) (up to 4) for on demand execution of complex processing workloads. These GPUs have CUDA cores, Tensor cores, and RT (Ray Tracing) cores. GPUs are designed to process large blocks of data in parallel, meaning that they are an excellent choice for any workload requiring thousands of simultaneous threads. With significantly more logical cores than a standard CPU, GPUs can perform computations that process large amounts of data in parallel more efficiently.
+[GPU Instances](/docs/products/compute/compute-instances/plans/gpu/) are the only Compute Instance type equipped with [NVIDIA RTX 4000 Ada GPU cards](https://resources.nvidia.com/en-us-design-viz-stories-ep/rtx-4000-ada-datashe?lx=CCKW39&contentType=data-sheet) or [NVIDIA Quadro RTX 6000 GPU cards](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf) for on demand execution of complex processing workloads. These GPUs have CUDA cores, Tensor cores, and RT (Ray Tracing) cores. GPUs are designed to process large blocks of data in parallel, meaning that they are an excellent choice for any workload requiring thousands of simultaneous threads. With significantly more logical cores than a standard CPU, GPUs can perform computations that process large amounts of data in parallel more efficiently.
 
 **Recommended Use Cases:**
 
-*Best for applications that require massive amounts of parallel processing power, including machine learning, AI, graphics processing, and big data analysis.*
+*Best for applications that require massive amounts of parallel processing power, including machine learning, AI inferencing, graphics processing, and big data analysis.*
 
-- [Machine Learning and AI](/docs/products/compute/compute-instances/plans/gpu/#machine-learning-and-ai)
-- [Big Data](/docs/products/compute/compute-instances/plans/gpu/#big-data)
-- [Video Encoding](/docs/products/compute/compute-instances/plans/gpu/#video-encoding)
-- [General Purpose Computing Using NVIDIA's CUDA Toolkit](/docs/products/compute/compute-instances/plans/gpu/#general-purpose-computing-using-cuda)
-- [Graphics Processing](/docs/products/compute/compute-instances/plans/gpu/#graphics-processing)
+- [Video encoding](/docs/products/compute/compute-instances/plans/gpu/#video-encoding)
+- [Graphics processing](/docs/products/compute/compute-instances/plans/gpu/#graphics-processing)
+- [AI inferencing](/docs/products/compute/compute-instances/plans/gpu/#machine-learning-and-ai)
+- [Big data analysis](/docs/products/compute/compute-instances/plans/gpu/#big-data)
+- [General Purpose computing using NVIDIA's CUDA Toolkit](/docs/products/compute/compute-instances/plans/gpu/#general-purpose-computing-using-cuda)
 
 ## Compute Resources
 
@@ -140,6 +140,8 @@ When selecting a plan, it is important to understand the hardware resources allo
 
 ## Pricing
 
-If you run a business, you likely need to think about pricing when considering which plan is right for you. You can view all the pricing at [Linode Pricing](https://www.linode.com/pricing/). You can also compare cost per month and save with Linode's predictable and transparent pricing with our [Cloud Estimator](https://www.linode.com/estimator/). Explore bundled compute, storage, and transfer packages against AWS, GCP, and Azure.
+If you run a business or not, you likely need to think about pricing when considering which plan is right for you. You can view all pricing on our [Pricing](https://www.linode.com/pricing/) page. Note that pricing and plan options may vary between regions.
+
+Compare cost per month and save with Linode’s predictable and transparent pricing using our [Cloud Estimator](https://www.linode.com/estimator/). Explore bundled compute, storage, and transfer packages against AWS, GCP, and Azure.
 
 Migrating from on-premise or between cloud providers for hosting, cloud storage, or cloud computing? Use our [Total Cost of Ownership (TCO) cloud pricing calculator](https://www.linode.com/cloud-pricing-calculator/) to receive a full cost breakdown and technical recommendations.

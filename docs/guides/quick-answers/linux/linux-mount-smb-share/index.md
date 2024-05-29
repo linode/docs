@@ -2,12 +2,12 @@
 slug: linux-mount-smb-share
 title: "Mount an SMB Share in Linux"
 description: "Learn how to mount a Windows directory in Linux using the SMB Protocol. This enables you to remotely access and modify you files."
+authors: ["John Mueller","Matt Wildman"]
+contributors: ["John Mueller","Matt Wildman"]
+published: 2023-06-06
+modified: 2023-10-03
 keywords: ['linux mount smb share', 'mount smb share linux', 'mount cifs', 'linux cifs mount']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["John Mueller"]
-published: 2023-06-06
-modified_by:
-  name: Linode
 external_resources:
 - '[Server Message Block (SMB) share](https://docs.microsoft.com/en-us/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)'
 - '[Common Internet File System (CIFS) utils](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-cifs/d416ff7c-c536-406e-a951-4f04b2fd1d2b)'
@@ -114,7 +114,7 @@ The following sections detail how to mount an SMB share on Ubuntu, but the essen
     mount -t cifs //[server-ip]/[share-path] /[mount-point]
     ```
 
-    In the example below, the SMB server's IP is 192.0.2.17, the share's path is SharedFiles, and the mount point is /mnt/smb_share.
+    In the example below, the SMB server's IP is 192.0.2.17, the share's path is SharedFiles, and the mount point is `/mnt/smb_share`.
 
     ```command
     mount -t cifs //192.0.2.17/SharedFiles /mnt/smb_share

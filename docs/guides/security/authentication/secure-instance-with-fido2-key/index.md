@@ -3,12 +3,11 @@ slug: secure-instance-with-fido2-key
 title: "Log in to Compute Instances Using the Akamai MFA FIDO2 Authenticator and the Krypton akr SSH Agent"
 title_meta: "Log in to Compute Instances Using the Akamai MFA FIDO2 Authenticator"
 description: "Learn how to access your Compute Instances using Akamai's own FIDO2 authentator and SSH agent."
+authors: ["Bill Huang"]
+contributors: ["Bill Huang"]
+published: 2023-05-22
 keywords: ['ssh','fido','security key','mobile','yubikey']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Bill Huang"]
-published: 2023-05-22
-modified_by:
-  name: Linode
 ---
 
 {{< note type="warning" >}}
@@ -201,7 +200,7 @@ Now that your mobile device has been paired and your Akamai-compatible FIDO2 SSH
 1.  When the Compute Instance has finished provisioning and is in a running state, you can [connect to it via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). After the host public key fingerprint is validated, you'll receive a push-based prompt on your phone to verify the connection attempt. Once the connect request is approved, you should be successfully logged in to the remote system.
 
 {{< note >}}
-You can also use your FIDO2 SSH key on existing Compute Instances or other Linux systems. See the [Using SSH Public Key Authentication on Linux, macOS, and Windows](/docs/guides/use-public-key-authentication-with-ssh/#manually-copy-your-public-key) guide for instructions on copying your SSH key from a [macOS](/docs/guides/use-public-key-authentication-with-ssh/#manually-copy-your-public-key), [Linux](/docs/guides/use-public-key-authentication-with-ssh/#manually-copy-your-public-key), or [Windows](/docs/guides/use-public-key-authentication-with-ssh/#manually-copy-the-ssh-key-with-winscp) desktop.
+You can also use your FIDO2 SSH key on existing Compute Instances or other Linux systems. See the [Using SSH Public Key Authentication on Linux, macOS, and Windows](/docs/guides/use-public-key-authentication-with-ssh/#upload-the-public-key) guide for instructions on copying your SSH key.
 {{< /note >}}
 
 ## Additional SSH Configuration

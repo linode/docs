@@ -1,14 +1,12 @@
 ---
 slug: secure-web-server
+title: "Security in Web Applications: Best Practices"
 description: 'Developers must know how to properly secure web servers. ✓ Read our guide to learn main security risks, how to secure web applications, and best practices.'
-keywords: ['list','of','keywords','and key phrases']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-01-06
-modified_by:
-  name: Linode
-title: "How to Secure Web Servers"
-title_meta: "Security in Web Applications: Best Practices"
 authors: ["David Strom"]
+contributors: ["David Strom"]
+published: 2023-01-06
+keywords: ['web server security']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 Making your web application portfolio used to be a lot easier, back when web servers, and web pages themselves, were relatively simple constructions. Web applications are more complex now. They integrate a broad collection of products that span advertising services, content staging, engagement tracking, and caching & proxying of page content and databases. They are a lot harder to secure and to prevent potential exploits from happening. Keeping bad actors from breaching your defenses and accessing your company’s data or taking over your websites is a process. It involves using a variety of tools, and ensuring they work together. This guide explains what web security servers are all about. It also describes some common web-based threats and exploits, and offers up some procedures, tools, and techniques on how to defend against these attacks.

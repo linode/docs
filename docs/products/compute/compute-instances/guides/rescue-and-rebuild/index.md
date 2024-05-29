@@ -1,15 +1,12 @@
 ---
 title: Rescue and Rebuild
 description: 'Learn how to rescue and rebuild a Compute Instance by using the recovery tools available in the Cloud Manager.'
+published: 2012-05-31
+modified: 2023-09-07
 keywords: ["rescue", "rebuild"]
 tags: ["cloud manager"]
-published: 2012-05-31
-modified: 2023-08-08
-modified_by:
-  name: Linode
 image: rescue-rebuild.jpg
 aliases: ['/troubleshooting/rescue-and-rebuild-classic-manager/','/troubleshooting/rescue-and-rebuild/','/rescue-and-rebuild/','/troubleshooting/finnix-rescue-mode/','/guides/rescue-and-rebuild/']
-authors: ["Linode"]
 ---
 
 Even the best system administrators may need to deal with unplanned events in the operation of their services. The Cloud Manager provides recovery tools that you can leverage if you are having trouble connecting to one of the Compute Instances, and this guide describes those tools:
@@ -44,7 +41,7 @@ While this guide outlines the recovery tools that Linode makes available to you,
 
 To access Rescue Mode, you need to [reboot your Compute Instance](#booting-into-rescue-mode) from the Cloud Manager and then connect through [Lish](#connecting-to-a-linode-running-in-rescue-mode) or [SSH](#starting-ssh). After you connect, you can [perform a check on your filesystem](#performing-a-file-system-check) if you suspect that it is corrupted. If you need access to a certain software package to troubleshoot the system, you can [install it](#installing-packages).
 
-The disks are mounted by default, so [mount](#mounting-disks) them in order to access the files. After you mount the primary filesystem, you can [*change root*](#change-root) to have Rescue Mode emulate normal Linux distribution.
+Disks are not mounted by default and need to be [mounted manually](#mounting-disks) before you can access your files. After you mount the primary filesystem, you can [*change root*](#change-root) to have Rescue Mode emulate normal Linux distribution.
 
 ### Boot into Rescue Mode
 
@@ -217,7 +214,7 @@ The software packages you install is available as long as the Compute Instance i
 ### Mounting Disks
 
 {{< note >}}
-Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/#update-your-fstab) guide.
+Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/#additional-system-configuration) guide.
 {{< /note >}}
 
 By default, your disks are not mounted when your Compute Instance boots into Rescue Mode. However, you can manually mount a disk under Rescue Mode to perform system recovery and maintenance tasks.
@@ -346,7 +343,7 @@ Linode recommends that you follow the instructions in [Recovering from a System 
 
 ### Restoring from a Backup
 
-If you previously enabled the [Backup Service](https://www.linode.com/backups), you may be able to restore one of the backups to the Compute Instance. Review the [Restoring from a Backup](/docs/products/storage/backups/#restore-from-a-backup) section (specifically, the [Restore to an Existing Compute Instance](/docs/products/storage/backups/guides/restore-to-an-existing-instance/) section) of the [The Backup Service](/docs/products/storage/backups/) guide for instructions.
+If you previously enabled the [Backup Service](https://www.linode.com/backups), you may be able to restore one of the backups to the Compute Instance. Review the [Restore a Backup to an Existing Compute Instance](/docs/products/storage/backups/guides/restore-to-an-existing-instance/) guide for instructions.
 
 If you created backups with an application other than Linode's Backup Service, review the application's instructions to restore a backup to the Compute Instance.
 
@@ -359,11 +356,11 @@ The Cloud Manager provides a *Rebuild* feature performs the following two action
 1.  A new set of disks is provisioned from one of the Cloud Manager's built-in Linux images, or from one of the [saved images](/docs/products/tools/images/).
 
     {{< note type="alert" >}}
-    If you use the Rebuild feature, the data from the disks that are deleted are not retrievable. You may [back up your data manually](/docs/guides/backing-up-your-data/) or [create a snapshot through Linode's Backup Service](/docs/products/storage/backups/#take-a-manual-snapshot) to preserve data before using the Rebuild feature.
+    If you use the Rebuild feature, the data from the disks that are deleted are not retrievable. You may [back up your data manually](/docs/guides/backing-up-your-data/) or [create a snapshot through Linode's Backup Service](/docs/products/storage/backups/guides/take-a-snapshot/) to preserve data before using the Rebuild feature.
 
-    If you'd like to deploy a new Linux distribution without erasing the existing disks, follow the instructions in the [Creating a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#creating-a-disk) guide. This is a better option if you need to create a new distribution, but also need to save the existing data.
+    If you'd like to deploy a new Linux distribution without erasing the existing disks, follow the instructions in the [Creating a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#create-a-disk) guide. This is a better option if you need to create a new distribution, but also need to save the existing data.
 
-    The Compute Instance needs to have some amount of unallocated disk space in order to provision a new distribution. If the instance does not have enough unallocated space, you can [shrink your existing disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#resizing-a-disk) to free up space or [resize your Compute Instance](/docs/products/compute/compute-instances/guides/resize/) to a higher resource tier.
+    The Compute Instance needs to have some amount of unallocated disk space in order to provision a new distribution. If the instance does not have enough unallocated space, you can [shrink your existing disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#resize-a-disk) to free up space or [resize your Compute Instance](/docs/products/compute/compute-instances/guides/resize/) to a higher resource tier.
     {{< /note >}}
 
     If you need to copy files from your existing disk to another location before rebuilding, you can [start SSH](#starting-ssh) under Rescue Mode and then use an SFTP client to copy files to your computer.
@@ -384,7 +381,7 @@ To use the Rebuild feature:
 
 1.  Complete the Rebuild form. Select an image or StackScript to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via the Cloud Manager, this option does not appear).
 
-    {{< content "password-requirements-shortguide" >}}
+    {{% content "password-requirements-shortguide" %}}
 
 1.  Click on **Rebuild** button after completing the form:
 

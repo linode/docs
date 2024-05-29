@@ -1,16 +1,15 @@
 ---
 slug: how-to-use-the-linode-api-with-twilio
+title: "Using the Linode API with Twilio"
+title_meta: "How to Use the Linode API with Twilio"
 description: 'Twilio is an internet messaging service that can be used to monitor server infrastructure. This guide shows a first example of embedding Linode API data in a text message with Twilio.'
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2021-12-23
+modified: 2022-01-07
 keywords: []
 tags: ['python','monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-23
-modified: 2022-01-07
-modified_by:
-  name: Linode
-title: "Using the Linode API with Twilio"
-title_meta: "How to Use the Linode API with Twilio"
-authors: ["John Mueller"]
 ---
 
 [Twilio](https://www.twilio.com/) links internet and telecom networks, creating connections using text messages, emails, phone calls, video, and intelligent chatbots. When you first explore the service, it may appear customer service-oriented, especially for marketing purposes. However, Twilio also has value to anyone who needs [operations support](https://www.twilio.com/solutions/operations), including network administrators.

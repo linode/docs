@@ -2,12 +2,11 @@
 slug: list-of-databases
 title: "Comparing DBMSs: The 8 Most Popular Databases"
 description: "Searching for a list of the most popular databases? Our article covers what to look for in a database and top options for data storage."
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2022-02-25
 keywords: ['database',database lists'','best database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-25
-modified_by:
-  name: Linode
-authors: ["Jack Wallen"]
 ---
 
 Databases power nearly every digital platform on the planet: From websites, to blogs, to social media, to streaming services. Most end-users know databases such as MySQL as a tool to store data. That's a pretty accurate, although fundamental, description of what a database is. However, they are much more than that.
@@ -189,7 +188,7 @@ As far as disadvantages, PostgreSQL suffers a few, such as:
 
 - More complicated than MySQL.
 - Slower than MySQL.
-- No easy way to migrate data from other RDBMSes.
+- No easy way to migrate data from other RDBMSs.
 - Poor data compression.
 - Complicated horizontal scaling.
 - Poor clustering support.

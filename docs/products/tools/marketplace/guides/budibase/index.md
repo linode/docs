@@ -1,12 +1,9 @@
 ---
+title: "Deploy Budibase through the Linode Marketplace"
 description: "Deploy Budibase, a low-code platform for building modern business applications, on a Linode Compute Instance."
+published: 2022-08-09
 keywords: ['budibase','CRUD','low-code']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2022-08-09
-modified_by:
-  name: Linode
-title: "Deploy Budibase through the Linode Marketplace"
-authors: ["Linode"]
 ---
 
 [Budibase](https://github.com/Budibase/budibase) is an open-source, low-code platform for building modern business applications. Build, design, and automate different types of applications, including admin panels, forms, internal tools, and client portals. Using Budibase helps developers avoid spending weeks building simple CRUD applications and, instead, allows them to complete many projects in significantly less time.
@@ -17,9 +14,9 @@ When self-hosting the Budibase application, you are responsible for the security
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Budibase should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -52,4 +49,4 @@ When self-hosting the Budibase application, you are responsible for the security
 
     ![Screenshot of the Budibase web app](Budibase-webapp.jpg)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

@@ -8,9 +8,16 @@ export function getAnchor(url: URL) {
   let anchorMatch
   if (url.hash) {
     return url.hash.slice(1)
-  } else if (anchorMatch = url.href.match(/#(.*)$/)) {
+    // eslint-disable-next-line no-cond-assign
+  } else if ((anchorMatch = url.href.match(/#(.*)$/))) {
     return anchorMatch[1]
   }
+}
+
+export function getAction(form: HTMLFormElement, submitter?: HTMLElement) {
+  const action = submitter?.getAttribute("formaction") || form.getAttribute("action") || form.action
+
+  return expandURL(action)
 }
 
 export function getExtension(url: URL) {
@@ -18,7 +25,7 @@ export function getExtension(url: URL) {
 }
 
 export function isHTML(url: URL) {
-  return !!getExtension(url).match(/^(?:|\.(?:htm|html|xhtml))$/)
+  return !!getExtension(url).match(/^(?:|\.(?:htm|html|xhtml|php))$/)
 }
 
 export function isPrefixedBy(baseURL: URL, url: URL) {
@@ -26,11 +33,13 @@ export function isPrefixedBy(baseURL: URL, url: URL) {
   return baseURL.href === expandURL(prefix).href || baseURL.href.startsWith(prefix)
 }
 
+export function locationIsVisitable(location: URL, rootLocation: URL) {
+  return isPrefixedBy(location, rootLocation) && isHTML(location)
+}
+
 export function getRequestURL(url: URL) {
   const anchor = getAnchor(url)
-  return anchor != null
-    ? url.href.slice(0, -(anchor.length + 1))
-    : url.href
+  return anchor != null ? url.href.slice(0, -(anchor.length + 1)) : url.href
 }
 
 export function toCacheKey(url: URL) {

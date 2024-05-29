@@ -1,14 +1,11 @@
 ---
 title: Grant a Developer Access a Compute Instance or Linode Account
 description: Shows how to create an account with access restrictions for developers and maintainers.
+published: 2018-07-26
+modified: 2024-03-11
 keywords: ["accounts", "passwords", "linode manager", "manager", "security"]
 tags: ["ssh","linode platform","drupal","security","mysql","wordpress"]
-published: 2018-07-26
-modified: 2023-03-14
-modified_by:
-  name: Linode
 aliases: ['/platform/create-limited-developer-account/','/guides/create-limited-developer-account/']
-authors: ["Edward Angert"]
 ---
 
 One of the most powerful features of Linode's unmanaged service is the amount of control Linode users have over their account and the software installed on their systems. If you're a business owner that does not have expertise with installing or maintaining software on Linux, or if you do have experience with Linux but don't have the time to set up a new server, then contracting with a developer or administrator is a popular way to get your services up and running.
@@ -19,7 +16,7 @@ When you hire someone to work on your Linode, there are a variety of ways to gra
 
 This guide explains and answers some of the most frequently asked questions about account access. The sections are separated in order of granularity, starting with service-level access at the top, and working towards application-specific access.
 
-For security and privacy, [Linode Support](/docs/products/platform/get-started/guides/support/) is not able to troubleshoot issues related to users and application access. Instead, Linode offers an in-house [Professional Services](https://www.linode.com/products/pro-services/) team that can be hired to help with projects.
+For security and privacy, [Linode Support](/docs/products/platform/get-started/guides/support/) is not able to troubleshoot issues related to users and application access. Instead, Linode offers an in-house Professional Services team that can be hired to help with projects. You can reach out to that team through the [Contact Sales](https://www.linode.com/company/contact/) form.
 
 {{< note >}}
 The following sections include commands that show how to manipulate credentials on your Compute Instances, and these commands use `exampleUser` in place of your users' names. Replace `exampleUser` with whatever you would like to name your users.
@@ -37,7 +34,7 @@ If you're not sure whether you're logged in as the account administrator, look f
 
 ### Add a User to the Linode Account
 
-Keep your account administrator credentials secret. When hiring an external individual or agency to work on your site or application, create a *restricted* user and assign specific access to the account. Learn more about how to manage users and permissions and how to recover a lost username in our [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/#users-and-permissions) guide.
+Keep your account administrator credentials secret. When hiring an external individual or agency to work on your site or application, create a *restricted* user and assign specific access to the account. Learn more about how to manage users and permissions and how to recover a lost username in our [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/#recover-a-lost-username) guide.
 
 Useful *Global Grants* for a limited access user might include the ability to:
 
@@ -50,7 +47,7 @@ Useful *Global Grants* for a limited access user might include the ability to:
 
 ### Revoke a User's Access to the Linode Account
 
-1. If you suspect that the user may have access to the Cloud Manager password, [change that first](/docs/products/platform/accounts/guides/manage-users/#changing-your-linode-manager-password).
+1. If you suspect that the user may have access to the Cloud Manager password, [change that first](/docs/products/platform/accounts/guides/reset-user-password/).
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/) and click [**Users and Permissions**](https://cloud.linode.com/account/users) in the **Account** tab. You may be prompted to reauthenticate your password.
 
@@ -60,10 +57,10 @@ Useful *Global Grants* for a limited access user might include the ability to:
 
 The primary method for directly administering files and software on a Compute Instance is through SSH. SSH is a service that runs on a system and listens for and accepts remote terminal connections. Once an SSH connection is opened, a user can issue commands to your server. **Your Compute Instance's SSH users are not the same as your Cloud Manager users.**
 
-For the steps in this section, [connect to your Compute Instance via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance/) to log in to the system as `root`, which is the primary administrative (and most powerful) user on every Linux system. Alternatively, you can login as non-root user with *sudo* (i.e. administrative) permissions.
+For the steps in this section, [connect to your Compute Instance via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) to log in to the system as `root`, which is the primary administrative (and most powerful) user on every Linux system. Alternatively, you can login as non-root user with *sudo* (i.e. administrative) permissions.
 
 {{< note >}}
-If you don't remember your root password, [reset it through the Manager](/docs/products/platform/accounts/guides/manage-users/#resetting-your-linode-manager-password).
+If you don't remember your root password, [reset it through the Manager](/docs/products/platform/accounts/guides/reset-user-password/).
 {{< /note >}}
 
 ### Who Has SSH Access to Your Compute Instance?

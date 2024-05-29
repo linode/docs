@@ -2,13 +2,13 @@
 title: Longview
 title_meta: "Longview Product Documentation"
 description: "Longview is Linode’s system data graphing service. It tracks metrics for CPU, memory, and network bandwidth on both an aggregate and per-process basis."
+published: 2023-05-24
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 cascade:
     product_description: "View real-time system metrics and resource utilization to gain insight into your Linux-based cloud workloads."
-published: 2023-05-24
 aliases: ['/platform/longview/pricing/','/guides/linode-longview-pricing-and-plans/','/platform/longview/','/guides/platform/monitoring/']
 ---
 

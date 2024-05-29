@@ -1,14 +1,13 @@
 ---
 slug: web-servers-list
-description: 'Use this helpful web servers list to build your website. Our guide includes a list of web server names and comparisons between them. Learn more here in this guide.'
-keywords: ['servers comparison','web server names','list of web servers']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-03
-modified_by:
-  name: Linode
 title: "The Ultimate Web Servers List: 11 Popular Web Servers To Use Today"
 title_meta: "Web Server Software List and Servers Comparison"
+description: 'Use this helpful web servers list to build your website. Our guide includes a list of web server names and comparisons between them. Learn more here in this guide.'
 authors: ["Wayne Rash"]
+contributors: ["Wayne Rash"]
+published: 2021-12-03
+keywords: ['servers comparison','web server names','list of web servers']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 This is the web server list you’ve been looking for – the guide discusses the most popular web servers and their advantages.
@@ -59,7 +58,7 @@ The [Lighttpd web server](https://www.lighttpd.net/) (pronounced “lighty”) i
 
 ## NGINX Web Server
 
-[NGINX](https://www.nginx.com/) (pronounced “Engine X”) is considered by many to be a preferred alternative to Apache. It’s a free and open source web server with a wide variety of other capabilities including load balancing, mail proxy, and the ability to provide predictable performance under heavy loads. While the total number of web sites using NGINXis smaller than the number using IIS, NGINX appears on a greater number of large sites, and depending on how you count, it may be as many as Apache. NGINX runs on a number of high-profile sites including Microsoft and IBM, each of which have their own web server software. The server handles a large number of concurrent users using an event-driven approach that avoids multiple threading. NGINX handles secure communications with TLS/SSL and minimizes memory usage.
+[NGINX](https://www.nginx.com/) (pronounced “Engine X”) is considered by many to be a preferred alternative to Apache. It’s a free and open source web server with a wide variety of other capabilities including load balancing, mail proxy, and the ability to provide predictable performance under heavy loads. While the total number of web sites using NGINX is smaller than the number using IIS, NGINX appears on a greater number of large sites, and depending on how you count, it may be as many as Apache. NGINX runs on a number of high-profile sites including Microsoft and IBM, each of which have their own web server software. The server handles a large number of concurrent users using an event-driven approach that avoids multiple threading. NGINX handles secure communications with TLS/SSL and minimizes memory usage.
 
 While NGINX is free and open source, there’s also a company of the same name that’s part of F5 as the [F5 NGINX Application Platform](https://www.nginx.com/products/), which is not free. However, the commercial version provides a number of enterprise level enhancements including security and scalability. Refer to our documentation library to [learn how to install and configure an NGINX web server on Linux](/docs/guides/web-servers/nginx/).
 
