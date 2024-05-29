@@ -1,14 +1,12 @@
 ---
 slug: the-benefits-of-serverless
-title: "7 Serverless Computing Benefits"
-title_meta: "The 7 Benefits of Serverless"
-description: 'Discover the benefits of serverless computing, from cost savings and scalability to reduced maintenance and better security. ✓ Click here!'
+title: "Benefits of Serverless Computing"
+description: "Discover the benefits of serverless computing, from cost savings and scalability to reduced maintenance and better security."
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2023-06-02
 keywords: ['serverless benefits','serverless computing','serverless applications','reduce operational costs','increase productivity','serverless benefits','serverless web applications','backend services']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Jack Wallen"]
-published: 2023-06-02
-modified_by:
-  name: Linode
 external_resources:
 - '[IBM: What is serverless?](https://www.ibm.com/topics/serverless)'
 ---
