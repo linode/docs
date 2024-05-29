@@ -1,22 +1,21 @@
 ---
 slug: docker-container-communication
+title: "Connect Docker Containers"
+title_meta: "How to Connect Docker Containers"
 description: 'This guide will show you how to link Docker containers using a Node.js application and PostgreSQL.'
 og_description: "Learn to link Docker containers using a Node.js application and PostgreSQL through a simple 'Hello World' application."
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
+published: 2017-12-28
+modified: 2017-11-29
 keywords: ['docker','containers','database','container communication']
 tags: ["postgresql","database","container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-12-28
-modified: 2017-11-29
-modified_by:
-  name: Jared Kobos
-title: "Connect Docker Containers"
-title_meta: "How to Connect Docker Containers"
 external_resources:
 - '[Docker: Understanding Container Communication](https://docs.docker.com/engine/userguide/networking/default_network/container-communication/)'
 - '[Linking Containers](https://rominirani.com/docker-tutorial-series-part-8-linking-containers-69a4e5bf50fb)'
 - '[Connecting Containers](https://deis.com/blog/2016/connecting-docker-containers-1/)'
 aliases: ['/applications/containers/docker-container-communication/']
-authors: ["Jared Kobos"]
 ---
 
 ![Connect Docker Containers](connect-docker-containers.jpg)
@@ -31,7 +30,7 @@ Configuring the containers to communicate with each other and the host machine c
 
 You will need a Linode with Docker CE installed to follow along with the steps in this guide.
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ## Example Node.js Application
 
@@ -267,13 +266,13 @@ You should not store production database data inside a Docker container. Contain
         psql -U postgres -f backup.sql postgres
         exit
 
-5.  Run the node image again. This time, instead of `--add-host`, use the `--link` option to connect the container to pg_container:
+5.  Run the node image again. This time, instead of `--add-host`, use the `--link` option to connect the container to `pg_container`:
 
         docker run -d --name node_container --link=pg_container:database node_image
 
     This will link the `pg_container` under the hostname `database`.
 
-6.  Open `/etc/hosts` in node_container to confirm that the link has been made:
+6.  Open `/etc/hosts` in `node_container` to confirm that the link has been made:
 
         docker exec -it node_container cat /etc/hosts
 

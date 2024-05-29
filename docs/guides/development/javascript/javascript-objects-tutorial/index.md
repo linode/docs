@@ -1,25 +1,24 @@
 ---
 slug: javascript-objects-tutorial
-description: "JavaScript objects include key-value properties and methods and support inheritance. This tutorial discusses JavaScript objects, object inheritance, and the keyword this."
-keywords: ['javascript objects','javascript objects properties','javascript objects prototype']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-15
-modified_by:
-  name: Linode
 title: "An Introduction to Javascript Objects"
 title_meta: "A Javascript Objects Tutorial"
+description: "JavaScript objects include key-value properties and methods and support inheritance. This tutorial discusses JavaScript objects, object inheritance, and the keyword this."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-04-15
+keywords: ['javascript objects','javascript objects properties','javascript objects prototype']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[MDN Web Docs: Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)'
 - '[MDN Web Docs: Inheritance and the Prototype Chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)'
 - '[MDN Web Docs: Working with Objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects)'
-authors: ["Nathaniel Stickman"]
 ---
 
 Objects play a fundamental role in JavaScript and appear just about everywhere throughout the language. This tutorial explains what JavaScript objects are and discusses object properties, methods, and prototypes. Each topic includes examples to illustrate their concepts.
 
 ## Before You Begin
 
-This guide's JavaScript examples were originally run in the Node.js interpreter. You can use our [How to Install and Use the Node Version Manager NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#installing-and-configuring-nvm) guide to install Node.js on your computer.
+This guide's JavaScript examples were originally run in the Node.js interpreter. You can use our [How to Install and Use the Node Version Manager NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide to install Node.js on your computer.
 
 Alternatively, you can use your web browser's JavaScript console to run this guide's example JavaScript code.
 

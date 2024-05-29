@@ -1,22 +1,21 @@
 ---
 slug: creating-your-first-chef-cookbook
+title: Creating your First Chef Cookbook
+title_meta: How to Create your First Chef Cookbook
 description: 'This guide provides you instructions for creating Chef cookbooks to automate tasks and automatically push changes by creating a LAMP stack in Chef.'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-06-10
+modified: 2019-12-03
 keywords: ["chef", "automation", "cookbooks", "configuration management", "DevOps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/configuration-management/creating-your-first-chef-cookbook/','/applications/chef/creating-your-first-chef-cookbook/','/applications/configuration-management/chef/creating-your-first-chef-cookbook/']
-modified: 2019-12-03
-modified_by:
-  name: Linode
-published: 2015-06-10
-title: Creating your First Chef Cookbook
-title_meta: How to Create your First Chef Cookbook
 external_resources:
  - '[Chef](http://www.chef.io)'
  - '[About Cookbooks](https://docs.chef.io/cookbooks.html)'
  - '[About Knife](https://docs.chef.io/knife.html)'
  - '[About Nodes](https://docs.chef.io/nodes.html)'
 tags: ["automation"]
-authors: ["Elle Krout"]
 ---
 
 Chef cookbooks describe the *desired state* of your nodes, and allow Chef to push out the changes needed to achieve this state. In this guide you will learn how to create a cookbook that configures A LAMP stack on a Linode.
@@ -677,4 +676,4 @@ end
 
     `chef-client` is not designed to accept user input, and as such using commands like `mysqladmin status` that require a password can cause Chef to hang. If you need to be able to interact with MySQL client directly, consider logging in to your server directly.
 
-You have just created a LAMP Stack cookbook. Through this guide, you should have learned to use the execute, package, service, node, directory, template, cookbook_file, and mysql_service resources within a recipe, as well as download and use LWRPs, create encrypted data bags, upload/update your cookbooks to the server, and use attributes, templates, and cookbook files. This gives you a strong basis in Chef and cookbook creation for future projects.
+You have just created a LAMP Stack cookbook. Through this guide, you should have learned to use the `execute`, `package`, `service`, `node`, `directory`, `template`, `cookbook_file`, and `mysql_service` resources within a recipe, as well as download and use LWRPs, create encrypted data bags, upload/update your cookbooks to the server, and use attributes, templates, and cookbook files. This gives you a strong basis in Chef and cookbook creation for future projects.

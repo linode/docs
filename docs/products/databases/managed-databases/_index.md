@@ -1,8 +1,9 @@
 ---
 title: Managed Databases
-linkTitle: Managed Databases
 title_meta: "Managed Databases Product Documentation"
 description: "Learn about Linode's Managed Database service, which provides fully managed cloud database clusters built on top of Linode’s trusted and reliable platform."
+modified: 2023-05-02
+linkTitle: Managed Databases
 tab_group_main:
     is_root: true
     title: Overview
@@ -11,8 +12,9 @@ cascade:
     date: 2022-02-23
     product_description: "Fully managed cloud database clusters built on top of Linode’s trusted and reliable platform."
 aliases: ['/products/database/']
-modified: 2023-05-02
 ---
+
+{{% content "dbass-eos" %}}
 
 Linode's Managed Databases combine performance, reliability, and high availability into a fully managed database solution. Databases are used by most organizations to store their business and operational data, including customer information, financial details, application content, ecommerce transactions, and much more. Managing the database infrastructure to store and safeguard this data can put additional stress on the resources you have available. **Managed Databases** take care of managing this critical infrastructure for you, providing you with an easy to use DBaaS (database-as-a-service) solution built on top of Linode's trusted and reliable platform.
 

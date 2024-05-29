@@ -1,16 +1,15 @@
 ---
 slug: lamp-on-centos-6
-deprecated: true
+title: LAMP on CentOS 6
 description: 'This guide shows you how to create a LAMP Stack, Linux, Apache, MySQL, PHP, a common web stack for running websites, applications, and more, on CentOS 6.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2011-07-19
+modified: 2015-12-01
 keywords: ["LAMP", "CentOS", "CentOS 6", "apache", "mysql", "php", "centos lamp"]
 tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-on-centos-6/','/lamp-guides/centos-6/','/websites/lamp/lamp-server-on-centos-6/','/web-servers/lamp/lamp-on-centos-6/']
-modified: 2015-12-01
-modified_by:
-  name: Alex Fornuto
-published: 2011-07-19
-title: LAMP on CentOS 6
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -21,20 +20,20 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: CentOS 6
-authors: ["Alex Fornuto"]
+deprecated: true
 ---
 
 ![LAMP on CentOS 6](lamp-centos-6.png)
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack on a CentOS 6 system.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
     To check your hostname run:
 

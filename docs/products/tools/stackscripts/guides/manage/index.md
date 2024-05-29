@@ -2,12 +2,10 @@
 title: Manage StackScripts
 title_meta: Manage StackScripts on the Linode Platform
 description: "Learn how to view, edit, and manage StackScripts on your Linode account."
-keywords: ["automation", "scripts", "deployments", "instance"]
-tags: ["linode platform","automation","cloud manager"]
 published: 2020-04-22
 modified: 2022-11-30
-modified_by:
-  name: Linode
+keywords: ["automation", "scripts", "deployments", "instance"]
+tags: ["linode platform","automation","cloud manager"]
 aliases: ['/platform/stackscripts/creating-and-managing-stackscripts-a-tutorial/','/guides/creating-and-managing-stackscripts-a-tutorial/','/products/tools/stackscripts/guides/stackscripts-edit-stackscript/','/products/tools/stackscripts/guides/stackscripts-delete-stackscript/','/products/tools/stackscripts/guides/stackscripts-create-public-stackscript/']
 ---
 
@@ -54,7 +52,7 @@ Making an Account StackScript public allows the rest of the Linode community to 
     {{< /note >}}
 
 {{< note >}}
-Your public [Account StackScript](/docs/products/tools/stackscripts/guides/deploy-a-compute-instance/#account-stackscripts) is available to you for use on the Account StackScripts tab. For users on other accounts, your StackScript is available to them from the [Community StackScripts](/docs/products/tools/stackscripts/guides/deploy-a-compute-instance/#community-stackscripts) tab.
+Your public StackScript is available to you for use on the Account StackScripts tab. For users on other accounts, your StackScript is available to them from the Community StackScripts tab.
 {{< /note >}}
 
 ## Delete a StackScript

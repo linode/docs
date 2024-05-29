@@ -1,15 +1,14 @@
 ---
 slug: yesod-nginx-mysql-on-debian-7-wheezy
+title: 'Yesod, Nginx, and MySQL on Debian 7 (Wheezy)'
 description: 'Installing the web framework Yesod with the server Nginx and MySQL on Debian 7'
+authors: ["Si-Qi Liu"]
+contributors: ["Si-Qi Liu"]
+published: 2014-09-25
 keywords: ["yesod", "nginx", "mysql", "debian 7"]
 tags: ["web applications","nginx","mysql","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/','/development/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/','/development/frameworks/yesod/yesod-nginx-mysql-on-debian-7-wheezy/']
-modified: 2014-09-25
-modified_by:
-  name: Linode
-published: 2014-09-25
-title: 'Yesod, Nginx, and MySQL on Debian 7 (Wheezy)'
 external_resources:
  - '[Haskell Platform](http://www.haskell.org/platform/)'
  - '[Haskell Wiki for *cabal-install*](http://www.haskell.org/haskellwiki/Cabal-Install)'
@@ -22,13 +21,11 @@ relations:
         keywords:
             - distribution: Debian 7
 deprecated: true
-authors: ["Si-Qi Liu"]
 ---
-
 
 Yesod is a web framework based on the purely functional programming language Haskell. It is designed for productive development of type-safe, RESTful, and high performance web applications. This guide describes the required process for deploying Yesod and Nginx web server, MySQL database on Debian 7 (Wheezy).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as root or with the sudo prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -164,7 +161,7 @@ Production:
 
 Your site can be started in different environments such as Development, Testing, Staging and Production, and you can give different configurations for them. The configuration for the four different environments is given in the ``Default`` section. You can modify this section, using your own host, port, username, password, database, and so on. If you need different settings in the Production environment, for example, you can write your new settings in the ``Production`` section first, and then import the default ones by ``<<: *defaults``.
 
-We don't need to modify this configuration file, it's acceptable as is. So you only need to create a user "myblog" with password "myblog", and four databases "myblog", "myblog_testing", "myblog_staging", and "myblog_production". Remember to replace "myblog" with the name of your project.
+We don't need to modify this configuration file, it's acceptable as is. So you only need to create a user "myblog" with password "myblog", and four databases `myblog`, `myblog_testing`, `myblog_staging`, and `myblog_production`. Remember to replace "myblog" with the name of your project.
 
 1.  Issue the following command to login the root account of the mysql database management system:
 

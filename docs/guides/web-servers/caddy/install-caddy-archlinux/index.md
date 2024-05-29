@@ -1,13 +1,13 @@
 ---
 slug: install-caddy-archlinux
+title: "Install Caddy on Arch Linux"
 description: "Caddy is an open source HTTP/2-enabled web server with automatic HTTPS. This guide demonstrates how to install Caddy on Arch Linux."
-keywords: ['caddy', 'install caddy', 'archlinux', 'web server']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Claudio Costa"]
+contributors: ["Claudio Costa"]
 published: 2018-12-14
 modified: 2021-12-30
-modified_by:
-  name: Linode
-title: "Install Caddy on Arch Linux"
+keywords: ['caddy', 'install caddy', 'archlinux', 'web server']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Caddy Official Documentation](https://caddyserver.com/docs)'
 relations:
@@ -17,16 +17,15 @@ relations:
             - distribution: Arch Linux
 tags: ["web server"]
 aliases: ['/web-servers/caddy/install-caddy-archlinux/']
-authors: ["Claudio Costa"]
 ---
 
 ## Before You Begin
 
 1.  Familiarize yourself with the [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
-1.  Complete the sections of the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), and [remove unnecessary network services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services).
+1.  Complete the sections of the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) and [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access).
 
-1.  Register (purchase) your site's domain name and follow our [DNS Manager Overview](/docs/products/networking/dns-manager/#add-records) guide to point the domain to your Linode.
+1.  Register (purchase) your site's domain name and follow our [Manage DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/) guide to point the domain to your Linode.
 
 1.  Update your system:
 

@@ -1,16 +1,14 @@
 ---
 slug: lighttpd-web-server-on-ubuntu-12-04-preci
-deprecated: true
+title: 'lighttpd Web Server on Ubuntu 12.04 (Precise)'
 description: 'This guide will show you how to install and configure lighttpd to host multiple websites or web-based applications on a Linode running Ubuntu 12.04 "Precise Pangolin".'
+authors: ["Dave Messina"]
+contributors: ["Dave Messina"]
+published: 2013-09-11
 keywords: ["lighttpd", "web server", "web hosting"]
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lighttpd/ubuntu-12-04-precise/','/web-servers/lighttpd/lighttpd-web-server-on-ubuntu-12-04-preci/','/websites/lighttpd/lighttpd-web-server-on-ubuntu-12-04-preci/']
-modified: 2013-09-11
-modified_by:
-  name: Linode
-published: 2013-09-11
-title: 'lighttpd Web Server on Ubuntu 12.04 (Precise)'
 external_resources:
  - '[Optimizing FastCGI Performance (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI)'
  - '[mod\_fastcgi Documentation (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModFastCGI)'
@@ -21,7 +19,7 @@ relations:
         key: install-lighttpd
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Dave Messina"]
+deprecated: true
 ---
 
 This tutorial explains how to install and configure the lighttpd (e.g. "lighty") web server on Ubuntu 12.04 (Precise). Lighttpd is designed to provide a lightweight web server that is capable of serving large loads and using less memory than servers like the Apache HTTP server. It's commonly deployed on high traffic sites, including YouTube. You might want to consider using lighttpd if you're having problems scaling your current web server to meet your load requirements. Lighttpd makes sense for users who find "big" programs like Apache daunting and bloated.
@@ -34,7 +32,7 @@ For purposes of this tutorial we'll assume you are logged into an SSH session on
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

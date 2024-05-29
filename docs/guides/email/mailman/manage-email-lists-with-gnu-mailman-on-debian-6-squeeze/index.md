@@ -1,22 +1,21 @@
 ---
 slug: manage-email-lists-with-gnu-mailman-on-debian-6-squeeze
-deprecated: true
+title: 'Manage Email Lists with GNU Mailman on Debian 6'
 description: 'This guide shows how you can use GNU Mailman a free and open source Listserv management application for managing discussion lists on Debian 6 "Squeeze".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2011-05-23
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/mailman/debian-6-squeeze/','/email/mailman/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze/']
-modified: 2011-05-23
-modified_by:
-  name: Linode
-published: 2011-04-05
-title: 'Manage Email Lists with GNU Mailman on Debian 6'
 relations:
     platform:
         key: use-gnu-mailman
         keywords:
             - distribution: Debian 6
-authors: ["Linode"]
+deprecated: true
 ---
 
 GNU Mailman is a commonly used Listserv Management application that allows users to create and manage discussion and announcement email lists. Mailman includes support for numerous features including a web-based administrative interface, multiple domains, lists, and complex moderation and access control tools. The Mailman software is primarily written in the Python programing language and has been a popular choice for managing email lists for more than a decade.
@@ -49,7 +48,7 @@ During the Mailman installation, you will be required to specify the languages t
 
 ## Configure Mailman
 
-Consider the "[Configure Virtual Hosting](/docs/guides/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze/#configure-virtual-hosting)" section before preceding. In most cases where you will be hosting you will want to skip this section and continue with that procedure. Mailman requires a "base" list, from which it can send email to welcome new members to lists and send password reminders when needed. Create this list by issuing the following command:
+Consider the [Configure Virtual Hosting](#configure-virtual-hosting) section before preceding. In most cases where you will be hosting you will want to skip this section and continue with that procedure. Mailman requires a "base" list, from which it can send email to welcome new members to lists and send password reminders when needed. Create this list by issuing the following command:
 
     newlist mailman
 
@@ -74,9 +73,9 @@ These lines enable postfix to hand off email to Mailman for processing directly.
 
 {{< file "/etc/postfix/transport" >}}
 lists.example.com   mailman:
+{{</ file >}}
 
-# Configure Virtual Hosting
-
+## Configure Virtual Hosting
 
 Finally, modify the `/etc/mailman/mm_cfg.py` file to set the following values. After you've edited the `/etc/postfix/transport` file, and after every successive edit of this file, issue the following command to rebuild postfix's transport database:
 
@@ -93,9 +92,6 @@ This controls how Mailman processes the mail that it receives from postfix. Cont
 mailman unix  -       n       n       -       -       pipe
   flags=FR user=list
   argv=/var/lib/mailman/bin/postfix-to-mailman.py ${nexthop} ${mailbox}
-
-{{< /file >}}
-
 
 {{< /file >}}
 

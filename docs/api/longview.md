@@ -1,5 +1,5 @@
 ---
-title: Longview
 slug: longview
+title: Longview
 ---
 

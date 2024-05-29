@@ -3,165 +3,53 @@ name: CI Tests
 on: [pull_request]
 
 env:
-  hugo-image-cache-name: hugo-generated-images
-  hugo-image-cache-path: /home/runner/work/docs/docs/resources/_gen/images/
+  hugo_image_cache_name: hugo-generated-images
+  hugo_image_cache_path: /home/runner/work/docs-publishing/docs-publishing/docs-repo/resources/_gen/images/
 
 jobs:
   blueberry:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout docs repo
+      uses: actions/checkout@v3
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.10.x'
         architecture: 'x64'
-    - name: Cache pip
-      uses: actions/cache@v2
-      with:
-        path: ~/.cache/pip
-        # Look to see if there is a cache hit for the corresponding requirements file
-        key: ${{ runner.os }}-pip-${{ hashFiles('./ci/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-          ${{ runner.os }}-
-    - name: Install dependencies
+        cache: pip
+    - name: Install dependencies (Python)
       run: |
-        python -m pip install --upgrade pip
         pip install -r ./ci/requirements.txt
     - name: blueberry
       run: |
         python ./ci/blueberry.py
 
   vale:
+    name: Vale (spellchecker)
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@master
-    - name: Get Changed Files
-      id: get_changed_files
-      uses: jitterbit/get-changed-files@v1
-      # The continue-on-error parameter is set to true as a
-      # workaround for the `head commit is not ahead of base
-      # commit` error that can appear when the PR branch is
-      # out of date.
-      continue-on-error: true
-      with:
-        format: 'json'
-    - name: Install more-utils
-      run: sudo apt-get install moreutils
-    - name: Select Files in Docs Dir
-      # This action filters the list of added and modified
-      # files to only the files that are in the docs/ directory
-      id: select_docs_dir_files
-      run: |
-        docs_dir_files=$(echo $added_modified |  jq -c '[.[] | select(.|test("^docs/"))]')
-        echo "::set-output name=added_modified::$docs_dir_files"
-        echo "Added or modified files located within docs/ directory:"
-        echo $docs_dir_files | jq '.'
-      env:
-        added_modified: ${{ steps.get_changed_files.outputs.added_modified }}
-    - name: Vale
-      uses: errata-ai/vale-action@reviewdog
-      # Only run the Vale step if the list of added and modified
-      # files inside the docs directory is not empty. If we don't
-      # add this conditional, the Vale step hangs and never
-      # completes when it is passed the empty array.
-      if: ${{ '[]' != steps.select_docs_dir_files.outputs.added_modified }}
-      with:
-        files: '${{ steps.select_docs_dir_files.outputs.added_modified }}'
-        version: 2.19.0
-        vale_flags: "--minAlertLevel=error --glob='!docs/authors/*'"
-      env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - uses: actions/checkout@v3
+      - uses: errata-ai/vale-action@reviewdog
+        with:
+          files: docs
+          vale_flags: "--glob=!docs/contributors/*"
+          fail_on_error: true
 
   check-links:
     name: Check Links (Markdown)
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout docs repo
+      uses: actions/checkout@v3
     - name: Set up Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.11.x'
-        architecture: 'x64'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install python-frontmatter
-    - name: Run tests
-      run: python ./ci/check-links.py ${{ steps.files.outputs.all }}
-
-  docs404:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: List contents of images dir
-      continue-on-error: true
-      run: ls -al ${{ env.hugo-image-cache-path }}
-    - name: Restore Hugo generated images cache
-      uses: ylemkimon/cache-restore@v2
-      with:
-        path: ${{ env.hugo-image-cache-path }}
-        key: ${{ env.hugo-image-cache-name }}
-        restore-keys: ${{ env.hugo-image-cache-name }}
-    - name: List contents of images dir
-      continue-on-error: true
-      run: ls -al ${{ env.hugo-image-cache-path }}
-    - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.10.x'
         architecture: 'x64'
-    - name: Cache pip
-      uses: actions/cache@v2
-      with:
-        path: ~/.cache/pip
-        # Look to see if there is a cache hit for the corresponding requirements file
-        key: ${{ runner.os }}-pip-${{ hashFiles('./ci/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-          ${{ runner.os }}-
-    - name: Install dependencies
+        cache: pip
+    - name: Install dependencies (Python)
       run: |
-        python -m pip install --upgrade pip
         pip install -r ./ci/requirements.txt
-    - name: Use Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12.x'
-    - name: Install dependencies (Node)
-      run: npm install
-    - name: Set up Hugo
-      uses: peaceiris/actions-hugo@v2
-      with:
-        hugo-version: '0.111.3'
-    - name: Start Hugo server
-      run: |
-        # Start Hugo in background:
-        hugo server &
-
-        # Wait for server to start
-        # (or possibly fail to start):
-        while true
-        do
-            # Check if the server is responding on 1313,
-            # which means that the Hugo build finished.
-            if nc -z localhost 1313
-            then
-                exit 0
-            fi
-
-            # Check if the Hugo process is still running.
-            # If not, then the server failed to build.
-            if ! pgrep hugo > /dev/null
-            then
-                exit 1
-            fi
-
-            sleep 1
-        done
     - name: Run tests
-      run: python ./ci/docs404.py
+      run: python ./ci/check-links.py ${{ steps.files.outputs.all }}

@@ -1,15 +1,12 @@
 ---
+title: Common DNS Configurations
 description: 'Configurations for common DNS records.'
 og_description: 'This guide provides you with step-by-step instructions for using the Linode Cloud Manager to configure DNS records such as A, AAA, MX, and other DNS records.'
+published: 2015-01-20
+modified: 2019-03-14
 keywords: ["dns", "dnssec"]
 tags: ["dns","networking","cloud manager","linode platform"]
 aliases: ['/networking/dns/common-dns-configurations/','/dns-guides/configuring-dns-with-the-linode-manager/','/networking/dns/common-dns-configurations-classic-manager/','/guides/common-dns-configurations/']
-modified: 2019-03-14
-modified_by:
-  name: Linode
-published: 2015-01-20
-title: Common DNS Configurations
-authors: ["Linode"]
 ---
 
 {{< youtube Vb1JsfZlFLE >}}
@@ -44,7 +41,7 @@ The Domains section of the Cloud Manager can automatically add all of these reco
 
 ## Host Multiple Domains on a Single Server
 
-To host multiple domain names on a single server, create a separate domain entry for each domain name as shown below. When creating the new domain entry, we recommend that you allow the Domains section of the Cloud Manager to automatically [insert basic records](/docs/products/networking/dns-manager/#add-a-domain-zone). At a minimum, you'll need an A record for each domain name pointing to the server's IP address.
+To host multiple domain names on a single server, create a separate domain entry for each domain name as shown below. When creating the new domain entry, we recommend that you allow the Domains section of the Cloud Manager to automatically [insert basic records](/docs/products/networking/dns-manager/guides/create-domain/#pre-populate-dns-records). At a minimum, you'll need an A record for each domain name pointing to the server's IP address.
 
 ![This page shows the Domains page with three different domain zones listed.](common-dns-multiple-domains-one-server.png)
 

@@ -3,8 +3,6 @@ title: "Upgrade from API v3 to API v4"
 description: 'This guide is intended to help existing users upgrade to the new Linode API version 4, which includes a number of additional features and changes from v3 of the API.'
 published: 2018-05-14
 modified: 2022-11-30
-modified_by:
-  name: Linode
 external_resources:
  - '[Linode API Documentation](https://developers.linode.com)'
 keywords: ["api","linode api"]

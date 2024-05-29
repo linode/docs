@@ -1,30 +1,28 @@
 ---
 slug: apache-tomcat-on-ubuntu-16-04
+title: 'Installing Apache Tomcat on Ubuntu 16.04'
+title_meta: 'How to Install Apache Tomcat on Ubuntu 16.04'
 description: 'Install the Apache Tomcat Java servlet engine on Ubuntu 16.04 (Xenial Xerus) by following this guide.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2016-05-09
 keywords: ["apache tomcat ubuntu 16.04", "tomcat java", "java ubuntu 16.04", "tomcat ubuntu"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-16-04/','/websites/frameworks/apache-tomcat-on-ubuntu-16-04/','/development/frameworks/apache-tomcat-on-ubuntu-16-04/']
-modified: 2016-05-09
-modified_by:
-  name: Phil Zona
-published: 2016-05-09
-title: 'Installing Apache Tomcat on Ubuntu 16.04'
-title_meta: 'How to Install Apache Tomcat on Ubuntu 16.04'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["java"]
-deprecated: true
-deprecated_link: 'development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-18-04/'
 relations:
     platform:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 16.04
-authors: ["Linode"]
+deprecated: true
+deprecated_link: 'development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-18-04/'
 ---
 
 Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. With this guide, you'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.
@@ -35,7 +33,7 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 
 1.  Ensure that your system is up to date and that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/products/compute/compute-instances/faqs/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/).
 
-2.  Make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+2.  Make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
         hostname
         hostname -f
@@ -45,8 +43,7 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 3.  You should also make sure your system is up to date. Enter the following command and install any available updates:
 
         apt-get update && apt-get upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -55,8 +52,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 Install Tomcat from the Ubuntu repository:
 
     apt-get install tomcat8
-
-{{< note respectIndent=false >}}
+{{< note >}}
 OpenJDK will be installed as a dependency when you install the `tomcat8` package. The package `openjdk-8-jre-headless` is included with the `default-jre-headless` metapackage in Ubuntu.
 {{< /note >}}
 

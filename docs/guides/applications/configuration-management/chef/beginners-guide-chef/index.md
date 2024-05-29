@@ -1,22 +1,20 @@
 ---
 slug: beginners-guide-chef
+title: A Beginner's Guide to Chef
 description: 'A look into Chef''s primary components, features, and configurations for the new Chef user'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-06-10
+modified: 2021-03-04
 keywords: ["chef", "automation", "chefdk", "chef server", "chef development kit", "cookbooks", "beginners", "server automation", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/configuration-management/beginners-guide-chef/','/applications/chef/beginners-guide-chef/','/applications/configuration-management/chef/beginners-guide-chef/']
-modified: 2021-03-04
-modified_by:
-  name: Linode
-published: 2015-06-10
-title: A Beginner's Guide to Chef
 external_resources:
  - '[Chef](http://www.chef.io)'
  - '[Setting Up a Chef Server, Workstation, and Node on Ubuntu 18.04](/docs/guides/install-a-chef-server-workstation-on-ubuntu-18-04/)'
  - '[Creating Your First Chef Cookbook](/docs/guides/creating-your-first-chef-cookbook/)'
 tags: ["automation"]
-authors: ["Elle Krout"]
 ---
-
 
 *Chef* is a declarative configuration management and automation platform used to translate infrastructure into code. This enables a development and deployment process with better testing, efficient and predictable deployments, centralized versioning, and reproducible environments across all servers.
 

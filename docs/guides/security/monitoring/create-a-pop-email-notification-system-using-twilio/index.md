@@ -1,13 +1,13 @@
 ---
 slug: create-a-pop-email-notification-system-using-twilio
+title: "Create an Email Notification System Using Twilio (POP)"
 description: "Linode sends system notifications via email. This guide shows how to use the Python imaplib module to intercept those emails and forward them to text messages with the Twilio API."
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2022-02-25
 keywords: ['twilio notify']
 tags: ['email']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-25
-modified_by:
-  name: Linode
-title: "Create an Email Notification System Using Twilio (POP)"
 relations:
   platform:
     key: twilio-email-notifications
@@ -17,7 +17,6 @@ external_resources:
 - '[poplib — POP3 protocol client — Python 3.10.2 documentation](https://docs.python.org/3/library/poplib.html)'
 - '[email — An email and MIME handling package — Python 3.10.2 documentation](https://docs.python.org/3/library/email.html)'
 aliases: ['/guides/create-a-pop-email-notification-system-using-twilio/']
-authors: ["John Mueller"]
 ---
 
 By default, Linode sends system notifications via email. For example, email notifications are delivered when Linode Compute Instances are rebooted, when they receive hardware maintenance, and when they exceed a CPU usage threshold. You may also want to receive these notifications via text message. This guide shows how to set up a custom script that auto-forwards email notifications to text message.
@@ -97,19 +96,19 @@ except KeyError:
     sys.exit(1)
 {{< /file >}}
 
-    {{< disclosure-note "About the code" >}}
-This code imports several modules that are used later in the code:
+    {{< note type="secondary" title="About the code" isCollapsible=true >}}
+    This code imports several modules that are used later in the code:
 
-- The `os` module, which can be used to read environment variables from your terminal. The module is used in the `try` block to load your API tokens, Twilio phone numbers, and email POP email server credentials. A later section in this guide shows how to set those environment variables before running the script.
+    - The `os` module, which can be used to read environment variables from your terminal. The module is used in the `try` block to load your API tokens, Twilio phone numbers, and email POP email server credentials. A later section in this guide shows how to set those environment variables before running the script.
 
-    Alternatively, you could directly list the token and phone number values in the script. However, it's a good practice to avoid doing this. For example, if you listed your secrets inside the code and then uploaded your code to a public code repository like GitHub, they would be publicly visible.
+        Alternatively, you could directly list the token and phone number values in the script. However, it's a good practice to avoid doing this. For example, if you listed your secrets inside the code and then uploaded your code to a public code repository like GitHub, they would be publicly visible.
 
-    The `except KeyError` statement is executed if any of the environment variables are not set. A message is printed in the console that tells you which variables are expected by the script. The `sys` module an the `sys.exit()` method immediately exits the script in this case.
+        The `except KeyError` statement is executed if any of the environment variables are not set. A message is printed in the console that tells you which variables are expected by the script. The `sys` module an the `sys.exit()` method immediately exits the script in this case.
 
-- [The `poplib` module](https://docs.python.org/3/library/poplib.html) is used to connect to a POP server, and [the `email` module](https://docs.python.org/3/library/email.html#module-email) is used to parse email messages. These are used in a later section in this guide.
+    - [The `poplib` module](https://docs.python.org/3/library/poplib.html) is used to connect to a POP server, and [the `email` module](https://docs.python.org/3/library/email.html#module-email) is used to parse email messages. These are used in a later section in this guide.
 
-- [The `twilio` module](https://www.twilio.com/docs/libraries/python) is used to interact with the Twilio API. This is used in a later section in this guide.
-{{< /disclosure-note >}}
+    - [The `twilio` module](https://www.twilio.com/docs/libraries/python) is used to interact with the Twilio API. This is used in a later section in this guide.
+    {{< /note >}}
 
 ### Create the Twilio API Python Client
 
@@ -135,13 +134,13 @@ mail.user(email_username)
 mail.pass_(email_password)
 {{< /file >}}
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 - The first line [configures a secure connection](https://docs.python.org/3/library/poplib.html#poplib.POP3_SSL) to your email server.
 
 - The second line [specifies which user is connecting to the server](https://docs.python.org/3/library/poplib.html#poplib.POP3.user).
 
 - The third line [sends the password to the server](https://docs.python.org/3/library/poplib.html#poplib.POP3.pass_), which establishes an authenticated connection.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### List Mail IDs with Poplib
 
@@ -157,7 +156,7 @@ if num_messages == 0:
     sys.exit(0)
 {{< /file >}}
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 - Line 3 [retrieves a list of messages from the server](https://docs.python.org/3/library/poplib.html#poplib.POP3.list). The `list()` method sends the [`LIST` POP command](https://datatracker.ietf.org/doc/html/rfc1939#page-6) to the server and returns a tuple:
 
     1. The first member of the tuple (assigned to `pop_list_response`) is a byte string that contains a response status from the server. The string shows how many emails are on the server, and the total size of those emails. Here's an example response status:
@@ -181,7 +180,7 @@ if num_messages == 0:
 - Line 4 finds the length of the mail array, which is equal to the number of messages on the server.
 
 - Lines 5-7 make sure that at least one email is available on the server. The script exits early if none are found.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Fetch Email with Poplib
 
@@ -196,7 +195,7 @@ for i in range(num_messages):
     pop_retr_response, pop_retr_data, pop_retr_size = mail.retr(mail_id)
 {{< /file >}}
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 - Line 3 initiates a string variable named `message_text`. This variable represents the contents of the text message that is sent later in the script. This string is populated with contents from a Linode Alert email in the next section.
 
 - Lines 4-5 start a loop through the mail IDs on the email server. Line 5 subtracts the loop index `i` from the number of messages, which means that the loop iterates through the emails in reverse order, from newest to oldest.
@@ -250,7 +249,7 @@ for i in range(num_messages):
         Note that newlines have been inserted between each element of the array for better readability. As well, some of the header elements have been redacted.
 
     1. The third member of the tuple (assigned to `pop_retr_size`) is a string that contains the total size of the server's response to the `RETR` command.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Parse Email with the Python Email Module
 
@@ -274,7 +273,7 @@ Copy and paste the code from this snippet to the bottom of your script. Make sur
         break
 {{< /file >}}
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 This section of code parses the `pop_retr_data` array returned by the `retr()` method in the previous section. The code parses this array as follows:
 
 - Lines 3 joins the array of strings into a single string, using the newline character between each string. The result is an [RFC-822](https://datatracker.ietf.org/doc/html/rfc822) formatted email.
@@ -292,7 +291,7 @@ This section of code parses the `pop_retr_data` array returned by the `retr()` m
 - Lines 10-14 composes the message body that is sent via text message in the next section. The `\n` character sequence appears in this string. These characters [insert newlines in the message](https://support.twilio.com/hc/en-us/articles/223181468-How-do-I-Add-a-Line-Break-in-my-SMS-or-MMS-Message-).
 
 - Line 15: This code example only forwards the most recent Linode Alert email. Because one was found, the `break` statement is used to exit the loop.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Create and Send a Text Message with Twilio
 
@@ -316,23 +315,23 @@ message = twilio_client.messages.create(
 print("Twilio message created with ID: %s" % (message.sid))
 {{< /file >}}
 
-    {{< disclosure-note "About the code" >}}
-- Line 3 closes the connection to the email server.
+    {{< note type="secondary" title="About the code" isCollapsible=true >}}
+    - Line 3 closes the connection to the email server.
 
-- Lines 5-7 check to see if the `message_text` variable was populated with information from a Linode Alert email. If the string is still empty, then no such email was found on the server, and the script exits.
+    - Lines 5-7 check to see if the `message_text` variable was populated with information from a Linode Alert email. If the string is still empty, then no such email was found on the server, and the script exits.
 
-- Lines 10-13 sets up the text message notification:
+    - Lines 10-13 sets up the text message notification:
 
-    - The `create` method tells the Twilio API to create *and* immediately send a new text message:
+        - The `create` method tells the Twilio API to create *and* immediately send a new text message:
 
-    - The text string composed in the last section is used as the body of the message.
+        - The text string composed in the last section is used as the body of the message.
 
-    - The `from_` phone number corresponds to the new number that you selected in the Twilio console earlier in the guide.
+        - The `from_` phone number corresponds to the new number that you selected in the Twilio console earlier in the guide.
 
-    - The `to` number corresponds with your personal or testing phone number that you signed up to Twilio with.
+        - The `to` number corresponds with your personal or testing phone number that you signed up to Twilio with.
 
-- Line 15: The `create` method returns a reference to the Twilio [message resource](https://www.twilio.com/docs/sms/api/message-resource) that was created. This last line prints the unique ID of the message to your console.
-{{< /disclosure-note >}}
+    - Line 15: The `create` method returns a reference to the Twilio [message resource](https://www.twilio.com/docs/sms/api/message-resource) that was created. This last line prints the unique ID of the message to your console.
+    {{< /note >}}
 
 1. After appending the above snippet, save the file and exit your text editor.
 
@@ -444,7 +443,7 @@ The updated example code looks for email in the last full minute prior to when t
 
 - If an email arrived at 3:06:15PM, it is retrieved from the email server by the script. However, it is not within the full minute that preceded the script's execution, so it is not forwarded to text.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The code is written in this way because cron jobs are not guaranteed to run at exactly the time they are scheduled. For example, a job that is scheduled every minute might run at 6 seconds past the minute at one iteration, and 9 seconds past the minute the next time. The amount of load that a system is under can affect this timing.
 
 If the code only checked the 60 seconds prior to the script execution time, then some emails may be missed as a result of inconsistent timing. By standardizing the interval for every script run, all emails should be intercepted over time.
@@ -550,7 +549,7 @@ for i in range(num_messages):
 mail.close()
 {{< /file >}}
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 The example code is similar to the code from the previous section. The updated lines of code are:
 
 - On line 5, the [`datetime` module](https://docs.python.org/3/library/datetime.html) is imported. This is used later in the code to search for email by date.
@@ -578,9 +577,9 @@ The example code is similar to the code from the previous section. The updated l
 
     - Line 61: The last (or second) element of the array is stripped of whitespace, leaving just the RFC-822 datetime string.
 
-    - Line 62: The [parsedate_tz](https://docs.python.org/3/library/email.utils.html#email.utils.parsedate_tz) method of the Python email module is used to convert the datetime string to a 10-tuple representing the datetime that preserves timezone information.
+    - Line 62: The [`parsedate_tz`](https://docs.python.org/3/library/email.utils.html#email.utils.parsedate_tz) method of the Python email module is used to convert the datetime string to a 10-tuple representing the datetime that preserves timezone information.
 
-    - Line 63: The [mktime_tz](https://docs.python.org/3/library/email.utils.html#email.utils.mktime_tz) method of the Python email module accepts the 10-tuple datetime and returns a [datetime.datetime object](https://docs.python.org/3/library/datetime.html#datetime.datetime).
+    - Line 63: The [`mktime_tz`](https://docs.python.org/3/library/email.utils.html#email.utils.mktime_tz) method of the Python email module accepts the 10-tuple datetime and returns a [datetime.datetime object](https://docs.python.org/3/library/datetime.html#datetime.datetime).
 
 - Lines 64-70 are executed if the code that parses the received date generates any errors. In this case, information about the email is printed to your terminal and the `continue` statement is used to skip that email in the loop.
 
@@ -589,7 +588,7 @@ The example code is similar to the code from the previous section. The updated l
 - Lines 73-74 checks if the email is older than the script's interval. If it is, the loop is broken. The loop breaks here so your entire email list is not processed each time the script is run.
 
 - Lines 75-76 check to see if the email is newer than the script's interval. This can occur if an email was received between the script's interval and when the script is run. In this case, the `continue` statement is used to skip this email.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Set Up a Cron Job
 
@@ -746,8 +745,7 @@ This indicates that your email password or username are incorrect. Verify that y
 If the auto-forwarding system does not forward your Linode Alert emails, try running the script manually:
 
     python3 autoforward-email-to-text-message.py
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You need to set environment variables for the script in your terminal before running it. This is described in the [Run the Code](#run-the-code) section.
 {{< /note >}}
 

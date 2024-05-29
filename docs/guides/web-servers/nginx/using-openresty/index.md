@@ -1,13 +1,12 @@
 ---
 slug: using-openresty
+title: "How to Use the OpenResty Web Server"
 description: "OpenResty extends on NGINX with Lua scripting and a collection of modules to make it easier to scale your web applications. Learn how to set up your own OpenResty server and take advantage of these features in this guide."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2023-04-25
 keywords: ['what is openresty', 'openresty example', 'openresty vs nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-04-25
-modified_by:
-  name: Nathaniel Stickman
-title: "How to Use the OpenResty Web Server"
 external_resources:
 - '[OpenResty: Getting Started](https://openresty.org/en/getting-started.html)'
 - '[DigitalOcean: How to Use the OpenResty Web Framework for NGINX on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-use-the-openresty-web-framework-for-nginx-on-ubuntu-16-04)'
@@ -20,9 +19,9 @@ Learn in this guide everything you need to know about OpenResty and how to insta
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -172,7 +171,7 @@ sudo systemctl status openresty
 
 With an OpenResty instance installed and running, you can now try out a few examples.
 
-This guide uses the standard HTTP port (`80`) for its examples. To follow along, you should open that port on your instance. Visit our guide on [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/#configure-a-firewall). Identify the firewall manager appropriate for your system in the firewall section, and follow the linked guide to open the HTTP port for your system.
+This guide uses the standard HTTP port (`80`) for its examples. To follow along, you should open that port on your instance. Visit our guide on [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall). Identify the firewall manager appropriate for your system in the firewall section, and follow the linked guide to open the HTTP port for your system.
 
 OpenResty serves as a simple welcome page by default, similar to the default NGINX page. You can access the welcome page by navigating to the server's remote IP address in a web browser. For instance, if your server's remote IP address is `192.0.2.0`, navigate in your browser to `http://192.0.2.0`.
 

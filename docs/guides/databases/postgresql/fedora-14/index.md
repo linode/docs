@@ -1,14 +1,13 @@
 ---
 slug: fedora-14
-deprecated: true
+title: Use PostgreSQL Relational Databases on Fedora 14
 description: 'Using the PostgreSQL relational database server with Fedora 14.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-12-08
+modified: 2011-04-29
 keywords: ["postgresql fedora 14", "postgresql database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-12-08
-title: Use PostgreSQL Relational Databases on Fedora 14
 relations:
     platform:
         key: use-postrgesql-database
@@ -16,7 +15,7 @@ relations:
             - distribution: Fedora 14
 tags: ["database","postgresql","fedora"]
 aliases: ['/databases/postgresql/fedora-14/']
-authors: ["Linode"]
+deprecated: true
 ---
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Fedora 14. We assume you've followed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you're logged into your Linode as root via SSH.

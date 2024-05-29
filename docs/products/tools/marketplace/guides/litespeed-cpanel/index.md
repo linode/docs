@@ -1,16 +1,13 @@
 ---
+title: "Deploy LiteSpeed cPanel through the Linode Marketplace"
 description: "Deploy LiteSpeed cPanel on a Linode Compute Instance. This provides you with a lightning fast, performant, and secure web server that conserves resources."
-keywords: ['web server','cpanel','litespeed']
-tags: ["marketplace", "linode platform", "cloud manager","managed hosting"]
 published: 2021-11-12
 modified: 2022-05-17
-modified_by:
-  name: Linode
-title: "Deploy LiteSpeed cPanel through the Linode Marketplace"
+keywords: ['web server','cpanel','litespeed']
+tags: ["marketplace", "linode platform", "cloud manager","managed hosting"]
 external_resources:
 - '[LiteSpeed](https://www.litespeedtech.com/)'
 aliases: ['/guides/deploying-litespeed-cpanel-marketplace-app/','/guides/litespeed-cpanel-marketplace-app/']
-authors: ["Linode"]
 ---
 
 The LiteSpeed cPanel App automatically installs [cPanel](https://cpanel.net/), [LiteSpeed Web Server](https://www.litespeedtech.com/products/litespeed-web-server), and the[WHM/cPanel LiteSpeed Plugin](https://www.litespeedtech.com/products/litespeed-web-server/control-panel-plugins/cpanel).
@@ -29,9 +26,9 @@ LiteSpeed offers both free and paid plans. Visit [LiteSpeed's website](https://w
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-custom-shortguide">}}
+{{% content "marketplace-verify-custom-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** LiteSpeed cPanel should be fully installed within 10-20 minutes after the Compute Instance has finished provisioning.
@@ -124,4 +121,4 @@ Now that you’ve accessed your LiteSpeed instance, check out [the official Lite
 
     ![Screenshot of LiteSpeed WebAdmin Console](litespeed-webadmin-interface.png)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

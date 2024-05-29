@@ -1,20 +1,19 @@
 ---
 slug: how-to-install-a-turtl-server-on-ubuntu
+title: 'How to Install a Turtl Server on Ubuntu'
 description: 'This guide will show you how to install Turtl, a Privacy-Conscious Cloud Storage Service, on an Ubuntu distro.'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2017-08-14
+modified: 2017-09-06
 keywords: ["install turtl", " cloud-based storage", " monitor system security", " ubuntu"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-09-06
-modified_by:
-  name: Linode
-published: 2017-08-14
-title: 'How to Install a Turtl Server on Ubuntu'
 
 aliases: ['/applications/cloud-storage/how-to-install-a-turtl-server-on-ubuntu/']
-authors: ["Angel Guarisma"]
 ---
 
-![Turtl_Banner](Turtl.jpg)
+![Header image](Turtl.jpg)
 
 [Turtl](https://turtlapp.com/docs) is an open-source alternative to cloud-based storage services. With a focus on privacy, Turtl offers a place to store and access your passwords, bookmarks and pictures. Hosting your own Turtl server on a secure Linode allows you to monitor your own security.
 

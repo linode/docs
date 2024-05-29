@@ -1,18 +1,17 @@
 ---
 slug: lke-network-firewall-information-shortguide
+title: "Network and Filewall Information for Linode Kubernetes Engine Clusters"
 description: 'Language that describes the options for creating workloads on Linode Kubernetes Engine that are accessible from the Internet, and directions for creating firewall rules for your nodes.'
-keywords: []
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2020-04-06
 modified: 2022-11-22
-modified_by:
-  name: Linode
-title: "Network and Filewall Information for Linode Kubernetes Engine Clusters"
+keywords: []
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 headless: true
 show_on_rss_feed: false
 tags: ["kubernetes"]
 aliases: ['/kubernetes/lke-network-firewall-information-shortguide/']
-authors: ["Linode"]
 ---
 
 In an LKE cluster, some entities and services are only accessible from within that cluster while others are publicly accessible (reachable from the internet).
@@ -26,8 +25,8 @@ In an LKE cluster, some entities and services are only accessible from within th
 
 - NodePort Services, which listen on all Nodes with ports in the range 30000-32768.
 - LoadBalancer Services, which automatically deploy and configure a NodeBalancer.
-- Any manifest which uses hostNetwork: true and specifies a port.
-- Most manifests which use hostPort and specify a port.
+- Any manifest which uses `hostNetwork`: true and specifies a port.
+- Most manifests which use `hostPort` and specify a port.
 
 Exposing workloads to the public internet through the above methods can be convenient, but this can also carry a security risk. You may wish to manually install firewall rules on your cluster nodes. The following policies are needed to allow communication between the node pools and the control plane and block unwanted traffic:
 

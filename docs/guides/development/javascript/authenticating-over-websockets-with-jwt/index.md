@@ -1,20 +1,19 @@
 ---
 slug: authenticating-over-websockets-with-jwt
+title: "Use JSON Web Tokens (JWT) to Authenticate Users over WebSockets"
+title_meta: "Authenticating Users Over WebSockets with JSON Web Tokens (JWT)"
 description: 'In this guide, you will learn how to use Websockets and JSON Web Tokens, which are also called JWTs, together in your app with several practical examples.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-23
 keywords: ['websocket token authentication']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-23
-modified_by:
-  name: Linode
-title: "Use JSON Web Tokens (JWT) to Authenticate Users over WebSockets"
-title_meta: "Authenticating Users Over WebSockets with JSON Web Tokens (JWT)"
 external_resources:
 - '[Mozilla Developer Network: The WebSocket API (WebSockets)](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)'
 - '[JWT.IO: Introduction to JSON Web Tokens](https://jwt.io/introduction)'
 - '[Express.js Documentation Page](https://expressjs.com/)'
 
-authors: ["Nathaniel Stickman"]
 ---
 
 WebSockets allow you to add real-time communications to your web application. It is the technology frequently behind instant messaging, collaboration, and multiplayer gaming over the web. Any time you want to facilitate real-time communication between clients and servers, the WebSockets API is one of your best options.
@@ -72,7 +71,7 @@ In this section, you learn how to implement a WebSocket server and how to use JW
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -377,7 +376,7 @@ The example application is ready for a test run. Follow the steps below to try i
 
     Express serves the application on `localhost:3000`. To visit the application remotely, you can use an SSH tunnel.
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with `3000`.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Connecting to a Remote Server Over SSH using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/) guide, replacing the example port number there with `3000`.
     - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
             ssh -L3000:localhost:3000 example-user@192.0.2.0

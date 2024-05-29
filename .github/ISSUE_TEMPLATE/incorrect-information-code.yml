@@ -1,0 +1,54 @@
+name: Incorrect information or code
+description: File a report on incorrect information or code
+title: "[Incorrect information/code]: "
+labels: ["incorrect info", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for filing this report!
+  - type: textarea
+    id: context
+    attributes:
+      label: Relevant Context
+      render: shell
+  - type: input
+    id: file
+    attributes:
+      label: The Source File
+    validations:
+      required: false
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: Description of incorrect information/code
+      description: Which information or code needs to be corrected?
+      placeholder: Tell us what you see!
+      value: "A bug happened!"
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-fix
+    attributes:
+      label: Your proposed fix for the incorrect information/code (optional)
+      description: How should the incorrect information/code be fixed?
+      placeholder: Your proposed fix
+      value: ""
+    validations:
+      required: false
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

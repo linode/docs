@@ -1,20 +1,17 @@
 ---
+title: "Deploy MongoDB through the Linode Marketplace"
 description: "This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the Linode Marketplace."
+published: 2020-03-11
+modified: 2022-03-08
 keywords: ['mongodb','marketplace', 'database']
 tags: ["linode platform","database","marketplace","cloud-manager"]
-published: 2020-03-11
 expiryDate: 2023-05-01
-modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy MongoDB through the Linode Marketplace"
 image: MongoDB_oneclickapps.png
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
  - '[Language-Specific MongoDB Drivers](https://docs.mongodb.com/ecosystem/drivers/)'
 aliases: ['/platform/marketplace/deploying-mongodb-with-marketplace-apps/', '/platform/one-click/deploying-mongodb-with-one-click-apps/','/guides/deploying-mongodb-with-one-click-apps/','/guides/deploying-mongodb-with-marketplace-apps/','/guides/mongodb-marketplace-app/']
-authors: ["Linode"]
 ---
 
 [MongoDB](https://www.mongodb.com/) is a database engine that provides access to non-relational, document-oriented databases. It is part of the growing [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement, along with databases like Redis and Cassandra (although there are vast differences among the many non-relational databases).
@@ -23,9 +20,9 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** MongoDB should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -41,12 +38,12 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 - **MongoDB admin user password** *(required)*: The Mongo admin user password.
 - **MongoDB Version** *(required)*: Select the version of MongoDB you'd like to install.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 - **Email address for soa record:** The start of authority (SOA) email address for this server. This email address will be added to the SOA record for the domain. This is a required field if you want the installer to create DNS records.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -86,11 +83,11 @@ For more information on access control and user management, as well as other tip
 
 ### Manage Data and Collections
 
-{{< content "mongodb-example-shortguide" >}}
+{{% content "mongodb-example-shortguide" %}}
 
 ## Next Steps
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 For more on MongoDB, checkout the following guides:
 
