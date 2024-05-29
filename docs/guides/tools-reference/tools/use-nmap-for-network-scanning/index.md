@@ -2,14 +2,12 @@
 slug: use-nmap-for-network-scanning
 title: "How to Use Nmap for Network Scanning"
 title_meta: "How to Use Nmap for Network Scanning"
-description: 'Nmap is a highly flexible, open source tool for network scanning. Find step-by-step instructions on how to install Nmap in this guide ✓ Click here!'
-og_description: 'Nmap is a highly flexible, open source tool for network scanning. Find step-by-step instructions on how to install Nmap in this guide ✓ Click here!'
+description: "Nmap is a highly flexible, open source tool for network scanning. Find step-by-step instructions on how to install Nmap in this guide."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-03-07
 keywords: ['nmap','network scanning','port scanning','network discovery','security audit','network scan tutorial','port scan example']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2023-03-07
-modified_by:
-  name: Linode
 external_resources:
 - '[Official Guide to Installing Nmap](https://nmap.org/book/install.html)'
 - '[Nmap’s Guide for Installing From Source](https://nmap.org/book/inst-source.html)'
