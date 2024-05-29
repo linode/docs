@@ -2,12 +2,11 @@
 slug: how-to-use-filter-method-javascript
 title: "How to Use the filter() Method for Arrays in JavaScript"
 description: "Want to know what JavaScript’s filter() array method is and how to use it? This guide gives you everything you need to understand what filter() does and how to apply it in your JavaScript development."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-03-13
 keywords: ['javascript filter array', 'javascript filter function', 'javascript filter method']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2022-03-13
-modified_by:
-  name: Linode
 external_resources:
 - '[DigitalOcean: How To Use the filter() Array Method in JavaScript](https://www.digitalocean.com/community/tutorials/js-filter-array-method)'
 - '[MDN Web Docs: Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)'
