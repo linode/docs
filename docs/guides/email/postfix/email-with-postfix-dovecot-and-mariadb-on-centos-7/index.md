@@ -437,6 +437,13 @@ smtps     inet  n       -       -       -       -       smtpd
 
         sudo systemctl restart postfix
 
+    If you get the `fatal: 0.0.0.0:smtps: Servname not supported for ai_socktype` error after restarting Postfix, add following service entries to `/etc/services`:
+
+    {{< file "/etc/services">}}
+smtps 465/tcp # Secure SMTP
+smtps 465/udp # Secure SMTP
+{{< /file >}}
+
 ## Dovecot
 
 Dovecot is the *Mail Delivery Agent* (MDA) which is passed messages from Postfix and delivers them to a virtual mailbox. In this section, configure Dovecot to force users to use SSL when they connect so that their passwords are never sent to the server in plain text.
