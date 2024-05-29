@@ -428,13 +428,13 @@ curl -H "Content-Type: application/json" \
 The `labels` field expects a dictionary object with one or more key-value pairs as [Kubernetes labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/), adhering to the following restrictions:
 
 * A label's key and value must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 63 characters each.
-* Optionally, the key can begin with a DNS subdomain prefix and a single '/', like 'example.com/my-app'.
+* Optionally, the key can begin with a valid DNS subdomain prefix and a single '/', like 'example.com/my-app'. In this case the maximum allowed length of the domain prefix is 253 characters.
 
 The `taints` field expects an array of one or more dictionary objects with the form of [Kubernetes node taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/), adhering to the following restrictions:
 
 * A taint consists of a `key`, `value`, and `effect`.
 * The `key` value must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 253 characters.
-* Optionally, the `key` value can begin with a DNS subdomain prefix and a single '/', like 'example.com/my-app'.
+* Optionally, the `key` value can begin with a DNS subdomain prefix and a single '/', like 'example.com/my-app'. In this case the maximum allowed length of the domain prefix is 253 characters.
 * The `value` key is optional. If given, it must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 63 characters.
 * The `effect` value must be NoSchedule, PreferNoSchedule or NoExecute.
 
