@@ -1,18 +1,17 @@
 ---
 slug: using-phoenix-framework
-description: "Powered by high-performing Elixir, Phoenix uses the MVC framework pattern. Follow this tutorial to learn more about Phoenix and how to get started using it."
-keywords: ['phoenix framework tutorial','learn phoenix elixir','phoenix liveview']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-01-05
-modified_by:
-  name: Nathaniel Stickman
 title: "How to Use the Phoenix Framework"
 title_meta: "Using the Phoenix Framework"
+description: "Powered by high-performing Elixir, Phoenix uses the MVC framework pattern. Follow this tutorial to learn more about Phoenix and how to get started using it."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-01-05
+keywords: ['phoenix framework tutorial','learn phoenix elixir','phoenix liveview']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Phoenix Project Documentation](https://hexdocs.pm/phoenix/Phoenix.html)'
 - '[Toptal: Meet Phoenix: A Rails-like Framework for Modern Web Apps on Elixir](https://www.toptal.com/phoenix/phoenix-rails-like-framework-web-apps)'
 - "[Educative: A Beginner's Guide to the Elixir Programming Language](https://www.educative.io/blog/elixir-functional-programming)"
-authors: ["Nathaniel Stickman"]
 ---
 
 Phoenix offers a web development framework similar to Ruby on Rails, Django, and others. However, the Phoenix framework is more performant because it is built on Elixir. The result is a smooth developer experience coupled with high performance.
@@ -21,9 +20,9 @@ In this tutorial, learn more about the Phoenix framework and what sets it apart.
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -55,7 +54,7 @@ To get started with Phoenix, you need to install the framework's application gen
 
 The Phoenix framework uses the Elixir programming language. To run Phoenix, you need to have Elixir installed on your system. And, moreover, you need the Erlang VM that Elixir runs on.
 
-Elixir maintains packages within the default repositories for most major Linux distributions. Typically ou can install Elixir with a single command.
+Elixir maintains packages within the default repositories for most major Linux distributions. Typically you can install Elixir with a single command.
 
 Below are commands to install Elixir for a range of distributions. You can find more covered in Elixir's [official installation guide](https://elixir-lang.org/install.html#gnulinux).
 

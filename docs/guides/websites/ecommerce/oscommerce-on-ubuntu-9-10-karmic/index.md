@@ -1,21 +1,20 @@
 ---
 slug: oscommerce-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'osCommerce on Ubuntu 9.10 (Karmic)'
 description: 'Deploying osCommerce, a popular e-commerce web application, on Ubuntu 9.10 (Karmic).'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-02-08
+modified: 2011-08-22
 keywords: ["oscommerce", "ecommerce", "store", "cart", "shop", "shopping"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/e-commerce/oscommerce/ubuntu-9-10-karmic/','/websites/ecommerce/oscommerce-on-ubuntu-9-10-karmic/']
-modified: 2011-08-22
-modified_by:
-  name: Linode
-published: 2010-02-08
-title: 'osCommerce on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: how-to-install-osCommerce
         keywords:
            - distribution: Ubuntu 9.10
-authors: ["Stan Schwertly"]
+deprecated: true
 ---
 
 osCommerce is an open source solution for creating your own online store. It runs on a LAMP stack and is a strong alternative to Magento, which can be difficult to administer for some.

@@ -1,20 +1,18 @@
 ---
 slug: vagrant-linode-environments
+title: 'Using Vagrant to Manage Linode Environments'
 description: 'This guide shows how to use Vagrant, a configuration management tool, to manage development environments and content on your Linode with the Linode API.'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-06-25
 keywords: ["linode", "vagrant", "content management", "management", "automation", "development", "ruby", "vagrantfile", "api", "apache"]
 tags: ["cms","automation","ruby","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-06-25
-modified_by:
-    name: Elle Krout
-published: 2015-06-25
-title: 'Using Vagrant to Manage Linode Environments'
 external_resources:
  - '[Vagrant](http://www.vagrantup.com)'
  - '[vagrant-linode Plugin](https://github.com/displague/vagrant-linode)'
-deprecated: true
 aliases: ['/applications/configuration-management/vagrant/vagrant-linode-environments/','/applications/configuration-management/vagrant-linode-environments/']
-authors: ["Elle Krout"]
+deprecated: true
 ---
 
 {{< note >}}
@@ -79,7 +77,7 @@ end
 
     All code will take place between the `Vagrant.configure` and `end` lines.
 
-2.  When creating a *guest machine* -- the sever that will be created -- Vagrant will create a username, password, and private key to access the machine. The default username and password is `vagrant`. Define your own parameters for the `username`, and set the pathway to your own private key. If you have not generated a private and public key, you can do so by following the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair) guide:
+2.  When creating a *guest machine* -- the sever that will be created -- Vagrant will create a username, password, and private key to access the machine. The default username and password is `vagrant`. Define your own parameters for the `username`, and set the pathway to your own private key. If you have not generated a private and public key, you can do so by following the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/#upload-ssh-key) guide:
 
     {{< file "~/vagrant-linode/Vagrantfile" ruby >}}
 Vagrant.configure('2') do |config|

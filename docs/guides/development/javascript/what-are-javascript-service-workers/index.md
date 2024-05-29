@@ -1,21 +1,20 @@
 ---
 slug: what-are-javascript-service-workers
+title: "Javascript Service Workers: An Introduction with Examples"
+title_meta: "What Are Javascript Service Workers?"
 description: "This guide provides you with an introduction to Javascript Service Workers and what they are capable of, as well as how to build an example service worker. "
 og_description:  "This guide provides you with an introduction to Javascript Service Workers and what they are capable of, as well as how to build an example service worker. "
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-09
 keywords: ['javascript service workers', 'service worker example']
 tags: ["web applications", "digital agencies"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-09
-modified_by:
-  name: Nathaniel Stickman
-title: "Javascript Service Workers: An Introduction with Examples"
-title_meta: "What Are Javascript Service Workers?"
 external_resources:
 - '[Caching Strategies](https://serviceworke.rs/caching-strategies.html)'
 - '[Web Push](https://serviceworke.rs/web-push.html)'
 - '[Specifications and Examples](https://github.com/WICG/background-sync)'
 - '[Cache and Update](https://serviceworke.rs/strategy-cache-and-update.html)'
-authors: ["Nathaniel Stickman"]
 ---
 
 Service workers are JavaScript workers that sit between a website or web page and a network. JavaScript service workers give you immense control in developing offline experiences for your web applications, as well as features like push notifications and background sync. This guide introduces the key concepts behind service workers and how they can be used. Then, it provides the steps for setting up your own service worker.
@@ -60,7 +59,7 @@ This service worker caches content from a web server and intercepts requests to 
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -269,7 +268,7 @@ You are all set to run your website with a service worker.
 
     Express serves the application on `localhost:3000`. To visit the application remotely, you can use an SSH tunnel.
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with **3000**.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Connecting to a Remote Server Over SSH using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/) guide, replacing the example port number there with **3000**.
     - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
             ssh -L3000:localhost:3000 example-user@192.0.2.0

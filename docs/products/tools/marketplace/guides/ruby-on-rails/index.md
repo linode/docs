@@ -1,28 +1,25 @@
 ---
+title: "Deploy Ruby on Rails through the Linode Marketplace"
 description: "This guide provides you with installation and configuration instructions for deploying Ruby on Rails using the Lindoe One-Click Apps Marketplace."
-keywords: ['ruby on rails','marketplace', 'marketplace apps']
-tags: ["ruby","linode platform","marketplace","cloud-manager"]
 published: 2020-03-11
 modified: 2022-03-08
+keywords: ['ruby on rails','marketplace', 'marketplace apps']
+tags: ["ruby","linode platform","marketplace","cloud-manager"]
 image: RubyonRails_oneclickapps.png
-modified_by:
-  name: Linode
-title: "Deploy Ruby on Rails through the Linode Marketplace"
 external_resources:
  - '[Ruby on Rails Documentation](https://guides.rubyonrails.org/)'
  - '[Securing Rails Applications](https://guides.rubyonrails.org/security.html)'
  - '[Configuring Rails Applications](https://guides.rubyonrails.org/configuring.html)'
 aliases: ['/platform/marketplace/deploying-ruby-on-rails-with-marketplace-apps/', '/platform/one-click/deploying-ruby-on-rails-with-one-click-apps/','/guides/deploying-ruby-on-rails-with-one-click-apps/', '/guides/deploying-ruby-on-rails-with-marketplace-apps/','/guides/ruby-on-rails-marketplace-app/']
-authors: ["Linode"]
 ---
 
 [Ruby on Rails](http://rubyonrails.org/) is a server-side web application framework that allows web designers and developers to implement dynamic, fully featured web applications.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Ruby on Rails should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -138,7 +135,7 @@ For more information on setting up a more substantial application, refer to the 
 
 ## Next Steps
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 For more on Ruby on Rails, checkout the following guides:
 

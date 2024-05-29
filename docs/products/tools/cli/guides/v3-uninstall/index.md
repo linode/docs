@@ -3,8 +3,6 @@ title: 'Uninstalling the Deprecated Linode CLI using API v3'
 description: 'The new Linode API includes a number of additional features and changes from previous API versions. This guide is intended to help existing users uninstall the previous version of the CLI in preparation of upgrading to the new version of the CLI using APIv4.'
 published: 2022-02-25
 modified: 2022-11-30
-modified_by:
-  name: Linode
 external_resources:
  - '[Linode API Documentation](https://developers.linode.com)'
  - '[Deprecated CLI Github](https://github.com/linode/cli)'

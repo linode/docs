@@ -1,26 +1,23 @@
 ---
 slug: lemp-server-on-centos-5
-deprecated: true
-deprecated_link: 'web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/'
+title: LEMP Server on CentOS 5
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, PostgreSQL/MySQL, and Perl/Python/PHP.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-07-27
+modified: 2013-09-23
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","centos","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lemp/lemp-server-on-centos-5/','/lemp-guides/centos-5/','/websites/lemp/lemp-server-on-centos-5/']
-modified: 2013-09-23
-modified_by:
-  name: Linode
-published: 2010-07-27
-title: LEMP Server on CentOS 5
 relations:
     platform:
         key: install-lemp-stack
         keywords:
             - distribution: CentOS 5
-authors: ["Linode"]
+deprecated: true
+deprecated_link: 'web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/'
 ---
-
-
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.
 
@@ -28,7 +25,7 @@ Prior to beginning this guide, please complete the [Setting Up and Securing a Co
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

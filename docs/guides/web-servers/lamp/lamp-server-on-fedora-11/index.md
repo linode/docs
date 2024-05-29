@@ -1,16 +1,15 @@
 ---
 slug: lamp-server-on-fedora-11
-deprecated: true
+title: LAMP Server on Fedora 11
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on a Fedora 11 powered Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-29
+modified: 2011-05-02
 keywords: ["fedora 11 lamp", "lamp server", "linux lamp", "fedora 11 apache"]
 tags: ["web server","php","mysql","apache","fedora","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-fedora-11/','/lamp-guides/fedora-11/','/web-servers/lamp/lamp-server-on-fedora-11/']
-modified: 2011-05-02
-modified_by:
-  name: Linode
-published: 2009-09-29
-title: LAMP Server on Fedora 11
 external_resources:
   - '[Fedora Home Page](http://www.fedoraproject.org/)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.0/)'
@@ -21,16 +20,14 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Fedora 11
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on a Fedora 11 system. In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If you don't feel that you will need MySQL or PHP, please don't feel obligated to install them.
 
 ## System Configuration
 
-It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct hostname, as well as set hosts in your `/etc/hosts` file. If you haven't configured these, you should follow the directions in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Additionally, if you haven't configured your timezone yet, follow the instructions in our [administration basics](/docs/products/platform/get-started/#set-the-timezone) guide.
+It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct hostname, as well as set hosts in your `/etc/hosts` file. If you haven't configured these, you should follow the directions in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Additionally, if you haven't configured your timezone yet, follow the instructions in our [administration basics](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone) guide.
 
 If your system is configured and up to date, you may begin by installing Apache on your Linode. This guide assumes that you are logged in as the root superuser on your Linode.
 

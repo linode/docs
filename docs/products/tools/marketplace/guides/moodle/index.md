@@ -1,25 +1,22 @@
 ---
+title: "Deploy Moodle through the Linode Marketplace"
 description: "Moodle is the leading open source learning management system. This tutorial walks you through deploying Moodle using the Linode Marketplace."
-keywords: ['learning','educator','management', and 'school']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-08-13
 modified: 2023-04-11
-modified_by:
-  name: Linode
-title: "Deploy Moodle through the Linode Marketplace"
+keywords: ['learning','educator','management', and 'school']
+tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/guides/deploying-moodle-marketplace-app/','/guides/moodle-marketplace-app/']
 external_resources:
 - '[Moodle](https://moodle.org/)'
-authors: ["Linode"]
 ---
 
 Moodle is the most widely used open source learning management system. It is aimed to provide learners, educators, and administrators with a single robust, secure, and integrated solution to develop customized learning environments.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Moodle should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -39,9 +36,9 @@ Moodle is the most widely used open source learning management system. It is aim
 - **Limited sudo user** *(required)*: Enter your preferred username for the limited user.
 - **Password for the limited user** *(required)*: Enter a *strong* password for the new user.
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 #### Limited User SSH Options (Optional)
 
@@ -71,4 +68,4 @@ The Moodle Marketplace App installs the following required software on your Lino
 | [**Apache2**](https://httpd.apache.org) | HTTP Server. |
 
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

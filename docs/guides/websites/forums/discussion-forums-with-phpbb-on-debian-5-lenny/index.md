@@ -1,25 +1,22 @@
 ---
 slug: discussion-forums-with-phpbb-on-debian-5-lenny
-deprecated: true
+title: 'Discussion Forums with phpBB on Debian 5 (Lenny)'
 description: 'Configuring the phpBB system for hosting web-based discussion forums on Debian 5 (Lenny).'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2009-09-30
+modified: 2012-10-08
 keywords: ["phpBB", "forum software", "web applications", "PHP"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/forums/discussion-forums-with-phpbb-on-debian-5-lenny/','/web-applications/bulletin-boards/phpbb/debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2009-09-30
-title: 'Discussion Forums with phpBB on Debian 5 (Lenny)'
 relations:
     platform:
         key: how-to-install-phpbb
         keywords:
            - distribution: Debian 5
-authors: ["Stan Schwertly"]
+deprecated: true
 ---
-
-
 
 phpBB is one of the most widely used open source forum solutions. It is easy to install and free to use, along with being fully customizable. If you don't want to spend money on other forum software like vBulletin, consider using phpBB.
 

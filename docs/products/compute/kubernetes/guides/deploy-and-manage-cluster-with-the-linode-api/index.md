@@ -1,17 +1,14 @@
 ---
-description: "Learn how to deploy a cluster on Linode Kubernetes Engine (LKE) through the Linode API."
-og_description: "The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. This guide shows you how to use the Linode API to Deploy and Manage an LKE Cluster."
-keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster"]
-published: 2019-11-11
-modified: 2023-02-09
-modified_by:
-  name: Linode
-image: deploy-and-manage-cluster-copy.png
 title: "Deploy and Manage a Linode Kubernetes Engine (LKE) Cluster with the Linode API"
 title_meta: "Deploy and Manage a Kubernetes Cluster with the Linode API"
+description: "Learn how to deploy a cluster on Linode Kubernetes Engine (LKE) through the Linode API."
+og_description: "The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. This guide shows you how to use the Linode API to Deploy and Manage an LKE Cluster."
+published: 2019-11-11
+modified: 2023-02-09
+keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster"]
+image: deploy-and-manage-cluster-copy.png
 aliases: ['/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/','/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/','/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/']
 tags: ["kubernetes"]
-authors: ["Linode"]
 ---
 
 An LKE cluster can be deployed in one of several ways:
@@ -47,7 +44,7 @@ This guide covers how to use the Linode API to:
 
 1. [Familiarize yourself with the Linode Kubernetes Engine service](https://www.linode.com/products/kubernetes/). This information helps you understand the benefits and limitations of LKE.
 
-1. [Create an API Token](/docs/products/tools/api/get-started/#create-an-api-token). You need this to access the LKE service.
+1. [Create an API Token](/docs/products/tools/api/guides/manage-api-tokens/#create-an-api-token). You need this to access the LKE service.
 
 1. [Install kubectl](#install-kubectl) on your computer. You use kubectl to interact with your cluster once it's deployed.
 
@@ -55,7 +52,7 @@ This guide covers how to use the Linode API to:
 
 ### Install kubectl
 
-{{< content "how-to-install-kubectl" >}}
+{{% content "how-to-install-kubectl" %}}
 
 ## Create an LKE Cluster
 
@@ -67,7 +64,7 @@ This guide covers how to use the Linode API to:
 | `k8s_version` | The desired version of Kubernetes for this cluster. |
 
 {{< note >}}
-The available plan types for LKE worker nodes are [Shared](/docs/products/compute/compute-instances/plans/choosing-a-plan/#shared-cpu-instances), [Dedicated CPU](/docs/products/compute/compute-instances/plans/choosing-a-plan/#3-dedicated-cpu), and [High Memory](/docs/products/compute/compute-instances/plans/choosing-a-plan/#2-high-memory) plans.
+The available plan types for LKE worker nodes are [Shared](/docs/products/compute/compute-instances/plans/choosing-a-plan/#shared-cpu-instances), [Dedicated CPU](/docs/products/compute/compute-instances/plans/choosing-a-plan/#dedicated-cpu-instances), and [High Memory](/docs/products/compute/compute-instances/plans/choosing-a-plan/#high-memory-instances) plans.
 {{< /note >}}
 
 1. To create an LKE Cluster, send a `POST` request to the `/lke/clusters` endpoint. The example below displays all possible request body parameters. Note that `tags` is an optional parameter.
@@ -644,7 +641,7 @@ curl -H "Authorization: Bearer $TOKEN" \
 
 ## General Network and Firewall Information
 
-{{< content "lke-network-firewall-information-shortguide" >}}
+{{% content "lke-network-firewall-information-shortguide" %}}
 
 ## Where to Go From Here?
 

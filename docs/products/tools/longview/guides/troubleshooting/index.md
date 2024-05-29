@@ -3,15 +3,12 @@ title: Troubleshooting Longview
 title_meta: Troubleshooting Linode Longview
 description: 'Longview is a server monitoring client from Linode you can use to watch server performance. This guide describes the process of troubleshooting Longview.'
 og_description: "Learn how to troubleshoot Linode's Longview service."
-keywords: ["system monitoring", "longview", "metrics", "troubleshooting"]
-tags: ["resolving","cloud manager","statistics","monitoring","linode platform"]
 published: 2020-01-22
 modified: 2023-05-24
-modified_by:
-  name: Linode
+keywords: ["system monitoring", "longview", "metrics", "troubleshooting"]
+tags: ["resolving","cloud manager","statistics","monitoring","linode platform"]
 image: TroubleshootLinodeLongview.png
 aliases: ['/platform/longview/troubleshooting-linode-longview/','/guides/troubleshooting-linode-longview/']
-authors: ["Linode"]
 ---
 
 This guide discusses basic troubleshooting steps to help you diagnose and resolve any issues you may encounter while using Longview. If you're experiencing problems with the Longview client, follow the steps outlined in this guide to help determine the cause.
@@ -134,9 +131,9 @@ If you use iptables, you should also make sure to persist any of your firewall r
 
 The API key given in the Linode Cloud Manager should match that on your system in `/etc/linode/longview.key`.
 
-1. In the Linode Cloud Manager, the API key is located in the **Installation** tab of your Longview Client instance's [detailed view](/docs/guides/what-is-longview/#access-your-longview-client-s-detailed-view).
+1. In the Cloud Manager, the API key is located in the **Installation** tab of your Longview Client instance's [detailed view](/docs/products/tools/longview/get-started/).
 
-1.  SSH into your Linode. The Longview key is located at `/etc/linode/longview.key`. Use `cat` to view the contents of that file and compare it to what's shown in the Linode Cloud Manager:
+1.  SSH into your Linode. The Longview key is located at `/etc/linode/longview.key`. Use `cat` to view the contents of that file and compare it to what's shown in the Cloud Manager:
 
     ```command
     cat /etc/linode/longview.key
@@ -174,14 +171,14 @@ This is caused by both Linodes posting data using the same Longview key. To reso
     sudo rm -rf /opt/linode/longview
     ```
 
-1. Add a new [Linode Longview Client instance](/docs/guides/what-is-longview/#add-the-longview-client). This will create a new Longview API key independent from the system which it was cloned from.
+1. Add a new [Linode Longview Client instance](/docs/products/tools/longview/get-started/#create-client). This will create a new Longview API key independent from the system which it was cloned from.
 
     {{< note >}}
     The GUID provided in the Longview Client's installation URL is not the same as the Longview API key.
     {{< /note >}}
 
-1. [Install the Longview Agent](/docs/guides/what-is-longview/#install-the-longview-agent) on the cloned Linode.
+1. [Install the Longview Agent](/docs/products/tools/longview/get-started/#install-agent) on the cloned Linode.
 
 ## Contact Support
 
-If you still need assistance after performing these checks, please open a [support ticket](/docs/products/platform/get-started/guides/support/#contacting-linode-support).
+If you still need assistance after performing these checks, please open a [support ticket](/docs/products/platform/get-started/guides/support/#contact-customer-support).

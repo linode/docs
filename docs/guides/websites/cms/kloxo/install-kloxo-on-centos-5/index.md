@@ -1,24 +1,23 @@
 ---
 slug: install-kloxo-on-centos-5
+title: Install Kloxo on CentOS 5
 description: 'This guide shows how to install Kloxo, the free web-based server control panel alternative to cPanel and Plesk, on a server running CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-10-31
+modified: 2013-10-03
 keywords: ["kloxo", "control panel", "cpanel", "plesk"]
 tags: ["centos","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/kloxo/install-kloxo-on-centos-5/','/web-applications/control-panels/kloxo/installation/','/websites/cms/install-kloxo-on-centos-5/']
-modified: 2013-10-03
-modified_by:
-  name: Linode
-published: 2011-10-31
-title: Install Kloxo on CentOS 5
 deprecated: true
-authors: ["Linode"]
 ---
 
 Kloxo is a web-based control panel that is a free alternative to options such as cPanel and Plesk. At this time, Kloxo only supports 32 bit systems. If you would like to use Kloxo on a 64 bit system, you can follow the documentation [listed on their GitHub page](https://github.com/lxcenter/kloxo).
 
 ## Initial Setup
 
-Before getting started, you'll need to make sure that your [hostname](/docs/products/platform/get-started/#setting-the-hostname) has been properly set and that [static networking](/docs/products/compute/compute-instances/guides/manual-network-configuration/) has been configured **even if you only have one IP address**. You will also need to install MySQL. To do so, issue the following commands:
+Before getting started, you'll need to make sure that your [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) has been properly set and that [static networking](/docs/products/compute/compute-instances/guides/manual-network-configuration/) has been configured **even if you only have one IP address**. You will also need to install MySQL. To do so, issue the following commands:
 
     yum update
     yum install mysql-server

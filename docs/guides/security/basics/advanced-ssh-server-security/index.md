@@ -1,19 +1,17 @@
 ---
 slug: advanced-ssh-server-security
+title: "Harden SSH Access with Advanced OpenSSH Features"
 description: "This guide will give you some of Linode's best tips and tricks for best practices when it comes to improving the security of your SSH server."
+authors: ["Damaso Sanoja"]
+contributors: ["Damaso Sanoja"]
+published: 2017-04-07
 keywords: ["SSH", "secure shell", "Ubuntu", "CentOS", "security", "2FA", "server", "Linux"]
 tags: ["ssh","security","linux"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-04-07
-modified: 2017-04-07
-modified_by:
-  name: Linode
-title: "Harden SSH Access with Advanced OpenSSH Features"
 external_resources:
  - '[OpenSSH](http://www.openssh.com/)'
  - '[Diffie-Hellman](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)'
 aliases: ['/security/advanced-ssh-server-security/','/security/basics/advanced-ssh-server-security/']
-authors: ["Damaso Sanoja"]
 ---
 
 There's a good chance you've been using SSH (Secure Shell) to access your Linode from your computer. Although SSH is a secure protocol, most system compromises are a result of human error or failure to take advantage of the security features offered. In this guide, we'll cover a few key features provided by OpenSSH.
@@ -41,8 +39,7 @@ There's a good chance you've been using SSH (Secure Shell) to access your Linode
 4.  Make a backup of your server's `sshd_config` file.
 
         sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.BACKUP
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -61,8 +58,7 @@ The `/etc/ssh/moduli` file ships with OpenSSH, so assuming two servers have the 
     ssh-keygen -G "${HOME}/moduli" -b 2048
     sudo ssh-keygen -T /etc/ssh/moduli -f "${HOME}/moduli"
     rm "${HOME}/moduli"
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Before running these commands on a production server, be aware that depending on the size of the keys you're generating, this will use significant CPU power and may take anywhere from a minute to several hours.
 {{< /note >}}
 

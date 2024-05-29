@@ -1,16 +1,15 @@
 ---
 slug: lamp-server-on-centos-5
-deprecated: true
+title: LAMP Server on CentOS 5
 description: 'This guide shows you how to create a LAMP Stack, Linux, Apache, MySQL, PHP, a common web stack for running websites, applications, and more, on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-10-19
+modified: 2011-07-19
 keywords: ["LAMP", "CentOS", "CentOS 5"]
 tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-centos-5/','/lamp-guides/centos-5/','/web-servers/lamp/lamp-server-on-centos-5/']
-modified: 2011-07-19
-modified_by:
-  name: Linode
-published: 2009-10-19
-title: LAMP Server on CentOS 5
 external_resources:
   - '[CentOS Linux Home Page](http://www.centos.org/)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -21,10 +20,8 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: CentOS 5
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on a CentOS 5.6 system.
 
@@ -32,7 +29,7 @@ In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If y
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
