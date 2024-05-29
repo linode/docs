@@ -533,6 +533,7 @@ descolada
 descr
 deserialization
 deserialize
+deserialized
 despawn
 desperados
 dest
@@ -1246,6 +1247,10 @@ KPIs
 krita
 kroll
 ksmbd
+KStream
+KStreams
+KTable
+KTables
 ktor
 kube
 kubeadm
@@ -2028,6 +2033,8 @@ readwrite
 realtime
 reauthenticate
 reauthenticating
+rebalance
+rebalances
 rebalancing
 rebase
 rebased
