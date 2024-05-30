@@ -10,6 +10,7 @@ modified: 2020-03-18
 keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "debian"]
 tags: ["lemp","web server","php","mysql","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['/lemp-guides/debian-5-lenny/','/websites/lemp/lemp-server-on-debian-5-lenny/','/web-servers/lemp/lemp-server-on-debian-5-lenny/','/guides/lemp-server-on-debian-5-lenny/','/lemp-guides/debian-6-squeeze/','/websites/lemp/lemp-server-on-debian-6-squeeze/','/web-servers/lemp/lemp-server-on-debian-6-squeeze/','/guides/lemp-server-on-debian-6-squeeze/']
 image: How-to-Install-LEMP-Stack-on-Debian-10_1200x631.png
 relations:
     platform:
