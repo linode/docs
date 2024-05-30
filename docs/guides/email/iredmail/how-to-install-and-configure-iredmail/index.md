@@ -39,18 +39,18 @@ iRedMail includes the following features and enhancements:
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Ensure you have created DNS records for both the main domain and the `mail` subdomain, for instance, `mail.example.com`. Point the `mail` subdomain at the Linode hosting the mail server. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/guides/dns-manager/).
+1.  Ensure you have created DNS records for both the main domain and the `mail` subdomain, for instance, `mail.example.com`. Point the `mail` subdomain at the Linode hosting the mail server. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 
 1.  A Linode can only send and receive emails if TCP port 25 is enabled. This is the well-known port for *Simple Mail Transfer Protocol* (SMTP). iRedMail sends outgoing emails and listens for incoming mail on this port. Contact Linode support to determine whether this port is restricted on your server.
 
 1.  iRedMail requires at least 4 GB of RAM, but high-volume production servers require even more. Ensure enough storage is available for the number of users and storage policies you intend to support. For best results, install iRedMail on a fresh server with no other components or configuration. Otherwise, conflicts might occur. Ensure the user and group IDs `2000`, `2001`, and `2002` are not in use.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install iRedMail
@@ -346,7 +346,7 @@ Several DNS records must be added before the main server can send and receive ma
 
     ![Create an MX Record](Create-Mx-Record.png)
 
-1.  Create a PTR Record. This is also known as a *reverse DNS* (RDNS) lookup. It indicates the fully qualified domain name associated with an IP address. Many servers are reluctant to forward mail to an IP address without an associated PTR record. To create an RDNS entry, visit the **Network** tab for the Linode server and select **Edit RDNS**. Change the value to the `mail` domain. For information, see the Linode guide on [How to Configure rDNS](/docs/guides/configure-rdns).
+1.  Create a PTR Record. This is also known as a *reverse DNS* (RDNS) lookup. It indicates the fully qualified domain name associated with an IP address. Many servers are reluctant to forward mail to an IP address without an associated PTR record. To create an RDNS entry, visit the **Network** tab for the Linode server and select **Edit RDNS**. Change the value to the `mail` domain. For information, see the Linode guide on [How to Configure rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/).
 
 1.  In the Linode DNS Manager, add an SPF Record for the mail domain. An SPF record is a type of TXT domain record. It defines the hosts in the domain which are allowed to send mail. Enter the domain for the `Hostname` and `v=spf1 mx ~all` for the `Value`.
 
