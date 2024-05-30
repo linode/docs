@@ -1,6 +1,6 @@
 ---
 slug: the-benefits-of-serverless
-title: "Benefits of Serverless Computing"
+title: "Benefits and Drawbacks of Serverless Computing"
 description: "Discover the benefits of serverless computing, from cost savings and scalability to reduced maintenance and better security."
 authors: ["Jack Wallen"]
 contributors: ["Jack Wallen"]
