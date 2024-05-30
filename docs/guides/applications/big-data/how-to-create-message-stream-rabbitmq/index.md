@@ -1,6 +1,6 @@
 ---
 slug: how-to-create-message-stream-rabbitmq
-title: "How to Create a Message Stream with Rabbitmq"
+title: "How to Create a Message Stream with RabbitMQ"
 description: "Discover how RabbitMQ streams optimize message handling with efficient data distribution. Explore examples, configurations, and best practices."
 authors: ["John Mueller"]
 contributors: ["John Mueller"]
@@ -11,45 +11,9 @@ external_resources:
 - '[RabbitMQ: Queues](https://www.rabbitmq.com/queues.html)'
 ---
 
-[RabbitMQ](https://www.rabbitmq.com/) 3.9 introduces a new data structure called a *stream*. Streams and queues differ in how they work with data. A message stream is subscription-based, relying on a log file organized by topic for distribution. Meanwhile, a message queue is point-to-point. Other differences between streams and queues are described later, but the key distinction is how they manage data distribution. This difference determines the use cases in which each data structure is most effective.
+Version 3.9 of [RabbitMQ](https://www.rabbitmq.com/) introduced a new data structure called a *stream*. Streams and queues differ in how they work with data. A message stream is subscription-based, relying on a log file organized by topic for distribution. Meanwhile, a message queue is point-to-point. Other differences between streams and queues are described later, but the key distinction is how they manage data distribution. This difference determines the use cases in which each data structure is most effective.
 
 It’s also important not to confuse RabbitMQ with products like [Apache Kafka](https://kafka.apache.org/), as the use cases are different. RabbitMQ provides a general purpose message broker, while Kafka provides an event streaming platform.
-
-## Before You Begin
-
-The examples in this guide assume that you have a RabbitMQ installation available. Follow the instructions and links below to set up a RabbitMQ instance:
-
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started on the Linode Platform](/docs/products/platform/get-started/) and [Create a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides. An Ubuntu 22.04 LTS, Nanode 1 GB, Shared CPU instance is sufficient for the examples in this guide.
-
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
-
-1.  Follow the instructions contained in the CloudSmith section of RabbitMQ's official [Installing on Debian and Ubuntu](https://www.rabbitmq.com/install-debian.html#apt-quick-start-cloudsmith) guide. It provides everything required for a basic installation, and is the setup used for this guide. To use the streams feature covered in this guide, ensure that you have RabbitMQ 3.9 or above installed on your server:
-
-    ```command
-    sudo rabbitmqctl version
-    ```
-
-1.  Also make sure to [enable](https://www.rabbitmq.com/plugins.html) the `rabbitmq_management`, `rabbitmq_management_agent`, and  `rabbitmq_web_dispatch` plugins:
-
-    ```command
-    sudo rabbitmq-plugins enable rabbitmq_management
-    ```
-
-1.  Use the following command to install `pip` if it is not already installed on your system:
-
-    ```command
-    sudo apt install python3-pip
-    ```
-
-1.  Use `pip` to install Pika for Python support:
-
-    ```command
-    python3 -m pip install pika --upgrade
-    ```
-
-{{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
-{{< /note >}}
 
 ## What Is RabbitMQ?
 
@@ -108,6 +72,42 @@ Streams can keep growing indefinitely, which means that configuring one correctl
 It’s essential to know what an "at least once" delivery guarantee means. Streams guarantee that some consumer sees the message at least once by using a combination of publisher confirms and message de-duplication on the publisher side. However, it doesn’t guarantee that a specific consumer sees the message. This means that the consumer code must be written so that the consumer checks for *every* message. A message can also get lost midway to the consumer unless the application relies on the publisher confirm mechanism.
 
 Streams achieve their speedy characteristics by taking some shortcuts. For example, streams don’t explicitly flush the operating system cache, which means that an uncontrolled shutdown of a server may result in data loss.
+
+## Before You Begin
+
+The examples in this guide assume that you have a RabbitMQ installation available. Follow the instructions and links below to set up a RabbitMQ instance:
+
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started on the Linode Platform](/docs/products/platform/get-started/) and [Create a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides. An Ubuntu 22.04 LTS, Nanode 1 GB, Shared CPU instance is sufficient for the examples in this guide.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
+1.  Follow the instructions contained in the CloudSmith section of RabbitMQ's official [Installing on Debian and Ubuntu](https://www.rabbitmq.com/install-debian.html#apt-quick-start-cloudsmith) guide. It provides everything required for a basic installation, and is the setup used for this guide. To use the streams feature covered in this guide, ensure that you have RabbitMQ 3.9 or above installed on your server:
+
+    ```command
+    sudo rabbitmqctl version
+    ```
+
+1.  Also make sure to [enable](https://www.rabbitmq.com/plugins.html) the `rabbitmq_management`, `rabbitmq_management_agent`, and  `rabbitmq_web_dispatch` plugins:
+
+    ```command
+    sudo rabbitmq-plugins enable rabbitmq_management
+    ```
+
+1.  Use the following command to install `pip` if it is not already installed on your system:
+
+    ```command
+    sudo apt install python3-pip
+    ```
+
+1.  Use `pip` to install Pika for Python support:
+
+    ```command
+    python3 -m pip install pika --upgrade
+    ```
+
+{{< note >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+{{< /note >}}
 
 ## How to Create a Message Stream with RabbitMQ
 
