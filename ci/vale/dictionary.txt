@@ -446,6 +446,7 @@ CSRs
 css
 csum
 csv
+CTAs
 ctools
 ctrl
 ctx
@@ -533,6 +534,7 @@ descolada
 descr
 deserialization
 deserialize
+deserialized
 despawn
 desperados
 dest
@@ -773,10 +775,14 @@ flowlens
 Fluentd
 flyspray
 fmt
+fmt
+fn
 fn
 Focalboard
 foodcritic
 fordham
+fordham
+formatters
 fortinet
 fortnite
 fortran
@@ -1061,6 +1067,7 @@ Indri
 inet
 inet6
 infector
+inferencing
 infographic
 infosec
 ingester
@@ -1245,6 +1252,10 @@ KPIs
 krita
 kroll
 ksmbd
+KStream
+KStreams
+KTable
+KTables
 ktor
 kube
 kubeadm
@@ -1262,6 +1273,7 @@ kustomize
 kuznetosv
 lambdabunker
 Laminas
+Langa
 LANs
 laravel
 largebiomes
@@ -1730,6 +1742,7 @@ NVTs
 oauth
 obfuscator
 observium
+OCAs
 octopress
 ODMs
 odoo
@@ -2027,6 +2040,8 @@ readwrite
 realtime
 reauthenticate
 reauthenticating
+rebalance
+rebalances
 rebalancing
 rebase
 rebased
@@ -2717,6 +2732,7 @@ virtualizing
 virtualmin
 Virustotal
 vishing
+Vite
 Vitess
 Vixie
 vlan
@@ -2924,6 +2940,3 @@ zshrc
 zxvf
 ZYpp
 Zypper
-CTAs
-OCAs
-Vite

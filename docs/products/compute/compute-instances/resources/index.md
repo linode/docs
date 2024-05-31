@@ -153,6 +153,8 @@ Browse our [Linode Community Questions & Answers page](https://www.linode.com/co
 
 - [Video: Cloud GPUs Tutorial from sentdex](https://www.youtube.com/watch?v=qWGgK4IrH-s&feature=emb_logo)
 
+- [NVIDIA RTX 4000 Ada GPU cards](https://resources.nvidia.com/en-us-design-viz-stories-ep/rtx-4000-ada-datashe?lx=CCKW39&contentType=data-sheet)
+
 - [NVIDIA Quadro RTX 6000 GPU cards](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf)
 
 - [One of a Kind in the Cloud: Linode Lifts Customers with Quadro RTX Performance](https://blogs.nvidia.com/blog/2020/04/01/linode-quadro-rtx/)
