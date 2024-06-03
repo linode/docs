@@ -10,14 +10,13 @@ modified: 2020-03-18
 keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "debian"]
 tags: ["lemp","web server","php","mysql","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/lemp-guides/debian-5-lenny/','/websites/lemp/lemp-server-on-debian-5-lenny/','/web-servers/lemp/lemp-server-on-debian-5-lenny/','/guides/lemp-server-on-debian-5-lenny/','/lemp-guides/debian-6-squeeze/','/websites/lemp/lemp-server-on-debian-6-squeeze/','/web-servers/lemp/lemp-server-on-debian-6-squeeze/','/guides/lemp-server-on-debian-6-squeeze/']
+aliases: ['/lemp-guides/debian-5-lenny/','/websites/lemp/lemp-server-on-debian-5-lenny/','/web-servers/lemp/lemp-server-on-debian-5-lenny/','/guides/lemp-server-on-debian-5-lenny/','/lemp-guides/debian-6-squeeze/','/websites/lemp/lemp-server-on-debian-6-squeeze/','/web-servers/lemp/lemp-server-on-debian-6-squeeze/','/guides/lemp-server-on-debian-6-squeeze/','/web-servers/lemp/how-to-install-the-lemp-stack-on-debian-10/']
 image: How-to-Install-LEMP-Stack-on-Debian-10_1200x631.png
 relations:
     platform:
         key: install-lemp-stack
         keywords:
             - distribution: Debian 10
-aliases: ['/web-servers/lemp/how-to-install-the-lemp-stack-on-debian-10/']
 ---
 
 <!-- ![LEMP Server on Ubuntu 18.04](lemp-server-on-ubuntu-1804.png "LEMP Server on Ubuntu 18.04") -->
