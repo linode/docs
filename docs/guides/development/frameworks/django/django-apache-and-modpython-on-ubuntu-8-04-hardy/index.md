@@ -1,33 +1,28 @@
 ---
 slug: django-apache-and-modpython-on-ubuntu-8-04-hardy
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Django, Apache and mod_python on Ubuntu 8.04 (Hardy)'
 description: 'Installing and configuring the Django web application development framework for Apache on Ubuntu 8.04 (Hardy).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-10
+modified: 2011-05-17
 keywords: ["django", "python", "apache", "mod\\_python", "ubuntu", "ubuntu 8.04", "hardy"]
 tags: ["web applications","django","apache","python","cms","ubuntu","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/django-apache-and-modpython-on-ubuntu-8-04-hardy/','/frameworks/django-apache-mod-python/ubuntu-8-04-hardy/','/development/frameworks/django-apache-and-modpython-on-ubuntu-8-04-hardy/','/development/frameworks/django/django-apache-and-modpython-on-ubuntu-8-04-hardy/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2009-09-10
-title: 'Django, Apache and mod_python on Ubuntu 8.04 (Hardy)'
 relations:
     platform:
         key: django-apache-modpython
         keywords:
             - distribution: Ubuntu 8.04
+deprecated: true
 ---
-
-
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications. It's also very flexible in its ability to facilitate many complex content management operations.
 
 This guide provides an introduction to getting started with the Django framework. Although Ubuntu Hardy includes Django packages, these contain a dated version of the Django framework, in the 0.9x series. We've decided to install the most recent stable release of Django instead. This provides the best possible balance between the stability and support of the Ubuntu-Hardy release, and the most current Django API. In general the Apache, plus mod\_python, plus Django is accepted as the idea setup for beginning Django deployments, although the framework is quite flexible with regards to how applications can be deployed. There are many base platforms that you may consider in the future as your needs grow and change.
 
-We assume that you've completed the [getting started guide](/docs/getting-started/) and have a running and up to date Ubuntu 8.04 (Hardy) system. Furthermore, you will want to have a running [Apache web server](/docs/web-servers/apache/apache-2-web-server-on-ubuntu-8-04-lts-hardy/) and a functional [MySQL database](/docs/databases/mysql/use-mysql-relational-databases-on-ubuntu-8-04-hardy/) installed.
+We assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and have a running and up to date Ubuntu 8.04 (Hardy) system. Furthermore, you will want to have a running [Apache web server](/docs/guides/apache-2-web-server-on-ubuntu-8-04-lts-hardy/) and a functional [MySQL database](/docs/guides/use-mysql-relational-databases-on-ubuntu-8-04-hardy/) installed.
 
 ## Installing Python Dependencies
 

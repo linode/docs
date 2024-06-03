@@ -1,16 +1,13 @@
 ---
 slug: how-to-configure-git
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Learn the basics of Git in this guide. Discover one of the most popular distributed version control and source code management systems that make contributing to projects and working with a team easy.'
+title: Getting Started with Git
+description: 'Learn the basics of distributed version control and source code management tool Git in this guide.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-04
+modified: 2019-01-15
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb", "gitolite", "ubuntu", "debian", "arch", "gentoo"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-15
-modified_by:
-  name: Linode
-published: 2009-09-04
-title: Getting Started with Git
 external_resources:
  - '[Refspec Information](https://git-scm.com/book/en/v2/Git-Internals-The-Refspec)'
  - '[Learn Git with Bitbucket Cloud](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)'
@@ -27,9 +24,13 @@ aliases: ['/development/version-control/how-to-configure-git/']
 
 Git is a distributed version control system. Git was designed and developed by [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds) for Linux kernel development. Git provides support for non-linear, distributed development, allowing multiple contributors to work on a project simultaneously. Git is the most popular distributed version control and source code management system. This guide will walk you through the basics of getting started with Git, from installing the software to using basic commands on both local and remote repositories (repo).
 
+{{< note >}}
+If you are new to version control systems (VCS), see our guide [SVN vs Git: Which Version Control System Should You Use?](/docs/guides/svn-vs-git/) to learn more about each VCS.
+{{< /note >}}
+
 ## Configure Git
 
-After you [install Git](/docs/development/version-control/how-to-install-git-on-mac-and-windows), configure it for first time use using `git config`, a built-in tool that obtains and sets configuration variables. These configuration variables are located in three different places on a GNU/Linux system:
+After you [install Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/), configure it for first time use using `git config`, a built-in tool that obtains and sets configuration variables. These configuration variables are located in three different places on a GNU/Linux system:
 
  - `/etc/gitconfig` - stores the configuration information for all system users and their respective repositories.
  - `~/.gitconfig` - stores user-specific configuration files on the system.
@@ -72,7 +73,6 @@ If you have an new or existing project and you want to start using Git to keep t
 After you have added the file, stage a commit and leave a commit message. Commit messages serve as a reminder of the changes that were made to a file:
 
     git commit -m "Initialized a Git repository for this project. Tracking changes to a file."
-
 {{< note >}}
 It's good practice to provide clear and descriptive commit messages for every commit you stage, as this helps collaborators to understand what a commit encompasses.
 {{< /note >}}
@@ -84,6 +84,8 @@ There may be files or folders in your project directory that you do not wish to 
 *.zip
 __doNotInclude__/
 {{< /file >}}
+
+To learn how to undo Git commit, see our guide [How to Undo a Git Commit: A Step-by-Step Guide](/docs/guides/how-to-undo-git-commit/).
 
 ### Basic Git Commands
 
@@ -140,11 +142,11 @@ Now the `master` branch has the new search feature.
 
 ## Use Git with a Remote Repository
 
-[GitHub](https://github.com), [GitLab](https://gitlab.com), and [Bitbucket](https://bitbucket.org/) all provide ways to store Git repositories remotely and facilitate collaboration. Many of these services also include a number of other features that are vital to content development, including pull requests, continuous integration / continuous delivery pipelines (CI/CD), wikis, and webhooks. If you'd rather use a self-hosted solution, GitLab and [Gogs](https://gogs.io/) offer free locally hosted versions of their software that can easily be managed on a Linode. Check out our guides on [installing GitLab](/docs/development/version-control/install-gitlab-on-ubuntu-18-04/) and [installing Gogs](/docs/development/version-control/install-gogs-on-debian/) for more information on hosting your own remote repository software. GitHub and Bitbucket also offer paid enterprise versions of their software for local hosting. When discussing remote repositories, usually one of the aforementioned services is being referenced.
+[GitHub](https://github.com), [GitLab](https://gitlab.com), and [Bitbucket](https://bitbucket.org/) all provide ways to store Git repositories remotely and facilitate collaboration. Many of these services also include a number of other features that are vital to content development, including pull requests, continuous integration / continuous delivery pipelines (CI/CD), wikis, and webhooks. If you'd rather use a self-hosted solution, GitLab and [Gogs](https://gogs.io/) offer free locally hosted versions of their software that can easily be managed on a Linode. Check out our guides on [installing GitLab](/docs/guides/install-gitlab-on-ubuntu-18-04/) and [installing Gogs](/docs/guides/install-gogs-on-debian/) for more information on hosting your own remote repository software. GitHub and Bitbucket also offer paid enterprise versions of their software for local hosting. When discussing remote repositories, usually one of the aforementioned services is being referenced.
 
 This section provides some basic information on navigating remote Git repositories.
 
-To copy every file from a remote repository to your local system, use `git clone` followed by the remote repo's URL:
+To copy every file from a remote repository to your local system, use `git clone` followed by the remote repository's URL:
 
     git clone https://github.com/linode/docs.git
 
@@ -214,3 +216,4 @@ Git will grab the new code from the chosen remote repository branch and merge it
 {{< note >}}
 Sometimes two developers will edit the same section of a file at the same time and attempt to merge their changes into the codebase. When this happens, Git will throw an error called a *merge conflict*. Because Git will be unable to determine which set of changes is the correct set of changes, it will prompt you to fix the merge conflict before it moves forward with the merge.
 {{< /note >}}
+

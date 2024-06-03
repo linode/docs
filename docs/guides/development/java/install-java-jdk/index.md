@@ -1,17 +1,14 @@
 ---
 slug: install-java-jdk
-author:
-  name: Jared Kobos
-  email: docs@linode.com
+title: "Install JDK on Ubuntu"
 description: 'Shortguide for installing Java on Ubuntu'
+authors: ["Jared Kobos"]
+contributors: ["Jared Kobos"]
+published: 2018-01-30
+modified: 2017-01-08
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["java", "jdk", "install java"]
 tags: ["java","ubuntu"]
-modified: 2017-01-08
-modified_by:
-  name: Jared Kobos
-title: "How to install JDK on Ubuntu"
-published: 2018-01-30
 headless: true
 show_on_rss_feed: false
 aliases: ['/development/java/install-java-jdk/']

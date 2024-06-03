@@ -1,20 +1,15 @@
 ---
 slug: use-the-ps-aux-command-in-linux
-author:
-  name: James Turner
-  email: turner@blackbear.biz
-keywords: ["ps aux command"]
-description: 'The `ps aux` command is a tool that provides Linux system process information. You can view the process ID, user name, CPU, memory usage, and other helpful data about your system''s current state. This information can help you troubleshoot your Linux system and monitor its overall health.'
-og_description: 'The `ps aux` command is a tool that provides Linux system process information. You can view the process ID, user name, CPU, memory usage, and other helpful data about your system''s current state. This information can help you troubleshoot your Linux system and monitor its overall health.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-01-25
-modified_by:
-  name: Linode
+title: Using the ps aux Command in Linux
+title_meta: How to Use the ps aux Command in Linux
+description: "The ps aux command is a tool that provides Linux system process information. This guide explain why that matters, and how to use it.'"
+authors: ["James Turner"]
+contributors: ["James Turner"]
 published: 2021-01-25
-title: Use the ps aux Command in Linux
-h1_title: Using the ps aux Command in Linux
+keywords: ["ps aux command"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-  - '[Backing Up Your Data](/docs/security/backups/backing-up-your-data/)'
+  - '[Backing Up Your Data](/docs/guides/backing-up-your-data/)'
 tags: ["linux"]
 ---
 The `ps aux` command is a tool to monitor processes running on your Linux system. A *process* is associated with any program running on your system, and is used to manage and monitor a program's memory usage, processor time, and I/O resources. Since the `ps aux` command displays an overview of all the processes that are running, it is a great tool to understand and troubleshoot the health and state of your Linux system. This guide provides an introduction to the `ps aux` command with brief examples to help you interpret its output.

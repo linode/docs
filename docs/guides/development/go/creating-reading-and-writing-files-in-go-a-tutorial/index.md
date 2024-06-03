@@ -1,19 +1,13 @@
 ---
 slug: creating-reading-and-writing-files-in-go-a-tutorial
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
-description: 'Learn various file I/O operations in Go.'
+title: 'Creating, Reading and Writing Files in Go'
+title_meta: 'Creating, Reading and Writing Files in Go - A Tutorial'
+description: 'This guide provides you instructions for performing various file I/O operations in the Go programming language, such as verifying a path exists, and more.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-09-06
 keywords: ["Go", "File", "UNIX", "Input", "Output", "Golang"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-09-06
-modified_by:
-  name: Linode
-title: 'Creating, Reading and Writing Files in Go - A Tutorial'
-h1_title: 'Creating, Reading and Writing Files in Go'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[Go](https://golang.org)'
   - '[The os package](https://golang.org/pkg/os/)'
@@ -27,7 +21,7 @@ aliases: ['/development/go/creating-reading-and-writing-files-in-go-a-tutorial/'
 This guide provides examples related to performing common file input and output operations in Go.
 
 {{< note >}}
-This guide is written for a non-root user. However, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. However, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## In This Guide
@@ -42,7 +36,7 @@ In this guide, you will learn how to:
 
 ## Before You Begin
 
-- To follow this guide you need to have [Go installed on your computer](/docs/development/go/install-go-on-ubuntu/) and access to your preferred text editor.
+- To follow this guide you need to have [Go installed on your computer](/docs/guides/install-go-on-ubuntu/) and access to your preferred text editor.
 
 - For the purposes of this guide, a text file named `data.txt` with the following contents will be used:
 
@@ -90,7 +84,6 @@ Executing `doesItExist.go` will resemble the following output:
 {{< output >}}
 Path does not exist! stat /bin/What: no such file or directory
 {{< /output >}}
-
 {{< note >}}
 The fact that a path does exist does not necessarily mean that it is a regular file or a directory. There exist additional tests and functions that will help you determine the kind of file you are dealing with.
 {{< /note >}}
@@ -135,7 +128,6 @@ Executing `isFile.go` will resemble the following output:
 {{< output >}}
 /bin/ls is a regular file!
 {{< /output >}}
-
 
 {{< note >}}
 Most of the examples in this guide will not test whether the file that is going to be read exists in order to minimize the amount of code. The `os.Open()` function does some of this work, but in a less elegant way. However, on production code all necessary tests should be performed in order to avoid crashes and bugs in your software.

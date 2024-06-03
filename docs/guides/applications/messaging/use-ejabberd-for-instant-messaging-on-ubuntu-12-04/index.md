@@ -1,19 +1,14 @@
 ---
 slug: use-ejabberd-for-instant-messaging-on-ubuntu-12-04
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Use ejabberd for Instant Messaging on Ubuntu-12-04.'
+title: 'Use ejabberd for Instant Messaging on Ubuntu-12-04'
+description: 'This guide shows how to use Ejabberd, a Jabber daemon written in the Erlang language, as an instant messaging service on the Ubuntu 12.04 Operating System.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-31
 keywords: ["ejabberd", "ejabberd ubuntu", "ejabberd ubuntu 12.04", "ejabberd on linux", "real-time messaging", "xmpp", "collaboration software", "chat software", "linux jabber server", "instant messaging", "jabber daemon", "erlang"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/ejabberd/ubuntu-12-04-precise-pangolin/','/applications/messaging/use-ejabberd-for-instant-messaging-on-ubuntu-12-04/','/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin/']
-modified: 2012-10-31
-modified_by:
-  name: Linode
-published: 2012-10-31
-title: 'Use ejabberd for Instant Messaging on Ubuntu-12-04'
 external_resources:
  - '[Ejabberd Community Site](http://www.ejabberd.im/)'
  - '[XMPP Standards Foundation](http://xmpp.org/)'
@@ -23,11 +18,12 @@ relations:
         key: how-to-install-ejabberd
         keywords:
             - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
 Ejabberd is a Jabber daemon written in the Erlang programming language. It is extensible, flexible and very high performance. With a web-based interface and broad support for [XMPP standards](http://xmpp.org/), ejabberd is a great choice for a multi-purpose XMPP server. Ejabberd can be considered "heavyweight" by critics because of the requirements of the Erlang run-times. However, it is incredibly robust and can scale to support incredibly heavy loads. Ejabberd servers are believed to be the backbone for some of the largest Jabber servers running now.
 
-This installation process assumes that you have a working installation of Ubuntu 12.04 (Precise Pangolin), have followed the steps in the [getting started](/docs/getting-started/) guide, and now have an up-to-date instance of the Ubuntu Precise Pangolin operating system. We also assume you are connected to your Linode via SSH as root. Once you've completed these requirements, we can begin with the installation process.
+This installation process assumes that you have a working installation of Ubuntu 12.04 (Precise Pangolin), have followed the steps in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, and now have an up-to-date instance of the Ubuntu Precise Pangolin operating system. We also assume you are connected to your Linode via SSH as root. Once you've completed these requirements, we can begin with the installation process.
 
 ## XMPP/Jabber Basics
 
@@ -40,7 +36,7 @@ Although you can successfully run an XMPP server with only a passing familiarity
     Again, the resource is optional; although XMPP allows a single JID to be connected to the server from multiple machines (i.e. resources), the resource adds a useful amount of specificity.
 
 -   The XMPP system is federated by nature. Users with accounts on one server - if the server administrators allow it - can communicate with users on other servers. Without a centralized server, each XMPP server maintains the accounts and serves as the communication gateway for its own users. In the XMPP system there is no single point of failure; however, each server administrator can decide how his server is going to participate in the federated network. For instance, to federate with Google's "GTalk" XMPP network, server administrators need to have server-to-server (s2s) SSL/TLS encryption enabled, while other servers don't always require this.
--   XMPP takes advantage of ["SRV" DNS records](/docs/dns-guides/introduction-to-dns) to support the resolution of domains to the servers which provide DNS records.
+-   XMPP takes advantage of ["SRV" DNS records](/docs/guides/dns-overview/) to support the resolution of domains to the servers which provide DNS records.
 
 ## Install ejabberd
 

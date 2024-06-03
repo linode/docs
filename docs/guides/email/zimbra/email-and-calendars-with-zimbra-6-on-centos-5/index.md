@@ -1,19 +1,15 @@
 ---
 slug: email-and-calendars-with-zimbra-6-on-centos-5
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: Email and Calendars with Zimbra 6 on CentOS 5
 description: 'Getting started with the open source edition of Zimbra groupware on your CentOS 5 Linode.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-13
+modified: 2011-05-17
 keywords: ["zimbra on centos", "zimbra groupware", "zimbra mail server", "linux mail server"]
 tags: ["centos","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/zimbra/install-zimbra-centos-5/','/email/zimbra/email-and-calendars-with-zimbra-6-on-centos-5/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2009-09-13
-title: Email and Calendars with Zimbra 6 on CentOS 5
 external_resources:
  - '[Zimbra Community Documentation](http://www.zimbra.com/community/documentation.html)'
  - '[Zimbra Wiki](http://wiki.zimbra.com/index.php?title=Main_Page)'
@@ -23,13 +19,14 @@ relations:
         key: zimbra-groupware
         keywords:
             - distribution: CentOS 5
+deprecated: true
 ---
 
 Zimbra is a groupware system that provides email, calendaring, integrated antivirus and spam filtering, and more for multiple domains. Available in several editions, this guide will help you get the Open Source Edition installed on your CentOS 5 Linode.
 
 Please note that Zimbra is a fairly "heavy" (resource-intensive) product compared to some other groupware offerings. We recommend a Linode 2048 or higher for best results; you may encounter issues using Zimbra with lower-resource plans. Additionally, note that Zimbra works best as a standalone product on your Linode; installation alongside other common software such as web or email servers is not advised.
 
-We assume you've already followed the steps outlined in our [getting started guide](/docs/getting-started/), and that your system is up to date. All configuration will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
+We assume you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that your system is up to date. All configuration will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
 
 ## Installing Prerequisite Packages
 

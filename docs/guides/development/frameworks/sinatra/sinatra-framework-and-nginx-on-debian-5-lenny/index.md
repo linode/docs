@@ -1,33 +1,28 @@
 ---
 slug: sinatra-framework-and-nginx-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Deploy simple web applications with the Sinatra web development framework.'
+title: 'Sinatra Framework and nginx on Debian 5 (Lenny)'
+description: 'This guide will show you how to deploy simple web applications with the free and open source Sinatra web development framework on Debian 5 "Lenny".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-01-21
+modified: 2012-10-08
 keywords: ["sinatra", "ruby", "web applications", "development", "deployment"]
 tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/sinatra-framework-and-nginx-on-debian-5-lenny/','/frameworks/sinatra/debian-5-lenny/','/websites/frameworks/sinatra-framework-and-nginx-on-debian-5-lenny/','/development/frameworks/sinatra/sinatra-framework-and-nginx-on-debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2011-01-21
-title: 'Sinatra Framework and nginx on Debian 5 (Lenny)'
 relations:
     platform:
         key: sinatra-nginx
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
-
-
 
 Sinatra is a simple lightweight framework for web application development in the Ruby programming language. Rather than providing a complete development system, Sinatra provides a basic URL-mapping system that developers can use to create powerful custom applications.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

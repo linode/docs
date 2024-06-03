@@ -1,7 +1,0 @@
-{{/* TODO(bep) improve this with the upcoming improvements in js.Build. */}}
-{{ $pageInfo := dict "href" .RelPermalink "permalink" .Permalink "linkTitle" .LinkTitle "title" .Title "sectionsEntries" .SectionsEntries "type" .Type "kind" .Kind }}
-{{ $pageInfoJSON := $pageInfo | jsonify }}
-<script data-cfasync="false">
-  {{/* This global is used by the breadcrumbs builder, Disqus and possibly others. */}}
-  var lnPageInfo = JSON.parse({{ $pageInfoJSON }});
-</script>

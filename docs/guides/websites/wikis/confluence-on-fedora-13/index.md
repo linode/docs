@@ -1,33 +1,28 @@
 ---
 slug: confluence-on-fedora-13
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Use Confluence on Fedora 13 to power a full-featured wiki system.'
+title: Confluence on Fedora 13
+description: 'This guide provides you with step-by-step instructions for installing and using Confluence on Fedora 13 to power a fully-featured Wiki for your organization.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-09-09
+modified: 2013-10-04
 keywords: ["confluence fedora 13", "confluence", "confluence wiki", "confluence linux"]
 tags: ["wiki","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/confluence/fedora-13/','/websites/wikis/confluence-on-fedora-13/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2010-09-09
-title: Confluence on Fedora 13
 relations:
     platform:
         key: using-confluence
         keywords:
            - distribution: Fedora 13
+deprecated: true
 ---
-
-
 
 [Confluence](http://www.atlassian.com/software/confluence/) is a popular wiki system that features easy editing and publishing, Microsoft Office and SharePoint integration, the ability to add custom features via plugins, and more. It is [free for use](http://www.atlassian.com/software/jira/licensing.jsp#nonprofit) by official non-profit organizations, charities, educational institutions, and established open source projects. These guides will help you get started with Confluence on your Fedora 13 Linode. It is assumed that you're starting with a freshly deployed system. If you've already deployed applications to your Linode, you may need to make some adjustments to these instructions to accommodate your existing setup. It is also assumed that you've already obtained a license key for Confluence; if not, please do so before proceeding. These steps should be performed as the "root" user via an SSH session.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -219,31 +214,31 @@ Apache should now be properly configured. Next, you'll configure Confluence.
 
 If you created a virtual host for your Confluence installation, direct your browser to `http://confluence.example.com`, replacing "confluence.example.com" with the site you set up with Apache. Otherwise, visit the URL `http://12.34.56.78:8080`, replacing "12.34.56.78" with your Linode's public IP address. Enter your license key on the first screen and click the "Production Installation" button to continue.
 
-[![Confluence license input screen.](342-confluence-config-01-large.png)](342-confluence-config-01-large.png)
+![Confluence license input screen.](342-confluence-config-01-large.png)
 
 Select "PostgreSQL" under the "External Database" section and click the "External Database" button to continue.
 
-[![Confluence external database selection.](343-confluence-config-02-large.png)](343-confluence-config-02-large.png)
+![Confluence external database selection.](343-confluence-config-02-large.png)
 
 Click the "Direct JDBC" button to continue.
 
-[![Confluence direct JDBC database connection selection.](344-confluence-config-03-large.png)](344-confluence-config-03-large.png)
+![Confluence direct JDBC database connection selection.](344-confluence-config-03-large.png)
 
 Enter the following database connection details, along with your password. Click "Next" to continue.
 
-[![Confluence database connection details entry.](345-confluence-config-04-large.png)](345-confluence-config-04-large.png)
+![Confluence database connection details entry.](345-confluence-config-04-large.png)
 
 You may choose to start with an example site or an empty configuration. If you're new to Confluence, we recommend you install the example site to gain more familiarity with the system.
 
-[![Confluence initial content selection.](346-confluence-config-05-large.png)](346-confluence-config-05-large.png)
+![Confluence initial content selection.](346-confluence-config-05-large.png)
 
 Select an appropriate username for the administrative user, and be sure to enter a strong password. Click "Next" to continue.
 
-[![Confluence administrative user details entry.](347-confluence-config-06-large.png)](347-confluence-config-06-large.png)
+![Confluence administrative user details entry.](347-confluence-config-06-large.png)
 
 If you elected to install the example site, you'll be greeted with a screen resembling the following screenshot.
 
-[![Confluence example site home page.](348-confluence-config-07-large.png)](348-confluence-config-07-large.png)
+![Confluence example site home page.](348-confluence-config-07-large.png)
 
 Congratulations! You've successfully installed Confluence on your Fedora 13 Linode.
 

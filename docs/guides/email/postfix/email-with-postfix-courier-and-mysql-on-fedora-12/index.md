@@ -1,33 +1,28 @@
 ---
 slug: email-with-postfix-courier-and-mysql-on-fedora-12
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Email with Postfix, Courier and MySQL on Fedora 12'
 description: 'Installing and configuring the Postfix MTA to work with Courier and MySQL for virtual domains on Fedora 12.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-26
+modified: 2011-05-17
 keywords: ["postfix", "courier", "mail server", "imap", "postfix on fedora 12", "postfix on linux", "postfix with courier", "postfix with mysql", "mysql virtual domains"]
 tags: ["fedora","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/email-with-postfix-courier-and-mysql-on-fedora-12/','/email/postfix/courier-mysql-fedora-12/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2010-05-26
-title: 'Email with Postfix, Courier and MySQL on Fedora 12'
 relations:
     platform:
         key: email-postfix-courier-mysql
         keywords:
             - distribution: Fedora 12
+deprecated: true
 ---
-
-
 
 The Postfix mail transfer agent (MTA) is a high performance, open source email server system. This guide will help you get Postfix running on your Linode, using Courier for IMAP/POP3 service and MySQL to store information on virtual domains and users.
 
 Secure IMAPS and POP3S services are supported with this configuration, along with support for encrypted SMTP connections. This guide is largely based on Falko Timme's excellent [How To Install courier-imap, courier-authlib, And maildrop On Fedora, RedHat, CentOS guide](http://www.howtoforge.com/installing-courier-imap-courier-authlib-maildrop-fedora-redhat-centos), with some packages omitted (such as quota support, as this requires rebuilding Postfix and many organizations have no need for quotas). Other steps have been clarified with additional explanations. This guide does not cover SpamAssassin or webmail software installation, although you may reference other resources to add support for these features.
 
-We assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. This tutorial assumes you haven't already installed the MySQL database server; if you have, you will not be required to follow the initial steps related to MySQL installation.
+We assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. This tutorial assumes you haven't already installed the MySQL database server; if you have, you will not be required to follow the initial steps related to MySQL installation.
 
 **NOTE: Please carefully read all information presented in this guide.** There are many files and commands that will need to be edited as part of the setup process; please do not simply copy and paste the example blocks.
 
@@ -131,7 +126,7 @@ Issue the following command to create a database for your mail server and switch
     CREATE DATABASE mail;
     USE mail;
 
-Create a mail administration user called `mail_admin` and grant it permissions on the `mail` database with the following commands. Please be sure to replace "mail\_admin\_password" with a password you select for this user.
+Create a mail administration user called `mail_admin` and grant it permissions on the `mail` database with the following commands. Please be sure to replace `mail_admin_password` with a password you select for this user.
 
     GRANT SELECT, INSERT, UPDATE, DELETE ON mail.* TO 'mail_admin'@'localhost'
       IDENTIFIED BY 'mail_admin_password';
@@ -190,7 +185,7 @@ Next, we'll perform additional Postfix configuration to set up communication wit
 
 ## Configure Postfix to work with MySQL
 
-Create a virtual domain configuration file for Postfix called `/etc/postfix/mysql-virtual_domains.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user.
+Create a virtual domain configuration file for Postfix called `/etc/postfix/mysql-virtual_domains.cf` with the following contents. Be sure to replace `mail_admin_password` with the password you chose earlier for the MySQL mail administrator user.
 
 {{< file "/etc/postfix/mysql-virtual_domains.cf" >}}
 user = mail_admin
@@ -202,7 +197,7 @@ hosts = 127.0.0.1
 {{< /file >}}
 
 
-Create a virtual forwarding file for Postfix called `/etc/postfix/mysql-virtual_forwardings.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user.
+Create a virtual forwarding file for Postfix called `/etc/postfix/mysql-virtual_forwardings.cf` with the following contents. Be sure to replace `mail_admin_password` with the password you chose earlier for the MySQL mail administrator user.
 
 {{< file "/etc/postfix/mysql-virtual_forwardings.cf" >}}
 user = mail_admin
@@ -214,7 +209,7 @@ hosts = 127.0.0.1
 {{< /file >}}
 
 
-Create a virtual mailbox configuration file for Postfix called `/etc/postfix/mysql-virtual_mailboxes.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user.
+Create a virtual mailbox configuration file for Postfix called `/etc/postfix/mysql-virtual_mailboxes.cf` with the following contents. Be sure to replace `mail_admin_password` with the password you chose earlier for the MySQL mail administrator user.
 
 {{< file "/etc/postfix/mysql-virtual_mailboxes.cf" >}}
 user = mail_admin
@@ -226,7 +221,7 @@ hosts = 127.0.0.1
 {{< /file >}}
 
 
-Create a virtual email mapping file for Postfix called `/etc/postfix/mysql-virtual_email2email.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user.
+Create a virtual email mapping file for Postfix called `/etc/postfix/mysql-virtual_email2email.cf` with the following contents. Be sure to replace `mail_admin_password` with the password you chose earlier for the MySQL mail administrator user.
 
 {{< file "/etc/postfix/mysql-virtual_email2email.cf" >}}
 user = mail_admin
@@ -316,7 +311,7 @@ FLAGS="-r"
 {{< /file >}}
 
 
-Next, edit the file `/etc/pam.d/smtp` and copy in the following two lines. You will want to comment out the existing configuration options be adding a `#` to the beginning of each line. Be sure to change "mail\_admin\_password" to the password you chose for your mail administration MySQL user earlier.
+Next, edit the file `/etc/pam.d/smtp` and copy in the following two lines. You will want to comment out the existing configuration options be adding a `#` to the beginning of each line. Be sure to change `mail_admin_password` to the password you chose for your mail administration MySQL user earlier.
 
 {{< file "/etc/pam.d/smtp" >}}
 auth    required   pam_mysql.so user=mail_admin passwd=mail_admin_password host=127.0.0.1 db=mail table=users usercolumn=email passwdcolumn=password crypt=1
@@ -325,7 +320,7 @@ account sufficient pam_mysql.so user=mail_admin passwd=mail_admin_password host=
 {{< /file >}}
 
 
-Next, edit the file `/usr/lib/sasl2/smtpd.conf` to match the following example. Be sure to change "mail\_admin\_password" to the password you chose for your mail administration MySQL user earlier.
+Next, edit the file `/usr/lib/sasl2/smtpd.conf` to match the following example. Be sure to change `mail_admin_password` to the password you chose for your mail administration MySQL user earlier.
 
 {{< file "/usr/lib/sasl2/smtpd.conf" >}}
 pwcheck_method: saslauthd
@@ -365,7 +360,7 @@ Back up the current `/etc/authlib/authmysqlrc` file and create an empty one as f
     cp /etc/authlib/authmysqlrc /etc/authlib/authmysqlrc_orig
     cat /dev/null > /etc/authlib/authmysqlrc
 
-Edit the file `/etc/authlib/authmysqlrc`, copying in the following contents. Be sure to change "mail\_admin\_password" to the password you chose for your mail administration MySQL user earlier.
+Edit the file `/etc/authlib/authmysqlrc`, copying in the following contents. Be sure to change `mail_admin_password` to the password you chose for your mail administration MySQL user earlier.
 
 {{< file "/etc/authlib/authmysqlrc" >}}
 MYSQL_SERVER localhost

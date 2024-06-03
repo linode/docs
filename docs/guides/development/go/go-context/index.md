@@ -1,18 +1,12 @@
 ---
 slug: go-context
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
-description: 'Showcasing the use of the context Go package.'
+title: 'Using the context Go package'
+description: 'This article showcases some of the use cases of the context package which is part of Go, a programming language created by Google and uised in many popular apps.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-05-31
 keywords: ["go", "golang", "context"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-05-31
-modified_by:
-  name: Linode
-title: 'Using the context Go package'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[The Go Programming Language Website](https://www.golang.com)'
 aliases: ['/development/go/go-context/']
@@ -27,22 +21,22 @@ The context package provides contextual information that a goroutine may need su
 
 In this guide you will learn:
 
- - How the [context package](/docs/development/go/go-context/#about-the-context-package) works.
+ - How the [context package](/docs/guides/go-context/#about-the-context-package) works.
 
- - Work through a [simple example](/docs/development/go/go-context/#a-simple-example) that demonstrate the main `context.Context` features.
+ - Work through a [simple example](/docs/guides/go-context/#a-simple-example) that demonstrate the main `context.Context` features.
 
- - [Use context for http](/docs/development/go/go-context/#using-context-for-http) requests.
+ - [Use context for http](/docs/guides/go-context/#using-context-for-http) requests.
 
- - [Use context as a key-value store](/docs/development/go/go-context/#using-contexts-as-key-value-stores).
+ - [Use context as a key-value store](/docs/guides/go-context/#using-contexts-as-key-value-stores).
 
 ## Before You Begin
 
 You will need to install a recent version of Go on your computer in order to follow the presented commands. Any Go version newer than 1.8 will do but it is considered a good practice to have the latest version of Go installed. You can check your Go version by executing `go version`.
 
-If you still need to install Go, you can follow our guide for Ubuntu installation [here](https://www.linode.com/docs/development/go/install-go-on-ubuntu/).
+If you still need to install Go, you can follow our guide for Ubuntu installation [here](/docs/guides/install-go-on-ubuntu/).
 
 {{< note >}}
-This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to get property executed. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to get property executed. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## About the context package
@@ -179,7 +173,7 @@ func main() {
 `context.CancelFunc()`. The `context.WithCancel()` function uses an existing Context and creates a
 child with cancellation. The `context.WithCancel()` function also returns a `Done` channel that can be closed, either when the `cancel()` function is called, as shown in the preceding code, or when the `Done` channel of the parent context is closed.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 One of the return values of `Context.Done()` is a Go channel, which means that you will have to use a `select` statement to work with. Although `select` looks like `switch`, `select` allows a goroutine to wait on multiple communications operations.
 {{< /note >}}
 
@@ -188,7 +182,7 @@ two parameters: a Context parameter and a `time.Duration` parameter. When the ti
 
  - The `cancel` variable in `f3()` comes from `context.WithDeadline()`. `context.WithDeadline()` requires two parameters: a Context variable and a `time` in the future that signifies the deadline of the operation. When the deadline passes, the `cancel()` function is called automatically.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Notice that contexts should not be stored in structures – they should be passed as separate parameters to functions. It is considered a good practice to pass them as the first parameter of a function.
 {{< /note >}}
 
@@ -351,7 +345,7 @@ func main() {
 
  - The `connect()` function that is executed as a goroutine will either terminate normally or when the `cancel()` function is executed.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It is considered a good practice to use `context.Background()` in the `main()` function, the `init()` function of a package or at tests.
 {{< /note >}}
 

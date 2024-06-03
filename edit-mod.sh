@@ -13,7 +13,7 @@ if test "$#" -ge 2; then
 fi
 
 if [[ $what == "theme" ]]; then
-    line='replace github.com/bep/linodedocs => ../linodedocs'
+    line='replace github.com/linode/linode-docs-theme => ../linodedocs'
     if $done; then
         trimGoMod
     else

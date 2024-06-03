@@ -1,17 +1,14 @@
 ---
 slug: use-killall-and-kill-to-stop-processes-on-linux
-author:
-  name: Linode
-  email: docs@linode.com
+title: Use killall and kill Commands to Stop Processes on Linux
 description: Learn how to use Linux commands killall and kill to manage and kill processes on Linux distributions in this simple tutorial.
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-11-29
+modified: 2018-02-21
 keywords: ["kill", "killall", "linux", "common linux commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/manage-processes-with-killall-and-kill/','/tools-reference/tools/use-killall-and-kill-to-stop-processes-on-linux/','/linux-tools/common-commands/killall-kill/']
-modified: 2018-02-21
-modified_by:
-  name: Linode
-published: 2010-11-29
-title: Use killall and kill Commands to Stop Processes on Linux
 tags: ["linux"]
 ---
 
@@ -113,9 +110,9 @@ If you need to convert a signal name into a signal number, or a signal number in
 
 ## Find Running Processes
 
-Use a utility like [htop](/docs/tools-reference/linux-system-administration-basics/#monitor-processes-memory-and-cpu-usage-with-htop) or `top` to view a real time list of process and their consumption of system resources.
+Use a utility like [htop](/docs/guides/linux-system-administration-basics/#monitor-processes-memory-and-cpu-usage-with-htop) or `top` to view a real time list of process and their consumption of system resources.
 
-Use the `ps` command to view processes that are currently running and their PIDs. The following example filters the list of all processes that are currently running for the string `emacs` using [grep](/docs/tools-reference/search-and-filter-text-with-grep):
+Use the `ps` command to view processes that are currently running and their PIDs. The following example filters the list of all processes that are currently running for the string `emacs` using [grep](/docs/guides/how-to-use-grep-command/):
 
     $ ps aux | grep "emacs"
     username  3896  0.0  2.2  56600 44468 ?        Ss   Sep30   4:29 emacs
@@ -123,9 +120,9 @@ Use the `ps` command to view processes that are currently running and their PIDs
 
 The number listed in the second column from the left is the PID, which is `3896` in the case of the `emacs` process. The `grep` process will always match itself for a simple search, as in the second result.
 
-{{<note>}}
+{{< note >}}
 You can use the command `ps auxf` to view a hierarchical tree of all running processes.
-{{</note>}}
+{{< /note >}}
 
 Once you have obtained the PID or process name, use `killall` or `kill` to terminate the process as above.
 

@@ -1,29 +1,26 @@
 ---
 slug: using-mysql-relational-databases-on-gentoo
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Getting started with MySQL for web and server applications on Gentoo.'
+title: Using MySQL Relational Databases on Gentoo
+description: 'MySQL is a popular relational database management system used as a backend for countless websites. This guide shows how to use MySQL on the Gentoo linux distro.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-01-21
+modified: 2014-01-28
 keywords: ["MySQL", "Gentoo", "database", "rdbms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/using-mysql-relational-databases-on-gentoo/','/databases/mysql/gentoo/']
-modified: 2014-01-28
-modified_by:
-  name: Alex Fornuto
-published: 2011-01-21
-title: Using MySQL Relational Databases on Gentoo
 relations:
     platform:
         key: use-mysql-relationaldb
         keywords:
             - distribution: Gentoo
 tags: ["database","mysql"]
+deprecated: true
 ---
 
 MySQL is a relational database management system (RDBMS) that is used as a backend for countless web and server applications. Originally released in 1995, it remains a popular choice for developers as a database server.
 
-Before beginning this guide, please make sure that you have completed the steps outlined in our [getting started guide](/docs/getting-started/). Additionally, make sure you are logged into your system as the root user.
+Before beginning this guide, please make sure that you have completed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Additionally, make sure you are logged into your system as the root user.
 
 ## Installing MySQL
 

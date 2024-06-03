@@ -1,23 +1,21 @@
 ---
 slug: kvm-reference
-author:
-  name: Josh Sager
-  email: docs@linode.com
+title: 'KVM Migration Reference'
 description: KVM Reference explains the differences when going from Xen to KVM virtualization.
+authors: ["Josh Sager"]
+contributors: ["Josh Sager"]
+published: 2015-06-15
+modified: 2020-12-01
 keywords: ["kvm", "kvm reference", "virtual machine mode", "kvm linode", "xen"]
 aliases: ['/platform/disk-images/kvm-reference/','/platform/kvm-reference/','/platform/kvm/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-12-01
-modified_by:
-  name: Alex Fornuto
-published: 2015-06-15
-title: 'KVM Migration Reference'
 tags: ["linode platform"]
+deprecated: true
 ---
 
 Linode's current virtualization stack is built on KVM. Previously, Linode used Xen, and older Linodes may still be on the Xen platform. Along with the increased performance of KVM virtualization, several details are different between Xen and KVM Linodes.
 
-{{< content "all-linodes-kvm-shortguide" >}}
+{{% content "all-linodes-kvm-shortguide" %}}
 
 ## What's Changed?
 
@@ -28,7 +26,6 @@ Device assignments for Xen Linodes were labeled as:
  * */dev/xvda*
  * */dev/xvdb*
  * */dev/xvdc*
-
 
 KVM Linodes use the "*sd*" naming convention:
 
@@ -44,12 +41,11 @@ On KVM Linodes, the console device moves from *hvc0* in Xen to *ttyS0* .
 
 Virtual machine mode determines whether devices inside your virtual machine are *paravirtualized* or *fully virtualized*. The differences are listed below:
 
-|         | Paravirtualization  | Full-virtualization   |
-|---------|:--------------------|:----------------------|
-| Block   | Virtio SCSI         | IDE                   |
-| Net     | Virtio Net          | e1000                 |
-| Serial  | ttyS0               | ttyS0                 |
-
+| Device Type | Paravirtualization | Full-virtualization |
+| -- | -- | -- |
+| Block | Virtio SCSI | IDE |
+| Net | Virtio Net | e1000 |
+| Serial | ttyS0 | ttyS0 |
 {{< note >}}
 If you're unfamiliar with these distinctions, choose paravirtualization
 {{< /note >}}
@@ -87,7 +83,7 @@ You should also move your block device assignments to be sequential, without ski
 
 An upgrade to KVM Linode includes the ability to do **Direct Disk** booting. Choosing Direct Disk means we will boot the Linode using the Master Boot Record on your boot device:
 
-[![Direct Disk Boot Mode.](config_direct_disk.png)](config_direct_disk.png)
+![Direct Disk Boot Mode.](config_direct_disk.png)
 
 ## How to Enable KVM
 
@@ -95,11 +91,11 @@ All new Linodes are created as KVM guests. Older Xen Linodes will need to migrat
 
 If your Linode is currently running on Xen, go to the Linode's Dashboard page. In the bottom right of the sidebar is an "Upgrade to KVM" link. Click on the link and follow the instructions to upgrade:
 
-  [![The KVM Upgrade Button.](kvm_upgrade_context.png)](kvm_upgrade_context.png)
+  ![The KVM Upgrade Button.](kvm_upgrade_context.png)
 
 ## Troubleshooting
 
-There have been a few minor issues reported when upgrading to KVM. If you're using any of the Linux distributions listed below and encounter an issue, please read on. If you are running a different distribution, or encounter an issue not listed here, please contact [Support](/docs/platform/support).
+There have been a few minor issues reported when upgrading to KVM. If you're using any of the Linux distributions listed below and encounter an issue, please read on. If you are running a different distribution, or encounter an issue not listed here, please contact [Support](/docs/products/platform/get-started/guides/support/).
 
 ### Migration from Xen
 
@@ -111,19 +107,19 @@ This means your Kernel doesn't have the necessary `virtio` drivers. To resolve:
 
 1.  Edit your Linode's configuration profile to use the Linode-supplied kernel.
 
-2.  Boot your Linode to update the kernel and regenerate `initramfs`. The steps will differ depending on your distribution. Assuming you're still using Grub 1 (Legacy Grub), refer to the [Run a Distribution-Supplied Kernel with PV-GRUB](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) guide.
+2.  Boot your Linode to update the kernel and regenerate `initramfs`. The steps will differ depending on your distribution. Assuming you're still using Grub 1 (Legacy Grub), refer to the [Run a Distribution-Supplied Kernel with PV-GRUB](/docs/guides/run-a-distributionsupplied-kernel-with-pvgrub/) guide.
 
 3.  Update `/boot/grub/menu.lst` to use your newly built kernel and `initramfs` file.
 
 3.  Edit your Linode's configuration profile back to the previous setting.
 
 {{< note >}}
-Remember to check [Glish](/docs/networking/use-the-graphic-shell-glish) as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.
+Remember to check [Glish](/docs/products/compute/compute-instances/guides/glish/) as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.
 {{< /note >}}
 
 ### CentOS 6
 
-There are some reported cases of Linodes running CentOS 6.X that lose network connectivity after upgrading. To resolve this issue, open the [LISH Console](/docs/networking/using-the-linode-shell-lish) and run:
+There are some reported cases of Linodes running CentOS 6.X that lose network connectivity after upgrading. To resolve this issue, open the [LISH Console](/docs/products/compute/compute-instances/guides/lish/) and run:
 
     rm -f /etc/udev/rules.d/70-persistent-net.rules
 
@@ -137,4 +133,4 @@ You can disable the use of Predictable Network Interface Names with the command 
 
     ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
 
-If you have already upgraded and lost connectivity to your Linode, you will need to use the [LISH Console](/docs/networking/using-the-linode-shell-lish) to regain access to your Linode to run this command. Once you've done so, reboot your system.
+If you have already upgraded and lost connectivity to your Linode, you will need to use the [LISH Console](/docs/products/compute/compute-instances/guides/lish/) to regain access to your Linode to run this command. Once you've done so, reboot your system.

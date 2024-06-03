@@ -1,20 +1,15 @@
 ---
 slug: install-mediawiki-on-ubuntu-1604
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'A guide for getting started with the popular MediaWiki engine for powering wiki sites.'
+title: Install MediaWiki on Ubuntu 16.04
+description: 'This guide will show you how to get started with the popular MediaWiki engine for powering wiki websites of all types and sizes on Ubuntu 16.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-30
+modified: 2019-08-23
 keywords: ["mediawiki", "wiki", "web-applications"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/wikis/mediawiki-engine/','/websites/wikis/install-mediawiki-on-ubuntu-1604/','/web-applications/wikis/mediawiki/']
-modified: 2019-08-23
-modified_by:
-  name: Linode
-published: 2009-09-30
-title: Install MediaWiki on Ubuntu 16.04
-deprecated: true
-deprecated_link: '/websites/wikis/install-mediawiki-on-ubuntu-1804/'
+aliases: ['/websites/wikis/install-mediawiki-on-ubuntu-1604/']
 external_resources:
  - '[MediaWiki Wiki](http://www.mediawiki.org/wiki/MediaWiki)'
  - '[What is Media Wiki](https://www.mediawiki.org/wiki/Manual:What_is_MediaWiki%3F)'
@@ -24,13 +19,15 @@ relations:
         key: install-mediawiki
         keywords:
            - distribution: Ubuntu 16.04
+deprecated: true
+deprecated_link: 'guides/how-to-install-mediawiki-ubuntu-2004/'
 ---
 
 ![mediawiki Banner](MediaWiki.jpg)
 
 MediaWiki is a popular, free wiki software package. It's the same software Wikipedia uses. It is fully dynamic and runs on a LAMP stack, taking advantage of the PHP language and the MySQL database backend. With easy installation and configuration, MediaWiki is a good solution when you need a familiar, full-featured, dynamic wiki engine.
 
-This guide assumes that you already have a working [LAMP stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04) running on Ubuntu. Your web accessible `DocumentRoot` should be located in `/var/www/html/example.com/public_html/`. You should be connected to your server via SSH and logged in as root.
+This guide assumes that you already have a working [LAMP stack](/docs/guides/install-lamp-stack-on-ubuntu-16-04/) running on Ubuntu. Your web accessible `DocumentRoot` should be located in `/var/www/html/example.com/public_html/`. You should be connected to your server via SSH and logged in as root.
 
 ## Download and Unpack MediaWiki
 
@@ -76,7 +73,7 @@ From the database section above, you will need:
 - DB username
 - DB user's password
 
-Giving MediaWiki superuser access to your MySQL database allows it to create new accounts. If you plan on having a large number of users or content, consider setting up a second Linode as a [dedicated database server](/docs/databases/mysql/standalone-mysql-server).
+Giving MediaWiki superuser access to your MySQL database allows it to create new accounts. If you plan on having a large number of users or content, consider setting up a second Linode as a [dedicated database server](/docs/guides/standalone-mysql-server/).
 
  After the installation is finished, MediaWiki will create a `LocalSettings.php` file, with the configurations from the installation process. Move the `LocalSettings.php` file to `/var/www/html/example.com/public_html/mediawiki/` and restrict access to the file:
 

@@ -1,18 +1,15 @@
 ---
 slug: creating-your-first-chef-cookbook
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
-description: 'Learn how to create Chef cookbooks by creating a LAMP stack in Chef'
+title: Creating your First Chef Cookbook
+title_meta: How to Create your First Chef Cookbook
+description: 'This guide provides you instructions for creating Chef cookbooks to automate tasks and automatically push changes by creating a LAMP stack in Chef.'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-06-10
+modified: 2019-12-03
 keywords: ["chef", "automation", "cookbooks", "configuration management", "DevOps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/configuration-management/creating-your-first-chef-cookbook/','/applications/chef/creating-your-first-chef-cookbook/','/applications/configuration-management/chef/creating-your-first-chef-cookbook/']
-modified: 2019-12-03
-modified_by:
-  name: Linode
-published: 2015-06-10
-title: How to Create your First Chef Cookbook
-h1_title: Creating your First Chef Cookbook
 external_resources:
  - '[Chef](http://www.chef.io)'
  - '[About Cookbooks](https://docs.chef.io/cookbooks.html)'
@@ -27,11 +24,11 @@ Chef cookbooks describe the *desired state* of your nodes, and allow Chef to pus
 
 ## Before You Begin
 
-1. Set up Chef with the [Setting Up a Chef Server, Workstation, and Node](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/) guide. When following that guide, **choose Ubuntu 16.04 as your Linux image for the Chef node you will bootstrap and manage**. This guide will use the [MySQL Chef cookbook](https://supermarket.chef.io/cookbooks/mysql/), which does not yet support Ubuntu 18.04.
+1. Set up Chef with the [Setting Up a Chef Server, Workstation, and Node](/docs/guides/install-a-chef-server-workstation-on-ubuntu-18-04/) guide. When following that guide, **choose Ubuntu 16.04 as your Linux image for the Chef node you will bootstrap and manage**. This guide will use the [MySQL Chef cookbook](https://supermarket.chef.io/cookbooks/mysql/), which does not yet support Ubuntu 18.04.
 
 1. Once your node is bootstrapped, you can use a Chef cookbook to secure your node. Consider using the [Users](https://supermarket.chef.io/cookbooks/users) cookbook and the [Firewall](https://supermarket.chef.io/cookbooks/firewall) cookbook for this work. While this is not required to complete this guide, it is recommended.
 
-1. You can also review [A Beginner's Guide to Chef](/docs/applications/configuration-management/beginners-guide-chef/) to receive an overview on Chef concepts.
+1. You can also review [A Beginner's Guide to Chef](/docs/guides/beginners-guide-chef/) to receive an overview on Chef concepts.
 
 1. The examples in this tutorial require a user account with sudo privileges. Readers who use a limited user account will need to prefix commands with sudo when issuing commands to the Chef client node and replace `-x root` with `-x username` where `username` is your limited user account.
 
@@ -163,11 +160,11 @@ end
 
     Because this is not the `default.rb` recipe, the recipe name, *apache*, must be appended to the recipe value.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
   To view a list of all nodes managed by your Chef server, issue the following command from your workstation:
 
     knife node list
-    {{</ note >}}
+    {{< /note >}}
 
 1. From your workstation, apply the configurations defined in the cookbook by running the chef-client on your node. Replace `nodename` with the name of your node:
 
@@ -179,7 +176,7 @@ end
 
         knife ssh 'name:nodename' 'systemctl status apache2' -x root
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Repeat steps 4-7 to upload each recipe to your Chef server as you create it. Run `chef-client` on your node as needed throughout the rest of this guide to ensure your recipes are working properly and contain no errors. When adding a new recipe, ensure you are using its correct name in the run list.
 
 This is not the recommended workflow for a production environment. You might consider creating different [Chef environments](https://docs.chef.io/environments.html) for testing, staging, and production.
@@ -187,7 +184,7 @@ This is not the recommended workflow for a production environment. You might con
 
 ### Configure Virtual Hosts
 
-This configuration is based off of the [How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/) guide.
+This configuration is based off of the [How to Install a LAMP Stack on Ubuntu 16.04](/docs/guides/install-lamp-stack-on-ubuntu-16-04/) guide.
 
 1.  Because multiple websites may need to be configured, use Chef's attributes feature to define certain aspects of the virtual host file(s). The ChefDK has a built-in command to generate the attributes directory and `default.rb` file within a cookbook. Replace `~/chef-repo/cookbooks/lamp_stack` with your cookbook's path:
 
@@ -464,7 +461,7 @@ depends          'mysql', '~> 8.6.0'
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Check the [MySQL Cookbook's Supermarket page](https://supermarket.chef.io/cookbooks/mysql) to ensure this is the latest version of the cookbook. The MySQL Cookbook does not yet support Ubuntu 18.04.
 {{< /note >}}
 
@@ -480,15 +477,15 @@ Chef contains a feature known as *data bags*. Data bags store information, and c
 
         openssl rand -base64 512 > ~/chef-repo/.chef/encrypted_data_bag_secret
 
-1.  Upload this key to your node's `/etc/chef` directory, either manually by `scp` from the node (an example can be found in the [Setting Up Chef](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/#add-the-rsa-private-keys) guide), or through the use of a recipe and cookbook file.
+1.  Upload this key to your node's `/etc/chef` directory, either manually by `scp` from the node (an example can be found in the [Setting Up Chef](/docs/guides/install-a-chef-server-workstation-on-ubuntu-14-04/#add-the-rsa-private-keys) guide), or through the use of a recipe and cookbook file.
 
 1.  On the workstation, create a `mysql` data bag that will contain the file `rtpass.json` for the root password:
 
         knife data bag create mysql rtpass.json --secret-file ~/chef-repo/.chef/encrypted_data_bag_secret
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Some knife commands require that information be edited as JSON data using a text editor. Your `config.rb` file should contain a configuration for the text editor to use for such commands. If your `config.rb` file does not already contain this configuration, add `knife[:editor] = "/usr/bin/vim"` to the bottom of the file to set vim as the default text editor.
-{{</ note >}}
+{{< /note >}}
 
     You will be asked to edit the `rtpass.json` file:
 
@@ -679,4 +676,4 @@ end
 
     `chef-client` is not designed to accept user input, and as such using commands like `mysqladmin status` that require a password can cause Chef to hang. If you need to be able to interact with MySQL client directly, consider logging in to your server directly.
 
-You have just created a LAMP Stack cookbook. Through this guide, you should have learned to use the execute, package, service, node, directory, template, cookbook_file, and mysql_service resources within a recipe, as well as download and use LWRPs, create encrypted data bags, upload/update your cookbooks to the server, and use attributes, templates, and cookbook files. This gives you a strong basis in Chef and cookbook creation for future projects.
+You have just created a LAMP Stack cookbook. Through this guide, you should have learned to use the `execute`, `package`, `service`, `node`, `directory`, `template`, `cookbook_file`, and `mysql_service` resources within a recipe, as well as download and use LWRPs, create encrypted data bags, upload/update your cookbooks to the server, and use attributes, templates, and cookbook files. This gives you a strong basis in Chef and cookbook creation for future projects.

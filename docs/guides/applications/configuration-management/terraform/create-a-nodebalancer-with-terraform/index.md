@@ -1,20 +1,15 @@
 ---
 slug: create-a-nodebalancer-with-terraform
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'How to create a NodeBalancer and Nodes with Terraform.'
+title: "Create a NodeBalancer with Terraform"
+description: 'This guide provides you with step-by-step instructions for installing Terraform and utilizing the tool to create a NodeBalancer and Nodes for your Linodes.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-12-12
+modified: 2021-12-29
 keywords: ['terraform','nodebalancer','node','balancer','provider','linode']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-12-12
-modified: 2018-12-12
-modified_by:
-  name: Linode
 image: CreateaNodeBalancerwitTerraform.png
-title: "Create a NodeBalancer with Terraform"
-contributor:
-  name: Linode
-external_resources:
+external_resources: 
 - '[Terraform Linode Provider Reference](https://www.terraform.io/docs/providers/linode/index.html)'
 - '[linode_nodebalancer Resource Reference](https://www.terraform.io/docs/providers/linode/r/nodebalancer.html)'
 - '[linode_nodebalancer_config Resource Reference](https://www.terraform.io/docs/providers/linode/r/nodebalancer_config.html)'
@@ -27,25 +22,25 @@ aliases: ['/applications/configuration-management/create-a-nodebalancer-with-ter
 
 Terraform allows you to represent Infrastructure as Code (IaC). You can use it to manage infrastructure, speed up deployments, and share your infrastructure's configuration files within a team. In this guide you will use Terraform to create a NodeBalancer that distributes traffic between two Linodes.
 
-{{< caution >}}
-The configurations and commands used in this guide will result in multiple billable resources being added to your account. Be sure to monitor your account closely in the Linode Cloud Manager to avoid unwanted charges. See the [Billings and Payments](/docs/platform/billing-and-support/billing-and-payments-new-manager/) guide for more details.
+{{< note type="alert" >}}
+The configurations and commands used in this guide will result in multiple billable resources being added to your account. Be sure to monitor your account closely in the Linode Cloud Manager to avoid unwanted charges. See the [Billings and Payments](/docs/products/platform/billing/) guide for more details.
 
 If you would like to stop billing for the resources created in this guide, [remove them](#optional-remove-the-nodebalancer-resources) when you have finished your work.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
-1.  You should have Terraform installed in your development environment, and have a working knowledge of Terraform resource configuration and the [Linode provider](https://www.terraform.io/docs/providers/linode/index.html). For more information on how to install and use Terraform, check out our [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
+1.  You should have Terraform installed in your development environment, and have a working knowledge of Terraform resource configuration and the [Linode provider](https://www.terraform.io/docs/providers/linode/index.html). For more information on how to install and use Terraform, check out our [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
 
 The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and will be updated in the near future.
-    {{</ note >}}
+    {{< /note >}}
 
-1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide to obtain a token.
+1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) guide to obtain a token.
 
-1.  Create a `terraform_nodebalancer` directory on your computer for the Terraform project you will create in this guide. All files you create in this guide should be placed in this directory, and you should run all commands from this directory. This new project should not be created inside another Terraform project directory, including the one you may have made when previously following [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/).
+1.  Create a `terraform_nodebalancer` directory on your computer for the Terraform project you will create in this guide. All files you create in this guide should be placed in this directory, and you should run all commands from this directory. This new project should not be created inside another Terraform project directory, including the one you may have made when previously following [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/).
 
 ## Create a Terraform Configuration File
 
@@ -53,9 +48,19 @@ The examples in this guide were written to be compatible with [Terraform version
 
 The first step to take when creating a Terraform configuration file is to create a *provider block*. This block lets Terraform know which provider to use. The only configuration value that the Linode provider needs is an API access token.
 
-Create a file named `nodebalancer.tf` in your Terraform project directory. You will be adding to this file throughout the guide. Add the provider block to the file:
+Create a file named `nodebalancer.tf` in your Terraform project directory. You will be adding to this file throughout the guide. Add the provider blocks to the file:
 
 {{< file "nodebalancer.tf" >}}
+
+terraform {
+  required_providers {
+    linode = {
+      source = "linode/linode"
+      version = "1.16.0"
+    }
+  }
+}
+
 provider "linode" {
     token = var.token
 }
@@ -82,7 +87,7 @@ The `linode_nodebalancer` resource supplies two labels. The first label, `exampl
 
 ### Create NodeBalancer Config Resources
 
-In addition to the NodeBalancer resource, you must supply at least one NodeBalancer Configuration resource. This resource defines ports, protocol, health checks, and session stickiness, among other options, that the NodeBalancer might use. For this example, you will create a NodeBalancer configuration for HTTP access on port 80, but you could also create one for HTTPS access on port 443 if you have [SSL/TLS certificates](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates/):
+In addition to the NodeBalancer resource, you must supply at least one NodeBalancer Configuration resource. This resource defines ports, protocol, health checks, and session stickiness, among other options, that the NodeBalancer might use. For this example, you will create a NodeBalancer configuration for HTTP access on port 80, but you could also create one for HTTPS access on port 443 if you have [SSL/TLS certificates](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/):
 
 {{< file "nodebalancer.tf" >}}
 ...
@@ -109,7 +114,7 @@ The NodeBalancer Config resource requires a NodeBalancer ID, which is populated 
 As far as settings go, the health check is set to `http_body`, meaning that the health check will look for the string set by `check_body` within the body of the page set at `check_path`. The NodeBalancer will take a node out of rotation after 30 failed check attempts. Each check will wait for a response for 25 seconds before it is considered a failure, with 30 seconds between checks. Additionally, the session stickiness setting has been set to `http_cookie`. This means that the user will continue to be sent to the same server by the use of a session cookie. The algorithm has been set to `roundrobin`, which will sort users evenly across your backend nodes based on which server was accessed last.
 
 {{< note >}}
-Review the [NodeBalancer Reference Guide](/docs/platform/nodebalancer/nodebalancer-reference-guide) for a full list of NodeBalancer configuration options.
+Review the [NodeBalancer Reference Guide](/docs/products/networking/nodebalancers/guides/configure/) for a full list of NodeBalancer configuration options.
 {{< /note >}}
 
 ### Create NodeBalancer Node Resources
@@ -124,7 +129,7 @@ resource "linode_nodebalancer_node" "example-nodebalancer-node" {
     nodebalancer_id = linode_nodebalancer.example-nodebalancer.id
     config_id = linode_nodebalancer_config.example-nodebalancer-config.id
     label = "example-node-${count.index + 1}"
-    address = "element(linode_instance.example-instance.*.private_ip_address, count.index):80"
+    address = "${element(linode_instance.example-instance.*.private_ip_address, count.index)}:80"
     mode = "accept"
 }
 
@@ -152,7 +157,7 @@ resource "linode_instance" "example-instance" {
     region = var.region
     type = "g6-nanode-1"
     image = "linode/ubuntu18.10"
-    authorized_keys = ["chomp(file(var.ssh_key))}]
+    authorized_keys = [chomp(file(var.ssh_key))]
     root_pass = random_string.password.result
     private_ip = true
 
@@ -173,7 +178,7 @@ resource "linode_instance" "example-instance" {
             type = "ssh"
             user = "root"
             password = random_string.password.result
-            host = "self.ipv4"
+            host = self.ip_address
         }
     }
 }
@@ -241,7 +246,7 @@ resource "random_string" "password" {
 
     In addition to the variables you defined above, there is also a `random_string` resource with the label `password`. This resource is provided by the [Random provider](https://www.terraform.io/docs/providers/random/index.html), and will generate a random string of 32 characters, including uppercase characters, lowercase characters, and numbers. This string will be the root password for your backend Nodes. If you would rather have exact control over your passwords, you can define a password here in `variables.tf` and set the value for that password in `terraform.tfvars` in the next step.
 
-1.  Create the `terraform.tfvars` file and supply values for the `token`, `region`, and `node_count` variables. This example uses the `us-east` regional datacenter, and the `node_count` is two.
+1.  Create the `terraform.tfvars` file and supply values for the `token`, `region`, and `node_count` variables. This example uses the `us-east` data center and the `node_count` is two.
 
     {{< file "terraform.tfvars" >}}
 token = "your_api_token"
@@ -251,11 +256,11 @@ node_count = 2
 
     When Terraform runs, it looks for a file named `terraform.tfvars`, or files with the extension `*.auto.tfvars`, and populates the Terraform variables with those values. If your SSH key is at a file location that is different than the default value, i.e., it does not exist at `~/.ssh/id_rsa.pub`, then you will need to add that value to `terraform.tfvars`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you want to use an input variable's default value defined in the `variables.tf` file, you can omit providing a value for that variable in the `terraform.tfvars` file.
-    {{</ note >}}
+    {{< /note >}}
 
-    Feel free to change any of the values in the `terraform.tfvars` file to your liking. For a list of regional datacenter IDs, you can use the cURL command to query the API:
+    Feel free to change any of the values in the `terraform.tfvars` file to your liking. For a list of data center IDs, you can use the cURL command to query the API:
 
         curl https://api.linode.com/v4/regions
 

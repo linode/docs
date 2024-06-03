@@ -1,18 +1,15 @@
 ---
 slug: install-php-fpm-and-apache-on-debian-8
-author:
-  name: Alex Fornuto
-  email: docs@linode.com
+title: 'Install PHP-FPM and Apache on Debian 8 (Jessie)'
 description: 'Install PHP-FPM and Apache on Debian 8 for Improved Website Agility and Security'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2016-02-19
+modified: 2017-02-21
 keywords: ["php-fpm", "apache", "debian 8", "php5-mysql", "fastcgi", "php", "cgi", "mod_php", "php pool"]
 tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/install-php-fpm-and-apache-on-debian-8/','/web-servers/apache/install-php-fpm-and-apache-on-debian-8/']
-modified: 2017-02-21
-modified_by:
-  name: Nick Brewer
-published: 2016-02-19
-title: 'Install PHP-FPM and Apache on Debian 8 (Jessie)'
 external_resources:
  - '[The PHP Homepage](http://php.net/)'
  - '[FastCGI Process Manager](http://php.net/manual/en/install.fpm.configuration.php)'
@@ -32,14 +29,13 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 2.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
-
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Apache and PHP-FPM
@@ -69,7 +65,7 @@ deb-src http://mirrors.linode.com/debian/ jessie-updates main contrib non-free
 
         sudo apt-get install php5-mysql
 
-4.  You can now [configure virtual hosting](/docs/web-servers/apache/apache-web-server-debian-8#configure-apache-for-virtual-hosting) in accordance with the needs of your server. Once your site(s) is set up, you can configure Apache to pass PHP scripts to the CGI process.
+4.  You can now [configure virtual hosting](/docs/guides/apache-web-server-debian-8/#configure-apache-for-virtual-hosting) in accordance with the needs of your server. Once your site(s) is set up, you can configure Apache to pass PHP scripts to the CGI process.
 
 ## Configure PHP-FPM
 
@@ -123,7 +119,7 @@ deb-src http://mirrors.linode.com/debian/ jessie-updates main contrib non-free
 
 This is a separate and optional configuration scenario from that described above where specific Unix users are created to execute PHP code and to control system resources per site. Instead of the `www-data` user owning all of Apache's processes and sites, the configuration below allows each site to be run by Apache under its own system user (`site1` under `user1`, `site2` under `user2`, etc.).
 
-This is particularly useful when running multiple client sites because you can give each customer write permissions in a respective web directory without affecting the security of the web server as a whole. The example below assumes two websites, each with its own Apache virtual host, and one system user for each website to which you want to assign a PHP pool. For more information see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This is particularly useful when running multiple client sites because you can give each customer write permissions in a respective web directory without affecting the security of the web server as a whole. The example below assumes two websites, each with its own Apache virtual host, and one system user for each website to which you want to assign a PHP pool. For more information see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 1.  Make a copy of `www.conf` for each pool:
 
@@ -165,7 +161,7 @@ listen = /var/run/php5-fpm-site1.com.sock
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In the file excerpt above, three sequential dots - `...`  - denote that there is more in this file than is being shown. The three sequential dots are not a literal section to be copied.
 {{< /note >}}
 

@@ -1,17 +1,13 @@
 ---
 slug: load-testing-with-siege
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
+title: Load Testing Web Servers with Siege
 description: 'Load testing your web server with regression testing and benchmarking utility Siege'
+authors: ["Elle Krout"]
+contributors: ["Elle Krout"]
+published: 2015-02-18
 keywords: ["siege", "load testing", "benchmarking"]
 tags: ["linux","http"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-02-18
-modified_by:
-  name: Elle Krout
-published: 2015-02-18
-title: Load Testing Web Servers with Siege
 external_resources:
  - '[Siege Home](http://www.joedog.org/siege-home)'
 aliases: ['/tools-reference/tools/load-testing-with-siege/']

@@ -1,29 +1,24 @@
 ---
 slug: running-fastcgi-php-fpm-on-debian-7-with-apache
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Install and Configure mod_fastcgi and PHP-FPM on Debian with Apache'
+title: 'Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache'
+description: 'This guide provides you with instructions on how to install and configure mod_fastcgi and PHP-FPM on Debian with the Apache web server on Debian 7.'
+authors: ["Jesin A"]
+contributors: ["Jesin A"]
+published: 2014-06-16
+modified: 2014-08-16
 keywords: ["apache", "fastcgi", "php-fpm", "php", "php pool"]
 tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/running-fastcgi-php-fpm-on-debian-7-with-apache/','/web-servers/apache/php-fpm/apache-php-fpm-debian-ubuntu/','/web-servers/apache/running-fastcgi-php-fpm-on-debian-7-with-apache/','/websites/apache/php-fpm/debian-7/']
-contributor:
-    name: Jesin A
-    link: https://twitter.com/jesin_a
 external_resources:
  - '[PHP-FPM configuration directives](http://php.net/manual/en/install.fpm.configuration.php)'
  - '[mod_fastcgi configuration directives](http://www.fastcgi.com/mod_fastcgi/docs/mod_fastcgi.html)'
-modified: 2014-08-16
-modified_by:
-  name: Linode
-published: 2014-06-16
-title: 'Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache'
 relations:
     platform:
         key: install-fastcgi-php-fpm
         keywords:
             - distribution: Debian 7
+deprecated: true
 ---
 
 ![Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache](running-mod-fastcgi-and-php-fpm-debian-7-apache.png)
@@ -34,7 +29,7 @@ The main reason `mod_php` uses more resources is because it is loaded even for n
 
 Additionally, using PHP-FPM allows each virtual host to be configured to run PHP code as individual users. Previously, this was only possible by using suPHP.
 
-This guide assumes that you are familiar and comfortable with setting up [LAMP stacks](/docs/websites/lamp) on Debian 7. If you are new to Linux server administration, you may be interested in reading our [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics) documentation series.
+This guide assumes that you are familiar and comfortable with setting up [LAMP stacks](/docs/websites/lamp) on Debian 7. If you are new to Linux server administration, you may be interested in reading our [Linux System Administration Basics](/docs/guides/linux-system-administration-basics/) documentation series.
 
 ## Installing mod_fastcgi and PHP-FPM
 

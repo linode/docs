@@ -1,18 +1,15 @@
 ---
 slug: use-logrotate-to-manage-log-files
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'This guide shows how to use logrotate to manage log files at scheduled times or when they reach a certain size.'
-og_description: 'Make system logs easier to keep track of with logrotate. Use this guide to configure logrotate to automatically compress and remove old log files at regular intervals that you control.'
+title: "Using logrotate to Manage Log Files"
+title_meta: "How to Use logrotate to Manage Log Files"
+description: "Learn how to make system logs easier to manage and keep track of with logrotate."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-10-11
+modified: 2018-03-20
 keywords: ["logrotate", "log files", "access logs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linux-tools/utilities/logrotate/','/uptime/logs/use-logrotate-to-manage-log-files/']
-modified: 2018-03-20
-modified_by:
-  name: Linode
-published: 2010-10-11
-title: How to Use logrotate to Manage Log Files
 ---
 
 ## What is logrotate?
@@ -31,7 +28,7 @@ Beyond the system-wide log rotation configuration, you can also configure `logro
 
 ### Run logrotate as a cronjob
 
-Run `logrotate` as a [cronjob](/docs/tools-reference/tools/schedule-tasks-with-cron) to ensures that logs will be rotated as regularly as configured. Logs will only be rotated when `logrotate` runs, regardless of configuration. For example, if you configure `logrotate` to rotate logs every day, but `logrotate` only runs every week, the logs will only be rotated every week.
+Run `logrotate` as a [cronjob](/docs/guides/schedule-tasks-with-cron/) to ensures that logs will be rotated as regularly as configured. Logs will only be rotated when `logrotate` runs, regardless of configuration. For example, if you configure `logrotate` to rotate logs every day, but `logrotate` only runs every week, the logs will only be rotated every week.
 
 For most daemon processes, logs should be rotated by the root user. In most cases, `logrotate` is invoked from a script in the `/etc/cron.daily/` directory. If one does not exist, create a script that resembles the following in the `/etc/cron.daily/` folder:
 
@@ -83,7 +80,7 @@ mail <username@example.com>
 
 Your system will need a functioning [Mail Transfer Agent](/docs/email/) to be able to send email.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## Configure Log Rotation Intervals
 

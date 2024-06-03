@@ -1,24 +1,21 @@
 ---
 slug: install-znc-debian
-author:
-    name: Alex Fornuto
-    email: docs@linode.com
-description: 'Install the ZNC bouncer on Debian to retain an IRC connection.'
+title: 'Install ZNC from Source on Debian'
+description: 'This guide shows how to install the open-source application ZNC, a IRC bouncer designed to run on a server that remains connected to IRC, on a Linode.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2014-08-21
+modified: 2015-06-04
 keywords: ["install znc", "irc bouncer", "znc on debian", "configure znc", "znc"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-06-04
-modified_by:
-    name: 'Elle Krout'
-published: 2014-08-21
-title: 'Install ZNC from Source on Debian'
 aliases: ['/applications/messaging/install-znc-debian/']
 ---
 
 ZNC is an IRC bouncer. It's designed to run on a server that remains connected to an IRC network and buffer messages. With ZNC, a local IRC client can connect and disconnect without losing a chat session or missing any messages. In this guide, ZNC will be installed from source and then configured.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
@@ -60,7 +57,7 @@ This guide is written for a non-root user. Commands that require elevated privil
         make
         sudo checkinstall --fstrans=0 make install
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The program `checkinstall` creates a `.deb` package which you can use to reinstall this version of ZNC in the future. It has its own set of options to review. If you prefer, you can instead run `sudo make install` to install ZNC as is.
 {{< /note >}}
 
@@ -74,7 +71,7 @@ The program `checkinstall` creates a `.deb` package which you can use to reinsta
 
 2.  This will launch an interactive script asking you for input on a variety of parameters. Below is an example output of the `makeconf` script with standard options selected. To match your needs, you can use or change the provided input at your discretion. If you're not sure, use the default option. Many of these options can be adjusted later through the web interface.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure to change the `username` variable.
 {{< /note >}}
 
@@ -164,12 +161,12 @@ Make sure to change the `username` variable.
 
     Once you've completed the configuration and launched ZNC, you can access the web interface by going to your Linode's IP address in your web browser. Be sure to specify the port you defined during the configuration script and prefix it with `https://` .
 
-    {{< note >}}
-If the [Firewall portion](/docs/security/securing-your-server#configure-a-firewall) of the [Securing Your Server](/docs/securing-your-server/) guide has been completed, add a line to `/etc/iptables.firewall.rules` allowing traffic to your IRC port.
+    {{< note respectIndent=false >}}
+If the [Firewall portion](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) of the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide has been completed, add a line to `/etc/iptables.firewall.rules` allowing traffic to your IRC port.
 {{< /note >}}
 
 
-    [![ZNC's Web Admin](znc-web-admin_small.png)](znc-web-admin.png)
+    ![ZNC's Web Admin](znc-web-admin.png)
 
 ## Connect to The Client
 
@@ -179,13 +176,13 @@ You can use any preferred GUI or CLI client to connect to ZNC. For the example b
 
 1.  Open HexChat, add your desired nicknames, and then create a new network. In this example, the network is called **ZNCserver**:
 
-    [![ZNC](znc-hexchat-1.png)](znc-hexchat-1.png)
+    ![ZNC](znc-hexchat-1.png)
 
 2.  With **ZNCserver** selected, click `Edit...`.
 
 3.  Add your server's IP address and port to the list. If not using a signed certificate, select *Accept invalid SSL certificated*. Input your password:
 
-    [![ZNC](znc-hexchat-2.png)](znc-hexchat-2.png)
+    ![ZNC](znc-hexchat-2.png)
 
     Close the window when done.
 
@@ -195,15 +192,15 @@ You can use any preferred GUI or CLI client to connect to ZNC. For the example b
 
 1. Open Konversation, click 'New...'
 
-    [![ZNC](znc-konversation-1.png)](znc-konversation-1.png)
+    ![ZNC](znc-konversation-1.png)
 
 2. Enter a name for the new network. For this example the network is **linode-znc**. Then click 'Add...' to open the dialog to add the server.
 
-    [![ZNC](znc-konversation-2.png)](znc-konversation-2.png)
+    ![ZNC](znc-konversation-2.png)
 
 3. Now enter your network details such as IP Address, Port number, and password.
 
-    [![ZNC](znc-konversation-3.png)](znc-konversation-3.png)
+    ![ZNC](znc-konversation-3.png)
 
 
 ## SSL Encryption with a Signed Certificate (Optional)

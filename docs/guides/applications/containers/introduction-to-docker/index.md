@@ -1,20 +1,13 @@
 ---
 slug: introduction-to-docker
-author:
-  name: Linode Community
-  email: docs@linode.com
-contributor:
-  name: Jack Wallen
-  link: https://twitter.com/jlwallen
+title: 'An Introduction to Docker'
 description: 'An introduction to using Docker, containers, and dockerfiles on your Linode.'
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2017-06-28
 keywords: ["docker", "container", "dockerfile"]
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-06-28
-modified_by:
-  name: Linode
-published: 2017-06-28
-title: 'An Introduction to Docker'
 external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
@@ -84,4 +77,4 @@ A *node* is a single instance of the Docker engine that participates in the Swar
 
 ## Next Steps
 
-To explore Docker further, visit our [Docker Quick Reference](/docs/applications/containers/docker-quick-reference-cheat-sheet/), our guide on [deploying a Node.js web server](/docs/applications/containers/node-js-web-server-deployed-within-docker/), or the Linode [How to install Docker and deploy a LAMP Stack](/docs/applications/containers/how-to-install-docker-and-deploy-a-lamp-stack/) guide.
+To explore Docker further, visit our [Docker Quick Reference](/docs/guides/docker-commands-quick-reference-cheat-sheet/), our guide on [deploying a Node.js web server](/docs/guides/node-js-web-server-deployed-within-docker/), or the Linode [How to install Docker and deploy a LAMP Stack](/docs/guides/how-to-install-docker-and-deploy-a-lamp-stack/) guide.

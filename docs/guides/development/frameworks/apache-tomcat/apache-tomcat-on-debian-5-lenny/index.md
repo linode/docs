@@ -1,37 +1,32 @@
 ---
 slug: apache-tomcat-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Apache Tomcat on Debian 5 (Lenny)'
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Debian 5 (Lenny).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-09-23
+modified: 2012-10-08
 keywords: ["java", "apache tomcat", "java debian", "java lenny"]
 tags: ["web applications","java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/apache-tomcat/apache-tomcat-on-debian-5-lenny/','/websites/frameworks/apache-tomcat-on-debian-5-lenny/','/development/frameworks/apache-tomcat-on-debian-5-lenny/','/frameworks/apache-tomcat/debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2009-09-23
-title: 'Apache Tomcat on Debian 5 (Lenny)'
 relations:
     platform:
         key:  apache-tomcat
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
-
-
 
 Apache Tomcat is a free and open source software implementation for JavaServlets. It provides support for Java Server Pages (JSP), which power many popular web-based applications. You may choose to run Tomcat with either Sun's Java implementation or the OpenJDK implementation of Java, and this document provides instructions for using either option.
 
-This guide assumes that you have a working installation of Debian 5 (Lenny), and have followed our [getting started guide](/docs/getting-started/) to get your system working and up to date. We also assume that you have a functional SSH connection and root access to your server.
+This guide assumes that you have a working installation of Debian 5 (Lenny), and have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to get your system working and up to date. We also assume that you have a functional SSH connection and root access to your server.
 
 Tomcat version 6 was not included as part of Debian Lenny because of concerns that because of how packages work, packaging Tomcat would introduce a unique class of bugs into it. In any case, installing without apt just adds a few extra steps, and is easily accomplished.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

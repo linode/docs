@@ -1,21 +1,14 @@
 ---
 slug: how-to-deploy-a-static-site-on-linode-kubernetes-engine
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Learn how to deploy a static site on LKE. After creating a cluster on LKE, this guide will walk through how to: author a static site with Hugo; build the site in a Docker image; push the image to Docker Hub; and deploy that image to your cluster.'
-og_description: 'Learn how to deploy a static site on LKE. After creating a cluster on LKE, this guide will walk through how to: author a static site with Hugo; build the site in a Docker image; push the image to Docker Hub; and deploy that image to your cluster.'
+title: "Deploy a Static Site on Linode Kubernetes Engine"
+description: 'This guide walks you through how to author and deploy a static site with Hugo after creating a cluster on LKE.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-11-12
+modified: 2020-12-03
 keywords: ['kubernetes','kubernetes tutorial','docker kubernetes','docker and kubernetes', 'static site generator','hugo static site']
 tags: ["docker","version control system","kubernetes","container","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-11-12
-modified: 2020-12-03
-modified_by:
-  name: Linode
-title: "How to Deploy a Static Site on Linode Kubernetes Engine"
-h1_title: "Deploying a Static Site on Linode Kubernetes Engine"
-contributor:
-  name: Linode
 external_resources:
 - '[Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)'
 aliases: ['/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/','/applications/containers/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/','/applications/containers/kubernetes/static-site-linode-kubernetes-engine/']
@@ -25,9 +18,9 @@ aliases: ['/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/'
 
 Deploying a static site using an LKE cluster is a great example to follow when learning Kubernetes. A [container](/docs/guides/kubernetes-reference/#container) image for a static site can be written in less than ten lines, and only one container image is needed. Therefore, it's often less complicated to deploy a static site on Kubernetes than some other applications that require multiple components.
 
-{{< caution >}}
+{{< note type="alert" >}}
 Following the instructions in this guide creates billable resources on your account in the form of Linodes and NodeBalancers. You are billed an hourly rate for the time that these resources exist on your account. Be sure to follow the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) at the end of this guide if you do not wish to continue using these resources.
-{{</ caution >}}
+{{< /note >}}
 
 ## In this Guide
 
@@ -51,23 +44,23 @@ This guide shows you how to:
 
 - Finally, you need to create a cluster on LKE, if you do not already have one:
 
-    - To create a cluster in the Linode Cloud Manager, review the [Deploy a Cluster with Linode Kubernetes Engine](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide.
+    - To create a cluster in the Linode Cloud Manager, review the [Deploy a Cluster with Linode Kubernetes Engine](/docs/products/compute/kubernetes/) guide.
 
         {{< note >}}
-Specifically, follow the [Create an LKE Cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#create-an-lke-cluster) and [Connect to your LKE Cluster with kubectl](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#connect-to-your-lke-cluster-with-kubectl) sections.
+        Specifically, follow the [Create an LKE Cluster](/docs/products/compute/kubernetes/guides/create-cluster/) and [Connect to your LKE Cluster with kubectl](/docs/products/compute/kubernetes/guides/kubectl/) sections.
         {{< /note >}}
 
-    - To create a cluster from the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](/docs/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/) tutorial.
+    - To create a cluster from the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/) tutorial.
 
         {{< note >}}
-Specifically, follow the [Create an LKE Cluster](/docs/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/#create-an-lke-cluster) section.
-{{< /note >}}
+        Specifically, follow the [Create an LKE Cluster](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#create-an-lke-cluster) section.
+        {{< /note >}}
 
 ### Install kubectl
 
 You should have `kubectl` installed on your local workstation. `kubectl` is the command line interface for Kubernetes, and allows you to remotely connect to your Kubernetes cluster to perform tasks.
 
-{{< content "how-to-install-kubectl" >}}
+{{% content "how-to-install-kubectl" %}}
 
 ### Install Git
 
@@ -75,7 +68,7 @@ To perform some of the commands in this guide you need to have Git installed on 
 
 ### Install Docker
 
-{{< content "install-docker-ce" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Sign up for a Docker Hub Account
 
@@ -93,19 +86,27 @@ To download and install Hugo, you can use a package manager.
 
 - For **Debian** and **Ubuntu**:
 
-        sudo apt-get install hugo
+    ```command
+    sudo apt-get install hugo
+    ```
 
 - For **Red Hat**, **Fedora**, and **CentOS**:
 
-        sudo dnf install hugo
+    ```command
+    sudo dnf install hugo
+    ```
 
 - For **macOS**, use [Homebrew](https://brew.sh):
 
-        brew install hugo
+    ```command
+    brew install hugo
+    ```
 
 - For **Windows**, use [Chocolatey](https://chocolatey.org/):
 
-        choco install hugo
+    ```command
+    choco install hugo
+    ```
 
 For more information on downloading Hugo, you can visit the official [Hugo website](https://gohugo.io/getting-started/installing/).
 
@@ -115,115 +116,137 @@ In this section you creates a static site on your workstation using Hugo.
 
 1.  Use Hugo to scaffold a new site. This command creates a new directory with the name you provide, and inside that directory it creates the default Hugo directory structure and configuration files:
 
-        hugo new site lke-example
+    ```command
+    hugo new site lke-example
+    ```
 
 1.  Move into the new directory:
 
-        cd lke-example
+    ```command
+    cd lke-example
+    ```
 
 1. Initialize the directory as a Git repository. This allows you to track changes to your website and save it in version control.
 
-        git init
+    ```command
+    git init
+    ```
 
 1.  Hugo allows for custom themes. For the sake of this example, you install the [Ananke theme](https://github.com/budparr/gohugo-theme-ananke) as a [Git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
 
-        git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke
+    ```command
+    git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke
+    ```
 
     {{< note >}}
-Git submodules allow you to include one Git repository within another, each maintaining their own version history. To view a collection of Hugo themes, visit the [Hugo theme collection](https://themes.gohugo.io/).
-{{< /note >}}
+    Git submodules allow you to include one Git repository within another, each maintaining their own version history. To view a collection of Hugo themes, visit the [Hugo theme collection](https://themes.gohugo.io/).
+    {{< /note >}}
 
 1.  In the text editor of your choice, open the `config.toml` file and add the following line to the end:
 
-        theme = "ananke"
+    ```file
+    theme = "ananke"
+    ```
 
     This line instructs Hugo to search for a folder named `ananke` in the `themes` directory and applies the templating it finds to the static site.
 
 1.  Add an example first post to your Hugo site:
 
-        hugo new posts/first_post.md
+    ```command
+    hugo new posts/first_post.md
+    ```
 
     This creates a Markdown file in the `content/posts/` directory with the name `first_post.md`. You see output like the following:
 
-    {{< output >}}
-/Users/linode/k8s/lke/lke-example/content/posts/first_post.md created
-{{</ output >}}
+    ```output
+    /Users/linode/k8s/lke/lke-example/content/posts/first_post.md created
+    ```
 
 1.  Open the `first_post.md` file in the text editor of your choosing. You see a few lines of *[front matter](https://gohugo.io/content-management/front-matter/)*, a format Hugo uses for extensible metadata, at the top of the file:
 
-    {{< file "lke-example/content/posts/first_post.md" md >}}
----
-title: "First_post"
-date: 2019-07-29T14:22:04-04:00
-draft: false
----
-{{</ file >}}
+    ```file {title="lke-example/content/posts/first_post.md" lang=md}
+    ---
+    title: "First_post"
+    date: 2019-07-29T14:22:04-04:00
+    draft: false
+    ---
+    ```
 
     Change the `title` to your desired value, and change `draft` to `false`. Then, add some example [Markdown text](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) to the bottom of the file, like the example below:
 
-    {{< file "lke-example/content/posts/first_post.md" md >}}
----
-title: "First Post About LKE Clusters"
-date: 2019-07-29T14:22:04-04:00
-draft: false
----
+    ```file {title="lke-example/content/posts/first_post.md" lang=md}
+    ---
+    title: "First Post About LKE Clusters"
+    date: 2019-07-29T14:22:04-04:00
+    draft: false
+    ---
 
-## LKE Clusters
+    ## LKE Clusters
 
-Linode Kubernetes Engine (LKE) clusters are:
+    Linode Kubernetes Engine (LKE) clusters are:
 
-- Fast
-- Affordable
-- Scalable
-{{</ file >}}
+    - Fast
+    - Affordable
+    - Scalable
+    ```
 
 1.  You can preview your changes by starting the local Hugo server:
 
-        hugo server
+    ```command
+    hugo server
+    ```
 
     You should see output like the following:
 
-    {{< output >}}
-.                  | EN
-+------------------+----+
-  Pages              |  8
-  Paginator pages    |  0
-  Non-page files     |  0
-  Static files       |  3
-  Processed images   |  0
-  Aliases            |  0
-  Sitemaps           |  1
-  Cleaned            |  0
+    ```output
+    .                  | EN
+    +------------------+----+
+      Pages              |  8
+      Paginator pages    |  0
+      Non-page files     |  0
+      Static files       |  3
+      Processed images   |  0
+      Aliases            |  0
+      Sitemaps           |  1
+      Cleaned            |  0
 
-Total in 6 ms
-Watching for changes in /Users/linode/k8s/lke/lke-example/{content,data,layouts,static,themes}
-Watching for config changes in /Users/linode/k8s/lke/lke-example/config.toml
-Serving pages from memory
-Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
-Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
-Press Ctrl+C to stop
-{{</ output >}}
+    Total in 6 ms
+    Watching for changes in /Users/linode/k8s/lke/lke-example/{content,data,layouts,static,themes}
+    Watching for config changes in /Users/linode/k8s/lke/lke-example/config.toml
+    Serving pages from memory
+    Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+    Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+    Press Ctrl+C to stop
+    ```
 
 1.  Visit the URL that Hugo is running on. In the above example, the URL is `http://localhost:1313`. This server automatically updates whenever you make a change to a file in the Hugo site directory. To stop this server, enter **CTRL-C** on your keyboard in your terminal.
 
 1.  When you are satisfied with your static site, you can generate the HTML, CSS, and JavaScript for your site by *building* the site:
 
-        hugo -v
+    ```command
+    hugo -v
+    ```
 
     Hugo creates the site's files in the `public/` directory. View the files by listing them:
 
-        ls public
+    ```command
+    ls public
+    ```
 
 1.  You can build the site at any time from your source Markdown content files, so it's common practice to keep built files out of a Git repository. This practice keeps the size of the repository to a minimum.
 
     You can instruct Git to ignore certain files within a repository by adding them to a `.gitignore` file. Add the `public/` directory to your `.gitignore` file to exclude these files from the repository:
 
-        echo 'public/' >> .gitignore
+    ```command
+    echo 'public/' >> .gitignore
+    ```
 
 1.  Add and commit the source files to the Git repository:
 
-        git add .
-        git commit -m "Initial commit. Includes all of the source files, configuration, and first post."
+    ```command
+    git add .
+    git commit -m "Initial commit. Includes all of the source files, configuration, and first post."
+    ```
 
     You are now ready to create a Docker image from the static site you've just created.
 
@@ -235,75 +258,81 @@ In this section you create a Docker container for your static site, which you th
 
 1.  Add the following contents to the `Dockerfile`. Each command has accompanying comments that describe their function:
 
-    {{< file "lke-example/Dockerfile" >}}
-# Install the latest Debain operating system.
-FROM alpine:3.12.0 as HUGO
+    ```file {title="lke-example/Dockerfile"}
+    # Install the latest Debian operating system.
+    FROM alpine:3.12.0 as HUGO
 
-# Install Hugo.
-RUN apk update && apk add hugo
+    # Install Hugo.
+    RUN apk update && apk add hugo
 
-# Copy the contents of the current working directory to the
-# static-site directory.
-COPY . /static-site
+    # Copy the contents of the current working directory to the
+    # static-site directory.
+    COPY . /static-site
 
-# Command Hugo to build the static site from the source files,
-# setting the destination to the public directory.
-RUN hugo -v --source=/static-site --destination=/static-site/public
+    # Command Hugo to build the static site from the source files,
+    # setting the destination to the public directory.
+    RUN hugo -v --source=/static-site --destination=/static-site/public
 
-# Install NGINX, remove the default NGINX index.html file, and
-# copy the built static site files to the NGINX html directory.
-FROM nginx:stable-alpine
-RUN mv /usr/share/nginx/html/index.html /usr/share/nginx/html/old-index.html
-COPY --from=HUGO /static-site/public/ /usr/share/nginx/html/
+    # Install NGINX, remove the default NGINX index.html file, and
+    # copy the built static site files to the NGINX html directory.
+    FROM nginx:stable-alpine
+    RUN mv /usr/share/nginx/html/index.html /usr/share/nginx/html/old-index.html
+    COPY --from=HUGO /static-site/public/ /usr/share/nginx/html/
 
-# Instruct the container to listen for requests on port 80 (HTTP).
-EXPOSE 80
-{{</ file >}}
+    # Instruct the container to listen for requests on port 80 (HTTP).
+    EXPOSE 80
+    ```
 
     Save the Dockerfile and return to the command prompt.
 
 1.  Create a new text file named `.dockerignore` in your Hugo static site folder and add the following lines:
 
-    {{< file "lke-example/.dockerignore" >}}
-public/
-.git/
-.gitmodules/
-.gitignore
-{{</ file >}}
+    ```file {title="lke-example/.dockerignore"}
+    public/
+    .git/
+    .gitmodules/
+    .gitignore
+    ```
 
     {{< note >}}
-This file, similar to the `.gitignore` file you created in the previous section, allows you to ignore certain files within the working directory that you want to leave out of the container. Because you want the container to be the smallest size possible, the `.dockerignore` file includes the `public/` folder and some hidden folders that Git creates.
-{{< /note >}}
+    This file, similar to the `.gitignore` file you created in the previous section, allows you to ignore certain files within the working directory that you want to leave out of the container. Because you want the container to be the smallest size possible, the `.dockerignore` file includes the `public/` folder and some hidden folders that Git creates.
+    {{< /note >}}
 
 1.  Run the Docker `build` command. Replace `mydockerhubusername` with your Docker Hub username. The period at the end of the command tells Docker to use the current directory as its build context.
 
-        docker build -t mydockerhubusername/lke-example:v1 .
+    ```command
+    docker build -t mydockerhubusername/lke-example:v1 .
+    ```
 
     {{< note >}}
-In the example below, the container image is named `lke-example` and has been given a version tag of `v1`. Feel free to change these values.
-{{< /note >}}
+    In the example below, the container image is named `lke-example` and has been given a version tag of `v1`. Feel free to change these values.
+    {{< /note >}}
 
 1.  Docker downloads the required Debian and NGINX images, as well as install Hugo into the image. Once complete, you should see output similar to the following:
 
-    {{< output >}}
-Successfully built 320ae416c940
-Successfully tagged mydockerhubusername/lke-example:v1
-{{</ output >}}
+    ```output
+    Successfully built 320ae416c940
+    Successfully tagged mydockerhubusername/lke-example:v1
+    ```
 
 1.  You can view the image by listing all local images:
 
-        docker images
+    ```command
+    docker images
+    ```
 
-    {{< output >}}
-REPOSITORY                       TAG   IMAGE ID       CREATED             SIZE
-mydockerhubusername/lke-example  v1    320ae416c940   About an hour ago   20.8MB
-{{</ output >}}
+    ```output
+    REPOSITORY                       TAG   IMAGE ID       CREATED             SIZE
+    mydockerhubusername/lke-example  v1    320ae416c940   About an hour ago   20.8MB
+    ```
 
 ### Test the Docker Image
 
 1.  You can test your new image by creating a container with it locally. To do so, enter the following `run` command:
 
-        docker run -p 8080:80 -d mydockerhubusername/lke-example:v1
+    ```command
+    docker run -p 8080:80 -d mydockerhubusername/lke-example:v1
+    ```
 
     The `-p` flag instructs Docker to forward port `8080` on localhost to port `80` on the container. The `-d` flag instructs Docker to run in detached mode so that you are returned to the command prompt once the container initializes.
 
@@ -311,34 +340,44 @@ mydockerhubusername/lke-example  v1    320ae416c940   About an hour ago   20.8MB
 
 1.  You can stop the running container by finding the ID of the container and issuing the `stop` command. To find the ID of the container, use the `ps` command:
 
-        docker ps
+    ```command
+    docker ps
+    ```
 
     You should see a list of actively running containers, similar to the following:
 
-    {{< output >}}
-b4a7b959a6c7        mydockerhubusername/lke-example:v1         "nginx -g 'daemon of…"   5 hours ago         Up 5 hours          0.0.0.0:8080->80/tcp        romantic_mahavira
-{{</ output >}}
+    ```output
+    b4a7b959a6c7        mydockerhubusername/lke-example:v1         "nginx -g 'daemon of…"   5 hours ago         Up 5 hours          0.0.0.0:8080->80/tcp        romantic_mahavira
+    ```
 
 1.  Note the random string of numbers and letters next to the image name. In the above example, the string is `b4a7b959a6c7`. Issue the `stop` command, supplying the string of numbers and letters:
 
-        docker stop b4a7b959a6c7
+    ```command
+    docker stop b4a7b959a6c7
+    ```
 
 ### Upload the Image to Docker Hub
 
 1.  Now that you have a working container image, you can push that image to Docker Hub. First, log in to Docker Hub from your workstation's terminal:
 
-        docker login
+    ```command
+    docker login
+    ```
 
 1.  Next, push the image, with version tag, to Docker Hub, using the `push` command:
 
-        docker push mydockerhubusername/lke-example:v1
+    ```command
+    docker push mydockerhubusername/lke-example:v1
+    ```
 
     You can now view your image on Docker Hub as a *repository*. To view all of your repositories, navigate to the [Docker Hub repository listing page](https://cloud.docker.com/repository/list).
 
 1.  Lastly, add the `Dockerfile` and `.dockerignore` file to your Git repository:
 
-        git add .
-        git commit -m "Add Dockerfile and .dockerignore."
+    ```command
+    git add .
+    git commit -m "Add Dockerfile and .dockerignore."
+    ```
 
     You are now ready to deploy the container to your LKE cluster.
 
@@ -348,40 +387,44 @@ In this section, you create a [Deployment](/docs/guides/kubernetes-reference/#de
 
 1.  Begin by navigating to a location outside of your static site directory. You do not need your static site directory for the remainder of this guide.
 
-        cd ..
+    ```command
+    cd ..
+    ```
 
 1.  Create a new directory to house your Kubernetes [manifests](/docs/guides/kubernetes-reference/#kubernetes-manifests), and move into that directory:
 
-        mkdir manifests && cd manifests
+    ```command
+    mkdir manifests && cd manifests
+    ```
 
 ### Create a Deployment
 
 1.  In the text editor of your choice, create a new [YAML](https://yaml.org/) manifest file for your Deployment. Name the file `static-site-deployment.yaml`, save it to your `manifests` directory, and enter the contents of this snippet:
 
-    {{< file "manifests/static-site-deployment.yaml" yaml >}}
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: static-site-deployment
-  labels:
-    app: static-site
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: static-site
-  template:
+    ```file {title="manifests/static-site-deployment.yaml" lang=yaml}
+    apiVersion: apps/v1
+    kind: Deployment
     metadata:
+      name: static-site-deployment
       labels:
         app: static-site
     spec:
-      containers:
-      - name: static-site
-        image: mydockerhubusername/lke-example:v1
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 80
-{{</ file >}}
+      replicas: 3
+      selector:
+        matchLabels:
+          app: static-site
+      template:
+        metadata:
+          labels:
+            app: static-site
+        spec:
+          containers:
+          - name: static-site
+            image: mydockerhubusername/lke-example:v1
+            imagePullPolicy: Always
+            ports:
+            - containerPort: 80
+    ```
 
     - In this example the number of replica Pods is set to `3` on **line 8**. This value can be changed to meet the needs of your website.
     - The `spec.containers.image` field on **line 19** should be changed to match the name of the container image you pushed to Docker Hub. Be sure to include the proper version tag at the end of the container name.
@@ -389,69 +432,77 @@ spec:
 
 1.  Once you have a Deployment manifest, you can apply the deployment to the LKE cluster with `kubectl`:
 
-        kubectl apply -f static-site-deployment.yaml
+    ```command
+    kubectl apply -f static-site-deployment.yaml
+    ```
 
 1.  You can check on the progress of your Deployment by listing the available pods:
 
-        kubectl get pods
+    ```command
+    kubectl get pods
+    ```
 
     If your Deployment was successful, you should see output like the following:
 
-    {{< output >}}
-NAME                                    READY   STATUS   RESTARTS   AGE
-static-site-deployment-cdb88b5bb-7pbjc  1/1     Running  0          1h
-static-site-deployment-cdb88b5bb-gx9h5  1/1     Running  0          1h
-static-site-deployment-cdb88b5bb-lzdvh  1/1     Running  0          1h
-{{</ output >}}
+    ```output
+    NAME                                    READY   STATUS   RESTARTS   AGE
+    static-site-deployment-cdb88b5bb-7pbjc  1/1     Running  0          1h
+    static-site-deployment-cdb88b5bb-gx9h5  1/1     Running  0          1h
+    static-site-deployment-cdb88b5bb-lzdvh  1/1     Running  0          1h
+    ```
 
 ### Create a Service
 
 1.  Create a Service manifest file to provide load balancing for the deployment. Load balancing ensures that traffic is balanced efficiently across multiple backend nodes, improving site performance and ensuring that your static site is accessible should a node go down.
 
-    Specifically, the Service manifest that is used in this guide triggers the creation of a Linode [NodeBalancer](/docs/guides/getting-started-with-nodebalancers/).
+    Specifically, the Service manifest that is used in this guide triggers the creation of a Linode [NodeBalancer](/docs/products/networking/nodebalancers/get-started/).
 
     {{< note >}}
-The NodeBalancer's creation is controlled through the [Linode Cloud Controller Manager (CCM)](/docs/guides/kubernetes-reference/#linode-cloud-controller-manager). The CCM provides a number of settings, called `annotations`, that allow you to control the functionality of the NodeBalancer. To learn more about the CCM, read our [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/) guide.
-{{< /note >}}
+    The NodeBalancer's creation is controlled through the [Linode Cloud Controller Manager (CCM)](/docs/guides/kubernetes-reference/#linode-cloud-controller-manager). The CCM provides a number of settings, called `annotations`, that allow you to control the functionality of the NodeBalancer. To learn more about the CCM, read our [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/install-the-linode-ccm-on-unmanaged-kubernetes/) guide.
+    {{< /note >}}
 
 1.  Name the file `static-site-service.yaml`, save it to your `manifests` directory, and enter the contents of this snippet:
 
-    {{< file "manifests/static-site-service.yaml" yaml >}}
-apiVersion: v1
-kind: Service
-metadata:
-  name: static-site-service
-  annotations:
-    service.beta.kubernetes.io/linode-loadbalancer-throttle: "4"
-  labels:
-    app: static-site
-spec:
-  type: LoadBalancer
-  ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: 80
-  selector:
-    app: static-site
-  sessionAffinity: None
-{{</ file >}}
+    ```file {title="manifests/static-site-service.yaml" lang=yaml}
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: static-site-service
+      annotations:
+        service.beta.kubernetes.io/linode-loadbalancer-throttle: "4"
+      labels:
+        app: static-site
+    spec:
+      type: LoadBalancer
+      ports:
+      - name: http
+        port: 80
+        protocol: TCP
+        targetPort: 80
+      selector:
+        app: static-site
+      sessionAffinity: None
+    ```
 
 1.  Once you've created your Service manifest file, you can apply it to the LKE cluster:
 
-        kubectl apply -f static-site-service.yaml
+    ```command
+    kubectl apply -f static-site-service.yaml
+    ```
 
 1.  You can check on the status of your Service by listing the Services currently running on your server:
 
-        kubectl get services
+    ```command
+    kubectl get services
+    ```
 
     You should see output similar to the following:
 
-    {{< output >}}
-NAME                 TYPE          CLUSTER-IP     EXTERNAL-IP      PORT(S)        AGE
-kubernetes           ClusterIP     10.128.0.1     <none>           443/TCP        20h
-static-site-service  LoadBalancer  10.128.99.240  192.0.2.1        80:32648/TCP   100m
-{{</ output >}}
+    ```output
+    NAME                 TYPE          CLUSTER-IP     EXTERNAL-IP      PORT(S)        AGE
+    kubernetes           ClusterIP     10.128.0.1     <none>           443/TCP        20h
+    static-site-service  LoadBalancer  10.128.99.240  192.0.2.1        80:32648/TCP   100m
+    ```
 
 1.  Note the external IP address of the Service you created. This is the IP address of the NodeBalancer, and you can use it to view your static site.
 
@@ -459,11 +510,11 @@ static-site-service  LoadBalancer  10.128.99.240  192.0.2.1        80:32648/TCP 
 
 ## General Network and Firewall Information
 
-{{< content "lke-network-firewall-information-shortguide" >}}
+{{% content "lke-network-firewall-information-shortguide" %}}
 
 ## Next Steps
 
-If you'd like to continue using the static site that you created in this guide, you may want to assign a domain to it. Review the [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) and [DNS Manager](/docs/guides/dns-manager/) guides for help with setting up DNS. When setting up your DNS record, use the external IP address that you noted at the end of the previous section.
+If you'd like to continue using the static site that you created in this guide, you may want to assign a domain to it. Review the [DNS Records: An Introduction](/docs/guides/dns-overview/) and [DNS Manager](/docs/products/networking/dns-manager/) guides for help with setting up DNS. When setting up your DNS record, use the external IP address that you noted at the end of the previous section.
 
 If you would rather not continue using the cluster you just created, review the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) to remove the billable Linode resources that were generated.
 
@@ -471,11 +522,15 @@ If you would rather not continue using the cluster you just created, review the 
 
 - To remove the NodeBalancer you created, all you need to do is delete the underlying Service. From your workstation:
 
-        kubectl delete service static-site-service
+    ```command
+    kubectl delete service static-site-service
+    ```
 
     Alternatively, you can use the manifest file you created to delete the Service. From your workstation:
 
-        kubectl delete -f static-site-service.yaml
+    ```command
+    kubectl delete -f static-site-service.yaml
+    ```
 
 -   To remove the LKE Cluster and the associated nodes from your account, navigate to the [Linode Cloud Manager](https://cloud.linode.com):
 
@@ -485,4 +540,4 @@ If you would rather not continue using the cluster you just created, review the 
 
     1.  You are prompted to enter the name of the cluster to confirm the action. Enter the cluster name and click **Delete**.
 
--  Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context).
+-  Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](/docs/products/compute/kubernetes/guides/kubectl/#persist-the-kubeconfig-context).

@@ -1,22 +1,16 @@
 ---
 slug: how-to-install-mariadb-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide shows how to install and configure the MariaDB server on Debian 10.'
-og_description: 'MariaDB is a robust, scalable, and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on Debian 10.'
+title: "Installing MariaDB on Debian 10"
+title_meta: "How to Install MariaDB on Debian 10"
+description: "Want to replace MySQL? Read through this guide, which explains how to install MariaDB on Debian 10."
+authors: ["Ryan Syracuse"]
+contributors: ["Ryan Syracuse"]
+published: 2020-01-31
+modified: 2024-05-16
 keywords: ["mariadb", "Debian 10", "debian", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mariadb/how-to-install-mariadb-on-debian-10/','/databases/mariadb/mariadb-setup-debian-10/']
-modified: 2020-01-31
-contributor:
-    name: Ryan Syracuse
-modified_by:
-  name: Linode
-published: 2020-01-31
 image: Installing_MariaDB_on_Debian10.png
-title: How to Install MariaDB on Debian 10
-h1_title: Installing MariaDB on Debian 10
 external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
@@ -32,12 +26,14 @@ tags: ["debian","mariadb","database"]
 MariaDB is a fork of the popular cross-platform MySQL database management system and is considered a full [drop-in replacement](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-features/) for MySQL. MariaDB was created by one of MySQL's original developers in 2009 after MySQL was acquired by Oracle during the Sun Microsystems merger. Today MariaDB is maintained and developed by the [MariaDB Foundation](https://mariadb.org/en/foundation/) and community contributors with the intention of it remaining GNU GPL software.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides, and the Linode's [hostname is set](/docs/getting-started/#set-the-hostname).
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
 
     To check your hostname run:
 
@@ -46,17 +42,13 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN) if you have one assigned.
 
-1.  Update your system:
-
-        sudo apt update
-
 ## Install and Setup MariaDB
 
 Install MariaDB using the package manager.
 
     sudo apt install mariadb-server
 
-MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access guide](/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/), which also applies to MariaDB.
+MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access guide](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/), which also applies to MariaDB.
 
 {{< note >}}
 Allowing unrestricted access to MariaDB on a public IP not advised but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/mysql/my.cnf`. If you decide to bind MariaDB to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
@@ -64,13 +56,13 @@ Allowing unrestricted access to MariaDB on a public IP not advised but you may c
 
 ### MariaDB Client
 
-The standard tool for interacting with MariaDB is the `mariadb` client, which installs with the `mariadb-server` package. The MariaDB client is used through a terminal using the `mysql` command.
+The standard tool for interacting with MariaDB is the `mariadb` client, which installs with the `mariadb-server` package. The MariaDB client is used through a terminal using the `mariadb` command. Review the official [MariaDB Command-Line Client](https://mariadb.com/kb/en/mariadb-command-line-client/) guide for more details on this command.
 
 ### Root Login
 
 1.  Log into MariaDB as the root user:
 
-        sudo mysql -u root -p
+        sudo mariadb -u root -p
 
 1.  When prompted for login credentials, hit enter. By default MariaDB will authenticate you via the **unix_socket plugin** and credentials are not required.
 
@@ -140,7 +132,7 @@ You will be given the choice to change the MariaDB root password, remove anonymo
 
 1.  Login to the database again. This time, if you set a password above, enter it at the prompt.
 
-        sudo mysql -u root -p
+        sudo mariadb -u root -p
 
 1. In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user's password. You should replace `password` with a secure password:
 
@@ -161,7 +153,7 @@ You will be given the choice to change the MariaDB root password, remove anonymo
 
 1.  Log back in as `testuser`, entering the password when prompted:
 
-        sudo mysql -u testuser -p
+        sudo mariadb -u testuser -p
 
 1.  Create a sample table called `customers`:
 
@@ -224,7 +216,7 @@ If you forget your root MariaDB password, it can be reset.
 
 1.  Login to the MariaDB server with the root account, this time without supplying a password:
 
-        sudo mysql -u root
+        sudo mariadb -u root
 
 1.  Use the following commands to reset root's password. Replace `password` with a strong password:
 
@@ -247,4 +239,4 @@ If you forget your root MariaDB password, it can be reset.
 
 1.  You should now be able to log into the database with your new root password:
 
-        sudo mysql -u root -p
+        sudo mariadb -u root -p

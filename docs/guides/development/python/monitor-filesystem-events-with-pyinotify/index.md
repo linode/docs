@@ -1,19 +1,13 @@
 ---
 slug: monitor-filesystem-events-with-pyinotify
-author:
-  name: Md. Sabuj Sarker
-  email: md.sabuj.sarker@gmail.com
+title: 'Monitor Filesystem Events with Pyinotify'
 description: 'Pyinotify is a Python library for using inotify, a Linux kernel subsystem for monitoring file system changes.'
-keywords: ["inotify","pyinotify","monitoring","python","async"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Md. Sabuj Sarker"]
+contributors: ["Md. Sabuj Sarker"]
 published: 2017-12-07
 modified: 2018-09-20
-modified_by:
-  name: Md. Sabuj Sarker
-title: 'Monitor Filesystem Events with Pyinotify'
-contributor:
-  name: Md. Sabuj Sarker
-  link: http://sabuj.me
+keywords: ["inotify","pyinotify","monitoring","python","async"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Pyinotify on Github](https://github.com/seb-m/pyinotify)'
 - '[Pyinotify API documentation](http://seb-m.github.com/pyinotify)'
@@ -24,13 +18,13 @@ aliases: ['/development/monitor-filesystem-events-with-pyinotify/','/development
 tags: ["python"]
 ---
 
-![banner_image](Monitor_Filesystem_Events_with_Pyinotify_smg.jpg)
+![Header image](Monitor_Filesystem_Events_with_Pyinotify_smg.jpg "Monitor Filesystem Events with Pyinotify")
 
 File system monitoring through `inotify` can be interfaced through Python using `pyinotify`. This guide will demonstrate how to use a Python script to monitor a directory then explore practical uses by incorporating async modules or running additional threads.
 
 ## Install Python 3
 
-{{< content "install_python_miniconda" >}}
+{{% content "install_python_miniconda" %}}
 
 ## Install Pyinotify
 
@@ -52,7 +46,7 @@ Installing pyinotify within a virtual environment is highly recommended. This gu
 
 ### Create an Event Processor
 
-Similar to events in inotify, the Python implementation will be through an `EventProcessor` object with method names containing "process_" that is appended before the event name. For example, `IN_CREATE` in pyinotify though the `EventProcessor` will be `process_IN_CREATE`. The table below lists the inotify events used in this guide. In depth descriptions can be found in the [man pages of inotify](http://man7.org/linux/man-pages/man7/inotify.7.html).
+Similar to events in inotify, the Python implementation will be through an `EventProcessor` object with method names containing `process_` that is appended before the event name. For example, `IN_CREATE` in pyinotify though the `EventProcessor` will be `process_IN_CREATE`. The table below lists the inotify events used in this guide. In depth descriptions can be found in the [man pages of inotify](http://man7.org/linux/man-pages/man7/inotify.7.html).
 
 | Inotify Events      | Description                                                              |
 | ------------------- |:------------------------------------------------------------------------ |
@@ -185,7 +179,7 @@ Run the completed script and trigger the notifications.
 
     This output shows that the `ls` command involves three filesystem events. The `notification_dir` was opened, accessed, and then closed in non-writable mode.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Observe that not only files are opened but also directories are opened too.
 {{< /note >}}
 

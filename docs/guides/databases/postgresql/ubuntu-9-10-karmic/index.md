@@ -1,17 +1,13 @@
 ---
 slug: ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Use PostgreSQL Relational Databases on Ubuntu 9.10 (Karmic)'
 description: 'Using the PostgreSQL relational database server with Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-10-29
+modified: 2011-04-29
 keywords: ["postgresql", "postgresql database", "postgresql ubuntu", "postgresql ubuntu 9.10", "postgresql ubuntu karmic", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2009-10-29
-title: 'Use PostgreSQL Relational Databases on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: use-postrgesql-database
@@ -19,11 +15,11 @@ relations:
             - distribution: Ubuntu 9.10
 tags: ["ubuntu","database","postgresql"]
 aliases: ['/databases/postgresql/ubuntu-9-10-karmic/']
+deprecated: true
+deprecated_link: /docs/guides/how-to-install-use-postgresql-ubuntu-20-04/
 ---
 
-
-
-The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Ubuntu 9.10 (Karmic). We assume you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
+The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Ubuntu 9.10 (Karmic). We assume you've followed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you're logged into your Linode as root via SSH.
 
 ## Installing PostgreSQL
 
@@ -165,8 +161,8 @@ You will be prompted to enter the password for the `alison` user and given `psql
 
 PostgreSQL listens for connections on localhost, and it is not advised to reconfigure it to listen on public IP addresses. If you would like to access your databases remotely using a graphical tool, please follow one of these guides:
 
--   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/databases/postgresql/pgadmin-windows)
--   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/databases/postgresql/pgadmin-macos-x)
+-   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/guides/how-to-access-postgresql-database-remotely-using-pgadmin-on-windows/)
+-   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/guides/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/)
 
 ## More Information
 

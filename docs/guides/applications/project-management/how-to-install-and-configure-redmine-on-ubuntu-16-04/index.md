@@ -1,18 +1,14 @@
 ---
 slug: how-to-install-and-configure-redmine-on-ubuntu-16-04
-author:
-  name: Angel Guarisma
-  email: docs@linode.com
-description: 'This guide shows how to install and set up Redmine, a free and open-source project management web application, written using Ruby on Rails, that is cross-platform and cross-database.'
-og_description: 'This guide shows how to install and set up Redmine, a free and open-source project management web application, written using Ruby on Rails, that is cross-platform and cross-database.'
+title: 'How to Install and Configure Redmine on Ubuntu 16.04'
+description: 'This guide will show you how to install and configure the popular open-source, written in Ruby on Rails, project management software suite Redmine.'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2017-09-14
+modified: 2018-03-28
 keywords: ["nginx", "ubuntu", "redmine"]
 tags: ["ubuntu", "nginx", "ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-09-14
-modified: 2018-03-28
-modified_by:
-  name: Linode
-title: 'How to Install and Configure Redmine on Ubuntu 16.04'
 external_resources:
 - '[Redmine Official Docs](https://www.redmine.org/guide/)'
 - '[Redmine Users Guide](https://www.redmine.org/projects/redmine/wiki/Getting_Started)'
@@ -31,7 +27,7 @@ This guide will show you how to install and set up Redmine on Ubuntu 16.04 throu
 ### Before You Begin
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Dependencies
@@ -58,29 +54,29 @@ quit;
 
 Redmine requires Ruby to run. Use the Ruby Version Manager (RVM) to install Ruby 2.2.3.
 
-1. Curl the latest version of RVM.
+1.  Curl the latest version of RVM.
 
-        gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-        curl -sSL https://get.rvm.io | bash -s stable
-        source ~/.rvm/scripts/rvm
+    ```command
+    gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+    curl -sSL https://get.rvm.io | bash -s stable
+    source ~/.rvm/scripts/rvm
+    ```
 
-    <!---
-            sudo apt-add-repository -y ppa:rael-gc/rvm
-            sudo apt-get update
-            sudo apt-get install rvm
-    -->
-2. Users of RVM must be in the `rvm` group. Create this group, add a user, log out, and log back in:
+1.  Users of RVM must be in the `rvm` group. Create this group, add a user, log out, and log back in:
 
-        sudo groupadd rvm
-        sudo usermod -a -G rvm username
-        exit
+    ```command
+    sudo groupadd rvm
+    sudo usermod -a -G rvm username
+    exit
+    ```
 
-3. Check the requirements for the install, and install Ruby (version 2.2.3):
+1.  Check the requirements for the install, and install Ruby (version 2.2.3):
 
-        rvm requirements
-        rvm install 2.2.3
-        rvm use 2.2.3 --default
-
+    ```command
+    rvm requirements
+    rvm install 2.2.3
+    rvm use 2.2.3 --default
+    ```
 
 ### Install Passenger and NGINX
 

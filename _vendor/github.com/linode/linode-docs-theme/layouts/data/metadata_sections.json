@@ -1,0 +1,2 @@
+{{ $list := partial "sections/search/get-sections-meta.html" . }}
+{{ $list | jsonify (dict "indent" "  ")  }}

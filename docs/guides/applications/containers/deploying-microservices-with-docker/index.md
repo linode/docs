@@ -1,24 +1,19 @@
 ---
 slug: deploying-microservices-with-docker
-author:
-  name: Bob Strecansky
+title: 'How to Deploy Microservices with Docker'
 description: 'This guide describes how to effectively use Docker in production using a sample NGINX/Flask/Gunicorn/Redis/Postgresql Application Stack.'
 og_description: 'This guide shows how to deploy a simple microservice using Docker. Best practices for using Docker in production are also demonstrated and explained.'
+authors: ["Bob Strecansky"]
+contributors: ["Bob Strecansky"]
+published: 2018-01-04
 keywords: ["docker", "nginx", "flask", "gunicorn", "redis", "postgresql", "microservice"]
 tags: ["postgresql","database","docker","container","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-01-04
-modified_by:
-  name: Bob Strecansky
-published: 2018-01-04
-title: 'How to Deploy Microservices with Docker'
-contributor:
-  name: Bob Strecansky
-  link: https://twitter.com/bobstrecansky
 external_resources:
 - '[Github Repository for Example Microservice](https://github.com/bobstrecansky/flask-microservice)'
 - '[Using Containers to Build a Microservices Architecture](https://medium.com/aws-activate-startup-blog/using-containers-to-build-a-microservices-architecture-6e1b8bacb7d1)'
 aliases: ['/applications/containers/deploying-microservices-with-docker/']
+tags: ["saas"]
 ---
 
 ![Deploying Microservices with Docker](how-to-deploy-microservices-with-docker-smg.jpg)
@@ -33,29 +28,25 @@ This guide shows how to build and deploy an example microservice using Docker an
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
-
-3.  Update your system.
-
-        sudo apt-get update && sudo apt-get upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ### Install Docker
 
-{{< content "install-docker-ce" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ## Prepare the Environment
 
-This section uses Dockerfiles to configure Docker images. For more information about Dockerfile syntax and best practices, see our [How To Use Dockerfiles guide](/docs/applications/containers/how-to-use-dockerfiles/) and Docker's [Dockerfile Best Practices guide](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#sort-multi-line-arguments).
+This section uses Dockerfiles to configure Docker images. For more information about Dockerfile syntax and best practices, see our [How To Use Dockerfiles guide](/docs/guides/how-to-use-dockerfiles/) and Docker's [Dockerfile Best Practices guide](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#sort-multi-line-arguments).
 
 1. Create a directory for the microservice:
 
@@ -152,9 +143,9 @@ COPY visitors (site_id, site_name, visitor_count) FROM stdin;
 \.
 {{</ file >}}
 
-{{< caution >}}
+{{< note type="alert" >}}
 In Line 22 of `init.sql`, make sure your text editor does not convert tabs to spaces. The app will not work without tabs between the entries in this line.
-{{< /caution >}}
+{{< /note >}}
 
 ### Web
 
@@ -389,8 +380,8 @@ Containers should be:
 
 2.  **Disposable**: Ideally, any single container within a larger application should be able to fail without impacting the performance of the application. Using a `restart: on-failure` option in the `docker-compose.yml` file, as well as having a replica count, makes it possible for some containers in the example microservice to fail gracefully while still serving the web application – with no degradation to the end user.
 
-    {{< note >}}
-The replica count directive will only be effective when this configuration is deployed as part of a [Docker Swarm](/docs/applications/containers/how-to-create-a-docker-swarm-manager-and-nodes-on-linode/), which is not covered in this guide.
+    {{< note respectIndent=false >}}
+The replica count directive will only be effective when this configuration is deployed as part of a [Docker Swarm](/docs/guides/how-to-create-a-docker-swarm-manager-and-nodes-on-linode/), which is not covered in this guide.
 {{< /note >}}
 
 3.  **Quick to start**: Avoiding additional installation steps in the Docker file, removing dependencies that aren't needed, and building a target image that can be reused are three of the most important steps in making a web application that has a quick initialization time within Docker. The example application uses short, concise, prebuilt Dockerfiles in order to minimize initialization time.

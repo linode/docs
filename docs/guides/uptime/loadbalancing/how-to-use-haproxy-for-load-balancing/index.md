@@ -1,27 +1,20 @@
 ---
 slug: how-to-use-haproxy-for-load-balancing
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide shows how to install and configure HAProxy for TCP/HTTP load balancing.'
-og_description: 'HAProxy (High Availability Proxy) is a TCP/HTTP load balancer and proxy server that allows a webserver to spread incoming requests across multiple endpoints. This guide shows how to install and configure HAProxy on a Linode.'
-keywords: ["haproxy", "load balancing", "high availability"]
-tags: ["proxy"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+title: "Using HAProxy for Load Balancing"
+title_meta: "How to Use HAProxy for Load Balancing"
+description: "HAProxy allows a webserver to spread incoming requests across multiple endpoints. Learn how to install and configure HAProxy on a Linode."
+authors: ["Robert Hussey"]
+contributors: ["Robert Hussey"]
 published: 2017-10-30
 modified: 2019-02-01
-modified_by:
-  name: Linode
-title: 'How to Use HAProxy for Load Balancing'
-contributor:
-  name: Robert Hussey
-  link: https://github.com/hussrj
+keywords: ["haproxy", "load balancing", "high availability"]
+tags: ["proxy", "ecommerce", "media"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[HAProxy Documentation](http://www.haproxy.org/#docs)'
 dedicated_cpu_link: true
 aliases: ['/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/']
 ---
-
 
 ![HAProxy for Load Balancing](HAProxy.jpg)
 
@@ -33,16 +26,16 @@ This guide will describe the installation and configuration of HAProxy for load-
 
 ## Before You Begin
 
-1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 2.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-3.  This guide uses private IP addresses in the example configurations. Refer to our [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration) guide to add private IP addresses and internally network your Linodes.
+3.  This guide uses private IP addresses in the example configurations. Refer to our [Linux Static IP Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide to add private IP addresses and internally network your Linodes.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Installation
@@ -130,7 +123,7 @@ frontend haproxynode
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Throughout this guide, replace `203.0.113.2` with the IP address of your frontend node. 192.168.1.3 and 192.168.1.4 will be used as the IP addresses for the backend nodes.
 {{< /note >}}
 

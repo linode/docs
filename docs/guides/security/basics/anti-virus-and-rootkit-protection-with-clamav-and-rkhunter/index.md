@@ -1,19 +1,16 @@
 ---
 slug: anti-virus-and-rootkit-protection-with-clamav-and-rkhunter
-author:
-  name: Hackersploit
+title: Anti-Virus and Rootkit Protection with ClamAV and rkhunter
+title_meta: Anti-Virus Protection with ClamAV and rkhunter
 description: 'Learn how to use ClamAV, ClamTK, and rkhunter for anti-virus and rootkit detection to secure your server.'
-og_description: 'Learn how to use ClamAV, ClamTK, and rkhunter for anti-virus and rootkit detection to secure your server.'
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2020-10-30
 keywords: ["clamav setup", "linux rootkit detection"]
+bundles: ['debian-security', 'centos-security']
 tags: ["security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-10-30
-modified_by:
-  name: Linode
-published: 2020-10-30
-title: Anti-Virus and Rootkit Protection with ClamAV and rkhunter
-h1_title: Anti-Virus and Rootkit Protection with ClamAV and rkhunter
-image: Anti_virus_rookit_protection_ClamAV_Rkhunter.png
+image: AntiVirus_Rootkitprotec_ClamAV_rkkunter.png
 aliases: ['/security/basics/anti-virus-and-rootkit-protection-with-clamav-and-rkhunter/']
 ---
 
@@ -27,7 +24,7 @@ This guide teaches you how to use ClamAV, ClamTK, and rkhunter for anti-virus an
 
 ### Installing ClamAV
 
-You can install ClamAV with the aptitude package manager on Debian and Ubuntu or with the yum package manager on CentOS. The instructions in this guide show `apt` examples and can be adapted for CentOS with `yum`. ClamAV requires the the `clamav` utility and the `clamav-daemon` for management.
+You can install ClamAV with the aptitude package manager on Debian and Ubuntu or with the yum package manager on CentOS. The instructions in this guide show `apt` examples and can be adapted for CentOS with `yum`. ClamAV requires the `clamav` utility and the `clamav-daemon` for management.
 
 1.  Install the ClamAV utilities by running the following command:
 

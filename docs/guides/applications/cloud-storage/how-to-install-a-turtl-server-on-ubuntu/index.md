@@ -1,22 +1,19 @@
 ---
 slug: how-to-install-a-turtl-server-on-ubuntu
-author:
-  name: Angel Guarisma
-  email: aguarisma@linode.com
+title: 'How to Install a Turtl Server on Ubuntu'
 description: 'This guide will show you how to install Turtl, a Privacy-Conscious Cloud Storage Service, on an Ubuntu distro.'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2017-08-14
+modified: 2017-09-06
 keywords: ["install turtl", " cloud-based storage", " monitor system security", " ubuntu"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-09-06
-modified_by:
-  name: Linode
-published: 2017-08-14
-title: 'How to Install a Turtl Server on Ubuntu'
 
 aliases: ['/applications/cloud-storage/how-to-install-a-turtl-server-on-ubuntu/']
 ---
 
-![Turtl_Banner](Turtl.jpg)
+![Header image](Turtl.jpg)
 
 [Turtl](https://turtlapp.com/docs) is an open-source alternative to cloud-based storage services. With a focus on privacy, Turtl offers a place to store and access your passwords, bookmarks and pictures. Hosting your own Turtl server on a secure Linode allows you to monitor your own security.
 
@@ -25,14 +22,9 @@ The Turtl server is written in Common Lisp, and the low-level encryption is deri
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an OpenVPN server.
-
-3.  Update your system:
-
-        sudo apt update && sudo apt upgrade
-
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ### Install Dependencies:
 

@@ -1,17 +1,14 @@
 ---
 slug: how-to-use-docker-compose
-author:
-  name: Linode
-  email: docs@linode.com
+title: How to Use Docker Compose
 description: "How to Use Docker Compose"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-01-02
+modified: 2017-12-28
 keywords: ["docker", "compose"]
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-12-28
-modified_by:
-  name: Linode
-published: 2018-01-02
-title: How to Use Docker Compose
 aliases: ['/applications/containers/how-to-use-docker-compose/']
 ---
 
@@ -32,11 +29,11 @@ Generally the containers in an application built using Docker Compose will all r
 
 You will need a Linode with Docker CE installed to follow along with the steps in this guide.
 
-{{< content "install-docker-ce" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ## Basic Usage
 
@@ -104,21 +101,21 @@ Most of this guide will focus on setting up containers using the `services` sect
 
 |Directive    | Use
 |---|---|
-|image  | Sets the image that will be used to build the container. Using this directive assumes that the specified image already exists either on the host or on [Docker Hub](https://hub.docker.com/). |
-|build   | This directive can be used instead of `image`. Specifies the location of the Dockerfile that will be used to build this container.    |
-|db   | In the case of the example Dockercompose file, `db` is a variable for the container you are about to define.    |
-|restart   | Tells the container to restart if the system restarts.    |
-|volumes  |Mounts a linked path on the host machine that can be used by the container |
-|environment      |Define environment variables to be passed in to the Docker run command.      |
-|depends_on| Sets a service as a dependency for the current block-defined container |
-|port   | Maps a port from the container to the host in the following manner: `host:container`   |
-|links   | Link this service to any other services in the Docker Compose file by specifying their names here.  |
+| `image`  | Sets the image that will be used to build the container. Using this directive assumes that the specified image already exists either on the host or on [Docker Hub](https://hub.docker.com/). |
+| `build`   | This directive can be used instead of `image`. Specifies the location of the Dockerfile that will be used to build this container.    |
+| `db`   | In the case of the example Dockercompose file, `db` is a variable for the container you are about to define.    |
+| `restart`   | Tells the container to restart if the system restarts.    |
+| `volumes`  |Mounts a linked path on the host machine that can be used by the container |
+| `environment`      |Define environment variables to be passed in to the Docker run command.      |
+| `depends_on` | Sets a service as a dependency for the current block-defined container |
+| `port`   | Maps a port from the container to the host in the following manner: `host:container`   |
+| `links`   | Link this service to any other services in the Docker Compose file by specifying their names here.  |
 
 Many other configuration directives are available. See the [Compose File reference](https://docs.docker.com/compose/compose-file) for details.
 
-{{< caution >}}
+{{< note type="alert" >}}
 The example `docker-compose.yml` above uses the `environment` directive to store MySQL user passwords directly in the YAML file to be imported into the container as environment variables. This is not recommended for sensitive information in production environments. Instead, sensitive information can be stored in a separate `.env` file (which is not checked into version control or made public) and accessed from within `docker-compose.yml` by using the `env_file` directive.
-{{< /caution >}}
+{{< /note >}}
 
 ## Build an Application from Scratch
 

@@ -1,32 +1,46 @@
 {
- "comments": {
+  "comments": {
+    "dependencies": {},
+    "devDependencies": {
+      "@babel/cli": "github.com/linode/linode-docs-theme",
+      "@babel/core": "github.com/linode/linode-docs-theme",
+      "@babel/preset-env": "github.com/linode/linode-docs-theme",
+      "@tailwindcss/forms": "github.com/linode/linode-docs-theme",
+      "@tailwindcss/typography": "github.com/linode/linode-docs-theme",
+      "autoprefixer": "github.com/linode/linode-docs-theme",
+      "axe-core": "github.com/linode/linode-docs-theme",
+      "core-js": "github.com/linode/linode-docs-theme",
+      "cypress": "github.com/linode/linode-docs-theme",
+      "cypress-axe": "github.com/linode/linode-docs-theme",
+      "cypress-html-validate": "github.com/linode/linode-docs-theme",
+      "html-validate": "github.com/linode/linode-docs-theme",
+      "postcss": "github.com/linode/linode-docs-theme",
+      "postcss-cli": "github.com/linode/linode-docs-theme",
+      "prettier": "github.com/linode/linode-docs-theme",
+      "prettier-plugin-go-template": "github.com/linode/linode-docs-theme",
+      "tailwindcss": "github.com/linode/linode-docs-theme"
+    }
+  },
   "dependencies": {},
   "devDependencies": {
-   "@babel/cli": "github.com/bep/linodedocs",
-   "@babel/core": "github.com/bep/linodedocs",
-   "@babel/preset-env": "github.com/bep/linodedocs",
-   "@fullhuman/postcss-purgecss": "github.com/bep/linodedocs",
-   "@tailwindcss/custom-forms": "github.com/bep/linodedocs",
-   "@tailwindcss/typography": "github.com/bep/linodedocs",
-   "autoprefixer": "github.com/bep/linodedocs",
-   "core-js": "github.com/bep/linodedocs",
-   "postcss-cli": "github.com/bep/linodedocs",
-   "tailwindcss": "github.com/bep/linodedocs"
-  }
- },
- "dependencies": {},
- "devDependencies": {
-  "@babel/cli": "^7.10.5",
-  "@babel/core": "^7.11.1",
-  "@babel/preset-env": "^7.11.0",
-  "@fullhuman/postcss-purgecss": "^2.3.0",
-  "@tailwindcss/custom-forms": "^0.2.1",
-  "@tailwindcss/typography": "^0.1.4",
-  "autoprefixer": "~9.7.6",
-  "core-js": "^3.6.5",
-  "postcss-cli": "^7.1.1",
-  "tailwindcss": "~1.7.3"
- },
- "name": "linode-docs",
- "version": "0.1.0"
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/typography": "^0.5.9",
+    "autoprefixer": "^10.4.14",
+    "axe-core": "^4.3.3",
+    "core-js": "^3.18.1",
+    "cypress": "^13.2.0",
+    "cypress-axe": "^0.12.0",
+    "cypress-html-validate": "^2.1.1",
+    "html-validate": "^6.1.0",
+    "postcss": "^8.4.24",
+    "postcss-cli": "^9.0.1",
+    "prettier": "2.6.2",
+    "prettier-plugin-go-template": "0.0.12",
+    "tailwindcss": "^3.3.2"
+  },
+  "name": "linode-docs",
+  "version": "0.1.0"
 }

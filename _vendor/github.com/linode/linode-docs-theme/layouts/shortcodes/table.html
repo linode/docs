@@ -1,0 +1,4 @@
+{{ $class := .Get "class" }}
+<div class="overflow-table {{ $class }}">
+  {{ .Inner | .Page.RenderString }}
+</div>

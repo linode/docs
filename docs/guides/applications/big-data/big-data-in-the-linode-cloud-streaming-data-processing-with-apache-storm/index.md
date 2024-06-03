@@ -1,20 +1,14 @@
 ---
 slug: big-data-in-the-linode-cloud-streaming-data-processing-with-apache-storm
-author:
-    name: Karthik Shiraly
-    email: docs@linode.com
-description: 'Deploy Storm cluster on Linode cloud for real-time analytics on streaming datasets.'
+title: "Streaming Data Processing with Apache Storm"
+description: "Deploy Storm cluster on Linode cloud for real-time analytics on streaming datasets."
+authors: ["Karthik Shiraly"]
+contributors: ["Karthik Shiraly"]
+published: 2016-10-25
+modified: 2019-01-31
 keywords: ["storm", "analytics", "big data", "zookeeper"]
 tags: ["analytics"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-published: 2016-10-25
-modified: 2019-01-31
-modified_by:
-    name: Phil Zona
-title: 'Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm'
-contributor:
-    name: Karthik Shiraly
-    link: https://github.com/pathbreak
 external_resources:
 - '[Apache Storm project website](http://storm.apache.org/)'
 - '[Apache Storm documentation](https://storm.apache.org/releases/current/index.html)'
@@ -36,11 +30,11 @@ Some use cases where Storm is a good solution:
 -  Analysis of server logs
 -  Internet of Things (IoT) sensor data processing
 
-This guide explains how to create Storm clusters on the Linode cloud using a set of shell scripts that use Linode's Application Programming Interface (APIs) to programmatically create and configure large clusters. The scripts are all provided by the author of this guide via [GitHub repository](https://github.com/pathbreak/storm-linode). This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode/) service with this setup.
+This guide explains how to create Storm clusters on the Linode cloud using a set of shell scripts that use Linode's Application Programming Interface (APIs) to programmatically create and configure large clusters. The scripts are all provided by the author of this guide via [GitHub repository](https://github.com/pathbreak/storm-linode). This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
 
-{{< caution >}}
+{{< note type="alert" >}}
 External resources are outside of our control, and can be changed and/or modified without our knowledge. Always review code from third party sites yourself before executing.
-{{< /caution >}}
+{{< /note >}}
 
  The deployed architecture will look like this:
 
@@ -68,7 +62,7 @@ This guide will explain how to configure a working Storm cluster and its Zookeep
 -  A Zookeeper or Storm cluster can have either Ubuntu 14.04 LTS or Debian 8 installed on its nodes. Its distribution does not need to be the same one as the one installed on the cluster manager Linode.
 
 {{< note >}}
-The steps in this guide and in the bash scripts referenced require root privileges. Be sure to run the steps below as `root`. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide and in the bash scripts referenced require root privileges. Be sure to run the steps below as `root`. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ### Naming Conventions
@@ -84,7 +78,7 @@ These are the names we'll use, but you are welcome to choose your own when creat
 
 ### Get a Linode API Key
 
-Follow the steps in [Generating an API Key](/docs/platform/api/api-key/) and save your key securely. It will be entered into configuration files in upcoming steps.
+Follow the steps in [Generating an API Key](/docs/products/tools/api/guides/manage-api-tokens/) and save your key securely. It will be entered into configuration files in upcoming steps.
 
 If the key expires or is removed, remember to create a new one and update the `api_env_linode.conf` API environment configuration file on the cluster manager Linode. This will be explained further in the next section.
 
@@ -136,7 +130,7 @@ export LINODE_KEY=fnxaZ5HMsaImTTRO8SBtg48...
             source ~/storm-linode/api_env_linode.conf
             ~/storm-linode/linode_api.py plans
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 You only need to run `source` on this file once in a single terminal session, unless you make changes to it.
 {{< /note >}}
 
@@ -153,7 +147,7 @@ You only need to run `source` on this file once in a single terminal session, un
 
         The default value of `124` selects Ubuntu 14.04 LTS 64-bit. If you'd like to use Debian 8 instead, change this value to `140`.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 The values represented in this guide are current as of publication, but are subject to change in the future. You can run `~/storm-linode/linode_api.py distributions` to see a list of all available distributions and their values in the API.
 {{< /note >}}
 
@@ -163,7 +157,7 @@ The values represented in this guide are current as of publication, but are subj
     -  `DISABLE_SSH_PASSWORD_AUTHENTICATION`:
         This disables SSH password authentication and allows only key-based SSH authentication for the Cluster Manager Linode. Password authentication is considered less secure, and is hence disabled by default. To enable password authentication, you can change this value to `no`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The options shown in this section are generated by the `linode_api.py` script, and differ slightly from the options shown using the Linode CLI tool. Do not use the Linode CLI tool to configure your Manager Node.
 {{< /note >}}
 
@@ -202,9 +196,9 @@ Match User clustermgrguest
 
         service ssh restart
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Since access to the cluster manager provides access to all Storm and Zookeeper clusters and any sensitive data they are processing, its security configuration should be considered critical, and access should be as restrictive as possible.
-{{< /caution >}}
+{{< /note >}}
 
 9.  Log in to the cluster manager Linode as the `root` user, using the public IP address shown when you created it:
 
@@ -259,7 +253,7 @@ Creating a new Storm cluster involves four main steps, some of which are necessa
 
 ### Create a Zookeeper Image
 
-A *Zookeeper image* is a master disk image with all necessary Zookeeper software and libraries installed. We'll create our using [Linode Images](/docs/platform/disk-images/linode-images/) The benefits of using a Zookeeper image include:
+A *Zookeeper image* is a master disk image with all necessary Zookeeper software and libraries installed. We'll create our using [Linode Images](/docs/products/tools/images/) The benefits of using a Zookeeper image include:
 
 -  Quick creation of a Zookeeper cluster by simply cloning it to create as many nodes as required, each a perfect copy of the image
 -  Distribution packages and third party software packages are identical on all nodes, preventing version mismatch errors
@@ -298,7 +292,7 @@ When creating an image, you should have `clustermgr` authorization to the Cluste
 
         All nodes of all clusters created from this image will have this distribution. The default value is `124` corresponding to Ubuntu 14.04 LTS 64-bit. For Debian 8 64-bit, change this value to `140`.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 The values represented in this guide are current as of publication, but are subject to change in the future. You can run `~/storm-linode/linode_api.py distributions` to see a list of all available distributions and their values in the API.
 {{< /note >}}
 
@@ -430,7 +424,7 @@ The values represented in this guide are current as of publication, but are subj
 
     If the process fails, ensure that you do not already have an existing Linode with the same name in the Linode Manager. If you do, delete it and run the command again, or recreate this image with a different name.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 During this process, a temporary, short-lived 2GB Linode is created and deleted. This will entail a small cost in your monthly invoice and trigger an event notification email to be sent to the address you have registered with Linode. This is expected behavior.
 {{< /note >}}
 
@@ -539,9 +533,9 @@ When creating a cluster, you should have `clustermgr` authorization to the Clust
 
         Set this value to `false` if the cluster manager node is located in the *same* Linode data center as the cluster nodes. This is the recommended value. Change to `true` **only** if the cluster manager node is located in a *different* Linode data center from the cluster nodes.
 
-        {{< caution >}}
+        {{< note type="alert" respectIndent=false >}}
 It's important to set this correctly to avoid critical cluster creation failures.
-{{< /caution >}}
+{{< /note >}}
 
         <br>
 
@@ -625,7 +619,7 @@ When creating an image, you should have `clustermgr` authorization to the Cluste
 
         All nodes of all clusters created from this image will have this distribution. The default value is `124` corresponding to Ubuntu 14.04 LTS 64-bit. For Debian 8 64-bit, change this value to `140`.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 The values represented in this guide are current as of publication, but are subject to change in the future. You can run `~/storm-linode/linode_api.py distributions` to see a list of all available distributions and their values in the API.
 {{< /note >}}
 
@@ -748,7 +742,7 @@ The values represented in this guide are current as of publication, but are subj
 
     If the process fails, ensure that you do not already have an existing Storm image with the same name in the Linode Manager. If you do, delete it and run the command again, or recreate this image with a different name.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 During this process, a short-lived 2GB Linode is created and deleted. This will entail a small cost in the monthly invoice and trigger an event notification email to be sent to the address you have registered with Linode. This is expected behavior.
 {{< /note >}}
 
@@ -869,9 +863,9 @@ When creating a cluster, you should have `clustermgr` authorization to the Clust
 
         Set this value to `false` if the cluster manager node is located in the *same* Linode data center as the cluster nodes. This is the recommended value and is also the default. Change to `true` **only** if the cluster manager node is located in a *different* Linode data center from the cluster nodes.
 
-        {{< caution >}}
+        {{< note type="alert" respectIndent=false >}}
 It's important to set this correctly to avoid critical cluster creation failures.
-{{< /caution >}}
+{{< /note >}}
 
         <br>
 
@@ -938,11 +932,11 @@ When starting a cluster, you should have `clustermgr` authorization to the Clust
 
 ## Monitor a Storm Cluster
 
-Every Storm cluster's client node runs a Storm UI web application for monitoring that cluster, but it can be accessed only from whitelisted workstations.
+Every Storm cluster's client node runs a Storm UI web application for monitoring that cluster, but it can be accessed only from allowed workstations.
 
-The next two sections explain how to whitelist workstations and monitor a cluster from the web interface.
+The next two sections explain how to allow workstations and monitor a cluster from the web interface.
 
-### Whitelist Workstations to Monitor a Storm Cluster
+### Allow Workstations to Monitor a Storm Cluster
 
 When performing the steps in this section, you should have `clustermgr` authorization to the Cluster Manager Linode.
 
@@ -953,13 +947,13 @@ When performing the steps in this section, you should have `clustermgr` authoriz
 
 2.  Open the `your-cluster/your-cluster-client-user-whitelist.ipsets` file (using our example from above, `storm-cluster1/storm-cluster1-client-user-whitelist.ipsets`) file in a text editor.
 
-    This file is an [ipsets](http://ipset.netfilter.org/ipset.man.html) list of whitelisted IP addresses. It consists of one master ipset and multiple child ipsets that list whitelisted machines by IP addresses or other attributes such as MAC IDs.
+    This file is an [ipsets](http://ipset.netfilter.org/ipset.man.html) list of allowed IP addresses. It consists of one master ipset and multiple child ipsets that list allowed machines by IP addresses or other attributes such as MAC IDs.
 
     The master ipset is named *your-cluster-uwls*. By default, it's completely empty, which means nobody is authorized.
 
-    [![Master ipset](storm-user-whitelist-1-650px.png)](storm-user-whitelist-1.png "An empty ipset list")
+    ![Master ipset](storm-user-whitelist-1.png "An empty ipset list")
 
-3.  To whitelist an IP address:
+3.  To allow an IP address:
 
     -  Uncomment the line that creates the *your-cluster-ipwl* ipset
     -  Add the IP address under it
@@ -967,12 +961,12 @@ When performing the steps in this section, you should have `clustermgr` authoriz
 
     These additions are highlighted below:
 
-    [![Whitelist entries](storm-user-whitelist-2-650px.png)](storm-user-whitelist-2.png)
+    ![Whitelist entries](storm-user-whitelist-2.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Any IP address that is being included in the file should be a *public facing IP* address of the network.
 For example, company networks often assign local addresses like 10.x.x.x or 192.x.x.x addresses to employee workstations, which are then NATted to a public IP address while sending requests outside the company network.
-Since the cluster client node is in the Linode cloud outside your company network, it will see monitoring requests as arriving from this public IP address. So it's the public IP address that should be whitelisted.
+Since the cluster client node is in the Linode cloud outside your company network, it will see monitoring requests as arriving from this public IP address. So it's the public IP address that should be allowed.
 {{< /note >}}
 
 4.  Any number or type of additional ipsets can be created, as long as they are added to the master ipset.
@@ -995,7 +989,7 @@ Since the cluster client node is in the Linode cloud outside your company networ
 
     You should see output similar to the following (in addition to custom ipsets if you added them, and the ipsets for the Storm and Zookeeper cluster nodes):
 
-    [![ipset output](storm-user-whitelist-3.png)](storm-user-whitelist-3.png)
+    ![ipset output](storm-user-whitelist-3.png)
 
     Disconnect from the client node and navigate back to the `storm-linode` directory on the cluster manager node:
 
@@ -1007,11 +1001,11 @@ Since the cluster client node is in the Linode cloud outside your company networ
 
 9.  Finally, verify that the Storm UI web application is accessible by opening `http://public-IP-of-client-node` in a web browser on each whitelisted workstation. You should see the Storm UI web application, which looks like this:
 
-    [![Storm UI](storm-ui-650px.png)](storm-ui-large.png)
+    ![Storm UI](storm-ui-large.png)
 
     The Storm UI displays the list of topologies and the list of supervisors executing them:
 
-    [![Storm UI monitoring](storm-ui-monitor-650px.png)](storm-ui-monitor.png)
+    ![Storm UI monitoring](storm-ui-monitor.png)
 
     If the cluster is executing any topologies, they are listed under the **Topology summary** section. Click on a topology to access its statistics, supervisor node logs, or actions such as killing that topology.
 
@@ -1198,9 +1192,9 @@ A user with only `clustermgrguest` authorization can use `cluster_info.sh` to de
 
 Stopping a Zookeeper cluster cleanly stops the Zookeeper daemon on all nodes, and shuts down all nodes. The cluster can be restarted later. Note that the nodes **will** still incur Linode's hourly charges when stopped.
 
-{{< caution >}}
+{{< note type="alert" >}}
 Do not stop a Zookeeper cluster while any Storm clusters that depend on it are running. This may result in data loss.
-{{< /caution >}}
+{{< /note >}}
 
 To stop a cluster, use the `stop` command:
 
@@ -1210,9 +1204,9 @@ To stop a cluster, use the `stop` command:
 
 Destroying a Zookeeper cluster permanently deletes all nodes of that cluster and their data. Unlike a Linode that is only shut down, destroyed or deleted Linodes no longer incur hourly charges.
 
-{{< caution >}}
+{{< note type="alert" >}}
 Do not destroy a Zookeeper cluster while any Storm clusters that depend on it are running. It may result in data loss.
-{{< /caution >}}
+{{< /note >}}
 
 To destroy a cluster, use the `destroy` command:
 

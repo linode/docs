@@ -1,22 +1,18 @@
 ---
 slug: apache-and-modwsgi-on-ubuntu-14-04-precise-pangolin
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Deploy Python WSGI Applications with Apache and mod_wsgi.'
+title: 'Apache and mod_wsgi on Ubuntu 14.04 (Trusty Tahr)'
+description: 'In this tutorial, you will learn how to configure and deploy Python WSGI Applications with the Apache web server and mod_wsgi on Ubuntu 14.04 "Trusty Tahr".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-11-18
 keywords: ["python", "apache", "mod\\_wsgi", "django"]
 tags: ["web server","apache","ubuntu","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/apache-and-modwsgi-on-ubuntu-14-04-precise-pangolin/','/websites/apache/apache-and-modwsgi-on-ubuntu-14-04-precise-pangolin/']
-modified: 2015-11-18
-modified_by:
-  name: Linode
-published: 2015-11-18
-title: 'Apache and mod_wsgi on Ubuntu 14.04 (Trusty Tahr)'
 external_resources:
  - '[A Basic "Hello World" Django Application](https://dfpp.readthedocs.io/en/latest/chapter_01.html)'
- - '[Deploy Django Applications with mod\_wsgi](/docs/websites/apache/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin)'
- - '[Deploy Web.py Applications with mod\_wsgi](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/)'
+ - '[Deploy Django Applications with mod\_wsgi](/docs/guides/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin/)'
+ - '[Deploy Web.py Applications with mod\_wsgi](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/)'
  - '[Flask Framework](http://flask.pocoo.org/)'
  - '[Werkzug](http://werkzeug.pocoo.org/)'
  - '[Django](http://www.djangoproject.com/)'
@@ -26,6 +22,7 @@ relations:
         key: apache-mod-wsgi
         keywords:
             - distribution: Ubuntu 14.04
+deprecated: true
 ---
 
 ![Apache and mod_wsgi on Ubuntu](Apache_and_mod_wsgi_on_Ubuntu_1404_Trusty_Tahr_smg.png)
@@ -33,17 +30,16 @@ The WSGI specification provides a standard and efficient method for dynamic web 
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
-2.  We recommend that you are already familiar with [Apache](/docs/websites/apache/apache-web-server-on-ubuntu-14-04) before beginning this guide.
+2.  We recommend that you are already familiar with [Apache](/docs/guides/apache-web-server-on-ubuntu-14-04/) before beginning this guide.
 
 3.  Update your system:
 
         sudo apt-get update
         sudo apt-get upgrade
-
 {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Dependencies
@@ -87,7 +83,7 @@ You must append the path of your application to the system path as above. The de
 
 ### Web.py WSGI Configuration
 
-In this example the Web.py *application* is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
+In this example the Web.py *application* is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
 
 {{< file "/var/www/html/example.com/application/application.wsgi" python >}}
 import web

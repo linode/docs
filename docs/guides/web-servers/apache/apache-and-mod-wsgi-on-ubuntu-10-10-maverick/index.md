@@ -1,31 +1,28 @@
 ---
 slug: apache-and-mod-wsgi-on-ubuntu-10-10-maverick
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Deploy Python WSGI Applications with Apache and mod\_wsgi'
+title: 'Apache and mod_wsgi on Ubuntu 10.10 (Maverick)'
+description: 'This guide shows you how to deploy Python apps, like Django, and more using the Apache Web Server application and mod\_wsgi on Ubuntu 10.10 "Maverick".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-24
+modified: 2012-10-08
 keywords: ["python", "apache", "mod\\_wsgi"]
 tags: ["web server","apache","ubuntu","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/apache-and-mod-wsgi-on-ubuntu-10-10-maverick/','/websites/apache/apache-and-mod-wsgi-on-ubuntu-10-10-maverick/','/web-servers/apache/mod-wsgi/ubuntu-10-10-maverick/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2011-02-24
-title: 'Apache and mod_wsgi on Ubuntu 10.10 (Maverick)'
-deprecated: true
 relations:
     platform:
         key: apache-mod-wsgi
         keywords:
             - distribution: Ubuntu 10.10
+deprecated: true
 ---
 
 The WSGI specification provides a standard and efficient method for dynamic web applications to communicate with web servers. `mod_wsgi` provides a method for simply deploying WSGI applications with Apache. WSGI is used to deploy applications written with frameworks and tools like Django, Web.py, Werkzug, Chery.py, TurboGears, and Flask. These guides outline this installation and configuration process for deploying WSGI applications.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -75,7 +72,7 @@ You must append the path of your application to the system path as above. The de
 
 ### Web.py WSGI Configuration
 
-Consider the following example Web.py *application* which is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
+Consider the following example Web.py *application* which is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
 
 {{< file "/srv/www/example.com/application/application.wsgi" python >}}
 import web
@@ -160,8 +157,8 @@ You will need to restart the web server every time the `application.wsgi` file c
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [A Basic "Hello World" Django Application](http://runnable.com/UWRVp6lLuONCAABD/hello-world-in-django-for-python)
-- [Deploy Django Applications with mod\_wsgi](/docs/websites/apache/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin/)
-- [Deploy Web.py Applications with mod\_wsgi](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/)
+- [Deploy Django Applications with mod\_wsgi](/docs/guides/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin/)
+- [Deploy Web.py Applications with mod\_wsgi](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/)
 - [Flask Framework](http://flask.pocoo.org/)
 - [Werkzug](http://werkzeug.pocoo.org/)
 - [Django](http://www.djangoproject.com/)

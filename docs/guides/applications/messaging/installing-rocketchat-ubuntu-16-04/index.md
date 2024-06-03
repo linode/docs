@@ -1,17 +1,14 @@
 ---
 slug: installing-rocketchat-ubuntu-16-04
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Installing Rocket.Chat on Ubuntu 16.04'
 description: 'Installation and basic usage guide for Rocket.Chat, a lightweight XMPP server on Ubuntu 16.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-06-21
+modified: 2018-08-17
 keywords: ["rocket.chat", "slack alternative", "chat", "xmpp"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-17
-modified_by:
-  name: Linode
-published: 2018-06-21
-title: 'Installing Rocket.Chat on Ubuntu 16.04'
 external_resources:
  - '[Deploying Rocket.Chat on Ubuntu](https://rocket.chat/docs/installation/manual-installation/ubuntu/)'
  - '[NGINX Reverse Proxy – NGINX](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)'
@@ -26,15 +23,11 @@ This guide provides the steps to deploy Rocket.Chat on a Linode running Ubuntu 1
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode’s hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. This guide uses sudo wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. Complete the [Add DNS Records](/docs/websites/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Rocket.Chat server instance.
-
-1. Ensure your system is up to date:
-
-        sudo apt update && sudo apt upgrade
+1. Complete the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Rocket.Chat server instance.
 
 ## Install Rocket.Chat
 
@@ -60,7 +53,7 @@ A reverse proxy is a server that sits between internal applications and external
 
         sudo apt install nginx
 
-1.  Ensure NGINX is running and and enabled to start automatically on reboot:
+1.  Ensure NGINX is running and enabled to start automatically on reboot:
 
         sudo systemctl start nginx
         sudo systemctl enable nginx
@@ -110,7 +103,7 @@ server {
 
 Your Rocket.Chat site will use an SSL certificate from [Let's Encrypt](https://letsencrypt.org), which is a free certificate provider trusted by common web browsers. A popular tool called [Certbot](https://certbot.eff.org) makes getting and using a Let's Encrypt certificate easy:
 
-{{< content "certbot-shortguide-ubuntu" >}}
+{{% content "certbot-shortguide-ubuntu" %}}
 
 ## View Your Rocket.Chat Site
 

@@ -1,24 +1,21 @@
 ---
 slug: question-and-answer-communities-with-osqa-on-debian-5-lenny
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Question and Answer Communities with OSQA on Debian 5 (Lenny)'
 description: 'OSQA provides an advanced knowledge exchange system for vibrant communities.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-10
+modified: 2013-10-04
 keywords: ["knowledge exchange", "question and answers", "q&a", "debian lenny"]
 tags: ["debian", "apache", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/social-networking/question-and-answer-communities-with-osqa-on-debian-5-lenny/','/web-applications/social-networking/osqa/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2010-05-10
-title: 'Question and Answer Communities with OSQA on Debian 5 (Lenny)'
 deprecated: true
 ---
 
 OSQA, the Open Source Question and Answer platform, is a tool for structured community engagement centered around knowledge exchange. OSQA provides tools for groups of people to ask questions, get answers, and control the quality of the information exchanged within the system. OSQA models itself after the engine that powers sites like Stack Overflow and Server Fault. Thus, OSQA is not simply a tool for organizing user generated content, but also a tool for building vibrant and valuable forums that can serve as the informational backbone of entire communities.
 
-Before beginning this guide, we assume that you have completed the [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). Furthermore, this guide presumes that you have installed the [Apache HTTP server](/docs/web-servers/apache/apache-2-web-server-on-debian-5-lenny/) and the [MySQL database engine](/docs/databases/mysql/use-mysql-relational-databases-on-debian-5-lenny/). If you want your OSQA instance to be able to send email, install the [Exim send-only MTA](/docs/email/exim/sendonly-mail-server-with-exim-on-debian-5-lenny/).
+Before beginning this guide, we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Furthermore, this guide presumes that you have installed the [Apache HTTP server](/docs/guides/apache-2-web-server-on-debian-5-lenny/) and the [MySQL database engine](/docs/guides/use-mysql-relational-databases-on-debian-5-lenny/). If you want your OSQA instance to be able to send email, install the [Exim send-only MTA](/docs/guides/sendonly-mail-server-with-exim-on-debian-5-lenny/).
 
 ## Install Prerequisites
 

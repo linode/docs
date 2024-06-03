@@ -1,0 +1,100 @@
+name: Update Algolia on schedule
+
+# Update Algolia once an hour at the beginning of the hour
+on:
+  schedule:
+    - cron:  '0 * * * *'
+
+# This workflow downloads the data from the documentation indices in Algolia as
+# well as the latest data from the wordpress content indices in Algolia. It
+# then merges that data together and pushes it to the linode-merged index.
+#
+# The working directory for this GitHub Action is under:
+# /home/runner/work/docs/docs/
+
+# For this workflow, two repos are checked out:
+# - The github.com/linode/docs repo is checked out into the `docs-repo` folder
+# - The github.com/linode/linode-docs-theme repo is checked out into the
+#   `linode-docs-theme` folder.
+#
+# We check out the linode-docs-theme repo because it contains a
+# `linode_algolia_admin` tool that we use to update the Algolia search indices.
+#
+# Inside the docs repo, the go.mod file contains a reference to which git
+# commit of the linode-docs-theme is associated with the docs repo.
+# We inspect this file to get that commit hash before checking out the
+# linode-docs-theme repo.
+#
+# The following is a diagram of the above-mentioned repos and files. It does not
+# show all the files within those repositories:
+#
+# .
+#
+# ├── docs-repo
+# │   └── go.mod
+# └── linode-docs-theme-repo
+#     └── scripts
+#         └── linode_algolia_admin
+
+jobs:
+  update-algolia-on-schedule:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: update_algolia_on_schedule
+
+    steps:
+    - name: Set up Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.125.7'
+
+    - name: Checkout docs repo
+      uses: actions/checkout@v3
+      with:
+        path: 'docs-repo'
+        ref: 'main'
+
+    - name: Print current docs repo branch/ref/commit
+      working-directory: ./docs-repo
+      run: |
+        git status
+        git log -1
+
+    - name: Get linode-docs-theme version
+      id: get-theme-version
+      working-directory: ./docs-repo
+      run: |
+        LINODE_DOCS_THEME_VERSION=$(hugo mod graph | grep linode-docs-theme | cut -d '+' -f 1 | grep -o '[^-]*$')
+        echo "VERSION=$LINODE_DOCS_THEME_VERSION" >> $GITHUB_OUTPUT
+
+    - name: Set up SSH agent (linode-docs-theme repo deploy key)
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+        ssh-private-key: ${{ secrets.LINODE_DOCS_THEME_DEPLOY_KEY_FOR_DOCS_DEPLOY_GHA }}
+
+    - name: Checkout docs theme repo
+      run: |
+        git clone git@github.com:linode/linode-docs-theme linode-docs-theme-repo
+
+    - name: Check out theme repo commit from docs repo go.mod
+      working-directory: ./linode-docs-theme-repo
+      run: |
+        git checkout ${{ steps.get-theme-version.outputs.VERSION }}
+
+    - name: Print Linode Algolia admin tool version
+      working-directory: ./linode-docs-theme-repo
+      run: |
+        cd scripts/linode_algolia_admin/
+        go run main.go version
+
+    - name: Update Algolia
+      working-directory: ./linode-docs-theme-repo
+      env:
+        ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
+        ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_WRITE_KEY }}
+      run: |
+        cd scripts/linode_algolia_admin/
+
+        # The refresh-merge-and-push sequence assumes that the linode-wp and linode-community indices already exist in the Algolia app
+        go run main.go sequence refresh-merge-and-push
