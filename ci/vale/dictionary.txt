@@ -1007,6 +1007,7 @@ hulu
 husch
 hvc0
 hybla
+Hydrolix
 hykes
 hypercorn
 hyperefficient
