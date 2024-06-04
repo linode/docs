@@ -7,6 +7,7 @@ contributors: ["Jeff Novotny"]
 published: 2024-05-01
 keywords: ['LAMP stack Fedora','test LAMP stack','Apache Fedora','MariaDB PHP Fedora']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['/websites/lamp/lamp-server-on-fedora-11/','/lamp-guides/fedora-11/','/web-servers/lamp/lamp-server-on-fedora-11/','/guides/lamp-server-on-fedora-11/','/websites/lamp/lamp-server-on-fedora-12/','/web-servers/lamp/lamp-server-on-fedora-12/','/lamp-guides/fedora-12/','/guides/lamp-server-on-fedora-12/','/websites/lamp/lamp-server-on-fedora-13/','/lamp-guides/fedora-13/','/web-servers/lamp/lamp-server-on-fedora-13/','/guides/lamp-server-on-fedora-13/','/web-servers/lamp/lamp-server-on-fedora-14/','/lamp-guides/fedora-14/','/websites/lamp/lamp-server-on-fedora-14/','/guides/lamp-server-on-fedora-14/','/websites/lamp/lamp-server-on-fedora-15/','/lamp-guides/fedora-15/','/web-servers/lamp/lamp-server-on-fedora-15/','/guides/lamp-server-on-fedora-15/']
 external_resources:
 - '[Apache HTTP server](https://httpd.apache.org/)'
 - '[MariaDB](https://mariadb.com/)'
