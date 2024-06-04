@@ -20,7 +20,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Debian 11
-aliases: ['/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-11/']
+aliases: ['/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-11/','/web-servers/lamp/lamp-server-on-debian-5-lenny/','/websites/lamp/lamp-server-on-debian-5-lenny/','/lamp-guides/debian-5-lenny/','/guides/lamp-server-on-debian-5-lenny/','/lamp-guides/debian-6-squeeze/','/websites/lamp/lamp-server-on-debian-6-squeeze/','/web-servers/lamp/lamp-server-on-debian-6-squeeze/','/guides/lamp-server-on-debian-6-squeeze/']
 ---
 
 A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows you how to install a LAMP stack on Debian 11 (Bullseye).

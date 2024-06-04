@@ -1928,6 +1928,7 @@ pre
 pre4
 precompiled
 preconfigured
+prefetch
 prefork
 preinstall
 preinstalled

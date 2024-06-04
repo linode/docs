@@ -2,7 +2,7 @@
 title: "Getting Started on the Linode Platform"
 description: "Learn how to create an account and use the Linode Cloud Platform."
 published: 2018-11-05
-modified: 2023-09-20
+modified: 2024-06-03
 tab_group_main:
     is_root: true
     title: Get Started
@@ -44,7 +44,7 @@ First, you need to create a Linode account to start using our services. If you a
     This phone number provides our team with a secure method of verifying your identity as the owner of the newly created Linode user account. We will only ever use this phone number to verify your identity by sending a verification code as an SMS message. See [Phone Verification](/docs/products/platform/accounts/guides/user-security-controls/#phone-verification) for more details.
     {{< /note >}}
 
-1.  Within the **Billing** section, select your payment method and enter your billing address details. Linode accepts credit/debit cards, Google Pay, and PayPal. See the [Billing and Payments](/docs/products/platform/billing/#payments) guide to learn more about each of these methods. You must also accept the [Master Services Agreement](https://www.linode.com/legal-msa/).
+1.  Within the **Billing** section, select your payment method and enter your billing address details. Linode accepts credit/debit cards and PayPal on sign up. See the [Billing and Payments](/docs/products/platform/billing/#payments) guide to learn more about each of these methods. You must also accept the [Master Services Agreement](https://www.linode.com/legal-msa/).
 
 1.  Most accounts are activated instantly and you can start adding services right away. A small number of accounts may require manual review prior to activation.
 
