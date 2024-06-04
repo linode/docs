@@ -71,14 +71,14 @@ A drawback of repmgr is that it cannot recover resources or restore the state of
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with the Akamai cloud computing platform](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with the Akamai cloud computing platform](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  This guide requires at least two compute instances. The examples here only require Shared CPU instances with 4GB of RAM, to accommodate larger data sets, use High Memory instances. One system must be designated as the primary node and the other as a standby or backup node. Additional standby systems can be added depending upon business requirements. All servers within the same HA cluster must use the same release of the same Linux distribution. The steps that follow are geared towards Ubuntu 22.04 LTS users, but are generally applicable for earlier releases and other Linux distributions.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## An Overview of the PostgreSQL and repmgr HA Solution
