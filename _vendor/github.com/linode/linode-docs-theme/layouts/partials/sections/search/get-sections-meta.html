@@ -2,16 +2,7 @@
 {{- $sections = where $sections "Section" "not in" (slice "content" "development") -}}
 {{- $list := slice -}}
 {{- range $i, $e := $sections -}}
-  {{- $thumb := "" -}}
-  {{/* Try the feature.svg icon first. */}}
-  {{- with .Resources.GetMatch "*feature*.svg" -}}
-    {{- $thumb = . -}}
-  {{- else -}}
-    {{- $thumb = partial "funcs/get-bundle-image.html" . -}}
-    {{- if ne $thumb.MediaType.SubType "svg" -}}
-      {{- $thumb = $thumb.Fill "640x400" -}}
-    {{- end -}}
-  {{- end -}}
+  {{- $thumb := partial "sections/search/get-search-data-thumb.html" (dict "page" . "tryFeatureSVG" true) -}}
   {{- $objectID := (printf "%s" (replace .SectionsPath "/" " > ")) -}}
   {{- $objectID =  strings.Trim $objectID " >" -}}
   {{- $ordinal := 0 }}
