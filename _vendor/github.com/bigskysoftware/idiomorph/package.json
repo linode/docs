@@ -1,0 +1,44 @@
+{
+  "name": "idiomorph",
+  "description": "an id-based DOM morphing library",
+  "keywords": [
+    "HTML"
+  ],
+  "version": "0.3.0",
+  "homepage": "https://github.com/bigskysoftware/idiomorph",
+  "bugs": {
+    "url": "https://github.com/bigskysoftware/idiomorph/issues"
+  },
+  "license": "BSD 2-Clause",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist/*.js"
+  ],
+  "main": "dist/idiomorph.js",
+  "unpkg": "dist/idiomorph.min.js",
+  "scripts": {
+    "test": "mocha-chrome test/index.html",
+    "amd" : "(echo \"define(() => {\n\" && cat src/idiomorph.js && echo \"\nreturn Idiomorph});\") > dist/idiomorph.amd.js",
+    "cjs" : "(cat src/idiomorph.js && echo \"\nmodule.exports = Idiomorph;\") > dist/idiomorph.cjs.js",
+    "esm" : "(cat src/idiomorph.js && echo \"\nexport {Idiomorph};\") > dist/idiomorph.esm.js",
+    "gen-modules" : "npm run-script amd && npm run-script cjs && npm run-script esm",
+    "dist": "cp -r src/* dist/ && cat src/idiomorph.js src/idiomorph-htmx.js > dist/idiomorph-ext.js && npm run-script gen-modules && npm run-script uglify && gzip -9 -k -f dist/idiomorph.min.js > dist/idiomorph.min.js.gz && exit",
+    "uglify": "uglifyjs -m eval -o dist/idiomorph.min.js dist/idiomorph.js && uglifyjs -m eval -o dist/idiomorph-ext.min.js dist/idiomorph-ext.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigskysoftware/idiomorph.git"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-dom": "^1.11.0",
+    "fs-extra": "^9.1.0",
+    "mocha": "^7.2.0",
+    "mocha-chrome": "^2.2.0",
+    "mocha-webdriver-runner": "^0.6.3",
+    "uglify-js": "^3.15.0",
+    "sinon": "^9.2.4",
+    "htmx.org": "1.9.9"
+  }
+}

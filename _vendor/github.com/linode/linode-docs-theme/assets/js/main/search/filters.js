@@ -1,6 +1,6 @@
 'use strict';
 
-import { toggleBooleanClass } from '../helpers';
+import { toggleBooleanClass } from '../helpers/helpers';
 import { QueryHandler } from './query';
 
 var debug = 0 ? console.log.bind(console, '[filters]') : function () {};
