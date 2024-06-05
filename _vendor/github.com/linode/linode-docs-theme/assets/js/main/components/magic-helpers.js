@@ -1,6 +1,6 @@
 'use strict';
 
-import { isDesktop, isMobile } from '../helpers';
+import { isDesktop, isMobile } from '../helpers/helpers';
 
 export function alpineRegisterMagicHelpers(Alpine) {
 	// $copy is a magic helper that copys the content of the current or the supplied element to the clipboard.
