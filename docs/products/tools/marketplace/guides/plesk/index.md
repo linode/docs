@@ -41,7 +41,7 @@ aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/','/guide
 
         https://[domain]/login_up.php
 
-1.  Once you navigate to that URL, a login prompt appears. Use the following credentials.
+1.  Once you navigate to the URL, a login prompt appears. Use the following credentials:
 
     - **Username:** `root`
     - **Password:** The root password you entered when creating the Compute Instance.

@@ -11,7 +11,7 @@ external_resources:
 authors: ["Linode"]
 ---
 
-[Couchbase](https://www.couchbase.com/) is an enterprise class NoSQL database designed with memory-first architecture, built-in cache and workload isolation. The Couchbase One-Click cluster deploys five connected Couchbase Enterprise Server nodes, split between data, index and query services. This starting configurating allows quick deployment and rapid cluster expansion with Couchbase's multi-dimensional scaling.
+[Couchbase](https://www.couchbase.com/) is an enterprise class NoSQL database designed with memory-first architecture, built-in cache and workload isolation. The Couchbase One-Click cluster deploys five connected Couchbase Enterprise Server nodes, split between data, index and query services. This starting configuration allows quick deployment and rapid cluster expansion with Couchbase's multi-dimensional scaling.
 
 {{ < note >}}
 **Couchbase Enterprise Server License**
@@ -36,7 +36,7 @@ Couchbase Enterprise Server is not free to use in production. Contact [Couchbase
 
 {{< note type="warning" title="Minimum RAM Requirements" >}}
 **Minimum RAM Requirements:** Deploying the Couchbase Enterprise Server One-Click Cluster on a plan with less than 8GB of RAM will fail. Use caution, your account will be billed for any failed instances deployed with less than 8GB of RAM.
-{{< /note type="warning" title="Minimum RAM Requirements" >}}
+{{< /note >}}
 
 ### Couchbase Options
 
@@ -68,7 +68,7 @@ Now that your Couchbase Enterprise Server One-Click Cluster has been deployed, c
 
 ### More Information
 
-You may wish to consult the following resources for additional information on this topic. Please note that we cannot guarentee for the accuracy or timeliness of externally hosted materials.
+You may wish to consult the following resources for additional information on this topic. We cannot guarantee for the accuracy or timeliness of externally hosted materials.
 
 - [Couchbase](https://www.couchbase.com/)
 - [Couchbase Documentation](https://docs.couchbase.com/home/server.html)

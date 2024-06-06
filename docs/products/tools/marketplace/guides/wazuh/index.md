@@ -2,7 +2,7 @@
 title: "Deploy Wazuh through the Linode Marketplace"
 description: "Deploy Wazuh on a Linode Compute Instance. This provides you with an open source a security monitoring solution."
 published: 2021-11-12
-modified: 2024-05-21
+modified: 2024-06-06
 keywords: ['security','vulnerability','monitoring']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
@@ -41,7 +41,7 @@ aliases: ['/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-
 
 ### View Credentials
 
-1.  Log into your new Compute Instance through [LISH](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) using, `root` user and the password you entered when creating the instance, or the generated sudo user and supplied SSH key.
+1.  Log into your new Compute Instance through [LISH](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) using either `root` user and the password you entered when creating the instance, or the generated sudo user and supplied SSH key.
 
 1.  The usernames and passwords have been saved in the `/home/$SUDO_USER/.credentials` file, where sudo user is the user created during deployment. You can view this file in your preferred text editor or through the `cat` command.
 
@@ -68,7 +68,7 @@ aliases: ['/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-
       indexer_username: 'logstash'
       indexer_password: 'FGH6rDIgrg.zvXz?qZfQ1dv?2QAAQuiX7'
 
-    # User with READ access to all indices
+    # User with read access to all indices
       indexer_username: 'readall'
       indexer_password: 'jVVugegfB0ldF+fNN?0bS0iMviFe8RnY'
 
@@ -87,9 +87,9 @@ aliases: ['/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-
 
 ### Access the Wazuh App
 
-1.  Open a web browser and navigate to the domain you entered when creating the instance: `https://domain.tld`. If you did not enter a domain, use your Compute Instance's default rDNS domain (`192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing the rDNS value. Ensure that you are securely accessing the website by prefixing `https` to the URL.
+1.  Open a web browser and navigate to the domain you entered when creating the `https://domain.tld` instance. If you did not enter a domain, use your Compute Instance's default rDNS domain (`192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing the rDNS value. Ensure that you are securely accessing the website by prefixing `https` to the URL.
 
-1.  In the login screen that appears, enter `admin` as the username and enter its corresponding password (which can be found by following the [View Credentials](#view-credentials) section).
+1.  In the login screen that appears, enter `admin` as the username and enter its corresponding password. Find the password by following the steps in the [View Credentials](#view-credentials) section.
 
     ![Screenshot of the login page](wuzah-login.png)
 

@@ -60,7 +60,7 @@ Once you have used the token, you will be able to access the JupyterLab base pag
 
 ### More Information
 
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
+You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Project Jupyter](https://jupyter.org/)
 - [JupyterLab Documentation](https://jupyterlab.readthedocs.io/en/latest/)

@@ -67,9 +67,9 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
     Documentation: https://www.linode.com/docs/products/tools/marketplace/guides/prometheus-grafana/
     *********************************************************
     ```
-To delete this message of the day: rm /etc/motd
+To delete this message of the day, use `rm /etc/motd`.
 
-1. The `/home/$SUDO_USER/.credentials` file contains the credentials for the created sudo user, Prometheus, and Grafana. As shown in the example output below:
+1. The `/home/$SUDO_USER/.credentials` file contains the credentials for the created sudo user, Prometheus, and Grafana, as shown in the example output below:
 
     ```output cat /home/$SUDO_USER/.credentials
       Sudo Username: $SUDO_USER

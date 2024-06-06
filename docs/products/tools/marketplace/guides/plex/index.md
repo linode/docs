@@ -2,7 +2,7 @@
 title: "Deploy Plex Media Server through the Linode Marketplace"
 description: "Stream your personal media collection to nearly any device with your own Plex Media Server using Linode Marketplace Apps."
 published: 2020-09-28
-modified: 2022-03-08
+modified: 2024-06-06
 keywords: ['streaming','plex','video','media server']
 tags: ["debian","docker","marketplace", "web applications","linode platform", "cloud manager"]
 image: Deploy_Plex_oneclickapps.png
@@ -41,9 +41,9 @@ The following configuration options create a secure [Limited User](/docs/product
 - The Limited User configurations below are for your Linode's [Linux user](/docs/guides/linux-users-and-groups/), which is distinct from your [Plex account user](https://www.plex.tv/sign-up/).
 {{< /note >}}
 
-- **Limited User Name** *(required)*: Enter your preferred username for the limited user. If the username `root` is specified, a limited user is not be created and extra security features are not configured.
+- **Limited User Name** *(required)*: Enter your preferred username for the limited user. If the username `root` is specified, a limited user is not created and extra security features are not configured.
 - **Limited User Password** *(required)*: Enter a *strong* password for the new user.
-- **Limited User SSH Key:** If you wish to login as the limited user through public key authentication (without entering a password), enter your public key here. See [Creating an SSH Key Pair and Configuring Public Key Authentication on a Server](/docs/guides/use-public-key-authentication-with-ssh/) for instructions on generating a key pair.
+- **Limited User SSH Key:** If you wish to log in as the limited user through public key authentication (without entering a password), enter your public key here. See [Creating an SSH Key Pair and Configuring Public Key Authentication on a Server](/docs/guides/use-public-key-authentication-with-ssh/) for instructions on generating a key pair.
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
 
@@ -81,7 +81,7 @@ Your shell then interprets `$IP_ADDRESS` as the value you have provided in follo
 
     You now have an established SSH connection to your Plex Server Linode in your terminal, and can also access the Plex web interface from your workstation browser.
 
-1.  Enter `http://localhost:8888/web` into your workstation browser to access the Plex Server setup web interface. Enter your Plex account username and password to proceed with the setup process.
+1.  Enter `http://localhost:8888/web` into your workstation browser to access the Plex Server setup web interface. Enter your Plex account username and password to proceed with the setup.
 
     ![Plex Login Screen](plex-login.png "Plex login screen.")
 
@@ -101,7 +101,7 @@ Your shell then interprets `$IP_ADDRESS` as the value you have provided in follo
 
     ![Plex Settings Icon](initial-setup-settings-icon.png "Plex Settings Icon.")
 
-1.  On the left side bar, ensure that your new Plex Server is selected and select on **Remote Access** under the **Settings** section.
+1.  On the left side bar, ensure that your new Plex Server is selected and select **Remote Access** under the **Settings** section.
 
     ![Plex Server Remote Access Settings](initial-setup-remote-access.png "Plex Remote Access Settings.")
 

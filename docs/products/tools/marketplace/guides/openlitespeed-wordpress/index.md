@@ -2,7 +2,7 @@
 title: "Deploy OpenLiteSpeed WordPress through the Linode Marketplace"
 description: "Deploy OpenLiteSpeed on a Linode Compute Instance. This provides you with a high performance web server to manage your WordPress site."
 published: 2021-01-15
-modified: 2024-05-21
+modified: 2024-06-06
 keywords: [ 'openlitespeed','marketplace','hosting']
 tags: ["cloud-manager","linode platform", "marketplace"]
 external_resources:
@@ -12,7 +12,7 @@ external_resources:
 aliases: ['/platform/marketplace/deploy-openlitespeed-with-marketplace-apps/', '/platform/one-click/deploy-openlitespeed-with-one-click-apps/','/guides/deploy-openlitespeed-with-one-click-apps/','/guides/deploy-openlitespeed-with-marketplace-apps/', '/guides/openlitespeed-marketplace-app/','/guides/openlitespeed-wordpress-marketplace-app/']
 ---
 
-This Marketplace App installs the OpenLiteSpeed web server, WordPress, the LiteSpeed caching plugin for Wordpress, as well as other necessary software. Together, these applications provide an accelerated hosting platform for WordPress. [OpenLiteSpeed](https://openlitespeed.org/) is the open source edition of the LiteSpeed web server. It combines speed, security, scalability, optimization, and simplicity in one friendly open-source package.
+This Marketplace App installs the OpenLiteSpeed web server, WordPress, the LiteSpeed caching plugin for WordPress, as well as other necessary software. Together, these applications provide an accelerated hosting platform for WordPress. [OpenLiteSpeed](https://openlitespeed.org/) is the open source edition of the LiteSpeed web server. It combines speed, security, scalability, optimization, and simplicity in one friendly open-source package.
 
 ## Deploying a Marketplace App
 
@@ -50,7 +50,7 @@ This Marketplace App installs the OpenLiteSpeed web server, WordPress, the LiteS
 ## Getting Started After Deployment
 
 1.  Log in to your Compute Instance over SSH, using the `root` user or the sudo user created during deployment. See [Connecting to a Remote Server Over SSH
-](/docs/guides/connect-to-server-over-ssh/) for assistance. Once logged in, you should see Message of the Day output which includes OpenLiteSpeed HTTPS URLS:
+](/docs/guides/connect-to-server-over-ssh/) for assistance. Once logged in, you should see Message of the Day output which includes OpenLiteSpeed HTTPS URLs:
 
 ```command cat /etc/motd
 *********************************************************
@@ -64,7 +64,7 @@ Credentials File: /home/$SUDO_USERNAME/.credentials
 Documentation: https://www.linode.com/marketplace/apps/linode/openlitespeed-wordpress/
 *********************************************************
 ```
-The file `/home/$SUDO_USER/.credentials` includes choosen usernames and strong generated passwords for Wordpress, OpenLiteSpeed and PHPMyAdmin users. It also includes passwords for the generated sudo user and MySQL root user.
+The file `/home/$SUDO_USER/.credentials` includes chosen usernames and strong generated passwords for WordPress, OpenLiteSpeed and PHPMyAdmin users. It also includes passwords for the generated sudo user and MySQL root user.
 
 ### Accessing the WordPress Admin Dashboard
 
@@ -94,7 +94,7 @@ The file `/home/$SUDO_USER/.credentials` includes choosen usernames and strong g
 
 ## Going Further
 
-Now that OpenLiteSpeed Wordpress has been fully deployed, you can begin adding content and modifying the sites. The following support documents are available: 
+Now that OpenLiteSpeed WordPress has been fully deployed, you can begin adding content and modifying the sites. The following support documents are available: 
 
 - See the Linode tab at: https://docs.litespeedtech.com/cloud/images/wordpress/
 - [WordPress Support](https://wordpress.org/support/): Learn the basic workflows for using WordPress.
