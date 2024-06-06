@@ -1,22 +1,21 @@
 ---
 slug: ssl-certificates-with-apache-2-on-debian-5-lenny
+title: 'SSL Certificates with Apache 2 on Debian 5 (Lenny)'
 description: 'Serve SSL-enabled websites with the Apache 2 web server on Debian 5 (Lenny).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-23
+modified: 2012-10-15
 keywords: ["apache SSL", "ssl on debian", "web sever", "debian lenny"]
 tags: ["apache","security","ssl","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/ssl-guides/debian-5-lenny/','/security/ssl/ssl-certificates-with-apache-2-on-debian-5-lenny/']
-modified: 2012-10-15
-modified_by:
-  name: Linode
-published: 2009-08-23
-title: 'SSL Certificates with Apache 2 on Debian 5 (Lenny)'
-deprecated: true
 relations:
     platform:
         key: ssl-certificate-apache
         keywords:
             - distribution: Debian 5
-authors: ["Linode"]
+deprecated: true
 ---
 
 This guide will assist you with enabling SSL for websites served under the Apache web server. We assume you've completed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Debian 5 (Lenny) guide](/docs/web-servers/apache/installation/debian-5-lenny). These steps should be performed via an SSH session to your Linode as the root user.
@@ -148,7 +147,7 @@ Now you'll need to get the root certificate for the CA that you paid to sign you
 
 -   [Verisign](https://knowledge.verisign.com/support/ssl-certificates-support/index.html)
 -   [Thawte](http://www.thawte.com/roots/index.html)
--   [Globalsign](http://www.globalsign.com/en//)
+-   [Globalsign](http://www.globalsign.com/en/)
 -   [Comodo](https://support.comodo.com/index.php?_m=downloads&_a=view&parentcategoryid=1&pcid=0&nav=0)
 
 For example, if we downloaded a root cert for Verisign, we would save it to `/etc/apache2/ssl/verisign.cer`.

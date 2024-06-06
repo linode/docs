@@ -2,7 +2,7 @@
   id="language-switcher"
   x-data="lncLanguageSwitcher"
   x-show="show"
-  @turbo:render.window="onTurboRender()"
+  @turbo:render.window="init()"
   data-wg-notranslate=""
   tabindex="0"
   :aria-expanded="open"
@@ -11,7 +11,8 @@
   :class="{'closed': !open, 'weg-openleft': open}"
   :aria-owns="languageIDs('weglot-language-')"
   :aria-activedescendant="`weglot-language-${currentLanguage().lang}`"
-  :aria-label="`Language selected: ${currentLanguage().name}`">
+  :aria-label="`Language selected: ${currentLanguage().name}`"
+  data-turbo-permanent>
   <div
     @click="$root.focus(); open = !open"
     @click.away="open = false"
@@ -22,7 +23,7 @@
       tabindex="-1"
       target="_self"
       role="none"
-      :id="`weglot-language-${currentLanguage().lang}`"
+      id="weglot-language-current"
       x-text="currentLanguage().name"></a>
   </div>
   <ul role="none">

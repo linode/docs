@@ -1,16 +1,14 @@
 ---
 slug: install-gatsbyjs
-description: 'This guide shows how to create a CI/CD pipeline using the static-site generator Gatsby.js, Netlify to edit and preview, and Travis CI to deploy. '
-keywords: ['gatsbyjs','gatsby','ssg','static site generator', 'travis', 'netlify']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-08-09
-modified: 2018-08-09
-modified_by:
-  name: Linode
 title: "Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI"
 title_meta: 'CI/CD Pipeline with Gatsby.js, Netlify and Travis CI'
-aliases: ['/websites/static-sites/install-gatsbyjs/']
+description: 'This guide shows how to create a CI/CD pipeline using the static-site generator Gatsby.js, Netlify to edit and preview, and Travis CI to deploy. '
 authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-08-09
+keywords: ['gatsbyjs','gatsby','ssg','static site generator', 'travis', 'netlify']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['/websites/static-sites/install-gatsbyjs/']
 ---
 
 ![Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI](create-a-ci-cd-pipeline.png "Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI")
@@ -23,7 +21,7 @@ Gatsby is a [Static Site Generator](/docs/guides/how-to-choose-static-site-gener
 
 The CI/CD (continuous integration/continuous delivery) pipeline created in this guide is an automated sequence of events that is initiated after you update the code for your website on your local computer. These events take care of the work that you would otherwise need to perform manually: previewing your in-development site, testing your new code, and deploying it to your production server. These actions are powered by GitHub, Netlify, and Travis CI.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide uses GitHub as your central Git repository, but you can use any service that is compatible with Netlify and Travis.
 {{< /note >}}
 
@@ -55,7 +53,7 @@ This guide sets up the following flow of events:
 
 1.  Complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 1.  Configure DNS for your site by adding a [domain zone](/docs/products/networking/dns-manager/guides/create-domain/) and setting up [reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on your Linode's IP.
 
@@ -93,9 +91,9 @@ server {
 }
 {{</ file >}}
 
-    {{< note respectIndent=false >}}
-Replace all future instances of `example.com` in this guide with your domain name.
-{{< /note >}}
+    {{< note >}}
+    Replace all future instances of `example.com` in this guide with your domain name.
+    {{< /note >}}
 
 1.  The `root` directive in your NGINX configuration points to a directory named `public` within `/usr/share/nginx/html/example.com/`. Later in this guide, Gatsby will be responsible for creating the `public` directory and building its static content within it (specifically, via the `gatsby build` command).
 
@@ -273,9 +271,9 @@ Once connected to your GitHub account, the Netlify service can build a site prev
 
     ![Netlify repository settings](deploy-settings.png "Netlify repository settings")
 
-    {{< note respectIndent=false >}}
-You can add a `netlify.toml` [configuration file](https://www.netlify.com/docs/netlify-toml-reference/) to your Git repository to define more deployment settings.
-{{< /note >}}
+    {{< note >}}
+    You can add a `netlify.toml` [configuration file](https://www.netlify.com/docs/netlify-toml-reference/) to your Git repository to define more deployment settings.
+    {{< /note >}}
 
 ### Create a Pull Request
 
@@ -322,9 +320,9 @@ Travis CI manages testing your Gatsby site and deploying it to the Linode produc
 
 1.  Navigate to the [Travis CI](https://travis-ci.com/) site and click on the *Sign up with GitHub* button.
 
-    {{< note respectIndent=false >}}
-Be sure to visit [travis-ci.com](https://travis-ci.com/), not [travis-ci.org](https://travis-ci.org/). Travis originally operated travis-ci.com for paid/private repositories, and travis-ci.org was run separately for free/open source projects. [As of May 2018](https://blog.travis-ci.com/2018-05-02-open-source-projects-on-travis-ci-com-with-github-apps), travis-ci.com supports open source projects and should be used for all new projects. Projects on travis-ci.org will eventually be migrated to travis-ci.com.
-{{< /note >}}
+    {{< note >}}
+    Be sure to visit [travis-ci.com](https://travis-ci.com/), not [travis-ci.org](https://travis-ci.org/). Travis originally operated travis-ci.com for paid/private repositories, and travis-ci.org was run separately for free/open source projects. [As of May 2018](https://blog.travis-ci.com/2018-05-02-open-source-projects-on-travis-ci-com-with-github-apps), travis-ci.com supports open source projects and should be used for all new projects. Projects on travis-ci.org will eventually be migrated to travis-ci.com.
+    {{< /note >}}
 
 1.  You will be redirected to your GitHub account. Authorize Travis CI to access your GitHub account:
 
@@ -346,9 +344,9 @@ Travis builds are run in new virtualized environments created for each build. Th
 
         touch .travis.yml
 
-    {{< note respectIndent=false >}}
-Make sure you commit changes at logical intervals as you modify the files in your Git repository.
-{{< /note >}}
+    {{< note >}}
+    Make sure you commit changes at logical intervals as you modify the files in your Git repository.
+    {{< /note >}}
 
 1.  Open your `.travis.yml` file in a text editor and add the following lines:
 
@@ -403,13 +401,13 @@ sudo: false
 
     ![GitHub Travis Builds](github-travis-builds.png "GitHub Travis Builds")
 
-    {{< note respectIndent=false >}}
-Four rows for your Travis builds will appear, which is more than you may expect. This is because Travis runs your builds whenever your branch is updated, and whenever your pull request is updated, and [Travis considers these to be separate events](https://docs.travis-ci.com/user/pull-requests/#double-builds-on-pull-requests).
+    {{< note >}}
+    Four rows for your Travis builds will appear, which is more than you may expect. This is because Travis runs your builds whenever your branch is updated, and whenever your pull request is updated, and [Travis considers these to be separate events](https://docs.travis-ci.com/user/pull-requests/#double-builds-on-pull-requests).
 
-In addition, the rows prefixed by `Travis CI - ` are links to GitHub's preview of those builds, while rows prefixed with `continuous-integration/travis-ci/` are direct links to the builds on [travis-ci.com](https://travis-ci.com/).
+    In addition, the rows prefixed by `Travis CI - ` are links to GitHub's preview of those builds, while rows prefixed with `continuous-integration/travis-ci/` are direct links to the builds on [travis-ci.com](https://travis-ci.com/).
 
-For now, these builds will produce identical output. After the deployment functions of Travis have been configured, the pull request builds will [skip the deployment step](https://docs.travis-ci.com/user/deployment#pull-requests), while the branch builds will implement your deployment configuration.
-{{< /note >}}
+    For now, these builds will produce identical output. After the deployment functions of Travis have been configured, the pull request builds will [skip the deployment step](https://docs.travis-ci.com/user/deployment#pull-requests), while the branch builds will implement your deployment configuration.
+    {{< /note >}}
 
 1.  Click the **Details** link in the `continuous-integration/travis-ci/push` row to visit the logs for that build. A page with similar output will appear:
 
@@ -446,9 +444,9 @@ The private key will also need to be encrypted, as the key file will live in you
 
     Follow the prompts to provide your GitHub login credentials. These credentials are passed directly to GitHub and are not recorded by Travis. In exchange, GitHub returns a GitHub access token to Travis, after which Travis will provide your CLI with a Travis access token.
 
-    {{< note respectIndent=false >}}
-[The `--com` argument](https://github.com/travis-ci/travis.rb#general-api-commands) tells your CLI to log in to [travis-ci.com](https://travis-ci.com/) (instead of [travis-ci.org](https://travis-ci.org/)).
-{{< /note >}}
+    {{< note >}}
+    [The `--com` argument](https://github.com/travis-ci/travis.rb#general-api-commands) tells your CLI to log in to [travis-ci.com](https://travis-ci.com/) (instead of [travis-ci.org](https://travis-ci.org/)).
+    {{< /note >}}
 
 1.  Inside the root of your local `example-site` Git repository, create a `scripts` directory. This will hold files related to deploying your Gatsby site:
 
@@ -488,14 +486,13 @@ before_install:
   -in gatsby-deploy.enc -out gatsby-deploy -d
 {{< /file >}}
 
-    {{< disclosure-note "About the openssl command and Travis build variables" >}}
-The second line (starting with `-in gatsby-deploy.enc`) is a continuation of the first line, and `-in` is an option passed to the `openssl` command. This line is not its own item in the `before_install` list.
+    {{< note type="secondary" title="About the openssl command and Travis build variables" isCollapsible=true >}}
+    The second line (starting with `-in gatsby-deploy.enc`) is a continuation of the first line, and `-in` is an option passed to the `openssl` command. This line is not its own item in the `before_install` list.
 
-The `openssl` command accepts the encrypted `gatsby-deploy.enc` file and uses two environment variables to decrypt it, resulting in your original `gatsby-deploy` private key. These two variables are stored in the Settings page for your repository on travis-ci.com. [Any variables stored there](https://docs.travis-ci.com/user/environment-variables/#defining-variables-in-repository-settings) will be accessible to your build environment:
+    The `openssl` command accepts the encrypted `gatsby-deploy.enc` file and uses two environment variables to decrypt it, resulting in your original `gatsby-deploy` private key. These two variables are stored in the Settings page for your repository on travis-ci.com. [Any variables stored there](https://docs.travis-ci.com/user/environment-variables/#defining-variables-in-repository-settings) will be accessible to your build environment:
 
-![Travis Environment Variables](travis-environment-variables.png "Travis settings page - viewing environment variables")
-
-{{< /disclosure-note >}}
+    ![Travis Environment Variables](travis-environment-variables.png)
+    {{< /note >}}
 
 1.  Edit the lines previously added by the `travis encrypt-file` command so that `gatsby-deploy.enc` and `gatsby-deploy` are prefixed with your `scripts/` directory:
 
@@ -557,11 +554,11 @@ deploy:
 
     The instructions for pushing your site to your Linode will be defined in a `deploy.sh` script that you will create.
 
-    {{< disclosure-note "Full contents of your Travis configuration">}}
 
-The complete and final version of your `.travis.yml` file should resemble the following:
+    {{< note type="secondary" title="Full contents of your Travis configuration" isCollapsible=true >}}
+    The complete and final version of your `.travis.yml` file should resemble the following:
 
-{{< file "~/example-site/.travis.yml" yml>}}
+    {{< file "~/example-site/.travis.yml" yml>}}
 language: node_js
 node_js:
 - "10.0"
@@ -590,7 +587,7 @@ deploy:
     branch: master
 {{</ file >}}
 
-{{< /disclosure-note >}}
+    {{< /note >}}
 
 1.  From your local `example-site` Git repository, create a `deploy.sh` file in the `scripts` directory and make it executable:
 
@@ -628,9 +625,9 @@ git push -f production HEAD:refs/heads/master
     -   Commits the newly-built `public` directory to the Travis build environment's copy of your Git repository.
     -   Pushes that commit (over the SSH protocol) to a remote repository on your Linode, which you will create in the next section of this guide.
 
-    {{< note respectIndent=false >}}
-Remember that because these instructions are executed in an isolated virtual environment, the `git commit` that is run here does not affect the repository on your local computer or on GitHub.
-{{< /note >}}
+    {{< note >}}
+    Remember that because these instructions are executed in an isolated virtual environment, the `git commit` that is run here does not affect the repository on your local computer or on GitHub.
+    {{< /note >}}
 
 1.  You may recall that you previously updated your `.gitignore` file to exclude the `public` directory. To allow this directory to be committed in your build environment's repository (and therefore pushed to your Linode), you will need to override that rule at deploy time.
 
@@ -683,9 +680,9 @@ git --work-tree=/usr/share/nginx/html/example.com --git-dir=/home/example_user/g
 
     This script will check out the files from your Linode repository's *master* branch into your document root folder.
 
-    {{< note respectIndent=false >}}
-While a bare Git repository does not keep working copies of files within the repository's directory, you can still use the `--work-tree` option to check out files into another directory.
-{{< /note >}}
+    {{< note >}}
+    While a bare Git repository does not keep working copies of files within the repository's directory, you can still use the `--work-tree` option to check out files into another directory.
+    {{< /note >}}
 
 ### Deploy with Travis CI
 

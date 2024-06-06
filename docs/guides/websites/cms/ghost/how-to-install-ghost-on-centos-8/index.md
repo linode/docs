@@ -1,16 +1,15 @@
 ---
 slug: how-to-install-ghost-on-centos-8
+title: Installing Ghost CMS on CentOS 8
+title_meta: How to Install Ghost CMS on CentOS 8
 description: 'This tutorial will teach you how to install Ghost, a publishing platform great for running blogs and sharing published content, on CentOS 8.'
 og_description: 'Easily publish your own professional-looking blog using Ghost on your Linode running CentOS 8.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-02-10
 keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on CentOS 8", "ghost cms"]
 tags: ["nginx","centos","mysql","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-10
-modified_by:
-  name: Linode
-published: 2020-02-10
-title: Installing Ghost CMS on CentOS 8
-title_meta: How to Install Ghost CMS on CentOS 8
 image: GhostCMSonCentos8.png
 external_resources:
 - '[Ghost Setup Documentation](https://ghost.org/docs/setup/)'
@@ -22,7 +21,6 @@ relations:
         keywords:
            - distribution: CentOS 8
 aliases: ['/websites/cms/ghost/how-to-install-ghost-on-centos-8/']
-authors: ["Linode"]
 ---
 
 [Ghost](https://ghost.org/developers/) is an open source blogging platform that helps you easily create a professional-looking online blog. Ghost is a robust content management system (CMS) with a Markdown editor, an easy-to-use user interface, and beautiful themes. It is easy to install and update with [Ghost-CLI](https://github.com/TryGhost/Ghost-CLI).
@@ -31,7 +29,7 @@ authors: ["Linode"]
 
 In this guide, you'll set up, deploy, and secure a Ghost v3.5.1 blog on a Linode running CentOS 8, using NGINX, MariaDB, Node.js, NPM, and Ghost-CLI. For installation instructions for other distributions, click [here](/docs/websites/cms/ghost).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, consult our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 Replace each instance of `example.com` in this guide with your site’s domain name.

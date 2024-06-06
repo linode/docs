@@ -1,19 +1,18 @@
 ---
 slug: secure-website-lets-encrypt-acme-sh
+title: 'Secure a Website or Domain with a Let''s Encrypt SSL Certificate and acme.sh'
+title_meta: 'Secure a Website or Domain with Let''s Encrypt and acme.sh'
 description: "acme.sh is an alternative to the popular Certbot. This guide shows you how to secure a website using acme.sh with SSL certificates from Let's Encrypt."
+authors: ["Andy Heathershaw"]
+contributors: ["Andy Heathershaw"]
+published: 2020-12-03
 keywords: ['ssl','lets encrypt','https','website','websites','acme.sh','secure']
 tags: ['http', 'ssl', 'apache', 'nginx', 'security', 'automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-12-03
-modified_by:
-  name: Andy Heathershaw
-title: 'Secure a Website or Domain with a Let''s Encrypt SSL Certificate and acme.sh'
-title_meta: 'Secure a Website or Domain with Let''s Encrypt and acme.sh'
 external_resources:
 - '[acme.sh](https://acme.sh/)'
 - '[Use Linode domain API (acme.sh wiki)](https://github.com/acmesh-official/acme.sh/wiki/dnsapi#14-use-linode-domain-api)'
 - '[Let''s Encrypt](https://letsencrypt.org/)'
-authors: ["Andy Heathershaw"]
 ---
 [*acme.sh*](https://acme.sh/) is a client application for ACME-compatible services, like those used by [Let's Encrypt](https://letsencrypt.org/). It is an alternative to the popular [Certbot](/docs/guides/quick-answers/websites/) application with two big benefits:
 
@@ -90,13 +89,13 @@ v2.8.7
 
 acme.sh can use the [Linode v4 API](/docs/api) to create and remove temporary DNS records for a Domain. Follow the steps [Get An API Access Token](/docs/products/tools/api/guides/manage-api-tokens/) product documentation to create a Linode API v4 token.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Ensure the token you create has **Read/Write** access to **Domains**.
 {{< /note >}}
 
 ## Issue a certificate
 
-1. [Connect to your Linode](/docs/products/platform/get-started/#connect-to-your-linode-via-ssh) and set an environment variable for the API token you obtained in the previous section. Replace `your-api-token-here` with your own token.
+1. [Connect to your Linode](/docs/products/compute/compute-instances/get-started/#connect-to-the-instance) and set an environment variable for the API token you obtained in the previous section. Replace `your-api-token-here` with your own token.
 
         export LINODE_V4_API_KEY="your-api-token-here"
 
@@ -224,14 +223,12 @@ For example, to store your certificates in `/etc/ssl/example.com` and restart Ap
         --key-file /etc/ssl/example.com/example.com.key \
         --fullchain-file /etc/ssl/example.com/fullchain-example.com.cer \
         --reloadcmd "systemctl restart apache2"
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The target directory must exist first. To create it run the following command:
 
     mkdir -p /etc/ssl/example.com
 {{< /note >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The example command uses certificate file system locations (`/etc/ssl/`) that are different from the examples in the [Configure your Web Server](#configure-your-web-server) section (which used the `/root/.acme.sh/` folder). If you want to copy this exact example command, make sure that your web server configurations use the correct locations.
 {{< /note >}}
 

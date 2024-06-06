@@ -1,15 +1,15 @@
 ---
 slug: how-to-install-a-redis-server-on-ubuntu-or-debian8
+title: 'How to Install a Redis Server on Ubuntu or Debian 8'
 description: 'This guide will show you how to deploy the high performance Redis data-structure store application on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, or Debian 8.'
+og_description: 'This tutorial guides you through installation and best practices of Redis on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, or Debian 8'
+authors: ["Sergey Pariev"]
+contributors: ["Sergey Pariev"]
+published: 2016-04-20
+modified: 2017-09-13
 keywords: ["redis", "redis ubuntu 14.04", "redis server", "redis ubuntu 16.04", "debian 8", "redis cluster"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/how-to-install-a-redis-server-on-ubuntu-or-debian8/','/databases/redis/deploy-redis-on-ubuntu-or-debian/']
-modified: 2017-09-13
-modified_by:
-  name: Edward Angert
-published: 2016-04-20
-title: 'How to Install a Redis Server on Ubuntu or Debian 8'
-og_description: 'This tutorial guides you through installation and best practices of Redis on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, or Debian 8'
 external_resources:
  - '[Redis Project Home Page](http://redis.io/)'
  - '[Redis Configuration](http://redis.io/topics/config)'
@@ -21,9 +21,7 @@ relations:
         keywords:
             - distribution: Ubuntu/Debian
 tags: ["ubuntu","debian","database","nosql"]
-authors: ["Sergey Pariev"]
 ---
-
 
 ![Redis Server on Ubuntu or Debian](install-redis-server-ubuntu-debian.png "Redis Server on Ubuntu or Debian")
 
@@ -159,7 +157,7 @@ The following steps will guide you through master/slave replication, with the sl
 
 For this section of the guide, you will use two Linodes, respectively named `master` and `slave`.
 
-1.  Set up both Linodes with a Redis instance, using **Redis Installation** and **Redis Configuration** steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode) option in the Linode Manager.
+1.  Set up both Linodes with a Redis instance, using **Redis Installation** and **Redis Configuration** steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/products/compute/compute-instances/guides/clone-instance/#clone-to-an-existing-compute-instance) option in the Cloud Manager.
 
 2.  Configure [Private IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) on both Linodes, and make sure you can access the `master` Linode's private IP address from `slave`. You will use only private addresses for replication traffic for security reasons.
 

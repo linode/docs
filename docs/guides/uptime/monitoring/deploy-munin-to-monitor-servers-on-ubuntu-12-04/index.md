@@ -1,19 +1,17 @@
 ---
 slug: deploy-munin-to-monitor-servers-on-ubuntu-12-04
-deprecated: true
+title: 'Deploy Munin to Monitor Servers on Ubuntu 12.04'
 description: 'Use Munin on Ubuntu 12.04 to Keep Track of Vital System Statistics and Troubleshoot Performance Problems'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-09
 keywords: ["munin", "monitoring", "ubuntu 12.04", "munin node", "munin master"]
 tags: ["monitoring","statistics","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/monitoring/monitoring-server-with-munin-on-ubuntu-12-04-precise-pangolin/','/uptime/monitoring/deploy-munin-to-monitor-servers-on-ubuntu-12-04/','/server-monitoring/munin/ubuntu-12-04-precise-pangolin/']
-modified: 2012-10-09
-modified_by:
-  name: Linode
-published: 2012-10-09
-title: 'Deploy Munin to Monitor Servers on Ubuntu 12.04'
 external_resources:
  - '[Munin Homepage](http://munin-monitoring.org/)'
- - '[Munin Exchange](https://github.com/munin-monitoring/contrib//)'
+ - '[Munin Exchange](https://github.com/munin-monitoring/contrib/)'
  - '[Installing Munin on Other Linux Distributions](http://munin-monitoring.org/wiki/MuninInstallationLinux)'
  - '[Installing Munin on Mac OS X](http://munin-monitoring.org/wiki/MuninInstallationDarwin)'
  - '[Installing Munin on Solaris](http://munin-monitoring.org/wiki/MuninInstallationSolaris)'
@@ -22,7 +20,7 @@ relations:
         key: install-munin-monitoring
         keywords:
             - distribution: Ubuntu 12.04
-authors: ["Linode"]
+deprecated: true
 ---
 
 The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the past 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. For instance, if you need to monitor memory usage or resource consumption on a per-process level, a more precise monitoring tool like Munin might be helpful.

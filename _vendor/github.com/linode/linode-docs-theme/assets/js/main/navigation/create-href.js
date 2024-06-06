@@ -1,6 +1,6 @@
 'use strict';
 
-import { sanitizeHTML } from '../helpers';
+import { sanitizeHTML } from '../helpers/helpers';
 
 var debug = 0 ? console.log.bind(console, '[router]') : function () {};
 
@@ -19,10 +19,6 @@ export function newCreateHref(searchConfig) {
 			return sections;
 		},
 		hrefSection: function (key) {
-			if (key == 'community') {
-				// We don't have any list page for the community section.
-				return '';
-			}
 			let parts = key.split(' > ');
 
 			if (parts.length > 1 && parts[0] === 'taxonomies') {

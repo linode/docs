@@ -1,15 +1,12 @@
 ---
 title: Troubleshooting General Issues on Compute Instances
 description: 'This guide provides you with a reference for common troubleshooting scenarios you may encounter when managing your Linode. Multiple sections are included.'
-keywords: ['troubleshooting']
-tags: ["linode platform"]
 published: 2012-04-05
 modified: 2023-03-14
-modified_by:
-  name: Linode
+keywords: ['troubleshooting','troubleshoot']
+tags: ["linode platform"]
 bundles: ['troubleshooting']
 aliases: ['/quick-start-troubleshooting/','/troubleshooting/troubleshooting/']
-authors: ["Linode"]
 ---
 
 This guide provides common troubleshooting scenarios you may encounter when managing your Compute Instance. Each troubleshooting section provides ways to further diagnose your issue and the corresponding steps, when applicable, to resolve the issue. We recommend using this guide in the following way:
@@ -121,13 +118,13 @@ If your Compute Instance is not out of memory, continue to the next section.
 
 Disk input/output (I/O) bottlenecks can occur when an application or service is reading or writing an excessive amount of information to disk and the processor has to wait to process the information. High I/O wait can significantly slow down your server. To determine if your server currently has an I/O bottleneck, follow the steps below:
 
-1.  [Log in to your Compute Instance via SSH](/docs/products/platform/get-started/#connect-to-your-linode-via-ssh).
+1.  [Log in to your Compute Instance via SSH](/docs/products/compute/compute-instances/get-started/#connect-to-the-instance).
 1.  Enter `top` to access the `top` monitoring utility. The screen shown below appears.
 
     ![Check for Disk I/O bottleneck.](939-troubleshooting2.png)
 
 1.  Examine the I/O wait percentage, as shown above. If the number is zero, your server does not currently have a bottleneck.
-1.  If your I/O wait percentage is above zero, verify that your server has enough [free memory available](/docs/guides/troubleshooting-overview/#is-the-compute-instance-out-of-memory). In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
+1.  If your I/O wait percentage is above zero, verify that your server has enough [free memory available](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/). In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
 1.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/docs/guides/use-vmstat-to-monitor-system-performance/) to find the application responsible for the excessive I/O. Databases are often a source of excessive I/O. You may need to stop and/or reconfigure the application.
 
     {{< note >}}
@@ -197,4 +194,4 @@ If you recently upgraded your plan, your Compute Instance won't be able to take 
 
     ![Disk storage allocation](disk-storage-allocation.png)
 
-    Follow our steps for [resizing a disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resizing-a-disk) to take advantage of the extra space.
+    Follow our steps for [resizing a disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resize-a-disk) to take advantage of the extra space.

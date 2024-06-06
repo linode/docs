@@ -1,25 +1,22 @@
 ---
 slug: nginx-and-perlfastcgi-on-fedora-12
-deprecated: true
+title: 'Nginx and Perl-FastCGI on Fedora 12'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Fedora 12.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-03-11
+modified: 2011-05-17
 keywords: ["nginx", "nginx fedora 12", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","fedora","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/nginx-and-perlfastcgi-on-fedora-12/','/web-servers/nginx/nginx-and-perlfastcgi-on-fedora-12/','/web-servers/nginx/perl-fastcgi/fedora-12/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2010-03-11
-title: 'Nginx and Perl-FastCGI on Fedora 12'
 relations:
     platform:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Fedora 12
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your Fedora 12 Linode.
 
@@ -124,7 +121,7 @@ Issue the following command sequence to download the FastCGI wrapper script (cre
 
 ## Test Perl with FastCGI
 
-Create a file called "test.pl" in your site's "public\_html" directory with the following contents:
+Create a file called "test.pl" in your site's `public_html` directory with the following contents:
 
 {{< file "/srv/www/www.example.com/public\\_html/test.pl" perl >}}
 #!/usr/bin/perl

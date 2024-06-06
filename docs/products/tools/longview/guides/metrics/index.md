@@ -1,12 +1,9 @@
 ---
 title: "Understanding Longview Metrics"
 description: "An overview of metrics collected by Longview, including how to view the metrics and understand the data."
-keywords: ["system monitoring", "longview", "metrics"]
 published: 2023-05-24
-modified_by:
-  name: Linode
+keywords: ["system monitoring", "longview", "metrics"]
 tags: ["linode platform","cloud manager","statistics","monitoring"]
-authors: ["Linode"]
 ---
 
 This guide provides an overview of the data and graphs available to you after successfully installing Longview on a Compute Instance or other Linux system.

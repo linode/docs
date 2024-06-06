@@ -15,7 +15,9 @@
 @import "components/all.css";
 @import "sections/all.css";
 @import "logic/all.css";
+/* purgecss start ignore */
 @import "grids/grid--base.css";
+/* purgecss end ignore */
 
 html {
   font-size: 16px;
@@ -23,7 +25,7 @@ html {
 
 body,
 html {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   line-height: 1.25;
   margin: 0;
@@ -53,10 +55,17 @@ body {
   @apply lg:mx-auto;
 }
 
+/* Turbo styles */
 .turbo-progress-bar {
   @apply bg-brand;
   opacity: 0.35;
   height: 3px;
+}
+
+/* Global slight fade */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.2s;
 }
 
 .pull-out {
@@ -133,6 +142,11 @@ for the smaller screens.
 .px-container,
 .mx-container {
   @apply pl-container pr-container;
+}
+
+/* Adjust how top padding for submenus works: docs only */
+.c-submenu {
+  --min-submenu-padding: var(--site-top-offset) !important;
 }
 
 /* Adjust Tailwind preflight defaults applied in tailwind base. */

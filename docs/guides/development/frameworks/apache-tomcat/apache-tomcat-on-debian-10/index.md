@@ -1,17 +1,16 @@
 ---
 slug: apache-tomcat-on-debian-10
+title: 'Installing Apache Tomcat on Debian 10'
+title_meta: 'How to Install Apache Tomcat on Debian 10'
 description: 'Install the Apache Tomcat Java servlet engine on Debian 10 by following this guide.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-25
 keywords: ["apache tomcat debian 10", "tomcat java", "java debian 10", "tomcat debian"]
 tags: ["web applications","java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/apache-tomcat-on-debian-10/','/development/frameworks/apache-tomcat/apache-tomcat-on-debian-10/','/development/frameworks/apache-tomcat-on-debian-10/']
-modified: 2020-03-25
-modified_by:
-  name: Linode
-published: 2020-03-25
 image: ApacheTomcat_Deb10.png
-title: 'Installing Apache Tomcat on Debian 10'
-title_meta: 'How to Install Apache Tomcat on Debian 10'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
@@ -24,7 +23,6 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Debian 10
-authors: ["Linode"]
 ---
 
 Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. With this guide, you'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.
@@ -33,7 +31,7 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 
 1.  Ensure that your system is up to date and that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/products/compute/compute-instances/faqs/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/).
 
-2.  Make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+2.  Make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
         hostname
         hostname -f
@@ -43,8 +41,7 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 3.  You should also make sure your system is up to date. Enter the following command and install any available updates:
 
         apt-get update && apt-get upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -85,8 +82,7 @@ If you installed the `tomcat9-admin` web application above, you can configure it
 <user username="username" password="password" roles="manager-gui,admin-gui"/>
 
 {{< /file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you are not using the web application and plan to manage your application(s) from the command line only, you should not enter these lines, because doing so may expose your server to unauthorized login attempts.
 {{< /note >}}
 

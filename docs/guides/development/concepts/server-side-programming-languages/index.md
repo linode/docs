@@ -3,12 +3,11 @@ slug: server-side-programming-languages
 title: "5 Server Side Programming Languages Every Programmer Should Know"
 title_meta: "Guide to the Best Server Side Scripting Languages"
 description: 'Which server side programming languages should you learn? Read our guide for the best server side languages.'
+authors: ["Martin Heller"]
+contributors: ["Martin Heller"]
+published: 2023-05-02
 keywords: ['server side programming languages','server side scripting languages','server side development','server side coding','best front end languages','best server side language','server side frameworks','most popular server side languages','server side web applications','server side web frameworks']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Martin Heller"]
-published: 2023-05-02
-modified_by:
-  name: Linode
 external_resources:
 - '[Orient Software: Top 7 Server-side Scripting Languages](https://www.orientsoftware.com/blog/server-side-scripting-languages/)'
 - '[Qulix: Choosing the Best Server-Side Language in 2023](https://www.qulix.com/about/blog/the-best-server-side-language/)'

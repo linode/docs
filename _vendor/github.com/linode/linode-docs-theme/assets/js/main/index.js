@@ -11,28 +11,43 @@ import {
 	newDropdownsController,
 	newTabsController,
 } from './components/index';
-import { isMobile, setIsTranslating, getCurrentLang, leackChecker } from './helpers/index';
+import { toggleBooleanClass, setIsTranslating, getCurrentLang, scrollToActiveExplorerNode } from './helpers/helpers';
+import { leackChecker } from './helpers/leak-checker';
 import {
 	addLangToLinks,
 	newBreadcrumbsController,
 	newLanguageSwitcherController,
 	newNavController,
 	newPromoCodesController,
-	newSearchExplorerController,
 	newToCController,
 	newPaginatorController,
+	newSearchExplorerInitial,
+	newSearchExplorerHydrated,
+	newSearchExplorerNode,
 } from './navigation/index';
 import { newNavStore } from './navigation/nav-store';
 // AlpineJS controllers and helpers.
 import { newSearchFiltersController, newSearchInputController, newSearchStore, getSearchConfig } from './search/index';
 import { newHomeController } from './sections/home/home';
 import { newSectionsController } from './sections/sections/index';
+import { newSVGViewerController } from './navigation/svg-viewer';
 
 // Set up the search configuration (as defined in config.toml).
 const searchConfig = getSearchConfig(params);
 
 // Set up and start Alpine.
 (function () {
+	// For integration tests.
+	if (window.Cypress) {
+		window.truste = {};
+		window.addEventListener('unhandledrejection', function (e) {
+			console.error(e);
+			return false;
+		});
+	}
+
+	__stopWatch('index.js.start');
+
 	// Register AlpineJS plugins.
 	{
 		Alpine.plugin(intersect);
@@ -66,7 +81,9 @@ const searchConfig = getSearchConfig(params);
 		Alpine.data('lncLanguageSwitcher', newLanguageSwitcherController(params.weglot_api_key));
 		Alpine.data('lncSearchFilters', () => newSearchFiltersController(searchConfig));
 		Alpine.data('lncSearchInput', newSearchInputController);
-		Alpine.data('lncSearchExplorer', () => newSearchExplorerController(searchConfig));
+		Alpine.data('lncSearchExplorerNode', (node = {}) => newSearchExplorerNode(searchConfig, node));
+		Alpine.data('lncSearchExplorerInitial', () => newSearchExplorerInitial());
+		Alpine.data('lncSearchExplorerHydrated', () => newSearchExplorerHydrated(searchConfig));
 		Alpine.data('lncToc', newToCController);
 		Alpine.data('lncBreadcrumbs', () => newBreadcrumbsController(searchConfig));
 		Alpine.data('lncDropdowns', newDropdownsController);
@@ -75,6 +92,7 @@ const searchConfig = getSearchConfig(params);
 		Alpine.data('lncPaginator', newPaginatorController);
 		Alpine.data('lncPromoCodes', () => newPromoCodesController(params.is_test));
 		Alpine.data('lncFetch', fetchController);
+		Alpine.data('lnvSVGViewer', newSVGViewerController);
 
 		// Page controllers.
 		Alpine.data('lncHome', (staticData) => {
@@ -90,14 +108,8 @@ const searchConfig = getSearchConfig(params);
 
 	// Set up AlpineJS stores.
 	{
-		Alpine.store('search', newSearchStore(searchConfig, Alpine));
+		Alpine.store('search', newSearchStore(searchConfig, params, Alpine));
 		Alpine.store('nav', newNavStore(searchConfig, Alpine.store('search'), params, Alpine));
-	}
-
-	if (!isMobile()) {
-		// We always need the blank resul set in desktop, so load that early.
-		let store = Alpine.store('search');
-		store.withBlank();
 	}
 
 	// Start Alpine.
@@ -109,6 +121,9 @@ const searchConfig = getSearchConfig(params);
 
 // Set up global event listeners etc.
 (function () {
+	if (!window.__stopWatch) {
+		window.__stopWatch = function (name) {};
+	}
 	// Set up a global function to send events to Google Analytics.
 	window.gtag = function (event) {
 		this.dataLayer = this.dataLayer || [];
@@ -134,9 +149,6 @@ const searchConfig = getSearchConfig(params);
 	};
 
 	document.addEventListener('turbo:load', function (event) {
-		// Hide JS-powered blocks on browsers with JavaScript disabled.
-		document.body.classList.remove('no-js');
-
 		// Update any static links to the current language.
 		let lang = getCurrentLang();
 		if (lang && lang !== 'en') {
@@ -150,12 +162,14 @@ const searchConfig = getSearchConfig(params);
 			return;
 		}
 
+		toggleBooleanClass('turbo-loaded', document.documentElement, true);
+
 		// Init language links.
 		let languageSwitcherTarget = document.getElementById('weglot_here');
 
 		let languageSwitcherTemplate = document.getElementById('language-switcher-template');
 		let languageSwitcherSource = document.importNode(languageSwitcherTemplate.content, true);
-		languageSwitcherTarget.appendChild(languageSwitcherSource);
+		languageSwitcherTarget.replaceChildren(languageSwitcherSource);
 
 		window.turbolinksLoaded = true;
 		setTimeout(function () {
@@ -172,7 +186,7 @@ const searchConfig = getSearchConfig(params);
 	});
 
 	document.addEventListener('turbo:render', function (event) {
-		if (document.documentElement.hasAttribute('data-turbolinks-preview')) {
+		if (document.documentElement.hasAttribute('data-turbo-preview')) {
 			// Turbolinks is displaying a preview
 			return;
 		}
@@ -180,11 +194,62 @@ const searchConfig = getSearchConfig(params);
 		pushGTag('docs_navigate');
 	});
 
-	// For integration tests. Cypress doesn't catch these (smells like a bug).
-	if (window.Cypress) {
-		window.addEventListener('unhandledrejection', function (e) {
-			console.error(e);
-			return false;
+	// Preserve scroll position when navigating with Turbo on all elements with the data-preserve-scroll attribute.
+	if (!window.scrollPositions) {
+		window.scrollPositions = {};
+	}
+	if (!window.scrollHandledByClick) {
+		window.scrollHandledByClick = {};
+	}
+
+	function preserveScroll(e) {
+		document.querySelectorAll('[data-preserve-scroll]').forEach((el) => {
+			// Check if the event's target is a child of the element.
+			// For the explorer use case we only want to track clicks inside the explorer.
+			let target = e.target;
+			let isChild = false;
+			while (target) {
+				if (target === el) {
+					isChild = true;
+					break;
+				}
+				target = target.parentElement;
+			}
+
+			if (isChild) {
+				scrollPositions[el.id] = el.scrollTop;
+				scrollHandledByClick[el.id] = true;
+			}
 		});
 	}
+
+	function restoreScroll(e) {
+		if (!window.turbolinksLoaded) {
+			// The scroll on the first page load is handled by others.
+			return;
+		}
+		const isFinalRender = e.type === 'turbo:render' && !document.documentElement.hasAttribute('data-turbo-preview');
+
+		document.querySelectorAll('[data-preserve-scroll]').forEach((element) => {
+			let id = element.id;
+			let scrollPos = scrollPositions[id];
+			if (!scrollPos) {
+				return;
+			}
+			element.scrollTop = scrollPos;
+			if (isFinalRender) {
+				delete scrollPositions[id];
+			}
+		});
+
+		if (!e.detail || !e.detail.newBody) return;
+		e.detail.newBody.querySelectorAll('[data-preserve-scroll]').forEach((element) => {
+			let id = element.id;
+			element.scrollTop = scrollPositions[id];
+		});
+	}
+
+	window.addEventListener('turbo:click', preserveScroll);
+	window.addEventListener('turbo:before-render', restoreScroll);
+	window.addEventListener('turbo:render', restoreScroll);
 })();

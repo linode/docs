@@ -3,17 +3,15 @@ title: Linode CLI (API v3 - Deprecated)
 description: 'This guide will show you how to use the Linode Command Line Interface v3 to reboot your Linode, update your MX record, manage Nodebalancers, and more.'
 published: 2014-01-27
 modified: 2022-11-30
-modified_by:
-  name: Alex Fornuto
 image: linode-cli.png
-deprecated: true
-deprecated_link: 'platform/api/linode-cli/'
 external_resources:
  - '[Github Linode CLI](https://github.com/linode/cli)'
  - '[Linode API Key](/docs/products/tools/api/guides/manage-api-tokens/)'
 keywords: ["linode cli", " command line interface", " man pages", " api key"]
 tags: ["linode platform"]
 aliases: ['/platform/api/using-the-linode-cli-api-v3/','/guides/using-the-linode-cli-api-v3/']
+deprecated: true
+deprecated_link: 'platform/api/linode-cli/'
 ---
 
 The Linode Command Line Interface (**CLI**) is an [open-source](https://github.com/linode/cli) command line tool for managing your Linode services. You can reboot your Linode, update an MX record for your domain, manage your NodeBalancers, create a StackScript and more from the command line on any computer, without logging in to the [Linode Manager](https://manager.linode.com/) graphical user interface.
@@ -203,7 +201,7 @@ To start with, most users will want to run the configuration utility:
 Once the CLI has your Linode Manager username and password, it will generate and use a new API key automatically.
 
 {{< note >}}
-If you have [two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/#two-factor-authentication) enabled, you will receive a prompt for the code after entering your password:
+If you have [two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/#2fa-two-factor-authentication) enabled, you will receive a prompt for the code after entering your password:
 
 Two-factor authentication code
 > 123456

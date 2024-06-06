@@ -1,20 +1,19 @@
 ---
 slug: mail-in-a-box-email-server
+title: "Create an Email Server using Mail-in-a-Box"
 description: "This guide shows how to install and run Mail-in-a-Box, a simple, comprehensive, preconfigured email package."
+authors: ["Alexandru Andrei"]
+contributors: ["Alexandru Andrei"]
+published: 2017-08-29
+modified: 2022-09-22
 keywords: ["install mail-in-a-box", "webmail control panel", "caldav", "cardav", " TLS certificate"]
 tags: ["ubuntu","postfix","email","digital agencies"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-08-29
-modified: 2022-09-22
-modified_by:
-  name: Linode
-title: "Create an Email Server using Mail-in-a-Box"
 external_resources:
 - '[Mail-in-a-Box Official Website](https://mailinabox.email/)'
 - '[Mail-in-a-Box Forums](https://discourse.mailinabox.email/)'
 aliases: ['/email/how-to-create-an-email-server-with-mail-in-a-box/','/email/mail-in-a-box/how-to-create-an-email-server-with-mail-in-a-box/','/guides/how-to-create-an-email-server-with-mail-in-a-box/']
 image: Mail_in_a_box.jpg
-authors: ["Alexandru Andrei"]
 ---
 
 When deciding on an email solution, there are a few options to consider. You can utilize an external email service provider, use a transactional or marketing email service, or host your own email server on a Linode Compute Instance. If you wish to host your own email server but want to reduce the complexity of configuring individual components yourself, you can utilize a pre-built solution like [Mail-in-a-Box](https://mailinabox.email/). Mail-in-a-Box is a preconfigured self-hosted email server that includes the following software:
@@ -33,7 +32,7 @@ When deciding on an email solution, there are a few options to consider. You can
 
 Email security should also a primary concern for most users and Mail-in-a-Box has robust security solutions built-in. See the [Mail-in-a-Box Security Guide](https://github.com/mail-in-a-box/mailinabox/blob/master/security.md) for more details.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## Before You Begin
 
@@ -46,8 +45,7 @@ Email security should also a primary concern for most users and Mail-in-a-Box ha
     {{< note type="alert" respectIndent=false >}}
 Use this server exclusively for Mail-in-a-Box. Installing extra software might cause unexpected behavior.
 {{< /note >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Wherever you see `example.com` in this tutorial, replace it with your domain name, and leave the prefix as it is. That is, don't change `box` to something else. Also, `203.0.113.1` is used as an example IP; your outputs should reflect your server IP instead.
 {{< /note >}}
 
@@ -71,8 +69,7 @@ There can be a delay while your registrar sends these changes to the TLD (top-le
 If you don't see your custom name servers in the dig output within an hour of registering them, there may be an issue with the registration or propagation process. Contact your registrar for help resolving any issues.
 
 ## Install Mail-in-a-Box
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -1,16 +1,15 @@
 ---
 slug: how-to-install-drupal-using-drush-on-debian-10
+title: Install Drupal using Drush on Debian 10
+title_meta: How to Install Drupal using Drush on Debian 10
 description: 'This guide will show you how to install the popular content management system Drupal on CentOS 8 using the Drush command line tool on Debian 10.'
 og_description: 'This guide will show you how to install the popular content management system Drupal on CentOS 8 using the Drush command line tool on Debian 10..'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-02-29
 keywords: ["drupal", "cms", "content management system", "content management framework","drush"]
 tags: ["drupal","lamp","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-29
-modified_by:
-    name: Linode
-published: 2020-02-29
-title: Install Drupal using Drush on Debian 10
-title_meta: How to Install Drupal using Drush on Debian 10
 relations:
     platform:
         key: how-to-install-drupal-drush
@@ -18,7 +17,6 @@ relations:
            - distribution: Debian 10
 image: InstallDrupalUsingDrushDeb10.png
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-debian-10/','/websites/cms/drupal/how-to-install-drupal-using-drush-on-debian-10/']
-authors: ["Linode"]
 ---
 [Drupal](https://www.drupal.org/docs/8) is a content management system (CMS) designed for building custom websites for personal and business use. Built for high performance and scalability, Drupal provides the necessary tools to create rich, interactive “community” websites with forums, user blogs, and private messaging. Drupal also has support for personal publishing projects and can power podcasts, blogs, and knowledge-based systems, all within a single, unified platform.
 
@@ -28,9 +26,9 @@ authors: ["Linode"]
 
 1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
-1. Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1. Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 1.  Install and configure a [LAMP stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/)
 

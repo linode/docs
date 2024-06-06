@@ -1,13 +1,13 @@
 ---
 slug: build-a-website-using-rust-and-the-rocket-web-framework
+title: "Build a Website Using Rust and the Rocket Web Framework"
 description: 'Learn what the Rocket framework is, what it does, how it works, and how to install and configure it.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-06-04
 keywords: ['rocket','rust','functional programming','web application','app framework','handlebars templates']
 tags: ['rust', 'web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-04
-modified_by:
-  name: Nathaniel Stickman
-title: "Build a Website Using Rust and the Rocket Web Framework"
 external_resources:
 - '[Rockets releases page](https://github.com/SergioBenitez/Rocket/releases)'
 - '[Handlebars](https://handlebarsjs.com/)'
@@ -15,7 +15,6 @@ external_resources:
 - '[Handlebars language guide](https://handlebarsjs.com/guide/)'
 - '[Rusts learning page](https://www.rust-lang.org/learn)'
 
-authors: ["Nathaniel Stickman"]
 ---
 
 Rust is a functional programming language noted for its high performance and capabilities in systems programming. However, with the *Rocket framework*, you can also use Rust for building full-functioning — and efficient — web applications.
@@ -36,7 +35,7 @@ Beyond that, Rocket emphasizes an easy and minimalistic path to putting together
 
 1. Throughout, this guide uses `example-app` as the name of the Rocket application. Replace it with your preferred application name.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -97,7 +96,7 @@ In this section, you complete the following steps:
 
     Rocket serves the application on localhost port `8000`. To visit the application remotely, you can use an SSH tunnel:
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with `8000`.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Connecting to a Remote Server Over SSH using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/) guide, replacing the example port number there with `8000`.
 
     - On macOS or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address:
 

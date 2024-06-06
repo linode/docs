@@ -1,25 +1,22 @@
 ---
 slug: manage-a-fedora-14-vps-with-ispconfig
-deprecated: true
+title: Manage a Fedora 14 Linode with ISPConfig
 description: 'This guide will show you how to configure the open-source control panel ISPConfig enabling you to setup and maintain your Linode on Fedora 14.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-04-05
+modified: 2013-10-03
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 tags: ["fedora","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/control-panels/ispconfig/fedora-14/','/websites/cms/manage-a-fedora-14-vps-with-ispconfig/','/websites/cms/ispconfig/manage-a-fedora-14-vps-with-ispconfig/']
-modified: 2013-10-03
-modified_by:
-  name: Linode
-published: 2011-04-05
-title: Manage a Fedora 14 Linode with ISPConfig
 relations:
     platform:
         key: manage-a-linode-with-ISPConfig
         keywords:
            - distribution: Fedora 14
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites.
 
@@ -75,7 +72,7 @@ After installing MySQL, it's recommended that you run `mysql_secure_installation
 
 ## Install Amavisd-new and SpamAssassin
 
-The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/##reducing-spamassassin-memory-consumption). Using amavisd-new should help alleviate some of these potential issues.
+The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/#reducing-spamassassin-memory-consumption). Using amavisd-new should help alleviate some of these potential issues.
 
     yum install amavisd-new spamassassin unzip bzip2 perl-DBD-mysql
 

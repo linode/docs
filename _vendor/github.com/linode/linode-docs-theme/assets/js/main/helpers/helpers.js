@@ -19,21 +19,6 @@ export function toggleBooleanClass(baseClass, el, truthy) {
 	}
 }
 
-export function toggleClass(openClass, el, open) {
-	if (open) {
-		el.classList.add(openClass);
-	} else {
-		el.classList.remove(openClass);
-	}
-}
-
-export function isObjectEmpty(object) {
-	for (key in object) {
-		return false;
-	}
-	return true;
-}
-
 // normalizeSpace replaces any whitespace character (spaces, tabs, newlines and Unicode space) with a space.
 // Multiple spaces are collapsed into one.
 export function normalizeSpace(text) {
@@ -46,11 +31,6 @@ export function sanitizeHTML(text) {
 	element.innerText = text;
 	return element.innerHTML;
 }
-
-export const capitalize = (s) => {
-	if (typeof s !== 'string') return '';
-	return s.charAt(0).toUpperCase() + s.slice(1);
-};
 
 export function toDateString(date) {
 	var year = date.getFullYear().toString().substr(-2);
@@ -68,24 +48,12 @@ export function toDateString(date) {
 }
 
 // https://gist.github.com/rmariuzzo/8761698
-export function sprintf(format) {
+function sprintf(format) {
 	var args = Array.prototype.slice.call(arguments, 1);
 	var i = 0;
 	return format.replace(/%s/g, function () {
 		return args[i++];
 	});
-}
-
-// Function borrowed from https://stackoverflow.com/questions/123999/how-can-i-tell-if-a-dom-element-is-visible-in-the-current-viewport/7557433#7557433
-export function isElementInViewport(el) {
-	var rect = el.getBoundingClientRect();
-
-	return (
-		rect.top >= 0 &&
-		rect.left >= 0 &&
-		rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-		rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-	);
 }
 
 // getScrollLeft returns the scrollLeft value needed to make the child element visible.
@@ -101,30 +69,62 @@ export function getScrollLeft(parent, child) {
 	return childRect.left - parentRect.left;
 }
 
-// getOffsetTop returns the distance from container down to el.
-export function getOffsetTop(container, el) {
-	var distance = 0;
-
-	if (el.offsetParent) {
-		while (true) {
-			distance += el.offsetTop;
-			el = el.offsetParent;
-			if (!el || el === container) {
-				break;
-			}
-		}
+// scrollToActiveExplorerNode scrolls the explorer to the active node.
+export function scrollToActiveExplorerNode() {
+	const id = 'explorer';
+	if (window.scrollHandledByClick && window.scrollHandledByClick[id]) {
+		// This scroll was handled by a click event.
+		delete window.scrollHandledByClick[id];
+		return;
 	}
-	return distance < 0 ? 0 : distance;
+
+	let explorer = document.getElementById(id);
+	if (!explorer) {
+		return;
+	}
+
+	let retries = [0, 500, 1000, 2000];
+	let isDone = false;
+	for (let i = 0; i < retries.length; i++) {
+		if (isDone) {
+			return;
+		}
+		let sleep = retries[i];
+		setTimeout(function () {
+			if (isDone) {
+				return;
+			}
+			let target = document.querySelector('.explorer--active .is-active-page');
+			if (!target) {
+				// If there is no active page, look for the last open node.
+				let explorerNodes = document.querySelectorAll('.explorer--active .explorer-node-open:last-child');
+				if (explorerNodes.length > 0) {
+					target = explorerNodes[explorerNodes.length - 1];
+				}
+			}
+
+			if (!target) {
+				return;
+			}
+
+			let offset = getOffsetTop(explorer, target);
+			if (!offset) {
+				return;
+			}
+
+			isDone = true;
+			explorer.scroll({ top: offset - 20, behavior: 'smooth' });
+		}, sleep);
+	}
 }
 
-// withBoundingClientRect calls the callback with the boundingClientRect of the element.
-export function withBoundingClientRect(el, callback) {
-	const observer = new IntersectionObserver((entries) => {
-		bounds = entries[0].boundingClientRect;
-		callback(bounds);
-		observer.disconnect();
-	});
-	observer.observe(el);
+function getOffsetTop(container, el) {
+	let offset = 0;
+	while (el && el != container) {
+		offset += el.offsetTop;
+		el = el.offsetParent;
+	}
+	return offset;
 }
 
 export function setIsTranslating(el, timeout = 1000) {
@@ -168,7 +168,15 @@ export function getCurrentLangFromLocation() {
 	return '';
 }
 
-export function isIterable(obj) {
+export function getIntParamFromLocation(param) {
+	let value = new URLSearchParams(window.location.search).get(param);
+	if (value) {
+		return parseInt(value, 10);
+	}
+	return 0;
+}
+
+function isIterable(obj) {
 	return Symbol.iterator in Object(obj);
 }
 
@@ -176,7 +184,11 @@ export function isMobile() {
 	return document.documentElement.clientWidth < 768;
 }
 
-export function isScreenLargerThan(px) {
+export function isDesktop() {
+	return isScreenLargerThan(1279); // xl in Tailwind config.
+}
+
+function isScreenLargerThan(px) {
 	return document.documentElement.clientWidth > px;
 }
 
@@ -189,23 +201,15 @@ export function isTouchDevice() {
 	}
 }
 
-export function isTopBarPinned() {
-	return document.body.classList.contains('is-topbar-pinned');
-}
-
-export function walk(el, callback) {
-	if (typeof ShadowRoot === 'function' && el instanceof ShadowRoot) {
-		Array.from(el.childNodes).forEach((el2) => walk(el2, callback));
-		return;
+export function updatePaginationParamInLocation(pageKey, pageNum, firstPage = 1) {
+	let url = new URL(window.location);
+	url.hash = '';
+	if (pageNum == firstPage) {
+		url.searchParams.delete(pageKey);
+	} else {
+		url.searchParams.set(pageKey, pageNum);
 	}
-	let skip = false;
-	callback(el, () => (skip = true));
-	if (skip) return;
-	let node = el.firstElementChild;
-	while (node) {
-		walk(node, callback, false);
-		node = node.nextElementSibling;
-	}
+	window.history.replaceState({ turbo: {} }, '', url);
 }
 
 const month = 30 * 24 * 60 * 60 * 1000;

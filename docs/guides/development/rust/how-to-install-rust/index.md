@@ -1,18 +1,17 @@
 ---
 slug: how-to-install-rust
-description: "This guide explains how to install Rust on Ubuntu 20.04. We'll also teach you about Cargo, Rust's build tool and package manager."
-keywords: ['Rust','programming language','installation']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-07
-image: RUST1.jpg
-modified_by:
-  name: Linode
-tags: ["rust", "development", "ubuntu"]
 title: "Installing and Using Rust"
 title_meta: "How to Install and Use Rust"
+description: "This guide explains how to install Rust on Ubuntu 20.04. We'll also teach you about Cargo, Rust's build tool and package manager."
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2021-05-07
+keywords: ['Rust','programming language','installation']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: RUST1.jpg
+tags: ["rust", "development", "ubuntu"]
 external_resources:
 - '[Rust Programming Language](https://www.rust-lang.org/)'
-authors: ["Jeff Novotny"]
 ---
 
 This guide explains how to install [*Rust*](https://www.rust-lang.org/), a popular programming language designed to maximize performance and safety. It also discusses how to create, compile, and run a simple Rust project. Rust is somewhat similar to C++, although it is able to guarantee memory and thread safety. Rust was originally developed for use at Mozilla Research, but it has recently gained in popularity throughout the software industry. For many years now, Rust has been rated one of the top programming languages in industry surveys.
@@ -23,7 +22,7 @@ This guide explains how to install [*Rust*](https://www.rust-lang.org/), a popul
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. For information about the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -35,7 +34,7 @@ Rust runs as quickly as C++ does, but is safer to use. This is because it emphas
 
 The typical, and most straightforward, way to install Rust is by using `rustup`. This is Rust's main installation program and version manager. These instructions are designed for Ubuntu, but are generally applicable to most Linux distributions.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 To experiment with Rust before downloading it, try the [*Rust Playground*](https://play.rust-lang.org/). This is an open source educational program that allows beginners to write and run simple Rust programs.
 {{< /note >}}
 
@@ -80,8 +79,7 @@ rustc 1.50.0 (cb75ad5db 2021-02-10)
 export PATH="$HOME/.cargo/bin:$PATH"
 ...
     {{< /file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 It is also possible to use Git to install Rust. Clone the [Rust GitHub repository](https://github.com/rust-lang/rustup) and run `cargo run --release`. See the `rustup` [installation page](https://rust-lang.github.io/rustup/installation/other.html) for more information.
 {{< /note >}}
 

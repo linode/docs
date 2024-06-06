@@ -1,21 +1,19 @@
 ---
 slug: access-an-apache-web-server-inside-a-lxd-container
+title: "Access an Apache Web Server Inside a LXD Container"
 description: "This guide will show you how to install and configure Apache Web Server inside of LXD container and then direct web traffic to the container."
+authors: ["Simos Xenitellis"]
+contributors: ["Simos Xenitellis"]
+published: 2018-02-12
 keywords: ["container", "lxd", "lxc", "virtual machine"]
 tags: ["ubuntu","container","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-02-12
-modified: 2018-02-12
-modified_by:
-  name: Linode
-title: "Access an Apache Web Server Inside a LXD Container"
 external_resources:
   - '[LXD Introduction](https://linuxcontainers.org/lxd/)'
   - '[Blog post series on LXD 2.0](https://stgraber.org/2016/03/11/lxd-2-0-blog-post-series-012/)'
   - '[LXD support community](https://discuss.linuxcontainers.org/)'
   - '[Try LXD Online](https://linuxcontainers.org/lxd/try-it/)'
 aliases: ['/applications/containers/access-an-apache-web-server-inside-a-lxd-container/']
-authors: ["Simos Xenitellis"]
 ---
 
 ![Access an Apache Web Server Inside a LXD Container](apache-lxd-banner-image.jpg)
@@ -63,7 +61,7 @@ When setting up LXD, you can either store container data in an [external volume]
     ![Create a Linode Disk](create-new-disk.png)
 
     {{< note respectIndent=false >}}
-If your Linode's distribution disk already has 100% of the available disk space allocated to it, you will need to resize the disk before you can create a storage disk. See [Resizing a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resizing-a-disk) for more information.
+If your Linode's distribution disk already has 100% of the available disk space allocated to it, you will need to resize the disk before you can create a storage disk. See [Resizing a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resize-a-disk) for more information.
 {{< /note >}}
 
 2.  Edit your Linode's Configuration Profile. Under **Block Device Assignment**, assign your new disk to `/dev/sdc`. Make a note of this path, which you will need when configuring LXD in the next section.

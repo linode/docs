@@ -1,0 +1,16 @@
+{{ define "main" }}
+  <h1
+    class="font-semibold leading-tight tracking-tight text-4xl text-titlecolor w-full">
+    {{ .Title }}
+  </h1>
+  <ul class="">
+    {{ range .Data.Terms.Alphabetical }}
+      <li class="mt-2">
+        <a class="text-brand hover:text-gray-600" href="{{ .Page.Permalink }}"
+          >{{ .Page.Title }}</a
+        >
+        ({{ .Count }})
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}

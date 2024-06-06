@@ -1,13 +1,13 @@
 ---
 slug: how-to-install-a-lemp-stack-on-ubuntu-22-04
-description: 'This guide provides some background about the Linux LEMP stack and explains how to install a LEMP stack on Ubuntu 22.04.'
-keywords: ['Ubuntu LEMP stack','LEMP stack Ubuntu','install LEMP stack','How to install a LEMP Stack on Ubuntu 22.04']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-13
-modified_by:
-  name: Linode
 title: "Install a LEMP Stack on Ubuntu 22.04"
 title_meta: "How to Install a LEMP Stack on Ubuntu 22.04"
+description: 'This guide provides some background about the Linux LEMP stack and explains how to install a LEMP stack on Ubuntu 22.04.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-05-13
+keywords: ['Ubuntu LEMP stack','LEMP stack Ubuntu','install LEMP stack','How to install a LEMP Stack on Ubuntu 22.04']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Ubuntu Documentation](https://ubuntu.com/server)'
 - '[PHP Website](https://www.php.net/)'
@@ -22,7 +22,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Ubuntu 22.04 LTS
-authors: ["Jeff Novotny"]
+aliases: ['/lemp-guides/ubuntu-12.04-precise-pangolin/','/lemp-guides/ubuntu-12-04-precise-pangolin/','/websites/lemp/lemp-server-on-ubuntu-10-04-lucid/','/lemp-guides/ubuntu-10-04-lucid/','/web-servers/lemp/lemp-server-on-ubuntu-10-04-lucid/','/guides/lemp-server-on-ubuntu-10-04-lucid/','/web-servers/lemp/lemp-server-on-ubuntu-10-10-maverick/','/websites/lemp/lemp-server-on-ubuntu-10-10-maverick/','/lemp-guides/ubuntu-10-10-maverick/','/guides/lemp-server-on-ubuntu-10-10-maverick/','/websites/lemp/lemp-server-on-ubuntu-11-10-oneiric/','/lemp-guides/ubuntu-11-10-oneiric/','/web-servers/lemp/lemp-server-on-ubuntu-11-10-oneiric/','/guides/lemp-server-on-ubuntu-11-10-oneiric/','/websites/lemp/lemp-server-on-ubuntu-12-04-precise-pangolin/','/web-servers/lemp/lemp-server-on-ubuntu-12-04-precise-pangolin/','/guides/lemp-server-on-ubuntu-12-04-precise-pangolin/']
 ---
 
 Many [Ubuntu](https://ubuntu.com/server) systems use the well-known [LAMP Stack](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) installation. However, many people consider the *LEMP Stack* to be an even better alternative. A LEMP stack uses the [NGINX web server](https://www.nginx.com/) instead of Apache. This guide explains how to install and configure a LEMP stack on Ubuntu 22.04 LTS. It also provides some background about the LEMP stack and how it contrasts with a LAMP stack.
@@ -46,7 +46,7 @@ The LEMP stack consists of the following components:
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -54,7 +54,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 This section explains how to install and configure the LEMP Stack on Ubuntu 22.04 LTS. However, the instructions for the Ubuntu 20.04 LTS release are very similar. The LEMP stack is not available through Tasksel, so the individual components must be installed separately.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 These instructions apply with or without a registered domain name. If the server is hosting a domain, a virtual host must be configured. For more information about domain names and how to point the domain to a Linode, consult the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 {{< /note >}}
 

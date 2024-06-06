@@ -1,3 +1,6 @@
+{{- $js := resources.Get "js/early/index.js" -}}
+{{ partial "helpers/script-src.html" (dict "js" $js "defer" true ) }}
+
 {{ $isTest := or (not (not site.IsServer)) (site.Params.TestEnv ) }}
 {{ if $isTest }}
   {{/* Only include this when doing local development or when in a test environment (e.g. Netlify). */}}
@@ -34,14 +37,19 @@
   src="https://cdn.weglot.com/weglot.min.js"
   data-cfasync="false"
   defer></script>
+
+{{ $algoliaData := (partialCached "sections/search/create-cachewarmers-urls.html" . ) }}
+{{ $cacheWarmerUrls := $algoliaData.urls }}
 {{ $params := (dict
   "search_config" site.Params.search_config2
   "weglot_api_key" site.Params.weglot_api_key
   "trustarc_domain" site.Params.trustarc_domain
   "page_title_suffix" site.Params.page_title_suffix
+  "search_cachewarmer_urls" $cacheWarmerUrls
   "is_production" (ne hugo.Environment "development")
   "is_test" $isTest )
 }}
-{{ partialCached "jslibs/turbo/script-src.html" "-" }}
+
+{{ partial "helpers/script-src.html" (dict "js" (resources.Get "jslibs/turbo/v8/index.js") ) }}
 {{- $js := resources.Get "js/main/index.js" -}}
 {{ partial "helpers/script-src.html" (dict "js" $js "params" $params ) }}

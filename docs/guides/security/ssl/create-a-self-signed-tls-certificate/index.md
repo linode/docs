@@ -1,16 +1,15 @@
 ---
 slug: create-a-self-signed-tls-certificate
+title: 'Create a Self-Signed TLS Certificate'
 description: 'This guide shows how to create a self-signed TLS certificate with OpenSSL.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-01-09
+modified: 2018-01-23
 keywords: ["ssl", "tls", "https", "certificate", "self"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/ssl/create-a-self-signed-certificate-on-centos-and-fedora/','/security/ssl/create-a-self-signed-certificate-on-debian-and-ubuntu/','/security/ssl/create-a-self-signed-tls-certificate/','/security/ssl/how-to-make-a-selfsigned-ssl-certificate/','/security/ssl-certificates/self-signed/']
-modified: 2018-01-23
-modified_by:
-  name: Linode
-published: 2018-01-09
-title: 'Create a Self-Signed TLS Certificate'
 tags: ["security","ssl"]
-authors: ["Linode"]
 ---
 
 ![Create a Self-Signed Certificate title graphic](create-a-self-signed-tls-certificate-title-graphic.jpg "Create a Self-Signed Certificate title graphic")

@@ -1,6 +1,6 @@
 'use strict';
 
-import { isMobile, toggleBooleanClass } from '../helpers/index';
+import { isMobile, toggleBooleanClass } from '../helpers/helpers';
 import { isTopResultsPage } from '../search';
 import { newQuery, QueryHandler } from '../search/query';
 
@@ -38,7 +38,7 @@ const onNavSearchResults = function (self, val, oldVal) {
 			if (queryString) {
 				queryString = '?' + queryString;
 			}
-			self.$store.nav.pushState('/docs/topresults/' + queryString);
+			self.$store.nav.pushTopResults(queryString);
 		}
 	}
 };
