@@ -80,10 +80,10 @@ Memcached is available from the official Debian and Ubuntu repositories.
 
     ```output
     Server: 127.0.0.1 (11211)
-	     pid: 1789
-	     uptime: 420
-	     time: 1717688200
-	     version: 1.6.9
+         pid: 1789
+         uptime: 420
+         time: 1717688200
+         version: 1.6.9
     ...
     ```
 
@@ -146,10 +146,10 @@ The following sections cover various solutions for securing a Memcached installa
 
     ```output
     Server: {{< placeholder "IP_ADDRESS" >}} (11211)
-	     pid: 2477
-	     uptime: 203
-	     time: 1717688684
-	     version: 1.6.9
+         pid: 2477
+         uptime: 203
+         time: 1717688684
+         version: 1.6.9
     ...
     ```
 
@@ -191,10 +191,10 @@ This guide uses `ufw` to manage the firewall.
 
     ```output
     Server: 172.233.162.226 (11211)
-	     pid: 2477
-	     uptime: 1102
-	     time: 1717689583
-	     version: 1.6.9
+         pid: 2477
+         uptime: 1102
+         time: 1717689583
+         version: 1.6.9
     ```
 
     {{< note >}}
@@ -301,10 +301,10 @@ Memcached doesn't provide internal authentication procedures. However, Simple Au
 
     ```output
     Server: 127.0.0.1 (11211)
-	     pid: 2956
-	     uptime: 198
-	     time: 1717690598
-	     version: 1.6.9
+         pid: 2956
+         uptime: 198
+         time: 1717690598
+         version: 1.6.9
     ...
     ```
 
@@ -318,10 +318,10 @@ Memcached doesn't provide internal authentication procedures. However, Simple Au
 
     ```output
     Server: 172.233.162.226 (11211)
-	     pid: 2956
-	     uptime: 271
-	     time: 1717690671
-	     version: 1.6.9
+         pid: 2956
+         uptime: 271
+         time: 1717690671
+         version: 1.6.9
     ...
     ```
 
