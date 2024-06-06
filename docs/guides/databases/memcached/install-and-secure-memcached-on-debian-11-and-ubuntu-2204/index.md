@@ -12,8 +12,6 @@ external_resources:
 - '[Debian](https://www.debian.org)'
 ---
 
-## Introduction
-
 *Memcached* is an in-memory key-value store for small chunks of arbitrary data. Memory object caching systems like Memcached temporarily store frequently accessed data. This can improve system performance by reducing direct requests to databases. Typically, Memcached is used to speed up web applications.
 
 This guide covers the installation of Memcached on Debian 11 and Ubuntu 22.04 LTS. It also includes information on securing the Memcached instance.
