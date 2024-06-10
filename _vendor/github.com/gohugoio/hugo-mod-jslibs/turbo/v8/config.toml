@@ -1,0 +1,18 @@
+[module]
+[[module.mounts]]
+source = "layouts"
+target = "layouts"
+[[module.mounts]]
+source = "assets"
+target = "assets"
+[[module.imports]]
+path = "github.com/hotwired/turbo"
+[[module.imports.mounts]]
+source = "src"
+target = "assets/jslibs/turbo/v8"
+[[module.imports]]
+path = "github.com/bigskysoftware/idiomorph"
+[[module.imports.mounts]]
+source = "dist"
+target = "assets/idiomorph/dist"
+

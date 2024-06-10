@@ -125,35 +125,27 @@ Next, you'll perform additional Postfix configuration to set up communication wi
 
 Create a virtual domain configuration file for Postfix called `/etc/postfix/mysql-virtual_domains.cf` with the following contents. Be sure to replace `mail_admin_password` with the password you chose earlier for the MySQL mail administrator user.
 
-{{< file >}}
-/etc/postfix/mysql-virtual\_domains.cf
-{{< /file >}}
-
-> user = mail\_admin password = mail\_admin\_password dbname = mail query = SELECT domain AS virtual FROM domains WHERE domain='%s' hosts = 127.0.0.1
+```file {title="/etc/postfix/mysql-virtual_domains.cf"}
+user = mail_admin password = mail_admin_password dbname = mail query = SELECT domain AS virtual FROM domains WHERE domain='%s' hosts = 127.0.0.1
+```
 
 Create a virtual forwarding file for Postfix called `/etc/postfix/mysql-virtual_forwardings.cf` with the following contents. Be sure to replace `mail_admin_password` with the password you chose earlier for the MySQL mail administrator user.
 
-{{< file >}}
-/etc/postfix/mysql-virtual\_forwardings.cf
-{{< /file >}}
-
-> user = mail\_admin password = mail\_admin\_password dbname = mail query = SELECT destination FROM forwardings WHERE source='%s' hosts = 127.0.0.1
+```file {title="/etc/postfix/mysql-virtual_forwardings.cf"}
+user = mail_admin password = mail_admin_password dbname = mail query = SELECT destination FROM forwardings WHERE source='%s' hosts = 127.0.0.1
+```
 
 Create a virtual mailbox configuration file for Postfix called `/etc/postfix/mysql-virtual_mailboxes.cf` with the following contents. Be sure to replace `mail_admin_password` with the password you chose earlier for the MySQL mail administrator user.
 
-{{< file >}}
-/etc/postfix/mysql-virtual\_mailboxes.cf
-{{< /file >}}
-
-> user = mail\_admin password = mail\_admin\_password dbname = mail query = SELECT CONCAT(SUBSTRING\_INDEX(email,<'@'>,-1),'/',SUBSTRING\_INDEX(email,<'@'>,1),'/') FROM users WHERE email='%s' hosts = 127.0.0.1
+```file {title="/etc/postfix/mysql-virtual_mailboxes.cf"}
+user = mail_admin password = mail_admin_password dbname = mail query = SELECT CONCAT(SUBSTRING_INDEX(email,<'@'>,-1),'/',SUBSTRING_INDEX(email,<'@'>,1),'/') FROM users WHERE email='%s' hosts = 127.0.0.1
+```
 
 Create a virtual email mapping file for Postfix called `/etc/postfix/mysql-virtual_email2email.cf` with the following contents. Be sure to replace `mail_admin_password` with the password you chose earlier for the MySQL mail administrator user.
 
-{{< file >}}
-/etc/postfix/mysql-virtual\_email2email.cf
-{{< /file >}}
-
-> user = mail\_admin password = mail\_admin\_password dbname = mail query = SELECT email FROM users WHERE email='%s' hosts = 127.0.0.1
+```file {title="/etc/postfix/mysql-virtual_email2email.cf"}
+user = mail_admin password = mail_admin_password dbname = mail query = SELECT email FROM users WHERE email='%s' hosts = 127.0.0.1
+```
 
 Set proper permissions and ownership for these configuration files by issuing the following commands:
 

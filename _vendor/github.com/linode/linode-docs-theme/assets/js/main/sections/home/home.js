@@ -6,7 +6,8 @@ import {
 	SearchGroupIdentifier,
 	RequestCallBackStatus,
 } from '../../search/request';
-import { isMobile, isTouchDevice, newSwiper } from '../../helpers/index';
+import { isMobile, isTouchDevice } from '../../helpers/helpers';
+import { newSwiper } from '../../helpers/swipe';
 
 var debug = 0 ? console.log.bind(console, '[home]') : function () {};
 
@@ -187,6 +188,7 @@ export function newHomeController(searchConfig, staticData) {
 			sectionTiles: sectionTiles,
 		},
 		loaded: false,
+		destroyed: false,
 		menuStateChanging: false,
 
 		init: function () {
@@ -220,6 +222,7 @@ export function newHomeController(searchConfig, staticData) {
 		},
 
 		destroy: function () {
+			this.destroyed = true;
 			// Prevents memory leak.
 			Object.values(sectionTiles).forEach((tile) => {
 				tile.el = null;
@@ -247,6 +250,9 @@ export function newHomeController(searchConfig, staticData) {
 		},
 
 		onEffect: function () {
+			if (this.destroyed) {
+				return;
+			}
 			// This construct may look odd, but this method is called from an x-effect,
 			// so this will trigger on any change to the open state.
 			let el = this.$store.nav.open.explorer;
@@ -256,6 +262,9 @@ export function newHomeController(searchConfig, staticData) {
 		// onNavChange triggers on screen resize or e.g. if the explorer opens/closes.
 		// The slide width may have changed so the pager number of pages may have changed.
 		onNavChange: function (menuStateChange = false) {
+			if (this.destroyed) {
+				return;
+			}
 			if (menuStateChange) {
 				// Avoid the scroll transition when the left menu changes state.
 				this.menuStateChanging = true;

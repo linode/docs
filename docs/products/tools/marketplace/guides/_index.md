@@ -56,7 +56,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Harbor](/docs/products/tools/marketplace/guides/harbor/)
 - [HashiCorp Nomad](/docs/products/tools/marketplace/guides/hashicorp-nomad/)
 - [HashiCorp Vault](/docs/products/tools/marketplace/guides/hashicorp-vault/)
-- [Illa Builder](/docs/products/tools/marketplace/guides/illa-builder/)
+- [ILLA Builder](/docs/products/tools/marketplace/guides/illa-builder/)
 - [Jenkins](/docs/products/tools/marketplace/guides/jenkins/)
 - [JetBackup](/docs/products/tools/marketplace/guides/jetbackup/)
 - [Jitsi](/docs/products/tools/marketplace/guides/jitsi/)

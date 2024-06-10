@@ -101,15 +101,15 @@ Most of this guide will focus on setting up containers using the `services` sect
 
 |Directive    | Use
 |---|---|
-|image  | Sets the image that will be used to build the container. Using this directive assumes that the specified image already exists either on the host or on [Docker Hub](https://hub.docker.com/). |
-|build   | This directive can be used instead of `image`. Specifies the location of the Dockerfile that will be used to build this container.    |
-|db   | In the case of the example Dockercompose file, `db` is a variable for the container you are about to define.    |
-|restart   | Tells the container to restart if the system restarts.    |
-|volumes  |Mounts a linked path on the host machine that can be used by the container |
-|environment      |Define environment variables to be passed in to the Docker run command.      |
-|depends_on| Sets a service as a dependency for the current block-defined container |
-|port   | Maps a port from the container to the host in the following manner: `host:container`   |
-|links   | Link this service to any other services in the Docker Compose file by specifying their names here.  |
+| `image`  | Sets the image that will be used to build the container. Using this directive assumes that the specified image already exists either on the host or on [Docker Hub](https://hub.docker.com/). |
+| `build`   | This directive can be used instead of `image`. Specifies the location of the Dockerfile that will be used to build this container.    |
+| `db`   | In the case of the example Dockercompose file, `db` is a variable for the container you are about to define.    |
+| `restart`   | Tells the container to restart if the system restarts.    |
+| `volumes`  |Mounts a linked path on the host machine that can be used by the container |
+| `environment`      |Define environment variables to be passed in to the Docker run command.      |
+| `depends_on` | Sets a service as a dependency for the current block-defined container |
+| `port`   | Maps a port from the container to the host in the following manner: `host:container`   |
+| `links`   | Link this service to any other services in the Docker Compose file by specifying their names here.  |
 
 Many other configuration directives are available. See the [Compose File reference](https://docs.docker.com/compose/compose-file) for details.
 

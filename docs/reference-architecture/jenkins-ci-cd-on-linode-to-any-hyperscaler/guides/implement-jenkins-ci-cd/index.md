@@ -504,7 +504,7 @@ The pipeline set up in the next section needs your deploy key to access the GitH
 
         - Enter `main` for **Branches to build**.
 
-        - As the **Repository browser**, choose *githubweb* for GitHub and *gitlab* for GitLab.
+        - As the **Repository browser**, choose `githubweb` for GitHub and `gitlab` for GitLab.
 
         - For the **Repository browser** > **URL** field, enter the remote repository directory URL, which is of the form `https://github.com/GIT_USERNAME/jenkins-example-app`.
 

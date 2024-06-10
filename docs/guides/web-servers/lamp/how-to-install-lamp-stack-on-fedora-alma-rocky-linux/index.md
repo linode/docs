@@ -7,6 +7,7 @@ contributors: ["Jeff Novotny"]
 published: 2024-05-01
 keywords: ['LAMP stack Fedora','test LAMP stack','Apache Fedora','MariaDB PHP Fedora']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['/websites/lamp/lamp-server-on-fedora-11/','/lamp-guides/fedora-11/','/web-servers/lamp/lamp-server-on-fedora-11/','/guides/lamp-server-on-fedora-11/','/websites/lamp/lamp-server-on-fedora-12/','/web-servers/lamp/lamp-server-on-fedora-12/','/lamp-guides/fedora-12/','/guides/lamp-server-on-fedora-12/','/websites/lamp/lamp-server-on-fedora-13/','/lamp-guides/fedora-13/','/web-servers/lamp/lamp-server-on-fedora-13/','/guides/lamp-server-on-fedora-13/','/web-servers/lamp/lamp-server-on-fedora-14/','/lamp-guides/fedora-14/','/websites/lamp/lamp-server-on-fedora-14/','/guides/lamp-server-on-fedora-14/','/websites/lamp/lamp-server-on-fedora-15/','/lamp-guides/fedora-15/','/web-servers/lamp/lamp-server-on-fedora-15/','/guides/lamp-server-on-fedora-15/']
 external_resources:
 - '[Apache HTTP server](https://httpd.apache.org/)'
 - '[MariaDB](https://mariadb.com/)'
@@ -42,12 +43,12 @@ All of these applications are available in the core Fedora software library.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 {{< note >}}

@@ -47,15 +47,18 @@
       class="code {{ $mt }} {{ $class }} flex items-start justify-between overflow-x-auto"
       x-data>
       <div class="pr-2" x-ref="code">
-        {{ $inner := $.inner }}
-        {{ $placholders := findRE `(?s)<span class="placeholder-shortcode">(.*)</span>` $inner }}
-        {{ range $i, $e := $placholders }}
-          {{ $inner = strings.Replace $inner $e (printf "__placeholder%d" $i) }}
-        {{ end }}
+        {{/* Note: It's very important that these indented lines do not create new paragraphs,
+          as that will break markdown rendering
+        */}}
+        {{- $inner := $.inner -}}
+        {{- $placholders := findRE `(?s)<span class="placeholder-shortcode">(.*)</span>` $inner -}}
+        {{- range $i, $e := $placholders -}}
+          {{- $inner = strings.Replace $inner $e (printf "__placeholder%d" $i) -}}
+        {{- end -}}
         {{- $code := highlight (trim $inner "\n" ) $style "linenos=false" -}}
-        {{ range $i, $e := $placholders }}
-          {{ $code = strings.Replace $code (printf "__placeholder%d" $i) $e }}
-        {{ end }}
+        {{- range $i, $e := $placholders -}}
+          {{- $code = strings.Replace $code (printf "__placeholder%d" $i) $e -}}
+        {{- end -}}
         {{- $code | safeHTML -}}
       </div>
       <div

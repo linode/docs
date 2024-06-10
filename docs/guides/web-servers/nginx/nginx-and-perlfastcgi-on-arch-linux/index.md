@@ -126,7 +126,7 @@ Issue the following command to start nginx:
 
 ## Test Perl with FastCGI
 
-Create a file called "test.cgi" in your site's "public\_html" directory with the following contents:
+Create a file called "test.cgi" in your site's `public_html` directory with the following contents:
 
 {{< file "/srv/http/example.com/public\\_html/test.cgi" perl >}}
 #!/usr/bin/perl

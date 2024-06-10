@@ -842,7 +842,7 @@ smtps     inet  n       -       -       -       -       smtpd
 {{< note >}}
 You will no longer be able to use Telnet for testing. If you want to run a manual test for troubleshooting purposes, you can use [openssl](http://www.openssl.org/docs/apps/s_client.html) instead. Your command should look like this (you can test on ports 465 and 587 as well):
 
-openssl s_client -connect example.com:25 -starttls smtp
+    openssl s_client -connect example.com:25 -starttls smtp
 {{< /note >}}
 
 Your mail server is now perfectly viable and secure. If you're happy storing all your domains and users in flat files, you can stop here. However, for the sake of making long-term maintenance easier, we suggest that you store your lists of domains, users, and aliases in MySQL databases instead.

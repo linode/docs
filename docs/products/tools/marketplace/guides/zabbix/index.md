@@ -32,7 +32,7 @@ aliases: ['/platform/marketplace/deploy-zabbix-with-marketplace-apps/', '/platfo
 
 ### Zabbix Options
 
-- **Email Address:** *(required)* SOA adress for free Let's Encrypt SSL.
+- **Email Address:** *(required)* SOA address for free Let's Encrypt SSL.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
