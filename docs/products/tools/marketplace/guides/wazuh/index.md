@@ -60,7 +60,7 @@ aliases: ['/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-
       indexer_username: 'kibanaserver'
       indexer_password: 'Z.0M8rorxRS+DQfefe96N?.Cb+?byn7k'
 
-    # Regular Dashboard user, only has read permissions to all indices and all permissions on the .kibana index
+    # Regular Dashboard user, only has READ permissions to all indices and all permissions on the .kibana index
       indexer_username: 'kibanaro'
       indexer_password: 'W?PVE08Pk2AYE8*brrg4Ni+LXAbBKJl++2II'
 
@@ -68,7 +68,7 @@ aliases: ['/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-
       indexer_username: 'logstash'
       indexer_password: 'FGH6rDIgrg.zvXz?qZfQ1dv?2QAAQuiX7'
 
-    # User with read access to all indices
+    # User with READ access to all indices
       indexer_username: 'readall'
       indexer_password: 'jVVugegfB0ldF+fNN?0bS0iMviFe8RnY'
 
