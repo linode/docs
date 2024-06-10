@@ -49,13 +49,16 @@ This Marketplace App installs the OpenLiteSpeed web server, WordPress, the LiteS
 
 ## Getting Started After Deployment
 
-1.  Log in to your Compute Instance over SSH, using the `root` user or the sudo user created during deployment. See [Connecting to a Remote Server Over SSH
-](/docs/guides/connect-to-server-over-ssh/) for assistance. Once logged in, you should see Message of the Day output which includes OpenLiteSpeed HTTPS URLs:
+Log in to your Compute Instance over SSH, using the `root` user or the sudo user created during deployment. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance. Once logged in, you should see Message of the Day output which includes OpenLiteSpeed HTTPS URLs:
 
-```command cat /etc/motd
+```command
+cat /etc/motd
+```
+
+```output
 *********************************************************
 Akamai Connected Cloud OpenLiteSpeed Wordpress Marketplace App
-App URL: 
+App URL:
 * The Wordpress site: https://example-domain.tld/
 * The Wordpress admin login site: https://example-domain.tld/wp-login.php
 * The phpMyAdmin site: https://example-domain.tld/phpmyadmin
@@ -64,6 +67,7 @@ Credentials File: /home/$SUDO_USERNAME/.credentials
 Documentation: https://www.linode.com/marketplace/apps/linode/openlitespeed-wordpress/
 *********************************************************
 ```
+
 The file `/home/$SUDO_USER/.credentials` includes chosen usernames and strong generated passwords for WordPress, OpenLiteSpeed and PHPMyAdmin users. It also includes passwords for the generated sudo user and MySQL root user.
 
 ### Accessing the WordPress Admin Dashboard
@@ -84,17 +88,17 @@ The file `/home/$SUDO_USER/.credentials` includes chosen usernames and strong ge
 
     ![Screenshot of the WordPress dashboard](wordpress-admin.png)
 
-1. You can also access the OpenLiteSpeed Admin page for cache and webserver specific settings at `https://[domain]].tld:7080/login.php`. 
+1.  You can also access the OpenLiteSpeed Admin page for cache and webserver specific settings at `https://[domain]].tld:7080/login.php`.
 
     ![Screenshot of OpenLiteSpeed Admin login page](openlitespeed_login_page.jpg)
 
-1. PHPMyAdmin Web UI is available at `https://[domain]/phpmyadmin`. 
+1.  PHPMyAdmin Web UI is available at `https://[domain]/phpmyadmin`.
 
     ![Screenshot of PHPMyAdmin login page](phpmyadmin_login_page.jpg)
 
 ## Going Further
 
-Now that OpenLiteSpeed WordPress has been fully deployed, you can begin adding content and modifying the sites. The following support documents are available: 
+Now that OpenLiteSpeed WordPress has been fully deployed, you can begin adding content and modifying the sites. The following support documents are available:
 
 - See the Linode tab at: https://docs.litespeedtech.com/cloud/images/wordpress/
 - [WordPress Support](https://wordpress.org/support/): Learn the basic workflows for using WordPress.

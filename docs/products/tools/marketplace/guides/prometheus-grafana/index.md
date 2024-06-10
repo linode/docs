@@ -58,7 +58,12 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
     - **SSH:** Log in to your Compute Instance over SSH using the `root` user, or with the sudo user created during deployment. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
 1.  Once logged in, find the URLs and credential files listed in the MOTD:
-    ```output cat /etc/motd
+
+    ```command
+    cat /etc/motd
+    ```
+
+    ```output
     *********************************************************
     Akamai Connected Cloud Prometheus & Grafana Marketplace App
     Grafana URL: https://$EXAMPLE_DOMAIN.COM
@@ -67,17 +72,22 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
     Documentation: https://www.linode.com/docs/products/tools/marketplace/guides/prometheus-grafana/
     *********************************************************
     ```
-To delete this message of the day, use `rm /etc/motd`.
 
-1. The `/home/$SUDO_USER/.credentials` file contains the credentials for the created sudo user, Prometheus, and Grafana, as shown in the example output below:
+    To delete this message of the day, use `rm /etc/motd`.
 
-    ```output cat /home/$SUDO_USER/.credentials
-      Sudo Username: $SUDO_USER
-      Sudo Password: QAV!BHw3Ud-EcM4XYt3q
-      Prometheus Username: prometheus
-      Prometheus Password: XnYGi8CTPNKugQhaC9@2nze6
-      Grafana Username: admin
-      Grafana Password: *qs6.rbpWyb_rwKm3ciFYW82
+1.  The `/home/$SUDO_USER/.credentials` file contains the credentials for the created sudo user, Prometheus, and Grafana, as shown in the example output below:
+
+    ```command
+    cat /home/$SUDO_USER/.credentials
+    ```
+
+    ```output
+    Sudo Username: $SUDO_USER
+    Sudo Password: QAV!BHw3Ud-EcM4XYt3q
+    Prometheus Username: prometheus
+    Prometheus Password: XnYGi8CTPNKugQhaC9@2nze6
+    Grafana Username: admin
+    Grafana Password: *qs6.rbpWyb_rwKm3ciFYW82
     ```
 
 ### Add Prometheus as a Data Source to Grafana

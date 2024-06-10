@@ -61,28 +61,32 @@ If you need adaptive streaming, cluster, load balancer, and hardware encoding, c
 The Ant Media Server will deploy with an administrator account preconfigured using the email entered in the `email address` UDF on deployment. The generated password can be found in `/home/$USERNAME/.credentials`, along with the sudo user password.
 {{< /note >}}
 
-1. Using [LISH](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) connect to the instance and access the Ant Media Server credentials in the `/home/$USERNAME/.credentials` file. You will find an example of the output below. Keep in mind that $USERNAME will be replaced with your chosen sudo username. 
-```
-root@172-235-141-154:~# cat /home/$USERNAME/.credentials
-Sudo Username: $USERNAME
-Sudo Password: Fs4WomBrHCI27M5fZg2PJfnW
-Ant Media Server Username: antuser@akamai.com
-Ant Media Server Password: 79KP106i3AxW8YOmaWA7FNVo
-```
+1.  Using [LISH](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) connect to the instance and access the Ant Media Server credentials in the `/home/$USERNAME/.credentials` file. You will find an example of the output below. Keep in mind that $USERNAME will be replaced with your chosen sudo username.
 
-1. Open your web browser and navigate to `https://[domain]:5443`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+    ```command
+    cat /home/$USERNAME/.credentials
+    ```
 
-1. Use the `Ant Media Server Username` and `Ant Media Server Password` from the `credentials` file to log into the Ant Media Dashboard. 
+    ```output
+    Sudo Username: $USERNAME
+    Sudo Password: Fs4WomBrHCI27M5fZg2PJfnW
+    Ant Media Server Username: antuser@akamai.com
+    Ant Media Server Password: 79KP106i3AxW8YOmaWA7FNVo
+    ```
+
+1.  Open your web browser and navigate to `https://[domain]:5443`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+
+1.  Use the `Ant Media Server Username` and `Ant Media Server Password` from the `credentials` file to log into the Ant Media Dashboard.
 
     ![Screenshot of Ant Media Login](ant-media-login.jpg)
 
-1. Once logged into the Ant Media Server Dashboard, you can manage your entire application.
+1.  Once logged in to the Ant Media Server Dashboard, you can manage your entire application.
 
     ![Screenshot of the Dashboard page](ant-media-server-dashboard.png)
 
-1. To start using the Enterprise Edition of Ant Media Server, you need to obtain a license. Visit the [Self-Hosted Solutions](https://antmedia.io/#selfhosted) page on Ant Media's website to order a license.
+1.  To start using the Enterprise Edition of Ant Media Server, you need to obtain a license. Visit the [Self-Hosted Solutions](https://antmedia.io/#selfhosted) page on Ant Media's website to order a license.
 
-1. Once the license key is obtained, navigate to the Settings tab within the Ant Media Dashboard, enter the License Key, and click **Save**.
+1.  Once the license key is obtained, navigate to the Settings tab within the Ant Media Dashboard, enter the License Key, and click **Save**.
 
     ![Screenshot of the Settings Page](ant-media-server-settings.png)
 

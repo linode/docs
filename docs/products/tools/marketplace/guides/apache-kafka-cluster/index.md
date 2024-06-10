@@ -1,16 +1,14 @@
 ---
 title: "Deploy Apache Kafka through the Linode Marketplace"
 description: Apache Kafka is a robust, scalable, and high-performance system for managing real-time data streams. Its versatile architecture and feature set make it an essential component for modern data infrastructure, supporting a wide range of applications from log aggregation to real-time analytics and more. Whether you are building data pipelines, event-driven architectures, or stream processing applications, Kafka provides a reliable foundation for your data needs."
-published: 2024-05-22
+published: 2024-06-10
+modified: 2024-06-10
 keywords: ['kafka','apache kafka', 'marketplace', 'streaming', 'queue']
 tags: ["ubuntu","marketplace", "streaming applications", "linode platform", "cloud manager", "ssl", "cloud storage", "high availability", "compute storage"]
 external_resources:
 - '[About Apache Kafka](https://kafka.apache.org/)'
 - '[Apache Kafka Documentation](https://kafka.apache.org/documentation/)'
 ---
-## Cluster Deployment Architecture
-
-!["Kafka Architecture"](kafka-cluster.png)
 
 [Apache Kafka](https://kafka.apache.org/) is a robust, scalable, and high-performance system for managing real-time data streams. Its versatile architecture and feature set make it an essential component for modern data infrastructure, supporting a wide range of applications, from log aggregation to real-time analytics and more. Whether you are building data pipelines, event-driven architectures, or stream processing applications, Kafka provides a reliable foundation for your data needs.
 
@@ -20,6 +18,11 @@ Our marketplace application allows the deployment of a Kafka cluster using Kafka
 - The minimum cluster size is 3. At all times, 3 controllers are configured in the cluster for fault-tolerance.
 - Clients that connect to the cluster need their own valid certificate. All certificates are signed with a self-signed Certificate Authority (CA). Client keystores and truststore are found on the first Kafka node in `/etc/kafka/ssl/keystore` and `/etc/kafka/ssl/truststore` once the deployment is complete.
 - The CA key and certificate pair are on the first Kafka node in `/etc/kafka/ssl/ca` once the deployment is complete.
+
+
+## Cluster Deployment Architecture
+
+![Kafka Architecture](kafka-cluster.png)
 
 ## Deploying a Marketplace App
 
@@ -58,7 +61,6 @@ Our marketplace application allows the deployment of a Kafka cluster using Kafka
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
 
-
 ## Getting Started After Deployment
 
 ### Obtain Keystore and Truststore
@@ -69,50 +71,53 @@ We suggest transferring the client certificates to the Kafka consumer/producers 
 
 ### Authentication
 
-Once you've copied over your keystores and truststores to your client, your client applications(s) will need the password to the keystore and truststore. The credentials can be found in the home directory of the sudo user created on deployment: `/home/$SUDO_USER/.credentials`. 
-For example, if you created a user called `admin`, the credentials file will be found in `/home/admin/.credentials`.
+Once you've copied over your keystores and truststores to your client, your client applications(s) will need the password to the keystore and truststore. The credentials can be found in the home directory of the sudo user created on deployment: `/home/$SUDO_USER/.credentials`. For example, if you created a user called `admin`, the credentials file will be found in `/home/admin/.credentials`.
 
 ### Testing
 
 You can run a quick test from any of the Kafka nodes using Kafka's utilities found in `/etc/kafka/bin`.
 
-1. Create a file called `client.properties` with the following content:
+1.  Create a file called `client.properties` with the following content:
 
-```output
-security.protocol=SSL
-ssl.truststore.location=/etc/kafka/ssl/truststore/server.truststore.jks
-ssl.truststore.password=CHANGE-ME
-ssl.keystore.location=/etc/kafka/ssl/keystore/client1.keystore.jks
-ssl.keystore.password=CHANGE-ME
-```
+    ```file {title="client.properties"}
+    security.protocol=SSL
+    ssl.truststore.location=/etc/kafka/ssl/truststore/server.truststore.jks
+    ssl.truststore.password=CHANGE-ME
+    ssl.keystore.location=/etc/kafka/ssl/keystore/client1.keystore.jks
+    ssl.keystore.password=CHANGE-ME
+    ```
 
-Make sure that you update the values marked with **CHANGE-ME** with your own.
+    Make sure that you update the values marked with **CHANGE-ME** with your own.
 
-2. Create a topic to test the connection and authentication:
+1.  Create a topic to test the connection and authentication:
 
-```command
-/etc/kafka/bin/kafka-topics.sh --create --topic test-ssl --bootstrap-server kafka3:9092 --command-config client.properties
-```
+    ```command
+    /etc/kafka/bin/kafka-topics.sh --create --topic test-ssl --bootstrap-server kafka3:9092 --command-config client.properties
+    ```
 
-OUTPUT:
-```output
-Created topic test-ssl.
-```
+    This results in the following output:
 
-3. Once the topic is created, you can publish a message to this topic as a producer:
-```command
-echo "Kafka rocks!" | /etc/kafka/bin/kafka-console-producer.sh --topic test-ssl --bootstrap-server kafka3:9092 --producer.config client.properties
-```
+    ```output
+    Created topic test-ssl.
+    ```
 
-4. You can read the message as a consumer by issuing the following:
-```command
-/etc/kafka/bin/kafka-console-consumer.sh --topic test-ssl --from-beginning --bootstrap-server kafka3:9092 --consumer.config client.properties
-```
+1.  Once the topic is created, you can publish a message to this topic as a producer:
 
-OUTPUT:
-```output
-Kafka rocks!
-```
+    ```command
+    echo "Kafka rocks!" | /etc/kafka/bin/kafka-console-producer.sh --topic test-ssl --bootstrap-server kafka3:9092 --producer.config client.properties
+    ```
+
+1.  You can read the message as a consumer by issuing the following:
+
+    ```command
+    /etc/kafka/bin/kafka-console-consumer.sh --topic test-ssl --from-beginning --bootstrap-server kafka3:9092 --consumer.config client.properties
+    ```
+
+    This results in the following output:
+
+    ```output
+    Kafka rocks!
+    ```
 
 ## Software Included
 

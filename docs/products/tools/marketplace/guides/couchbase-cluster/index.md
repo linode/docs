@@ -1,23 +1,19 @@
 ---
+title: "Deploy Couchbase One-Click Cluster through the Linode Marketplace"
 description: "Deploy Couchbase Enterprise Server One-Click Cluster on Akamai Connected Cloud. Couchbase Enterprise Server is a high-performance NoSQL database, designed for scale."
 keywords: ['database','nosql','high availability','data','cluster']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2024-06-10
-modified_by:
-  name: Linode
-title: "Deploy Couchbase One-Click Cluster through the Linode Marketplace"
 external_resources:
 - '[Couchbase](https://www.couchbase.com/)'
-authors: ["Linode"]
 ---
 
 [Couchbase](https://www.couchbase.com/) is an enterprise class NoSQL database designed with memory-first architecture, built-in cache and workload isolation. The Couchbase One-Click cluster deploys five connected Couchbase Enterprise Server nodes, split between data, index and query services. This starting configuration allows quick deployment and rapid cluster expansion with Couchbase's multi-dimensional scaling.
 
-{{ < note >}}
-**Couchbase Enterprise Server License**
+{{< note title="Couchbase Enterprise Server License" >}}
 Couchbase Enterprise Server is not free to use in production. Contact [Couchbase Support](https://www.couchbase.com/pricing/) to activate your license on Akamai Connected Cloud and enable [Couchbase application support](https://support.couchbase.com/hc/en-us/articles/360043247551-Accessing-Couchbase-Support).
-{{ < note >}}
-    
+{{< /note >}}
+
 ## Deploying a Marketplace App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
@@ -31,7 +27,7 @@ Couchbase Enterprise Server is not free to use in production. Contact [Couchbase
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 22.04 LTS
-- **Minimum plan:** Couchbase Enterprise Server requires 8GB of RAM. 
+- **Minimum plan:** Couchbase Enterprise Server requires 8GB of RAM.
 - **Suggested Plan:** 16GB of RAM is suggested for production deployments.
 
 {{< note type="warning" title="Minimum RAM Requirements" >}}
@@ -40,7 +36,7 @@ Couchbase Enterprise Server is not free to use in production. Contact [Couchbase
 
 ### Couchbase Options
 
-- **API Token** *(required)*: A valid API token with grants to deploy Linodes. 
+- **API Token** *(required)*: A valid API token with grants to deploy Linodes.
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
@@ -52,7 +48,7 @@ Couchbase Enterprise Server is not free to use in production. Contact [Couchbase
 
 ## Accessing the Couchbase Server
 
-Access Couchbase's web UI by launching your preferred web browser and navigating to either the reverse DNS address of the *cluster provisioner*. This is the instance labeled `couchbase-occ-1-$region-$uuid`. If you need assistance in finding your Linode's IP addresses and rDNS information, refer to the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for detailed instructions. 
+Access Couchbase's web UI by launching your preferred web browser and navigating to either the reverse DNS address of the *cluster provisioner*. This is the instance labeled `couchbase-occ-1-$region-$uuid`. If you need assistance in finding your instance's IP addresses and rDNS information, refer to the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for detailed instructions.
 
 Provide the username Administrator and generated password included in `/home/$sudo_username/.credentials` to access the Dashboard.
 
@@ -64,7 +60,7 @@ While there are no buckets yet configured on this new cluster, you can see all f
 
 ## Next Steps
 
-Now that your Couchbase Enterprise Server One-Click Cluster has been deployed, contact [Couchbase Support](https://www.couchbase.com/pricing/) to activate your license on Akamai Connected Cloud before using the cluster for testing, quality assurance, or in production. An active Enterprise License is required for any use other than solely for internal development use or evaluation of the software.
+Now that your Couchbase Enterprise Server One-Click Cluster has been deployed, contact [Couchbase Support](https://www.couchbase.com/pricing/) to activate your license on this newly deployed cluster before using the cluster for testing, quality assurance, or in production. An active Enterprise License is required for any use other than solely for internal development use or evaluation of the software.
 
 ### More Information
 

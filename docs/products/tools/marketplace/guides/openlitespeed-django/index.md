@@ -2,7 +2,7 @@
 title: "Deploy OpenLiteSpeed Django through the Linode Marketplace"
 description: "Deploy OpenLiteSpeed Django on a Linode Compute Instance. This provides you with a high performance web server to manage your Django application."
 published: 2021-11-12
-modified: 2024-05-14
+modified: 2024-06-10
 keywords: ['web server','django','openlitespeed']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
@@ -29,7 +29,7 @@ The OpenLiteSpeed Django app automatically installs Linux, the performance web s
 
 ## OpenLiteSpeed Django Options
 
-- **Django User** *(required)*: Username for Django app. 
+- **Django User** *(required)*: Username for Django app.
 - **SOA Email Address:** *(required)*: Email address for free Let's Encrypt SSL certificates.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
@@ -47,7 +47,7 @@ The OpenLiteSpeed Django app automatically installs Linux, the performance web s
     ```output cat /etc/motd
     *********************************************************
     Akamai Connected Cloud OpenLiteSpeed Django Marketplace App
-    App URL: 
+    App URL:
     * The OpenLiteSpeed Web Admin: https://$EXAMPLE_DOMAIN:7080
     * The sample Django site: https://EXAMPLE_DOMAIN/
     * The Django admin user: $DJANGO_USER
@@ -56,9 +56,10 @@ The OpenLiteSpeed Django app automatically installs Linux, the performance web s
     Documentation: https://www.linode.com/marketplace/apps/linode/openlitespeed-django/
     *********************************************************
     ```
-To delete this message of the day, use `rm /etc/motd`.
 
-2. The Django page is automatically configured with the custom domain provided during deployment, or the default rDNS.
+    To delete this message of the day, use `rm /etc/motd`.
+
+1.  The Django page is automatically configured with the custom domain provided during deployment, or the default rDNS.
 
     {{< note >}}
     For more documentation on how to assign a domain to your Linode, please review the [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions on setting up your DNS records in the Cloud Manager, and read through [DNS Records: An Introduction](/docs/guides/dns-overview/) for general information about how DNS works.
