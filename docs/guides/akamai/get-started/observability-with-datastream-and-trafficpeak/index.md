@@ -24,7 +24,7 @@ This guide looks at the TrafficPeak observability solution and reviews a tested,
 
 ### What Is TrafficPeak?
 
-TrafficPeak is a fully managed observability solution that works with DataStream log streaming and Akamai Cloud Computing. TrafficPeak is managed and hosted by Hydrolix, and uses Linode Compute alongside Linode Object Storage for data processing and storage. With TrafficPeak, customers are provided with access to a Grafana interface with preconfigured, customizable dashboards for data visualization and monitoring.
+TrafficPeak is a fully managed observability solution that works with DataStream log streaming and Akamai Cloud Computing. TrafficPeak is managed and hosted by Hydrolix, and uses Linode Compute Instances alongside Linode Object Storage for data processing and storage. With TrafficPeak, customers are provided with access to a Grafana interface with preconfigured, customizable dashboards for data visualization and monitoring.
 
 ### Who Is TrafficPeak For?
 
@@ -32,13 +32,11 @@ TrafficPeak is for Akamai customers that need an all-in-one, cost-effective, tur
 
 #### TrafficPeak Plans
 
-There are three options for TrafficPeak on Akamai:
+There are three options for TrafficPeak on Akamai: TrafficPeak Shared, TrafficPeak Dedicated, and TrafficPeak Bring Your Own Linode
 
--   TrafficPeak Shared
+-  **TrafficPeak Shared** and **TrafficPeak Dedicated**: Hosted and managed by Hydrolix.
 
--   TrafficPeak Dedicated
-
--   TrafficPeak Bring Your Own Linode
+-  **TrafficPeak Bring Your Own Linode**: All cloud infrastructure resides within your Linode account and is fully managed by Hydrolix.
 
 For more detailed information on features and pricing, see: [Observability on Akamai cloud computing: TrafficPeak](https://hydrolix.io/partner-program/trafficpeak/)
 
@@ -48,7 +46,7 @@ For more detailed information on features and pricing, see: [Observability on Ak
 
 *Reduce observability costs by up to 75% while standardizing data visualization.*
 
-Where other observability solutions are built for application-specific observability, TrafficPeak is built to achieve CDN-level observability supporting extremely large amounts of data. TrafficPeak is designed to work with DataStream to ingest logs from the edge and uses Linode Compute with Object Storage to achieve an efficient, decoupled, and stateless architecture. By keeping traffic and CDN logs on the same platform, TrafficPeak can reduce your observability costs by up to 75%.
+Where other observability solutions are built for application-specific observability, TrafficPeak is built to achieve CDN-level observability supporting extremely large amounts of data. TrafficPeak is designed to work with DataStream to ingest logs from the edge and uses Compute Instances with Object Storage to achieve an efficient, decoupled, and stateless architecture. By keeping traffic and CDN logs on the same platform, TrafficPeak can reduce your observability costs by up to 75%.
 
 With large amounts of data, the need for standardizing data reporting becomes even more important. TrafficPeak’s Grafana dashboard supports as many users you may need, providing a centralized data source. This helps streamline organizational operations and allows developers that work with the data the ability to all get it from the same place.
 
@@ -58,7 +56,7 @@ With large amounts of data, the need for standardizing data reporting becomes ev
 
 There are numerous cost and infrastructure-based challenges that are associated with large volumes of data, including: data acquisition, data storage and retention, data searching and efficiency, and more. Since TrafficPeak is built for Akamai, you can address these challenges by coupling your edge and observability solutions on a single platform.
 
-With TrafficPeak, logs are sent directly from Akamai edge to Linode Compute using DataStream, eliminating the need for data traffic to travel outside the Akamai platform. TrafficPeak separates log processing from log storage by utilizing Linode Compute and Object Storage in tandem, uses up to 25x data compression, and offers searchable, accessible hot data retention for 15+ months.
+With TrafficPeak, logs are sent directly from Akamai edge to Linode Compute using DataStream, eliminating the need for data traffic to travel outside the Akamai platform. TrafficPeak separates log processing from log storage by utilizing Compute Instances and Object Storage in tandem, uses up to 25x data compression, and offers searchable, accessible hot data retention for 15+ months.
 
 ### Complex Data Types
 
@@ -78,7 +76,7 @@ Below is a high-level diagram and walkthrough of a DataStream and TrafficPeak ar
 
 1.  The request goes through the Akamai edge server and is cached or sent to the origin for a response.
 
-1.  Delivery/security logs of this process are generated and sent to TrafficPeak on Linode Cloud infrastructure (Linode Compute for log processing and Linode Object Storage for log storage).
+1.  Delivery/security logs of this process are generated and sent to TrafficPeak on Akamai Cloud infrastructure (Linode Compute Instances for log processing and Linode Object Storage for log storage).
 
 1.  TrafficPeak collects the information, providing extended data retention (+15 months), facilitating historical data trends and reporting, and enhancing overall visibility.
 
