@@ -1,33 +1,33 @@
-.large-diagram .bullet-animate {
-  animation: ping-diagram 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-  transform-origin: 50% 50%;
-  transform-box: fill-box;
+.large-diagram-animate.on-load {
+  animation: diagram-border-pulse 3s ease-in;
+  animation-iteration-count: 2;
+  animation-direction: alternate;
 }
 
-.large-diagram-svg-container.diagram-animate {
-  padding: 2rem;
-  background-color: #fff;
-  animation: pulse-diagram 1.4s ease alternate;
-  animation-iteration-count: 4;
+.large-diagram-animate.on-load .large-diagram-svg-container {
+  animation: diagram-fade 0.5s ease-in forwards;
 }
 
 .large-diagram-svg-container .bullet {
   @apply cursor-default;
 }
 
-@keyframes pulse-diagram {
-  0% {
-    transform: scale(1);
+@keyframes diagram-border-pulse {
+  from {
+    @apply border-gray-200;
   }
-  100% {
-    transform: scale(1.05);
+
+  to {
+    @apply border-blue-500;
   }
 }
 
-@keyframes ping-diagram {
-  75%,
-  100% {
-    transform: scale(2);
-    opacity: 0.01;
+@keyframes diagram-fade {
+  from {
+    @apply opacity-0;
+  }
+
+  to {
+    @apply opacity-100;
   }
 }

@@ -1225,6 +1225,7 @@ keysize
 keyspace
 keyspaces
 keystore
+keystores
 kfctl
 khanaser
 kibana
@@ -2566,6 +2567,7 @@ trie
 trivy
 trojan
 truststore
+truststores
 tt
 ttl
 TTLs
