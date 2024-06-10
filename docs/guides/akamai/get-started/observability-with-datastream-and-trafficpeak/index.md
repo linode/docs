@@ -4,7 +4,7 @@ title: "Large Data Observability With DataStream and Hydrolix TrafficPeak"
 description: "This guide reviews Akamai's managed observability solution, Hydrolix TrafficPeak, including product features, how TrafficPeak overcomes observability challenges, and a proven implementation architecture."
 authors: ["John Dutton"]
 contributors: ["John Dutton"]
-published: 2024-06-03
+published: 2024-06-10
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -16,9 +16,9 @@ external_resources:
 
 Observability workflows are critical to gaining meaningful insight to your application’s health, customer traffic, and overall performance. However, there are challenges that come along with achieving true observability, including large volumes of traffic data, data retention, time to implementation, and the cost of each.
 
-Hydrolix TrafficPeak is a ready-to-use, quickly deployable observability solution built for Akamai Cloud. TrafficPeak works with DataStream to ingest, index, compress, store, and search high-volume, real-time log data at 75% less cost than other observability platforms. TrafficPeak customers are provided with a Grafana login and customized dashboards where they can visualize, search, and set up alerting for their data.
+Hydrolix TrafficPeak is a ready-to-use, quickly deployable observability solution built for Akamai Cloud. TrafficPeak works with DataStream to ingest, index, compress, store, and search high-volume, real-time log data at up to 75% less cost than other observability platforms. TrafficPeak customers are provided with a Grafana login and customized dashboards where they can visualize, search, and set up alerting for their data.
 
-This guide looks at the TrafficPeak observability solution and reviews a tested, proven observability architecture built for a high-traffic media delivery platform. This solution combines Akamai’s edge-based DataStream log streaming service and TrafficPeak built on Linode cloud infrastructure to support large scale traffic, logging, and data retention.
+This guide looks at the TrafficPeak observability solution and reviews a tested, proven observability architecture built for a high-traffic delivery platform. This solution combines Akamai’s edge-based DataStream log streaming service, SIEM integration, and TrafficPeak built on Linode cloud infrastructure to support large-scale traffic, logging, and data retention.
 
 ## TrafficPeak On Akamai Cloud
 
@@ -58,7 +58,7 @@ With large amounts of data, the need for standardizing data reporting becomes ev
 
 There are numerous cost and infrastructure-based challenges that are associated with large volumes of data, including: data acquisition, data storage and retention, data searching and efficiency, and more. Since TrafficPeak is built for Akamai, you can address these challenges by coupling your edge and observability solutions on a single platform.
 
-With TrafficPeak, logs are sent directly from Akamai edge to Linode Compute using DataStream, eliminating the need for data traffic to travel outside the Akamai platform. TrafficPeak separates log processing from log storage by utilizing Linode Compute and Object Storage in tandem, uses 20-50x data compression, and offers searchable, accessible hot data retention for 15+ months.
+With TrafficPeak, logs are sent directly from Akamai edge to Linode Compute using DataStream, eliminating the need for data traffic to travel outside the Akamai platform. TrafficPeak separates log processing from log storage by utilizing Linode Compute and Object Storage in tandem, uses up to 25x data compression, and offers searchable, accessible hot data retention for 15+ months.
 
 ### Complex Data Types
 
@@ -72,7 +72,7 @@ It can be both time consuming and costly when implementing an observability solu
 
 ## TrafficPeak Workflow Diagram
 
-Below is a high-level diagram and walkthrough of a DataStream and TrafficPeak architecture implemented by a high-traffic media delivery platform customer on Akamai.
+Below is a high-level diagram and walkthrough of a DataStream and TrafficPeak architecture implemented by a high-traffic delivery platform customer on Akamai.
 
 1.  The client makes a request for an asset, an API call, or other HTTPs request. That request is routed to the nearest Akamai edge region.
 
