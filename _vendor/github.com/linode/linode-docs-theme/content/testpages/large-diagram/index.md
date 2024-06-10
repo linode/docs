@@ -3,9 +3,9 @@ title: Large Diagram
 ---
 
 
-## Large Diagram 1
+## Large Diagram 1 With Title
 
-![Figure 3](large.svg?diagram-description-id=figure-3-description-1)
+![Figure 3](large.svg?diagram-description-id=figure-3-description-1 "Diagram Title")
 
 Figure 3 is the built-out reference architecture that includes:
 
@@ -42,7 +42,7 @@ The illustrated deployment method for this architecture is via Terraform and Hel
 1. Finally, a combination of Cert-Manager, Let’s Encrypt, Nginx Ingress, Linode Node Balancers, and Linode DNS can be leveraged to enable communication with helpful internals of the application over a secure TLS connection. This includes the Argo Workflow UI, Grafana UI, and Argo Events Webhook. High availability, disaster recovery, and scaling considerations are all well-documented and capable of being supported on this architecture.
 {#figure-3-description-1 .large-diagram}
 
-## Large Diagram 2
+## Large Diagram 2 Without Title
 
 ![Figure 3](large.svg?diagram-description-id=figure-3-description-2)
 
