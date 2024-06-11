@@ -1,14 +1,13 @@
 ---
 slug: how-to-speed-up-a-wordpress-website
+title: 'How to Speed Up a WordPress Website'
 description: 'This guide shows how to analyze performance bottlenecks for a WordPress website and describes optimization best practices for WordPress'
+authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
+published: 2018-06-26
 keywords: ["htaccess", "apache", "wordpress"]
 tags: ["docker","linux","analytics","php","wordpress","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-06-26
-modified: 2018-06-26
-modified_by:
-  name: Linode
-title: 'How to Speed Up a WordPress Website'
 external_resources:
 - '[Finding Bottlenecks in WordPress Code](https://deliciousbrains.com/finding-bottlenecks-wordpress-code/)'
 - '[Profiling with XHProf and XHGUI](https://www.engineyard.com/blog/topic/profiling-with-xhprof-and-xhgui)'
@@ -16,7 +15,6 @@ external_resources:
 - '[XHGUI](https://github.com/perftools/xhgui)'
 - '[How to Use Docker Compose](/docs/guides/how-to-use-docker-compose/)'
 aliases: ['/websites/cms/how-to-speed-up-a-wordpress-website/','/websites/cms/wordpress/how-to-speed-up-a-wordpress-website/']
-authors: ["Nathan Melehan"]
 ---
 
 ## Goals For This Guide
@@ -49,11 +47,11 @@ To install the test environment, you will need a Linode which does not have any 
 
 ### Install Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ### Download the Test Environment
 
@@ -168,7 +166,7 @@ Under the bar chart for CPU usage, the first item listed is labeled `Pi_Widget::
 0.02 sys
 {{< /output >}}
 
-### Investigate CPU Usage: mysqli_query
+### Investigate CPU Usage: `mysqli_query()`
 
 The next highest CPU usage function call displayed by XHGUI was labeled `mysqli_query`. This is the PHP-MySQL interface that WordPress uses to run database queries.
 
@@ -202,9 +200,9 @@ This name is too generic for us to search the WordPress code base for the cause 
 0.02 sys
 {{< /output >}}
 
-### Investigate Memory Usage: openssl_random_pseudo_bytes
+### Investigate Memory Usage: `openssl_random_pseudo_bytes`
 
-XHGUI showed that a function named openssl_random_pseudo_bytes was responsible for allocating 30 MB of memory. Searching the code base reveals that the High Memory Test plugin is responsible:
+XHGUI showed that a function named `openssl_random_pseudo_bytes` was responsible for allocating 30 MB of memory. Searching the code base reveals that the High Memory Test plugin is responsible:
 
     root@localhost:/var/www/html# grep -R openssl_random_pseudo_bytes .
 

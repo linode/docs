@@ -2,14 +2,11 @@
 title: "Deploy a PostgreSQL Cluster through the Linode Marketplace"
 description: "PostgreSQL is a powerful, scalable, and standards-compliant open-source database. Here''s how to easily deploy PostgreSQL using Marketplace Apps."
 published: 2023-03-20
-modified_by:
-  name: Linode
 keywords: ['database','postgresql','rdbms','relational database']
 tags: ["linode platform","postgresql","marketplace","cloud-manager"]
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
-authors: ["Linode"]
 ---
 
 The PostgreSQL relational database system is a powerful, scalable, and standards-compliant open-source database platform. It is designed to handle a range of workloads, from single machines to data warehouses or Web services with many concurrent users.
@@ -20,9 +17,9 @@ This Marketplace App deploys 3 Compute Instances to create a highly available an
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-app-cluster-shortguide">}}
+{{% content "deploy-marketplace-app-cluster-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** The PostgreSQL cluster should be fully deployed and configured within 5-10 minutes after the first Compute Instance has finished provisioning.
@@ -37,7 +34,7 @@ This Marketplace App deploys 3 Compute Instances to create a highly available an
 
 - **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/) to create one.
 
-- **Limited sudo user** *(required)*: A limited user account with sudo access is created as part of this cluster deployment. Enter your preferred username for this limited user. Please note that the password is automatically created. See [Obtaining Usernames and Passwords](#obtaining-usernames-and-passwords).
+- **Limited sudo user** *(required)*: A limited user account with sudo access is created as part of this cluster deployment. Enter your preferred username for this limited user. The password is automatically created. See [Obtaining Usernames and Passwords](#obtaining-usernames-and-passwords).
 
 - **Domain** *(required)*: The domain name you wish to use, such as *example.com*. This domain name is only used to identify your cluster and as part of the system's hostname. No domain records are created within Linode's [DNS Manager](/docs/products/networking/dns-manager/).
 
@@ -45,7 +42,7 @@ This Marketplace App deploys 3 Compute Instances to create a highly available an
 
 - **PostgreSQL cluster size:** This field cannot be edited, but is used to inform you of the number of Compute Instances that are created as part of this cluster.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -191,7 +188,7 @@ The example commands in this section should be run as the `postgres` Linux user.
 
 ## Next Steps
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 For more on PostgreSQL, checkout the following guides:
 

@@ -1,25 +1,22 @@
 ---
 slug: apache-tomcat-on-ubuntu-10-04-lucid
-deprecated: true
+title: 'Apache Tomcat on Ubuntu 10.04 (Lucid)'
 description: 'Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 10.04 (Lucid).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-07-23
+modified: 2013-09-27
 keywords: ["apache tomcat ubuntu 10.04", "java", "java ubuntu 10.04", "java servlets ubuntu lucid", "java ubuntu"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-10-04-lucid/','/development/frameworks/apache-tomcat-on-ubuntu-10-04-lucid/','/websites/frameworks/apache-tomcat-on-ubuntu-10-04-lucid/','/frameworks/apache-tomcat/ubuntu-10-04-lucid/']
-modified: 2013-09-27
-modified_by:
-  name: Linode
-published: 2010-07-23
-title: 'Apache Tomcat on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 Apache Tomcat is an open source software implementation of the Java Servlet and Java Server Pages technologies. You may choose to run application within Tomcat using either the OpenJDK implementation or the Sun Microsystems implementation of the Java development environment.
 
@@ -27,7 +24,7 @@ Before following this guide, ensure that your system is up to date and that you 
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

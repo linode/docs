@@ -2,14 +2,11 @@
 title: "Managing IP Addresses on a Compute Instance"
 description: "Instructions on viewing, adding, deleting, transferring IP addresses for Linode Compute Instances using the Cloud Manager"
 og_description: "Learn how to manage IP addresses on a Linode Compute Instance"
-keywords: ["ip addresses", "ip failover", "swapping ip addresses", "add ip address", "add additional ip address"]
-tags: ["linode platform","cloud manager","networking"]
 published: 2016-08-23
 modified: 2024-01-30
-modified_by:
-  name: Linode
+keywords: ["ip addresses", "ip failover", "swapping ip addresses", "add ip address", "add additional ip address"]
+tags: ["linode platform","cloud manager","networking"]
 aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/','/guides/managing-ip-addresses/']
-authors: ["Linode"]
 ---
 
 Each Linode Compute Instance is equipped with several IP addresses, which may enable it to be accessible over the public Internet and other Linode services or accessible just to other Compute Instances within a VPC. This guide covers how to manage these IP addresses (including viewing, adding, removing, transferring, or sharing them) through the Cloud Manager.
@@ -154,7 +151,7 @@ This process only transfers IPv4 addresses and IPv6 ranges, not IPv6 SLAAC addre
 
 ### Transferring an IPv6 SLAAC Address
 
-IPv6 SLAAC addresses are not able to be transferred between Compute Instances. If this is something you need to do, consider moving the applications you want to be hosted on that IPv6 address over to the Compute Instance containing that IPv6 address. One way to accomplish this is to clone the disks containing the data. See the [Cloning to an Existing Linode](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode) section of the **Cloning a Linode** guide. After the cloning process has completed, transfer any required IPv4 addresses.
+IPv6 SLAAC addresses are not able to be transferred between Compute Instances. If this is something you need to do, consider moving the applications you want to be hosted on that IPv6 address over to the Compute Instance containing that IPv6 address. One way to accomplish this is to clone the disks containing the data. See the [Cloning to an Existing Linode](/docs/products/compute/compute-instances/guides/clone-instance/#clone-to-an-existing-compute-instance) section of the **Cloning a Linode** guide. After the cloning process has completed, transfer any required IPv4 addresses.
 
 ## Configuring IP Sharing
 

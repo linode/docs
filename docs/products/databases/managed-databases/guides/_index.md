@@ -2,13 +2,13 @@
 title: Guides
 title_meta: "Guides and Tutorials for Managed Databases"
 description: "A collection of guides on using Linode's Managed Database service"
-tab_group_main:
-    weight: 30
 published: 2022-06-06
 modified: 2023-05-02
+tab_group_main:
+    weight: 30
 ---
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}
 
 ## Basics
 

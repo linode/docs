@@ -1,26 +1,23 @@
 ---
+title: "Deploy CyberPanel through the Linode Marketplace"
 description: "CyberPanel is a next-generation control panel, which provides a friendly user interface. Learn how to deploy CyberPanel on Linode using Marketplace Apps."
-keywords: ['cyberpanel','marketplace','server']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-02-23
 modified: 2024-01-30
+keywords: ['cyberpanel','marketplace','server']
+tags: ["marketplace", "linode platform", "cloud manager"]
 image: DeployCyberPanel_marketplaceapps.png
-modified_by:
-  name: Linode
-title: "Deploy CyberPanel through the Linode Marketplace"
 external_resources:
 - '[CyberPanel](https://docs.litespeedtech.com/cloud/images/cyberpanel/)'
 aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel-marketplace-app']
-authors: ["Linode"]
 ---
 
 [CyberPanel](https://cyberpanel.net/) is a next-generation hosting control panel, which provides a friendly user interface. The CyberPanel app provides a One-Click installer for OpenLiteSpeed, LSCache, WordPress, Prestashop, Joomla, Magento, and Git. It also automates the initial setup for components like mail service and DNS to reduce the time it takes to get set up.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** CyberPanel should be fully installed within 10-20 minutes after the Compute Instance has finished provisioning.
@@ -31,7 +28,7 @@ authors: ["Linode"]
 - **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used with CyberPanel.
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -104,4 +101,4 @@ authors: ["Linode"]
 
      Now that you've accessed your dashboard, checkout the [official CyberPanel documentation](https://docs.litespeedtech.com/cloud/images/cyberpanel/) to learn how to further configure your instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

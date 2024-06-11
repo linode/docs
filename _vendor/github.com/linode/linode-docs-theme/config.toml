@@ -65,7 +65,7 @@ explorer_icon = "#icon-explorer--products"
 name = "guides"
 filters = "section.lvl0:guides"
 weight = 20
-title = "Guides"
+title = "Cloud Guides & Tutorials"
 noun = "Guide"
 explorer_icon = "#icon-explorer--guides"
 
@@ -115,13 +115,6 @@ noun = "Resource"
 seo_title_template = "Cloud Computing Resources | Linode"
 seo_title_template_category = "Cloud Computing {category} | Linode"
 explorer_icon = "#icon-explorer--resources"
-
-[params.search_config2.sections.community]
-name = "community"
-filters = "objectType:question"
-weight = 70
-title = "Q&A"
-explorer_icon = "#icon-explorer--qa"
 
 [module]
 [[module.mounts]]
@@ -181,10 +174,7 @@ target = "assets/linode/attribution-inline.js"
 path = "github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3"
 
 [[module.imports]]
-path = "github.com/gohugoio/hugo-mod-jslibs/turbo/v7"
-
-[[module.imports]]
-path = "github.com/gohugoio/hugo-mod-jslibs/instantpage"
+path = "github.com/gohugoio/hugo-mod-jslibs/turbo/v8"
 
 [security]
   enableInlineShortcodes = false

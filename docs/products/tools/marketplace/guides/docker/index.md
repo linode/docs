@@ -1,11 +1,11 @@
 ---
+title: "Deploy Docker through the Linode Marketplace"
 description: "This guide provides you with step-by-step instructions for deploying Docker, a tool which you can use to run containerized apps, from the Linode One-Click Marketplace."
-keywords: ['docker','marketplace', 'container']
-tags: ["container","cloud-manager","linode platform","docker","marketplace"]
 published: 2020-03-11
 modified: 2023-10-27
+keywords: ['docker','marketplace', 'container']
+tags: ["container","cloud-manager","linode platform","docker","marketplace"]
 image: Docker_oneclickapps.png
-title: "Deploy Docker through the Linode Marketplace"
 external_resources:
  - '[Docker Commands Cheat Sheet](/docs/guides/docker-commands-quick-reference-cheat-sheet/)'
  - '[Docker Documentation](https://docs.docker.com/)'
@@ -18,9 +18,9 @@ aliases: ['/platform/marketplace/deploying-docker-with-marketplace-apps/', '/pla
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Docker should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -33,12 +33,12 @@ aliases: ['/platform/marketplace/deploying-docker-with-marketplace-apps/', '/pla
 
 ### Docker Options
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 - **Email address for SOA Record:** This should be the email address of your server administrator.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -69,4 +69,4 @@ After Docker has finished installing, you can access Docker from your terminal a
     - [Manage a Docker Cluster with Kubernetes](/docs/guides/manage-a-docker-cluster-with-kubernetes/)
 
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

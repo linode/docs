@@ -2,13 +2,12 @@
 slug: live-streaming-with-livekit-and-obs
 title: "Live Streaming With LiveKit and OBS Studio"
 description: 'Learn how to set up a LiveKit server for live streaming from OBS Studio.'
-keywords: ['streaming','obs','webrtc']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 published: 2024-01-31
 modified: 2024-02-05
-modified_by:
-  name: Nathaniel Stickman
+keywords: ['streaming','obs','webrtc']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[LiveKit Docs](https://docs.livekit.io/realtime/)'
 ---
@@ -19,14 +18,14 @@ This guide shows you how to use Docker Compose to install LiveKit on a Compute I
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Follow the instructions in our [How to Use Docker Compose V2](/docs/guides/how-to-use-docker-compose-v2/#how-to-install-docker-compose-and-docker-engine) guide to install **Docker Compose** and **Docker Engine**.
 
 {{< note title="Your user requires sudo privileges" >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## LiveKit Features and Compatibility
@@ -80,7 +79,7 @@ Your DNS records can be setup using the [DNS Manager](/docs/products/networking/
 1.  Complete the LiveKit setup's prompts as follows:
 
     - Choose either the **with Ingress** or **with both Egress and Ingress** option.
-    - Enter the LiveKit server and TURN domains as created above in [Confguring the Host](#configuring-the-host).
+    - Enter the LiveKit server and TURN domains as created above in [Configuring the Host](#configuring-the-host).
     - Leave the WHIP domain empty.
     - Select **Let's Encrypt (no account required)** for SSL.
     - Choose the **latest** version of LiveKit.

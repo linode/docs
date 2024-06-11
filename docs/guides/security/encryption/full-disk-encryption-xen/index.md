@@ -1,17 +1,16 @@
 ---
 slug: full-disk-encryption-xen
-deprecated: true
+title: Full Disk Encryption
 description: Full disk encryption helps you to protect the information stored on your Linode's disk. This guide shows how to implement full disk encryption on Debian.
+authors: ["Quintin Riis"]
+contributors: ["Quintin Riis"]
+published: 2013-07-05
+modified: 2020-12-01
 keywords: ['full disk encryption', 'debian', 'wheezy', 'security', 'cryptsetup']
 aliases: ['/security/full-disk-encryption-xen/','/security/encryption/full-disk-encryption-xen/']
 tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-12-01
-modified_by:
-  name: Linode
-published: 2013-07-05
-title: Full Disk Encryption
-authors: ["Quintin Riis"]
+deprecated: true
 ---
 
 Full disk encryption protects the information stored on your Linode's disks by converting it into unreadable code that can only be deciphered by authorized individuals. Nearly everything on the disk is encrypted, including the swap space and temporary files. This guide will help you implement full disk encryption on a Linode running Debian 7 (Wheezy). You'll learn how to:
@@ -21,7 +20,7 @@ Full disk encryption protects the information stored on your Linode's disks by c
 -   Configure services and networking
 -   Boot from the encrypted images
 
-{{< content "all-linodes-kvm-shortguide" >}}
+{{% content "all-linodes-kvm-shortguide" %}}
 
 ## Potential Drawbacks
 
@@ -38,7 +37,7 @@ Ready to encrypt your Linode's disks? Here's how to prepare a Linode for full di
     - A swap image. You'll need to choose an appropriate swap size based your particular needs.
     - A `root` image to store the files in the root of your filesystem.
 
-3.  After you have created these disks, you'll want to [boot into Finnix from the Rescue tab](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode). Ensure that your disks are attached as follows:
+3.  After you have created these disks, you'll want to [boot into Finnix from the Rescue tab](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode). Ensure that your disks are attached as follows:
 
     - /boot xvda
     - swap xvdb
@@ -50,7 +49,7 @@ You've successfully created the disks for your Linode.
 
 Next, you'll need to create a configuration profile for the new Linode. Here's how to do it:
 
-1.  [Create a new configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#creating-a-configuration-profile) in the Linode Manager.
+1.  [Create a new configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#create-a-configuration-profile) in the Linode Manager.
 2.  Select the `pv-grub-x86_64` kernel from the **Kernel** menu.
 3.  In the **Block Device Assignment** section, select the disks you created in the previous section of this guide.
 4.  Disable the **Automount devtmpfs** and **Distro Helper** settings.
@@ -62,7 +61,7 @@ Congratulations! You're now ready to set up full disk encryption on your Linode.
 
 Now you're ready to enable full disk encryption on your Linode running Debian 7 (Wheezy). Here's how to do it:
 
-1.  [Reboot into Finnix](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) from the **Rescue** tab in the Linode Manager.
+1.  [Reboot into Finnix](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode) from the **Rescue** tab in the Linode Manager.
 2.  [Connect to LISH](/docs/products/compute/compute-instances/guides/lish/), which will allow you to access the Linode's virtual console.
 3.  Enter the following command to create an encrypted volume. You'll be prompted for a passphrase. Make sure that you enter a very strong passphrase, and that you store the passphrase in a physically secure location. Or better yet, memorize the passphrase and don't store it anywhere! :
 

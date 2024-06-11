@@ -1,17 +1,16 @@
 ---
 slug: how-to-scrape-a-website-with-beautiful-soup
-description: "Learn how to set up te Beautiful Soup Python library to collect data over an extended period of time and export the results to a spreadsheet."
-keywords: ['beautiful soup', 'python', 'scraping', 'tinydb', 'data']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-02-01
-modified_by:
-  name: Linode
-published: 2017-12-12
 title: "Scrape a Website with Beautiful Soup"
 title_meta: "How to Scrape a Website with Beautiful Soup"
+description: "Learn how to set up te Beautiful Soup Python library to collect data over an extended period of time and export the results to a spreadsheet."
+authors: ["Luis Cortés"]
+contributors: ["Luis Cortés"]
+published: 2017-12-12
+modified: 2019-02-01
+keywords: ['beautiful soup', 'python', 'scraping', 'tinydb', 'data']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 dedicated_cpu_link: true
 aliases: ['/applications/big-data/how-to-scrape-a-website-with-beautiful-soup/']
-authors: ["Luis Cortés"]
 ---
 
 ![How to Scrape a Website with BeautifulSoup](beautifulsoup-title-graphic.jpg "How to Scrape a Website with BeautifulSoup")
@@ -28,7 +27,7 @@ Web pages are structured documents, and Beautiful Soup gives you the tools to wa
 
 ### Install Python
 
-{{< content "install_python_miniconda" >}}
+{{% content "install_python_miniconda" %}}
 
 ### Install Beautiful Soup and Dependencies
 

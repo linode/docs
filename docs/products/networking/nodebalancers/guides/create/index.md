@@ -3,7 +3,6 @@ title: "Create a NodeBalancer"
 description: "Instructions on creating a NodeBalancer, Linode's load balancing solution."
 published: 2022-10-07
 modified: 2023-02-06
-authors: ["Linode"]
 ---
 
 This guide walks you through creating a NodeBalancer through the Cloud Manager.
@@ -51,7 +50,7 @@ To create a firewall using the NodeBalancer  application, in the *NodeBalancer C
 | **Additional Linodes** (Optional)| The Linode(s) on which to apply this Firewall. A list of all Linodes on your account are visible. You can leave this blank if you do not yet wish to apply the Firewall to a Linode. |
 | **Additional NodeBalancers** (Optional) | The NodeBalancers on which to apply this Firewall. A list of all created NodeBalancers on your account are visible. You can leave this blank if you do not want to apply this Cloud Firewall to other NodeBalancers.|
 
-Click on the **Create Firewall** button to finish creating the Cloud Firewall and to returned to the the *Nodebalancers Create* form.
+Click on the **Create Firewall** button to finish creating the Cloud Firewall and to returned to the *NodeBalancers Create* form.
 
 {{< note >}}
 By default, a new Cloud Firewall accepts all inbound and outbound connections. Only inbound firewall rules apply to NodeBalancers. Custom rules can be added in the Firewall application as needed. See [Add New Cloud Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
@@ -62,7 +61,7 @@ By default, a new Cloud Firewall accepts all inbound and outbound connections. O
 - The NodeBalancer accepts traffic and routes traffic on an internal network to backend targets. For this reason, only inbound firewall rules apply to NodeBalancer.
 - Inbound firewall rules such as IPv4 and IPv6 access control lists (ACLs) can be configured to *Accept* or *Drop* ingress traffic to the NodeBalancer.
 - NodeBalancers can accept TCP connections on all ports. When you add an inbound rule for a NodeBalancer in Cloud Firewall, select TCP as the transport layer protocol. UDP, ICMP, and IPENCAP are not currently supported on NodeBalancers.
-- The firewall is infront of the NodeBalancer and the assigned backend nodes. When both the NodeBalancer and its backend nodes have firewalls, the NodeBalancers inbound firewall rules are applied to incoming requests first, before the requests reach the backend nodes.
+- The firewall is in front of the NodeBalancer and the assigned backend nodes. When both the NodeBalancer and its backend nodes have firewalls, the NodeBalancers inbound firewall rules are applied to incoming requests first, before the requests reach the backend nodes.
 - A backend node server (Linode) can have multiple IP addresses. The NodeBalancer firewall only controls inbound traffic to the backend nodes IPs that are assigned to the NodeBalancer. A service (Linode) can be accessed from any interface (not just the NodeBalancer). To filter traffic from other interfaces, backend Linodes require their own firewalls.
 
 ![Figure of traffic going through firewall and NodeBalancer and traffic bypassing firewall and NodeBalancer](nb-firewall.jpg)

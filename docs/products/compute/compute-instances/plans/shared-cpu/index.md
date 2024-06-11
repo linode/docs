@@ -1,9 +1,9 @@
 ---
 title: "Shared CPU Compute Instances"
 description: "Learn about our Shared CPU Compute Instance plans, our most affordable virtual machines that offer a significant price-to-performance ratio."
-linkTitle: "Shared CPU"
 published: 2023-01-18
 modified: 2023-09-21
+linkTitle: "Shared CPU"
 aliases: ['/products/compute/shared-linodes/','/products/compute/shared-cpu/']
 ---
 

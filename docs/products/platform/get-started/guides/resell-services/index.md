@@ -2,14 +2,11 @@
 title: "Resell Linode Services"
 title_meta: "How to Resell Linode Services"
 description: 'How to resell Linode services using the Linode API, and how to get started with the Linode referral program.'
-keywords: ['resell','linode','services','reseller','referral','code']
 published: 2019-01-31
 modified: 2023-07-24
-modified_by:
-  name: Linode
+keywords: ['resell','linode','services','reseller','referral','code']
 tags: ["linode platform"]
 aliases: ['/platform/how-to-resell-linode-services/','/guides/how-to-resell-linode-services/']
-authors: ["Linode"]
 image: how-to-resell-linode-services.png
 ---
 
@@ -43,7 +40,7 @@ There are a few stipulations that resellers should keep in mind:
 
 - Payments are to be made directly to Linode by the reseller. If a customer of a reseller fails to pay the reseller for their services, the reseller is still responsible for their monthly payment to Linode.
 
-- Linode Support can help with issues related to the physical operation of your Linode services, but issues related to your software configuration are outside of the [scope of Linode Support](/docs/products/platform/get-started/guides/support/#scope-of-support). Linode offers a number of [resources](/docs/products/platform/get-started/guides/support/#resources) to help with configuration questions. Linode Support is only available to people with access to a [Cloud Manager user](#limited-cloud-manager-user). If your customers do not have their own Linode users, they will not be able to contact Linode Support.
+- Linode Support can help with issues related to the physical operation of your Linode services, but issues related to your software configuration are outside of the [scope of Linode Support](/docs/products/platform/get-started/guides/support/#scope-of-support). Linode offers a number of [resources](/docs/products/platform/get-started/guides/support/#types-of-questions-and-issues) to help with configuration questions. Linode Support is only available to people with access to a [Cloud Manager user](#limited-cloud-manager-user). If your customers do not have their own Linode users, they will not be able to contact Linode Support.
 
 ## How to Resell Linode Service
 
@@ -53,7 +50,7 @@ The best way to resell Linode services is through the use of the Linode API. The
 
 ### Limited Cloud Manager Users
 
-If a reseller wants to be able to give reseller customers access to parts of the Cloud Manager without developing a new user interface, they can create a limited Manager *user* in the Cloud Manager. A user is a set of credentials that can access your Linode account, and your Linode account can have multiple users. A user can be restricted to have a limited set of permissions, such as only being able to access certain Linodes and not having access to your billing information. To create a limited user in the Cloud Manager, review the [Users and Permissions](/docs/products/platform/accounts/guides/manage-users/#users-and-permissions) section of the Accounts and Passwords guide.
+If a reseller wants to be able to give reseller customers access to parts of the Cloud Manager without developing a new user interface, they can create a limited Manager *user* in the Cloud Manager. A user is a set of credentials that can access your Linode account, and your Linode account can have multiple users. A user can be restricted to have a limited set of permissions, such as only being able to access certain Linodes and not having access to your billing information. To create a limited user in the Cloud Manager, review the [Users and Permissions](/docs/products/platform/accounts/guides/manage-users/#add-a-user) section of the Accounts and Passwords guide.
 
 {{< note >}}
 Cloud Manager users are not related to the Linux users you may separately configure on Compute Instances. If you need to revoke a customer's account access, you should remove access to both their Cloud Manager users and their Linux users. Read the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on this subject.

@@ -1,21 +1,18 @@
 ---
+title: "Deploy an ARK Survival Evolved Server through the Linode Marketplace"
 description: "Deploy a ARK: Survival Evolved Server on Linode using Marketplace Apps."
-keywords: ['ark','survival evolved','marketplace apps', 'server']
 published: 2019-04-03
 modified: 2024-01-22
-modified_by:
-  name: Linode
-title: "Deploy an ARK Survival Evolved Server through the Linode Marketplace"
+keywords: ['ark','survival evolved','marketplace apps', 'server']
 external_resources:
  - '[The Official ARK: Survival Evolved Wiki](https://ark.gamepedia.com/ARK_Survival_Evolved_Wiki)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-ark-survival-evolved-with-marketplace-apps/', '/platform/one-click/deploying-ark-survival-evolved-with-one-click-apps/','/guides/deploying-ark-survival-evolved-with-one-click-apps/','/guides/deploying-ark-survival-evolved-with-marketplace-apps/','/guides/ark-survival-evolved-marketplace-app/']
-authors: ["Linode"]
 _build:
   list: false
 noindex: true
-deprecated: true
 
+deprecated: true
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
 ARK: Survival Evolved has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only. For information on how to deploy and set up ARK: Survival Evolved manually on a Compute Instance, see our [Creating a Dedicated ARK Server on Ubuntu](/docs/guides/create-an-ark-server-on-ubuntu) guide.
@@ -27,9 +24,9 @@ This Marketplace App deploys the ARK: Survival Evolved server software through [
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** ARK Survival Evolved should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
@@ -50,7 +47,7 @@ This Marketplace App deploys the ARK: Survival Evolved server software through [
 - **XP Multiplier:** Increases or decreases the amount of experience awarded for various actions.
 - **Server PvE:** Disables player vs player combat and enables player vs environment combat.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started After Deployment
 
@@ -91,4 +88,4 @@ The ARK: Survival Evolved Marketplace App will install the following required so
 | [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Ports 27015/udp, 7777:7778/udp and 27020/tcp will allow outgoing and incoming traffic. |
 | [**Fail2ban**](https://www.fail2ban.org/wiki/index.php/Main_Page) | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

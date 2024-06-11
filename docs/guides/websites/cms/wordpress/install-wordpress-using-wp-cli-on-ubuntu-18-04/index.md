@@ -1,16 +1,15 @@
 ---
 slug: install-wordpress-using-wp-cli-on-ubuntu-18-04
+title: 'Install WordPress Using WP-CLI on Ubuntu 18.04'
 description: 'Install WordPress Using WP-CLI on Ubuntu 18.04'
+authors: ["Navjot Singh"]
+contributors: ["Navjot Singh"]
+published: 2018-08-06
+modified: 2018-08-10
 keywords: ["install WP-CLI", "ubuntu", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
 aliases: ['/websites/cms/wordpress/install-wordpress-using-wp-cli-on-ubuntu-18-04/']
 tags: ["ubuntu","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-08-06
-modified: 2018-08-10
-modified_by:
-    name: Linode
-title: 'Install WordPress Using WP-CLI on Ubuntu 18.04'
-deprecated: true
 noindex: true
 external_resources:
 - '[WP-CLI Handbook](https://make.wordpress.org/cli/handbook/)'
@@ -21,7 +20,7 @@ relations:
         key: how-to-install-wordpress-using-wp-cli
         keywords:
            - distribution: Ubuntu 18.04
-authors: ["Navjot Singh"]
+deprecated: true
 ---
 
 Everyone is probably familiar with WordPress and its renowned 5-minute install routine. It's simple and works without fuss. But when you have multiple sites to manage, repeating the same routine can waste plenty of time which you could have used elsewhere.
@@ -37,8 +36,7 @@ This guide is written for Ubuntu 18.04. Before moving ahead, make sure you have 
 * [Getting Started with Linode](/docs/products/platform/get-started/)
 * [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
 * [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

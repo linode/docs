@@ -2,20 +2,19 @@
 slug: linode-writers-formatting-guide
 title: Linode Writer's Formatting Guide
 description: 'This guide provides formatting and style guidelines for documentation and articles submitted to Linode from outside contributors via our Write for Linode program.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-01-15
+modified: 2024-05-29
 keywords: ["style guide", "format", "formatting", "how to write", "write for us", "write for linode", "linode docs", "submissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
-published: 2014-01-15
-modified: 2024-01-31
-modified_by:
-  name: Linode
 show_on_rss_feed: false
 external_resources:
  - '[GitHub Beginners Guide](/docs/guides/a-beginners-guide-to-github/)'
  - '[Red Hat Writing Style Guide](http://stylepedia.net/)'
 _build:
   list: false
-authors: ["Linode"]
 ---
 
 ![Linode Writer's Formatting Guide](linode-writers-formatting-guide.png)
@@ -56,12 +55,11 @@ slug: {{ path.Base .File.Dir }}
 title: "{{ replace (path.Base .File.Dir) "-" " " | title }}"
 description: "Two to three sentences describing your guide."
 og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: {{ now.Format "2006-01-02" }}
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Linode"]
-published: {{ now.Format "2006-01-02" }}
-modified_by:
-  name: Linode
 external_resources:
 - '[Link Title 1](http://www.example.com)'
 - '[Link Title 2](http://www.example.net)'
@@ -76,12 +74,24 @@ Introductions should be concise; explain what the goal of the guide is and why. 
 
 ### Before You Begin
 
-The *Before You Begin* section is an area for basic prerequisites a reader should know or have completed before proceeding further in your guide. Use the example below and edit as needed:
+The *Before You Begin* section is used to inform the reader of any prerequisites needed to successfully complete the guide. This may include the following:
 
-```file {title="Author Submission"}
+- Specific Akamai services or features that are needed, like Compute Instances, LKE clusters, or Object Storage buckets. This should include any hardware or plan requirements (see [Pricing](https://www.linode.com/pricing/)).
+
+- Setup tasks on Akamai services, such as securing a Compute Instance, creating a limited user, configuring a hostname. Only include tasks that are related to the guide and the guide's objective.
+
+- External requirements, such as a registered domain name or specific local software (such as a PC running Windows 11).
+
+- Software or applications that need to be installed or configured (i.e. LAMP stack, Docker, etc.), making sure to include links to instructions. Only include software that is directly used within the guide, but is not the focus of the guide. If the software needs additional configuration or usage information, it should likely be included in the guide's instructions and not in the *Before You Begin* section.
+
+- Foundational knowledge, like an understanding of technology fundamentals (like container orchestration) or specific software or software stacks (like Kubernetes).
+
+Below is an example *Before You Begin* section. You may copy the example and edit it as needed:
+
+```file {title="Before You Begin"}
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you do not already have a virtual machine to use, create a Compute Instance with at least 4 GB of memory. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 ```
@@ -319,11 +329,9 @@ title: "Install Python with Miniconda"
 description: 'A shortguide that shows how to install Python via Miniconda.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Author's FirstName LastName`"]
+contributors: ["Author's FirstName LastName`"]
 published: 2023-03-07
 modified: 2023-03-07
-modified_by:
-  name: Linode
 headless: true
 show_on_rss_feed: false
 ---
@@ -349,8 +357,12 @@ show_on_rss_feed: false
 To use this shortguide in another guide, use the following syntax:
 
 ```file {title="sample_embedding_guide/index.md"}
-{{</* content "install_python_miniconda" */>}}
+{{%/* content "install_python_miniconda" */%}}
 ```
+
+{{< note >}}
+Be sure to use the `%` delimiter inside the surrounding `{{ }}` braces for `content` shortcodes.
+{{< /note >}}
 
 ### Files
 
@@ -694,7 +706,7 @@ There are four unique types of notes: **primary**, **secondary**, **warning**, a
 
 -   **Primary** (type is unset or `type="primary"`, title defaults to "Note"): Used for additional related information that does not fit with the rest of the document. Can include alternative suggestions or solutions, developer tips, or general best practices that are not critical to the success of the task at hand.
 
-    {{< note title="Best Practice: Use Passsword Generators" >}}
+    {{< note title="Best Practice: Use Password Generators" >}}
     When creating root, user, or other passwords, you can increase security by using a password generator such as [1Password](https://www.1password.com) to create and save complex, encrypted passwords.
     {{< /note >}}
 
@@ -1030,7 +1042,7 @@ The second step is optional. If you do not follow this step, a profile page is s
 1.  On the guides you have written, update the `authors` frontmatter to reference your name. This should be formatted like:
 
     ```file
-    authors: ["FirstName LastName"]
+    contributors: ["FirstName LastName"]
     ```
 
 1.  (Optional) Create a new directory and Markdown file for your author page under the `docs/authors` directory in the docs repository. The new directory should named after you, with uppercase letters replaced by lower case, and spaces replaced by a dash. For example, an author with the name `Nathan Smith` would have a new profile page created at `docs/authors/nathan-smith/_index.md`.

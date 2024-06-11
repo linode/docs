@@ -2,9 +2,9 @@
 title: "FAQs"
 title_meta: "FAQs for Billing and Payments on the Linode Platform"
 description: "Find quick answers to some of the most commonly asked billing questions."
+published: 2022-10-28
 tab_group_main:
     weight: 60
-published: 2022-10-28
 aliases: ['/products/tools/billing/faqs/']
 ---
 
@@ -64,7 +64,7 @@ We only accept payments in USD. If you wish to pay in another currency, you must
 
 ## Can more than one person receive the invoice each month?
 
-Yes, any user on an account with the appropriate billing permissions (read and write billing access) will receive a copy of invoices. See [Setting User Permissions](/docs/products/platform/accounts/guides/user-permissions/) for more details and see [Adding a User](/docs/products/platform/accounts/guides/manage-users/#adding-a-user) for instructions on creating another user for your account.
+Yes, any user on an account with the appropriate billing permissions (read and write billing access) will receive a copy of invoices. See [Setting User Permissions](/docs/products/platform/accounts/guides/user-permissions/) for more details and see [Adding a User](/docs/products/platform/accounts/guides/manage-users/#add-a-user) for instructions on creating another user for your account.
 
 ## How do I adjust the name or company on my invoice?
 

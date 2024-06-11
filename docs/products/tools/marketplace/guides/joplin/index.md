@@ -1,23 +1,20 @@
 ---
+title: "Deploy Joplin through the Linode Marketplace"
 description: "Deploy Joplin on a Linode Compute Instance. Joplin is an open source note-taking app."
+published: 2022-03-29
 keywords: ['productivity','notes','docs']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2022-03-29
-modified_by:
-  name: Linode
-title: "Deploy Joplin through the Linode Marketplace"
 external_resources:
 - '[Joplin](https://joplinapp.org/)'
-authors: ["Linode"]
 ---
 
 [Joplin](https://joplinapp.org/) is an open source application designed to take notes using the [Markdown format](https://joplinapp.org/markdown/). It is available on many different platforms, including Windows, macOS, Linux, Android, and iOS. To synchronize your notes across multiple devices, you need to enable synchronization. Synchronization can be facilitated through a service like Nextcloud, Dropbox, OneDrive, the Joplin Cloud, or the Joplin Server software. Our Joplin Marketplace App installs the Joplin Server software, enabling you to securely take control of your own data and enable synchronization between all of your devices.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Joplin should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
@@ -32,11 +29,11 @@ authors: ["Linode"]
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -88,4 +85,4 @@ To start using Joplin to take notes, download the Joplin application for your de
 
 Now you can start taking notes and your changes will automatically be stored on your new Joplin Server instance and synchronized between all of your devices. Check out [the official Joplin documentation](https://joplinapp.org/help/) to learn how to further utilize your Joplin instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

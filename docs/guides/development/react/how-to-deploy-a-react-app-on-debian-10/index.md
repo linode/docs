@@ -1,16 +1,15 @@
 ---
 slug: how-to-deploy-a-react-app-on-debian-10
+title: "Deploying a React Application on Debian 10"
+title_meta: "How to Deploy a React Application on Debian 10"
 description: This tutorial will explain how to deploy a React app to a Ubuntu 18.04 Linode installation that's running a web server.
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-04-24
 keywords: ['react','reactjs','deploy','rsync']
 tags: ["web applications","apache","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-04-24
-modified: 2020-04-24
 image: Deploying_a_React_Application_on_Debian_10_1200x631.png
-modified_by:
-  name: Linode
-title: "Deploying a React Application on Debian 10"
-title_meta: "How to Deploy a React Application on Debian 10"
 external_resources:
 - '[React - A JavaScript library for building user interfaces](https://reactjs.org/)'
 - '[Deploy a React App with Sass Using NGINX](https://web.archive.org/web/20191130010415/http://zabana.me/notes/build-deploy-react-app-with-nginx.html)'
@@ -23,7 +22,6 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/development/react/how-to-deploy-a-react-app-on-debian-10/']
-authors: ["Linode"]
 ---
 
 ## What is React?
@@ -137,7 +135,7 @@ In this section, you will update your web server configuration to ensure that it
 
 You will need Node.js installed on your local computer in order to build your React app prior to copying your site files to the remote Linode server.
 
-{{< content "how-to-install-nvm" >}}
+{{% content "how-to-install-nvm" %}}
 
 ### Create an Example React App
 

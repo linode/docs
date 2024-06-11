@@ -1,14 +1,11 @@
 ---
-keywords: ["getting started", "deploy", "linode", "linux"]
-description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
-published: 2022-04-19
-modified: 2024-02-13
-modified_by:
-  name: Linode
 title: "Create a Compute Instance"
 title_meta: "Create a Compute Instance on the Linode Platform"
+description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
+published: 2022-04-19
+modified: 2024-05-21
+keywords: ["getting started", "deploy", "linode", "linux"]
 aliases: ['/guides/creating-a-compute-instance/','/products/compute/dedicated-cpu/guides/deploy/']
-authors: ["Linode"]
 ---
 
 This guide walks you through creating a Compute Instance (also frequently called a *Linode*) through the Cloud Manager. Whether this is your first time using Linode or if you're a long time user, you should carefully consider each step in the process to make sure you're getting the most of your Linode services.
@@ -73,12 +70,11 @@ Linode offers a few different instance types and plan sizes, each with a preset 
 
 Since every workload is different, you may wish to review the [Choosing a Compute Instance Type and Plan](/docs/products/compute/compute-instances/plans/choosing-a-plan/) guide for advice on selecting the best plan for your needs, application’s requirements, and pricing considerations. Note that [pricing and plan](https://www.linode.com/pricing/) options may vary between data centers.
 
-
 {{< note >}}
 You can resize to a different plan size or instance type at any time. This means your aren't locked in to whichever plan you select here. See [Resizing a Compute Instance](/docs/products/compute/compute-instances/guides/resize/) for instructions.
 {{< /note >}}
 
-{{< content "instance-comparison-shortguide" >}}
+{{% content "instance-comparison-shortguide" %}}
 
 ## Set the Label and Add Tags
 
@@ -94,7 +90,7 @@ You can resize to a different plan size or instance type at any time. This means
 
 -   **Root Password:** The password used to log in to the system as the root user. The root user is the main account and has access to the entire system, including files and commands. This password should be extremely strong to prevent attackers from gaining access to your system. By default, the root user can log in over Lish and SSH using this password, though we do recommend disabling this within the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
-    {{< content "password-requirements-shortguide" >}}
+    {{% content "password-requirements-shortguide" %}}
 
 -   **SSH Keys:** Add any SSH Keys to the root user account on the server. This enables you to log in through SSH without needing a password. SSH keys are created as a pair: a *private key* stored on your local computer and a *public key* that you can upload to remote systems and services. Since you only share your public key and your private key is kept safe and secure, this is a much more secure method for authentication than passwords. Learn more about uploading SSH keys through the Cloud Manager on the [Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/) guide.
 
@@ -164,4 +160,4 @@ Once the Compute Instance has been created and is done initializing, you can sta
 
 - [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}

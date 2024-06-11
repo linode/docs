@@ -1,21 +1,18 @@
 ---
+title: "Deploy MagicSpam through the Linode Marketplace"
 description: "This guide shows you how to install and configure MagicSpam, a powerful anti-spam and email security solution using the Linode One-Click App Marketplace."
-keywords: ['cPanel','Plesk','Email','Spam']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-08-13
 modified: 2024-01-22
-modified_by:
-  name: Linode
-title: "Deploy MagicSpam through the Linode Marketplace"
+keywords: ['cPanel','Plesk','Email','Spam']
+tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/guides/deploying-magicspam-marketplace-app/','/guides/magicspam-marketplace-app/']
 external_resources:
 - '[MagicSpam](https://magicspam.com/)'
-authors: ["Linode"]
 _build:
   list: false
 noindex: true
-deprecated: true
 
+deprecated: true
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
 MagicSpam has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only. For information on how to configure MagicSpam, see our [Using MagicSpam to Secure your Email Server](/docs/guides/using-magicspam-email-authentication) guide.
@@ -29,7 +26,7 @@ MagicSpam installs directly onto an email server without any need to change A/MX
 [MagicSpam](https://magicspam.com/store.php), [cPanel](https://cpanel.net/pricing/), and [Plesk](https://www.plesk.com/pricing/) all require a valid license. You can view and purchase licenses individually from each of their respective stores. Licenses are not available directly through Linode.
 {{< /note >}}
 
-{{< content "email-warning-shortguide">}}
+{{% content "email-warning-shortguide" %}}
 
 If you want to deploy MagicSpam onto an existing Linode Compute Instance, do not follow this guide. Instead, install MagicSpam by following one of the below guides:
 
@@ -38,9 +35,9 @@ If you want to deploy MagicSpam onto an existing Linode Compute Instance, do not
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** MagicSpam should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
@@ -94,4 +91,4 @@ For more on MagicSpam, check out the following resources:
 - [MagicSpam for cPanel](https://www.magicspam.com/anti-spam-protection-cpanel.php)
 - [MagicSpam for Plesk](https://www.magicspam.com/anti-spam-protection-plesk.php)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

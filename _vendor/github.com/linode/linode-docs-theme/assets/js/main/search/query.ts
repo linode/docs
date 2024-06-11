@@ -1,5 +1,5 @@
 import { isTopResultsPage } from '.';
-import { normalizeSpace } from '../helpers/index';
+import { normalizeSpace } from '../helpers/helpers';
 
 export interface Query {
 	// Holds the current page number.
@@ -14,6 +14,9 @@ export interface Query {
 
 	// addFilter adds value to the slice of filters with key.
 	addFilter(key: string, value: string);
+
+	// replaceFilter replaces the slice of filters with key with value.
+	replaceFilter(key: string, value: string);
 
 	// Returns the filters ready to be used in a Algolia query.
 	toFacetFilters(): string[];
@@ -52,6 +55,10 @@ export const newQuery = function(): Query {
 			}
 		},
 
+		replaceFilter(key: string, value: string) {
+			this.filters.set(key, [ value ]);
+		},
+
 		toFacetFilters(): string[] {
 			// In Algolia, every value within the main bracket is interpreted as a conjunction (AND),
 			// nested arrays gets to be disjunctive (OR).
@@ -72,7 +79,7 @@ export const newQuery = function(): Query {
 		},
 
 		isFiltered() {
-			return this.lndq || this.hasFilter();
+			return this.lndq != '' || this.hasFilter();
 		}
 	};
 };

@@ -1,13 +1,10 @@
 ---
 title: "Configure Failover on a Compute Instance"
 description: "This guide discusses how to enable failover on a Linode Compute Instance through using our IP Sharing feature with software such as keepalived or FRR."
-keywords: ['IP failover','IP sharing','elastic IP']
 published: 2022-03-23
 modified: 2024-02-20
-modified_by:
-  name: Linode
+keywords: ['IP failover','IP sharing','elastic IP']
 aliases: ['/guides/ip-failover/']
-authors: ["Linode"]
 tags: ["media"]
 ---
 
@@ -202,7 +199,7 @@ Next, we need to configure the failover software on *each* Compute Instance. For
     ```
     {{< /note >}}
 
-1.  Next, prepare the command to configure BGP routing through lelastic. Replace *[id]* with the ID corresponding to your data center in the [table above](/docs/products/compute/compute-instances/guides/failover/#ip-failover-support) and *[role]* with either `primary` or `secondary`. You do not need to run this command, as it is configured as a service in the following steps.
+1.  Next, prepare the command to configure BGP routing through lelastic. Replace *[id]* with the ID corresponding to your data center in the [table above](#ip-sharing-availability) and *[role]* with either `primary` or `secondary`. You do not need to run this command, as it is configured as a service in the following steps.
 
     ```command
     lelastic -dcid [id] -[role] &

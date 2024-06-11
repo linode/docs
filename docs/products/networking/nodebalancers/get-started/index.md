@@ -2,13 +2,12 @@
 title: Get Started
 title_meta: "Getting Started with NodeBalancers"
 description: "Learn how to quickly start using a NodeBalancer, including advice on architecting your application and configuring the NodeBalancer"
+published: 2022-10-07
 tab_group_main:
     weight: 30
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha"]
 tags: ["cloud manager","linode platform","networking","web applications"]
 aliases: ['/nodebalancers/getting-started/','/platform/nodebalancer/getting-started-with-nodebalancers-new-manager/','/platform/nodebalancer/getting-started-with-nodebalancers/','/linode-platform/nodebalancer-howto/','/platform/nodebalancer/getting-started-with-nodebalancers-classic-manager/', '/guides/nodebalancer/getting-started-with-nodebalancers/','/guides/getting-started-with-nodebalancers/']
-published: 2022-10-07
-authors: ["Linode"]
 ---
 
 Nearly every production application can benefit from a load balancing solution like Linode's NodeBalancers. This guide covers how to get started with NodeBalancers, including how to architect your application, configure the NodeBalancer, and update the DNS.
@@ -23,7 +22,7 @@ To start using a NodeBalancer and benefiting from load balancing, your applicati
 
 - **Database replication:** *How will you maintain consistency between multiple databases?* Consider the suggested architecture and available tooling for the database software you intend to use. Linode [Managed Databases](/docs/products/databases/managed-databases/), when deployed with high availability enabled, are a great fully-managed solution. Alternatively, [Galera](https://galeracluster.com/) is a self-hosted option that can be used with MySQL.
 
-    {{< content "dbass-eos" >}}
+    {{% content "dbass-eos" %}}
 
 In some simple applications, the servers that store your application's code can also store its files and databases. For more complex applications, you may want to consider designating separate application servers, file servers, and database servers. The application servers (where the web server software and application code resides) operate as the backends to the NodeBalancer. The file servers and database servers can be built on cloud-based solutions (like Managed Databases) or self-hosted software on Compute Instances.
 
@@ -39,7 +38,7 @@ If you are using a Cloud Firewall with this NodeBalancer, have the name of the f
 
 Once your application has been deployed on multiple Compute Instances, you are ready to create the NodeBalancer. Simple instructions have been provided below. For complete instructions, see the [Create a NodeBalancer](/docs/products/networking/nodebalancers/guides/create/) guide.
 
-1. Log in to [Cloud Manager](https://cloud.linode.com), select **NodeBalancers** from the left menu, and click the **Create NodeBalancer** button. This displays the *Nodebalancers Create* form.
+1. Log in to [Cloud Manager](https://cloud.linode.com), select **NodeBalancers** from the left menu, and click the **Create NodeBalancer** button. This displays the *NodeBalancers Create* form.
 
 1. Enter a **Label** for the NodeBalancer, as well as any **Tags** that may help you organize this new NodeBalancer with other services on your account.
 
@@ -55,7 +54,7 @@ Once your application has been deployed on multiple Compute Instances, you are r
     | **Additional Linodes** (Optional)| The Linode(s) on which to apply this Firewall. A list of all Linodes on your account are visible. You can leave this blank if you do not yet wish to apply the Firewall to a Linode. |
     | **Additional NodeBalancers** (Optional) | The NodeBalancers on which to apply this Firewall. A list of all created NodeBalancers on your account are visible. You can leave this blank if you do not want to apply this Cloud Firewall to other NodeBalancers.|
 
-    Click on the **Create Firewall** button to finish creating the Cloud Firewall and to returned to the the *Nodebalancers Create* form.
+    Click on the **Create Firewall** button to finish creating the Cloud Firewall and to returned to the *NodeBalancers Create* form.
 
     {{< note >}}
     By default, a new Cloud Firewall accepts all inbound and outbound connections. Only inbound firewall rules apply to NodeBalancers, see [Cloud Firewall Inbound Rules for NodeBalancer](/docs/products/networking/nodebalancers/guides/create/#cloud-firewall-inbound-rules-for-nodebalancer). Custom rules can be added as needed in the Firewall application. See [Add New Cloud Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).

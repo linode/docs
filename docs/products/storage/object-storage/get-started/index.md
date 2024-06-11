@@ -19,7 +19,7 @@ Billing for Object Storage starts when it is enabled on your account, **regardle
 
 ## Generate an Access Key
 
-1. Log into the [Linode Cloud Manager](https://cloud.linode.com).
+1. Test - Log into the [Linode Cloud Manager](https://cloud.linode.com).
 
     {{< note >}}
     Object Storage is not available in the Linode Classic Manager.
@@ -55,7 +55,7 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 
 1.  Choose a cluster location for the bucket to reside in.
 
-      {{< content "object-storage-cluster-shortguide" >}}
+      {{% content "object-storage-cluster-shortguide" %}}
 
 1.  Click **Submit**. You are now ready to [upload objects to your bucket](#upload-objects-to-a-bucket).
 

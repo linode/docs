@@ -1,12 +1,8 @@
 {{- $index := slice -}}
-{{- $pages := where .Site.Pages "Type" "not in"  (slice "page" "json" "api" "authors" "release-notes" ) -}}
+{{- $pages := where .Site.Pages "Type" "not in"  (slice "page" "json" "api" "contributors" "testpages" "release-notes" ) -}}
 {{- range $i, $p := $pages -}}
   {{- $shouldAdd := true }}
-  {{- $img := partial "funcs/get-bundle-image.html" . -}}
-  {{- $thumb := $img -}}
-  {{- if ne $thumb.MediaType.SubType "svg" -}}
-    {{- $thumb = $img.Resize "640x jpg" -}}
-  {{- end -}}
+  {{- $thumb := partial "sections/search/get-search-data-thumb.html" (dict "page" .) -}}
   {{- $excludeFromViews := .Params.excludeFromViews | default slice -}}
   {{- $category := .Params.category -}}
   {{ $tags := .Params.tags -}}
@@ -136,6 +132,7 @@
     {{- end -}}
     {{- $dict = $dict | merge (dict (printf "section.lvl%d" $i) $sectionPath) -}}
   {{- end -}}
+
   {{- if $shouldAdd -}}
     {{- $index = $index | append $dict -}}
   {{- end -}}

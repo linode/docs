@@ -1,14 +1,11 @@
 ---
-description: "Learn which taxes are collected by Linode and how to add a tax identification number to your account."
 title: Tax Information
+description: "Learn which taxes are collected by Linode and how to add a tax identification number to your account."
 published: 2019-04-09
-modified: 2024-02-20
-modified_by:
-  name: Linode
+modified: 2024-05-23
 keywords: ["accounts", "vat", "linode manager", "linode cloud manager", "manager", "tax", "taxes", "tax information", "usd", "vat id", "eu", "european union", "value added tax", "gst", "goods and services tax", "gst id", "tax id"]
 aliases: ['/platform/billing-and-support/european-union-vat-linode/','/platform/billing-and-support/european-union-vat-linode-classic-manager/','/platform/billing-and-support/tax-information/','/platform/billing-and-support/tax-information-classic-manager/','/guides/tax-information/']
 tags: ["linode platform"]
-authors: ["Linode"]
 ---
 
 Some countries, states, and regions require us by law to collect taxes. As such, customers located in these locations are charged the appropriate tax rate for any taxable services billed to their account. The taxes that Linode collects are listed on customer invoices (see the [Viewing Invoices and Payments](/docs/products/platform/billing/guides/view-history/) section of our Cloud Manager Billing guide).
@@ -46,10 +43,10 @@ The following table lists each country that requires us to collect taxes. Alongs
 | Italy | 22% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
 | Japan | 10% | [JCT](https://www.eu-japan.eu/taxes-accounting/consumption-taxes) | April 1, 2022 |
 | Kenya | 16% | [VAT](https://www.kra.go.ke/individual/filing-paying/types-of-taxes/value-added-tax) | June 1, 2023 |
+| Korea | 10% | [VAT](https://teht.hometax.go.kr/websquare/websquare.wq?w2xPath=/ui/ca/a/b/UTECAABA12.xml) | June 1, 2024 |
 | Latvia | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
 | Lithuania | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
 | Luxembourg | 17% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
-| Malaysia | 6% | [SST](https://mysst.customs.gov.my/AboutBackground) |Ends February 28, 2024 |
 | Malaysia | 8% | [SST](https://mysst.customs.gov.my/AboutBackground) | March 1, 2024 |
 | Malta | 18% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
 | Netherlands | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
@@ -59,6 +56,7 @@ The following table lists each country that requires us to collect taxes. Alongs
 | Portugal | 23% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
 | Romania | 19% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
 | Russian Federation | 20% | [VAT](https://www.nalog.gov.ru/rn77/TAXATION/TAXES/NDS/) | December 15, 2022 |
+| Saudi Arabia | 15% | [VAT](https://zatca.gov.sa/en/Pages/default.aspx) | May 1, 2024 |
 | Singapore | 8% | [GST](https://www.iras.gov.sg/irashome/GST/GST-registered-businesses/Learning-the-basics/How-to-implement-GST/Current-GST-Rates/) | September 1, 2020 |
 | Slovakia | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
 | Slovenia | 22% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
@@ -67,6 +65,8 @@ The following table lists each country that requires us to collect taxes. Alongs
 | Switzerland | 7.7% | [VAT](https://www.estv.admin.ch/estv/en/home/value-added-tax/vat-rates-switzerland.html) | December 15, 2022 |
 | Thailand | 10% | [VAT](https://www.rd.go.th/english/6043.html) | October 1, 2023 |
 | Turkey | 20% | [VAT](https://www.gib.gov.tr/sites/default/files/fileadmin/taxation_system2021.pdf) | April 1, 2024 |
+| Uganda | 18% | [VAT](https://ura.go.ug/en/vat-registered-category/) | May 1, 2024 |
+| Ukraine | 20% | [VAT](https://ukraineinvest.gov.ua/en/analytics-research/overview-of-taxation/) | April 1, 2024 |
 | United Arab Emirates | 5% | [VAT](https://u.ae/en/information-and-services/finance-and-investment/taxation/valueaddedtaxvat) | December 15, 2022 |
 | United Kingdom | 20% | [VAT](https://www.gov.uk/vat-rates) | July 1, 2019 |
 | [United States](#united-states) (see below) | | | |
@@ -183,15 +183,19 @@ To keep our pricing stable and consistent, rather than fluctuating with exchange
 | Japan JCT | 00140 | 00143 |
 | Japan QI | N/A | T4700150118765 |
 | Kenya VAT | N/A | P052208918D |
+| Korea VAT | N/A | 766-80-02978 |
 | Manitoba RST | 138835-4 | 141763-3 |
 | Malaysia SST | N/A | 22000048 |
 | Norway VAT | 2063948 | 2070510 |
 | Quebec Provincial QST (effective May 1, 2022) | 1229663158 TQ0001 | 1229976512 TQ0001 |
 | Russian Federation VAT | N/A | 9909524583 |
 | Saskatchewan PST | 759622 | 7648249 |
+| Saudi Arabia | VAT | 312111964100003 |
 | Singapore GST | M90373465T | M90374823J |
 | Switzerland VAT | N/A | CHE-115.356.067 MWST |
 | Turkey VAT | N/A | 0120733196 |
+| Uganda VAT | N/A | 1044189563 |
+| Ukraine VAT | N/A | 880031567 |
 | United Kingdom VAT | GB383720095 | 434006338 |
 | United Arab Emirates | N/A | 104038424800003 |
 | United States EIN | 20-2647179 | 04-3432319 |

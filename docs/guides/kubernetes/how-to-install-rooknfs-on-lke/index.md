@@ -1,17 +1,16 @@
 ---
 slug: how-to-install-rooknfs-on-lke
+title: "Setting Up Rook NFS for Persistent Storage on LKE"
+title_meta: "How to Set Up Rook NFS for Persistent Storage on LKE"
 description: 'How to install Rook NFS on LKE.'
+authors: ["Todd Becker"]
+contributors: ["Todd Becker"]
+published: 2021-08-13
 keywords: ['rooknfs','kubernetes', 'lke', 'linode kubernetes engine']
 tags: ["docker","kubernetes","container","nginx","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-13
-modified_by:
-  name: Linode
-title: "Setting Up Rook NFS for Persistent Storage on LKE"
-title_meta: "How to Set Up Rook NFS for Persistent Storage on LKE"
 aliases: ['/kubernetes/how-to-install-rooknfs-on-LKE/']
 deprecated: true
-authors: ["Todd Becker"]
 ---
 
 Rook NFS allows remote hosts to mount filesystems over a network and interact with those filesystems as though they are mounted locally. When used with LKE, Rook can mount a Linode Block Storage PVC which uses `ReadWriteOnce` permissions. The volume can then be leveraged as NFS and exported as a storage class that uses `ReadWriteMany` permissions. This allows Linode's Block Storage to store persistent data for LKE clusters.
@@ -228,7 +227,7 @@ Rook NFS allows remote hosts to mount filesystems over a network and interact wi
     kubectl apply -f ~/nfs/cluster/examples/kubernetes/nfs/rbac.yaml
     ```
 
-1.  Edit the PVC portion of the default NFS server manifests in the `nfs.yaml` file before initializing the NFS server. The provided NFS manifest has two changes that need to be made. The first is the storage class for the PVC is left off, which assumes the default storage class. This can be explicitly defined to "linode-block-storage-retain" instead of assuming the default storage class. Secondly the accessModes is set to ReadWriteMany and the Linode block storage does not support ReadWriteMany. This should be changed to ReadWriteOnce.
+1.  Edit the PVC portion of the default NFS server manifests in the `nfs.yaml` file before initializing the NFS server. The provided NFS manifest has two changes that need to be made. The first is the storage class for the PVC is left off, which assumes the default storage class. This can be explicitly defined to "linode-block-storage-retain" instead of assuming the default storage class. Secondly the `accessModes` is set to `ReadWriteMany` and the Linode block storage does not support `ReadWriteMany`. This should be changed to `ReadWriteOnce`.
 
     ```file {title="/nfs/cluster/examples/kubernetes/nfs/nfs.yaml" lang=yaml}
     ---

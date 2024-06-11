@@ -1,5 +1,6 @@
 import { newQuery, QueryHandler } from './query';
-import { getCurrentLang, LRUMap, toDateString } from '../helpers';
+import { getCurrentLang, toDateString } from '../helpers/helpers';
+import { LRUMap } from '../helpers/lru';
 import { newCreateHref, addLangToHref } from '../navigation/index';
 import {
 	newRequestCallback,
@@ -10,19 +11,67 @@ import {
 } from './request';
 
 const debug = 0 ? console.log.bind(console, '[search-store]') : function () {};
+const debugDev = 0 ? console.log.bind(console, '[search-store]') : function () {};
 const debugFetch = 0 ? console.log.bind(console, '[search-fetch]') : function () {};
 
-export const searchGroupIdentifiers = {
-	MAIN: 1,
-	AD_HOC: 2,
+const createSectionFacetsSorted = function (searchConfig, result) {
+	if (!result.facets) {
+		return [];
+	}
+	let nodes = [];
+	let sections = searchConfig.sections;
+
+	// Section facets are named section.lvln where n is 0 to 3.
+	for (let i = 0; ; i++) {
+		let key = `section.lvl${i}`;
+		let sectionFacet = result.facets[key];
+		if (!sectionFacet) {
+			break;
+		}
+
+		for (let k in sectionFacet) {
+			let parts = k.split(' > ');
+			let first = parts[0].toLowerCase();
+			if (!(first in sections)) {
+				continue;
+			}
+			let last = parts[parts.length - 1];
+			let title = last.replace('-', ' ');
+			// First letter upper case.
+			title = title.charAt(0).toUpperCase() + title.slice(1);
+			let href = `/docs/${parts.join('/').toLowerCase()}/`;
+			let node = {
+				href: href,
+				key: k,
+				level: i + 1,
+				title: title,
+				count: sectionFacet[k],
+				open: false,
+			};
+			nodes.push(node);
+		}
+	}
+
+	// Sort by href.
+	nodes.sort((a, b) => {
+		return a.href < b.href ? -1 : 1;
+	});
+	return nodes;
 };
 
 export function newSearchStore(searchConfig, params, Alpine) {
 	let cacheWarmerUrls = params.search_cachewarmer_urls;
 
+	let setResult = function (result, loaded = true) {
+		let facets = createSectionFacetsSorted(searchConfig, result);
+		this.sectionFacets = facets;
+		this.result = result;
+		this.loaded = loaded;
+	};
+
 	let results = {
-		blank: { loaded: false },
-		main: { loaded: false },
+		blank: { loaded: false, set: setResult },
+		main: { loaded: false, set: setResult },
 		explorerData: { loaded: false },
 		// Holds the last Algolia queryID.
 		lastQueryID: '',
@@ -55,12 +104,39 @@ export function newSearchStore(searchConfig, params, Alpine) {
 		// The blank (needed for the explorer and section metadata) and the main search result.
 		results: results,
 
+		// Search related state for the explorer that should survive navigation.
+		explorer: {
+			// Signal that we need to show the hydrated/dynamic explorer.
+			showHydratedExplorer: false,
+
+			// Signal that the above is a permanent state.
+			showAlwaysHydratedExplorer: false,
+
+			// Signal that the explorer has been hydrated.
+			hydrated: false,
+
+			// A stack of key/open pairs to be opened or closed.
+			keyOpenStack: [],
+		},
+
+		shouldShowHydratedExplorer: function () {
+			return this.explorer.showHydratedExplorer || this.query.isFiltered();
+		},
+
+		shouldShowHydratedExplorerAndIsHydrated: function () {
+			return this.explorer.hydrated && this.shouldShowHydratedExplorer();
+		},
+
 		clearQuery: function () {
 			this.query = newQuery();
 		},
 
 		updateLocationWithQuery() {
 			let search = queryHandler.queryAndLocationToQueryString(this.query);
+			if (search === this.search) {
+				return;
+			}
+			this.search = search;
 			let href = window.location.pathname;
 			if (search) {
 				href += '?' + search;
@@ -105,7 +181,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 					return section.name === key.toLocaleLowerCase();
 				});
 
-				m = this.metaResult.get(key);
+				let m = this.metaResult.get(key);
 				if (!m && sectionConfigIdx !== -1) {
 					let index = searchConfig.sectionsSorted[sectionConfigIdx];
 					m = { title: index.title, linkTitle: index.title, excerpt: '' };
@@ -121,7 +197,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 				return m;
 			};
 
-			searchEffectAdHoc = Alpine.effect(() => {
+			const searchEffectAdHoc = Alpine.effect(() => {
 				debug('searchEffectAdHoc', this.searchGroupAdHoc.length);
 				searcher.searchFactories(this.searchGroupAdHoc, null);
 			});
@@ -150,8 +226,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 						return newRequestCallback(
 							createSectionRequest(query),
 							(result) => {
-								this.results.main.result = result;
-								this.results.main.loaded = true;
+								this.results.main.set(result);
 							},
 							{
 								query: query,
@@ -169,9 +244,20 @@ export function newSearchStore(searchConfig, params, Alpine) {
 
 		withExplorerData: function (callback = (data) => {}, createExplorerNodeRequest, sectionKeys = []) {
 			if (this.results.explorerData.loaded) {
-				callback(this.explorerData.data);
+				callbackWrapper(this.explorerData.data);
 				return;
 			}
+
+			let callbackWrapper = (data) => {
+				data.blank.sectionFacets.forEach((section) => {
+					let m = data.blank.getSectionMeta(section.key);
+					if (m) {
+						// Use the title from the meta data index instead of the facet name.
+						section.title = m.title;
+					}
+				});
+				callback(data);
+			};
 
 			this.withBlank((blank) => {
 				let data = {
@@ -179,7 +265,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 					blank: blank,
 				};
 				if (sectionKeys.length === 0) {
-					callback(data);
+					callbackWrapper(data);
 					return;
 				}
 				let loadCount = 0;
@@ -188,7 +274,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 					if (loadCount === sectionKeys.length) {
 						this.results.explorerData.data = data;
 						this.results.explorerData.loaded = true;
-						callback(data);
+						callbackWrapper(data);
 						__stopWatch('withExplorerData.done');
 					}
 				};
@@ -262,7 +348,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 							throw `invalid state: ${result.index}`;
 						}
 						debug('withBlank.blank.result:', result);
-						this.results.blank.result = result;
+						this.results.blank.set(result, false);
 						markLoaded();
 					},
 					{
@@ -285,7 +371,9 @@ export function newSearchStore(searchConfig, params, Alpine) {
 
 		let hitsPerPage = 0;
 		let q = '';
-		let filters = sectionConfig.filters || '';
+		// TODO(bep) we have removed the QA section from explorer/search, but the
+		// data is still there. The docType filter below can be remove when we have completed the migration.
+		let filters = sectionConfig.filters || 'NOT docType:community';
 		let facetFilters = [];
 		let attributesToHighlight = [];
 		let analyticsTags = [];
@@ -424,6 +512,11 @@ const normalizeResult = function (self, result) {
 			if (k === 'docType' || k.startsWith('section.')) {
 				let obj = {};
 				Object.entries(v).forEach(([kk, vv]) => {
+					// TODO(bep) we have removed the QA section from explorer/search, but the
+					// data is still there. The docType filter below can be remove when we have completed the migration.
+					if (k == 'docType' && kk == 'community') {
+						return;
+					}
 					let m = self.metaProvider.getSectionMeta(kk.toLocaleLowerCase());
 					obj[kk] = { count: vv, meta: m };
 				});
@@ -466,7 +559,6 @@ const normalizeResult = function (self, result) {
 					meta = facetMeta.meta;
 				}
 
-				let isGhostSection = k === 'community > question';
 				// These are also indexed on its own.
 				let hasObjectID = sectionLvl0 == 'products' || sectionLvl0 == 'guides';
 				position++;
@@ -474,7 +566,7 @@ const normalizeResult = function (self, result) {
 				sections.push({
 					key: k,
 					count: sectionFacets[k],
-					isGhostSection: isGhostSection,
+					isGhostSection: false,
 					sectionLvl0: sectionLvl0,
 					meta: meta,
 					// Used for Analytics.
@@ -586,6 +678,7 @@ class SearchBatcher {
 		if (fileCacheUrl) {
 			debug('fetch data from file cache:', fileCacheUrl);
 			const response = await fetch(fileCacheUrl, { credentials: 'same-origin' });
+
 			if (response.ok) {
 				let data = await response.json();
 				if (Array.isArray(data)) {
@@ -723,11 +816,11 @@ class Searcher {
 				requestCallbacks.push(requestCallback);
 			}
 			if (cbf.status() !== RequestCallBackStatus.On) {
-				debug('remove inactive search factory');
+				debugDev('remove inactive search factory');
 				factories.splice(i, 1);
 			}
 		}
-		debug('factories length:', factories.length);
+		debugDev('factories length:', factories.length);
 		this.search(...requestCallbacks);
 	}
 

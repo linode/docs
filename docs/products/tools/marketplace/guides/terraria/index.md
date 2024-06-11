@@ -1,21 +1,18 @@
 ---
+title: "Deploy Terraria through the Linode Marketplace"
 description: "This guide provides you with step-by-step instructions for deploying the two-dimensional sandbox survival game, Terraria, on a Linode using the One-Click Marketplace App."
-keywords: ['terraria','marketplace app', 'game server']
 published: 2019-04-05
 modified: 2024-01-22
-modified_by:
-  name: Linode
-title: "Deploy Terraria through the Linode Marketplace"
+keywords: ['terraria','marketplace app', 'game server']
 external_resources:
  - '[The Official Terraria Wiki](https://terraria.gamepedia.com/Terraria_Wiki)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-terraria-with-marketplace-apps/', '/platform/one-click/deploying-terraria-with-one-click-apps/','/guides/deploying-terraria-with-one-click-apps/','/guides/deploying-terraria-with-marketplace-apps/','/guides/terraria-marketplace-app/']
-authors: ["Linode"]
 _build:
   list: false
 noindex: true
-deprecated: true
 
+deprecated: true
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
 Terraria has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only. For information on how to deploy and set up Terraria manually on a Compute Instance, see our [How to Setup a Terraria Linux Server](/docs/guides/host-a-terraria-server-on-your-linode/) guide.
@@ -27,9 +24,9 @@ Hosting your own Terraria server gives you control over the world, the players, 
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Terraria should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
@@ -52,7 +49,7 @@ Hosting your own Terraria server gives you control over the world, the players, 
 - **Port:** The port number that the game server listens on.
 - **Seed:** A [random seed](https://terraria.gamepedia.com/World_Seed) used by the world generation algorithm to create a unique world. For example: `qazwsx123`.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -101,4 +98,4 @@ The Terraria Marketplace App will install the following required software on you
 | [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Port 7777, unless otherwise specified, will allow outgoing and incoming tcp and udp traffic. |
 | [**Fail2ban**](https://www.fail2ban.org/wiki/index.php/Main_Page) | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

@@ -1,17 +1,16 @@
 ---
 slug: an-overview-of-the-cloud-manager
+title: "An Overview of the Cloud Manager"
 description: "This guide provides you with an overview of the Cloud Manager and covers how to locate features within Cloud Manager, create Linodes and more."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-12-20
+modified: 2023-09-20
 keywords: ["classic manager","cloud manager","linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/manager/a-classic-to-cloud-manager-overview-guide/','/platform/manager/an-overview-of-the-linode-cloud-manager/', '/guides/an-overview-of-the-linode-cloud-manager/']
-published: 2019-12-20
-modified: 2023-09-20
-modified_by:
-  name: Linode
 image: AnOverviewoftheLinodeCloudManager.png
-title: "An Overview of the Cloud Manager"
 tags: ["linode platform","cloud manager"]
-authors: ["Linode"]
 ---
 
 The [Cloud Manager](https://cloud.linode.com/) provides a user-friendly interface to manage your infrastructure, user accounts, billing and payments, and to open and track support tickets. You can easily create Linode instances, manage Kubernetes clusters, add backups to your Linodes, deploy Marketplace Apps, track event notifications, create Object Storage buckets, and more. The Cloud Manager is implemented solely atop our [public APIv4](/docs/api), which gives you access to all our latest products and services.
@@ -26,35 +25,35 @@ This guide provides an overview of the features and services available in the Cl
 
 ## Linodes
 
-{{< content "cloud-linodes-shortguide" >}}
+{{% content "cloud-linodes-shortguide" %}}
 
 ### Find Your Disks
 
-{{< content "cloud-disks-shortguide" >}}
+{{% content "cloud-disks-shortguide" %}}
 
 ### Reboot Your Linode
 
-{{< content "cloud-reboot-shortguide" >}}
+{{% content "cloud-reboot-shortguide" %}}
 
 ### Delete a Public IP Address
 
-{{< content "cloud-delete-ip-shortguide" >}}
+{{% content "cloud-delete-ip-shortguide" %}}
 
 ## Volumes
 
-{{< content "cloud-volumes-shortguide" >}}
+{{% content "cloud-volumes-shortguide" %}}
 
 ## Object Storage
 
-{{< content "cloud-object-storage-shortguide" >}}
+{{% content "cloud-object-storage-shortguide" %}}
 
 ## NodeBalancers
 
-{{< content "cloud-nodebalancers-shortguide" >}}
+{{% content "cloud-nodebalancers-shortguide" %}}
 
 ## Domains (DNS Manager)
 
-{{< content "cloud-domains-shortguide" >}}
+{{% content "cloud-domains-shortguide" %}}
 
 ### Zone Files
 
@@ -71,35 +70,35 @@ The Cloud Manager automatically ensures that your Domain's zone file does not co
 
 ## Longview
 
-{{< content "cloud-longview-shortguide" >}}
+{{% content "cloud-longview-shortguide" %}}
 
 ## Marketplace
 
-{{< content "cloud-marketplace-shortguide" >}}
+{{% content "cloud-marketplace-shortguide" %}}
 
 ## Kubernetes
 
-{{< content "cloud-kubernetes-shortguide" >}}
+{{% content "cloud-kubernetes-shortguide" %}}
 
 ## StackScripts
 
-{{< content "cloud-stackscripts-shortguide" >}}
+{{% content "cloud-stackscripts-shortguide" %}}
 
 ## Images
 
-{{< content "cloud-images-shortguide" >}}
+{{% content "cloud-images-shortguide" %}}
 
 ## Account (Management and Billing)
 
-{{< content "cloud-management-and-billing-shortguide" >}}
+{{% content "cloud-management-and-billing-shortguide" %}}
 
 ### Find Credit Remaining
 
-{{< content "cloud-credits-shortguide" >}}
+{{% content "cloud-credits-shortguide" %}}
 
 ### Printing an Invoice
 
-{{< content "cloud-invoices-shortguide" >}}
+{{% content "cloud-invoices-shortguide" %}}
 
 ### Password Management
 
@@ -119,12 +118,12 @@ For more details, see the [Understanding Events and Activity Feeds](/docs/produc
 
 The **My Profile** section of Cloud Manager provides access to various settings related to your Linode account's profile. This area of Cloud Manager contains access to the following features and settings:
 
-- [Changing your account's associated email address](/docs/products/platform/accounts/guides/manage-users/#changing-your-email-address) and timezone
-- [Resetting your Account password](/docs/products/platform/accounts/guides/manage-users/#changing-or-resetting-your-linode-cloud-manager-password)
-- [Enabling two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/#enable-two-factor-authentication)
+- [Changing your account's associated email address](/docs/products/platform/accounts/guides/change-user-email/) and timezone
+- [Resetting your Account password](/docs/products/platform/accounts/guides/reset-user-password/)
+- [Enabling two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/#2fa-two-factor-authentication)
 - [Enabling Third Party Authentication (TPA)](/docs/guides/third-party-authentication/)
 - Managing trusted devices
-- [Adding and managing public SSH keys](/docs/guides/use-public-key-authentication-with-ssh/#upload-your-ssh-key-to-the-cloud-manager)
+- [Adding and managing public SSH keys](/docs/products/platform/accounts/guides/manage-ssh-keys/)
 - [Managing LISH authentication methods](/docs/products/compute/compute-instances/guides/lish/#add-your-public-key)
 - [Adding and managing personal and third party API v4 access tokens](/docs/products/tools/api/get-started/#get-an-access-token)
 - [Creating and managing OAuth Apps](/docs/products/tools/api/guides/create-an-oauth-app-with-the-python-api-library/#obtaining-a-client-id-and-a-client-secret)
@@ -133,15 +132,15 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 
 ### API Keys / API Tokens
 
-{{< content "cloud-api-keys-shortguide" >}}
+{{% content "cloud-api-keys-shortguide" %}}
 
 ### OAuth Apps
 
-{{< content "cloud-oauth-apps-shortguide" >}}
+{{% content "cloud-oauth-apps-shortguide" %}}
 
 ### Manage Email Event Notifications
 
-{{< content "cloud-email-notifications-shortguide" >}}
+{{% content "cloud-email-notifications-shortguide" %}}
 
 ## User Interface Enhancements
 

@@ -1,14 +1,14 @@
 ---
 slug: how-to-install-moodle-on-ubuntu-server-2004
+title: "Install Moodle on Ubuntu 20.04"
+title_meta: "How to Install Moodle on Ubuntu Server 20.04"
 description: 'This guide will show you how to install Moodle, a popular open-source learning management system used in online teaching, on Ubuntu 20.04.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-06-25
 keywords: ['moodle','education','training','learning management system','lms','install on ubuntu 20.04']
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-25
-modified_by:
-  name: Nathaniel Stickman
-title: "Install Moodle on Ubuntu 20.04"
-title_meta: "How to Install Moodle on Ubuntu Server 20.04"
 external_resources:
 - '[Moodle](https://moodle.org/)'
 relations:
@@ -16,7 +16,6 @@ relations:
         key: how-to-install-moodle
         keywords:
             - distribution: Ubuntu 20.04 LTS
-authors: ["Nathaniel Stickman"]
 ---
 
 [Moodle](https://moodle.org/) is a popular, free, and open-source Learning Management System (LMS). With Moodle, you can create a fully-featured website for education and training courses, suitable for fully online, hybrid, and in-person classroom experiences. The Moodle platform is highly customizable and takes a modular approach to features, so it is extensible and adaptable to your needs. This guide shows you how to get a Moodle website up and running on an Ubuntu 20.04 server.
@@ -31,7 +30,7 @@ authors: ["Nathaniel Stickman"]
 
     For this guide, you do not need to configure a virtual host for Apache. However, you should follow all other non-optional sections in the guide linked above.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

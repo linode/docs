@@ -1,12 +1,12 @@
 ---
 title: "Premium Compute Instances"
-linkTitle: "Premium"
 description: "Premium instances guarantee a minimum hardware class utilizing the latest available AMD EPYC™ CPUs, providing consistent high-performance for your workloads."
 published: 2023-07-06
-modified: 2024-02-14
+modified: 2024-03-11
+linkTitle: "Premium"
 ---
 
-Premium Compute Instances are virtual machines that come equipped with the latest AMD EPYC™ CPUs, ensuring your applications are running on the latest hardware with consistent high-peformance. Premium instances build off of our [Dedicated CPU instances](/docs/products/compute/compute-instances/plans/dedicated-cpu/), offering similar plan resources but with a guaranteed minimum hardware model.
+Premium Compute Instances are virtual machines that come equipped with the latest AMD EPYC™ CPUs, ensuring your applications are running on the latest hardware with consistent high-performance. Premium instances build off of our [Dedicated CPU instances](/docs/products/compute/compute-instances/plans/dedicated-cpu/), offering similar plan resources but with a guaranteed minimum hardware model.
 
 **Premium plans are ideal for enterprise-grade, business-critical, and latency-sensitive applications, including any workload that benefits from consistent performance with the latest hardware.**
 
@@ -69,9 +69,11 @@ Premium Compute Instances are currently available in select data centers.
 | Resource | Available Plans |
 | -- | -- |
 | vCPU cores | 2-64 cores |
-| Memory | 4 GB - 512 GB |
+| Memory | 4 GB - 512 GB\* |
 | Storage | 80 GB - 7,200 GB |
 | Outbound Network Transfer | 4 TB - 12 TB |
 | Outbound Network Bandwidth | 4 Gbps - 12 Gbps |
+
+\*512 GB plans are in limited availability.
 
 Pricing starts at $43/month for a Premium CPU Compute Instance with 2 vCPU cores, 4GB of memory, and 80 GB of SSD storage. Pricing may vary by region. Review the [Pricing page](https://www.linode.com/pricing/) for additional plans and their associated costs. Review the [Compute Instance Plan Types](/docs/products/compute/compute-instances/plans/) page to learn more about other instance types.

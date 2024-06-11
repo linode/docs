@@ -1,27 +1,24 @@
 ---
+title: "Deploy Plesk through the Linode Marketplace"
 description: "This guide shows how to install and configure Plesk using the Linode Marketplace Apps. Plesk is a leading WordPress and website management control panel."
+published: 2019-03-25
+modified: 2024-05-21
 keywords: ['plesk','marketplace', 'cms']
 tags: ["linode platform","cms","marketplace","cloud-manager"]
-published: 2019-03-25
-modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy Plesk through the Linode Marketplace"
 external_resources:
  - '[Plesk Support](https://support.plesk.com/hc/en-us)'
  - '[Plesk Documentation](https://docs.plesk.com/en-US/obsidian/)'
  - '[Plesk Help Center](https://support.plesk.com/hc/en-us/categories/201413825-Technical-Questions)'
 aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/','/guides/deploying-plesk-with-marketplace-apps/','/platform/one-click/deploy-plesk-with-one-click-apps/','/guides/deploy-plesk-with-one-click-apps/','/guides/plesk-marketplace-app/']
-authors: ["Linode"]
 ---
 
 [Plesk](https://www.plesk.com) is a leading WordPress and website management platform and control panel. Plesk lets you build and manage multiple websites from a single dashboard to configure web services, email, and other applications. Plesk features hundreds of extensions, plus a complete WordPress toolkit. Use the Plesk Marketplace App to manage websites hosted on your Linode.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Plesk should be fully installed within 15 minutes after the Compute Instance has finished provisioning.
@@ -29,9 +26,13 @@ authors: ["Linode"]
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
-- **Recommended minimum plan:** All plan types and sizes can be used.
+- **Supported distributions:** Ubuntu 22.04 LTS
+- **Suggested minimum plan:** All plan types and sizes can be used.
 
+- **SOA Email Address** *(required):* An email address for free Let's Encrypt SSL.
+{{% content "marketplace-required-limited-user-shortguide" %}}
+
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 ## Getting Started after Deployment
 
 ### Access your Plesk Site
@@ -40,11 +41,7 @@ authors: ["Linode"]
 
         https://[domain]/login_up.php
 
-    {{< note type="alert" >}}
-    The Plesk dashboard is only accessible over an *HTTPS* connection (not *HTTP*). When accessing it, your browser may warn you that the connection is not private, is not secure, or that there is a potential security risk. You must accept this risk to continue.
-    {{< /note >}}
-
-1.  Once you navigate to that URL, a login prompt appears. Use the following credentials.
+1.  Once you navigate to the URL, a login prompt appears. Use the following credentials:
 
     - **Username:** `root`
     - **Password:** The root password you entered when creating the Compute Instance.
@@ -59,4 +56,4 @@ authors: ["Linode"]
 
     ![Plesk Dashboard](plesk-dashboard-screen.png)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

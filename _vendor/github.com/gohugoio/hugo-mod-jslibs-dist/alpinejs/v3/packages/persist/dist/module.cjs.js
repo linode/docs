@@ -1,22 +1,46 @@
 var __defProp = Object.defineProperty;
-var __markAsModule = (target) => __defProp(target, "__esModule", {value: true});
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __export = (target, all) => {
   for (var name in all)
-    __defProp(target, name, {get: all[name], enumerable: true});
+    __defProp(target, name, { get: all[name], enumerable: true });
 };
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // packages/persist/builds/module.js
-__markAsModule(exports);
-__export(exports, {
-  default: () => module_default
+var module_exports = {};
+__export(module_exports, {
+  default: () => module_default,
+  persist: () => src_default
 });
+module.exports = __toCommonJS(module_exports);
 
 // packages/persist/src/index.js
 function src_default(Alpine) {
-  Alpine.magic("persist", (el, {interceptor}) => {
+  let persist = () => {
     let alias;
-    let storage = localStorage;
-    return interceptor((initialValue, getter, setter, path, key) => {
+    let storage;
+    try {
+      storage = localStorage;
+    } catch (e) {
+      console.error(e);
+      console.warn("Alpine: $persist is using temporary storage since localStorage is unavailable.");
+      let dummy = /* @__PURE__ */ new Map();
+      storage = {
+        getItem: dummy.get.bind(dummy),
+        setItem: dummy.set.bind(dummy)
+      };
+    }
+    return Alpine.interceptor((initialValue, getter, setter, path, key) => {
       let lookup = alias || `_x_${path}`;
       let initial = storageHas(lookup, storage) ? storageGet(lookup, storage) : initialValue;
       setter(initial);
@@ -35,13 +59,27 @@ function src_default(Alpine) {
         return func;
       };
     });
-  });
+  };
+  Object.defineProperty(Alpine, "$persist", { get: () => persist() });
+  Alpine.magic("persist", persist);
+  Alpine.persist = (key, { get, set }, storage = localStorage) => {
+    let initial = storageHas(key, storage) ? storageGet(key, storage) : get();
+    set(initial);
+    Alpine.effect(() => {
+      let value = get();
+      storageSet(key, value, storage);
+      set(value);
+    });
+  };
 }
 function storageHas(key, storage) {
   return storage.getItem(key) !== null;
 }
 function storageGet(key, storage) {
-  return JSON.parse(storage.getItem(key, storage));
+  let value = storage.getItem(key, storage);
+  if (value === void 0)
+    return;
+  return JSON.parse(value);
 }
 function storageSet(key, value, storage) {
   storage.setItem(key, JSON.stringify(value));
@@ -49,3 +87,7 @@ function storageSet(key, value, storage) {
 
 // packages/persist/builds/module.js
 var module_default = src_default;
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  persist
+});

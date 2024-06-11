@@ -2,14 +2,11 @@
 title: "Deploy a Redis Sentinel Cluster through the Linode Marketplace"
 description: "This guide shows how you can install Redis database, a open-source, in-memory, data structure store, with optional write and persistence of data on a disk."
 published: 2023-03-20
-modified_by:
-  name: Linode
 keywords: ['redis','data store','cluster','database']
 tags: ["linode platform","database","marketplace","cloud-manager"]
 external_resources:
 - '[Introduction to Redis Data Types](https://redis.io/topics/data-types-intro)'
 - '[Redis Replication](https://redis.io/topics/replication)'
-authors: ["Linode"]
 ---
 
 [Redis](https://redis.io/) is an open-source, in-memory, data-structure store, with the optional ability to write and persist data to a disk, which can be used as a key-value database, cache, and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets, and others.
@@ -20,9 +17,9 @@ This Marketplace App deploys 3 or 5 Compute Instances to create a highly availab
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-app-cluster-shortguide">}}
+{{% content "deploy-marketplace-app-cluster-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** The Redis cluster should be fully deployed and configured within 15-30 minutes after the first Compute Instance has finished provisioning.
@@ -37,7 +34,7 @@ This Marketplace App deploys 3 or 5 Compute Instances to create a highly availab
 
 - **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/) to create one.
 
-- **Limited sudo user** *(required)*: A limited user account with sudo access is created as part of this cluster deployment. Enter your preferred username for this limited user. Please note that the password is automatically created. See [Obtaining Usernames and Passwords](#obtaining-usernames-and-passwords).
+- **Limited sudo user** *(required)*: A limited user account with sudo access is created as part of this cluster deployment. Enter your preferred username for this limited user. The password is automatically created. See [Obtaining Usernames and Passwords](#obtaining-usernames-and-passwords).
 
 - **Add SSH Keys to all nodes?** If you select *yes*, any SSH Keys that are added to the root user account (in the **SSH Keys** section), are also added to your limited user account on all deployed Compute Instances.
 
@@ -55,7 +52,7 @@ The following fields are used when creating your self-signed TLS/SSL certificate
 - **CA Common name:** This is the common name for the self-signed Certificate Authority.
 - **Common name:** This is the common name that is used for the domain.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -108,4 +105,4 @@ There are several types of Redis configurations you can use. For example, you ca
 
 Once you have determined how you would like to configure your Redis deployment, connect to your [Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) to complete your configuration.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

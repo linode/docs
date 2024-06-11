@@ -2,19 +2,16 @@
 title: Capture MySQL Metrics with Longview
 title_meta: Capture MySQL Metrics with Linode Longview
 description:  "This guide discusses the Linode Longview client, including how to configure Longview for the MySQL database server, how to interact with data from Longview, and more."
+published: 2013-11-06
+modified: 2023-05-24
 keywords: ["Longview", "MySQL", "statistics"]
 tags: ["cloud manager","statistics","monitoring","linode platform","mysql"]
 aliases: ['/longview/longview-for-mysql/','/platform/longview/longview-app-for-mysql/','/platform/longview/what-is-the-linode-longview-app-for-mysql/','/guides/what-is-the-linode-longview-app-for-mysql/']
-published: 2013-11-06
-modified: 2023-05-24
-modified_by:
-  name: Linode
 relations:
     platform:
         key: what-is-longview
         keywords:
             - distribution: MySQL
-authors: ["Linode"]
 ---
 
 
@@ -131,7 +128,7 @@ You should now be able to see Longview data for MySQL. If that's not the case, p
 
 You'll see the current version of MySQL listed on the upper left-hand corner.
 
-Hover over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/docs/products/tools/longview/get-started/#longview-s-data-explained). The next sections cover the Longview MySQL App in detail.
+Hover over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/docs/products/tools/longview/guides/metrics/). The next sections cover the Longview MySQL App in detail.
 
 ### Queries
 
@@ -155,19 +152,19 @@ The **Aborted** graph shows the number of aborted MySQL connections and clients 
 
 ### CPU
 
-The **CPU** graph shows the percentage of your system's CPU being used by MySQL at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/products/tools/longview/get-started/#overview).
+The **CPU** graph shows the percentage of your system's CPU being used by MySQL at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/products/tools/longview/guides/metrics/#overview).
 
 ### RAM
 
-The **RAM** graph shows the amount of RAM or memory being used by MySQL at the selected time. If you want to see your system's total memory use instead, check the [Overview tab](/docs/products/tools/longview/get-started/#overview).
+The **RAM** graph shows the amount of RAM or memory being used by MySQL at the selected time. If you want to see your system's total memory use instead, check the [Overview tab](/docs/products/tools/longview/guides/metrics/#overview).
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by MySQL at the selected time. To see the total IO instead, visit the [Disks tab](/docs/products/tools/longview/get-started/#disks).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by MySQL at the selected time. To see the total IO instead, visit the [Disks tab](/docs/products/tools/longview/guides/metrics/#disks).
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your system spawned by MySQL at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your system, see the [Processes tab](/docs/products/tools/longview/get-started/#processes).
+The **Process Count** graph shows the total number of processes on your system spawned by MySQL at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your system, see the [Processes tab](/docs/products/tools/longview/guides/metrics/#processes).
 
 ## Troubleshooting
 

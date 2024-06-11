@@ -1,21 +1,19 @@
 ---
 slug: build-react-video-streaming-app
+title: "How to Build a Node and React Video Streaming App"
 description: "Learn how to build streaming software with two components: one for streaming videos and generating thumbnails, and the other for listing/playing them."
 og_description: "Learn how to build a video streaming application with two components: a server-side Node.js application that will stream videos and generate video thumbnails, and a client application in React that will list and play the videos."
+authors: ["Deven Rathore"]
+contributors: ["Deven Rathore"]
+published: 2020-08-09
 keywords: ['React','Node.js','Video streaming', "video captions", "video thumbnails"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-08-09
-modified_by:
-  name: Linode
-title: "How to Build a Node and React Video Streaming App"
-title_meta: "How to Build a Node and React Video Streaming App"
 image: BuildVidStreamApp_React_Node.png
 external_resources:
 - '[Video Stream With Node.js and HTML5](https://medium.com/better-programming/video-stream-with-node-js-and-html5-320b3191a6b6)'
 - '[Adding captions and subtitles to HTML5 video](https://developer.mozilla.org/en-US/docs/Web/Guide/Audio_and_video_delivery/Adding_captions_and_subtitles_to_HTML5_video)'
 tags: ["web applications"]
 aliases: ['/development/javascript/build-react-video-streaming-app/']
-authors: ["Deven Rathore"]
 ---
 
 ## Introduction
@@ -45,7 +43,7 @@ For this tutorial, you’ll need:
 - [FFmpeg](https://www.ffmpeg.org/download.html) installed on your workstation
 - [Node.js](https://nodejs.org/en/download/). [Node Version Manager (nvm)](https://github.com/nvm-sh/nvm) can be used to install and maintain several versions of Node on your computer.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 When following the tutorial, you can refer to the [project source code](https://github.com/Dunebook/Videostreaming-app) to compare your code with the final result.
 {{< /note >}}
 
@@ -278,7 +276,7 @@ After fetching the video metadata, we render it as a list of videos (lines 19-40
 
 On line 28, another endpoint request is made to `http://localhost:4000${video.poster}`, which will return a thumbnail of a video in the list. The `video.poster` variable is populated with a value like `/video/0/poster` from the video metadata array, so the request will have the form `http://localhost:4000/video/:id/poster`.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 We have not created the `/videos` metadata endpoint, or the `/video/:id/poster` video thumbnail endpoint yet. These will be added to the `server` project in the [Handling Requests from the Frontend](#handling-requests-from-the-frontend) section.
 {{< /note >}}
 
@@ -325,7 +323,7 @@ For the player view, we get the video `id` from the URL parameter (line 6):
 - With the `id`, we can make a request to the server to fetch metadata about the video: `http://localhost:4000/video/${this.state.videoId}/data`, on line 12.
 - In the markup for the view, the video element's `src` attribute is a link which appends the `id` to the `/video` route, and the server responds with the actual video: `http://localhost:4000/video/${this.state.videoId}`, on line 24.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 We have not created the `/video/:id/data` metadata endpoint, or the `/video/:id` video streaming endpoint yet. These will be added to the `server` project in the [Handling Requests from the Frontend](#handling-requests-from-the-frontend) section.
 {{< /note >}}
 

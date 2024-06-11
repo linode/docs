@@ -1,14 +1,13 @@
 ---
 slug: linux-vs-windows
-description: 'This guide discusses Linux vs. Windows, the difference between Linux and Windows operating systems, and which is best for your needs.'
-keywords: ['windows vs linux ','linux or windows','is linux better than windows']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-01
-modified_by:
-  name: Linode
 title: "Linux vs. Windows: What’s the Difference?"
 title_meta: "What is the Difference Between Linux and Windows?"
+description: 'This guide discusses Linux vs. Windows, the difference between Linux and Windows operating systems, and which is best for your needs.'
 authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
+published: 2022-04-01
+keywords: ['windows vs linux ','linux or windows','is linux better than windows']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 Users, system administrators, developers, and system architects debate the question of whether Windows or Linux is better for any given purpose. The answers are well-reasoned, full of prejudice, and usually arrive from practical experience. This guide covers the differences between Linux and Windows operating systems and servers. It primarily focuses on the areas of differences between desktops, licensing models, web service technology, developer support, and more.
@@ -47,7 +46,7 @@ Microsoft Windows does not publish the source to the operating system kernel, or
 
 ## Evolving GUIs: Linux vs. Microsoft
 
-Most GUIs find their origin in the [Smalltalk programming language](https://en.wikipedia.org/wiki/Smalltalk), along with Windows GUI, macOS, and XWindows roots. In the race between Windows and Linux, Windows continues to improve its GUI software, and developers are familiar with Windows GUI programming. Microsoft makes up for scripting and macro execution by adapting its PowerShell language and APIs to match the rich scripting infrastructure in Unix variants, in this case, Linux.
+Most GUIs find their origin in the [Smalltalk programming language](https://en.wikipedia.org/wiki/Smalltalk), along with Windows GUI, macOS, and X Windows roots. In the race between Windows and Linux, Windows continues to improve its GUI software, and developers are familiar with Windows GUI programming. Microsoft makes up for scripting and macro execution by adapting its PowerShell language and APIs to match the rich scripting infrastructure in Unix variants, in this case, Linux.
 
 Linux functions on 32-64 bit platforms and is less captive to different hardware platforms, providing consistency in GUI and compatibility across a wide variety of desktop hardware, including Intel, AMD, ARM, RISC-V, and other families. Older Linux versions lack many of the applications that made Windows popular. This is a problem now largely solved. Graphics, video editing, CAD, and other applications can be found on Linux using various GUIs.
 
