@@ -5,7 +5,7 @@ description: "This guide reviews Akamai's managed observability solution, Hydrol
 authors: ["John Dutton"]
 contributors: ["John Dutton"]
 published: 2024-06-11
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['observability','datastream','trafficpeak','hydrolix','logging','data logging','visualization']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Official Hydrolix Documentation](https://docs.hydrolix.io/docs/welcome)'
