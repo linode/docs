@@ -46,7 +46,7 @@ With large amounts of data, the need for standardizing data reporting becomes ev
 
 *Address data volume and retention challenges with an observability solution on the same platform as your edge delivery.*
 
-There are numerous cost and infrastructure-based challenges that are associated with large volumes of data, including: data acquisition, data storage and retention, data searching and efficiency, and more. Since TrafficPeak is built for Akamai, you can address these challenges by coupling your edge and observability solutions on a single platform.
+There are numerous cost and infrastructure-based challenges that are associated with large volumes of data, including: data acquisition, data storage and retention, data searching and efficiency, and more. Since TrafficPeak is built for Akamai, you can address these challenges by combining your edge and observability solutions on a single platform.
 
 With TrafficPeak, logs are sent directly from Akamai edge to Linode Compute using DataStream, eliminating the need for data traffic to travel outside the Akamai platform. TrafficPeak separates log processing from log storage by utilizing Compute Instances and Object Storage in tandem, uses up to 25x data compression, and offers searchable, accessible hot data retention for 15+ months.
 
