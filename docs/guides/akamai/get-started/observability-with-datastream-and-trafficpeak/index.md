@@ -4,7 +4,7 @@ title: "Large Data Observability With DataStream and Hydrolix TrafficPeak"
 description: "This guide reviews Akamai's managed observability solution, Hydrolix TrafficPeak, including product features, how TrafficPeak overcomes observability challenges, and a proven implementation architecture."
 authors: ["John Dutton"]
 contributors: ["John Dutton"]
-published: 2024-06-10
+published: 2024-06-11
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -29,14 +29,6 @@ TrafficPeak is a fully managed observability solution that works with DataStream
 ### Who Is TrafficPeak For?
 
 TrafficPeak is for Akamai customers that need an all-in-one, cost-effective, turnkey observability solution for large, petabyte-scale volumes of data.
-
-#### TrafficPeak Plans
-
-There are three options for TrafficPeak on Akamai: TrafficPeak Shared, TrafficPeak Dedicated, and TrafficPeak Bring Your Own Linode
-
--  **TrafficPeak Shared** and **TrafficPeak Dedicated**: Hosted and managed by Hydrolix.
-
--  **TrafficPeak Bring Your Own Linode**: All cloud infrastructure resides within your Linode account and is fully managed by Hydrolix.
 
 For more detailed information on features and pricing, see: [Observability on Akamai cloud computing: TrafficPeak](https://hydrolix.io/partner-program/trafficpeak/)
 
