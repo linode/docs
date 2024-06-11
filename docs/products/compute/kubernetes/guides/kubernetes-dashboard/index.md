@@ -43,7 +43,7 @@ The Cluster Dashboard can be found at the top of the Cluster's [details page](/d
 
 ## Navigating the Cluster Dashboard
 
-Once logged into the Cluster dashboard, **Workloads** for the `default` namespace will appear. This page will include information on all [Workloads](https://kubernetes.io/docs/concepts/workloads/) as defined by Kubernetes, and provide a number of options to navigate the dashboard further.
+Once logged in to the Cluster dashboard, **Workloads** for the `default` namespace will appear. This page will include information on all [Workloads](https://kubernetes.io/docs/concepts/workloads/) as defined by Kubernetes, and provide a number of options to navigate the dashboard further.
 
 ![Dashboard Home](dashboard-home.png)
 

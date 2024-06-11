@@ -36,11 +36,11 @@ Chevereto requires a valid license to use the software. To purchase a license, v
 
 ### Access your Chevereto App
 
-1.  After Chevereto has finished installing,log into your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
+1.  After Chevereto has finished installing, log in to your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
 
         ssh root@192.0.2.0
 
-1.  You should see the Chevereto welcome message when logging into the Linode. This includes instructions for accessing the Chevereto installation script in your web browser, along with the location of the credentials to the application. Replace `192.0.2.0` with your Linode’s IP address.
+1.  You should see the Chevereto welcome message when logging in to the Linode. This includes instructions for accessing the Chevereto installation script in your web browser, along with the location of the credentials to the application. Replace `192.0.2.0` with your Linode’s IP address.
 
     ![Chevereto Login Instruction](chevereto-login.png)
 

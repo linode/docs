@@ -71,7 +71,7 @@ After the Rust Marketplace App has finished deploying to your Linode, you will b
 
     <!--![Rust developer's console log in process.](rust-marketplace-developers-console.png)-->
 
-    You will be logged into the server, and the game will load.
+    You will be logged in to the server, and the game will load.
 
 ## Software Included
 

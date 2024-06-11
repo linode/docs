@@ -22,7 +22,7 @@ While a firewall is often responsible for cases of limited access, these issues 
 To learn about Lish in more detail, and for instructions on how to connect to your Compute Instance via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. A fast and simple way to access Lish is by [the your web browser option](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish).
 
 {{< note >}}
-When using Lish, you can log into your Compute Instance with the `root` user, even if `root` user login is disabled by your system's SSH configuration file.
+When using Lish, you can log in to your Compute Instance with the `root` user, even if `root` user login is disabled by your system's SSH configuration file.
 {{< /note >}}
 
 ## Is the Compute Instance Powered On?

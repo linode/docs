@@ -11,7 +11,7 @@ aliases: ['/beginners-guide/','/platform/linode-beginners-guide/','/platform/bil
 
 If you're relatively new to Linux system administration, or just new to our platform, this guide will help address some of the most common questions we receive. If you've just created your first Linode account, please first refer to our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and return here once your Compute Instance has been deployed.
 
-## How do I log into my Compute Instance?
+## How do I log in to my Compute Instance?
 
 All Compute Instances can be accessed through [Lish](/docs/products/compute/compute-instances/guides/lish/) and [SSH](/docs/guides/connect-to-server-over-ssh/) (if properly configured). Both methods provide you with command line access to your system. You can learn more about connecting to your Linode for the first time in the [connecting to your Linode with SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) section of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 

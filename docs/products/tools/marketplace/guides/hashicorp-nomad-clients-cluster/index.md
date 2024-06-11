@@ -51,7 +51,7 @@ Please be aware that each Compute Instance will appear on your invoice as a sepa
 
 ### Accessing the Nomad Web UI
 
-After deployment, you can confirm your clients have been successfully added to your cluster by logging into the Nomad Web UI and selecting **Clients** on the left sidebar. *Nomad clients are not interacted with directly*.
+After deployment, you can confirm your clients have been successfully added to your cluster by logging in to the Nomad Web UI and selecting **Clients** on the left sidebar. *Nomad clients are not interacted with directly*.
 
 ![Screenshot of Nomad Web UI Clients tab](NomadClientsTab.jpg)
 

@@ -34,13 +34,13 @@ aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel
 
 ### Access your CyberPanel App
 
-1. When the installation completes, log into your Linode via SSH, replacing `192.0.2.1` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
+1. When the installation completes, log in to your Linode via SSH, replacing `192.0.2.1` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
 
     ```command
     ssh root@192.0.2.1
     ```
 
-1. You should see the CyberPanel welcome message when logging into the Linode. This will include instructions for accessing CyberPanel, phpMyAdmin, and RainLoop in your web browser. Replace `192.0.2.1` with your Linode's IP address.
+1. You should see the CyberPanel welcome message when logging in to the Linode. This will include instructions for accessing CyberPanel, phpMyAdmin, and RainLoop in your web browser. Replace `192.0.2.1` with your Linode's IP address.
 
     ```output
     Welcome to LiteSpeed One-Click CyberPanel Server.
