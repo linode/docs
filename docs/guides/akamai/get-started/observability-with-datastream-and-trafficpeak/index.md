@@ -54,11 +54,11 @@ With TrafficPeak, logs are sent directly from Akamai edge to Linode Compute usin
 
 *Achieve observability for complex types of data with visual monitoring and data reporting.*
 
-Complex data (i.e. media delivery and gaming data) can have additional challenges: extreme sensitivity to latency, high data volumes, audience insights, application-specific data types, data compliance and security, and more. TrafficPeak’s visual monitoring and data reporting allows you to track audience size, unique viewership, SIEM data, and other audience-specific data. TrafficPeak is also monitored by Hydrolix, so you don’t need to worry about scaling tasks, and includes configurable alerting, as well as supports CMCD when using Akamai’s [Adaptive Media Delivery](https://www.akamai.com/products/adaptive-media-delivery).
+Complex data (for example, media delivery and gaming data) can have additional challenges: extreme sensitivity to latency, high data volumes, audience insights, application-specific data types, data compliance and security, and more. TrafficPeak’s visual monitoring and data reporting allows you to track audience size, unique viewership, SIEM data, and other audience-specific data. TrafficPeak is also monitored by Hydrolix (so you don’t need to worry about scaling tasks), includes configurable alerting, and supports CMCD when using Akamai’s [Adaptive Media Delivery](https://www.akamai.com/products/adaptive-media-delivery).
 
 ### Implementation
 
-It can be both time consuming and costly when implementing an observability solution to support large amounts of data. TrafficPeak addresses this by being ready-to-use out of the box for Akamai customers and works with your existing application infrastructure.
+It can be both time consuming and costly when implementing an observability solution to support large amounts of data. TrafficPeak addresses this by being ready-to-use out of the box for Akamai customers and by working with your existing application infrastructure.
 
 ## TrafficPeak Workflow Diagram
 
@@ -66,7 +66,7 @@ Below is a high-level diagram and walkthrough of a DataStream and TrafficPeak ar
 
 1.  The client makes a request for an asset, an API call, or other HTTPs request. That request is routed to the nearest Akamai edge region.
 
-1.  The request goes through the Akamai edge server and is cached or sent to the origin for a response.
+1.  If a cached response exists for the request, it is returned by the Akamai edge server. Otherwise, the request is sent to the origin for a response.
 
 1.  Delivery/security logs of this process are generated and sent to TrafficPeak on Akamai Cloud infrastructure (Linode Compute Instances for log processing and Linode Object Storage for log storage).
 
