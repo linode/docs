@@ -1,9 +1,10 @@
 ---
-slug: live-streaming-transcoding-akamai-cloud-computing
-title: "Live Streaming Transcoding with Akamai Cloud Computing"
-description: "This guide outlines design requirements for a live streaming transcoding workflow on Akamai Cloud Computing."
+slug: live-transcoding-ugc-streaming-akamai-cloud-computing
+title: "Live Transcoding for UGC Streaming on Akamai Cloud Computing"
+description: "This guide outlines design requirements for a live streaming transcoding workflow for a UGC live streaming platform on Akamai Cloud Computing."
 authors: ["Linode"]
 contributors: ["Linode"]
+tags: ["video transcoding", "live transcoding", "ugc live streaming platform"]
 published: 2024-05-06
 keywords: ['live streaming','live streaming transcoding']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +12,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 Live streaming is a key feature of many popular internet services, including social networking, video conferencing, gaming, and sports broadcasting. These services rely on live transcoding of video streams to efficiently distribute content in formats that are suited to the network and device constraints where they are viewed. Video transcoding is a compute-intensive process, so maximizing the number of video streams that can be transcoded on available hardware is a primary consideration. This transcoding efficiency can vary between the compute offerings of different infrastructure providers, and evaluations of transcoding performance should be performed when selecting a cloud infrastructure platform. As well, many live streaming services are latency-sensitive, and the geographic location of the transcoding service affects the latency of the stream. Choosing a location closer to the stream’s viewers reduces latency, so being able to run the service in compute regions that are near your audience is important.
 
-This guide covers a live transcoding architecture that supports a popular live streaming platform for user generated content (UGC) with a global audience. This platform previously utilized on-premise transcoding services, but they experienced constraints as their traffic grew in new geographies. To support the growth, a new cloud-based live transcoding service was set up alongside their existing on-premise solution. The cloud live transcoding service offered competitive transcoding efficiency, was installed in geographically-optimal regions, and significantly reduced their total egress fees.
+This guide covers a live transcoding architecture for a live streaming platform. This architecture has been implemented and proven by a profiled Akamai customer that operates a popular live streaming platform for user generated content (UGC) with a global audience. This customer previously utilized on-premise transcoding services, but they experienced constraints as their traffic grew in new geographies. To support the growth, a new cloud-based live transcoding service was set up alongside their existing on-premise solution. The cloud live transcoding service offered competitive transcoding efficiency, was installed in geographically-optimal regions, and significantly reduced their total egress fees.
 
 ## Live Streaming Transcoding Workflow
 
@@ -53,7 +54,7 @@ This solution creates a live video transcoding service on the Akamai cloud compu
 
 1. The live origin service directs streams to a live transcoding service. The streams are directed according to the region of the audience for the stream. For US audiences, the streams are sent to an on-premise live transcoding service. For North American, non-US audiences, the streams are directed to the cloud live transcoding service.
 
-1. The cloud live transcoding service ingests video streams from the live origin. Need detail about how this happens; is there a local load balancer for the transcoding cluster? Is object storage used to store ingested video streams? What kind of request is being made from the live origin to the transcoding service?
+1. The cloud live transcoding service ingests video streams from the live origin.
 
 1. Origin video streams are transcoded by compute instances in the transcoding cluster into desired output formats. Block storage volumes attached to each compute instance store temporary files created during the transcoding process. Live streaming traffic flows can sometimes increase in unpredictable bursts, so a scaling mechanism for the number of available compute instances can be set up.
 
