@@ -1,4 +1,4 @@
-import { setIsTranslating, isMobile, toggleBooleanClass } from '../main/helpers/index';
+import { setIsTranslating, isMobile, toggleBooleanClass } from '../main/helpers/helpers';
 
 (function () {
 	if (!window.turbolinksLoaded) {

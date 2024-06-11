@@ -71,9 +71,9 @@ $settings['trusted_host_patterns'] = array(
 {{< /file >}}
 
 
-    {{< note respectIndent=false >}}
-*trusted_host_patterns* also accepts IP addresses or localhost.
-{{< /note >}}
+    {{< note >}}
+    `trusted_host_patterns` also accepts IP addresses or localhost.
+    {{< /note >}}
 
 ## Configure Apache 2.4
 

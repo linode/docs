@@ -43,7 +43,7 @@ The steps in this guide require root privileges, and commands are run with `sudo
 
 1.  Create an Object Storage bucket to hold your backup repository. Follow the [Create a Bucket](/docs/products/storage/object-storage/guides/manage-buckets/) guide if you do not already have one.
 
-    {{< content "object-storage-cancellation-shortguide" >}}
+    {{% content "object-storage-cancellation-shortguide" %}}
 
 1.  [Generate Object Storage access keys](/docs/products/storage/object-storage/guides/access-keys/).
 
@@ -59,11 +59,11 @@ The steps in this guide require root privileges, and commands are run with `sudo
 
 ## Install Restic
 
-{{< content "install-restic-shortguide" >}}
+{{% content "install-restic-shortguide" %}}
 
 ## Create the Restic Repository
 
-{{< content "create-restic-repository-shortguide" >}}
+{{% content "create-restic-repository-shortguide" %}}
 
 ## Backup All Databases
 

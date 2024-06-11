@@ -28,7 +28,7 @@ This guide walks you through the steps needed to deploy a Kubernetes cluster usi
     {{< /note >}}
 1. Download and [install Pulumi](https://www.pulumi.com/docs/install/) on your local machine.
 1. Create a free [Pulumi Cloud account](https://app.pulumi.com/signup).
-1. Review the [Getting Started With Pulumi](/docs/guides/deploy-in-code-with-pulumi/) guide to familiarize yourself with Pulumi concepts if you have not used the tool before. You need to be familiar with Pulumi and one of the [supported programming languages](https://www.pulumi.com/docs/languages-sdks/). In this guide, Typescript is used for the code examples.
+1. Review the [Getting Started With Pulumi](/docs/guides/deploy-in-code-with-pulumi/) guide to familiarize yourself with Pulumi concepts if you have not used the tool before. You need to be familiar with Pulumi and one of the [supported programming languages](https://www.pulumi.com/docs/languages-sdks/). In this guide, TypeScript is used for the code examples.
 1. [Install kubectl](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#install-kubectl) on your local machine.
 
 ## Create your Pulumi Infrastructure Code
@@ -318,9 +318,9 @@ Pulumi includes a `destroy` command to remove resources managed by Pulumi.
 
     View in Browser (Ctrl+O): https://app.pulumi.com/team-ce/lke-cluster/dev/previews/76104ab8-eaf1-4b09-b361-11693a5da0b2
 
-        Type                        Name             Plan       
-    -   pulumi:pulumi:Stack         lke-cluster-dev  delete     
-    -   └─ linode:index:LkeCluster  foobar           delete     
+        Type                        Name             Plan
+    -   pulumi:pulumi:Stack         lke-cluster-dev  delete
+    -   └─ linode:index:LkeCluster  foobar           delete
 
 
     Outputs:
@@ -368,4 +368,4 @@ Pulumi includes a `destroy` command to remove resources managed by Pulumi.
       details
     ```
 
-    If you want to continue deleted the cluster, select `yes` after the preview and press `<Enter>`. Pulumi now deletes the cluster and the nodepool.
+    If you want to continue deleted the cluster, select `yes` after the preview and press `<Enter>`. Pulumi now deletes the cluster and the node pool.

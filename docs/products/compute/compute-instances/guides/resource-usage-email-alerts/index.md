@@ -4,4 +4,4 @@ description: "Learn how to turn on and off email alerts for usage activity on va
 aliases: ['/products/tools/monitoring/guides/monitoring-email-alerts/']
 ---
 
-{{< content "monitoring-configure-email-alerts-shortguide" >}}
+{{% content "monitoring-configure-email-alerts-shortguide" %}}

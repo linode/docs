@@ -65,7 +65,7 @@ explorer_icon = "#icon-explorer--products"
 name = "guides"
 filters = "section.lvl0:guides"
 weight = 20
-title = "Guides"
+title = "Cloud Guides & Tutorials"
 noun = "Guide"
 explorer_icon = "#icon-explorer--guides"
 
@@ -174,10 +174,7 @@ target = "assets/linode/attribution-inline.js"
 path = "github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3"
 
 [[module.imports]]
-path = "github.com/gohugoio/hugo-mod-jslibs/turbo/v7"
-
-[[module.imports]]
-path = "github.com/gohugoio/hugo-mod-jslibs/instantpage"
+path = "github.com/gohugoio/hugo-mod-jslibs/turbo/v8"
 
 [security]
   enableInlineShortcodes = false

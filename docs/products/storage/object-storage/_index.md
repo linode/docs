@@ -76,7 +76,7 @@ Storage and network transfer overages for Object Storage vary by data center due
 | São Paulo, Brazil | $0.028/GB | $0.007/GB |
 {{< /table >}}
 
-{{< content "object-storage-cancellation-shortguide" >}}
+{{% content "object-storage-cancellation-shortguide" %}}
 
 ## Technical Specifications and Considerations {#specifications}
 

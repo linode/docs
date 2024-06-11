@@ -1,4 +1,5 @@
-import { smartQueue, getCookie, setCookie, supportsCookies, createUUID } from '../helpers';
+import { getCookie, setCookie, supportsCookies, createUUID } from '../helpers/helpers';
+import { smartQueue } from '../helpers/smartqueue';
 
 const unspecificedUserToken = 'unspecified';
 const userTokenCookieName = 'linode_anonymous_usertoken';

@@ -21,7 +21,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 This guide is intended for Linodes running on our KVM hypervisor. For older Xen Linodes, see [this](/docs/guides/run-a-distributionsupplied-kernel-with-pvgrub/) guide.
 {{< /note >}}
 
-{{< content "all-linodes-kvm-shortguide" >}}
+{{% content "all-linodes-kvm-shortguide" %}}
 
 ## Install the Kernel and Configure Grub
 
@@ -64,7 +64,7 @@ title CentOS 6
 {{< /file >}}
 
 
-5.  In the Linode Manager, edit your Linode's [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#editing-a-configuration-profile) by selecting the **Grub (Legacy)** option within the *Kernel* drop-down menu.
+5.  In the Linode Manager, edit your Linode's [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#edit-a-configuration-profile) by selecting the **Grub (Legacy)** option within the *Kernel* drop-down menu.
 
 6.  Make sure the root device is specified as **/dev/sda**, and click **Save Profile** at the bottom of the page to confirm your changes.
 

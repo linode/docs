@@ -42,7 +42,7 @@ The steps in this section show you how to install NPM along with Node.js. It als
 
 ### How to Install NPM
 
-Since NPM is packaged with Node.js, you just need to install Node.js. The installation path recommended by NPM is using a the Node Version Manager (nvm). This version manager helps you avoid permissions issues and version conflicts with NPM packages. To install nvm follow the steps in our [How to Install and Use the Node Version Manager NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#installing-and-configuring-nvm) guide.
+Since NPM is packaged with Node.js, you just need to install Node.js. The installation path recommended by NPM is using a the Node Version Manager (nvm). This version manager helps you avoid permissions issues and version conflicts with NPM packages. To install nvm follow the steps in our [How to Install and Use the Node Version Manager NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide.
 
 Using nvm, you can install the current stable version of Node.js, and its accompanying version of NPM using the following command:
 

@@ -198,7 +198,7 @@ set -g status-right "#(cut -d ' ' -f -3 /proc/loadavg) %H:%M %d-%b-%y"
 
 ## Servers in Tmux
 
-Whenever you launch tmux, a server is initiated. You can connect to a tmux server under a specific socket name by using the command `tmux -L <socket name>`. For example, to connect to a server with the socket name “linode_socket”, run the following command:
+Whenever you launch tmux, a server is initiated. You can connect to a tmux server under a specific socket name by using the command `tmux -L <socket name>`. For example, to connect to a server with the socket name `linode_socket`, run the following command:
 
     tmux -L linode_socket
 

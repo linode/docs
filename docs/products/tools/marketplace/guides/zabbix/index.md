@@ -17,9 +17,9 @@ aliases: ['/platform/marketplace/deploy-zabbix-with-marketplace-apps/', '/platfo
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Zabbix should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -32,11 +32,11 @@ aliases: ['/platform/marketplace/deploy-zabbix-with-marketplace-apps/', '/platfo
 
 ### Zabbix Options
 
-- **Email Address:** *(required)* SOA adress for free Let's Encrypt SSL. 
+- **Email Address:** *(required)* SOA address for free Let's Encrypt SSL.
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}} 
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domains-field-shortguide">}}
+{{% content "marketplace-custom-domains-field-shortguide" %}}
 
 - **Zabbix Server Name:** Local hostname for Zabbix server. Defaults to `zabbix-server`
 
@@ -82,4 +82,4 @@ For more on Zabbix, check out the following resources:
 - [Purchase Technical Support Contract](https://www.zabbix.com/support)
 - [Visit the Zabbix Official Forum](https://www.zabbix.com/forum)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

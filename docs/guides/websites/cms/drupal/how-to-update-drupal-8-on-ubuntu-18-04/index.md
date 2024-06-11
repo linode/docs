@@ -36,7 +36,7 @@ If you are not using Ubuntu 18.04, you can find a version of this guide for your
 
         sudo apt-get update && sudo apt-get upgrade
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 ## Create Backups
 

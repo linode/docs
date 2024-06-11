@@ -161,7 +161,7 @@ DOSWhitelist 127.0.0.*
 
 {{< /file >}}
 
-Wildcards can be used on up to the last 3 octets if necessary. Multiple DOSWhitelist commands may be used in the configuration.
+Wildcards can be used on up to the last 3 octets if necessary. Multiple `DOSWhitelist` commands may be used in the configuration.
 
 ## How to Restrict mod_evasive for Only One Virtual Host on Apache
 

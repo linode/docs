@@ -19,9 +19,9 @@ A license is required to use UTunnel. See [UTunnel's Pricing page](https://www.u
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** UTunnel should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -85,4 +85,4 @@ In order to use UTunnel VPN, you need to create an account on [UTunnel.io](https
 
 Now that you’ve deployed your UTunnel VPN instance, checkout [the official UTunnel VPN documentation](https://help.utunnel.io/About-UTunnel-VPN) to learn how to further utilize your UTunnel instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

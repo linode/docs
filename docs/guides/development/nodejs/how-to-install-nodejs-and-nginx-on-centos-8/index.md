@@ -37,14 +37,14 @@ Node.js is an open-source JavaScript runtime environment that can serve dynamic 
 1.  Set up your Linode using the [Getting Started](/docs/products/platform/get-started/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
 
     {{< note respectIndent=false >}}
-Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-fileupdate-your-system-s-hosts-file) section of the [Getting Started](/docs/products/platform/get-started/) guide.
+Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-file) section of the [Getting Started](/docs/products/platform/get-started/) guide.
     {{< /note >}}
 
 1. Install the SELinux core policy Python utilities. This will give you the ability to manage SELinux settings in a fine-grained way.
 
         sudo yum install -y policycoreutils-python-utils
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 ## Install and Configure NGINX
 
@@ -127,13 +127,13 @@ http {
         sudo firewall-cmd --zone=public --permanent --add-service=https
         sudo firewall-cmd --reload
 
-    {{< note respectIndent=false >}}
-If you plan to use any [httpd](https://en.wikipedia.org/wiki/Httpd) scripts and modules on your server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the following command:
+    {{< note >}}
+    If you plan to use any [httpd](https://en.wikipedia.org/wiki/Httpd) scripts and modules on your server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the following command:
 
-    sudo setsebool -P httpd_can_network_connect on
+        sudo setsebool -P httpd_can_network_connect on
     {{< /note >}}
 
-    {{< content "cloud-firewall-shortguide" >}}
+    {{% content "cloud-firewall-shortguide" %}}
 
 1.  Verify that there are no syntax errors in your site's configuration file.
 

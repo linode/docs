@@ -9,7 +9,7 @@
   x-data="lncDropdowns({{ $dropdowns | jsonify }})"
   @click.away="closeAll()">
   {{ range $i, $e := .dropdowns }}
-    <div x-transition.opacity x-show="!isHidden({{ $i }})" x-cloak>
+    <div x-transition.opacity x-show="!isHidden({{ $i }})">
       <div class="relative inline-block text-left">
         <div>
           <span class="rounded-sm">
@@ -24,14 +24,11 @@
                   <use href="{{ . | safeHTMLAttr }}"></use>
                 </svg>
               {{ end }}
-              <div x-show="isOpen({{ $i }})">
+              <div>
                 <svg class="fill-current text-textcolor -mr-1 ml-2 h-4 w-4">
-                  <use href="#icon--arrow-up"></use>
-                </svg>
-              </div>
-              <div x-show="!isOpen({{ $i }})">
-                <svg class="fill-current text-textcolor -mr-1 ml-2 h-4 w-4">
-                  <use href="#icon--arrow-down"></use>
+                  <use
+                    :href="isOpen({{ $i }}) ? '#icon--arrow-up' : '#icon--arrow-down'"
+                    href="#icon--arrow-down"></use>
                 </svg>
               </div>
             </button>

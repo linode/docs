@@ -37,11 +37,11 @@ The WordPress and MySQL images are maintained on Docker Hub by their respective 
 
 ### Install Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ## Set Up WordPress
 

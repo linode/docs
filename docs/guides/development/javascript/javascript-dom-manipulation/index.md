@@ -284,7 +284,7 @@ However, if you then want to adjust only one of those style properties, the `set
 To remedy this, JavaScript allows you to adjust the style attribute, and its individual properties, via the `style` property. This property makes available all of the CSS style properties of the style attribute, letting you set and adjust each one independently.
 
 {{< note >}}
-While CSS hyphenates property names, JavaScript, instead, uses camelCase. So, for instance, the CSS properties `font-weight` and `text-align` become `fontWeight` and `textAlign`, respectively, in JavaScript.
+While CSS hyphenates property names, JavaScript, instead, uses camel case. So, for instance, the CSS properties `font-weight` and `text-align` become `fontWeight` and `textAlign`, respectively, in JavaScript.
 {{< /note >}}
 
 The example below accomplishes the same style changes that were attempted with the `setAttribute()` method in the example above:

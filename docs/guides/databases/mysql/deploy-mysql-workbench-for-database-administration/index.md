@@ -210,11 +210,11 @@ MySQL stores its information in a table, which resembles a spreadsheet.
 
 8. Click between the parentheses and enter 45. Datatype **VARCHAR** is a string and the number in parentheses is the maximum length. Repeat this process to create the following fields:
 
-    *   firstName, a VARCHAR(45)
+    *   `firstName`, a VARCHAR(45)
 
-    *   phone, a VARCHAR(16)
+    *   `phone`, a VARCHAR(16)
 
-    *   email, a VARCHAR(45)
+    *   `email`, a VARCHAR(45)
 
     Once your preferred fields are set up, click the **Apply** button.  You'll get another **Apply SQL Script To Database** window.  Click **Apply** again and look for the **SQL Successful** message.
 

@@ -33,7 +33,7 @@ You must already have the client files listed below ready to transfer to the dev
 
 
 ## Transfer Client Credentials
-If you will be transferring client credentials to their respective devices over a network, you must use an encrypted transfer protocol such as [SCP or SFTP](/docs/guides/linux-system-administration-basics/#how-to-upload-files-to-a-remote-server). FTP or telnet should **not** be used because these protocols transfer data in plaintext. Windows has no native SCP or SFTP support. See [our Filezilla guide](/docs/guides/filezilla/) for transferring the VPN credentials from a Windows computer.
+If you will be transferring client credentials to their respective devices over a network, you must use an encrypted transfer protocol such as [SCP or SFTP](/docs/guides/linux-system-administration-basics/#upload-files-to-a-remote-server). FTP or telnet should **not** be used because these protocols transfer data in plaintext. Windows has no native SCP or SFTP support. See [our Filezilla guide](/docs/guides/filezilla/) for transferring the VPN credentials from a Windows computer.
 
 Local transfer options are Bluetooth, USB or some other external media. macOS can use iTunes to connect with iOS devices, and a Linux computer needs the package `gvfs-backends` installed to mount Android and iOS devices as external storage.
 

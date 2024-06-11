@@ -99,7 +99,7 @@ For example, if you have a script that prints numbers 1-10:
 
 Using `bash -c`, you can take that same script as a string and run it without exiting Fish.
 
-![fish_script](fish_script.png)
+![Screenshot of terminal](fish_script.png)
 
 
 ## Next Steps

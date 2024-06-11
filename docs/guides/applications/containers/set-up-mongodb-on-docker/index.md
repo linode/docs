@@ -51,7 +51,7 @@ You can expect an output similar to the following:
 Docker version 20.10.8, build 3967b7d
 {{< /output >}}
 
-{{< content "limited-user-note-shortguide" >}}
+{{% content "limited-user-note-shortguide" %}}
 
 ## How to Install a MongoDB Docker Container
 

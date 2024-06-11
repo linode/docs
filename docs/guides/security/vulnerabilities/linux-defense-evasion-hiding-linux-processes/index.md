@@ -10,9 +10,9 @@ tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-{{< content "hackersploit-red-team-series-note-shortguide" >}}
+{{% content "hackersploit-red-team-series-note-shortguide" %}}
 
-{{< content "hackersploit-caution-shortguide" >}}
+{{% content "hackersploit-caution-shortguide" %}}
 
 ## Before You Begin
 
@@ -78,9 +78,9 @@ GitHub Repository: https://github.com/gianlucaborello/libprocesshider
 
         vim processhider.c
 
-1. You will then need to modify the “process_to_filter” value to the name of the process you would like to hide as shown in the screenshot below.
+1. You will then need to modify the `process_to_filter` value to the name of the process you would like to hide as shown in the screenshot below.
 
-    ![processhider.c file contents with process_to_filter variable shown](processhider-c-file-contents-with-process-to-filter-variable-shown.png "processhider.c file contents with process_to_filter variable shown")
+    ![processhider.c file contents](processhider-c-file-contents-with-process-to-filter-variable-shown.png)
 
     In this case, I will be hiding any occurrences of the “shell.py” process from the process tree. After making the change, you can save the file.
 

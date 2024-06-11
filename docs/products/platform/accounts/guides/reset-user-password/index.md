@@ -12,7 +12,7 @@ aliases: ['/quick-answers/linode-platform/how-to-change-your-password/', '/guide
 
 Creating strong passwords is essential to protecting your Linode and your Linode [Cloud Manager](http://cloud.linode.com) account. If you suspect that an unauthorized user has gained access to one of your accounts, you should change the password immediately.
 
-{{< content "password-requirements-shortguide" >}}
+{{% content "password-requirements-shortguide" %}}
 
 ## Changing or Resetting Your Linode Cloud Manager Password
 
@@ -23,7 +23,7 @@ If you want to change your password, or you forgot your password and need a new 
 1.  Enter your username in the **Username** field.
 
     {{< note >}}
-    If you've forgotten your Linode Cloud Manager username, see [Recovering a Lost Username](/docs/products/platform/accounts/guides/manage-users/#recovering-a-lost-username).
+    If you've forgotten your Linode Cloud Manager username, see [Recovering a Lost Username](/docs/products/platform/accounts/guides/manage-users/#recover-a-lost-username).
     {{< /note >}}
 
 1.  Click the **Reset password** button.

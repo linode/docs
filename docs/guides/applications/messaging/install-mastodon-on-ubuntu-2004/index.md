@@ -72,11 +72,11 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
 ### Install Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ## Download Mastodon
 

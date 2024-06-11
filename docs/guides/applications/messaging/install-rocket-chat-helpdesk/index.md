@@ -397,7 +397,7 @@ From the **Users** page, you have two options for adding new users:
 
 -   **Invitations**: Use the **Invite** button, and enter the email addresses for prospective users. See Rocket.Chat's [Email configuration page](https://docs.rocket.chat/use-rocket.chat/workspace-administration/settings/email/email-configuration) for additional email and SMTP setup steps.
 
-    {{< content "email-warning-shortguide" >}}
+    {{% content "email-warning-shortguide" %}}
 
 See Rocket.Chat's [Users documentation](https://docs.rocket.chat/use-rocket.chat/workspace-administration/users) for more about user-related administration.
 
