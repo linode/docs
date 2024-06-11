@@ -30,7 +30,7 @@ Run a [Visual Studio Code Server](https://github.com/cdr/code-server) in the bro
 
 ### VS Code Options
 
-- **The password to login to the VS Code Web UI** *(required)*: Enter a *strong* password that can be used to access VS Code.
+- **The password used to log in to the VS Code Web UI** *(required)*: Enter a *strong* password that can be used to access VS Code.
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates as well as configuring the server and DNS records.
 - **The version of VS Code Server you'd like installed** *(required)*: This is the version of VS Code Server that is installed during setup. The default at the time that this guide was written is 3.10.2. This field is filled in and it is recommended that you use this value. If you do not fill in this field, the latest version is used.
 

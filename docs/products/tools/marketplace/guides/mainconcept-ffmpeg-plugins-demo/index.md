@@ -46,9 +46,9 @@ The versions of MainConcept Plugins for FFmpeg included in this deployment are f
 
 ### Logging In
 
-Once all packages have finished installing, you can login to your instance to access MainConcept's FFmpeg installation and plugins.
+Once all packages have finished installing, you can log in to your instance to access MainConcept's FFmpeg installation and plugins.
 
-1. Using the **limited sudo user** you created during deployment, login to your instance via SSH. Replace `LIMITED_USER` with your sudo user and `192.0.2.1` with the address of your Compute Instance:
+1. Using the **limited sudo user** you created during deployment, log in to your instance via SSH. Replace `LIMITED_USER` with your sudo user and `192.0.2.1` with the address of your Compute Instance:
     ```command
     ssh LIMITED_USER@192.0.2.1
     ```

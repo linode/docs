@@ -42,7 +42,7 @@ SimpleX Chat is a private messaging platform that uses temporary anonymous ident
 
 ## Getting Started after Deployment
 
-Once the SimpleX Server is up and running you can display your SMP and XFTP connection strings with the following command while logged into the server:
+Once the SimpleX Server is up and running you can display your SMP and XFTP connection strings with the following command while logged in to the server:
 
 ```command
 docker-compose --project-directory /etc/docker/compose/simplex logs grep 'Server address' | uniq

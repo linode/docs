@@ -41,12 +41,12 @@ aliases: ['/guides/deploy-peppermint-with-marketplace-apps/','/guides/peppermint
 
     ![Peppermint login screen](peppermint.png)
 
-    The default credentials to login to your Peppermint Ticket Management Panel are:
+    The default credentials to log in to your Peppermint Ticket Management Panel are:
 
        Email: admin@admin.com
        Password: 1234
 
-1. Once you login to the Peppermint Ticket Management Panel, update the email and password you used to log in. To do this, click the Settings gear logo in the top right corner.
+1. Once you log in to the Peppermint Ticket Management Panel, update the email and password you used to log in. To do this, click the Settings gear logo in the top right corner.
 
 ![peppermint_settings.png](peppermint_settings.png)
 

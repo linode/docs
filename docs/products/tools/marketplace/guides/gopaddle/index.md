@@ -60,7 +60,7 @@ The gopaddle Marketplace App installs gopaddle lite, which is a free community e
 
 ### Containerize and Deploy
 
-Once the subscription is complete, you can login to the gopaddle console, using your email ID and the initial password.
+Once the subscription is complete, you can log in to the gopaddle console using your email ID and the initial password.
 
 In the main dashboard, the **Containerize and Deploy** Quickstart wizard helps to onboard a Source Code project from GitHub using the GitHub personal access token, build and push the generated container image to the Docker Registry. Once the build completes, gopaddle generates the necessary YAML files and deploys the docker image to the local microk8s cluster.
 
