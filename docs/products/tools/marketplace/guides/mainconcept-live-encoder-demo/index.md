@@ -38,7 +38,7 @@ The version of MainConcept Live Encoder in this deployment is a free demo. It ad
 
 ## Getting Started after Deployment
 
-Once your MainConcept Live Encoder Marketplace App is deployed, you can log into the MainConcept Live Encoder Dashboard in your browser.
+Once your MainConcept Live Encoder Marketplace App is deployed, you can log in to the MainConcept Live Encoder Dashboard in your browser.
 
 1. Open a browser and navigate to the domain you created in the beginning of your deployment. If you did not use a domain, you can use your Compute Instance's rDNS, which may look like the example below:
 
@@ -53,7 +53,7 @@ Once your MainConcept Live Encoder Marketplace App is deployed, you can log into
     ![MainConcept Live Encoder Login](mainconcept-live-encoder-login.jpg "MainConcept Live Encoder Login")
 
     {{< note type="warning" title="Important">}}
-    Please ensure you change the default password after logging into your MainConcept Live Encoder instance. To change your password, select the **Users** tab, find your user named "admin", and click the **Op** option.
+    Please ensure you change the default password after logging in to your MainConcept Live Encoder instance. To change your password, select the **Users** tab, find your user named "admin", and click the **Op** option.
     {{< /note >}}
 
 ## Next Steps

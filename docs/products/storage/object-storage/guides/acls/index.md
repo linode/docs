@@ -28,7 +28,7 @@ Access Control Lists (ACLs) are a method of defining access to Object Storage re
 Existing buckets and any new bucket created in the Cloud Manager have a default ACL permission setting of Private.
 {{< /note >}}
 
-1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
+1.  If you have not already, log in to the [Linode Cloud Manager](https://cloud.linode.com).
 
 1.  Click the **Object Storage** link in the sidebar, and then click on the bucket you wish to edit the ACLs for.
 
@@ -62,7 +62,7 @@ Existing buckets and any new bucket created in the Cloud Manager have a default 
 Existing objects and any new objects created in the Cloud Manager have a default ACL permission setting of Private.
 {{< /note >}}
 
-1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
+1.  If you have not already, log in to the [Linode Cloud Manager](https://cloud.linode.com).
 
 1.  Click the **Object Storage** link in the sidebar, and then click on the bucket that holds the objects that you wish to edit the ACLs for.
 

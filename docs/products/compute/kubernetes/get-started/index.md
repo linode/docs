@@ -69,7 +69,7 @@ Visit the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/inst
 
 ### Access and Download your kubeconfig
 
-1. To access your cluster's kubeconfig, log into your Cloud Manager account and navigate to the **Kubernetes** section.
+1. To access your cluster's kubeconfig, log in to your Cloud Manager account and navigate to the **Kubernetes** section.
 
 1. From the Kubernetes listing page, click on your cluster's **more options ellipsis** and select **Download kubeconfig**. The file is saved to your computer's `Downloads` folder.
 

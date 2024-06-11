@@ -263,7 +263,7 @@ If you would like to mount or unmount additional disks on your system, repeat th
 
 ### Change Root
 
-*Changing root* is the process of changing your working root directory. When you change root (abbreviated as *chroot*) to your root disk, you are able to run commands as though you are logged into that system.
+*Changing root* is the process of changing your working root directory. When you change root (abbreviated as *chroot*) to your root disk, you are able to run commands as though you are logged in to that system.
 
 Chroot allows you to change user passwords, remove/install packages, and do other system maintenance and recovery tasks in your Compute Instance's normal Linux environment.
 

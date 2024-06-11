@@ -30,8 +30,8 @@ WarpSpeed makes it easy for developers to access cloud infrastructure via the po
 
 ### WarpSpeed VPN Options
 
-- **Admin Email:** This is the admin user email to login to your WarpSpeed instance.
-- **Admin Password:** This is the admin user password to login to your WarpSpeed instance.
+- **Admin Email:** This is the admin user email to log in to your WarpSpeed instance.
+- **Admin Password:** This is the admin user password to log in to your WarpSpeed instance.
 - **DNS name:** This is the domain you will be using for your WarpSpeed instance.
 - **Data Directory:** This is the directory that your WarpSpeed data will be stored in, default will be `/wirespeed`.
 

@@ -34,7 +34,7 @@ The Enterprise Edition of Ant Media Server requires a valid license to use the s
 
 ### Ant Media Server Options
 
-- **Email address for the Ant Media Server Login & SSL Generation:** Enter the email address that should be used to log into the Ant Media Dashboard, and generate free Let's Encrypt SSL certificates.
+- **Email address for the Ant Media Server Login & SSL Generation:** Enter the email address that should be used to log in to the Ant Media Dashboard, and generate free Let's Encrypt SSL certificates.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
@@ -65,7 +65,7 @@ The Ant Media Server will deploy with an administrator account preconfigured usi
 
 1.  Open your web browser and navigate to `https://[domain]:5443`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
-1.  Use the `Ant Media Server Username` and `Ant Media Server Password` from the `credentials` file to log into the Ant Media Dashboard.
+1.  Use the `Ant Media Server Username` and `Ant Media Server Password` from the `credentials` file to log in to the Ant Media Dashboard.
 
     ![Screenshot of Ant Media Login](ant-media-login.jpg)
 
