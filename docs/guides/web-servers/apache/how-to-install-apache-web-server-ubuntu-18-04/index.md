@@ -38,7 +38,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     - Don't forget to update your `/etc/hosts` file with the public IP address and your site's fully qualified domain name as explained in the [Update Your System's hosts File](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-file) section of the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 ## Install Apache
 
@@ -186,15 +186,14 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
 
     Repeat this process for any other domains you host.
 
-    {{< note respectIndent=false >}}
-If you would like to enable Perl support, add the following lines above the closing `</VirtualHost>` tag:
+    {{< note >}}
+    If you would like to enable Perl support, add the following lines above the closing `</VirtualHost>` tag:
 
-{{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
-Options ExecCGI
-AddHandler cgi-script .pl
-{{< /note >}}
-
-{{< /file >}}
+    ```file {title="/etc/apache2/sites-available/example.com.conf" lang="aconf"}
+    Options ExecCGI
+    AddHandler cgi-script .pl
+    ```
+    {{< /note >}}
 
 1.  Create directories for your websites and websites' logs, replacing `example.com` with your own domain information:
 

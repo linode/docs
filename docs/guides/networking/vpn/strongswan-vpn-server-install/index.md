@@ -279,7 +279,7 @@ The client authentication process relies on the `ipsec.secrets` file located on 
 
 #### Importing the VPN Root Certificate on macOS
 
-1. Download the `ca.cert.pem` file from the StrongSwan gateway VPN server host to your macOS computer [using scp](/docs/guides/download-files-from-a-compute-instance/#secure-copy-protocol-scp).
+1. Download the `ca.cert.pem` file from the StrongSwan gateway VPN server host to your macOS computer [using scp](/docs/guides/download-files-from-a-compute-instance/#download-files-with-scp).
 
 1. Click on the downloaded file to open **Keychain Access**. Provide your user's administrative password, to accept the certificate. Then, click **Modify Keychain**.
 

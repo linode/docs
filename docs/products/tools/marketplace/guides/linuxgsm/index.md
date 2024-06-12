@@ -13,9 +13,9 @@ external_resources:
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** LinuxGSM should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
@@ -31,11 +31,11 @@ external_resources:
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 - **Game Server Name**: Enter the code for the server you want to install. See the [LinuxGSM Server List](https://github.com/GameServerManagers/LinuxGSM/blob/master/lgsm/data/serverlist.csv).
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ### Getting Started after Deployment
 
@@ -65,4 +65,4 @@ Additional information is available from LinuxGSM.
 - [LinuxGSM](https://linuxgsm.com/)
 - [LinuxGSM Documentation](https://docs.linuxgsm.com/)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

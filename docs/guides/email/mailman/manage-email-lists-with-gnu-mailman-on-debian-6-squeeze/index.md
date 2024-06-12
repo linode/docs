@@ -48,7 +48,7 @@ During the Mailman installation, you will be required to specify the languages t
 
 ## Configure Mailman
 
-Consider the "[Configure Virtual Hosting](/docs/guides/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze/#configure-virtual-hosting)" section before preceding. In most cases where you will be hosting you will want to skip this section and continue with that procedure. Mailman requires a "base" list, from which it can send email to welcome new members to lists and send password reminders when needed. Create this list by issuing the following command:
+Consider the [Configure Virtual Hosting](#configure-virtual-hosting) section before preceding. In most cases where you will be hosting you will want to skip this section and continue with that procedure. Mailman requires a "base" list, from which it can send email to welcome new members to lists and send password reminders when needed. Create this list by issuing the following command:
 
     newlist mailman
 
@@ -73,9 +73,9 @@ These lines enable postfix to hand off email to Mailman for processing directly.
 
 {{< file "/etc/postfix/transport" >}}
 lists.example.com   mailman:
+{{</ file >}}
 
-# Configure Virtual Hosting
-
+## Configure Virtual Hosting
 
 Finally, modify the `/etc/mailman/mm_cfg.py` file to set the following values. After you've edited the `/etc/postfix/transport` file, and after every successive edit of this file, issue the following command to rebuild postfix's transport database:
 
@@ -92,9 +92,6 @@ This controls how Mailman processes the mail that it receives from postfix. Cont
 mailman unix  -       n       n       -       -       pipe
   flags=FR user=list
   argv=/var/lib/mailman/bin/postfix-to-mailman.py ${nexthop} ${mailbox}
-
-{{< /file >}}
-
 
 {{< /file >}}
 

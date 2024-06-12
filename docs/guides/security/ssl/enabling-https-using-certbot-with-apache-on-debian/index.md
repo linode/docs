@@ -33,18 +33,18 @@ Before continuing with this guide, you need a website accessible over HTTP using
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-{{< content "understanding-https-tls-certbot-shortguide" >}}
+{{% content "understanding-https-tls-certbot-shortguide" %}}
 
-{{< content "configuring-ufw-for-web-traffic-shortguide" >}}
+{{% content "configuring-ufw-for-web-traffic-shortguide" %}}
 
-{{< content "installing-snapd-certbot-apt-shortguide" >}}
+{{% content "installing-snapd-certbot-apt-shortguide" %}}
 
-{{< content "requesting-certificate-apache-certbot-shortguide" >}}
+{{% content "requesting-certificate-apache-certbot-shortguide" %}}
 
-{{< content "testing-https-certbot-shortguide" >}}
+{{% content "testing-https-certbot-shortguide" %}}
 
-{{< content "renewing-certificate-certbot-shortguide" >}}
+{{% content "renewing-certificate-certbot-shortguide" %}}
 
-{{< content "deleting-certificate-certbot-shortguide" >}}
+{{% content "deleting-certificate-certbot-shortguide" %}}
 
-{{< content "learn-more-certbot-shortguide" >}}
+{{% content "learn-more-certbot-shortguide" %}}

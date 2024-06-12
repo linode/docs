@@ -1,0 +1,20 @@
+{
+    "name": "@alpinejs/focus",
+    "version": "3.13.8",
+    "description": "Manage focus within a page",
+    "homepage": "https://alpinejs.dev/plugins/focus",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/alpinejs/alpine.git",
+        "directory": "packages/focus"
+    },
+    "author": "Caleb Porzio",
+    "license": "MIT",
+    "main": "dist/module.cjs.js",
+    "module": "dist/module.esm.js",
+    "unpkg": "dist/cdn.min.js",
+    "dependencies": {
+        "focus-trap": "^6.9.4",
+        "tabbable": "^5.3.3"
+    }
+}

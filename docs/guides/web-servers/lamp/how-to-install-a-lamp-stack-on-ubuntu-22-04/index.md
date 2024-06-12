@@ -21,7 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
            - distribution: Ubuntu 22.04
-aliases: ['/lamp-guides/ubuntu-11.04-natty/']
+aliases: ['/lamp-guides/ubuntu-11.04-natty/','/websites/lamp/lamp-server-on-ubuntu-10-10-maverick/','/lamp-guides/ubuntu-10-10-maverick/','/web-servers/lamp/lamp-server-on-ubuntu-10-10-maverick/','/guides/lamp-server-on-ubuntu-10-10-maverick/','/web-servers/lamp/lamp-server-on-ubuntu-11-04-natty/','/websites/lamp/lamp-server-on-ubuntu-11-04-natty/','/guides/lamp-server-on-ubuntu-11-04-natty/','/web-servers/lamp/lamp-server-on-ubuntu-11-10-oneiric/','/lamp-guides/ubuntu-11-10-oneiric/','/websites/lamp/lamp-server-on-ubuntu-11-10-oneiric/','/guides/lamp-server-on-ubuntu-11-10-oneiric/','/lamp-guides/ubuntu-12-04-precise-pangolin/','/websites/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin/','/web-servers/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin/','/guides/lamp-server-on-ubuntu-12-04-precise-pangolin/','/websites/lamp/lamp-on-ubuntu-14-04/','/websites/lamp/how-to-install-a-lamp-stack-on-ubuntu-14-04/','/web-servers/lamp/lamp-on-ubuntu-14-04/','/websites/lamp/lamp-server-on-ubuntu-14-04/','/guides/lamp-on-ubuntu-14-04/']
 ---
 
 The [LAMP Stack](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) includes an operating system, web server, programming language, and database. These applications are collectively able to implement web applications and other computing solutions. This guide provides some background about the LAMP stack and explains how to install and configure it on Ubuntu 22.04 LTS. It also explains how to quickly test interactions between the applications.

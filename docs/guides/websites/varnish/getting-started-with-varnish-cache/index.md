@@ -190,7 +190,7 @@ unset req.http.Cookie;
 
 You may find that a particular cookie is important for displaying content or determines if your user is logged in or not. In this case, you probably don't want to show cached content and instead, just want to send the user straight to the backend.
 
-For this case, you'll check `req.http.Cookie` for a cookie called "logged_in", and if its found, the request will be passed on to the backend with no caching. Here's our entire `vcl_recv` subroutine thus far:
+For this case, you'll check `req.http.Cookie` for a cookie called `logged_in`, and if its found, the request will be passed on to the backend with no caching. Here's our entire `vcl_recv` subroutine thus far:
 
 {{< file "/etc/varnish/user.vcl" >}}
 sub vcl_recv

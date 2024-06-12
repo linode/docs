@@ -7,7 +7,7 @@ authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 published: 2022-09-14
 modified: 2022-09-23
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['rename files','mv command','rename command']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 

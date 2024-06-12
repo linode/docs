@@ -3,7 +3,7 @@ title: "Create a Compute Instance"
 title_meta: "Create a Compute Instance on the Linode Platform"
 description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
 published: 2022-04-19
-modified: 2024-02-13
+modified: 2024-05-21
 keywords: ["getting started", "deploy", "linode", "linux"]
 aliases: ['/guides/creating-a-compute-instance/','/products/compute/dedicated-cpu/guides/deploy/']
 ---
@@ -74,7 +74,7 @@ Since every workload is different, you may wish to review the [Choosing a Comput
 You can resize to a different plan size or instance type at any time. This means your aren't locked in to whichever plan you select here. See [Resizing a Compute Instance](/docs/products/compute/compute-instances/guides/resize/) for instructions.
 {{< /note >}}
 
-{{< content "instance-comparison-shortguide" >}}
+{{% content "instance-comparison-shortguide" %}}
 
 ## Set the Label and Add Tags
 
@@ -90,7 +90,7 @@ You can resize to a different plan size or instance type at any time. This means
 
 -   **Root Password:** The password used to log in to the system as the root user. The root user is the main account and has access to the entire system, including files and commands. This password should be extremely strong to prevent attackers from gaining access to your system. By default, the root user can log in over Lish and SSH using this password, though we do recommend disabling this within the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
-    {{< content "password-requirements-shortguide" >}}
+    {{% content "password-requirements-shortguide" %}}
 
 -   **SSH Keys:** Add any SSH Keys to the root user account on the server. This enables you to log in through SSH without needing a password. SSH keys are created as a pair: a *private key* stored on your local computer and a *public key* that you can upload to remote systems and services. Since you only share your public key and your private key is kept safe and secure, this is a much more secure method for authentication than passwords. Learn more about uploading SSH keys through the Cloud Manager on the [Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/) guide.
 
@@ -160,4 +160,4 @@ Once the Compute Instance has been created and is done initializing, you can sta
 
 - [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}

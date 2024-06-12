@@ -19,9 +19,9 @@ OpenVPN is a widely trusted, free, and open-source VPN (virtual private network)
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** OpenVPN should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -38,13 +38,13 @@ OpenVPN is a widely trusted, free, and open-source VPN (virtual private network)
 The admin password for the OpenVPN application is no longer manually entered when creating the Compute Instance. Instead, this password is now automatically generated. See [Obtaining the Admin Password](#obtaining-the-admin-password) for instructions on viewing the admin password after deployment.
 {{< /note >}}
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
-- **Email address for Let's Encrypt SSL Certificate (required):** Start of Authority address for free Let's Encrypt SSL. 
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
+- **Email address for Let's Encrypt SSL Certificate (required):** Start of Authority address for free Let's Encrypt SSL.
 - **Email address for the SOA record:** The start of authority (SOA) email address for this server. This is a required field if you want the installer to create DNS records.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started After Deployment
 
@@ -81,4 +81,4 @@ To obtain your OpenVPN password, run this command:
 
 To open a connection to your OpenVPN server from your computer, you'll need to install the OpenVPN client software. Follow the instructions in the [Client Software Installation](/docs/guides/install-openvpn-access-server-on-linux/#client-software-installation) section of our [OpenVPN](/docs/guides/install-openvpn-access-server-on-linux/#client-software-installation) guide for a detailed explanation of how to install and use this software.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

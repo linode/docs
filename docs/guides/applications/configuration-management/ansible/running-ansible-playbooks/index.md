@@ -28,7 +28,7 @@ This guide provides an introduction to Ansible Playbook concepts, like tasks, pl
 
 * Install Ansible on your computer or a Linode following the steps in the [Set up the Control Node](/docs/guides/getting-started-with-ansible/#set-up-the-control-node) section of our [Getting Started With Ansible](/docs/guides/getting-started-with-ansible/) guide.
 
-* Deploy a Linode running Debian 9 to manage with Ansible. All Playbooks created throughout this guide will be executed on this Linode. Follow the [Getting Started With Ansible - Basic Installation and Setup](/docs/guides/getting-started-with-ansible/#set-up-the-control-node) to learn how to establish a connection between the Ansible control node and your Linode.
+* Deploy a Linode running Ubuntu 22.04 LTS to manage with Ansible. All Playbooks created throughout this guide will be executed on this Linode. Follow the [Getting Started With Ansible - Basic Installation and Setup](/docs/guides/getting-started-with-ansible/#set-up-the-control-node) to learn how to establish a connection between the Ansible control node and your Linode.
 
     {{< note respectIndent=false >}}
 When following the [Getting Started with Ansible](/docs/guides/getting-started-with-ansible/#set-up-the-control-node) guide to deploy a Linode, it is not necessary to add your Ansible control node's SSH key-pair to your managed Linode. This step will be completed using a Playbook later on in this guide.
@@ -44,13 +44,13 @@ The example below displays the skeleton of a Playbook. At its most basic, a Play
 {{< note type="secondary" title="Common Ansible Modules" isCollapsible=true >}}
 | **Module** | **Usage** |
 | ---------------- | ------------- |
-| [command](http://docs.ansible.com/ansible/command_module.html) | Executes a command on a remote node. |
-| [script](http://docs.ansible.com/ansible/script_module.html) | Transfers a local script to a managed node and then runs the script on the remote node. |
-| [shell](http://docs.ansible.com/ansible/command_module.html) | Executes a command through a shell (`/bin/sh`) on a remote node. |
-| [template](http://docs.ansible.com/ansible/template_module.html) | Uses a local file template to create a file on a remote node. |
-| [apt](http://docs.ansible.com/ansible/apt_module.html) | Manages apt packages on Debian or Ubuntu systems. |
-| [git](http://docs.ansible.com/ansible/apt_module.html) | Deploy software or files from git checkouts. |
-| [service](http://docs.ansible.com/ansible/apt_module.html) | Manage services on your remote node's system. Supports BSD init, OpenRC, SysV, Solaris SMF, systemd, upstart init systems.  |
+| [command](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/command_module.html) | Executes a command on a remote node. |
+| [script](http://docs.ansible.com/ansible/latest/collections/ansible/builtin/script_module.html) | Transfers a local script to a managed node and then runs the script on the remote node. |
+| [shell](http://docs.ansible.com/ansible/latest/collections/ansible/builtin/command_module.html) | Executes a command through a shell (`/bin/sh`) on a remote node. |
+| [template](http://docs.ansible.com/ansible/latest/collections/ansible/builtin/template_module.html) | Uses a local file template to create a file on a remote node. |
+| [apt](http://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html) | Manages apt packages on Debian or Ubuntu systems. |
+| [git](http://docs.ansible.com/ansible/latest/collections/ansible/builtin/git_module.html) | Deploy software or files from git checkouts. |
+| [service](http://docs.ansible.com/ansible/latest/collections/ansible/builtin/service_module.html) | Manage services on your remote node's system. Supports BSD init, OpenRC, SysV, Solaris SMF, systemd, upstart init systems.  |
 {{< /note >}}
 
 {{< file "Playbook Skeleton" yaml >}}
@@ -101,7 +101,7 @@ When creating a limited user account you are required to create a host login pas
 [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#encrypt-string-for-use-in-yaml) can also be used to encrypt sensitive data. This guide will not make use of Ansible Vault, however, you can consult the [How to use the Linode Ansible Module to Deploy Linodes](/docs/guides/deploy-linodes-using-ansible/) guide to view an example that makes use of this feature.
 {{< /note >}}
 
-1. On your Ansible control node, create a password hash on your control node for Ansible to use in a later step. An easy method is to use Python's PassLib library, which can be installed with the following commands:
+1. On your Ansible control node, create a password hash for Ansible to use in a later step. An easy method is to use Python's PassLib library, which can be installed with the following commands:
 
 1. Install pip, the package installer for Python, on your control node if you do not already have it installed:
 
@@ -124,12 +124,16 @@ $6$rounds=656000$dwgOSA/I9yQVHIjJ$rSk8VmlZSlzig7tEwIN/tkT1rqyLQp/S/cD08dlbYctPjd
 
 #### Disable Host Key Checking
 
-Ansible uses the sshpass helper program for SSH authentication. This program is included by default on Ansible 2.8. sshpass requires host key checking to be disabled on your Ansible control node.
+Ansible uses the sshpass helper program for SSH authentication.
 
-1. Disable host key checking.  Open the `/etc/ansible/ansible.cfg` configuration file in a text editor of your choice, uncomment the following line, and save your changes.
+1. Ensure sshpass is installed on your control node:
+
+        sudo apt-install sshpass
+
+1. sshpass requires host key checking to be disabled on your Ansible control node. Open the `/etc/ansible/ansible.cfg` configuration file in a text editor of your choice, change the following value to "False", and save your changes.
 
     {{< file "/etc/ansible/ansible.cfg" ini >}}
-#host_key_checking = False
+;host_key_checking=False
 
 {{< /file >}}
 
@@ -141,7 +145,7 @@ In order to target your Linode in a Playbook, you will need to add it to your An
 
     {{< file "/etc/ansible/hosts" ini >}}
 [webserver]
-192.0.2.0
+192.0.2.17
 
 {{< /file >}}
 
@@ -215,7 +219,7 @@ This next Playbook will take care of some common server setup tasks, such as set
                   line="{{ hostvars[item].ansible_default_ipv4.address }} {{ LOCAL_FQDN_NAME }} {{ LOCAL_HOSTNAME }}"
                   state=present
       when: hostvars[item].ansible_default_ipv4.address is defined
-      with_items: "{{ groups['linode'] }}"
+      with_items: "{{ groups['webserver'] }}"
     - name: Update packages
       apt: update_cache=yes upgrade=dist
           {{< /file >}}
@@ -264,7 +268,7 @@ In order to avoid using plain text passwords in your Playbooks, you can use [Ans
         pkg:
           - apache2
           - mysql-server
-          - python-mysqldb
+          - python3-mysqldb
           - php
           - php-pear
           - php-mysql
@@ -277,13 +281,16 @@ In order to avoid using plain text passwords in your Playbooks, you can use [Ans
         - mysql
 
     - name: Create a test database
-      mysql_db: name= testDb
-                state= present
+      community.mysql.mysql_db:
+      name: testDb
+      state: present
 
     - name: Create a new user for connections
-      mysql_user: name=webapp
-                  password='$6$rounds=656000$W.dSl'
-                  priv=*.*:ALL state=present
+      community.mysql.mysql_user:
+        name: webapp
+        password: 'yourpassword'
+        priv: '*.*:ALL'
+        state: present
 
       {{< /file >}}
 

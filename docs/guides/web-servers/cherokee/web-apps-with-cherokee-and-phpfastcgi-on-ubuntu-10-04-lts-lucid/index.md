@@ -119,7 +119,7 @@ Restart Cherokee by clicking the "Save" button under the left page navigation li
 {{< /file >}}
 
 
-Visit "/test.php" on your site to verify PHP-FastCGI is operating correctly. You should see the standard PHPInfo page. Congratulations, you've successfully configured PHP-FastCGI for dynamic content using the Cherokee web server!
+Visit "/test.php" on your site to verify PHP-FastCGI is operating correctly. You should see the standard `phpinfo()` page. Congratulations, you've successfully configured PHP-FastCGI for dynamic content using the Cherokee web server!
 
 ## More Information
 

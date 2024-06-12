@@ -1,4 +1,4 @@
-import { isMobile } from '../helpers';
+import { isMobile } from '../helpers/helpers';
 import { getScrollPosNavbar } from './nav';
 import { AnalyticsEventsCollector } from './nav-analytics';
 import { RecommendationsFetcher } from './recommendations';

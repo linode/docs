@@ -22,7 +22,7 @@ While a firewall is often responsible for cases of limited access, these issues 
 To learn about Lish in more detail, and for instructions on how to connect to your Compute Instance via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. A fast and simple way to access Lish is by [the your web browser option](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish).
 
 {{< note >}}
-When using Lish, you can log into your Compute Instance with the `root` user, even if `root` user login is disabled by your system's SSH configuration file.
+When using Lish, you can log in to your Compute Instance with the `root` user, even if `root` user login is disabled by your system's SSH configuration file.
 {{< /note >}}
 
 ## Is the Compute Instance Powered On?
@@ -49,7 +49,7 @@ If you are using Cloud Firewalls, then it's important to verify which Cloud Fire
 
 1.  If the Cloud Firewall is enabled, check to see which rules are currently active by clicking on the label of the Cloud Firewall. This takes you to your Cloud Firewall's **Rules** page.
 
-1.  The **Rules** page displays a list of all of the Cloud Firewall rules that are filtering your service's network traffic. If you notice that the Cloud Firewall rules do not allow traffic for a specific service's port that you are troubleshooting, you may consider [updating your rule's](/docs/products/networking/cloud-firewall/get-started/#edit-cloud-firewall-rules) to allow connections for that port.
+1.  The **Rules** page displays a list of all of the Cloud Firewall rules that are filtering your service's network traffic. If you notice that the Cloud Firewall rules do not allow traffic for a specific service's port that you are troubleshooting, you may consider [updating your rule's](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/) to allow connections for that port.
 
     {{< note >}}
     If the Cloud Firewall is assigned to more than one Compute Instance or NodeBalancer, modifying the Cloud Firewall rules affect all services assigned to the Cloud Firewall.

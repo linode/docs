@@ -260,7 +260,7 @@ SSH can be configured to not accept passwords and instead accept public key auth
 grep PasswordAuthentication /etc/ssh/sshd_config
 ```
 
-If the value of the `PasswordAuthentication` is `no`, [create a key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair). Or, set the value in `/etc/ssh/sshd_config` to `yes`, restart SSH, and try logging in with your password again.
+If the value of the `PasswordAuthentication` is `no`, [create a key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#upload-ssh-key). Or, set the value in `/etc/ssh/sshd_config` to `yes`, restart SSH, and try logging in with your password again.
 
 ### Is your Public Key Stored on the Server?
 

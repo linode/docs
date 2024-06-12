@@ -114,7 +114,7 @@ variable "database_username" {
 }
 {{< /file >}}
 
-Define another variable here named "data_password" that you intend to use later in this guide.
+Define another variable here named `data_password` that you intend to use later in this guide.
 
 {{< file >}}
 variable "database_password" {
@@ -254,11 +254,11 @@ After `pass` is installed, you can store your secrets by running `pass insert` f
 
         pass insert database_username
 
-Enter password for database_username: admin
+Enter password for `database_username`: admin
 
         pass insert database_password
 
-Enter password for database_password: password
+Enter password for `database_password`: password
 
 Now run the following command : `pass <your secret>`
 
@@ -279,9 +279,9 @@ data "vault_generic_secret" "linode_auth" {
 {{< /file >}}
 
 {{< note >}}
-For this example, in Vault there is a key named "auth_token" and the value is the token we need to keep secret.
+For this example, in Vault there is a key named `auth_token` and the value is the token we need to keep secret.
 
-In general usage, replace "auth_token" with the key you wish to extract from Vault.
+In general usage, replace `auth_token` with the key you wish to extract from Vault.
 
 {{< file >}}
 provider "linode" {

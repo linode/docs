@@ -99,7 +99,7 @@ Query OK, 0 rows affected (0.01 sec)
 
 ### Populate the Database
 
-1.  Next, switch to the test_db database:
+1.  Next, switch to the `test_db` database:
 
         USE test_db;
 

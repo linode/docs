@@ -230,55 +230,55 @@ The remote client host needs copies of the organization certificate (`org_ca.crt
 
 1.  On the host, begin by changing the Logstash configuration file to remove the `username` and `password` fields and add `ssl_verify_mode` and `ssl_certificate_authorities`.
 
-    {{< file "/etc/logstash/conf.d/logstash.conf" >}}
-input {
-    http {
-        ssl => true
-        ssl_certificate => "/etc/pki/tls/certs/logstash_combined.crt"
-        ssl_certificate_authorities => ["/etc/pki/tls/private/org_ca.crt"]
-        ssl_key => "/etc/pki/tls/private/logstash.key"
-        ssl_verify_mode => "force_peer"
+    ```file {title="/etc/logstash/conf.d/logstash.conf"}
+    input {
+        http {
+            ssl => true
+            ssl_certificate => "/etc/pki/tls/certs/logstash_combined.crt"
+            ssl_certificate_authorities => ["/etc/pki/tls/private/org_ca.crt"]
+            ssl_key => "/etc/pki/tls/private/logstash.key"
+            ssl_verify_mode => "force_peer"
+        }
     }
-}
-output {
-    stdout {
-        codec => rubydebug
+    output {
+        stdout {
+            codec => rubydebug
+        }
     }
-}
-{{</ file >}}
+    ```
 
 1.  On the client, create a client certificate configuration file using the text editor of your choice. Again, replace the `XX` fields with your own values.
 
-    {{< file "/etc/pki/tls/conf/client_crt.conf" >}}
-[req]
-distinguished_name = req_distinguished_name
-req_extensions = v3_req
-prompt = no
+    ```file {title="/etc/pki/tls/conf/client_crt.conf"}
+    [req]
+    distinguished_name = req_distinguished_name
+    req_extensions = v3_req
+    prompt = no
 
-[req_distinguished_name]
-countryName                     = XX
-stateOrProvinceName             = XXXXXX
-localityName                    = XXXXXX
-postalCode                      = XXXXXX
-organizationName                = XXXXXX
-organizationalUnitName          = XXXXXX
-commonName                      = XXXXXX
-emailAddress                    = XXXXXX
+    [req_distinguished_name]
+    countryName                     = XX
+    stateOrProvinceName             = XXXXXX
+    localityName                    = XXXXXX
+    postalCode                      = XXXXXX
+    organizationName                = XXXXXX
+    organizationalUnitName          = XXXXXX
+    commonName                      = XXXXXX
+    emailAddress                    = XXXXXX
 
-[usr_cert]
-# Extensions for server certificates (`man x509v3_config`).
-basicConstraints = CA:FALSE
-nsCertType = client, server
-nsComment = "OpenSSL Server / Client Certificate"
-subjectKeyIdentifier = hash
-authorityKeyIdentifier = keyid,issuer:always
-keyUsage = critical, digitalSignature, keyEncipherment, keyAgreement, nonRepudiation
-extendedKeyUsage = serverAuth, clientAuth
+    [usr_cert]
+    # Extensions for server certificates (`man x509v3_config`).
+    basicConstraints = CA:FALSE
+    nsCertType = client, server
+    nsComment = "OpenSSL Server / Client Certificate"
+    subjectKeyIdentifier = hash
+    authorityKeyIdentifier = keyid,issuer:always
+    keyUsage = critical, digitalSignature, keyEncipherment, keyAgreement, nonRepudiation
+    extendedKeyUsage = serverAuth, clientAuth
 
-[v3_req]
-keyUsage = keyEncipherment, dataEncipherment
-extendedKeyUsage = serverAuth, clientAuth
-{{</ file >}}
+    [v3_req]
+    keyUsage = keyEncipherment, dataEncipherment
+    extendedKeyUsage = serverAuth, clientAuth
+    ```
 
 1.  Change permissions to allow writing the `client.key` and `client.crt` files.
 

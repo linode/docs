@@ -169,7 +169,7 @@ The first method below uses user data with our Metadata service during instance 
 
     When choosing a distribution image, select one of the versions of Ubuntu that is both supported by the script (see [Running the Script](#running-the-script)) and compatible with cloud-init (denoted with a note icon).
 
-    When choosing a region, select a region where the Metadata servce is available. A list of data center availability for Metadata can be found in our [Overview of the Metadata Service](/docs/products/compute/compute-instances/guides/metadata/#availability) guide.
+    When choosing a region, select a region where the Metadata service is available. A list of data center availability for Metadata can be found in our [Overview of the Metadata Service](/docs/products/compute/compute-instances/guides/metadata/#availability) guide.
 
     Stop when you get to the **Add User Data** section.
 

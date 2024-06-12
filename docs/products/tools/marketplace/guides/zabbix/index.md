@@ -17,9 +17,9 @@ aliases: ['/platform/marketplace/deploy-zabbix-with-marketplace-apps/', '/platfo
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Zabbix should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -32,11 +32,11 @@ aliases: ['/platform/marketplace/deploy-zabbix-with-marketplace-apps/', '/platfo
 
 ### Zabbix Options
 
-- **Email Address:** *(required)* SOA adress for free Let's Encrypt SSL. 
+- **Email Address:** *(required)* SOA address for free Let's Encrypt SSL.
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}} 
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domains-field-shortguide">}}
+{{% content "marketplace-custom-domains-field-shortguide" %}}
 
 - **Zabbix Server Name:** Local hostname for Zabbix server. Defaults to `zabbix-server`
 
@@ -46,13 +46,13 @@ aliases: ['/platform/marketplace/deploy-zabbix-with-marketplace-apps/', '/platfo
 
 After Zabbix has finished installing, you must first obtain the login credentials. You can then use these credentials to log in to your Zabbix App via a web browser.
 
-1.  From your terminal, log into your new Compute Instance as the `root` user, or the `sudo` user created during deployment. Use the following command, replacing `192.0.2.1` with your instance's [IPv4 address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/):
+1.  From your terminal, log in to your new Compute Instance as the `root` user, or the `sudo` user created during deployment. Use the following command, replacing `192.0.2.1` with your instance's [IPv4 address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/):
 
     ```command
     ssh root@192.0.2.1
     ```
 
-1. Output the generated Zabbix credentials by using the following command, replacing `$USERNAME` with the `sudo` user created while deploying the Compute Instance.
+1.  Output the generated Zabbix credentials by using the following command, replacing `$USERNAME` with the `sudo` user created while deploying the Compute Instance.
 
     ```command
     cat /home/$USERNAME/.credentials
@@ -70,7 +70,7 @@ After Zabbix has finished installing, you must first obtain the login credential
 
     ![A screenshot of the Zabbix log in prompt](zabbix-login.png)
 
-1. Enter the username and password you obtained in a previous step and then click **Sign in** to access the Zabbix control panel.
+1.  Enter the username and password you obtained in a previous step and then click **Sign in** to access the Zabbix control panel.
 
     ![The Dashboard of the Zabbix Admin Panel](zabbix-admin.png)
 
@@ -82,4 +82,4 @@ For more on Zabbix, check out the following resources:
 - [Purchase Technical Support Contract](https://www.zabbix.com/support)
 - [Visit the Zabbix Official Forum](https://www.zabbix.com/forum)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

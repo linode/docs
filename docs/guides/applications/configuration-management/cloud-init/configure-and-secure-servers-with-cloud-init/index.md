@@ -118,7 +118,7 @@ To increase the security of SSH connections into your Compute Instance, you shou
 
 By default, the cloud-config `users` setup assumes `lock_passwd: true`, automatically disabling password authentication. You can learn more about user setup and managing such features in our guide [Use Cloud-Init to Manage Users on New Servers](/docs/guides/manage-users-with-cloud-init/).
 
-To disable root logins, you need to modify the SSH configuration file. Cloud-config does not have a direct option for this, but you can use its versatile `runcmd` key to automate the necessary commands. Learn more about the `runcmd` option in our guide [Use Cloud-Init to Run Commands and Bash Scripts on First Boot](/docs/guides/run-commands-and-bash-scripts-with-cloud-init).
+To disable root logins, you need to modify the SSH configuration file. Cloud-config does not have a direct option for this, but you can use its versatile `runcmd` key to automate the necessary commands. Learn more about the `runcmd` option in our guide [Use Cloud-Init to Run Commands and Bash Scripts on First Boot](/docs/guides/run-shell-commands-with-cloud-init/).
 
 The example below removes any existing `PermitRootLogin` configuration and adds a new configuration disabling `PermitRootLogin`. The last command restarts the `sshd` service for the changes to take effect.
 

@@ -214,7 +214,7 @@ The software packages you install is available as long as the Compute Instance i
 ### Mounting Disks
 
 {{< note >}}
-Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/#update-your-fstab) guide.
+Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/#additional-system-configuration) guide.
 {{< /note >}}
 
 By default, your disks are not mounted when your Compute Instance boots into Rescue Mode. However, you can manually mount a disk under Rescue Mode to perform system recovery and maintenance tasks.
@@ -263,7 +263,7 @@ If you would like to mount or unmount additional disks on your system, repeat th
 
 ### Change Root
 
-*Changing root* is the process of changing your working root directory. When you change root (abbreviated as *chroot*) to your root disk, you are able to run commands as though you are logged into that system.
+*Changing root* is the process of changing your working root directory. When you change root (abbreviated as *chroot*) to your root disk, you are able to run commands as though you are logged in to that system.
 
 Chroot allows you to change user passwords, remove/install packages, and do other system maintenance and recovery tasks in your Compute Instance's normal Linux environment.
 
@@ -343,7 +343,7 @@ Linode recommends that you follow the instructions in [Recovering from a System 
 
 ### Restoring from a Backup
 
-If you previously enabled the [Backup Service](https://www.linode.com/backups), you may be able to restore one of the backups to the Compute Instance. Review the [Restoring from a Backup](/docs/products/storage/backups/#restore-from-a-backup) section (specifically, the [Restore to an Existing Compute Instance](/docs/products/storage/backups/guides/restore-to-an-existing-instance/) section) of the [The Backup Service](/docs/products/storage/backups/) guide for instructions.
+If you previously enabled the [Backup Service](https://www.linode.com/backups), you may be able to restore one of the backups to the Compute Instance. Review the [Restore a Backup to an Existing Compute Instance](/docs/products/storage/backups/guides/restore-to-an-existing-instance/) guide for instructions.
 
 If you created backups with an application other than Linode's Backup Service, review the application's instructions to restore a backup to the Compute Instance.
 
@@ -356,11 +356,11 @@ The Cloud Manager provides a *Rebuild* feature performs the following two action
 1.  A new set of disks is provisioned from one of the Cloud Manager's built-in Linux images, or from one of the [saved images](/docs/products/tools/images/).
 
     {{< note type="alert" >}}
-    If you use the Rebuild feature, the data from the disks that are deleted are not retrievable. You may [back up your data manually](/docs/guides/backing-up-your-data/) or [create a snapshot through Linode's Backup Service](/docs/products/storage/backups/#take-a-manual-snapshot) to preserve data before using the Rebuild feature.
+    If you use the Rebuild feature, the data from the disks that are deleted are not retrievable. You may [back up your data manually](/docs/guides/backing-up-your-data/) or [create a snapshot through Linode's Backup Service](/docs/products/storage/backups/guides/take-a-snapshot/) to preserve data before using the Rebuild feature.
 
-    If you'd like to deploy a new Linux distribution without erasing the existing disks, follow the instructions in the [Creating a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#creating-a-disk) guide. This is a better option if you need to create a new distribution, but also need to save the existing data.
+    If you'd like to deploy a new Linux distribution without erasing the existing disks, follow the instructions in the [Creating a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#create-a-disk) guide. This is a better option if you need to create a new distribution, but also need to save the existing data.
 
-    The Compute Instance needs to have some amount of unallocated disk space in order to provision a new distribution. If the instance does not have enough unallocated space, you can [shrink your existing disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#resizing-a-disk) to free up space or [resize your Compute Instance](/docs/products/compute/compute-instances/guides/resize/) to a higher resource tier.
+    The Compute Instance needs to have some amount of unallocated disk space in order to provision a new distribution. If the instance does not have enough unallocated space, you can [shrink your existing disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#resize-a-disk) to free up space or [resize your Compute Instance](/docs/products/compute/compute-instances/guides/resize/) to a higher resource tier.
     {{< /note >}}
 
     If you need to copy files from your existing disk to another location before rebuilding, you can [start SSH](#starting-ssh) under Rescue Mode and then use an SFTP client to copy files to your computer.
@@ -381,7 +381,7 @@ To use the Rebuild feature:
 
 1.  Complete the Rebuild form. Select an image or StackScript to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via the Cloud Manager, this option does not appear).
 
-    {{< content "password-requirements-shortguide" >}}
+    {{% content "password-requirements-shortguide" %}}
 
 1.  Click on **Rebuild** button after completing the form:
 

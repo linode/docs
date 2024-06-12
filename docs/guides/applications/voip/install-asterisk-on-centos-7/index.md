@@ -40,7 +40,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo yum update
 
-1.  Disable SELinux and reboot your Linode. If you have [Lassie](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configure-shutdown-watchdog) enabled, your Linode is back up and running in a few minutes.
+1.  Disable SELinux and reboot your Linode. If you have [Lassie](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/) enabled, your Linode is back up and running in a few minutes.
 
         sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 

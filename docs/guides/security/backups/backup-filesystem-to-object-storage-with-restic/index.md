@@ -32,9 +32,9 @@ The steps in this guide require root privileges, and commands are run with `sudo
 
 1.  Create an Object Storage bucket to hold your backup repository. Follow the [Create a Bucket](/docs/products/storage/object-storage/get-started/#create-a-bucket) section of the [How to Use Linode Object Storage](/docs/products/storage/object-storage/get-started/) guide if you do not already have one.
 
-    {{< content "object-storage-cancellation-shortguide" >}}
+    {{% content "object-storage-cancellation-shortguide" %}}
 
-1.  [Generate Object Storage access keys](/docs/products/storage/object-storage/get-started/#generate-a-key-pair).
+1.  [Generate Object Storage access keys](/docs/products/storage/object-storage/guides/access-keys/).
 
 1.  Ensure your Linode has the `wget` and `bzip2` utilities installed. Install them with the following commands:
 
@@ -52,11 +52,11 @@ The steps in this guide require root privileges, and commands are run with `sudo
 
 ## Install Restic
 
-{{< content "install-restic-shortguide" >}}
+{{% content "install-restic-shortguide" %}}
 
 ## Create the Restic Repository
 
-{{< content "create-restic-repository-shortguide" >}}
+{{% content "create-restic-repository-shortguide" %}}
 
 ## Backup All Files
 

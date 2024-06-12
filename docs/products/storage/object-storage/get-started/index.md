@@ -41,7 +41,7 @@ Billing for Object Storage starts when it is enabled on your account, **regardle
 
 The Cloud Manager provides a web interface for creating buckets. To create a bucket:
 
-1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
+1.  If you have not already, log in to the [Linode Cloud Manager](https://cloud.linode.com).
 
 1.  Click on the **Object Storage** link in the sidebar, and then click on **Create Bucket**.
 
@@ -55,13 +55,13 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 
 1.  Choose a cluster location for the bucket to reside in.
 
-      {{< content "object-storage-cluster-shortguide" >}}
+      {{% content "object-storage-cluster-shortguide" %}}
 
 1.  Click **Submit**. You are now ready to [upload objects to your bucket](#upload-objects-to-a-bucket).
 
 ## Upload an Object to a Bucket
 
-1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
+1.  If you have not already, log in to the [Linode Cloud Manager](https://cloud.linode.com).
 
 1.  Click on the **Object Storage** link in the sidebar. A list of all your buckets appears. Click on the bucket you'd like to begin uploading objects to.
 

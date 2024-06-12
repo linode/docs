@@ -3,8 +3,8 @@ slug: sql-grouping-and-totaling
 title: "Introduction to SQL Grouping and Totaling"
 title_meta: "SQL Grouping and Totaling"
 description: "SQL aggregate functions calculate a set of values by using grouping and totaling. This guide uses various examples to demonstrate how to calculate values using the Where and Having clauses."
-authors: ["Doug Hayman for NanoHertz Solutions Inc."]
-contributors: ["Doug Hayman for NanoHertz Solutions Inc."]
+authors: ["Doug Hayman for NanoHertz Solutions Inc"]
+contributors: ["Doug Hayman for NanoHertz Solutions Inc"]
 published: 2022-03-18
 keywords: ['aggregate functions', 'group functions', 'where clause', 'having clause']
 tags: ['MySQL', 'PostgreSQL']
@@ -32,7 +32,7 @@ This guide uses a `CourseTaken` table to demonstrate aggregate functions. From t
 
 The `CourseTaken` table contains the following column data:
 
-| SSNumber | CourseId | NumericGrade | YearTaken
+| `SSNumber` | `CourseId` | `NumericGrade` | `YearTaken`
 |:-:|:-:|:-:|:-:|
 | 111111111 | CSC101 | 98 | 2021|
 | 111111111 | ENG101 | 95 | 2022|

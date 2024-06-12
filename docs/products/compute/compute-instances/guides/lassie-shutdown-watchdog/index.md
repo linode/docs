@@ -43,7 +43,7 @@ An *unexpected shutdown* is when a Compute Instance powers off without receiving
     Kernel panic - not syncing: No working init found.
     ```
 
-- **Out of memory (OOM) error:** When a Linux system runs out of memory, it can start killing processes to free up additional memory. In many cases, your system remains accessible but some of the software you use may stop functioning properly. OOMing can occasionally result in your system becoming unresponsive or crashing, causing an unexpected shutdown.
+- **Out of memory (OOM) error:** When a Linux system runs out of memory, it can start killing processes to free up additional memory. In many cases, your system remains accessible but some of the software you use may stop functioning properly. This can occasionally result in your system becoming unresponsive or crashing, causing an unexpected shutdown.
 
     ```output
     kernel: Out of memory: Kill process [...]

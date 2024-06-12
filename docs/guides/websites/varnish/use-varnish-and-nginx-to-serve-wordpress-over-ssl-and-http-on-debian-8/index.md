@@ -586,6 +586,6 @@ wget -SS --no-check-certificate https://www.example-over-https.com
 
 By using nginx in conjunction with Varnish, the speed of any WordPress website can be drastically improved while making best use of your hardware resources.
 
-You can strengthen the security of the SSL connection by generating a [custom Diffie-Hellman (DH) parameter](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/#create-a-custom-diffie-hellman-key-exchange), for a more secure cryptographic key exchange process.
+You can strengthen the security of the SSL connection by generating a custom Diffie-Hellman (DH) parameter, for a more secure cryptographic key exchange process.
 
 An additional configuration option is to enable Varnish logging for the plain HTTP website, since now Varnish will be the first to receive the client requests, while NGINX only receives requests for those pages that are not found in the cache. For SSL-encrypted websites, the logging should be done by NGINX because client requests pass through it first. Logging becomes even more important if you use log monitoring software such as [Fail2ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/), Awstats or Webalizer.

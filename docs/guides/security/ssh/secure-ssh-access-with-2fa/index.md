@@ -27,10 +27,10 @@ This guide explains how to install the necessary software, configure your system
 
 1. Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname), [updating your system's hosts file](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-file), and setting the [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
-1. Review the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and create a limited user. This guide will explain a different way to harden SSH access, but you can also [use public key authentication](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair) in addition for even greater protection. That method will be covered in the optional section [Combine Two-Factor and Public Key Authentication](#combine-two-factor-and-public-key-authentication-optional).
+1. Review the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and create a limited user. This guide will explain a different way to harden SSH access, but you can also [use public key authentication](/docs/products/compute/compute-instances/guides/set-up-and-secure/#upload-ssh-key) in addition for even greater protection. That method will be covered in the optional section [Combine Two-Factor and Public Key Authentication](#combine-two-factor-and-public-key-authentication-optional).
 
     {{< note respectIndent=false >}}
-If you plan on [combining two-factor and public key authentication](#combine-two-factor-and-public-key-authentication-optional), ensure you [upload your computer's public key](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair) to your Linode's [standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) before beginning the steps in this guide.
+If you plan on [combining two-factor and public key authentication](#combine-two-factor-and-public-key-authentication-optional), ensure you [upload your computer's public key](/docs/products/compute/compute-instances/guides/set-up-and-secure/#upload-ssh-key) to your Linode's [standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) before beginning the steps in this guide.
     {{< /note >}}
 
 1. You will need a smartphone or another client device with an authenticator application such as [Google Authenticator](https://en.wikipedia.org/wiki/Google_Authenticator) or [Authy](https://www.authy.com/). Many other options exist, and this guide should be compatible with nearly all of them.
@@ -200,7 +200,7 @@ If your SSH client disconnects before you can enter your two-factor token, check
 This section is optional. If you'd like to use [public key authentication](/docs/guides/use-public-key-authentication-with-ssh/) instead of a password authentication with TOTP, follow the steps in this section.
 
 {{< note >}}
-Before completing this section, ensure that your computer's [public key has been uploaded to your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair). Public keys are normally stored in your home directory's `authorized_keys` file.
+Before completing this section, ensure that your computer's [public key has been uploaded to your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#upload-ssh-key). Public keys are normally stored in your home directory's `authorized_keys` file.
 
 ```command
 cat ~/.ssh/authorized_keys

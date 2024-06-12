@@ -35,7 +35,7 @@ If you instead wish to retain the data on your Compute Instance, you can add a d
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/), click the **[Linodes](https://cloud.linode.com/linodes)** link in the sidebar, and select a Compute Instance from the list.
 
-1. **Create a disk with the Image**. Follow the instructions to [create a disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#creating-a-disk) using the [Cloud Manager](https://cloud.linode.com/). Keep the following considerations in mind:
+1. **Create a disk with the Image**. Follow the instructions to [create a disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#create-a-disk) using the [Cloud Manager](https://cloud.linode.com/). Keep the following considerations in mind:
 
     - Confirm there is enough unallocated storage space to accommodate the new disk for the desired Image. If you aren't sure of the size of the Image, open the **[Images](https://cloud.linode.com/images)** page, find the Image within the list, and view the *Size* column.
     - When creating the disk, select the **Create from Image** option and select the Image you wish to deploy.

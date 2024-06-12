@@ -13,9 +13,9 @@ external_resources:
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** JupyterLab should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
@@ -30,11 +30,11 @@ external_resources:
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ### Getting Started after Deployment
 
@@ -60,9 +60,9 @@ Once you have used the token, you will be able to access the JupyterLab base pag
 
 ### More Information
 
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
+You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Project Jupyter](https://jupyter.org/)
 - [JupyterLab Documentation](https://jupyterlab.readthedocs.io/en/latest/)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

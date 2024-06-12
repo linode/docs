@@ -93,7 +93,7 @@ This section is optional and for those looking to use Cacti to monitor additiona
 
 Since snmpd binds to localhost by default, we'll need to edit the `/etc/snmp/snmpd.conf`  file to allow snmpd to serve requests on other interfaces. Please note that  allowing snmpd to run on a public IP address will have security implications,  such as allowing anyone with your IP address to access the snmp daemon running  on your Linode. If you choose to allow snmp to listen on all interfaces, we  strongly recommend [implementing firewall rules](/docs/security/firewalls/) that  restrict access to only specific ip addresses that you control.
 
-Open the file and find the section labeled `Agent Behaviour`. Comment out the line that specifies `127.0.0.1` as the agent address by placing a `#`  in front of it. Uncomment the other line that defines the agentAddress as all  interfaces. The `Agent Behavior` section should now resemble the following:
+Open the file and find the section labeled `Agent Behaviour`. Comment out the line that specifies `127.0.0.1` as the agent address by placing a `#`  in front of it. Uncomment the other line that defines the `agentAddress` as all  interfaces. The `Agent Behavior` section should now resemble the following:
 
 
 {{<file "/etc/snmp/snmpd.conf">}}

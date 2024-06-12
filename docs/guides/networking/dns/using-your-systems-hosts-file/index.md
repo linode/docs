@@ -40,7 +40,7 @@ There are various ways to use the hosts file and the types of associations you s
 
         0.0.0.0 example.com
 
-- Set a [fully qualified domain name](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN). In the example below, replace *example_hostname* with your system's hostname. The domain *example.com* can be a public internet domain (ex. a public website), or the domain of a private network (ex. your home LAN), or a subdomain (subdomain.example.com). It's important to add the FQDN entry immediately after the *localhost* line, so it looks like below:
+- Set a [fully qualified domain name](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN). In the example below, replace `example_hostname` with your system's hostname. The domain *example.com* can be a public internet domain (ex. a public website), or the domain of a private network (ex. your home LAN), or a subdomain (subdomain.example.com). It's important to add the FQDN entry immediately after the *localhost* line, so it looks like below:
 
         127.0.0.1 localhost
         127.0.1.1 hostname.example.com example_hostname

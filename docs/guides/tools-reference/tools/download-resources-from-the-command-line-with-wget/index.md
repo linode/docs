@@ -12,7 +12,7 @@ aliases: ['/tools-reference/tools/download-resources-from-the-command-line-with-
 tags: ["linux"]
 ---
 
-![Banner_image](Download_Resources_from_the_Command_Line_with_wget_smg.jpg)
+![Header image](Download_Resources_from_the_Command_Line_with_wget_smg.jpg "Download Resources from the Command Line with wget")
 
 ## What is wget?
 

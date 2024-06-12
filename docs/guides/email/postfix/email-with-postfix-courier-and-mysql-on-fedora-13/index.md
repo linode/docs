@@ -126,7 +126,7 @@ Issue the following command to create a database for your mail server and switch
     CREATE DATABASE mail;
     USE mail;
 
-Create a mail administration user called `mail_admin` and grant it permissions on the `mail` database with the following commands. Please be sure to replace "mail\_admin\_password" with a password you select for this user.
+Create a mail administration user called `mail_admin` and grant it permissions on the `mail` database with the following commands. Please be sure to replace `mail_admin_password` with a password you select for this user.
 
     GRANT SELECT, INSERT, UPDATE, DELETE ON mail.* TO 'mail_admin'@'localhost'
       IDENTIFIED BY 'mail_admin_password';
@@ -178,37 +178,29 @@ Next, we'll perform additional Postfix configuration to set up communication wit
 
 ## Configure Postfix to work with MySQL
 
-Create a virtual domain configuration file for Postfix called `/etc/postfix/mysql-virtual_domains.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user.
+Create a virtual domain configuration file for Postfix called `/etc/postfix/mysql-virtual_domains.cf` with the following contents. Be sure to replace `mail_admin_password` with the password you chose earlier for the MySQL mail administrator user.
 
-{{< file >}}
-/etc/postfix/mysql-virtual\_domains.cf
-{{< /file >}}
+```file {title="/etc/postfix/mysql-virtual_domains.cf"}
+user = mail_admin password = mail_admin_password dbname = mail query = SELECT domain AS virtual FROM domains WHERE domain='%s' hosts = 127.0.0.1
+```
 
-> user = mail\_admin password = mail\_admin\_password dbname = mail query = SELECT domain AS virtual FROM domains WHERE domain='%s' hosts = 127.0.0.1
+Create a virtual forwarding file for Postfix called `/etc/postfix/mysql-virtual_forwardings.cf` with the following contents. Be sure to replace `mail_admin_password` with the password you chose earlier for the MySQL mail administrator user.
 
-Create a virtual forwarding file for Postfix called `/etc/postfix/mysql-virtual_forwardings.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user.
+```file {title="/etc/postfix/mysql-virtual_forwardings.cf"}
+user = mail_admin password = mail_admin_password dbname = mail query = SELECT destination FROM forwardings WHERE source='%s' hosts = 127.0.0.1
+```
 
-{{< file >}}
-/etc/postfix/mysql-virtual\_forwardings.cf
-{{< /file >}}
+Create a virtual mailbox configuration file for Postfix called `/etc/postfix/mysql-virtual_mailboxes.cf` with the following contents. Be sure to replace `mail_admin_password` with the password you chose earlier for the MySQL mail administrator user.
 
-> user = mail\_admin password = mail\_admin\_password dbname = mail query = SELECT destination FROM forwardings WHERE source='%s' hosts = 127.0.0.1
+```file {title="/etc/postfix/mysql-virtual_mailboxes.cf"}
+user = mail_admin password = mail_admin_password dbname = mail query = SELECT CONCAT(SUBSTRING_INDEX(email,<'@'>,-1),'/',SUBSTRING_INDEX(email,<'@'>,1),'/') FROM users WHERE email='%s' hosts = 127.0.0.1
+```
 
-Create a virtual mailbox configuration file for Postfix called `/etc/postfix/mysql-virtual_mailboxes.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user.
+Create a virtual email mapping file for Postfix called `/etc/postfix/mysql-virtual_email2email.cf` with the following contents. Be sure to replace `mail_admin_password` with the password you chose earlier for the MySQL mail administrator user.
 
-{{< file >}}
-/etc/postfix/mysql-virtual\_mailboxes.cf
-{{< /file >}}
-
-> user = mail\_admin password = mail\_admin\_password dbname = mail query = SELECT CONCAT(SUBSTRING\_INDEX(email,<'@'>,-1),'/',SUBSTRING\_INDEX(email,<'@'>,1),'/') FROM users WHERE email='%s' hosts = 127.0.0.1
-
-Create a virtual email mapping file for Postfix called `/etc/postfix/mysql-virtual_email2email.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user.
-
-{{< file >}}
-/etc/postfix/mysql-virtual\_email2email.cf
-{{< /file >}}
-
-> user = mail\_admin password = mail\_admin\_password dbname = mail query = SELECT email FROM users WHERE email='%s' hosts = 127.0.0.1
+```file {title="/etc/postfix/mysql-virtual_email2email.cf"}
+user = mail_admin password = mail_admin_password dbname = mail query = SELECT email FROM users WHERE email='%s' hosts = 127.0.0.1
+```
 
 Set proper permissions and ownership for these configuration files by issuing the following commands:
 
@@ -281,7 +273,7 @@ Edit the file `/etc/sysconfig/saslauthd`, setting "FLAGS" to "-r" as shown below
 >
 > \# Additional flags to pass to saslauthd on the command line. See saslauthd(8) \# for the list of accepted flags. FLAGS="-r"
 
-Next, edit the file `/etc/pam.d/smtp` and copy in the following two lines. You will want to comment out the existing configuration options be adding a `#` to the beginning of each line. Be sure to change "mail\_admin\_password" to the password you chose for your mail administration MySQL user earlier.
+Next, edit the file `/etc/pam.d/smtp` and copy in the following two lines. You will want to comment out the existing configuration options be adding a `#` to the beginning of each line. Be sure to change `mail_admin_password` to the password you chose for your mail administration MySQL user earlier.
 
 {{< file >}}
 /etc/pam.d/smtp
@@ -289,13 +281,11 @@ Next, edit the file `/etc/pam.d/smtp` and copy in the following two lines. You w
 
 > auth required pam\_mysql.so user=mail\_admin passwd=mail\_admin\_password host=127.0.0.1 db=mail table=users usercolumn=email passwdcolumn=password crypt=1 account sufficient pam\_mysql.so user=mail\_admin passwd=mail\_admin\_password host=127.0.0.1 db=mail table=users usercolumn=email passwdcolumn=password crypt=1
 
-Next, edit the file `/usr/lib/sasl2/smtpd.conf` to match the following example. Be sure to change "mail\_admin\_password" to the password you chose for your mail administration MySQL user earlier.
+Next, edit the file `/usr/lib/sasl2/smtpd.conf` to match the following example. Be sure to change `mail_admin_password` to the password you chose for your mail administration MySQL user earlier.
 
-{{< file >}}
-/usr/lib/sasl2/smtpd.conf
-{{< /file >}}
-
-> pwcheck\_method: saslauthd mech\_list: plain login allow\_plaintext: true auxprop\_plugin: mysql sql\_hostnames: 127.0.0.1 sql\_user: mail\_admin sql\_passwd: mail\_admin\_password sql\_database: mail sql\_select: select password from users where email = '%u'
+```file {title="/usr/lib/sasl2/smtpd.conf"}
+pwcheck_method: saslauthd mech_list: plain login allow_plaintext: true auxprop_plugin: mysql sql_hostnames: 127.0.0.1 sql_user: mail_admin sql_passwd: mail_admin_password sql_database: mail sql_select: select password from users where email = '%u'
+```
 
 Finally, restart Postfix and `saslauthd` by issuing the following commands:
 
@@ -319,7 +309,7 @@ Back up the current `/etc/authlib/authmysqlrc` file and create an empty one as f
     cp /etc/authlib/authmysqlrc /etc/authlib/authmysqlrc_orig
     cat /dev/null > /etc/authlib/authmysqlrc
 
-Edit the file `/etc/authlib/authmysqlrc`, copying in the following contents. Be sure to change "mail\_admin\_password" to the password you chose for your mail administration MySQL user earlier.
+Edit the file `/etc/authlib/authmysqlrc`, copying in the following contents. Be sure to change `mail_admin_password` to the password you chose for your mail administration MySQL user earlier.
 
 {{< file >}}
 /etc/authlib/authmysqlrc

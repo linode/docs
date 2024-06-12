@@ -15,9 +15,9 @@ SimpleX Chat is a private messaging platform that uses temporary anonymous ident
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** SimpleX Chat should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -37,12 +37,12 @@ SimpleX Chat is a private messaging platform that uses temporary anonymous ident
 
 ### Linode Options
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
 ## Getting Started after Deployment
 
-Once the SimpleX Server is up and running you can display your SMP and XFTP connection strings with the following command while logged into the server:
+Once the SimpleX Server is up and running you can display your SMP and XFTP connection strings with the following command while logged in to the server:
 
 ```command
 docker-compose --project-directory /etc/docker/compose/simplex logs grep 'Server address' | uniq
@@ -56,4 +56,4 @@ For more information on configuration and linking the SimpleX app to your SMP se
 
 - [Hosting your own XFTP Server](https://simplex.chat/docs/xftp-server.html)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

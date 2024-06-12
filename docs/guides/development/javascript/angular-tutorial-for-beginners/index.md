@@ -64,7 +64,7 @@ Unless noted otherwise, all subsequent commands in this guide assume you are sti
 
     Angular serves the application on `localhost` port `4200`. To visit the application remotely, you can use an SSH tunnel.
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/#using-ssh-on-windows-10-to-connect-to-a-server) guide, replacing the example port number there with **4200**.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Connecting to a Remote Server Over SSH using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/) guide, replacing the example port number there with **4200**.
     - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
           ssh -L4200:127.0.0.1:4200 example-user@192.0.2.0

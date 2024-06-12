@@ -15,9 +15,9 @@ Run a [Visual Studio Code Server](https://github.com/cdr/code-server) in the bro
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Visual Studio Code Server should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -30,16 +30,16 @@ Run a [Visual Studio Code Server](https://github.com/cdr/code-server) in the bro
 
 ### VS Code Options
 
-- **The password to login to the VS Code Web UI** *(required)*: Enter a *strong* password that can be used to access VS Code.
+- **The password used to log in to the VS Code Web UI** *(required)*: Enter a *strong* password that can be used to access VS Code.
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates as well as configuring the server and DNS records.
 - **The version of VS Code Server you'd like installed** *(required)*: This is the version of VS Code Server that is installed during setup. The default at the time that this guide was written is 3.10.2. This field is filled in and it is recommended that you use this value. If you do not fill in this field, the latest version is used.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 - **Would you like to use a free Let's Encrypt SSL certificate?** Select `Yes` if you want the install to create an SSL certificate for you, or `No` if you do not. If `No` is selected, the VS Code app triggers security warnings in most web browsers. If you create a certificate and do not create a domain, the installer uses the Linode rDNS assigned name for the certificate.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -70,4 +70,4 @@ The VS Code Marketplace App installs the following software on the Linode:
 | [**NGINX**](https://www.nginx.com) | An open source web server. |
 | [**ufw**](https://wiki.ubuntu.com/UncomplicatedFirewall) | ufw is the uncomplicated firewall, a frontend for iptables. |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
