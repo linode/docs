@@ -11,7 +11,6 @@ tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[ack!: Documentation](https://beyondgrep.com/documentation/)'
-how-to-install-and-use-ack-a-grep-replacement-for-developers-on-ubuntu-14-04)'
 - '[Linux Shell Tips: How to Install and Use Ack Command in Linux with Examples](https://www.linuxshelltips.com/ack-command-in-linux/)'
 ---
 
