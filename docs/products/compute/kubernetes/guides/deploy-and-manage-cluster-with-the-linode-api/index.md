@@ -398,7 +398,7 @@ Each Linode account has a limit to the number of resources they can deploy. This
 
 ### Add Labels and Taints to your LKE Node Pools
 
-When creating or updating an LKE node pool, you can optionally add custom labels and taints to all nodes using the `labels` and `taints` parameters. Defining labels and taints on a per-pool basis through the Linode API has the several benefits compared to managing them manually with `kubectl`, including:
+When creating or updating an LKE node pool, you can optionally add custom labels and taints to all nodes using the `labels` and `taints` parameters. Defining labels and taints on a per-pool basis through the Linode API has several benefits compared to managing them manually with `kubectl`, including:
 
 - Custom labels and taints automatically apply to new nodes when a pool is recycled or scaled up (either manually or through autoscaling).
 - LKE ensures that nodes have the desired taints in place before they become ready for pod scheduling. This prevents newly created nodes from attracting workloads that don't have the intended tolerations.
@@ -448,9 +448,9 @@ In the above command, labels are defined in the `labels` field as key-value pair
     ]
     ```
 
-    - **Key:** The `key` value must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 253 characters. Optionally, the `key` value can begin with a DNS subdomain prefix and a single '/', like 'example.com/my-app'. In this case the maximum allowed length of the domain prefix is 253 characters.
+    - **Key:** The `key` value must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 253 characters. Optionally, the `key` value can begin with a DNS subdomain prefix and a single slash (`/`), like `example.com/my-app`. In this case the maximum allowed length of the domain prefix is 253 characters.
     - **Value:** The `value` key is optional. If given, it must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 63 characters.
-    - **Effect:** The `effect` value must be NoSchedule, PreferNoSchedule or NoExecute.
+    - **Effect:** The `effect` value must be NoSchedule, PreferNoSchedule, or NoExecute.
 
 {{< note >}}
 Taint and label values cannot contain `kubernetes.io` or `linode.com` domains as these are reserved for LKE's own usage.
