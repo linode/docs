@@ -9,7 +9,6 @@ keywords: ['javascript fetch', 'javascript fetch api', 'javascript fetch example
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[MDN Web Docs: Using the Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)'
-- '[DigitalOcean: How To Use the JavaScript Fetch API to Get Data](https://www.digitalocean.com/community/tutorials/how-to-use-the-javascript-fetch-api-to-get-data)'
 ---
 
 The JavaScript Filter API gives you a convenient and native way to make requests and handle responses for HTTP and other network APIs. It provides a built-in function for making `GET`, `POST`, and other HTTP requests in JavaScript.

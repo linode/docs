@@ -9,7 +9,6 @@ keywords: ['what is openresty', 'openresty example', 'openresty vs nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[OpenResty: Getting Started](https://openresty.org/en/getting-started.html)'
-- '[DigitalOcean: How to Use the OpenResty Web Framework for NGINX on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-use-the-openresty-web-framework-for-nginx-on-ubuntu-16-04)'
 - "[Ketzal's $HOME: Intro to Lua and Openresty, Part 1 - Hello World Examples](https://ketzacoatl.github.io/posts/2017-03-02-lua-and-openresty-hello-world-examples.html)"
 ---
 

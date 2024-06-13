@@ -1,22 +1,22 @@
 ---
 slug: observability-with-datastream-and-trafficpeak
-title: "Large Data Observability With DataStream and Hydrolix TrafficPeak"
-description: "This guide reviews Akamai's managed observability solution, Hydrolix TrafficPeak, including product features, how TrafficPeak overcomes observability challenges, and a proven implementation architecture."
+title: "Large Data Observability With DataStream and TrafficPeak"
+description: "This guide reviews Akamai's managed observability solution, TrafficPeak, including product features, how TrafficPeak overcomes observability challenges, and a proven implementation architecture."
 authors: ["John Dutton"]
 contributors: ["John Dutton"]
 published: 2024-06-11
-keywords: ['observability','datastream','trafficpeak','hydrolix','logging','data logging','visualization']
+keywords: ['observability','datastream','trafficpeak','logging','data logging','visualization']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[Official Hydrolix Documentation](https://docs.hydrolix.io/docs/welcome)'
-- '[Official TrafficPeak Site](https://hydrolix.io/partner-program/trafficpeak/)'
+- '[Akamai Solution Brief: Media TrafficPeak Observability Platform](https://www.akamai.com/resources/solution-brief/trafficpeak-observability-platform)'
+- '[Akamai TechDocs: Stream logs to TrafficPeak](https://techdocs.akamai.com/datastream2/docs/stream-logs-trafficpeak)'
 ---
 
 ## Overview
 
 Observability workflows are critical to gaining meaningful insight to your application’s health, customer traffic, and overall performance. However, there are challenges that come along with achieving true observability, including large volumes of traffic data, data retention, time to implementation, and the cost of each.
 
-Hydrolix TrafficPeak is a ready-to-use, quickly deployable observability solution built for Akamai Cloud. TrafficPeak works with DataStream to ingest, index, compress, store, and search high-volume, real-time log data at up to 75% less cost than other observability platforms. TrafficPeak customers are provided with a Grafana login and customized dashboards where they can visualize, search, and set up alerting for their data.
+TrafficPeak is a ready-to-use, quickly deployable observability solution built for Akamai Cloud. TrafficPeak works with DataStream to ingest, index, compress, store, and search high-volume, real-time log data at up to 75% less cost than other observability platforms. TrafficPeak customers are provided with a Grafana login and customized dashboards where they can visualize, search, and set up alerting for their data.
 
 This guide looks at the TrafficPeak observability solution and reviews a tested, proven observability architecture built for a high-traffic delivery platform. This solution combines Akamai’s edge-based DataStream log streaming service, SIEM integration, and TrafficPeak built on Linode cloud infrastructure to support large-scale traffic, logging, and data retention.
 
@@ -24,13 +24,11 @@ This guide looks at the TrafficPeak observability solution and reviews a tested,
 
 ### What Is TrafficPeak?
 
-TrafficPeak is a fully managed observability solution that works with DataStream log streaming and Akamai Cloud Computing. TrafficPeak is managed and hosted by Hydrolix, and uses Linode Compute Instances alongside Linode Object Storage for data processing and storage. With TrafficPeak, customers are provided with access to a Grafana interface with preconfigured, customizable dashboards for data visualization and monitoring.
+TrafficPeak is a fully managed observability solution that works with DataStream log streaming and Akamai Cloud Computing. TrafficPeak is managed and hosted by Akamai, and uses Linode Compute Instances alongside Linode Object Storage for data processing and storage. With TrafficPeak, customers are provided with access to a Grafana interface with preconfigured, customizable dashboards for data visualization and monitoring.
 
 ### Who Is TrafficPeak For?
 
 TrafficPeak is for Akamai customers that need an all-in-one, cost-effective, turnkey observability solution for large, petabyte-scale volumes of data.
-
-For more detailed information on features and pricing, see: [Observability on Akamai cloud computing: TrafficPeak](https://hydrolix.io/partner-program/trafficpeak/)
 
 ## Overcoming Challenges
 
@@ -54,7 +52,7 @@ With TrafficPeak, logs are sent directly from Akamai edge to Linode Compute usin
 
 *Achieve observability for complex types of data with visual monitoring and data reporting.*
 
-Complex data (for example, media delivery and gaming data) can have additional challenges: extreme sensitivity to latency, high data volumes, audience insights, application-specific data types, data compliance and security, and more. TrafficPeak’s visual monitoring and data reporting allows you to track audience size, unique viewership, SIEM data, and other audience-specific data. TrafficPeak is also monitored by Hydrolix (so you don’t need to worry about scaling tasks), includes configurable alerting, and supports CMCD when using Akamai’s [Adaptive Media Delivery](https://www.akamai.com/products/adaptive-media-delivery).
+Complex data (for example, media delivery and gaming data) can have additional challenges: extreme sensitivity to latency, high data volumes, audience insights, application-specific data types, data compliance and security, and more. TrafficPeak’s visual monitoring and data reporting allows you to track audience size, unique viewership, SIEM data, and other audience-specific data. TrafficPeak is also monitored by Akamai (so you don’t need to worry about scaling tasks), includes configurable alerting, and supports CMCD when using Akamai’s [Adaptive Media Delivery](https://www.akamai.com/products/adaptive-media-delivery).
 
 ### Implementation
 
@@ -76,18 +74,16 @@ Below is a high-level diagram and walkthrough of a DataStream and TrafficPeak ar
 
 ![DataStream With TrafficPeak Diagram](DataStream-With-TrafficPeak-Diagram.png)
 
-For an in-depth overview of Hydrolix’s architecture, see: [The Hydrolix Data Platform](https://docs.hydrolix.io/docs/platform-overview)
-
 ### Systems and Components
 
 -   **DataStream:** Akamai’s edge-native log streaming service.
 
--   **Hydrolix TrafficPeak:** Akamai’s managed observability solution that runs on Akamai Cloud Computing platform. Comprised of Compute Instances, Object Storage, and a Grafana dashboard.
+-   **TrafficPeak:** Akamai’s managed observability solution that runs on Akamai Cloud Computing platform. Comprised of Compute Instances, Object Storage, and a Grafana dashboard.
 
 -   **Edge Server:** The edge infrastructure that receives, processes, and serves client requests. In this workflow, edge server activity is logged and sent to TrafficPeak for observability purposes.
 
 -   **Data Analysis:** Grafana dashboard; a web-based analytics and visualization platform preconfigured for monitoring log activity processed by TrafficPeak. Configured and made accessible to TrafficPeak customers.
 
--   **VMs:** Compute Instances used to run TrafficPeak’s log ingest and processing software. Managed by Hydrolix.
+-   **VMs:** Compute Instances used to run TrafficPeak’s log ingest and processing software. Managed by Akamai.
 
--   **Object Storage:** S3 compatible object storage used to store log data from TrafficPeak. Managed by Hydrolix.
+-   **Object Storage:** S3 compatible object storage used to store log data from TrafficPeak. Managed by Akamai.
