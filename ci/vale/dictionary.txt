@@ -1292,6 +1292,7 @@ len
 lennart
 Lerna
 letsencrypt
+Letsencrypt
 lf
 li181
 li263
