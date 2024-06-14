@@ -68,11 +68,10 @@ Before you begin, it’s important to understand five key assumptions this guide
     | `{{< placeholder "example.tld" >}}`| Your custom domain name. |
     | `{{< placeholder "IPv4_ADDRESS" >}}` | Your system's public IPv4 address. |
     | `{{< placeholder "IPv4_ADDRESS" >}}` | Your system's public IPv6 address. |
-    | `{{< placeholder "EXAMPLE_USER" >}}` | The username of the limited sudo user. |
     | `{{< placeholder "external@email.tld" >}}` | A working external email address. |
     | `{{< placeholder "POSTFIXADMIN_PASSWORD" >}}` | Your PostfixAdmin database user password. |
 
-1.  As a developer, you should already be familiar with the Linux command line, the nano text editor (or any other editor capable of editing plain text files), and basic networking concepts. Akamai has quick guides on [SMTP](/docs/guides/what-is-smtp/) and [IMAP/POP](/docs/guides/what-are-pop-and-imap/) to bring you up to speed on the way these protocols work.
+1.  As a developer, you should already be familiar with the Linux command line and basic networking concepts. Akamai has quick guides on [SMTP](/docs/guides/what-is-smtp/) and [IMAP/POP](/docs/guides/what-are-pop-and-imap/) to bring you up to speed on the way these protocols work.
 
 1.  Although Postfix and Dovecot servers can operate in the *system* or *virtual* mode, only virtual mode is used here. In system mode, only users with local logins can send and receive emails. They do so with lookups against the operating system’s `/etc/passwd` file, and all system mode users reside in a single domain. In contrast, virtual mode allows an unlimited number of domains, users, and aliases, all unrelated to the underlying operating system.
 
