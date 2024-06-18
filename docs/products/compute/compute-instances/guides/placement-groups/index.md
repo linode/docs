@@ -41,7 +41,7 @@ In addition to selecting the Affinity Type, you select how it's enforced when yo
 
 If a placement group becomes non-compliant, we're alerted and we'll bring it back into compliance as soon as possible. Non-compliance can only be fixed by Akamai staff. **_You can't fix it yourself_**.
 
-By design, a Strict placement group can't be made non-compliant when simply creating it or managing its Compute Instances. In rare cases, non-compliance can occur if we need to fail-over or migrate your Compute Instances for maintenance. during maintenance. Because of this, fixing non-compliance for Strict placement groups is prioritized over Flexible groups.
+By design, a Strict placement group can't be made non-compliant when simply creating it or managing its Compute Instances. In rare cases, non-compliance can occur if we need to fail-over or migrate your Compute Instances for maintenance. Because of this, fixing non-compliance for Strict placement groups is prioritized over Flexible groups.
 
 ## Create a placement group
 
