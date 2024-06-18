@@ -15,6 +15,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Ubuntu 16.04
+deprecated: true
 ---
 
 ![LEMP Server on Ubuntu 16.04](lemp-server-on-ubuntu-1604.png "LEMP Server on Ubuntu 16.04")

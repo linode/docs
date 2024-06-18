@@ -15,6 +15,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Debian 9
+deprecated: true
 ---
 
 ## What is a LEMP Stack?

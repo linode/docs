@@ -21,6 +21,7 @@ relations:
         keywords:
             - distribution: Debian 8
 aliases: ['/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/']
+deprecated: true
 ---
 {{< note >}}
 We have created a [new version of this guide](/docs/guides/configure-spf-and-dkim-in-postfix-on-debian-9/) to run on Debian 9.

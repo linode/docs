@@ -11,6 +11,7 @@ tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/game-servers/dont-starve-together-on-ubuntu/','/game-servers/install-dont-starve-together-game-server-on-ubuntu/','/applications/game-servers/install-dont-starve-together-game-server-on-ubuntu/']
 dedicated_cpu_link: true
+deprecated: true
 ---
 
 ![Header image](Install_Dont_Starve_Together_Game_Server_on_Ubuntu_smg.jpg "Install Don't Starve Together Game Server on Ubuntu 14.04")

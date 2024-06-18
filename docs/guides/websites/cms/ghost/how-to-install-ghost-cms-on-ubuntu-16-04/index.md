@@ -19,6 +19,7 @@ relations:
         key: how-to-install-ghost-cms
         keywords:
            - distribution: Ubuntu 16.04
+deprecated: true
 ---
 
 ![How to Install Ghost CMS on Ubuntu 16.04](ghost-blog-ubuntu-16-04-title-graphic.png "How to Install Ghost CMS on Ubuntu 16.04")
