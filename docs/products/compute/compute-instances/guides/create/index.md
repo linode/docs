@@ -133,9 +133,8 @@ In most cases, it's recommended to use a VPC over a VLAN. VPCs operate on a high
 
 ## Assign to a Placement Group (Optional) {#assign-to-a-placement-group}
 
-<div align=center>
-<img src="create-instance-pg.png" width=500 />
-</div>
+![Creating a receiving Linode](create-instance-pg.png)
+{.flex .justify-center .items-center}
 
 Add this Compute Instance to a Placement Group to manage its physical location in a data center ("region"). Placement Groups can be set up to group your compute instances close together to help with performance, or further apart to support high availability. Placement Groups are available at no additional cost, but they're not available in all regions. See [Work with Placement Groups](/docs/products/compute-instances/guides/placement-groups) to learn more.
 

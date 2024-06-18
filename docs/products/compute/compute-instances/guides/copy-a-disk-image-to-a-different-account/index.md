@@ -23,22 +23,23 @@ You need to prepare the *receiving* Linode before initiating the transfer. First
 ### Creating a New Receiving Linode
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com) with the username and password you created when signing up.
+
 1.  Click **Create** at the top of the page and select **Linode**.
+
 1.  Click **X** to not choose any **Image** in the **Choose a Distribution** section of the [Distributions](/docs/products/compute/compute-instances/guides/distributions/) tab.
 
-    <div align=center>
-    <img src=image-selection.png width="500")
-    </div>
+![Creating a receiving Linode](image-selection.png)
+{.flex .justify-center .items-center}
 
-4. Choose the region where you would like the Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/products/platform/get-started/guides/choose-a-data-center/) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
+1. Choose the region where you would like the Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/products/platform/get-started/guides/choose-a-data-center/) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
 
-5. Select a Linode plan.
+1. Select a Linode plan.
 
-6.  Give the Linode a label. This is a name to help you easily identify it within the Cloud Manager's Dashboard. If desired, assign a tag to the Linode in the **Add Tags** field.
+1.  Give the Linode a label. This is a name to help you easily identify it within the Cloud Manager's Dashboard. If desired, assign a tag to the Linode in the **Add Tags** field.
 
-7. Skip the **Root Password** and **SSH Keys** fields, as they are disabled when creating an empty Linode.
+1. Skip the **Root Password** and **SSH Keys** fields, as they are disabled when creating an empty Linode.
 
-8.  Click **Create Linode**. The system directs you to the *Linodes* page that reports the status of the Linode as it boots up.
+1.  Click **Create Linode**. The system directs you to the *Linodes* page that reports the status of the Linode as it boots up.
 
 ### Creating New Disks
 
@@ -48,14 +49,17 @@ To hold the files transferred from the other Linode, create two new disks labele
 
 1.  Go to the **Storage** tab and click **Add a Disk** in the **Disks** section. The **Add Disk** window appears.
 
-    <div align=center>
-    <img src="add_disk.png" width="500">
-    </div>
+![Creating a receiving Linode](add_disk.png)
+{.flex .justify-center .items-center}
 
-3.  Type a descriptive name such as `copy` for the disk in the **Label** field.
+1.   Type a descriptive name such as `copy` for the disk in the **Label** field.
+
 1.  Select `ext4` in the **Filesystem** dropdown field.
+
 1.  Set the size of the disk in the **Size** field. The size of the disk must be large enough to hold the contents of the disk that you want to copy.
+
 1.  Click **Add** to create the disk.
+
 1.  Repeat the steps to create a disk labeled `swap` and select `swap` in the **Filesystem** dropdown field.
     Ensure that the size of the `swap` disk is the same as that of the `swap` disk of the disk that you want to copy.
 
@@ -65,10 +69,13 @@ The system creates disks to hold the files from the disk of other account.
 
 Start the receiving Linode in rescue mode:
 
-1.  Select the Linode that is receiving the disk. The Linode's dashboard appears.
+1. Select the Linode that is receiving the disk. The Linode's dashboard appears.
+
 1. Select the **More Options Ellipsis** and click the **Rescue** button.
-1.  Set the **/dev/sda** field to `copy` and **/dev/sdb** to `swap`.
-1.  Click **Reboot into Rescue Mode**.
+
+1. Set the **/dev/sda** field to `copy` and **/dev/sdb** to `swap`.
+
+1. Click **Reboot into Rescue Mode**.
 
 ### Access the Linode in Rescue Mode
 

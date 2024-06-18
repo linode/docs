@@ -16,16 +16,16 @@ When you create a Compute Instance, it's stored on a specific data center you se
 Review the [Choosing a Data Center](/docs/products/platform/get-started/guides/choose-a-data-center/) guide to learn how to choose and speed test a data center.
 {{< /note >}}
 
-## Before you begin
+## Before You Begin
 
-After you migrate, various changes can impact your instance's configuration and the devices connected to it. They can all be seen in a caution message before proceeding with your migration within the Cloud Manager. Here are some changes you should be aware of:
+Various changes applied by the migration can impact your instance's configuration and the devices connected to it. They can all be seen in a caution message before proceeding with your migration within the Cloud Manager. Here are some changes you should be aware of:
 
 - **IP addresses are not transferrable** They aren't migrated to the new data center with your Compute Instance. Akamai issues a new IPv4 and IPv6 address for your instance, and you can access them once the migration completes. When your instance enters the migration queue, new IP addresses are reserved and you can see them in your instance's **Networking** detail page. See the [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) guide to learn how to access Networking information in the Cloud Manager.
 
 - **DNS records need to be updated**. You need to update DNS records with the new IP address once migrated. If you're hosting your DNS with us, this can be done through the [DNS Manager](/docs/products/networking/dns-manager/), while [rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/) can be configured directly on each Compute Instance's Networking detail page.
 
     {{< note >}}
-    If any DNS records are in use before the migration, the software using them can't connect during or after the migration, until you make the necessary changes.
+    If any DNS records are in use, the software using them won't be able to connect during or after the migration. After the migration, you need to make the necessary changes to the DNS, and they need to propagate.
     {{< /note >}}
 
 - **Existing Backups can't be migrated**. Any [Linode Backup Service](/docs/products/storage/backups/) backup you have scheduled during the migration is skipped. Once the migration completes, Cloud Manager restarts your backup service on its normal schedule.
@@ -40,7 +40,7 @@ After you migrate, various changes can impact your instance's configuration and 
 
 - **Migration removes a compute instance from a placement group**. A [placement group](/docs/products/compute/compute-instances/guides/placement-groups/) needs to exist in a specific data center, and its member compute instances need to be in that *same data center*. If the target data center supports them, you can select to create a new placement group during the migration set up.
 
-## Migrate to a new data center
+## Migrate to a New Data Center
 
 1. Log in to the [Cloud Manager](https://www.cloud.linode.com) and click on the **Linodes** link in the sidebar.
 
@@ -52,6 +52,6 @@ After you migrate, various changes can impact your instance's configuration and 
 
 3. In **Migrate Linode** form, review the details of the migration and check the **Accept** box to agree to these conditions and expectations.
 
-1. Under **Configure Migration**, select the destination Region for the migration.
+1. Under **Configure Migration**, select the destination **Region** for the migration.
 
 1. Click **Enter Migration Queue**. You can monitor the progress of your migration from the list of Compute Instances and the Compute Instance's dashboard. Cloud Manager returns your instance to its previous state (powered on or off) once the migration completes.

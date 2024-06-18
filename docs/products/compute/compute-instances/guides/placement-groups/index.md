@@ -1,32 +1,17 @@
 ---
 title: "Work with Placement Groups"
 description: "Learn how to group your compute instances to best meet your delivery model."
+published: 2024-06-20
 keywords: ["placement-group", "affinity", "compliance"]
-published: TBD
-modified: 2024-02-14
-modified_by:
-  name: Linode
-authors: ["Linode"]
 ---
 
-When you deploy several compute instances in an Akamai data center ("region"), they're default placed wherever there's available space. But, you may want them in a specific physical location, to best support your need. Do you want them close together, even on the same host to speed up performance? Or, do you want to disperse them across several hosts to support high availability? Placement groups let you determine this physical location to meet either of these models.
+When you deploy several compute instances in an Akamai data center ("region"), they're allocated to physical machines. This allocation varies based on several factors, including the compute instance plan and availability for that plan sizes. However, you may want your compute instances in specific physical locations, to best support your need. You may want them close together, even on the same host to speed up performance. Or, you may want to disperse them across several hosts to support high availability. Placement groups let you determine this physical location to meet either of these models.
 
 ## Overview
 
 The Placement Groups service gives you a convenient way to set up groups of your compute instances, using Cloud Manager, API operations, or our CLI. Create a new placement group in a supported region and add new or existing compute instances from that region to your group. With the new group created, we physically move your compute instances into it, based on your desired model.
 
 ## Availability
-
-<!--
-
-**CV: 06/2024** Availability at limited availability is only on two data centers - Chicago, and Miami. We'll be progressively opening up more regions as they're qualified. The request is to hide availability information in the docs, prior to actual GA.
-
-- UI: There's a mouse-over tooltip that reveals the available regions when creating a placement group. It'll be dynamically updated as new regions are made available.
-- API: The `GET /v4/regions:id` operation in the API spec lists `Placement Group` in the `capabilities` array, if PGs are supported for that region. This is the only op I see that shows support/non-support. The issue here is, you need to know the `id` for the target region, in order to run this operation. How would this work in an automated API workflow? Would you set up automation to periodically ping all regions, until it sees that `Placement Groups` is listed for a specific region? (In which case, the workflow could be manipulated to include the new region.)
-
-Because of the issue with the API, I'm including the Availability section in the docs. It's easy enough to update the docs on a weekly release cadence as we add new supported regions. (Do we anticipate qualifying regions quicker than once a week?)
-
--->
 
 The Placement Groups service is available in select regions. Currently, this includes:
 
@@ -40,29 +25,23 @@ Placement Groups is in limited availability. Throughout this phase, we expect to
 
 ## Affinity, enforcement, and compliance
 
-To distribute your compute instances in a placement group to meet your model, we use the industry-recognized affinity standard. You can pick from one of two types:
+To distribute your compute instances in a placement group, we use the industry-recognized affinity standard. Pick from one of two types to serve as your "preferred container" type for your placement group:
 
-- **Affinity**. Your compute instances are physically close together, possibly on the same host. Set this as your preferred container to help with performance.
+- **Affinity**. Your compute instances are physically close together, possibly on the same host. Set this as your preferred container if your application requirements value performance over availability.
 
 - **Anti-affinity**. Your compute instances are placed in separate fault domains, but they're still in the same region. Use this preferred container to better support a high-availability model.
 
-You also select how your affinity type should be enforced, when adding more compute instances to it in the future. This determines whether or not the placement group remains accessible – is “compliant”-- after you add a new compute instance:
+In addition to selecting the Affinity Type, you select how it's enforced when you add more Compute Instances to the placement group.
 
 - **Strict (Best practice)**. You can't add more compute instances to your placement group if your preferred container lacks capacity or is unavailable. For example, let's assume you've set **Anti-affinity** as your affinity type. If you try to add a compute instance that's on the same host, or there's no capacity outside that host in the region, you get an error and can't add the compute instance. This helps you keep your placement group compliant, because you can only pick compute instances that fit your desired model.
 
-- **Flexible**. You can add more compute instances to your placement group even if they're outside your affinity type's preferred container. However, if you add one and it violates your affinity type, the placement group becomes non-compliant. Once the necessary capacity is available in the data center, we physically move the compute instance for you, to fit your affinity type's preferred container and make it compliant again. This can work for you if you know you need to add more compute instances to your group in the future.
+- **Flexible**. You can add more compute instances to your placement group even if they're outside your affinity type's preferred container. However, if you add one and it violates your affinity type, the placement group becomes non-compliant. Once the necessary capacity is available in the data center, we physically move the compute instance for you to fit your affinity type's preferred container and make it compliant again. This can work for you if you know you need to add more compute instances to your group in the future.
 
-### Non-compliance precedence
+### Fix non-compliance
 
-If a placement group becomes non-compliant, *we need to fix it for you*. The precedence for this assistance depends on the group's affinity type enforcement setting:
+If a placement group becomes non-compliant, we're alerted and we'll bring it back into compliance as soon as possible. Non-compliance can only be fixed by Akamai staff. **_You can't fix it yourself_**.
 
-1. **Strict**. By design, you can't make a strict placement group non-compliant when simply creating or managing it. However, if for maintenance we need to migrate or fail-over your compute instances, a strict group may become non-compliant. So, these take precedence when it comes to our assistance in bringing them back into compliance.
-
-2. **Flexible**. We bring any flexible placement groups to compliance as quickly as possible.
-
-{{< note >}}
-Once a placement group is non-compliant, there's nothing you can do to bring it back to compliance. We are alerted when *any* placement group becomes non-compliant.
-{{< /note >}}
+By design, a Strict placement group can't be made non-compliant when simply creating it or managing its Compute Instances. In rare cases, non-compliance can occur if we need to fail-over or migrate your Compute Instances for maintenance. during maintenance. Because of this, fixing non-compliance for Strict placement groups is prioritized over Flexible groups.
 
 ## Create a placement group
 
@@ -142,7 +121,7 @@ During limited availability, you can have a maximum of 5 compute instances in a 
 
 #### List compute instances
 
-Run this request, using the stored region `id` to filter the response. Identify the specific compute instances you want to include -- up to the `maximum_linodes_per_pg` value -- and store the `id` value for each.
+Run this request using the stored region `id` to filter the response. Identify the specific compute instances you want to include -- up to the `maximum_linodes_per_pg` value -- and store the `id` value for each.
 ```command
 curl -H "Authorization: Bearer $TOKEN"
     -H 'X-Filter: { "region": "us-east" }'
