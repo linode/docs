@@ -19,7 +19,7 @@ The Placement Groups service gives you a convenient way to set up groups of your
 
 <!--
 
-**CV: 03/2024** Availability at limited availability is only on two data centers - Washington D.C., and Miami. We'll be progressively opening up more regions as they're qualified. The request is to hide availability information in the docs, prior to actual GA.
+**CV: 06/2024** Availability at limited availability is only on two data centers - Chicago, and Miami. We'll be progressively opening up more regions as they're qualified. The request is to hide availability information in the docs, prior to actual GA.
 
 - UI: There's a mouse-over tooltip that reveals the available regions when creating a placement group. It'll be dynamically updated as new regions are made available.
 - API: The `GET /v4/regions:id` operation in the API spec lists `Placement Group` in the `capabilities` array, if PGs are supported for that region. This is the only op I see that shows support/non-support. The issue here is, you need to know the `id` for the target region, in order to run this operation. How would this work in an automated API workflow? Would you set up automation to periodically ping all regions, until it sees that `Placement Groups` is listed for a specific region? (In which case, the workflow could be manipulated to include the new region.)
@@ -32,7 +32,7 @@ The Placement Groups service is available in select regions. Currently, this inc
 
 - Miami, FL (us-mia)
 
-- Washington, DC (us-iad)
+- Chicago, IL (us-ord)
 
 {{< note >}}
 Placement Groups is in limited availability. Throughout this phase, we expect to increase the number of supported regions.
@@ -193,7 +193,7 @@ With all your compute instances added, we begin provisioning by moving them into
 
 #### More with the Placement Groups API
 
-There are several other operations in the [Linode API](/docs/api/placement-groups/) that let you interact with placement groups.
+There are several other operations in the [Linode API](https://techdocs.akamai.com/linode-api/reference/post-placement-group) that let you interact with placement groups.
 
 {{< /tab >}}
 {{< /tabs >}}
