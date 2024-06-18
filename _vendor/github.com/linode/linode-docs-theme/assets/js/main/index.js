@@ -130,7 +130,7 @@ const searchConfig = getSearchConfig(params);
 		this.dataLayer.push(event);
 	};
 
-	let pushGTag = function (eventName) {
+	let pushDataLayer = function (eventName) {
 		let event = {
 			event: eventName,
 		};
@@ -173,7 +173,7 @@ const searchConfig = getSearchConfig(params);
 
 		window.turbolinksLoaded = true;
 		setTimeout(function () {
-			pushGTag('docs_load');
+			pushDataLayer('docs_load');
 		}, 2000);
 	});
 
@@ -191,7 +191,7 @@ const searchConfig = getSearchConfig(params);
 			return;
 		}
 
-		pushGTag('docs_navigate');
+		pushDataLayer('docs_navigate');
 	});
 
 	// Preserve scroll position when navigating with Turbo on all elements with the data-preserve-scroll attribute.
@@ -200,6 +200,13 @@ const searchConfig = getSearchConfig(params);
 	}
 	if (!window.scrollHandledByClick) {
 		window.scrollHandledByClick = {};
+	}
+
+	function turboClick(e) {
+		if (e.detail.url.includes('/docs/api')) {
+			// Disable Turbo for the API docs to allow for edge redirects.
+			e.preventDefault();
+		}
 	}
 
 	function preserveScroll(e) {
@@ -250,6 +257,7 @@ const searchConfig = getSearchConfig(params);
 	}
 
 	window.addEventListener('turbo:click', preserveScroll);
+	window.addEventListener('turbo:click', turboClick);
 	window.addEventListener('turbo:before-render', restoreScroll);
 	window.addEventListener('turbo:render', restoreScroll);
 })();

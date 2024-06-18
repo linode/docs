@@ -126,7 +126,9 @@
     x-transition.opacity
     :style="tooltip.style"
     x-show="tooltip.show">
-    <div class="tooltip bg-gray-200 p-4 rounded-md flex w-full">
+    <div
+      class="tooltip bg-gray-200 rounded-md flex w-full"
+      :class="{ 'p-12' : showModal, 'p-4' : !showModal}">
       <div class="tooltip-badge mr-4 mt-2">
         <span
           x-text="tooltip.number"

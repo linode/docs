@@ -65,39 +65,6 @@
 
 
 
-  <div class="o-layout__row c-site-header__banner c-message" id="x-banner-2023-23-13">
-    <div class="c-message__body">
-      <div class="c-notification">
-        <a href="#" class="c-notification__link" target="_self">
-          <span class="c-notification__tag"></span>
-          <span class="c-notification__message"></span>
-        </a>
-      </div>
-    </div>
-    <button type="button" class="c-message__x" aria-label="Dismiss message">
-      <svg viewBox="0 0 320 512"><path fill="currentcolor" d="M207.6 256l107.72-107.72c6.23-6.23 6.23-16.34.0-22.58l-25.03-25.03c-6.23-6.23-16.34-6.23-22.58.0L160 208.4 52.28 100.68c-6.23-6.23-16.34-6.23-22.58.0L4.68 125.7c-6.23 6.23-6.23 16.34.0 22.58L112.4 256 4.68 363.72c-6.23 6.23-6.23 16.34.0 22.58l25.03 25.03c6.23 6.23 16.34 6.23 22.58.0L160 303.6l107.72 107.72c6.23 6.23 16.34 6.23 22.58.0l25.03-25.03c6.23-6.23 6.23-16.34.0-22.58L207.6 256z"/></svg>
-    </button>
-  </div>
-  <script>
-    (function(){
-      var lsk = 'x-banner-2023-23-13',
-          bc = 'has-banner',
-          $ht = document.querySelector( 'html' ),
-          $bn = document.getElementById( lsk ),
-          $x = $bn.querySelector( '.c-message__x' ),
-          lsv = localStorage.getItem( lsk ),
-          rm = function(){
-            $ht.classList.remove( bc );
-            $bn.remove();
-          };
-      if ( lsv ) { rm(); return; }
-      $ht.classList.add( bc );
-      $x.addEventListener('click',function(){
-        localStorage.setItem( lsk, true );
-        rm();
-      });
-    })();
-  </script>
   <div class="o-layout__row c-site-header__topbar">
     <div class="o-layout__colset">
       <div class="o-layout__col">
