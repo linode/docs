@@ -93,9 +93,9 @@ aliases: ['/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-
 
     ![Screenshot of the login page](wuzah-login.png)
 
-### Setup a Wazuh Agent
+### Set up a Wazuh Agent
 
-Now that you’ve accessed your Wazuh instance, you need to configure a [Wazuh Agent](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/index.html) on the server you'd like to monitor with Wazuh. Before you attempt to add the agent, you will need to allow the server you are trying to install the agent on, access port '1514' and '1515' on your Wazuh instance. You can run the following ufw commands to do so:
+Now that you’ve accessed your Wazuh instance, you need to configure a [Wazuh Agent](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/index.html) on the server you'd like to monitor with Wazuh. Before you add the agent, allow the server you want to install the agent on access to ports '1514' and '1515' on your Wazuh instance. You can run the following ufw commands to do so:
 
     ```command
     sudo ufw allow from $AGENTSERVERIP to any port 1514 proto tcp
@@ -104,13 +104,13 @@ Now that you’ve accessed your Wazuh instance, you need to configure a [Wazuh A
 
     **Note:** Update `$AGENTSERVERIP` with the IP address you want to install the wazuh-agent
 
-Once the firewall rules are added, you can now follow the steps in the Wazuh UI to deploy the Wazuh Agent. The Agent installation will ask you for the system package you are installing the agent on (RPM/DEB/Windows/MacOS), Server Address (Domain or IP address of your Wazuh), Agent Name (unique identifer for the instance you are installing the agent on)
+Once the firewall rules are added, you can now follow the steps in the Wazuh UI to deploy the Wazuh Agent. The Agent installation will ask you for the system package you are installing the agent on (RPM/DEB/Windows/macOS), Server Address (Domain or IP address of your Wazuh), and Agent Name (unique identifier for the instance you are installing the agent on).
 
-- **Select the package to download and install on your system:*: RPM, DEB, Windows, MacOS (Example: DEB amd64)
+- **Select the package to download and install on your system:*: RPM, DEB, Windows, macOS (Example: DEB amd64)
 - **Server address:*: Domain or IP address of your newly installed Wazuh instance (Example: wazuhdomain.tld )
-- **Assign an agent name*: A unique identifer for the instance you are installing the agent (Example: database1)
+- **Assign an agent name*: A unique identifier for the instance you are installing the agent (Example: database1)
 
-Once you enter that information, wazuh will display the installation commands
+Once you enter that information, Wazuh will display the installation commands:
 
     ```command
     wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.7.5-1_amd64.deb && sudo WAZUH_MANAGER='wazuhdomain.tld' WAZUH_AGENT_NAME='database1' dpkg -i ./wazuh-agent_4.7.5-1_amd64.deb
