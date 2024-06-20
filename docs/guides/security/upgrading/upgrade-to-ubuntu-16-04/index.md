@@ -15,6 +15,7 @@ relations:
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/security/upgrading/upgrade-to-ubuntu-16-04/']
+deprecated: true
 ---
 
 ![Upgrade to Ubuntu 16.04](How_to_Upgrade_to_Ubuntu_smg.jpg)
@@ -58,11 +59,11 @@ Update package lists and install all updates:
 
 ### Back Up Your Linode
 
-It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/products/storage/backups/#take-a-manual-snapshot) before upgrading to Ubuntu 16.04 LTS. If you use another backup service or application, we recommend that you make a manual backup now.
+It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/products/storage/backups/guides/take-a-snapshot/) before upgrading to Ubuntu 16.04 LTS. If you use another backup service or application, we recommend that you make a manual backup now.
 
 ### Check Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#applying-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#apply-kernel-updates) for more information.
 
 ### Stop Services
 

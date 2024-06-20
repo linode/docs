@@ -2,7 +2,7 @@
 title: "Deploy Plesk through the Linode Marketplace"
 description: "This guide shows how to install and configure Plesk using the Linode Marketplace Apps. Plesk is a leading WordPress and website management control panel."
 published: 2019-03-25
-modified: 2022-03-08
+modified: 2024-05-21
 keywords: ['plesk','marketplace', 'cms']
 tags: ["linode platform","cms","marketplace","cloud-manager"]
 external_resources:
@@ -16,9 +16,9 @@ aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/','/guide
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Plesk should be fully installed within 15 minutes after the Compute Instance has finished provisioning.
@@ -26,9 +26,13 @@ aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/','/guide
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
-- **Recommended minimum plan:** All plan types and sizes can be used.
+- **Supported distributions:** Ubuntu 22.04 LTS
+- **Suggested minimum plan:** All plan types and sizes can be used.
 
+- **SOA Email Address** *(required):* An email address for free Let's Encrypt SSL.
+{{% content "marketplace-required-limited-user-shortguide" %}}
+
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 ## Getting Started after Deployment
 
 ### Access your Plesk Site
@@ -37,11 +41,7 @@ aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/','/guide
 
         https://[domain]/login_up.php
 
-    {{< note type="alert" >}}
-    The Plesk dashboard is only accessible over an *HTTPS* connection (not *HTTP*). When accessing it, your browser may warn you that the connection is not private, is not secure, or that there is a potential security risk. You must accept this risk to continue.
-    {{< /note >}}
-
-1.  Once you navigate to that URL, a login prompt appears. Use the following credentials.
+1.  Once you navigate to the URL, a login prompt appears. Use the following credentials:
 
     - **Username:** `root`
     - **Password:** The root password you entered when creating the Compute Instance.
@@ -56,4 +56,4 @@ aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/','/guide
 
     ![Plesk Dashboard](plesk-dashboard-screen.png)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

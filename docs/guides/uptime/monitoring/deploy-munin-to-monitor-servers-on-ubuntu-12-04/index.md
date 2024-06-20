@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/monitoring/monitoring-server-with-munin-on-ubuntu-12-04-precise-pangolin/','/uptime/monitoring/deploy-munin-to-monitor-servers-on-ubuntu-12-04/','/server-monitoring/munin/ubuntu-12-04-precise-pangolin/']
 external_resources:
  - '[Munin Homepage](http://munin-monitoring.org/)'
- - '[Munin Exchange](https://github.com/munin-monitoring/contrib//)'
+ - '[Munin Exchange](https://github.com/munin-monitoring/contrib/)'
  - '[Installing Munin on Other Linux Distributions](http://munin-monitoring.org/wiki/MuninInstallationLinux)'
  - '[Installing Munin on Mac OS X](http://munin-monitoring.org/wiki/MuninInstallationDarwin)'
  - '[Installing Munin on Solaris](http://munin-monitoring.org/wiki/MuninInstallationSolaris)'

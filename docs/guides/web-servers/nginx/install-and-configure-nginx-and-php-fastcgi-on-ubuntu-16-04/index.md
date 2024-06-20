@@ -31,7 +31,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 ## Before You Begin
 
-- Complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, specifically [setting the hostname](/docs/products/platform/get-started/#setting-the-hostname).
+- Complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, specifically [setting the hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 - To confirm your hostname, issue the following commands on your Linode:
 

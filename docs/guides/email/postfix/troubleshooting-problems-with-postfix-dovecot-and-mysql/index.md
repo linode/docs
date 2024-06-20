@@ -18,7 +18,7 @@ This guide is a companion to the [Postfix, Dovecot, and MySQL](/docs/guides/emai
 
 The first section, Troubleshooting Checklist, has a top-down approach to troubleshooting that will help you find specific errors for your mail server. The second section, Step-by-Step Configuration, uses a bottom-up approach that shows you how to get a basic mail server functioning and then gradually add more features.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## Troubleshooting Checklist
 
@@ -26,7 +26,7 @@ Correctly diagnosing a problem is the first step in solving it. At first glance,
 
 ### Are Postfix and Dovecot Running?
 
-Sometimes your mail server is not functioning correctly because the needed services are not running. For a mail server that has been running for a long time, [resource overuse](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/#diagnosing-and-fixing-memory-issues) is the most likely cause of stopped services. It doesn't hurt to check your resource use to rule out that problem. However, when you're just setting up a new mail server, it's more likely that your service startup problems are being caused by configuration errors. Some configuration errors - particularly syntax errors - are serious enough that they can prevent a service from starting.
+Sometimes your mail server is not functioning correctly because the needed services are not running. For a mail server that has been running for a long time, [resource overuse](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/) is the most likely cause of stopped services. It doesn't hurt to check your resource use to rule out that problem. However, when you're just setting up a new mail server, it's more likely that your service startup problems are being caused by configuration errors. Some configuration errors - particularly syntax errors - are serious enough that they can prevent a service from starting.
 
 To check that Postfix and Dovecot are running and to find startup errors, follow these steps:
 
@@ -842,7 +842,7 @@ smtps     inet  n       -       -       -       -       smtpd
 {{< note >}}
 You will no longer be able to use Telnet for testing. If you want to run a manual test for troubleshooting purposes, you can use [openssl](http://www.openssl.org/docs/apps/s_client.html) instead. Your command should look like this (you can test on ports 465 and 587 as well):
 
-openssl s_client -connect example.com:25 -starttls smtp
+    openssl s_client -connect example.com:25 -starttls smtp
 {{< /note >}}
 
 Your mail server is now perfectly viable and secure. If you're happy storing all your domains and users in flat files, you can stop here. However, for the sake of making long-term maintenance easier, we suggest that you store your lists of domains, users, and aliases in MySQL databases instead.

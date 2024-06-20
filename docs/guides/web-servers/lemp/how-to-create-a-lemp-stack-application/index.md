@@ -6,7 +6,7 @@ description: 'Learn how to create a LEMP stack application on Linux. Read our gu
 authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 published: 2022-09-27
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['lemp','nginx','web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 

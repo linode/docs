@@ -135,11 +135,11 @@ When a Compute Instance is powered on or rebooted, it uses the settings stored w
 
     ![Viewing the boot history within the Activity Feed](activity-feed-booted-configuration-profile.png)
 
-    Sometimes the boot or reboot event doesn't list a configuration profile, such as when the [Lassie Shutdown Watchdog](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configure-shutdown-watchdog) initiates the event. In this case, look at the most recent reboot or boot event which does include the configuration profile that was used.
+    Sometimes the boot or reboot event doesn't list a configuration profile, such as when the [Lassie Shutdown Watchdog](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/) initiates the event. In this case, look at the most recent reboot or boot event which does include the configuration profile that was used.
 
 ## Clone a Configuration Profile and the Attached Disks
 
-A configuration profile, along with any attached disks, can be duplicated to any *other* Compute Instance on the account. See [Cloning to an Existing Compute Instance](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode) for instructions.
+A configuration profile, along with any attached disks, can be duplicated to any *other* Compute Instance on the account. See [Cloning to an Existing Compute Instance](/docs/products/compute/compute-instances/guides/clone-instance/#clone-to-an-existing-compute-instance) for instructions.
 
 ## Delete a Configuration Profile
 

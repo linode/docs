@@ -8,7 +8,6 @@ published: 2022-06-21
 keywords: ['database sharding','database sharding vs partitioning','what is database sharding']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[DigitalOcean: Understanding Database Sharding](https://www.digitalocean.com/community/tutorials/understanding-database-sharding)'
 - '[MongoDB: Database Sharding — Concepts and Examples](https://www.mongodb.com/features/database-sharding-explained)'
 - '[Educative: What Is Database Sharding?](https://www.educative.io/edpresso/what-is-database-sharding)'
 - '[GeeksforGeeks: Database Sharding – System Design Interview Concept](https://www.geeksforgeeks.org/database-sharding-a-system-design-concept/)'

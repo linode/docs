@@ -14,7 +14,8 @@ deprecated: true
 
 If you'd like to run a Linux distribution on your Linode that isn't available from our distribution list, you can do so by following these instructions. This guide is handy for people who prefer distributions that aren't heavily used in the community, or for those interested in creating a highly customized Linux environment and porting it to their Linode.
 
-{{< content "all-linodes-kvm-shortguide" >}}
+{{% content "all-linodes-kvm-shortguide" %}}
+
 {{< note >}}
 This guide is intended for Linodes using our older Xen hypervisor. To install a custom distribution on a new KVM Linode, see [this guide](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/).
 {{< /note >}}
@@ -132,15 +133,15 @@ Start from the Linode Manager by configuring a Linode to boot your custom image.
 
 4. Select the recently created Linode from the **Linodes** tab Linodes list.
 
-5. Optionally, select **Settings** and change the **Linode Label** to Custom_Distro or similar. Then select **Save Changes**.
+5. Optionally, select **Settings** and change the **Linode Label** to `Custom_Distro` or similar. Then select **Save Changes**.
 
-6. Select the newly labelled Custom_Distro Linode.
+6. Select the newly labelled `Custom_Distro` Linode.
 
-7. Select **Create a new Disk**. Label the new disk to "Custom_Distro" or similar. Select the **Type** as ext4. Ensure that the **Size** of the disk is at least as large as the **fixed size** of the virtual machine disk running on your local machine. In Step 10 of the [Creating the Virtual Machine](#creating-the-virtual-machine) section, we pictured the disk size as 3.00 GB or 3,000 MB. Continue with this size. Select **Save Changes**.
+7. Select **Create a new Disk**. Label the new disk as `Custom_Distro` or similar. Select the **Type** as ext4. Ensure that the **Size** of the disk is at least as large as the **fixed size** of the virtual machine disk running on your local machine. In Step 10 of the [Creating the Virtual Machine](#creating-the-virtual-machine) section, we pictured the disk size as 3.00 GB or 3,000 MB. Continue with this size. Select **Save Changes**.
 
 8. Now create the swap disk. Again, select **Create a new Disk**. This time set the **Label** as "Swap". Set the **Type** as **swap**. Finally, set the size to 256 MB or larger.
 
-9. Next, create a configuration profile for the Linode by selecting **Create a new Configuration Profile**. Change the **Label** to "Custom_Distro" or similar. Under **Block Device Assignment** change **/dev/xvda** to **Custom_Distro** and **/dev/xvdb** to **Swap**. Notice that **root device** is set to **Standard: /dev/xvda** making the Custom_Distro disk the boot device. Warning, do not change the **root device** setting.
+9. Next, create a configuration profile for the Linode by selecting **Create a new Configuration Profile**. Change the **Label** to `Custom_Distro` or similar. Under **Block Device Assignment** change **/dev/xvda** to `Custom_Distro` and **/dev/xvdb** to **Swap**. Notice that **root device** is set to **Standard: /dev/xvda** making the `Custom_Distro` disk the boot device. Warning, do not change the **root device** setting.
 
     ![Configuration Profile.](config-profile-large.png)
 
@@ -162,7 +163,7 @@ In order to transfer the disks from the virtual machine to the Linode, you will 
 
         service ssh start
 
-3.  Mount your Custom_Distro disk by entering the following command:
+3.  Mount your `Custom_Distro` disk by entering the following command:
 
         mount /media/xvda
 

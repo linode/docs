@@ -31,7 +31,7 @@ CoreOS is not officially supported by Linode so there are limitations to using i
 
 *   Unlike the case with most partitioned images, you *can* resize the disk image holding a CoreOS system; however, it can only grow, not shrink. CoreOS resizes its root partition to fill the disk on next boot.
 {{< note type="alert" >}}
-These instructions perform **destructive** operations on your Linode! You should not attempt to install CoreOS on a Linode with data you want to preserve. You may wish to [use a second Linode](/docs/guides/recovering-from-a-system-compromise/#using-a-second-linode) and transfer your data after installation.
+These instructions perform **destructive** operations on your Linode! You should not attempt to install CoreOS on a Linode with data you want to preserve. You may wish to [use a second Linode](/docs/guides/recovering-from-a-system-compromise/#use-a-second-linode) and transfer your data after installation.
 {{< /note >}}
 
 ## Before You Begin

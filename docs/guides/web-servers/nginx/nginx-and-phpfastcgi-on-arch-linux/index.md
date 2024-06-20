@@ -145,7 +145,7 @@ Issue the following command to start nginx:
 
 ## Test PHP with FastCGI
 
-Create a file called "test.php" in your site's "public\_html" directory with the following contents:
+Create a file called "test.php" in your site's `public_html` directory with the following contents:
 
 {{< file "/srv/http/example.com/public\\_html/test.php" php >}}
 <?php phpinfo(); ?>

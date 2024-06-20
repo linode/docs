@@ -2,7 +2,7 @@
 title: "Deploy OpenLiteSpeed Django through the Linode Marketplace"
 description: "Deploy OpenLiteSpeed Django on a Linode Compute Instance. This provides you with a high performance web server to manage your Django application."
 published: 2021-11-12
-modified: 2022-03-08
+modified: 2024-06-10
 keywords: ['web server','django','openlitespeed']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
@@ -14,9 +14,9 @@ The OpenLiteSpeed Django app automatically installs Linux, the performance web s
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** OpenLiteSpeed Django should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
@@ -24,24 +24,47 @@ The OpenLiteSpeed Django app automatically installs Linux, the performance web s
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
-- **Recommended plan:** All plan types and sizes can be used.
+- **Supported distributions:** Ubuntu 22.04 LTS
+- **Suggested plan:** All plan types and sizes can be used.
+
+## OpenLiteSpeed Django Options
+
+- **Django User** *(required)*: Username for Django app.
+- **SOA Email Address:** *(required)*: Email address for free Let's Encrypt SSL certificates.
+
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
+
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
+
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
 ### Accessing the OpenLiteSpeed Django App
 
-1.  Log in to your Compute Instance over SSH. See [Connecting to a Remote Server Over SSH
-](/docs/guides/connect-to-server-over-ssh/) for assistance. You should see output similar to the following:
+1.  Log in to your Compute Instance over SSH, using the sudo user created during deployment or `root`. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance. You should see output similar to the following:
 
-    ![OpenLiteSpeed Django setup information](setupinfo-django.png)
+    ```output cat /etc/motd
+    *********************************************************
+    Akamai Connected Cloud OpenLiteSpeed Django Marketplace App
+    App URL:
+    * The OpenLiteSpeed Web Admin: https://$EXAMPLE_DOMAIN:7080
+    * The sample Django site: https://EXAMPLE_DOMAIN/
+    * The Django admin user: $DJANGO_USER
+    * The sample Django admin page: https://$EXAMPLE_DOMAIN/admin
+    Credentials File: /home/$SUDO_USER/.credentials
+    Documentation: https://www.linode.com/marketplace/apps/linode/openlitespeed-django/
+    *********************************************************
+    ```
 
-1. You are then prompted to enter the domain you'd like to use for this instance. You can optionally use a custom domain provided you've already configured the *A Records* to point to this server's IPv4 and IPv6 addresses. Otherwise, you can skip this by pressing *CTRL+C* which will use the IP address or default RDNS of the Compute Instance.
+    To delete this message of the day, use `rm /etc/motd`.
+
+1.  The Django page is automatically configured with the custom domain provided during deployment, or the default rDNS.
 
     {{< note >}}
     For more documentation on how to assign a domain to your Linode, please review the [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions on setting up your DNS records in the Cloud Manager, and read through [DNS Records: An Introduction](/docs/guides/dns-overview/) for general information about how DNS works.
     {{< /note >}}
 
-Now that you’ve accessed your OpenLiteSpeed Django instance, check out [the official OpenLiteSpeed Django documentation](https://docs.litespeedtech.com/cloud/images/django/) to learn how to further configure your OpenLiteSpeed Django instance.
+Now that you’ve accessed your OpenLiteSpeed Django instance, check out [the official OpenLiteSpeed Django documentation](https://docs.litespeedtech.com/cloud/images/django/) for further configuration steps.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

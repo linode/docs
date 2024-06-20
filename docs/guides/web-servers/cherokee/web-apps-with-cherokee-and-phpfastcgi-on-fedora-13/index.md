@@ -73,7 +73,7 @@ On the "Permissions" tab, change the user and group.
 
 ![Permissions tab on the general page of the Cherokee admin panel on Fedora 13.](252-fedora-13-03-general-permissions-large.png)
 
-Navigate to the "vServers" page and click the "New" button. Supply your domain name and the path to your site's document root.
+Navigate to the vServers page and click the "New" button. Supply your domain name and the path to your site's document root.
 
 ![Adding a new virtual server on the vServers page of the Cherokee admin panel on Fedora 13.](253-fedora-13-04-vservers-new-manual-large.png)
 

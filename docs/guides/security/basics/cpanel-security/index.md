@@ -69,7 +69,7 @@ Follow the instructions below to password-protect your cPanel website:
 
 1.  Click the **Edit** button for `public_html` or the directory you want to secure. Check the box to password protect the directory and enter a directory name, then click the **Save** button.
 
-    ![Set permissions for a directory such as public_html.](cpanel-directory-privacy-edit.png "Set permissions for a directory such as public_html.")
+    ![Set permissions for a directory](cpanel-directory-privacy-edit.png)
 
 1.  Click **Go Back**, enter a username and password to protect your directory, and click the **Save** button.
 

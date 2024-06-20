@@ -20,6 +20,7 @@ relations:
         key: install-gogs
         keywords:
             - distribution: Debian 9
+deprecated: true
 ---
 
 [Gogs](http://gogs.io) is a self-hosted Git service, similar to GitLab. It is written in [Go](http://golang.org) and aims to be the easiest and most painless way to set up self-hosted Git service. Gogs is one of the best choices if you need to set up a private Git repository, but don't want to pay for the private plans on other Git services.
@@ -34,7 +35,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before Installing Gogs
 
-1.  Follow the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and make sure your Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
+1.  Follow the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and make sure your Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 2.  Update your system:
 

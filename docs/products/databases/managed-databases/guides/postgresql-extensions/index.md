@@ -6,7 +6,7 @@ published: 2022-06-06
 modified: 2023-04-27
 ---
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}
 
 The functionality of PostgreSQL can be enhanced through the use of [extensions](https://wiki.postgresql.org/wiki/Extensions). Linode's PostgreSQL Managed Database service supports many of these extensions.
 
@@ -38,7 +38,7 @@ Linode does not provide superuser access to PostgreSQL Managed Databases. As suc
 
 ### Install an Extension
 
-To install one of the available extensions on your database, use the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command, replacing *[extension_name]* with the name of the extension you wish to install.
+To install one of the available extensions on your database, use the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command, replacing `[extension_name]` with the name of the extension you wish to install.
 
 ```command
 CREATE EXTENSION IF NOT EXISTS [extension_name];
@@ -48,7 +48,7 @@ If this command does not work, the extension may either not be compatible or it 
 
 ### Remove an Extension
 
-To remove an extension, use the [DROP EXTENSION](https://www.postgresql.org/docs/current/sql-dropextension.html) command, replacing *[extension_name]* with the name of the extension you wish to install.
+To remove an extension, use the [DROP EXTENSION](https://www.postgresql.org/docs/current/sql-dropextension.html) command, replacing `[extension_name]` with the name of the extension you wish to install.
 
 ```command
 DROP EXTENSION [extension_name];

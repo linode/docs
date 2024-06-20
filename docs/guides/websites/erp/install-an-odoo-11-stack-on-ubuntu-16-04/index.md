@@ -17,6 +17,7 @@ external_resources:
   - '[Install an SSL certificate with LetsEncrypt](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/)'
   - '[How to Set up tinc, a Peer-to-Peer VPN](/docs/guides/how-to-set-up-tinc-peer-to-peer-vpn/)'
   - '[Using Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/)'
+deprecated: true
 ---
 
 ![Install an Odoo 11 Stack on Ubuntu 16.04 using Linode](install-an-odoo-11-stack-on-ubuntu-16-04-using-linode.png "Odoo 11 on Ubuntu 16.04 Title Graphic")

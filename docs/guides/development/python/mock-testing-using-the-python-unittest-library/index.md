@@ -133,7 +133,7 @@ Actual: setResult(1, 2)
 
 ### Using Mock Statistics
 
-When an application is too complex to perform a step-by-step analysis of every mocked call, use mock statistics to determine the application's health. The steps in this section show you how mock object statistics work. This section relies on the `myMock` object you created in the [Instantiate a New Mock Object](/docs/guides/mock-testing-using-the-python-unittest-library/#instantiate-a-new-mock-object) section.
+When an application is too complex to perform a step-by-step analysis of every mocked call, use mock statistics to determine the application's health. The steps in this section show you how mock object statistics work. This section relies on the `myMock` object you created in the [Instantiate a New Mock Object](#creating-a-new-mock-object) section.
 
 One of the most helpful statistics is the number of times a particular mock is called. If you expect five calls to a function or object and only get four, there is a problem. Use the code below to see how the `call_count` property works.
 

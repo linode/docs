@@ -22,6 +22,7 @@ relations:
             - distribution: Debian 9
 tags: ["debian","database","nosql"]
 aliases: ['/databases/cassandra/how-to-install-apache-cassandra-on-debian-9/']
+deprecated: true
 ---
 
 After completing this guide, you will have a single-node, production-ready installation of [Apache Cassandra](http://cassandra.apache.org/) hosted on your Linode running Debian 9. This tutorial will cover basic configuration options, as well as harden database security.
@@ -196,7 +197,7 @@ permissions_validity_in_ms: 0
 The `cqlshrc` file holds configuration settings that influence user preferences and how Cassandra performs certain tasks.
 
 {{< note >}}
-Ensure you complete the steps in this section using your limited user account. This account will need [sudo privileges](/docs/products/compute/compute-instances/guides/set-up-and-secure/#debian), if it does not already have them.
+Ensure you complete the steps in this section using your limited user account. This account will need [sudo privileges](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), if it does not already have them.
 {{< /note >}}
 
 Since your Cassandra username and password can be stored in plaintext, the `cqlshrc` file should only be accessible to your administrative user account, and is designed to be inaccessible to other accounts on your Linux system.

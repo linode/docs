@@ -14,7 +14,7 @@ To protect your Linode user account against unauthorized access, there are sever
 
 2FA (*two-factor authentication*) increases the security of your Linode account by requiring two forms of authentication: your password and an expiring token, also called a one-time passcode (OTP) or 2FA code. This follows the security principle of authenticating with something you *know* (a password) and something you *have* (the device used to generate the token). This additional layer of security reduces the risk that an unauthorized individual can gain access to your Linode account.
 
-If you *do not* have 2FA enabled and have not logged into your account in 90 days, an OTP is sent to the email address associated with your user account. Should you not complete the login attempt within 60 minutes, the code expires and another login attempt is required to generate a new code.
+If you *do not* have 2FA enabled and have not logged in to your account in 30 days, an OTP is sent to the email address associated with your user account. Should you not complete the login attempt within 60 minutes, the code expires and another login attempt is required to generate a new code.
 
 **Linode highly recommends enabling 2FA**. See [Managing Two-Factor Authentication (2FA) on a User Account](/docs/guides/2fa/) to learn how to enable 2FA. To assist with account lockouts and recovery, you must first configure three [security questions](#security-questions) on your account before enabling 2FA.
 

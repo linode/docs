@@ -19,6 +19,7 @@ relations:
         key: install-java
         keywords:
             - distribution: Debian 8
+deprecated: true
 ---
 
 Java is a powerful programming language. Software written in Java can be compiled and run on any system. Unlike Python or C, Java does not come pre-installed on Linode distribution images. This guide installs the OpenJDK 7 runtime environment and development kit in Debian 8. OpenJDK is the free and open-source implementation of the Java SE Development Kit.

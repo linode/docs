@@ -18,9 +18,9 @@ JetBackup requires a valid license to use the software beyond the available 10 d
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** JetBackup should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -50,4 +50,4 @@ To access your JetBackup instance, Open a browser and navigate to your Linode rD
 
 Now that you’ve accessed your dashboard, checkout [the official JetBackup documentation](https://docs.jetbackup.com/v5.1/adminpanel/gettingStarted.html#gettingstarted) to learn how to further configure your instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes/','/applications/containers/beginners-guide-to-kubernetes/','/kubernetes/beginners-guide-to-kubernetes/']
 concentrations: ["Kubernetes", "container"]
 external_resources:
-- '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'
+- '[Kubernetes API Reference Documentation](https://kubernetes.io/docs/reference/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 ---
 

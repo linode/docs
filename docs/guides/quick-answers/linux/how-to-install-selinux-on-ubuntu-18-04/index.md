@@ -148,7 +148,7 @@ For example, to enable a policy that allows MySQL requests through SELinux. MySQ
 
 **Using permissive mode**:
 
-Set `setenforce` to 0, now SELinx allows everything but also logs it.
+Set `setenforce` to 0, now SELinux allows everything but also logs it.
 
     setenforce 0
 
@@ -271,7 +271,7 @@ To disable all SELinux policies on Ubuntu temporarily, run the following command
 
 If you wish to permanently disable SELinux even when the system reboots, make changes to the `/etc/selinux/config` file and set SELINUX to disabled. Change the SELinux line as shown below:
 
-    SELINX=disabled
+    SELINUX=disabled
 
 And, now if you restart the system, SELinux and its policies won’t be in place anymore.
 

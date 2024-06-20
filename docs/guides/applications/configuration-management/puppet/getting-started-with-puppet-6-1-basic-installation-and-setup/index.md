@@ -93,7 +93,7 @@ Throughout this guide, commands and code snippets will reference the values disp
 
     If you don't use Linode's name servers for your domain, consult your name server authority's website for instructions on how to edit your DNS records.
 
-    {{< content "update-dns-at-common-name-server-authorities" >}}
+    {{% content "update-dns-at-common-name-server-authorities" %}}
 
 ## Puppet Master
 
@@ -490,7 +490,7 @@ Notice: Finished catalog run in 0.02 seconds
 
 ### Edit SSH Settings
 
-Although a new limited user has successfully been added to the Puppet master, it is still possible to login to the system as root. To properly secure your system, root access should be disabled.
+Although a new limited user has successfully been added to the Puppet master, it is still possible to log in to the system as root. To properly secure your system, root access should be disabled.
 
 {{< note >}}
 Because you are now logged in to the Puppet master as a limited user, you will need to execute commands and edit files with the user's sudo privileges.

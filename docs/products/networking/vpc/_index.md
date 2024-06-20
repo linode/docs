@@ -3,7 +3,7 @@ title: VPC
 title_meta: "VPC Product Documentation"
 description: "VPCs make it easy to create your own virtual private clouds on the Akamai cloud computing platform, providing an isolated network for your applications."
 published: 2024-02-06
-modified: 2024-02-12
+modified: 2024-05-16
 bundles: ['network-security']
 tab_group_main:
     is_root: true
@@ -79,4 +79,4 @@ Both [VLANs](/docs/products/networking/vlans/) and [Private IP addresses](/docs/
 
 - Network traffic across a private VPC network does not count against your [monthly network transfer usage](/docs/products/platform/get-started/guides/network-transfer/). The network transfer allowance for Compute Instances configured on VPCs still counts towards the _global network transfer pool_ on your account.
 
-- Using the [Metadata service](/docs/products/compute/compute-instances/guides/metadata/) over a VPC is not yet supported.
+- [Metadata service](/docs/products/compute/compute-instances/guides/metadata/) over a VPC is supported, but cloud-init isn't supported at this time (planned for a future release).

@@ -99,7 +99,7 @@ Next we'll need to modify the `/etc/snmp/snmpd.conf` file with the name of our c
     mv /etc/snmp/snmpd.conf /etc/snmp/old.snmpd.conf
     echo "rocommunity community_name" > /etc/snmp/snmpd.conf
 
-Note that the format is "rocommunity community\_name", where `community_name` is the name of the community you originally used with Cacti. Next, we'll open the `/etc/default/snmpd` file and remove the binding on `localhost`. Like the "Configuring SNMP" section above, you'll want to find the line that begins with `SNMPDOPTS` and remove the reference to `127.0.0.1` at the end. This line should now resemble the one below:
+Note that the format is `rocommunity community_name`, where `community_name` is the name of the community you originally used with Cacti. Next, we'll open the `/etc/default/snmpd` file and remove the binding on `localhost`. Like the "Configuring SNMP" section above, you'll want to find the line that begins with `SNMPDOPTS` and remove the reference to `127.0.0.1` at the end. This line should now resemble the one below:
 
 {{< file "/etc/default/snmpd" >}}
 SNMPDOPTS='-Lsd -Lf /dev/null -u snmp -I -smux -p /var/run/snmpd.pid'

@@ -6,7 +6,7 @@ modified: 2024-03-11
 linkTitle: "Premium"
 ---
 
-Premium Compute Instances are virtual machines that come equipped with the latest AMD EPYC™ CPUs, ensuring your applications are running on the latest hardware with consistent high-peformance. Premium instances build off of our [Dedicated CPU instances](/docs/products/compute/compute-instances/plans/dedicated-cpu/), offering similar plan resources but with a guaranteed minimum hardware model.
+Premium Compute Instances are virtual machines that come equipped with the latest AMD EPYC™ CPUs, ensuring your applications are running on the latest hardware with consistent high-performance. Premium instances build off of our [Dedicated CPU instances](/docs/products/compute/compute-instances/plans/dedicated-cpu/), offering similar plan resources but with a guaranteed minimum hardware model.
 
 **Premium plans are ideal for enterprise-grade, business-critical, and latency-sensitive applications, including any workload that benefits from consistent performance with the latest hardware.**
 

@@ -295,7 +295,7 @@ See our guide to [Adding DNS Records](/docs/products/networking/dns-manager/) fo
 
 ## Add a Limited User Account
 
-Up to this point, you have accessed your Compute Instance as the `root` user, which has unlimited privileges and can execute *any* command--even one that could accidentally disrupt your server. We recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges so you can administer your server. Later, when you want to restrict sudo access for users, see [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-sudo).
+Up to this point, you have accessed your Compute Instance as the `root` user, which has unlimited privileges and can execute *any* command--even one that could accidentally disrupt your server. We recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges so you can administer your server. Later, when you want to restrict sudo access for users, see [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user).
 
 {{< note >}}
 Not all Linux distributions include `sudo` on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output `sudo: command not found`, install sudo before continuing.
@@ -510,7 +510,7 @@ Lastly, edit the SSH configuration file to disallow root login and disable passw
 
 ### Use Fail2Ban for SSH Login Protection
 
-[*Fail2Ban*](http://www.fail2ban.org/wiki/index.php/Main_Page) is an application that bans IP addresses from logging into your server after too many failed login attempts. Since legitimate logins usually take no more than three tries to succeed (and with SSH keys, no more than one), a server being spammed with unsuccessful logins indicates attempted malicious access.
+[*Fail2Ban*](http://www.fail2ban.org/wiki/index.php/Main_Page) is an application that bans IP addresses from logging in to your server after too many failed login attempts. Since legitimate logins usually take no more than three tries to succeed (and with SSH keys, no more than one), a server being spammed with unsuccessful logins indicates attempted malicious access.
 
 Fail2Ban can monitor a variety of protocols including SSH, HTTP, and SMTP. By default, Fail2Ban monitors SSH only, and is a helpful security deterrent for any server since the SSH daemon is usually configured to run constantly and listen for connections from any remote IP address.
 
@@ -518,7 +518,7 @@ For complete instructions on installing and configuring Fail2Ban, see our guide:
 
 ## Configure a Firewall
 
-{{< content "cloud-firewall-shortguide" >}}
+{{% content "cloud-firewall-shortguide" %}}
 
 Using a *firewall* to block unwanted inbound traffic to your Compute Instance provides a highly effective security layer. By being very specific about the traffic you allow in, you can prevent intrusions and network mapping. A best practice is to allow only the traffic you need, and deny everything else. See our documentation on some of the most common firewall applications:
 
@@ -572,4 +572,4 @@ These are the most basic steps to harden any Linux server, but further security 
 
 Now you can begin setting up your Compute Instance for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/guides/migrate-from-shared-hosting-to-linode/) to [enabling two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/) to [hosting a website](/docs/guides/hosting-a-website-ubuntu-18-04/).
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}

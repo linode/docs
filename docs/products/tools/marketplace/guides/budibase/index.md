@@ -14,9 +14,9 @@ When self-hosting the Budibase application, you are responsible for the security
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Budibase should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -49,4 +49,4 @@ When self-hosting the Budibase application, you are responsible for the security
 
     ![Screenshot of the Budibase web app](Budibase-webapp.jpg)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

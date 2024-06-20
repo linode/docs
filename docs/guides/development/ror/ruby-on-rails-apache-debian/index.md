@@ -21,6 +21,7 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Debian 9
+deprecated: true
 ---
 
 ![Ruby on Rails with Apache on Debian](ruby_on_rails_with_apache_debian.jpg "Ruby on Rails with Apache on Debian")
@@ -58,7 +59,7 @@ relations:
 
 Ruby will be installed with the Ruby Version Manager (RVM), which makes it easy to install and manage different versions of Ruby on the same system.
 
-{{< content "install-ruby-with-rvm" >}}
+{{% content "install-ruby-with-rvm" %}}
 
 ## Install Passenger and Dependencies
 

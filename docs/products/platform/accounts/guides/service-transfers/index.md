@@ -128,7 +128,7 @@ Each Compute Instance that you wish to transfer must have a unique label that is
 {{< note type="alert" >}}
 When receiving a Compute Instance, it is important to make sure that **Any Longview Key** is fully revoked and removed from that instance by removing the Longview agent. If client keys are not revoked and removed, the transferring user gains access to all data visible to any Longview client by using the pre-existing API key, even after the transfer has been completed. Users will not be informed by default if the received Compute Instance has a Longview key installed, and should always follow the process for removing the Longview agent to be sure.
 
-For more information on revoking and removing a Longview key and uninstalling the Longview agent, see our [Documentation on Uninstalling Longview](/docs/products/tools/longview/get-started/#uninstall-the-longview-client).
+For more information on revoking and removing a Longview key and uninstalling the Longview agent, see our [Documentation on Uninstalling Longview](/docs/products/tools/longview/guides/manage/#delete-client).
 {{< /note >}}
 
 ## Cancelling Service Transfers

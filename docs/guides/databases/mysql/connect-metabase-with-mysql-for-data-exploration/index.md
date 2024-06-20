@@ -28,7 +28,7 @@ There are a number of additional databases that are supported from SQLite to Pos
 
 ### Java Runtime Environment
 
-{{< content "install-java-8-ppa" >}}
+{{% content "install-java-8-ppa" %}}
 
 ### MySQL Server
 
@@ -192,7 +192,7 @@ WantedBy=multi-user.target
 
 ### Firewall Rules
 
-{{< content "cloud-firewall-shortguide" >}}
+{{% content "cloud-firewall-shortguide" %}}
 
 UFW is great for preventing unauthorized access to your database. A reasonable default is to allow port 80/443 and SSH:
 

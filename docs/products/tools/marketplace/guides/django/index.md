@@ -16,9 +16,9 @@ external_resources:
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Django should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -34,11 +34,11 @@ external_resources:
 - **Django user** *(required)*: The username for your Django application.
 - **Django user email** *(required)*: The email address you wish to use for your Django user and to generate the SSL certificates.
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -58,4 +58,4 @@ The Django Marketplace App will assign `DjangoApp` as the [Django project name](
 
     ![Django Admin Console](django-admin-console.png "Django Admin Console")
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

@@ -143,7 +143,7 @@ Now you'll need to get the root certificate for the CA that you paid to sign you
 
 -   [Verisign](https://knowledge.verisign.com/support/ssl-certificates-support/index.html)
 -   [Thawte](http://www.thawte.com/roots/index.html)
--   [Globalsign](http://www.globalsign.com/en//)
+-   [Globalsign](http://www.globalsign.com/en/)
 -   [Comodo](https://support.comodo.com/index.php?_m=downloads&_a=view&parentcategoryid=1&pcid=0&nav=0)
 
 For example, if you download a root cert for Verisign, you would save it to `/etc/apache2/ssl/verisign.cer`.

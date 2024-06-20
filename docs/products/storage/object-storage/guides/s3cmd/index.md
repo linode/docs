@@ -146,7 +146,7 @@ s3cmd put file.txt s3://example-bucket/
 - `-P`: Makes the object publicly accessible. This will allow the object to be accessed by anyone with the URL. Once successfully uploaded, s3cmd will output the public URL.
 - `-e`: Encrypts the object (if you've configured the correct s3cmd options to enable encryption).
 
-{{< content "object-storage-character-warning-shortguide" >}}
+{{% content "object-storage-character-warning-shortguide" %}}
 
 ### Download an Object or Directory
 

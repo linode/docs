@@ -25,9 +25,9 @@ The versions of MainConcept Plugins for FFmpeg included in this deployment are f
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** MainConcept Plugins for FFmpeg should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -40,15 +40,15 @@ The versions of MainConcept Plugins for FFmpeg included in this deployment are f
 
 ### MainConcept Plugins for FFmpeg Options
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 ## Getting Started after Deployment
 
 ### Logging In
 
-Once all packages have finished installing, you can login to your instance to access MainConcept's FFmpeg installation and plugins.
+Once all packages have finished installing, you can log in to your instance to access MainConcept's FFmpeg installation and plugins.
 
-1. Using the **limited sudo user** you created during deployment, login to your instance via SSH. Replace `LIMITED_USER` with your sudo user and `192.0.2.1` with the address of your Compute Instance:
+1. Using the **limited sudo user** you created during deployment, log in to your instance via SSH. Replace `LIMITED_USER` with your sudo user and `192.0.2.1` with the address of your Compute Instance:
     ```command
     ssh LIMITED_USER@192.0.2.1
     ```
@@ -86,4 +86,4 @@ For more information on using MainConcept Plugins for FFmpeg, including command 
 
 For support regarding the tool or software itself, use the information in the sidebar to contact MainConcept's support or search the [MainConcept community forum](https://forum.mainconcept.com/).
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

@@ -4,9 +4,6 @@ time_format_iso8601 = "2006-01-02T15:04:05-07:00"
 
 weglot_api_key = "wg_3b3ef29c81aa81292c64d1368ee318969"
 
-# Google Tag Manager ID used in production.
-# For development/staging, see the config dir.
-gtmID = "GTM-T5FXXG9"
 
 # # Adobe Analytics script used in production.
 # For development/staging, see the config dir.
@@ -65,7 +62,7 @@ explorer_icon = "#icon-explorer--products"
 name = "guides"
 filters = "section.lvl0:guides"
 weight = 20
-title = "Guides"
+title = "Cloud Guides & Tutorials"
 noun = "Guide"
 explorer_icon = "#icon-explorer--guides"
 
@@ -174,10 +171,7 @@ target = "assets/linode/attribution-inline.js"
 path = "github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3"
 
 [[module.imports]]
-path = "github.com/gohugoio/hugo-mod-jslibs/turbo/v7"
-
-[[module.imports]]
-path = "github.com/gohugoio/hugo-mod-jslibs/instantpage"
+path = "github.com/gohugoio/hugo-mod-jslibs/turbo/v8"
 
 [security]
   enableInlineShortcodes = false

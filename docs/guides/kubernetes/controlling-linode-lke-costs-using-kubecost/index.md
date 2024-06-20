@@ -23,7 +23,7 @@ This guide discusses Kubecost's features and functionality, suggests steps for c
 
 ## Advantages of Kubecost
 
-Understanding cost is essential to ensuring return on investment (ROI). Many organizations calculate the costs for their Kubernetes containers manually, but manual calculations can become time-consuming and error-prone, especially when a large amount of containers or other assetts need to be counted. Additionally, manual calculations do not lend themselves well to various forms of analysis to determine where and when it is possible to produce cost savings without losing functionality.
+Understanding cost is essential to ensuring return on investment (ROI). Many organizations calculate the costs for their Kubernetes containers manually, but manual calculations can become time-consuming and error-prone, especially when a large amount of containers or other assets need to be counted. Additionally, manual calculations do not lend themselves well to various forms of analysis to determine where and when it is possible to produce cost savings without losing functionality.
 
 Setting Kubernetes costs across multiple clusters using a single view or API endpoint is essential to understanding ROI and keeping costs controlled. Kubecost automates these tasks and can help you efficiently optimize cost vs. resources by breaking down costs by deployment, service, namespace label, team, individual application, and more.
 
@@ -42,7 +42,7 @@ When working with both on-premise and external cloud services, some costs can be
     -   Memory
     -   Storage
 
-These metrics act as inputs for calculations that provide cost categories like montly cluster cost, deployment resource cost, and cost efficiency.
+These metrics act as inputs for calculations that provide cost categories like monthly cluster cost, deployment resource cost, and cost efficiency.
 
 ### Optimization Insights
 
@@ -56,9 +56,9 @@ Kubecost provides alerts and governance features that detect cost overruns befor
 
 When looking to keep Kubernetes costs under control, having a good **monitoring** technique in place is a required first step. Monitoring deployments is an essential part of determining precisely what problems a Kubernetes configuration may have. Costs and resource usage constantly fluctuate and are why automation tools are essential to understanding what is happening with a setup in real-time. According to [Survey Surfaces Recent Spike in Kubernetes Costs](https://cloudnativenow.com/editorial-calendar/container-kubernetes-management/survey-surfaces-recent-spike-in-kubernetes-costs/) only 38% of IT professionals can accurately predict monthly Kubernetes costs within a 10% margin of error.
 
-**Cost control** is the step that follows monitoring; once you have insight through monitoring, you can optimize your setup to provide maximun performance at the lowest cost in time, resources, and money. Because monitoring environments are dynamic, so are cost control environments. Since it is unlikely that optimizing a configuration once will result in always receiving the best performance, monitoring and optimization should occur often.
+**Cost control** is the step that follows monitoring; once you have insight through monitoring, you can optimize your setup to provide maximum performance at the lowest cost in time, resources, and money. Because monitoring environments are dynamic, so are cost control environments. Since it is unlikely that optimizing a configuration once will result in always receiving the best performance, monitoring and optimization should occur often.
 
-Having propper tooling in place is essential when looking to optimize. Some tools (like Kubecost) can make suggestions on where and how to optimize, and some can provide automation that put unused application components to sleep or even delete them when they are no longer needed.
+Having proper tooling in place is essential when looking to optimize. Some tools (like Kubecost) can make suggestions on where and how to optimize, and some can provide automation that put unused application components to sleep or even delete them when they are no longer needed.
 
 Human knowledge is also an important factor in keeping costs low. Knowing organizational direction and special events can help those maintaining a system anticipate needs that the software can’t know in advance. By planning for requirements as part of monitoring and control, you further reduce costs.
 
@@ -147,7 +147,7 @@ OpenCost is free, whereas Kubecost offers freemium and paid versions with differ
 
 [Loft](https://loft.sh/) is a control platform that operates on top of existing Kubernetes clusters. Loft works with individual clusters rather than residing outside clusters or relying on a separate engine. Loft has relatively simple setup and configuration processes, though it doesn't have the level of overview provided by Kubecost or OpenCost.
 
-Two areas of note for Loft are the sleep mode feature and accounting functionality. With sleep mode, Loft automatically puts idle namespaces to sleep based on user-provided critera, rather than only informing you of a cost problem. It also has the ability to delete namespaces when they become old and unused. Accounting in Loft allows you to set quotas for each user, account, and team. Loft also offers enterprise-grade, multi-tenant access control, security, and fully automated tenant isolation, among other features.
+Two areas of note for Loft are the sleep mode feature and accounting functionality. With sleep mode, Loft automatically puts idle namespaces to sleep based on user-provided criteria, rather than only informing you of a cost problem. It also has the ability to delete namespaces when they become old and unused. Accounting in Loft allows you to set quotas for each user, account, and team. Loft also offers enterprise-grade, multi-tenant access control, security, and fully automated tenant isolation, among other features.
 
 ### CAST AI
 

@@ -34,7 +34,7 @@ To start understanding Docker Volumes, you'll need a volume to work on.
 
 1.  Log in to your Linode (or other Linux server) through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
-1.  Create a volume by entering the following command, replacing *example_volume* with the label for your volume.
+1.  Create a volume by entering the following command, replacing `example_volume` with the label for your volume.
 
         docker volume create example_volume
 
@@ -81,11 +81,11 @@ For a container's data to persist, you need to have a Docker Volume mounted usin
     docker run --mount source=[volume_name],destination=[path] [docker_image]
 
 
-As an example, the following command mounts the volume named *example_volume* to the path `/example_volume` inside a container using the `ubuntu` image.
+As an example, the following command mounts the volume named `example_volume` to the path `/example_volume` inside a container using the `ubuntu` image.
 
     docker run -it --name=example --mount source=example_volume,destination=/example_volume ubuntu
 
-This command runs the image, mounts the volume, and logs the user in as root on the Ubuntu image. Once in as root, you can verify the "example_volume" is mounted with just `ls`. The output for all of this should look something like this:
+This command runs the image, mounts the volume, and logs the user in as root on the Ubuntu image. Once in as root, you can verify the `example_volume` is mounted with just `ls`. The output for all of this should look something like this:
 
 {{< output >}}
 [mumbly@linode ~]$ docker run -it --name=example --mount source=example_volume,destination=/example_volume ubuntu

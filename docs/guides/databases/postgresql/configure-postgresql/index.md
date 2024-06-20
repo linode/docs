@@ -119,7 +119,7 @@ host    example         exampleuser      192.0.2.0             password
 The entries in this table are read in order for each incoming connection attempt. The first entry that matches will be applied to the connection. As a result, more general configurations (matching all users, all databases, or all IP addresses) should come at the end of the file, and should generally have tighter restrictions. More specific matches with less stringent authentication methods (such as the example above) should be placed at the beginning of the list.
 
 {{< note >}}
-See the [official pg_hba documentation](https://www.postgresql.org/docs/9.3/static/auth-pg-hba-conf.html) for details about each of the configuration options.
+See the [official documentation](https://www.postgresql.org/docs/9.3/static/auth-pg-hba-conf.html) for `pg_hba` for details about each of the configuration options.
 {{< /note >}}
 
 ### Match System Users to Database Users with pg_ident.conf

@@ -52,7 +52,7 @@ Installing the public SSH key for the `root` user is the easiest way to add Lino
         ```
 
         {{< note title="Note for using a limited user" isCollapsible=true >}}
-        In general, [sudo privileges](/docs/guides/linux-users-and-groups/#understanding-sudo) are needed to run many of the troubleshooting commands our Support Team might use. Whenever possible, you should grant the limited user sudo privileges. The [Adding a New User](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) guide shows how to add your user to the `sudo` group (or `wheel` or `admin` group, depending on your distribution).
+        In general, [sudo privileges](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) are needed to run many of the troubleshooting commands our Support Team might use. Whenever possible, you should grant the limited user sudo privileges. The [Adding a New User](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) guide shows how to add your user to the `sudo` group (or `wheel` or `admin` group, depending on your distribution).
 
         After adding the limited user account to the sudo group, you need to either provide the user's password to the Support Team (see [Add Credentials](#adding-service-credentials)) or enable passwordless sudo by following the instructions below.
 
@@ -87,7 +87,7 @@ Installing the public SSH key for the `root` user is the easiest way to add Lino
 
 1. Save the changes to the file and exit your text editor. In the `nano` editor, enter <kbd>Ctrl</kbd>-<kbd>X</kbd> and then <kbd>Y</kbd> to confirm.
 
-Once you've added the public key to your preferred user, you may need to allow access from our infrastructure (see [Configuring Firewall Rules](#configuring-firewall-rules)). If you wish to confirm that everything is properly configured, [open a support ticket](/docs/products/platform/get-started/guides/support/#contacting-linode-support) to have the Support team confirm that they have access. Repeat this process on every Compute Instance you want to monitor.
+Once you've added the public key to your preferred user, you may need to allow access from our infrastructure (see [Configuring Firewall Rules](#configuring-firewall-rules)). If you wish to confirm that everything is properly configured, [open a support ticket](/docs/products/platform/get-started/guides/support/#contact-customer-support) to have the Support team confirm that they have access. Repeat this process on every Compute Instance you want to monitor.
 
 ## Edit SSH Access Settings for Each Compute Instance
 

@@ -1,0 +1,11 @@
+{{ $thumb := "" }}
+{{ if .tryFeatureSVG }}
+  {{ $thumb = .page.Resources.GetMatch "*feature*.svg" }}
+{{ end }}
+{{ if not $thumb }}
+  {{ $thumb = partial "funcs/get-bundle-image.html" .page }}
+  {{ if ne $thumb.MediaType.SubType "svg" -}}
+    {{ $thumb = $thumb.Resize "640x jpg" }}
+  {{ end }}
+{{ end }}
+{{ return $thumb }}

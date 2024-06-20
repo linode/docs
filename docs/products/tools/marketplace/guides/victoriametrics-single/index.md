@@ -20,9 +20,9 @@ This Marketplace App deploys [VictoriaMetrics Single](https://docs.victoriametri
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** VictoriaMetrics should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -70,4 +70,4 @@ If you prefer to access the query using the command-line, you can use `curl` fro
 
     curl -sg http://ip-address:8428/api/v1/query_range?query=vm_app_uptime_seconds | jq
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

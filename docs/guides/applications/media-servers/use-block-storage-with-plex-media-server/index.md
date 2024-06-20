@@ -24,7 +24,7 @@ Plex is a media server that allows you to store your media on a remote server an
 
 ## Before You Begin
 
-The examples in this guide assume the Plex Server is installed and running on a Linode. See how to [Install Plex Media Server on Ubuntu 16.04](/docs/guides/install-plex-media-server-on-ubuntu-18-04/) if it is not already installed. After installation, follow the steps in the [Initial Setup](/docs/guides/install-plex-media-server-on-ubuntu-18-04/#initial-setup) section to create an SSH tunnel to your Linode and configure the Plex server.
+The examples in this guide assume the Plex Server is installed and running on a Linode. See how to [Install Plex Media Server on Ubuntu 16.04](/docs/guides/install-plex-media-server-on-ubuntu-18-04/) if it is not already installed. After installation, follow the steps in the [Configuring Plex](/docs/guides/install-plex-media-server-on-ubuntu-18-04/#configuring-plex-media-server-on-ubuntu-1804) section to create an SSH tunnel to your Linode and configure the Plex server.
 
 This guide also assumes you already have a Plex account since Plex Media Player will require login.
 

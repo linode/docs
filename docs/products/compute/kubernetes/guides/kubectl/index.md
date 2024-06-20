@@ -9,7 +9,7 @@ aliases: ['/products/compute/kubernetes/guides/download-kubeconfig/','/products/
 
 You need to install the kubectl client to your computer before proceeding. Follow the steps corresponding to your computer's operating system.
 
-{{< content "how-to-install-kubectl" >}}
+{{% content "how-to-install-kubectl" %}}
 
 ## Connect to a Cluster with kubectl
 
@@ -48,7 +48,7 @@ current-context: lke1234-ctx
 
 This configuration file defines your cluster, users, and contexts.
 
-1. To access your cluster's kubeconfig, log into your Cloud Manager account and navigate to the **Kubernetes** section.
+1. To access your cluster's kubeconfig, log in to your Cloud Manager account and navigate to the **Kubernetes** section.
 
 1. From the Kubernetes listing page, click on your cluster's **more options ellipsis** and select **Download kubeconfig**. The file will be saved to your computer's `Downloads` folder.
 

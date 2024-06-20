@@ -191,7 +191,7 @@ Next, we need to configure the failover software on *each* Compute Instance. For
     ```
     {{< /note >}}
 
-1.  Next, prepare the command to configure BGP routing through lelastic. Replace *[id]* with the ID corresponding to your data center in the [table above](/docs/products/compute/compute-instances/guides/failover/#ip-failover-support) and *[role]* with either `primary` or `secondary`. You do not need to run this command, as it is configured as a service in the following steps.
+1.  Next, prepare the command to configure BGP routing through lelastic. Replace *[id]* with the ID corresponding to your data center in the [table above](#ip-sharing-availability) and *[role]* with either `primary` or `secondary`. You do not need to run this command, as it is configured as a service in the following steps.
 
     ```command
     lelastic -dcid [id] -[role] &
