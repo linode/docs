@@ -146,13 +146,8 @@
             "text-basicgray" (not (eq .node.count 0))
             )
           }}
-          {{ with .node.count }}
-            <span
-              class="text-xs font-semibold pr-6 {{ $classes }}"
-              data-testid="node-count"
-              >{{ . }}</span
-            >
-          {{ end }}
+
+
           <div class="z-10">
             {{ $ariaLabel := cond .node.open "close" "open" }}
             {{ $classes := partial "inline/get-classes" (dict

@@ -84,6 +84,7 @@
         <div class="flex items-center h-full">
           <span
             class="text-xs font-semibold pr-6 text-basicgray"
+            x-show="$store.search.query.isFiltered()"
             :class="{  'text-brand': ({{ $.n }}.count > 0) && $store.search.query.isFiltered(),
                 'text-gray-100': ({{ $.n }}.count === 0),
                 'text-basicgray': ({{ $.n }}.count > 0) && !$store.search.query.isFiltered() }"
@@ -101,7 +102,6 @@
               'border-l-2 pl-3 py-1': node.level > 1
             }"
         x-show="{{ $.n }}.open"
-        x-transition.200ms
         x-ref="node-tree"></ul>
     </div>
   </li>
