@@ -33,9 +33,11 @@ Billing for Object Storage starts when it is enabled on your account, **regardle
 
 1. Enter a label for the key pair. This label is how you reference your key pair in the Linode Cloud Manager. Then, click **Submit**.
 
-1. A window appears that contains your access key and your secret key. Write these down somewhere secure. The access key is visible in the Linode Cloud Manager, but **you are not be able to retrieve your secret key again once you close the window.**
+1. Select at least one region. You can select multiple regions for your access key.
 
-1. You now have the credentials needed to connect to Linode Object Storage.
+2. A window appears that contains your access key and your secret key. Write these down somewhere secure. The access key is visible in the Linode Cloud Manager, but **you are not able to retrieve your secret key again once you close the window.**
+
+3. You now have the credentials needed to connect to Linode Object Storage.
 
 ## Create a Bucket
 
