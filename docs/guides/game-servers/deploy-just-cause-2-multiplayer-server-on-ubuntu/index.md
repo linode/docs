@@ -11,6 +11,7 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/game-servers/deploy-just-cause-2-multiplayer-server-on-ubuntu/','/applications/game-servers/just-cause-2-multiplayer-on-ubuntu/','/game-servers/deploy-just-cause-2-multiplayer-server-on-ubuntu/']
 dedicated_cpu_link: true
+deprecated: true
 ---
 
 [Just Cause 2](http://www.justcause2.com/) is a single-player game published by Square Enix. Because it has no multiplayer mode, the modding community has created a multiplayer mod for the game that is quite popular. This guide will explain how to prepare your Linode, install SteamCMD and then install and configure Just Cause 2's multiplayer mod.

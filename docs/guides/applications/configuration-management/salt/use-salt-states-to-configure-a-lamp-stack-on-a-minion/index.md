@@ -11,6 +11,7 @@ tags: ["automation","salt","debian","lamp","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/salt/salt-states-configuration-apache-mysql-php/','/applications/configuration-management/salt/use-salt-states-to-configure-a-lamp-stack-on-a-minion/','/applications/configuration-management/use-salt-states-to-configure-a-lamp-stack-on-a-minion/']
 image: UseSaltStatestoConfigureaLAMPStackonaMinion.png
+deprecated: true
 ---
 
 This tutorial will configure a Minion's LAMP stack with further use of Salt States. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions. You will need a working Salt master and minion configuration before starting this guide. If you need to set up that prerequisite, see our [Salt installation guide](/docs/guides/getting-started-with-salt-basic-installation-and-setup/) to get started.

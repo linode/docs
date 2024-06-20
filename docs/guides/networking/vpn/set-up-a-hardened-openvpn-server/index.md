@@ -12,6 +12,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8/','/networking/vpn/set-up-a-hardened-openvpn-server/']
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
+deprecated: true
 ---
 
 [OpenVPN](https://openvpn.net/) is a tool for creating network tunnels between groups of computers that are not on the same local network. This is useful to remotely access services on a network or computer without making those services publicly accessible. When integrated with OpenSSL, OpenVPN encrypts all VPN traffic providing a secure connection between machines.

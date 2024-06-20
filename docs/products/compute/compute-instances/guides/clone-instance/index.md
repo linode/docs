@@ -16,7 +16,7 @@ Linode's cloning feature allows you to duplicate a Compute Instance's disks (and
 This process copies all disks and configuration profiles to a newly created Compute Instance on your account.
 
 {{< note >}}
-Before continuing, it's recommended to power off the instance you would like to clone. This helps prevent data corruption.
+Before continuing, you should power off the instance you want to clone. This helps prevent data corruption.
 {{< /note >}}
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com).
@@ -30,7 +30,7 @@ Before continuing, it's recommended to power off the instance you would like to 
 1. Under **Select Linode to Clone From**, search for and select the instance you wish to clone. If the selected instance is running, **Power Off** appears to the right.
 
 1. To help prevent data corruption during cloning, click **Power Off**.
-   
+
     {{< note >}}
     If you're using a mobile device, available instances appear as cards without the Power Off option. To power off an instance from a mobile device, go to the instance's details page.
     {{< /note >}}
@@ -38,7 +38,9 @@ Before continuing, it's recommended to power off the instance you would like to 
 1. Complete the remainder of the form. Enter a label and select the region, the plan, and other options for the new Compute Instance.
 
     {{< note >}}
-    The plan's storage must be greater than the combined disk size of the original instance. If you wish to select a plan with less storage, you may need to [resize your disks](/docs/products/compute/compute-instances/guides/disks-and-storage/) before cloning.
+    - The plan's storage must be greater than the combined disk size of the original instance. If you wish to select a plan with less storage, you may need to [resize your disks](/docs/products/compute/compute-instances/guides/disks-and-storage/) before cloning.
+
+    - If the target Compute Instance is in a [placement group](/docs/products/compute/compute-instances/guides/placement-groups/), the clone isn't automatically included in the same placement group. You need to specify a placement group to include it in. The target placement group needs to have capacity to include a cloned Compute Instance and it needs to be in the same data center as the clone.
     {{< /note >}}
 
 1. Click the **Create Linode** button to start the cloning process. Cloning a Compute Instance can be much longer than creating a new instance based on a distribution image or custom image. The length of time depends on the size of the disks, among other factors. To keep track of the cloning progress, a status bar is displayed above the original Compute Instance with the percentage of completion.

@@ -49,6 +49,7 @@ Linode bundles the following services with all Compute Instances:
 - Domain management through our [DNS Manager](https://www.linode.com/products/dns-manager/)
 - Seamless firewall management with [Cloud Firewalls](https://www.linode.com/products/cloud-firewall/)
 - Private Layer 2 networks with [VLANs](https://www.linode.com/products/vlan/)
+- Physical placement of your Compute Instances in a data center with [Placement Groups](/docs/products/compute/compute-instances/guides/placement-groups/)
 - Metrics and monitoring through the [Cloud Manager](https://www.linode.com/products/monitoring/) and [Longview](/docs/products/tools/longview/) (free plan)
 - Reusable deployment scripts through [StackScripts](https://www.linode.com/products/stackscripts/)
 

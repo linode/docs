@@ -21,6 +21,7 @@ relations:
         key: install-java
         keywords:
             - distribution: Ubuntu 16.04
+deprecated: true
 ---
 
 ![Java](Install_Oracle_Java.jpg)

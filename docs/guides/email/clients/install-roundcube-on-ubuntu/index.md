@@ -12,6 +12,7 @@ tags: ["ubuntu","postfix","email","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[Roundcube Homepage](https://roundcube.net/)'
+deprecated: true
 ---
 
 ![Install Roundcube on Ubuntu 16.04 LTS](Install_Roundcube_on_Ubuntu_16_04_smg.png "Install Roundcube on Ubuntu")

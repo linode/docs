@@ -14,6 +14,7 @@ external_resources:
   - '[Basic OpenVZ Operations](https://openvz.org/Basic_operations_in_OpenVZ_environment)'
   - '[OpenVZ User Contributed Templates](https://openvz.org/Download/template/precreated)'
 aliases: ['/applications/containers/how-to-install-openvz-on-debian-9/']
+deprecated: true
 ---
 
 ## What is OpenVZ?
