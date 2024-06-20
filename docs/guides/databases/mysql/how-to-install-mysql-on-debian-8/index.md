@@ -21,6 +21,7 @@ relations:
         keywords:
             - distribution: Debian 8
 tags: ["debian","database","mysql"]
+deprecated: true
 ---
 
 ![How to Install MySQL on Debian 8](how-to-install-mysql-on-debian-8.jpg "How to Install MySQL on Debian 8")

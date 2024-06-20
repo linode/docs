@@ -13,6 +13,7 @@ aliases: ['/applications/big-data/redis-cluster/','/applications/big-data/how-to
 external_resources:
  - '[Redis Official Website](https://redis.io/)'
  - '[Install and Configure Redis on CentOS 7](/docs/guides/install-and-configure-redis-on-centos-7/)'
+deprecated: true
 ---
 
 ![How to Install and Configure a Redis Cluster on Ubuntu 16.04](Redis_Cluster.jpg)

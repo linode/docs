@@ -21,6 +21,7 @@ relations:
         keywords:
             - distribution: Ubuntu/Debian
 tags: ["ubuntu","debian","database","nosql"]
+deprecated: true
 ---
 
 ![Redis Server on Ubuntu or Debian](install-redis-server-ubuntu-debian.png "Redis Server on Ubuntu or Debian")
