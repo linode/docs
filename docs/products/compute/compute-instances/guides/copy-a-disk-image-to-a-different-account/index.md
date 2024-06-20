@@ -3,7 +3,7 @@ title: "Copying a Disk to a Different Account"
 title_meta: "How to Copy a Disk to a Different Account"
 description: "Review this guide to find out how to copy a disk of a Linode from one Linode account to another."
 published: 2020-06-01
-modified: 2022-03-28
+modified: 2024-06-20
 keywords: ["disk", "migration", "moving to different accounts"]
 tags: ["linode platform","cloud manager"]
 image: copying_a_disk_to_a_differnet_account_smg.png
@@ -28,16 +28,15 @@ You need to prepare the *receiving* Linode before initiating the transfer. First
 
 1.  Click **X** to not choose any **Image** in the **Choose a Distribution** section of the [Distributions](/docs/products/compute/compute-instances/guides/distributions/) tab.
 
-![Creating a receiving Linode](image-selection.png)
-{.flex .justify-center .items-center}
+    ![Creating a receiving Linode](image-selection.png)
 
-1. Choose the region where you would like the Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/products/platform/get-started/guides/choose-a-data-center/) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
+1.  Choose the region where you would like the Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/products/platform/get-started/guides/choose-a-data-center/) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
 
-1. Select a Linode plan.
+1.  Select a Linode plan.
 
 1.  Give the Linode a label. This is a name to help you easily identify it within the Cloud Manager's Dashboard. If desired, assign a tag to the Linode in the **Add Tags** field.
 
-1. Skip the **Root Password** and **SSH Keys** fields, as they are disabled when creating an empty Linode.
+1.  Skip the **Root Password** and **SSH Keys** fields, as they are disabled when creating an empty Linode.
 
 1.  Click **Create Linode**. The system directs you to the *Linodes* page that reports the status of the Linode as it boots up.
 
@@ -49,10 +48,9 @@ To hold the files transferred from the other Linode, create two new disks labele
 
 1.  Go to the **Storage** tab and click **Add a Disk** in the **Disks** section. The **Add Disk** window appears.
 
-![Creating a receiving Linode](add_disk.png)
-{.flex .justify-center .items-center}
+    ![Creating a receiving Linode](add_disk.png)
 
-1.   Type a descriptive name such as `copy` for the disk in the **Label** field.
+1.  Type a descriptive name such as `copy` for the disk in the **Label** field.
 
 1.  Select `ext4` in the **Filesystem** dropdown field.
 
@@ -60,8 +58,7 @@ To hold the files transferred from the other Linode, create two new disks labele
 
 1.  Click **Add** to create the disk.
 
-1.  Repeat the steps to create a disk labeled `swap` and select `swap` in the **Filesystem** dropdown field.
-    Ensure that the size of the `swap` disk is the same as that of the `swap` disk of the disk that you want to copy.
+1.  Repeat the steps to create a disk labeled `swap` and select `swap` in the **Filesystem** dropdown field. Ensure that the size of the `swap` disk is the same as that of the `swap` disk of the disk that you want to copy.
 
 The system creates disks to hold the files from the disk of other account.
 

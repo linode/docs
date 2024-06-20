@@ -2,7 +2,7 @@
 title: Guides
 title_meta: "Guides and Tutorials for Compute Instances"
 description: "A collection of guides to help you start deploying Compute Instances and using them to host your web applications and Cloud workloads"
-modified: 2024-01-03
+modified: 2024-06-20
 tab_group_main:
     weight: 30
 aliases: ['/products/compute/shared-linodes/guides/','/products/compute/shared-cpu/guides/','/products/compute/gpu/guides/','/products/compute/dedicated-cpu/guides/','/products/compute/high-memory/guides/']
@@ -22,7 +22,7 @@ aliases: ['/products/compute/shared-linodes/guides/','/products/compute/shared-c
 - [Access Your Desktop Environment Using Glish (Linode Graphical Shell)](/docs/products/compute/compute-instances/guides/glish/)
 - [Reset Root Password](/docs/products/compute/compute-instances/guides/reset-root-password/)
 - [Clone a Compute Instance](/docs/products/compute/compute-instances/guides/clone-instance/)
-- [Physically Group Compute Instances to Meet Your Need](/docs/products/compute/compute-instances/guides/placement-groups)
+- [Physically Group Compute Instances to Meet Your Needs](/docs/products/compute/compute-instances/guides/placement-groups)
 - [Initiate a Cross Data Center Migration](/docs/products/compute/compute-instances/guides/migrate-to-different-dc/)
 - [Configure Email Alerts for Resource Usage on Compute Instances](/docs/products/compute/compute-instances/guides/resource-usage-email-alerts/)
 

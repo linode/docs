@@ -37,7 +37,7 @@ In addition to selecting the Affinity Type, you select how it's enforced when yo
 
 - **Flexible**. You can add more compute instances to your placement group even if they're outside your affinity type's preferred container. However, if you add one and it violates your affinity type, the placement group becomes non-compliant. Once the necessary capacity is available in the data center, we physically move the compute instance for you to fit your affinity type's preferred container and make it compliant again. This can work for you if you know you need to add more compute instances to your group in the future.
 
-### Fix non-compliance
+### Fix Non-compliance
 
 If a placement group becomes non-compliant, we're alerted and we'll bring it back into compliance as soon as possible. Non-compliance can only be fixed by Akamai staff. **_You can't fix it yourself_**.
 

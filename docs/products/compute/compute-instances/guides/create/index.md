@@ -3,7 +3,7 @@ title: "Create a Compute Instance"
 title_meta: "Create a Compute Instance on the Linode Platform"
 description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
 published: 2022-04-19
-modified: 2024-02-13
+modified: 2024-06-20
 keywords: ["getting started", "deploy", "linode", "linux"]
 aliases: ['/guides/creating-a-compute-instance/','/products/compute/dedicated-cpu/guides/deploy/']
 ---
@@ -134,7 +134,6 @@ In most cases, it's recommended to use a VPC over a VLAN. VPCs operate on a high
 ## Assign to a Placement Group (Optional) {#assign-to-a-placement-group}
 
 ![Creating a receiving Linode](create-instance-pg.png)
-{.flex .justify-center .items-center}
 
 Add this Compute Instance to a Placement Group to manage its physical location in a data center ("region"). Placement Groups can be set up to group your compute instances close together to help with performance, or further apart to support high availability. Placement Groups are available at no additional cost, but they're not available in all regions. See [Work with Placement Groups](/docs/products/compute-instances/guides/placement-groups) to learn more.
 
