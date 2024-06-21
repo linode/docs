@@ -126,7 +126,7 @@ This process only transfers IPv4 addresses and IPv6 ranges, not IPv6 SLAAC addre
     - **Move To:** moves the IP address to another Compute Instance. When choosing this option, select the destination Compute Instance in the next dropdown menu that appears. If you are moving a public IPv4 address, there needs to be at least one remaining public IPv4 address on the source Compute Instance.
     - **Swap With:** swaps the IP addresses of two Compute Instances. When choosing this option, select the destination Compute Instance in the next dropdown menu that appears. Then select the IP address (belonging to the destination Compute Instance) you would like to swap with the originally selected IP address.
 
-    ![The IP Transfer menu in the Cloud Manger](remote_access_ip_transfer.png)
+    ![The IP Transfer menu in the Cloud Manager](remote_access_ip_transfer.png)
 
     {{< note >}}
     The *IP Transfer* form only displays Compute Instances hosted in the same data center as the current Instance.

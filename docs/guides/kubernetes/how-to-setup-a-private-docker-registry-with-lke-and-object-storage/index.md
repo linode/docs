@@ -274,7 +274,7 @@ You will now complete the steps to deploy your Docker Registry to your Kubernete
 
 To enabled basic access restriction for your Docker registry, you will use the `htpasswd` utility. This utility allows you to use a file to store usernames and passwords for basic HTTP authentication. This will require you to log into your Docker registry prior to being able to push or pull images from and to it.
 
-1.  Install the `htpasswd` utility. This example is for an Ubuntu 18.04 instance, but you can use your system's package manger to install it.
+1.  Install the `htpasswd` utility. This example is for an Ubuntu 18.04 instance, but you can use your system's package manager to install it.
 
     ```command
     sudo apt install apache2-utils -y
