@@ -4,7 +4,7 @@ title_meta: "Deploy and Manage a Kubernetes Cluster with the Linode API"
 description: "Learn how to deploy a cluster on Linode Kubernetes Engine (LKE) through the Linode API."
 og_description: "The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. This guide shows you how to use the Linode API to Deploy and Manage an LKE Cluster."
 published: 2019-11-11
-modified: 2024-06-13
+modified: 2024-06-21
 keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster"]
 image: deploy-and-manage-cluster-copy.png
 aliases: ['/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/','/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/','/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/']
@@ -424,9 +424,9 @@ curl -H "Content-Type: application/json" \
         }' https://api.linode.com/v4/lke/clusters/{{< placeholder "12345" >}}/pools
 ```
 
-In the above command, labels are defined in the `labels` field as key-value pairs within a single object. Taints are defined as an array of dictionary objects in the `taints` field.
+In the above command, labels are defined in the `labels` field as key-value pairs within a single object. Taints are defined as an array of objects in the `taints` field.
 
--   **Labels:** The `labels` field expects a dictionary object with one or more key-value pairs. These key-value pairs should adhere to the specifications and restrictions outlined in the Kubernetes [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) documentation.
+-   **Labels:** The `labels` field expects an object with one or more key-value pairs. These key-value pairs should adhere to the specifications and restrictions outlined in the Kubernetes [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) documentation.
 
     ```command
     "labels": {
@@ -434,9 +434,14 @@ In the above command, labels are defined in the `labels` field as key-value pair
     }
     ```
 
-    A label's key and value must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 63 characters each. Optionally, the key can begin with a valid DNS subdomain prefix and a single slash (`/`). In this case, the maximum allowed length of the domain prefix is 253 characters. For instance, `example.com/my-app` is a valid key for a label.
+    -   **Key:** A label's key must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores. Optionally, the key can begin with a valid DNS subdomain prefix.
 
--   **Taints:** The `taints` field expects an array of one or more dictionary objects, adhering to the guidelines outlined in the Kubernetes [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) documentation. A taint consists of a `key`, `value`, and `effect`:
+        - If the key does not begin with a DNS subdomain prefix, the maximum key length is 63 characters. Example: `my-app`.
+        - If the key begins with a DNS subdomain prefix, it must separate the prefix and the rest of the label with a forward slash (`/`). In this case, the maximum *total* length of the key is 128 characters, with up to 62 characters after the forward slash. The prefix must adhere to RFC 1123 DNS subdomain restrictions. Example: `example.com/my-app`.
+
+    -   **Value:** Must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 63 characters in length.
+
+-   **Taints:** The `taints` field expects an array of one or more objects, adhering to the guidelines outlined in the Kubernetes [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) documentation. A taint consists of a `key`, `value`, and `effect`:
 
     ```command
     "taints": [
@@ -474,7 +479,7 @@ curl -H "Content-Type: application/json" \
 
 The above command results in the following changes to the node pool, assuming the labels and taints were originally entered as shown in the first create command.
 
-- Removes the "myapp.io/app" taint by specifying an empty array in the `taint` field.
+- Removes the "myapp.io/app" taint by specifying an empty array in the `taints` field.
 - Changes the label "myapp.io/app" to have a value of "prod" instead of "test".
 - Adds the new label "example=foo".
 
