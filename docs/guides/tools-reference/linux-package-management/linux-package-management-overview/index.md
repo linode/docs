@@ -79,7 +79,7 @@ There are lots of package managers in Linux, each working a bit differently. Her
 - **Underlying package management tool:** [RPM](https://linux.die.net/man/8/rpm) (*RPM Package Manager*)
 - **Package file format:** `.rpm`
 
-*Yellowdog Updater, Modified*, more commonly known as [YUM](http://yum.baseurl.org/), is a package management tool for a variety of older RHEL-based distributions (such as CentOS 7) and older versions of Fedora. It provides an easy-to-use interface on top of the low-level functions available in the RPM Package Manger (RPM). It has largely been replaced by it successor *Dandified YUM*, also called DNF, on most newer RPM-based distributions.
+*Yellowdog Updater, Modified*, more commonly known as [YUM](http://yum.baseurl.org/), is a package management tool for a variety of older RHEL-based distributions (such as CentOS 7) and older versions of Fedora. It provides an easy-to-use interface on top of the low-level functions available in the RPM Package Manager (RPM). It has largely been replaced by it successor *Dandified YUM*, also called DNF, on most newer RPM-based distributions.
 
 ### Zypper
 
@@ -90,7 +90,7 @@ There are lots of package managers in Linux, each working a bit differently. Her
 - **Underlying package management tool:** ZYpp (also called [libzypp](https://doc.opensuse.org/projects/libzypp/HEAD/))
 - **Package file format:** `.rpm`
 
-[Zypper](https://en.opensuse.org/Portal:Zypper) is the CLI tool used for managing packages on openSUSE Linux distributions. Just like DNF and YUM, packages are stored in the `.rpm` file format, though Zypper interfaces with the ZYpp (libzypp) library instead of RPM. Some users report that Zypper is faster than other package mangers and, unlike many others, has the ability to add repositories directly from its own CLI. See the [Zypper manual](https://en.opensuse.org/SDB:Zypper_manual) for more usage details.
+[Zypper](https://en.opensuse.org/Portal:Zypper) is the CLI tool used for managing packages on openSUSE Linux distributions. Just like DNF and YUM, packages are stored in the `.rpm` file format, though Zypper interfaces with the ZYpp (libzypp) library instead of RPM. Some users report that Zypper is faster than other package managers and, unlike many others, has the ability to add repositories directly from its own CLI. See the [Zypper manual](https://en.opensuse.org/SDB:Zypper_manual) for more usage details.
 
 ### Pacman
 

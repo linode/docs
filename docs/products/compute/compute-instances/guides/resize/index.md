@@ -10,7 +10,7 @@ image: resizing_a_linode.png
 aliases: ['/platform/disk-images/resizing-a-linode-classic-manager/','/resizing/','/platform/disk-images/resizing-a-linode/','/migrate-to-linode/disk-images/resizing-a-linode/','/guides/resizing-a-linode/']
 ---
 
-You can easily change a Compute Instance's plan using Cloud Manger. Are you expecting a temporary burst of traffic to your website? Or, are you using your plan's resource allotment less than you thought? To accommodate, you can upgrade to a larger plan or downgrade to a smaller one, respectively. You can also change to a different plan type, such as switching from a Shared CPU plan to a Dedicated CPU plan.
+You can easily change a Compute Instance's plan using Cloud Manager. Are you expecting a temporary burst of traffic to your website? Or, are you using your plan's resource allotment less than you thought? To accommodate, you can upgrade to a larger plan or downgrade to a smaller one, respectively. You can also change to a different plan type, such as switching from a Shared CPU plan to a Dedicated CPU plan.
 
 ## Before you begin
 
