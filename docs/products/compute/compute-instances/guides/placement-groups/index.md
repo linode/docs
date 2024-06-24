@@ -2,6 +2,7 @@
 title: "Work with Placement Groups"
 description: "Learn how to group your compute instances to best meet your delivery model."
 published: 2024-06-20
+modified: 2024-06-20
 keywords: ["placement-group", "affinity", "compliance"]
 ---
 
