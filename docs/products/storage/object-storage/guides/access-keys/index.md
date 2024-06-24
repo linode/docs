@@ -35,14 +35,14 @@ To use Object Storage with any compatible client or command-line tool, you'll ne
 1.  Click the **Create Access Key** button, which displays the **Create Access Key** panel.
 
 1.  Enter a label for the access key. This label is how you reference the access key in the Cloud Manager and any S3 compatible client.
-   
+
 1. Select at least one Region. You can select multiple regions for your access key.
 
 1.  Toggle the **Limited Access** switch if you wish to only provide access to certain buckets. This allows you to limit the permissions for the new access key on a per-bucket level. See [Access Key Permissions](#permissions) for more details.
 
     ![The limited access switch](create-access-key.jpg)
 
-2.  Click the **Create Access Key** button to create the access key. A dialog box appears that displays the new access key and its secret key. While the access key is always visible within the Cloud Manager, its corresponding secrete key is only visible once and cannot be retrieved again after this window is closed. Store this secret key somewhere secure, such as a password manager.
+1.  Click the **Create Access Key** button to create the access key. A dialog box appears that displays the new access key and its secret key. While the access key is always visible within the Cloud Manager, its corresponding secrete key is only visible once and cannot be retrieved again after this window is closed. Store this secret key somewhere secure, such as a password manager.
 
     ![The access key and secret key displayed within the Cloud Manager](secret-key.jpg)
 
