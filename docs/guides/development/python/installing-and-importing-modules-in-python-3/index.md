@@ -61,7 +61,7 @@ These instructions are geared toward Ubuntu users but are generally applicable f
 
 ### Install Modules with pip
 
-1. Ensure the `pip` module is already installed. `pip` can be installed using the [APT package manger](/docs/guides/apt-package-manager/).
+1. Ensure the `pip` module is already installed. `pip` can be installed using the [APT package manager](/docs/guides/apt-package-manager/).
 
         sudo apt install python3-pip
 

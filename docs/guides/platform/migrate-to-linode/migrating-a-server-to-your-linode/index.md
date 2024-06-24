@@ -133,7 +133,7 @@ After the network copy is complete and the files from the existing server have b
 
     The entire mounted filesystem will be recursively searched for any instances of your old IP address. Note that this replacement operation can take a while to complete.
 
-3.  You can find your IP information in the Linode Cloud Manger under the **Networking** tab. You'll need your public IP, gateway, and DNS server. On the Linode, open the relevant network configuration files for your distribution and adjust them accordingly.
+3.  You can find your IP information in the Linode Cloud Manager under the **Networking** tab. You'll need your public IP, gateway, and DNS server. On the Linode, open the relevant network configuration files for your distribution and adjust them accordingly.
 
 ### Configuring Mount Points
 
