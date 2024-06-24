@@ -22,7 +22,7 @@ Consider these points before attempting a resize:
 
 - **What's preserved**. All of your existing data and configuration settings are preserved during the resize, and your IP addresses remain the same.
 
-- **Placement groups aren't supported**. Resizing a compute instance removes it from a [placement group](/docs/products/compute-instances/guides/placement-groups/). The migration required for resizing moves the compute instance to a different physical host in a data center. This can break the Affinity Type setting that's required for a placement group. If your compute instance is in a placement group and you need to resize it, talk to your Akamai account team about other options.
+- **Placement groups aren't supported**. Resizing a compute instance removes it from a [placement group](/docs/products/compute/compute-instances/guides/placement-groups/). The migration required for resizing moves the compute instance to a different physical host in a data center. This can break the Affinity Type setting that's required for a placement group. If your compute instance is in a placement group and you need to resize it, talk to your Akamai account team about other options.
 
 - **The transfer rate during a resize**. Your compute instance's disks are transferred to the new hardware at approximately 150 MB/sec. However, actual transfer speeds may vary.
 
