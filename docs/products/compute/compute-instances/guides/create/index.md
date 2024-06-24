@@ -135,7 +135,7 @@ In most cases, it's recommended to use a VPC over a VLAN. VPCs operate on a high
 
 ![Creating a receiving Linode](create-instance-pg.png)
 
-Add this Compute Instance to a Placement Group to manage its physical location in a data center ("region"). Placement Groups can be set up to group your compute instances close together to help with performance, or further apart to support high availability. Placement Groups are available at no additional cost, but they're not available in all regions. See [Work with Placement Groups](/docs/products/compute-instances/guides/placement-groups) to learn more.
+Add this Compute Instance to a Placement Group to manage its physical location in a data center ("region"). Placement Groups can be set up to group your compute instances close together to help with performance, or further apart to support high availability. Placement Groups are available at no additional cost, but they're not available in all regions. See [Work with Placement Groups](/docs/products/compute/compute-instances/guides/placement-groups/) to learn more.
 
 {{< note >}}
 If you don't have an existing Placement Group, you can click **Create Placement Group** to create a new one. This takes you to a separate interface, outside creating your compute instance. For ease of use, create your compute instances in a supported region, then later create a Placement Group and assign your compute instances to it.
