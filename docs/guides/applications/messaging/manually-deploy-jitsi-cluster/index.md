@@ -1,10 +1,10 @@
 ---
 slug: manually-deploy-jitsi-cluster
 title: "Manually Deploy a Jitsi Cluster on Akamai"
-description: "Two to three sentences describing your guide."
+description: "This guide goes over how to manually deploy a scalable Jitsi conferencing cluster with Ansible using provided playbooks."
 authors: ["John Dutton","Elvis Segura"]
 contributors: ["John Dutton","Elvis Segura"]
-published: 2024-06-21
+published: 2024-06-25
 keywords: ['jitsi','conferencing','communications','cluster']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -66,7 +66,7 @@ The following software and components must be installed and configured on your l
 
 In order to run the Jitsi deployment in this guide, you must first clone the __ Github repository to your local machine. This repository includes all Ansible playbooks, configuration files, and software installations needed to successfully deploy your Jitsi cluster.
 
-1.  Clone the __ repository. This will clone the repository to a temprary folder on your local machine (`/tmp/linode`):
+1.  Clone the __ repository. This will clone the repository to a temporary folder on your local machine (`/tmp/linode`):
 
     ```command
     git clone $GIT_REPO /tmp/linode
@@ -153,20 +153,23 @@ In order to run the Jitsi deployment in this guide, you must first clone the __ 
 
 ## Provision Your Cluster
 
-1.  Using the ansible-playbook utility, run `provision.yml` with verbose options so you can see the progress. This stands up your Linode instances and dynamically writes your Ansible inventory to the hosts file. The playbook is complete when ssh is available on all deployed instances.
+1.  Using the ansible-playbook utility, run the `provision.yml` playbook with verbose options so you can see the progress. This stands up your Linode instances and dynamically writes your Ansible inventory to the hosts file. The playbook is complete when ssh is available on all deployed instances.
 
     ```command
+    ansible-playbook -vvv provision.yml
     ```
 
 1.  Run the `site.yml` playbook with the hosts inventory file. This playbook configures and installs all required dependencies in the cluster.
 
     ```command
+    ansible-playbook -vvv -i hosts site.yml
     ```
 
-1.  Once installation completes, visit the Jitsi meet application using the rDNS entry written to the `group_vars/jitsi/vars` file represented by the `domain` variable.
+1.  Once installation completes, visit the Jitsi meet application using the rDNS entry written to the `group_vars/jitsi/vars` file represented by the `domain` variable. Replace {{< placeholder "192.0.2.3" >}} with your IP address.
 
-    [Example URL]
-    [SCREENSHOT]
+    -   **Example rDNS entry:** `https://{{< placeholder "192.0.2.3" >}}.ip.linodeusercontent.com`
+
+    ![Jitsi Meet Homepage](jitsi-meet-homepage.jpg "Jitsi Meet Homepage")
 
 ## Scaling options
 
@@ -176,28 +179,37 @@ Depending on your needs, you may wish to scale your Jitsi cluster up or down. To
 
 1.  Using a text editor, open `group_vars/jitsi/vars`.
 
-1.  Edit the `jvb_cluster_size` variable to the total number of instances you wish to be included in your cluster. For example, if your initial cluster started with 2 instances and you would like to add 2 additional instances, edit the `jvb_cluster_size` variable to read `4` and save your changes:
+1.  Edit the `jvb_cluster_size` variable to the total number of instances you wish to be included in your cluster. For example, if your initial cluster started with 2 instances and you would like to add 2 additional instances, edit the `jvb_cluster_size` variable to read {{< placeholder "4" >}}, and save your changes:
 
-    ```output
+    ```file {title="group_vars/jitsi/vars"}
+    ...
+    jvb_cluster_size: {{< placeholder "4" >}}
+    ...
     ```
 
 1.  To apply the new cluster size to your deployment, run the provisioner.yml playbook followed by the site.yml playbook:
 
     ```command
+    ansible-playbook -vvv provisioner.yml
+    ansible-playbook -vvv -i hosts site.yml
     ```
 
 ### Down Scaling
 
 1.  Open `group_vars/jitsi/vars`.
 
-1.  Update the `jvb_cluster_size` variable to the new number of instances you wish to be included in your cluster, and save your changes:
+1.  Update the `jvb_cluster_size` variable to the new number of instances you wish to be included in your cluster, and save your changes. Replace {{< placeholder "2" >}} in the example below with your new value:
 
-    ```output
+    ```file {title="group_vars/jitsi/vars"}
+    ...
+    jvb_cluster_size: {{< placeholder "2" >}}
+    ...
     ```
 
 1.  Run the `destroy.yml` playbook using the ansible-playbook utility:
 
     ```command
+    ansible-playbook -vvv destroy.yml
     ```
 
     {{< note title="destroy.yml removes instances from the end of the cluster" >}}
@@ -206,13 +218,16 @@ Depending on your needs, you may wish to scale your Jitsi cluster up or down. To
 
 ## Benchmarking Your Cluster With WebRTC Perf
 
-`webrtcperf` is an open source utility used to evaluate the performance and quality for WebRTC-based services. To benchmark the performance of your Jitsi cluster, you can run WebRTC Perf from a Docker container. 
+`webrtcperf` is an open source utility used to evaluate the performance and quality for WebRTC-based services. To benchmark the performance of your Jitsi cluster, you can run WebRTC Perf from a Docker container. Note that Docker must be loaded and configured prior to running the below `docker run` command.
 
-{{< note title="Docker is a prerequisite" >}}
-Docker must be loaded and configured prior to running the below command.
-{{< /note >}}
-
-Replace __ with the URL of your Jitsi meet instance (see: [Provision Your Cluster](#provision-your-cluster)):
+Replace {{< placeholder "https://192.0.2.3.ip.linodeusercontent.com" >}} with the URL of your Jitsi meet instance (see: [Provision Your Cluster](#provision-your-cluster)):
 
 ```command
+docker run -it --rm \
+    -v /dev/shm:/dev/shm \
+    ghcr.io/vpalmisano/webrtcperf \
+    --url="https://192.0.2.3.ip.linodeusercontent.com/wat#config.prejoinPageEnabled=false" \
+    --show-page-log=false \
+    --sessions=6 \
+    --tabs-per-session=1
 ```
