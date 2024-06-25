@@ -71,7 +71,7 @@ Other configurations use Promtail, Loki, Prometheus, and Grafana either separate
 
 This example stack uses three groups of host instances:
 
--   The first group consists of instances to monitor: discrete Linux instances and an Akamai Kubernetes pod.
+-   The first group consists of instances to monitor: discrete Linux instances in an Akamai Kubernetes pod.
 
 -   The second group is the host where Fluentd gathers the logs and sends them to a Loki instance within the same host.
 
