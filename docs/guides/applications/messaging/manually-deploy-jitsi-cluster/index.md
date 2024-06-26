@@ -16,7 +16,7 @@ external_resources:
 
 This guide walks you through how to create a scalable Jitsi Meet cluster using [Ansible](https://www.ansible.com/). The provided Ansible playbook creates an initial deployment that can then be scaled up or down as needed.
 
-If you wish to deploy Jitsi automatically rather than manually, consider either our single-instance [Jitsi Marketplace deployment](https://www.linode.com/docs/products/tools/marketplace/guides/jitsi/) or our [Jitsi Cluster Marketplace deployment](https://www.linode.com/docs/products/tools/marketplace/guides/jitsi-cluster/).
+If you wish to deploy Jitsi automatically rather than manually, consider either our single-instance [Jitsi Marketplace deployment](/docs/products/tools/marketplace/guides/jitsi/) or our [Jitsi Cluster Marketplace deployment](/docs/products/tools/marketplace/guides/jitsi-cluster/).
 
 ## Architecture Diagram
 
@@ -40,7 +40,7 @@ If you wish to deploy Jitsi automatically rather than manually, consider either 
 
     -   **[Prosody](https://prosody.im/):** An XMPP server written in Lua. Uses port 5222 in this architecture.
 
-    -   **[Jitsi Conference Focus](https://github.com/jitsi/jicofo) (Jicofo):** Splits traffic between all JVBs via Octo (a load balancing routing utility using round robin protocol). Jicofo manages the media sessions for each participant.
+    -   **[Jitsi Conference Focus](https://github.com/jitsi/jicofo) (Jicofo):** Splits traffic between all JVBs and manages the media sessions for each participant. Directs traffic with Octo (a load balancing routing utility) using round robin protocol.
 
     -   **[NGINX](https://nginx.org/en/):** The web server used in this architecture.
 
@@ -142,10 +142,29 @@ In order to run the Jitsi deployment in this guide, you must first clone the __ 
           33366233623864326678
     ```
 
-1.  Using a text editor, open and edit the Linode instance parameters in the `group_vars/jitsi/vars` file. Replace __ with your own values:
-[FILE CONTENTS]
+1.  Using a text editor, open and edit the Linode instance parameters in the `group_vars/jitsi/vars` file. Replace the values for the following variables with your preferred deployment specifications. See the [Linode API Reference](https://techdocs.akamai.com/linode-api/reference/api):
 
-	[Link to API/CLI term values]
+    - `ssh_keys`: Your SSH public key
+    - `jitsi_type`: Compute Instance type and plan for the Jitsi Meet instance
+    - `jvb_type`: Compute Instance type and plan for each JVB instance
+    - `region`: The data center region for your cluster
+    - `group` and `linode_tags` (optional): The [group or tag](/docs/guides/tags-and-groups/) you wish to apply to your cluster's instances for organizational purposes
+    - `soa_email_address`: Your SOA administrator email for DNS records
+    - `jvb_cluster_size`: The number of JVB instances in your cluster deployment
+
+    ```file {title="group_vars/jitsi/vars"}
+    ssh_keys: {{< placeholder "YOUR_PUBLIC_KEY" >}}
+    jitsi_prefix: poc3-jitsi
+    jitsi_type: g6-dedicated-2
+    jvb_prefix: poc3-jvb
+    jvb_type: g6-dedicated-2
+    region: us-lax
+    image: linode/ubuntu22.04
+    group:
+    linode_tags:
+    soa_email_address: {{< placeholder "administrator@example.com" >}}
+    jvb_cluster_size: 2
+    ```
 
     {{< note title="The jvb_cluster_size variable dynamically scales your cluster size" >}}
     This value determines how many Jitsi Videobridge instances are created in the initial deployment.
