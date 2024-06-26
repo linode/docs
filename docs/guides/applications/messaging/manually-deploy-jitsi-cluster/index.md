@@ -142,7 +142,7 @@ In order to run the Jitsi deployment in this guide, you must first clone the __ 
           33366233623864326678
     ```
 
-1.  Using a text editor, open and edit the Linode instance parameters in the `group_vars/jitsi/vars` file. Replace the values for the following variables with your preferred deployment specifications. See the [Linode API Reference](https://techdocs.akamai.com/linode-api/reference/api):
+1.  Using a text editor, open and edit the Linode instance parameters in the `group_vars/jitsi/vars` file. Replace the values for the following variables with your preferred deployment specifications:
 
     - `ssh_keys`: Your SSH public key
     - `jitsi_type`: Compute Instance type and plan for the Jitsi Meet instance
@@ -165,6 +165,8 @@ In order to run the Jitsi deployment in this guide, you must first clone the __ 
     soa_email_address: {{< placeholder "administrator@example.com" >}}
     jvb_cluster_size: 2
     ```
+
+    See [Linode API: List Types](https://techdocs.akamai.com/linode-api/reference/get-linode-types) for information on Linode API parameters.
 
     {{< note title="The jvb_cluster_size variable dynamically scales your cluster size" >}}
     This value determines how many Jitsi Videobridge instances are created in the initial deployment.
