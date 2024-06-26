@@ -2,15 +2,20 @@
 title: "Work with Placement Groups"
 description: "Learn how to group your compute instances to best meet your delivery model."
 published: 2024-06-20
-modified: 2024-06-20
+modified: 2024-06-26
 keywords: ["placement-group", "affinity", "compliance"]
 ---
 
-When you deploy several compute instances in an Akamai data center ("region"), they're allocated to physical machines. This allocation varies based on several factors, including the compute instance plan and availability for that plan sizes. However, you may want your compute instances in specific physical locations, to best support your need. You may want them close together, even on the same host to speed up performance. Or, you may want to disperse them across several hosts to support high availability. Placement groups let you determine this physical location to meet either of these models.
+When you deploy several compute instances in an Akamai data center ("region"), they're allocated to physical machines. This allocation varies based on several factors, including the compute instance plan and availability for that plan's sizes. However, you may want your compute instances in specific physical locations, to best support your need:
+
+- You may want them close together, even on the same host to speed up performance.
+- You may want to disperse them across several hosts to support high availability.
+
+Placement groups let you determine this physical location to meet either of these models.
 
 ## Overview
 
-The Placement Groups service gives you a convenient way to set up groups of your compute instances, using Cloud Manager, API operations, or our CLI. Create a new placement group in a supported region and add new or existing compute instances from that region to your group. With the new group created, we physically move your compute instances into it, based on your desired model.
+The Placement Groups service gives you a convenient way to set up groups of your compute instances, using our various tools. Create a new placement group in a supported region and add new or existing compute instances from that region to your group. With the new group created, we physically move your compute instances into it, based on your desired model.
 
 ## Availability
 
@@ -26,23 +31,27 @@ Placement Groups is in limited availability. Throughout this phase, we expect to
 
 ## Affinity, enforcement, and compliance
 
-To distribute your compute instances in a placement group, we use the industry-recognized affinity standard. Pick from one of two types to serve as your "preferred container" type for your placement group:
+To distribute your compute instances in a placement group, we use the industry-recognized affinity standard. This standard supports two "preferred container" types:
 
-- **Affinity**. Your compute instances are physically close together, possibly on the same host. Set this as your preferred container if your application requirements value performance over availability.
+- **Affinity**. Compute instances are physically close together, possibly on the same host. This preferred container type is best for applications that require performance over availability.
 
-- **Anti-affinity**. Your compute instances are placed in separate fault domains, but they're still in the same region. Use this preferred container to better support a high-availability model.
+- **Anti-affinity**. Compute instances are placed in separate fault domains, but they're still in the same region. This preferred container type better supports a high-availability model.
 
-In addition to selecting the Affinity Type, you select how it's enforced when you add more Compute Instances to the placement group.
+{{< note >}}
+During the limited availability phase, only the **Anti-affinity** preferred container type is supported.
+{{< /note >}}
 
-- **Strict (Best practice)**. You can't add more compute instances to your placement group if your preferred container lacks capacity or is unavailable. For example, let's assume you've set **Anti-affinity** as your affinity type. If you try to add a compute instance that's on the same host, or there's no capacity outside that host in the region, you get an error and can't add the compute instance. This helps you keep your placement group compliant, because you can only pick compute instances that fit your desired model.
+Placement groups also enforce the use of the preferred container type using one of two methods:
 
-- **Flexible**. You can add more compute instances to your placement group even if they're outside your affinity type's preferred container. However, if you add one and it violates your affinity type, the placement group becomes non-compliant. Once the necessary capacity is available in the data center, we physically move the compute instance for you to fit your affinity type's preferred container and make it compliant again. This can work for you if you know you need to add more compute instances to your group in the future.
+- **Strict (Best practice)**. You can't add more compute instances to your placement group if the preferred container lacks capacity or is unavailable. For example, let's assume the preferred container type is **Anti-affinity**. If you try to add a compute instance that's on the same host, or there's no capacity outside that host in the region, you get an error and can't add the compute instance. This helps you keep your placement group compliant, because you can only pick compute instances that fit the preferred container type.
+
+- **Flexible**. You can add more compute instances to your placement group even if they're outside the preferred container type. However, if you add one and it violates the preferred container type, the placement group becomes non-compliant. Once the necessary capacity is available in the region, we physically move the compute instance for you to fit your preferred container type and make it compliant again. This can work for you if you know you need to add more compute instances in the future.
 
 ### Fix Non-compliance
 
 If a placement group becomes non-compliant, we're alerted and we'll bring it back into compliance as soon as possible. Non-compliance can only be fixed by Akamai staff. **_You can't fix it yourself_**.
 
-By design, a Strict placement group can't be made non-compliant when simply creating it or managing its Compute Instances. In rare cases, non-compliance can occur if we need to fail-over or migrate your Compute Instances for maintenance. Because of this, fixing non-compliance for Strict placement groups is prioritized over Flexible groups.
+By design, a Strict placement group can't be made non-compliant when simply creating it or managing its compute instances. In rare cases, non-compliance can occur if we need to fail-over or migrate your compute instances for maintenance. Fixing non-compliance for Strict placement groups is prioritized over Flexible groups.
 
 ## Create a placement group
 
@@ -67,7 +76,7 @@ Make sure you understand how placement groups work. Have a look at [Affinity, en
 
 {{< note >}}
 - During the limited availability phase, only **Anti-affinity** is available for Affinity Type.
-- Once you create your placement group, you *can't change its Affinity Type Enforcement*.
+- Once you create your placement group, you *can't change* its Affinity Type Enforcement.
 {{< /note >}}
 
 3.  When you're ready, click **Create Placement Group**. A summary of your group is revealed.
