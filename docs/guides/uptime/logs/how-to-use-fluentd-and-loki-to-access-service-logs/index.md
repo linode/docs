@@ -9,11 +9,11 @@ keywords: ['fluentd and loki','fluentd','loki','k8s','open source data logging',
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-Fluentd and Loki are part of a flexible chain of service-logging apps. When combined with Grafana and Prometheus, they create a full stack for log presentation and querying. The Fluentd/Loki/Prometheus/Grafana stack provides decision support using time series-based log data and streams from various log formats. This stack can scale with instance- or pod-deployment configuration changes.
+Fluentd and Loki are part of a flexible chain of service-logging apps. When combined with Prometheus and Grafana, they create a full stack for log presentation and querying. The Fluentd/Loki/Prometheus/Grafana stack provides decision support using time series-based log data and streams from various log formats. This stack can scale when an instance or pod deployment configuration changes.
 
 This log aggregation and console framework is built from established system log sources, or adapted as needed. This approach helps avoid vendor lock-in due to the popularity and independence of separate product developer communities. The stack's seamless integration make it a widely adopted tool set. Its modular architecture is well-suited for the log monitoring and trend analysis visualization needs of system administrators.
 
-It also works with Akamai Kubernetes components for cloud-native stack control through the Akamai Cloud Marketplace Prometheus & Grafana deployment. It can also be integrated with other Grafana consoles assembled by different methods. For example, a simpler but less flexible stack is available using Loki, Prometheus-Promtail, and Grafana. However, the Fluentd/Loki stack's key utility stems from its extensive number of plugins, rapid query capabilities, and Grafana’s visualization tools.
+It also works with Akamai Kubernetes components for cloud-native stack control through the Akamai Cloud Marketplace's Prometheus & Grafana app. It can also be integrated with other Grafana consoles assembled by different methods. For example, a simpler but less flexible stack is available using Loki, Prometheus-Promtail, and Grafana. However, the Fluentd/Loki stack's key utility stems from its extensive number of plugins, rapid query capabilities, and Grafana’s visualization tools.
 
 This toolkit captures a wide variety of service logs from diverse instances in single- or multi-tenant environments. Adding labels and timestamps to logs allows for rapid correlation across tenants and their instances, which can help with troubleshooting and forensic examination. Grafana visually couples or decouples sources and tenants. Using appended labels, timestamps, and time series-based sorting, logs from different components are correlated to each other in the Grafana console. This correlation presents events as a time series-based graph visualization of underlying log streams.
 
@@ -49,7 +49,7 @@ In this example stack, Loki takes logs as input from log streams aggregated by F
 
 Logs collected by Fluentd can be categorized based on their single- or multi-tenancy status. Data from output plugin streams or logs from Fluentd are relabeled and timestamped. Loki then stores this data and serves as the source repository for query and correlation by Grafana, the data presentation layer.
 
-### Loki Deployment Modes
+## Loki Deployment Modes
 
 There are three deployment modes for Loki:
 
@@ -59,7 +59,7 @@ There are three deployment modes for Loki:
 
 -   Loki's third and final mode is *Microservices mode*, tailored for microservices with container fleets, especially those using Kubernetes control planes for pod scaling.
 
-### Stack Installation Considerations
+## Stack Installation Considerations
 
 Accurate timestamps within log data sources and consistency in changes made through log aggregation processes are critical for ensuring visualization accuracy later in the stack. All instances, whether log sources or log processors, must be synchronized to the same time source. Use a common NTP server for all instances in the stack to ensure synchronization with this time source and maintain system integrity.
 
@@ -69,17 +69,25 @@ The gathered Fluentd logs are organized into JSON-formatted entries by Loki. Pro
 
 Other configurations use Promtail, Loki, Prometheus, and Grafana either separately or in combination. For instance, Loki, Promtail, and Grafana work well in strictly Kubernetes-sourced log consoles, but have limited plugins for other data sources.
 
-This example stack uses three groups of host instances:
+## Before You Begin
 
--   The first group consists of instances to monitor: discrete Linux instances in an Akamai Kubernetes pod.
+The example stack in this article uses three groups of instances:
 
--   The second group is the host where Fluentd gathers the logs and sends them to a Loki instance within the same host.
+-   **Group #1** consists of instances to monitor: discrete Linux instances in an Akamai Kubernetes pod.
 
--   The third group consists of an instance running Grafana and Prometheus, deployed to a Nanode instance by the Akamai Cloud Marketplace app.
+-   **Group #2** is the instance where Fluentd gathers the logs and sends them to a Loki instance within the same host.
 
-## Stack Installation Steps
+-   **Group #3** consists of an instance running Grafana and Prometheus, deployed to a Nanode instance by the Akamai Cloud Marketplace app.
 
-### Grafana-Prometheus
+1.  If you do not already have a virtual machine to use, create a Compute Instance with at least 4 GB of memory. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+{{< /note >}}
+
+## Prometheus-Grafana Installation
 
 The Akamai Cloud Marketplace Prometheus & Grafana app renders a standalone server instance. Follow the steps below to deploy it:
 
@@ -129,9 +137,9 @@ The Akamai Cloud Marketplace Prometheus & Grafana app renders a standalone serve
 
     ![The Add New Connections page in the Connections section of Grafana's left-side menu.](Grafana-Connections-Add-New-Connections-Menu.png)
 
-### Fluentd
+## Fluentd Installation
 
-Fluentd gathers log instances via Fluentd and plugins. This example uses a Ruby gem version of Fluentd. The commands below install the build tools, Ruby and its development libraries, and finally, Fluentd:
+Fluentd gathers log instances via Fluentd and plugins. This example uses a Ruby gem version of Fluentd onto a Nanode. The commands below install the build tools, Ruby and its development libraries, and Fluentd:
 
 1.  Update and upgrade the Ubuntu system, then restart the Nanode:
 
@@ -177,9 +185,9 @@ Fluentd gathers log instances via Fluentd and plugins. This example uses a Ruby 
     fluentd -c ./fluent/fluent.conf -vv &
     ```
 
-### Loki
+## Loki Installation
 
-The example log monitoring stack uses the same instance that hosts Fluentd. The plugin that links Loki as the accumulator of Fluentd logs is installed and attached after Fluentd and Loki.
+The example log monitoring stack uses the same Nanode instance that hosts Fluentd. The plugin that links Loki as the accumulator of Fluentd logs is installed and attached after Fluentd and Loki.
 
 1.  First, download the Debian package from the Grafana Loki Releases page:
 
@@ -213,11 +221,13 @@ Authentication options for Grafana's Data Source range from none to TLS Certific
 
 Grafana also offers a context-sensitive log query builder. This tool allows you to link common and disparate data sources into a time-series format. You can then use this data for various graphical visualizations, such as histograms, to correlate the query results.
 
-## Final Results
+## Generating Visualizations
 
-The web browser interface allows you to select specific time frames and fields to generate histograms of log data occurrences. In the screenshot below, a 24-hour time-series across hosts shows traffic sorted by critical messages. These messages are correlated from log sources originating from `/var/log/` information across the monitored sample instances and Kubernetes pod.
+The web browser interface allows you to select specific time frames and fields to generate histograms of log data occurrences. For example, the screenshot below shows traffic sorted by critical messages within a 24-hour time-series across hosts:
 
 ![Grafana data stream with field selection criteria example.](fluentd-grafana-critical-message-dashboard.png)
+
+These messages are correlated from log sources originating from `/var/log/` information across the monitored sample instances and Kubernetes pod.
 
 ## Conclusion
 
