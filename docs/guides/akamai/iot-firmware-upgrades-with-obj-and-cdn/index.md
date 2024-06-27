@@ -4,13 +4,13 @@ title: "IoT Firmware Upgrades With Object Storage and Akamai CDN"
 description: "Using Linode's Object Storage and Akamai's CDN to push IoT device firmware upgrades."
 authors: ["Andy Stevens"]
 contributors: ["Andy Stevens", "Justin Cobbett"]
-published: 2024-05-16
-keywords: ['list','of','keywords','and key phrases']
+published: 2024-06-27
+keywords: ['object storage','CDN','Akamai connected cloud','IoT','firmware','egress']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 ## Overview
-As more and more consumer electronics join the Internet of Things (IoT), the need to deliver feature and security firmware updates to these devices becomes more critical for IoT device manufacturers. One of the main aspects of delivery manufacturers need to plan for is how much egress data these systems will use. At scale, the price of keeping both consumers and the business happy and secure can be enormous. Using Linode Object Storage as an origin for this data, and connecting that service to Akamai CDN, can provide a huge cost savings over other competing hyperscalers.
+As more and more consumer electronics join the Internet of Things (IoT), the need to deliver feature and security firmware updates to these devices becomes more critical for IoT device manufacturers. One of the main aspects of delivery manufacturers need to plan for is how much egress data these systems will use. At scale, the price of keeping both consumers and the business happy and secure can be enormous. Using Linode Object Storage on Akamai Connected Cloud as an origin for this data, and connecting that service to Akamai CDN, can provide a huge cost savings over other competing hyperscalers.
 
 ## Firmware Update Workflow
 1.  A manufacturer uploads a new firmware package to an Object Storage bucket.
@@ -21,7 +21,7 @@ As more and more consumer electronics join the Internet of Things (IoT), the nee
 
 ### Challenge: Moving Away from Amazon EFS
 
-An IoT manufacturer found themselves struggling to send OS and firmware updates to customer devices with AWS’ high egress costs. Amazon Elastic File Service (EFS) allows customers to to upload and share files with EC2 instances without the need for upgrading or migrating storage volumes, all while preserving file system access to those files. However, this can come at a steep cost.
+An IoT manufacturer found themselves struggling to send OS and firmware updates to customer devices with AWS’ high egress costs. Amazon Elastic File Service (EFS) allows customers to upload and share files with EC2 instances without the need for upgrading or migrating storage volumes, all while preserving file system access to those files. However, this can come at a steep cost.
 
 **Solution**: The open source project s3fs allows a virtual machine to mount any Object Storage bucket, so Linode Object Storage buckets can be mounted to the EC2 Volume using the s3fs utility. This allowed the IoT manufacturer's developers to remove their dependency on Amazon EFS while preserving network file system access and cutting costs.
 
@@ -29,7 +29,7 @@ An IoT manufacturer found themselves struggling to send OS and firmware updates 
 
 Another challenge the IoT manufacturer encountered was supporting more IoT devices worldwide. This resulted in the scale of their firmware delivery service growing in both storage and delivery costs. The IoT manufacturer was looking for a service that could help them save money on egress and improve their bottom line.
 
-**Solution**: Because Linode Object Storage has much lower egress rates than AWS’ offerings, and because it can be set as an origin for Akamai CDN, the IoT manufacturer was not only able to keep file system access to firmware objects, but decrease egress costs by 90%.
+**Solution**: Because Linode Object Storage on Akamai Connected Cloud has much lower egress rates than AWS’ offerings, and because it can be set as an origin for Akamai CDN, the IoT manufacturer was not only able to keep file system access to firmware objects, but decrease egress costs by 90%.
 
 ## Architecture
 
