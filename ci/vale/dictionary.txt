@@ -1058,6 +1058,7 @@ imap
 imapd
 imaplib
 imaps
+IMDb
 img
 immutant
 imperva
@@ -1438,8 +1439,8 @@ mbit
 mbits
 mBlock
 mbox
-Mbps
 MBps
+Mbps
 mbstrings
 mcrypt
 mcy
@@ -1450,8 +1451,9 @@ mdev
 mediawiki
 megatrends
 melilla
-memcached
 memcrashed
+Memtier
+memtier_benchmark
 menuentry
 Merkle
 mesos
