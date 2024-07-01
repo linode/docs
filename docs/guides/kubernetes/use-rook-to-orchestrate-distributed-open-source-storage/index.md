@@ -2,7 +2,7 @@
 slug: use-rook-to-orchestrate-distributed-open-source-storage
 title: "Use Rook to Orchestrate Distributed Open Source Storage"
 title_meta: "How to Use Rook to Orchestrate Distributed Open Source Storage"
-description: "Two to three sentences describing your guide."
+description: "Read this guide to learn how to setup, install, and manage Rook to orchestrate open source storage with Ceph on Kubernetes."
 authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 published: 2024-06-28
@@ -13,189 +13,247 @@ external_resources:
 - '[Ceph](https://ceph.com/en/)'
 ---
 
-When writing content, please reference the [Linode Writer's Formatting Guide](https://www.linode.com/docs/guides/linode-writers-formatting-guide/). This provides formatting guidelines for YAML front matter, Markdown, and our custom shortcodes (like [command](https://www.linode.com/docs/guides/linode-writers-formatting-guide/#commands), [file](https://www.linode.com/docs/guides/linode-writers-formatting-guide/#files), [notes](https://www.linode.com/docs/guides/linode-writers-formatting-guide/#note-shortcode), and [tabs](https://www.linode.com/docs/guides/linode-writers-formatting-guide/#tabs)).
+Rook provides cloud-native storage *orchestration* (i.e. automated configuration, coordination, and management) for the Ceph distributed open source storage system. Ceph runs on Kubernetes, and is used to provide object, block, and file interfaces from a single cluster. Together, these three provide a method to automate and manage large blocks of storage, typical of immense data storage centers. This guide demonstrates how to use Rook to orchestrate open source storage.
 
-## Before You Begin
+## What Is Rook? What Problem Does It Solve?
 
-In this section, list out any prerequisites necessary for the reader to complete the guide, including: services or products to be created beforehand, hardware and plan requirements, or software that needs to be preinstalled.
+Rook automates the deployment and management of Ceph to create self-managing, self-scaling, and self-healing storage services. This combination makes large storage management much easier than doing it manually.
 
-See: [Linode Writer's Formatting Guide: Before You Begin](http://www.linode.com/docs/guides/linode-writers-formatting-guide/#before-you-begin)
-
-How to Use Rook to Orchestrate Distributed Open Source Storage
-
-By Martin Heller
-
-Rook provides cloud-native storage *orchestration*, in other words, automated configuration, coordination, and management, for the Ceph distributed open source storage system.  Ceph is used to provide object, block, and file interfaces from a single cluster. Ceph runs on Kubernetes, so the three together provide you with a method to automate and manage large blocks of storage, of the sort that appears in immense data storage centers. This guide leads you through a process that demonstrates how to use Rook to orchestrate open source storage.
-
-## What is Rook? What problem does it solve?
-
-Rook provides a means to automate deployment and management of Ceph to create self-managing, self-scaling, and self-healing storage services. The combination makes it much easier to manage large storage than trying to do it manually.
-
-Ceph provides file system, object, and block storage on a single cluster that is controlled using the [Controlled Replication Under Scalable Hashing (CRUSH)](https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/html/storage_strategies_guide/crush_administration) algorithm. CRUSH ensures that the load placed on storage locations such as rows, racks, chassis, hosts, and devices, remains consistent. A CRUSH map defines rules that specify how CRUSH stores and retrieves data.
+Ceph provides file system, object, and block storage on a single cluster that is controlled using the [Controlled Replication Under Scalable Hashing (CRUSH)](https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/html/storage_strategies_guide/crush_administration) algorithm. CRUSH ensures that the load placed on storage locations such as rows, racks, chassis, hosts, and devices remains consistent. A CRUSH map defines rules that specify how CRUSH stores and retrieves data.
 
 [Object Storage Daemons (OSDs)](https://documentation.suse.com/ses/7/html/ses-all/admin-caasp-cephosd.html) each manage a single device. Rook simplifies device management and performs tasks such as verifying OSD health.
 
-You can also use Rook to create and customize storage clusters through custom resource definitions (CRDs). There are primarily four different modes in which to create your cluster:
+Rook can also create and customize storage clusters through Custom Resource Definitions (CRDs). There are four different modes in which to create a cluster:
 
--   **Host Storage Cluster**: Consume storage from host paths and raw devices
--   **Persistent Volume Claim (PVC) Storage Cluster**: Dynamically provision storage underneath Rook by specifying the storage class for Rook to use to consume storage via PVCs.
--   **Stretched Storage Cluster**: Distribute Ceph mons across three zones, while storage (OSDs) is only configured in two zones
--   **External Ceph Cluster**: Connect your K8s applications to an external Ceph cluster
+-   **Host Storage Cluster** consumes storage from host paths and raw devices.
+-   **Persistent Volume Claim (PVC) Storage Cluster** dynamically provisions storage underneath Rook by specifying the storage class for Rook to consume storage via PVCs.
+-   **Stretched Storage Cluster** distributes Ceph Monitors (MONs) across three zones, while storage (i.e. OSDs) is only configured in two zones.
+-   **External Ceph Cluster** connects your Kubernetes applications to an external Ceph cluster.
 
-## Creating a Kubernetes Cluster with LKE
+## Before You Begin
 
-Before you can work with Ceph and Rook, you need a basic Kubernetes setup that you can create using [Linode Kubernetes Engine - Get Started](https://www.linode.com/docs/products/compute/kubernetes/get-started/). This guide assumes that you have the 1.26 or later version of Kubernetes installed. The recommended minimum Kubernetes setup for Rook has three nodes with 4 GB memory and 2 CPUs each. It takes a few minutes for Linode to provision and start the cluster.
+1.  If you do not already have a virtual machine to use, create a Compute Instance with at least 4 GB of memory. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-[https://www.dropbox.com/s/gag3s0cseyg1m3t/linode%20create%20cluster%20Screenshot%202023-06-27%20at%204.38.06%20PM.png?dl=0 ]
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-[https://www.dropbox.com/s/3p4n4dlxmvwsboo/linode%20cluster%20running%20Screenshot%202023-06-27%20at%204.52.19%20PM.png?dl=0 ]
+1.  Before you can work with Ceph and Rook, you need a basic Kubernetes setup. Follow the instructions in our [Linode Kubernetes Engine - Get Started](/docs/products/compute/kubernetes/get-started/) guide to create one. This article assumes you have Kubernetes version 1.28 or later installed. The recommended minimum Kubernetes setup for Rook includes three nodes with 4 GB memory and 2 CPUs each. Be aware that it can take a few minutes to provision and start the cluster.
 
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+{{< /note >}}
 
-You need to have the `kubeconfig.yaml` file for your cluster on your local machine. Download it from this page. The filename is `rook-kubeconfig.yaml`, since Linode prefixes the filename with the name of the cluster. Save your kubeconfig file’s path to the `$KUBECONFIG` environment variable in your local console:
+## Creating and Attaching Volumes
 
-```command
-export KUBECONFIG=~/Downloads/<clustername>-kubeconfig.yaml
-```
+One the Kubernetes cluster is set up, use the steps below to create a volume for each node.
 
-Now list the nodes in your cluster:
+1.  Open the Akamai Cloud Manager and select **Linodes** from the left menu.
 
-```command
-kubectl get nodes
-```
+1.  Select one of the Kubernetes nodes with a name such as `lke116411-172761-649b48bf69f8`.
 
-```output
-NAME                            STATUS   ROLES    AGE   VERSION
-lke116411-172761-649b48bf69f8   Ready    <none>   18m   v1.26.3
-lke116411-172761-649b48bf8af9   Ready    <none>   18m   v1.26.3
-lke116411-172761-649b48bfab4b   Ready    <none>   19m   v1.26.3
-```
+1.  Open the **Storage** tab.
 
-If `kubectl` isn’t already installed on your local machine, follow the instructions [here](https://www.linode.com/docs/guides/kubernetes-reference/) for your OS and try the node list again.
+1.  Click **Create Volume**.
 
-Add the `KUBECONFIG` environment variable to your local `.bashrc` file, or the equivalent if you’re not using `bash`, such as `.zprofile` for `zsh`, so you don’t have to type it manually every time you open a new terminal window.
+1.  Enter a name for the volume such as `rook-volume-1` in the **Label** field.
 
-After creating your nodes and verifying you can access them, use these steps to create node volumes:
+1.  Set a volume size of at least `40 GB` in the **Size** field.
 
-1.  Click a node with a name such as `lke116411-172761-649b48bf69f8` in the Cloud Manager.
+1.  Click **Create Volume**. After several minutes, the volume should show up as **Active**:
 
-1.  Click the Storage Link.
+    ![The Storage tab of a Kubernetes node, showing the new volume as "active".](volume-active.png)
 
-1.  Click Create Volume.
-
-1.  Type a volume name.
-
-1.  Set a volume size of at least 40 GB.
-
-1.  Click Create Volume.
-
-1.  Configure and mount the volume by accessing the node through a terminal window, which requires powering down the node, setting a root password for the node, and powering up the node. Next, you can log into the node using `ssh `or LISH. The Show Config link for the volume displays the commands you need to run in the console, and allows you to copy them. For editing `/etc/fstab`, `nano` is a good choice.
-
-1.  Repeat Steps 1 through 7 for all of the nodes.
-
-[https://www.dropbox.com/s/vnheggnwln6gp0a/volume%20running%20Screenshot%202023-06-27%20at%205.08.22%20PM.png?dl=0 ]
-
-[https://www.dropbox.com/s/swpgoxcvhuzhxzr/volume%20config%20Screenshot%202023-06-27%20at%205.08.47%20PM.png?dl=0 ]
-
-[https://www.dropbox.com/s/zznjqzeboggirlg/linode%20ssh%20Screenshot%202023-06-28%20at%2011.50.19%20AM.png?dl=0 ]
+1.  Repeat Steps 1 through 7 for the remaining two nodes.
 
 ## Rook and Ceph Installation
 
-[Install Rook](https://rook.io/docs/rook/v1.11/Getting-Started/quickstart/#tldr) and Ceph on your system using these steps in your local terminal:
+With new volumes attached to each node in the Kubernetes cluster, it's time to install Rook and Ceph.
 
-```command
-git clone --single-branch --branch v1.11.8 https://github.com/rook/rook.git
-cd rook/deploy/examples
-kubectl create -f crds.yaml -f common.yaml -f operator.yaml
-kubectl create -f cluster.yaml
-```
+1.  Use the following commands to [install Rook](https://rook.io/docs/rook/v1.11/Getting-Started/quickstart/#tldr) and Ceph:
 
-If all is well, you’ll see:
+    ```command
+    git clone --single-branch --branch v1.11.11 https://github.com/rook/rook.git
+    cd rook/deploy/examples
+    kubectl create -f crds.yaml -f common.yaml -f operator.yaml
+    kubectl create -f cluster.yaml
+    ```
 
-```command
-cephcluster.ceph.rook.io/rook-ceph created
-```
+    If everything works, you should see:
 
-Now you can verify the status of the rook-ceph cluster:
+    ```output
+    ...
+    cephcluster.ceph.rook.io/rook-ceph created
+    ```
 
-```command
-kubectl -n rook-ceph get pod
-```
+1.  Verify the status of the Rook-Ceph cluster:
 
-[https://www.dropbox.com/s/o2sqlhuodfm80tg/rook-ceph%20status%20Screenshot%202023-06-28%20at%2012.49.53%20PM.png?dl=0 ]
+    ```command
+    kubectl -n rook-ceph get pod
+    ```
 
-### Installing and using the Rook-Ceph Toolbox
+    ```output
+    NAME                                                              READY   STATUS      RESTARTS   AGE
+    csi-cephfsplugin-7sz4f                                            2/2     Running     0          5m48s
+    csi-cephfsplugin-lcxsf                                            2/2     Running     0          5m48s
+    csi-cephfsplugin-provisioner-847678bc98-rshtl                     5/5     Running     0          5m49s
+    csi-cephfsplugin-provisioner-847678bc98-wswcs                     5/5     Running     0          5m49s
+    csi-cephfsplugin-xzhw6                                            2/2     Running     0          5m49s
+    csi-rbdplugin-jshqp                                               2/2     Running     0          5m48s
+    csi-rbdplugin-provisioner-f78fccc94-4qrkp                         5/5     Running     0          5m49s
+    csi-rbdplugin-provisioner-f78fccc94-mtqs9                         5/5     Running     0          5m49s
+    csi-rbdplugin-t5fhz                                               2/2     Running     0          5m49s
+    csi-rbdplugin-tbgxd                                               2/2     Running     0          5m48s
+    rook-ceph-crashcollector-lke195367-280905-1caa0a3f0000-59f77485   1/1     Running     0          2m47s
+    rook-ceph-crashcollector-lke195367-280905-1d23f6860000-84bwwhjq   1/1     Running     0          4m15s
+    rook-ceph-crashcollector-lke195367-280905-55236f3a0000-777bhfn8   1/1     Running     0          2m44s
+    rook-ceph-mgr-a-584bd47445-dm5px                                  3/3     Running     0          4m23s
+    rook-ceph-mgr-b-75b6c465b6-k2k6w                                  3/3     Running     0          4m21s
+    rook-ceph-mon-a-74cff8894d-dpwj4                                  2/2     Running     0          5m27s
+    rook-ceph-mon-b-695d88499f-zhl7c                                  2/2     Running     0          4m49s
+    rook-ceph-mon-c-7b9d7c7c9f-ms57v                                  2/2     Running     0          4m34s
+    rook-ceph-operator-5d9d7d58cf-ntfnl                               1/1     Running     0          6m31s
+    rook-ceph-osd-0-667cdd67f-n2s6n                                   2/2     Running     0          2m47s
+    rook-ceph-osd-1-757dc78597-hqb5s                                  2/2     Running     0          2m49s
+    rook-ceph-osd-2-8668f8677-q8wp8                                   2/2     Running     0          2m46s
+    rook-ceph-osd-prepare-lke195367-280905-1caa0a3f0000-s62b4         0/1     Completed   0          2m18s
+    rook-ceph-osd-prepare-lke195367-280905-1d23f6860000-pvq95         0/1     Completed   0          2m15s
+    rook-ceph-osd-prepare-lke195367-280905-55236f3a0000-tvpvk         0/1     Completed   0          2m12s
+    ```
 
-Once you have Kubernetes installed and configured, you can [install and use the Ceph Toolbox](https://rook.io/docs/rook/v1.11/Troubleshooting/ceph-toolbox/):
+### Installing and Using the Rook-Ceph Toolbox
 
-```command
-kubectl create -f toolbox.yaml
-```
+Once you have Rook and Ceph installed and configured, you can [install and use the Ceph Toolbox](https://rook.io/docs/rook/v1.11/Troubleshooting/ceph-toolbox/):
 
-```output
-deployment.apps/rook-ceph-tools created
-```
+1.  Create the toolbox deployment:
 
-```command
-kubectl -n rook-ceph rollout status deploy/rook-ceph-tools
-```
+    ```command
+    kubectl create -f toolbox.yaml
+    ```
 
-```output
-deployment "rook-ceph-tools" successfully rolled out
-```
+    ```output
+    deployment.apps/rook-ceph-tools created
+    ```
 
-```command
-kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- bash
-```
+1.  Check the deployment status:
 
-```output
-bash-4.4$ ceph status
-  cluster:
-    id:     47dd7687-ce0b-4b68-9eb0-094185a826d0
-    health: HEALTH_WARN
-            OSD count 0 < osd_pool_default_size 3
+    ```command
+    kubectl -n rook-ceph rollout status deploy/rook-ceph-tools
+    ```
 
-  services:
-    mon: 3 daemons, quorum a,b,c (age 58m)
-    mgr: b(active, since 52m), standbys: a
-    osd: 0 osds: 0 up, 0 in
+    ```output
+    deployment "rook-ceph-tools" successfully rolled out
+    ```
 
-  data:
-    pools:   0 pools, 0 pgs
-    objects: 0 objects, 0 B
-    usage:   0 B used, 0 B / 0 B avail
-    pgs:
-```
+1.  Access the toolbox pod:
 
-```output
-bash-4.4$ ceph osd status
-bash-4.4$ ceph df
---- RAW STORAGE ---
-CLASS  SIZE  AVAIL  USED  RAW USED  %RAW USED
-TOTAL   0 B    0 B   0 B       0 B          0
+    ```command
+    kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- bash
+    ```
 
---- POOLS ---
-POOL  ID  PGS  STORED  OBJECTS  USED  %USED  MAX AVAIL
-bash-4.4$ rados df
-POOL_NAME  USED  OBJECTS  CLONES  COPIES  MISSING_ON_PRIMARY  UNFOUND  DEGRADED  RD_OPS  RD  WR_OPS  WR  USED COMPR  UNDER COMPR
+1.  Check the Ceph status:
 
-total_objects    0
-total_used       0 B
-total_avail      0 B
-total_space      0 B
-```
+    ```command {title="bash-4.4$ shell"}
+    ceph status
+    ```
 
-When you want to remove the Rook-Ceph Toolbox, do so from your local terminal:
+    At this point, your Rook-Ceph cluster should be in the `HEALTH_OK` state:
 
-```command
-kubectl -n rook-ceph delete deploy/rook-ceph-tools
-```
+    ```output
+      cluster:
+        id:     21676ecd-7f25-466d-9b90-a4ff13d2c0b5
+        health: HEALTH_OK
 
-According to the Ceph status shown above, this cluster is in the `HEALTH_WARN` state and has no storage objects. This doesn’t mean it won’t work, but if it goes into a `HEALTH_ERROR` state then I/O stops. To run diagnostics, you can consult the [Ceph common issues troubleshooting guide](https://rook.io/docs/rook/v1.11/Troubleshooting/ceph-common-issues/). Your Rook-Ceph cluster is in the `HEALTH_OK` state at this point, or if not, is going to be after you go through one or more of the walkthroughs mentioned in the following section.
+      services:
+        mon: 3 daemons, quorum a,b,c (age 103m)
+        mgr: a(active, since 101m), standbys: b
+        osd: 3 osds: 3 up (since 101m), 3 in (since 102m)
 
-## Example of Rook-Ceph in use
+      data:
+        pools:   1 pools, 1 pgs
+        objects: 2 objects, 577 KiB
+        usage:   26 MiB used, 120 GiB / 120 GiB avail
+        pgs:     1 active+clean
+    ```
 
-At this point you should be ready to try out your storage. There are three walkthroughs to go through, one each for [block](https://rook.io/docs/rook/v1.11/Storage-Configuration/Block-Storage-RBD/block-storage/) storage, [shared file system](https://rook.io/docs/rook/v1.11/Storage-Configuration/Shared-Filesystem-CephFS/filesystem-storage/), and [object stores](https://rook.io/docs/rook/v1.11/Storage-Configuration/Object-Storage-RGW/object-storage/). Start with the block storage walkthrough, which creates a storage class, starts `mysql` and `wordpress` in your K8s cluster, and has you use the `wordpress` app from a browser. You may need to expose the internal IP address of your service to one your local browser can see to make this work. You can accomplish this with the [`kubectl expose deployment`](https://kubernetes.io/docs/tutorials/stateless-application/expose-external-ip-address/) command.
+    {{< note >}}
+    Alternatively, the `HEALTH_WARN` state indicates that the cluster has no storage objects. While this doesn’t mean it won’t work, all I/O stops if it goes into a `HEALTH_ERROR` state. Consult the [Ceph common issues troubleshooting guide](https://rook.io/docs/rook/v1.11/Troubleshooting/ceph-common-issues/) to run diagnostics.
+    {{< /note >}}
+
+1.  Check the OSD status:
+
+    ```command {title="bash-4.4$ shell"}
+    ceph osd status
+    ```
+
+    ```output {title="NEW"}
+    ID  HOST                            USED  AVAIL  WR OPS  WR DATA  RD OPS  RD DATA  STATE
+     0  lke195367-280905-1caa0a3f0000  9004k  39.9G      0        0       0        0   exists,up
+     1  lke195367-280905-1d23f6860000  9004k  39.9G      0        0       0        0   exists,up
+     2  lke195367-280905-55236f3a0000  8940k  39.9G      0        0       0        0   exists,up
+    ```
+
+1.  Check the Ceph disk usage:
+
+    ```command {title="bash-4.4$ shell"}
+    ceph df
+    ```
+
+    ```output
+    --- RAW STORAGE ---
+    CLASS     SIZE    AVAIL    USED  RAW USED  %RAW USED
+    ssd    120 GiB  120 GiB  26 MiB    26 MiB       0.02
+    TOTAL  120 GiB  120 GiB  26 MiB    26 MiB       0.02
+
+    --- POOLS ---
+    POOL  ID  PGS   STORED  OBJECTS     USED  %USED  MAX AVAIL
+    .mgr   1    1  577 KiB        2  1.7 MiB      0     38 GiB
+    ```
+
+1.  Check the RADOS disk usage:
+
+    ```command {title="bash-4.4$ shell"}
+    rados df
+    ```
+
+    ```output
+    POOL_NAME     USED  OBJECTS  CLONES  COPIES  MISSING_ON_PRIMARY  UNFOUND  DEGRADED  RD_OPS       RD  WR_OPS       WR  USED COMPR  UNDER COMPR
+    .mgr       1.7 MiB        2       0       6                   0        0         0     222  315 KiB     201  2.9 MiB         0 B          0 B
+
+    total_objects    2
+    total_used       26 MiB
+    total_avail      120 GiB
+    total_space      120 GiB
+    ```
+
+1.  When done, exit the bash shell and return to the regular terminal prompt:
+
+    ```command {title="bash-4.4$ shell"}
+    exit
+    ```
+
+1.  To remove the Rook-Ceph Toolbox, use the following command:
+
+    ```command
+    kubectl -n rook-ceph delete deploy/rook-ceph-tools
+    ```
+
+    ```output
+    deployment.apps "rook-ceph-tools" deleted
+    ```
+
+## Example of Rook-Ceph in Use
+
+At this point you should be ready to try out your storage. There are three walkthroughs to follow, one for each type of storage:
+
+-   [Block Storage](https://rook.io/docs/rook/v1.11/Storage-Configuration/Block-Storage-RBD/block-storage/)
+-   [Shared File System](https://rook.io/docs/rook/v1.11/Storage-Configuration/Shared-Filesystem-CephFS/filesystem-storage/)
+-   [Object Stores](https://rook.io/docs/rook/v1.11/Storage-Configuration/Object-Storage-RGW/object-storage/)
+
+Start with the block storage walkthrough. It creates a storage class then starts `mysql` and `wordpress` in your Kubernetes cluster, allowing you to use the `wordpress` app from a browser.
+
+{{< note >}}
+You may first need to expose the internal IP address of your service to one that your local browser can access. You can accomplish this with the [`kubectl expose deployment`](https://kubernetes.io/docs/tutorials/stateless-application/expose-external-ip-address/) command.
+{{< /note >}}
 
 ## Conclusion
 
-This article helps you create a Ceph cluster and use Rook to manage it on a Linode Kubernetes setup. You are ready to perform tasks such as installing a database manager to provide various levels of application support. This kind of setup works with data centers of nearly any size, and scales well to huge data centers used by large organizations.
+This article guides you through creating a Ceph cluster and using Rook to manage it on an Akamai Kubernetes setup. With this foundation, you can perform tasks such as installing a database manager to support various applications. This kind of setup works with data centers of nearly any size, and scales to accommodate even massive data centers used by large organizations.
