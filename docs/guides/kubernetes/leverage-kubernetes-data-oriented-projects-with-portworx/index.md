@@ -14,29 +14,17 @@ external_resources:
 - '[Portworx: Kubernetes Storage Use Case](https://portworx.com/use-case/kubernetes-storage/)'
 ---
 
-Management of data at scale is crucial for deriving actionable insights. An effective data platform can provide those kinds of insights. In today’s cloud environment, a diverse range of organizations and individuals rely on robust data platforms:
+Management of data at scale is crucial for deriving actionable insights, and an effective data platform can provide those kinds of insights. A data platform is the *technology infrastructure* used for the collection, storage, transaction processing, and analysis of varied data at scale. It simplifies engineering tasks such as expanding the storage available to an application or encrypting project secrets.
 
--   **Organizations** such as corporations, military, and charities must operate data platforms efficiently to convert their daily activities into strategic insights.
-
--   **Data engineers, scientists, and analysts** leverage the technical capabilities of data platforms for exploration, analysis, and visualization to maximize their technical capabilities.
-
--   **Developers** use data platform *Application Programming Interfaces* (APIs) and other services to create *Machine Learning* (ML) models, data gateways, and other specific applications.
-
--   **Administrators** keep data platforms healthy by ensuring they have the computing resources needed to meet their demands.
-
--   **IT staffers** ensure that data security, availability, governance, and compliance requirements are met when connecting a data platform to all the relevant individuals within an organization.
-
--   **Researchers** use data platforms to investigate complex questions involving large datasets.
-
-This guide addresses the front-line computing specialists, administrators, developers, and data engineers who operate data platforms. It explores the practical tasks involved in making a data platform more useful with Portworx.
-
-## What Is a Data Platform?
-
-A data platform is the **technology infrastructure** used for the collection, storage, transaction processing, and analysis of varied data at scale. It simplifies engineering tasks such as expanding the storage available to an application or encrypting project secrets. Portworx addresses persistent storage, backup, data protection, disaster recovery, capacity management, and data migrations.
+Portworx handles advanced storage and data management capabilities for cloud-native environments. This guide provides step-by-step instructions for installing Portworx on an existing Kubernetes cluster. It then walks through setting up a model project to demonstrate Portworx' capabilities.
 
 ## What Is Portworx?
 
-Launched in 2014, the Portworx data platform began operating as a subsidiary of Pure Storage in 2020. It now curates [a GitHub account](https://github.com/portworx) with 135 public repositories. A limited version of the Portworx Storage Platform is available for free. It allows for an implementation of object storage for a single distributed cluster. This guide focuses on the free, downloadable software that you can install and run for your own educational and small-scale uses.
+Portworx enables deployment and management of storage and data services specifically in containerized environments. It also handles data replication, snapshots, backups, and data recovery, which allows application systems to focus on their own specific requirements. Since Portworx itself is cloud-native, it plays a crucial role in helping other systems maximize the capabilities of the cloud.
+
+Current cloud computing practices face several challenges, particularly the difficulty of managing Kubernetes instances in the real-world. Portworx mitigates some of these challenges.
+
+A limited version of the Portworx Storage Platform is available for free. It allows for an implementation of object storage for a single distributed cluster. This guide focuses on the free, downloadable software that you can install and run for your own educational and small-scale uses.
 
 ## How Portworx Relates to Kubernetes, Kafka, and Cassandra
 
@@ -48,23 +36,9 @@ Portworx integrates with widely known software systems such as Kubernetes, Kafka
 
 -   [**Kafka**](/docs/guides/what-is-apache-kafka/) is a widely used open source distributed event store and stream-processing platform. In much the same way a traditional database system manages **records** of data, Kafka manages **events**. For Kafka to perform optimally, it needs a high-performance underlying storage system, and Portworx is a good choice. Teams and individuals often initially adopt Portworx to meet requirements for hosting or upgrading Kafka. In fact, Portworx offers white papers specifically on the [operation of Kafka in a Kubernetes environment](https://portworx.com/blog/deploying-kafka-on-kubernetes-using-portworx-data-services/).
 
-### Remark on Nomenclature
-
-Portworx defines itself as a "data service-as-a-service platform". Systems such as Kubernetes and Cassandra have clearly understood roles in most organizations. In contrast, Portworx and other competing data platforms are considerably less well known and understood. However, data platforms provide essential services that compliment and enhance these better-known systems.
-
-### How to Be Cloud-Native
-
-The term "cloud-native" is often incorrectly invoked by marketers. Use of the cloud is already widespread. After all, *billions* of users have email addresses they access as cloud services. In contrast to such introductory or superficial uses, "cloud native" actually refers to a radical or transformative use of cloud computing's full potential.
-
-Portworx handles advanced storage and data management capabilities tailored for cloud-native environments. It enables deployment and management of storage and data services specifically in containerized environments. It also takes responsibility for data replication, snapshots, backups, and data recovery, which allows application systems to focus on their own specific requirements. Since Portworx itself is cloud-native, it plays a crucial role in helping other systems maximize the capabilities of the cloud.
-
-Portworx ensures data durability and resiliency in the cloud. It facilitates trustworthy operation of stateful applications and enables data-intensive workloads in a cloud-native ecosystem. This helps cloud applications fulfill their operational promises.
-
-Current cloud computing practices face several challenges, particularly the difficulty of managing Kubernetes instances in the real-world. Portworx mitigates some of these challenges. It bridges the gaps in real-world Kubernetes-based applications, allowing cloud computing to deliver even more on its promise.
-
 ## Before You Begin
 
-1.  Create a Kubernetes cluster that meets the [Portworx installation prerequisites](https://docs.portworx.com/portworx-enterprise/install-portworx/prerequisites). A **Shared CPU**, **Linode 8 GB** plan is suitable. See our [Getting Stated with Kubernetes](/docs/products/compute/kubernetes/get-started/) guide for instructions.
+1.  Create a Kubernetes cluster that meets the [Portworx installation prerequisites](https://docs.portworx.com/portworx-enterprise/install-portworx/prerequisites). A **Shared CPU**, **Linode 8 GB** plan is suitable. You must have `kubectl` configured on your local machine to interact with the cluster. See our [Getting Stated with Kubernetes](/docs/products/compute/kubernetes/get-started/) guide for instructions. Also, take note of the Kubernetes version running on your cluster as it is needed later.
 
 1.  The Portworx installation prerequisites also include a backing drive (i.e. Volume) for each of three nodes, which must be at least 8 GB. Follow our [Getting Started with Block Storage](/docs/products/storage/block-storage/get-started/) guide to create and attach a 10 GB Volume to each node. Creating volumes via the **Storage** tab of the individual Kubernetes instances is more efficient than via **Volumes**, as it creates *and* attaches in one step.
 
@@ -83,6 +57,8 @@ Portworx is not an open source system, though it supports many [individual open 
 Follow the steps in the next four sections to install Portworx on an existing Kubernetes cluster.
 
 ### The Wizard
+
+1.  Open a web browser and log in to [Portworx Central](https://central.portworx.com).
 
 1.  Select **Get Started** from the **Welcome to Portworx** section of the Portworx Central home page:
 
@@ -116,7 +92,7 @@ Follow the steps in the next four sections to install Portworx on an existing Ku
 
 ### Deployment
 
-1.  Use the first `kubectl` command generated in the previous section to deploy the `Operator` specification. The command structure should follow that of the example command below:
+1.  Use the first `kubectl` command generated in the previous section to deploy the `Operator` specification. The command structure should follow that of the example command below, with {{< placeholder "PORTWORX_VERSION_NUMBER" >}} and {{< placeholder "KUBERNETES_VERSION_NUMBER" >}} matching your respective Portworx and Kubernetes versions:
 
     ```command
     kubectl apply -f 'https://install.portworx.com/{{< placeholder "PORTWORX_VERSION_NUMBER" >}}?comp=pxoperator&kbver={{< placeholder "KUBERNETES_VERSION_NUMBER" >}}&ns=portworx'
@@ -130,7 +106,7 @@ Follow the steps in the next four sections to install Portworx on an existing Ku
     deployment.apps/portworx-operator created
     ```
 
-1.  Use the second `kubectl` command generated in the previous section to deploy the `StorageCluster` specification. The command structure should resemble the example command below:
+1.  Use the second `kubectl` command generated in the previous section to deploy the `StorageCluster` specification. The command structure should resemble the example command below, with {{< placeholder "PX_USER_ID" >}} and {{< placeholder "PX_CLUSTER_ID" >}} being unique to your Portworx Central account:
 
     ```command
     kubectl apply -f 'https://install.portworx.com/{{< placeholder "PORTWORX_VERSION_NUMBER" >}}?operator=true&mc=false&kbver={{< placeholder "KUBERNETES_VERSION_NUMBER" >}}&ns=portworx&oem=esse&user={{< placeholder "PX_USER_ID" >}}&b=true&iop=6&c=px-cluster-{{< placeholder "PX_CLUSTER_ID" >}}&stork=true&csi=true&mon=true&tel=true&st=k8s&promop=true'
@@ -162,7 +138,7 @@ Follow the steps in the next four sections to install Portworx on an existing Ku
     lke194968-280433-527b95040000   58649b41-b4c9-4c56-b983-e27a61c9f582   Online   3.1.2.0-fb52ced   4m46s
     ```
 
-1.  Use the following command to monitor the status of an individual node:
+1.  Use the following command to monitor the status of an individual node, replacing {{< placeholder "NODE_NAME" >}} with the `NAME` of one of the nodes listed in the prior command's output:
 
     ```command
     kubectl -n portworx describe storagenode {{< placeholder "NODE_NAME" >}}
@@ -172,7 +148,7 @@ At this point, your working Kubernetes cluster includes a small Portworx deploym
 
 ## Run a Model Portworx Project
 
-The extensive [Portworx documentation](https://docs.portworx.com/) includes many examples of the benefits that Portworx brings to data application management. One example is [Run Kafka on Kubernetes at Scale with Portworx](https://blog.purestorage.com/purely-technical/run-kafka-kubernetes-scale-portworx/). While thousands of organizations already manually deploy Kafka to good effect, Portworx can enhance the process. Replacement of a manual deployment with Portworx' mediation automates disaster recovery, application-specific high availability, backup services, and capacity management.
+Among the examples found in the [Portworx documentation](https://docs.portworx.com/) is [Run Kafka on Kubernetes at Scale with Portworx](https://blog.purestorage.com/purely-technical/run-kafka-kubernetes-scale-portworx/). While thousands of organizations already deploy Kafka manually, Portworx can enhance the process. Replacement of a manual deployment with Portworx' mediation automates disaster recovery, application-specific high availability, backup services, and capacity management.
 
 Using the Portworx installation from the preceding section, follow the steps below to get started:
 
@@ -216,12 +192,6 @@ Using the Portworx installation from the preceding section, follow the steps bel
     storageclass.storage.k8s.io/px-sc-kafka-repl2 created
     ```
 
-A complete working replication solution for Kafka is beyond the scope of this guide. However, Portworx provides a complete configuration, along with an installation script, in a [demonstration public repository](https://github.com/rsomu/kafka-setup-k8s).
+Using Portworx for these services does more than just capture configuration in a well-documented and more maintainable format. Storage-level replication makes it possible for Portworx to identify and re-assign healthy storage in the event of failure. This keeps data available while replicating almost immediately.
 
-Using Portworx for these services does more than just capture configuration in a well-documented and more maintainable format. According to Portworx, in the event of a failure, the configuration above "provides an 83% reduction in Kafka broker rebuild times". This improvement results from Portworx' agility in resource allocation. Storage-level replication makes it possible for Portworx to identify and re-assign healthy storage in the event of failure. This keeps data available while replicating almost immediately.
-
-While Portworx usually requires several dozens of lines of configuration files, that's typically less than what administrators use to maintain a Kubernetes cluster. The savings from more efficient storage use can quickly exceed Portworx' license fees when terabytes of data are involved.
-
-## Conclusion
-
-Modern organizations manage vast amounts of data in the cloud, generally with Kubernetes as a base infrastructure. Portworx provides easier and more trustworthy management of the storage and other resource requirements of large-scale data systems running in cloud environments. While manual specification of Kubernetes-based applications remains common in commercial installations, Portworx can boost both the efficiency and the quality of deployments.
+While Portworx usually requires several dozens of lines of configuration files, that's typically less than what administrators use to maintain a Kubernetes cluster. When terabytes of data are involved, the savings generated from using storage more efficiently can quickly exceed the Portworx license fees.
