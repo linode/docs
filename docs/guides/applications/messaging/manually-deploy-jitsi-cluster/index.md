@@ -4,7 +4,7 @@ title: "Manually Deploy a Jitsi Cluster on Akamai"
 description: "This guide goes over how to manually deploy a scalable Jitsi conferencing cluster with Ansible using provided playbooks."
 authors: ["John Dutton","Elvis Segura"]
 contributors: ["John Dutton","Elvis Segura"]
-published: 2024-06-25
+published: 2024-07-01
 keywords: ['jitsi','conferencing','communications','cluster']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -28,7 +28,7 @@ If you wish to deploy Jitsi automatically rather than manually, consider either 
 
 1.  NGINX runs on the meet instance and functions to serve client requests and communicate with internal Jitsi components.
 
-[DIAGRAM PLACEHOLDER]
+![Jitsi Cluster Reference Architecture](Jitsi-Cluster-Reference-Architecture.svg "Jitsi Cluster Reference Architecture")
 
 ### Architecture Components
 
