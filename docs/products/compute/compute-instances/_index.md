@@ -2,13 +2,13 @@
 title: Compute Instances
 title_meta: "Compute Instance Product Documentation"
 description: "Host your workloads on Linode's secure and reliable cloud infrastructure using Compute Instances, versatile Linux-based virtual machines."
+published: 2023-01-18
 modified: 2024-05-21
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 cascade:
-    date: 2023-01-18
     product_description: "Linux virtual machines equipped with a tailored set of resources designed to run any cloud-based workload."
 ---
 

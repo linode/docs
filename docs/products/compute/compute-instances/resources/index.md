@@ -2,6 +2,7 @@
 title: Resources
 title_meta: "Resources for Compute Instances"
 description: "Resources and other information related to Compute Instances, including videos, blog posts, community posts, customer stories, and press releases."
+published: 2023-01-18
 tab_group_main:
     weight: 40
 aliases: ['/products/compute/shared-linodes/resources/','/products/compute/shared-cpu/resources/','/products/compute/gpu/resources/','/products/compute/dedicated-cpu/resources/']

@@ -2,6 +2,7 @@
 title: Get Started
 title_meta: "Getting Started with Compute Instances"
 description: "Learn how to quickly start using Compute Instances on the Linode Platform."
+published: 2023-01-18
 tab_group_main:
     weight: 20
 aliases: ['/products/compute/shared-linodes/get-started/','/products/compute/shared-cpu/get-started/','/products/compute/dedicated-cpu/get-started/','/products/compute/gpu/get-started/','/products/compute/high-memory/get-started/']
