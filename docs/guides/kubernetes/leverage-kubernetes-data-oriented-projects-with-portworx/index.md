@@ -1,10 +1,10 @@
 ---
 slug: leverage-kubernetes-data-oriented-projects-with-portworx
-title: "Leveraging Kubernetes Data-oriented Projects with Portworx"
-title_meta: "How to Leverage Kubernetes Data-oriented Projects with Portworx"
+title: "Leveraging Kubernetes Data-Oriented Projects with Portworx"
+title_meta: "How to Leverage Kubernetes Data-Oriented Projects with Portworx"
 description: "Explore how Portworx, a leading cloud-native storage platform for Kubernetes, enhances data and SaaS management with efficient cloud storage solutions."
 authors: ["Cameron Laird"]
-contributors: ["Cameron Laird"]
+contributors: ["Cameron Laird","Adam Overa"]
 published: 2024-06-25
 keywords: ['portworx cloud-native storage platform','kubernetes enterprise storage platform','cloud storage','data storage','data management','saas management','dbaas management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,13 +14,13 @@ external_resources:
 - '[Portworx: Kubernetes Storage Use Case](https://portworx.com/use-case/kubernetes-storage/)'
 ---
 
-Management of data at scale is crucial for deriving actionable insights, and an effective data platform can provide those kinds of insights. A data platform is the *technology infrastructure* used for the collection, storage, transaction processing, and analysis of varied data at scale. It simplifies engineering tasks such as expanding the storage available to an application or encrypting project secrets.
+Management of data at scale is crucial for deriving actionable insights, and an effective data platform can provide those kinds of insights. A data platform is the technology infrastructure used for the collection, storage, transaction processing, and analysis of varied data at scale. It simplifies engineering tasks such as expanding the storage available to an application or encrypting project secrets.
 
 Portworx handles advanced storage and data management capabilities for cloud-native environments. This guide provides step-by-step instructions for installing Portworx on an existing Kubernetes cluster. It then walks through setting up a model project to demonstrate Portworx' capabilities.
 
 ## What Is Portworx?
 
-Portworx enables deployment and management of storage and data services specifically in containerized environments. It also handles data replication, snapshots, backups, and data recovery, which allows application systems to focus on their own specific requirements. Since Portworx itself is cloud-native, it plays a crucial role in helping other systems maximize the capabilities of the cloud.
+Portworx enables deployment and management of storage and data services specifically in containerized environments. It also handles data replication, snapshots, backups, and data recovery, allowing application systems to focus on their own specific requirements. Since Portworx itself is cloud-native, it plays a crucial role in helping other systems maximize the capabilities of the cloud.
 
 Current cloud computing practices face several challenges, particularly the difficulty of managing Kubernetes instances in the real-world. Portworx mitigates some of these challenges.
 
@@ -34,7 +34,7 @@ Portworx integrates with widely known software systems such as Kubernetes, Kafka
 
 -   [**Cassandra**](/docs/guides/databases/cassandra/) is an open source distributed database management system that emphasizes economical operation, high availability, and wide-column semantics. Portworx addresses several of the challenges involved in configuring and operating Cassandra. For example, when running Cassandra in containers managed by Kubernetes, Portworx can effectively control memory, resource quotas, and/or CPU cores per Kubernetes cluster.
 
--   [**Kafka**](/docs/guides/what-is-apache-kafka/) is a widely used open source distributed event store and stream-processing platform. In much the same way a traditional database system manages **records** of data, Kafka manages **events**. For Kafka to perform optimally, it needs a high-performance underlying storage system, and Portworx is a good choice. Teams and individuals often initially adopt Portworx to meet requirements for hosting or upgrading Kafka. In fact, Portworx offers white papers specifically on the [operation of Kafka in a Kubernetes environment](https://portworx.com/blog/deploying-kafka-on-kubernetes-using-portworx-data-services/).
+-   [**Kafka**](/docs/guides/what-is-apache-kafka/) is a widely used open source distributed event store and stream-processing platform. In much the same way a traditional database system manages **records** of data, Kafka manages **events**. For Kafka to perform optimally, it needs a high-performance underlying storage system, and Portworx is a good choice. Teams and individuals often initially adopt Portworx to meet requirements for hosting or upgrading Kafka. Portworx also offers white papers specifically on the [operation of Kafka in a Kubernetes environment](https://portworx.com/blog/deploying-kafka-on-kubernetes-using-portworx-data-services/).
 
 ## Before You Begin
 
@@ -50,11 +50,11 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Portworx Installation
 
-To install Portworx, use the basic installation model on an existing Kubernetes cluster. This can be any existing Kubernetes cluster, whether through Akamai Kubernetes or a manually constructed setup. You can also use [kind](https://kind.sigs.k8s.io/) for an installation purely within your desktop development environment.
+To install Portworx, use the basic installation model on an existing Kubernetes cluster. This can be any existing Kubernetes cluster, whether using Linode Kubernetes Engine or a manually constructed setup. You can also use [kind](https://kind.sigs.k8s.io/) for an installation purely within your desktop development environment.
 
 Portworx is not an open source system, though it supports many [individual open source components](https://portworx.com/products/open-source/), and some of its [licenses](https://docs.portworx.com/portworx-enterprise/operations/licensing) involve no fee. However, installation is generally done through the Portworx website and not via standard command-line package managers such as `apt` or `brew`.
 
-Follow the steps in the next four sections to install Portworx on an existing Kubernetes cluster.
+Follow the steps in the below sections to install Portworx on an existing Kubernetes cluster.
 
 ### The Wizard
 
@@ -68,7 +68,7 @@ Follow the steps in the next four sections to install Portworx on an existing Ku
 
     ![The Product Line selection page on Portworx Central.](portworx-product-line.png)
 
-1.  Choose `DAS/SAN` as **Platform** and `None` for **Distribution Name**. Retain `portworx` as the default **Namespace**, but change the **K8s Version** to match the Kubernetes version chosen during deployment (e.g. `1.30.2`).
+1.  Choose `DAS/SAN` as **Platform** and `None` for **Distribution Name**. Retain `portworx` as the default **Namespace**, but change the **K8s Version** to match the Kubernetes version of your cluster (e.g. `1.30.2`).
 
     ![The Generate Spec page in Portworx Central.](portworx-generate-spec.png)
 
@@ -98,6 +98,8 @@ Follow the steps in the next four sections to install Portworx on an existing Ku
     kubectl apply -f 'https://install.portworx.com/{{< placeholder "PORTWORX_VERSION_NUMBER" >}}?comp=pxoperator&kbver={{< placeholder "KUBERNETES_VERSION_NUMBER" >}}&ns=portworx'
     ```
 
+    Sample output:
+
     ```output
     namespace/portworx created
     serviceaccount/portworx-operator created
@@ -112,24 +114,26 @@ Follow the steps in the next four sections to install Portworx on an existing Ku
     kubectl apply -f 'https://install.portworx.com/{{< placeholder "PORTWORX_VERSION_NUMBER" >}}?operator=true&mc=false&kbver={{< placeholder "KUBERNETES_VERSION_NUMBER" >}}&ns=portworx&oem=esse&user={{< placeholder "PX_USER_ID" >}}&b=true&iop=6&c=px-cluster-{{< placeholder "PX_CLUSTER_ID" >}}&stork=true&csi=true&mon=true&tel=true&st=k8s&promop=true'
     ```
 
+    Sample output:
+
     ```output
     storagecluster.core.libopenstorage.org/px-cluster-{{< placeholder "PX_CLUSTER_ID" >}} created
     secret/px-essential created
     ```
 
     {{< note >}}
-    If you receive any errors, use the exact commands shown on the **Generate Spec** screen. It is likely more current than the examples shown in this guide or even Portworx' own documentation.
+    Should you receive any errors, you can use the **Generate Spec** screen to view up-to-date commands.
     {{< /note >}}
 
 ### Verification
 
-1.  Monitor Portworx nodes with the following command:
+1.  Monitor the status of Portworx nodes with the following command:
 
     ```command
     kubectl -n portworx get storagenodes -l name=portworx
     ```
 
-    Eventually, each Portworx node appears as `Online` after the deployments finish:
+    Once the deployments finish, each Portworx node appears as `Online`:
 
     ```output
     NAME                            ID                                     STATUS   VERSION           AGE
@@ -158,7 +162,7 @@ Using the Portworx installation from the preceding section, follow the steps bel
     nano sc-kafka-rf2.yaml
     ```
 
-    Give it the following contents:
+    Paste in the following contents, and save your changes:
 
     ```file {title="sc-kafka-rf2.yaml" lang="yaml"}
     kind: StorageClass
@@ -178,9 +182,7 @@ Using the Portworx installation from the preceding section, follow the steps bel
       fg: "false"
     ```
 
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
-
-    This storage specification provides several automations, including *replication*. The `repl: "2"` parameter maintains two full replicas of broker data (i.e. Kafka's content) across the failure domains of the hosting Kubernetes cluster. This ensures that Kafka continues without downtime even if one node fails.
+    This storage specification provides several automations, including replication. The `repl: "2"` parameter maintains two full replicas of broker data (i.e. Kafka's content) across the failure domains of the hosting Kubernetes cluster. This ensures that Kafka continues without downtime should a node fail.
 
 1.  Use the following command to apply the `StorageClass`:
 
@@ -188,10 +190,12 @@ Using the Portworx installation from the preceding section, follow the steps bel
     kubectl apply -f sc-kafka-rf2.yaml
     ```
 
+    Sample output:
+
     ```output
     storageclass.storage.k8s.io/px-sc-kafka-repl2 created
     ```
 
-Using Portworx for these services does more than just capture configuration in a well-documented and more maintainable format. Storage-level replication makes it possible for Portworx to identify and re-assign healthy storage in the event of failure. This keeps data available while replicating almost immediately.
+Storage-level replication makes it possible for Portworx to identify and re-assign healthy storage in the event of failure. This keeps data available while replicating almost immediately.
 
-While Portworx usually requires several dozens of lines of configuration files, that's typically less than what administrators use to maintain a Kubernetes cluster. When terabytes of data are involved, the savings generated from using storage more efficiently can quickly exceed the Portworx license fees.
+While Portworx generally requires several dozens of lines of configuration files, it's typically less than what administrators may use to maintain a Kubernetes cluster. When terabytes of data are involved, Portworx's efficient data utilization can result in large cost savings.
