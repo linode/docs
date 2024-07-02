@@ -2,7 +2,7 @@
 title: "Deploy Jenkins through the Linode Marketplace"
 description: "This guide shows how to install Jenkins, an open source automation tool which system administrators can use to build, test, and deploy your infrastructure."
 published: 2020-03-12
-modified: 2022-03-08
+modified: 2024-06-27
 keywords: ['jenkins','marketplace','pipeline','continuous delivery']
 tags: ["linode platform","automation","marketplace","cloud-manager"]
 external_resources:
@@ -26,8 +26,18 @@ aliases: ['/platform/marketplace/how-to-deploy-jenkins-with-marketplace-apps/', 
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10
-- **Recommended minimum plan:** All plan types and sizes can be used.
+- **Supported distributions:** Ubuntu 22.04 LTS
+- **Suggested minimum plan:** All plan types and sizes can be used.
+
+## Jenkins Options
+
+{{% content "marketplace-required-limited-user-shortguide" %}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
+
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
+
+- **Let's Encrypt SOA Email:** *(required)* Email address for free Let's Encrypt SSL certificate.
+- **Jenkins Version:** *(required)* Version of Jenkins to deploy.
 
 ## Getting Started after Deployment
 
@@ -35,21 +45,23 @@ After deploying your Jenkins instance, you are ready to log in and continue the 
 
 ### Access Your Jenkins Instance
 
-1. [Connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
+1. [Connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) using `root` or the `sudo user` created during deployment if you added Account SSH Keys.
 
-1. Retrieve your Jenkins admin password by viewing the contents of the `/var/lib/jenkins/secrets/initialAdminPassword` file.
+1. Retrieve your Jenkins admin password by viewing the contents of the `/home/$SUDO_USER/.credentials` file.
 
     ```command
-    cat /var/lib/jenkins/secrets/initialAdminPassword
+    cat /home/$SUDO_USER/.credentials
     ```
 
     You should see a similar output
 
     ```output
-    0f6fed516bc4ceab24373fe5de513dc
+      Sudo Username: $SUDO_USER
+      Sudo Password: ifdQUa3mD2UJSJ2NA9ddSDVl5NCWfKl
+      Jenkins Admin password: BeVrZwVkn1mUO0Gl38lRabp
     ```
 
-1. Open a browser and navigate to `http://192.0.2.0:8080/`. Replace `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/). This will bring you the *Unlock Jenkins* page. Enter the password you retrieved in the previous step and click **continue**.
+1. Open a browser and navigate to `https://50-116-42-224.ip.linodeusercontent.com`. Replace `50-116-42-224.ip.linodeusercontent.com` with your domain name or reverse DNS for your Linode's IP. This will bring you the *Unlock Jenkins* page. Enter the password you retrieved in the previous step and click **continue**.
 
     ![Log into Jenkins with your admin password](jenkins-admin-login.png)
 
