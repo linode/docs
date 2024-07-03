@@ -3,7 +3,7 @@ title: "Create a Compute Instance"
 title_meta: "Create a Compute Instance on the Linode Platform"
 description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
 published: 2022-04-19
-modified: 2024-06-20
+modified: 2024-07-03
 keywords: ["getting started", "deploy", "linode", "linux"]
 aliases: ['/guides/creating-a-compute-instance/','/products/compute/dedicated-cpu/guides/deploy/']
 ---
@@ -14,12 +14,13 @@ This guide walks you through creating a Compute Instance (also frequently called
 - [Choose a Distribution, App, or Image](#choose-a-distribution-app-or-image)
 - [Select a Region](#select-a-region)
 - [Choose an Instance Type and Plan](#choose-an-instance-type-and-plan)
-- [Set the Label and Add Tags](#set-the-label-and-add-tags)
+- [Set the Label, Add Tags, and Assign a Placement Group](#set-the-label-add-tags-and-assign-a-placement-group)
 - [Create a Password and Add SSH Keys](#create-a-password-and-add-ssh-keys)
-- [Assign to a VPC (Optional) {#assign-to-a-vpc}](#assign-to-a-vpc-optional-assign-to-a-vpc)
-- [Assign to a Cloud Firewall (Optional) {#assign-to-a-cloud-firewall}](#assign-to-a-cloud-firewall-optional-assign-to-a-cloud-firewall)
-- [Assign to a VLAN (Optional) {#assign-to-a-vlan}](#assign-to-a-vlan-optional-assign-to-a-vlan)
-- [Assign to a Placement Group (Optional) {#assign-to-a-placement-group}](#assign-to-a-placement-group-optional-assign-to-a-placement-group)
+- [Enable or Disable Local Disk Encryption](#enable-or-disable-local-disk-encryption)
+- [Assign to a VPC (Optional)](#assign-to-a-vpc-optional)
+- [Assign to a Cloud Firewall (Optional)](#assign-to-a-cloud-firewall)
+- [Assign to a VLAN (Optional)](#assign-to-a-vlan)
+- [Assign to a Placement Group (Optional)](#assign-to-a-placement-group)
 - [Configure Additional Options](#configure-additional-options)
 - [Add User Data](#add-user-data)
 - [Deploy the Instance](#deploy-the-instance)
@@ -77,13 +78,19 @@ You can resize to a different plan size or instance type at any time. This means
 
 {{% content "instance-comparison-shortguide" %}}
 
-## Set the Label and Add Tags
+## Set the Label, Add Tags, and Assign a Placement Group
 
-![Label selection in Cloud Manager](create-instance-label.png)
+![Label selection in Cloud Manager](create-label-tag-pg.jpg)
 
 - **Label:** The label is the name of the Compute Instance, allowing you to easily identify it from other instances. A good label should provide some indication as to what the instance is used for. As an example, a label of `acme-web-prod` may indicate that the instance is the production website for the company Acme. If you have already implemented your own naming conventions for your cloud infrastructure, follow those conventions. Labels must only use letters, numbers, underscores, dashes, and periods.
 
 - **Tags:** Adding tags gives you the ability to categorize your Linode services however you wish. If you're a web development agency, you could add a tag for each client you have. You could also add tags for which services are for development, staging, or production.
+
+- **Placement Groups:** (Optional) Add this Compute Instance to a Placement Group to manage its physical location in a data center ("region"). Placement Groups can be set up to group your compute instances close together to help with performance, or further apart to support high availability. Placement Groups are available at no additional cost, but they're not available in all regions. See [Work with Placement Groups](/docs/products/compute/compute-instances/guides/placement-groups/) to learn more.
+
+{{< note >}}
+If you don't have an existing Placement Group, you can click **Create Placement Group** to create a new one. This takes you to a separate interface, outside creating your compute instance. For ease of use, create your compute instances in a supported region, then later create a Placement Group and assign your compute instances to it.
+{{< /note >}}
 
 ## Create a Password and Add SSH Keys
 
@@ -95,7 +102,17 @@ You can resize to a different plan size or instance type at any time. This means
 
 -   **SSH Keys:** Add any SSH Keys to the root user account on the server. This enables you to log in through SSH without needing a password. SSH keys are created as a pair: a *private key* stored on your local computer and a *public key* that you can upload to remote systems and services. Since you only share your public key and your private key is kept safe and secure, this is a much more secure method for authentication than passwords. Learn more about uploading SSH keys through the Cloud Manager on the [Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/) guide.
 
-## Assign to a VPC (Optional) {#assign-to-a-vpc}
+## Enable or Disable Local Disk Encryption
+
+Secure the data on this Linode using data at rest encryption. Data center systems take care of encrypting and decrypting for you. If you need to enable or disable **Disk Encryption** after the Linode is created, you must use Rebuild to change this setting.
+
+{{< note >}}
+Disk Encryption is not currently available in all regions.
+{{< /note >}}
+
+More information is available from the [Local Disk Encryption](/docs/products/compute/compute-instances/guides/local-disk-encryption/) guide.
+
+## Assign to a VPC (Optional)
 
 ![Screenshot of the VPC assignment section](create-instance-vpc.jpg)
 
@@ -129,16 +146,6 @@ Add this Compute Instance to a secure private network. VLANs are available at no
 
 {{< note type="warning" title="Consider using a VPC instead of a VLAN" isCollapsible=true >}}
 In most cases, it's recommended to use a VPC over a VLAN. VPCs operate on a higher network layer and come with more IP addressing and IP routing functionality. Additionally, you can further segment out network traffic through subnets, each of which has its own CIDR range. Review [these differences](/docs/products/networking/vpc/#difference-between-private-network-options-vpcs-vlans-and-private-ips) to learn more.
-{{< /note >}}
-
-## Assign to a Placement Group (Optional) {#assign-to-a-placement-group}
-
-![Creating a receiving Linode](create-instance-pg.png)
-
-Add this Compute Instance to a Placement Group to manage its physical location in a data center ("region"). Placement Groups can be set up to group your compute instances close together to help with performance, or further apart to support high availability. Placement Groups are available at no additional cost, but they're not available in all regions. See [Work with Placement Groups](/docs/products/compute/compute-instances/guides/placement-groups/) to learn more.
-
-{{< note >}}
-If you don't have an existing Placement Group, you can click **Create Placement Group** to create a new one. This takes you to a separate interface, outside creating your compute instance. For ease of use, create your compute instances in a supported region, then later create a Placement Group and assign your compute instances to it.
 {{< /note >}}
 
 ## Configure Additional Options
