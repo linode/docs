@@ -1,6 +1,6 @@
 {{- $url := urls.Parse (.Destination | strings.TrimPrefix "./") -}}
 {{- $destination := $url.Path -}}
-{{- $img := .Page.Resources.GetMatch $destination -}}
+{{- $img := .PageInner.Resources.GetMatch $destination -}}
 {{ if and $img  (eq $img.MediaType.SubType "svg") }}
 {{ partial "components/render-svg.html" (dict "ctx" $ "image" $img "url" $url) }}
 {{ else }}
@@ -27,7 +27,7 @@
   {{ end }}
 {{- end -}}
 {{- with $img -}}
-  {{ if not ( $.Page.Scratch.Get (printf "%s-is-used" $img.RelPermalink)) }}
+  {{ if not ( $.PageInner.Scratch.Get (printf "%s-is-used" $img.RelPermalink)) }}
     {{/* We could resize/process the images here if needed. */}}
     {{/* The elements from Markdown are: ![.Text](.Destination ".Title") */}}
     {{ $imgFull := $img }}
