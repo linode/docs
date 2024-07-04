@@ -135,7 +135,7 @@ Ensure you select a strong and secure password for the administrator account.
 
 The links between the Subversion client and the modules used for the Apache repository must be defined in a configuration file. The steps in this section include a sample configuration file that links the `dav_svn` module.
 
-1. In your system's `/etc/apache2/mods_enabled/` directory, create an example file named `dav_svn.conf`.
+1. In your system's `/etc/apache2/mods-enabled/` directory, create an example file named `dav_svn.conf`.
 
 1. Add the example content to the `dav_svn.conf` file. The [example configuration](https://nsrc.org/workshops/ws-files/2012/pacnog11-nmm/configs/etc/apache2/mods-enabled/dav_svn.conf) below demonstrate how to configure repository authentication and access control.
 
