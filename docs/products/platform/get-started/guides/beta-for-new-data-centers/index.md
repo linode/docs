@@ -45,11 +45,11 @@ Each data center in this beta is slated to have most of Akamai’s cloud computi
 
 ### Object Storage
 
-The London(gb-lon) and Melbourne (au-mel) data centers do not support Object Storage during the Beta period.
+The London (gb-lon) and Melbourne (au-mel) data centers do not support Object Storage during the beta period.
 
 ### Premium Plans
 
-[Premium tier](/docs/products/compute/compute-instances/plans/premium/) Dedicated CPU Compute Instance plans are available only in newer data centers, including those in Beta. These plans are in addition to our standard tier Dedicated CPU, Shared CPU, and High Memory instance types. These Premium instances guarantee a baseline hardware class that includes new AMD EPYC™ CPUs. These Premium offerings are built for applications with critical performance needs such as enterprise video encoding, AI, CI/CD, build servers, and data analysis.
+[Premium tier](/docs/products/compute/compute-instances/plans/premium/) Dedicated CPU Compute Instance plans are available only in newer data centers, including those in beta. These plans are in addition to our standard tier Dedicated CPU, Shared CPU, and High Memory instance types. These Premium instances guarantee a baseline hardware class that includes new AMD EPYC™ CPUs. These Premium offerings are built for applications with critical performance needs such as enterprise video encoding, AI, CI/CD, build servers, and data analysis.
 
 The table below outlines the default pricing and hardware specifications for Premium tier Dedicated CPU Instances. [Pricing](https://www.linode.com/pricing/) may vary by region:
 
