@@ -10,7 +10,7 @@ noindex: true
 aliases: ['/products/platform/get-started/guides/iad/']
 ---
 
-Akamai is expanding its services to new data centers across the globe. Each new data center will undergo a beta period, where a limited number of interested customers can deploy services in these regions. Premium plans and upgraded Object Storage clusters are only available in these new data centers. As a beta participant, please review this guide for additional specifications and details you may need when configuring your workloads in the one of these data centers.
+Akamai is expanding its services to new data centers across the globe. Each new data center will undergo a beta period, where a limited number of interested customers can deploy services in these regions. Premium plans are available in new data centers. As a beta participant, please review this guide for additional specifications and details you may need when configuring your workloads in the one of these data centers.
 
 {{< note type="warning" >}}
 Capacity in beta data centers may be limited as we continue to scale up resources. Additionally, the beta environment is subject to change. We strongly suggest that participants do not run production workloads during the beta.
@@ -20,7 +20,8 @@ Capacity in beta data centers may be limited as we continue to scale up resource
 
 | Data Center | Status | Region ID |
 | -- | -- | -- |
-| London, England | **Now available to all customers** | `gb-lon` |
+| London, England | **Limited Availability** | `gb-lon` |
+| Melbourne, Australia | **Limited Availability** | `au-mel`
 
 ## Deploy Services in a Beta Data Center
 
@@ -44,11 +45,11 @@ Each data center in this beta is slated to have most of Akamai’s cloud computi
 
 ### Object Storage
 
-The London, England (gb-lon) data center does not support Object Storage during the Beta period.
+The London(gb-lon) and Melbourne (au-mel) data centers do not support Object Storage during the Beta period.
 
 ### Premium Plans
 
-[Premium tier](/docs/products/compute/compute-instances/plans/premium/) Dedicated CPU Compute Instance plans are available only in the new data centers. These plans are in addition to our standard tier Dedicated CPU, Shared CPU, and High Memory instance types. These Premium instances guarantee a baseline hardware class that includes new AMD EPYC™ CPUs. These Premium offerings are built for applications with critical performance needs such as enterprise video encoding, AI, CI/CD, build servers, and data analysis.
+[Premium tier](/docs/products/compute/compute-instances/plans/premium/) Dedicated CPU Compute Instance plans are available only in newer data centers, including those in Beta. These plans are in addition to our standard tier Dedicated CPU, Shared CPU, and High Memory instance types. These Premium instances guarantee a baseline hardware class that includes new AMD EPYC™ CPUs. These Premium offerings are built for applications with critical performance needs such as enterprise video encoding, AI, CI/CD, build servers, and data analysis.
 
 The table below outlines the default pricing and hardware specifications for Premium tier Dedicated CPU Instances. [Pricing](https://www.linode.com/pricing/) may vary by region:
 
@@ -91,6 +92,7 @@ Beta data centers support IP sharing and BGP-based failover, which can be config
 | Data Center | IP Sharing Support | Failover Method | Software | ID |
 | --- | --- | --- | --- | --- |
 | London, England | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 44 |
+| Melbourne, Australia | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 45 |
 
 ### Lish Gateways
 
@@ -102,10 +104,24 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
 
     {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
     ```command
-    RSA 3072 SHA256:/y+83+sA3JdDGkv/KLnIAIXqfgqWfgp5RZ+DCx1T4yU lish-nl-ams.linode.com
-    ECDSA 256 SHA256:iR/He+teo+c7jqr8LzaTikbTlMDdIkIERhJBXdIjO8w lish-nl-ams.linode.com
+    RSA 3072 SHA256:EIKjJlF0nmpuj795Y4DhwYjIMCDa2yodWKk9rKxg67o lish-gb-lon.linode.com
+    ECDSA 256 SHA256:MvMwule197MvqJIjvJq7vjnxlvX0XveAocRPDs5jbMA lish-gb-lon.linode.com
     ED25519 256 SHA256:4IUSmmru/F/Q4nHVZjBZUzSol7XLaE33i8hLPD8VJ2o lish-gb-lon.linode.com
     ```
     {{< /note >}}
 
 -   **Weblish/Glish Gateway:** `gb-lon.webconsole.linode.com`
+
+#### Melbourne, Australia
+
+-   **Lish SSH Gateway:** `lish-au-mel.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:JX2eVSdHIJzb3iDJFpTtHVGQq1paEh53D9cnsEPNvvU lish-au-mel.linode.com
+    ECDSA 256 SHA256:88mN/wieI4kG1rkuohob3ZyqhvCMiMWiCTVN1XECvLU lish-au-mel.linode.com
+    ED25519 256 SHA256:e8xMMpHXjDRi9vSiNliiMEHtsKzAjGdG0WkeFS3W1RU lish-au-mel.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish/Glish Gateway:** `au-mel.webconsole.linode.com`
