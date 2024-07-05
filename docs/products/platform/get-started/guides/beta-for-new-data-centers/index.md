@@ -21,7 +21,7 @@ Capacity in beta data centers may be limited as we continue to scale up resource
 | Data Center | Status | Region ID |
 | -- | -- | -- |
 | London, England | **Limited Availability** | `gb-lon` |
-| Melbourne, Australia | **Limited Availability** | `au-mel`
+| Melbourne, Australia | **Limited Availability** | `au-mel` |
 
 ## Deploy Services in a Beta Data Center
 
