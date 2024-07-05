@@ -163,7 +163,7 @@ We're making improvements to the Linode Cloud Manager so that we can deliver a h
 
 ### July 2024
 
-In early July, minor branding changes were made to the Cloud Manager. These changes include higher color contrast, which improves the accessibility of both text and interactive components. Review the screenshots below for a closer look at the changes.
+In early July, we've made minor branding changes to the Cloud Manager. As part of these changes, we've implemented higher color contrast to improve the accessibility of both text and interactive components. Review the screenshots below for a closer look of the changes.
 
 | Previous Design | Updated Design&nbsp;&nbsp; |
 | -- | -- |
