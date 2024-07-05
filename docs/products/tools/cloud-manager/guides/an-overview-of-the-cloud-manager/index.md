@@ -2,13 +2,10 @@
 slug: an-overview-of-the-cloud-manager
 title: "An Overview of the Cloud Manager"
 description: "This guide provides you with an overview of the Cloud Manager and covers how to locate features within Cloud Manager, create Linodes and more."
-authors: ["Linode"]
-contributors: ["Linode"]
 published: 2019-12-20
-modified: 2023-09-20
+modified: 2024-07-05
 keywords: ["classic manager","cloud manager","linode"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/platform/manager/a-classic-to-cloud-manager-overview-guide/','/platform/manager/an-overview-of-the-linode-cloud-manager/', '/guides/an-overview-of-the-linode-cloud-manager/']
+aliases: ['/platform/manager/a-classic-to-cloud-manager-overview-guide/','/platform/manager/an-overview-of-the-linode-cloud-manager/', '/guides/an-overview-of-the-linode-cloud-manager/','/guides/an-overview-of-the-cloud-manager/']
 image: AnOverviewoftheLinodeCloudManager.png
 tags: ["linode platform","cloud manager"]
 ---
@@ -142,9 +139,7 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 
 {{% content "cloud-email-notifications-shortguide" %}}
 
-## User Interface Enhancements
-
-### Dark Mode
+## Dark Mode
 
 Cloud Manager provides a Dark Mode that you can toggle on and off depending on your preference.
 
@@ -154,8 +149,23 @@ Cloud Manager provides a Dark Mode that you can toggle on and off depending on y
 
 ![Dark Mode Enabled](classic-to-cloud-dark-mode.png "Cloud Manager Dark Mode Enabled")
 
-### Accessibility
+## Accessibility
 
 The Cloud Manager has been built with accessibility in mind. Currently, the Cloud Manager is actively being developed to achieve [WCAG 2.0 Level AA](https://www.w3.org/TR/WCAG20/).
 
 We have received much helpful feedback from our users regarding accessibility. While we have addressed a lot of your feedback, this is still a work in progress and will be iterated upon with time. If you have comments or requests regarding accessibility, let us know by filling out our [feedback form](https://www.linode.com/feedback/).
+
+## Experience Improvements
+
+We're making improvements to the Linode Cloud Manager so that we can deliver a high-quality and consistent user experience across product families. These experience updates are driven by our new Akamai Core Design System.
+
+*This section will be updated as we roll out additional experience improvements to the Cloud Manager. For a list of all changes to the Cloud Manager, review the [Cloud Manager changelog](https://github.com/linode/manager/releases).*
+
+### July 2024
+
+In early July, minor branding changes were made to the Cloud Manager. These changes include higher color contrast, which improves the accessibility of both text and interactive components. Review the screenshots below for a closer look at the changes.
+
+| Previous Design | Updated Design&nbsp;&nbsp; |
+| -- | -- |
+| ![](cloud-manager-previous-light.jpg) | ![](cloud-manager-new-light.jpg) |
+| ![](cloud-manager-previous-dark.jpg) | ![](cloud-manager-new-dark.jpg) |
