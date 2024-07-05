@@ -2,7 +2,7 @@
 title: "Limited Beta for Akamai's New Data Centers"
 description: "This document provides details for the limited availability beta of Akamai Cloud Compute's latest data centers."
 published: 2023-04-17
-modified: 2024-06-23
+modified: 2024-07-05
 tags: ["linode platform"]
 _build:
   list: false
