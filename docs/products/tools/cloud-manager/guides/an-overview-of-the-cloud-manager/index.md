@@ -115,7 +115,7 @@ For more details, see the [Understanding Events and Activity Feeds](/docs/produc
 
 The **My Profile** section of Cloud Manager provides access to various settings related to your Linode account's profile. This area of Cloud Manager contains access to the following features and settings:
 
-- [Changing your account's associated email address](/docs/products/platform/accounts/guides/change-user-email/) and timezone
+- [Changing your account's associated email address](/docs/products/platform/accounts/guides/change-user-email/)
 - [Resetting your Account password](/docs/products/platform/accounts/guides/reset-user-password/)
 - [Enabling two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/#2fa-two-factor-authentication)
 - [Enabling Third Party Authentication (TPA)](/docs/guides/third-party-authentication/)
@@ -137,17 +137,25 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 
 ### Manage Email Event Notifications
 
-{{% content "cloud-email-notifications-shortguide" %}}
+To learn more about events and how to enable or disable email notifications for these events, see the [Understanding Events and the Activity Feed](/docs/products/tools/cloud-manager/guides/events-and-activity-feeds/) guide.
 
-## Dark Mode
+### Change the Theme (Dark Mode)
 
-Cloud Manager provides a Dark Mode that you can toggle on and off depending on your preference.
+The Cloud Manager provides a way to set your preferred UI theme, including a light theme, dark theme, and the system theme.
 
 1. Navigate to your profile by clicking on your username and select **My Settings**.
 
-1. Toggle on **Dark Mode** to change the color scheme of the UI. Dark Mode is disabled by default.
+1. Within the **Theme** section, select your preferred theme from the available options: *Light*, *Dark*, or *System*. Once a selection is made, the Cloud Manager interface immediately switches to that theme.
 
-![Dark Mode Enabled](classic-to-cloud-dark-mode.png "Cloud Manager Dark Mode Enabled")
+### Set the Timezone
+
+All events displayed in the Cloud Manager are shown using your user's timezone setting. The timezone can be modified in your display settings.
+
+1. Navigate to your profile by clicking on your username and select **Display**.
+
+1. In the **Timezone** field, select your preferred timezone from the menu.
+
+1. Click the **Update Timezone** button to save your settings.
 
 ## Accessibility
 
