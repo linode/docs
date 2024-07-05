@@ -29,7 +29,7 @@ aliases: ['/platform/marketplace/how-to-deploy-jenkins-with-marketplace-apps/', 
 - **Supported distributions:** Ubuntu 22.04 LTS
 - **Suggested minimum plan:** All plan types and sizes can be used.
 
-## Jenkins Options
+### Jenkins Options
 
 {{% content "marketplace-required-limited-user-shortguide" %}}
 {{% content "marketplace-special-character-limitations-shortguide" %}}
@@ -41,19 +41,19 @@ aliases: ['/platform/marketplace/how-to-deploy-jenkins-with-marketplace-apps/', 
 
 ## Getting Started after Deployment
 
-After deploying your Jenkins instance, you are ready to log in and continue the configuration process. Follow the steps in the next section to get started.
+After deploying your Jenkins instance, log in and continue the configuration. 
 
 ### Access Your Jenkins Instance
 
 1. [Connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) using `root` or the `sudo user` created during deployment if you added Account SSH Keys.
 
-1. Retrieve your Jenkins admin password by viewing the contents of the `/home/$SUDO_USER/.credentials` file.
+1. Retrieve your Jenkins admin password from the `/home/$SUDO_USER/.credentials` file.
 
     ```command
     cat /home/$SUDO_USER/.credentials
     ```
 
-    You should see a similar output
+    You should see a similar output:
 
     ```output
       Sudo Username: $SUDO_USER
@@ -61,15 +61,15 @@ After deploying your Jenkins instance, you are ready to log in and continue the 
       Jenkins Admin password: BeVrZwVkn1mUO0Gl38lRabp
     ```
 
-1. Open a browser and navigate to `https://50-116-42-224.ip.linodeusercontent.com`. Replace `50-116-42-224.ip.linodeusercontent.com` with your domain name or reverse DNS for your Linode's IP. This will bring you the *Unlock Jenkins* page. Enter the password you retrieved in the previous step and click **continue**.
+1. Open a web browser and navigate to `https://50-116-42-224.ip.linodeusercontent.com`. Replace `50-116-42-224.ip.linodeusercontent.com` with your domain name or reverse DNS for your Linode's IP. This will open the *Unlock Jenkins* page. Enter the password you retrieved in the previous step and click **Continue**.
 
     ![Log into Jenkins with your admin password](jenkins-admin-login.png)
 
-1. You are now ready to continue to configure Jenkins by installing the community suggested plugins or manually selecting plugins to install. Select the option you prefer.
+1. Install the community-suggested plugins or select the plugins to install manually.
 
     ![Install Jenkins Plugins](install-jenkins-plugins.png)
 
-1. After you have installed the desired plugins, you will be prompted to create your first admin user. Since the login password retrieved in the beginning of this section is temporary, you should create your admin user now.
+1. After you install the desired plugins, create your first admin user. The Jenkins admin password you used earlier is temporary.
 
     ![Create your first Jenkins admin user.](create-admin-user.png)
 

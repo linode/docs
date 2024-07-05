@@ -41,15 +41,15 @@ authors: ["Linode"]
 
 {{< content "marketplace-special-character-limitations-shortguide">}}
 
-### Getting Started after Deployment
+## Getting Started after Deployment
 
-## Accessing the InfluxDB Server
+### Accessing the InfluxDB Server
 
-Access InfluxDB's welcome page by launching your preferred web browser and navigating to either the custom domain designated during deployment or your Linode's rDNS domain, such as 192-0-2-1.ip.linodeusercontent.com. If you need assistance in finding your Linode's IP addresses and rDNS information, refer to the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for detailed instructions. 
+1. Access InfluxDB's welcome page by launching your preferred web browser and navigating to either the custom domain designated during deployment or your Linode's rDNS domain, such as 192-0-2-1.ip.linodeusercontent.com. If you need assistance in finding your Linode's IP addresses and rDNS information, refer to the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for detailed instructions. 
 
     ![Screenshot of InfluxDB login page](influxdb_login.jpg)
 
-Next, enter the username `admin` and the generated password provided in the compute instance's `/home/$SUDO_USER/.credentials` file. This will allow you to access the dashboard and begin using InfluxDB.
+2. Enter the username `admin` and the generated password provided in the compute instance's `/home/$SUDO_USER/.credentials` file. This will allow you to access the dashboard and begin using InfluxDB.
 
     ![Screenshot of InfluxDB login page](influxdb_dashboard.jpg)
 

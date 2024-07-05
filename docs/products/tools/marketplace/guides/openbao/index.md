@@ -12,7 +12,7 @@ external_resources:
 OpenBao is an open source solution to manage, store, and distribute sensitive data including secrets, certificates, and keys. This project is a forked alternative to Vault managed by the Linux Foundation, and development is driven by the community. 
 
 {{< note type="warning" title="OpenBao is still early in development" >}}
-While Openbao is a fork of a production ready 1.14.x release of Hashicorp Vault, the Openbao codebase is still early in development and is subject to change as development takes place, we recommend following the [release cycles](https://github.com/openbao/openbao/releases) for any breaking changes to minimize any downtime on a production environment.
+While Openbao is a fork of a production-ready 1.14.x release of Hashicorp Vault, the Openbao codebase is still early in development and is subject to change as development takes place. We recommend following the [release cycles](https://github.com/openbao/openbao/releases) for any breaking changes to minimize any downtime on a production environment.
 {{< /note >}}
 
 ## Deploying a Marketplace App
@@ -45,23 +45,27 @@ While Openbao is a fork of a production ready 1.14.x release of Hashicorp Vault,
 
 ## Getting Started After Deployment
 
-Once the deployment is complete, OpenBao is now installed and ready to use! You can now SSH into your machine and obtain the credentials which can be found in a .credentials file in the sudo users home directory (`/home/$SUDO_USER/.credentials`)
+Once the deployment is complete, OpenBao is installed and ready to use. You can SSH into your machine and obtain the credentials found in the `.credentials` file in the sudo users home directory `/home/$SUDO_USER/.credentials`.
 
-1.  `bao` commands can now run to continue setting up your OpenBao instance. To confirm, you can run the `bao status` command:
+1.  `bao` commands can run to continue setting up your OpenBao instance. To confirm, you can run the `bao status` command:
 
-        bao status
+    ```command
+    bao status
+    ```
 
-{{< note >}}
-If you receive an error when running the `bao status` command, you may need to reload the environment variable by sources your servers bashrc file. You can do so by running the following command:
+    {{< note >}}
+If you receive an error when running the `bao status` command, reload the environment variable by running the `source` command against your server's `bashrc` file.
 
-        source /root/.bashrc
+```command
+source /root/.bashrc
+```
 {{< /note >}}
 
-1. The OpenBao instance has already been initialized as part of the deployment, the unseal keys along with the root token can be found in the .credentials file in the sudo users home directory (`/home/$SUDO_USER/.credentials`).
+2. The OpenBao instance is initialized as part of the deployment. The unseal keys along with the root token can be found in the `.credentials` file in the sudo users home directory `/home/$SUDO_USER/.credentials`.
 
-These unseal keys should be stored in separate locations. For example, store one in a password manager such as 1Password, encrypted one with gpg, and store another offline on a USB key. Doing so ensures that compromising one storage location is not sufficient to recover the number of unseal keys required to decrypt the OpenBao database.
+The unseal keys should be stored in separate locations. For example, store one key in a password manager such as 1Password, encrypted with gpg, and another offline on a USB key. Doing so ensures that compromising one storage location is not sufficient to recover the number of unseal keys required to decrypt the OpenBao database.
 
-The `Initial Root Token` is equivalent to the "root" or superuser account for the OpenBao API. Record and protect this token in a similar fashion. Like the `root` account on a Unix system, this token should be used to create less-privileged accounts to use for day-to-day interactions with OpenBao and the root token should be used infrequently due to its widespread privileges.
+The `Initial Root Token` is equivalent to the root or superuser account for the OpenBao API. Record and protect this token in a similar fashion. Like the `root` account on a Unix system, this token should be used to create less-privileged accounts to use for day-to-day interactions with OpenBao and the root token should be used infrequently due to its widespread privileges.
 
 ### Unseal OpenBao
 
@@ -73,13 +77,13 @@ After the deployment is complete, OpenBao will be sealed. The following unseal s
 
     A prompt will appear:
 
-{{< output >}}
+    {{< output >}}
 Unseal Key (will be hidden):
 {{< /output >}}
 
 2.  Paste or enter one unseal key and press **Enter**. The command will finish with output similar to the following:
 
-{{< output >}}
+    {{< output >}}
 Unseal Key (will be hidden):
 Key                Value
 ---                -----
@@ -95,7 +99,7 @@ Storage Type       raft
 HA Enabled         false
 {{< /output >}}
 
-    Notice that the output indicates that the one out of two required unseal keys have been provided.
+    The output indicates that one out of the two required unseal keys has been provided.
 
 3.  Perform the `unseal` command again.
 
@@ -107,7 +111,7 @@ HA Enabled         false
 Unseal Key (will be hidden):
 {{< /output >}}
 
-5.  The resulting output should indicate that OpenBao is now unsealed (notice the `Sealed false` line).
+5.  The resulting output should indicate that OpenBao is now unsealed (`Sealed:false`).
 
     {{< output >}}
 Unseal Key (will be hidden):
@@ -133,7 +137,7 @@ Raft Applied Index      27
 
 OpenBao is now operational.
 
-### More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
