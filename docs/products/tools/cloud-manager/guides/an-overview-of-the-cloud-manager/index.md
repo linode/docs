@@ -3,7 +3,7 @@ slug: an-overview-of-the-cloud-manager
 title: "An Overview of the Cloud Manager"
 description: "This guide provides you with an overview of the Cloud Manager and covers how to locate features within Cloud Manager, create Linodes and more."
 published: 2019-12-20
-modified: 2024-07-05
+modified: 2024-07-08
 keywords: ["classic manager","cloud manager","linode"]
 aliases: ['/platform/manager/a-classic-to-cloud-manager-overview-guide/','/platform/manager/an-overview-of-the-linode-cloud-manager/', '/guides/an-overview-of-the-linode-cloud-manager/','/guides/an-overview-of-the-cloud-manager/']
 image: AnOverviewoftheLinodeCloudManager.png
@@ -175,5 +175,5 @@ In early July, we've made minor branding changes to the Cloud Manager. As part o
 
 | Previous Design | Updated Design&nbsp;&nbsp; |
 | -- | -- |
-| ![](cloud-manager-previous-light.jpg) | ![](cloud-manager-new-light.jpg) |
-| ![](cloud-manager-previous-dark.jpg) | ![](cloud-manager-new-dark.jpg) |
+| ![Screenshot of the previous light theme in the Cloud Manager](cloud-manager-previous-light.jpg) | ![Screenshot of the new light theme in the Cloud Manager](cloud-manager-new-light.jpg) |
+| ![Screenshot of the previous dark theme in the Cloud Manager](cloud-manager-previous-dark.jpg) | ![Screenshot of the new dark theme in the Cloud Manager](cloud-manager-new-dark.jpg) |
