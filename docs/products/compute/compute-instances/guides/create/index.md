@@ -16,7 +16,7 @@ This guide walks you through creating a Compute Instance (also frequently called
 - [Choose an Instance Type and Plan](#choose-an-instance-type-and-plan)
 - [Set the Label, Add Tags, and Assign a Placement Group](#set-the-label-add-tags-and-assign-a-placement-group)
 - [Create a Password and Add SSH Keys](#create-a-password-and-add-ssh-keys)
-- [Enable or Disable Local Disk Encryption](#enable-or-disable-local-disk-encryption)
+- [Enable or Disable Disk Encryption](#enable-or-disable-disk-encryption)
 - [Assign to a VPC (Optional)](#assign-to-a-vpc-optional)
 - [Assign to a Cloud Firewall (Optional)](#assign-to-a-cloud-firewall)
 - [Assign to a VLAN (Optional)](#assign-to-a-vlan)
@@ -102,9 +102,11 @@ If you don't have an existing Placement Group, you can click **Create Placement 
 
 -   **SSH Keys:** Add any SSH Keys to the root user account on the server. This enables you to log in through SSH without needing a password. SSH keys are created as a pair: a *private key* stored on your local computer and a *public key* that you can upload to remote systems and services. Since you only share your public key and your private key is kept safe and secure, this is a much more secure method for authentication than passwords. Learn more about uploading SSH keys through the Cloud Manager on the [Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/) guide.
 
-## Enable or Disable Local Disk Encryption
+## Enable or Disable Disk Encryption
 
-Secure the data on this Linode using data at rest encryption. Data center systems take care of encrypting and decrypting for you. If you need to enable or disable **Disk Encryption** after the Linode is created, you must use Rebuild to change this setting.
+Consider enabling **Disk Encrypt** on this Compute Instance. The platform manages encryption and decryption for you. After a Compute Instance is created, use [Rebuild](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rebuilding) to change this setting.
+
+![Enable Disk Encryption](create-disk-encryption.jpg)
 
 {{< note >}}
 Disk Encryption is not currently available in all regions.
