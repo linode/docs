@@ -15,6 +15,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Debian 9
+deprecated: true
 ---
 
 ## What is a LEMP Stack?
@@ -31,7 +32,7 @@ This guide describes an alternative to the popular LAMP stack, known as *LEMP*. 
 
 ### NGINX
 
-{{< content "install-nginx-debian" >}}
+{{% content "install-nginx-debian" %}}
 
 ### MariaDB
 

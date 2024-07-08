@@ -15,9 +15,9 @@ The PostgreSQL relational database system is a powerful, scalable, and standards
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** PostgreSQL should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -30,9 +30,9 @@ The PostgreSQL relational database system is a powerful, scalable, and standards
 
 ### PostgreSQL Options
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -143,7 +143,7 @@ The example commands in this section should be run as the `postgres` Linux user.
 
 ## Next Steps
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 For more on PostgreSQL, checkout the following guides:
 

@@ -18,9 +18,9 @@ aliases: ['/platform/marketplace/deploying-docker-with-marketplace-apps/', '/pla
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Docker should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -33,12 +33,12 @@ aliases: ['/platform/marketplace/deploying-docker-with-marketplace-apps/', '/pla
 
 ### Docker Options
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 - **Email address for SOA Record:** This should be the email address of your server administrator.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -69,4 +69,4 @@ After Docker has finished installing, you can access Docker from your terminal a
     - [Manage a Docker Cluster with Kubernetes](/docs/guides/manage-a-docker-cluster-with-kubernetes/)
 
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

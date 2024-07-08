@@ -21,6 +21,7 @@ relations:
         key: install-lighttpd
         keywords:
             - distribution: Ubuntu 16.04
+deprecated: true
 ---
 
 Lighttpd provides a lightweight web server that is capable of serving large loads while using less memory than servers like Apache. It is commonly deployed on high traffic sites, including WhatsApp and xkcd.

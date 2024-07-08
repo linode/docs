@@ -21,6 +21,7 @@ relations:
         keywords:
             - distribution: Debian 8
 tags: ["debian","database","mysql"]
+deprecated: true
 ---
 
 ![How to Install MySQL on Debian 8](how-to-install-mysql-on-debian-8.jpg "How to Install MySQL on Debian 8")
@@ -35,7 +36,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
     To check your hostname run:
 

@@ -12,9 +12,9 @@ aliases: ['/guides/deploy-peppermint-with-marketplace-apps/','/guides/peppermint
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Peppermint should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -29,11 +29,11 @@ aliases: ['/guides/deploy-peppermint-with-marketplace-apps/','/guides/peppermint
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-required-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ### Access your Peppermint App
 
@@ -41,12 +41,12 @@ aliases: ['/guides/deploy-peppermint-with-marketplace-apps/','/guides/peppermint
 
     ![Peppermint login screen](peppermint.png)
 
-    The default credentials to login to your Peppermint Ticket Management Panel are:
+    The default credentials to log in to your Peppermint Ticket Management Panel are:
 
        Email: admin@admin.com
        Password: 1234
 
-1. Once you login to the Peppermint Ticket Management Panel, update the email and password you used to log in. To do this, click the Settings gear logo in the top right corner.
+1. Once you log in to the Peppermint Ticket Management Panel, update the email and password you used to log in. To do this, click the Settings gear logo in the top right corner.
 
 ![peppermint_settings.png](peppermint_settings.png)
 
@@ -55,4 +55,4 @@ For more on Peppermint, consult the following resources:
 - [Peppermint Github](https://github.com/Peppermint-Lab/Peppermint/blob/master/README.md)
 - [Peppermint Documentation](https://docs.peppermint.sh/)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

@@ -4,7 +4,7 @@ title_meta: "Deploy and Manage a Kubernetes Cluster with the Linode API"
 description: "Learn how to deploy a cluster on Linode Kubernetes Engine (LKE) through the Linode API."
 og_description: "The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. This guide shows you how to use the Linode API to Deploy and Manage an LKE Cluster."
 published: 2019-11-11
-modified: 2023-02-09
+modified: 2024-06-21
 keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster"]
 image: deploy-and-manage-cluster-copy.png
 aliases: ['/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/','/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/','/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/']
@@ -44,7 +44,7 @@ This guide covers how to use the Linode API to:
 
 1. [Familiarize yourself with the Linode Kubernetes Engine service](https://www.linode.com/products/kubernetes/). This information helps you understand the benefits and limitations of LKE.
 
-1. [Create an API Token](/docs/products/tools/api/get-started/#create-an-api-token). You need this to access the LKE service.
+1. [Create an API Token](/docs/products/tools/api/guides/manage-api-tokens/#create-an-api-token). You need this to access the LKE service.
 
 1. [Install kubectl](#install-kubectl) on your computer. You use kubectl to interact with your cluster once it's deployed.
 
@@ -52,7 +52,7 @@ This guide covers how to use the Linode API to:
 
 ### Install kubectl
 
-{{< content "how-to-install-kubectl" >}}
+{{% content "how-to-install-kubectl" %}}
 
 ## Create an LKE Cluster
 
@@ -64,7 +64,7 @@ This guide covers how to use the Linode API to:
 | `k8s_version` | The desired version of Kubernetes for this cluster. |
 
 {{< note >}}
-The available plan types for LKE worker nodes are [Shared](/docs/products/compute/compute-instances/plans/choosing-a-plan/#shared-cpu-instances), [Dedicated CPU](/docs/products/compute/compute-instances/plans/choosing-a-plan/#3-dedicated-cpu), and [High Memory](/docs/products/compute/compute-instances/plans/choosing-a-plan/#2-high-memory) plans.
+The available plan types for LKE worker nodes are [Shared](/docs/products/compute/compute-instances/plans/choosing-a-plan/#shared-cpu-instances), [Dedicated CPU](/docs/products/compute/compute-instances/plans/choosing-a-plan/#dedicated-cpu-instances), and [High Memory](/docs/products/compute/compute-instances/plans/choosing-a-plan/#high-memory-instances) plans.
 {{< /note >}}
 
 1. To create an LKE Cluster, send a `POST` request to the `/lke/clusters` endpoint. The example below displays all possible request body parameters. Note that `tags` is an optional parameter.
@@ -396,6 +396,97 @@ The response body resembles the following:
 Each Linode account has a limit to the number of resources they can deploy. This includes services, like Compute Instances, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/products/platform/get-started/guides/support/) if you believe this may be the case.
 {{< /note >}}
 
+### Add Labels and Taints to your LKE Node Pools
+
+When creating or updating an LKE node pool, you can optionally add custom labels and taints to all nodes using the `labels` and `taints` parameters. Defining labels and taints on a per-pool basis through the Linode API has several benefits compared to managing them manually with `kubectl`, including:
+
+- Custom labels and taints automatically apply to new nodes when a pool is recycled or scaled up (either manually or through autoscaling).
+- LKE ensures that nodes have the desired taints in place before they become ready for pod scheduling. This prevents newly created nodes from attracting workloads that don't have the intended tolerations.
+
+The following cURL command provides an example of using the Linode API to create a new node pool with a custom taint and label. If you are copying this command to run on your own LKE cluster, replace {{< placeholder "12345" >}} with the ID of your LKE cluster.
+
+```command {title="Linode API cURL example for creating a new node pool:"}
+curl -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $TOKEN" \
+        -X POST -d '{
+        "type": "g6-standard-1",
+        "count": 3,
+        "taints": [
+            {
+                "key": "myapp.io/app",
+                "value": "test",
+                "effect": "NoSchedule"
+            }
+        ],
+        "labels": {
+            "myapp.io/app": "test"
+        }
+        }' https://api.linode.com/v4/lke/clusters/{{< placeholder "12345" >}}/pools
+```
+
+In the above command, labels are defined in the `labels` field as key-value pairs within a single object. Taints are defined as an array of objects in the `taints` field.
+
+-   **Labels:** The `labels` field expects an object with one or more key-value pairs. These key-value pairs should adhere to the specifications and restrictions outlined in the Kubernetes [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) documentation.
+
+    ```command
+    "labels": {
+        "myapp.io/app": "test"
+    }
+    ```
+
+    -   **Key:** A label's key must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores. Optionally, the key can begin with a valid DNS subdomain prefix.
+
+        - If the key does not begin with a DNS subdomain prefix, the maximum key length is 63 characters. Example: `my-app`.
+        - If the key begins with a DNS subdomain prefix, it must separate the prefix and the rest of the label with a forward slash (`/`). In this case, the maximum *total* length of the key is 128 characters, with up to 62 characters after the forward slash. The prefix must adhere to RFC 1123 DNS subdomain restrictions. Example: `example.com/my-app`.
+
+    -   **Value:** Must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 63 characters in length.
+
+-   **Taints:** The `taints` field expects an array of one or more objects, adhering to the guidelines outlined in the Kubernetes [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) documentation. A taint consists of a `key`, `value`, and `effect`:
+
+    ```command
+    "taints": [
+        {
+            "key": "myapp.io/app",
+            "value": "test",
+            "effect": "NoSchedule"
+        }
+    ]
+    ```
+
+    - **Key:** The `key` value must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 253 characters. Optionally, the `key` value can begin with a DNS subdomain prefix and a single slash (`/`), like `example.com/my-app`. In this case the maximum allowed length of the domain prefix is 253 characters.
+    - **Value:** The `value` key is optional. If given, it must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 63 characters.
+    - **Effect:** The `effect` value must be NoSchedule, PreferNoSchedule, or NoExecute.
+
+{{< note >}}
+Taint and label values cannot contain `kubernetes.io` or `linode.com` domains as these are reserved for LKE's own usage.
+{{< /note >}}
+
+You can also add, edit, or remove labels and taints on existing node pools using the Linode API. The example cURL command below demonstrates how to remove taints and update the labels on an existing node pool. If you are copying this command to run on your own LKE cluster, replace {{< placeholder "12345" >}} with the ID of your LKE cluster and {{< placeholder "196" >}} with the ID of your node pool.
+
+```command {title="Linode API cURL example for updating a node pool:"}
+curl -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $TOKEN" \
+    -X PUT -d '{
+        "type": "g6-standard-1",
+        "count": 3,
+        "taints": [],
+        "labels": {
+            "myapp.io/app": "prod",
+            "example": "foo",
+        }
+    }' https://api.linode.com/v4/lke/clusters/{{< placeholder "12345" >}}/pools/{{< placeholder "196" >}}
+```
+
+The above command results in the following changes to the node pool, assuming the labels and taints were originally entered as shown in the first create command.
+
+- Removes the "myapp.io/app" taint by specifying an empty array in the `taints` field.
+- Changes the label "myapp.io/app" to have a value of "prod" instead of "test".
+- Adds the new label "example=foo".
+
+{{< note >}}
+When updating or adding labels and taints to an existing node pool, it is not necessary to recycle it. This is because the values are updated live on the running nodes.
+{{< /note >}}
+
 ### Resize your LKE Node Pool
 
 You can resize an LKE cluster's node pool to add or decrease its number of nodes. You need your cluster's ID and the node pool's ID in order to resize it. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section. If you don’t know your node pool's ID, see the [List a Cluster’s Node Pools](#list-a-cluster-s-node-pools) section.
@@ -641,7 +732,7 @@ curl -H "Authorization: Bearer $TOKEN" \
 
 ## General Network and Firewall Information
 
-{{< content "lke-network-firewall-information-shortguide" >}}
+{{% content "lke-network-firewall-information-shortguide" %}}
 
 ## Where to Go From Here?
 

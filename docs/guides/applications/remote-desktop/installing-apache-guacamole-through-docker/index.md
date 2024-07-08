@@ -25,7 +25,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Installing Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 After installation, you can pull the following Docker images for use in later steps:
 

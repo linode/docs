@@ -39,8 +39,6 @@ Game servers and clients are an especially ripe target for attack. Use our [Sett
 
 1.  [Harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access).
 
-1.  [Remove unused network-facing services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services).
-
 1.  If you are using [**iptables**](/docs/guides/control-network-traffic-with-iptables/) (which is set in Linode's Ubuntu and Debian images by default), follow the [Configure your Firewall Using IPTables](#configure-your-firewall-using-iptables) section.
 
 1.  If instead you are using [**firewalld**](/docs/guides/introduction-to-firewalld-on-centos/) (as in Linode's CentOS 7 and Fedora images), follow the [Configure your Firewall Using FirewallD](#configure-your-firewall-using-firewalld) section.

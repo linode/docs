@@ -104,7 +104,7 @@ CentOS 7 and above, as well as Fedora, all use systemd-networkd and NetworkManag
     inet 10.0.0.1/24 brd 10.0.0.255 scope global eth1
     ```
 
-2. Test the VLAN's connectivity by pinging another Linode within the VLAN's private network, using the IPAM address assigned to it. For more details, see the *Testing Connectivity* section of the [Getting Started with VLANs](/docs/products/networking/vlans/get-started/#testing-connectivity) guide.
+2. Test the VLAN's connectivity by pinging another Linode within the VLAN's private network, using the IPAM address assigned to it. For more details, see the *Testing Connectivity* section of the [Attach a VLAN to a Compute Instance](/docs/products/networking/vlans/guides/attach-to-compute-instance/#testing-connectivity) guide.
 
 ## Additional Configuration Instructions
 

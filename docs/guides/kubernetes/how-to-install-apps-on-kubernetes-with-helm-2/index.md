@@ -250,7 +250,7 @@ The [`helm install` command](https://v2.helm.sh/docs/using_helm/#helm-install-in
     ghostEmail: email@example.com
     ```
 
-    Replace the value for ghostHost with a domain or subdomain that you own and would like to assign to the app, and the value for ghostEmail with your email.
+    Replace the value for `ghostHost` with a domain or subdomain that you own and would like to assign to the app, and the value for `ghostEmail` with your email.
 
     {{< note >}}
     If you don't own a domain name and won't continue to use the Ghost website after finishing this guide, you can make up a domain for this configuration file.

@@ -5,7 +5,7 @@ published: 2022-02-23
 modified: 2022-06-30
 ---
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}
 
 This guide covers how to migrate an existing MySQL or MariaDB database to a Managed Database. When migrating a database, there are two important terms to keep in mind: the *source* database and the *target* database.
 

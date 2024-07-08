@@ -24,9 +24,9 @@ Hosting your own Rust server allows you to customize settings and curate the num
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Rust should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
@@ -49,7 +49,7 @@ Hosting your own Rust server allows you to customize settings and curate the num
 - **Global Chat Enabled:** Enables global chat. Chat messages will be broadcast to all players.
 - **PvE Enabled:** Allow player vs. environment combat.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -71,7 +71,7 @@ After the Rust Marketplace App has finished deploying to your Linode, you will b
 
     <!--![Rust developer's console log in process.](rust-marketplace-developers-console.png)-->
 
-    You will be logged into the server, and the game will load.
+    You will be logged in to the server, and the game will load.
 
 ## Software Included
 
@@ -84,4 +84,4 @@ The Rust Marketplace App will install the following required software on your Li
 | [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Ports 28015 and 28016 will allow outgoing and incoming traffic. |
 | [**Fail2ban**](https://www.fail2ban.org/wiki/index.php/Main_Page) | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

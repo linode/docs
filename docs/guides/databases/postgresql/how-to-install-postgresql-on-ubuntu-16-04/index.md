@@ -19,6 +19,7 @@ relations:
         key: install-postrgesql-database
         keywords:
             - distribution: Ubuntu 16.04
+deprecated: true
 ---
 
 ![How to Install PostgreSQL on Ubuntu 16.04](how-to-install-postgresql-on-ubuntu-16-04.jpg "How to Install PostgreSQL on Ubuntu 16.04")
@@ -80,7 +81,7 @@ mytestdb=#
 
 ### Create Tables
 
-This section contains examples that create a test database with an employee’s first and last name, assigning each a unique key. When creating the tables, you may specify as many parameters (columns) as you need and name them appropriately. Run the commands in this section from the PostgreSQL shell, opened in Step 2 of the [Create a Database](/docs/guides/how-to-install-postgresql-on-ubuntu-16-04/#create-a-database) section.
+This section contains examples that create a test database with an employee’s first and last name, assigning each a unique key. When creating the tables, you may specify as many parameters (columns) as you need and name them appropriately. Run the commands in this section from the PostgreSQL shell, opened in Step 2 of the [Create a Database](/docs/guides/how-to-install-postgresql-on-ubuntu-16-04/#create-a-postgresql-database) section.
 
 1.  Create a table called “employees” in the test database:
 
@@ -163,12 +164,12 @@ To create a new table where you selectively wish to keep only rows with certain 
     CREATE TABLE < ADD YOUR NAME FOR NEW TABLE HERE > AS
     SELECT * FROM < YOUR ORIGINAL TABLE > WHERE < YOUR COLUMN NAME > = < COLUMN VALUE>;
 
-To illustrate this syntax, create a new table "employees_new" when "last_name" is equal to "Doe". Run the syntax above on the "employees" table and find rows with "last_name" as "Doe" To do this, type the following command:
+To illustrate this syntax, create a new table `employees_new` when `last_name` is equal to "Doe". Run the syntax above on the "employees" table and find rows with `last_name` as "Doe" To do this, type the following command:
 
     CREATE TABLE employees_new AS
     SELECT * FROM employees WHERE last_name = 'Doe';
 
-This creates a new table named “employees_new” with “last_name” as “Doe.” To check our new table, we can run the following command:
+This creates a new table named `employees_new` with `last_name` as "Doe". To check our new table, we can run the following command:
 
     SELECT * FROM employees_new;
 
@@ -196,7 +197,7 @@ An output similar to the following appears:
 
   {{< /output >}}
 
-This is pretty straightforward. But let's say if you are trying to find a record where you don't remember the exact row value. In that case, you can use the partial match PostgreSQL operator “LIKE.” Let's try to pull out complete row information where “last_name” in the “employees_1” table starts with an "S". Run the following query on “employees_1” with a “LIKE” operator:
+This is pretty straightforward. But let's say if you are trying to find a record where you don't remember the exact row value. In that case, you can use the partial match PostgreSQL operator “LIKE.” Let's try to pull out complete row information where `last_name` in the “employees_1” table starts with an "S". Run the following query on “employees_1” with a “LIKE” operator:
 
     SELECT * FROM employees_1 WHERE last_name LIKE 'S%';
 
@@ -207,7 +208,7 @@ An output similar to the following appears:
            3 | Jax       | Smith
   {{< /output >}}
 
-The way you defined the “LIKE” operator was such that the query checked every “last_name” value to find values that started with an "S". The trailing “%” in “last_name LIKE 'S%'” says find all strings that start with an "S".
+The way you defined the “LIKE” operator was such that the query checked every `last_name` value to find values that started with an "S". The trailing “%” in `last_name LIKE 'S%'` says find all strings that start with an "S".
 
 ### **Create PostgreSQL Roles**
 

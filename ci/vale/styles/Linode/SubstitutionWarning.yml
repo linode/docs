@@ -21,3 +21,7 @@ swap:
   info: information
   repo: repository
   whitelist(?:ed|ing)?: allowlist
+  "[Ll]ogin to": log in to
+  "[Ll]og into": log in to
+  "[Ll]ogged into": logged in to
+  "[Ll]ogging into": logging in to

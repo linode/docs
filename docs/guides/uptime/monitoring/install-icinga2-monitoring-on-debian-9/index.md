@@ -12,6 +12,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Official Icinga Documentation](https://www.icinga.com/docs/icinga2/latest/doc/01-about/)'
 aliases: ['/uptime/monitoring/install-icinga2-monitoring-on-debian-9/']
+deprecated: true
 ---
 
 ![Install Icinga 2 Monitoring on Debian 9](Icinga2.jpg "Install Icinga 2 Monitoring on Debian 9")
@@ -24,7 +25,7 @@ Icinga 2 can be configured to monitor internal systems' state and check the load
 
 This guide shows how to install and configure the latest version of Icinga 2 web monitoring tool on Debian 9 to monitor network infrastructure.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## Before You Begin
 

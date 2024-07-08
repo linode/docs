@@ -4,7 +4,7 @@ description: "Learn how to migrate an existing PostgreSQL database to Linode's M
 published: 2022-06-17
 ---
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}
 
 This guide covers how to migrate an existing PostgreSQL database to a Managed Database. When migrating a database, there are two important terms to keep in mind: the *source* database and the *target* database.
 

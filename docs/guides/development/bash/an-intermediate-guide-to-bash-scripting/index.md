@@ -423,8 +423,8 @@ The example below tests if your `/etc/passwd` file exists. If the file exists, y
 | `-f` | File exists and is a regular file (not a directory or a device file). |
 | `-G` | File exists and has the same group as the active user running the bash script. |
 | `-h` | Files exists and is a symbolic link. |
-| `-g` | Files exists and has the [set group ID flag](/docs/guides/modify-file-permissions-with-chmod/#chmod-command-syntax-and-options) set. |
-| `-k` | File exists and has a [sticky bit flag](/docs/guides/modify-file-permissions-with-chmod/#chmod-command-syntax-and-options) set. |
+| `-g` | Files exists and has the [set group ID flag](/docs/guides/modify-file-permissions-with-chmod/#changing-file-permissions-with-chmod) set. |
+| `-k` | File exists and has a [sticky bit flag](/docs/guides/modify-file-permissions-with-chmod/#changing-file-permissions-with-chmod) set. |
 | `-L` | File exists and is a symbolic link. |
 | `-N` | File exists and has been modified since it was last read. |
 | `-O` | File exists and is owned by the effective user id. |
@@ -432,7 +432,7 @@ The example below tests if your `/etc/passwd` file exists. If the file exists, y
 | `-r` | File exists and is readable. |
 | `-S` | File exists and is socket. |
 | `-s` | File exists and has a nonzero size. |
-| `-u` | File exists and its [set user ID flag](/docs/guides/modify-file-permissions-with-chmod/#chmod-command-syntax-and-options) is set. |
+| `-u` | File exists and its [set user ID flag](/docs/guides/modify-file-permissions-with-chmod/#changing-file-permissions-with-chmod) is set. |
 | `-w` | File exists and is writable by the current user. |
 | `-x` | File exists and is executable by the current user. |
 {{< /note >}}

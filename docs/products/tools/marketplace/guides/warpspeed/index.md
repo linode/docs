@@ -15,9 +15,9 @@ WarpSpeed makes it easy for developers to access cloud infrastructure via the po
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** WarpSpeed should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
@@ -30,12 +30,12 @@ WarpSpeed makes it easy for developers to access cloud infrastructure via the po
 
 ### WarpSpeed VPN Options
 
-- **Admin Email:** This is the admin user email to login to your WarpSpeed instance.
-- **Admin Password:** This is the admin user password to login to your WarpSpeed instance.
+- **Admin Email:** This is the admin user email to log in to your WarpSpeed instance.
+- **Admin Password:** This is the admin user password to log in to your WarpSpeed instance.
 - **DNS name:** This is the domain you will be using for your WarpSpeed instance.
 - **Data Directory:** This is the directory that your WarpSpeed data will be stored in, default will be `/wirespeed`.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -49,4 +49,4 @@ WarpSpeed makes it easy for developers to access cloud infrastructure via the po
 
 Now that you’ve accessed your WarpSpeed VPN instance, check out [the official WarpSpeed VPN documentation](https://bunker.services/products/warpspeed/install-linode) to learn how to further configure your WarpSpeed VPN instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

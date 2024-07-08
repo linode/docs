@@ -5,7 +5,7 @@ description: 'This guide provides formatting and style guidelines for documentat
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2014-01-15
-modified: 2024-04-18
+modified: 2024-05-29
 keywords: ["style guide", "format", "formatting", "how to write", "write for us", "write for linode", "linode docs", "submissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
@@ -74,12 +74,24 @@ Introductions should be concise; explain what the goal of the guide is and why. 
 
 ### Before You Begin
 
-The *Before You Begin* section is an area for basic prerequisites a reader should know or have completed before proceeding further in your guide. Use the example below and edit as needed:
+The *Before You Begin* section is used to inform the reader of any prerequisites needed to successfully complete the guide. This may include the following:
 
-```file {title="Author Submission"}
+- Specific Akamai services or features that are needed, like Compute Instances, LKE clusters, or Object Storage buckets. This should include any hardware or plan requirements (see [Pricing](https://www.linode.com/pricing/)).
+
+- Setup tasks on Akamai services, such as securing a Compute Instance, creating a limited user, configuring a hostname. Only include tasks that are related to the guide and the guide's objective.
+
+- External requirements, such as a registered domain name or specific local software (such as a PC running Windows 11).
+
+- Software or applications that need to be installed or configured (i.e. LAMP stack, Docker, etc.), making sure to include links to instructions. Only include software that is directly used within the guide, but is not the focus of the guide. If the software needs additional configuration or usage information, it should likely be included in the guide's instructions and not in the *Before You Begin* section.
+
+- Foundational knowledge, like an understanding of technology fundamentals (like container orchestration) or specific software or software stacks (like Kubernetes).
+
+Below is an example *Before You Begin* section. You may copy the example and edit it as needed:
+
+```file {title="Before You Begin"}
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you do not already have a virtual machine to use, create a Compute Instance with at least 4 GB of memory. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 ```
@@ -345,8 +357,12 @@ show_on_rss_feed: false
 To use this shortguide in another guide, use the following syntax:
 
 ```file {title="sample_embedding_guide/index.md"}
-{{</* content "install_python_miniconda" */>}}
+{{%/* content "install_python_miniconda" */%}}
 ```
+
+{{< note >}}
+Be sure to use the `%` delimiter inside the surrounding `{{ }}` braces for `content` shortcodes.
+{{< /note >}}
 
 ### Files
 
@@ -690,7 +706,7 @@ There are four unique types of notes: **primary**, **secondary**, **warning**, a
 
 -   **Primary** (type is unset or `type="primary"`, title defaults to "Note"): Used for additional related information that does not fit with the rest of the document. Can include alternative suggestions or solutions, developer tips, or general best practices that are not critical to the success of the task at hand.
 
-    {{< note title="Best Practice: Use Passsword Generators" >}}
+    {{< note title="Best Practice: Use Password Generators" >}}
     When creating root, user, or other passwords, you can increase security by using a password generator such as [1Password](https://www.1password.com) to create and save complex, encrypted passwords.
     {{< /note >}}
 

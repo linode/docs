@@ -44,13 +44,13 @@ The example below displays the skeleton of a Playbook. At its most basic, a Play
 {{< note type="secondary" title="Common Ansible Modules" isCollapsible=true >}}
 | **Module** | **Usage** |
 | ---------------- | ------------- |
-| [command](http://docs.ansible.com/ansible/command_module.html) | Executes a command on a remote node. |
-| [script](http://docs.ansible.com/ansible/script_module.html) | Transfers a local script to a managed node and then runs the script on the remote node. |
-| [shell](http://docs.ansible.com/ansible/command_module.html) | Executes a command through a shell (`/bin/sh`) on a remote node. |
-| [template](http://docs.ansible.com/ansible/template_module.html) | Uses a local file template to create a file on a remote node. |
-| [apt](http://docs.ansible.com/ansible/apt_module.html) | Manages apt packages on Debian or Ubuntu systems. |
-| [git](http://docs.ansible.com/ansible/apt_module.html) | Deploy software or files from git checkouts. |
-| [service](http://docs.ansible.com/ansible/apt_module.html) | Manage services on your remote node's system. Supports BSD init, OpenRC, SysV, Solaris SMF, systemd, upstart init systems.  |
+| [command](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/command_module.html) | Executes a command on a remote node. |
+| [script](http://docs.ansible.com/ansible/latest/collections/ansible/builtin/script_module.html) | Transfers a local script to a managed node and then runs the script on the remote node. |
+| [shell](http://docs.ansible.com/ansible/latest/collections/ansible/builtin/command_module.html) | Executes a command through a shell (`/bin/sh`) on a remote node. |
+| [template](http://docs.ansible.com/ansible/latest/collections/ansible/builtin/template_module.html) | Uses a local file template to create a file on a remote node. |
+| [apt](http://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html) | Manages apt packages on Debian or Ubuntu systems. |
+| [git](http://docs.ansible.com/ansible/latest/collections/ansible/builtin/git_module.html) | Deploy software or files from git checkouts. |
+| [service](http://docs.ansible.com/ansible/latest/collections/ansible/builtin/service_module.html) | Manage services on your remote node's system. Supports BSD init, OpenRC, SysV, Solaris SMF, systemd, upstart init systems.  |
 {{< /note >}}
 
 {{< file "Playbook Skeleton" yaml >}}

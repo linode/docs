@@ -59,7 +59,7 @@ If you have a registered domain name that you want to point to your ownCloud ins
 
 In this section, you install the Apache web server and all of the necessary PHP components.
 
-1. [Connect to your Linode via SSH](/docs/products/platform/get-started/#log-in-using-ssh).
+1. [Connect to your Linode via SSH](/docs/products/compute/compute-instances/get-started/#connect-to-the-instance).
 
 1. Install Apache and all the required PHP packages:
 

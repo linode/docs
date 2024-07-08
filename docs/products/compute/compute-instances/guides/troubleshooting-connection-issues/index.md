@@ -65,7 +65,7 @@ If your Compute Instance isn't booting normally, you will not be able to rely on
 
 When you boot into Rescue Mode, you are booting your Compute Instance into the [Finnix recovery Linux distribution](https://www.finnix.org). This Finnix image includes a working network configuration, and you will be able to mount your Compute Instance's disks from this environment, which means that you will be able to access your files.
 
-1.  Review the Rescue and Rebuild guide for instructions and [boot into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode). If your Compute Instance does not reboot into Rescue Mode successfully, please [contact Linode Support](/docs/products/platform/get-started/guides/support/#contacting-linode-support).
+1.  Review the Rescue and Rebuild guide for instructions and [boot into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode). If your Compute Instance does not reboot into Rescue Mode successfully, please [contact Linode Support](/docs/products/platform/get-started/guides/support/#contact-customer-support).
 
 1.  Connect to Rescue Mode via the Lish console as you would normally. You will not be required to enter a username or password to start using the Lish console while in Rescue Mode.
 
@@ -81,7 +81,7 @@ If your Compute Instance can't boot, then it may have experienced filesystem cor
 
 1. If your filesystem check reports errors that cannot be fixed, you may need to [rebuild your Compute Instance](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rebuilding).
 
-1. If the filesystem check reports errors that it has fixed, try rebooting your Compute Instance under your normal [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#booting-from-a-configuration-profile). After you reboot, you may find that your connection issues are resolved. If you still cannot connect as normal, restart the troubleshooting process from the [beginning of this guide](#is-your-compute-instance-running).
+1. If the filesystem check reports errors that it has fixed, try rebooting your Compute Instance under your normal [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#boot-from-a-configuration-profile). After you reboot, you may find that your connection issues are resolved. If you still cannot connect as normal, restart the troubleshooting process from the [beginning of this guide](#is-your-compute-instance-running).
 
 1. If the filesystem check does not report any errors, there may be another reason for your booting issues. Continue to [inspecting your system and kernel logs](#inspect-system-and-kernel-logs).
 
@@ -212,7 +212,7 @@ If your report does not look like any of the previous examples, read through the
 
 If your MTR indicates a configuration issue within your Compute Instance, you can confirm the problem by using Rescue Mode:
 
-1.  Reboot your Compute Instance into [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode).
+1.  Reboot your Compute Instance into [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode).
 
 1.  Run another MTR report from your computer to your Compute Instance's IP address.
 
@@ -224,13 +224,13 @@ If your MTR indicates a configuration issue within your Compute Instance, you ca
 
 Before opening a support ticket, you should also generate a *reverse MTR* report. The MTR tool is run from your Compute Instance and targets your machine's IP address on your local network, whether you're on your home LAN, for example, or public WiFi. To run an MTR from your Compute Instance, log in to your Lish console. To find your local IP, visit a website like https://www.whatismyip.com/.
 
-Once you have generated your original MTR and your reverse MTR, [open a Linode support ticket](/docs/products/platform/get-started/guides/support/#contacting-linode-support), and include your reports and a description of the troubleshooting you've performed so far. Linode Support will try to help further diagnose the routing issue.
+Once you have generated your original MTR and your reverse MTR, [open a Linode support ticket](/docs/products/platform/get-started/guides/support/#contact-customer-support), and include your reports and a description of the troubleshooting you've performed so far. Linode Support will try to help further diagnose the routing issue.
 
 ## Troubleshoot Network Configuration Issues
 
 If you have determined that your network configuration is the cause of the problem, review the following troubleshooting suggestions. If you make any changes in an attempt to fix the issue, you can test those changes with these steps:
 
-1. Run another MTR report (or [ping](/docs/guides/troubleshooting-overview/#can-you-ping-the-linode) the Compute Instance) from your computer to your Compute Instance's IP.
+1. Run another MTR report (or [ping](/docs/guides/linux-ping-command/) the Compute Instance) from your computer to your Compute Instance's IP.
 
 1. If the report shows no packet loss but you still can't access SSH or other services, this result indicates that your network connection is up again, but the other services are still down. Move onto [troubleshooting SSH](#troubleshoot-ssh) or [troubleshooting other services](#troubleshoot-other-services).
 

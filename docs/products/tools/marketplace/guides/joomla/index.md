@@ -12,9 +12,9 @@ external_resources:
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Joomla should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -31,11 +31,11 @@ external_resources:
 - **MySQL `root` password** *(required)*: The password for the `root` MySQL user.
 - **MySQL User Password** *(required)*: The password for the `joomla` MySQL user.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -75,4 +75,4 @@ The first time you access your Joomla site, you are prompted to finish the Jooml
 
     ![Screenshot of a Joomla admin dashboard](joomla-admin-panel.png)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

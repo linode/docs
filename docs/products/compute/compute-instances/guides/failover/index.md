@@ -2,7 +2,7 @@
 title: "Configure Failover on a Compute Instance"
 description: "This guide discusses how to enable failover on a Linode Compute Instance through using our IP Sharing feature with software such as keepalived or FRR."
 published: 2022-03-23
-modified: 2024-02-20
+modified: 2024-06-20
 keywords: ['IP failover','IP sharing','elastic IP']
 aliases: ['/guides/ip-failover/']
 tags: ["media"]
@@ -53,11 +53,8 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | Washington, DC (USA) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 17 |
 
 {{< note >}}
-If a data center is marked as *undergoing network upgrades*, customers may encounter issues enabling IP Sharing and configuring failover. For Compute Instances that already have IP Sharing enabled, this feature should still function as intended. Once the network upgrades are completed, IP Sharing will be supported through the new method (BGP). Review documentation on our [planned network infrastructure upgrades](/docs/products/compute/compute-instances/guides/network-infrastructure-upgrades/) to learn more about these changes.
-{{< /note >}}
-
-{{< note >}}
-IP failover for VLAN IP addresses is supported within every data center where VLANs are available. This feature does not depend on Linode's IP Sharing feature and depends on ARP-based failover software, such as keepalived.
+- If a data center is marked as *undergoing network upgrades*, customers may encounter issues enabling IP Sharing and configuring failover. For Compute Instances that already have IP Sharing enabled, this feature should still function as intended. Once the network upgrades are completed, IP Sharing will be supported through the new method (BGP). Review documentation on our [planned network infrastructure upgrades](/docs/products/compute/compute-instances/guides/network-infrastructure-upgrades/) to learn more about these changes.
+- IP failover for VLAN IP addresses is supported within every data center where VLANs are available. This feature does not depend on Linode's IP Sharing feature and depends on ARP-based failover software, such as keepalived.
 {{< /note >}}
 
 ## IP Address Failover Methods
@@ -75,18 +72,13 @@ IP failover for VLAN IP addresses is supported within every data center where VL
 The instructions within this guide enable you to configure failover using IP Sharing and the [lelastic](https://github.com/linode/lelastic) tool, a Linode provided tool based on GoBGP that automates much of the configuration. While lelastic enables many basic implementations of failover, you may want to consider using FRR or any other BGP client if your implementation is more advanced. See [Configuring IP Failover over BPG using FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/).
 
 {{< note >}}
-If your data center supports the legacy method (ARP), use the [Configuring IP Failover using keepalived](/docs/products/compute/compute-instances/guides/failover-legacy-keepalived/) guide instead. That guide should also be used when setting up failover for VLAN IP addresses.
+- If your data center supports the legacy method (ARP), use the [Configuring IP Failover using keepalived](/docs/products/compute/compute-instances/guides/failover-legacy-keepalived/) guide instead. That guide should also be used when setting up failover for VLAN IP addresses.
+- If you've included your compute instances in a [placement group](/docs/products/compute/compute-instances/guides/placement-groups/), the group needs to use **Anti-affinity** as its Affinity Type, which spreads them out in a data center. The opposite Affinity Type, **Affinity** physically places compute instances close together, sometimes on the same host. This defeats the purpose of fail over.
 {{< /note >}}
 
-To configure failover, complete each section in the order shown:
+To configure failover, complete each section that follows.
 
-1.  [Create and Share the Shared IP Address](#create-and-share-the-shared-ip-address)
-1.  For *each* Compute Instance:
-    - [Add the Shared IP to the Networking Configuration](#add-the-shared-ip-to-the-networking-configuration)
-    - [Install and Configure Lelastic](#install-and-configure-lelastic)
-1.  [Test Failover](#test-failover)
-
-### Create and Share the Shared IP Address
+### 1. Create and Share the Shared IP Address
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com/).
 
@@ -106,7 +98,7 @@ To configure failover, complete each section in the order shown:
     When IP Sharing is enabled for an IP address, all connectivity to that IP address is immediately lost *until* it is configured on [Lelastic](#install-and-configure-lelastic), [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/), or another BGP routing tool. This is not an issue when adding a new IP address, but should be considered if you are enabling IP Sharing on an existing IP address that is actively being used.
     {{< /note >}}
 
-### Add the Shared IP to the Networking Configuration
+### 2. Add the Shared IP to the Networking Configuration
 
 Adjust the network configuration file on *each* Compute Instance, adding the shared IP address and restarting the service.
 
@@ -175,7 +167,7 @@ Adjust the network configuration file on *each* Compute Instance, adding the sha
 
         Since the loopback interface is not used, you must also add the `-allifs` option to the lelastic command (discussed in a separate section below).
 
-### Install and Configure Lelastic
+### 3. Install and Configure Lelastic
 
 Next, we need to configure the failover software on *each* Compute Instance. For this, the [lelastic](https://github.com/linode/lelastic) utility is used. For more control or for advanced use cases, follow the instructions within the [Configuring IP Failover over BPG using FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) guide instead of using lelastic.
 
@@ -199,7 +191,7 @@ Next, we need to configure the failover software on *each* Compute Instance. For
     ```
     {{< /note >}}
 
-1.  Next, prepare the command to configure BGP routing through lelastic. Replace *[id]* with the ID corresponding to your data center in the [table above](/docs/products/compute/compute-instances/guides/failover/#ip-failover-support) and *[role]* with either `primary` or `secondary`. You do not need to run this command, as it is configured as a service in the following steps.
+1.  Next, prepare the command to configure BGP routing through lelastic. Replace *[id]* with the ID corresponding to your data center in the [table above](#ip-sharing-availability) and *[role]* with either `primary` or `secondary`. You do not need to run this command, as it is configured as a service in the following steps.
 
     ```command
     lelastic -dcid [id] -[role] &

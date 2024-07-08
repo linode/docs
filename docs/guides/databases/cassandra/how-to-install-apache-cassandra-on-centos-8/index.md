@@ -53,7 +53,7 @@ In order to successfully execute the commands in this guide, you will need to ru
 
         curl -o repo_key http://rpm.datastax.com/rpm/repo_key
 
-1.  The key should now be contained in a file called "repo_key". Install the key with the package manager:
+1.  The key should now be contained in a file called `repo_key`. Install the key with the package manager:
 
         sudo rpm --import repo_key
 
@@ -164,7 +164,7 @@ permissions_validity_in_ms: 0
 The `cqlshrc` file holds configuration settings that influence user preferences and how Cassandra performs certain tasks.
 
 {{< note >}}
-Ensure you complete the steps in this section using your limited user account. This account will need [sudo privileges](/docs/products/compute/compute-instances/guides/set-up-and-secure/#centos-fedora), if it does not already have them.
+Ensure you complete the steps in this section using your limited user account. This account will need [sudo privileges](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), if it does not already have them.
 {{< /note >}}
 
 Since your Cassandra username and password can be stored in plaintext, the `cqlshrc` file should only be accessible to your administrative user account, and is designed to be inaccessible to other accounts on your Linux system.

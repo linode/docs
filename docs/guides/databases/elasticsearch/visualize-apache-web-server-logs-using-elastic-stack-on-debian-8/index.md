@@ -20,6 +20,7 @@ relations:
         key: visualize-apache-logs-using-elastic-stack
         keywords:
             - distribution: Debian 8
+deprecated: true
 ---
 
 ![Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8](elastic-stack-visualize-server-logs-title.jpg "Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8")

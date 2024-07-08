@@ -16,9 +16,9 @@ aliases: ['/platform/marketplace/how-to-deploy-flask-with-marketplace-apps/', '/
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Flask should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -69,7 +69,7 @@ Many configuration files can be overwritten to support a new configuration inste
 
 ### Next Steps
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 Now that you are familiar with all the software installed on your Linode with the Flask Marketplace app, you can explore the following steps:
 

@@ -27,6 +27,7 @@ relations:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Debian 9
+deprecated: true
 ---
 
 ![Ruby on Rails with nginx on Debian](ruby_on_rails_with_nginx_debian_8_smg.png "Ruby on Rails with nginx on Debian 8")
@@ -39,7 +40,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  Follow the [Getting Started](/docs/products/platform/get-started/) and [Securing the Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and [set the Linode's hostname](/docs/products/platform/get-started/#setting-the-hostname).
+1.  Follow the [Getting Started](/docs/products/platform/get-started/) and [Securing the Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and [set the Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
     To check the hostname run:
 
@@ -63,7 +64,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Use the Ruby Version Manager (RVM) to install Ruby. Be sure to install a Ruby version that is compatible with the version of Rails in your Gemfile. This guide will use Rails 5.1.4 and Ruby 2.4.2.
 
-{{< content "install-ruby-with-rvm" >}}
+{{% content "install-ruby-with-rvm" %}}
 
 ### Install Rails
 

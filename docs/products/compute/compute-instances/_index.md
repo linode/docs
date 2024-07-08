@@ -2,7 +2,7 @@
 title: Compute Instances
 title_meta: "Compute Instance Product Documentation"
 description: "Host your workloads on Linode's secure and reliable cloud infrastructure using Compute Instances, versatile Linux-based virtual machines."
-modified: 2023-09-21
+modified: 2024-05-21
 tab_group_main:
     is_root: true
     title: Overview
@@ -22,7 +22,7 @@ Compute Instances are available across [all regions](https://www.linode.com/glob
 
 Below is a table with specifications and prices for each type of Compute plan. Note that pricing and plan availability may vary between regions. See our [Pricing](https://www.linode.com/pricing/) page for a full list of pricing options.
 
-{{< content "instance-comparison-shortguide" >}}
+{{% content "instance-comparison-shortguide" %}}
 
 ## Technical Specifications
 
@@ -49,6 +49,7 @@ Linode bundles the following services with all Compute Instances:
 - Domain management through our [DNS Manager](https://www.linode.com/products/dns-manager/)
 - Seamless firewall management with [Cloud Firewalls](https://www.linode.com/products/cloud-firewall/)
 - Private Layer 2 networks with [VLANs](https://www.linode.com/products/vlan/)
+- Physical placement of your Compute Instances in a data center with [Placement Groups](/docs/products/compute/compute-instances/guides/placement-groups/)
 - Metrics and monitoring through the [Cloud Manager](https://www.linode.com/products/monitoring/) and [Longview](/docs/products/tools/longview/) (free plan)
 - Reusable deployment scripts through [StackScripts](https://www.linode.com/products/stackscripts/)
 

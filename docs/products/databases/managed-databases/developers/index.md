@@ -6,7 +6,7 @@ tab_group_main:
     weight: 50
 ---
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}
 
 ## Linode API
 

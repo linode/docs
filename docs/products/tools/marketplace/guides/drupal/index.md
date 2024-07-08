@@ -16,9 +16,9 @@ In addition to the core infrastructure, there are a number of freely available D
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Drupal should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -34,7 +34,7 @@ In addition to the core infrastructure, there are a number of freely available D
 - **Database Root Password** *(required)*: Password for your Drupal site's MariaDB database `root` user.
 - **Database User Password** *(required)*: Password for your Drupal site's MariaDB database `drupal` user.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -67,7 +67,7 @@ The Drupal Marketplace App installs the following required software on your Lino
 | [**Apache HTTP Server**](https://httpd.apache.org) | Web Server used to serve the Drupal site. |
 | [**Drupal 10**](https://www.drupal.org/about/10) | Content management system. |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 ## Next Steps
 

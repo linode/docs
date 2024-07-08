@@ -274,7 +274,7 @@ You will now complete the steps to deploy your Docker Registry to your Kubernete
 
 To enabled basic access restriction for your Docker registry, you will use the `htpasswd` utility. This utility allows you to use a file to store usernames and passwords for basic HTTP authentication. This will require you to log into your Docker registry prior to being able to push or pull images from and to it.
 
-1.  Install the `htpasswd` utility. This example is for an Ubuntu 18.04 instance, but you can use your system's package manger to install it.
+1.  Install the `htpasswd` utility. This example is for an Ubuntu 18.04 instance, but you can use your system's package manager to install it.
 
     ```command
     sudo apt install apache2-utils -y
@@ -511,4 +511,4 @@ In this section, you will create a test deployment using the image that you push
 
 ## (Optional) Tear Down your Kubernetes Cluster
 
-To avoid being further billed for your Kubernetes cluster and NodeBlancer, [delete your cluster using the Linode Cloud Manager](/docs/products/compute/kubernetes/#delete-a-cluster). Similarly, to avoid being further billed for our registry's Object Storage bucket, see [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/).
+To avoid being further billed for your Kubernetes cluster and NodeBlancer, [delete your cluster using the Linode Cloud Manager](/docs/products/compute/kubernetes/guides/manage-clusters/#delete-a-cluster). Similarly, to avoid being further billed for our registry's Object Storage bucket, see [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/).

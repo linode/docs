@@ -71,7 +71,7 @@ Magento requires as much as 2GB of free memory. If your system does not have eno
 
 If you do not have access to a system with 2GB of memory, you can create a swap file with the following commands. This swap file is temporary and only persists until the next reboot.
 
-1.  Create a directory for the swap file, and add a file within this directory to hold the swap data. The `count` parameter refers to the size of the swap file in MBs. This must be set to at least 2048, but you can configure it to an even larger amount if you want.
+1.  Create a directory for the swap file, and add a file within this directory to hold the swap data. The `count` parameter refers to the size of the swap file in megabytes. This must be set to at least 2048, but you can configure it to an even larger amount if you want.
 
         sudo mkdir /swapdir/
         sudo dd if=/dev/zero of=/swapdir/swapfile bs=1MB count=2048
@@ -462,7 +462,7 @@ Troubleshoot SELinux issues by changing `SELINUX=enforcing` to `SELINUX=permissi
 3.  Here is an example of a sample installation. Replace `db-password` and `db-user` with the user name and password you created for MySQL earlier. Create a unique and strong password for the `admin-password`. Replace `your_URL_or_domain` with the proper `base-url` as described above. See the table following this section for more information on each option.
 
         bin/magento setup:install --admin-firstname="Magento" --admin-lastname="User" --admin-email="user@example.com" --admin-user="Magentouser" --admin-password="password" --db-name="magento" --db-host="localhost" --db-user="magento" --db-password="password" --language=en_US --currency=USD --timezone=Europe/London --cleanup-database --base-url=http://"your_URL_or_domain"
-4.  Wait for Magento to complete its installation. This typically takes 5 to 10 minutes. Upon completion, the program displays a "Success" message as well as a `Magento Admin URI` key. The URI provides access to the Magento Admin page. The label begins with "admin_", followed by a six-digit alphanumerical sequence.
+4.  Wait for Magento to complete its installation. This typically takes 5 to 10 minutes. Upon completion, the program displays a "Success" message as well as a `Magento Admin URI` key. The URI provides access to the Magento Admin page. The label begins with `admin_`, followed by a six-digit alphanumerical sequence.
 5.  For ease of development, you can place your Magento application into development mode while you work on getting it running. See the post-installation section for information on placing your store into production mode.
 
         sudo bin/magento deploy:mode:set developer

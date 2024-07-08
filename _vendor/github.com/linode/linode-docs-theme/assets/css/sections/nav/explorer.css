@@ -15,3 +15,8 @@
   box-sizing: border-box;
   height: calc(var(--height-navbar-row) + 1px);
 }
+
+/* For the dynamic sections (e.g. blog) showing the static explorer on navigation just creates flicker, so hide it.  */
+.is-turbo-loaded .type-sections #explorer-static {
+  display: none;
+}

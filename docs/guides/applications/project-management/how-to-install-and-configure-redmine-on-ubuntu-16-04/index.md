@@ -14,6 +14,7 @@ external_resources:
 - '[Redmine Users Guide](https://www.redmine.org/projects/redmine/wiki/Getting_Started)'
 - "[Andrew Hosch's Guide on Redmine](http://www.untrustedconnection.com/2016/04/redmine-passenger-and-nginx-on-ubuntu.html)"
 aliases: ['/applications/project-management/how-to-install-and-configure-redmine-on-ubuntu-16-04/']
+deprecated: true
 ---
 
 ![How to Install and Configure Redmine on Ubuntu](how-to-install-and-configure-redmine-on-ubuntu-smg.jpg)
@@ -54,29 +55,29 @@ quit;
 
 Redmine requires Ruby to run. Use the Ruby Version Manager (RVM) to install Ruby 2.2.3.
 
-1. Curl the latest version of RVM.
+1.  Curl the latest version of RVM.
 
-        gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-        curl -sSL https://get.rvm.io | bash -s stable
-        source ~/.rvm/scripts/rvm
+    ```command
+    gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+    curl -sSL https://get.rvm.io | bash -s stable
+    source ~/.rvm/scripts/rvm
+    ```
 
-    <!---
-            sudo apt-add-repository -y ppa:rael-gc/rvm
-            sudo apt-get update
-            sudo apt-get install rvm
-    -->
-2. Users of RVM must be in the `rvm` group. Create this group, add a user, log out, and log back in:
+1.  Users of RVM must be in the `rvm` group. Create this group, add a user, log out, and log back in:
 
-        sudo groupadd rvm
-        sudo usermod -a -G rvm username
-        exit
+    ```command
+    sudo groupadd rvm
+    sudo usermod -a -G rvm username
+    exit
+    ```
 
-3. Check the requirements for the install, and install Ruby (version 2.2.3):
+1.  Check the requirements for the install, and install Ruby (version 2.2.3):
 
-        rvm requirements
-        rvm install 2.2.3
-        rvm use 2.2.3 --default
-
+    ```command
+    rvm requirements
+    rvm install 2.2.3
+    rvm use 2.2.3 --default
+    ```
 
 ### Install Passenger and NGINX
 
