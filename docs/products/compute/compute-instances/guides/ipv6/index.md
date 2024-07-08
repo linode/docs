@@ -2,7 +2,7 @@
 title: "An Overview of IPv6 on Linode"
 description: "This guide is a brief overview of IPv6 support on Linode, including how to find your IPv6 address, requesting additional IPs, and managing IPs via the Cloud Manager."
 published: 2011-05-03
-modified: 2022-11-29
+modified: 2024-07-08
 keywords: ["ipv6 networking", "IP configuration"]
 aliases: ['/networking/an-overview-of-ipv6-on-linode/','/networking/how-to-enable-native-ipv6-on-linux/','/networking/native-ipv6-networking/','/networking/linode-network/an-overview-of-ipv6-on-linode/','/guides/an-overview-of-ipv6-on-linode/']
 external_resources:
