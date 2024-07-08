@@ -1,13 +1,12 @@
 ---
-title: "IoT Firmware Upgrade Reference Architecture"
-description: "Use Object Storage with the Akamai CDN to serve firmware updates for IoT devices."
-published: 2024-07-8
-linkTitle: "IoT Firmware Upgrade Reference Architecture"
-license: "[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)"
-tab_group_main:
-    is_root: true
-    title: Overview
-    weight: 10
+slug: iot-firmware-upgrades-with-obj-and-cdn
+title: "IoT Firmware Upgrades with Object Storage and Akamai CDN"
+description: "This guide discusses using Object Storage and Akamai CDN to distribute IoT firmware upgrades."
+authors: ["John Dutton"]
+contributors: ["John Dutton"]
+published: 2024-07-08
+keywords: ['s3', 'object storage', 'iot', 'internet of things', 'firmware']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 ## Overview
