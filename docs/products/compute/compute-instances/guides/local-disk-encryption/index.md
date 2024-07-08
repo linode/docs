@@ -12,7 +12,7 @@ title: Local Disk Encryption
 authors: ["Akamai"]
 ---
 
-Local disk encryption ensures that your data stored on compute instances is encrypted. Disk encryption protects against data leakage if the disk is ever removed from the datacenter, recycled or disposed of. Systems within the datacenter manage the encryption and decryption for you.
+Local disk encryption ensures that your data stored on compute instances is encrypted. Disk encryption protects against data leakage if the disk is ever removed from the datacenter, recycled, or disposed of. Systems within the datacenter manage the encryption and decryption for you.
 
 By default, disk encryption is enabled on all compute instances.
 
@@ -39,12 +39,12 @@ By default, disk encryption is enabled on all compute instances.
 - New LKE clusters are encrypted if disk encryption is supported in the region. This disk encryption setting can not be changed.
 
 - Encryption can increase compute instance CPU overhead and decrease realized throughput.
-  - For performance sensitive workloads on linodes that are not part of a node pool, you can opt-out of disk encryption.
-  - For performance sensitive workloads on linodes that are part of a LKE node pool, you can create additional node pools to spread out the workloads if required.
+  - For performance-sensitive workloads on Compute Instances that are not part of a node pool, you can opt-out of disk encryption.
+  - For performance-sensitive workloads on Compute Instances that are part of a LKE node pool, you can create additional node pools to spread out the workloads if required.
 
-- If the compute instance is part of a LKE node pool, you cannot change the disk encryption setting. If a node pool is not encrypted and you want an encrypted node pool, delete the node pool and create a new node pool. New node pools are always encrypted.
+- If the Compute Instance is part of a LKE node pool, you cannot change the disk encryption setting. If a node pool is not encrypted and you want an encrypted node pool, delete the node pool and create a new node pool. New node pools are always encrypted.
 
-- After a compute instance is created, changing the stored data from encrypted to decrypted or decrypted to encrypted requires a [Rebuild](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rebuilding).
+- After a Compute Instance is created, changing the stored data from encrypted to decrypted or decrypted to encrypted requires a [Rebuild](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rebuilding).
 
 ## Check if Disk Encryption is Enabled on a Linode
 
