@@ -1,12 +1,13 @@
 ---
-slug: iot-firmware-upgrades-with-obj-and-cdn
-title: "IoT Firmware Upgrades With Object Storage and Akamai CDN"
-description: "Using Linode's Object Storage and Akamai's CDN to push IoT device firmware upgrades."
-authors: ["Andy Stevens"]
-contributors: ["Andy Stevens", "Justin Cobbett"]
-published: 2024-06-27
-keywords: ['object storage','CDN','Akamai connected cloud','IoT','firmware','egress']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+title: "IoT Firmware Upgrade Reference Architecture"
+description: "Use Object Storage with the Akamai CDN to serve firmware updates for IoT devices."
+published: 2024-07-8
+linkTitle: "IoT Firmware Upgrade Reference Architecture"
+license: "[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)"
+tab_group_main:
+    is_root: true
+    title: Overview
+    weight: 10
 ---
 
 ## Overview
@@ -34,6 +35,8 @@ Another challenge the IoT manufacturer encountered was supporting more IoT devic
 ## Architecture
 
 This solution creates a streamlined delivery pipeline that allows developers to update firmware quickly across a fleet of customer devices at a reduced cost.
+
+![A reference architecture depicting IoT firmware upgrade functionality](iot-firmware-upgrade-reference-architecture.svg)
 
 ### Systems and Components
 
