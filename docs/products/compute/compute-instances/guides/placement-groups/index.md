@@ -91,7 +91,7 @@ Make sure you understand how placement groups work. Have a look at [Affinity, en
     <img src="pg-added-linode-v2.png" />
     </div>
 
-5. Review the **Linodes \<#\> of /<#\>** to see the maximum number you can add. Repeat steps 5-6 to add more compute instances, as necessary.
+5. Review **Linodes \<#\> of \<#\>** to see the maximum number you can add. Repeat steps 5-6 to add more compute instances, as necessary.
 
 {{< note >}}
 During the limited availability phase, you’re limited to a maximum of five compute instances in a placement group.
