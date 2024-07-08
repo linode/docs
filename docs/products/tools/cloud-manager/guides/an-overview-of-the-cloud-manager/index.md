@@ -2,13 +2,10 @@
 slug: an-overview-of-the-cloud-manager
 title: "An Overview of the Cloud Manager"
 description: "This guide provides you with an overview of the Cloud Manager and covers how to locate features within Cloud Manager, create Linodes and more."
-authors: ["Linode"]
-contributors: ["Linode"]
 published: 2019-12-20
-modified: 2023-09-20
+modified: 2024-07-08
 keywords: ["classic manager","cloud manager","linode"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/platform/manager/a-classic-to-cloud-manager-overview-guide/','/platform/manager/an-overview-of-the-linode-cloud-manager/', '/guides/an-overview-of-the-linode-cloud-manager/']
+aliases: ['/platform/manager/a-classic-to-cloud-manager-overview-guide/','/platform/manager/an-overview-of-the-linode-cloud-manager/', '/guides/an-overview-of-the-linode-cloud-manager/','/guides/an-overview-of-the-cloud-manager/']
 image: AnOverviewoftheLinodeCloudManager.png
 tags: ["linode platform","cloud manager"]
 ---
@@ -118,7 +115,7 @@ For more details, see the [Understanding Events and Activity Feeds](/docs/produc
 
 The **My Profile** section of Cloud Manager provides access to various settings related to your Linode account's profile. This area of Cloud Manager contains access to the following features and settings:
 
-- [Changing your account's associated email address](/docs/products/platform/accounts/guides/change-user-email/) and timezone
+- [Changing your account's associated email address](/docs/products/platform/accounts/guides/change-user-email/)
 - [Resetting your Account password](/docs/products/platform/accounts/guides/reset-user-password/)
 - [Enabling two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/#2fa-two-factor-authentication)
 - [Enabling Third Party Authentication (TPA)](/docs/guides/third-party-authentication/)
@@ -140,22 +137,43 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 
 ### Manage Email Event Notifications
 
-{{% content "cloud-email-notifications-shortguide" %}}
+To learn more about events and how to enable or disable email notifications for these events, see the [Understanding Events and the Activity Feed](/docs/products/tools/cloud-manager/guides/events-and-activity-feeds/) guide.
 
-## User Interface Enhancements
+### Change the Theme (Dark Mode)
 
-### Dark Mode
-
-Cloud Manager provides a Dark Mode that you can toggle on and off depending on your preference.
+The Cloud Manager provides a way to set your preferred UI theme, including a light theme, dark theme, and the system theme.
 
 1. Navigate to your profile by clicking on your username and select **My Settings**.
 
-1. Toggle on **Dark Mode** to change the color scheme of the UI. Dark Mode is disabled by default.
+1. Within the **Theme** section, select your preferred theme from the available options: *Light*, *Dark*, or *System*. Once a selection is made, the Cloud Manager interface immediately switches to that theme.
 
-![Dark Mode Enabled](classic-to-cloud-dark-mode.png "Cloud Manager Dark Mode Enabled")
+### Set the Timezone
 
-### Accessibility
+All events displayed in the Cloud Manager are shown using your user's timezone setting. The timezone can be modified in your display settings.
+
+1. Navigate to your profile by clicking on your username and select **Display**.
+
+1. In the **Timezone** field, select your preferred timezone from the menu.
+
+1. Click the **Update Timezone** button to save your settings.
+
+## Accessibility
 
 The Cloud Manager has been built with accessibility in mind. Currently, the Cloud Manager is actively being developed to achieve [WCAG 2.0 Level AA](https://www.w3.org/TR/WCAG20/).
 
 We have received much helpful feedback from our users regarding accessibility. While we have addressed a lot of your feedback, this is still a work in progress and will be iterated upon with time. If you have comments or requests regarding accessibility, let us know by filling out our [feedback form](https://www.linode.com/feedback/).
+
+## Experience Improvements
+
+We're making improvements to the Linode Cloud Manager so that we can deliver a high-quality and consistent user experience across product families. These experience updates are driven by our new Akamai Core Design System.
+
+*This section will be updated as we roll out additional experience improvements to the Cloud Manager. For a list of all changes to the Cloud Manager, review the [Cloud Manager changelog](https://github.com/linode/manager/releases).*
+
+### July 2024
+
+In early July, we've made minor branding changes to the Cloud Manager. As part of these changes, we've implemented higher color contrast to improve the accessibility of both text and interactive components. Review the screenshots below for a closer look of the changes.
+
+| Previous Design | Updated Design&nbsp;&nbsp; |
+| -- | -- |
+| ![Screenshot of the previous light theme in the Cloud Manager](cloud-manager-previous-light.jpg) | ![Screenshot of the new light theme in the Cloud Manager](cloud-manager-new-light.jpg) |
+| ![Screenshot of the previous dark theme in the Cloud Manager](cloud-manager-previous-dark.jpg) | ![Screenshot of the new dark theme in the Cloud Manager](cloud-manager-new-dark.jpg) |
