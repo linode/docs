@@ -81,17 +81,17 @@ Make sure you understand how placement groups work. Have a look at [Affinity, en
 
 1. When you're ready, click **Create Placement Group**.
 
-2. Click the Label for you new placement group. A summary of your group is shown.
+1. Click the Label for you new placement group. A summary of your group is shown.
 
-3. Click **Assign Linode to Placement Group**. The Assign Linodes to \<Label\> drawer opens.
+1. Click **Assign Linode to Placement Group**. The Assign Linodes to \<Label\> drawer opens.
 
-4.  The **Linodes in \<Region\>** drop-down is auto-populated with eligible compute instances in your selected Region. Pick one to add it and click **Assign Linode**.
+1.  The **Linodes in \<Region\>** drop-down is auto-populated with eligible compute instances in your selected Region. Pick one to add it and click **Assign Linode**.
 
     <div align=center>
     <img src="pg-added-linode-v2.png" />
     </div>
 
-5. Review **Linodes \<#\> of \<#\>** to see the maximum number you can add. Repeat steps 5-6 to add more compute instances, as necessary.
+1. Review **Linodes \<#\> of \<#\>** to see the maximum number you can add. Repeat steps 5-6 to add more compute instances, as necessary.
 
 {{< note >}}
 During the limited availability phase, you’re limited to a maximum of five compute instances in a placement group.
