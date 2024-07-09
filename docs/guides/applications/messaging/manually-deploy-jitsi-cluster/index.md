@@ -50,15 +50,15 @@ If you wish to deploy Jitsi automatically rather than manually, consider either 
 
 The following software and components must be installed and configured on your local system in order for the playbooks in this guide to function properly.
 
--   An installed [Python](https://www.python.org/downloads/) version: 3.8, 3.9
+-   An installed [Python](https://www.python.org/downloads/) version: > v3.8
 
 -   Your [Linode API access token](/docs/products/tools/api/get-started/#get-an-access-token)
 
 -   A configured [SSH key pair](/docs/guides/use-public-key-authentication-with-ssh/) along with your public key
 
--   The [Git](https://git-scm.com/) utility and an active [Github](https://github.com/) account
+-   The [Git](https://git-scm.com/) utility
 
-### Supported Distributions
+### Supported Deployment Distribution
 
 -   Ubuntu 22.04 LTS
 
@@ -104,7 +104,17 @@ In order to run the Jitsi deployment in this guide, you must first clone the __ 
 1.  Confirm installation of Ansible:
 
     ```command
-    SAMPLE_COMMAND
+    ansible --version
+    ```
+
+    Sample output:
+
+    ```output
+    ansible [core 2.13.13]
+    (...)
+    python version = 3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0]
+    jinja version = 3.1.4
+    libyaml = True
     ```
 
 ## Setup
@@ -239,15 +249,17 @@ Depending on your needs, you may wish to scale your Jitsi cluster up or down. To
 
 ## Benchmarking Your Cluster With WebRTC Perf
 
-`webrtcperf` is an open source utility used to evaluate the performance and quality for WebRTC-based services. To benchmark the performance of your Jitsi cluster, you can run WebRTC Perf from a Docker container. Note that Docker must be loaded and configured prior to running the below `docker run` command.
+[webrtcperf](https://github.com/vpalmisano/webrtcperf) is an open source utility used to evaluate the performance and quality for WebRTC-based services. To benchmark the performance of your Jitsi cluster, you can run WebRTC Perf from a Docker container. Note that Docker must be loaded and configured prior to running the below `docker run` command.
 
-Replace {{< placeholder "https://192.0.2.3.ip.linodeusercontent.com" >}} with the URL of your Jitsi meet instance (see: [Provision Your Cluster](#provision-your-cluster)):
+Replace {{< placeholder "https://192.0.2.3.ip.linodeusercontent.com" >}} with the URL of your Jitsi meet instance (see: [Provision Your Cluster](#provision-your-cluster)), and replace {{< placeholder "ROOM_NAME" >}} with the name of your meeting room.
+
+You can also edit the `sessions` and `tabs-per-session` values depending on your desired benchmarking criteria:
 
 ```command
 docker run -it --rm \
     -v /dev/shm:/dev/shm \
     ghcr.io/vpalmisano/webrtcperf \
-    --url="https://192.0.2.3.ip.linodeusercontent.com/wat#config.prejoinPageEnabled=false" \
+    --url="https://192.0.2.3.ip.linodeusercontent.com/{{< placeholder "ROOM_NAME" >}}#config.prejoinPageEnabled=false" \
     --show-page-log=false \
     --sessions=6 \
     --tabs-per-session=1
