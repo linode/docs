@@ -120,7 +120,7 @@ In order to run the Jitsi deployment in this guide, you must first clone the __ 
     ansible-vault encrypt_string '{{< placeholder "API_TOKEN" >}}' --name 'token'
     ```
 
-1.  Copy the generated outputs for both `root_pass` and `toekn`, and save them in the `secret_vars` file located in `group_vars/galera/secret_vars`. Sample output:
+1.  Copy the generated outputs for both `root_pass` and `token`, and save them in the `secret_vars` file located in `group_vars/galera/secret_vars`. Sample output:
 
     ```output
     root_pass: !vault |
@@ -169,7 +169,7 @@ In order to run the Jitsi deployment in this guide, you must first clone the __ 
     See [Linode API: List Types](https://techdocs.akamai.com/linode-api/reference/get-linode-types) for information on Linode API parameters.
 
     {{< note title="The jvb_cluster_size variable dynamically scales your cluster size" >}}
-    This value determines how many Jitsi Videobridge instances are created in the initial deployment.
+    This value determines how many Jitsi Videobridge instances are created in the initial deployment and can be used later to scale your cluster up or down.
     {{< /note >}}
 
 ## Provision Your Cluster
@@ -208,7 +208,7 @@ Depending on your needs, you may wish to scale your Jitsi cluster up or down. To
     ...
     ```
 
-1.  To apply the new cluster size to your deployment, run the provisioner.yml playbook followed by the site.yml playbook:
+1.  To apply the new cluster size to your deployment, run the `provisioner.yml` playbook followed by the `site.yml` playbook:
 
     ```command
     ansible-playbook -vvv provisioner.yml
