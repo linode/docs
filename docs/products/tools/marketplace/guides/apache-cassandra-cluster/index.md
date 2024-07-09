@@ -63,14 +63,14 @@ Both certificates and keystores can be found on every node in the `/etc/cassandr
 
 Connect to Cassandra using `cqlsh` using client or server certificates. You will need 4 components to connect to the cluster:
 
-- Username and password created by the playbook. You can find the credentials in `/home/$SUDO_USER/.credentials`, where `$SUDO_USER` is your sudo user used during deployment.
+- Username and password created by the playbook. You can find the credentials in `/home/$SUDO_USER/.credentials`, where `$SUDO_USER` is your sudo user created during deployment.
 - Client certificate
 - Client key
 - CA certificate
 
-1. On the client node, create the `/home/$SUDO_USER/cassandra_ssl` directory, where `$SUDO_USER` is your sudo user used during deployment.
+1. On the client node, create the `/home/$SUDO_USER/cassandra_ssl` directory, where `$SUDO_USER` is your sudo user created during deployment.
 
-2. From the first Cassandra node, securely transfer the following files and directories: `/etc/cassandra/ssl/cert/client1.crt`, `/etc/cassandra/ssl/cert/client1.crt` and `/etc/cassandra/ssl/ca/ca.crt` to the `/home/$SUDO_USER/cassandra_ssl` directory on the client node.
+2. From the first Cassandra node, securely transfer the following files and directories: `/etc/cassandra/ssl/cert/client1.crt`, `/etc/cassandra/ssl/key/client1.key`, and `/etc/cassandra/ssl/ca/ca.crt` to the `/home/$SUDO_USER/cassandra_ssl` directory on the client node.
 
 3. Create a Cassandra resource file to use our client certificate. Create the `/home/$SUDO_USER/.cassandra` directory. In the `.cassandra` directory, create a `cqlshrc` file with the following content:
 

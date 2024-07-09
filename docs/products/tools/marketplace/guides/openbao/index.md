@@ -1,6 +1,6 @@
 ---
 title: "Deploy OpenBao through the Linode Marketplace"
-description: "Openbao is a open source tool secrets management tool that helps to provide secure, automated access to sensitive data."
+description: "OpenBao is a open source tool secrets management tool that helps to provide secure, automated access to sensitive data."
 published: 2024-04-26
 keywords: ['openbao','marketplace', 'vault']
 tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager", "secrets", "education"]
@@ -12,7 +12,7 @@ external_resources:
 OpenBao is an open source solution to manage, store, and distribute sensitive data including secrets, certificates, and keys. This project is a forked alternative to Vault managed by the Linux Foundation, and development is driven by the community. 
 
 {{< note type="warning" title="OpenBao is still early in development" >}}
-While Openbao is a fork of a production-ready 1.14.x release of Hashicorp Vault, the Openbao codebase is still early in development and is subject to change as development takes place. We recommend following the [release cycles](https://github.com/openbao/openbao/releases) for any breaking changes to minimize any downtime on a production environment.
+While OpenBao is a fork of a production-ready 1.14.x release of Hashicorp Vault, the OpenBao codebase is still early in development and is subject to change as development takes place. We recommend following the [release cycles](https://github.com/openbao/openbao/releases) for any breaking changes to minimize any downtime on a production environment.
 {{< /note >}}
 
 ## Deploying a Marketplace App
@@ -30,7 +30,7 @@ While Openbao is a fork of a production-ready 1.14.x release of Hashicorp Vault,
 - **Supported distributions:** Ubuntu 24.04 LTS
 - **Suggested minimum plan:** All plan types and sizes can be used. For best results, use a 8GB Dedicated CPU or Shared Compute Instance.
 
-### Openbao Options
+### OpenBao Options
 
 {{% content "marketplace-custom-domain-fields-shortguide" %}}
 - **List of IP addresses to whitelist:** A list of IP address that will be whitelisted for OpenBao. These should be client IPs that will need to obtain secrets from your OpenBao instance. 
@@ -54,7 +54,7 @@ Once the deployment is complete, OpenBao is installed and ready to use. You can 
     ```
 
     {{< note >}}
-If you receive an error when running the `bao status` command, reload the environment variable by running the `source` command against your server's `bashrc` file.
+If you receive an error when running the `bao status` command, reload the environment variable by sourcing your server's bashrc file:
 
 ```command
 source /root/.bashrc

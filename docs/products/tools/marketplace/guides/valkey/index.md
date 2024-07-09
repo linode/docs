@@ -9,14 +9,13 @@ external_resources:
 - '[Valkey Documentation](https://cassandra.apache.org/doc/latest/cassandra/architecture/overview.html)'
 ---
 
-Valkey is an open source (BSD) key/value datastore that supports diverse workloads such as caching and message queues, and can act as a primary database. The Akamai Connected Cloud One-Click App for Valkey is configured as a standalone systemd daemon with TLS support.
+Valkey is an open-source (BSD) key/value datastore that supports diverse workloads such as caching and message queues, and can act as a primary database. The Akamai Connected Cloud One-Click App for Valkey is configured as a standalone system daemon with TLS support.
 
-Valkey natively supports a broad collection of datatypes, and supports extensibility with built-in scripting support for Lua and supports module plugins to create new commands, data types, and more. 
+Valkey natively supports a broad collection of datatypes, extensibility with built-in scripting support for Lua, and module plugins to create new commands, data types, and more. 
 
 {{< note type="warning" title="Valkey is still early in development" >}}
-While Valkey is a fork of a production ready 7.2.4 release of Redis, the Valkey codebase is still early in development and is subject to change as development takes place, we recommend following the [release cycles](https://github.com/valkey-io/valkey/releases) for any breaking changes to minimize any downtime on a production environment.
+While Valkey is a fork of a production-ready 7.2.4 release of Redis, the Valkey codebase is still early in development and is subject to change as development takes place. We recommend following the [release cycles](https://github.com/valkey-io/valkey/releases) for any breaking changes to minimize downtime on a production environment.
 {{< /note >}}
-
 
 ## Deploying a Marketplace App
 
@@ -31,7 +30,7 @@ While Valkey is a fork of a production ready 7.2.4 release of Redis, the Valkey 
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 22.04 LTS
-- **Suggested minimum plan:** All plan types and sizes can be used. For best results, use a minimum of 8GB Dedicated CPU or Shared Compute Instance is recommended. 
+- **Suggested minimum plan:** All plan types and sizes can be used. For best results, a minimum of 8GB Dedicated CPU or Shared Compute Instance is recommended. 
 
 ### Valkey Options
 
@@ -43,7 +42,7 @@ While Valkey is a fork of a production ready 7.2.4 release of Redis, the Valkey 
 
 - **Valkey Version:** Version of Valkey to install.
 
-## Self Signed SSL/TLS Options
+### Self Signed SSL/TLS Options
 
 - **Country or Region:** Enter the country or region for you or your organization.
 
@@ -59,7 +58,7 @@ While Valkey is a fork of a production ready 7.2.4 release of Redis, the Valkey 
 
 ## Getting Started After Deployment
 
-Connect to the compute instance using either `root` or the `sudo user` created during deployment if you provided account SSH keys. In order to access the TLS encrypted Valkey database, path arguments ust be provided to `valkey-cli`. The directory paths are provided in the MOTD as follows:
+Connect to the compute instance using either `root` or the `sudo user` created during deployment if you provided account SSH keys. In order to access the TLS-encrypted Valkey database, path arguments must be provided to `valkey-cli`. The directory paths are provided in the MOTD:
 ```
 *********************************************************
 Akamai Connected Cloud Valkey Marketplace App
@@ -75,16 +74,16 @@ Documentation: https://www.linode.com/docs/products/tools/marketplace/guides/val
 *********************************************************
 To delete this message of the day: rm /etc/motd
 ```
-An example `valkey-cli` command to access the Valkey database from the compute instance is:
+Access the Valkey database from the compute instance using the `valkey-cli` command, for example:
 ```
 --tls --cacert /etc/valkey/ssl/ca/ca.crt --cert /etc/valkey/ssl/certs/client1.crt --key /etc/valkey/ssl/keys/client1.key.pem
 ```
-This enters the Valkey interface and allows you to authenticate as either the `default` user or the `sudo user` created during deployment using the passwords provided in the `/home/$SUDO_USER/.credentials` file. 
+This enters the Valkey interface and allows you to authenticate as either the `default` user or the `sudo user`. The `sudo user` is created during deployment using the passwords provided in the `/home/$SUDO_USER/.credentials` file. 
 
 Valkey is deployed to listen only on `127.0.0.1` loopback. Additional configurations to Valkey and the firewall may be necessary to connect to external clients and resources. 
 
 {{< note >}}
-Valkey is still in early development, and has limited documentation. Pending further major release, Redis usage and configuration documentation is generally applicable to Valkey.
+Valkey is still in early development and has limited documentation. Pending further major release, Redis usage and configuration documentation is generally applicable to Valkey.
 {{< /note >}}
 
 ## More Information
