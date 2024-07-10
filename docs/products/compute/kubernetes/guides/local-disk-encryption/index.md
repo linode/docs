@@ -45,7 +45,7 @@ By default, disk encryption is enabled on all compute instances.
 
 - After a Compute Instance is created, changing the **Encrypt Disk** setting requires a [Rebuild](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rebuilding).
 
-## Check if Disk Encryption is Enabled on a Linode
+## Check if Disk Encryption is Enabled on a Compute Instance
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
 
@@ -58,7 +58,7 @@ By default, disk encryption is enabled on all compute instances.
 
 ## Check if Disk Encryption is Enabled on a Cluster's Node Pools
 
-1. Log in to the [Cloud Manager](http://cloud.linode.com), click **Kubernetes** in the left menu, and select the cluster you wish to view. See [Manage Kubernetes Clusters](/docs/products/compute/kubernetes/guides/manage-clusters/).
+1. Log in to the [Cloud Manager](http://cloud.linode.com), click **Kubernetes** in the left menu, and select the cluster you wish to view.
 
 1. Scroll down to the **Node Pools** section. This lists all node pools for your cluster and their encryption status.
 
