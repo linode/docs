@@ -2,6 +2,7 @@
 title: Guides
 title_meta: "Guides and Tutorials for Compute Instances"
 description: "A collection of guides to help you start deploying Compute Instances and using them to host your web applications and Cloud workloads"
+published: 2023-01-18
 modified: 2024-06-20
 tab_group_main:
     weight: 30

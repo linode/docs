@@ -2,7 +2,7 @@
 title: "An Overview of IPv6 on Linode"
 description: "This guide is a brief overview of IPv6 support on Linode, including how to find your IPv6 address, requesting additional IPs, and managing IPs via the Cloud Manager."
 published: 2011-05-03
-modified: 2022-11-29
+modified: 2024-07-08
 keywords: ["ipv6 networking", "IP configuration"]
 aliases: ['/networking/an-overview-of-ipv6-on-linode/','/networking/how-to-enable-native-ipv6-on-linux/','/networking/native-ipv6-networking/','/networking/linode-network/an-overview-of-ipv6-on-linode/','/guides/an-overview-of-ipv6-on-linode/']
 external_resources:
@@ -85,7 +85,7 @@ Configuring a `/64` or `/56` routed range requires you to [disable Network Helpe
 {{< /note >}}
 
 - `/64` **routed range** *(18,446,744,073,709,551,616 addresses)*: This is the most common range provided to our customers and sufficient for most applications that require additional IPv6 addresses.
-- `/56` **routed range** *(4,722,366,482,869,645,213,696 addresses)*: These larger ranges are typically only required by specialized systems or networking applications. When requesting a `/56` range, please provided information regarding your use case.
+- `/56` **routed range** *(4,722,366,482,869,645,213,696 addresses)*: These larger ranges are typically only required by specialized systems or networking applications.
 
 ### IPv6 Pools
 

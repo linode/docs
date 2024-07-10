@@ -2,6 +2,7 @@
 title: Developers
 title_meta: "Developer Resources for Compute Instances"
 description: "Easily manage Compute Instances with developer tools like the Linode API or CLI as well as third party tools and integrations."
+published: 2023-01-18
 tab_group_main:
     weight: 50
 aliases: ['/products/compute/shared-linodes/developers/','/products/compute/shared-cpu/developers/','/products/compute/gpu/developers/','/products/compute/dedicated-cpu/developers/','/products/compute/high-memory/developers/']
