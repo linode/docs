@@ -86,7 +86,7 @@ At the edge, Akamai’s [App & API Protector](https://www.akamai.com/products/ap
 
 -  **App & API Protector:** A single security solution that combines multiple security technologies, including WAF, bot mitigation, API protection, and DDoS defense.
 
--  **Edge Computing (EdgeWorkers):** Akamai’s edge-based computing solution that allows customers to execute Javascript functions in a serverless, low-latency environment.
+-  **Edge Computing (EdgeWorkers):** Akamai’s edge-based computing solution that allows customers to execute JavaScript functions in a serverless, low-latency environment.
 
 -  **User Prioritization with Queue-it:** Queue-it is a virtual waiting room technology that helps customers control online traffic and provide fair user experiences.
 
