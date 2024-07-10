@@ -1764,6 +1764,8 @@ oneof
 ons
 opcache
 openapi
+openbao
+OpenBao
 opencart
 opendkim
 openfire
@@ -2700,6 +2702,8 @@ vagrantfile
 valheim
 validator
 valim
+valkey
+Valkey
 variadic
 varnishlog
 varonis
