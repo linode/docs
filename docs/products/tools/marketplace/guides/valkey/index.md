@@ -1,12 +1,12 @@
 ---
-title: "Deploy Apache Cassandra Cluster through the Linode Marketplace"
-description: "Valkey is an open-source, distributed NoSQL database management system designed for handling large amounts of data across many commodity servers, providing high availability with no single point of failure. Cassandra offers robust support for clusters with asynchronous masterless replication allowing low-latency operations for all clients. "
+title: "Deploy Valkey through the Linode Marketplace"
+description: "Valkey is an open-source, keyvalue database driven by community development and supported by the Linux Foundation. Valkey is forked from Redis release 7.2, and maintains BSD-3 licensing. Valkey can serve production roles such as caching and message queues, or as a primary database."
 published: 2024-04-26
-keywords: ['nosql','database', 'marketplace', 'cassandra']
+keywords: ['nosql','database', 'marketplace', 'valkey']
 tags: ["ubuntu","marketplace", "database", "linode platform", "cloud manager", "ssl", "cloud storage", "high availability", "compute storage"]
 external_resources:
-- '[About Valkey](https://cassandra.apache.org/)'
-- '[Valkey Documentation](https://cassandra.apache.org/doc/latest/cassandra/architecture/overview.html)'
+- '[About Valkey](https://valkey.io/)'
+- '[Valkey Documentation](https://valkey.io/docs/)'
 ---
 
 Valkey is an open-source (BSD) key/value datastore that supports diverse workloads such as caching and message queues, and can act as a primary database. The Akamai Connected Cloud One-Click App for Valkey is configured as a standalone system daemon with TLS support.
