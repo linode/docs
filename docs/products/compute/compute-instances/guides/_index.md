@@ -40,6 +40,7 @@ aliases: ['/products/compute/shared-linodes/guides/','/products/compute/shared-c
 - [Managing the Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/)
 - [Copy a Disk Over SSH](/docs/products/compute/compute-instances/guides/copy-a-disk-image-over-ssh/)
 - [Copying a Disk to a Different Account](/docs/products/compute/compute-instances/guides/copy-a-disk-image-to-a-different-account/)
+- [Local Disk Encryption](/docs/products/compute/compute-instances/guides/local-disk-encryption/)
 
 ## Networking
 
