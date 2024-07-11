@@ -65,9 +65,9 @@ Make sure you understand how placement groups work. Have a look at [Affinity, en
 
 #### Creation process
 
-1.  Navigate to the **Placement Groups** page in [Akamai Cloud Manager](http://cloud.linode.com) and click **Create Placement Groups**. The **Create Placement Group** form opens.
+1.  Navigate to the **Placement Groups** page in [Akamai Cloud Manager](http://cloud.linode.com) and click **Create Placement Groups**. The **Create Placement Group** drawer opens.
 
-1.  Fill out the form with your desired settings:
+2.  Apply your desired settings:
 
     - **Label**. Give your placement group an easily recognizable name.
     - **Region**. Select the [data center](#availability) that includes the compute instances you want to add.
@@ -79,22 +79,22 @@ Make sure you understand how placement groups work. Have a look at [Affinity, en
 - Once you create your placement group, you *can't change* its Affinity Type Enforcement.
 {{< /note >}}
 
-3.  When you're ready, click **Create Placement Group**. A summary of your group is revealed.
+3. When you're ready, click **Create Placement Group**.
 
-4.  Select the **Linodes (0)** tab.
+4. Click the Label for you new placement group. A summary of your group is shown.
 
-1.  Click **Assign Linode to Placement Group**. The Assign Linodes form opens.
+5. Click **Assign Linode to Placement Group**. The Assign Linodes to \<Label\> drawer opens.
 
-1.  The **Linodes in \<Region\>** drop-down is auto-populated with eligible compute instances in your selected Region. Pick one to add it and click **Assign Linode**.
+6.  The **Linodes in \<Region\>** drop-down is auto-populated with eligible compute instances in your selected Region. Pick one to add it and click **Assign Linode**.
 
     <div align=center>
-    <img src="pg-added-linode-v1.png" width=600 />
+    <img src="pg-added-linode-v2.png" />
     </div>
 
-7. Review the **Linode limit for this placement group**, and repeat steps 5-6 to add more compute instances, as necessary.
+7. Review **Linodes \<#\> of \<#\>** to see the maximum number you can add. Repeat steps 5-6 to add more compute instances, as necessary.
 
 {{< note >}}
-During the limited availability phase, you’re limited to a maximum of 5 compute instances in a placement group.
+During the limited availability phase, you’re limited to a maximum of five compute instances in a placement group.
 {{< /note >}}
 
 With all your compute instances added, we begin provisioning by moving them into the placement group to meet your selected Affinity Type.
