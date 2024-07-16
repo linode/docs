@@ -27,7 +27,6 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Apache Airflow](/docs/products/tools/marketplace/guides/apache-airflow/)
 - [Apache Cassandra Cluster](/docs/products/tools/marketplace/guides/apache-cassandra-cluster/)
 - [Apache Kafka Cluster](/docs/products/tools/marketplace/guides/apache-kafka-cluster/)
-- [Apache Spark Cluster](/docs/products/tools/marketplace/guides/apache-spark-cluster/)
 - [Appwrite](/docs/products/tools/marketplace/guides/appwrite/)
 - [AzuraCast](/docs/products/tools/marketplace/guides/azuracast/)
 - [BeEF](/docs/products/tools/marketplace/guides/beef/)
