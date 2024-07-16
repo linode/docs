@@ -1,7 +1,7 @@
 ---
 slug: install-and-secure-memcached-on-debian-11-and-ubuntu-2204
 title: "Install and Secure Memcached on Debian 11 and Ubuntu 22.04"
-description: "Learn how to install and configure Memcached on Debian and Ubuntu, then secure your installation using SASL authentication and firewall rules."
+description: "Learn how to install and configure Memcached on Debian and Ubuntu, and then secure your installation using SASL authentication and firewall rules."
 authors: ["Dan Nielsen"]
 contributors: ["Dan Nielsen"]
 published: 2024-06-03
@@ -9,12 +9,11 @@ keywords: ['memcached', 'debian', 'ubuntu', 'sasl', 'secure memcached']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Memcached](https://www.memcached.org)'
-- '[Debian](https://www.debian.org)'
 ---
 
-*Memcached* is an in-memory key-value store for small chunks of arbitrary data. Memory object caching systems like Memcached temporarily store frequently accessed data. This can improve system performance by reducing direct requests to databases. Typically, Memcached is used to speed up web applications.
+[*Memcached*](https://memcached.org/) is an in-memory key-value store for small chunks of arbitrary data. Memcached is often used to enhance web application performance and scalability by temporarily caching frequently accessed data and reducing direct requests to databases.
 
-This guide covers the installation of Memcached on Debian 11 and Ubuntu 22.04 LTS. It also includes information on securing the Memcached instance.
+This guide walks through the installation steps for Memcached on Debian 11 and Ubuntu 22.04 LTS systems. Additionally, it goes over multiple solutions for securing your Memcached installation, including SASL authentication and adding firewall rules with UFW.
 
 ## Before You Begin
 
@@ -89,17 +88,19 @@ Memcached is available from the official Debian and Ubuntu repositories.
 
 ## Securing the Installation
 
-The following sections cover various solutions for securing a Memcached installation. These steps are not strictly necessary when Memcached listens locally. However, if Memcached is exposed over the network, all of these sections should be completed.
+The following sections cover various solutions for securing a Memcached installation. These steps are not strictly necessary when Memcached listens locally. However, if Memcached is exposed over a network, all of these sections should be completed to protect it from unauthorized access and other potential security threats.
 
 ### Open External Access and Disable UDP
 
-1.  Open the `/etc/memcached.conf` file:
+1.  Using a text editor, open the `/etc/memcached.conf` file:
 
     ```command
     sudo nano /etc/memcached.conf
     ```
 
     The default Memcached network address on Debian and Ubuntu is the local address (`127.0.0.1`). To open Memcached over the network, add your Compute Instances's external IP address. Disabling UDP using `-U 0` in the configuration is also recommended when opening Memcached access.
+
+    Save your changes once you are done editing the configuration file.
 
     ```file {title="/etc/memcached.conf" lang="conf" linenostart="31" hl_lines="6-9"}
     ...
@@ -116,8 +117,6 @@ The following sections cover various solutions for securing a Memcached installa
     # -c 1024
     ...
     ```
-
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
 1.  Restart Memcached to apply the changes:
 
@@ -138,7 +137,7 @@ The following sections cover various solutions for securing a Memcached installa
     tcp   LISTEN 0      1024         127.0.0.1:11211      0.0.0.0:*    users:(("memcached",pid=2477,fd=26))
     ```
 
-1.  Now use the `memcstat` tool to check the status of Memcached on your Compute Instance's external `{{< placeholder "IP_ADDRESS" >}}`:
+1.  Use the `memcstat` tool to check the status of Memcached on your Compute Instance's external IP address. Replace {{< placeholder "IP_ADDRESS" >}} with your instance's IP:
 
     ```command
     memcstat --servers="{{< placeholder "IP_ADDRESS" >}}"
@@ -155,9 +154,9 @@ The following sections cover various solutions for securing a Memcached installa
 
 ### Add Firewall Rules
 
-This guide uses `ufw` to manage the firewall.
+The below steps use `ufw` to manage firewall rules.
 
-1.  Add a single firewall rule to allow limited access to port `11211` from a remote machine. Make sure to replace {{< placeholder "CLIENT_IP_ADDRESS" >}} with the IP address of the remote machine that you want to access the Memcached server from:
+1.  Add a single firewall rule to allow limited access to port `11211` from a remote machine. Replace {{< placeholder "CLIENT_IP_ADDRESS" >}} with the IP address of the remote machine you want to access the Memcached server from:
 
     ```command
     sudo ufw allow proto tcp from {{< placeholder "CLIENT_IP_ADDRESS" >}} to any port 11211
@@ -223,7 +222,7 @@ Memcached doesn't provide internal authentication procedures. However, Simple Au
     sudo nano /etc/sasl2/memcached.conf
     ```
 
-    Add the following content to the SASL configuration file:
+    Add the following content to the SASL configuration file, and save your changes:
 
     ```file {title="/etc/sasl2/memcached.conf" lang="conf"}
     mech_list: plain
@@ -231,24 +230,22 @@ Memcached doesn't provide internal authentication procedures. However, Simple Au
     sasldb_path: /etc/sasl2/memcached-sasldb2
     ```
 
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
-
 ### Add Authorized Users
 
-1.  Create a SASL database and user. Be sure to replace {{< placeholder "SASL_USERNAME" >}} with a username of your choice:
+1.  Create a SASL database and user. Replace {{< placeholder "SASL_USERNAME" >}} with a username of your choice:
 
     ```command
     sudo saslpasswd2 -a memcached -c -f /etc/sasl2/memcached-sasldb2 {{< placeholder "SASL_USERNAME" >}}
     ```
 
-    Provide a password of your choosing, then verify that password:
+    Enter a password of your choosing, and verify that password:
 
     ```output
     Password:
     Again (for verification):
     ```
 
-1.  Finally, give Memcached ownership of the database:
+1.  Give Memcached ownership of the database:
 
     ```command
     sudo chown memcache:memcache /etc/sasl2/memcached-sasldb2
@@ -256,13 +253,13 @@ Memcached doesn't provide internal authentication procedures. However, Simple Au
 
 ### Enable SASL
 
-1.  Open the `/etc/memcached.conf` file once again:
+1.  With a text editor, open the `/etc/memcached.conf` file:
 
     ```command
     sudo nano /etc/memcached.conf
     ```
 
-    Enable SASL by adding the `-S` parameter to `/etc/memcached.conf`:
+    Enable SASL by adding the `-S` parameter to `/etc/memcached.conf`, and save your changes:
 
     ```file {title="/etc/memcached.conf" lang="conf" linenostart="31" hl_lines="11,12"}
     ...
@@ -283,15 +280,13 @@ Memcached doesn't provide internal authentication procedures. However, Simple Au
     ...
     ```
 
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
-
 1.  Restart Memcached to apply the changes:
 
     ```command
     sudo systemctl restart memcached
     ```
 
-1.  Check the Memcached status locally once again. Be sure to replace {{< placeholder "SASL_USERNAME" >}} and {{< placeholder "SASL_PASSWORD" >}} with your chosen username and password:
+1.  Check the Memcached status locally once again. Replace {{< placeholder "SASL_USERNAME" >}} and {{< placeholder "SASL_PASSWORD" >}} with your chosen username and password:
 
     ```command
     sudo memcstat --servers="127.0.0.1" --username="{{< placeholder "SASL_USERNAME" >}}" --password="{{< placeholder "SASL_PASSWORD" >}}"
@@ -324,7 +319,3 @@ Memcached doesn't provide internal authentication procedures. However, Simple Au
          version: 1.6.9
     ...
     ```
-
-## Conclusion
-
-Memcached enhances the performance and scalability of web applications by caching frequently accessed data. Implementing SASL authentication and firewall rules on your Memcached server can help protect it from unauthorized access and other potential security threats.
