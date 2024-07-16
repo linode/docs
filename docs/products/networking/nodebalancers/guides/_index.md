@@ -37,6 +37,8 @@ tab_group_main:
 
 ## Automated Deployment Tutorials
 
+- [Configure NodeBalancers with the Linode API](/docs/products/networking/nodebalancers/guides/manage-nodebalancers-with-linode-api/)
+
 - [Deploy NodeBalancers with the Linode Cloud Controller Manager](/docs/products/compute/kubernetes/guides/load-balancing/)
 
 - [Create a NodeBalancer with Terraform](/docs/guides/create-a-nodebalancer-with-terraform/)
