@@ -187,8 +187,8 @@ When the user returns to your app from the Linode login page, they will be direc
 
 {{< note >}}
 Below is a list of available scopes:
-- OAuthScopes.Linodes 
-- OAuthScopes.Domains 
+- OAuthScopes.Linodes
+- OAuthScopes.Domains
 - OAuthScopes.StackScripts
 - OAuthScopes.Account
 - OAuthScopes.NodeBalancers
@@ -196,8 +196,8 @@ Below is a list of available scopes:
 - OAuthScopes.IPs*
 - OAuthScopes.Firewall
 - OAuthScopes.LKE
-- OAuthScopes.Events 
-- OAuthScopes.Volumes 
+- OAuthScopes.Events
+- OAuthScopes.Volumes
 - OAuthScopes.LongView
 - OAuthScopes.ObjectStorage
 - OAuthScopes.Images
