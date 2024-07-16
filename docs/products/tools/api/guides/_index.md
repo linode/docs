@@ -34,7 +34,3 @@ aliases: ['/products/tools/linode-api/guides/']
 ## Going Further
 
 - [How to Create an OAuth App with the Linode Python API Library](/docs/products/tools/api/guides/create-an-oauth-app-with-the-python-api-library/)
-
-## Upgrading from Older Versions
-
-- [Upgrade from API v3 to API v4](/docs/products/tools/api/guides/upgrade-to-v4/)

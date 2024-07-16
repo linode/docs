@@ -8,7 +8,7 @@ external_resources:
   - '[Getting Started with NodeBalancers](/docs/products/networking/nodebalancers/get-started/)'
 keywords: ["nodebalancer", "load balancing", "high availability", "linode api"]
 tags: ["linode platform"]
-aliases: ['/platform/api/nodebalancers/','/guides/nodebalancers/']
+aliases: ['/platform/api/nodebalancers/','/guides/nodebalancers/','/products/tools/api/guides/nodebalancers/']
 ---
 
 [NodeBalancers](https://www.linode.com/nodebalancers) can be used to provide high availability load balancing for almost any type of website or service hosted on a Compute Instance. This guide will demonstrate how to use the Linode API to create a NodeBalancer with two back end nodes.
