@@ -20,7 +20,7 @@ deprecated: true
 
 Piwik is a "downloadable, open source (GPL licensed) web analytics software program." As an alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership of and control over the data collected from your visitors.
 
-Piwik requires a functioning LAMP stack. You can install the LAMP software with the [Ubuntu 10.10 LAMP guide](/docs/guides/lamp-server-on-ubuntu-10-10-maverick/). Make sure you follow the steps for installing PHP and PHP-MySQL support.
+Piwik requires a functioning LAMP stack. You can install the LAMP software with the [Ubuntu 10.10 LAMP guide](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/). Make sure you follow the steps for installing PHP and PHP-MySQL support.
 
 ## Prerequisites
 
