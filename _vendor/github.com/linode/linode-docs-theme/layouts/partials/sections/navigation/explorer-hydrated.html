@@ -36,6 +36,19 @@
         {{ template "explorer-dynamic-loop-pages" . }}
       </template>
 
+      <template x-ref="templateNodePagesFooter">
+        <template x-if="state.totalPageCount != state.pages.length">
+          <li>
+            <a
+              :href="node.href"
+              x-html="viewAllText()"
+              class="py-1-5 inline-block page-link mr-2 text-xs capitalize cursor-pointer no-underline active:text-brand hover:text-gray-900 focus:outline-none 
+            ">
+            </a>
+          </li>
+        </template>
+      </template>
+
       <template x-ref="templateNode">
         <template x-for="n2 in getNodesSection()">
           {{ template "explorer-dynamic-node" (dict "n" "n2") }}
@@ -130,7 +143,7 @@
     <span
       class="bg-container h-full"
       :class="{ 'after-second': {{ $.n }}.level > 2 }"></span>
-    <span x-html="node.title"></span>
+    <span x-html="node.linkTitle ? node.linkTitle : node.title"></span>
   </a>
 {{ end }}
 

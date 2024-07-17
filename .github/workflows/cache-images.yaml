@@ -35,6 +35,11 @@ jobs:
         continue-on-error: true
         run: ls -al ${{ vars.HUGO_IMAGE_CACHE_PATH }}
 
+      - name: 8. Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ vars.NODE_VERSION }}
+
       - name: Install dependencies (Node)
         working-directory: ./docs-repo
         run: npm ci
