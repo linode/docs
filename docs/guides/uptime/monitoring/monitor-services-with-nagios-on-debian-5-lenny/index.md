@@ -20,7 +20,7 @@ deprecated: true
 
 Nagios is an open source monitoring tool that monitors services within a server cluster. In addition to monitoring services such as SMTP/POP3 and HTTP, Nagios can also be used to check the health of the server itself.
 
-Before continuing with this guide, you will need to make sure that you have set your hostname by following the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Additionally, you will also need to have a functioning [LAMP stack](/docs/guides/lamp-server-on-debian-5-lenny/) in order to use Nagios.
+Before continuing with this guide, you will need to make sure that you have set your hostname by following the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Additionally, you will also need to have a functioning [LAMP stack](/docs/guides/how-to-install-a-lamp-stack-on-debian-11/) in order to use Nagios.
 
 ## Prepare for Nagios Installation
 

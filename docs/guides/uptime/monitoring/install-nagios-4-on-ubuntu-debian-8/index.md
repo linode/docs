@@ -28,7 +28,7 @@ A monitoring tool is a key application in a production server. Nagios is a popul
 
 1.  In order to run Nagios on your Linode, follow the configuration steps for Ubuntu or Debian 8 from our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/).
 
-2.  Install and configure a LAMP stack (Linux, Apache, MySQL and PHP stack). Follow the [LAMP on Ubuntu 14.04](/docs/guides/lamp-on-ubuntu-14-04/) or [LAMP on Debian 8](/docs/guides/lamp-on-debian-8-jessie/) guide for instructions.
+2.  Install and configure a LAMP stack (Linux, Apache, MySQL and PHP stack). Follow the [LAMP on Ubuntu 14.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/) or [LAMP on Debian 8](/docs/guides/lamp-on-debian-8-jessie/) guide for instructions.
 
 3.  Install updates:
 

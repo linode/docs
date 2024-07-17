@@ -23,7 +23,7 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 1.  Ensure that you have completed the following guides:
 
     -   [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
-    -   [Install a LAMP stack](/docs/guides/lamp-on-ubuntu-14-04/)
+    -   [Install a LAMP stack](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/)
     -   [Install and Configure Drupal 8](/docs/guides/how-to-install-and-configure-drupal-8/)
 
 2.  Confirm the name of your site's Document Root folder by running the following command on your Linode:

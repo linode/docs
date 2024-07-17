@@ -123,7 +123,7 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 - [Adding and managing public SSH keys](/docs/products/platform/accounts/guides/manage-ssh-keys/)
 - [Managing LISH authentication methods](/docs/products/compute/compute-instances/guides/lish/#add-your-public-key)
 - [Adding and managing personal and third party API v4 access tokens](/docs/products/tools/api/get-started/#get-an-access-token)
-- [Creating and managing OAuth Apps](/docs/products/tools/api/guides/create-an-oauth-app-with-the-python-api-library/#obtaining-a-client-id-and-a-client-secret)
+- [Creating and managing OAuth Apps](/docs/guides/create-an-oauth-app-with-the-python-api-library/#obtaining-a-client-id-and-a-client-secret)
 - [Linode Referral Program](/docs/products/platform/billing/guides/referral-program/)
 - Enable email alerts for account activity
 
