@@ -12,7 +12,7 @@ One of the most powerful features of Linode's unmanaged service is the amount of
 
 ## What to Keep Track of when Hiring a Developer
 
-When you hire someone to work on your Linode, there are a variety of ways to grant access to your Linode account, the Compute Instances on it, and the system and applications on those instances. Recording which of these credentials you've shared is important in the event that you need to end your contract with your developer.
+When you hire someone to work on your Linode, there are a variety of ways to grant access to your Linode account, the Compute Instances on it, and the system and applications on those instances. Recording which of these credentials you've shared is important if you need to end your contract with your developer.
 
 This guide explains and answers some of the most frequently asked questions about account access. The sections are separated in order of granularity, starting with service-level access at the top, and working towards application-specific access.
 

@@ -59,7 +59,7 @@ To turn Lassie on and off, see the [Recover from Unexpected Shutdowns with Lassi
 
 ## Manage Logs
 
-Important events that occur on your system — things like login attempts or services being restarted — are recorded in your server's *logs*. Similar to car maintenance records and completed tax forms, which provide a paper trail in the event of a problem or discrepancy, log files keep track of system events. You might review logs when troubleshooting errors, tracking usage, or investigating unusual behavior on your system.
+Important events that occur on your system — things like login attempts or services being restarted — are recorded in your server's *logs*. Similar to car maintenance records and completed tax forms, which provide a paper trail if a problem or discrepancy occurs, log files keep track of system events. You might review logs when troubleshooting errors, tracking usage, or investigating unusual behavior on your system.
 
 ### Rotate Logs
 

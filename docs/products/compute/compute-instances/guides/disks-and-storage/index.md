@@ -15,7 +15,7 @@ Every Compute Instance is equipped with persistent storage, the amount of which 
 
 ### Disks
 
-The storage space on a Compute Instance can be allocated to individual *disks*. Disks are be used to store any data, including the operating system, applications, and files. Most instances are deployed with two disks. A large primary disk is used to store the Linux distribution, software, and data. There's also a much smaller swap disk, which is used in the event that your instance runs out of memory.
+The storage space on a Compute Instance can be allocated to individual *disks*. Disks are be used to store any data, including the operating system, applications, and files. Most instances are deployed with two disks. A large primary disk is used to store the Linux distribution, software, and data. There's also a much smaller swap disk, which is used if your instance runs out of memory.
 
 While two disks may be the default, a Compute Instance can be configured to have many more disks. These additional disks can serve a variety of purposes, including dedicated file storage or switching between entirely different Linux distributions. When multiple disks are added, [configuration profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/) are used to determine the disks that are accessible when the instance is powered on, as well as which of those disks serves as the primary root disk.
 
