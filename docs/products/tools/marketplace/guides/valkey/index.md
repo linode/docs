@@ -11,7 +11,7 @@ external_resources:
 
 Valkey is an open-source (BSD) key/value datastore that supports diverse workloads such as caching and message queues, and can act as a primary database. The Akamai Connected Cloud One-Click App for Valkey is configured as a standalone system daemon with TLS support.
 
-Valkey natively supports a broad collection of datatypes, extensibility with built-in scripting support for Lua, and module plugins to create new commands, data types, and more. 
+Valkey natively supports a broad collection of data types, extensibility with built-in scripting support for Lua, and module plugins to create new commands, data types, and more. 
 
 {{< note type="warning" title="Valkey is still early in development" >}}
 While Valkey is a fork of a production-ready 7.2.4 release of Redis, the Valkey codebase is still early in development and is subject to change as development takes place. We recommend following the [release cycles](https://github.com/valkey-io/valkey/releases) for any breaking changes to minimize downtime on a production environment.
@@ -38,7 +38,7 @@ While Valkey is a fork of a production-ready 7.2.4 release of Redis, the Valkey 
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
 
-- **Number of clients connecting to Valkey:** The number of clients that will be connecting to the cluster. The application will create SSL certificates for your client that need to connect to the cluster. This should be an interger equal or greater than 1.
+- **Number of clients connecting to Valkey:** The number of clients that will be connecting to the cluster. The application will create SSL certificates for your client that need to connect to the cluster. This should be an integer equal or greater than 1.
 
 - **Valkey Version:** Version of Valkey to install.
 

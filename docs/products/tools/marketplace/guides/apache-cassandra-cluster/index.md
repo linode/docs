@@ -38,7 +38,7 @@ Create a highly available Apache Cassandra cluster through the Linode Marketplac
 
 - **Cassandra Database User:** Enter your database super username for the Cassandra cluster.
 
-- **Number of clients connecting to Cassandra:** The number of clients that will be connecting to the cluster. The application will create SSL certificates for your clients that need to connect to the cluster. The number of clients should be an interger equal or greater than 1.
+- **Number of clients connecting to Cassandra:** The number of clients that will be connecting to the cluster. The application will create SSL certificates for your clients that need to connect to the cluster. The number of clients should be an integer equal or greater than 1.
 
 - **Cassandra cluster size:** The size of the Cassandra cluster
 
@@ -100,7 +100,7 @@ Use HELP for help.
 superadmin@cqlsh>
 ```
 
-You can distribute the remainder of client certifcates to the rest of the nodes.
+You can distribute the remainder of client certificates to the rest of the nodes.
 
 ## Software Included
 

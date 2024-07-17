@@ -33,7 +33,7 @@ authors: ["Linode"]
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 - **Admin Username** *(required)*: Username for InfluxDB admin.
 - **Organization Name** *(required)*: Name of the InfluxDB organization.
-- **Bucket Name** *(required)*: Name of inital InfluxDB bucket.
+- **Bucket Name** *(required)*: Name of initial InfluxDB bucket.
 
 {{< content "marketplace-required-limited-user-fields-shortguide">}}
 
