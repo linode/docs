@@ -134,7 +134,7 @@ jobs:
     - name: 8. Install Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: 14
+        node-version: ${{ vars.NODE_VERSION }}
 
     - name: 9. Install dependencies (Node)
       working-directory: ./docs-repo
