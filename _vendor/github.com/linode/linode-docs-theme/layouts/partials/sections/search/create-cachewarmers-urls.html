@@ -129,7 +129,7 @@
   {{ $targetPath := printf "cachewarmers/sections/%s.json" $name }}
   {{ $targetResource := resources.FromString $targetPath (jsonify .) }}
   {{ if (ne hugo.Environment "development") }}
-    {{ $targetResource = $targetResource | minify | fingerprint }}
+    {{ $targetResource = $targetResource | minify }}
   {{ end }}
   {{ $resourcem = merge $resourcem (dict $k $targetResource.RelPermalink) }}
 {{ end }}
@@ -160,10 +160,13 @@
     {{ $node := "" }}
     {{ $section := index $sectionsmetamap $kk }}
     {{ $title := "" }}
+    {{ $linkTitle:= "" }}
     {{ with $section }}
       {{ $title = .title }}
+      {{ $linkTitle = .linkTitle }}
     {{ else }}
       {{ $title = replace $last "-" " " | title }}
+      {{ $linkTitle = $title }}
     {{ end }}
     {{ $sectionsPath := (path.Join $parts) }}
     {{/* Note that this is a mix of Hugo and other sections. We cannot use urlize, because we need to preserve spaces. */}}
@@ -176,6 +179,7 @@
         "key" $kk
         "href" $href
         "title" $c.title
+        "linkTitle" $c.linkTitle
         "icon" $c.explorer_icon
         "count" $vv
         "level" $level
@@ -187,6 +191,7 @@
         "key" $kk
         "href" $href
         "title" $title
+        "linkTitle" $linkTitle
         "icon" ""
         "count" $vv
         "level" $level

@@ -33,7 +33,7 @@ This guide is written for Ubuntu 14.04. Before moving ahead, make sure you have 
 
 * [Getting Started with Linode](/docs/products/platform/get-started/)
 * [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
-* [How to Install a LAMP Stack on Ubuntu 14.04](/docs/guides/lamp-on-ubuntu-14-04/)
+* [How to Install a LAMP Stack on Ubuntu 14.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/)
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
