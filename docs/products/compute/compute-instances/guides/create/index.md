@@ -37,7 +37,7 @@ Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Create** d
 
 One of the first steps to deploy a Compute Instance is to decide *what* you actually wish to deploy. You're able to select a Linux distribution for a barebones install, a Marketplace App with your desired software, and a few other options.
 
-- **Distributions:** Select from any [supported Linux distribution](https://www.linode.com/distributions/). This option allows you to start with a stable Linux operating system and build your own software stack from scratch. Popular distributions include the latest LTS releases of Ubuntu, Debian, CentOS Stream, RHEL-derivitates (such AlmaLinux and Rocky Linux), and more. Each distribution comes with its own set of preinstalled software and commands. See [Choosing a Linux Distribution](/docs/products/compute/compute-instances/guides/distributions/) for a full list of distributions.
+- **Distributions:** Select from any [supported Linux distribution](https://www.linode.com/distributions/). This option lets you start with a stable Linux operating system and build your own software stack from scratch. Popular distributions include the latest LTS releases of Ubuntu, Debian, CentOS Stream, RHEL-derivitates (such AlmaLinux and Rocky Linux), and more. Each distribution comes with its own set of preinstalled software and commands. See [Choosing a Linux Distribution](/docs/products/compute/compute-instances/guides/distributions/) for a full list of distributions.
 
 - **Marketplace**: Select from the many [Apps](https://www.linode.com/marketplace/apps/) currently featured in the [Linode Marketplace](https://www.linode.com/marketplace/). This installs and configures your desired software, allowing you to start using your applications right away. Popular apps include [Wordpress](https://www.linode.com/marketplace/apps/linode/wordpress/), [WooCommerce](https://www.linode.com/marketplace/apps/linode/woocommerce/), [LEMP](https://www.linode.com/marketplace/apps/linode/lemp/), [cPanel](https://www.linode.com/marketplace/apps/cpanel/cpanel/), [Plesk](https://www.linode.com/marketplace/apps/plesk/plesk/), and [Nextcloud](https://www.linode.com/marketplace/apps/linode/nextcloud/). See [How to Use Linode's Marketplace Apps](/docs/products/tools/marketplace/get-started/).
 
@@ -103,7 +103,7 @@ Consider using a [VPC](/docs/products/networking/vpc/) (Virtual Private Network)
 
 - **Select VPC:** To assign this instance to a VPC, select the VPC from the **Assign VPC** dropdown menu. If you do not yet have a VPC in the selected data center, click the **Create a VPC** button and follow the instructions on the [Create a VPC](/docs/products/networking/vpc/guides/create/) guide.
 
-- **Select Subnet:** An instance can be assigned to a single subnet, which allows you to further segment traffic and services within a VPC. Select the desired subnet within the **Subnet** dropdown menu.
+- **Select Subnet:** An instance can be assigned to a single subnet, which lets you further segment traffic and services within a VPC. Select the desired subnet within the **Subnet** dropdown menu.
 
 - **Auto-Assign IPv4 address:** By default, an IPv4 address will be automatically generated for the instance on the subnet’s defined CIDR range. If you want to manually assign an IP address, uncheck the **Auto-assign a VPC IPv4 address for this Linode** option and enter your custom IPv4 address. This address must still be within the subnet’s IP range.
 
@@ -117,7 +117,7 @@ For additional information and considerations, review the [Assign (and Remove) S
 
 ![Screenshot of the Assign Cloud Firewall section](create-instance-cloud-firewall.jpg)
 
-To protect your new Compute Instance from unwanted traffic, consider using a [Cloud Firewall](/docs/products/networking/cloud-firewall/). This allows you to cascade firewall rules across multiple services and manage those rules within the Cloud Manager, Linode CLI, and Linode API.
+To protect your new Compute Instance from unwanted traffic, consider using a [Cloud Firewall](/docs/products/networking/cloud-firewall/). This lets you cascade firewall rules across multiple services and manage those rules within the Cloud Manager, Linode CLI, and Linode API.
 
 To assign your instance to a Cloud Firewall, select the firewall from the **Assign Firewall** dropdown menu. If you do not have a firewall or wish to create a new one, click the **Create Firewall** link and follow the instructions within the [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) guide. You can always skip this step and assign a firewall at a later time by following the instructions in the [Apply Firewall Rules to a Service](/docs/products/networking/cloud-firewall/guides/apply-to-service/) guide.
 

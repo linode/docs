@@ -50,6 +50,6 @@ aliases: ['/guides/deploying-pihole-marketplace-app/','/guides/pihole-marketplac
 
 1.  To log yourself in and access most of Pi-hole's features, click the **Login** link on the left menu. Enter the Pi-hole user password that you created when deploying the Compute Instance.
 
-Now that you’ve accessed your dashboard, check out [the official Pi-hole documentation](https://docs.pi-hole.net/) to learn how to further utilize your Pi-hole instance.
+Now that you’ve accessed your dashboard, check out [the official Pi-hole documentation](https://docs.pi-hole.net/) to learn how to further use your Pi-hole instance.
 
 {{% content "marketplace-update-note-shortguide" %}}

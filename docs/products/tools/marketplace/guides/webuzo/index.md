@@ -1,6 +1,6 @@
 ---
 title: "Deploy Webuzo through the Linode Marketplace"
-description: "This guide shows you how to deploy Webuzo from Softaculous, a LAMP stack control panel that allows you to deploy a growing number of applications and scripts."
+description: "This guide shows you how to deploy Webuzo from Softaculous, a LAMP stack control panel that lets you deploy a growing number of applications and scripts."
 published: 2020-12-02
 modified: 2022-08-08
 keywords: ['webuzo','control panel','dashboard','marketplace']
@@ -11,7 +11,7 @@ external_resources:
 aliases: ['/platform/marketplace/how-to-deploy-webuzo-with-marketplace-apps/', '/platform/one-click/how-to-deploy-webuzo-with-one-click-apps/','/guides/how-to-deploy-webuzo-with-one-click-apps/','/guides/deploy-webuzo-with-marketplace-apps/','/guides/webuzo-marketplace-app/']
 ---
 
-Softaculous [Webuzo](https://www.webuzo.com) is a single user LAMP stack control panel that allows you to deploy a growing number of applications and scripts on your server with a single click.
+Softaculous [Webuzo](https://www.webuzo.com) is a single user LAMP stack control panel that lets you deploy a growing number of applications and scripts on your server with a single click.
 
 ## Deploying a Marketplace App
 
@@ -56,7 +56,7 @@ After the deployment process has finished and your Compute Instance has rebooted
 
     To set your hostname and name servers, navigate to **Settings** > **Panel Config** and make any needed adjustments to the *Hostname (Panel domain)* and nameserver (*NS1* and *NS2*) fields. If you registered the domain name *example.com*, you may want to configure your *Hostname* as `server.example.com` and your name servers as `ns1.example.com` and `ns2.example.com`. Before doing so, you need log in to your DNS provider and add an A record from `server.example.com` to the IPv4 address of your Compute Instance. You also need to register the name servers through your domain's registrar. For further instructions, consult your domain registrar's documentation.
 
-1.  **Create a user.** Webuzo allows you to have multiple users, each with their own website(s), resource allowances, and dedicated backend panels. To create your first user, navigate to **Users** > **Add User**. In the **Add user** page that appears, fill out the desired username, password, domain, and email address for the new user. You can also set custom resource allotments and additional settings as needed.
+1.  **Create a user.** Webuzo lets you have multiple users, each with their own website(s), resource allowances, and dedicated backend panels. To create your first user, navigate to **Users** > **Add User**. In the **Add user** page that appears, fill out the desired username, password, domain, and email address for the new user. You can also set custom resource allotments and additional settings as needed.
 
 1.  **Log in as the user.** You can log in to the user panel (also called the enduser panel) by navigating to the following URL: `http://[ip-address]:2002`. At the login prompt, enter the user credentials that you just created and press **Login**. The user panel should appear:
 

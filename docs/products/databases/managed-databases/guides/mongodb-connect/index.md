@@ -26,7 +26,7 @@ The *Connection Details* section contains information and credentials needed for
 - **Replica set:** The name of the replica set. This is only relevant for multi-node high availability clusters and does not appear for standalone (single node) databases.
 - **SSL:** This field is set to `ENABLED`, which means that it is required to use an encrypted TLS/SSL connection.
 
-Under the *Connection Details* section, there is a **Download CA Certificate** link, which allows you to download the CA (Certificate Authority) certificate. This certificate file can be used if you wish to verify the CA certificate when connecting to the database.
+Under the *Connection Details* section, there is a **Download CA Certificate** link, which lets you download the CA (Certificate Authority) certificate. This certificate file can be used if you wish to verify the CA certificate when connecting to the database.
 
 ## Connect Using the MongoDB Shell (CLI)
 

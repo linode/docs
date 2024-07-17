@@ -6,7 +6,7 @@ modified: 2023-05-22
 aliases: ['/products/tools/cloud-manager/guides/manage-ssh-keys/']
 ---
 
-When creating a Compute Instance, you have the opportunity to select one or more SSH keys, which are added to the root user account of the new instance. This allows you to login over SSH using your associated private key instead of the root password.
+When creating a Compute Instance, you have the opportunity to select one or more SSH keys, which are added to the root user account of the new instance. This lets you login over SSH using your associated private key instead of the root password.
 
 These SSH keys are stored within your Linode account and can be easily accessed from the Cloud Manager. This guide walks you through how to view, add, and remove your account's SSH keys. For instructions on selecting an SSH key when deploying a Compute Instance see [Creating a Compute Instance > Create a Password and Add SSH Keys](/docs/products/compute/compute-instances/guides/create/#create-a-password-and-add-ssh-keys).
 

@@ -43,7 +43,7 @@ This section covers viewing and editing the details of the domain itself. If you
 
 ## Clone a Domain
 
-The *Clone* feature allows you to copy DNS records from an existing domain in your Linode account to a new domain. If you've already set up DNS records for one of the services you host on your Linode account, this is a good way to quickly assign another domain to that same service.
+The *Clone* feature lets you copy DNS records from an existing domain in your Linode account to a new domain. If you've already set up DNS records for one of the services you host on your Linode account, this is a good way to quickly assign another domain to that same service.
 
 Here's how to clone DNS records for an existing domain:
 

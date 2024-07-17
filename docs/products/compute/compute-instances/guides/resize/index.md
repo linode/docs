@@ -32,7 +32,7 @@ You have two resize options to choose from: **warm** and **cold**. Each refer to
 
 - **Warm resize**. Your compute instance remains up during the migration and it's rebooted once the migration completes. So, make sure your instance is powered on for this resize. If you see a warning message about an inability to power down your compute instance, try the resize again using the cold resize option. There is less downtime during a warm resize than a cold resize.
 
-- **Cold resize**. This shuts down your compute instance, migrates it to a new host, and restores it to its booted state prior to the resize process.
+- **Cold resize**. This shuts down your compute instance, migrates it to a new host, and restores it to its booted state before the resize process.
 
 ## Resize a compute instance
 

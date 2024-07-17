@@ -21,7 +21,7 @@ While two disks may be the default, a Compute Instance can be configured to have
 
 ### Add Additional Storage
 
-The local storage capacity of a Compute Instance can only be increased by upgrading to a larger plan. This allows you to increase the size of existing disks or add additional disks. [Block Storage](/docs/products/storage/block-storage/) Volumes can also be used to add additional storage, though these Volumes are separate from a Compute Instance's local disks and, for some use cases, may be less performant.
+The local storage capacity of a Compute Instance can only be increased by upgrading to a larger plan. This lets you increase the size of existing disks or add additional disks. [Block Storage](/docs/products/storage/block-storage/) Volumes can also be used to add additional storage, though these Volumes are separate from a Compute Instance's local disks and, for some use cases, may be less performant.
 
 ## View Disks
 
@@ -67,7 +67,7 @@ If you wish to deploy an Image to a new disk, see the [Deploy an Image to a Disk
 
     **Empty disks:** An empty disk can store additional data, be used as a swap disk, or it can be used to manually [install a custom distribution](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/). When creating an empty disk, select the desired *Filesystem*. In most cases, it's recommended to use the *ext4* filesystem. This ensures compatibility with our Backups service. If needed, *ext3* and *raw* disks are also available. If creating a swap disk, select the *swap* option.
 
-    **Images:** Selecting an Image allows you to deploy a [Distribution Image](https://www.linode.com/distributions/), a [Custom Image](/docs/products/tools/images/), or a Recovery Image to the new disk. When creating a disk based on an Image, select the *Image*, *Root Password*, and optionally add *SSH Keys*.
+    **Images:** Selecting an Image lets you deploy a [Distribution Image](https://www.linode.com/distributions/), a [Custom Image](/docs/products/tools/images/), or a Recovery Image to the new disk. When creating a disk based on an Image, select the *Image*, *Root Password*, and optionally add *SSH Keys*.
 
 1. Once an option is chosen, complete the remaining fields in the form. Enter the *Label* and the *Size* for the new disk. The *maximum size* of the disk is pre-populated and based on the Compute Instance's remaining storage allocation, though a smaller size can be entered if desired.
 

@@ -15,7 +15,7 @@ StackScripts allow you to reproduce specific software configurations when deploy
 
 ## Write the Script
 
-When creating a StackScript, most of the time is spent writing the deployment script itself. This script runs the first time a Compute Instance boots up and allows you to configure the system to fit your precise needs and requirements. Before you write the script, consider the following:
+When creating a StackScript, most of the time is spent writing the deployment script itself. This script runs the first time a Compute Instance boots up and lets you configure the system to fit your precise needs and requirements. Before you write the script, consider the following:
 
 - **What is the purpose of your script?** The first question you should ask is *what purpose will your script serve*. Do you want to build a web server? Are you building a script to take care of securing new servers? Consider each task you want your script to perform.
 

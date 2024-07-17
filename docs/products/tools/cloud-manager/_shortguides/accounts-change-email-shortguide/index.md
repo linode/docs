@@ -13,7 +13,7 @@ tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/accounts-change-email-shortguide/']
 ---
 
-Use the **Users & Grants** page to modify the email address associated with a user account. The email addresses listed on this page receive IP whitelist warnings, password reset messages, and support tickets for services that their associated users have permission to access. Users with limited account access can also receive invoices and receipts if granted access to that information.
+Use the **Users & Grants** page to modify the email address associated with a user account. The email addresses listed on this page receive password reset messages and support tickets for services that their associated users have permission to access. Users with limited account access can also receive invoices and receipts if granted access to that information.
 
 {{< note >}}
 Only full account access users can receive threshold notification emails.

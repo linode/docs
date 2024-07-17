@@ -7,7 +7,7 @@ keywords: ['HashiCorp','Nomad','Scheduling', 'orchestration']
 tags: ["marketplace", "linode platform", "cloud manager"]
 ---
 
-[HashiCorp Nomad](https://www.nomadproject.io/) is a workload scheduler and orchestrator that allows you to deploy and manage containerized or non-containerized, legacy applications using a single, unified workflow. Nomad uses bin packaging for efficient job scheduling and resource optimization, as well as enables developers to use declarative infrastructure-as-code for their deployments.
+[HashiCorp Nomad](https://www.nomadproject.io/) is a workload scheduler and orchestrator that lets you deploy and manage containerized or non-containerized, legacy applications using a single, unified workflow. Nomad uses bin packaging for efficient job scheduling and resource optimization, as well as enables developers to use declarative infrastructure-as-code for their deployments.
 
 {{< note type="warning" title="Marketplace App Cluster Notice" >}}
 This Marketplace App deploys 6 Compute Instances to create a highly available, redundant Hashicorp Nomad Cluster. The plan type and size you select is applied to each individual instance.
@@ -90,6 +90,6 @@ Please be aware that each Compute Instance will appear on your invoice as a sepa
 
 The HashiCorp Nomad Cluster provides default configurations to get you started. We recommend reviewing HashiCorp's [Configuration](https://www.nomadproject.io/docs/configuration) and [Job Spec](https://www.nomadproject.io/docs/job-specification) documentation to customize your Nomad Cluster for your specific workload.
 
-If you find that you need additional Clients for your Nomad Cluster, the [Nomad Clients Cluster](/docs/products/tools/marketplace/guides/hashicorp-nomad-clients-cluster/) deployment allows you to scale horizontally by deploying 3, 5, or 7 additional Compute Instances as Clients.
+If you find that you need additional Clients for your Nomad Cluster, the [Nomad Clients Cluster](/docs/products/tools/marketplace/guides/hashicorp-nomad-clients-cluster/) deployment lets you scale horizontally by deploying 3, 5, or 7 additional Compute Instances as Clients.
 
 {{% content "marketplace-update-note-shortguide" %}}

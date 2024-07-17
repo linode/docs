@@ -87,7 +87,7 @@ Open a web browser and navigate to the custom domain you entered when deploying 
 
     ![Screenshot of the Mastodon user home page](mastodon-user-home.png)
 
-1. **Access admin settings**. Navigate to `https://[domain.tld]/admin/settings/` to view your site's administration settings. The administration page allows you to alter the look, feel, and behavior of your site. Consider configuring each of these settings, including the site name, contact username, contact email, server description, and fields within other tabs.
+1. **Access admin settings**. Navigate to `https://[domain.tld]/admin/settings/` to view your site's administration settings. The administration page lets you alter the look, feel, and behavior of your site. Consider configuring each of these settings, including the site name, contact username, contact email, server description, and fields within other tabs.
 
     ![Screenshot of Mastodon admin page](mastodon-server-settings.png)
 

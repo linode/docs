@@ -386,7 +386,7 @@ For more details, review the API request sample on the [Cluster Nodes Recycle AP
 
 1.  Repeat steps 2 through 4 for each worker node until *all but the last* worker nodes are using the newer Kubernetes version. For the last worker node, repeat steps 2 and 3 to cordon and drain that node - but do not recycle it as that will cause workloads to land back on that node. Instead, continue with the step below to delete it.
 
-1.  Remove the additional worker node that was added during this upgrade process. This can be accomplished by resizing your cluster back to your original value to use one less worker node. The last worker node that was created, which was the one you have not yet recycled, is removed during the resize. Then, if you previously adjusted the Autoscale Pool, adjust the values back to what they were prior to the upgrade.
+1.  Remove the additional worker node that was added during this upgrade process. This can be accomplished by resizing your cluster back to your original value to use one less worker node. The last worker node that was created, which was the one you have not yet recycled, is removed during the resize. Then, if you previously adjusted the Autoscale Pool, adjust the values back to what they were before the upgrade.
 
     {{< tabs >}}
     {{< tab "Cloud Manager" >}}
@@ -444,7 +444,7 @@ For more details, review the API request sample on the [Cluster Nodes Recycle AP
 *This process temporarily creates an additional node pool (with multiple worker nodes). This minimizes the time the upgrade may take (compared with an in-place upgrade) but increases the cost impact. This is recommended for larger production applications.*
 
 {{< note >}}
-These instructions cover deleting the old node pool after all nodes have been fully drained. This allows you to fallback to the existing nodes should the need arise. Alternatively, you can delete each node after it has been successfully drained, which reduces the overall cost impact of the upgrade.
+These instructions cover deleting the old node pool after all nodes have been fully drained. This lets you fallback to the existing nodes should the need arise. Alternatively, you can delete each node after it has been successfully drained, which reduces the overall cost impact of the upgrade.
 {{< /note >}}
 
 1.  Create a new pool with the same Compute Instance plans and number of nodes as your existing pool.

@@ -74,7 +74,7 @@ This controls how subsequent requests from the same client are routed when selec
     The client must have cookies enabled. If the client has disabled cookies or deletes cookies, session persistence is not preserved and each new request is routed in accordance with the chosen algorithm.
     {{< /note >}}
 
-If session persistence is required or desired for the application, it is recommended to utilize both the *Source IP* algorithm in combination with either *Table* or *HTTP Cookie* session stickiness.
+If session persistence is required or desired for the application, it is recommended to use both the *Source IP* algorithm in combination with either *Table* or *HTTP Cookie* session stickiness.
 
 ### TLS/SSL Certificate and Private Key
 

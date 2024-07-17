@@ -10,12 +10,12 @@ When deploying Compute Instances, it's almost always necessary to perform additi
 
 ## Overview
 
-Linode's Metadata service provides a convenient method to automate software configuration when deploying a Compute Instance. It is an API that's accessible only from within a provisioned Compute Instance and provides relevant metadata to that instance. The Metadata service is designed to be consumed by [cloud-init](https://cloudinit.readthedocs.io/en/latest/), an industry standard software that automates cloud instance initialization. This allows you to use the same tool across multiple cloud providers, enabling a pathway for provisioning your systems as part of a multi-cloud infrastructure strategy.
+Linode's Metadata service provides a convenient method to automate software configuration when deploying a Compute Instance. It is an API that's accessible only from within a provisioned Compute Instance and provides relevant metadata to that instance. The Metadata service is designed to be consumed by [cloud-init](https://cloudinit.readthedocs.io/en/latest/), an industry standard software that automates cloud instance initialization. This lets you use the same tool across multiple cloud providers, enabling a pathway for provisioning your systems as part of a multi-cloud infrastructure strategy.
 
 The Metadata service provides both *instance data* and optional *user data*, both of which are explained below:
 
 -   **Instance data:** The instance data includes information about the Compute Instance, including its label, plan size, region, host identifier, and more.
--   **User data:** User data is one of the most powerful features of the Metadata service and allows you to define your desired system configuration, including creating users, installing software, configuring settings, and more. User data is supplied by the user when deploying, rebuilding, or cloning a Compute Instance. This user data can be written as a cloud-config file, or it can be any script that can be executed on the target distribution image, such as a bash script.
+-   **User data:** User data is one of the most powerful features of the Metadata service and lets you define your desired system configuration, including creating users, installing software, configuring settings, and more. User data is supplied by the user when deploying, rebuilding, or cloning a Compute Instance. This user data can be written as a cloud-config file, or it can be any script that can be executed on the target distribution image, such as a bash script.
 
     User data can be submitted directly in the Cloud Manager, Linode CLI, or Linode API. It's also often programmatically provided through IaC (Infrastructure as Code) provisioning tools like [Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/).
 
@@ -222,7 +222,7 @@ If you are not able to access your system through SSH, you can use [Lish](/docs/
 
 ### Run the `cloud-init` Command
 
-The `cloud-init` command-line tool can be used to gather more information or perform certain actions. Here are some commands you can utilize to help troubleshoot cloud-init.
+The `cloud-init` command-line tool can be used to gather more information or perform certain actions. Here are some commands you can use to help troubleshoot cloud-init.
 
 - `cloud-init status --long`: This provides information about the status of cloud-init. You will notice different output depending on if it is actively running or if has run in the past. See [cloud-init status](https://cloudinit.readthedocs.io/en/latest/reference/cli.html#status).
 - `cloud-init query v1` and `cloud-init query userdata`: This outputs either the instance data or the user data provided by the Metadata service. Other metadata is also exposed by entering a different query key. See [cloud-init query](https://cloudinit.readthedocs.io/en/latest/reference/cli.html#query).

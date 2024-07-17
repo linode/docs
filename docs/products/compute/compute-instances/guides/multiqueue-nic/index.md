@@ -15,7 +15,7 @@ aliases: ['/guides/multiqueue-nic/']
 
 Multi-queue NICs (network interface cards) are supported on all Compute Instances that have 2 or more CPU cores (vCPUs). This feature provides multiple receive (RX) and transmit (TX) queues, assigns them to different network interrupts, and balances them over multiple vCPUs. Historically, this traffic was all handled by a single vCPU core. Depending on the server's workload and network traffic, multi-queue can dramatically enhance network performance.
 
-**For most Compute Instances deployed after June 2nd, 2021, no action is needed to enable multi-queue NICs**. If your Compute Instance was deployed prior to that date, a reboot may be required. On older Linux distributions, such as Debian 8 and 9, multi-queue NICs needs to be manually enabled by following the instructions within this guide.
+**For most Compute Instances deployed after June 2nd, 2021, no action is needed to enable multi-queue NICs**. If your Compute Instance was deployed before that date, a reboot may be required. On older Linux distributions, such as Debian 8 and 9, multi-queue NICs needs to be manually enabled by following the instructions within this guide.
 
 ## Determining if Multi-Queue is Enabled
 

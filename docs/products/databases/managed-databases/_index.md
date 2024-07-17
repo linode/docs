@@ -44,7 +44,7 @@ See [Choosing a Database Engine and Plan](/docs/products/databases/managed-datab
 
 ## Recommended Workloads
 
-- Any production application that utilizes a database, especially one with high-traffic or one that stores critical data.
+- Any production application that uses a database, especially one with high-traffic or one that stores critical data.
 - Medium to high traffic websites using WordPress, CraftCMS, Drupal, or other database-enabled application.
 - E-commerce sites
 - Organizations that don't want to commit IT resources towards managing a database cluster.

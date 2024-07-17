@@ -87,7 +87,7 @@ If you wish for an instance to be configured on a VPC, the _VPC_ option needs to
 
     - **VPC:** To assign this instance to a VPC, select the VPC from the **VPC** dropdown menu. If you do not yet have a VPC in the selected data center, click the **Create a VPC** button and follow the instructions on the [Create a VPC](/docs/products/networking/vpc/guides/create/) guide.
 
-    - **Subnet:** An instance can be assigned to a single subnet, which allows you to further segment traffic and services within a VPC. Select the desired subnet within the **Subnet** dropdown menu.
+    - **Subnet:** An instance can be assigned to a single subnet, which lets you further segment traffic and services within a VPC. Select the desired subnet within the **Subnet** dropdown menu.
 
     - **Auto-Assign IPv4 address:** By default, an IPv4 address will be automatically generated for the instance on the subnet’s defined CIDR range. If you want to manually assign an IP address, uncheck the **Auto-assign a VPC IPv4 address for this Linode** option and enter your custom IPv4 address. This address must still be within the subnet’s IP range.
 

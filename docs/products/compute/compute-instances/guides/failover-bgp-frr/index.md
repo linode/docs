@@ -17,7 +17,7 @@ This guide covers using the open source [FRRouting (FRR)](http://docs.frrouting.
 
 ## Before You Begin
 
-Prior to following this guide, ensure the following has been done on each Compute Instance used within your IP failover strategy.
+Before following this guide, ensure the following has been done on each Compute Instance used within your IP failover strategy.
 
 1. Read through the [Configuring Failover on a Compute Instance](/docs/products/compute/compute-instances/guides/failover/) guide to learn more about how failover is implemented within Linode Compute.
 

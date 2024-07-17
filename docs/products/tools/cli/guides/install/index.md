@@ -72,7 +72,7 @@ To configure the CLI without any interactive prompts, you can set the token thro
 export LINODE_CLI_TOKEN="[token]"
 ```
 
-This allows you to bypass the initial configuration. If this variable is unset, the Linode CLI will stop working until it is set again or until the CLI is reconfigured through the interactive prompts.
+This lets you bypass the initial configuration. If this variable is unset, the Linode CLI will stop working until it is set again or until the CLI is reconfigured through the interactive prompts.
 
 ## Install Python 3 and pip3
 

@@ -38,7 +38,7 @@ Within the **SOA Email Address** field, enter the email address for the domain a
 
 ## Pre-populate DNS Records
 
-The **Insert Default Records** dropdown field allows you to pre-populate DNS records with the IP addresses corresponding to one of your Compute Instances or NodeBalancers. If you already know the Compute Instance or NodeBalancer you'd like to use with your domain, this adds the basic DNS records (A, AAAA, and MX) for that service automatically.
+The **Insert Default Records** dropdown field lets you pre-populate DNS records with the IP addresses corresponding to one of your Compute Instances or NodeBalancers. If you already know the Compute Instance or NodeBalancer you'd like to use with your domain, this adds the basic DNS records (A, AAAA, and MX) for that service automatically.
 
 - **Do not insert default records for me.** No DNS records are automatically created.
 - **Insert default records from one of my Lindoes.** Select one of your Compute Instances and DNS records are automatically created using the IPv4 and IPv6 addresses for that instance.

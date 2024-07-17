@@ -49,7 +49,7 @@ Address=192.0.2.123/24
 
 - [**Name**](https://www.freedesktop.org/software/systemd/man/systemd.network.html#Name=): `eth0`, the default interface configured for the public internet on most Compute Instances. When using a VLAN, the public internet interface may be configured differently.
 
-- [**DHCP**](https://www.freedesktop.org/software/systemd/man/systemd.network.html#DHCP=): `no`, which disables DHCP and allows you to statically define the main IPv4 address in later fields.
+- [**DHCP**](https://www.freedesktop.org/software/systemd/man/systemd.network.html#DHCP=): `no`, which disables DHCP and lets you statically define the main IPv4 address in later fields.
 
 - [**DNS**](https://www.freedesktop.org/software/systemd/man/systemd.network.html#DNS=): A list of IP addresses that map to Linode's DNS resolvers. The IP addresses provided in this example are placeholders and do not function.
 

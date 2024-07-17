@@ -8,7 +8,7 @@ tab_group_main:
 
 ## Basics
 
-- [Use Cases](/docs/products/networking/vlans/guides/use-cases/): Learn how VLANs can be utilized by exploring some common scenarios.
+- [Use Cases](/docs/products/networking/vlans/guides/use-cases/): Learn how VLANs can be used by exploring some common scenarios.
 
 - [Getting Started with VLANs](/docs/products/networking/vlans/get-started/): An introduction to VLANs, including how to create and administer them within the Cloud Manager.
 

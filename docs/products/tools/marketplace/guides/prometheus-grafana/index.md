@@ -108,6 +108,6 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 
     ![Screenshot of the Prometheus data source](grafana-prometheus-source.png)
 
-Now that the Prometheus Data Source is set, you can browse the [available Grafana dashboards](https://grafana.com/grafana/dashboards/) to see which dashboard fits your needs. Review the official [Prometheus](https://prometheus.io/docs/introduction/overview/) and [Grafana](https://grafana.com/docs/grafana/latest/) documentation to learn how to further utilize your instance.
+Now that the Prometheus Data Source is set, you can browse the [available Grafana dashboards](https://grafana.com/grafana/dashboards/) to see which dashboard fits your needs. Review the official [Prometheus](https://prometheus.io/docs/introduction/overview/) and [Grafana](https://grafana.com/docs/grafana/latest/) documentation to learn how to further use your instance.
 
 {{% content "marketplace-update-note-shortguide" %}}

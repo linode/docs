@@ -21,7 +21,7 @@ deprecated: true
 Webmin has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only.
 {{< /note >}}
 
-[Webmin](http://www.webmin.com) is an open source interface for Unix system administration that offers an easy to use graphical interface for managing user accounts, DNS, file sharing, and more. Webmin alleviates the need to use the command line to edit Unix system configuration files and allows you to configure your system easily from a simple web interface.
+[Webmin](http://www.webmin.com) is an open source interface for Unix system administration that offers an easy to use graphical interface for managing user accounts, DNS, file sharing, and more. Webmin alleviates the need to use the command line to edit Unix system configuration files and lets you configure your system easily from a simple web interface.
 
 ## Deploying a Marketplace App
 

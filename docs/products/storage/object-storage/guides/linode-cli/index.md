@@ -103,7 +103,7 @@ If the bucket has objects in it, you can not delete it from the Linode CLI immed
 
 ## Create a Signed URL with the CLI
 
-Creating a **signed URL** allows you to create a link to objects with limited permissions and a time limit to access them. To create a signed URL on a preexisting object with the CLI, use the following syntax:
+Creating a **signed URL** lets you create a link to objects with limited permissions and a time limit to access them. To create a signed URL on a preexisting object with the CLI, use the following syntax:
 
 ```command
 linode-cli obj signurl my-example-bucket example.txt +300

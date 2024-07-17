@@ -27,7 +27,7 @@ These Linode-provided interfaces can be used to create, delete, and update the s
 The [Kubernetes API](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/#kubernetes-api) and [kubectl](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/#kubectl) are the primary ways you interact with your LKE cluster once it's been created. These tools can be used to configure, deploy, inspect, and secure your Kubernetes workloads, deploy applications, create services, configure storage and networking, and define controllers.
 
 {{< note >}}
-The Linode API and the Kubernetes API are two separate interfaces, and both are mentioned in this article. The Linode API allows you to manipulate your Linode infrastructure, while the Kubernetes API allows you to manage the software objects running in your cluster.
+The Linode API and the Kubernetes API are two separate interfaces, and both are mentioned in this article. The Linode API lets you manipulate your Linode infrastructure, while the Kubernetes API lets you manage the software objects running in your cluster.
 {{< /note >}}
 
 ## In this Guide

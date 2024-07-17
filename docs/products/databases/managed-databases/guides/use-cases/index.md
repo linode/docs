@@ -9,7 +9,7 @@ Managed Databases is Linode's own Database-as-a-Service (DBaaS) platform. These 
 
 ## Cost Reduction
 
-Hosting your own database on-premise (or on your own custom cloud architecture) can require you to dedicate a significant budget and lots of IT resources towards its implementation and operation. Offloading this to a dedicated DBaaS solution like Managed Databases has the potential to significantly lower the cost and reduce the complexity. This allows you to focus on your business - not your computing infrastructure.
+Hosting your own database on-premise (or on your own custom cloud architecture) can require you to dedicate a significant budget and lots of IT resources towards its implementation and operation. Offloading this to a dedicated DBaaS solution like Managed Databases has the potential to significantly lower the cost and reduce the complexity. This lets you focus on your business - not your computing infrastructure.
 
 ## Rapid Deployment
 

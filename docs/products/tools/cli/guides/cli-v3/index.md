@@ -288,7 +288,7 @@ If you do something via the CLI that costs money (creating a Linode, upgrading a
 
 ### Linodes
 
-The Linode CLI allows you to spin up new Linodes, issue reboots, upgrade plan sizes, and more.
+The Linode CLI lets you spin up new Linodes, issue reboots, upgrade plan sizes, and more.
 
 Listing Linodes:
 
@@ -439,7 +439,7 @@ man linode-domain
 
 ### NodeBalancers
 
-The Linode CLI allows you to manage your [NodeBalancers](/docs/products/networking/nodebalancers/) from the command line.
+The Linode CLI lets you manage your [NodeBalancers](/docs/products/networking/nodebalancers/) from the command line.
 
 Listing NodeBalancers:
 
@@ -473,7 +473,7 @@ man linode-nodebalancer
 
 ### StackScripts
 
-The Linode CLI allows you to create and show StackScripts, and more.
+The Linode CLI lets you create and show StackScripts, and more.
 
 Creating a StackScript:
 
@@ -497,7 +497,7 @@ man linode-stackscript
 
 ### Account
 
-The CLI allows you to view your account billing details at a glance. Run the following command:
+The CLI lets you view your account billing details at a glance. Run the following command:
 
 ```command
 linode account show

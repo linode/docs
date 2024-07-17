@@ -13,7 +13,7 @@ external_resources:
 aliases: ['/platform/marketplace/how-to-deploy-jitsi-with-marketplace-apps/', '/platform/one-click/how-to-deploy-jitsi-with-one-click-apps/','/platform/one-click/deploy-jitsi-with-one-click-apps/','/guides/how-to-deploy-jitsi-with-marketplace-apps/','/guides/jitsi-marketplace-app/']
 ---
 !["Jitsi Start a Meeting"](Deploy_Jitsi_oneclickapps.png "Jitsi Start a Meeting")
-[Jitsi](https://jitsi.org) is a suite of open source projects that allows you to host your own virtual video conferences.
+[Jitsi](https://jitsi.org) is a suite of open source projects that lets you host your own virtual video conferences.
 
 ## Deploying a Marketplace App
 

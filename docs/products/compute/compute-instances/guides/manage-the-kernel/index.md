@@ -53,7 +53,7 @@ These instructions may not accurately reflect the actual kernel version installe
 
 1.  Review the **Kernel** dropdown menu selection.
 
-    - **Latest 64 bit** and **Latest 32 bit**: Uses one of the latest 64-bit or 32-bit Linode kernels at the time the Compute Instance boots/reboots, depending on which option you selected. Since new kernel releases are rolled out over a short time period, the actual kernel used by your system may be one or two releases behind. This setting was the default for most distributions prior to August 2018.
+    - **Latest 64 bit** and **Latest 32 bit**: Uses one of the latest 64-bit or 32-bit Linode kernels at the time the Compute Instance boots/reboots, depending on which option you selected. Since new kernel releases are rolled out over a short time period, the actual kernel used by your system may be one or two releases behind. This setting was the default for most distributions before August 2018.
     - **Direct Disk**: Instead of a Linux Kernel, this uses the MBR (Master Boot Record) of the primary disk*.
     - **GRUB 2**: Uses the upstream distribution-supplied kernel that's installed on the primary disk. If a custom kernel has been installed instead, that is used instead. **This is the most common option and has been the default for most new Compute Instances created after August 2018.**
     - **GRUB (Legacy)**: Uses the upstream distribution-supplied kernel that's installed on the primary disk*. This should only be used on older Linux distributions that have Grub (not Grub 2) installed, like CentOS 6.
@@ -144,7 +144,7 @@ Once completed, the disks should be read by GRUB2 correctly.
 
 ### SELinux
 
-In older systems created prior to August 2018, CentOS 7 and Fedora ship with [SELinux](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) running in enforcing mode by default. When switching from the Linode kernel to the upstream kernel, SELinux may need to relabel your filesystem at boot. When the relabeling completes, the Compute Instance will shut down. If you have [Lassie](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/) enabled, the instance will automatically boot back up following the shut down. If you do not have Lassie enabled, you will need to manually reboot from the Cloud Manager.
+In older systems created before August 2018, CentOS 7 and Fedora ship with [SELinux](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) running in enforcing mode by default. When switching from the Linode kernel to the upstream kernel, SELinux may need to relabel your filesystem at boot. When the relabeling completes, the Compute Instance will shut down. If you have [Lassie](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/) enabled, the instance will automatically boot back up following the shut down. If you do not have Lassie enabled, you will need to manually reboot from the Cloud Manager.
 
 ![SELinux filesystem relabel](selinux-filesystem-relabel.png "SELinux filesystem relabel")
 

@@ -38,7 +38,7 @@ To use Object Storage with any compatible client or command-line tool, you'll ne
 
 1. Select at least one Region. You can select multiple regions for your access key.
 
-1.  Toggle the **Limited Access** switch if you wish to only provide access to certain buckets. This allows you to limit the permissions for the new access key on a per-bucket level. See [Access Key Permissions](#permissions) for more details.
+1.  Toggle the **Limited Access** switch if you wish to only provide access to certain buckets. This lets you limit the permissions for the new access key on a per-bucket level. See [Access Key Permissions](#permissions) for more details.
 
     ![The limited access switch](create-access-key.jpg)
 

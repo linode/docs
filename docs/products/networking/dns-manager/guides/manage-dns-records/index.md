@@ -18,7 +18,7 @@ This opens up a page that lists all DNS records for the domain. Records for each
 
 ## Add or Edit a DNS Record
 
-After a domain has been created, you're able to add DNS records. Each type of DNS record is used for a different purpose. The applications that utilize your domain determine which DNS records you need to add.
+After a domain has been created, you're able to add DNS records. Each type of DNS record is used for a different purpose. The applications that use your domain determine which DNS records you need to add.
 
 1. View the DNS Records for your domain in the Cloud Manager. See [View DNS Records](#view-dns-records).
 

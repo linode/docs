@@ -58,6 +58,6 @@ Harbor is an excellent compliment to the [Linode Kubernetes Engine (LKE)](/docs/
 
     ![Harbor Login Page](harbor-login.png)
 
-Now that you’ve accessed your dashboard, check out [the official Harbor documentation](https://goharbor.io/docs/2.3.0/administration/) to learn how to further utilize your Harbor instance.
+Now that you’ve accessed your dashboard, check out [the official Harbor documentation](https://goharbor.io/docs/2.3.0/administration/) to learn how to further use your Harbor instance.
 
 {{% content "marketplace-update-note-shortguide" %}}

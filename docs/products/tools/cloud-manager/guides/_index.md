@@ -11,7 +11,7 @@ tab_group_main:
 These introductory guides to the Linode Cloud Manager help you get up and running with this service.
 
 ### Linodes
-- [Linodes](/docs/products/tools/cloud-manager/guides/cloud-create-linode): The Linodes section of Cloud Manager allows you to create and manage your Linodes.
+- [Linodes](/docs/products/tools/cloud-manager/guides/cloud-create-linode): The Linodes section of Cloud Manager lets you create and manage your Linodes.
 
 - [Find Your Disks](/docs/products/tools/cloud-manager/guides/cloud-find-disks): You can find and manage your disks in the Disks/Configs tab in the Linode’s detail page.
 
@@ -27,7 +27,7 @@ These introductory guides to the Linode Cloud Manager help you get up and runnin
 
 - [NodeBalancers](/docs/products/tools/cloud-manager/guides/cloud-nodebalancers): Here you can create and manage load balancers for your applications making them highly available for your users.
 
-- [Domains](/docs/products/tools/cloud-manager/guides/cloud-domains): The DNS Manager allows you to control and manage your domains.
+- [Domains](/docs/products/tools/cloud-manager/guides/cloud-domains): The DNS Manager lets you control and manage your domains.
 
 - [Longview](/docs/products/tools/cloud-manager/guides/cloud-longview): This section gives you access to Linode’s Longview service where you can track metrics for CPU, memory, network bandwidth, and more.
 

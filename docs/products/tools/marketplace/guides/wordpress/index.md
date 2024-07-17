@@ -110,7 +110,7 @@ If you didn't set up a domain during the deployment process, you can add it manu
 
 ### Resetting Your Admin Password or Email Address
 
-If you need to reset your admin user's password and you aren't receiving the password reset request email, you can update the password from command line. This method also allows you to update the email address for your admin account without needing an email confirmation.
+If you need to reset your admin user's password and you aren't receiving the password reset request email, you can update the password from command line. This method also lets you update the email address for your admin account without needing an email confirmation.
 
 1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 

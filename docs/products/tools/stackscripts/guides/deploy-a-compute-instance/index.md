@@ -11,7 +11,7 @@ aliases: ['/platform/stackscripts/how-to-deploy-a-new-linode-using-a-stackscript
 When deploying a Compute Instance, you can choose to select a StackScript. This causes the StackScript to run the first time the instance boots up. The StackScript can be from your own account or one that a member of the community has publicly shared.
 
 {{< note >}}
-Linode does not verify the accuracy of any community submitted StackScripts. Prior to deploying a Compute Instance using a Community StackScript, you should review the script so that you understand what changes it will make on your new instance.
+Linode does not verify the accuracy of any community submitted StackScripts. Before deploying a Compute Instance using a Community StackScript, you should review the script so that you understand what changes it will make on your new instance.
 {{< /note >}}
 
 1. Log into the [Cloud Manager](https://cloud.linode.com/) and select **StackScripts** from the left navigation menu.

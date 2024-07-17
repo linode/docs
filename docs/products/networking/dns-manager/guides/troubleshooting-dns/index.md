@@ -12,7 +12,7 @@ Having problems with your DNS records? This guide to help get your DNS settings 
 
 ## Before You Begin
 
-The *Domains* section of the [Linode Cloud Manager](https://cloud.linode.com/domains) is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. For an introduction to DNS Manager including setting up DNS records, see the [DNS Manager](/docs/products/networking/dns-manager/) guide.
+The *Domains* section of the [Linode Cloud Manager](https://cloud.linode.com/domains) is a comprehensive DNS management interface that lets you add DNS records for all of your domain names. For an introduction to DNS Manager including setting up DNS records, see the [DNS Manager](/docs/products/networking/dns-manager/) guide.
 
 {{< note >}}
 Linode's DNS service employs [Cloudflare](https://cloudflare.com) to provide denial of service (DDoS) mitigation, load balancing, and increased geographic distribution for our [name servers](/docs/guides/dns-overview/#name-servers). These factors make our service reliable, fast, and a great choice for your DNS needs.

@@ -6,7 +6,7 @@ modified: 2022-03-04
 aliases: ['/products/storage/object-storage/guides/create-bucket/','/products/storage/object-storage/guides/delete-bucket/']
 ---
 
-Buckets are the primary containers within Object Storage. Each bucket stores your files (objects) and allows you to access or share those files.
+Buckets are the primary containers within Object Storage. Each bucket stores your files (objects) and lets you access or share those files.
 
 ## View Buckets
 

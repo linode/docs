@@ -13,7 +13,7 @@ tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/cloud-domains-shortguide/']
 ---
 
-The DNS Manager allows you to control and manage your domains. You can access the DNS Manager by navigating to the **Domains** link in the Cloud Manager's sidebar.
+The DNS Manager lets you control and manage your domains. You can access the DNS Manager by navigating to the **Domains** link in the Cloud Manager's sidebar.
 
 ![Cloud Manager Domains](classic-to-cloud-cloud-manager-domains.png "Cloud Manager Domains")
 

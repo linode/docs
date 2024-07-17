@@ -10,7 +10,7 @@ aliases: ['/guides/how-to-cancel-your-account/','/quick-answers/linode-platform/
 
 A Linode account enables you to deploy and use services on the Linode Platform. If you no longer wish to use the Linode Platform, you can cancel your account at any time. When you cancel your account, any past due balance and uninvoiced balance remaining on your account is immediately charged to the default payment method on file, minus any remaining account credits.
 
-You do not have to cancel your account to prevent recurring charges. Instead, you can remove all services from your account via the Cloud Manager, Linode API, or Linode CLI. This allows you to retain your Linode account if you intend to use it in the future. See [Removing Services](/docs/products/platform/billing/guides/stop-billing/) for more information.
+You do not have to cancel your account to prevent recurring charges. Instead, you can remove all services from your account via the Cloud Manager, Linode API, or Linode CLI. This lets you retain your Linode account if you intend to use it in the future. See [Removing Services](/docs/products/platform/billing/guides/stop-billing/) for more information.
 
 {{< note >}}
 Linode provides a 7-day guarantee for all paid services. If you cancel your account within the first 7 days, you are likely eligible to receive a full refund for any service charges paid with a valid payment method (not with an account credit or promotional code). To request this refund, enter a note in the cancellation form or email support@linode.com with your request.

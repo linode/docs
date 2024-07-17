@@ -28,7 +28,7 @@ Whenever you need to authorize API access to an application or service, you shou
 
     ![Screenshot of the Add Personal Access Token form](create-token.png)
 
-1. Enter a **Label** for this new token. Choose a label that allows you to identify the token and understand its intended use.
+1. Enter a **Label** for this new token. Choose a label that lets you identify the token and understand its intended use.
 
 1. In the **Expiry** field dropdown menu, select a timeline for when the new token expires. You can optionally allow this token to never expire. *This cannot be changed once the token is created.*
 

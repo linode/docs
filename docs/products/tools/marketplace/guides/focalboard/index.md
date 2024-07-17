@@ -58,6 +58,6 @@ aliases: ['/guides/focalboard-marketplace-app/']
     ![The Focalboard Create a Board page](focalboard-create-board.png)
 
 
-Now that you’ve accessed your dashboard, check out [the official Focalboard documentation](https://www.focalboard.com/guide/user/) to learn how to further utilize your Focalboard instance.
+Now that you’ve accessed your dashboard, check out [the official Focalboard documentation](https://www.focalboard.com/guide/user/) to learn how to further use your Focalboard instance.
 
 {{% content "marketplace-update-note-shortguide" %}}

@@ -7,7 +7,7 @@ aliases: ['/products/storage/block-storage/guides/add-volume/','/products/storag
 
 What is block storage? Block Storage is a scalable, high-speed, and fault tolerant network storage service used to add additional storage capacity to a Linode Compute Instance.
 
-The Block Storage cloud service allows you to create Volumes, which can be attached to Compute Instances and used to easily store your data. This guide covers how to view, add, manage, and delete Block Storage Volumes.
+The Block Storage cloud service lets you create Volumes, which can be attached to Compute Instances and used to easily store your data. This guide covers how to view, add, manage, and delete Block Storage Volumes.
 
 
 ## View Volumes
@@ -31,7 +31,7 @@ Log in to the [Cloud Manager](https://cloud.linode.com/volumes) and click the **
 ## Add Volumes
 
 {{< note >}}
-If your Compute Instance was deployed prior to August 24th, 2021 and hasn't been rebooted since your data center was upgraded to NVMe Block Storage, you may need to reboot the instance for it to properly work with a Block Storage Volume.
+If your Compute Instance was deployed before August 24th, 2021 and hasn't been rebooted since your data center was upgraded to NVMe Block Storage, you may need to reboot the instance for it to properly work with a Block Storage Volume.
 {{< /note >}}
 
 1. Navigate to the **Volumes** page in the Cloud Manager. Alternatively, if you know which Compute Instance you wish to attach the new Volume to, navigate to the **Storage** tab for that instance. See [View Volumes](#view-volumes).

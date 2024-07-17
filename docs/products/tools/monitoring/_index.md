@@ -1,6 +1,6 @@
 ---
 title: Monitoring
-description: "Linode performance Monitoring allows you to set custom thresholds and enable the shutdown watchdog, Lassie."
+description: "Linode performance Monitoring lets you set custom thresholds and enable the shutdown watchdog, Lassie."
 tab_group_main:
     is_root: true
     title: Overview

@@ -22,7 +22,7 @@ Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Kubernetes
 
 ## Set the Label
 
-Within the **Cluster Label** field, enter the label you wish to use. This label allows you to identify it from within the Cloud Manager, Linode CLI, and Linode API. The label must be alphanumeric, between 3 and 32 characters, and unique from other cluster labels on your account.
+Within the **Cluster Label** field, enter the label you wish to use. This label lets you identify it from within the Cloud Manager, Linode CLI, and Linode API. The label must be alphanumeric, between 3 and 32 characters, and unique from other cluster labels on your account.
 
 ## Select a Region
 

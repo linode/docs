@@ -90,7 +90,7 @@ To boot a Compute Instance into Rescue Mode, follow the instructions below.
 By default, Rescue Mode's Finnix environment does not accept SSH connections. To access the Compute Instance when it's running in Rescue Mode, connect to it through the *Lish* console.
 
 {{< note >}}
-It is possible to enable SSH for Rescue Mode by manually starting the SSH daemon. Using SSH can provide a better experience and allows you to copy files off of the server. Review the [Starting SSH](#starting-ssh) section for instructions. You need to use Lish at least once in order to start SSH.
+It is possible to enable SSH for Rescue Mode by manually starting the SSH daemon. Using SSH can provide a better experience and lets you copy files off of the server. Review the [Starting SSH](#starting-ssh) section for instructions. You need to use Lish at least once in order to start SSH.
 {{< /note >}}
 
 To connect with Lish:
@@ -265,7 +265,7 @@ If you would like to mount or unmount additional disks on your system, repeat th
 
 *Changing root* is the process of changing your working root directory. When you change root (abbreviated as *chroot*) to your root disk, you are able to run commands as though you are logged in to that system.
 
-Chroot allows you to change user passwords, remove/install packages, and do other system maintenance and recovery tasks in your Compute Instance's normal Linux environment.
+Chroot lets you change user passwords, remove/install packages, and do other system maintenance and recovery tasks in your Compute Instance's normal Linux environment.
 
 1.  Create a new directory for your disk:
 
@@ -280,7 +280,7 @@ Chroot allows you to change user passwords, remove/install packages, and do othe
     ```
 
     {{< note >}}
-    If you mounted your disk without using the `exec` option prior to reviewing this section, include the `remount` option in your `mount` command:
+    If you mounted your disk without using the `exec` option before reviewing this section, include the `remount` option in your `mount` command:
 
     ```command
     mount -o remount,exec,barrier=0 /dev/sda /media/sda

@@ -27,7 +27,7 @@ The *Connection Details* section contains information and credentials needed for
 - **Port:** The default port for your database is `5432`.
 - **SSL:** This field is set to `ENABLED`, which means that it is required to use an encrypted TLS/SSL connection.
 
-Under the *Connection Details* section, there is a **Download CA Certificate** link, which allows you to download the CA (Certificate Authority) certificate. This certificate file can be used if you wish to verify the CA certificate when connecting to the database.
+Under the *Connection Details* section, there is a **Download CA Certificate** link, which lets you download the CA (Certificate Authority) certificate. This certificate file can be used if you wish to verify the CA certificate when connecting to the database.
 
 ## Connect Using psql (CLI)
 
@@ -96,7 +96,7 @@ pgAdmin is an open-source application that provides you with a graphical interfa
 
 1.  Download and install pgAdmin from the [pgAdmin Downloads](https://www.pgadmin.org/download/) page, making sure to select the appropriate file for your local operating system.
 
-1.  The first time the application runs, you are prompted to configure a master password that is used to unlock any saved passwords for database servers you may configure.
+1.  The first time the application runs, you are prompted to configure a primary password (also called *master password*) that is used to unlock any saved passwords for database servers you may configure.
 
 1.  Next, you are prompted to register a server (configuring a connection to a server). If you do not see this screen, click Object > Register > Server from the main menu.
 

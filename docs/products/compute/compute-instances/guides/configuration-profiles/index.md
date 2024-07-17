@@ -81,7 +81,7 @@ When adding or editing a configuration profile on a Compute Instance, the follow
 
 ## Create a Configuration Profile
 
-Making a new configuration profile allows you to create a new and separate boot configuration for your system. You can specify boot settings and disks to mount. Here's how to create a new configuration profile:
+Making a new configuration profile lets you create a new and separate boot configuration for your system. You can specify boot settings and disks to mount. Here's how to create a new configuration profile:
 
 1. Within the [Cloud Manager](https://cloud.linode.com), view the Configuration Profiles for your desired Compute Instance. See [View Configuration Profiles](#view-configuration-profiles).
 

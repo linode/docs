@@ -133,7 +133,7 @@ An `image` must be specified to set interfaces when creating a new Linode.
 
 You can attach a VLAN to an existing Linode by either creating a new configuration profile or updating an existing configuration profile for the Linode. In either case, the Linode must be rebooted to allow Network Helper to automatically adjust the necessary network configuration files on the Linode.
 
-The Linode's ID is required to utilize these methods. Use the Linodes List ([GET /linode/instances](/docs/api/linode-instances/#linodes-list)) endpoint to retrieve the IDs of each of your Linodes. To view the Disk IDs of a Linode, use the Disks List ([GET /linode/instances/{linodeId}/disks](/docs/api/linode-instances/#disks-list)) endpoint.
+The Linode's ID is required to use these methods. Use the Linodes List ([GET /linode/instances](/docs/api/linode-instances/#linodes-list)) endpoint to retrieve the IDs of each of your Linodes. To view the Disk IDs of a Linode, use the Disks List ([GET /linode/instances/{linodeId}/disks](/docs/api/linode-instances/#disks-list)) endpoint.
 
 ### Creating a Configuration Profile
 

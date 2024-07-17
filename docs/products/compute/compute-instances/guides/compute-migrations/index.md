@@ -70,7 +70,7 @@ In order for a live migration to occur, a host compatible with the host your ins
     - This applies to warm migrations initiated by customers, including warm migrations taking place during the warm resize process.
     - This also applies if you are running a custom distribution (i.e. Windows) or unsupported disk image that is not configured for ACPI shutdowns.
 -   If a Linode or Akamai administrator cancels the warm migration.
--   If the sources Linode stops responding, is shut down prior to the cross-host sync, or if the process is disturbed in any way.
+-   If the sources Linode stops responding, is shut down before the cross-host sync, or if the process is disturbed in any way.
 
 ### What should I do if my warm migration fails?
 

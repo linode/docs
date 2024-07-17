@@ -14,7 +14,7 @@ external_resources:
 
 !["Jitsi Cluster Architecture"](jitsi-cluster.png "Jitsi Cluster Architecture")
 
-[Jitsi](https://jitsi.org) is a suite of open source projects that allows you to host your own virtual video conferences.
+[Jitsi](https://jitsi.org) is a suite of open source projects that lets you host your own virtual video conferences.
 
 ## Deploying a Marketplace App
 

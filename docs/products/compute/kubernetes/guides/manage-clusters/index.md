@@ -33,7 +33,7 @@ Navigate to the **Kubernetes** page in the Cloud Manager and select the cluster 
 This displays the details page for the selected cluster. From here, you can view the summary section (which includes the Kubernetes version, region, cost, and combined computing resources) as well as the following details:
 
 - **Kubernetes API Endpoint**
-- **Kubeconfig:** Download, view, and reset the Kubeconfig configuration file. This file outlines the configuration of your cluster and allows you to connect to it.
+- **Kubeconfig:** Download, view, and reset the Kubeconfig configuration file. This file outlines the configuration of your cluster and lets you connect to it.
 
 There are also links to view the Kubernetes dashboard, upgrade the cluster to high availability, delete the cluster, and more. From here, you can also add, remove, recycle, and resize node pools (see [Manage Node Pools](/docs/products/compute/kubernetes/guides/manage-node-pools/)).
 

@@ -107,7 +107,7 @@ To change the rDNS value on an IP address, follow the instructions within the [C
 
 ## Transferring IP Addresses
 
-If you have two Compute Instances in the same data center, you can use the *IP transfer* feature to move or swap their IP addresses. This feature is especially useful when replacing one Compute Instance with another. It allows you to quickly move the IP addresses to the new Instance without needing to manually adjust DNS records with the new addresses.
+If you have two Compute Instances in the same data center, you can use the *IP transfer* feature to move or swap their IP addresses. This feature is especially useful when replacing one Compute Instance with another. It lets you quickly move the IP addresses to the new Instance without needing to manually adjust DNS records with the new addresses.
 
 {{< note >}}
 This process only transfers IPv4 addresses and IPv6 ranges, not IPv6 SLAAC addresses. See [Transferring an IPv6 SLAAC Address](#transferring-an-ipv6-slaac-address) below for a workaround.

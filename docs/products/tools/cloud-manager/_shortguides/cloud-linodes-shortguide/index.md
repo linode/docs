@@ -13,7 +13,7 @@ tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/cloud-linodes-shortguide/']
 ---
 
-The Linodes section of Cloud Manager allows you to create and manage your Linodes. Each Linode instance in Cloud Manager includes:
+The Linodes section of Cloud Manager lets you create and manage your Linodes. Each Linode instance in Cloud Manager includes:
 
 - [Summary information](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#cloud-manager) about your Linode, like CPU usage, IPv4 and [IPv6 traffic](/docs/products/compute/compute-instances/guides/ipv6/), and Disk IO
 - Access to any of your Linode's attached Volumes and the ability to [create a Volume](/docs/products/storage/block-storage/guides/manage-volumes/)

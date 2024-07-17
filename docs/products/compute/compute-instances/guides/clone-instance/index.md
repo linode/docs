@@ -9,7 +9,7 @@ tags: ["linode platform","cloud manager"]
 aliases: ['/migrate-to-linode/disk-images/clone-your-linode/','/platform/disk-images/clone-your-linode/','/platform/disk-images/clone-your-linode-classic-manager/','/guides/clone-your-linode/']
 ---
 
-Linode's cloning feature allows you to duplicate a Compute Instance's disks (and configuration profiles) to a new or existing instance.
+Linode's cloning feature lets you duplicate a Compute Instance's disks (and configuration profiles) to a new or existing instance.
 
 ## Clone to a New Compute Instance
 
@@ -53,7 +53,7 @@ The new instance's IP address will be different than the original instance. If d
 
 ## Clone to an Existing Compute Instance
 
-This process allows you to select specific disks or configuration profiles and duplicate them to an existing Compute Instance. When cloning a configuration profile, all disks assigned to that profile are also cloned.
+This process lets you select specific disks or configuration profiles and duplicate them to an existing Compute Instance. When cloning a configuration profile, all disks assigned to that profile are also cloned.
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com) and select the **Linodes** link in the left sidebar menu.
 

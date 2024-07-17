@@ -13,7 +13,7 @@ At the core of all StackScripts is a custom script that is written to perform a 
 
 ## Before You Begin
 
-When creating a StackScript, most of the time is spent writing the deployment script itself. This script runs the first time a Compute Instance boots up and allows you to configure the system to fit your precise needs and requirements. Before you write the script, consider the following:
+When creating a StackScript, most of the time is spent writing the deployment script itself. This script runs the first time a Compute Instance boots up and lets you configure the system to fit your precise needs and requirements. Before you write the script, consider the following:
 
 - **What is the purpose of your script?** The first question you should ask is *what purpose will your script serve*. Do you want to build a web server? Are you building a script to take care of securing new servers? Consider each task you want your script to perform.
 
@@ -159,7 +159,7 @@ The files you reference within your script must exist and be accessible via `HTT
 
 ## Import a StackScript
 
-Your scripts can import any other StackScript, including those from within your own account or those shared with the community. This allows you to reuse code between StackScripts, minimizing the amount of new code you might need to write.
+Your scripts can import any other StackScript, including those from within your own account or those shared with the community. This lets you reuse code between StackScripts, minimizing the amount of new code you might need to write.
 
 - **Bash:**
 

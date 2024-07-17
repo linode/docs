@@ -19,7 +19,7 @@ API Tokens (personal access tokens) are used in token-based authentication to pr
 
     ![Cloud Manager Add a Personal Access Token](classic-to-cloud-add-a-personal-access-token.png "Cloud Manager Add a Personal Access Token")
 
-1.  Click **Create a Personal Access Token**. A panel appears that allows you to give this token a label and choose the access rights you want users authenticated with the new token to have.
+1.  Click **Create a Personal Access Token**. A panel appears that lets you give this token a label and choose the access rights you want users authenticated with the new token to have.
 
     ![Cloud Manager Add a Personal Access Token Panel](classic-to-cloud-add-a-personal-access-token-panel.png "Cloud Manager Add a Personal Access Token Panel")
 

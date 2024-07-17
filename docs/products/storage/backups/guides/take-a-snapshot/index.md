@@ -4,7 +4,7 @@ description: "How to use the Backups Service to take a manual backup of a Linode
 published: 2021-11-12
 ---
 
-As part of the Backups service, you can store a manual backup of your Compute Instance through the *manual snapshot* feature. This can be useful to save a restore point before a major system upgrade or prior to significant changes to software or configuration within your Compute Instance.
+As part of the Backups service, you can store a manual backup of your Compute Instance through the *manual snapshot* feature. This can be useful to save a restore point before a major system upgrade or before significant changes to software or configuration within your Compute Instance.
 
 {{< note >}}
 The manual snapshot feature is part of the paid Backups service and, as such, the Backups service must be enabled. See [Enable Backups](/docs/products/storage/backups/guides/enable/).

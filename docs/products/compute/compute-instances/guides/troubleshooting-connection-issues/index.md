@@ -11,7 +11,7 @@ aliases: ['/troubleshooting/troubleshooting-basic-connection-issues/','/guides/t
 
 This guide presents troubleshooting strategies for Compute Instances that are unresponsive to any network access. One reason that an instance may be unresponsive is if you recently performed a distribution upgrade or other broad software updates to your system, as those changes can lead to unexpected problems for your core system components.
 
-Similarly, your server may be unresponsive after maintenance was applied by Linode to your server's host (frequently, this is correlated with software/distribution upgrades performed on your deployment prior to the host's maintenance). This guide is designed as a useful resource for either of these scenarios. If you need to troubleshoot memory and networking, read our guide on [Troubleshooting Memory and Networking Issues](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/).
+Similarly, your server may be unresponsive after maintenance was applied by Linode to your server's host (frequently, this is correlated with software/distribution upgrades performed on your deployment before the host's maintenance). This guide is designed as a useful resource for either of these scenarios. If you need to troubleshoot memory and networking, read our guide on [Troubleshooting Memory and Networking Issues](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/).
 
 If you can [ping](/docs/guides/linux-system-administration-basics/#the-ping-command) your Compute Instance, but you cannot access SSH or other services, this guide will not assist with troubleshooting those services. Instead, refer to the [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) or [Troubleshooting Web Servers, Databases, and Other Services](/docs/products/compute/compute-instances/guides/troubleshooting-services/) guides.
 
@@ -129,7 +129,7 @@ mtr -rwbzc 100 -i 0.2 -rw 198.51.100.0 <Compute Instance's IP address>
 Once you have generated this report, compare it with the following example scenarios.
 
 {{< note >}}
-If you are located in China, and the output of your MTR report shows *high packet loss* or an *improperly configured router*, then your IP address may have been blacklisted by the GFW (Great Firewall of China). Linode is not able to change your IP address if it has been blacklisted by the GFW. If you have this issue, review this [community post](https://www.linode.com/community/questions/17192/ssh-refused) for troubleshooting help.
+If you are located in China, and the output of your MTR report shows *high packet loss* or an *improperly configured router*, then your IP address may have been blocked (added to a blocklist) by the GFW (Great Firewall of China). Linode is not able to change your IP address if it has been blocked by the GFW. If you have this issue, review this [community post](https://www.linode.com/community/questions/17192/ssh-refused) for troubleshooting help.
 {{< /note >}}
 
 -   **High Packet Loss**

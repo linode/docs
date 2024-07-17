@@ -13,7 +13,7 @@ tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/cloud-management-and-billing-shortguide/']
 ---
 
-The **Account** section of Cloud Manager allows you to manage your account's billing information and users, and to configure various account-wide settings.
+The **Account** section of Cloud Manager lets you manage your account's billing information and users, and to configure various account-wide settings.
 
 You can manage the following account and billing settings in the Account section of Cloud Manager:
 
