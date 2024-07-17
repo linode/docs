@@ -18,7 +18,7 @@ From a well-publicized massive data breach that happens to a company like [Targe
 
 In a well-protected corporate environment, the most common causes of data breaches are some forms of brute force attacks, malware, and IT errors, such as improperly configured or unpatched operating systems or applications. These are often referred to as zero-day vulnerabilities.
 
-The major threat is social engineering. In fact, a study titled [“The Psychology of Human Error”](https://www.tessian.com/research/the-psychology-of-human-error/) by Stanford University Professor Jeff Hancock and the security firm Tessian found that in nine out of ten data breach incidents reviewed, the cause was human error; both engineered attacks and simple human error.
+The major threat is social engineering. In fact, a study titled [“The Psychology of Human Error”](https://f.hubspotusercontent20.net/hubfs/1670277/%5BCollateral%5D%20Tessian-Research-Reports/%5BTessian%20Research%5D%20Psychology%20of%20Human%20Error%202022.pdf) by Stanford University Professor Jeff Hancock and the security firm Tessian found that in nine out of ten data breach incidents reviewed, the cause was human error; both engineered attacks and simple human error.
 
 Phishing is the most common form of attack on your corporate network. Users get lackadaisical about how they handle email, and clicking on the wrong file or attachment easily results in a compromised network. Just because a message looks familiar doesn't mean that it isn’t a carefully crafted attack on your corporate network.
 
