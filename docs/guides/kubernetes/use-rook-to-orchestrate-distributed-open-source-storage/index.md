@@ -35,11 +35,24 @@ Rook can also create and customize storage clusters through Custom Resource Defi
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
+{{< note >}}
+The Ceph storage cluster requires one of the following local storage options:
+
+-   Raw Devices
+-   Raw Partitions
+-   LVM Logical Volumes
+-   Encrypted Devices
+-   Multipath Devices
+-   Persistent Volumes
+
+This guide uses Block Storage Volumes as it's the most expedient way to demonstrate. However, other options are likely a better choice for most production environments.
+{{< /note >}}
+
 ## Creating and Attaching Volumes
 
 One the Kubernetes cluster is set up, use the steps below to create a volume for each node.
 
-1.  Open the Akamai Cloud Manager and select **Linodes** from the left menu.
+1.  Open the Cloud Manager and select **Linodes** from the left menu.
 
 1.  Select one of the Kubernetes nodes with a name such as `lke116411-172761-649b48bf69f8`.
 
