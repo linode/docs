@@ -13,7 +13,7 @@ aliases: ['/platform/manager/third-party-authentication/','/guides/third-party-a
 Linode Cloud Manager supports Third-Party Authentication (TPA). This allows you to log in to the Linode Cloud Manager with another provider's login credentials.
 
 {{< note >}}
-Enabling TPA disables Two-Factor Authentication (2FA) on your Linode account. You should enable 2FA with the TPA provider with which you choose to authenticate to Linode.
+Enabling TPA disables Two-Factor Authentication (2FA) on your Cloud Manager account. You should enable 2FA with the TPA provider with which you choose to authenticate to Linode Cloud Manager.
 
 Additionally, enabling TPA disables password authentication in the Lish console. You can still authenticate to Lish with an SSH key. For more information on SSH key authentication with Lish, visit our [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/#add-your-public-key) guide.
 {{< /note >}}
@@ -31,10 +31,10 @@ Additionally, enabling TPA disables password authentication in the Lish console.
     ![Select the Login Method](tpa-options.png "Select the Login Method")
 
     {{< note type="alert" >}}
-    Enabling Third-Party Authentication disables your current Linode password and Two-Factor Authentication on your Linode account. Any Two-Factor Authentication you require will be handled by the TPA provider you choose.
+    Enabling Third-Party Authentication disables your current Cloud Manager password and Two-Factor Authentication on your Cloud Manager account. Any Two-Factor Authentication you require will be handled by the TPA provider you choose.
     {{< /note >}}
 
-1.  You will be taken to the TPA provider's website, where you will be prompted to give account access to Linode. You will see a list of permissions that will be granted to Linode. Confirm that you would like to grant Linode the required permissions.
+1.  You will be taken to the TPA provider's website, where you will be prompted to give account access to Cloud Manager. You will see a list of permissions that will be granted to Cloud Manager. Confirm that you would like to grant Cloud Manager the required permissions.
 
 1.  After granting permissions, you will see a confirmation screen. You can now log in to your Cloud Manager account using the TPA provider.
 
@@ -47,11 +47,11 @@ Additionally, enabling TPA disables password authentication in the Lish console.
 
     ![Click your username and select Login & Authentication](profile-link.png "Click your username and select Login & Authentication")
 
-1.  Within the **Login Method** section, select **Linode** as the login provider.
+1.  Within the **Login Method** section, select **Cloud Manager** as the login provider.
 
     ![Select the Login Method](tpa-options.png "Select the Login Method")
 
-1. A prompt will appear confirming your intent to disable Third-Party Authentication. You will need to click on the **Reset Password** button to send a password reset link to your email. This will be delivered to the email address associated with the Linode account, and not the email associated with the TPA provider. You will need to follow the link in that email to reset your Linode Cloud Manager password.
+1. A prompt will appear confirming your intent to disable Third-Party Authentication. You will need to click on the **Reset Password** button to send a password reset link to your email. This will be delivered to the email address associated with the Cloud Manager account, and not the email associated with the TPA provider. You will need to follow the link in that email to reset your Linode Cloud Manager password.
 
     ![Send password reset email.](confirm-disable-tpa.png)
 

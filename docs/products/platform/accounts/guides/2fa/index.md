@@ -9,10 +9,10 @@ tags: ["security","cloud manager"]
 aliases: ['/guides/2fa/']
 ---
 
-2FA (*two-factor authentication*) increases the security of your Linode account by requiring two forms of authentication: your password and an expiring token, also called an OTP (one-time passcode) or 2FA code. This follows the security principle of authenticating with something you *know* (a password) and something you *have* (the device used to generate the token). This additional layer of security reduces the risk that an unauthorized individual can gain access to your Linode account. **Linode highly recommends enabling 2FA**.
+2FA (*two-factor authentication*) increases the security of your Linode Cloud Manager account by requiring two forms of authentication: your password and an expiring token, also called an OTP (one-time passcode) or 2FA code. This follows the security principle of authenticating with something you *know* (a password) and something you *have* (the device used to generate the token). This additional layer of security reduces the risk that an unauthorized individual can gain access to your Linode Cloud Manager account. **Akamai highly recommends enabling 2FA**.
 
 {{< note type=warning noTitle=true >}}
-Managing 2FA through Linode is only available if *Linode* is selected as the **Login Method**. If you select a third-party authentication provider (such as Google or GitHub), 2FA is managed directly through that provider and not through Linode.
+Managing 2FA through Cloud Manager is only available if *Cloud Manager* is selected as the **Login Method**. If you select a third-party authentication provider (such as Google or GitHub), 2FA is managed directly through that provider and not through Cloud Manager.
 {{< /note >}}
 
 {{< note title="Account protection for users without 2FA enabled" >}}
@@ -35,7 +35,7 @@ The primary downsides of using your password manager as your OTP provider are se
 
 ### Use a Dedicated Authenticator App
 
-There are quite a few free (and paid) third-party authenticator applications available. They are typically more secure than using your password manager's OTP functionality as a malicious actor cannot gain access to your Linode account (or any other 2FA protected account) unless they know your password and have access to the particular device on which the authenticator app is installed, typically your smartphone.
+There are quite a few free (and paid) third-party authenticator applications available. They are typically more secure than using your password manager's OTP functionality as a malicious actor cannot gain access to your Cloud Manager account (or any other 2FA protected account) unless they know your password and have access to the particular device on which the authenticator app is installed, typically your smartphone.
 
 - [Authy](https://authy.com/features/setup/)
 - [Duo Mobile](http://guide.duosecurity.com/third-party-accounts)
@@ -44,7 +44,7 @@ There are quite a few free (and paid) third-party authenticator applications ava
 
 ## Enabling 2FA
 
-Enable two-factor authentication to start using it with your Linode account.
+Enable two-factor authentication to start using it with your Cloud Manager account.
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 
@@ -52,7 +52,7 @@ Enable two-factor authentication to start using it with your Linode account.
 
     ![Click your username and select Login & Authentication](profile-link.png)
 
-1. Within the **Login Method** section, select **Linode** as the login provider. If you configure a third-party provider (such as Google or GitHub), you instead can manage 2FA directly through that provider and not through Linode.
+1. Within the **Login Method** section, select **Cloud Manager** as the login provider. If you configure a third-party provider (such as Google or GitHub), you instead can manage 2FA directly through that provider and not through Cloud Manager.
 
     ![Screenshot of the Login Method section](login-provider.png)
 
@@ -66,7 +66,7 @@ Enable two-factor authentication to start using it with your Linode account.
 
 1.  Open the app for your preferred 2FA provider on your smartphone or desktop. For help choosing a provider, see [Choosing a 2FA Provider](#choosing-a-2fa-provider).
 
-1.  The next step is to configure the app to automatically generate OTP tokens for use with Linode's 2FA feature. The process varies depending on the app you are using. Within most dedicated authenticator apps, you can add an account. For password managers, edit or add a Linode login entry and add a one-time passcode (1Password), two-factor code (Keeper), or the equivalent field within your app. Then either scan the Cloud Manager's 2FA QR code or manually enter the secret key (also called a setup key or code). On mobile devices, you can use your phone's camera to scan the QR code. Desktop applications instead can typically scan the QR through their own custom screen capture tool. If you need further help, you can consult the documentation for your 2FA provider.
+1.  The next step is to configure the app to automatically generate OTP tokens for use with Cloud Manager's 2FA feature. The process varies depending on the app you are using. Within most dedicated authenticator apps, you can add an account. For password managers, edit or add a Cloud Manager login entry and add a one-time passcode (1Password), two-factor code (Keeper), or the equivalent field within your app. Then either scan the Cloud Manager's 2FA QR code or manually enter the secret key (also called a setup key or code). On mobile devices, you can use your phone's camera to scan the QR code. Desktop applications instead can typically scan the QR through their own custom screen capture tool. If you need further help, you can consult the documentation for your 2FA provider.
 
 1. Once 2FA has been configured in your 2FA provider, a time-sensitive OTP token is generated. This token refreshes every 30 seconds. Copy this token and, within the Cloud Manager, paste it to the **Token** field and click **Confirm Token**.
 
@@ -82,7 +82,7 @@ If 2FA is enabled on your account, you must enter the OTP generated by your 2FA 
 
 1. Enter your username and password and click **Log in**. If you wish, you can also select *Trust this device for 30 days* to stay logged in for 30 days. If 2FA is enabled on your account, a form appears requesting your OTP token or scratch code.
 
-1. Open the authenticator app you are using to manage your 2FA and OTP tokens. Within this app, open the Linode account or login entry to view the time-sensitive OTP code.
+1. Open the authenticator app you are using to manage your 2FA and OTP tokens. Within this app, open the Linode Cloud Manager account or login entry to view the time-sensitive OTP code.
 
 1. Enter your OTP token into the **Token** field in the Cloud Manager and then click the **Verify** button. Provided the token is correct, you are successfully logged in.
 
@@ -108,7 +108,7 @@ If you need to switch your 2FA provider or change the device in use by your two-
 
 ## Disabling 2FA
 
-You can disable two-factor authentication for your Linode account at any time. Here's how:
+You can disable two-factor authentication for your Cloud Manager account at any time. Here's how:
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 
