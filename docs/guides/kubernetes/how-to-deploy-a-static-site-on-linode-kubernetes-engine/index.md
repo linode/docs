@@ -130,9 +130,7 @@ In this section you creates a static site on your workstation using Hugo.
     git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke
     ```
 
-    {{< note >}}
     Git submodules allow you to include one Git repository within another, each maintaining their own version history. To view a collection of Hugo themes, visit the [Hugo theme collection](https://themes.gohugo.io/).
-    {{< /note >}}
 
 1.  In the text editor of your choice, open the `hugo.toml` file and add the following line to the end:
 
@@ -143,12 +141,16 @@ In this section you creates a static site on your workstation using Hugo.
     This line instructs Hugo to search for a folder named `ananke` in the `themes` directory and applies the templating it finds to the static site.
 
     {{< note title="Older Hugo versions use config.toml" >}}
-    If you are using an older version of Hugo, you may see a `config.toml` file instead of `hugo.toml`. Both should work with your Docker image, but if any errors persist you can rename the file to the alternative name using one of the commands below:
+    If you are using an older version of Hugo, you may see a `config.toml` file instead of `hugo.toml`. Should any errors persist, you can rename the file to the alternative name using one of the commands below:
     ```command
     mv hugo.toml config.toml
     ```
     ```command
     mv config.toml hugo.toml
+    ```
+    Alternatively, you can duplicate the file and its contents to a second file using the other name and then link the two. This allows both files to exist without conflict:
+    ```command
+    ln hugo.toml config.toml
     ```
     {{< /note >}}
 
@@ -455,7 +457,7 @@ In this section, you create a [Deployment](/docs/guides/kubernetes-reference/#de
 
     Specifically, the Service manifest that is used in this guide triggers the creation of a [NodeBalancer](/docs/products/networking/nodebalancers/get-started/).
 
-    {{< note >}}
+    {{< note title="Cloud Controller Manager (CCM)" >}}
     The NodeBalancer's creation is controlled through the [Cloud Controller Manager (CCM)](/docs/guides/kubernetes-reference/#linode-cloud-controller-manager). The CCM provides a number of settings, called `annotations`, that allow you to control the functionality of the NodeBalancer. To learn more about the CCM, read our [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/install-the-linode-ccm-on-unmanaged-kubernetes/) guide.
     {{< /note >}}
 
