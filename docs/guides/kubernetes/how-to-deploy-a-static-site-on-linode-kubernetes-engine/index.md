@@ -510,7 +510,7 @@ In this section, you create a [Deployment](/docs/guides/kubernetes-reference/#de
 
 ## General Network and Firewall Information
 
-{{% content "lke-network-firewall-information-shortguide" %}}
+To learn more about networking within LKE, open ports, and configuring firewall rules, see [General Network and Firewall Information](/docs/products/compute/kubernetes/get-started/#general-network-and-firewall-information).
 
 ## Next Steps
 

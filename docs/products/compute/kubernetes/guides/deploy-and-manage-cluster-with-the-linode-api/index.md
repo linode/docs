@@ -730,10 +730,6 @@ curl -H "Authorization: Bearer $TOKEN" \
     https://api.linode.com/v4/lke/clusters/12345
 ```
 
-## General Network and Firewall Information
-
-{{% content "lke-network-firewall-information-shortguide" %}}
-
 ## Where to Go From Here?
 
 Now that you have created an LKE cluster, you can start deploying workloads to it. Review these guides for further help:
