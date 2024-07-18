@@ -8,11 +8,11 @@ tags: ["security","cloud manager"]
 aliases: ['/linode-manager-security/','/security/authentication/linode-manager-security-controls/','/security/linode-manager-security-controls-new-manager/','/platform/manager/keep-your-linode-account-safe/','/security/linode-manager-security-controls/','/security/authentication/two-factor-authentication/linode-manager-security-controls/','/guides/linode-manager-security-controls/','/guides/user-security-controls/']
 ---
 
-To protect your Linode user account against unauthorized access, there are several security controls you can implement. This guide covers several of these controls, including 2FA, security questions, and phone verification.
+To protect your Cloud Manager user account against unauthorized access, there are several security controls you can implement. This guide covers several of these controls, including 2FA, security questions, and phone verification.
 
 ## 2FA (Two-Factor Authentication)
 
-2FA (*two-factor authentication*) increases the security of your Linode account by requiring two forms of authentication: your password and an expiring token, also called a one-time passcode (OTP) or 2FA code. This follows the security principle of authenticating with something you *know* (a password) and something you *have* (the device used to generate the token). This additional layer of security reduces the risk that an unauthorized individual can gain access to your Linode account.
+2FA (*two-factor authentication*) increases the security of your Cloud Manager account by requiring two forms of authentication: your password and an expiring token, also called a one-time passcode (OTP) or 2FA code. This follows the security principle of authenticating with something you *know* (a password) and something you *have* (the device used to generate the token). This additional layer of security reduces the risk that an unauthorized individual can gain access to your Cloud Manager account.
 
 If you *do not* have 2FA enabled and have not logged in to your account in 30 days, an OTP is sent to the email address associated with your user account. Should you not complete the login attempt within 60 minutes, the code expires and another login attempt is required to generate a new code.
 
@@ -21,7 +21,7 @@ If you *do not* have 2FA enabled and have not logged in to your account in 30 da
 ![Screenshot of the 2FA setting in Cloud Manager](2fa.png)
 
 {{< note type=warning noTitle=true >}}
-Managing 2FA through Linode is only available if *Linode* is selected as the **Login Method**. If you select a third-party authentication provider (such as Google or GitHub), 2FA is managed directly through that provider and not through Linode.
+Managing 2FA through Cloud Manager is only available if *Cloud Manager* is selected as the **Login Method**. If you select a third-party authentication provider (such as Google or GitHub), 2FA is managed directly through that provider and not through Cloud Manager.
 {{< /note >}}
 
 ## Security Questions
@@ -46,7 +46,7 @@ You can configure three security questions on your user account. Security questi
 
 ## Phone Verification
 
-A verified phone number provides our team with a secure method of verifying access to your Linode user account. It is required for all new accounts created on or after June 27th, 2022, though any existing user can add a verified phone number to increase the security on their account.
+A verified phone number provides our team with a secure method of verifying access to your Cloud Manager user account. It is required for all new accounts created on or after June 27th, 2022, though any existing user can add a verified phone number to increase the security on their account.
 
 ![Screenshot of the Phone Verification Setting in Cloud Manager](phone-verification.png)
 
@@ -72,4 +72,4 @@ Standard carrier messaging fees apply for each SMS message.
 
 ## Multiple User Accounts
 
-Organizations that require multiple individuals to access the same customer account should create separate *user accounts* for each individual. Once you've created the accounts, you can assign permissions to restrict access to certain Linode services and areas of the Cloud Manager. This is useful for providing all team members access to a single Linode account, allowing a billing department to view invoices and billing details, or granting access to outside developers. For more information, see our guide on [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/).
+Organizations that require multiple individuals to access the same customer account should create separate *user accounts* for each individual. Once you've created the accounts, you can assign permissions to restrict access to certain Linode services and areas of the Cloud Manager. This is useful for providing all team members access to a single Cloud Manager account, allowing a billing department to view invoices and billing details, or granting access to outside developers. For more information, see our guide on [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/).

@@ -26,7 +26,7 @@ Additionally, enabling TPA disables password authentication in the Lish console.
 
     ![Click your username and select Login & Authentication](profile-link.png "Click your username and select Login & Authentication")
 
-1.  Within the **Login Method** section, select the *Login Provider* you'd like to use for authentication. You can chose to use your own Linode credentials or chose from several Third-Party Authentication (TPA) providers, such as Google and GitHub. Only one login provider can be active at a time. Once selected, you will be asked to confirm that you'd like to enable TPA with this provider.
+1.  Within the **Login Method** section, select the *Login Provider* you'd like to use for authentication. You can chose to use your own Cloud Manager credentials or chose from several Third-Party Authentication (TPA) providers, such as Google and GitHub. Only one login provider can be active at a time. Once selected, you will be asked to confirm that you'd like to enable TPA with this provider.
 
     ![Select the Login Method](tpa-options.png "Select the Login Method")
 
