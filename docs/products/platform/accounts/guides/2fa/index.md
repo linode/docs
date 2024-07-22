@@ -48,7 +48,7 @@ Enable two-factor authentication to start using it with your Cloud Manager accou
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 
-1.  Navigate to the Login & Authentication page of your profile by clicking on your **username** in the top right of the screen. Select **Login & Authentication** from the dropdown menu.
+1.  Click your username in the top right of the screen and select **Login & Authentication**.
 
     ![Click your username and select Login & Authentication](profile-link.png)
 

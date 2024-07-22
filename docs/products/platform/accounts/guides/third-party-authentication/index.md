@@ -22,7 +22,7 @@ Additionally, enabling TPA disables password authentication in the Lish console.
 
 1.  To get started with TPA, log in to the [Cloud Manager](https://cloud.linode.com) using your existing username and password.
 
-1.  Navigate to the Login & Authentication page of your profile by clicking on your **username** in the top right of the screen and selecting **Login & Authentication** from the dropdown menu.
+1.  Click your username in the top right of the screen and select **Login & Authentication**.
 
     ![Click your username and select Login & Authentication](profile-link.png "Click your username and select Login & Authentication")
 
