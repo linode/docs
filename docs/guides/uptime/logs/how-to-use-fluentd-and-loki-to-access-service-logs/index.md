@@ -1,12 +1,14 @@
 ---
 slug: how-to-use-fluentd-and-loki-to-access-service-logs
 title: "How to Use Fluentd and Loki to Access Service Logs"
-description: "Learn to set up Fluentd and Loki for open source data logging in Kubernetes environments. Then use Grafana for data aggregation and visualization."
+description: "Learn to set up Fluentd and Loki for open source data logging, then use Grafana for data aggregation and visualization."
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 published: 2024-06-19
 keywords: ['fluentd and loki','fluentd','loki','k8s','open source data logging','service logs','grafana dashboard','data aggregation','data processing','data indexing','data storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+external_resources:
+- '[Grafana Loki Documentation](https://grafana.com/docs/loki/latest/)'
 ---
 
 [Fluentd](https://www.fluentd.org/) and [Loki](https://grafana.com/oss/loki/) are part of a flexible chain of service-logging apps. When combined with [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/), they create a full stack for log presentation and querying. The Fluentd/Loki/Prometheus/Grafana stack is widely adopted and provides decision support using time series-based log data and streams from various log formats. This stack can scale when an instance or pod deployment configuration changes, and also works with Kubernetes components for cloud-native stack control through our Marketplace [Prometheus & Grafana deployment](https://www.linode.com/marketplace/apps/linode/prometheus-grafana/).
@@ -61,7 +63,7 @@ There are three deployment modes for Loki:
 
 -   **Time source:** Accurate timestamps within log data sources and consistency in changes made through log aggregation processes are critical for ensuring visualization accuracy later in the stack. All instances, whether log sources or log processors, must be synchronized to the same time source. Use a common NTP server for all instances in the stack to ensure synchronization with this time source and maintain system integrity.
 
--   **Log and data sources:** Fluentd plays a crucial role in the logging stack by accumulating logs from various sources using plugins. In this example, log sources include the `/var/log` directories on separate Linux instances and a Kubernetes pod. The source of Fluentd logs is limited to the available source plugins provided by Fluentd or created by users. There are numerous input plugins available for various data sources.
+-   **Log and data sources:** Fluentd plays a crucial role in the logging stack by accumulating logs from various sources using plugins. For example, log sources could include the `/var/log` directories on separate Linux instances and a Kubernetes pod. The source of Fluentd logs is limited to the available source plugins provided by Fluentd or created by users. There are numerous input plugins available for various data sources.
 
     The gathered Fluentd logs are organized into JSON-formatted entries by Loki. Prometheus stores these Loki logs, which are otherwise ephemeral. The Prometheus store acts as the data source for Grafana's visualization console. Grafana and Prometheus are typically deployed together. This example uses our Marketplace [Prometheus & Grafana installation](https://www.linode.com/marketplace/apps/linode/prometheus-grafana/).
 
@@ -69,75 +71,15 @@ There are three deployment modes for Loki:
 
 ## Before You Begin
 
-The example stack in this guide uses three groups of instances:
-
--   **Group 1:** Consists of discrete Linux instances in a Kubernetes pod for monitoring.
-
--   **Group 2:** The instance where Fluentd gathers the logs and sends them to a Loki instance within the same host.
-
--   **Group 3:** Consists of an instance running Grafana and Prometheus, deployed to a Nanode using our Prometheus & Grafana Marketplace app.
-
-1.  If you do not already one deployed, create a Compute Instance with at least 4 GB of memory. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
-
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow the instructions in our [Deploy Prometheus and Grafana through the Linode Marketplace](/docs/products/tools/marketplace/guides/grafana/) guide. Choose the latest available version of Ubuntu. A Nanode 1 GB plan is suitable for this example stack.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Prometheus-Grafana Installation
-
-The Prometheus & Grafana Marketplace deployment renders a standalone server instance. Follow the steps below to deploy it:
-
-1.  Choose the **Marketplace** option from the left menu in the Cloud Manager.
-
-1.  Select **Prometheus & Grafana** from the Marketplace menu. See our [Deploy Prometheus and Grafana through the Linode Marketplace](/docs/products/tools/marketplace/guides/grafana/) for full deployment instructions. Below are some options to consider:
-
-    -   **Select an Image:** This example uses an Ubuntu 22.04 LTS instance.
-
-    -   **Linode Plan:** A Nanode 1 GB plan is suitable for this example stack.
-
-1.  Once fully deployed, login via SSH:
-
-    ```command
-    ssh {{< placeholder "USERNAME" >}}@{{< placeholder "IP_ADDRESS" >}}
-    ```
-
-    Once connected, take note of the visible block of provided information:
-
-    ```output
-    *********************************************************
-    Akamai Connected Cloud Prometheus & Grafana Marketplace App
-    Grafana URL: https://{{< placeholder "IP_ADDRESS" >}}.ip.linodeusercontent.com
-    Prometheus URL: https://{{< placeholder "IP_ADDRESS" >}}.ip.linodeusercontent.com/prometheus
-    Credentials File: /home/{{< placeholder "USERNAME" >}}/.credentials
-    Documentation: https://www.linode.com/docs/products/tools/marketplace/guides/prometheus-grafana/
-    *********************************************************
-    ```
-
-1.  Access the login credentials for the web service on the instance:
-
-    ```command
-    cd /home/{{< placeholder "USRNAME" >}}
-    cat .credentials
-    ```
-
-    ```output
-    Sudo Username: {{< placeholder "USERNAME" >}}
-    Sudo Password: JI5HPTkCcMv0ktna8XMm1o6Ha
-    Prometheus Username: prometheus
-    Prometheus Password: m32mCYUCrpbNHdMuY1JcTKLOm8oG0tuhCZ2daLJvlcHe3
-    Grafana Username: admin
-    Grafana Password: e8xgPVGrWDE7UT02zaDHe45g5syGjVLmGZ9wt63U9lrCZ
-    ```
-
-1.  During deployment, a Let’s Encrypt TLS certificate is installed. This allows you to access the instance via `HTTPS` in a web browser. When fully installed, the Grafana settings menu provides fields to connect to the Loki/Fluentd combination:
-
-    ![The Add New Connections page in the Connections section of Grafana's left-side menu.](Grafana-Connections-Add-New-Connections-Menu.png)
-
 ## Fluentd Installation
 
-Fluentd gathers log instances via Fluentd and plugins. This example uses a Ruby gem version of Fluentd onto a Nanode. The commands below install the build tools, Ruby and its development libraries, and Fluentd:
+Fluentd gathers log instances via Fluentd and plugins. This example uses a Ruby gem version of Fluentd onto the Prometheus & Grafana Nanode. The commands below install Ruby, along with its development libraries, and Fluentd.
 
 1.  Update and upgrade the Ubuntu system, then restart the Nanode:
 
@@ -146,12 +88,6 @@ Fluentd gathers log instances via Fluentd and plugins. This example uses a Ruby 
     ```
 
     The instance receives updates and upgrades, then reboots to ensure future revision sync with subsequent items. This is required.
-
-1.  Install the `build-essential` package for Fluentd and its dependencies:
-
-    ```command
-    sudo apt install build-essential
-    ```
 
 1.  Install Ruby and its development libraries:
 
@@ -225,12 +161,4 @@ The web browser interface allows you to select specific time frames and fields t
 
 ![Grafana data stream with field selection criteria example.](fluentd-grafana-critical-message-dashboard.png)
 
-These messages are correlated from log sources originating from `/var/log/` information across the monitored sample instances and Kubernetes pod.
-
-## Conclusion
-
-The Fluentd/Loki combination excels in handling diverse log source streams and efficiently archiving log data. The Prometheus/Grafana combination serves as the log store archive and central hub for visualizing time-series events across various log sources, whether discrete instances or Kubernetes pods.
-
-Prometheus catches both persistent and ephemeral log data as instances (or pods) are instantiated or terminated. Ephemeral log data comes from pods that start and terminate. This data would otherwise not leave a trace in a log-polling environment, as pods go in and out of existence through production service cycles.
-
-You can adapt this example and deploy similar configurations across different systems domains to provide comprehensive tracking and correlation of data streams through a centralized console.
+These messages are correlated from log sources originating from `/var/log/` information across monitored instances and a Kubernetes pod.
