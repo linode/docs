@@ -52,6 +52,8 @@ The following software and components must be installed and configured on your l
 
 -   An installed [Python](https://www.python.org/downloads/) version: > v3.8
 
+-   The [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html) Python library
+
 -   Your [Linode API access token](/docs/products/tools/api/get-started/#get-an-access-token)
 
 -   A configured [SSH key pair](/docs/guides/use-public-key-authentication-with-ssh/) along with your public key
