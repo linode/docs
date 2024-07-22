@@ -53,7 +53,7 @@ Once your account has been created, consider **enabling 2FA** to prevent unautho
 
 {{< note title="SSO login between Akamai Control Center and Linode Cloud Manager">}}
 
-   If you have now accounts both in Cloud Manager and Akamai Control Center, you can log in to Cloud Manager using ACC. You can start the SSO process from Linode's login page by clicking the **Login with Control Center** button or from the ACC menu by clicking the **Linode Cloud Manager** link. If a you have more than one Linode account associated to your email address, you can choose which you want to log in to.
+   If you have accounts both in Cloud Manager and Akamai Control Center (ACC), you can log in to Cloud Manager using single sign-on (SSO). You can start the SSO process from Linode's login page by selecting **Akamai Control Center** as the login method or from the ACC menu by clicking the **Linode Cloud Manager** link. If a you have more than one Linode account associated to your email address, you can choose which account you want to log in to.
     {{< /note >}}
 
 ## Navigate the Cloud Manager
