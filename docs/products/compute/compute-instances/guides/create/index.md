@@ -3,7 +3,7 @@ title: "Create a Compute Instance"
 title_meta: "Create a Compute Instance on the Linode Platform"
 description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
 published: 2022-04-19
-modified: 2024-06-20
+modified: 2024-07-22
 keywords: ["getting started", "deploy", "linode", "linux"]
 aliases: ['/guides/creating-a-compute-instance/','/products/compute/dedicated-cpu/guides/deploy/']
 ---
