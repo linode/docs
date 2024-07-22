@@ -51,6 +51,11 @@ First, you need to create a Linode account to start using our services. If you a
 {{% content "email-warning-shortguide" %}}
 Once your account has been created, consider **enabling 2FA** to prevent unauthorized access. Anyone that has access to your account may be able to delete your services, add new ones, and reset the root password on your Compute Instances to gain access to them. See [Cloud Manager Security Controls](/docs/products/platform/accounts/guides/user-security-controls/) for instructions on enabling 2FA. If you are logging in with a third party provider, consider adding 2FA through that provider.
 
+{{< note title="SSO login between Akamai Control Center and Linode Cloud Manager">}}
+
+   If you have now accounts both in Cloud Manager and Akamai Control Center, you can log in to Cloud Manager using your ACC credentials. You can start the SSO process from Linode's login page by clicking the **Login with Control Center** button or from the ACC menu by clicking the **Linode Cloud Manager** link. If a you have more than one Linode account associated to your email address, you can choose which you want to log in to. To learn more about Akamai SSO, check [Welcome to Single Sign-On with SAML Integration](https://techdocs.akamai.com/iam/docs/saml-overview).
+    {{< /note >}}
+
 ## Navigate the Cloud Manager
 
 Linode's [Cloud Manager](https://cloud.linode.com/) is the primary gateway to our platform. It enables you to manage your account, view your bills, add services, and much more. Here are some of the main sections you might want to look through:
