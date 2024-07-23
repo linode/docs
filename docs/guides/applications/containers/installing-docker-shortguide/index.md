@@ -22,4 +22,4 @@ To install Docker CE (Community Edition), follow the instructions within one of 
 
 - [Installing and Using Docker on CentOS and Fedora](/docs/guides/installing-and-using-docker-on-centos-and-fedora/)
 
-For complete instructions on even more Linux distributions, reference the [Install Docker Engine](https://docs.docker.com/engine/install/) section of Docker's official documentation.
+To see installation instructions for other Linux distributions or operating systems like Mac or Windows, reference Docker's official documentation here: [Install Docker Engine](https://docs.docker.com/engine/install/)
