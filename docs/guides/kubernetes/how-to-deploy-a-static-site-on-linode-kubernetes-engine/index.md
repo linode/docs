@@ -14,12 +14,12 @@ external_resources:
 aliases: ['/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/','/applications/containers/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/','/applications/containers/kubernetes/static-site-linode-kubernetes-engine/']
 ---
 
-*Linode Kubernetes Engine (LKE)* allows you to easily create, scale, and manage Kubernetes clusters to meet your application's demands, reducing the often complicated cluster set-up process to just a few clicks. Linode manages your Kubernetes master node, and you select how many Linodes you want to add as worker nodes to your cluster.
+*Linode Kubernetes Engine (LKE)* allows you to easily create, scale, and manage Kubernetes clusters to meet your application's demands, reducing the often complicated cluster set-up process to just a few clicks. Linode manages your Kubernetes master node, and you select how many Compute Instances you want to add as worker nodes to your cluster.
 
 Deploying a static site using an LKE cluster is a great example to follow when learning Kubernetes. A [container](/docs/guides/kubernetes-reference/#container) image for a static site can be written in less than ten lines, and only one container image is needed. Therefore, it's often less complicated to deploy a static site on Kubernetes than some other applications that require multiple components.
 
 {{< note type="alert" >}}
-Following the instructions in this guide creates billable resources on your account in the form of Linodes and NodeBalancers. You are billed an hourly rate for the time that these resources exist on your account. Be sure to follow the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) at the end of this guide if you do not wish to continue using these resources.
+Following the instructions in this guide creates billable resources on your account in the form of Compute Instances and NodeBalancers. You are billed an hourly rate for the time that these resources exist on your account. Be sure to follow the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) at the end of this guide if you do not wish to continue using these resources.
 {{< /note >}}
 
 ## In this Guide
@@ -42,19 +42,11 @@ This guide shows you how to:
     - [Sign up for a Docker Hub Account](#sign-up-for-a-docker-hub-account)
     - [Install Hugo](#install-hugo)
 
-- Finally, you need to create a cluster on LKE, if you do not already have one:
+- Finally, you need to create an LKE cluster, if you do not already have one:
 
-    - To create a cluster in the Linode Cloud Manager, review the [Deploy a Cluster with Linode Kubernetes Engine](/docs/products/compute/kubernetes/) guide.
+    - To create a cluster from the Cloud Manager, review the [Deploy a Cluster with Linode Kubernetes Engine](/docs/products/compute/kubernetes/) guide. Specifically, follow the [Create an LKE Cluster](/docs/products/compute/kubernetes/guides/create-cluster/) and [Connect to your LKE Cluster with kubectl](/docs/products/compute/kubernetes/guides/kubectl/) sections.
 
-        {{< note >}}
-        Specifically, follow the [Create an LKE Cluster](/docs/products/compute/kubernetes/guides/create-cluster/) and [Connect to your LKE Cluster with kubectl](/docs/products/compute/kubernetes/guides/kubectl/) sections.
-        {{< /note >}}
-
-    - To create a cluster from the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/) tutorial.
-
-        {{< note >}}
-        Specifically, follow the [Create an LKE Cluster](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#create-an-lke-cluster) section.
-        {{< /note >}}
+    - To create a cluster via the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/) tutorial. Specifically, follow the [Create an LKE Cluster](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#create-an-lke-cluster) section.
 
 ### Install kubectl
 
@@ -76,7 +68,7 @@ You use [Docker Hub](https://hub.docker.com/) to store your Docker image. If you
 
 ### Install Hugo
 
-A *static site generator* (SSG) is usually a command line tool that takes text files written in a markup language like [Markdown](https://daringfireball.net/projects/markdown/), applies a stylized template to the content, and produces valid HTML, CSS, and JavaScript files. Static sites are prized for their simplicity and speed, as they do not generally have to interact with a database.
+A *static site generator* (SSG) is a command line tool that takes text files written in a markup language like [Markdown](https://daringfireball.net/projects/markdown/), applies a stylized template to the content, and produces valid HTML, CSS, and JavaScript files. Static sites are prized for their simplicity and speed, as they do not generally have to interact with a database.
 
 The Linode documentation website, and this guide, employ [Hugo](https://gohugo.io). Hugo is a powerful and fast SSG written in the [Go](/docs/guides/install-go-on-ubuntu/#what-is-go) programming language, but you can choose one that best suits your needs by reading our [How to Choose a Static Site Generator guide](/docs/guides/how-to-choose-static-site-generator/).
 
@@ -138,17 +130,29 @@ In this section you creates a static site on your workstation using Hugo.
     git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke
     ```
 
-    {{< note >}}
     Git submodules allow you to include one Git repository within another, each maintaining their own version history. To view a collection of Hugo themes, visit the [Hugo theme collection](https://themes.gohugo.io/).
-    {{< /note >}}
 
-1.  In the text editor of your choice, open the `config.toml` file and add the following line to the end:
+1.  In the text editor of your choice, open the `hugo.toml` file and add the following line to the end:
 
     ```file
     theme = "ananke"
     ```
 
     This line instructs Hugo to search for a folder named `ananke` in the `themes` directory and applies the templating it finds to the static site.
+
+    {{< note title="Older Hugo versions use config.toml" >}}
+    If you are using an older version of Hugo, you may see a `config.toml` file instead of `hugo.toml`. Should any errors persist, you can rename the file to the alternative name using one of the commands below:
+    ```command
+    mv hugo.toml config.toml
+    ```
+    ```command
+    mv config.toml hugo.toml
+    ```
+    Alternatively, you can duplicate the file and its contents to a second file using the other name and then link the two. This allows both files to exist without conflict:
+    ```command
+    ln hugo.toml config.toml
+    ```
+    {{< /note >}}
 
 1.  Add an example first post to your Hugo site:
 
@@ -167,8 +171,8 @@ In this section you creates a static site on your workstation using Hugo.
     ```file {title="lke-example/content/posts/first_post.md" lang=md}
     ---
     title: "First_post"
-    date: 2019-07-29T14:22:04-04:00
-    draft: false
+    date: 2024-07-17T14:41:25-04:00
+    draft: true
     ---
     ```
 
@@ -177,7 +181,7 @@ In this section you creates a static site on your workstation using Hugo.
     ```file {title="lke-example/content/posts/first_post.md" lang=md}
     ---
     title: "First Post About LKE Clusters"
-    date: 2019-07-29T14:22:04-04:00
+    date: 2024-07-17T14:41:25-04:00
     draft: false
     ---
 
@@ -259,8 +263,8 @@ In this section you create a Docker container for your static site, which you th
 1.  Add the following contents to the `Dockerfile`. Each command has accompanying comments that describe their function:
 
     ```file {title="lke-example/Dockerfile"}
-    # Install the latest Debian operating system.
-    FROM alpine:3.12.0 as HUGO
+    # Install the latest Alpine operating system.
+    FROM alpine:3.20.1 as HUGO
 
     # Install Hugo.
     RUN apk update && apk add hugo
@@ -294,19 +298,15 @@ In this section you create a Docker container for your static site, which you th
     .gitignore
     ```
 
-    {{< note >}}
     This file, similar to the `.gitignore` file you created in the previous section, allows you to ignore certain files within the working directory that you want to leave out of the container. Because you want the container to be the smallest size possible, the `.dockerignore` file includes the `public/` folder and some hidden folders that Git creates.
-    {{< /note >}}
 
-1.  Run the Docker `build` command. Replace `mydockerhubusername` with your Docker Hub username. The period at the end of the command tells Docker to use the current directory as its build context.
+1.  Run the Docker `build` command. Replace {{< placeholder "mydockerhubusername" >}} with your Docker Hub username. The period at the end of the command tells Docker to use the current directory as its build context.
 
     ```command
-    docker build -t mydockerhubusername/lke-example:v1 .
+    docker build -t {{< placeholder "mydockerhubusername" >}}/lke-example:v1 .
     ```
 
-    {{< note >}}
-    In the example below, the container image is named `lke-example` and has been given a version tag of `v1`. Feel free to change these values.
-    {{< /note >}}
+    In the example, the container image is named `lke-example` and has been given a version tag of `v1`. Feel free to change these values.
 
 1.  Docker downloads the required Debian and NGINX images, as well as install Hugo into the image. Once complete, you should see output similar to the following:
 
@@ -455,10 +455,10 @@ In this section, you create a [Deployment](/docs/guides/kubernetes-reference/#de
 
 1.  Create a Service manifest file to provide load balancing for the deployment. Load balancing ensures that traffic is balanced efficiently across multiple backend nodes, improving site performance and ensuring that your static site is accessible should a node go down.
 
-    Specifically, the Service manifest that is used in this guide triggers the creation of a Linode [NodeBalancer](/docs/products/networking/nodebalancers/get-started/).
+    Specifically, the Service manifest that is used in this guide triggers the creation of a [NodeBalancer](/docs/products/networking/nodebalancers/get-started/).
 
-    {{< note >}}
-    The NodeBalancer's creation is controlled through the [Linode Cloud Controller Manager (CCM)](/docs/guides/kubernetes-reference/#linode-cloud-controller-manager). The CCM provides a number of settings, called `annotations`, that allow you to control the functionality of the NodeBalancer. To learn more about the CCM, read our [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/install-the-linode-ccm-on-unmanaged-kubernetes/) guide.
+    {{< note title="Cloud Controller Manager (CCM)" >}}
+    The NodeBalancer's creation is controlled through the [Cloud Controller Manager (CCM)](/docs/guides/kubernetes-reference/#linode-cloud-controller-manager). The CCM provides a number of settings, called `annotations`, that allow you to control the functionality of the NodeBalancer. To learn more about the CCM, read our [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/install-the-linode-ccm-on-unmanaged-kubernetes/) guide.
     {{< /note >}}
 
 1.  Name the file `static-site-service.yaml`, save it to your `manifests` directory, and enter the contents of this snippet:
@@ -516,7 +516,7 @@ To learn more about networking within LKE, open ports, and configuring firewall 
 
 If you'd like to continue using the static site that you created in this guide, you may want to assign a domain to it. Review the [DNS Records: An Introduction](/docs/guides/dns-overview/) and [DNS Manager](/docs/products/networking/dns-manager/) guides for help with setting up DNS. When setting up your DNS record, use the external IP address that you noted at the end of the previous section.
 
-If you would rather not continue using the cluster you just created, review the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) to remove the billable Linode resources that were generated.
+If you would rather not continue using the cluster you just created, review the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) to remove any billable resources that were generated.
 
 ## Tear Down your LKE Cluster and NodeBalancer
 
@@ -532,7 +532,7 @@ If you would rather not continue using the cluster you just created, review the 
     kubectl delete -f static-site-service.yaml
     ```
 
--   To remove the LKE Cluster and the associated nodes from your account, navigate to the [Linode Cloud Manager](https://cloud.linode.com):
+-   To remove the LKE Cluster and the associated nodes from your account, navigate to the [Cloud Manager](https://cloud.linode.com):
 
     1.  Click on the **Kubernetes** link in the sidebar. A new page with a table which lists your clusters appears.
 
