@@ -248,7 +248,7 @@ Once you have Rook and Ceph installed and configured, you can [install and use t
     deployment.apps "rook-ceph-tools" deleted
     ```
 
-## Example of Rook-Ceph in Use
+## Testing the Rook-Ceph Cluster
 
 With the Rook-Ceph cluster set up, the links below offer some options for testing your storage:
 
