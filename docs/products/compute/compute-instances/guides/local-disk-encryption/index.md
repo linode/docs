@@ -12,7 +12,7 @@ title: Local Disk Encryption
 authors: ["Akamai"]
 ---
 
-Local disk encryption ensures that your data stored on compute instances is encrypted. Disk encryption protects against unauthorized data access by keeping the data encrypted if the disk is ever removed from the datacenter, decommissioned, or disposed of. The platform manages the encryption and decryption for you.
+Local disk encryption ensures that your data stored on Compute Instances is secured. Disk encryption protects against unauthorized data access by keeping the data encrypted if the disk is ever removed from the datacenter, decommissioned, or disposed of. The platform manages the encryption and decryption for you.
 
 By default, disk encryption is enabled on all compute instances.
 
