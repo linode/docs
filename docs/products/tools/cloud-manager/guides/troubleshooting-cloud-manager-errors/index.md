@@ -9,7 +9,7 @@ image: L_UnderstandCommonClManErrors.png
 tags: ["linode platform","cloud manager"]
 ---
 
-Have you ever encountered an error message while navigating the Cloud Manager and wanted more information as to what may have triggered the error and what your best next steps may be? In this guide we'll go over some common error messages in a higher level of detail than are traditionally provided, and discuss your best path forward.
+Have you ever encountered an error message while navigating Cloud Manager and wanted more information as to what may have triggered the error and what your best next steps may be? In this guide we'll go over some common error messages in a higher level of detail than are traditionally provided, and discuss your best path forward.
 
 {{< note >}}
 For more information on troubleshooting, see the [Troubleshooting Section](/docs/guides/troubleshooting/) of our documentation.
@@ -29,7 +29,7 @@ If all else fails, you should reach out to our 24/7 [Support Team](https://www.l
 
 **There was an error retrieving network information for this Linode.**
 
-When you create a new Linode, it can take some time to gather enough data about your Linode's networking traffic to create an output for the Cloud Manager. During the time that information is being gathered, the Network Tab will output the message **There was an error retrieving network information for this Linode** in place of the Network Transfer History graph. To confirm that there hasn't been enough analytical data gathered from the Linode, check the Analytics tab, which should state Graphs for this Linode are not yet available - check back later in place of its usual graphs.
+When you create a new Linode, it can take some time to gather enough data about your Linode's networking traffic to create an output for Cloud Manager. During the time that information is being gathered, the Network Tab will output the message **There was an error retrieving network information for this Linode** in place of the Network Transfer History graph. To confirm that there hasn't been enough analytical data gathered from the Linode, check the Analytics tab, which should state Graphs for this Linode are not yet available - check back later in place of its usual graphs.
 
 The amount of time it takes the Network Transfer History graph to populate can vary depending on multiple factors including which distribution you've chosen for your Linode, which data center the Linode is in, and any scripts which were used to deploy the Linode.
 

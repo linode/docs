@@ -1,22 +1,22 @@
 ---
-slug: an-overview-of-the-cloud-manager
-title: "An Overview of the Cloud Manager"
-description: "This guide provides you with an overview of the Cloud Manager and covers how to locate features within Cloud Manager, create Linodes and more."
+slug: overview-of-cloud-manager
+title: "Overview of Cloud Manager"
+description: "This guide provides you with an overview of Cloud Manager and covers how to locate features within Cloud Manager, create Linodes and more."
 published: 2019-12-20
-modified: 2024-07-08
+modified: 2024-07-25
 keywords: ["classic manager","cloud manager","linode"]
-aliases: ['/platform/manager/a-classic-to-cloud-manager-overview-guide/','/platform/manager/an-overview-of-the-linode-cloud-manager/', '/guides/an-overview-of-the-linode-cloud-manager/','/guides/an-overview-of-the-cloud-manager/','/products/tools/cloud-manager/guides/cloud-create-linode/','/products/tools/cloud-manager/guides/cloud-block-storage/','/products/tools/cloud-manager/guides/cloud-object-storage/','/products/tools/cloud-manager/guides/cloud-nodebalancers/','/products/tools/cloud-manager/guides/cloud-domains/','/products/tools/cloud-manager/guides/cloud-longview/','/products/tools/cloud-manager/guides/cloud-marketplace/','/products/tools/cloud-manager/guides/cloud-kubernetes/','/products/tools/cloud-manager/guides/cloud-stackscripts/','/products/tools/cloud-manager/guides/cloud-images/','/products/tools/cloud-manager/guides/cloud-billing/','/products/tools/cloud-manager/guides/cloud-oauth/']
+aliases: ['/platform/manager/a-classic-to-cloud-manager-overview-guide/','/platform/manager/an-overview-of-the-linode-cloud-manager/', '/guides/an-overview-of-the-linode-cloud-manager/','/guides/an-overview-of-the-cloud-manager/','/products/tools/cloud-manager/guides/cloud-create-linode/','/products/tools/cloud-manager/guides/cloud-block-storage/','/products/tools/cloud-manager/guides/cloud-object-storage/','/products/tools/cloud-manager/guides/cloud-nodebalancers/','/products/tools/cloud-manager/guides/cloud-domains/','/products/tools/cloud-manager/guides/cloud-longview/','/products/tools/cloud-manager/guides/cloud-marketplace/','/products/tools/cloud-manager/guides/cloud-kubernetes/','/products/tools/cloud-manager/guides/cloud-stackscripts/','/products/tools/cloud-manager/guides/cloud-images/','/products/tools/cloud-manager/guides/cloud-billing/','/products/tools/cloud-manager/guides/cloud-oauth/','/products/tools/cloud-manager/guides/an-overview-of-the-cloud-manager/']
 image: AnOverviewoftheLinodeCloudManager.png
 tags: ["linode platform","cloud manager"]
 ---
 
-The [Cloud Manager](https://cloud.linode.com/) provides a user-friendly interface to manage your infrastructure, user accounts, billing and payments, and to open and track support tickets. You can easily create Linode instances, manage Kubernetes clusters, add backups to your Linodes, deploy Marketplace Apps, track event notifications, create Object Storage buckets, and more. The Cloud Manager is implemented solely atop our [public APIv4](/docs/api), which gives you access to all our latest products and services.
+[Cloud Manager](https://cloud.linode.com/) provides a user-friendly interface to manage your infrastructure, user accounts, billing and payments, and to open and track support tickets. You can easily create Linode instances, manage Kubernetes clusters, add backups to your Linodes, deploy Marketplace Apps, track event notifications, create Object Storage buckets, and more. Cloud Manager is implemented solely atop our public [API](/docs/api), which gives you access to all our latest products and services.
 
 ## In this Guide
 
-This guide provides an overview of the features and services available in the Cloud Manager. Some of the topics that will be discussed are:
+This guide provides an overview of the features and services available in Cloud Manager. Some of the topics that will be discussed are:
 
-- An introduction to each section of the Cloud Manager, including links to related guides throughout our documentation library.
+- An introduction to each section of Cloud Manager, including links to related guides throughout our documentation library.
 - The location of commonly used Cloud Manager features.
 - Settings that might make your overall Cloud Manager experience better
 
@@ -80,7 +80,7 @@ To get started using LKE, see our [Tutorial for Deploying and Managing a Cluster
 
 ## StackScripts
 
-[StackScripts](https://www.linode.com/stackscripts/) provide Linode users with the ability to automate the deployment of custom systems on top of our default Linux distribution images. StackScripts are usually Bash scripts, stored in the Linode Cloud Manager, and can be accessed when you deploy a Linode. Linodes deployed with a StackScript run the script as part of the first boot process.
+[StackScripts](https://www.linode.com/stackscripts/) provide Linode users with the ability to automate the deployment of custom systems on top of our default Linux distribution images. StackScripts are usually Bash scripts, stored in Cloud Manager, and can be accessed when you deploy a Linode. Linodes deployed with a StackScript run the script as part of the first boot process.
 
 To get started using StackScripts in Cloud Manager, see the [Automate Deployment with StackScripts](/docs/products/tools/stackscripts/) guide.
 
@@ -108,15 +108,15 @@ You can manage the following account and billing settings in the Account section
 
 ### Password Management
 
-The Cloud Manager does not support forcing password expirations. Forcing password resets on a schedule is [bad practice from a security perspective](https://pages.nist.gov/800-63-FAQ/#q-b05). Current security research indicates that forced password changes do more harm than good. If you want to force password resets for users of your Linode account, we recommend using a password manager for this purpose.
+Cloud Manager does not support forcing password expirations. Forcing password resets on a schedule is [bad practice from a security perspective](https://pages.nist.gov/800-63-FAQ/#q-b05). Current security research indicates that forced password changes do more harm than good. If you want to force password resets for users of your Linode account, we recommend using a password manager for this purpose.
 
 ## Tags
 
-The Cloud Manager and [API v4](/docs/api) allow you to create tags to help organize and group your Linode resources. Tags can be applied to [Linode instances](#linodes), [Block Storage Volumes](#volumes), [NodeBalancers](#nodebalancers), and [Domains](#domains-dns-manager). See the [Tags and Groups](/docs/guides/tags-and-groups/) guide to learn how to create, apply, and search for tags.
+Both Cloud Manager and [API v4](/docs/api) allow you to create tags to help organize and group your Linode resources. Tags can be applied to [Linode instances](#linodes), [Block Storage Volumes](#volumes), [NodeBalancers](#nodebalancers), and [Domains](#domains-dns-manager). See the [Tags and Groups](/docs/guides/tags-and-groups/) guide to learn how to create, apply, and search for tags.
 
 ## Events and Activity Feeds
 
-Tasks performed using the Cloud Manager or other account specific tools like Linode’s [CLI](/docs/products/tools/cli/get-started/) or [API](https://www.linode.com/products/api/) will be logged to an individual Linode’s activity feed, or on your account’s [Events Page](https://cloud.linode.com/events). The events and activity pages are user accessible logs, or histories of events taking place on your account. They contain details regarding the most notable events affecting your Linodes, like reboots, shutdowns, migrations, and more.
+Tasks performed using Cloud Manager or other account specific tools like Linode’s [CLI](/docs/products/tools/cli/get-started/) or [API](https://www.linode.com/products/api/) will be logged to an individual Linode’s activity feed, or on your account’s [Events Page](https://cloud.linode.com/events). The events and activity pages are user accessible logs, or histories of events taking place on your account. They contain details regarding the most notable events affecting your Linodes, like reboots, shutdowns, migrations, and more.
 
 For more details, see the [Understanding Events and Activity Feeds](/docs/products/tools/cloud-manager/guides/events-and-activity-feeds/) guide.
 
@@ -138,7 +138,7 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 
 ### OAuth Apps
 
-The Cloud Manager supports the OAuth 2 authorization protocol. OAuth 2 allows a user to safely grant a third-party app permission to act on their behalf. This means that a user could authorize an app to access data and / or make changes to their Linode account and services that are exposed by the Linode API. For example, an app could create or destroy Linodes, manage a NodeBalancer, or alter a domain.
+Cloud Manager supports the OAuth 2 authorization protocol. OAuth 2 allows a user to safely grant a third-party app permission to act on their behalf. This means that a user could authorize an app to access data and / or make changes to their Linode account and services that are exposed by the Linode API. For example, an app could create or destroy Linodes, manage a NodeBalancer, or alter a domain.
 
 To learn how to get started with OAuth Apps see the [How To Create an OAuth App with the Linode Python API Library](/docs/guides/create-an-oauth-app-with-the-python-api-library/) guide. For details on the Linode API v4's OAuth workflow see the [Linode API v4 documentation](/docs/api/account/#oauth-clients-list).
 
@@ -148,7 +148,7 @@ To learn more about events and how to enable or disable email notifications for 
 
 ### Change the Theme (Dark Mode)
 
-The Cloud Manager provides a way to set your preferred UI theme, including a light theme, dark theme, and the system theme.
+Cloud Manager provides a way to set your preferred UI theme, including a light theme, dark theme, and the system theme.
 
 1. Navigate to your profile by clicking on your username and select **My Settings**.
 
@@ -156,7 +156,7 @@ The Cloud Manager provides a way to set your preferred UI theme, including a lig
 
 ### Set the Timezone
 
-All events displayed in the Cloud Manager are shown using your user's timezone setting. The timezone can be modified in your display settings.
+All events displayed in Cloud Manager are shown using your user's timezone setting. The timezone can be modified in your display settings.
 
 1. Navigate to your profile by clicking on your username and select **Display**.
 
@@ -166,21 +166,21 @@ All events displayed in the Cloud Manager are shown using your user's timezone s
 
 ## Accessibility
 
-The Cloud Manager has been built with accessibility in mind. Currently, the Cloud Manager is actively being developed to achieve [WCAG 2.0 Level AA](https://www.w3.org/TR/WCAG20/).
+Cloud Manager has been built with accessibility in mind. Currently, Cloud Manager is actively being developed to achieve [WCAG 2.0 Level AA](https://www.w3.org/TR/WCAG20/).
 
 We have received much helpful feedback from our users regarding accessibility. While we have addressed a lot of your feedback, this is still a work in progress and will be iterated upon with time. If you have comments or requests regarding accessibility, let us know by filling out our [feedback form](https://www.linode.com/feedback/).
 
 ## Experience Improvements
 
-We're making improvements to the Linode Cloud Manager so that we can deliver a high-quality and consistent user experience across product families. These experience updates are driven by our new Akamai Core Design System.
+We're making improvements to Cloud Manager so that we can deliver a high-quality and consistent user experience across product families. These experience updates are driven by our new Akamai Core Design System.
 
-*This section will be updated as we roll out additional experience improvements to the Cloud Manager. For a list of all changes to the Cloud Manager, review the [Cloud Manager changelog](https://github.com/linode/manager/releases).*
+*This section will be updated as we roll out additional experience improvements to Cloud Manager. For a list of all changes to Cloud Manager, review the [Cloud Manager changelog](https://github.com/linode/manager/releases).*
 
 ### July 2024
 
-In early July, we've made minor branding changes to the Cloud Manager. As part of these changes, we've implemented higher color contrast to improve the accessibility of both text and interactive components. Review the screenshots below for a closer look at the changes.
+In early July, we've made minor branding changes to Cloud Manager. As part of these changes, we've implemented higher color contrast to improve the accessibility of both text and interactive components. Review the screenshots below for a closer look at the changes.
 
 | Previous Design | Updated Design&nbsp;&nbsp; |
 | -- | -- |
-| ![Screenshot of the previous light theme in the Cloud Manager](cloud-manager-previous-light.jpg) | ![Screenshot of the new light theme in the Cloud Manager](cloud-manager-new-light.jpg) |
-| ![Screenshot of the previous dark theme in the Cloud Manager](cloud-manager-previous-dark.jpg) | ![Screenshot of the new dark theme in the Cloud Manager](cloud-manager-new-dark.jpg) |
+| ![Screenshot of the previous light theme in Cloud Manager](cloud-manager-previous-light.jpg) | ![Screenshot of the new light theme in Cloud Manager](cloud-manager-new-light.jpg) |
+| ![Screenshot of the previous dark theme in Cloud Manager](cloud-manager-previous-dark.jpg) | ![Screenshot of the new dark theme in Cloud Manager](cloud-manager-new-dark.jpg) |
