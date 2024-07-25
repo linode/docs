@@ -412,7 +412,7 @@ The script asks you to enter a username and password for the new user being crea
 
 ### Reboot and Access your Ansible Linode
 
-Use the command below to reboot the Linode either using the Linode CLI. You can also [reboot the Linode](/docs/products/tools/cloud-manager/guides/cloud-reboot-linode/) using the Cloud Manager.
+Use the command below to reboot the Linode either using the Linode CLI. You can also reboot the Linode using the Cloud Manager.
 
     linode-cli linodes reboot LINODE_ID
 

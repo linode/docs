@@ -2,6 +2,7 @@
 title: "Access Billing Information"
 description: "View billing information, including checking your account balancing and accrued charges."
 published: 2022-11-17
+aliases: ['/products/tools/cloud-manager/guides/cloud-credits/']
 ---
 
 Most information and settings pertaining to billing are located within the [Billing Info](https://cloud.linode.com/account/billing) page of the Cloud Manager. Follow the instructions below to access this page:
