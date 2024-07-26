@@ -64,26 +64,33 @@ The following software and components must be installed and configured on your l
 
 -   Ubuntu 22.04 LTS
 
-## Clone the __ Github Repository
+## Clone the docs-cloud-projects Github Repository
 
-In order to run the Jitsi deployment in this guide, you must first clone the __ Github repository to your local machine. This repository includes all Ansible playbooks, configuration files, and software installations needed to successfully deploy your Jitsi cluster.
+In order to run the Jitsi deployment in this guide, you must first clone the docs-cloud-projects Github repository to your local machine. This includes all playbooks, configurations, and files for all project directories in the repository, including those needed to successfully deploy your Jitsi cluster.
 
-1.  Clone the __ repository. This will clone the repository to a temporary folder on your local machine (`/tmp/linode`):
-
-    ```command
-    git clone $GIT_REPO /tmp/linode
-    ```
-
-1.  Navigate to your cloned local repository location to begin installation steps:
+1.  Clone the docs-cloud-projects repository. This will clone the repository to your current working directory on your local machine:
 
     ```command
-    cd /tmp/linode
+    git clone https://github.com/linode/docs-cloud-projects.git
     ```
 
-1.  Confirm contents of the repository on your system. You should see contents similar to the following:
+1.  Navigate to the manual-jitsi-cluster directory within your local cloned repository to begin installation steps:
+
+    ```command
+    cd docs-cloud-projects/apps/manual-jitsi-cluster
+    ```
+
+1.  Confirm contents of the manual-jitsi-cluster directory on your system:
+
+    ```command
+    ls
+    ```
+
+    You should see contents similar to the following:
 
     ```output
-    SAMPLE_OUTPUT
+    ansible.cfg  collections.yml  group_vars  hosts  images  LICENSE  provision.yml
+    README.md  requirements.txt  resize.yml  roles  site.yml
     ```
 
 ## Installation
@@ -100,7 +107,7 @@ In order to run the Jitsi deployment in this guide, you must first clone the __ 
 
     ```command
     pip install -r requirements.txt
-    ansible-galaxy collection install linode.cloud community.crypto
+    ansible-galaxy collection install -r collections.yml
     ```
 
 1.  Confirm installation of Ansible:
@@ -121,133 +128,163 @@ In order to run the Jitsi deployment in this guide, you must first clone the __ 
 
 ## Setup
 
-1.  Create and save a strong root password to be used on the deployed Linode instances.
+All secrets are encrypted with the Ansible Vault utility as a best practice.
 
-1.  Encrypt both your root password and your Linode APIv4 token using the ansible-vault utility. Replace {{< placeholder "ROOT_PASSWORD" >}} with your root password and {{< placeholder "API_TOKEN" >}} with your Linode APIv4 token.
-
-    The command below also assigns values to the variables `root_pass` and `token` for Ansible to reference later, as well as generates encrypted output:
+1.  Export `VAULT_PASSWORD`, replacing {{< placeholder "MY_VAULT_PASSWORD" >}} with a password of your choosing. This password acts as a key, allowing you to decrypt your encrypted secrets. Save this password for future use:
 
     ```command
-    ansible-vault encrypt_string '{{< placeholder "ROOT_PASSWORD" >}}' --name 'root_pass'
-    ansible-vault encrypt_string '{{< placeholder "API_TOKEN" >}}' --name 'token'
+    export VAULT_PASSWORD={{< placeholder "MY_VAULT_PASSWORD" >}}
     ```
 
-1.  Copy the generated outputs for both `root_pass` and `token`, and save them in the `secret_vars` file located in `group_vars/galera/secret_vars`. Sample output:
+1.  Encrypt a root password, sudo user password, and your Linode APIv4 token using the ansible-vault utility. Replace {{< placeholder "ROOT_PASSWORD" >}} with a root password, {{< placeholder "SUDO_PASSWORD" >}} with a sudo user password, and {{< placeholder "API_TOKEN" >}} with your Linode APIv4 token.
+
+    The command below also assigns values to the variables `root_password`, `sudo_password`, and `api_token` for Ansible to reference later, as well as generates encrypted output:
+
+    ```command
+    ansible-vault encrypt_string '{{< placeholder "ROOT_PASSWORD" >}}' --name 'root_password'
+    ansible-vault encrypt_string '{{< placeholder "SUDO_PASSWORD" >}}' --name 'sudo_password'
+    ansible-vault encrypt_string '{{< placeholder "API_TOKEN" >}}' --name 'api_token'
+    ```
+
+    {{< note title="Use strong passwords" >}}
+    When making root and sudo user passwords, it is a best practice to use a random password generator for security purposes. Save these passwords in a safe place for future reference.
+    {{< /note >}}
+
+1.  Copy the generated outputs for `root_password`, `sudo_password`, and `api_token`, and save them in the `secret_vars` file located in `group_vars/galera/secret_vars`. Sample output:
 
     ```output
-    root_pass: !vault |
+    root_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          38306438386334663834633634363930343233373066353234616363356534653033346232333538
+          3163313031373138383965383739356339663831613061660a666332636564356236656331323361
+          61383134663166613462363633646330678356561386230383332313564643135343538383161383236
+          6432396332643232620a393630633132336134613039666336326337376566383531393464303864
+          34306435376534653961653739653232383262613336383837343962633565356546
+    sudo_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           38306438386334663834633634363930343233373066353234616363356534653033346232333538
           3163313031373138383965383739356339663831613061660a666332636564356236656331323361
           61383134663166613462363633646330356561386230383332313564643135343538383161383236
+          6432396332643232620a393630633sdf32336134613039666336326337376566383531393464303864
+          34306435376534653961653739653232383262613336383837343962633565356546
+    api_token: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          38306438386334663834633634363930343233373066353234616363356534653033346232333538
+          3163313031373138383965383739356339663831613061660a666332636564356236656331323361
+          6138313466316661346236363364567330356561386230383332313564643135343538383161383236
           6432396332643232620a393630633132336134613039666336326337376566383531393464303864
           34306435376534653961653739653232383262613336383837343962633565356546
-    token: !vault |
-          $ANSIBLE_VAULT;1.1;AES256
-          63626538373065363330366332383564383936646262303761323961373033316333646337323035
-          3866366532623835386434383733316565656335626163310a666265316466353063386632383733
-          35636237393835333835391630356662336234393238616364383132636465303339306539616133
-          3235656531666337310a366239383336373738353236633635303864346135616138633466323437
-          32366632366331333266666230613835366561613837393036393639653666343538386439343839
-          34616331313637393356396330316664663532333631356365633035666566306335316262336337
-          66346465626563353438363566343265386164616639343365653934373934303532316239646539
-          33366233623864326678
     ```
 
 1.  Using a text editor, open and edit the Linode instance parameters in the `group_vars/jitsi/vars` file. Replace the values for the following variables with your preferred deployment specifications:
 
-    - `ssh_keys`: Your SSH public key
+    - `ssh_keys`: Your SSH public key(s)
     - `jitsi_type`: Compute Instance type and plan for the Jitsi Meet instance
     - `jvb_type`: Compute Instance type and plan for each JVB instance
     - `region`: The data center region for your cluster
     - `group` and `linode_tags` (optional): The [group or tag](/docs/guides/tags-and-groups/) you wish to apply to your cluster's instances for organizational purposes
     - `soa_email_address`: Your SOA administrator email for DNS records
     - `jvb_cluster_size`: The number of JVB instances in your cluster deployment
+    - `sudo_username`: Your chosen sudo user username
+    - `subdomain` and `subdomain` (optional): If you have a FQDN, you can use these optional values to customize your Jitsi meet URL. If you choose to leave these blank, you can navigate to your Jitsi meet using the default rDNS value of the Jitsi meet instance once your cluster is provisioned.
 
     ```file {title="group_vars/jitsi/vars"}
     ssh_keys: {{< placeholder "YOUR_PUBLIC_KEY" >}}
-    jitsi_prefix: poc3-jitsi
+    jitsi_prefix: jitsi
     jitsi_type: g6-dedicated-2
-    jvb_prefix: poc3-jvb
+    jvb_prefix: jvb
     jvb_type: g6-dedicated-2
-    region: us-lax
+    region: us-southeast
     image: linode/ubuntu22.04
     group:
     linode_tags:
     soa_email_address: {{< placeholder "administrator@example.com" >}}
-    jvb_cluster_size: 2
+    jitsi_cluster_size: 1
+    # jvb_cluster_size: 2
+    sudo_username: {{< placeholder "SUDO_USERNAME" >}}
+
+    # domain vars
+    # subdomain: {{< placeholder "YOUR_SUBDOMAIN" >}}
+    # domain: {{< placeholder "YOUR_FQDN" >}}
     ```
 
-    See [Linode API: List Types](https://techdocs.akamai.com/linode-api/reference/get-linode-types) for information on Linode API parameters.
+    The `jvb_cluster_size` variable dynamically scales your cluster size. This variable determines how many Jitsi Videobridge instances are created in the initial deployment. This variable can be left commented out along with the `subdomain` and `domain` variables. These values are passed along using the `ansible-playbook` CLI during cluster provisioning.
 
-    {{< note title="The jvb_cluster_size variable dynamically scales your cluster size" >}}
-    This value determines how many Jitsi Videobridge instances are created in the initial deployment and can be used later to scale your cluster up or down.
-    {{< /note >}}
+    See [Linode API: List Types](https://techdocs.akamai.com/linode-api/reference/get-linode-types) for information on Linode API parameters.
 
 ## Provision Your Cluster
 
 1.  Using the ansible-playbook utility, run the `provision.yml` playbook with verbose options so you can see the progress. This stands up your Linode instances and dynamically writes your Ansible inventory to the hosts file. The playbook is complete when ssh is available on all deployed instances.
 
+    The command below uses the `jvb_cluster_size` variable to define the number of Jitsi Videobridge instances deployed in your cluster. Replace {{< placeholder "2" >}} with the number of instances you wish to include in your deployment. Replace {{< placeholder "YOUR_SUBDOMAIN" >}} and {{< placeholder "YOUR_FQDN" >}} with your subdomain and FQDN:
+
     ```command
-    ansible-playbook -vvv provision.yml
+    ansible-playbook -vvv provision.yml --extra-vars "jvb_cluster_size=2 subdomain={{< placeholder "YOUR_SUBDOMAIN" >}} domain={{< placeholder "YOUR_FQDN" >}}"
+    ```
+
+    If you are not using your own domain and wish to use the default rDNS value of the Jitsi meet instance, remove the `subdomain` and `domain` variables from the command:
+
+    ```command
+    ansible-playbook -vvv provision.yml --extra-vars "jvb_cluster_size=2"
     ```
 
 1.  Run the `site.yml` playbook with the hosts inventory file. This playbook configures and installs all required dependencies in the cluster.
 
     ```command
-    ansible-playbook -vvv -i hosts site.yml
+    ansible-playbook -vvv -i hosts site.yml --extra-vars "jvb_cluster_size=2 subdomain={{< placeholder "YOUR_SUBDOMAIN" >}} domain={{< placeholder "YOUR_FQDN" >}}"
     ```
 
-1.  Once installation completes, visit the Jitsi meet application using the rDNS entry written to the `group_vars/jitsi/vars` file represented by the `domain` variable. Replace {{< placeholder "192.0.2.3" >}} with your IP address.
+    Likewise, if you are not using your own domain, remove the `subdomain` and `domain` variables:
 
-    -   **Example rDNS entry:** `https://{{< placeholder "192.0.2.3" >}}.ip.linodeusercontent.com`
+    ```command
+    ansible-playbook -vvv -i hosts site.yml --extra-vars "jvb_cluster_size=2"
+    ```
+
+1.  Once installation completes, visit the Jitsi meet application using your custom domain or the rDNS entry written to the `group_vars/jitsi/vars` file represented by the `default_dns` variable.
+
+    -   **Example custom domain:** `https://{{< placeholder "YOUR_SUBDOMAIN.YOUR_FQDN" >}}`
+
+    -   **Example rDNS entry:** `https://{{< placeholder "192-0-2-3" >}}.ip.linodeusercontent.com`
 
     ![Jitsi Meet Homepage](jitsi-meet-homepage.jpg "Jitsi Meet Homepage")
 
 ## Scaling options
 
-Depending on your needs, you may wish to scale your Jitsi cluster up or down. To do this, you can use the `jvb_cluster_size` variable in `group_vars/jitsi/vars` to manually add or remove instances from your Jitsi cluster.
+Depending on your needs, you may wish to scale your Jitsi cluster up or down. To do this, you can use the `jvb_cluster_size` variable to manually add or remove instances from your Jitsi cluster. Scaling your cluster up or down uses the same `ansible-playbook` command as when initially provisioning the cluster.
 
 ### Horizontal Up Scaling
 
-1.  Using a text editor, open `group_vars/jitsi/vars`.
+To scale up your cluster size, use the `ansible-playbook` command with the new number of instances you wish to scale up to. For example, if your initial cluster started with 2 instances and you would like to add 2 additional instances, edit the `jvb_cluster_size` variable to read {{< placeholder "4" >}}:
 
-1.  Edit the `jvb_cluster_size` variable to the total number of instances you wish to be included in your cluster. For example, if your initial cluster started with 2 instances and you would like to add 2 additional instances, edit the `jvb_cluster_size` variable to read {{< placeholder "4" >}}, and save your changes:
+```command
+ansible-playbook -vvv provision.yml --extra-vars "jvb_cluster_size=4 subdomain={{< placeholder "YOUR_SUBDOMAIN" >}} domain={{< placeholder "YOUR_FQDN" >}}"
+ansible-playbook -vvv -i hosts site.yml --extra-vars "jvb_cluster_size=4 subdomain={{< placeholder "YOUR_SUBDOMAIN" >}} domain={{< placeholder "YOUR_FQDN" >}}"
+```
 
-    ```file {title="group_vars/jitsi/vars"}
-    ...
-    jvb_cluster_size: {{< placeholder "4" >}}
-    ...
-    ```
+Once again, if you are not using a custom domain, remove the `subdomain` and `domain` variables from the above command:
 
-1.  To apply the new cluster size to your deployment, run the `provisioner.yml` playbook followed by the `site.yml` playbook:
-
-    ```command
-    ansible-playbook -vvv provisioner.yml
-    ansible-playbook -vvv -i hosts site.yml
-    ```
+```command
+ansible-playbook -vvv provision.yml --extra-vars "jvb_cluster_size=4"
+ansible-playbook -vvv -i hosts site.yml --extra-vars "jvb_cluster_size=4"
+```
 
 ### Down Scaling
 
-1.  Open `group_vars/jitsi/vars`.
+Down scaling your cluster works similarly to scaling up. To scale down your cluster size, use the `ansible-playbook` command with the `resize.yml` playbook and the new number of instances you wish to scale down to.
 
-1.  Update the `jvb_cluster_size` variable to the new number of instances you wish to be included in your cluster, and save your changes. Replace {{< placeholder "2" >}} in the example below with your new value:
+For example, if your cluster has 4 instances and you would like scale down to a total of 2 instances, edit the `jvb_cluster_size` variable to read {{< placeholder "2" >}}. Note that the `resize.yml` playbook does not require you to define your subdomain or domain:
 
-    ```file {title="group_vars/jitsi/vars"}
-    ...
-    jvb_cluster_size: {{< placeholder "2" >}}
-    ...
-    ```
+```command
+ansible-playbook -vvv resize.yml --extra-vars "jvb_cluster_size=2"
+ansible-playbook -vvv -i hosts site.yml --extra-vars "jvb_cluster_size=2 subdomain={{< placeholder "YOUR_SUBDOMAIN" >}} domain={{< placeholder "YOUR_FQDN" >}}"
+```
 
-1.  Run the `destroy.yml` playbook using the ansible-playbook utility:
+If you are not using your own domain, remove the `subdomain` and `domain` variables from the second command above:
 
-    ```command
-    ansible-playbook -vvv destroy.yml
-    ```
-
-    {{< note title="destroy.yml removes instances from the end of the cluster" >}}
-    When scaling down a cluster, the `destroy.yml` playbook deletes instances starting at the end of your cluster. For example, if there are 4 JVB instances in your cluster and you scale down to a total of 2, the last two (jvb4 and jvb3) are removed first.
-    {{< /note >}}
+```command
+ansible-playbook -vvv resize.yml --extra-vars "jvb_cluster_size=2"
+ansible-playbook -vvv -i hosts site.yml --extra-vars "jvb_cluster_size=2"
+```
 
 ## Benchmarking Your Cluster With WebRTC Perf
 
