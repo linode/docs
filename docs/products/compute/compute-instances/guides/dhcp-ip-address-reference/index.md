@@ -2,7 +2,7 @@
 slug: dhcp-ip-address-reference
 title: DHCP IP Address Reference
 description: 'A list of all IP addresses used for configurations that rely on DHCP by their data center.'
-published: 2021-09-10\
+published: 2021-09-10
 keywords: [dhcp", "cloud firewall", "firewall", "networking"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/quick-answers/linode-platform/dhcp-ip-address-reference/','/guides/dhcp-ip-address-reference/']
