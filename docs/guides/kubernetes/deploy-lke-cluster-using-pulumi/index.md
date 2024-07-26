@@ -71,8 +71,8 @@ Pulumi defines the elements of your Linode infrastructure using a regular progra
     Enter a value or leave blank to accept the (default), and press <ENTER>.
     Press ^C at any time to quit.
 
-    project name: (lke-cluster) 
-    project description: (A minimal Linode TypeScript Pulumi program) 
+    project name: (lke-cluster)
+    project description: (A minimal Linode TypeScript Pulumi program)
     Created project 'lke-cluster'
 
     Please enter your desired stack name.
@@ -80,7 +80,7 @@ Pulumi defines the elements of your Linode infrastructure using a regular progra
     stack name: (dev)
     Created stack 'dev'
 
-    linode:token: The token that allows you access to your Linode account: 
+    linode:token: The token that allows you access to your Linode account:
     Saved config
 
     Installing dependencies...
@@ -208,9 +208,9 @@ Now that all your Pulumi configuration is ready, you can deploy your Kubernetes 
 
     View in Browser (Ctrl+O): https://app.pulumi.com/team-ce/lke-cluster/dev/updates/2
 
-        Type                        Name             Status             
-        pulumi:pulumi:Stack         lke-cluster-dev                     
-    +   └─ linode:index:LkeCluster  foobar           created (108s)     
+        Type                        Name             Status
+        pulumi:pulumi:Stack         lke-cluster-dev
+    +   └─ linode:index:LkeCluster  foobar           created (108s)
 
 
     Outputs:

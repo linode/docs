@@ -4,6 +4,8 @@ title: "Install a Custom Linux Distribution on a Compute Instance"
 description: "Learn how to install and configure an unsupported Linux distribution on your Linode Compute Instance"
 published: 2017-03-02
 modified: 2023-01-18
+authors: ['Linode']
+contributors: ['Linode']
 keywords: ["custom distro", "custom distribution", "advanced Linux", "kvm"]
 tags: ["debian", "cloud manager"]
 aliases: ['/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/','/tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','/tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode/','/guides/install-a-custom-distribution-on-a-linode/','/products/compute/compute-instances/guides/install-a-custom-distribution/']

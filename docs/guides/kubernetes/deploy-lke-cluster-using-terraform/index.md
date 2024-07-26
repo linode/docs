@@ -6,6 +6,7 @@ published: 2020-05-05
 modified: 2023-02-09
 authors: ['Linode']
 contributors: ['Linode']
+license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 keywords: ['kubernetes','terraform','infrastructure as code','container orchestration']
 tags: ["linode platform","kubernetes","automation","managed hosting"]
 image: deploy-lke-cluster-with-terraform.png
