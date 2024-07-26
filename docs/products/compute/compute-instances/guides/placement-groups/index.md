@@ -6,7 +6,7 @@ modified: 2024-07-24
 keywords: ["placement-group", "affinity", "compliance"]
 ---
 
-When you deploy several compute instances in one of our data centers ("regions"), they're allocated to physical machines ("hosts") with available resources. However, depending on your workload requirements, you may need your compute instances to follow specific strategies:
+When you deploy several compute instances in one of our compute regions, they’re allocated to physical machines (“hosts”) with available resources. However, depending on your workload requirements, you may need your compute instances to follow specific strategies:
 
 - **Grouped-together**. You may want them placed close together to reduce latency between compute instances that are used for an application or workload.
 
