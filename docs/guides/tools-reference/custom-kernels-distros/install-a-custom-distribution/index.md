@@ -6,6 +6,7 @@ published: 2017-03-02
 modified: 2023-01-18
 authors: ['Linode']
 contributors: ['Linode']
+license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 keywords: ["custom distro", "custom distribution", "advanced Linux", "kvm"]
 tags: ["debian", "cloud manager"]
 aliases: ['/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/','/tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','/tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode/','/guides/install-a-custom-distribution-on-a-linode/','/products/compute/compute-instances/guides/install-a-custom-distribution/']
