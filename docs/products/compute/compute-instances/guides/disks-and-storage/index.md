@@ -6,7 +6,7 @@ published: 2021-04-30
 modified: 2023-01-18
 keywords: ["disks", "storage", "disk space"]
 tags: ["linode platform","cloud manager"]
-aliases: ['/guides/linode-disks/','/guides/disks-and-storage/','/guides/resize-a-linode-disk/']
+aliases: ['/guides/linode-disks/','/guides/disks-and-storage/','/guides/resize-a-linode-disk/','/products/tools/cloud-manager/guides/cloud-find-disks/']
 ---
 
 ## Understanding Storage
