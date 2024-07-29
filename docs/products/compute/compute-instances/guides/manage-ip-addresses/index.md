@@ -3,7 +3,7 @@ title: "Managing IP Addresses on a Compute Instance"
 description: "Instructions on viewing, adding, deleting, transferring IP addresses for Linode Compute Instances using the Cloud Manager"
 og_description: "Learn how to manage IP addresses on a Linode Compute Instance"
 published: 2016-08-23
-modified: 2024-01-30
+modified: 2024-07-26
 keywords: ["ip addresses", "ip failover", "swapping ip addresses", "add ip address", "add additional ip address"]
 tags: ["linode platform","cloud manager","networking"]
 aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/','/guides/managing-ip-addresses/','/guides/find-your-linodes-ip-address/']
@@ -199,3 +199,9 @@ Each data center has its own set of DNS resolvers, which are accessed through bo
 1.  Navigate to the **Network** tab and review the **DNS Resolvers** list, which should appear to the right of (or below) the network transfer graph.
 
     ![Screenshot of the DNS resolvers in the Cloud Manager](dns-resolvers.png)
+
+## Confirming IP Addresses are Correctly Configured
+
+Our platform's [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) tool automatically configures the internal network settings of your instance's Linux system. This ensures changes made to your IP addresses within Cloud Manager are also made internally on your instance. If you decide not to use Network Helper or are using a custom unsupported distribution, you need to manually configure your system's networking. In this case, review the [Manual Network Configuration on a Compute Instance](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide.
+
+To verify that your IP addresses are correctly configured, run the `ip` command on your instance (see [man pages reference](https://linux.die.net/man/8/ip)), specifically `ip a show` (`ip addr show`). For more information on using this command, see our [Use the ip Command in Linux](/docs/guides/how-to-use-the-linux-ip-command/#how-to-find-your-ip-address) guide.
