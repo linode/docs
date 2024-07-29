@@ -1,19 +1,16 @@
 ---
 slug: tags-and-groups
 title: "Tags and Groups"
-description: 'This guide provides you with instructions for creating tags and groups in the Linode Cloud Manager to keep your Linodes and other services organized as needed.'
-authors: ["Linode"]
-contributors: ["Linode"]
+description: "This guide provides you with instructions for creating tags and groups in Cloud Manager to keep your Linodes and other services organized as needed."
 published: 2019-02-22
 keywords: ['tags','cloud manager']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["linode platform","cloud manager"]
-aliases: ['/quick-answers/linode-platform/tags-and-groups/']
+aliases: ['/quick-answers/linode-platform/tags-and-groups/','/guides/tags-and-groups/']
 ---
 
-Linode's [Cloud Manager](https://cloud.linode.com) and [API](https://developers.linode.com) allow you to create tags to help organize and group your Linode resources. Tags can be applied to Linodes, [Block Storage Volumes](/docs/products/storage/block-storage/), [NodeBalancers](/docs/products/networking/nodebalancers/get-started/), and [Domains](/docs/products/networking/dns-manager/).
+Both [Cloud Manager](https://cloud.linode.com) and the [Linode API](https://developers.linode.com) let you to create tags to help organize and group your Linode resources. Tags can be applied to Linodes, [Block Storage Volumes](/docs/products/storage/block-storage/), [NodeBalancers](/docs/products/networking/nodebalancers/get-started/), and [Domains](/docs/products/networking/dns-manager/).
 
-This guide will show you how to perform the following actions with the Cloud Manager:
+This guide demonstrates how to perform the following actions with Cloud Manager:
 
 -   Create and apply tags to your Linode resources
 -   Search and group your Linode resources by tag
@@ -77,7 +74,7 @@ To tag a Volume at the time of its creation:
 
 To tag an existing Volume:
 
-1.  Navigate to the Volumes page of the Cloud Manager.
+1.  Navigate to the Volumes page of Cloud Manager.
 
 1.  Select the more options **ellipsis (...)** corresponding to the Volume you would like to tag.
 
@@ -95,7 +92,7 @@ To tag an existing Volume:
 
 To remove a tag from a Volume:
 
-1.  Navigate to the Volumes page of the Cloud Manager.
+1.  Navigate to the Volumes page of Cloud Manager.
 
 1.  Select the more options **ellipsis (...)** corresponding to the Volume whose tags you would like to edit.
 
@@ -187,7 +184,7 @@ To remove a tag from a domain:
 
 ### Tag an LKE Cluster at Creation
 
-1. Navigate to the **Kubernetes** section of the Linode Cloud Manager and [create your LKE cluster](/docs/products/compute/kubernetes/guides/create-cluster/).
+1. Navigate to the **Kubernetes** section of Cloud Manager and [create your LKE cluster](/docs/products/compute/kubernetes/guides/create-cluster/).
 
 1. After the cluster is created, your cluster's summary page will appear. Click on the **Add a tag** link to begin adding tags to your cluster.
 
@@ -207,7 +204,7 @@ To remove a tag from a domain:
 
 ### Tag an Existing LKE Cluster
 
-1. Navigate to the **Kubernetes** section of the Linode Cloud Manager and select the cluster you'd like to add a tag to.
+1. Navigate to the **Kubernetes** section of Cloud Manager and select the cluster you'd like to add a tag to.
 
 1. Viewing your cluster's summary page, click on the **Add a tag** link to begin adding tags to your cluster.
 
@@ -227,7 +224,7 @@ To remove a tag from a domain:
 
 ### Remove a Tag from an LKE Cluster
 
-1. Navigate to the **Kubernetes** section of the Linode Cloud Manager and select the cluster from which you'd like to remove a tag.
+1. Navigate to the **Kubernetes** section of Cloud Manager and select the cluster from which you'd like to remove a tag.
 
 1. Viewing the cluster's summary page, you will see a list of all of your cluster's tags. To remove a tag, click on the **x** next to the tag you'd like to remove.
 
@@ -249,7 +246,7 @@ You can group the following resources by tag: Linodes, Volumes, NodeBalancers, a
 
 You can search your Linode resources by a tag's name:
 
-1.  Type the tag name into the search bar at the top of the Cloud Manager and the results will be populated in a dropdown list that appears:
+1.  Type the tag name into the search bar at the top of Cloud Manager and the results will be populated in a dropdown list that appears:
 
     ![Cloud Manager tag search](tags-search-bar.png "Search for resources by tag")
 
@@ -257,11 +254,11 @@ You can search your Linode resources by a tag's name:
 
     ![Cloud Manager search results page](tags-search-results.png "The search results page")
 
-1.  A second way to search by tag is to click on a tag wherever it appears in the Cloud Manager. For example, if you previously applied a tag named `tag-example` to one of your Linodes, clicking on that tag where it is displayed in the Linode's detail page will take you to the search results page for `tag-example`.
+1.  A second way to search by tag is to click on a tag wherever it appears in Cloud Manager. For example, if you previously applied a tag named `tag-example` to one of your Linodes, clicking on that tag where it is displayed in the Linode's detail page will take you to the search results page for `tag-example`.
 
 ## Importing Groups as Tags
 
-If you have used the Display Groups feature in the Classic Manager, you can import your Display Groups to the Cloud Manager as tags:
+If you have used the Display Groups feature in the Classic Manager, you can import your Display Groups to Cloud Manager as tags:
 
 1.  Navigate to the **Account** page in the sidebar links menu, then click on the **Settings** tab.
 
@@ -271,6 +268,6 @@ If you have used the Display Groups feature in the Classic Manager, you can impo
 
 1.  A form will appear that lists your Display Groups and asks you to confirm the import action. To proceed, click the **Import Display Groups Now** button in this form.
 
-    {{< note respectIndent=false >}}
-Importing your Display Groups is a **one-time** operation. If you don't have any Display Groups configured in the Classic Manager this feature will not appear in the Cloud Manager.
-{{< /note >}}
+    {{< note >}}
+    Importing your Display Groups is a **one-time** operation. If you don't have any Display Groups configured in the Classic Manager this feature will not appear in Cloud Manager.
+    {{< /note >}}

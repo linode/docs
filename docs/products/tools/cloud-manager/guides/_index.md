@@ -18,6 +18,8 @@ tab_group_main:
 
 - [How to Search in Cloud Manager](/docs/products/tools/cloud-manager/guides/search-in-cloud-manager/)
 
+- [Tags and Groups](/docs/products/tools/cloud-manager/guides/tags-and-groups/)
+
 ### Manage Your Account
 
 - [Manage Billing in Cloud Manager](/docs/products/platform/billing/guides/)
@@ -25,8 +27,6 @@ tab_group_main:
 - [Cancelling Your Account](/docs/products/platform/accounts/guides/cancel-account/)
 
 - [Changing Your Email Address](/docs/products/platform/accounts/guides/change-user-email/)
-
-- [Tags and Groups](/docs/guides/tags-and-groups/)
 
 - [User Security Controls](/docs/products/platform/accounts/guides/user-security-controls/)
 

@@ -112,7 +112,7 @@ Cloud Manager does not support forcing password expirations. Forcing password re
 
 ## Tags
 
-Both Cloud Manager and [API v4](/docs/api) allow you to create tags to help organize and group your Linode resources. Tags can be applied to [Linode instances](#linodes), [Block Storage Volumes](#volumes), [NodeBalancers](#nodebalancers), and [Domains](#domains-dns-manager). See the [Tags and Groups](/docs/guides/tags-and-groups/) guide to learn how to create, apply, and search for tags.
+Both Cloud Manager and [API v4](/docs/api) allow you to create tags to help organize and group your Linode resources. Tags can be applied to [Linode instances](#linodes), [Block Storage Volumes](#volumes), [NodeBalancers](#nodebalancers), and [Domains](#domains-dns-manager). See the [Tags and Groups](/docs/products/tools/cloud-manager/guides/tags-and-groups/) guide to learn how to create, apply, and search for tags.
 
 ## Events and Activity Feeds
 

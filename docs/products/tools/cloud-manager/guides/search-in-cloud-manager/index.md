@@ -31,7 +31,7 @@ The search tool can also be used with keywords to help filter and refine the res
 | Keyword | Definition |
 | -- | -- |
 | `type` | Type of resource. Linode, image, NodeBalancer, etc.  |
-| `tag`  | Tag applied to your resources. See the guide on [Tags and Groups](/docs/guides/tags-and-groups/). |
+| `tag`  | Tag applied to your resources. See the guide on [Tags and Groups](/docs/products/tools/cloud-manager/guides/tags-and-groups/). |
 | `label` | The label or identifier for your Linode. |
 | `region` | The region for your resources, such as `us-east`. For a full list of regions, see the return values from the API or CLI [List Regions](/docs/api/regions/#regions-list) endpoint. |
 | `IP` | The IP address of your resource. |

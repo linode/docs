@@ -612,7 +612,7 @@ Nodes within the LKE cluster *must* be [recycled](#recycle-your-lke-cluster) bef
 
 ### Add New Tags to your LKE Cluster
 
-Like many Linode resources, you can [add tags](/docs/guides/tags-and-groups/) to your LKE Cluster for organizational purposes. This section shows you how to add new tags to an existing LKE Cluster.
+Like many Linode resources, you can [add tags](/docs/products/tools/cloud-manager/guides/tags-and-groups/) to your LKE Cluster for organizational purposes. This section shows you how to add new tags to an existing LKE Cluster.
 
 {{< note title="View all of your account's tags" isCollapsible=true >}}
 To view all of the tags existing on your account, issue the following request against the API:
