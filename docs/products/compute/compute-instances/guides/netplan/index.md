@@ -89,7 +89,7 @@ Learn more about the full extent of Netplan's YAML configuration options in the 
     sudo nano /etc/netplan/01-netcfg.yaml
     ```
 
-1.  Once you've edited the configuration file to fit your needs, you need to generate matching backend configurations and apply the changes. To do so, run the follow Netplan commands:
+1.  Once you've edited the configuration file to fit your needs, you need to generate matching back-end configurations and apply the changes. To do so, run the follow Netplan commands:
 
     ```command
     sudo netplan generate

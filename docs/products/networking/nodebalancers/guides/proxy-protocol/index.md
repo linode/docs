@@ -1,6 +1,6 @@
 ---
 title: Using Proxy Protocol with NodeBalancers
-description: "Learn how to enable and use Proxy Protocol on your NodeBalancer to send client connection details to the backend nodes."
+description: "Learn how to enable and use Proxy Protocol on your NodeBalancer to send client connection details to the back-end nodes."
 published: 2022-10-07
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha", "proxy protocol", "proxy"]
 tags: ["cloud manager","linode platform","networking","web applications"]
@@ -8,16 +8,16 @@ image: ProxyProtocol_NodeBalancers.png
 aliases: ['/platform/nodebalancer/nodebalancer-proxypass-configuration/','/guides/nodebalancer-proxypass-configuration/']
 ---
 
-When a Linode NodeBalancer passes a request from a client to a backend Node, information regarding the original client is not included by default. While this is fine for many environments, your applications may require original client information such as IP address or port. For these cases, Linode NodeBalancers support **Proxy Protocol** for TCP connections so that you can pass client information to backend Nodes.
+When a Linode NodeBalancer passes a request from a client to a back-end node, information regarding the original client is not included by default. While this is fine for many environments, your applications may require original client information such as IP address or port. For these cases, Linode NodeBalancers support **Proxy Protocol** for TCP connections so that you can pass client information to back-end nodes.
 
 ## What is Proxy Protocol
 
-Proxy Protocol is an internet protocol for various high availability and load balancing solutions to carry information about a client directly to backend servers.
+Proxy Protocol is an internet protocol for various high availability and load balancing solutions to carry information about a client directly to back-end servers.
 
-When selecting **TCP** as your NodeBalancer protocol, you can enable **Proxy Protocol** to add a header containing client information to backend Nodes.
+When selecting **TCP** as your NodeBalancer protocol, you can enable **Proxy Protocol** to add a header containing client information to back-end nodes.
 
 {{< note >}}
-[Backend Nodes](#configure-backend-node-proxy-protocol) must also have Proxy Protocol enabled on supported applications to receive the client information header.
+[Back-end Nodes](#configure-backend-node-proxy-protocol) must also have Proxy Protocol enabled on supported applications to receive the client information header.
 
 Additional configuration options may need to be enabled on the application or service to accommodate traffic between the node and the NodeBalancer, including allowing IPv6 and/or IPv4 traffic, and enabling traffic on all necessary ports.
 {{< /note >}}
@@ -44,7 +44,7 @@ More information on **v1** and **v2** is available in the [Proxy Protocol Specif
 
 ## Configure Proxy Protocol
 
-In order to make use of Proxy Protocol, it needs to be configured on the NodeBalancer as well as each backend node Compute Instance.
+In order to make use of Proxy Protocol, it needs to be configured on the NodeBalancer as well as each back-end node Compute Instance.
 
 ### Configure the NodeBalancer
 
@@ -58,9 +58,9 @@ To enable Proxy Protocol for your NodeBalancer, follow the instructions below.
 
 1.  Click the **Save** button on the bottom of the page to Save your changes.
 
-### Configure the Backend Nodes
+### Configure the Back-end Nodes
 
-Once Proxy Protocol is configured for your NodeBalancer, ensure that it is also enabled for the receiving software on your backend Nodes. You can find a list of compatible software in the [Proxy Protocol documentation](https://www.haproxy.com/blog/haproxy/proxy-protocol/). Here are links to guidance for enabling Proxy Protocol for common software:
+Once Proxy Protocol is configured for your NodeBalancer, ensure that it is also enabled for the receiving software on your back-end Nodes. You can find a list of compatible software in the [Proxy Protocol documentation](https://www.haproxy.com/blog/haproxy/proxy-protocol/). Here are links to guidance for enabling Proxy Protocol for common software:
 
 -   [NGINX](https://docs.nginx.com/nginx/admin-guide/load-balancer/using-proxy-protocol/)
 -   [Apache](https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html)

@@ -11,7 +11,7 @@ aliases: ['/guides/systemd-networkd/']
 The [systemd-networkd](https://wiki.archlinux.org/title/systemd-networkd) tool is a newer tool developed as part of systemd. Arch and modern versions of Ubuntu (17.10 and above) currently use systemd-networkd as their default network configuration software.
 
 {{< note >}}
-By default, Linode's Network Helper tool manages networking in Ubuntu using systemd-networkd. Ubuntu also has utility called Netplan that serves as a frontend for configuring either systemd-networkd or NetworkManager. To use Netplan instead, review the [Network Configuration Using Netplan](/docs/products/compute/compute-instances/guides/netplan/) guide.
+By default, Linode's Network Helper tool manages networking in Ubuntu using systemd-networkd. Ubuntu also has utility called Netplan that serves as a front end for configuring either systemd-networkd or NetworkManager. To use Netplan instead, review the [Network Configuration Using Netplan](/docs/products/compute/compute-instances/guides/netplan/) guide.
 {{< /note >}}
 
 {{< note >}}

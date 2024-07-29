@@ -63,8 +63,8 @@ The AzuraCast Marketplace App installs the following software on your Linode:
 | **Software** | **Description** |
 |:--------------|:------------|
 | [**Lquidsoap**](https://www.liquidsoap.info/) | An AutoDJ that keeps the tunes streaming.|
-| [**Icecast 2.4 (Icecast-KH on supported systems)**](https://icecast.org/) | A broadcasting frontend. |
-| [**SHOUTcast 2 DNAS**](http://wiki.shoutcast.com/wiki/SHOUTcast_DNAS_Server_2) | An alternate broadcasting frontend. |
+| [**Icecast 2.4 (Icecast-KH on supported systems)**](https://icecast.org/) | A broadcasting front end. |
+| [**SHOUTcast 2 DNAS**](http://wiki.shoutcast.com/wiki/SHOUTcast_DNAS_Server_2) | An alternate broadcasting front end. |
 | [**NGINX**](https://www.nginx.com/) | A webserver a proxy. |
 | [**MariaDB**](https://mariadb.org/) | A database. |
 | [**PHP 7**](https://secure.php.net/) | General purpose programming language used for the website. |

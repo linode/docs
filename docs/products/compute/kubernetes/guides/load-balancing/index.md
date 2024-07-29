@@ -236,7 +236,7 @@ metadata:
 
 ### Configuring Session Affinity for Cluster Pods
 
-`kube-proxy` will always attempt to proxy traffic to a random backend Pod. To direct traffic to the same Pod, you can use the `sessionAffinity` mechanism. When set to `clientIP`, `sessionAffinity` will ensure that all traffic from the same IP will be directed to the same Pod. You can add the example lines to a Service configuration file to
+`kube-proxy` will always attempt to proxy traffic to a random back-end Pod. To direct traffic to the same Pod, you can use the `sessionAffinity` mechanism. When set to `clientIP`, `sessionAffinity` will ensure that all traffic from the same IP will be directed to the same Pod. You can add the example lines to a Service configuration file to
 
 ```file
 spec:

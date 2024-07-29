@@ -24,7 +24,7 @@ To start using a NodeBalancer and benefiting from load balancing, your applicati
 
     {{% content "dbass-eos" %}}
 
-In some simple applications, the servers that store your application's code can also store its files and databases. For more complex applications, you may want to consider designating separate application servers, file servers, and database servers. The application servers (where the web server software and application code resides) operate as the backends to the NodeBalancer. The file servers and database servers can be built on cloud-based solutions (like Managed Databases) or self-hosted software on Compute Instances.
+In some simple applications, the servers that store your application's code can also store its files and databases. For more complex applications, you may want to consider designating separate application servers, file servers, and database servers. The application servers (where the web server software and application code resides) operate as the back ends to the NodeBalancer. The file servers and database servers can be built on cloud-based solutions (like Managed Databases) or self-hosted software on Compute Instances.
 
 For advice on load balancing and high availability, review the following resources:
 
@@ -60,7 +60,7 @@ Once your application has been deployed on multiple Compute Instances, you are r
     By default, a new Cloud Firewall accepts all inbound and outbound connections. Only inbound firewall rules apply to NodeBalancers, see [Cloud Firewall Inbound Rules for NodeBalancer](/docs/products/networking/nodebalancers/guides/create/#cloud-firewall-inbound-rules-for-nodebalancer). Custom rules can be added as needed in the Firewall application. See [Add New Cloud Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
     {{< /note >}}
 
-5. Within the *NodeBalancer Settings* area, there is a single configuration block with sections for configuring the port, defining health checks, and attaching backend nodes. Additional ports can be added using the **Add another Configuration** button.
+5. Within the *NodeBalancer Settings* area, there is a single configuration block with sections for configuring the port, defining health checks, and attaching back-end nodes. Additional ports can be added using the **Add another Configuration** button.
 
     {{< note >}}
     The following recommended parameters can be used for deploying a website. For other applications or to learn more about these settings, see the [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/) guide.
@@ -68,17 +68,17 @@ Once your application has been deployed on multiple Compute Instances, you are r
 
     - **Port:** For load balancing a website, configure two ports: port 80 and port 443. Each of these ports can be configured separately. See [Configuration Options > Port](/docs/products/networking/nodebalancers/guides/configure/#port).
 
-    - **Protocol:** Most applications can benefit from using the *TCP* protocol. This option is more flexible, supports HTTP/2, and maintains encrypted connections to the backend Compute Instances. If you intend to manage and terminate the TLS certificate on the NodeBalancer, use *HTTP* for port 80 and *HTTPS* for port 443. See [Configuration Options > Protocol](/docs/products/networking/nodebalancers/guides/configure/#protocol).
+    - **Protocol:** Most applications can benefit from using the *TCP* protocol. This option is more flexible, supports HTTP/2, and maintains encrypted connections to the back-end Compute Instances. If you intend to manage and terminate the TLS certificate on the NodeBalancer, use *HTTP* for port 80 and *HTTPS* for port 443. See [Configuration Options > Protocol](/docs/products/networking/nodebalancers/guides/configure/#protocol).
 
-    - **Algorithm:** This controls how new connections are allocated across backend nodes. Selecting *Round Robin* can be helpful when testing (in conjunction with no session stickiness). Otherwise, *Least Connections* can help evenly distribute the load for production applications. See [Configuration Options > Algorithm](/docs/products/networking/nodebalancers/guides/configure/#algorithm).
+    - **Algorithm:** This controls how new connections are allocated across back-end nodes. Selecting *Round Robin* can be helpful when testing (in conjunction with no session stickiness). Otherwise, *Least Connections* can help evenly distribute the load for production applications. See [Configuration Options > Algorithm](/docs/products/networking/nodebalancers/guides/configure/#algorithm).
 
-    - **Session Stickiness:** This controls how subsequent requests from the same client are routed when selecting a backend node. For testing, consider selecting *None*. Otherwise, *Table* can be used for any protocol and *HTTP Cookie* can be used for *HTTP* and *HTTPS*. See [Configuration Options > Session Stickiness](/docs/products/networking/nodebalancers/guides/configure/#session-stickiness).
+    - **Session Stickiness:** This controls how subsequent requests from the same client are routed when selecting a back-end node. For testing, consider selecting *None*. Otherwise, *Table* can be used for any protocol and *HTTP Cookie* can be used for *HTTP* and *HTTPS*. See [Configuration Options > Session Stickiness](/docs/products/networking/nodebalancers/guides/configure/#session-stickiness).
 
-    - **Health Checks:** NodeBalancers have both *active* and *passive* health checks available. These health checks help take unresponsive or problematic backend Compute Instances out of the rotation so that no connections are routed to them. These settings can be left at the default for most applications. Review [Configuration Options > Health Checks](/docs/products/networking/nodebalancers/guides/configure/#health-checks) for additional information.
+    - **Health Checks:** NodeBalancers have both *active* and *passive* health checks available. These health checks help take unresponsive or problematic back-end Compute Instances out of the rotation so that no connections are routed to them. These settings can be left at the default for most applications. Review [Configuration Options > Health Checks](/docs/products/networking/nodebalancers/guides/configure/#health-checks) for additional information.
 
-    - **Backend Nodes:** Each Compute Instance for your application should be added as a *backend node* to the NodeBalancer. These Compute Instances need to be located in the same data center as your NodeBalancer and have private IP addresses assigned to them. Set a **Label** for each instance, select the corresponding **IP address** from the dropdown menu, and enter the **Port** that the application is using on that instance. See [Backend Nodes (Compute Instances)](/docs/products/networking/nodebalancers/guides/backends/).
+    - **Back-end nodes:** Each Compute Instance for your application should be added as a *back-end node* to the NodeBalancer. These Compute Instances need to be located in the same data center as your NodeBalancer and have private IP addresses assigned to them. Set a **Label** for each instance, select the corresponding **IP address** from the dropdown menu, and enter the **Port** that the application is using on that instance. See [Back-end Nodes (Compute Instances)](/docs/products/networking/nodebalancers/guides/backends/).
 
-        For most web applications that have the *inbound* ports 80 and 443 configured using the *TCP* protocol, you can set the backend nodes to use the same ports. If you are using the *HTTPS* protocol, TLS termination happens on the NodeBalancer and your Compute Instances should only need to listen on port 80 (unencrypted). If that's the case, backend nodes for both *inbound* ports can be configured to use port 80.
+        For most web applications that have the *inbound* ports 80 and 443 configured using the *TCP* protocol, you can set the back-end nodes to use the same ports. If you are using the *HTTPS* protocol, TLS termination happens on the NodeBalancer and your Compute Instances should only need to listen on port 80 (unencrypted). If that's the case, back-end nodes for both *inbound* ports can be configured to use port 80.
 
 1. Review the summary and click the **Create NodeBalancer** button to provision your new NodeBalancer.
 

@@ -68,6 +68,6 @@ The VS Code Marketplace App installs the following software on the Linode:
 |:--------------|:------------|
 | [**Code Server**](https://github.com/cdr/code-server) | Code Server which hosts the open source web interface of VS Code.|
 | [**NGINX**](https://www.nginx.com) | An open source web server. |
-| [**ufw**](https://wiki.ubuntu.com/UncomplicatedFirewall) | ufw is the uncomplicated firewall, a frontend for iptables. |
+| [**ufw**](https://wiki.ubuntu.com/UncomplicatedFirewall) | ufw is the uncomplicated firewall, a front end for iptables. |
 
 {{% content "marketplace-update-note-shortguide" %}}

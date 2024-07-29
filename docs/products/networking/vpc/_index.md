@@ -25,7 +25,7 @@ Networking packets sent over a VPC are walled off from the public internet --- a
 
 ## Segment Traffic Into Separate Subnets
 
-Instead of assigning a single IPv4 range for the entire VPC, Akamai's VPC design allows users to configure multiple RFC1918 ranges through the use of subnets. This has the benefit of segmenting services into distinct networks and can be useful when migrating or combining existing networking environments so that there are no changes to routing or static IPs. These subnets can isolate various functionality of an application (such as separating public frontend services from private backend services) or separate out a production environment from staging or development.
+Instead of assigning a single IPv4 range for the entire VPC, Akamai's VPC design allows users to configure multiple RFC1918 ranges through the use of subnets. This has the benefit of segmenting services into distinct networks and can be useful when migrating or combining existing networking environments so that there are no changes to routing or static IPs. These subnets can isolate various functionality of an application (such as separating public front-end services from private back-end services) or separate out a production environment from staging or development.
 
 Routing between subnets on a VPC is configured automatically. By default, all Compute Instances on a VPC can communicate with any other instance on that VPC, regardless of which subnet the other instance is assigned to use.
 

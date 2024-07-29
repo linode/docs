@@ -27,9 +27,9 @@ Linode’s free Cloud Firewall service is a powerful firewall solution that oper
     - Users wanting to configure inbound firewall rules for NodeBalancers.
 
 {{< note >}}
-If you choose to manage inbound firewall rules for NodeBalancers using Cloud Firewalls, you still need to protect any backend nodes (Compute Instances) configured to the NodeBalancer. The Cloud Firewall only filters incoming traffic to the NodeBalancer’s public IP and not the IPs of the individual instances unless they are also added to the Cloud Firewall.
+If you choose to manage inbound firewall rules for NodeBalancers using Cloud Firewalls, you still need to protect any back-end nodes (Compute Instances) configured to the NodeBalancer. The Cloud Firewall only filters incoming traffic to the NodeBalancer’s public IP and not the IPs of the individual instances unless they are also added to the Cloud Firewall.
 
-You can protect your backend nodes by either assigning the individual nodes to a Cloud Firewall (the same as your NodeBalancer or a new one) or by manually configuring firewalls internally on the instances themselves.
+You can protect your back-end nodes by either assigning the individual nodes to a Cloud Firewall (the same as your NodeBalancer or a new one) or by manually configuring firewalls internally on the instances themselves.
 {{< /note >}}
 
 ## Firewall Software

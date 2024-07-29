@@ -12,7 +12,7 @@ Log in to the [Cloud Manager](https://cloud.linode.com) and select NodeBalancers
 
 Each NodeBalancer in the matrix is displayed alongside the following details:
 
-- **Backend Status:** The number of backend machines that are available and accepting connections (*up*) or have been removed from the rotation and are not accepting connections (*down*).
+- **Back-end Status:** The number of back-end machines that are available and accepting connections (*up*) or have been removed from the rotation and are not accepting connections (*down*).
 - **Transferred:** The amount of network transfer consumed by the inbound traffic to the NodeBalancer.
 - **Ports:** A list of the ports that have been configured on the NodeBalancer.
 - **IP Address:** The NodeBalancer's IPv4 address.
@@ -34,7 +34,7 @@ This displays the details and settings for the selected NodeBalancer.
 
 From here, the following pages are available:
 
-- **Summary:** View important details and graphs. This includes viewing the IP addresses, the Cloud Firewall if a firewall is assigned, the ports, the status of the backends, and graphs for both the number of connections and network traffic.
+- **Summary:** View important details and graphs. This includes viewing the IP addresses, the Cloud Firewall if a firewall is assigned, the ports, the status of the back ends, and graphs for both the number of connections and network traffic.
 - **Configurations:** This lists each port configured for the NodeBalancer, with the ability to edit the settings for the existing port or add a new port. See [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/) for more information on each of these settings.
 - **Settings:** Displays additional settings for the NodeBalancer, including the label, firewall and connection throttle setting.
 

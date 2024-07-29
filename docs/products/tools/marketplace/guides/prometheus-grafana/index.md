@@ -92,7 +92,7 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 
 ### Add Prometheus as a Data Source to Grafana
 
-1.  Log in to the Grafana frontend. See [Access Grafana and Prometheus](#access-grafana-and-prometheus).
+1.  Log in to the Grafana front end. See [Access Grafana and Prometheus](#access-grafana-and-prometheus).
 
 1.  On the main menu, hover over the gear icon to open the *Configuration* menu. Then click **Data Sources**.
 

@@ -524,9 +524,9 @@ Using a *firewall* to block unwanted inbound traffic to your Compute Instance pr
 
 - [nftables](/docs/guides/how-to-use-nftables/) or its predecessor, [iptables](/docs/guides/control-network-traffic-with-iptables/), is the controller for netfilter, the Linux kernel's packet filtering framework. One of these utilities is included in most Linux distributions by default.
 
-- [firewalld](/docs/guides/introduction-to-firewalld-on-centos/) is a firewall management tool that serves as a frontend to nftables or iptables. It is preinstalled on the RHEL family of distributions (and others), including CentOS, AlmaLinux, Rocky Linux, Fedora, and openSUSE Leap.
+- [firewalld](/docs/guides/introduction-to-firewalld-on-centos/) is a firewall management tool that serves as a front end to nftables or iptables. It is preinstalled on the RHEL family of distributions (and others), including CentOS, AlmaLinux, Rocky Linux, Fedora, and openSUSE Leap.
 
-- [UFW](/docs/guides/configure-firewall-with-ufw/) is another firewall management tool that operates as a frontend to nftables or iptables. It is used by default on Ubuntu and is also available on other Debian-based distributions.
+- [UFW](/docs/guides/configure-firewall-with-ufw/) is another firewall management tool that operates as a front end to nftables or iptables. It is used by default on Ubuntu and is also available on other Debian-based distributions.
 
 ## Common Lockout Recovery Steps
 

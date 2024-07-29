@@ -383,7 +383,7 @@ sudo ip6tables -L # displays IPv6 rules
 ```
 
 {{< note >}}
-Your deployment may be running FirewallD or UFW, which are frontend software packages used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
+Your deployment may be running FirewallD or UFW, which are front-end software packages used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
 
 ```command
 sudo ufw status

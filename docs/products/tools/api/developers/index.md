@@ -40,7 +40,7 @@ The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the L
 
 - [Ansible linode_v4 module](https://docs.ansible.com/ansible/latest/modules/linode_v4_module.html): Ansible includes a "linode_v4" module for automating Linode instance provisioning by [Luke Murphy](https://github.com/lwm).
 
-- [Kubernetes External-DNS](https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/linode.md): External-DNS is a Kubernetes Incubator project that assigns DNS names to Service and Ingress resources in Kubernetes Clusters. Linode DNS Manager is a supported backend.
+- [Kubernetes External-DNS](https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/linode.md): External-DNS is a Kubernetes Incubator project that assigns DNS names to Service and Ingress resources in Kubernetes Clusters. Linode DNS Manager is a supported back end.
 
 - [terraform-provider-acme](https://www.terraform.io/docs/providers/acme/dns_providers/linode.html): The Automated Certificate Management Environment (ACME) provider for Terraform can be used to configure Let's Encrypt, Boulder, and other ACME CAs using Linode's DNS Manager.
 

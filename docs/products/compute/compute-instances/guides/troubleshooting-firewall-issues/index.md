@@ -61,7 +61,7 @@ If you are using Cloud Firewalls, then it's important to verify which Cloud Fire
 
 ## Checking Firewall Rules with UFW
 
-*Uncomplicated Firewall (UFW)* is an [iptables](/docs/guides/control-network-traffic-with-iptables/) frontend that is designed for ease-of-use. See our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) for a deeper dive into UFW.
+*Uncomplicated Firewall (UFW)* is an [iptables](/docs/guides/control-network-traffic-with-iptables/) front end that is designed for ease-of-use. See our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) for a deeper dive into UFW.
 
 {{< note >}}
 All steps in this section are performed on your Compute Instance. [Connect to your Compute Instance via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/products/compute/compute-instances/guides/lish/).
@@ -102,7 +102,7 @@ sudo ufw delete allow 80
 
 ## Checking Firewall Rules with FirewallD
 
-*firewalld* is the default firewall tool for CentOS and Fedora. While also a frontend for iptables like UFW, firewalld has some unique features, like configuration sets and zones.
+*firewalld* is the default firewall tool for CentOS and Fedora. While also a front end for iptables like UFW, firewalld has some unique features, like configuration sets and zones.
 
 {{< note >}}
 All steps in this section are performed on your Compute Instance. [Connect to your Compute Instance via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/products/compute/compute-instances/guides/lish/).

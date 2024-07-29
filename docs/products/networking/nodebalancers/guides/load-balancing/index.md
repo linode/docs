@@ -15,7 +15,7 @@ This guide provides a high-level overview of NodeBalancers. To set-up a NodeBala
 
 ## Overview
 
-A NodeBalancer is assigned its own public IP address where it will listen for incoming connections. Then, using configurable rules, it routes the connection to one backend node (out of one or more). A NodeBalancer allows the incoming traffic load to your application to be spread over any number of Linodes.
+A NodeBalancer is assigned its own public IP address where it will listen for incoming connections. Then, using configurable rules, it routes the connection to one back-end node (out of one or more). A NodeBalancer allows the incoming traffic load to your application to be spread over any number of Linodes.
 
 ### A Non-Load Balanced Configuration
 
@@ -27,7 +27,7 @@ In a standard non-load balanced configuration, traffic comes into a server direc
 
 ![Single Web Server Flow With NodeBalancer](singleWebServerNodeBalancer.png)
 
-When using a load balancer, like a NodeBalancer, traffic comes to the site through the load balancer first. It's then managed before reaching the Linode. In addition to balancing traffic load, NodeBalancers also offer features like [SSL termination](https://en.wikipedia.org/wiki/TLS_termination_proxy). NodeBalancers alleviate this burden from the server allowing them to be faster at other tasks, like serving pages. Therefore, even with only one server on the backend, having a NodeBalancer in front of your server can be an advantage.
+When using a load balancer, like a NodeBalancer, traffic comes to the site through the load balancer first. It's then managed before reaching the Linode. In addition to balancing traffic load, NodeBalancers also offer features like [SSL termination](https://en.wikipedia.org/wiki/TLS_termination_proxy). NodeBalancers alleviate this burden from the server allowing them to be faster at other tasks, like serving pages. Therefore, even with only one server on the back end, having a NodeBalancer in front of your server can be an advantage.
 
 ### A Highly Available Load Balanced Configuration
 
@@ -36,6 +36,6 @@ When using a load balancer, like a NodeBalancer, traffic comes to the site throu
 The optimal solution for a highly available site or application is to have multiple Linodes behind a NodeBalancer. Now when traffic comes into the NodeBalancer it can be routed to any one of the Linodes available.
 
 - [Health checks](/docs/products/networking/nodebalancers/guides/configure/#health-checks) are performed to make sure that requests are only routed to healthy Linodes.
-- Backend Linodes can be added or removed seamlessly without end users noticing any downtime.
-- Client requests can be routed to the same backend Linode through [sticky sessions](/docs/products/networking/nodebalancers/guides/configure/#session-stickiness).
-- [Cloud Firewall](/docs/products/networking/cloud-firewall/) provides enhanced security by allowing you to control who can access your NodeBalancer. The optional Cloud Firewall sits between your NodeBalancer and the internet to filter out unwanted network traffic before it reaches your NodeBalancer. When used in conjunction with NodeBalancers, a Cloud Firewall’s inbound rules only apply to the NodeBalancer’s public IP, not the IPs of the backend nodes. This means you may also want to add individual backend nodes to a Cloud Firewall to protect any additional exposed IP addresses.
+- Back-end Linodes can be added or removed seamlessly without end users noticing any downtime.
+- Client requests can be routed to the same back-end Linode through [sticky sessions](/docs/products/networking/nodebalancers/guides/configure/#session-stickiness).
+- [Cloud Firewall](/docs/products/networking/cloud-firewall/) provides enhanced security by allowing you to control who can access your NodeBalancer. The optional Cloud Firewall sits between your NodeBalancer and the internet to filter out unwanted network traffic before it reaches your NodeBalancer. When used in conjunction with NodeBalancers, a Cloud Firewall’s inbound rules only apply to the NodeBalancer’s public IP, not the IPs of the back-end nodes. This means you may also want to add individual back-end nodes to a Cloud Firewall to protect any additional exposed IP addresses.

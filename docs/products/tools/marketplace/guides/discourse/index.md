@@ -100,7 +100,7 @@ The Discourse Marketplace App installs the following software on your Linode:
 | **Software** | **Description** |
 |:--------------|:------------|
 | [**Discourse**](https://www.discourse.org/) | Discourse is an open source discussion platform that provides a forum, mailing list, chat room, and more. |
-| [**ufw**](https://wiki.ubuntu.com/UncomplicatedFirewall) | ufw is the uncomplicated firewall, a frontend for iptables.  |
+| [**ufw**](https://wiki.ubuntu.com/UncomplicatedFirewall) | ufw is the uncomplicated firewall, a front end for iptables.  |
 
 {{% content "email-warning-shortguide" %}}
 
