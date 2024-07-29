@@ -1,6 +1,6 @@
 ---
-title: Use Cases
-description: "These guides include use cases that incorporate Akamai's cloud computing services with other Akamai products."
+title: Solutions
+description: "These guides include solutions that incorporate Akamai's cloud computing services with other Akamai products."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2022-10-04
