@@ -363,7 +363,7 @@ To protect your user account with public key authentication, you first need to c
         - **macOS:** `/Users/username/.ssh/`
         - **Windows:** `C:\Users\Username\.ssh\`
 
-        Since SSH keys are generated as a private and public key pair, there should be two files for each SSH key. They have similar file names, with the public key using a `.pub` extension and the private key using no extension. While SSH keys can have custom file names, many people generate them using their default names. These default file names start with `id_` followed by the type of key, such as `id_rsa`, `id_ed25519`, and `id_ecdsa`. See example private and public key file names below:
+        Since SSH keys are generated as a private and public key pair, there should be two files for each SSH key. They have similar filenames, with the public key using a `.pub` extension and the private key using no extension. While SSH keys can have custom filenames, many people generate them using their default names. These default filenames start with `id_` followed by the type of key, such as `id_rsa`, `id_ed25519`, and `id_ecdsa`. See example private and public key filenames below:
 
         - **Private key:** `id_ed25519`
         - **Public key:** `id_ed25519.pub`

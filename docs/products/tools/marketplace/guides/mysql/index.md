@@ -91,7 +91,7 @@ The standard tool for interacting with MySQL is the `mysql` client which install
         prompt    (\R) Change your mysql prompt.
         quit      (\q) Quit mysql.
         rehash    (\#) Rebuild completion hash.
-        source    (\.) Execute an SQL script file. Takes a file name as an argument.
+        source    (\.) Execute an SQL script file. Takes a filename as an argument.
         status    (\s) Get status information from the server.
         system    (\!) Execute a system shell command.
         tee       (\T) Set outfile [to_outfile]. Append everything into given outfile.

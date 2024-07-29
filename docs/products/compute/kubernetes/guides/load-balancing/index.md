@@ -251,7 +251,7 @@ spec:
 
 ## Removing Linode NodeBalancers from your Kubernetes Cluster
 
-To delete a NodeBalancer and the Service that it represents, you can use the Service manifest file you used to create the NodeBalancer. Simply use the `delete` command and supply your file name with the `f` flag:
+To delete a NodeBalancer and the Service that it represents, you can use the Service manifest file you used to create the NodeBalancer. Simply use the `delete` command and supply your filename with the `f` flag:
 
 ```command
 kubectl delete -f example-service.yaml

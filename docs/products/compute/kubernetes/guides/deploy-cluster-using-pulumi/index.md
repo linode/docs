@@ -258,7 +258,7 @@ Now that all your Pulumi configuration is ready, you can deploy your Kubernetes 
 
 Now that your Kubernetes cluster is deployed, you can use kubectl to connect to it and begin defining your workload. Access your cluster's kubeconfig and use it to connect to your cluster with kubectl.
 
-1. Use Pulumi to access your cluster's kubeconfig, decode its contents, and save them to a file. Pulumi returns a [base64](https://en.wikipedia.org/wiki/Base64) encoded string (a useful format for automated pipelines) representing your kubeconfig. Replace `lke-cluster-config.yaml` with your preferred file name.
+1. Use Pulumi to access your cluster's kubeconfig, decode its contents, and save them to a file. Pulumi returns a [base64](https://en.wikipedia.org/wiki/Base64) encoded string (a useful format for automated pipelines) representing your kubeconfig. Replace `lke-cluster-config.yaml` with your preferred filename.
 
     ```command
     export KUBE_VAR=`pulumi stack output kubeconfig --show-secrets` && echo $KUBE_VAR | base64 -di > lke-cluster-config.yaml

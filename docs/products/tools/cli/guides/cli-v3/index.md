@@ -247,7 +247,7 @@ linode options --api-key SampleKey123456...
 
 The default Linode CLI user is stored in the `.linodecli/config` file.
 
-To set up the API for additional Linode users, you can run the `linode configure` command again, supplying a different username. Configuration files for additional users are stored with the file name pattern `.linodecli/config_user1`, with **user1** being replaced by the actual username.
+To set up the API for additional Linode users, you can run the `linode configure` command again, supplying a different username. Configuration files for additional users are stored with the filename pattern `.linodecli/config_user1`, with **user1** being replaced by the actual username.
 
 To invoke the CLI with a particular username, use the `-u user1` option, with **user1** being your actual username, at the end of the command.
 
