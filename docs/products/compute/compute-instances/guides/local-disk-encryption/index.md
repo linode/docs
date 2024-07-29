@@ -33,17 +33,17 @@ By default, disk encryption is enabled on all compute instances.
 
 - Disk encryption is currently not available in all regions. Select another region to use Disk Encryption or enable encryption when it does become available using [Rebuild](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rebuilding).
 
+- After a Compute Instance is created, changing the **Encrypt Disk** setting requires a [Rebuild](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rebuilding).
+
 - Distributed Compute Instances are encrypted automatically if this feature is supported in the region. The disk encryption setting can not be changed.
 
 - New LKE clusters are encrypted if disk encryption is supported in the region. This disk encryption setting can not be changed.
 
+- If the Compute Instance is part of a LKE node pool, you cannot change the disk encryption setting. If a node pool is not encrypted and you want an encrypted node pool, delete the node pool and create a new node pool. New node pools are always encrypted.
+
 - Encryption in general, can increase CPU overhead and decrease realized throughput.
   - For performance-sensitive workloads on Compute Instances that are not part of an LKE node pool, you can opt-out of disk encryption or disable **Encrypt Disk** by performing a [Rebuild](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/).
   - For performance-sensitive workloads on Compute Instances that are part of a LKE node pool, you can create additional node pools to spread out the workloads if required.
-
-- If the Compute Instance is part of a LKE node pool, you cannot change the disk encryption setting. If a node pool is not encrypted and you want an encrypted node pool, delete the node pool and create a new node pool. New node pools are always encrypted.
-
-- After a Compute Instance is created, changing the **Encrypt Disk** setting requires a [Rebuild](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rebuilding).
 
 
 ## Check if Disk Encryption is Enabled on a Compute Instance

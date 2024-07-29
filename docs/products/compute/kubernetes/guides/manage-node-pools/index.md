@@ -13,7 +13,7 @@ This guide covers managing the node pools on your cluster, including adding and 
 
 1. Log in to the [Cloud Manager](http://cloud.linode.com), click **Kubernetes** in the left menu, and select the cluster you wish to view. See [Manage Kubernetes Clusters](/docs/products/compute/kubernetes/guides/manage-clusters/).
 
-1. Scroll down to the **Node Pools** section. This lists all node pools for your cluster and their associated nodes. The Disk Encryption setting for the node pool is also displayed.
+1. Scroll down to the **Node Pools** section. This lists all node pools for your cluster and their associated nodes. The Disk Encryption setting for the node pool is also displayed. See [Local Disk Encryption](/docs/products/compute/guides/local-disk-encryption/).
 
     ![Screenshot of the Node Pools section of a cluster in the Cloud Manager](view-node-pools.png)
 
