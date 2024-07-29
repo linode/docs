@@ -59,7 +59,9 @@ Visit the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/inst
 
       - From the **Version** dropdown menu, select a Kubernetes version to deploy to your cluster.
 
-1.  In the **Add Node Pools** section, select the [hardware resources](/docs/products/compute/compute-instances/plans/choosing-a-plan/#compute-resources) for the Linode worker node(s) that make up your LKE cluster. To the right of each plan, select the plus `+` and minus `-` to add or remove a Linode to a node pool one at time.
+1. Define the setting for the Kubernetes Control Plane. Select Yes, to enable High Availability (HA) for Control Plane Components. To learn more, see [High Availability (HA) Control Plane](/docs/products/compute/kubernetes/guides/high-availability-control-plane/).
+
+1. In the **Add Node Pools** section, select the [hardware resources](/docs/products/compute/compute-instances/plans/choosing-a-plan/#compute-resources) for the Linode worker node(s) that make up your LKE cluster. To the right of each plan, select the plus `+` and minus `-` to add or remove a Linode to a node pool one at time.
 
 1.  Once you're satisfied with the number of nodes in a node pool, select **Add** to include it in your configuration. If you decide that you need more or fewer hardware resources after you deploy your cluster, you can always [edit your Node Pool](#edit-or-remove-existing-node-pools).
 

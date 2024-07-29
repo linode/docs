@@ -377,9 +377,9 @@ To use the Rebuild feature:
 
 1.  Click on the **more options ellipsis** next to the Compute Instance that will be rebuilt, and click on the Rebuild option to open the Rebuild form:
 
-    ![Cloud Manager Linodes page - rebuild option highlighted](cloud-manager-linodes-rebuild.png)
+    ![Cloud Manager Linodes page - rebuild option highlighted](rebuild-form.jpg)
 
-1.  Complete the Rebuild form. Select an image or StackScript to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via the Cloud Manager, this option does not appear).
+1.  Complete the Rebuild form. Select an image or StackScript to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via the Cloud Manager, this option does not appear). Enable or disable **Encrypt Disk**. The **Encrypt Disk** setting for Compute Instances attached to an LKE node pool can not be changed. For Distributed Compute Instances, the disk encryption setting is always enabled. For more information on this feature, see [Local Disk Encryption](/docs/products/compute/compute-instances/guides/local-disk-encryption/).
 
     {{% content "password-requirements-shortguide" %}}
 
