@@ -94,7 +94,7 @@ Review these sections to create a new group using Cloud Manager.
     - **Label**. Give your placement group an easily recognizable name.
     - **Region**. Select the [core compute region](#availability) that includes the compute instances you want to add.
     - **Placement Group Type**. Select the [affinity](#placement-group-type) that meets your model.
-    - **Placement Group Policy**. Pick how you want to [enforce](#placemen_group_policy) compliance for your placement group, when adding compute instances to it in the future.
+    - **Placement Group Policy**. Pick how you want to [enforce](#placement_group_policy) compliance for your placement group, when adding compute instances to it in the future.
 
 {{< note >}}
 - Currently, only **Anti-affinity** is available for Placement Group Type.
