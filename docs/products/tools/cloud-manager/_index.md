@@ -9,6 +9,7 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "Cloud Manager is a user and mobile-friendly interface to deploy and manage virtual machines, configure networking, control user accounts, and access and configure the full range of Linode services."
+aliases: ['/platform/manager/','/manager/','/guides/platform/manager/']
 ---
 
 ## Availability

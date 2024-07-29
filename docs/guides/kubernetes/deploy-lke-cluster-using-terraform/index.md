@@ -1,8 +1,12 @@
 ---
+slug: deploy-lke-cluster-using-terraform
 title: "Deploy a Linode Kubernetes Engine Cluster Using Terraform"
 description: "In this tutorial, you'll deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Terraform."
 published: 2020-05-05
 modified: 2023-02-09
+authors: ['Linode']
+contributors: ['Linode']
+license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 keywords: ['kubernetes','terraform','infrastructure as code','container orchestration']
 tags: ["linode platform","kubernetes","automation","managed hosting"]
 image: deploy-lke-cluster-with-terraform.png
@@ -10,7 +14,7 @@ external_resources:
 - '[Setting Up a Private Docker Registry with Linode Kubernetes Engine and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)'
 - '[Deploying a Static Site on Linode Kubernetes Engine](/docs/guides/how-to-deploy-a-static-site-on-linode-kubernetes-engine/)'
 - '[Linode Provider Terraform Documentation](https://www.terraform.io/docs/providers/linode/index.html)'
-aliases: ['/kubernetes/how-to-deploy-an-lke-cluster-using-terraform/','/guides/how-to-deploy-an-lke-cluster-using-terraform/']
+aliases: ['/kubernetes/how-to-deploy-an-lke-cluster-using-terraform/','/guides/how-to-deploy-an-lke-cluster-using-terraform/','/products/compute/kubernetes/guides/deploy-cluster-using-terraform/']
 ---
 
 ## In this Guide

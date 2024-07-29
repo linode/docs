@@ -50,6 +50,7 @@ aliases: ['/products/compute/shared-linodes/guides/','/products/compute/shared-c
 - [Manual Network Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/)
 - [Configure Failover](/docs/products/compute/compute-instances/guides/failover/)
 - [An Overview of IPv6 on Linode](/docs/products/compute/compute-instances/guides/ipv6/)
+- [DHCP IP Address Reference](/docs/products/compute/compute-instances/guides/dhcp-ip-address-reference/)
 
 ## Metadata (Automated System Configuration with Cloud-Init)
 

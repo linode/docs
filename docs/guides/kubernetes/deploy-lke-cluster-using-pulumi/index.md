@@ -1,4 +1,5 @@
 ---
+slug: deploy-lke-cluster-using-pulumi
 title: "Deploy a Linode Kubernetes Engine Cluster Using Pulumi"
 description: "In this tutorial, you'll deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Pulumi."
 authors: ["Pulumi"]
@@ -7,6 +8,7 @@ published: 2023-08-22
 keywords: ['kubernetes','pulumi','infrastructure as code','container orchestration']
 tags: ["linode platform","kubernetes","automation","managed hosting"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
+aliases: ['/products/compute/kubernetes/guides/deploy-cluster-using-pulumi/']
 external_resources:
 - '[Setting Up a Private Docker Registry with Linode Kubernetes Engine and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)'
 - '[Deploying a Static Site on Linode Kubernetes Engine](/docs/guides/how-to-deploy-a-static-site-on-linode-kubernetes-engine/)'
@@ -69,8 +71,8 @@ Pulumi defines the elements of your Linode infrastructure using a regular progra
     Enter a value or leave blank to accept the (default), and press <ENTER>.
     Press ^C at any time to quit.
 
-    project name: (lke-cluster) 
-    project description: (A minimal Linode TypeScript Pulumi program) 
+    project name: (lke-cluster)
+    project description: (A minimal Linode TypeScript Pulumi program)
     Created project 'lke-cluster'
 
     Please enter your desired stack name.
@@ -78,7 +80,7 @@ Pulumi defines the elements of your Linode infrastructure using a regular progra
     stack name: (dev)
     Created stack 'dev'
 
-    linode:token: The token that allows you access to your Linode account: 
+    linode:token: The token that allows you access to your Linode account:
     Saved config
 
     Installing dependencies...
@@ -206,9 +208,9 @@ Now that all your Pulumi configuration is ready, you can deploy your Kubernetes 
 
     View in Browser (Ctrl+O): https://app.pulumi.com/team-ce/lke-cluster/dev/updates/2
 
-        Type                        Name             Status             
-        pulumi:pulumi:Stack         lke-cluster-dev                     
-    +   └─ linode:index:LkeCluster  foobar           created (108s)     
+        Type                        Name             Status
+        pulumi:pulumi:Stack         lke-cluster-dev
+    +   └─ linode:index:LkeCluster  foobar           created (108s)
 
 
     Outputs:
