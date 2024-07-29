@@ -1,7 +1,7 @@
 ---
 slug: search-in-cloud-manager
 title: "How to Search in Cloud Manager"
-description: "How to Leverage the Advanced Search Function of the Cloud Manager."
+description: "How to Leverage the Advanced Search Function of Cloud Manager."
 published: 2020-01-08
 modified: 2024-07-29
 keywords: ['search','advanced search','keywords','cloud manager']

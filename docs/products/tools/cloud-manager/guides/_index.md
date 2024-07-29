@@ -6,6 +6,7 @@ published: 2020-06-02
 modified: 2024-07-29
 tab_group_main:
     weight: 30
+aliases: ['/platform/manager/','/manager/','/guides/platform/manager/','/quick-answers/linode-platform/']
 ---
 
 ## Guides

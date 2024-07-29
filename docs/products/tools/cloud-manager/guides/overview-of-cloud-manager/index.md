@@ -50,7 +50,7 @@ Linode's [NodeBalancers service](https://www.linode.com/products/nodebalancers/)
 
 ## Domains (DNS Manager)
 
-The DNS Manager allows you to control and manage your domains. You can access the DNS Manager by navigating to the **Domains** link in the Cloud Manager's sidebar.
+The DNS Manager allows you to control and manage your domains. You can access the DNS Manager by navigating to the **Domains** link in Cloud Manager's sidebar.
 
 ![Cloud Manager Domains](classic-to-cloud-cloud-manager-domains.png "Cloud Manager Domains")
 

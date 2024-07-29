@@ -9,4 +9,4 @@ tab_group_main:
     weight: 100
 ---
 
-Release notes for Cloud Manager are located on the Cloud Manager's public GitHub repository. See the [Releases](https://github.com/linode/manager/releases) page on the [linode/manager](https://github.com/linode/manager/) repository.
+Release notes for Cloud Manager are located on Cloud Manager's public GitHub repository. See the [Releases](https://github.com/linode/manager/releases) page on the [linode/manager](https://github.com/linode/manager/) repository.
