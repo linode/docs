@@ -18,7 +18,7 @@ This guide covers managing the node pools on your cluster, including adding and 
     ![Screenshot of the Node Pools section of a cluster in the Cloud Manager](view-node-pools.png)
 
 {{< note >}}
-If a node pool is not encrypted and you want an encrypted node pool, delete the node pool and create a new node pool. New node pools are always encrypted.
+If a node pool is not encrypted and you want an encrypted node pool, [delete the node pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#remove-a-node-pool) and [create a new node pool](https://deploy-preview-7026--nostalgic-ptolemy-b01ab8.netlify.app/docs/products/compute/kubernetes/guides/manage-node-pools/#add-a-node-pool). New node pools are always encrypted.
 {{< /note >}}
 
 ## Add a Node Pool

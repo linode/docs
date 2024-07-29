@@ -66,5 +66,5 @@ By default, disk encryption is enabled on all compute instances.
     ![Screenshot of the Node Pools section of a cluster in the Cloud Manager with encryption](view-node-pools-encryption.jpg)
 
 {{< note >}}
-If a node pool is not encrypted and you want an encrypted node pool, delete the node pool and create a new node pool. New node pools are always encrypted.
+If a node pool is not encrypted and you want an encrypted node pool, [delete the node pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#remove-a-node-pool) and [create a new node pool](https://deploy-preview-7026--nostalgic-ptolemy-b01ab8.netlify.app/docs/products/compute/kubernetes/guides/manage-node-pools/#add-a-node-pool). New node pools are always encrypted.
 {{< /note >}}
