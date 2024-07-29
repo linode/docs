@@ -7,6 +7,7 @@ tab_group_main:
     is_root: true
     title: Overview
     weight: 10
+aliases: ['/platform/manager/','/manager/','/guides/platform/manager/']
 ---
 
 Cloud Manager is an intuitive web-based interface for managing your account and services. Through Cloud Manager, you can deploy and manage virtual machines, configure networking, control user accounts, and access the full range of Akamai's cloud computing services.
