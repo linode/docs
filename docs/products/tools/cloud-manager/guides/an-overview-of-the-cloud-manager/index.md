@@ -123,7 +123,7 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 - [Adding and managing public SSH keys](/docs/products/platform/accounts/guides/manage-ssh-keys/)
 - [Managing LISH authentication methods](/docs/products/compute/compute-instances/guides/lish/#add-your-public-key)
 - [Adding and managing personal and third party API v4 access tokens](/docs/products/tools/api/get-started/#get-an-access-token)
-- [Creating and managing OAuth Apps](/docs/products/tools/api/guides/create-an-oauth-app-with-the-python-api-library/#obtaining-a-client-id-and-a-client-secret)
+- [Creating and managing OAuth Apps](/docs/guides/create-an-oauth-app-with-the-python-api-library/#obtaining-a-client-id-and-a-client-secret)
 - [Linode Referral Program](/docs/products/platform/billing/guides/referral-program/)
 - Enable email alerts for account activity
 
@@ -171,7 +171,7 @@ We're making improvements to the Linode Cloud Manager so that we can deliver a h
 
 ### July 2024
 
-In early July, we've made minor branding changes to the Cloud Manager. As part of these changes, we've implemented higher color contrast to improve the accessibility of both text and interactive components. Review the screenshots below for a closer look of the changes.
+In early July, we've made minor branding changes to the Cloud Manager. As part of these changes, we've implemented higher color contrast to improve the accessibility of both text and interactive components. Review the screenshots below for a closer look at the changes.
 
 | Previous Design | Updated Design&nbsp;&nbsp; |
 | -- | -- |

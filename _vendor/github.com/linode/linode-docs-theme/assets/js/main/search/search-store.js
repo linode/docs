@@ -252,8 +252,9 @@ export function newSearchStore(searchConfig, params, Alpine) {
 				data.blank.sectionFacets.forEach((section) => {
 					let m = data.blank.getSectionMeta(section.key);
 					if (m) {
-						// Use the title from the meta data index instead of the facet name.
+						// Use the titles from the meta data index instead of the facet name.
 						section.title = m.title;
+						section.linkTitle = m.linkTitle;
 					}
 				});
 				callback(data);

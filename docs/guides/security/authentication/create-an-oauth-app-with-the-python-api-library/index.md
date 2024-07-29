@@ -1,15 +1,19 @@
 ---
+slug: create-an-oauth-app-with-the-python-api-library
 title: "Create an OAuth App with the Linode Python API Library"
 description: 'Create an OAuth 2 app utilizing the Linode API through the Linode APIv4 Python library.'
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2019-01-21
 modified: 2022-11-30
 external_resources:
 - '[Linode APIv4 Python library documentation](https://linode-api4.readthedocs.io/en/latest/index.html)'
 - '[Linode APIv4 Python library example app repository](https://github.com/linode/linode_api4-python/tree/master/examples/install-on-linode)'
 image: how-to-create-an-oauth-app-with-the-linode-python-api-library.png
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ['linode','api','python','library','oauth']
 tags: ["linode platform","python","managed hosting"]
-aliases: ['/platform/api/how-to-create-an-oauth-app-with-the-linode-python-api-library/','/guides/how-to-create-an-oauth-app-with-the-linode-python-api-library/']
+aliases: ['/platform/api/how-to-create-an-oauth-app-with-the-linode-python-api-library/','/guides/how-to-create-an-oauth-app-with-the-linode-python-api-library/','/products/tools/api/guides/create-an-oauth-app-with-the-python-api-library/']
 ---
 
 Linode supports the OAuth 2 authorization protocol. OAuth 2 allows a user to safely grant a third-party app permission to act on their behalf. This means that a user could authorize an app to access data and / or make changes to their Linode account and services that are exposed by the [Linode APIv4](/docs/api/). For example, an app could create or destroy Linodes, manage a NodeBalancer, or alter a domain.
@@ -28,24 +32,25 @@ In order for Linode to verify the identity of your app, called a *client*, you w
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 
-2.  Click on your username at the top of the screen and select **My Profile**.
+1.  Click on your username at the top of the screen and select **My Profile**.
 
-    ![Select My Profile](get-started-with-linode-api-select-my-profile.png "Select My Profile")
+1.  Select the **OAuth Apps** tab.
 
-3.  Select the **OAuth Apps** tab:
-1. From there, click on the **Add an OAuth App**. You will be prompted to supply a label for your app and a callback URL. We will discuss the role of the callback URL in depth [later in this guide](#manage-the-oauth-2-callback-url). For now you can supply the following URL:
+1.  From there, click on the **Add an OAuth App**. You will be prompted to supply a label for your app and a callback URL. We will discuss the role of the callback URL in depth [later in this guide](#manage-the-oauth-2-callback-url). For now you can supply the following URL:
 
-        http://localhost:5000/auth_callback
+    ```command
+    http://localhost:5000/auth_callback
+    ```
 
     Leave *Public* unchecked and click **Create**.
 
     ![OAuth Account Profile](oauth-create-app.png)
 
-1. A window will appear with your client secret. Copy this down somewhere secure, as once you exit this window you will not be able to retrieve the client secret again, and will be forced to generate a new one.
+1.  A window will appear with your client secret. Copy this down somewhere secure, as once you exit this window you will not be able to retrieve the client secret again, and will be forced to generate a new one.
 
-      ![OAuth Account Profile](oauth-client-secret.png)
+    ![OAuth Account Profile](oauth-client-secret.png)
 
-1. Once you exit the client secret window your app will appear as part of a list of apps. Note your client ID, as this is the last piece of information you will need to verify your app's identity.
+1.  Once you exit the client secret window your app will appear as part of a list of apps. Note your client ID, as this is the last piece of information you will need to verify your app's identity.
 
     ![OAuth Account Profile](oauth-client-id.png)
 
@@ -70,18 +75,23 @@ In the following sections you will write the code to perform each one of these s
 
 ## Setup Your Development Environment
 
-1. Create a project folder and move into that folder.
+1.  Create a project folder and move into that folder.
 
-        mkdir ~/linode-oauth-project && cd ~/linode-oauth-project
+    ```command
+    mkdir ~/linode-oauth-project && cd ~/linode-oauth-project
+    ```
 
-1. For this project, you will need to use pip to download and install the required Python libraries. Install pip if you do not already have it:
+1.  For this project, you will need to use pip to download and install the required Python libraries. Install pip if you do not already have it:
 
-        apt install python-pip
+    ```command
+    apt install python-pip
+    ```
 
-1. Install the required Python libraries:
+1.  Install the required Python libraries:
 
-        pip install flask flask-session linode_api4
-
+    ```command
+    pip install flask flask-session linode_api4
+    ```
 
 ## Configure Your App
 
@@ -137,6 +147,7 @@ def get_login_client():
 ```
 
 ### Create an Index Route
+
 In Flask you can create HTTP endpoints with *routes*. The index route, defined in the code below at the document root `/`, will be the route the user will see when they navigate to `http://localhost:5000/`. This route will be responsible for displaying the available Linode plan types, the available regions, and the StackScript-compatible images that a user will choose from when creating their new Linode.
 
 To query a list of available plan types and regions you can use the [LinodeClient class](https://linode-api4.readthedocs.io/en/latest/linode_api4/linode_client.html?highlight=LinodeClient#linodeclient-class), which is an interface for Linode's APIv4. Viewing the Linode plan types and regions does not require any sort of authorization, so you can provide a dummy value of `no-token` to instantiate the class:
@@ -184,8 +195,8 @@ When the user returns to your app from the Linode login page, they will be direc
 
 {{< note >}}
 Below is a list of available scopes:
-- OAuthScopes.Linodes 
-- OAuthScopes.Domains 
+- OAuthScopes.Linodes
+- OAuthScopes.Domains
 - OAuthScopes.StackScripts
 - OAuthScopes.Account
 - OAuthScopes.NodeBalancers
@@ -193,12 +204,11 @@ Below is a list of available scopes:
 - OAuthScopes.IPs*
 - OAuthScopes.Firewall
 - OAuthScopes.LKE
-- OAuthScopes.Events 
-- OAuthScopes.Volumes 
+- OAuthScopes.Events
+- OAuthScopes.Volumes
 - OAuthScopes.LongView
 - OAuthScopes.ObjectStorage
 - OAuthScopes.Images
-
 
 Each scope is broken into five permissions: `ready_only`, and `read_write`. For more information about the scopes and permissions see, [OAuth reference](/docs/api/#oauth-reference) documentation.
 {{< /note >}}
@@ -338,7 +348,9 @@ if __name__ == '__main__':
 
 Now that you have written the backend code for your app, you'll need to create a frontend user interface. Begin by creating  a `templates` directory in your project directory and moving into it:
 
-    mkdir ~/linode-oauth-project/templates && cd ~/linode-oauth-project/templates
+```command
+mkdir ~/linode-oauth-project/templates && cd ~/linode-oauth-project/templates
+```
 
 Using your preferred text editor, create and open `base.html`. This will be the base template from which your other templates will inherit their stylesheets and JavaScript files:
 
@@ -414,8 +426,10 @@ Using your preferred text editor, create and open `base.html`. This will be the 
 
 The important thing to note in the above template is the Jinja2 templating tags. They are:
 
-    {% block content %}
-    {% endblock %}
+```command
+{% block content %}
+{% endblock %}
+```
 
 As you will see, any template that extends the `base.html` template and includes code between the opening and closing `content` block, will render the code laid out by `base.html`.
 
@@ -521,17 +535,21 @@ Lastly, create another file called `success.html`. This file follows the pattern
 
 ## Run Your App
 
-You are now ready to run your app. Change back to your project's main directory:
+You are now ready to run your app.
 
+1.  Navigate back to your project's main directory:
+
+    ```command
     cd ~/linode-oauth-project
+    ```
 
-Run the `app.py` script:
+1.  Run the `app.py` script:
 
+    ```command
     python3 app.py
+    ```
 
-Open your browser to the following URL:
-
-    http://localhost:5000/
+1.  Open your browser to the following URL: `http://localhost:5000/`
 
 You should be greeted with your new app. Select a plan, a region, and an image to deploy a Linode using the Linode API Python library.
 

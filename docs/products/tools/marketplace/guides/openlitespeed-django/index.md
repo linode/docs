@@ -44,7 +44,7 @@ The OpenLiteSpeed Django app automatically installs Linux, the performance web s
 
 1.  Log in to your Compute Instance over SSH, using the sudo user created during deployment or `root`. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance. You should see output similar to the following:
 
-    ```output cat /etc/motd
+    ```output
     *********************************************************
     Akamai Connected Cloud OpenLiteSpeed Django Marketplace App
     App URL:
@@ -57,7 +57,7 @@ The OpenLiteSpeed Django app automatically installs Linux, the performance web s
     *********************************************************
     ```
 
-    To delete this message of the day, use `rm /etc/motd`.
+    You can view this message again by running `cat /etc/motd`. To delete this information, run `rm /etc/motd`.
 
 1.  The Django page is automatically configured with the custom domain provided during deployment, or the default rDNS.
 

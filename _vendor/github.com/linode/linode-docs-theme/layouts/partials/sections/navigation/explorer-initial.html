@@ -137,7 +137,7 @@
             data-testid="node-link"
             class="block relative cursor-pointer pr-3 no-underline capitalize z-10 flex-auto {{ $classes }}">
             <span class="bg-container h-full"></span>
-            <span>{{ .node.title }}</span>
+            <span>{{ .node.linkTitle | default .node.title }}</span>
           </a>
         </div>
         <div class="flex items-center h-full">
@@ -159,7 +159,6 @@
               type="button"
               name="open"
               @click="hydrateAndSwitchOpenStateForKey('{{ .node.key }}', {{ .node.open }} )"
-              @mouseover="activateHydration()"
               class="btn-icon h-full flex items-center justify-center {{ $classes }}"
               data-testid="{{ printf `%s-%d` $ariaLabel .node.level }}"
               aria-label="{{ $ariaLabel }}"
@@ -183,15 +182,22 @@
       {{ $classes := partial "inline/get-classes" $classesm }}
 
       {{ if .node.open }}
+        {{ $node := .node }}
         <ul class="node-tree h-full {{ $classes }}">
           {{ $pages := index $.data.data $.node.key }}
           {{ if $pages }}
             {{ $pages = sort $pages "linkTitle" }}
           {{ end }}
-
           {{ with $pages }}
+            {{ $pageCount := 0 }}
+            {{ $pageCountHidden := 0 }}
             {{ range $i, $p := . }}
               {{ if $p.isBranch }}
+                {{ continue }}
+              {{ end }}
+              {{ $pageCount  = add $pageCount 1 }}
+              {{ if $p.deprecated }}
+                {{ $pageCountHidden  = add $pageCountHidden 1 }}
                 {{ continue }}
               {{ end }}
 
@@ -223,6 +229,18 @@
                   class="py-1-5 inline-block page-link mr-2 text-xs capitalize cursor-pointer no-underline active:text-brand hover:text-gray-900 focus:outline-none {{ $classes }}
                   ">
                   {{ $p.linkTitle }}
+                </a>
+              </li>
+            {{ end }}
+            {{ if $pageCountHidden }}
+              <li>
+                <a
+                  href="{{ $node.href }}"
+                  class="py-1-5 inline-block page-link mr-2 text-xs capitalize cursor-pointer no-underline active:text-brand hover:text-gray-900 focus:outline-none 
+                ">
+                  See All
+                  {{ $pageCount }}
+                  {{ $node.linkTitle | default $node.title }} Guides
                 </a>
               </li>
             {{ end }}

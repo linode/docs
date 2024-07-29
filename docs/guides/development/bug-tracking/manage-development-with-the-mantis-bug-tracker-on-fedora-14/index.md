@@ -20,7 +20,7 @@ deprecated: true
 
 Mantis Bug Tracker (commonly referred to as MantisBT) is a free web-based bug tracking system. Mantis offers many of the same capabilities as other trackers like Bugzilla, but is simpler and easy to set up.
 
-Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/products/compute/compute-instances/faqs/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/). Additionally, you'll need to have followed the [LAMP guide for Fedora 14](/docs/guides/lamp-server-on-fedora-14/) and be able to [send email from your Linode](/docs/guides/linux-system-administration-basics/#send-email-from-your-server) if you don't already have a means of sending mail from your server.
+Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/products/compute/compute-instances/faqs/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/). Additionally, you'll need to have followed the [LAMP guide for Fedora 14](/docs/guides/how-to-install-lamp-stack-on-fedora-alma-rocky-linux/) and be able to [send email from your Linode](/docs/guides/linux-system-administration-basics/#send-email-from-your-server) if you don't already have a means of sending mail from your server.
 
 ## Installing Prerequisites
 

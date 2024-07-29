@@ -9,8 +9,6 @@ tags: ["dns","networking","cloud manager","linode platform"]
 aliases: ['/networking/dns/common-dns-configurations/','/dns-guides/configuring-dns-with-the-linode-manager/','/networking/dns/common-dns-configurations-classic-manager/','/guides/common-dns-configurations/']
 ---
 
-{{< youtube Vb1JsfZlFLE >}}
-
 ## Set Up a Domain
 
 The most common DNS configuration is a single domain name on a single Linode. For this, you'll need to add *SOA* and *NS records* for all of your name servers, and *A/AAAA* records for your domain names. Use the screenshot below as a guide.

@@ -7,8 +7,6 @@ tab_group_main:
 aliases: ['/platform/object-storage/how-to-use-object-storage/','/guides/how-to-use-object-storage/']
 ---
 
-{{< youtube q88OKsr5l6c >}}
-
 ## Enable Object Storage
 
 Object Storage is not enabled for a Linode account by default. All that is required to enable Object Storage is to create a bucket or an Object Storage access key. To cancel Object Storage, see the [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/) guide.

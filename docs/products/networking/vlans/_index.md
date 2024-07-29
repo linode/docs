@@ -33,7 +33,7 @@ Private network transfer is free. Any communication between Compute Instances ov
 
 ### Part of a Flexible Custom VPC Solution
 
-Since VLANs operate on layer 2 of the OSI networking stack, you can use is as part of a custom VPC solution, which typically operates on layer 3. VLAN users can implement their own firewall policies, routing, and security systems to build out their VPC.
+Since VLANs operate on layer 2 of the OSI networking stack, you can use them as part of a custom VPC solution, which typically operates on layer 3. VLAN users can implement their own firewall policies, routing, and security systems to build out their VPC.
 
 ## Availability
 

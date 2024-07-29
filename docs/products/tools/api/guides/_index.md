@@ -21,9 +21,9 @@ aliases: ['/products/tools/linode-api/guides/']
 
 - [Getting Started with the Linode API](/docs/products/tools/api/get-started/)
 
-- [Configure NodeBalancers with the Linode API](/docs/products/tools/api/guides/nodebalancers/)
+- [Configure NodeBalancers with the Linode API](/docs/products/networking/nodebalancers/guides/manage-nodebalancers-with-linode-api/)
 
-- [Manage Block Storage Volumes with the Linode API](/docs/products/tools/api/guides/block-storage/)
+- [Manage Block Storage Volumes with the Linode API](/docs/products/storage/block-storage/guides/manage-block-storage-with-linode-api/)
 
 ## API Client Libraries
 
@@ -33,8 +33,4 @@ aliases: ['/products/tools/linode-api/guides/']
 
 ## Going Further
 
-- [How to Create an OAuth App with the Linode Python API Library](/docs/products/tools/api/guides/create-an-oauth-app-with-the-python-api-library/)
-
-## Upgrading from Older Versions
-
-- [Upgrade from API v3 to API v4](/docs/products/tools/api/guides/upgrade-to-v4/)
+- [How to Create an OAuth App with the Linode Python API Library](/docs/guides/create-an-oauth-app-with-the-python-api-library/)
