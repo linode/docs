@@ -2,7 +2,7 @@
 title: "Work with Placement Groups"
 description: "Learn how to group your compute instances to best meet your delivery model."
 published: 2024-06-20
-modified: 2024-07-24
+modified: 2024-07-30
 keywords: ["placement-group", "affinity", "compliance"]
 ---
 
@@ -20,7 +20,7 @@ Setting up a placement group is a simple process using Cloud Manager, the Linode
 
 ## Availability
 
-Placement Groups is available in all core compute regions that support compute instances.
+Placement Groups is available in all [core compute regions](/docs/products/platform/get-started/guides/choose-a-data-center/#product-availability) that support compute instances.
 
 {{< note >}}
 Currently, placement groups aren't supported in distributed compute regions.
@@ -82,7 +82,8 @@ Review these sections to create a new group using Cloud Manager.
 
 #### Before you begin
 
-Make sure you review [Placement groups and compliance](#placement-groups-and-compliance).
+* Review [Placement groups and compliance](#placement-groups-and-compliance) to understand the placement group concept.
+* Review the [Technical specifications](#technical-specifications) for details on what's supported.
 
 #### Creation process
 
@@ -92,8 +93,8 @@ Make sure you review [Placement groups and compliance](#placement-groups-and-com
 
     - **Label**. Give your placement group an easily recognizable name.
     - **Region**. Select the [core compute region](#availability) that includes the compute instances you want to add.
-    - **Placement Group Type**. Select the [affinity](#placement-group-type) that meets your model.
-    - **Placement Group Policy**. Pick how you want to [enforce](#placement-group-policy) compliance for your placement group, when adding compute instances to it in the future.
+    - **Placement Group Type**. Select the [affinity](#affinity-enforcement-and-compliance) that meets your model.
+    - **Placement Group Policy**. Pick how you want to [enforce](#affinity-enforcement-and-compliance) compliance for your placement group, when adding compute instances to it in the future.
 
 {{< note >}}
 - Currently, only **Anti-affinity** is available for Placement Group Type.
@@ -126,7 +127,8 @@ Here, we combine API operations to create a new placement group and add existing
 
 #### Before you begin
 
-Make sure you review [Placement groups and compliance](#placement-groups-and-compliance).
+* Review [Placement groups and compliance](#placement-groups-and-compliance) to understand the placement group concept.
+* Review the [Technical specifications](#technical-specifications) for details on what's supported.
 
 #### List regions
 
@@ -165,8 +167,8 @@ Run this request to create a new placement group. Store the `id` value that's ge
 
 - `label`. Give your placement group an easily recognizable name.
 - `region`. Set this to the `label` you stored for your region.
-- `placement_group_type`. Set this to the [affinity](#placement-group-type) that meets your model.
-- `placement_group_policy`. Define how to [enforce](#placement-group-policy) compliance for your placement group, when adding compute instances to it in the future. Set to `strict` for strict enforcement or `flexible` for flexible enforcement.
+- `placement_group_type`. Set this to the [affinity](#affinity-enforcement-and-compliance) that meets your model.
+- `placement_group_policy`. Define how to [enforce](#affinity-enforcement-and-compliance) compliance for your placement group, when adding compute instances to it in the future. Set to `strict` for strict enforcement or `flexible` for flexible enforcement.
 
 {{< note >}}
 - Currently, only anti-affinity (`anti-affinity:local`) is available for `placement_group_type`.
