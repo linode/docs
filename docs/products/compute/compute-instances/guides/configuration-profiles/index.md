@@ -7,7 +7,7 @@ modified: 2024-01-30
 keywords: ["configuration profiles"]
 tags: ["linode platform","cloud manager"]
 image: Linode-Configuration-Profiles.jpg
-aliases: ['/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/','/disk-images-config-profiles/','/platform/disk-images/disk-images-and-configuration-profiles/','/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/','/guides/linode-configuration-profiles/','/guides/disk-images-and-configuration-profiles/']
+aliases: ['/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/','/disk-images-config-profiles/','/platform/disk-images/disk-images-and-configuration-profiles/','/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/','/guides/linode-configuration-profiles/','/guides/disk-images-and-configuration-profiles/','/platform/disk-images/kvm-reference/','/platform/kvm-reference/','/platform/kvm/','/guides/kvm-reference/']
 ---
 
 A **configuration profile** functions as a boot loader for a Compute Instance. It controls general boot settings, including the disk the instance will boot from, the disks that will be mounted, the kernel that will be used, and the network interfaces on the instance. Multiple configuration profiles can be created, each one booting from different disks with different settings. This can allow you to try out new Linux distributions without paying for additional Compute Instances (see [Deploy an Image to a Disk on an Existing Compute Instance](/docs/products/tools/images/guides/deploy-image-to-existing-linode/)) or to create custom software testing environments.

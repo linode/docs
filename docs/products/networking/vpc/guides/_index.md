@@ -22,4 +22,4 @@ tab_group_main:
 
 ## Going Further
 
-- [Configure a Forward Proxy to Enable Internet Access within a VPC](/docs/guides/forward-proxy-for-vpc/): This guide explains how to use a forward proxy to securely enable public internet access on Compute Instances located entirely behind a VPC.
+- [Configure a Forward Proxy to Enable Internet Access within a VPC](/docs/products/networking/vpc/guides/forward-proxy-for-vpc/): This guide explains how to use a forward proxy to securely enable public internet access on Compute Instances located entirely behind a VPC.
