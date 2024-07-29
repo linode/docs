@@ -12,7 +12,7 @@ Linode’s [API v4](/docs/api) provides the ability to programmatically manage t
 
 - [Block Storage Endpoint Collection](/docs/api/volumes/)
 
-- [Manage Block Storage Volumes with the Linode API](/docs/products/tools/api/guides/block-storage/).
+- [Manage Block Storage Volumes with the Linode API](/docs/products/storage/block-storage/guides/manage-block-storage-with-linode-api/).
 
 ## Linode CLI
 

@@ -245,6 +245,11 @@
                     <p
                       class="text-darkgray leading-6 text-sm md:text-base"
                       x-html="item.excerptTruncated(160)"></p>
+                    <span
+                      x-show="item.deprecated"
+                      class="mt-3 inline-flex items-center rounded-sm bg-orange-100 px-2 py-1 text-xs font-medium text-orange-800 ring-1 ring-inset ring-orange-600/20"
+                      >Deprecated</span
+                    >
                   </div>
                 </a>
               </template>

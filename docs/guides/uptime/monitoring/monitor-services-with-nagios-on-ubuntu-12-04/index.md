@@ -27,7 +27,7 @@ Nagios is a monitoring tool that allows you to monitor services on a single serv
 
 ## Install Nagios
 
-Before installing Nagios, make sure your hostname is properly set by following the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). You also need to have a functioning [LAMP stack](/docs/guides/lamp-server-on-ubuntu-12-04-precise-pangolin/) set up on your Linode.
+Before installing Nagios, make sure your hostname is properly set by following the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). You also need to have a functioning [LAMP stack](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/) set up on your Linode.
 
 Now you're ready to install Nagios. Here's how:
 
