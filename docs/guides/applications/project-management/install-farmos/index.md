@@ -105,7 +105,7 @@ Ensure that the version number matches the farmOS version you wish to download.
 
 ## Configure farmOS
 
-1.  Go to your Linode's domain or [IP address](/docs/guides/find-your-linodes-ip-address) in a web browser. This shows you the first step of the farmOS/Drupal web configuration.
+1.  Go to your Linode's domain or [IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) in a web browser. This shows you the first step of the farmOS/Drupal web configuration.
 
 1.  The first screen you encounter asks you to choose a profile and a language:
 

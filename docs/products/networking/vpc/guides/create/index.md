@@ -35,7 +35,7 @@ linode-cli vpcs create \
 ```
 {{< /tab >}}
 {{< tab "Linode API" >}}
-Within your terminal, enter the API curl request below. Make sure to properly paste in or reference your [API token](/docs/products/tools/api/guides/manage-api-tokens/). For a complete API reference, see the [VPC API endpoints](/docs/api/vpcs/) documentation. **Before submitting the request, read through the rest of this document.**
+Within your terminal, enter the API curl request below. Make sure to properly paste in or reference your [API token](/docs/products/platform/accounts/guides/manage-api-tokens/). For a complete API reference, see the [VPC API endpoints](/docs/api/vpcs/) documentation. **Before submitting the request, read through the rest of this document.**
 
 ```command
 curl https://api.linode.com/v4/vpcs \

@@ -15,7 +15,7 @@ The Linode API lets you create, delete, attach, detach, clone, and resize Block 
 
 ## Before You Begin
 
-You need a Personal Access Token for the Linode API to complete the steps in this guide. See [Manage Personal Access Tokens](/docs/products/tools/api/guides/manage-api-tokens/#create-an-api-token) for more information.
+You need a Personal Access Token for the Linode API to complete the steps in this guide. See [Manage Personal Access Tokens](/docs/products/platform/accounts/guides/manage-api-tokens/#create-an-api-token) for more information.
 
 Store the token as a temporary shell variable to simplify repeated requests. Replace `<Access Token>` in this example with your token:
 

@@ -19,7 +19,7 @@ While a firewall is often responsible for cases of limited access, these issues 
 
 [*Lish*](/docs/products/compute/compute-instances/guides/lish/) is a shell that provides access to your Compute Instance's serial console and is a helpful tool for diagnosing and troubleshooting connection problems. Lish does not establish a network connection to your instance, so you can use it when your networking is down or your Compute Instance's Secure Shell (SSH) port is inaccessible. If you find yourself locked out of SSH, you can use Lish to perform much of the troubleshooting for basic connection issues.
 
-To learn about Lish in more detail, and for instructions on how to connect to your Compute Instance via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. A fast and simple way to access Lish is by [the your web browser option](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish).
+To learn about Lish in more detail, and for instructions on how to connect to your Compute Instance via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. A fast and simple way to access Lish is by [the your web browser option](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish).
 
 {{< note >}}
 When using Lish, you can log in to your Compute Instance with the `root` user, even if `root` user login is disabled by your system's SSH configuration file.

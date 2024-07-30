@@ -14,7 +14,7 @@ aliases: ['/platform/api/nodebalancers/','/guides/nodebalancers/','/products/too
 [NodeBalancers](https://www.linode.com/nodebalancers) can be used to provide high availability load balancing for almost any type of website or service hosted on a Compute Instance. This guide will demonstrate how to use the Linode API to create a NodeBalancer with two back end nodes.
 
 {{< note >}}
-You need a Personal Access Token for the Linode API to complete the steps in this guide. See [Manage Personal Access Tokens](/docs/products/tools/api/guides/manage-api-tokens/#create-an-api-token) for more information.
+You need a Personal Access Token for the Linode API to complete the steps in this guide. See [Manage Personal Access Tokens](/docs/products/platform/accounts/guides/manage-api-tokens/#create-an-api-token) for more information.
 {{< /note >}}
 
 ## Create a NodeBalancer

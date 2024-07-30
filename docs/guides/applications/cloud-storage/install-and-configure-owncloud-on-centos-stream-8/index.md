@@ -83,7 +83,7 @@ ownCloud requires a full LAMP (Linux, Apache, MySQL, PHP) stack. In this section
     sudo firewall-cmd --reload
     ```
 
-1. Ensure you can reach the Apache server. Open a web browser, and enter in your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/). For example, enter in `http://192.0.2.0` and replace the IP address with your own. You should see the Apache welcome page.
+1. Ensure you can reach the Apache server. Open a web browser, and enter in your [Linode's IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). For example, enter in `http://192.0.2.0` and replace the IP address with your own. You should see the Apache welcome page.
 
 #### Install MariaDB
 
@@ -228,7 +228,7 @@ Apache requires a [virtual host configuration file](https://httpd.apache.org/doc
     sudo nano /etc/httpd/conf.d/owncloud.conf
     ```
 
-1. Paste the following text into the new file. Replace mentions of `example.com` with your own domain name or your [Linode's IP Address](/docs/guides/find-your-linodes-ip-address/):
+1. Paste the following text into the new file. Replace mentions of `example.com` with your own domain name or your [Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/):
 
     ```file {title="etc/httpd/conf.d/owncloud.conf"}
     Alias /owncloud "/var/www/html/owncloud/"

@@ -31,7 +31,7 @@ There are a few core troubleshooting tools you should familiarize yourself with 
 
 [*Lish*](/docs/products/compute/compute-instances/guides/lish/) is a shell that provides access to your Compute Instance's serial console. Lish does not establish a network connection to your Compute Instance, so you can use it when your networking is down or SSH is inaccessible. Much of your troubleshooting for basic connection issues will be performed from the Lish console.
 
-To learn about Lish in more detail, and for instructions on how to connect to your Compute Instance via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. In particular, [using your web browser](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) is a fast and simple way to access Lish.
+To learn about Lish in more detail, and for instructions on how to connect to your Compute Instance via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. In particular, [using your web browser](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish) is a fast and simple way to access Lish.
 
 ### MTR
 

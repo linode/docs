@@ -178,7 +178,7 @@ The new server can be in the same data center as the primary, but it doesn’t h
     sudo scp root@ns1.yourdomainhere.com:/etc/nsd/nsd.conf /etc/nsd
     ```
 
-1.  Gather `ns2`'s external IPv4 and IPv6 addresses. Follow this guide to [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address) or use the following command:
+1.  Gather `ns2`'s external IPv4 and IPv6 addresses. Follow this guide to [Find Your Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) or use the following command:
 
     ```command {title="ns2"}
     ip a
@@ -410,7 +410,7 @@ There is no requirement that the hidden primary reside in the same data center a
     sudo scp -r root@ns1.yourdomainhere.com:/etc/nsd/zones /etc/nsd
     ```
 
-1.  Gather `ns3`'s external IPv4 and IPv6 addresses. Follow this guide to [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address) or use the following command:
+1.  Gather `ns3`'s external IPv4 and IPv6 addresses. Follow this guide to [Find Your Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) or use the following command:
 
     ```command {title="ns3"}
     ip a

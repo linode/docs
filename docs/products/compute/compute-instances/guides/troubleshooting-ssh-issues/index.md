@@ -29,7 +29,7 @@ Before troubleshooting your SSH service, familiarize yourself with the Linode Sh
 
 [*Lish*](/docs/products/compute/compute-instances/guides/lish/) is a shell that provides access to your Compute Instance's serial console. Lish does not establish a network connection to your Compute Instance, so you can use it when your networking is down or SSH is inaccessible. While troubleshooting SSH, all commands you enter on your system will be performed from the Lish console.
 
-To learn about Lish in more detail, and for instructions on how to connect to your Compute Instance via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. In particular, [using your web browser](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) is a fast and simple way to access Lish.
+To learn about Lish in more detail, and for instructions on how to connect to your Compute Instance via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. In particular, [using your web browser](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish) is a fast and simple way to access Lish.
 
 ### Forgotten your Password?
 

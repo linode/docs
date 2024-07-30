@@ -33,5 +33,5 @@ Below is a full list of distributions. Once you've decided on a distribution, it
 | [Ubuntu](https://ubuntu.com/) | Arguably the most popular Linux distribution, widely regarded for it's ease of use. The LTS versions of Ubuntu are featured heavily in Linode's guides and across the community. |
 
 {{< note >}}
-Though this list covers most popular distributions, creating a Linode using a distribution that we do not provide is possible. Feel free to follow our [Custom Distribution Guide](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/) for more information.
+Though this list covers most popular distributions, creating a Linode using a distribution that we do not provide is possible. Feel free to follow our [Custom Distribution Guide](/docs/guides/install-a-custom-distribution/) for more information.
 {{< /note >}}

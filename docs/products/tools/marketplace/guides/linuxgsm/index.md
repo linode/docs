@@ -41,7 +41,7 @@ external_resources:
 
 ### Obtaining the Admin Password
 
-The password for the sudo user account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish), or with SSH if you provided an [Account Key](/docs/products/platform/accounts/guides/manage-ssh-keys/). The credentials are available in the file `/home/$USERNAME/.credentials`:
+The password for the sudo user account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish), or with SSH if you provided an [Account Key](/docs/products/platform/accounts/guides/manage-ssh-keys/). The credentials are available in the file `/home/$USERNAME/.credentials`:
 
 ```command
 cat /home/$USERNAME/.credentials

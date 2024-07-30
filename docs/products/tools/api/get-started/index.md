@@ -38,7 +38,7 @@ Authorization for the Linode API is handled through personal access tokens. Pers
 If you are building an application which needs to authenticate multiple users (for example, a custom interface to Linode's infrastructure for your organization), you can set up an [OAuth authentication flow](/docs/api/#oauth) to generate tokens for each user.
 {{< /note >}}
 
-For full instructions on creating and managing personal access tokens, see [Manage Personal Access Tokens](/docs/products/tools/api/guides/manage-api-tokens/#create-an-api-token).
+For full instructions on creating and managing personal access tokens, see [Manage Personal Access Tokens](/docs/products/platform/accounts/guides/manage-api-tokens/#create-an-api-token).
 
 1. Log in to Cloud Manager.
 

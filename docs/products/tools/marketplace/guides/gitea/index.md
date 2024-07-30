@@ -59,7 +59,7 @@ Self-hosting your software development with the Gitea Marketplace App offers tot
 
 After Gitea has finished installing, you can access your Gitea site using a web browser to complete setup and begin using your app.
 
-1.  Enter your Linode's fully qualified domain name (for example, `https://www.example.com`) or [IPv4 address](/docs/guides/find-your-linodes-ip-address/) (for example, `http://192.0.2.0`) into a browser window to access the Gitea welcome page. Select the **Register** link to reach the initial configuration screen.
+1.  Enter your Linode's fully qualified domain name (for example, `https://www.example.com`) or [IPv4 address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) (for example, `http://192.0.2.0`) into a browser window to access the Gitea welcome page. Select the **Register** link to reach the initial configuration screen.
 
     ![The Gitea welcome page.](gitea-welcome-page.png 'Gitea welcome page')
 

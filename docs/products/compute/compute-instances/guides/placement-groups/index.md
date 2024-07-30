@@ -132,7 +132,7 @@ Here, we combine API operations to create a new placement group and add existing
 
 #### List regions
 
-Run this API curl request, making sure to properly paste in or reference your [API token](/docs/products/tools/api/guides/manage-api-tokens/). Store the `id` and `label` values for the region where your target compute instances live.
+Run this API curl request, making sure to properly paste in or reference your [API token](/docs/products/platform/accounts/guides/manage-api-tokens/). Store the `id` and `label` values for the region where your target compute instances live.
 ```command
 curl -H "Authorization: Bearer $TOKEN" \
     https://api.linode.com/v4/regions

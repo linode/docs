@@ -137,7 +137,7 @@ The PMM Server deployed with Linode's Percona (PMM) Marketplace App is compatibl
 1.  Connect your database node to the PMM Server. Replace `admin_password` with your PMM Server's [Grafana password](#access-your-PMM-server-s-grafana-dashboard), and `192.0.2.0` with your PMM Server's IPv4 address.
 
     {{< note >}}
-    Follow the steps in [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) to retrieve your PMM Server's IPv4 address.
+    Follow the steps in [Find Your Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) to retrieve your PMM Server's IPv4 address.
     {{< /note >}}
 
         pmm-admin \

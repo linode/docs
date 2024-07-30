@@ -6,7 +6,7 @@ modified: 2022-11-30
 image: linode-cli.png
 external_resources:
  - '[Github Linode CLI](https://github.com/linode/cli)'
- - '[Linode API Key](/docs/products/tools/api/guides/manage-api-tokens/)'
+ - '[Linode API Key](/docs/products/platform/accounts/guides/manage-api-tokens/)'
 keywords: ["linode cli", " command line interface", " man pages", " api key"]
 tags: ["linode platform"]
 aliases: ['/platform/api/using-the-linode-cli-api-v3/','/guides/using-the-linode-cli-api-v3/']
@@ -16,7 +16,7 @@ deprecated_link: 'platform/api/linode-cli/'
 
 The Linode Command Line Interface (**CLI**) is an [open-source](https://github.com/linode/cli) command line tool for managing your Linode services. You can reboot your Linode, update an MX record for your domain, manage your NodeBalancers, create a StackScript and more from the command line on any computer, without logging in to the [Linode Manager](https://manager.linode.com/) graphical user interface.
 
-Your Linode [API key](/docs/products/tools/api/guides/manage-api-tokens/) is required for the CLI to function.
+Your Linode [API key](/docs/products/platform/accounts/guides/manage-api-tokens/) is required for the CLI to function.
 
 ## Install the CLI
 
@@ -217,7 +217,7 @@ If you don't run the configuration tool, you can add these options manually in t
 
 ### API Key
 
-The Linode CLI requires your API key to function. If you need to generate an API key manually, read the [API Key](/docs/products/tools/api/guides/manage-api-tokens/) article. There are three ways to provide the key to the CLI. The configuration tool generates a new key and adds it to the `.linodecli/config` file automatically.
+The Linode CLI requires your API key to function. If you need to generate an API key manually, read the [API Key](/docs/products/platform/accounts/guides/manage-api-tokens/) article. There are three ways to provide the key to the CLI. The configuration tool generates a new key and adds it to the `.linodecli/config` file automatically.
 
 - In the `.linodecli/config` file:
 

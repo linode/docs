@@ -64,7 +64,7 @@ For more details on logging in to the OpenVPN admin interface for the first time
 
 ### Obtaining the Admin Password
 
-The password for the main administrator account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish). The credentials are available in the file `/root/.credentials`
+The password for the main administrator account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish). The credentials are available in the file `/root/.credentials`
 ```
 cat /root/.credentials
 Sudo Username: $SUDO_USER

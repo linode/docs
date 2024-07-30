@@ -34,7 +34,7 @@ aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel
 
 ### Access your CyberPanel App
 
-1. When the installation completes, log in to your Linode via SSH, replacing `192.0.2.1` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
+1. When the installation completes, log in to your Linode via SSH, replacing `192.0.2.1` with your [Linode's IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/), and entering your Linode's root password when prompted:
 
     ```command
     ssh root@192.0.2.1

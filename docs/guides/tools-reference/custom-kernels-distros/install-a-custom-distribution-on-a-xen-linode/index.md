@@ -17,7 +17,7 @@ If you'd like to run a Linux distribution on your Linode that isn't available fr
 {{% content "all-linodes-kvm-shortguide" %}}
 
 {{< note >}}
-This guide is intended for Linodes using our older Xen hypervisor. To install a custom distribution on a new KVM Linode, see [this guide](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/).
+This guide is intended for Linodes using our older Xen hypervisor. To install a custom distribution on a new KVM Linode, see [this guide](/docs/guides/install-a-custom-distribution/).
 {{< /note >}}
 
 ## Creating the Virtual Machine

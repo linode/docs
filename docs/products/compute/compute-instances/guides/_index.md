@@ -32,7 +32,7 @@ aliases: ['/products/compute/shared-linodes/guides/','/products/compute/shared-c
 - [Choosing a Linux Distribution](/docs/products/compute/compute-instances/guides/distributions/)
 - [Packages Included on Linode Distribution Images](/docs/products/compute/compute-instances/guides/default-packages/)
 - [Linode Packages Mirrors for Various Distributions](/docs/products/compute/compute-instances/guides/package-mirrors/)
-- [Install a Custom Linux Distribution](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/)
+- [Install a Custom Linux Distribution](/docs/guides/install-a-custom-distribution/)
 
 ## Disks and Configurations
 

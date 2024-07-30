@@ -36,7 +36,7 @@ Install the Planet and other required software by issuing the following command:
 
     apt-get install apache2 planet-venus
 
-This will also install the Apache HTTP server if you have not already installed this software. Be sure to [configure a name-based virtual host](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/#apache) if you haven't already. You may now begin the configuration of Planet Venus.
+This will also install the Apache HTTP server if you have not already installed this software. Be sure to [configure a name-based virtual host](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/#configuring-a-virtual-host-for-your-domain-on-apache) if you haven't already. You may now begin the configuration of Planet Venus.
 
 ## Configure Planet
 

@@ -148,7 +148,7 @@ This demonstrates that PHP is installed and that the modules needed to communica
 
 ### Verify NGINX
 
-Verification of NGINX service is a little more involved. The first step is [identification of the IP address](/docs/guides/find-your-linodes-ip-address/) of the host.
+Verification of NGINX service is a little more involved. The first step is [identification of the IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) of the host.
 
 1.  Navigate a browser to a URL such as `http://localhost` or `http://23.77.NNN.NNN`, henceforth referred to as `$LEMP_HOST`
 
