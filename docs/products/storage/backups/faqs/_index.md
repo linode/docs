@@ -15,7 +15,7 @@ If you require additional manual backups of your data, consider using [alternati
 
 ## Can I use the Backup service to backup Block Storage Volumes?
 
-No, the Backup service does not take backups of Block Storage volumes, even if a volume is attached to a Compute Instance. If you wish to create a backup of your volume, consider cloning your volume or using [alternative methods of backing up your data](/docs/guides/backing-up-your-data/). Cloning a volume creates a new Block Storage volume of the same size and copies over all existing data. To clone your volume, navigate to the Volumes page in the Cloud Manager, open the ellipsis menu of the corresponding Volume you wish to clone, and select the **Clone** link.
+No, the Backup service does not take backups of Block Storage volumes, even if a volume is attached to a Compute Instance. If you wish to create a backup of your volume, consider cloning your volume or using [alternative methods of backing up your data](/docs/guides/backing-up-your-data/). Cloning a volume creates a new Block Storage volume of the same size and copies over all existing data. To clone your volume, navigate to the Volumes page in Cloud Manager, open the ellipsis menu of the corresponding Volume you wish to clone, and select the **Clone** link.
 
 ![Screenshot of the Clone link for a Block Storage volume](clone-volume.png)
 

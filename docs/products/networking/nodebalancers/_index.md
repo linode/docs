@@ -72,7 +72,7 @@ Cloud Firewall is available at no additional charge to customers.
 - 40 Gbps inbound network bandwidth
 - Free inbound network transfer
 - Outbound network transfer usage is counted towards the account-wide [monthly network transfer pool](/docs/products/platform/get-started/guides/network-transfer/)
-- Provisioning and management through the [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
+- Provisioning and management through [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
 
 ## Limits and Considerations
 

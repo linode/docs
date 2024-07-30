@@ -13,7 +13,7 @@ tags: ["kubernetes"]
 
 An LKE cluster can be deployed in one of several ways:
 
-- Via the [Cloud Manager](/docs/products/compute/kubernetes/guides/create-cluster/)
+- Via [Cloud Manager](/docs/products/compute/kubernetes/guides/create-cluster/)
 - With the Linode API (as presented in this guide)
 - With the [Linode CLI](/docs/products/tools/cli/get-started/)
 
@@ -169,7 +169,7 @@ To communicate with your LKE cluster, kubectl requires a copy of your cluster's 
     ```
 
     {{< note >}}
-    You can also access a decoded version of your kubeconfig file in the [Cloud Manager](/docs/products/compute/kubernetes/guides/kubectl/).
+    You can also access a decoded version of your kubeconfig file in [Cloud Manager](/docs/products/compute/kubernetes/guides/kubectl/).
     {{< /note >}}
 
 1. View all nodes in your LKE cluster using kubectl:
@@ -334,7 +334,7 @@ curl -H "Authorization: Bearer $TOKEN" \
     https://api.linode.com/v4/linode/instances/13841932
 ```
 
-Although you have access to your cluster's nodes, it is recommended that you only interact with your nodes via the Linode's LKE interfaces (like the LKE endpoints in Linode's API, or the Kubernetes section in the Cloud Manager), or via the Kubernetes API and kubectl.
+Although you have access to your cluster's nodes, it is recommended that you only interact with your nodes via the Linode's LKE interfaces (like the LKE endpoints in Linode's API, or the Kubernetes section in Cloud Manager), or via the Kubernetes API and kubectl.
 {{< /note >}}
 
 ## Modify your LKE Cluster

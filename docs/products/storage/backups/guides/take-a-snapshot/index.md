@@ -14,7 +14,7 @@ The manual snapshot feature is part of the paid Backups service and, as such, th
 Only a *single* manual snapshot can be stored for a Compute Instance. Taking a new snapshot overwrites any previously saved manual snapshot.
 {{< /note >}}
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the left navigation menu.
+1.  Log in to [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the left navigation menu.
 
 1.  On the **Linodes** page, select the Linode Compute Instance from the list.
 
@@ -22,7 +22,7 @@ Only a *single* manual snapshot can be stored for a Compute Instance. Taking a n
 
 1.  Under **Manual Snapshot**, enter a label for this new snapshot and click **Take Snapshot**.
 
-    ![Screenshot of the Manual Snapshot section within the Cloud Manager](backups-manual-snapshot.png)
+    ![Screenshot of the Manual Snapshot section within Cloud Manager](backups-manual-snapshot.png)
 
 1.  A pop-up box is displayed confirming that you intend to take a new manual snapshot and that any previous snapshot will be overwritten. Click **Take Snapshot** to proceed.
 

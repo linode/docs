@@ -20,7 +20,7 @@ When a Marketplace App is deployed, a new Compute Instance is created and the ap
 There are two types of deployments available: single instances and clusters. Most Marketplace Apps that are available in the Linode Marketplace are single instances and, as such, only deploy a single Compute Instance to your account. If an app is marked with the `cluster` label, it instead creates multiple Compute Instances as part of a cluster deployment.
 {{< /note >}}
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and select the **Marketplace** link from the left navigation menu. This displays the Linode **Create** page with the **Marketplace** tab pre-selected.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and select the **Marketplace** link from the left navigation menu. This displays the Linode **Create** page with the **Marketplace** tab pre-selected.
 
 1. Under the **Select App** section, select the app you would like to deploy. Click on the info icon (**i**) to open the details panel for that app and learn more about the included software. Within the panel, there is also a link to the corresponding guide where you can learn how to deploy and access that Marketplace App.
 

@@ -61,7 +61,7 @@ Learn more about the full extent of Netplan's YAML configuration options in the 
 
 ## Configuring IP Addresses Manually
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com/), and review your Compute Instance's IP addresses. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) for assistance. Make a note of the following pieces of information or keep this page accessible so you can reference it later.
+1.  Log in to [Cloud Manager](https://cloud.linode.com/), and review your Compute Instance's IP addresses. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) for assistance. Make a note of the following pieces of information or keep this page accessible so you can reference it later.
 
     -   Public IPv4 address(es) and the associated IPv4 gateway
 
@@ -137,7 +137,7 @@ The default Netplan configuration file shows how to enable DHCP on an interface.
 ```
 
 {{< note type="warning" >}}
-When using DHCP, the IPv4 address configured on your system may change if you add or remove IPv4 addresses on this instance from the Cloud Manager, Linode CLI, or Linode API. If this happens, any tool or system using the original IPv4 address is no longer able to connect.
+When using DHCP, the IPv4 address configured on your system may change if you add or remove IPv4 addresses on this instance from Cloud Manager, Linode CLI, or Linode API. If this happens, any tool or system using the original IPv4 address is no longer able to connect.
 {{< /note >}}
 
 ## Configuring Additional IPv4 Addresses

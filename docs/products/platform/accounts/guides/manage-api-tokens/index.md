@@ -7,7 +7,7 @@ published: 12-06-2022
 
 ## View Personal Access Tokens
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com)
+1. Log in to [Cloud Manager](https://cloud.linode.com)
 
 1. Click on your username at the top of the screen and select **API Tokens** under the *My Profile* section.
 
@@ -15,7 +15,7 @@ published: 12-06-2022
 
 This displays the **API Tokens** tab on the **My Profile** page.
 
-![Screenshot of personal access tokens in the Cloud Manager](view-personal-access-tokens.png)
+![Screenshot of personal access tokens in Cloud Manager](view-personal-access-tokens.png)
 
 Any personal access tokens you have previously created on your Linode account are listed here. Alongside each token is the date it was created, the date it expires, and links to view the scopes, rename the token, or revoke the token.
 
@@ -23,7 +23,7 @@ Any personal access tokens you have previously created on your Linode account ar
 
 Whenever you need to authorize API access to an application or service, you should create a new personal access token. This token should only allow the level of access needed by the application.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and navigate to the API Tokens page of the My Profile section. See [View Personal Access Tokens](#view-personal-access-tokens).
+1. Log in to [Cloud Manager](https://cloud.linode.com) and navigate to the API Tokens page of the My Profile section. See [View Personal Access Tokens](#view-personal-access-tokens).
 
 1. Click the **Create a Personal Access Token** button to display the *Add Personal Access Token* panel.
 
@@ -43,7 +43,7 @@ Whenever you need to authorize API access to an application or service, you shou
 
 If you wish to decommission a token or think it may have been compromised, you can revoke access. Once revoked, any application using this token will no longer be authorized to access your account through the Linode API.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and navigate to the API Tokens page of the My Profile section. See [View Personal Access Tokens](#view-personal-access-tokens).
+1. Log in to [Cloud Manager](https://cloud.linode.com) and navigate to the API Tokens page of the My Profile section. See [View Personal Access Tokens](#view-personal-access-tokens).
 
 1. Find the token you wish to revoke and click the corresponding **Revoke** button, which may be visible within the ***more options ellipsis*** menu.
 

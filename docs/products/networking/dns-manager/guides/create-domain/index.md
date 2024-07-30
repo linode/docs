@@ -8,9 +8,9 @@ tags: ["linode platform","cloud manager"]
 aliases: ['/products/networking/dns-manager/guides/add-domains/']
 ---
 
-This guide walks you through how to create a domain through the Cloud Manager. Adding a domain only takes a few steps. Here's an outline on how to create a domain using Cloud Manager.
+This guide walks you through how to create a domain through Cloud Manager. Adding a domain only takes a few steps. Here's an outline on how to create a domain using Cloud Manager.
 
-1. [Open the Create Domain Form in the Cloud Manager](#open-the-create-domain-form-in-the-cloud-manager)
+1. [Open the Create Domain Form in Cloud Manager](#open-the-create-domain-form-in-cloud-manager)
 1. [Select the Zone Type](#select-the-zone-type)
 1. [Enter the Domain and SOA Contact](#enter-the-domain-and-soa-contact)
 1. [Pre-populate DNS Records](#pre-populate-dns-records)
@@ -19,9 +19,9 @@ This guide walks you through how to create a domain through the Cloud Manager. A
 
 After you’ve figured out how to create domains, you’ll never need to call IT support for help again. Let’s look at each step in more detail.
 
-## Open the Create Domain Form in the Cloud Manager
+## Open the Create Domain Form in Cloud Manager
 
-Figuring out how to create a domain starts with getting into the system. Log in to the [Cloud Manager](https://cloud.linode.com/) and choose **Domains** from the left navigation menu. Click the **Create Domain** button. This opens the [Domain Create](https://cloud.linode.com/domains/create) form.
+Figuring out how to create a domain starts with getting into the system. Log in to [Cloud Manager](https://cloud.linode.com/) and choose **Domains** from the left navigation menu. Click the **Create Domain** button. This opens the [Domain Create](https://cloud.linode.com/domains/create) form.
 
 ## Select the Zone Type
 

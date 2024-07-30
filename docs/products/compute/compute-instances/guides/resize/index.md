@@ -36,11 +36,11 @@ You have two resize options to choose from: **warm** and **cold**. Each refer to
 
 ## Resize a compute instance
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com) and select **Linodes**.
+1.  Log in to [Cloud Manager](https://cloud.linode.com) and select **Linodes**.
 
 2.  In the list of compute instances, find the one you want to resize, click the corresponding **...**, and select **Resize**. The **Resize Linode** panel is displayed.
 
-    ![The Resize Linode panel in the Cloud Manager](resize-linode-plan.jpg)
+    ![The Resize Linode panel in Cloud Manager](resize-linode-plan.jpg)
 
 3.  Select the plan you want:
 

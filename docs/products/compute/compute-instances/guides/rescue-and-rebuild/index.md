@@ -1,6 +1,6 @@
 ---
 title: Rescue and Rebuild
-description: 'Learn how to rescue and rebuild a Compute Instance by using the recovery tools available in the Cloud Manager.'
+description: 'Learn how to rescue and rebuild a Compute Instance by using the recovery tools available in Cloud Manager.'
 published: 2012-05-31
 modified: 2023-09-07
 keywords: ["rescue", "rebuild"]
@@ -9,7 +9,7 @@ image: rescue-rebuild.jpg
 aliases: ['/troubleshooting/rescue-and-rebuild-classic-manager/','/troubleshooting/rescue-and-rebuild/','/rescue-and-rebuild/','/troubleshooting/finnix-rescue-mode/','/guides/rescue-and-rebuild/']
 ---
 
-Even the best system administrators may need to deal with unplanned events in the operation of their services. The Cloud Manager provides recovery tools that you can leverage if you are having trouble connecting to one of the Compute Instances, and this guide describes those tools:
+Even the best system administrators may need to deal with unplanned events in the operation of their services. Cloud Manager provides recovery tools that you can leverage if you are having trouble connecting to one of the Compute Instances, and this guide describes those tools:
 
 -  You can boot your Compute Instance into [*Rescue Mode*](#rescuing) to perform system recovery tasks and transfer data off the disks, if necessary.
 
@@ -39,7 +39,7 @@ While this guide outlines the recovery tools that Linode makes available to you,
 
 ### Rescue Mode Overview
 
-To access Rescue Mode, you need to [reboot your Compute Instance](#booting-into-rescue-mode) from the Cloud Manager and then connect through [Lish](#connecting-to-a-linode-running-in-rescue-mode) or [SSH](#starting-ssh). After you connect, you can [perform a check on your filesystem](#performing-a-file-system-check) if you suspect that it is corrupted. If you need access to a certain software package to troubleshoot the system, you can [install it](#installing-packages).
+To access Rescue Mode, you need to [reboot your Compute Instance](#booting-into-rescue-mode) from Cloud Manager and then connect through [Lish](#connecting-to-a-linode-running-in-rescue-mode) or [SSH](#starting-ssh). After you connect, you can [perform a check on your filesystem](#performing-a-file-system-check) if you suspect that it is corrupted. If you need access to a certain software package to troubleshoot the system, you can [install it](#installing-packages).
 
 Disks are not mounted by default and need to be [mounted manually](#mounting-disks) before you can access your files. After you mount the primary filesystem, you can [*change root*](#change-root) to have Rescue Mode emulate normal Linux distribution.
 
@@ -47,7 +47,7 @@ Disks are not mounted by default and need to be [mounted manually](#mounting-dis
 
 To boot a Compute Instance into Rescue Mode, follow the instructions below.
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com).
+1.  Log in to [Cloud Manager](https://cloud.linode.com).
 
 1.  Click the **Linodes** link in the sidebar:
 
@@ -197,7 +197,7 @@ You can use the `e2fsck` system utility (short for "ext file system check") to c
 
     Press **enter** to automatically attempt to fix the problems.
 
-    After the filesystem check completes, any problems detected should be fixed. Try rebooting the Compute Instance from the Cloud Manager. If `e2fsck` fixed the issues, the instance should boot normally.
+    After the filesystem check completes, any problems detected should be fixed. Try rebooting the Compute Instance from Cloud Manager. If `e2fsck` fixed the issues, the instance should boot normally.
 
 ### Installing Packages
 
@@ -331,7 +331,7 @@ If you can't rescue and resolve issues on an existing disk, you likely need to r
 
 -   If you are subscribed to the [Backup Service](https://www.linode.com/backups), you can [restore from an existing backup](#restoring-from-a-linode-backup) and return the Compute Instance to a previous state.
 
--   If you aren't subscribed to the Backup Service, you can copy files off an existing disk and then [use the Rebuild feature](#use-the-rebuild-feature) of the Cloud Manager to erase everything and start over again from scratch.
+-   If you aren't subscribed to the Backup Service, you can copy files off an existing disk and then [use the Rebuild feature](#use-the-rebuild-feature) of Cloud Manager to erase everything and start over again from scratch.
 
 -   If you have a backup system other than the Backup Service in place, you can [rebuild your Compute Instance](#use-the-rebuild-feature) and then restore the data from that backup service. The methods for restoring data varies by the kind of backup system that you use.
 
@@ -349,11 +349,11 @@ If you created backups with an application other than Linode's Backup Service, r
 
 ### Use the Rebuild Feature
 
-The Cloud Manager provides a *Rebuild* feature performs the following two actions:
+Cloud Manager provides a *Rebuild* feature performs the following two actions:
 
 1.  The current disks are removed.
 
-1.  A new set of disks is provisioned from one of the Cloud Manager's built-in Linux images, or from one of the [saved images](/docs/products/tools/images/).
+1.  A new set of disks is provisioned from one of Cloud Manager's built-in Linux images, or from one of the [saved images](/docs/products/tools/images/).
 
     {{< note type="alert" >}}
     If you use the Rebuild feature, the data from the disks that are deleted are not retrievable. You may [back up your data manually](/docs/guides/backing-up-your-data/) or [create a snapshot through Linode's Backup Service](/docs/products/storage/backups/guides/take-a-snapshot/) to preserve data before using the Rebuild feature.
@@ -369,7 +369,7 @@ To use the Rebuild feature:
 
 1.  If you need to copy files from existing disk to another location before rebuilding, you can [start SSH](#starting-ssh) under Rescue Mode and then use an [SFTP client](/docs/tools-reference/file-transfer/) to copy files to your computer, another server, or somewhere else.
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com).
+1.  Log in to [Cloud Manager](https://cloud.linode.com).
 
 1.  Click on the **Linodes** link in the sidebar:
 
@@ -379,7 +379,7 @@ To use the Rebuild feature:
 
     ![Cloud Manager Linodes page - rebuild option highlighted](cloud-manager-linodes-rebuild.png)
 
-1.  Complete the Rebuild form. Select an image or StackScript to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via the Cloud Manager, this option does not appear).
+1.  Complete the Rebuild form. Select an image or StackScript to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via Cloud Manager, this option does not appear).
 
     {{% content "password-requirements-shortguide" %}}
 

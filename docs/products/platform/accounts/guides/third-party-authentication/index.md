@@ -44,7 +44,7 @@ Separate from your selected login provider, you can also log in to Cloud Manager
 
 ## Disabling Third-Party Authentication
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com) using your TPA credentials.
+1.  Log in to [Cloud Manager](https://cloud.linode.com) using your TPA credentials.
 
 1.  Navigate to the Login & Authentication page of your profile by clicking on your **username** in the top right of the screen. Select **Login & Authentication** from the dropdown menu.
 

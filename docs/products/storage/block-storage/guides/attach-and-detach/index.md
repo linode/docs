@@ -11,7 +11,7 @@ Each Volume can to be attached to a single Compute Instance within the same data
 
 Learn how to attach an existing Block Storage Volume to a Compute Instance using these steps:
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com/linodes) and click on the **Volumes** link in the sidebar.
+1.  Log in to [Cloud Manager](https://cloud.linode.com/linodes) and click on the **Volumes** link in the sidebar.
 
 1.  Locate the desired Volume within the list, click the **more options ellipsis** dropdown menu, and select **Attach**.
 
@@ -40,7 +40,7 @@ Learn how to attach an existing Block Storage Volume to a Compute Instance using
 
 Follow these steps to safely detach a Block Storage Volume from a Compute Instance. A Volume should be detached before it is reattached to a different instance.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/linodes) and click on the **Linodes** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com/linodes) and click on the **Linodes** link in the sidebar.
 
 1. Select the Compute Instance that the Volume is currently attached to.
 
@@ -60,4 +60,4 @@ Follow these steps to safely detach a Block Storage Volume from a Compute Instan
 
 1. A confirmation screen appears and explains that the Volume will be detached from the Compute Instance. Click **Detach** to confirm.
 
-Detached Volumes still exist on your account and, as such, you are still billed for the Volume as normal. It can be viewed and deleted within the **Volumes** listing page in the Cloud Manager. See [View, Add, and Delete Volumes](/docs/products/storage/block-storage/guides/manage-volumes/).
+Detached Volumes still exist on your account and, as such, you are still billed for the Volume as normal. It can be viewed and deleted within the **Volumes** listing page in Cloud Manager. See [View, Add, and Delete Volumes](/docs/products/storage/block-storage/guides/manage-volumes/).

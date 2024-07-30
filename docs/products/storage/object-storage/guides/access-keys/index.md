@@ -13,11 +13,11 @@ When an access key is generated, a corresponding *secret key* is also created. T
 
 ## View Access Keys
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com).
+1.  Log in to [Cloud Manager](https://cloud.linode.com).
 
 1.  Select the **Object Storage** link in the sidebar and navigate to the **Access Keys** tab.
 
-![Viewing a list of access keys in the Cloud Manager](view-access-keys.jpg)
+![Viewing a list of access keys in Cloud Manager](view-access-keys.jpg)
 
 This page displays a list of all the access keys added to your Object Storage account. It also shows the S3 endpoint hostname. The S3 endpoint hostname is different for each region and is displayed when the you create an access key. 
 
@@ -28,13 +28,13 @@ From here, you can create a new access key. You can also click the ellipsis to:
 
 ## Create an Access Key
 
-To use Object Storage with any compatible client or command-line tool, you'll need to generate an Access Key. This can be done directly in the Cloud Manager.
+To use Object Storage with any compatible client or command-line tool, you'll need to generate an Access Key. This can be done directly in Cloud Manager.
 
-1.  Navigate to the **Access Keys** page in the Cloud Manager (see [View Access Keys](#view-access-keys)).
+1.  Navigate to the **Access Keys** page in Cloud Manager (see [View Access Keys](#view-access-keys)).
 
 1.  Click the **Create Access Key** button, which displays the **Create Access Key** panel.
 
-1.  Enter a label for the access key. This label is how you reference the access key in the Cloud Manager and any S3 compatible client.
+1.  Enter a label for the access key. This label is how you reference the access key in Cloud Manager and any S3 compatible client.
 
 1. Select at least one Region. You can select multiple regions for your access key.
 
@@ -42,9 +42,9 @@ To use Object Storage with any compatible client or command-line tool, you'll ne
 
     ![The limited access switch](create-access-key.jpg)
 
-1.  Click the **Create Access Key** button to create the access key. A dialog box appears that displays the new access key and its secret key. While the access key is always visible within the Cloud Manager, its corresponding secrete key is only visible once and cannot be retrieved again after this window is closed. Store this secret key somewhere secure, such as a password manager.
+1.  Click the **Create Access Key** button to create the access key. A dialog box appears that displays the new access key and its secret key. While the access key is always visible within Cloud Manager, its corresponding secrete key is only visible once and cannot be retrieved again after this window is closed. Store this secret key somewhere secure, such as a password manager.
 
-    ![The access key and secret key displayed within the Cloud Manager](secret-key.jpg)
+    ![The access key and secret key displayed within Cloud Manager](secret-key.jpg)
 
 You now have the credentials needed to connect to Object Storage.
 
@@ -52,7 +52,7 @@ You now have the credentials needed to connect to Object Storage.
 
 Revoking an access key removes it from your account and no longer provides access to applications that may have used it. You may wish to do this when decommissioning an application, ending a project with a third party developer, or any other situation where an access key is no longer needed.
 
-1.  Navigate to the **Access Keys** page in the Cloud Manager (see [View Access Keys](#view-access-keys)).
+1.  Navigate to the **Access Keys** page in Cloud Manager (see [View Access Keys](#view-access-keys)).
 
 1.  Locate the access key you wish to remove and click the corresponding **Revoke** button.
 

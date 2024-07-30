@@ -29,7 +29,7 @@ When using Lish, you can log in to your Compute Instance with the `root` user, e
 
 Ensure that your Compute Instance is powered on and running.
 
-1. Log into the [Cloud Manager](https://cloud.linode.com/) and navigate to the Compute Instance listing page.
+1. Log into [Cloud Manager](https://cloud.linode.com/) and navigate to the Compute Instance listing page.
 
 1. Verify your Compute Instance's displayed status to determine if it's running or offline. If it your instance is offline, use the **more options** ellipsis to power it on.
 

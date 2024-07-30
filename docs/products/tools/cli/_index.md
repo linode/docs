@@ -11,7 +11,7 @@ cascade:
     product_description: "Access the entire Linode platform from the command line, easily adding, removing, or modifying services."
 ---
 
-The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the [Linode API](/docs/products/tools/api/), which gives you the ability to manage your Linode account from the command line. Almost any task that can be done through the Cloud Manager can also be performed through the CLI.
+The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the [Linode API](/docs/products/tools/api/), which gives you the ability to manage your Linode account from the command line. Almost any task that can be done through Cloud Manager can also be performed through the CLI.
 
 ## Features
 

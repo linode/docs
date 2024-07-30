@@ -131,7 +131,7 @@ For future reference, you can find examples of the instructions provided in this
 
         mkdir ~/plex/media/linode-volume
 
-1.  Mount your Volume path to the mountpoint you have created, substituting `$FILE_SYSTEM_PATH` with your Volume's file system path (which is viewable from the Cloud Manager [**Volumes**](https://cloud.linode.com/volumes) dashboard):
+1.  Mount your Volume path to the mountpoint you have created, substituting `$FILE_SYSTEM_PATH` with your Volume's file system path (which is viewable from Cloud Manager's [**Volumes**](https://cloud.linode.com/volumes) dashboard):
 
         sudo mount $FILE_SYSTEM_PATH ~/plex/media/linode-volume
 

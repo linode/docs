@@ -14,13 +14,13 @@ The Block Storage cloud service lets you create Volumes, which can be attached t
 
 ### View All Volumes
 
-Log in to the [Cloud Manager](https://cloud.linode.com/volumes) and click the **Volumes** link in the sidebar. All Block Storage Volumes on your account are listed here, including their region, size, and their attachment status.
+Log in to [Cloud Manager](https://cloud.linode.com/volumes) and click the **Volumes** link in the sidebar. All Block Storage Volumes on your account are listed here, including their region, size, and their attachment status.
 
 ![View all Volumes on an account](view-all-volumes.png)
 
 ### View Block Storage Volumes Attached to a Specific Compute Instance
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com/linodes) and click the **Linodes** link in the sidebar.
+1.  Log in to [Cloud Manager](https://cloud.linode.com/linodes) and click the **Linodes** link in the sidebar.
 
 1.  Select the Compute Instance for which you'd like to view all attached Volumes. The detail page for that instance should appear.
 
@@ -34,7 +34,7 @@ Log in to the [Cloud Manager](https://cloud.linode.com/volumes) and click the **
 If your Compute Instance was deployed before August 24th, 2021 and hasn't been rebooted since your data center was upgraded to NVMe Block Storage, you may need to reboot the instance for it to properly work with a Block Storage Volume.
 {{< /note >}}
 
-1. Navigate to the **Volumes** page in the Cloud Manager. Alternatively, if you know which Compute Instance you wish to attach the new Volume to, navigate to the **Storage** tab for that instance. See [View Volumes](#view-volumes).
+1. Navigate to the **Volumes** page in Cloud Manager. Alternatively, if you know which Compute Instance you wish to attach the new Volume to, navigate to the **Storage** tab for that instance. See [View Volumes](#view-volumes).
 
 1. Click the **Create Volume** button to open the creation form. This form may have slightly different options, depending on the page you were on in the previous step. If creating a Volume directly from a Compute Instance's Storage tab, select the **Create and Attach Volume** option to create a new Volume.
 
@@ -61,7 +61,7 @@ If your Compute Instance was deployed before August 24th, 2021 and hasn't been r
 Once a Block Storage Volume has been deleted, the data contained on that Volume will be permanently erased. This action cannot be reversed,  so it’s always best to verify or backup the data in the block storage volume beforehand.
 {{< /note >}}
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com/linodes).
+1.  Log in to [Cloud Manager](https://cloud.linode.com/linodes).
 
 1.  If the Volume is attached to a Compute Instance, power off that instance and detach the Volume. To do so, follow the instructions within the [Detach the Volume](/docs/products/storage/block-storage/guides/attach-and-detach/#detach-a-volume) guide.
 

@@ -52,7 +52,7 @@ The standard firewall software available on most modern Linux distributions is *
 
 When deciding on which firewall solution to use, consider your unique needs and the requirements for your application.
 
-- **Familiarity:** A major reason you may decide to use one option over another is your own comfort level with the tools and interfaces need to configure each firewall. If you're more familiar with Linode's own tooling (such as the Cloud Manager or CLI), the Cloud Firewall service may be easier for you to quickly configure. If you're more familiar with nftables or front-end software like *UFW*, you may want to stick to your existing tools and workflow. Consider your entire team's familiarity with the tooling, not just yours.
+- **Familiarity:** A major reason you may decide to use one option over another is your own comfort level with the tools and interfaces need to configure each firewall. If you're more familiar with Linode's own tooling (such as Cloud Manager or CLI), the Cloud Firewall service may be easier for you to quickly configure. If you're more familiar with nftables or front-end software like *UFW*, you may want to stick to your existing tools and workflow. Consider your entire team's familiarity with the tooling, not just yours.
 
 - **Configuration options:** While each solution is quite robust, using *nftables* allows for the creation of the most complex rules and provides absolute control of the firewall. That said, Cloud Firewalls are generally easier to configure and can be applied to multiple Linode services. This lets you quickly add or modify firewall rules across multiple Compute Instances simultaneously.
 

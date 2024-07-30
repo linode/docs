@@ -22,7 +22,7 @@ This guide provides an overview of the features and services available in Cloud 
 
 ## Linodes
 
-The Linodes section of Cloud Manager allows you to create and manage your Linodes. Each Linode instance in Cloud Manager includes:
+The Linodes section of Cloud Manager lets you create and manage your Linodes. Each Linode instance in Cloud Manager includes:
 
 - [Summary information](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#cloud-manager) about your Linode, like CPU usage, IPv4 and [IPv6 traffic](/docs/products/compute/compute-instances/guides/ipv6/), and Disk IO
 - Access to any of your Linode's attached Volumes and the ability to [create a Volume](/docs/products/storage/block-storage/guides/manage-volumes/)
@@ -50,7 +50,7 @@ Linode's [NodeBalancers service](https://www.linode.com/products/nodebalancers/)
 
 ## Domains (DNS Manager)
 
-The DNS Manager allows you to control and manage your domains. You can access the DNS Manager by navigating to the **Domains** link in Cloud Manager's sidebar.
+The DNS Manager lets you control and manage your domains. You can access the DNS Manager by navigating to the **Domains** link in Cloud Manager's sidebar.
 
 ![Cloud Manager Domains](classic-to-cloud-cloud-manager-domains.png "Cloud Manager Domains")
 
@@ -86,13 +86,13 @@ To get started using StackScripts in Cloud Manager, see the [Automate Deployment
 
 ## Images
 
-The Images section of Cloud Manager gives you access to Linode Images which allow you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, or retaining a disk for a configuration that you may not need running, but wish to return to in the future.
+The Images section of Cloud Manager gives you access to Linode Images which allow you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping an image for a large deployment, or retaining a disk for a configuration that you may not need running, but wish to return to in the future.
 
 To get started using Images with Cloud Manager, see [Linode Images](/docs/products/tools/images/).
 
 ## Account (Management and Billing)
 
-The **Account** section of Cloud Manager allows you to manage your account's billing information and users, and to configure various account-wide settings.
+The **Account** section of Cloud Manager lets you manage your account's billing information and users, and to configure various account-wide settings.
 
 You can manage the following account and billing settings in the Account section of Cloud Manager:
 
@@ -152,7 +152,7 @@ Cloud Manager provides a way to set your preferred UI theme, including a light t
 
 1. Navigate to your profile by clicking on your username and select **My Settings**.
 
-1. Within the **Theme** section, select your preferred theme from the available options: *Light*, *Dark*, or *System*. Once a selection is made, the Cloud Manager interface immediately switches to that theme.
+1. Within the **Theme** section, select your preferred theme from the available options: *Light*, *Dark*, or *System*. Once a selection is made, Cloud Manager's interface immediately switches to that theme.
 
 ### Set the Timezone
 

@@ -21,7 +21,7 @@ Events are only shown to a logged in user if that event is within the scope of t
 
 Events for all services and account functions can be viewed in Cloud Manager, either through the Events panel or the [Events](https://cloud.linode.com/events) page.
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com/) and press the notification bell on the top right of the page.
+1.  Log in to [Cloud Manager](https://cloud.linode.com/) and press the notification bell on the top right of the page.
 
     ![The notification bell icon on Cloud Manager](cloud-manager-notification-bell.png)
 
@@ -35,7 +35,7 @@ Events for all services and account functions can be viewed in Cloud Manager, ei
 
 A Linode's Activity Feed is similar to the Account's [Events](#events) page. However, this is a filtered list of events only relevant to the specific Linode. Follow the instructions below to access a Linode's Activity Feed.
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Linodes** from the sidebar menu.
+1.  Log in to [Cloud Manager](https://cloud.linode.com/) and select **Linodes** from the sidebar menu.
 
 1.  Locate the Linode you wish to see events for and click on the Linode's label.
 
@@ -53,7 +53,7 @@ Each time an event occurs, you can automatically receive an email notifying you 
 Only unrestricted users can receive threshold notification emails.
 {{< /note >}}
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com/) and click the user dropdown menu on the top right of the page.
+1.  Log in to [Cloud Manager](https://cloud.linode.com/) and click the user dropdown menu on the top right of the page.
 
     ![The username dropdown link on Cloud Manager](cloud-manager-user-dropdown.png)
 

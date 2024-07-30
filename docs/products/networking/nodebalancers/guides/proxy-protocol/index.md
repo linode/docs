@@ -50,7 +50,7 @@ In order to make use of Proxy Protocol, it needs to be configured on the NodeBal
 
 To enable Proxy Protocol for your NodeBalancer, follow the instructions below.
 
-1.  Log in to the [Cloud Manager](http://cloud.linode.com), click **NodeBalancers** in the left menu, and select the NodeBalancer you wish to edit. See [Manage NodeBalancers](/docs/products/networking/nodebalancers/guides/manage/).
+1.  Log in to [Cloud Manager](http://cloud.linode.com), click **NodeBalancers** in the left menu, and select the NodeBalancer you wish to edit. See [Manage NodeBalancers](/docs/products/networking/nodebalancers/guides/manage/).
 
 1.  Navigate to the **Configurations** tab and open the port configuration you wish to edit.
 

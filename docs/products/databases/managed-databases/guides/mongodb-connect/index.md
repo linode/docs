@@ -13,7 +13,7 @@ To connect to a MongoDB Managed Database, you need to know a few important detai
 
 ## View Connection Details
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu.
 
 1. Select your Managed Database from the list. This opens the detail page for that database cluster.
 

@@ -6,7 +6,7 @@ published: 2022-10-07
 
 ## View NodeBalancers
 
-Log in to the [Cloud Manager](https://cloud.linode.com) and select NodeBalancers from the left menu. If any NodeBalancers exist on your account, they are listed on this page.
+Log in to [Cloud Manager](https://cloud.linode.com) and select NodeBalancers from the left menu. If any NodeBalancers exist on your account, they are listed on this page.
 
 ![Screenshot of the NodeBalancer listing page in Cloud Manager](nodebalancer-view-list.png)
 
@@ -24,13 +24,13 @@ To create a NodeBalancer, follow the instructions within the [Create a NodeBalan
 
 ## Review and Edit a NodeBalancer
 
-Navigate to the **NodeBalancer** page in the Cloud Manager and select the NodeBalancer you wish to edit. See [View NodeBalancers](#view-nodebalancers).
+Navigate to the **NodeBalancer** page in Cloud Manager and select the NodeBalancer you wish to edit. See [View NodeBalancers](#view-nodebalancers).
 
-![Screenshot of a NodeBalancer entry in the Cloud Manager](nodebalancer-edit.png)
+![Screenshot of a NodeBalancer entry in Cloud Manager](nodebalancer-edit.png)
 
 This displays the details and settings for the selected NodeBalancer.
 
-![Screenshot of a NodeBalancer entry in the Cloud Manager](nodebalancer-summary.png)
+![Screenshot of a NodeBalancer entry in Cloud Manager](nodebalancer-summary.png)
 
 From here, the following pages are available:
 
@@ -40,7 +40,7 @@ From here, the following pages are available:
 
 ## Delete a NodeBalancer
 
-1. Navigate to the **NodeBalancer** page in the Cloud Manager and select the NodeBalancer you wish to edit.
+1. Navigate to the **NodeBalancer** page in Cloud Manager and select the NodeBalancer you wish to edit.
 
 1. Navigate to the **Settings** tab, scroll to the *Delete NodeBalancer* section, and click **Delete**.
 
@@ -58,7 +58,7 @@ After the NodeBalancer is created, you can add a firewall, select a different fi
 
 ### Unassign the Firewall
 
-1. Navigate to the **NodeBalancer** page in the Cloud Manager and select the NodeBalancer that has the firewall you wish to unassign.
+1. Navigate to the **NodeBalancer** page in Cloud Manager and select the NodeBalancer that has the firewall you wish to unassign.
 
 1. Navigate to the **Settings** tab. In the *Firewall* section, click **Unassign**.
 

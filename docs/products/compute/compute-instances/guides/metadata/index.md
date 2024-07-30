@@ -17,7 +17,7 @@ The Metadata service provides both *instance data* and optional *user data*, bot
 -   **Instance data:** The instance data includes information about the Compute Instance, including its label, plan size, region, host identifier, and more.
 -   **User data:** User data is one of the most powerful features of the Metadata service and lets you define your desired system configuration, including creating users, installing software, configuring settings, and more. User data is supplied by the user when deploying, rebuilding, or cloning a Compute Instance. This user data can be written as a cloud-config file, or it can be any script that can be executed on the target distribution image, such as a bash script.
 
-    User data can be submitted directly in the Cloud Manager, Linode CLI, or Linode API. It's also often programmatically provided through IaC (Infrastructure as Code) provisioning tools like [Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/).
+    User data can be submitted directly in Cloud Manager, Linode CLI, or Linode API. It's also often programmatically provided through IaC (Infrastructure as Code) provisioning tools like [Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/).
 
 When a Compute Instance first boots up, cloud-init runs locally on the system, accesses the metadata, and then configures your system using that metadata.
 
@@ -33,7 +33,7 @@ Akamai's Metadata service is available in select data centers. Additionally, use
 
 -   **Distributions:** Ubuntu 22.04 LTS, Ubuntu 20.04 LTS, Debian 11
 
-When selecting a distribution in the Cloud Manager, the following icon designates distributions that fully support the Metadata service:
+When selecting a distribution in Cloud Manager, the following icon designates distributions that fully support the Metadata service:
 
 ![Screenshot showing icon that indicates user data and cloud-init support for a distribution](cloud-init-supported-image.png)
 
@@ -47,13 +47,13 @@ The Metadata service is always active, so there's no need to enable it. User dat
 
 {{< tabs >}}
 {{< tab "Cloud Manager" >}}
-1.  Navigate to the **Linodes** page in the [Cloud Manager](http://cloud.linode.com) and click the **Create Linode** button. This opens the **Create Linode** form.
+1.  Navigate to the **Linodes** page in [Cloud Manager](http://cloud.linode.com) and click the **Create Linode** button. This opens the **Create Linode** form.
 
 1.  Fill out the form with your desired settings. Be sure to select one of the supported distribution images and data centers.
 
 1.  Expand the *Add User Data* section and enter your user data into the **User Data** field.
 
-    ![Screenshot of the Add User Data section in the Cloud Manager](user-data-section.png)
+    ![Screenshot of the Add User Data section in Cloud Manager](user-data-section.png)
 
     If you are unfamiliar with cloud-init, you can review the [Cloud-Config Usage and Examples](/docs/products/compute/compute-instances/guides/metadata-cloud-config/) guide for help creating a cloud-config file.
 
@@ -145,7 +145,7 @@ base64 --wrap=0 [file]
 
 ## Modify Cloud-Init Configuration and Save a Custom Image {#modify-cloud-init}
 
-Our supported distribution images have cloud-init pre-installed and configured to interact with our Metadata service. Beyond submitting user data, you are not able to adjust cloud-init settings directly through the Cloud Manager, Linode CLI, or Linode API. If you do wish to deploy Compute Instances using a modified cloud-init configuration, you can use our [Images](/docs/products/tools/images/) service.
+Our supported distribution images have cloud-init pre-installed and configured to interact with our Metadata service. Beyond submitting user data, you are not able to adjust cloud-init settings directly through Cloud Manager, Linode CLI, or Linode API. If you do wish to deploy Compute Instances using a modified cloud-init configuration, you can use our [Images](/docs/products/tools/images/) service.
 
 1.  Deploy a new Compute Instance using your preferred supported distribution image.
 1.  Log in to that instance using SSH or Lish and then modify the cloud-init configuration files (or add your own). These files are typically located in the `/etc/cloud/` folder.

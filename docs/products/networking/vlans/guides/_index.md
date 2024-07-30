@@ -10,7 +10,7 @@ tab_group_main:
 
 - [Use Cases](/docs/products/networking/vlans/guides/use-cases/): Learn how VLANs can be used by exploring some common scenarios.
 
-- [Getting Started with VLANs](/docs/products/networking/vlans/get-started/): An introduction to VLANs, including how to create and administer them within the Cloud Manager.
+- [Getting Started with VLANs](/docs/products/networking/vlans/get-started/): An introduction to VLANs, including how to create and administer them within Cloud Manager.
 
 - [Attach a VLAN to a Compute Instance](/docs/products/networking/vlans/guides/attach-to-compute-instance/): Learn how to create a VLAN and attach it to a new or existing Compute Instance.
 

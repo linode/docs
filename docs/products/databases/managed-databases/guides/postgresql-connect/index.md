@@ -11,7 +11,7 @@ To connect to a PostgreSQL Managed Database, you need to know a few important de
 
 ## View Connection Details
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu.
 
 1. Select your PostgreSQL Managed Database from the list. This opens the detail page for that database cluster.
 
@@ -108,7 +108,7 @@ pgAdmin is an open-source application that provides you with a graphical interfa
 
     ![Screenshot of the Connection tab within the Register Server form](pgadmin-register-server-connection.png)
 
-1.  Under the *SSL* tab, you can leave **SSL Mode** as *Prefer* or explicitly set it to *Require*. You may also set it to *Verify-CA* if you wish to verify the CA (Certificate Authority) certificate each time you connect. If you choose this option, download the CA certificate from the Cloud Manager and set the **Root Certificate** field to point to that downloaded file.
+1.  Under the *SSL* tab, you can leave **SSL Mode** as *Prefer* or explicitly set it to *Require*. You may also set it to *Verify-CA* if you wish to verify the CA (Certificate Authority) certificate each time you connect. If you choose this option, download the CA certificate from Cloud Manager and set the **Root Certificate** field to point to that downloaded file.
 
 1.  Once all the settings have been appropriately configured, click the **Save** button to save the settings and attempt to connect.
 

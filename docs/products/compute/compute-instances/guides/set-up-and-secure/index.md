@@ -16,7 +16,7 @@ After you have successfully created a Compute Instance, there are a few initial 
 While this guide is optional, it walks you through best practices and covers important steps to secure your server. It is recommended that you follow these instructions when deploying a new Compute Instance. Some guides within our library assume that you have performed these steps, such as setting your hostname and updating your software.
 {{< /note >}}
 
-1. [View your Instance in the Cloud Manager](#view-your-instance-in-the-cloud-manager)
+1. [View your Instance in Cloud Manager](#view-your-instance-in-the-cloud-manager)
 1. [Connect to the Instance](#connect-to-the-instance)
 1. [Perform System Updates](#perform-system-updates)
 1. [Set the Timezone](#set-the-timezone)
@@ -34,9 +34,9 @@ If you haven't done so already, review the following guides to learn more about 
 - [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/)
 - [Linode Beginner's Guide](/docs/products/compute/compute-instances/faqs/)
 
-## View your Instance in the Cloud Manager
+## View your Instance in Cloud Manager
 
-Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Linodes** link in the left menu, and select your Compute Instance from the list. This opens the details page for that instance, which lets you view key information and further configure it to meet your needs.
+Log in to [Cloud Manager](https://cloud.linode.com/), click the **Linodes** link in the left menu, and select your Compute Instance from the list. This opens the details page for that instance, which lets you view key information and further configure it to meet your needs.
 
 ![Details page in Cloud Manager](create-instance-details.png)
 
@@ -44,7 +44,7 @@ Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Linodes** 
 
 Once the Compute Instance has been created and has finished booting up, you can connect to it. Connecting to your instance is usually done through the SSH (Secure Shell) protocol, though you can use the [Lish Console](/docs/products/compute/compute-instances/guides/lish/) to bypass SSH and connect directly to your instance. The Lish Console can be accessed through a web browser (Weblish) or via SSH on the command line.
 
--   **Weblish (via the Cloud Manager):** Click the **Launch LISH Console** link at the top right corner of the Compute Instance's detail page. See [Using the Lish Console > Through a Browser](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish).
+-   **Weblish (via Cloud Manager):** Click the **Launch LISH Console** link at the top right corner of the Compute Instance's detail page. See [Using the Lish Console > Through a Browser](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish).
 
 -   **SSH:** Copy the command from the *SSH Access* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the following, only with the IP address of your newly created instance.
 

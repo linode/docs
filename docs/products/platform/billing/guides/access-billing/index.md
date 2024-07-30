@@ -5,9 +5,9 @@ published: 2022-11-17
 aliases: ['/products/tools/cloud-manager/guides/cloud-credits/']
 ---
 
-Most information and settings pertaining to billing are located within the [Billing Info](https://cloud.linode.com/account/billing) page of the Cloud Manager. Follow the instructions below to access this page:
+Most information and settings pertaining to billing are located within the [Billing Info](https://cloud.linode.com/account/billing) page of Cloud Manager. Follow the instructions below to access this page:
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) on a user account with one of the following permissions. See [Setting User Permissions](/docs/products/platform/accounts/guides/user-permissions/) for more details.
+1. Log in to [Cloud Manager](https://cloud.linode.com) on a user account with one of the following permissions. See [Setting User Permissions](/docs/products/platform/accounts/guides/user-permissions/) for more details.
 
     - **Full account access** (unrestricted).
     - Restricted user with *Read-Write* permissions under **Billing Access**. Users with *Read Only* permissions are able to see most billing information but they are not able to make changes.

@@ -8,9 +8,9 @@ keywords: ["getting started", "deploy", "linode", "linux"]
 aliases: ['/guides/creating-a-compute-instance/','/products/compute/dedicated-cpu/guides/deploy/']
 ---
 
-This guide walks you through creating a Compute Instance (also frequently called a *Linode*) through the Cloud Manager. Whether this is your first time using Linode or if you're a long time user, you should carefully consider each step in the process to make sure you're getting the most of your Linode services.
+This guide walks you through creating a Compute Instance (also frequently called a *Linode*) through Cloud Manager. Whether this is your first time using Linode or if you're a long time user, you should carefully consider each step in the process to make sure you're getting the most of your Linode services.
 
-- [Open the Create Form in the Cloud Manager](#open-the-create-form-in-the-cloud-manager)
+- [Open the Create Form in Cloud Manager](#open-the-create-form-in-cloud-manager)
 - [Choose a Distribution, App, or Image](#choose-a-distribution-app-or-image)
 - [Select a Region](#select-a-region)
 - [Choose an Instance Type and Plan](#choose-an-instance-type-and-plan)
@@ -25,11 +25,11 @@ This guide walks you through creating a Compute Instance (also frequently called
 - [Deploy the Instance](#deploy-the-instance)
 - [Getting Started After Deployment](#getting-started-after-deployment)
 
-## Open the Create Form in the Cloud Manager
+## Open the Create Form in Cloud Manager
 
-Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Create** dropdown menu on the top bar, and select *Linode*. This opens the **Create Linode** form.
+Log in to [Cloud Manager](https://cloud.linode.com/), click the **Create** dropdown menu on the top bar, and select *Linode*. This opens the **Create Linode** form.
 
-![Open Create form in the Cloud Manager](create-instance-create.jpg)
+![Open Create form in Cloud Manager](create-instance-create.jpg)
 
 ## Choose a Distribution, App, or Image
 
@@ -93,7 +93,7 @@ You can resize to a different plan size or instance type at any time. This means
 
     {{% content "password-requirements-shortguide" %}}
 
--   **SSH Keys:** Add any SSH Keys to the root user account on the server. This enables you to log in through SSH without needing a password. SSH keys are created as a pair: a *private key* stored on your local computer and a *public key* that you can upload to remote systems and services. Since you only share your public key and your private key is kept safe and secure, this is a much more secure method for authentication than passwords. Learn more about uploading SSH keys through the Cloud Manager on the [Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/) guide.
+-   **SSH Keys:** Add any SSH Keys to the root user account on the server. This enables you to log in through SSH without needing a password. SSH keys are created as a pair: a *private key* stored on your local computer and a *public key* that you can upload to remote systems and services. Since you only share your public key and your private key is kept safe and secure, this is a much more secure method for authentication than passwords. Learn more about uploading SSH keys through Cloud Manager on the [Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/) guide.
 
 ## Assign to a VPC (Optional) {#assign-to-a-vpc}
 
@@ -117,7 +117,7 @@ For additional information and considerations, review the [Assign (and Remove) S
 
 ![Screenshot of the Assign Cloud Firewall section](create-instance-cloud-firewall.jpg)
 
-To protect your new Compute Instance from unwanted traffic, consider using a [Cloud Firewall](/docs/products/networking/cloud-firewall/). This lets you cascade firewall rules across multiple services and manage those rules within the Cloud Manager, Linode CLI, and Linode API.
+To protect your new Compute Instance from unwanted traffic, consider using a [Cloud Firewall](/docs/products/networking/cloud-firewall/). This lets you cascade firewall rules across multiple services and manage those rules within Cloud Manager, Linode CLI, and Linode API.
 
 To assign your instance to a Cloud Firewall, select the firewall from the **Assign Firewall** dropdown menu. If you do not have a firewall or wish to create a new one, click the **Create Firewall** link and follow the instructions within the [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) guide. You can always skip this step and assign a firewall at a later time by following the instructions in the [Apply Firewall Rules to a Service](/docs/products/networking/cloud-firewall/guides/apply-to-service/) guide.
 

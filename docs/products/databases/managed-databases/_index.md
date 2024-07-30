@@ -81,7 +81,7 @@ In addition to the resources allocated to each available plan (outlined above), 
 - 100% SSD (Solid State Disk) storage
 - 40 Gbps inbound network bandwidth
 - Free inbound network transfer
-- Provisioning and management through the [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
+- Provisioning and management through [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
 
 ## Limits and Considerations
 

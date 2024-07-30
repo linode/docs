@@ -14,7 +14,7 @@ To learn more about this program, visit the [Referral Program](https://www.linod
 
 ### Find Your Referral Link
 
-To activate the referral program and obtain a referral link, you must spend at least $25 with Linode, not including any promotional credits added to your account. Once activated, your referral link (including your unique referral code) can be viewed within the Cloud Manager.
+To activate the referral program and obtain a referral link, you must spend at least $25 with Linode, not including any promotional credits added to your account. Once activated, your referral link (including your unique referral code) can be viewed within Cloud Manager.
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 1.  Select the **My Profile** link by clicking on your username at the top of the page.

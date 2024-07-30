@@ -10,7 +10,7 @@ aliases: ['/products/networking/dns-manager/guides/add-dns-records/','/products/
 
 ## View DNS Records
 
-Log in to the [Cloud Manager](https://cloud.linode.com), select *Domains* from the left menu, and click on the domain you wish to view.
+Log in to [Cloud Manager](https://cloud.linode.com), select *Domains* from the left menu, and click on the domain you wish to view.
 
 ![Screenshot of the Domains listing page in Cloud Manager](view-dns.png)
 
@@ -20,7 +20,7 @@ This opens up a page that lists all DNS records for the domain. Records for each
 
 After a domain has been created, you're able to add DNS records. Each type of DNS record is used for a different purpose. The applications that use your domain determine which DNS records you need to add.
 
-1. View the DNS Records for your domain in the Cloud Manager. See [View DNS Records](#view-dns-records).
+1. View the DNS Records for your domain in Cloud Manager. See [View DNS Records](#view-dns-records).
 
 1. Locate the section for the record type you want to add or edit. To add a new record, click corresponding **Add a Record** button. To edit a record, locate the record in the list and click the corresponding **Edit** button. Both of these actions open up a similar form.
 
@@ -52,7 +52,7 @@ New DNS records may take up to 24 hours to propagate throughout the internet, al
 
 ## Delete a DNS Record
 
-1. View the DNS Records for your domain in the Cloud Manager. See [View DNS Records](#view-dns-records).
+1. View the DNS Records for your domain in Cloud Manager. See [View DNS Records](#view-dns-records).
 
 1. Locate the section for the record type you want to remove, find the record in the list, and click the corresponding **Delete** button.
 

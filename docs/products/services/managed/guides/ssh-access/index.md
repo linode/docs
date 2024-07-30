@@ -19,11 +19,11 @@ If you do not wish to use this public key, you can also configure credentials in
 
 Linode generates a unique public/private keypair for your account when Managed Services is enabled. The public key is accessible on your account so that you can add it to each Compute Instance. The private key is then used by the Support Team to access your system whenever an issue requires investigation. You can locate your public key through the following steps:
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Managed** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and click the **Managed** link in the sidebar.
 
 1. Navigate to the **SSH Access** tab. Your public key is displayed at the top of this tab.
 
-    ![A screenshot of an account's public key in the Cloud Manager](managed-public-key.png)
+    ![A screenshot of an account's public key in Cloud Manager](managed-public-key.png)
 
 1. Hover over the public key box to view the full public key. To copy it, click the **Copy to clipboard** button.
 
@@ -104,7 +104,7 @@ Modifying these SSH access settings for a Compute Instance **does not change** a
 
 Follow the steps below to edit the SSH access settings for each Compute Instance.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Managed** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and click the **Managed** link in the sidebar.
 
 1. Navigate to the **SSH Access** tab and scroll down to view a list of Compute Instances on your account.
 

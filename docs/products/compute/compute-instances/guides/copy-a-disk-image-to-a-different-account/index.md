@@ -22,7 +22,7 @@ You need to prepare the *receiving* Linode before initiating the transfer. First
 
 ### Creating a New Receiving Linode
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com) with the username and password you created when signing up.
+1.  Log in to [Cloud Manager](https://cloud.linode.com) with the username and password you created when signing up.
 
 1.  Click **Create** at the top of the page and select **Linode**.
 
@@ -34,7 +34,7 @@ You need to prepare the *receiving* Linode before initiating the transfer. First
 
 1.  Select a Linode plan.
 
-1.  Give the Linode a label. This is a name to help you easily identify it within the Cloud Manager's Dashboard. If desired, assign a tag to the Linode in the **Add Tags** field.
+1.  Give the Linode a label. This is a name to help you easily identify it within Cloud Manager's Dashboard. If desired, assign a tag to the Linode in the **Add Tags** field.
 
 1.  Skip the **Root Password** and **SSH Keys** fields, as they are disabled when creating an empty Linode.
 

@@ -21,7 +21,7 @@ When creating a StackScript, most of the time is spent writing the deployment sc
 
 - **Which Linux distributions should the script support?** Since each distribution bundles different core software, the commands needed to install applications or configure networking vary between distributions. You need to determine which distributions you want to have available when deploying the Compute Instance. Then, you can customize your script to include commands for those distributions.
 
-- **Which dynamic variables do you want the user to set when deploying a Compute Instance?** Determine what information you wish to collect during deployment. These user variables can be defined through the use of UDF fields within the script. All UDF fields are visible in the Cloud Manager when creating a Compute Instance based on the StackScript.
+- **Which dynamic variables do you want the user to set when deploying a Compute Instance?** Determine what information you wish to collect during deployment. These user variables can be defined through the use of UDF fields within the script. All UDF fields are visible in Cloud Manager when creating a Compute Instance based on the StackScript.
 
 ## Components of a StackScript
 
@@ -31,7 +31,7 @@ When creating a StackScript, most of the time is spent writing the deployment sc
     #!/bin/bash
     ```
 
-- **Declaration of user-defined fields** *(optional)*: These fields are presented to the user in the Cloud Manager during the deployment process. See [Declare User-Defined Fields (UDFs)](#declare-user-defined-fields-udfs).
+- **Declaration of user-defined fields** *(optional)*: These fields are presented to the user in Cloud Manager during the deployment process. See [Declare User-Defined Fields (UDFs)](#declare-user-defined-fields-udfs).
 
     ```file {linenostart="2"}
     # <UDF name="example-variable" Label="Example Variable" example="This is an example UDF variable for a StackScript" />
@@ -62,7 +62,7 @@ The first line of the script must include a [*shebang*](https://en.wikipedia.org
 
 ## Declare User-Defined Fields (UDFs)
 
-The StackScript system provides a basic markup specification that interfaces with the Linode deployment process. This syntax allows users to customize the behavior of a StackScript on a per-deployment basis. When a StackScript contains a *user-defined field (UDF)*, the Cloud Manager presents the UDF as a form field. The user can then insert a corresponding custom value into the field. The values and their related variables are inserted into the script's environment when used to deploy a new Compute Instance.
+The StackScript system provides a basic markup specification that interfaces with the Linode deployment process. This syntax allows users to customize the behavior of a StackScript on a per-deployment basis. When a StackScript contains a *user-defined field (UDF)*, Cloud Manager presents the UDF as a form field. The user can then insert a corresponding custom value into the field. The values and their related variables are inserted into the script's environment when used to deploy a new Compute Instance.
 
 {{< note >}}
 UDF fields are only usable by scripts written in bash.
@@ -96,13 +96,13 @@ A UDF tag accepts the following attributes:
 
     `label="[field-label]"`
 
-    The label attribute is used when displaying the field to the user in the Cloud Manager. This should be a short string that clearly indicates what the field is used for. If needed, you can also enter helper text using the `example` attribute.
+    The label attribute is used when displaying the field to the user in Cloud Manager. This should be a short string that clearly indicates what the field is used for. If needed, you can also enter helper text using the `example` attribute.
 
 - **Helper text** (*optional*):
 
     `example="[helper-text]"`
 
-    This text is displayed in the Cloud Manager underneath the field. It should be used to further explain to the user what the field is used for.
+    This text is displayed in Cloud Manager underneath the field. It should be used to further explain to the user what the field is used for.
 
 - **Select one** (*optional*):
 
@@ -114,17 +114,17 @@ A UDF tag accepts the following attributes:
 
     `manyOf="[value1],[value2],..."`
 
-    A comma separated list of acceptable values for the field in any quantity, combination, or order. These values are displayed within a dropdown menu in the Cloud Manager.  Multiple values can be selected by the user. This cannot be used within the *oneOf* attribute (discussed above) within the same UDF tag.
+    A comma separated list of acceptable values for the field in any quantity, combination, or order. These values are displayed within a dropdown menu in Cloud Manager.  Multiple values can be selected by the user. This cannot be used within the *oneOf* attribute (discussed above) within the same UDF tag.
 
 - **Default value** (*optional*):
 
     `default="[default-value]"`
 
-    This defines the default value for this UDF. If no value is specified by the user during deployment, this default value is used. The default value is displayed to the user within the Cloud Manager.
+    This defines the default value for this UDF. If no value is specified by the user during deployment, this default value is used. The default value is displayed to the user within Cloud Manager.
 
-    - **String** (neither `oneOf` or `manyOf` are used): The default value can be any string and is displayed as plain text within the form field in the Cloud Manager.
-    - **Select one** (`oneOf` attribute is defined): The default value needs to correspond with a single value defined in the `oneOf` attribute. This value is pre-selected in the radio field or dropdown box in the Cloud Manager.
-    - **Select multiple** (`manOf` attribute is defined): The default value needs to correspond with one or more values defined in the `manyOf` attribute. If setting multiple values as the default, delimit them with a comma. These values are pre-selected in the dropdown box in the Cloud Manager.
+    - **String** (neither `oneOf` or `manyOf` are used): The default value can be any string and is displayed as plain text within the form field in Cloud Manager.
+    - **Select one** (`oneOf` attribute is defined): The default value needs to correspond with a single value defined in the `oneOf` attribute. This value is pre-selected in the radio field or dropdown box in Cloud Manager.
+    - **Select multiple** (`manOf` attribute is defined): The default value needs to correspond with one or more values defined in the `manyOf` attribute. If setting multiple values as the default, delimit them with a comma. These values are pre-selected in the dropdown box in Cloud Manager.
 
 ## Default Environment Variables
 
@@ -174,9 +174,9 @@ Your scripts can import any other StackScript, including those from within your 
     ./ssinclude-[ID]
     ```
 
-In the example syntax above, replace *[ID]* with the ID corresponding to the StackScript you wish to use. You can find the ID by viewing the StackScript in the Cloud Manager and copying the value within the **StackScript ID** field, as shown below:
+In the example syntax above, replace *[ID]* with the ID corresponding to the StackScript you wish to use. You can find the ID by viewing the StackScript in Cloud Manager and copying the value within the **StackScript ID** field, as shown below:
 
-![Screenshot of the StackScript ID in the Cloud Manager](stackscript-id.png)
+![Screenshot of the StackScript ID in Cloud Manager](stackscript-id.png)
 
 ### Using the Linode StackScript Bash Library
 

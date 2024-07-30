@@ -13,7 +13,7 @@ Hosting your own database on-premise (or on your own custom cloud architecture) 
 
 ## Rapid Deployment
 
-It's often necessary to create short-lived databases quickly and securely. You may want to do this for development, disaster recovery (discussed below), ephemeral applications, traffic management, and much more. Managed Databases makes this process incredibly efficient, allowing you to create databases quickly using the Cloud Manager or programmatically through the Linode API.
+It's often necessary to create short-lived databases quickly and securely. You may want to do this for development, disaster recovery (discussed below), ephemeral applications, traffic management, and much more. Managed Databases makes this process incredibly efficient, allowing you to create databases quickly using Cloud Manager or programmatically through the Linode API.
 
 ## Disaster Recovery
 

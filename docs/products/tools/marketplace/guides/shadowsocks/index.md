@@ -46,7 +46,7 @@ When the client has completed the installation process, ensure that you're setti
 
 | **Configuration** | **Description** |
 |-------------------|-----------------|
-| **Address** | Your linodes IPv4 address. Can be found in the `Linodes` section of the [Cloud Manager](https://cloud.linode.com/linodes).
+| **Address** | Your linodes IPv4 address. Can be found in the `Linodes` section of [Cloud Manager](https://cloud.linode.com/linodes).
 | **Port** | The Shadowsocks Marketplace App connects through port `8000` by default. |
 | **Encryption** | Set to use the `aes-256-gcm` encryption mode. |
 | **Password** | This is the `Shadowsocks Password` field you created when initially deploying your app. |

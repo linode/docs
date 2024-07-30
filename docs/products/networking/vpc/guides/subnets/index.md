@@ -31,7 +31,7 @@ When defining an IPv4 range for a subnet, use a CIDR block within the [RFC1918](
 
 ## View Subnets
 
-1.  View the [VPCs](https://cloud.linode.com/vpcs) page in the Cloud Manager. See [View VPCs](/docs/products/networking/vpc/guides/manage-vpcs/#view-vpcs).
+1.  View the [VPCs](https://cloud.linode.com/vpcs) page in Cloud Manager. See [View VPCs](/docs/products/networking/vpc/guides/manage-vpcs/#view-vpcs).
 
 1.  Locate and click the name of the VPC you wish to inspect. This displays the details page for that VPC.
 

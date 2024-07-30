@@ -13,7 +13,7 @@ aliases: ['/products/tools/billing/','/platform/billing-and-support/prepaid-bill
 tags: ["linode platform"]
 ---
 
-Linode strives to provide transparent and uncomplicated pricing structures and billing policies. As a supplement to our [Pricing](https://www.linode.com/pricing/) page, read through this guide to understand how we bill for services and how you can pay for these services. For instructions on how to manage your billing in the Cloud Manager, see the [Manage Billing in Cloud Manager](/docs/products/platform/billing/guides/) guide. If you have a question that isn't answered in either of these guides, don't hesitate to [contact Support](https://www.linode.com/support/).
+Linode strives to provide transparent and uncomplicated pricing structures and billing policies. As a supplement to our [Pricing](https://www.linode.com/pricing/) page, read through this guide to understand how we bill for services and how you can pay for these services. For instructions on how to manage your billing in Cloud Manager, see the [Manage Billing in Cloud Manager](/docs/products/platform/billing/guides/) guide. If you have a question that isn't answered in either of these guides, don't hesitate to [contact Support](https://www.linode.com/support/).
 
 ## Understand How Billing Works
 
@@ -21,7 +21,7 @@ Linode uses a hybrid hourly billing model that is simple and flexible. It enable
 
 - Every paid service offered by Linode has a predictable monthly rate (also called the monthly cap) in addition to a flexible hourly rate.
 
-- When a service is added, charges accrue on the account at the hourly rate up to the monthly cap. These *accrued charges* are displayed on the **Billing Info** tab within the Account page of the Cloud Manager\*. Usage is always rounded up to the nearest hour.
+- When a service is added, charges accrue on the account at the hourly rate up to the monthly cap. These *accrued charges* are displayed on the **Billing Info** tab within the Account page of Cloud Manager\*. Usage is always rounded up to the nearest hour.
 
 - Linode uses a monthly billing cycle. An invoice is automatically generated on the first day of each month and includes the previous month's usage.
 

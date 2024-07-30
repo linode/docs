@@ -61,7 +61,7 @@ Webmin is now installed and ready to use.
 
 1.  If you filled out the optional Webmin configuration fields:
 
-    - In the Cloud Manager [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/), confirm that there is now an entry for your domain with possible subdomain, MX, and SPF records pointing to your new server.
+    - In Cloud Manager's [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/), confirm that there is now an entry for your domain with possible subdomain, MX, and SPF records pointing to your new server.
     - [Configure rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on your Linode to point to your new domain name.
 
 1.  Webmin is served on port 10000. To access Webmin, navigate to either the IP address of your server, or to your domain name followed by port 10000. For example, entering `http://example.com:10000` or `http://203.0.113.0:10000` while replacing the domain name or IP address with values for your server will allow you to reach the Webmin login screen.

@@ -18,7 +18,7 @@ To start using Longview to capture metrics from a Linux server, you need to crea
 
 ## Create a Longview Client {#create-client}
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/dashboard) and click on the **Longview** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com/dashboard) and click on the **Longview** link in the sidebar.
 
 1. On the Longview Clients page, click on the **Add a Client** link on the top right-hand corner. This creates a Longview Client instance.
 
@@ -28,7 +28,7 @@ To start using Longview to capture metrics from a Linux server, you need to crea
     The displayed `curl` command is used in the next section to install the Longview agent on the desired Linux system. The long string appended to the url `https://lv.linode.com/` is your Longview Client instance's GUID (globally unique identifier).
     {{< /note >}}
 
-    ![Screenshot of a new Longview client in the Cloud Manager](longview-waiting.png)
+    ![Screenshot of a new Longview client in Cloud Manager](longview-waiting.png)
 
 ## SSH into the Compute Instance {#ssh}
 
@@ -206,10 +206,10 @@ sudo systemctl start longview
 
 ## View Longview Client Statistics {#view-statistics}
 
-Switch back to the Cloud Manager's Longview Clients page in your browser and verify that system information and metrics have started to appear. To learn more about the metrics available on Longview, see [Understanding Longview Metrics](/docs/products/tools/longview/guides/metrics/).
+Switch back to Cloud Manager's Longview Clients page in your browser and verify that system information and metrics have started to appear. To learn more about the metrics available on Longview, see [Understanding Longview Metrics](/docs/products/tools/longview/guides/metrics/).
 
-![Screenshot of a Longview Client in the Cloud Manager](longview-data.png)
+![Screenshot of a Longview Client in Cloud Manager](longview-data.png)
 
 {{< note >}}
-It can take several minutes for data to load and display in the Cloud Manager.
+It can take several minutes for data to load and display in Cloud Manager.
 {{< /note >}}

@@ -44,7 +44,7 @@ The Backup service does not keep automated backups older than 14 days, though th
 - Compatible with all Linode Compute Instances, provided their disks contain unencrypted ext3 or ext4 file systems
 - File-based backup solution, meaning it operates at the file level and not the block level
 - Backups are stored on separate dedicated hardware within the same data center
-- Can be managed through the [Cloud Manager](https://cloud.linode.com/), the [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
+- Can be managed through [Cloud Manager](https://cloud.linode.com/), the [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
 
 ## Part of a Multi-Tiered Backup Strategy
 

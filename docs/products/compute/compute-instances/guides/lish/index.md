@@ -16,15 +16,15 @@ The **Lish Console**, also called the *Linode Shell*, provides direct console ac
 
 There are two ways to access Lish. You can use a terminal application to connect to a *Lish SSH gateway*, or you can log in to the [Linode Cloud Manager](https://cloud.linode.com) and use the Lish console in your web browser. This section explains both methods.
 
-### Through the Cloud Manager (Weblish)
+### Through Cloud Manager (Weblish)
 
-You can connect to Lish using a web browser. This is useful when you don't have access to a terminal application, or if you just need quick and easy console access from the Cloud Manager.
+You can connect to Lish using a web browser. This is useful when you don't have access to a terminal application, or if you just need quick and easy console access from Cloud Manager.
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com).
+1.  Log in to [Cloud Manager](https://cloud.linode.com).
 
 1.  Click on the **Linodes** link in the sidebar and select the desired Compute Instance.
 
-1.  Click on the **Launch LISH Console** link in the top right-hand corner of the Cloud Manager.
+1.  Click on the **Launch LISH Console** link in the top right-hand corner of Cloud Manager.
 
     ![Launch the Lish Console](launch-console-button.png)
 
@@ -57,7 +57,7 @@ If you have [Third Party Authentication](/docs/products/platform/accounts/guides
     ```
 
     {{< note >}}
-    Users who have been granted "Access" rights on a particular Compute Instance will have access to its Lish console via the gateway. Linodes that a user can't access in the Cloud Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/).
+    Users who have been granted "Access" rights on a particular Compute Instance will have access to its Lish console via the gateway. Linodes that a user can't access in Cloud Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/).
     {{< /note >}}
 
 1.  Verify that the Lish SSH gateway's fingerprint is valid by verifying the Terminal's output against the list of our [Lish Gateway Fingerprints](#lish-gateways). Once verified, enter *yes* to proceed.
@@ -78,7 +78,7 @@ If you have [Third Party Authentication](/docs/products/platform/accounts/guides
     Once you have removed the cached IP address, you can again attempt to SSH into the Lish gateway.
     {{</ note >}}
 
-1.  Enter the password you use to log in to the Cloud Manager. You are now at the Lish shell. A list of your Compute Instances appears, as shown below:
+1.  Enter the password you use to log in to Cloud Manager. You are now at the Lish shell. A list of your Compute Instances appears, as shown below:
 
     ```output
     Linodes located in this data center:
@@ -90,7 +90,7 @@ If you have [Third Party Authentication](/docs/products/platform/accounts/guides
     ```
 
     {{< note >}}
-    You can add a public SSH key for Lish in the Cloud Manager to automatically connect to Lish without a password. See [this section](#add-your-public-key) for more information.
+    You can add a public SSH key for Lish in Cloud Manager to automatically connect to Lish without a password. See [this section](#add-your-public-key) for more information.
     {{< /note >}}
 
 1.  At the Lish command prompt, type a Compute Instance's name from the list. For example, typing `linode241706` will connect you to the screen console session for that Instance.
@@ -103,7 +103,7 @@ After you log in, you'll have console access to your Compute Instance. You'll be
 
 If you don't want to enter your password every time you connect to Lish, or if you have [Third Party Authentication](/docs/products/platform/accounts/guides/third-party-authentication/) enabled on your account, you can add your public SSH key to the Linode Cloud Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](/docs/guides/use-public-key-authentication-with-ssh/) guide for more information.
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com).
+1.  Log in to [Cloud Manager](https://cloud.linode.com).
 
 1.  Click on the profile icon in the top right hand corner of the Manager and select **LISH Console Settings**.
 
@@ -111,7 +111,7 @@ If you don't want to enter your password every time you connect to Lish, or if y
 
     ![Add your public ssh key](lish-add-public-key.png)
 
-1.  Click the **Save** button. Your Lish key will be saved in the Cloud Manager.
+1.  Click the **Save** button. Your Lish key will be saved in Cloud Manager.
 
 Now you can log in to any of the Lish gateway boxes without having to type your password.
 
@@ -119,7 +119,7 @@ If you wish to disable Lish access for users without keys, use the **Authenticat
 
 ## Lish Commands
 
-The Lish shell provides access to many functions which are otherwise only accessible via the Cloud Manager web-based administration tool. Enter the `help` command to see a full list of available commands. The output provides an introduction to Lish functionality:
+The Lish shell provides access to many functions which are otherwise only accessible via Cloud Manager. Enter the `help` command to see a full list of available commands. The output provides an introduction to Lish functionality:
 
 ```output
 kill            - kill stuck screen sessions

@@ -11,7 +11,7 @@ tags: ["linode platform"]
 Some countries, states, and regions require us by law to collect taxes. As such, customers located in these locations are charged the appropriate tax rate for any taxable services billed to their account. The taxes that Linode collects are listed on customer invoices (see the [Viewing Invoices and Payments](/docs/products/platform/billing/guides/view-history/) section of our Cloud Manager Billing guide).
 
 {{< note >}}
-Pricing and service fees posted publicly, such as our [Pricing](https://www.linode.com/pricing/) page and listed in the Cloud Manager, do not include taxes.
+Pricing and service fees posted publicly, such as our [Pricing](https://www.linode.com/pricing/) page and listed in Cloud Manager, do not include taxes.
 {{< /note >}}
 
 ## List of Countries and Tax Rates
@@ -136,7 +136,7 @@ If you are located in one of the countries that require taxes on our services, y
 
 To add (or update) your account with a tax ID, follow the instructions below. A tax ID can also be added to an account during the signup process.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com).
+1. Log in to [Cloud Manager](https://cloud.linode.com).
 
 1. Navigate to the **Account** link in the sidebar.
 
@@ -154,7 +154,7 @@ Your tax location is determined by the contact information you provided during s
 
 ### How can I change my tax location?
 
-You may update your tax location by navigating to the **Account** page in the [Cloud Manager](https://cloud.linode.com) and then expanding the **Update Contact Information** panel.
+You may update your tax location by navigating to the **Account** page in [Cloud Manager](https://cloud.linode.com) and then expanding the **Update Contact Information** panel.
 
 ### My business is tax exempt. How can I stop further taxes from being charged to my Linode account?
 

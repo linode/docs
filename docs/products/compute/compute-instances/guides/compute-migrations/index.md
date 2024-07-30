@@ -7,7 +7,7 @@ keywords: ['migrate','migration','host']
 tags: ["linode platform","cloud manager"]
 ---
 
-A migration occurs when a Compute Instance is moved from one physical host machine to another. This can happen within the same data center or across data centers. Migrations across data centers can be configured by customers in the Cloud Manager. All other types of migrations must be configured by a Linode or Akamai administrator.
+A migration occurs when a Compute Instance is moved from one physical host machine to another. This can happen within the same data center or across data centers. Migrations across data centers can be configured by customers in Cloud Manager. All other types of migrations must be configured by a Linode or Akamai administrator.
 
 ## Types of Migrations
 
@@ -74,9 +74,9 @@ In order for a live migration to occur, a host compatible with the host your ins
 
 ### What should I do if my warm migration fails?
 
--   If your warm migration fails to complete after an early initiation is triggered via the Cloud Manager, the Support team is notified. There are two options that are used at the discretion of the Support team.
+-   If your warm migration fails to complete after an early initiation is triggered via Cloud Manager, the Support team is notified. There are two options that are used at the discretion of the Support team.
     - A new warm migration can be configured to be performed at a scheduled time.
-    - A cold migration can be configured. You can then initiate the cold migration via the Cloud Manager or allow it to proceed as otherwise scheduled.
+    - A cold migration can be configured. You can then initiate the cold migration via Cloud Manager or allow it to proceed as otherwise scheduled.
 
 ### What should I do if my warm resize fails?
 

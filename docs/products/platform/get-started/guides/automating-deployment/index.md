@@ -87,7 +87,7 @@ Golden disks are capable of handling automated server builds for most individual
     - [Use Salt States to Create LAMP Stack and Fail2ban Across Salt minions](/docs/guides/use-salt-states-to-create-lamp-stack-and-fail2ban-across-salt-minions/)
     - [Configure and Use Salt Cloud and Cloud Maps to Provision Systems](/docs/guides/configure-and-use-salt-cloud-and-cloud-maps-to-provision-systems/)
 
-- **Terraform:** Terraform by HashiCorp is an orchestration tool that lets you represent your Compute Instances and other resources with declarative code inside configuration files, instead of manually creating those resources via the Cloud Manager or API. This practice is referred to as Infrastructure as Code, and Terraform is a popular example of this methodology.
+- **Terraform:** Terraform by HashiCorp is an orchestration tool that lets you represent your Compute Instances and other resources with declarative code inside configuration files, instead of manually creating those resources via Cloud Manager or API. This practice is referred to as Infrastructure as Code, and Terraform is a popular example of this methodology.
 
     - [A Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/)
     - [Introduction to HashiCorp Configuration Language (HCL)](/docs/guides/introduction-to-hcl/)

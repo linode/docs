@@ -13,5 +13,5 @@ If you no longer need Linode's Managed Services offering, you can cancel it by [
 - **cPanel:** When the service is cancelled, any cPanel licenses acquired through Managed Services are also revoked. If you still wish to use cPanel, you can purchase licenses directly through the [cPanel website](https://cpanel.net/pricing/).
 
 {{< note >}}
-There is not currently a self-service option for cancelling Managed Services in the Cloud Manager, Linode CLI, or Linode API. You will need to contact the Support team to do so.
+There is not currently a self-service option for cancelling Managed Services in Cloud Manager, Linode CLI, or Linode API. You will need to contact the Support team to do so.
 {{< /note >}}

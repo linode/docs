@@ -32,7 +32,7 @@ You can configure three security questions on your user account. Security questi
 
 ### Configuring Security Questions.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and navigate to the [Login & Authentication](https://cloud.linode.com/profile/auth) page of your user profile. To do this, click on your username in the top right of the Cloud Manager and select **Login & Authentication** from the dropdown menu.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and navigate to the [Login & Authentication](https://cloud.linode.com/profile/auth) page of your user profile. To do this, click on your username in the top right of Cloud Manager and select **Login & Authentication** from the dropdown menu.
 
 1. Scroll down to **Security Questions** under the **Security Settings** section. Here, you can view the security questions available to you or, if you've already configured them, see the questions you have selected.
 
@@ -58,7 +58,7 @@ Standard carrier messaging fees apply for each SMS message.
 
 ### Adding a Verified Phone Number
 
-1. Log in to [Cloud Manager](https://cloud.linode.com) and navigate to the [Login & Authentication](https://cloud.linode.com/profile/auth) page of your user profile. To do this, click on your username in the top right of the Cloud Manager and select **Login & Authentication** from the dropdown menu.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and navigate to the [Login & Authentication](https://cloud.linode.com/profile/auth) page of your user profile. To do this, click on your username in the top right of Cloud Manager and select **Login & Authentication** from the dropdown menu.
 
 1. Scroll down to **Phone Verification** under the **Security Settings** section. Here, you can view, add, and remove your verified phone number.
 
@@ -72,7 +72,7 @@ Standard carrier messaging fees apply for each SMS message.
 
 ## Multiple User Accounts
 
-Organizations that require multiple individuals to access the same customer account should create separate *user accounts* for each individual. Once you've created a user account, you can assign permissions to restrict access to certain services and areas of the Cloud Manager. This is useful for providing all team members access to a single customer account, allowing a billing department to view invoices and billing details, or granting access to outside developers. For more information, see our guide on [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/).
+Organizations that require multiple individuals to access the same customer account should create separate *user accounts* for each individual. Once you've created a user account, you can assign permissions to restrict access to certain services and areas of Cloud Manager. This is useful for providing all team members access to a single customer account, allowing a billing department to view invoices and billing details, or granting access to outside developers. For more information, see our guide on [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/).
 
 ## Single sign-on (SSO) with Akamai Control Center
 

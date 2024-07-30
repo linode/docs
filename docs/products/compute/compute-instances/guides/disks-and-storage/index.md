@@ -25,9 +25,9 @@ The local storage capacity of a Compute Instance can only be increased by upgrad
 
 ## View Disks
 
-A Compute Instance's total storage space and disks can be viewed and managed from the [Cloud Manager](https://cloud.linode.com).
+A Compute Instance's total storage space and disks can be viewed and managed from [Cloud Manager](https://cloud.linode.com).
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com), click the **Linodes** link in the sidebar, and select a Compute Instance from the list.
+1. Log in to [Cloud Manager](https://cloud.linode.com), click the **Linodes** link in the sidebar, and select a Compute Instance from the list.
 
 1. Look within the **Summary** section of the instance's dashboard to view the total storage.
 
@@ -80,7 +80,7 @@ Once a disk has been created, you will need to modify the existing configuration
 The size of a Compute Instance's disk can be increased or decreased as needed. When resizing, it's important to keep the following restrictions in mind:
 
 - The **maximum size** of a disk is equal to the current size of the disk and the remaining unallocated storage space on the Compute Instance. The maximum size is displayed underneath the **Size** field when resizing the disk.
-- The **minimum size** of a disk is equal to the current disk usage within the filesystem. This number is not displayed in the Cloud Manager. To determine how much space the files on the disk are using, run the command `df -h` within the Compute Instance's command line (through [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) or [Lish](/docs/products/compute/compute-instances/guides/lish/)).
+- The **minimum size** of a disk is equal to the current disk usage within the filesystem. This number is not displayed in Cloud Manager. To determine how much space the files on the disk are using, run the command `df -h` within the Compute Instance's command line (through [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) or [Lish](/docs/products/compute/compute-instances/guides/lish/)).
 - **Raw disks** can only be resized to a larger disk.
 - Disks with **custom partitions** cannot be resized.
 

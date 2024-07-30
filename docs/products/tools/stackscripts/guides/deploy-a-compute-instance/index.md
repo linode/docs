@@ -1,6 +1,6 @@
 ---
 title: Deploy a Compute Instance Using a StackScript
-description: 'In this guide, you will learn the various methods you can use in conjunction with the Cloud Manager to deploy a new Linode with a StackScript.'
+description: 'In this guide, you will learn the various methods you can use in conjunction with Cloud Manager to deploy a new Linode with a StackScript.'
 published: 2020-04-22
 modified: 2023-02-02
 keywords: ["stackscripts", "automation", "script", "custom instance", "deployment"]
@@ -14,7 +14,7 @@ When deploying a Compute Instance, you can choose to select a StackScript. This 
 Linode does not verify the accuracy of any community submitted StackScripts. Before deploying a Compute Instance using a Community StackScript, you should review the script so that you understand what changes it will make on your new instance.
 {{< /note >}}
 
-1. Log into the [Cloud Manager](https://cloud.linode.com/) and select **StackScripts** from the left navigation menu.
+1. Log into [Cloud Manager](https://cloud.linode.com/) and select **StackScripts** from the left navigation menu.
 
 1. Navigate to either the *Account StackScripts* tab (for StackScripts on your own customer account) or *Community StackScripts* tab (for StackScripts publicly shared by other members of the community).
 

@@ -21,7 +21,7 @@ Multi-queue NICs (network interface cards) are supported on all Compute Instance
 
 Check if multi-queue is already enabled on your network devices by using the [ethtool](https://en.wikipedia.org/wiki/Ethtool) command-line tool.
 
-1.  Review the number of CPU cores (vCPUs) available on your Compute Instance by finding your plan within the [Linode Pricing](https://www.linode.com/pricing/) page or by logging in to the [Cloud Manager](https://cloud.linode.com/), selecting your Compute Instance, and reviewing the *CPU Cores* value under **Summary**.
+1.  Review the number of CPU cores (vCPUs) available on your Compute Instance by finding your plan within the [Linode Pricing](https://www.linode.com/pricing/) page or by logging in to [Cloud Manager](https://cloud.linode.com/), selecting your Compute Instance, and reviewing the *CPU Cores* value under **Summary**.
 
 1.  Log in to your Compute Instance through [Lish](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/).
 
@@ -68,7 +68,7 @@ Check if multi-queue is already enabled on your network devices by using the [et
 
 If multi-queue is not enabled and a reboot did not automatically enable it, you can manually enable this feature through the following instructions.
 
-1.  Review the number of vCPU cores available on your Compute Instance by finding your plan within the [Linode Pricing](https://www.linode.com/pricing/) page or by logging in to the [Cloud Manager](https://cloud.linode.com/), selecting your Compute Instance, and reviewing the *CPU Cores* value under **Summary**.
+1.  Review the number of vCPU cores available on your Compute Instance by finding your plan within the [Linode Pricing](https://www.linode.com/pricing/) page or by logging in to [Cloud Manager](https://cloud.linode.com/), selecting your Compute Instance, and reviewing the *CPU Cores* value under **Summary**.
 
 1.  Run the following command to enable multiple queues, replacing *[cpu-count]* with the number of vCPUs on your Compute Instance.
 

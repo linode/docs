@@ -24,11 +24,11 @@ The following sections include commands that show how to manipulate credentials 
 
 ## Cloud Manager Access
 
-Access to the Cloud Manager provides high-level methods for controlling your Compute Instances and Linode billing, including but not limited to: powering Compute Instances down, powering them on, removing services, and adding services. The Cloud Manager does not have interfaces for manipulating the files and software on your systems--instead, that access is governed by service-specific credentials outlined in the next sections.
+Access to Cloud Manager provides high-level methods for controlling your Compute Instances and Linode billing, including but not limited to: powering Compute Instances down, powering them on, removing services, and adding services. Cloud Manager does not have interfaces for manipulating the files and software on your systems--instead, that access is governed by service-specific credentials outlined in the next sections.
 
 ### Who Has Access to My Linode Account?
 
-Log in to the Cloud Manager and navigate to the [**Users and Permissions**](https://cloud.linode.com/account/users) section of the **Account** tab. You may be prompted to reauthenticate your password. This section will display all of your Linode account's users.
+Log in to Cloud Manager and navigate to the [**Users and Permissions**](https://cloud.linode.com/account/users) section of the **Account** tab. You may be prompted to reauthenticate your password. This section will display all of your Linode account's users.
 
 If you're not sure whether you're logged in as the account administrator, look for a `No` in the **Restricted** column of your username's row in the User Manager.
 
@@ -47,9 +47,9 @@ Useful *Global Grants* for a limited access user might include the ability to:
 
 ### Revoke a User's Access to the Linode Account
 
-1. If you suspect that the user may have access to the Cloud Manager password, [change that first](/docs/products/platform/accounts/guides/reset-user-password/).
+1. If you suspect that the user may have access to their Cloud Manager password, [change that first](/docs/products/platform/accounts/guides/reset-user-password/).
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and click [**Users and Permissions**](https://cloud.linode.com/account/users) in the **Account** tab. You may be prompted to reauthenticate your password.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and click [**Users and Permissions**](https://cloud.linode.com/account/users) in the **Account** tab. You may be prompted to reauthenticate your password.
 
 1. Locate the user in the Username column, and click the three dots and select **Delete** to remove the user. Click **Delete** to confirm deletion.
 

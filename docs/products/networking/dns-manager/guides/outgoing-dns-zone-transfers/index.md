@@ -41,7 +41,7 @@ On February 7th, 2023, the IP address `65.19.178.10` will be retired and replace
 
 ## Add Secondary Name Servers
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com), select *Domains* from the left menu, and click on the domain you wish to update.
+1. Log in to [Cloud Manager](https://cloud.linode.com), select *Domains* from the left menu, and click on the domain you wish to update.
 
 1. Locate the **SOA Record** section and click **Edit**. This action may appear within the corresponding **ellipsis** menu.
 

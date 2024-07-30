@@ -10,7 +10,7 @@ image: using-linode-glish-title.jpg
 aliases: ['/platform/manager/using-the-linode-graphical-shell-glish-classic-manager/','/networking/using-the-graphic-shell-glish/','/networking/using-the-linode-graphical-shell-glish/','/platform/manager/using-the-linode-graphical-shell-glish/','/platform/using-the-linode-graphical-shell-glish/','/networking/use-the-graphic-shell-glish/','/guides/using-the-linode-graphical-shell-glish/','/guides/glish/']
 ---
 
-Glish is the graphical version of [Lish](/docs/products/compute/compute-instances/guides/lish/) (the Linode Shell). It lets you run a desktop environment on your Compute Instance and access it through the Cloud Manager.
+Glish is the graphical version of [Lish](/docs/products/compute/compute-instances/guides/lish/) (the Linode Shell). It lets you run a desktop environment on your Compute Instance and access it through Cloud Manager.
 
 {{< note >}}
 Linode distribution images do not have any desktop environments pre-installed. While this guide provides instructions for installing Xfce on Debian, you can use any other desktop environment and distribution. Popular desktop environments on Linux include Gnome, KDE, MATE, and Xfce.
@@ -66,7 +66,7 @@ The instructions below install Xfce4 and LightDM on Debian 11. You are not limit
 
 ## Access Glish and the Linux Desktop
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com), click the **Linodes** link in the sidebar, and select your desired Compute Instance from the list.
+1.  Log in to [Cloud Manager](https://cloud.linode.com), click the **Linodes** link in the sidebar, and select your desired Compute Instance from the list.
 
 1.  To open the console, click on the **Launch Console** button in the top right corner of the summary page.
 

@@ -13,7 +13,7 @@ You need to install the kubectl client to your computer before proceeding. Follo
 
 ## Connect to a Cluster with kubectl
 
-After you've created your LKE cluster using the Cloud Manager, you can begin interacting with and managing your cluster. You connect to it using the kubectl client on your computer. To configure kubectl, download your cluster's *kubeconfig* file.
+After you've created your LKE cluster using Cloud Manager, you can begin interacting with and managing your cluster. You connect to it using the kubectl client on your computer. To configure kubectl, download your cluster's *kubeconfig* file.
 
 ### Access and Download your kubeconfig
 

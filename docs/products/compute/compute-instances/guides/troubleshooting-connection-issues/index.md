@@ -43,11 +43,11 @@ Review the installation instructions in Linode's [Diagnosing Network Issues with
 
 ## Is your Compute Instance Running?
 
-Log in to the [Cloud Manager](https://cloud.linode.com/) and inspect the Compute Instance's dashboard. If the instance is powered off, turn it on.
+Log in to [Cloud Manager](https://cloud.linode.com/) and inspect the Compute Instance's dashboard. If the instance is powered off, turn it on.
 
 ### Inspect the Lish Console
 
-If the Compute Instance is listed as running in the Cloud Manager, or after you boot it from the Manager, open the Lish console and look for a login prompt. If a login prompt exists, try logging in with your root user credentials (or any other Linux user credentials that you previously created on the server).
+If the Compute Instance is listed as running in Cloud Manager, or after you boot it from the Manager, open the Lish console and look for a login prompt. If a login prompt exists, try logging in with your root user credentials (or any other Linux user credentials that you previously created on the server).
 
 {{< note >}}
 The root user is available in Lish even if root user login is disabled in your SSH configuration.

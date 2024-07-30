@@ -51,7 +51,7 @@ Network Helper can be enabled or disabled for each Compute Instance. There is al
 
 The global Network Helper setting enables or disables Network Helper on *new* Compute Instances. Existing Compute Instances are not affected by any changes to this global setting. When Network Helper is enabled globally, all *new* Compute Instances are created with Network Helper enabled by default.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Account** link on the left sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and click the **Account** link on the left sidebar.
 
 1. Navigate to the **Settings** tab and scroll down to the *Network Helper* section.
 

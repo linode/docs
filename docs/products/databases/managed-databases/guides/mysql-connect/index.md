@@ -11,7 +11,7 @@ To connect to a MySQL Managed Database, you need to know a few important details
 
 ## View Connection Details
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu.
 
 1. Select your Managed Database from the list. This opens the detail page for that database cluster.
 
@@ -74,7 +74,7 @@ The MySQL Workbench provides a graphical interface for connecting to MySQL datab
 
     ![The Parameters tab in MySQL Workbench](mysql-workbench-connection-parameters.png)
 
-1.  Under the *SSL* tab, set **Use SSL** to *Require*. You may also use *Required and Verify CA* if you wish to verify the CA (Certificate Authority) certificate each time you connect. If you choose this option, download the CA certificate from the Cloud Manager and set the **SSL CA File** field to point to that downloaded file.
+1.  Under the *SSL* tab, set **Use SSL** to *Require*. You may also use *Required and Verify CA* if you wish to verify the CA (Certificate Authority) certificate each time you connect. If you choose this option, download the CA certificate from Cloud Manager and set the **SSL CA File** field to point to that downloaded file.
 
     ![The SSL tab in MySQL Workbench](mysql-workbench-connection-ssl.png)
 

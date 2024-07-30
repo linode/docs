@@ -13,11 +13,11 @@ NodeBalancers, and load balancers in general, operate by taking inbound traffic 
 
 Each configuration is assigned a single inbound port. Follow the instructions below to add or edit a configuration. If your application requires multiple inbound ports, create one configuration for *each* port you wish to use. This provides a great amount of flexibility, allowing each port to have its own distinct configuration settings and back-end nodes.
 
-1. Log in to the [Cloud Manager](http://cloud.linode.com), click **NodeBalancers** in the left menu, and select the NodeBalancer you wish to edit. See [Manage NodeBalancers](/docs/products/networking/nodebalancers/guides/manage/).
+1. Log in to [Cloud Manager](http://cloud.linode.com), click **NodeBalancers** in the left menu, and select the NodeBalancer you wish to edit. See [Manage NodeBalancers](/docs/products/networking/nodebalancers/guides/manage/).
 
 1. Navigate to the **Configurations** tab. This displays a list of all ports that have been configured.
 
-    ![Screenshot of a NodeBalancer's Configuration in the Cloud Manager](nodebalancer-configurations.png)
+    ![Screenshot of a NodeBalancer's Configuration in Cloud Manager](nodebalancer-configurations.png)
 
 1. Open the port configuration you wish to edit or create a new one by clicking the **Add Another Configuration** button.
 

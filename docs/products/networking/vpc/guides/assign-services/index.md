@@ -47,7 +47,7 @@ When creating a new Compute Instance, you have the option to assign it to an exi
 
 If a Compute Instance is created with a VPC, the VPC is automatically enabled on the `eth0` network interface. No other network interfaces are configured. An exception to that is if the Compute Instance is also configured with a **Private IP** address (which is not recommended). In this case, the `eth1` network interface is configured as _Public Internet_.
 
-![Screenshot of the VPC section of the Create Linode screen in the Cloud Manager](create-instance-vpc.jpg)
+![Screenshot of the VPC section of the Create Linode screen in Cloud Manager](create-instance-vpc.jpg)
 
 ## Use the VPC Management Workflows to Assign an Existing Compute Instance {#assign-existing-instance-with-vpc-management-workflows}
 
@@ -75,7 +75,7 @@ Every Compute Instance can have up to three network interfaces (Public, VPC, and
 
 If you wish for an instance to be configured on a VPC, the _VPC_ option needs to be selected on at least one interface. In most cases, a VPC should be configured on the first network interface (`eth0`). Configuring a VPC on other interfaces prevent the instance from communicating with other subnets in the same VPC. For more details regarding configuring network interfaces, review the [Configuration Profile Settings](/docs/products/compute/compute-instances/guides/configuration-profiles/#settings).
 
-1.  Within the [Cloud Manager](https://cloud.linode.com), view the Configuration Profiles for your desired Compute Instance. See [View Configuration Profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/#view-configuration-profiles).
+1.  Within [Cloud Manager](https://cloud.linode.com), view the Configuration Profiles for your desired Compute Instance. See [View Configuration Profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/#view-configuration-profiles).
 
 1.  Within the **Configurations** table, locate the configuration profile you wish to modify and click the corresponding **Edit** button, which may also appear within the **ellipsis** menu. This displays the **Edit Configuration** form. In most cases, there should be only one configuration profile.
 

@@ -5,9 +5,9 @@ published: 2022-10-07
 modified: 2023-02-06
 ---
 
-This guide walks you through creating a NodeBalancer through the Cloud Manager.
+This guide walks you through creating a NodeBalancer through Cloud Manager.
 
-1. [Open the Create NodeBalancer Form in the Cloud Manager](#open-the-create-nodebalancer-form-in-the-cloud-manager)
+1. [Open the Create NodeBalancer Form in Cloud Manager](#open-the-create-nodebalancer-form-in-cloud-manager)
 1. [Set the Label](#set-the-label)
 1. [Select a Region](#select-a-region)
 1. [Assign a Cloud Firewall](#assign-a-cloud-firewall-optional)
@@ -16,9 +16,9 @@ This guide walks you through creating a NodeBalancer through the Cloud Manager.
 1. [Add Back-end Nodes to Each Port](#add-backend-nodes-to-each-port)
 1. [Deploy the NodeBalancer](#deploy-the-nodebalancer)
 
-## Open the Create NodeBalancer Form in the Cloud Manager
+## Open the Create NodeBalancer Form in Cloud Manager
 
-Log in to the [Cloud Manager](https://cloud.linode.com/) and select **NodeBalancers** from the left navigation menu. Click the **Create NodeBalancer** button. This opens the *[NodeBalancer Create](https://cloud.linode.com/nodebalancers/create)* form.
+Log in to [Cloud Manager](https://cloud.linode.com/) and select **NodeBalancers** from the left navigation menu. Click the **Create NodeBalancer** button. This opens the *[NodeBalancer Create](https://cloud.linode.com/nodebalancers/create)* form.
 
 ## Set the Label
 

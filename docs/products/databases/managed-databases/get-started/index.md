@@ -13,7 +13,7 @@ Linode's Managed Database service is a convenient and reliable way to host your 
 
 ## Create a Managed Database
 
-A Managed Database can be deployed using the Cloud Manager, the Linode API, or the Linode CLI. For instructions on deploying it through the Cloud Manager, see the following guide:
+A Managed Database can be deployed using Cloud Manager, the Linode API, or the Linode CLI. For instructions on deploying it through Cloud Manager, see the following guide:
 
 - [Create a Managed Database](/docs/products/databases/managed-databases/guides/create-database/)
 - [Choosing a Database Engine and Plan](/docs/products/databases/managed-databases/guides/database-engines/)
