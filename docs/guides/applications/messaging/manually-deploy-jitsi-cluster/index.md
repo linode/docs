@@ -4,7 +4,7 @@ title: "Manually Deploy a Jitsi Cluster on Akamai"
 description: "This guide goes over how to manually deploy a scalable Jitsi conferencing cluster with Ansible using provided playbooks."
 authors: ["John Dutton","Elvis Segura"]
 contributors: ["John Dutton","Elvis Segura"]
-published: 2024-07-01
+published: 2024-07-30
 keywords: ['jitsi','conferencing','communications','cluster']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -48,13 +48,13 @@ If you wish to deploy Jitsi automatically rather than manually, consider either 
 
 ### Prerequisites
 
-The following software and components must be installed and configured on your local system in order for the playbooks in this guide to function properly.
+The following software and components must be installed and configured on your local system in order for the playbooks in this guide to function:
 
 -   An installed [Python](https://www.python.org/downloads/) version: > v3.8
 
 -   The [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html) Python library
 
--   Your [Linode API access token](/docs/products/tools/api/get-started/#get-an-access-token)
+-   A [Linode API access token](/docs/products/tools/api/get-started/#get-an-access-token)
 
 -   A configured [SSH key pair](/docs/guides/use-public-key-authentication-with-ssh/) along with your public key
 
@@ -66,9 +66,9 @@ The following software and components must be installed and configured on your l
 
 ## Clone the docs-cloud-projects Github Repository
 
-In order to run the Jitsi deployment in this guide, you must first clone the docs-cloud-projects Github repository to your local machine. This includes all playbooks, configurations, and files for all project directories in the repository, including those needed to successfully deploy your Jitsi cluster.
+In order to run the Jitsi deployment in this guide, the docs-cloud-projects Github repository must be cloned to your local machine. This includes all playbooks, configurations, and files for all project directories in the repository, including those needed to successfully deploy and scale the Jitsi cluster.
 
-1.  Clone the docs-cloud-projects repository. This will clone the repository to your current working directory on your local machine:
+1.  Using git, clone the docs-cloud-projects repository. This clones the repository to the current working directory on your local machine:
 
     ```command
     git clone https://github.com/linode/docs-cloud-projects.git
@@ -80,13 +80,13 @@ In order to run the Jitsi deployment in this guide, you must first clone the doc
     cd docs-cloud-projects/apps/manual-jitsi-cluster
     ```
 
-1.  Confirm contents of the manual-jitsi-cluster directory on your system:
+1.  Confirm the manual-jitsi-cluster directory contents on your system:
 
     ```command
     ls
     ```
 
-    You should see contents similar to the following:
+    The following contents should be visible:
 
     ```output
     ansible.cfg  collections.yml  group_vars  hosts  images  LICENSE  provision.yml
@@ -110,7 +110,7 @@ In order to run the Jitsi deployment in this guide, you must first clone the doc
     ansible-galaxy collection install -r collections.yml
     ```
 
-1.  Confirm installation of Ansible:
+1.  Confirm Ansible is installed:
 
     ```command
     ansible --version
@@ -121,16 +121,23 @@ In order to run the Jitsi deployment in this guide, you must first clone the doc
     ```output
     ansible [core 2.13.13]
     (...)
-    python version = 3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0]
+    python version = 3.12.4 (main, Jun 18 2024, 08:58:27) [Clang 15.0.0 (clang-1500.0.40.1)]
     jinja version = 3.1.4
     libyaml = True
     ```
+
+    {{< note title="Upgrading the ansible-core package" >}}
+    Some ansible-core package verions may contain older parameters. Should you experience any errors related to out-of-date or deprecated parameters, the ansible-core version can be updated with the below command:
+    ```command
+    python -m pip install --upgrade ansible-core
+    ```
+    {{< /note >}}
 
 ## Setup
 
 All secrets are encrypted with the Ansible Vault utility as a best practice.
 
-1.  Export `VAULT_PASSWORD`, replacing {{< placeholder "MY_VAULT_PASSWORD" >}} with a password of your choosing. This password acts as a key, allowing you to decrypt your encrypted secrets. Save this password for future use:
+1.  Export `VAULT_PASSWORD`, replacing {{< placeholder "MY_VAULT_PASSWORD" >}} with a password of your choosing. This password acts as a key for decrypting encrypted secrets. Save this password for future use:
 
     ```command
     export VAULT_PASSWORD={{< placeholder "MY_VAULT_PASSWORD" >}}
@@ -150,7 +157,7 @@ All secrets are encrypted with the Ansible Vault utility as a best practice.
     When making root and sudo user passwords, it is a best practice to use a random password generator for security purposes. Save these passwords in a safe place for future reference.
     {{< /note >}}
 
-1.  Copy the generated outputs for `root_password`, `sudo_password`, and `api_token`, and save them in the `secret_vars` file located in `group_vars/galera/secret_vars`. Sample output:
+1.  Copy the generated outputs for `root_password`, `sudo_password`, and `api_token`, and save them in the `secret_vars` file located in `group_vars/jitsi/secret_vars`. Sample output:
 
     ```output
     root_password: !vault |
@@ -178,18 +185,20 @@ All secrets are encrypted with the Ansible Vault utility as a best practice.
 
 1.  Using a text editor, open and edit the Linode instance parameters in the `group_vars/jitsi/vars` file. Replace the values for the following variables with your preferred deployment specifications:
 
-    - `ssh_keys`: Your SSH public key(s)
+    - `ssh_keys`: Your SSH public key(s); replace the example keys with your own and remove any unused keys.
     - `jitsi_type`: Compute Instance type and plan for the Jitsi Meet instance
     - `jvb_type`: Compute Instance type and plan for each JVB instance
-    - `region`: The data center region for your cluster
-    - `group` and `linode_tags` (optional): The [group or tag](/docs/guides/tags-and-groups/) you wish to apply to your cluster's instances for organizational purposes
-    - `soa_email_address`: Your SOA administrator email for DNS records
-    - `jvb_cluster_size`: The number of JVB instances in your cluster deployment
-    - `sudo_username`: Your chosen sudo user username
-    - `subdomain` and `subdomain` (optional): If you have a FQDN, you can use these optional values to customize your Jitsi meet URL. If you choose to leave these blank, you can navigate to your Jitsi meet using the default rDNS value of the Jitsi meet instance once your cluster is provisioned.
+    - `region`: The data center region for the cluster
+    - `group` and `linode_tags` (optional): Any [groups or tags](/docs/guides/tags-and-groups/) you wish to apply to your cluster's instances for organizational purposes
+    - `soa_email_address`: An SOA administrator email for DNS records
+    - `jvb_cluster_size`: The number of JVB instances in the cluster deployment
+    - `sudo_username`: A sudo username for each cluster instance
+    - `subdomain` and `subdomain` (optional): If you have a FQDN, you can use these optional values to customize your Jitsi meet URL. If you choose to leave these blank, you can navigate to your Jitsi meet using the Jitsi meet instance's default rDNS value once the cluster is provisioned. See our guide on [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) for how to find an instance's rDNS value.
 
     ```file {title="group_vars/jitsi/vars"}
-    ssh_keys: {{< placeholder "YOUR_PUBLIC_KEY" >}}
+    ssh_keys:
+        - ssh-ed25519: {{< placeholder "YOUR_PUBLIC_KEY" >}}
+        - ssh-rsa: {{< placeholder "YOUR_PUBLIC_KEY" >}}
     jitsi_prefix: jitsi
     jitsi_type: g6-dedicated-2
     jvb_prefix: jvb
@@ -208,21 +217,21 @@ All secrets are encrypted with the Ansible Vault utility as a best practice.
     # domain: {{< placeholder "YOUR_FQDN" >}}
     ```
 
-    The `jvb_cluster_size` variable dynamically scales your cluster size. This variable determines how many Jitsi Videobridge instances are created in the initial deployment. This variable can be left commented out along with the `subdomain` and `domain` variables. These values are passed along using the `ansible-playbook` CLI during cluster provisioning.
+    The `jvb_cluster_size` variable dynamically scales the cluster size. This variable determines how many Jitsi Videobridge instances are created in the initial deployment. This variable can be left commented out along with the `subdomain` and `domain` variables. These values are passed along using the `ansible-playbook` CLI during cluster provisioning.
 
     See [Linode API: List Types](https://techdocs.akamai.com/linode-api/reference/get-linode-types) for information on Linode API parameters.
 
 ## Provision Your Cluster
 
-1.  Using the ansible-playbook utility, run the `provision.yml` playbook with verbose options so you can see the progress. This stands up your Linode instances and dynamically writes your Ansible inventory to the hosts file. The playbook is complete when ssh is available on all deployed instances.
+1.  Using the `ansible-playbook` utility, run the `provision.yml` playbook with verbose options to keep track of the deployment process. This stands up Linode instances and dynamically writes the Ansible inventory to the hosts file. The playbook is complete when ssh is available on all deployed instances.
 
-    The command below uses the `jvb_cluster_size` variable to define the number of Jitsi Videobridge instances deployed in your cluster. Replace {{< placeholder "2" >}} with the number of instances you wish to include in your deployment. Replace {{< placeholder "YOUR_SUBDOMAIN" >}} and {{< placeholder "YOUR_FQDN" >}} with your subdomain and FQDN:
+    The command below uses the `jvb_cluster_size` variable to define the number of Jitsi Videobridge instances deployed in the cluster. Replace {{< placeholder "2" >}} with the number of instances you wish to include in your deployment. Replace {{< placeholder "YOUR_SUBDOMAIN" >}} and {{< placeholder "YOUR_FQDN" >}} with your subdomain and FQDN:
 
     ```command
     ansible-playbook -vvv provision.yml --extra-vars "jvb_cluster_size=2 subdomain={{< placeholder "YOUR_SUBDOMAIN" >}} domain={{< placeholder "YOUR_FQDN" >}}"
     ```
 
-    If you are not using your own domain and wish to use the default rDNS value of the Jitsi meet instance, remove the `subdomain` and `domain` variables from the command:
+    If you are not using your own domain and wish to use the Jitsi meet instance's default rDNS value, remove the `subdomain` and `domain` variables from the command:
 
     ```command
     ansible-playbook -vvv provision.yml --extra-vars "jvb_cluster_size=2"
@@ -250,11 +259,11 @@ All secrets are encrypted with the Ansible Vault utility as a best practice.
 
 ## Scaling options
 
-Depending on your needs, you may wish to scale your Jitsi cluster up or down. To do this, you can use the `jvb_cluster_size` variable to manually add or remove instances from your Jitsi cluster. Scaling your cluster up or down uses the same `ansible-playbook` command as when initially provisioning the cluster.
+Depending on your needs, you may wish to scale your Jitsi cluster up or down. To do this, use the `jvb_cluster_size` variable to manually add or remove JVB instances from the Jitsi cluster. Scaling your cluster up or down uses the same `ansible-playbook` command as when initially provisioning the cluster.
 
 ### Horizontal Up Scaling
 
-To scale up your cluster size, use the `ansible-playbook` command with the new number of instances you wish to scale up to. For example, if your initial cluster started with 2 instances and you would like to add 2 additional instances, edit the `jvb_cluster_size` variable to read {{< placeholder "4" >}}:
+To scale up your cluster size, use the `ansible-playbook` command and the `provision.yml` playbook with the new total number of JVB instances you want in the cluster. For example, if your initial cluster started with 2 instances and you would like to add 2 additional instances, edit the `jvb_cluster_size` variable to read {{< placeholder "4" >}}:
 
 ```command
 ansible-playbook -vvv provision.yml --extra-vars "jvb_cluster_size=4 subdomain={{< placeholder "YOUR_SUBDOMAIN" >}} domain={{< placeholder "YOUR_FQDN" >}}"
@@ -270,9 +279,9 @@ ansible-playbook -vvv -i hosts site.yml --extra-vars "jvb_cluster_size=4"
 
 ### Down Scaling
 
-Down scaling your cluster works similarly to scaling up. To scale down your cluster size, use the `ansible-playbook` command with the `resize.yml` playbook and the new number of instances you wish to scale down to.
+Down scaling your cluster works similarly to scaling up. To scale down your cluster size, use the `ansible-playbook` command with the `resize.yml` playbook and the new number of JVB instances you wish to be in the cluster. For example, if your cluster has 4 instances and you would like scale down to 2 instances, edit the `jvb_cluster_size` variable to read {{< placeholder "2" >}}.
 
-For example, if your cluster has 4 instances and you would like scale down to a total of 2 instances, edit the `jvb_cluster_size` variable to read {{< placeholder "2" >}}. Note that the `resize.yml` playbook does not require you to define your subdomain or domain:
+Note that the `resize.yml` playbook does not require a defined subdomain or domain:
 
 ```command
 ansible-playbook -vvv resize.yml --extra-vars "jvb_cluster_size=2"
@@ -288,11 +297,11 @@ ansible-playbook -vvv -i hosts site.yml --extra-vars "jvb_cluster_size=2"
 
 ## Benchmarking Your Cluster With WebRTC Perf
 
-[webrtcperf](https://github.com/vpalmisano/webrtcperf) is an open source utility used to evaluate the performance and quality for WebRTC-based services. To benchmark the performance of your Jitsi cluster, you can run WebRTC Perf from a Docker container. Note that Docker must be loaded and configured prior to running the below `docker run` command.
+[webrtcperf](https://github.com/vpalmisano/webrtcperf) is an open source utility used to evaluate the performance and quality for WebRTC-based services. To benchmark your Jitsi cluster's performance, WebRTC Perf can be run from a Docker container. Note that Docker must be loaded and configured prior to running the below `docker run` command.
 
-Replace {{< placeholder "https://192.0.2.3.ip.linodeusercontent.com" >}} with the URL of your Jitsi meet instance (see: [Provision Your Cluster](#provision-your-cluster)), and replace {{< placeholder "ROOM_NAME" >}} with the name of your meeting room.
+Replace {{< placeholder "https://192.0.2.3.ip.linodeusercontent.com" >}} with the domain or URL of your Jitsi meet instance (see: [Provision Your Cluster](#provision-your-cluster)), and replace {{< placeholder "ROOM_NAME" >}} with your meeting room name.
 
-You can also edit the `sessions` and `tabs-per-session` values depending on your desired benchmarking criteria:
+Edit the `sessions` and `tabs-per-session` values depending on the desired benchmarking criteria:
 
 ```command
 docker run -it --rm \
@@ -303,3 +312,5 @@ docker run -it --rm \
     --sessions=6 \
     --tabs-per-session=1
 ```
+
+Press <kbd>q</kbd> to stop the WebRTC Perf benchmarking test.
