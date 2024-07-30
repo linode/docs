@@ -282,7 +282,7 @@ Next, you need to determine which partition your root file system is installed o
 
 ### Transfer the System to a New Ext4 Disk
 
-This next step involves making changes to your disks and configuration profiles, which then allows you to transfer your data to a *ext4* formatted disk.
+This next step involves making changes to your disks and configuration profiles, which then lets you transfer your data to a *ext4* formatted disk.
 
 1. In the Cloud Manager, navigate to the **Storage** tab. From here, you can delete the *Installer* disk and create two additional disks.
 
@@ -346,4 +346,4 @@ You now should have a Linux system that's compatible with the Linode Platform. F
 
 ## Save the System as a Custom Image
 
-If you wish to save a copy of this system to quickly deploy later, you may want to use Linode's Custom Image feature. This allows you to create a Compute Instance based on this system without needing to go through this guide again. See [Capture an Image](/docs/products/tools/images/guides/capture-an-image/) for instructions on creating the image.
+If you wish to save a copy of this system to quickly deploy later, you may want to use Linode's Custom Image feature. This lets you create a Compute Instance based on this system without needing to go through this guide again. See [Capture an Image](/docs/products/tools/images/guides/capture-an-image/) for instructions on creating the image.

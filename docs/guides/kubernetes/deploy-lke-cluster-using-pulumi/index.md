@@ -35,7 +35,7 @@ This guide walks you through the steps needed to deploy a Kubernetes cluster usi
 
 ## Create your Pulumi Infrastructure Code
 
-Create Pulumi infrastructure code that define the resources needed to create a Kubernetes cluster. You can create a minimal Pulumi project containing your [resources](https://www.pulumi.com/docs/concepts/resources/), a [stack](https://www.pulumi.com/docs/concepts/stack/) which is an instance of your Pulumi program, and the [configuration values](https://www.pulumi.com/docs/concepts/config/) for your stack. Setting up your Pulumi project in this way allows you to reuse your Pulumi program to deploy more Kubernetes clusters, if desired, by way of additional stacks.
+Create Pulumi infrastructure code that define the resources needed to create a Kubernetes cluster. You can create a minimal Pulumi project containing your [resources](https://www.pulumi.com/docs/concepts/resources/), a [stack](https://www.pulumi.com/docs/concepts/stack/) which is an instance of your Pulumi program, and the [configuration values](https://www.pulumi.com/docs/concepts/config/) for your stack. Setting up your Pulumi project in this way lets you reuse your Pulumi program to deploy more Kubernetes clusters, if desired, by way of additional stacks.
 
 ### Create your Pulumi project
 
@@ -260,7 +260,7 @@ Now that all your Pulumi configuration is ready, you can deploy your Kubernetes 
 
 Now that your Kubernetes cluster is deployed, you can use kubectl to connect to it and begin defining your workload. Access your cluster's kubeconfig and use it to connect to your cluster with kubectl.
 
-1. Use Pulumi to access your cluster's kubeconfig, decode its contents, and save them to a file. Pulumi returns a [base64](https://en.wikipedia.org/wiki/Base64) encoded string (a useful format for automated pipelines) representing your kubeconfig. Replace `lke-cluster-config.yaml` with your preferred file name.
+1. Use Pulumi to access your cluster's kubeconfig, decode its contents, and save them to a file. Pulumi returns a [base64](https://en.wikipedia.org/wiki/Base64) encoded string (a useful format for automated pipelines) representing your kubeconfig. Replace `lke-cluster-config.yaml` with your preferred filename.
 
     ```command
     export KUBE_VAR=`pulumi stack output kubeconfig --show-secrets` && echo $KUBE_VAR | base64 -di > lke-cluster-config.yaml

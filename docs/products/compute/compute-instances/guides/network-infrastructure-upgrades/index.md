@@ -13,7 +13,7 @@ For most customers, these upgrades are performed seamlessly behind the scenes. F
 
 ## What's New?
 
-- **IP Sharing (IP failover) availability:** The IP Sharing feature, as it exists prior to these upgrades, enables IP failover for public IPv4 addresses in select data centers. After the upgrades have been completed, this feature will be expanded to all data centers and will also support IPv6 routed ranges (/64 and /56). See our [Configuring IP Failover on a Compute Instance](/docs/products/compute/compute-instances/guides/failover/) guide to learn more about configuring IP failover.
+- **IP Sharing (IP failover) availability:** The IP Sharing feature, as it exists before these upgrades, enables IP failover for public IPv4 addresses in select data centers. After the upgrades have been completed, this feature will be expanded to all data centers and will also support IPv6 routed ranges (/64 and /56). See our [Configuring IP Failover on a Compute Instance](/docs/products/compute/compute-instances/guides/failover/) guide to learn more about configuring IP failover.
 
 - **VLAN availability:** [VLANs](/docs/products/networking/vlans/), which enable private layer 2 networking, will be launched across all data centers soon after the network upgrades have occurred.
 

@@ -13,7 +13,7 @@ tags: ["kubernetes"]
 
 An LKE cluster can be deployed in one of several ways:
 
-- Via the [Cloud Manager](/docs/products/compute/kubernetes/guides/create-cluster/)
+- Via [Cloud Manager](/docs/products/compute/kubernetes/guides/create-cluster/)
 - With the Linode API (as presented in this guide)
 - With the [Linode CLI](/docs/products/tools/cli/get-started/)
 
@@ -27,7 +27,7 @@ These Linode-provided interfaces can be used to create, delete, and update the s
 The [Kubernetes API](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/#kubernetes-api) and [kubectl](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/#kubectl) are the primary ways you interact with your LKE cluster once it's been created. These tools can be used to configure, deploy, inspect, and secure your Kubernetes workloads, deploy applications, create services, configure storage and networking, and define controllers.
 
 {{< note >}}
-The Linode API and the Kubernetes API are two separate interfaces, and both are mentioned in this article. The Linode API allows you to manipulate your Linode infrastructure, while the Kubernetes API allows you to manage the software objects running in your cluster.
+The Linode API and the Kubernetes API are two separate interfaces, and both are mentioned in this article. The Linode API lets you manipulate your Linode infrastructure, while the Kubernetes API lets you manage the software objects running in your cluster.
 {{< /note >}}
 
 ## In this Guide
@@ -169,7 +169,7 @@ To communicate with your LKE cluster, kubectl requires a copy of your cluster's 
     ```
 
     {{< note >}}
-    You can also access a decoded version of your kubeconfig file in the [Cloud Manager](/docs/products/compute/kubernetes/guides/kubectl/).
+    You can also access a decoded version of your kubeconfig file in [Cloud Manager](/docs/products/compute/kubernetes/guides/kubectl/).
     {{< /note >}}
 
 1. View all nodes in your LKE cluster using kubectl:
@@ -334,7 +334,7 @@ curl -H "Authorization: Bearer $TOKEN" \
     https://api.linode.com/v4/linode/instances/13841932
 ```
 
-Although you have access to your cluster's nodes, it is recommended that you only interact with your nodes via the Linode's LKE interfaces (like the LKE endpoints in Linode's API, or the Kubernetes section in the Cloud Manager), or via the Kubernetes API and kubectl.
+Although you have access to your cluster's nodes, it is recommended that you only interact with your nodes via the Linode's LKE interfaces (like the LKE endpoints in Linode's API, or the Kubernetes section in Cloud Manager), or via the Kubernetes API and kubectl.
 {{< /note >}}
 
 ## Modify your LKE Cluster

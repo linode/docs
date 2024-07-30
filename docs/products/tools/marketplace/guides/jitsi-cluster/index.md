@@ -14,7 +14,7 @@ external_resources:
 
 !["Jitsi Cluster Architecture"](jitsi-cluster.png "Jitsi Cluster Architecture")
 
-[Jitsi](https://jitsi.org) is a suite of open source projects that allows you to host your own virtual video conferences.
+[Jitsi](https://jitsi.org) is a suite of open source projects that lets you host your own virtual video conferences.
 
 ## Deploying a Marketplace App
 
@@ -46,10 +46,10 @@ Jitsi is now installed and ready to use.
 
 1.  Before you go to your app, if you filled out the optional Jitsi configuration fields:
 
-    - In the Cloud Manager [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/) there is now an entry for your domain with two `A/AAAA` records pointing to your new server. One for the domain name and one for the hostname.
+    - In Cloud Manager's [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/) there is now an entry for your domain with two `A/AAAA` records pointing to your new server. One for the domain name and one for the hostname.
     - [Configure the rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on your Linode.
 
-1.  If you didn't setup a domain, navigate to the rDNS address of the Linode in your browser. You can find the rDNS address in the **Networking** tab for your Linode in the [Cloud Manager](https://cloud.linode.com). If you did setup a domain, navigate to the address as described in the [Jitsi Options](#jitsi-options) section above.
+1.  If you didn't setup a domain, navigate to the rDNS address of the Linode in your browser. You can find the rDNS address in the **Networking** tab for your Linode in [Cloud Manager](https://cloud.linode.com). If you did setup a domain, navigate to the address as described in the [Jitsi Options](#jitsi-options) section above.
 
 1.  Jitsi prompts you to start a meeting.
 

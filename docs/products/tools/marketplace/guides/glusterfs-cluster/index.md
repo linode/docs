@@ -37,7 +37,7 @@ external_resources:
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
-- **List of IP addresses to whitelist:** A list of IP address that will be whitelisted to the GlusterFS cluster. These should be client IPs that will mount GlusterFS. SSL certificates will be created for the provided IP addresses.
+- **List of IP addresses to whitelist:** A list of IP address that will be allowed to access GlusterFS cluster. These should be client IPs that will mount GlusterFS. SSL certificates will be created for the provided IP addresses.
 
 ## Getting Started After Deployment
 

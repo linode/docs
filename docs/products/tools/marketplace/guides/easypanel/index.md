@@ -31,6 +31,6 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 
     ![Screenshot of the Easypanel setup page](easypanel-setup.png)
 
-1. After logging in, the admin control panel appears. From there, you can manage your projects. Check out [the official Easypanel documentation](https://easypanel.io/docs) to learn how to further utilize your Easypanel instance.
+1. After logging in, the admin control panel appears. From there, you can manage your projects. Check out [the official Easypanel documentation](https://easypanel.io/docs) to learn how to further use your Easypanel instance.
 
 {{% content "marketplace-update-note-shortguide" %}}

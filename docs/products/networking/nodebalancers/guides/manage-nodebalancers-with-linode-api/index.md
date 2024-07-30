@@ -73,9 +73,9 @@ NodeBalancers are created without any configuration profiles attached. Each prof
 For more information about configuration options, see our [NodeBalancer Reference Guide](/docs/products/networking/nodebalancers/guides/configure/).
 {{< /note >}}
 
-## Add Backend Compute Instances
+## Add Back-end Compute Instances
 
-Even with a working configuration profile, the NodeBalancer isn't doing anything yet, since it has no backends connected to it. Repeat the steps in this section for each backend you would like to add; usually you will want at least two.
+Even with a working configuration profile, the NodeBalancer isn't doing anything yet, since it has no back ends connected to it. Repeat the steps in this section for each back end you would like to add; usually you will want at least two.
 
 ### Create Compute Instances
 
@@ -128,11 +128,11 @@ Even with a working configuration profile, the NodeBalancer isn't doing anything
     -H "Authorization: Bearer $TOKEN"
     ```
 
-### Add Backends to the NodeBalancer
+### Add Back ends to the NodeBalancer
 
-Add the new Compute Instances as backends to the NodeBalancer.
+Add the new Compute Instances as back ends to the NodeBalancer.
 
-1. Add configuration options for each backend. Substitute the private IP address of the Compute Instance into the `address` field and give each backend a unique label.
+1. Add configuration options for each back end. Substitute the private IP address of the Compute Instance into the `address` field and give each back end a unique label.
 
     ```file {title="add-node.json" lang="json"}
     {
@@ -141,7 +141,7 @@ Add the new Compute Instances as backends to the NodeBalancer.
       }
     ```
 
-1. Use the `/nodes` endpoint to add these backends:
+1. Use the `/nodes` endpoint to add these back ends:
 
     ```command
     curl https://api.linode.com/v4/nodebalancers/$NODEBALANCER_ID/configs/$CONFIG_ID \
@@ -150,11 +150,11 @@ Add the new Compute Instances as backends to the NodeBalancer.
     -X POST -d @add-node.json
     ```
 
-1. Repeat this process for each additional backend.
+1. Repeat this process for each additional back end.
 
-## Check Backend Status
+## Check Back-end Status
 
-Check the status of the two backend nodes:
+Check the status of the two back-end nodes:
 
 ```command
 curl https://api.linode.com/v4/nodebalancers/$NODEBALANCER_ID/configs/$CONFIG_ID \
@@ -170,13 +170,13 @@ curl https://api.linode.com/v4/nodebalancers/$NODEBALANCER_ID/configs/$CONFIG_ID
 . . .
 ```
 
-Both backends are down because there is no process for the NodeBalancer to connect to on the designated port. As a demonstration, a basic install of NGINX will listen on port 80 automatically. SSH into each Compute Instance and install NGINX:
+Both back ends are down because there is no process for the NodeBalancer to connect to on the designated port. As a demonstration, a basic install of NGINX will listen on port 80 automatically. SSH into each Compute Instance and install NGINX:
 
 ```command
 apt update && apt upgrade && apt install nginx
 ```
 
-If you check the NodeBalancer config again, it should report that both backends are now up. You can also navigate to the NodeBalancer's public IP address in a browser; the default NGINX landing page should be displayed.
+If you check the NodeBalancer config again, it should report that both back ends are now up. You can also navigate to the NodeBalancer's public IP address in a browser; the default NGINX landing page should be displayed.
 
 ## Configure HTTPS
 

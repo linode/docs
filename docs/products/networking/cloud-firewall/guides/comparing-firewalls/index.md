@@ -27,9 +27,9 @@ Linode’s free Cloud Firewall service is a powerful firewall solution that oper
     - Users wanting to configure inbound firewall rules for NodeBalancers.
 
 {{< note >}}
-If you choose to manage inbound firewall rules for NodeBalancers using Cloud Firewalls, you still need to protect any backend nodes (Compute Instances) configured to the NodeBalancer. The Cloud Firewall only filters incoming traffic to the NodeBalancer’s public IP and not the IPs of the individual instances unless they are also added to the Cloud Firewall.
+If you choose to manage inbound firewall rules for NodeBalancers using Cloud Firewalls, you still need to protect any back-end nodes (Compute Instances) configured to the NodeBalancer. The Cloud Firewall only filters incoming traffic to the NodeBalancer’s public IP and not the IPs of the individual instances unless they are also added to the Cloud Firewall.
 
-You can protect your backend nodes by either assigning the individual nodes to a Cloud Firewall (the same as your NodeBalancer or a new one) or by manually configuring firewalls internally on the instances themselves.
+You can protect your back-end nodes by either assigning the individual nodes to a Cloud Firewall (the same as your NodeBalancer or a new one) or by manually configuring firewalls internally on the instances themselves.
 {{< /note >}}
 
 ## Firewall Software
@@ -52,9 +52,9 @@ The standard firewall software available on most modern Linux distributions is *
 
 When deciding on which firewall solution to use, consider your unique needs and the requirements for your application.
 
-- **Familiarity:** A major reason you may decide to use one option over another is your own comfort level with the tools and interfaces need to configure each firewall. If you're more familiar with Linode's own tooling (such as the Cloud Manager or CLI), the Cloud Firewall service may be easier for you to quickly configure. If you're more familiar with nftables or front-end software like *UFW*, you may want to stick to your existing tools and workflow. Consider your entire team's familiarity with the tooling, not just yours.
+- **Familiarity:** A major reason you may decide to use one option over another is your own comfort level with the tools and interfaces need to configure each firewall. If you're more familiar with Linode's own tooling (such as Cloud Manager or CLI), the Cloud Firewall service may be easier for you to quickly configure. If you're more familiar with nftables or front-end software like *UFW*, you may want to stick to your existing tools and workflow. Consider your entire team's familiarity with the tooling, not just yours.
 
-- **Configuration options:** While each solution is quite robust, using *nftables* allows for the creation of the most complex rules and provides absolute control of the firewall. That said, Cloud Firewalls are generally easier to configure and can be applied to multiple Linode services. This allows you to quickly add or modify firewall rules across multiple Compute Instances simultaneously.
+- **Configuration options:** While each solution is quite robust, using *nftables* allows for the creation of the most complex rules and provides absolute control of the firewall. That said, Cloud Firewalls are generally easier to configure and can be applied to multiple Linode services. This lets you quickly add or modify firewall rules across multiple Compute Instances simultaneously.
 
 - **Automation possibilities:** Some Linux software products already integrate directly with nftables and can automatically create firewall rules. Perhaps the most commonly used example of this is [*fail2ban*](https://www.fail2ban.org/wiki/index.php/Main_Page), which can automatically create firewall rules to permanently or temporarily ban suspicious traffic. If you are configuring your own software, you may find it easier to integrate with the Linode API and use Cloud Firewalls instead of integrating directly with software-based firewalls.
 

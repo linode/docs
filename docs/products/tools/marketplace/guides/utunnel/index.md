@@ -83,6 +83,6 @@ In order to use UTunnel VPN, you need to create an account on [UTunnel.io](https
 
         sudo /utunnel/bin/utnservice start
 
-Now that you’ve deployed your UTunnel VPN instance, checkout [the official UTunnel VPN documentation](https://help.utunnel.io/About-UTunnel-VPN) to learn how to further utilize your UTunnel instance.
+Now that you’ve deployed your UTunnel VPN instance, checkout [the official UTunnel VPN documentation](https://help.utunnel.io/About-UTunnel-VPN) to learn how to further use your UTunnel instance.
 
 {{% content "marketplace-update-note-shortguide" %}}

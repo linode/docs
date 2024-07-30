@@ -50,7 +50,7 @@ The best way to resell Linode services is through the use of the Linode API. The
 
 ### Limited Cloud Manager Users
 
-If a reseller wants to be able to give reseller customers access to parts of the Cloud Manager without developing a new user interface, they can create a limited Manager *user* in the Cloud Manager. A user is a set of credentials that can access your Linode account, and your Linode account can have multiple users. A user can be restricted to have a limited set of permissions, such as only being able to access certain Linodes and not having access to your billing information. To create a limited user in the Cloud Manager, review the [Users and Permissions](/docs/products/platform/accounts/guides/manage-users/#add-a-user) section of the Accounts and Passwords guide.
+If a reseller wants to be able to give reseller customers access to parts of Cloud Manager without developing a new user interface, they can create a limited Manager *user* in Cloud Manager. A user is a set of credentials that can access your Linode account, and your Linode account can have multiple users. A user can be restricted to have a limited set of permissions, such as only being able to access certain Linodes and not having access to your billing information. To create a limited user in Cloud Manager, review the [Users and Permissions](/docs/products/platform/accounts/guides/manage-users/#add-a-user) section of the Accounts and Passwords guide.
 
 {{< note >}}
 Cloud Manager users are not related to the Linux users you may separately configure on Compute Instances. If you need to revoke a customer's account access, you should remove access to both their Cloud Manager users and their Linux users. Read the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on this subject.
@@ -58,7 +58,7 @@ Cloud Manager users are not related to the Linux users you may separately config
 
 ### Limited Linux User Accounts
 
-A reseller might provide a customer with limited access to a Compute Instance by creating an account for them at the operating system level. This provides the customer with access to their server, without access to the features of the Linode API or the Cloud Manager. For a hosting reseller that offers access to a pre-defined Linux environment, this is often a good solution. Read the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on this subject. You may also want to limit users' access to the filesystem with [SFTP jails](/docs/guides/limiting-access-with-sftp-jails-on-debian-and-ubuntu/).
+A reseller might provide a customer with limited access to a Compute Instance by creating an account for them at the operating system level. This provides the customer with access to their server, without access to the features of the Linode API or Cloud Manager. For a hosting reseller that offers access to a pre-defined Linux environment, this is often a good solution. Read the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on this subject. You may also want to limit users' access to the filesystem with [SFTP jails](/docs/guides/limiting-access-with-sftp-jails-on-debian-and-ubuntu/).
 
 ## Frequently Asked Questions
 

@@ -10,7 +10,7 @@ aliases: ['/products/tools/linode-api/get-started/','/platform/api/getting-start
 tags: ["managed hosting"]
 ---
 
-The Linode API allows you to automate any task that can be performed by the Cloud Manager. This includes creating and managing all of our products (like Compute Instances and Firewalls), your customer account (like adding new users or viewing invoices), and even creating support tickets. As an example of an API call, the command below deploys a new 2GB Compute Instance in the Newark data center using the Debian 11 image.
+The Linode API lets you automate any task that can be performed by Cloud Manager. This includes creating and managing all of our products (like Compute Instances and Firewalls), your customer account (like adding new users or viewing invoices), and even creating support tickets. As an example of an API call, the command below deploys a new 2GB Compute Instance in the Newark data center using the Debian 11 image.
 
 ```command
 curl -X POST https://api.linode.com/v4/linode/instances \
@@ -40,7 +40,7 @@ If you are building an application which needs to authenticate multiple users (f
 
 For full instructions on creating and managing personal access tokens, see [Manage Personal Access Tokens](/docs/products/tools/api/guides/manage-api-tokens/#create-an-api-token).
 
-1. Log in to the Cloud Manager.
+1. Log in to Cloud Manager.
 
 1. Click on your username at the top of the screen and select **My Profile**.
 
@@ -48,7 +48,7 @@ For full instructions on creating and managing personal access tokens, see [Mana
 
 1. Click on **Create Personal Access Token** and choose the access rights you want users authenticated with the new token to have.
 
-1. When you have finished, click **Create** to generate an API token string. Copy the token and save it in a secure location. **You will not be able to view the token through the Cloud Manager after closing the popup.**
+1. When you have finished, click **Create** to generate an API token string. Copy the token and save it in a secure location. **You will not be able to view the token through Cloud Manager after closing the popup.**
 
 ## Authenticate Requests
 

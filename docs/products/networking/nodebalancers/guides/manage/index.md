@@ -6,13 +6,13 @@ published: 2022-10-07
 
 ## View NodeBalancers
 
-Log in to the [Cloud Manager](https://cloud.linode.com) and select NodeBalancers from the left menu. If any NodeBalancers exist on your account, they are listed on this page.
+Log in to [Cloud Manager](https://cloud.linode.com) and select NodeBalancers from the left menu. If any NodeBalancers exist on your account, they are listed on this page.
 
 ![Screenshot of the NodeBalancer listing page in Cloud Manager](nodebalancer-view-list.png)
 
 Each NodeBalancer in the matrix is displayed alongside the following details:
 
-- **Backend Status:** The number of backend machines that are available and accepting connections (*up*) or have been removed from the rotation and are not accepting connections (*down*).
+- **Back-end Status:** The number of back-end machines that are available and accepting connections (*up*) or have been removed from the rotation and are not accepting connections (*down*).
 - **Transferred:** The amount of network transfer consumed by the inbound traffic to the NodeBalancer.
 - **Ports:** A list of the ports that have been configured on the NodeBalancer.
 - **IP Address:** The NodeBalancer's IPv4 address.
@@ -24,23 +24,23 @@ To create a NodeBalancer, follow the instructions within the [Create a NodeBalan
 
 ## Review and Edit a NodeBalancer
 
-Navigate to the **NodeBalancer** page in the Cloud Manager and select the NodeBalancer you wish to edit. See [View NodeBalancers](#view-nodebalancers).
+Navigate to the **NodeBalancer** page in Cloud Manager and select the NodeBalancer you wish to edit. See [View NodeBalancers](#view-nodebalancers).
 
-![Screenshot of a NodeBalancer entry in the Cloud Manager](nodebalancer-edit.png)
+![Screenshot of a NodeBalancer entry in Cloud Manager](nodebalancer-edit.png)
 
 This displays the details and settings for the selected NodeBalancer.
 
-![Screenshot of a NodeBalancer entry in the Cloud Manager](nodebalancer-summary.png)
+![Screenshot of a NodeBalancer entry in Cloud Manager](nodebalancer-summary.png)
 
 From here, the following pages are available:
 
-- **Summary:** View important details and graphs. This includes viewing the IP addresses, the Cloud Firewall if a firewall is assigned, the ports, the status of the backends, and graphs for both the number of connections and network traffic.
+- **Summary:** View important details and graphs. This includes viewing the IP addresses, the Cloud Firewall if a firewall is assigned, the ports, the status of the back ends, and graphs for both the number of connections and network traffic.
 - **Configurations:** This lists each port configured for the NodeBalancer, with the ability to edit the settings for the existing port or add a new port. See [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/) for more information on each of these settings.
 - **Settings:** Displays additional settings for the NodeBalancer, including the label, firewall and connection throttle setting.
 
 ## Delete a NodeBalancer
 
-1. Navigate to the **NodeBalancer** page in the Cloud Manager and select the NodeBalancer you wish to edit.
+1. Navigate to the **NodeBalancer** page in Cloud Manager and select the NodeBalancer you wish to edit.
 
 1. Navigate to the **Settings** tab, scroll to the *Delete NodeBalancer* section, and click **Delete**.
 
@@ -58,7 +58,7 @@ After the NodeBalancer is created, you can add a firewall, select a different fi
 
 ### Unassign the Firewall
 
-1. Navigate to the **NodeBalancer** page in the Cloud Manager and select the NodeBalancer that has the firewall you wish to unassign.
+1. Navigate to the **NodeBalancer** page in Cloud Manager and select the NodeBalancer that has the firewall you wish to unassign.
 
 1. Navigate to the **Settings** tab. In the *Firewall* section, click **Unassign**.
 

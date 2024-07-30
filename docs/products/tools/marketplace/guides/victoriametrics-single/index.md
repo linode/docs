@@ -58,7 +58,7 @@ See more details and examples in [official documentation](https://docs.victoriam
 
 ### Accessing the Query Interface
 
-VictoriaMetrics provides a user interface, called [vmui](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#vmui) for query troubleshooting and exploration. This allows you to explore query results through graphs and tables.
+VictoriaMetrics provides a user interface, called [vmui](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#vmui) for query troubleshooting and exploration. This lets you explore query results through graphs and tables.
 
 To access vmui, open the following URL in your browser, replacing *ip-address* with the IPv4 address of your new Compute Instance:
 

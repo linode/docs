@@ -41,7 +41,7 @@ WarpSpeed makes it easy for developers to access cloud infrastructure via the po
 
 ### Accessing the WarpSpeed VPN App
 
-1.  Configure your custom domain to point towards the IPv4 (and IPv6) address of the newly created Compute Instance. Review the [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions on setting up your DNS records in the Cloud Manager and read through [DNS Records: An Introduction](/docs/guides/dns-overview/) for general information about how DNS works.
+1.  Configure your custom domain to point towards the IPv4 (and IPv6) address of the newly created Compute Instance. Review the [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions on setting up your DNS records in Cloud Manager and read through [DNS Records: An Introduction](/docs/guides/dns-overview/) for general information about how DNS works.
 
 1.  Once your domain has been configured and has finished propagating, enter the domain within a web browser to access the login page.
 

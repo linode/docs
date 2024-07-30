@@ -11,23 +11,23 @@ This guide covers managing the node pools on your cluster, including adding and 
 
 ## View Node Pools
 
-1. Log in to the [Cloud Manager](http://cloud.linode.com), click **Kubernetes** in the left menu, and select the cluster you wish to view. See [Manage Kubernetes Clusters](/docs/products/compute/kubernetes/guides/manage-clusters/).
+1. Log in to [Cloud Manager](http://cloud.linode.com), click **Kubernetes** in the left menu, and select the cluster you wish to view. See [Manage Kubernetes Clusters](/docs/products/compute/kubernetes/guides/manage-clusters/).
 
 1. Scroll down to the **Node Pools** section. This lists all node pools for your cluster and their associated nodes.
 
-    ![Screenshot of the Node Pools section of a cluster in the Cloud Manager](view-node-pools.png)
+    ![Screenshot of the Node Pools section of a cluster in Cloud Manager](view-node-pools.png)
 
 ## Add a Node Pool
 
 Additional node pools can be added to host different applications or services within the same Kubernetes cluster. Since each node pool can be assigned its own virtual machine (Compute Instance) plan, separating applications into node pools can boost efficiency and allow each application to only be assigned the resources it needs.
 
-1. Navigate to the **Kubernetes** page in the Cloud Manager and select the cluster you wish to edit. See [View Node Pools](#view-node-pools).
+1. Navigate to the **Kubernetes** page in Cloud Manager and select the cluster you wish to edit. See [View Node Pools](#view-node-pools).
 
 1. Within the **Node Pool** section, click the **Add a Node Pool** button.
 
 1. In the side panel that opens, locate the plan type you wish to use for your first node pool. Currently, the available plan types for LKE worker nodes include [Shared CPU](/docs/products/compute/compute-instances/plans/choosing-a-plan/#shared-cpu-instances), [Dedicated CPU](/docs/products/compute/compute-instances/plans/choosing-a-plan/#dedicated-cpu-instances), and [High Memory](/docs/products/compute/compute-instances/plans/choosing-a-plan/#high-memory-instances). 1 GB Shared CPU Compute Instances Nanodes (also known as *nanodes*) are not available.
 
-    ![Screenshot of the Add Node Pool panel in the Cloud Manager](add-node-pool.png)
+    ![Screenshot of the Add Node Pool panel in Cloud Manager](add-node-pool.png)
 
 1. In the corresponding field, enter the number of worker nodes that you wish to be included in the node pool.
 
@@ -37,13 +37,13 @@ Additional node pools can be added to host different applications or services wi
 
 Node pools can be resized manually or automatically (through auto-scaling). Both of these processes allow you to increase or decrease the *number of worker nodes*. The instructions below cover manually resizing a pool.
 
-1. Navigate to the **Kubernetes** page in the Cloud Manager and select the cluster you wish to edit. See [View Node Pools](#view-node-pools).
+1. Navigate to the **Kubernetes** page in Cloud Manager and select the cluster you wish to edit. See [View Node Pools](#view-node-pools).
 
 1. Within the **Node Pool** section, locate the node pool you wish to resize and click the **Resize Pool** button.
 
 1. In the side panel that opens, enter the new number of nodes you wish to have in the pool. As the number is adjusted, the total cost of your new resources are displayed. To accept these changes, select the `Save Changes` button to continue.
 
-    ![Screenshot of the resize node pool panel in the Cloud Manager](resize-node-pool.png)
+    ![Screenshot of the resize node pool panel in Cloud Manager](resize-node-pool.png)
 
     {{< note type="warning" >}}
     Shrinking a node pool results in the deletion of some associated Compute Instances. Any local storage on these instances (such as `hostPath` and `emptyDir` volumes, or "local" PersistentVolumes) is erased.
@@ -57,7 +57,7 @@ Many production applications benefit from increasing or decreasing infrastructur
 
 - If Pods are able to be scheduled on less nodes than are currently available in the node pool, nodes are drained and removed automatically. Pods on drained nodes are immediately rescheduled on pre-existing nodes.
 
-1. Navigate to the **Kubernetes** page in the Cloud Manager and select the cluster you wish to edit. See [View Node Pools](#view-node-pools).
+1. Navigate to the **Kubernetes** page in Cloud Manager and select the cluster you wish to edit. See [View Node Pools](#view-node-pools).
 
 1. Within the **Node Pool** section, locate the node pool you wish to modify and click the **Autoscale Pool** button. A popup form appears with settings for autoscaling the node pool.
 
@@ -81,7 +81,7 @@ The LKE Autoscaler will not automatically increase or decrease the size of the n
 
 Recycling a worker node deletes the corresponding Compute Instance and deploys a new one. This is used when upgrading minor versions of Kubernetes or when debugging a node. You can recycle an individual node, recycle all nodes in a node pool, or recycle all nodes within a cluster. When recycling multiple nodes, each node is recycled on a rolling basis so that only a single node is down at any time.
 
-1. Navigate to the **Kubernetes** page in the Cloud Manager and select the cluster you wish to edit. See [View Node Pools](#view-node-pools).
+1. Navigate to the **Kubernetes** page in Cloud Manager and select the cluster you wish to edit. See [View Node Pools](#view-node-pools).
 
 1. Within the **Node Pool** section, select the button corresponding with the recycle operation you wish to perform:
 
@@ -101,7 +101,7 @@ Recycling a worker node deletes the corresponding Compute Instance and deploys a
 
 If you no longer need to use a node pool, you can remove it from the cluster. This deletes all corresponding Compute Instance. If you instead wish to decrease the number of nodes in a node pool, see [Resize a Node Pool](#resize-a-node-pool)
 
-1. Navigate to the **Kubernetes** page in the Cloud Manager and select the cluster you wish to edit. See [View Node Pools](#view-node-pools).
+1. Navigate to the **Kubernetes** page in Cloud Manager and select the cluster you wish to edit. See [View Node Pools](#view-node-pools).
 
 1. Within the **Node Pool** section, locate the node pool you wish to delete and click the **Delete Pool** button.
 

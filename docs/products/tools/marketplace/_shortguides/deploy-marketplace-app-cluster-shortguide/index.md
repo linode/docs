@@ -1,13 +1,13 @@
 ---
-# Shortguide: Instructions on deploying a Marketplace App Cluster from the Cloud Manager
+# Shortguide: Instructions on deploying a Marketplace App Cluster from Cloud Manager
 
 headless: true
 show_on_rss_feed: false
 ---
 
-The Linode Marketplace allows you to easily deploy an application cluster on Compute Instances using the Cloud Manager. See [Get Started with Marketplace Apps](/docs/products/tools/marketplace/get-started/) for complete steps.
+The Linode Marketplace lets you easily deploy an application cluster on Compute Instances using Cloud Manager. See [Get Started with Marketplace Apps](/docs/products/tools/marketplace/get-started/) for complete steps.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and select the **Marketplace** link from the left navigation menu. This displays the Linode **Create** page with the **Marketplace** tab pre-selected.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and select the **Marketplace** link from the left navigation menu. This displays the Linode **Create** page with the **Marketplace** tab pre-selected.
 
 1. Under the **Select App** section, select the cluster app you would like to deploy. Marketplace Apps that are deployed as clusters have a **cluster** label next to the app's name.
 

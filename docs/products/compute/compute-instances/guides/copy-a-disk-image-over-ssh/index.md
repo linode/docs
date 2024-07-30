@@ -108,7 +108,7 @@ In some cases, it is necessary to upload your disk image to a new server. For ex
 
 1.  Once you've created a Compute Instance with enough disk space available to accommodate your disk image, prepare the new instance to receive this image. This is completed by first deleting the primary disk created by default, and keeping the swap disk. A swap disk typically starts at 256 MB or 512 MB in size, but can be larger or smaller depending upon your needs.
 
-1.  Access your Compute Instance through the Cloud Manager. Click the **Storage** tab to navigate to the *Disks* section.
+1.  Access your Compute Instance through Cloud Manager. Click the **Storage** tab to navigate to the *Disks* section.
 
 1. On the following page in the **Disks** menu, select the ellipsis next to any primary disks you are replacing and select **Delete**.
 

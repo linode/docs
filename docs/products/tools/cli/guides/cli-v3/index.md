@@ -247,7 +247,7 @@ linode options --api-key SampleKey123456...
 
 The default Linode CLI user is stored in the `.linodecli/config` file.
 
-To set up the API for additional Linode users, you can run the `linode configure` command again, supplying a different username. Configuration files for additional users are stored with the file name pattern `.linodecli/config_user1`, with **user1** being replaced by the actual username.
+To set up the API for additional Linode users, you can run the `linode configure` command again, supplying a different username. Configuration files for additional users are stored with the filename pattern `.linodecli/config_user1`, with **user1** being replaced by the actual username.
 
 To invoke the CLI with a particular username, use the `-u user1` option, with **user1** being your actual username, at the end of the command.
 
@@ -288,7 +288,7 @@ If you do something via the CLI that costs money (creating a Linode, upgrading a
 
 ### Linodes
 
-The Linode CLI allows you to spin up new Linodes, issue reboots, upgrade plan sizes, and more.
+The Linode CLI lets you spin up new Linodes, issue reboots, upgrade plan sizes, and more.
 
 Listing Linodes:
 
@@ -439,7 +439,7 @@ man linode-domain
 
 ### NodeBalancers
 
-The Linode CLI allows you to manage your [NodeBalancers](/docs/products/networking/nodebalancers/) from the command line.
+The Linode CLI lets you manage your [NodeBalancers](/docs/products/networking/nodebalancers/) from the command line.
 
 Listing NodeBalancers:
 
@@ -473,7 +473,7 @@ man linode-nodebalancer
 
 ### StackScripts
 
-The Linode CLI allows you to create and show StackScripts, and more.
+The Linode CLI lets you create and show StackScripts, and more.
 
 Creating a StackScript:
 
@@ -497,7 +497,7 @@ man linode-stackscript
 
 ### Account
 
-The CLI allows you to view your account billing details at a glance. Run the following command:
+The CLI lets you view your account billing details at a glance. Run the following command:
 
 ```command
 linode account show

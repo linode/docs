@@ -10,9 +10,9 @@ tab_group_main:
 
 ## Basics
 
-- [Getting Started with VPCs](/docs/products/networking/vpc/get-started/): An introduction to VPCs, including how to create and administer them within the Cloud Manager.
+- [Getting Started with VPCs](/docs/products/networking/vpc/get-started/): An introduction to VPCs, including how to create and administer them within Cloud Manager.
 
-- [Create a VPC](/docs/products/networking/vpc/guides/create/): Outlines how to create a VPC using the Cloud Manager, Linode CLI, and Linode API.
+- [Create a VPC](/docs/products/networking/vpc/guides/create/): Outlines how to create a VPC using Cloud Manager, Linode CLI, and Linode API.
 
 - [Manage VPCs](/docs/products/networking/vpc/guides/manage-vpcs/): Instructions on viewing, editing, and deleting VPCs.
 

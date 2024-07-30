@@ -11,7 +11,7 @@ aliases: ['/platform/stackscripts/creating-and-managing-stackscripts-a-tutorial/
 
 ## View StackScripts
 
-Log in to the [Cloud Manager](https://cloud.linode.com) and select **StackScripts** from the left menu. If any StackScripts exist on your account, they are listed on this page.
+Log in to [Cloud Manager](https://cloud.linode.com) and select **StackScripts** from the left menu. If any StackScripts exist on your account, they are listed on this page.
 
 ![Screenshot of the StackScripts page in Cloud Manager](view-stackscripts.png)
 
@@ -25,7 +25,7 @@ See [Create a StackScript](/docs/products/tools/stackscripts/guides/create/) for
 
 ## Edit a StackScript
 
-1. Navigate to the **StackScripts** page in the Cloud Manager. See [View StackScripts](#view-stackscripts).
+1. Navigate to the **StackScripts** page in Cloud Manager. See [View StackScripts](#view-stackscripts).
 
 1. Locate the StackScript you wish to view or edit. Click on the corresponding **Edit** link, which may appear within the ellipsis menu.
 
@@ -39,7 +39,7 @@ See [Create a StackScript](/docs/products/tools/stackscripts/guides/create/) for
 
 Making an Account StackScript public allows the rest of the Linode community to access your script as a *Community StackScript*.
 
-1. Navigate to the **StackScripts** page in the Cloud Manager. See [View StackScripts](#view-stackscripts).
+1. Navigate to the **StackScripts** page in Cloud Manager. See [View StackScripts](#view-stackscripts).
 
 1. Locate the StackScript you wish to view or edit. Click on the corresponding **Make StackScript Public** link, which may appear within the ellipsis menu.
 
@@ -61,7 +61,7 @@ Your public StackScript is available to you for use on the Account StackScripts 
 You cannot delete Account StackScripts that have been made public.
 {{< /note >}}
 
-1. Navigate to the **StackScripts** page in the Cloud Manager. See [View StackScripts](#view-stackscripts).
+1. Navigate to the **StackScripts** page in Cloud Manager. See [View StackScripts](#view-stackscripts).
 
 1. Locate the StackScript you wish to delete. Click on the corresponding **Delete** link, which may appear within the ellipsis menu.
 

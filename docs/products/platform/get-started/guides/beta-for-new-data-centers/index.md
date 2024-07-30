@@ -37,7 +37,7 @@ You must be enrolled in the beta to select a beta data center when deploying ser
 
 ## Pricing
 
-Services utilized as part of the beta are free to users. Once the beta period ends for a particular data center, you will start accruing charges for any services that are still deployed to that region. You will receive an email notifying you of the billing start date as we transition each data center to general availability.
+Services used as part of the beta are free to users. Once the beta period ends for a particular data center, you will start accruing charges for any services that are still deployed to that region. You will receive an email notifying you of the billing start date as we transition each data center to general availability.
 
 ## Product Availability
 

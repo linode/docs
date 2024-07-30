@@ -9,7 +9,7 @@ tags: ["linode platform","cloud manager"]
 aliases: ['/migrate-to-linode/disk-images/clone-your-linode/','/platform/disk-images/clone-your-linode/','/platform/disk-images/clone-your-linode-classic-manager/','/guides/clone-your-linode/']
 ---
 
-Linode's cloning feature allows you to duplicate a Compute Instance's disks (and configuration profiles) to a new or existing instance.
+Linode's cloning feature lets you duplicate a Compute Instance's disks (and configuration profiles) to a new or existing instance.
 
 ## Clone to a New Compute Instance
 
@@ -19,7 +19,7 @@ This process copies all disks and configuration profiles to a newly created Comp
 Before continuing, you should power off the instance you want to clone. This helps prevent data corruption.
 {{< /note >}}
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com).
+1. Log in to [Cloud Manager](https://cloud.linode.com).
 
 1. Click the **Create** dropdown menu on the top left and select **Linode**.
 
@@ -53,9 +53,9 @@ The new instance's IP address will be different than the original instance. If d
 
 ## Clone to an Existing Compute Instance
 
-This process allows you to select specific disks or configuration profiles and duplicate them to an existing Compute Instance. When cloning a configuration profile, all disks assigned to that profile are also cloned.
+This process lets you select specific disks or configuration profiles and duplicate them to an existing Compute Instance. When cloning a configuration profile, all disks assigned to that profile are also cloned.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and select the **Linodes** link in the left sidebar menu.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and select the **Linodes** link in the left sidebar menu.
 
 1. Locate the Compute Instance you wish to clone and click its corresponding label, which displays the instance's detail page.
 
@@ -71,7 +71,7 @@ This process allows you to select specific disks or configuration profiles and d
 
 1. A **Clone** form appears with either the **Disks** or **Configuration Profiles** tab displayed, depending on the previous step. From here, select the exact disks and configuration profiles you wish to clone. When a configuration profile is selected, all disks assigned to it (through **Block Device Assignments**) are also selected.
 
-    ![The Clone form in the Cloud Manager](clone-disk.png)
+    ![The Clone form in Cloud Manager](clone-disk.png)
 
 1. In the **Destination** dropdown menu, select the destination Compute Instance.
 

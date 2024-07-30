@@ -15,7 +15,7 @@ There are two methods to deploy an Image to an existing Compute Instance:
 
 A common method of deploying an Image is to rebuild an existing Compute Instance with your desired Image. This deletes all data and disks on that Instance and creates new disks for the selected Image. Use this method only if you no longer need the data that's stored on the Instance.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and navigate to the **Images** page.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and navigate to the **Images** page.
 
 1. Locate the Image you wish to deploy and click the corresponding **ellipsis** options menu. Select **Rebuild an Existing Linode**.
 
@@ -23,7 +23,7 @@ A common method of deploying an Image is to rebuild an existing Compute Instance
 
 1.  Within the **Restore from Image** panel that appears, select the Compute Instance to use and click the **Restore Image** button.
 
-    ![The 'Restore from Image' panel in the Cloud Manager](restore-from-image-panel.png)
+    ![The 'Restore from Image' panel in Cloud Manager](restore-from-image-panel.png)
 
 1. You are redirected to the dashboard page for that Linode and the **Rebuild** form is displayed with the chosen Image preselected. Complete the remainder of this form, making sure to select your desired **Root Password**, and any other options that may be needed. See [Rescue and Rebuild → Rebuilding](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rebuilding) for full instructions on rebuilding a Linode.
 
@@ -33,9 +33,9 @@ A common method of deploying an Image is to rebuild an existing Compute Instance
 
 If you instead wish to retain the data on your Compute Instance, you can add a disk with your desired Image to that Instance. This is useful if you wish to have multiple bootable configurations and only need to access one at a time.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/), click the **[Linodes](https://cloud.linode.com/linodes)** link in the sidebar, and select a Compute Instance from the list.
+1. Log in to [Cloud Manager](https://cloud.linode.com/), click the **[Linodes](https://cloud.linode.com/linodes)** link in the sidebar, and select a Compute Instance from the list.
 
-1. **Create a disk with the Image**. Follow the instructions to [create a disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#create-a-disk) using the [Cloud Manager](https://cloud.linode.com/). Keep the following considerations in mind:
+1. **Create a disk with the Image**. Follow the instructions to [create a disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#create-a-disk) using [Cloud Manager](https://cloud.linode.com/). Keep the following considerations in mind:
 
     - Confirm there is enough unallocated storage space to accommodate the new disk for the desired Image. If you aren't sure of the size of the Image, open the **[Images](https://cloud.linode.com/images)** page, find the Image within the list, and view the *Size* column.
     - When creating the disk, select the **Create from Image** option and select the Image you wish to deploy.

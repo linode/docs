@@ -131,9 +131,9 @@ If you use iptables, you should also make sure to persist any of your firewall r
 
 The API key given in the Linode Cloud Manager should match that on your system in `/etc/linode/longview.key`.
 
-1. In the Cloud Manager, the API key is located in the **Installation** tab of your Longview Client instance's [detailed view](/docs/products/tools/longview/get-started/).
+1. In Cloud Manager, the API key is located in the **Installation** tab of your Longview Client instance's [detailed view](/docs/products/tools/longview/get-started/).
 
-1.  SSH into your Linode. The Longview key is located at `/etc/linode/longview.key`. Use `cat` to view the contents of that file and compare it to what's shown in the Cloud Manager:
+1.  SSH into your Linode. The Longview key is located at `/etc/linode/longview.key`. Use `cat` to view the contents of that file and compare it to what's shown in Cloud Manager:
 
     ```command
     cat /etc/linode/longview.key

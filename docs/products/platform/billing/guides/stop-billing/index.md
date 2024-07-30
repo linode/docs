@@ -10,7 +10,7 @@ To prevent additional charges from accruing and stop further billing, you can re
 
 Linode services are provided without a contract or commitment. This means that you can remove them from your account at any time. Here are instructions for removing a Compute Instance:
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and select **Linodes** from the sidebar menu.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and select **Linodes** from the sidebar menu.
 1. Locate the Compute Instance you wish to delete.
 1. Expand the corresponding **more options ellipsis** menu and click **Delete**.
 1. Select **Delete Linode** in the confirmation box that appears.

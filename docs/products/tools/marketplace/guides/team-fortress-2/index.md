@@ -37,7 +37,7 @@ Setting up a personal game server puts you in control of the game modes and maps
 
 ### Team Fortress 2 Options
 
-- **RCON Password** *(required)*: The password for the remote console, which allows you to issue commands on the TF2 server.
+- **RCON Password** *(required)*: The password for the remote console, which lets you issue commands on the TF2 server.
 - **Server Name:** Your Team Fortress 2 server's name.
 - **Message of the Day:** Message of the day. Text displayed whenever a player logs on to the server.
 - **Server Password:** The password for the TF2 server. Configuring a TF2 server password will require users of your game server to provide this password.

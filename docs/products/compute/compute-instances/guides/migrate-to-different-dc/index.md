@@ -1,6 +1,6 @@
 ---
 title: Migrate to a New Data Center
-description: "Learn how to migrate a Compute Instance across data centers using the Cloud Manager."
+description: "Learn how to migrate a Compute Instance across data centers using Cloud Manager."
 keywords: ["choose", "help", "migration", "data center"]
 tags: ["linode platform","cloud manager"]
 modified: 2024-05-09
@@ -18,9 +18,9 @@ Review the [Choosing a Data Center](/docs/products/platform/get-started/guides/c
 
 ## Before You Begin
 
-Various changes applied by the migration can impact your instance's configuration and the devices connected to it. They can all be seen in a caution message before proceeding with your migration within the Cloud Manager. Here are some changes you should be aware of:
+Various changes applied by the migration can impact your instance's configuration and the devices connected to it. They can all be seen in a caution message before proceeding with your migration within Cloud Manager. Here are some changes you should be aware of:
 
-- **IP addresses are not transferrable** They aren't migrated to the new data center with your Compute Instance. Akamai issues a new IPv4 and IPv6 address for your instance, and you can access them once the migration completes. When your instance enters the migration queue, new IP addresses are reserved and you can see them in your instance's **Networking** detail page. See the [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) guide to learn how to access Networking information in the Cloud Manager.
+- **IP addresses are not transferrable** They aren't migrated to the new data center with your Compute Instance. Akamai issues a new IPv4 and IPv6 address for your instance, and you can access them once the migration completes. When your instance enters the migration queue, new IP addresses are reserved and you can see them in your instance's **Networking** detail page. See the [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) guide to learn how to access Networking information in Cloud Manager.
 
 - **DNS records need to be updated**. You need to update DNS records with the new IP address once migrated. If you're hosting your DNS with us, this can be done through the [DNS Manager](/docs/products/networking/dns-manager/), while [rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/) can be configured directly on each Compute Instance's Networking detail page.
 
@@ -42,7 +42,7 @@ Various changes applied by the migration can impact your instance's configuratio
 
 ## Migrate to a New Data Center
 
-1. Log in to the [Cloud Manager](https://www.cloud.linode.com) and click on the **Linodes** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and click on the **Linodes** link in the sidebar.
 
 1. Locate the Compute Instance within the **Linodes** table, click the corresponding **More Options** ellipsis menu, and select *Migrate* to open the **Migrate Linode** form.
 

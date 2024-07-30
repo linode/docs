@@ -123,7 +123,7 @@ Terraform defines the elements of your Linode infrastructure inside of configura
 
     This file contains your cluster’s main configuration arguments and output variables. In this example, you make use of Terraform’s input variables so that your `main.tf` configuration can be easily reused across different clusters.
 
-    Variables and their values will be created in separate files later on in this guide. Using separate files for variable declaration allows you to avoid hard-coding values into your resources. This strategy can help you reuse, share, and version control your Terraform configurations.
+    Variables and their values will be created in separate files later on in this guide. Using separate files for variable declaration lets you avoid hard-coding values into your resources. This strategy can help you reuse, share, and version control your Terraform configurations.
 
     This configuration file uses the Linode provider to create a Kubernetes cluster. All arguments within the `linode_lke_cluster.foobar` resource are required, except for `tags`. The `pool` argument accepts a list of pool objects. In order to read their input variable values, the configuration file makes use of Terraform's [dynamic blocks](https://www.terraform.io/docs/configuration/expressions.html#dynamic-blocks). Finally, [output values](https://www.terraform.io/docs/configuration/outputs.html) are declared in order to capture your cluster's attribute values that will be returned to Terraform after creating your cluster.
 

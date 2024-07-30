@@ -10,7 +10,7 @@ image: enable-tpa-hero.png
 aliases: ['/platform/manager/third-party-authentication/','/guides/third-party-authentication/']
 ---
 
-Cloud Manager supports third-party authentication (TPA). This allows you to log in to Cloud Manager with another provider's login credentials.
+Cloud Manager supports third-party authentication (TPA). This lets you log in to Cloud Manager with another provider's login credentials.
 
 {{< note >}}
 Enabling TPA disables two-factor authentication (2FA) on your user account. You should enable 2FA with the TPA provider with which you choose to authenticate to Cloud Manager.
@@ -44,7 +44,7 @@ Separate from your selected login provider, you can also log in to Cloud Manager
 
 ## Disabling Third-Party Authentication
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com) using your TPA credentials.
+1.  Log in to [Cloud Manager](https://cloud.linode.com) using your TPA credentials.
 
 1.  Navigate to the Login & Authentication page of your profile by clicking on your **username** in the top right of the screen. Select **Login & Authentication** from the dropdown menu.
 

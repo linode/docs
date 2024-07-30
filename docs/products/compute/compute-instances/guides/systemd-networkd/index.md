@@ -11,7 +11,7 @@ aliases: ['/guides/systemd-networkd/']
 The [systemd-networkd](https://wiki.archlinux.org/title/systemd-networkd) tool is a newer tool developed as part of systemd. Arch and modern versions of Ubuntu (17.10 and above) currently use systemd-networkd as their default network configuration software.
 
 {{< note >}}
-By default, Linode's Network Helper tool manages networking in Ubuntu using systemd-networkd. Ubuntu also has utility called Netplan that serves as a frontend for configuring either systemd-networkd or NetworkManager. To use Netplan instead, review the [Network Configuration Using Netplan](/docs/products/compute/compute-instances/guides/netplan/) guide.
+By default, Linode's Network Helper tool manages networking in Ubuntu using systemd-networkd. Ubuntu also has utility called Netplan that serves as a front end for configuring either systemd-networkd or NetworkManager. To use Netplan instead, review the [Network Configuration Using Netplan](/docs/products/compute/compute-instances/guides/netplan/) guide.
 {{< /note >}}
 
 {{< note >}}
@@ -49,7 +49,7 @@ Address=192.0.2.123/24
 
 - [**Name**](https://www.freedesktop.org/software/systemd/man/systemd.network.html#Name=): `eth0`, the default interface configured for the public internet on most Compute Instances. When using a VLAN, the public internet interface may be configured differently.
 
-- [**DHCP**](https://www.freedesktop.org/software/systemd/man/systemd.network.html#DHCP=): `no`, which disables DHCP and allows you to statically define the main IPv4 address in later fields.
+- [**DHCP**](https://www.freedesktop.org/software/systemd/man/systemd.network.html#DHCP=): `no`, which disables DHCP and lets you statically define the main IPv4 address in later fields.
 
 - [**DNS**](https://www.freedesktop.org/software/systemd/man/systemd.network.html#DNS=): A list of IP addresses that map to Linode's DNS resolvers. The IP addresses provided in this example are placeholders and do not function.
 
@@ -63,7 +63,7 @@ Address=192.0.2.123/24
 
 ## Configuring IP Addresses Manually
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and review your Compute Instance's IP addresses. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). Make a note of the following pieces of information or keep this page accessible so you can reference it later.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and review your Compute Instance's IP addresses. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). Make a note of the following pieces of information or keep this page accessible so you can reference it later.
 
     - Public IPv4 address(es) and the associated IPv4 gateway
     - Private IPv4 address (if one has been added)

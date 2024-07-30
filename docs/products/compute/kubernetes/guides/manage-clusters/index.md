@@ -8,7 +8,7 @@ aliases: ['/products/compute/kubernetes/guides/delete-cluster/']
 
 ## View Kubernetes Clusters
 
-Log in to the [Cloud Manager](https://cloud.linode.com) and select Kubernetes from the left menu. If any LKE clusters exist on your account, they are listed on this page.
+Log in to [Cloud Manager](https://cloud.linode.com) and select Kubernetes from the left menu. If any LKE clusters exist on your account, they are listed on this page.
 
 ![Screenshot of the Kubernetes listing page in Cloud Manager](view-clusters.png)
 
@@ -26,22 +26,22 @@ To create a new Kubernetes cluster within LKE, follow the instructions within th
 
 ## Review and Edit a Cluster
 
-Navigate to the **Kubernetes** page in the Cloud Manager and select the cluster you wish to edit. See [View Kubernetes Clusters](#view-kubernetes-clusters).
+Navigate to the **Kubernetes** page in Cloud Manager and select the cluster you wish to edit. See [View Kubernetes Clusters](#view-kubernetes-clusters).
 
-![Screenshot of a Kubernetes cluster entry in the Cloud Manager](select-cluster.png)
+![Screenshot of a Kubernetes cluster entry in Cloud Manager](select-cluster.png)
 
 This displays the details page for the selected cluster. From here, you can view the summary section (which includes the Kubernetes version, region, cost, and combined computing resources) as well as the following details:
 
 - **Kubernetes API Endpoint**
-- **Kubeconfig:** Download, view, and reset the Kubeconfig configuration file. This file outlines the configuration of your cluster and allows you to connect to it.
+- **Kubeconfig:** Download, view, and reset the Kubeconfig configuration file. This file outlines the configuration of your cluster and lets you connect to it.
 
 There are also links to view the Kubernetes dashboard, upgrade the cluster to high availability, delete the cluster, and more. From here, you can also add, remove, recycle, and resize node pools (see [Manage Node Pools](/docs/products/compute/kubernetes/guides/manage-node-pools/)).
 
-![Screenshot of a Kubernetes cluster detail page in the Cloud Manager](view-cluster-details-page.png)
+![Screenshot of a Kubernetes cluster detail page in Cloud Manager](view-cluster-details-page.png)
 
 ## Delete a Cluster
 
-1. Navigate to the **Kubernetes** page in the Cloud Manager and select the cluster you wish to delete. See [View Kubernetes Clusters](#view-kubernetes-clusters).
+1. Navigate to the **Kubernetes** page in Cloud Manager and select the cluster you wish to delete. See [View Kubernetes Clusters](#view-kubernetes-clusters).
 
 1. Within the summary and details section, click the **Delete Cluster** button.
 

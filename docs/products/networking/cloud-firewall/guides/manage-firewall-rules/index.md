@@ -22,7 +22,7 @@ The Linode Cloud Manager provides a list of *predefined rules* that you can add 
 
 ## View Rules
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
 
 1. From the **Firewalls** listing page, click on the Cloud Firewall that you would like to view or modify.
 
@@ -30,7 +30,7 @@ Rules are separated into *Inbound* and *Outbound* rule sections.
 
 ## Add a Rule
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
 
 1. From the **Firewalls** listing page, click on the Firewall that you would like to add new rules to. This takes you to the Firewall's **Rules** page.
 

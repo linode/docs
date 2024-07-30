@@ -4,7 +4,7 @@ description: "Learn how to use the Linode CLI to manage Linode's own Object Stor
 modified: 2023-06-27
 ---
 
-The Linode Command Line Interface (CLI) is a command line utility that allows you complete control over the Linode account. For interacting with Object Storage, there are two separate commands within the Linode CLI.
+The Linode Command Line Interface (CLI) is a command line utility that gives you complete control over the Linode account. For interacting with Object Storage, there are two separate commands within the Linode CLI.
 
 - `linode object-storage [command]`: This resource provides access to managing Object Storage on a Linode account.
 - `linode obj [command]`: With the Object Storage plugin, you can also create and remove buckets, upload objects, and more.
@@ -103,7 +103,7 @@ If the bucket has objects in it, you can not delete it from the Linode CLI immed
 
 ## Create a Signed URL with the CLI
 
-Creating a **signed URL** allows you to create a link to objects with limited permissions and a time limit to access them. To create a signed URL on a preexisting object with the CLI, use the following syntax:
+Creating a **signed URL** lets you create a link to objects with limited permissions and a time limit to access them. To create a signed URL on a preexisting object with the CLI, use the following syntax:
 
 ```command
 linode-cli obj signurl my-example-bucket example.txt +300

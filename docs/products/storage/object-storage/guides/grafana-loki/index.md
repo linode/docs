@@ -7,7 +7,7 @@ Grafana Loki is a log aggregation and visualization system for cloud-native envi
 
 ## Before you start
 
-[Grafana Loki](https://grafana.com/docs/loki/latest/configure/) can integrate with Linode Object Storage as a backend storage solution using the S3 protocol and S3 storage configuration.
+[Grafana Loki](https://grafana.com/docs/loki/latest/configure/) can integrate with Linode Object Storage as a back-end storage solution using the S3 protocol and S3 storage configuration.
 
 Before you apply the Best Practices to your configuration, review these basic concepts to understand the Loki caching and storage workflow.
 
@@ -24,15 +24,15 @@ Before you apply the Best Practices to your configuration, review these basic co
 
 ### Caching During Writing
 
-- During ingestion, chunks may be cached in Memcached immediately after they are written to the backend storage such as, Linode Object Store.
-- This proactive caching ensures that recently ingested log data is available for querying. It also avoids the latency that occurs when fetching it from the backend storage.
-- Loki manages the indexes and chunks separately even though it may use the same backend storage for both.
+- During ingestion, chunks may be cached in Memcached immediately after they are written to the back-end storage such as, Linode Object Store.
+- This proactive caching ensures that recently ingested log data is available for querying. It also avoids the latency that occurs when fetching it from the back-end storage.
+- Loki manages the indexes and chunks separately even though it may use the same back-end storage for both.
 
 ### Caching During Reading
 
 - When a query occurs the query engine checks Memcached for the required chunks.
 - If the query finds the chunks in the cache, it retrieves the chunks directly from Memcached. This results in low-latency query responses.
-- Loki fetches chunks that are not present in the cache or chunks evicted due to caching policies from the backend storage.
+- Loki fetches chunks that are not present in the cache or chunks evicted due to caching policies from the back-end storage.
 
 ### Eviction and Management
 
@@ -56,7 +56,7 @@ You should understand your Loki workload type and evaluate whether it’s single
 In addition to providing data isolation, the multi-tenancy model allows for horizontal scalability and storage load sharding per tenant. Consider this example to understand the impact of the multi-tenancy workload type.
 
 A configuration with one tenant and one bucket only supports 750 mixed RPS for your entire workload. This means that if you have an aggregated workload of 10K queries per second across all your Grafana graphs with a cache configuration that yields a 90% hit ratio:
-- ~1K of the requests will land on the backend Object Storage bucket.
+- ~1K of the requests will land on the back-end Object Storage bucket.
 - With one tenant and one bucket, your workload will already exceed the rate limit for the bucket.
 
 Alternatively, a configuration with two tenants and two buckets, one each for the org/division/workload type, gets twice the RPS and the workload is unlikely to be rate limited.
@@ -92,7 +92,7 @@ To learn more you can read the [Grafana Cloud blog post](https://grafana.com/blo
 
 ## Loki Storage Configuration
 
-The `s3_storage_config` block configures the connection to the Linode S3 Object Storage backend.
+The `s3_storage_config` block configures the connection to the Linode S3 Object Storage back end.
 ![Screenshot of the chunk options](loki-storage-config.png)
 
 The `bucketnames` storage config parameter allows the Loki tenant workloads to specify more than one bucket. This enables sharding of log data chunks across multiple buckets. It’s highly recommended that you configure more than one bucket, and possibly many depending on the load. This helps with scalability and load balancing since rate limits are enforced at the bucket level.

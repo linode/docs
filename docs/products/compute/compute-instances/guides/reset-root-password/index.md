@@ -10,7 +10,7 @@ aliases: ['/quick-answers/linode-platform/reset-the-root-password-on-your-linode
 
 All Compute Instances deployed using one of Linode's [official distribution images](/docs/products/compute/compute-instances/guides/distributions/) provide the ability to reset the root password on the system. This is useful if you ever lock yourself out of your instance's root account or are simply rotating your password for security. Follow the instructions below to reset your root password:
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com), click the **Linodes** link in the sidebar, and select a Compute Instance from the list.
+1.  Log in to [Cloud Manager](https://cloud.linode.com), click the **Linodes** link in the sidebar, and select a Compute Instance from the list.
 
 1.  Click the **Power Off** button in the upper right of the Compute Instance's dashboard or within the **ellipsis** menu. Wait until the Compute Instance has been fully powered off before continuing to the next step.
 

@@ -38,7 +38,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 
     ![Screenshot of the ILLA Builder login](illa-builder-login-screen.png)
 
-1.  The sign up page should open, which allows you to create a new user on this ILLA Builder deployment. Enter your preferred username, your email address, and a secure password. Then, click the **Create Account** button.
+1.  The sign up page should open, which lets you create a new user on this ILLA Builder deployment. Enter your preferred username, your email address, and a secure password. Then, click the **Create Account** button.
 
     ![Screenshot of the ILLA Builder sign up page](illa-builder-signup-screen.png)
 

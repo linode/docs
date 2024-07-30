@@ -32,15 +32,15 @@ You have two resize options to choose from: **warm** and **cold**. Each refer to
 
 - **Warm resize**. Your compute instance remains up during the migration and it's rebooted once the migration completes. So, make sure your instance is powered on for this resize. If you see a warning message about an inability to power down your compute instance, try the resize again using the cold resize option. There is less downtime during a warm resize than a cold resize.
 
-- **Cold resize**. This shuts down your compute instance, migrates it to a new host, and restores it to its booted state prior to the resize process.
+- **Cold resize**. This shuts down your compute instance, migrates it to a new host, and restores it to its booted state before the resize process.
 
 ## Resize a compute instance
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com) and select **Linodes**.
+1.  Log in to [Cloud Manager](https://cloud.linode.com) and select **Linodes**.
 
 2.  In the list of compute instances, find the one you want to resize, click the corresponding **...**, and select **Resize**. The **Resize Linode** panel is displayed.
 
-    ![The Resize Linode panel in the Cloud Manager](resize-linode-plan.jpg)
+    ![The Resize Linode panel in Cloud Manager](resize-linode-plan.jpg)
 
 3.  Select the plan you want:
 

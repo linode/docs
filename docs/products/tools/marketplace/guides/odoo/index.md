@@ -47,6 +47,6 @@ aliases: ['/guides/odoo-marketplace-app/']
 
     ![Screenshot of the Odoo setup page](odoosetuppage.png)
 
-Now that you’ve accessed your dashboard, check out [the official Odoo documentation](https://www.odoo.com/page/docs) to learn how to further utilize your Odoo instance.
+Now that you’ve accessed your dashboard, check out [the official Odoo documentation](https://www.odoo.com/page/docs) to learn how to further use your Odoo instance.
 
 {{% content "marketplace-update-note-shortguide" %}}
