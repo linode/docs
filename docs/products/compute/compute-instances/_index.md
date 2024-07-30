@@ -36,7 +36,7 @@ In addition to the resources allocated to each available plan (outlined above), 
 - Dedicated IPv4 and IPv6 addresses (additional addresses available on request)
 - Deploy using the many available [Linux Distributions](https://www.linode.com/distributions/), [Marketplace Apps](https://www.linode.com/marketplace/), or Community [StackScripts](https://www.linode.com/products/stackscripts/)
 - Direct console access through [Lish](/docs/products/compute/compute-instances/guides/lish/)
-- Provisioning and management through the [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
+- Provisioning and management through [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
 - [Multi-queue NIC](/docs/products/compute/compute-instances/guides/multiqueue-nic/) support on plans with 2 or more vCPU cores.
 
 \**If a service is not active for the entire month, the amount of network transfer allowance is prorated based on the number of hours the service is active.*
@@ -50,7 +50,7 @@ Linode bundles the following services with all Compute Instances:
 - Seamless firewall management with [Cloud Firewalls](https://www.linode.com/products/cloud-firewall/)
 - Private Layer 2 networks with [VLANs](https://www.linode.com/products/vlan/)
 - Physical placement of your Compute Instances in a data center with [Placement Groups](/docs/products/compute/compute-instances/guides/placement-groups/)
-- Metrics and monitoring through the [Cloud Manager](https://www.linode.com/products/monitoring/) and [Longview](/docs/products/tools/longview/) (free plan)
+- Metrics and monitoring through [Cloud Manager](https://www.linode.com/products/monitoring/) and [Longview](/docs/products/tools/longview/) (free plan)
 - Reusable deployment scripts through [StackScripts](https://www.linode.com/products/stackscripts/)
 
 ## Complementary Paid Services

@@ -25,7 +25,7 @@ If one GPU card isn’t enough for your projected workloads, Akamai Cloud Comput
 
 ## Dedicated Competition-Free Resources
 
-A GPU Compute Instance's vCPU cores are dedicated, not shared, and accessible only to you. Your instance never has to wait for another process, enabling your software to run at peak speed and efficiency. This allows you to run workloads that require full-duty work (100% CPU all day, every day) at peak performance.
+A GPU Compute Instance's vCPU cores are dedicated, not shared, and accessible only to you. Your instance never has to wait for another process, enabling your software to run at peak speed and efficiency. This lets you run workloads that require full-duty work (100% CPU all day, every day) at peak performance.
 
 ## Recommended Workloads
 
@@ -134,7 +134,7 @@ Video Encoding is the process of taking a video file's original source format an
 
 ### General Purpose Computing using CUDA
 
-CUDA (Compute Unified Device Architecture) is a parallel computing platform and API that allows you to interact more directly with the GPU for general purpose computing. In practice, this means that a developer can write code in C, C++, or many other supported languages utilizing  their GPU to create their own tools and programs.
+CUDA (Compute Unified Device Architecture) is a parallel computing platform and API that lets you interact more directly with the GPU for general purpose computing. In practice, this means that a developer can write code in C, C++, or many other supported languages utilizing  their GPU to create their own tools and programs.
 
 If you're interested in using CUDA on your GPU Compute Instance, see the following resources:
 

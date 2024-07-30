@@ -19,7 +19,7 @@ Throughout this guide we will offer several suggested values for specific config
 
 - When first configuring back-end Linodes, you should set them up according to the instructions in our [Getting Started](/docs/products/platform/get-started/) guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our guide on [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
 
-- Generate an [SSL certificate](/docs/guides/security/ssl/) for your domain name that supports TLS version 1.2 or later. This can be done through any Certificate Authority, including Let's Encrypt using the [Certbot](https://certbot.eff.org/) tool. Since Certbot cannot run directly on the NodeBalancer, run the following command on any Linode to generate the certificate (after following [Certbot's installation instructions](https://certbot.eff.org/instructions)). This allows you to manually verify ownership by updating a DNS record on your domain:
+- Generate an [SSL certificate](/docs/guides/security/ssl/) for your domain name that supports TLS version 1.2 or later. This can be done through any Certificate Authority, including Let's Encrypt using the [Certbot](https://certbot.eff.org/) tool. Since Certbot cannot run directly on the NodeBalancer, run the following command on any Linode to generate the certificate (after following [Certbot's installation instructions](https://certbot.eff.org/instructions)). This lets you manually verify ownership by updating a DNS record on your domain:
 
     ```command
     sudo certbot certonly --key-type rsa --manual --preferred-challenges dns
@@ -32,7 +32,7 @@ Throughout this guide we will offer several suggested values for specific config
     - [LAMP Stack](/docs/guides/web-servers/lamp/)
     - [LEMP Stack](/docs/guides/web-servers/lemp/)
 
-- In addition, this guide assumes that you have already deployed a NodeBalancer and have configured it with two or more back-end Linodes that make connections on port 80/HTTP. We recommend that you first verify that your NodeBalancer is configured correctly, prior to introducing the complexities of an encrypted connection over SSL. If you would like assistance with setting up a basic NodeBalancer configuration, please review the following documentation:
+- In addition, this guide assumes that you have already deployed a NodeBalancer and have configured it with two or more back-end Linodes that make connections on port 80/HTTP. We recommend that you first verify that your NodeBalancer is configured correctly, before introducing the complexities of an encrypted connection over SSL. If you would like assistance with setting up a basic NodeBalancer configuration, please review the following documentation:
 
     - [Getting Started with NodeBalancers](/docs/products/networking/nodebalancers/get-started/)
     - [NodeBalancer Reference Guide](/docs/products/networking/nodebalancers/guides/configure/)
@@ -81,7 +81,7 @@ If your NodeBalancer must support users accessing your application with older br
 !RC4:HIGH:!aNULL:!MD5
 ```
 
-However, bear in mind that by gaining backwards compatibility, your NodeBalancer will use weaker SSL/TLS cipher suites. For all other implementations, the default **Recommended** cipher suite option should be used, which includes:
+However, bear in mind that by gaining backward compatibility, your NodeBalancer will use weaker SSL/TLS cipher suites. For all other implementations, the default **Recommended** cipher suite option should be used, which includes:
 
 ```command
 ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA
@@ -200,7 +200,7 @@ openssl dhparam -out dhparams.pem 2048
 
 ## Tips for Troubleshooting
 
-- If you have difficulty getting the redirect to work properly or would like to see detailed information about how your SSL certificate is configured, you may wish to utilize the [Qualys online SSL Server Test](https://www.ssllabs.com/ssltest/)
+- If you have difficulty getting the redirect to work properly or would like to see detailed information about how your SSL certificate is configured, you may wish to use the [Qualys online SSL Server Test](https://www.ssllabs.com/ssltest/)
 
 - Every time you make changes to your web server's document root file or other configuration files, be sure to reload the server:
 

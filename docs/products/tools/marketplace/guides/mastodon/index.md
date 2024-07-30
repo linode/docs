@@ -44,7 +44,7 @@ The Mastodon Marketplace App *requires* a custom domain. After deploying Mastodo
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 - **Domain** (*required*): The domain name you wish to use for the mastodon server, such as *example.com*.
-- **Linode API Token** (*required*): A personal access token for your account. The Linode API is used to create DNS records for your custom domain through the [DNS Manager](/docs/products/networking/dns-manager/). See [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/).
+- **Linode API Token** (*required*): A personal access token for your account. The Linode API is used to create DNS records for your custom domain through the [DNS Manager](/docs/products/networking/dns-manager/). See [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/).
 - **Email for the Let's Encrypt certificate** (*required*): The email you wish to use when creating your TLS/SSL certificate through Let's Encrypt. This email address receives notifications when the certificate needs to be renewed.
 - **Username for the Mastodon Owner** (*required*): The username for the Owner user that will be created for the Mastodon server.
 - **Email Address for the Mastodon Owner** (*required*): The contact email for the Mastodon server's owner.
@@ -87,7 +87,7 @@ Open a web browser and navigate to the custom domain you entered when deploying 
 
     ![Screenshot of the Mastodon user home page](mastodon-user-home.png)
 
-1. **Access admin settings**. Navigate to `https://[domain.tld]/admin/settings/` to view your site's administration settings. The administration page allows you to alter the look, feel, and behavior of your site. Consider configuring each of these settings, including the site name, contact username, contact email, server description, and fields within other tabs.
+1. **Access admin settings**. Navigate to `https://[domain.tld]/admin/settings/` to view your site's administration settings. The administration page lets you alter the look, feel, and behavior of your site. Consider configuring each of these settings, including the site name, contact username, contact email, server description, and fields within other tabs.
 
     ![Screenshot of Mastodon admin page](mastodon-server-settings.png)
 

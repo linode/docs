@@ -383,7 +383,7 @@ Ansible playbooks are what makes Ansible powerful software. The syntax of the ta
 Using `scp`, the above files are sent to the Ansible control node. You can then log into the control node and execute the control node script, `ansibleCN_setup.sh`.
 
 {{< note >}}
-Throughout all the steps in this section, replace `VM1_IPADDRESS` with the [IP address](/docs/guides/find-your-linodes-ip-address/) obtained from either the Linode CLI or Cloud Manager.
+Throughout all the steps in this section, replace `VM1_IPADDRESS` with the [IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) obtained from either the Linode CLI or Cloud Manager.
 {{< /note >}}
 
 {{< note type="alert" >}}
@@ -412,7 +412,7 @@ The script asks you to enter a username and password for the new user being crea
 
 ### Reboot and Access your Ansible Linode
 
-Use the command below to reboot the Linode either using the Linode CLI. You can also [reboot the Linode](/docs/products/tools/cloud-manager/guides/cloud-reboot-linode/) using the Cloud Manager.
+Use the command below to reboot the Linode either using the Linode CLI. You can also reboot the Linode using the Cloud Manager.
 
     linode-cli linodes reboot LINODE_ID
 

@@ -14,7 +14,7 @@ relations:
             - distribution: Apache
 ---
 
-In addition to capturing general system metrics, Longview can also be used to capture metrics for Apache. The Apache tab appears in the Cloud Manager when Longview detects that you have Apache installed on your system. It can help you keep track of Apache's settings, workers and requests, system resource consumption, and other information.
+In addition to capturing general system metrics, Longview can also be used to capture metrics for Apache. The Apache tab appears in Cloud Manager when Longview detects that you have Apache installed on your system. It can help you keep track of Apache's settings, workers and requests, system resource consumption, and other information.
 
 {{< note >}}
 In order to use Longview to capture data for Apache, you must have the Longview Agent successfully installed on the system you wish to monitor. See [Create a Longview Client and Install the Longview Agent](/docs/products/tools/longview/get-started/).
@@ -25,7 +25,7 @@ In order to use Longview to capture data for Apache, you must have the Longview 
 This guide covers using Longview with Apache and includes the following topics:
 
 - [Configuring Longview for Apache](#configure-longview).
-- [Interacting with the Apache data provided by Longview in the Cloud Manager](#view-metrics).
+- [Interacting with the Apache data provided by Longview in Cloud Manager](#view-metrics).
 - [Troubleshooting Longview for Apache](#troubleshooting).
 
 ## Configure Longview for Apache {#configure-longview}
@@ -57,7 +57,7 @@ If Apache is installed and running when you install the Longview agent, Longview
     Found Apache status page at http://127.0.0.1/server-status?auto specified in /etc/linode/longview.d/Apache.conf
     ```
 
-    Once you see this successful message, the Longview should automatically start collecting Apache data. Refresh Longview in the Cloud Manager to start viewing your Apache stats for your Longview Client instance.
+    Once you see this successful message, the Longview should automatically start collecting Apache data. Refresh Longview in Cloud Manager to start viewing your Apache stats for your Longview Client instance.
 
     If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#troubleshooting) section at the end of this article.
 
@@ -142,7 +142,7 @@ You should now be able to see Longview data for Apache. If that's not the case, 
 
 ## View Apache Metrics {#view-metrics}
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select the **Longview** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select the **Longview** link in the sidebar.
 
 1. Locate the Longview Client you have configured for Apache and click the corresponding **View details** link.
 
@@ -229,7 +229,7 @@ If you choose:
     update-rc.d: using dependency based boot sequencing
     ```
 
-    Refresh the Longview Apache tab in the Cloud Manager to verify that it's working now.
+    Refresh the Longview Apache tab in Cloud Manager to verify that it's working now.
 
     If instead you receive a failure message, such as:
 
@@ -282,7 +282,7 @@ To fix this, follow these steps:
     location http://localhost/whm-server-status?auto
     ```
 
-1. Longview is designed to check the default location automatically. If you use the default location shown above, you should be done. Refresh the Longview in the Cloud Manager to verify that it's working now.
+1. Longview is designed to check the default location automatically. If you use the default location shown above, you should be done. Refresh the Longview in Cloud Manager to verify that it's working now.
 
 1. If you're not using the default location, you need to create a new file, `/etc/linode/longview.d/Apache.conf`, and set the `location` variable to match what you set in the Apache configuration file:
 
@@ -304,7 +304,7 @@ To fix this, follow these steps:
     sudo service longview restart
     ```
 
-1. Refresh the Longview in the Cloud Manager to verify that it's working now.
+1. Refresh the Longview in Cloud Manager to verify that it's working now.
 
 ### The Apache Status Page Doesn't Look Right
 
@@ -333,7 +333,7 @@ To resolve this issue, follow these steps:
     sudo systemctl restart longview
     ```
 
-1. Refresh the Longview in the Cloud Manager to verify that it's working now.
+1. Refresh the Longview in Cloud Manager to verify that it's working now.
 
 ### Missing Graphs: Enable ExtendedStatus
 

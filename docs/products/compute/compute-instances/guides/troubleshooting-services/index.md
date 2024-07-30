@@ -88,7 +88,7 @@ sudo ip6tables -L # displays IPv6 rules
 ```
 
 {{< note >}}
-Your deployment may be running FirewallD or UFW, which are frontends used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
+Your deployment may be running FirewallD or UFW, which are front ends used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
 
 ```command
 sudo ufw status
@@ -206,7 +206,7 @@ df -h
 ```
 
 {{< note >}}
-This reported disk usage is not the same as the reported storage usage in the Cloud Manager. The storage usage in the Cloud Manager refers to how much of the disk space you pay for is allocated to your Compute Instance's disks. The output of `df -h` shows how full those disks are.
+This reported disk usage is not the same as the reported storage usage in Cloud Manager. The storage usage in Cloud Manager refers to how much of the disk space you pay for is allocated to your Compute Instance's disks. The output of `df -h` shows how full those disks are.
 {{< /note >}}
 
 You have several options for resolving disk space issues:

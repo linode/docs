@@ -50,7 +50,7 @@ Open your web browser and go to the custom domain you specified during deploymen
 
 ## Obtaining the NATS users passwords.
 
-By default, this NATS deployment creates 2 users, one named "example" and another system user named "system". The passwords for these users are generated during the initial install process. To obtain these password, log in to your Compute Instance either through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) or via SSH, then just read the `/home/$USERNAME/.credentials` file, ie:
+By default, this NATS deployment creates 2 users, one named "example" and another system user named "system". The passwords for these users are generated during the initial install process. To obtain these password, log in to your Compute Instance either through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish) or via SSH, then just read the `/home/$USERNAME/.credentials` file, ie:
 
 ```command
 cat /home/$USERNAME/.credentials

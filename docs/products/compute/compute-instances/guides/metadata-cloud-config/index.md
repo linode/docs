@@ -14,7 +14,7 @@ Cloud-config data is written using the YAML syntax, a commonly used data seriali
 
 ## Cloud-Config Modules
 
-A cloud-config file must contain `#cloud-config` as the first line. Following that, you can utilize the keys provided by any of the cloud-init modules. Review the remaining sections of this guide for a list of common modules and how to configure them. For a full list of modules/keys, review [cloud-init Module Reference](https://cloudinit.readthedocs.io/en/latest/reference/modules.html).
+A cloud-config file must contain `#cloud-config` as the first line. Following that, you can use the keys provided by any of the cloud-init modules. Review the remaining sections of this guide for a list of common modules and how to configure them. For a full list of modules/keys, review [cloud-init Module Reference](https://cloudinit.readthedocs.io/en/latest/reference/modules.html).
 
 ## Create a New User and Restrict Root Access
 

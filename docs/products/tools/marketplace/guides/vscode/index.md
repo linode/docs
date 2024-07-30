@@ -47,7 +47,7 @@ VS Code is now installed and ready to use.
 
 1.  Before you go to the app, if you filled out the optional VS Code configuration fields for domain:
 
-    - In the Cloud Manager [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/) there is now an entry for the domain with possible subdomain records pointing to the new server.
+    - In Cloud Manager's [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/) there is now an entry for the domain with possible subdomain records pointing to the new server.
     - [Configure the rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on the Linode server.
 
 1.  VS Code is accessed via the domain name if you entered one, or by the rDNS name if you did not. For example, `http://example.com` or `http://203-0-113-0.ip.linodeusercontent.com`, replacing the domain name or rDNS name with values for the server.
@@ -68,6 +68,6 @@ The VS Code Marketplace App installs the following software on the Linode:
 |:--------------|:------------|
 | [**Code Server**](https://github.com/cdr/code-server) | Code Server which hosts the open source web interface of VS Code.|
 | [**NGINX**](https://www.nginx.com) | An open source web server. |
-| [**ufw**](https://wiki.ubuntu.com/UncomplicatedFirewall) | ufw is the uncomplicated firewall, a frontend for iptables. |
+| [**ufw**](https://wiki.ubuntu.com/UncomplicatedFirewall) | ufw is the uncomplicated firewall, a front end for iptables. |
 
 {{% content "marketplace-update-note-shortguide" %}}

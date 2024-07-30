@@ -11,11 +11,11 @@ tags: ["linode platform"]
 aliases: ['/platform/api/create-block-storage-volumes-with-the-linode-api/','/guides/create-block-storage-volumes-with-the-linode-api/','/products/tools/api/guides/block-storage/']
 ---
 
-The Linode API allows you to create, delete, attach, detach, clone, and resize Block Storage Volumes.
+The Linode API lets you create, delete, attach, detach, clone, and resize Block Storage Volumes.
 
 ## Before You Begin
 
-You need a Personal Access Token for the Linode API to complete the steps in this guide. See [Manage Personal Access Tokens](/docs/products/tools/api/guides/manage-api-tokens/#create-an-api-token) for more information.
+You need a Personal Access Token for the Linode API to complete the steps in this guide. See [Manage Personal Access Tokens](/docs/products/platform/accounts/guides/manage-api-tokens/#create-an-api-token) for more information.
 
 Store the token as a temporary shell variable to simplify repeated requests. Replace `<Access Token>` in this example with your token:
 

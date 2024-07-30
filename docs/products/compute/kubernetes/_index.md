@@ -36,4 +36,4 @@ The basic control plane infrastructure on LKE clusters is provided at no additio
 - Compute Instance plans supported: Dedicated CPU, Shared CPU, High Memory, and Premium CPU (excluding the 512 GB size for both Dedicated CPU and Premium CPU). See the [Pricing](https://www.linode.com/pricing/) page for the compute resources included in each plan.
 - 40 Gbps inbound network bandwidth
 - Free inbound network transfer
-- Provisioning and management through the [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
+- Provisioning and management through [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)

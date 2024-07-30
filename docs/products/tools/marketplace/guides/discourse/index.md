@@ -56,7 +56,7 @@ Discourse requires that you have a domain name and access to a personal SMTP ema
 
 Discourse requires that you have a domain name and SMTP email. These fields are required for a successful installation and are marked *Required*. Additionally, the SMTP user must be able to send email from `noreply@your-fully-qualified-domain.com` for account verification.
 
-- **Linode API Token:** If you wish to use the Linode's [DNS Manager](/docs/products/networking/dns-manager/) to manage DNS records for your custom domain, create a Linode API *Personal Access Token* on your account with Read/Write access to *Domains*. If this is provided along with the subdomain and domain fields (outlined below), the installation attempts to create DNS records via the Linode API. See [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/). If you do not provide this field, you need to manually configure your DNS records through your DNS provider and point them to the IP address of the new instance.
+- **Linode API Token:** If you wish to use the Linode's [DNS Manager](/docs/products/networking/dns-manager/) to manage DNS records for your custom domain, create a Linode API *Personal Access Token* on your account with Read/Write access to *Domains*. If this is provided along with the subdomain and domain fields (outlined below), the installation attempts to create DNS records via the Linode API. See [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/). If you do not provide this field, you need to manually configure your DNS records through your DNS provider and point them to the IP address of the new instance.
 - **Subdomain:** The subdomain you wish to use, such as *www* for `www.example.com`.
 - **Domain:** The domain name you wish to use, such as *example.com*.
 
@@ -68,12 +68,12 @@ Discourse requires that you have a domain name and SMTP email. These fields are 
 
 Discourse is now installed and ready to use.
 
-1.  Your A and AAAA Domain records for the domain and subdomain, if you designated one, have been created and you should see them in the Cloud Manager.
+1.  Your A and AAAA Domain records for the domain and subdomain, if you designated one, have been created and you should see them in Cloud Manager.
 
-    - In the Cloud Manager [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/), confirm that there are now an entries for your domain and possible subdomain.
+    - In Cloud Manager's [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/), confirm that there are now an entries for your domain and possible subdomain.
     - [Configure rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on your Linode to point to `subdomain.your-domain.com` or `your-domain.com` if you did not enter a subdomain.
 
-1.  While the installation has created the A and AAAA domain records, it does not create the email records you need. In the Cloud Manager DNS Manager, [add the MX, TXT, and any other records](/docs/products/networking/dns-manager/guides/manage-dns-records/) required to send email as specified by your email provider.
+1.  While the installation has created the A and AAAA domain records, it does not create the email records you need. In Cloud Manager DNS Manager, [add the MX, TXT, and any other records](/docs/products/networking/dns-manager/guides/manage-dns-records/) required to send email as specified by your email provider.
 
 1.  You can now navigate to the Discourse app in your browser with the fully qualified domain name you entered during configuration, `https://subdomain.your-domain.com` or `https://your-domain.com`.
 
@@ -100,7 +100,7 @@ The Discourse Marketplace App installs the following software on your Linode:
 | **Software** | **Description** |
 |:--------------|:------------|
 | [**Discourse**](https://www.discourse.org/) | Discourse is an open source discussion platform that provides a forum, mailing list, chat room, and more. |
-| [**ufw**](https://wiki.ubuntu.com/UncomplicatedFirewall) | ufw is the uncomplicated firewall, a frontend for iptables.  |
+| [**ufw**](https://wiki.ubuntu.com/UncomplicatedFirewall) | ufw is the uncomplicated firewall, a front end for iptables.  |
 
 {{% content "email-warning-shortguide" %}}
 

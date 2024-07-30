@@ -98,7 +98,7 @@ Before you can work with the Linode API, you need a personal access token that i
 
 Your Linode account does not have any personal access tokens by default. To create a new token:
 
-1. Follow our [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/) instructions. For the code example in this guide, you should create a token that has **Read Only** access to the **Account** resource.
+1. Follow our [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) instructions. For the code example in this guide, you should create a token that has **Read Only** access to the **Account** resource.
 
 1. When you have created the token, it is displayed in your browser. Unlike the Twilio access token, you are not able to view the token in your browser after you have closed this page. Be sure to copy the token into a temporary text file or a password manager on your computer. Later in this guide, you add this token to the example code.
 

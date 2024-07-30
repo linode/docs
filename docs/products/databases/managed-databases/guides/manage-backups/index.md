@@ -11,13 +11,13 @@ Each Managed Database includes daily backups of your data, taken on a 24 hour ca
 
 ## View Managed Backups
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu.
 
 1. Select your Managed Database from the list. This opens the detail page for that database cluster.
 
 1. Navigate to the **Backups** tab. A list of your available backups are displayed, organized by the date they were created.
 
-![Screenshot of all available managed backups in the Cloud Manager](available-managed-backups.png)
+![Screenshot of all available managed backups in Cloud Manager](available-managed-backups.png)
 
 ## Restore Managed Backups
 

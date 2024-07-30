@@ -34,6 +34,8 @@ date: 2022-11-21
 
 - [Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/): Add public keys to your user, which can be configured on the root user when deploying Compute Instances.
 
+- [Manage API Personal Access Tokens](/docs/products/platform/accounts/guides/manage-api-tokens/): View and manage personal access tokens for use with the Linode API.
+
 ## Akamai Partners
 
 - [Parent and Child Accounts for Akamai Partners](/docs/products/platform/accounts/guides/parent-child-accounts/): Learn how parent and child accounts can help Akamai partners manage multiple accounts.

@@ -59,7 +59,7 @@ To turn Lassie on and off, see the [Recover from Unexpected Shutdowns with Lassi
 
 ## Manage Logs
 
-Important events that occur on your system — things like login attempts or services being restarted — are recorded in your server's *logs*. Similar to car maintenance records and completed tax forms, which provide a paper trail in the event of a problem or discrepancy, log files keep track of system events. You might review logs when troubleshooting errors, tracking usage, or investigating unusual behavior on your system.
+Important events that occur on your system — things like login attempts or services being restarted — are recorded in your server's *logs*. Similar to car maintenance records and completed tax forms, which provide a paper trail if a problem or discrepancy occurs, log files keep track of system events. You might review logs when troubleshooting errors, tracking usage, or investigating unusual behavior on your system.
 
 ### Rotate Logs
 
@@ -96,9 +96,9 @@ There are ways to automate the installation of software updates, but this is not
 
 ### Apply Kernel Updates
 
-When you first sign up for Linode and create a Compute Instance, the Cloud Manager automatically creates a [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) that uses either the distribution's system kernel (in most cases) or uses the latest available Linode-supplied kernel.
+When you first sign up for Linode and create a Compute Instance, Cloud Manager automatically creates a [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) that uses either the distribution's system kernel (in most cases) or uses the latest available Linode-supplied kernel.
 
-If your system is using a Linode-supplied kernel, it's important to know that we [update the kernels](http://www.linode.com/kernels/) as necessary and make them available in the Cloud Manager. In most cases, new kernels are automatically selected and, once a new kernel is released, all you have to do is reboot your Compute Instance to start using it.
+If your system is using a Linode-supplied kernel, it's important to know that we [update the kernels](http://www.linode.com/kernels/) as necessary and make them available in Cloud Manager. In most cases, new kernels are automatically selected and, once a new kernel is released, all you have to do is reboot your Compute Instance to start using it.
 
 To check for a new kernel and start using it on your Compute Instance:
 
@@ -114,7 +114,7 @@ To check for a new kernel and start using it on your Compute Instance:
     Linux version 4.15.12-x86_64-linode105 (maker@build.linode.com) (gcc version 4.9.2 (Debian 4.9.2-10+deb8u1)) #1 SMP Thu Mar 22 02:13:40 UTC 2018
     ```
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com).
+1. Log in to [Cloud Manager](https://cloud.linode.com).
 1. Click the **Linodes** link in the sidebar.
 1. Select your Compute Instance. The instance's details page appears.
 1. Select the active configuration profile by clicking the **Edit** link, as shown below.

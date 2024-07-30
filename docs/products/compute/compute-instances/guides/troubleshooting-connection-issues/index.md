@@ -11,7 +11,7 @@ aliases: ['/troubleshooting/troubleshooting-basic-connection-issues/','/guides/t
 
 This guide presents troubleshooting strategies for Compute Instances that are unresponsive to any network access. One reason that an instance may be unresponsive is if you recently performed a distribution upgrade or other broad software updates to your system, as those changes can lead to unexpected problems for your core system components.
 
-Similarly, your server may be unresponsive after maintenance was applied by Linode to your server's host (frequently, this is correlated with software/distribution upgrades performed on your deployment prior to the host's maintenance). This guide is designed as a useful resource for either of these scenarios. If you need to troubleshoot memory and networking, read our guide on [Troubleshooting Memory and Networking Issues](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/).
+Similarly, your server may be unresponsive after maintenance was applied by Linode to your server's host (frequently, this is correlated with software/distribution upgrades performed on your deployment before the host's maintenance). This guide is designed as a useful resource for either of these scenarios. If you need to troubleshoot memory and networking, read our guide on [Troubleshooting Memory and Networking Issues](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/).
 
 If you can [ping](/docs/guides/linux-system-administration-basics/#the-ping-command) your Compute Instance, but you cannot access SSH or other services, this guide will not assist with troubleshooting those services. Instead, refer to the [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) or [Troubleshooting Web Servers, Databases, and Other Services](/docs/products/compute/compute-instances/guides/troubleshooting-services/) guides.
 
@@ -31,7 +31,7 @@ There are a few core troubleshooting tools you should familiarize yourself with 
 
 [*Lish*](/docs/products/compute/compute-instances/guides/lish/) is a shell that provides access to your Compute Instance's serial console. Lish does not establish a network connection to your Compute Instance, so you can use it when your networking is down or SSH is inaccessible. Much of your troubleshooting for basic connection issues will be performed from the Lish console.
 
-To learn about Lish in more detail, and for instructions on how to connect to your Compute Instance via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. In particular, [using your web browser](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) is a fast and simple way to access Lish.
+To learn about Lish in more detail, and for instructions on how to connect to your Compute Instance via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. In particular, [using your web browser](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish) is a fast and simple way to access Lish.
 
 ### MTR
 
@@ -43,11 +43,11 @@ Review the installation instructions in Linode's [Diagnosing Network Issues with
 
 ## Is your Compute Instance Running?
 
-Log in to the [Cloud Manager](https://cloud.linode.com/) and inspect the Compute Instance's dashboard. If the instance is powered off, turn it on.
+Log in to [Cloud Manager](https://cloud.linode.com/) and inspect the Compute Instance's dashboard. If the instance is powered off, turn it on.
 
 ### Inspect the Lish Console
 
-If the Compute Instance is listed as running in the Cloud Manager, or after you boot it from the Manager, open the Lish console and look for a login prompt. If a login prompt exists, try logging in with your root user credentials (or any other Linux user credentials that you previously created on the server).
+If the Compute Instance is listed as running in Cloud Manager, or after you boot it from the Manager, open the Lish console and look for a login prompt. If a login prompt exists, try logging in with your root user credentials (or any other Linux user credentials that you previously created on the server).
 
 {{< note >}}
 The root user is available in Lish even if root user login is disabled in your SSH configuration.
@@ -129,7 +129,7 @@ mtr -rwbzc 100 -i 0.2 -rw 198.51.100.0 <Compute Instance's IP address>
 Once you have generated this report, compare it with the following example scenarios.
 
 {{< note >}}
-If you are located in China, and the output of your MTR report shows *high packet loss* or an *improperly configured router*, then your IP address may have been blacklisted by the GFW (Great Firewall of China). Linode is not able to change your IP address if it has been blacklisted by the GFW. If you have this issue, review this [community post](https://www.linode.com/community/questions/17192/ssh-refused) for troubleshooting help.
+If you are located in China, and the output of your MTR report shows *high packet loss* or an *improperly configured router*, then your IP address may have been blocked (added to a blocklist) by the GFW (Great Firewall of China). Linode is not able to change your IP address if it has been blocked by the GFW. If you have this issue, review this [community post](https://www.linode.com/community/questions/17192/ssh-refused) for troubleshooting help.
 {{< /note >}}
 
 -   **High Packet Loss**
@@ -383,7 +383,7 @@ sudo ip6tables -L # displays IPv6 rules
 ```
 
 {{< note >}}
-Your deployment may be running FirewallD or UFW, which are frontend software packages used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
+Your deployment may be running FirewallD or UFW, which are front-end software packages used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
 
 ```command
 sudo ufw status

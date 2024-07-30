@@ -127,7 +127,7 @@ A few configuration steps are necessary to prepare the cloud-init installation f
     ```
 ## Create a Custom Image
 
-Creating an image from the instance setup above allows you to deploy new instances leveraging the Metadata service and custom cloud-init deployment scripts. For more on creating an image of an Akamai Compute Instance, you can refer to our [Capture an Image](/docs/products/tools/images/guides/capture-an-image/#capturing-an-image-through-the-cloud-manager) guide.
+Creating an image from the instance setup above allows you to deploy new instances leveraging the Metadata service and custom cloud-init deployment scripts. For more on creating an image of an Akamai Compute Instance, you can refer to our [Capture an Image](/docs/products/tools/images/guides/capture-an-image/#capturing-an-image-through-cloud-manager) guide.
 
 What follows is a summary of steps you can use to create a base image from the instance on which you installed cloud-init.
 

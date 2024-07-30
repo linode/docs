@@ -6,7 +6,7 @@ keywords: ['encoder','video','live','rtmp','rtsp','rtp','udp','zixi','srt','mpeg
 tags: ["marketplace", "linode platform", "cloud manager"]
 ---
 
-The [MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) is an all-in-one encoding engine designed to simplify common broadcast and OTT video workflows. It features HEVC and AVC codecs with optional GPU decoding, as well as encoding powered by NVIDIA and Intel Quick Sync Video built in. MainConcept Live Encoder allows you to package content for multi-screen delivery in real-time using common input sources via a graphic user interface or REST API.
+The [MainConcept Live Encoder](https://www.mainconcept.com/live-encoder) is an all-in-one encoding engine designed to simplify common broadcast and OTT video workflows. It features HEVC and AVC codecs with optional GPU decoding, as well as encoding powered by NVIDIA and Intel Quick Sync Video built in. MainConcept Live Encoder lets you package content for multi-screen delivery in real-time using common input sources via a graphic user interface or REST API.
 
 Using the Live Encoder, you are able to set up a live workflow to ingest, prepare, and stream audio-visual content that is compatible with all consumer devices. Video delivery options include, but are not limited to: direct to CDN, online video via RTMP, or low-latency protocols like Zixi and SRT.
 

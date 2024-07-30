@@ -4,7 +4,7 @@ description: "Learn how to view, edit, and delete subnets within Akamai's VPC so
 published: 2024-01-30
 ---
 
-A VPC contains one or more _subnets_, which are networks within the VPC whose services all share the same IPv4 CIDR range. Just like VPCs, subnets are restricted to a single data center. Multiple subnets can be added to isolate services that are used for certain functionality of an application (like frontend and backend services) or can segment a VPC and its attached services into different environments (such as development, staging, and production).
+A VPC contains one or more _subnets_, which are networks within the VPC whose services all share the same IPv4 CIDR range. Just like VPCs, subnets are restricted to a single data center. Multiple subnets can be added to isolate services that are used for certain functionality of an application (like front end and back-end services) or can segment a VPC and its attached services into different environments (such as development, staging, and production).
 
 ## Subnet Components
 
@@ -31,7 +31,7 @@ When defining an IPv4 range for a subnet, use a CIDR block within the [RFC1918](
 
 ## View Subnets
 
-1.  View the [VPCs](https://cloud.linode.com/vpcs) page in the Cloud Manager. See [View VPCs](/docs/products/networking/vpc/guides/manage-vpcs/#view-vpcs).
+1.  View the [VPCs](https://cloud.linode.com/vpcs) page in Cloud Manager. See [View VPCs](/docs/products/networking/vpc/guides/manage-vpcs/#view-vpcs).
 
 1.  Locate and click the name of the VPC you wish to inspect. This displays the details page for that VPC.
 

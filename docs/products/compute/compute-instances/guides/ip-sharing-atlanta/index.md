@@ -20,7 +20,7 @@ This guide discusses a temporary workaround specific to the Atlanta data center.
 
 ## Before You Begin
 
-1. Prior to beginning the process outlined in this guide, make sure that you have received an IPv4 address(es) from Linode Support to use as your Elastic IP(s). To request an additional IPv4 address, [open a new support ticket from the Cloud Manager](/docs/products/platform/get-started/guides/support/#contact-customer-support).
+1. Before beginning the process outlined in this guide, make sure that you have received an IPv4 address(es) from Linode Support to use as your Elastic IP(s). To request an additional IPv4 address, [open a new support ticket from Cloud Manager](/docs/products/platform/get-started/guides/support/#contact-customer-support).
 
 1. Ensure you have set the [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and have updated the [hosts file](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-file) on your Compute Instances.
 

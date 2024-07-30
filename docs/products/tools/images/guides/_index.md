@@ -36,7 +36,7 @@ tab_group_main:
 
 ### Custom Distributions
 
-- [Install a Custom Distribution on a Linode](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/)
+- [Install a Custom Distribution on a Linode](/docs/guides/install-a-custom-distribution/)
 
 ### Migration
 

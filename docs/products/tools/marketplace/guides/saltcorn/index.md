@@ -53,6 +53,6 @@ aliases: ['/guides/saltcorn-marketplace-app/']
 
     ![The Saltcorn admin dashboard](saltcorn-admin.png)
 
-Now that you’ve accessed your dashboard, check out [the official Saltcorn documentation](https://wiki.saltcorn.com/) to learn how to further utilize your Saltcorn instance.
+Now that you’ve accessed your dashboard, check out [the official Saltcorn documentation](https://wiki.saltcorn.com/) to learn how to further use your Saltcorn instance.
 
 {{% content "marketplace-update-note-shortguide" %}}

@@ -14,7 +14,7 @@ Marketplace applications are deployed in the API via the
 
 ## Linode CLI
 
- The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the Linode API v4 that allows you to manage your Linode account and resources from the command line.
+ The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the Linode API v4 that lets you manage your Linode account and resources from the command line.
 
 ## App Developers and Marketplace Contributors
 

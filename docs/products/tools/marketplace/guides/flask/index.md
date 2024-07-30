@@ -36,7 +36,7 @@ aliases: ['/platform/marketplace/how-to-deploy-flask-with-marketplace-apps/', '/
 In addition to installing Flask, this Marketplace app installs and configures software to support running Flask in a production environment. Below is a list of the installed software:
 
 - The [NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) web server is installed with a basic NGINX configuration, located in `/etc/nginx/sites-enabled/flask_app`, and listening on your Linode's IP address.
-- An example Flask application is downloaded to your Linode's `/home/flask_app_project` directory. If you visit your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/), you will see the example Flask application running and serving boiler plate blog content.
+- An example Flask application is downloaded to your Linode's `/home/flask_app_project` directory. If you visit your [Linode's IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/), you will see the example Flask application running and serving boiler plate blog content.
 - Your example Flask application's environment will be configured with basic settings located in the `/etc/config.json` file.
 - [Gunicorn](https://gunicorn.org/), a Python WSGI (web server gateway interface) HTTP Server for UNIX, is installed and running. It is used to forward requests from your NGINX web server to your Flask application.
 - [Supervisor](http://supervisord.org/), a client/server system that allows its users to monitor and control a number of processes on UNIX-like operating systems, is installed and running on your Linode. Its configuration file can be found in the following location, `/etc/supervisor/conf.d/flask_app.conf`.

@@ -7,16 +7,16 @@ modified: 2024-01-30
 keywords: ["configuration profiles"]
 tags: ["linode platform","cloud manager"]
 image: Linode-Configuration-Profiles.jpg
-aliases: ['/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/','/disk-images-config-profiles/','/platform/disk-images/disk-images-and-configuration-profiles/','/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/','/guides/linode-configuration-profiles/','/guides/disk-images-and-configuration-profiles/']
+aliases: ['/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/','/disk-images-config-profiles/','/platform/disk-images/disk-images-and-configuration-profiles/','/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/','/guides/linode-configuration-profiles/','/guides/disk-images-and-configuration-profiles/','/platform/disk-images/kvm-reference/','/platform/kvm-reference/','/platform/kvm/','/guides/kvm-reference/']
 ---
 
 A **configuration profile** functions as a boot loader for a Compute Instance. It controls general boot settings, including the disk the instance will boot from, the disks that will be mounted, the kernel that will be used, and the network interfaces on the instance. Multiple configuration profiles can be created, each one booting from different disks with different settings. This can allow you to try out new Linux distributions without paying for additional Compute Instances (see [Deploy an Image to a Disk on an Existing Compute Instance](/docs/products/tools/images/guides/deploy-image-to-existing-linode/)) or to create custom software testing environments.
 
 ## View Configuration Profiles
 
-The configuration profiles for a Compute Instance can be viewed and managed from the [Cloud Manager](https://cloud.linode.com).
+The configuration profiles for a Compute Instance can be viewed and managed from [Cloud Manager](https://cloud.linode.com).
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com), click the **Linodes** link in the sidebar, and select a Compute Instance from the list.
+1. Log in to [Cloud Manager](https://cloud.linode.com), click the **Linodes** link in the sidebar, and select a Compute Instance from the list.
 
 1. Navigate to the **Configurations** tab to view the configuration profiles on a Compute Instance.
 
@@ -81,9 +81,9 @@ When adding or editing a configuration profile on a Compute Instance, the follow
 
 ## Create a Configuration Profile
 
-Making a new configuration profile allows you to create a new and separate boot configuration for your system. You can specify boot settings and disks to mount. Here's how to create a new configuration profile:
+Making a new configuration profile lets you create a new and separate boot configuration for your system. You can specify boot settings and disks to mount. Here's how to create a new configuration profile:
 
-1. Within the [Cloud Manager](https://cloud.linode.com), view the Configuration Profiles for your desired Compute Instance. See [View Configuration Profiles](#view-configuration-profiles).
+1. Within [Cloud Manager](https://cloud.linode.com), view the Configuration Profiles for your desired Compute Instance. See [View Configuration Profiles](#view-configuration-profiles).
 
 1. Select the **Add a Configuration** link. The **Add Configuration** form appears:
 
@@ -99,7 +99,7 @@ Making a new configuration profile allows you to create a new and separate boot 
 
 You can edit existing configuration profiles to change boot settings, set other disks to mount, and more. Here's how to edit a configuration profile:
 
-1. Within the [Cloud Manager](https://cloud.linode.com), view the Configuration Profiles for your desired Compute Instance. See [View Configuration Profiles](#view-configuration-profiles).
+1. Within [Cloud Manager](https://cloud.linode.com), view the Configuration Profiles for your desired Compute Instance. See [View Configuration Profiles](#view-configuration-profiles).
 
 1. Within the **Configurations** table, locate the configuration profile you wish to modify and click the corresponding **Edit** button, which may also appear within the **ellipsis** menu. This displays the **Edit Configuration** form.
 
@@ -111,9 +111,9 @@ The changes to the configuration profile have been saved. You may need to reboot
 
 ## Boot from a Configuration Profile
 
-You can create and store many different configuration profiles in the Cloud Manager, but you can only boot your Compute Instance from one configuration profile at a time. Here's how to select a configuration profile and boot your instance from it:
+You can create and store many different configuration profiles in Cloud Manager, but you can only boot your Compute Instance from one configuration profile at a time. Here's how to select a configuration profile and boot your instance from it:
 
-1. Within the [Cloud Manager](https://cloud.linode.com), view the Configuration Profiles for your desired Compute Instance. See [View Configuration Profiles](#view-configuration-profiles).
+1. Within [Cloud Manager](https://cloud.linode.com), view the Configuration Profiles for your desired Compute Instance. See [View Configuration Profiles](#view-configuration-profiles).
 
 1. Within the **Configurations** table, locate the configuration profile you wish to modify and click the corresponding **Boot** button, which may also appear within the **ellipsis** menu.
 
@@ -127,7 +127,7 @@ You have successfully selected and booted your Compute Instance from a configura
 
 When a Compute Instance is powered on or rebooted, it uses the settings stored within a configuration profile. You can determine which configuration profile was used by looking at the event history. Events are visible within the **Activity Feed** tab for a particular Compute Instance or within the main [Events](https://cloud.linode.com/events) page for the account.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com), click the **Linodes** link in the sidebar, and select a Compute Instance from the list.
+1. Log in to [Cloud Manager](https://cloud.linode.com), click the **Linodes** link in the sidebar, and select a Compute Instance from the list.
 
 1. Navigate to the **Activity Feed** tab to view all events for the instance.
 
@@ -143,9 +143,9 @@ A configuration profile, along with any attached disks, can be duplicated to any
 
 ## Delete a Configuration Profile
 
-You can remove a configuration profile from the Cloud Manager at any time. Here's how:
+You can remove a configuration profile from Cloud Manager at any time. Here's how:
 
-1. Within the [Cloud Manager](https://cloud.linode.com), view the Configuration Profiles for your desired Compute Instance. See [View Configuration Profiles](#view-configuration-profiles).
+1. Within [Cloud Manager](https://cloud.linode.com), view the Configuration Profiles for your desired Compute Instance. See [View Configuration Profiles](#view-configuration-profiles).
 
 1. Within the **Configurations** table, locate the configuration profile you wish to modify and click the corresponding **Delete** button, which may also appear within the **ellipsis** menu.
 

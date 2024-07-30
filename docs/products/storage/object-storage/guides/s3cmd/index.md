@@ -209,7 +209,7 @@ s3://example-bucket/ (bucket):
 
 ## Create a Signed URL with S3cmd
 
-Creating a **signed URL** allows you to create a link to objects with limited permissions and a time limit to access them. To create a signed URL on a preexisting object with s3cmd, use the following syntax:
+Creating a **signed URL** lets you create a link to objects with limited permissions and a time limit to access them. To create a signed URL on a preexisting object with s3cmd, use the following syntax:
 
 ```command
 s3cmd signurl s3://my-example-bucket/example.txt +300
@@ -246,7 +246,7 @@ For more information on hosting a static website with Object Storage, read our [
 
 ## Syncing Files and Directories
 
-While you can utilize the `put` command to upload entire directories, the `sync` command may offer more desirable behavior. `sync` identifies which files have been added or modified and only uploads those files. This can be especially useful when maintaining large amounts of files, such as the contents of a static site.
+While you can use the `put` command to upload entire directories, the `sync` command may offer more desirable behavior. `sync` identifies which files have been added or modified and only uploads those files. This can be especially useful when maintaining large amounts of files, such as the contents of a static site.
 
 **Command:** `s3cmd sync [local-path] s3://[bucket-label]/[path]`, replacing *[local-path]* with the path to the folder you wish to upload, *[bucket-label]* with the label for your bucket, and *[path]* with the remote path you wish to target for the upload.
 

@@ -8,9 +8,9 @@ aliases: ['/products/tools/stackscripts/guides/stackscripts-create-stackscript/'
 
 {{% content "metadata-stackscripts-notice" %}}
 
-This guide walks you through creating a StackScript through the Cloud Manager.
+This guide walks you through creating a StackScript through Cloud Manager.
 
-1. [Open the Create StackScript Form in the Cloud Manager](#open-the-create-stackscript-form-in-the-cloud-manager)
+1. [Open the Create StackScript Form in Cloud Manager](#open-the-create-stackscript-form-in-cloud-manager)
 1. [Set the Label](#set-the-label)
 1. [Add a Description](#add-a-description)
 1. [Select Compatible Distribution Images](#select-compatible-distribution-images)
@@ -18,9 +18,9 @@ This guide walks you through creating a StackScript through the Cloud Manager.
 1. [Enter a Revision Note](#enter-a-revision-note)
 1. [Save the StackScript](#save-the-stackscript)
 
-## Open the Create StackScript Form in the Cloud Manager
+## Open the Create StackScript Form in Cloud Manager
 
-Log in to the [Cloud Manager](https://cloud.linode.com/) and select **StackScripts** from the left navigation menu. Click the **Create StackScript** button. This opens the *[StackScript Create](https://cloud.linode.com/stackscripts/create)* form.
+Log in to [Cloud Manager](https://cloud.linode.com/) and select **StackScripts** from the left navigation menu. Click the **Create StackScript** button. This opens the *[StackScript Create](https://cloud.linode.com/stackscripts/create)* form.
 
 ## Set the Label
 

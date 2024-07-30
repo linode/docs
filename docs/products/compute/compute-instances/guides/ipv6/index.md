@@ -1,6 +1,6 @@
 ---
 title: "An Overview of IPv6 on Linode"
-description: "This guide is a brief overview of IPv6 support on Linode, including how to find your IPv6 address, requesting additional IPs, and managing IPs via the Cloud Manager."
+description: "This guide is a brief overview of IPv6 support on Linode, including how to find your IPv6 address, requesting additional IPs, and managing IPs via Cloud Manager."
 published: 2011-05-03
 modified: 2024-07-08
 keywords: ["ipv6 networking", "IP configuration"]
@@ -29,9 +29,9 @@ ip6tables -A FORWARD -p icmpv6 -j ACCEPT
 
 ## How to Find Your IPv6 Address
 
-You can find your Compute Instance's IPv6 address using the Cloud Manager or the `ip` tool with the Linux Terminal.
+You can find your Compute Instance's IPv6 address using Cloud Manager or the `ip` tool with the Linux Terminal.
 
-### Using the Cloud Manager
+### Using Cloud Manager
 
 See the [Viewing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) section of the Managing IP Addresses guide.
 

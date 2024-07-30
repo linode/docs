@@ -53,7 +53,7 @@ Visit the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/inst
 
 1.  The **Create a Kubernetes Cluster** page appears. At the top of the page, you are required to select the following options:
 
-      - In the **Cluster Label** field, provide a name for your cluster. The name must be unique between all of the clusters on your account. This name is how you identify your cluster in the Cloud Manager’s Dashboard.
+      - In the **Cluster Label** field, provide a name for your cluster. The name must be unique between all of the clusters on your account. This name is how you identify your cluster in Cloud Manager’s Dashboard.
 
       - From the **Region** dropdown menu, select the **Region** where you would like your cluster to reside.
 
@@ -63,7 +63,7 @@ Visit the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/inst
 
 1.  Once you're satisfied with the number of nodes in a node pool, select **Add** to include it in your configuration. If you decide that you need more or fewer hardware resources after you deploy your cluster, you can always [edit your Node Pool](#edit-or-remove-existing-node-pools).
 
-1.  Once a pool has been added to your configuration, it is listed in the **Cluster Summary** on the right-hand side of the Cloud Manager detailing your cluster's hardware resources and monthly cost. Additional pools can be added before finalizing the cluster creation process by repeating the previous step for each additional pool.
+1.  Once a pool has been added to your configuration, it is listed in the **Cluster Summary** on the right-hand side of Cloud Manager detailing your cluster's hardware resources and monthly cost. Additional pools can be added before finalizing the cluster creation process by repeating the previous step for each additional pool.
 
 1.  When you are satisfied with the configuration of your cluster, click the **Create Cluster** button on the right hand side of the screen. Your cluster's detail page appears, and your Node Pools are listed on this page. From this page, you can [edit your existing Node Pools](#edit-or-remove-existing-node-pools), [access your Kubeconfig file](#access-and-download-your-kubeconfig), and view an overview of your cluster's resource details.
 

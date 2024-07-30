@@ -9,7 +9,7 @@ aliases: ['/products/compute/gpu/guides/install-nvidia-drivers-with-cuda/','/pro
 
 To take advantage of the powerful parallel processing capabilities offered by GPU instances equipped with NVIDIA Quadro RTX cards, you first need to install NVIDIA's CUDA Toolkit. This guide walks you through deploying a GPU instance and installing the CUDA Toolkit.
 
-1.  Deploy a GPU Compute Instance using the [Cloud Manager](https://cloud.linode.com/), the Linode CLI, or the Linode API. It's recommended to follow the instructions within the following guides:
+1.  Deploy a GPU Compute Instance using [Cloud Manager](https://cloud.linode.com/), the Linode CLI, or the Linode API. It's recommended to follow the instructions within the following guides:
 
     - [Getting Started with Linode](/docs/products/platform/get-started/)
     - [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/)

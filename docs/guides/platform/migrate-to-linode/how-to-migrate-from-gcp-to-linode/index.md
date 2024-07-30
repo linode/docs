@@ -467,7 +467,7 @@ You disabled the Google services from calling out before creating and migrating 
 
 ### Optional: Transfer Disk to ext4
 
-As stated above, to take advantage of features like resizing your disks in Cloud Manager and Backup Service, you'll need to move your new disk to an ext4 formatted disk. To do this, follow the procedures in the Make the System Compatible section of the [Install a Custom Distribution on a Linode guide](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/#make-the-system-compatible-with-the-linode-platform).
+As stated above, to take advantage of features like resizing your disks in Cloud Manager and Backup Service, you'll need to move your new disk to an ext4 formatted disk. To do this, follow the procedures in the Make the System Compatible section of the [Install a Custom Distribution on a Linode guide](/docs/guides/install-a-custom-distribution/#make-the-system-compatible-with-the-linode-platform).
 
 ### Cleaning Up
 

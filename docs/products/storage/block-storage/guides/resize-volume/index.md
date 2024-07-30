@@ -10,7 +10,7 @@ At any time after the Block Storage Volume has been created, it can be increased
 At this time, the size of Volumes are only able to be increased (not decreased). To decrease the size of your Volume, you will need to create a new Volume at your preferred size, attach it to a Compute Instance, copy over your data, and remove the original Volume.
 {{< /note >}}
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com/linodes).
+1.  Log in to [Cloud Manager](https://cloud.linode.com/linodes).
 
 1.  If the Volume is attached to a Compute Instance, power off that instance.
 
@@ -20,7 +20,7 @@ At this time, the size of Volumes are only able to be increased (not decreased).
 
 1.  Enter the new Volume size. The minimum size is the current size of the Volume and maximum is 10,240 GB. Then click **Submit**.
 
-1.  Click **Resize Volume** to start the resize. Once the resize has been completed, you will receive a notification in the Cloud Manager.
+1.  Click **Resize Volume** to start the resize. Once the resize has been completed, you will receive a notification in Cloud Manager.
 
 1.  After the Volume is resized, power back on your Compute Instance.
 

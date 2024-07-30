@@ -48,7 +48,7 @@ Once the Mist.io server is successfully created, a few additional steps must be 
 
 ### Log In to Mist.io
 
-1. In a web browser, enter your Linode's [IP address](/docs/guides/find-your-linodes-ip-address/) or the [Domain](/docs/products/networking/dns-manager/) associated with it to access your Mist.io App's login screen.
+1. In a web browser, enter your Linode's [IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) or the [Domain](/docs/products/networking/dns-manager/) associated with it to access your Mist.io App's login screen.
 
 1. Click on the **Sign in** button at the top right of the page.
 

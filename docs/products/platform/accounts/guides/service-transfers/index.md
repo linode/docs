@@ -63,7 +63,7 @@ Each Compute Instance that you wish to transfer must have a unique label that is
     {{< /note >}}
 
     {{< note type="alert" >}}
-    DNS records that are associated with requested services will not be transferred or updated. Please ensure that associated DNS records have been updated or communicated to the recipient prior to the transfer.
+    DNS records that are associated with requested services will not be transferred or updated. Please ensure that associated DNS records have been updated or communicated to the recipient before the transfer.
     {{< /note >}}
 
     {{< note type="alert" >}}
@@ -97,7 +97,7 @@ Each Compute Instance that you wish to transfer must have a unique label that is
 
 1.  In the **Receive a Service Transfer** field, enter the Service Transfer token you have received from the sender and click the **Review Details** button.
 
-    ![Review the summary of Linode services to be transferred prior to accepting.](receive-transfer.png "Review the summary of Linode services to be transferred prior to accepting.")
+    ![Review the summary of Linode services to be transferred before accepting.](receive-transfer.png "Review the summary of Linode services to be transferred before accepting.")
 
 1.  If the services are eligible for transfer, you are prompted to confirm responsibility for billing associated with those services. Billing begins for the receiving account after the transfer has been completed. Confirm billing responsibility and click **Accept Transfer** to begin transfer of services to your account. A confirmation email is sent to both the sending and receiving accounts.
 

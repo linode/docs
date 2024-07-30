@@ -14,7 +14,7 @@ You need to fill out the following fields to automatically create a limited sudo
     {{< note type="warning" title="Locating The Generated Sudo Password">}}
     A password is generated for the limited user and stored in a `.credentials` file in their home directory, along with application specific passwords. This can be viewed by running: `cat /home/$USERNAME/.credentials`
 
-    For best results, add an [account SSH key](/docs/products/platform/accounts/guides/manage-ssh-keys/) for the Cloud Manager user that is deploying the instance, and select that user as an `authorized_user` in the API or by selecting that option in the Cloud Manager. Their SSH pubkey will be assigned to _both_ root and the limited user.
+    For best results, add an [account SSH key](/docs/products/platform/accounts/guides/manage-ssh-keys/) for the Cloud Manager user that is deploying the instance, and select that user as an `authorized_user` in the API or by selecting that option in Cloud Manager. Their SSH pubkey will be assigned to _both_ root and the limited user.
     {{< /note >}}
 
 -   **Disable root access over SSH:** To block the root user from logging in over SSH, select *Yes*. You can still switch to the root user once logged in, and you can also log in as root through [Lish](/docs/products/compute/compute-instances/guides/lish/).

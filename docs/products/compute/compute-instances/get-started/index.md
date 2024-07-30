@@ -12,7 +12,7 @@ Compute Instances (cloud-based virtual machines) are the foundational infrastruc
 
 ## Create a Compute Instance
 
-Compute Instances can be deployed using the Cloud Manager, the Linode API, or the Linode CLI. For instructions on deploying one through the Cloud Manager, see the following guides:
+Compute Instances can be deployed using Cloud Manager, the Linode API, or the Linode CLI. For instructions on deploying one through Cloud Manager, see the following guides:
 
 - [Create a Compute Instance](/docs/products/compute/compute-instances/guides/create/)
 - [Choosing a Compute Instance Type and Plan](/docs/products/compute/compute-instances/plans/choosing-a-plan/)
@@ -23,9 +23,9 @@ Consider deploying an app from the [Linode Marketplace](https://www.linode.com/m
 
 ## Connect to the Instance
 
-After the Compute Instance is finished provisioning and has fully booted up, you can connect to it through the built-in Lish Console in the Cloud Manager (or via the SSH Lish Gateway) or SSH directly to your new system.
+After the Compute Instance is finished provisioning and has fully booted up, you can connect to it through the built-in Lish Console in Cloud Manager (or via the SSH Lish Gateway) or SSH directly to your new system.
 
--   **Weblish (via the Cloud Manager):** Click the **Launch LISH Console** link at the top right corner of the Compute Instance's detail page. See [Using the Lish Console > Through a Browser](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish).
+-   **Weblish (via Cloud Manager):** Click the **Launch LISH Console** link at the top right corner of the Compute Instance's detail page. See [Using the Lish Console > Through a Browser](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish).
 
 -   **SSH:** Copy the command from the *SSH Access* field that is available in Cloud Manager under the **Access** section on the Compute Instance's detail page. Paste the command into your local computer's terminal. The command should look similar to the following, only with the IP address of your newly created instance.
 

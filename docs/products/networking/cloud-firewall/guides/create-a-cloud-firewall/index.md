@@ -5,7 +5,7 @@ modified: 2023-11-01
 aliases: ['/products/networking/cloud-firewall/guides/add-firewall/']
 ---
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
 
 1. From the **Firewalls** listing page, click on the **Create Firewall** link.
 
@@ -23,7 +23,7 @@ aliases: ['/products/networking/cloud-firewall/guides/add-firewall/']
     ![Click on the Create button to create your Firewall.](create-firewall.jpg "Click on the Create button to create your Firewall.")
 
 {{< note >}}
-If you add a Cloud Firewall to a NodeBalancer, the inbound rules only apply to NodeBalancer’s public IP address and not the IPs of the backend nodes (Compute Instances) assigned to the NodeBalancer. This means that the IPs of the backend nodes may still be exposed to the public internet. As a best practice, you can protect the IPs of the individual Compute Instances by:
+If you add a Cloud Firewall to a NodeBalancer, the inbound rules only apply to NodeBalancer’s public IP address and not the IPs of the back-end nodes (Compute Instances) assigned to the NodeBalancer. This means that the IPs of the back-end nodes may still be exposed to the public internet. As a best practice, you can protect the IPs of the individual Compute Instances by:
 - Adding the individual instances to the same Cloud Firewall as the NodeBalancer
 - Adding the individual instances to a new Cloud Firewall
 - Manually configuring internal firewall rules on the instances

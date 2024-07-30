@@ -19,13 +19,13 @@ tab_group_main:
 
 - [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/): Edit the port configurations on a NodeBalancer.
 
-- [Backend Nodes (Compute Instances)](/docs/products/networking/nodebalancers/guides/backends/): Manage the settings for backend nodes.
+- [Back-end Nodes (Compute Instances)](/docs/products/networking/nodebalancers/guides/backends/): Manage the settings for back-end nodes.
 
 - [Available Protocols](/docs/products/networking/nodebalancers/guides/protocols/): A list of protocols supported by NodeBalancers
 
 - [TLS/SSL Termination](/docs/products/networking/nodebalancers/guides/ssl-termination/): Instructions on configuring TLS/SSL certificates on a NodeBalancer.
 
-- [Client IP Address Pass-through](/docs/products/networking/nodebalancers/guides/client-ip/): Learn the methods of retaining client connection details and passing them to backend nodes on a NodeBalancer.
+- [Client IP Address Pass-through](/docs/products/networking/nodebalancers/guides/client-ip/): Learn the methods of retaining client connection details and passing them to back-end nodes on a NodeBalancer.
 
 - [Proxy Protocol](/docs/products/networking/nodebalancers/guides/proxy-protocol/): Obtain information about a client when using the TCP protocol.
 

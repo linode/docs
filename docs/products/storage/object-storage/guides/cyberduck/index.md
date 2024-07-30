@@ -46,7 +46,7 @@ Once the connection is successful, a list appears of all the buckets that your a
 ![Main Cyberduck view of buckets](cyberduck-view.png)
 
 {{< note >}}
-To create additional buckets, use the Cloud Manager, Linode CLI, s3cmd, or s4cmd. Cyberduck is not able to create new buckets.
+To create additional buckets, use Cloud Manager, Linode CLI, s3cmd, or s4cmd. Cyberduck is not able to create new buckets.
 {{< /note >}}
 
 ## Upload and Manage Files

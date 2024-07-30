@@ -15,7 +15,7 @@ Consider your application's requirements and determine how your application shou
 
 ## Create a VPC
 
-Once you've determined that a VPC is needed, you can create it directly in the Cloud Manager using the Create VPC form or by deploying a new Compute Instance and entering a new VPC. During this process, you'll need to define the following parameters:
+Once you've determined that a VPC is needed, you can create it directly in Cloud Manager using the Create VPC form or by deploying a new Compute Instance and entering a new VPC. During this process, you'll need to define the following parameters:
 
 - **Region:** The data center where the VPC is deployed. Since VPCs are region-specific, only Compute Instances within that region can join the VPC.
 - **Label:** A string to identify the VPC. This should be unique to your account.

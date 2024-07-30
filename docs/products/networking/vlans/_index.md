@@ -25,7 +25,7 @@ A VLAN creates a truly private network and communication is isolated to just the
 
 ### Simple Configuration
 
-Use the Cloud Manager to create a VLAN and assign Compute Instances. Create up to 10 VLANs per data center and assign each Compute Instance to up to 3 VLANs.
+Use Cloud Manager to create a VLAN and assign Compute Instances. Create up to 10 VLANs per data center and assign each Compute Instance to up to 3 VLANs.
 
 ### Reduce Network Transfer Costs
 
