@@ -37,7 +37,7 @@ If your system is [configured to use Anaconda](/docs/guides/how-to-install-anaco
 
 ## A Paramiko SSH Example: Connect to Your Server Using a Password
 
-This section shows you how to authenticate to a remote server with a username and password. To begin, create a new file named `first_experiment.py` and add the contents of the example file. Ensure that you update the file with your own Linode's details. Replace the values for `YOUR_IP_ADDRESS`, `YOUR_LIMITED_USER_ACCOUNT`, and `YOUR_PASSWORD`. Use the [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) guide, if needed.
+This section shows you how to authenticate to a remote server with a username and password. To begin, create a new file named `first_experiment.py` and add the contents of the example file. Ensure that you update the file with your own Linode's details. Replace the values for `YOUR_IP_ADDRESS`, `YOUR_LIMITED_USER_ACCOUNT`, and `YOUR_PASSWORD`. Use the [Find Your Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide, if needed.
 
 {{< file "password_login.py" >}}
 import paramiko

@@ -44,7 +44,7 @@ The Mastodon Marketplace App *requires* a custom domain. After deploying Mastodo
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 - **Domain** (*required*): The domain name you wish to use for the mastodon server, such as *example.com*.
-- **Linode API Token** (*required*): A personal access token for your account. The Linode API is used to create DNS records for your custom domain through the [DNS Manager](/docs/products/networking/dns-manager/). See [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/).
+- **Linode API Token** (*required*): A personal access token for your account. The Linode API is used to create DNS records for your custom domain through the [DNS Manager](/docs/products/networking/dns-manager/). See [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/).
 - **Email for the Let's Encrypt certificate** (*required*): The email you wish to use when creating your TLS/SSL certificate through Let's Encrypt. This email address receives notifications when the certificate needs to be renewed.
 - **Username for the Mastodon Owner** (*required*): The username for the Owner user that will be created for the Mastodon server.
 - **Email Address for the Mastodon Owner** (*required*): The contact email for the Mastodon server's owner.

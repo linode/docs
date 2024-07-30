@@ -75,7 +75,7 @@ Your shell then interprets `$IP_ADDRESS` as the value you have provided in follo
 ```
 {{< /note >}}
 
-1.  From your workstation [terminal](/docs/guides/using-the-terminal/), enter the following the command, substituting `$USERNAME` with your Linux [Limited User Name](#plex-marketplace-app-options), and `$IP_ADDRESS` with the [IP address](/docs/guides/find-your-linodes-ip-address/) of your Plex Server Linode:
+1.  From your workstation [terminal](/docs/guides/using-the-terminal/), enter the following the command, substituting `$USERNAME` with your Linux [Limited User Name](#plex-marketplace-app-options), and `$IP_ADDRESS` with the [IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) of your Plex Server Linode:
 
         ssh $USERNAME@$IP_ADDRESS -L 8888:localhost:32400
 
@@ -176,7 +176,7 @@ This section directs you to run commands either on your Plex Server Linode throu
 
         mkdir ~/plex/media/movies
 
-1.  From your media workstation, use the `scp` command to move media to your Plex Server's media subdirectory, substituting `$USERNAME` with your Linux [Limited User Name](#plex-marketplace-app-options), and `$IP_ADDRESS` with the [IP address](/docs/guides/find-your-linodes-ip-address/) of your Plex Server Linode:
+1.  From your media workstation, use the `scp` command to move media to your Plex Server's media subdirectory, substituting `$USERNAME` with your Linux [Limited User Name](#plex-marketplace-app-options), and `$IP_ADDRESS` with the [IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) of your Plex Server Linode:
 
         scp example_video.mp4 $USERNAME@$IP_ADDRESS:~/plex/media/movies
 

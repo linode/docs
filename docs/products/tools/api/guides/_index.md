@@ -11,7 +11,7 @@ aliases: ['/products/tools/linode-api/guides/']
 
 ## Basics
 
-- [Manage API Tokens](/docs/products/tools/api/guides/manage-api-tokens/): View and manage personal access tokens
+- [Manage API Tokens](/docs/products/platform/accounts/guides/manage-api-tokens/): View and manage personal access tokens
 
 - [Send an API Request with cURL](/docs/products/tools/api/guides/curl/): Learn how to use cURL to quickly send an API call
 

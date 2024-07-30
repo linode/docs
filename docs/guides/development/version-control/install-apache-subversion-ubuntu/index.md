@@ -85,7 +85,7 @@ Root or sudo permissions must be available to install Apache Subversion.
 
         systemctl start apache2
 
-1. To verify that the installation was successful, open a browser window and enter the [Linode instance’s IP address](/docs/guides/find-your-linodes-ip-address/), `http://<<host IP address>>:80`.
+1. To verify that the installation was successful, open a browser window and enter the [Linode instance’s IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/), `http://<<host IP address>>:80`.
 
 1. If the instance is not accessible, the instance hosting Apache might require opening firewall ports. To enable `ufw` to let traffic flow between interfaces and the Apache daemon, you must instruct `ufw` to open ports for Apache.
 

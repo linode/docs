@@ -42,7 +42,7 @@ The Linux Game Server manager ([LinuxGSM](https://linuxgsm.com/)) is a command-l
         sudo adduser sdtdserver
         sudo adduser sdtdserver sudo
 
-1. Switch your terminal session to the new `sdtdserver` user. You can exit your current session by typing **exit**, then [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) using as the `sdtdserver` user. Ensure you replace the example command with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/).
+1. Switch your terminal session to the new `sdtdserver` user. You can exit your current session by typing **exit**, then [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) using as the `sdtdserver` user. Ensure you replace the example command with your [Linode's IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/).
 
         ssh sdtdserver@192.0.2.0
 
@@ -109,7 +109,7 @@ To start server type:
 Execute the `./sdtdserver` command to get a list of all available 7 Days to Die server commands.
     {{< /note >}}
 
-1. On your computer, use Steam to fire up the game and connect to your [Linode server's IP address](/docs/guides/find-your-linodes-ip-address/).
+1. On your computer, use Steam to fire up the game and connect to your [Linode server's IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/).
 
     ![7dtd server status](Linux_game_server_7dtd_server.png)
 

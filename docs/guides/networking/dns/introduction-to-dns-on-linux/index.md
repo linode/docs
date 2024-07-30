@@ -154,7 +154,7 @@ As packaged for Ubuntu 22.04 LTS, NSD’s main configuration file (`nsd.conf`) p
 
 Since the NSD documentation already includes a fully annotated sample configuration file, copy that file and work from there. The sample file lists many options with plenty of comments, making it a useful learning tool.
 
-1.  First, gather your Linode's external IPv4 and IPv6 addresses. Follow this guide to [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address) or use the following command:
+1.  First, gather your Linode's external IPv4 and IPv6 addresses. Follow this guide to [Find Your Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) or use the following command:
 
     ```command
     ip a

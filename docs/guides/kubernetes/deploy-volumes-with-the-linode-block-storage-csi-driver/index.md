@@ -28,7 +28,7 @@ This guide assumes you have a working Kubernetes cluster running on Linode. You 
 
     - The [Linode Cloud Manager](/docs/products/compute/kubernetes/).
     - [Linode's API v4](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/).
-    - [Terraform](/docs/products/compute/kubernetes/guides/deploy-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
+    - [Terraform](/docs/guides/deploy-lke-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
 
 1. Deploy an [unmanaged Kubernetes cluster using Terraform](/docs/guides/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/) and the [Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2).
 

@@ -60,7 +60,7 @@ If you instead wish to retain the data on your Compute Instance, you can add a d
         | /dev/sda | Choose the disk for the new Image that was just deployed. |
         | /dev/sdb | Choose the swap disk, if one is available. |
 
-        For all of Linode's standard distribution images, the other fields can retain their default values. For Custom Images, you may need to update other parts of the configuration profile. Review the [Managing Configuration Profiles on a Linode](/docs/products/compute/compute-instances/guides/configuration-profiles//#editing-a-configuration-profile) and [Install a Custom Distribution on a Linode](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/) guides for further guidance.
+        For all of Linode's standard distribution images, the other fields can retain their default values. For Custom Images, you may need to update other parts of the configuration profile. Review the [Managing Configuration Profiles on a Linode](/docs/products/compute/compute-instances/guides/configuration-profiles//#editing-a-configuration-profile) and [Install a Custom Distribution on a Linode](/docs/guides/install-a-custom-distribution/) guides for further guidance.
 
 1. Reboot the Compute Instance using the new Image. Navigate to the **Configuration** tab, find the new configuration profile in the list, and click the corresponding **Boot** link. This link may be displayed with the **More Options** ellipsis dropdown menu.
 

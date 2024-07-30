@@ -222,7 +222,7 @@ This tutorial handles variables using two files.
     image_id = "private/<LinodeImageId>"
     ```
 
-    The `<LinodeApiToken>` needs to be an API token associated with your Linode account. You can follow our [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
+    The `<LinodeApiToken>` needs to be an API token associated with your Linode account. You can follow our [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
 
     Above, you can see a value of `private/<LinodeImageId>` for the `image_id`. This value should match the image ID for the Linode image you created with Packer. All custom Linode images are prefaced with `private/` and conclude with the image's ID. In these examples, `private/17691867` is assumed to be the ID for the Linode image built with Packer.
 

@@ -73,7 +73,7 @@ linode-cli linodes create \
 Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the cloud-config data or script you wish to use. When using the CLI, user data must be a Base64-encoded string. Review the [Base64 Encoded](#base64-encoded) section below to generate the string.
 {{< /tab >}}
 {{< tab "Linode API" >}}
-Run the API curl request below, making sure to properly paste in or reference your [API token](/docs/products/tools/api/guides/manage-api-tokens/).
+Run the API curl request below, making sure to properly paste in or reference your [API token](/docs/products/platform/accounts/guides/manage-api-tokens/).
 
 ```command
 curl -H "Content-Type: application/json" \

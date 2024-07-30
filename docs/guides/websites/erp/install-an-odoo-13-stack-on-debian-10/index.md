@@ -121,7 +121,7 @@ In order to simplify communication between Linodes, set hostnames for each serve
 | Odoo 13  | odoo | odoo.yourdomain.com |
 | PostgreSQL | postgresql | postgresql.yourdomain.com |
 
-On each server, append the following lines to the `/etc/hosts` file. For the second line in each of these snippets, substitute your Linodes' IP addresses. If both servers are in the same Linode data center, then you can use private IP addresses for each Linode. Otherwise, use the public IP addresses of each Linode. Follow our [Find your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) guide to locate your addresses.
+On each server, append the following lines to the `/etc/hosts` file. For the second line in each of these snippets, substitute your Linodes' IP addresses. If both servers are in the same Linode data center, then you can use private IP addresses for each Linode. Otherwise, use the public IP addresses of each Linode. Follow our [Find your Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide to locate your addresses.
 
 {{< note >}}
 A Linode does not come with a private IP address assigned to it by default. Private IPs are free to set up. If you would like to, follow our [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) guide to set up a private IP address on each Linode. Please note that you need to add the new private address inside your Linodes' networking configuration after it is assigned to your server.

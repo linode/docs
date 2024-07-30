@@ -179,7 +179,7 @@ Once you are ready to perform an upgrade, you can start the upgrade process. Thi
 
 {{< /tab >}}
 {{< tab "Linode API" >}}
-1. Identify the ID of the cluster you wish to upgrade. Run the API curl request below, making sure to properly paste in or reference your [API token](/docs/products/tools/api/guides/manage-api-tokens/).
+1. Identify the ID of the cluster you wish to upgrade. Run the API curl request below, making sure to properly paste in or reference your [API token](/docs/products/platform/accounts/guides/manage-api-tokens/).
 
     ```command
     curl -H "Authorization: Bearer $TOKEN" \

@@ -56,7 +56,7 @@ The first time you interact with the Linode CLI, you need to complete the initia
         linode-cli configure
         ```
 
-    -   **Manually create a personal access token:** Prompts you for a token that you need to manually create. See [Linode API Keys and Tokens](/docs/products/tools/api/guides/manage-api-tokens/).
+    -   **Manually create a personal access token:** Prompts you for a token that you need to manually create. See [Linode API Keys and Tokens](/docs/products/platform/accounts/guides/manage-api-tokens/).
 
         ```command
         linode-cli configure --token
@@ -66,7 +66,7 @@ The first time you interact with the Linode CLI, you need to complete the initia
 
 ### Non-interactive Configuration
 
-To configure the CLI without any interactive prompts, you can set the token through the following environment variable, replacing *[token]* with the token you've manually generated. See [Linode API Keys and Tokens](/docs/products/tools/api/guides/manage-api-tokens/).
+To configure the CLI without any interactive prompts, you can set the token through the following environment variable, replacing *[token]* with the token you've manually generated. See [Linode API Keys and Tokens](/docs/products/platform/accounts/guides/manage-api-tokens/).
 
 ```command
 export LINODE_CLI_TOKEN="[token]"

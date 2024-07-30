@@ -42,7 +42,7 @@ This guide assumes you have a working Kubernetes cluster that was deployed using
 
 - The [Linode Cloud Manager](/docs/products/compute/kubernetes/).
 - [Linode's API v4](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/).
-- [Terraform](/docs/products/compute/kubernetes/guides/deploy-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
+- [Terraform](/docs/guides/deploy-lke-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
 
     {{< note >}}
     An LKE cluster will already have Linode's Cloud Controller Manager installed in the cluster's control plane. If you **did not** deploy your Kubernetes cluster using LKE and would like to make use of the Linode Cloud Controller Manager, see [Installing the Linode CCM on an Unmanaged Kubernetes Cluster - A Tutorial](/docs/guides/install-the-linode-ccm-on-unmanaged-kubernetes/).

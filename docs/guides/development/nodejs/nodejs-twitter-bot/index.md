@@ -899,7 +899,7 @@ The server is now ready to run the bot, but you still need to upload the bot's c
 
     | Field | Value |
     |-------|-------|
-    | Host | The IP Address for your Linode. Use the [Find your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) guide to locate your IP address in the Cloud Manager. |
+    | Host | The IP Address for your Linode. Use the [Find your Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide to locate your IP address in the Cloud Manager. |
     | Username | This should be the name for the limited non-root-user you created. |
     | Password | The password for the limited non-root-user you created. |
     | Port | This should be set to 22. |

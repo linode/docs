@@ -156,7 +156,7 @@ Apache requires a [virtual host configuration file](https://httpd.apache.org/doc
         sudo nano /etc/apache2/sites-available/owncloud.conf
 
 
-1. Paste the following text into the new file. Replace mentions of `example.com` with your own domain name or your [Linode's IP Address](/docs/guides/find-your-linodes-ip-address/):
+1. Paste the following text into the new file. Replace mentions of `example.com` with your own domain name or your [Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/):
 
 {{< file "/etc/apache2/sites-available/owncloud.conf">}}
 <VirtualHost \*:80>

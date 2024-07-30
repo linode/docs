@@ -214,7 +214,7 @@ The software packages you install is available as long as the Compute Instance i
 ### Mounting Disks
 
 {{< note >}}
-Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/#additional-system-configuration) guide.
+Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab](/docs/guides/install-a-custom-distribution/#additional-system-configuration) guide.
 {{< /note >}}
 
 By default, your disks are not mounted when your Compute Instance boots into Rescue Mode. However, you can manually mount a disk under Rescue Mode to perform system recovery and maintenance tasks.
