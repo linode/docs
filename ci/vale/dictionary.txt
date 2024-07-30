@@ -1551,6 +1551,7 @@ monitorix
 monorepo
 monorepos
 monospaced
+mons
 moodle
 moolenaar
 morphisec
@@ -1585,6 +1586,7 @@ multicraft
 multilib
 multiline
 multilink
+multipath
 multiplatform
 Multiplo
 multiport
@@ -1781,6 +1783,7 @@ openzipkin
 Opin
 ORMs
 osCommerce
+osds
 ossec
 OStatus
 ostemplate
@@ -1991,6 +1994,7 @@ puppetmaster
 puttygen
 pv
 pvc
+pvcs
 pvgrub
 pwcheck
 pwsh
@@ -2770,6 +2774,7 @@ vz
 vznetaddbr
 wafs
 walkthrough
+walkthroughs
 WAN
 WANs
 Wappalyzer
