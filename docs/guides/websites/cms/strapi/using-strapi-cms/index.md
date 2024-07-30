@@ -60,7 +60,7 @@ This guide follows Strapi's Node.js setup process, Strapi's preferred installati
 
 Strapi runs as a Node.js project, which this guide sets up using the Node Package Manager (NPM). Once you run the Strapi project-setup script, you can start running your instance and create your administrator user.
 
-1.  Install the appropriate version of Node using NVM. Follow along with our [Installing and Using NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#installing-and-configuring-nvm) guide, and then use the following command to install Node:
+1.  Install the appropriate version of Node using NVM. Follow along with our [Installing and Using NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#install-nvm) guide, and then use the following command to install Node:
 
     ```command
     nvm install node
