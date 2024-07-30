@@ -14,7 +14,12 @@ external_resources:
 - '[Kubernetes PersistentVolumeClaims Documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)'
 - '[Container Storage Interface (CSI) Spec](https://github.com/container-storage-interface/spec/blob/master/spec.md)'
 aliases: ['/applications/containers/deploy-volumes-with-the-linode-block-storage-csi-driver/','/kubernetes/deploy-volumes-with-the-linode-block-storage-csi-driver/']
+deprecated: true
 ---
+
+{{< note type="warning" noTitle=true >}}
+To learn more about the Container Storage Interface (CSI) Driver for Linode Block Storage and for the most up-to-date installation and usage instructions, review the [linode/linode-blockstorage-csi-driver](https://github.com/linode/linode-blockstorage-csi-driver) GitHub repository.
+{{< /note >}}
 
 ## What is the Linode Block Storage CSI Driver?
 
