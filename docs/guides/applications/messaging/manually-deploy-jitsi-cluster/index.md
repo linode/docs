@@ -127,7 +127,7 @@ In order to run the Jitsi deployment in this guide, the docs-cloud-projects Gith
     ```
 
     {{< note title="Upgrading the ansible-core package" >}}
-    Some ansible-core package verions may contain older parameters. Should you experience any errors related to out-of-date or deprecated parameters, the ansible-core version can be updated with the below command:
+    Some ansible-core package versions may contain older parameters. Should you experience any errors related to out-of-date or deprecated parameters, the ansible-core version can be updated with the below command:
     ```command
     python -m pip install --upgrade ansible-core
     ```
