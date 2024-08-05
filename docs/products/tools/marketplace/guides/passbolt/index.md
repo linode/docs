@@ -1,14 +1,19 @@
 ---
-title: "Deploy Passbolt through the Linode Marketplace"
-description: "Learn how to deploy Passbolt, an open-source password manager, on the Akamai cloud computing platform."
+title: "Deploy Passbolt Community Edition through the Linode Marketplace"
+description: "Learn how to deploy Passbolt Community Edition, an open-source password manager, on the Akamai cloud computing platform."
 published: 2024-03-19
-modified: 2024-03-22
+modified: 2024-08-05
 keywords: ['passbolt','password manager','security','authentication']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/products/tools/marketplace/guides/deploy-passbolt-through-the-linode-marketplace/']
 ---
 
-[Passbolt Password Manager](https://github.com/passbolt/passbolt_api) is an open-source password manager designed for teams and businesses. It allows users to securely store, share, and manage passwords.
+This Marketplace App deploys the latest unmodified version of [Passbolt Community Edition](https://github.com/passbolt/passbolt_api), an open-source password manager designed for teams and businesses. It allows users to securely store, share, and manage passwords.
+
+{{< note >}}
+Passbolt and the Passbolt logo are registered trademarks of Passbolt S.A.
+This service is provided by Akamai Connected Cloud and is not affiliated with Passbolt S.A.
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -17,7 +22,7 @@ aliases: ['/products/tools/marketplace/guides/deploy-passbolt-through-the-linode
 {{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
-**Estimated deployment time:** Passbolt should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
+**Estimated deployment time:** Passbolt Community Edition should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
 {{< /note >}}
 
 ## Configuration Options
@@ -51,13 +56,13 @@ Be sure to download the `passbolt-recovery-kit.txt` file and store it in a safe 
 
 You will need to create a passphrase to access Passbolt.
 
-![Screenshot of Passbolt passphrase](passphrase_screen.jpg)
+![Screenshot of Passbolt Community Edition passphrase](passphrase_screen.jpg)
 
 Once the passphrase is set you will be able to view the Passbolt main screen.
 
-![Screenshot of Passbolt main screen](passbolt_mainscreen.jpg)
+![Screenshot of Passbolt Community Edition main screen](passbolt_mainscreen.jpg)
 
-For more information, visit [Passbolt Installation Documentation](https://help.passbolt.com/hosting/install/ce/ubuntu/ubuntu.html) for details on how to configure Passbolt.
+For more information, visit [Passbolt Community Edition Installation Documentation](https://help.passbolt.com/hosting/install/ce/ubuntu/ubuntu.html) for details on how to configure Passbolt.
 
 ### Email Configuration
 

@@ -2,7 +2,7 @@
 title: Tax Information
 description: "Learn which taxes are collected by Linode and how to add a tax identification number to your account."
 published: 2019-04-09
-modified: 2024-05-23
+modified: 2024-08-05
 keywords: ["accounts", "vat", "linode manager", "linode cloud manager", "manager", "tax", "taxes", "tax information", "usd", "vat id", "eu", "european union", "value added tax", "gst", "goods and services tax", "gst id", "tax id"]
 aliases: ['/platform/billing-and-support/european-union-vat-linode/','/platform/billing-and-support/european-union-vat-linode-classic-manager/','/platform/billing-and-support/tax-information/','/platform/billing-and-support/tax-information-classic-manager/','/guides/tax-information/']
 tags: ["linode platform"]
@@ -32,7 +32,7 @@ The following table lists each country that requires us to collect taxes. Alongs
 | Czech Republic | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
 | Denmark | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
 | Egypt | 14% | [VAT](https://www.eta.gov.eg/en/content/egyptian-tax-authority-eta-has-recently-published-value-added-tax-vat-guidelines-digital) | March 1, 2024 |
-| Estonia | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Estonia | 22% | [VAT](https://www.emta.ee/en/business-client/taxes-and-payment/value-added-tax) | January 1, 2024 |
 | Greece | 24% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
 | Finland | 24% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
 | France | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
