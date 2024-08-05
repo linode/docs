@@ -1,7 +1,7 @@
 ---
 title: "Deploy OpenBao through the Linode Marketplace"
 description: "OpenBao is a open source tool secrets management tool that helps to provide secure, automated access to sensitive data."
-published: 2024-04-26
+published: 2024-08-05
 keywords: ['openbao','marketplace', 'vault']
 tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager", "secrets", "education"]
 external_resources:
@@ -9,7 +9,7 @@ external_resources:
 - '[OpenBao] Documentation](https://openbao.org/docs/)'
 ---
 
-OpenBao is an open source solution to manage, store, and distribute sensitive data including secrets, certificates, and keys. This project is a forked alternative to Vault managed by the Linux Foundation, and development is driven by the community. 
+OpenBao is an open source solution to manage, store, and distribute sensitive data including secrets, certificates, and keys. This project is a forked alternative to Vault managed by the Linux Foundation, and development is driven by the community.
 
 {{< note type="warning" title="OpenBao is still early in development" >}}
 While OpenBao is a fork of a production-ready 1.14.x release of Hashicorp Vault, the OpenBao codebase is still early in development and is subject to change as development takes place. We recommend following the [release cycles](https://github.com/openbao/openbao/releases) for any breaking changes to minimize any downtime on a production environment.
@@ -22,7 +22,7 @@ While OpenBao is a fork of a production-ready 1.14.x release of Hashicorp Vault,
 {{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
-**Estimated deployment time:** OpenBao should be fully installed within 5-7 minutes after the Compute Instance has finished provisioning. 
+**Estimated deployment time:** OpenBao should be fully installed within 5-7 minutes after the Compute Instance has finished provisioning.
 {{< /note >}}
 
 ## Configuration Options
@@ -33,12 +33,12 @@ While OpenBao is a fork of a production-ready 1.14.x release of Hashicorp Vault,
 ### OpenBao Options
 
 {{% content "marketplace-custom-domain-fields-shortguide" %}}
-- **List of IP addresses to whitelist:** A list of IP address that will be whitelisted for OpenBao. These should be client IPs that will need to obtain secrets from your OpenBao instance. 
+- **List of IP addresses to whitelist:** A list of IP address that will be whitelisted for OpenBao. These should be client IPs that will need to obtain secrets from your OpenBao instance.
 - **Country or region** *(required)*: Enter the country or region for you or your organization.
 - **State or province** *(required)*: Enter the state or province for you or your organization.
 - **Locality** *(required)*: Enter the town or other locality for you or your organization.
 - **Organization** *(required)*: Enter the name of your organization.
-- **Email address** *(required)*: Enter the email address you wish to use for your certificate file. 
+- **Email address** *(required)*: Enter the email address you wish to use for your certificate file.
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
@@ -54,12 +54,12 @@ Once the deployment is complete, OpenBao is installed and ready to use. You can 
     ```
 
     {{< note >}}
-If you receive an error when running the `bao status` command, reload the environment variable by sourcing your server's bashrc file:
+    If you receive an error when running the `bao status` command, reload the environment variable by sourcing your server's bashrc file:
 
-```command
-source /root/.bashrc
-```
-{{< /note >}}
+    ```command
+    source /root/.bashrc
+    ```
+    {{< /note >}}
 
 2. The OpenBao instance is initialized as part of the deployment. The unseal keys along with the root token can be found in the `.credentials` file in the sudo users home directory `/home/$SUDO_USER/.credentials`.
 
@@ -73,67 +73,71 @@ After the deployment is complete, OpenBao will be sealed. The following unseal s
 
 1.  With `VAULT_ADDR` set appropriately, execute the unseal command.
 
-        bao operator unseal
+    ```command
+    bao operator unseal
+    ```
 
     A prompt will appear:
 
-    {{< output >}}
-Unseal Key (will be hidden):
-{{< /output >}}
+    ```output
+    Unseal Key (will be hidden):
+    ```
 
 2.  Paste or enter one unseal key and press **Enter**. The command will finish with output similar to the following:
 
-    {{< output >}}
-Unseal Key (will be hidden):
-Key                Value
----                -----
-Seal Type          shamir
-Initialized        true
-Sealed             true
-Total Shares       3
-Threshold          2
-Unseal Progress    1/2
-Unseal Nonce        n/a
-Version            2.0.0-alpha20240329
-Storage Type       raft
-HA Enabled         false
-{{< /output >}}
+    ```output
+    Unseal Key (will be hidden):
+    Key                Value
+    ---                -----
+    Seal Type          shamir
+    Initialized        true
+    Sealed             true
+    Total Shares       3
+    Threshold          2
+    Unseal Progress    1/2
+    Unseal Nonce        n/a
+    Version            2.0.0-alpha20240329
+    Storage Type       raft
+    HA Enabled         false
+    ```
 
     The output indicates that one out of the two required unseal keys has been provided.
 
 3.  Perform the `unseal` command again.
 
-        bao operator unseal
+    ```command
+    bao operator unseal
+    ```
 
 4.  Enter a _different_ unseal key when the prompt appears.
 
-    {{< output >}}
-Unseal Key (will be hidden):
-{{< /output >}}
+    ```output
+    Unseal Key (will be hidden):
+    ```
 
 5.  The resulting output should indicate that OpenBao is now unsealed (`Sealed:false`).
 
-    {{< output >}}
-Unseal Key (will be hidden):
-Key                     Value
----                     -----
-Seal Type               shamir
-Initialized             true
-Sealed                  false
-Total Shares            3
-Threshold               2
-Version                 2.0.0-alpha20240329
-Build Date              2024-03-29T21:37:50Z
-Storage Type            raft
-Cluster Name            vault-cluster-9b0549a6
-Cluster ID              4cb3e7c0-6ce5-2d54-2549-f88d29cb9691
-HA Enabled              true
-HA Cluster              n/a
-HA Mode                 standby
-Active Node Address     <none>
-Raft Committed Index    27
-Raft Applied Index      27
-{{< /output >}}
+    ```output
+    Unseal Key (will be hidden):
+    Key                     Value
+    ---                     -----
+    Seal Type               shamir
+    Initialized             true
+    Sealed                  false
+    Total Shares            3
+    Threshold               2
+    Version                 2.0.0-alpha20240329
+    Build Date              2024-03-29T21:37:50Z
+    Storage Type            raft
+    Cluster Name            vault-cluster-9b0549a6
+    Cluster ID              4cb3e7c0-6ce5-2d54-2549-f88d29cb9691
+    HA Enabled              true
+    HA Cluster              n/a
+    HA Mode                 standby
+    Active Node Address     <none>
+    Raft Committed Index    27
+    Raft Applied Index      27
+    ```
 
 OpenBao is now operational.
 
@@ -143,5 +147,5 @@ You may wish to consult the following resources for additional information on th
 
 - [OpenBao](https://openbao.org/)
 - [OpenBao Documentation](https://openbao.org/docs/)
- 
+
 {{% content "marketplace-update-note-shortguide" %}}

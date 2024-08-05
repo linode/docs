@@ -41,7 +41,7 @@ aliases: ['/platform/marketplace/how-to-deploy-jenkins-with-marketplace-apps/', 
 
 ## Getting Started after Deployment
 
-After deploying your Jenkins instance, log in and continue the configuration. 
+After deploying your Jenkins instance, log in and continue the configuration.
 
 ### Access Your Jenkins Instance
 

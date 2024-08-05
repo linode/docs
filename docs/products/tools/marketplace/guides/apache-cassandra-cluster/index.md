@@ -1,7 +1,7 @@
 ---
 title: "Deploy Apache Cassandra Cluster through the Linode Marketplace"
 description: "Apache Cassandra is an open-source, distributed NoSQL database management system designed for handling large amounts of data across many commodity servers, providing high availability with no single point of failure. Cassandra offers robust support for clusters with asynchronous masterless replication allowing low-latency operations for all clients. "
-published: 2024-07-22
+published: 2024-08-05
 keywords: ['nosql','database', 'marketplace', 'cassandra']
 tags: ["ubuntu","marketplace", "database", "linode platform", "cloud manager", "ssl", "cloud storage", "high availability", "compute storage"]
 external_resources:
@@ -11,7 +11,7 @@ external_resources:
 
 ## Cluster Deployment Architecture
 
-Create a highly available Apache Cassandra cluster through the Linode Marketplace. Apache Cassandra is an open-source, distributed NoSQL database management system designed for handling large amounts of data across many commodity servers, providing high availability with no single point of failure. Cassandra offers robust support for clusters with asynchronous masterless replication, allowing low-latency operations for all clients. 
+Create a highly available Apache Cassandra cluster through the Linode Marketplace. Apache Cassandra is an open-source, distributed NoSQL database management system designed for handling large amounts of data across many commodity servers, providing high availability with no single point of failure. Cassandra offers robust support for clusters with asynchronous masterless replication, allowing low-latency operations for all clients.
 
 ## Deploying a Marketplace App
 
@@ -26,7 +26,7 @@ Create a highly available Apache Cassandra cluster through the Linode Marketplac
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 22.04 LTS
-- **Suggested minimum plan:** All plan types and sizes can be used. For best results, a minimum of 8GB Dedicated CPU or Shared Compute Instance is recommended. 
+- **Suggested minimum plan:** All plan types and sizes can be used. For best results, a minimum of 8GB Dedicated CPU or Shared Compute Instance is recommended.
 
 ### Apache Cassandra Options
 
@@ -52,7 +52,6 @@ Create a highly available Apache Cassandra cluster through the Linode Marketplac
 
 - **Email Address:** Enter the email address you wish to use for your certificate file.
 
-
 ## Getting Started After Deployment
 
 This Marketplace App creates a 3-5 node cluster using Apache Cassandra. Authentication to the cluster is secured via a user-supplied username. The default `cassandra` database role is removed and superseded by the new user role provided by the client. In addition, cluster communication is secured via SSL/TLS with self-signed keystores.
@@ -74,22 +73,22 @@ Connect to Cassandra using `cqlsh` using client or server certificates. You will
 
 3. Create a Cassandra resource file to use our client certificate. Create the `/home/$SUDO_USER/.cassandra` directory. In the `.cassandra` directory, create a `cqlshrc` file with the following content:
 
-```
-[connection]
-ssl = true
-factory = cqlshlib.ssl.ssl_transport_factory
-[ssl]
-certfile = /home/$SUDO_USER/cassandra_ssl/ca.crt
-userkey = /home/$SUDO_USER/cassandra_ssl/client1.key
-usercert = /home/$SUDO_USER/cassandra_ssl/client1.crt
-validate = true
-```
+    ```
+    [connection]
+    ssl = true
+    factory = cqlshlib.ssl.ssl_transport_factory
+    [ssl]
+    certfile = /home/$SUDO_USER/cassandra_ssl/ca.crt
+    userkey = /home/$SUDO_USER/cassandra_ssl/client1.key
+    usercert = /home/$SUDO_USER/cassandra_ssl/client1.crt
+    validate = true
+    ```
 
 4. Connect to one of the Cassandra servers using `cqlsh`:
 
-```command
-cqlsh 192.168.139.160 -u superuser --ssl
-```
+    ```command
+    cqlsh 192.168.139.160 -u superuser --ssl
+    ```
 
 Replace `192.168.139.160` with the private IP address of one of the Cassandra nodes and `superuser` with the Cassandra database user you provided when deploying the cluster. Once you are connected, enter the password from `/home/$SUDO_USER/.credentials` at the prompt to authenticate to the cluster.
 

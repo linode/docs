@@ -1,7 +1,7 @@
 ---
 title: "Deploy Valkey through the Linode Marketplace"
 description: "Valkey is an open-source, keyvalue database driven by community development and supported by the Linux Foundation. Valkey is forked from Redis release 7.2, and maintains BSD-3 licensing. Valkey can serve production roles such as caching and message queues, or as a primary database."
-published: 2024-04-26
+published: 2024-08-05
 keywords: ['nosql','database', 'marketplace', 'valkey']
 tags: ["ubuntu","marketplace", "database", "linode platform", "cloud manager", "ssl", "cloud storage", "high availability", "compute storage"]
 external_resources:
@@ -11,7 +11,7 @@ external_resources:
 
 Valkey is an open-source (BSD) key/value datastore that supports diverse workloads such as caching and message queues, and can act as a primary database. The Akamai Connected Cloud One-Click App for Valkey is configured as a standalone system daemon with TLS support.
 
-Valkey natively supports a broad collection of data types, extensibility with built-in scripting support for Lua, and module plugins to create new commands, data types, and more. 
+Valkey natively supports a broad collection of data types, extensibility with built-in scripting support for Lua, and module plugins to create new commands, data types, and more.
 
 {{< note type="warning" title="Valkey is still early in development" >}}
 While Valkey is a fork of a production-ready 7.2.4 release of Redis, the Valkey codebase is still early in development and is subject to change as development takes place. We recommend following the [release cycles](https://github.com/valkey-io/valkey/releases) for any breaking changes to minimize downtime on a production environment.
@@ -30,7 +30,7 @@ While Valkey is a fork of a production-ready 7.2.4 release of Redis, the Valkey 
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 22.04 LTS
-- **Suggested minimum plan:** All plan types and sizes can be used. For best results, a minimum of 8GB Dedicated CPU or Shared Compute Instance is recommended. 
+- **Suggested minimum plan:** All plan types and sizes can be used. For best results, a minimum of 8GB Dedicated CPU or Shared Compute Instance is recommended.
 
 ### Valkey Options
 
@@ -59,7 +59,8 @@ While Valkey is a fork of a production-ready 7.2.4 release of Redis, the Valkey 
 ## Getting Started After Deployment
 
 Connect to the compute instance using either `root` or the `sudo user` created during deployment if you provided account SSH keys. In order to access the TLS-encrypted Valkey database, path arguments must be provided to `valkey-cli`. The directory paths are provided in the MOTD:
-```
+
+```output
 *********************************************************
 Akamai Connected Cloud Valkey Marketplace App
 Credentials File: /home/$SUDO_USER/.credentials
@@ -74,13 +75,16 @@ Documentation: https://www.linode.com/docs/products/tools/marketplace/guides/val
 *********************************************************
 To delete this message of the day: rm /etc/motd
 ```
+
 Access the Valkey database from the compute instance using the `valkey-cli` command, for example:
-```
+
+```command
 --tls --cacert /etc/valkey/ssl/ca/ca.crt --cert /etc/valkey/ssl/certs/client1.crt --key /etc/valkey/ssl/keys/client1.key.pem
 ```
-This enters the Valkey interface and allows you to authenticate as either the `default` user or the `sudo user`. The `sudo user` is created during deployment using the passwords provided in the `/home/$SUDO_USER/.credentials` file. 
 
-Valkey is deployed to listen only on `127.0.0.1` loopback. Additional configurations to Valkey and the firewall may be necessary to connect to external clients and resources. 
+This enters the Valkey interface and allows you to authenticate as either the `default` user or the `sudo user`. The `sudo user` is created during deployment using the passwords provided in the `/home/$SUDO_USER/.credentials` file.
+
+Valkey is deployed to listen only on `127.0.0.1` loopback. Additional configurations to Valkey and the firewall may be necessary to connect to external clients and resources.
 
 {{< note >}}
 Valkey is still in early development and has limited documentation. Pending further major release, Redis usage and configuration documentation is generally applicable to Valkey.
@@ -92,5 +96,5 @@ Additional resources are available from the Valkey community.
 
 - [Valkey](https://valkey.io/)
 - [Valkey Github Repo](https://github.com/valkey-io/valkey)
- 
+
 {{% content "marketplace-update-note-shortguide" %}}
