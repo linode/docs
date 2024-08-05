@@ -19,7 +19,7 @@ While a firewall is often responsible for cases of limited access, these issues 
 
 [*Lish*](/docs/products/compute/compute-instances/guides/lish/) is a shell that provides access to your Compute Instance's serial console and is a helpful tool for diagnosing and troubleshooting connection problems. Lish does not establish a network connection to your instance, so you can use it when your networking is down or your Compute Instance's Secure Shell (SSH) port is inaccessible. If you find yourself locked out of SSH, you can use Lish to perform much of the troubleshooting for basic connection issues.
 
-To learn about Lish in more detail, and for instructions on how to connect to your Compute Instance via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. A fast and simple way to access Lish is by [the your web browser option](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish).
+To learn about Lish in more detail, and for instructions on how to connect to your Compute Instance via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. A fast and simple way to access Lish is by [the your web browser option](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish).
 
 {{< note >}}
 When using Lish, you can log in to your Compute Instance with the `root` user, even if `root` user login is disabled by your system's SSH configuration file.
@@ -29,7 +29,7 @@ When using Lish, you can log in to your Compute Instance with the `root` user, e
 
 Ensure that your Compute Instance is powered on and running.
 
-1. Log into the [Cloud Manager](https://cloud.linode.com/) and navigate to the Compute Instance listing page.
+1. Log into [Cloud Manager](https://cloud.linode.com/) and navigate to the Compute Instance listing page.
 
 1. Verify your Compute Instance's displayed status to determine if it's running or offline. If it your instance is offline, use the **more options** ellipsis to power it on.
 
@@ -61,7 +61,7 @@ If you are using Cloud Firewalls, then it's important to verify which Cloud Fire
 
 ## Checking Firewall Rules with UFW
 
-*Uncomplicated Firewall (UFW)* is an [iptables](/docs/guides/control-network-traffic-with-iptables/) frontend that is designed for ease-of-use. See our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) for a deeper dive into UFW.
+*Uncomplicated Firewall (UFW)* is an [iptables](/docs/guides/control-network-traffic-with-iptables/) front end that is designed for ease-of-use. See our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) for a deeper dive into UFW.
 
 {{< note >}}
 All steps in this section are performed on your Compute Instance. [Connect to your Compute Instance via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/products/compute/compute-instances/guides/lish/).
@@ -102,7 +102,7 @@ sudo ufw delete allow 80
 
 ## Checking Firewall Rules with FirewallD
 
-*firewalld* is the default firewall tool for CentOS and Fedora. While also a frontend for iptables like UFW, firewalld has some unique features, like configuration sets and zones.
+*firewalld* is the default firewall tool for CentOS and Fedora. While also a front end for iptables like UFW, firewalld has some unique features, like configuration sets and zones.
 
 {{< note >}}
 All steps in this section are performed on your Compute Instance. [Connect to your Compute Instance via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/products/compute/compute-instances/guides/lish/).

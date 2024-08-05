@@ -36,7 +36,7 @@ Chevereto requires a valid license to use the software. To purchase a license, v
 
 ### Access your Chevereto App
 
-1.  After Chevereto has finished installing, log in to your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
+1.  After Chevereto has finished installing, log in to your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/), and entering your Linode's root password when prompted:
 
         ssh root@192.0.2.0
 
@@ -48,7 +48,7 @@ Chevereto requires a valid license to use the software. To purchase a license, v
 
     ![Chevereto Installer](chevereto-installer.png)
 
-1.  To utilize Chevereto, you need to obtain a license key. You can do so by clicking the purchase button and entering the license key provided by Chevereto.
+1.  To use Chevereto, you need to obtain a license key. You can do so by clicking the purchase button and entering the license key provided by Chevereto.
 
     ![Chevereto License](chevereto-license.png)
 
@@ -56,7 +56,7 @@ Chevereto requires a valid license to use the software. To purchase a license, v
 
     ![Chevereto cPanel](chevereto-cpanel.png)
 
-1.  The next page allows you to input the database information for this application. It should be pre-filled with the user and password details.
+1.  The next page lets you input the database information for this application. It should be pre-filled with the user and password details.
 
     ![Chevereto Database](chevereto-database.png)
 

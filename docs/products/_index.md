@@ -2,7 +2,7 @@
 title = "All Products"
 linkTitle = "Products"
 title_meta = "Linode Product Documentation"
-description = "Get started using the Cloud Manager, CLI, and API to deploy Linode services and manage your account."
+description = "Get started using Cloud Manager, CLI, and API to deploy Linode services and manage your account."
 
 [[cascade]]
 weightAge = 0

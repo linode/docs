@@ -3,7 +3,7 @@ title: Linode Kubernetes Engine
 title_meta: "Linode Kubernetes Engine (LKE) Product Documentation"
 description: "Linode Kubernetes Engine is a managed Kubernetes service that offers automatic backup and recovery and third party integration with popular k8s-related tools."
 published: 2020-06-02
-modified: 2023-09-21
+modified: 2024-07-05
 linkTitle: Kubernetes
 tab_group_main:
     is_root: true
@@ -33,11 +33,7 @@ The basic control plane infrastructure on LKE clusters is provided at no additio
 ## Technical Specifications
 
 - Equipped with a fully-managed control plane at no cost. While the control plane is fully-managed, the user is responsible for managing their deployment configuration and applications.
-- Compute Instance plans supported: Dedicated CPU, Shared CPU, High Memory
-- Nodes per node pool: 1-100 nodes
-- Memory per node: 4GB - 512GB
-- SSD Storage per node: 50GB - 7200GB
-- Transfer per node: 4-20TB
+- Compute Instance plans supported: Dedicated CPU, Shared CPU, High Memory, and Premium CPU (excluding the 512 GB size for both Dedicated CPU and Premium CPU). See the [Pricing](https://www.linode.com/pricing/) page for the compute resources included in each plan.
 - 40 Gbps inbound network bandwidth
 - Free inbound network transfer
-- Provisioning and management through the [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
+- Provisioning and management through [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)

@@ -54,7 +54,7 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 
 1.  Log in to your new Compute Instance using one of the methods below:
 
-    - **Lish Console:** Within the Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. Log in as the `root` user. See [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **Lish Console:** Within Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. Log in as the `root` user. See [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
     - **SSH:** Log in to your Compute Instance over SSH using the `root` user, or with the sudo user created during deployment. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
 1.  Once logged in, find the URLs and credential files listed in the MOTD:
@@ -92,7 +92,7 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 
 ### Add Prometheus as a Data Source to Grafana
 
-1.  Log in to the Grafana frontend. See [Access Grafana and Prometheus](#access-grafana-and-prometheus).
+1.  Log in to the Grafana front end. See [Access Grafana and Prometheus](#access-grafana-and-prometheus).
 
 1.  On the main menu, hover over the gear icon to open the *Configuration* menu. Then click **Data Sources**.
 
@@ -108,6 +108,6 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 
     ![Screenshot of the Prometheus data source](grafana-prometheus-source.png)
 
-Now that the Prometheus Data Source is set, you can browse the [available Grafana dashboards](https://grafana.com/grafana/dashboards/) to see which dashboard fits your needs. Review the official [Prometheus](https://prometheus.io/docs/introduction/overview/) and [Grafana](https://grafana.com/docs/grafana/latest/) documentation to learn how to further utilize your instance.
+Now that the Prometheus Data Source is set, you can browse the [available Grafana dashboards](https://grafana.com/grafana/dashboards/) to see which dashboard fits your needs. Review the official [Prometheus](https://prometheus.io/docs/introduction/overview/) and [Grafana](https://grafana.com/docs/grafana/latest/) documentation to learn how to further use your instance.
 
 {{% content "marketplace-update-note-shortguide" %}}

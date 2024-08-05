@@ -2,7 +2,7 @@
 title: "Deploy Jenkins through the Linode Marketplace"
 description: "This guide shows how to install Jenkins, an open source automation tool which system administrators can use to build, test, and deploy your infrastructure."
 published: 2020-03-12
-modified: 2024-06-27
+modified: 2024-08-05
 keywords: ['jenkins','marketplace','pipeline','continuous delivery']
 tags: ["linode platform","automation","marketplace","cloud-manager"]
 external_resources:
@@ -61,7 +61,7 @@ After deploying your Jenkins instance, log in and continue the configuration.
       Jenkins Admin password: BeVrZwVkn1mUO0Gl38lRabp
     ```
 
-1. Open a web browser and navigate to `https://50-116-42-224.ip.linodeusercontent.com`. Replace `50-116-42-224.ip.linodeusercontent.com` with your domain name or reverse DNS for your Linode's IP. This will open the *Unlock Jenkins* page. Enter the password you retrieved in the previous step and click **Continue**.
+1. Open a web browser and navigate to `https://192-0-2-17.ip.linodeusercontent.com`. Replace `192-0-2-17.ip.linodeusercontent.com` with the reverse DNS for your Compute Instance. This will open the *Unlock Jenkins* page. Enter the password you retrieved in the previous step and click **Continue**.
 
     ![Log into Jenkins with your admin password](jenkins-admin-login.png)
 

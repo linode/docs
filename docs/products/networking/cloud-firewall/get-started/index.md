@@ -14,7 +14,7 @@ Linode’s free Cloud Firewall service can be used to create, configure, and add
 
 ## Create a Cloud Firewall
 
-There are two main options to consider when deciding how to protect your Linode Compute Instances: installing firewall software on your system or using Linode's Cloud Firewall service. While both are robust solutions, a major benefit to using Cloud Firewalls is the ease of configuration. Cloud Firewalls can be created and managed through the Cloud Manager, Linode CLI, or Linode API.
+There are two main options to consider when deciding how to protect your Linode Compute Instances: installing firewall software on your system or using Linode's Cloud Firewall service. While both are robust solutions, a major benefit to using Cloud Firewalls is the ease of configuration. Cloud Firewalls can be created and managed through Cloud Manager, Linode CLI, or Linode API.
 
 - [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/)
 

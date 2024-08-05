@@ -13,7 +13,7 @@ image: 'How_to_Deploy_a_Shadowsocks_Server_with_OneClick_Apps_1200x631.png'
 aliases: ['/platform/marketplace/deploy-shadowsocks-with-marketplace-apps/', '/platform/one-click/deploy-shadowsocks-with-one-click-apps/','/guides/deploy-shadowsocks-with-one-click-apps/','/guides/deploy-shadowsocks-with-marketplace-apps/','/guides/shadowsocks-marketplace-app/']
 ---
 
-Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass network censorship and blocking on certain websites and web protocols. A full setup requires a Linode server to host the Shadowsocks daemon, and a client installed on PC, Mac, Linux, or a mobile device. Unlike other proxy software, Shadowsocks traffic is designed to be both indiscernible from other traffic to third-party monitoring tools, and also able to disguise itself as a normal direct connection. Data passing through Shadowsocks is encrypted for additional security and privacy.
+Shadowsocks is a lightweight SOCKS5 web proxy tool primarily used to bypass network censorship and blocking on certain websites and web protocols. A full setup requires a Linode server to host the Shadowsocks daemon, and a client installed on PC, Mac, Linux, or a mobile device. Unlike other proxy software, Shadowsocks traffic is designed to be both indiscernible from other traffic to third-party monitoring tools, and also able to disguise itself as a normal direct connection. Data passing through Shadowsocks is encrypted for additional security and privacy.
 
 ## Deploying a Marketplace App
 
@@ -46,7 +46,7 @@ When the client has completed the installation process, ensure that you're setti
 
 | **Configuration** | **Description** |
 |-------------------|-----------------|
-| **Address** | Your linodes IPv4 address. Can be found in the `Linodes` section of the [Cloud Manager](https://cloud.linode.com/linodes).
+| **Address** | Your linodes IPv4 address. Can be found in the `Linodes` section of [Cloud Manager](https://cloud.linode.com/linodes).
 | **Port** | The Shadowsocks Marketplace App connects through port `8000` by default. |
 | **Encryption** | Set to use the `aes-256-gcm` encryption mode. |
 | **Password** | This is the `Shadowsocks Password` field you created when initially deploying your app. |

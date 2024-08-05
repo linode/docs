@@ -7,8 +7,6 @@ tab_group_main:
 aliases: ['/platform/object-storage/how-to-use-object-storage/','/guides/how-to-use-object-storage/']
 ---
 
-{{< youtube q88OKsr5l6c >}}
-
 ## Enable Object Storage
 
 Object Storage is not enabled for a Linode account by default. All that is required to enable Object Storage is to create a bucket or an Object Storage access key. To cancel Object Storage, see the [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/) guide.
@@ -41,7 +39,7 @@ Billing for Object Storage starts when it is enabled on your account, **regardle
 
 ## Create a Bucket
 
-The Cloud Manager provides a web interface for creating buckets. To create a bucket:
+Cloud Manager provides a web interface for creating buckets. To create a bucket:
 
 1.  If you have not already, log in to the [Linode Cloud Manager](https://cloud.linode.com).
 

@@ -1551,6 +1551,7 @@ monitorix
 monorepo
 monorepos
 monospaced
+mons
 moodle
 moolenaar
 morphisec
@@ -1585,6 +1586,7 @@ multicraft
 multilib
 multiline
 multilink
+multipath
 multiplatform
 Multiplo
 multiport
@@ -1604,6 +1606,7 @@ MXNet
 myapp
 myblog
 mydestination
+mydockerhubusername
 mydomain
 myhostname
 mynewdomain
@@ -1782,6 +1785,7 @@ openzipkin
 Opin
 ORMs
 osCommerce
+osds
 ossec
 OStatus
 ostemplate
@@ -1915,6 +1919,7 @@ poplib
 portainer
 portmapper
 portswigger
+portworx
 Postel
 postgres
 postgresql
@@ -1991,6 +1996,7 @@ puppetmaster
 puttygen
 pv
 pvc
+pvcs
 pvgrub
 pwcheck
 pwsh
@@ -2563,6 +2569,7 @@ transcoder
 transcoders
 transcodes
 transcoding
+transformative
 transpiled
 transpiling
 trello
@@ -2771,6 +2778,7 @@ vz
 vznetaddbr
 wafs
 walkthrough
+walkthroughs
 WAN
 WANs
 Wappalyzer

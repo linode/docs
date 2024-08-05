@@ -13,7 +13,7 @@ cascade:
 aliases: ['/platform/nodebalancer/','/nodebalancers/','/guides/platform/nodebalancer/']
 ---
 
-**NodeBalancers** are managed *load balancers as a service (LBaaS)*, making load balancing accessible and easy to configure on the Linode Platform. They intelligently distribute incoming requests to multiple backend Compute Instances, so that there's no single point of failure. This enables high availability, horizontal scaling, and A/B testing on any application hosted with Linode.
+**NodeBalancers** are managed *load balancers as a service (LBaaS)*, making load balancing accessible and easy to configure on the Linode Platform. They intelligently distribute incoming requests to multiple back-end Compute Instances, so that there's no single point of failure. This enables high availability, horizontal scaling, and A/B testing on any application hosted with Linode.
 
 ## High Availability
 
@@ -21,21 +21,21 @@ In a typical single machine configuration, issues with the machine may cause the
 
 ## Horizontal Scaling
 
-There are two main ways to scale an application to increase the performance and capacity within your applications. *Vertical scaling* increases or decreases the resources on the existing machines. This is achieved by [resizing](/docs/products/compute/compute-instances/guides/resize/) your Compute Instances. *Horizontal scaling* adds or removes machines that are identically configured to serve your application or perform a certain task. This is commonly accomplished through a load balancing solution, like NodeBalancers. Horizontal scaling can be much more flexible and allows you to scale as needed without taking down your site while upgrading or downgrading.
+There are two main ways to scale an application to increase the performance and capacity within your applications. *Vertical scaling* increases or decreases the resources on the existing machines. This is achieved by [resizing](/docs/products/compute/compute-instances/guides/resize/) your Compute Instances. *Horizontal scaling* adds or removes machines that are identically configured to serve your application or perform a certain task. This is commonly accomplished through a load balancing solution, like NodeBalancers. Horizontal scaling can be much more flexible and lets you scale as needed without taking down your site while upgrading or downgrading.
 
 ## Additional Features
 
-- **Firewall Security:** [Cloud Firewall](/docs/products/networking/cloud-firewall/) provides enhanced security by allowing you to control who can access your NodeBalancer. The optional Cloud Firewall sits between your NodeBalancer and the internet to filter out unwanted network traffic before it reaches your NodeBalancer. When used in conjunction with NodeBalancers, a Cloud Firewall’s inbound rules only apply to the NodeBalancer’s public IP, not the IPs of the backend nodes. This means you may also want to add individual backend nodes to a Cloud Firewall to protect any additional exposed IP addresses.
+- **Firewall Security:** [Cloud Firewall](/docs/products/networking/cloud-firewall/) provides enhanced security by allowing you to control who can access your NodeBalancer. The optional Cloud Firewall sits between your NodeBalancer and the internet to filter out unwanted network traffic before it reaches your NodeBalancer. When used in conjunction with NodeBalancers, a Cloud Firewall’s inbound rules only apply to the NodeBalancer’s public IP, not the IPs of the back-end nodes. This means you may also want to add individual back-end nodes to a Cloud Firewall to protect any additional exposed IP addresses.
 
 - **Managed:** NodeBalancers take the infrastructure management out of load balancing. They are designed to be maintenance free after initial configuration.
 
-- **Sticky Sessions:** NodeBalancers can route subsequent requests to the same backend, so all application sessions work correctly.
+- **Sticky Sessions:** NodeBalancers can route subsequent requests to the same back end, so all application sessions work correctly.
 
-- **Health Checks:** Traffic is only routed to healthy backends. Passive health checks happen on every request. You can configure active health checks based on your application or service.
+- **Health Checks:** Traffic is only routed to healthy back ends. Passive health checks happen on every request. You can configure active health checks based on your application or service.
 
-- **SSL Termination:** NodeBalancers can terminate SSL traffic on your behalf and expose the requester’s IP through the backend. This is done using configurable rulesets that give you the power to fine-tune admissible traffic.
+- **SSL Termination:** NodeBalancers can terminate SSL traffic on your behalf and expose the requester’s IP through the back end. This is done using configurable rulesets that give you the power to fine-tune admissible traffic.
 
-- **Throttling:** Prevent potential abuse (and preserve resources on your backends) by setting a client connection throttle on the NodeBalancer.
+- **Throttling:** Prevent potential abuse (and preserve resources on your back ends) by setting a client connection throttle on the NodeBalancer.
 
 - **Multi-Port:** NodeBalancers support balancing traffic to multiple network ports. Several services can be load balanced with a single NodeBalancer.
 
@@ -60,7 +60,7 @@ Cloud Firewall is available at no additional charge to customers.
 ## Technical Specifications
 
 - Managed cloud-based load balancing service
-- Dynamically routes traffic over any ports to configurable backend Compute Instances
+- Dynamically routes traffic over any ports to configurable back-end Compute Instances
 - Highly available with built-in redundancy
 - Up to 10,000 concurrent connections
 - Supports TCP-based (layer 4) load balancing (UDP traffic is not supported)
@@ -68,28 +68,28 @@ Cloud Firewall is available at no additional charge to customers.
 - Supports both SSL termination (using the HTTPS protocol mode) and SSL pass-through (using the TCP protocol mode)
 - Equipped with both public IPv4 and IPv6 addresses
 - Supports inbound Cloud Firewall rules such as IPv4 and IPv6 access control lists (ACLs) to *Accept* or *Drop* ingress traffic.
-- Fully customizable health checks to ensure traffic lands on a functioning backend
+- Fully customizable health checks to ensure traffic lands on a functioning back end
 - 40 Gbps inbound network bandwidth
 - Free inbound network transfer
 - Outbound network transfer usage is counted towards the account-wide [monthly network transfer pool](/docs/products/platform/get-started/guides/network-transfer/)
-- Provisioning and management through the [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
+- Provisioning and management through [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
 
 ## Limits and Considerations
 
 - **Maximum number of concurrent connections:** NodeBalancers each support up to 10,000 concurrent connections. If your application needs to support more than that, [contact support](https://www.linode.com/support/) to determine additional options or consider using multiple NodeBalancers behind a DNS load balancing solution such as [Round-Robin DNS](/docs/guides/setting-up-round-robin-dns/).
 - **Connections per second:** There are no defined rate limits for the number of connections over a given time period, though certain modes are more performant. A port configured in **TCP** mode allows for the most number of connections. A port configured in **HTTPS** mode is the most resource intensive and accommodates fewer connections.
 - **IP addresses:** A public IPv4 address and IPv6 address are configured on each NodeBalancer. Additional addresses are not available.
-- **Private network:** Communication with backend Linodes occurs over a data center's private network. As such, backend Linodes must be located within the same data center as the NodeBalancer.
+- **Private network:** Communication with back-end Linodes occurs over a data center's private network. As such, back-end Linodes must be located within the same data center as the NodeBalancer.
 - **HTTP support:** HTTP/1.1 (HTTP/2 support is not yet available).
 - **Network transfer:** *Outbound transfer* usage is counted towards the account-wide [monthly network transfer pool](/docs/products/platform/get-started/guides/network-transfer/). This pool is the combined total of the network transfer allowance of each Linode on the account. Both *Incoming transfer* and transfer over the private network are provided at no cost.
-- **TLS termination:** When using a NodeBalancer with an application that requires HTTPS, you can either terminate the TLS connection on the NodeBalancer (**HTTPS** mode) or on the backend Linodes (**TCP** mode). When terminating TLS connections directly on the NodeBalancer, there are a few key considerations:
+- **TLS termination:** When using a NodeBalancer with an application that requires HTTPS, you can either terminate the TLS connection on the NodeBalancer (**HTTPS** mode) or on the back-end Linodes (**TCP** mode). When terminating TLS connections directly on the NodeBalancer, there are a few key considerations:
     - **TLS protocols:** TLS v1.2 and v1.3 are supported in **HTTPS** mode.
-    - While operating in **HTTPS** mode, internal traffic sent to the backend Linodes will be unencrypted.
+    - While operating in **HTTPS** mode, internal traffic sent to the back-end Linodes will be unencrypted.
 
-    For applications that require a very high connection rate or otherwise need to overcome the above considerations present in **HTTPS** mode, consider operating in **TCP** mode and terminating TLS on the backend Linodes.
+    For applications that require a very high connection rate or otherwise need to overcome the above considerations present in **HTTPS** mode, consider operating in **TCP** mode and terminating TLS on the back-end Linodes.
 
 - **Cloud Firewall support:** When a Cloud Firewall is assigned to a NodeBalancer, the firewall only looks at incoming requests, this means that only inbound Cloud Firewall rules apply and outbound rules are not applicable.
 
     {{< note >}}
-    A service (Linode) can be accessed from other interfaces (not just the NodeBalancer). To filter traffic from other interfaces, backend Linodes require their own firewalls.
+    A service (Linode) can be accessed from other interfaces (not just the NodeBalancer). To filter traffic from other interfaces, back-end Linodes require their own firewalls.
     {{< /note >}}

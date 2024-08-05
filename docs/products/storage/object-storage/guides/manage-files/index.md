@@ -4,11 +4,11 @@ description: ""
 aliases: ['/products/storage/object-storage/guides/upload-objects/','/products/storage/object-storage/guides/delete-objects/','/products/storage/object-storage/guides/view-objects/']
 ---
 
-The primary function of Object Storage is to allow you to host files, also called objects. This guide walks you through using the Cloud Manager to view, upload, download, and delete files.
+The primary function of Object Storage is to allow you to host files, also called objects. This guide walks you through using Cloud Manager to view, upload, download, and delete files.
 
 ## View Files Stored within a Bucket
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Object Storage** from the left menu.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select **Object Storage** from the left menu.
 
 1.  Locate the bucket you wish to view and click its label/name to open it.
 
@@ -20,11 +20,11 @@ The primary function of Object Storage is to allow you to host files, also calle
 
 ## Upload Files
 
-Follow these steps to upload objects to a bucket using the Cloud Manager:
+Follow these steps to upload objects to a bucket using Cloud Manager:
 
 {{% content "object-storage-character-warning-shortguide" %}}
 
-1.  Navigate to the **Bucket** page in the Cloud Manager (see [View Files](#view-files-stored-within-a-bucket)).
+1.  Navigate to the **Bucket** page in Cloud Manager (see [View Files](#view-files-stored-within-a-bucket)).
 
 1. Files can be uploaded through either the dragging and dropping them into the file upload pane or by browsing for the files.
 
@@ -44,7 +44,7 @@ Follow these steps to upload objects to a bucket using the Cloud Manager:
 
 ## Download a File
 
-1.  Navigate to the **Bucket** page in the Cloud Manager (see [View Files](#view-files-stored-within-a-bucket)).
+1.  Navigate to the **Bucket** page in Cloud Manager (see [View Files](#view-files-stored-within-a-bucket)).
 
 1. Locate the file you wish to download and click the **Download** button.
 
@@ -54,9 +54,9 @@ Follow these steps to upload objects to a bucket using the Cloud Manager:
 
 ## Delete a File
 
-Follow these steps to delete objects in a bucket from the Cloud Manager:
+Follow these steps to delete objects in a bucket from Cloud Manager:
 
-1.  Navigate to the **Bucket** page in the Cloud Manager (see [View Files](#view-files-stored-within-a-bucket)).
+1.  Navigate to the **Bucket** page in Cloud Manager (see [View Files](#view-files-stored-within-a-bucket)).
 
 1. Locate the file you wish to delete and click the **Delete** button.
 

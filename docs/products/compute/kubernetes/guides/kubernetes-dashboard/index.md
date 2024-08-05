@@ -17,13 +17,13 @@ While providing an easy way to monitor a Kubernetes cluster and perform health c
 
 The Linode Kubernetes Engine currently installs the Kubernetes Dashboard by default, and can be accessed through the [Kubernetes Dashboard Link](#accessing-the-cluster-dashboard) found for each cluster in the Linode Cloud Manager.
 
-This guide will be a step-by-step introduction to accessing the Kubernetes Dashboard on LKE through the unique link found in the Cloud Manager or the Linode API. Additionally information will provide basic insight into navigating the Kubernetes Dashboard, as well as provide an example for creating and editing resources directly through the dashboard.
+This guide will be a step-by-step introduction to accessing the Kubernetes Dashboard on LKE through the unique link found in Cloud Manager or the Linode API. Additionally information will provide basic insight into navigating the Kubernetes Dashboard, as well as provide an example for creating and editing resources directly through the dashboard.
 
 ## Accessing the Cluster Dashboard
 
-The Cluster Dashboard can be found at the top of the Cluster's [details page](/docs/products/compute/kubernetes/guides/manage-clusters/). The steps for reaching the dashboard from the Cloud Manager are as follows:
+The Cluster Dashboard can be found at the top of the Cluster's [details page](/docs/products/compute/kubernetes/guides/manage-clusters/). The steps for reaching the dashboard from Cloud Manager's are as follows:
 
-1. Click the Kubernetes link in the Cloud Manager sidebar menu. The Kubernetes listing page appears and you see all of your clusters listed.
+1. Click the Kubernetes link in Cloud Manager's sidebar menu. The Kubernetes listing page appears and you see all of your clusters listed.
 
 1. Select the cluster that you would like to reach the Kubernetes Dashboard for. The Kubernetes cluster’s details page appears.
 

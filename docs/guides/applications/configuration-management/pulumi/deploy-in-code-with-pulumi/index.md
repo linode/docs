@@ -33,7 +33,7 @@ In this guide you will learn how to:
 
 ##  Before You Begin
 
-1. If you haven't yet, [create a Linode API token](/docs/products/tools/api/guides/manage-api-tokens/#create-an-api-token).
+1. If you haven't yet, [create a Linode API token](/docs/products/platform/accounts/guides/manage-api-tokens/#create-an-api-token).
 
 1. [Create a free Pulumi Cloud account](https://app.pulumi.com/signup).
 

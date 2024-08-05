@@ -107,7 +107,7 @@ You can update the `SELINUX` directive with any of the available SELinux [states
 
         sudo reboot
 
-- Connect to your Linode via SSH (replace `192.0.2.0` with your own [Linode's IP address](/docs/guides/find-your-linodes-ip-address/)) and verify your SELinux installation's status:
+- Connect to your Linode via SSH (replace `192.0.2.0` with your own [Linode's IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/)) and verify your SELinux installation's status:
 
         ssh example_user@192.0.2.0
         sudo sestatus

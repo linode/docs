@@ -80,7 +80,7 @@ To configure failover, complete each section that follows.
 
 ### 1. Create and Share the Shared IP Address
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com/).
+1.  Log in to [Cloud Manager](https://cloud.linode.com/).
 
 1.  Determine which two Compute Instances are to be used within your failover setup. They both must be located in the same data center. If you need to, create those Compute Instances now and allow them to fully boot up.
 

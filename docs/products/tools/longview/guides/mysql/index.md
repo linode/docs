@@ -15,7 +15,7 @@ relations:
 ---
 
 
-In addition to capturing general system metrics, Longview can also be used to capture metrics for MySQL. The MySQL tab appears in the Cloud Manager when Longview detects that you have MySQL installed on your system. It can help you keep track of MySQL's queries, system resource consumption, and other information.
+In addition to capturing general system metrics, Longview can also be used to capture metrics for MySQL. The MySQL tab appears in Cloud Manager when Longview detects that you have MySQL installed on your system. It can help you keep track of MySQL's queries, system resource consumption, and other information.
 
 {{< note >}}
 In order to use Longview to capture data for MySQL, you must have the Longview Agent successfully installed on the system you wish to monitor. See [Create a Longview Client and Install the Longview Agent](/docs/products/tools/longview/get-started/).
@@ -26,7 +26,7 @@ In order to use Longview to capture data for MySQL, you must have the Longview A
 This guide covers using Longview with MySQL and includes the following topics:
 
 - [Configuring Longview for MySQL](#configure-longview).
-- [Interacting with the MySQL data provided by Longview in the Cloud Manager](#view-metrics).
+- [Interacting with the MySQL data provided by Longview in Cloud Manager](#view-metrics).
 - [Troubleshooting Longview for MySQL](#troubleshooting).
 
 ## Configure Longview with MySQL {#configure-longview}
@@ -58,7 +58,7 @@ If MySQL is installed and running when you install the Longview agent, Longview 
     Successfully connected to MySQL
     ```
 
-    Once you see this successful message, the Longview should automatically start collecting MySQL data. Refresh Longview in the Cloud Manager to start viewing your MySQL metrics for your Longview Client instance.
+    Once you see this successful message, the Longview should automatically start collecting MySQL data. Refresh Longview in Cloud Manager to start viewing your MySQL metrics for your Longview Client instance.
 
     {{< note >}}
     Unless you already have a specific Longview database user set up in the `/etc/linode/longview.d/MySQL.conf` file, Longview will locate and use the `debian-sys-maint` database user credentials if it can, located at `/etc/mysql/debian.cnf`.
@@ -112,13 +112,13 @@ You cannot configure the location of a socket for the Longview client.
     sudo systemctl restart longview
     ```
 
-1. Refresh Longview in the Cloud Manager to verify that the MySQL tab is now present and collecting data for your Longview client instance.
+1. Refresh Longview in Cloud Manager to verify that the MySQL tab is now present and collecting data for your Longview client instance.
 
 You should now be able to see Longview data for MySQL. If that's not the case, proceed to the [Troubleshooting](#troubleshooting) section at the end of this article.
 
 ## View MySQL Metrics {#view-metrics}
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select the **Longview** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select the **Longview** link in the sidebar.
 
 1. Locate the Longview Client you have configured for MySQL and click the corresponding **View details** link.
 
@@ -193,7 +193,7 @@ This indicates that Longview can't locate any valid MySQL user credentials, so i
     flush privileges;
     ```
 
-    Refresh Longview in the Cloud Manager to verify that the MySQL tab is now present and collecting data for your Longview client instance.
+    Refresh Longview in Cloud Manager to verify that the MySQL tab is now present and collecting data for your Longview client instance.
 
 If you've added the credentials to MySQL and it still doesn't work, double-check your MySQL installation, and then do a [manual configuration](#manual-configuration-all-distributions).
 

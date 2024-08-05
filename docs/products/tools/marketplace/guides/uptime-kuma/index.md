@@ -53,6 +53,6 @@ aliases: ['/guides/uptimekuma-marketplace-app/']
 
     ![Screenshot of Uptime Kuma dashboard](uptimekuma-dashboard.png)
 
-Now that you’ve accessed your dashboard, check out [the official Uptime Kuma Repository](https://github.com/louislam/uptime-kuma) to learn how to further utilize your Uptime Kuma instance.
+Now that you’ve accessed your dashboard, check out [the official Uptime Kuma Repository](https://github.com/louislam/uptime-kuma) to learn how to further use your Uptime Kuma instance.
 
 {{% content "marketplace-update-note-shortguide" %}}

@@ -17,7 +17,7 @@ There are three main ways to assign a Compute Instance to a VPC:
 
 - VPCs, along with VLANs and the public internet, are configured as network interfaces within a Compute Instance's configuration profile. These network interfaces are configured automatically when creating a Compute Instance with a VPC or when interacting with the VPC directly to assign and remove existing Compute Instances. You can also edit the Configuration Profile directly to manually configure these network interfaces to suit specific use cases. Manually editing a Configuration Profile on a Compute Instance is typically the preferred way to assign a VPC to an existing instance.
 
-- VPC resources requiring public internet access should be configured as a 1:1 NAT or use a [forward proxy](/docs/guides/forward-proxy-for-vpc/). It is not recommended to configure a separate network interface with public internet access (in addition to the VPC interface).
+- VPC resources requiring public internet access should be configured as a 1:1 NAT or use a [forward proxy](/docs/products/networking/vpc/guides/forward-proxy-for-vpc/). It is not recommended to configure a separate network interface with public internet access (in addition to the VPC interface).
 
 - Compute Instances can only be assigned to a single subnet of a single VPC, though they can communicate with other instances on any subnet within the same VPC. Multiple VPC interfaces on an instance are not allowed.
 
@@ -47,7 +47,7 @@ When creating a new Compute Instance, you have the option to assign it to an exi
 
 If a Compute Instance is created with a VPC, the VPC is automatically enabled on the `eth0` network interface. No other network interfaces are configured. An exception to that is if the Compute Instance is also configured with a **Private IP** address (which is not recommended). In this case, the `eth1` network interface is configured as _Public Internet_.
 
-![Screenshot of the VPC section of the Create Linode screen in the Cloud Manager](create-instance-vpc.jpg)
+![Screenshot of the VPC section of the Create Linode screen in Cloud Manager](create-instance-vpc.jpg)
 
 ## Use the VPC Management Workflows to Assign an Existing Compute Instance {#assign-existing-instance-with-vpc-management-workflows}
 
@@ -75,7 +75,7 @@ Every Compute Instance can have up to three network interfaces (Public, VPC, and
 
 If you wish for an instance to be configured on a VPC, the _VPC_ option needs to be selected on at least one interface. In most cases, a VPC should be configured on the first network interface (`eth0`). Configuring a VPC on other interfaces prevent the instance from communicating with other subnets in the same VPC. For more details regarding configuring network interfaces, review the [Configuration Profile Settings](/docs/products/compute/compute-instances/guides/configuration-profiles/#settings).
 
-1.  Within the [Cloud Manager](https://cloud.linode.com), view the Configuration Profiles for your desired Compute Instance. See [View Configuration Profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/#view-configuration-profiles).
+1.  Within [Cloud Manager](https://cloud.linode.com), view the Configuration Profiles for your desired Compute Instance. See [View Configuration Profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/#view-configuration-profiles).
 
 1.  Within the **Configurations** table, locate the configuration profile you wish to modify and click the corresponding **Edit** button, which may also appear within the **ellipsis** menu. This displays the **Edit Configuration** form. In most cases, there should be only one configuration profile.
 
@@ -87,7 +87,7 @@ If you wish for an instance to be configured on a VPC, the _VPC_ option needs to
 
     - **VPC:** To assign this instance to a VPC, select the VPC from the **VPC** dropdown menu. If you do not yet have a VPC in the selected data center, click the **Create a VPC** button and follow the instructions on the [Create a VPC](/docs/products/networking/vpc/guides/create/) guide.
 
-    - **Subnet:** An instance can be assigned to a single subnet, which allows you to further segment traffic and services within a VPC. Select the desired subnet within the **Subnet** dropdown menu.
+    - **Subnet:** An instance can be assigned to a single subnet, which lets you further segment traffic and services within a VPC. Select the desired subnet within the **Subnet** dropdown menu.
 
     - **Auto-Assign IPv4 address:** By default, an IPv4 address will be automatically generated for the instance on the subnet’s defined CIDR range. If you want to manually assign an IP address, uncheck the **Auto-assign a VPC IPv4 address for this Linode** option and enter your custom IPv4 address. This address must still be within the subnet’s IP range.
 

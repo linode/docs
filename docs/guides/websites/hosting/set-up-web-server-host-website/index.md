@@ -162,7 +162,7 @@ The exact form fields will vary depending on the type of DNS record you select.
 
 1.  Enter a hostname in the **Hostname** field.
 
-1.  Enter the IP address of your server in the **IP Address** field. See [this quick answer page](/docs/guides/find-your-linodes-ip-address/) to find your Linode's IP address.
+1.  Enter the IP address of your server in the **IP Address** field. See [this quick answer page](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) to find your Linode's IP address.
 
 1.  Select a time interval from the **TTL** menu. *TTL* stands for *time to live*, and affects how long DNS records are cached by DNS resolvers. When the designated time to live is reached, the resolver must query the authoritative name servers for new records.
 

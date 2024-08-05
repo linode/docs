@@ -49,7 +49,7 @@ The Akamai Connected Cloud Splunk Marketplace App includes support for the [Akam
 
 ### Obtaining the Admin Password
 
-The password for the sudo user account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish). The credentials are available in the file `/home/$USERNAME/.credentials`
+The password for the sudo user account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish). The credentials are available in the file `/home/$USERNAME/.credentials`
 ```
 cat /home/$USERNAME/.credentials
 sudo username: $USERNAME

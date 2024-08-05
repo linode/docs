@@ -39,7 +39,7 @@ external_resources:
 
 ### Accessing the Joplin Server
 
-The Joplin server dashboard allows you to manage your account, add other users, and perform various administration tasks. Before using your new Joplin instance to take notes, you should first log in to the admin dashboard and update your profile using the instructions below.
+The Joplin server dashboard lets you manage your account, add other users, and perform various administration tasks. Before using your new Joplin instance to take notes, you should first log in to the admin dashboard and update your profile using the instructions below.
 
 1. Open your web browser and navigate to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though your connection will not be encrypted. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
@@ -83,6 +83,6 @@ To start using Joplin to take notes, download the Joplin application for your de
 
 1. If your settings are correct, you should see a success message. Click the **Apply** button to save your settings.
 
-Now you can start taking notes and your changes will automatically be stored on your new Joplin Server instance and synchronized between all of your devices. Check out [the official Joplin documentation](https://joplinapp.org/help/) to learn how to further utilize your Joplin instance.
+Now you can start taking notes and your changes will automatically be stored on your new Joplin Server instance and synchronized between all of your devices. Check out [the official Joplin documentation](https://joplinapp.org/help/) to learn how to further use your Joplin instance.
 
 {{% content "marketplace-update-note-shortguide" %}}

@@ -48,6 +48,6 @@ BitNinja requires a valid license to use the software beyond the initial 7 day [
 
 ### Accessing the BitNinja App
 
-Now that you’ve deployed your BitNinja instance, check out [the official BitNinja documentation](https://doc.bitninja.io/docs/command_line_interface#usage) to learn how to further utilize your BitNinja instance.
+Now that you’ve deployed your BitNinja instance, check out [the official BitNinja documentation](https://doc.bitninja.io/docs/command_line_interface#usage) to learn how to further use your BitNinja instance.
 
 {{% content "marketplace-update-note-shortguide" %}}

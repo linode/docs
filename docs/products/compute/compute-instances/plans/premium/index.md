@@ -20,7 +20,7 @@ The key differentiator for Premium instances is its guaranteed minimum hardware 
 
 ## Dedicated Competition-Free Resources
 
-CPU cores on a Premium instance are accessible only to that instance (not other instances on the same hardware). Because the vCPU cores are not shared, no other Compute Instances can utilize them. Your instance never has to wait for another process, enabling your software to run at peak speed and efficiency. This allows you to run workloads that require full-duty work (100% CPU all day, every day) at peak performance.
+CPU cores on a Premium instance are accessible only to that instance (not other instances on the same hardware). Because the vCPU cores are not shared, no other Compute Instances can utilize them. Your instance never has to wait for another process, enabling your software to run at peak speed and efficiency. This lets you run workloads that require full-duty work (100% CPU all day, every day) at peak performance.
 
 ## Recommended Workloads
 

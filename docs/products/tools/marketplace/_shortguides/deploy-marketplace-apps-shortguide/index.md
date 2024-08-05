@@ -1,13 +1,13 @@
 ---
-# Shortguide: Instructions on deploying a Marketplace App from the Cloud Manager
+# Shortguide: Instructions on deploying a Marketplace App from Cloud Manager
 
 headless: true
 show_on_rss_feed: false
 ---
 
-The Linode Marketplace allows you to easily deploy software on a Compute Instance using the Cloud Manager. See [Get Started with Marketplace Apps](/docs/products/tools/marketplace/get-started/) for complete steps.
+The Linode Marketplace lets you easily deploy software on a Compute Instance using Cloud Manager. See [Get Started with Marketplace Apps](/docs/products/tools/marketplace/get-started/) for complete steps.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and select the **Marketplace** link from the left navigation menu. This displays the Linode **Create** page with the **Marketplace** tab pre-selected.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and select the **Marketplace** link from the left navigation menu. This displays the Linode **Create** page with the **Marketplace** tab pre-selected.
 
 1. Under the **Select App** section, select the app you would like to deploy.
 

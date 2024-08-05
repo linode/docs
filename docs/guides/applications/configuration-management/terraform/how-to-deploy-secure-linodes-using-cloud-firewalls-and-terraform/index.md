@@ -25,7 +25,7 @@ In this guide, you will create a Linode Firewalls module which declares commonly
 
 1. See [Create a Terraform Module](/docs/guides/create-terraform-module/) for a deeper dive into Terraform's standard module structure and other helpful details.
 
-1. You need a Linode API personal access token to use with Terraform. This token will allow you to create, update, and destroy Linode resources. See the [Manage Personal Access Tokens](/docs/products/tools/api/guides/manage-api-tokens/) guide for steps to create a token.
+1. You need a Linode API personal access token to use with Terraform. This token will allow you to create, update, and destroy Linode resources. See the [Manage Personal Access Tokens](/docs/products/platform/accounts/guides/manage-api-tokens/) guide for steps to create a token.
 
     {{< note respectIndent=false >}}
     When you create a personal access token ensure that you set **Read/Write** access permissions for Linode instances and Cloud Firewalls.

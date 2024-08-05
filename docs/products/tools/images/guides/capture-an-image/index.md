@@ -14,13 +14,13 @@ When capturing an image file from an existing Linode Compute Instance, keep the 
 
 - **The disk must be formatted using ext3/ext4 filesystems.** Images cannot be created if you are using raw disks or disks that have been formatted using custom filesystems. CoreOS disk images are in RAW format. Images made from CoreOS disks can't be used to deploy new Linodes.
 
-- **Power off Linode to avoid database corruption.** If your Linode is running any active databases, it's recommended to power off the Linode down prior to creating the image. Creating an image that includes a running database can cause corruption or data loss in the imaged copy of the database.
+- **Power off Linode to avoid database corruption.** If your Linode is running any active databases, it's recommended to power off the Linode down before creating the image. Creating an image that includes a running database can cause corruption or data loss in the imaged copy of the database.
 
 - **Only the selected disk is saved to the Image.** The Image is comprised only of the disk selected during the creation process. The Image does not store other aspects of the Linode, such as Configuration Profiles, Block Storage Volumes, IP Addresses, and other Linode-based settings.
 
-## Capturing an Image through the Cloud Manager
+## Capturing an Image through Cloud Manager
 
-1.  Log in to the Cloud Manager and open the **[Capture Image](https://cloud.linode.com/images/create/disk)** form by navigating to the **Images** page, clicking the **Create Image** button, and staying on the **Capture Image** tab.
+1.  Log in to Cloud Manager and open the **[Capture Image](https://cloud.linode.com/images/create/disk)** form by navigating to the **Images** page, clicking the **Create Image** button, and staying on the **Capture Image** tab.
 
 1.  Select your *Linode* and *Disk* from their respective dropdown lists and type in an optional *Label* and *Description* for the Image. If no *Label* is entered, the label for the disk will be used. When selecting a Linode and Disk, keep in mind any limitations that may prevent the Image from creating successfully.
 

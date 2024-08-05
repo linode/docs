@@ -841,7 +841,7 @@ You could certainly let this code run for a long while from your local machine, 
 
 ### Log In and Secure the Server
 
-1. To log into the server, follow the [Connect to Your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) section of our [Getting Started](/docs/products/platform/get-started/) guide. If you do not have access to an SSH client, or if SSH connections are firewalled on your local network, you can also opt to use [the Lish console](/docs/products/compute/compute-instances/guides/lish/) from the Cloud Manager in your web browser. To do so, follow the [Use a Web Browser](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) instructions in our Lish guide.
+1. To log into the server, follow the [Connect to Your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) section of our [Getting Started](/docs/products/platform/get-started/) guide. If you do not have access to an SSH client, or if SSH connections are firewalled on your local network, you can also opt to use [the Lish console](/docs/products/compute/compute-instances/guides/lish/) from the Cloud Manager in your web browser. To do so, follow the [Use a Web Browser](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish) instructions in our Lish guide.
 
     {{< note respectIndent=false >}}
 Our [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) guide series has a few other options for SSH clients, like SSH extension for the Chrome web browser.
@@ -899,7 +899,7 @@ The server is now ready to run the bot, but you still need to upload the bot's c
 
     | Field | Value |
     |-------|-------|
-    | Host | The IP Address for your Linode. Use the [Find your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) guide to locate your IP address in the Cloud Manager. |
+    | Host | The IP Address for your Linode. Use the [Find your Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide to locate your IP address in the Cloud Manager. |
     | Username | This should be the name for the limited non-root-user you created. |
     | Password | The password for the limited non-root-user you created. |
     | Port | This should be set to 22. |

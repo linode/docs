@@ -138,6 +138,7 @@ export function newSearchExplorerHydrated(searchConfig) {
 						n.icon = section.explorer_icon;
 						n.weight = section.weight;
 						n.title = section.title;
+						n.linkTitle = n.title;
 					}
 				});
 
@@ -241,10 +242,18 @@ export function newSearchExplorerNode(searchConfig, node) {
 		counter: 0,
 		state: {
 			childNodes: [],
-			pages: [],
+			pages: [], // Includes only visible pages.
+			totalPageCount: 0, // Includes hidden/deprecated pages.
 			pagesLoaded: false,
 			pageSearchActive: false,
 			hydrated: false,
+		},
+		viewAllText: function () {
+			let nodeTitle = this.node.title || this.node.linkTitle;
+			if (this.$store.search.query.isFiltered()) {
+				return `See ${this.state.totalPageCount} Matching ${nodeTitle} Guides`;
+			}
+			return `See All ${this.state.totalPageCount} ${nodeTitle} Guides`;
 		},
 
 		init: function init() {
@@ -252,6 +261,7 @@ export function newSearchExplorerNode(searchConfig, node) {
 			templates = {
 				templateNode: this.$refs['templateNode'],
 				templateNodePages: this.$refs['templateNodePages'],
+				templateNodePagesFooter: this.$refs['templateNodePagesFooter'],
 			};
 
 			this.onRenders.push((e) => {
@@ -332,8 +342,13 @@ export function newSearchExplorerNode(searchConfig, node) {
 						createExplorerNodeRequest(searchConfig, query, self.node.key),
 						(result) => {
 							debug('pages result', self.node.href, result.hits.length);
-							let loc = window.location;
-							let pages = result.hits.map((hit) => {
+							let pageCount = 0;
+							let pages = [];
+							for (hit of result.hits) {
+								pageCount++;
+								if (hit.deprecated) {
+									continue;
+								}
 								if (hit.hierarchy && hit.hierarchy.length) {
 									// This is the reference-section.
 									// All pages in a section shares the same href (the section),
@@ -364,10 +379,14 @@ export function newSearchExplorerNode(searchConfig, node) {
 									// Store away the original hit for Algolia events.
 									hit: hit,
 								};
+
 								p.active = isActivePage(p);
-								return p;
-							});
+
+								pages.push(p);
+							}
+
 							pages.sort(itemsComparer);
+							self.state.totalPageCount = pageCount;
 							self.state.pages = pages;
 							self.state.pagesLoaded = true;
 						},
@@ -405,11 +424,17 @@ export function newSearchExplorerNode(searchConfig, node) {
 
 			let nodeTemplate = document.importNode(templates.templateNode.content.querySelector('template'), true);
 			let nodePagesTemplate = document.importNode(templates.templateNodePages.content.querySelector('template'), true);
+			let nodePagesTemplateFooter = document.importNode(
+				templates.templateNodePagesFooter.content.querySelector('template'),
+				true,
+			);
 
 			// First append the leaf nodes.
 			nodeElement.appendChild(nodePagesTemplate);
 			// Then append the branch nodes.
 			nodeElement.appendChild(nodeTemplate);
+			// And finally the footer.
+			nodeElement.appendChild(nodePagesTemplateFooter);
 		},
 	};
 

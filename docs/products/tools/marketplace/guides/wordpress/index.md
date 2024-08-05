@@ -55,7 +55,7 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 
 1.  Log in to your new Compute Instance using one of the methods below:
 
-    - **Lish Console:** Within the Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. Log in as the `root` user. See [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **Lish Console:** Within Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. Log in as the `root` user. See [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
     - **SSH:** Log in to your Compute Instance over SSH using the `root` user. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
 1.  Once logged in, access the credentials file by running the following command:
@@ -110,7 +110,7 @@ If you didn't set up a domain during the deployment process, you can add it manu
 
 ### Resetting Your Admin Password or Email Address
 
-If you need to reset your admin user's password and you aren't receiving the password reset request email, you can update the password from command line. This method also allows you to update the email address for your admin account without needing an email confirmation.
+If you need to reset your admin user's password and you aren't receiving the password reset request email, you can update the password from command line. This method also lets you update the email address for your admin account without needing an email confirmation.
 
 1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 

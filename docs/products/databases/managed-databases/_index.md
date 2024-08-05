@@ -44,7 +44,7 @@ See [Choosing a Database Engine and Plan](/docs/products/databases/managed-datab
 
 ## Recommended Workloads
 
-- Any production application that utilizes a database, especially one with high-traffic or one that stores critical data.
+- Any production application that uses a database, especially one with high-traffic or one that stores critical data.
 - Medium to high traffic websites using WordPress, CraftCMS, Drupal, or other database-enabled application.
 - E-commerce sites
 - Organizations that don't want to commit IT resources towards managing a database cluster.
@@ -81,7 +81,7 @@ In addition to the resources allocated to each available plan (outlined above), 
 - 100% SSD (Solid State Disk) storage
 - 40 Gbps inbound network bandwidth
 - Free inbound network transfer
-- Provisioning and management through the [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
+- Provisioning and management through [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
 
 ## Limits and Considerations
 

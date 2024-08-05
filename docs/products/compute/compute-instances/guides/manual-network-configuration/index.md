@@ -55,7 +55,7 @@ IP addresses can be statically configured or dynamically configured through DHCP
     - **VPC interfaces**: DHCP can be used to automatically configure the VPC IP address.
 
     {{< note >}}
-    If you do enable DHCP and are using a firewall (such as Cloud Firewalls), you must configure the firewall to allow communication with our DHCP servers. See the [DHCP IP Address Reference](/docs/guides/dhcp-ip-address-reference/) guide for a list of IP addresses to allow.
+    If you do enable DHCP and are using a firewall (such as Cloud Firewalls), you must configure the firewall to allow communication with our DHCP servers. See the [DHCP IP Address Reference](/docs/products/compute/compute-instances/guides/dhcp-ip-address-reference/) guide for a list of IP addresses to allow.
     {{< /note >}}
 
     {{< note >}}

@@ -20,7 +20,7 @@ Rust has been removed from the App Marketplace and can no longer be deployed. Th
 
 [Rust](https://rust.facepunch.com/) is a multiplayer game where you play as a survivor that must work with or against other players to ensure your own survival. Players are able to steal, lie, cheat, or trick each other. You can build a shelter, hunt animals for food, craft weapons, craft armor, and much more.
 
-Hosting your own Rust server allows you to customize settings and curate the number of players in the world.
+Hosting your own Rust server lets you customize settings and curate the number of players in the world.
 
 ## Deploying a Marketplace App
 
@@ -39,7 +39,7 @@ Hosting your own Rust server allows you to customize settings and curate the num
 
 ### Rust Options
 
-- **RCON Password** *(required)*: The password for your remote console, which allows you to issue commands on the Rust server
+- **RCON Password** *(required)*: The password for your remote console, which lets you issue commands on the Rust server
 - **Server Hostname:** The name of your Rust server.
 - **Server Description:** Your server's description. Use `\n` to create a new line.
 - **Maximum Players:** The maximum number of players allowed on a server at one time. Default is 50, minimum is 10, maximum is 100.

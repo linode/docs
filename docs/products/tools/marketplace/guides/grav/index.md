@@ -53,6 +53,6 @@ aliases: ['/guides/grav-marketplace-app/']
 
     ![Screenshot of the Admin dashboard](grav-admin.png)
 
-Now that you’ve accessed your dashboard, check out [the official Grav documentation](https://learn.getgrav.org/) to learn how to further utilize your Grav instance.
+Now that you’ve accessed your dashboard, check out [the official Grav documentation](https://learn.getgrav.org/) to learn how to further use your Grav instance.
 
 {{% content "marketplace-update-note-shortguide" %}}

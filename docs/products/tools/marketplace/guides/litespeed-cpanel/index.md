@@ -97,7 +97,7 @@ Please make sure to save this password.
 
     ![cPanel home page](cpanel-home-page.png)
 
-Now that you’ve accessed your LiteSpeed instance, check out [the official LiteSpeed documentation](https://www.litespeedtech.com/support/wiki/doku.php/litespeed_wiki) to learn how to further utilize your LiteSpeed instance.
+Now that you’ve accessed your LiteSpeed instance, check out [the official LiteSpeed documentation](https://www.litespeedtech.com/support/wiki/doku.php/litespeed_wiki) to learn how to further use your LiteSpeed instance.
 
 ### Accessing the LiteSpeed WebAdmin Interface
 

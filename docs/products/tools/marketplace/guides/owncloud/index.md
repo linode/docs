@@ -69,6 +69,6 @@ After deployment, follow the instructions below to access your application.
 
     ![ownCloud Files Screen](owncloud-main-screen.png)
 
-Now that you’ve accessed your ownCloud instance, check out [the official ownCloud documentation](https://doc.owncloud.com/server) to learn how to further utilize your ownCloud instance.
+Now that you’ve accessed your ownCloud instance, check out [the official ownCloud documentation](https://doc.owncloud.com/server) to learn how to further use your ownCloud instance.
 
 {{% content "marketplace-update-note-shortguide" %}}

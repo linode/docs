@@ -26,7 +26,7 @@ See [Boto3 Docs > Quickstart](https://boto3.amazonaws.com/v1/documentation/api/l
 
 To access Object Storage buckets and objects, you'll first need to configure your credentials and initialize the S3 client session.
 
-1.  Generate an access key and secret key for Object Storage through the Cloud Manager by following the [Managing Access Keys](/docs/products/storage/object-storage/guides/access-keys/) guide.
+1.  Generate an access key and secret key for Object Storage through Cloud Manager by following the [Managing Access Keys](/docs/products/storage/object-storage/guides/access-keys/) guide.
 
 2.  Add the following code to your python script, replacing `[access-key]` and `[secret-key]` with the values generated in the previous step. Also replace `[cluster-url]` with the cluster URL corresponding to the data center your buckets are located within (listed on the [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/) page).
 

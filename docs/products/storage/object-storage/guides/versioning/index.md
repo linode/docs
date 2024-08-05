@@ -15,7 +15,7 @@ Every version of an object counts towards the monthly billable storage quota. Wh
 
 ## Using Versioning within Linode's Object Storage Service
 
-While versioning is natively supported within our Object Storage service, none of our first party tooling (such as the Cloud Manager, the Linode CLI, or the Linode API) can manage this feature. Currently, object versioning can only be enabled, disabled, and otherwise managed through third party tools like Cyberduck and the AWS CLI.
+While versioning is natively supported within our Object Storage service, none of our first party tooling (such as Cloud Manager, the Linode CLI, or the Linode API) can manage this feature. Currently, object versioning can only be enabled, disabled, and otherwise managed through third party tools like Cyberduck and the AWS CLI.
 
 ## Enable Versioning
 
@@ -62,7 +62,7 @@ Now that versioning is enabled, you can test this feature by uploading an exampl
 
         This is version 1.
 
-1.  Now, upload that file through any tool you wish to use, including the Cloud Manager, Cyberduck, S3cmd, or the AWS CLI.
+1.  Now, upload that file through any tool you wish to use, including Cloud Manager, Cyberduck, S3cmd, or the AWS CLI.
 
 1.  On your local machine, edit that same text file. In our example, we'll edit it to use the following contents:
 

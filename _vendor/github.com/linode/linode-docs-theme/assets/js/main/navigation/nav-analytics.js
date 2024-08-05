@@ -30,7 +30,8 @@ export class AnalyticsEventsCollector {
 		var self = this;
 		this.eventQueue = smartQueue(
 			(items, restOfQueue) => {
-				self.postEvents(items);
+				// Algolia events stopped, see issue #3914.
+				//self.postEvents(items);
 			},
 			{
 				max: 20, // limit
@@ -38,7 +39,7 @@ export class AnalyticsEventsCollector {
 				throttle: true, // Ensure only max is processed at interval
 				onPause: () => {},
 				onEmpty: (queue, type) => {},
-			}
+			},
 		);
 
 		// Algolia analytics.

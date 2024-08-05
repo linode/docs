@@ -50,6 +50,6 @@ It is built with modern technologies (such as Laravel and VueJS) and includes a 
 
 1.  The Akaunting login page appears. The username for this instance is the *Admin Email* and the password is the *Admin Password* that you set when you deployed this One-Click Marketplace App.
 
-Now that you’ve accessed your dashboard, check out [the official Akaunting documentation](https://akaunting.com/docs) to learn how to further utilize your Akaunting instance.
+Now that you’ve accessed your dashboard, check out [the official Akaunting documentation](https://akaunting.com/docs) to learn how to further use your Akaunting instance.
 
 {{% content "marketplace-update-note-shortguide" %}}

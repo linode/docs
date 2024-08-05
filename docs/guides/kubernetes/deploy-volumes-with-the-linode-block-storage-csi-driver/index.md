@@ -14,7 +14,12 @@ external_resources:
 - '[Kubernetes PersistentVolumeClaims Documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)'
 - '[Container Storage Interface (CSI) Spec](https://github.com/container-storage-interface/spec/blob/master/spec.md)'
 aliases: ['/applications/containers/deploy-volumes-with-the-linode-block-storage-csi-driver/','/kubernetes/deploy-volumes-with-the-linode-block-storage-csi-driver/']
+deprecated: true
 ---
+
+{{< note type="warning" noTitle=true >}}
+To learn more about the Container Storage Interface (CSI) Driver for Linode Block Storage and for the most up-to-date installation and usage instructions, review the [linode/linode-blockstorage-csi-driver](https://github.com/linode/linode-blockstorage-csi-driver) GitHub repository.
+{{< /note >}}
 
 ## What is the Linode Block Storage CSI Driver?
 
@@ -28,7 +33,7 @@ This guide assumes you have a working Kubernetes cluster running on Linode. You 
 
     - The [Linode Cloud Manager](/docs/products/compute/kubernetes/).
     - [Linode's API v4](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/).
-    - [Terraform](/docs/products/compute/kubernetes/guides/deploy-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
+    - [Terraform](/docs/guides/deploy-lke-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
 
 1. Deploy an [unmanaged Kubernetes cluster using Terraform](/docs/guides/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/) and the [Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2).
 

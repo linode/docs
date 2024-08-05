@@ -69,6 +69,6 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 
     ![Pritunl Domain Setup](pritunl-config3.png)
 
-Now that you’ve accessed your dashboard, check out [the official Pritunl documentation](https://docs.pritunl.com/docs/connecting) to learn how to add users and further utilize your Pritunl instance.
+Now that you’ve accessed your dashboard, check out [the official Pritunl documentation](https://docs.pritunl.com/docs/connecting) to learn how to add users and further use your Pritunl instance.
 
 {{% content "marketplace-update-note-shortguide" %}}

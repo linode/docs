@@ -53,7 +53,7 @@ PREFIX0=24
 
 ## Configuring IP Addresses Manually
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and review your Compute Instance's IP addresses. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). Make a note of the following pieces of information or keep this page accessible so you can reference it later.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and review your Compute Instance's IP addresses. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). Make a note of the following pieces of information or keep this page accessible so you can reference it later.
 
     - Public IPv4 address(es) and the associated IPv4 gateway
     - Private IPv4 address (if one has been added)

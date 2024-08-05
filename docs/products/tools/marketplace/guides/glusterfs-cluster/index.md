@@ -32,12 +32,12 @@ external_resources:
 
 ### GlusterFS Options
 
-- **[Linode API Token](/docs/products/tools/api/guides/manage-api-tokens/#create-an-api-token):** The provisioner node will use an authenticated API token to create the additional components to the cluster. This is required to fully create the GlusterFS cluster.
+- **[Linode API Token](/docs/products/platform/accounts/guides/manage-api-tokens/#create-an-api-token):** The provisioner node will use an authenticated API token to create the additional components to the cluster. This is required to fully create the GlusterFS cluster.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
-- **List of IP addresses to whitelist:** A list of IP address that will be whitelisted to the GlusterFS cluster. These should be client IPs that will mount GlusterFS. SSL certificates will be created for the provided IP addresses.
+- **List of IP addresses to whitelist:** A list of IP address that will be allowed to access GlusterFS cluster. These should be client IPs that will mount GlusterFS. SSL certificates will be created for the provided IP addresses.
 
 ## Getting Started After Deployment
 
