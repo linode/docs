@@ -6,16 +6,15 @@ keywords: ['owncloud','filesharing','collaboration']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[ownCloud](https://owncloud.com/)'
-authors: ["Holden Morris"]
 ---
 
 ownCloud is a self-hosted file sharing and collaboration platform. It allows users to securely access and share files, calendars, and contacts from any device. With ownCloud, you have complete control over your data and can easily share files with others while maintaining full privacy and security. The app is easy to configure and offers a wide range of features, including file syncing, versioning, access control, and more.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** ownCloud should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -36,9 +35,9 @@ ownCloud is a self-hosted file sharing and collaboration platform. It allows use
 - **The name of the database** (default: "owncloud"): Enter the name you'd like to use for the ownCloud database, if different than the default value.
 - **The name of the database user to create** (default: "owncloud"): Enter the name you'd like to use for user of the ownCloud database, if different than the default value.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -70,6 +69,6 @@ After deployment, follow the instructions below to access your application.
 
     ![ownCloud Files Screen](owncloud-main-screen.png)
 
-Now that you’ve accessed your ownCloud instance, check out [the official ownCloud documentation](https://doc.owncloud.com/server) to learn how to further utilize your ownCloud instance.
+Now that you’ve accessed your ownCloud instance, check out [the official ownCloud documentation](https://doc.owncloud.com/server) to learn how to further use your ownCloud instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

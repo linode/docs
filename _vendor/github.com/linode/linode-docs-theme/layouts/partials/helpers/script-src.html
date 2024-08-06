@@ -16,7 +16,7 @@
     {{ $params = . }}
   {{ end }}
 {{ end }}
-{{ $opts := dict "sourceMap" $sourceMap "minify" (ne hugo.Environment "development") "target" "es2016" "params" $params }}
+{{ $opts := dict "sourceMap" $sourceMap "minify" (ne hugo.Environment "development") "target" "es2017" "params" $params }}
 {{ $js := $js | js.Build $opts }}
 {{- if  (ne hugo.Environment "development") }}
   {{ $js = $js | fingerprint }}

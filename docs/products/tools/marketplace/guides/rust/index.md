@@ -1,27 +1,32 @@
 ---
-description: "This guide provides you with instructions for installing Rust, a multiplayer game where you play as a survivor, on a Linode using the One-Click Marketplace App."
-keywords: ['rust','marketplace', 'server']
-published: 2019-03-25
-modified: 2022-03-08
-modified_by:
-  name: Linode
 title: "Deploy Rust through the Linode Marketplace"
+description: "This guide provides you with instructions for installing Rust, a multiplayer game where you play as a survivor, on a Linode using the One-Click Marketplace App."
+published: 2019-03-25
+modified: 2024-04-29
+keywords: ['rust','marketplace', 'server']
 external_resources:
 - '[Rust Dedicated Server Wiki](https://developer.valvesoftware.com/wiki/Rust_Dedicated_Server)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-rust-with-marketplace-apps/', '/platform/one-click/deploying-rust-with-one-click-apps/','/guides/deploying-rust-with-one-click-apps/', '/guides/deploying-rust-with-marketplace-apps/','/guides/rust-marketplace-app/']
-authors: ["Linode"]
+_build:
+  list: false
+noindex: true
+deprecated: true
 ---
+
+{{< note type="warning" title="This app is no longer available for deployment" >}}
+Rust has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only.
+{{< /note >}}
 
 [Rust](https://rust.facepunch.com/) is a multiplayer game where you play as a survivor that must work with or against other players to ensure your own survival. Players are able to steal, lie, cheat, or trick each other. You can build a shelter, hunt animals for food, craft weapons, craft armor, and much more.
 
-Hosting your own Rust server allows you to customize settings and curate the number of players in the world.
+Hosting your own Rust server lets you customize settings and curate the number of players in the world.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Rust should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
@@ -34,7 +39,7 @@ Hosting your own Rust server allows you to customize settings and curate the num
 
 ### Rust Options
 
-- **RCON Password** *(required)*: The password for your remote console, which allows you to issue commands on the Rust server
+- **RCON Password** *(required)*: The password for your remote console, which lets you issue commands on the Rust server
 - **Server Hostname:** The name of your Rust server.
 - **Server Description:** Your server's description. Use `\n` to create a new line.
 - **Maximum Players:** The maximum number of players allowed on a server at one time. Default is 50, minimum is 10, maximum is 100.
@@ -44,7 +49,7 @@ Hosting your own Rust server allows you to customize settings and curate the num
 - **Global Chat Enabled:** Enables global chat. Chat messages will be broadcast to all players.
 - **PvE Enabled:** Allow player vs. environment combat.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -66,7 +71,7 @@ After the Rust Marketplace App has finished deploying to your Linode, you will b
 
     <!--![Rust developer's console log in process.](rust-marketplace-developers-console.png)-->
 
-    You will be logged into the server, and the game will load.
+    You will be logged in to the server, and the game will load.
 
 ## Software Included
 
@@ -79,4 +84,4 @@ The Rust Marketplace App will install the following required software on your Li
 | [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Ports 28015 and 28016 will allow outgoing and incoming traffic. |
 | [**Fail2ban**](https://www.fail2ban.org/wiki/index.php/Main_Page) | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

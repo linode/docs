@@ -1,19 +1,18 @@
 ---
 slug: create-restic-repository-shortguide
+title: "Install Restic backup"
 description: 'A shortguide that shows how to install Restic backup.'
+authors: ["Andy Heathershaw"]
+contributors: ["Andy Heathershaw"]
+published: 2020-07-24
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-07-24
-modified_by:
-  name: Andy Heathershaw
-title: "Install Restic backup"
 headless: true
 show_on_rss_feed: false
-authors: ["Andy Heathershaw"]
 ---
 
 {{< note >}}
-[Create an Object Storage access key pair](/docs/platform/object-storage/how-to-use-object-storage/#generate-a-key-pair) if you have not done so already. Should you choose to restrict the access key's permissions, it will require "Read/Write" permission to the bucket you will use to store your Restic repository.
+[Create an Object Storage access key pair](/docs/products/storage/object-storage/guides/access-keys/) if you have not done so already. Should you choose to restrict the access key's permissions, it will require "Read/Write" permission to the bucket you will use to store your Restic repository.
 {{< /note >}}
 
 1. Configure Restic to use your Object Storage access key pair and to use the bucket you created in the [Before You Begin](#before-you-begin) section of this guide. Replace `your-key`, `your-secret`, and `us-east-1.linodeobjects.com/your-bucket-name` with your own values.
@@ -52,7 +51,7 @@ Store this password securely and somewhere other than your Linode. Your backups 
 
 Your access key, secret key, and password are required every time Restic communicates with your repository. To make it easier to work with your repository, create a shell script containing your credentials.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The examples in this section use the Nano text editor. Refer to the [Nano Text Editor Commands](/docs/guides/use-nano-text-editor-commands/) guide if you're not familiar with Nano.
 {{< /note >}}
 

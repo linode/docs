@@ -2,6 +2,8 @@
 title: Linode Kubernetes Engine
 title_meta: "Linode Kubernetes Engine (LKE) Product Documentation"
 description: "Linode Kubernetes Engine is a managed Kubernetes service that offers automatic backup and recovery and third party integration with popular k8s-related tools."
+published: 2020-06-02
+modified: 2024-07-05
 linkTitle: Kubernetes
 tab_group_main:
     is_root: true
@@ -9,8 +11,6 @@ tab_group_main:
     weight: 10
 cascade:
     product_description: "A managed Kubernetes service that enables you to easily control and scale your application's infrastructure."
-published: 2020-06-02
-modified: 2023-02-09
 ---
 
 The Linode Kubernetes Engine (LKE) is a managed container orchestration engine built on top of Kubernetes. LKE enables you to quickly deploy and manage your containerized applications without needing to build (and maintain) your own Kubernetes cluster. All LKE instances are equipped with a fully-managed control plane at no additional cost. Only pay for the worker nodes that run your application and any optional [NodeBalancers](/docs/products/networking/nodebalancers/) (load balancers) and [Block Storage volumes](/docs/products/storage/block-storage/) that your application uses.
@@ -28,16 +28,12 @@ The Linode Kubernetes Engine is available across [all regions](https://www.linod
 
 ## Pricing
 
-The basic control plane infrastructure on LKE clusters is provided at no additional cost. An upgrade to a [high availability control plane](/docs/products/compute/kubernetes/guides/high-availability-control-plane/) is priced at $60/month per cluster. All other resources consumed by the cluster are billed at the normal rate, including Compute Instances, NodeBalancers, and Block Storage volumes. Review the [Pricing](https://www.linode.com/pricing/) page for more information on those costs.
+The basic control plane infrastructure on LKE clusters is provided at no additional cost. An upgrade to a [high availability control plane](/docs/products/compute/kubernetes/guides/high-availability-control-plane/) is priced starting at $60/month per cluster, depending on region. All other resources consumed by the cluster are billed at the normal rate, including Compute Instances, NodeBalancers, and Block Storage volumes. Review the [Pricing](https://www.linode.com/pricing/) page for more information on those costs.
 
 ## Technical Specifications
 
 - Equipped with a fully-managed control plane at no cost. While the control plane is fully-managed, the user is responsible for managing their deployment configuration and applications.
-- Compute Instance plans supported: Dedicated CPU, Shared CPU, High Memory
-- Nodes per node pool: 1-100 nodes
-- Memory per node: 4GB - 512GB
-- SSD Storage per node: 50GB - 7200GB
-- Transfer per node: 4-20TB
+- Compute Instance plans supported: Dedicated CPU, Shared CPU, High Memory, and Premium CPU (excluding the 512 GB size for both Dedicated CPU and Premium CPU). See the [Pricing](https://www.linode.com/pricing/) page for the compute resources included in each plan.
 - 40 Gbps inbound network bandwidth
 - Free inbound network transfer
-- Provisioning and management through the [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
+- Provisioning and management through [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)

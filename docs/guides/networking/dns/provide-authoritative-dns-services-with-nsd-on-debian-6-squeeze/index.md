@@ -1,22 +1,20 @@
 ---
 slug: provide-authoritative-dns-services-with-nsd-on-debian-6-squeeze
-deprecated: true
+title: 'Authoritative DNS Services with NSD on Debian 6'
 description: 'This guide will show you to install and configure NSD, a lightweight and open-source name server to handle authoritative DNS queries on Debian 6 "Squeeze".'
+authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
+published: 2011-06-08
 keywords: ["NSD", "DNS", "resolving", "Debian", "networking"]
 tags: ["dns","networking","resolving","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/provide-authoritative-dns-services-with-nsd-on-debian-6-squeeze/','/dns-guides/nsd-authoritative-dns-debian-6-squeeze/']
-modified: 2011-06-08
-modified_by:
-  name: Linode
-published: 2011-06-08
-title: 'Authoritative DNS Services with NSD on Debian 6'
 relations:
     platform:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Debian 6
-authors: ["Brett Kaplan"]
+deprecated: true
 ---
 
 NSD is a lightweight yet full-featured open source name server daemon created to provide an alternative to BIND.
@@ -25,7 +23,7 @@ Before beginning, you should be familiar with basic [DNS terminology and records
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

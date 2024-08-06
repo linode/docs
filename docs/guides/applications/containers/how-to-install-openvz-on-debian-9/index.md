@@ -1,22 +1,21 @@
 ---
 slug: how-to-install-openvz-on-debian-9
+title: 'How to Install OpenVZ On Debian 9'
 description: 'This guide will show you how to install OpenVZ on your Linode and deploy a virtual environment.'
 og_description: 'OpenVZ, a software-based OS virtualization tool that enables deployment, management, and modification of isolated, virtual Linux environments from within a host Linux distribution, can be installed and run on a Linode, using this guide.'
+authors: ["Andrew Lescher"]
+contributors: ["Andrew Lescher"]
+published: 2017-09-22
+modified: 2017-09-25
 keywords: ["openvz", " virtualization", " docker"]
 tags: ["container","docker","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-09-22
-modified: 2017-09-25
-modified_by:
-  name: Linode
-title: 'How to Install OpenVZ On Debian 9'
 external_resources:
   - '[Basic OpenVZ Operations](https://openvz.org/Basic_operations_in_OpenVZ_environment)'
   - '[OpenVZ User Contributed Templates](https://openvz.org/Download/template/precreated)'
 aliases: ['/applications/containers/how-to-install-openvz-on-debian-9/']
-authors: ["Andrew Lescher"]
+deprecated: true
 ---
-
 
 ## What is OpenVZ?
 
@@ -260,7 +259,7 @@ submenu 'Advanced options for Debian GNU/Linux' $menuentry_id_option 'gnulinux-a
 
 6. By default, kernel loading is not handled by Grub, but by the Linode Manager. Login to your Linode Manager and select your Linode. Click on your configuration profile. Under the "Boot Settings" section, select "GRUB 2" from the Kernel dropdown-list (see image below). Save your changes and exit.
 
-     ![Linode Manager - Select Kernel](openvz_one.png)
+     ![Linode Manager - Select Kernel](openvz-one.png)
 
 7. Reboot your server and issue the command below to verify the OpenVZ kernel was loaded:
 

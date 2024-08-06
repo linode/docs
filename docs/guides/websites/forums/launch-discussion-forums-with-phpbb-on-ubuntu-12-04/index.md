@@ -1,16 +1,14 @@
 ---
 slug: launch-discussion-forums-with-phpbb-on-ubuntu-12-04
-deprecated: true
+title: 'Launch Discussion Forums with phpBB on Ubuntu 12.04 (Precise Pangolin)'
 description: 'Configure the PhpBB System for Hosting Web-based Discussion Forums on Ubuntu 12.04 (Precise Pangolin).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-11-08
 keywords: ["phpBB", "forum software", "web applications", "PHP", "Ubuntu 12.04", "precise pangolin"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/forums/launch-discussion-forums-with-phpbb-on-ubuntu-12-04/','/websites/forums/discussion-forums-with-phpbb-on-ubuntu-12-04-precise-pangolin/','/web-applications/bulletin-boards/phpbb/ubuntu-12-04-precise-pangolin/']
-modified: 2012-11-08
-modified_by:
-  name: Linode
-published: 2012-11-08
-title: 'Launch Discussion Forums with phpBB on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:
  - '[phpBB Styles Database](http://www.phpbb.com/styles)'
  - '[Styles Forum](http://www.phpbb.com/community/viewforum.php?f=80)'
@@ -21,7 +19,7 @@ relations:
         key: how-to-install-phpbb
         keywords:
            - distribution: Ubuntu 12.04
-authors: ["Linode"]
+deprecated: true
 ---
 
 phpBB is one of the most widely used open source forum solutions. It is easy to install and free to use, along with being fully customizable. If you don't want to spend money on other forum software like vBulletin, consider using phpBB.
@@ -98,7 +96,7 @@ Before you can install phpBB, you need to make sure that it has access to write 
 
     chmod 0777 /srv/www/example.com/public_html/forum/config.php
 
-Click the "Install" tab in the top left region of the page. You should be looking at a requirements page. If you followed the [LAMP guide](/docs/guides/lamp-server-on-ubuntu-12-04-precise-pangolin/), your server will meet the requirements specified by the phpBB installation process. Click "Proceed to next step." The next page is simply a confirmation that your server meets the minimum installation requirements. Click "Start Install."
+Click the "Install" tab in the top left region of the page. You should be looking at a requirements page. If you followed the [LAMP guide](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/), your server will meet the requirements specified by the phpBB installation process. Click "Proceed to next step." The next page is simply a confirmation that your server meets the minimum installation requirements. Click "Start Install."
 
 You will need to fill in your database information. Assuming you installed MySQL while following the LAMP guide, here you would fill in your `database name`, `database username`, and `database password`. The other fields can be left blank for the defaults. If you are unsure of what to put here, head over to the [MySQL database guides](/docs/databases/mysql/) to become familiar with MySQL and to create the database and username. Click "Proceed to next step."
 

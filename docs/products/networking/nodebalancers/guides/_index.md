@@ -2,9 +2,9 @@
 title: Guides
 title_meta: "Guides and Tutorials for NodeBalancers"
 description: "A collection of guides on using NodeBalancers to load balance applications hosted on the Linode platform."
+modified: 2022-10-07
 tab_group_main:
     weight: 30
-modified: 2022-10-07
 ---
 
 ## Basics
@@ -19,13 +19,13 @@ modified: 2022-10-07
 
 - [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/): Edit the port configurations on a NodeBalancer.
 
-- [Backend Nodes (Compute Instances)](/docs/products/networking/nodebalancers/guides/backends/): Manage the settings for backend nodes.
+- [Back-end Nodes (Compute Instances)](/docs/products/networking/nodebalancers/guides/backends/): Manage the settings for back-end nodes.
 
 - [Available Protocols](/docs/products/networking/nodebalancers/guides/protocols/): A list of protocols supported by NodeBalancers
 
 - [TLS/SSL Termination](/docs/products/networking/nodebalancers/guides/ssl-termination/): Instructions on configuring TLS/SSL certificates on a NodeBalancer.
 
-- [Client IP Address Pass-through](/docs/products/networking/nodebalancers/guides/client-ip/): Learn the methods of retaining client connection details and passing them to backend nodes on a NodeBalancer.
+- [Client IP Address Pass-through](/docs/products/networking/nodebalancers/guides/client-ip/): Learn the methods of retaining client connection details and passing them to back-end nodes on a NodeBalancer.
 
 - [Proxy Protocol](/docs/products/networking/nodebalancers/guides/proxy-protocol/): Obtain information about a client when using the TCP protocol.
 
@@ -36,6 +36,8 @@ modified: 2022-10-07
 - [Host a Website with High Availability](/docs/guides/host-a-website-with-high-availability/): A walk-through on deploying a high availability web application using Gluster (file replication), Galera (MySQL database replication), and a NodeBalancer.
 
 ## Automated Deployment Tutorials
+
+- [Configure NodeBalancers with the Linode API](/docs/products/networking/nodebalancers/guides/manage-nodebalancers-with-linode-api/)
 
 - [Deploy NodeBalancers with the Linode Cloud Controller Manager](/docs/products/compute/kubernetes/guides/load-balancing/)
 

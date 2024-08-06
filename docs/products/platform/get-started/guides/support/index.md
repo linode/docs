@@ -2,12 +2,10 @@
 title: "Help & Support"
 description: "Information about Linode support, including the scope of support and how to get help."
 published: 2023-03-14
-modified_by:
-  name: Linode
+modified: 2024-03-11
 keywords: ["support", "tech support", "tickets", "help desk"]
 tags: ["linode platform"]
 aliases: ['/platform/billing-and-support/support/','/support/','/platform/support/','/platform/billing-and-support/support-classic-manager/','/platform/billing-and-support/support-new-manager/','/guides/support/']
-authors: ["Linode"]
 ---
 
 Linode provides a variety of support options so that you get the answers you need, in the timeframe you need them, and in the way that works best for you -- all at no cost. Linode users have access to all of our support resources, including our extensive documentation library, our community questions site, and our award-winning Customer Support team - offering *self-service* and *live support* whenever you need it. This guide aims to point you in the right direction for whichever issue you may need assistance resolving.
@@ -46,7 +44,7 @@ Whenever you need assistance with software that's installed on your Compute Inst
 
 ### Infrastructure Deployment and Configuration.
 
-For guidance on your architecture, migrations, and software deployments, consider working with our Professional Services team. To get started, [contact us](https://www.linode.com/products/pro-services/#speakwithus) or [request a free quote](https://proservices.typeform.com/to/xJiIEy).
+For guidance on your architecture, migrations, and software deployments, consider working with our Professional Services team. You can reach out to that team through the [Contact Sales](https://www.linode.com/company/contact/) form.
 
 If you're looking for a partner to help guide your transition to the Cloud or help build your platform, our [Partner Directory](https://partner-directory.linode.com/s/) offers a list of trusted partners.
 
@@ -99,13 +97,13 @@ Live support from our dedicated Customer Support Team is available 24 hours a da
 When contacting the Customer Support Team through a support ticket, you are automatically authenticated to your user account. If you instead send an inquiry through an email or call the dedicated support line, you will need to authenticate to an account before the support representative is able to disclose any account-specific information.
 {{< /note >}}
 
-- **Support ticket:** Support tickets are the primary method for contacting the Customer Support Team. Tickets can be created, viewed, and managed through the Cloud Manager, though you can also use the [Linode CLI](/docs/products/tools/cli/guides/support-tickets/) and [Linode API](/docs/api/support/) if preferred. For help creating a ticket, see the [Create and Manage Support Tickets](#create-and-manage-support-tickets) section below.
+- **Support ticket:** Support tickets are the primary method for contacting the Customer Support Team. Tickets can be created, viewed, and managed through Cloud Manager, though you can also use the [Linode CLI](/docs/products/tools/cli/guides/support-tickets/) and [Linode API](/docs/api/support/) if preferred. For help creating a ticket, see the [Create and Manage Support Tickets](#create-and-manage-support-tickets) section below.
 
 - **Phone call:** The dedicated support phone line can provide real-time support to English language speakers. If your inquiry concerns a specific account, please be prepared to authenticate to that account through a support ticket, a one-time passcode (sent to the account's phone number or email address), or alternative means. If your call is diverted to voicemail, please leave a detailed message explaining your problem. Your call will be returned as quickly as possible.
     - +1 (609) 380-7100
     - +1 (855) 454-6633 (North America toll-free)
 
-- **E-mail:** Whenever possible, it is recommended to create a support ticket. However, general questions that are *not account-specific* can be sent to *support@linode.com*. If your inquiry is account-specific and you are not able to log in to the Cloud Manager, fill out the [can't log in form](https://www.linode.com/support/contact/).
+- **E-mail:** Whenever possible, it is recommended to create a support ticket. However, general questions that are *not account-specific* can be sent to *support@linode.com*. If your inquiry is account-specific and you are not able to log in to Cloud Manager, fill out the [can't log in form](https://www.linode.com/support/contact/).
 
 To help us give you the best possible answer when contacting the Support Team, consider the following advice.
 
@@ -114,13 +112,13 @@ To help us give you the best possible answer when contacting the Support Team, c
 
 ## Create and Manage Support Tickets
 
-All Tickets can be created, viewed, and managed on the [Support Tickets](https://cloud.linode.com/support/tickets) page in the Cloud Manager.
+All Tickets can be created, viewed, and managed on the [Support Tickets](https://cloud.linode.com/support/tickets) page in Cloud Manager.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and select **Help & Support** from the sidebar menu.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and select **Help & Support** from the sidebar menu.
 
 1. Under the **Other Ways to Get Help** section, select **Customer Support**.
 
-![Screenshot of the Support Tickets page in the Cloud Manager](support-tickets.png)
+![Screenshot of the Support Tickets page in Cloud Manager](support-tickets.png)
 
 This screen lists all open tickets by default. For a list of past tickets, navigate to the **Closed Tickets** tab. Click on a specific ticket to open that ticket, view the history, and to reply.
 

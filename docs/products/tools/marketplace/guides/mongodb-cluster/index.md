@@ -3,15 +3,12 @@ title: "Deploy a MongoDB Cluster through the Linode Marketplace"
 description: "This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the Linode Marketplace."
 published: 2023-03-20
 expiryDate: 2023-05-01
-modified_by:
-  name: Linode
 keywords: ['mongodb','marketplace', 'database']
 tags: ["linode platform","database","marketplace","cloud-manager"]
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
  - '[Language-Specific MongoDB Drivers](https://docs.mongodb.com/ecosystem/drivers/)'
-authors: ["Linode"]
 ---
 
 [MongoDB](https://www.mongodb.com/) is a database engine that provides access to non-relational, document-oriented databases. It is part of the growing [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement, along with databases like Redis and Cassandra (although there are vast differences among the many non-relational databases).
@@ -24,9 +21,9 @@ This Marketplace App deploys 3 Compute Instances to create a highly available an
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-app-cluster-shortguide">}}
+{{% content "deploy-marketplace-app-cluster-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** The MongoDB cluster should be fully deployed and configured within 5-10 minutes after the first Compute Instance has finished provisioning.
@@ -39,9 +36,9 @@ This Marketplace App deploys 3 Compute Instances to create a highly available an
 
 ### MongoDB Options
 
-- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/) to create one.
+- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) to create one.
 
-- **Limited sudo user** *(required)*: A limited user account with sudo access is created as part of this cluster deployment. Enter your preferred username for this limited user. Please note that the password is automatically created. See [Obtaining Usernames and Passwords](#obtaining-usernames-and-passwords).
+- **Limited sudo user** *(required)*: A limited user account with sudo access is created as part of this cluster deployment. Enter your preferred username for this limited user. The password is automatically created. See [Obtaining Usernames and Passwords](#obtaining-usernames-and-passwords).
 
 - **Domain** *(required)*: The domain name you wish to use, such as *example.com*. This domain name is only used as part of the system's hostname and when creating the TLS/SSL certificate. No domain records are created within Linode's [DNS Manager](/docs/products/networking/dns-manager/).
 
@@ -61,7 +58,7 @@ The following fields (in addition to the domain field above) are used when creat
 - **CA Common name:** This is the common name for the self-signed Certificate Authority.
 - **Common name:** This is the common name that is used for the domain.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -141,11 +138,11 @@ For more information on access control and user management, as well as other tip
 
 ### Manage Data and Collections
 
-{{< content "mongodb-example-shortguide" >}}
+{{% content "mongodb-example-shortguide" %}}
 
 ## Next Steps
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 For more on MongoDB, checkout the following guides:
 

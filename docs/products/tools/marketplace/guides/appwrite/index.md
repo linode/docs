@@ -1,21 +1,18 @@
 ---
 title: "Deploy Appwrite through the Linode Marketplace"
 description: "Deploy Appwrite, an open-source Firebase alternative for Web, Mobile & Flutter Developers, on a Linode Compute Instance."
+published: 2023-06-26
 keywords: ['Appwrite','Firebase','backend', 'low-code']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2023-06-26
-modified_by:
-  name: Linode
-authors: ["Linode"]
 ---
 
-[Appwrite](https://appwrite.io/) is an open-source, self-hosted backend server that provides developers with a set of tools and services to build and manage web and mobile applications. It offers various features to simplify the development process, including user authentication, database management, file storage, and more.
+[Appwrite](https://appwrite.io/) is an open-source, self-hosted back-end server that provides developers with a set of tools and services to build and manage web and mobile applications. It offers various features to simplify the development process, including user authentication, database management, file storage, and more.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Appwrite should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -36,7 +33,7 @@ authors: ["Linode"]
 
     ![Screenshot of the Appwrite login page](appwrite-signin.png)
 
-1.  The sign up page should open, which allows you to create a new user on this Appwrite deployment. Enter your name, your email address, and a secure password. Then, click the **Sign up** button.
+1.  The sign up page should open, which lets you create a new user on this Appwrite deployment. Enter your name, your email address, and a secure password. Then, click the **Sign up** button.
 
     ![Screenshot of the Appwrite sign up page](appwrite-signup.png)
 
@@ -48,6 +45,6 @@ authors: ["Linode"]
 
     ![Screenshot of the Appwrite project screen](appwrite-project.png)
 
-Now that you’ve accessed your Appwrite instance, check out [the official Appwrite documentation](https://appwrite.io/docs) to learn how to further utilize your instance.
+Now that you’ve accessed your Appwrite instance, check out [the official Appwrite documentation](https://appwrite.io/docs) to learn how to further use your instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

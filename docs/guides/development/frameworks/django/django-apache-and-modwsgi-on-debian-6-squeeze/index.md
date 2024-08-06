@@ -1,22 +1,21 @@
 ---
 slug: django-apache-and-modwsgi-on-debian-6-squeeze
-deprecated: true
+title: 'Django, Apache and mod_wsgi on Debian 6 (Squeeze)'
 description: 'Installing and configuring the Django web application development framework for Apache on Debian 6.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-02-17
+modified: 2011-05-13
 keywords: ["django", "python", "apache", "mod\\_wsgi"]
 tags: ["web applications","debian","django","apache","python","cms","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/django/django-apache-and-modwsgi-on-debian-6-squeeze/','/development/frameworks/django-apache-and-modwsgi-on-debian-6-squeeze/','/frameworks/django-apache-mod-wsgi/debian-6-squeeze/']
-modified: 2011-05-13
-modified_by:
-  name: Linode
-published: 2011-02-17
-title: 'Django, Apache and mod_wsgi on Debian 6 (Squeeze)'
 relations:
     platform:
         key: django-apache-modwsgi
         keywords:
             - distribution: Debian 6
-authors: ["Linode"]
+deprecated: true
 ---
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.
@@ -25,7 +24,7 @@ This guide provides an introduction to getting started with the Django framework
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

@@ -1,18 +1,17 @@
 ---
 slug: how-to-deploy-secure-linodes-using-cloud-firewalls-and-terraform
+title: "Deploy Secure Linodes using Cloud Firewalls and Terraform"
 description: 'This guide will show you how to use the Terraform application to deploy Linode instances with pre-configured Cloud Firewalls assigned to them.'
-keywords: ['terraform','infrastructure','firewalls','orchestration']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Leslie Salazar"]
+contributors: ["Leslie Salazar"]
 published: 2020-07-29
 modified: 2022-11-29
-modified_by:
-  name: Linode
-title: "Deploy Secure Linodes using Cloud Firewalls and Terraform"
+keywords: ['terraform','infrastructure','firewalls','orchestration']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: feature.png
 external_resources:
 - '[Terraform Linode Provider Official Documentation](https://registry.terraform.io/providers/linode/linode/latest/docs)'
 aliases: ['/applications/configuration-management/terraform/how-to-deploy-secure-linodes-using-cloud-firewalls-and-terraform/']
-authors: ["Leslie Salazar"]
 tags: ["saas"]
 ---
 
@@ -26,7 +25,7 @@ In this guide, you will create a Linode Firewalls module which declares commonly
 
 1. See [Create a Terraform Module](/docs/guides/create-terraform-module/) for a deeper dive into Terraform's standard module structure and other helpful details.
 
-1. You need a Linode API personal access token to use with Terraform. This token will allow you to create, update, and destroy Linode resources. See the [Manage Personal Access Tokens](/docs/products/tools/api/guides/manage-api-tokens/) guide for steps to create a token.
+1. You need a Linode API personal access token to use with Terraform. This token will allow you to create, update, and destroy Linode resources. See the [Manage Personal Access Tokens](/docs/products/platform/accounts/guides/manage-api-tokens/) guide for steps to create a token.
 
     {{< note respectIndent=false >}}
     When you create a personal access token ensure that you set **Read/Write** access permissions for Linode instances and Cloud Firewalls.

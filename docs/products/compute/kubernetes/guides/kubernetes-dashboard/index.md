@@ -1,18 +1,15 @@
 ---
-description: "The Kubernetes Dashboard on LKE provides secure insight into the inner workings of kubernetes clusters in a seamless UI."
-keywords: ['kubernetes','cluster','analytics','dashboard','troubleshoot']
-tags: ["monitoring","kubernetes","web application"]
-published: 2022-03-17
-modified: 2023-02-09
-modified_by:
-  name: Linode
 title: "Manage an LKE Cluster Using the Kubernetes Dashboard"
 title_meta: "An Overview of the Kubernetes Dashboard on LKE"
+description: "The Kubernetes Dashboard on LKE provides secure insight into the inner workings of kubernetes clusters in a seamless UI."
+published: 2022-03-17
+modified: 2023-02-09
+keywords: ['kubernetes','cluster','analytics','dashboard','troubleshoot']
+tags: ["monitoring","kubernetes","web application"]
 external_resources:
 - '[Kubernetes Docs](https://kubernetes.io/docs/home/)'
 - '[Kubernetes Dashboard GitHub](https://github.com/kubernetes/dashboard)'
 aliases: ['/guides/using-the-kubernetes-dashboard-on-lke/','/products/compute/kubernetes/guides/access-kubernetes-dashboard/']
-authors: ["Linode"]
 ---
 
 The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is an industry standard open-source web-based user interface designed to be a visual hub for interacting with a Kubernetes cluster, allowing for a more intuitive interface for observing cluster objects, components, containers, applications, and more.
@@ -20,13 +17,13 @@ While providing an easy way to monitor a Kubernetes cluster and perform health c
 
 The Linode Kubernetes Engine currently installs the Kubernetes Dashboard by default, and can be accessed through the [Kubernetes Dashboard Link](#accessing-the-cluster-dashboard) found for each cluster in the Linode Cloud Manager.
 
-This guide will be a step-by-step introduction to accessing the Kubernetes Dashboard on LKE through the unique link found in the Cloud Manager or the Linode API. Additionally information will provide basic insight into navigating the Kubernetes Dashboard, as well as provide an example for creating and editing resources directly through the dashboard.
+This guide will be a step-by-step introduction to accessing the Kubernetes Dashboard on LKE through the unique link found in Cloud Manager or the Linode API. Additionally information will provide basic insight into navigating the Kubernetes Dashboard, as well as provide an example for creating and editing resources directly through the dashboard.
 
 ## Accessing the Cluster Dashboard
 
-The Cluster Dashboard can be found at the top of the Cluster's [details page](/docs/products/compute/kubernetes/guides/manage-clusters/). The steps for reaching the dashboard from the Cloud Manager are as follows:
+The Cluster Dashboard can be found at the top of the Cluster's [details page](/docs/products/compute/kubernetes/guides/manage-clusters/). The steps for reaching the dashboard from Cloud Manager's are as follows:
 
-1. Click the Kubernetes link in the Cloud Manager sidebar menu. The Kubernetes listing page appears and you see all of your clusters listed.
+1. Click the Kubernetes link in Cloud Manager's sidebar menu. The Kubernetes listing page appears and you see all of your clusters listed.
 
 1. Select the cluster that you would like to reach the Kubernetes Dashboard for. The Kubernetes cluster’s details page appears.
 
@@ -46,7 +43,7 @@ The Cluster Dashboard can be found at the top of the Cluster's [details page](/d
 
 ## Navigating the Cluster Dashboard
 
-Once logged into the Cluster dashboard, **Workloads** for the `default` namespace will appear. This page will include information on all [Workloads](https://kubernetes.io/docs/concepts/workloads/) as defined by Kubernetes, and provide a number of options to navigate the dashboard further.
+Once logged in to the Cluster dashboard, **Workloads** for the `default` namespace will appear. This page will include information on all [Workloads](https://kubernetes.io/docs/concepts/workloads/) as defined by Kubernetes, and provide a number of options to navigate the dashboard further.
 
 ![Dashboard Home](dashboard-home.png)
 

@@ -1,21 +1,20 @@
 ---
 title: Create and Edit Service Monitors for Managed Services
-linkTitle: Manage Service Monitors
 description: "Learn how to view, edit, and remove Service Monitors, which are used to monitor services on Compute Instances."
-aliases: ['/products/services/managed/guides/add-services/','/products/services/managed/guides/disable-a-service-monitor/','/products/services/managed/guides/reenable-a-service-monitor/','/products/services/managed/guides/remove-services/']
 published: 2023-04-11
-authors: ["Linode"]
+linkTitle: Manage Service Monitors
+aliases: ['/products/services/managed/guides/add-services/','/products/services/managed/guides/disable-a-service-monitor/','/products/services/managed/guides/reenable-a-service-monitor/','/products/services/managed/guides/remove-services/']
 ---
 
 Managed Services monitors the *services* running on your Compute Instances. Setting up services is an essential step in the configuration process.
 
 ## View Service Monitors
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Managed** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and click the **Managed** link in the sidebar.
 
 1. Navigate to the **Monitors** tab. A list of all your current monitors is displayed. From here, you can add new monitors or edit existing ones.
 
-    ![Screenshot of the Monitors tab under Managed Services in the Cloud Manager](managed-monitors-list.png)
+    ![Screenshot of the Monitors tab under Managed Services in Cloud Manager](managed-monitors-list.png)
 
     Each monitor is listed along side its status and the resource it is checking.
 
@@ -41,7 +40,7 @@ Each monitor can be configured with the following settings, which are available 
 
 ## Add a Service Monitor
 
-1. Navigate to the **Monitors** tab for Managed Services in the Cloud Manager. See [View Service Monitors](#view-service-monitors).
+1. Navigate to the **Monitors** tab for Managed Services in Cloud Manager. See [View Service Monitors](#view-service-monitors).
 
 1. Click the **Add Monitor** button.
 
@@ -51,7 +50,7 @@ Each monitor can be configured with the following settings, which are available 
 
 ## Edit a Service Monitor
 
-1. Navigate to the **Monitors** tab for Managed Services in the Cloud Manager. See [View Service Monitors](#view-service-monitors).
+1. Navigate to the **Monitors** tab for Managed Services in Cloud Manager. See [View Service Monitors](#view-service-monitors).
 
 1. Locate the service monitor you wish to modify and click the corresponding **Edit** button.
 
@@ -61,7 +60,7 @@ Each monitor can be configured with the following settings, which are available 
 
 When a service monitor is created, it is automatically enabled. However, you may need to temporarily disable the monitor. For instance, when you are performing maintenance on the monitored resource or on the entire Compute Instance, you likely do not want the service monitor performing checks as it will alert your team (and the Support team) when the check fails. In this event, follow the instructions below to disable the monitor and then re-enable it once the maintenance is complete.
 
-1. Navigate to the **Monitors** tab for Managed Services in the Cloud Manager. See [View Service Monitors](#view-service-monitors).
+1. Navigate to the **Monitors** tab for Managed Services in Cloud Manager. See [View Service Monitors](#view-service-monitors).
 
 1. Locate the service monitor you wish to modify and click the corresponding **Enable** or **Disable** button. This button may be within the expandable **more options ellipsis menu**.
 
@@ -71,7 +70,7 @@ When a service monitor is created, it is automatically enabled. However, you may
 
 If you decide to remove or stop using a monitored service on your Compute Instance, you should also remove the service monitor from your account. If you do not, you will continue to receive notifications when the service fails to contact the specified resource.
 
-1. Navigate to the **Monitors** tab for Managed Services in the Cloud Manager. See [View Service Monitors](#view-service-monitors).
+1. Navigate to the **Monitors** tab for Managed Services in Cloud Manager. See [View Service Monitors](#view-service-monitors).
 
 1. Locate the service monitor you wish to modify and click the corresponding **Delete** button. This button may be within the expandable **more options ellipsis menu**.
 

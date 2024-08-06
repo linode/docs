@@ -1,16 +1,15 @@
 ---
 slug: intro-bash-shell-scripting
+title: 'Introduction to Bash Shell Scripting'
 description: 'An introduction to bash shell scripting, including variables, if statements, loops, how to get user input, and working with files and directories.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-09-27
 keywords: ["UNIX", "shell", "bash", "programming", "script"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/bash/bash1/','/development/bash/intro-bash-shell-scripting/']
-published: 2019-09-27
-modified_by:
-  name: Linode
-title: 'Introduction to Bash Shell Scripting'
 external_resources:
   - '[GNU Bash](https://www.gnu.org/software/bash/)'
-authors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction
@@ -31,8 +30,7 @@ Among other things, you will learn about:
 - [`case` statements](#the-case-statement)
 - [How to combine commands](#combining-commands-in-bash-scripts)
 - [How to work with files and directories](#working-with-files-and-directories)
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -79,8 +77,7 @@ After that the file permissions of `hello_world.sh` will be similar to the follo
 {{< output >}}
 -rwxr-xr-x 1 mtsouk  staff  32 Aug  1 20:09 hello_world.sh
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You will need to give all bash scripts of this guide the execute file permission
 in order to be able to execute them as regular UNIX commands. For more information on file permissions, see our [Linux Users and Groups Guide](/docs/guides/linux-users-and-groups/).
 {{< /note >}}
@@ -99,7 +96,7 @@ in the `PATH`. The `PATH` *environment variable* contains a list of directories 
 bash will search through for executable commands. You can execute `echo $PATH` to find
 its current value.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The `#` character is used for adding single line comments in bash scripts. The bash shell
 also supports multi line comments, but they are not used as often, so it would be
 better to use multiple single line comments when you want to write bigger comment blocks.
@@ -279,8 +276,7 @@ do
 done
 echo
 {{< /file >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 
 The bash scripting language offers support for the `break` statement for exiting a loop, and the `continue` statement
 for skipping the current iteration.
@@ -304,8 +300,7 @@ List
 0 1 2 3 4 5
 0 1 2 3 4 5
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `./case.sh` and `./cla.sh` scripts will be created in later sections of this guide.
 {{< /note >}}
 
@@ -358,8 +353,7 @@ PATH: /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/opt/X11/bin:/tmp
 PATH is empty!
 MYPATH: /bin:/sbin:/usr/bin
 {{< /output >}}
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Notice that all changes to environment variables that take place inside a bash
 script will be lost when that bash script ends because they have a local scope.
 {{< /note >}}

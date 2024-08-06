@@ -1,17 +1,14 @@
 ---
+title: "Outgoing DNS Zone Transfers"
 description: "How to transfer domain zones using the Linode DNS Manager."
 published: 2020-07-21
 modified: 2022-11-08
-modified_by:
-  name: Linode
-title: "Outgoing DNS Zone Transfers"
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/products/networking/dns-manager/guides/transfer-domain-zones/']
-authors: ["Linode"]
 ---
 
-When a domain zone is created within Linode's DNS Manager, you can select if it will operate as a *primary* or a read-only *secondary* zone (see [Select the Zone Type](/docs/products/networking/dns-manager/guides/create-domain/#select-the-zone-type)). Selecting *primary* allows you to edit the DNS records directly within the DNS Manager and is the most common choice.
+When a domain zone is created within Linode's DNS Manager, you can select if it will operate as a *primary* or a read-only *secondary* zone (see [Select the Zone Type](/docs/products/networking/dns-manager/guides/create-domain/#select-the-zone-type)). Selecting *primary* lets you edit the DNS records directly within the DNS Manager and is the most common choice.
 
 If you have configured your domain zone as *primary*, you can designate external DNS name servers as *secondaries*. The DNS Manager will then send a NOTIFY request to those name servers when you make any DNS changes. The external name server should then respond back with an AXFR query, which triggers Linode to send an AXFR response with the updated DNS zone. This guide covers the configuration needed to perform outgoing DNS zone transfers, including updating your SOA record.
 
@@ -39,12 +36,12 @@ To facilitate quick updates, Linode immediately sends the external name servers 
 ```
 
 {{< note type="alert" >}}
-On February 7th, 2023, the IP address `65.19.178.10` will be retired and replaced with `45.79.109.10`. Both IPs will respond to inbound requests until the cutover date. Outbound requests will only originate from the old IP address (`65.19.178.10`) until the cutover date. Please update your firewall rules and DNS server configurations to add the new IP address (`45.79.109.10`) prior to the cutover.
+On February 7th, 2023, the IP address `65.19.178.10` will be retired and replaced with `45.79.109.10`. Both IPs will respond to inbound requests until the cutover date. Outbound requests will only originate from the old IP address (`65.19.178.10`) until the cutover date. Please update your firewall rules and DNS server configurations to add the new IP address (`45.79.109.10`) before the cutover.
 {{< /note >}}
 
 ## Add Secondary Name Servers
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com), select *Domains* from the left menu, and click on the domain you wish to update.
+1. Log in to [Cloud Manager](https://cloud.linode.com), select *Domains* from the left menu, and click on the domain you wish to update.
 
 1. Locate the **SOA Record** section and click **Edit**. This action may appear within the corresponding **ellipsis** menu.
 

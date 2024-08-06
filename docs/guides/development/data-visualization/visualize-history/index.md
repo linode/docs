@@ -1,15 +1,14 @@
 ---
 slug: visualize-history
+title: 'An Overview of Open Source Data Visualization Tools'
 description: 'An overview of popular open source data visualization packages for R, Python, and JavaScript.'
+authors: ["Mihalis Tsoukalos"]
+contributors: ["Mihalis Tsoukalos"]
+published: 2019-09-27
 keywords: ["Visualization", "R", "Python", "Perl", "pandas"]
 tags: ["python", "perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-09-27
-modified_by:
-  name: Linode
-title: 'An Overview of Open Source Data Visualization Tools'
 aliases: ['/development/data-visualization/visualize-history/','/development/visualize-history/']
-authors: ["Mihalis Tsoukalos"]
 ---
 Creating graphic visualizations for a data set is a powerful way to derive meaning from vast amounts of information. It provides a way to extract meaningful relationships between different aspects of your data depending on how the data is mapped and which graphic representations are chosen. Data visualization is a common practice in many sectors, including various scientific disciplines, business settings, the government sector, and education.
 
@@ -17,10 +16,10 @@ There are many open source tools available to create sophisticated data visualiz
 
 In this guide you will complete the following steps:
 
-* [Create three different data sets to use for your visualizations](/docs/guides/visualize-history/#create-your-data-sets).
-* [Visualize your data using R and RStudio as a pie chart](/docs/guides/visualize-history/#visualize-your-data-with-rstudio).
-* [Create a word cloud using Python and the pandas library](/docs/guides/visualize-history/#create-a-word-cloud-using-python).
-* [Develop a web browser based pie chart visualization using JavaScript and the D3.js package](/docs/guides/visualize-history/#visualize-data-using-d3-js).
+* [Create three different data sets to use for your visualizations](#create-your-data-sets).
+* [Visualize your data using R and RStudio as a pie chart](#visualize-your-data-with-r-and-rstudio).
+* [Create a word cloud using Python and the pandas library](#create-a-word-cloud-using-python).
+* [Develop a web browser based pie chart visualization using JavaScript and the D3.js package](#visualize-data-using-d3js).
 
 ## Before You Begin
 
@@ -34,12 +33,12 @@ Ensure you have the following programs and packages installed on your computer:
     1. [wordcloud](https://pypi.org/project/wordcloud/) Python package
 1. The [Golang](https://golang.org/doc/install) programming language
 
-{{< disclosure-note "Assumptions">}}
+{{< note >}}
 This guide assumes you have some basic familiarity with the following concepts and skills:
 
 1. Basic programming principles and data structures
 1. Are able to read code written in Go, Python, HTML, CSS, and JavaScript
-{{</ disclosure-note >}}
+{{< /note >}}
 
 ## Create Your Data Sets
 
@@ -181,13 +180,13 @@ In this section you will use the data sets you created in the previous section t
 
 [R](https://www.r-project.org/about.html) is a specialized programming language used for statistical computing and graphics. It is especially good for  creating high quality graphs, like [density plots](https://en.wikipedia.org/wiki/Density_estimation), [line charts](https://en.wikipedia.org/wiki/Line_chart), [pie charts](https://en.wikipedia.org/wiki/Pie_chart), and [scatter plots](https://en.wikipedia.org/wiki/Scatter_plot). [RStudio](https://rstudio.com/) is an integrated development environment (IDE) for R that includes debugging and plotting tools that make it easy to write, debug, and run R scripts.
 
-In this section, you will use the `command_categories.txt` file created in the [Data Set 3 - Perl Script](/docs/guides/visualize-history/#data-set-3-perl-script) section and RStudio to create a pie chart and simple spreadsheet of your data.
+In this section, you will use the `command_categories.txt` file created in the [Data Set 3 - Perl Script](#data-set-3---perl-script) section and RStudio to create a pie chart and simple spreadsheet of your data.
 
 1. Open RStudio Desktop and create a data frame. In R, a data frame is a table similar to a two-dimensional array.
 
         DATA <- read.table("~/command_categories.txt", header=TRUE)
 
-    - This command will read the `command_categories.txt` file that was created in the [Data Set 3 - Perl Script](/docs/guides/visualize-history/#data-set-3-perl-script) section of the guide and create a data frame from it that is stored in the `DATA` variable.
+    - This command will read the `command_categories.txt` file that was created in the [Data Set 3 - Perl Script](#data-set-3---perl-script) section of the guide and create a data frame from it that is stored in the `DATA` variable.
 
     - The `header=TRUE` argument indicates that the file's first row contains variable names for column values. This means that `Category Name` and `Number of Times` will be used as variable names for the two columns of values in `command_categories.txt`.
 

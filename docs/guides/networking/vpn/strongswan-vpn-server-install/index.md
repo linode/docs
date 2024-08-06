@@ -1,17 +1,16 @@
 ---
 slug: strongswan-vpn-server-install
+title: "Install and Configure a StrongSwan Gateway VPN Server on Ubuntu 20.04"
+title_meta: "Install and Configure StrongSwan on Ubuntu 20.04"
 description: 'This guide shows you how to install a StrongSwan VPN server on an Ubuntu 20.04 server. You also learn how to connect to a StrongSwan VPN server from Ubuntu, Windows, and macOS clients.'
+authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
+published: 2022-02-18
 keywords: ['install strongswan', 'strongswan client', 'connecting to strongswan VPN', 'troubleshoot strongswan']
 bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-18
-modified_by:
-  name: Linode
-title: "Install and Configure a StrongSwan Gateway VPN Server on Ubuntu 20.04"
-title_meta: "Install and Configure StrongSwan on Ubuntu 20.04"
 external_resources:
 - '[Introduction to StrongSwan](https://wiki.strongswan.org/projects/strongswan/wiki/IntroductionTostrongSwan)'
-authors: ["Tom Henderson"]
 ---
 
 StrongSwan is an open-source tool that operates as a keying daemon and uses the [Internet Key Exchange protocols](https://en.wikipedia.org/wiki/Internet_Key_Exchange) (IKEv1 and IKEv2) to secure connections between two hosts. In this way, you can use StrongSwan to establish a Virtual Private Network (VPN). VPN connections from a client to the StrongSwan server are encrypted and provide a secure gateway to other resources available on the server and its network. This guide shows you how to install and configure a StrongSwan gateway VPN server on Ubuntu 20.04. You also learn how to set up and connect to a StrongSwan server from an Ubuntu, Windows, and macOS client.
@@ -29,8 +28,7 @@ The steps in this section show you how to install and configure a StrongSwan gat
 1. Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -281,7 +279,7 @@ The client authentication process relies on the `ipsec.secrets` file located on 
 
 #### Importing the VPN Root Certificate on macOS
 
-1. Download the `ca.cert.pem` file from the StrongSwan gateway VPN server host to your macOS computer [using scp](/docs/guides/download-files-from-your-linode/#secure-copy-protocol-scp).
+1. Download the `ca.cert.pem` file from the StrongSwan gateway VPN server host to your macOS computer [using scp](/docs/guides/download-files-from-a-compute-instance/#download-files-with-scp).
 
 1. Click on the downloaded file to open **Keychain Access**. Provide your user's administrative password, to accept the certificate. Then, click **Modify Keychain**.
 

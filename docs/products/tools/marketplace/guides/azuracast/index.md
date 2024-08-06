@@ -1,28 +1,25 @@
 ---
+title: "Deploy AzuraCast through the Linode Marketplace"
 description: "AzuraCast is a self-hosted web radio station and management suite. Follow this guide to deploy AzuraCast on Linode using Marketplace Apps."
-keywords: ['azuracast','marketplace', 'server']
-tags: ["debian","ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
 published: 2020-09-28
 modified: 2022-03-08
+keywords: ['azuracast','marketplace', 'server']
+tags: ["debian","ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
 image: DeployAzuraCast_OneClickApps.png
-modified_by:
-  name: Linode
-title: "Deploy AzuraCast through the Linode Marketplace"
 external_resources:
 - '[About AzuraCast](https://www.azuracast.com/about/)'
 - '[Troubleshooting AzuraCast](https://www.azuracast.com/help/)'
 - '[AzuraCast Github](https://github.com/azuracast/azuracast)'
 aliases: ['/platform/marketplace/how-to-deploy-azuracast-with-marketplace-apps/', '/platform/one-click/how-to-deploy-azuracast-with-one-click-apps/','/guides/how-to-deploy-azuracast-with-one-click-apps/','/guides/how-to-deploy-azuracast-with-marketplace-apps/','/guides/deploy-azuracast-with-one-click-apps/','/platform/one-click/deploy-azuracast-with-one-click-apps/','/guides/azuracast-marketplace-app/']
-authors: ["Linode"]
 ---
 
 [AzuraCast](https://www.azuracast.com) is a free self-hosted web radio station and management suite. Installation is simple with Marketplace Apps, and the intuitive web interface makes running a web station easy. After installation, you can be broadcasting within in minutes.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** AzuraCast should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -66,12 +63,12 @@ The AzuraCast Marketplace App installs the following software on your Linode:
 | **Software** | **Description** |
 |:--------------|:------------|
 | [**Lquidsoap**](https://www.liquidsoap.info/) | An AutoDJ that keeps the tunes streaming.|
-| [**Icecast 2.4 (Icecast-KH on supported systems)**](https://icecast.org/) | A broadcasting frontend. |
-| [**SHOUTcast 2 DNAS**](http://wiki.shoutcast.com/wiki/SHOUTcast_DNAS_Server_2) | An alternate broadcasting frontend. |
+| [**Icecast 2.4 (Icecast-KH on supported systems)**](https://icecast.org/) | A broadcasting front end. |
+| [**SHOUTcast 2 DNAS**](http://wiki.shoutcast.com/wiki/SHOUTcast_DNAS_Server_2) | An alternate broadcasting front end. |
 | [**NGINX**](https://www.nginx.com/) | A webserver a proxy. |
 | [**MariaDB**](https://mariadb.org/) | A database. |
 | [**PHP 7**](https://secure.php.net/) | General purpose programming language used for the website. |
 | [**InfluxDB**](https://www.influxdata.com/) | A database for capturing time-series based statistics. |
 | [**Redis**](https://redis.io/) | A database for session management and caching |
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

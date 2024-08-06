@@ -30,6 +30,14 @@
       </time>
     </p>
 
+    {{ if .Params.enableRelatedContent }}
+      <div class="block my-8">
+        <h2 class="mb-4" id="related-content">Related Content</h2>
+        {{ partial "sections/navigation/recommendations-cards.html" . }}
+      </div>
+    {{ end }}
+
+
     <div class="block mt-8">
       {{ partial "sections/content/tags.html" . }}
     </div>

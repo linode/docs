@@ -1,21 +1,20 @@
 ---
 slug: big-data-in-the-linode-cloud-streaming-data-processing-with-apache-storm
+title: "Streaming Data Processing with Apache Storm"
 description: "Deploy Storm cluster on Linode cloud for real-time analytics on streaming datasets."
+authors: ["Karthik Shiraly"]
+contributors: ["Karthik Shiraly"]
+published: 2016-10-25
+modified: 2019-01-31
 keywords: ["storm", "analytics", "big data", "zookeeper"]
 tags: ["analytics"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-published: 2016-10-25
-modified: 2019-01-31
-modified_by:
-    name: Phil Zona
-title: "Streaming Data Processing with Apache Storm"
 external_resources:
 - '[Apache Storm project website](http://storm.apache.org/)'
 - '[Apache Storm documentation](https://storm.apache.org/releases/current/index.html)'
 - '[Storm - Distributed and Fault-Tolerant Real-time Computation](http://www.infoq.com/presentations/Storm-Introduction)'
 dedicated_cpu_link: true
 aliases: ['/applications/big-data/big-data-in-the-linode-cloud-streaming-data-processing-with-apache-storm/']
-authors: ["Karthik Shiraly"]
 ---
 
 [Apache Storm](http://storm.apache.org/) is a big data technology that enables software, data, and infrastructure engineers to process high velocity, high volume data in real time and extract useful information. Any project that involves processing high velocity data streams in real time can benefit from it.
@@ -79,7 +78,7 @@ These are the names we'll use, but you are welcome to choose your own when creat
 
 ### Get a Linode API Key
 
-Follow the steps in [Generating an API Key](/docs/products/tools/api/guides/manage-api-tokens/) and save your key securely. It will be entered into configuration files in upcoming steps.
+Follow the steps in [Generating an API Key](/docs/products/platform/accounts/guides/manage-api-tokens/) and save your key securely. It will be entered into configuration files in upcoming steps.
 
 If the key expires or is removed, remember to create a new one and update the `api_env_linode.conf` API environment configuration file on the cluster manager Linode. This will be explained further in the next section.
 
@@ -916,7 +915,7 @@ It's important to set this correctly to avoid critical cluster creation failures
 
 This section will explain how to start a Storm cluster. Doing so will also start any Zookeeper clusters on which it depends, so they do not need to be started separately.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 When starting a cluster, you should have `clustermgr` authorization to the Cluster Manager Linode.
 {{< /note >}}
 

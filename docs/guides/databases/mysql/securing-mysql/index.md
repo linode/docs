@@ -1,18 +1,17 @@
 ---
 slug: securing-mysql
+title: 'Securing MySQL Server'
+title_meta: 'How to Secure MySQL Server'
 description: 'This guide shows how to audit MySQL security, including: using the secure installer, modifying the root user, and adding new users.'
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2021-03-26
 keywords: ["mysql", "security", "audit", "root", "database", "privilege"]
 aliases: ['/security/auditing/secure-and-audit-mysql-server/','/security/secure-and-audit-mysql-server/','/guides/how-to-secure-mysql-server/']
 bundles: ['debian-security', 'centos-security']
 tags: ["mysql","security","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-title: 'Securing MySQL Server'
-title_meta: 'How to Secure MySQL Server'
-modified_by:
-  name: linode
-published: 2021-03-26
 image: SecureMySQLserver.png
-authors: ["Hackersploit"]
 tags: ["saas"]
 ---
 
@@ -22,7 +21,7 @@ MySQL is an open-source relational database management system. This guide will s
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides. Ensure that the Linode's [hostname is set](/docs/products/platform/get-started/#set-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides. Ensure that the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
     Check your Linode's hostname. The first command should show your short hostname and the second should show your fully qualified domain name (FQDN).
 

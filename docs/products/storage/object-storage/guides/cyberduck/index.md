@@ -1,7 +1,6 @@
 ---
 title: "Using Cyberduck with Object Storage"
 description: "Learn how to use the Cyberduck desktop file transfer program to interact with Linode's Object Storage."
-authors: ["Linode"]
 ---
 
 Cyberduck is a desktop application that facilitates file transfer over FTP, SFTP, and a number of other protocols, including S3.
@@ -47,7 +46,7 @@ Once the connection is successful, a list appears of all the buckets that your a
 ![Main Cyberduck view of buckets](cyberduck-view.png)
 
 {{< note >}}
-To create additional buckets, use the Cloud Manager, Linode CLI, s3cmd, or s4cmd. Cyberduck is not able to create new buckets.
+To create additional buckets, use Cloud Manager, Linode CLI, s3cmd, or s4cmd. Cyberduck is not able to create new buckets.
 {{< /note >}}
 
 ## Upload and Manage Files
@@ -61,7 +60,7 @@ If you wish to perform an action on a particular file, right click that file to 
 - [Edit](https://docs.cyberduck.io/cyberduck/edit/): Useful for editing plaintext files.
 - Rename, Duplicate, and much more.
 
-{{< content "object-storage-character-warning-shortguide" >}}
+{{% content "object-storage-character-warning-shortguide" %}}
 
 ## Obtain the URL of a File
 

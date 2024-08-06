@@ -1,21 +1,18 @@
 ---
 title: "Recover from Unexpected Shutdowns with Lassie (Shutdown Watchdog)"
 title_meta: "Recover from Unexpected Shutdowns with Lassie"
+description: "Learn how to investigate an unexpected shutdown and understand how Lassie, the Shutdown Watchdog, works to reboot your Compute Instances."
+published: 2022-09-29 Docs
 keywords: ['lassie','unexpected shutdown','reboot']
 tags: ["linode platform","monitoring"]
-description: "Learn how to investigate an unexpected shutdown and understand how Lassie, the Shutdown Watchdog, works to reboot your Compute Instances."
 aliases: ['/products/tools/monitoring/guides/monitoring-configure-watchdog/','/guides/lassie-shutdown-watchdog/']
-published: 2022-09-29
-modified_by:
-  name: Linode Docs
-authors: ["Linode"]
 ---
 
 Linode Compute Instances have a featured called *Lassie* (Linode Autonomous System Shutdown Intelligent rEbooter), also referred to as the Shutdown Watchdog. When this feature is enabled, a Compute Instance automatically reboots if it ever powers off unexpectedly.
 
 ## Shutdown Recovery Behavior
 
-The Shutdown Watchdog feature detects when a Compute Instance is powered off and checks if that directive came from the Linode platform (such as the Cloud Manager or Linode API). If the power off command *did not* originate from the Linode platform, the shutdown is considered unexpected and the Compute Instance is automatically powered back on.
+The Shutdown Watchdog feature detects when a Compute Instance is powered off and checks if that directive came from the Linode platform (such as Cloud Manager or Linode API). If the power off command *did not* originate from the Linode platform, the shutdown is considered unexpected and the Compute Instance is automatically powered back on.
 
 {{< note >}}
 Shutdown Watchdog can power back on a Compute Instance up to 5 times within a 15 minute period. If there is a recurring issue that is causing 6 or more shutdowns within this time period, the instance remains powered off until it is manually powered back on. This is to prevent endless reboot loops if there is an issue with the internal software of a Compute Instance.
@@ -25,7 +22,7 @@ Shutdown Watchdog can power back on a Compute Instance up to 5 times within a 15
 
 By default, Shutdown Watchdog is enabled on all new Compute Instances. If you wish to disable or re-enable this feature, follow the instructions below:
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com) and navigate to the **Linodes** link in the sidebar.
+1.  Log in to [Cloud Manager](https://cloud.linode.com) and navigate to the **Linodes** link in the sidebar.
 1.  Select the Linode Compute Instance that you wish to modify.
 1.  Navigate to the **Settings** tab.
 1.  Scroll down to the section labeled **Shutdown Watchdog**.
@@ -36,7 +33,7 @@ By default, Shutdown Watchdog is enabled on all new Compute Instances. If you wi
 
 ## Reasons for an Unexpected Shutdown
 
-An *unexpected shutdown* is when a Compute Instance powers off without receiving a power off command from the Linode platform (such as one issued by a user in the Cloud Manager or API). In general, this is caused within a Compute Instance's internal system or software configuration. The following list includes potential reasons for these unexpected shutdowns.
+An *unexpected shutdown* is when a Compute Instance powers off without receiving a power off command from the Linode platform (such as one issued by a user in Cloud Manager or API). In general, this is caused within a Compute Instance's internal system or software configuration. The following list includes potential reasons for these unexpected shutdowns.
 
 - **A user issues the [**shutdown command**](https://man7.org/linux/man-pages/man8/shutdown.8.html)** in the shell environment of a Compute Instance. In Linux, a system can be powered off by entering the `shutdown` command (or other similar commands) in the system's terminal. Since Linode has no knowledge of internal commands issued on a Compute Instance, it is considered an unexpected shutdown.
 
@@ -46,7 +43,7 @@ An *unexpected shutdown* is when a Compute Instance powers off without receiving
     Kernel panic - not syncing: No working init found.
     ```
 
-- **Out of memory (OOM) error:** When a Linux system runs out of memory, it can start killing processes to free up additional memory. In many cases, your system remains accessible but some of the software you use may stop functioning properly. OOMing can occasionally result in your system becoming unresponsive or crashing, causing an unexpected shutdown.
+- **Out of memory (OOM) error:** When a Linux system runs out of memory, it can start killing processes to free up additional memory. In many cases, your system remains accessible but some of the software you use may stop functioning properly. This can occasionally result in your system becoming unresponsive or crashing, causing an unexpected shutdown.
 
     ```output
     kernel: Out of memory: Kill process [...]
@@ -78,7 +75,7 @@ The underlying cause of these issues can vary. The most helpful course of action
 
     You may also want to review log files for any other software you have installed on your system that might be causing these issues.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Unexpected shutdowns are primarily caused by issues with the internal software configuration of a Compute Instance. To investigate these issues further, it is recommended that you reach out to your own system administrators or on our [Community Site](https://www.linode.com/community/questions/). These issues are generally [outside the scope](/docs/products/platform/get-started/guides/support/#scope-of-support) of the Linode Support team.
 {{< /note >}}
 

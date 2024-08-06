@@ -1,14 +1,11 @@
 ---
 title: Automate Cloud Resource Deployment
 description: 'This guide shows you how to automate server builds using Puppet and Chef cookbooks, golden disks and images, on a Linode running the Linux Operating System.'
-keywords: ["server builds", "disks", "golden disk", "puppet", "chef"]
-tags: ["linode platform","automation"]
 published: 2013-06-28
 modified: 2023-03-14
-modified_by:
-  name: Linode
+keywords: ["server builds", "disks", "golden disk", "puppet", "chef"]
+tags: ["linode platform","automation"]
 aliases: ['/platform/automating-server-builds/','/guides/automating-server-builds/']
-authors: ["Linode"]
 ---
 
 ## Why You Should Automate Server Builds
@@ -32,7 +29,7 @@ Using a *golden image* as a configuration base is a frequent starting point in c
 1. Remove any system users you don't want to appear on your duplicated systems.
 
 1. Shut down the Compute Instance and either:
-    - [Clone the disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#cloning-a-disk).
+    - [Clone the disk](/docs/products/compute/compute-instances/guides/clone-instance/#clone-to-an-existing-compute-instance).
     - Alternatively, [take a snapshot](/docs/products/storage/backups/guides/take-a-snapshot/) of the disk with Linode Backups.
 
 1. Store your golden image. This can be done in a variety of ways. A few examples are:
@@ -42,14 +39,14 @@ Using a *golden image* as a configuration base is a frequent starting point in c
 
 ### Restore a Golden Image
 
-1. Copy the duplicate disk to your other Compute Instances, either using [the Linode API](/docs/api/linode-instances/#disk-clone) or [manually](/docs/products/compute/compute-instances/guides/copy-a-disk-image-to-a-different-account/#copying-the-disk). If you're using a Linode Backups snapshot, you would [restore it](/docs/products/storage/backups/guides/restore-to-an-existing-linode/) to the desired Compute Instances.
+1. Copy the duplicate disk to your other Compute Instances, either using [the Linode API](/docs/api/linode-instances/#disk-clone) or [manually](/docs/products/compute/compute-instances/guides/copy-a-disk-image-to-a-different-account/#copying-the-disk). If you're using a Linode Backups snapshot, you would [restore it](/docs/products/storage/backups/guides/restore-to-an-existing-instance/) to the desired Compute Instances.
 
 1. Create [configuration profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/) on those additional Compute Instances to boot using the duplicated disk.
 1. Any user credentials from the golden image will also be on the duplicated disks so you should change the new system's root password.
 
-1. Update the new Compute Instance's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-filesetting-the-hostname).
+1. Update the new Compute Instance's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
-1. If your golden system was configured to use a static IP address, you'll also need to [reconfigure the IP address](/docs/products/compute/compute-instances/guides/manual-network-configuration/#static-network-configuration) on your duplicated disks.
+1. If your golden system was configured to use a static IP address, you'll also need to [reconfigure the IP address](/docs/products/compute/compute-instances/guides/manual-network-configuration/) on your duplicated disks.
 
 ## Third-Party Tools
 
@@ -90,7 +87,7 @@ Golden disks are capable of handling automated server builds for most individual
     - [Use Salt States to Create LAMP Stack and Fail2ban Across Salt minions](/docs/guides/use-salt-states-to-create-lamp-stack-and-fail2ban-across-salt-minions/)
     - [Configure and Use Salt Cloud and Cloud Maps to Provision Systems](/docs/guides/configure-and-use-salt-cloud-and-cloud-maps-to-provision-systems/)
 
-- **Terraform:** Terraform by HashiCorp is an orchestration tool that allows you to represent your Compute Instances and other resources with declarative code inside configuration files, instead of manually creating those resources via the Cloud Manager or API. This practice is referred to as Infrastructure as Code, and Terraform is a popular example of this methodology.
+- **Terraform:** Terraform by HashiCorp is an orchestration tool that lets you represent your Compute Instances and other resources with declarative code inside configuration files, instead of manually creating those resources via Cloud Manager or API. This practice is referred to as Infrastructure as Code, and Terraform is a popular example of this methodology.
 
     - [A Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/)
     - [Introduction to HashiCorp Configuration Language (HCL)](/docs/guides/introduction-to-hcl/)

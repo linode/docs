@@ -1,10 +1,10 @@
 ---
+title: "Deploy WooCommerce through the Linode Marketplace"
 description: "Learn how to deploy WooCommerce, the most popular ecommerce plugin, on Wordpress through the Linode Marketplace."
-keywords: ['woocommerce','wordpress','marketplace apps','ecommerce','e-commerce','cms']
-tags: ["cloud-manager","linode platform","cms","wordpress","marketplace"]
 published: 2019-04-02
 modified: 2023-06-06
-title: "Deploy WooCommerce through the Linode Marketplace"
+keywords: ['woocommerce','wordpress','marketplace apps','ecommerce','e-commerce','cms']
+tags: ["cloud-manager","linode platform","cms","wordpress","marketplace"]
 aliases: ['/platform/marketplace/marketplace-woocommerce/','/platform/marketplace/how-to-deploy-woocommerce-with-marketplace-apps/', '/platform/one-click/how-to-deploy-woocommerce-with-one-click-apps/','/platform/one-click/one-click-woocommerce/','/guides/how-to-deploy-woocommerce-with-one-click-apps/','/guides/how-to-deploy-woocommerce-with-marketplace-apps/','/guides/woocommerce-marketplace-app/']
 external_resources:
 - '[WooCommerce Docs](https://docs.woocommerce.com/)'
@@ -19,9 +19,9 @@ external_resources:
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** WooCommerce should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -29,12 +29,12 @@ external_resources:
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used, though a minimum of a 4GB Dedicated CPU Compute Instance is recommended for production websites.
 
 ### WooCommerce Options
 
-- **Webserver Stack** *(required)*: Chose which webserver to use for the WordPress deployment, Apache2 or NGINX.
+- **Webserver Stack** *(required)*: Choose which webserver to use for the WordPress deployment, Apache2 or NGINX.
 - **Email address** *(required)*: Enter the email address you wish to use when configuring the WordPress admin user, generating SSL certificates, and optionally creating DNS records for a custom domain.
 - **WordPress Admin Username** *(required)*: Username for your WordPress admin user account. Defaults to `admin` if no username is entered.
 - **WordPress Database Username** *(required)*: MySQL username for the WordPress database user. Defaults to `wordpress` if no username is entered.
@@ -42,16 +42,16 @@ external_resources:
 - **Website Title:** Enter a title for your WordPress site.
 
     {{< note >}}
-    The passwords for the WordPress Admin User, WordPress Database User and MySQL root user are automatically generated and provided in the file `/root/.linode_credentials.txt` when the WordPress deployment completes.
+    The passwords for the WordPress Admin User, WordPress Database User and MySQL root user are automatically generated and provided in the file `/home/$USERNAME/.credentials` when the WordPress deployment completes.
     {{< /note >}}
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 - **Would you like to be able to send password reset emails for WordPress?** Creates the required DNS records and configures the server so you can send emails from WordPress, such as for resetting a password.
 - **Would you like to use a free Let's Encrypt SSL certificate?** If you would like to use the free Let's Encrypt CA to generate TLS/SSL certificates, select *Yes*.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started After Deployment
 
@@ -61,13 +61,13 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 
 1.  Log in to your new Compute Instance using one of the methods below:
 
-    - **Lish Console:** Within the Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. Log in as the `root` user. See [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **Lish Console:** Within Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. Log in as the `root` user. See [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
     - **SSH:** Log in to your Compute Instance over SSH using the `root` user. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
-1.  Once logged in, access the credentials file by runing the following command:
+1.  Once logged in, access the credentials file by running the following command:
 
     ```command
-    cat /root/.linode_credentials.txt
+    cat /home/$USERNAME/credentials
     ```
 
 1.  This displays the passwords that were automatically generated when the instance was deployed. Once you save these passwords, you can safely delete this file.
@@ -106,7 +106,7 @@ Open a web browser and navigate to `http://[domain]`, replacing *[domain]* with 
 
 1. Once the Setup Wizard has finished, you are taken to *WooCommerce* > *Home* within your WordPress Admin dashboard. From here, you are presented with a checklist of tasks you may need to complete before selling products. This includes adding products, setting up a payment processor, creating tax rules, and more. See the [WooCommerce Documentation site](https://woocommerce.com/documentation/) to get help completing these steps and using your WooCommerce store.
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## Going Further
 
@@ -115,6 +115,6 @@ Now that your WordPress installation is deployed, you can start adding content a
 - [WordPress Support](https://wordpress.org/support/): Learn the basic workflows for using WordPress.
 - [Securing WordPress](/docs/guides/how-to-secure-wordpress/): Advice on securing WordPress through HTTPS, using a secure password, changing the admin username, and more.
 - [WordPress Themes](https://wordpress.org/themes/#): A collection of *thousands* of WordPress themes.
-- [Marketplace Apps Repository](https://github.com/linode-solutions/marketplace-apps): Review the deployment Ansible playbooks.
+- [Marketplace Apps Repository](https://github.com/akamai-compute-marketplace/marketplace-apps): Review the deployment Ansible playbooks.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

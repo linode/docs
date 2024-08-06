@@ -1,19 +1,18 @@
 ---
 slug: deploy-just-cause-2-multiplayer-server-on-ubuntu
+title: 'Deploy a Just Cause 2 Multiplayer Server on Ubuntu 14.04'
 description: 'Install and configure a Just Cause 2 Multiplayer Server on Ubuntu 14.04.'
+authors: ["Andrew Gottschling"]
+contributors: ["Andrew Gottschling"]
+published: 2015-10-09
+modified: 2019-02-01
 keywords: ["just cause 2", "game servers", "ubuntu", "ubuntu 14.04", "steamcmd", "steam", "multiplayer game server"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-10-09
-modified: 2019-02-01
-modified_by:
-    name: Linode
-title: 'Deploy a Just Cause 2 Multiplayer Server on Ubuntu 14.04'
 aliases: ['/applications/game-servers/deploy-just-cause-2-multiplayer-server-on-ubuntu/','/applications/game-servers/just-cause-2-multiplayer-on-ubuntu/','/game-servers/deploy-just-cause-2-multiplayer-server-on-ubuntu/']
 dedicated_cpu_link: true
-authors: ["Andrew Gottschling"]
+deprecated: true
 ---
-
 
 [Just Cause 2](http://www.justcause2.com/) is a single-player game published by Square Enix. Because it has no multiplayer mode, the modding community has created a multiplayer mod for the game that is quite popular. This guide will explain how to prepare your Linode, install SteamCMD and then install and configure Just Cause 2's multiplayer mod.
 
@@ -23,7 +22,7 @@ authors: ["Andrew Gottschling"]
 
 2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

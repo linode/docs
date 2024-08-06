@@ -1,15 +1,14 @@
 ---
 slug: install-nagios-4-on-ubuntu-debian-8
+title: 'Install Nagios 4 on Ubuntu and Debian 8'
 description: 'This guide shows how to install Nagios, a widely used web-based tool that can monitor services and systems and notify you if they are offline or inaccessible.'
+authors: ["Paulo Telles"]
+contributors: ["Paulo Telles"]
+published: 2016-04-12
 keywords: ["nagios", "ubuntu", "monitoring", "install nagios", "nagios 4 ubuntu", "debian 8"]
 aliases: ['/uptime/monitoring/install-nagios-4-on-ubuntu-14-04-debian-8/','/uptime/monitoring/monitor-services-with-nagios-4-on-ubuntu-14-04/','/uptime/monitoring/install-nagios-4-on-ubuntu-debian-8/']
 tags: ["debian","monitoring","lamp","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2016-04-12
-modified: 2016-04-12
-modified_by:
-  name: Edward Angert
-title: 'Install Nagios 4 on Ubuntu and Debian 8'
 external_resources:
  - '[Nagios Website](http://www.nagios.org/)'
  - '[Nagios Library](http://library.nagios.com/)'
@@ -18,7 +17,7 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Debian 8
-authors: ["Paulo Telles"]
+deprecated: true
 ---
 
 ![Install Nagios 4 on Ubuntu and Debian 8](Install_Nagios_4_smg.jpg)
@@ -29,13 +28,12 @@ A monitoring tool is a key application in a production server. Nagios is a popul
 
 1.  In order to run Nagios on your Linode, follow the configuration steps for Ubuntu or Debian 8 from our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/).
 
-2.  Install and configure a LAMP stack (Linux, Apache, MySQL and PHP stack). Follow the [LAMP on Ubuntu 14.04](/docs/guides/lamp-on-ubuntu-14-04/) or [LAMP on Debian 8](/docs/guides/lamp-on-debian-8-jessie/) guide for instructions.
+2.  Install and configure a LAMP stack (Linux, Apache, MySQL and PHP stack). Follow the [LAMP on Ubuntu 14.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/) or [LAMP on Debian 8](/docs/guides/lamp-on-debian-8-jessie/) guide for instructions.
 
 3.  Install updates:
 
         sudo apt-get update && sudo apt-get upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

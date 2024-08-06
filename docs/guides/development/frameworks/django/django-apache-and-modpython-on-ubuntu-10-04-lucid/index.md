@@ -1,22 +1,21 @@
 ---
 slug: django-apache-and-modpython-on-ubuntu-10-04-lucid
+title: 'Django, Apache and mod_python on Ubuntu 10.04 (Lucid)'
 description: 'Installing and configuring the Django web application development framework for Apache on Ubuntu 10.04 (Lucid).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-13
+modified: 2013-09-27
 keywords: ["django", "python", "apache", "mod\\_python", "ubuntu", "ubuntu 10.04", "lucid"]
 tags: ["web applications","django","apache","python","cms","ubuntu","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/django-apache-and-modpython-on-ubuntu-10-04-lucid/','/websites/frameworks/django-apache-and-modpython-on-ubuntu-10-04-lucid/','/frameworks/django-apache-mod-python/ubuntu-10-04-lucid/','/development/frameworks/django/django-apache-and-modpython-on-ubuntu-10-04-lucid/']
-modified: 2013-09-27
-modified_by:
-  name: Linode
-published: 2010-05-13
-title: 'Django, Apache and mod_python on Ubuntu 10.04 (Lucid)'
-deprecated: true
 relations:
     platform:
         key: django-apache-modpython
         keywords:
             - distribution: Ubuntu 10.04
-authors: ["Linode"]
+deprecated: true
 ---
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications. It's also very flexible in its ability to facilitate many complex content management operations.
@@ -27,7 +26,7 @@ We assume that you've completed the [Setting Up and Securing a Compute Instance]
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

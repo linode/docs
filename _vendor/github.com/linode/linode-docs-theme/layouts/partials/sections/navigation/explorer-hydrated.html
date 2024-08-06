@@ -1,0 +1,188 @@
+{{ $isDynamic :=  (eq .Type "sections") }}
+<div
+  id="explorer-hydrated"
+  class="explorer absolute top-0 z-10 box-border {{ if $isDynamic }}
+    explorer--active
+  {{ end }}}"
+  data-turbo-permanent
+  x-data="lncSearchExplorerHydrated"
+  :class="{'explorer--active': $store.search.shouldShowHydratedExplorerAndIsHydrated()}"
+  @click.away="closeIfMobile()"
+  x-show="isActive()"
+  @turbo:before-render.window="onBeforeRender()"
+  @turbo:render.window="onRender()"
+  x-cloak>
+  <template x-if="$store.search.shouldShowHydratedExplorerAndIsHydrated()">
+    <div>
+      <div
+        x-show="$store.search.query.isFiltered()"
+        class="pl-5 md:pl-6 h-8 bg-black flex items-center text-xs font-semibold"
+        data-testid="search-filter-status"
+        x-cloak>
+        <div class="bg-brand rounded-full h-1 w-1 mr-2"></div>
+        <div class="text-white">Filtered by search term</div>
+      </div>
+      {{ if site.IsServer }}
+        <div class="bg-blue-300 h-2">&nbsp;</div>
+      {{ end }}
+      <ul class="search-explorer-root bg-backgroundcolor">
+        {{ $self := dict "n" "nroot" "level" 1 }}
+        <template x-for="nroot in explorer.rootNodes">
+          {{ template "explorer-dynamic-node" $self }}
+        </template>
+      </ul>
+
+      <template x-ref="templateNodePages">
+        {{ template "explorer-dynamic-loop-pages" . }}
+      </template>
+
+      <template x-ref="templateNodePagesFooter">
+        <template x-if="state.totalPageCount != state.pages.length">
+          <li>
+            <a
+              :href="node.href"
+              x-html="viewAllText()"
+              class="py-1-5 inline-block page-link mr-2 text-xs capitalize cursor-pointer no-underline active:text-brand hover:text-gray-900 focus:outline-none 
+            ">
+            </a>
+          </li>
+        </template>
+      </template>
+
+      <template x-ref="templateNode">
+        <template x-for="n2 in getNodesSection()">
+          {{ template "explorer-dynamic-node" (dict "n" "n2") }}
+        </template>
+      </template>
+    </div>
+  </template>
+</div>
+
+{{ define "explorer-dynamic-node" }}
+  {{ $classesm := dict
+    "explorer__node--after-first" (ne $.level 1)
+  }}
+  {{ $classes := partial "inline/get-classes" $classesm }}
+  {{ $testID := printf "node-${ %s.key }" $.n }}
+  {{ $id := printf "node${ %s.id }" $.n }}
+  <li
+    class="explorer__node {{ $classes }}"
+    :data-testid="`{{ $testID }}`"
+    :id="`{{ $id }}`"
+    data-turbo-permanent
+    x-show="{{ $.n }}.level === 1 || {{ $.n }}.count > 0"
+    :class="{'pl-6': {{ $.n }}.level == 2}"
+    x-data="lncSearchExplorerNode({{ $.n }})">
+    {{ $testID := printf "li-${ %s.level }" $.n }}
+    <div class="explorer__node__inner" :data-testid="`{{ $testID }}`">
+      {{ $classesm := dict
+        "text-gray-900 bg-white explorer__row--first pl-container border-b-gray" (eq $.level 1)
+        "explorer__row--after-first text-gray-700" (ne $.level 1)
+      }}
+      {{ $classes := partial "inline/get-classes" $classesm }}
+      <div class="flex items-center justify-between pr-6 {{ $classes }}">
+        <div class="flex content-end flex-auto">
+          {{ if eq $.level 1 }}
+            <div class="text-basicgray flex items-center">
+              <svg
+                class="fill-current block w-5"
+                :class="{ 'text-gray-300': ({{ $.n }}.count === 0), 'text-brand': {{ $.n }}.open }"
+                style="height: 16.87px;">
+                <use :href="{{ $.n }}.icon"></use>
+              </svg>
+            </div>
+          {{ end }}
+          {{ template "explorer-dynamic-node-a" $ }}
+        </div>
+        <div class="flex items-center h-full">
+          <span
+            class="text-xs font-semibold pr-6 text-basicgray"
+            x-show="$store.search.query.isFiltered()"
+            :class="{  'text-brand': ({{ $.n }}.count > 0) && $store.search.query.isFiltered(),
+                'text-gray-100': ({{ $.n }}.count === 0),
+                'text-basicgray': ({{ $.n }}.count > 0) && !$store.search.query.isFiltered() }"
+            data-testid="node-count"
+            x-text="{{ $.n }}.count"></span>
+          <div class="z-10">
+            {{ template "explorer-dynamic-button-toggle" $ }}
+          </div>
+        </div>
+      </div>
+      <ul
+        class="node-tree h-full explorer__node--after-first"
+        :class="{
+              'py-2': node.level === 1,
+              'border-l-2 pl-3 py-1': node.level > 1
+            }"
+        x-show="{{ $.n }}.open"
+        x-ref="node-tree"></ul>
+    </div>
+  </li>
+{{ end }}
+
+{{ define "explorer-dynamic-node-a" }}
+  <a
+    @click="onClick($event);"
+    :href="{{ $.n }}.href"
+    data-testid="node-link"
+    class="block relative cursor-pointer pr-3 no-underline capitalize z-10 flex-auto text-textcolor"
+    :class="{
+          'py-2': {{ $.n }}.level === 2,
+          'py-1-5': {{ $.n }}.level >= 3,
+          'pl-4': {{ $.n }}.level === 1,
+          'text-textcolor': ({{ $.n }}.level > 1),
+          'text-brand': {{ $.n }}.level === 1 && {{ $.n }}.open,
+          'text-titlecolor': {{ $.n }}.level === 1 && (!{{ $.n }}.open && {{ $.n }}.count !== 0),
+          'text-gray-300': {{ $.n }}.level === 1 && {{ $.n }}.count === 0,
+          'font-semibold': ({{ $.n }}.level === 1 || ( {{ $.n }}.level > 1 && {{ $.n }}.open )),
+          'text-sm': ({{ $.n }}.level === 2),
+          'text-xs': ({{ $.n }}.level > 2),
+          'text-gray-300': ({{ $.n }}.count === 0),
+          'explorer-node-open': ({{ $.n }}.level > 1 && {{ $.n }}.open)
+          }">
+    <span
+      class="bg-container h-full"
+      :class="{ 'after-second': {{ $.n }}.level > 2 }"></span>
+    <span x-html="node.linkTitle ? node.linkTitle : node.title"></span>
+  </a>
+{{ end }}
+
+{{ define "explorer-dynamic-button-toggle" }}
+  {{ $testID := printf "(%s.open ? 'close' : 'open') + '-' + %s.level" $.n
+    $.n
+  }}
+  <button
+    type="button"
+    name="open"
+    @click="toggleOpen()"
+    @mouseover="hydrateNodeIfNeeded()"
+    class="btn-icon h-full flex items-center justify-center text-textcolor"
+    aria-label="{{ $.n }}.open ? 'close' : 'open'"
+    :data-testid="{{ $testID }}"
+    :disabled="{{ $.n }}.count === 0">
+    <svg class="w-4 h-3 titlecolor">
+      <use
+        href="#icon--arrow-down"
+        :href="{{ $.n }}.open ? '#icon--arrow-up' : '#icon--arrow-down' "></use>
+    </svg>
+  </button>
+{{ end }}
+
+{{ define "explorer-dynamic-loop-pages" }}
+  <template x-for="p in state.pages" :key="p.href">
+    <li>
+      <a
+        :href="p.href"
+        @click="onClick($event, p);"
+        :target="p.href.startsWith('http') ? '_blank' : ''"
+        x-html="p.title"
+        :class="{
+        'text-textcolor': !p.active,
+        'text-brand font-semibold is-active-page': p.active,
+        'pl-6': node.level == 1,
+      }"
+        class="py-1-5 inline-block page-link mr-2 text-xs capitalize cursor-pointer no-underline active:text-brand hover:text-gray-900 focus:outline-none">
+      </a>
+    </li>
+  </template>
+{{ end }}

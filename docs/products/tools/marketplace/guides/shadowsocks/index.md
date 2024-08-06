@@ -1,28 +1,25 @@
 ---
+title: "Deploy Shadowsocks through the Linode Marketplace"
 description: "This guide provides you with instructions on how to deploy a Shadowsocks server to bypass network censorship on a Linode using the One-Click Marketplace App."
-keywords: ['shadowsocks','marketplace', 'server']
-tags: ["proxy","cloud-manager","linode platform","security","marketplace"]
 published: 2020-03-18
 modified: 2022-03-08
+keywords: ['shadowsocks','marketplace', 'server']
+tags: ["proxy","cloud-manager","linode platform","security","marketplace"]
 image: DeployShadowsocksServer_oneclickapps.png
-modified_by:
-  name: Linode
-title: "Deploy Shadowsocks through the Linode Marketplace"
 external_resources:
 - '[Shadowsocks Official](https://shadowsocks.org)'
 - '[Shadowsocks-libev Github](https://github.com/shadowsocks/shadowsocks-libev)'
 image: 'How_to_Deploy_a_Shadowsocks_Server_with_OneClick_Apps_1200x631.png'
 aliases: ['/platform/marketplace/deploy-shadowsocks-with-marketplace-apps/', '/platform/one-click/deploy-shadowsocks-with-one-click-apps/','/guides/deploy-shadowsocks-with-one-click-apps/','/guides/deploy-shadowsocks-with-marketplace-apps/','/guides/shadowsocks-marketplace-app/']
-authors: ["Linode"]
 ---
 
-Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass network censorship and blocking on certain websites and web protocols. A full setup requires a Linode server to host the Shadowsocks daemon, and a client installed on PC, Mac, Linux, or a mobile device. Unlike other proxy software, Shadowsocks traffic is designed to be both indiscernible from other traffic to third-party monitoring tools, and also able to disguise itself as a normal direct connection. Data passing through Shadowsocks is encrypted for additional security and privacy.
+Shadowsocks is a lightweight SOCKS5 web proxy tool primarily used to bypass network censorship and blocking on certain websites and web protocols. A full setup requires a Linode server to host the Shadowsocks daemon, and a client installed on PC, Mac, Linux, or a mobile device. Unlike other proxy software, Shadowsocks traffic is designed to be both indiscernible from other traffic to third-party monitoring tools, and also able to disguise itself as a normal direct connection. Data passing through Shadowsocks is encrypted for additional security and privacy.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Shadowsocks should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
@@ -37,7 +34,7 @@ Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass 
 
 - **Shadowsock Password** *(required)*: Enter a *strong* password for your Shadowsocks user.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -49,7 +46,7 @@ When the client has completed the installation process, ensure that you're setti
 
 | **Configuration** | **Description** |
 |-------------------|-----------------|
-| **Address** | Your linodes IPv4 address. Can be found in the `Linodes` section of the [Cloud Manager](https://cloud.linode.com/linodes).
+| **Address** | Your linodes IPv4 address. Can be found in the `Linodes` section of [Cloud Manager](https://cloud.linode.com/linodes).
 | **Port** | The Shadowsocks Marketplace App connects through port `8000` by default. |
 | **Encryption** | Set to use the `aes-256-gcm` encryption mode. |
 | **Password** | This is the `Shadowsocks Password` field you created when initially deploying your app. |
@@ -58,4 +55,4 @@ After configuration, your `Server Preferences` should be similar to the followin
 
 ![shadowsocks-marketplace.png](shadowsocks-marketplace.png)
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

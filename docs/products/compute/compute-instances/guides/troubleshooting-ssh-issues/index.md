@@ -1,15 +1,12 @@
 ---
 title: "Troubleshooting SSH on Compute Instances"
 description: "Troubleshooting steps for when you can't connect to your Compute Instance via SSH."
-keywords: ['linux','reboot','lish','ssh','troubleshoot']
-tags: ["ssh"]
 published: 2019-02-01
 modified: 2023-03-14
-modified_by:
-  name: Linode
+keywords: ['linux','reboot','lish','ssh','troubleshoot']
+tags: ["ssh"]
 bundles: ['troubleshooting']
 aliases: ['/troubleshooting/troubleshooting-ssh/','/guides/troubleshooting-ssh/']
-authors: ["Linode"]
 ---
 
 This guide presents troubleshooting strategies for when you can't connect to your Compute Instance via SSH. If you currently cannot [ping](/docs/guides/linux-system-administration-basics/#the-ping-command) your Compute Instance, then your server also likely has more basic connection issues. If this is the case, you should instead follow the [Troubleshooting Basic Connection Issues](/docs/products/compute/compute-instances/guides/troubleshooting-connection-issues/) guide. If you restore basic networking to your Compute Instance but still can't access SSH, return to this guide.
@@ -32,7 +29,7 @@ Before troubleshooting your SSH service, familiarize yourself with the Linode Sh
 
 [*Lish*](/docs/products/compute/compute-instances/guides/lish/) is a shell that provides access to your Compute Instance's serial console. Lish does not establish a network connection to your Compute Instance, so you can use it when your networking is down or SSH is inaccessible. While troubleshooting SSH, all commands you enter on your system will be performed from the Lish console.
 
-To learn about Lish in more detail, and for instructions on how to connect to your Compute Instance via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. In particular, [using your web browser](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) is a fast and simple way to access Lish.
+To learn about Lish in more detail, and for instructions on how to connect to your Compute Instance via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. In particular, [using your web browser](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish) is a fast and simple way to access Lish.
 
 ### Forgotten your Password?
 
@@ -175,7 +172,7 @@ sudo ip6tables-save # displays IPv6 rules
 ```
 
 {{< note >}}
-Your deployment may be running FirewallD or UFW, which are frontends used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
+Your deployment may be running FirewallD or UFW, which are front ends used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
 
 ```command
 sudo ufw status
@@ -263,7 +260,7 @@ SSH can be configured to not accept passwords and instead accept public key auth
 grep PasswordAuthentication /etc/ssh/sshd_config
 ```
 
-If the value of the `PasswordAuthentication` is `no`, [create a key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair). Or, set the value in `/etc/ssh/sshd_config` to `yes`, restart SSH, and try logging in with your password again.
+If the value of the `PasswordAuthentication` is `no`, [create a key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#upload-ssh-key). Or, set the value in `/etc/ssh/sshd_config` to `yes`, restart SSH, and try logging in with your password again.
 
 ### Is your Public Key Stored on the Server?
 

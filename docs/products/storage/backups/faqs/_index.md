@@ -2,9 +2,9 @@
 title: "FAQs"
 title_meta: "FAQs for the Backup Service"
 description: "Find quick answers to some of the most commonly asked questions for Linode's Backup Service."
+published: 2023-07-07
 tab_group_main:
     weight: 60
-published: 2023-07-07
 ---
 
 ## Can I create more than one manual backup?
@@ -15,7 +15,7 @@ If you require additional manual backups of your data, consider using [alternati
 
 ## Can I use the Backup service to backup Block Storage Volumes?
 
-No, the Backup service does not take backups of Block Storage volumes, even if a volume is attached to a Compute Instance. If you wish to create a backup of your volume, consider cloning your volume or using [alternative methods of backing up your data](/docs/guides/backing-up-your-data/). Cloning a volume creates a new Block Storage volume of the same size and copies over all existing data. To clone your volume, navigate to the Volumes page in the Cloud Manager, open the ellipsis menu of the corresponding Volume you wish to clone, and select the **Clone** link.
+No, the Backup service does not take backups of Block Storage volumes, even if a volume is attached to a Compute Instance. If you wish to create a backup of your volume, consider cloning your volume or using [alternative methods of backing up your data](/docs/guides/backing-up-your-data/). Cloning a volume creates a new Block Storage volume of the same size and copies over all existing data. To clone your volume, navigate to the Volumes page in Cloud Manager, open the ellipsis menu of the corresponding Volume you wish to clone, and select the **Clone** link.
 
 ![Screenshot of the Clone link for a Block Storage volume](clone-volume.png)
 
@@ -29,7 +29,7 @@ Existing backups are not able to be downloaded directly, though you can restore 
 
 - If you need a local backup of your Compute Instance as it exists in that moment, you do not need to restore from a backup. Instead, you can use tools like [rsync](/docs/guides/backing-up-your-data/#manual-backup-via-rsync), FTP, and SCP to download files directly from your instance. For more details, see [Download Files from Your Compute Instance](/docs/guides/download-files-from-a-compute-instance/).
 
-- If you wish to download files as they were on a previous backup, you can restore that backup to a Compute Instance and then access that instance to download files. For instructions, see [Download a Local Copy of your Linode Backup](/docs/guides/download-backups-locally/).
+- If you wish to download files as they were on a previous backup, you can restore that backup to a Compute Instance and then access that instance to download files. For instructions, see [Download a Local Copy of your Linode Backup](/docs/products/storage/backups/guides/download-backups-locally/).
 
 ## Is the Backup service compatible with an encrypted or partitioned disk?
 

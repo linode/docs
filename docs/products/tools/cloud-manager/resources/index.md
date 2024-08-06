@@ -1,7 +1,8 @@
 ---
 title: Resources
-title_meta: "Resources for the Linode Cloud Manager"
-description: "Resources and other information related to the Linode Cloud Manager including videos, blog posts, community posts and customer stories."
+title_meta: "Resources for Cloud Manager"
+description: "Resources and other information related to Cloud Manager including videos, blog posts, community posts and customer stories."
+published: 2020-06-02
 tab_group_main:
     weight: 40
 ---

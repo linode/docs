@@ -12,7 +12,8 @@
 {{ else }}
   {{ $p := .Site.GetPage $file }}
   {{ if $p }}
-    {{ $p.Content }}
+{{/* Note: The indendation matters here and we want none, and especially not 4 spaces, which will render it as a code block. */}}
+{{ $p.RenderShortcodes }}
   {{ else }}
     {{/* warnf "Content shortcode is empty: %s" .Position */}}
   {{ end }}

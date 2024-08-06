@@ -1,17 +1,17 @@
 ---
 slug: how-to-mount-nfs-shares-on-debian-9
+title: How to Mount NFS Shares on Debian 9
 description: 'This tutorial shows how to set up an NFS server and client for remote file access on Debian.'
 og_description: 'With NFS, computer users can access files across multiple servers on a network. This guide sets up two Linodes for file sharing as an NFS server and client.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-02-27
+modified: 2017-11-07
 keywords: ["NFS", "network file system"]
 aliases: ['/networking/how-to-mount-nfs-shares-on-debian-9/','/networking/how-to-mount-nfs-shares-on-debian-8/','/networking/nfs/how-to-mount-nfs-shares-on-debian-9/','/networking/basic-nfs-configuration-on-debian-7/','/networking/file-transfer/basic-nfs-debian/']
 tags: ["networking","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-11-07
-modified_by:
-  name: Linode
-published: 2014-02-27
-title: How to Mount NFS Shares on Debian 9
-authors: ["Linode"]
+deprecated: true
 ---
 
 ![How to Mount NFS Shares on Debian 9](mount-nfs-shares-deb-9-title.jpg "How to Mount NFS Shares on Debian 9")
@@ -24,7 +24,7 @@ However, be aware that one limitation of NFS (versions 3 and older) is that serv
 
 This guide walks you through the setup of two Linodes; one is the NFS server, and the other acting as the client. In this example, both Linodes are in the same data center and will communicate using their private IP addresses, so your data will never leave Linode's network. **Caution**: Other NFS setups can potentially send traffic over the public internet.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -1,19 +1,18 @@
 ---
 slug: use-public-key-authentication-with-ssh
+title: "Use SSH Public Key Authentication on Linux, macOS, and Windows"
+title_meta: "How to Use SSH Public Key Authentication"
 description: "Understand SSH public key authentication and learn how to generate a key pair and upload your public key using Linux, macOS, and Windows."
+authors: ["Linode"]
+contributors: ["Matt Wildman","Linode"]
+published: 2011-04-05
+modified: 2023-08-10
 keywords: ["ssh", "public key"]
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/ssh-keys/','/tools-reference/ssh/use-public-key-authentication-with-ssh/','/security/use-public-key-authentication-with-ssh/','/security/authentication/use-public-key-authentication-with-ssh/','/networking/ssh/use-public-key-authentication-with-ssh/']
 bundles: ['debian-security', 'centos-security', 'network-security']
-modified_by:
-  name: Linode
-published: 2011-04-05
-modified: 2023-08-10
-title: "Use SSH Public Key Authentication on Linux, macOS, and Windows"
-title_meta: "How to Use SSH Public Key Authentication"
 image: use_public_key_authentication_with_ssh.png
-authors: ["Linode"]
 ---
 
 [Public key authentication](https://en.wikipedia.org/wiki/Key_authentication#Authentication_using_Public_Key_Cryptography) with SSH (Secure Shell) is a method in which you generate and store on your computer a pair of cryptographic keys and then configure your server to recognize and accept your keys. Password authentication is the default method most SSH clients use to authenticate with remote servers, but it suffers from potential security vulnerabilities like brute-force login attempts. Using key-based authentication offers a range of benefits, including:
@@ -428,7 +427,7 @@ Issuing the previous command generates the public key and it is displayed as out
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8r0+yVFLxaxo0a0BPmcq8jR4PPxsK06bLidEoVFpByeL5Iwvjwkan26+N+fBxLE9iyzlxHqGWyXyY+NVdQMamcCfN+v1zwqQpcV2PtI9yTqDY42VqBjPJVFvC+yIsTEZbIyebCHCvZmAmNbT9IqHr4Cgr0UCIm9nJJOB2PmmHGi66tMIadwfMBP9z21bB1zPZkvFSG47r265W7hPhb5CKpu5zsDUYzIAEGjkHeioTyJAt8DTAmtKCh2pMBPOigPIRoLmOsvC+RVsx11scnL8Cny95Vp2PQYJSaCeFlgUfVTcch00tjE7cUR2jeAy2Q0ZeosQsdLFTUO+tTri2TpHuXyNfUdhliBznExCWaiQNoUdB1twbJoAxf1W/KhZNbKfqEg8N5/4Qu7QQfyR1LKDAeWpsqdF8Q+lCaIFvE859jr3KhBGZSSi6XL5D7xRd1IpSmO5E2tsD5HsncfvKV07D9Ipa2BGRAXzn9iL4Gf3Q2ug6N6/9unXNh6NF0NjfgreqK1a27WGaO5CjBZ2r20M34lrisKiFepcqg7B4MXPlwcqbGTfe9LKTc6Tw57jrCLSArNN2Ip8CpI8IY6m2U0jfPyaqCH9ZjhHUr9NdSzJuXI7+Rc9qXU4AzJ7uD8LO0GjQ== example_user@192.0.2.0
 ```
 
-Copy the public key to a new file named `id_rsa.pub` in your home folder's `.ssh` directory (i.e `/home/example_user/.ssh/id_rsa.pub`). You can also copy the public key to a remote server, if needed. See this guide's [Upload Your Public Key](/docs/guides/use-public-key-authentication-with-ssh/#upload-your-public-key) section for more details.
+Copy the public key to a new file named `id_rsa.pub` in your home folder's `.ssh` directory (i.e `/home/example_user/.ssh/id_rsa.pub`). You can also copy the public key to a remote server, if needed. See this guide's [Upload Your Public Key](#upload-the-public-key) section for more details.
 
 ## Disable Password Authentication
 

@@ -2,12 +2,11 @@
 slug: dns-primary-and-secondary-server-setup
 title: "How to Configure DNS Primary and Secondary Servers"
 description: 'Enhance website reliability and performance by creating a secondary name server, along with a hidden primary, using NSD on Ubuntu. ✓ Click here!'
+authors: ["David Robert Newman"]
+contributors: ["David Robert Newman"]
+published: 2023-06-09
 keywords: ['dns primary and secondary server setup','dns primary server','domain name service','linux dns server','dns secondary server','configuring dns','install dns']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["David Robert Newman"]
-published: 2023-06-09
-modified_by:
-  name: Linode
 external_resources:
 - '[Systran Box: Checking Your DNS Configuration In Linux: A Step-by-Step Guide](https://www.systranbox.com/checking-your-dns-configuration-in-linux-a-step-by-step-guide/)'
 - '[LinuxTeck: How to Install and configure Master /Slave DNS in Centos /RHEL 7.6](https://www.linuxteck.com/how-to-install-and-configure-master-slave-dns-in-centos-rhel-7-6/)'
@@ -21,11 +20,11 @@ Our guide [An Introduction to DNS on Linux](/docs/guides/introduction-to-dns-on-
 
 ## Before You Begin
 
-1.  Follow our Introduction to DNS on Linux(/docs/guides/introduction-to-dns-on-linux) guide to set up a functional primary name server (`ns1`).
+1.  Follow our [Introduction to DNS on Linux](/docs/guides/introduction-to-dns-on-linux) guide to set up a functional primary name server (`ns1`).
 
 1. Create two Compute instances for our secondary name servers. This guide requires two new Ubuntu 22.04 LTS instances (`ns2` and `ns3`) in addition to the primary name server (`ns1`).
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your systems. Also set the timezone, configure your hostnames, and create limited user accounts. To follow along with this guide, give your servers the hostnames `ns2` and `ns3`. Make them part of the `yourdomainhere.com` domain (e.g. `ns2.yourdomainhere.com` and `ns3.yourdomainhere.com`, replacing `yourdomainhere.com` with your actual domain name). Also be sure to configure the hosts files with your hostnames and external IP addresses.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your systems. Also set the timezone, configure your hostnames, and create limited user accounts. To follow along with this guide, give your servers the hostnames `ns2` and `ns3`. Make them part of the `yourdomainhere.com` domain (e.g. `ns2.yourdomainhere.com` and `ns3.yourdomainhere.com`, replacing `yourdomainhere.com` with your actual domain name). Also be sure to configure the hosts files with your hostnames and external IP addresses.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -179,7 +178,7 @@ The new server can be in the same data center as the primary, but it doesn’t h
     sudo scp root@ns1.yourdomainhere.com:/etc/nsd/nsd.conf /etc/nsd
     ```
 
-1.  Gather `ns2`'s external IPv4 and IPv6 addresses. Follow this guide to [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address) or use the following command:
+1.  Gather `ns2`'s external IPv4 and IPv6 addresses. Follow this guide to [Find Your Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) or use the following command:
 
     ```command {title="ns2"}
     ip a
@@ -411,7 +410,7 @@ There is no requirement that the hidden primary reside in the same data center a
     sudo scp -r root@ns1.yourdomainhere.com:/etc/nsd/zones /etc/nsd
     ```
 
-1.  Gather `ns3`'s external IPv4 and IPv6 addresses. Follow this guide to [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address) or use the following command:
+1.  Gather `ns3`'s external IPv4 and IPv6 addresses. Follow this guide to [Find Your Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) or use the following command:
 
     ```command {title="ns3"}
     ip a

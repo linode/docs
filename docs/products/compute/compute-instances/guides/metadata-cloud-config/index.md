@@ -1,17 +1,10 @@
 ---
 title: "Using Cloud-Config Files to Configure a Server"
 description: "Learn how to create cloud-config files for use with cloud-init and our Metadata service."
-keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
 published: 2023-07-25
-modified_by:
-  name: Linode
-authors: ["Linode"]
-_build:
-  list: false
-noindex: true
+modified: 2023-08-24
+keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
 ---
-
-{{< content "metadata-beta-notice" >}}
 
 [Cloud-config](https://cloudinit.readthedocs.io/en/latest/explanation/format.html#cloud-config-data) files are supported by our [Metadata](/docs/products/compute/compute-instances/guides/metadata/) service and are used by cloud-init to automate server configuration. This guide covers creating cloud-config files, common modules, and examples to help get you started.
 
@@ -21,7 +14,7 @@ Cloud-config data is written using the YAML syntax, a commonly used data seriali
 
 ## Cloud-Config Modules
 
-A cloud-config file must contain `#cloud-config` as the first line. Following that, you can utilize the keys provided by any of the cloud-init modules. Review the remaining sections of this guide for a list of common modules and how to configure them. For a full list of modules/keys, review [cloud-init Module Reference](https://cloudinit.readthedocs.io/en/latest/reference/modules.html).
+A cloud-config file must contain `#cloud-config` as the first line. Following that, you can use the keys provided by any of the cloud-init modules. Review the remaining sections of this guide for a list of common modules and how to configure them. For a full list of modules/keys, review [cloud-init Module Reference](https://cloudinit.readthedocs.io/en/latest/reference/modules.html).
 
 ## Create a New User and Restrict Root Access
 

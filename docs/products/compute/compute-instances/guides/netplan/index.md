@@ -1,0 +1,231 @@
+---
+title: "Network Configuration Using Netplan"
+description: "Learn how to manually configure your Compute Instance’s networking using the netplan utility on Ubuntu 18.04 and newer."
+published: 2023-09-12
+keywords: ['netplan','network configuration','ip address']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+external_resources:
+- '[Netplan Documentation](https://netplan.readthedocs.io/en/stable/)'
+---
+
+[Netplan](https://netplan.io/) is a utility designed to make network configurations easier and more descriptive. It operates on Ubuntu 18.04 (and newer) and works by abstracting lower level configurations in [systemd-networkd](/docs/products/compute/compute-instances/guides/systemd-networkd/) and [NetworkManager](/docs/products/compute/compute-instances/guides/networkmanager/). Create a YAML file describing your desired network setup and Netplan implements the necessary back-end configurations to realize it.
+
+{{< note >}}
+This guide serves as a supplement to the main [Manual Network Configuration on a Compute Instance](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide. Please review that guide before making any configuration changes to your Compute Instance.
+{{< /note >}}
+
+{{< note type="warning" >}}
+By default, Linode's Network Helper tool manages networking in Ubuntu using systemd-networkd directly instead of Ubuntu's Netplan management tool. To start using Netplan, you must first remove the default systemd-networkd configuration file. This command is provided below and also included within the [Configuring IP Addresses Manually](#configuring-ip-addresses-manually) section.
+
+```command
+sudo rm /etc/systemd/network/05-eth0.network
+```
+{{< /note >}}
+
+## Configuration Files
+
+The following details show where and how Netplan's configuration files operate:
+
+-   **File extension**: `.yaml`
+
+-   **File location**: `/etc/netplan/`
+
+-   **Naming convention**: `[priority]-[name].yaml`, with *[priority]* being a two-digit number (`01` through `99`) defines file ordering (processed in alpha-numeric order) and with *[name]* being a short, descriptive title
+
+-   **Default configuration file**: `/etc/netplan/01-netcfg.yaml`
+
+## Starter Configuration
+
+To get a sense of how Netplan's configuration files operate, here is a starter configuration file. A breakdown of the file follows, elaborating on each part's role.
+
+```file {title="/etc/netplan/01-netcfg.yaml" lang="yaml"}
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      dhcp4: yes
+      accept-ra: yes
+      ipv6-privacy: no
+```
+
+-   `version`: Indicates the configuration format. The only option currently supported is `2`.
+
+-   `renderer`: Defines which underlying network configuration tool to use, either `networkd` or `NetworkManager`. The default is `networkd`.
+
+-   `ethernets`: Configures physical network interfaces. For more details, review the associated [Properties for device types](https://netplan.readthedocs.io/en/stable/netplan-yaml/#properties-for-device-type-ethernets) section in the official documentation.
+
+    In the default configuration, `eth0` introduces a configuration mapping for the primary Ethernet interface. The only option set in this case indicates that DHCP (`dhcp4`) should be used, enabling dynamic IP address assignment.
+
+Learn more about the full extent of Netplan's YAML configuration options in the [official documentation](https://netplan.readthedocs.io/en/stable/netplan-yaml/).
+
+## Configuring IP Addresses Manually
+
+1.  Log in to [Cloud Manager](https://cloud.linode.com/), and review your Compute Instance's IP addresses. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) for assistance. Make a note of the following pieces of information or keep this page accessible so you can reference it later.
+
+    -   Public IPv4 address(es) and the associated IPv4 gateway
+
+    -   Private IPv4 address (if one has been added)
+
+    -   IPv6 SLAAC address and the associated IPv6 gateway
+
+    -   IPv6 `/64` or `/56` routed range (if one has been added)
+
+    -   DNS resolvers (if you want to use Linode's resolvers)
+
+1.  Disable Network Helper on the Compute Instance so that it doesn't overwrite any of your changes on the next system reboot. For instructions, see the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#individual-compute-instance-setting) guide. This guide covers disabling Network Helper *globally* (for all Compute Instances on your account) or just for a single instance.
+
+1.  Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). You may want to consider using Lish to avoid getting locked out in the case of a configuration error.
+
+1.  Remove the systemd-networkd configuration file that was automatically generated by Network Helper:
+
+    ```command
+    sudo rm /etc/systemd/network/05-eth0.network
+    ```
+
+1.  Perform any necessary configuration steps as outlined in the workflows below. You can edit your network configuration file using a text editor like [nano](/docs/guides/use-nano-to-edit-files-in-linux/) or [vim](/docs/guides/what-is-vi/) with root permissions.
+
+    ```command
+    sudo nano /etc/netplan/01-netcfg.yaml
+    ```
+
+1.  Once you've edited the configuration file to fit your needs, you need to generate matching back-end configurations and apply the changes. To do so, run the follow Netplan commands:
+
+    ```command
+    sudo netplan generate
+    sudo netplan apply
+    ```
+
+## Changing the Primary IPv4 Address
+
+In Netplan, IP address configuration uses the `addresses` option beneath the interface. So, to change the primary IPv4 address on `eth0` to a static IP address, you can use the following approach:
+
+```file {title="/etc/netplan/01-netcfg.yaml" lang="yaml"}
+...
+  ethernets:
+    eth0:
+      addresses:
+        - [ip-address]/[prefix]
+      routes:
+        - to: default
+          via: [gateway-ip]
+```
+
+Each `addresses` entry takes an IP address along with the subnet prefix length. In addition, you also need to add a route to the gateway.
+
+-   **[ip-address]**: The IP address to be statically configured. The address can be IPv4 (e.g `192.0.2.2`) or IPv6, as shown in the [Configuring Additional IPv6 Addresses](/docs/products/compute/compute-instances/guides/netplan/#configuring-additional-ipv6-addresses) section further below.
+
+-   **[prefix]**: The subnet prefix for the address. This depends on the type of IPv4 address you are adding:
+
+    -   Public IPv4 addresses: `/24`
+
+    -   Private IPv4 addresses: `/17`
+
+-   **[gateway-ip]**: The IPv4 address of the gateway corresponding to the primary IPv4 address on your instance.
+
+## Configuring the Primary IPv4 Address through DHCP
+
+With DHCP, your instance's primary IPv4 address is configured automatically. The primary IPv4 address is the first IPv4 address assigned to your system when sorted numerically.
+
+The default Netplan configuration file shows how to enable DHCP on an interface. Include the `dhcp4` option with a value of `yes`, and remove any `addresses` lines that define static IP addresses, like the one shown in the section above.
+
+```file {title="/etc/netplan/01-netcfg.yaml" lang="yaml"}
+...
+  ethernets:
+    eth0:
+      dhcp4: yes
+```
+
+{{< note type="warning" >}}
+When using DHCP, the IPv4 address configured on your system may change if you add or remove IPv4 addresses on this instance from Cloud Manager, Linode CLI, or Linode API. If this happens, any tool or system using the original IPv4 address is no longer able to connect.
+{{< /note >}}
+
+## Configuring Additional IPv4 Addresses
+
+You can configure additional IPv4 addresses within Netplan by adding them to the `addresses` list/array.
+
+```file {title="/etc/netplan/01-netcfg.yaml" lang="yaml"}
+...
+  ethernets:
+    eth0:
+      addresses:
+        - 192.0.2.17/24
+        - [ip-address]/[prefix]
+      routes:
+        - to: default
+          via: 192.0.2.1
+```
+
+Replace *[ip-address]* with the additional IPv4 address and *[prefix]* with either `24` for public addresses or `17` for private addresses. To learn more, see the [Changing the Primary IPv4 Address](#changing-the-primary-ipv4-address) section above.
+
+## Configuring the Primary IPv6 Address through SLAAC
+
+Your primary IPv6 address can be configured automatically through SLAAC. To do so, your Netplan configuration needs to allow router advertisements and disable IPv6 privacy extensions.
+
+```file {title="/etc/netplan/01-netcfg.yaml" lang="yaml"}
+...
+  ethernets:
+    eth0:
+      accept-ra: yes
+      ipv6-privacy: no
+```
+
+Conversely, you can disable IPv6 SLAAC addressing and, instead, statically configure your IPv6 address, though doing so is not recommended. For this, disable router advertisements and add your primary IPv6 address with the `/128` subnet prefix, as detailed in the next section.
+
+```file {title="/etc/netplan/01-netcfg.yaml" lang="yaml"}
+...
+  ethernets:
+    eth0:
+      accept-ra: no
+      addresses:
+        - 2001:db8:e001:1b8c::3/128
+```
+
+## Configuring Additional IPv6 Addresses
+
+You can configure additional IPv6 addresses similar to as you would IPv4 addresses, by adding `addresses` entries beneath the interface. The one main difference is that IPv6 addresses (and their associated prefixes) should be surrounded by quotation marks. In addition, the default gateway for all IPv6 addresses should be `fe80::1`.
+
+```file {title="/etc/netplan/01-netcfg.yaml" lang="yaml"}
+...
+  ethernets:
+    eth0:
+      addresses:
+        - "[ip-address]/[prefix]"
+     routes:
+      - to: default
+        via: "fe80::1"
+```
+
+Each `addresses` entry consists of two parts: the IP address and the subnet prefix. For an IPv6 address, that breaks down as follows:
+
+-   **[ip-address]**: The IP address to be statically configured. The address can be IPv6 (e.g., `2001:db8:e001:1b8c::2`) or IPv4 as shown further above.
+
+-   **[prefix]**: The subnet prefix for the address. This depends on the type of IPv6 address you are adding:
+
+    -   IPv6 SLAAC address: `/128` (though it is recommended to configure this automatically through SLAAC, as shown in the previous section).
+
+    -   IPv6 address from a range: `/64` or `/56` (depending on the size of the range).
+
+A similar break down is given specifically for IPv4 addresses in the [Configuring Additional IPv4 Addresses](/docs/products/compute/compute-instances/guides/netplan/#configuring-additional-ipv4-addresses) section further above.
+
+## Changing the DNS Resolvers
+
+DNS resolvers ensure that domain names are matched to their corresponding IP addresses. By default, each Compute Instance uses DNS resolvers specific to the data center in which the instance resides.
+
+You can alter the DNS resolvers within Netplan using the `nameservers` option. Use an `addresses` list under that option to enter the IP addresses of the DNS resolvers you wish to use. Both IPv4 and IPv6 addresses can be used.
+
+The configuration example below includes additional options that are necessary if you want to define custom DNS resolvers while retaining DHCP. The `dhcp4` option enables DHCP dynamic IP address assignment, while the `use-dns` under `dhcp4-overrides` ensures that the DHCP does not override your custom DNS resolvers.
+
+```file {title="/etc/netplan/01-netcfg.yaml" lang="yaml"}
+...
+  ethernets:
+    eth0:
+      dhcp4: yes
+      dhcp4-overrides:
+        use-dns: no
+      nameservers:
+        addresses:
+          - 203.0.113.1
+          - 203.0.113.2
+          - 203.0.113.3
+```

@@ -1,25 +1,22 @@
 ---
+title: "Deploy Grav through the Linode Marketplace"
 description: "Learn how to deploy Grav, a modern open source flat-file CMS, on a Linode Compute Instance."
-keywords: ['cms','blog','website']
-tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-02-22
 modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploy Grav through the Linode Marketplace"
+keywords: ['cms','blog','website']
+tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Grav](https://getgrav.org/)'
 aliases: ['/guides/grav-marketplace-app/']
-authors: ["Holden Morris"]
 ---
 
 [Grav](https://getgrav.org/) is a flexible open source flat-file CMS (Content Management System). It can be used by both technical and non-technical people, allowing users to operate in the command line through its own [CLI](https://learn.getgrav.org/17/cli-console/command-line-intro) or in a web browser through its [Admin panel](https://learn.getgrav.org/17/admin-panel/introduction). Page templates in Grav are constructed using the highly customizable [Twig templating engine](https://twig.symfony.com/) and content can be written directly in Markdown. Using Grav also enables you to pull from a plethora of pre-built resources, including [starter templates](https://getgrav.org/downloads/skeletons), unique [themes](https://getgrav.org/downloads/themes), and quite a few [plugins](https://getgrav.org/downloads/plugins). If you need assistance getting started, there is an active [community form](https://discourse.getgrav.org/) and [extensive documentation](https://learn.getgrav.org/17/basics/what-is-grav).
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Grav should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -34,11 +31,11 @@ authors: ["Holden Morris"]
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{< content "marketplace-limited-user-fields-shortguide">}}
+{{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{< content "marketplace-custom-domain-fields-shortguide">}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -56,6 +53,6 @@ authors: ["Holden Morris"]
 
     ![Screenshot of the Admin dashboard](grav-admin.png)
 
-Now that you’ve accessed your dashboard, check out [the official Grav documentation](https://learn.getgrav.org/) to learn how to further utilize your Grav instance.
+Now that you’ve accessed your dashboard, check out [the official Grav documentation](https://learn.getgrav.org/) to learn how to further use your Grav instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

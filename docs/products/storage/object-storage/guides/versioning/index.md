@@ -3,7 +3,6 @@ title: "Versioning (Retain Object Version History)"
 description: "Learn how to use versioning with Linode's Object Storage to retain previous versions of an object."
 published: 2022-03-11
 aliases: ['/platform/object-storage/bucket-versioning/','/guides/bucket-versioning/']
-authors: ["Linode"]
 ---
 
 Versioning in Object Storage (also called *bucket versioning*, *object versioning*, and *S3 versioning*) is a method of retaining historical versions of files/objects. When this feature is enabled, objects are not overwritten or deleted. Instead, the new *current* version of an object is stored alongside each older *noncurrent* version. In the event that you need to recover old data, you can restore/retrieve previous versions of each object.
@@ -16,7 +15,7 @@ Every version of an object counts towards the monthly billable storage quota. Wh
 
 ## Using Versioning within Linode's Object Storage Service
 
-While versioning is natively supported within our Object Storage service, none of our first party tooling (such as the Cloud Manager, the Linode CLI, or the Linode API) can manage this feature. Currently, object versioning can only be enabled, disabled, and otherwise managed through third party tools like Cyberduck and the AWS CLI.
+While versioning is natively supported within our Object Storage service, none of our first party tooling (such as Cloud Manager, the Linode CLI, or the Linode API) can manage this feature. Currently, object versioning can only be enabled, disabled, and otherwise managed through third party tools like Cyberduck and the AWS CLI.
 
 ## Enable Versioning
 
@@ -63,7 +62,7 @@ Now that versioning is enabled, you can test this feature by uploading an exampl
 
         This is version 1.
 
-1.  Now, upload that file through any tool you wish to use, including the Cloud Manager, Cyberduck, S3cmd, or the AWS CLI.
+1.  Now, upload that file through any tool you wish to use, including Cloud Manager, Cyberduck, S3cmd, or the AWS CLI.
 
 1.  On your local machine, edit that same text file. In our example, we'll edit it to use the following contents:
 
@@ -89,7 +88,7 @@ Run the `list-object-versions` command, replacing *[cluster-url]* with the clust
 
 If running this command with the prefix option set to the `example-file.txt` file with two versions, the output is similar to the following:
 
-{{<output>}}
+```output
 {
     "Versions": [
         {
@@ -120,7 +119,7 @@ If running this command with the prefix option set to the `example-file.txt` fil
         }
     ]
 }
-{{</output>}}
+```
 
 Each version is listed, along with its individual object metadata.
 

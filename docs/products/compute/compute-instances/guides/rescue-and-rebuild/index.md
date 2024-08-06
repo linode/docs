@@ -1,18 +1,15 @@
 ---
 title: Rescue and Rebuild
-description: 'Learn how to rescue and rebuild a Compute Instance by using the recovery tools available in the Cloud Manager.'
+description: 'Learn how to rescue and rebuild a Compute Instance by using the recovery tools available in Cloud Manager.'
+published: 2012-05-31
+modified: 2023-09-07
 keywords: ["rescue", "rebuild"]
 tags: ["cloud manager"]
-published: 2012-05-31
-modified: 2023-08-08
-modified_by:
-  name: Linode
 image: rescue-rebuild.jpg
 aliases: ['/troubleshooting/rescue-and-rebuild-classic-manager/','/troubleshooting/rescue-and-rebuild/','/rescue-and-rebuild/','/troubleshooting/finnix-rescue-mode/','/guides/rescue-and-rebuild/']
-authors: ["Linode"]
 ---
 
-Even the best system administrators may need to deal with unplanned events in the operation of their services. The Cloud Manager provides recovery tools that you can leverage if you are having trouble connecting to one of the Compute Instances, and this guide describes those tools:
+Even the best system administrators may need to deal with unplanned events in the operation of their services. Cloud Manager provides recovery tools that you can leverage if you are having trouble connecting to one of the Compute Instances, and this guide describes those tools:
 
 -  You can boot your Compute Instance into [*Rescue Mode*](#rescuing) to perform system recovery tasks and transfer data off the disks, if necessary.
 
@@ -42,15 +39,15 @@ While this guide outlines the recovery tools that Linode makes available to you,
 
 ### Rescue Mode Overview
 
-To access Rescue Mode, you need to [reboot your Compute Instance](#booting-into-rescue-mode) from the Cloud Manager and then connect through [Lish](#connecting-to-a-linode-running-in-rescue-mode) or [SSH](#starting-ssh). After you connect, you can [perform a check on your filesystem](#performing-a-file-system-check) if you suspect that it is corrupted. If you need access to a certain software package to troubleshoot the system, you can [install it](#installing-packages).
+To access Rescue Mode, you need to [reboot your Compute Instance](#booting-into-rescue-mode) from Cloud Manager and then connect through [Lish](#connecting-to-a-linode-running-in-rescue-mode) or [SSH](#starting-ssh). After you connect, you can [perform a check on your filesystem](#performing-a-file-system-check) if you suspect that it is corrupted. If you need access to a certain software package to troubleshoot the system, you can [install it](#installing-packages).
 
-The disks are mounted by default, so [mount](#mounting-disks) them in order to access the files. After you mount the primary filesystem, you can [*change root*](#change-root) to have Rescue Mode emulate normal Linux distribution.
+Disks are not mounted by default and need to be [mounted manually](#mounting-disks) before you can access your files. After you mount the primary filesystem, you can [*change root*](#change-root) to have Rescue Mode emulate normal Linux distribution.
 
 ### Boot into Rescue Mode
 
 To boot a Compute Instance into Rescue Mode, follow the instructions below.
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com).
+1.  Log in to [Cloud Manager](https://cloud.linode.com).
 
 1.  Click the **Linodes** link in the sidebar:
 
@@ -93,7 +90,7 @@ To boot a Compute Instance into Rescue Mode, follow the instructions below.
 By default, Rescue Mode's Finnix environment does not accept SSH connections. To access the Compute Instance when it's running in Rescue Mode, connect to it through the *Lish* console.
 
 {{< note >}}
-It is possible to enable SSH for Rescue Mode by manually starting the SSH daemon. Using SSH can provide a better experience and allows you to copy files off of the server. Review the [Starting SSH](#starting-ssh) section for instructions. You need to use Lish at least once in order to start SSH.
+It is possible to enable SSH for Rescue Mode by manually starting the SSH daemon. Using SSH can provide a better experience and lets you copy files off of the server. Review the [Starting SSH](#starting-ssh) section for instructions. You need to use Lish at least once in order to start SSH.
 {{< /note >}}
 
 To connect with Lish:
@@ -200,7 +197,7 @@ You can use the `e2fsck` system utility (short for "ext file system check") to c
 
     Press **enter** to automatically attempt to fix the problems.
 
-    After the filesystem check completes, any problems detected should be fixed. Try rebooting the Compute Instance from the Cloud Manager. If `e2fsck` fixed the issues, the instance should boot normally.
+    After the filesystem check completes, any problems detected should be fixed. Try rebooting the Compute Instance from Cloud Manager. If `e2fsck` fixed the issues, the instance should boot normally.
 
 ### Installing Packages
 
@@ -217,7 +214,7 @@ The software packages you install is available as long as the Compute Instance i
 ### Mounting Disks
 
 {{< note >}}
-Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/#update-your-fstab) guide.
+Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab](/docs/guides/install-a-custom-distribution/#additional-system-configuration) guide.
 {{< /note >}}
 
 By default, your disks are not mounted when your Compute Instance boots into Rescue Mode. However, you can manually mount a disk under Rescue Mode to perform system recovery and maintenance tasks.
@@ -266,9 +263,9 @@ If you would like to mount or unmount additional disks on your system, repeat th
 
 ### Change Root
 
-*Changing root* is the process of changing your working root directory. When you change root (abbreviated as *chroot*) to your root disk, you are able to run commands as though you are logged into that system.
+*Changing root* is the process of changing your working root directory. When you change root (abbreviated as *chroot*) to your root disk, you are able to run commands as though you are logged in to that system.
 
-Chroot allows you to change user passwords, remove/install packages, and do other system maintenance and recovery tasks in your Compute Instance's normal Linux environment.
+Chroot lets you change user passwords, remove/install packages, and do other system maintenance and recovery tasks in your Compute Instance's normal Linux environment.
 
 1.  Create a new directory for your disk:
 
@@ -283,7 +280,7 @@ Chroot allows you to change user passwords, remove/install packages, and do othe
     ```
 
     {{< note >}}
-    If you mounted your disk without using the `exec` option prior to reviewing this section, include the `remount` option in your `mount` command:
+    If you mounted your disk without using the `exec` option before reviewing this section, include the `remount` option in your `mount` command:
 
     ```command
     mount -o remount,exec,barrier=0 /dev/sda /media/sda
@@ -334,7 +331,7 @@ If you can't rescue and resolve issues on an existing disk, you likely need to r
 
 -   If you are subscribed to the [Backup Service](https://www.linode.com/backups), you can [restore from an existing backup](#restoring-from-a-linode-backup) and return the Compute Instance to a previous state.
 
--   If you aren't subscribed to the Backup Service, you can copy files off an existing disk and then [use the Rebuild feature](#use-the-rebuild-feature) of the Cloud Manager to erase everything and start over again from scratch.
+-   If you aren't subscribed to the Backup Service, you can copy files off an existing disk and then [use the Rebuild feature](#use-the-rebuild-feature) of Cloud Manager to erase everything and start over again from scratch.
 
 -   If you have a backup system other than the Backup Service in place, you can [rebuild your Compute Instance](#use-the-rebuild-feature) and then restore the data from that backup service. The methods for restoring data varies by the kind of backup system that you use.
 
@@ -346,24 +343,24 @@ Linode recommends that you follow the instructions in [Recovering from a System 
 
 ### Restoring from a Backup
 
-If you previously enabled the [Backup Service](https://www.linode.com/backups), you may be able to restore one of the backups to the Compute Instance. Review the [Restoring from a Backup](/docs/products/storage/backups/#restore-from-a-backup) section (specifically, the [Restore to an Existing Compute Instance](/docs/products/storage/backups/guides/restore-to-an-existing-linode/) section) of the [The Backup Service](/docs/products/storage/backups/) guide for instructions.
+If you previously enabled the [Backup Service](https://www.linode.com/backups), you may be able to restore one of the backups to the Compute Instance. Review the [Restore a Backup to an Existing Compute Instance](/docs/products/storage/backups/guides/restore-to-an-existing-instance/) guide for instructions.
 
 If you created backups with an application other than Linode's Backup Service, review the application's instructions to restore a backup to the Compute Instance.
 
 ### Use the Rebuild Feature
 
-The Cloud Manager provides a *Rebuild* feature performs the following two actions:
+Cloud Manager provides a *Rebuild* feature performs the following two actions:
 
 1.  The current disks are removed.
 
-1.  A new set of disks is provisioned from one of the Cloud Manager's built-in Linux images, or from one of the [saved images](/docs/products/tools/images/).
+1.  A new set of disks is provisioned from one of Cloud Manager's built-in Linux images, or from one of the [saved images](/docs/products/tools/images/).
 
     {{< note type="alert" >}}
-    If you use the Rebuild feature, the data from the disks that are deleted are not retrievable. You may [back up your data manually](/docs/guides/backing-up-your-data/) or [create a snapshot through Linode's Backup Service](/docs/products/storage/backups/#take-a-manual-snapshot) to preserve data before using the Rebuild feature.
+    If you use the Rebuild feature, the data from the disks that are deleted are not retrievable. You may [back up your data manually](/docs/guides/backing-up-your-data/) or [create a snapshot through Linode's Backup Service](/docs/products/storage/backups/guides/take-a-snapshot/) to preserve data before using the Rebuild feature.
 
-    If you'd like to deploy a new Linux distribution without erasing the existing disks, follow the instructions in the [Creating a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#creating-a-disk) guide. This is a better option if you need to create a new distribution, but also need to save the existing data.
+    If you'd like to deploy a new Linux distribution without erasing the existing disks, follow the instructions in the [Creating a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#create-a-disk) guide. This is a better option if you need to create a new distribution, but also need to save the existing data.
 
-    The Compute Instance needs to have some amount of unallocated disk space in order to provision a new distribution. If the instance does not have enough unallocated space, you can [shrink your existing disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#resizing-a-disk) to free up space or [resize your Compute Instance](/docs/products/compute/compute-instances/guides/resize/) to a higher resource tier.
+    The Compute Instance needs to have some amount of unallocated disk space in order to provision a new distribution. If the instance does not have enough unallocated space, you can [shrink your existing disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#resize-a-disk) to free up space or [resize your Compute Instance](/docs/products/compute/compute-instances/guides/resize/) to a higher resource tier.
     {{< /note >}}
 
     If you need to copy files from your existing disk to another location before rebuilding, you can [start SSH](#starting-ssh) under Rescue Mode and then use an SFTP client to copy files to your computer.
@@ -372,7 +369,7 @@ To use the Rebuild feature:
 
 1.  If you need to copy files from existing disk to another location before rebuilding, you can [start SSH](#starting-ssh) under Rescue Mode and then use an [SFTP client](/docs/tools-reference/file-transfer/) to copy files to your computer, another server, or somewhere else.
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com).
+1.  Log in to [Cloud Manager](https://cloud.linode.com).
 
 1.  Click on the **Linodes** link in the sidebar:
 
@@ -382,9 +379,9 @@ To use the Rebuild feature:
 
     ![Cloud Manager Linodes page - rebuild option highlighted](cloud-manager-linodes-rebuild.png)
 
-1.  Complete the Rebuild form. Select an image or StackScript to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via the Cloud Manager, this option does not appear).
+1.  Complete the Rebuild form. Select an image or StackScript to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via Cloud Manager, this option does not appear).
 
-    {{< content "password-requirements-shortguide" >}}
+    {{% content "password-requirements-shortguide" %}}
 
 1.  Click on **Rebuild** button after completing the form:
 

@@ -2,28 +2,26 @@
 title: "Deploy a Galera Cluster through the Linode Marketplace"
 description: "This guide shows how to deploy a MySQL/MariaDB Galera Cluster through the Linode Marketplace."
 published: 2023-03-20
-modified_by:
-  name: Linode
+modified: 2024-04-04
 keywords: ['database','mysql','rdbms','relational database','mariadb']
 tags: ["database","cloud-manager","linode platform","mysql","marketplace","mariadb"]
 external_resources:
 - '[MySQL 5.6 Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/index.html)'
 - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
 - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
-authors: ["Linode"]
 ---
 
-Galera provides a performant MariaDB database solution with synchronous replication to achieve high availability. Galera is deployed with MariaDB, which is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. MariaDB was originally based off of MySQL and maintains backwards compatibility.
+Galera provides a performant MariaDB database solution with synchronous replication to achieve high availability. Galera is deployed with MariaDB, which is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. MariaDB was originally based off of MySQL and maintains backward compatibility.
 
 {{< note type="warning" title="Marketplace App Cluster Notice" >}}
-This Marketplace App deploys 3 Compute Instances to create a highly available and redundant MeriaDB Galera cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy MariaDB on a single Compute Instance, see [Deploy MySQL/MariaDB through the Linode Marketplace](/docs/products/tools/marketplace/guides/mysql/).
+This Marketplace App deploys 3 Compute Instances to create a highly available and redundant MariaDB Galera cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy MariaDB on a single Compute Instance, see [Deploy MySQL/MariaDB through the Linode Marketplace](/docs/products/tools/marketplace/guides/mysql/).
 {{< /note >}}
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-app-cluster-shortguide">}}
+{{% content "deploy-marketplace-app-cluster-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** The Galera cluster should be fully deployed and configured within 5-10 minutes after the first Compute Instance has finished provisioning.
@@ -38,7 +36,7 @@ This Marketplace App deploys 3 Compute Instances to create a highly available an
 
 - **Cluster Name** *(required)*: Enter the name you wish to use for this cluster deployment.
 
-- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/) to create one.
+- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) to create one.
 
 - **Add SSH Keys to all nodes** *(required)*: If you select *yes*, any SSH Keys that are added to the root user account (in the **SSH Keys** section), are also added to your limited user account on all deployed Compute Instances.
 
@@ -56,7 +54,7 @@ The following fields (in addition to the domain field above) are used when creat
 - **CA Common name:** This is the common name for the self-signed Certificate Authority.
 - **Common name:** This is the common name that is used for the domain.
 
-{{< content "marketplace-special-character-limitations-shortguide">}}
+{{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
@@ -99,7 +97,7 @@ The standard tool for interacting with MariaDB is the `mysql` client which insta
     prompt    (\R) Change your mysql prompt.
     quit      (\q) Quit mysql.
     rehash    (\#) Rebuild completion hash.
-    source    (\.) Execute an SQL script file. Takes a file name as an argument.
+    source    (\.) Execute an SQL script file. Takes a filename as an argument.
     status    (\s) Get status information from the server.
     system    (\!) Execute a system shell command.
     tee       (\T) Set outfile [to_outfile]. Append everything into given outfile.
@@ -166,7 +164,7 @@ The standard tool for interacting with MariaDB is the `mysql` client which insta
 
 ## Next Steps
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 For more on MySQL/MariaDB, checkout the following guides:
 

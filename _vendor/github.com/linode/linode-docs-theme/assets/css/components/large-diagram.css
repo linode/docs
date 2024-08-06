@@ -1,0 +1,33 @@
+.large-diagram-animate.on-load {
+  animation: diagram-border-pulse 3s ease-in;
+  animation-iteration-count: 2;
+  animation-direction: alternate;
+}
+
+.large-diagram-animate.on-load .large-diagram-svg-container {
+  animation: diagram-fade 0.5s ease-in forwards;
+}
+
+.large-diagram-svg-container .bullet {
+  @apply cursor-default;
+}
+
+@keyframes diagram-border-pulse {
+  from {
+    @apply border-gray-200;
+  }
+
+  to {
+    @apply border-blue-500;
+  }
+}
+
+@keyframes diagram-fade {
+  from {
+    @apply opacity-0;
+  }
+
+  to {
+    @apply opacity-100;
+  }
+}

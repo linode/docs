@@ -1,17 +1,14 @@
 ---
+title: "SRV Records"
 description: "Learn how to create SRV records using Linode's DNS Manager"
 published: 2022-10-28
-modified_by:
-  name: Linode
-title: "SRV Records"
 keywords: ["dns"]
 tags: ["linode platform"]
-authors: ["Linode"]
 ---
 
 ## SRV Record Overview
 
-An **SRV** (*service*) record provides the target hostname and port for a given service. This allows you to direct traffic for specific services to a server other than what is specified in corresponding DNS records. SRV records are required for some protocols, such as XMPP and SIP.
+An **SRV** (*service*) record provides the target hostname and port for a given service. This lets you direct traffic for specific services to a server other than what is specified in corresponding DNS records. SRV records are required for some protocols, such as XMPP and SIP.
 
 ## Properties
 

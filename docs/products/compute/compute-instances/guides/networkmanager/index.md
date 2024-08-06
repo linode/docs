@@ -1,15 +1,12 @@
 ---
-description: "Learn how to configure networking using the NetworkManager utility on CentOS, CentOS Stream, Fedora, and other modern Linux distributions"
-keywords: ["static", "ip address","NetworkManager"]
-published: 2022-05-27
-modified_by:
-  name: Linode
 title: "Network Configuration Using NetworkManager"
+description: "Learn how to configure networking using the NetworkManager utility on CentOS, CentOS Stream, Fedora, and other modern Linux distributions"
+published: 2022-05-27
+keywords: ["static", "ip address","NetworkManager"]
 tags: ["networking","linode platform"]
 external_resources:
   - '[NetworkManager documentation](https://networkmanager.dev/docs/api/latest/NetworkManager.conf.html)'
 aliases: ['/guides/networkmanager/']
-authors: ["Linode"]
 ---
 
 [NetworkManager](https://networkmanager.dev/) is a very popular network configuration utility and is used by default on Fedora, CentOS Stream, CentOS, AlmaLinux 8, and Rocky Linux 8. It can also be easily installed on Arch, Ubuntu, and other distributions.
@@ -56,7 +53,7 @@ PREFIX0=24
 
 ## Configuring IP Addresses Manually
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and review your Compute Instance's IP addresses. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). Make a note of the following pieces of information or keep this page accessible so you can reference it later.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and review your Compute Instance's IP addresses. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). Make a note of the following pieces of information or keep this page accessible so you can reference it later.
 
     - Public IPv4 address(es) and the associated IPv4 gateway
     - Private IPv4 address (if one has been added)
@@ -64,7 +61,7 @@ PREFIX0=24
     - IPv6 /64 or /56 routed range (if one has been added)
     - DNS resolvers (if you want to use Linode's resolvers)
 
-1. Disable Network Helper on the Compute Instance so that it doesn't overwrite any of your changes on the next system reboot. For instructions, see the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#single-per-linode) guide. This guide covers disabling Network Helper *globally* (for all Compute Instances on your account) or just for a single instance.
+1. Disable Network Helper on the Compute Instance so that it doesn't overwrite any of your changes on the next system reboot. For instructions, see the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#individual-compute-instance-setting) guide. This guide covers disabling Network Helper *globally* (for all Compute Instances on your account) or just for a single instance.
 
 1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). You may want to consider using Lish to avoid getting locked out in the case of a configuration error.
 

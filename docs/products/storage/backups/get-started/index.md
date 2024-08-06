@@ -2,17 +2,17 @@
 title: "Get Started"
 title_meta: "Getting Started with the Linode Backup Service"
 description: "Get Started with the Linode Backup Service. Learn how to enable the Backup Service and manage your backups."
+published: 2021-11-12
 tab_group_main:
     weight: 20
 aliases: ['/products/storage/backups/guides/manage/']
-published: 2021-11-12
 ---
 
 ## Enabling the Backup Service
 
 The Backup service can be enabled on existing Compute Instances by following the instructions below:
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com).
+1.  Log in to [Cloud Manager](https://cloud.linode.com).
 
 1.  From the **Linodes** page, select the Linode you want to back up.
 
@@ -31,13 +31,13 @@ Once enabled, the Backup service will store up to four backups, three of which a
 - **Biweekly** *(Between 8 and 14 days old)*
 - **Manual Snapshot** *(A user-initiated snapshot that stays the same until another snapshot is initiated)*
 
-These backups can be managed in the Cloud Manager under the **Backups** tab for your Compute Instance.
+These backups can be managed in Cloud Manager under the **Backups** tab for your Compute Instance.
 
-![The list of Backups in the Cloud Manager](manage-backups.png)
+![The list of Backups in Cloud Manager](manage-backups.png)
 
 This page also provides a few other options, detailed below:
 
-- **Manual Snaphot:** Creates a new manual snapshot, overwriting any existing one. See [Take a Manual Snapshot](/docs/products/storage/backups/guides/take-a-snapshot/).
+- **Manual Snapshot:** Creates a new manual snapshot, overwriting any existing one. See [Take a Manual Snapshot](/docs/products/storage/backups/guides/take-a-snapshot/).
 
 - **Settings:** Allows you to schedule when automatic backups are generated. See [Schedule Backups](/docs/products/storage/backups/guides/schedule/).
 
@@ -47,6 +47,6 @@ This page also provides a few other options, detailed below:
 
 To restore from a backup, locate the backup within the **Backups** tab of the Compute Instance and click the corresponding **ellipsis** menu. From here, there are a few options that can be selected:
 
-- **Restore to Existing Linode:** Restore the backup disks to an existing Compute Instance. [Restore a Backup to an Existing Linode](/docs/products/storage/backups/guides/restore-to-an-existing-linode/)
+- **Restore to Existing Linode:** Restore the backup disks to an existing Compute Instance. [Restore a Backup to an Existing Linode](/docs/products/storage/backups/guides/restore-to-an-existing-instance/)
 
-- **Deploy New Linode:** Restore the backup disks to a new Compute Instance. See [Restore a Backup to a New Linode](/docs/products/storage/backups/guides/restore-to-a-new-linode/).
+- **Deploy New Linode:** Restore the backup disks to a new Compute Instance. See [Restore a Backup to a New Linode](/docs/products/storage/backups/guides/restore-to-a-new-instance/).

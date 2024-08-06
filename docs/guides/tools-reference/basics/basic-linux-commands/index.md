@@ -1,14 +1,13 @@
 ---
 slug: basic-linux-commands
-description: 'What are the basic linux commands you should know? Use our Linux commands cheat sheet to learn beneficial commands, including useful commands that go beyond the basics.'
-keywords: ['linux commands cheat sheet','linux commands list','linux basic commands','important linux commands']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-23
-modified_by:
-  name: Linode
 title: "Basic Linux Commands: A Beginner’s Guide "
 title_meta: "A List of the Most Common Linux Commands"
+description: 'What are the basic linux commands you should know? Use our Linux commands cheat sheet to learn beneficial commands, including useful commands that go beyond the basics.'
 authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
+published: 2021-12-23
+keywords: ['linux commands cheat sheet','linux commands list','linux basic commands','important linux commands']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 Both beginners and advanced users of Linux can benefit from a Linux command cheat sheet. If you need to use a command that isn't part of your daily toolchain, or if you are coming from a non-Linux based operating system, a Linux command reference is what you need. These commands work on most Linux distributions released since 2012.
@@ -156,8 +155,7 @@ sdb    8:16   0  512M  0 disk [SWAP]
 To resize, delete, create, and move your file system partitions, use the `parted` command. To list known partition information, use the `-l` option:
 
     sudo parted -l
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If the `parted` command is not available on your Linux system, use your distribution's package manager to install it. For example, to install `parted` on an Ubuntu system, use the following command:
 
     sudo apt-get install parted
@@ -350,8 +348,7 @@ You can view all files in use by a specific process ID (PID) with the following 
 You can view a Linux system's connected USB devices using the `lsusb` command, as follows:
 
     lsusb
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If your system does not have the `lsusb` command installed, use your package manager to install it. For example, to install it on an Ubuntu 20.04 system, use the following command:
 
     sudo apt-get install usbutils
@@ -397,8 +394,7 @@ An example of this command's output is the following:
 The `dmidecode` command displays information detected about BIOS settings and inventory:
 
     dmidecode
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The `dmidecode` command cannot change BIOS settings.
 {{< /note >}}
 
@@ -544,7 +540,7 @@ udp        0      0 0.0.0.0:68              0.0.0.0:*                           
 
 The `netstat` command has many powerful options to view information about different areas of your network. For a deeper dive, view our [Inspecting Network Information with netstat](/docs/guides/inspecting-network-information-with-netstat/).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Some Linux distributions use the `ss` command, a direct replacement for `netstat`.
 {{< /note >}}
 

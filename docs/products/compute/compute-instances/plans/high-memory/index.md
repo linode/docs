@@ -1,8 +1,9 @@
 ---
 title: "High Memory Compute Instances"
-linkTitle: "High Memory"
 description: "High Memory Linodes offer cost-effective fast data retrieval and in-memory processing."
 published: 2023-01-18
+modified: 2023-09-21
+linkTitle: "High Memory"
 aliases: ['/products/compute/high-memory/']
 ---
 
@@ -20,7 +21,7 @@ Run queries on large data volumes. High memory Linodes make it possible to proce
 
 ## Dedicated Competition-Free Resources
 
-A High Memory Instance provides entire vCPU cores accessible only to you. Because the vCPU cores are not shared, no other Compute Instances can utilize them. Your instance never has to wait for another process, enabling your software to run at peak speed and efficiency. This allows you to run workloads that require full-duty work (100% CPU all day, every day) at peak performance.
+A High Memory Instance provides entire vCPU cores accessible only to you. Because the vCPU cores are not shared, no other Compute Instances can utilize them. Your instance never has to wait for another process, enabling your software to run at peak speed and efficiency. This lets you run workloads that require full-duty work (100% CPU all day, every day) at peak performance.
 
 ## Recommended Workloads
 
@@ -45,4 +46,4 @@ High Memory instances are available across [all regions](https://www.linode.com/
 | Outbound Network Transfer | 5 TB - 9 TB |
 | Outbound Network Bandwidth | 5 Gbps - 9 Gbps |
 
-Pricing starts at $60 for a High Memory Compute Instance with 2 vCPU cores, 24GB memory, and 20GB SSD storage. Review the [Pricing page](https://www.linode.com/pricing/#compute-high-memory) for additional plans and their associated costs. Review the [Compute Instance Plan Types](/docs/products/compute/compute-instances/plans/) page below to learn more about other instance types.
+Pricing starts at $60 for a High Memory Compute Instance with 2 vCPU cores, 24GB memory, and 20GB of SSD storage. Pricing may vary by region. Review the [Pricing page](https://www.linode.com/pricing/#compute-high-memory) for additional plans and their associated costs. Review the [Compute Instance Plan Types](/docs/products/compute/compute-instances/plans/) page to learn more about other instance types.

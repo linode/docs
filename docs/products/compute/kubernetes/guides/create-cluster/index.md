@@ -1,15 +1,14 @@
 ---
 title: Create a Cluster
 description: "Learn how to create a Kubernetes cluster on the Linode Kubernetes Engine (LKE)."
-aliases: ['/products/compute/kubernetes/guides/create-lke-cluster/']
 published: 2023-02-09
-authors: ["Linode"]
+aliases: ['/products/compute/kubernetes/guides/create-lke-cluster/']
 tags: ["managed hosting"]
 ---
 
-This guide walks you through creating an LKE (Linode Kubernetes Engine) cluster through the Cloud Manager.
+This guide walks you through creating an LKE (Linode Kubernetes Engine) cluster through Cloud Manager.
 
-1. [Open the Create Kubernetes Cluster Form in the Cloud Manager](#open-the-create-kubernetes-cluster-form-in-the-cloud-manager)
+1. [Open the Create Kubernetes Cluster Form in Cloud Manager](#open-the-create-kubernetes-cluster-form-in-cloud-manager)
 1. [Set the Label](#set-the-label)
 1. [Select a Region](#select-a-region)
 1. [Choose a Kubernetes Version](#choose-a-kubernetes-version)
@@ -17,13 +16,13 @@ This guide walks you through creating an LKE (Linode Kubernetes Engine) cluster 
 1. [Optionally Enable High Availability](#optionally-enable-high-availability)
 1. [Deploy the Cluster](#deploy-the-cluster)
 
-## Open the Create Kubernetes Cluster Form in the Cloud Manager
+## Open the Create Kubernetes Cluster Form in Cloud Manager
 
-Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Kubernetes** from the left navigation menu. Click the **Create Cluster** button. This opens the *[Kubernetes Create Cluster](https://cloud.linode.com/kubernetes/create)* form.
+Log in to [Cloud Manager](https://cloud.linode.com/) and select **Kubernetes** from the left navigation menu. Click the **Create Cluster** button. This opens the *[Kubernetes Create Cluster](https://cloud.linode.com/kubernetes/create)* form.
 
 ## Set the Label
 
-Within the **Cluster Label** field, enter the label you wish to use. This label allows you to identify it from within the Cloud Manager, Linode CLI, and Linode API. The label must be alphanumeric, between 3 and 32 characters, and unique from other cluster labels on your account.
+Within the **Cluster Label** field, enter the label you wish to use. This label lets you identify it from within Cloud Manager, Linode CLI, and Linode API. The label must be alphanumeric, between 3 and 32 characters, and unique from other cluster labels on your account.
 
 ## Select a Region
 

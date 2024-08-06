@@ -1,16 +1,15 @@
 ---
 slug: install-farmos
-keywords: ["farmos", "Drupal", "LAMP"]
-tags: ["drupal", "lamp", "cms"]
+title: 'How to Install farmOS - a Farm Recordkeeping Application'
 description: 'This guide shows you how to prepare a system for, then install and set up the agribusiness management web app, farmOS.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
 published: 2017-09-09
 modified: 2021-06-22
-modified_by:
-    name: Linode
-title: 'How to Install farmOS - a Farm Recordkeeping Application'
+keywords: ["farmos", "Drupal", "LAMP"]
+tags: ["drupal", "lamp", "cms"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/install-farmos/']
-authors: ["Angel Guarisma"]
 ---
 
 ![Farm_OS Banner](FarmOS.png)
@@ -25,9 +24,9 @@ This guide explains how to install, setup and host your own farmOS web app on a 
 
 1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
-1.  Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1.  Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
 1.  Install and configure a [LAMP stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/). Skip the configuration steps for setting up MySQL and use the steps outlined in this guide instead.
 
@@ -106,7 +105,7 @@ Ensure that the version number matches the farmOS version you wish to download.
 
 ## Configure farmOS
 
-1.  Go to your Linode's domain or [IP address](/docs/guides/find-your-linodes-ip-address) in a web browser. This shows you the first step of the farmOS/Drupal web configuration.
+1.  Go to your Linode's domain or [IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) in a web browser. This shows you the first step of the farmOS/Drupal web configuration.
 
 1.  The first screen you encounter asks you to choose a profile and a language:
 

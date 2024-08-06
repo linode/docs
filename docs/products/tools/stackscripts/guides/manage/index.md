@@ -2,18 +2,16 @@
 title: Manage StackScripts
 title_meta: Manage StackScripts on the Linode Platform
 description: "Learn how to view, edit, and manage StackScripts on your Linode account."
-keywords: ["automation", "scripts", "deployments", "instance"]
-tags: ["linode platform","automation","cloud manager"]
 published: 2020-04-22
 modified: 2022-11-30
-modified_by:
-  name: Linode
+keywords: ["automation", "scripts", "deployments", "instance"]
+tags: ["linode platform","automation","cloud manager"]
 aliases: ['/platform/stackscripts/creating-and-managing-stackscripts-a-tutorial/','/guides/creating-and-managing-stackscripts-a-tutorial/','/products/tools/stackscripts/guides/stackscripts-edit-stackscript/','/products/tools/stackscripts/guides/stackscripts-delete-stackscript/','/products/tools/stackscripts/guides/stackscripts-create-public-stackscript/']
 ---
 
 ## View StackScripts
 
-Log in to the [Cloud Manager](https://cloud.linode.com) and select **StackScripts** from the left menu. If any StackScripts exist on your account, they are listed on this page.
+Log in to [Cloud Manager](https://cloud.linode.com) and select **StackScripts** from the left menu. If any StackScripts exist on your account, they are listed on this page.
 
 ![Screenshot of the StackScripts page in Cloud Manager](view-stackscripts.png)
 
@@ -27,7 +25,7 @@ See [Create a StackScript](/docs/products/tools/stackscripts/guides/create/) for
 
 ## Edit a StackScript
 
-1. Navigate to the **StackScripts** page in the Cloud Manager. See [View StackScripts](#view-stackscripts).
+1. Navigate to the **StackScripts** page in Cloud Manager. See [View StackScripts](#view-stackscripts).
 
 1. Locate the StackScript you wish to view or edit. Click on the corresponding **Edit** link, which may appear within the ellipsis menu.
 
@@ -41,7 +39,7 @@ See [Create a StackScript](/docs/products/tools/stackscripts/guides/create/) for
 
 Making an Account StackScript public allows the rest of the Linode community to access your script as a *Community StackScript*.
 
-1. Navigate to the **StackScripts** page in the Cloud Manager. See [View StackScripts](#view-stackscripts).
+1. Navigate to the **StackScripts** page in Cloud Manager. See [View StackScripts](#view-stackscripts).
 
 1. Locate the StackScript you wish to view or edit. Click on the corresponding **Make StackScript Public** link, which may appear within the ellipsis menu.
 
@@ -54,7 +52,7 @@ Making an Account StackScript public allows the rest of the Linode community to 
     {{< /note >}}
 
 {{< note >}}
-Your public [Account StackScript](/docs/products/tools/stackscripts/guides/deploy-a-compute-instance/#account-stackscripts) is available to you for use on the Account StackScripts tab. For users on other accounts, your StackScript is available to them from the [Community StackScripts](/docs/products/tools/stackscripts/guides/deploy-a-compute-instance/#community-stackscripts) tab.
+Your public StackScript is available to you for use on the Account StackScripts tab. For users on other accounts, your StackScript is available to them from the Community StackScripts tab.
 {{< /note >}}
 
 ## Delete a StackScript
@@ -63,7 +61,7 @@ Your public [Account StackScript](/docs/products/tools/stackscripts/guides/deplo
 You cannot delete Account StackScripts that have been made public.
 {{< /note >}}
 
-1. Navigate to the **StackScripts** page in the Cloud Manager. See [View StackScripts](#view-stackscripts).
+1. Navigate to the **StackScripts** page in Cloud Manager. See [View StackScripts](#view-stackscripts).
 
 1. Locate the StackScript you wish to delete. Click on the corresponding **Delete** link, which may appear within the ellipsis menu.
 

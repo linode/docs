@@ -1,20 +1,17 @@
 ---
-description: "Learn which taxes are collected by Linode and how to add a tax identification number to your account."
-keywords: ["accounts", "vat", "linode manager", "linode cloud manager", "manager", "tax", "taxes", "tax information", "usd", "vat id", "eu", "european union", "value added tax", "gst", "goods and services tax", "gst id", "tax id"]
-modified: 2023-07-24
-modified_by:
-  name: Linode
-published: 2019-04-09
 title: Tax Information
+description: "Learn which taxes are collected by Linode and how to add a tax identification number to your account."
+published: 2019-04-09
+modified: 2024-08-05
+keywords: ["accounts", "vat", "linode manager", "linode cloud manager", "manager", "tax", "taxes", "tax information", "usd", "vat id", "eu", "european union", "value added tax", "gst", "goods and services tax", "gst id", "tax id"]
 aliases: ['/platform/billing-and-support/european-union-vat-linode/','/platform/billing-and-support/european-union-vat-linode-classic-manager/','/platform/billing-and-support/tax-information/','/platform/billing-and-support/tax-information-classic-manager/','/guides/tax-information/']
 tags: ["linode platform"]
-authors: ["Linode"]
 ---
 
 Some countries, states, and regions require us by law to collect taxes. As such, customers located in these locations are charged the appropriate tax rate for any taxable services billed to their account. The taxes that Linode collects are listed on customer invoices (see the [Viewing Invoices and Payments](/docs/products/platform/billing/guides/view-history/) section of our Cloud Manager Billing guide).
 
 {{< note >}}
-Pricing and service fees posted publicly, such as our [Pricing](https://www.linode.com/pricing/) page and listed in the Cloud Manager, do not include taxes.
+Pricing and service fees posted publicly, such as our [Pricing](https://www.linode.com/pricing/) page and listed in Cloud Manager, do not include taxes.
 {{< /note >}}
 
 ## List of Countries and Tax Rates
@@ -23,51 +20,57 @@ The following table lists each country that requires us to collect taxes. Alongs
 
 | Country | Tax Rate | Tax Details | Start Date |
 | -- | -- | -- | -- |
-| Australia | 10% | [GST](https://www.ato.gov.au/Business/GST/) | October 1st, 2019 |
-| Austria | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Belgium | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Bulgaria | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Cambodia | 10% | [VAT](https://www.tax.gov.kh/en/content-detail/CivCT4107950038436) | December 15th, 2022 |
+| Australia | 10% | [GST](https://www.ato.gov.au/Business/GST/) | October 1, 2019 |
+| Austria | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Belgium | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Bulgaria | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Cambodia | 10% | [VAT](https://www.tax.gov.kh/en/content-detail/CivCT4107950038436) | December 15, 2022 |
 | [Canada](#canada) (see below) | | | |
-| Chile| 19% | [VAT](https://www.sii.cl/destacados/foreign_investor/vat.html) | December 15th, 2022 |
-| Croatia | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Cyprus | 19% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Czech Republic | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Denmark | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Estonia | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Greece | 24% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Finland | 24% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| France | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Germany | 19% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Hungary | 27% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| India | 18% | [GST](http://gstcouncil.gov.in/sites/default/files/faq/sectoral-faq-it-ites.pdf) | October 1st, 2019 |
-| Ireland | 23% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Italy | 22% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Japan | 10% | [JCT](https://www.eu-japan.eu/taxes-accounting/consumption-taxes) | April 1st, 2022 |
-| Kenya | 16% | [VAT](https://www.kra.go.ke/individual/filing-paying/types-of-taxes/value-added-tax) | June 1st, 2023 |
-| Latvia | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Lithuania | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Luxembourg | 17% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Malaysia | 6% | [SST](https://mysst.customs.gov.my/AboutBackground) | December 15th, 2022 |
-| Malta | 18% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Netherlands | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Norway | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | May 1st, 2022 |
-| Poland | 23% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Portugal | 23% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Romania | 19% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Russian Federation | 20% | [VAT](https://www.nalog.gov.ru/rn77/TAXATION/TAXES/NDS/) | December 15th, 2022 |
-| Singapore | 8% | [GST](https://www.iras.gov.sg/irashome/GST/GST-registered-businesses/Learning-the-basics/How-to-implement-GST/Current-GST-Rates/) | September 1st, 2020 |
-| Slovakia | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Slovenia | 22% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Spain | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Sweden | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Switzerland | 7.7% | [VAT](https://www.estv.admin.ch/estv/en/home/value-added-tax/vat-rates-switzerland.html) | December 15th, 2022 |
-| Thailand\* | 7% | [VAT](https://www.rd.go.th/english/6043.html) | September 1st, 2023 |
-| United Arab Emirates | 5% | [VAT](https://u.ae/en/information-and-services/finance-and-investment/taxation/valueaddedtaxvat) | December 15th, 2022 |
-| United Kingdom | 20% | [VAT](https://www.gov.uk/vat-rates) | July 1st, 2019 |
+| Chile| 19% | [VAT](https://www.sii.cl/destacados/foreign_investor/vat.html) | December 15, 2022 |
+| Croatia | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Cyprus | 19% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Czech Republic | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Denmark | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Egypt | 14% | [VAT](https://www.eta.gov.eg/en/content/egyptian-tax-authority-eta-has-recently-published-value-added-tax-vat-guidelines-digital) | March 1, 2024 |
+| Estonia | 22% | [VAT](https://www.emta.ee/en/business-client/taxes-and-payment/value-added-tax) | January 1, 2024 |
+| Greece | 24% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Finland | 24% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| France | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Germany | 19% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Hungary | 27% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| India | 18% | [GST](http://gstcouncil.gov.in/sites/default/files/faq/sectoral-faq-it-ites.pdf) | October 1, 2019 |
+| Ireland | 23% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Italy | 22% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Japan | 10% | [JCT](https://www.eu-japan.eu/taxes-accounting/consumption-taxes) | April 1, 2022 |
+| Kenya | 16% | [VAT](https://www.kra.go.ke/individual/filing-paying/types-of-taxes/value-added-tax) | June 1, 2023 |
+| Korea | 10% | [VAT](https://teht.hometax.go.kr/websquare/websquare.wq?w2xPath=/ui/ca/a/b/UTECAABA12.xml) | June 1, 2024 |
+| Latvia | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Lithuania | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Luxembourg | 17% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Malaysia | 8% | [SST](https://mysst.customs.gov.my/AboutBackground) | March 1, 2024 |
+| Malta | 18% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Netherlands | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| New Zealand | 15% | [GST](https://www.ird.govt.nz/gst) | October 1, 2023 |
+| Norway | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | May 1, 2022 |
+| Poland | 23% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Portugal | 23% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Romania | 19% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Russian Federation | 20% | [VAT](https://www.nalog.gov.ru/rn77/TAXATION/TAXES/NDS/) | December 15, 2022 |
+| Saudi Arabia | 15% | [VAT](https://zatca.gov.sa/en/Pages/default.aspx) | May 1, 2024 |
+| Singapore | 8% | [GST](https://www.iras.gov.sg/irashome/GST/GST-registered-businesses/Learning-the-basics/How-to-implement-GST/Current-GST-Rates/) | September 1, 2020 |
+| Slovakia | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Slovenia | 22% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Spain | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Sweden | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1, 2019 |
+| Switzerland | 7.7% | [VAT](https://www.estv.admin.ch/estv/en/home/value-added-tax/vat-rates-switzerland.html) | December 15, 2022 |
+| Thailand | 10% | [VAT](https://www.rd.go.th/english/6043.html) | October 1, 2023 |
+| Turkey | 20% | [VAT](https://www.gib.gov.tr/sites/default/files/fileadmin/taxation_system2021.pdf) | April 1, 2024 |
+| Uganda | 18% | [VAT](https://ura.go.ug/en/vat-registered-category/) | May 1, 2024 |
+| Ukraine | 20% | [VAT](https://ukraineinvest.gov.ua/en/analytics-research/overview-of-taxation/) | April 1, 2024 |
+| United Arab Emirates | 5% | [VAT](https://u.ae/en/information-and-services/finance-and-investment/taxation/valueaddedtaxvat) | December 15, 2022 |
+| United Kingdom | 20% | [VAT](https://www.gov.uk/vat-rates) | July 1, 2019 |
 | [United States](#united-states) (see below) | | | |
 
-\**The tax rate for Thailand increases to 10% (from 7%) on October 1st, 2023.*
 
 ### Canada
 
@@ -95,43 +98,45 @@ The following table lists each U.S. state and district that requires us to colle
 
 | State or District | Start Date |
 | -- | -- |
-| Arizona | May 1st, 2022 |
-| Colorado localities | December 15th, 2022 |
-| Connecticut | December 15th, 2022 |
+| Arizona | May 1, 2022 |
+| Colorado localities | December 15, 2022 |
+| Connecticut | December 15, 2022 |
 | Hawaii | May 1st, 2022 |
-| Iowa | February 1st, 2023 |
-| Maryland | February 1st, 2023 |
-| Massachusetts | December 15th, 2022 |
-| Mississippi | December 15th, 2022 |
-| New Mexico | December 15th, 2022 |
-| New York | December 15th, 2022 |
-| Ohio | February 1st, 2023 |
-| Pennsylvania | May 1st, 2022 |
-| Rhode Island | December 15th, 2022 |
-| South Carolina | December 15th, 2022 |
-| South Dakota | August 1st, 2022 |
-| Tennessee | December 15th, 2022 |
-| Texas | May 1st, 2022 |
-| Utah | December 15th, 2022 |
-| Washington | May 1st, 2022 |
-| Washington D.C | August 1st, 2022 |
-| West Virginia | December 15th, 2022 |
+| Iowa | February 1, 2023 |
+| Maryland | February 1, 2023 |
+| Massachusetts | December 15, 2022 |
+| Mississippi | December 15, 2022 |
+| New Mexico | December 15, 2022 |
+| New York | December 15, 2022 |
+| Ohio | February 1, 2023 |
+| Pennsylvania | May 1, 2022 |
+| Rhode Island | December 15, 2022 |
+| South Carolina | December 15, 2022 |
+| South Dakota | August 1, 2022 |
+| Tennessee | December 15, 2022 |
+| Texas | May 1, 2022 |
+| Utah | December 15, 2022 |
+| Washington | May 1, 2022 |
+| Washington D.C | August 1, 2022 |
+| West Virginia | December 15, 2022 |
 
 ## Preventing Tax Collection
 
-For most customers, including those using Linode for most business and personal reasons, it's preferable to have Linode automatically calculate any required taxes and add them to each invoice. That said, some registered businesses or organizations may wish to prevent taxes from being added to their Linode invoices. This includes business that are tax exempt or businesses that are liable to pay taxes directly to their government's tax agency due to a special tax status or program (like RCM - Reverse Charge Mechanism).
+Many customers using Linode for business or personal reasons may prefer to have Linode automatically calculate any required taxes and add them to each invoice. That said, some registered businesses or organizations may wish to prevent taxes from being added to their Linode invoices. This includes businesses that are tax exempt or businesses that are liable to pay taxes directly to their government's tax agency due to a special tax status or program (like RCM - Reverse Charge Mechanism).
 
-In most cases, tax collection can be prevented by [adding a tax ID](#adding-a-tax-id) to your Linode account. Users within the **United States** and **Canada** will need to submit both their tax ID and a state tax exemption or reseller's certificate in a [Support Ticket](https://www.linode.com/support/) before becoming exempt. Registered Canadian businesses may become exempt from *PST* sales tax but will always be billed for GST, HST, and QST sales tax.
+For eligible tax-exempt users in most countries, you can add your VAT or GST tax ID to your Linode account to have taxes removed from your invoices. See [Adding a Tax ID](#adding-a-tax-id) below for instructions on how to add your tax ID to your account.
+
+For users within the **United States** and **Canada**, you need to submit both your tax ID and state tax exemption or reseller's certificate via [Support Ticket](https://www.linode.com/support/) rather than adding your tax ID to your Linode account. This must happen before you are eligible to become exempt. Once approved, your tax ID will be added to your account by our team. Note that registered Canadian businesses may become exempt from PST sales tax but will always be billed for GST, HST, and QST sales tax.
 
 {{< note type="alert" >}}
-If you are located in one of the countries that require taxes on our services, you are still liable for those taxes. Adding your tax ID does not exempt you from your liability to pay any taxes that have been mandated by your country for our services. Instead, this allows you to settle your taxes directly with your government's tax agency.
+If you are located in one of the countries that require taxes on our services, you are still liable for those taxes. Adding your tax ID does not exempt you from your liability to pay any taxes that have been mandated by your country for our services. Instead, this lets you settle your taxes directly with your government's tax agency.
 {{< /note >}}
 
 ### Adding a Tax ID
 
 To add (or update) your account with a tax ID, follow the instructions below. A tax ID can also be added to an account during the signup process.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com).
+1. Log in to [Cloud Manager](https://cloud.linode.com).
 
 1. Navigate to the **Account** link in the sidebar.
 
@@ -149,7 +154,7 @@ Your tax location is determined by the contact information you provided during s
 
 ### How can I change my tax location?
 
-You may update your tax location by navigating to the **Account** page in the [Cloud Manager](https://cloud.linode.com) and then expanding the **Update Contact Information** panel.
+You may update your tax location by navigating to the **Account** page in [Cloud Manager](https://cloud.linode.com) and then expanding the **Update Contact Information** panel.
 
 ### My business is tax exempt. How can I stop further taxes from being charged to my Linode account?
 
@@ -172,18 +177,25 @@ To keep our pricing stable and consistent, rather than fluctuating with exchange
 | Canadian GST | 724750708RT0001 | 871275582RT0001 |
 | Cambodia VAT | N/A | L001-902205344 |
 | Chile VAT | N/A | 59318000K |
+| Egypt VAT | N/A | 694853968 |
 | EU VAT | EU372008859 | EU372048842 |
 | India GST | 9919JEY29001OST | 9922CHE29001OSR |
 | Japan JCT | 00140 | 00143 |
+| Japan QI | N/A | T4700150118765 |
 | Kenya VAT | N/A | P052208918D |
+| Korea VAT | N/A | 766-80-02978 |
 | Manitoba RST | 138835-4 | 141763-3 |
 | Malaysia SST | N/A | 22000048 |
 | Norway VAT | 2063948 | 2070510 |
 | Quebec Provincial QST (effective May 1, 2022) | 1229663158 TQ0001 | 1229976512 TQ0001 |
 | Russian Federation VAT | N/A | 9909524583 |
 | Saskatchewan PST | 759622 | 7648249 |
+| Saudi Arabia | VAT | 312111964100003 |
 | Singapore GST | M90373465T | M90374823J |
 | Switzerland VAT | N/A | CHE-115.356.067 MWST |
+| Turkey VAT | N/A | 0120733196 |
+| Uganda VAT | N/A | 1044189563 |
+| Ukraine VAT | N/A | 880031567 |
 | United Kingdom VAT | GB383720095 | 434006338 |
 | United Arab Emirates | N/A | 104038424800003 |
 | United States EIN | 20-2647179 | 04-3432319 |

@@ -8,6 +8,9 @@
   <meta name="robots" content="noindex" />
 {{ end }}
 
+<meta name="turbo-prefetch" content="true">
+<meta name="view-transition" content="same-origin">
+
 <link rel="apple-touch-icon" sizes="57x57" href="https://assets.linode.com/icons/apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="https://assets.linode.com/icons/apple-touch-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="https://assets.linode.com/icons/apple-touch-icon-72x72.png">
@@ -25,23 +28,10 @@
 <link rel="icon" type="image/png" sizes="16x16" href="https://assets.linode.com/icons/favicon-16x16.png">
 <link rel="shortcut icon" href="https://assets.linode.com/icons/favicon.ico">
 
+
 {{/* Adobe Analytics.
   This is configured for the environments production, development (Netlify and local) and staging.
 */}}<script
   src="{{ site.Params.adobe_launch_script }}"
   async></script>
-{{ if (ne hugo.Environment "development") }}
-  <!-- Google Tag Manager -->  <script>
-    (function (w, d, s, l, i) {
-    w[l] = w[l] || []; w[l].push({
-    'gtm.start':
-    new Date().getTime(), event: 'gtm.js'
-    });
-    var f = d.getElementsByTagName(s)[0],
-    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', '{{ site.Params.gtmID }}');
-  </script>
-  <!-- End Google Tag Manager -->
-{{ end }}
 {{ partialCached "sections/head-src.html" . "-" }}

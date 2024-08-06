@@ -1,18 +1,16 @@
 ---
 slug: update-and-secure-drupal-8-on-ubuntu
+title: Update and Secure Drupal 8 on Ubuntu or Debian
 description: 'This guide will show you how to update and secure an installation of Drupal 8 CMS on your Linode running Ubuntu or Debian.'
+authors: ["Edward Angert"]
+contributors: ["Edward Angert"]
+published: 2016-05-11
 keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8", "update"]
 aliases: ['/websites/cms/drupal/update-and-secure-drupal-8-on-ubuntu/','/websites/cms/update-and-secure-drupal-8-on-ubuntu/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+tags: ["drupal","cms"]
 deprecated: true
 deprecated_link: 'websites/cms/drupal/how-to-update-drupal-8-on-ubuntu-18-04/'
-modified: 2016-05-11
-modified_by:
-    name: Edward Angert
-published: 2016-05-11
-title: Update and Secure Drupal 8 on Ubuntu or Debian
-tags: ["drupal","cms"]
-authors: ["Edward Angert"]
 ---
 
 Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. While a simple incremental update feature is included in version 8.1, manual core updates are required for all preceding versions. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. This guide assumes you have a functional Drupal 8 installation running on Apache and Debian or Ubuntu.
@@ -25,7 +23,7 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 1.  Ensure that you have completed the following guides:
 
     -   [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
-    -   [Install a LAMP stack](/docs/guides/lamp-on-ubuntu-14-04/)
+    -   [Install a LAMP stack](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/)
     -   [Install and Configure Drupal 8](/docs/guides/how-to-install-and-configure-drupal-8/)
 
 2.  Confirm the name of your site's Document Root folder by running the following command on your Linode:
@@ -35,8 +33,7 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 - This guide will use `sudo` wherever possible.
 - You may need additional firewall rules for your specific application.
 - Replace each instance of `example.com` and `user` with the names appropriate to your site, and `203.0.113.52` with your Linode's IP address or domain name.

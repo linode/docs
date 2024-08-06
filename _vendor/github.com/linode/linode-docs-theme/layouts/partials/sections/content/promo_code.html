@@ -1,9 +1,12 @@
+{{ if not .Params.deprecated }}
 <div
   class="flex justify-between bg-brand pull-out items-center rounded-none md:rounded-md px-4 md:px-8 py-4"
   x-data="lncPromoCodes()">
   {{/* We fetch the promo codes via an API. That may fail, but we want to show the signup banner in all cases. */}}
-  <div class="text-white text-md md:text-lg font-regular tracking-normal w-3/4">
-    <span>
+  <div
+    class="text-white text-md md:text-lg font-regular tracking-normal w-3/4"
+    style="min-height: 60px;">
+    <span x-cloak>
       <a
         :href="signupURL(true)"
         target="_blank"
@@ -34,3 +37,4 @@
     </form>
   </div>
 </div>
+{{ end }}

@@ -1,19 +1,18 @@
 ---
+title: "Deploy Easypanel through the Linode Marketplace"
 description: "Deploy Easypanel on a Linode Compute Instance. This provides a modern server control panel which uses Docker."
+published: 2022-05-31
 keywords: ['easypanel','control panel','cpanel']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2022-05-31
-title: "Deploy Easypanel through the Linode Marketplace"
-authors: ["Holden Morris"]
 ---
 
 [Easypanel](https://easypanel.io) is a modern server control panel built for quickly deploying web applications. Based on Docker, Easypanel allows for zero downtime deployments and push deployments through GitHub. It includes support for most popular web programming languages, including PHP, Python, Java, Go, Ruby, and Node.js.
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** Easypanel should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
@@ -32,6 +31,6 @@ authors: ["Holden Morris"]
 
     ![Screenshot of the Easypanel setup page](easypanel-setup.png)
 
-1. After logging in, the admin control panel appears. From there, you can manage your projects. Check out [the official Easypanel documentation](https://easypanel.io/docs) to learn how to further utilize your Easypanel instance.
+1. After logging in, the admin control panel appears. From there, you can manage your projects. Check out [the official Easypanel documentation](https://easypanel.io/docs) to learn how to further use your Easypanel instance.
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

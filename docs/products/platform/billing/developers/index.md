@@ -2,10 +2,10 @@
 title: Developers
 title_meta: "Developer Resources for Billing and Payments"
 description: "Linode Billing is managed easily with developer tools like the Linode API or CLI."
+published: 2022-11-17
 tab_group_main:
     weight: 50
 aliases: ['/products/tools/billing/developers/']
-published: 2022-11-17
 ---
 
 ## Linode API
@@ -32,4 +32,4 @@ Linode’s [API v4](/docs/api) provides the ability to programmatically manage t
 
 ## Linode CLI
 
-The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the Linode API v4 that allows you to manage your Linode account and resources from the command line. Learn how to use the Linode CLI to [manage your account](/docs/products/tools/cli/get-started/#account)
+The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the Linode API v4 that lets you manage your Linode account and resources from the command line. Learn how to use the Linode CLI to [manage your account](/docs/products/tools/cli/guides/account/)

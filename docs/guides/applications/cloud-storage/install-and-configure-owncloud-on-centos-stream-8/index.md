@@ -1,15 +1,15 @@
 ---
 slug: install-and-configure-owncloud-on-centos-stream-8
-description: "Simple, secure, and free, ownCloud is an excellent alternative to Dropbox. Here's how to install it on CentOS Stream 8."
-keywords: ['owncloud on Centos']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-05
-modified: 2022-11-16
-modified_by:
-  name: Linode
-image: Install_ownCloud_CentOS_stream.png
 title: "Installing and Configuring ownCloud on CentOS Stream 8"
 title_meta: "How to Install and Configure ownCloud on CentOS Stream 8"
+description: "Simple, secure, and free, ownCloud is an excellent alternative to Dropbox. Here's how to install it on CentOS Stream 8."
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2021-03-05
+modified: 2022-11-16
+keywords: ['owncloud on Centos']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: Install_ownCloud_CentOS_stream.png
 tags: ["centos"]
 aliases: ['/guides/how-to-install-owncloud-centos-stream-8/']
 relations:
@@ -17,7 +17,6 @@ relations:
         key: how-to-install-owncloud
         keywords:
             - distribution: CentOS Stream 8
-authors: ["Jack Wallen"]
 ---
 
 ## What is ownCloud?
@@ -84,7 +83,7 @@ ownCloud requires a full LAMP (Linux, Apache, MySQL, PHP) stack. In this section
     sudo firewall-cmd --reload
     ```
 
-1. Ensure you can reach the Apache server. Open a web browser, and enter in your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/). For example, enter in `http://192.0.2.0` and replace the IP address with your own. You should see the Apache welcome page.
+1. Ensure you can reach the Apache server. Open a web browser, and enter in your [Linode's IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). For example, enter in `http://192.0.2.0` and replace the IP address with your own. You should see the Apache welcome page.
 
 #### Install MariaDB
 
@@ -229,7 +228,7 @@ Apache requires a [virtual host configuration file](https://httpd.apache.org/doc
     sudo nano /etc/httpd/conf.d/owncloud.conf
     ```
 
-1. Paste the following text into the new file. Replace mentions of `example.com` with your own domain name or your [Linode's IP Address](/docs/guides/find-your-linodes-ip-address/):
+1. Paste the following text into the new file. Replace mentions of `example.com` with your own domain name or your [Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/):
 
     ```file {title="etc/httpd/conf.d/owncloud.conf"}
     Alias /owncloud "/var/www/html/owncloud/"

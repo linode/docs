@@ -1,16 +1,15 @@
 ---
 slug: how-to-use-the-linode-api-with-twilio
+title: "Using the Linode API with Twilio"
+title_meta: "How to Use the Linode API with Twilio"
 description: 'Twilio is an internet messaging service that can be used to monitor server infrastructure. This guide shows a first example of embedding Linode API data in a text message with Twilio.'
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2021-12-23
+modified: 2022-01-07
 keywords: []
 tags: ['python','monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-23
-modified: 2022-01-07
-modified_by:
-  name: Linode
-title: "Using the Linode API with Twilio"
-title_meta: "How to Use the Linode API with Twilio"
-authors: ["John Mueller"]
 ---
 
 [Twilio](https://www.twilio.com/) links internet and telecom networks, creating connections using text messages, emails, phone calls, video, and intelligent chatbots. When you first explore the service, it may appear customer service-oriented, especially for marketing purposes. However, Twilio also has value to anyone who needs [operations support](https://www.twilio.com/solutions/operations), including network administrators.
@@ -99,7 +98,7 @@ Before you can work with the Linode API, you need a personal access token that i
 
 Your Linode account does not have any personal access tokens by default. To create a new token:
 
-1. Follow our [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/) instructions. For the code example in this guide, you should create a token that has **Read Only** access to the **Account** resource.
+1. Follow our [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) instructions. For the code example in this guide, you should create a token that has **Read Only** access to the **Account** resource.
 
 1. When you have created the token, it is displayed in your browser. Unlike the Twilio access token, you are not able to view the token in your browser after you have closed this page. Be sure to copy the token into a temporary text file or a password manager on your computer. Later in this guide, you add this token to the example code.
 
@@ -146,13 +145,13 @@ except KeyError:
     sys.exit(1)
 {{< /file >}}
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 This code imports the relevant Twilio and Linode API modules. It also imports the `os` module, which can be used to read environment variables from your terminal. The module is used by the code example to load your API tokens and Twilio phone numbers. A later section in this guide shows how to set those environment variables before running the script.
 
 Alternatively, you could directly list the token and phone number values in the script. However, it's a good practice to avoid doing this. For example, if you listed your secrets inside the code and then uploaded your code to a public code repository like GitHub, they would be publicly visible.
 
 The `except KeyError` statement is executed if any of the environment variables are not set. A message is printed in the console that tells you which variables are expected by the script. The `sys.exit()` method immediately exits the script in this case.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Create Linode API and Twilio API Python Clients
 
@@ -178,7 +177,7 @@ all_support_tickets = linode_client.support.tickets()
 open_support_tickets = linode_client.support.tickets(SupportTicket.status == "open")
 {{< /file >}}
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 These lines query the Linode API to get a list of the support tickets on your account. The Python binding for the [Support Tickets List](/docs/api/support/#support-tickets-list) API endpoint is accessed. The documentation for this endpoint shows the `account:read_only` authorization is needed to access it. This is why the Account resource was chosen in the [Get a Linode API Token](#get-a-linode-api-token) section.
 
 A support ticket can be open or closed. Tickets are open when they are still awaiting a response from the support team or from the Linode customer. The second line in the example code shows how to use the Linode API's [filtering syntax](/docs/api/#filtering-and-sorting) to only get the support tickets that are currently open on your account.
@@ -186,7 +185,7 @@ A support ticket can be open or closed. Tickets are open when they are still awa
 The list of tickets returned by `linode_client.support.tickets()` is ordered from most recent to oldest. The first element of this list is the most recent ticket on your account. The [Support Tickets List](/docs/api/support/#support-tickets-list) endpoint documentation shows the properties of each ticket object in the list.
 
 In the next section, the message contents are customized according to whether or not you have any open tickets.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Prepare Twilio Text Message Body
 
@@ -215,7 +214,7 @@ else:
     message_text = 'You do not have any Linode support tickets.'
 {{< /file >}}
 
-{{< disclosure-note "About the code" >}}
+{{< note type="secondary" title="About the code" isCollapsible=true >}}
 The code in this snippet prepares the content that is used in the text message.
 
 - Lines 3-9: If there are any open support tickets on your account, the content includes the total number of open tickets. It then includes the title of the most recent ticket (from the `summary` property). It also adds a Cloud Manager link to the ticket, which references the `id` property of the ticket object.
@@ -225,7 +224,7 @@ The code in this snippet prepares the content that is used in the text message.
 - Lines 19-20: If the unfiltered ticket list is empty, a message is prepared to tell the user that they don't have any support tickets.
 
 The `\n` character sequence appears in the message text strings. These characters [insert newlines in the message](https://support.twilio.com/hc/en-us/articles/223181468-How-do-I-Add-a-Line-Break-in-my-SMS-or-MMS-Message-).
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ### Create and Send a Text Message with Twilio
 
@@ -243,17 +242,17 @@ text = twilio_client.messages.create(
 print("Twilio message created with ID: %s" % (text.sid))
 {{< /file >}}
 
-    {{< disclosure-note "About the code" >}}
-The `create` method tells the Twilio API to create *and* immediately send a new text message:
+    {{< note type="secondary" title="About the code" isCollapsible=true >}}
+    The `create` method tells the Twilio API to create *and* immediately send a new text message:
 
-- The text string from the last section is used as the body of the message.
+    - The text string from the last section is used as the body of the message.
 
-- The `from_` phone number corresponds to the new number that you selected in the Twilio console earlier in the guide.
+    - The `from_` phone number corresponds to the new number that you selected in the Twilio console earlier in the guide.
 
-- The `to` number corresponds with your personal or testing phone number that you signed up to Twilio with.
+    - The `to` number corresponds with your personal or testing phone number that you signed up to Twilio with.
 
-The `create` method returns a reference to the Twilio [message resource](https://www.twilio.com/docs/sms/api/message-resource) that was created. The last line prints the unique ID of the message.
-{{< /disclosure-note >}}
+    The `create` method returns a reference to the Twilio [message resource](https://www.twilio.com/docs/sms/api/message-resource) that was created. The last line prints the unique ID of the message.
+    {{< /note >}}
 
 1. After appending the above snippet, save the file.
 
@@ -265,45 +264,46 @@ The code example is now complete. The completed example should look like the cod
 
 1. Before you run the script, set the [environment variables](/docs/guides/how-to-set-linux-environment-variables/) that the script expects in your terminal:
 
-    {{< disclosure-note "Setting the environment variables on Linux and macOS" >}}
-On **Linux and macOS**, run the following commands. After the `=` symbol in each command, insert the corresponding value:
+    {{< tabs >}}
+    {{< tab "Linux and macOS" >}}
+    On **Linux and macOS**, run the following commands. After the `=` symbol in each command, insert the corresponding value:
 
-    export TWILIO_ACCOUNT_SID=
-    export TWILIO_AUTH_TOKEN=
-    export TWILIO_FROM_PHONE_NUMBER=
-    export TWILIO_TO_PHONE_NUMBER=
-    export LINODE_API_TOKEN=
+        export TWILIO_ACCOUNT_SID=
+        export TWILIO_AUTH_TOKEN=
+        export TWILIO_FROM_PHONE_NUMBER=
+        export TWILIO_TO_PHONE_NUMBER=
+        export LINODE_API_TOKEN=
 
-For example, the filled-in commands could look like:
+    For example, the filled-in commands could look like:
 
-{{< output >}}
-export TWILIO_ACCOUNT_SID=96af3vrYKQG6hrcYCC743mR27XhBzXb8wQ
-export TWILIO_AUTH_TOKEN=LD9NWYXZzp3d3k7Mq7ME6L8QJJ8zu73r
-export TWILIO_FROM_PHONE_NUMBER=+122233344444
-export TWILIO_TO_PHONE_NUMBER=+15556667777
-export LINODE_API_TOKEN=bKfoAoV8Awo8e9CVTFTYKEdojkpHdD8BNU6UvV66izq6KjduPikfQTGHYmo3vFv6
-{{< /output >}}
-{{< /disclosure-note >}}
+    ```output
+    export TWILIO_ACCOUNT_SID=96af3vrYKQG6hrcYCC743mR27XhBzXb8wQ
+    export TWILIO_AUTH_TOKEN=LD9NWYXZzp3d3k7Mq7ME6L8QJJ8zu73r
+    export TWILIO_FROM_PHONE_NUMBER=+122233344444
+    export TWILIO_TO_PHONE_NUMBER=+15556667777
+    export LINODE_API_TOKEN=bKfoAoV8Awo8e9CVTFTYKEdojkpHdD8BNU6UvV66izq6KjduPikfQTGHYmo3vFv6
+    ```
+    {{</ tab >}}
+    {{< tab "Windows" >}}
+    On **Windows**, run the following commands. After the `=` symbol in each command, insert the corresponding value:
 
-    {{< disclosure-note "Setting the environment variables on Windows" >}}
-On **Windows**, run the following commands. After the `=` symbol in each command, insert the corresponding value:
+        set TWILIO_ACCOUNT_SID=
+        set TWILIO_AUTH_TOKEN=
+        set TWILIO_FROM_PHONE_NUMBER=
+        set TWILIO_TO_PHONE_NUMBER=
+        set LINODE_API_TOKEN=
 
-    set TWILIO_ACCOUNT_SID=
-    set TWILIO_AUTH_TOKEN=
-    set TWILIO_FROM_PHONE_NUMBER=
-    set TWILIO_TO_PHONE_NUMBER=
-    set LINODE_API_TOKEN=
+    For example, the filled-in commands could look like:
 
-For example, the filled-in commands could look like:
-
-{{< output >}}
-set TWILIO_ACCOUNT_SID=96af3vrYKQG6hrcYCC743mR27XhBzXb8wQ
-set TWILIO_AUTH_TOKEN=LD9NWYXZzp3d3k7Mq7ME6L8QJJ8zu73r
-set TWILIO_FROM_PHONE_NUMBER=+122233344444
-set TWILIO_TO_PHONE_NUMBER=+15556667777
-set LINODE_API_TOKEN=bKfoAoV8Awo8e9CVTFTYKEdojkpHdD8BNU6UvV66izq6KjduPikfQTGHYmo3vFv6
-{{< /output >}}
-{{< /disclosure-note >}}
+    ```output
+    set TWILIO_ACCOUNT_SID=96af3vrYKQG6hrcYCC743mR27XhBzXb8wQ
+    set TWILIO_AUTH_TOKEN=LD9NWYXZzp3d3k7Mq7ME6L8QJJ8zu73r
+    set TWILIO_FROM_PHONE_NUMBER=+122233344444
+    set TWILIO_TO_PHONE_NUMBER=+15556667777
+    set LINODE_API_TOKEN=bKfoAoV8Awo8e9CVTFTYKEdojkpHdD8BNU6UvV66izq6KjduPikfQTGHYmo3vFv6
+    ```
+    {{< /tab >}}
+    {{< /tabs >}}
 
     The values for each variable are as follows:
 

@@ -1,14 +1,11 @@
 ---
+title: "Common Use Cases for Block Storage"
 description: "Learn how people use Block Storage to expand their persistent storage on the Linode Platform."
-keywords: ['block','storage','use','cases']
 published: 2019-08-27
 modified: 2022-08-24
-modified_by:
-  name: Linode
-title: "Common Use Cases for Block Storage"
+keywords: ['block','storage','use','cases']
 tags: ["linode platform"]
 aliases: ['/platform/block-storage/block-storage-use-cases/','/guides/block-storage-use-cases/']
-authors: ["Linode"]
 ---
 
 ## What is Block Storage
@@ -27,7 +24,7 @@ A Block Storage Volume augments the raw storage capacity of a cloud instance, wh
 While the health and uptime of Linode Block Storage is closely monitored by Linode Support, we still recommend [making separate backups](/docs/guides/backing-up-your-data/) of your Volumes.
 {{< /note >}}
 
-Because Volumes are directly connected to an instance, their I/O speeds are much faster than those of an alternative storage solution like Object Storage. As well, the nature of Block Storage allows you to read and write small parts of your data, which means that you can incrementally update your files. This is in contrast to Object Storage, which requires a full re-upload of a file to update it.
+Because Volumes are directly connected to an instance, their I/O speeds are much faster than those of an alternative storage solution like Object Storage. As well, the nature of Block Storage lets you read and write small parts of your data, which means that you can incrementally update your files. This is in contrast to Object Storage, which requires a full re-upload of a file to update it.
 
 Some aspects of Block Storage lead to natural limitations. In particular, a Volume needs to be attached to a cloud instance for its data to be accessible. In comparison, a file stored in Object Storage can be downloaded by any internet connected client at any time.
 
@@ -67,7 +64,7 @@ For more information on using Plex with a Block Storage Volume, see our [Using a
 
 ### Ephemeral Storage
 
-Various stages of the software development lifecycle can create large amounts of temporary data, such as buffers, builds, and cache and session data. While this data might only exist for a short period of time, it requires and utilizes storage space. Creating a Block Storage Volume just for ephemeral data is a good use case for times when the storage supplied with your instance is not enough, or for when you need extra space for a short period of time.
+Various stages of the software development lifecycle can create large amounts of temporary data, such as buffers, builds, and cache and session data. While this data might only exist for a short period of time, it requires and uses storage space. Creating a Block Storage Volume just for ephemeral data is a good use case for times when the storage supplied with your instance is not enough, or for when you need extra space for a short period of time.
 
 ### Data Backups
 

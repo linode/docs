@@ -1,17 +1,16 @@
 ---
 slug: linux-package-management-overview
+title: "An Overview of Package Management in Linux"
 description: "Learn basics and advanced Linux package management in Debian, Ubuntu, Fedora, etc using apt, yum, aptitude and other package managers."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2023-09-05
+modified: 2022-05-12
 keywords: ["dnf", "rpm", "apt", "dpkg", "apt-get", "apt-cache", "pacman", "yum"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-05-12
-modified_by:
-  name: Linode
-published: 2021-07-15
 image: OverviewofPackageManagementinLinux.jpg
-title: "An Overview of Package Management in Linux"
 tags: ["linux"]
 aliases: ['/guides/linux-package-management/','/tools-reference/basics/linux-package-management/','/tools-reference/linux-package-management/','/using-linux/package-management/']
-authors: ["Linode"]
 ---
 
 On Linux, software is typically built as a *package*, distributed through *repositories*, and managed on the end-user's system through *package managers*. Each Linux system typically contains thousands of packages, many of which are required dependencies for other packages.
@@ -60,17 +59,6 @@ There are lots of package managers in Linux, each working a bit differently. Her
 
 *Advanced Package Tool*, more commonly known as [APT](https://ubuntu.com/server/docs/package-management), is a package management system for Debian, Ubuntu, and other similar Linux distributions. It acts as a front-end to the lower-level [**dpkg**](https://en.wikipedia.org/wiki/Dpkg) package manager, which is used for installing, managing, and providing information on `.deb` packages. Most distributions that use APT also include a collection of command-line tools that can be used to interface with APT. These tools include `apt-get`, `apt-cache`, and the newer `apt`, which essentially combines both of the previous tools with some modified functionality.
 
-### YUM
-
-[Using YUM to Manage Packages in CentOS/RHEL 7 and Earlier](/docs/guides/yum-package-manager/)
-
-- **Distributions:** RHEL/CentOS 7, Fedora 21, and earlier versions of both distributions
-- **Command:** `yum`
-- **Underlying package management tool:** [RPM](https://linux.die.net/man/8/rpm) (*RPM Package Manager*)
-- **Package file format:** `.rpm`
-
-*Yellowdog Updater, Modified*, more commonly known as [YUM](http://yum.baseurl.org/), is a package management tool for a variety of older RHEL-based distributions (such as CentOS 7) and older versions of Fedora. It provides an easy-to-use interface on top of the low-level functions available in the RPM Package Manger (RPM). It has largely been replaced by it successor *Dandified YUM*, also called DNF, on most newer RPM-based distributions.
-
 ### DNF
 
 [Using DNF to Manage Packages in CentOS/RHEL 8 and Fedora](/docs/guides/dnf-package-manager/)
@@ -82,14 +70,27 @@ There are lots of package managers in Linux, each working a bit differently. Her
 
 *Dandified YUM*, or simply [DNF](https://fedoraproject.org/wiki/DNF?rd=Dnf), is the successor to YUM. Just like YUM, DNF provides a user-friendly interface to the RPM Package Manager (RPM) that comes with CentOS, RHEL, Fedora, and many other Linux distributions. As the successor to YUM, DNF has several enhancements including increased performance, faster dependency resolution, and more complete documentation for its API. Most distributions still link the `yum` command to the DNF software and, since DNF maintains compatibility with much of YUM's CLI, most commands using `yum` still function as intended.
 
+### YUM
+
+[Using YUM to Manage Packages in CentOS/RHEL 7 and Earlier](/docs/guides/yum-package-manager/)
+
+- **Distributions:** RHEL/CentOS 7, Fedora 21, and earlier versions of both distributions
+- **Command:** `yum`
+- **Underlying package management tool:** [RPM](https://linux.die.net/man/8/rpm) (*RPM Package Manager*)
+- **Package file format:** `.rpm`
+
+*Yellowdog Updater, Modified*, more commonly known as [YUM](http://yum.baseurl.org/), is a package management tool for a variety of older RHEL-based distributions (such as CentOS 7) and older versions of Fedora. It provides an easy-to-use interface on top of the low-level functions available in the RPM Package Manager (RPM). It has largely been replaced by it successor *Dandified YUM*, also called DNF, on most newer RPM-based distributions.
+
 ### Zypper
+
+[Use Zypper to Manage Packages in openSUSE](/docs/guides/zypper-package-manager/)
 
 - **Distributions:** openSUSE
 - **Command:** `zypper`
 - **Underlying package management tool:** ZYpp (also called [libzypp](https://doc.opensuse.org/projects/libzypp/HEAD/))
 - **Package file format:** `.rpm`
 
-[Zypper](https://en.opensuse.org/Portal:Zypper) is the CLI tool used for managing packages on openSUSE Linux distributions. Just like DNF and YUM, packages are stored in the `.rpm` file format, though Zypper interfaces with the ZYpp (libzypp) library instead of RPM. Some users report that Zypper is faster than other package mangers and, unlike many others, has the ability to add repositories directly from its own CLI. See the [Zypper manual](https://en.opensuse.org/SDB:Zypper_manual) for more usage details.
+[Zypper](https://en.opensuse.org/Portal:Zypper) is the CLI tool used for managing packages on openSUSE Linux distributions. Just like DNF and YUM, packages are stored in the `.rpm` file format, though Zypper interfaces with the ZYpp (libzypp) library instead of RPM. Some users report that Zypper is faster than other package managers and, unlike many others, has the ability to add repositories directly from its own CLI. See the [Zypper manual](https://en.opensuse.org/SDB:Zypper_manual) for more usage details.
 
 ### Pacman
 

@@ -1,16 +1,13 @@
 ---
-description: 'This guide introduces you to Network Helper, a host-side service which automatically sets a static IPv4 address and gateway when your Linode is being provisioned.'
-keywords: ["network helper", "auto-configure","networking"]
-tags: ["linode platform","networking","cloud manager"]
-modified: 2022-07-12
-published: 2014-12-08
-modified_by:
-  name: Linode
 title: "Automatically Configure Networking on Compute Instances with Network Helper"
 title_meta: "Automatically Configure Networking on Linode"
+description: 'This guide introduces you to Network Helper, a host-side service which automatically sets a static IPv4 address and gateway when your Linode is being provisioned.'
+published: 2014-12-08
+modified: 2022-07-12
+keywords: ["network helper", "auto-configure","networking"]
+tags: ["linode platform","networking","cloud manager"]
 aliases: ['/platform/network-helper-classic-manager/','/platform/network-helper/','/platform/network-helper-new-manager/','/guides/network-helper/']
 image: network-helper-title-graphic.jpg
-authors: ["Linode"]
 ---
 
 ## Overview
@@ -54,7 +51,7 @@ Network Helper can be enabled or disabled for each Compute Instance. There is al
 
 The global Network Helper setting enables or disables Network Helper on *new* Compute Instances. Existing Compute Instances are not affected by any changes to this global setting. When Network Helper is enabled globally, all *new* Compute Instances are created with Network Helper enabled by default.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Account** link on the left sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and click the **Account** link on the left sidebar.
 
 1. Navigate to the **Settings** tab and scroll down to the *Network Helper* section.
 
@@ -66,7 +63,7 @@ The global Network Helper setting enables or disables Network Helper on *new* Co
 
 Network Helper can also be enabled or disabled on a specific Compute Instance, regardless of the global setting.
 
-1. Follow the [Editing a Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#editing-a-configuration-profile) instructions.
+1. Follow the [Editing a Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#edit-a-configuration-profile) instructions.
 
 1. Within the **Edit Configuration** form, scroll down to the **Filesystem/Boot Helpers** section.
 

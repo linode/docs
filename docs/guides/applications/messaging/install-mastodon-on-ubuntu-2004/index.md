@@ -1,17 +1,16 @@
 ---
 slug: install-mastodon-on-ubuntu-2004
+title: "Install a Mastodon Server on Ubuntu 20.04"
+title_meta: "How to Install a Mastodon Server on Ubuntu 20.04"
 description: 'This guide will show you how to install Mastodon, an open source and decentralized alternative to Twitter also part of the Fediverse, on Ubuntu 20.04.'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-06-04
+modified: 2022-11-29
 keywords: ['mastodon', 'micro blog', 'microblogging', 'fediverse', 'twitter alternative', 'ubuntu 20.04']
 tags: ['ubuntu', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: MASTODON2.jpg
-published: 2021-06-04
-modified: 2022-11-29
-modified_by:
-  name: Linode
-title: "Install a Mastodon Server on Ubuntu 20.04"
-title_meta: "How to Install a Mastodon Server on Ubuntu 20.04"
-authors: ["Nathaniel Stickman"]
 external_resources:
 - '[Mastodon](https://docs.joinmastodon.org/)'
 - '[Fediverse](https://en.wikipedia.org/wiki/Fediverse)'
@@ -28,7 +27,6 @@ relations:
         key: install-mastodon
         keywords:
            - distribution: Ubuntu 20.04
-authors: ["Nathaniel Stickman"]
 ---
 
 {{< youtube "IPSbNdBmWKE" >}}
@@ -74,11 +72,11 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
 ### Install Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ## Download Mastodon
 

@@ -1,15 +1,12 @@
 ---
 title: "Troubleshooting Web Servers, Databases, and Other Services"
 description: "Troubleshooting steps for when you can't connect to a service that your Compute Instance runs."
-keywords: ['linux','reboot','lish','troubleshoot','website','webserver']
-tags: ["web server", "database", "networking"]
 published: 2019-02-01
 modified: 2023-03-14
-modified_by:
-  name: Linode
+keywords: ['linux','reboot','lish','troubleshoot','website','webserver']
+tags: ["web server", "database", "networking"]
 bundles: ['troubleshooting']
 aliases: ['/troubleshooting/troubleshooting-web-servers-databases-other-services/','/guides/troubleshooting-web-servers-databases-other-services/']
-authors: ["Linode"]
 ---
 
 This guide presents troubleshooting strategies for when you can't connect to your web server, database, or other services running on your Compute Instance. This guide assumes that you have access to SSH. If you can't log in with SSH, review [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) and then return to this guide.
@@ -91,7 +88,7 @@ sudo ip6tables -L # displays IPv6 rules
 ```
 
 {{< note >}}
-Your deployment may be running FirewallD or UFW, which are frontends used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
+Your deployment may be running FirewallD or UFW, which are front ends used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
 
 ```command
 sudo ufw status
@@ -209,7 +206,7 @@ df -h
 ```
 
 {{< note >}}
-This reported disk usage is not the same as the reported storage usage in the Cloud Manager. The storage usage in the Cloud Manager refers to how much of the disk space you pay for is allocated to your Compute Instance's disks. The output of `df -h` shows how full those disks are.
+This reported disk usage is not the same as the reported storage usage in Cloud Manager. The storage usage in Cloud Manager refers to how much of the disk space you pay for is allocated to your Compute Instance's disks. The output of `df -h` shows how full those disks are.
 {{< /note >}}
 
 You have several options for resolving disk space issues:

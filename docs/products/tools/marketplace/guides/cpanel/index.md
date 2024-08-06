@@ -1,16 +1,13 @@
 ---
+title: "Deploy cPanel through the Linode Marketplace"
 description: "cPanel is a leading Linux-based web hosting control panel. Learn how to deploy it using Linode's Marketplace Apps."
-keywords: ['cpanel','whm','hosting','manager']
-tags: ["cpanel","linode platform","marketplace","cloud-manager","managed hosting"]
 published: 2020-03-13
 modified: 2022-05-31
-modified_by:
-  name: Linode
-title: "Deploy cPanel through the Linode Marketplace"
+keywords: ['cpanel','whm','hosting','manager']
+tags: ["cpanel","linode platform","marketplace","cloud-manager","managed hosting"]
 external_resources:
 - '[WHM Feature Documentation](https://documentation.cpanel.net/display/78Docs/WHM+Features+List)'
 aliases: ['/platform/marketplace/how-to-deploy-cpanel-with-marketplace-apps/', '/platform/one-click/how-to-deploy-cpanel-with-one-click-apps/','/guides/how-to-deploy-cpanel-with-one-click-apps/','/guides/how-to-deploy-cpanel-with-marketplace-apps/','/guides/cpanel-marketplace-app/']
-authors: ["Linode"]
 ---
 
 [cPanel](https://cpanel.net/products/) is a Linux-based server/website administration platform that streamlines publishing and managing websites. It is widely used by individual businesses, web development agencies, and hosting platforms. cPanel (and the included WHM interface) provides an easy and intuitive method for managing all aspects of website administration, including software installation, DNS, databases, email, and *much* more.
@@ -21,9 +18,9 @@ cPanel requires a valid license to use the software beyond the initial 15 day [f
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+{{% content "deploy-marketplace-apps-shortguide" %}}
 
-{{< content "marketplace-verify-standard-shortguide">}}
+{{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
 **Estimated deployment time:** cPanel/WHM should be fully installed within 15 minutes after the Compute Instance has finished provisioning.
@@ -50,7 +47,7 @@ WHM is the core interface for managing your server and all websites (also called
 
 1. Next, enter in the email address where you would prefer to receive notifications and alerts.
 
-1. On the same page, you must also enter in the nameservers for this server. Nameservers are the underlying servers of the DNS system that map domain names to IP addresses. Managing DNS through cPanel allows you to quickly add sites, configure subdomains, set up email, and more without needing to manually update DNS records. For this step, make sure you have a registered domain name.
+1. On the same page, you must also enter in the nameservers for this server. Nameservers are the underlying servers of the DNS system that map domain names to IP addresses. Managing DNS through cPanel lets you quickly add sites, configure subdomains, set up email, and more without needing to manually update DNS records. For this step, make sure you have a registered domain name.
 
     1. Within the nameservers for your domain name, create two [*A records*](/docs/guides/dns-overview/#a-and-aaaa). The *hostname* / *name* field should be *ns1* (for the first record) and *ns2* (for the second). The IP address should be the IPv4 address of your new Compute Instance. If you do not have a nameserver for your registered domain, consider using Linode's [DNS Manager](/docs/products/networking/dns-manager/).
 
@@ -81,9 +78,8 @@ Now that you're able to access WHM, you can manage your server, install software
 - [Create a New Account](https://docs.cpanel.net/whm/account-functions/create-a-new-account/): A cPanel account can be created for each *website* or each *client*. Once created, you can log in to cPanel directly, which is a streamlined interface for managing each web application, databases, and email accounts for a domain.
 - [The cPanel Interface (Jupiter theme)](https://docs.cpanel.net/cpanel/the-cpanel-interface/the-cpanel-interface-jupiter/): Learn the main functions of the cPanel interface, shown with the default Jupiter theme enabled.
 
-
 {{< note >}}
 ***Sending* email:** Newly created Linode accounts have restrictions on ports `25`, `465`, and `587` applied to Compute Instances, which prevent instances from sending email. If you'd like to send email on a Compute Instance, [open a ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) with our Support team.
 {{< /note >}}
 
-{{< content "marketplace-update-note-shortguide">}}
+{{% content "marketplace-update-note-shortguide" %}}

@@ -1,15 +1,12 @@
 ---
 title: Troubleshooting General Issues on Compute Instances
 description: 'This guide provides you with a reference for common troubleshooting scenarios you may encounter when managing your Linode. Multiple sections are included.'
-keywords: ['troubleshooting','troubleshoot']
-tags: ["linode platform"]
 published: 2012-04-05
 modified: 2023-03-14
-modified_by:
-  name: Linode
+keywords: ['troubleshooting','troubleshoot']
+tags: ["linode platform"]
 bundles: ['troubleshooting']
 aliases: ['/quick-start-troubleshooting/','/troubleshooting/troubleshooting/']
-authors: ["Linode"]
 ---
 
 This guide provides common troubleshooting scenarios you may encounter when managing your Compute Instance. Each troubleshooting section provides ways to further diagnose your issue and the corresponding steps, when applicable, to resolve the issue. We recommend using this guide in the following way:
@@ -108,7 +105,7 @@ sudo systemd restart apache2
 
 The applications on your Compute Instance require a certain amount of physical memory to function correctly. If all of the available physical memory is consumed, your system could slow down, display out of memory errors, or become unresponsive. Here's how to tell if your instance is out of memory:
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com).
+1.  Log in to [Cloud Manager](https://cloud.linode.com).
 1.  Click the **Linodes** link in the sidebar to view a list of all your Compute Instance.
 1.  Select a Compute Instance to view its dashboard.
 1.  Click on the **Launch Console** link in the upper-right hand corner to launch the LISH Console. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or [upgrade to a larger plan](/docs/products/compute/compute-instances/guides/resize/).
@@ -121,13 +118,13 @@ If your Compute Instance is not out of memory, continue to the next section.
 
 Disk input/output (I/O) bottlenecks can occur when an application or service is reading or writing an excessive amount of information to disk and the processor has to wait to process the information. High I/O wait can significantly slow down your server. To determine if your server currently has an I/O bottleneck, follow the steps below:
 
-1.  [Log in to your Compute Instance via SSH](/docs/products/platform/get-started/#connect-to-your-linode-via-ssh).
+1.  [Log in to your Compute Instance via SSH](/docs/products/compute/compute-instances/get-started/#connect-to-the-instance).
 1.  Enter `top` to access the `top` monitoring utility. The screen shown below appears.
 
     ![Check for Disk I/O bottleneck.](939-troubleshooting2.png)
 
 1.  Examine the I/O wait percentage, as shown above. If the number is zero, your server does not currently have a bottleneck.
-1.  If your I/O wait percentage is above zero, verify that your server has enough [free memory available](/docs/guides/troubleshooting-overview/#is-the-compute-instance-out-of-memory). In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
+1.  If your I/O wait percentage is above zero, verify that your server has enough [free memory available](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/). In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
 1.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/docs/guides/use-vmstat-to-monitor-system-performance/) to find the application responsible for the excessive I/O. Databases are often a source of excessive I/O. You may need to stop and/or reconfigure the application.
 
     {{< note >}}
@@ -162,7 +159,7 @@ Telnet and FTP are disabled on your Compute Instance by default, and we strongly
 
 ### System User/Root Password
 
-If you've forgotten the password for the root user on your Compute Instance, you can follow the steps for [resetting your root password](/docs/products/compute/compute-instances/guides/reset-root-password/) from the Cloud Manager.
+If you've forgotten the password for the root user on your Compute Instance, you can follow the steps for [resetting your root password](/docs/products/compute/compute-instances/guides/reset-root-password/) from Cloud Manager.
 
 Once you have access to your Compute Instance as the root user, you can reset the password for any additional system users with the `passwd` command. The example resets the password for the `username` user:
 
@@ -180,21 +177,21 @@ If you've followed these steps, but you're still having trouble accessing your a
 
 ## Cloud Manager is Displaying "Incorrect" Information
 
-Use the following checklist if the Cloud Manager is displaying "incorrect" information.
+Use the following checklist if Cloud Manager is displaying "incorrect" information.
 
 ### Did You Recently Change your Account?
 
-If you recently created a new account, resized an existing Compute Instance, or added extra bandwidth, the bandwidth displayed in the Cloud Manager will be prorated for the amount of time left in the current billing cycle. For example, if you create an account on the 15th day of the month, the Manager will indicate that your account has been allocated half of the plan's bandwidth for the current month. This information is an accurate representation of the bandwidth available for the rest of the billing period. When then next billing period starts, the Manager will indicate that all of the plan's bandwidth is available. View the [Billing and Payments](/docs/products/platform/billing/) guide for more information.
+If you recently created a new account, resized an existing Compute Instance, or added extra bandwidth, the bandwidth displayed in Cloud Manager will be prorated for the amount of time left in the current billing cycle. For example, if you create an account on the 15th day of the month, the Manager will indicate that your account has been allocated half of the plan's bandwidth for the current month. This information is an accurate representation of the bandwidth available for the rest of the billing period. When then next billing period starts, the Manager will indicate that all of the plan's bandwidth is available. View the [Billing and Payments](/docs/products/platform/billing/) guide for more information.
 
 ### Did You Add Additional Storage?
 
-If you recently upgraded your plan, your Compute Instance won't be able to take advantage of the additional space until you resize the disk. You can use the Cloud Manager to verify if there's additional storage space available for disks:
+If you recently upgraded your plan, your Compute Instance won't be able to take advantage of the additional space until you resize the disk. You can use Cloud Manager to verify if there's additional storage space available for disks:
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com).
+1.  Log in to [Cloud Manager](https://cloud.linode.com).
 1.  Click the **Linodes** link in the sidebar to view a list of your Compute Instances.
 1.  Select a Compute Instance and the **Storage** tab.
 1.  Compare the total available disk space with the **Size** Column in the **Disks** table. If you have free storage space, you can allocate that space to your existing disks, or create new disks as needed.
 
     ![Disk storage allocation](disk-storage-allocation.png)
 
-    Follow our steps for [resizing a disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resizing-a-disk) to take advantage of the extra space.
+    Follow our steps for [resizing a disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resize-a-disk) to take advantage of the extra space.

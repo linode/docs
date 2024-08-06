@@ -2,7 +2,6 @@
 title: "Define Access and Permissions using Bucket Policies"
 description: "Learn how to use bucket policies to set permissions and access controls within Object Storage"
 date: 2022-03-11
-authors: ["Linode"]
 ---
 
 Bucket policies are a mechanism for managing permissions and access to Object Storage. When compared to ACLs, bucket policies can only be applied across an entire bucket (not to individual objects), though they offer finer control over the types of permissions you can grant to a user.
@@ -80,7 +79,7 @@ A policy is applied to Object Storage **resources**, such as buckets and objects
         ]
 
 {{< note type="alert" >}}
-While a resource can target the bucket itself (by removing the `/*` in the first example), this can cause the bucket to become inaccessible to the Cloud Manager, API, and CLI.
+While a resource can target the bucket itself (by removing the `/*` in the first example), this can cause the bucket to become inaccessible to Cloud Manager, API, and CLI.
 {{< /note >}}
 
 ## Bucket Policy Examples

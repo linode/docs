@@ -2,12 +2,11 @@
 title: Get Started
 title_meta: "Getting Started with the Linode Managed Service"
 description: "Learn how to get up and running with Linode Managed and start monitoring your Compute Instances."
+published: 2023-04-11
 tab_group_main:
     weight: 20
 keywords: ["managed", "managed services", "linode managed"]
 aliases: ['/products/services/managed/guides/sign-up/','/linode-managed/','/uptime/linode-managed/','/platform/linode-managed-classic-manager/','/platform/linode-managed/','/guides/linode-managed/']
-published: 2023-04-11
-authors: ["Linode"]
 ---
 
 [Linode Managed](https://www.linode.com/products/managed/) is a 24/7 incident response service coupled with Longview Pro, the Backup service, cPanel, additional dashboard metrics, and free site migrations. This robust, multi-homed monitoring system sends out monitoring checks to ensure that your monitored services remain online and available at all times. Managed Services can monitor any service or software stack reachable over TCP or HTTP.
@@ -20,7 +19,7 @@ Follow the instructions below to sign up for Managed Services.
 This is an account-wide setting. Enabling Managed Services will result in additional charges *for each* Compute Instance on your account. If you would like to only enable this for some instances and not others, you will need to create a separate account and transfer any services you do (or do not) want to have managed. See [Transferring Ownership of Linode Services with Service Transfers](/docs/products/platform/accounts/guides/service-transfers/).
 {{< /note >}}
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Account** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and click the **Account** link in the sidebar.
 
 1. Navigate to the **Settings** tab and click the **Add Linode Managed** button at the bottom of this page.
 

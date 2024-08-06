@@ -2,12 +2,11 @@
 slug: running-commands-with-dockerized
 title: "How to Use Dockerized to Run Commands"
 description: "Dockerized packages together a set of useful command-line tools, allowing you to run commands without installing additional software. Learn more about Dockerized, including how to set up and start using it, in this guide."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 published: 2023-08-08
-modified_by:
-  name: Linode
 keywords: ['docker run command', 'dockerized application', 'docker containerize command']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
 ---
 
 [Dockerized](https://github.com/datastack-net/dockerized) is a utility that runs common commands, interpreters, and other applications within a Docker container. This saves you from manually installing each command (and its dependencies) to your local system. Using Dockerized allows you to try out a new tool, leverage a tool for a one-off task, or ensure your team is using the same version of a tool.
@@ -20,9 +19,9 @@ There are multiple separate applications that are named *Dockerized*, *Dockerize
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.

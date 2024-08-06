@@ -2,6 +2,7 @@
 title: Resources
 title_meta: "Resources for Compute Instances"
 description: "Resources and other information related to Compute Instances, including videos, blog posts, community posts, customer stories, and press releases."
+published: 2023-01-18
 tab_group_main:
     weight: 40
 aliases: ['/products/compute/shared-linodes/resources/','/products/compute/shared-cpu/resources/','/products/compute/gpu/resources/','/products/compute/dedicated-cpu/resources/']
@@ -152,6 +153,8 @@ Browse our [Linode Community Questions & Answers page](https://www.linode.com/co
 ### External Resources
 
 - [Video: Cloud GPUs Tutorial from sentdex](https://www.youtube.com/watch?v=qWGgK4IrH-s&feature=emb_logo)
+
+- [NVIDIA RTX 4000 Ada GPU cards](https://resources.nvidia.com/en-us-design-viz-stories-ep/rtx-4000-ada-datashe?lx=CCKW39&contentType=data-sheet)
 
 - [NVIDIA Quadro RTX 6000 GPU cards](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf)
 

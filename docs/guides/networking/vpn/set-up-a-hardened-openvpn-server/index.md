@@ -1,18 +1,18 @@
 ---
 slug: set-up-a-hardened-openvpn-server
+title: 'Set up a Hardened OpenVPN Server on Debian 9'
 description: 'This guide provides you with instructions on setting up a hardened and secure OpenVPN server so you can securely tunnel your traffic from anywhere on any device.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-12-09
+modified: 2019-01-29
 keywords: ["openvpn", "vpn", "vpn tunnel", "openssl"]
 tags: ["networking","security","vpn","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8/','/networking/vpn/set-up-a-hardened-openvpn-server/']
-modified: 2019-01-29
-modified_by:
-  name: Linode
-published: 2015-12-09
-title: 'Set up a Hardened OpenVPN Server on Debian 9'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
-authors: ["Linode"]
+deprecated: true
 ---
 
 [OpenVPN](https://openvpn.net/) is a tool for creating network tunnels between groups of computers that are not on the same local network. This is useful to remotely access services on a network or computer without making those services publicly accessible. When integrated with OpenSSL, OpenVPN encrypts all VPN traffic providing a secure connection between machines.
@@ -287,8 +287,7 @@ export KEY_OU="MyOrganizationalUnit"
 Each client device connecting to the VPN should have its own unique key and identifier (client1, client2, etc.). All other certificate information can remain the same and be shared across all client devices. **If you need to add users at any time later, just repeat this step using a different client name**.
 
     cd ~/ca && source ./vars && ./build-key client1
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Anyone with access to `client1.key` will be able to access your VPN. To better protect against this scenario, you can issue `./build-key-pass client1` instead to build a client key which is encrypted with a passphrase.
 {{< /note >}}
 
@@ -348,8 +347,7 @@ verb 3
 
 {{< /file >}}
 
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can extract a server template from OpenVPN's sample configuration files using:
 
 `gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz > /etc/openvpn/server.conf`
@@ -392,8 +390,7 @@ tls-crypt ta.key
 
 {{< /file >}}
 
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You can use a client template from OpenVPN's sample configuration files using the command below. Most clients require a `.ovpn` file format instead of `.conf`.
 
 `cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf /etc/openvpn/client/client.ovpn`
@@ -415,8 +412,7 @@ Each client device needs to contain the following files:
 Start the OpenVPN daemon and enable it on reboot:
 
     sudo systemctl enable openvpn.* && sudo systemctl start openvpn.*
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This will scan the `/etc/openvpn` directory on the server for files with a `.conf` extension. For every file that it finds, it will spawn a VPN daemon (server instance) so make sure you don't have a `client.conf` or `client.ovpn` file in there.
 {{< /note >}}
 

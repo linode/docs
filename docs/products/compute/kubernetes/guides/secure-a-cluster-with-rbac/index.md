@@ -1,17 +1,15 @@
 ---
+title: "Secure a Cluster with User Permissions and RBAC"
 description: 'This guide describes how to create roles and set contexts for specific users to create an environment with limited kubernetes permissions.'
-keywords: ["Kubernetes", "cluster", "docker", "security", "permissions"]
-tags: ["security","nginx","kubernetes","container"]
+contributors: ["Ryan Syracuse"]
 published: 2018-02-28
 modified: 2023-02-09
-modified_by:
-  name: Linode
-title: "Secure a Cluster with User Permissions and RBAC"
+keywords: ["Kubernetes", "cluster", "docker", "security", "permissions"]
+tags: ["security","nginx","kubernetes","container"]
 aliases: ['/kubernetes/securing-an-LKE-cluster/','/guides/using-rbac-to-secure-an-lke-cluster/']
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Kubernetes Documentation](https://kubernetes.io/docs/home)'
-authors: ["Ryan Syracuse"]
 ---
 
 ## Securing Kubernetes Users
@@ -28,7 +26,7 @@ This guide assumes you have a working Kubernetes cluster that was deployed using
 
 - The [Linode Cloud Manager](/docs/products/compute/kubernetes/).
 - [Linode's API v4](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/).
-- [Terraform](/docs/products/compute/kubernetes/guides/deploy-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
+- [Terraform](/docs/guides/deploy-lke-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
 
     {{< note >}}
     An LKE cluster will already have Linode's Cloud Controller Manager installed in the cluster's control plane. If you **did not** deploy your Kubernetes cluster using LKE and would like to make use of the Linode Cloud Controller Manager, see [Installing the Linode CCM on an Unmanaged Kubernetes Cluster - A Tutorial](/docs/guides/install-the-linode-ccm-on-unmanaged-kubernetes/).

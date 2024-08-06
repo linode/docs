@@ -1,12 +1,9 @@
 ---
 title: "View and Manage Longview Clients"
 description: "Learn how to view, manage, and delete your Longview Clients."
-keywords: ["system monitoring", "longview", "metrics"]
 published: 2023-05-24
-modified_by:
-  name: Linode
+keywords: ["system monitoring", "longview", "metrics"]
 tags: ["linode platform","cloud manager","statistics","monitoring"]
-authors: ["Linode"]
 ---
 
 ## View Longview Clients {#view-clients}
@@ -48,19 +45,19 @@ To start capturing metrics for one of your Compute Instances (or other Linux sys
 5.  Uninstall the Longview Agent by removing the `linode-longview` package.
 
     {{< tabs >}}
-    {{% tab "Debian and Ubuntu" %}}
-```command
-sudo apt-get remove linode-longview
-```
-    {{% /tab %}}
-    {{% tab "CentOS" %}}
-```command
-sudo yum remove linode-longview
-```
-    {{% /tab %}}
-    {{% tab "Other Distributions" %}}
-```command
-sudo rm -rf /opt/linode/longview
-```
-    {{% /tab %}}
+    {{< tab "Debian and Ubuntu" >}}
+    ```command
+    sudo apt-get remove linode-longview
+    ```
+    {{< /tab >}}
+    {{< tab "CentOS" >}}
+    ```command
+    sudo yum remove linode-longview
+    ```
+    {{< /tab >}}
+    {{< tab "Other Distributions" >}}
+    ```command
+    sudo rm -rf /opt/linode/longview
+    ```
+    {{< /tab >}}
     {{< /tabs >}}
