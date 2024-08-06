@@ -4,7 +4,7 @@ title: "Manually Deploy a Jitsi Cluster on Akamai"
 description: "This guide goes over how to manually deploy a scalable Jitsi conferencing cluster with Ansible using provided playbooks."
 authors: ["John Dutton","Elvis Segura"]
 contributors: ["John Dutton","Elvis Segura"]
-published: 2024-07-30
+published: 2024-08-06
 keywords: ['jitsi','conferencing','communications','cluster']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -14,7 +14,7 @@ external_resources:
 
 [Jitsi](https://jitsi.org/) is a free, open source video conferencing and communication platform that provides a secure, stable, and free alternative to other popular video conferencing services. With Jitsi, you can use built-in features to limit meeting access with passwords or stream on YouTube so anyone can attend.
 
-This guide walks you through how to create a scalable Jitsi Meet cluster using [Ansible](https://www.ansible.com/). The provided Ansible playbook creates an initial deployment that can then be scaled up or down as needed.
+This guide walks through creating a scalable Jitsi Meet cluster using [Ansible](https://www.ansible.com/). The provided Ansible playbook creates an initial deployment that can then be scaled up or down as needed.
 
 If you wish to deploy Jitsi automatically rather than manually, consider either our single-instance [Jitsi Marketplace deployment](/docs/products/tools/marketplace/guides/jitsi/) or our [Jitsi Cluster Marketplace deployment](/docs/products/tools/marketplace/guides/jitsi-cluster/).
 
@@ -22,11 +22,11 @@ If you wish to deploy Jitsi automatically rather than manually, consider either 
 
 1.  The manual deployment in this guide provisions a Jitsi cluster where the Jitsi Videobridges (JVB) are scalable components.
 
-1.  Each JVB connects to the singular Jitsi meet instance running XMPP via Prosody on port 5222.
+1.  Each JVB connects to the singular Jitsi Meet instance running XMPP via Prosody on port 5222.
 
-1.  Jicofo (Jitsi Conference Focus) runs on the Jitsi meet instance and is configured to split up load balanced traffic between each JVB instance.
+1.  Jicofo (Jitsi Conference Focus) runs on the Jitsi meet instance and is configured to split load balanced traffic between each JVB instance.
 
-1.  NGINX runs on the meet instance and functions to serve client requests and communicate with internal Jitsi components.
+1.  NGINX runs on the meet instance and serves client requests and communicate with internal Jitsi components.
 
 ![Jitsi Cluster Reference Architecture](Jitsi-Cluster-Reference-Architecture.svg "Jitsi Cluster Reference Architecture")
 
@@ -50,7 +50,7 @@ If you wish to deploy Jitsi automatically rather than manually, consider either 
 
 The following software and components must be installed and configured on your local system in order for the playbooks in this guide to function:
 
--   An installed [Python](https://www.python.org/downloads/) version: > v3.8
+-   [Python](https://www.python.org/downloads/) version: > v3.8
 
 -   The [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html) Python library
 
@@ -74,7 +74,7 @@ In order to run the Jitsi deployment in this guide, the docs-cloud-projects Gith
     git clone https://github.com/linode/docs-cloud-projects.git
     ```
 
-1.  Navigate to the manual-jitsi-cluster directory within your local cloned repository to begin installation steps:
+1.  Navigate to the manual-jitsi-cluster directory within your local cloned repository:
 
     ```command
     cd docs-cloud-projects/apps/manual-jitsi-cluster
@@ -127,7 +127,7 @@ In order to run the Jitsi deployment in this guide, the docs-cloud-projects Gith
     ```
 
     {{< note title="Upgrading the ansible-core package" >}}
-    Some ansible-core package versions may contain older parameters. Should you experience any errors related to out-of-date or deprecated parameters, the ansible-core version can be updated with the below command:
+    Some ansible-core package versions may contain older parameters. Should you experience any errors related to out-of-date or deprecated parameters, you can update the ansible-core version with the below command:
     ```command
     python -m pip install --upgrade ansible-core
     ```
@@ -223,7 +223,7 @@ All secrets are encrypted with the Ansible Vault utility as a best practice.
 
 ## Provision Your Cluster
 
-1.  Using the `ansible-playbook` utility, run the `provision.yml` playbook with verbose options to keep track of the deployment process. This stands up Linode instances and dynamically writes the Ansible inventory to the hosts file. The playbook is complete when ssh is available on all deployed instances.
+1.  Using the `ansible-playbook` utility, run the `provision.yml` playbook with verbose options to keep track of the deployment process. This creates Linode instances and dynamically writes the Ansible inventory to the hosts file. The playbook is complete when SSH is available on all deployed instances.
 
     The command below uses the `jvb_cluster_size` variable to define the number of Jitsi Videobridge instances deployed in the cluster. Replace {{< placeholder "2" >}} with the number of instances you wish to include in your deployment. Replace {{< placeholder "YOUR_SUBDOMAIN" >}} and {{< placeholder "YOUR_FQDN" >}} with your subdomain and FQDN:
 
@@ -297,7 +297,7 @@ ansible-playbook -vvv -i hosts site.yml --extra-vars "jvb_cluster_size=2"
 
 ## Benchmarking Your Cluster With WebRTC Perf
 
-[webrtcperf](https://github.com/vpalmisano/webrtcperf) is an open source utility used to evaluate the performance and quality for WebRTC-based services. To benchmark your Jitsi cluster's performance, WebRTC Perf can be run from a Docker container. Note that Docker must be loaded and configured prior to running the below `docker run` command.
+[webrtcperf](https://github.com/vpalmisano/webrtcperf) is an open source utility used to evaluate the performance and quality for WebRTC-based services. To benchmark your Jitsi cluster's performance, WebRTC Perf can run from a Docker container. Note that Docker must be loaded and configured prior to running the below `docker run` command.
 
 Replace {{< placeholder "https://192.0.2.3.ip.linodeusercontent.com" >}} with the domain or URL of your Jitsi meet instance (see: [Provision Your Cluster](#provision-your-cluster)), and replace {{< placeholder "ROOM_NAME" >}} with your meeting room name.
 
