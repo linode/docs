@@ -247,7 +247,7 @@ The `storm.yaml` configuration file specifies the local directory for Storm's op
 
     ```file {title="conf/storm.yaml"}
     storm.zookeeper.servers:
- 	  - "{{< placeholder "storm-zoo_IP_ADDRESS" >}}"
+      - "{{< placeholder "storm-zoo_IP_ADDRESS" >}}"
     nimbus.seeds: ["{{< placeholder "storm-nimbus_IP_ADDRESS" >}}"]
     storm.local.dir: "/var/storm"
     ```
