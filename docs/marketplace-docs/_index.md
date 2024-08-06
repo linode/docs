@@ -1,16 +1,31 @@
----
-title: Marketplace Apps
-title_meta: "Linode Marketplace Product Documentation"
-description: "Explore the Linode App Marketplace to find popular ready-to-run apps and services. Use the Linode Cloud Manager to deploy your Marketplace App in just a few clicks."
-tab_group_main:
-    is_root: true
-    title: Overview
-    weight: 10
-cascade:
-    date: 2020-06-02
-    product_description: "Quickly deploy a Compute Instance with many various software applications pre-installed and ready to use."
-aliases: ['/products/tools/marketplace-one-click-apps/','/guides/platform/marketplace/','/platform/marketplace/','/platform/one-click/']
----
++++
+title = "Marketplace Apps"
+title_meta = "Linode Marketplace Product Documentation"
+description = "Explore the Linode App Marketplace to find popular ready-to-run apps and services. Use the Linode Cloud Manager to deploy your Marketplace App in just a few clicks."
+aliases = [
+  "/products/tools/marketplace-one-click-apps/",
+  "/guides/platform/marketplace/",
+  "/platform/marketplace/",
+  "/platform/one-click/"
+]
+
+[tab_group_main]
+is_root = true
+title = "Overview"
+weight = 10
+
+[[cascade]]
+type = "products"
+weightAge = 0
+weightSearchBoost = true
+date = "2020-06-02"
+product_description = "Quickly deploy a Compute Instance with many various software applications pre-installed and ready to use."
+[[cascade]]
+layout = "tabbed-section-layout"
+[cascade._target]
+# The section rendering for individual product pages uses the tabbed layout
+kind = "section"
++++
 
 The [Linode Marketplace](https://www.linode.com/marketplace/) offers a growing collection of One-Click Apps based on popular and in-demand software.
 
