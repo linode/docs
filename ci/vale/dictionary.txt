@@ -2489,6 +2489,7 @@ teardown
 techdocs
 techland
 telecom
+telehealth
 teleporting
 tensorflow
 terrahelp
