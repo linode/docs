@@ -7,8 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 published: 2023-04-27
-modified_by:
-  name: Linode
 external_resources:
 - '[The WebSocket Protocol RFC 6455](https://datatracker.ietf.org/doc/html/rfc6455)'
 - '[Real-Time Protocols for Browser-Based Applications Protocol RFC 8825](https://datatracker.ietf.org/doc/html/rfc8825)'

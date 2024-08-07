@@ -8,8 +8,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 published: 2023-04-20
-modified_by:
-  name: Linode
 external_resources:
 - '[WebRTC Organization](https://webrtc.org/)'
 - '[Real-Time Protocols for Browser-Based Applications Protocol RFC 8825](https://datatracker.ietf.org/doc/html/rfc8825)'
