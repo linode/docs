@@ -15,17 +15,17 @@ external_resources:
 - '[Mozilla WebSockets documentation](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)'
 ---
 
-[The WebSocket Protocol](https://datatracker.ietf.org/doc/html/rfc6455) and [WebRTC framework](https://webrtc.org/) are two common technologies used for handling real-time web communications. WebSockets is designed for client-to-server communications and is a good choice for real-time updates or two-way event-driven applications. WebRTC can process true peer-to-peer communications and is the best option for real-time audio and video streams, as well as applications requiring a higher level of security.
+[The WebRTC framework](https://webrtc.org/) and [WebSocket Protocol](https://datatracker.ietf.org/doc/html/rfc6455) are two common technologies used for handling real-time web communications. WebRTC can process true peer-to-peer communications and is the best option for real-time audio and video streams, as well as applications requiring a higher level of security. WebSockets is designed for client-to-server communications and is a good choice for real-time updates or two-way event-driven applications.
 
-This guide compares and contrasts WebSockets and WebRTC, their advantages and disadvantages, and how to choose the proper protocol for your use case.
+This guide compares and contrasts WebRTC and WebSockets, their advantages and disadvantages, and how to choose the proper protocol for your use case.
 
-## Predecessors to Both WebRTC and WebSockets
+## Before WebRTC and WebSockets: Polling
 
-Before WebSockets and WebRTC became commonplace, *polling* was frequently used for real-time communications. In polling, the web client sends HTTP requests at regular intervals and waits for a response. When the client receives a response, it refreshes the page to reflect the new data. This process can be resource intensive and inefficient in terms of bandwidth. Often, no new information is available, and nothing is gained by the poll.
+Before WebRTC and WebSockets became commonplace, *polling* was frequently used for real-time communications. In polling, the web client sends HTTP requests at regular intervals and waits for a response. When the client receives a response, it refreshes the page to reflect the new data. This process can be resource intensive and inefficient in terms of bandwidth. Often, no new information is available, and nothing is gained by the poll.
 
-*Long polling*, also referred to as the *Comet* protocol, is an optimization to polling. The server holds the request for a set duration and only sends a response when an update is available. Otherwise, it times out and returns an empty request. In addition to having some of the same problems as polling, *Comet* is often error-prone, inefficient, and can be difficult to set up. Both polling and Comet technologies are still used on some web pages, but they have been largely superseded by WebRTC and WebSockets since the newer technologies have lower latency.
+*Long polling*, also referred to as the *Comet* protocol, is an optimization to polling. The server holds the request for a set duration and only sends a response when an update is available. Otherwise, it times out and returns an empty request. In addition to having some of the same problems as polling, *Comet* is often error-prone, inefficient, and can be difficult to set up. Both polling and Comet technologies are still used on some web pages, but they have been largely superseded by WebRTC and WebSockets since they have lower latency and are considered more reliable.
 
-## What is WebRTC?
+## What Is WebRTC?
 
 WebRTC is a free, open-source specification for transmitting high-quality audio and video content directly between peer users. The standard consists of a JavaScript API and several supporting protocols. WebRTC has been standardized by the *World Wide Web Consortium* (W3C) and through the IETF in [RFC 8825](https://datatracker.ietf.org/doc/html/rfc8825). Many modern platforms and browsers support WebRTC.
 
@@ -63,21 +63,21 @@ For more in-depth information about WebRTC, see our introduction guide [What Is 
 - It does not have a quality of service component, and cannot always guarantee real-time transmission at high resolution or frame rates.
 - It is suited for one-to-one transmission rather than multi-user scenarios. Many-to-many applications typically require the use of a multimedia server.
 
-## What are WebSockets?
+## What Is WebSockets?
 
 {{< note title="WebSocket vs. WebSockets" >}}
-The terms *WebSocket* and *WebSockets* are often used interchangeably. The official term for the protocol in the RFC is the WebSocket Protocol. The framework, API, and technology are usually referred to as "WebSockets".
+The terms *WebSocket* and *WebSockets* are often used interchangeably. The official term for the protocol in the RFC is the "WebSocket Protocol". The framework, API, and technology are usually referred to as "WebSockets".
 {{< /note >}}
 
-WebSockets is also an open standard protocol for web applications. It enables a persistent full-duplex channel between a client and a server. WebSockets typically runs on a browser on the client side but can use other services. The current WebSockets implementation is defined in [RFC6455](https://datatracker.ietf.org/doc/html/rfc6455) and is supported on all major browsers, platforms, and web servers.
+WebSockets is also an open standard protocol for web applications. It enables a persistent full-duplex channel between a client and a server. WebSockets typically runs on a browser on the client side but can use other services. The current WebSockets implementation is defined in [RFC 6455](https://datatracker.ietf.org/doc/html/rfc6455) and is supported on all major browsers, platforms, and web servers.
 
--   WebSockets run on top of the TCP transport layer. TCP reliably delivers packets in their original order and is designed to be highly compatible with HTTP. Both protocols use ports 80 and 443 and reside at the application layer of the network stack. The WebSockets negotiation process uses the HTTP *upgrade header* to switch over to WebSockets from HTTP. After the client and server both agree to use WebSockets, the session continues to send messages over the existing TCP connection. However, both sides now send messages using the WebSocket protocol rather than HTTP. WebSocket URLs begin with the `ws` or `wss` prefix.
+-   WebSockets run on top of the TCP transport layer. TCP reliably delivers packets in their original order and is designed to be highly compatible with HTTP. Both protocols use ports 80 and 443 and reside at the application layer of the network stack. The WebSockets negotiation process uses the HTTP *upgrade header* to switch over to WebSockets from HTTP. After the client and server both agree to use WebSockets, the session continues to send messages over the existing TCP connection. However, both sides now send messages using the WebSocket Protocol rather than HTTP. WebSocket URLs begin with the `ws` or `wss` prefix.
 
 -   Each WebSockets message is fragmented into frames. The frames have very small headers to reduce overhead and minimize latency. A WebSocket client can determine if the connection involves a proxy and sets up a persistent tunnel if necessary.
 
 -   The full-duplex nature of the connection allows for real-time data to be transmitted between a client and the server. WebSockets maintains an ongoing open connection. This allows messages to be sent and received at any time. The server automatically and proactively "pushes" content to the client without waiting for a request. This makes WebSockets a good choice for fast-changing content such as sports scores and stock prices. It is also used for real-time updates, gaming, collaborative document editing, chatbots, and online help.
 
--   The WebSocket protocol offers an event-based API for incorporation into JavaScript or other programming languages. Developers can listen for, and react to, events from the server. Polling is never required. Servers can choose from four different events, including `Open`, `Message`, `Error`, and `Close`.
+-   The WebSocket Protocol offers an event-based API for incorporation into JavaScript or other programming languages. Developers can listen for, and react to, events from the server. Polling is never required. Servers can choose from four different events, including `Open`, `Message`, `Error`, and `Close`.
 
 For more information on WebSockets, including how to create and use a socket, see our [Introduction to WebSockets](/docs/guides/introduction-to-websockets/) guide. The [Mozilla WebSockets documentation](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) contains technical details about the web API.
 
@@ -133,7 +133,7 @@ Due to their differences, WebRTC and WebSockets have varying optimal use cases. 
 - Since WebRTC has very low latency and minimizes jitter, it is the better choice for applications like VoIP that cannot handle any delay.
 - WebRTC is the better technology for bidirectional video applications, including e-learning, telehealth, and video calls.
 - WebRTC maintains two data channels, so it is particularly good for applications that want to send media alongside meta-information. For example: A music streaming site where song lyrics and production information are sent alongside the audio track.
-- WebRTC is recommended whenever security is very important, like in telehealth or other sensitive exchanges.
+- WebRTC is recommended whenever security is important, like in telehealth or other sensitive exchanges.
 - Although WebRTC can send text and files using the data channel, this is not what it is really intended for. It is not as reliable a choice for text and binary files as WebSockets.
 - In collaborative editing, WebRTC is more susceptible to editing conflicts than WebSockets.
 - WebRTC does not treat updates as events, and it does not guarantee reliable delivery. It is not the right choice for any monitoring or dashboard application designed to respond to critical events.
