@@ -1163,6 +1163,7 @@ jenkinsx
 jessie
 jetpack
 jez
+Jicofo
 JIDs
 jira
 jitsi
@@ -1192,6 +1193,9 @@ julialang
 jumpbox
 junit
 jupyter
+JVB
+jvb_cluster_size
+JVBs
 jwebserver
 JWTs
 jx
@@ -1748,6 +1752,7 @@ oauth
 obfuscator
 observium
 OCAs
+Octo
 octopress
 ODMs
 odoo
@@ -1855,6 +1860,7 @@ pentesting
 pepi
 perceptron
 percona
+Perf
 performant
 perl
 perldoc
@@ -2732,6 +2738,8 @@ veritas
 vhost
 vhosts
 Vickery
+Videobridge
+Videobridges
 viewport
 vigenere
 vimrc
@@ -2807,6 +2815,7 @@ webpy
 WEBrick
 webroot
 webroots
+webrtcperf
 webserver
 webservers
 webservice
