@@ -48,8 +48,9 @@ TrafficPeak offers sub-second querying and optimizes log indexing with fully cus
 1.  [Akamai CDN](https://www.akamai.com/solutions/content-delivery-network) caches and delivers live streaming content to millions of concurrent users. CDN logs are also sent to TrafficPeak via Akamai DataStream, including all relevant HTTP(S) information for troubleshooting purposes.
 
 1.  Playback logs (like UI/video player logs) are sent to TrafficPeak for further troubleshooting, including buffering rates, bitrate switching, and more.
+{#complete-observability-diagram .large-diagram}
 
-![Complete Observability for Live Streaming Events Architecture](complete-observability-use-case-guide-diagram.svg)
+![Complete Observability for Live Streaming Events Architecture](complete-observability-use-case-guide-diagram.svg?diagram-description-id=complete-observability-diagram)
 
 ### Systems and Components
 
