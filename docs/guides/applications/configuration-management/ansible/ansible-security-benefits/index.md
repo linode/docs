@@ -1,7 +1,7 @@
 ---
 slug: ansible-security-benefits
 title: "One Dozen Ansible Security Benefits"
-description: "Two to three sentences describing your guide."
+description: "Discover how Ansible can enhance security through an agentless framework, efficient patching, and secure secrets handling for reliable IT management."
 authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 published: 2024-08-06
@@ -12,108 +12,104 @@ external_resources:
 - '[Link Title 2](http://www.example.net)'
 ---
 
-[Ansible](/docs/guides/applications/configuration-management/ansible/) is a powerful, widely-used information technology (IT) tool that streamlines workflows, manages infrastructure efficiently, and replicates targeted outcomes. It is most often considered a tool for system administrators, DevOps practitioners, and closely-related specialists, although its use also has profound implications for IT **security**.
+[Ansible](/docs/guides/applications/configuration-management/ansible/) is an information technology (IT) tool that streamlines workflows, efficiently manages infrastructure, and replicates targeted outcomes. It is most often considered a tool for system administrators, DevOps practitioners, and related specialists. However, Ansible also has significant implications for IT **security**.
 
-## Ansible’s Security Advantages
+While Ansible enhances the security of the systems it manages, using it can also introduce risks. This trade-off often appears among the dozen items listed below.
 
-Ansible improves the security of the systems it manages, however its use also brings risk. These two aspects appear in different combinations in the dozen items listed.
+## Agentless Architecture
 
-### Agentless architecture
+One fundamental attribute of IT tooling is its dependence on agent installation. Both agent-based and agentless approaches have advantages, and both are in widespread use. Ansible is agentless and its network communications are through `ssh`. The [advantages of this approach](https://www.paloaltonetworks.com/cyberpedia/what-is-the-difference-between-agent-based-and-agentless-security) include:
 
-One fundamental attribute of IT tooling is its dependence on agent installation. Both agent-based and agentless approaches have advantages, and both are in widespread use. Ansible is agentless and its network communications are through `ssh`. Among [the advantages of this approach](https://www.paloaltonetworks.com/cyberpedia/what-is-the-difference-between-agent-based-and-agentless-security) are that:
+-   Having no requirement to deploy agents eliminates an entire class of effort and vulnerabilities.
+-   `ssh` is ubiquitous in commercial computing, and familiarity with its security profile is widespread. Broadly speaking, `ssh` is both reliable and secure.
+-   Security patches for an agentless tool can take place instantaneously in the cloud, which greatly reduces the risk of hackers reaching hosts before the security team.
 
--   The absence of a requirement to deploy agents eliminates an entire class of effort and vulnerabilities.
--   `ssh` is ubiquitous in commercial computing, and familiarity with its security profile is widespread. Broadly, `ssh` is reliable and secure.
--   Security patches for an agentless tool can take place instantaneously in the cloud which greatly reduces the risk of crackers reaching hosts before patchers do.
+Agentless implementation is lightweight and easy to adopt, start, and maintain. As a result, using Ansible can have the following benefits:
 
-Agentless implementation is less weighty, easier to adopt, start, and maintain. That makes Ansible's agentless approach easier to implement and customize. As a result, Ansible encourages its use and refinement, and thus the benefits that come from a high-quality practice such as consistent, predictable deployments and services, systems that are a good fit for organizational requirements, and the capacity to install and update software quickly and reliably. These advantages help keep intruders from breaking in and minimize the damage intruders commit when they *do* make it in.
+-   Consistent, predictable deployments and services.
+-   Systems that are fit organizational requirements well.
+-   The ability to install and update software quickly and reliably.
 
-### Secure communication
+These advantages help to keep intruders out, or minimize the damage they can cause if they *do* gain access.
 
-Ansible's default transport is `ssh`, accessed through standard `ssh` clients and server, or, when those are missing, the [Paramaiko](https://www.paramiko.org/) implementation of [OpenSSH](https://www.openssh.com/) in the [Python](https://www.linode.com/docs/guides/development/python/) programming language. These are high-quality components, and well-regarded as appropriately secure for common commercial traffic. All Ansible communications are encrypted. Authentication mechanisms include public-key authentication, password-based authentication, and [Kerberos](https://www.techtarget.com/searchsecurity/definition/Kerberos) authentication. It builds in conveniences for management of ssh keys, and verifies host keys on first connection to any new host. These practices help ensure that its communications do not leak private information, but instead protect its managed assets.
+## Secure Communication
 
-### Idempotent operations
+Ansible uses `ssh` as its default transport protocol. It accesses `ssh` through standard clients and servers, or through [Paramiko](https://www.paramiko.org/), a [Python](/docs/guides/development/python/) implementation of [OpenSSH](https://www.openssh.com/). These are high-quality components and well-regarded as appropriately secure for common commercial traffic. All Ansible communications are encrypted. Authentication mechanisms include public-key, password-based, and [Kerberos](https://www.techtarget.com/searchsecurity/definition/Kerberos) authentication. Ansible provides conveniences for managing `ssh` keys, and it verifies host keys upon the first connection to any new host. These practices help protect managed assets and ensure that private information does not leak.
 
-Ansible emphasizes declarative and [idempotent](https://dev.to/admantium/ansible-idempotent-playbooks-4e67) actions: actions are defined by their goals. To repeat or replay an idempotent action is safe, in that it does only as little or as much as necessary to achieve the invariant goal. Idempotence therefore eliminates human errors, prevents unnecessary changes, ensures consistent system state, and promotes transparent auditing and troubleshooting. Referring all actions to explicit goals or desired states minimizes pointless actions and severely limits exposure of vulnerabilities through Ansible. There is a wide scope of consistency in that all individual assets which share the same target achieve the same state, whether they've been in use for years, or just brought on-line. Two different human operators cannot interpret a recipe differently. When a manual action *has* led to an inconsistent state, another idempotent invocation brings any deviant systems back into line. In all these ways, Ansible's idempotency lowers the likelihood of accidents, minimizes wasted motion, promotes expert review, and thus considerably enhances security.
+## Idempotent Operations
 
-### Role-based access control
+Ansible emphasizes declarative and [idempotent](https://dev.to/admantium/ansible-idempotent-playbooks-4e67) actions: actions are defined by their goals. An idempotent action is safe to repeat or replay because it only performs what is necessary to achieve the intended goal. Idempotence eliminates human errors, prevents unnecessary changes, ensures consistent system states, and promotes transparent auditing and troubleshooting. Referring all actions to explicit goals or desired states minimizes pointless actions and limits the exposure of vulnerabilities through Ansible.
 
-Role-based access control ([RBAC](https://auth0.com/docs/manage-users/access-control/rbac)) assigns permission based on users' responsibilities and authority. RBAC is a crucial component in security planning, and Ansible's support for RBAC significantly enhances Ansible's security profile. Among other considerations, RBAC gives granular access to assets. This helps model [least privilege](https://www.beyondtrust.com/blog/entry/what-is-least-privilege) or minimal privilege configurations, which are essential to current security best practices.
+Consistency is achieved when all individual assets that share the same target reach the same state. This applies whether the assets have been in use for years or were just brought online. Ansible's clear, declarative playbooks prevent two different operators from interpreting instructions differently. When a manual action *has* led to an inconsistent state, another idempotent invocation can bring any deviant systems back in line. In all these ways, Ansible's idempotency lowers the likelihood of accidents, minimizes wasted motion, promotes expert review, and therefore considerably enhances security.
+
+## Role-based Access Control
+
+Role-based access control ([RBAC](https://auth0.com/docs/manage-users/access-control/rbac)) assigns permission based on users' responsibilities and authority. RBAC is a crucial component in security planning, and Ansible's support for RBAC significantly enhances it's security profile. Among other benefits, RBAC provides granular access to assets. This granularity helps in modelling [least privilege](https://www.beyondtrust.com/blog/entry/what-is-least-privilege) or minimal privilege configurations, which are essential to current security best practices.
 
 Ansible supports RBAC at a couple of levels:
 
 -   The community release of Ansible relies on operating-system (OS) mechanisms for authentication and authorization, and thus supports RBAC as well as the underlying OS does.
--   The [Ansible Tower](https://www.redhat.com/sysadmin/intro-ansible-tower) enterprise-class vended version of [Ansible implements and supports RBAC](https://docs.ansible.com/ansible-tower/latest/html/userguide/security.html) fully.
+-   The [Ansible Tower](https://www.redhat.com/sysadmin/intro-ansible-tower) enterprise-class version of [Ansible fully implements and supports RBAC](https://docs.ansible.com/ansible-tower/latest/html/userguide/security.html).
 
-### Secrets Management Through Vaults
+## Secrets Management Through Vaults
 
-Secure systems crucially rely on **secrets**, that is, information restricted to those with a need to know. [The Ansible Vault](https://docs.ansible.com/ansible/latest/vault_guide/index.html) is a sophisticated mechanism that protects all kinds of secret information, including database passwords, documents with sensitive contents, and private keys. Availability of the Ansible Vault gives a high-quality answer to questions about secrets management. There's no need for Ansible users to generate their own schemes for protection of secrets. The Vault is a good answer to all questions about how to access secrets effectively while minimizing the hazard that those secrets might leak beyond their intended orbits.
+Secure systems rely on **secrets**, that is, information restricted to those with a need to know. [The Ansible Vault](https://docs.ansible.com/ansible/latest/vault_guide/index.html) protects all kinds of secret information, including database passwords, documents with sensitive contents, and private keys. Ansible Vault offers a solution for managing sensitive information that addresses common challenges in secrets management. Ansible users don't need to generate their own schemes for protecting secrets. The Vault effectively manages access to secrets while minimizing the risk them leaking beyond their intended recipients.
 
-### Audit Logging
+## Audit Logging
 
-Audit logging is like RBAC in that its application varies considerably from installation to installation, especially between Free Ansible and Ansible Tower. Ansible's audit logging records the details of playbook execution such as tasks performed, changes effected, and events observed. Audit logs have several positive and negative security implications.
+Audit logging is like RBAC in that its application varies considerably from installation to installation, especially between free Ansible and Ansible Tower. Ansible's audit logging records the details of playbook execution, such as tasks performed, changes effected, and events observed.
 
-On the positive side, audit logs are valuable for forensic analysis and review. They help operators understand more deeply what has happened.
+Audit logs have both positive and negative security implications. On the positive side, audit logs are valuable for forensic analysis and review. They help operators understand more deeply what has happened.
 
-Audit logs must be secured and protected because they typically expose such sensitive information as system configurations and credentials. That protection needs to restrict read access to those with a need-to-know their contents, and also **write** access to audit logs deserves careful guards. Unauthorized modifications or tampering of logs has the potential to compromise the business legal standing or individuals working with systems.
+However, audit logs must be secured and protected because they typically expose such sensitive information as system configurations and credentials. That protection needs to restrict read access to those with a need-to-know their contents. *Write* access to audit logs also deserves careful guards. Unauthorized modifications or tampering of logs has the potential to compromise the legal standing of the business and/or individuals working with these systems.
 
-Enablement of audit logs is therefore a delicate matter, and not a simple switch set to "on". To be both useful and adequately secure, audit logs need to be protected by granular RBAC, highly available, securely backed up, regularly monitored, and periodically reviewed. They also need to comply with such pertinent legal requirements as GDPR or HIPAA, and, when appropriate, integrated with Security Information and Event Management (SIEM) systems. Like other business continuity (BC) facilities, audit logs typically receive attention during a crisis. That means that their verification and practice needs to happen *before* the time of their use. Familiarity with audit logs deserves routine drills so that the logs are in good shape and can be trusted when they are most needed.
+Therefore, enabling audit logs is a delicate matter. To be both useful and adequately secure, audit logs must be highly available, securely backed up, regularly monitored, periodically reviewed, and protected by granular RBAC. They must also comply with pertinent legal requirements such as GDPR or HIPAA. Additionally, audit logs should be integrated with Security Information and Event Management (SIEM) systems when appropriate. Like other business continuity (BC) measures, audit logs typically receive attention during a crisis. That means their verification and practice needs to happen *before* the time of their use. Familiarity with audit logs deserves routine drills so that the logs are in accurate and dependable when they are most needed.
 
-### Source Control Integration
+## Source Control Integration
 
-Configuration management with Ansible enables use of techniques that have proven successful with software development. The usual abbreviation for these ideas is "[infrastructure as code](/docs/guides/introduction-to-infrastructure-as-code/)" (IaC). Effective IaC involves:
+Configuration management with Ansible enables use of techniques that have proven successful with software development. These techniques fall under the umbrella of "[Infrastructure as Code](/docs/guides/introduction-to-infrastructure-as-code/)" (IaC). Effective IaC involves:
 
--   Versioning and change tracking, to detail what changes have been made, when, and by whom.
--   Auditing and compliance, which ensures who made changes, who reviewed and approved changes to business documents.
--   Consistent, sustainable RBAC to link access, actions, and accountability.
--   Disaster recovery and rollback.
--   Peer review, with the source control system managing **concurrent** collaboration. Ideally, multiple pairs of experienced eyes can simultaneously work together on multiple different aspects of Ansible configuration with confidence that the system notices conflicts before they do any harm.
+-   **Versioning and Change Tracking**: Keeps a detailed record of what changes have been made, when, and by whom.
+-   **Auditing and Compliance**: Ensures that changes to business documents are made, reviewed, and approved by authorized personnel.
+-   **Consistent and Sustainable RBAC**: Links access, actions, and accountability, ensuring that only authorized users can make specific changes.
+-   **Disaster Recovery and Rollback**: Facilitates recovery from failures by rolling back to a stable state.
+-   **Peer Review**: Manages *concurrent* collaboration through the source control system. Multiple teams can work on different aspects of Ansible configuration simultaneously, with the system detecting conflicts before they cause issues.
 
-**Integration** of all these elements means that you use the same single-sign-on passwords and development lifecycles and permission schemes for Ansible authentication as for other workflows. Any defects in integration introduce surprises and complexity that create security hazards. Consistent use of IaC prevents such defects, and makes the resulting operations far more predictable and secure. Source control integration in Ansible enhances security by providing versioning, change tracking, access controls, accountability, and resiliency to recover from security incidents.
+The *integration* of all these elements allows you to use the same Single Sign On (SSO) passwords, development lifecycles, and permission schemes for Ansible authentication as you do for other workflows. Defects in integration can introduce surprises and complexities that pose security risks. Consistent use of IaC prevents such defects and ensures the resulting operations are predictable and secure.
 
-### Continuous Compliance Checking
+Source control integration in Ansible enhances security by providing versioning, change tracking, access controls, accountability, and the resilience to recover from security incidents.
 
-Ansible's mechanisms enable:
+## Continuous Compliance Checking
 
--   Compliance automation
--   Real-time monitoring
--   Auditing and accountability
+Ansible's mechanisms enable compliance automation, real-time monitoring, auditing, and accountability. At a business level, this means that Ansible can make computing systems more manageable by ensuring they are in optimal health and are continuously supervised. It uses multiple security mechanisms to provide defense in depth, operating transparently to facilitate corrections when things go wrong. These mechanisms provide confidence that configurations are performing as intended. Automation of compliance tasks reduces the need for manual intervention, minimizes dependence on specific expertise, and maximizes the achievement of consistently secure results.
 
-At a business level, this means that Ansible makes computing systems more manageable. It puts systems in place so that computing assets are known to be in good health, are continuously supervised to keep them that way, are protected by multiple security mechanisms that provide defense in depth, and operate with transparency to facilitate correction when things do go wrong. These strong mechanisms give continuous confidence that configurations are doing what they're designed to do. Thoroughgoing automation of this sort minimizes error-prone "manual" involvement, minimizes dependence on human heroics or irreplaceable expertise, and maximizes continuous achievement of highly-predictable secure results.
+## Security Patching
 
-### Security Patching
+Ansible doesn't eliminate the need for security patching, it simply enhances the efficiency and effectiveness of the process. Ansible playbooks enable the swift, consistent, and verified application of patches. Patching is governed by Ansible's authentication and accountability mechanisms, which adhere to best security practices, and produce secure, manageable, and transparent results.
 
-Ansible doesn't eliminate the need for security patching, it just helps make security patching work as well as possible. Ansible playbooks enable **swift**, **consistent**, **verified** application of patches. Patching, moreover, is under the control of the usual Ansible authentication and accountability mechanisms, so patching itself operates by familiar best security practices, to yield secure, manageable, and transparent results.
+The consistency of these mechanisms enables benefits such as concurrent development. When multiple patches must be managed simultaneously, Ansible's IaC model allows different teams to prepare and test their patches *at the same time* without hindering other's progress. Concurrent patching resolves crises far more quickly than traditional methods.
 
-The consistency of these mechanisms enables such benefits as concurrent development. In the common circumstance that multiple patches need to be juggled simultaneously, Ansible's IaC model makes it possible for multiple teams to prepare and test their patches *at the same time* without blocking other progress. Concurrent patching progress is an enormous advantage, and resolves crises far more quickly than would otherwise happen.
+## Custom Modules
 
-### Custom modules
+Security work often emphasizes use of well-known, proven techniques. Do-it-yourself encryption, for instance, is a known [recipe for failure](https://www.virtru.com/blog/homegrown-crypto-isnt-worth-the-security-risks). However, any real-world computing system is likely to involve some amount of customization to meet specific requirements. Ansible's custom modules allow for such customization by extending its base functionality in a predictable and manageable way. While custom modules present risks, using them correctly is generally preferable to any alternative method of achieving the same results.
 
-Security work often emphasizes use of well-known, proven techniques. "Do-it-yourself" encryption, for instance, is a known [recipe for failure](https://www.virtru.com/blog/homegrown-crypto-isnt-worth-the-security-risks).
+When working with custom modules, be aware of their potential to:
 
-At the same time, any real-world computing system is likely to involve at least a small amount of fitting and "shimming". Configuration is inevitable. Ansible's custom modules extend its base functionality predictably and manageably. While custom modules present risks, good use of them is generally preferable to any alternative way to achieve the same results.
+-   **Allow Malicious or Erroneous Code Execution**: Custom modules can execute arbitrary code from the Ansible control node. Breakdowns can lead to data breaches, unauthorized system access, or service disruption.
+-   **Escalate Privileges**: Custom modules can manipulate permissions. In the wrong circumstances, unauthorized users or users with low privileges might exploit custom modules to perform actions they otherwise could not do.
+-   **Expose Information**: Passwords, API keys, and security tokens frequently appear in custom modules.
+-   **Handle Inputs Insecurely**: Custom modules often receive user inputs. It is crucial to sanitize these inputs to eliminate injection vulnerabilities.
+-   **Lack Proper Authentication and Authorization**: Custom modules can be misused to act far beyond their original intent.
+-   **Compromise Code Integrity**: Custom modules require thorough review before they are deployed to ensure they don't compromise the system.
 
-When working with custom modules, keep in mind their potential to:
+Like any other code, custom modules require ongoing support. Even when they function well and remain unchanged, they still deserve periodic review to ensure no pertinent security advisories affect them.
 
--   Allow malicious or erroneous code execution. Custom modules generally can execute arbitrary code from the Ansible control node. Breakdowns lead to data breaches, unauthorized system access, or service disruption.
--   Escalate privileges: Custom modules can manipulate permissions. In the wrong circumstances, unauthorized users, or at least users with low privileges, might divert custom modules to achieve results from which they'd otherwise be blocked.
--   Expose information: Passwords, API keys, and security tokens frequently turn up in custom modules.
--   Insecure handling of inputs: Custom modules often receive user inputs. When this happens you need to sanitize those inputs, to eliminate injection vulnerabilities.
--   Lack good authentication and authorization. Such custom modules can be misused to act far beyond their original intent.
--   Degrade code integrity: Review of custom modules must be thorough before they are first deployed.
+## Community and Vendor Support
 
-Custom modules are like other code, in requiring support. Even when working well, and unchanged in their contents, they deserve periodic review to confirm that no pertinent security advisories affect them.
+One of Ansible's strengths is the extensive community and vendor support options available, along with the wealth of shared content provided by other users. While these resources are invaluable, responsibility for using Ansible ultimately rests with you. As valuable as community resources are, they deserve review before implementing them in your environment.
 
-### Community and vendor support
+## Consistency of Multi-tier Environments
 
-One of Ansible's strengths is the wealth of other users and support options available as well as the content they share. Responsibility for Ansible use still rests with you. As valuable as community offerings are, they deserve review before unleashing them in your environment.
+Ansible is suitable for managing configuration across development, testing, staging, and production environments. Consistent management across different tiers provides trustworthy results.
 
-### Consistency of Multi-tier Environments
-
-Another Ansible strength is its suitability to manage configuration across **development**, **testing**, **staging**, and **production** environments. Consistent management across different tiers promotes consistent, trustworthy results and that's a great benefit.
-
-At the same time, multi-tier management has security consequences. Private information *must* be kept secure, presumably in the Vault, rather than exposed in a plaintext playbook. Network segmentation must isolate and secure hosts to prevent unauthorized access from the Ansible control machine. Credentials and privileges deserve appropriate care, with an eye to RBAC accountability and restricted access. Auditing and logging need to record tier information, so that suspicious activities are identified and isolated as quickly as possible.
-
-## Conclusion
-
-While Ansible is often regarded as a narrow topic related to techniques system administrators use in fulfilling management requirements, these examples show that its use has a variety of deep implications for security.
+However, multi-tier management does have security consequences. It is essential to secure private information, typically in the Vault, to prevent exposure in plaintext playbooks. Network segmentation should isolate and secure hosts to prevent unauthorized access from the Ansible control machine. Credentials and privileges deserve appropriate care, adhering to RBAC principles to ensure accountability and restricted access. Additionally, auditing and logging should record tier-specific information to identify and isolate any suspicious activities as quickly as possible.

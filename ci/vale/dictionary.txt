@@ -1034,6 +1034,7 @@ icingacli
 icmp
 icmpv6
 idempotence
+idempotency
 ident
 identrust
 iDimensionz
