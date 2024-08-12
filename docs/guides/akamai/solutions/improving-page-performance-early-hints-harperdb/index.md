@@ -1,6 +1,6 @@
 ---
 slug: improving-page-performance-early-hints-harperdb
-title: "Improving Page Performance with Early Hints and Harperdb"
+title: "Improving Page Performance with Early Hints and HarperDB"
 description: "Two to three sentences describing your guide."
 og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
 authors: ["Linode"]
