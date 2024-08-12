@@ -61,7 +61,7 @@ For this reason, it is important for these update operations to be propagated qu
 
 This solution creates a key-value storage service on Akamai Connected Cloud. The service is composed of a primary storage cluster in one compute region and ten storage leaf nodes installed across ten other compute locations. Akamai Global Traffic Management routes requests from users to these leaf nodes.
 
-
+![NATS Key-Value Store Design Diagram](nats-kv-store.svg?diagram-description-id=nats-kv-store-design-diagram)
 
 1. Publishing Key-Value Data: Key-value data is loaded asynchronously into the primary storage cluster via the [NATS client software](https://docs.nats.io/running-a-nats-service/clients).
 
@@ -76,6 +76,7 @@ This solution creates a key-value storage service on Akamai Connected Cloud. The
 5. Akamai Global Traffic Management uses DNS to route requests to storage leaf nodes. Liveness checks are performed on the leaf nodes so that requests are only routed to available nodes. The node that offers the lowest latency and best performance for the user's location is selected.
 
 6. An HTTPS/NATS Gateway NGINX receives the request and retrieves the key-value data from the leaf node, using the key encoded in the request URL.
+{#nats-kv-store-design-diagram .large-diagram}
 
 ### Systems and Components
 
