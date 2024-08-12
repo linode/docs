@@ -29,7 +29,7 @@ Similar to Metadata, Linode's [StackScripts](/docs/products/tools/stackscripts/)
 
 Akamai's Metadata service is available in select data centers. Additionally, user data and cloud-init integration is currently only supported in a few distribution images. Supported data centers and distributions are listed below:
 
--   **Data centers:** Amsterdam (Netherlands), Chennai (India), Chicago (USA), Jakarta (Indonesia), Los Angeles (USA), London 2 (UK), Madrid (Spain), Melbourne (Australia), Miami (USA), Milan (Italy), Osaka (Japan), Paris (France), São Paulo (Brazil), Seattle (USA), Stockholm (Sweden), and Washington DC (USA)
+-   **Data centers:** Amsterdam (Netherlands), Chennai (India), Chicago (USA), Jakarta (Indonesia), London 2 (UK), Los Angeles (USA), Madrid (Spain), Melbourne (Australia), Miami (USA), Milan (Italy), Osaka (Japan), Paris (France), São Paulo (Brazil), Seattle (USA), Stockholm (Sweden), and Washington DC (USA)
 
 -   **Distributions:** Ubuntu 22.04 LTS, Ubuntu 20.04 LTS, Debian 11
 

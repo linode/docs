@@ -46,9 +46,9 @@ Premium Compute Instances are currently available in select data centers.
 | Frankfurt (Germany) | *Not available* |
 | Fremont (California, USA) | *Not available* |
 | **Jakarta (Indonesia)** | **Available** |
-| **Los Angeles (California, USA)** | **Available** |
 | London (United Kingdom) | *Not available* |
-| London 2 (United Kingdom) | **Available** |
+| **London 2 (United Kingdom)** | **Available** |
+| **Los Angeles (California, USA)** | **Available** |
 | **Madrid (Spain)** | **Available** |
 | **Melbourne (Australia)** | **Available** |
 | **Miami (Florida, USA)** | **Available** |

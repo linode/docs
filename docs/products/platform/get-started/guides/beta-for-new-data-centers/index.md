@@ -45,7 +45,7 @@ Each data center in this beta is slated to have most of Akamai’s cloud computi
 
 ### Object Storage
 
-The London 2 (gb-lon) and Melbourne (au-mel) data centers do not support Object Storage during the beta period.
+The London 2 (gb-lon) and Melbourne (au-mel) data centers do not support Object Storage.
 
 ### Premium Plans
 
