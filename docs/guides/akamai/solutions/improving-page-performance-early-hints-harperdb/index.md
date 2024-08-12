@@ -1,6 +1,6 @@
 ---
 slug: improving-page-performance-early-hints-harperdb
-title: "Improving Page Performance Early Hints Harperdb"
+title: "Improving Page Performance with Early Hints and Harperdb"
 description: "Two to three sentences describing your guide."
 og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
 authors: ["Linode"]
@@ -49,6 +49,8 @@ The size of the eCommerce catalog that this solution needs to support scales int
 ## Early Hints and HarperDB Design Diagram
 
 This solution configures Early Hints with Akamai EdgeWorkers and creates a HarperDB cluster distributed across ten Akamai core compute regions. This HarperDB cluster maintains a record of product thumbnail URLs for each page on an eCommerce website. Akamai edge servers return these thumbnail URLs to a user’s browser.
+
+![Early Hints and HarperDB Design Diagram](early-hints-harperdb-design-diagram.jpg)
 
 1. A user makes a request for a page on the eCommerce website. The URL for this request might look like:
 
