@@ -4,11 +4,12 @@ description: "Deploy Couchbase Enterprise Server One-Click Cluster on Akamai Con
 keywords: ['database','nosql','high availability','data','cluster']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2024-06-10
+updated: 2024-08-13
 external_resources:
 - '[Couchbase](https://www.couchbase.com/)'
 ---
 
-[Couchbase](https://www.couchbase.com/) is an enterprise class NoSQL database designed with memory-first architecture, built-in cache and workload isolation. The Couchbase One-Click cluster deploys five connected Couchbase Enterprise Server nodes, split between data, index and query services. This starting configuration allows quick deployment and rapid cluster expansion with Couchbase's multi-dimensional scaling.
+[Couchbase](https://www.couchbase.com/) is an enterprise class NoSQL database designed with memory-first architecture, built-in cache and workload isolation. The Couchbase One-Click cluster deploys three, five or seven connected Couchbase Enterprise Server nodes, split between Data, Index and Query services. This starting configuration allows quick deployment and rapid cluster expansion with Couchbase's multi-dimensional scaling.
 
 {{< note title="Couchbase Enterprise Server License" >}}
 Couchbase Enterprise Server is not free to use in production. Contact [Couchbase Support](https://www.couchbase.com/pricing/) to activate your license on Akamai Connected Cloud and enable [Couchbase application support](https://support.couchbase.com/hc/en-us/articles/360043247551-Accessing-Couchbase-Support).
@@ -40,6 +41,8 @@ Couchbase Enterprise Server is not free to use in production. Contact [Couchbase
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
+- **Couchbase Server Count** *(required)*: Number of Couchbase Enterprise Servers to deploy. One of 3,5,7. Defaults to 3
+
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
@@ -57,6 +60,14 @@ Provide the username Administrator and generated password included in `/home/$su
 While there are no buckets yet configured on this new cluster, you can see all five nodes marked ready on the bottom status bar, and verify the status of the cluster members from the Servers tab.
 
 ![Couchbase Servers Status](couchbase_servers.png)
+
+## Managing Firewall and Security
+
+The Couchbase Cluster deploys with UFW firewall rules in place that limits allowed traffic on node-to-node and cluster-to-cluster Couchbase ports to IP addresses within the cluster. 
+
+Only the *cluster provisioner* has firewall access configured for web and client ports. 
+
+The Couchbase Enterprise Server Cluster Marketplace App manages these UFW configurations with `application profile` files in the `/etc/ufw/appplications.d` directory. See [Configure a Firewall with UFW](docs/guides/security/firewalls/configure-firewall-with-ufw/index.md) for more details on using UFW.
 
 ## Next Steps
 
