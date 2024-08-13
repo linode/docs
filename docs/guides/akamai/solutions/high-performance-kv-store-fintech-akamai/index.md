@@ -4,7 +4,7 @@ title: "High-Performance KV Store for Fintech with Akamai"
 description: "This guide outlines a distributed key-value storage architecture with NATS and JetStream that supports user registration for a global fintech service."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2024-08-013
+published: 2024-08-13
 keywords: ['fintech','key-value store','NATS.io','NATS JetStream']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -93,4 +93,4 @@ This solution creates a key-value storage service on Akamai Connected Cloud. The
 
     The gateway retrieves the value of the key from the corresponding NATS leaf node.
 
-- **[Akamai Global Traffic Managment](https://www.akamai.com/products/global-traffic-management)** is responsible for accepting user requests on the service and routing requests to an available leaf node that provides the lowest latency for the user's location.
+- **[Akamai Global Traffic Management](https://www.akamai.com/products/global-traffic-management)** is responsible for accepting user requests on the service and routing requests to an available leaf node that provides the lowest latency for the user's location.
