@@ -4,7 +4,7 @@ title: "Improving Page Performance with Early Hints and HarperDB"
 description: "This guide outlines how to use HTTP 103 Early Hints for preloading images, CSS, and JavaScript on eCommerce websites with EdgeWorkers and HarperDB."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2024-08-013
+published: 2024-08-13
 keywords: ['early hints','http 103','harperdb','page performance', 'preloading css html', 'preloading javascript', 'preloading images']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
