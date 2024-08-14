@@ -11,8 +11,8 @@ aliases: ['/products/tools/marketplace/guides/bitninja/','/guides/deploying-bitn
 _build:
   list: false
 noindex: true
-
 deprecated: true
+authors: ["Akamai"]
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
 BitNinja has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only.
