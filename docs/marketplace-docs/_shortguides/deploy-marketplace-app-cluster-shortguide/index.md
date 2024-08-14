@@ -6,6 +6,7 @@ show_on_rss_feed: false
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+description: 'Marketplace marketplace app cluster shortguide'
 ---
 
 The Linode Marketplace lets you easily deploy an application cluster on Compute Instances using Cloud Manager. See [Get Started with Marketplace Apps](/docs/marketplace-docs/guides/get-started/) for complete steps.
