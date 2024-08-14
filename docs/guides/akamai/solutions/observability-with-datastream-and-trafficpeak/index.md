@@ -71,8 +71,9 @@ Below is a high-level diagram and walkthrough of a DataStream and TrafficPeak ar
 1.  TrafficPeak collects the information, providing extended data retention (+15 months), facilitating historical data trends and reporting, and enhancing overall visibility.
 
 1.  A Grafana dashboard supporting hundreds of users provides a unified view for DataStream and SIEM functions.
+{#advanced-observability-diagram .large-diagram}
 
-![DataStream With TrafficPeak Diagram](DataStream-With-TrafficPeak-Diagram.png)
+![DataStream With TrafficPeak Diagram](Advanced-Observability.svg?diagram-description-id=advanced-observability-diagram)
 
 ### Systems and Components
 
