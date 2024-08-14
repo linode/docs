@@ -8,7 +8,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 image: DeployCyberPanel_marketplaceapps.png
 external_resources:
 - '[CyberPanel](https://docs.litespeedtech.com/cloud/images/cyberpanel/)'
-aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel-marketplace-app']
+aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel-marketplace-app/']
 authors: ["Akamai"]
 ---
 
