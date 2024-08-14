@@ -7,6 +7,7 @@ tab_group_main:
 aliases: ['/products/tools/marketplace/developers/','/products/tools/marketplace-one-click-apps/developers/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 ## Linode API

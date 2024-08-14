@@ -11,6 +11,7 @@ external_resources:
 aliases: ['/products/tools/marketplace/guides/cyberpanel/','/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel-marketplace-app/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [CyberPanel](https://cyberpanel.net/) is a next-generation hosting control panel, which provides a friendly user interface. The CyberPanel app provides a One-Click installer for OpenLiteSpeed, LSCache, WordPress, Prestashop, Joomla, Magento, and Git. It also automates the initial setup for components like mail service and DNS to reduce the time it takes to get set up.

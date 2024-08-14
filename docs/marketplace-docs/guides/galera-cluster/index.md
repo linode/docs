@@ -12,6 +12,7 @@ external_resources:
 aliases: ['/products/tools/marketplace/guides/galera-cluster/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 Galera provides a performant MariaDB database solution with synchronous replication to achieve high availability. Galera is deployed with MariaDB, which is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. MariaDB was originally based off of MySQL and maintains backward compatibility.

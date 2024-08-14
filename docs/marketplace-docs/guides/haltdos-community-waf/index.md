@@ -9,6 +9,7 @@ external_resources:
 aliases: ['/products/tools/marketplace/guides/haltdos-community-waf/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [Haltdos](https://www.haltdos.com/) Community Edition is a free user-friendly web application. It provides protection from OWASP 10 threats, XSS, SQL, and other web-based threats.

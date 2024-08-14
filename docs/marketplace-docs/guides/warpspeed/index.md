@@ -11,6 +11,7 @@ external_resources:
 aliases: ['/products/tools/marketplace/guides/warpspeed/','/guides/deploying-warpspeed-marketplace-app/','/guides/warpspeed-marketplace-app/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 WarpSpeed makes it easy for developers to access cloud infrastructure via the powerful WireGuard® VPN protocol. It can also be used to enable remote workers to access the internet securely while on public WiFi.

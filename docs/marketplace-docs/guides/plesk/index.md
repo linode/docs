@@ -12,6 +12,7 @@ external_resources:
 aliases: ['/products/tools/marketplace/guides/plesk/','/platform/marketplace/deploying-plesk-with-marketplace-apps/','/guides/deploying-plesk-with-marketplace-apps/','/platform/one-click/deploy-plesk-with-one-click-apps/','/guides/deploy-plesk-with-one-click-apps/','/guides/plesk-marketplace-app/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [Plesk](https://www.plesk.com) is a leading WordPress and website management platform and control panel. Plesk lets you build and manage multiple websites from a single dashboard to configure web services, email, and other applications. Plesk features hundreds of extensions, plus a complete WordPress toolkit. Use the Plesk Marketplace App to manage websites hosted on your Linode.

@@ -13,6 +13,7 @@ external_resources:
 aliases: ['/products/tools/marketplace/guides/azuracast/','/platform/marketplace/how-to-deploy-azuracast-with-marketplace-apps/', '/platform/one-click/how-to-deploy-azuracast-with-one-click-apps/','/guides/how-to-deploy-azuracast-with-one-click-apps/','/guides/how-to-deploy-azuracast-with-marketplace-apps/','/guides/deploy-azuracast-with-one-click-apps/','/platform/one-click/deploy-azuracast-with-one-click-apps/','/guides/azuracast-marketplace-app/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [AzuraCast](https://www.azuracast.com) is a free self-hosted web radio station and management suite. Installation is simple with Marketplace Apps, and the intuitive web interface makes running a web station easy. After installation, you can be broadcasting within in minutes.

@@ -16,6 +16,7 @@ noindex: true
 deprecated: true
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 {{< note type="warning" title="This app is no longer available for deployment" >}}

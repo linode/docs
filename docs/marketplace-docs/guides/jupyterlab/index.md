@@ -10,6 +10,7 @@ external_resources:
 aliases: ['/products/tools/marketplace/guides/jupyterlab/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [JupyterLab](https://jupyter.org/) stands as the cutting-edge web-based interactive development environment, catering to notebooks, code, and data. With a flexible interface, users can easily configure and arrange workflows in data science, scientific computing, computational journalism, and machine learning.

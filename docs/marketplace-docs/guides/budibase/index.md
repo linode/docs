@@ -7,6 +7,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/budibase/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [Budibase](https://github.com/Budibase/budibase) is an open-source, low-code platform for building modern business applications. Build, design, and automate different types of applications, including admin panels, forms, internal tools, and client portals. Using Budibase helps developers avoid spending weeks building simple CRUD applications and, instead, allows them to complete many projects in significantly less time.

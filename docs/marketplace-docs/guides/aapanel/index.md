@@ -11,6 +11,7 @@ external_resources:
 - '[aaPanel Documentation](https://doc.aapanel.com/web)'
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [aaPanel](https://www.aapanel.com/) is a free and open source web hosting control panel. It lets you manage the server's web server, websites, databases, FTP, and more through a simple web-based interface. Through aaPanel, you can quickly install a LEMP (NGINX) or LAMP (Apache) stack on your server and start hosting your websites.

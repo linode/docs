@@ -10,6 +10,7 @@ aliases: ['/products/tools/marketplace/get-started/','/platform/marketplace/how-
 image: how-to-use-linode-oneclick-apps.png
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 The Linode Marketplace enables users to quickly deploy software applications to a Linode Compute Instance without the hassle of using the command line.

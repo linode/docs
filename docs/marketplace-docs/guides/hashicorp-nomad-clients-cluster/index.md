@@ -8,6 +8,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/hashicorp-nomad-clients-cluster/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 The [HashiCorp Nomad](https://www.nomadproject.io/) Clients Cluster deploys 3, 5 or 7 Compute Instances as clients to horizontally scale an *existing HashiCorp Nomad Cluster*. The plan type and size you select is applied to each individual instance.

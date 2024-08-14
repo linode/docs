@@ -9,6 +9,7 @@ external_resources:
 aliases: ['/products/tools/marketplace/guides/joomla/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [Joomla](https://www.joomla.org/) is an advanced CMS (content management system) used to facilitate the easy creation and ongoing maintenance of dynamic websites. Comparable in some respects to other web applications like [Drupal](https://www.drupal.org/) and [WordPress](https://wordpress.org/), Joomla also has advanced features that resemble web-development frameworks like [Ruby On Rails](https://rubyonrails.org/) and [Django](https://www.djangoproject.com/). Deployed on top of the industry standard [LAMP Stack](/docs/web-servers/lamp/), Joomla is designed to be both easy to use and manage from the end user's perspective and easy to administer and host.

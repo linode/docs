@@ -9,6 +9,7 @@ external_resources:
 aliases: ['/products/tools/marketplace/guides/nats-single-node/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [NATS](https://docs.nats.io/nats-concepts/overview) is a connective technology built for the hyper-connected world. It is a single technology that enables applications to securely communicate across any combination of cloud vendors, on-premise, edge, web and mobile, and devices. NATS consists of a family of open-source products that are tightly integrated but can be deployed easily and independently. NATS is being used globally by thousands of companies, spanning use-cases including microservices, edge computing, mobile, and IoT.

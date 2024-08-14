@@ -11,6 +11,7 @@ external_resources:
 aliases: ['/products/tools/marketplace/guides/phpmyadmin/','/platform/marketplace/deploy-phpmyadmin-with-marketplace-apps/', '/platform/one-click/deploy-phpmyadmin-with-one-click-apps/', '/guides/deploy-phpmyadmin-with-one-click-apps/', '/guides/deploy-phpmyadmin-with-marketplace-apps/','/guides/phpmyadmin-marketplace-app/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [phpMyAdmin](https://www.phpmyadmin.net/) is an open source web application that provides a GUI for MySQL database administration, giving you a convenient and powerful alternative to using the MySQL command line client. The phpMyAdmin Marketplace App deploys a Linode with phpMyAdmin installed and ready for you to begin managing a MySQL database.

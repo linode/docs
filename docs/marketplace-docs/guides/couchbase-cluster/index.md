@@ -9,6 +9,7 @@ external_resources:
 aliases: ['/products/tools/marketplace/guides/couchbase-cluster/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [Couchbase](https://www.couchbase.com/) is an enterprise class NoSQL database designed with memory-first architecture, built-in cache and workload isolation. The Couchbase One-Click cluster deploys five connected Couchbase Enterprise Server nodes, split between data, index and query services. This starting configuration allows quick deployment and rapid cluster expansion with Couchbase's multi-dimensional scaling.

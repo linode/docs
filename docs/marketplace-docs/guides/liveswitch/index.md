@@ -10,6 +10,7 @@ external_resources:
 aliases: ['/products/tools/marketplace/guides/liveswitch/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [LiveSwitch Server](https://www.liveswitch.io/products/liveswitch-server) is a self-hosted WebRTC live video streaming platform. It provides high quality and reliable streaming for both audio and video media. Here's more from the publisher:

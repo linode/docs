@@ -7,6 +7,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/hashicorp-nomad/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [HashiCorp Nomad](https://www.nomadproject.io/) is a simple and flexible scheduler and orchestrator to deploy and manage containers and non-containerized applications across cloud platforms (and on-premises servers) at scale.

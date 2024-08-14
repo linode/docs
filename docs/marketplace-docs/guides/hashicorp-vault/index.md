@@ -7,6 +7,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/hashicorp-vault/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [HashiCorp Vault](https://www.vaultproject.io/) is an open source, centralized secrets management system. It provides a secure and reliable way of storing and distributing secrets like API keys, access tokens, and passwords.

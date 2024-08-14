@@ -10,6 +10,7 @@ external_resources:
 aliases: ['/products/tools/marketplace/guides/apache-cassandra-cluster/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 ## Cluster Deployment Architecture

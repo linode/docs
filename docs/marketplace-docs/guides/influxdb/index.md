@@ -9,6 +9,7 @@ external_resources:
 aliases: ['/products/tools/marketplace/guides/influxdb/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [InfluxDB](https://www.influxdata.com/) is a high-performance time series database designed to handle massive volumes of data with ease. Its intuitive query language and powerful visualization capabilities make it the go-to choice for monitoring, analytics, and IoT applications.

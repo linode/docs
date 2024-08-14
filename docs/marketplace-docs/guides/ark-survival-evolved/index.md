@@ -14,6 +14,7 @@ noindex: true
 deprecated: true
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
 ARK: Survival Evolved has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only. For information on how to deploy and set up ARK: Survival Evolved manually on a Compute Instance, see our [Creating a Dedicated ARK Server on Ubuntu](/docs/guides/create-an-ark-server-on-ubuntu) guide.

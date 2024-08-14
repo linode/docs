@@ -12,6 +12,7 @@ external_resources:
 aliases: ['/products/tools/marketplace/guides/jenkins/','/platform/marketplace/how-to-deploy-jenkins-with-marketplace-apps/', '/platform/one-click/how-to-deploy-jenkins-with-one-click-apps/','/guides/how-to-deploy-jenkins-with-one-click-apps/','/guides/how-to-deploy-jenkins-with-marketplace-apps/','/guides/jenkins-marketplace-app/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [Jenkins](https://jenkins.io/) is an open source automation tool which can build, test, and deploy your infrastructure. It gives you access to a massive library of plugins to support automation in your project's lifecycle. You can create a [continuous delivery pipeline](https://jenkins.io/doc/pipeline/tour/hello-world/#what-is-a-jenkins-pipeline) which automates the process for getting your software from version control to your users.
