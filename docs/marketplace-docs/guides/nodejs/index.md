@@ -6,6 +6,7 @@ modified: 2022-03-08
 keywords: ['nodejs','development','javascript']
 tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/guides/nodejs-marketplace-app/']
+authors: ["Akamai"]
 ---
 
 [Node.js](https://nodejs.org/en/) is a lightweight development platform for building fast and scalable applications using Javascript. Since it's based on Javascript, it's relatively easy to learn and has a large community with lots of resources. Node.js can be used for almost any time of web application, including websites, but its asynchronous nature shines when used to develop real-time data-intensive applications

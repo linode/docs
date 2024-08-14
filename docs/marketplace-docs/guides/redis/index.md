@@ -9,6 +9,7 @@ external_resources:
 - '[Introduction to Redis Data Types](https://redis.io/topics/data-types-intro)'
 - '[Redis Replication](https://redis.io/topics/replication)'
 aliases: ['/platform/marketplace/how-to-deploy-redis-with-marketplace-apps/','/platform/one-click/how-to-deploy-redis-with-one-click-apps/','/guides/how-to-deploy-redis-with-one-click-apps/','/guides/how-to-deploy-redis-with-marketplace-apps/','/guides/redis-marketplace-app/']
+authors: ["Akamai"]
 ---
 
 [Redis](https://redis.io/) is an open-source, in-memory, data-structure store, with the optional ability to write and persist data to a disk, which can be used as a key-value database, cache, and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets, and others.

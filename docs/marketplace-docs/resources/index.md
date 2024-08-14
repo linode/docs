@@ -5,6 +5,7 @@ description: "Resources and other information related to Linode Marketplace Apps
 tab_group_main:
     weight: 40
 aliases: ['/products/tools/marketplace-one-click-apps/resources/']
+authors: ["Akamai"]
 ---
 
 ## Blog Posts

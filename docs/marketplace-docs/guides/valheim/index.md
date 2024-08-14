@@ -13,6 +13,7 @@ _build:
   list: false
 noindex: true
 deprecated: true
+authors: ["Akamai"]
 ---
 
 {{< note type="warning" title="This app is no longer available for deployment" >}}

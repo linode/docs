@@ -3,6 +3,7 @@
 
 headless: true
 show_on_rss_feed: false
+authors: ["Akamai"]
 ---
 
 #### Custom Domain (Optional)
