@@ -9,6 +9,7 @@ image: DeployYacht_marketplaceapps.png
 aliases: ['/products/tools/marketplace/guides/yacht/','/guides/deploy-yacht-with-marketplace-apps/','/guides/yacht-marketplace-app/']
 external_resources:
 - '[Getting Started](https://yacht.sh/docs/Installation/Getting_Started)'
+authors: ["Akamai"]
 ---
 
 [Yacht](https://yacht.sh/) is a web interface for managing Docker containers, with an emphasis on templating to provide easy deployments. The ultimate goal of Yacht is to make Docker easy for anyone to use and manage with templates, template variables, and an intuitive UI.

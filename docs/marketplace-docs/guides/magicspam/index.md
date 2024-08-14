@@ -12,6 +12,7 @@ _build:
   list: false
 noindex: true
 deprecated: true
+authors: ["Akamai"]
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
 MagicSpam has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only. For information on how to configure MagicSpam, see our [Using MagicSpam to Secure your Email Server](/docs/guides/using-magicspam-email-authentication) guide.

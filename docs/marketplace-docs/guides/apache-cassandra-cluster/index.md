@@ -8,6 +8,7 @@ external_resources:
 - '[About Apache Cassandra](https://cassandra.apache.org/)'
 - '[Apache Cassandra Documentation](https://cassandra.apache.org/doc/latest/cassandra/architecture/overview.html)'
 aliases: ['/products/tools/marketplace/guides/apache-cassandra-cluster/']
+authors: ["Akamai"]
 ---
 
 ## Cluster Deployment Architecture

@@ -8,6 +8,7 @@ tags: ["marketplace", "linode platform", "cloud manager","managed hosting"]
 external_resources:
 - '[LiteSpeed](https://www.litespeedtech.com/)'
 aliases: ['/products/tools/marketplace/guides/litespeed-cpanel/','/guides/deploying-litespeed-cpanel-marketplace-app/','/guides/litespeed-cpanel-marketplace-app/']
+authors: ["Akamai"]
 ---
 
 The LiteSpeed cPanel App automatically installs [cPanel](https://cpanel.net/), [LiteSpeed Web Server](https://www.litespeedtech.com/products/litespeed-web-server), and the[WHM/cPanel LiteSpeed Plugin](https://www.litespeedtech.com/products/litespeed-web-server/control-panel-plugins/cpanel).
