@@ -7,6 +7,7 @@ keywords: ['game servers','multiplayer','game']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[LinuxGSM](https://linuxgsm.com/)'
+aliases: ['/products/tools/marketplace/guides/linuxgsm/']
 ---
 
 [LinuxGSM](https://linuxgsm.com/) is a command-line tool for managing game servers.

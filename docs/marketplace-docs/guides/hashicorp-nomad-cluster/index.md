@@ -5,6 +5,7 @@ published: 2023-09-11
 modified: 2023-11-13
 keywords: ['HashiCorp','Nomad','Scheduling', 'orchestration']
 tags: ["marketplace", "linode platform", "cloud manager"]
+aliases: ['/products/tools/marketplace/guides/hashicorp-nomad-cluster/']
 ---
 
 [HashiCorp Nomad](https://www.nomadproject.io/) is a workload scheduler and orchestrator that lets you deploy and manage containerized or non-containerized, legacy applications using a single, unified workflow. Nomad uses bin packaging for efficient job scheduling and resource optimization, as well as enables developers to use declarative infrastructure-as-code for their deployments.

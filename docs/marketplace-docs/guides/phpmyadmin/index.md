@@ -8,7 +8,7 @@ tags: ["debian","php","mysql","database","marketplace","ssl", "web applications"
 external_resources:
 - '[phpMyAdmin Documentation](https://docs.phpmyadmin.net/en/latest/)'
 - '[MariaDB Documentation](https://mariadb.org/documentation/)'
-aliases: ['/platform/marketplace/deploy-phpmyadmin-with-marketplace-apps/', '/platform/one-click/deploy-phpmyadmin-with-one-click-apps/', '/guides/deploy-phpmyadmin-with-one-click-apps/', '/guides/deploy-phpmyadmin-with-marketplace-apps/','/guides/phpmyadmin-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/phpmyadmin/','/platform/marketplace/deploy-phpmyadmin-with-marketplace-apps/', '/platform/one-click/deploy-phpmyadmin-with-one-click-apps/', '/guides/deploy-phpmyadmin-with-one-click-apps/', '/guides/deploy-phpmyadmin-with-marketplace-apps/','/guides/phpmyadmin-marketplace-app/']
 ---
 
 [phpMyAdmin](https://www.phpmyadmin.net/) is an open source web application that provides a GUI for MySQL database administration, giving you a convenient and powerful alternative to using the MySQL command line client. The phpMyAdmin Marketplace App deploys a Linode with phpMyAdmin installed and ready for you to begin managing a MySQL database.

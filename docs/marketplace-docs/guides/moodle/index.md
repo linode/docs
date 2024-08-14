@@ -5,7 +5,7 @@ published: 2021-08-13
 modified: 2023-04-11
 keywords: ['learning','educator','management', and 'school']
 tags: ["marketplace", "linode platform", "cloud manager"]
-aliases: ['/guides/deploying-moodle-marketplace-app/','/guides/moodle-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/moodle/','/guides/deploying-moodle-marketplace-app/','/guides/moodle-marketplace-app/']
 external_resources:
 - '[Moodle](https://moodle.org/)'
 ---

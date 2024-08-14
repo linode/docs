@@ -8,6 +8,7 @@ external_resources:
 - '[About Jitsi](https://jitsi.org/about/)'
 - '[Jitsi Documentation](https://jitsi.github.io/handbook/docs/intro)'
 - '[Scale Your Jitsi Setup](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-scalable)'
+aliases: ['/products/tools/marketplace/guides/jitsi-cluster/']
 ---
 
 ## Cluster Deployment Architecture
@@ -23,7 +24,7 @@ external_resources:
 {{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
-**Estimated deployment time:** Jitsi cluster should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning. 
+**Estimated deployment time:** Jitsi cluster should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
 {{< /note >}}
 
 ## Configuration Options

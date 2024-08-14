@@ -7,6 +7,7 @@ tags: ["ubuntu","marketplace", "web applications", "linode platform", "cloud man
 external_resources:
 - '[About GlusterFS](https://www.gluster.org/)'
 - '[GlusterFS Documentation](https://docs.gluster.org/en/latest/)'
+aliases: ['/products/tools/marketplace/guides/harbor/','/products/tools/marketplace/guides/glusterfs-cluster/']
 ---
 
 ## Cluster Deployment Architecture

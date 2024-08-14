@@ -4,6 +4,7 @@ description: "Deploy Budibase, a low-code platform for building modern business 
 published: 2022-08-09
 keywords: ['budibase','CRUD','low-code']
 tags: ["marketplace", "linode platform", "cloud manager"]
+aliases: ['/products/tools/marketplace/guides/budibase/']
 ---
 
 [Budibase](https://github.com/Budibase/budibase) is an open-source, low-code platform for building modern business applications. Build, design, and automate different types of applications, including admin panels, forms, internal tools, and client portals. Using Budibase helps developers avoid spending weeks building simple CRUD applications and, instead, allows them to complete many projects in significantly less time.

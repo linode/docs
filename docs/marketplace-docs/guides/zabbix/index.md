@@ -10,7 +10,7 @@ external_resources:
 - '[Learn from documentation](https://www.zabbix.com/documentation/5.0/manual)'
 - '[Purchase Technical Support contract](https://www.zabbix.com/support)'
 - '[Zabbix official Forum](https://www.zabbix.com/forum)'
-aliases: ['/platform/marketplace/deploy-zabbix-with-marketplace-apps/', '/platform/one-click/deploy-zabbix-with-marketplace-apps/', '/guides/deploy-zabbix-with-marketplace-apps/','/guides/zabbix-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/zabbit/','/platform/marketplace/deploy-zabbix-with-marketplace-apps/', '/platform/one-click/deploy-zabbix-with-marketplace-apps/', '/guides/deploy-zabbix-with-marketplace-apps/','/guides/zabbix-marketplace-app/']
 ---
 
 [Zabbix](https://www.zabbix.com/) is an enterprise-class, open-source, distributed monitoring solution. Designed as an all-in-one monitoring solution, Zabbix can track performance and availability of network servers, devices, services, and other IT resources. Zabbix empowers administrators to quickly respond to incidents with on-screen display capabilities and alerts by email, SMS, or Jabber. Users can also collect, store, manage, and analyze information received from IT infrastructure. Actively used by SMBs and large enterprises across all industries and in almost every country, Zabbix has a robust community driving its continued development.

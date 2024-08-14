@@ -7,7 +7,7 @@ keywords: ['security','vulnerability','monitoring']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Wazuh](https://wazuh.com/)'
-aliases: ['/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/wazuh/','/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-app/']
 ---
 
 [Wazuh](https://wazuh.com/) provides a security solution for monitoring your infrastructure and detecting threats, intrusion attempts, system anomalies, poorly configured applications, and unauthorized user actions. It also provides a framework for incident response and regulatory compliance.

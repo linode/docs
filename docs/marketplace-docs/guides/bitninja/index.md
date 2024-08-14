@@ -7,7 +7,7 @@ keywords: ['spam','security','waf']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[BitNinja](https://bitninja.com/)'
-aliases: ['/guides/deploying-bitninja-marketplace-app/','/guides/bitninja-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/bitninja/','/guides/deploying-bitninja-marketplace-app/','/guides/bitninja-marketplace-app/']
 _build:
   list: false
 noindex: true

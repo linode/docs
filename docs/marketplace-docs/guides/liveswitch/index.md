@@ -7,6 +7,7 @@ keywords: ['liveswitch','streaming','video']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[LiveSwitch](https://www.liveswitch.io/)'
+aliases: ['/products/tools/marketplace/guides/liveswitch/']
 ---
 
 [LiveSwitch Server](https://www.liveswitch.io/products/liveswitch-server) is a self-hosted WebRTC live video streaming platform. It provides high quality and reliable streaming for both audio and video media. Here's more from the publisher:

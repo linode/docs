@@ -9,7 +9,7 @@ external_resources:
 - '[About Discourse](https://discourse.org/about/)'
 - '[Discourse on Github](https://github.com/discourse/discourse)'
 - '[Discourse Community](https://meta.discourse.org)'
-aliases: ['/platform/marketplace/how-to-deploy-discourse-with-marketplace-apps/','/guides/deploy-discourse-with-marketplace-apps/','/guides/discourse-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/discourse/','/platform/marketplace/how-to-deploy-discourse-with-marketplace-apps/','/guides/deploy-discourse-with-marketplace-apps/','/guides/discourse-marketplace-app/']
 ---
 
 [Discourse](https://www.discourse.org/) is a self-hosted open-source discussion platform that provides a forum, mailing list, chat room, and more.

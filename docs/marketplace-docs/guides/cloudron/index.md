@@ -7,7 +7,7 @@ keywords: ['cloudron','web apps','platform','marketplace']
 tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
 external_resources:
 - '[Cloudron Documentation](https://docs.cloudron.io)'
-aliases: ['/platform/marketplace/how-to-deploy-cloudron-with-marketplace-apps/', '/platform/one-click/how-to-deploy-cloudron-with-one-click-apps/','/guides/how-to-deploy-cloudron-with-one-click-apps/','/guides/deploy-cloudron-with-marketplace-apps/','/guides/cloudron-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/cloudron/','/platform/marketplace/how-to-deploy-cloudron-with-marketplace-apps/', '/platform/one-click/how-to-deploy-cloudron-with-one-click-apps/','/guides/how-to-deploy-cloudron-with-one-click-apps/','/guides/deploy-cloudron-with-marketplace-apps/','/guides/cloudron-marketplace-app/']
 ---
 
 [Cloudron](https://www.cloudron.io) is a platform that makes it easy to install, manage, and secure web apps on a server. Cloudron provides a centralized way to manage users and specify which apps they can access.

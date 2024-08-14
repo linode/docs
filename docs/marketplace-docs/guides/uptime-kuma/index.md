@@ -7,7 +7,7 @@ keywords: ['uptime','monitoring','ping']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Uptime Kuma](https://github.com/louislam/uptime-kuma)'
-aliases: ['/guides/uptimekuma-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/uptime-kuma/','/guides/uptimekuma-marketplace-app/']
 ---
 
 [Uptime Kuma](https://github.com/louislam/uptime-kuma) is an open source monitoring tool. It enables you to monitor services over HTTP/S, TCP, DNS, and other protocols. You can receive notification alerts of downtime and even create custom status pages for your users.

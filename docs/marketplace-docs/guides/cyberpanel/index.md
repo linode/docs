@@ -8,7 +8,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 image: DeployCyberPanel_marketplaceapps.png
 external_resources:
 - '[CyberPanel](https://docs.litespeedtech.com/cloud/images/cyberpanel/)'
-aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel-marketplace-app']
+aliases: ['/products/tools/marketplace/guides/cyberpanel/','/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel-marketplace-app']
 ---
 
 [CyberPanel](https://cyberpanel.net/) is a next-generation hosting control panel, which provides a friendly user interface. The CyberPanel app provides a One-Click installer for OpenLiteSpeed, LSCache, WordPress, Prestashop, Joomla, Magento, and Git. It also automates the initial setup for components like mail service and DNS to reduce the time it takes to get set up.

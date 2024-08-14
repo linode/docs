@@ -10,7 +10,7 @@ external_resources:
  - '[Ruby on Rails Documentation](https://guides.rubyonrails.org/)'
  - '[Securing Rails Applications](https://guides.rubyonrails.org/security.html)'
  - '[Configuring Rails Applications](https://guides.rubyonrails.org/configuring.html)'
-aliases: ['/platform/marketplace/deploying-ruby-on-rails-with-marketplace-apps/', '/platform/one-click/deploying-ruby-on-rails-with-one-click-apps/','/guides/deploying-ruby-on-rails-with-one-click-apps/', '/guides/deploying-ruby-on-rails-with-marketplace-apps/','/guides/ruby-on-rails-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/ruby-on-rails/','/platform/marketplace/deploying-ruby-on-rails-with-marketplace-apps/', '/platform/one-click/deploying-ruby-on-rails-with-one-click-apps/','/guides/deploying-ruby-on-rails-with-one-click-apps/', '/guides/deploying-ruby-on-rails-with-marketplace-apps/','/guides/ruby-on-rails-marketplace-app/']
 ---
 
 [Ruby on Rails](http://rubyonrails.org/) is a server-side web application framework that allows web designers and developers to implement dynamic, fully featured web applications.

@@ -7,7 +7,7 @@ keywords: ['minecraft','marketplace', 'server']
 external_resources:
 - '[Minecraft Wiki](https://minecraft.wiki/w/Server)'
 tags: ["linode platform","marketplace","cloud-manager"]
-aliases: ['/platform/marketplace/deploying-minecraft-with-marketplace-apps/', '/platform/one-click/deploying-minecraft-with-one-click-apps/', '/guides/deploying-minecraft-with-one-click-apps/', '/guides/deploying-minecraft-with-marketplace-apps/','/guides/deploy-minecraft-marketplace-app/','/guides/minecraft-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/minecraft/','/platform/marketplace/deploying-minecraft-with-marketplace-apps/', '/platform/one-click/deploying-minecraft-with-one-click-apps/', '/guides/deploying-minecraft-with-one-click-apps/', '/guides/deploying-minecraft-with-marketplace-apps/','/guides/deploy-minecraft-marketplace-app/','/guides/minecraft-marketplace-app/']
 image: deploy-a-minecraft-server-with-oneclick-apps.png
 ---
 

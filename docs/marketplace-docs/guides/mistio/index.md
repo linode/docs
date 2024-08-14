@@ -7,7 +7,7 @@ keywords: [ 'mist.io', 'marketplace', 'server']
 tags: ["cloud-manager", "linode platform", "marketplace"]
 external_resources:
 - '[Mist.io Official](https://mist.io/)'
-aliases: ['/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platform/one-click/deploy-mistio-with-one-click-apps/','/guides/deploy-mistio-with-one-click-apps/','/guides/deploy-mistio-with-marketplace-apps/','/guides/mistio-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/mistio/','/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platform/one-click/deploy-mistio-with-one-click-apps/','/guides/deploy-mistio-with-one-click-apps/','/guides/deploy-mistio-with-marketplace-apps/','/guides/mistio-marketplace-app/']
 _build:
   list: false
 noindex: true

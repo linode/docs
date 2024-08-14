@@ -7,7 +7,7 @@ keywords: ['akaunting','accounting','productivity']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Akaunting](https://akaunting.com)'
-aliases: ['/guides/deploying-akaunting-marketplace-app/','/guides/akaunting-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/akaunting/','/guides/deploying-akaunting-marketplace-app/','/guides/akaunting-marketplace-app/']
 ---
 
 [Akaunting](https://akaunting.com/) is a free open source online accounting software designed for small businesses and freelancers. This universal accounting software can help you run your small business more efficiently. It has an extensive feature set that aims to provide you with an simple all-in-one accounting solution. From its user-friendly dashboard, you can track expenses, generate reports, manage your books, manage your employees, handle your invoices/bills, and so much more.

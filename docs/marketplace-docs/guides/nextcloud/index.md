@@ -8,7 +8,7 @@ external_resources:
 - '[Nextcloud Documentation Overview](https://docs.nextcloud.com/)'
 - '[Nextcloud AIO github](https://github.com/nextcloud/all-in-one)'
 tags: ["linode platform","marketplace","cloud-manager"]
-aliases: ['/platform/marketplace/how-to-deploy-nextcloud-with-marketplace-apps/', '/platform/one-click/how-to-deploy-nextcloud-with-one-click-apps/','/guides/how-to-deploy-nextcloud-with-one-click-apps/','/guides/how-to-deploy-nextcloud-with-marketplace-apps/','/guides/nextcloud-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/nextcloud/','/platform/marketplace/how-to-deploy-nextcloud-with-marketplace-apps/', '/platform/one-click/how-to-deploy-nextcloud-with-one-click-apps/','/guides/how-to-deploy-nextcloud-with-one-click-apps/','/guides/how-to-deploy-nextcloud-with-marketplace-apps/','/guides/nextcloud-marketplace-app/']
 image: deploying_nextcloud_oca.png
 ---
 

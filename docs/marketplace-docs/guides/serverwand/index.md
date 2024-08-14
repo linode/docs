@@ -9,7 +9,7 @@ external_resources:
 - '[ServerWand Pricing](https://serverwand.com/pricing)'
 - '[ServerWand Documentation](https://serverwand.com/docs/)'
 - '[ServerWand Blog](https://serverwand.com/blog/)'
-aliases: ['/platform/marketplace/deploy-serverwand-with-marketplace-apps/', '/platform/one-click/deploy-serverwand-with-one-click-apps/','/guides/deploy-serverwand-with-one-click-apps/','/guides/deploy-serverwand-with-marketplace-apps/','/guides/serverwand-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/serverwand/','/platform/marketplace/deploy-serverwand-with-marketplace-apps/', '/platform/one-click/deploy-serverwand-with-one-click-apps/','/guides/deploy-serverwand-with-one-click-apps/','/guides/deploy-serverwand-with-marketplace-apps/','/guides/serverwand-marketplace-app/']
 ---
 
 [ServerWand](https://serverwand.com) is a magical control panel for managing websites and servers. Host multiple sites on a single server, manage apps, firewall, databases, backups, system users, cron jobs, SSL, and email with an intuitive interface.

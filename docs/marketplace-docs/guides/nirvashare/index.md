@@ -5,7 +5,7 @@ published: 2021-08-13
 modified: 2023-10-27
 keywords: ['storage','file sharing', 'backups']
 tags: ["marketplace", "linode platform", "cloud manager"]
-aliases: ['/guides/deploying-nirvashare-marketplace-app/','/guides/nirvashare-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/nirvashare/','/guides/deploying-nirvashare-marketplace-app/','/guides/nirvashare-marketplace-app/']
 external_resources:
 - '[NirvaShare](https://nirvashare.com/)'
 ---

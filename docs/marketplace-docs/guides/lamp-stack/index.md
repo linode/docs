@@ -7,7 +7,7 @@ keywords: ['LAMP', 'apache', 'web server', 'mysql', 'php']
 tags: ["apache","lamp","cloud-manager","linode platform","php","mysql","marketplace"]
 external_resources:
 - '[Apache Getting Started](http://httpd.apache.org/docs/current/getting-started.html)'
-aliases: ['/platform/marketplace/deploy-lamp-stack-with-marketplace-apps/', '/platform/marketplace/deploy-lamp-stack-with-one-click-apps/','/platform/one-click/deploy-lamp-stack-with-one-click-apps/','/guides/deploy-lamp-stack-with-one-click-apps/','/guides/deploy-lamp-stack-with-marketplace-apps/','/guides/lamp-stack-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/lamp-stack/','/platform/marketplace/deploy-lamp-stack-with-marketplace-apps/', '/platform/marketplace/deploy-lamp-stack-with-one-click-apps/','/platform/one-click/deploy-lamp-stack-with-one-click-apps/','/guides/deploy-lamp-stack-with-one-click-apps/','/guides/deploy-lamp-stack-with-marketplace-apps/','/guides/lamp-stack-marketplace-app/']
 ---
 
 A LAMP (Linux, [Apache](https://www.apache.org), [MySQL](https://www.mysql.com), [PHP](https://www.php.net)) stack is a popular, free, and open-source web software bundle used for hosting websites on Linux. This software environment is a foundation for popular PHP application frameworks like WordPress, Drupal, and Laravel. After you deploy your LAMP Marketplace App, you can upload your existing PHP application code to it or use a PHP framework to write a new application on your Linode.

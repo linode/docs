@@ -5,7 +5,7 @@ published: 2021-09-03
 modified: 2024-01-31
 keywords: ['monitoring','splunk', 'data solution']
 tags: ["marketplace", "linode platform", "cloud manager"]
-aliases: ['/guides/deploying-splunk-marketplace-app/','/guides/splunk-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/splunk/','/guides/deploying-splunk-marketplace-app/','/guides/splunk-marketplace-app/']
 external_resources:
 - '[Splunk](http://splunk.com/)'
 ---

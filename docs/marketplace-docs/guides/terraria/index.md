@@ -7,7 +7,7 @@ keywords: ['terraria','marketplace app', 'game server']
 external_resources:
  - '[The Official Terraria Wiki](https://terraria.gamepedia.com/Terraria_Wiki)'
 tags: ["linode platform","marketplace","cloud-manager"]
-aliases: ['/platform/marketplace/deploying-terraria-with-marketplace-apps/', '/platform/one-click/deploying-terraria-with-one-click-apps/','/guides/deploying-terraria-with-one-click-apps/','/guides/deploying-terraria-with-marketplace-apps/','/guides/terraria-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/terraria/','/platform/marketplace/deploying-terraria-with-marketplace-apps/', '/platform/one-click/deploying-terraria-with-one-click-apps/','/guides/deploying-terraria-with-one-click-apps/','/guides/deploying-terraria-with-marketplace-apps/','/guides/terraria-marketplace-app/']
 _build:
   list: false
 noindex: true

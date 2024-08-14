@@ -7,6 +7,7 @@ keywords: ['productivity','notebook','data science']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Project Jupyter](https://jupyter.org/)'
+aliases: ['/products/tools/marketplace/guides/jupyterlab/']
 ---
 
 [JupyterLab](https://jupyter.org/) stands as the cutting-edge web-based interactive development environment, catering to notebooks, code, and data. With a flexible interface, users can easily configure and arrange workflows in data science, scientific computing, computational journalism, and machine learning.

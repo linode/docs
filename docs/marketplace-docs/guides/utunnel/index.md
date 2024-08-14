@@ -8,7 +8,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 bundles: ['network-security']
 external_resources:
 - '[UTunnel](https://www.utunnel.io/)'
-aliases: ['/guides/deploying-utunnel-marketplace-app/','/guides/utunnel-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/utunnel/','/guides/deploying-utunnel-marketplace-app/','/guides/utunnel-marketplace-app/']
 ---
 
 [UTunnel VPN](https://www.utunnel.io/) lets you set up your own private VPN server quickly and easily; no technical expertise is required. It is well suited for small and medium businesses to set up easy and secure remote access for their employees, or for anyone who wants to keep their data private using their own VPN. UTunnel VPN supports multiple VPN protocols and comes with a server management console, secure 256-bit encryption, easy team management, single sign-on, 2-factor authentication, and an inbuilt firewall.

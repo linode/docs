@@ -7,6 +7,7 @@ tags: ["ubuntu","marketplace", "database", "linode platform", "cloud manager", "
 external_resources:
 - '[About Apache Cassandra](https://cassandra.apache.org/)'
 - '[Apache Cassandra Documentation](https://cassandra.apache.org/doc/latest/cassandra/architecture/overview.html)'
+aliases: ['/products/tools/marketplace/guides/apache-cassandra-cluster/']
 ---
 
 ## Cluster Deployment Architecture

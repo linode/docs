@@ -11,7 +11,7 @@ external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
  - '[Language-Specific MongoDB Drivers](https://docs.mongodb.com/ecosystem/drivers/)'
-aliases: ['/platform/marketplace/deploying-mongodb-with-marketplace-apps/', '/platform/one-click/deploying-mongodb-with-one-click-apps/','/guides/deploying-mongodb-with-one-click-apps/','/guides/deploying-mongodb-with-marketplace-apps/','/guides/mongodb-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/mongodb/','/platform/marketplace/deploying-mongodb-with-marketplace-apps/', '/platform/one-click/deploying-mongodb-with-one-click-apps/','/guides/deploying-mongodb-with-one-click-apps/','/guides/deploying-mongodb-with-marketplace-apps/','/guides/mongodb-marketplace-app/']
 ---
 
 [MongoDB](https://www.mongodb.com/) is a database engine that provides access to non-relational, document-oriented databases. It is part of the growing [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement, along with databases like Redis and Cassandra (although there are vast differences among the many non-relational databases).

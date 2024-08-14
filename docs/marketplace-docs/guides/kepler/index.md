@@ -5,7 +5,7 @@ published: 2021-01-09
 modified: 2023-06-07
 keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress with marketplace', 'easy install wordpress', kepler]
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications", kepler]
-aliases: ['/guides/deploy-kepler-with-marketplace-apps/','/guides/kepler-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/kepler/','/guides/deploy-kepler-with-marketplace-apps/','/guides/kepler-marketplace-app/']
 external_resources:
 - '[About Kepler](https://kepler.app)'
 - '[Kepler Community](https://help.kepler.app)'

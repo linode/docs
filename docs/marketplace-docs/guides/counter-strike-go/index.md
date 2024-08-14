@@ -7,7 +7,7 @@ keywords: ['counter-strike','cs', 'go','marketplace']
 external_resources:
 - '[List of CS:GO Cvar Commands to use with RCON](https://developer.valvesoftware.com/wiki/List_of_CS:GO_Cvars)'
 tags: ["linode platform","marketplace","cloud-manager"]
-aliases: ['/platform/marketplace/deploying-cs-go-with-marketplace-apps/', '/platform/one-click/deploying-cs-go-with-one-click-apps/','/guides/deploying-cs-go-with-one-click-apps/','/guides/deploying-cs-go-with-marketplace-apps/','/guides/counter-strike-go-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/counter-strike-go/','/platform/marketplace/deploying-cs-go-with-marketplace-apps/', '/platform/one-click/deploying-cs-go-with-one-click-apps/','/guides/deploying-cs-go-with-one-click-apps/','/guides/deploying-cs-go-with-marketplace-apps/','/guides/counter-strike-go-marketplace-app/']
 ---
 
 [Counter-Strike: Global Offensive](https://store.steampowered.com/app/730/CounterStrike_Global_Offensive/) (CS:GO) is a fast-paced first person shooter. Teams compete against each other to complete objectives or to eliminate the opposing team. A competitive match requires two teams of five players, but hosting your own server offers you control over team size and server location, so you and your friends can play with low latency. Up to 64 players can be hosted on a single server.

@@ -8,7 +8,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 bundles: ['network-security']
 external_resources:
 - '[WarpSpeed VPN](https://bunker.services/products/warpspeed)'
-aliases: ['/guides/deploying-warpspeed-marketplace-app/','/guides/warpspeed-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/warpspeed/','/guides/deploying-warpspeed-marketplace-app/','/guides/warpspeed-marketplace-app/']
 ---
 
 WarpSpeed makes it easy for developers to access cloud infrastructure via the powerful WireGuard® VPN protocol. It can also be used to enable remote workers to access the internet securely while on public WiFi.

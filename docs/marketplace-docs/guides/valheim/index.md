@@ -8,7 +8,7 @@ tags: ["linode platform", "cloud manager", "marketplace"]
 external_resources:
 - '[LinuxGSM Valheim Documentation](https://linuxgsm.com/lgsm/vhserver/)'
 - '[Valheim official website](https://www.valheimgame.com/)'
-aliases: ['/guides/deploy-valheim-with-marketplace-apps/','/guides/valheim-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/valheim/','/guides/deploy-valheim-with-marketplace-apps/','/guides/valheim-marketplace-app/']
 _build:
   list: false
 noindex: true

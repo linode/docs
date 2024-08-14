@@ -4,6 +4,7 @@ description: "Deploy Illa Builder, an open-source low-code development tool, on 
 published: 2023-06-26
 keywords: ['Illa','builder','low-code']
 tags: ["marketplace", "linode platform", "cloud manager"]
+aliases: ['/products/tools/marketplace/guides/illa-builder/']
 ---
 
 [ILLA Builder](https://github.com/illacloud/illa-builder) is an open-source low-code development tool that allows developers to quickly build internal tools. ILLA lets developers focus more on the core functionality of the tools they are building and spend less time on websites and integrations.

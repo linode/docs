@@ -7,7 +7,7 @@ keywords: ['restyaboard','project','productivity','kanban']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Restyaboard](https://restya.com/board)'
-aliases: ['/guides/deploying-restyaboard-marketplace-app/','/guides/restyaboard-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/restyaboard/','/guides/deploying-restyaboard-marketplace-app/','/guides/restyaboard-marketplace-app/']
 ---
 
 [Restyaboard](https://restya.com/board) is an open-source alternative to Trello, but with smart additional features like offline sync, revisions, diff, nested comments, multiple view layouts, chat, and more. And since it is self-hosted, data, privacy, and IP security are under your full control.

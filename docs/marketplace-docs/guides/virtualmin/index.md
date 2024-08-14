@@ -9,7 +9,7 @@ image: Deploy_Virtualmin_oneclickapps.png
 external_resources:
 - '[Virtualmin Documentation](https://www.virtualmin.com/documentation)'
 - '[Virtualmin Support](https://www.virtualmin.com/support)'
-aliases: ['/platform/marketplace/how-to-deploy-virtualmin-with-marketplace-apps/', '/platform/one-click/how-to-deploy-virtualmin-with-one-click-apps/','/guides/how-to-deploy-virtualmin-with-one-click-apps/','/guides/how-to-deploy-virtualmin-with-marketplace-apps/', '/platform/one-click/deploy-virtualmin-with-one-click-apps/','/guides/virtualmin-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/virtualmin/','/platform/marketplace/how-to-deploy-virtualmin-with-marketplace-apps/', '/platform/one-click/how-to-deploy-virtualmin-with-one-click-apps/','/guides/how-to-deploy-virtualmin-with-one-click-apps/','/guides/how-to-deploy-virtualmin-with-marketplace-apps/', '/platform/one-click/deploy-virtualmin-with-one-click-apps/','/guides/virtualmin-marketplace-app/']
 _build:
   list: false
 noindex: true

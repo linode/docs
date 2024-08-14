@@ -4,6 +4,7 @@ description: "Deploy HashiCorp Nomad, a flexible scheduling and orchestration fo
 published: 2022-08-09
 keywords: ['HashiCorp','Nomad','Scheduling', 'orchestration']
 tags: ["marketplace", "linode platform", "cloud manager"]
+aliases: ['/products/tools/marketplace/guides/hashicorp-nomad/']
 ---
 
 [HashiCorp Nomad](https://www.nomadproject.io/) is a simple and flexible scheduler and orchestrator to deploy and manage containers and non-containerized applications across cloud platforms (and on-premises servers) at scale.

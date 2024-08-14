@@ -8,7 +8,7 @@ tags: ["debian","marketplace", "web applications","linode platform", "cloud mana
 external_resources:
 - '[Code Server FAQ](https://github.com/cdr/code-server/blob/v3.7.4/doc/FAQ.md)'
 - '[Code Server Setup and Configuration Guide](https://github.com/cdr/code-server/blob/v3.7.4/doc/guide.md)'
-aliases: ['/platform/marketplace/how-to-deploy-vscode-with-marketplace-apps/', '/platform/one-click/how-to-deploy-vscode-with-one-click-apps/','/guides/how-to-deploy-vscode-with-one-click-apps/','/guides/deploy-vscode-with-marketplace-apps/','/guides/vscode-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/vscode/','/platform/marketplace/how-to-deploy-vscode-with-marketplace-apps/', '/platform/one-click/how-to-deploy-vscode-with-one-click-apps/','/guides/how-to-deploy-vscode-with-one-click-apps/','/guides/deploy-vscode-with-marketplace-apps/','/guides/vscode-marketplace-app/']
 ---
 
 Run a [Visual Studio Code Server](https://github.com/cdr/code-server) in the browser with the Visual Studio (VS) Code Marketplace App. Code Server uses the open source code to provide a web interface for VS Code.

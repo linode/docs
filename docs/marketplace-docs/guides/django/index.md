@@ -6,7 +6,7 @@ modified: 2024-04-16
 keywords: ['django','marketplace', 'cms']
 tags: ["cloud-manager","linode platform","cms","django","marketplace","digital agencies"]
 image: Django_oneclickapps.png
-aliases: ['/platform/marketplace/how-to-deploy-django-with-marketplace-apps/','/platform/marketplace/deploying-django-with-marketplace-apps/', '/platform/one-click/how-to-deploy-django-with-one-click-apps/', '/platform/one-click/deploying-django-with-one-click-apps/','/guides/how-to-deploy-django-with-one-click-apps/','/guides/how-to-deploy-django-with-marketplace-apps/','/guides/django-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/django/','/platform/marketplace/how-to-deploy-django-with-marketplace-apps/','/platform/marketplace/deploying-django-with-marketplace-apps/', '/platform/one-click/how-to-deploy-django-with-one-click-apps/', '/platform/one-click/deploying-django-with-one-click-apps/','/guides/how-to-deploy-django-with-one-click-apps/','/guides/how-to-deploy-django-with-marketplace-apps/','/guides/django-marketplace-app/']
 external_resources:
  - '[The Django Project](https://www.djangoproject.com/)'
  - '[Django Documentation](https://docs.djangoproject.com/en/2.2/releases/)'

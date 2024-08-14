@@ -8,7 +8,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 bundles: ['network-security']
 external_resources:
 - '[Pritunl](https://pritunl.com/)'
-aliases: ['/guides/deploying-pritunl-marketplace-app/','/guides/pritunl-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/pritunl/','/guides/deploying-pritunl-marketplace-app/','/guides/pritunl-marketplace-app/']
 ---
 
 Pritunl is an open source VPN server and management panel. It gives the user the power of the OpenVPN protocol while using an intuitive web interface.
