@@ -5,6 +5,7 @@ description: "Linode One-Click App Marketplace is managed easily with developer 
 tab_group_main:
     weight: 50
 aliases: ['/products/tools/marketplace/developers/','/products/tools/marketplace-one-click-apps/developers/']
+authors: ["Akamai"]
 ---
 
 ## Linode API

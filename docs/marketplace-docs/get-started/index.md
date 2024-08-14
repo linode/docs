@@ -8,6 +8,7 @@ tab_group_main:
     weight: 20
 aliases: ['/products/tools/marketplace/get-started/','/platform/marketplace/how-to-use-marketplace-apps-at-linode/', '/platform/one-click/how-to-use-one-click-apps-at-linode/','/guides/how-to-use-marketplace-apps-at-linode/', '/products/tools/marketplace-one-click-apps/guides/marketplace-deploy-app/', '/products/tools/marketplace-one-click-apps/guides/marketplace-access-app/','/products/tools/marketplace-one-click-apps/guides/marketplace-add-domain-name/']
 image: how-to-use-linode-oneclick-apps.png
+authors: ["Akamai"]
 ---
 
 The Linode Marketplace enables users to quickly deploy software applications to a Linode Compute Instance without the hassle of using the command line.

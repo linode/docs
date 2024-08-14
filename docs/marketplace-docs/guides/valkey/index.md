@@ -8,6 +8,7 @@ external_resources:
 - '[About Valkey](https://valkey.io/)'
 - '[Valkey Documentation](https://valkey.io/docs/)'
 aliases: ['/products/tools/marketplace/guides/valkey/']
+authors: ["Akamai"]
 ---
 
 Valkey is an open-source (BSD) key/value datastore that supports diverse workloads such as caching and message queues, and can act as a primary database. The Akamai Connected Cloud One-Click App for Valkey is configured as a standalone system daemon with TLS support.

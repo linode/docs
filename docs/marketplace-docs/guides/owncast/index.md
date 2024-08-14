@@ -9,6 +9,7 @@ external_resources:
 - '[Owncast](https://owncast.online/)'
 - '[Owncast Github](https://github.com/owncast/owncast)'
 aliases: ['/products/tools/marketplace/guides/owncast/','/guides/deploy-owncast-with-marketplace-apps/','/guides/owncast-marketplace-app/']
+authors: ["Akamai"]
 ---
 
 [Owncast](https://owncast.online/) is a self-hosted, "Twitch in a box" live streaming and chat server for use with popular broadcasting software such as OBS. You can use Owncast to live stream anything from gaming with your friends to live events for you and your clients. Like other popular streaming platforms, you can use Owncast's APIs to build things such as chat bots and stream overlays to drive further audience engagement.

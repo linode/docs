@@ -12,6 +12,7 @@ external_resources:
  - '[Play with Docker](https://training.play-with-docker.com/)'
  - '[Docker Hub](https://www.docker.com/products/docker-hub)'
 aliases: ['/products/tools/marketplace/guides/docker/','/platform/marketplace/deploying-docker-with-marketplace-apps/', '/platform/one-click/deploying-docker-with-one-click-apps/','/guides/deploying-docker-with-one-click-apps/','/guides/deploying-docker-with-marketplace-apps/','/guides/docker-marketplace-app/']
+authors: ["Akamai"]
 ---
 
 [Docker](https://www.docker.com/) is a tool that enables you to create, deploy, and manage *containers*. Each container is a lightweight stand-alone package that containing the code, libraries, runtime, system settings, and dependencies that are required to run an application. Every container is deployed with its own CPU, memory, block I/O, and network resources, without having to depend upon an individual kernel and operating system. While it may be easiest to compare Docker to virtual machines, they differ in the way they share or dedicate resources.

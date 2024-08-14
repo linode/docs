@@ -8,6 +8,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Saltcorn](https://saltcorn.com/)'
 aliases: ['/products/tools/marketplace/guides/saltcorn/','/guides/saltcorn-marketplace-app/']
+authors: ["Akamai"]
 ---
 
 [Saltcorn](https://saltcorn.com/) is an flexible open source no-code database application builder. You can use it to build web applications based on relational data with flexible views, data types, and layouts.
