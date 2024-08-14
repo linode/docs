@@ -6,6 +6,7 @@ keywords: ['Illa','builder','low-code']
 tags: ["marketplace", "linode platform", "cloud manager"]
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [ILLA Builder](https://github.com/illacloud/illa-builder) is an open-source low-code development tool that allows developers to quickly build internal tools. ILLA lets developers focus more on the core functionality of the tools they are building and spend less time on websites and integrations.

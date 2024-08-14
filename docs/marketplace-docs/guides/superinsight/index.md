@@ -8,6 +8,7 @@ external_resources:
 - '[Superinsight DB](https://github.com/superinsight/superinsight-db)'
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [Superinsight DB](https://github.com/superinsight/superinsight-db) is a relational database for unstructured data. Its main purpose is to provide a simple SQL interface to store and search unstructured data. Superinsight is built on top of PostgreSQL, which means you can take advantage of PostgreSQL features and the ability to run machine learning operations using SQL statements.

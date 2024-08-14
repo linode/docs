@@ -9,6 +9,7 @@ external_resources:
 - '[GlusterFS Documentation](https://docs.gluster.org/en/latest/)'
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 ## Cluster Deployment Architecture

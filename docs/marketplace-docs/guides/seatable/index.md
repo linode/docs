@@ -6,6 +6,7 @@ keywords: ['SeaTable','Database','Web UI']
 tags: ["marketplace", "linode platform", "cloud manager"]
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [SeaTable](https://seatable.io/) is a simple and flexible database management interface with native Python automation support. It is designed to mimic the user-friendly interfaces of common spreadsheet software (like Microsoft Excel and Google Sheets). SeaTable offers advanced data linking capabilities and allows for custom data organization and visualization.

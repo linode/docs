@@ -9,6 +9,7 @@ external_resources:
 - '[LinuxGSM](https://linuxgsm.com/)'
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [LinuxGSM](https://linuxgsm.com/) is a command-line tool for managing game servers.

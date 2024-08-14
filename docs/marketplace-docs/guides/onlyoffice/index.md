@@ -8,6 +8,7 @@ external_resources:
 - '[ONLYOFFICE Docs](https://github.com/ONLYOFFICE/Docker-DocumentServer)'
 authors: ["Akamai"]
 contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 [ONLYOFFICE Docs](https://github.com/ONLYOFFICE/Docker-DocumentServer) is an open-source office suite that comprises web-based viewers and collaborative editors for text documents, spreadsheets, and presentations providing high compatibility with OOXML files (.docx, .xlsx, .pptx). Other popular formats such as .doc, .odt, .rtf, .txt, .pdf, .xls, .ods, .csv, .ppt, .odp, etc. are also supported.
