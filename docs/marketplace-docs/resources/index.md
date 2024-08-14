@@ -4,7 +4,7 @@ title_meta: "Resources for the Linode Marketplace"
 description: "Resources and other information related to Linode Marketplace Apps including blog posts, community posts, and customer stories."
 tab_group_main:
     weight: 40
-aliases: ['/products/tools/marketplace-one-click-apps/resources/']
+aliases: ['/products/tools/marketplace/resources/','/products/tools/marketplace-one-click-apps/resources/']
 ---
 
 ## Blog Posts
