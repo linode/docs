@@ -116,13 +116,13 @@ MariaDB [(none)]>
 plugin to enable root password authentication:
 
         USE mysql;
-        UPDATE user SET plugin='mysql_native_password' WHERE user='root';
+        ALTER USER root@localhost IDENTIFIED VIA mysql_native_password USING PASSWORD('password');
         FLUSH PRIVILEGES;
         exit;
 
-1.  Run the `mysql_secure_installation` script to address several security concerns in a default MariaDB installation:
+1.  Run the `mariadb-secure-installation` script to address several security concerns in a default MariaDB installation:
 
-        sudo mysql_secure_installation
+        sudo mariadb-secure-installation
 
 You will be given the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
