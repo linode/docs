@@ -16,7 +16,7 @@ authors: ["Akamai"]
 Galera provides a performant MariaDB database solution with synchronous replication to achieve high availability. Galera is deployed with MariaDB, which is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. MariaDB was originally based off of MySQL and maintains backward compatibility.
 
 {{< note type="warning" title="Marketplace App Cluster Notice" >}}
-This Marketplace App deploys 3 Compute Instances to create a highly available and redundant MariaDB Galera cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy MariaDB on a single Compute Instance, see [Deploy MySQL/MariaDB through the Linode Marketplace](/docs/products/tools/marketplace/guides/mysql/).
+This Marketplace App deploys 3 Compute Instances to create a highly available and redundant MariaDB Galera cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy MariaDB on a single Compute Instance, see [Deploy MySQL/MariaDB through the Linode Marketplace](/docs/marketplace-docs/guides/mysql/).
 {{< /note >}}
 
 ## Deploying a Marketplace App

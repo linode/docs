@@ -31,7 +31,7 @@ In order to secure your cPanel account, you need to have a Linux server with the
 
 - cPanel
 
-For a quick an easy way to install cPanel on Linode, check out our guide on [How to Deploy cPanel with Marketplace Apps](/docs/products/tools/marketplace/guides/cpanel/).
+For a quick an easy way to install cPanel on Linode, check out our guide on [How to Deploy cPanel with Marketplace Apps](/docs/marketplace-docs/guides/cpanel/).
 
 Otherwise, you can find instructions on how to manually install cPanel in our guide on [How to Install cPanel on CentOS](/docs/guides/install-cpanel-on-centos/).
 

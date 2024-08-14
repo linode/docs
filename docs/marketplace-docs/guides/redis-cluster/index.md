@@ -14,7 +14,7 @@ authors: ["Akamai"]
 [Redis](https://redis.io/) is an open-source, in-memory, data-structure store, with the optional ability to write and persist data to a disk, which can be used as a key-value database, cache, and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets, and others.
 
 {{< note type="warning" title="Marketplace App Cluster Notice" >}}
-This Marketplace App deploys 3 or 5 Compute Instances to create a highly available and redundant Redis cluster using Redis Sentinel, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy Redis on a single Compute Instance, see [Deploy Redis through the Linode Marketplace](/docs/products/tools/marketplace/guides/redis/).
+This Marketplace App deploys 3 or 5 Compute Instances to create a highly available and redundant Redis cluster using Redis Sentinel, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy Redis on a single Compute Instance, see [Deploy Redis through the Linode Marketplace](/docs/marketplace-docs/guides/redis/).
 {{< /note >}}
 
 ## Deploying a Marketplace App

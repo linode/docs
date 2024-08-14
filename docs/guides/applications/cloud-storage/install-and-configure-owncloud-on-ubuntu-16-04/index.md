@@ -26,7 +26,7 @@ OwnCloud is an open-source, cloud-based, file hosting service you can install on
 ![ownCloud](owncloud_ubuntu.jpg)
 
 {{< note >}}
-To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/owncloud/).
+To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/marketplace-docs/guides/owncloud/).
 {{< /note >}}
 
 ## Before You Begin
