@@ -27,7 +27,7 @@ The Community Edition is a limited version of Ant Media Server Enterprise Editio
 - Simulcasting to Periscope
 - Your Live or VoD streams can play anywhere including mobile(Android, iOS) browsers.
 
-If you need adaptive streaming, cluster, load balancer, and hardware encoding, consider using the [Enterprise Edition](/docs/products/tools/marketplace/guides/antmediaenterpriseserver/).
+If you need adaptive streaming, cluster, load balancer, and hardware encoding, consider using the [Enterprise Edition](/docs/marketplace-docs/guides/antmediaenterpriseserver/).
 
 ## Deploying a Marketplace App
 

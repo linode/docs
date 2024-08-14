@@ -64,7 +64,7 @@ Users may find that they need to remove access to the default Flask application 
       sudo rm /etc/supervisor/conf.d/flask_app.conf
 
 {{< note >}}
-Many configuration files can be overwritten to support a new configuration instead of deleted outright. For more information on the default configuration, see our [Flask Installation Guide](/docs/guides/flask-and-gunicorn-on-ubuntu/) and the [Installed Software Section](/docs/products/tools/marketplace/guides/flask/#installed-software) of this guide.
+Many configuration files can be overwritten to support a new configuration instead of deleted outright. For more information on the default configuration, see our [Flask Installation Guide](/docs/guides/flask-and-gunicorn-on-ubuntu/) and the [Installed Software Section](/docs/marketplace-docs/guides/flask/#installed-software) of this guide.
 {{< /note >}}
 
 ### Next Steps

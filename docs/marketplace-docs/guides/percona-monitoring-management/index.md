@@ -86,8 +86,8 @@ After the [PMM Server](https://www.percona.com/doc/percona-monitoring-and-manage
 
 To begin monitoring a database node, you will need to install the [PMM Client](https://www.percona.com/doc/percona-monitoring-and-management/2.x/concepts/architecture.html#pmm-client) on the Linode that hosts your database and connect the node to the PMM Server. For instructions on setting up a database on Linode that you can connect to your PMM Server, see our guides on:
 
--   [Deploying MySQL/MariaDB with Marketplace Apps](/docs/products/tools/marketplace/guides/mysql/)
--   [Deploying PostgreSQL with Marketplace Apps](/docs/products/tools/marketplace/guides/postgresql/)
+-   [Deploying MySQL/MariaDB with Marketplace Apps](/docs/marketplace-docs/guides/mysql/)
+-   [Deploying PostgreSQL with Marketplace Apps](/docs/marketplace-docs/guides/postgresql/)
 
 {{< note >}}
 The PMM Server deployed with Linode's Percona (PMM) Marketplace App is compatible with [**PMM Client version 2**](https://www.percona.com/doc/percona-monitoring-and-management/2.x/index.html).

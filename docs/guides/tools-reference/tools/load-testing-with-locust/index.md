@@ -111,7 +111,7 @@ Follow the instructions below to run a basic load test against an example applic
 
 A web application is required to run a load test using the example in this guide. You may use your own existing application or set up the below application that uses Python's [Flask](https://flask.palletsprojects.com/en/) web application framework. Since Locust is already running with Python, using Flask minimizes other dependencies needed to run an example load test.
 
-If you'd rather use a preinstalled Flask application, you can deploy our [Flask Marketplace app](/docs/products/tools/marketplace/guides/flask/). Note that the Flask Marketplace app does not include Locust and would require Locust installation after deployment.
+If you'd rather use a preinstalled Flask application, you can deploy our [Flask Marketplace app](/docs/marketplace-docs/guides/flask/). Note that the Flask Marketplace app does not include Locust and would require Locust installation after deployment.
 
 {{< note title="Using Your Own Application" >}}
 Should you prefer to use your own web application, you can skip the steps for **Installing and Starting the Example Application** and move ahead to [Creating a Test Script](#creating-a-test-script). When asked to provide **host** information when running your load test, replace the URLs for the example Flask application with your own.

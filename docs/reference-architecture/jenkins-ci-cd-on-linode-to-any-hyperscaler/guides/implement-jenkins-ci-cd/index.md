@@ -255,7 +255,7 @@ Because this tutorial uses Kubernetes for its deployment, you need to have a Doc
 
 The easiest solution here is [Docker Hub](https://hub.docker.com/), where you can add images after registering an account. Learn more, with a full-functioning example, in our guide [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/guides/deploy-container-image-to-kubernetes/).
 
-You can also self-host a registry solution. One such solution is [Harbor](https://goharbor.io/), and you can deploy your own Harbor server readily through the Linode Marketplace. See our guide [Deploy Harbor through the Linode Marketplace](/docs/products/tools/marketplace/guides/harbor/) to see how.
+You can also self-host a registry solution. One such solution is [Harbor](https://goharbor.io/), and you can deploy your own Harbor server readily through the Linode Marketplace. See our guide [Deploy Harbor through the Linode Marketplace](/docs/marketplace-docs/guides/harbor/) to see how.
 
 Whatever solution you choose, you need later to provide the registry's path to the Jenkins pipeline.
 
