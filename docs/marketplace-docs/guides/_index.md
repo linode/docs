@@ -10,7 +10,7 @@ aliases: ['/products/tools/marketplace-one-click-apps/guides/']
 
 ## Basics
 
-- [Get Started with Marketplace Apps](/docs/marketplace-docs/guides/get-started/): Learn how to deploy and access a One-Click App from the Linode Marketplace.
+- [Get Started with Marketplace Apps](/docs/marketplace-docs/get-started/): Learn how to deploy and access a One-Click App from the Linode Marketplace.
 
 ## Become a Partner
 
