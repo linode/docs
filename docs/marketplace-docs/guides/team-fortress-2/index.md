@@ -9,8 +9,8 @@ aliases: ['/platform/marketplace/deploying-team-fortress-2-with-marketplace-apps
 _build:
   list: false
 noindex: true
-
 deprecated: true
+authors: ["Akamai"]
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
 Team Fortress 2 has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only. For information on how to deploy and set up Team Fortress 2 manually on a Compute Instance, see our [Team Fortress 2 on Debian and Ubuntu](/docs/guides/team-fortress2-on-debian-and-ubuntu/) guide.

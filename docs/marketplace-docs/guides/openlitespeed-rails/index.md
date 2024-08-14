@@ -8,6 +8,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[OpenLiteSpeed Rails](https://docs.litespeedtech.com/cloud/images/rails/)'
 aliases: ['/guides/deploying-openlitespeed-rails-marketplace-app/','/guides/openlitespeed-rails-marketplace-app/']
+authors: ["Akamai"]
 ---
 
 The OpenLiteSpeed Rails app automatically installs the performance web server OpenLiteSpeed, Ruby, and Rails. OpenLiteSpeed features easy setup for SSL and RewriteRules. It is flexible and also supports Python and Node.js apps, as well as CMS software like WordPress.

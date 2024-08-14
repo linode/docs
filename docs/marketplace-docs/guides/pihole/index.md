@@ -8,6 +8,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Pi-hole](https://pi-hole.net/)'
 aliases: ['/guides/deploying-pihole-marketplace-app/','/guides/pihole-marketplace-app/']
+authors: ["Akamai"]
 ---
 
 [Pi-hole](https://pi-hole.net/) is a [DNS sinkhole](https://en.wikipedia.org/wikic/DNS_sinkhole) that filters out requests to ad-serving domains, blocking ads and improving network performance. With Pi-hole, you can actively monitor every DNS request made on your network and block requests as they come in.

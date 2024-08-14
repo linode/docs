@@ -6,6 +6,7 @@ keywords: ['haltdos','firewall','security','web application firewall']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Haltdos Community WAF](https://docs.haltdos.com/community)'
+authors: ["Akamai"]
 ---
 
 [Haltdos](https://www.haltdos.com/) Community Edition is a free user-friendly web application. It provides protection from OWASP 10 threats, XSS, SQL, and other web-based threats.

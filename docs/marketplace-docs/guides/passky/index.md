@@ -6,6 +6,7 @@ keywords: ['passky','password manager','security','authentication']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Passky](https://github.com/Rabbit-Company/Passky-Server)'
+authors: ["Akamai"]
 ---
 
 [Passky](https://github.com/Rabbit-Company/Passky-Server) is a simple, modern, lightweight and open-source password manager.

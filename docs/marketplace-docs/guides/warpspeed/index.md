@@ -9,6 +9,7 @@ bundles: ['network-security']
 external_resources:
 - '[WarpSpeed VPN](https://bunker.services/products/warpspeed)'
 aliases: ['/guides/deploying-warpspeed-marketplace-app/','/guides/warpspeed-marketplace-app/']
+authors: ["Akamai"]
 ---
 
 WarpSpeed makes it easy for developers to access cloud infrastructure via the powerful WireGuard® VPN protocol. It can also be used to enable remote workers to access the internet securely while on public WiFi.
