@@ -6,6 +6,7 @@ show_on_rss_feed: false
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+description: 'Marketplace software updates note shortguide'
 ---
 
 {{< note >}}
