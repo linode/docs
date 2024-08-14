@@ -89,7 +89,8 @@ DOCS_DIR = [
     "docs/assets",
     "docs/api",
     "docs/reference-architecture",
-    "docs/release-notes"
+    "docs/release-notes",
+    "docs/marketplace-docs"
 ]
 
 # Create all issue types
@@ -156,7 +157,7 @@ def get_guides():
     # Add top level guides
     guides.append(Guide("docs/","docs/_index.md", "Docs Home", "/docs/"))
     guides.append(Guide("docs/products/","docs/products/_index.md", "Product Docs", "/docs/products/"))
-    guides.append(Guide("docs/marketplace/", "", "Marketplace", "/docs/marketplace/"))
+    guides.append(Guide("docs/marketplace-docs/", "", "Marketplace", "/docs/marketplace-docs/"))
     guides.append(Guide("docs/resources/", "", "Resources", "/docs/resources/"))
     guides.append(Guide("docs/topresults/?docType=community", "", "Q&A", "/docs/topresults/?docType=community"))
     assets.append(Asset("/docs/api/openapi.yaml","/docs/api/openapi.yaml"))
