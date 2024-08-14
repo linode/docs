@@ -10,7 +10,7 @@ external_resources:
 - '[Learn from documentation](https://www.zabbix.com/documentation/5.0/manual)'
 - '[Purchase Technical Support contract](https://www.zabbix.com/support)'
 - '[Zabbix official Forum](https://www.zabbix.com/forum)'
-aliases: ['/products/tools/marketplace/guides/zabbit/','/platform/marketplace/deploy-zabbix-with-marketplace-apps/', '/platform/one-click/deploy-zabbix-with-marketplace-apps/', '/guides/deploy-zabbix-with-marketplace-apps/','/guides/zabbix-marketplace-app/']
+aliases: ['/products/tools/marketplace/guides/zabbix/','/platform/marketplace/deploy-zabbix-with-marketplace-apps/', '/platform/one-click/deploy-zabbix-with-marketplace-apps/', '/guides/deploy-zabbix-with-marketplace-apps/','/guides/zabbix-marketplace-app/']
 authors: ["Akamai"]
 ---
 
