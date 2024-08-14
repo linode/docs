@@ -3,8 +3,6 @@ description: "Deploy InfluxDB on a Linode Compute Instance. InfluxDB is a high-p
 keywords: ['time series database','monitoring','analytics','data']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2024-08-05
-modified_by:
-  name: Linode
 title: "Deploy InfluxDB through the Linode Marketplace"
 external_resources:
 - '[InfluxData](https://www.influxdata.com/)'
