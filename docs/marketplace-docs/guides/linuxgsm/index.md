@@ -8,6 +8,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[LinuxGSM](https://linuxgsm.com/)'
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 [LinuxGSM](https://linuxgsm.com/) is a command-line tool for managing game servers.

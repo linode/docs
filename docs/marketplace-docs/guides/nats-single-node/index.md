@@ -7,6 +7,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[NATS](https://nats.io/)'
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 [NATS](https://docs.nats.io/nats-concepts/overview) is a connective technology built for the hyper-connected world. It is a single technology that enables applications to securely communicate across any combination of cloud vendors, on-premise, edge, web and mobile, and devices. NATS consists of a family of open-source products that are tightly integrated but can be deployed easily and independently. NATS is being used globally by thousands of companies, spanning use-cases including microservices, edge computing, mobile, and IoT.

@@ -10,6 +10,7 @@ external_resources:
 - '[About Kepler](https://kepler.app)'
 - '[Kepler Community](https://help.kepler.app)'
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 [Kepler](https://www.kepler.app) is a powerful drag & drop WordPress website builder with all-new website style filters that instantly change the look and feel of your website.

@@ -8,6 +8,7 @@ external_resources:
 - '[About Apache Cassandra](https://cassandra.apache.org/)'
 - '[Apache Cassandra Documentation](https://cassandra.apache.org/doc/latest/cassandra/architecture/overview.html)'
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 ## Cluster Deployment Architecture

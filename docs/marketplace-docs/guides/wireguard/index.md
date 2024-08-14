@@ -12,6 +12,7 @@ external_resources:
 - '[WireGuard man page](https://manpages.debian.org/unstable/wireguard-tools/wg.8.en.html)'
 aliases: ['/platform/marketplace/deploy-wireguard-with-marketplace-apps/', '/platform/one-click/deploy-wireguard-with-one-click-apps/','/guides/deploy-wireguard-with-one-click-apps/','/guides/deploy-wireguard-with-marketplace-apps/','/guides/wireguard-marketplace-app/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 WireGuard&#174; is a simple, fast, and modern virtual private network (VPN) which uses state-of-the-art cryptography. It aims to be faster and leaner than other VPN protocols such as OpenVPN and IPSec, and it has a much smaller source code footprint.

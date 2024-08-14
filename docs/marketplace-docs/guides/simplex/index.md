@@ -7,6 +7,7 @@ tags: ["cloud","linode platform", "marketplace"]
 external_resources:
 - '[SimpleX Official](https://simplex.chat/)'
 authors: ["Shum"]
+contributors: ["Shum"]
 ---
 
 SimpleX Chat is a private messaging platform that uses temporary anonymous identifiers to eliminate the need for long-term user identification. This app deploys a self-hosted SMP relay server used to pass messages in the SimpleX network. It also installs the XFTP server to support XFTP file transfer protocol.

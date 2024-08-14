@@ -4,6 +4,7 @@
 headless: true
 show_on_rss_feed: false
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 The Linode Marketplace lets you easily deploy software on a Compute Instance using Cloud Manager. See [Get Started with Marketplace Apps](/docs/marketplace-docs/guides/get-started/) for complete steps.

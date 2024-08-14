@@ -9,6 +9,7 @@ external_resources:
 - '[FileCloud Official](https://www.getfilecloud.com/supportdocs/display/cloud/Home)'
 aliases: ['/platform/marketplace/deploy-filecloud-with-marketplace-apps/', '/platform/one-click/deploy-filecloud-with-one-click-apps/', '/guides/deploy-filecloud-with-one-click-apps/','/guides/deploy-filecloud-with-marketplace-apps/','/guides/filecloud-marketplace-app/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 [FileCloud](https://www.filecloud.com/) is a cloud-based file-sharing application, similar to tools like Dropbox, that allows users to remotely access, upload, and sync hosted files.

@@ -8,6 +8,7 @@ external_resources:
 - '[About OpenBao](https://openbao.org/)'
 - '[OpenBao] Documentation](https://openbao.org/docs/)'
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 OpenBao is an open source solution to manage, store, and distribute sensitive data including secrets, certificates, and keys. This project is a forked alternative to Vault managed by the Linux Foundation, and development is driven by the community.

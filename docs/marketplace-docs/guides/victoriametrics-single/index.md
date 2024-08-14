@@ -13,6 +13,7 @@ external_resources:
 - '[Grafana Dashboards for VictoriaMetrics](https://grafana.com/grafana/dashboards/10229)'
 aliases: ['/guides/deploying-victoriametrics-single-marketplace-app/','/guides/victoriametrics-single-marketplace-app/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 [VictoriaMetrics](https://victoriametrics.com/) is a free [open source time series database](https://en.wikipedia.org/wiki/Time_series_database) (TSDB) and monitoring solution that is designed to collect, store, and process real-time metrics. It supports the [Prometheus](https://en.wikipedia.org/wiki/Prometheus_(software)) pull model and various push protocols ([Graphite](https://en.wikipedia.org/wiki/Graphite_(software)), [InfluxDB](https://en.wikipedia.org/wiki/InfluxDB), OpenTSDB) for data ingestion. It is optimized for storage with high-latency IO, low IOPS, and time series with [high churn rate](https://docs.victoriametrics.com/FAQ.html#what-is-high-churn-rate). For reading the data and evaluating alerting rules, VictoriaMetrics supports the PromQL, [MetricsQL](https://docs.victoriametrics.com/MetricsQL.html), and Graphite query languages.

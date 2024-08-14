@@ -11,6 +11,7 @@ external_resources:
 - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
 aliases: ['/platform/marketplace/deploy-mysql-with-marketplace-apps/', '/platform/one-click/deploy-mysql-with-one-click-apps/', '/guides/deploy-mysql-with-one-click-apps/', '/guides/deploy-mysql-with-marketplace-apps/','/guides/mysql-marketplace-app/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 MySQL is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. In Debian 9, MySQL is replaced with MariaDB as the default database system. MariaDB is an open-source, multi-threaded relational database management system, backward compatible replacement for MySQL. It is maintained and developed by the MariaDB Foundation.

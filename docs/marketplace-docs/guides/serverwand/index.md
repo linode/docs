@@ -11,6 +11,7 @@ external_resources:
 - '[ServerWand Blog](https://serverwand.com/blog/)'
 aliases: ['/platform/marketplace/deploy-serverwand-with-marketplace-apps/', '/platform/one-click/deploy-serverwand-with-one-click-apps/','/guides/deploy-serverwand-with-one-click-apps/','/guides/deploy-serverwand-with-marketplace-apps/','/guides/serverwand-marketplace-app/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 [ServerWand](https://serverwand.com) is a magical control panel for managing websites and servers. Host multiple sites on a single server, manage apps, firewall, databases, backups, system users, cron jobs, SSL, and email with an intuitive interface.

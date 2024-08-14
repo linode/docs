@@ -9,6 +9,7 @@ external_resources:
 - '[Jitsi Documentation](https://jitsi.github.io/handbook/docs/intro)'
 - '[Scale Your Jitsi Setup](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-scalable)'
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 ## Cluster Deployment Architecture

@@ -13,6 +13,7 @@ external_resources:
 - '[PM2 Getting Started](https://pm2.keymetrics.io/docs/usage/quick-start/)'
 aliases: ['/platform/marketplace/deploy-mean-with-marketplace-apps/', '/platform/one-click/deploy-mean-with-one-click-apps/', '/guides/deploy-mean-with-one-click-apps/','/guides/deploy-mean-with-marketplace-apps/','/guides/mean-stack-marketplace-app/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 A MEAN (MongoDB, Express, Angular, Node.js) stack is a free and open-source web software bundle used to build modern web applications:

@@ -6,7 +6,8 @@ published: 2024-08-05
 title: "Deploy InfluxDB through the Linode Marketplace"
 external_resources:
 - '[InfluxData](https://www.influxdata.com/)'
-authors: ["Linode"]
+authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 [InfluxDB](https://www.influxdata.com/) is a high-performance time series database designed to handle massive volumes of data with ease. Its intuitive query language and powerful visualization capabilities make it the go-to choice for monitoring, analytics, and IoT applications.

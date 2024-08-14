@@ -4,6 +4,7 @@
 headless: true
 show_on_rss_feed: false
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 #### Limited User (Optional)
