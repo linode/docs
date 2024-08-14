@@ -6,6 +6,7 @@ keywords: ['Microweber','website builder','cms']
 tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/microweber/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 [Microweber](https://microweber.org/) is an open-source, drag and drop website builder and CMS based on the Laravel PHP Framework. It includes features for e-commerce, live editing, file management, design customization, and has plugins for both cPanel and Plesk.

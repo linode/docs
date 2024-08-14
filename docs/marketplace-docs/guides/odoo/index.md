@@ -9,6 +9,7 @@ external_resources:
 - '[Odoo](https://www.odoo.com/)'
 aliases: ['/products/tools/marketplace/guides/odoo/','/guides/odoo-marketplace-app/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is a self-hosted suite of over 10,000 open source applications for a variety of business needs, including CRM, eCommerce, accounting, inventory, point of sale, and project management. These applications are all fully integrated and can be installed and accessed through a web interface, making it easy to automate and manage your company’s processes.

@@ -9,6 +9,7 @@ external_resources:
 - '[Rocket.Chat](https://rocket.chat/)'
 aliases: ['/products/tools/marketplace/guides/rocketchat/','/guides/deploying-rocketchat-marketplace-app/','/guides/rocketchat-marketplace-app/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 Rocket.Chat is a self-hosted open source chat application that can be used as an alternative to Slack. Rocket.Chat has many key features that you or your business can use to improve productivity in the workplace such as video conferencing, group chats, and platform integrations with some of the most popular applications.

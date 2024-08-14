@@ -8,6 +8,7 @@ external_resources:
 - '[ownCloud](https://owncloud.com/)'
 aliases: ['/products/tools/marketplace/guides/owncloud/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 ownCloud is a self-hosted file sharing and collaboration platform. It allows users to securely access and share files, calendars, and contacts from any device. With ownCloud, you have complete control over your data and can easily share files with others while maintaining full privacy and security. The app is easy to configure and offers a wide range of features, including file syncing, versioning, access control, and more.

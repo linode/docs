@@ -9,6 +9,7 @@ external_resources:
 - '[RabbitMQ](https://www.rabbitmq.com/)'
 aliases: ['/products/tools/marketplace/guides/rabbitmq/','/platform/marketplace/deploy-rabbitmq-with-marketplace-apps/', '/platform/marketplace/deploy-rabbitmq-with-one-click-apps/','/guides/deploy-rabbitmq-with-one-click-apps/','/guides/deploy-rabbitmq-server-with-marketplace-apps/','/guides/deploy-rabbitmq-with-marketplace-apps/','/guides/rabbitmq-marketplace-app/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 RabbitMQ is a popular open source **message broker**, or a tool that enables and empowers components of a system to communicate from a centralized source or application. By "translating" data from a number of different sources into a unified language, RabbitMQ allows component services to interact with each other through a centralized method.

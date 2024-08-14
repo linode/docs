@@ -6,6 +6,7 @@ keywords: ['Appwrite','Firebase','backend', 'low-code']
 tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/appwrite/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 [Appwrite](https://appwrite.io/) is an open-source, self-hosted back-end server that provides developers with a set of tools and services to build and manage web and mobile applications. It offers various features to simplify the development process, including user authentication, database management, file storage, and more.

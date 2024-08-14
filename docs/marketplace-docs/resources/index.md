@@ -6,6 +6,7 @@ tab_group_main:
     weight: 40
 aliases: ['/products/tools/marketplace/resources/','/products/tools/marketplace-one-click-apps/resources/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 ## Blog Posts

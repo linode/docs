@@ -6,6 +6,7 @@ tab_group_main:
     weight: 50
 aliases: ['/products/tools/marketplace/developers/','/products/tools/marketplace-one-click-apps/developers/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 ## Linode API

@@ -9,6 +9,7 @@ external_resources:
 - '[GlusterFS Documentation](https://docs.gluster.org/en/latest/)'
 aliases: ['/products/tools/marketplace/guides/harbor/','/products/tools/marketplace/guides/glusterfs-cluster/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 ## Cluster Deployment Architecture

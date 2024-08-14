@@ -6,6 +6,7 @@ keywords: ['kali','security','pentest']
 tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/kali-linux/','/products/tools/marketplace/guides/kalilinux/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 [Kali Linux](https://www.kali.org/) is a specialized Debian-based Linux distribution that has become an industry-standard tool for penetration testing. Kali Linux includes hundreds of free tools for reverse engineering, penetration testing, computer forensics, security audits, and more. It is open source and prioritizes simplicity. To learn more about Kali Linux and determine if its a viable solution for your workloads, see the following resources from its official documentation site:

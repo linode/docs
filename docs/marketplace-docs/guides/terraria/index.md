@@ -13,6 +13,7 @@ _build:
 noindex: true
 deprecated: true
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
 Terraria has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only. For information on how to deploy and set up Terraria manually on a Compute Instance, see our [How to Setup a Terraria Linux Server](/docs/guides/host-a-terraria-server-on-your-linode/) guide.

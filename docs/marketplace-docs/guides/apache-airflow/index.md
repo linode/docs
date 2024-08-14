@@ -8,6 +8,7 @@ external_resources:
 - '[Apache Airflow](https://airflow.apache.org/docs/)'
 aliases: ['/products/tools/marketplace/guides/apache-airflow/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 [Apache Airflow](https://airflow.apache.org) is an open source workflow management platform for data engineering pipelines. You can use it to automate, orchestrate, and monitor workflows and data pipelines. One of Airflow’s greatest features is that you can create and execute workflows with code. When you use workflows that are powered by code, you can version control, collaborate on, and debug your workflows.

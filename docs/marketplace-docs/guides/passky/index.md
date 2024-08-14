@@ -8,6 +8,7 @@ external_resources:
 - '[Passky](https://github.com/Rabbit-Company/Passky-Server)'
 aliases: ['/products/tools/marketplace/guides/passky/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 [Passky](https://github.com/Rabbit-Company/Passky-Server) is a simple, modern, lightweight and open-source password manager.

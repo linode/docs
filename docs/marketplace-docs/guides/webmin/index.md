@@ -16,6 +16,7 @@ _build:
 noindex: true
 deprecated: true
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 {{< note type="warning" title="This app is no longer available for deployment" >}}

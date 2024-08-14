@@ -12,6 +12,7 @@ external_resources:
 - '[Scale Your Jitsi Setup](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-scalable)'
 aliases: ['/products/tools/marketplace/guides/jitsi/','/platform/marketplace/how-to-deploy-jitsi-with-marketplace-apps/', '/platform/one-click/how-to-deploy-jitsi-with-one-click-apps/','/platform/one-click/deploy-jitsi-with-one-click-apps/','/guides/how-to-deploy-jitsi-with-marketplace-apps/','/guides/jitsi-marketplace-app/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 !["Jitsi Start a Meeting"](Deploy_Jitsi_oneclickapps.png "Jitsi Start a Meeting")
 [Jitsi](https://jitsi.org) is a suite of open source projects that lets you host your own virtual video conferences.

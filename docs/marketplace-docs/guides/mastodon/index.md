@@ -10,6 +10,7 @@ external_resources:
   - '[Mastodon Official Documentation](https://docs.joinmastodon.org/)'
 aliases: ['/products/tools/marketplace/guides/mastodon/','/guides/mastodon-marketplace-app/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 [Mastodon](https://docs.joinmastodon.org/) is an open-source and decentralized micro-blogging platform used to create a social network based on open web standards and principles. Like Twitter, it lets users follow other users and post text, photos, and video content. Unlike Twitter, Mastodon is decentralized, meaning that its content is not maintained by a central authority.

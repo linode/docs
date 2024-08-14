@@ -11,6 +11,7 @@ external_resources:
  - '[Language-Specific MongoDB Drivers](https://docs.mongodb.com/ecosystem/drivers/)'
 aliases: ['/products/tools/marketplace/guides/mongodb-cluster/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 [MongoDB](https://www.mongodb.com/) is a database engine that provides access to non-relational, document-oriented databases. It is part of the growing [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement, along with databases like Redis and Cassandra (although there are vast differences among the many non-relational databases).

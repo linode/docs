@@ -11,6 +11,7 @@ external_resources:
 - '[Discourse Community](https://meta.discourse.org)'
 aliases: ['/products/tools/marketplace/guides/discourse/','/platform/marketplace/how-to-deploy-discourse-with-marketplace-apps/','/guides/deploy-discourse-with-marketplace-apps/','/guides/discourse-marketplace-app/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 [Discourse](https://www.discourse.org/) is a self-hosted open-source discussion platform that provides a forum, mailing list, chat room, and more.

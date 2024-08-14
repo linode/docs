@@ -10,6 +10,7 @@ external_resources:
 - '[JetBackup](https://www.jetbackup.com/)'
 aliases: ['/products/tools/marketplace/guides/jetbackup/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 [JetBackup](https://www.jetbackup.com/) is a backup solution that can integrate with cPanel or be used as a standalone software within supported Linux distributions. It offers flexible backup management options, including the ability to perform off-site backups through S3-compatible storage (like Linode's [Object Storage](https://www.linode.com/products/object-storage/)).

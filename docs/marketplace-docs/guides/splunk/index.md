@@ -9,6 +9,7 @@ aliases: ['/products/tools/marketplace/guides/splunk/','/guides/deploying-splunk
 external_resources:
 - '[Splunk](http://splunk.com/)'
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 Splunk is a powerful log analyzer that can be used to obtain insight into your infrastructure. Splunk collects, monitors, analyzes, and visualizes data from database applications, web servers, cloud networks, and a variety of other sources.

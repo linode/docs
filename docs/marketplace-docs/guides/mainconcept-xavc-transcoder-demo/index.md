@@ -6,6 +6,7 @@ keywords: ['transcoder','encoder','video','sony','xavc','xavc-intra','xavc long 
 tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/mainconcept-xavc-transcoder-demo/']
 authors: ["Akamai"]
+contributors: ["Akamai"]
 ---
 
 The [MainConcept XAVC Transcoder](https://www.mainconcept.com/transcoders) from the Pro Camera Transcoders for Sony & Panasonic product line is an optimized Docker container for file-based transcoding to professional Sony camera formats such as XAVC-Intra, XAVC Long GOP, and XAVC-S. MainConcept XAVC Transcoder supports a wide range of input formats, and is ready-to-use out of the box. It can be controlled via command line, REST API, or various container management tools.
