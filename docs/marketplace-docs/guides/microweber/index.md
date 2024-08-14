@@ -4,6 +4,7 @@ description: "Deploy Microweber, an open-source, drag and drop website builder a
 published: 2022-09-06
 keywords: ['Microweber','website builder','cms']
 tags: ["marketplace", "linode platform", "cloud manager"]
+authors: ["Akamai"]
 ---
 
 [Microweber](https://microweber.org/) is an open-source, drag and drop website builder and CMS based on the Laravel PHP Framework. It includes features for e-commerce, live editing, file management, design customization, and has plugins for both cPanel and Plesk.

@@ -8,6 +8,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Focalboard](https://www.focalboard.com/)'
 aliases: ['/guides/focalboard-marketplace-app/']
+authors: ["Akamai"]
 ---
 
 [Focalboard](https://www.focalboard.com/) is an open source alternative to project management tools such as Asana, Trello, and Notion. It helps teams, individuals, and developers stay aligned and organized on their everyday tasks. With Focalboard, you can reach milestones, keep track of project notes, and achieve goals.
