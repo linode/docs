@@ -1,4 +1,4 @@
-{{ $isTest := or (not (not site.IsServer)) (site.Params.TestEnv ) }}
+{{ $isTest := or (not (not hugo.IsServer)) (site.Params.TestEnv ) }}
 {{- $link := .Destination -}}
 {{- $isRemote := strings.Contains $link "://" -}}
 {{- $fragment := "" -}}

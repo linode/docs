@@ -12,7 +12,7 @@
 {{/* Note that the TailwindCSS config is "scoped" by the ln-docs ID, so don't change it for no good reason. */}}
 <html id="ln-docs" lang="{{ site.Language.Lang }}" class="is-not-turbo-loaded">
   <head>
-    {{ if or site.IsServer (eq hugo.Environment "testing") }}
+    {{ if or hugo.IsServer (eq hugo.Environment "testing") }}
       <script>
         window.__timerStart = Date.now();
         window.__stopWatch = function (what) {

@@ -22,7 +22,7 @@
         <div class="bg-brand rounded-full h-1 w-1 mr-2"></div>
         <div class="text-white">Filtered by search term</div>
       </div>
-      {{ if site.IsServer }}
+      {{ if hugo.IsServer }}
         <div class="bg-blue-300 h-2">&nbsp;</div>
       {{ end }}
       <ul class="search-explorer-root bg-backgroundcolor">
@@ -86,7 +86,7 @@
             <div class="text-basicgray flex items-center">
               <svg
                 class="fill-current block w-5"
-                :class="{ 'text-gray-300': ({{ $.n }}.count === 0), 'text-brand': {{ $.n }}.open }"
+                :class="{ 'text-gray-300': ({{ $.n }}.count <= 0), 'text-brand': {{ $.n }}.open }"
                 style="height: 16.87px;">
                 <use :href="{{ $.n }}.icon"></use>
               </svg>
@@ -97,15 +97,25 @@
         <div class="flex items-center h-full">
           <span
             class="text-xs font-semibold pr-6 text-basicgray"
-            x-show="$store.search.query.isFiltered()"
+            x-show="$store.search.query.isFiltered() && {{ $.n }}.count >= 0"
             :class="{  'text-brand': ({{ $.n }}.count > 0) && $store.search.query.isFiltered(),
-                'text-gray-100': ({{ $.n }}.count === 0),
+                'text-gray-100': ({{ $.n }}.count <= 0),
                 'text-basicgray': ({{ $.n }}.count > 0) && !$store.search.query.isFiltered() }"
             data-testid="node-count"
             x-text="{{ $.n }}.count"></span>
-          <div class="z-10">
+          <div
+            class="z-10"
+            x-show="{{ $.n }}.count >= 0 && !{{ $.n }}.static_link_url">
             {{ template "explorer-dynamic-button-toggle" $ }}
           </div>
+          <a :href="{{ $.n }}.static_link_url">
+            <svg
+              class="w-4 h-3 titlecolor"
+              :class="{ 'text-gray-300': $store.search.query.isFiltered() }"
+              x-show="{{ $.n }}.static_link_url">
+              <use href="#icon--arrow-up-right"></use>
+            </svg>
+          </a>
         </div>
       </div>
       <ul
@@ -123,7 +133,7 @@
 {{ define "explorer-dynamic-node-a" }}
   <a
     @click="onClick($event);"
-    :href="{{ $.n }}.href"
+    :href="{{ $.n }}.static_link_url ? {{ $.n }}.static_link_url : {{ $.n }}.href"
     data-testid="node-link"
     class="block relative cursor-pointer pr-3 no-underline capitalize z-10 flex-auto text-textcolor"
     :class="{
@@ -132,12 +142,12 @@
           'pl-4': {{ $.n }}.level === 1,
           'text-textcolor': ({{ $.n }}.level > 1),
           'text-brand': {{ $.n }}.level === 1 && {{ $.n }}.open,
-          'text-titlecolor': {{ $.n }}.level === 1 && (!{{ $.n }}.open && {{ $.n }}.count !== 0),
-          'text-gray-300': {{ $.n }}.level === 1 && {{ $.n }}.count === 0,
+          'text-titlecolor': {{ $.n }}.level === 1 && (!{{ $.n }}.open && {{ $.n }}.count > 0),
+          'text-gray-300': {{ $.n }}.level === 1 && {{ $.n }}.count <= 0,
           'font-semibold': ({{ $.n }}.level === 1 || ( {{ $.n }}.level > 1 && {{ $.n }}.open )),
           'text-sm': ({{ $.n }}.level === 2),
           'text-xs': ({{ $.n }}.level > 2),
-          'text-gray-300': ({{ $.n }}.count === 0),
+          'text-gray-300': ({{ $.n }}.count <= 0),
           'explorer-node-open': ({{ $.n }}.level > 1 && {{ $.n }}.open)
           }">
     <span
@@ -151,6 +161,8 @@
   {{ $testID := printf "(%s.open ? 'close' : 'open') + '-' + %s.level" $.n
     $.n
   }}
+
+
   <button
     type="button"
     name="open"
@@ -159,7 +171,8 @@
     class="btn-icon h-full flex items-center justify-center text-textcolor"
     aria-label="{{ $.n }}.open ? 'close' : 'open'"
     :data-testid="{{ $testID }}"
-    :disabled="{{ $.n }}.count === 0">
+    :disabled="{{ $.n }}.count === 0"
+    x-show="{{ $.n }}.count >= 0">
     <svg class="w-4 h-3 titlecolor">
       <use
         href="#icon--arrow-down"
