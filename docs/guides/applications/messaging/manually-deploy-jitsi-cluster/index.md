@@ -16,7 +16,7 @@ external_resources:
 
 This guide walks through creating a scalable Jitsi Meet cluster using [Ansible](https://www.ansible.com/). The provided Ansible playbook creates an initial deployment that can then be scaled up or down as needed.
 
-If you wish to deploy Jitsi automatically rather than manually, consider either our single-instance [Jitsi Marketplace deployment](/docs/products/tools/marketplace/guides/jitsi/) or our [Jitsi Cluster Marketplace deployment](/docs/products/tools/marketplace/guides/jitsi-cluster/).
+If you wish to deploy Jitsi automatically rather than manually, consider either our single-instance [Jitsi Marketplace deployment](/docs/marketplace-docs/guides/jitsi/) or our [Jitsi Cluster Marketplace deployment](/docs/marketplace-docs/guides/jitsi-cluster/).
 
 ## Architecture Diagram
 

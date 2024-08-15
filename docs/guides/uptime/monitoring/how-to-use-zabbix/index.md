@@ -49,7 +49,7 @@ Some of the main highlights and advantages of Zabbix are as follows. See the [li
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  The Zabbix server software must already be installed on a Linode. Consult the documentation on [Deploying Zabbix Using the Linode Marketplace](/docs/products/tools/marketplace/guides/zabbix/) for more information.
+1.  The Zabbix server software must already be installed on a Linode. Consult the documentation on [Deploying Zabbix Using the Linode Marketplace](/docs/marketplace-docs/guides/zabbix/) for more information.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -61,7 +61,7 @@ To use Zabbix to monitor a Linux host, the host must be running the official Zab
 
 ### How to Install the Zabbix Server
 
-Although Zabbix can be installed from the source code or packages, it is quicker and easier to use the Linode Marketplace. For information on how to install Zabbix using this method, see the [Zabbix Marketplace documentation](/docs/products/tools/marketplace/guides/zabbix/). Currently, the Marketplace only supports Zabbix installations on CentOS. For package installation guidelines for other Linux distributions, see the [Zabbix installation instructions](https://www.zabbix.com/documentation/6.0/en/manual/installation/install_from_packages).
+Although Zabbix can be installed from the source code or packages, it is quicker and easier to use the Linode Marketplace. For information on how to install Zabbix using this method, see the [Zabbix Marketplace documentation](/docs/marketplace-docs/guides/zabbix/). Currently, the Marketplace only supports Zabbix installations on CentOS. For package installation guidelines for other Linux distributions, see the [Zabbix installation instructions](https://www.zabbix.com/documentation/6.0/en/manual/installation/install_from_packages).
 
 ### How to Install the Zabbix Client
 

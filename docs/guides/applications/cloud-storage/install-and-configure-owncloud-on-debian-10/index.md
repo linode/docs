@@ -41,7 +41,7 @@ Why would you want to host your own cloud? Some common reasons are:
 This tutorial walks you through the steps to install ownCloud on Debian 10, one of the most reliable operating systems on the market. There are only a few steps to install ownCloud on Debian. You [install the LAMP (Linux Apache MySQL/MariaDB PHP) stack](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/); create a database and database user; configure Apache; and set up ownCloud using its graphical user interface.
 
 {{< note >}}
-To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/owncloud/).
+To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/marketplace-docs/guides/owncloud/).
 {{< /note >}}
 
 ## Before You Begin
