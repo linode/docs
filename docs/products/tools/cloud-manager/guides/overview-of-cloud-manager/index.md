@@ -68,9 +68,9 @@ To get started using Longview, see the [Understanding Linode Longview](/docs/pro
 
 ## Marketplace
 
-The **Marketplace** section of Cloud Manager gives you access to apps that make it easy to deploy and configure Marketplace Apps on a Linode. Some popular Marketplace Apps are [WordPress](/docs/products/tools/marketplace/guides/wordpress/), [Minecraft](/docs/products/tools/marketplace/guides/minecraft/), and [GitLab](/docs/products/tools/marketplace/guides/gitlab/). We are actively adding new and useful Marketplace apps. When a Marketplace App is deployed, a new Linode is created and the appropriate software is installed with the configurations you provide.
+The **Marketplace** section of Cloud Manager gives you access to apps that make it easy to deploy and configure Marketplace Apps on a Linode. Some popular Marketplace Apps are [WordPress](/docs/marketplace-docs/guides/wordpress/), [Minecraft](/docs/marketplace-docs/guides/minecraft/), and [GitLab](/docs/marketplace-docs/guides/gitlab/). We are actively adding new and useful Marketplace apps. When a Marketplace App is deployed, a new Linode is created and the appropriate software is installed with the configurations you provide.
 
-See [How to Use Linode's Marketplace Apps](/docs/products/tools/marketplace/get-started/) to get started using Marketplace Apps in Cloud Manager.
+See [How to Use Linode's Marketplace Apps](/docs/marketplace-docs/get-started/) to get started using Marketplace Apps in Cloud Manager.
 
 ## Kubernetes (LKE)
 

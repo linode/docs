@@ -43,7 +43,7 @@ Why would you want to host your own cloud? Some common reasons are:
 This tutorial walks you through the steps to install ownCloud on [CentOS Stream 8](https://www.centos.org/centos-stream/). There are only a few steps to install ownCloud on CentOS Stream 8. You [install the LAMP (Linux Apache MySQL/MariaDB PHP) stack](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/); create a database and database user; configure Apache; and set up ownCloud using its graphical user interface.
 
 {{< note >}}
-To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/owncloud/).
+To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/marketplace-docs/guides/owncloud/).
 {{< /note >}}
 
 ## Before You Begin

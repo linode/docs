@@ -41,7 +41,7 @@ You can also use a GitLab SaaS (GitLab.com) instance. The steps for the GitLab R
 
 With Linode, you have three options effective for creating your own self-hosted GitLab instance.
 
-- Use the Linode Marketplace to deploy a ready instance with GitLab installed. This method requires the fewest manual steps and provides the surest and quickest way to get a GitLab instance running. You can follow along with our [Deploy Gitlab through the Linode Marketplace](/docs/products/tools/marketplace/guides/gitlab/) guide.
+- Use the Linode Marketplace to deploy a ready instance with GitLab installed. This method requires the fewest manual steps and provides the surest and quickest way to get a GitLab instance running. You can follow along with our [Deploy Gitlab through the Linode Marketplace](/docs/marketplace-docs/guides/gitlab/) guide.
 
 - Use the default package manager for your Linux distribution. GitLab maintains official installation packages for CentOS, Debian, Ubuntu, and others, and you can follow the instructions in their [official documentation](https://about.gitlab.com/install/). You may also refer to our [Install GitLab on Ubuntu 18.04](/docs/guides/install-gitlab-on-ubuntu-18-04/) for additional details on the installation process.
 

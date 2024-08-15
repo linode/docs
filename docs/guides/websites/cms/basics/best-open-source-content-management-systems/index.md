@@ -111,7 +111,7 @@ Grav is written primarily in PHP and the [Symfony](https://symfony.com/) web app
 
 - It's not ideal for complex websites.
 
-You can quickly deploy an instance of the Grav CMS on a Linode server using the Linode Marketplace App. Follow the steps in the [Deploying Grav through the Linode Marketplace](/docs/products/tools/marketplace/guides/grav/) guide to get started.
+You can quickly deploy an instance of the Grav CMS on a Linode server using the Linode Marketplace App. Follow the steps in the [Deploying Grav through the Linode Marketplace](/docs/marketplace-docs/guides/grav/) guide to get started.
 
 ### Drupal
 
@@ -130,7 +130,7 @@ Drupal has many loyal fans, most of whom are hard-core web developers and progra
 - It has a steep learning curve.
 - Using Drupal to its best advantage requires programming skills.
 
-You can deploy a Drupal instance on a Linode server using the Linode Marketplace App. Follow the steps in the [Deploying Drupal through the Linode Marketplace](/docs/products/tools/marketplace/guides/drupal/) guide to get started.
+You can deploy a Drupal instance on a Linode server using the Linode Marketplace App. Follow the steps in the [Deploying Drupal through the Linode Marketplace](/docs/marketplace-docs/guides/drupal/) guide to get started.
 
 ### Ghost
 
@@ -170,7 +170,7 @@ Written in PHP, Joomla stores your data in a MySQL database. Unlike many PHP pro
 - Sophisticated sites may require a veteran Joomla developer.
 - Fewer extensions than the most popular CMSs.
 
-You can deploy an instance of the Joomla CMS on a Linode server using the Linode Marketplace App. Follow the steps in the [Deploying Joomla through the Linode Marketplace](/docs/products/tools/marketplace/guides/joomla/) guide to get started.
+You can deploy an instance of the Joomla CMS on a Linode server using the Linode Marketplace App. Follow the steps in the [Deploying Joomla through the Linode Marketplace](/docs/marketplace-docs/guides/joomla/) guide to get started.
 
 ### Magento
 
@@ -265,7 +265,7 @@ WooCommerce is written in PHP, and like the program underneath it, it is license
 
 Its flexibility can be confusing until you have a firm grip on all the options.
 
-You can deploy a WooCommerce instance on a Linode server using the Linode Marketplace App. Follow the steps in the [Deploying WooCommerce through the Linode Marketplace](/docs/products/tools/marketplace/guides/woocommerce/) guide to get started.
+You can deploy a WooCommerce instance on a Linode server using the Linode Marketplace App. Follow the steps in the [Deploying WooCommerce through the Linode Marketplace](/docs/marketplace-docs/guides/woocommerce/) guide to get started.
 
 ### WordPress
 
@@ -288,7 +288,7 @@ WordPress is written in PHP. You can argue it's the program that made PHP the la
 - Due to the sheer number of all WordPress's options, it can be confusing.
 - Because it's so popular, hackers target it more than any other CMS. Using a third-party security program such as [WordFence](https://www.wordfence.com/) or [Jetpack](https://jetpack.com/) is essential.
 
-You can deploy a WordPress instance on a Linode server using the Linode Marketplace App. Follow the steps in the [Deploying WordPress through the Linode Marketplace](/docs/products/tools/marketplace/guides/wordpress/) guide to get started.
+You can deploy a WordPress instance on a Linode server using the Linode Marketplace App. Follow the steps in the [Deploying WordPress through the Linode Marketplace](/docs/marketplace-docs/guides/wordpress/) guide to get started.
 
 ## Which Top Open-Source Content Management System is Right For You?
 

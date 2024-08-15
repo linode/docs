@@ -25,7 +25,7 @@ If, instead, you are ready to start deploying a Nomad cluster now, skip to the [
 
 ### Deploying Nomad from the Linode Marketplace
 
-The most approachable solution for setting up a Nomad instance with Linode is through the Linode Marketplace. There, a Linode instance with Nomad already installed and configured can be quickly set up. To do so, take a look at our guide to [Deploy HashiCorp Nomad through the Linode Marketplace](/docs/products/tools/marketplace/guides/hashicorp-nomad/).
+The most approachable solution for setting up a Nomad instance with Linode is through the Linode Marketplace. There, a Linode instance with Nomad already installed and configured can be quickly set up. To do so, take a look at our guide to [Deploy HashiCorp Nomad through the Linode Marketplace](/docs/marketplace-docs/guides/hashicorp-nomad/).
 
 First, follow along with that guide to get a Nomad instance ready. Then skip to the section [How Nomad Works](/docs/guides/using-nomad-for-orchestration/#how-nomad-works) to become familiar with the new Nomad instance.
 
