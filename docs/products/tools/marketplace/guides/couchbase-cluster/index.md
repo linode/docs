@@ -15,6 +15,8 @@ external_resources:
 Couchbase Enterprise Server is not free to use in production. Contact [Couchbase Support](https://www.couchbase.com/pricing/) to activate your license on Akamai Connected Cloud and enable [Couchbase application support](https://support.couchbase.com/hc/en-us/articles/360043247551-Accessing-Couchbase-Support).
 {{< /note >}}
 
+![Couchbase Enterprise Server Cluster Architecture](couchbase_ref_arch.png)
+
 ## Deploying a Marketplace App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
@@ -46,6 +48,22 @@ Couchbase Enterprise Server is not free to use in production. Contact [Couchbase
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
+
+### Self Signed SSl Options 
+
+- **Country or Region:** Enter the country or region for you or your organization.
+
+- **State or Province:** Enter the state or province for you or your organization.
+
+- **Locality:** Enter the town or other locality for you or your organization.
+
+- **Organization:** Enter the name of your organization.
+
+### Reverse Proxy Options
+
+- **Domain** *(Optional):* Enter the domain name assignment for Couchbase GUI - NGINX reverse proxy.
+
+- **Subdomain** *(Optional):* Enter the subdomain assignment for Couchbase GUI - NGINX reverse proxy. Defaults to *www.*
 
 ### Getting Started after Deployment
 
