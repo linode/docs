@@ -83,7 +83,7 @@ The Couchbase Cluster deploys with preconfigured UFW firewall rules. These rules
 
 Only the *cluster provisioner* has firewall access configured for web and client ports.
 
-The Couchbase Enterprise Server Cluster Marketplace App manages these UFW configurations with `application profile` files in the `/etc/ufw/appplications.d` directory. See [Configure a Firewall with UFW](/docs/guides/security/firewalls/configure-firewall-with-ufw/index.md) for more details on using UFW.
+The Couchbase Enterprise Server Cluster Marketplace App manages these UFW configurations with `application profile` files in the `/etc/ufw/appplications.d` directory. See [Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) for more details on using UFW.
 
 ## Next Steps
 
