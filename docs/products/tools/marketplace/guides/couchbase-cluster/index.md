@@ -59,12 +59,6 @@ Couchbase Enterprise Server is not free to use in production. Contact [Couchbase
 
 - **Organization:** Enter the name of your organization.
 
-### Reverse Proxy Options
-
-- **Domain** *(Optional):* Enter the domain name assignment for Couchbase GUI - NGINX reverse proxy.
-
-- **Subdomain** *(Optional):* Enter the subdomain assignment for Couchbase GUI - NGINX reverse proxy. Defaults to *www.*
-
 ### Getting Started after Deployment
 
 ## Accessing the Couchbase Server
