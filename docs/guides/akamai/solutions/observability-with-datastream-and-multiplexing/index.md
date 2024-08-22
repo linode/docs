@@ -27,7 +27,7 @@ Below are the high-level steps on how to use multiplexing with DataStream in an 
 
 1.  Regional Object Storage buckets are used to store parsed log data.
 
-![DataStream and Multiplexing Workflow](Datastream-2-Multiplexing-Workflow.svg)
+![DataStream and Multiplexing Workflow](Datastream2-w-Multiplexing.svg)
 
 ## Overcoming Challenges
 
