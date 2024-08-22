@@ -145,7 +145,8 @@
 {{ $sectionsmetamap := $s.Values }}
 {{ $facets := slice }}
 {{ $configSections := site.Params.search_config2.sections }}
-{{ with index $configSections "products" }}
+{{ $staticSections := slice (index $configSections "products") (index $configSections "api") }}
+{{ range $staticSections }}
   {{/* Moved to Akamai, insert a static link node. */}}
   {{ $linkURL := .static_link_url }}
   {{/* count -1 is a magic number indicating a static link. */}}
