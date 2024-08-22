@@ -70,6 +70,7 @@ explorer_icon = "#icon-explorer--guides"
 [params.search_config2.sections.api]
 name = "api"
 index = "linode-documentation-api"
+static_link_url = "https://techdocs.akamai.com/linode-api/reference/api"
 filters = "section.lvl0:api"
 weight = 30
 title = "API"

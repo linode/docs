@@ -761,6 +761,7 @@ filezilla
 filimonov
 findtime
 finnix
+fintech
 firefart
 firehose
 firewalld
@@ -1343,6 +1344,7 @@ listdir
 listserv
 listservs
 litespeed
+liveness
 Livestatus
 livigno
 lke
@@ -1947,6 +1949,7 @@ prefetch
 prefork
 preinstall
 preinstalled
+preload
 preloaded
 preloader
 premade
