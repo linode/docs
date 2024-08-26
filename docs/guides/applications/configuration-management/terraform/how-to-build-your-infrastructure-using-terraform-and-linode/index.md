@@ -690,7 +690,7 @@ Note that this module assumes an object storage bucket already exists on your ac
 # Backend Configuration
 backend "s3" {
     bucket = "{{< placeholder "YOUR-BUCKET-NAME" >}}"   # The bucket name created on your account to which your access_key and secret_key can read and write
-    key = "tf/tfstate"  # The folder and object you want to write state to
+    key = "{{< placeholder "tf/tfstate" >}}"  # The folder ({{< placeholder "tf" >}}) and object ({{< placeholder "tfstate" >}}) in your bucket where you want to write state to
     region = "{{< placeholder "us-southeast-1" >}}"  # The region where your object storage bucket is at which is the same as the ClusterID Here https://techdocs.akamai.com/cloud-computing/docs/access-buckets-and-files-through-urls#cluster-url-s3-endpoint
     access_key = "{{< placeholder "OBJ-ACCESS-KEY" >}}"  # You can put your value here inline or add it as an environment variable OBJ_ACCESS_KEY_ID  see more here https://developer.hashicorp.com/terraform/language/settings/backends/s3#credentials-and-shared-configuration
     secret_key = "{{< placeholder "OBJ-SECRET-KEY" >}}"  # You can put your value here inline or add it as an environment variable OBJ_SECRET_ACCESS_KEY see more here https://developer.hashicorp.com/terraform/language/settings/backends/s3#credentials-and-shared-configuration
