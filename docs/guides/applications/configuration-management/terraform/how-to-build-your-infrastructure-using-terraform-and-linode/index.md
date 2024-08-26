@@ -5,7 +5,7 @@ description: 'This article gives you step-by-step instructions on how to use Ter
 authors: ["Damaso Sanoja"]
 contributors: ["Damaso Sanoja"]
 published: 2017-11-06
-modified: 2023-07-26
+modified: 2024-08-26
 keywords: ["terraform", "infrastructure", "IaC"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/configuration-management/terraform/how-to-build-your-infrastructure-using-terraform-and-linode/','/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/','/platform/how-to-build-your-infrastructure-using-terraform-and-linode/']
@@ -677,3 +677,29 @@ Create a deployment for an imaginary client:
     terraform plan
     terraform apply
     ```
+
+### Use Linode Object Storage to Store State
+
+[State](https://developer.hashicorp.com/terraform/language/state) data files are stored on a [backend](https://developer.hashicorp.com/terraform/language/settings/backends/configuration) by Terraform to log and track metadata, map resources to a configuration, and improve performance. By default, state is stored locally in the `terraform.tfstate` file.
+
+Using the configuration below with the `backend` block, you can set up Terraform to use Linode Object Storage to store state remotely. This can be added to an existing module or added to your modules as a new file.
+
+Note that this module assumes an object storage bucket already exists on your account. Replace values with your bucket and key information:
+
+```file {title="obj-backend.tf"}
+# Backend Configuration
+backend "s3" {
+    bucket = "{{< placeholder "YOUR-BUCKET-NAME" >}}"   # The bucket name created on your account to which your access_key and secret_key can read and write
+    key = "tf/tfstate"  # The folder and object you want to write state to
+    region = "{{< placeholder "us-southeast-1" >}}"  # The region where your object storage bucket is at which is the same as the ClusterID Here https://techdocs.akamai.com/cloud-computing/docs/access-buckets-and-files-through-urls#cluster-url-s3-endpoint
+    access_key = "{{< placeholder "OBJ-ACCESS-KEY" >}}"  # You can put your value here inline or add it as an environment variable OBJ_ACCESS_KEY_ID  see more here https://developer.hashicorp.com/terraform/language/settings/backends/s3#credentials-and-shared-configuration
+    secret_key = "{{< placeholder "OBJ-SECRET-KEY" >}}"  # You can put your value here inline or add it as an environment variable OBJ_SECRET_ACCESS_KEY see more here https://developer.hashicorp.com/terraform/language/settings/backends/s3#credentials-and-shared-configuration
+    skip_region_validation = true  # All of these skip_* arguements are used since our object storage doesn't implement these additional endpoints
+    skip_credentials_validation = true
+    skip_requesting_account_id = true
+    skip_s3_checksum = true
+    endpoints = {
+      s3 = "{{< placeholder "https://us-southeast-1.linodeobjects.com" >}}"  # The endpoint for the s3 API based on the region your bucket is located https://techdocs.akamai.com/cloud-computing/docs/access-buckets-and-files-through-urls#cluster-url-s3-endpoint
+    }
+  }
+```
