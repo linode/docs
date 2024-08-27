@@ -682,7 +682,7 @@ Create a deployment for an imaginary client:
 
 [State](https://developer.hashicorp.com/terraform/language/state) data files are stored on a [backend](https://developer.hashicorp.com/terraform/language/settings/backends/configuration) by Terraform to log and track metadata, map resources to a configuration, and improve performance. By default, state is stored locally in the `terraform.tfstate` file.
 
-Using the configuration below with the `backend` block, you can set up Terraform to use Linode Object Storage to store state remotely. This can be added to an existing module or added to your modules as a new file.
+Using the configuration below with the `backend` block, you can set up Terraform to use Linode Object Storage to store state remotely. The `backend` block should be nested within the `terraform` block as noted in [Hashicorp's official backend documentation](https://developer.hashicorp.com/terraform/language/settings/backends/s3). In this guide, the `terraform` block is located in the `main.tf` configuration file.
 
 Note that this module assumes an object storage bucket already exists on your account. Replace values with your bucket and key information:
 
@@ -692,8 +692,8 @@ backend "s3" {
     bucket = "{{< placeholder "YOUR-BUCKET-NAME" >}}"   # The bucket name created on your account to which your access_key and secret_key can read and write
     key = "{{< placeholder "tf/tfstate" >}}"  # The folder ({{< placeholder "tf" >}}) and object ({{< placeholder "tfstate" >}}) in your bucket where you want to write state to
     region = "{{< placeholder "us-southeast-1" >}}"  # The region where your object storage bucket is at which is the same as the ClusterID Here https://techdocs.akamai.com/cloud-computing/docs/access-buckets-and-files-through-urls#cluster-url-s3-endpoint
-    access_key = "{{< placeholder "OBJ-ACCESS-KEY" >}}"  # You can put your value here inline or add it as an environment variable OBJ_ACCESS_KEY_ID  see more here https://developer.hashicorp.com/terraform/language/settings/backends/s3#credentials-and-shared-configuration
-    secret_key = "{{< placeholder "OBJ-SECRET-KEY" >}}"  # You can put your value here inline or add it as an environment variable OBJ_SECRET_ACCESS_KEY see more here https://developer.hashicorp.com/terraform/language/settings/backends/s3#credentials-and-shared-configuration
+    access_key = "{{< placeholder "OBJ-ACCESS-KEY" >}}"  # You can put your value here inline or add it as an environment variable AWS_ACCESS_KEY_ID  see more here https://developer.hashicorp.com/terraform/language/settings/backends/s3#credentials-and-shared-configuration
+    secret_key = "{{< placeholder "OBJ-SECRET-KEY" >}}"  # You can put your value here inline or add it as an environment variable AWS_SECRET_ACCESS_KEY see more here https://developer.hashicorp.com/terraform/language/settings/backends/s3#credentials-and-shared-configuration
     skip_region_validation = true  # All of these skip_* arguements are used since our object storage doesn't implement these additional endpoints
     skip_credentials_validation = true
     skip_requesting_account_id = true
