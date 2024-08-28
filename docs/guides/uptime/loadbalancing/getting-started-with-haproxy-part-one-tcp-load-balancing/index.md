@@ -1,198 +1,228 @@
 ---
 slug: getting-started-with-haproxy-part-one-tcp-load-balancing
 title: "Getting Started with HAProxy Part One: TCP Load Balancing"
-description: "Two to three sentences describing your guide."
-og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
+description: "Learn how to install and configure HAProxy for load balancing and health checks on Ubuntu, CentOS, and openSUSE in this guide."
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 published: 2024-08-21
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['haproxy','haproxy tcp load balancing','configure haproxy load balancer','haproxy setup tutorial','haproxy active and passive health checks','install haproxy on ubuntu','install haproxy on centos','install haproxy on opensuse','ha proxy frontend configuration','haproxy backend configuration','haproxy network load balancing','haproxy health check configuration','load balancing with haproxy example','wordpress load balancing with haproxy']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
-An HAProxy instance serves as a reverse proxy between client requests, called the network frontend, and server resources, or the backend. It serves as a shared uniform resource indicator (URI) similar to a URL, placing client traffic on backend compute resources. 
+[HAProxy](https://www.haproxy.org/) serves as a reverse proxy between front-end client requests and back-end server resources. It functions as a shared uniform resource indicator (URI) similar to a URL, directing client traffic to back-end compute resources.
 
-HAProxy also performs optional services, which are masked and transparent to clients. It can manage clients by session, resolve and strip/encrypt Transport Layer Security (TLS), manage sessions, and use prevention methods to mask backend resources from malicious and benign malformed client traffic.
+HAProxy can also perform optional services, which are masked and transparent to clients. These include session management, Transport Layer Security (TLS) encryption and decryption, and masking back-end resources against malformed client traffic (whether malicious and benign).
 
-The HAProxy network (TCP) load balancer uses stateful routing between frontend and backends using one of several configuration choices, keeps track of clients, and determines their destination. HAProxy determines connections between the frontend and backend based on Layer 4 (network) or Layer 7 (application) configuration settings.
+The HAProxy network (TCP) load balancer uses stateful routing to manage connections between front-end and back-end resources. It keeps track of clients and determines their destination using one of several configuration choices. HAProxy can be configured at Layer 4 (network) or Layer 7 (application) to establish these connections.
 
-It performs many gateway and server tasks that offload server compute instance needs and performs much of its work in the Linux kernel which optimizes its capacity. There are several options available for administrators to minimize congestion on cloud networks. These include differing methods of choosing how clients and servers become related, troubleshooting, decrypting and encrypting TLS for the backend server compute instances, sensing backend server traffic load and/or health, all while maintaining copious logs for trend analysis, troubleshooting, and forensics.
+HAProxy can reduce compute workloads by performing many gateway and server tasks within the Linux kernel, which optimizes capacity. Administrators have additional options to further minimize congestion. These include different methods of linking clients to servers, TLS encryption/decryption for the back-end servers, and monitoring back-end server traffic load and/or health.
 
-The most common use of HAProxy is as an intelligent network load balancing instance. In this role, HAProxy gateway uses simple round-robin, client-to-server routing, or more complex routing based on backend server health.
+HAProxy also maintains detailed logs for trend analysis, troubleshooting, and forensics.
 
-This guide demonstrates how to install HAProxy onto three popular Linode Linux distribution families, Ubuntu, CentOS Stream, and openSUSE Leap. It also provides instructions for how to deploy WordPress on Linode Marketplace Nanode instances, and develop a proof-of-concept based on HAProxy network load balancing features.
+The most common use of HAProxy is as an intelligent network load balancer. In this role, HAProxy uses simple round-robin, client-to-server routing, or more complex routing based on back-end server health.
+
+This guide demonstrates how to install HAProxy onto three common Linux distributions: Ubuntu, CentOS Stream, and openSUSE Leap. It also provides instructions for deploying WordPress on Linode Marketplace Nanode instances and developing a proof-of-concept based on HAProxy network load balancing features.
+
+## Before You Begin
+
+1.  If you do not already have a virtual machine to use, create a Compute Instance. HAProxy can be deployed on a simple [Nanode](https://www.linode.com/blog/linode/akamai_cloud_computing_price_update/). Under **Linux Distribution**, choose either `Ubuntu 24.04 LTS`, `CentOS Stream 9`, or `openSUSE Leap 15.6`, and assign the instance to a VLAN. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
+1.  This guide uses simple WordPress backend instances to demonstrate how HAProxy controls network traffic flows at both the TCP/Network (Layer 4) and HTTP/Application (Layer 7) levels. Follow the steps in our [Deploy WordPress through the Linode Marketplace](https://www.linode.com/docs/marketplace-docs/guides/wordpress/) guide to create three back-end WordPress test instances. Under **WordPress Setup**, fill out all of the required fields and use the default values, along with the following options:
+
+    -   **The stack you are looking to deploy Wordpress on**: Choose either **LAMP** or **LEMP**.
+    -   **Website title**: Enter `backend1`, `backend2`, and `backend3`, respectively.
+    -   **Region**: Select the same location the HAProxy instance is in.
+    -   **Linode Plan**: A **Shared CPU**, **Nanode 1 GB** is sufficient to test and demonstrate HAProxy options.
+    -   **Linode Label**: Once again, enter `backend1`, `backend2`, and `backend3`, respectively.
+    -   **VLAN**: Attach the instances to the same VLAN as the HAProxy instance.
+
+    Each of these servers are generated with an `index.html` home page that indicates the name of the server (`backend1`, `backend2`, `backend3`). Open a web browser and check each server by its IP address to verify that the example test servers are functioning. Take note of the IP addresses of the three instances, as you need them later.
+
+{{< note >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+{{< /note >}}
 
 ## Install HAProxy
 
-There are several prerequisites you need before installing HAProxy. Choose the latest version of HAProxy, which begins with an even number. There are Long Term Service (LTS) versions available that are best for deployment. Most Linux repositories have a checked build when HAProxy is pulled.
+To install HAProxy, log in to your HAProxy instance as `root` and follow the instructions below for your distribution:
 
-For testing and production purposes, any network client-side configuration, IPv4 or IPv6 can be used. For production use, the HAProxy IP address is used as a client termination point for your backend resources. Your host DNS points to this pair of addresses. 
+{{< tabs >}}
+{{< tab "Ubuntu 24.04 LTS" >}}
+Use `apt` to install HAProxy on an Ubuntu 24.04 LTS instance:
 
-Once in production, the HAProxy instance becomes a gateway to the backend resources you’ve allocated for client services. In this test case, these include a working DNS configuration, and a cloud host configured to be the target of the frontend IP addressing scheme. Backend servers may additionally be cascaded with other HAProxy servers to manage traffic for subsidiary processes.
-HAProxy is typically installed into a Linux compute instance as the sole application on the instance, because the instance is the sole traffic termination point for network traffic. 
- 
-### Installing HAProxy on Ubuntu 22.04 Server
+```command
+apt install haproxy
+```
+{{< /tab >}}
+{{< tab "CentOS Stream 9" >}}
+Use `dnf` to install HAProxy on a CentOS Steam 9 instance:
 
-An Ubuntu Server can be deployed on a simple [Linode Nanode](https://www.linode.com/blog/linode/akamai_cloud_computing_price_update/) with minimal memory and disk size. From the Linode user interface, choose Linodes, Create, and then from Distributions choose Ubuntu 22.04 LTS as the source image. Select a Region near you, a Linode Plan of Shared CPU Nanode, root password and details of ssh keys or passwords unique to your use of Linode. Start the Linode server and login using your root user and root password.
+```command
+dnf install haproxy
+```
+{{< /tab >}}
+{{< tab "openSUSE Leap 15.6" >}}
+Use `zypper`to install HAProxy on a openSUSE Leap 15.6 instance:
 
-HAProxy installation is performed after an update to the base Ubuntu 22.04 Server payload:
-code: apt update
-code: apt upgrade -y
+```command
+zypper in haproxy
+```
+{{< /tab >}}
+{{< /tabs >}}
 
-The latest kernel updates are installed. Reboot the instance:
-code: reboot
+Verify the HAProxy installation by checking the installed version number:
 
-After the reboot, the latest HAProxy instance in the repository is installed. Log back into the server:
-code: apt install haproxy
+```command
+haproxy -v
+```
 
-The application and libraries are now installed, but HAProxy configuration file editing must take place, and HAProxy must be set to restart upon reboot. HAProxy is controlled through its configuration file and CLI. Skip to Deploy Backend Instances.
+The application and libraries are now installed. However, HAProxy must be set to restart upon reboot and the HAProxy configuration file needs editing.
 
-### Installing HAProxy on CentOS Stream
+### Starting and Stopping HAProxy
 
-From the Linode user interface choose Linodes, Create, and then from Distributions choose CentOS Stream 9 as the source image, a Region near you, a Linode Plan of Shared CPU Nanode, root password and details of ssh keys or passwords unique to your use of Linode. 
+The `systemctl` command is used to start HAProxy:
 
-Start the Linode server. Login using the root user and root password that you set during configuration.
+```command
+systemctl start haproxy
+```
 
-To install HAProxy on this instance, use dnf:
-code: dnf install haproxy
+You can also use `systemctl` to start HAProxy after a reboot:
 
-The application and libraries are now installed and apparmor is configured, but HAProxy configuration file editing must take place, and HAProxy must be set to restart upon reboot. HAProxy is controlled through its configuration file and CLI. Skip to Deploy Backend Instances.
+```command
+systemctl enable haproxy
+```
 
-### Installing HAProxy on openSUSE Leap
+When you make a change to the configuration file, use the following command to restart HAProxy:
 
-From the Linode user interface, choose Linodes, Create. Then from Distributions choose openSUSE Leap as the source image. Seleect a Region near you, a Linode Plan of Shared CPU Nanode, root password and details of ssh keys or passwords unique to your use of Linode. 
+```command
+systemctl restart haproxy
+```
 
-Start the Linode server. Login using the root user and root password set during configuration.
+{{< note >}}
+If you encounter an error when restarting HAProxy, run the following command to check for syntax errors in your `haproxy.cfg` file:
 
-Next, install HAProxy using zypper:
-code: zypper in haproxy
+```command
+haproxy -c -f /etc/haproxy/haproxy.cfg
+```
+{{< /note >}}
 
-The application and libraries are now installed, but HAProxy configuration file editing must take place, and HAProxy must be set to restart upon reboot. HAProxy is controlled through its configuration file and CLI. Configure the test servers next. 
-
-### Deploy Backend Instances
-
-This guide uses simple Wordpress backend instances to demonstrate how HAProxy controls network traffic flows at both the TCP/Network (Layer 4) and HTTP/Application (Layer 7) levels. A minimal Linode/Akamai Nanode can be used to test and demonstrate HAProxy options.
-
-Build three test backend WordPress test instances and configure these backend servers to use your VLAN.
-
-From the Linode Create Menu, select Marketplace, then choose WordPress from Popular Apps. The default image used is Ubuntu 22.04 LTS.
-
-Choose a LAMP or LEMP stack, a location in the same data center where you’re hosting your HAProxy instance. Supply passwords, and a username for the database. Check the fields in the Create page, then press the Create button.
-
-Create a second and third instance by repeating these steps, but insert Backend2 and Backend3 as the server instance names. These are connected to your VLAN. Each of these servers will be generated with an index.html (home page) indicating the name of the server (Backend1, Backend2, Backend3). Check each server by its IP address to ensure correct generation of the example test server. Note the IP addresses used by the three servers.
- 
 ### HAProxy Configuration File
 
-All of the HAProxy instances described above use a similar configuration file which you can find in: /etc/haproxy/haproxy.cfg. During installation of HAProxy, a default file is written. This file is modified to set options.
+HAProxy is controlled through its configuration file and CLI. The HAProxy configuration file contains the settings needed to perform network balancing and flow control. A default file is written during HAProxy installation. All of the HAProxy instances described above use a similar configuration file found at `/etc/haproxy/haproxy.cfg`. Edit this file with `nano`, `vi`, or another text editor to set options:
 
-The HAProxy configuration file contains the settings you need to perform network balancing and flow control. The file is located as: /etc/haproxy/haproxy.cfg in the above HAProxy server installations. It can be edited with vim, nano, or another favored text editor. 
-
-### Starting and Stopping HAProxy After Configuration Changes
-
-The sysctl command is used to start HAProxy:
-code: sysctl start haproxy
-You can use sysctl to start HAProxy after a reboot by using the command:
-code: sysctl enable haproxy
-When you make a change to the configuration file, restart HAProxy with this command:
-code: sysctl restart haproxy
+```command
+nano /etc/haproxy/haproxy.cfg
+```
 
 ## Configure HAProxy as a TCP Load Balancer
 
-Backends are the pool of servers chosen by HAProxy as terminating connections for inbound client frontend traffic. HAProxy uses different balancing methods to connect frontend traffic to backend traffic, and unless specified, the default is no-balancing.
+HAProxy routes incoming front-end traffic to designated back-end instances. By default, no load balancing is applied. However, you can configure HAProxy to use various load balancing methods, including:
 
-Balancing methods include: 
-
--   Round Robin: This method considers the pool of available backend servers and assigns the next server in the backend farm. 
--   Least Conn: The HAProxy gateway keeps track of source frontend clients and backend servers and allocates inbound connection requests to the server having the least connections. 
--   Health: Active and Passive backend health check methods add and delete servers from the server farm pool.
+-   **Round Robin**: Distributes incoming connections evenly across all available back-end servers by sequentially assigning each new connection to the next server in the pool.
+-   **Least Conn**: Directs incoming connections to the back-end server with the fewest active connections, helping to balance the load more evenly based on current server utilization.
+-   **Health Checks**: Continuously monitors the health of back-end servers. Servers that fail health checks are automatically removed from the pool until they recover, ensuring that only healthy servers receive traffic.
 
 ### Set Up Backends in HAProxy (TCP)
 
-Backend servers are listed in the haproxy.cfg file and the following code is appended to the /etc/haproxy/haproxy.cfg file:  
-code: backend web_test
-code:     mode tcp
-code:     balance roundrobin
-code:          server server1 <backend1 IP address>:80
-code:          server server2 <backend2 IP address>:80
-code:          server server3 <backend3 IP address>:80
+Backend servers are listed in the `haproxy.cfg` file. Append the following code to the `/etc/haproxy/haproxy.cfg` file:
 
-These additions to the file configure your HAProxy gateway to listen for port 80 (http traffic) and establish the name web-test for the frontend. The backend is configured in the server statements and uses the VLAN addresses that are specified in the HAProxy server instance when it was initially configured.
- 
-The example round robin method attaches a client reaching the IP address of the HAProxy server, to the next server on the list of servers. 
+```file {title="/etc/haproxy/haproxy.cfg"}
+backend web-test
+  mode tcp
+  balance roundrobin
+  server server1 {{< placeholder "backend1_VLAN_IP_ADDRESS" >}}:80
+  server server2 {{< placeholder "backend2_VLAN_IP_ADDRESS" >}}:80
+  server server3 {{< placeholder "backend3_VLAN_IP_ADDRESS" >}}:80
+```
+
+These additions configure your HAProxy gateway to listen for port `80` (HTTP traffic) and establish the name `web-test` for the frontend. The back-end servers are defined in the server statements, using the VLAN addresses specified during the initial HAProxy setup.
+
+In the example, the Round Robin method connects each client reaching the HAProxy server's IP address to the next server in the list.
 
 ### Set Up Frontends in HAProxy (TCP)
 
-The HAProxy instance listens to its IP addresses for traffic. The backend name used in the example above must match the frontend client listening ports:
+The HAProxy instance listens to its IP addresses for traffic. The back-end name defined in the previous section must match the front-end client listening ports:
 
-code: frontend web-test
-code: bind *:80
-code: mode tcp
-code: default_backend web-test
+```file {title="/etc/haproxy/haproxy.cfg"}
+frontend web-test
+  bind *:80
+  mode tcp
+  default_backend web-test
+```
 
-The bind command sets the mode between the left and right side of the ":" colon argument. In this example, where "*:80" is stated, the bind directive takes the inbound port of the frontend and listens to port 80, the commonly used port for web activity. The next line calls out filtration by TCP, which monitors for TCP error messages to (next line) the default_backend named "web-test". 
+The `bind` command specifies the interface and port that HAProxy should listen to for incoming connections. In this example, `*:80` means HAProxy listens on all available IP addresses (`*`) on port `80`, which is the standard port for web traffic. The next line sets the mode to TCP, so that HAPRoxy handles traffic at the transport layer. Finally, the `default_backend` directive directs this traffic to the backend named `web-test`, as defined earlier.
 
 ## Configure Health Checks
 
-### Active Health Checks 
+HAProxy’s network load balancing function can also select servers based on their health status. These health checks can be either active or passive. An active health check probes each back-end server individually for specific health attributes. In contrast, a passive check relies on basic connection error information by protocol (Layer 4/TCP or Layer7/HTTP).
 
-HAProxy’s network load balancing function can also make selections based on health criteria of its backend server farm member servers. These checks can be active or passive. 
+### Active Health Checks
 
-An active health check probes backend servers individually for health attributes, while a passive check uses only basic connection error information by protocol (Layer 4/TCP or Layer7/HTTP).
+To enable a server health check, include the `check` keyword in the server entry of your HAProxy configuration file:
 
-You can determine and enable a server’s suitability with the check verb appended to a server listing in your HAProxy configuration file:
+```file {title="/etc/haproxy/haproxy.cfg"}
+server server1 {{< placeholder "backend1_VLAN_IP_ADDRESS" >}}:80 check
+```
 
-code:  server server1 <backend1 server IP address>:80 check
+When the `check` keyword is included, HAProxy sends a SYN/ACK to determine if the server is active. Even though some servers correctly respond to this type of query, their services might still be down or unavailable.
 
-When the check verb is appended, HAProxy uses a syn/ack to determine that the server is alive. Some servers respond correctly to this type of query, but other services may be down or unavailable.
+Active health checks provide more sophisticated monitoring by sending application-specific queries to the back-end servers and expecting a valid response.
 
-The active health check choice is more sophisticated and determines its state by using application-specific queries to backend servers, and the correct response expected by such a query.  
+HAProxy checks server health at intervals you specify, for example:
 
-The HAProxy Server checks servers according to an interval you specify. For example:
-code: backend web-test
-code: server server1 <backend1 server IP address>:80 check inter 4
+```file {title="/etc/haproxy/haproxy.cfg"}
+backend web-test
+server server1 {{< placeholder "backend1_VLAN_IP_ADDRESS" >}}:80 check inter 4
+```
 
-This checks the first server in the pool every four seconds and marks the server down if it doesn’t respond. This is similar to a ping-type health check for server response.
+In this example, HAProxy checks the first server in the pool every four seconds. If the server does not respond, it is marked as down. This process is similar to a ping-type health check that verifies server availability.
 
-### Passive Health Checks 
+### Passive Health Checks
 
-HAProxy uses TCP protocol to perform passive health checks on backend servers. An example backend TCP passive health check, using this guide’s configuration, checks for Layer 4 (TCP) errors, and finding the limit specified, mark-as-down the server:
-code: backend web-test 
-code: server backend1 <server IP address>:80 check  observe layer4  error-limit 10  on-error mark-down
+HAProxy uses the TCP protocol to perform passive health checks on back-end servers. With passive health checks, HAProxy monitors Layer 4 (TCP) traffic for errors and marks a server as down when a specified error limit is reached.
 
-This check sends TCP summed errors to determine whether the number of errors (ten errors are specified) marks the server as down. You can change intervals [for different servers](https://www.haproxy.com/documentation/hapee/1-8r1/load-balancing/health-checking/active-health-checks/) based on their capacity or complexity.
+For example, using this guide’s configuration:
+
+```file {title="/etc/haproxy/haproxy.cfg"}
+backend web-test
+server backend1 {{< placeholder "backend1_VLAN_IP_ADDRESS" >}}:80 check observe layer4 error-limit 10 on-error mark-down
+```
+
+This configuration specifies a passive health check that observes TCP errors (`observe layer4`). If the number of errors reaches the specified limit of 10 (`error-limit 10`), the server is marked as down (`on-error mark-down`). To optimize performance and reliability, you can adjust the intervals and error limits for different servers based on their capacity, role, or complexity. For more information, refer to the [HAProxy documentation on active health checks](https://www.haproxy.com/documentation/hapee/1-8r1/load-balancing/health-checking/active-health-checks/).
 
 ## Test Load Balancing Functionality and Verify Health Checks
 
-Use your example: /etc/haproxy/haproxy.cfg:
-code: 	frontend web-test
-code:     bind *:80
-code:     mode tcp
-code:     default_backend web-test
-code: 	backend web_test
-code:     mode tcp
-code:    balance roundrobin
-code:    server server1 <backend1 IP address>:80
-code:    server server2 <backend2 IP address>:80
-code:    server server3 <backend3 IP address>:80
+Use the following example code in your `/etc/haproxy/haproxy.cfg` file to test load balancing:
 
+```file {title="/etc/haproxy/haproxy.cfg"}
+frontend web-test
+  bind *:80
+  mode tcp
+  default_backend web-test
+backend web-test
+  mode tcp
+  balance roundrobin
+  server server1 {{< placeholder "backend1_VLAN_IP_ADDRESS" >}}:80
+  server server2 {{< placeholder "backend2_VLAN_IP_ADDRESS" >}}:80
+  server server3 {{< placeholder "backend3_VLAN_IP_ADDRESS" >}}:80
+```
 
-Point a browser at the HAProxy gateway IP address found in your initial HAProxy server instance, and the first server’s WordPress web page, indicating backend1 should be displayed. Open a second window, and repeat the same URI (HAProxy server IP address) and backend2’s default page should appear. Open a third window and repeat these steps for backend3 server’s web page to appear.
+To test the setup, open a web browser and enter the HAPRoxy gateway IP address (from your initial HAPRoxy server instance). The WordPress web page for `backend1` should appear. Open a second browser window and enter the same HAProxy server IP address; this time, the default page for `backend2` should be displayed. Repeat this process in a third browser window, and the `backend3` server's web page should appear.
 
-After these pages are loaded, HAProxy considers them a balanced backend. To test the functionality, you have several options:
+Once these pages are loaded, HAPRoxy considers them part of a balanced backend. You can test the load balancing functionality in several ways:
 
--   Remove one of the servers by powering it down. Reloading or opening new browser requests to the closed server eliminated it from the pool.
+-   Remove one of the servers by powering it down. Then, reload or open a new browser request. The HAProxy configuration should no longer route traffic to the powered-down server effectively removing it from the pool.
 
--   You can also use and ssh shell into any of the servers, and shutdown its apache service by using the command:
+-   You can also SSH into any of the servers and shut down its Apache service using the following command:
 
-    code: sysctl apache2 stop
+    ```command
+    systemctl apache2 stop
+    ```
 
-You can disable the network connection to have a failure of the network service to prove the elimination of a server from the backend pool because the health check disables the selection of the server when the server doesn’t respond to the syn. 
+-   Alternatively, disable the network connection of a back-end server to simulate a network failure.
 
-HAProxy has complex checks that can ask, via an active health check, for a specific response from a server under its control, and if the response doesn’t match the regex expression sought, it "mark down", or removes, the server from the availability pool.
- 
-## Conclusion
+These should trigger a health check failure, causing HAProxy to exclude the unresponsive server from the back-end pool.
 
-The HAProxy gateway balances frontend requests to backend resources according to its configuration. The configuration can determine an available backend server resource from a configured pool through simple, round robin sequential backend server selection, or through active or passive backend health checks.
+HAProxy can perform more advanced health checks, such as using an active health check to request a specific response from a controlled server. If the response does not match the expected regex pattern, HAProxy marks the server as down and removes it from the availability pool.
