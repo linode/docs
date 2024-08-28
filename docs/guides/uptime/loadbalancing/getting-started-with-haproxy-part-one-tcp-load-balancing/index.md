@@ -5,7 +5,7 @@ description: "Learn how to install and configure HAProxy for load balancing and 
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 published: 2024-08-21
-keywords: ['haproxy','haproxy tcp load balancing','configure haproxy load balancer','haproxy setup tutorial','haproxy active and passive health checks','install haproxy on ubuntu','install haproxy on centos','install haproxy on opensuse','ha proxy frontend configuration','haproxy backend configuration','haproxy network load balancing','haproxy health check configuration','load balancing with haproxy example','wordpress load balancing with haproxy']
+keywords: ['haproxy','haproxy tcp load balancing','configure haproxy load balancer','haproxy setup tutorial','haproxy active and passive health checks','install haproxy on ubuntu','install haproxy on centos','install haproxy on opensuse','haproxy frontend configuration','haproxy backend configuration','haproxy network load balancing','haproxy health check configuration','load balancing with haproxy example','wordpress load balancing with haproxy']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
