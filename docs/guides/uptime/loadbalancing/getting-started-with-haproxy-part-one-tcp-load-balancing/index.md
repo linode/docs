@@ -1,11 +1,11 @@
 ---
 slug: getting-started-with-haproxy-part-one-tcp-load-balancing
 title: "Getting Started with HAProxy Part One: TCP Load Balancing"
-description: "Learn how to install and configure HAProxy for load balancing and health checks on Ubuntu, CentOS, and openSUSE in this guide."
+description: "Learn how to install and configure HAProxy for load balancing and health checks on Ubuntu, CentOS Stream, and openSUSE Leap in this guide."
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 published: 2024-08-21
-keywords: ['haproxy','haproxy tcp load balancing','configure haproxy load balancer','haproxy setup tutorial','haproxy active and passive health checks','install haproxy on ubuntu','install haproxy on centos','install haproxy on opensuse','haproxy frontend configuration','haproxy backend configuration','haproxy network load balancing','haproxy health check configuration','load balancing with haproxy example','wordpress load balancing with haproxy']
+keywords: ['haproxy','haproxy load balancing','haproxy setup tutorial','haproxy active health checks','haproxy passive health checks','install haproxy on ubuntu','install haproxy on centos','install haproxy on opensuse','haproxy frontend configuration','haproxy backend configuration','haproxy health check configuration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
