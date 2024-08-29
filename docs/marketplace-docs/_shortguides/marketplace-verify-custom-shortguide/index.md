@@ -1,4 +1,5 @@
 ---
+slug: marketplace-verify-custom-shortguide
 # Shortguide: How to verify that the marketplace app has been successfully installed (when custom instructions are needed).
 
 headless: true

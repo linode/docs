@@ -1,4 +1,5 @@
 ---
+slug: marketplace-special-character-limitations-shortguide
 # Shortguide: Details the optional fields related to creating a limited user account on a Marketplace App.
 
 headless: true

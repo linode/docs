@@ -1,4 +1,5 @@
 ---
+slug: marketplace-update-note-shortguide
 # Shortguide: A note on updating the software on a Linode deployed using the Marketplace
 
 headless: true

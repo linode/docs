@@ -1,4 +1,5 @@
 ---
+slug: marketplace-verify-standard-shortguide
 # Shortguide: How to verify that the marketplace app has been successfully installed.
 
 headless: true

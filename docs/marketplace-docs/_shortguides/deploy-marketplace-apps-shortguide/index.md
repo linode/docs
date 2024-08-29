@@ -1,4 +1,5 @@
 ---
+slug: deploy-marketplace-apps-shortguide
 # Shortguide: Instructions on deploying a Marketplace App from Cloud Manager
 
 headless: true
