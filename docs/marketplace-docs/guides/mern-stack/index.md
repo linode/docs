@@ -1,4 +1,5 @@
 ---
+slug: mern-stack
 title: "Deploy a MERN Stack through the Linode Marketplace"
 description: "This guide shows you how to install and configure a MERN (MongoDB, Express, React, Node.js) stack on a Linode using our One-Click Marketplace App."
 published: 2019-04-02

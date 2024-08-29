@@ -1,4 +1,5 @@
 ---
+slug: apache-kafka-cluster
 title: "Deploy Apache Kafka through the Linode Marketplace"
 description: Apache Kafka is a robust, scalable, and high-performance system for managing real-time data streams. Its versatile architecture and feature set make it an essential component for modern data infrastructure, supporting a wide range of applications from log aggregation to real-time analytics and more. Whether you are building data pipelines, event-driven architectures, or stream processing applications, Kafka provides a reliable foundation for your data needs."
 published: 2024-06-10

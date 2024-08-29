@@ -1,4 +1,5 @@
 ---
+slug: pritunl
 title: "Deploy Pritunl through the Linode Marketplace"
 description: "Deploy Pritunl on a Linode Compute Instance. This provides you with an open source VPN server and management panel."
 published: 2021-11-12

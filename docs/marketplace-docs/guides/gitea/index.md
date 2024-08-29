@@ -1,4 +1,5 @@
 ---
+slug: gitea
 title: "Deploy Gitea through the Linode Marketplace"
 description: "This is a step-by-step guide on how to deploy the Gitea application, a community managed, self-hosted Git service, by using the Linode One-Click App Marketplace."
 published: 2021-01-04

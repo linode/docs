@@ -1,4 +1,5 @@
 ---
+slug: galera-cluster
 title: "Deploy a Galera Cluster through the Linode Marketplace"
 description: "This guide shows how to deploy a MySQL/MariaDB Galera Cluster through the Linode Marketplace."
 published: 2023-03-20

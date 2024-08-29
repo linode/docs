@@ -1,4 +1,5 @@
 ---
+slug: focalboard
 title: "Deploy Focalboard through the Linode Marketplace"
 description: "Deploy Focalboard on a Linode Compute Instance. This provides you with an open source alternative to the popular project management tool Trello."
 published: 2022-02-22

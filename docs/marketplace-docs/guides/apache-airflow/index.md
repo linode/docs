@@ -1,4 +1,5 @@
 ---
+slug: apache-airflow
 title: "Deploying Apache Airflow through the Linode Marketplace"
 description: "Deploy Apache Airflow on a Linode Compute Instance. This provides you with an open-source workflow management platform for data engineering pipelines."
 published: 2023-01-23

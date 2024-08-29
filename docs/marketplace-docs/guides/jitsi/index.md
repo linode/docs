@@ -1,4 +1,5 @@
 ---
+slug: jitsi
 title: "Deploy Jitsi through the Linode Marketplace"
 description: "Jitsi is an open source suite that helps you host your own virtual video conferences. Follow this guide to deploy Jitsi on Linode using Marketplace Apps."
 published: 2020-09-28

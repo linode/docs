@@ -1,4 +1,5 @@
 ---
+slug: gopaddle
 title: "Deploy gopaddle through the Linode Marketplace"
 description: "Learn how to deploy gopaddle, a simple low-code platform for Kubernetes developers and operators, on the Linode platform."
 published: 2023-01-23

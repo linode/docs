@@ -1,4 +1,5 @@
 ---
+slug: grav
 title: "Deploy Grav through the Linode Marketplace"
 description: "Learn how to deploy Grav, a modern open source flat-file CMS, on a Linode Compute Instance."
 published: 2022-02-22

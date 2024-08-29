@@ -1,4 +1,5 @@
 ---
+slug: mainconcept-live-encoder-demo
 title: "Deploy MainConcept Live Encoder Demo through the Linode Marketplace"
 description: "Deploy MainConcept Live Encoder demo, an enterprise ready live encoder for broadcast and OTT video workflows, on a Linode Compute Instance."
 published: 2023-09-14

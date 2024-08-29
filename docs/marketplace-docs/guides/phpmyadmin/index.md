@@ -1,4 +1,5 @@
 ---
+slug: phpmyadmin
 title: "Deploy phpMyAdmin through the Linode Marketplace"
 description: "Deploy phpMyAdmin on Linode using Marketplace Apps to administer your MySQL database with a convenient and powerful GUI web application."
 published: 2020-09-28

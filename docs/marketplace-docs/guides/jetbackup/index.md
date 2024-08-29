@@ -1,4 +1,5 @@
 ---
+slug: jetbackup
 title: "Deploy JetBackup through the Linode Marketplace"
 description: "JetBackup is a backup solution designed for the web hosting industry. This tutorial walks you through deploying JetBackup using the Linode Marketplace."
 published: 2021-08-13

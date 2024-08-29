@@ -1,4 +1,5 @@
 ---
+slug: restyaboard
 title: "Deploy Restyaboard through the Linode Marketplace"
 description: "Deploy Restyaboard on a Linode Compute Instance. This provides you with an open source alternative to the popular project management tool Trello."
 published: 2022-01-25

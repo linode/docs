@@ -1,4 +1,5 @@
 ---
+slug: jupyterlab
 title: "Deploy JupyterLab through the Linode Marketplace"
 description: "Deploy JupyterLab on a Linode Compute Instance. Jupyter is a web-based interactive development environment for notebooks, code, and data."
 published: 2024-02-20

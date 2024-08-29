@@ -1,4 +1,5 @@
 ---
+slug: wireguard
 title: "Deploy WireGuard through the Linode Marketplace"
 description: 'Deploy a WireGuard Server on Linode with Marketplace Apps.'
 published: 2019-03-28

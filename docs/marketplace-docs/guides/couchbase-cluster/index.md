@@ -1,4 +1,5 @@
 ---
+slug: couchbase-cluster
 title: "Deploy Couchbase One-Click Cluster through the Linode Marketplace"
 description: "Deploy Couchbase Enterprise Server One-Click Cluster on Akamai Connected Cloud. Couchbase Enterprise Server is a high-performance NoSQL database, designed for scale."
 keywords: ['database','nosql','high availability','data','cluster']

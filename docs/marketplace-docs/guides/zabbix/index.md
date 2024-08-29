@@ -1,4 +1,5 @@
 ---
+slug: zabbix
 title: "Deploy Zabbix through the Linode Marketplace"
 description: "Zabbix is an enterprise-class, open source, distributed monitoring solution. Learn how to deploy Zabbix on Linode using Marketplace Apps."
 published: 2021-02-23

@@ -1,4 +1,5 @@
 ---
+slug: webmin
 title: "Deploy Webmin through the Linode Marketplace"
 description: "Webmin is an open source interface for Unix system administration. Deploy Webmin using Linode''s Marketplace Apps."
 published: 2020-09-28

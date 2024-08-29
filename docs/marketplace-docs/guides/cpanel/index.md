@@ -1,4 +1,5 @@
 ---
+slug: cpanel
 title: "Deploy cPanel through the Linode Marketplace"
 description: "cPanel is a leading Linux-based web hosting control panel. Learn how to deploy it using Linode's Marketplace Apps."
 published: 2020-03-13

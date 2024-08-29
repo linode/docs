@@ -1,4 +1,5 @@
 ---
+slug: joplin
 title: "Deploy Joplin through the Linode Marketplace"
 description: "Deploy Joplin on a Linode Compute Instance. Joplin is an open source note-taking app."
 published: 2022-03-29

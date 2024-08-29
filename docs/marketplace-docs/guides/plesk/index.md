@@ -1,4 +1,5 @@
 ---
+slug: plesk
 title: "Deploy Plesk through the Linode Marketplace"
 description: "This guide shows how to install and configure Plesk using the Linode Marketplace Apps. Plesk is a leading WordPress and website management control panel."
 published: 2019-03-25

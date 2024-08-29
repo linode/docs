@@ -1,4 +1,5 @@
 ---
+slug: gitlab
 title: "Deploy Gitlab through the Linode Marketplace"
 description: "This is a step-by-step guide on how to deploy the GitLab application, a solution for your software development needs, by using the Linode Marketplace."
 published: 2019-03-27

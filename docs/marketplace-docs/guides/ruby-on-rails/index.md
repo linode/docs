@@ -1,4 +1,5 @@
 ---
+slug: ruby-on-rails
 title: "Deploy Ruby on Rails through the Linode Marketplace"
 description: "This guide provides you with installation and configuration instructions for deploying Ruby on Rails using the Lindoe One-Click Apps Marketplace."
 published: 2020-03-11

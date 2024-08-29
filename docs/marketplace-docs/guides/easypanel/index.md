@@ -1,4 +1,5 @@
 ---
+slug: easypanel
 title: "Deploy Easypanel through the Linode Marketplace"
 description: "Deploy Easypanel on a Linode Compute Instance. This provides a modern server control panel which uses Docker."
 published: 2022-05-31

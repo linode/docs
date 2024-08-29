@@ -1,4 +1,5 @@
 ---
+slug: secure-your-server
 title: "Secure Your Server through the Linode Marketplace"
 description: "Automate common security tasks on a Linode Compute Instance by using the Secure Your Server Marketplace App."
 published: 2023-01-24

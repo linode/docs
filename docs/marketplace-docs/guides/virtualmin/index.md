@@ -1,4 +1,5 @@
 ---
+slug: virtualmin
 title: "Deploy Virtualmin through the Linode Marketplace"
 description: "Virtualmin is an open source control panel for web hosting management. Deploy a Virtualmin server using Linode''s Marketplace Apps."
 published: 2020-09-28

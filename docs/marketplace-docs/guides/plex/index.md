@@ -1,4 +1,5 @@
 ---
+slug: plex
 title: "Deploy Plex Media Server through the Linode Marketplace"
 description: "Stream your personal media collection to nearly any device with your own Plex Media Server using Linode Marketplace Apps."
 published: 2020-09-28

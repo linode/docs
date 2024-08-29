@@ -1,4 +1,5 @@
 ---
+slug: team-fortress-2
 title: "Deploy a Team Fortress 2 Server through the Linode Marketplace"
 description: "This guide provides you with instructions for deploying Team Fortress 2, a team-based multiplayer first-person shooter game, on a Linode using the Marketplace Apps."
 published: 2019-04-04

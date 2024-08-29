@@ -1,4 +1,5 @@
 ---
+slug: akaunting
 title: "Deploy Akaunting through the Linode Marketplace"
 description: "Deploy Akaunting on a Linode Compute Instance. This provides you a free, open source accounting software designed for small businesses and freelancers."
 published: 2022-01-25

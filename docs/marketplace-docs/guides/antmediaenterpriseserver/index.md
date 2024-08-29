@@ -1,4 +1,5 @@
 ---
+slug: antmediaenterpriseserver
 title: "Deploy Ant Media Server Enterprise Edition through the Linode Marketplace"
 description: "Learn how to install and configure the Ant Media Server Enterprise Edition so you can stream video online using the Linode Marketplace App."
 published: 2022-03-29

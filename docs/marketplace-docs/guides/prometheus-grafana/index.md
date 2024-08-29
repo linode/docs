@@ -1,4 +1,5 @@
 ---
+slug: prometheus-grafana
 title: "Deploy Prometheus and Grafana through the Linode Marketplace"
 description: "Deploy Prometheus & Grafana on a Linode Compute Instance. This application provides you with a reliable monitoring solution for all of your infrastructure. "
 published: 2022-03-29

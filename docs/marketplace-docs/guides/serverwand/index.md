@@ -1,4 +1,5 @@
 ---
+slug: serverwand
 title: "Deploy ServerWand through the Linode Marketplace"
 description: "ServerWand is a magical control panel for managing websites and servers. Learn how to deploy ServerWand on Linode using Marketplace Apps."
 published: 2021-02-23

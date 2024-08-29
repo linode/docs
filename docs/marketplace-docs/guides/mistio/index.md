@@ -1,4 +1,5 @@
 ---
+slug: mistio
 title: "Deploy Mist.io through the Linode Marketplace"
 description: "This guide shows how you can deploy Mist.io, an open-source, multi-cloud management platform, on a Linode using the ONe-Click Marketplace Apps installer."
 published: 2020-03-18

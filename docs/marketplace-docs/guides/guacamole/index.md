@@ -1,4 +1,5 @@
 ---
+slug: guacamole
 title: "Deploy Apache Guacamole through the Linode Marketplace"
 description: "Use the Guacamole Marketplace App to easily install the popular open source remote desktop and access your Linode from any device."
 published: 2020-12-11

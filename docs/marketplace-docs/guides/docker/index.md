@@ -1,4 +1,5 @@
 ---
+slug: docker
 title: "Deploy Docker through the Linode Marketplace"
 description: "This guide provides you with step-by-step instructions for deploying Docker, a tool which you can use to run containerized apps, from the Linode One-Click Marketplace."
 published: 2020-03-11

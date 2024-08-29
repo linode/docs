@@ -1,4 +1,5 @@
 ---
+slug: odoo
 title: "Deploy Odoo through the Linode Marketplace"
 description: "Learn how to deploy Odoo, a self-hosted business management software suite, on the Linode platform."
 published: 2022-02-22

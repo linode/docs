@@ -1,4 +1,5 @@
 ---
+slug: kali-linux
 title: "Deploy Kali Linux through the Linode Marketplace"
 description: "Deploy Kali Linux, a popular Linux distribution for penetration testing and security research, on a Linode Compute Instance."
 published: 2022-07-05

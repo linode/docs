@@ -1,4 +1,5 @@
 ---
+slug: kepler
 title: "Deploy Kepler through the Linode Marketplace"
 description: "This guide shows how to install Kepler, a powerful drag-and-drop WordPress website builder that is highly customizable, using the One-Click Marketplace App"
 published: 2021-01-09

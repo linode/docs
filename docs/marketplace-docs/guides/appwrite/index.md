@@ -1,4 +1,5 @@
 ---
+slug: appwrite
 title: "Deploy Appwrite through the Linode Marketplace"
 description: "Deploy Appwrite, an open-source Firebase alternative for Web, Mobile & Flutter Developers, on a Linode Compute Instance."
 published: 2023-06-26

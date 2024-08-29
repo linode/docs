@@ -1,4 +1,5 @@
 ---
+slug: joomla
 title: "Deploy Joomla through the Linode Marketplace"
 description: "Deploy Joomla on a Linode Compute Instance. A content management system to ease administration overhead for your websites."
 published: 2022-03-29

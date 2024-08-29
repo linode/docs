@@ -1,4 +1,5 @@
 ---
+slug: yacht
 title: "Deploy Yacht through the Linode Marketplace"
 description: "Yacht is a web interface for managing Docker containers, with an emphasis on templating. Learn how to deploy Yacht on Linode using Marketplace Apps."
 published: 2021-02-23

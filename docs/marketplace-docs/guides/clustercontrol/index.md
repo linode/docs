@@ -1,4 +1,5 @@
 ---
+slug: clustercontrol
 title: "Deploy ClusterControl through the Linode Marketplace"
 description: "Manage the most popular open-source databases on-premise or in the cloud."
 published: 2021-08-13

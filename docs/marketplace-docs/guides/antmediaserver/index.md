@@ -1,4 +1,5 @@
 ---
+slug: antmediaserver
 title: "Deploy Ant Media Server Community Edition through the Linode Marketplace"
 description: 'This guide will show you how to install and configure Ant Media Server so you can stream video online using the Linode One-Click Marketplace App.'
 published: 2021-03-30

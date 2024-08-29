@@ -1,4 +1,5 @@
 ---
+slug: harbor
 title: "Deploy Harbor through the Linode Marketplace"
 description: "Deploy Harbor on a Linode Compute Instance. This provides you with an open source container registry that compliments the Linode Kubernetes Engine."
 published: 2021-11-12

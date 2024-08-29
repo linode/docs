@@ -1,4 +1,5 @@
 ---
+slug: hashicorp-vault
 title: "Deploy HashiCorp Vault through the Linode Marketplace"
 description: "Deploy HashiCorp Vault, an open source, centralized secrets management system, on a Linode Compute Instance.'"
 published: 2022-08-09

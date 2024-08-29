@@ -1,4 +1,5 @@
 ---
+slug: openbao
 title: "Deploy OpenBao through the Linode Marketplace"
 description: "OpenBao is a open source tool secrets management tool that helps to provide secure, automated access to sensitive data."
 published: 2024-08-05

@@ -1,4 +1,5 @@
 ---
+slug: mainconcept-xavc-transcoder-demo
 title: "Deploy MainConcept XAVC Transcoder Demo through the Linode Marketplace"
 description: "Deploy MainConcept XAVC Transcoder demo, an enterprise ready tool to create Sony XAVC camera formats on a Linode Compute Instance."
 published: 2023-09-14

@@ -1,4 +1,5 @@
 ---
+slug: wordpress
 title: "Deploy WordPress through the Linode Marketplace"
 description: "WordPress is an industry standard CMS. Follow this guide to deploy WordPress on Linode using Marketplace Apps."
 published: 2020-09-28

@@ -1,4 +1,5 @@
 ---
+slug: seatable
 title: "Deploy SeaTable through the Linode Marketplace"
 description: "Deploy SeaTable, a simple database management GUI, on a Linode Compute Instance."
 published: 2023-06-26

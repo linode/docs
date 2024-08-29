@@ -1,4 +1,5 @@
 ---
+slug: mastodon
 title: "Deploy Mastodon through the Linode Marketplace"
 description: "Learn how to deploy Mastodon, a decentralized social network and micro-blogging platform, on the Linode Marketplace."
 published: 2022-12-12

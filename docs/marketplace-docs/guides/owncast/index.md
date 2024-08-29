@@ -1,4 +1,5 @@
 ---
+slug: owncast
 title: "Deploy Owncast through the Linode Marketplace"
 description: "This guide shows how to install Owncast, a self-hosted live video and webchat server that works with common broadcasting software, from the Linode One-Click Marketplace."
 published: 2021-03-31

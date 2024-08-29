@@ -1,4 +1,5 @@
 ---
+slug: percona-monitoring-management
 title: "Deploy Percona Monitoring and Management (PMM) through the Linode Marketplace"
 description: "Learn how to deploy Percona Monitoring & Management with Marketplace Apps and basic configuration steps to get you started monitoring your database."
 published: 2020-06-11

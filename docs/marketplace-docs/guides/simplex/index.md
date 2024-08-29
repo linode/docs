@@ -1,4 +1,5 @@
 ---
+slug: simplex
 title: "Deploy SimpleX Chat on Linode through the Linode Marketplace"
 description: 'Deploy SimpleX Chat on Linode through the Linode Marketplace.'
 published: 2023-09-15

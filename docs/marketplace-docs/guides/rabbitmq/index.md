@@ -1,4 +1,5 @@
 ---
+slug: rabbitmq
 title: "Deploy RabbitMQ through the Linode Marketplace"
 description: "Deploy the open source message broker RabbitMQ to manage sending and receiving data using Marketplace Apps."
 published: 2020-09-28

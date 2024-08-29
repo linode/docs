@@ -1,4 +1,5 @@
 ---
+slug: moodle
 title: "Deploy Moodle through the Linode Marketplace"
 description: "Moodle is the leading open source learning management system. This tutorial walks you through deploying Moodle using the Linode Marketplace."
 published: 2021-08-13

@@ -1,4 +1,5 @@
 ---
+slug: openvpn
 title: "Deploy OpenVPN through the Linode Marketplace"
 description: "This guide shows you how to configure and deploy your own private and secure OpenVPN Server on a Linude using the One-Click Marketplace Application."
 published: 2019-04-05

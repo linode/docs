@@ -1,4 +1,5 @@
 ---
+slug: valheim
 title: "Deploy Valheim through the Linode Marketplace"
 description: "Deploy Valheim, an open-world Viking themed survivial game, on Linode using Marketplace Apps."
 published: 2021-03-09

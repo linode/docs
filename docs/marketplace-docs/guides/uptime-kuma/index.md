@@ -1,4 +1,5 @@
 ---
+slug: uptime-kuma
 title: "Deploy Uptime Kuma through the Linode Marketplace"
 description: "Deploy Uptime Kuma on a Linode Compute Instance. This provides you with an open source monitoring tool like 'Uptime Robot'."
 published: 2022-02-22

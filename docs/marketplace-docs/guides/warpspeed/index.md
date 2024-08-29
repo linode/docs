@@ -1,4 +1,5 @@
 ---
+slug: warpspeed
 title: "Deploy WarpSpeed VPN through the Linode Marketplace"
 description: "Deploy WarpSpeed on a Linode Compute Instance. This provides you with one of the fastest, easiest to use, and most secure VPN gateway software."
 published: 2021-11-12

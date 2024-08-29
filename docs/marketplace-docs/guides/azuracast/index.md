@@ -1,4 +1,5 @@
 ---
+slug: azuracast
 title: "Deploy AzuraCast through the Linode Marketplace"
 description: "AzuraCast is a self-hosted web radio station and management suite. Follow this guide to deploy AzuraCast on Linode using Marketplace Apps."
 published: 2020-09-28

@@ -1,4 +1,5 @@
 ---
+slug: filecloud
 title: "Deploy FileCloud through the Linode Marketplace"
 description: "This guide provides you with step-by-step instructions for deploying your own FileCloud Server on a Linode using the One-Click Marketplace Apps."
 published: 2020-03-18

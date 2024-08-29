@@ -1,4 +1,5 @@
 ---
+slug: django
 title: "Deploy Django through the Linode Marketplace"
 description: "Learn how to deploy Django, a web framework that provides much of the core functionality required in modern web development, through the Linode Marketpplace"
 published: 2020-03-11

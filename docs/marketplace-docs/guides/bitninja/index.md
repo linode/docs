@@ -1,4 +1,5 @@
 ---
+slug: bitninja
 title: "Deploy BitNinja through the Linode Marketplace"
 description: "Deploy BitNinja on a Linode Compute Instance. This provides you with a general purpose security-as-a-service server defense tool powered by a social defense system."
 published: 2021-11-12

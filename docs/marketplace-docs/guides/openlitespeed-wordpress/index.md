@@ -1,4 +1,5 @@
 ---
+slug: openlitespeed-wordpress
 title: "Deploy OpenLiteSpeed WordPress through the Linode Marketplace"
 description: "Deploy OpenLiteSpeed on a Linode Compute Instance. This provides you with a high performance web server to manage your WordPress site."
 published: 2021-01-15

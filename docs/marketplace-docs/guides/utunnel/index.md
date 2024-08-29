@@ -1,4 +1,5 @@
 ---
+slug: utunnel
 title: "Deploy UTunnel VPN through the Linode Marketplace"
 description: "Deploy UTunnel VPN on a Linode Compute Instance. This provides you with a cloud-based subscription service that allows users to create VPN servers."
 published: 2021-12-10

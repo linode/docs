@@ -1,4 +1,5 @@
 ---
+slug: woocommerce
 title: "Deploy WooCommerce through the Linode Marketplace"
 description: "Learn how to deploy WooCommerce, the most popular ecommerce plugin, on Wordpress through the Linode Marketplace."
 published: 2019-04-02

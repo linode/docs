@@ -1,4 +1,5 @@
 ---
+slug: mean-stack
 title: "Deploy a MEAN Stack through the Linode Marketplace"
 description: "Learn how to easily deploy MEAN (MongoDB, Express, Angular, Node.js) using Linode's Marketplace Apps."
 published: 2020-03-17

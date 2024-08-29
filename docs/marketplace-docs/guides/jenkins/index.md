@@ -1,4 +1,5 @@
 ---
+slug: jenkins
 title: "Deploy Jenkins through the Linode Marketplace"
 description: "This guide shows how to install Jenkins, an open source automation tool which system administrators can use to build, test, and deploy your infrastructure."
 published: 2020-03-12

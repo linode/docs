@@ -1,4 +1,5 @@
 ---
+slug: glusterfs-cluster
 title: "Deploy GlusterFS Cluster through the Linode Marketplace"
 description: "GlusterFS is an open-source, distributed network filesystem designed to scale out and handle large amounts of data across compute instances. It replicates data across multiple GlusterFS servers into a single application mount point, allowing seamless access to files to client instances. With its flexible architecture and ability to replicate data across nodes, GlusterFS provides high availability and fault tolerance, making it suitable for cloud storage and high availability architectures."
 published: 2024-04-26

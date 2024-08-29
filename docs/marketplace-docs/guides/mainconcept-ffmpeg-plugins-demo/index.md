@@ -1,4 +1,5 @@
 ---
+slug: mainconcept-ffmpeg-plugins-demo
 title: "Deploy MainConcept Plugins for FFmpeg Demo through the Linode Marketplace"
 description: "Deploy MainConcept Plugins for FFmpeg demo, an enterprise ready set of FFmpeg tools for creating transcoding workflows, on a Linode Compute Instance."
 published: 2023-09-14

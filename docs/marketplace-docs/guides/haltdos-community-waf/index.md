@@ -1,4 +1,5 @@
 ---
+slug: haltdos-community-waf
 title: "Deploy Haltdos Community WAF through the Linode Marketplace"
 description: "Learn how to deploy Haltdos Community WAF, a free web application firewall, on the Linode platform."
 published: 2023-01-23

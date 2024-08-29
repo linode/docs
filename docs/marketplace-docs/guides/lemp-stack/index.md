@@ -1,4 +1,5 @@
 ---
+slug: lemp-stack
 title: "Deploy a LEMP Stack through the Linode Marketplace"
 description: "This guide shows you how to use the Linode Marketplace to deploy a LEMP (Linux, NGINX, MySQL, PHP) server stack on a Linode Compute Instance."
 published: 2020-03-11

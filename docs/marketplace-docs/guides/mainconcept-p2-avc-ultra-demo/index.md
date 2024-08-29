@@ -1,4 +1,5 @@
 ---
+slug: mainconcept-p2-avc-ultra-demo
 title: "Deploy MainConcept P2 AVC-ULTRA Transcoder Demo through the Linode Marketplace"
 description: "Deploy MainConcept P2 AVC-ULTRA Transcoder demo, an enterprise ready tool to create Panasonic AVC-ULTRA camera formats on a Linode Compute Instance."
 published: 2023-09-14

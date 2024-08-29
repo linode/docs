@@ -1,4 +1,5 @@
 ---
+slug: cloudron
 title: "Deploy Cloudron through the Linode Marketplace"
 description: "Cloudron is a platform that makes it easy to install, manage and secure web apps on a server. Deploy Cloudron on a Linode with Marketplace Apps."
 published: 2020-12-15

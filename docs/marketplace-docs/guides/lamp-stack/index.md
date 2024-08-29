@@ -1,4 +1,5 @@
 ---
+slug: lamp-stack
 title: "Deploy a LAMP Stack through the Linode Marketplace"
 description: "This guide shows you how to use the Linode Marketplace One-Click Application to deploy a LAMP (Linux, Apache, MySQL, PHP) stack on a Linode running Linux."
 published: 2019-03-26

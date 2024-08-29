@@ -1,4 +1,5 @@
 ---
+slug: victoriametrics-single
 title: "Deploy VictoriaMetrics Single through the Linode Marketplace"
 description: "Deploy VictoriaMetrics Single on a Linode Compute Instance. This provides you with an open source time series database and monitoring solution, designed to collect, store and process real-time metrics."
 published: 2022-01-25

@@ -1,4 +1,5 @@
 ---
+slug: counter-strike-go
 title: "Deploy Counter-Strike Global Offensive through the Linode Marketplace"
 description: "Deploy a Counter-Strike: Global Offensive server on Linode using Marketplace Apps."
 published: 2019-03-28

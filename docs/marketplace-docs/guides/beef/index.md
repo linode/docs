@@ -1,4 +1,5 @@
 ---
+slug: beef
 title: "Deploy BeEF through the Linode Marketplace"
 description: "Deploy BeEF on a Linode Compute Instance. This provides you with a penetration testing tool that focuses on web-borne attacks against clients."
 published: 2021-11-12

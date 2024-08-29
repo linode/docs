@@ -1,4 +1,5 @@
 ---
+slug: nats-single-node
 title: "Deploy NATS through the Linode Marketplace"
 description: "Deploy NATS on a Linode Compute Instance. NATS is a connective technology responsible for addressing, discovery and exchanging of messages that drive the common patterns in distributed systems; asking and answering questions, aka services/microservices, and making and processing statements, or stream processing."
 published: 2024-02-20

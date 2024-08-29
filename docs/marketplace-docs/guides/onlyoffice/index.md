@@ -1,4 +1,5 @@
 ---
+slug: onlyoffice
 title: "Deploy ONLYOFFICE Docs through the Linode Marketplace"
 description: "Learn how to deploy ONLYOFFICE Docs, an open-source office suite with web-based viewers and collaborative editors for text documents, spreadsheets, and presentations on the Linode platform."
 published: 2023-01-23

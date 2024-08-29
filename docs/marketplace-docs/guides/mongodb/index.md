@@ -1,4 +1,5 @@
 ---
+slug: mongodb
 title: "Deploy MongoDB through the Linode Marketplace"
 description: "This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the Linode Marketplace."
 published: 2020-03-11

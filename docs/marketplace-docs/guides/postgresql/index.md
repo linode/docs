@@ -1,4 +1,5 @@
 ---
+slug: postgresql
 title: "Deploy PostgreSQL through the Linode Marketplace"
 description: "PostgreSQL is a powerful, scalable, and standards-compliant open-source database. Here''s how to easily deploy PostgreSQL using Marketplace Apps."
 published: 2020-03-17

@@ -1,4 +1,5 @@
 ---
+slug: aapanel
 title: "Deploy aaPanel through the Linode Marketplace"
 description: "This tutorial will show you how to install and configure the free and open-source server app, aaPanel, using the Linode One-Click Marketplace on CentOS 7."
 published: 2021-08-13

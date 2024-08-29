@@ -1,4 +1,5 @@
 ---
+slug: apache-cassandra-cluster
 title: "Deploy Apache Cassandra Cluster through the Linode Marketplace"
 description: "Apache Cassandra is an open-source, distributed NoSQL database management system designed for handling large amounts of data across many commodity servers, providing high availability with no single point of failure. Cassandra offers robust support for clusters with asynchronous masterless replication allowing low-latency operations for all clients. "
 published: 2024-08-05

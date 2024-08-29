@@ -1,4 +1,5 @@
 ---
+slug: openlitespeed-rails
 title: "Deploy OpenLiteSpeed Rails through the Linode Marketplace"
 description: "Deploy OpenLiteSpeed Rails on a Linode Compute Instance. This provides you with a high performance web server to manage your Rails application."
 published: 2021-11-12

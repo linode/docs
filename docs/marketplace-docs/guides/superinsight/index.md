@@ -1,4 +1,5 @@
 ---
+slug: superinsight
 title: "Deploy Superinsight DB through the Linode Marketplace"
 description: "Deploy Superinsight DB, a relational database for unstructured data, on the Linode platform."
 published: 2023-01-23

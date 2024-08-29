@@ -1,4 +1,5 @@
 ---
+slug: pihole
 title: "Deploy Pi-hole through the Linode Marketplace"
 description: "Deploy Pi-hole on a Linode Compute Instance. This app protects your devices from unwanted content, without needing to  install any client-side software."
 published: 2022-02-22

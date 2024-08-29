@@ -1,4 +1,5 @@
 ---
+slug: passky
 title: "Deploy Passky through the Linode Marketplace"
 description: "Learn how to deploy Passky, a lightweight, open-source password manager, on the Linode platform."
 published: 2023-01-23

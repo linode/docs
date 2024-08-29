@@ -1,4 +1,5 @@
 ---
+slug: owncloud
 title: "Deploy ownCloud Server through the Linode Marketplace"
 description: "Learn how to deploy ownCloud Server, a self-hosted file-sharing and collaboration platform on the Linode Marketplace."
 published: 2023-06-26

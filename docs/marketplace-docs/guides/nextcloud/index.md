@@ -1,4 +1,5 @@
 ---
+slug: nextcloud
 title: "Deploy Nextcloud through the Linode Marketplace"
 description: "This guide shows how you can deploy a NextCloud server to store important documents, images, and more in one location by using the NextCloud Marketplace App."
 published: 2020-06-11

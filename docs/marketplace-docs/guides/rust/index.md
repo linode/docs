@@ -1,4 +1,5 @@
 ---
+slug: rust
 title: "Deploy Rust through the Linode Marketplace"
 description: "This guide provides you with instructions for installing Rust, a multiplayer game where you play as a survivor, on a Linode using the One-Click Marketplace App."
 published: 2019-03-25

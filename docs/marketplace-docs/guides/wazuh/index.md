@@ -1,4 +1,5 @@
 ---
+slug: wazuh
 title: "Deploy Wazuh through the Linode Marketplace"
 description: "Deploy Wazuh on a Linode Compute Instance. This provides you with an open source a security monitoring solution."
 published: 2021-11-12

@@ -1,4 +1,5 @@
 ---
+slug: vscode
 title: "Deploy VS Code through the Linode Marketplace"
 description: "This guide shows you how to run VS Code Server in the browser to create, edit, and manipulate code by using the VS Code app from the Linode One-Click Marketplace."
 published: 2020-12-02

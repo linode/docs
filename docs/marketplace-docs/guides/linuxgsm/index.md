@@ -1,4 +1,5 @@
 ---
+slug: linuxgsm
 title: "Deploy LinuxGSM through the Linode Marketplace"
 description: "Deploy LinuxGSM on a Linode Compute Instance. LinuxGSM is a command line utility for managing multiplayer game servers."
 published: 2024-03-19

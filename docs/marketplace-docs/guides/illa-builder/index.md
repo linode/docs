@@ -1,4 +1,5 @@
 ---
+slug: illa-builder
 title: "Deploy Illa Builder through the Linode Marketplace"
 description: "Deploy Illa Builder, an open-source low-code development tool, on a Linode Compute Instance.'"
 published: 2023-06-26

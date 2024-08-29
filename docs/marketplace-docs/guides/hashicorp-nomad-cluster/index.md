@@ -1,4 +1,5 @@
 ---
+slug: hashicorp-nomad-cluster
 title: "Deploy HashiCorp Nomad Cluster through the Linode Marketplace"
 description: "Deploy HashiCorp Nomad Cluster, a flexible scheduling and orchestration for diverse workloads, on Linode Compute Instances.'"
 published: 2023-09-11

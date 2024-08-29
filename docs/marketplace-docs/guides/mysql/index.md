@@ -1,4 +1,5 @@
 ---
+slug: mysql
 title: "Deploy MySQL/MariaDB through the Linode Marketplace"
 description: "This guide shows how to install and configure MySQL/MariaDB so you can run databases for anything from a CRM to WordPress by using the Linode One-Click Marketplace."
 published: 2020-03-13

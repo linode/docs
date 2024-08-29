@@ -1,4 +1,5 @@
 ---
+slug: drupal
 title: "Deploy Drupal through the Linode Marketplace"
 description: "Learn how to use the Drupal Marketplace App to easily install the popular open source content management system."
 published: 2019-03-25

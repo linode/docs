@@ -1,4 +1,5 @@
 ---
+slug: mainconcept-xdcam-transcoder-demo
 title: "Deploy MainConcept XDCAM Transcoder Demo through the Linode Marketplace"
 description: "Deploy MainConcept XDCAM Transcoder demo, an enterprise ready tool to create Sony XDCAM camera formats on a Linode Compute Instance."
 published: 2023-09-14

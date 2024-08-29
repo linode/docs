@@ -1,4 +1,5 @@
 ---
+slug: openlitespeed-nodejs
 title: "Deploy OpenLiteSpeed Node.js through the Linode Marketplace"
 description: "Deploy OpenLiteSpeed Node.js on a Linode Compute Instance. This provides you with a high performance web server to manage your Node.js application."
 published: 2021-11-12

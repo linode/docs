@@ -1,4 +1,5 @@
 ---
+slug: liveswitch
 title: "Deploy LiveSwitch through the Linode Marketplace"
 description: "Learn how to deploy LiveSwitch Server, an enterprise video streaming service, through the Linode Marketplace."
 published: 2022-05-31

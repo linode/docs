@@ -1,4 +1,5 @@
 ---
+slug: nodejs
 title: "Deploy Node.js through the Linode Marketplace"
 description: "Deploy Node.js on a Linode Compute Instance. This provides a JavaScript runtime to use with web applications."
 published: 2022-02-22

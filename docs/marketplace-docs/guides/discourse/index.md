@@ -1,4 +1,5 @@
 ---
+slug: discourse
 title: "Deploy Discourse through the Linode Marketplace"
 description: "In this guide, learn how to install Discourse, an open source discussion platform that provides powerful features using the Linode One-Click Marketplace."
 published: 2020-11-19

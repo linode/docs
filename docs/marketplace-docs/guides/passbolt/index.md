@@ -1,4 +1,5 @@
 ---
+slug: passbolt
 title: "Deploy Passbolt Community Edition through the Linode Marketplace"
 description: "Learn how to deploy Passbolt Community Edition, an open-source password manager, on the Akamai cloud computing platform."
 published: 2024-03-19

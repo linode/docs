@@ -1,4 +1,5 @@
 ---
+slug: webuzo
 title: "Deploy Webuzo through the Linode Marketplace"
 description: "This guide shows you how to deploy Webuzo from Softaculous, a LAMP stack control panel that lets you deploy a growing number of applications and scripts."
 published: 2020-12-02

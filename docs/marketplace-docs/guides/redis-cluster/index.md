@@ -1,4 +1,5 @@
 ---
+slug: redis-cluster
 title: "Deploy a Redis Sentinel Cluster through the Linode Marketplace"
 description: "This guide shows how you can install Redis database, a open-source, in-memory, data structure store, with optional write and persistence of data on a disk."
 published: 2023-03-20

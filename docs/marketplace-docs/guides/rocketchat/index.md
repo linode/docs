@@ -1,4 +1,5 @@
 ---
+slug: rocketchat
 title: "Deploy Rocket.Chat through the Linode Marketplace"
 description: "Deploy Rocket.Chat on a Linode Compute Instance. This provides you with a self-hosted open source chat application (Slack alternative)."
 published: 2021-11-12

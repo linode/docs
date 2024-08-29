@@ -1,4 +1,5 @@
 ---
+slug: splunk
 title: "Deploy Splunk through the Linode Marketplace"
 description: "This guide shows you how to install Splunk, a powerful data solution that collects, monitors, analyzes, and visualizes data, using the Linode One-Click Marketplace."
 published: 2021-09-03

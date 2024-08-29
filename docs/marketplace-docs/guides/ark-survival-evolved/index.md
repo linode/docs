@@ -1,4 +1,5 @@
 ---
+slug: ark-survival-evolved
 title: "Deploy an ARK Survival Evolved Server through the Linode Marketplace"
 description: "Deploy a ARK: Survival Evolved Server on Linode using Marketplace Apps."
 published: 2019-04-03

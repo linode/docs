@@ -1,4 +1,5 @@
 ---
+slug: flask
 title: "Deploy Flask through the Linode Marketplace"
 description: "Learn how to deploy Flask, a quick and light-weight web framework for Python, through the Linode Marketplace."
 published: 2020-03-11

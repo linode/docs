@@ -1,4 +1,5 @@
 ---
+slug: magicspam
 title: "Deploy MagicSpam through the Linode Marketplace"
 description: "This guide shows you how to install and configure MagicSpam, a powerful anti-spam and email security solution using the Linode One-Click App Marketplace."
 published: 2021-08-13

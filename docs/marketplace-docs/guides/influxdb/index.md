@@ -1,4 +1,5 @@
 ---
+slug: influxdb
 description: "Deploy InfluxDB on a Linode Compute Instance. InfluxDB is a high-performance time series database designed to handle massive volumes of data with ease."
 keywords: ['time series database','monitoring','analytics','data']
 tags: ["marketplace", "linode platform", "cloud manager"]

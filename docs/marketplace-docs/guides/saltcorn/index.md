@@ -1,4 +1,5 @@
 ---
+slug: saltcorn
 title: "Deploy Saltcorn through the Linode Marketplace"
 description: "Deploy Saltcorn on a Linode Compute Instance. This platform is made for building database web applications without writing a single line of code."
 published: 2022-02-22

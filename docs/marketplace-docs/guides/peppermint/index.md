@@ -1,4 +1,5 @@
 ---
+slug: peppermint
 title: "Deploy Peppermint through the Linode Marketplace"
 description: "This guide shows how to install Peppermint, a ticket management system that allows teams to create tickets, and more, with the Linode One-Click Marketplace."
 published: 2021-03-31

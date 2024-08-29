@@ -1,4 +1,5 @@
 ---
+slug: microweber
 title: "Deploy Microweber through the Linode Marketplace"
 description: "Deploy Microweber, an open-source, drag and drop website builder and CMS on a Linode Compute Instance."
 published: 2022-09-06

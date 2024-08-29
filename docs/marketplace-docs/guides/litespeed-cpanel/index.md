@@ -1,4 +1,5 @@
 ---
+slug: litespeed-cpanel
 title: "Deploy LiteSpeed cPanel through the Linode Marketplace"
 description: "Deploy LiteSpeed cPanel on a Linode Compute Instance. This provides you with a lightning fast, performant, and secure web server that conserves resources."
 published: 2021-11-12

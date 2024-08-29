@@ -1,4 +1,5 @@
 ---
+slug: shadowsocks
 title: "Deploy Shadowsocks through the Linode Marketplace"
 description: "This guide provides you with instructions on how to deploy a Shadowsocks server to bypass network censorship on a Linode using the One-Click Marketplace App."
 published: 2020-03-18

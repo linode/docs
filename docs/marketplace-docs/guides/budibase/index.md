@@ -1,4 +1,5 @@
 ---
+slug: budibase
 title: "Deploy Budibase through the Linode Marketplace"
 description: "Deploy Budibase, a low-code platform for building modern business applications, on a Linode Compute Instance."
 published: 2022-08-09
