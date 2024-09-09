@@ -119,6 +119,10 @@ export function newSearchStore(searchConfig, params, Alpine) {
 			keyOpenStack: [],
 		},
 
+		docsearchLink: function (ds) {
+			return `https://docsearch.akamai.com/s/global-search/${this.query.lndq}?s=Akamai%20TechDocs&ds=${ds}`;
+		},
+
 		shouldShowHydratedExplorer: function () {
 			return this.explorer.showHydratedExplorer || this.query.isFiltered();
 		},
@@ -374,7 +378,9 @@ export function newSearchStore(searchConfig, params, Alpine) {
 		let q = '';
 		// TODO(bep) we have removed the QA section from explorer/search, but the
 		// data is still there. The docType filter below can be remove when we have completed the migration.
-		let filters = sectionConfig.filters || 'NOT docType:community';
+		let filters =
+			sectionConfig.filters ||
+			'NOT docType:community AND NOT docType:products AND NOT docType:api AND NOT docType:Marketplace';
 		let facetFilters = [];
 		let attributesToHighlight = [];
 		let analyticsTags = [];
@@ -513,9 +519,9 @@ const normalizeResult = function (self, result) {
 			if (k === 'docType' || k.startsWith('section.')) {
 				let obj = {};
 				Object.entries(v).forEach(([kk, vv]) => {
-					// TODO(bep) we have removed the QA section from explorer/search, but the
+					// TODO(bep) we have removed the QA and products section from explorer/search, but the
 					// data is still there. The docType filter below can be remove when we have completed the migration.
-					if (k == 'docType' && kk == 'community') {
+					if (k == 'docType' && (kk == 'community' || kk == 'products' || kk == 'api')) {
 						return;
 					}
 					let m = self.metaProvider.getSectionMeta(kk.toLocaleLowerCase());

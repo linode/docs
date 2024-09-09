@@ -66,7 +66,7 @@ The rest of this guide assumes that you have a complete Mastodon setup running t
 
 To create a new Mastodon instance, follow our guide [How to Install a Mastodon Server](/docs/guides/install-mastodon-on-ubuntu-2004/). A link in the upper right of the guide allows you to select a Linux distribution for the installation. The beginning of the guide also includes links for creating and configuring a new Linode Compute Instance for running the Mastodon server.
 
-You may, alternatively, choose to deploy a new Linode with Mastodon via the Linode Marketplace. Take a look at our guide on how to [Deploy Mastodon through the Linode Marketplace](/docs/products/tools/marketplace/guides/mastodon/) to learn more and for instructions.
+You may, alternatively, choose to deploy a new Linode with Mastodon via the Linode Marketplace. Take a look at our guide on how to [Deploy Mastodon through the Linode Marketplace](/docs/marketplace-docs/guides/mastodon/) to learn more and for instructions.
 
 ### Configuring an NGINX Proxy
 

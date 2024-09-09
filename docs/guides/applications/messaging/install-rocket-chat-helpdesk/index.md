@@ -43,7 +43,7 @@ For a comprehensive comparison between plan types, including features and limita
 
 There are multiple methods for deploying Rocket.Chat. This guide reviews manual deployment on a single Compute Instance, as well as deploying to a Kubernetes cluster:
 
--   Deploy using our [Rocket.Chat Marketplace app](/docs/products/tools/marketplace/guides/rocketchat/). This installs and configures all necessary software and is the fastest deployment method.
+-   Deploy using our [Rocket.Chat Marketplace app](/docs/marketplace-docs/guides/rocketchat/). This installs and configures all necessary software and is the fastest deployment method.
 -   Manually deploy to a [Compute Instance](#deploying-to-a-compute-instance).
 -   Deploy to a [Kubernetes cluster](#deploying-to-a-kubernetes-cluster) with Linode Kubernetes Engine (LKE).
 -   Use Rocket.Chat's instructions for deploying via [Docker and Docker Compose](https://docs.rocket.chat/deploy/deploy-rocket.chat/deploy-with-docker-and-docker-compose) using Rocket.Chat's Docker image.

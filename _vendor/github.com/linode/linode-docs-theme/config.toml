@@ -54,6 +54,7 @@ name = "products"
 weight = 10 # Used to order the sections in the UI. Higher comes first.
 title = "Products"
 noun = "Product Guide"
+static_link_url = "https://techdocs.akamai.com/cloud-computing/docs/"
 filters = "section.lvl0:products"
 # The icons are fetched from layouts/sections/navigation/explorer-icons.html
 explorer_icon = "#icon-explorer--products"
@@ -69,6 +70,7 @@ explorer_icon = "#icon-explorer--guides"
 [params.search_config2.sections.api]
 name = "api"
 index = "linode-documentation-api"
+static_link_url = "https://techdocs.akamai.com/linode-api/reference/api"
 filters = "section.lvl0:api"
 weight = 30
 title = "API"
@@ -82,15 +84,12 @@ title = "Reference Architecture"
 noun = "Reference"
 explorer_icon = "#icon-explorer--reference-architecture"
 
-[params.search_config2.sections.marketplace]
-name = "marketplace"
-index = "linode-wp"
+[params.search_config2.sections.marketplace-docs]
+name = "marketplace-docs"
 weight = 40
-title = "Marketplace"
-seo_title_template = "One-Click App Marketplace | Linode"
-seo_title_template_category = "One-Click App Marketplace | {category} | Linode"
-noun = "App"
-filters = "section.lvl0:Marketplace"
+title = "Marketplace Docs"
+noun = "Marketplace"
+filters = "section.lvl0:marketplace-docs"
 explorer_icon = "#icon-explorer--marketplace"
 
 [params.search_config2.sections.blog]
@@ -102,6 +101,7 @@ seo_title_template_category = "Linode Blog | {category} | Linode"
 noun = "Post"
 filters = "section.lvl0:Blog"
 explorer_icon = "#icon-explorer--blog"
+static_link_url = "https://www.linode.com/blog/"
 
 [params.search_config2.sections.resources]
 name = "resources"
@@ -112,6 +112,7 @@ noun = "Resource"
 seo_title_template = "Cloud Computing Resources | Linode"
 seo_title_template_category = "Cloud Computing {category} | Linode"
 explorer_icon = "#icon-explorer--resources"
+static_link_url = "https://www.linode.com/content/"
 
 [module]
 [[module.mounts]]

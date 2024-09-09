@@ -145,8 +145,27 @@
 {{ $sectionsmetamap := $s.Values }}
 {{ $facets := slice }}
 {{ $configSections := site.Params.search_config2.sections }}
+{{ $staticSections := slice (index $configSections "products") (index $configSections "api") }}
+{{ range $staticSections }}
+  {{/* Moved to Akamai, insert a static link node. */}}
+  {{ $linkURL := .static_link_url }}
+  {{/* count -1 is a magic number indicating a static link. */}}
+  {{ $node := ( dict
+    "key" ""
+    "href" $linkURL
+    "title" .title
+    "linkTitle" .title
+    "icon" .explorer_icon
+    "count" -1
+    "level" 1
+    "weight" .weight
+    )
+  }}
+  {{ $facets = $facets | append $node }}
+{{ end }}
 {{ range $k, $v := $blank.facets }}
   {{ if not (strings.HasPrefix $k "section.") }}
+
     {{ continue }}
   {{ end }}
   {{ $level := add (substr $k -1 | int) 1 }}
@@ -175,6 +194,9 @@
 
     {{ if and (eq $level 1) (index $configSections $kk) }}
       {{ $c :=  (index $configSections $kk) }}
+      {{ if $c.static_link_url }}
+        {{ $href = $c.static_link_url }}
+      {{ end }}
       {{ $node = (dict
         "key" $kk
         "href" $href

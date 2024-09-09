@@ -131,6 +131,19 @@ export function newSearchExplorerHydrated(searchConfig) {
 				let rootNodes = this.explorer.facets.filter(
 					(n) => n.level === 1 && n.key !== 'bundles' && n.key != 'community',
 				);
+
+				// Manually add the product and api section with count -1 to signal a static link.
+				rootNodes.push({
+					key: 'products',
+					count: -1,
+					level: 1,
+				});
+				rootNodes.push({
+					key: 'api',
+					count: -1,
+					level: 1,
+				});
+
 				// Apply explorer_icon and weight from searchConfig.sections.
 				rootNodes.forEach((n) => {
 					let section = searchConfig.sections[n.key.toLowerCase()];
@@ -139,6 +152,9 @@ export function newSearchExplorerHydrated(searchConfig) {
 						n.weight = section.weight;
 						n.title = section.title;
 						n.linkTitle = n.title;
+						if (section.static_link_url) {
+							n.static_link_url = section.static_link_url;
+						}
 					}
 				});
 
@@ -496,6 +512,9 @@ const updateFacetState = function (to, from) {
 	let fromIndex = 0;
 	for (let toIndex = 0; toIndex < to.length; toIndex++) {
 		let toNode = to[toIndex];
+		if (toNode.count < 0) {
+			continue;
+		}
 		let fromNode = null;
 		if (toIndex >= from.length) {
 			let idx = from.findIndex((n) => n.href === toNode.href);

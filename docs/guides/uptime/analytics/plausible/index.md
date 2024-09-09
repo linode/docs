@@ -17,7 +17,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 1.  You need to generate an [API Token](/docs/products/platform/accounts/guides/manage-api-tokens/).
 
-1.  [Deploy a Docker Marketplace App](/docs/products/tools/marketplace/guides/docker/). This includes creating your limited sudo user, your SSH public key, the previously generated API token, the domain you'd like to use and an email address, the preferred image, region, plan, and root password. There are additional options for opening ports to allow email, however this is only needed if you'll be allowing others to register for this Plausible instance. Once ready click on *Create Linode*. The process will take about 5-10 minutes to complete.
+1.  [Deploy a Docker Marketplace App](/docs/marketplace-docs/guides/docker/). This includes creating your limited sudo user, your SSH public key, the previously generated API token, the domain you'd like to use and an email address, the preferred image, region, plan, and root password. There are additional options for opening ports to allow email, however this is only needed if you'll be allowing others to register for this Plausible instance. Once ready click on *Create Linode*. The process will take about 5-10 minutes to complete.
 
 1.  You need a domain name configured in the [DNS Manager](/docs/products/networking/dns-manager/get-started/). Create A/AAAA records pointing to the server hosting Docker.
 

@@ -16,7 +16,7 @@ export function newHomeController(searchConfig, staticData) {
 
 	// The section we paginate on the home page.
 	// This maps to section.lvl0 in linode-merged.
-	const sectionLevel0s = ['guides', 'blog', 'resources', 'marketplace'];
+	const sectionLevel0s = ['guides', 'blog', 'resources', 'marketplace-docs'];
 
 	// Avoid loading too much data when on mobile.
 	const tilesAlgoliaPreloadItems = isMobile() ? 12 : 30;
@@ -35,7 +35,6 @@ export function newHomeController(searchConfig, staticData) {
 	// It will scale down with page size.
 	const tilesPageSize = 6;
 	const tilesPageSizeMobile = 2;
-	const productsStripPageSize = 6;
 
 	// Create a new pager for the given el and items.
 	// pageSize is the number of items per page.
@@ -203,19 +202,6 @@ export function newHomeController(searchConfig, staticData) {
 					let pager = newPager(tilesPageSize, el);
 					this.data.sectionTiles[name] = pager;
 				});
-
-				// Initialize the static carousels.
-				this.data.sectionTiles['products'] = newPager(
-					productsStripPageSize,
-					this.$refs[`carousel-products`],
-					staticData.productItems,
-				);
-				// Make the developers pager the same size as the products pager.
-				this.data.sectionTiles['developers'] = newPager(
-					productsStripPageSize,
-					this.$refs[`carousel-developers`],
-					staticData.developerItems,
-				);
 
 				this.loaded = true;
 			});
