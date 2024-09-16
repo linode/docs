@@ -20,7 +20,7 @@ The minimum RAM requirement for the worker nodes is 4GB RAM to ensure that jobs 
 
 NGINX is installed on the master node as a reverse proxy to the worker nodes. The user interface URL is the domain (or rDNS value if no domain was entered). The workers are available via this reverse proxy setup. To access the UI on the master, you will need to provide the username and password that were specified during the cluster deployment. These credentials are also available at `/home/$USER/.credentials` for reference.
 
-A Let's Encrypt Certificate is installed in the NGINX configuration. Using NGINX as a revewrse proxy allows for both authentication to the front-end UI, and simplicity when it comes to renewing the Let's Encrypt certificates for HTTPS.
+A Let's Encrypt Certificate is installed in the NGINX configuration. Using NGINX as a reverse proxy allows for both authentication to the front-end UI, and simplicity when it comes to renewing the Let's Encrypt certificates for HTTPS.
 
 ## Cluster Deployment Architecture
 
@@ -59,9 +59,9 @@ A Let's Encrypt Certificate is installed in the NGINX configuration. Using NGINX
 
 ### Spark UI
 
-Once the deployment is complete, visit the Spark UI at the URL provided at /etc/motd. (Note: this will be either the domain you entered when deploying the cluster, or the reverse DNS value of the master node.). 
+Once the deployment is complete, visit the Spark UI at the URL provided at `/etc/motd`. This is either the domain you entered when deploying the cluster, or the reverse DNS value of the master node. 
 
-In order to use your Spark Cluster, it will need access to external storage. For example: S3, HDFS, Azure Blob Storage, Apache HBase, or even your local filesystem. For more details on this, see [Integration With Cloud Infrastructures](https://spark.apache.org/docs/3.5.1/cloud-integration.html)
+Spark Cluster needs access to external storage, such as S3, HDFS, Azure Blob Storage, Apache HBase, or even your local filesystem. For more details on this, see [Integration With Cloud Infrastructures](https://spark.apache.org/docs/3.5.1/cloud-integration.html).
 
 ### Authentication
 
