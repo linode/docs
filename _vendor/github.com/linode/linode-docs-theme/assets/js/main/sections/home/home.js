@@ -16,7 +16,7 @@ export function newHomeController(searchConfig, staticData) {
 
 	// The section we paginate on the home page.
 	// This maps to section.lvl0 in linode-merged.
-	const sectionLevel0s = ['guides', 'blog', 'resources', 'marketplace-docs'];
+	const sectionLevel0s = ['blog', 'resources'];
 
 	// Avoid loading too much data when on mobile.
 	const tilesAlgoliaPreloadItems = isMobile() ? 12 : 30;
