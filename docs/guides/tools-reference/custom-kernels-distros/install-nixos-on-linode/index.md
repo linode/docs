@@ -5,7 +5,7 @@ description: 'Install NixOS, which is known for its declarative approach to conf
 authors: ["Andrew Miller"]
 contributors: ["Andrew Miller"]
 published: 2017-06-16
-modified: 2023-07-11
+modified: 2024-07-05
 keywords: ["custom distro", "NixOS", "advanced Linux", "kvm"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -48,7 +48,7 @@ To create a new Linode, go to the [Create Linode page](https://cloud.linode.com/
 
 [Create three disk images](/docs/products/compute/compute-instances/guides/disks-and-storage/#create-a-disk): One for the installer, one for a swap partition, and one for the root partition. Label them:
 
-- **Installer**: A type `ext4` disk, 1024 MB in size.
+- **Installer**: A type `ext4` disk, 1280 MB in size.
 - **Swap**: A `swap` disk no larger than 512 MB.
 - **NixOS**: A type `ext4` disk which takes up all remaining space.
 
