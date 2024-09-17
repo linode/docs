@@ -12,15 +12,15 @@ external_resources:
 
 [Apache Spark](https://spark.apache.org/) is a powerful open-source unified analytics engine for large-scale data processing. It provides high-level APIs in Java, Scala, Python, and R, and an optimized engine that supports general execution graphs. Spark is designed for both batch and streaming data processing, and it's significantly faster than traditional big data processing frameworks.
 
-This cluster is deployed with Apache Spark in standalone cluster mode, consisting of a Master node and two Worker nodes. The standalone cluster manager is a simple way to run Spark in a distributed environment, providing easy setup and management for Spark applications.
+This cluster is deployed with Apache Spark in standalone cluster mode and consists of a master node along with two worker nodes. The standalone cluster manager is a simple way to run Spark in a distributed environment, providing easy setup and management for Spark applications.
 
 Scala, a multi-paradigm programming language, is integral to Apache Spark. It combines object-oriented and functional programming in a concise, high-level language that runs on the Java Virtual Machine (JVM). Spark itself is written in Scala, and while Spark supports multiple languages, Scala provides the most natural and performant interface to Spark's APIs.
 
+NGINX is installed on the master node as a reverse proxy to the worker nodes. The user interface URL is the domain (or rDNS value if no domain was entered). The workers are available via this reverse proxy setup. To access the UI on the master, you will need to provide the username and password that are specified during the cluster deployment. These credentials are also available at `/home/$USER/.credentials` for reference.
+
+A Let's Encrypt Certificate is installed in the NGINX configuration. Using NGINX as a reverse proxy allows for both authentication to the front-end UI and a simple means for renewing the Let's Encrypt certificates for HTTPS.
+
 The minimum RAM requirement for the worker nodes is 4GB RAM to ensure that jobs can run on the workers without encountering memory constraints. This configuration allows for efficient processing of moderately sized datasets and complex analytics tasks.
-
-NGINX is installed on the master node as a reverse proxy to the worker nodes. The user interface URL is the domain (or rDNS value if no domain was entered). The workers are available via this reverse proxy setup. To access the UI on the master, you will need to provide the username and password that were specified during the cluster deployment. These credentials are also available at `/home/$USER/.credentials` for reference.
-
-A Let's Encrypt Certificate is installed in the NGINX configuration. Using NGINX as a reverse proxy allows for both authentication to the front-end UI, and simplicity when it comes to renewing the Let's Encrypt certificates for HTTPS.
 
 ## Cluster Deployment Architecture
 
@@ -47,11 +47,11 @@ A Let's Encrypt Certificate is installed in the NGINX configuration. Using NGINX
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-- **Spark cluster size:** The size of the Spark cluster. This cluster is deployed with a master and two worker nodes.
+- **Spark cluster size:** The size of the Spark cluster. This cluster is deployed with a master node and two worker nodes.
 
-- **Spark user:** Enter the user you wish to use to log in to the Spark UI.
+- **Spark user:** The username you wish to use to log in to the Spark UI.
 
-- **Spark UI password:** Enter the password you wish to use to log in to the Spark UI.
+- **Spark UI password:** The password you wish to use to log in to the Spark UI.
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
 
@@ -59,13 +59,13 @@ A Let's Encrypt Certificate is installed in the NGINX configuration. Using NGINX
 
 ### Spark UI
 
-Once the deployment is complete, visit the Spark UI at the URL provided at `/etc/motd`. This is either the domain you entered when deploying the cluster, or the reverse DNS value of the master node. 
+Once the deployment is complete, visit the Spark UI at the URL provided at `/etc/motd`. This is either the domain you entered when deploying the cluster or the reverse DNS value of the master node.
 
-Spark Cluster needs access to external storage, such as S3, HDFS, Azure Blob Storage, Apache HBase, or even your local filesystem. For more details on this, see [Integration With Cloud Infrastructures](https://spark.apache.org/docs/3.5.1/cloud-integration.html).
+The Spark Cluster needs access to external storage such as S3, HDFS, Azure Blob Storage, Apache HBase, or your local filesystem. For more details on this, see [Integration With Cloud Infrastructures](https://spark.apache.org/docs/3.5.1/cloud-integration.html).
 
 ### Authentication
 
-The credentials to log in to the Spark UI can be found in the home directory of the sudo user created on deployment: `/home/$SUDO_USER/.credentials`. For example, if you created a user called `admin`, the credentials file will be found in `/home/admin/.credentials`.
+The credentials to log in to the Spark UI can be found in the home directory of the sudo user created on deployment: `/home/$SUDO_USER/.credentials`. For example, if you created a user called `{{< placeholder "admin" >}}`, the credentials file will be found in `/home/{{< placeholder "admin" >}}/.credentials`.
 
 ### Spark Shell
 
