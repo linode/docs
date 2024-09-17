@@ -279,7 +279,7 @@ $cfg['LoginCookieValidity'] = 14400;
 $cfg['LoginCookieRecall'] = false;
 $cfg['AllowUserDropDatabase'] = false;
 $cfg['ShowServerInfo'] = false;
-$cfg['RestrictPaths'] = yes;
+$cfg['RestrictPaths'] = true;
     {{< /file >}}
 
  These configuration options will change the default cookie validity time, automatically logging users out after a predefined period of time. It will also prevent users from deleting databases and will omit server information from phpMyAdmin.
