@@ -1,6 +1,6 @@
 ---
-slug: getting-started-with-haproxy-part-one-tcp-load-balancing
-title: "Getting Started with HAProxy Part One: TCP Load Balancing"
+slug: getting-started-with-haproxy-tcp-load-balancing-and-health-checks
+title: "Getting Started with HAProxy TCP Load Balancing and Health Checks"
 description: "Learn how to install and configure HAProxy for load balancing and health checks on Ubuntu, CentOS Stream, and openSUSE Leap in this guide."
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
@@ -74,6 +74,33 @@ To install HAProxy, log in to your HAProxy instance as `root`.
     haproxy -v
     ```
 
+    {{< tabs >}}
+    {{< tab "Ubuntu 24.04 LTS" >}}
+    ```output
+    HAProxy version 2.8.5-1ubuntu3 2024/04/01 - https://haproxy.org/
+    Status: long-term supported branch - will stop receiving fixes around Q2 2028.
+    Known bugs: http://www.haproxy.org/bugs/bugs-2.8.5.html
+    Running on: Linux 6.8.0-44-generic #44-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 13 13:35:26 UTC 2024 x86_64
+    ```
+    {{< /tab >}}
+    {{< tab "CentOS Stream 9" >}}
+    ```output
+    HAProxy version 2.4.22-f8e3218 2023/02/14 - https://haproxy.org/
+    Status: long-term supported branch - will stop receiving fixes around Q2 2026.
+    Known bugs: http://www.haproxy.org/bugs/bugs-2.4.22.html
+    Running on: Linux 5.14.0-496.el9.x86_64 #1 SMP PREEMPT_DYNAMIC Mon Aug 12 20:37:54 UTC 2024 x86_64
+    ```
+    {{< /tab >}}
+    {{< tab "openSUSE Leap 15.6" >}}
+    ```output
+    HAProxy version 2.8.6 2024/02/15 - https://haproxy.org/
+    Status: long-term supported branch - will stop receiving fixes around Q2 2028.
+    Known bugs: http://www.haproxy.org/bugs/bugs-2.8.6.html
+    Running on: Linux 6.4.0-150600.23.17-default #1 SMP PREEMPT_DYNAMIC Tue Jul 30 06:37:32 UTC 2024 (9c450d7) x86_64
+    ```
+    {{< /tab >}}
+    {{< /tabs >}}
+
 1.  Use `systemctl` to start HAProxy:
 
     ```command
@@ -84,6 +111,30 @@ To install HAProxy, log in to your HAProxy instance as `root`.
 
     ```command
     systemctl enable haproxy
+    ```
+
+1.  Verify that HAProxy is `active (running)`:
+
+    ```command
+    systemctl status haproxy
+    ```
+
+    ```output
+    ● haproxy.service - HAProxy Load Balancer
+         Loaded: loaded (/usr/lib/systemd/system/haproxy.service; enabled; preset: enabled)
+         Active: active (running) since Tue 2024-09-17 20:37:22 UTC; 1 day 1h ago
+           Docs: man:haproxy(1)
+                 file:/usr/share/doc/haproxy/configuration.txt.gz
+        Process: 46011 ExecReload=/usr/sbin/haproxy -Ws -f $CONFIG -c -q $EXTRAOPTS (code=exited, status=0/SUCCESS)
+        Process: 46014 ExecReload=/bin/kill -USR2 $MAINPID (code=exited, status=0/SUCCESS)
+       Main PID: 35012 (haproxy)
+         Status: "Ready."
+          Tasks: 2 (limit: 1068)
+         Memory: 40.6M (peak: 75.5M swap: 224.0K swap peak: 23.9M)
+            CPU: 37.675s
+         CGroup: /system.slice/haproxy.service
+                 ├─35012 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock
+                 └─46018 /usr/sbin/haproxy -sf 45988 -x sockpair@5 -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock
     ```
 
 ## The HAProxy Configuration File
@@ -190,6 +241,8 @@ Set the HAProxy configuration file to perform TCP load balancing with health che
       server server3 {{< placeholder "backend3_VLAN_IP_ADDRESS" >}}:80 check
     ```
 
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
 1.  After making any changes to the configuration file, use the following command to restart HAProxy and enable those changes:
 
     ```command
@@ -197,11 +250,13 @@ Set the HAProxy configuration file to perform TCP load balancing with health che
     ```
 
     {{< note >}}
-    If you encounter an error when restarting HAProxy, run the following command to check for syntax errors in your `haproxy.cfg` file:
+    If you encounter any errors after reloading HAProxy, run the following command to check for syntax errors in your `haproxy.cfg` file:
 
     ```command
     haproxy -c -f /etc/haproxy/haproxy.cfg
     ```
+
+    An error message is returned if the configuration file has logical or syntax errors. When the check is complete, each error is listed one per line. This command only verifies the syntax and basic logic of the configuration, it does not guarantee that the configuration works as intended when running.
     {{< /note >}}
 
 ### Verify TCP Load Balancing
@@ -214,11 +269,21 @@ Load balancing can be verified by visiting the HAProxy instances's public IP add
     http://{{< placeholder "HAProxy_PUBIC_IP_ADDRESS" >}}
     ```
 
-    The WordPress web page for `backend1` should appear.
+    The WordPress web page for `backend1` should appear:
 
-1.  Open another browser tab and enter the same HAProxy server IP address. This time, the default page for `backend2` should be displayed.
+    ![The 2024 default WordPress homepage served from backend1.](2024-Default-WordPress-Homepage-backend1.png)
 
-1.  Repeat this process in a third browser tab, and the `backend3` server's web page should appear.
+    {{< note >}}
+    If your browser warns of no HTTPS/TLS certificate, ignore the warning or use the advanced settings to reach the site.
+    {{< /note >}}
+
+1.  Open another browser tab and enter the same HAProxy server IP address. This time, the default page for `backend2` should be displayed:
+
+    ![The 2024 default WordPress homepage served from backend2.](2024-Default-WordPress-Homepage-backend2.png)
+
+1.  Repeat this process in a third browser tab, and the `backend3` server's web page should appear:
+
+    ![The 2024 default WordPress homepage served from backend3.](2024-Default-WordPress-Homepage-backend3.png)
 
 The HAProxy gateway is now successfully balancing traffic between the three backend instances.
 
@@ -232,7 +297,7 @@ Health checks can be verified by removing one of the backend instances from the 
 
 1.  Choose **Power Off**, then click **Power Off Linode**.
 
-1.  Reload the web browsers tabs. HAProxy should no longer route traffic to `backend1`, effectively removing it from the pool.
+1.  Reload the web browser tabs. HAProxy should no longer route traffic to `backend1`, effectively removing it from the pool.
 
 1.  Return to the HAProxy instance and check the logs:
 
