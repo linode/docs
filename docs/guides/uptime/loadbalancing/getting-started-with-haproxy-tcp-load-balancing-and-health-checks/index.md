@@ -15,7 +15,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 -   **Least Conn**: Directs incoming connections to the backend server with the fewest active connections, helping to balance the load more evenly based on current server utilization.
 -   **Health Checks**: Continuously monitors the health of backend servers. Servers that fail health checks are automatically removed from the pool until they recover, ensuring that only healthy servers receive traffic.
 
-This guide demonstrates how to install HAProxy onto three common Linux distributions: Ubuntu, CentOS Stream, and openSUSE Leap. It also provides instructions for developing a proof-of-concept based on HAProxy load balancing and health check features.
+This guide demonstrates how to install HAProxy onto three common Linux distributions: Ubuntu, CentOS Stream, and openSUSE Leap. It also provides instructions for developing a proof-of-concept based on HAProxy TCP load balancing and health check features.
 
 ## Before You Begin
 
@@ -53,14 +53,14 @@ To install HAProxy, log in to your HAProxy instance as `root`.
     ```
     {{< /tab >}}
     {{< tab "CentOS Stream 9" >}}
-    Use `dnf` to install HAProxy on a CentOS Steam 9 instance:
+    Use `dnf` to install HAProxy on a CentOS Stream 9 instance:
 
     ```command
     dnf install haproxy
     ```
     {{< /tab >}}
     {{< tab "openSUSE Leap 15.6" >}}
-    Use `zypper`to install HAProxy on a openSUSE Leap 15.6 instance:
+    Use `zypper` to install HAProxy on a openSUSE Leap 15.6 instance:
 
     ```command
     zypper in haproxy
@@ -137,13 +137,15 @@ To install HAProxy, log in to your HAProxy instance as `root`.
                  └─46018 /usr/sbin/haproxy -sf 45988 -x sockpair@5 -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock
     ```
 
-## The HAProxy Configuration File
+### HAProxy Configuration File
 
 HAProxy is controlled through its configuration file and the CLI. The HAProxy configuration file contains the settings needed to perform network balancing and flow control. A default configuration file is created at `/etc/haproxy/haproxy.cfg` during HAProxy installation. It can be edited with `nano` or any other command line text editor:
 
 ```command
 nano /etc/haproxy/haproxy.cfg
 ```
+
+## TCP Load Balancing
 
 Load balancing is defined in two sections of the HAProxy configuration file: `frontend` and `backend`.
 
@@ -179,7 +181,7 @@ backend web-test
 -   `balance` is set to the Round Robin method, which connects each client reaching the HAProxy server's IP address to the next server in the list.
 -   `server` statements define the backend servers using the VLAN addresses specified during the initial HAProxy setup.
 
-## TCP Health Checks with HAProxy
+## TCP Health Checks
 
 HAProxy’s load balancing function can also select servers based on their health status. Health checks can be either active or passive. An active health check probes each backend server individually for specific health attributes. In contrast, a passive check relies on basic connection error information by protocol (Layer 4/TCP or Layer7/HTTP).
 
@@ -215,7 +217,7 @@ server backend1 {{< placeholder "backend1_VLAN_IP_ADDRESS" >}}:80 check observe 
 
 This configuration specifies a passive health check that observes TCP errors (`observe layer4`). If the number of errors reaches the specified limit of 10 (`error-limit 10`), the server is marked as down (`on-error mark-down`). To optimize performance and reliability, you can adjust the intervals and error limits for different servers based on their capacity, role, or complexity. For more information, refer to the [HAProxy documentation on active health checks](https://www.haproxy.com/documentation/hapee/1-8r1/load-balancing/health-checking/active-health-checks/).
 
-## Configure HAProxy as a TCP Load Balancer with Health Checks
+## Configure HAProxy TCP Load Balancing with Health Checks
 
 Set the HAProxy configuration file to perform TCP load balancing with health checks.
 
@@ -287,7 +289,7 @@ Load balancing can be verified by visiting the HAProxy instances's public IP add
 
 The HAProxy gateway is now successfully balancing traffic between the three backend instances.
 
-### Verify Health Checks
+### Verify TCP Health Checks
 
 Health checks can be verified by removing one of the backend instances from the server pool. This should trigger a health check failure, causing HAProxy to exclude the unresponsive server from the backend pool.
 
