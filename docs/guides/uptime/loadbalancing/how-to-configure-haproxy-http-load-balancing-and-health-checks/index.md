@@ -4,7 +4,7 @@ title: "How to Configure HAProxy HTTP Load Balancing and Health Checks"
 description: "Learn how to configure HAProxy for HTTP load balancing, with instructions on updating frontend and backend settings, path-based routing, and health checks."
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
-published: 2024-08-29
+published: 2024-09-18
 keywords: ['haproxy','http load balancing','http health checks','haproxy acl']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
@@ -111,10 +111,10 @@ backend mybackend
 ```
 
 -   `check`: Appending this keyword to each `server` entry activates the health check on that server.
--   `option httpchk`: Adding this option allows HAPRoxy to perform HTTP health checks. By default, standard responses from the server in the `200`-`399` range indicate that the server is healthy. Meanwhile, responses in the `500` range mark the server as down and remove it from the active pool until it recovers.
+-   `option httpchk`: Adding this option allows HAProxy to perform HTTP health checks. By default, standard responses from the server in the `200`-`399` range indicate that the server is healthy. Meanwhile, responses in the `500` range mark the server as down and remove it from the active pool until it recovers.
 
     {{< note >}}
-    By default, the `option httpchk` directive sends a `GET` request to the `/` endpoint to determine server health. However, can be customized for a specific endpoint, such as `/health`:
+    By default, the `option httpchk` directive sends a `GET` request to the `/` endpoint to determine server health. However, this can be customized for a specific endpoint, such as `/health`:
 
     ```file {title="/etc/haproxy/haproxy.cfg"}
     backend mybackend
@@ -137,7 +137,7 @@ backend mybackend
 
 -   `http-check`: This directive checks a server response three times before marking the server as "down". The code above configures HAProxy to check that a response was returned `OK`. However, you can adjust this string to match any other server response that indicates a healthy state.
 
-### Configure HAProxy Stats
+### The HAProxy Stats Page
 
 HTTP health checks offer a more approachable way to monitor the health of your servers than TCP health checks. While HTTP health checks can still be viewed from log files, they can also be viewed from HAProxy's web-based graphical stats page. Enable the stats page by adding a `listen` section to the HAProxy configuration file, like so:
 
@@ -159,7 +159,7 @@ listen stats
 -   `stats refresh 10s` sets the auto-refresh interval at 10 seconds.
 -   `stats auth admin:password` configures basic credentials for the stats page. Replace `admin` and `password` with the username and password of your choice.
 
-## Update the HAProxy Configuration File
+## Configure HTTP Load Balancing with Health Checks
 
 Follow the steps below to put all of the examples from this article together and test HAProxy's HTTP load balancing and health check functionality.
 
