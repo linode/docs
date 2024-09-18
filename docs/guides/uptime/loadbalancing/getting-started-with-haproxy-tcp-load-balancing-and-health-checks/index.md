@@ -193,7 +193,7 @@ server server1 {{< placeholder "backend1_VLAN_IP_ADDRESS" >}}:80 check
 
 When the `check` keyword is included, HAProxy sends a SYN/ACK to determine if the server is active. Even though some servers correctly respond to this type of query, their services might still be down or unavailable.
 
-### Active Health Checks
+### Active TCP Health Checks
 
 Active health checks provide more sophisticated monitoring by sending application-specific queries to the backend servers and expecting a valid response.
 
@@ -205,7 +205,7 @@ server server1 {{< placeholder "backend1_VLAN_IP_ADDRESS" >}}:80 check inter 4
 
 In this example, HAProxy checks the first server in the pool every four seconds. If the server does not respond, it is marked as down. This process is similar to a ping-type health check that verifies server availability.
 
-### Passive Health Checks
+### Passive TCP Health Checks
 
 HAProxy uses the TCP protocol to perform passive health checks on backend servers. With passive health checks, HAProxy monitors Layer 4 (TCP) traffic for errors and marks a server as down when a specified error limit is reached.
 
@@ -217,9 +217,9 @@ server backend1 {{< placeholder "backend1_VLAN_IP_ADDRESS" >}}:80 check observe 
 
 This configuration specifies a passive health check that observes TCP errors (`observe layer4`). If the number of errors reaches the specified limit of 10 (`error-limit 10`), the server is marked as down (`on-error mark-down`). To optimize performance and reliability, you can adjust the intervals and error limits for different servers based on their capacity, role, or complexity. For more information, refer to the [HAProxy documentation on active health checks](https://www.haproxy.com/documentation/hapee/1-8r1/load-balancing/health-checking/active-health-checks/).
 
-## Configure HAProxy TCP Load Balancing with Health Checks
+## Configure TCP Load Balancing with Health Checks
 
-Set the HAProxy configuration file to perform TCP load balancing with health checks.
+Set the HAProxy configuration file to perform TCP load balancing with basic passive health checks.
 
 1.  Open the HAProxy configuration file with `nano` or another command line text editor:
 
@@ -261,7 +261,7 @@ Set the HAProxy configuration file to perform TCP load balancing with health che
     An error message is returned if the configuration file has logical or syntax errors. When the check is complete, each error is listed one per line. This command only verifies the syntax and basic logic of the configuration, it does not guarantee that the configuration works as intended when running.
     {{< /note >}}
 
-### Verify TCP Load Balancing
+### Test TCP Load Balancing
 
 Load balancing can be verified by visiting the HAProxy instances's public IP address.
 
