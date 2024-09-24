@@ -225,7 +225,7 @@ To fix this, follow these steps:
 1. Restart Longview:
 
     ```command
-    sudo systemctl restart nginx
+    sudo systemctl restart longview
     ```
 
 1. Refresh Longview in Cloud Manager to verify that the NGINX tab is now present and collecting data for your Longview client instance.
