@@ -2569,6 +2569,7 @@ tooltips
 torvalds
 TOTPs
 towson
+tpslimit
 trac
 tracebacks
 traceroute

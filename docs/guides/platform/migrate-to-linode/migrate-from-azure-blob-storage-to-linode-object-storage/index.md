@@ -36,13 +36,13 @@ Linode Object Storage is an S3-compatible service used for storing large amounts
 
 There are two architecture options for completing a data migration from Azure Blob Storage to Linode Object Storage. One of these architectures is required to be in place prior to initiating the data migration:
 
--   **Architecture 1** utilizes an Azure Virtual Machine running rclone in the same region as the source Blob Storage container. Data is then transferred internally from the Blob Storage container to the Virtual Machine and then over the public internet from the Virtual Machine to the target Linode Object Storage bucket.
+**Architecture 1:** Utilizes an Azure Virtual Machine running rclone in the same region as the source Blob Storage container. Data is then transferred internally from the Blob Storage container to the Virtual Machine and then over the public internet from the Virtual Machine to the target Linode Object Storage bucket.
 
-    **Recommended for:** speed of transfer, users with AWS platform familiarity
+-   **Recommended for:** speed of transfer, users with AWS platform familiarity
 
--   **Architecture 2** utilizes a Linode instance running rclone in the same region as the target Object Storage bucket. Data is transferred over the public internet from the Blob Storage container to the Linode instance and then internally via IPv6 to the Linode Object Storage bucket.
+**Architecture 2:** Utilizes a Linode instance running rclone in the same region as the target Object Storage bucket. Data is transferred over the public internet from the Blob Storage container to the Linode instance and then internally via IPv6 to the Linode Object Storage bucket.
 
-    **Recommended for:** ease of implementation, users with Akamai platform familiarity
+-   **Recommended for:** ease of implementation, users with Akamai platform familiarity
 
 {{< note title="Rclone performance" >}}
 Rclone generally performs better when placed closer to the source data being copied. During testing for both architectures, Architecture 1 achieved about 20% higher transfer speed than Architecture 2.
@@ -66,7 +66,7 @@ Rclone generally performs better when placed closer to the source data being cop
 
 1.  A Compute Instance running rclone in the same Akamai core compute region as the target Linode Object Storage bucket.
 
-1.  Data is copied across the public internet from the Azure Blob Storage container to the target Linode Object Storage bucket. This results in egress being calculated by Azure.
+1.  Data is copied across the public internet from the Azure Blob Storage container to the target Linode instance. This results in egress being calculated by Azure.
 
 1.  The target Linode Object Storage bucket receives the data via IPv6 from the Compute Instance on the region’s private network. Inbound, private IPv6 data to Linode Object Storage is free of charge. The migration status can be monitored using rclone’s WebUI.
 
@@ -92,7 +92,7 @@ Rclone generally performs better when placed closer to the source data being cop
     -   Azure key
     -   Container name
 
--   If using Architecture 1, an **Azure Virtual Network** enabled to communicate with the Azure Blob Storage container and Virtual Machine through a Service Endpoint is required.
+-   If using Architecture 1, an **Azure Virtual Network** enabled to communicate with the Azure Blob Storage container and Virtual Machine through a [Service Endpoint](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview) is required.
 
 -   An **existing Linode Object Storage bucket** with:
 
@@ -178,10 +178,14 @@ Rclone generally performs better when placed closer to the source data being cop
               -1 2024-08-28 14:46:47        -1 linode-bucket-name
     ```
 
-1.  Run the rclone copy command to initiate the migration. Replace {{< placeholder "USERNAME" >}} and {{< placeholder "PASSWORD" >}} with the username and password you want to use to access the rclone WebUI:
+1.  Run the rclone copy command to initiate the migration.
+
+    Replace {{< placeholder "azure-container-name" >}} and {{< placeholder "linode-bucket-name" >}} with the names of your Azure and Linode Object Storage buckets, respectively. Replace {{< placeholder "USERNAME" >}} and {{< placeholder "PASSWORD" >}} with the username and password you want to use to access the rclone WebUI.
+
+    If using Architecture 2, also include the `--bind ::0` flag to write data from your Compute Instance to your Object Storage bucket using IPv6:
 
     ```command
-    rclone copy azure:azure-container-name/ linode:linode-bucket-name/ --transfers 50 --rc --rc-addr=0.0.0.0:5572 --log-file=rclone.log --log-level=ERROR --rc-web-gui --rc-user {{< placeholder "USERNAME" >}} --rc-pass {{< placeholder "PASSWORD" >}}
+    rclone copy azure:{{< placeholder "azure-container-name" >}}/ linode:{{< placeholder "linode-bucket-name" >}}/ --transfers 50 --rc --rc-addr=0.0.0.0:5572 --log-file=rclone.log --log-level=ERROR --rc-web-gui --rc-user {{< placeholder "USERNAME" >}} --rc-pass {{< placeholder "PASSWORD" >}}
     ```
 
 #### Rclone Copy Command Breakdown
@@ -210,7 +214,7 @@ Rclone generally performs better when placed closer to the source data being cop
 An alternative to the `--rc-user` and `--rc-pass` combination is the `--rc-htpasswd` flag. This creates a `htpasswd` file containing a generated username and password combination you can use to log into the rclone WebUI. See [Remote controlling rclone with its API](https://rclone.org/rc/#rc-htpasswd-path)
 {{< /note >}}
 
--   **For use with Architecture 2** `--bind ::0`: Tells rclone to write data via IPv6. Note that writing data over IPv6 from a Linode instance to an Object Storage bucket in the same region is free of charge.
+-   `--bind ::0` (for use with Architecture 2): Tells rclone to write data via IPv6. Note that writing data over IPv6 from a Linode instance to an Object Storage bucket in the same region is free of charge.
 
 #### Optional Flags
 
@@ -274,9 +278,9 @@ Total size: 647.612 GiB (695368455398 Byte)
 
 ### From a Browser
 
-Alternatively, you can compare the number of objects and total bucket sizes from the Azure Portal and Cloud Manager:
+Alternatively, you can compare the number of objects and total bucket sizes from the Azure Portal and Cloud Manager on Akamai:
 
-**In the Azure Portal:**
+**Azure Portal:**
 
 -   Navigate to your storage account
 -   Select the **Monitoring** dropdown
@@ -285,7 +289,7 @@ Alternatively, you can compare the number of objects and total bucket sizes from
 -   To see the container size, select **Blob Capacity** under **Metric**
 -   To see the total number of objects, select **Blob Count** under **Metric**
 
-**In Cloud Manager on Akamai:**
+**Cloud Manager:**
 
 -   Navigate to **Object Storage**
 -   Find your target bucket name
