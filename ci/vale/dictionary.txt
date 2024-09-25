@@ -21,6 +21,7 @@ adhoc
 adminpack
 adnanh
 adodb
+adoptium
 aes
 ag
 agentless
@@ -1241,6 +1242,7 @@ kickbans
 kickstarter
 killall
 kinect
+kinesis
 kinser
 kitchensalt
 klei
@@ -2273,6 +2275,7 @@ sentdex
 sentora
 seo
 serializable
+serializer
 serv
 server1
 serverless
@@ -2501,6 +2504,7 @@ techland
 telecom
 telehealth
 teleporting
+temurin
 tensorflow
 terrahelp
 terraria
