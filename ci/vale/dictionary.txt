@@ -193,6 +193,7 @@ binhex
 binlog
 bioinformaticists
 biomes
+birthdate
 bitbucket
 Bitly
 bitnami
@@ -2159,6 +2160,7 @@ rochko
 rockyou
 rocommunity
 rofi
+rollforward
 rollout
 rooknfs
 rosenblatt
