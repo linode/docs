@@ -8,7 +8,6 @@ published: 2024-09-23
 keywords: ['migrate','migration','object storage','aws','s3','rclone']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- external_resources:
 - '[Linode Object Storage product documentation](https://techdocs.akamai.com/cloud-computing/docs/object-storage)'
 - '[Linode Object Storage guides & tutorials](/docs/guides/platform/object-storage/)'
 ---
@@ -37,7 +36,7 @@ Linode Object Storage is an S3-compatible service used for storing large amounts
 
 There are two architecture options for completing a data migration from AWS S3 to Linode Object Storage. One of these architectures is required to be in place prior to initiating the data migration:
 
-**Architecture 1:** Utilizes an EC2 instance running rclone in the same region as the source S3 bucket. Data is then transferred internally from the S3 bucket to the EC2 instance and then over the public internet from the EC2 instance to the target Linode Object Storage bucket.
+**Architecture 1:** Utilizes an EC2 instance running rclone in the same region as the source S3 bucket. Data is transferred internally from the S3 bucket to the EC2 instance and then over the public internet from the EC2 instance to the target Linode Object Storage bucket.
 
 -   **Recommended for:** speed of transfer, users with AWS platform familiarity
 
@@ -184,7 +183,7 @@ Rclone generally performs better when placed closer to the source data being cop
 
 1.  Run the rclone copy command to initiate the migration.
 
-    Replace {{< placeholder "aws-bucket-name" >}} and {{< placeholder "linode-bucket-name" >}} with the names of your Azure and Linode Object Storage buckets, respectively. Replace {{< placeholder "USERNAME" >}} and {{< placeholder "PASSWORD" >}} with the username and password you want to use to access the rclone WebUI.
+    Replace {{< placeholder "aws-bucket-name" >}} and {{< placeholder "linode-bucket-name" >}} with the names of your AWS S3 and Linode Object Storage buckets, respectively. Replace {{< placeholder "USERNAME" >}} and {{< placeholder "PASSWORD" >}} with the username and password you want to use to access the rclone WebUI.
 
     If using Architecture 2, also include the `--bind ::0` flag to write data from your Compute Instance to your Object Storage bucket using IPv6:
 
@@ -240,7 +239,7 @@ To monitor the status of the `rclone copy` command above, you can access the rcl
     http://{{< placeholder "IP-ADDRESS" >}}:5572
     ```
 
-1.  When prompted, enter the username and password you specified with the --rc-user and --rc-pass flags:
+1.  When prompted, enter the username and password you specified with the `--rc-user` and `--rc-pass` flags:
 
     ![Rclone-WebUI-Login](Rclone-WebUI-Login.jpg)
 

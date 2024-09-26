@@ -36,7 +36,7 @@ Linode Object Storage is an S3-compatible service used for storing large amounts
 
 There are two architecture options for completing a data migration from Azure Blob Storage to Linode Object Storage. One of these architectures is required to be in place prior to initiating the data migration:
 
-**Architecture 1:** Utilizes an Azure Virtual Machine running rclone in the same region as the source Blob Storage container. Data is then transferred internally from the Blob Storage container to the Virtual Machine and then over the public internet from the Virtual Machine to the target Linode Object Storage bucket.
+**Architecture 1:** Utilizes an Azure Virtual Machine running rclone in the same region as the source Blob Storage container. Data is transferred internally from the Blob Storage container to the Virtual Machine and then over the public internet from the Virtual Machine to the target Linode Object Storage bucket.
 
 -   **Recommended for:** speed of transfer, users with Azure platform familiarity
 
@@ -236,7 +236,7 @@ To monitor the status of the `rclone copy` command above, you can access the rcl
     http://{{< placeholder "IP-ADDRESS" >}}:5572
     ```
 
-1.  When prompted, enter the username and password you specified with the --rc-user and --rc-pass flags:
+1.  When prompted, enter the username and password you specified with the `--rc-user` and `--rc-pass` flags:
 
     ![Rclone-WebUI-Login](Rclone-WebUI-Login.jpg)
 
