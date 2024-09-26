@@ -1,6 +1,6 @@
 ---
 slug: migrate-from-azure-blob-storage-to-linode-object-storage
-title: "Migrate From Azure Blob Storage to Linode Object Storage"
+title: "How to Migrate From Azure Blob Storage to Linode Object Storage"
 description: "This guide includes steps for how to migrate content from Azure Blob Storage to Linode Object Storage using rclone."
 authors: ["John Dutton"]
 contributors: ["John Dutton"]
@@ -38,7 +38,7 @@ There are two architecture options for completing a data migration from Azure Bl
 
 **Architecture 1:** Utilizes an Azure Virtual Machine running rclone in the same region as the source Blob Storage container. Data is then transferred internally from the Blob Storage container to the Virtual Machine and then over the public internet from the Virtual Machine to the target Linode Object Storage bucket.
 
--   **Recommended for:** speed of transfer, users with AWS platform familiarity
+-   **Recommended for:** speed of transfer, users with Azure platform familiarity
 
 **Architecture 2:** Utilizes a Linode instance running rclone in the same region as the target Object Storage bucket. Data is transferred over the public internet from the Blob Storage container to the Linode instance and then internally via IPv6 to the Linode Object Storage bucket.
 
