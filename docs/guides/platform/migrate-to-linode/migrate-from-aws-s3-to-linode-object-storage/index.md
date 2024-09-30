@@ -7,12 +7,13 @@ contributors: ["John Dutton"]
 published: 2024-09-23
 keywords: ['migrate','migration','object storage','aws','s3','rclone']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['/guides/migrate-to-linode-object-storage/']
 external_resources:
 - '[Linode Object Storage product documentation](https://techdocs.akamai.com/cloud-computing/docs/object-storage)'
 - '[Linode Object Storage guides & tutorials](/docs/guides/platform/object-storage/)'
 ---
 
-Linode Object Storage is an S3-compatible service used for storing large amounts of unstructured data. This guide includes steps on how to migrate less than 100TB of static content from AWS S3 to Linode Object Storage using rclone, along with how to monitor your migration using rclone’s WebUI GUI.
+Linode Object Storage is an S3-compatible service used for storing large amounts of unstructured data. This guide includes steps on how to migrate up to 100TB of static content from AWS S3 to Linode Object Storage using rclone, along with how to monitor your migration using rclone’s WebUI GUI.
 
 ## Migration Considerations
 
@@ -78,7 +79,7 @@ Rclone generally performs better when placed closer to the source data being cop
 
 -   The **public IPv4 address** of your virtual machine.
 
--   As a security best practice, **use a firewall to only allow inbound port 5572**. This is the default port used by rclone and enables secure access to the WebUI since it is served over HTTP.
+-   As a security best practice, **use a firewall to only allow inbound port 5572**. This is the default port used by rclone and enables more secure access to the WebUI since it is served over HTTP. For an additional layer of security, consider setting up an HTTPS gateway.
 
 -   **An up-to-date web browser**. This is used to access the rclone WebUI while monitoring the migration.
 
@@ -137,7 +138,7 @@ Rclone generally performs better when placed closer to the source data being cop
     -   {{< placeholder "us-lax-1" >}}: The region ID for your Linode Object Storage bucket
 
     ```file
-    [aws-perf-test-source]
+    [aws]
     type = s3
     provider = AWS
     access_key_id = {{< placeholder "AWS-ACCESS-KEY" >}}
@@ -154,13 +155,13 @@ Rclone generally performs better when placed closer to the source data being cop
     ```
 
     {{< note title="Rclone Providers" >}}
-    The lines `[aws-perf-test-source]` and `[linode]` define the remote providers for your source and target endpoints, respectively. See [Supported Providers](https://rclone.org/#providers) for a complete list of supported rclone providers.
+    The lines `[aws]` and `[linode]` define the remote providers for your source and target endpoints, respectively. See [Supported Providers](https://rclone.org/#providers) for a complete list of supported rclone providers.
     {{< /note >}}
 
-1.  Confirm connectivity to AWS S3 using your defined remote provider, `aws-perf-test-source`:
+1.  Confirm connectivity to AWS S3 using your defined remote provider, `aws`:
 
     ```command
-    rclone lsd aws-perf-test-source:
+    rclone lsd aws:
     ```
 
     If successful, you should see a list of available buckets:
@@ -188,16 +189,21 @@ Rclone generally performs better when placed closer to the source data being cop
     If using Architecture 2, also include the `--bind ::0` flag to write data from your Compute Instance to your Object Storage bucket using IPv6:
 
     ```command
-    rclone copy aws-perf-test-source:{{< placeholder "aws-bucket-name" >}}/ linode:{{< placeholder "linode-bucket-name" >}}/ --transfers 50 --rc --rc-addr=0.0.0.0:5572 --log-file=rclone.log --log-level=ERROR --rc-web-gui --rc-user {{< placeholder "USERNAME" >}} --rc-pass {{< placeholder "PASSWORD" >}}
+    rclone copy aws:{{< placeholder "aws-bucket-name" >}}/ linode:{{< placeholder "linode-bucket-name" >}}/ \
+    --transfers 50 \
+    --rc --rc-addr=0.0.0.0:5572 \
+    --log-file=rclone.log --log-level=ERROR \
+    --rc-web-gui \
+    --rc-user {{< placeholder "USERNAME" >}} --rc-pass {{< placeholder "PASSWORD" >}}
     ```
 
 #### Rclone Copy Command Breakdown
 
--   `aws-perf-test-source:aws-bucket-name/`: The AWS remote provider and source S3 bucket. Including the slash at the end informs the `copy` command to include everything within the bucket.
+-   `aws:aws-bucket-name/`: The AWS remote provider and source S3 bucket. Including the slash at the end informs the `copy` command to include everything within the bucket.
 
 -   `linode:linode-bucket-name/`: The Linode remote provider and target Object Storage bucket.
 
--   `--transfers 50`: The `transfer` flag tells rclone how many items to transfer in parallel. Defaults to a value of 4. `50` here speeds up the transfer process by moving up to 50 items in parallel at a given time.
+-   `--transfers 50`: The `transfers` flag tells rclone how many items to transfer in parallel. Defaults to a value of 4. `50` here speeds up the transfer process by moving up to 50 items in parallel at a given time.
 
     Your `transfers` value may be different depending on how many objects you are transferring, and you may need to experiment to find the value that works best for your use case. High enough values may result in bandwidth limits being reached. Increasing this value also increases the CPU usage used by rclone.
 
@@ -260,7 +266,7 @@ You can compare the number of objects in both your source and target buckets alo
 **AWS S3:**
 
 ```command
-rclone size aws-perf-test-source:aws-bucket-name/
+rclone size aws:aws-bucket-name/
 ```
 
 ```output
