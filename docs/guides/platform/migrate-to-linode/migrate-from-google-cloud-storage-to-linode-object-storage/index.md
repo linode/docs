@@ -191,12 +191,7 @@ Rclone generally performs better when placed closer to the source data being cop
     If using Architecture 2, also include the `--bind ::0` flag to write data from your Compute Instance to your Object Storage bucket using IPv6:
 
     ```command
-    rclone copy gcs:{{< placeholder "gcs-bucket-name" >}}/ linode:{{< placeholder "linode-bucket-name" >}}/ \
-    --transfers 50 \
-    --rc --rc-addr=0.0.0.0:5572 \
-    --log-file=rclone.log --log-level=ERROR \
-    --rc-web-gui \
-    --rc-user {{< placeholder "USERNAME" >}} --rc-pass {{< placeholder "PASSWORD" >}}
+    rclone copy gcs:{{< placeholder "gcs-bucket-name" >}}/ linode:{{< placeholder "linode-bucket-name" >}}/ --transfers 50 --rc --rc-addr=0.0.0.0:5572 --log-file=rclone.log --log-level=ERROR --rc-web-gui --rc-user {{< placeholder "USERNAME" >}} --rc-pass {{< placeholder "PASSWORD" >}}
     ```
 
 #### Rclone Copy Command Breakdown
