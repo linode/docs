@@ -5,15 +5,10 @@ description: 'This guide shows how to install Seafile, a free and open-source cr
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2017-05-23
-modified: 2017-06-21
+modified: 2023-02-15
 keywords: ["Seafile", " nginx", " Ubuntu 16.04", " file server", " media", " sharing"]
 tags: ["ubuntu", "nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2023-02-15
-modified_by:
-  name: Linode
-published: 2017-05-23
-title: Install Seafile with NGINX on Ubuntu 16.04
 external_resources:
  - '[Seafile Server Manual](https://manual.seafile.com/)'
 aliases: ['/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604/']
