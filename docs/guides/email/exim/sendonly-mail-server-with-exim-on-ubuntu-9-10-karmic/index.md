@@ -1,25 +1,22 @@
 ---
 slug: sendonly-mail-server-with-exim-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Send-only Mail Server with Exim on Ubuntu 9.10 (Karmic)'
 description: 'Configuring Exim to serve as a lightweight, send-only SMTP server on Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-17
+modified: 2011-04-29
 keywords: ["exim", "mail server", "linux mail", "smtp server", "ubuntu exim", "ubuntu 9.10"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/exim/sendonly-mail-server-with-exim-on-ubuntu-9-10-karmic/','/email/exim/send-only-mta-ubuntu-9-10-karmic/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2009-12-17
-title: 'Send-only Mail Server with Exim on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: deploy-exim-sendonly-email
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 Many Linux server applications need to send email; cron jobs use mail services to deliver reports on jobs that have run, web applications require mail support for user registration functions, and other applications may need to send alerts via SMTP. This guide will help you install and configure the lightweight Exim MTA (Mail Transfer Agent) on your Ubuntu 9.10 (Karmic) Linode.
 

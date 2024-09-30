@@ -2,23 +2,20 @@
 title: Capture MySQL Metrics with Longview
 title_meta: Capture MySQL Metrics with Linode Longview
 description:  "This guide discusses the Linode Longview client, including how to configure Longview for the MySQL database server, how to interact with data from Longview, and more."
+published: 2013-11-06
+modified: 2023-05-24
 keywords: ["Longview", "MySQL", "statistics"]
 tags: ["cloud manager","statistics","monitoring","linode platform","mysql"]
 aliases: ['/longview/longview-for-mysql/','/platform/longview/longview-app-for-mysql/','/platform/longview/what-is-the-linode-longview-app-for-mysql/','/guides/what-is-the-linode-longview-app-for-mysql/']
-published: 2013-11-06
-modified: 2023-05-24
-modified_by:
-  name: Linode
 relations:
     platform:
         key: what-is-longview
         keywords:
             - distribution: MySQL
-authors: ["Linode"]
 ---
 
 
-In addition to capturing general system metrics, Longview can also be used to capture metrics for MySQL. The MySQL tab appears in the Cloud Manager when Longview detects that you have MySQL installed on your system. It can help you keep track of MySQL's queries, system resource consumption, and other information.
+In addition to capturing general system metrics, Longview can also be used to capture metrics for MySQL. The MySQL tab appears in Cloud Manager when Longview detects that you have MySQL installed on your system. It can help you keep track of MySQL's queries, system resource consumption, and other information.
 
 {{< note >}}
 In order to use Longview to capture data for MySQL, you must have the Longview Agent successfully installed on the system you wish to monitor. See [Create a Longview Client and Install the Longview Agent](/docs/products/tools/longview/get-started/).
@@ -29,7 +26,7 @@ In order to use Longview to capture data for MySQL, you must have the Longview A
 This guide covers using Longview with MySQL and includes the following topics:
 
 - [Configuring Longview for MySQL](#configure-longview).
-- [Interacting with the MySQL data provided by Longview in the Cloud Manager](#view-metrics).
+- [Interacting with the MySQL data provided by Longview in Cloud Manager](#view-metrics).
 - [Troubleshooting Longview for MySQL](#troubleshooting).
 
 ## Configure Longview with MySQL {#configure-longview}
@@ -61,7 +58,7 @@ If MySQL is installed and running when you install the Longview agent, Longview 
     Successfully connected to MySQL
     ```
 
-    Once you see this successful message, the Longview should automatically start collecting MySQL data. Refresh Longview in the Cloud Manager to start viewing your MySQL metrics for your Longview Client instance.
+    Once you see this successful message, the Longview should automatically start collecting MySQL data. Refresh Longview in Cloud Manager to start viewing your MySQL metrics for your Longview Client instance.
 
     {{< note >}}
     Unless you already have a specific Longview database user set up in the `/etc/linode/longview.d/MySQL.conf` file, Longview will locate and use the `debian-sys-maint` database user credentials if it can, located at `/etc/mysql/debian.cnf`.
@@ -115,13 +112,13 @@ You cannot configure the location of a socket for the Longview client.
     sudo systemctl restart longview
     ```
 
-1. Refresh Longview in the Cloud Manager to verify that the MySQL tab is now present and collecting data for your Longview client instance.
+1. Refresh Longview in Cloud Manager to verify that the MySQL tab is now present and collecting data for your Longview client instance.
 
 You should now be able to see Longview data for MySQL. If that's not the case, proceed to the [Troubleshooting](#troubleshooting) section at the end of this article.
 
 ## View MySQL Metrics {#view-metrics}
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select the **Longview** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select the **Longview** link in the sidebar.
 
 1. Locate the Longview Client you have configured for MySQL and click the corresponding **View details** link.
 
@@ -131,7 +128,7 @@ You should now be able to see Longview data for MySQL. If that's not the case, p
 
 You'll see the current version of MySQL listed on the upper left-hand corner.
 
-Hover over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/docs/products/tools/longview/get-started/#longview-s-data-explained). The next sections cover the Longview MySQL App in detail.
+Hover over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/docs/products/tools/longview/guides/metrics/). The next sections cover the Longview MySQL App in detail.
 
 ### Queries
 
@@ -155,19 +152,19 @@ The **Aborted** graph shows the number of aborted MySQL connections and clients 
 
 ### CPU
 
-The **CPU** graph shows the percentage of your system's CPU being used by MySQL at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/products/tools/longview/get-started/#overview).
+The **CPU** graph shows the percentage of your system's CPU being used by MySQL at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/products/tools/longview/guides/metrics/#overview).
 
 ### RAM
 
-The **RAM** graph shows the amount of RAM or memory being used by MySQL at the selected time. If you want to see your system's total memory use instead, check the [Overview tab](/docs/products/tools/longview/get-started/#overview).
+The **RAM** graph shows the amount of RAM or memory being used by MySQL at the selected time. If you want to see your system's total memory use instead, check the [Overview tab](/docs/products/tools/longview/guides/metrics/#overview).
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by MySQL at the selected time. To see the total IO instead, visit the [Disks tab](/docs/products/tools/longview/get-started/#disks).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by MySQL at the selected time. To see the total IO instead, visit the [Disks tab](/docs/products/tools/longview/guides/metrics/#disks).
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your system spawned by MySQL at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your system, see the [Processes tab](/docs/products/tools/longview/get-started/#processes).
+The **Process Count** graph shows the total number of processes on your system spawned by MySQL at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your system, see the [Processes tab](/docs/products/tools/longview/guides/metrics/#processes).
 
 ## Troubleshooting
 
@@ -196,7 +193,7 @@ This indicates that Longview can't locate any valid MySQL user credentials, so i
     flush privileges;
     ```
 
-    Refresh Longview in the Cloud Manager to verify that the MySQL tab is now present and collecting data for your Longview client instance.
+    Refresh Longview in Cloud Manager to verify that the MySQL tab is now present and collecting data for your Longview client instance.
 
 If you've added the credentials to MySQL and it still doesn't work, double-check your MySQL installation, and then do a [manual configuration](#manual-configuration-all-distributions).
 

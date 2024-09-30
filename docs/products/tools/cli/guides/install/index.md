@@ -1,8 +1,7 @@
 ---
 title: "Install and Configure the Linode CLI"
 description: "Learn how to install the Linode CLI on most common operating systems"
-modified: 2023-06-27
-authors: ["Linode"]
+modified: 2024-01-26
 ---
 
 ## Install the Linode CLI
@@ -23,6 +22,13 @@ The [Linode CLI](https://github.com/linode/linode-cli) is officially managed thr
     ```command
     pip3 install linode-cli --upgrade
     ```
+
+    If you receive an error like the one in the output below, you will need to add your Python's bin folder to your system PATH environment variable. Instructions for adding a directory to PATH vary for each operating system.
+
+    ```output
+    WARNING: The script normalizer is installed in '/Users/{{< placeholder "USERNAME" >}}/Library/Python/3.9/bin' which is not on PATH.
+    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+    ``````
 
 1.  Install the boto library if you intend to interact with Linode's Object Storage service.
 
@@ -50,7 +56,7 @@ The first time you interact with the Linode CLI, you need to complete the initia
         linode-cli configure
         ```
 
-    -   **Manually create a personal access token:** Prompts you for a token that you need to manually create. See [Linode API Keys and Tokens](/docs/products/tools/api/guides/manage-api-tokens/).
+    -   **Manually create a personal access token:** Prompts you for a token that you need to manually create. See [Linode API Keys and Tokens](/docs/products/platform/accounts/guides/manage-api-tokens/).
 
         ```command
         linode-cli configure --token
@@ -60,13 +66,13 @@ The first time you interact with the Linode CLI, you need to complete the initia
 
 ### Non-interactive Configuration
 
-To configure the CLI without any interactive prompts, you can set the token through the following environment variable, replacing *[token]* with the token you've manually generated. See [Linode API Keys and Tokens](/docs/products/tools/api/guides/manage-api-tokens/).
+To configure the CLI without any interactive prompts, you can set the token through the following environment variable, replacing *[token]* with the token you've manually generated. See [Linode API Keys and Tokens](/docs/products/platform/accounts/guides/manage-api-tokens/).
 
 ```command
 export LINODE_CLI_TOKEN="[token]"
 ```
 
-This allows you to bypass the initial configuration. If this variable is unset, the Linode CLI will stop working until it is set again or until the CLI is reconfigured through the interactive prompts.
+This lets you bypass the initial configuration. If this variable is unset, the Linode CLI will stop working until it is set again or until the CLI is reconfigured through the interactive prompts.
 
 ## Install Python 3 and pip3
 

@@ -1,14 +1,11 @@
 ---
+title: "Network Transfer Usage and Costs"
 description: "Learn how your Linode account's network transfer pool is calculated and billed."
-keywords: ["network","billing","account","transfer", "overage"]
 published: 2018-08-21
 modified: 2023-10-25
-modified_by:
-  name: Linode
-title: "Network Transfer Usage and Costs"
+keywords: ["network","billing","account","transfer", "overage"]
 tags: ["linode platform"]
 aliases: ['/platform/billing-and-support/network-transfer-quota/', '/guides/network-transfer-quota/','/guides/network-transfer/']
-authors: ["Linode"]
 ---
 
 ## Overview
@@ -71,11 +68,11 @@ If traffic for an individual service exceeds the network transfer amount specifi
 
 ## Monitoring Network Transfer Usage
 
-We recommend that you monitor your network transfer usage throughout the month to ensure that your services aren't consuming more network transfer than expected. You can check your network usage for your current billing cycle via the Cloud Manager or the Linode CLI.
+We recommend that you monitor your network transfer usage throughout the month to ensure that your services aren't consuming more network transfer than expected. You can check your network usage for your current billing cycle via Cloud Manager or the Linode CLI.
 
 ### Cloud Manager
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com).
+1. Log in to [Cloud Manager](https://cloud.linode.com).
 
 1. Under the list of the Linode Compute Instances, NodeBalancers, or Object Storage Buckets, a short notice is displayed with the percentage of monthly network transfer pool that has been used.
 

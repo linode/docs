@@ -1,17 +1,15 @@
 ---
 slug: lemp-server-on-centos-6
+title: LEMP Server on CentOS 6
 description: 'This guide shows how to install a LEMP (Linux, NGINX, MySQL, PHP) stack so you can host multiple websites or applications on a Linode running CentOS 6.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2011-11-03
+modified: 2013-01-08
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","centos","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lemp/lemp-server-on-centos-6/','/web-servers/lemp/lemp-server-on-centos-6/','/lemp-guides/centos-6/']
-modified: 2013-01-08
-modified_by:
-  name: Doug Freed
-published: 2011-11-03
-deprecated: true
-deprecated_link: 'web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/'
-title: LEMP Server on CentOS 6
 external_resources:
  - '[Basic nginx Configuration](/docs/guides/how-to-configure-nginx/)'
  - '[Clustered Web Servers and Software Load Balancing with nginx](/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)'
@@ -23,7 +21,8 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: CentOS 6
-authors: ["Linode"]
+deprecated: true
+deprecated_link: 'web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/'
 ---
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.
@@ -32,7 +31,7 @@ Prior to beginning this guide, please complete the [Setting Up and Securing a Co
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

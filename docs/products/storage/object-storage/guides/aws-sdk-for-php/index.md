@@ -1,7 +1,6 @@
 ---
 title: "Using the AWS SDK for PHP with Object Storage"
 description: "Learn how to use the PHP AWS SDK with Linode's S3-compatible Object Storage."
-authors: ["Linode"]
 ---
 
 The [AWS SDK for PHP](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/welcome.html) (GitHub: [aws/aws-sdk-php/](https://github.com/aws/aws-sdk-php)) includes an [S3 client](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/s3-multiregion-client.html) that enables access to Linode's S3-compatible Object Storage within a PHP application or script.
@@ -28,7 +27,7 @@ See [AWS SDK for PHP Docs > Installing the SDK](https://docs.aws.amazon.com/sdk-
 
 To access Object Storage buckets and objects, you'll first need to configure your credentials and initialize the S3 client session.
 
-1.  Generate an access key and secret key for Object Storage through the Cloud Manager by following the [Managing Access Keys](/docs/products/storage/object-storage/guides/access-keys/) guide.
+1.  Generate an access key and secret key for Object Storage through Cloud Manager by following the [Managing Access Keys](/docs/products/storage/object-storage/guides/access-keys/) guide.
 
 2.  Add the following code to your PHP script, replacing `[access-key]` and `[secret-key]` with the values generated in the previous step. Also replace `[cluster-url]` with the cluster URL corresponding to the data center your buckets are located within (listed on the [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/) page).
 

@@ -1,16 +1,16 @@
 ---
 slug: use-lighttpd-web-server-on-ubuntu-16-04
+title: 'Using lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
+title_meta: 'Use lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
 description: 'Learn how to install and use Lighttpd web server on Ubuntu 16.04 (Xenial Xerus)'
+authors: ["Dave Messina"]
+contributors: ["Dave Messina"]
+published: 2016-05-19
+modified: 2021-05-26
 keywords: ["lighttpd", "web server", "web hosting"]
 aliases: ['/websites/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/','/websites/lighttpd/lighttpd-web-server-on-ubuntu-16-04/','/web-servers/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/']
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-05-26
-modified_by:
-  name: Phil Zona
-published: 2016-05-19
-title: 'Using lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
-title_meta: 'Use lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
 external_resources:
  - '[Optimizing FastCGI Performance (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI)'
  - '[mod_fastcgi Documentation (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModFastCGI)'
@@ -21,7 +21,7 @@ relations:
         key: install-lighttpd
         keywords:
             - distribution: Ubuntu 16.04
-authors: ["Dave Messina"]
+deprecated: true
 ---
 
 Lighttpd provides a lightweight web server that is capable of serving large loads while using less memory than servers like Apache. It is commonly deployed on high traffic sites, including WhatsApp and xkcd.
@@ -41,8 +41,7 @@ This guide explains how to install and configure the lighttpd ("lighty") web ser
 1.  Update your system:
 
         sudo apt-get update && apt-get upgrade
-
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps required in this guide require root privileges. Be sure to run the following steps as **root** or with the `sudo` prefix. For more information on privileges see the [Users and Groups guide](/docs/guides/linux-users-and-groups/).
 {{< /note >}}
 

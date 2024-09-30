@@ -1,23 +1,22 @@
 ---
 slug: deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Deploy VoIP Services with Asterisk and FreePBX on Ubuntu 9.10 (Karmic)'
 description: 'This guide will show you how to install Asterisk and FreePBX on Your Linode to Use and Manage a Telephone Exchange, also known as a PBX, on Ubuntu 9.10 "Karmic".'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-23
+modified: 2013-08-02
 keywords: ["asterisk ubuntu 9.10", "asterisk", "asterisk linux", "freepbx", "freepbx ubuntu", "pbx", "voip"]
 tags: ["ubuntu", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/voip/deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-9-10-karmic/','/communications/voip-services-ubuntu9-10/']
-modified: 2013-08-02
-modified_by:
-  name: Linode
-published: 2010-04-23
-title: 'Deploy VoIP Services with Asterisk and FreePBX on Ubuntu 9.10 (Karmic)'
 dedicated_cpu_link: true
 relations:
     platform:
         key: asterisk-freepbx-telephone
         keywords:
             - distribution: Ubuntu 9.10
-authors: ["Linode"]
+deprecated: true
 ---
 
 Asterisk is an open source telephone solution that runs over the internet instead of running through copper lines like a normal phone would. It offers a variety of features such as voice mail and conference calling, much like a land line telephone can.
@@ -213,7 +212,7 @@ Next, you will need to install PHP. Issue the following commands:
 
     apt-get install php5 php-pear php5-mysql php5-suhosin php5-cgi php-pear php-db
 
-You will need to edit PHP's configuration file in order to ensure FreePBX can function properly. In particular you need to ensure that the "memory\_limit" directive is set to "100M" or else you may run into problems.
+You will need to edit PHP's configuration file in order to ensure FreePBX can function properly. In particular you need to ensure that the `memory_limit` directive is set to "100M" or else you may run into problems.
 
 {{< file "/etc/php5/apache2/php.ini" >}}
 max_execution_time = 30

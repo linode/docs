@@ -1,22 +1,21 @@
 ---
 slug: monitoring-resource-utilization-with-cacti-on-debian-5-lenny
-deprecated: true
+title: 'Monitoring Resource Utilization with Cacti on Debian 5 (Lenny)'
 description: 'Monitor resource usage through the powerful server monitoring tool Cacti on Debian 5 (Lenny).'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-01-18
+modified: 2012-10-08
 keywords: ["Cacti", "Debian", "Lenny", "SNMP"]
 tags: ["debian","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/monitoring/monitoring-resource-utilization-with-cacti-on-debian-5-lenny/','/server-monitoring/cacti/debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2010-01-18
-title: 'Monitoring Resource Utilization with Cacti on Debian 5 (Lenny)'
 relations:
     platform:
         key: install-cacti-monitoring
         keywords:
             - distribution: Debian 5
-authors: ["Stan Schwertly"]
+deprecated: true
 ---
 
 The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool [Munin](/docs/guides/monitoring-servers-with-munin-on-debian-6-squeeze/) is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for some advanced monitoring needs.
@@ -100,7 +99,7 @@ Next we'll need to modify the `/etc/snmp/snmpd.conf` file with the name of our c
     mv /etc/snmp/snmpd.conf /etc/snmp/old.snmpd.conf
     echo "rocommunity community_name" > /etc/snmp/snmpd.conf
 
-Note that the format is "rocommunity community\_name", where `community_name` is the name of the community you originally used with Cacti. Next, we'll open the `/etc/default/snmpd` file and remove the binding on `localhost`. Like the "Configuring SNMP" section above, you'll want to find the line that begins with `SNMPDOPTS` and remove the reference to `127.0.0.1` at the end. This line should now resemble the one below:
+Note that the format is `rocommunity community_name`, where `community_name` is the name of the community you originally used with Cacti. Next, we'll open the `/etc/default/snmpd` file and remove the binding on `localhost`. Like the "Configuring SNMP" section above, you'll want to find the line that begins with `SNMPDOPTS` and remove the reference to `127.0.0.1` at the end. This line should now resemble the one below:
 
 {{< file "/etc/default/snmpd" >}}
 SNMPDOPTS='-Lsd -Lf /dev/null -u snmp -I -smux -p /var/run/snmpd.pid'

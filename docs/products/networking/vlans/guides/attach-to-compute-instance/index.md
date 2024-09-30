@@ -2,19 +2,18 @@
 title: "Attach a VLAN to a Compute Instance"
 description: "Learn how to create a VLAN and attach it to a new or existing Compute Instance"
 modified: 2022-08-23
-authors: ["Linode"]
 ---
 
-Within the Cloud Manager, VLANs are created and managed only by attaching them to Linode Compute Instances. They are not managed independently. You can attach a VLAN when creating a new Compute Instance or when editing an existing instance.
+Within Cloud Manager, VLANs are created and managed only by attaching them to Linode Compute Instances. They are not managed independently. You can attach a VLAN when creating a new Compute Instance or when editing an existing instance.
 
 - [Attaching a VLAN When Creating a Compute Instance](#attaching-a-vlan-when-creating-a-compute-instance)
 - [Attaching a VLAN to an Existing Compute Instance](#attaching-a-vlan-to-an-existing-compute-instance)
 
-This guide covers implementing both of these methods using the Cloud Manager. While VLANs can also be created and administered through the API and CLI, that's beyond the scope of this guide.
+This guide covers implementing both of these methods using Cloud Manager. While VLANs can also be created and administered through the API and CLI, that's beyond the scope of this guide.
 
 ## Attaching a VLAN When Creating a Compute Instance
 
-1. On the top left of the [Cloud Manager](https://cloud.linode.com/dashboard), click **Create** and select **Linode**.
+1. On the top left of [Cloud Manager](https://cloud.linode.com/dashboard), click **Create** and select **Linode**.
 
     ![Create a new Compute Instance](create-new-linode.png)
 
@@ -37,11 +36,11 @@ This guide covers implementing both of these methods using the Cloud Manager. Wh
 
 1. Complete the create form with any additional add-ons and settings you'd like to use. Then click the **Create Linode** button.
 
-By default, the public IP address (and, if added, the private IP address) of the Compute Instance is configured on the *eth0* network interface. The VLAN, if one was attached, is configured on the *eth1* network interface. These network interfaces can be removed or modified by editing the [Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#editing-a-configuration-profile).
+By default, the public IP address (and, if added, the private IP address) of the Compute Instance is configured on the *eth0* network interface. The VLAN, if one was attached, is configured on the *eth1* network interface. These network interfaces can be removed or modified by editing the [Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#edit-a-configuration-profile).
 
 ## Attaching a VLAN to an Existing Compute Instance
 
-1. Within the [Cloud Manager](https://www.cloud.linode.com), click the **Linodes** link in the sidebar and select a Compute Instance.
+1. Within [Cloud Manager](https://cloud.linode.com), click the **Linodes** link in the sidebar and select a Compute Instance.
 
 1. Navigate to the **Configurations** tab for that Compute Instance.
 

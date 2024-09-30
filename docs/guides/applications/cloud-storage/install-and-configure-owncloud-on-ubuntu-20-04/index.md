@@ -1,14 +1,14 @@
 ---
 slug: install-and-configure-owncloud-on-ubuntu-20-04
-description: "We'll walk you through the step-by-step process for setting up ownCloud, including installing Apache, PHP packages, and Apache domain name configuration."
-keywords: ['ownCloud on Ubuntu']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-12
-image: Install_ownCloud_Ubuntu2004.png
-modified_by:
-  name: Linode
 title: "Installing and Configuring ownCloud on Ubuntu 20.04"
 title_meta: "How to Install and Configure ownCloud on Ubuntu 20.04"
+description: "We'll walk you through the step-by-step process for setting up ownCloud, including installing Apache, PHP packages, and Apache domain name configuration."
+authors: ["Jack Wallen"]
+contributors: ["Jack Wallen"]
+published: 2021-02-12
+keywords: ['ownCloud on Ubuntu']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: Install_ownCloud_Ubuntu2004.png
 tags: ["ubuntu"]
 aliases: ['/guides/how-to-install-owncloud-ubuntu-20-04/']
 relations:
@@ -16,7 +16,6 @@ relations:
         key: how-to-install-owncloud
         keywords:
             - distribution: Ubuntu 20.04
-authors: ["Jack Wallen"]
 ---
 
 ## What is ownCloud?
@@ -43,7 +42,7 @@ Why would you want to host your own cloud? Some common reasons are:
 This tutorial walks you through the steps to install ownCloud on Ubuntu 20.04, one of the most user-friendly server operating systems available. There are only a few steps to install ownCloud on Ubuntu 20.04. You [install the LAMP (Linux Apache MySQL/MariaDB PHP) stack](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/); create a database and database user; configure Apache; and set up ownCloud using its graphical user interface.
 
 {{< note >}}
-To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/owncloud/).
+To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/marketplace-docs/guides/owncloud/).
 {{< /note >}}
 
 ## Before You Begin
@@ -157,7 +156,7 @@ Apache requires a [virtual host configuration file](https://httpd.apache.org/doc
         sudo nano /etc/apache2/sites-available/owncloud.conf
 
 
-1. Paste the following text into the new file. Replace mentions of `example.com` with your own domain name or your [Linode's IP Address](/docs/guides/find-your-linodes-ip-address/):
+1. Paste the following text into the new file. Replace mentions of `example.com` with your own domain name or your [Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/):
 
 {{< file "/etc/apache2/sites-available/owncloud.conf">}}
 <VirtualHost \*:80>

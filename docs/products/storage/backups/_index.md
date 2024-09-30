@@ -44,7 +44,7 @@ The Backup service does not keep automated backups older than 14 days, though th
 - Compatible with all Linode Compute Instances, provided their disks contain unencrypted ext3 or ext4 file systems
 - File-based backup solution, meaning it operates at the file level and not the block level
 - Backups are stored on separate dedicated hardware within the same data center
-- Can be managed through the [Cloud Manager](https://cloud.linode.com/), the [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
+- Can be managed through [Cloud Manager](https://cloud.linode.com/), the [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
 
 ## Part of a Multi-Tiered Backup Strategy
 
@@ -61,7 +61,7 @@ Linode's Backup service is one part of a well rounded backup strategy. On-site b
 - **A large number of files will prolong the backup process and may cause failures.** Because the Backup Service is file-based, the number of files stored on disk impacts both the time it takes for backups and restores to complete, and your ability to successfully take and restore backups. Customers who need to permanently store a large number of files may want to archive bundles of smaller files into a single file, or consider other backup services.
 
     {{< note >}}
-    The percentage of customers who may run into this limitation is low. If you are not sure if this limitation applies to you, please [contact Linode Support](/docs/products/platform/get-started/guides/support/#contacting-linode-support).
+    The percentage of customers who may run into this limitation is low. If you are not sure if this limitation applies to you, please [contact Linode Support](/docs/products/platform/get-started/guides/support/#contact-customer-support).
     {{< /note >}}
 
 - Files that have been modified but have the same size and modify time are not be considered "changed" during a subsequent backup. ACLs and extended attributes are *not* tracked.

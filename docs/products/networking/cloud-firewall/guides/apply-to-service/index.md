@@ -1,9 +1,8 @@
 ---
 title: "Apply Firewall Rules to a Service"
 description: "Learn how to add and remove services from Cloud Firewalls."
-aliases: ['/products/networking/cloud-firewall/guides/assign-firewall/', '/products/networking/cloud-firewall/guides/apply-to-compute-instances/']
-authors: ["Linode"]
 modified: 2023-11-01
+aliases: ['/products/networking/cloud-firewall/guides/assign-firewall/', '/products/networking/cloud-firewall/guides/apply-to-compute-instances/']
 ---
 
 Each Cloud Firewall can be applied to multiple services (Compute Instances or NodeBalancers). Use the steps below to view and modify the services utilizing a Cloud Firewall.
@@ -25,7 +24,7 @@ You can apply the Cloud Firewall to more than one Linode service at a time. Repe
 {{< /note >}}
 
 {{< note type="alert" >}}
-If [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) has been disabled on your Compute Instance and the internal networking configuration uses DHCP for IPv4 address assignment, some additional firewall rules are necessary. You must edit the Cloud Firewall to allow DHCP traffic through port 67 and 68. If needed, a full list of IP addresses for our DHCP servers can be found in our [DHCP IP Address Reference Guide](/docs/guides/dhcp-ip-address-reference/).
+If [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) has been disabled on your Compute Instance and the internal networking configuration uses DHCP for IPv4 address assignment, some additional firewall rules are necessary. You must edit the Cloud Firewall to allow DHCP traffic through port 67 and 68. If needed, a full list of IP addresses for our DHCP servers can be found in our [DHCP IP Address Reference Guide](/docs/products/compute/compute-instances/guides/dhcp-ip-address-reference/).
 {{< /note >}}
 
 ## Remove a Service

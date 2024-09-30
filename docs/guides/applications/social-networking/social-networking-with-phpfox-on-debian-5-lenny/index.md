@@ -1,17 +1,16 @@
 ---
 slug: social-networking-with-phpfox-on-debian-5-lenny
+title: 'Social Networking with phpFox on Debian 5 (Lenny)'
 description: 'Use phpFox to create and maintain a social networking platform on Debian 5 (Lenny).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-08-13
+modified: 2013-10-04
 keywords: ["phpfox", "social networking", "community"]
 tags: ["debian", "cms", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/social-networking/social-networking-with-phpfox-on-debian-5-lenny/','/web-applications/social-networking/phpfox/debian-5-lenny/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2010-08-13
-title: 'Social Networking with phpFox on Debian 5 (Lenny)'
 deprecated: true
-authors: ["Linode"]
 ---
 
 phpFox is a proprietary social networking platform that allows groups to create and maintain communities of people with common interests. It contains a variety of features that are common on many popular social networking sites such as [Facebook](http://www.facebook.com) or [MySpace](http://www.myspace.com) including friend lists, activity feeds, instant messaging, and user groups. In addition to providing a robust networking platform, phpFox also allows developers to create "plug-ins" that are custom tailored to their community.
@@ -20,7 +19,7 @@ Please note that you must obtain a license from phpFox in order to run this soft
 
 ## Install Prerequisites
 
-Before installing phpFox, make sure you have set up a [LAMP stack](/docs/guides/lamp-server-on-debian-5-lenny/). You will also need to install the `curl` and `gd` modules for PHP. Issue the following command:
+Before installing phpFox, make sure you have set up a [LAMP stack](/docs/guides/how-to-install-a-lamp-stack-on-debian-11/). You will also need to install the `curl` and `gd` modules for PHP. Issue the following command:
 
     apt-get install php5-curl php5-gd
 

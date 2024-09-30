@@ -17,9 +17,9 @@
 {{- if $collapsible -}}
   <div
     x-data="{ open: false }"
-    class="note-collapsible note note-{{ $type }} leading-snug">
+    class="note-collapsible note note-{{ $type }} leading-snug p-5">
     {{- with $title -}}
-      <header class="note-title font-semibold">
+      <header class="note-title font-semibold text-lg">
         <button
           type="button"
           @click="open = !open"
@@ -51,9 +51,9 @@
     </div>
   </div>
 {{- else -}}
-  <div class="note note-{{ $type }} leading-snug">
+  <div class="note note-{{ $type }} leading-snug p-5">
     {{- with $title -}}
-      <header class="note-title font-semibold">
+      <header class="note-title font-semibold text-lg">
         {{- . -}}
       </header>
     {{- end -}}

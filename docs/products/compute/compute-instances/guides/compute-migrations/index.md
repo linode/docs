@@ -2,16 +2,12 @@
 slug: compute-migrations
 title: "Compute Migrations on Akamai Cloud"
 description: 'This guide reviews the various types of compute migrations available on the Akamai Cloud platform.'
+published: 2023-11-14
 keywords: ['migrate','migration','host']
 tags: ["linode platform","cloud manager"]
-authors: ["Linode"]
-published: 2023-11-14
-modified_by:
-  name: Linode
-
 ---
 
-A migration occurs when a Compute Instance is moved from one physical host machine to another. This can happen within the same data center or across data centers. Migrations across data centers can be configured by customers in the Cloud Manager. All other types of migrations must be configured by a Linode or Akamai administrator.
+A migration occurs when a Compute Instance is moved from one physical host machine to another. This can happen within the same data center or across data centers. Migrations across data centers can be configured by customers in Cloud Manager. All other types of migrations must be configured by a Linode or Akamai administrator.
 
 ## Types of Migrations
 
@@ -74,13 +70,13 @@ In order for a live migration to occur, a host compatible with the host your ins
     - This applies to warm migrations initiated by customers, including warm migrations taking place during the warm resize process.
     - This also applies if you are running a custom distribution (i.e. Windows) or unsupported disk image that is not configured for ACPI shutdowns.
 -   If a Linode or Akamai administrator cancels the warm migration.
--   If the sources Linode stops responding, is shut down prior to the cross-host sync, or if the process is disturbed in any way.
+-   If the sources Linode stops responding, is shut down before the cross-host sync, or if the process is disturbed in any way.
 
 ### What should I do if my warm migration fails?
 
--   If your warm migration fails to complete after an early initiation is triggered via the Cloud Manager, the Support team is notified. There are two options that are used at the discretion of the Support team.
+-   If your warm migration fails to complete after an early initiation is triggered via Cloud Manager, the Support team is notified. There are two options that are used at the discretion of the Support team.
     - A new warm migration can be configured to be performed at a scheduled time.
-    - A cold migration can be configured. You can then initiate the cold migration via the Cloud Manager or allow it to proceed as otherwise scheduled.
+    - A cold migration can be configured. You can then initiate the cold migration via Cloud Manager or allow it to proceed as otherwise scheduled.
 
 ### What should I do if my warm resize fails?
 

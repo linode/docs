@@ -1,15 +1,12 @@
 ---
+title: "Configuring IP Failover using keepalived"
 description: "Learn how to use Linode's IP Sharing feature to configure ARP-based IP failover using keepalived"
-keywords: ['networking','IP failover','keepalived']
 published: 2021-11-19
 modified: 2022-03-23
-modified_by:
-  name: Linode
-title: "Configuring IP Failover using keepalived"
+keywords: ['networking','IP failover','keepalived']
 external_resources:
 - '[keepalived Documentation](https://keepalived.readthedocs.io/en/latest/index.html)'
 aliases: ['/guides/ip-failover-keepalived/','/guides/ip-failover-legacy-keepalived/']
-authors: ["Linode"]
 ---
 
 {{< note >}}
@@ -115,9 +112,9 @@ When configuring keepalived, there are quite a few options that can be modified 
 
 - **vrrp_instance:** The VRRP instance definition block. Set this to whatever you'd like to call this block. To help with identification, this should be the same value across all Compute Instances that will share the specified IP address.
 - **state:** Set this to `MASTER` if the IP address is natively assigned to this Compute Instance. When configuring it as a secondary failover server, use `BACKUP`.
-- **interface:** Set this to whichever Network Interface the IP address is using or should use. To find the interface, log in to the [Cloud Manager](https://cloud.linode.com/), click on the **Linodes** link on the left menu, select your Compute Instance, navigate to the **Configurations** tab and review the **Network Interfaces** column for your active configuration profile. For public IP addresses the interface is typically `eth0` and for vlan addresses the interface is likely `eth1`.
+- **interface:** Set this to whichever Network Interface the IP address is using or should use. To find the interface, log in to [Cloud Manager](https://cloud.linode.com/), click on the **Linodes** link on the left menu, select your Compute Instance, navigate to the **Configurations** tab and review the **Network Interfaces** column for your active configuration profile. For public IP addresses the interface is typically `eth0` and for vlan addresses the interface is likely `eth1`.
 
-    ![The Configuration tab in the Cloud Manager](ip-failover-keepalived-ethernet-configuration.png)
+    ![The Configuration tab in Cloud Manager](ip-failover-keepalived-ethernet-configuration.png)
 
 - **priority:** When multiple secondary Compute Instances are configured for IP failover, this sets the order in which they will be used.
 - **auth_pass:** Set the password used by keepalived for failover synchronization. This should be used across all Compute Instances that will share the specified IP address.

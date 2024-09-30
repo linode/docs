@@ -2,17 +2,17 @@
 title: Guides
 title_meta: "Guides and Tutorials for the Linode Backup Service"
 description: "A collection of guides to help you learn how to get up and running with Linode's Backup Service, including enabling and scheduling backups."
-tab_group_main:
-    weight: 30
 published: 2021-11-12
 modified: 2023-07-07
+tab_group_main:
+    weight: 30
 ---
 
 ## Basics
 
 These introductory guides help get you up and running with Linode's Backup Service.
 
-- [Enable the Backup Service](/docs/products/storage/backups/guides/enable/): Use the Cloud Manager to enable the Backup Service.
+- [Enable the Backup Service](/docs/products/storage/backups/guides/enable/): Use Cloud Manager to enable the Backup Service.
 
 - [Schedule Backups](/docs/products/storage/backups/guides/schedule/): Configure when automatic backups are initiated.
 
@@ -22,7 +22,7 @@ These introductory guides help get you up and running with Linode's Backup Servi
 
 - [Restore a Backup to an Existing Compute Instance](/docs/products/storage/backups/guides/restore-to-an-existing-instance/): Restore a backup to an existing Compute Instance.
 
-- [Cancel the Backup Service](/docs/products/storage/backups/guides/cancel/): Cancel the Backups Service through the Cloud Manager.
+- [Cancel the Backup Service](/docs/products/storage/backups/guides/cancel/): Cancel the Backups Service through Cloud Manager.
 
 ## Going Further
 

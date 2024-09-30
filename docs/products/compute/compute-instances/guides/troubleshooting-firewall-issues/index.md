@@ -1,15 +1,12 @@
 ---
 title: Troubleshooting Firewall Issues on Compute Instances
 description: This guide presents troubleshooting strategies for Compute Instances that may be unresponsive due to issues caused by a firewall.
-keywords: ["Linode troubleshooting", "Cloud Firewall", "Firewall","troubleshoot"]
 published: 2020-08-04
 modified: 2023-11-01
-modified_by:
-  name: Linode
+keywords: ["Linode troubleshooting", "Cloud Firewall", "Firewall","troubleshoot"]
 bundles: ['troubleshooting']
 image: feature.png
 aliases: ['/troubleshooting/troubleshooting-firewalls/','/guides/troubleshooting-firewalls/']
-authors: ["Linode"]
 ---
 
 This guide presents troubleshooting strategies for Compute Instances that may be unresponsive due to issues caused by a firewall. This could be a [Cloud Firewall](/docs/products/networking/cloud-firewall/get-started/), which is applied on the network level or a software firewall, like UFW (Uncomplicated Firewall), that is configured on your Compute Instance's operating system.
@@ -22,17 +19,17 @@ While a firewall is often responsible for cases of limited access, these issues 
 
 [*Lish*](/docs/products/compute/compute-instances/guides/lish/) is a shell that provides access to your Compute Instance's serial console and is a helpful tool for diagnosing and troubleshooting connection problems. Lish does not establish a network connection to your instance, so you can use it when your networking is down or your Compute Instance's Secure Shell (SSH) port is inaccessible. If you find yourself locked out of SSH, you can use Lish to perform much of the troubleshooting for basic connection issues.
 
-To learn about Lish in more detail, and for instructions on how to connect to your Compute Instance via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. A fast and simple way to access Lish is by [the your web browser option](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish).
+To learn about Lish in more detail, and for instructions on how to connect to your Compute Instance via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. A fast and simple way to access Lish is by [the your web browser option](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish).
 
 {{< note >}}
-When using Lish, you can log into your Compute Instance with the `root` user, even if `root` user login is disabled by your system's SSH configuration file.
+When using Lish, you can log in to your Compute Instance with the `root` user, even if `root` user login is disabled by your system's SSH configuration file.
 {{< /note >}}
 
 ## Is the Compute Instance Powered On?
 
 Ensure that your Compute Instance is powered on and running.
 
-1. Log into the [Cloud Manager](https://cloud.linode.com/) and navigate to the Compute Instance listing page.
+1. Log into [Cloud Manager](https://cloud.linode.com/) and navigate to the Compute Instance listing page.
 
 1. Verify your Compute Instance's displayed status to determine if it's running or offline. If it your instance is offline, use the **more options** ellipsis to power it on.
 
@@ -52,7 +49,7 @@ If you are using Cloud Firewalls, then it's important to verify which Cloud Fire
 
 1.  If the Cloud Firewall is enabled, check to see which rules are currently active by clicking on the label of the Cloud Firewall. This takes you to your Cloud Firewall's **Rules** page.
 
-1.  The **Rules** page displays a list of all of the Cloud Firewall rules that are filtering your service's network traffic. If you notice that the Cloud Firewall rules do not allow traffic for a specific service's port that you are troubleshooting, you may consider [updating your rule's](/docs/products/networking/cloud-firewall/get-started/#edit-cloud-firewall-rules) to allow connections for that port.
+1.  The **Rules** page displays a list of all of the Cloud Firewall rules that are filtering your service's network traffic. If you notice that the Cloud Firewall rules do not allow traffic for a specific service's port that you are troubleshooting, you may consider [updating your rule's](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/) to allow connections for that port.
 
     {{< note >}}
     If the Cloud Firewall is assigned to more than one Compute Instance or NodeBalancer, modifying the Cloud Firewall rules affect all services assigned to the Cloud Firewall.
@@ -64,7 +61,7 @@ If you are using Cloud Firewalls, then it's important to verify which Cloud Fire
 
 ## Checking Firewall Rules with UFW
 
-*Uncomplicated Firewall (UFW)* is an [iptables](/docs/guides/control-network-traffic-with-iptables/) frontend that is designed for ease-of-use. See our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) for a deeper dive into UFW.
+*Uncomplicated Firewall (UFW)* is an [iptables](/docs/guides/control-network-traffic-with-iptables/) front end that is designed for ease-of-use. See our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) for a deeper dive into UFW.
 
 {{< note >}}
 All steps in this section are performed on your Compute Instance. [Connect to your Compute Instance via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/products/compute/compute-instances/guides/lish/).
@@ -105,7 +102,7 @@ sudo ufw delete allow 80
 
 ## Checking Firewall Rules with FirewallD
 
-*firewalld* is the default firewall tool for CentOS and Fedora. While also a frontend for iptables like UFW, firewalld has some unique features, like configuration sets and zones.
+*firewalld* is the default firewall tool for CentOS and Fedora. While also a front end for iptables like UFW, firewalld has some unique features, like configuration sets and zones.
 
 {{< note >}}
 All steps in this section are performed on your Compute Instance. [Connect to your Compute Instance via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/products/compute/compute-instances/guides/lish/).

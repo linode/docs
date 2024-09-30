@@ -1,15 +1,15 @@
 ---
 slug: how-to-install-a-lamp-stack-on-centos-7
+title: "Installing a LAMP Stack (PHP, MySQL, Apache) on CentOS 7"
+title_meta: "Install a LAMP Stack (PHP, MySQL, Apache) on CentOS 7"
 description: "Install a LAMP stack on a CentOS 7 Linode. A LAMP stack includes Linux, Apache, MariaDB, and PHP. ✓ Read now!"
+authors: ["Joel Kruger"]
+contributors: ["Joel Kruger"]
+published: 2015-12-01
+modified: 2022-01-14
 keywords: ["LAMP", "CentOS", "CentOS 7", "apache", "mysql", "php", "centos lamp"]
 tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-01-14
-modified_by:
-    name: Linode
-published: 2015-12-01
-title: "Installing a LAMP Stack (PHP, MySQL, Apache) on CentOS 7"
-title_meta: "Install a LAMP Stack (PHP, MySQL, Apache) on CentOS 7"
 aliases: ['/websites/lamp/lamp-on-centos-7/','/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/','/websites/lamp/lamp-server-on-centos-7/','/web-servers/lamp/lamp-on-centos-7/']
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
@@ -22,14 +22,13 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: CentOS 7
-authors: ["Joel Kruger"]
 ---
 
 A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP (LAMP). This guide shows you how to install a LAMP stack on a CentOS 7 Linode.
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides. Ensure that the Linode's [hostname is set](/docs/products/platform/get-started/#set-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides. Ensure that the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
     Check your Linode's hostname. The first command should show your short hostname and the second should show your fully qualified domain name (FQDN).
 
@@ -167,8 +166,7 @@ Jun 21 17:58:09 example.com systemd[1]: httpd.service failed.
         sudo systemctl enable httpd.service
         sudo systemctl restart httpd.service
 
-
-{{< note respectIndent=false >}}
+{{< note >}}
 In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the `sudo setsebool -P httpd_can_network_connect on` command.
 {{< /note >}}
 

@@ -1,29 +1,28 @@
 ---
 slug: install-a-simple-machines-forum-on-your-website
+title: "Installing a Simple Machines Discussion Forum (SMF) on Linux"
+title_meta: "How to Install a Simple Machines Forum on Linux"
 description: "This tutorial will guide you through installing a Simple Machines Forum a flexible (SMF), a small to mid-sized discussion forum that's easy to customize."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-03-18
+modified: 2015-02-11
 keywords: ["smf", "forum software", "web applications", "PHP"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/forums/install-a-simple-machines-forum-on-your-website/','/websites/forums/discussion-forums-with-smf/','/web-applications/bulletin-boards/smf/']
-modified: 2015-02-11
-modified_by:
-  name: Elle Krout
-published: 2010-03-18
-title: "Installing a Simple Machines Discussion Forum (SMF) on Linux"
-title_meta: "How to Install a Simple Machines Forum on Linux"
-deprecated: false
 external_resources:
  - '[SMF Documentation](http://wiki.simplemachines.org/)'
  - '[Modifications, Styles, and Upgrades](http://custom.simplemachines.org/)'
  - '[Functions Database](http://support.simplemachines.org/function_db/)'
  - '[SMF Community Forum](http://www.simplemachines.org/community/index.php)'
-authors: ["Linode"]
+deprecated: true
 ---
 
 Simple Machines Forum (SMF) is a popular forum solution for small- to large-sized communities that offers a variety of features. With its modular design and flexibility, users can create their own plugins to modify the behavior of SMF in any way they wish.
 
 Before you begin, be sure you have followed the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). You will also need a working [LAMP stack](/docs/websites/lamp/).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -45,7 +44,7 @@ You will need to create a MySQL user and database for SMF.
 
 The following instructions will download the latest stable release, which is 2.0.9 as of publication.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you're using a web server other than Apache, or otherwise have an alternate system user for your web server, be sure to replace `www-data` in the commands below with the appropriate system user.
 {{< /note >}}
 

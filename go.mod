@@ -3,7 +3,9 @@ module github.com/linode/docs
 go 1.15
 
 require (
-	github.com/hotwired/turbo v7.0.1+incompatible // indirect
-	github.com/linode/linode-api-docs/v4 v4.169.0 // indirect
-	github.com/linode/linode-docs-theme v0.0.0-20231206150915-b245bac51c82 // indirect
+	github.com/gohugoio/hugo-mod-jslibs/instantpage v0.5.1 // indirect
+	github.com/gohugoio/hugo-mod-jslibs/turbo/v7 v7.20300.20000 // indirect
+	github.com/instantpage/instant.page v5.1.1+incompatible // indirect
+	github.com/linode/linode-api-docs/v4 v4.176.0 // indirect
+	github.com/linode/linode-docs-theme v0.0.0-20240917174726-f70fc5eefd2c // indirect
 )

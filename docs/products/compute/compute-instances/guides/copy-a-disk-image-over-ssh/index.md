@@ -1,15 +1,12 @@
 ---
+title: "Copy a Disk Over SSH"
 description: "Create a disk image using dd and download it to another machine over SSH."
+published: 2012-06-04
+modified: 2020-12-04
 keywords: ["copy", "disk", "ssh", "dd"]
 tags: ["linode platform","ssh"]
-modified: 2020-12-04
-modified_by:
-  name: Linode
-published: 2012-06-04
-title: "Copy a Disk Over SSH"
 image: copying_a_disk_over_ssh_smg.png
 aliases: ['/migration/ssh-copy/','/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh/','/platform/disk-images/copying-a-disk-image-over-ssh/','/guides/copying-a-disk-image-over-ssh/']
-authors: ["Linode"]
 ---
 
 Piping SSH commands to utilities such as `dd`, `gzip`, or `rsync` is an easy way to copy a Compute Instance's data into a single file for later extraction. This can effectively back up your Compute Instance's disk or migrate your installed system to other instances.
@@ -28,7 +25,7 @@ While this guide has been written to accommodate computers running Linux as thei
 
 ### Boot into Rescue Mode
 
-1.  Boot the *origin* Compute Instance into [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-linode-into-rescue-mode) and connect to it using [Lish](/docs/products/compute/compute-instances/guides/lish/).
+1.  Boot the *origin* Compute Instance into [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode) and connect to it using [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Set a root password for the rescue system and start the SSH server:
 
@@ -111,7 +108,7 @@ In some cases, it is necessary to upload your disk image to a new server. For ex
 
 1.  Once you've created a Compute Instance with enough disk space available to accommodate your disk image, prepare the new instance to receive this image. This is completed by first deleting the primary disk created by default, and keeping the swap disk. A swap disk typically starts at 256 MB or 512 MB in size, but can be larger or smaller depending upon your needs.
 
-1.  Access your Compute Instance through the Cloud Manager. Click the **Storage** tab to navigate to the *Disks* section.
+1.  Access your Compute Instance through Cloud Manager. Click the **Storage** tab to navigate to the *Disks* section.
 
 1. On the following page in the **Disks** menu, select the ellipsis next to any primary disks you are replacing and select **Delete**.
 

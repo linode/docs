@@ -1,18 +1,15 @@
 ---
 slug: linode-object-storage-with-mastodon
+title: "How to Use Linode Object Storage with Mastodon"
 description: "Mastodon stores media attachments locally by default, which can make these static files difficult to manage and scale. Using object storage with Mastodon can remedy this and make your instance more efficient. Learn about how Linode Object Storage can be implemented with your Mastodon server in this tutorial."
-og_description: "Mastodon stores media attachments locally by default, which can make these static files difficult to manage and scale. Using object storage with Mastodon can remedy this and make your instance more efficient. Learn about how Linode Object Storage can be implemented with your Mastodon server in this tutorial."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-12-24
 keywords: ['mastodon object storage','how to use mastodon','mastodon s3']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-12-24
-modified_by:
-  name: Nathaniel Stickman
-title: "How to Use Linode Object Storage with Mastodon"
-authors: ["Nathaniel Stickman"]
 external_resources:
 - '[Thomas Leister: Mastodon - Adding S3 Based Cloud Storage to Your Instance](https://thomas-leister.de/en/mastodon-s3-media-storage/)'
 - '[Mastodon: Proxying Object Storage through NGINX](https://docs.joinmastodon.org/admin/optional/object-storage-proxy/)'
-authors: ["Nathaniel Stickman"]
 ---
 
 Mastodon is a decentralized microblogging platform that participates in the Fediverse network. But if you have a Mastodon instance or are planning to deploy one, you may be concerned with its media storage demands and efficiency.
@@ -69,7 +66,7 @@ The rest of this guide assumes that you have a complete Mastodon setup running t
 
 To create a new Mastodon instance, follow our guide [How to Install a Mastodon Server](/docs/guides/install-mastodon-on-ubuntu-2004/). A link in the upper right of the guide allows you to select a Linux distribution for the installation. The beginning of the guide also includes links for creating and configuring a new Linode Compute Instance for running the Mastodon server.
 
-You may, alternatively, choose to deploy a new Linode with Mastodon via the Linode Marketplace. Take a look at our guide on how to [Deploy Mastodon through the Linode Marketplace](/docs/products/tools/marketplace/guides/mastodon/) to learn more and for instructions.
+You may, alternatively, choose to deploy a new Linode with Mastodon via the Linode Marketplace. Take a look at our guide on how to [Deploy Mastodon through the Linode Marketplace](/docs/marketplace-docs/guides/mastodon/) to learn more and for instructions.
 
 ### Configuring an NGINX Proxy
 

@@ -1,15 +1,14 @@
 ---
 slug: install-mysql-phpmyadmin-on-ubuntu-12-04
-deprecated: true
+title: 'How to Install MySQL with phpMyAdmin on Ubuntu 12.04'
 description: 'This guide will show you how to install and configure phpMyAdmin to manage MySQL databases and users though a web interface and GUI on Ubuntu 12.04.'
+authors: ["James Stewart"]
+contributors: ["James Stewart"]
+published: 2013-09-12
+modified: 2015-09-16
 keywords: ["mysql", "phpmyadmin", "sql", "ubuntu", "precise", "ubuntu 12.04", "lts", "ubuntu lts", "localhost phpmyadmin", "php mysql", "http localhost phpmyadmin"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/phpmyadmin-ubuntu-12-04-precise/','/databases/mysql/install-mysql-phpmyadmin-on-ubuntu-12-04/','/databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-12-04-precise-pangolin/']
-modified: 2015-09-16
-modified_by:
-    name: Linode
-published: 2013-09-12
-title: 'How to Install MySQL with phpMyAdmin on Ubuntu 12.04'
 external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
     - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
@@ -19,7 +18,7 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 tags: ["ubuntu","php","database","mysql"]
-authors: ["James Stewart"]
+deprecated: true
 ---
 
 phpMyAdmin is a web application that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
@@ -41,7 +40,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN) if you have one assigned.
 
-1.  Set up a working LAMP stack. Please see the [LAMP on Ubuntu 12.04](/docs/guides/lamp-server-on-ubuntu-12-04-precise-pangolin/) guide if needed.
+1.  Set up a working LAMP stack. Please see the [LAMP on Ubuntu 12.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/) guide if needed.
 
     {{< note respectIndent=false >}}
 If you have installed the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.

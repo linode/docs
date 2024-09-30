@@ -1,16 +1,13 @@
 ---
-description: "A collection of diagnostic tasks that identify the potential for benefits from dedicated CPU cores."
-keywords: ["dedicated cpu", "use cases", "linode cpu", "machine learning", "big data"]
-published: 2021-08-27
-modified: 2023-07-05
-modified_by:
-  name: Linode
 title: "Choosing Between Shared and Dedicated CPUs (and Determining When to Upgrade)"
 title_meta: "Choosing Between Shared and Dedicated CPUs on the Linode Platform"
+description: "A collection of diagnostic tasks that identify the potential for benefits from dedicated CPU cores."
+published: 2021-08-27
+modified: 2023-07-05
+keywords: ["dedicated cpu", "use cases", "linode cpu", "machine learning", "big data"]
 linkTitle: Choosing Between Shared and Dedicated CPUs
 tags: ["linode platform"]
 aliases: ['/platform/dedicated-cpu/when-to-upgrade-to-dedicated-cpu/','/guides/when-to-upgrade-to-dedicated-cpu/','/guides/comparing-shared-and-dedicated-cpus/']
-authors: ["Linode"]
 ---
 
 Each Linode Compute Instance is equipped with shared CPU cores or dedicated CPU cores. Understanding the difference between these is key to determining the best plan for your workloads. This guide outlines those differences and aims to help you evaluate your current cloud workloads to determine if plans with dedicated CPU cores would be beneficial.
@@ -94,9 +91,9 @@ It's important to keep in mind that while some steal won't usually have a notice
 
 ## Viewing CPU Usage Graphs
 
-By default, the Cloud Manager will log a history of resource usage and plot CPU data to a graph. We recommend observing CPU usage in the Cloud Manager if you're unsure of upgrading to a Dedicated CPU, because it will have the most amount of data pertaining to the lifetime of your instance. By looking at your CPU graph, you'll be empowered to make a value based judgement on any possible upgrade you may need.
+By default, Cloud Manager will log a history of resource usage and plot CPU data to a graph. We recommend observing CPU usage in Cloud Manager if you're unsure of upgrading to a Dedicated CPU, because it will have the most amount of data pertaining to the lifetime of your instance. By looking at your CPU graph, you'll be empowered to make a value based judgement on any possible upgrade you may need.
 
-1. To investigate CPU usage on the Cloud Manager, log in and click on the Linodes sidebar menu.
+1. To investigate CPU usage on Cloud Manager, log in and click on the Linodes sidebar menu.
 
 1. Select the instance you'd like to inspect further.
 
@@ -104,7 +101,7 @@ By default, the Cloud Manager will log a history of resource usage and plot CPU 
 
 Generally, when observing the CPU graph, good candidates for an upgrade to a Dedicated CPU will have high and often relatively steady CPU usage. That being said, this does not necessarily need to be constant and may have high peaks that reflect a possibility for improvement with a Dedicated CPU.
 
-![Dedicated CPU Candidate Graph](cpuusagethrottle.png "Create a Dedicated CPU instance in the Cloud Manager")
+![Dedicated CPU Candidate Graph](cpuusagethrottle.png "Create a Dedicated CPU instance in Cloud Manager")
 
 ## What If I Need More Specialized Resources?
 

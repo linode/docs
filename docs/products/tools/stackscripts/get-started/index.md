@@ -2,20 +2,20 @@
 title: Get Started
 title_meta: "Getting Started with StackScripts"
 description: "Get started with Linode StackScripts. Learn to create a StackScript and create a new Linode using a StackScript."
+published: 2022-11-30
+modified: 2023-09-18
 tab_group_main:
     weight: 20
-published: 2022-11-30
 tags: ["managed hosting"]
-modified: 2023-09-18
 ---
 
-{{< content "metadata-stackscripts-notice" >}}
+{{% content "metadata-stackscripts-notice" %}}
 
 StackScripts allow you to reproduce specific software configurations when deploying Compute Instances, with more user control than static system images. This guide covers how to get started with StackScripts, including writing your custom script, creating the StackScript, and deploying a Compute Instance.
 
 ## Write the Script
 
-When creating a StackScript, most of the time is spent writing the deployment script itself. This script runs the first time a Compute Instance boots up and allows you to configure the system to fit your precise needs and requirements. Before you write the script, consider the following:
+When creating a StackScript, most of the time is spent writing the deployment script itself. This script runs the first time a Compute Instance boots up and lets you configure the system to fit your precise needs and requirements. Before you write the script, consider the following:
 
 - **What is the purpose of your script?** The first question you should ask is *what purpose will your script serve*. Do you want to build a web server? Are you building a script to take care of securing new servers? Consider each task you want your script to perform.
 
@@ -23,7 +23,7 @@ When creating a StackScript, most of the time is spent writing the deployment sc
 
 - **Which Linux distributions should the script support?** Since each distribution bundles different core software, the commands needed to install applications or configure networking vary between distributions. You need to determine which distributions you want to have available when deploying the Compute Instance. Then, you can customize your script to include commands for those distributions.
 
-- **Which dynamic variables do you want the user to set when deploying a Compute Instance?** Determine what information you wish to collect during deployment. These user variables can be defined through the use of UDF fields within the script. All UDF fields are visible in the Cloud Manager when creating a Compute Instance based on the StackScript.
+- **Which dynamic variables do you want the user to set when deploying a Compute Instance?** Determine what information you wish to collect during deployment. These user variables can be defined through the use of UDF fields within the script. All UDF fields are visible in Cloud Manager when creating a Compute Instance based on the StackScript.
 
 For more details on the components of a StackScript, see [Write a Custom Script for Use with StackScripts](/docs/products/tools/stackscripts/guides/write-a-custom-script/) guide.
 
@@ -31,7 +31,7 @@ For more details on the components of a StackScript, see [Write a Custom Script 
 
 After your script has been written, you are ready to create the StackScript. See [Create a StackScript](/docs/products/tools/stackscripts/guides/create/) for complete instructions.
 
-1. Log into the [Cloud Manager](https://cloud.linode.com/) and select **StackScripts** from the left navigation menu. Click the **Create StackScript** button on the top right of the page.
+1. Log into [Cloud Manager](https://cloud.linode.com/) and select **StackScripts** from the left navigation menu. Click the **Create StackScript** button on the top right of the page.
 
 1. Enter a **Label** and **Description** for your StackScript.
 
@@ -45,7 +45,7 @@ After your script has been written, you are ready to create the StackScript. See
 
 When creating a new Compute Instance, you can use one of your Account StackScripts or a Community StackScript. For full instructions, see [Deploy a Compute Instance Using a StackScript](/docs/products/tools/stackscripts/guides/deploy-a-compute-instance/).
 
-1. Log into the [Cloud Manager](https://cloud.linode.com/) and select **StackScripts** from the left navigation menu.
+1. Log into [Cloud Manager](https://cloud.linode.com/) and select **StackScripts** from the left navigation menu.
 
 1. Navigate to either the **Account StackScript** tab (to deploy your own StackScript) or the **Community StackScript** tab (to deploy a public StackScript).
 

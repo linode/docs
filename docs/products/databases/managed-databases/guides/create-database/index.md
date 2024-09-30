@@ -1,16 +1,15 @@
 ---
 title: "Create a Managed Database"
-description: "A walkthough on creating a Managed Database through the Cloud Manager"
+description: "A walkthough on creating a Managed Database through Cloud Manager"
 published: 2022-06-06
 modified: 2022-08-09
-authors: ["Linode"]
 ---
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}
 
-This guide walks you through creating a Linode Managed Database through the Cloud Manager.
+This guide walks you through creating a Linode Managed Database through Cloud Manager.
 
-1. [Open the Create Database Cluster Form in the Cloud Manager](#open-the-create-database-cluster-form-in-the-cloud-manager)
+1. [Open the Create Database Cluster Form in Cloud Manager](#open-the-create-database-cluster-form-in-cloud-manager)
 1. [Set the Label](#set-the-label)
 1. [Select the Database Engine](#select-the-database-engine)
 1. [Select a Region](#select-a-region)
@@ -19,9 +18,9 @@ This guide walks you through creating a Linode Managed Database through the Clou
 1. [Add Access Controls](#add-access-controls)
 1. [Deploy the Managed Database](#deploy-the-managed-database)
 
-## Open the Create Database Cluster Form in the Cloud Manager
+## Open the Create Database Cluster Form in Cloud Manager
 
-Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu. Click the **Create Database Cluster** button. This opens the *[Create Database Cluster](https://cloud.linode.com/databases/create)* page.
+Log in to [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu. Click the **Create Database Cluster** button. This opens the *[Create Database Cluster](https://cloud.linode.com/databases/create)* page.
 
 ## Set the Label
 
@@ -68,4 +67,4 @@ If you are testing the connection from your local machine, you may also wish to 
 
 ## Deploy the Managed Database
 
-Once you have completed the form, click the **Create Database Cluster** button to start deploying your new database cluster. It takes approximately 15 to 30 minutes to fully provision the cluster. You can track the status by reviewing the *Status* column within the list of [Database Clusters](https://cloud.linode.com/databases) in the Cloud Manager.
+Once you have completed the form, click the **Create Database Cluster** button to start deploying your new database cluster. It takes approximately 15 to 30 minutes to fully provision the cluster. You can track the status by reviewing the *Status* column within the list of [Database Clusters](https://cloud.linode.com/databases) in Cloud Manager.

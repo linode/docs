@@ -3,6 +3,21 @@ title: Testing Links
 description: This is a test page used in both manual and automatic tests. Do not delete. It will not be listed anywhere.
 ---
 
+## Cool Links
+
+### With Markdown text and title set
+
+[Reprehenderit esse quis occaecat adipisicing aliquip. Dolor veniam **cupidatat cillum nulla** reprehenderit incididunt dolor in elit adipisicing. Sint incididunt non irure magna ipsum amet nulla aliqua nostrud laboris pariatur cillum eiusmod magna.](/docs/products/compute/kubernetes/guides/kubectl/?cardstyling "Link to Kubectl")
+
+
+[Just a test link with additional params.](/docs/products/compute/kubernetes/guides/kubectl/?foo=bar&cardstyling "Link to Kubectl")
+
+
+### Without Markdown text and title
+
+[](/docs/products/compute/kubernetes/guides/kubectl/?cardstyling)
+
+[](/docs/guides/preparing-infrastructure-for-high-impact-ad-traffic/?cardstyling)
 
 ## Links to Anchor Links
 

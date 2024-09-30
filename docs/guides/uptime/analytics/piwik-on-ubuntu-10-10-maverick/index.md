@@ -1,29 +1,26 @@
 ---
 slug: piwik-on-ubuntu-10-10-maverick
-deprecated: true
+title: 'Piwik on Ubuntu 10.10 (Maverick)'
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on Ubuntu 10.10 (Maverick).'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2011-01-25
+modified: 2012-10-08
 keywords: ["open source analytics", "piwik ubuntu 10.10", "piwik", "analytics", "ubuntu", "tracking", "statistics"]
 tags: ["statistics","ubuntu","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/analytics/piwik/ubuntu-10-10-maverick/','/uptime/analytics/piwik-on-ubuntu-10-10-maverick/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2011-01-25
-title: 'Piwik on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
         key: using-piwik-analytics
         keywords:
             - distribution: Ubuntu 10.10
-authors: ["Stan Schwertly"]
+deprecated: true
 ---
-
-
 
 Piwik is a "downloadable, open source (GPL licensed) web analytics software program." As an alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership of and control over the data collected from your visitors.
 
-Piwik requires a functioning LAMP stack. You can install the LAMP software with the [Ubuntu 10.10 LAMP guide](/docs/guides/lamp-server-on-ubuntu-10-10-maverick/). Make sure you follow the steps for installing PHP and PHP-MySQL support.
+Piwik requires a functioning LAMP stack. You can install the LAMP software with the [Ubuntu 10.10 LAMP guide](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/). Make sure you follow the steps for installing PHP and PHP-MySQL support.
 
 ## Prerequisites
 

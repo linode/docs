@@ -1,14 +1,14 @@
 ---
 slug: configure-spf-and-dkim-in-postfix-on-debian-8
+title: 'Configure SPF and DKIM With Postfix on Debian 8'
 description: 'This guide provides you with step-by-step instructions for configuring your domains SPF and DKIM DNS records in Postfix mail server on Debian 8.'
+authors: ["Todd Knarr"]
+contributors: ["Todd Knarr"]
+published: 2016-02-03
+modified: 2018-12-14
 keywords: ["email", "postfix", "spf", "dkim", "debian 8", "opendkim", "dns", "dmarc"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-12-14
-modified_by:
-    name: Linode
-published: 2016-02-03
-title: 'Configure SPF and DKIM With Postfix on Debian 8'
 external_resources:
  - '[DomainKeys Identified Mail](http://www.dkim.org/)'
  - '[DMARC](http://dmarc.org/)'
@@ -21,16 +21,15 @@ relations:
         keywords:
             - distribution: Debian 8
 aliases: ['/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/']
-authors: ["Todd Knarr"]
+deprecated: true
 ---
-
-{{< note respectIndent=false >}}
+{{< note >}}
 We have created a [new version of this guide](/docs/guides/configure-spf-and-dkim-in-postfix-on-debian-9/) to run on Debian 9.
 {{< /note >}}
 
 ![SPF and DKIM with Postfix](Configure_SPF_and_DKIM_with_Postfix_on_Debian_8_smg.jpg)
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 SPF (Sender Policy Framework) is a system that identifies to mail servers what hosts are allowed to send email for a given domain. Setting up SPF helps to prevent your email from being classified as spam.
 
@@ -40,11 +39,10 @@ SPF (Sender Policy Framework) is a system that identifies to mail servers what h
 
 The DNS instructions for setting up SPF, DKIM and DMARC are generic. The instructions for configuring the SPF policy agent and OpenDKIM into Postfix should work on any distribution after making respective code adjustments for the package tool, and identifying the exact path to the Unix socket file.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 You must already have Postfix installed, configured and working. Refer to the [Linode Postfix Guides](/docs/email/postfix/) for assistance.
 
 Publishing an SPF DNS record without having the SPF policy agent configured within Postfix is safe; however, publishing DKIM DNS records without having OpenDKIM working correctly within Postfix can result in your email being discarded by the recipient's email server.
@@ -94,7 +92,7 @@ If you're using Linode's DNS Manager, go to the domain zone page for the selecte
 
 If your DNS provider allows it (DNS Manager doesn't), you should also add a record of type SPF, filling it in the same way as you did the TXT record.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The values for the DNS records above - and for the rest of this guide - are done in the style that Linode's DNS Manager needs them to be in. If you're using another provider, that respective system may require the values in a different style. For example freedns.afraid.org requires the values to be written in the style found in BIND zonefiles. Thus, the above SPF record's value would need to be wrapped in double-quotes like this: `"v=spf1 mx -all"`. You'll need to consult your DNS provider's documentation for the exact style required.
 {{< /note >}}
 

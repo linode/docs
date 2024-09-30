@@ -1,14 +1,14 @@
 ---
 slug: how-to-use-terraform-with-linode-object-storage
-description: 'This guide provides a brief introduction to Terraform, and explains how to use it to configure Linode Object Storage.'
-keywords: ['Linode Terraform','Terraform Linode Object Storage','Install Terraform']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-10-25
-modified: 2022-11-28
-modified_by:
-  name: Linode
 title: "Use Terraform With Linode Object Storage"
 title_meta: "How to Use Terraform With Linode Object Storage"
+description: 'This guide provides a brief introduction to Terraform, and explains how to use it to configure Linode Object Storage.'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2022-10-25
+modified: 2024-08-26
+keywords: ['Linode Terraform','Terraform Linode Object Storage','Install Terraform']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Terraform](https://www.terraform.io/)'
 - '[Terraform Downloads Portal](https://www.terraform.io/downloads)'
@@ -22,7 +22,6 @@ external_resources:
 - '[Linode Object Storage Cluster data source](https://registry.terraform.io/providers/linode/linode/latest/docs/data-sources/object_storage_cluster)'
 - '[Linode Object Storage Bucket documentation](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_bucket)'
 - '[Linode Object Storage Objects documentation](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_object)'
-authors: ["Jeff Novotny"]
 tags: ["saas"]
 ---
 
@@ -465,6 +464,12 @@ To modify the contents of an object storage object, edit the `.tf` file containi
 terraform plan
 terraform apply
 ```
+
+## Configure Terraform to Store State on Linode Object Storage
+
+Terraform uses [state](https://developer.hashicorp.com/terraform/language/state) on a [backend](https://developer.hashicorp.com/terraform/language/settings/backends/configuration) to log and track resource information. By default, state is stored locally in a file named `terraform.tfstate`.
+
+For steps on how to use Linode Object Storage as a remote backend to store state, see our guide [Use Terraform to Provision Infrastructure on Linode](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#use-linode-object-storage-to-store-state).
 
 ## Conclusion
 

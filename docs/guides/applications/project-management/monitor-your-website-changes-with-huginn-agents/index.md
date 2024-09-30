@@ -1,17 +1,16 @@
 ---
 slug: monitor-your-website-changes-with-huginn-agents
+title: "Monitor Your Website Changes with Huginn Agents"
+title_meta: "How to Monitor Your Website Changes with Huginn Agents"
 description: "This guide shows how to install and configure Huginn, a self-hosted and open-source application for automating online tasks similar to IFTTT, on a Linode."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2021-07-09
 keywords: ['huginn website agent']
 tags: ['ubuntu', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-09
-modified_by:
-  name: Nathaniel Stickman
-title: "Monitor Your Website Changes with Huginn Agents"
-title_meta: "How to Monitor Your Website Changes with Huginn Agents"
 external_resources:
 - '[Huginn GitHub](https://github.com/huginn/huginn)'
-authors: ["Nathaniel Stickman"]
 ---
 
 [Huginn](https://github.com/huginn/huginn) provides an open-source and self-hosted system for automating online tasks. It is similar to tools like IFTTT and Zapier, but is more customizable. Huginn also gives you greater control by being hosted on your own server. This guide shows you how to set up your own Huginn instance and then provides a deep dive into configuring agents to send you notifications.
@@ -44,7 +43,7 @@ Once you have Docker installed, you can quickly run an instance of Huginn to try
 
 1. Navigate to `localhost:3000` in a web browser. You can use an SSH tunnel to visit the Huginn instance remotely.
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with **3000**.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Connecting to a Remote Server Over SSH using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/) guide, replacing the example port number there with **3000**.
     - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
             ssh -L3000:localhost:3000 example-user@192.0.2.0
@@ -89,7 +88,7 @@ Docker can also be used to set up a full-fledged and persistent instance of Hugi
 
         EMAIL_FROM_ADDRESS=huginn@example-domain.mailgun.org
 
-    {{< content "email-warning-shortguide" >}}
+    {{% content "email-warning-shortguide" %}}
 
 1. Create a Docker volume for Huginn's database.
 

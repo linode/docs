@@ -1,15 +1,14 @@
 ---
 title: "Define Access and Permissions using ACLs (Access Control Lists)"
 description: "Learn how to use ACLs to set permissions and access controls within Object Storage"
-aliases: ['/platform/object-storage/how-to-use-object-storage-acls-and-bucket-policies/', '/guides/how-to-use-object-storage-acls-and-bucket-policies/']
 published: 2019-12-16
 modified: 2022-03-11
-authors: ["Linode"]
+aliases: ['/platform/object-storage/how-to-use-object-storage-acls-and-bucket-policies/', '/guides/how-to-use-object-storage-acls-and-bucket-policies/']
 ---
 
-Access Control Lists (ACLs) are a method of defining access to Object Storage resources. You can apply ACLs to both buckets and objects, giving users access and controlling their permission level. There are two generalized modes of access: setting buckets and/or objects to be private or public. A few other more granular settings are also available; the [Cloud Manager](#granular-permissions-for-cloud-manager) and [s3cmd](#granular-permissions-for-s3cmd) sections provide information on these respective settings.
+Access Control Lists (ACLs) are a method of defining access to Object Storage resources. You can apply ACLs to both buckets and objects, giving users access and controlling their permission level. There are two generalized modes of access: setting buckets and/or objects to be private or public. A few other more granular settings are also available; [Cloud Manager](#granular-permissions-for-cloud-manager) and [s3cmd](#granular-permissions-for-s3cmd) sections provide information on these respective settings.
 
-## ACLs in the Cloud Manager
+## ACLs in Cloud Manager
 
 ### Granular Permissions for Cloud Manager
 
@@ -26,10 +25,10 @@ Access Control Lists (ACLs) are a method of defining access to Object Storage re
 ### Bucket Level ACLs in Cloud Manager
 
 {{< note >}}
-Existing buckets and any new bucket created in the Cloud Manager have a default ACL permission setting of Private.
+Existing buckets and any new bucket created in Cloud Manager have a default ACL permission setting of Private.
 {{< /note >}}
 
-1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
+1.  If you have not already, log in to the [Linode Cloud Manager](https://cloud.linode.com).
 
 1.  Click the **Object Storage** link in the sidebar, and then click on the bucket you wish to edit the ACLs for.
 
@@ -60,10 +59,10 @@ Existing buckets and any new bucket created in the Cloud Manager have a default 
 ### Object Level ACLs in Cloud Manager
 
 {{< note >}}
-Existing objects and any new objects created in the Cloud Manager have a default ACL permission setting of Private.
+Existing objects and any new objects created in Cloud Manager have a default ACL permission setting of Private.
 {{< /note >}}
 
-1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
+1.  If you have not already, log in to the [Linode Cloud Manager](https://cloud.linode.com).
 
 1.  Click the **Object Storage** link in the sidebar, and then click on the bucket that holds the objects that you wish to edit the ACLs for.
 
@@ -148,7 +147,7 @@ The owner of the bucket always has the `full_control` permission.
 {{< /note >}}
 
 {{< note >}}
-If you set an ACL that does not map to an ACL in the Cloud Manager, the Cloud Manager displays this as `Custom`.
+If you set an ACL that does not map to an ACL in Cloud Manager, Cloud Manager displays this as `Custom`.
 
 ![Custom ACL Setting Displayed in Cloud Manager](acl-s3cmd-custom-setting-cloud-manager.png "Custom ACL Setting Displayed in Cloud Manager")
 {{< /note >}}

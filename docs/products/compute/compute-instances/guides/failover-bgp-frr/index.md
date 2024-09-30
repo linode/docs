@@ -1,15 +1,12 @@
 ---
+title: "Configuring IP Failover over BGP using FRR (Advanced)"
 description: "Learn how to use Linode's IP Sharing feature to configure IP failover using FRR, a routing software that implements BGP"
-keywords: ['IP failover','elastic IP','frr','bgp']
 published: 2022-01-11
 modified: 2022-04-28
-modified_by:
-  name: Linode
-title: "Configuring IP Failover over BGP using FRR (Advanced)"
+keywords: ['IP failover','elastic IP','frr','bgp']
 external_resources:
 - '[FRRouting Documentation](http://docs.frrouting.org/en/latest/overview.html)'
 aliases: ['/guides/ip-failover-bgp-frr/']
-authors: ["Linode"]
 ---
 
 {{< note >}}
@@ -20,7 +17,7 @@ This guide covers using the open source [FRRouting (FRR)](http://docs.frrouting.
 
 ## Before You Begin
 
-Prior to following this guide, ensure the following has been done on each Compute Instance used within your IP failover strategy.
+Before following this guide, ensure the following has been done on each Compute Instance used within your IP failover strategy.
 
 1. Read through the [Configuring Failover on a Compute Instance](/docs/products/compute/compute-instances/guides/failover/) guide to learn more about how failover is implemented within Linode Compute.
 
@@ -34,9 +31,9 @@ These instructions enable you to configure failover using FRR, which is very con
 
 To configure failover, complete each section in the order shown:
 
-1. [Configuring Failover on a Compute Instance > Create and Share the Shared IP Address](/docs/products/compute/compute-instances/guides/failover/#create-and-share-the-shared-ip-address)
+1. [Configuring Failover on a Compute Instance > Create and Share the Shared IP Address](/docs/products/compute/compute-instances/guides/failover/#1-create-and-share-the-shared-ip-address)
 1. For *each* Compute Instance:
-      - [Configuring Failover on a Compute Instance > Add the Shared IP to the Networking Configuration](/docs/products/compute/compute-instances/guides/failover/#add-the-shared-ip-to-the-networking-configuration)
+      - [Configuring Failover on a Compute Instance > Add the Shared IP to the Networking Configuration](/docs/products/compute/compute-instances/guides/failover/#2-add-the-shared-ip-to-the-networking-configuration)
       - [Install FRR](#install-frr)
       - [Configure FRR](#configure-frr)
 1. [Configuring Failover on a Compute Instance > Test Failover](/docs/products/compute/compute-instances/guides/failover/#test-failover)

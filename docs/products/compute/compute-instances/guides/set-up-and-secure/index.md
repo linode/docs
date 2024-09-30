@@ -2,15 +2,12 @@
 title: "Setting Up and Securing a Compute Instance"
 title_meta: "How to Set Up and Secure a Compute Instance"
 description: "Learn how to set up and secure a new Compute Instance, including updating your software, creating a user account, and hardening SSH."
+published: 2022-02-25
+modified: 2024-01-04
 keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 tags: ["ssh","security"]
 bundles: ['centos-security', 'debian-security']
-published: 2022-02-25
-modified: 2023-08-08
-modified_by:
-  name: Linode
 aliases: ['/securing-your-server/','/security/linux-security-basics/','/security/securing-your-server/index.cfm/','/security/basics/securing-your-server/','/security/securing-your-server/','/guides/securing-your-server/','/guides/set-up-and-secure/']
-authors: ["Linode"]
 ---
 
 After you have successfully created a Compute Instance, there are a few initial configuration steps you should perform within your new Linux system. This includes updating your system, setting the timezone, configuring a custom hostname, adding a limited user, hardening SSH to prevent unauthorized access, and configuring a firewall. These steps ensure your instance is up to date, secure, and ready for use.
@@ -19,7 +16,7 @@ After you have successfully created a Compute Instance, there are a few initial 
 While this guide is optional, it walks you through best practices and covers important steps to secure your server. It is recommended that you follow these instructions when deploying a new Compute Instance. Some guides within our library assume that you have performed these steps, such as setting your hostname and updating your software.
 {{< /note >}}
 
-1. [View your Instance in the Cloud Manager](#view-your-instance-in-the-cloud-manager)
+1. [View your Instance in Cloud Manager](#view-your-instance-in-the-cloud-manager)
 1. [Connect to the Instance](#connect-to-the-instance)
 1. [Perform System Updates](#perform-system-updates)
 1. [Set the Timezone](#set-the-timezone)
@@ -37,9 +34,9 @@ If you haven't done so already, review the following guides to learn more about 
 - [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/)
 - [Linode Beginner's Guide](/docs/products/compute/compute-instances/faqs/)
 
-## View your Instance in the Cloud Manager
+## View your Instance in Cloud Manager
 
-Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Linodes** link in the left menu, and select your Compute Instance from the list. This opens the details page for that instance, which allows you to view key information and further configure it to meet your needs.
+Log in to [Cloud Manager](https://cloud.linode.com/), click the **Linodes** link in the left menu, and select your Compute Instance from the list. This opens the details page for that instance, which lets you view key information and further configure it to meet your needs.
 
 ![Details page in Cloud Manager](create-instance-details.png)
 
@@ -47,7 +44,7 @@ Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Linodes** 
 
 Once the Compute Instance has been created and has finished booting up, you can connect to it. Connecting to your instance is usually done through the SSH (Secure Shell) protocol, though you can use the [Lish Console](/docs/products/compute/compute-instances/guides/lish/) to bypass SSH and connect directly to your instance. The Lish Console can be accessed through a web browser (Weblish) or via SSH on the command line.
 
--   **Weblish (via the Cloud Manager):** Click the **Launch LISH Console** link at the top right corner of the Compute Instance's detail page. See [Using the Lish Console > Through a Browser](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish).
+-   **Weblish (via Cloud Manager):** Click the **Launch LISH Console** link at the top right corner of the Compute Instance's detail page. See [Using the Lish Console > Through a Browser](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish).
 
 -   **SSH:** Copy the command from the *SSH Access* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the following, only with the IP address of your newly created instance.
 
@@ -298,7 +295,7 @@ See our guide to [Adding DNS Records](/docs/products/networking/dns-manager/) fo
 
 ## Add a Limited User Account
 
-Up to this point, you have accessed your Compute Instance as the `root` user, which has unlimited privileges and can execute *any* command--even one that could accidentally disrupt your server. We recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges so you can administer your server. Later, when you want to restrict sudo access for users, see [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-sudo).
+Up to this point, you have accessed your Compute Instance as the `root` user, which has unlimited privileges and can execute *any* command--even one that could accidentally disrupt your server. We recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges so you can administer your server. Later, when you want to restrict sudo access for users, see [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user).
 
 {{< note >}}
 Not all Linux distributions include `sudo` on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output `sudo: command not found`, install sudo before continuing.
@@ -366,7 +363,7 @@ To protect your user account with public key authentication, you first need to c
         - **macOS:** `/Users/username/.ssh/`
         - **Windows:** `C:\Users\Username\.ssh\`
 
-        Since SSH keys are generated as a private and public key pair, there should be two files for each SSH key. They have similar file names, with the public key using a `.pub` extension and the private key using no extension. While SSH keys can have custom file names, many people generate them using their default names. These default file names start with `id_` followed by the type of key, such as `id_rsa`, `id_ed25519`, and `id_ecdsa`. See example private and public key file names below:
+        Since SSH keys are generated as a private and public key pair, there should be two files for each SSH key. They have similar filenames, with the public key using a `.pub` extension and the private key using no extension. While SSH keys can have custom filenames, many people generate them using their default names. These default filenames start with `id_` followed by the type of key, such as `id_rsa`, `id_ed25519`, and `id_ecdsa`. See example private and public key filenames below:
 
         - **Private key:** `id_ed25519`
         - **Public key:** `id_ed25519.pub`
@@ -493,13 +490,19 @@ Lastly, edit the SSH configuration file to disallow root login and disable passw
 
 1.  Restart the SSH service to load the new configuration.
 
-    -   If you’re using a Linux distribution which uses systemd (CentOS 7, Debian 8, Fedora, Ubuntu 15.10+)
+    -   **Distributions with systemd:** If you’re using a Linux distribution which uses systemd (CentOS 7, Debian 8, Fedora, Ubuntu 15.10+), restart the service using systemctl:
 
         ```command
         sudo systemctl restart sshd
         ```
 
-    -   If your init system is SystemV or Upstart (CentOS 6, Debian 7, Ubuntu 14.04):
+    -   **Ubuntu 22.10+**: If you are using Ubuntu 22.10 or later, `sshd` uses socket-based activation. Run this command instead of restarting the service.
+
+        ```command
+        systemctl enable --now ssh.service
+        ```
+
+    -   **Distributions without systemd:** If your init system is SystemV or Upstart (CentOS 6, Debian 7, Ubuntu 14.04), run the command below to restart the service:
 
         ```command
         sudo service sshd restart
@@ -507,7 +510,7 @@ Lastly, edit the SSH configuration file to disallow root login and disable passw
 
 ### Use Fail2Ban for SSH Login Protection
 
-[*Fail2Ban*](http://www.fail2ban.org/wiki/index.php/Main_Page) is an application that bans IP addresses from logging into your server after too many failed login attempts. Since legitimate logins usually take no more than three tries to succeed (and with SSH keys, no more than one), a server being spammed with unsuccessful logins indicates attempted malicious access.
+[*Fail2Ban*](http://www.fail2ban.org/wiki/index.php/Main_Page) is an application that bans IP addresses from logging in to your server after too many failed login attempts. Since legitimate logins usually take no more than three tries to succeed (and with SSH keys, no more than one), a server being spammed with unsuccessful logins indicates attempted malicious access.
 
 Fail2Ban can monitor a variety of protocols including SSH, HTTP, and SMTP. By default, Fail2Ban monitors SSH only, and is a helpful security deterrent for any server since the SSH daemon is usually configured to run constantly and listen for connections from any remote IP address.
 
@@ -515,15 +518,15 @@ For complete instructions on installing and configuring Fail2Ban, see our guide:
 
 ## Configure a Firewall
 
-{{< content "cloud-firewall-shortguide" >}}
+{{% content "cloud-firewall-shortguide" %}}
 
 Using a *firewall* to block unwanted inbound traffic to your Compute Instance provides a highly effective security layer. By being very specific about the traffic you allow in, you can prevent intrusions and network mapping. A best practice is to allow only the traffic you need, and deny everything else. See our documentation on some of the most common firewall applications:
 
 - [nftables](/docs/guides/how-to-use-nftables/) or its predecessor, [iptables](/docs/guides/control-network-traffic-with-iptables/), is the controller for netfilter, the Linux kernel's packet filtering framework. One of these utilities is included in most Linux distributions by default.
 
-- [firewalld](/docs/guides/introduction-to-firewalld-on-centos/) is a firewall management tool that serves as a frontend to nftables or iptables. It is preinstalled on the RHEL family of distributions (and others), including CentOS, AlmaLinux, Rocky Linux, Fedora, and openSUSE Leap.
+- [firewalld](/docs/guides/introduction-to-firewalld-on-centos/) is a firewall management tool that serves as a front end to nftables or iptables. It is preinstalled on the RHEL family of distributions (and others), including CentOS, AlmaLinux, Rocky Linux, Fedora, and openSUSE Leap.
 
-- [UFW](/docs/guides/configure-firewall-with-ufw/) is another firewall management tool that operates as a frontend to nftables or iptables. It is used by default on Ubuntu and is also available on other Debian-based distributions.
+- [UFW](/docs/guides/configure-firewall-with-ufw/) is another firewall management tool that operates as a front end to nftables or iptables. It is used by default on Ubuntu and is also available on other Debian-based distributions.
 
 ## Common Lockout Recovery Steps
 
@@ -569,4 +572,4 @@ These are the most basic steps to harden any Linux server, but further security 
 
 Now you can begin setting up your Compute Instance for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/guides/migrate-from-shared-hosting-to-linode/) to [enabling two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/) to [hosting a website](/docs/guides/hosting-a-website-ubuntu-18-04/).
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}

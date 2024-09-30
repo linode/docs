@@ -1,27 +1,24 @@
 ---
 slug: apache-2-web-server-on-fedora-14
-deprecated: true
+title: Apache 2 Web Server on Fedora 14
 description: 'Instructions for getting started with the Apache web server on Fedora 14.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-12-07
+modified: 2013-10-04
 keywords: ["apache fedora 14", "fedora web server", "linux web server"]
 tags: ["web server","apache","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/apache-2-web-server-on-fedora-14/','/web-servers/apache/installation/fedora-14/','/web-servers/apache/apache-2-web-server-on-fedora-14/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2010-12-07
-title: Apache 2 Web Server on Fedora 14
 relations:
     platform:
         key: how-to-install-apache2
         keywords:
             - distribution: Fedora 14
-authors: ["Linode"]
+deprecated: true
 ---
 
-
-
-This tutorial explains how to install and configure the Apache web server on Fedora 14. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 14](/docs/guides/lamp-server-on-fedora-14/).
+This tutorial explains how to install and configure the Apache web server on Fedora 14. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 14](/docs/guides/how-to-install-lamp-stack-on-fedora-alma-rocky-linux/).
 
 ## Set the Hostname
 
@@ -147,7 +144,7 @@ In accordance with best practices, we do not recommend modifying the default con
 
     cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd-conf.backup-1
 
-Generally, as specified above and in our [LAMP guide for Fedora 14](/docs/guides/lamp-server-on-fedora-14/) configuration files related to virtually hosted sites should be located in hosts should be located in a specific virtual host file such as `/etc/httpd/conf.d/vhost.conf`, though you can split site-specific configuration information into additional files if needed.
+Generally, as specified above and in our [LAMP guide for Fedora 14](/docs/guides/how-to-install-lamp-stack-on-fedora-alma-rocky-linux/) configuration files related to virtually hosted sites should be located in hosts should be located in a specific virtual host file such as `/etc/httpd/conf.d/vhost.conf`, though you can split site-specific configuration information into additional files if needed.
 
 ## Install Apache Modules
 

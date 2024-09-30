@@ -2,12 +2,11 @@
 slug: database-solutions
 title: "Determine the Best Database and Cloud Hosting Solution for Your Next Application"
 description: "Learn about the most popular database management systems and how to host them on the Akamai cloud computing platform."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2023-07-11
 keywords: ['DBMS', 'managed database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-07-11
-modified_by:
-  name: Linode
-authors: ["Linode"]
 ---
 
 Most applications use databases to store and organize the information they handle. When building a custom application or deploying an existing application, deciding what database software to use is often one of the most important decisions. This guide outlines some of the most popular database software and includes advice on both selecting the database and hosting it on Akamai.
@@ -67,7 +66,7 @@ After determining which database management system to use for your application, 
 
 - [Managed Databases](#managed-databases)
 
-    {{< content "dbass-eos" >}}
+    {{% content "dbass-eos" %}}
 
 - [Marketplace Apps (and Clusters)](#marketplace-apps-and-clusters)
 - [Self or custom deployment on Compute Instances](#custom-deployment)

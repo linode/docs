@@ -1,13 +1,12 @@
 ---
 slug: deploy-linodes-using-linode-ansible-collection
+title: "Use the Linode Ansible Collection to Deploy a Linode"
 description: "The Linode Ansible collection provides plugins for managing Linode services with Ansible. This guide shows how to install and use the Linode Ansible collection."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2022-07-14
 keywords: ['ansible','Linode Ansible Collection','dynamic inventory','configuration management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-07-14
-modified: 2022-07-14
-modified_by:
-  name: Linode
-title: "Use the Linode Ansible Collection to Deploy a Linode"
 aliases: ['/guides/deploy-linodes-using-linode-collection/']
 external_resources:
 - '[Ansible Collections](https://github.com/ansible-collections/overview)'
@@ -15,7 +14,6 @@ external_resources:
 - '[Ansible Galaxy](https://galaxy.ansible.com/linode/cloud)'
 - '[Ansible Best Practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html)'
 tags: ["automation", "saas", "gaming"]
-authors: ["Linode"]
 ---
 
 Ansible is a popular open-source Infrastructure as Code (IaC) tool that can be used to complete common IT tasks like cloud provisioning and configuration management across a wide array of infrastructure components. Commonly seen as a solution to multi-cloud configurations, automation, and continuous delivery issues, Ansible is considered by many to be an industry standard in the modern cloud landscape.
@@ -31,8 +29,7 @@ This guide shows how to:
 -  [Understand Ansible Fully Qualified Collection Namespaces](#understanding-fully-qualified-collection-namespaces)
 
 -  [Deploy a Linode instance](#deploy-a-linode-with-the-linode-ansible-collection) using Ansible and the Linode Ansible collection.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 This guide’s example instructions create a [1GB Linode](https://www.linode.com/pricing/#compute-shared) (Nanode) billable resource on your Linode account. If you do not want to keep using the Linode that you create, be sure to delete the Linode when you have finished the guide.
 
 If you remove the resource, [you are only be billed for the hour(s) that the resources were present on your account](/docs/guides/understanding-billing-and-payments/).
@@ -91,7 +88,7 @@ The Linode Ansible collection is now installed and ready to deploy and manage Li
 
 ## Configure Ansible
 
-When interfacing with the Linode Ansible collection, it is generally good practice to use variables to securely store sensitive strings like API tokens. This section shows how to securely store and access the [Linode API Access token](/docs/products/tools/api/guides/manage-api-tokens/) (generated in the [Before You Begin](#before-you-begin) section) along with a root password that is assigned to new Linode instances. Both of these are encrypted with [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html).
+When interfacing with the Linode Ansible collection, it is generally good practice to use variables to securely store sensitive strings like API tokens. This section shows how to securely store and access the [Linode API Access token](/docs/products/platform/accounts/guides/manage-api-tokens/) (generated in the [Before You Begin](#before-you-begin) section) along with a root password that is assigned to new Linode instances. Both of these are encrypted with [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html).
 
 ### Create an Ansible Vault Password File
 

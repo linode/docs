@@ -1,9 +1,8 @@
 ---
 slug: rotate-kubernetes-secrets
 title: "Rotate Kubernetes Secrets"
-published: 2023-12-10
-authors: ["Linode"]
 description: "Learn how to secure your cluster by rotating Kubernetes secrets."
+published: 2023-12-10
 keywords: ["kubernetes", "linode kubernetes engine", "lke", "cluster", "cluster security", "secret", "secrets", "token", "tokens"]
 tags: ["Kubernetes", "Linode Kubernetes Engine", "LKE"]
 ---
@@ -60,12 +59,12 @@ Once your local `$KUBECONFIG` environment variable is configured with your clust
 
 In order to expedite secret recreation after deletion and regain access to your cluster, you can regenerate your kubeconfig. This process will also regenerate the lke-admin-token secret in kube-system. Note that these steps use the Linode CLI and follow the [Kubernetes Cluster Regenerate](/docs/api/linode-kubernetes-engine-lke/#kubernetes-cluster-regenerate) instructions from our API documentation. See our API documentation for correlating API commands.
 
-1. View your list of Kubernetes clusters to get the ID number (clusterId) of the cluster you wish to target:
+1. View your list of Kubernetes clusters to get the ID number of the cluster you wish to target:
 
     ```command
     linode-cli lke clusters-list
     ```
-    The clusterId can be found in the `id` column:
+    The cluster ID can be found in the `id` column:
     ```output
     ┌────────┬─────────────────┬────────┬─────────────┬─────────────────────────────────┐
     │ id     │ label           │ region │ k8s_version │ control_plane.high_availability │
@@ -73,7 +72,7 @@ In order to expedite secret recreation after deletion and regain access to your 
     │ 12345  │ example-cluster │ us-iad │ 1.27        │ True                            │
     └────────┴─────────────────┴────────┴─────────────┴─────────────────────────────────┘
     ```
-1. Regenerate your cluster's kubeconfig file using the clusterId obtained in step 1. Replace {{< placeholder "12345" >}} with your cluster's ID number:
+1. Regenerate your cluster's kubeconfig file using the cluster ID obtained in step 1. Replace {{< placeholder "12345" >}} with your cluster's ID number:
 
     ```command
     linode-cli lke regenerate {{< placeholder "12345" >}} --kubeconfig=true --servicetoken=true
@@ -87,7 +86,7 @@ In order to expedite secret recreation after deletion and regain access to your 
     ```
     {{< /note >}}
 
-1. If you choose to download your new kubeconfig via the Cloud Manager, you will need to reconfigure your kubeconfig by saving the file path to your `$KUBECONFIG` environment variable. Replace {{< placeholder "~/Downloads/kubeconfig.yaml" >}} with the file path for your new kubeconfig file:
+1. If you choose to download your new kubeconfig via Cloud Manager, you will need to reconfigure your kubeconfig by saving the file path to your `$KUBECONFIG` environment variable. Replace {{< placeholder "~/Downloads/kubeconfig.yaml" >}} with the file path for your new kubeconfig file:
 
     ```command
     export KUBECONFIG={{< placeholder "~/Downloads/kubeconfig.yaml" >}}

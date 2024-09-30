@@ -1,16 +1,13 @@
 ---
-description: "Reverse DNS (rDNS) resolves an IP address to the designated domain name. This guide will teach you how to set it up."
-keywords: ["reverse", "dns", "PTR"]
-tags: ["dns","networking","cloud manager","linode platform"]
-published: 2015-07-09
-modified: 2023-01-18
-modified_by:
-  name: Linode
 title: "Configure rDNS (Reverse DNS) on a Compute Instance"
 title_meta: "How To Configure rDNS (Reverse DNS) on a Compute Instance"
+description: "Reverse DNS (rDNS) resolves an IP address to the designated domain name. This guide will teach you how to set it up."
+published: 2015-07-09
+modified: 2023-01-18
+keywords: ["reverse", "dns", "PTR"]
+tags: ["dns","networking","cloud manager","linode platform"]
 image: configure-your-linode-reverse-dns.jpg
 aliases: ['/networking/configure-your-linode-for-reverse-dns/','/networking/dns/setting-reverse-dns/','/networking/dns/configure-your-linode-for-reverse-dns/','/networking/setting-up-reverse-dns-lookup/','/networking/dns/configure-your-linode-for-reverse-dns-classic-manager/','/guides/configure-your-linode-for-reverse-dns/','/guides/configure-rdns/']
-authors: ["Linode"]
 ---
 
 The ability to point a domain name to an IP address is referred to as *forward* DNS resolution. *Reverse* DNS (rDNS) lookup is the inverse process, where an IP address resolves to a domain name. Reverse DNS uses a *pointer record* (*PTR*) to match an IP address with a domain or subdomain. PTR records are generally set with a hosting provider. As such, rDNS can be set directly on Linode. Official Internet documents state that "every Internet-reachable host should have a name," and that the name should match a reverse pointer record (see [RFC 1033](http://tools.ietf.org/html/rfc1033) and [RFC 1912](http://tools.ietf.org/html/rfc1912)).
@@ -27,7 +24,7 @@ First, decide the FQDN (full qualified domain name) you wish to use as your rDNS
 
 Before setting the rDNS value for your Compute Instance's IP address, you must first add an *A Record* on your domain's DNS provider that maps your full domain (including subdomain) to the IP. To do this, log in to whichever service you use to manage your domain's DNS records. This may be the Linode [DNS Manager](/docs/products/networking/dns-manager/), your domain's registrar, or a third-party DNS service. The instructions below assume you are using Linode's DNS Manager, though most DNS services work in a similar fashion.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Domains** from the main navigation menu.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select **Domains** from the main navigation menu.
 
 1. Within the list of domains that appears, click the **Edit** link corresponding with the domain you wish to use for rDNS. If your domain is not listed, you may be using a different DNS service.
 
@@ -40,7 +37,7 @@ See our [Introduction to DNS Records](/docs/guides/dns-overview/) and [Common DN
 
 ## Setting Reverse DNS
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and click on the **Linodes** link in the sidebar to access a list of all your Compute Instances.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and click on the **Linodes** link in the sidebar to access a list of all your Compute Instances.
 
 1. Select the Compute Instance whose reverse DNS you would like to set up and navigate to the **Network** tab.
 

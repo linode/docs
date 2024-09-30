@@ -65,39 +65,6 @@
 
 
 
-  <div class="o-layout__row c-site-header__banner c-message" id="x-banner-2023-23-13">
-    <div class="c-message__body">
-      <div class="c-notification">
-        <a href="#" class="c-notification__link" target="_self">
-          <span class="c-notification__tag"></span>
-          <span class="c-notification__message"></span>
-        </a>
-      </div>
-    </div>
-    <button type="button" class="c-message__x" aria-label="Dismiss message">
-      <svg viewBox="0 0 320 512"><path fill="currentcolor" d="M207.6 256l107.72-107.72c6.23-6.23 6.23-16.34.0-22.58l-25.03-25.03c-6.23-6.23-16.34-6.23-22.58.0L160 208.4 52.28 100.68c-6.23-6.23-16.34-6.23-22.58.0L4.68 125.7c-6.23 6.23-6.23 16.34.0 22.58L112.4 256 4.68 363.72c-6.23 6.23-6.23 16.34.0 22.58l25.03 25.03c6.23 6.23 16.34 6.23 22.58.0L160 303.6l107.72 107.72c6.23 6.23 16.34 6.23 22.58.0l25.03-25.03c6.23-6.23 6.23-16.34.0-22.58L207.6 256z"/></svg>
-    </button>
-  </div>
-  <script>
-    (function(){
-      var lsk = 'x-banner-2023-23-13',
-          bc = 'has-banner',
-          $ht = document.querySelector( 'html' ),
-          $bn = document.getElementById( lsk ),
-          $x = $bn.querySelector( '.c-message__x' ),
-          lsv = localStorage.getItem( lsk ),
-          rm = function(){
-            $ht.classList.remove( bc );
-            $bn.remove();
-          };
-      if ( lsv ) { rm(); return; }
-      $ht.classList.add( bc );
-      $x.addEventListener('click',function(){
-        localStorage.setItem( lsk, true );
-        rm();
-      });
-    })();
-  </script>
   <div class="o-layout__row c-site-header__topbar">
     <div class="o-layout__colset">
       <div class="o-layout__col">
@@ -125,7 +92,7 @@
                 <a class="o-menu__link" href="https://www.linode.com/company/contact/"><span class="o-menu__title">Sales</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/company/careers/"><span class="o-menu__title">Careers</span></a>
+                <a class="o-menu__link" href="https://www.akamai.com/careers"><span class="o-menu__title">Careers</span></a>
               </li>
               <li class="o-menu__item">
                 <a class="o-menu__link" href="https://login.linode.com/login"><span class="o-menu__title">Log In</span></a>
@@ -225,9 +192,6 @@
                 <a class="o-menu__link" href="https://www.linode.com/series/craft-of-code/"><span class="o-menu__title">Customer Stories</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/linode-for-business/"><span class="o-menu__title">Cloud for Business</span></a>
-              </li>
-              <li class="o-menu__item">
                 <a class="o-menu__link" href="https://www.linode.com/approach/"><span class="o-menu__title">Our Approach</span></a>
               </li>
               <li class="o-menu__item">
@@ -295,9 +259,6 @@
                   <li class="o-menu__item">
                     <a class="o-menu__link" href="https://www.linode.com/products/managed/"><span class="o-menu__title">Managed</span></a>
                   </li>
-                  <li class="o-menu__item">
-                    <a class="o-menu__link" href="https://www.linode.com/products/pro-services/"><span class="o-menu__title">Professional Services</span></a>
-                  </li>
                 </ul>
               </li>
               <li class="o-menu__item o-menu__parent" id="submenu-mobile-primary-full--46176" data-group="submenu-mobile-primary-full--level-1">
@@ -316,7 +277,7 @@
                     <a class="o-menu__link" href="https://www.linode.com/products/nodebalancers/"><span class="o-menu__title">NodeBalancers</span></a>
                   </li>
                   <li class="o-menu__item">
-                    <a class="o-menu__link" href="https://www.linode.com/products/vlan/"><span class="o-menu__title">VLAN</span></a>
+                    <a class="o-menu__link" href="https://www.linode.com/products/private-networking/"><span class="o-menu__title">Private Networking</span></a>
                   </li>
                 </ul>
               </li>
@@ -339,7 +300,7 @@
                     <a class="o-menu__link" href="https://www.linode.com/products/linode-ansible-collection/"><span class="o-menu__title">Ansible Collection</span></a>
                   </li>
                   <li class="o-menu__item">
-                    <a class="o-menu__link" href="https://www.linode.com/products/images/"><span class="o-menu__title">Images</span></a>
+                    <a class="o-menu__link" href="https://www.linode.com/products/images/"><span class="o-menu__title">Custom Images</span></a>
                   </li>
                   <li class="o-menu__item">
                     <a class="o-menu__link" href="https://www.linode.com/products/integrations/"><span class="o-menu__title">Integrations</span></a>
@@ -416,9 +377,6 @@
                 <a class="o-menu__link" href="https://www.linode.com/managed-hosting-industry-solutions/"><span class="o-menu__title">Managed Hosting</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/managed-service-providers-industry-solutions/"><span class="o-menu__title">Managed Service Providers</span></a>
-              </li>
-              <li class="o-menu__item">
                 <a class="o-menu__link" href="https://www.linode.com/video-streaming-solutions/"><span class="o-menu__title">Media</span></a>
               </li>
               <li class="o-menu__item">
@@ -488,9 +446,6 @@
                 <a class="o-menu__link" href="https://www.linode.com/newsletter/"><span class="o-menu__title">Newsletter</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/promotions/"><span class="o-menu__title">Promotional Offers</span></a>
-              </li>
-              <li class="o-menu__item">
                 <a class="o-menu__link" href="https://www.linode.com/distributions/"><span class="o-menu__title">Distributions</span></a>
               </li>
               <li class="o-menu__item">
@@ -505,10 +460,10 @@
                 <a class="o-menu__link" href="https://www.linode.com/company/about/"><span class="o-menu__title">About Us</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/company/press/"><span class="o-menu__title">Press Center</span></a>
+                <a class="o-menu__link" href="https://www.akamai.com/newsroom"><span class="o-menu__title">Newsroom</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/company/careers/"><span class="o-menu__title">Careers</span></a>
+                <a class="o-menu__link" href="https://www.akamai.com/careers"><span class="o-menu__title">Careers</span></a>
               </li>
               <li class="o-menu__item">
                 <a class="o-menu__link" href="https://www.linode.com/legal/"><span class="o-menu__title">Legal</span></a>
@@ -559,7 +514,7 @@
     <div class="o-layout__module" id="submenu-mobile-search" data-group="mobile-search">
       <form role="search" method="get" action="https://www.linode.com" class="c-search">
         <label for="s">Search</label>
-        <input type="search" placeholder="Search Linode" name="s" id="s">
+        <input type="search" placeholder="Search Linode" name="s" id="s-mobilenav">
         <input type="submit" value="Search">
       </form>
     </div>
@@ -627,9 +582,6 @@
               </li>
               <li class="o-menu__item">
                 <a class="o-menu__link" href="https://www.linode.com/series/craft-of-code/"><span class="o-menu__title">Customer Stories</span></a>
-              </li>
-              <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/linode-for-business/"><span class="o-menu__title">Cloud for Business</span></a>
               </li>
               <li class="o-menu__item">
                 <a class="o-menu__link" href="https://www.linode.com/approach/"><span class="o-menu__title">Our Approach</span></a>
@@ -738,7 +690,7 @@
                 <a class="o-menu__link" href="https://www.linode.com/products/nodebalancers/"><span class="o-menu__title">NodeBalancers</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/vlan/"><span class="o-menu__title">VLAN</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/private-networking/"><span class="o-menu__title">Private Networking</span></a>
               </li>
             </ul>
           </nav>
@@ -764,7 +716,7 @@
                 <a class="o-menu__link" href="https://www.linode.com/products/linode-ansible-collection/"><span class="o-menu__title">Ansible Collection</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/images/"><span class="o-menu__title">Images</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/images/"><span class="o-menu__title">Custom Images</span></a>
               </li>
               <li class="o-menu__item">
                 <a class="o-menu__link" href="https://www.linode.com/products/integrations/"><span class="o-menu__title">Integrations</span></a>
@@ -838,9 +790,6 @@
               <li class="o-menu__item">
                 <a class="o-menu__link" href="https://www.linode.com/products/managed/"><span class="o-menu__title">Managed</span></a>
               </li>
-              <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/pro-services/"><span class="o-menu__title">Professional Services</span></a>
-              </li>
             </ul>
           </nav>
         </div>
@@ -880,9 +829,6 @@
               </li>
               <li class="o-menu__item">
                 <a class="o-menu__link" href="https://www.linode.com/managed-hosting-industry-solutions/"><span class="o-menu__title">Managed Hosting</span></a>
-              </li>
-              <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/managed-service-providers-industry-solutions/"><span class="o-menu__title">Managed Service Providers</span></a>
               </li>
               <li class="o-menu__item">
                 <a class="o-menu__link" href="https://www.linode.com/video-streaming-solutions/"><span class="o-menu__title">Media</span></a>
@@ -992,10 +938,7 @@
                 <a class="o-menu__link" href="https://www.linode.com/newsletter/"><span class="o-menu__title">Newsletter</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/company/press/"><span class="o-menu__title">Press Center</span></a>
-              </li>
-              <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/promotions/"><span class="o-menu__title">Promotional Offers</span></a>
+                <a class="o-menu__link" href="https://www.akamai.com/newsroom"><span class="o-menu__title">Newsroom</span></a>
               </li>
               <li class="o-menu__item">
                 <a class="o-menu__link" href="https://partner-directory.linode.com/s/"><span class="o-menu__title">Find a Partner</span></a>

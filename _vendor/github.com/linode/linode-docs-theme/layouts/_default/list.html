@@ -5,7 +5,7 @@
 
 {{ define "main" }}
   <noscript>
-    {{ $isDynamic := eq .RelPermalink "/docs/sections/" }}
+    {{ $isDynamic :=  (eq .Type "sections") }}
     {{ if $isDynamic }}
       {{ partial "components/nojs.html" . }}
     {{ else }}
@@ -16,6 +16,7 @@
 {{ end }}
 
 {{ define "list-js" }}
+  {{ $isDynamic := eq .RelPermalink "/docs/sections/" }}
   <div class="w-full" x-cloak x-data="lncSections()">
     {{ partial "components/error.html" . }}
     <template x-if="loaded">
@@ -23,9 +24,15 @@
         <div class="mb-8" x-show="loaded">
           <div
             class="flex flex-col lg:flex-row lg:items-center flex-wrap space-y-2 mb-8">
-            <h1
-              class="font-semibold tracking-tighter pb-4 lg:pb-0 pr-4"
-              x-html="data.meta.title"></h1>
+            {{ if $isDynamic }}
+              <h1
+                class="font-semibold tracking-tighter pb-4 lg:pb-0 pr-4"
+                x-html="data.meta.title"></h1>
+            {{ else }}
+              <h1 class="font-semibold tracking-tighter pb-4 lg:pb-0 pr-4">
+                {{ $.Title }}
+              </h1>
+            {{ end }}
             <div x-show="!uiState.noToggleGuidesLink">
               <button
                 @click="toggleShowGuides();"
@@ -43,41 +50,29 @@
             </div>
           </div>
           <div class="mb-8">
-            <p x-html="data.meta.excerpt"></p>
+            {{ if $isDynamic }}
+              <p x-html="data.meta.excerpt"></p>
+            {{ else }}
+              {{ if ge (len .Content) 20 }}
+                <div class="content max-w-full prose">
+                  {{ $.Content }}
+                </div>
+              {{ else }}
+                <p>{{ $.Params.description }}</p>
+              {{ end }}
+            {{ end }}
           </div>
           <hr class="mb-6" />
         </div>
-        <template x-if="uiState.showSectionsTiles()">
-          <section class="mb-6 w-full">
-            <h2
-              class="mb-12 text-2"
-              x-text="data.meta.title + ' Categories'"></h2>
-            <div class="flex flex-wrap items-stretch -mx-2 md:-mx-2-5">
-              <template x-for="(item, i) in data.sections" :key="item.key">
-                <div class="px-2 md:px-2-5 py-2 md:py-2-5 w-1/2 md:w-1/4">
-                  <a
-                    class="h-64 flex items-center rounded-lg bg-white hover:shadow-lg text-icongray hover:text-brand"
-                    :href="item.href">
-                    <div class="flex flex-col justify-center w-full">
-                      <div class="w-full flex justify-center mb-8">
-                        <div
-                          class="w-24 h-24"
-                          x-svg="item.thumbnailInline || item.thumbnail"></div>
-                      </div>
-                      <h3
-                        x-html="item.linkTitle"
-                        class="text-center text-lg mb-2"
-                        style="letter-spacing: -0.2px;"></h3>
-                      <span
-                        x-html="`${item.count} ${data.sectionConfig.nounPlural(item.count)}`"
-                        class="text-center text-basicgray text-sm"
-                        style="letter-spacing: -0.3px;"></span>
-                    </div>
-                  </a>
-                </div>
-              </template>
-            </div>
-          </section>
+        {{ $isStatic := (ne $.RelPermalink "/docs/sections/") }}
+        {{/* TODO1 if query set. */}}
+        <template
+          x-if="(!{{ $isStatic }} || $store.search.query.isFiltered()) && uiState.showSectionsTiles()">
+          {{ template "section-list-tiles-dynamic" (dict "page" $) }}
+        </template>
+        <template
+          x-if="({{ $isStatic }} && !$store.search.query.isFiltered()) && uiState.showSectionsTiles()">
+          {{ template "section-list-tiles-static" (dict "page" $) }}
         </template>
         <div x-show="uiState.showGuidesWithSortOption()">
           <div
@@ -225,9 +220,10 @@
           <div>
             <div class="space-y-8">
               <template x-for="(item, i) in data.result.hits">
-                <div
-                  class="bg-white rounded-md md:flex md:items-center"
-                  :class="{ 'shadow-sm': i === 0 }">
+                <a
+                  class="a--block bg-white block rounded-md border border-gray-300 md:flex md:items-center"
+                  :target="item.isExternalLink ? '_blank' : ''"
+                  :href="item.href">
                   <div class="h-full bg-gray-200">
                     <div
                       class="relative pb-20/9 md:pb-14/9 md:w-64 md:h-full overflow-hidden rounded-t-lg rounded-b-none md:rounded-l-lg md:rounded-r-none">
@@ -240,20 +236,21 @@
                     </div>
                   </div>
                   <div class="px-6 md:pl-10 py-4">
-                    <a
-                      class="tracking-tight cursor-pointer mb-4 text-titlecolor hover:text-gray-400"
-                      :target="item.isExternalLink ? '_blank' : ''"
-                      :href="item.href">
-                      <h3
-                        class="mb-2 text-2xl "
-                        x-html="item.linkTitle"
-                        data-testid="tile-title"></h3>
-                    </a>
+                    <h3
+                      class="text-2xl tracking-tight cursor-pointer mb-6 text-titlecolor hover:text-gray-400"
+                      x-html="item.linkTitle"
+                      data-testid="tile-title"></h3>
+
                     <p
                       class="text-darkgray leading-6 text-sm md:text-base"
                       x-html="item.excerptTruncated(160)"></p>
+                    <span
+                      x-show="item.deprecated"
+                      class="mt-3 inline-flex items-center rounded-sm bg-orange-100 px-2 py-1 text-xs font-medium text-orange-800 ring-1 ring-inset ring-orange-600/20"
+                      >Deprecated</span
+                    >
                   </div>
-                </div>
+                </a>
               </template>
             </div>
             {{ template "section-list-pagination" (dict "result" "data.result" "page" "data.page" "class" "mt-10") }}
@@ -341,6 +338,84 @@
           </div>
         </div>
       {{ end }}
+    </div>
+  </section>
+{{ end }}
+
+{{ define "section-list-tiles-static" }}
+  <section class="mb-6 w-full">
+    <h2 class="mb-12 text-2">{{ .page.Title }} Categories</h2>
+    <div class="flex flex-wrap items-stretch -mx-2 md:-mx-2-5">
+      {{ $sections := slice }}
+      {{ range .page.Sections }}
+        {{ $sections = $sections | append ( dict "page" . "count" (len .RegularPagesRecursive) ) }}
+      {{ end }}
+      {{ $sections = sort $sections "count" "desc" }}
+      {{ range $sections }}
+        {{ $thumb := partial "sections/search/get-search-data-thumb.html" (dict "page" .page "tryFeatureSVG" true) }}
+        {{ $tmp := $thumb.Content }}
+        {{ $count := .count }}
+        {{ if not $count }}
+          {{ continue }}
+        {{ end }}
+
+
+        <div class="px-2 md:px-2-5 py-2 md:py-2-5 w-1/2 md:w-1/4">
+          <a
+            href="{{ .page.RelPermalink }}"
+            class="h-64 flex items-center rounded-lg bg-white hover:shadow-lg text-icongray hover:text-brand">
+            <div class="flex flex-col justify-center w-full">
+              <div class="w-full flex justify-center mb-8">
+                <div
+                  class="w-24 h-24"
+                  x-svg="`{{ $thumb.RelPermalink }}`"></div>
+              </div>
+              <h3
+                class="text-center text-lg mb-2"
+                style="letter-spacing: -0.2px;">
+                {{ .page.LinkTitle }}
+              </h3>
+              <span
+                class="text-center text-basicgray text-sm"
+                style="letter-spacing: -0.3px;"
+                >{{ $count }}&nbsp;<span
+                  x-html="`${data.sectionConfig.nounPlural({{ $count }})}`"></span
+              ></span>
+            </div>
+          </a>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}
+
+{{ define "section-list-tiles-dynamic" }}
+  <section class="mb-6 w-full">
+    <h2 class="mb-12 text-2" x-text="data.meta.title + ' Categories'"></h2>
+    <div class="flex flex-wrap items-stretch -mx-2 md:-mx-2-5">
+      <template x-for="(item, i) in data.sections" :key="item.key">
+        <div class="px-2 md:px-2-5 py-2 md:py-2-5 w-1/2 md:w-1/4">
+          <a
+            class="h-64 flex items-center rounded-lg bg-white hover:shadow-lg text-icongray hover:text-brand"
+            :href="item.href">
+            <div class="flex flex-col justify-center w-full">
+              <div class="w-full flex justify-center mb-8">
+                <div
+                  class="w-24 h-24"
+                  x-svg="item.thumbnailInline || item.thumbnail"></div>
+              </div>
+              <h3
+                x-html="item.linkTitle"
+                class="text-center text-lg mb-2"
+                style="letter-spacing: -0.2px;"></h3>
+              <span
+                x-html="`${item.count} ${data.sectionConfig.nounPlural(item.count)}`"
+                class="text-center text-basicgray text-sm"
+                style="letter-spacing: -0.3px;"></span>
+            </div>
+          </a>
+        </div>
+      </template>
     </div>
   </section>
 {{ end }}

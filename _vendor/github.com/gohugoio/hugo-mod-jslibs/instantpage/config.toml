@@ -1,9 +1,0 @@
-[module]
-[[module.mounts]]
-source = "layouts"
-target = "layouts"
-[[module.imports]]
-path = "github.com/instantpage/instant.page"
-[[module.imports.mounts]]
-source = "instantpage.js"
-target = "assets/jslibs/instantpage/instantpage.js"

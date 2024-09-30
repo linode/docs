@@ -1,16 +1,15 @@
 ---
 slug: apache-web-server-on-centos-6
-deprecated: true
+title: Apache Web Server on CentOS 6
 description: 'Install Apache on your CentOS 6 server, configure virtual hosting, and set up mod and scripting support.'
+authors: ["Alex Fornuto"]
+contributors: ["Alex Fornuto"]
+published: 2013-11-11
+modified: 2018-12-31
 keywords: ["Apache", "web sever", "CentOS 6", "centos", "apache 2", "httpd"]
 tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/apache-web-server-on-centos-6/','/web-servers/apache/installation/centos-6/','/websites/apache/apache-2-web-server-on-centos-6/']
-modified: 2018-12-31
-modified_by:
-  name: Linode
-published: 2013-11-11
-title: Apache Web Server on CentOS 6
 external_resources:
  - '[Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
@@ -19,7 +18,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: CentOS 6
-authors: ["Alex Fornuto"]
+deprecated: true
 ---
 
 ![Apache Web Server on CentOS 6](Apache_Web_Server_smg.jpg)
@@ -28,13 +27,13 @@ The *Apache HTTP Server* (Apache) is an open-source web server application. This
 
 If instead you would like to install a full LAMP (Linux, Apache, MySQL, and PHP) stack, please see the [LAMP on CentOS 6](/docs/guides/lamp-on-centos-6/) guide.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
     To check your hostname run:
 

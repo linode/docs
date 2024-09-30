@@ -1,22 +1,21 @@
 ---
 slug: nginx-and-phpfastcgi-on-fedora-13
+title: 'Nginx and PHP-FastCGI on Fedora 13'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Fedora 13'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-05-27
+modified: 2011-05-17
 keywords: ["nginx", "nginx fedora 13", "nginx fastcgi", "nginx php"]
 tags: ["web server","fedora","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/nginx-and-phpfastcgi-on-fedora-13/','/web-servers/nginx/php-fastcgi/fedora-13/','/web-servers/nginx/nginx-and-phpfastcgi-on-fedora-13/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2010-05-27
-title: 'Nginx and PHP-FastCGI on Fedora 13'
-deprecated: true
 relations:
     platform:
         key: nginx-php-fastcgi
         keywords:
             - distribution: Fedora 13
-authors: ["Linode"]
+deprecated: true
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your Fedora 13 Linode.
@@ -149,7 +148,7 @@ Issue the following command sequence to download scripts to control spawn-fcgi a
 
 ## Test PHP with FastCGI
 
-Create a file called "test.php" in your site's "public\_html" directory with the following contents:
+Create a file called "test.php" in your site's `public_html` directory with the following contents:
 
 {{< file "/srv/www/www.example.com/public\\_html/test.php" php >}}
 <?php echo phpinfo(); ?>

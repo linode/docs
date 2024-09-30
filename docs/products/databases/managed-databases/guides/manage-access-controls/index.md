@@ -1,16 +1,15 @@
 ---
 title: "Manage Access Controls"
 description: "Learn how to manage access controls on a Managed Database, including allowing connections from specific IP addresses."
-authors: ["Linode"]
 ---
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}
 
 Each Managed Database cluster has its own access control list, which allows specific IPv4 addresses or ranges to connect to the database. By default, all connections (both public and private) are blocked unless they appear on this list.
 
 ## View Access Controls
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu.
 
 1. Select your Managed Database from the list. This opens the detail page for that database cluster.
 

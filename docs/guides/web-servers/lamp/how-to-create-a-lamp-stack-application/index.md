@@ -3,13 +3,12 @@ slug: how-to-create-a-lamp-stack-application
 title: "How to Create a LAMP Stack on Linux"
 title_meta: "How to Create a LAMP Stack Application"
 description: 'Learn how to create a LAMP stack application on Linux. Read our guide to learn LAMP stack basics. '
+authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
+published: 2023-04-05
 keywords: ['LAMP Stack Application', 'How to create a LAMP stack application', 'LAMP stack', 'LAMP stack on Linux']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Cameron Laird"]
-published: 2023-04-05
-modified_by:
-  name: Linode
 external_resources:
 - '[LAMP stack](/docs/guides/web-servers/lamp/)'
 - '[Model-View-Controller](https://www.guru99.com/mvc-tutorial.html)'
@@ -79,7 +78,7 @@ sudo service mysql start
 
 Confirm that Apache is running with the following steps:
 
-1. You need to [identify the IP address](/docs/guides/find-your-linodes-ip-address/) of the host and enter it in your web browser as a URL, such as `http://localhost` or `http://192.0.2.1` or a similar address.
+1. You need to [identify the IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) of the host and enter it in your web browser as a URL, such as `http://localhost` or `http://192.0.2.1` or a similar address.
 
 1. After visiting this URL, your web browser should display the default Apache2 page with the message "It works!" indicating that Apache is running correctly.
 

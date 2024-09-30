@@ -1,13 +1,11 @@
 ---
-description: "Learn how to manually edit your distribution-specific network configuration files to set static IPs, routes and DNS resolvers."
-keywords: ["static", "ip address", "addresses"]
-published: 2023-09-05
-modified_by:
-  name: Linode
 title: "Manual Network Configuration on a Compute Instance"
+description: "Learn how to manually edit your distribution-specific network configuration files to set static IPs, routes and DNS resolvers."
+published: 2023-09-05
+modified: 2024-05-28
+keywords: ["static", "ip address", "addresses"]
 tags: ["networking","linode platform"]
 aliases: ['/networking/linux-static-ip-configuration/','/networking/configuring-static-ip-interfaces/','/networking/linode-network/linux-static-ip-configuration/','/guides/linux-static-ip-configuration/','/guides/manual-network-configuration/']
-authors: ["Linode"]
 ---
 
 Every Compute Instance is assigned several IP addresses, including a public IPv4 address and a public IPv6 [SLAAC](https://en.wikipedia.org/wiki/IPv6#Stateless_address_autoconfiguration_.28SLAAC.29) address. By default, a utility called [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) automatically configures these IP addresses within the network configuration files on the Compute Instance. While this is preferred in most cases, there are some situations which may require you to manually configure networking yourself. These situations include:
@@ -52,10 +50,16 @@ IP addresses can be statically configured or dynamically configured through DHCP
 
 - **Static** configuration means explicitly defining the IP address within your system's network configuration. IPv4 addresses are configured this way through Network Helper and static configuration of IPv4 and IPv6 routed ranges is typically recommended when manually configuring your networking.
 
-- **DHCP** (Dynamic Host Configuration Protocol) can be used to automatically configure a single IPv4 address on a Compute Instance. If multiple IPv4 addresses are on the system, the first IP address (sorted alpha-numerically) is used. DHCP does not configure private IPv4 addresses or any IPv6 addresses. If you intend on adding or removing public IPv4 addresses after you initially configure networking, using DHCP is not recommended as it may configure a different public IPv4 address after you make those changes.
+- **DHCP** (Dynamic Host Configuration Protocol) can be used to automatically configure a single IPv4 address on a Compute Instance. If you intend on adding or removing public IPv4 addresses after you initially configure networking, using DHCP is not recommended as it may configure a different public IPv4 address after you make those changes.
+    - **Public interfaces**: If multiple IPv4 addresses are on the system, the first IP address (sorted alpha-numerically) is used. DHCP does not configure private IPv4 addresses or any IPv6 addresses.
+    - **VPC interfaces**: DHCP can be used to automatically configure the VPC IP address.
 
     {{< note >}}
-    If you do enable DHCP and are using a firewall (such as Cloud Firewalls), you must configure the firewall to allow communication with our DHCP servers. See the [DHCP IP Address Reference](/docs/guides/dhcp-ip-address-reference/) guide for a list of IP addresses to allow.
+    If you do enable DHCP and are using a firewall (such as Cloud Firewalls), you must configure the firewall to allow communication with our DHCP servers. See the [DHCP IP Address Reference](/docs/products/compute/compute-instances/guides/dhcp-ip-address-reference/) guide for a list of IP addresses to allow.
+    {{< /note >}}
+
+    {{< note >}}
+    If you have a Compute Instance with a public interface and a VPC interface, a default gateway will be configured for both interfaces when using DHCP. This will cause issues routing traffic towards the internet and other VPC subnets. To address this, manually remove one of the default gateways.
     {{< /note >}}
 
 - **SLAAC** (Stateless address autoconfiguration) can *and should* be used to automatically configure the main IPv6 address on a Compute Instance. It does not configure any IPv6 routed ranges (/64 or /56) that may also be assigned to that instance. For SLAAC to function, the Compute Instance needs to accept router advertisements. This is accomplished by enabling router advertisements and disabling IPv6 privacy extensions within your system's networking configuration files. These settings are properly configured by default in our supported distributions.
@@ -66,7 +70,7 @@ Static and dynamic addressing can be used together within a single configuration
 
 - **IP address:** A unique and structured combination of numbers (and letters, for IPv6 address) used to identify a device over a network. Every Linode Compute Instance is assigned a public IPv4 address and a public IPv6 address. Additional IP addresses, including private IPv4 addresses and IPv6 routed ranges, are available. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) for information on viewing your IP addresses.
 
-- **Interface:** A real or virtual device that is responsible for facilitating a connection to a network. Each Compute Instance has one public interface for connecting to the internet: *eth0*. If a VLAN is configured, an additional interface for that VLAN is available. In that case, you may assign the public interface to *eth0* or *eth1* if desired. See [Managing Configuration Profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/) for instructions on viewing the interfaces configured on your Compute Instance.
+- **Interface:** A real or virtual device that is responsible for facilitating a connection to a network. There are three available network interfaces corresponding to the devices assigned within the Linux system: *eth0*, *eth1*, and *eth2*. See [Managing Configuration Profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/) for instructions on viewing the interfaces configured on your Compute Instance.
 
 - **Gateway:** Provides access to a larger network, such as the internet. When configuring a Compute Instance, you only need to specify a gateway for one interface. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) for details on finding the gateway IP address that corresponds with the primary IPv4 address you wish to use.
 

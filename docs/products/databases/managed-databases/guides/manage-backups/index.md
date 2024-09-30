@@ -3,22 +3,21 @@ title: "Manage Backups"
 description: "Learn how to restore one of the available backups for a Managed Database."
 modified: 2022-07-01
 aliases: ['/products/databases/managed-databases/guides/restore-backup/']
-authors: ["Linode"]
 ---
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}
 
 Each Managed Database includes daily backups of your data, taken on a 24 hour cadence. Up to 7 backups are stored for each database cluster, which provides you with a restore point for each day in the last week. This guide walks you through viewing and restoring from these managed backups.
 
 ## View Managed Backups
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu.
 
 1. Select your Managed Database from the list. This opens the detail page for that database cluster.
 
 1. Navigate to the **Backups** tab. A list of your available backups are displayed, organized by the date they were created.
 
-![Screenshot of all available managed backups in the Cloud Manager](available-managed-backups.png)
+![Screenshot of all available managed backups in Cloud Manager](available-managed-backups.png)
 
 ## Restore Managed Backups
 

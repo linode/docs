@@ -1,20 +1,18 @@
 ---
 slug: getting-started-with-puppet-6-1-basic-installation-and-setup
+title: Getting Started with Puppet - Installation and Setup
 description: 'Basic instructions to set up and configure a Puppet master and agents using Ubuntu and CentOS servers.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-01-15
 keywords: ["puppet installation", "configuration change management", "server automation"]
 tags: ["ubuntu","automation","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-15
-modified_by:
-    name: Linode
-published: 2019-01-15
-title: Getting Started with Puppet - Installation and Setup
 external_resources:
     - '[Puppet Labs](https://puppet.com/)'
     - '[Puppet Open Source Documentation](https://docs.puppet.com/puppet/)'
     - '[Configuring Java Arguments](https://puppet.com/docs/pe/2019.0/config_java_args.html)'
 aliases: ['/applications/configuration-management/puppet/getting-started-with-puppet-6-1-basic-installation-and-setup/','/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/']
-authors: ["Linode"]
 ---
 
 [Puppet](https://puppet.com/) is a configuration management tool that simplifies system administration. Puppet uses a client/server model in which your managed nodes, running a process called the Puppet *agent*, talk to and pull down configuration profiles from a Puppet *master*.
@@ -95,7 +93,7 @@ Throughout this guide, commands and code snippets will reference the values disp
 
     If you don't use Linode's name servers for your domain, consult your name server authority's website for instructions on how to edit your DNS records.
 
-    {{< content "update-dns-at-common-name-server-authorities" >}}
+    {{% content "update-dns-at-common-name-server-authorities" %}}
 
 ## Puppet Master
 
@@ -492,7 +490,7 @@ Notice: Finished catalog run in 0.02 seconds
 
 ### Edit SSH Settings
 
-Although a new limited user has successfully been added to the Puppet master, it is still possible to login to the system as root. To properly secure your system, root access should be disabled.
+Although a new limited user has successfully been added to the Puppet master, it is still possible to log in to the system as root. To properly secure your system, root access should be disabled.
 
 {{< note >}}
 Because you are now logged in to the Puppet master as a limited user, you will need to execute commands and edit files with the user's sudo privileges.

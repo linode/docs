@@ -1,0 +1,10 @@
+{{ $sourceMap := cond hugo.IsProduction "" "inline" }}
+{{ $opts := dict "sourceMap" $sourceMap "minify" hugo.IsProduction "target" "es2016" }}
+{{- $js := resources.Get "jslibs/turbo/v8/index.js" | js.Build $opts -}}
+{{- if hugo.IsProduction }}
+  {{ $js = $js | fingerprint }}
+{{ end -}}
+<script
+  src="{{ $js.RelPermalink }}"
+  {{ if hugo.IsProduction }}integrity="{{ $js.Data.Integrity }}"{{ end }}
+  defer></script>

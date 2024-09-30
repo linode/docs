@@ -1,12 +1,12 @@
 ---
 title: "Premium Compute Instances"
-linkTitle: "Premium"
 description: "Premium instances guarantee a minimum hardware class utilizing the latest available AMD EPYC™ CPUs, providing consistent high-performance for your workloads."
 published: 2023-07-06
-modified: 2023-10-22
+modified: 2024-03-11
+linkTitle: "Premium"
 ---
 
-Premium Compute Instances are virtual machines that come equipped with the latest AMD EPYC™ CPUs, ensuring your applications are running on the latest hardware with consistent high-peformance. Premium instances build off of our [Dedicated CPU instances](/docs/products/compute/compute-instances/plans/dedicated-cpu/), offering similar plan resources but with a guaranteed minimum hardware model.
+Premium Compute Instances are virtual machines that come equipped with the latest AMD EPYC™ CPUs, ensuring your applications are running on the latest hardware with consistent high-performance. Premium instances build off of our [Dedicated CPU instances](/docs/products/compute/compute-instances/plans/dedicated-cpu/), offering similar plan resources but with a guaranteed minimum hardware model.
 
 **Premium plans are ideal for enterprise-grade, business-critical, and latency-sensitive applications, including any workload that benefits from consistent performance with the latest hardware.**
 
@@ -20,7 +20,7 @@ The key differentiator for Premium instances is its guaranteed minimum hardware 
 
 ## Dedicated Competition-Free Resources
 
-CPU cores on a Premium instance are accessible only to that instance (not other instances on the same hardware). Because the vCPU cores are not shared, no other Compute Instances can utilize them. Your instance never has to wait for another process, enabling your software to run at peak speed and efficiency. This allows you to run workloads that require full-duty work (100% CPU all day, every day) at peak performance.
+CPU cores on a Premium instance are accessible only to that instance (not other instances on the same hardware). Because the vCPU cores are not shared, no other Compute Instances can utilize them. Your instance never has to wait for another process, enabling your software to run at peak speed and efficiency. This lets you run workloads that require full-duty work (100% CPU all day, every day) at peak performance.
 
 ## Recommended Workloads
 
@@ -48,6 +48,7 @@ Premium Compute Instances are currently available in select data centers.
 | **Jakarta (Indonesia)** | **Available** |
 | **Los Angeles (California, USA)** | **Available** |
 | London (United Kingdom) | *Not available* |
+| **Madrid (Spain)** | **Available** |
 | **Miami (Florida, USA)** | **Available** |
 | **Milan (Italy)** | **Available** |
 | Mumbai (India) | *Not available* |
@@ -68,9 +69,11 @@ Premium Compute Instances are currently available in select data centers.
 | Resource | Available Plans |
 | -- | -- |
 | vCPU cores | 2-64 cores |
-| Memory | 4 GB - 512 GB |
+| Memory | 4 GB - 512 GB\* |
 | Storage | 80 GB - 7,200 GB |
 | Outbound Network Transfer | 4 TB - 12 TB |
 | Outbound Network Bandwidth | 4 Gbps - 12 Gbps |
+
+\*512 GB plans are in limited availability.
 
 Pricing starts at $43/month for a Premium CPU Compute Instance with 2 vCPU cores, 4GB of memory, and 80 GB of SSD storage. Pricing may vary by region. Review the [Pricing page](https://www.linode.com/pricing/) for additional plans and their associated costs. Review the [Compute Instance Plan Types](/docs/products/compute/compute-instances/plans/) page to learn more about other instance types.

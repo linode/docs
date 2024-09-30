@@ -4,99 +4,38 @@
 {{ end }}
 
 {{ define "main" }}
-  {{/* Set up the static content shown on this page. See content/headless/home for the queries. */}}
   {{ $articleFeatured := "" }}
   {{ $articleStarters := slice }}
   {{ $headlessSection := site.GetPage "headless" }}
-  {{ $whereDoIStart := $headlessSection.GetPage "home/where-do-i-start" }}
-  {{ with $whereDoIStart }}
-    {{ $whereDoIStartData := .Resources.GetMatch "data.*" | transform.Unmarshal }}
-    {{ $articleFeatured = index (partial "funcs/build-query.html" $whereDoIStartData.queries.featured) 0 }}
-    {{ $articleStarters = partial "funcs/build-query.html" $whereDoIStartData.queries.getting_started | first 2 }}
-  {{ end }}
+  {{ $headlessHomeSection := site.GetPage "headless/home" }}
+  {{ $data := $headlessHomeSection.Resources.Get "data_v2.toml" | transform.Unmarshal }}
+
+  {{ $dot := dict "page" $ "data" $data }}
 
   {{/* Load the developers icons. */}}
-  {{ partial "icons/developer.html" . }}
-
-  {{/* We don't have a search index for the developer section, so create the data structure here. */}}
-  {{ $developerItems := slice }}
-  {{ $developerItems = $developerItems | append (dict "href" "/docs/api/" "linkTitle" "API Reference" "svgRef" "#icon-developer--api-reference" ) }}
-  {{ $developerItems = $developerItems | append (dict "href" "/docs/products/tools/api/guides/" "linkTitle" "API Guides" "svgRef" "#icon-developer--api-guides" ) }}
-  {{ $developerItems = $developerItems | append (dict "href" "/docs/products/tools/cli/" "linkTitle" "CLI" "svgRef" "#icon-developer--cli" ) }}
-  {{ $developerItems = $developerItems | append (dict "href" "/docs/release-notes/" "linkTitle" "Release Notes" "svgRef" "#icon-developer--changelog" ) }}
-  {{ $developerItems = $developerItems | append (dict "href" "https://developers.linode.com/libraries-tools" "linkTitle" "Resource & Tools" "svgRef" "#icon-developer--resources-and-tools" ) }}
-
-  {{/* Load the second level product sections statically which makes the home page load faster. */}}
-  {{ $productSections := slice }}
-  {{ range (site.GetPage "products").Sections }}
-    {{ range .Sections }}
-      {{ $productSections = $productSections | append . }}
-    {{ end }}
-  {{ end }}
-
-  {{ $productItems := slice }}
-  {{ range $productSections.ByTitle }}
-    {{ $thumb := "" }}
-    {{ with .Resources.GetMatch "*feature*.svg" }}
-      {{ $thumb = .RelPermalink }}
-    {{ end }}
-    {{ $productItems = $productItems | append (dict "href" .RelPermalink "title" .Title "linkTitle"  .LinkTitle "icon" $thumb "count" (len .RegularPagesRecursive ) ) }}
-  {{ end }}
 
   {{ partial "components/nojs.html" . }}
   <noscript>
-    {{ template "home/hero" $ }}
+    {{ template "home/hero" $dot }}
   </noscript>
 
   {{/* The AlpineJS home component managing the pagers on this page. */}}
-  {{ $dataJSON := dict  `developerItems` $developerItems `productItems` $productItems  | jsonify }}
+  {{ $dataJSON := dict | jsonify }}
   <div
     id="home-component"
     x-data="lncHome({{ $dataJSON }})"
     @resize.window.debounce.200ms="onNavChange()"
     x-effect="onEffect()"
     :class="{ 'kind-home--menu-state-is-changing': menuStateChanging }">
-    {{ template "home/hero" $ }}
+    {{ template "home/hero" $dot }}
 
-    {{/* The top level products carousel */}}
-    <section class="mb-8" style="min-height: 211px;">
-      {{ template "home/products/carousel" (dict "section" "products" "title" "Product Guides") }}
-    </section>
-
-    {{/* Developer tiles. */}}
-    <section class="mb-10" style="min-height: 211px;">
-      {{ template "home/developers/carousel" (dict "section" "developers" "title" "Developers") }}
-    </section>
-
-    {{/* Featured guides section */}}
-    {{ with $articleFeatured }}
-      <section
-        class="mb-10 py-9 bg-gradient-to-b from-gray-200 to-gray-300 full-width"
-        x-cloak
-        x-show="loaded">
-        <div class="flex flex-col md:flex-row h-auto container">
-          <div class="w-full md:w-1/2 md:mr-7">
-            {{ partial "helpers/bundle-image.html" (dict "page" . "class" "rounded-lg" "command" "Fit" "options" "693x364 center" "loading" "eager") }}
-          </div>
-          <div class="w-full md:w-1/3 flex flex-col md:mt-4">
-            <span class="text-basicgray uppercase text-sm hidden md:inline">
-              Featured Doc
-            </span>
-            <h2 class="mt-4 md:mt-3 text-center md:text-left">
-              {{ .Title }}
-            </h2>
-            <a href="{{ .RelPermalink }}" class="mt-6 text-center md:text-left">
-              <button
-                aria-label="visit"
-                class="w-full md:w-40 h-10 md:h-16 border-2 text-sm md:text-lg font-semibold text-white hover:text-white/75 focus: outline-none border-none bg-brand rounded-md"
-                data-testid="mainButton">
-                Read the Doc
-              </button>
-            </a>
-          </div>
-        </div>
-      </section>
+    {{ range $data.cards_sections }}
+      {{ with site.GetPage . }}
+        {{ template "home/cards-from-section" dict "page" . "class" "mb-8" }}
+      {{ end }}
     {{ end }}
+
+    {{ template "home/cards" ( merge $data.cards_now_on_tech_docs (dict "class" "mb-8")) }}
 
     {{/* Carousels showing recent content in the different sections. */}}
 
@@ -105,75 +44,33 @@
       class="mb-10"
       x-intersect.once="initCarousels()"
       data-testid="content-carousels">
-      {{ template "home/section/carousel" (dict "section" "guides" "title" "Guides") }}
-    </section>
-    <section class="mb-10">
       {{ template "home/section/carousel" (dict "section" "blog" "title" "Blog") }}
     </section>
     <section class="mb-10">
-      {{ template "home/section/carousel" (dict "section" "resources" "title" "Resources") }}
-    </section>
-    <section class="mb-10">
-      {{ template "home/section/carousel" (dict "section" "marketplace" "title" "Marketplace") }}
+      {{ template "home/section/carousel" (dict "section" "resources" "title" "Content Resources") }}
     </section>
 
     {{/* Starter guides section */}}
-    {{ with $articleStarters }}
-      <section
-        class="mb-8 py-8 bg-gradient-to-r from-gray-200 to-gray-300 full-width"
-        x-cloak
-        x-show="loaded">
-        <div class="flex w-full space-x-4 h-auto container">
-          {{ range . }}
-            <div class="w-1/2 xl:flex">
-              <div class="w-full xl:w-2/3 xl:mr-4">
-                {{ partial "helpers/bundle-image.html" (dict "page" . "class" "rounded-lg" "command" "Fit" "options" "514x270 center" "loading" "eager") }}
-              </div>
-              <a href="{{ .RelPermalink }}" class="hover:text-basicgray">
-                <div class="w-full flex flex-col mt-4 md:mt-0">
-                  <h2 class="mt-4 md:mt-3 text-base md:text-2xl">
-                    {{ .Title }}
-                  </h2>
-                  <span
-                    class="hidden md:inline mt-6 text-sm text-green-500 hover:text-green-500/75 text-center md:text-left">
-                    Read the Doc
-                  </span>
-                </div>
-              </a>
-            </div>
-          {{ end }}
-        </div>
-      </section>
-    {{ end }}
-
-    {{/* Q&A carousel. */}}
-    <section class="mb-10">
-      {{ template "home/section/carousel" (dict "section" "community" "title" "Q&A") }}
-    </section>
   </div>
 {{ end }}
 
 {{/* Hero components */}}
 
 {{ define "home/hero" }}
-  <section
-    class="mb-5 md:mb-10 pt-7 pb-10  kind-home__hero full-width bg-brand">
-    {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" . "wrap" true) }}
+  <section class="mb-5 md:mb-10 pt-7 pb-10 kind-home__hero full-width bg-brand">
     <div class="mt-4" style="max-width: 864px;">
       <h1 class="font-semibold text-4xl text-white">
-        {{ .Params.h1_title | default .Title }}
+        {{ .page.Params.h1_title | default .page.Title }}
       </h1>
-      {{ with .Summary }}
+      {{ with .page.Summary }}
         <div class="mt-6 text-lg leading-6 text-white">
           {{ . }}
         </div>
       {{ end }}
       <div>
         <div
-          class="mt-6 md:space-x-4 space-y-4 md:space-y-0 w-full flex flex-col md:flex-row">
-          {{ template "home/hero/link" (dict "href" "/docs/products/platform/get-started/" "text" "Getting Started with Linode") }}
-          {{ template "home/hero/link" (dict "href" "/docs/products/tools/api/get-started/" "text" "Getting Started with the Linode API") }}
-          {{ template "home/hero/link" (dict "href" "/docs/guides/quick-answers/" "text" "Quick Answer Guides") }}
+          class="mt-4 md:space-x-4 space-y-4 md:space-y-0 w-full flex flex-col md:flex-row text-white text-2xl tracking-tight">
+          {{ .data.hero_text | markdownify }}
         </div>
       </div>
     </div>
@@ -377,7 +274,7 @@
 
 {{ define "home/section/carousel" }}
   {{ $section := .section }}
-  {{ $pager := printf "data.sectionTiles.%s"  $section }}
+  {{ $pager := printf "data.sectionTiles['%s']"  $section }}
   {{ $ctx := dict "pager" $pager | merge . }}
   <div x-ref="carousel-{{ $section }}" class="carousel {{ $section }} w-full">
     <div class="page-size"></div>
@@ -451,4 +348,92 @@
         class="block md:hidden text-white font-semibold text-md md:text-lg tracking-tight leading-tight"></h3>
     </a>
   </div>
+{{ end }}
+
+{{/* TODO1 remove me */}}
+{{ define "home/products-banner" }}
+  <div class="border-l-4 border-blue-400 bg-blue-100 p-6 mb-8 w-full xl:w-3/4">
+    <div class="flex">
+      <div class="ml-3">
+        <h3 class="text-2xl font-semibold mb-2">
+          Product docs and API reference are now on Akamai TechDocs
+        </h3>
+        <ul class="list-disc pl-4 text-xl space-y-1">
+          <li>
+            <a
+              href="https://techdocs.akamai.com/cloud-computing/docs/"
+              class="text-normal text-blue-700 hover:text-blue-500"
+              >Product docs</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://techdocs.akamai.com/linode-api/reference/api"
+              target="_blank"
+              class="text-normal text-blue-700 hover:text-blue-500"
+              >API reference</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{{ end }}
+
+{{ define "home/cards" }}
+  <div class="{{ .class }} max-w-screen-xl">
+    <h2 class="text-3 md:text-3xl">{{ .title }}</h2>
+    {{ $numItemsNarrowViewport := 2 }}
+    <div class="grid grid-cols-2 xl:grid-cols-3 gap-4 mt-6 min-h-40">
+      {{ range $i, $e := .cards }}
+        {{ $hideOnNarrow := ge $i $numItemsNarrowViewport }}
+        <a
+          class="col-span-1 a--block not-prose cursor-pointer flex-col group border p-4 rounded-md hover:shadow-md border-gray-300 m-0 {{ if $hideOnNarrow }}
+            hidden xl:flex
+          {{ else }}
+            flex
+          {{ end }}"
+          href="{{ .href }}">
+          <h3
+            class="text-2xl tracking-tight pt-0 pb-2 my-0 text-titlecolor group-hover:text-gray-600">
+            {{ .title }}
+          </h3>
+          <p class="text-titlecolor leading-6 text-sm md:text-base">
+            {{ .text | truncate 160 | safeHTML }}
+          </p>
+        </a>
+      {{ end }}
+    </div>
+    {{ if .more_text }}
+      <p class="mt-4">
+        <a
+          href=" {{ .more_href }}"
+          class="text-brand underline font-semibold hover:text-green-400"
+          >Explore more {{ .more_text }}</a
+        >
+      </p>
+    {{ end }}
+  </div>
+{{ end }}
+
+{{ define "home/cards-from-section" }}
+  {{ $pages := slice }}
+  {{ if eq .page.Section "reference-architecture" }}
+    {{ $pages = .page.Sections }}
+  {{ else }}
+    {{ $pages = .page.RegularPagesRecursive }}
+  {{ end }}
+  {{ $featured := $pages | first 3 }}
+  {{ $cards := slice }}
+  {{ range $featured }}
+    {{ $cards = $cards | append (dict "title" .LinkTitle "text" (or .Params.description .Summary) "href" .RelPermalink) }}
+  {{ end }}
+  {{ $moreText :=  .page.Title }}
+  {{ template "home/cards" dict
+    "title" .page.Title
+    "cards" $cards
+    "class" .class
+    "more_text" $moreText
+    "more_href" .page.RelPermalink
+  }}
 {{ end }}

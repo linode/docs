@@ -1,17 +1,16 @@
 ---
 slug: next-js-with-typescript
-description: "Next.js offers a flexible framework on top of React, with features like routes and server-sider rendering built in. And Next also comes first-class support for TypeScript, a strongly-typed language built on JavaScript. So how do you get started using TypeScript for your Next.js application? Find out in this tutorial."
-keywords: ['next js typescript starter', 'nextjs typescript example', 'create next js typescript app']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-03-08
-modified_by:
-  name: Nathaniel Stickman
 title: "Building a Next.js App with Typescript"
 title_meta: "How to Build a Next.js App with Typescript"
+description: "Next.js offers a flexible framework on top of React, with features like routes and server-sider rendering built in. And Next also comes first-class support for TypeScript, a strongly-typed language built on JavaScript. So how do you get started using TypeScript for your Next.js application? Find out in this tutorial."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-03-08
+keywords: ['next js typescript starter', 'nextjs typescript example', 'create next js typescript app']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Next.js: TypeScript](https://nextjs.org/docs/basic-features/typescript)'
 - '[LogRocket: Using Next.js with TypeScript](https://blog.logrocket.com/using-next-js-with-typescript/)'
-authors: ["Nathaniel Stickman"]
 ---
 
 With Next.js, your React applications start with a rich structure and set of features. Built-in routing, server-side rendering, and among numerous other features, Next.js is a powerful framework built upon React to create production-ready applications.

@@ -2,12 +2,11 @@
 title: Detach a VLAN from a Compute Instance
 description: "If a Compute Instance no longer requires access a VLAN's private network, the VLAN can be detached by editing the Configuration Profile."
 aliases: ['/products/networking/vlans/guides/detach-a-linode-from-your-vlan/']
-authors: ["Linode"]
 ---
 
-If you no longer wish to include a particular Compute Instance within a VLAN's private network, the VLAN can be detached by editing that instance's [Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#editing-a-configuration-profile).
+If you no longer wish to include a particular Compute Instance within a VLAN's private network, the VLAN can be detached by editing that instance's [Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#edit-a-configuration-profile).
 
-1. Within the [Cloud Manager](https://www.cloud.linode.com), click the **Linodes** link in the sidebar and select a Compute Instance.
+1. Within [Cloud Manager](https://cloud.linode.com), click the **Linodes** link in the sidebar and select a Compute Instance.
 
 1. Navigate to the **Configurations** tab for that Compute Instance.
 

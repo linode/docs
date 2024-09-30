@@ -1,19 +1,18 @@
 ---
 slug: using-gnu-screen-to-manage-persistent-terminal-sessions
+title: Using GNU Screen to Manage Persistent Terminal Sessions
 description: 'GNU Screen is a tool that works with a terminal session to allow a user to resume that session once they have disconnected. This guide shows how to use this tool.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-02
+modified: 2014-01-13
 keywords: ["screen", "gnu screen", "terminal", "console", "linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linux-tools/utilities/screen/','/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/']
-modified: 2014-01-13
-modified_by:
-  name: Linode
-published: 2010-04-02
-title: Using GNU Screen to Manage Persistent Terminal Sessions
 external_resources:
  - '[GNU Screen Home Page](http://www.gnu.org/software/screen/)'
  - '[GNU Screen Manual](http://www.gnu.org/software/screen/manual/html_node/index.html)'
 tags: ["networking","ssh","security"]
-authors: ["Linode"]
 ---
 
 GNU Screen is a tool which works with a terminal session to allow users to resume a session after they have disconnected. Screen prevents a session from "timing out" or disconnecting SSH connections or local terminal emulators. A single Screen session has the ability to host multiple sessions or "windows." Screen may be used for a variety of tasks such as maintaining persistent IRC sessions and multitasking in a terminal environment.

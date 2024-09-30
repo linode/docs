@@ -1,16 +1,15 @@
 ---
 slug: how-to-use-the-linode-api-with-twilio
+title: "Using the Linode API with Twilio"
+title_meta: "How to Use the Linode API with Twilio"
 description: 'Twilio is an internet messaging service that can be used to monitor server infrastructure. This guide shows a first example of embedding Linode API data in a text message with Twilio.'
+authors: ["John Mueller"]
+contributors: ["John Mueller"]
+published: 2021-12-23
+modified: 2022-01-07
 keywords: []
 tags: ['python','monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-23
-modified: 2022-01-07
-modified_by:
-  name: Linode
-title: "Using the Linode API with Twilio"
-title_meta: "How to Use the Linode API with Twilio"
-authors: ["John Mueller"]
 ---
 
 [Twilio](https://www.twilio.com/) links internet and telecom networks, creating connections using text messages, emails, phone calls, video, and intelligent chatbots. When you first explore the service, it may appear customer service-oriented, especially for marketing purposes. However, Twilio also has value to anyone who needs [operations support](https://www.twilio.com/solutions/operations), including network administrators.
@@ -99,7 +98,7 @@ Before you can work with the Linode API, you need a personal access token that i
 
 Your Linode account does not have any personal access tokens by default. To create a new token:
 
-1. Follow our [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/) instructions. For the code example in this guide, you should create a token that has **Read Only** access to the **Account** resource.
+1. Follow our [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) instructions. For the code example in this guide, you should create a token that has **Read Only** access to the **Account** resource.
 
 1. When you have created the token, it is displayed in your browser. Unlike the Twilio access token, you are not able to view the token in your browser after you have closed this page. Be sure to copy the token into a temporary text file or a password manager on your computer. Later in this guide, you add this token to the example code.
 

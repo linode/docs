@@ -2,7 +2,6 @@
 title: "NVMe Block Storage Upgrade"
 description: "Information about the new NVMe Block Storage product and how to upgrade a Volume."
 modified: 2023-07-05
-authors: ["Linode"]
 ---
 
 ## What is NVMe-backed Block Storage?
@@ -17,9 +16,9 @@ To learn more about Block Storage, visit the [Block Storage Overview](/docs/prod
 
 ## Upgrading a Volume to NVMe Block Storage
 
-Existing Volumes can be upgraded to NVMe soon after NVMe Block Storage has been deployed within a data center. Once NVMe upgrades are available, our team will schedule a migration for each eligible Volume on your account. You will receive a notification detailing the Volumes scheduled to be upgraded along with their migration schedule. You can view your scheduled upgrades on the [Account > Maintenance](https://cloud.linode.com/account/maintenance/) page of the Cloud Manager under the *Volumes* section. You can also choose to immediately enter the upgrade queue *after* the migration has been scheduled by following the instructions below:
+Existing Volumes can be upgraded to NVMe soon after NVMe Block Storage has been deployed within a data center. Once NVMe upgrades are available, our team will schedule a migration for each eligible Volume on your account. You will receive a notification detailing the Volumes scheduled to be upgraded along with their migration schedule. You can view your scheduled upgrades on the [Account > Maintenance](https://cloud.linode.com/account/maintenance/) page of Cloud Manager under the *Volumes* section. You can also choose to immediately enter the upgrade queue *after* the migration has been scheduled by following the instructions below:
 
-1.  Log in to the Cloud Manager and navigate to the [Volumes](https://cloud.linode.com/volumes) page.
+1.  Log in to Cloud Manager and navigate to the [Volumes](https://cloud.linode.com/volumes) page.
 
 1.  Click the **Upgrade to NVMe** button next to the Volume you wish to upgrade. If this button does not appear next to your desired *non-NVMe* Volume, the Volume is not yet eligible for an upgrade.
 

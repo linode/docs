@@ -1,19 +1,19 @@
 ---
 slug: dokuwiki-engine
+title: DokuWiki Engine
 description: 'This guide provides you with step-by-step instructions for installing the DocuWiki software for creating a fully featured Wiki for your organization.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-04-17
+modified: 2017-07-27
 keywords: ["wiki", "doku wiki", "php"]
 tags: ["wiki","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/dokuwiki/','/websites/wikis/dokuwiki-engine/']
-modified: 2017-07-27
-modified_by:
-  name: Linode
-published: 2010-04-17
-title: DokuWiki Engine
 external_resources:
  - '[The Doku Wiki Project Home Page](http://www.dokuwiki.org/dokuwiki)'
  - '[Doku Wiki Manual](http://www.dokuwiki.org/manual)'
-authors: ["Linode"]
+deprecated: true
 ---
 
 DokuWiki is a flexible and extensible wiki engine that aims to be easy to manage while providing a rich feature set to enable collaborative document editing and creation for users of all skill levels and technical inclinations. DokuWiki stores wiki pages in text files on the web-server rather than in a database management system, which increases data usability and portability for moderately sized wiki projects without requiring the system resources to power a relational database server.

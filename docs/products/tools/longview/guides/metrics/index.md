@@ -1,19 +1,16 @@
 ---
 title: "Understanding Longview Metrics"
 description: "An overview of metrics collected by Longview, including how to view the metrics and understand the data."
-keywords: ["system monitoring", "longview", "metrics"]
 published: 2023-05-24
-modified_by:
-  name: Linode
+keywords: ["system monitoring", "longview", "metrics"]
 tags: ["linode platform","cloud manager","statistics","monitoring"]
-authors: ["Linode"]
 ---
 
 This guide provides an overview of the data and graphs available to you after successfully installing Longview on a Compute Instance or other Linux system.
 
 ## Access your Longview Client Metrics
 
-1. To view a Longview Client's detailed graphs and metrics, log in to the [Cloud Manager](https://cloud.linode.com/) and click on the **Longview** link in the sidebar.
+1. To view a Longview Client's detailed graphs and metrics, log in to [Cloud Manager](https://cloud.linode.com/) and click on the **Longview** link in the sidebar.
 
 1. On the Longview Clients listing page, click on the **View Details** button corresponding to the client whose system statistics you'd like to view. This displays the information and metrics for the corresponding system. From here, you can select from the following tabs to view specific metrics:
 
@@ -41,9 +38,9 @@ The graphs only show data captured *after* the Longview Agent was installed on t
 
 ## View Data Points on Graphs
 
-When viewing graphs in the Cloud Manager, you can hover over data points in the x-axis to view specific metrics for that data point.
+When viewing graphs in Cloud Manager, you can hover over data points in the x-axis to view specific metrics for that data point.
 
-![Screenshot of a data point on a graph in the Cloud Manager](longview-metrics-graph-data-point.png)
+![Screenshot of a data point on a graph in Cloud Manager](longview-metrics-graph-data-point.png)
 
 ## Overview
 

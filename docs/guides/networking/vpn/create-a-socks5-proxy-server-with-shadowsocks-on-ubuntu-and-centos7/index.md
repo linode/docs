@@ -1,21 +1,20 @@
 ---
 slug: create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7
+title: "Creating a SOCKSS Proxy Server with Shadowsocks"
+title_meta: "How to Create a SOCKS5 Proxy Server with Shadowsocks"
 description: "Learn how to create a SOCKS5 proxy server with Shadowsocks on Ubuntu and CentOS 7."
+authors: ["Andrew Lescher"]
+contributors: ["Andrew Lescher"]
+published: 2017-12-07
+modified: 2018-07-10
 keywords: ["shadowsocks", "proxy", "shadowsocks server", "ubuntu", "centos", " strong vpn"]
 bundles: ['network-security']
 tags: ["networking","vpn","ubuntu","security","proxy","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/','/networking/vpn/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/']
-published: 2017-12-07
-modified: 2018-07-10
-modified_by:
-  name: Linode
-title: "Creating a SOCKSS Proxy Server with Shadowsocks"
-title_meta: "How to Create a SOCKS5 Proxy Server with Shadowsocks"
 external_resources:
  - '[Shadowsocks official](https://shadowsocks.org/)'
  - '[Shadowsocks-libev GitHub](https://github.com/shadowsocks/shadowsocks-libev)'
-authors: ["Andrew Lescher"]
 ---
 
 ![Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7](shadowsocks.jpg "Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7")
@@ -138,13 +137,13 @@ Shadowsocks libev is a lightweight, purely C-based proxy implementation for embe
 
 |  **Property**  | **Description** | **Possible Values** |
 |:--------------:|:---------------:|:-------------------:|
-| server | Enter the server's public IP address. | User determined |
-| server_port | Shadowsocks listens on this port. Use the default value of `8388`. | User determined |
-| password | Connection password. Set a strong password. | User determined |
-| timeout | Connection timeout in seconds. The default value should be sufficient here. | User determined |
-| method | Encryption method. Using AEAD algorithms is recommended. | See [Stream Ciphers](https://shadowsocks.org/en/spec/Stream-Ciphers.html) and [AEAD Ciphers](https://shadowsocks.org/en/spec/AEAD-Ciphers.html) |
-| fast_open | Reduces latency when turned on. Can only be used with kernel versions 3.7.1 or higher. Check the kernel version with `uname -r`. | true, false |
-| nameserver | Name servers for internal DNS resolver. | User determined |
+| `server` | Enter the server's public IP address. | User determined |
+| `server_port` | Shadowsocks listens on this port. Use the default value of `8388`. | User determined |
+| `password` | Connection password. Set a strong password. | User determined |
+| `timeout` | Connection timeout in seconds. The default value should be sufficient here. | User determined |
+| `method` | Encryption method. Using AEAD algorithms is recommended. | See [Stream Ciphers](https://shadowsocks.org/en/spec/Stream-Ciphers.html) and [AEAD Ciphers](https://shadowsocks.org/en/spec/AEAD-Ciphers.html) |
+| `fast_open` | Reduces latency when turned on. Can only be used with kernel versions 3.7.1 or higher. Check the kernel version with `uname -r`. | true, false |
+| `nameserver` | Name servers for internal DNS resolver. | User determined |
 
 ## Optimize Shadowsocks
 

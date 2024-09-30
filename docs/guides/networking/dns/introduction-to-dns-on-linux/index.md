@@ -2,12 +2,11 @@
 slug: introduction-to-dns-on-linux
 title: "Introduction to DNS on Linux"
 description: 'Learn the basics of DNS on Linux by configuting a primary name server with NSD.'
+authors: ["David Robert Newman"]
+contributors: ["David Robert Newman"]
+published: 2023-06-09
 keywords: ['introduction to dns on linux','domain name service','linux dns server','dns server','configuring dns','install dns','flush dns']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["David Robert Newman"]
-published: 2023-06-09
-modified_by:
-  name: Linode
 external_resources:
 - '[Ubuntu: Domain Name Service (DNS)](https://ubuntu.com/server/docs/service-domain-name-service-dns)'
 - '[Red Hat: How to use the Linux BIND command to install and configure DNS](https://www.redhat.com/sysadmin/dns-configuration-introduction)'
@@ -155,7 +154,7 @@ As packaged for Ubuntu 22.04 LTS, NSD’s main configuration file (`nsd.conf`) p
 
 Since the NSD documentation already includes a fully annotated sample configuration file, copy that file and work from there. The sample file lists many options with plenty of comments, making it a useful learning tool.
 
-1.  First, gather your Linode's external IPv4 and IPv6 addresses. Follow this guide to [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address) or use the following command:
+1.  First, gather your Linode's external IPv4 and IPv6 addresses. Follow this guide to [Find Your Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) or use the following command:
 
     ```command
     ip a

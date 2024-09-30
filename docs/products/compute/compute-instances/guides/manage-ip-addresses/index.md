@@ -1,22 +1,19 @@
 ---
 title: "Managing IP Addresses on a Compute Instance"
-description: "Instructions on viewing, adding, deleting, transferring IP addresses for Linode Compute Instances using the Cloud Manager"
+description: "Instructions on viewing, adding, deleting, transferring IP addresses for Linode Compute Instances using Cloud Manager"
 og_description: "Learn how to manage IP addresses on a Linode Compute Instance"
+published: 2016-08-23
+modified: 2024-07-26
 keywords: ["ip addresses", "ip failover", "swapping ip addresses", "add ip address", "add additional ip address"]
 tags: ["linode platform","cloud manager","networking"]
-published: 2016-08-23
-modified: 2023-09-21
-modified_by:
-  name: Linode
-aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/','/guides/managing-ip-addresses/']
-authors: ["Linode"]
+aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/','/guides/managing-ip-addresses/','/products/tools/cloud-manager/guides/cloud-delete-ip/','/guides/find-your-linodes-ip-address/']
 ---
 
-Each Linode Compute Instance is equipped with several IP addresses, which enable it to be accessible over the public Internet and to other Linode services. This guide covers how to manage these IP addresses (including viewing, adding, removing, transferring, or sharing them) through the Cloud Manager.
+Each Linode Compute Instance is equipped with several IP addresses, which may enable it to be accessible over the public Internet and other Linode services or accessible just to other Compute Instances within a VPC. This guide covers how to manage these IP addresses (including viewing, adding, removing, transferring, or sharing them) through Cloud Manager.
 
 ## Viewing IP Addresses
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
+1.  Log in to [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
 
 1.  Click on your Linode Compute Instance from the list to view more details.
 
@@ -24,21 +21,27 @@ Each Linode Compute Instance is equipped with several IP addresses, which enable
 
     ![Summary section with the IP addresses highlighted](compute-ip-addresses-quick.png)
 
-1.  To view all IP addresses for this Instance (along with any associated rDNS values), click the **View all IP Addresses** link or navigate to the **Network** tab and review the **IP Addresses** section.
+1.  To view all public and private IP addresses for this Instance (along with any associated rDNS values), click the **View all IP Addresses** link or navigate to the **Network** tab and review the **IP Addresses** section.
 
     ![The IP Addresses table on the Network tab](compute-ip-addresses-full.png)
+
+    IP addresses for a VPC or VLAN interface are visible in the **Configurations** tab.
 
 ## Types of IP Addresses
 
 ### IPv4
 
-- **Public IPv4 Address:** All Compute Instances are created with at least one public IPv4 address, which enables your applications to be accessible over the Internet. Additional addresses can be provided with technical justification.
+- **Public IPv4 Address:** Most Compute Instances (those created without a VPC) have a single public IPv4 address, which enables your applications to be accessible over the Internet. Additional addresses can be provided with technical justification. If a VPC interface is configured when a Compute Instance is created, that instance typically does not have a public IPv4 address _unless_ the _Assign a public IPv4 address_ option is selected.
 
-- **Private IPv4 Address:** Optionally, private IPv4 addresses can be assigned to a Compute Instance. This allows it to connect to other services located in the same data center, such as NodeBalancers or other Compute Instances.
+- **VPC IPv4 Address:** If an instance is assigned to a VPC, that instance is assigned an IPv4 address from the CIDR range configured on the subnet. This IP address can be automatically generated or manually provided. Optionally, if the _Assign a public IPv4 address_ option is selected during creation, the instance is assigned public IPv4 address as well.
 
-    {{< note >}}
-    All private IPs in the same data center can communicate with each other over the private network. This means a Compute Instance's private IP address is accessible to all other Instances in that data center. It's recommended to set up firewall rules for your Linode to secure its network traffic. See our [firewall guides](/docs/security/firewalls/) for details on setting up firewall rules. In many cases, using [Private VLANs](/docs/products/networking/vlans/) is preferred over private IPv4.
-    {{< /note >}}
+- **VLAN IPv4 Address:** When a Compute Instance is configured with a VLAN, you assign it a IPv4 address to use within the VLAN. It is also automatically assigned a public IPv4 address.
+
+- **Private IPv4 Address:** Optionally, a private IPv4 address can be assigned to a Compute Instance. This allows it to connect to other services located in the same data center, such as NodeBalancers or other Compute Instances.
+
+{{< note title="A VPC is the recommended method for network isolation" >}}
+In most cases, a VPC is the better option for true network isolation than either a VLAN or a private IP address. For a comparison between these methods, review the [VPC](/docs/products/networking/vpc/#difference-between-private-network-options-vpcs-vlans-and-private-ips) documentation.
+{{< /note >}}
 
 ### IPv6 Addresses
 
@@ -60,7 +63,7 @@ Each Linode Compute Instance is equipped with several IP addresses, which enable
 
 Follow the instructions below to add an public IPv4, private IPv4, or IPv6 range to your Compute Instance. By default, up to one /64 and /56 range can be added per customer per data center.
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
+1.  Log in to [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
 1.  Click on your Linode Compute Instance from the list and navigate to the **Network** tab.
 1.  Click the **Add an IP Address** button under the *IP Address* section. This displays the *Add an IP Address* panel.
 
@@ -90,7 +93,7 @@ To change the rDNS value on an IP address, follow the instructions within the [C
 
 ## Deleting an IP Address
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
+1.  Log in to [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
 1.  Click on your Linode Compute Instance from the list and navigate to the **Network** tab.
 1.  Select the **Delete** menu option for the IP address you'd like to remove
 
@@ -104,13 +107,13 @@ To change the rDNS value on an IP address, follow the instructions within the [C
 
 ## Transferring IP Addresses
 
-If you have two Compute Instances in the same data center, you can use the *IP transfer* feature to move or swap their IP addresses. This feature is especially useful when replacing one Compute Instance with another. It allows you to quickly move the IP addresses to the new Instance without needing to manually adjust DNS records with the new addresses.
+If you have two Compute Instances in the same data center, you can use the *IP transfer* feature to move or swap their IP addresses. This feature is especially useful when replacing one Compute Instance with another. It lets you quickly move the IP addresses to the new Instance without needing to manually adjust DNS records with the new addresses.
 
 {{< note >}}
 This process only transfers IPv4 addresses and IPv6 ranges, not IPv6 SLAAC addresses. See [Transferring an IPv6 SLAAC Address](#transferring-an-ipv6-slaac-address) below for a workaround.
 {{< /note >}}
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
+1.  Log in to [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
 
 1.  Click on your Linode Compute Instance from the list and navigate to the **Network** tab.
 
@@ -123,7 +126,7 @@ This process only transfers IPv4 addresses and IPv6 ranges, not IPv6 SLAAC addre
     - **Move To:** moves the IP address to another Compute Instance. When choosing this option, select the destination Compute Instance in the next dropdown menu that appears. If you are moving a public IPv4 address, there needs to be at least one remaining public IPv4 address on the source Compute Instance.
     - **Swap With:** swaps the IP addresses of two Compute Instances. When choosing this option, select the destination Compute Instance in the next dropdown menu that appears. Then select the IP address (belonging to the destination Compute Instance) you would like to swap with the originally selected IP address.
 
-    ![The IP Transfer menu in the Cloud Manger](remote_access_ip_transfer.png)
+    ![The IP Transfer menu in Cloud Manager](remote_access_ip_transfer.png)
 
     {{< note >}}
     The *IP Transfer* form only displays Compute Instances hosted in the same data center as the current Instance.
@@ -148,11 +151,11 @@ This process only transfers IPv4 addresses and IPv6 ranges, not IPv6 SLAAC addre
 
 ### Transferring an IPv6 SLAAC Address
 
-IPv6 SLAAC addresses are not able to be transferred between Compute Instances. If this is something you need to do, consider moving the applications you want to be hosted on that IPv6 address over to the Compute Instance containing that IPv6 address. One way to accomplish this is to clone the disks containing the data. See the [Cloning to an Existing Linode](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode) section of the **Cloning a Linode** guide. After the cloning process has completed, transfer any required IPv4 addresses.
+IPv6 SLAAC addresses are not able to be transferred between Compute Instances. If this is something you need to do, consider moving the applications you want to be hosted on that IPv6 address over to the Compute Instance containing that IPv6 address. One way to accomplish this is to clone the disks containing the data. See the [Cloning to an Existing Linode](/docs/products/compute/compute-instances/guides/clone-instance/#clone-to-an-existing-compute-instance) section of the **Cloning a Linode** guide. After the cloning process has completed, transfer any required IPv4 addresses.
 
 ## Configuring IP Sharing
 
-*IP Sharing* is a feature that enables two Compute Instances to be assigned the same IP address for the purpose of configuring failover. Within a typical failover setup, traffic on the shared IP address is routed to the primary instance. In the event that instance fails or goes down, traffic is automatically re-routed to the secondary instance. While IP Sharing can be configured in the Cloud Manager, failover must be manually configured within the internal system of both Compute Instances. See [Configuring IP Failover](/docs/products/compute/compute-instances/guides/failover/) to learn more about configuring failover.
+*IP Sharing* is a feature that enables two Compute Instances to be assigned the same IP address for the purpose of configuring failover. Within a typical failover setup, traffic on the shared IP address is routed to the primary instance. In the event that instance fails or goes down, traffic is automatically re-routed to the secondary instance. While IP Sharing can be configured in Cloud Manager, failover must be manually configured within the internal system of both Compute Instances. See [Configuring IP Failover](/docs/products/compute/compute-instances/guides/failover/) to learn more about configuring failover.
 
 {{< note >}}
 Not all data centers currently support IP Sharing. Additionally, some data centers only support IPv4 sharing, while others also support IPv6 routed ranges (/64 and /56). To determine if IP Sharing is supported in a particular data center, see [Configuring IP Failover > IP Sharing Availability](/docs/products/compute/compute-instances/guides/failover/#ip-sharing-availability).
@@ -162,9 +165,9 @@ Not all data centers currently support IP Sharing. Additionally, some data cente
 When IP Sharing is enabled for an IP address, all connectivity to that IP address is immediately lost *until* it is configured on [Lelastic](/docs/products/compute/compute-instances/guides/failover/#install-and-configure-lelastic), [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/), or another routing software. This is not an issue when adding a new IP address, but should be considered if you are enabling IP Sharing on an existing IP address that is actively being used.
 {{< /note >}}
 
-To learn how to enable IP Sharing within the Cloud Manager, review the following steps.
+To learn how to enable IP Sharing within Cloud Manager, review the following steps.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
 
 1. Determine which two Compute Instances are to be used within your failover setup. They both must be located in the same data center. Make sure the IP address you wish to share has been added to one of those instances. If not, add it now. See [Adding an IP Address](#adding-an-ip-address).
 
@@ -183,16 +186,22 @@ To learn how to enable IP Sharing within the Cloud Manager, review the following
 
 1.  Click **Save** to enable IP Sharing.
 
-1.  After enabling IP Sharing in the Cloud Manager, the next step is to configure a failover service (such as FRR, lelastic, or Keepalived) within the internal system on each Compute Instance. For more information, see our guide on [Configuring IP Failover](/docs/products/compute/compute-instances/guides/failover/).
+1.  After enabling IP Sharing in Cloud Manager, the next step is to configure a failover service (such as FRR, lelastic, or Keepalived) within the internal system on each Compute Instance. For more information, see our guide on [Configuring IP Failover](/docs/products/compute/compute-instances/guides/failover/).
 
 ## Viewing the DNS Resolvers' IP Addresses
 
 Each data center has its own set of DNS resolvers, which are accessed through both IPv4 or IPv6 addresses. To view the DNS resolvers, follow the instructions below.
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
+1.  Log in to [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
 
 1.  Click on your Linode Compute Instance from the list to view more details.
 
 1.  Navigate to the **Network** tab and review the **DNS Resolvers** list, which should appear to the right of (or below) the network transfer graph.
 
-    ![Screenshot of the DNS resolvers in the Cloud Manager](dns-resolvers.png)
+    ![Screenshot of the DNS resolvers in Cloud Manager](dns-resolvers.png)
+
+## Confirming IP Addresses are Correctly Configured
+
+Our platform's [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) tool automatically configures the internal network settings of your instance's Linux system. This ensures changes made to your IP addresses within Cloud Manager are also made internally on your instance. If you decide not to use Network Helper or are using a custom unsupported distribution, you need to manually configure your system's networking. In this case, review the [Manual Network Configuration on a Compute Instance](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide.
+
+To verify that your IP addresses are correctly configured, run the `ip` command on your instance (see [man pages reference](https://linux.die.net/man/8/ip)), specifically `ip a show` (`ip addr show`). For more information on using this command, see our [Use the ip Command in Linux](/docs/guides/how-to-use-the-linux-ip-command/#how-to-find-your-ip-address) guide.

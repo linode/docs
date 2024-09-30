@@ -1,18 +1,15 @@
 ---
+title: "Upgrade a Cluster to a Newer Kubernetes Version"
 description: 'This guide describes the process of upgrading LKE cluster versions to prevent any potential downtime due to an outdated configuration'
-keywords: ["Kubernetes", "cluster", "popeye", "security", "permissions"]
-tags: ["security", "kubernetes","container"]
 published: 2022-03-10
 modified: 2023-05-02
-modified_by:
-  name: Linode
-title: "Upgrade a Cluster to a Newer Kubernetes Version"
+keywords: ["Kubernetes", "cluster", "popeye", "security", "permissions"]
+tags: ["security", "kubernetes","container"]
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Kubernetes Documentation](https://kubernetes.io/docs/home)'
   - '[Kubernetes Changelog](https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG)'
 aliases: ['/guides/upgrading-lke-minor-versions/']
-authors: ["Linode"]
 ---
 
 Kubernetes releases new software versions and patches on a regular cadence. These updates are integrated into LKE *after* they are released on upstream Kubernetes, which ensures they are properly tested on the Linode Platform. Kubernetes uses a semantic versioning system that includes three parts: x.y.z, where **x** is the *major* version, **y** is the *minor* version, and **z** is the *patch* version.
@@ -31,7 +28,7 @@ When a Kubernetes version upgrade is initiated on an LKE cluster (including both
 After the initial upgrade, existing worker nodes need to also be upgraded to the newer Kubernetes version. This typically requires a few extra steps. This guide outlines three options for upgrading these existing nodes, including recycling all worker nodes, performing an in-place upgrade, and performing an out-of-place upgrade. Each of these options is discussed in the [Upgrade Worker Nodes](#upgrade-worker-nodes) section.
 
 {{< note type="warning">}}
-Existing worker nodes are *automatically upgraded* when initiating the upgrade in the Cloud Manager if **Recycle All Nodes** is selected during the upgrade process. This can also be triggered manually by using the recycle all nodes feature in the Cloud Manager, Linode CLI, and Linode API. This recycles all nodes on a rolling basis so that only a single node is down at any time. Since this means there is one less worker node during the upgrade process, it can affect performance and might not be preferred for production applications.
+Existing worker nodes are *automatically upgraded* when initiating the upgrade in Cloud Manager if **Recycle All Nodes** is selected during the upgrade process. This can also be triggered manually by using the recycle all nodes feature in Cloud Manager, Linode CLI, and Linode API. This recycles all nodes on a rolling basis so that only a single node is down at any time. Since this means there is one less worker node during the upgrade process, it can affect performance and might not be preferred for production applications.
 
 It is strongly recommended that steps are taken to ensure that there is enough space on all nodes to accommodate for this temporary shift in resources. If a cluster of three nodes cannot briefly support the resources demands of an application using only two nodes, then the upgrade process may result in unintended application downtime. To overcome this, you can temporarily add additional worker nodes and perform either an *in-place* or *out-of-place* upgrade to avoid any performance impact. For more details on these approaches, see [Upgrade Worker Nodes](#upgrade-worker-nodes).
 {{< /note >}}
@@ -62,7 +59,7 @@ One way to identify breaking changes and compatibility issues with Kubernetes up
 
 {{< tabs >}}
 {{< tab "Cloud Manager" >}}
-Navigate to the **Kubernetes** page in the [Cloud Manager](http://cloud.linode.com) to see a list of all LKE clusters on your account (see [Manage Kubernetes Clusters](/docs/products/compute/kubernetes/guides/manage-clusters/)).
+Navigate to the **Kubernetes** page in [Cloud Manager](http://cloud.linode.com) to see a list of all LKE clusters on your account (see [Manage Kubernetes Clusters](/docs/products/compute/kubernetes/guides/manage-clusters/)).
 
 ![Check Kubernetes Version](lke-version.png)
 
@@ -135,7 +132,7 @@ Once you are ready to perform an upgrade, you can start the upgrade process. Thi
 
 {{< tabs >}}
 {{< tab "Cloud Manager" >}}
-1. Navigate to the **Kubernetes** page in the [Cloud Manager](http://cloud.linode.com) to see a list of all LKE clusters on your account (see [Manage Kubernetes Clusters](/docs/products/compute/kubernetes/guides/manage-clusters/)).
+1. Navigate to the **Kubernetes** page in [Cloud Manager](http://cloud.linode.com) to see a list of all LKE clusters on your account (see [Manage Kubernetes Clusters](/docs/products/compute/kubernetes/guides/manage-clusters/)).
 
 1. Locate the cluster you wish to upgrade and click the corresponding **Upgrade** button in the *Version* column. This button only appears if there is an available upgrade for that cluster.
 
@@ -182,7 +179,7 @@ Once you are ready to perform an upgrade, you can start the upgrade process. Thi
 
 {{< /tab >}}
 {{< tab "Linode API" >}}
-1. Identify the ID of the cluster you wish to upgrade. Run the API curl request below, making sure to properly paste in or reference your [API token](/docs/products/tools/api/guides/manage-api-tokens/).
+1. Identify the ID of the cluster you wish to upgrade. Run the API curl request below, making sure to properly paste in or reference your [API token](/docs/products/platform/accounts/guides/manage-api-tokens/).
 
     ```command
     curl -H "Authorization: Bearer $TOKEN" \
@@ -262,7 +259,7 @@ This recycles each worker node on a rolling basis so that only one node is down 
 
 {{< tabs >}}
 {{< tab "Cloud Manager" >}}
-On the details page of your LKE cluster in the Cloud Manager, click the **Recycle All Nodes** button. See [Recycle Nodes](/docs/products/compute/kubernetes/guides/manage-node-pools/#recycle-nodes) for more details.
+On the details page of your LKE cluster in Cloud Manager, click the **Recycle All Nodes** button. See [Recycle Nodes](/docs/products/compute/kubernetes/guides/manage-node-pools/#recycle-nodes) for more details.
 {{< /tab >}}
 {{< tab "Linode CLI" >}}
 Run the command below, replacing *[cluster-id]* with the ID of your cluster.
@@ -295,7 +292,7 @@ For more details, review the API request sample on the [Cluster Nodes Recycle AP
 
     {{< tabs >}}
     {{< tab "Cloud Manager" >}}
-    Locate the node pool on the details page of your LKE cluster in the Cloud Manager. Click the corresponding **Resize Pool** button. Increase the size of the node pool by 1. For example, if you have 3 nodes in the pool, increase that value to 4. For additional instructions, see [Resize a Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#resize-a-node-pool).
+    Locate the node pool on the details page of your LKE cluster in Cloud Manager. Click the corresponding **Resize Pool** button. Increase the size of the node pool by 1. For example, if you have 3 nodes in the pool, increase that value to 4. For additional instructions, see [Resize a Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#resize-a-node-pool).
 
     If you are also using the autoscale feature, increase the minimum and maximum nodes by 1. This can be done by clicking the corresponding **Autoscale Pool** button and adjusting the minimum and maximum values. For more details, see [Autoscale](/docs/products/compute/kubernetes/guides/manage-node-pools/#autoscale-automatically-resize-node-pools).
     {{< /tab >}}
@@ -362,7 +359,7 @@ For more details, review the API request sample on the [Cluster Nodes Recycle AP
 
     {{< tabs >}}
     {{< tab "Cloud Manager" >}}
-    Locate the node pool on the details page of your LKE cluster in the Cloud Manager. Next to the node that has just been drained, click the corresponding **Recycle** button as outlined in [Recycle Nodes](/docs/products/compute/kubernetes/guides/manage-node-pools/#recycle-nodes).
+    Locate the node pool on the details page of your LKE cluster in Cloud Manager. Next to the node that has just been drained, click the corresponding **Recycle** button as outlined in [Recycle Nodes](/docs/products/compute/kubernetes/guides/manage-node-pools/#recycle-nodes).
     {{< /tab >}}
     {{< tab "Linode CLI" >}}
     Run the command below, replacing *[cluster-id]* with the ID of your cluster and *[node-id]* with the ID of the node.
@@ -389,7 +386,7 @@ For more details, review the API request sample on the [Cluster Nodes Recycle AP
 
 1.  Repeat steps 2 through 4 for each worker node until *all but the last* worker nodes are using the newer Kubernetes version. For the last worker node, repeat steps 2 and 3 to cordon and drain that node - but do not recycle it as that will cause workloads to land back on that node. Instead, continue with the step below to delete it.
 
-1.  Remove the additional worker node that was added during this upgrade process. This can be accomplished by resizing your cluster back to your original value to use one less worker node. The last worker node that was created, which was the one you have not yet recycled, is removed during the resize. Then, if you previously adjusted the Autoscale Pool, adjust the values back to what they were prior to the upgrade.
+1.  Remove the additional worker node that was added during this upgrade process. This can be accomplished by resizing your cluster back to your original value to use one less worker node. The last worker node that was created, which was the one you have not yet recycled, is removed during the resize. Then, if you previously adjusted the Autoscale Pool, adjust the values back to what they were before the upgrade.
 
     {{< tabs >}}
     {{< tab "Cloud Manager" >}}
@@ -447,14 +444,14 @@ For more details, review the API request sample on the [Cluster Nodes Recycle AP
 *This process temporarily creates an additional node pool (with multiple worker nodes). This minimizes the time the upgrade may take (compared with an in-place upgrade) but increases the cost impact. This is recommended for larger production applications.*
 
 {{< note >}}
-These instructions cover deleting the old node pool after all nodes have been fully drained. This allows you to fallback to the existing nodes should the need arise. Alternatively, you can delete each node after it has been successfully drained, which reduces the overall cost impact of the upgrade.
+These instructions cover deleting the old node pool after all nodes have been fully drained. This lets you fallback to the existing nodes should the need arise. Alternatively, you can delete each node after it has been successfully drained, which reduces the overall cost impact of the upgrade.
 {{< /note >}}
 
 1.  Create a new pool with the same Compute Instance plans and number of nodes as your existing pool.
 
     {{< tabs >}}
     {{< tab "Cloud Manager" >}}
-    Within the **Node Pools** section on the details page of your LKE cluster in the Cloud Manager, click the **Add a Node Pool** button. In the prompt that appears, enter the plan type, plan size, and the number of nodes to match the existing node pool. See [Add a Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#add-a-node-pool).
+    Within the **Node Pools** section on the details page of your LKE cluster in Cloud Manager, click the **Add a Node Pool** button. In the prompt that appears, enter the plan type, plan size, and the number of nodes to match the existing node pool. See [Add a Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#add-a-node-pool).
     {{< /tab >}}
     {{< tab "Linode CLI" >}}
     Run the command below, replacing the following values as needed. If you are not using the autoscale feature, remove the last 3 options (starting with *autoscaler*) from the command.
@@ -521,7 +518,7 @@ These instructions cover deleting the old node pool after all nodes have been fu
 
     {{< tabs >}}
     {{< tab "Cloud Manager" >}}
-    Locate the original node pool on the details page of your LKE cluster in the Cloud Manager. Click the corresponding **Delete Pool** button as outlined in [Remove a Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#remove-a-node-pool).
+    Locate the original node pool on the details page of your LKE cluster in Cloud Manager. Click the corresponding **Delete Pool** button as outlined in [Remove a Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#remove-a-node-pool).
     {{< /tab >}}
     {{< tab "Linode CLI" >}}
     Run the command below, replacing *[cluster-id]* with the ID of your cluster and *[pool-id]* with the ID of the original node pool.

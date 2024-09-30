@@ -2,12 +2,11 @@
 slug: implement-jenkins-ci-cd
 title: "How to Implement Jenkins CI/CD on Linode to Any Hyperscaler"
 description: "Jenkins allows you to effectively automate your building, testing, deployment, and more. Its many plugins and its flexible pipeline capabilities make Jenkins exceptional for CI/CD in any context and with any cloud providers. Learn how to implement a Jenkins CI/CD architecture on Linode, capable of builds and deployments to any hyperscaler."
+authors: ['Nathaniel Stickman']
+contributors: ['Nathaniel Stickman']
+published: 2023-05-17
 keywords: ['jenkins ci/cd pipeline','jenkins kubernetes deployments','jenkins tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ['Nathaniel Stickman']
-published: 2023-05-17
-modified_by:
-  name: Nathaniel Stickman
 external_resources:
   - '[Jenkins Blog: Create a New Jenkins Node, and Run Your Jenkins Agent as a Service](https://www.jenkins.io/blog/2022/12/27/run-jenkins-agent-as-a-service/)'
 ---
@@ -256,7 +255,7 @@ Because this tutorial uses Kubernetes for its deployment, you need to have a Doc
 
 The easiest solution here is [Docker Hub](https://hub.docker.com/), where you can add images after registering an account. Learn more, with a full-functioning example, in our guide [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/guides/deploy-container-image-to-kubernetes/).
 
-You can also self-host a registry solution. One such solution is [Harbor](https://goharbor.io/), and you can deploy your own Harbor server readily through the Linode Marketplace. See our guide [Deploy Harbor through the Linode Marketplace](/docs/products/tools/marketplace/guides/harbor/) to see how.
+You can also self-host a registry solution. One such solution is [Harbor](https://goharbor.io/), and you can deploy your own Harbor server readily through the Linode Marketplace. See our guide [Deploy Harbor through the Linode Marketplace](/docs/marketplace-docs/guides/harbor/) to see how.
 
 Whatever solution you choose, you need later to provide the registry's path to the Jenkins pipeline.
 
@@ -505,7 +504,7 @@ The pipeline set up in the next section needs your deploy key to access the GitH
 
         - Enter `main` for **Branches to build**.
 
-        - As the **Repository browser**, choose *githubweb* for GitHub and *gitlab* for GitLab.
+        - As the **Repository browser**, choose `githubweb` for GitHub and `gitlab` for GitLab.
 
         - For the **Repository browser** > **URL** field, enter the remote repository directory URL, which is of the form `https://github.com/GIT_USERNAME/jenkins-example-app`.
 

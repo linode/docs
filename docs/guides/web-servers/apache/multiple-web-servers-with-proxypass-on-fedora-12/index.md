@@ -1,25 +1,22 @@
 ---
 slug: multiple-web-servers-with-proxypass-on-fedora-12
-deprecated: true
+title: Multiple Web Servers with ProxyPass on Fedora 12
 description: 'This guide will show you how you can use separate web servers to host multiple websites or applications using ProxyPass with Apache on Fedora 12.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-04
+modified: 2011-04-29
 keywords: ["apache", "proxypass", "apache on fedora", "multiple web servers"]
 tags: ["proxy","web server","apache","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/multiple-web-servers-with-proxypass-on-fedora-12/','/web-servers/apache/multiple-web-servers-with-proxypass-on-fedora-12/','/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-fedora-12/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-02-04
-title: Multiple Web Servers with ProxyPass on Fedora 12
 relations:
     platform:
         key: multiple-servers-proxypass
         keywords:
             - distribution: Fedora 12
-authors: ["Linode"]
+deprecated: true
 ---
-
-
 
 In some cases, administrators find that while Apache meets most of their general-purpose web serving needs, other web or application servers are better suited for certain tasks. Fortunately, it's easy to configure Apache to pass certain requests to other web server processes. These secondary (or tertiary) web servers may be running on the same Linode or separate nodes (perhaps via private networking). Our examples use lighttpd as a secondary web server, but they apply to any web server or application you'd like to proxy HTTP requests to.
 

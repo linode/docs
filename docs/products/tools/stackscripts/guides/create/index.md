@@ -4,14 +4,13 @@ description: "How to make a StackScript using Linode StackScripts."
 published: 2022-11-30
 modified: 2023-09-18
 aliases: ['/products/tools/stackscripts/guides/stackscripts-create-stackscript/']
-authors: ["Linode"]
 ---
 
-{{< content "metadata-stackscripts-notice" >}}
+{{% content "metadata-stackscripts-notice" %}}
 
-This guide walks you through creating a StackScript through the Cloud Manager.
+This guide walks you through creating a StackScript through Cloud Manager.
 
-1. [Open the Create StackScript Form in the Cloud Manager](#open-the-create-stackscript-form-in-the-cloud-manager)
+1. [Open the Create StackScript Form in Cloud Manager](#open-the-create-stackscript-form-in-cloud-manager)
 1. [Set the Label](#set-the-label)
 1. [Add a Description](#add-a-description)
 1. [Select Compatible Distribution Images](#select-compatible-distribution-images)
@@ -19,9 +18,9 @@ This guide walks you through creating a StackScript through the Cloud Manager.
 1. [Enter a Revision Note](#enter-a-revision-note)
 1. [Save the StackScript](#save-the-stackscript)
 
-## Open the Create StackScript Form in the Cloud Manager
+## Open the Create StackScript Form in Cloud Manager
 
-Log in to the [Cloud Manager](https://cloud.linode.com/) and select **StackScripts** from the left navigation menu. Click the **Create StackScript** button. This opens the *[StackScript Create](https://cloud.linode.com/stackscripts/create)* form.
+Log in to [Cloud Manager](https://cloud.linode.com/) and select **StackScripts** from the left navigation menu. Click the **Create StackScript** button. This opens the *[StackScript Create](https://cloud.linode.com/stackscripts/create)* form.
 
 ## Set the Label
 
@@ -54,5 +53,5 @@ Each time you make a change to a StackScript (including creating it), you can se
 Once you are finished filling out all required fields, click the **Create StackScript** button to create the StackScript. After it has been created, you can edit all of the fields as needed. See [Edit a StackScript](/docs/products/tools/stackscripts/guides/manage/#edit-a-stackscript).
 
 {{< note >}}
-To deploy a new Linode with your StackScript, follow the steps in the [Deploying a New Compute Instance Using a StackScript](/docs/products/tools/stackscripts/guides/deploy-a-compute-instance/#deploy-a-linode-from-an-account-stackscript) guide.
+To deploy a new Linode with your StackScript, follow the steps in the [Deploying a New Compute Instance Using a StackScript](/docs/products/tools/stackscripts/guides/deploy-a-compute-instance/) guide.
 {{< /note >}}

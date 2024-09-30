@@ -2,22 +2,19 @@
 title: Capture Apache Metrics with Longview
 title_meta: Capture Apache Metrics with Linode Longview
 description: 'This guide discusses the Linode Longview client, including how to configure Longview for the Apache web server, how to interact with data from Longview, and more.'
+published: 2013-11-04
+modified: 2023-05-24
 keywords: ["Longview", " Apache", " statistics", " mod\\_status"]
 tags: ["apache","cloud manager","statistics","monitoring","linode platform"]
 aliases: ['/longview/longview-for-apache/','/platform/longview/what-is-the-linode-longview-app-for-apache/','/platform/longview/longview-app-for-apache/','/guides/what-is-the-linode-longview-app-for-apache/']
-published: 2013-11-04
-modified: 2023-05-24
-modified_by:
-  name: Linode
 relations:
     platform:
         key: what-is-longview
         keywords:
             - distribution: Apache
-authors: ["Linode"]
 ---
 
-In addition to capturing general system metrics, Longview can also be used to capture metrics for Apache. The Apache tab appears in the Cloud Manager when Longview detects that you have Apache installed on your system. It can help you keep track of Apache's settings, workers and requests, system resource consumption, and other information.
+In addition to capturing general system metrics, Longview can also be used to capture metrics for Apache. The Apache tab appears in Cloud Manager when Longview detects that you have Apache installed on your system. It can help you keep track of Apache's settings, workers and requests, system resource consumption, and other information.
 
 {{< note >}}
 In order to use Longview to capture data for Apache, you must have the Longview Agent successfully installed on the system you wish to monitor. See [Create a Longview Client and Install the Longview Agent](/docs/products/tools/longview/get-started/).
@@ -28,7 +25,7 @@ In order to use Longview to capture data for Apache, you must have the Longview 
 This guide covers using Longview with Apache and includes the following topics:
 
 - [Configuring Longview for Apache](#configure-longview).
-- [Interacting with the Apache data provided by Longview in the Cloud Manager](#view-metrics).
+- [Interacting with the Apache data provided by Longview in Cloud Manager](#view-metrics).
 - [Troubleshooting Longview for Apache](#troubleshooting).
 
 ## Configure Longview for Apache {#configure-longview}
@@ -60,7 +57,7 @@ If Apache is installed and running when you install the Longview agent, Longview
     Found Apache status page at http://127.0.0.1/server-status?auto specified in /etc/linode/longview.d/Apache.conf
     ```
 
-    Once you see this successful message, the Longview should automatically start collecting Apache data. Refresh Longview in the Cloud Manager to start viewing your Apache stats for your Longview Client instance.
+    Once you see this successful message, the Longview should automatically start collecting Apache data. Refresh Longview in Cloud Manager to start viewing your Apache stats for your Longview Client instance.
 
     If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#troubleshooting) section at the end of this article.
 
@@ -77,23 +74,23 @@ To enable the Apache Longview integration manually, follow these steps on your s
 1.  Verify that **mod\_status** is enabled for Apache (it should be by default). For more information, see the [Apache Module mod\_status](https://httpd.apache.org/docs/2.4/mod/mod_status.html) documentation.
 
     {{< tabs >}}
-    {{% tab "Debian and Ubuntu" %}}
-```command
-sudo a2enmod status
-```
-    {{% /tab %}}
-    {{% tab "CentOS" %}}
-```command
-sudo yum install links
-httpd -M | grep status
-```
+    {{< tab "Debian and Ubuntu" >}}
+    ```command
+    sudo a2enmod status
+    ```
+    {{< /tab >}}
+    {{< tab "CentOS" >}}
+    ```command
+    sudo yum install links
+    httpd -M | grep status
+    ```
 
-The output should be similar to:
+    The output should be similar to:
 
-```output
-status_module (shared)
-```
-    {{% /tab %}}
+    ```output
+    status_module (shared)
+    ```
+    {{< /tab >}}
     {{< /tabs >}}
 
 1.  Update your Apache configuration file to include the block in the example file below. Depending on your Linux distribution and version, your Apache configuration file may be stored in one of the following locations:
@@ -121,16 +118,16 @@ status_module (shared)
 1.  Restart Apache:
 
     {{< tabs >}}
-    {{% tab "Debian and Ubuntu" %}}
-```command
-sudo systemctl restart apache2
-```
-    {{% /tab %}}
-    {{% tab "CentOS" %}}
-```command
-sudo systemctl restart httpd
-```
-    {{% /tab %}}
+    {{< tab "Debian and Ubuntu" >}}
+    ```command
+    sudo systemctl restart apache2
+    ```
+    {{< /tab >}}
+    {{< tab "CentOS" >}}
+    ```command
+    sudo systemctl restart httpd
+    ```
+    {{< /tab >}}
     {{< /tabs >}}
 
 1.  Restart Longview:
@@ -145,7 +142,7 @@ You should now be able to see Longview data for Apache. If that's not the case, 
 
 ## View Apache Metrics {#view-metrics}
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select the **Longview** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select the **Longview** link in the sidebar.
 
 1. Locate the Longview Client you have configured for Apache and click the corresponding **View details** link.
 
@@ -182,19 +179,19 @@ The **Workers** graph shows all of the Apache workers at the selected time. The 
 
 ### CPU
 
-The **CPU** graph shows the percentage of your system's CPU being used by Apache at the selected time. If you want to see the total CPU used instead, check the [Overview tab](/docs/products/tools/longview/get-started/#overview).
+The **CPU** graph shows the percentage of your system's CPU being used by Apache at the selected time. If you want to see the total CPU used instead, check the [Overview tab](/docs/products/tools/longview/guides/metrics/#overview).
 
 ### Memory
 
-The **Memory** graph shows the amount of RAM being used by Apache at the selected time. If you want to see your system's total memory use instead, check the [Overview tab](/docs/products/tools/longview/get-started/#overview).
+The **Memory** graph shows the amount of RAM being used by Apache at the selected time. If you want to see your system's total memory use instead, check the [Overview tab](/docs/products/tools/longview/guides/metrics/#overview).
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by Apache at the selected time. To see the total IO instead, visit the [Disks tab](/docs/products/tools/longview/get-started/#disks).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by Apache at the selected time. To see the total IO instead, visit the [Disks tab](/docs/products/tools/longview/guides/metrics/#disks).
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your system spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your system, see the [Processes tab](/docs/products/tools/longview/get-started/#processes).
+The **Process Count** graph shows the total number of processes on your system spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your system, see the [Processes tab](/docs/products/tools/longview/guides/metrics/#processes).
 
 ## Troubleshooting
 
@@ -232,7 +229,7 @@ If you choose:
     update-rc.d: using dependency based boot sequencing
     ```
 
-    Refresh the Longview Apache tab in the Cloud Manager to verify that it's working now.
+    Refresh the Longview Apache tab in Cloud Manager to verify that it's working now.
 
     If instead you receive a failure message, such as:
 
@@ -285,7 +282,7 @@ To fix this, follow these steps:
     location http://localhost/whm-server-status?auto
     ```
 
-1. Longview is designed to check the default location automatically. If you use the default location shown above, you should be done. Refresh the Longview in the Cloud Manager to verify that it's working now.
+1. Longview is designed to check the default location automatically. If you use the default location shown above, you should be done. Refresh the Longview in Cloud Manager to verify that it's working now.
 
 1. If you're not using the default location, you need to create a new file, `/etc/linode/longview.d/Apache.conf`, and set the `location` variable to match what you set in the Apache configuration file:
 
@@ -307,7 +304,7 @@ To fix this, follow these steps:
     sudo service longview restart
     ```
 
-1. Refresh the Longview in the Cloud Manager to verify that it's working now.
+1. Refresh the Longview in Cloud Manager to verify that it's working now.
 
 ### The Apache Status Page Doesn't Look Right
 
@@ -336,7 +333,7 @@ To resolve this issue, follow these steps:
     sudo systemctl restart longview
     ```
 
-1. Refresh the Longview in the Cloud Manager to verify that it's working now.
+1. Refresh the Longview in Cloud Manager to verify that it's working now.
 
 ### Missing Graphs: Enable ExtendedStatus
 
@@ -351,16 +348,16 @@ ExtendedStatus On
 When you've finished modifying the configuration file, restart Apache:
 
 {{< tabs >}}
-{{% tab "Debian and Ubuntu" %}}
+{{< tab "Debian and Ubuntu" >}}
 ```command
 sudo systemctl restart apache2
 ```
-{{% /tab %}}
-{{% tab "CentOS" %}}
+{{< /tab >}}
+{{< tab "CentOS" >}}
 ```command
 sudo systemctl restart httpd
 ```
-{{% /tab %}}
+{{< /tab >}}
 {{< /tabs >}}
 
 ### Apache Tab is Missing

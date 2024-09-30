@@ -1,13 +1,10 @@
 ---
-description: "How to create an Access Key for use with Linode Object Storage."
-keywords: ['object storage']
-published: 2021-05-28
-modified: 2022-02-07
-modified_by:
-  name: Linode
 title: "Manage Access Keys"
+description: "How to create an Access Key for use with Linode Object Storage."
+published: 2021-05-28
+modified: 2024-06-17
+keywords: ['object storage']
 aliases: ['/products/storage/object-storage/guides/generate-key-pair/','/products/storage/object-storage/guides/generate-access-keys/']
-authors: ["Linode"]
 ---
 
 To start integrating Object Storage with your own applications, you need to create an *access key*. The access key provides access to buckets (and objects stored within those buckets). You can create many access keys, allowing you to create a unique one for each application or user. When an application or user no longer requires access, you can revoke that access key without affecting any other application.
@@ -16,31 +13,38 @@ When an access key is generated, a corresponding *secret key* is also created. T
 
 ## View Access Keys
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com).
+1.  Log in to [Cloud Manager](https://cloud.linode.com).
 
 1.  Select the **Object Storage** link in the sidebar and navigate to the **Access Keys** tab.
 
-![Viewing a list of access keys in the Cloud Manager](access-keys-list.png)
+![Viewing a list of access keys in Cloud Manager](view-access-keys.jpg)
 
-This page displays a list of all access keys added to your Object Storage account. From here, you can create a new access key, edit the labels on the existing keys, view the permissions, or revoke access (which deletes the access key).
+This page displays a list of all the access keys added to your Object Storage account. It also shows the S3 endpoint hostname. The S3 endpoint hostname is different for each region and is displayed when the you create an access key. 
+
+From here, you can create a new access key. You can also click the ellipsis to:
+- Edit the access key labels and the regions list.
+- View the permissions.
+- Revoke access (which deletes the access key).
 
 ## Create an Access Key
 
-To use Object Storage with any compatible client or command-line tool, you'll need to generate an Access Key. This can be done directly in the Cloud Manager.
+To use Object Storage with any compatible client or command-line tool, you'll need to generate an Access Key. This can be done directly in Cloud Manager.
 
-1.  Navigate to the **Access Keys** page in the Cloud Manager (see [View Access Keys](#view-access-keys)).
+1.  Navigate to the **Access Keys** page in Cloud Manager (see [View Access Keys](#view-access-keys)).
 
 1.  Click the **Create Access Key** button, which displays the **Create Access Key** panel.
 
-1.  Enter a label for the access key. This label is how you reference the access key in the Cloud Manager and any S3 compatible client.
+1.  Enter a label for the access key. This label is how you reference the access key in Cloud Manager and any S3 compatible client.
 
-1.  Toggle the **Limited Access** switch if you wish to only provide access to certain buckets. This allows you to limit the permissions for the new access key on a per-bucket level. See [Access Key Permissions](#permissions) for more details.
+1. Select at least one Region. You can select multiple regions for your access key.
 
-    ![The limited access switch](access-keys-limited-access-switch.png)
+1.  Toggle the **Limited Access** switch if you wish to only provide access to certain buckets. This lets you limit the permissions for the new access key on a per-bucket level. See [Access Key Permissions](#permissions) for more details.
 
-1.  Click the **Submit** button to create the access key. A dialog box appears that displays the new access key and its secret key. While the access key is always visible within the Cloud Manager, its corresponding secrete key is only visible once and cannot be retrieved again after this window is closed. Store this secret key somewhere secure, such as a password manager.
+    ![The limited access switch](create-access-key.jpg)
 
-    ![The access key and secret key displayed within the Cloud Manager](access-keys-display-after-creation.png)
+1.  Click the **Create Access Key** button to create the access key. A dialog box appears that displays the new access key and its secret key. While the access key is always visible within Cloud Manager, its corresponding secrete key is only visible once and cannot be retrieved again after this window is closed. Store this secret key somewhere secure, such as a password manager.
+
+    ![The access key and secret key displayed within Cloud Manager](secret-key.jpg)
 
 You now have the credentials needed to connect to Object Storage.
 
@@ -48,7 +52,7 @@ You now have the credentials needed to connect to Object Storage.
 
 Revoking an access key removes it from your account and no longer provides access to applications that may have used it. You may wish to do this when decommissioning an application, ending a project with a third party developer, or any other situation where an access key is no longer needed.
 
-1.  Navigate to the **Access Keys** page in the Cloud Manager (see [View Access Keys](#view-access-keys)).
+1.  Navigate to the **Access Keys** page in Cloud Manager (see [View Access Keys](#view-access-keys)).
 
 1.  Locate the access key you wish to remove and click the corresponding **Revoke** button.
 
@@ -67,11 +71,11 @@ Regardless of permissions, all access keys can create new buckets and list all b
 
 - **None**: Restricts all access to the specified Bucket. This Access Key will still be able to view the Bucket in the list of all Buckets, but will otherwise be unable to access any objects stored within it.
 
-- **Read** *(read_only)*: Access keys with **Read** permissions are able to list and retrieve most information about the specified Bucket and objects stored in that Bucket. Technically, **read** permissions provide access to the following s3 actions (which are used by all s3-compatible clients and tools):
+- **Read** (`read_only`): Access keys with **Read** permissions are able to list and retrieve most information about the specified Bucket and objects stored in that Bucket. Technically, **read** permissions provide access to the following s3 actions (which are used by all s3-compatible clients and tools):
 
     > *GetBucketAcl, GetBucketCORS, GetBucketLocation, GetBucketLogging, GetBucketNotification, GetBucketPolicy, GetBucketTagging, GetBucketVersioning, GetBucketWebsite, GetLifecycleConfiguration, GetObjectAcl, GetObject, GetObjectTorrent, GetReplicationConfiguration, GetObjectVersionAcl, GetObjectVersion, GetObjectVersionTorrent, ListBucketMultipartUploads, ListBucket, ListBucketVersions, ListMultipartUploadParts*
 
-- **Read/Write** *(read_write)*: Access keys with **Read/Write** permissions can list, retrieve, add, delete, and modify most information and objects stored within the specified Bucket. Technically, **read/write** permissions provide access to all of the same s3 actions as **read** permissions, as well as the following:
+- **Read/Write** (`read_write`): Access keys with **Read/Write** permissions can list, retrieve, add, delete, and modify most information and objects stored within the specified Bucket. Technically, **read/write** permissions provide access to all of the same s3 actions as **read** permissions, as well as the following:
 
     > *AbortMultipartUpload, DeleteBucketWebsite, DeleteObject, DeleteObjectVersion, DeleteReplicationConfiguration, PutBucketCORS, PutBucketLogging, PutBucketNotification, PutBucketTagging, PutBucketVersioning, PutBucketWebsite, PutLifecycleConfiguration, PutObject, PutObjectAcl, PutObjectVersionAcl, PutReplicationConfiguration, RestoreObject*
 

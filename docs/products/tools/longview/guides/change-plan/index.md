@@ -1,12 +1,9 @@
 ---
 title: "Change Longview Plan (Upgrade to Pro)"
 description: "Information on upgrading your Longview to a Pro plan or downgrading to the Free plan."
-keywords: ['longview','billing','pricing','price','limit','transfer', 'plan']
 published: 2023-05-24
-modified_by:
-  name: Linode
+keywords: ['longview','billing','pricing','price','limit','transfer', 'plan']
 tags: ["linode platform","cloud manager","statistics","monitoring"]
-authors: ["Linode"]
 ---
 
 {{< note >}}
@@ -15,7 +12,7 @@ Currently, it is not possible to have both *Longview Free* and *Longview Pro* cl
 
 To change your plan level or to view all available Longview Pro plans, follow these steps:
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/dashboard) and click on the **Longview** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com/dashboard) and click on the **Longview** link in the sidebar.
 
 1. Viewing the Longview Clients listing page, click on the **Plan Details** tab.
 
@@ -23,7 +20,7 @@ To change your plan level or to view all available Longview Pro plans, follow th
 
 1. If you would like to change your current plan, select your preferred plan and click on the **Change Plan** button. You will see the page update to denote your current Longview plan.
 
-![Screenshot of the Longview Plan Details screen in the Cloud Manager](longview-change-plan.png)
+![Screenshot of the Longview Plan Details screen in Cloud Manager](longview-change-plan.png)
 
 {{< note type="warning" >}}
 If you change your plan, your Longview Client data will temporarily be in a transitional state. Any irregularities in your displayed Longview data will clear up shortly.
