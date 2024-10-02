@@ -76,10 +76,10 @@ Rather than placing music, video, and image content folders within the same root
 
 As the site scales, you can create additional buckets and move sub-category content (such as copyrighted or free music) to their *own buckets*. This further increases RPS capacity while further distributing the number of endpoints from which the CDN can cache content. In the example below, RPS capacity is now four times the original bucket architecture.
 
--   Paths for the copyright bucket include: `copyright`
--   Paths for the store-music bucket now include: `store-music` and `store-music/free`
--   Paths for the store-video bucket include: `store-video`
--   Paths for the store-images bucket include: `store-images`
+-   Paths for the `copyright` bucket include: `copyright`
+-   Paths for the `store-music` bucket now include: `store-music` and `store-music/free`
+-   Paths for the `store-video` bucket include: `store-video`
+-   Paths for the `store-images` bucket include: `store-images`
 
 ![Multi-Bucket Arch 2](Multi-bucket-arch2.png)
 
