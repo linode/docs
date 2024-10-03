@@ -1,11 +1,11 @@
 ---
 slug: using-object-storage-with-akamai-cdn
 title: "Using Object Storage With Akamai CDN"
-description: "Two to three sentences describing your guide."
+description: "This guide presents the benefits and strategies for pairing Linode Object Storage with Akamai CDN for data delivery."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2024-09-27
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['object storage','cdn','delivery','linode object storage','akamai cdn','akamai connected cloud']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Object Storage Product Documentation](https://techdocs.akamai.com/cloud-computing/docs/object-storage)'
@@ -14,13 +14,13 @@ external_resources:
 
 Object storage stores data in an unstructured, flat format where data is stored as “objects”. Object storage is cheaper than block storage, and it can be especially useful for large volumes of unstructured data like photos, videos, documents, web pages, sensor data, and audio files. Cloud-based object storage systems distribute this unstructured data across multiple physical devices for redundancy, while users are able to access the content from a single interface. Object storage is HTTP accessible and ideal for building cloud-native applications that require scale and flexibility, as well as storage for existing data like analytics, backups, and archives.
 
-With its reliability and cost-effectiveness, Linode Object Storage can be coupled with Akamai’s content delivery network (CDN) to create a viable solution for applications that need to serve large files and large amounts of data. This includes applications like video on demand (VOD) streaming, ecommerce, firmware updating, media-based website content, and more.
+With its reliability and cost-effectiveness, Linode Object Storage can be coupled with Akamai’s content delivery network (CDN) to create a viable solution for applications that need to serve large files and large amounts of data. This includes video on demand (VOD) streaming, ecommerce, firmware updating, media-based website content, and other applications.
 
 The solution presented in this guide focuses on the architectural best practices for designing and operating reliable, secure, efficient, and sustainable content storage and delivery systems using [Linode Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage) on Akamai Connected Cloud with [Akamai CDN](https://techdocs.akamai.com/platform-basics/docs/content-delivery).
 
 ## Object Storage For Data Delivery
 
-With the right [bucket architecture](/docs/guides/how-to-optimize-bucket-architecture-for-cdn/), object storage can be used to house content for effective unstructured data delivery. Object storage supports file-critical features such as encryption, compression, deduplication, and versioning, and its accessibility via HTTP protocols offers instant access to objects.
+With the right [bucket architecture](/docs/guides/optimizing-obj-bucket-architecture-for-akamai-cdn/), object storage can be used to house content for effective unstructured data delivery. Object storage supports file-critical features such as encryption, compression, deduplication, and versioning, and its accessibility via HTTP protocols offers instant access to objects.
 
 For example, these factors make object storage ideal for storing unstructured data like video and audio files that don’t require frequent updating and services that require efficient input/output.
 
@@ -98,4 +98,4 @@ When architected properly and paired with Akamai’s CDN, Linode Object Storage 
 
 To learn more about object storage bucket design for streaming and steps for CDN integration, see the following guide:
 
-- [How to Optimize Object Storage Bucket Architecture for CDN](/docs/guides/how-to-optimize-bucket-architecture-for-cdn/)
+- [Optimizing Object Storage Bucket Architecture for Akamai CDN](/docs/guides/optimizing-obj-bucket-architecture-for-akamai-cdn/)

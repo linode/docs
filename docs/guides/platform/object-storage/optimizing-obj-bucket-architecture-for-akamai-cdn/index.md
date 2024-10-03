@@ -1,12 +1,11 @@
 ---
-slug: how-to-optimize-bucket-architecture-for-cdn
-title: "How to Optimize Bucket Architecture for CDN"
-description: "Two to three sentences describing your guide."
-og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
+slug: optimizing-obj-bucket-architecture-for-akamai-cdn
+title: "Optimizing Object Storage Bucket Architecture for Akamai CDN"
+description: "This guide discusses design strategies and best practices for optimizing Linode Oject Storage bucket architecture for integrating with Akamai CDN."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2024-09-27
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['object storage','cdn','delivery','linode object storage','akamai cdn','akamai connected cloud','bucket architecture']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Object Storage Product Documentation](https://techdocs.akamai.com/cloud-computing/docs/object-storage)'
