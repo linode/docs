@@ -638,4 +638,3 @@ openssl s_client -groups x25519_kyber768 -connect localhost:443
 ```
 
 This command specifically checks for the `X25519_Kyber768` algorithm during a TLS connection. For additional verification methods, see our [Ubuntu-PQC guide](https://collaborate.akamai.com/confluence/pages/viewpage.action?pageId=1012558967).
-{{< /note >}}
