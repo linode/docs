@@ -15,7 +15,7 @@ external_resources:
 - '[GitHub: Open Quantum Safe oqs-provider](https://github.com/open-quantum-safe/oqs-provider)'
 ---
 
-The National Institute of Standards and Technology (NIST) recently [released](https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards) its first finalized Post-Quantum Encryption Standards to protect against quantum computer attacks. This includes the Module-Lattice-based Key-Encapsulation Mechanism standard (ML-KEM, defined in [FIPS-203](https://csrc.nist.gov/pubs/fips/203/final). It is already being implemented in the industry using an early [pre-standardization draft](https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00/) for use with TLS.
+The National Institute of Standards and Technology (NIST) recently [released](https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards) its first finalized Post-Quantum Encryption Standards to protect against quantum computer attacks. This includes the Module-Lattice-based Key-Encapsulation Mechanism standard (ML-KEM, defined in [FIPS-203](https://csrc.nist.gov/pubs/fips/203/final)). It is already being implemented in the industry using an early [pre-standardization draft](https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00/) for use with TLS.
 
 Deploying this algorithm for your web server currently requires some additional steps. The process may vary depending on your operating system's version of OpenSSL. This guide shows you how to build OpenSSL 3.x and the Open Quantum Safe (OQS) provider on Debian 11. For instructions on Ubuntu 24.04 LTS, please see [this document](https://collaborate.akamai.com/confluence/pages/viewpage.action?pageId=1012558967).
 
@@ -35,19 +35,19 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Once your Debian 11 compute instance is set up and secured, install the dependencies and system packages needed to build OpenSSL and the OQS provider.
 
-1.  Update your package list to ensure you download the latest available versions:
+1.  First, update your package list to ensure you download the latest available versions:
 
     ```command
     sudo apt update
     ```
 
-1.  Install `make`, a build automation tool used to compile and link programs from source code. It reads instructions from a Makefile, which defines how to compile and build the software:
+1.  Next, install `make`, a build automation tool used to compile and link programs from source code. It reads instructions from a Makefile, which defines how to compile and build the software:
 
     ```command
     sudo apt install -y make
     ```
 
-1.  Install `gcc` (GNU Compiler Collection), which compiles source code written in languages like C and C++ into executable programs. It is essential for building OpenSSL and other software from source code:
+1.  Now install `gcc` (GNU Compiler Collection), which compiles source code written in languages like C and C++ into executable programs. It is essential for building OpenSSL and other software from source code:
 
     ```command
     sudo apt install -y gcc
@@ -56,6 +56,12 @@ Once your Debian 11 compute instance is set up and secured, install the dependen
 ## Install OpenSSL from Source
 
 Debian 11 comes with OpenSSL version `1.1.1w` by default, but the OQS provider requires OpenSSL 3.x. Therefore, you need to build a newer version from source.
+
+1.  First, change into your user's home directory, if not already:
+
+    ```command
+    cd ~
+    ```
 
 1.  Download the OpenSSL source code:
 
@@ -88,21 +94,24 @@ Before proceeding with the installation, verify the integrity and authenticity o
     When prompted, press the <kbd>1</kbd> key followed by <kbd>ENTER</kbd> to choose the key from `openssl@openssl.org`:
 
     ```output
+    gpg: directory '/home/{{< placeholder "USERNAME" >}}/.gnupg' created
+    gpg: keybox '/home/{{< placeholder "USERNAME" >}}/.gnupg/pubring.kbx' created
     gpg: data source: https://keys.openpgp.org:443
-    (1) OpenSSL <openssl@openssl.org>
-          4096 bit RSA key 216094DFD0CB81EF, created: 2024-04-08
-    Keys 1-1 of 1 for "openssl@openssl.org".  Enter number(s), N)ext, or Q)uit > 1
+    (1)	OpenSSL <openssl@openssl.org>
+	       4096 bit RSA key 216094DFD0CB81EF, created: 2024-04-08
+    Keys 1-1 of 1 for "openssl@openssl.org".  Enter number(s), N)ext, or Q)uit >
     ```
 
     Afterward, you should see output similar to the following:
 
     ```output
+    gpg: /home/{{< placeholder "USERNAME" >}}/.gnupg/trustdb.gpg: trustdb created
     gpg: key 216094DFD0CB81EF: public key "OpenSSL <openssl@openssl.org>" imported
     gpg: Total number processed: 1
-    gpg:           	imported: 1
+    gpg:               imported: 1
     ```
 
-1.  Verify the fingerprint pf the imported key to ensure it matches OpenSSL's official key:
+1.  Verify the fingerprint of the imported key to ensure it matches OpenSSL's official key:
 
     ```command
     gpg --fingerprint openssl@openssl.org
@@ -113,7 +122,7 @@ Before proceeding with the installation, verify the integrity and authenticity o
     ```output
     pub   rsa4096 2024-04-08 [SC] [expires: 2026-04-08]
           BA54 73A2 B058 7B07 FB27  CF2D 2160 94DF D0CB 81EF
-    uid       	[ unknown] OpenSSL <openssl@openssl.org>
+    uid           [ unknown] OpenSSL <openssl@openssl.org>
     ```
 
 1.  Finally, verify the OpenSSL source file against its signature:
@@ -125,18 +134,26 @@ Before proceeding with the installation, verify the integrity and authenticity o
     You should see a confirmation similar to the output below:
 
     ```output
-    gpg: Signature made Tue Sep  3 08:46:51 2024 EDT
-    gpg:            	using RSA key BA5473A2B0587B07FB27CF2D216094DFD0CB81EF
-    gpg: Good signature from "OpenSSL <openssl@openssl.org>" [ultimate]
+    gpg: Signature made Tue 03 Sep 2024 08:46:51 AM EDT
+    gpg:                using RSA key BA5473A2B0587B07FB27CF2D216094DFD0CB81EF
+    gpg: Good signature from "OpenSSL <openssl@openssl.org>" [unknown]
     ```
 
     {{< note >}}
-    If you see a warning message about not having a trusted path to the OpenSSL key, it does not impact the validity of the signature. The warning message appears because the OpenSSL signing key has not yet been marked as "trusted" in your GnuPG keyring.
+    If you see a warning message about not having a trusted signature, it does not impact the validity of the signature:
+
+    ```output
+    gpg: WARNING: This key is not certified with a trusted signature!
+    gpg:          There is no indication that the signature belongs to the owner.
+    Primary key fingerprint: BA54 73A2 B058 7B07 FB27  CF2D 2160 94DF D0CB 81EF
+    ```
+
+    The warning message appears because the OpenSSL signing key has not yet been marked as "trusted" in your GnuPG keyring.
     {{< /note >}}
 
 ### Build OpenSSL
 
-After verifying the source code, the next step is to build OpenSSL form source.
+After verifying the source code, the next step is to build OpenSSL from source.
 
 1.  Extract the downloaded OpenSSL archive:
 
@@ -150,7 +167,7 @@ After verifying the source code, the next step is to build OpenSSL form source.
     cd openssl-3.3.2
     ```
 
-1.  Configure the OpenSSL build, specifying the installation path (`/opt` in this case) and setting the appropriate runtime library search path:
+1.  Configure the OpenSSL build, specifying the installation path as `/opt` and setting the appropriate runtime library search path:
 
     ```command
     ./Configure --prefix=/opt '-Wl,-rpath,$(LIBRPATH)'
@@ -194,7 +211,7 @@ After verifying the source code, the next step is to build OpenSSL form source.
     openssl version
     ```
 
-    This should still show `1.1.1w`, the version bundled with Debian 11:
+    This should still show `1.1.1w`, the default version bundled with Debian 11:
 
     ```output
     OpenSSL 1.1.1w  11 Sep 2023
@@ -232,7 +249,7 @@ Adjust your `PATH` environment variable to prioritize the `/opt/bin` directory.
     openssl version
     ```
 
-    The output should now be version `3.3.2` that you installed in `/opt/bin`:
+    The output should now show version `3.3.2`, which you installed in `/opt/bin`:
 
     ```output
     OpenSSL 3.3.2 3 Sep 2024 (Library: OpenSSL 3.3.2 3 Sep 2024)
@@ -244,7 +261,7 @@ The `oqs-provider` is a library that integrates post-quantum cryptographic algor
 
 ### Install Dependencies
 
-A couple of dependencies, and Git, must be installed prior to `oqs-provider`:
+A couple of dependencies must be installed prior to `oqs-provider`, along with Git:
 
 1.  First, change back into your user's home directory:
 
@@ -310,7 +327,7 @@ A couple of dependencies, and Git, must be installed prior to `oqs-provider`:
 
 ### Configure OpenSSL to Use the OQS Provider
 
-1.  Use a command line text editor such as `nano` to edit the OpenSSL configuration file:
+1.  Use `nano` to edit the OpenSSL configuration file:
 
     ```command
     sudo nano /opt/ssl/openssl.cnf
@@ -403,16 +420,16 @@ The version of Nginx available for Debian 11 uses OpenSSL version `1.1.1w`. In o
     gpg --verify nginx-1.26.2.tar.gz.asc nginx-1.26.2.tar.gz
     ```
 
-    You should see output similar to the below if verification succeeds:
+    If verification succeeds, you should see output similar to the following:
 
     ```output
-    gpg: Signature made Tue Aug 13 08:48:05 2024 EDT
-    gpg:            	using RSA key D6786CE303D9A9022998DC6CC8464D549AF75C0A
-    gpg:            	issuer "s.kandaurov@f5.com"
+    gpg: Signature made Tue 13 Aug 2024 08:48:05 AM EDT
+    gpg:                using RSA key D6786CE303D9A9022998DC6CC8464D549AF75C0A
+    gpg:                issuer "s.kandaurov@f5.com"
     gpg: Good signature from "Sergey Kandaurov <s.kandaurov@f5.com>" [unknown]
-    gpg:             	aka "Sergey Kandaurov <pluknet@nginx.com>" [unknown]
-    gpg: WARNING: The key's User ID is not certified with a trusted signature!
-    gpg:      	There is no indication that the signature belongs to the owner.
+    gpg:                 aka "Sergey Kandaurov <pluknet@nginx.com>" [unknown]
+    gpg: WARNING: This key is not certified with a trusted signature!
+    gpg:          There is no indication that the signature belongs to the owner.
     Primary key fingerprint: D678 6CE3 03D9 A902 2998  DC6C C846 4D54 9AF7 5C0A
     ```
 
