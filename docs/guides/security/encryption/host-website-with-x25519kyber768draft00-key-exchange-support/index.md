@@ -98,7 +98,7 @@ Before proceeding with the installation, verify the integrity and authenticity o
     gpg: keybox '/home/{{< placeholder "USERNAME" >}}/.gnupg/pubring.kbx' created
     gpg: data source: https://keys.openpgp.org:443
     (1)	OpenSSL <openssl@openssl.org>
-	       4096 bit RSA key 216094DFD0CB81EF, created: 2024-04-08
+        4096 bit RSA key 216094DFD0CB81EF, created: 2024-04-08
     Keys 1-1 of 1 for "openssl@openssl.org".  Enter number(s), N)ext, or Q)uit >
     ```
 
