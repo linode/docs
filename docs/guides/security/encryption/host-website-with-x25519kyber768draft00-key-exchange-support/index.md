@@ -55,7 +55,7 @@ Once your Debian 11 compute instance is set up and secured, install the dependen
 
 ## Install OpenSSL from Source
 
-Debian 11 comes with OpenSSL version 1.1.1w by default, but the OQS provider requires OpenSSL 3.x. Therefore, you need to build a newer version from source.
+Debian 11 comes with OpenSSL version `1.1.1w` by default, but the OQS provider requires OpenSSL 3.x. Therefore, you need to build a newer version from source.
 
 1.  Download the OpenSSL source code:
 
@@ -176,20 +176,35 @@ After verifying the source code, the next step is to build OpenSSL form source.
     This process may take a few minutes depending on your system.
     {{< /note >}}
 
-1.  Verify that OpenSSL is correctly installed and that the correct version is active:
+1.  Verify that the correct version of OpenSSL is installed:
 
     ```command
     /opt/bin/openssl version
     ```
 
-    This should return the version number of the OpenSSL build:
+    This should return the version number of the OpenSSL build you just installed to `/opt/bin`:
 
     ```output
-    OpenSSL 3.3.2
+    OpenSSL 3.3.2 3 Sep 2024 (Library: OpenSSL 3.3.2 3 Sep 2024)
     ```
 
-{{< note >}}
-At this point, you probably want to add `/opt/bin` to your `PATH` environment variable.
+1.  Now check the active version via the basic `openssl` command:
+
+    ```command
+    openssl version
+    ```
+
+    This should still show `1.1.1w`, the version bundled with Debian 11:
+
+    ```output
+    OpenSSL 1.1.1w  11 Sep 2023
+    ```
+
+In order to complete the installation, you need to make sure that the version you installed in `/opt/bin` is used instead.
+
+### Add `/opt/bin` to Your `PATH`
+
+Adjust your `PATH` environment variable to prioritize the `/opt/bin` directory.
 
 1.  Open your `~/.bashrc` file in a command line text editor such as `nano`:
 
@@ -210,22 +225,52 @@ At this point, you probably want to add `/opt/bin` to your `PATH` environment va
     ```command
     source ~/.bashrc
     ```
-{{< /note >}}
+
+1.  Use the basic `openssl` command to recheck the active version of OpenSSL:
+
+    ```command
+    openssl version
+    ```
+
+    The output should now be version `3.3.2` that you installed in `/opt/bin`:
+
+    ```output
+    OpenSSL 3.3.2 3 Sep 2024 (Library: OpenSSL 3.3.2 3 Sep 2024)
+    ```
 
 ## Install `oqs-provider`
 
-### Install Dependencies and Clone the `oqs-provider` Repository
+The `oqs-provider` is a library that integrates post-quantum cryptographic algorithms into OpenSSL. This section outlines the steps needed to install it and leverage this advanced cryptography.
 
-A couple of required dependencies must be installed prior to `oqs-provider`:
+### Install Dependencies
 
--   `cmake`: A cross-platform build system generator that helps automate the compilation and build process for software projects.
--   `ninja-build`: A build system designed to run builds in parallel, which reduces the compilation time of large projects.
+A couple of dependencies, and Git, must be installed prior to `oqs-provider`:
 
-1.  Install the required dependencies, along with `git`:
+1.  First, change back into your user's home directory:
 
     ```command
-    sudo apt install -y git cmake ninja-build
+    cd ~
     ```
+
+1.  Install `git`, a distributed version control system that can manage code repositories:
+
+    ```command
+    sudo apt install -y git
+    ```
+
+1.  Now install `cmake`, a cross-platform build system generator that helps automate the compilation and build process for software projects:
+
+    ```command
+    sudo apt install -y cmake
+    ```
+
+1.  Finally, install `ninja-build`, a build system designed to run builds in parallel, which reduces the compilation time of large projects:
+
+    ```command
+    sudo apt install -y ninja-build
+    ```
+
+### Clone the `oqs-provier` Repository
 
 1.  Use `git` to clone the `oqs-provider` repository from GitHub:
 
@@ -240,12 +285,6 @@ A couple of required dependencies must be installed prior to `oqs-provider`:
     ```
 
 ### Build `oqs-provider`
-
-1.  Temporarily add `/opt/bin` to your `PATH` environment variable if not already:
-
-    ```command
-    export PATH=/opt/bin:$PATH
-    ```
 
 1.  Set the OpenSSL root directory and build the `oqs-provider` using the provided script:
 
@@ -293,7 +332,7 @@ A couple of required dependencies must be installed prior to `oqs-provider`:
     ```
 
     {{< note >}}
-    In this case, you are editing the `/opt/ssl/openssl.cnf file, not the configuration file for the system OpenSSL!
+    In this case, you are editing the `/opt/ssl/openssl.cnf` file, not the configuration file for the system OpenSSL.
     {{< /note >}}
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
@@ -322,9 +361,15 @@ A couple of required dependencies must be installed prior to `oqs-provider`:
 
 ## Install Nginx from Source
 
-The version of Nginx available for Debian 11 uses OpenSSL version 1.1.1w. In order to use OpenSSL 3.x, you must build Nginx from source.
+The version of Nginx available for Debian 11 uses OpenSSL version `1.1.1w`. In order to use OpenSSL 3.x, you must build Nginx from source.
 
 ### Fetch Nginx Source
+
+1.  Before continuing, change back into your user's home directory:
+
+    ```command
+    cd ~
+    ```
 
 1.  Use `wget` to download the Nginx source files:
 
@@ -393,8 +438,6 @@ A couple of libraries are required before building Nginx:
 
 ### Build Nginx
 
-Except for the destination prefix, this example uses the same configuration parameters as the binary package. This is to retain feature parity and integrate with system scripts. The last three options passed to the `configure` script are necessary to use the OpenSSL version built earlier.
-
 1.  Extract the source:
 
     ```command
@@ -444,6 +487,8 @@ Except for the destination prefix, this example uses the same configuration para
         --with-cc-opt="-I/opt/include"
     ```
 
+    Except for the destination `prefix`, this example uses the same configuration parameters as the binary package. This is to retain feature parity and integrate with system scripts. The last three options passed to the `configure` script are necessary to use the OpenSSL version built earlier.
+
 1.  Compile Nginx:
 
     ```command
@@ -484,10 +529,10 @@ Except for the destination prefix, this example uses the same configuration para
 
     Locate the `http` block and add the highlighted lines to include configuration files in the `/opt/nginx/nginx.conf` directory:
 
-    ```file {title="/opt/nginx/nginx.conf" hl_lines="2,3"}
+    ```file {title="/opt/nginx/nginx.conf" hl_lines="2,3" linenostart="18"}
     http {
-   	    #Include additional configuration files
-	    include /opt/nginx/conf.d/pqc.conf;
+        #Include additional configuration files
+        include /opt/nginx/conf.d/pqc.conf;
         ...
     }
     ```
@@ -506,13 +551,13 @@ Except for the destination prefix, this example uses the same configuration para
     server {
         listen 443 ssl;
         listen [::]:443 ssl;
-        server_name {{< placeholder "example.com" >}} {{< placeholder "www.example.com" >}};
+        server_name example.com www.example.com;
 
-        root {{< placeholder "/var/www/example.com" >}};
+        root /var/www/example.com;
         index index.html index.php;
 
-        ssl_certificate /opt/certs/{{< placeholder "example.com" >}}.crt;
-        ssl_certificate_key /opt/certs/{{< placeholder "example.com" >}}.key;
+        ssl_certificate /opt/certs/pqc.crt;
+        ssl_certificate_key /opt/certs/pqc.key;
 
         ssl_protocols TLSv1.3;
         ssl_prefer_server_ciphers on;
@@ -526,25 +571,27 @@ Except for the destination prefix, this example uses the same configuration para
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-    {{< note >}}
-    Ensure that you include the necessary certificates (whether self-signed or from a trusted Certificate Authority) to enable proper TLS/SSL functionality. Without certificates, you won’t be able to establish a secure HTTPS connection.
+### Set up TLS/SSL Certificates
 
-    -   **Using Let's Encrpyt (Recommedned for Production)**: To use automatic certificate renewal with Let's Encrypt, follow [Use Certbot to Enable HTTPS with NGINX on Ubuntu](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) to properly configure the Nginx server.
+Ensure that you include the necessary certificates (whether self-signed or from a trusted Certificate Authority) to enable proper TLS/SSL functionality. Without certificates, you won’t be able to establish a secure HTTPS connection.
 
-    -   **Using Self-Signed Certificate (Suitable for Testing/Development)**: To use a self-signed certificate, see our [Enable TLS/SSL for HTTPS](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) guide, or create certificates using the following command:
+-   **Using Let's Encrpyt (Recommedned for Production)**: To use automatic certificate renewal with Let's Encrypt, follow [Use Certbot to Enable HTTPS with NGINX on Ubuntu](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) to properly configure the Nginx server.
 
-        1.  First create the directory for your certificates:
+-   **Using Self-Signed Certificate (Suitable for Testing/Development)**: To use a self-signed certificate, see our [Enable TLS/SSL for HTTPS](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) guide, or create certificates using the following command:
 
-        ```command
-        sudo mkdir /opt/certs
-        ```
+    1.  First create the directory for your certificates:
 
-        2.  Then generate the self-signed certificate:
+    ```command
+    sudo mkdir /opt/certs
+    ```
 
-        ```command
-        sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /opt/certs/pqc.com.key -out /opt/certs/pqc.com.crt
-        ```
-    {{< /note >}}
+    2.  Then generate the self-signed certificate:
+
+    ```command
+    sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /opt/certs/pqc.key -out /opt/certs/pqc.crt
+    ```
+
+### Configure `systemd` and Start Nginx
 
 1.  Create a `systemd` service file for Nginx:
 
@@ -582,12 +629,13 @@ Except for the destination prefix, this example uses the same configuration para
 
 Nginx should now be installed, configured, and running with OpenSSL 3.x support.
 
-## Verify that Nginx Is Using Post-Quantum Algorithms
+## Verify Nginx Is Using Post-Quantum Algorithms
 
-The quickest and easiest way to test the algorithms used by Nginx is to run the `openssl` command shown below:
+The quickest and easiest way to test the algorithms used by Nginx is to run the `openssl` command with the flags shown below:
 
 ```command
 openssl s_client -groups x25519_kyber768 -connect localhost:443
 ```
 
-This command specifically checks for the `X25519_Kyber768` algorithm during a TLS connection. For additional methods, see our [Ubuntu-PQC guide](https://collaborate.akamai.com/confluence/pages/viewpage.action?pageId=1012558967).
+This command specifically checks for the `X25519_Kyber768` algorithm during a TLS connection. For additional verification methods, see our [Ubuntu-PQC guide](https://collaborate.akamai.com/confluence/pages/viewpage.action?pageId=1012558967).
+{{< /note >}}
