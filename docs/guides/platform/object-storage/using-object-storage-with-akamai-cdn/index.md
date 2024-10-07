@@ -64,19 +64,11 @@ Consider the data center-based architecture below. Without the use of a CDN, obj
 
 CDNs are crucial for data delivery solutions because they cache content like images, videos, and other files on edge servers closer to end-users. This reduces latency and overall load on origin servers, improves delivery speed and efficiency, and saves money by reducing origin requests and lowering egress costs. For example, in use cases such as content streaming, CDNs can cache segments from streams to reduce startup times, limit stream interruptions, and eliminate potential buffering issues.
 
-Object storage can’t scale linearly with the number of users, but using it as an origin point for CDN delivery overcomes this by allowing users to interact with the CDN instead of the object storage system. Applications can then store objects independently of user traffic, with the added benefit of CDN-based security.
+Object storage can’t scale linearly with the number of users, but using it as an origin point for CDN delivery overcomes this by allowing users to interact with the CDN instead of the object storage system. Applications can then store objects independently of user traffic, with the added benefit of CDN-based security. Using Linode Object Storage on Akamai Connected Cloud with Akamai CDN can also significantly reduce object storage-based egress costs.
 
 ### CDN-Based Distributed Architecture
 
-In the CDN-based architectures below, Akamai CDN lives between end users and the origin data point. As end users request information, Akamai CDN sources and caches data from Linode Object Storage on Akamai Connected Cloud, and then serves that data from an edge server close to the end user. In this scenario, latency is reduced, users never need to interact with the origin, and the object storage infrastructure remains protected and optimized for efficiency and growth.
-
-![CDN-Based Architecture](CDN-Based-Architecture.png)
-
-![Edge vs. DC Latency](Edge-vs-DC-latency.png)
-
-## Benefits of Using Akamai CDN with Object Storage for Data Delivery
-
-Akamai Connected Cloud brings content closer to end-users and offers several technical and financial benefits for streaming applications, including:
+Akamai’s distributed architecture brings content closer to end-users and offers several technical benefits for streaming applications, including:
 
 -   Audience and end-user geographic reach
 -   Programmability through well-defined APIs
@@ -87,7 +79,14 @@ Akamai Connected Cloud brings content closer to end-users and offers several tec
 -   Enhanced data durability and availability through replication and distribution mechanisms
 -   Limiting reliance on transit networks
 -   Origin offloading, content caching, and reduced latency
--   Significantly reduced object storage-based egress costs, because no egress is imposed between Linode Object Storage and Akamai CDN
+
+In the CDN-based architectures below, Akamai CDN lives between end users and the origin data point. As end users request information, Akamai CDN sources and caches data from Linode Object Storage on Akamai Connected Cloud, and then serves that data from an edge server close to the end user. In this scenario, latency is reduced, users never need to interact with the origin, and the object storage infrastructure remains protected and optimized for efficiency and growth.
+
+![CDN-Based Architecture](CDN-Based-Architecture.png)
+
+![Edge vs. DC Latency](Edge-vs-DC-latency.png)
+
+## Using Akamai CDN with Object Storage for Data Delivery
 
 Object storage is a standardized, key component in many content production tools, enabling seamless integration and organization of large amounts of files. Its interoperability across various applications, tools, and workflows ensures data is centralized and easily accessible. Object storage simplifies content distribution and backup processes, and it provides a secure, cost-effective method for storing and sharing large volumes of unstructured data.
 
