@@ -3,6 +3,24 @@ title: Testing
 description: This is a test page used in both manual and automatic tests. Do not delete. It will not be listed anywhere.
 ---
 
+## Note shortcode
+
+{{% note type="primary" %}}
+This is a primary note.
+{{% /note %}}
+
+{{% note type="secondary" %}}
+This is a secondary note.
+{{% /note %}}
+
+{{% note type="alert" %}}
+This is an alert.
+{{% /note %}}
+
+{{% note type="warning" %}}
+This is a warning.
+{{% /note %}}
+
 ## Keyboard Shortcuts
 
 Example: Use <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy text.

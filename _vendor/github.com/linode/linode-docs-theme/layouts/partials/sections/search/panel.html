@@ -13,15 +13,15 @@
       </div>
       <template x-if="$store.search.results.main.loaded">
         <div>
-          <div class="border-l-4 border-blue-400 bg-blue-100 p-4 mb-4">
+          <div class="border-l-4 border-blue-100 bg-blue-200 p-4 mb-4">
             <div class="flex">
               <div class="ml-3">
-                <p class="text-normal text-blue-700 leading-6">
+                <p class="text-normal text-blue-900 leading-6">
                   Product docs and API reference are now on Akamai TechDocs.<br />
                   <a
                     target="_blank"
                     :href="$store.search.docsearchLink('Akamai%20cloud%20computing')"
-                    class="text-blue-700 underline hover:text-blue-500">
+                    class="text-blue-900 underline hover:text-blue-100">
                     <span x-show="!$store.search.query.lndq">
                       Search product docs.</span
                     >
@@ -34,7 +34,7 @@
                   <a
                     target="_blank"
                     :href="$store.search.docsearchLink('Linode+API')"
-                    class="text-blue-700 underline hover:text-blue-500">
+                    class="text-blue-900 underline hover:text-blue-100">
                     <span x-show="!$store.search.query.lndq">
                       Search API reference.</span
                     >
