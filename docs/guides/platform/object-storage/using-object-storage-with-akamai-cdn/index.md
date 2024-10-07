@@ -12,23 +12,21 @@ external_resources:
 - '[Akamai Content Delivery Documentation](https://techdocs.akamai.com/platform-basics/docs/content-delivery)'
 ---
 
-Object storage stores data in an unstructured, flat format where data is stored as “objects”. Object storage is cheaper than block storage, and it can be especially useful for large volumes of unstructured data like photos, videos, documents, web pages, sensor data, and audio files. Cloud-based object storage systems distribute this unstructured data across multiple physical devices for redundancy, while users are able to access the content from a single interface. Object storage is HTTP accessible and ideal for building cloud-native applications that require scale and flexibility, as well as storage for existing data like analytics, backups, and archives.
+Object storage stores data in an unstructured, flat format where data is stored as “objects”. Object storage is cheaper than block storage, and it can be especially useful for large volumes of unstructured data like photos, videos, documents, web pages, sensor data, and audio files. Cloud-based object storage systems distribute this unstructured data across multiple physical devices for redundancy, while users are able to access the content from a single interface. Object storage is HTTP accessible and ideal for building cloud-native applications that require scale and flexibility, as well as storage for application artifacts like analytics, backups, and archives.
 
-With its reliability and cost-effectiveness, Linode Object Storage can be coupled with Akamai’s content delivery network (CDN) to create a viable solution for applications that need to serve large files and large amounts of data. This includes video on demand (VOD) streaming, ecommerce, firmware updating, media-based website content, and other applications.
+With its reliability and cost-effectiveness, Linode Object Storage can be coupled with Akamai’s content delivery network (CDN) to create a viable solution for applications that need to serve large files and large amounts of data. This includes video on demand (VOD) streaming, ecommerce, firmware update distribution, media-based website content, and other applications.
 
 The solution presented in this guide focuses on the architectural best practices for designing and operating reliable, secure, efficient, and sustainable content storage and delivery systems using [Linode Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage) on Akamai Connected Cloud with [Akamai CDN](https://techdocs.akamai.com/platform-basics/docs/content-delivery).
 
 ## Object Storage For Data Delivery
 
-With the right [bucket architecture](/docs/guides/optimizing-obj-bucket-architecture-for-akamai-cdn/), object storage can be used to house content for effective unstructured data delivery. Object storage supports file-critical features such as encryption, compression, deduplication, and versioning, and its accessibility via HTTP protocols offers instant access to objects.
-
-For example, these factors make object storage ideal for storing unstructured data like video and audio files that don’t require frequent updating and services that require efficient input/output.
+With the right [bucket architecture](/docs/guides/optimizing-obj-bucket-architecture-for-akamai-cdn/), object storage can be used to house content for effective unstructured data delivery. Object storage supports file-critical features such as encryption, compression, deduplication, and versioning, and its accessibility via HTTP protocols offers instant access to objects. These factors make object storage ideal for storing unstructured data like video and audio files that don’t require frequent updating, as well as services that require efficient input/output.
 
 ## Object Storage Specifications, Considerations, and Strategies for Streaming Data
 
 ### Technical Specifications
 
-When considering applications -- like streaming video or audio -- that involve sourcing data from object storage, there are a few things to keep in mind, including content access, bandwidth limitations, latency sensitivity, scalability, egress costs, and other technical limitations:
+When architecting applications that source data from object storage -- like streaming video or audio -- consider these technical factors:
 
 -   **Bandwidth and latency:** Object storage solutions are not always optimized for high-bandwidth streaming applications. This can lead to potential buffering issues and slower delivery speeds.
 
@@ -36,7 +34,7 @@ When considering applications -- like streaming video or audio -- that involve s
 
 -   **Retrieval speed:** Without CDN edge-based caching, content streamed directly from object storage origin servers may result in slower data retrieval speeds and higher latency.
 
--   **Data transfer and egress costs:** Streaming directly from object storage can incur high egress costs since each user request may result in data transfer fees, whereas CDNs cache data at the edge to optimize delivery.
+-   **Data transfer and egress costs:** Streaming directly from object storage can incur high egress costs because each user request may result in data transfer fees. When using a CDN, only requests to update the CDN cache may incur data transfer fees.
 
 -   **Resource limits:** Object storage systems may have limitations on the size of individual objects, potentially restricting the size of videos that can be efficiently streamed.
 
@@ -48,9 +46,9 @@ When considering applications -- like streaming video or audio -- that involve s
 
 There are multiple internet-related factors to consider when building out a content delivery solution:
 
--   **First mile:** The content provider connection point. Should content providers set up content to be accessible from a single physical location (i.e. an origin data center), user access is limited by “first mile” connectivity limitations.
+-   **First mile:** The content provider connection point. Should content providers set up content to be accessible from a single physical location (i.e. an origin data center), user access is constrained by first mile connectivity limitations.
 
--   **Last mile:** The end-user connection point. Slow user internet connection speeds are uncontrollable and unpredictable. They can also mask or obfuscate problems related to the “first mile”, network peering, and bottleneck issues.
+-   **Last mile:** The end-user connection point. Slow user internet connection speeds are uncontrollable and unpredictable. They can also mask or obfuscate problems related to the first mile, network peering, and bottleneck issues.
 
 -   **Peering points:** The connection points between two networks. These connections are not guaranteed and are difficult to troubleshoot. Networks benefit financially from connectivity with content providers and end users but not each other.
 
@@ -64,7 +62,7 @@ Consider the data center-based architecture below. Without the use of a CDN, obj
 
 ## Advantages of Using Akamai CDN
 
-CDNs are crucial for data delivery solutions because they cache content like images, videos, and other files on edge servers closer to end-users. This reduces latency and overall load on origin servers, improves delivery speed and efficiency, and saves money by reducing origin requests and lowering egress. For example, in use cases such as content streaming, CDNs can cache segments from streams to reduce startup times, limit stream interruptions, and eliminate potential buffering issues.
+CDNs are crucial for data delivery solutions because they cache content like images, videos, and other files on edge servers closer to end-users. This reduces latency and overall load on origin servers, improves delivery speed and efficiency, and saves money by reducing origin requests and lowering egress costs. For example, in use cases such as content streaming, CDNs can cache segments from streams to reduce startup times, limit stream interruptions, and eliminate potential buffering issues.
 
 Object storage can’t scale linearly with the number of users, but using it as an origin point for CDN delivery overcomes this by allowing users to interact with the CDN instead of the object storage system. Applications can then store objects independently of user traffic, with the added benefit of CDN-based security. Using Linode Object Storage on Akamai Connected Cloud with Akamai CDN can also significantly reduce object storage-based egress costs.
 
