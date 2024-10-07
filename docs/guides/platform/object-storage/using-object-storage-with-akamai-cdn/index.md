@@ -97,4 +97,4 @@ When architected properly and paired with Akamai’s CDN, Linode Object Storage 
 
 To learn more about object storage bucket design for streaming and steps for CDN integration, see the following guide:
 
-- [Optimizing Object Storage Bucket Architecture for Akamai CDN](/docs/guides/optimizing-obj-bucket-architecture-for-akamai-cdn/)
+[Optimizing Object Storage Bucket Architecture for Akamai CDN](/docs/guides/optimizing-obj-bucket-architecture-for-akamai-cdn/?cardstyling)

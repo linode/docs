@@ -21,6 +21,10 @@ Your Object Storage bucket architecture is critical to performance success. In p
 
 [Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage) stores files in a “flat” or unstructured file structure. This means that bucket contents do not exist in a hierarchy like traditional file structures; however, hierarchy can be emulated by creating folders within a bucket. Files (or “objects”) are stored alongside their rich metadata, and access can be granted on a per-object level, with each object assigned a unique URL.
 
+For more general information about using object storage and CDNs in applications, consider this guide:
+
+[Using Object Storage With Akamai CDN](/docs/guides/using-object-storage-with-akamai-cdn/?cardstyling)
+
 ## Bucket Architecture Strategies
 
 ### Example Scenario
