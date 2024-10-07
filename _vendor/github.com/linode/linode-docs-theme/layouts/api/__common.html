@@ -713,7 +713,7 @@ This template includes common API logic and functions.
           </button>
         {{ end }}
       </div>
-      {{ $copyIcon := `<svg class="fill-current text-brand hover:text-green-400 w-5 h-5 mr-2"><use href="#icon--copy"></use></svg>` | safeHTML }}
+      {{ $copyIcon := `<svg class="fill-current text-brand hover:text-blue-400 w-5 h-5 mr-2"><use href="#icon--copy"></use></svg>` | safeHTML }}
       {{ range $i, $e := $dot }}
         {{ if $ctx.nocode }}
           <template x-if="active === {{ $i }}">
