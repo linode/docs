@@ -59,7 +59,7 @@ A specific utility may be well-suited for your use case depending on whether the
 
 ### Rsync
 
-[Rsync](https://rsync.samba.org/) is a standard Linux-based data transfer utility designed for syncing files between remote and local servers. Known for its flexibility, speed, and scriptable configuration, rsync is often a go-to utility for Linux administrators looking to quickly transfer and synchronize files between systems.
+[Rsync](https://rsync.samba.org/) is a standard Linux-based data transfer utility designed for syncing files between remote and local servers. Known for its flexibility, speed, and scriptable configuration, rsync is often a go-to utility for Linux administrators looking to quickly transfer and synchronize files between systems. rsync is used to transfer data between filesystems and does not interact with object storage.
 
 #### Use Cases
 
@@ -71,7 +71,7 @@ Rsync excels in use cases that require a proven method for transferring files an
 
 ### Rclone
 
-[Rclone](https://rclone.org/) is a command-line utility for syncing files and directories to and from different cloud storage providers, servers, and workstations. A number of [rclone's commands](https://rclone.org/commands/) are similar to common Linux commands (e.g., cp, mv, mount, ls), so it can feel familiar to use. Rclone was specially designed for rudimentary file transfers between cloud servers and on-premises servers and workstations, whereas rsync can be configured for more sophisticated file synchronization capabilities.
+[Rclone](https://rclone.org/) is a command-line utility for syncing files and directories to and from different cloud storage providers, servers, and workstations. A number of [rclone's commands](https://rclone.org/commands/) are similar to common Linux commands (e.g., cp, mv, mount, ls), so it can feel familiar to use. Rclone was designed for file transfers between cloud servers and on-premises servers and workstations, whereas rsync can be configured for more sophisticated file synchronization capabilities. Rclone can transfer data to and from both filesystems and object storage.
 
 #### Use Cases
 
@@ -83,7 +83,7 @@ Rclone supports leading cloud services like Akamai, Amazon S3, Microsoft OneDriv
 
 ### SCP
 
-[Secure copy (SCP)](https://en.wikipedia.org/wiki/Secure_copy_protocol) is a Linux system command for securely copying files between hosts. SCP was designed to be a more secure version of remote copy (RCP), relying on the secure shell (SSH) protocol to encrypt network traffic between data transfers.
+[Secure copy (SCP)](https://en.wikipedia.org/wiki/Secure_copy_protocol) is a Linux system command for securely copying files between hosts. SCP was designed to be a more secure version of remote copy (RCP), relying on the secure shell (SSH) protocol to encrypt network traffic between data transfers. SCP is used to transfer data between filesystems and does not interact with object storage.
 
 #### Use cases
 
@@ -95,7 +95,7 @@ Some users may find SCP to be less complicated to use than rsync. SCP is not cap
 
 ### SFTP
 
-Like SCP, [secure file transfer protocol (SFTP)](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol) is commonly used for transferring files over an SSH-encrypted channel. However, SFTP can be used with a range of interactive commands (e.g, creating/deleting directories and files, settings permissions), while SCP is used for transferring files in a non-interactive manner.
+Like SCP, [secure file transfer protocol (SFTP)](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol) is commonly used for transferring files over an SSH-encrypted channel. However, SFTP can be used with a range of interactive commands (e.g, creating/deleting directories and files, settings permissions), while SCP is used for transferring files in a non-interactive manner. SFTP is used to transfer files between filesystems and is generally not natively supported by object storage services, but some services may expose a compatibility layer that allows SFTP access.
 
 #### Use Cases
 
@@ -111,7 +111,7 @@ SFTP can be further secured by creating an [SFTP *jail*](/docs/guides/limiting-a
 
 ### FTP/SFTP Clients
 
-One of the earliest data transfer mechanisms, FTP is a widely used protocol for transferring files over the internet. FTP clients like [Cyberduck](https://cyberduck.io/) and [FileZilla](https://filezilla-project.org/) are readily available for download; however, because FTP is an unencrypted protocol, its usage is now commonly discouraged for general purpose file transfers over the internet. SFTP is often recommended instead of FTP, with a variety of supporting SFTP clients (e.g., [WinSCP](https://winscp.net/eng/download.php) and [Tectia](https://www.ssh.com/products/tectia-ssh/)). Many legacy FTP clients now also support SFTP.
+One of the earliest data transfer mechanisms, FTP is a widely used protocol for transferring files over the internet. FTP clients like [Cyberduck](https://cyberduck.io/) and [FileZilla](https://filezilla-project.org/) are readily available for download; however, because FTP is an unencrypted protocol, its usage is now commonly discouraged for general purpose file transfers over the internet. SFTP is often recommended instead of FTP, with a variety of supporting SFTP clients (e.g., [WinSCP](https://winscp.net/eng/download.php) and [Tectia](https://www.ssh.com/products/tectia-ssh/)). Many legacy FTP clients now also support SFTP. As well, many of these clients also support transfers to and from object storage services, but they generally do not use the SFTP protocol to perform these transfers.
 
 #### Use Cases
 
