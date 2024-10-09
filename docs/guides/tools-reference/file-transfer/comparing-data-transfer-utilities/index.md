@@ -15,11 +15,10 @@ external_resources:
 - '[Transfer Files with FileZilla](/docs/guides/filezilla/)'
 ---
 
-Technology professionals and end users rely on a myriad of utilities for moving data between locations. This guide discusses several of these data transfer utilities:
+Technology professionals and end users rely on a myriad of utilities for moving data between locations. This guide discusses several of these data transfer protocols and utilities:
 
-- [rclone](#rclone)
 - [rsync](#rsync)
-- [MiniIO](#minio-client)
+- [rclone](#rclone)
 - [SCP](#scp)
 - [SFTP](#sftp)
 - [FTP/SFTP clients](#ftpsftp-clients)
@@ -81,18 +80,6 @@ Rclone is used for basic cloud synchronization and the copying and managing file
 #### Pros and Cons
 
 Rclone supports leading cloud services like Akamai, Amazon S3, Microsoft OneDrive, Google Drive/Cloud Storage, Microsoft Azure Blob/File Storage, DropBox, and more. Rclone can also recover from interrupted connections during data transfers. As with rsync, rclone can perform a sync operation, but it also supports a [bidirectional sync](https://rclone.org/commands/rclone_bisync/) operation.
-
-### MinIO Client
-
-[MinIO](https://min.io/docs/minio/linux/reference/minio-mc.html) is a high-performance object storage system compatible with Amazon S3 cloud storage. Using the MinIO Client, you can use identical Linux file commands (e.g., ls, cat, cp, mirror, and diff) to manipulate S3-compatible cloud storage services and local file systems.
-
-#### Use Cases
-
-Designed as an alternative to cloud-native storage systems, MinIO is capable of running both natively and as a deployed, containerized Docker or Kubernetes application. For this reason, MiniIO is ideal for development projects and DevOps use cases that require API-based Amazon S3 and object storage integrations. It is also useful for machine learning and data analytics workloads that require fault-tolerance and resilience in model training, in the face of potential hardware failures or system crashes.
-
-#### Pros/Cons
-
-MinIO's minimalist functionality and resilient architecture allow for high availability and performance, making it ideal for simple data storage use cases and cloud-native application workloads. However, MinIO performance degrades in operational scenarios and configurations like when running it on SAN/NAS appliances.
 
 ### SCP
 
