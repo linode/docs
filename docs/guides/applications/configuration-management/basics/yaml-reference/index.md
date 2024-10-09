@@ -228,4 +228,4 @@ Plenty of tools help YAML newcomers. Among them are several automatic YAML linte
 - Converters between other formats and YAML. For example, VS Code provides a [YAML to JSON extension](https://marketplace.visualstudio.com/items?itemName=ahebrank.yaml2json).
 - YAML prettifiers. The [VS Code Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) is one popular option.
 
-You can find more tools to help you work with YAML using the [Online YAML tools](https://onlineyamltools.com/) reference.
+You can find more tools to help you work with YAML using the [Online YAML tools](https://onlineyamltools.com/) reference or visit [Yamline](https://yamline.com/) for additional resources.
