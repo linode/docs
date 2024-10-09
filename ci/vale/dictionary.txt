@@ -2498,6 +2498,7 @@ teamspeak
 teardown
 techdocs
 techland
+Tectia
 telecom
 telehealth
 teleporting

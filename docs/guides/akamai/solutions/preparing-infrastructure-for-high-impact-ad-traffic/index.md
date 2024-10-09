@@ -62,19 +62,20 @@ At the edge, Akamai’s [App & API Protector](https://www.akamai.com/products/ap
 
 1.  Edge servers running [Ion](https://www.akamai.com/products/web-performance-optimization) deliver web content to end users, reduce DNS lookup time, and accelerate traffic to provide a fast and responsive user experience.
 
-1.  [Image & Video Manager](https://www.akamai.com/products/image-and-video-manager) provides image optimization to increase performance while maintaining visible quality.
+2.  [Image & Video Manager](https://www.akamai.com/products/image-and-video-manager) provides image optimization to increase performance while maintaining visible quality.
 
-1.  Edge servers using App & API Protector and Bot Manager protect against established and emerging threats including DDsS, bot attacks, application and API attacks, and more.
+3.  Edge servers using App & API Protector and Bot Manager protect against established and emerging threats including DDsS, bot attacks, application and API attacks, and more.
 
-1.  EdgeWorkers allow performance-sensitive compute workloads to be moved to the edge to reduce both latency and origin load.
+4.  EdgeWorkers allow performance-sensitive compute workloads to be moved to the edge to reduce both latency and origin load.
 
-1.  Queue-it waiting rooms allow for user prioritization and enhance the user experience during periods of extremely high traffic.
+5.  Queue-it waiting rooms allow for user prioritization and enhance the user experience during periods of extremely high traffic.
 
-1.  TrafficPeak on Akamai Connected Cloud provides near real-time visualization of event data.
+6.  TrafficPeak on Akamai Connected Cloud provides near real-time visualization of event data.
 
-1.  Akamai routes CDN traffic through designated edge servers. This allows customers to drop traffic from other sources and prevent attackers from bypassing edge-based protection.
+7.  Akamai routes CDN traffic through designated edge servers. This allows customers to drop traffic from other sources and prevent attackers from bypassing edge-based protection.
+{#high-impact-ad-arch .large-diagram}
 
-![High-Impact Advertising Infrastructure Architecture](high-impact-ad-traffic-architecture-1.jpg "High-Impact Advertising Infrastructure Architecture")
+![High-Impact Advertising Infrastructure Architecture](high-impact-ad-traffic-arch-1.svg?diagram-description-id=high-impact-ad-arch)
 
 ### Systems and Components
 
