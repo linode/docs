@@ -15,7 +15,16 @@ external_resources:
 - '[Transfer Files with FileZilla](/docs/guides/filezilla/)'
 ---
 
-Technology professionals and end users rely on a myriad of utilities for moving data between locations. This guide discusses several of these data transfer utilities -- rclone, rsync, MiniIO, SCP, SFTP, and FTP/SFTP clients -- and details each of their core features, use cases, key considerations, strengths, and limitations.
+Technology professionals and end users rely on a myriad of utilities for moving data between locations. This guide discusses several of these data transfer utilities:
+
+- [rclone](#rclone)
+- [rsync](#rsync)
+- [MiniIO](#minio-client)
+- [SCP](#scp)
+- [SFTP](#sftp)
+- [FTP/SFTP clients](#ftpsftp-clients)
+
+Details of each utility's core features, use cases, key considerations, strengths, and limitations are described.
 
 ## What Is a Data Transfer Utility?
 
@@ -35,13 +44,13 @@ Copying a single file from a desktop client to a cloud server calls for a differ
 
 Along with how much data is being transferred, the kind of data and the destination are equally important (e.g., your data’s source and target destination, their respective file systems, and how much storage is required once the data is at rest).
 
-For example, most end users only deal with traditionally structured file systems when using their local environment, with data organized hierarchically into folders. In contrast, block storage breaks up files into separate blocks and stores them separately, allowing for significant performance benefits. Object storage saves files in a non-hierarchical, self-contained “flat” format. This allows for increased scalability and sizable reductions in cost and complexity.
+Most end users only store data in traditionally structured file systems when using their local environment, with files organized hierarchically into folders. These file systems are implemented on top of *block storage* devices. Block storage devices are an abstraction created by an operating system for the hardware of a hard drive. Block storage is also offered as a product by cloud platforms, where these devices can be *attached* to a compute instance, and the user can install a file system on them.
+
+Cloud platforms also offer an alternative service called *object storage*. Object storage saves files in a non-hierarchical, self-contained “flat” format. This allows for increased scalability and sizable reductions in cost and complexity.
 
 ### File Type and Size
 
 Different file types and sizes also call for different data transfer utilities. For example, server log files grow in size quickly but can be easily compressed, whereas media files (e.g., MP4 video files, WAV sounds files) are usually quite large, aren’t easily compressed, and typically do not change once saved. Your choice of data transfer utility will depend on what kind of files are being transferred.
-
-Different file types also involve varying metadata considerations. Object storage is self-contained, so it includes both data and metadata for easy search and access and retrieval. Structured file system storage also includes extensive metadata; when right-clicking a file in your desktop operating system, you can view its create/modify time, file type, version number, and more. Alternatively, block storage is highly performant but provides no metadata capabilities.
 
 ### One-time Transfer vs. Recurring Syncs
 
@@ -55,15 +64,15 @@ A specific utility may be well-suited for your use case depending on whether the
 
 #### Use Cases
 
-Rsync is ideal for syncing files between local and remote Linux machines in incremental backup and transfer use cases, as well as customizing large and complicated sync jobs with specific options and settings, like selecting a particular Linux shell to use in the transfer, or specifying files to analyze and exclude. Its delta-transfer algorithm reduces network traffic during syncs by only sending parts of a file that differ from the files on the recipient machine.
+Rsync is ideal for syncing files between local and remote Linux machines in incremental backup and transfer use cases, as well as customizing large and complicated sync jobs with specific options and settings. rsync can also be used to sync files between two directories that are both stored locally. Its delta-transfer algorithm reduces network traffic during syncs by only sending parts of a file that differ from the files on the recipient machine.
 
 #### Pros and Cons
 
-Rsync excels in use cases that require a proven method for transferring files and situations that call for extended scheduling and automation capabilities, such as using rsync with Linux cron jobs. However, it also requires familiarity with the command line, and it can be more system resource-intensive or slower as the number files copied increases.
+Rsync excels in use cases that require a proven method for transferring files and situations that call for scheduling and automation capabilities, such as using rsync with Linux cron jobs. However, it also requires familiarity with the command line.
 
 ### Rclone
 
-[Rclone](https://rclone.org/) is a command-line utility for syncing files and directories to and from different cloud storage providers, servers, and workstations. As its name implies, the utility shares many similarities with rsync, including the same Linux commands (e.g., cp, mv, mount, ls). However, rclone was specially designed for rudimentary file transfers between cloud servers and on-premises servers and workstations, whereas rsync can be configured for more sophisticated file synchronization capabilities.
+[Rclone](https://rclone.org/) is a command-line utility for syncing files and directories to and from different cloud storage providers, servers, and workstations. A number of [rclone's commands](https://rclone.org/commands/) are similar to common Linux commands (e.g., cp, mv, mount, ls), so it can feel familiar to use. Rclone was specially designed for rudimentary file transfers between cloud servers and on-premises servers and workstations, whereas rsync can be configured for more sophisticated file synchronization capabilities.
 
 #### Use Cases
 
@@ -71,11 +80,11 @@ Rclone is used for basic cloud synchronization and the copying and managing file
 
 #### Pros and Cons
 
-Rclone supports leading cloud services like Akamai, Amazon S3, Microsoft OneDrive, Google Drive/Cloud Storage, Microsoft Azure Blob/File Storage, DropBox, and more. Rclone can also recover from interrupted connections during data transfers; however, it only supports unidirectional file synchronization. This means it can only copy files from source to destination in comparison to rsync’s delta validation feature for bidirectional file synchronization.
+Rclone supports leading cloud services like Akamai, Amazon S3, Microsoft OneDrive, Google Drive/Cloud Storage, Microsoft Azure Blob/File Storage, DropBox, and more. Rclone can also recover from interrupted connections during data transfers. As with rsync, rclone can perform a sync operation, but it also supports a [bidirectional sync](https://rclone.org/commands/rclone_bisync/) operation.
 
 ### MinIO Client
 
-[MinIO](https://min.io/docs/minio/linux/reference/minio-mc.html) is a high-performance object storage system compatible with Amazon S3 cloud storage. Using the MinIO Client, you can use identical Linux file commands (e.g., ls, cat, cp, mirror, and diff) to manipulate S3-compatible cloud storage services and local filesystems.
+[MinIO](https://min.io/docs/minio/linux/reference/minio-mc.html) is a high-performance object storage system compatible with Amazon S3 cloud storage. Using the MinIO Client, you can use identical Linux file commands (e.g., ls, cat, cp, mirror, and diff) to manipulate S3-compatible cloud storage services and local file systems.
 
 #### Use Cases
 
@@ -91,11 +100,11 @@ MinIO's minimalist functionality and resilient architecture allow for high avail
 
 #### Use cases
 
-SCP is ideal for general file transfer use cases that require copying files from a local computer to a remote server, or from remote servers to a local computer, in a secure and resilient manner.
+SCP is ideal for general file transfer use cases that require copying files from a local computer to a remote server, or from remote servers to a local computer, in a secure and resilient manner. Unlike rsync, SCP is not used to copy files between directories that are both local.
 
 #### Pros and Cons
 
-Since it leverages the same authentication and security as SSH, SCP is widely regarded as a secure replacement for RCP. Aside from its security benefits and ubiquitous support across Linux systems, SCP also provides more advanced capabilities like file permission and timestamp preservation, among others. And because it uses TCP, SCP provides error detection and recovery capabilities for resuming or restarting data transfers in the event of network problems. However, due to its use of SSH keys and software, SCP is more complicated to manage and maintain than RCP and can be slow when transferring large volumes over the encrypted connection.
+Some users may find SCP to be less complicated to use than rsync. SCP is not capable of restarting transfers as rsync can, because it lacks a similar delta-transfer algorithm.
 
 ### SFTP
 
@@ -109,7 +118,9 @@ SFTP is ideal when strong file encryption is required or mandated for transferri
 
 SFTP works like traditional FTP, but over an encrypted, secure connection. SFTP supports both username and password and SSH key authentication, with some SFTP clients also supporting MFA and role-defined access. When using an SFTP client, it’s important to make sure it's not configured to use outdated encryption protocols like MD5 or DES (versus AES-128 or AES-256). This could result in a false sense of regulatory compliance and security.
 
-SFTP is considered more complex compared to FTP, and it poses a potentially higher learning curve for non-technical users. And like SCP, SFTP performance and speed can degrade when transferring large amounts of data.
+SFTP can be used to transfer files without requiring shell access to the user on the remote host (by using the [ForceCommand SSH config parameter](https://man7.org/linux/man-pages/man5/sshd_config.5.html)). In other words, a user on the remote host can be configured that has no shell access while still accepting file transfers. This can be relevant because limiting shell access is an important tool for securing a server. If a user has shell access, then if it is compromised, an attacker can run any permitted command for the user. By comparison, [SFTP has a narrower range of commands](https://man7.org/linux/man-pages/man1/sftp.1.html#INTERACTIVE_COMMANDS) that can be executed.
+
+SFTP can be further secured by creating an [SFTP *jail*](/docs/guides/limiting-access-with-sftp-jails-on-debian-and-ubuntu/), which limits which directory can be accessed on the remote server.
 
 ### FTP/SFTP Clients
 
