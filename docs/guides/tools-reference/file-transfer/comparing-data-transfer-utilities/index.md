@@ -1,10 +1,10 @@
 ---
 slug: comparing-data-transfer-utilities
 title: "Comparing Data Transfer Utilities"
-description: "This guide presents and compares various data transfer utilities, including rclone, rsync, MiniIO, SCP, SFTP, and FTP/SFTP clients."
+description: "This guide presents and compares various data transfer utilities and protocols, including rclone, rsync, SCP, SFTP, and FTP/SFTP clients."
 authors: ["Leon Yen"]
 contributors: ["Leon Yen"]
-published: 2024-10-03
+published: 2024-10-09
 keywords: ['data transfer utility','data transfer','file transfer']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
