@@ -436,11 +436,11 @@ The [`func`](https://github.com/knative/func) CLI streamlines the developer expe
     ```output
     func is the command line interface for managing Knative Function resources
 
-	    Create a new Node.js function in the current directory:
-	    func create --language node myfunction
+      Create a new Node.js function in the current directory:
+      func create --language node myfunction
 
-	    Deploy the function using Docker hub to host the image:
-	    func deploy --registry docker.io/alice
+      Deploy the function using Docker hub to host the image:
+      func deploy --registry docker.io/alice
 
     Learn more about Functions:  https://knative.dev/docs/functions/
     Learn more about Knative at: https://knative.dev
