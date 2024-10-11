@@ -1100,7 +1100,13 @@ When you create a Python Knative function, Knative generates a skeleton for a un
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-1.  Use the `python3` command to run the `test_func.py` file and test the invocation of your function:
+1.  Before running the `test_func.py`, use `pip3` to install the dependencies listed in the `requirementss.txt` file:
+
+    ```command
+    pip3 install -r ~/get-emojis/requirements.txt
+    ```
+
+1.  Now use the `python3` command to run the `test_func.py` file and test the invocation of your function:
 
     ```command
     python3 ~/get-emojis/test_func.py
@@ -1123,24 +1129,10 @@ When you create a Python Knative function, Knative generates a skeleton for a un
     OK
     ```
 
-    {{< note >}}
-    This test can also be performed in any Python IDE, or by using [`pdb`](https://docs.python.org/3/library/pdb.html) to place breakpoints and step through the code. If your function interacts with external services or the Kubernetes API server, you should to *mock* these dependencies. Mocking, or simulating external services or components that a function interacts with, allows you to isolate a specific function or piece of code to ensure it behaves correctly.
-    {{< /note >}}
+Once the code behaves as expected, you can test the function locally by packaging it in a Docker container using `func invoke` to run it. This approach is handled completely through Docker, without the need for a local Kubernetes cluster. After local testing, you may want to optimize the function's image size by removing any redundant dependencies to improve resource utilization. Finally, deploy your function to a staging environment (a Kubernetes cluster with Knative installed) using `func deploy`. In the staging environment, you can conduct integration, regression, and stress testing.
 
-1.  Once the code behaves as expected, you can test the function locally by packaging it in a Docker container and using `func invoke` to run it:
-
-    ```command
-    func invoke
-    ```
-
-    This approach is handled completely through Docker, without the need for a local Kubernetes cluster. After local testing, you may want to optimize the function's image size by removing any redundant dependencies to improve resource utilization.
-
-1.  Finally, deploy your function to a staging environment (a Kubernetes cluster with Knative installed) using `func deploy`:
-
-    ```command
-    func deploy
-    ```
-
-    In the staging environment, you can conduct integration, regression, and stress testing.
+{{< note >}}
+If your function interacts with external services or the Kubernetes API server, you should to *mock* these dependencies. Mocking, or simulating external services or components that a function interacts with, allows you to isolate a specific function or piece of code to ensure it behaves correctly.
+{{< /note >}}
 
 The resources below can help you get started with migrating AWS Lambda functions to Knative functions on the Linode Kubernetes Engine (LKE).
