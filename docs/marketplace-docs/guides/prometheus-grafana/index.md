@@ -2,7 +2,7 @@
 title: "Deploy Prometheus and Grafana through the Linode Marketplace"
 description: "Deploy Prometheus & Grafana on a Linode Compute Instance. This application provides you with a reliable monitoring solution for all of your infrastructure. "
 published: 2022-03-29
-modified: 2024-05-14
+modified: 2024-10-15
 keywords: ['monitoring','observability']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
@@ -44,6 +44,28 @@ Grafana is an analytics and monitoring solution with a focus on accessibility fo
 {{% content "marketplace-custom-domain-fields-shortguide" %}}
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
+
+#### Akamai Datasource Plugin (Optional)
+
+If your Akamai account contract has **Reporting** enabled you can take advantage of the **[Akamai Reporting API V2](https://techdocs.akamai.com/reporting/v2/reference/api)**. This allows you to expose data to monitor traffic, analyze patterns and long-term trends directly into Grafana.
+
+Before you can fill out the neccessary filds below you will need to create API client credentials. Please refer to Akamai's Techdocs to create the necessary credentials needed:
+
+- [Get Started](https://techdocs.akamai.com/reporting/v2/reference/get-started)
+- [Create Authentication Credentials](https://techdocs.akamai.com/developer/docs/set-up-authentication-credentials)
+
+{{< note type="warning" title="Installing The Plugin">}}
+In order to configure the Akamai Insights Datasource plugin you **must** fill out all of the fields. Leaving any of the fields blank will result in the plugin not being installed.
+{{< /note >}}
+
+- **Akamai client_secret:** Enter your `client_secret` value.
+- **Akamai host:** Enter your Akamai `host` value. This typically ends in **luna.akamaiapis.net**.
+- **Akamai access_token:** Enter your `access_token` value.
+- **Akamai client_token:** Enter your `client_token` value.
+
+{{< note type="warning" >}}
+Akamai's Grafana data source plugin, as being offered here, is licensed to you under Apache License Version 2.0.  Copyright Akamai 2024.  Akamai's Grafana data source plugin uses Grafana's Plugin tools (https://github.com/grafana/plugin-tools) software, which is licensed under Apache License Version 2.0 whose terms are available at http://www.apache.org/licenses/LICENSE-2.0. Please note that this is an usigned plugin and is provided as-is.
+{{< /note >}}
 
 ## Getting Started after Deployment
 
@@ -112,5 +134,14 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
     ![Screenshot of the Prometheus data source](grafana-prometheus-source.png)
 
 Now that the Prometheus Data Source is set, you can browse the [available Grafana dashboards](https://grafana.com/grafana/dashboards/) to see which dashboard fits your needs. Review the official [Prometheus](https://prometheus.io/docs/introduction/overview/) and [Grafana](https://grafana.com/docs/grafana/latest/) documentation to learn how to further use your instance.
+
+### Akamai Insights Datasource 
+
+If you opted to add the Akamai Insights Datasource plugin you will find the datasource present in the Data Sources tab.
+    ![All Datasources](grafana_datasource4.png)
+
+
+Once you click **akamai-insights-datasource** You can test access by clicking the **Save & test** button. If everything is working correcly you will see the following message.
+    ![Working Akamai DS](grafana_akamai_ds.png)
 
 {{% content "marketplace-update-note-shortguide" %}}
