@@ -47,22 +47,24 @@ Grafana is an analytics and monitoring solution with a focus on accessibility fo
 
 #### Akamai Insights Datasource Plugin (Optional)
 
-If your Akamai account contract has **Reporting** enabled, you can take advantage of the **[Akamai Reporting API V2](https://techdocs.akamai.com/reporting/v2/reference/api)**. This allows you to expose data to monitor traffic, analyze patterns and long-term trends directly into Grafana.
+If your Akamai account contract has **Reporting** enabled, you can take advantage of the **[Akamai Reporting API V2](https://techdocs.akamai.com/reporting/v2/reference/api)**. This allows you to expose data to monitor traffic and analyze patterns and long-term trends directly in Grafana.
 
-**Before you begin**: To get the values for required fields, you need to have API client credentials. If you don't know how to create an API client for your Akamai account, check [Create EdgeGrid authentication credentials](https://techdocs.akamai.com/developer/docs/set-up-authentication-credentials).
+**Before you begin**: To get the values for required fields, you must have API client credentials. If you don't know how to create an API client for your Akamai account, see [Create EdgeGrid authentication credentials](https://techdocs.akamai.com/developer/docs/set-up-authentication-credentials).
 
 
-To add the plugin, enter your API client data to the corresponding fields. Leaving any of the fields blank will result in the plugin not being installed.
+To add the plugin, enter your API client data into the corresponding fields. Note that leaving any fields blank will result in the plugin not being installed.
 - **Akamai client_secret:** Enter your `client_secret`.
 - **Akamai host:** Enter your Akamai `host`. This typically ends in **luna.akamaiapis.net**.
 - **Akamai access_token:** Enter your `access_token`.
 - **Akamai client_token:** Enter your `client_token`.
 
-{{< note type="warning" >}}
-Akamai's Grafana data source plugin, as being offered here, is licensed to you under Apache License Version 2.0.  Copyright Akamai 2024.  Akamai's Grafana data source plugin uses [Grafana's Plugin tools](https://github.com/grafana/plugin-tools) software, which is licensed under Apache License Version 2.0 whose terms are available at http://www.apache.org/licenses/LICENSE-2.0. Remember that this is an unsigned plugin and is provided as-is.
+{{< note type="warning" title="Licensing Information" >}}
+Akamai's Grafana [Datasource](https://github.com/akamai/akamai-insights-datasource/tree/master) plugin -- as offered here -- is licensed to you under Apache License Version 2.0. Copyright, Akamai 2024.
+
+Akamai's Grafana Datasource plugin uses [Grafana's Plugin tools](https://github.com/grafana/plugin-tools) software, which is licensed under Apache License Version 2.0, and whose terms are available at http://www.apache.org/licenses/LICENSE-2.0. Note that this is an unsigned plugin and is provided as-is.
 {{< /note >}}
 
-**What to do next**: Once the deployment is finished, you can check if the plugin works. To learn how, see [Akamai Insights Datasource](#akamai-insights-datasource).
+**What to do next**: Once the deployment finishes, you can check to confirm the plugin works using the steps provided under [Akamai Insights Datasource](#akamai-insights-datasource).
 
 ## Getting Started after Deployment
 
@@ -134,11 +136,11 @@ Now that the Prometheus Data Source is set, you can browse the [available Grafan
 
 ### Akamai Insights Datasource
 
-If you added the Akamai Insights Datasource plugin, the data source is in the **Data sources** tab.
+If you added the Akamai Insights Datasource plugin, the data source can be found in the **Data sources** tab.
     ![All Data Sources](grafana_datasource4.png)
 
 
-To check if the plugin works, open **akamai-insights-datasource** and click **Save & test**. You should get the *Data source is working properly* message.
+Open **akamai-insights-datasource** and click **Save & test** to check if the plugin is working. If successful, you should see a *"Data source is working properly"* message.
     ![Working Akamai DS](grafana_akamai_ds.png)
 
 {{% content "marketplace-update-note-shortguide" %}}
