@@ -45,7 +45,7 @@ Grafana is an analytics and monitoring solution with a focus on accessibility fo
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
 
-#### Akamai Datasource Plugin (Optional)
+#### Akamai Insights Datasource Plugin (Optional)
 
 If your Akamai account contract has **Reporting** enabled, you can take advantage of the **[Akamai Reporting API V2](https://techdocs.akamai.com/reporting/v2/reference/api)**. This allows you to expose data to monitor traffic, analyze patterns and long-term trends directly into Grafana.
 
@@ -53,14 +53,16 @@ If your Akamai account contract has **Reporting** enabled, you can take advantag
 
 
 To add the plugin, enter your API client data to the corresponding fields. Leaving any of the fields blank will result in the plugin not being installed.
-- **Akamai client_secret:** Enter your `client_secret` value.
-- **Akamai host:** Enter your Akamai `host` value. This typically ends in **luna.akamaiapis.net**.
-- **Akamai access_token:** Enter your `access_token` value.
-- **Akamai client_token:** Enter your `client_token` value.
+- **Akamai client_secret:** Enter your `client_secret`.
+- **Akamai host:** Enter your Akamai `host`. This typically ends in **luna.akamaiapis.net**.
+- **Akamai access_token:** Enter your `access_token`.
+- **Akamai client_token:** Enter your `client_token`.
 
 {{< note type="warning" >}}
 Akamai's Grafana data source plugin, as being offered here, is licensed to you under Apache License Version 2.0.  Copyright Akamai 2024.  Akamai's Grafana data source plugin uses [Grafana's Plugin tools](https://github.com/grafana/plugin-tools) software, which is licensed under Apache License Version 2.0 whose terms are available at http://www.apache.org/licenses/LICENSE-2.0. Remember that this is an unsigned plugin and is provided as-is.
 {{< /note >}}
+
+**What to do next**: Once the deployment is finished, you can check if the plugin works. To learn how, see [Akamai Insights Datasource](#akamai-insights-datasource).
 
 ## Getting Started after Deployment
 
