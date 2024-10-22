@@ -1094,7 +1094,7 @@ When you create a Python Knative function, Knative generates a skeleton for a un
         unittest.main()
     ```
 
-1.  Use `pip3` to install the dependencies listed in the `requirementss.txt` file:
+1.  Use `pip3` to install the dependencies listed in the `requirements.txt` file:
 
     ```command
     pip3 install -r ~/get-emojis/requirements.txt
