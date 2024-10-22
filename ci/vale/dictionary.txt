@@ -375,6 +375,7 @@ configr
 configs
 configtest
 configurability
+configurator
 connectionism
 connectionless
 connectionStatus
@@ -1247,6 +1248,7 @@ klei
 klocwork
 kloth
 kloxo
+knative
 knockpy
 knowledgebase
 Kodu
@@ -1255,6 +1257,7 @@ Konqueror
 konsole
 konversation
 kotin
+kourier
 KPI
 KPIs
 krita
