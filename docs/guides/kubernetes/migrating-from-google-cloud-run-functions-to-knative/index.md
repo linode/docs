@@ -915,13 +915,13 @@ The core logic of the function is encapsulated into a single Golang file called 
 
     Below is a breakdown of the file code functionality:
 
-    -   Import standard Go packages for handling HTTP requests, strings, and output.
-    -   Import the `fuzz_emoji` package, which contains the core logic.
+    -   Imports standard Go packages for handling HTTP requests, strings, and output.
+    -   Imports the `fuzz_emoji` package, which contains the core emoji-matching logic.
     -   The `Handle()` function takes a context (unused), a response, and a request.
-    -   The request contains the URL with the descriptions. Extract the emoji descriptions from the query parameters of the URL. Note that the function expects the descriptions to be a single comma-separated string, which it splits to get a list called `descriptions`.
-    -   Call `NewFuzzEmoji` to instantiate a `FuzzEmoji` object.
-    -   Call the `getEmojis()` method, passing the list of `descriptions` that were extracted.
-    -   Iterate over the result map, printing the items to the response object.
+    -   Extract the emoji descriptions from the query parameters of the URL. The function expects the descriptions to be a single comma-separated string, which it splits to get a list called `descriptions`.
+    -   Calls `NewFuzzEmoji` to instantiate a `FuzzEmoji` object.
+    -   Calls the `getEmojis()` method, passing the list of `descriptions` that were extracted.
+    -   Iterates over the result map, printing the items to the response object.
 
 1.  Next, edit the `go.mod` file to use the emoji package from [github.com/enescakir/emoji](http://github.com/enescakir/emoji) in the Docker image:
 
@@ -1098,7 +1098,7 @@ When you create a Go Knative function, Knative generates a skeleton for a unit t
     go test
     ```
 
-    A successful test should produce the following output:
+    A successful test should produce output similar to the following:
 
     ```output
     PASS
