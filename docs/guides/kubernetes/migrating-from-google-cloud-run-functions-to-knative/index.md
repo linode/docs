@@ -729,7 +729,7 @@ The function successfully returns the `fire` (🔥) emoji for the description "f
 
 ### Isolating the Cloud Run Function Code from GCP Specifics
 
-To migrate the Google Cloud Run function to Knative, the core application logic must be decoupled from GCP-specific dependencies. In this case, the work for this is already done, since the interface for the `getEmojis()` method accepts a Golang slice of strings as descriptions.
+To migrate the Google Cloud Run function to Knative, the core application logic must be decoupled from Google Cloud Platform (GCP)-specific dependencies. In this case, the work for this is already done, since the interface for the `getEmojis()` method accepts a Golang slice of strings as descriptions.
 
 If the `getEmojis()` method accessed Google Cloud Storage to fetch synonyms, instead of by importing the `fuzz_emoji` package from GitHub, it would not be compatible with Knative and would require some refactoring.
 
