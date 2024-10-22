@@ -423,19 +423,19 @@ There are multiple ways to [install Knative on a Kubernetes cluster](https://kna
 
 ### Configure DNS
 
-1.   this guide use the Magic DNS method to [configure DNS](https://knative.dev/docs/install/operator/knative-with-operators/#configure-dns), which leverages the [sslip.io](http://sslip.io) DNS service. When a request is made to a subdomain of sslip.io containing an embedded IP address, the service resolves that IP address. For example, a request to [https://52.0.56.137.sslip.io](https://52.0.56.137.sslip.io) returns `52.0.56.137` as the IP address. Use the `default-domain` job to configure Knative Serving to use sslip.io:
+This guide use the Magic DNS method to [configure DNS](https://knative.dev/docs/install/operator/knative-with-operators/#configure-dns), which leverages the [sslip.io](http://sslip.io) DNS service. When a request is made to a subdomain of sslip.io containing an embedded IP address, the service resolves that IP address. For example, a request to [https://52.0.56.137.sslip.io](https://52.0.56.137.sslip.io) returns `52.0.56.137` as the IP address. Use the `default-domain` job to configure Knative Serving to use sslip.io:
 
-    ```command
-    MANIFEST=knative-v1.15.2/serving-default-domain.yaml
-    kubectl apply -f "https://github.com/knative/serving/releases/download/$MANIFEST"
-    ```
+```command
+MANIFEST=knative-v1.15.2/serving-default-domain.yaml
+kubectl apply -f "https://github.com/knative/serving/releases/download/$MANIFEST"
+```
 
-    Upon successful execution, you should see output confirming the creation of the `default-domian` job and service:
+Upon successful execution, you should see output confirming the creation of the `default-domian` job and service:
 
-    ```output
-    job.batch/default-domain created
-    service/default-domain-service created
-    ```
+```output
+job.batch/default-domain created
+service/default-domain-service created
+```
 
 With Knative now operational in your cluster, you can begin working with Knative Functions.
 
@@ -445,52 +445,52 @@ Knative Functions is a programming model that simplifies writing distributed app
 
 The [`func`](https://github.com/knative/func) CLI provides tools for developers to manage the entire lifecycle of functions (creating, building, deploying, and invoking). This allows for local development and testing of functions without the need for a local Kubernetes cluster.
 
-1.  To get started, run the following command:
+To get started, run the following command:
 
 ```command
 func
 ```
 
-    This displays help information for managing Knative Function resources:
+This displays help information for managing Knative Function resources:
 
-    ```output
-    func is the command line interface for managing Knative Function resources
+```output
+func is the command line interface for managing Knative Function resources
 
-        Create a new Node.js function in the current directory:
-        func create --language node myfunction
+    Create a new Node.js function in the current directory:
+    func create --language node myfunction
 
-        Deploy the function using Docker hub to host the image:
-        func deploy --registry docker.io/alice
+    Deploy the function using Docker hub to host the image:
+    func deploy --registry docker.io/alice
 
-    Learn more about Functions:  https://knative.dev/docs/functions/
-    Learn more about Knative at: https://knative.dev
+Learn more about Functions:  https://knative.dev/docs/functions/
+Learn more about Knative at: https://knative.dev
 
-    Primary Commands:
-      create      Create a function
-      describe    Describe a function
-      deploy      Deploy a function
-      delete      Undeploy a function
-      list        List deployed functions
-      subscribe   Subscribe a function to events
+Primary Commands:
+  create      Create a function
+  describe    Describe a function
+  deploy      Deploy a function
+  delete      Undeploy a function
+  list        List deployed functions
+  subscribe   Subscribe a function to events
 
-    Development Commands:
-      run         Run the function locally
-      invoke      Invoke a local or remote function
-      build       Build a function container
+Development Commands:
+  run         Run the function locally
+  invoke      Invoke a local or remote function
+  build       Build a function container
 
-    System Commands:
-      config      Configure a function
-      languages   List available function language runtimes
-      templates   List available function source templates
-      repository  Manage installed template repositories
-      environment Display function execution environment information
+System Commands:
+  config      Configure a function
+  languages   List available function language runtimes
+  templates   List available function source templates
+  repository  Manage installed template repositories
+  environment Display function execution environment information
 
-    Other Commands:
-      completion  Output functions shell completion code
-      version     Function client version information
+Other Commands:
+  completion  Output functions shell completion code
+  version     Function client version information
 
-    Use "func <command> --help" for more information about a given command.
-    ```
+Use "func <command> --help" for more information about a given command.
+```
 
 ### Create a Function
 
