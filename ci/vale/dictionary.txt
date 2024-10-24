@@ -375,6 +375,7 @@ configr
 configs
 configtest
 configurability
+configurator
 connectionism
 connectionless
 connectionStatus
