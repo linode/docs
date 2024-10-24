@@ -96,8 +96,6 @@ While there are several ways to create a Kubernetes cluster on Linode, this guid
     linode linodes types
     ```
 
-    This outputs information on different Linode plans, including pricing and performance details.
-
 1.  The examples in this guide use the **g6-standard-2** Linode, which features two CPU cores and 4 GB of memory. Run the following command to display detailed information in JSON for this Linode plan:
 
     ```command
@@ -679,7 +677,7 @@ With your Knative function accessible through a public HTTP endpoint, the next s
 
 ## Migrate Cloud Run Functions to Knative
 
-This guide examines a sample Cloud Run function and walks through how to migrate it to Knative. Cloud Run functions are similar to Knative functions. They both have a trigger and extract their input arguments from a context or event.
+This guide examines a sample Cloud Run function and walks through how to migrate it to Knative. Cloud Run functions are similar to Knative functions, as they both have a trigger and extract their input arguments from a context or event.
 
 The main application logic is highlighted in the example Cloud Run function below:
 
@@ -729,9 +727,9 @@ The function successfully returns the `fire` (🔥) emoji for the description "f
 
 ### Isolating the Cloud Run Function Code from GCP Specifics
 
-To migrate the Google Cloud Run function to Knative, the core application logic must be decoupled from Google Cloud Platform (GCP)-specific dependencies. In this case, the work for this is already done, since the interface for the `getEmojis()` method accepts a Golang slice of strings as descriptions.
+To migrate the Google Cloud Run function to Knative, the core application logic must be decoupled from Google Cloud Platform (GCP)-specific dependencies. In this example, this is already done since the interface for the `getEmojis()` method accepts a Golang slice of strings as descriptions.
 
-If the `getEmojis()` method accessed Google Cloud Storage to fetch synonyms, instead of by importing the `fuzz_emoji` package from GitHub, it would not be compatible with Knative and would require some refactoring.
+If the `getEmojis()` method accessed Google Cloud Storage to fetch synonyms instead of by importing the `fuzz_emoji` package from GitHub, it would not be compatible with Knative and would require refactoring.
 
 ### Migrating a Single-File Function to a Knative Function
 
@@ -918,7 +916,7 @@ The core logic of the function is encapsulated into a single Golang file called 
     -   Imports standard Go packages for handling HTTP requests, strings, and output.
     -   Imports the `fuzz_emoji` package, which contains the core emoji-matching logic.
     -   The `Handle()` function takes a context (unused), a response, and a request.
-    -   Extract the emoji descriptions from the query parameters of the URL. The function expects the descriptions to be a single comma-separated string, which it splits to get a list called `descriptions`.
+    -   Extracts the emoji descriptions from the query parameters of the URL. The function expects the descriptions to be a single comma-separated string, which it splits to get a list called `descriptions`.
     -   Calls `NewFuzzEmoji` to instantiate a `FuzzEmoji` object.
     -   Calls the `getEmojis()` method, passing the list of `descriptions` that were extracted.
     -   Iterates over the result map, printing the items to the response object.
