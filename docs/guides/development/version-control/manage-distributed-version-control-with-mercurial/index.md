@@ -13,6 +13,7 @@ external_resources:
  - '[HG Init, a Guide by Joel Spolsky](http://hginit.com/)'
 audiences: ["beginner"]
 tags: ["version control system"]
+deprecated: true
 ---
 
 [Mercurial](https://www.mercurial-scm.org/) is one of the leading distributed version control systems which allows software developers and teams of collaborators to work on a common code base without the need to rely on a centralized server or constant network connection. Mercurial runs on multiple platforms and can be used to manage code projects on many different operating systems.

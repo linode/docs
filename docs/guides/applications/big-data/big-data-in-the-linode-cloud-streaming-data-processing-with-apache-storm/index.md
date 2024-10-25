@@ -78,7 +78,7 @@ These are the names we'll use, but you are welcome to choose your own when creat
 
 ### Get a Linode API Key
 
-Follow the steps in [Generating an API Key](/docs/products/tools/api/guides/manage-api-tokens/) and save your key securely. It will be entered into configuration files in upcoming steps.
+Follow the steps in [Generating an API Key](/docs/products/platform/accounts/guides/manage-api-tokens/) and save your key securely. It will be entered into configuration files in upcoming steps.
 
 If the key expires or is removed, remember to create a new one and update the `api_env_linode.conf` API environment configuration file on the cluster manager Linode. This will be explained further in the next section.
 

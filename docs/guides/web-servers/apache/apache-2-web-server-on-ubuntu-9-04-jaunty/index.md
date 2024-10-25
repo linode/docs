@@ -161,7 +161,7 @@ Apache will follow symbolic links to read configuration files, so you can create
 
 Best practices for most installations dictate that we don't recommend modifying the following default configuration files: `/etc/apache2/httpd.conf`, files in `/etc/apache2/mods-enabled/`, and in most cases `/etc/apache2/apache2.conf`. This is to avoid unnecessary confusion and unintended conflicts in the future.
 
-Generally, as specified in our [LAMP Guide for Debian Lenny](/docs/guides/lamp-server-on-debian-5-lenny/) and elsewhere, files that configure virtual hosts should be located in the `/etc/apache2/sites-available/` directory (and symbolically linked to `sites-enabled/` with the `a2ensite` tool. This allows for a clear and specific per-site configuration.
+Generally, as specified in our [LAMP Guide for Debian Lenny](/docs/guides/how-to-install-a-lamp-stack-on-debian-11/) and elsewhere, files that configure virtual hosts should be located in the `/etc/apache2/sites-available/` directory (and symbolically linked to `sites-enabled/` with the `a2ensite` tool. This allows for a clear and specific per-site configuration.
 
 In practice the vast majority of configuration options will probably be located in site-specific virtual host configuration files.
 

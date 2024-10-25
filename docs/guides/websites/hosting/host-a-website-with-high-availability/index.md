@@ -103,7 +103,7 @@ Run the following commands on each Linode in your GlusterFS cluster.
     ```
 
     {{< note >}}
-    In the Linode Manger, you may notice that the netmask for your private IP addresses is `/17`. Firewalld does not recognize this, so a `/32` prefix should be used instead.
+    In the Linode Manager, you may notice that the netmask for your private IP addresses is `/17`. Firewalld does not recognize this, so a `/32` prefix should be used instead.
     {{< /note >}}
 
 1.  Reload your firewall configuration:
@@ -264,7 +264,7 @@ Run the following commands on each database node.
     ```
 
     {{< note >}}
-    In the Linode Manger, you may notice that the netmask for your private IP addresses is `/17`. Firewalld does not recognize this, so a `/32` prefix should be used instead.
+    In the Linode Manager, you may notice that the netmask for your private IP addresses is `/17`. Firewalld does not recognize this, so a `/32` prefix should be used instead.
     {{< /note >}}
 
 1.  Reload your firewall configuration and enable the `firewalld` service to start automatically on boot:

@@ -1,18 +1,18 @@
 ---
 title: "Manage SSH Keys"
-description: "Learn how to view, upload, and remove your public SSH keys in the Cloud Manager."
+description: "Learn how to view, upload, and remove your public SSH keys in Cloud Manager."
 published: 2022-03-18
 modified: 2023-05-22
 aliases: ['/products/tools/cloud-manager/guides/manage-ssh-keys/']
 ---
 
-When creating a Compute Instance, you have the opportunity to select one or more SSH keys, which are added to the root user account of the new instance. This allows you to login over SSH using your associated private key instead of the root password.
+When creating a Compute Instance, you have the opportunity to select one or more SSH keys, which are added to the root user account of the new instance. This lets you login over SSH using your associated private key instead of the root password.
 
-These SSH keys are stored within your Linode account and can be easily accessed from the Cloud Manager. This guide walks you through how to view, add, and remove your account's SSH keys. For instructions on selecting an SSH key when deploying a Compute Instance see [Creating a Compute Instance > Create a Password and Add SSH Keys](/docs/products/compute/compute-instances/guides/create/#create-a-password-and-add-ssh-keys).
+These SSH keys are stored within your Linode account and can be easily accessed from Cloud Manager. This guide walks you through how to view, add, and remove your account's SSH keys. For instructions on selecting an SSH key when deploying a Compute Instance see [Creating a Compute Instance > Create a Password and Add SSH Keys](/docs/products/compute/compute-instances/guides/create/#create-a-password-and-add-ssh-keys).
 
 ## View SSH Keys
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com).
+1.  Log in to [Cloud Manager](https://cloud.linode.com).
 
 1.  Click on your username on the top right and select **SSH Keys** in the dropdown menu that appears:
 
@@ -30,7 +30,7 @@ Add a public SSH key to your Linode user account so that you can easily install 
 The following SSH key formats are supported: **ssh-rsa**, **ssh-dss**, **ecdsa-sha2-nistp**, **ssh-ed25519**, and **sk-ecdsa-sha2-nistp256** (an Akamai-specific format).
 {{< /note >}}
 
-1.  Access the **SSH Keys** page in the Cloud Manager. See [View SSH Keys](#view-ssh-keys) above.
+1.  Access the **SSH Keys** page in Cloud Manager. See [View SSH Keys](#view-ssh-keys) above.
 
 1.  Click the **Add an SSH Key** button.
 
@@ -54,9 +54,9 @@ The following SSH key formats are supported: **ssh-rsa**, **ssh-dss**, **ecdsa-s
 
 ## Remove a Public Key
 
-If you no longer wish to deploy *new* Compute Instances with a certain SSH key, you can remove it from the Cloud Manager. When doing so, the SSH key is *not removed* from any existing Compute Instances that may have used it.
+If you no longer wish to deploy *new* Compute Instances with a certain SSH key, you can remove it from Cloud Manager. When doing so, the SSH key is *not removed* from any existing Compute Instances that may have used it.
 
-1. Access the **SSH Keys** page in the Cloud Manager. See [View SSH Keys](#view-ssh-keys) above.
+1. Access the **SSH Keys** page in Cloud Manager. See [View SSH Keys](#view-ssh-keys) above.
 
 1. Within the list that appears, locate the public key you wish to remove. Then, click the corresponding **Delete** link.
 

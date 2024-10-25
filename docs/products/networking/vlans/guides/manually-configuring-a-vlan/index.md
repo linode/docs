@@ -11,7 +11,7 @@ This guide is for users that have disabled Network Helper on their Compute Insta
 
 ## Ubuntu 18.04 and Later
 
-Ubuntu Server 18.04 and later versions use Netplan to configure networking, with systemd-networkd operating as the backend. Network configuration files for each interface are located in `/etc/systemd/network/`:
+Ubuntu Server 18.04 and later versions use Netplan to configure networking, with systemd-networkd operating as the back end. Network configuration files for each interface are located in `/etc/systemd/network/`:
 
 - **eth0**: `/etc/systemd/network/05-eth0.network`
 - **eth1**: `/etc/systemd/network/05-eth1.network`

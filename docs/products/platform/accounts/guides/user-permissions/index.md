@@ -10,18 +10,18 @@ tags: ["linode platform","users","user permissions"]
 Each user on an account can be given individualized permissions that provides unrestricted access to an account or limits their access to specific information or services. For example, you could give your core team members full unrestricted access, grant your accounts payable team access only to view and modify billing details, and limit an outside developer to only access specific Compute Instances or other services.
 
 {{< note >}}
-The permissions discussed within this guide apply to accessing the Linode platform through the Cloud Manager, Linode API, and Linode CLI. If you wish to only provide someone with direct access to the internal system of a Compute Instance (or revoke their access), that can be accomplished through limited user accounts within your operating system. See [Create an Account for a Developer to Work on Your Compute Instance](/docs/products/platform/get-started/guides/developer-access/).
+The permissions discussed within this guide apply to accessing the Linode platform through Cloud Manager, Linode API, and Linode CLI. If you wish to only provide someone with direct access to the internal system of a Compute Instance (or revoke their access), that can be accomplished through limited user accounts within your operating system. See [Create an Account for a Developer to Work on Your Compute Instance](/docs/products/platform/get-started/guides/developer-access/).
 {{< /note >}}
 
 ## View and Set Permissions for a User
 
-You can view and edit permissions for a user directly in the Cloud Manager by following the instructions below.
+You can view and edit permissions for a user directly in Cloud Manager by following the instructions below.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Account** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and click the **Account** link in the sidebar.
 
 1. Navigate to the **Users & Grants** tab, which displays a list of existing users for the account.
 
-    ![Screenshot of the Users & Grants tab in the Cloud Manager](list-of-users.png)
+    ![Screenshot of the Users & Grants tab in Cloud Manager](list-of-users.png)
 
 1. Locate the user for which you wish to view or modify permissions and click the corresponding **User Permissions** link.
 
@@ -66,5 +66,5 @@ This section provides various levels of access to view or modify billing informa
 A user can be granted individual permissions to each instance of a service, such as Linode Compute Instances, Block Storage Volumes, NodeBalancers, and more. Unlike **Global Permissions**, **Specific Permissions** apply to individual resources -- not the service as a whole.
 
 - **None**: The user cannot view or otherwise interact with the selected resource.
-- **Read Only**: The user can view the resource and all of its associated information typically visible within the Cloud Manager, however they cannot otherwise interact with it.
+- **Read Only**: The user can view the resource and all of its associated information typically visible within Cloud Manager, however they cannot otherwise interact with it.
 - **Read-Write**: The user has full access to the selected resource and can make any changes that only an administrator is otherwise able to. This includes resource deletion, cloning, and all other applicable edits. The user also receives an email notification when a ticket is created or updated for this resource.

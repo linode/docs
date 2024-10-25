@@ -19,7 +19,7 @@ Please note that you must obtain a license from phpFox in order to run this soft
 
 ## Install Prerequisites
 
-Before installing phpFox, make sure you have set up a [LAMP stack](/docs/guides/lamp-server-on-debian-5-lenny/). You will also need to install the `curl` and `gd` modules for PHP. Issue the following command:
+Before installing phpFox, make sure you have set up a [LAMP stack](/docs/guides/how-to-install-a-lamp-stack-on-debian-11/). You will also need to install the `curl` and `gd` modules for PHP. Issue the following command:
 
     apt-get install php5-curl php5-gd
 

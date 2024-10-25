@@ -10,7 +10,7 @@ aliases: ['/docs/products/networking/dns-manager/guides/remove-domains/']
 
 ## View Domains
 
-Log in to the [Cloud Manager](https://cloud.linode.com) and select *Domains* from the left menu. If any domains have already been added, they are listed on this page.
+Log in to [Cloud Manager](https://cloud.linode.com) and select *Domains* from the left menu. If any domains have already been added, they are listed on this page.
 
 ![Screenshot of the Domains listing page in Cloud Manager](view-domains.png)
 
@@ -26,7 +26,7 @@ To add a domain to your account, follow the instructions within the [Create a Do
 This section covers viewing and editing the details of the domain itself. If you wish to view and edit DNS records, see [Manage DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/).
 {{< /note >}}
 
-1. Navigate to the **Domains** page in the Cloud Manager. See [View Domains](#view-domains).
+1. Navigate to the **Domains** page in Cloud Manager. See [View Domains](#view-domains).
 
 1. Locate the domain you wish to view or edit. Click on the corresponding **Edit** link.
 
@@ -43,11 +43,11 @@ This section covers viewing and editing the details of the domain itself. If you
 
 ## Clone a Domain
 
-The *Clone* feature allows you to copy DNS records from an existing domain in your Linode account to a new domain. If you've already set up DNS records for one of the services you host on your Linode account, this is a good way to quickly assign another domain to that same service.
+The *Clone* feature lets you copy DNS records from an existing domain in your Linode account to a new domain. If you've already set up DNS records for one of the services you host on your Linode account, this is a good way to quickly assign another domain to that same service.
 
 Here's how to clone DNS records for an existing domain:
 
-1. Navigate to the **Domains** page in the Cloud Manager. See [View Domains](#view-domains).
+1. Navigate to the **Domains** page in Cloud Manager. See [View Domains](#view-domains).
 
 1.  Click on the **more options ellipsis** corresponding to the domain whose DNS records you would like to clone and select **Clone** from the menu.
 
@@ -59,7 +59,7 @@ Here's how to clone DNS records for an existing domain:
 
 When a domain is added to your account, it is *enabled* by default. This means that the domain is active and accessible through Linode's name servers. Disabling a domain causes it to no longer be accessible on our name servers. To change this setting, follow the instructions below.
 
-1. Navigate to the **Domains** page in the Cloud Manager. See [View Domains](#view-domains).
+1. Navigate to the **Domains** page in Cloud Manager. See [View Domains](#view-domains).
 
 1. Locate the domain you wish to disable or enable. Click on the corresponding **Disable** (or **Enable**) link.
 
@@ -79,7 +79,7 @@ Before deleting your domain from Linode, consider if you wish to continue using 
 - **If you no longer wish to use this domain:** Remove Linode's name servers from your domain's registrar. *If the entries are not deleted, someone could use your domain on Linode's DNS Manager without your permission.*
 {{< /note >}}
 
-1. Navigate to the **Domains** page in the Cloud Manager. See [View Domains](#view-domains).
+1. Navigate to the **Domains** page in Cloud Manager. See [View Domains](#view-domains).
 
 1. Locate the domain you wish to remove and click on the corresponding **Delete** button. To see this option, you may need to select the *ellipsis* menu.
 

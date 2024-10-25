@@ -16,7 +16,7 @@ You are charged for any service present on an account, even if it is powered off
 
 Each bill, including mid-month bills, is available to view as an itemized invoice. These invoices contain a detailed breakdown of your charges. Each service that was present on the account at any point during the billing cycle is listed on the invoice, alongside the amount of time the service was active, the hourly rate, and the total charge for that service.
 
-All invoices are listed in the Billing & Payment History section of the Cloud Manager. See [Viewing Invoices and Payments](/docs/products/platform/billing/guides/view-history/) for instructions. A copy of each invoice is also emailed to all users on the account with read and write billing access.
+All invoices are listed in the Billing & Payment History section of Cloud Manager. See [Viewing Invoices and Payments](/docs/products/platform/billing/guides/view-history/) for instructions. A copy of each invoice is also emailed to all users on the account with read and write billing access.
 
 ## I deleted a service earlier this month. Why was I just charged for it now?
 
@@ -24,7 +24,7 @@ Invoices are generated at the beginning of every month and include fees for serv
 
 ## Where can I view amount of credit available on my account?
 
-Promotional credits from a promo code are visible on the [Billing Info](https://cloud.linode.com/account/billing) page of the Cloud Manager. This credit is listed under the **Promotions** section that is only visible *if a promo code has been applied to your account*. Other types of account credits are displayed on the same page under the **Account Balance section**. A balance that is green indicates the amount of credit on the account. A balance that is red indicates the amount currently past due.
+Promotional credits from a promo code are visible on the [Billing Info](https://cloud.linode.com/account/billing) page of Cloud Manager. This credit is listed under the **Promotions** section that is only visible *if a promo code has been applied to your account*. Other types of account credits are displayed on the same page under the **Account Balance section**. A balance that is green indicates the amount of credit on the account. A balance that is red indicates the amount currently past due.
 
 ## Will my current credit cover my next invoice?
 
@@ -44,7 +44,7 @@ If your account exceeds its billing threshold (also called the *credit limit*), 
 
 ## Can I make a payment in advance?
 
-Yes. At any time, you can make a payment on your account. If the payment is greater than any past due amount, it gets stored as a positive account balance. This balance is automatically applied to future invoices. You can estimate your end of month costs using our [Pricing](https://www.linode.com/pricing/) page and view your account balance from the Billing Info page of the Cloud Manager. See [Making a One-Time Payment](/docs/products/platform/billing/guides/make-a-payment/).
+Yes. At any time, you can make a payment on your account. If the payment is greater than any past due amount, it gets stored as a positive account balance. This balance is automatically applied to future invoices. You can estimate your end of month costs using our [Pricing](https://www.linode.com/pricing/) page and view your account balance from the Billing Info page of Cloud Manager. See [Making a One-Time Payment](/docs/products/platform/billing/guides/make-a-payment/).
 
 ## What are Linode’s currently accepted payment methods?
 
@@ -56,7 +56,7 @@ A card can be declined for many different reasons. Banks often do not pass along
 
 ## How do I remove a credit card from my account?
 
-You can manage your payment methods, including credit cards, from the Cloud Manager. To learn how to remove a credit card, see [Remove a Payment Method](/docs/products/platform/billing/guides/payment-methods/#remove-a-payment-method). Keep in mind you must have at least one valid payment method on file. If you are attempting to delete your only payment method, you must add a new payment method first.
+You can manage your payment methods, including credit cards, from Cloud Manager. To learn how to remove a credit card, see [Remove a Payment Method](/docs/products/platform/billing/guides/payment-methods/#remove-a-payment-method). Keep in mind you must have at least one valid payment method on file. If you are attempting to delete your only payment method, you must add a new payment method first.
 
 ## Can I make a payment in another currency?
 

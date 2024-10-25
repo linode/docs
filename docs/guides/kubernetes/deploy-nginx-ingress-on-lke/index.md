@@ -50,7 +50,7 @@ This guide will show you how to:
 
     - [Cloud Manager LKE instructions](/docs/products/compute/kubernetes/)
     - [Linode API LKE instructions](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/)
-    - [Terraform instructions](/docs/products/compute/kubernetes/guides/deploy-cluster-using-terraform/)
+    - [Terraform instructions](/docs/guides/deploy-lke-cluster-using-terraform/)
 
     You can also use an unmanaged Kubernetes cluster (that's not deployed through LKE). The instructions within this guide depend on the Linode Cloud Controller Manager (CCM), which is installed by default on LKE clusters but needs to be manually installed on unmanaged clusters. To learn how to install the Linode CCM on a cluster that was not deployed through LKE, see the [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/install-the-linode-ccm-on-unmanaged-kubernetes/) guide.
 

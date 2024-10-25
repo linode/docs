@@ -4,9 +4,6 @@ time_format_iso8601 = "2006-01-02T15:04:05-07:00"
 
 weglot_api_key = "wg_3b3ef29c81aa81292c64d1368ee318969"
 
-# Google Tag Manager ID used in production.
-# For development/staging, see the config dir.
-gtmID = "GTM-T5FXXG9"
 
 # # Adobe Analytics script used in production.
 # For development/staging, see the config dir.
@@ -54,9 +51,10 @@ filtering_facets = [
 [params.search_config2.sections]
 [params.search_config2.sections.products]
 name = "products"
-weight = 10 # Used to order the sections in the UI. Higher comes first.
+weight = 35 # Used to order the sections in the UI. Higher comes first.
 title = "Products"
 noun = "Product Guide"
+static_link_url = "https://techdocs.akamai.com/cloud-computing/docs/"
 filters = "section.lvl0:products"
 # The icons are fetched from layouts/sections/navigation/explorer-icons.html
 explorer_icon = "#icon-explorer--products"
@@ -64,7 +62,7 @@ explorer_icon = "#icon-explorer--products"
 [params.search_config2.sections.guides]
 name = "guides"
 filters = "section.lvl0:guides"
-weight = 20
+weight = 10
 title = "Cloud Guides & Tutorials"
 noun = "Guide"
 explorer_icon = "#icon-explorer--guides"
@@ -72,28 +70,26 @@ explorer_icon = "#icon-explorer--guides"
 [params.search_config2.sections.api]
 name = "api"
 index = "linode-documentation-api"
+static_link_url = "https://techdocs.akamai.com/linode-api/reference/api"
 filters = "section.lvl0:api"
-weight = 30
+weight = 40
 title = "API"
 explorer_icon = "#icon-explorer--api"
 
 [params.search_config2.sections.reference-architecture]
 name = "reference-architecture"
 filters = "section.lvl0:guides"
-weight = 35
-title = "Reference Architecture"
+weight = 20
+title = "Reference Architectures"
 noun = "Reference"
 explorer_icon = "#icon-explorer--reference-architecture"
 
-[params.search_config2.sections.marketplace]
-name = "marketplace"
-index = "linode-wp"
-weight = 40
-title = "Marketplace"
-seo_title_template = "One-Click App Marketplace | Linode"
-seo_title_template_category = "One-Click App Marketplace | {category} | Linode"
-noun = "App"
-filters = "section.lvl0:Marketplace"
+[params.search_config2.sections.marketplace-docs]
+name = "marketplace-docs"
+weight = 25
+title = "Marketplace Docs"
+noun = "Marketplace"
+filters = "section.lvl0:marketplace-docs"
 explorer_icon = "#icon-explorer--marketplace"
 
 [params.search_config2.sections.blog]
@@ -105,16 +101,18 @@ seo_title_template_category = "Linode Blog | {category} | Linode"
 noun = "Post"
 filters = "section.lvl0:Blog"
 explorer_icon = "#icon-explorer--blog"
+static_link_url = "https://www.linode.com/blog/"
 
 [params.search_config2.sections.resources]
 name = "resources"
 filters = "section.lvl0:Resources"
 weight = 60
-title = "Resources"
-noun = "Resource"
+title = "Content Resources"
+noun = "Content Resource"
 seo_title_template = "Cloud Computing Resources | Linode"
 seo_title_template_category = "Cloud Computing {category} | Linode"
 explorer_icon = "#icon-explorer--resources"
+static_link_url = "https://www.linode.com/content/"
 
 [module]
 [[module.mounts]]

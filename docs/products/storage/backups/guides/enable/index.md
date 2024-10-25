@@ -9,7 +9,7 @@ The Backups service can be individually enabled on an existing Compute Instances
 
 ## Enable the Backups Service on an Existing Compute Instance
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com).
+1.  Log in to [Cloud Manager](https://cloud.linode.com).
 
 1.  From the **Linodes** page, select the Linode you want to back up.
 
@@ -27,7 +27,7 @@ The Linode Backup Service is now enabled for the selected Linode.
 
 You can automatically enroll all new Linodes in the Backup Service.
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com).
+1.  Log in to [Cloud Manager](https://cloud.linode.com).
 
 1.  Click the **Account** link in the sidebar, then select the **Settings** tab.
 

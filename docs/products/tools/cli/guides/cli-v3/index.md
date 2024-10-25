@@ -6,7 +6,7 @@ modified: 2022-11-30
 image: linode-cli.png
 external_resources:
  - '[Github Linode CLI](https://github.com/linode/cli)'
- - '[Linode API Key](/docs/products/tools/api/guides/manage-api-tokens/)'
+ - '[Linode API Key](/docs/products/platform/accounts/guides/manage-api-tokens/)'
 keywords: ["linode cli", " command line interface", " man pages", " api key"]
 tags: ["linode platform"]
 aliases: ['/platform/api/using-the-linode-cli-api-v3/','/guides/using-the-linode-cli-api-v3/']
@@ -16,7 +16,7 @@ deprecated_link: 'platform/api/linode-cli/'
 
 The Linode Command Line Interface (**CLI**) is an [open-source](https://github.com/linode/cli) command line tool for managing your Linode services. You can reboot your Linode, update an MX record for your domain, manage your NodeBalancers, create a StackScript and more from the command line on any computer, without logging in to the [Linode Manager](https://manager.linode.com/) graphical user interface.
 
-Your Linode [API key](/docs/products/tools/api/guides/manage-api-tokens/) is required for the CLI to function.
+Your Linode [API key](/docs/products/platform/accounts/guides/manage-api-tokens/) is required for the CLI to function.
 
 ## Install the CLI
 
@@ -217,7 +217,7 @@ If you don't run the configuration tool, you can add these options manually in t
 
 ### API Key
 
-The Linode CLI requires your API key to function. If you need to generate an API key manually, read the [API Key](/docs/products/tools/api/guides/manage-api-tokens/) article. There are three ways to provide the key to the CLI. The configuration tool generates a new key and adds it to the `.linodecli/config` file automatically.
+The Linode CLI requires your API key to function. If you need to generate an API key manually, read the [API Key](/docs/products/platform/accounts/guides/manage-api-tokens/) article. There are three ways to provide the key to the CLI. The configuration tool generates a new key and adds it to the `.linodecli/config` file automatically.
 
 - In the `.linodecli/config` file:
 
@@ -247,7 +247,7 @@ linode options --api-key SampleKey123456...
 
 The default Linode CLI user is stored in the `.linodecli/config` file.
 
-To set up the API for additional Linode users, you can run the `linode configure` command again, supplying a different username. Configuration files for additional users are stored with the file name pattern `.linodecli/config_user1`, with **user1** being replaced by the actual username.
+To set up the API for additional Linode users, you can run the `linode configure` command again, supplying a different username. Configuration files for additional users are stored with the filename pattern `.linodecli/config_user1`, with **user1** being replaced by the actual username.
 
 To invoke the CLI with a particular username, use the `-u user1` option, with **user1** being your actual username, at the end of the command.
 
@@ -288,7 +288,7 @@ If you do something via the CLI that costs money (creating a Linode, upgrading a
 
 ### Linodes
 
-The Linode CLI allows you to spin up new Linodes, issue reboots, upgrade plan sizes, and more.
+The Linode CLI lets you spin up new Linodes, issue reboots, upgrade plan sizes, and more.
 
 Listing Linodes:
 
@@ -439,7 +439,7 @@ man linode-domain
 
 ### NodeBalancers
 
-The Linode CLI allows you to manage your [NodeBalancers](/docs/products/networking/nodebalancers/) from the command line.
+The Linode CLI lets you manage your [NodeBalancers](/docs/products/networking/nodebalancers/) from the command line.
 
 Listing NodeBalancers:
 
@@ -473,7 +473,7 @@ man linode-nodebalancer
 
 ### StackScripts
 
-The Linode CLI allows you to create and show StackScripts, and more.
+The Linode CLI lets you create and show StackScripts, and more.
 
 Creating a StackScript:
 
@@ -497,7 +497,7 @@ man linode-stackscript
 
 ### Account
 
-The CLI allows you to view your account billing details at a glance. Run the following command:
+The CLI lets you view your account billing details at a glance. Run the following command:
 
 ```command
 linode account show

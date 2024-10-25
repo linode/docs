@@ -11,7 +11,7 @@ To connect to a PostgreSQL Managed Database, you need to know a few important de
 
 ## View Connection Details
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu.
 
 1. Select your PostgreSQL Managed Database from the list. This opens the detail page for that database cluster.
 
@@ -27,7 +27,7 @@ The *Connection Details* section contains information and credentials needed for
 - **Port:** The default port for your database is `5432`.
 - **SSL:** This field is set to `ENABLED`, which means that it is required to use an encrypted TLS/SSL connection.
 
-Under the *Connection Details* section, there is a **Download CA Certificate** link, which allows you to download the CA (Certificate Authority) certificate. This certificate file can be used if you wish to verify the CA certificate when connecting to the database.
+Under the *Connection Details* section, there is a **Download CA Certificate** link, which lets you download the CA (Certificate Authority) certificate. This certificate file can be used if you wish to verify the CA certificate when connecting to the database.
 
 ## Connect Using psql (CLI)
 
@@ -96,7 +96,7 @@ pgAdmin is an open-source application that provides you with a graphical interfa
 
 1.  Download and install pgAdmin from the [pgAdmin Downloads](https://www.pgadmin.org/download/) page, making sure to select the appropriate file for your local operating system.
 
-1.  The first time the application runs, you are prompted to configure a master password that is used to unlock any saved passwords for database servers you may configure.
+1.  The first time the application runs, you are prompted to configure a primary password (also called *master password*) that is used to unlock any saved passwords for database servers you may configure.
 
 1.  Next, you are prompted to register a server (configuring a connection to a server). If you do not see this screen, click Object > Register > Server from the main menu.
 
@@ -108,7 +108,7 @@ pgAdmin is an open-source application that provides you with a graphical interfa
 
     ![Screenshot of the Connection tab within the Register Server form](pgadmin-register-server-connection.png)
 
-1.  Under the *SSL* tab, you can leave **SSL Mode** as *Prefer* or explicitly set it to *Require*. You may also set it to *Verify-CA* if you wish to verify the CA (Certificate Authority) certificate each time you connect. If you choose this option, download the CA certificate from the Cloud Manager and set the **Root Certificate** field to point to that downloaded file.
+1.  Under the *SSL* tab, you can leave **SSL Mode** as *Prefer* or explicitly set it to *Require*. You may also set it to *Verify-CA* if you wish to verify the CA (Certificate Authority) certificate each time you connect. If you choose this option, download the CA certificate from Cloud Manager and set the **Root Certificate** field to point to that downloaded file.
 
 1.  Once all the settings have been appropriately configured, click the **Save** button to save the settings and attempt to connect.
 

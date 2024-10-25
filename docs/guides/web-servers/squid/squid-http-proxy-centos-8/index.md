@@ -29,7 +29,7 @@ This guide will show you how to create your own HTTP proxy using Squid, a highly
 -   Bypass certain regional and local network restrictions.
 
 {{< note >}}
-The traffic passed from your client to your Squid HTTP proxy will not be encrypted and will still be visible on your local network. If you are looking for a solution that offers greater security, you may want to look at our guides on [Setting up an SSH Tunnel](/docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) or [Deploy OpenVPN Access Server with Marketplace Apps](/docs/products/tools/marketplace/guides/openvpn/).
+The traffic passed from your client to your Squid HTTP proxy will not be encrypted and will still be visible on your local network. If you are looking for a solution that offers greater security, you may want to look at our guides on [Setting up an SSH Tunnel](/docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) or [Deploy OpenVPN Access Server with Marketplace Apps](/docs/marketplace-docs/guides/openvpn/).
 {{< /note >}}
 
 ## Install Squid

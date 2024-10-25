@@ -10,7 +10,7 @@ promo_default: false
 
 ## Overview
 
-The parent and child accounts feature was designed with Akamai partners and their clients in mind. It allows partners to manage multiple end customers’ accounts with a single login to their company’s account.
+The parent and child accounts feature was designed with Akamai partners and their clients in mind. It allows partners to manage multiple end customers’ accounts with a single login for their company’s account.
 
 {{< note type="secondary" >}}
 This feature is only available for Akamai partners and their end customers with an Akamai Cloud Computing contract. To learn more about it, contact your Akamai representative.

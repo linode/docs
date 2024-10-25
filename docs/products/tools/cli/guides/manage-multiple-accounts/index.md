@@ -4,7 +4,7 @@ description: "How to use the Linode CLI to manage multiple Linode accounts."
 published: 2022-12-06
 ---
 
-The Linode CLI can be configured to run commands from multiple users on separate Linode Accounts. This allows you to control multiple accounts, all through the same system, using the Linode CLI. Once multiple users are configured, you can execute commands as a particular user or set a specific user as the default.
+The Linode CLI can be configured to run commands from multiple users on separate Linode Accounts. This lets you control multiple accounts, all through the same system, using the Linode CLI. Once multiple users are configured, you can execute commands as a particular user or set a specific user as the default.
 
 ## Configure an Additional User
 

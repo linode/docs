@@ -14,6 +14,7 @@ external_resources:
 - '[Tahoe-LAFS Project Page](https://tahoe-lafs.org/)'
 - '[Tahoe-LAFS Documentation](http://tahoe-lafs.readthedocs.io)'
 aliases: ['/applications/cloud-storage/tahoe-lafs-on-debian-9/']
+deprecated: true
 ---
 
 ## What is Tahoe-LAFS?

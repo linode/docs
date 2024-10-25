@@ -13,17 +13,17 @@ All credentials are securely stored in our encrypted database.
 
 ## View Credentials
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Managed** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and click the **Managed** link in the sidebar.
 
 1. Navigate to the **Credentials** tab. A list of all your current credentials is displayed. From here, you can add new credentials or edit existing credentials.
 
-    ![Screenshot of credentials for Managed Services in the Cloud Manager](managed-credentials.png)
+    ![Screenshot of credentials for Managed Services in Cloud Manager](managed-credentials.png)
 
     Alongside each credential is a *Last Decrypted* field. This displays the timestamp for when the credential was last decrypted by our Support team.
 
 ## Add a Credential
 
-1. Navigate to the **Credentials** tab for Managed Services in the Cloud Manager. See [View Credentials](#view-credentials).
+1. Navigate to the **Credentials** tab for Managed Services in Cloud Manager. See [View Credentials](#view-credentials).
 
 1. Click the **Add Credentials** button.
 
@@ -39,7 +39,7 @@ All credentials are securely stored in our encrypted database.
 
 ## Edit a Credential
 
-1. Navigate to the **Credentials** tab for Managed Services in the Cloud Manager. See [View Credentials](#view-credentials).
+1. Navigate to the **Credentials** tab for Managed Services in Cloud Manager. See [View Credentials](#view-credentials).
 
 1. Locate the credential you wish to edit and click the corresponding **Edit** button.
 

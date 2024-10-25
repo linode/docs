@@ -109,7 +109,7 @@ The complete list of steps required to provision PostgreSQL and repmgr follows t
 After the configuration process, it is important to verify the cluster status. Add some data to the primary database instance and ensure it is replicated to the standby. It is also possible to test a failover process, but the failed primary must be recovered manually afterwards.
 
 {{< note >}}
-An alternative to manual installation is the [Akamai Marketplace PostgreSQL cluster application](/docs/products/tools/marketplace/guides/postgresql-cluster/). The Marketplace application uses repmgr to manage a multi-node HA PostgreSQL cluster. While it's easy to provision this solution using the Akamai Cloud Compute Dashboard, you cannot choose the cluster size or customize the configuration. The Marketplace application is a reasonable option for a smaller organization looking for ease of use. It is currently only supported on Ubuntu 22.04 LTS (with all regions and plan types).
+An alternative to manual installation is the [Akamai Marketplace PostgreSQL cluster application](/docs/marketplace-docs/guides/postgresql-cluster/). The Marketplace application uses repmgr to manage a multi-node HA PostgreSQL cluster. While it's easy to provision this solution using the Akamai Cloud Compute Dashboard, you cannot choose the cluster size or customize the configuration. The Marketplace application is a reasonable option for a smaller organization looking for ease of use. It is currently only supported on Ubuntu 22.04 LTS (with all regions and plan types).
 {{< /note >}}
 
 ## How to Install PostgreSQL and repmgr

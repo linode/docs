@@ -3,32 +3,33 @@ title: "Create a Compute Instance"
 title_meta: "Create a Compute Instance on the Linode Platform"
 description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
 published: 2022-04-19
-modified: 2024-05-21
+modified: 2024-07-22
 keywords: ["getting started", "deploy", "linode", "linux"]
 aliases: ['/guides/creating-a-compute-instance/','/products/compute/dedicated-cpu/guides/deploy/']
 ---
 
-This guide walks you through creating a Compute Instance (also frequently called a *Linode*) through the Cloud Manager. Whether this is your first time using Linode or if you're a long time user, you should carefully consider each step in the process to make sure you're getting the most of your Linode services.
+This guide walks you through creating a Compute Instance (also frequently called a *Linode*) through Cloud Manager. Whether this is your first time using Linode or if you're a long time user, you should carefully consider each step in the process to make sure you're getting the most of your Linode services.
 
-1. [Open the Create Form in the Cloud Manager](#open-the-create-form-in-the-cloud-manager)
-1. [Choose a Distribution, App, or Image](#choose-a-distribution-app-or-image)
-1. [Select a Region](#select-a-region)
-1. [Choose an Instance Type and Plan](#choose-an-instance-type-and-plan)
-1. [Set the Label and Add Tags](#set-the-label-and-add-tags)
-1. [Create a Password and Add SSH Keys](#create-a-password-and-add-ssh-keys)
-1. [Assign to a VPC](#assign-to-a-vpc)
-1. [Assign to a Cloud Firewall](#assign-to-a-cloud-firewall)
-1. [Assign to a VLAN](#assign-to-a-vlan)
-1. [Configure Additional Options](#configure-additional-options)
-1. [Add User Data](#add-user-data)
-1. [Deploy the Instance](#deploy-the-instance)
-1. [Getting Started After Deployment](#getting-started-after-deployment)
+- [Open the Create Form in Cloud Manager](#open-the-create-form-in-cloud-manager)
+- [Choose a Distribution, App, or Image](#choose-a-distribution-app-or-image)
+- [Select a Region](#select-a-region)
+- [Choose an Instance Type and Plan](#choose-an-instance-type-and-plan)
+- [Set the Label and Add Tags](#set-the-label-and-add-tags)
+- [Create a Password and Add SSH Keys](#create-a-password-and-add-ssh-keys)
+- [Assign to a VPC (Optional) {#assign-to-a-vpc}](#assign-to-a-vpc-optional-assign-to-a-vpc)
+- [Assign to a Cloud Firewall (Optional) {#assign-to-a-cloud-firewall}](#assign-to-a-cloud-firewall-optional-assign-to-a-cloud-firewall)
+- [Assign to a VLAN (Optional) {#assign-to-a-vlan}](#assign-to-a-vlan-optional-assign-to-a-vlan)
+- [Assign to a Placement Group (Optional) {#assign-to-a-placement-group}](#assign-to-a-placement-group-optional-assign-to-a-placement-group)
+- [Configure Additional Options](#configure-additional-options)
+- [Add User Data](#add-user-data)
+- [Deploy the Instance](#deploy-the-instance)
+- [Getting Started After Deployment](#getting-started-after-deployment)
 
-## Open the Create Form in the Cloud Manager
+## Open the Create Form in Cloud Manager
 
-Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Create** dropdown menu on the top bar, and select *Linode*. This opens the **Create Linode** form.
+Log in to [Cloud Manager](https://cloud.linode.com/), click the **Create** dropdown menu on the top bar, and select *Linode*. This opens the **Create Linode** form.
 
-![Open Create form in the Cloud Manager](create-instance-create.jpg)
+![Open Create form in Cloud Manager](create-instance-create.jpg)
 
 ## Choose a Distribution, App, or Image
 
@@ -36,9 +37,9 @@ Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Create** d
 
 One of the first steps to deploy a Compute Instance is to decide *what* you actually wish to deploy. You're able to select a Linux distribution for a barebones install, a Marketplace App with your desired software, and a few other options.
 
-- **Distributions:** Select from any [supported Linux distribution](https://www.linode.com/distributions/). This option allows you to start with a stable Linux operating system and build your own software stack from scratch. Popular distributions include the latest LTS releases of Ubuntu, Debian, CentOS Stream, RHEL-derivitates (such AlmaLinux and Rocky Linux), and more. Each distribution comes with its own set of preinstalled software and commands. See [Choosing a Linux Distribution](/docs/products/compute/compute-instances/guides/distributions/) for a full list of distributions.
+- **Distributions:** Select from any [supported Linux distribution](https://www.linode.com/distributions/). This option lets you start with a stable Linux operating system and build your own software stack from scratch. Popular distributions include the latest LTS releases of Ubuntu, Debian, CentOS Stream, RHEL-derivitates (such AlmaLinux and Rocky Linux), and more. Each distribution comes with its own set of preinstalled software and commands. See [Choosing a Linux Distribution](/docs/products/compute/compute-instances/guides/distributions/) for a full list of distributions.
 
-- **Marketplace**: Select from the many [Apps](https://www.linode.com/marketplace/apps/) currently featured in the [Linode Marketplace](https://www.linode.com/marketplace/). This installs and configures your desired software, allowing you to start using your applications right away. Popular apps include [Wordpress](https://www.linode.com/marketplace/apps/linode/wordpress/), [WooCommerce](https://www.linode.com/marketplace/apps/linode/woocommerce/), [LEMP](https://www.linode.com/marketplace/apps/linode/lemp/), [cPanel](https://www.linode.com/marketplace/apps/cpanel/cpanel/), [Plesk](https://www.linode.com/marketplace/apps/plesk/plesk/), and [Nextcloud](https://www.linode.com/marketplace/apps/linode/nextcloud/). See [How to Use Linode's Marketplace Apps](/docs/products/tools/marketplace/get-started/).
+- **Marketplace**: Select from the many [Apps](https://www.linode.com/marketplace/apps/) currently featured in the [Linode Marketplace](https://www.linode.com/marketplace/). This installs and configures your desired software, allowing you to start using your applications right away. Popular apps include [Wordpress](https://www.linode.com/marketplace/apps/linode/wordpress/), [WooCommerce](https://www.linode.com/marketplace/apps/linode/woocommerce/), [LEMP](https://www.linode.com/marketplace/apps/linode/lemp/), [cPanel](https://www.linode.com/marketplace/apps/cpanel/cpanel/), [Plesk](https://www.linode.com/marketplace/apps/plesk/plesk/), and [Nextcloud](https://www.linode.com/marketplace/apps/linode/nextcloud/). See [How to Use Linode's Marketplace Apps](/docs/marketplace-docs/get-started/).
 
 - **StackScripts:** Select from any StackScripts previously created on your account or from a community StackScript. StackScripts automate the deployment of software and configuration by executing commands within your system after the first boot. See [How to Deploy a New Linode Using a StackScript](/docs/products/tools/stackscripts/guides/deploy-a-compute-instance/).
 
@@ -92,7 +93,7 @@ You can resize to a different plan size or instance type at any time. This means
 
     {{% content "password-requirements-shortguide" %}}
 
--   **SSH Keys:** Add any SSH Keys to the root user account on the server. This enables you to log in through SSH without needing a password. SSH keys are created as a pair: a *private key* stored on your local computer and a *public key* that you can upload to remote systems and services. Since you only share your public key and your private key is kept safe and secure, this is a much more secure method for authentication than passwords. Learn more about uploading SSH keys through the Cloud Manager on the [Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/) guide.
+-   **SSH Keys:** Add any SSH Keys to the root user account on the server. This enables you to log in through SSH without needing a password. SSH keys are created as a pair: a *private key* stored on your local computer and a *public key* that you can upload to remote systems and services. Since you only share your public key and your private key is kept safe and secure, this is a much more secure method for authentication than passwords. Learn more about uploading SSH keys through Cloud Manager on the [Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/) guide.
 
 ## Assign to a VPC (Optional) {#assign-to-a-vpc}
 
@@ -102,7 +103,7 @@ Consider using a [VPC](/docs/products/networking/vpc/) (Virtual Private Network)
 
 - **Select VPC:** To assign this instance to a VPC, select the VPC from the **Assign VPC** dropdown menu. If you do not yet have a VPC in the selected data center, click the **Create a VPC** button and follow the instructions on the [Create a VPC](/docs/products/networking/vpc/guides/create/) guide.
 
-- **Select Subnet:** An instance can be assigned to a single subnet, which allows you to further segment traffic and services within a VPC. Select the desired subnet within the **Subnet** dropdown menu.
+- **Select Subnet:** An instance can be assigned to a single subnet, which lets you further segment traffic and services within a VPC. Select the desired subnet within the **Subnet** dropdown menu.
 
 - **Auto-Assign IPv4 address:** By default, an IPv4 address will be automatically generated for the instance on the subnet’s defined CIDR range. If you want to manually assign an IP address, uncheck the **Auto-assign a VPC IPv4 address for this Linode** option and enter your custom IPv4 address. This address must still be within the subnet’s IP range.
 
@@ -116,7 +117,7 @@ For additional information and considerations, review the [Assign (and Remove) S
 
 ![Screenshot of the Assign Cloud Firewall section](create-instance-cloud-firewall.jpg)
 
-To protect your new Compute Instance from unwanted traffic, consider using a [Cloud Firewall](/docs/products/networking/cloud-firewall/). This allows you to cascade firewall rules across multiple services and manage those rules within the Cloud Manager, Linode CLI, and Linode API.
+To protect your new Compute Instance from unwanted traffic, consider using a [Cloud Firewall](/docs/products/networking/cloud-firewall/). This lets you cascade firewall rules across multiple services and manage those rules within Cloud Manager, Linode CLI, and Linode API.
 
 To assign your instance to a Cloud Firewall, select the firewall from the **Assign Firewall** dropdown menu. If you do not have a firewall or wish to create a new one, click the **Create Firewall** link and follow the instructions within the [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) guide. You can always skip this step and assign a firewall at a later time by following the instructions in the [Apply Firewall Rules to a Service](/docs/products/networking/cloud-firewall/guides/apply-to-service/) guide.
 
@@ -130,13 +131,23 @@ Add this Compute Instance to a secure private network. VLANs are available at no
 In most cases, it's recommended to use a VPC over a VLAN. VPCs operate on a higher network layer and come with more IP addressing and IP routing functionality. Additionally, you can further segment out network traffic through subnets, each of which has its own CIDR range. Review [these differences](/docs/products/networking/vpc/#difference-between-private-network-options-vpcs-vlans-and-private-ips) to learn more.
 {{< /note >}}
 
+## Assign to a Placement Group (Optional) {#assign-to-a-placement-group}
+
+![Creating a receiving Linode](create-instance-pg.png)
+
+Add this Compute Instance to a Placement Group to manage its physical location in a data center ("region"). Placement Groups can be set up to group your compute instances close together to help with performance, or further apart to support high availability. Placement Groups are available at no additional cost, but they're not available in all regions. See [Work with Placement Groups](/docs/products/compute/compute-instances/guides/placement-groups/) to learn more.
+
+{{< note >}}
+If you don't have an existing Placement Group, you can click **Create Placement Group** to create a new one. This takes you to a separate interface, outside creating your compute instance. For ease of use, create your compute instances in a supported region, then later create a Placement Group and assign your compute instances to it.
+{{< /note >}}
+
 ## Configure Additional Options
 
 The following features and services can be configured during the Compute Instance's creation or at any point after.
 
 - **Add the Backups service:** Safeguard your data with Linode’s Backups service, enabling automatic backups of the disks on your Compute Instances. Up to four backups are stored as part of this service, including automated daily, weekly, and biweekly backups in addition to a manual backup snapshot. See [Backups](/docs/products/storage/backups/) to learn more and view pricing.
 
-- **Add a private IP:** A private IP gives you access to the data center's private network. This enables you to communicate with other Compute Instances with private IPs in the same region without using a public IPv4 address. Private IPs are needed to configure your instance as a NodeBalancer backend. The private IP feature requires a _Public Internet_ network interface. As such, Compute Instances configured with both VPCs _and_ a private IP address are configured with the _VPC_ network interface on `eth0` and the _Public Internet_ interface on `eth1`.
+- **Add a private IP:** A private IP gives you access to the data center's private network. This enables you to communicate with other Compute Instances with private IPs in the same region without using a public IPv4 address. Private IPs are needed to configure your instance as a NodeBalancer back end. The private IP feature requires a _Public Internet_ network interface. As such, Compute Instances configured with both VPCs _and_ a private IP address are configured with the _VPC_ network interface on `eth0` and the _Public Internet_ interface on `eth1`.
 
     {{< note type="warning" title="Consider using a VPC instead of the private IP address feature" isCollapsible=true >}}
     Private IP addresses are accessible by any other instance in the same data center, provided that instance also has a private IP. To further isolate your instance, consider using a VPC instead. Review [these differences](/docs/products/networking/vpc/#difference-between-private-network-options-vpcs-vlans-and-private-ips) to learn more.

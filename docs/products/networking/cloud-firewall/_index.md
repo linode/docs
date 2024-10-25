@@ -37,7 +37,7 @@ Cloud Firewalls are available at no charge across [all regions](https://www.lino
 - Cloud Firewalls are **compatible with Linode Compute Instances and NodeBalancers**. They are not currently directly supported on other Linode services, such as Object Storage.
 - A Cloud Firewall can be attached to multiple services (Compute Instances or NodeBalancers), but a service can only be attached to one *active* (enabled) Cloud Firewall at a time.
 - A Cloud Firewall’s inbound and outbound rules are applied to Compute Instances, but only inbound rules are applied to NodeBalancers.
-- When used in conjunction with NodeBalancers, a Cloud Firewall’s inbound rules only apply to the NodeBalancer's public IP, not the IPs of the backend nodes. This means you may also want to add individual backend nodes to a Cloud Firewall to protect any additional exposed IP addresses.
+- When used in conjunction with NodeBalancers, a Cloud Firewall’s inbound rules only apply to the NodeBalancer's public IP, not the IPs of the back-end nodes. This means you may also want to add individual back-end nodes to a Cloud Firewall to protect any additional exposed IP addresses.
 - Cloud Firewall rules are applied to traffic over the public and private network but are not applied to traffic over a private [VLAN](/docs/products/networking/vlans/).
 - A maximum of **25 rules** can be added to each Cloud Firewall (both Inbound and Outbound rules combined).
 - A maximum of **255 IP addresses (and ranges)** can be added to each Cloud Firewall rule.

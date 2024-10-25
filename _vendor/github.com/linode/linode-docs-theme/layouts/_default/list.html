@@ -221,10 +221,9 @@
             <div class="space-y-8">
               <template x-for="(item, i) in data.result.hits">
                 <a
-                  class="a--block bg-white block rounded-md md:flex md:items-center"
+                  class="a--block bg-white block rounded-md border border-gray-300 md:flex md:items-center"
                   :target="item.isExternalLink ? '_blank' : ''"
-                  :href="item.href"
-                  :class="{ 'shadow-sm': i === 0 }">
+                  :href="item.href">
                   <div class="h-full bg-gray-200">
                     <div
                       class="relative pb-20/9 md:pb-14/9 md:w-64 md:h-full overflow-hidden rounded-t-lg rounded-b-none md:rounded-l-lg md:rounded-r-none">
@@ -245,6 +244,11 @@
                     <p
                       class="text-darkgray leading-6 text-sm md:text-base"
                       x-html="item.excerptTruncated(160)"></p>
+                    <span
+                      x-show="item.deprecated"
+                      class="mt-3 inline-flex items-center rounded-sm bg-orange-100 px-2 py-1 text-xs font-medium text-orange-800 ring-1 ring-inset ring-orange-600/20"
+                      >Deprecated</span
+                    >
                   </div>
                 </a>
               </template>

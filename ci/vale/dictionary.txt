@@ -761,6 +761,7 @@ filezilla
 filimonov
 findtime
 finnix
+fintech
 firefart
 firehose
 firewalld
@@ -1013,6 +1014,7 @@ hulu
 husch
 hvc0
 hybla
+Hydrolix
 hykes
 hypercorn
 hyperefficient
@@ -1033,6 +1035,7 @@ icingacli
 icmp
 icmpv6
 idempotence
+idempotency
 ident
 identrust
 iDimensionz
@@ -1162,6 +1165,7 @@ jenkinsx
 jessie
 jetpack
 jez
+Jicofo
 JIDs
 jira
 jitsi
@@ -1191,6 +1195,9 @@ julialang
 jumpbox
 junit
 jupyter
+JVB
+jvb_cluster_size
+JVBs
 jwebserver
 JWTs
 jx
@@ -1225,6 +1232,7 @@ keysize
 keyspace
 keyspaces
 keystore
+keystores
 kfctl
 khanaser
 kibana
@@ -1239,6 +1247,7 @@ klei
 klocwork
 kloth
 kloxo
+knative
 knockpy
 knowledgebase
 Kodu
@@ -1247,6 +1256,7 @@ Konqueror
 konsole
 konversation
 kotin
+kourier
 KPI
 KPIs
 krita
@@ -1338,6 +1348,7 @@ listdir
 listserv
 listservs
 litespeed
+liveness
 Livestatus
 livigno
 lke
@@ -1550,6 +1561,7 @@ monitorix
 monorepo
 monorepos
 monospaced
+mons
 moodle
 moolenaar
 morphisec
@@ -1584,6 +1596,7 @@ multicraft
 multilib
 multiline
 multilink
+multipath
 multiplatform
 Multiplo
 multiport
@@ -1603,6 +1616,7 @@ MXNet
 myapp
 myblog
 mydestination
+mydockerhubusername
 mydomain
 myhostname
 mynewdomain
@@ -1744,6 +1758,7 @@ oauth
 obfuscator
 observium
 OCAs
+Octo
 octopress
 ODMs
 odoo
@@ -1763,6 +1778,8 @@ oneof
 ons
 opcache
 openapi
+openbao
+OpenBao
 opencart
 opendkim
 openfire
@@ -1779,6 +1796,7 @@ openzipkin
 Opin
 ORMs
 osCommerce
+osds
 ossec
 OStatus
 ostemplate
@@ -1848,6 +1866,7 @@ pentesting
 pepi
 perceptron
 percona
+Perf
 performant
 perl
 perldoc
@@ -1912,6 +1931,7 @@ poplib
 portainer
 portmapper
 portswigger
+portworx
 Postel
 postgres
 postgresql
@@ -1933,6 +1953,7 @@ prefetch
 prefork
 preinstall
 preinstalled
+preload
 preloaded
 preloader
 premade
@@ -1988,6 +2009,7 @@ puppetmaster
 puttygen
 pv
 pvc
+pvcs
 pvgrub
 pwcheck
 pwsh
@@ -2479,7 +2501,9 @@ teamspeak
 teardown
 techdocs
 techland
+Tectia
 telecom
+telehealth
 teleporting
 tensorflow
 terrahelp
@@ -2536,6 +2560,7 @@ tokenized
 tokenizing
 tokyo
 tokyo2
+tolerations
 tomacat
 tomcat6
 toolchain
@@ -2548,6 +2573,7 @@ tooltips
 torvalds
 TOTPs
 towson
+tpslimit
 trac
 tracebacks
 traceroute
@@ -2559,6 +2585,7 @@ transcoder
 transcoders
 transcodes
 transcoding
+transformative
 transpiled
 transpiling
 trello
@@ -2567,6 +2594,7 @@ trie
 trivy
 trojan
 truststore
+truststores
 tt
 ttl
 TTLs
@@ -2697,6 +2725,8 @@ vagrantfile
 valheim
 validator
 valim
+valkey
+Valkey
 variadic
 varnishlog
 varonis
@@ -2717,6 +2747,8 @@ veritas
 vhost
 vhosts
 Vickery
+Videobridge
+Videobridges
 viewport
 vigenere
 vimrc
@@ -2764,6 +2796,7 @@ vz
 vznetaddbr
 wafs
 walkthrough
+walkthroughs
 WAN
 WANs
 Wappalyzer
@@ -2791,6 +2824,7 @@ webpy
 WEBrick
 webroot
 webroots
+webrtcperf
 webserver
 webservers
 webservice

@@ -6,7 +6,7 @@ published: 2024-01-09
 keywords: ["getting started", "deploy", "linode", "linux"]
 ---
 
-This guide walks you through creating a VPC through the Cloud Manager, Linode CLI, and Linode API.
+This guide walks you through creating a VPC through Cloud Manager, Linode CLI, and Linode API.
 
 1. [Get Started](#get-started)
 1. [Set the Basic Parameters](#set-the-basic-parameters)
@@ -16,11 +16,11 @@ This guide walks you through creating a VPC through the Cloud Manager, Linode CL
 
 ## Get Started
 
-Open the Create Form in the Cloud Manager or start entering your Linode CLI or Linode API command.
+Open the Create Form in Cloud Manager or start entering your Linode CLI or Linode API command.
 
 {{< tabs >}}
 {{< tab "Cloud Manager" >}}
-Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Create** dropdown menu on the top bar, and select *VPC*. This opens the **Create VPC** form.
+Log in to [Cloud Manager](https://cloud.linode.com/), click the **Create** dropdown menu on the top bar, and select *VPC*. This opens the **Create VPC** form.
 {{< /tab >}}
 {{< tab "Linode CLI" >}}
 Within your terminal, paste the command provided below. If you do not have the Linode CLI, review the [Install and Configure the Linode CLI](/docs/products/tools/cli/guides/install/) guide. **Before submitting the request, read through the rest of this document.**
@@ -35,7 +35,7 @@ linode-cli vpcs create \
 ```
 {{< /tab >}}
 {{< tab "Linode API" >}}
-Within your terminal, enter the API curl request below. Make sure to properly paste in or reference your [API token](/docs/products/tools/api/guides/manage-api-tokens/). For a complete API reference, see the [VPC API endpoints](/docs/api/vpcs/) documentation. **Before submitting the request, read through the rest of this document.**
+Within your terminal, enter the API curl request below. Make sure to properly paste in or reference your [API token](/docs/products/platform/accounts/guides/manage-api-tokens/). For a complete API reference, see the [VPC API endpoints](/docs/api/vpcs/) documentation. **Before submitting the request, read through the rest of this document.**
 
 ```command
 curl https://api.linode.com/v4/vpcs \
@@ -110,7 +110,7 @@ For each additional subnet you wish to create, press the **Add Another Subnet** 
 
 ## Deploy the VPC
 
-Once all fields have been entered, you can click the **Create VPC** button in the Cloud Manager or run the Linode CLI or Linode API command. If you are using the Cloud Manager, you are taken to the VPC's details page where you can view and edit the VPC and its subnets.
+Once all fields have been entered, you can click the **Create VPC** button in Cloud Manager or run the Linode CLI or Linode API command. If you are using Cloud Manager, you are taken to the VPC's details page where you can view and edit the VPC and its subnets.
 
 ## Next Steps
 

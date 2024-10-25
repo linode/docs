@@ -10,7 +10,7 @@
   x-data="lncSearchExplorerInitial()"
   x-show="isOpen() && !$store.search.shouldShowHydratedExplorerAndIsHydrated()"
   x-transition.opacity.duration.30ms>
-  {{ if site.IsServer }}
+  {{ if hugo.IsServer }}
     <div class="bg-brand h-2">&nbsp;</div>
   {{ end }}
   <ul class="search-explorer-root bg-backgroundcolor">
@@ -132,51 +132,58 @@
           }}
           {{ $classes := partial "inline/get-classes" $classesm }}
           <a
-            @click="onClickStaticBranchNode($event, '{{ .node.href }}', '{{ .node.objectID }}', '{{ .node.key }}');"
+            {{ if ge .node.count 0 }}
+              @click="onClickStaticBranchNode($event, '{{ .node.href }}',
+              '{{ .node.objectID }}', '{{ .node.key }}');"
+            {{ end }}
             href="{{ .node.href }}"
             data-testid="node-link"
             class="block relative cursor-pointer pr-3 no-underline capitalize z-10 flex-auto {{ $classes }}">
             <span class="bg-container h-full"></span>
-            <span>{{ .node.title }}</span>
+            <span>{{ .node.linkTitle | default .node.title }}</span>
           </a>
         </div>
+
         <div class="flex items-center h-full">
           {{ $classes := partial "inline/get-classes" (dict
             "text-gray-100" (eq .node.count 0)
             "text-basicgray" (not (eq .node.count 0))
             )
           }}
-          {{ with .node.count }}
-            <span
-              class="text-xs font-semibold pr-6 {{ $classes }}"
-              data-testid="node-count"
-              >{{ . }}</span
-            >
+
+          {{ if not (strings.HasPrefix .node.href "http") }}
+            <div class="z-10">
+              {{ $ariaLabel := cond .node.open "close" "open" }}
+              {{ $classes := partial "inline/get-classes" (dict
+                "text-gray-200" (eq .node.count 0)
+                "text-textcolor" (not (eq .node.count 0))
+                )
+              }}
+              <button
+                type="button"
+                name="open"
+                @click="hydrateAndSwitchOpenStateForKey('{{ .node.key }}', {{ .node.open }} )"
+                class="btn-icon h-full flex items-center justify-center {{ $classes }}"
+                data-testid="{{ printf `%s-%d` $ariaLabel .node.level }}"
+                aria-label="{{ $ariaLabel }}"
+                {{ if (eq .node.count 0) }}
+                  disabled
+                {{ end }}>
+                {{ $icon := cond .node.open "#icon--arrow-up" "#icon--arrow-down" }}
+                <svg class="w-4 h-3 titlecolor">
+                  <use href="{{ $icon }}"></use>
+                </svg>
+              </button>
+            </div>
+          {{ else }}
+            <div class="z-10">
+              <a href="{{ .node.href }}">
+                <svg class="w-4 h-3 titlecolor">
+                  <use href="#icon--arrow-up-right"></use>
+                </svg>
+              </a>
+            </div>
           {{ end }}
-          <div class="z-10">
-            {{ $ariaLabel := cond .node.open "close" "open" }}
-            {{ $classes := partial "inline/get-classes" (dict
-              "text-gray-200" (eq .node.count 0)
-              "text-textcolor" (not (eq .node.count 0))
-              )
-            }}
-            <button
-              type="button"
-              name="open"
-              @click="hydrateAndSwitchOpenStateForKey('{{ .node.key }}', {{ .node.open }} )"
-              @mouseover="activateHydration()"
-              class="btn-icon h-full flex items-center justify-center {{ $classes }}"
-              data-testid="{{ printf `%s-%d` $ariaLabel .node.level }}"
-              aria-label="{{ $ariaLabel }}"
-              {{ if (eq .node.count 0) }}
-                disabled
-              {{ end }}>
-              {{ $icon := cond .node.open "#icon--arrow-up" "#icon--arrow-down" }}
-              <svg class="w-4 h-3 titlecolor">
-                <use href="{{ $icon }}"></use>
-              </svg>
-            </button>
-          </div>
         </div>
       </div>
 
@@ -188,15 +195,22 @@
       {{ $classes := partial "inline/get-classes" $classesm }}
 
       {{ if .node.open }}
+        {{ $node := .node }}
         <ul class="node-tree h-full {{ $classes }}">
           {{ $pages := index $.data.data $.node.key }}
           {{ if $pages }}
             {{ $pages = sort $pages "linkTitle" }}
           {{ end }}
-
           {{ with $pages }}
+            {{ $pageCount := 0 }}
+            {{ $pageCountHidden := 0 }}
             {{ range $i, $p := . }}
               {{ if $p.isBranch }}
+                {{ continue }}
+              {{ end }}
+              {{ $pageCount  = add $pageCount 1 }}
+              {{ if $p.deprecated }}
+                {{ $pageCountHidden  = add $pageCountHidden 1 }}
                 {{ continue }}
               {{ end }}
 
@@ -228,6 +242,18 @@
                   class="py-1-5 inline-block page-link mr-2 text-xs capitalize cursor-pointer no-underline active:text-brand hover:text-gray-900 focus:outline-none {{ $classes }}
                   ">
                   {{ $p.linkTitle }}
+                </a>
+              </li>
+            {{ end }}
+            {{ if $pageCountHidden }}
+              <li>
+                <a
+                  href="{{ $node.href }}"
+                  class="py-1-5 inline-block page-link mr-2 text-xs capitalize cursor-pointer no-underline active:text-brand hover:text-gray-900 focus:outline-none 
+                ">
+                  See All
+                  {{ $pageCount }}
+                  {{ $node.linkTitle | default $node.title }} Guides
                 </a>
               </li>
             {{ end }}

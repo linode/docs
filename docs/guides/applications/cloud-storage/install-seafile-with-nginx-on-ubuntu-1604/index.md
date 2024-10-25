@@ -5,13 +5,14 @@ description: 'This guide shows how to install Seafile, a free and open-source cr
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2017-05-23
-modified: 2017-06-21
+modified: 2023-02-15
 keywords: ["Seafile", " nginx", " Ubuntu 16.04", " file server", " media", " sharing"]
 tags: ["ubuntu", "nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Seafile Server Manual](https://manual.seafile.com/)'
 aliases: ['/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604/']
+deprecated: true
 ---
 
 Seafile is a cross-platform file hosting tool with server applications for Linux and Windows, and GUI clients for Android, iOS, Linux, OS X and Windows. It supports file versioning and snapshots, two-factor authentication, WebDAV, and can be paired with NGINX or Apache to enable connections over HTTPS.
@@ -90,9 +91,9 @@ If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can de
 
 ## Install and Configure MySQL
 
-1.  During Installation, you will be asked to assign a password for the root mysql user. Be sure to install the package `mysql-server-5.7`, not `mysql-server`. This is because an upstream issue causes problems starting the MySQL service if you install by using the `mysql-server` package.
+1.  During Installation, you will be asked to assign a password for the root mysql user.
 
-        sudo apt install mysql-server-5.7
+        sudo apt install mysql-server
 
 2.  Run the *mysql_secure_installation* script:
 
@@ -293,4 +294,4 @@ WantedBy=multi-user.target
 
 ## Updating Seafile
 
-There are various ways to update Seafile depending on if you are upgrading from one milestone to another (version 5 to 6), or upgrading between point releases (5.1.0 to 5.1.1). See the [Seafile Manual](https://manual.seafile.com/deploy/upgrade.html) for upgrade instructions that best suit your needs.
+There are various ways to update Seafile depending on if you are upgrading from one milestone to another, or upgrading between minor releases. See the [Seafile Manual](https://manual.seafile.com/upgrade/upgrade/) for upgrade instructions that best suit your needs.

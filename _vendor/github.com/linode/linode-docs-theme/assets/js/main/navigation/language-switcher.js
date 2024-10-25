@@ -33,7 +33,7 @@ export function newLanguageSwitcherController(weglot_api_key) {
 			],
 
 			init: function () {
-				console.log('init language');
+				debug('init language');
 				const langParam = getCurrentLangFromLocation();
 				if (langParam) {
 					this.currentLang = langParam;

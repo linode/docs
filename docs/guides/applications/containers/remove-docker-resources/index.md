@@ -9,7 +9,6 @@ keywords: ['docker remove image', 'docker remove container', 'docker remove volu
 tags: ['docker', 'container']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[DigitalOcean: How To Remove Docker Images, Containers, and Volumes](https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes)'
 - '[freeCodeCamp: How to Remove Images and Containers in Docker](https://www.freecodecamp.org/news/how-to-remove-images-in-docker/)'
 - '[Linuxize: How To Remove Docker Containers, Images, Volumes, and Networks](https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/)'
 - '[Docker Docs: docker image](https://docs.docker.com/engine/reference/commandline/image/)'

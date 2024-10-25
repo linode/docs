@@ -24,7 +24,7 @@ This guide assumes you are comfortable with the *command-line interface* (CLI) o
 
 #### Docker Marketplace App
 
-You can quickly set up a secure, updated Linode with the Docker Marketplace App. For instructions, see our guide on [How to Deploy Docker with Marketplace Apps](/docs/products/tools/marketplace/guides/docker/). For the purposes of this guide, we recommend deploying the Docker Marketplace App with the [Docker Options](/docs/products/tools/marketplace/guides/docker/#docker-options):
+You can quickly set up a secure, updated Linode with the Docker Marketplace App. For instructions, see our guide on [How to Deploy Docker with Marketplace Apps](/docs/marketplace-docs/guides/docker/). For the purposes of this guide, we recommend deploying the Docker Marketplace App with the [Docker Options](/docs/marketplace-docs/guides/docker/#docker-options):
 
 - The limited sudo user to be created for the Linode
 - The password for the limited sudo user

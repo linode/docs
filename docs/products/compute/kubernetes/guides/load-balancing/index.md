@@ -42,7 +42,7 @@ This guide assumes you have a working Kubernetes cluster that was deployed using
 
 - The [Linode Cloud Manager](/docs/products/compute/kubernetes/).
 - [Linode's API v4](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/).
-- [Terraform](/docs/products/compute/kubernetes/guides/deploy-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
+- [Terraform](/docs/guides/deploy-lke-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
 
     {{< note >}}
     An LKE cluster will already have Linode's Cloud Controller Manager installed in the cluster's control plane. If you **did not** deploy your Kubernetes cluster using LKE and would like to make use of the Linode Cloud Controller Manager, see [Installing the Linode CCM on an Unmanaged Kubernetes Cluster - A Tutorial](/docs/guides/install-the-linode-ccm-on-unmanaged-kubernetes/).
@@ -153,7 +153,7 @@ This section describes how to set up TLS termination on your Linode NodeBalancer
 
 #### Generating a TLS type Secret
 
-Kubernetes allows you to store sensitive information in a Secret object for use within your cluster. This is useful for storing things like passwords and API tokens. In this section, you will create a Kubernetes secret to store Transport Layer Security (TLS) certificates and keys that you will then use to configure TLS termination on your Linode NodeBalancers.
+Kubernetes lets you store sensitive information in a Secret object for use within your cluster. This is useful for storing things like passwords and API tokens. In this section, you will create a Kubernetes secret to store Transport Layer Security (TLS) certificates and keys that you will then use to configure TLS termination on your Linode NodeBalancers.
 
 In the context of the Linode CCM, Secrets are useful for storing Transport Layer Security (TLS) certificates and keys. The `linode-loadbalancer-tls` annotation requires TLS certificates and keys to be stored as Kubernetes Secrets with the type `tls`. Follow the steps in this section to create a Kubernetes TLS Secret.
 
@@ -236,7 +236,7 @@ metadata:
 
 ### Configuring Session Affinity for Cluster Pods
 
-`kube-proxy` will always attempt to proxy traffic to a random backend Pod. To direct traffic to the same Pod, you can use the `sessionAffinity` mechanism. When set to `clientIP`, `sessionAffinity` will ensure that all traffic from the same IP will be directed to the same Pod. You can add the example lines to a Service configuration file to
+`kube-proxy` will always attempt to proxy traffic to a random back-end Pod. To direct traffic to the same Pod, you can use the `sessionAffinity` mechanism. When set to `clientIP`, `sessionAffinity` will ensure that all traffic from the same IP will be directed to the same Pod. You can add the example lines to a Service configuration file to
 
 ```file
 spec:
@@ -251,7 +251,7 @@ spec:
 
 ## Removing Linode NodeBalancers from your Kubernetes Cluster
 
-To delete a NodeBalancer and the Service that it represents, you can use the Service manifest file you used to create the NodeBalancer. Simply use the `delete` command and supply your file name with the `f` flag:
+To delete a NodeBalancer and the Service that it represents, you can use the Service manifest file you used to create the NodeBalancer. Simply use the `delete` command and supply your filename with the `f` flag:
 
 ```command
 kubectl delete -f example-service.yaml

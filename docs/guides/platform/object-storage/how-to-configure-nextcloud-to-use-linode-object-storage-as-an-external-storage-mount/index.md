@@ -21,7 +21,7 @@ You can configure Nextcloud to enable external storage devices and services, lik
 
 ## Before You Begin
 
-1. Deploy a Nextcloud server instance. You can use the [Linode Nextcloud Marketplace App](/docs/products/tools/marketplace/guides/nextcloud/) for an easy and quick deployment.
+1. Deploy a Nextcloud server instance. You can use the [Linode Nextcloud Marketplace App](/docs/marketplace-docs/guides/nextcloud/) for an easy and quick deployment.
 
 1. [Generate Object Storage access keys](/docs/products/storage/object-storage/guides/access-keys/.
 

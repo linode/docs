@@ -55,7 +55,7 @@ Wazuh features dashboards for exploring the MITRE ATT&CK framework and associate
 
 There are a number of ways to install Wazuh, depending on where you want it to run, what other services you want to use with Wazuh, and the amount of traffic you need to handle:
 
-- Use [our Wazuh Marketplace app](/docs/products/tools/marketplace/guides/wazuh/) for a fast deployment. This option fully deploys in about 15 minutes and requires minimal configuration information.
+- Use [our Wazuh Marketplace app](/docs/marketplace-docs/guides/wazuh/) for a fast deployment. This option fully deploys in about 15 minutes and requires minimal configuration information.
 
 - Using [Wazuh's Quickstart instructions](https://documentation.wazuh.com/current/quickstart.html#installing-wazuh) along with their installation assistant, you can create an all-in-one, single node deployment. This deploys Wazuh on a single server that can monitor up to 100 endpoints.
 

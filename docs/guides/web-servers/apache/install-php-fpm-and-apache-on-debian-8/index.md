@@ -13,6 +13,7 @@ aliases: ['/websites/apache/install-php-fpm-and-apache-on-debian-8/','/web-serve
 external_resources:
  - '[The PHP Homepage](http://php.net/)'
  - '[FastCGI Process Manager](http://php.net/manual/en/install.fpm.configuration.php)'
+deprecated: true
 ---
 
 PHP-FPM is an implementation of the FastCGI protocol for PHP. This guide covers installing PHP-FPM for Apache on Debian 8 (Jessie).

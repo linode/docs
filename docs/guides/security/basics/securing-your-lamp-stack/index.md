@@ -27,7 +27,7 @@ In order to secure a LAMP stack, you need to have a Linux server with the follow
 - MySQL
 - PHP
 
-For a quick an easy way to install a LAMP stack on Linode, check out our guide on [How to Deploy a LAMP Stack with Marketplace Apps](/docs/products/tools/marketplace/guides/lamp-stack/).
+For a quick an easy way to install a LAMP stack on Linode, check out our guide on [How to Deploy a LAMP Stack with Marketplace Apps](/docs/marketplace-docs/guides/lamp-stack/).
 
 Otherwise, you can find instructions on how to manually install a LAMP stack in our guide on [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/). Installation instructions for several other Linux distributions are also accessible from this guide.
 

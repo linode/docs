@@ -14,6 +14,7 @@ external_resources:
  - '[Mumble Wiki](http://wiki.mumble.info/wiki/Main_Page)'
 dedicated_cpu_link: true
 aliases: ['/applications/voip/install-and-configure-mumble-on-debian/']
+deprecated: true
 ---
 
 [Mumble](http://wiki.mumble.info/wiki/Main_Page) is an open-source VoIP client, designed for gamers, that requires a server for all clients to connect to. This guide instructs how to install and configure the Mumble server (also called Murmur) on Debian.

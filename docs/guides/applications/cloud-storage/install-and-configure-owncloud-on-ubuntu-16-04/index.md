@@ -18,6 +18,7 @@ relations:
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/applications/cloud-storage/install-and-configure-owncloud-on-ubuntu-16-04/']
+deprecated: true
 ---
 
 OwnCloud is an open-source, cloud-based, file hosting service you can install on your Linode. OwnCloud offers a quick installation process, works out of the box, and has an extensive library of plugins available. Its cross-platform compatibility means you can access your files from most major operating systems, browsers, and mobile devices.
@@ -25,7 +26,7 @@ OwnCloud is an open-source, cloud-based, file hosting service you can install on
 ![ownCloud](owncloud_ubuntu.jpg)
 
 {{< note >}}
-To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/owncloud/).
+To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/marketplace-docs/guides/owncloud/).
 {{< /note >}}
 
 ## Before You Begin

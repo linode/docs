@@ -88,7 +88,7 @@ The Linode Ansible collection is now installed and ready to deploy and manage Li
 
 ## Configure Ansible
 
-When interfacing with the Linode Ansible collection, it is generally good practice to use variables to securely store sensitive strings like API tokens. This section shows how to securely store and access the [Linode API Access token](/docs/products/tools/api/guides/manage-api-tokens/) (generated in the [Before You Begin](#before-you-begin) section) along with a root password that is assigned to new Linode instances. Both of these are encrypted with [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html).
+When interfacing with the Linode Ansible collection, it is generally good practice to use variables to securely store sensitive strings like API tokens. This section shows how to securely store and access the [Linode API Access token](/docs/products/platform/accounts/guides/manage-api-tokens/) (generated in the [Before You Begin](#before-you-begin) section) along with a root password that is assigned to new Linode instances. Both of these are encrypted with [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html).
 
 ### Create an Ansible Vault Password File
 

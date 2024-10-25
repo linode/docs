@@ -13,7 +13,7 @@ cascade:
 aliases: ['/dns-manager/','/platform/manager/dns-manager/','/networking/dns/dns-manager/','/platform/manager/dns-manager-new-manager/','/networking/dns/dns-manager-overview/','/platform/manager/dns-manager-classic-manager/','/guides/dns-manager/']
 ---
 
-The *Domains* section of the [Cloud Manager](https://cloud.linode.com/domains) is a comprehensive DNS management interface, referred to as the Linode DNS Manager. Within the DNS Manager, you can add your registered domain names and manage DNS records for each of them.
+The *Domains* section of [Cloud Manager](https://cloud.linode.com/domains) is a comprehensive DNS management interface, referred to as the Linode DNS Manager. Within the DNS Manager, you can add your registered domain names and manage DNS records for each of them.
 
 ## High Availability
 
@@ -21,7 +21,7 @@ Linode's DNS service is anycasted to over 250 locations (*PoPs*) around the worl
 
 ## Flexible Configuration
 
-In addition to supporting a wide range of DNS record types, the Linode DNS Manager offers even more flexibility through AXFR transfers and zone types (*primary* and *secondary*). These two features work together so you can create a DNS configuration that works for your own application. Using Linode as the *primary* DNS Manager is the most common option and allows you to manage DNS records directly on the Linode platform. Operating as a *secondary* DNS provider, you can mange your DNS records within other services or tools (like cPanel) but still host them on Linode, taking advantage of the reliability and high availability of our platform.
+In addition to supporting a wide range of DNS record types, the Linode DNS Manager offers even more flexibility through AXFR transfers and zone types (*primary* and *secondary*). These two features work together so you can create a DNS configuration that works for your own application. Using Linode as the *primary* DNS Manager is the most common option and lets you manage DNS records directly on the Linode platform. Operating as a *secondary* DNS provider, you can mange your DNS records within other services or tools (like cPanel) but still host them on Linode, taking advantage of the reliability and high availability of our platform.
 
 ## Pricing and Availability
 

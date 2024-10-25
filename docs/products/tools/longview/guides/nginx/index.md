@@ -14,7 +14,7 @@ relations:
             - distribution: NGINX
 ---
 
-In addition to capturing general system metrics, Longview can also be used to capture metrics for NGINX. The NGINX tab appears in the Cloud Manager when Longview detects that you have NGINX installed on your system. It can help you keep track of NGINX workers, requests, system resource consumption, and other information.
+In addition to capturing general system metrics, Longview can also be used to capture metrics for NGINX. The NGINX tab appears in Cloud Manager when Longview detects that you have NGINX installed on your system. It can help you keep track of NGINX workers, requests, system resource consumption, and other information.
 
 {{< note >}}
 In order to use Longview to capture data for NGIXN, you must have the Longview Agent successfully installed on the system you wish to monitor. See [Create a Longview Client and Install the Longview Agent](/docs/products/tools/longview/get-started/).
@@ -25,7 +25,7 @@ In order to use Longview to capture data for NGIXN, you must have the Longview A
 This guide covers using Longview with NGINX and includes the following topics:
 
 - [Configuring Linode Longview for NGINX](#configure-longview).
-- [Interacting with the NGINX data provided by Longview in the Cloud Manager](#view-metrics).
+- [Interacting with the NGINX data provided by Longview in Cloud Manager](#view-metrics).
 - [Troubleshooting Linode Longview for NGINX](#troubleshooting).
 
 ## Configure Longview for NGINX {#configure-longview}
@@ -82,7 +82,7 @@ If NGINX is installed and running when you install the Longview agent, Longview 
         The automatic configuration sets the status page location to `http://127.0.0.2/nginx_status`.
         {{< /note >}}
 
-1. Refresh Longview in the Cloud Manager to verify that the NGINX tab is now present and collecting data for your Longview client instance.
+1. Refresh Longview in Cloud Manager to verify that the NGINX tab is now present and collecting data for your Longview client instance.
 
     If instead you received a failure message similar to the output example, double-check your NGINX installation and then perform a [manual configuration](#manual-configuration). You can also visit the [Troubleshooting](#troubleshooting) section at the end of this guide.
 
@@ -130,13 +130,13 @@ To enable the NGINX Longview integration manually, follow these steps on your sy
     sudo systemctl restart longview
     ```
 
-1. Refresh Longview in the Cloud Manager to verify that the NGINX tab is now present and collecting data for your Longview client instance.
+1. Refresh Longview in Cloud Manager to verify that the NGINX tab is now present and collecting data for your Longview client instance.
 
 You should now be able to see Longview data for NGINX. If that's not the case, proceed to the [Troubleshooting](#troubleshooting) section at the end of this article.
 
 ## View NGINX Metrics {#view-metrics}
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select the **Longview** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select the **Longview** link in the sidebar.
 
 1. Locate the Longview Client you have configured for NGINX and click the corresponding **View details** link.
 
@@ -214,7 +214,7 @@ To fix this, follow these steps:
     }
     ```
 
-1. Longview is designed to check the default location automatically. If you use the default location shown above, you should be done. Refresh Longview in the Cloud Manager to verify that the NGINX tab is now present and collecting data for your Longview client instance.
+1. Longview is designed to check the default location automatically. If you use the default location shown above, you should be done. Refresh Longview in Cloud Manager to verify that the NGINX tab is now present and collecting data for your Longview client instance.
 
 1. If you're not using the default location, you need to create a new file, `/etc/linode/longview.d/Nginx.conf`, and set the `location` variable to match what you set in the NGINX configuration file:
 
@@ -228,7 +228,7 @@ To fix this, follow these steps:
     sudo systemctl restart nginx
     ```
 
-1. Refresh Longview in the Cloud Manager to verify that the NGINX tab is now present and collecting data for your Longview client instance.
+1. Refresh Longview in Cloud Manager to verify that the NGINX tab is now present and collecting data for your Longview client instance.
 
 {{< note >}}
 If you originally compiled NGINX without the status module, you will need to recompile it with `--with-http_stub_status_module` and all your other settings. Then go back and try to enable the Longview Nginx App.
@@ -261,7 +261,7 @@ To resolve this issue, follow these steps:
     sudo systemctl restart longview
     ```
 
-1. Refresh Longview in the Cloud Manager to verify that the NGINX tab is now present and collecting data for your Longview client instance.
+1. Refresh Longview in Cloud Manager to verify that the NGINX tab is now present and collecting data for your Longview client instance.
 
 ### NGINX Tab is Missing
 

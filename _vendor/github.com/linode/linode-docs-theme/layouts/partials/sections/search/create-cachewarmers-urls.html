@@ -129,7 +129,7 @@
   {{ $targetPath := printf "cachewarmers/sections/%s.json" $name }}
   {{ $targetResource := resources.FromString $targetPath (jsonify .) }}
   {{ if (ne hugo.Environment "development") }}
-    {{ $targetResource = $targetResource | minify | fingerprint }}
+    {{ $targetResource = $targetResource | minify }}
   {{ end }}
   {{ $resourcem = merge $resourcem (dict $k $targetResource.RelPermalink) }}
 {{ end }}
@@ -145,8 +145,27 @@
 {{ $sectionsmetamap := $s.Values }}
 {{ $facets := slice }}
 {{ $configSections := site.Params.search_config2.sections }}
+{{ $staticSections := slice (index $configSections "products") (index $configSections "api") }}
+{{ range $staticSections }}
+  {{/* Moved to Akamai, insert a static link node. */}}
+  {{ $linkURL := .static_link_url }}
+  {{/* count -1 is a magic number indicating a static link. */}}
+  {{ $node := ( dict
+    "key" ""
+    "href" $linkURL
+    "title" .title
+    "linkTitle" .title
+    "icon" .explorer_icon
+    "count" -1
+    "level" 1
+    "weight" .weight
+    )
+  }}
+  {{ $facets = $facets | append $node }}
+{{ end }}
 {{ range $k, $v := $blank.facets }}
   {{ if not (strings.HasPrefix $k "section.") }}
+
     {{ continue }}
   {{ end }}
   {{ $level := add (substr $k -1 | int) 1 }}
@@ -160,10 +179,13 @@
     {{ $node := "" }}
     {{ $section := index $sectionsmetamap $kk }}
     {{ $title := "" }}
+    {{ $linkTitle:= "" }}
     {{ with $section }}
       {{ $title = .title }}
+      {{ $linkTitle = .linkTitle }}
     {{ else }}
       {{ $title = replace $last "-" " " | title }}
+      {{ $linkTitle = $title }}
     {{ end }}
     {{ $sectionsPath := (path.Join $parts) }}
     {{/* Note that this is a mix of Hugo and other sections. We cannot use urlize, because we need to preserve spaces. */}}
@@ -172,10 +194,14 @@
 
     {{ if and (eq $level 1) (index $configSections $kk) }}
       {{ $c :=  (index $configSections $kk) }}
+      {{ if $c.static_link_url }}
+        {{ $href = $c.static_link_url }}
+      {{ end }}
       {{ $node = (dict
         "key" $kk
         "href" $href
         "title" $c.title
+        "linkTitle" $c.linkTitle
         "icon" $c.explorer_icon
         "count" $vv
         "level" $level
@@ -187,6 +213,7 @@
         "key" $kk
         "href" $href
         "title" $title
+        "linkTitle" $linkTitle
         "icon" ""
         "count" $vv
         "level" $level

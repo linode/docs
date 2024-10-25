@@ -1,10 +1,10 @@
 {{ $public := "public" }}
 {{ $githubBasePath := "https://github.com/linode/docs/edit/develop/docs" }}
-{{ if not site.IsServer }}
+{{ if not hugo.IsServer }}
 {{/*  Netlify */}}
 {{ $public = "public/docs" }}
 {{ end }}
-{{ $isTest := or (not (not site.IsServer)) (site.Params.TestEnv) }}
+{{ $isTest := or (not (not hugo.IsServer)) (site.Params.TestEnv) }}
 {{ if not $isTest }}
 {}
 {{ else }}

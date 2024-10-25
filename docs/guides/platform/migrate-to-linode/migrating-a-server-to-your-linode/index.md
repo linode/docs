@@ -14,7 +14,7 @@ deprecated: true
 deprecated_link: '/docs/guides/best-practices-when-migrating-to-linode/'
 ---
 {{< note >}}
-The process for migrating a server image to your Linode will vary depending upon how the image was created. We recommend making an `.iso` file from your existing image, and then following the steps in our updated [custom distribution](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/) guide to deploy it on a Linode. This guide is no longer being maintained, and the procedure outlined here is not recommended for new migrations.
+The process for migrating a server image to your Linode will vary depending upon how the image was created. We recommend making an `.iso` file from your existing image, and then following the steps in our updated [custom distribution](/docs/guides/install-a-custom-distribution/) guide to deploy it on a Linode. This guide is no longer being maintained, and the procedure outlined here is not recommended for new migrations.
 {{< /note >}}
 
 You can migrate an existing server to your Linode from another hosting provider or a local machine. This is a great option if you're moving to Linode from another hosting provider or if you've built a custom server on your local machine. You can even migrate virtualized servers created with products like VirtualBox or VMware. This guide shows you how to prepare the Linode to receive the files, copy the files from the existing server to the Linode, and then make the disks bootable.
@@ -133,7 +133,7 @@ After the network copy is complete and the files from the existing server have b
 
     The entire mounted filesystem will be recursively searched for any instances of your old IP address. Note that this replacement operation can take a while to complete.
 
-3.  You can find your IP information in the Linode Cloud Manger under the **Networking** tab. You'll need your public IP, gateway, and DNS server. On the Linode, open the relevant network configuration files for your distribution and adjust them accordingly.
+3.  You can find your IP information in the Linode Cloud Manager under the **Networking** tab. You'll need your public IP, gateway, and DNS server. On the Linode, open the relevant network configuration files for your distribution and adjust them accordingly.
 
 ### Configuring Mount Points
 

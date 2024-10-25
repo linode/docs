@@ -10,7 +10,7 @@ aliases: ['/platform/block-storage/boot-from-block-storage-volume/','/guides/boo
 image: block-storage-title-graphic.png
 ---
 
-Linode’s Block Storage service allows you to attach additional storage volumes to your Compute Instances. In addition to storing files and media, you can also use a Volume as a boot disk. This can provide a low-cost way to maintain an image that can be quickly attached to a Compute Instance and booted up when needed.
+Linode’s Block Storage service lets you attach additional storage volumes to your Compute Instances. In addition to storing files and media, you can also use a Volume as a boot disk. This can provide a low-cost way to maintain an image that can be quickly attached to a Compute Instance and booted up when needed.
 
 This guide outlines the steps needed to boot your Compute Instance from a Block Storage Volume. These steps include creating a new Volume, copying the primary disk to that new Volume, and configuring the instance to boot from that Volume. The process may be reversed in order to restore the primary disk from the Volume.
 

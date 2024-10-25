@@ -11,6 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/pflogsumm-for-postfix-monitoring-on-centos-6/','/email/postfix/pflogsumm-centos-6/']
 external_resources:
  - '[Pflogsumm](http://jimsun.linxnet.com/postfix_contrib.html)'
+deprecated: true
 ---
 
 ![Header image](Pflogsumm_or_Postfix_Monitoring_on_CentOS_smg.jpg "Pflogsumm for Postfix Monitoring on CentOS 6")

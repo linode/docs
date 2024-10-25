@@ -25,7 +25,7 @@ If, instead, you are ready to start deploying a Nomad cluster now, skip to the [
 
 ### Deploying Nomad from the Linode Marketplace
 
-The most approachable solution for setting up a Nomad instance with Linode is through the Linode Marketplace. There, a Linode instance with Nomad already installed and configured can be quickly set up. To do so, take a look at our guide to [Deploy HashiCorp Nomad through the Linode Marketplace](/docs/products/tools/marketplace/guides/hashicorp-nomad/).
+The most approachable solution for setting up a Nomad instance with Linode is through the Linode Marketplace. There, a Linode instance with Nomad already installed and configured can be quickly set up. To do so, take a look at our guide to [Deploy HashiCorp Nomad through the Linode Marketplace](/docs/marketplace-docs/guides/hashicorp-nomad/).
 
 First, follow along with that guide to get a Nomad instance ready. Then skip to the section [How Nomad Works](/docs/guides/using-nomad-for-orchestration/#how-nomad-works) to become familiar with the new Nomad instance.
 
@@ -246,7 +246,7 @@ The configurations and commands used in this guide add multiple Linode instances
 
 1.  Open the `terraform.tfvars` file, and configure the variables there. Here is a breakdown of the variables and how to set them:
 
-    -   `token` needs your Linode API token. Terraform uses this to provision Linode instances. Follow our [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
+    -   `token` needs your Linode API token. Terraform uses this to provision Linode instances. Follow our [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
 
     -   `ssh_keys` takes a list of SSH public keys. These keys are added to the known hosts on each node, allowing SSH access to the nodes. Enter the full public key for your local machine in one line.
 

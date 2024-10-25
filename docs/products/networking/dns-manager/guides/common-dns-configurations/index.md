@@ -9,8 +9,6 @@ tags: ["dns","networking","cloud manager","linode platform"]
 aliases: ['/networking/dns/common-dns-configurations/','/dns-guides/configuring-dns-with-the-linode-manager/','/networking/dns/common-dns-configurations-classic-manager/','/guides/common-dns-configurations/']
 ---
 
-{{< youtube Vb1JsfZlFLE >}}
-
 ## Set Up a Domain
 
 The most common DNS configuration is a single domain name on a single Linode. For this, you'll need to add *SOA* and *NS records* for all of your name servers, and *A/AAAA* records for your domain names. Use the screenshot below as a guide.
@@ -18,7 +16,7 @@ The most common DNS configuration is a single domain name on a single Linode. Fo
 ![The SOA record is set to "example-site-demo.com". The NS records are set to "ns1.linode.com" through "ns5.linode.com", inclusive. The MX record is set to "mail.example-site-demo.com". There are A records for [blank], which is the primary domain, and the "mail" and "www" subdomains. They are all set to the same IP.](common-dns-set-up-a-domain.png)
 
  {{< note >}}
-The Domains section of the Cloud Manager can automatically add all of these records when you create a domain. For instructions, see the *Add a Domain* section of the [DNS Manager](/docs/products/networking/dns-manager/) guide.
+The Domains section of Cloud Manager can automatically add all of these records when you create a domain. For instructions, see the *Add a Domain* section of the [DNS Manager](/docs/products/networking/dns-manager/) guide.
 {{< /note >}}
 
 ## Configure Subdomains
@@ -41,7 +39,7 @@ The Domains section of the Cloud Manager can automatically add all of these reco
 
 ## Host Multiple Domains on a Single Server
 
-To host multiple domain names on a single server, create a separate domain entry for each domain name as shown below. When creating the new domain entry, we recommend that you allow the Domains section of the Cloud Manager to automatically [insert basic records](/docs/products/networking/dns-manager/guides/create-domain/#pre-populate-dns-records). At a minimum, you'll need an A record for each domain name pointing to the server's IP address.
+To host multiple domain names on a single server, create a separate domain entry for each domain name as shown below. When creating the new domain entry, we recommend that you allow the Domains section of Cloud Manager to automatically [insert basic records](/docs/products/networking/dns-manager/guides/create-domain/#pre-populate-dns-records). At a minimum, you'll need an A record for each domain name pointing to the server's IP address.
 
 ![This page shows the Domains page with three different domain zones listed.](common-dns-multiple-domains-one-server.png)
 

@@ -14,7 +14,7 @@ Dedicated CPU Compute Instances are virtual machines that provide you with dedic
 
 ## Dedicated Competition-Free Resources
 
-A Dedicated CPU Compute Instance provides entire vCPU cores accessible only to you. Because the vCPU cores are not shared, no other Compute Instances can utilize them. Your instance never has to wait for another process, enabling your software to run at peak speed and efficiency. This allows you to run workloads that require full-duty work (100% CPU all day, every day) at peak performance.
+A Dedicated CPU Compute Instance provides entire vCPU cores accessible only to you. Because the vCPU cores are not shared, no other Compute Instances can utilize them. Your instance never has to wait for another process, enabling your software to run at peak speed and efficiency. This lets you run workloads that require full-duty work (100% CPU all day, every day) at peak performance.
 
 ## Upgrading from a Shared CPU Instance
 
@@ -78,9 +78,9 @@ In many cases, the CI/CD pipeline can become resource-intensive if many new code
 
 Depending on the intensity of demands they place on your Linode, [game servers](/docs/game-servers/) may benefit from a Dedicated CPU. Modern multiplayer games need to coordinate with a high number of clients, and require syncing entire game worlds for each player. If CPU resources are not available, then players will experience issues like stuttering and lag. Below is a short list of popular games that may benefit from a Dedicated CPU:
 
-- [Rust](/docs/products/tools/marketplace/guides/rust/)
-- [Minecraft](/docs/products/tools/marketplace/guides/minecraft/)
-- [CS:GO](/docs/products/tools/marketplace/guides/counter-strike-go/)
+- [Rust](/docs/marketplace-docs/guides/rust/)
+- [Minecraft](/docs/marketplace-docs/guides/minecraft/)
+- [CS:GO](/docs/marketplace-docs/guides/counter-strike-go/)
 
 ### Audio and Video Transcoding
 

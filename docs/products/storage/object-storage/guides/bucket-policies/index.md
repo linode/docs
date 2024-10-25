@@ -79,7 +79,7 @@ A policy is applied to Object Storage **resources**, such as buckets and objects
         ]
 
 {{< note type="alert" >}}
-While a resource can target the bucket itself (by removing the `/*` in the first example), this can cause the bucket to become inaccessible to the Cloud Manager, API, and CLI.
+While a resource can target the bucket itself (by removing the `/*` in the first example), this can cause the bucket to become inaccessible to Cloud Manager, API, and CLI.
 {{< /note >}}
 
 ## Bucket Policy Examples

@@ -19,6 +19,7 @@ relations:
             - distribution: Ubuntu 16.04
 tags: ["ubuntu","database","nosql"]
 aliases: ['/databases/mongodb/install-mongodb-on-ubuntu-16-04/']
+deprecated: true
 ---
 
 In this MongoDB tutorial, we explain how to install the database on Ubuntu 16.04, and then provide a short guide on some basic features and functions.
