@@ -42,7 +42,7 @@ Postfix is a widely-used open source SMTP server and is included in most Linux d
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update and secure your system. Make sure to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
     {{< note type="warning" title="Do not enable IPv6" >}}
-    When setting up and securing your Compute Instance, do not enable IPv6. Enabling IPv6 may cause issues later when Certbot attempts to update the Let's Encrypt certificate.
+    When setting up and securing your Compute Instance, do not enable IPv6. Enabling IPv6 may cause issues later when Certbot attempts to [update the Let's Encrypt certificate](#update-lets-encrypt).
     {{< /note >}}
 
     This guide sets up a mail server called `mail.{{< placeholder "example.tld" >}}`. Substitute your own domain name, and configure the `/etc/hosts` file as shown below:
@@ -97,10 +97,10 @@ See our [A and AAAA records](https://techdocs.akamai.com/cloud-computing/docs/a-
 
 1.  **Optional**: Update the [reverse DNS (rDNS)](https://techdocs.akamai.com/cloud-computing/docs/configure-rdns-reverse-dns-on-a-compute-instance#setting-reverse-dns) information to point one of your server’s IP addresses back to your hostname `mail.{{< placeholder "example.tld" >}}`:
 
-    -   Click on the **Linodes** tab of the main dashboard.
-    -   Select your Linode.
-    -   Select the **Network** tab.
-    -   In the **IP Addresses** section, set rDNS for your preferred IP address using the **Edit RDNS** option. Each rDNS setting creates a pointer (PTR) record that associates an IP address with a hostname.
+    1.  Click on the **Linodes** tab of the main dashboard.
+    1.  Select your Linode.
+    1.  Select the **Network** tab.
+    1.  In the **IP Addresses** section, set rDNS for your preferred IP address using the **Edit RDNS** option. Each rDNS setting creates a pointer (PTR) record that associates an IP address with a hostname.
 
 1.  Verify your DNS records are functioning by using the `dig` utility to validate each record. Below are example commands you can use to verify **A**, **AAAA**, **MX**, and **PTR** records exist for the server. Note that DNS propagation may take up to 24 hours:
 
