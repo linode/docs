@@ -38,7 +38,7 @@ This guide walks through the process of migrating an Azure function to a Knative
 
 1.  Install the Linode CLI using the instructions in our [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
 
-1.  Follow the instruction in our [Installing and Using NVM (Node Version Manager)](https://www.linode.com/docs/guides/how-to-install-use-node-version-manager-nvm/) guide to install NVM and the latest Long Term Support (LTS) release of Node.
+1.  Follow the instruction in our [Installing and Using NVM (Node Version Manager)](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide to install NVM and the latest Long Term Support (LTS) release of Node.
 
 1.  Ensure that you have Knative's [`func` CLI](https://knative.dev/docs/functions/install-func/) installed.
 
@@ -458,11 +458,11 @@ This displays help information for managing Knative function resources:
 ```output
 func is the command line interface for managing Knative Function resources
 
-	Create a new Node.js function in the current directory:
-	func create --language node myfunction
+    Create a new Node.js function in the current directory:
+    func create --language node myfunction
 
-	Deploy the function using Docker hub to host the image:
-	func deploy --registry docker.io/alice
+    Deploy the function using Docker hub to host the image:
+    func deploy --registry docker.io/alice
 
 Learn more about Functions:  https://knative.dev/docs/functions/
 Learn more about Knative at: https://knative.dev
