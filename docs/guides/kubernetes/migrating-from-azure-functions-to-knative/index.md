@@ -1141,9 +1141,7 @@ When you create a TypeScript Knative function, Knative generates skeletons for a
     npx tsc
     ```
 
-    This should create a `build` sub-directory containing an `index.js` file:
-
-1.  Use `tree` to verify that the `build` sub-directory and `index.js` file exist:
+1.  This should create a `build` sub-directory containing an `index.js` file. Use `tree` to verify that the `build` sub-directory and `index.js` file exist:
 
     ```command
     tree ~/get-emojis-ts -L 2 -I 'node_modules'
