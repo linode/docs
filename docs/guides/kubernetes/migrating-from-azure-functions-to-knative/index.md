@@ -1129,12 +1129,6 @@ When you create a TypeScript Knative function, Knative generates skeletons for a
     });
     ```
 
-1.  Install the necessary packages:
-
-    ```command
-    npm install tape tsd faas-js-runtime
-    ```
-
 1.  From within the `get-emojis-ts` directory, use `npx` to build the TypeScript code:
 
     ```command
