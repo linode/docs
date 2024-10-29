@@ -584,7 +584,7 @@ The [`func`](https://github.com/knative/func) CLI streamlines the developer expe
 
 ### Build a Function Image
 
-The next step is to create a container image from your function. Since the function is intended run on a Kubernetes cluster, it must be containerized. Knative Functions facilitates this process for developers, abstracting the complexities of Docker and Dockerfiles.
+The next step is to create a container image from your function. Since the function is intended to run on a Kubernetes cluster, it must be containerized. Knative Functions facilitates this process for developers, abstracting the complexities of Docker and Dockerfiles.
 
 1.  Navigate into the `~/get-emojis` directory:
 

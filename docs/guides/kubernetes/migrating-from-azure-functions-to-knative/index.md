@@ -2,8 +2,8 @@
 slug: migrating-from-azure-functions-to-knative
 title: "Migrating From Azure Functions to Knative"
 description: "Learn how to migrate Azure Functions to Knative with step-by-step instructions, code examples, and best practices for seamless deployment on Kubernetes."
-authors: ["Linode"]
-contributors: ["Linode"]
+authors: ["Akamai"]
+contributors: ["Akamai"]
 published: 2024-10-22
 keywords: ['azure','knative','migration','typescript','azure alternative','open source serverless','azure migration','typescript knative functions']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -23,7 +23,7 @@ external_resources:
 Knative is an open source platform that extends Kubernetes to manage serverless workloads. It provides tools to deploy, run, and manage serverless applications and functions, enabling automatic scaling and efficient resource utilization. Knative consists of several components:
 
 -   **Serving**: Deploys and runs serverless containers.
--   **Eventing**: Managing event-driven architectures.
+-   **Eventing**: Manages event-driven architectures.
 -   **Functions**: Deploys and runs functions locally and on Kubernetes.
 
 This guide walks through the process of migrating an Azure function to a Knative function running on Linode Kubernetes Engine (LKE).
@@ -38,7 +38,7 @@ This guide walks through the process of migrating an Azure function to a Knative
 
 1.  Install the Linode CLI using the instructions in our [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
 
-1.  Follow the instruction in our [Installing and Using NVM (Node Version Manager)](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide to install NVM and the latest Long Term Support (LTS) release of Node.
+1.  Follow the instructions in our [Installing and Using NVM (Node Version Manager)](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide to install NVM and the latest Long Term Support (LTS) release of Node.
 
 1.  Ensure that you have Knative's [`func` CLI](https://knative.dev/docs/functions/install-func/) installed.
 
@@ -97,8 +97,6 @@ While there are several ways to create a Kubernetes cluster on Linode, this guid
     ```command
     linode linodes types
     ```
-
-    This outputs information on different Linode plans, including pricing and performance details.
 
 1.  The examples in this guide use the **g6-standard-2** Linode, which features two CPU cores and 4 GB of memory. Run the following command to display detailed information in JSON for this Linode plan:
 
@@ -239,6 +237,8 @@ To access your Kubernetes cluster, fetch the cluster credentials in the form of 
     ```command
     export KUBECONFIG=~/.kube/lke-config
     ```
+
+    Then run:
 
     ```command
     kubectl get no
@@ -593,7 +593,7 @@ The next step is to create a container image from your function. Since the funct
     cd ~/get-emojis-ts
     ```
 
-1.  To build your function, run the `build` command while in the `~/get-emojis-ts` directory, specifying Docker Hub (`docker.io`) as the along with your {{< placeholder "DOCKER_HUB_USERNAME" >}}.
+1.  To build your function, run the `build` command while in the `~/get-emojis-ts` directory, specifying Docker Hub (`docker.io`) as the registry along with your {{< placeholder "DOCKER_HUB_USERNAME" >}}.
 
     ```command
     func build --registry docker.io/{{< placeholder "DOCKER_HUB_USERNAME" >}}
@@ -697,7 +697,7 @@ With your Knative function accessible through a public HTTP endpoint, the next s
 
 ## Migrate Azure Functions to Knative
 
-This guide examines a sample Azure function and walks through how to migrate it to Knative. Azure functions are similar to Knative functions. They both have a trigger and extract their input arguments from a context, event, or HTTP request.
+This guide examines a sample Azure function and walks through how to migrate it to Knative. Azure functions are similar to Knative functions - both have a trigger and extract their input arguments from a context, event, or HTTP request.
 
 The main application logic is highlighted in the example Azure function below:
 
@@ -749,11 +749,11 @@ spectacles: (glasses,👓)
 flame: (fire,🔥)
 ```
 
-The function successfully returns the "fire" (🔥) emoji for the description "flame" and the "glasses" emoji (👓) for the description "spectacles." This makes it easier to find emojis for users who can't remember the official emoji names.
+The function successfully returns the "fire" (🔥) emoji for the description "flame" and the "glasses" emoji (👓) for the description "spectacles."
 
 ### Isolating the Azure Function Code from Azure Specifics
 
-To migrate the Azure function to Knative, the core application logic must be decoupled from Azure-specific dependencies. In this case, the work for this is already done, since the interface for the `getEmojis()` method accepts a TypeScript array of strings as descriptions.
+To migrate the Azure function to Knative, the core application logic must be decoupled from Azure-specific dependencies. In this scenario, this is already done since the interface for the `getEmojis()` method accepts a TypeScript array of strings as descriptions.
 
 If the `getEmojis()` method accessed Azure Blob Storage to fetch synonyms, it would not be compatible with Knative and would require some refactoring.
 
@@ -836,7 +836,7 @@ The core logic of the function is encapsulated into a single TypeScript file cal
 
     When complete, save your changes.
 
-1.  Use the `tree` command on the `~/get-emojis-ts` directory to confirm the new folder structure:
+1.  Run the `tree` command on the `~/get-emojis-ts` directory to confirm the new folder structure:
 
     ```command
     tree ~/get-emojis-ts -L 2 -I 'node_modules'
@@ -1107,7 +1107,7 @@ When you create a TypeScript Knative function, Knative generates skeletons for a
     });
     ```
 
-1.  Now open the `unit.ts` file in the `get-emojis-ts/test` directory:
+1.  Open the `unit.ts` file in the `get-emojis-ts/test` directory:
 
     ```command
     nano ~/get-emojis-ts/test/unit.ts
@@ -1216,4 +1216,4 @@ After local testing, you may want to optimize the function's image size by remov
 
 If your function interacts with external services or the Kubernetes API server, you should *"mock"* these dependencies. Mocking, or simulating external services or components that a function interacts with, allows you to isolate a specific function or piece of code to ensure it behaves correctly.
 
-See **More Information** below for resources to help you get started with migrating Azure functions to Knative functions on the Linode Kubernetes Engine (LKE).
+See **More Information** below for resources to help you get started with migrating Azure functions to Knative functions on Linode Kubernetes Engine (LKE).
