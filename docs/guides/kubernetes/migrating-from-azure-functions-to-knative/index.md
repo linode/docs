@@ -989,7 +989,7 @@ The core logic of the function is encapsulated into a single TypeScript file cal
 1.  To invoke your Knative function, open a web browser and visit to your function's URL with some descriptions added. For example:
 
     ```command
-    `http://get-emojis-ts.default.{{< placeholder "EXTERNAL_IP_ADDRESS" >}}.sslip.io?descriptions=flame,hound,pol`
+    http://get-emojis-ts.default.{{< placeholder "EXTERNAL_IP_ADDRESS" >}}.sslip.io?descriptions=flame,hound,pol
     ```
 
     The `descriptions` provided as a query parameter are echoed back, along with a corresponding emoji name and emoji for each description:
@@ -1088,25 +1088,18 @@ When you create a TypeScript Knative function, Knative generates skeletons for a
     };
 
     test('Integration: handles a valid request with query parameter', (t) => {
-      const expected = [['fire', '🔥'], ['dog', '🐕']]; // Adjusted expected response
+      const expected = [['fire', '🔥'], ['dog', '🐕']];
       start(func.handle, {} as InvokerOptions).then((server) => {
         t.plan(3);
         request(server)
           .post('/')
-          .query({ descriptions: 'fire,dog' }) // Adjust query to match expected keys
+          .query({ descriptions: 'fire,dog' }) // Add the query parameter here
           .expect(200)
           .expect('Content-Type', /json/)
           .end((err, result) => {
-            t.error(err, 'No error'); // Test that there is no error
-            t.ok(result.body, 'Response should be truthy'); // Ensure the body exists
-
-            // Use t.deepEqual to compare nested arrays properly
-            t.deepEqual(
-              result.body,
-              expected,
-              'Response matches the expected structure'
-            );
-
+            t.error(err, 'No error');
+            t.ok(result.body, 'Response should be truthy');
+            t.deepEqual(result.body, expected, 'Response matches the expected structure');
             t.end();
             server.close();
           });
@@ -1124,7 +1117,7 @@ When you create a TypeScript Knative function, Knative generates skeletons for a
 
     ```file {title="~/get-emojis-ts/test/unit.ts"}
     import test from 'tape';
-    import { FuzzEmoji } from '../src/fuzz-emoji'; // Ensure the correct path
+    import { FuzzEmoji } from '../src/fuzz-emoji';
 
     const fuzzer = new FuzzEmoji();
 
@@ -1139,7 +1132,7 @@ When you create a TypeScript Knative function, Knative generates skeletons for a
 1.  Install the necessary packages:
 
     ```command
-    npm install tape tsd faas-js-runtim
+    npm install tape tsd faas-js-runtime
     ```
 
 1.  From within the `get-emojis-ts` directory, use `npx` to build the TypeScript code:
