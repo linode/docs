@@ -7,7 +7,7 @@ og_description: "In this guide you will create a private Docker registry on Lino
 authors: ["Leslie Salazar"]
 contributors: ["Leslie Salazar"]
 published: 2020-03-26
-modified: 2023-07-26
+modified: 2024-10-30
 keywords: ['docker registry','kubernetes','object storage', 'lke', 'linode kubernetes engine']
 tags: ["docker","kubernetes","container","nginx","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -361,8 +361,12 @@ If you have not yet [generated an Object Storage key pair](/docs/products/storag
       secure: true
       bucket: registry
     ```
-    {{< note >}}
-    To ensure that all the layers are uploaded when you push the image to your Docker registry, set the value of  the `multipartcopythresholdsize` in the docker-configs.yaml file as follows:
+
+    {{< note title="Multipart uploads" >}}
+    If you require multipart uploading when pushing to your Docker registry, you can set and increase the threshold of the `multipartcopythresholdsize` value using an additional `configData` parameter in your `docker-configs.yaml` file.
+
+    The example below sets the threshold size to 5GB (5368709120 bytes):
+
     ```
     configData:
       storage:
@@ -370,6 +374,7 @@ If you have not yet [generated an Object Storage key pair](/docs/products/storag
           multipartcopythresholdsize: 5368709120
     ```
     {{< /note >}}
+
     - The NGINX Ingress annotation `nginx.ingress.kubernetes.io/proxy-body-size: "0"` disables a [maximum allowed size client request body](http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size) check and ensures that you won't receive a `413` error when pushing larger Docker images to your registry. The values for `nginx.ingress.kubernetes.io/proxy-read-timeout: "6000"` and `nginx.ingress.kubernetes.io/proxy-send-timeout: "6000"` are sane values to begin with, but [may be adjusted as needed](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#custom-timeouts).
 
 1.  Deploy your Docker registry using the configurations you created in the previous step:
