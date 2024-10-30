@@ -1,16 +1,15 @@
 ---
 slug: nomad-alongside-kubernetes
+title: "How to Use Nomad Alongside Kubernetes"
 description: "Nomad and Kubernetes each offer distinct and compelling approaches to workload orchestration. And it is possible to use these two tools together to better manage your diverse orchestration needs. Learn more about the use cases and how to implement the setup in this tutorial."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-02-20
 keywords: ['nomad on kubernetes','nomad kubernetes driver','nomad orchestration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-02-20
-modified_by:
-  name: Nathaniel Stickman
-title: "How to Use Nomad Alongside Kubernetes"
 external_resources:
 - '[HashiCorp Developer: Nomad - Supplement to Kubernetes](https://developer.hashicorp.com/nomad/docs/nomad-vs-kubernetes/supplement)'
 - '[GitHub: kelseyhightower/nomad-on-kubernetes - Tutorial on Running Nomad on Kubernetes](https://github.com/kelseyhightower/nomad-on-kubernetes)'
-authors: ["Nathaniel Stickman"]
 ---
 
 Kubernetes and Nomad are both orchestration tools that each come with a compelling set of features. Despite some overlap, each tool has unique strengths and a favorable set of use cases.

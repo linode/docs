@@ -1,17 +1,16 @@
 ---
 slug: set-up-mongodb-on-docker
+title: "Set Up MongoDB on Docker"
+title_meta: "How to Set Up MongoDB on Docker"
 description: 'A guide with examples explaining how to install MongoDB on a Docker container utilizing the MongoDB Docker Hub image.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2021-08-27
 keywords: ["docker", "mongodb", "mongodb container", "docker mongodb container", "install mongodb docker", "configure mongodb docker"]
 tags: ["container","docker","mongodb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-27
-modified_by:
-  name: Linode
-title: "Set Up MongoDB on Docker"
-title_meta: "How to Set Up MongoDB on Docker"
 external_resources:
 - '[MongoDB on Docker Hub](https://hub.docker.com/_/mongo/)'
-authors: ["Linode"]
 ---
 MongoDB is an open-source NoSQL database utilizing JSON-like documents and schemata that support rapid iterative development. Its scale-out architecture is popular with application developers who use agile methodologies to move quickly. As it's popular within the agile community, using MongoDB with Docker is an excellent approach for a *continuous integration and development* (CI/CD) workflow.
 
@@ -25,7 +24,7 @@ This guide assumes you are comfortable with the *command-line interface* (CLI) o
 
 #### Docker Marketplace App
 
-You can quickly set up a secure, updated Linode with the Docker Marketplace App. For instructions, see our guide on [How to Deploy Docker with Marketplace Apps](/docs/products/tools/marketplace/guides/docker/). For the purposes of this guide, we recommend deploying the Docker Marketplace App with the [Docker Options](/docs/products/tools/marketplace/guides/docker/#docker-options):
+You can quickly set up a secure, updated Linode with the Docker Marketplace App. For instructions, see our guide on [How to Deploy Docker with Marketplace Apps](/docs/marketplace-docs/guides/docker/). For the purposes of this guide, we recommend deploying the Docker Marketplace App with the [Docker Options](/docs/marketplace-docs/guides/docker/#docker-options):
 
 - The limited sudo user to be created for the Linode
 - The password for the limited sudo user
@@ -52,7 +51,7 @@ You can expect an output similar to the following:
 Docker version 20.10.8, build 3967b7d
 {{< /output >}}
 
-{{< content "limited-user-note-shortguide" >}}
+{{% content "limited-user-note-shortguide" %}}
 
 ## How to Install a MongoDB Docker Container
 

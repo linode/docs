@@ -1,13 +1,9 @@
 ---
-slug: netplan
 title: "Network Configuration Using Netplan"
 description: "Learn how to manually configure your Compute Instance’s networking using the netplan utility on Ubuntu 18.04 and newer."
+published: 2023-09-12
 keywords: ['netplan','network configuration','ip address']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Linode","Nathaniel Stickman"]
-published: 2023-09-12
-modified_by:
-  name: Linode
 external_resources:
 - '[Netplan Documentation](https://netplan.readthedocs.io/en/stable/)'
 ---
@@ -65,7 +61,7 @@ Learn more about the full extent of Netplan's YAML configuration options in the 
 
 ## Configuring IP Addresses Manually
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com/), and review your Compute Instance's IP addresses. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) for assistance. Make a note of the following pieces of information or keep this page accessible so you can reference it later.
+1.  Log in to [Cloud Manager](https://cloud.linode.com/), and review your Compute Instance's IP addresses. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) for assistance. Make a note of the following pieces of information or keep this page accessible so you can reference it later.
 
     -   Public IPv4 address(es) and the associated IPv4 gateway
 
@@ -77,7 +73,7 @@ Learn more about the full extent of Netplan's YAML configuration options in the 
 
     -   DNS resolvers (if you want to use Linode's resolvers)
 
-1.  Disable Network Helper on the Compute Instance so that it doesn't overwrite any of your changes on the next system reboot. For instructions, see the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#single-per-linode) guide. This guide covers disabling Network Helper *globally* (for all Compute Instances on your account) or just for a single instance.
+1.  Disable Network Helper on the Compute Instance so that it doesn't overwrite any of your changes on the next system reboot. For instructions, see the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#individual-compute-instance-setting) guide. This guide covers disabling Network Helper *globally* (for all Compute Instances on your account) or just for a single instance.
 
 1.  Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). You may want to consider using Lish to avoid getting locked out in the case of a configuration error.
 
@@ -93,7 +89,7 @@ Learn more about the full extent of Netplan's YAML configuration options in the 
     sudo nano /etc/netplan/01-netcfg.yaml
     ```
 
-1.  Once you've edited the configuration file to fit your needs, you need to generate matching backend configurations and apply the changes. To do so, run the follow Netplan commands:
+1.  Once you've edited the configuration file to fit your needs, you need to generate matching back-end configurations and apply the changes. To do so, run the follow Netplan commands:
 
     ```command
     sudo netplan generate
@@ -141,7 +137,7 @@ The default Netplan configuration file shows how to enable DHCP on an interface.
 ```
 
 {{< note type="warning" >}}
-When using DHCP, the IPv4 address configured on your system may change if you add or remove IPv4 addresses on this instance from the Cloud Manager, Linode CLI, or Linode API. If this happens, any tool or system using the original IPv4 address is no longer able to connect.
+When using DHCP, the IPv4 address configured on your system may change if you add or remove IPv4 addresses on this instance from Cloud Manager, Linode CLI, or Linode API. If this happens, any tool or system using the original IPv4 address is no longer able to connect.
 {{< /note >}}
 
 ## Configuring Additional IPv4 Addresses

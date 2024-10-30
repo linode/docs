@@ -1,19 +1,17 @@
 ---
 slug: use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8
+title: Use Varnish & NGINX to Serve WordPress over SSL & HTTP on Debian 8
 description: 'Learn to integrate Varnish with nginx to serve cached WordPress content for both SSL and plain HTTP websites.'
+authors: ["Frederick Jost Zweig"]
+contributors: ["Frederick Jost Zweig"]
+published: 2016-11-23
 keywords: ["Varnish", "cache", "Nginx", "WordPress", "SSL", "PHP-FPM"]
 tags: ["wordpress", "ssl", "nginx"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-published: 2016-11-23
-modified: 2016-11-23
-modified_by:
-    name: Nick Brewer
-title: Use Varnish & NGINX to Serve WordPress over SSL & HTTP on Debian 8
 external_resources:
  - '[Varnish Documentation](https://varnish-cache.org/docs/index.html)'
  - '[NGINX Documentation](https://nginx.org/en/docs/)'
 aliases: ['/websites/varnish/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8/']
-authors: ["Frederick Jost Zweig"]
 ---
 
 ![Use Varnish & NGINX to Serve WordPress over SSL & HTTP on Debian 8](varnish-nginx-wordpress-ssl-http-debian.png "Use Varnish & NGINX to Serve WordPress over SSL & HTTP on Debian 8")
@@ -588,6 +586,6 @@ wget -SS --no-check-certificate https://www.example-over-https.com
 
 By using nginx in conjunction with Varnish, the speed of any WordPress website can be drastically improved while making best use of your hardware resources.
 
-You can strengthen the security of the SSL connection by generating a [custom Diffie-Hellman (DH) parameter](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/#create-a-custom-diffie-hellman-key-exchange), for a more secure cryptographic key exchange process.
+You can strengthen the security of the SSL connection by generating a custom Diffie-Hellman (DH) parameter, for a more secure cryptographic key exchange process.
 
 An additional configuration option is to enable Varnish logging for the plain HTTP website, since now Varnish will be the first to receive the client requests, while NGINX only receives requests for those pages that are not found in the cache. For SSL-encrypted websites, the logging should be done by NGINX because client requests pass through it first. Logging becomes even more important if you use log monitoring software such as [Fail2ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/), Awstats or Webalizer.

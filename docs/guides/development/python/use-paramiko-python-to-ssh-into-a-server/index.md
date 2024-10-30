@@ -1,18 +1,17 @@
 ---
 slug: use-paramiko-python-to-ssh-into-a-server
+title: "Use Paramiko and Python to SSH into a Server"
+title_meta: "How to Use Paramiko and Python to SSH into a Server"
 description: 'This guide shows how you can use the Python module Paramiko, an app that uses the SSHv2 protocol to connect to remote servers, to connect to a server remotely.'
+authors: ["Cameron Laird"]
+contributors: ["Cameron Laird"]
+published: 2021-08-13
 keywords: ['paramiko python']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-13
 image: HowtoUseParamikoandPythontoSSHintoaServer.jpg
-modified_by:
-  name: Linode
-title: "Use Paramiko and Python to SSH into a Server"
-title_meta: "How to Use Paramiko and Python to SSH into a Server"
 external_resources:
 - '[Paramiko GitHub](https://github.com/paramiko/paramiko)'
-authors: ["Cameron Laird"]
 ---
 
 When your Python program needs to run an external password-dependent program, or access a remote server, use [*Paramiko*](https://github.com/paramiko/paramiko). Paramiko is a Python module that implements the [SSHv2](https://datatracker.ietf.org/doc/html/rfc4253) protocol. Paramiko is not part of Python’s standard library, although it’s widely used. This guide shows you how to use Paramiko in your Python scripts to authenticate to a server using a password and SSH keys.
@@ -28,8 +27,7 @@ When your Python program needs to run an external password-dependent program, or
 You must install Paramiko on your system before being able to use it in your Python programs. Use the command below to install Paramiko with Pip:
 
     pip install paramiko
-
-{{< note respectIndent=false >}}
+{{< note >}}
 If you are not familiar with Pip or do not have it installed on your system, see our [How to Manage Python Packages and Virtual Environments on Linux](/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/#how-pip-works) guide.
 {{< /note >}}
 
@@ -39,7 +37,7 @@ If your system is [configured to use Anaconda](/docs/guides/how-to-install-anaco
 
 ## A Paramiko SSH Example: Connect to Your Server Using a Password
 
-This section shows you how to authenticate to a remote server with a username and password. To begin, create a new file named `first_experiment.py` and add the contents of the example file. Ensure that you update the file with your own Linode's details. Replace the values for `YOUR_IP_ADDRESS`, `YOUR_LIMITED_USER_ACCOUNT`, and `YOUR_PASSWORD`. Use the [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) guide, if needed.
+This section shows you how to authenticate to a remote server with a username and password. To begin, create a new file named `first_experiment.py` and add the contents of the example file. Ensure that you update the file with your own Linode's details. Replace the values for `YOUR_IP_ADDRESS`, `YOUR_LIMITED_USER_ACCOUNT`, and `YOUR_PASSWORD`. Use the [Find Your Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide, if needed.
 
 {{< file "password_login.py" >}}
 import paramiko

@@ -1,21 +1,20 @@
 ---
 slug: how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform
+title: "Provision Unmanaged Kubernetes Cluster using Terraform"
+title_meta: "Provision an Unmanaged Kubernetes Cluster using Terraform"
 description: 'How to use kubectl, Terraform, and the Linode Terraform K8s module to create and configure Terraform configuration files and deploy a Kubernetes cluster.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-03-03
+modified: 2021-03-11
 keywords: ['terraform','kubernetes','orchestration','containers','k8s','kubectl','Kubernetes Terraform installer for Linode Instances','terraform-linode-k8s']
 tags: ["kubernetes", "terraform", "container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-03-03
 image: UnmanagedKubernetesCluster_Terraform.png
-modified: 2021-03-11
-modified_by:
-  name: Linode
-title: "Provision Unmanaged Kubernetes Cluster using Terraform"
-title_meta: "Provision an Unmanaged Kubernetes Cluster using Terraform"
 external_resources:
 - '[Kubernetes Terraform installer for Linode Instances](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2)'
 aliases: ['/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/']
 deprecated: true
-authors: ["Linode"]
 ---
 
 [Terraform](https://www.terraform.io/), the orchestration tool by [HashiCorp](https://www.hashicorp.com/), can be used to deploy a Kubernetes cluster on Linode. [Linode's Terraform K8s module](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2) creates a Kubernetes(K8s) cluster running on Ubuntu, and simplifies many of the steps involved in deploying a Kubernetes cluster with [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/). After creating master and worker nodes, the module connects over SSH to these instances and installs kubeadm, [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), and other Kubernetes binaries to the `/opt/bin` directory. It also initializes kubeadm, joins the worker nodes to the master, and configures kubectl to control the cluster. Calico is installed for the container networking interface of the cluster. A kubectl config file is installed to the local environment which connects to the API server of the cluster.
@@ -73,7 +72,7 @@ Then, reinitialize `~/.bashrc` file for the changes to take effect.
 
 ### Install kubectl
 
-{{< content "how-to-install-kubectl" >}}
+{{% content "how-to-install-kubectl" %}}
 
 ### SSH Agent
 
@@ -89,7 +88,7 @@ By default, Terraform uses the SSH agent of the operating system to connect to a
 Agent pid 11308
    {{</ output >}}
 
-2. Add the SSH keys to the agent. For more information, see [creating an authentication key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair). This command adds keys from the default location, `~/.ssh/`
+2. Add the SSH keys to the agent. For more information, see [creating an authentication key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#upload-ssh-key). This command adds keys from the default location, `~/.ssh/`
 
         ssh-add
 

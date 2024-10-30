@@ -2,9 +2,9 @@
 title: Resources
 title_meta: "Resources for Managing Linode Accounts"
 description: "Resources and other information related to Linode accounts including blog posts, community posts, and customer stories."
+published: 2022-11-21
 tab_group_main:
     weight: 40
-published: 2022-11-21
 ---
 
 ## Blog Posts
@@ -21,6 +21,6 @@ published: 2022-11-21
 
 - [How do I manage multiple accounts with the Linode CLI?](https://www.linode.com/community/questions/20161/how-do-i-manage-multiple-accounts-with-the-linode-cli)
 
-- [How do I re-generate 2FA backup codes for logging into cloud.linode.com?](https://www.linode.com/community/questions/21086/how-do-i-re-generate-2fa-backup-codes-for-logging-into-cloudlinodecom)
+- [How do I re-generate 2FA backup codes for logging in to cloud.linode.com?](https://www.linode.com/community/questions/21086/how-do-i-re-generate-2fa-backup-codes-for-logging-into-cloudlinodecom)
 
 - [Yubikey as 2FA option for Manager?](https://www.linode.com/community/questions/17374/yubikey-as-2fa-option-for-manager)

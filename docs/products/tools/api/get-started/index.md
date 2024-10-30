@@ -2,15 +2,15 @@
 title: Get Started
 title_meta: "Getting Started with the Linode API"
 description: "Get started with the Linode API. Learn to get an access token, create an API token, authenticate requests, get configuration parameters, and build the final query."
-tab_group_main:
-    weight: 20
 published: 2020-09-11
 modified: 2022-12-06
+tab_group_main:
+    weight: 20
 aliases: ['/products/tools/linode-api/get-started/','/platform/api/getting-started-with-the-linode-api-classic-manager/','/platform/api/getting-started-with-the-linode-api-new-manager/','/platform/api/getting-started-with-the-linode-api/','/guides/getting-started-with-the-linode-api/','/products/tools/linode-api/guides/build-final-query/','/products/tools/linode-api/guides/get-config-parameters/']
 tags: ["managed hosting"]
 ---
 
-The Linode API allows you to automate any task that can be performed by the Cloud Manager. This includes creating and managing all of our products (like Compute Instances and Firewalls), your customer account (like adding new users or viewing invoices), and even creating support tickets. As an example of an API call, the command below deploys a new 2GB Compute Instance in the Newark data center using the Debian 11 image.
+The Linode API lets you automate any task that can be performed by Cloud Manager. This includes creating and managing all of our products (like Compute Instances and Firewalls), your customer account (like adding new users or viewing invoices), and even creating support tickets. As an example of an API call, the command below deploys a new 2GB Compute Instance in the Newark data center using the Debian 11 image.
 
 ```command
 curl -X POST https://api.linode.com/v4/linode/instances \
@@ -38,9 +38,9 @@ Authorization for the Linode API is handled through personal access tokens. Pers
 If you are building an application which needs to authenticate multiple users (for example, a custom interface to Linode's infrastructure for your organization), you can set up an [OAuth authentication flow](/docs/api/#oauth) to generate tokens for each user.
 {{< /note >}}
 
-For full instructions on creating and managing personal access tokens, see [Manage Personal Access Tokens](/docs/products/tools/api/guides/manage-api-tokens/#create-an-api-token).
+For full instructions on creating and managing personal access tokens, see [Manage Personal Access Tokens](/docs/products/platform/accounts/guides/manage-api-tokens/#create-an-api-token).
 
-1. Log in to the Cloud Manager.
+1. Log in to Cloud Manager.
 
 1. Click on your username at the top of the screen and select **My Profile**.
 
@@ -48,7 +48,7 @@ For full instructions on creating and managing personal access tokens, see [Mana
 
 1. Click on **Create Personal Access Token** and choose the access rights you want users authenticated with the new token to have.
 
-1. When you have finished, click **Create** to generate an API token string. Copy the token and save it in a secure location. **You will not be able to view the token through the Cloud Manager after closing the popup.**
+1. When you have finished, click **Create** to generate an API token string. Copy the token and save it in a secure location. **You will not be able to view the token through Cloud Manager after closing the popup.**
 
 ## Authenticate Requests
 

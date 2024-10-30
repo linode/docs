@@ -1,6 +1,6 @@
 'use strict';
 
-import { isDesktop, isMobile } from '../helpers/index';
+import { isDesktop, isMobile } from '../helpers/helpers';
 
 var debug = 0 ? console.log.bind(console, '[toc]') : function () {};
 var devMode = false;
@@ -19,13 +19,14 @@ export function newToCController(
 		level2Only: false,
 		setProgress: true,
 		desktopOnly: false,
-	}
+	},
 ) {
 	return {
 		activeHeading: {
 			title: '',
 			progress: 0,
 		},
+		destroyed: false,
 		enabled: false,
 		showHeading: true,
 		opts: opts,
@@ -43,7 +44,6 @@ export function newToCController(
 				this.headerEls = () => document.querySelectorAll('#main__content h2, #main__content h3');
 			}
 
-			this.createTOC();
 			if (devMode) {
 				this.$store.nav.open.toc = true;
 			}
@@ -52,7 +52,17 @@ export function newToCController(
 				this.createTOC();
 			});
 		},
+		destroy: function () {
+			// This gets called when the component is destroyed (typically on nvigation to a new page).
+			this.destroyed = true;
+		},
+
 		createTOC: function () {
+			// There are some rare situasion (e.g. if a user clicks repeadedly really fast on a given link in the explorer),
+			// then createToC can be called on a destroyed component. This check prevents that.
+			if (this.destroyed) {
+				return;
+			}
 			let self = this;
 			self.activeHeading.title = '';
 			let ol = this.$refs.ol;

@@ -1,20 +1,19 @@
 ---
 title: "Use Cases for Managed Databases"
-description: "Learn about the many benefits and use cases for Managed Databaes, including disaster recover, cost reduction, and rapid deployment."
-authors: ["Linode"]
+description: "Learn about the many benefits and use cases for Managed Database, including disaster recover, cost reduction, and rapid deployment."
 ---
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}
 
 Managed Databases is Linode's own Database-as-a-Service (DBaaS) platform. These types of database services allow organizations to offload their database infrastructure and management so they can focus on their own applications and services. This guide discusses the use cases and benefits for Managed Databases.
 
 ## Cost Reduction
 
-Hosting your own database on-premise (or on your own custom cloud architecture) can require you to dedicate a significant budget and lots of IT resources towards its implementation and operation. Offloading this to a dedicated DBaaS solution like Managed Databases has the potential to significantly lower the cost and reduce the complexity. This allows you to focus on your business - not your computing infrastructure.
+Hosting your own database on-premise (or on your own custom cloud architecture) can require you to dedicate a significant budget and lots of IT resources towards its implementation and operation. Offloading this to a dedicated DBaaS solution like Managed Databases has the potential to significantly lower the cost and reduce the complexity. This lets you focus on your business - not your computing infrastructure.
 
 ## Rapid Deployment
 
-It's often necessary to create short-lived databases quickly and securely. You may want to do this for development, disaster recovery (discussed below), ephemeral applications, traffic management, and much more. Managed Databases makes this process incredibly efficient, allowing you to create databases quickly using the Cloud Manager or programmatically through the Linode API.
+It's often necessary to create short-lived databases quickly and securely. You may want to do this for development, disaster recovery (discussed below), ephemeral applications, traffic management, and much more. Managed Databases makes this process incredibly efficient, allowing you to create databases quickly using Cloud Manager or programmatically through the Linode API.
 
 ## Disaster Recovery
 

@@ -1,19 +1,18 @@
 ---
 slug: how-to-create-and-use-mysql-stored-procedures
-description: 'This guide will show you how to use MySQL stored procedures, which are user-defined SQL statements that are stored in a MySQL database on Linux.'
-keywords: ['mysql','stored procedures','database','database optimization']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-02-20
-modified_by:
-  name: Linode
 title: "Creating and Using MySQL Stored Procedures"
 title_meta: "Creating and Using MySQL Stored Procedures - A Tutorial"
+description: 'This guide will show you how to use MySQL stored procedures, which are user-defined SQL statements that are stored in a MySQL database on Linux.'
+authors: ["Francis Ndungu"]
+contributors: ["Francis Ndungu"]
+published: 2019-02-20
+keywords: ['mysql','stored procedures','database','database optimization']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: L_MySQLStoredProc.png
 external_resources:
 - '[Working with MySQL stored procedures](https://dev.mysql.com/doc/connector-net/en/connector-net-tutorials-stored-procedures.html)'
 tags: ["database","mysql"]
 aliases: ['/databases/mysql/how-to-create-and-use-mysql-stored-procedures/']
-authors: ["Francis Ndungu"]
 ---
 
 Stored procedures are user-defined SQL statements that are stored in a MySQL database and executed on-demand to perform a specific database operation. These predefined subroutines help in moving the business logic to the database, which offers a few benefits:
@@ -100,7 +99,7 @@ Query OK, 0 rows affected (0.01 sec)
 
 ### Populate the Database
 
-1.  Next, switch to the test_db database:
+1.  Next, switch to the `test_db` database:
 
         USE test_db;
 

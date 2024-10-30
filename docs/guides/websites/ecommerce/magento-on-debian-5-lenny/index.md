@@ -1,26 +1,25 @@
 ---
 slug: magento-on-debian-5-lenny
-deprecated: true
+title: 'Magento on Debian 5 (Lenny)'
 description: 'Selling products online with Magento, an open source e-commerce solution on a Debian 5 (Lenny) Linode.'
+authors: ["Stan Schwertly"]
+contributors: ["Stan Schwertly"]
+published: 2010-01-18
+modified: 2011-08-22
 keywords: ["Magento", "Debian", "ecommerce", "Store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/e-commerce/magento/debian-5-lenny/','/websites/ecommerce/magento-on-debian-5-lenny/']
-modified: 2011-08-22
-modified_by:
-  name: Linode
-published: 2010-01-18
-title: 'Magento on Debian 5 (Lenny)'
 relations:
     platform:
         key: how-to-install-magento
         keywords:
            - distribution: Debian 5
-authors: ["Stan Schwertly"]
+deprecated: true
 ---
 
-Magento is a self hosted e-commerce solution used by many people to sell products online. It runs on a [LAMP stack](/docs/guides/lamp-server-on-debian-5-lenny/) and offers the user a wide variety of options.
+Magento is a self hosted e-commerce solution used by many people to sell products online. It runs on a [LAMP stack](/docs/guides/how-to-install-a-lamp-stack-on-debian-11/) and offers the user a wide variety of options.
 
-Before installing Magento we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide as well as our [LAMP guide.](/docs/guides/lamp-server-on-debian-5-lenny/) If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before installing Magento we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide as well as our [LAMP guide.](/docs/guides/how-to-install-a-lamp-stack-on-debian-11/) If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Installing Prerequisites
 

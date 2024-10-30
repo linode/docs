@@ -1,6 +1,6 @@
 'use strict';
 
-import { isMobile } from '../helpers';
+import { isMobile } from '../helpers/helpers';
 
 var debug = 0 ? console.log.bind(console, '[svg-viewer]') : function () {};
 
@@ -15,7 +15,7 @@ const getTransformParameters = (element) => {
 	return { scale, x, y };
 };
 
-const animationClass = 'diagram-animate';
+const animationClass = 'large-diagram-animate';
 
 const getTransformString = (scale, x, y) => 'scale(' + scale + ') ' + 'translateX(' + x + 'px) translateY(' + y + 'px)';
 
@@ -36,6 +36,11 @@ class SvgViewer {
 		this.zoomState = {
 			zooming: false,
 		};
+	}
+
+	reset() {
+		let svg = this.el;
+		svg.style.transform = getTransformString(1, 0, 0);
 	}
 
 	zoom(dscale) {
@@ -98,7 +103,7 @@ class SvgViewer {
 			return;
 		}
 		this.active = true;
-		this.el.classList.remove(animationClass);
+		this.container.classList.remove(animationClass);
 		// This is hard to get right on small screens, so let them use the buttons.
 		if (!isMobile()) {
 			// Zooming.
@@ -115,7 +120,7 @@ class SvgViewer {
 					this.dragState.lastX = e.clientX;
 					this.dragState.lastY = e.clientY;
 				},
-				{ passive: true }
+				{ passive: true },
 			);
 
 			document.addEventListener(
@@ -123,7 +128,7 @@ class SvgViewer {
 				(e) => {
 					this.pan(e.clientX, e.clientY);
 				},
-				{ passive: true }
+				{ passive: true },
 			);
 
 			document.addEventListener(
@@ -131,7 +136,7 @@ class SvgViewer {
 				(e) => {
 					this.dragState.dragging = false;
 				},
-				{ passive: true }
+				{ passive: true },
 			);
 		}
 	}
@@ -143,6 +148,8 @@ export function newSVGViewerController(opts) {
 
 	return {
 		svgViewer: null,
+		// Toggle for a modal view of the diagram.
+		showModal: false,
 		tooltip: {
 			show: false,
 			content: '',
@@ -151,16 +158,38 @@ export function newSVGViewerController(opts) {
 		activate() {
 			this.svgViewer.activate();
 		},
+		toggleModal() {
+			this.showModal = !this.showModal;
+		},
 		zoom(n) {
 			this.svgViewer.zoom(n / 3);
 		},
 		pan(direction) {
 			this.svgViewer.panDirection(direction);
 		},
+
 		init: function () {
+			this.$watch('showModal', (val) => {
+				debug('showModal', val);
+				this.svgViewer.reset();
+
+				this.$el.classList.remove('on-load');
+
+				// We want to preserve the behavior of the SVG (with tooltips),
+				// so just move the element in the DOM.
+				let frame = this.$el.querySelector('.large-diagram-svg-frame');
+				let modalWrapper = this.$el.querySelector('.large-diagram-svg-modal-wrapper');
+				let svgContainerModal = this.$el.querySelector('.svg-container-modal');
+				if (val) {
+					svgContainerModal.replaceChildren(...[frame]);
+				} else {
+					modalWrapper.appendChild(frame);
+				}
+			});
+
 			this.$nextTick(() => {
 				let container = this.$el;
-				let svg = this.$el.querySelector('.large-diagram-svg-container');
+				let svg = this.$el.querySelector('.svg-container');
 
 				if (!isMobile()) {
 					let bullets = svg.querySelectorAll('.bullet');
@@ -192,7 +221,7 @@ export function newSVGViewerController(opts) {
 							});
 							if (l1 > 0) {
 								// Find the nth li in the diagram description.
-								let diagramDescriptionList = diagramDescriptionEl.querySelectorAll('li');
+								let diagramDescriptionList = diagramDescriptionEl.children;
 								let diagramDescriptionListArray = Array.from(diagramDescriptionList);
 								let idx = l1 - 1;
 								if (idx >= 0 && idx < diagramDescriptionListArray.length) {
@@ -208,9 +237,9 @@ export function newSVGViewerController(opts) {
 										}
 									}
 									let clone = targetLi.cloneNode(true);
-									// Remove nested OLs.
-									let nestedLists = clone.querySelectorAll('ol');
-									nestedLists.forEach((nestedList) => {
+									// Remove nested OLs or notes.
+									let ignoredEls = clone.querySelectorAll('ol, .note');
+									ignoredEls.forEach((nestedList) => {
 										nestedList.parentNode.removeChild(nestedList);
 									});
 									// Add the targetLi content to the tooltip.
@@ -221,11 +250,17 @@ export function newSVGViewerController(opts) {
 										this.tooltip.number = l1;
 									}
 
-									let x = e.clientX,
-										y = e.clientY;
+									let svgContainer = this.$el.querySelector('.large-diagram-svg-container');
+									let bounds = svgContainer.getBoundingClientRect();
+									// Fractional distance from the top.
+									let distanceY = (e.clientY - bounds.top) / svgContainer.offsetHeight;
 
-									this.tooltip.style = `top: ${y - 50}px; left: ${x + 50}px;`;
-									// Show the tooltip.
+									if (distanceY > 0.5) {
+										this.tooltip.style = 'top: 0; bottom: auto;';
+									} else {
+										this.tooltip.style = 'top: auto; bottom: 0;';
+									}
+
 									this.tooltip.show = true;
 								}
 							}

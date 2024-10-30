@@ -1,17 +1,16 @@
 ---
 slug: installing-apache-guacamole-through-docker
+title: "Installing Apache Guacamole through Docker"
+title_meta: "How to Install Apache Guacamole through Docker"
 description: "Learn how to install Apache Guacamole (a remote access gateway for SSH, VNC, and other protocols) through Docker."
+authors: ["Matt Wildman","Linode"]
+contributors: ["Matt Wildman","Linode"]
+published: 2021-09-10
 keywords: ["Apache Guacamole", "Docker", "VNC", "SSH"]
 tags: ["docker", "guacamole"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-10
-modified_by:
-  name: Linode
-title: "Installing Apache Guacamole through Docker"
-title_meta: "How to Install Apache Guacamole through Docker"
 external_resources:
  - '[Apache Guacamole](https://guacamole.incubator.apache.org/)'
-authors: ["Linode"]
 ---
 
 ## Before You Begin
@@ -26,7 +25,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Installing Docker
 
-{{< content "installing-docker-shortguide" >}}
+{{% content "installing-docker-shortguide" %}}
 
 After installation, you can pull the following Docker images for use in later steps:
 

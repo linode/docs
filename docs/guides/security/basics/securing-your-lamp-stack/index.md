@@ -1,18 +1,16 @@
 ---
 slug: securing-your-lamp-stack
+title: Securing Your LAMP Stack
+title_meta: How to Secure Your LAMP Stack
 description: 'LAMP is a common web service stack with four open-source components: Linux, Apache, MySQL, and PHP. This guide shows how to secure and audit a LAMP stack.'
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2021-03-26
 keywords: ["secure lamp stack", "how to make our lamp stack secure"]
 tags: ["lamp","security","web server","php","mysql","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-03-26
-modified_by:
-  name: Linode
-published: 2021-03-26
-title: Securing Your LAMP Stack
-title_meta: How to Secure Your LAMP Stack
 aliases: ['security/basics/securing-your-lamp-stack/']
 image: SecureLAMPstack.png
-authors: ["Hackersploit"]
 ---
 
 ## What is a LAMP Stack?
@@ -29,11 +27,11 @@ In order to secure a LAMP stack, you need to have a Linux server with the follow
 - MySQL
 - PHP
 
-For a quick an easy way to install a LAMP stack on Linode, check out our guide on [How to Deploy a LAMP Stack with Marketplace Apps](/docs/products/tools/marketplace/guides/lamp-stack/).
+For a quick an easy way to install a LAMP stack on Linode, check out our guide on [How to Deploy a LAMP Stack with Marketplace Apps](/docs/marketplace-docs/guides/lamp-stack/).
 
 Otherwise, you can find instructions on how to manually install a LAMP stack in our guide on [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/). Installation instructions for several other Linux distributions are also accessible from this guide.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This demonstration has been performed on Ubuntu 18.04. However, all techniques demonstrated are distribution agnostic with the exception of package names and package managers.
 {{< /note >}}
 
@@ -84,8 +82,7 @@ Giving a user sudo access simply involves adding the user to the `sudo` group wi
         usermod -aG sudo john
 
 ## Disabling "root" Logins
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Before completing this section, make sure that you have created a limited user with sudo access. If you disable root logins without having first created a user account, you may lock yourself out of your system.
 {{< /note >}}
 
@@ -296,7 +293,7 @@ Brute-force attacks can be extremely powerful and may result in thousands of fai
 
 Fail2Ban allows you to automate the process of blocking brute-force attacks by limiting the number of failed authentication attempts a user can make before being blocked. This is extremely useful for servers that have user accounts that utilize passwords for remote authentication as opposed to SSH key-pair authentication.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Fail2Ban only works if your authentication method is set to password based authentication as opposed to key based authentication. If you opt to use key based authentication and have disabled password based authentication, you do not need brute force protection as only users with the private key can authenticate to the server.
 {{< /note >}}
 
@@ -812,8 +809,7 @@ To ensure that you have the latest version of Lynis installed it's important to 
 Then, import a public GPG key for a secure Lynis installation:
 
     sudo wget -O - https://packages.cisofy.com/keys/cisofy-software-public.key | sudo apt-key add -
-
-{{< note respectIndent=false >}}
+{{< note >}}
 You may need to manually install gnupg2 on some systems in order for GPG to successfully import keys. This can be completed with the following command:
 
     sudo apt-get install gnupg2

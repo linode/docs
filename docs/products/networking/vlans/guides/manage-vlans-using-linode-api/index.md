@@ -1,13 +1,10 @@
 ---
+title: "Create a Private Network with VLANs Using Linode's API"
 description: "Want to create your own private networks in the cloud? Here's how you can use the Linode API to do so by attaching new and existing Linodes to VLANs."
+published: 2021-04-07
 keywords: ['linode vlan','linode vlan api']
 tags: ["security", "networking", "linode platform"]
-published: 2021-04-07
-modified_by:
-  name: Linode
-title: "Create a Private Network with VLANs Using Linode's API"
 aliases: ['/platform/vlan/how-to-create-a-private-network-with-linode-vlans-api/','/guides/how-to-create-a-private-network-with-linode-vlans-api/','/guides/vlan-api/']
-authors: ["Linode"]
 ---
 
 This guide shows you how to use [Linode's API](/docs/api) to create and attach a VLAN to a Linode.
@@ -136,7 +133,7 @@ An `image` must be specified to set interfaces when creating a new Linode.
 
 You can attach a VLAN to an existing Linode by either creating a new configuration profile or updating an existing configuration profile for the Linode. In either case, the Linode must be rebooted to allow Network Helper to automatically adjust the necessary network configuration files on the Linode.
 
-The Linode's ID is required to utilize these methods. Use the Linodes List ([GET /linode/instances](/docs/api/linode-instances/#linodes-list)) endpoint to retrieve the IDs of each of your Linodes. To view the Disk IDs of a Linode, use the Disks List ([GET /linode/instances/{linodeId}/disks](/docs/api/linode-instances/#disks-list)) endpoint.
+The Linode's ID is required to use these methods. Use the Linodes List ([GET /linode/instances](/docs/api/linode-instances/#linodes-list)) endpoint to retrieve the IDs of each of your Linodes. To view the Disk IDs of a Linode, use the Disks List ([GET /linode/instances/{linodeId}/disks](/docs/api/linode-instances/#disks-list)) endpoint.
 
 ### Creating a Configuration Profile
 

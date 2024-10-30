@@ -1,20 +1,19 @@
 ---
 title: "Connect to a MongoDB Database"
-description: "Learn how to connect to a MongoDB Managed Databse through the command line or Compass"
+description: "Learn how to connect to a MongoDB Managed Database through the command line or Compass"
 published: 2022-06-06
 expiryDate: 2023-05-01
-authors: ["Linode"]
 ---
 
-{{< content "dbass-eos" >}}
+{{% content "dbass-eos" %}}
 
-{{< content "managed-database-mongodb-private-notice-shortguide">}}
+{{% content "managed-database-mongodb-private-notice-shortguide" %}}
 
 To connect to a MongoDB Managed Database, you need to know a few important details, such as the username, password, and host (or IP). You'll also need a MySQL client. This guide details how to access your database using popular tools.
 
 ## View Connection Details
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu.
 
 1. Select your Managed Database from the list. This opens the detail page for that database cluster.
 
@@ -27,7 +26,7 @@ The *Connection Details* section contains information and credentials needed for
 - **Replica set:** The name of the replica set. This is only relevant for multi-node high availability clusters and does not appear for standalone (single node) databases.
 - **SSL:** This field is set to `ENABLED`, which means that it is required to use an encrypted TLS/SSL connection.
 
-Under the *Connection Details* section, there is a **Download CA Certificate** link, which allows you to download the CA (Certificate Authority) certificate. This certificate file can be used if you wish to verify the CA certificate when connecting to the database.
+Under the *Connection Details* section, there is a **Download CA Certificate** link, which lets you download the CA (Certificate Authority) certificate. This certificate file can be used if you wish to verify the CA certificate when connecting to the database.
 
 ## Connect Using the MongoDB Shell (CLI)
 

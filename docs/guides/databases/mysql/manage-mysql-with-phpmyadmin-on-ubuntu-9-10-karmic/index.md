@@ -1,15 +1,14 @@
 ---
 slug: manage-mysql-with-phpmyadmin-on-ubuntu-9-10-karmic
-deprecated: true
+title: 'Manage MySQL with phpMyAdmin on Ubuntu 9.10 (Karmic)'
 description: 'This guide will show you how to use phpMyAdmin to manage and maintain MySQL databases and users though a web interface on Ubuntu 9.10 "Karmic".'
+authors: ["Brett Kaplan"]
+contributors: ["Brett Kaplan"]
+published: 2010-04-17
+modified: 2011-05-17
 keywords: ["mysql", "phpmyadmin", "sql", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-9-10-karmic/','/databases/mysql/phpmyadmin-ubuntu-9-10-karmic/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2010-04-17
-title: 'Manage MySQL with phpMyAdmin on Ubuntu 9.10 (Karmic)'
 external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
     - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
@@ -19,10 +18,8 @@ relations:
         keywords:
             - distribution: Ubuntu 9.10
 tags: ["ubuntu","php","database","mysql"]
-authors: ["Brett Kaplan"]
+deprecated: true
 ---
-
-
 
 phpMyAdmin is an open source web application written in PHP that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
 
@@ -110,7 +107,7 @@ Allow from 12.34.56.78
 
 ### Force SSL
 
-Since you are required to enter your MySQL credentials when using phpMyAdmin, we recommend that you use SSL to secure HTTP traffic to your phpMyAdmin installation. For more information on using SSL with your websites, please consult guides that address [SSL certificates](/docs/security/ssl//).
+Since you are required to enter your MySQL credentials when using phpMyAdmin, we recommend that you use SSL to secure HTTP traffic to your phpMyAdmin installation. For more information on using SSL with your websites, please consult guides that address [SSL certificates](/docs/security/ssl/).
 
 You can force phpMyAdmin to use SSL in the phpMyAdmin configuration file `/etc/phpmyadmin/config.inc.php` by adding the following lines under the `Server(s) configuration` section:
 

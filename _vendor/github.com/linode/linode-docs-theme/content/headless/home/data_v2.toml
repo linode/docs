@@ -1,0 +1,11 @@
+hero_text = "Developer resources for building on Akamai Connected Cloud"
+
+# Ordered list of section to display cards with the last 3 articles.
+cards_sections = ["guides", "reference-architecture", "marketplace-docs"]
+
+[cards_now_on_tech_docs]
+    title = "Now on Akamai TechDocs"
+    cards = [
+        { title = "Product docs", href = "https://techdocs.akamai.com/cloud-computing/docs/" },
+        { title = "Linode API reference", href = "https://techdocs.akamai.com/linode-api/reference/api" },
+    ]

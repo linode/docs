@@ -2,14 +2,12 @@
 slug: what-is-database-sharding
 title: "What Is Database Sharding?"
 description: "Database sharding can be a useful tool to help you scale your databases for growth and increased traffic. But what is sharding, and when should you use it? Find out in this tutorial, which walks you through what sharding is, the reasons to use it, and alternatives."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2022-06-21
 keywords: ['database sharding','database sharding vs partitioning','what is database sharding']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2022-06-21
-modified_by:
-  name: Linode
 external_resources:
-- '[DigitalOcean: Understanding Database Sharding](https://www.digitalocean.com/community/tutorials/understanding-database-sharding)'
 - '[MongoDB: Database Sharding — Concepts and Examples](https://www.mongodb.com/features/database-sharding-explained)'
 - '[Educative: What Is Database Sharding?](https://www.educative.io/edpresso/what-is-database-sharding)'
 - '[GeeksforGeeks: Database Sharding – System Design Interview Concept](https://www.geeksforgeeks.org/database-sharding-a-system-design-concept/)'

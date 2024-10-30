@@ -4,7 +4,7 @@ export function leackChecker(Alpine) {
 
 	return {
 		selector: '[x-data]',
-		status: 0,
+		active: 0,
 		dirty: 0,
 
 		add: function (el) {
@@ -26,12 +26,11 @@ export function leackChecker(Alpine) {
 
 		clear: function () {
 			weakRefs.clear();
+			this.active = 0;
 			weakSet = new WeakSet();
 		},
 
 		trackComponents: function (selector = '[x-data]') {
-			this.status = 0;
-			this.clear();
 			console.log(`Track Components for leak detection using selector ${selector}...`);
 
 			document.body.querySelectorAll(selector).forEach((el) => {
@@ -60,7 +59,7 @@ export function leackChecker(Alpine) {
 			window.gc();
 			setTimeout(() => {
 				console.log('Check Leaks...');
-				this.status = this.listAllive().length > 0 ? 2 : 1;
+				this.active = this.listAllive().length;
 				console.dir(weakSet);
 			}, 2000);
 		},

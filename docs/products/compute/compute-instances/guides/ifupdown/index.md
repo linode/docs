@@ -1,15 +1,12 @@
 ---
-description: "Learn how to configure networking using the ifupdown utility on Debian and older Ubuntu distributions"
-keywords: ["static", "ip address","ifupdown", "ifup", "ifdown"]
-published: 2022-05-25
-modified_by:
-  name: Linode
 title: "Network Configuration Using ifupdown"
+description: "Learn how to configure networking using the ifupdown utility on Debian and older Ubuntu distributions"
+published: 2022-05-25
+keywords: ["static", "ip address","ifupdown", "ifup", "ifdown"]
 tags: ["networking","linode platform",]
 external_resources:
   - '[ifupdown documentation](https://manpages.debian.org/bullseye/ifupdown/interfaces.5.en.html)'
 aliases: ['/guides/ifupdown/']
-authors: ["Linode"]
 ---
 
 The [ifupdown](https://manpages.debian.org/bullseye/ifupdown/ifup.8.en.html) package is an older network configuration software that's still used by Debian and older Ubuntu distributions (such as 16.04 LTS and earlier).
@@ -50,7 +47,7 @@ iface eth0 inet static
 
 ## Configuring IP Addresses Manually
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and review your Compute Instance's IP addresses. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). Make a note of the following pieces of information or keep this page accessible so you can reference it later.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and review your Compute Instance's IP addresses. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). Make a note of the following pieces of information or keep this page accessible so you can reference it later.
 
     - Public IPv4 address(es) and the associated IPv4 gateway
     - Private IPv4 address (if one has been added)
@@ -58,7 +55,7 @@ iface eth0 inet static
     - IPv6 /64 or /56 routed range (if one has been added)
     - DNS resolvers (if you want to use Linode's resolvers)
 
-1. Disable Network Helper on the Compute Instance so that it doesn't overwrite any of your changes on the next system reboot. For instructions, see the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#single-per-linode) guide. This guide covers disabling Network Helper *globally* (for all Compute Instances on your account) or just for a single instance.
+1. Disable Network Helper on the Compute Instance so that it doesn't overwrite any of your changes on the next system reboot. For instructions, see the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#individual-compute-instance-setting) guide. This guide covers disabling Network Helper *globally* (for all Compute Instances on your account) or just for a single instance.
 
 1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). You may want to consider using Lish to avoid getting locked out in the case of a configuration error.
 

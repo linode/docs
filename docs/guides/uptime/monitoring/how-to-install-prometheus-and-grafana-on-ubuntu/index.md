@@ -2,13 +2,13 @@
 slug: how-to-install-prometheus-and-grafana-on-ubuntu
 title: "How to Install and Configure Prometheus and Grafana on Ubuntu"
 description: 'How to Install and Configure Prometheus and Grafana on Ubuntu'
+authors: ["Jeff Novotny"]
+contributors: ["Jeff Novotny"]
+published: 2023-06-13
+modified: 2024-09-09
 keywords: ['Install Prometheus', 'Install Grafana', 'Install Node Exporter', 'Integrate Prometheus and Grafana', 'Download Grafana Dashboard for Prometheus']
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Jeff Novotny"]
-published: 2023-06-13
-modified_by:
-  name: Linode
 external_resources:
 - '[Grafana Labs](https://grafana.com/)'
 - '[Grafana Dashboard Library](https://grafana.com/grafana/dashboards/)'
@@ -59,7 +59,7 @@ Grafana supports a wide range of dashboards, including the Prometheus Node Expor
 Grafana supports alerts, annotations, dashboard variables, plugins, and authentication. It also provides a range of analytics tools to further deconstruct the data. The Grafana web interface can be accessed using port `3000` of the host server. For best results, run Prometheus and Grafana on the same server. For more background information, see the [Introduction to Grafana](https://grafana.com/docs/grafana/latest/introduction/).
 
 ## Marketplace App
-Installing a complete Prometheus and Grafana-based system is a multi-step process. To streamline deployments, you can use the [Prometheus and Grafana Marketplace App](/docs/guides/how-to-install-prometheus-and-grafana-on-ubuntu/). For a more traditional and hands-on deployment, follow the instructions below.
+Installing a complete Prometheus and Grafana-based system is a multi-step process. To streamline deployments, you can use the [Prometheus and Grafana Marketplace App](https://www.linode.com/marketplace/apps/linode/prometheus-grafana/). For a more traditional and hands-on deployment, follow the instructions below.
 
 ## Before You Begin
 

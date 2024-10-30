@@ -1,21 +1,20 @@
 ---
 slug: how-to-deploy-kubernetes-on-linode-with-rancher-2-x
+title: 'Deploying Kubernetes on Linode with Rancher'
+title_meta: 'How to Deploy Kubernetes on Linode with Rancher'
 description: 'Create and manage Kubernetes clusters with Rancher and deploy apps from the Rancher app library.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-03-14
 keywords: ["rancher", "docker", "kubernetes", "container"]
 tags: ["docker","kubernetes","container","ubuntu","wordpress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-03-14
-modified_by:
-  name: Linode
-title: 'Deploying Kubernetes on Linode with Rancher'
-title_meta: 'How to Deploy Kubernetes on Linode with Rancher'
 aliases: ['/applications/containers/how-to-deploy-apps-with-rancher-2-3/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/how-to-deploy-apps-with-rancher/','/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/','/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/']
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Rancher Official Docs](http://rancher.com/docs/)'
   - '[Linode CCM](https://github.com/linode/linode-cloud-controller-manager)'
   - '[Linode CSI](https://github.com/linode/linode-blockstorage-csi-driver)'
-authors: ["Linode"]
 ---
 
 ![Rancher title graphic.](rancher_title_graphic.png)
@@ -111,7 +110,7 @@ After you have your Linode up and running with Docker, you can then install and 
     If you are interested in setting up an SSL certificate with Rancher, you may consider also creating an NGINX container with an SSL certificate that proxies traffic to the Rancher container.
     {{< /note >}}
 
-1.  You should see a welcome screen from Rancher. The instructions to find the randamly generated password appear. The default user name is `admin`.
+1.  You should see a welcome screen from Rancher. The instructions to find the randomly generated password appear. The default user name is `admin`.
 1.  The system then prompts you to set a password.
 1.  The `Server URL` section should already show your Rancher server's IP address. Click **Continue**.
 1.  The default home page for your Rancher application appears. This page normally displays a list of all of your Kubernetes clusters. Since you have not created a cluster yet, no clusters are listed.
@@ -154,9 +153,9 @@ Once Rancher been installed and the cluster driver has been activated, a new LKE
 
 1. In the `Access Token` field, enter your Linode APIv4 token and click on the `Proceed to Cluster Configuration` button.
 
-   ![Cluster Name Token](cluster-name-token.png "Cluster Name Token")
+   ![Cluster Name Token](cluster-name-token.png)
 
-1. Select the `Region` where the new cluster to be hosted, the `Kubernetes Version` the cluster will use, and any `tags` you would like to apply, along with any Cloud Manager [tags](/docs/guides/tags-and-groups/) you’d like to apply to your nodes. Click on the `Proceed to Node Pool Selection` button to proceed.
+1. Select the `Region` where the new cluster to be hosted, the `Kubernetes Version` the cluster will use, and any `tags` you would like to apply, along with any Cloud Manager [tags](/docs/products/tools/cloud-manager/guides/tags-and-groups/) you’d like to apply to your nodes. Click on the `Proceed to Node Pool Selection` button to proceed.
 
     ![Tags Regions and Version](tags-region-version-lke.png "Tags Region and Version")
 
@@ -209,7 +208,7 @@ Before provisioning your cluster, you will need to add the node template it will
 
 1. Click on the **Create** button.
 
-1. Another dialog appears which accepts options for your new node template. Under the **Instance Options** section, set the preferred region, instance type, and Linux image for your nodes, along with any Cloud Manager [tags](/docs/guides/tags-and-groups/) you’d like to apply to your nodes.
+1. Another dialog appears which accepts options for your new node template. Under the **Instance Options** section, set the preferred region, instance type, and Linux image for your nodes, along with any Cloud Manager [tags](/docs/products/tools/cloud-manager/guides/tags-and-groups/) you’d like to apply to your nodes.
 
     ![Rancher Add Node Template form - Linode options](add-node-template-linode-options.png "The Linode options in the Add Node Template form")
 
@@ -387,7 +386,7 @@ To test out deploying an app on your new cluster, launch the WordPress app from 
 
 1.  In the **Workloads** section the MariaDB and WordPress deployments for your app are displayed.
 
-1.  The **Deployments** section displays the **Endpoints** or thte address of the NodeBalancer that was created for your app.
+1.  The **Deployments** section displays the **Endpoints** or the address of the NodeBalancer that was created for your app.
 
     ![Rancher app detail view - NodeBalancer HTTP endpoint highlighted](wordpress-app-http-nodebalancer-endpoint-highlighted.png "Rancher app detail view - NodeBalancer HTTP endpoint highlighted")
 
@@ -471,7 +470,6 @@ Rancher also provides an easy way to scale your app's deployments:
     ![Rancher WordPress workloads - deployment name highlighted](wordpress-app-wordpress-workload-link-highlighted.png "Rancher WordPress workloads - deployment name highlighted")
 
 1.  A second Pod appears in the **Pods by State** section on this page, that displays the status of the pod that is being created. Eventually, the new Pod is labelled as **Running**.
-
 
 {{< note >}}
 Rancher does not currently support interacting directly with Linode Volumes via its user interface. However, the scaling method described in this section of the guide will apply complete replication to your application and volumes.

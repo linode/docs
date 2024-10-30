@@ -1,7 +1,7 @@
 /* Main beps colors, these are also referenced in tailwind.config.js.. */
 :root {
-  --color-brand: #02b159;
-  --color-brand--decimal: 2, 177, 89;
+  --color-brand: #017ac6;
+  --color-brand--decimal: 1, 122, 198;
   --color-brand--light: rgba(var(--color-brand--decimal), 0.2);
   --color-title: #32363b;
   --color-body-text: #5e6065;
@@ -55,10 +55,17 @@ body {
   @apply lg:mx-auto;
 }
 
+/* Turbo styles */
 .turbo-progress-bar {
   @apply bg-brand;
   opacity: 0.35;
   height: 3px;
+}
+
+/* Global slight fade */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.2s;
 }
 
 .pull-out {

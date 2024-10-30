@@ -1,7 +1,9 @@
 ---
 title: Managed
 title_meta: "Linode Managed Service Product Documentation"
-description: "Linode Managed is a service that offers incident response as well as free migrations and discounted professional services."
+description: "Linode Managed is a service that offers incident response, backups, and monitoring."
+published: 2023-04-11
+modified: 2024-03-11
 tab_group_main:
     is_root: true
     title: Overview
@@ -9,7 +11,6 @@ tab_group_main:
 cascade:
     product_description: "A suite of services that includes a robust monitoring system, 24/7 incident response, backups, and cPanel licenses."
 aliases: ['/guides/platform/managed/']
-published: 2023-04-11
 ---
 
 Downtime is expensive and puts your company’s reputation at risk. [Linode Managed](https://www.linode.com/products/managed/) helps minimize this risk through a suite of services and products aimed at monitoring your Compute Instances, minimizing downtime, protecting your data, and migrating to the Linode Platform.
@@ -20,22 +21,17 @@ Linode Managed applies to all Compute Instances on an account **except** for nod
 
 ## Benefits
 
-- **24/7 Monitoring and Incident Response:** The core benefit of Linode Managed is 24/7 monitoring and incident response. You can configure monitors for URLs, IP addresses, or TCP ports. This monitor periodically makes a TCP or HTTP request to that property. If a check fails, our experts take immediate steps to get your systems back online as quickly as possible. If they are not able to fix the issue, our experts will share their findings and the steps they've taken so far. Managed services does not include assistance with maintenance, updates, or the configuration of software on your Compute Instances. For that, contact our [Professional Services](https://www.linode.com/products/pro-services/) team.
+- **24/7 Monitoring and Incident Response:** The core benefit of Linode Managed is 24/7 monitoring and incident response. You can configure monitors for URLs, IP addresses, or TCP ports. This monitor periodically makes a TCP or HTTP request to that property. If a check fails, our experts take immediate steps to get your systems back online as quickly as possible. If they are not able to fix the issue, our experts will share their findings and the steps they've taken so far. Managed services does not include assistance with maintenance, updates, or the configuration of software on your Compute Instances.
 
 - **Included Services and Software:** The following services and software applications are included at no additional charge to Linode Managed customers
 
     - [cPanel](https://cpanel.net/): A cPanel license is included for each Compute Instance on your Linode account. Each license automatically scales to accommodate the number of [cPanel accounts](https://support.cpanel.net/hc/en-us/articles/1500004931582-What-is-an-Account/) you've configured within the cPanel installation.
-    - [Backups](/docs/products/storage/backups/): The Backup service is added to each Compute Instance on your account for no extra charge. This service automatically backs up the Compute Instance each day and allows you to restore from the most recent daily backup, weekly backup, and biweekly backup. See [Get Started with Backups](/docs/products/storage/backups/get-started/) for more information on backup restore points.
+    - [Backups](/docs/products/storage/backups/): The Backup service is added to each Compute Instance on your account for no extra charge. This service automatically backs up the Compute Instance each day and lets you restore from the most recent daily backup, weekly backup, and biweekly backup. See [Get Started with Backups](/docs/products/storage/backups/get-started/) for more information on backup restore points.
     - [Longview Pro](/docs/products/tools/longview/): Longview is our own metric service designed to help you keep track of your Compute Instances' performance. Whereas the free version of Longview is limited to collecting data at 5 minute intervals and storing only 12 hours worth of historical data, Longview Pro dramatically increases the data collection intervals and retains this data for longer:
         - 1 minute resolution for the past 24 hours
         - 5 minute resolution for the past week
         - 2 hour resolution for the past month
         - 1 day resolution for the past year
-
-- **Professional Services:**
-
-    - **Discounted services:** Linode Managed customers receive a 20% discount for any projects completed by our [Professional Services](https://www.linode.com/products/pro-services/) team. This team of experts can handle server installations, configurations, architectures, deployments, one-off sysadmin jobs, site migrations, and more.
-    - **Free migrations:** Customers who sign up with Linode Managed for a minimum of 3 months receive 2 free site migrations, performed by our Professional Services team. Use the [Professional Services contact form](https://www.linode.com/products/pro-services/#contactus) to learn more and to schedule your site migrations.
 
 ## Pricing
 

@@ -2,12 +2,11 @@
 title: Get Started
 title_meta: "Getting Started with the Linode Managed Service"
 description: "Learn how to get up and running with Linode Managed and start monitoring your Compute Instances."
+published: 2023-04-11
 tab_group_main:
     weight: 20
 keywords: ["managed", "managed services", "linode managed"]
 aliases: ['/products/services/managed/guides/sign-up/','/linode-managed/','/uptime/linode-managed/','/platform/linode-managed-classic-manager/','/platform/linode-managed/','/guides/linode-managed/']
-published: 2023-04-11
-authors: ["Linode"]
 ---
 
 [Linode Managed](https://www.linode.com/products/managed/) is a 24/7 incident response service coupled with Longview Pro, the Backup service, cPanel, additional dashboard metrics, and free site migrations. This robust, multi-homed monitoring system sends out monitoring checks to ensure that your monitored services remain online and available at all times. Managed Services can monitor any service or software stack reachable over TCP or HTTP.
@@ -20,7 +19,7 @@ Follow the instructions below to sign up for Managed Services.
 This is an account-wide setting. Enabling Managed Services will result in additional charges *for each* Compute Instance on your account. If you would like to only enable this for some instances and not others, you will need to create a separate account and transfer any services you do (or do not) want to have managed. See [Transferring Ownership of Linode Services with Service Transfers](/docs/products/platform/accounts/guides/service-transfers/).
 {{< /note >}}
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Account** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and click the **Account** link in the sidebar.
 
 1. Navigate to the **Settings** tab and click the **Add Linode Managed** button at the bottom of this page.
 
@@ -44,6 +43,6 @@ After signing up for Managed Services, the next steps are to configure which ser
 
 Each Compute Instance on a Managed account is eligible to receive a [cPanel](https://cpanel.net/) license at no additional charge.
 
-1. **Installing cPanel:** The easiest method to quickly get cPanel up and running is to deploy a new Linode using the [cPanel Marketplace App](https://www.linode.com/marketplace/apps/cpanel/cpanel/). Review the [How to Deploy cPanel with Marketplace Apps](/docs/products/tools/marketplace/guides/cpanel/) guide for additional instructions. If the cPanel Marketplace App does not support your desired Linux distribution, you can also follow the instructions within the [Install cPanel on CentOS](/docs/guides/install-cpanel-on-centos/) guide or the [Installation Guide](https://docs.cpanel.net/installation-guide/) on cPanel's documentation site. At this time, cPanel supports the following Linode-provided distribution images: CentOS 7, AlmaLinux 8, Rocky Linux 8, and Ubuntu 20.04 LTS. See [What operating systems are supported by cPanel](https://support.cpanel.net/hc/en-us/articles/1500001216582-What-operating-systems-are-supported-by-cPanel-) for a full list.
+1. **Installing cPanel:** The easiest method to quickly get cPanel up and running is to deploy a new Linode using the [cPanel Marketplace App](https://www.linode.com/marketplace/apps/cpanel/cpanel/). Review the [How to Deploy cPanel with Marketplace Apps](/docs/marketplace-docs/guides/cpanel/) guide for additional instructions. If the cPanel Marketplace App does not support your desired Linux distribution, you can also follow the instructions within the [Install cPanel on CentOS](/docs/guides/install-cpanel-on-centos/) guide or the [Installation Guide](https://docs.cpanel.net/installation-guide/) on cPanel's documentation site. At this time, cPanel supports the following Linode-provided distribution images: CentOS 7, AlmaLinux 8, Rocky Linux 8, and Ubuntu 20.04 LTS. See [What operating systems are supported by cPanel](https://support.cpanel.net/hc/en-us/articles/1500001216582-What-operating-systems-are-supported-by-cPanel-) for a full list.
 
 1. **Obtaining a License:** Contact the Support team to obtain a cPanel license for your Linode. If you do not subscribe to Linode Managed, you will need to obtain your license directly from cPanel. cPanel is typically licensed by the number of accounts within the cPanel installation, each account typically corresponding to a single website or group of similar websites. The license we provide will automatically scale based on the number of cPanel accounts you've configured.

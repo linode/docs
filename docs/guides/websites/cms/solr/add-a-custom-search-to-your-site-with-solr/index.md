@@ -1,18 +1,17 @@
 ---
 slug: add-a-custom-search-to-your-site-with-solr
+title: 'Add a Custom Search to your Site with Solr'
 description: 'Index and search your site''s content with Apache Solr, a custom, fast, enterprise-grade, open source search solution.'
+authors: ["Andrew Lescher"]
+contributors: ["Andrew Lescher"]
+published: 2017-09-13
 keywords: ["solr", "enterprise search", "lucene", "web search"]
 tags: ["linux","java","apache","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-09-13
-modified: 2017-09-13
-modified_by:
-  name: Linode
-title: 'Add a Custom Search to your Site with Solr'
 external_resources:
   - '[Apache Solr Reference Guide](https://lucene.apache.org/solr/guide/6_6/)'
 aliases: ['/websites/cms/solr/add-a-custom-search-to-your-site-with-solr/','/websites/cms/add-a-custom-search-to-your-site-with-solr/']
-authors: ["Andrew Lescher"]
+deprecated: true
 ---
 
 Apache Solr is an open source search platform that provides administrators with a customizable and scalable solution for managing online content. Solr can be configured to index all uploaded data, resulting in fast search results, whether used enterprise-wide or with a single website. In addition to a built-in web control interface, developers can also link access via a client API.
@@ -27,7 +26,7 @@ Apache Solr is an open source search platform that provides administrators with 
 
 3.  Update your system and package repositories and install `wget`.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -123,8 +122,7 @@ Solr listens on port `8983` by default. Open the port to allow access to the web
 **iptables**
 
     iptables -A INPUT -p tcp --dport 8983 -j ACCEPT -m comment --comment "Solr port"
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Save your iptables rule using *iptables-persistent*, otherwise it will be lost on the next reboot.
 {{< /note >}}
 

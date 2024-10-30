@@ -2,12 +2,12 @@
 title: Get Started
 title_meta: "Getting Started with the Linode DNS Manager"
 description: "Learn how to get up and running with the Linode DNS Manager, including creating and importing domains."
+modified: 2023-03-16
 tab_group_main:
     weight: 20
-modified: 2023-03-16
 ---
 
-Linode's DNS Manager enables users to manage DNS records for each of their domains directly within the tools they already use: like the Cloud Manager, Linode CLI, or Linode API. It supports most common DNS record types, including A, AAAA (quad A), CNAME, MX, TXT, NS, SOA, SRV, and CAA. Follow this guide to learn how to start using the DNS Manager.
+Linode's DNS Manager enables users to manage DNS records for each of their domains directly within the tools they already use: like Cloud Manager, Linode CLI, or Linode API. It supports most common DNS record types, including A, AAAA (quad A), CNAME, MX, TXT, NS, SOA, SRV, and CAA. Follow this guide to learn how to start using the DNS Manager.
 
 1. [Register the Domain](#register-the-domain)
 1. [Create the Domain Zone](#create-the-domain-zone)
@@ -26,7 +26,7 @@ Determine what domain name you wish to use and, if you haven't done so already, 
 
 A *domain zone* (also called a [DNS zone](https://en.wikipedia.org/wiki/DNS_zone)) is a collection of DNS records for a particular domain. For full instructions on creating a domain zone, see [Create a Domain](/docs/products/networking/dns-manager/guides/create-domain/).
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Domains** from the left navigation menu. Click the **Create Domain** button.
+1. Log in to [Cloud Manager](https://cloud.linode.com/) and select **Domains** from the left navigation menu. Click the **Create Domain** button.
 
 1. Select either **Primary** or **Secondary** as the zone type. This changes some of the form options below it.
 

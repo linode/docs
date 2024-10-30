@@ -1,20 +1,19 @@
 ---
 slug: deploy-nginx-ingress-on-lke
+title: "Deploying NGINX Ingress on Linode Kubernetes Engine"
+title_meta: "How to Deploy NGINX Ingress on Linode Kubernetes Engine"
 description: "Learn how to deploy an NGINX Ingress Controller on an LKE Kubernetes Cluster"
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2019-11-12
+modified: 2023-03-14
 keywords: ['kubernetes','kubernetes tutorial','lke','linode kubernetes engine', 'ingress','nginx']
 tags: ["nginx","networking","linode platform","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-11-12
-modified: 2023-03-14
-modified_by:
-  name: Linode
-title: "Deploying NGINX Ingress on Linode Kubernetes Engine"
-title_meta: "How to Deploy NGINX Ingress on Linode Kubernetes Engine"
 image: nginx-ingress.png
 external_resources:
 - '[Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)'
 aliases: ['/kubernetes/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/','/guides/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/']
-authors: ["Linode"]
 ---
 
 In Kubernetes, an **Ingress** is an API object that manages the routing of external requests to one of the many possible internal services in a Kubernetes cluster. In the majority of cases, the Ingress will rely on an external Load Balancer to accept initial traffic before being routed.
@@ -51,7 +50,7 @@ This guide will show you how to:
 
     - [Cloud Manager LKE instructions](/docs/products/compute/kubernetes/)
     - [Linode API LKE instructions](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/)
-    - [Terraform instructions](/docs/products/compute/kubernetes/guides/deploy-cluster-using-terraform/)
+    - [Terraform instructions](/docs/guides/deploy-lke-cluster-using-terraform/)
 
     You can also use an unmanaged Kubernetes cluster (that's not deployed through LKE). The instructions within this guide depend on the Linode Cloud Controller Manager (CCM), which is installed by default on LKE clusters but needs to be manually installed on unmanaged clusters. To learn how to install the Linode CCM on a cluster that was not deployed through LKE, see the [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/install-the-linode-ccm-on-unmanaged-kubernetes/) guide.
 

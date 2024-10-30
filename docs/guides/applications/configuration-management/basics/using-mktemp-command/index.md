@@ -1,17 +1,16 @@
 ---
 slug: using-mktemp-command
+title: "Using mktemp Command to Create Temporary Files and Directories"
+title_meta: "How to Use the mktemp Command to Create Temporary Files and Directories"
 description: 'Learn how to use the mktemp command on an Ubuntu 20.04 Linode server. Using the mktemp command, you can create temporary files and directories.'
+authors: ["Tom Henderson"]
+contributors: ["Tom Henderson"]
+published: 2023-03-19
 keywords: ['mktemp', 'mktemp bash', 'mktemp directory', 'tmpdir']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-03-19
-modified_by:
-  name: Linode
-title: "Using mktemp Command to Create Temporary Files and Directories"
-title_meta: "How to Use the mktemp Command to Create Temporary Files and Directories"
 external_resources:
 - '[Setting and Using Linux Environment Variables](/docs/guides/how-to-set-linux-environment-variables/)'
-authors: ["Tom Henderson"]
 ---
 
 The `mktemp` command is used in Linux and BSD derivative operating systems to create temporary files or directories. The temporary filename and directories can be named using a user-defined "template". This utility is installed by default on major Linux distributions.

@@ -2,12 +2,11 @@
 slug: installing-yunohost
 title: "How to Install and Use YunoHost"
 description: "YunoHost simplifies self-hosting and server administration. It can install applications, provision users, control services, and more within a straightforward web UI. ✓ Click here to get started with YunoHost!"
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-05-02
 keywords: ['yunohost install','yunohost apps','yunohost alternative']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2023-05-02
-modified_by:
-  name: Linode
 external_resources:
 - '[YunoHost Documentation](https://yunohost.org/en?q=%2Fdocs)'
 - '[TechRepublic: What Is YunoHost, and How Do You Install It?](https://www.techrepublic.com/article/install-yunohost/)'
@@ -89,7 +88,7 @@ YunoHost can be installed on a compute instance running stock Debian 11 (or high
         - https://192.0.2.0/ (global IP, if you're on a VPS)
 
     If this is your first time with YunoHost, it is strongly recommended to take
-    time to read the administator documentation and in particular the sections
+    time to read the administrator documentation and in particular the sections
     'Finalizing your setup' and 'Getting to know YunoHost'. It is available at
     the following URL : https://yunohost.org/admindoc
     ===========================================================================
@@ -179,7 +178,7 @@ The YunoHost instance starts with a self-signed certificate. However, most moder
 1.  Select **Install Let's Encrypt certificate**, then select **OK** to the prompt to start the installation process.
 
     {{< note >}}
-Several warnings may appear, which render the **Install Let's Encrypt certificate** button inoperable. If so, change the **Ingore diagnosis checks** toggle from **No** to **Yes**, which re-enables the **Install Let's Encrypt certificate** button.
+Several warnings may appear, which render the **Install Let's Encrypt certificate** button inoperable. If so, change the **Ignore diagnosis checks** toggle from **No** to **Yes**, which re-enables the **Install Let's Encrypt certificate** button.
     {{< /note >}}
 
 Once the process completes, a confirmation of the successful installation appears:

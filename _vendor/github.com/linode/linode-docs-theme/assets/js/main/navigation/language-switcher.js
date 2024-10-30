@@ -1,26 +1,24 @@
 'use strict';
 
-import { getCurrentLangFromLocation, setIsTranslating } from '../helpers';
+import { getCurrentLangFromLocation } from '../helpers/helpers';
 
 var debug = 0 ? console.log.bind(console, '[language-switcher]') : function () {};
 
 export function newLanguageSwitcherController(weglot_api_key) {
 	debug('newLanguageSwitcherController');
-	let isWeglotInitialized = false;
 	const initAndSwitchTo = function (self) {
 		let lang = self.currentLang;
 		self.$store.nav.lang = lang;
 		setTimeout(() => {
-			if (!isWeglotInitialized) {
-				isWeglotInitialized = true;
-				Weglot.on('initialized', () => {
-					Weglot.switchTo(lang);
-				});
-				initWeglot(weglot_api_key);
-				return;
-			}
+			// We navigate with Turbo, but we need to initialize Weglot on each
+			// page load.
+			Weglot.initialized = false;
+			Weglot.on('initialized', () => {
+				debug('Weglot initialized');
+				Weglot.switchTo(lang);
+			});
+			initWeglot(weglot_api_key);
 		}, 600);
-		Weglot.switchTo(lang);
 	};
 
 	// This needs to be a function to get the $persist binded.
@@ -35,6 +33,7 @@ export function newLanguageSwitcherController(weglot_api_key) {
 			],
 
 			init: function () {
+				debug('init language');
 				const langParam = getCurrentLangFromLocation();
 				if (langParam) {
 					this.currentLang = langParam;
@@ -51,7 +50,7 @@ export function newLanguageSwitcherController(weglot_api_key) {
 				if (!lang || lang === this.currentLang) {
 					return;
 				}
-				// To a full refresh to make sure all links etc. gets updatedd.
+				// Do a full refresh to make sure all links etc. gets updatedd.
 				if (window.location.search.includes('lang=')) {
 					window.location.search = `lang=${lang}`;
 				} else {
@@ -78,15 +77,6 @@ export function newLanguageSwitcherController(weglot_api_key) {
 			isDefaultLanguage: function () {
 				return this.currentLang === 'en';
 			},
-
-			onTurboRender: function () {
-				debug('onTurboRender', isWeglotInitialized);
-				// Avoid loading Weglot if it's English.
-				if (!this.isDefaultLanguage()) {
-					isWeglotInitialized = false;
-					initAndSwitchTo(this);
-				}
-			},
 		};
 	};
 }
@@ -94,10 +84,6 @@ export function newLanguageSwitcherController(weglot_api_key) {
 function initWeglot(apiKey) {
 	debug('initWeglot');
 	// Initialization of Weglot.
-	// Note that Weglot checks for the presence of window.Turbolinks (we now use Turbo),
-	// so set a dummy window variable to signal that.
-	// We need to do this on every page load.
-	window.Turbolinks = true;
 	Weglot.initialize({
 		api_key: apiKey,
 		hide_switcher: true,

@@ -1,19 +1,16 @@
 ---
-description: "Learn how to create domain zones to manage your DNS records using the Linode DNS Manager."
-modified: 2022-10-28
-modified_by:
-  name: Linode
-published: 2020-07-21
 title: "Create a Domain"
+description: "Learn how to create domain zones to manage your DNS records using the Linode DNS Manager."
+published: 2020-07-21
+modified: 2022-10-28
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/products/networking/dns-manager/guides/add-domains/']
-authors: ["Linode"]
 ---
 
-This guide walks you through how to create a domain through the Cloud Manager. Adding a domain only takes a few steps. Here's an outline on how to create a domain using Cloud Manager.
+This guide walks you through how to create a domain through Cloud Manager. Adding a domain only takes a few steps. Here's an outline on how to create a domain using Cloud Manager.
 
-1. [Open the Create Domain Form in the Cloud Manager](#open-the-create-domain-form-in-the-cloud-manager)
+1. [Open the Create Domain Form in Cloud Manager](#open-the-create-domain-form-in-cloud-manager)
 1. [Select the Zone Type](#select-the-zone-type)
 1. [Enter the Domain and SOA Contact](#enter-the-domain-and-soa-contact)
 1. [Pre-populate DNS Records](#pre-populate-dns-records)
@@ -22,9 +19,9 @@ This guide walks you through how to create a domain through the Cloud Manager. A
 
 After you’ve figured out how to create domains, you’ll never need to call IT support for help again. Let’s look at each step in more detail.
 
-## Open the Create Domain Form in the Cloud Manager
+## Open the Create Domain Form in Cloud Manager
 
-Figuring out how to create a domain starts with getting into the system. Log in to the [Cloud Manager](https://cloud.linode.com/) and choose **Domains** from the left navigation menu. Click the **Create Domain** button. This opens the [Domain Create](https://cloud.linode.com/domains/create) form.
+Figuring out how to create a domain starts with getting into the system. Log in to [Cloud Manager](https://cloud.linode.com/) and choose **Domains** from the left navigation menu. Click the **Create Domain** button. This opens the [Domain Create](https://cloud.linode.com/domains/create) form.
 
 ## Select the Zone Type
 
@@ -41,7 +38,7 @@ Within the **SOA Email Address** field, enter the email address for the domain a
 
 ## Pre-populate DNS Records
 
-The **Insert Default Records** dropdown field allows you to pre-populate DNS records with the IP addresses corresponding to one of your Compute Instances or NodeBalancers. If you already know the Compute Instance or NodeBalancer you'd like to use with your domain, this adds the basic DNS records (A, AAAA, and MX) for that service automatically.
+The **Insert Default Records** dropdown field lets you pre-populate DNS records with the IP addresses corresponding to one of your Compute Instances or NodeBalancers. If you already know the Compute Instance or NodeBalancer you'd like to use with your domain, this adds the basic DNS records (A, AAAA, and MX) for that service automatically.
 
 - **Do not insert default records for me.** No DNS records are automatically created.
 - **Insert default records from one of my Lindoes.** Select one of your Compute Instances and DNS records are automatically created using the IPv4 and IPv6 addresses for that instance.

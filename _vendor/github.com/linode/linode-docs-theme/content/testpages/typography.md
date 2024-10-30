@@ -3,6 +3,24 @@ title: Testing
 description: This is a test page used in both manual and automatic tests. Do not delete. It will not be listed anywhere.
 ---
 
+## Note shortcode
+
+{{% note type="primary" %}}
+This is a primary note.
+{{% /note %}}
+
+{{% note type="secondary" %}}
+This is a secondary note.
+{{% /note %}}
+
+{{% note type="alert" %}}
+This is an alert.
+{{% /note %}}
+
+{{% note type="warning" %}}
+This is a warning.
+{{% /note %}}
+
 ## Keyboard Shortcuts
 
 Example: Use <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy text.
@@ -25,18 +43,17 @@ Output shortcode:
 Blue output
 {{< /output >}}
 
-
 Command shortcode copy button overlapping content:
-  
-  ```command
-  a = b; b = c; c = a; d = e; e = f; f = d; g = h; h = i; i = g; j = k; k = l; l = j; m = n; n = o; o = m; p = q; q = r; r = p; s = t; t = u; u = s; v = w; w = x; x = v; y = z; z = y;
-  ```
+
+```command
+a = b; b = c; c = a; d = e; e = f; f = d; g = h; h = i; i = g; j = k; k = l; l = j; m = n; n = o; o = m; p = q; q = r; r = p; s = t; t = u; u = s; v = w; w = x; x = v; y = z; z = y;
+```
 
 Command shortcode copy button overlapping content, dark:
-  
-  ```command {class="dark"}
-  a = b; b = c; c = a; d = e; e = f; f = d; g = h; h = i; i = g; j = k; k = l; l = j; m = n; n = o; o = m; p = q; q = r; r = p; s = t; t = u; u = s; v = w; w = x; x = v; y = z; z = y;
-  ```
+
+```command {class="dark"}
+a = b; b = c; c = a; d = e; e = f; f = d; g = h; h = i; i = g; j = k; k = l; l = j; m = n; n = o; o = m; p = q; q = r; r = p; s = t; t = u; u = s; v = w; w = x; x = v; y = z; z = y;
+```
 
 ### Dark
 
@@ -135,7 +152,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id me
   sudo systemctl restart apache2
   ```
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Ut suscipit nec orci vel sagittis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce accumsan fringilla urna et maximus. Aliquam erat volutpat. Nam malesuada faucibus massa ac ultrices. Sed finibus diam at dolor maximus porttitor.
-
 
 #### Lists padding
 
@@ -244,13 +260,9 @@ func IsTruthfulValue(val reflect.Value) (truth bool) {
 }
 ```
 
-
-
 ###  No Title
 
 {{< file >}} import { SayHello } from "/TestTypescript/Greetings"; {{</ file >}}
-
-
 
 ### Indented in list
 
@@ -326,7 +338,6 @@ func GetTitleFunc(style string) func(s string) string {
 }
 ```
 
-
 ### Highlighted
 
 {{< file title="/home/foo/dev/title.go" lang="bash" hl_lines="3-4" linenostart=5 >}}
@@ -363,8 +374,6 @@ func GetTitleFunc(style string) func(s string) string {
 }
 {{< /file >}}
 
-
-
 ## Styles
 
 Lorem ipsum dolor sit amet, **consectetur adipiscing elit**. Nunc sollicitudin id metus vel _malesuada_. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
@@ -380,26 +389,6 @@ Lorem ipsum dolor sit amet, **consectetur adipiscing elit**. Nunc sollicitudin i
 2. This is a [*Italic Link*](https://example.com).
 
 > This is a block quote. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
-
-
-### Disclosure Note
-
-### Starting with a link
-
-{{< disclosure-note "Starting with a link" >}}
-[Front matter](https://gohugo.io/content-management/front-matter/) and then some lorem. Ad veniam ex do anim exercitation consequat voluptate id veniam fugiat quis. Aute mollit nisi dolore eiusmod veniam commodo excepteur eu. Mollit commodo sit pariatur officia adipisicing fugiat dolore ex labore. Pariatur fugiat minim non laboris fugiat velit fugiat officia. Nulla qui velit nulla ad aliquip velit dolor ut amet pariatur.
-
-Incididunt reprehenderit nisi do cillum adipisicing sunt excepteur culpa excepteur nulla sit. Ullamco tempor sunt irure culpa Lorem esse esse dolor consectetur aliquip. Et do est et cupidatat officia ipsum sit est sit veniam Lorem non tempor do. Eiusmod laborum nostrud eiusmod cupidatat proident in mollit veniam ad cupidatat quis ullamco sunt. Ex aute non qui sint amet incididunt labore et velit ad.
-
-Dolor enim duis enim elit fugiat ea in labore deserunt proident quis voluptate. Dolore incididunt cillum exercitation sit ut amet amet consequat amet. Ad dolore deserunt ex non duis labore ut qui. Esse aliqua nostrud laborum et proident.
-
-Reprehenderit excepteur officia labore deserunt fugiat qui. Deserunt elit sint amet et est pariatur commodo duis est eu esse. Duis Lorem labore magna ad minim est adipisicing. Fugiat nostrud do velit elit. Culpa eu aliqua aliquip Lorem excepteur amet velit exercitation mollit excepteur exercitation. Quis excepteur ad et voluptate.
-
-Ipsum officia excepteur sunt quis ut mollit minim consequat adipisicing velit aute incididunt. Esse id adipisicing occaecat culpa qui consectetur sint tempor. Ex laborum enim cillum exercitation quis anim irure est duis aliqua in. Labore eu nulla adipisicing ex dolore tempor id nisi proident laborum amet ea. Ex Lorem ex magna ex. Dolor exercitation ad ad duis irure laboris pariatur eiusmod enim.
-
-Cillum irure fugiat laborum nisi ut deserunt occaecat esse officia sint in et dolore. Deserunt labore veniam ullamco aute. Irure quis amet velit velit non tempor exercitation ipsum.
-{{< /disclosure-note >}}
-
 
 ## Tables
 
@@ -421,15 +410,13 @@ Cillum irure fugiat laborum nisi ut deserunt occaecat esse officia sint in et do
 | Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content|
 | Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content|
 
-
 ### Small Table
 
 | Column | Column | Column | Column |
 | ------ | ------ | ------ | ------ |
-| Content| Content| Content| Content| 
-| Content| Content| Content| Content| 
-| Content| Content| Content| Content| 
-
+| Content| Content| Content| Content|
+| Content| Content| Content| Content|
+| Content| Content| Content| Content|
 
 ### Wide Table with scroll
 

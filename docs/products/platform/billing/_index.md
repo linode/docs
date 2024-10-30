@@ -2,20 +2,18 @@
 title: Billing
 title_meta: "Understanding How Billing Works on the Linode Platform"
 description: "Learn how Linode makes billing simple and easy so you easily anticipate your cloud infrastructure costs"
+published: 2019-10-25
+modified: 2023-09-20
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 keywords: ["billing", "payments"]
 aliases: ['/products/tools/billing/','/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/','/guides/how-linode-billing-works/','/billing-and-payments/','/platform/billing-and-support/billing-and-payments-classic-manager/','/platform/billing-and-support/billing-and-payments-new-manager/','/platform/billing-and-payments/','/platform/billing-and-support/billing-and-payments/',/guides/billing-and-payments/,'/guides/understanding-billing-and-payments/','/guides/platform/billing-and-support/']
-published: 2019-10-25
-modified: 2023-09-20
-modified_by:
-  name: Linode
 tags: ["linode platform"]
 ---
 
-Linode strives to provide transparent and uncomplicated pricing structures and billing policies. As a supplement to our [Pricing](https://www.linode.com/pricing/) page, read through this guide to understand how we bill for services and how you can pay for these services. For instructions on how to manage your billing in the Cloud Manager, see the [Manage Billing in Cloud Manager](/docs/products/platform/billing/guides/) guide. If you have a question that isn't answered in either of these guides, don't hesitate to [contact Support](https://www.linode.com/support/).
+Linode strives to provide transparent and uncomplicated pricing structures and billing policies. As a supplement to our [Pricing](https://www.linode.com/pricing/) page, read through this guide to understand how we bill for services and how you can pay for these services. For instructions on how to manage your billing in Cloud Manager, see the [Manage Billing in Cloud Manager](/docs/products/platform/billing/guides/) guide. If you have a question that isn't answered in either of these guides, don't hesitate to [contact Support](https://www.linode.com/support/).
 
 ## Understand How Billing Works
 
@@ -23,7 +21,7 @@ Linode uses a hybrid hourly billing model that is simple and flexible. It enable
 
 - Every paid service offered by Linode has a predictable monthly rate (also called the monthly cap) in addition to a flexible hourly rate.
 
-- When a service is added, charges accrue on the account at the hourly rate up to the monthly cap. These *accrued charges* are displayed on the **Billing Info** tab within the Account page of the Cloud Manager\*. Usage is always rounded up to the nearest hour.
+- When a service is added, charges accrue on the account at the hourly rate up to the monthly cap. These *accrued charges* are displayed on the **Billing Info** tab within the Account page of Cloud Manager\*. Usage is always rounded up to the nearest hour.
 
 - Linode uses a monthly billing cycle. An invoice is automatically generated on the first day of each month and includes the previous month's usage.
 
@@ -37,7 +35,7 @@ Here are a few examples of common billing scenarios you might encounter. For the
 
 #### A Service is Present on an Account for the *Entire* Month
 
-You create the Compute Instance prior to the start of the month and it remains on your account for the entire month. Calculating the service fees at the hourly rate for 720 hours (again, assuming a 30 day month), the total would have come to $38.88. Since this exceeds the monthly cap for this service, you are instead charged the predictable $36 monthly rate.
+You create the Compute Instance before the start of the month and it remains on your account for the entire month. Calculating the service fees at the hourly rate for 720 hours (again, assuming a 30 day month), the total would have come to $38.88. Since this exceeds the monthly cap for this service, you are instead charged the predictable $36 monthly rate.
 
 #### A Service is Present on an Account for *Almost* the Entire Month
 
@@ -49,7 +47,7 @@ You created the Compute Instance mid-way through the month and deleted it exactl
 
 #### A Service is Resized During the Billing Cycle
 
-Resizing a service, such as a Compute Instance, effectively creates a new billable service. Each of these billable services will appear as separate line items on your monthly invoice. For instance, you create a 4GB Compute Instance prior to the start of the month and resize it to an 8GB Compute Instance mid-way through the month. Your invoice will have two services as separate line items corresponding with the two different Compute Instance sizes that existed on your account during the billing cycle. Each line item will reflect the hourly rate for the time the service was active (up to the monthly cap).
+Resizing a service, such as a Compute Instance, effectively creates a new billable service. Each of these billable services will appear as separate line items on your monthly invoice. For instance, you create a 4GB Compute Instance before the start of the month and resize it to an 8GB Compute Instance mid-way through the month. Your invoice will have two services as separate line items corresponding with the two different Compute Instance sizes that existed on your account during the billing cycle. Each line item will reflect the hourly rate for the time the service was active (up to the monthly cap).
 
 {{< note type=warning >}}
 If a service is resized to a new plan and then resized back to the original plan all in a single billing cycle, there will be 3 billable services. The combined hourly rate for these services may exceed the monthly cap of the original service plan.

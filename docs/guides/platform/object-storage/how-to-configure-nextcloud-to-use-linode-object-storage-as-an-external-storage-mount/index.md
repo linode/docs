@@ -1,18 +1,17 @@
 ---
 slug: how-to-configure-nextcloud-to-use-linode-object-storage-as-an-external-storage-mount
+title: "Configuring Nextcloud to use Linode Object Storage as an External Storage Mount"
+title_meta: "How to Configure Nextcloud to use Object Storage"
 description: "Learn how to enable Nextcloud's External Storage app and then configure it to use Linode Object Storage as a secondary storage location."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2020-06-16
 keywords: ['file hosting','nextcloud','object storage','s3']
 tags: ["linode platform","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-06-16
-modified_by:
-  name: Linode
-title: "Configuring Nextcloud to use Linode Object Storage as an External Storage Mount"
-title_meta: "How to Configure Nextcloud to use Object Storage"
 external_resources:
 - '[Nextcloud Configuring External Storage Documentation](https://docs.nextcloud.com/server/15/admin_manual/configuration_files/external_storage_configuration_gui.html#)'
 aliases: ['/platform/object-storage/how-to-configure-nextcloud-to-use-linode-object-storage-as-an-external-storage-mount/']
-authors: ["Linode"]
 ---
 {{< youtube QWaCg4q4a0A >}}
 
@@ -22,7 +21,7 @@ You can configure Nextcloud to enable external storage devices and services, lik
 
 ## Before You Begin
 
-1. Deploy a Nextcloud server instance. You can use the [Linode Nextcloud Marketplace App](/docs/products/tools/marketplace/guides/nextcloud/) for an easy and quick deployment.
+1. Deploy a Nextcloud server instance. You can use the [Linode Nextcloud Marketplace App](/docs/marketplace-docs/guides/nextcloud/) for an easy and quick deployment.
 
 1. [Generate Object Storage access keys](/docs/products/storage/object-storage/guides/access-keys/.
 
@@ -39,7 +38,7 @@ You can configure Nextcloud to enable external storage devices and services, lik
 
 In this section you enable the *External Storage Support* Nextcloud app in order to use external storage sources.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You must belong to the `admin` user group in order to install the External storage support app.
 {{< /note >}}
 
@@ -63,7 +62,7 @@ You must belong to the `admin` user group in order to install the External stora
 
 After enabling the External Storage Support app, you are now ready to add a new external storage mount. You configure the new external storage mount to use the Linode Object Storage service.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you have not yet [created an Object Storage access key](/docs/products/storage/object-storage/guides/access-keys/), you should do so now before proceeding with this section.
 {{< /note >}}
 

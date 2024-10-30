@@ -1,16 +1,15 @@
 ---
 slug: implementing-cloud-based-document-management-system
+title: "How to Implement a Cloud-based Document Management System"
 description: "Implementing an efficient electronic document management system (EDMS) can give you a high performance, high availability solution for storing and processing documents. Learn about our architecture for a cloud-based document management system and how to implement your own in this tutorial."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-02-28
 keywords: ['open source document management system','cloud document management system','cloud edms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-02-28
-modified_by:
-  name: Nathaniel Stickman
-title: "How to Implement a Cloud-based Document Management System"
 tab_group_main:
   title: Guides
   weight: 20
-authors: ["Nathaniel Stickman"]
 ---
 
 When you want to host your own document management system, it's important to have a solution that can handle your throughput and storage needs. An efficient architecture for a cloud-based document management system can provide both the scalability and high-availability you need.
@@ -215,7 +214,7 @@ This architecture uses Prometheus for collecting metrics about the Mayan nodes a
 
 Prometheus and Grafana get their own node in the architecture. Deploying that node is a straightforward process through the Linode Marketplace.
 
-1.  Follow our guide on [Deploying Prometheus and Grafana through the Linode Marketplace](/docs/products/tools/marketplace/guides/prometheus-grafana/) to get your Prometheus-Grafana node up and running.
+1.  Follow our guide on [Deploying Prometheus and Grafana through the Linode Marketplace](/docs/marketplace-docs/guides/prometheus-grafana/) to get your Prometheus-Grafana node up and running.
 
     Be sure, when creating the instance, to add the VLAN created during the Terraform process. This VLAN should have a name like `vlan-us-southeast-1`. If you changed the region for the Terraform script, replace `us-southeast` in this example with the region you selected.
 

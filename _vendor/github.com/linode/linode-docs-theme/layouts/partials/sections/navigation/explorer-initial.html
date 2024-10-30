@@ -1,0 +1,290 @@
+{{ $isDynamic :=  (eq .Type "sections") }}
+<div
+  id="explorer-static"
+  class="explorer absolute top-0 z-20 box-border{{ if not $isDynamic }}
+    explorer--active
+  {{ end }}}"
+  :class="{'explorer--active': !$store.search.shouldShowHydratedExplorerAndIsHydrated()}"
+  @click.away="closeIfMobile()"
+  @turbo:render.window="onRender()"
+  x-data="lncSearchExplorerInitial()"
+  x-show="isOpen() && !$store.search.shouldShowHydratedExplorerAndIsHydrated()"
+  x-transition.opacity.duration.30ms>
+  {{ if hugo.IsServer }}
+    <div class="bg-brand h-2">&nbsp;</div>
+  {{ end }}
+  <ul class="search-explorer-root bg-backgroundcolor">
+    {{ template "explorer-static" . }}
+  </ul>
+</div>
+{{ define "explorer-static" }}
+  {{ $configSections := site.Params.search_config2.sections }}
+  {{ $data := (partialCached "sections/search/create-cachewarmers-urls.html" . ).data }}
+  {{ $sectionfacets := index $data "sectionfacets" }}
+  {{ $sectionsmeta := (index $data "sectionsmetamap") }}
+  {{ $pageSectionsHref := "" }}
+  {{ $pageSectionsEntries := slice }}
+  {{ if eq .Section "api" }}
+    {{/* The API section is currently a little different. */}}
+    {{ $pageSectionsHref = .RelPermalink }}
+    {{ $pageSectionsEntries = split .RelPermalink "/" | after 2 }}
+  {{ else }}
+    {{ $pageSectionsHref = $.CurrentSection.RelPermalink }}
+    {{ $pageSectionsEntries = $.CurrentSection.SectionsEntries }}
+  {{ end }}
+
+  {{/* For blog, marketplace etc. we render one page for all sections. */}}
+  {{ $isStatic := (ne $.RelPermalink "/docs/sections/") }}
+
+  {{ $delim := " > " }}
+  {{ $prefixes := slice }}
+  {{ $prefix := "" }}
+  {{ if $isStatic }}
+    {{ range $pageSectionsEntries }}
+      {{ $prefix = printf "%s%s%s" $prefix . $delim }}
+      {{ $prefixes = $prefixes | append $prefix }}
+    {{ end }}
+  {{ end }}
+
+  {{/* We don't want/need to render everything. */}}
+  {{ $facets := slice }}
+  {{ $otherFacets := slice }}
+  {{ range $i, $v := $sectionfacets -}}
+    {{ $open :=  and (not $.IsHome) $isStatic (strings.HasPrefix $pageSectionsHref $v.href) }}
+    {{ $include := or $open (eq $v.level 1) }}
+    {{ if not $include }}
+      {{ range $prefixes }}
+        {{ $level := add (. | strings.Count $delim) 1 }}
+        {{ if and (eq $level $v.level)  (strings.HasPrefix $v.key .) }}
+          {{ $include = true }}
+          {{ break }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    {{ if $include }}
+      {{ $facets = $facets | append (merge $v (dict "open" $open)) -}}
+    {{ end }}
+  {{ end -}}
+
+  {{ $facets = sort $facets "weight" }}
+
+  {{ $d := dict
+    "facets" $facets
+    "data" $data
+    "dot" $
+  }}
+
+  {{ range $d.facets }}
+    {{ if ne .level 1 -}}
+      {{ continue -}}
+    {{ end }}
+    {{ $d := dict
+      "data"  $d
+      "node" .
+    }}
+    {{ template "explorer-static-node-recursive" $d }}
+  {{ end }}
+{{ end }}
+
+{{ define "explorer-static-node-recursive" }}
+  {{ $classesm := dict
+    "explorer__node--after-first" (gt .node.level 1)
+    "pl-6" (eq .node.level 2)
+  }}
+
+  {{ $classes := partial "inline/get-classes" $classesm -}}
+  {{ $nodeJSON := (dict "open" .node.open "level" .node.level "key" .node.key "href" .node.href "count" .node.count) | jsonify -}}
+  <li class="explorer__node {{ $classes }}" data-testid="node-{{ .node.key }}">
+    <div class="explorer__node__inner" data-testid="li-{{ .node.level }}">
+      {{ $classes := partial "inline/get-classes" (dict
+        "text-gray-900 bg-white explorer__row--first pl-container border-b-gray" (eq .node.level 1)
+        "explorer__row--after-first text-gray-700" (gt .node.level 1))
+      -}}
+      <div class="flex items-center justify-between pr-6 {{ $classes }}">
+        <div class="flex content-end flex-auto">
+          {{ if eq .node.level 1 }}
+            <div class="text-basicgray flex items-center">
+              {{ $classesm := dict
+                "text-gray-300" (eq .node.count 0)
+                "text-brand" (and (eq .node.level 1) .node.open)
+              -}}
+              {{ $classes := partial "inline/get-classes" $classesm }}
+              <svg
+                class="fill-current block w-5 {{ $classes }}"
+                style="height: 16.87px;">
+                <use href="{{ .node.icon }}"></use>
+              </svg>
+            </div>
+          {{ end }}
+          {{ $classesm := dict
+            "text-brand" (and (eq .node.level 1) .node.open)
+            "text-titlecolor" (and (eq .node.level 1) (not .node.open) (not (eq .node.count 0)))
+            "pl-4" (eq .node.level 1)
+            "py-2" (eq .node.level 2)
+            "py-1-5" (gt .node.level 2)
+            "text-textcolor" (gt .node.level 1)
+            "font-semibold" (or (eq .node.level 1) (and (gt .node.level 1) .node.open))
+            "text-sm" (eq .node.level 2)
+            "text-xs" (gt .node.level 2)
+            "text-gray-300" (eq .node.count 0)
+            "explorer-node-open"  (and (gt .node.level 1) .node.open)
+          }}
+          {{ $classes := partial "inline/get-classes" $classesm }}
+          <a
+            {{ if ge .node.count 0 }}
+              @click="onClickStaticBranchNode($event, '{{ .node.href }}',
+              '{{ .node.objectID }}', '{{ .node.key }}');"
+            {{ end }}
+            href="{{ .node.href }}"
+            data-testid="node-link"
+            class="block relative cursor-pointer pr-3 no-underline capitalize z-10 flex-auto {{ $classes }}">
+            <span class="bg-container h-full"></span>
+            <span>{{ .node.linkTitle | default .node.title }}</span>
+          </a>
+        </div>
+
+        <div class="flex items-center h-full">
+          {{ $classes := partial "inline/get-classes" (dict
+            "text-gray-100" (eq .node.count 0)
+            "text-basicgray" (not (eq .node.count 0))
+            )
+          }}
+
+          {{ if not (strings.HasPrefix .node.href "http") }}
+            <div class="z-10">
+              {{ $ariaLabel := cond .node.open "close" "open" }}
+              {{ $classes := partial "inline/get-classes" (dict
+                "text-gray-200" (eq .node.count 0)
+                "text-textcolor" (not (eq .node.count 0))
+                )
+              }}
+              <button
+                type="button"
+                name="open"
+                @click="hydrateAndSwitchOpenStateForKey('{{ .node.key }}', {{ .node.open }} )"
+                class="btn-icon h-full flex items-center justify-center {{ $classes }}"
+                data-testid="{{ printf `%s-%d` $ariaLabel .node.level }}"
+                aria-label="{{ $ariaLabel }}"
+                {{ if (eq .node.count 0) }}
+                  disabled
+                {{ end }}>
+                {{ $icon := cond .node.open "#icon--arrow-up" "#icon--arrow-down" }}
+                <svg class="w-4 h-3 titlecolor">
+                  <use href="{{ $icon }}"></use>
+                </svg>
+              </button>
+            </div>
+          {{ else }}
+            <div class="z-10">
+              <a href="{{ .node.href }}">
+                <svg class="w-4 h-3 titlecolor">
+                  <use href="#icon--arrow-up-right"></use>
+                </svg>
+              </a>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+
+      {{ $classesm := dict
+        "py-2" (eq .node.level 1)
+        "py-1" (gt .node.level 1)
+        "border-l-2 pl-3" (gt .node.level 1)
+      }}
+      {{ $classes := partial "inline/get-classes" $classesm }}
+
+      {{ if .node.open }}
+        {{ $node := .node }}
+        <ul class="node-tree h-full {{ $classes }}">
+          {{ $pages := index $.data.data $.node.key }}
+          {{ if $pages }}
+            {{ $pages = sort $pages "linkTitle" }}
+          {{ end }}
+          {{ with $pages }}
+            {{ $pageCount := 0 }}
+            {{ $pageCountHidden := 0 }}
+            {{ range $i, $p := . }}
+              {{ if $p.isBranch }}
+                {{ continue }}
+              {{ end }}
+              {{ $pageCount  = add $pageCount 1 }}
+              {{ if $p.deprecated }}
+                {{ $pageCountHidden  = add $pageCountHidden 1 }}
+                {{ continue }}
+              {{ end }}
+
+              {{ if $p.hierarchy }}
+                {{/* This is the reference-section.
+                  All pages in a section shares the same href (the section),
+                  and the best match is selected while searching using Algolia's distinct keyword.
+                  This is the explorer and we needk link to the detail page.
+                */}}
+                {{ $p = index $p.hierarchy (sub (len $p.hierarchy) 1) }}
+              {{ end }}
+
+              {{ $target := "" }}
+              {{ if strings.HasPrefix $p.href "http" }}
+                {{ $target = "_blank" }}
+              {{ end }}
+              {{ $isActive := (eq $p.href $.data.dot.RelPermalink) }}
+              {{ $classes := partial "inline/get-classes"  (dict
+                "text-textcolor" (not $isActive)
+                "text-brand font-semibold is-active-page" $isActive
+                "pl-6" (eq $.node.level 1)
+                )
+              }}
+              <li>
+                <a
+                  @click="onClickStaticLeafNode($event, '{{ $p.href }}', '{{ $p.objectID }}');"
+                  href="{{ $p.href }}"
+                  target="{{ $target }}"
+                  class="py-1-5 inline-block page-link mr-2 text-xs capitalize cursor-pointer no-underline active:text-brand hover:text-gray-900 focus:outline-none {{ $classes }}
+                  ">
+                  {{ $p.linkTitle }}
+                </a>
+              </li>
+            {{ end }}
+            {{ if $pageCountHidden }}
+              <li>
+                <a
+                  href="{{ $node.href }}"
+                  class="py-1-5 inline-block page-link mr-2 text-xs capitalize cursor-pointer no-underline active:text-brand hover:text-gray-900 focus:outline-none 
+                ">
+                  See All
+                  {{ $pageCount }}
+                  {{ $node.linkTitle | default $node.title }} Guides
+                </a>
+              </li>
+            {{ end }}
+          {{ end }}
+          {{ $facetsNextLevel := slice }}
+          {{ $nextLevel := add .node.level 1 }}
+          {{ range $.data.facets -}}
+            {{ if or  (not (eq .level $nextLevel)) (not (strings.HasPrefix .href  $.node.href)) -}}
+              {{ continue -}}
+            {{ end -}}
+            {{ $d := dict
+              "data" $.data
+              "node" .
+            }}
+            {{ $facetsNextLevel = $facetsNextLevel | append $d -}}
+          {{ end -}}
+          {{ range $facetsNextLevel -}}
+            {{ template "explorer-static-node-recursive" . }}
+          {{ end }}
+        </ul>
+      {{ end }}
+    </div>
+  </li>
+{{ end }}
+
+{{ define "partials/inline/get-classes" }}
+  {{ $classes := slice }}
+  {{ range $k, $v := . }}
+    {{ if $v }}
+      {{ $classes = $classes | append  $k }}
+    {{ end }}
+  {{ end }}
+  {{ return (delimit $classes " ") }}
+{{ end }}

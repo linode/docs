@@ -1,8 +1,8 @@
 ---
 title: Manually Configuring a VLAN on a Linode
+modified: 2022-08-23
 tab_group_main:
     weight: 20
-modified: 2022-08-23
 ---
 
 When a VLAN is assigned to a network interface and given an IPAM address, the Compute Instance should automatically be able to communicate over that private network. This is due to [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/), which is enabled by default on most instances. For compatible distributions, Network Helper adjusts the internal network configuration files. Any network interfaces defined in the Compute Instance's selected [Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) (including those with VLANs attached) are automatically configured.
@@ -11,7 +11,7 @@ This guide is for users that have disabled Network Helper on their Compute Insta
 
 ## Ubuntu 18.04 and Later
 
-Ubuntu Server 18.04 and later versions use Netplan to configure networking, with systemd-networkd operating as the backend. Network configuration files for each interface are located in `/etc/systemd/network/`:
+Ubuntu Server 18.04 and later versions use Netplan to configure networking, with systemd-networkd operating as the back end. Network configuration files for each interface are located in `/etc/systemd/network/`:
 
 - **eth0**: `/etc/systemd/network/05-eth0.network`
 - **eth1**: `/etc/systemd/network/05-eth1.network`
@@ -104,7 +104,7 @@ CentOS 7 and above, as well as Fedora, all use systemd-networkd and NetworkManag
     inet 10.0.0.1/24 brd 10.0.0.255 scope global eth1
     ```
 
-2. Test the VLAN's connectivity by pinging another Linode within the VLAN's private network, using the IPAM address assigned to it. For more details, see the *Testing Connectivity* section of the [Getting Started with VLANs](/docs/products/networking/vlans/get-started/#testing-connectivity) guide.
+2. Test the VLAN's connectivity by pinging another Linode within the VLAN's private network, using the IPAM address assigned to it. For more details, see the *Testing Connectivity* section of the [Attach a VLAN to a Compute Instance](/docs/products/networking/vlans/guides/attach-to-compute-instance/#testing-connectivity) guide.
 
 ## Additional Configuration Instructions
 

@@ -8,11 +8,11 @@
     {{ $showToc = or $showToc (eq .Section "api") }}
   {{ end }}
 {{ end }}
-<!DOCTYPE html>
+<!doctype html>
 {{/* Note that the TailwindCSS config is "scoped" by the ln-docs ID, so don't change it for no good reason. */}}
-<html id="ln-docs" lang="{{ site.Language.Lang }}">
+<html id="ln-docs" lang="{{ site.Language.Lang }}" class="is-not-turbo-loaded">
   <head>
-    {{ if or site.IsServer (eq hugo.Environment "testing") }}
+    {{ if or hugo.IsServer (eq hugo.Environment "testing") }}
       <script>
         window.__timerStart = Date.now();
         window.__stopWatch = function (what) {
@@ -97,7 +97,6 @@
       <header
         id="linode-menus"
         class="z-20"
-        x-ignore
         data-turbo-permanent
         data-turbo="false">
         {{ partial "linode-header.html" }}
@@ -143,8 +142,9 @@
       {{/* Left side explorer menu. */}}
       <nav
         id="explorer"
-        class="sticky overflow-y-scroll z-0 top--navbar-row border-r-gray">
-        {{ partialCached "sections/navigation/explorer.html" . }}
+        class="sticky overflow-y-auto h-full z-0 top--navbar-row border-r-gray"
+        {{ if not (eq .Type "sections") }}data-preserve-scroll{{ end }}>
+        {{ partial "sections/navigation/explorer.html" . }}
       </nav>
 
       {{/* Main content area. */}}
@@ -170,13 +170,14 @@
                     {{ block "content_header" . }}{{ end }}
                   </div>
                   <div class="flex w-full">
-                    <div x-ignore class="content max-w-content w-full xl:w-3/4">
+                    <div class="content max-w-content w-full xl:w-3/4">
                       {{ block "content_main" . }}{{ .Content }}{{ end }}
                     </div>
                     <div
                       class="hidden overflow-y-auto xl:block sticky top-20 hide-if-no-js flex-none xl:w-60 pl-8 pr-4 mt-6"
-                      style="height: 80vh;">
+                      style="height: 90vh;">
                       {{ partial "sections/navigation/toc-main.html" . }}
+                      {{ partial "sections/navigation/recommendations-box.html" . }}
                     </div>
                   </div>
                 </div>

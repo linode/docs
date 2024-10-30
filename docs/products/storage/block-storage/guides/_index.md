@@ -26,7 +26,7 @@ tab_group_main:
 
 - [Boot a Linode from a Block Storage Volume](/docs/products/storage/block-storage/guides/boot-from-a-volume/)
 
-- [Manage Block Storage Volumes with the Linode API](/docs/products/tools/api/guides/block-storage/)
+- [Manage Block Storage Volumes with the Linode API](/docs/products/storage/block-storage/guides/manage-block-storage-with-linode-api/)
 
 ### Kubernetes
 

@@ -1,21 +1,20 @@
 ---
 slug: email-with-postfix-dovecot-and-mariadb-on-centos-7
+title: 'Email with Postfix, Dovecot and MariaDB on CentOS 7'
 description: 'This guide provides you with step-by-step instructions for installing the Postfix MTA along with the Dovecot mail server and MariaDB on CentOS.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2015-03-26
+modified: 2018-10-10
 keywords: ["postfix centos 7", "dovecot centos 7", "linux mail server", "email", "centos 7"]
 tags: ["centos","postfix","email","mariadb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mariadb-on-centos-7/','/email/postfix/email-with-postfix-dovecot-and-mysql-on-centos-7/']
-modified: 2018-10-10
-modified_by:
-  name: Linode
-published: 2015-03-26
-title: 'Email with Postfix, Dovecot and MariaDB on CentOS 7'
 external_resources:
  - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/guides/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
  - '[Postfix SASL Howto](http://www.postfix.org/SASL_README.html)'
  - '[Dovecot Wiki](https://wiki2.dovecot.org/)'
-authors: ["Linode"]
 ---
 
 In this guide, you'll learn how to set up a secure virtual user mail server with Postfix, Dovecot, and MariaDB (a drop-in replacement for MySQL) on CentOS 7. We'll explain how to create new user mailboxes and send or receive email to and from configured domains.
@@ -24,7 +23,7 @@ In this guide, you'll learn how to set up a secure virtual user mail server with
 
 For a different Linux distribution or different mail server, review our [email tutorials](/docs/email/).
 
-{{< content "email-warning-shortguide" >}}
+{{% content "email-warning-shortguide" %}}
 
 ## Before You Begin
 
@@ -60,7 +59,7 @@ Verify that the `hosts` file contains a line for the Linode's public IP address 
 
 You will need to install a SSL certificate on your mail server prior to completing the [Dovecot](#dovecot) configuration steps. The SSL certificate will authenticate the identity of the mail server to users and encrypt the transmitted data between the user's mail client and the mail server.
 
-{{< content "certbot-shortguide-centos" >}}
+{{% content "certbot-shortguide-centos" %}}
 
 Make a note of the certificate and key locations on the Linode. You will need the path to each during the [Dovecot](#dovecot) configuration steps.
 
@@ -438,6 +437,13 @@ smtps     inet  n       -       -       -       -       smtpd
 
         sudo systemctl restart postfix
 
+    If you get the `fatal: 0.0.0.0:smtps: Servname not supported for ai_socktype` error after restarting Postfix, add following service entries to `/etc/services`:
+
+    {{< file "/etc/services">}}
+smtps 465/tcp # Secure SMTP
+smtps 465/udp # Secure SMTP
+{{< /file >}}
+
 ## Dovecot
 
 Dovecot is the *Mail Delivery Agent* (MDA) which is passed messages from Postfix and delivers them to a virtual mailbox. In this section, configure Dovecot to force users to use SSL when they connect so that their passwords are never sent to the server in plain text.
@@ -648,8 +654,7 @@ ssl_key = </etc/letsencrypt/live/example.com/privkey.pem
         sudo systemctl restart dovecot
 
 ## Test Your Configuration
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Given the possibility of hosting a large number of virtual domains on a single mail system, the username portion of an email address (i.e. before the `@` sign) is not sufficient to authenticate to the mail server. When email users authenticate to the server, they must supply their email clients with the *entire* email address created above as their username.
 {{< /note >}}
 

@@ -2,12 +2,11 @@
 slug: configure-and-secure-servers-with-cloud-init
 title: "Use Cloud-Init to Automatically Configure and Secure Your Servers"
 description: "Learn how you can use cloud-init to automate the process of configuring and securing a new cloud instance."
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
+published: 2023-11-15
 keywords: ['cloud-init','cloudinit','metadata']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Nathaniel Stickman"]
-published: 2023-11-15
-modified_by:
-  name: Nathaniel Stickman
 ---
 
 By using Akamai's Metadata service, you can automatically configure your new Compute Instances through cloud-init. This guide walks you through building a cloud-config file (for use with cloud-init) and deploying a Compute Instance using that configuration. It covers a series of recommended options for initializing and securing a Compute Instance. These configurations parallel the steps in our guide on [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Toward the end of the guide, you can see the [Complete Cloud-Config File](#complete-cloud-config-file) as well as steps for how to [Deploy an Instance with User Data](#deploy-an-instance-with-user-data).
@@ -119,7 +118,7 @@ To increase the security of SSH connections into your Compute Instance, you shou
 
 By default, the cloud-config `users` setup assumes `lock_passwd: true`, automatically disabling password authentication. You can learn more about user setup and managing such features in our guide [Use Cloud-Init to Manage Users on New Servers](/docs/guides/manage-users-with-cloud-init/).
 
-To disable root logins, you need to modify the SSH configuration file. Cloud-config does not have a direct option for this, but you can use its versatile `runcmd` key to automate the necessary commands. Learn more about the `runcmd` option in our guide [Use Cloud-Init to Run Commands and Bash Scripts on First Boot](/docs/guides/run-commands-and-bash-scripts-with-cloud-init).
+To disable root logins, you need to modify the SSH configuration file. Cloud-config does not have a direct option for this, but you can use its versatile `runcmd` key to automate the necessary commands. Learn more about the `runcmd` option in our guide [Use Cloud-Init to Run Commands and Bash Scripts on First Boot](/docs/guides/run-shell-commands-with-cloud-init/).
 
 The example below removes any existing `PermitRootLogin` configuration and adds a new configuration disabling `PermitRootLogin`. The last command restarts the `sshd` service for the changes to take effect.
 

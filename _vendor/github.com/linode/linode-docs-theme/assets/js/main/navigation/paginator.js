@@ -1,6 +1,6 @@
 'use strict';
 
-import { getIntParamFromLocation, updatePaginationParamInLocation } from '../helpers/index';
+import { getIntParamFromLocation, updatePaginationParamInLocation } from '../helpers/helpers';
 
 var debug = 0 ? console.log.bind(console, '[paginator]') : function () {};
 

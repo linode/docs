@@ -1,8 +1,7 @@
-# github.com/linode/linode-docs-theme v0.0.0-20231122163147-de97448351fc
-# github.com/linode/linode-website-partials v0.0.0-20231027173434-abbc557a5519
-# github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3 v3.401.201
-# github.com/gohugoio/hugo-mod-jslibs/turbo/v7 v7.20300.20000
-# github.com/bep/turbo/v7 v7.20300.20000
-# github.com/gohugoio/hugo-mod-jslibs/instantpage v0.5.1
-# github.com/instantpage/instant.page v5.1.1+incompatible
-# github.com/linode/linode-api-docs/v4 v4.167.3
+# github.com/linode/linode-docs-theme v0.0.0-20241007154737-202188059409
+# github.com/linode/linode-website-partials v0.0.0-20241004163055-18afaa3dfa37
+# github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3 v3.21300.20800
+# github.com/gohugoio/hugo-mod-jslibs/turbo/v8 v8.20000.20400
+# github.com/hotwired/turbo v8.0.4+incompatible
+# github.com/bigskysoftware/idiomorph v0.3.0
+# github.com/linode/linode-api-docs/v4 v4.176.0

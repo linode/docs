@@ -2,15 +2,12 @@
 title: Transfer Services to a Different Account
 title_meta: How to Transfer Services to a Different Linode Account
 description: "Learn how to transfer ownership of Linode services to a different account."
-keywords: ["linode transfer ownership", "transfer linode to another account", "linode can i transfer"]
-tags: ["cloud manager","linode platform","account"]
 published: 2021-03-10
 modified: 2023-11-15
-modified_by:
-  name: Linode
+keywords: ["linode transfer ownership", "transfer linode to another account", "linode can i transfer"]
+tags: ["cloud manager","linode platform","account"]
 image: TransferOwn_LinodeServ_ST.png
 aliases: ['/guides/platform/manager/service-transfers/', '/guides/service-transfers/']
-authors: ["Linode"]
 ---
 
 Within the Linode Platform, Compute Instances can be transferred from one account to a different account. Here's an overview of this transfer process:
@@ -66,7 +63,7 @@ Each Compute Instance that you wish to transfer must have a unique label that is
     {{< /note >}}
 
     {{< note type="alert" >}}
-    DNS records that are associated with requested services will not be transferred or updated. Please ensure that associated DNS records have been updated or communicated to the recipient prior to the transfer.
+    DNS records that are associated with requested services will not be transferred or updated. Please ensure that associated DNS records have been updated or communicated to the recipient before the transfer.
     {{< /note >}}
 
     {{< note type="alert" >}}
@@ -100,7 +97,7 @@ Each Compute Instance that you wish to transfer must have a unique label that is
 
 1.  In the **Receive a Service Transfer** field, enter the Service Transfer token you have received from the sender and click the **Review Details** button.
 
-    ![Review the summary of Linode services to be transferred prior to accepting.](receive-transfer.png "Review the summary of Linode services to be transferred prior to accepting.")
+    ![Review the summary of Linode services to be transferred before accepting.](receive-transfer.png "Review the summary of Linode services to be transferred before accepting.")
 
 1.  If the services are eligible for transfer, you are prompted to confirm responsibility for billing associated with those services. Billing begins for the receiving account after the transfer has been completed. Confirm billing responsibility and click **Accept Transfer** to begin transfer of services to your account. A confirmation email is sent to both the sending and receiving accounts.
 
@@ -131,7 +128,7 @@ Each Compute Instance that you wish to transfer must have a unique label that is
 {{< note type="alert" >}}
 When receiving a Compute Instance, it is important to make sure that **Any Longview Key** is fully revoked and removed from that instance by removing the Longview agent. If client keys are not revoked and removed, the transferring user gains access to all data visible to any Longview client by using the pre-existing API key, even after the transfer has been completed. Users will not be informed by default if the received Compute Instance has a Longview key installed, and should always follow the process for removing the Longview agent to be sure.
 
-For more information on revoking and removing a Longview key and uninstalling the Longview agent, see our [Documentation on Uninstalling Longview](/docs/products/tools/longview/get-started/#uninstall-the-longview-client).
+For more information on revoking and removing a Longview key and uninstalling the Longview agent, see our [Documentation on Uninstalling Longview](/docs/products/tools/longview/guides/manage/#delete-client).
 {{< /note >}}
 
 ## Cancelling Service Transfers

@@ -1,9 +1,8 @@
 ---
 title: Configure SSH Access for Managed Services
-linkTitle: Configure SSH Access
 description: "Learn how to configure SSH so that our team can access your system when troubleshooting."
 published: 2023-04-11
-authors: ["Linode"]
+linkTitle: Configure SSH Access
 ---
 
 To troubleshoot an issue with a failed monitor check, the Support Team needs access to your system. This access can be provided by using the unique public key generated for your account. You can upload this key to any system user and then configure the SSH access settings for each Compute Instance so that our team is aware of how they should log in. To start using your public key, follow the steps below *for each Compute Instance* on your account.
@@ -20,11 +19,11 @@ If you do not wish to use this public key, you can also configure credentials in
 
 Linode generates a unique public/private keypair for your account when Managed Services is enabled. The public key is accessible on your account so that you can add it to each Compute Instance. The private key is then used by the Support Team to access your system whenever an issue requires investigation. You can locate your public key through the following steps:
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Managed** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and click the **Managed** link in the sidebar.
 
 1. Navigate to the **SSH Access** tab. Your public key is displayed at the top of this tab.
 
-    ![A screenshot of an account's public key in the Cloud Manager](managed-public-key.png)
+    ![A screenshot of an account's public key in Cloud Manager](managed-public-key.png)
 
 1. Hover over the public key box to view the full public key. To copy it, click the **Copy to clipboard** button.
 
@@ -53,7 +52,7 @@ Installing the public SSH key for the `root` user is the easiest way to add Lino
         ```
 
         {{< note title="Note for using a limited user" isCollapsible=true >}}
-        In general, [sudo privileges](/docs/guides/linux-users-and-groups/#understanding-sudo) are needed to run many of the troubleshooting commands our Support Team might use. Whenever possible, you should grant the limited user sudo privileges. The [Adding a New User](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) guide shows how to add your user to the `sudo` group (or `wheel` or `admin` group, depending on your distribution).
+        In general, [sudo privileges](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) are needed to run many of the troubleshooting commands our Support Team might use. Whenever possible, you should grant the limited user sudo privileges. The [Adding a New User](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) guide shows how to add your user to the `sudo` group (or `wheel` or `admin` group, depending on your distribution).
 
         After adding the limited user account to the sudo group, you need to either provide the user's password to the Support Team (see [Add Credentials](#adding-service-credentials)) or enable passwordless sudo by following the instructions below.
 
@@ -88,7 +87,7 @@ Installing the public SSH key for the `root` user is the easiest way to add Lino
 
 1. Save the changes to the file and exit your text editor. In the `nano` editor, enter <kbd>Ctrl</kbd>-<kbd>X</kbd> and then <kbd>Y</kbd> to confirm.
 
-Once you've added the public key to your preferred user, you may need to allow access from our infrastructure (see [Configuring Firewall Rules](#configuring-firewall-rules)). If you wish to confirm that everything is properly configured, [open a support ticket](/docs/products/platform/get-started/guides/support/#contacting-linode-support) to have the Support team confirm that they have access. Repeat this process on every Compute Instance you want to monitor.
+Once you've added the public key to your preferred user, you may need to allow access from our infrastructure (see [Configuring Firewall Rules](#configuring-firewall-rules)). If you wish to confirm that everything is properly configured, [open a support ticket](/docs/products/platform/get-started/guides/support/#contact-customer-support) to have the Support team confirm that they have access. Repeat this process on every Compute Instance you want to monitor.
 
 ## Edit SSH Access Settings for Each Compute Instance
 
@@ -105,7 +104,7 @@ Modifying these SSH access settings for a Compute Instance **does not change** a
 
 Follow the steps below to edit the SSH access settings for each Compute Instance.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Managed** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and click the **Managed** link in the sidebar.
 
 1. Navigate to the **SSH Access** tab and scroll down to view a list of Compute Instances on your account.
 

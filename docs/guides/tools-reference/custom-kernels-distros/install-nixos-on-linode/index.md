@@ -1,14 +1,14 @@
 ---
 slug: install-nixos-on-linode
-published: 2017-06-16
+title: Install and Configure NixOS on a Linode
 description: 'Install NixOS, which is known for its declarative approach to configuration management, configuration rollback, reliability, and for being DevOps-friendly.'
+authors: ["Andrew Miller"]
+contributors: ["Andrew Miller"]
+published: 2017-06-16
+modified: 2024-07-05
 keywords: ["custom distro", "NixOS", "advanced Linux", "kvm"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified_by:
-  name: Andrew Miller
-modified: 2023-07-11
-title: Install and Configure NixOS on a Linode
 external_resources:
  - '[NixOS](https://nixos.org/nixos/manual/)'
  - '[Nixpkgs](https://nixos.org/nixpkgs/manual/)'
@@ -18,7 +18,6 @@ relations:
         keywords:
             - distribution: NixOS
 aliases: ['/tools-reference/custom-kernels-distros/install-nixos-on-linode/']
-authors: ["Andrew Miller"]
 ---
 
 ![How to Install NixOS on Linode](nixos-title.png "How to Install NixOS on Linode")
@@ -47,15 +46,15 @@ To create a new Linode, go to the [Create Linode page](https://cloud.linode.com/
 
 ### Create Disks for Nix
 
-[Create three disk images](/docs/products/compute/compute-instances/guides/disks-and-storage/#creating-a-disk): One for the installer, one for a swap partition, and one for the root partition. Label them:
+[Create three disk images](/docs/products/compute/compute-instances/guides/disks-and-storage/#create-a-disk): One for the installer, one for a swap partition, and one for the root partition. Label them:
 
-- **Installer**: A type `ext4` disk, 1024 MB in size.
+- **Installer**: A type `ext4` disk, 1280 MB in size.
 - **Swap**: A `swap` disk no larger than 512 MB.
 - **NixOS**: A type `ext4` disk which takes up all remaining space.
 
 ### Create Configuration Profiles
 
-[Create two configuration profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/#creating-a-configuration-profile), one for the installer and one to boot NixOS. For each profile, disable all of the options under **Filesystem/Boot Helpers** and set the **Configuration Profile** to match the following:
+[Create two configuration profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/#create-a-configuration-profile), one for the installer and one to boot NixOS. For each profile, disable all of the options under **Filesystem/Boot Helpers** and set the **Configuration Profile** to match the following:
 
 -   **Installer profile**
 
@@ -78,7 +77,7 @@ To create a new Linode, go to the [Create Linode page](https://cloud.linode.com/
 
 1.  In your browser, navigate to the [NixOS download page](https://nixos.org/nixos/download.html) and copy the URL from the **Minimal installation CD, 64-bit Intel/AMD** link.
 
-1.  [Boot your Linode into rescue mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) with the **Installer** disk mounted as `/dev/sda`.
+1.  [Boot your Linode into rescue mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode) with the **Installer** disk mounted as `/dev/sda`.
 
 1.  Once in rescue mode, click the **Launch Console** link to launch the Finnix rescue console and run the following commands, replacing the URL with the latest 64-bit minimal installation image copied from the [NixOS download page](https://nixos.org/nixos/download.html):
 
@@ -306,19 +305,19 @@ In this optional section, you'll create a deployable disk image of NixOS.
     cd /var/log
     ```
 
-1.  Create an image of the **NixOS** disk using the [Linode Images](/docs/products/tools/images/#capturing-your-image) guide. Label the image according to the release of NixOS you installed. Now that you have created an image, you can select it in the distribution menu whenever you deploy a Linode.
+1.  Create an image of the **NixOS** disk using the [Linode Images](/docs/products/tools/images/guides/capture-an-image/) guide. Label the image according to the release of NixOS you installed. Now that you have created an image, you can select it in the distribution menu whenever you deploy a Linode.
 
 ## Delete the Installer Disk and Profile
 
 If you're not confident with your install configuration, you can keep the installer and boot from it to reinstall adjusted configuration repeatedly.
 
-Otherwise, you can now delete the installer disk and profile from your Linode using the [Deleting a Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#deleting-a-configuration-profile) and [Deleting a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#deleting-a-disk) guides.
+Otherwise, you can now delete the installer disk and profile from your Linode using the [Deleting a Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#delete-a-configuration-profile) and [Deleting a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#delete-a-disk) guides.
 
 Remove the **Installer** disk and reclaim the storage that the NixOS installation was using:
 
   1. Go to your Linode's dashboard and shutdown your Linode.
-  2. [Remove the *Installer* disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#deleting-a-disk).
-  3. [Resize the *NixOS* disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resizing-a-disk) to the maximum possible size.
+  2. [Remove the *Installer* disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#delete-a-disk).
+  3. [Resize the *NixOS* disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resize-a-disk) to the maximum possible size.
 
 ## Enable Longview Agent (optional)
 

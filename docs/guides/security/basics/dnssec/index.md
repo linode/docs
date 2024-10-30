@@ -2,12 +2,11 @@
 slug: dnssec
 title: "How to Secure DNS with DNSSEC"
 description: "An explanation of DNSSEC, why it's important, and how to implement it."
+authors: ["David Robert Newman"]
+contributors: ["David Robert Newman"]
+published: 2023-06-09
 keywords: ['dns','security','dnssec','domain name','poison','cache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["David Robert Newman"]
-published: 2023-06-09
-modified_by:
-  name: Linode
 external_resources:
 - '[DNSSEC - What Is It and Why Is It Important?](https://www.icann.org/resources/pages/dnssec-what-is-it-why-important-2019-03-05-en)'
 - '[RFC 9364 DNS Security Extensions (DNSSEC)](https://www.rfc-editor.org/rfc/rfc9364)'
@@ -135,7 +134,7 @@ This guide uses the `yourdomianhere.com` domain as an example. Replace this addr
     export KSK=`/usr/bin/ldns-keygen -k -a ECDSAP256SHA256 -b 2048 yourdomainehere.com`
     ```
 
-1.  **Optional**: Capture the ZSK and KSK variables for later reuse in the [Zone Maintenance](/docs/guides/dnssec#Zone-Maintenance) section.
+1.  **Optional**: Capture the ZSK and KSK variables for later reuse in the [Zone Maintenance](/docs/guides/dnssec/#zone-maintenance) section.
 
     ```command
     echo $ZSK > yourdomainhere.com.zsk

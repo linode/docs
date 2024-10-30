@@ -2,7 +2,6 @@
 title: "Using S3cmd with Object Storage"
 description: "Learn how to use the S3cmd command-line tool with Linode's Object Storage."
 modified: 2023-02-10
-authors: ["Linode"]
 ---
 
 [S3cmd](https://s3tools.org/s3cmd) is a command line utility that you can use for any S3-compatible Object Storage.
@@ -147,7 +146,7 @@ s3cmd put file.txt s3://example-bucket/
 - `-P`: Makes the object publicly accessible. This will allow the object to be accessed by anyone with the URL. Once successfully uploaded, s3cmd will output the public URL.
 - `-e`: Encrypts the object (if you've configured the correct s3cmd options to enable encryption).
 
-{{< content "object-storage-character-warning-shortguide" >}}
+{{% content "object-storage-character-warning-shortguide" %}}
 
 ### Download an Object or Directory
 
@@ -210,7 +209,7 @@ s3://example-bucket/ (bucket):
 
 ## Create a Signed URL with S3cmd
 
-Creating a **signed URL** allows you to create a link to objects with limited permissions and a time limit to access them. To create a signed URL on a preexisting object with s3cmd, use the following syntax:
+Creating a **signed URL** lets you create a link to objects with limited permissions and a time limit to access them. To create a signed URL on a preexisting object with s3cmd, use the following syntax:
 
 ```command
 s3cmd signurl s3://my-example-bucket/example.txt +300
@@ -247,7 +246,7 @@ For more information on hosting a static website with Object Storage, read our [
 
 ## Syncing Files and Directories
 
-While you can utilize the `put` command to upload entire directories, the `sync` command may offer more desirable behavior. `sync` identifies which files have been added or modified and only uploads those files. This can be especially useful when maintaining large amounts of files, such as the contents of a static site.
+While you can use the `put` command to upload entire directories, the `sync` command may offer more desirable behavior. `sync` identifies which files have been added or modified and only uploads those files. This can be especially useful when maintaining large amounts of files, such as the contents of a static site.
 
 **Command:** `s3cmd sync [local-path] s3://[bucket-label]/[path]`, replacing *[local-path]* with the path to the folder you wish to upload, *[bucket-label]* with the label for your bucket, and *[path]* with the remote path you wish to target for the upload.
 

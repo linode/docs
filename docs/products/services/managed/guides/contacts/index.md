@@ -1,9 +1,8 @@
 ---
 title: Manage Contacts for Managed Services
-linkTitle: Manage Contacts
 description: "Learn how to add contacts and contact groups to Linode Managed Services."
 published: 2023-04-11
-authors: ["Linode"]
+linkTitle: Manage Contacts
 ---
 
 Service Monitors can be configured to email your team members in the event of an issue with your system. Team member contact information is stored as a *Contact* in Managed Services. Each Service Monitor can be attached to a *Contact Group*, each of which can contain one or more individual *Contacts*. Separate groups can be created for each different system or service.
@@ -14,11 +13,11 @@ You can optionally attach up to two phone numbers to your contacts, a primary nu
 
 ## Add or Edit a Contact
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Managed** link in the sidebar.
+1. Log in to [Cloud Manager](https://cloud.linode.com) and click the **Managed** link in the sidebar.
 
 1. Navigate to the **Contacts** tab. Click on the **Add a Contact** link to add a new contact. If you wish to edit an existing contact instead, locate that contact in the list and click the corresponding **Edit** button.
 
-    ![Screenshot of the Managed Services Contacts page in the Cloud Manager](managed-contacts.png)
+    ![Screenshot of the Managed Services Contacts page in Cloud Manager](managed-contacts.png)
 
 1. In the form that appears, enter the details for this contact.
 

@@ -2,10 +2,11 @@
 title: Guides
 title_meta: "Guides and Tutorials for Compute Instances"
 description: "A collection of guides to help you start deploying Compute Instances and using them to host your web applications and Cloud workloads"
+published: 2023-01-18
+modified: 2024-06-20
 tab_group_main:
     weight: 30
 aliases: ['/products/compute/shared-linodes/guides/','/products/compute/shared-cpu/guides/','/products/compute/gpu/guides/','/products/compute/dedicated-cpu/guides/','/products/compute/high-memory/guides/']
-modified: 2023-08-24
 ---
 
 ## Basics
@@ -22,6 +23,7 @@ modified: 2023-08-24
 - [Access Your Desktop Environment Using Glish (Linode Graphical Shell)](/docs/products/compute/compute-instances/guides/glish/)
 - [Reset Root Password](/docs/products/compute/compute-instances/guides/reset-root-password/)
 - [Clone a Compute Instance](/docs/products/compute/compute-instances/guides/clone-instance/)
+- [Physically Group Compute Instances to Meet Your Needs](/docs/products/compute/compute-instances/guides/placement-groups)
 - [Initiate a Cross Data Center Migration](/docs/products/compute/compute-instances/guides/migrate-to-different-dc/)
 - [Configure Email Alerts for Resource Usage on Compute Instances](/docs/products/compute/compute-instances/guides/resource-usage-email-alerts/)
 
@@ -30,7 +32,7 @@ modified: 2023-08-24
 - [Choosing a Linux Distribution](/docs/products/compute/compute-instances/guides/distributions/)
 - [Packages Included on Linode Distribution Images](/docs/products/compute/compute-instances/guides/default-packages/)
 - [Linode Packages Mirrors for Various Distributions](/docs/products/compute/compute-instances/guides/package-mirrors/)
-- [Install a Custom Linux Distribution](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/)
+- [Install a Custom Linux Distribution](/docs/guides/install-a-custom-distribution/)
 
 ## Disks and Configurations
 
@@ -48,11 +50,13 @@ modified: 2023-08-24
 - [Manual Network Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/)
 - [Configure Failover](/docs/products/compute/compute-instances/guides/failover/)
 - [An Overview of IPv6 on Linode](/docs/products/compute/compute-instances/guides/ipv6/)
+- [DHCP IP Address Reference](/docs/products/compute/compute-instances/guides/dhcp-ip-address-reference/)
 
 ## Metadata (Automated System Configuration with Cloud-Init)
 
 - [Overview of the Metadata Service](/docs/products/compute/compute-instances/guides/metadata/)
 - [Cloud-Config Usage and Examples](/docs/products/compute/compute-instances/guides/metadata-cloud-config/)
+- [How to Use the Metadata Service API](/docs/products/compute/compute-instances/guides/metadata-api/)
 
 ## Recovery and Troubleshooting
 

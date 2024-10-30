@@ -1,6 +1,6 @@
 'use strict';
 
-import { getIntParamFromLocation, setDocumentMeta, updatePaginationParamInLocation } from '../../helpers/index';
+import { getIntParamFromLocation, setDocumentMeta, updatePaginationParamInLocation } from '../../helpers/helpers';
 import { newCreateHref } from '../../navigation/index';
 import {
 	newRequestCallback,
@@ -330,6 +330,12 @@ export function newSectionsController(searchConfig, params) {
 					s.linkTitle = m.linkTitle || m.title;
 					s.thumbnail = m.thumbnail;
 					s.thumbnailInline = m.thumbnailInline || m.thumbnailinline;
+				}
+
+				if (s.linkTitle === '') {
+					// Missing metadata, create a title from the last part of the key.
+					let last = key.split(' > ').pop();
+					s.linkTitle = last.charAt(0).toUpperCase() + last.slice(1);
 				}
 
 				return s;

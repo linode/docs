@@ -1,13 +1,12 @@
 ---
 slug: using-gitlab-runners-with-linode-object-storage
+title: "How to Use a GitLab Runner with Machine Driver and Object Storage"
 description: "GitLab Runners perform CI/CD tasks for your GitLab pipelines. From building to testing to deploying, GitLab Runners can spin up machines and run everything you need. And with Object Storage you have an effective method for caching resources between jobs. Learn more about GitLab Runners and how to set up your own in this tutorial."
+authors: [Nathaniel Stickman]
+contributors: [Nathaniel Stickman]
+published: 2023-01-22
 keywords: ['gitlab runner docker','what is gitlab runner','gitlab runner tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-01-22
-modified_by:
-  name: Linode
-authors: [Nathaniel Stickman]
-title: "How to Use a GitLab Runner with Machine Driver and Object Storage"
 external_resources:
 - '[GitLab Docs: GitLab Runner](https://docs.gitlab.com/runner/)'
 - '[GitLab Docs: Docker Machine Executor Autoscale Configuration](https://docs.gitlab.com/runner/configuration/autoscale.html)'
@@ -42,7 +41,7 @@ You can also use a GitLab SaaS (GitLab.com) instance. The steps for the GitLab R
 
 With Linode, you have three options effective for creating your own self-hosted GitLab instance.
 
-- Use the Linode Marketplace to deploy a ready instance with GitLab installed. This method requires the fewest manual steps and provides the surest and quickest way to get a GitLab instance running. You can follow along with our [Deploy Gitlab through the Linode Marketplace](/docs/products/tools/marketplace/guides/gitlab/) guide.
+- Use the Linode Marketplace to deploy a ready instance with GitLab installed. This method requires the fewest manual steps and provides the surest and quickest way to get a GitLab instance running. You can follow along with our [Deploy Gitlab through the Linode Marketplace](/docs/marketplace-docs/guides/gitlab/) guide.
 
 - Use the default package manager for your Linux distribution. GitLab maintains official installation packages for CentOS, Debian, Ubuntu, and others, and you can follow the instructions in their [official documentation](https://about.gitlab.com/install/). You may also refer to our [Install GitLab on Ubuntu 18.04](/docs/guides/install-gitlab-on-ubuntu-18-04/) for additional details on the installation process.
 
@@ -358,7 +357,7 @@ Your GitLab Runner needs some changes to its configuration now to support autosc
 
 ### Test the Autoscaling GitLab Runner
 
-Verifying your autoscaling setup works similarly to verifying your GitLab Runner setup overall. You can simply commit a change to one of the files in the example project created for the [Testing Your GitLab Runner](/docs/guides/using-gitlab-runners-with-linode-object-storage/#testing-your-gitlab-runner) section above.
+Verifying your autoscaling setup works similarly to verifying your GitLab Runner setup overall. You can simply commit a change to one of the files in the example project created for the [Testing Your GitLab Runner](#test-your-gitlab-runner) section above.
 
 The CI/CD pipeline automatically creates new jobs for the runner to pick up. The runner has now been configured to provision machines to fulfill the jobs, but otherwise, you can see the results just as before.
 

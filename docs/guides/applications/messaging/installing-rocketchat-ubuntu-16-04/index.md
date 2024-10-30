@@ -1,21 +1,21 @@
 ---
 slug: installing-rocketchat-ubuntu-16-04
+title: 'Installing Rocket.Chat on Ubuntu 16.04'
 description: 'Installation and basic usage guide for Rocket.Chat, a lightweight XMPP server on Ubuntu 16.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-06-21
+modified: 2018-08-17
 keywords: ["rocket.chat", "slack alternative", "chat", "xmpp"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-17
-modified_by:
-  name: Linode
-published: 2018-06-21
-title: 'Installing Rocket.Chat on Ubuntu 16.04'
 external_resources:
  - '[Deploying Rocket.Chat on Ubuntu](https://rocket.chat/docs/installation/manual-installation/ubuntu/)'
  - '[NGINX Reverse Proxy – NGINX](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)'
  - '[Configuring SSL Reversae Proxy](https://rocket.chat/docs/installation/manual-installation/configuring-ssl-reverse-proxy/)'
  - '[Configuring HTTPS Servers](http://nginx.org/en/docs/http/configuring_https_servers.html)'
 aliases: ['/applications/messaging/installing-rocketchat-ubuntu-16-04/']
-authors: ["Linode"]
+deprecated: true
 ---
 
 **Rocket.Chat** is an open source chat software alternative to Slack that ships with the feature rich components users have come to expect for team productivity. Chat with team members, make video and audio calls with screen sharing, create channels and private groups, upload files and more. With Rocket.Chat's source code hosted on GitHub, you can develop new features and contribute back to the project.
@@ -104,7 +104,7 @@ server {
 
 Your Rocket.Chat site will use an SSL certificate from [Let's Encrypt](https://letsencrypt.org), which is a free certificate provider trusted by common web browsers. A popular tool called [Certbot](https://certbot.eff.org) makes getting and using a Let's Encrypt certificate easy:
 
-{{< content "certbot-shortguide-ubuntu" >}}
+{{% content "certbot-shortguide-ubuntu" %}}
 
 ## View Your Rocket.Chat Site
 

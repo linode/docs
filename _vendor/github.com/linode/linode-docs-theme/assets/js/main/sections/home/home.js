@@ -6,7 +6,8 @@ import {
 	SearchGroupIdentifier,
 	RequestCallBackStatus,
 } from '../../search/request';
-import { isMobile, isTouchDevice, newSwiper } from '../../helpers/index';
+import { isMobile, isTouchDevice } from '../../helpers/helpers';
+import { newSwiper } from '../../helpers/swipe';
 
 var debug = 0 ? console.log.bind(console, '[home]') : function () {};
 
@@ -15,7 +16,7 @@ export function newHomeController(searchConfig, staticData) {
 
 	// The section we paginate on the home page.
 	// This maps to section.lvl0 in linode-merged.
-	const sectionLevel0s = ['guides', 'blog', 'resources', 'marketplace', 'community'];
+	const sectionLevel0s = ['blog', 'resources'];
 
 	// Avoid loading too much data when on mobile.
 	const tilesAlgoliaPreloadItems = isMobile() ? 12 : 30;
@@ -34,7 +35,6 @@ export function newHomeController(searchConfig, staticData) {
 	// It will scale down with page size.
 	const tilesPageSize = 6;
 	const tilesPageSizeMobile = 2;
-	const productsStripPageSize = 6;
 
 	// Create a new pager for the given el and items.
 	// pageSize is the number of items per page.
@@ -187,6 +187,7 @@ export function newHomeController(searchConfig, staticData) {
 			sectionTiles: sectionTiles,
 		},
 		loaded: false,
+		destroyed: false,
 		menuStateChanging: false,
 
 		init: function () {
@@ -202,24 +203,12 @@ export function newHomeController(searchConfig, staticData) {
 					this.data.sectionTiles[name] = pager;
 				});
 
-				// Initialize the static carousels.
-				this.data.sectionTiles['products'] = newPager(
-					productsStripPageSize,
-					this.$refs[`carousel-products`],
-					staticData.productItems
-				);
-				// Make the developers pager the same size as the products pager.
-				this.data.sectionTiles['developers'] = newPager(
-					productsStripPageSize,
-					this.$refs[`carousel-developers`],
-					staticData.developerItems
-				);
-
 				this.loaded = true;
 			});
 		},
 
 		destroy: function () {
+			this.destroyed = true;
 			// Prevents memory leak.
 			Object.values(sectionTiles).forEach((tile) => {
 				tile.el = null;
@@ -247,6 +236,9 @@ export function newHomeController(searchConfig, staticData) {
 		},
 
 		onEffect: function () {
+			if (this.destroyed) {
+				return;
+			}
 			// This construct may look odd, but this method is called from an x-effect,
 			// so this will trigger on any change to the open state.
 			let el = this.$store.nav.open.explorer;
@@ -256,6 +248,9 @@ export function newHomeController(searchConfig, staticData) {
 		// onNavChange triggers on screen resize or e.g. if the explorer opens/closes.
 		// The slide width may have changed so the pager number of pages may have changed.
 		onNavChange: function (menuStateChange = false) {
+			if (this.destroyed) {
+				return;
+			}
 			if (menuStateChange) {
 				// Avoid the scroll transition when the left menu changes state.
 				this.menuStateChanging = true;

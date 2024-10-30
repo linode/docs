@@ -1,17 +1,16 @@
 ---
 slug: getting-started-appwrite
+title: "Getting Started with Appwrite as a Backend Server"
 description: "Appwrite is an open source BaaS platform for app development. This guide walks you through the installation and basic setup of an Appwrite instance."
-keywords: ['install appwrite','appwrite docs','appwrite docker']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Nathaniel Stickman"]
+contributors: ["Nathaniel Stickman"]
 published: 2022-07-03
 modified: 2023-04-04
-modified_by:
-  name: Nathaniel Stickman
-title: "Getting Started with Appwrite as a Backend Server"
+keywords: ['install appwrite','appwrite docs','appwrite docker']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Appwrite Docs: Installation](https://appwrite.io/docs/installation)'
 - '[Appwrite Docs: Getting Started for Web](https://appwrite.io/docs/getting-started-for-web)'
-authors: ["Nathaniel Stickman"]
 ---
 
 Appwrite is an open source platform for quickly developing RESTful backend services. It is an ideal solution for reducing the time you spend developing repetitive APIs, and instead setting your focus on the frontend. Appwrite seamlessly runs alongside your other backend services, making it an adaptable solution that fits into an existing application or platform.
@@ -67,7 +66,7 @@ Appwrite, on the other hand, uses a NoSQL approach to its database interface, an
 These steps take you through everything from installing the prerequisites to starting-up and running your own Appwrite instance.
 
 {{< note >}}
-To automatically install Appwrite on a Compute Instance, consider deploying [Appwrite through the Linode Marketplace](/docs/products/tools/marketplace/guides/appwrite/).
+To automatically install Appwrite on a Compute Instance, consider deploying [Appwrite through the Linode Marketplace](/docs/marketplace-docs/guides/appwrite/).
 {{< /note >}}
 
 ### Installing Docker

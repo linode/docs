@@ -65,19 +65,19 @@
   border-right: 1px solid #d9dbe1;
   color: #32363b;
   flex: 1;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 0.875rem;
+  line-height: 1.4285714286;
   padding-right: 16px;
 }
 .truste-messageColumn h2 {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0;
-  line-height: 24px;
+  line-height: 1.5;
   margin: 0 0 10px;
 }
 .truste-messageColumn a {
-  color: #02b159;
+  color: #017ac6;
   text-decoration: underline;
 }
 @media (max-width: 47.99em) {
@@ -95,15 +95,15 @@
 }
 .truste-buttonsColumn button {
   background-clip: border-box;
-  background-color: #02b159;
+  background-color: #017ac6;
   border: 2px solid transparent;
   border-radius: 4px;
   color: #ffffff;
   cursor: pointer;
   display: inline-block;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
-  line-height: 16px;
+  line-height: 1.1428571429;
   padding: 12px 24px;
   text-align: center;
   text-decoration: none;
@@ -111,8 +111,8 @@
 }
 .truste-buttonsColumn #truste-show-consent {
   background-color: #ffffff;
-  border-color: #02b159;
-  color: #02b159;
+  border-color: #017ac6;
+  color: #017ac6;
 }
 @media (min-width: 48em) and (max-width: 61.99em) {
   .truste-buttonsColumn {
@@ -135,9 +135,9 @@
 }
 
 #truste-repop-msg {
-  font-size: 14px !important;
+  font-size: 0.875rem !important;
   inset: auto 0 100% !important;
-  line-height: 20px !important;
+  line-height: 1.4285714286 !important;
   margin: 0 !important;
   padding: 16px !important;
   position: absolute !important;
@@ -155,7 +155,7 @@ button#cookie-prefs-icon {
   z-index: 10;
 }
 button#cookie-prefs-icon:hover {
-  color: #02b159;
+  color: #017ac6;
 }
 button#cookie-prefs-icon svg {
   height: 32px;
@@ -166,7 +166,7 @@ button#cookie-prefs-icon svg {
   background-color: #ffffff;
   color: #32363b;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 18px;
+  font-size: 1.125rem;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   letter-spacing: 0;
@@ -179,7 +179,7 @@ button#cookie-prefs-icon svg {
   background-color: #ffffff;
   border-top: 1px solid var(--divider-color);
   color: #65686c;
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 1.2857142857;
   margin-top: -1px;
   padding-bottom: 56px;
@@ -195,15 +195,15 @@ button#cookie-prefs-icon svg {
   color: var(--h6-color, var(--heading-color));
   color: #32363b;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
-  letter-spacing: -0.25px;
+  letter-spacing: -0.015625rem;
   line-height: 1.3333333333;
   margin: 32px 0 10px;
 }
 @media (max-width: 47.99em) {
   .c-site-footer__primary .o-menu__heading {
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 1.5714285714;
   }
 }
@@ -246,8 +246,7 @@ button#cookie-prefs-icon svg {
   .c-site-footer__primary .o-menu__heading {
     border: 0 !important;
     clip: rect(0 0 0 0) !important;
-    -webkit-clip-path: inset(50%) !important;
-            clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
     height: 1px !important;
     margin: -1px !important;
     overflow: hidden !important;
@@ -280,7 +279,7 @@ button#cookie-prefs-icon svg {
   .c-site-footer__primary .c-social {
     display: flex;
     flex-direction: row;
-    font-size: 24px;
+    font-size: 1.5rem;
     justify-content: center;
   }
   .c-site-footer__primary .c-social a {

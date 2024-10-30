@@ -1,13 +1,12 @@
 ---
-description: "Instructions on updating the email address on an account so that you can receive email notifications."
-keywords: ["email address", "email addresses", "address", "addresses"]
-tags: ["linode platform","cloud manager","email"]
-published: 2022-11-21
-image: L_ChangeYourEmail.png
 title: Change Your Email Address
 title_meta: Change Your Email Address on a Linode Account
+description: "Instructions on updating the email address on an account so that you can receive email notifications."
+published: 2022-11-21
+keywords: ["email address", "email addresses", "address", "addresses"]
+tags: ["linode platform","cloud manager","email"]
+image: L_ChangeYourEmail.png
 aliases: ['/quick-answers/linode-platform/how-to-change-your-email/','/guides/how-to-change-your-email/']
-authors: ["Linode"]
 ---
 
 Linode uses the contact information on file in your account to notify and bill you. Keep this information current to prevent service interruptions. It's especially important to keep your email address current.
@@ -20,7 +19,7 @@ See [Update Billing Contact Information](/docs/products/platform/billing/guides/
 
 ## Modify User Account Email
 
-Use the **Users & Grants** page to modify the email address associated with a user account. The email addresses listed on this page receive IP whitelist warnings, password reset messages, and support tickets for services that their associated users have permission to access. Users with limited account access can also receive invoices and receipts if granted access to that information.
+Use the **Users & Grants** page to modify the email address associated with a user account. The email addresses listed on this page receive password reset messages and support tickets for services that their associated users have permission to access. Users with limited account access can also receive invoices and receipts if granted access to that information.
 
 {{< note >}}
 Only full account access users can receive threshold notification emails.
@@ -40,5 +39,5 @@ Here's how to change a user's email from the **Users & Grants** page:
 The user's email address is now updated.
 
 {{< note >}}
-If you do not have full account access, you can view your user profile settings and update your email address by clicking on your username at the top of the Cloud Manager screen and selecting **Display**.
+If you do not have full account access, you can view your user profile settings and update your email address by clicking on your username at the top of Cloud Manager and selecting **Display**.
 {{< /note >}}

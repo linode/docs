@@ -32,7 +32,7 @@
       x-if="$store.nav.trustecm.functional && (visible || (window.location.hash.startsWith('#comment-')))">
       <div>
         <div
-          x-data="lncDisqus('{{ .Site.DisqusShortname }}', lnPageInfo)"
+          x-data="lncDisqus('{{ site.Config.Services.Disqus.Shortname }}', lnPageInfo)"
           x-init="initDisqus()">
           <div id="disqus_thread"></div>
           <noscript>

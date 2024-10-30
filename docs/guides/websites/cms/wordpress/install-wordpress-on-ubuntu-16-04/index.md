@@ -1,14 +1,13 @@
 ---
 slug: install-wordpress-on-ubuntu-16-04
+title: Install WordPress on Ubuntu 16.04
 description: 'This guide will show you how to install and optimize the WordPress blogging and CMS on your Linode from scratch using a LAMP setup on Ubuntu 16.04.'
+authors: ["Edward Angert"]
+contributors: ["Edward Angert"]
+published: 2016-10-21
 keywords: ["install WordPress", "WordPress on Linode", "how to configure WordPress", "Permalink"]
 tags: ["ubuntu","lamp","wordpress","cms","lemp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-10-21
-modified_by:
-  name: Edward Angert
-published: 2016-10-21
-title: Install WordPress on Ubuntu 16.04
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
@@ -19,14 +18,13 @@ relations:
         keywords:
            - distribution: Ubuntu 16.04
 aliases: ['/websites/cms/install-wordpress-on-ubuntu-16-04/','/websites/cms/wordpress/install-wordpress-on-ubuntu-16-04/']
-authors: ["Edward Angert"]
+deprecated: true
 ---
 
 In this guide, you'll learn to how to install WordPress on a Linode running Ubuntu 16.04. WordPress is a popular dynamic content management system focused on blogs. WordPress can be deployed on a LAMP or LEMP stack, and features an extensive plugin framework and theme system that allows site owners and developers to use its simple, yet powerful publishing tools.
 
 ![Install WordPress on Ubuntu 16.04](wordpress-ubuntu-16-04-title.png "Install WordPress on Ubuntu 16.04")
-
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 All configuration files should be edited with elevated privileges. Remember to include `sudo` before running your text editor.
@@ -216,6 +214,6 @@ WordPress, and many of its plugins, use PHP extensions that you'll need to insta
 
 These are only a few of the extensions you may find useful. Plenty of other PHP extensions exist and are required for certain plugin features, such as `php7.0-curl`, `php7.0-xml`, and `php7.0-mcrypt`. If you're having issues with a plugin or widget, check its documentation to see if a PHP extension is required.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The package names above assume you're working with PHP version 7.0. If you installed PHP 5 from the Ubuntu repositories, modify the commands to use the `php` prefix rather than `php7.0`. For example, instead of installing `php7.0-gd`, use `php-gd`.
 {{< /note >}}

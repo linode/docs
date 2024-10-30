@@ -1,17 +1,16 @@
 ---
 slug: social-networking-with-elgg-on-debian-5-lenny
+title: 'Social Networking with Elgg on Debian 5 (Lenny)'
 description: 'This guide provides you with step-by-step instructions for installing and configuring Elgg, a open-source social networking tool which enables people to connect.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-08
+modified: 2013-10-04
 keywords: ["social networking", "lamp", "elgg", "elgg debian lenny"]
 tags: ["debian", "cms", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/social-networking/elgg/','/applications/social-networking/social-networking-with-elgg-on-debian-5-lenny/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2009-12-08
-title: 'Social Networking with Elgg on Debian 5 (Lenny)'
 deprecated: true
-authors: ["Linode"]
 ---
 
 Elgg is an open source social networking tool that enables groups of people to create and manage common interest sites that allow users to keep blogs, create profiles, join groups, upload files, and update status messages (known as "microblogs"). Updates are shown in a centralized "information feed" so that users can see updates to their friends' profiles or activities.
@@ -20,7 +19,7 @@ The inspiration for Elgg comes from popular "general interest" social networking
 
 Fundamentally, Elgg is a specialized CMS (content management system) designed to power a full-featured social networking site. While a developer familiar with a system like [Drupal](/docs/guides/how-to-install-and-configure-drupal-8/), [Django](/docs/frameworks/), or [Ruby on Rails](/docs/frameworks/) could build a site with all of the features of Elgg, the Elgg package consolidates the core functionality for these kinds of sites into a single application.
 
-Before beginning, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). You will also need to install a [LAMP stack](/docs/guides/lamp-server-on-debian-5-lenny/) before installing Elgg.
+Before beginning, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). You will also need to install a [LAMP stack](/docs/guides/how-to-install-a-lamp-stack-on-debian-11/) before installing Elgg.
 
 If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). You will need to be logged into your Linode as root in order to complete the installation process.
 
@@ -67,7 +66,7 @@ The web server needs to be able to write to the `data/` directory; issue the fol
 
     chmod 777 /srv/www/example.com/data/
 
-Before you can begin to configure Elgg, you will need to create a MySQL username and password as well as a database for Elgg. You should have created a MySQL database as part of the [LAMP setup process](/docs/guides/lamp-server-on-debian-5-lenny/), but you can also [configure additional databases and user credentials](/docs/guides/use-mysql-relational-databases-on-debian-5-lenny/#using-mysql) at any time.
+Before you can begin to configure Elgg, you will need to create a MySQL username and password as well as a database for Elgg. You should have created a MySQL database as part of the [LAMP setup process](/docs/guides/how-to-install-a-lamp-stack-on-debian-11/), but you can also [configure additional databases and user credentials](/docs/guides/use-mysql-relational-databases-on-debian-5-lenny/#using-mysql) at any time.
 
 ### Configure Elgg
 

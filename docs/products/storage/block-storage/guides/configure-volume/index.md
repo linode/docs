@@ -2,12 +2,11 @@
 title: "Configure and Mount a Volume"
 description: "Learn how to create a file system on a Block Storage Volume and mount it to a Compute Instance."
 modified: 2022-08-24
-authors: ["Linode"]
 ---
 
-Once a Block Storage Volume has been attached to a Compute Instance, you need to perform a few additional steps before you can start using it. These steps include creating a file system (if you're configuring a new Volume) and mounting the Volume to your Compute Instance's system. To make configuration easier, all the necessary commands can be viewed directly in the Cloud Manager.
+Once a Block Storage Volume has been attached to a Compute Instance, you need to perform a few additional steps before you can start using it. These steps include creating a file system (if you're configuring a new Volume) and mounting the Volume to your Compute Instance's system. To make configuration easier, all the necessary commands can be viewed directly in Cloud Manager.
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com/linodes) and click on the **Volumes** link in the sidebar.
+1.  Log in to [Cloud Manager](https://cloud.linode.com/linodes) and click on the **Volumes** link in the sidebar.
 
 1.  Locate the desired Volume within the list and click the **Show Config** link, which may appear within the **more options ellipsis** dropdown menu.
 

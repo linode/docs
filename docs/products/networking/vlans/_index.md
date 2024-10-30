@@ -1,8 +1,9 @@
 ---
 title: VLANs
-linkTitle: VLANs
 title_meta: "VLAN Product Documentation"
 description: "Linode VLANs enable secure and private communication across Linodes within the same data center region. This free service is a great way to keep your cloud workloads secure. VLANs are easy to create using the Linode Cloud Manager, API, and CLI."
+modified: 2024-04-03
+linkTitle: VLANs
 bundles: ['network-security']
 tab_group_main:
     is_root: true
@@ -11,7 +12,6 @@ tab_group_main:
 cascade:
     date: 2020-10-22
     product_description: "Fully isolated virtual local area networks that enable private communication between cloud-based resources"
-modified: 2023-10-22
 aliases: ['/guides/platform/vlan/']
 ---
 
@@ -25,7 +25,7 @@ A VLAN creates a truly private network and communication is isolated to just the
 
 ### Simple Configuration
 
-Use the Cloud Manager to create a VLAN and assign Compute Instances. Create up to 10 VLANs per data center and assign each Compute Instance to up to 3 VLANs.
+Use Cloud Manager to create a VLAN and assign Compute Instances. Create up to 10 VLANs per data center and assign each Compute Instance to up to 3 VLANs.
 
 ### Reduce Network Transfer Costs
 
@@ -33,36 +33,12 @@ Private network transfer is free. Any communication between Compute Instances ov
 
 ### Part of a Flexible Custom VPC Solution
 
-Since VLANs operate on layer 2 of the OSI networking stack, you can use is as part of a custom VPC solution, which typically operates on layer 3. VLAN users can implement their own firewall policies, routing, and security systems to build out their VPC.
+Since VLANs operate on layer 2 of the OSI networking stack, you can use them as part of a custom VPC solution, which typically operates on layer 3. VLAN users can implement their own firewall policies, routing, and security systems to build out their VPC.
 
 ## Availability
 
-| Data center | Status |
-| -- | -- |
-| **Amsterdam (Netherlands)** | **Available** |
-| **Atlanta (Georgia, USA)** | **Available** |
-| **Chennai (India)** | **Available** |
-| **Chicago (Illinois, USA)** | **Available** |
-| Dallas (Texas, USA) | Not yet available |
-| **Frankfurt (Germany)** | **Available** |
-| Fremont (California, USA) | Not yet available |
-| **Jakarta (Indonesia)** | **Available** |
-| **Los Angeles (California, USA)** | **Available** |
-| **London (United Kingdom)** | **Available** |
-| **Miami (Florida, USA)** | **Available** |
-| **Milan (Italy)** | **Available** |
-| **Mumbai (India)** | **Available** |
-| **Newark (New Jersey, USA)** | **Available** |
-| **Osaka (Japan)** | **Available** |
-| **Paris (France)** | **Available** |
-| **São Paulo (Brazil)** | **Available** |
-| **Seattle (Washington, USA)** | **Available** |
-| **Singapore** | **Available** |
-| **Stockholm (Sweden)** | **Available** |
-| **Sydney (Australia)** | **Available** |
-| Tokyo (Japan) | Not yet available |
-| **Toronto (Canada)** | **Available** |
-| **Washington, DC (USA)** | **Available** |
+VLANs are available in all data centers.
+
 
 ## Pricing
 

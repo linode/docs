@@ -22,7 +22,7 @@ Grays:
 
 
 */
-const colorBrand = 'var(--color-brand)'; // Green;
+const colorBrand = 'var(--color-brand)'; // Blue;
 const colorTitle = 'var(--color-title)'; // Dark gray text, e.g. title.;
 const colorBodyText = 'var(--color-body-text)'; // Lighter gray, body text etc.;
 const colorLightGray = '#edf2f7'; // Code background etc.
@@ -31,10 +31,15 @@ const colorDivider = 'var(--color-divider)'; // Light gray border.
 
 // Define them here so we can reference them in the configuration.
 const blues = {
-	100: '#EBF8FF',
-	300: '#90CDF4',
-	500: '#4299E1',
-	700: '#2B6CB0',
+	100: '#017AC6',
+	200: '#C5E5F6',
+	300: '#C5E5F6', // Deliberately the same as 200.
+	400: '#A1D7F3',
+	500: '#A1D7F3', // Deliberately the same as 400.
+	600: '#79C2E8',
+	700: '#79C2E8', // Deliberately the same as 600.
+	800: '#53AEE1',
+	900: '#004F8A', // color-secondary-light-navy
 };
 
 const grays = {
@@ -49,31 +54,49 @@ const grays = {
 	900: '#1a202c',
 };
 
+// Built from https://uicolors.app/create based on color-ui-green - #49AC59.
 const greens = {
-	50: '#F2FBF7',
-	100: '#E6F7EE',
-	200: '#C0ECD6',
-	300: '#9AE0BD',
-	400: '#4EC88B',
-	500: '#02B159',
-	600: '#029F50',
-	700: '#016A35',
-	800: '#015028',
-	900: '#01351B',
+	50: '#f3faf4',
+	100: '#e3f5e5',
+	200: '#c8eacd',
+	300: '#9cd9a5',
+	400: '#6abe78',
+	500: '#49ac59',
+	600: '#348541',
+	700: '#2c6936',
+	800: '#27542f',
+	900: '#214628',
+	950: '#0e2512',
 };
 
+// Built from https://uicolors.app/create based on color-ui-orange - #FF9933
 const oranges = {
-	400: '#F6AD55',
-	600: '#DD6B20',
+	50: '#fff8ed',
+	100: '#ffefd4',
+	200: '#ffdba8',
+	300: '#ffc171',
+	400: '#ff9933',
+	500: '#fe7e11',
+	600: '#ef6307',
+	700: '#c64808',
+	800: '#9d3a0f',
+	900: '#7e3110',
+	950: '#441606',
 };
 
+// Built from https://uicolors.app/create based on color-ui-red - #D0343A
 const reds = {
-	100: '#FEE2E2',
-	300: '#FCA5A5',
-	400: '#F87171',
-	500: '#EF4444',
-	600: '#DC2626',
-	700: '#B91C1C',
+	50: '#fdf3f3',
+	100: '#fce4e5',
+	200: '#faced0',
+	300: '#f6abae',
+	400: '#ef7a7f',
+	500: '#e35056',
+	600: '#d0343a',
+	700: '#ae272c',
+	800: '#902428',
+	900: '#782427',
+	950: '#410e10',
 };
 // Screen sizes
 const maxWidthXl = 1280;
@@ -291,6 +314,14 @@ module.exports = {
 							color: '#71809D',
 						},
 
+						'ol > li > ol': {
+							listStyleType: 'lower-latin',
+						},
+
+						'ol > li > ol > li > ol': {
+							listStyleType: 'lower-roman',
+						},
+
 						// new margins
 						p: {
 							marginTop: '1em',
@@ -353,20 +384,20 @@ module.exports = {
 							marginBottom: '1rem',
 						},
 						h2: {
-							fontSize: '1.5em',
+							fontSize: '1.75em',
 							lineHeight: '1.25',
 							letterSpacing: '-0.38px',
 							marginTop: '1.5em',
 							marginBottom: '1rem',
 						},
 						h3: {
-							fontSize: '1.25em',
+							fontSize: '1.5em',
 							lineHeight: '1.25',
 							marginTop: '1.5em',
 							marginBottom: '1rem',
 						},
 						h4: {
-							fontSize: '1em',
+							fontSize: '1.25em',
 							lineHeight: '1.25',
 							marginTop: '1.5em',
 							marginBottom: '1rem',
@@ -466,20 +497,20 @@ module.exports = {
 							marginBottom: '1rem',
 						},
 						h2: {
-							fontSize: '1.5em',
+							fontSize: '1.75em',
 							lineHeight: '1.25',
 							letterSpacing: '-0.5px',
 							marginTop: '1.5em',
 							marginBottom: '1rem',
 						},
 						h3: {
-							fontSize: '1.25em',
+							fontSize: '1.5em',
 							lineHeight: '1.25',
 							marginTop: '1.5em',
 							marginBottom: '1rem',
 						},
 						h4: {
-							fontSize: '1em',
+							fontSize: '1.25em',
 							lineHeight: '1.25',
 							marginTop: '1.5em',
 							marginBottom: '1rem',
@@ -567,13 +598,16 @@ module.exports = {
 			   Tablet: 768px … 991px
 			   Desktop: 992px … :infinity:
 			*/
-			xl: px(maxWidthXl),
-			lg: px(maxWidthLg), // Desktop
-			md: px(maxWidthMd),
-			sm: px(maxWidthSm),
-			small: { max: '991px' }, // Common term for mobile, tablets etc. They are small.
-			tablet: { min: '768px', max: '991px' },
+			/*
+			Order these from smallest first. 
+			*/
 			mobile: { max: '767px' },
+			tablet: { min: '768px', max: '991px' },
+			small: { max: '991px' }, // Common term for mobile, tablets etc. They are small.
+			sm: px(maxWidthSm),
+			md: px(maxWidthMd),
+			lg: px(maxWidthLg), // Desktop
+			xl: px(maxWidthXl),
 		},
 		fontSize: {
 			xxs: '0.65625rem',

@@ -1,15 +1,12 @@
 ---
-description: "Information on finding your Compute Instance's kernel version (and type) as well as changing and updating the kernel."
-keywords: ["kernel", "grub"]
-tags: ["linode platform","cloud manager"]
-published: 2021-08-13
-modified: 2023-01-18
-modified_by:
-  name: Linode
 title: "Manage the Kernel on a Compute Instance"
 title_meta: "How to Manage the Kernel on a Compute Instance"
+description: "Information on finding your Compute Instance's kernel version (and type) as well as changing and updating the kernel."
+published: 2021-08-13
+modified: 2024-02-22
+keywords: ["kernel", "grub"]
+tags: ["linode platform","cloud manager"]
 aliases: ['/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/','/platform/how-to-change-your-linodes-kernel/','/run-a-distribution-supplied-kernel-with-kvm/','/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel/','/platform/update-kernel/', '/guides/how-to-change-your-linodes-kernel/', '/guides/update-kernel/','/guides/managing-the-kernel-on-a-linode/']
-authors: ["Linode"]
 ---
 
 The primary component of every Linux system is the *Linux kernel*. The kernel interfaces with the system's hardware and it controls the operating system's core functionality. This guide covers the types of kernels that can be assigned to a Compute Instance and how to view, update, or change the kernel.
@@ -40,15 +37,15 @@ There are may ways you can determine which kernel version is installed on your L
 
 The kernel version should be a string that's similar to `5.4.0-80-generic`. In this example, the kernel ends with `generic`, which is common in Ubuntu systems to designate that this is an upstream kernel. If the kernel ends with something similar to `linode123`, a Linode kernel is being used and the string matches the precise Linode kernel release.
 
-## View and Modify the Kernel in the Cloud Manager
+## View and Modify the Kernel in Cloud Manager
 
-You can use the Cloud Manager to view the type of kernel you are using. If you are using a Linode kernel (not an upstream kernel), you can also view the kernel version.
+You can use Cloud Manager to view the type of kernel you are using. If you are using a Linode kernel (not an upstream kernel), you can also view the kernel version.
 
 {{< note >}}
 These instructions may not accurately reflect the actual kernel version installed. This is especially true if the Compute Instance hasn't been rebooted in a while or wasn't rebooted after a change to the instance's Configuration. To determine the actual kernel version installed on your system, see [Determining Which Kernel Is Installed](#determining-which-kernel-is-installed).
 {{< /note >}}
 
-1.  Navigate to your Compute Instance in the [Cloud Manager](https://cloud.linode.com) and click the **Configuration** tab.
+1.  Navigate to your Compute Instance in [Cloud Manager](https://cloud.linode.com) and click the **Configuration** tab.
 
 1. Find your current *Configuration* and click the corresponding **Edit** link. This may be located within the **More Options Ellipses** dropdown menu.
 
@@ -56,11 +53,11 @@ These instructions may not accurately reflect the actual kernel version installe
 
 1.  Review the **Kernel** dropdown menu selection.
 
-    - **Latest 64 bit** and **Latest 32 bit**: Uses one of the latest 64-bit or 32-bit Linode kernels at the time the Compute Instance boots/reboots, depending on which option you selected. Since new kernel releases are rolled out over a short time period, the actual kernel used by your system may be one or two releases behind. This setting was the default for most distributions prior to August 2018.
+    - **Latest 64 bit** and **Latest 32 bit**: Uses one of the latest 64-bit or 32-bit Linode kernels at the time the Compute Instance boots/reboots, depending on which option you selected. Since new kernel releases are rolled out over a short time period, the actual kernel used by your system may be one or two releases behind. This setting was the default for most distributions before August 2018.
     - **Direct Disk**: Instead of a Linux Kernel, this uses the MBR (Master Boot Record) of the primary disk*.
     - **GRUB 2**: Uses the upstream distribution-supplied kernel that's installed on the primary disk. If a custom kernel has been installed instead, that is used instead. **This is the most common option and has been the default for most new Compute Instances created after August 2018.**
     - **GRUB (Legacy)**: Uses the upstream distribution-supplied kernel that's installed on the primary disk*. This should only be used on older Linux distributions that have Grub (not Grub 2) installed, like CentOS 6.
-    - **Specific Linode Kernel**: Allows you to specify the exact Linode kernel to use. Since this kernel is maintained regardless of reboots or system updates, it may be preferred in some use cases.
+    - **Specific Linode Kernel**: Lets you specify the exact Linode kernel to use. Since this kernel is maintained regardless of reboots or system updates, it may be preferred in some use cases.
 
     *\*Primary disk: the disk assigned as the "Root Device" within the instance's Configuration Profile.*
 
@@ -77,7 +74,7 @@ Provided a newer kernel is available, you should be able to either manually (or 
 Follow these steps if the Compute Instance is using a Linode kernel:
 
 -   **Latest 64-bit or 32-bit kernel**: Rebooting the Compute Instance automatically updates the kernel used within your system to one of the latest Linode kernel release. Since new kernel releases are rolled out over a short time period, the actual kernel used by your system may be one or two releases behind.
--   **Specific kernel version** (ex: `5.12.2-x86_64-linode144`): To update your kernel, follow the instructions within the [Viewing and Modifying the Kernel in the Cloud Manager](#viewing-and-modifying-the-kernel-in-the-cloud-manager) section. When selecting the kernel in the instance's Configuration Profile, chose your desired kernel version (or select `Latest 64 bit`), save the changes, and reboot your Compute Instance.
+-   **Specific kernel version** (ex: `5.12.2-x86_64-linode144`): To update your kernel, follow the instructions within the [Viewing and Modifying the Kernel in Cloud Manager](#viewing-and-modifying-the-kernel-in-cloud-manager) section. When selecting the kernel in the instance's Configuration Profile, chose your desired kernel version (or select `Latest 64 bit`), save the changes, and reboot your Compute Instance.
 
 ### Update the Upstream Kernel
 
@@ -90,13 +87,13 @@ Follow these steps if the Compute Instance is using an upstream kernel (the defa
     -   **Ubuntu**
 
         ```command
-        sudo apt-get update && sudo apt-get upgrade linux-generic
+        sudo apt update && sudo apt install linux-generic
         ```
 
     -   **Debian**
 
         ```command
-        sudo apt-get update && sudo apt-get upgrade linux-base
+        sudo apt update && sudo apt install linux-base
         ```
 
     -   **CentOS Stream, CentOS 8, AlmaLinux 8, Rocky Linux 8, and Fedora**
@@ -147,7 +144,7 @@ Once completed, the disks should be read by GRUB2 correctly.
 
 ### SELinux
 
-In older systems created prior to August 2018, CentOS 7 and Fedora ship with [SELinux](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) running in enforcing mode by default. When switching from the Linode kernel to the upstream kernel, SELinux may need to relabel your filesystem at boot. When the relabeling completes, the Compute Instance will shut down. If you have [Lassie](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configure-shutdown-watchdog) enabled, the instance will automatically boot back up following the shut down. If you do not have Lassie enabled, you will need to manually reboot from the Cloud Manager.
+In older systems created before August 2018, CentOS 7 and Fedora ship with [SELinux](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) running in enforcing mode by default. When switching from the Linode kernel to the upstream kernel, SELinux may need to relabel your filesystem at boot. When the relabeling completes, the Compute Instance will shut down. If you have [Lassie](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/) enabled, the instance will automatically boot back up following the shut down. If you do not have Lassie enabled, you will need to manually reboot from Cloud Manager.
 
 ![SELinux filesystem relabel](selinux-filesystem-relabel.png "SELinux filesystem relabel")
 

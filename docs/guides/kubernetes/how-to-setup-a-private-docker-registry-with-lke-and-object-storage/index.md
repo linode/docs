@@ -1,19 +1,18 @@
 ---
 slug: how-to-setup-a-private-docker-registry-with-lke-and-object-storage
+title: "Setting Up a Private Docker Registry with LKE and Object Storage"
+title_meta: "How to Set Up a Docker Registry with LKE and Object Storage"
 description: "In this guide, you will create a private Docker registry on Linode Kubernetes Engine where you can securely store your Docker images."
 og_description: "In this guide you will create a private Docker registry on Linode Kubernetes Engine where you can securely store your Docker images. Your Docker images will be stored in a Linode Object Storage bucket. You will use Let's Encrypt and cert-manager to create a TLS certificate for your private registry. To route your registry's traffic your will use the NGINX Ingress Controller and a Linode NodeBalancer. Finally, you will create a test deployment to ensure that your Linode Kubernetes Engine cluster can pull images from your Docker registry"
+authors: ["Leslie Salazar"]
+contributors: ["Leslie Salazar"]
+published: 2020-03-26
+modified: 2023-07-26
 keywords: ['docker registry','kubernetes','object storage', 'lke', 'linode kubernetes engine']
 tags: ["docker","kubernetes","container","nginx","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: PrivateDockerReg.png
-published: 2020-03-26
-modified: 2023-07-26
-modified_by:
-  name: Linode
-title: "Setting Up a Private Docker Registry with LKE and Object Storage"
-title_meta: "How to Set Up a Docker Registry with LKE and Object Storage"
 aliases: ['/kubernetes/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/']
-authors: ["Leslie Salazar"]
 ---
 
 Hosting a private Docker registry alongside your Kubernetes cluster allows you to securely manage your Docker images while also providing quick deployment of your apps. This guide will walk you through the steps needed to deploy a private Docker registry on a Linode Kubernetes Engine (LKE) cluster. At the end of this tutorial, you will be able to locally push and pull Docker images to your registry. Similarly, your LKE cluster's pods will also be able to pull Docker images from the registry to complete their deployments.
@@ -275,7 +274,7 @@ You will now complete the steps to deploy your Docker Registry to your Kubernete
 
 To enabled basic access restriction for your Docker registry, you will use the `htpasswd` utility. This utility allows you to use a file to store usernames and passwords for basic HTTP authentication. This will require you to log into your Docker registry prior to being able to push or pull images from and to it.
 
-1.  Install the `htpasswd` utility. This example is for an Ubuntu 18.04 instance, but you can use your system's package manger to install it.
+1.  Install the `htpasswd` utility. This example is for an Ubuntu 18.04 instance, but you can use your system's package manager to install it.
 
     ```command
     sudo apt install apache2-utils -y
@@ -520,4 +519,4 @@ In this section, you will create a test deployment using the image that you push
 
 ## (Optional) Tear Down your Kubernetes Cluster
 
-To avoid being further billed for your Kubernetes cluster and NodeBlancer, [delete your cluster using the Linode Cloud Manager](/docs/products/compute/kubernetes/#delete-a-cluster). Similarly, to avoid being further billed for our registry's Object Storage bucket, see [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/).
+To avoid being further billed for your Kubernetes cluster and NodeBlancer, [delete your cluster using the Linode Cloud Manager](/docs/products/compute/kubernetes/guides/manage-clusters/#delete-a-cluster). Similarly, to avoid being further billed for our registry's Object Storage bucket, see [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/).
