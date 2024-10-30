@@ -12,11 +12,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 [Apache Storm](https://storm.apache.org/) is a distributed stream processing computation framework. It integrates with various systems and libraries, including Apache Kafka, Apache Cassandra, Redis, Amazon Kinesis, Kestrel, RabbitMQ/Advanced Message Queuing Protocol (AMQP), and Java Message Service (JMS).
 
-This guide explains what Apache Storm is and how to create a real-time data stream with it.
+This guide discusses key concepts and terminology associated with Apache Storm, and includes instructions for using it to create a real-time data stream.
 
-## Apache Storm Components
-
-This section describes the key components and terminology used in Apache Storm:
+## Apache Storm Components & Terminology
 
 -   **Tuples**: In Storm, *tuples* serve as the main data structure. Tuples are named lists that can contain any type of values and are dynamically typed. They have helper methods to retrieve field values without casting. By default, Storm can serialize tuple values for primitives, strings, and byte arrays, though a custom serializer is needed for other types.
 
@@ -26,81 +24,87 @@ This section describes the key components and terminology used in Apache Storm:
 
 -   **Streams**: A *stream* is a sequence of tuples processed in parallel, capable of containing various data types. Each stream has a defined schema that specifies the fields within its tuples and can be assigned a unique ID.
 
--   **Spouts**: A *spout* acts as a source of streams in a topology. It reads tuples from an external source and emits them into the topology. Spouts are categorized as either reliable or unreliable. Reliable spouts have the capability to replay a tuple if it fails to be processed, whereas unreliable spouts do not retain the tuple after it is emitted.
+-   **Spouts**: A *spout* acts as a source of streams in a topology. It reads tuples from an external source and emits them into the topology. Spouts are categorized as either "reliable" or "unreliable". Reliable spouts have the capability to replay a tuple if it fails to be processed, whereas unreliable spouts do not retain the tuple after it is emitted.
 
--   **Bolts**: *Bolts* perform the processing tasks in Storm. They perform various operations, including filtering, aggregations, joins, and interactions with databases. Bolts can transform streams, and complex transformations often involve multiple bolts working together.
+-   **Bolts**: *Bolts* perform the processing tasks in Storm, including filtering, aggregations, joins, and interactions with databases. Bolts can transform streams, and complex transformations often involve multiple bolts working together.
 
 -   **Nodes**: Apache Storm consists of two primary types of *nodes*:
 
     -   **Nimbus** (Master Node): The central component responsible for running Storm topologies. Nimbus analyzes the topology and determines which tasks to execute.
 
-    -   **Supervisor** (Worker Node): This node manages worker processes, monitors their health, restarts them if necessary, and ensures they are running correctly. It receives heartbeats from workers, reports to Nimbus, distributes tasks, and facilitates communication between workers and Nimbus. The Supervisor acts as a bridge between Nimbus and workers, ensuring tasks are executed correctly and keeping Nimbus updated on task status.
+    -   **Supervisor** (Worker Node): This node manages worker processes, monitors their health, ensures they are running correctly, and restarts them if necessary. It receives heartbeats from workers, reports to Nimbus, distributes tasks, and facilitates communication between workers and Nimbus. The Supervisor acts as a bridge between Nimbus and workers, ensuring tasks are executed correctly and keeping Nimbus updated on task status.
 
-## Before You Begin
+-   **ZooKeeper**: [Apache ZooKeeper](https://zookeeper.apache.org/) acts as a centralized server that helps manage and coordinate services for distributed applications. In this guide, ZooKeeper is installed on a separate, single node, however [ZooKeeper clusters](https://zookeeper.apache.org/doc/r3.3.3/zookeeperAdmin.html) can be configured for larger workloads.
 
-1.  Follow the instructions in our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide. Use the following settings to create the four necessary instances to run an Apache Storm cluster: one for ZooKeeper, one for Nimbus, and two Storm Supervisors:
+## Cluster Setup
 
-    -   **Images**: Select the newest Long Term Support (LTS) version of Ubuntu available for all nodes. The examples in this guide use **Ubuntu 24.04 LTS**.
+Using the instructions in our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and specifications below, create the **four** necessary instances to run an Apache Storm cluster: one for ZooKeeper, one for Nimbus, and two Storm Supervisors
 
-    -  **Region**: Choose the closest to you, or to the bulk of your users [as measured by ping times](https://www.linode.com/speed-test/) or geographic proximity. The examples in this guide use **Miami**.
+-   **Images**: Use the latest Long Term Support (LTS) version of Ubuntu available for all nodes. The examples in this guide use **Ubuntu 24.04 LTS**.
 
-    -   **Linode Plan**: Open the **Shared CPU** tab and [create](/docs/products/compute/compute-instances/guides/create/) the following plans for each node:
+-  **Region**: Choose the geographic region best suited for your use case. The examples in this guide use the **Miami** (`us-mia`) region.
 
-        -   **ZooKeeper Node**: Linode 2 GB
-        -   **Nimbus Node**: Linode 4 GB
-        -   **Storm Supervisor Node 1**: Linode 4 GB
-        -   **Storm Supervisor Node 2**: Linode 4 GB
+-   **Linode Plan**: Below are the minimum specifications recommended for each node:
 
-    -   **Linode Label** Enter a descriptive label for the instances. The examples in this guide use:
+    -   **ZooKeeper Node**: Linode Shared 2 GB
+    -   **Nimbus Node**: Linode Shared 4 GB
+    -   **Storm Supervisor Node 1**: Linode Shared 4 GB
+    -   **Storm Supervisor Node 2**: Linode Shared 4 GB
 
-        -   **ZooKeeper Node**: `storm-zoo`
-        -   **Nimbus Node**: `storm-nimbus`
-        -   **Storm Supervisor Node 1**: `storm-super-1`
-        -   **Storm Supervisor Node 2**: `storm-super-2`
+-   **Linode Label** Enter a descriptive label for each instance. The examples in this guide use the following:
 
-1.  Before continuing, take note of the **Public IP Address** for each node.
+    -   **ZooKeeper Node**: `storm-zoo`
+    -   **Nimbus Node**: `storm-nimbus`
+    -   **Storm Supervisor Node 1**: `storm-super-1`
+    -   **Storm Supervisor Node 2**: `storm-super-2`
 
-1.  Verify that you can connect to your new instances via SSH. Be sure to replace the {{< placeholder "IP_ADDRESS" >}} placeholders with the **Public IP Address** of the appropriate instance:
+Once deployed, connect to your new instances via SSH using separate terminal sessions on your local machine. Replace each {{< placeholder "IP_ADDRESS" >}} with the **Public IP Address** of the respective instance:
 
-    ```command {title="Local Machine"}
-    ssh root@{{< placeholder "storm-zoo_IP_ADDRESS" >}}
-    ```
+```command {title="Local machine to ZooKeeper instance"}
+ssh root@{{< placeholder "storm-zoo_IP_ADDRESS" >}}
+```
 
-    ```command {title="Local Machine"}
-    ssh root@{{< placeholder "storm-nimbus_IP_ADDRESS" >}}
-    ```
+```command {title="Local machine to Numbus instance"}
+ssh root@{{< placeholder "storm-nimbus_IP_ADDRESS" >}}
+```
 
-    ```command {title="Local Machine"}
-    ssh root@{{< placeholder "storm-super-1_IP_ADDRESS" >}}
-    ```
+```command {title="Local machine to Supervisor Node 1"}
+ssh root@{{< placeholder "storm-super-1_IP_ADDRESS" >}}
+```
 
-    ```command {title="Local Machine"}
-    ssh root@{{< placeholder "storm-super-2_IP_ADDRESS" >}}
-    ```
+```command {title="Local machine to Supervisor Node 2"}
+ssh root@{{< placeholder "storm-super-2_IP_ADDRESS" >}}
+```
 
-{{< note >}}
-The example cluster in this guide is sufficient for development and testing, but is not up to production standards. You can expand it later with all the necessary redundancies such as additional ZooKeeper and Nimbus instances, and tools like [**supervisord**](http://supervisord.org/).
+{{< note title="This cluster is recommended for testing environments" >}}
+The example cluster in this guide is recommended for development and testing, but it is **not** recommended for production systems. It can be expanded later using the necessary redundancies such as additional ZooKeeper and Nimbus instances, and tools like [**supervisord**](http://supervisord.org/).
 {{< /note >}}
 
-## Install Java on All Nodes
+## Install Java On All Nodes
 
-Both Python and Java are prerequisites for Storm and ZooKeeper. Fortunately, Ubuntu 24.04 LTS comes with Python `3.12.3` installed by default, so you only need to install Java. Follow the steps below to install Java on all four instances.
+Both Python and Java are prerequisites for Storm and ZooKeeper. Ubuntu 24.04 LTS comes with Python `3.12.3` installed by default, but Java must be installed.
 
-1.  Update the package manager and upgrade the packages, then reboot the instances:
+On each deployed instance, follow the steps below to install Java.
+
+1.  Update the package manager, upgrade the packages, and reboot the instance:
 
     ```command {title="storm-zoo, storm-nimbus, storm-super-1, and storm-super-2"}
     apt update && apt upgrade && reboot
     ```
 
-1.  Once the reboots are complete, reconnect to each instance via SSH.
+1.  One the reboot is complete, reconnect to the instance via SSH from your local machine:
 
-1.  Install a Java Development Kit (JDK):
+    ```command {title="Local machine to each instance"}
+    ssh root@{{< placeholder "IP_ADDRESS" >}}
+    ```
+
+1.  Install the Java Development Kit (JDK):
 
     ```command {title="storm-zoo, storm-nimbus, storm-super-1, and storm-super-2"}
     apt install default-jdk
     ```
 
-1.  Verify the Java installation and display the installed version:
+1.  Display the installed version to verifiy the Java installation:
 
     ```command {title="storm-zoo, storm-nimbus, storm-super-1, and storm-super-2"}
     java --version
@@ -116,7 +120,7 @@ Both Python and Java are prerequisites for Storm and ZooKeeper. Fortunately, Ubu
 
 Follow the steps in this section to install ZooKeeper on the `storm-zoo` instance.
 
-1.  Use `wget` to download the latest stable version of ZooKeeper available on the [ZooKeeper release page](https://zookeeper.apache.org/releases.html). The examples in this guide use ZooKeeper version `3.9.2`, though yours may be newer, so adjust the commands below accordingly:
+1.  Use `wget` to download the latest stable version of ZooKeeper available on the [ZooKeeper release page](https://zookeeper.apache.org/releases.html). The examples in this guide use ZooKeeper version `3.9.2`. If necessary, adjust the commands below according to your version:
 
     ```command {title="storm-zoo"}
     wget https://dlcdn.apache.org/zookeeper/zookeeper-{{< placeholder "3.9.2" >}}/apache-zookeeper-{{< placeholder "3.9.2" >}}-bin.tar.gz
@@ -140,15 +144,13 @@ Follow the steps in this section to install ZooKeeper on the `storm-zoo` instanc
     nano /opt/zookeeper/conf/zoo.cfg
     ```
 
-    Give the file the following three lines as content:
+    Give the file the following content, and save your changes:
 
     ```file {title="/opt/zookeeper/conf/zoo.cfg"}
     tickTime=2000
     dataDir=/var/zookeeper
     clientPort=2181
     ```
-
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
 1.  Create the `/var/zookeeper` directory for data:
 
@@ -169,17 +171,17 @@ Follow the steps in this section to install ZooKeeper on the `storm-zoo` instanc
     Starting zookeeper ... STARTED
     ```
 
-{{< note >}}
-This single-server ZooKeeper instance is suitable for development and testing purposes. For production, upgrade to a [replicated ZooKeeper cluster](https://zookeeper.apache.org/doc/r3.3.3/zookeeperStarted.html#sc_RunningReplicatedZooKeeper).
+{{< note title="Use a ZooKeeper cluster for production environments" >}}
+The single-server ZooKeeper instance in this guide is suitable for development and testing purposes. For production, it is recommended to upgrade to a [replicated ZooKeeper cluster](https://zookeeper.apache.org/doc/r3.3.3/zookeeperStarted.html#sc_RunningReplicatedZooKeeper).
 
-It's also important to implement regular maintenance and supervision on each node. This helps to detect ZooKeeper failures and prevent issues such as running out of storage due to old snapshots and log files.
+To help ZooKeeper detect failures and prevent issues, it is important to implement regular maintenance and supervision on each individual node. For example, this can help avoid problems like running out of storage due to old snapshots and log files.
 {{< /note >}}
 
 ## Set Up Storm on Nimbus and Supervisor Instances
 
-This section sets up Apache Storm on the `storm-nimbus`, `storm-super-1`, and `storm-super-2` instances.
+This section provides instructions for downloading and installing Apache Storm on the `storm-nimbus`, `storm-super-1`, and `storm-super-2` instances.
 
-1.  Download the [latest Storm release](https://storm.apache.org/downloads.html) on each instance. This guide uses Storm version `2.6.3` though yours may be more recent, so adust the commands accordingly.
+1.  Download the [latest Storm release](https://storm.apache.org/downloads.html) on each specified instance. This guide uses Storm version `2.6.3`. If necessary, adjust your commands accordingly.
 
     ```command {title="storm-nimbus, storm-super-1, and storm-super-2"}
     wget https://dlcdn.apache.org/storm/apache-storm-{{< placeholder "2.6.3" >}}/apache-storm-{{< placeholder "2.6.3" >}}.tar.gz
@@ -197,24 +199,22 @@ This section sets up Apache Storm on the `storm-nimbus`, `storm-super-1`, and `s
     mv apache-storm-{{< placeholder "2.6.3" >}} /opt/storm
     ```
 
-1.  Open your `.bashrc` file:
+1.  In a separate terminal session on your local machine, open your `.bashrc` file:
 
-    ```command {title="Local Machine"}
+    ```command {title="Local machine"}
     nano ~/.bashrc
     ```
 
-    Append the following lines the end of the file to add Storm's `bin` directory to your PATH:
+    Append the following lines the end of the file to add Storm's `bin` directory to your PATH. Save your changes when complete:
 
     ```file
     #Set PATH for Storm
     export PATH="/opt/storm/bin:$PATH"
     ```
 
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+    Apply the changes to `.bashrc`:
 
-1.  Apply the changes to `.bashrc`:
-
-    ```command {title="Local Machine"}
+    ```command {title="Local machine"}
     source ~/.bashrc
     ```
 
@@ -243,7 +243,7 @@ The `storm.yaml` configuration file specifies the local directory for Storm's op
     nano /opt/storm/conf/storm.yaml
     ```
 
-    Add the following lines to the end of the file. Replace {{< placeholder "storm-zoo_IP_ADDRESS" >}} with the actual IP address for your `storm-zoo` instance and {{< placeholder "storm-nimbus_IP_ADDRESS" >}} with the actual IP address for your `storm-nimbus` instance.
+    Add the following lines to the end of the file. Replace {{< placeholder "storm-zoo_IP_ADDRESS" >}} with the IP address for your `storm-zoo` instance and {{< placeholder "storm-nimbus_IP_ADDRESS" >}} with the IP address for your `storm-nimbus` instance.
 
     ```file {title="conf/storm.yaml"}
     storm.zookeeper.servers:
@@ -254,9 +254,9 @@ The `storm.yaml` configuration file specifies the local directory for Storm's op
 
     This defines the IP addresses of the ZooKeeper and Nimbus instances and sets the `/var/storm` directory for Storm's state and temporary files. Refer to the [Storm Setup Guide](https://github.com/apache/storm/blob/master/docs/Setting-up-a-Storm-cluster.md#fill-in-mandatory-configurations-into-stormyaml) for more details.
 
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+    When done, save your changes.
 
-1.  Create the `/var/storm` directory for Storm's application data:
+1.  On your `storm-zoo` instance, create the `/var/storm` directory for Storm's application data:
 
     ```command {title="storm-zoo"}
     mkdir /var/storm
@@ -276,19 +276,17 @@ The `storm.yaml` configuration file specifies the local directory for Storm's op
     /opt/storm/bin/storm nimbus &
     ```
 
-1.  Also run the Storm UI web server on the `storm-nimbus` instance:
+    While on the `storm-nimbus` instance, run the Storm UI web server:
 
     ```command {title="storm-nimbus"}
     /opt/storm/bin/storm ui &
     ```
 
-    {{< note >}}
-    When done, you can press <kbd>CTRL</kbd>+<kbd>D</kbd> to logout and return to your local machine's command line.
-    {{< /note >}}
+    Press <kbd>CTRL</kbd>+<kbd>D</kbd> to logout and return to your local machine's command line.
 
 1.  Open a web browser on your local machine and navigate to port `8080` of the `storm-nimbus` instance's public IP address:
 
-    ```command {title="Local Machine"}
+    ```command {title="Local machine"}
     http://{{< placeholder "storm-nimbus_IP_ADDRESS" >}}:8080
     ```
 
@@ -298,9 +296,9 @@ The `storm.yaml` configuration file specifies the local directory for Storm's op
 
 ## Create the Message Stream
 
-The screenshot above shows no topologies, and therefore has no message streams. The [`storm-starter`](https://github.com/apache/storm/blob/master/examples/storm-starter/README.markdown) sample, located in the `apache-storm-{{< placeholder "2.6.3" >}}/examples/` directory, can solve this. It contains a variety of Storm topologies, ranging from a very simple example called `WordCount`, to far more complicated examples.
+The site above shows no topologies, and therefore has no message streams. The [`storm-starter`](https://github.com/apache/storm/blob/master/examples/storm-starter/README.markdown) sample, located in the `apache-storm-{{< placeholder "2.6.3" >}}/examples/` directory, can solve this. It contains a variety of Storm topologies, including one titled `WordCount` that is used as an example below.
 
-1.  Use `wget` to download the latest version of [Apache Maven](https://maven.apache.org/) to the `storm-nimbus` instance. This guide uses Maven version 3.9.8, though yours may be newer.
+1.  On the `storm-nimbus` instance, use `wget` to download the latest version of [Apache Maven](https://maven.apache.org/). This guide uses Maven version `3.9.8`.
 
     ```command {title="storm-nimbus"}
     wget https://dlcdn.apache.org/maven/maven-3/{{< placeholder "3.9.8" >}}/binaries/apache-maven-{{< placeholder "3.9.8" >}}-bin.tar.gz
@@ -360,7 +358,7 @@ The screenshot above shows no topologies, and therefore has no message streams. 
     mvn package
     ```
 
-    Wait a few minutes and you should see a success message towards the bottom of the output:
+    After a few minutes, you should see a success message towards the bottom of the output:
 
     ```output
     ...
@@ -372,17 +370,17 @@ The screenshot above shows no topologies, and therefore has no message streams. 
 
 ## Submit the Example Topology
 
-The [`storm jar` command](https://github.com/apache/storm/blob/master/examples/storm-starter/README.markdown#packaging-storm-starter-for-use-on-a-storm-cluster) allows you to choose a topology from the "uber JAR" and submit that to your cluster.
+The [`storm jar`](https://github.com/apache/storm/blob/master/examples/storm-starter/README.markdown#packaging-storm-starter-for-use-on-a-storm-cluster) command allows you to choose a topology from the "uber JAR" and submit that to your cluster.
 
-1.  Use the following command on the `storm-nimbus` instance to submit the `WordCount` topology:
+1.  On the `storm-nimbus` instance, use the following command to submit the `WordCount` topology:
 
     ```command {title="storm-nimbus"}
     storm jar /opt/storm/examples/storm-starter/target/storm-starter-{{< placeholder "2.6.3">}}.jar org.apache.storm.starter.WordCountTopology WordCount
     ```
 
-1.  Return to your Web browser refresh the page located at port `8080` of the `storm-nimbus` instance:
+1.  On your local machine, return to your web browser and refresh the page located at port `8080` of the `storm-nimbus` instance:
 
-    ```commqand {title="Local Machine"}
+    ```command {title="Local machine"}
     http://{{< placeholder "storm-nimbus_IP_ADDRESS" >}}:8080
     ```
 
