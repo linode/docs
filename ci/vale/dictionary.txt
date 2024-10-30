@@ -1279,6 +1279,7 @@ kubespray
 Kuma
 kustomize
 kuznetosv
+Kyber
 lambdabunker
 Laminas
 Langa

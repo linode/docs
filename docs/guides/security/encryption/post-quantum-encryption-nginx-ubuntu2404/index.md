@@ -30,7 +30,7 @@ Deploying this algorithm for your web server currently requires some additional 
 
 1. To implement the algorithm in NGINX, an SSL certificate is required. Instructions for creating a self-signed certificate in this guide. If you prefer to use a certificate from an authority, a domain name or subdomain must be assigned to your Linode instance. Visit your domain name registrar's website, to assign a new record to your Linode instance's IP address. Your IP address is [displayed in the cloud manager](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses). If you use the Linode DNS Manager, visit the [manage DNS records](https://techdocs.akamai.com/cloud-computing/docs/manage-domains) product documentation to view instructions for assigning a new A/AAAA record to your IP address.
 
-1.  For an overview of how TLS encryption works, review the [Understanding TLS Certificates and Connections](https://www.linode.com/docs/guides/what-is-a-tls-certificate/) guide.
+1.  For an overview of how TLS encryption works, review the [Understanding TLS Certificates and Connections](/docs/guides/what-is-a-tls-certificate/) guide.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
