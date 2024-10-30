@@ -104,7 +104,7 @@ On each deployed instance, follow the steps below to install Java.
     apt install default-jdk
     ```
 
-1.  Display the installed version to verifiy the Java installation:
+1.  Display the installed version to verify the Java installation:
 
     ```command {title="storm-zoo, storm-nimbus, storm-super-1, and storm-super-2"}
     java --version
