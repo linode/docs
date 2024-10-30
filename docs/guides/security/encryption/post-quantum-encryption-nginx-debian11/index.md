@@ -1,31 +1,36 @@
 ---
-slug: host-website-with-x25519kyber768draft00-key-exchange-support
-title: "Debian 11 Web Hosting with Post-Quantum Cryptography: X25519Kyber768Draft00 and TLS 1.3"
+slug: post-quantum-encryption-nginx-debian11
+title: "Post Quantum Encryption with NGINX on Debian 11"
 description: "Learn how to set up a Debian 11 Nginx web server with support for the post-quantum cryptography X25519Kyber768Draft00 key exchange in TLS 1.3."
 authors: ["Linode"]
 contributors: ["Linode"]
-published: 2024-09-16
+published: 2024-10-30
 keywords: ['X25519Kyber768Draft00','post-quantum cryptography','tls 1.3','cybersecurity','debian 11','key exhange','OpenSSL','encryption','secure website']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[DRAFT UBUNTU Set up a Web Server and Host a Website on Linode that supports the X25519Kyber768Draft00 Key Exchange in TLS 1.3 (Post-quantum cryptography)](https://collaborate.akamai.com/confluence/pages/viewpage.action?pageId=1012558967)'
 - '[Open Quantum Safe](https://openquantumsafe.org/liboqs/)'
 - '[OpenSSL Library](https://openssl-library.org/)'
-- '[Cloudfare Research: Post-Quantum Key Agreement](https://pq.cloudflareresearch.com/)'
 - '[GitHub: Open Quantum Safe oqs-provider](https://github.com/open-quantum-safe/oqs-provider)'
+relations:
+    platform:
+        key: post-quantum-encryption-nginx
+        keywords:
+            - distribution: Debian 11
 ---
 
 The National Institute of Standards and Technology (NIST) recently [released](https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards) its first finalized Post-Quantum Encryption Standards to protect against quantum computer attacks. This includes the Module-Lattice-based Key-Encapsulation Mechanism standard (ML-KEM, defined in [FIPS-203](https://csrc.nist.gov/pubs/fips/203/final)). It is already being implemented in the industry using an early [pre-standardization draft](https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00/) for use with TLS.
 
-Deploying this algorithm for your web server currently requires some additional steps. The process may vary depending on your operating system's version of OpenSSL. This guide shows you how to build OpenSSL 3.x and the Open Quantum Safe (OQS) provider on Debian 11. For instructions on Ubuntu 24.04 LTS, please see [this document](https://collaborate.akamai.com/confluence/pages/viewpage.action?pageId=1012558967).
+Deploying this algorithm for your web server currently requires some additional steps. The process may vary depending on your operating system's version of OpenSSL. This guide shows how to deploy this algorithm with NGINX on Debian 11. The [Open Quantum Safe (OQS) provider](https://github.com/open-quantum-safe/oqs-provider) for OpenSSL is built to enable the post quantum encryption algorithm.
 
 ## Before You Begin
 
-1.  If you do not already have a virtual machine to use, create a Compute Instance with at least 4 GB of memory using Debian 11. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  To follow along with the steps in the guide, create a Compute Instance running Debian 11. See the [Get started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Create a compute instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) product documentation for instructions. You may also choose to adapt the configuration from this guide to an existing NGINX installation.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow the [Set up and secure a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) product documentation to appropriately secure your system.
 
-1.  Read our [Understanding TLS Certificates and Connections](/docs/guides/what-is-a-tls-certificate/) to ensure that you're familiar with the basics of TLS encryption.
+1. To implement the algorithm in NGINX, an SSL certificate is required. Instructions for creating a self-signed certificate in this guide. If you prefer to use a certificate from an authority, a domain name or subdomain must be assigned to your Linode instance. Visit your domain name registrar's website, to assign a new record to your Linode instance's IP address. Your IP address is [displayed in the cloud manager](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses). If you use the Linode DNS Manager, visit the [manage DNS records](https://techdocs.akamai.com/cloud-computing/docs/manage-domains) product documentation to view instructions for assigning a new A/AAAA record to your IP address.
+
+1.  For an overview of how TLS encryption works, review the [Understanding TLS Certificates and Connections](https://www.linode.com/docs/guides/what-is-a-tls-certificate/) guide.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -287,7 +292,7 @@ A couple of dependencies must be installed prior to `oqs-provider`, along with G
     sudo apt install -y ninja-build
     ```
 
-### Clone the `oqs-provier` Repository
+### Clone the `oqs-provider` Repository
 
 1.  Use `git` to clone the `oqs-provider` repository from GitHub:
 
@@ -592,7 +597,7 @@ A couple of libraries are required before building Nginx:
 
 Ensure that you include the necessary certificates (whether self-signed or from a trusted Certificate Authority) to enable proper TLS/SSL functionality. Without certificates, you won’t be able to establish a secure HTTPS connection.
 
--   **Using Let's Encrpyt (Recommedned for Production)**: To use automatic certificate renewal with Let's Encrypt, follow [Use Certbot to Enable HTTPS with NGINX on Ubuntu](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) to properly configure the Nginx server.
+-   **Using Let's Encrpyt (Recommended for Production)**: To use automatic certificate renewal with Let's Encrypt, follow [Use Certbot to Enable HTTPS with NGINX on Ubuntu](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) to properly configure the Nginx server.
 
 -   **Using Self-Signed Certificate (Suitable for Testing/Development)**: To use a self-signed certificate, see our [Enable TLS/SSL for HTTPS](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) guide, or create certificates using the following command:
 
@@ -648,10 +653,10 @@ Nginx should now be installed, configured, and running with OpenSSL 3.x support.
 
 ## Verify Nginx Is Using Post-Quantum Algorithms
 
-The quickest and easiest way to test the algorithms used by Nginx is to run the `openssl` command with the flags shown below:
+Run the `openssl` command with the flags shown below:
 
 ```command
 openssl s_client -groups x25519_kyber768 -connect localhost:443
 ```
 
-This command specifically checks for the `X25519_Kyber768` algorithm during a TLS connection. For additional verification methods, see our [Ubuntu-PQC guide](https://collaborate.akamai.com/confluence/pages/viewpage.action?pageId=1012558967).
+This command specifically checks for the `X25519_Kyber768` algorithm during a TLS connection.
