@@ -38,6 +38,10 @@ This guide discusses key concepts and terminology associated with Apache Storm, 
 
 ## Before You Begin
 
+{{< note title="This cluster is recommended for testing environments" >}}
+The example cluster in this guide is recommended for development and testing, but it is **not** recommended for production systems. It can be expanded later using the necessary redundancies such as additional ZooKeeper and Nimbus instances, as well as tools like [**supervisord**](http://supervisord.org/).
+{{< /note >}}
+
 1.  Using the instructions in our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and specifications below, create the **four** necessary instances to run an Apache Storm cluster (one for ZooKeeper, one for Nimbus, and two Storm Supervisors):
 
     -   **Images**: Use the latest Long Term Support (LTS) version of Ubuntu available for all nodes. The examples in this guide use **Ubuntu 24.04 LTS**.
@@ -51,7 +55,7 @@ This guide discusses key concepts and terminology associated with Apache Storm, 
         -   **Storm Supervisor Node 1**: Linode Shared 4 GB
         -   **Storm Supervisor Node 2**: Linode Shared 4 GB
 
-    -   **Linode Label** Enter a descriptive label for each instance. The examples in this guide use the following:
+    -   **Linode Label**: Enter a descriptive label for each instance. The examples in this guide use the following:
 
         -   **ZooKeeper Node**: `storm-zoo`
         -   **Nimbus Node**: `storm-nimbus`
@@ -64,13 +68,9 @@ This guide discusses key concepts and terminology associated with Apache Storm, 
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-{{< note title="This cluster is recommended for testing environments" >}}
-The example cluster in this guide is recommended for development and testing, but it is **not** recommended for production systems. It can be expanded later using the necessary redundancies such as additional ZooKeeper and Nimbus instances, and tools like [**supervisord**](http://supervisord.org/).
-{{< /note >}}
-
 ## Install Java On All Nodes
 
-Both Python and Java are prerequisites for Storm and ZooKeeper. Ubuntu 24.04 LTS comes with Python `3.12.3` installed by default, but Java must be installed.
+Both Python and Java are prerequisites for Storm and ZooKeeper. Ubuntu 24.04 LTS comes with Python version 3.12.3 installed by default, but Java must be installed manually.
 
 On each deployed instance, follow the steps below to install Java.
 
@@ -96,7 +96,7 @@ On each deployed instance, follow the steps below to install Java.
 
 Follow the steps in this section to install ZooKeeper on the `storm-zoo` instance.
 
-1.  Use `wget` to download the latest stable version of ZooKeeper available on the [ZooKeeper release page](https://zookeeper.apache.org/releases.html). The examples in this guide use ZooKeeper version `3.8.4`. If necessary, adjust the commands below according to your version:
+1.  Use `wget` to download the latest stable version of ZooKeeper available on the [ZooKeeper release page](https://zookeeper.apache.org/releases.html). The examples in this guide use ZooKeeper version 3.8.4. If necessary, adjust the commands below according to your version:
 
     ```command {title="storm-zoo"}
     wget https://dlcdn.apache.org/zookeeper/zookeeper-{{< placeholder "3.8.4" >}}/apache-zookeeper-{{< placeholder "3.8.4" >}}-bin.tar.gz
@@ -122,7 +122,7 @@ Follow the steps in this section to install ZooKeeper on the `storm-zoo` instanc
     clientPort=2181
     ```
 
-1.  Create the `/var/zookeeper` directory for data:
+1.  Create the `~/apache-zookeeper-{{< placeholder "3.8.4" >}}-bin/data` directory for data storage:
 
     ```command {title="storm-zoo"}
     mkdir ~/apache-zookeeper-{{< placeholder "3.8.4" >}}-bin/data
@@ -151,7 +151,7 @@ To help ZooKeeper detect failures and prevent issues, it is important to impleme
 
 This section provides instructions for downloading and installing Apache Storm on the `storm-nimbus`, `storm-super-1`, and `storm-super-2` instances.
 
-1.  Download the [latest Storm release](https://storm.apache.org/downloads.html) on each specified instance. This guide uses Storm version `2.7.0`. If necessary, adjust your commands accordingly.
+1.  Download the [latest Storm release](https://storm.apache.org/downloads.html) on each specified instance. This guide uses Storm version 2.7.0. If necessary, adjust the commands for your version of Storm.
 
     ```command {title="storm-nimbus, storm-super-1, and storm-super-2"}
     wget https://dlcdn.apache.org/storm/apache-storm-{{< placeholder "2.7.0" >}}/apache-storm-{{< placeholder "2.7.0" >}}.tar.gz
@@ -255,7 +255,7 @@ The `storm.yaml` configuration file specifies the local directory for Storm's op
 
 The site above shows no topologies, and therefore has no message streams. The [`storm-starter`](https://github.com/apache/storm/blob/master/examples/storm-starter/README.markdown) sample, located in the `apache-storm-{{< placeholder "2.7.0" >}}/examples/` directory, can solve this. It contains a variety of Storm topologies, including one titled `WordCount` that is used as an example below.
 
-1.  On the `storm-nimbus` instance, use `wget` to download the latest version of [Apache Maven](https://maven.apache.org/). This guide uses Maven version `3.9.9`.
+1.  On the `storm-nimbus` instance, use `wget` to download the latest version of [Apache Maven](https://maven.apache.org/). This guide uses Maven version 3.9.9.
 
     ```command {title="storm-nimbus"}
     wget https://dlcdn.apache.org/maven/maven-3/{{< placeholder "3.9.9" >}}/binaries/apache-maven-{{< placeholder "3.9.9" >}}-bin.tar.gz
@@ -273,14 +273,12 @@ The site above shows no topologies, and therefore has no message streams. The [`
     nano ~/.bashrc
     ```
 
-    Add Maven's `bin` directory to your PATH:
+    Add Maven's `bin` directory to your PATH, and save your changes:
 
     ```file {title="~/.bashrc"}
     #Set PATH for Maven
     export PATH="$HOME/apache-maven-{{< placeholder "3.9.9" >}}/bin:$PATH"
     ```
-
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
 1.  Apply the changes to `.bashrc`:
 
@@ -302,7 +300,7 @@ The site above shows no topologies, and therefore has no message streams. The [`
     OS name: "linux", version: "6.8.0-47-generic", arch: "amd64", family: "unix"
     ```
 
-1.  Issue the following commands to change into the `~/apache-storm-2.7.0/examples/storm-starter` directory and build a Storm "uber JAR":
+1.  Issue the following commands to change into the `~/apache-storm-{{< placeholder "2.7.0" >}}/examples/storm-starter` directory and build a Storm "uber JAR":
 
     ```command {title="storm-nimbus"}
     cd ~/apache-storm-{{< placeholder "2.7.0" >}}/examples/storm-starter
