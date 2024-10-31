@@ -38,11 +38,11 @@ This guide discusses key concepts and terminology associated with Apache Storm, 
 
 ## Cluster Setup
 
-Using the instructions in our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and specifications below, create the **four** necessary instances to run an Apache Storm cluster: one for ZooKeeper, one for Nimbus, and two Storm Supervisors
+Using the instructions in our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and specifications below, create the **four** necessary instances to run an Apache Storm cluster (one for ZooKeeper, one for Nimbus, and two Storm Supervisors):
 
 -   **Images**: Use the latest Long Term Support (LTS) version of Ubuntu available for all nodes. The examples in this guide use **Ubuntu 24.04 LTS**.
 
--  **Region**: Choose the geographic region best suited for your use case. The examples in this guide use the **Miami** (`us-mia`) region.
+-   **Region**: Choose the geographic region best suited for your use case. The examples in this guide use the **Miami** (`us-mia`) region.
 
 -   **Linode Plan**: Below are the minimum specifications recommended for each node:
 
@@ -120,22 +120,22 @@ On each deployed instance, follow the steps below to install Java.
 
 Follow the steps in this section to install ZooKeeper on the `storm-zoo` instance.
 
-1.  Use `wget` to download the latest stable version of ZooKeeper available on the [ZooKeeper release page](https://zookeeper.apache.org/releases.html). The examples in this guide use ZooKeeper version `3.9.2`. If necessary, adjust the commands below according to your version:
+1.  Use `wget` to download the latest stable version of ZooKeeper available on the [ZooKeeper release page](https://zookeeper.apache.org/releases.html). The examples in this guide use ZooKeeper version `3.8.4`. If necessary, adjust the commands below according to your version:
 
     ```command {title="storm-zoo"}
-    wget https://dlcdn.apache.org/zookeeper/zookeeper-{{< placeholder "3.9.2" >}}/apache-zookeeper-{{< placeholder "3.9.2" >}}-bin.tar.gz
+    wget https://dlcdn.apache.org/zookeeper/zookeeper-{{< placeholder "3.8.4" >}}/apache-zookeeper-{{< placeholder "3.8.4" >}}-bin.tar.gz
     ```
 
 1.  Unpack the ZooKeeper tarball:
 
     ```command {title="storm-zoo"}
-    tar -zxvf apache-zookeeper-{{< placeholder "3.9.2" >}}-bin.tar.gz
+    tar -zxvf apache-zookeeper-{{< placeholder "3.8.4" >}}-bin.tar.gz
     ```
 
 1.  Move the extracted directory to `/opt/zookeeper`:
 
-    ```command
-    mv apache-zookeeper-{{< placeholder "3.9.2" >}}-bin /opt/zookeeper
+    ```command {title="storm-zoo"}
+    mv apache-zookeeper-{{< placeholder "3.8.4" >}}-bin /opt/zookeeper
     ```
 
 1.  Create a `zoo.cfg` ZooKeeper configuration file:
@@ -181,56 +181,56 @@ To help ZooKeeper detect failures and prevent issues, it is important to impleme
 
 This section provides instructions for downloading and installing Apache Storm on the `storm-nimbus`, `storm-super-1`, and `storm-super-2` instances.
 
-1.  Download the [latest Storm release](https://storm.apache.org/downloads.html) on each specified instance. This guide uses Storm version `2.6.3`. If necessary, adjust your commands accordingly.
+1.  Download the [latest Storm release](https://storm.apache.org/downloads.html) on each specified instance. This guide uses Storm version `2.7.0`. If necessary, adjust your commands accordingly.
 
     ```command {title="storm-nimbus, storm-super-1, and storm-super-2"}
-    wget https://dlcdn.apache.org/storm/apache-storm-{{< placeholder "2.6.3" >}}/apache-storm-{{< placeholder "2.6.3" >}}.tar.gz
+    wget https://dlcdn.apache.org/storm/apache-storm-{{< placeholder "2.7.0" >}}/apache-storm-{{< placeholder "2.7.0" >}}.tar.gz
     ```
 
 1.  Once the Storm tarballs are present, unpack them:
 
     ```command {title="storm-nimbus, storm-super-1, and storm-super-2"}
-    tar -zxvf ~/apache-storm-{{< placeholder "2.6.3" >}}.tar.gz
+    tar -zxvf apache-storm-{{< placeholder "2.7.0" >}}.tar.gz
     ```
 
 1.  Move the extracted directories to `/opt/storm`:
 
     ```command {title="storm-nimbus, storm-super-1, and storm-super-2"}
-    mv apache-storm-{{< placeholder "2.6.3" >}} /opt/storm
+    mv apache-storm-{{< placeholder "2.7.0" >}} /opt/storm
     ```
 
-1.  In a separate terminal session on your local machine, open your `.bashrc` file:
+1.  Open your `.bashrc` file:
 
-    ```command {title="Local machine"}
+    ```command {title="storm-nimbus, storm-super-1, and storm-super-2"}
     nano ~/.bashrc
     ```
 
     Append the following lines the end of the file to add Storm's `bin` directory to your PATH. Save your changes when complete:
 
-    ```file
+    ```file {title="~/.bashrc"}
     #Set PATH for Storm
     export PATH="/opt/storm/bin:$PATH"
     ```
 
     Apply the changes to `.bashrc`:
 
-    ```command {title="Local machine"}
+    ```command {title="storm-nimbus, storm-super-1, and storm-super-2"}
     source ~/.bashrc
     ```
 
 1.  Verify the Storm installation by checking the version:
 
-    ```command
+    ```command {title="storm-nimbus, storm-super-1, and storm-super-2"}
     storm version
     ```
 
     ```output
     Running: java -client -Ddaemon.name= -Dstorm.options= -Dstorm.home=/opt/storm -Dstorm.log.dir=/opt/storm/logs -Djava.library.path=/usr/local/lib:/opt/local/lib:/usr/lib:/usr/lib64 -Dstorm.conf.file= -cp /opt/storm/*:/opt/storm/lib/*:/opt/storm/extlib/*:/opt/storm/extlib-daemon/*:/opt/storm/conf org.apache.storm.utils.VersionInfo
-    Storm 2.6.3
-    URL https://github.com/apache/storm.git -r 72f95026501fec6dcd85a8383fb4767db47d3a5b
-    Branch v2.6.3
-    Compiled by rui on 2024-07-16T14:21Z
-    From source with checksum 4efe8317e462162b8d2b4a63978c4a6
+    Storm 2.7.0
+    URL https://{{< placeholder "TOKEN" >}}@github.com/apache/storm.git -r b95a7f25a114ae7fb9c23cbc2979d3cfff09fa73
+    Branch v2.7.0
+    Compiled by rui on 2024-10-11T17:28Z
+    From source with checksum dcefb62616ea3f989d583d962257084
     ```
 
 ## Edit the Storm Configuration on Nimbus and Supervisor Instances
@@ -256,6 +256,8 @@ The `storm.yaml` configuration file specifies the local directory for Storm's op
 
     When done, save your changes.
 
+### ???
+
 1.  On your `storm-zoo` instance, create the `/var/storm` directory for Storm's application data:
 
     ```command {title="storm-zoo"}
@@ -270,19 +272,12 @@ The `storm.yaml` configuration file specifies the local directory for Storm's op
     /opt/storm/bin/storm supervisor &
     ```
 
-1.  On the `storm-nimbus` instance, execute the following command to run Storm as a nimbus daemon:
+1.  On the `storm-nimbus` instance, execute the following commands to run Storm as a nimbus daemon and run the Storm UI web server:
 
     ```command {title="storm-nimbus"}
     /opt/storm/bin/storm nimbus &
-    ```
-
-    While on the `storm-nimbus` instance, run the Storm UI web server:
-
-    ```command {title="storm-nimbus"}
     /opt/storm/bin/storm ui &
     ```
-
-    Press <kbd>CTRL</kbd>+<kbd>D</kbd> to logout and return to your local machine's command line.
 
 1.  Open a web browser on your local machine and navigate to port `8080` of the `storm-nimbus` instance's public IP address:
 
@@ -296,24 +291,24 @@ The `storm.yaml` configuration file specifies the local directory for Storm's op
 
 ## Create the Message Stream
 
-The site above shows no topologies, and therefore has no message streams. The [`storm-starter`](https://github.com/apache/storm/blob/master/examples/storm-starter/README.markdown) sample, located in the `apache-storm-{{< placeholder "2.6.3" >}}/examples/` directory, can solve this. It contains a variety of Storm topologies, including one titled `WordCount` that is used as an example below.
+The site above shows no topologies, and therefore has no message streams. The [`storm-starter`](https://github.com/apache/storm/blob/master/examples/storm-starter/README.markdown) sample, located in the `apache-storm-{{< placeholder "2.7.0" >}}/examples/` directory, can solve this. It contains a variety of Storm topologies, including one titled `WordCount` that is used as an example below.
 
-1.  On the `storm-nimbus` instance, use `wget` to download the latest version of [Apache Maven](https://maven.apache.org/). This guide uses Maven version `3.9.8`.
+1.  On the `storm-nimbus` instance, use `wget` to download the latest version of [Apache Maven](https://maven.apache.org/). This guide uses Maven version `3.9.9`.
 
     ```command {title="storm-nimbus"}
-    wget https://dlcdn.apache.org/maven/maven-3/{{< placeholder "3.9.8" >}}/binaries/apache-maven-{{< placeholder "3.9.8" >}}-bin.tar.gz
+    wget https://dlcdn.apache.org/maven/maven-3/{{< placeholder "3.9.9" >}}/binaries/apache-maven-{{< placeholder "3.9.9" >}}-bin.tar.gz
     ```
 
 1.  Unpack the downloaded archive file:
 
     ```command {title="storm-nimbus"}
-    tar xzvf apache-maven-3.9.8-bin.tar.gz
+    tar xzvf apache-maven-3.9.9-bin.tar.gz
     ```
 
 1.  Move the extracted directory to `/opt/maven`:
 
     ```command {title="storm-nimbus"}
-    sudo mv apache-maven-{{< placeholder "3.9.8" >}} /opt/maven
+    sudo mv apache-maven-{{< placeholder "3.9.9" >}} /opt/maven
     ```
 
 1.  Open your `.bashrc` file:
@@ -324,7 +319,7 @@ The site above shows no topologies, and therefore has no message streams. The [`
 
     Add Maven's `bin` directory to your PATH:
 
-    ```file {title=".bashrc"}
+    ```file {title="~/.bashrc"}
     #Set PATH for Maven
     export PATH="/opt/maven/bin:$PATH"
     ```
@@ -344,11 +339,11 @@ The site above shows no topologies, and therefore has no message streams. The [`
     ```
 
     ```output
-    Apache Maven 3.9.8 (36645f6c9b5079805ea5009217e36f2cffd34256)
-    Maven home: /home/aovera/apache-maven-3.9.8
+    Apache Maven 3.9.9 (8e8579a9e76f7d015ee5ec7bfcdc97d260186937)
+    Maven home: /opt/maven
     Java version: 21.0.4, vendor: Ubuntu, runtime: /usr/lib/jvm/java-21-openjdk-amd64
     Default locale: en_US, platform encoding: UTF-8
-    OS name: "linux", version: "6.8.0-39-generic", arch: "amd64", family: "unix"
+    OS name: "linux", version: "6.8.0-47-generic", arch: "amd64", family: "unix"
     ```
 
 1.  Issue the following commands to change into the `/opt/storm/examples/storm-starter` directory and build a Storm "uber JAR":
@@ -366,7 +361,7 @@ The site above shows no topologies, and therefore has no message streams. The [`
     ...
     ```
 
-    The JAR file you built is located at `/opt/storm/examples/storm-starter/target/storm-starter-{{< placeholder "2.6.3">}}.jar`.
+    The JAR file you built is located at `/opt/storm/examples/storm-starter/target/storm-starter-{{< placeholder "2.7.0">}}.jar`.
 
 ## Submit the Example Topology
 
@@ -375,7 +370,7 @@ The [`storm jar`](https://github.com/apache/storm/blob/master/examples/storm-sta
 1.  On the `storm-nimbus` instance, use the following command to submit the `WordCount` topology:
 
     ```command {title="storm-nimbus"}
-    storm jar /opt/storm/examples/storm-starter/target/storm-starter-{{< placeholder "2.6.3">}}.jar org.apache.storm.starter.WordCountTopology WordCount
+    storm jar /opt/storm/examples/storm-starter/target/storm-starter-{{< placeholder "2.7.0">}}.jar org.apache.storm.starter.WordCountTopology WordCount
     ```
 
 1.  On your local machine, return to your web browser and refresh the page located at port `8080` of the `storm-nimbus` instance:
