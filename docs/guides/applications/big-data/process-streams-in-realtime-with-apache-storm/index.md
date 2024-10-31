@@ -256,8 +256,6 @@ The `storm.yaml` configuration file specifies the local directory for Storm's op
 
     When done, save your changes.
 
-### ???
-
 1.  On your `storm-zoo` instance, create the `/var/storm` directory for Storm's application data:
 
     ```command {title="storm-zoo"}
