@@ -21,6 +21,7 @@ adhoc
 adminpack
 adnanh
 adodb
+adoptium
 aes
 ag
 agentless
@@ -375,6 +376,7 @@ configr
 configs
 configtest
 configurability
+configurator
 connectionism
 connectionless
 connectionStatus
@@ -1241,6 +1243,7 @@ kickbans
 kickstarter
 killall
 kinect
+kinesis
 kinser
 kitchensalt
 klei
@@ -1302,6 +1305,7 @@ len
 lennart
 Lerna
 letsencrypt
+Letsencrypt
 lf
 li181
 li263
@@ -2275,6 +2279,7 @@ sentdex
 sentora
 seo
 serializable
+serializer
 serv
 server1
 serverless
@@ -2504,6 +2509,7 @@ Tectia
 telecom
 telehealth
 teleporting
+temurin
 tensorflow
 terrahelp
 terraria
