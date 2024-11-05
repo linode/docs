@@ -1,11 +1,11 @@
 ---
 slug: post-quantum-encryption-nginx-ubuntu2404
 title: "Post Quantum Encryption with NGINX on Ubuntu 24.04"
-description: "Learn how to set up NGINX on Ubuntu 24.04 with support for the post-quantum cryptography X25519Kyber768Draft00 key exchange in TLS 1.3."
-authors: ["Linode"]
+description: "Learn how to set up NGINX on Ubuntu 24.04 with support for the post-quantum cryptography X25519Kyber768Draft00 / ML-KEM key exchange in TLS 1.3."
+authors: ["Seweryn Krajczok", "Jan Schaumann"]
 contributors: ["Linode"]
 published: 2024-10-30
-keywords: ['X25519Kyber768Draft00','post-quantum cryptography','tls 1.3','cybersecurity','ubuntu 24.04','key exhange','OpenSSL','encryption','secure website']
+keywords: ['X25519Kyber768Draft00','X25519MLKEM768', 'ML-KEM','post-quantum cryptography','tls 1.3','cybersecurity','ubuntu 24.04','key exhange','OpenSSL','encryption','secure website']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Open Quantum Safe](https://openquantumsafe.org/)'
@@ -20,7 +20,7 @@ relations:
 
 The National Institute of Standards and Technology (NIST) recently [released](https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards) its first finalized Post-Quantum Encryption Standards to protect against quantum computer attacks. This includes the Module-Lattice-based Key-Encapsulation Mechanism standard (ML-KEM, defined in [FIPS-203](https://csrc.nist.gov/pubs/fips/203/final)). It is already being implemented in the industry using an early [pre-standardization draft](https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00/) for use with TLS.
 
-Deploying this algorithm for your web server currently requires some additional steps. The process may vary depending on your operating system's version of OpenSSL. This guide shows how to deploy this algorithm with NGINX on Ubuntu 24.04. The [Open Quantum Safe (OQS) provider](https://github.com/open-quantum-safe/oqs-provider) for OpenSSL is built to enable the post quantum encryption algorithm. After it is configured for the web server, several ways to verify that the server is using the algorithm are demonstrated.
+Deploying this algorithm for your web server currently requires some additional steps. The process may vary depending on your operating system's version of OpenSSL. This guide shows how to deploy this algorithm with NGINX on Ubuntu 24.04, using the [Open Quantum Safe (OQS) provider](https://github.com/open-quantum-safe/oqs-provider) for OpenSSL, which is used to enable the post quantum encryption algorithm. After it is configured for the web server, several ways to verify that the server is using the algorithm are demonstrated.
 
 ## Before You Begin
 
@@ -28,7 +28,7 @@ Deploying this algorithm for your web server currently requires some additional 
 
 1.  Follow the [Set up and secure a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) product documentation to appropriately secure your system.
 
-1. To implement the algorithm in NGINX, an SSL certificate is required. Instructions for creating a self-signed certificate in this guide. If you prefer to use a certificate from an authority, a domain name or subdomain must be assigned to your Linode instance. Visit your domain name registrar's website, to assign a new record to your Linode instance's IP address. Your IP address is [displayed in the cloud manager](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses). If you use the Linode DNS Manager, visit the [manage DNS records](https://techdocs.akamai.com/cloud-computing/docs/manage-domains) product documentation to view instructions for assigning a new A/AAAA record to your IP address.
+1. To implement the algorithm in NGINX, a TLS certificate is required. When using a certificate from a public certificate authority, a domain name or subdomain must be assigned to your Linode instance. Visit your domain name registrar's website, to assign a new record to your Linode instance's IP address. Your IP address is [displayed in the cloud manager](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses). If you use the Linode DNS Manager, visit the [manage DNS records](https://techdocs.akamai.com/cloud-computing/docs/manage-domains) product documentation to view instructions for assigning a new A/AAAA record to your IP address.
 
 1.  For an overview of how TLS encryption works, review the [Understanding TLS Certificates and Connections](/docs/guides/what-is-a-tls-certificate/) guide.
 
@@ -73,20 +73,6 @@ openssl version
 If OpenSSL 3.x+ is already installed, go to the "Install the oqs-provider" step.
 
 ## Update OpenSSL
-
-1. Check if you have already installed OpenSSL >= 3.x:
-
-    ```command
-    openssl version
-    ```
-
-    This should generate output like:
-
-    ```output
-    OpenSSL 3.0.13 30 Jan 2024 (Library: OpenSSL 3.0.13 30 Jan 2024)
-    ```
-
-    If OpenSSL 3.x+ is already installed, skip to the [Install oqs-provider](#install-oqs-provider) section.
 
 1. Update OpenSSL from Ubuntu repositories:
 
@@ -195,7 +181,7 @@ Providers:
     status: active
   oqsprovider
     name: OpenSSL OQS Provider
-    version: 0.6.2-dev
+    version: 0.7.1-dev
     status: active
 ```
 
@@ -204,22 +190,22 @@ Providers:
 Run:
 
 ```command
-openssl list -kem-algorithms -provider oqsprovider | grep kyber
+openssl list -kem-algorithms -provider oqsprovider | egrep -i "(kyber|kem)768"
 ```
 
 Output should resemble:
 
 ```output
-kyber512 @ oqsprovider
-p256_kyber512 @ oqsprovider
-x25519_kyber512 @ oqsprovider
-kyber768 @ oqsprovider
-p384_kyber768 @ oqsprovider
-x448_kyber768 @ oqsprovider
-x25519_kyber768 @ oqsprovider
-p256_kyber768 @ oqsprovider
-kyber1024 @ oqsprovider
-p521_kyber1024 @ oqsprovider
+  kyber768 @ oqsprovider
+  p384_kyber768 @ oqsprovider
+  x448_kyber768 @ oqsprovider
+  x25519_kyber768 @ oqsprovider
+  p256_kyber768 @ oqsprovider
+  mlkem768 @ oqsprovider
+  p384_mlkem768 @ oqsprovider
+  x448_mlkem768 @ oqsprovider
+  X25519MLKEM768 @ oqsprovider
+  SecP256r1MLKEM768 @ oqsprovider
 ```
 
 ## Set Up NGINX
@@ -260,12 +246,6 @@ Ensure that you include the necessary certificates (whether self-signed or from 
     sudo nano /etc/nginx/nginx.conf
     ```
 
-    Add the following line to the top of the file to specify the user:
-
-    ```file {title="/etc/nginx/nginx.conf"}
-    user www-data; #add this to the top of the file
-    ```
-
 1.  Locate the `http` block and add the highlighted lines to include configuration files in the `/etc/nginx/nginx.conf` directory:
 
     ```file {title="/etc/nginx/nginx.conf" hl_lines="2,3" linenostart="18"}
@@ -297,7 +277,7 @@ Ensure that you include the necessary certificates (whether self-signed or from 
         ssl_certificate_key /opt/certs/pqc.key;
         ssl_protocols TLSv1.3;
         ssl_prefer_server_ciphers on;
-        ssl_ecdh_curve x25519_kyber768:p384_kyber768:x25519:secp384r1:x448:secp256r1:secp521r1;
+        ssl_ecdh_curve X25519MLKEM768:x25519_kyber768:p384_kyber768:x25519:secp384r1:x448:secp256r1:secp521r1;
         location / {
             try_files $uri $uri/ =404;
         }
@@ -330,9 +310,9 @@ openssl s_client -groups x25519_kyber768 -connect localhost:443
 
         1. Open Chrome and navigate to [chrome://flags](chrome://flags).
 
-        1. In the search bar, enter `TLS 1.3 hybridized Kyber`.
+        1. In the search bar, enter `TLS 1.3 post-quantum key agreement`.
 
-        1. Toggle the option to Enabled for `TLS 1.3 hybridized Kyber support`.
+        1. Toggle the option to Enabled for `#enable-tls13-kyber` or `#use-ml-kem`.
 
     - Firefox:
 
@@ -425,6 +405,8 @@ These steps create an index.php page on your web server that displays informatio
 
             if ($ssl_curve === '0x6399') {
                 echo "<p class='secure'>You are using X25519Kyber768Draft00 which is post-quantum secure.</p>";
+            } elsif ($ssl_curve === '0x4588') {
+                echo "<p class='secure'>You are using X25519MLKEM768, which is post-quantum secure.</p>";
             } else {
                 echo "<p class='not-secure'>You are using SSL Curve: {$ssl_curve} which is not post-quantum secure.</p>";
             }
@@ -439,24 +421,6 @@ These steps create an index.php page on your web server that displays informatio
     ```command
     sudo systemctl reload nginx
     ```
-
-1.  Enable Kyber support in either Google Chrome or Mozilla Firefox:
-
-    - Chrome:
-
-        1. Open Chrome and navigate to [chrome://flags](chrome://flags).
-
-        1. In the search bar, enter `TLS 1.3 hybridized Kyber`.
-
-        1. Toggle the option to Enabled for `TLS 1.3 hybridized Kyber support`.
-
-    - Firefox:
-
-        1. Open Chrome and navigate to [about:config](about:config).
-
-        1. In the search bar, enter `security.tls.enable_kyber`.
-
-        1. Toggle the option to True for `security.tls.enable_kyber`.
 
 1.  Visit your website in your browser. If Kyber support is enabled in your browser, and if the TLS handshake with the web server uses the algorithm, you should see:
 
@@ -473,7 +437,7 @@ These steps create an index.php page on your web server that displays informatio
 {{< note >}}
 Remember that currently not all browsers support post-quantum algorithms. These browsers offer compatibility:
 
-- Enabled by default for Chrome 124+ on Desktop. For older Chrome versions or on mobile, you need to toggle `TLS 1.3 hybridized Kyber support` in [chrome://flags](chrome://flags).
+- Enabled by default for Chrome 124+ on Desktop. For older Chrome versions or on mobile, you need to toggle `TLS 1.3 post-quantum key agreement` / `#use-ml-kem` in [chrome://flags](chrome://flags).
 
 - Enabled by default for Edge 124+.
 

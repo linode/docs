@@ -1,11 +1,11 @@
 ---
 slug: post-quantum-encryption-nginx-debian11
 title: "Post Quantum Encryption with NGINX on Debian 11"
-description: "Learn how to set up a Debian 11 Nginx web server with support for the post-quantum cryptography X25519Kyber768Draft00 key exchange in TLS 1.3."
-authors: ["Linode"]
+description: "Learn how to set up a Debian 11 Nginx web server with support for the post-quantum cryptography X25519Kyber768Draft00 / ML-KEM key exchange in TLS 1.3."
+authors: ["Seweryn Krajczok", "Jan Schaumann"]
 contributors: ["Linode"]
-published: 2024-10-30
-keywords: ['X25519Kyber768Draft00','post-quantum cryptography','tls 1.3','cybersecurity','debian 11','key exhange','OpenSSL','encryption','secure website']
+published: 2024-11-05
+keywords: ['X25519Kyber768Draft00','X25519MLKEM768', 'ML-KEM', 'post-quantum cryptography','tls 1.3','cybersecurity','debian 11','key exhange','OpenSSL','encryption','secure website']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Open Quantum Safe](https://openquantumsafe.org/liboqs/)'
@@ -20,7 +20,9 @@ relations:
 
 The National Institute of Standards and Technology (NIST) recently [released](https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards) its first finalized Post-Quantum Encryption Standards to protect against quantum computer attacks. This includes the Module-Lattice-based Key-Encapsulation Mechanism standard (ML-KEM, defined in [FIPS-203](https://csrc.nist.gov/pubs/fips/203/final)). It is already being implemented in the industry using an early [pre-standardization draft](https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00/) for use with TLS.
 
-Deploying this algorithm for your web server currently requires some additional steps. The process may vary depending on your operating system's version of OpenSSL. This guide shows how to deploy this algorithm with NGINX on Debian 11. The [Open Quantum Safe (OQS) provider](https://github.com/open-quantum-safe/oqs-provider) for OpenSSL is built to enable the post quantum encryption algorithm.
+Deploying this algorithm for your web server currently requires some additional steps. The process may vary depending on your operating system's version of OpenSSL. This guide shows how to deploy this algorithm with NGINX on Debian 11, using the [Open Quantum Safe (OQS) provider](https://github.com/open-quantum-safe/oqs-provider) for OpenSSL, which is used to enable the post quantum encryption algorithm.
+
+_Note_: we chose Debian 11 here to illustrate the process of building OpenSSL and NGINX from sources.  See [this guide](/docs/guides/security/encryption/post-quantum-encryption-nginx-ubuntu2404/) for a document guiding you through the setup on an Ubuntu 24.04 system instead.
 
 ## Before You Begin
 
@@ -28,7 +30,7 @@ Deploying this algorithm for your web server currently requires some additional 
 
 1.  Follow the [Set up and secure a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) product documentation to appropriately secure your system.
 
-1. To implement the algorithm in NGINX, an SSL certificate is required. Instructions for creating a self-signed certificate in this guide. If you prefer to use a certificate from an authority, a domain name or subdomain must be assigned to your Linode instance. Visit your domain name registrar's website, to assign a new record to your Linode instance's IP address. Your IP address is [displayed in the cloud manager](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses). If you use the Linode DNS Manager, visit the [manage DNS records](https://techdocs.akamai.com/cloud-computing/docs/manage-domains) product documentation to view instructions for assigning a new A/AAAA record to your IP address.
+1. To implement the algorithm in NGINX, a TLS certificate is required. When using a certificate from a public certificate authority, a domain name or subdomain must be assigned to your Linode instance. Visit your domain name registrar's website, to assign a new record to your Linode instance's IP address. Your IP address is [displayed in the cloud manager](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses). If you use the Linode DNS Manager, visit the [manage DNS records](https://techdocs.akamai.com/cloud-computing/docs/manage-domains) product documentation to view instructions for assigning a new A/AAAA record to your IP address.
 
 1.  For an overview of how TLS encryption works, review the [Understanding TLS Certificates and Connections](/docs/guides/what-is-a-tls-certificate/) guide.
 
@@ -71,13 +73,13 @@ Debian 11 comes with OpenSSL version `1.1.1w` by default, but the OQS provider r
 1.  Download the OpenSSL source code:
 
     ```command
-    wget https://github.com/openssl/openssl/releases/download/openssl-3.3.2/openssl-3.3.2.tar.gz
+    wget https://github.com/openssl/openssl/releases/download/openssl-3.4.0/openssl-3.4.0.tar.gz
     ```
 
 1.  Download the corresponding signature file:
 
     ```command
-    wget https://github.com/openssl/openssl/releases/download/openssl-3.3.2/openssl-3.3.2.tar.gz.asc
+    wget https://github.com/openssl/openssl/releases/download/openssl-3.4.0/openssl-3.4.0.tar.gz.asc
     ```
 
 ### Verify the OpenSSL Code Signature
@@ -133,13 +135,13 @@ Before proceeding with the installation, verify the integrity and authenticity o
 1.  Finally, verify the OpenSSL source file against its signature:
 
     ```command
-    gpg --verify openssl-3.3.2.tar.gz.asc openssl-3.3.2.tar.gz
+    gpg --verify openssl-3.4.0.tar.gz.asc openssl-3.4.0.tar.gz
     ```
 
     You should see a confirmation similar to the output below:
 
     ```output
-    gpg: Signature made Tue 03 Sep 2024 08:46:51 AM EDT
+    gpg: Signature made Tue 22 Oct 2024 12:27:03 PM UTC
     gpg:                using RSA key BA5473A2B0587B07FB27CF2D216094DFD0CB81EF
     gpg: Good signature from "OpenSSL <openssl@openssl.org>" [unknown]
     ```
@@ -163,13 +165,13 @@ After verifying the source code, the next step is to build OpenSSL from source.
 1.  Extract the downloaded OpenSSL archive:
 
     ```command
-    tar zxf openssl-3.3.2.tar.gz
+    tar zxf openssl-3.4.0.tar.gz
     ```
 
 1.  Change into the extracted OpenSSL source directory:
 
     ```command
-    cd openssl-3.3.2
+    cd openssl-3.4.0
     ```
 
 1.  Configure the OpenSSL build, specifying the installation path as `/opt` and setting the appropriate runtime library search path:
@@ -207,7 +209,7 @@ After verifying the source code, the next step is to build OpenSSL from source.
     This should return the version number of the OpenSSL build you just installed to `/opt/bin`:
 
     ```output
-    OpenSSL 3.3.2 3 Sep 2024 (Library: OpenSSL 3.3.2 3 Sep 2024)
+    OpenSSL 3.4.0 22 Oct 2024 (Library: OpenSSL 3.4.0 22 Oct 2024)
     ```
 
 1.  Now check the active version via the basic `openssl` command:
@@ -373,11 +375,11 @@ A couple of dependencies must be installed prior to `oqs-provider`, along with G
     Providers:
       default
         name: OpenSSL Default Provider
-        version: 3.3.2
+        version: 3.4.0
         status: active
       oqsprovider
         name: OpenSSL OQS Provider
-        version: 0.6.2-dev
+        version: 0.7.1-dev
         status: active
     ```
 
@@ -396,13 +398,13 @@ The version of Nginx available for Debian 11 uses OpenSSL version `1.1.1w`. In o
 1.  Use `wget` to download the Nginx source files:
 
     ```command
-    wget https://nginx.org/download/nginx-1.26.2.tar.gz
+    wget https://nginx.org/download/nginx-1.27.2.tar.gz
     ```
 
 1.  Also download the corresponding signature for verification:
 
     ```command
-    wget https://nginx.org/download/nginx-1.26.2.tar.gz.asc
+    wget https://nginx.org/download/nginx-1.27.2.tar.gz.asc
     ```
 
 ### Verify the Signature
@@ -422,13 +424,13 @@ The version of Nginx available for Debian 11 uses OpenSSL version `1.1.1w`. In o
 1.  Verify the signature:
 
     ```command
-    gpg --verify nginx-1.26.2.tar.gz.asc nginx-1.26.2.tar.gz
+    gpg --verify nginx-1.27.2.tar.gz.asc nginx-1.27.2.tar.gz
     ```
 
     If verification succeeds, you should see output similar to the following:
 
     ```output
-    gpg: Signature made Tue 13 Aug 2024 08:48:05 AM EDT
+    gpg: Signature made Wed 02 Oct 2024 03:31:12 PM UTC
     gpg:                using RSA key D6786CE303D9A9022998DC6CC8464D549AF75C0A
     gpg:                issuer "s.kandaurov@f5.com"
     gpg: Good signature from "Sergey Kandaurov <s.kandaurov@f5.com>" [unknown]
@@ -463,13 +465,13 @@ A couple of libraries are required before building Nginx:
 1.  Extract the source:
 
     ```command
-    tar zxf nginx-1.26.2.tar.gz
+    tar zxf nginx-1.27.2.tar.gz
     ```
 
 1.  Change into the extracted source directory:
 
     ```command
-    cd nginx-1.26.2
+    cd nginx-1.27.2
     ```
 
 1.  Configure the build with the necessary flags:
@@ -583,7 +585,7 @@ A couple of libraries are required before building Nginx:
 
         ssl_protocols TLSv1.3;
         ssl_prefer_server_ciphers on;
-        ssl_ecdh_curve x25519_kyber768:p384_kyber768:x25519:secp384r1:x448:secp256r1:secp521r1;
+        ssl_ecdh_curve X25519MLKEM768:x25519_kyber768:p384_kyber768:x25519:secp384r1:x448:secp256r1:secp521r1;
 
         location / {
             try_files $uri $uri/ =404;
@@ -656,7 +658,7 @@ Nginx should now be installed, configured, and running with OpenSSL 3.x support.
 Run the `openssl` command with the flags shown below:
 
 ```command
-openssl s_client -groups x25519_kyber768 -connect localhost:443
+openssl s_client -groups X25519MLKEM768 -connect localhost:443
 ```
 
 This command specifically checks for the `X25519_Kyber768` algorithm during a TLS connection.
