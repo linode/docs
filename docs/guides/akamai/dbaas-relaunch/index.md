@@ -8,6 +8,9 @@ contributors: ["Akamai"]
 published: 2024-11-05
 keywords: ['dbaas','dedicated','migration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+_build:
+    list: false
+noindex: true
 ---
 
 ## New Managed Database Services powered by Aiven
