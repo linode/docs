@@ -3,7 +3,7 @@ slug: post-quantum-encryption-nginx-debian11
 title: "Post Quantum Encryption with NGINX on Debian 11"
 description: "Learn how to set up a Debian 11 Nginx web server with support for the post-quantum cryptography X25519Kyber768Draft00 / ML-KEM key exchange in TLS 1.3."
 authors: ["Seweryn Krajczok", "Jan Schaumann"]
-contributors: ["Linode"]
+contributors: ["Seweryn Krajczok", "Jan Schaumann"]
 published: 2024-11-05
 keywords: ['X25519Kyber768Draft00','X25519MLKEM768', 'ML-KEM', 'post-quantum cryptography','tls 1.3','cybersecurity','debian 11','key exhange','OpenSSL','encryption','secure website']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

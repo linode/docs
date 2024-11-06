@@ -3,7 +3,7 @@ slug: post-quantum-encryption-nginx-ubuntu2404
 title: "Post Quantum Encryption with NGINX on Ubuntu 24.04"
 description: "Learn how to set up NGINX on Ubuntu 24.04 with support for the post-quantum cryptography X25519Kyber768Draft00 / ML-KEM key exchange in TLS 1.3."
 authors: ["Seweryn Krajczok", "Jan Schaumann"]
-contributors: ["Linode"]
+contributors: ["Seweryn Krajczok", "Jan Schaumann"]
 published: 2024-10-30
 keywords: ['X25519Kyber768Draft00','X25519MLKEM768', 'ML-KEM','post-quantum cryptography','tls 1.3','cybersecurity','ubuntu 24.04','key exhange','OpenSSL','encryption','secure website']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
