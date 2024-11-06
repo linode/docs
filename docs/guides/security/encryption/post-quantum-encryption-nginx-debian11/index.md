@@ -22,7 +22,9 @@ The National Institute of Standards and Technology (NIST) recently [released](ht
 
 Deploying this algorithm for your web server currently requires some additional steps. The process may vary depending on your operating system's version of OpenSSL. This guide shows how to deploy this algorithm with NGINX on Debian 11, using the [Open Quantum Safe (OQS) provider](https://github.com/open-quantum-safe/oqs-provider) for OpenSSL, which is used to enable the post quantum encryption algorithm.
 
-_Note_: we chose Debian 11 here to illustrate the process of building OpenSSL and NGINX from sources.  See [this guide](/docs/guides/security/encryption/post-quantum-encryption-nginx-ubuntu2404/) for a document guiding you through the setup on an Ubuntu 24.04 system instead.
+{{< note >}}
+On Debian 11, the versions of OpenSSL and NGINX available from apt are not compatible with post quantum encryption, so this guide shows how to build them from source instead.  On Ubuntu 24.04, post quantum encryption-compatible versions are available through apt, and [this guide](/docs/guides/post-quantum-encryption-nginx-ubuntu2404/) describes how to configure the encryption algorithm on that distribution.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -30,7 +32,7 @@ _Note_: we chose Debian 11 here to illustrate the process of building OpenSSL an
 
 1.  Follow the [Set up and secure a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) product documentation to appropriately secure your system.
 
-1. To implement the algorithm in NGINX, a TLS certificate is required. When using a certificate from a public certificate authority, a domain name or subdomain must be assigned to your Linode instance. Visit your domain name registrar's website, to assign a new record to your Linode instance's IP address. Your IP address is [displayed in the cloud manager](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses). If you use the Linode DNS Manager, visit the [manage DNS records](https://techdocs.akamai.com/cloud-computing/docs/manage-domains) product documentation to view instructions for assigning a new A/AAAA record to your IP address.
+1. To implement the algorithm in NGINX, a TLS certificate is required. When using a certificate from a public certificate authority, a domain name or subdomain must be assigned to your Linode instance. Visit your domain name registrar's website to assign a new record to your Linode instance's IP address. Your IP address is [displayed in the cloud manager](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses). If you use the Linode DNS Manager, visit the [manage DNS records](https://techdocs.akamai.com/cloud-computing/docs/manage-domains) product documentation to view instructions for assigning a new A/AAAA record to your IP address.
 
 1.  For an overview of how TLS encryption works, review the [Understanding TLS Certificates and Connections](/docs/guides/what-is-a-tls-certificate/) guide.
 
@@ -256,10 +258,10 @@ Adjust your `PATH` environment variable to prioritize the `/opt/bin` directory.
     openssl version
     ```
 
-    The output should now show version `3.3.2`, which you installed in `/opt/bin`:
+    The output should now show version `3.4.0`, which you installed in `/opt/bin`:
 
     ```output
-    OpenSSL 3.3.2 3 Sep 2024 (Library: OpenSSL 3.3.2 3 Sep 2024)
+    OpenSSL 3.4.0 3 Sep 2024 (Library: OpenSSL 3.4.0 3 Sep 2024)
     ```
 
 ## Install `oqs-provider`
