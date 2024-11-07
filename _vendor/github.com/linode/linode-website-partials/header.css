@@ -1,3 +1,31 @@
+@font-face {
+  font-display: swap;
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 300;
+  src: local(""), url("https://assets.linode.com/fonts/oswald-v35-latin-300.woff2") format("woff2"), url("https://assets.linode.com/fonts/oswald-v35-latin-300.woff") format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""), url("https://assets.linode.com/fonts/oswald-v35-latin-regular.woff2") format("woff2"), url("https://assets.linode.com/fonts/oswald-v35-latin-regular.woff") format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""), url("https://assets.linode.com/fonts/source-sans-pro-v14-latin-regular.woff2") format("woff2"), url("https://assets.linode.com/fonts/source-sans-pro-v14-latin-regular.woff") format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 600;
+  src: local(""), url("https://assets.linode.com/fonts/source-sans-pro-v14-latin-600.woff2") format("woff2"), url("https://assets.linode.com/fonts/source-sans-pro-v14-latin-600.woff") format("woff");
+}
 :root {
   --site-top-offset: 0px;
   --site-banner-height: 0px;
@@ -76,7 +104,7 @@
   flex: 1;
   font-family: unset;
   font-size: unset;
-  gap: 8px;
+  gap: 4px;
   line-height: unset;
   order: 0;
   padding: 0;
@@ -279,6 +307,16 @@ body.om-position-floating-top {
   padding-left: var(--gap);
 }
 
+@media (min-width: 62em) and (max-width: 65.3125em) {
+  .c-identity__image {
+    height: 42px;
+  }
+}
+@media (max-width: 65.3125em) {
+  .c-identity {
+    --gap: 16px;
+  }
+}
 .c-site-header {
   color: #32363b;
   font-family: "Source Sans Pro", sans-serif;
@@ -303,26 +341,7 @@ body.om-position-floating-top {
 .c-site-header__primary {
   z-index: 999;
 }
-:where(.c-site-header--static, .c-site-header--dynamic) {
-  --flag-size: 40px;
-}
-:where(.c-site-header--static, .c-site-header--dynamic)::after {
-  border-color: transparent;
-  border-style: solid;
-  border-top-color: var(--flag-border-color, transparent);
-  border-width: var(--flag-size) var(--flag-size) 0 0;
-  content: "";
-  display: var(--flag-display, none);
-  height: 0;
-  inset: 0 auto auto 0;
-  position: absolute;
-  width: 0;
-  z-index: 9999;
-}
-.c-site-header--static {
-  --flag-border-color: green;
-  --flag-display: block ;
-}
+
 .c-site-header__primary {
   background-color: #ffffff;
   border-bottom: 1px solid #ededf4;
@@ -352,7 +371,7 @@ body.om-position-floating-top {
   margin-block: 0;
 }
 .c-site-header__primary .c-main-menu nav {
-  margin-right: -12px;
+  margin-right: -10px;
 }
 .c-site-header__primary .o-menu__list {
   justify-content: flex-end;
@@ -366,7 +385,7 @@ body.om-position-floating-top {
   align-items: center;
   display: flex;
   font-weight: 600;
-  margin: 0 12px;
+  margin: 0 10px;
   position: relative;
 }
 .c-site-header__primary .o-menu__title {
@@ -452,10 +471,10 @@ body.om-position-floating-top {
   padding-left: 8px;
 }
 .c-site-header__primary .c-weglot-nav .country-selector {
-  margin-right: -12px;
+  margin-right: -10px;
 }
 .c-site-header__primary .c-weglot-nav .wgcurrent {
-  margin: 0 12px;
+  margin: 0 10px;
 }
 .c-site-header__primary .c-weglot-nav .wgcurrent a, .c-site-header__primary .c-weglot-nav .wgcurrent span {
   padding: 10px 0;

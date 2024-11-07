@@ -85,8 +85,6 @@
   {{- if and .page .page.Params.description -}}
     {{- $text = .page.Params.description | markdownify -}}
   {{- end -}}
-
-
   <div>
     <a
       class="not-prose cursor-pointer flex flex-col group border p-4 rounded-md hover:shadow-md border-gray-300 m-0"
@@ -100,4 +98,4 @@
       </p>
     </a>
   </div>
-{{ end }}
+{{ end -}}
