@@ -34,7 +34,12 @@
         </div>
 
         <div class="o-layout__module c-consent">
-          <div id="teconsent"></div>
+          <style>
+            #teconsent[consent] { display: block !important; }
+            #teconsent:not([consent]) + a { display: block !important; };
+          </style>
+          <div id="teconsent" style="display:none;"></div>
+          <a href="#open-consent-prefs" style="display:none;">Cookie Preferences</a>
         </div>
 
         <div class="o-layout__module c-social --mobile">
