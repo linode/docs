@@ -126,7 +126,7 @@
       if (!$slot) return;
       let $feature = generateFeature(item);
       if (!$feature) return;
-      $slot.appendChild($feature);
+      $slot.replaceChildren($feature);
     });
   };
   var generateImage = function(data) {

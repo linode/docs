@@ -43,7 +43,6 @@
 {{ $params := (dict
   "search_config" site.Params.search_config2
   "weglot_api_key" site.Params.weglot_api_key
-  "trustarc_domain" site.Params.trustarc_domain
   "page_title_suffix" site.Params.page_title_suffix
   "search_cachewarmer_urls" $cacheWarmerUrls
   "is_production" (ne hugo.Environment "development")
