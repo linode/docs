@@ -6,7 +6,7 @@ description: "iptables is an application that allows users to configure specific
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-07-30
-modified: 2017-02-28
+modified: 2024-11-07
 keywords: ["iptables", "networking", "firewalls", "filtering"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/firewalls/control-network-traffic-with-iptables/','/security/firewalls/iptables/','/security/firewalls/control-network-traffic-with-iptables/']
@@ -208,7 +208,7 @@ One way to create a firewall is to block all traffic to the system and then allo
     iptables -P INPUT DROP
     iptables -P FORWARD DROP
 
-Let's break down the example above. The first two commands add or append rules to the `INPUT` chain in order to allow access on specific ports. The `-p tcp` and `-p udp` options specify either UDP or TCP packet types. The `-m multiport` function matches packets on the basis of their source or destination ports, and can accept the specification of up to 15 ports. Multiport also accepts ranges such as `8999:9003` which counts as 2 of the 15 possible ports, but matches ports `8999`, `9000`, `9001`, `9002`, and `9003`. The next command allows all incoming and outgoing packets that are associated with existing connections so that they will not be inadvertently blocked by the firewall. The final two commands use the `-P` option to describe the *default policy* for these chains. As a result, all packets processed by `INPUT` and `FORWARD` will be dropped by default.
+In the example above, the third command allows all incoming and outgoing packets that are associated with existing connections so that they will not be inadvertently blocked by the firewall. The fourth and fifth commands add or append rules to the `INPUT` chain in order to allow access on specific ports. The `-p tcp` and `-p udp` options specify either UDP or TCP packet types. The `-m multiport` function matches packets on the basis of their source or destination ports, and can accept the specification of up to 15 ports. Multiport also accepts ranges such as `8999:9003` which counts as 2 of the 15 possible ports, but matches ports `8999`, `9000`, `9001`, `9002`, and `9003`. The final two commands use the `-P` option to describe the *default policy* for these chains. As a result, all packets processed by `INPUT` and `FORWARD` will be dropped by default.
 
 Note that the rules described above only control incoming packets, and do not limit outgoing connections.
 
@@ -224,7 +224,7 @@ You can use iptables to block all traffic and then only allow traffic from certa
     iptables -P INPUT DROP
     iptables -P FORWARD DROP
 
-In the first command, the `-s 192.168.1.0/24` statement specifies that all source IPs (`-s`) in the address space of `192.168.1` are allowed. You may specify an IP address range using CIDR (Classless Inter-Domain Routing) notation, or individual IP addresses, as in the second command. The third command allows all incoming and outgoing packets that are associated with existing connections. The final two commands set the default policy for all `INPUT` and `FORWARD` chains to drop all packets.
+ The third command allows all incoming and outgoing packets that are associated with existing connections. In the fourth command, the `-s 192.168.1.0/24` statement specifies that all source IPs (`-s`) in the address space of `192.168.1` are allowed. You may specify an IP address range using CIDR (Classless Inter-Domain Routing) notation, or individual IP addresses, as in the fifth command. The final two commands set the default policy for all `INPUT` and `FORWARD` chains to drop all packets.
 
 ## Use ip6tables to Manage IPv6 Traffic
 
