@@ -15,7 +15,7 @@
 {{/* styles */}}
 {{ $options := dict "inlineImports" true }}
 {{ $styles := resources.Get "css/styles.css" }}
-{{ $styles = $styles | resources.PostCSS $options }}
+{{ $styles = $styles | css.PostCSS $options }}
 {{ if  (ne hugo.Environment "development") }}
   {{ $styles = $styles | minify | fingerprint | resources.PostProcess }}
 {{ end }}

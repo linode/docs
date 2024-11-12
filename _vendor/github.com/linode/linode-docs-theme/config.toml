@@ -177,7 +177,7 @@ path = "github.com/gohugoio/hugo-mod-jslibs/turbo/v8"
 [security]
   enableInlineShortcodes = false
   [security.exec]
-    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$']
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^git$']
     osEnv = ['(?i)^(.*)$']
 
   [security.funcs]
