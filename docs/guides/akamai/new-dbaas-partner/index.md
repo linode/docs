@@ -1,8 +1,8 @@
 ---
-slug: dbaas-relaunch
-title: "DBaaS Relaunch"
-description: "Two to three sentences describing your guide."
-og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
+slug: new-dbaas-partner
+title: "New Database Service Partner Update"
+description: "Akamai partners with Aiven for more robust managed database services."
+og_description: "Akamai partners with Aiven for more robust managed database services."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2024-11-05
@@ -15,12 +15,12 @@ noindex: true
 
 ## New Managed Database Services powered by Aiven
 
-Beginning November 14, 2024, Akamai will provide a managed database service in partnership with Aiven to bring customers higher performance, reliability, and flexibility. The new service is available in 20 core compute sites across the globe for distribution and low latency.
+Beginning November 14, 2024, Akamai will re-introduce its managed database service in partnership with Aiven to bring customers higher performance, reliability, and flexibility. At launch, the new service is available in 20 core compute sites across the globe for distribution and low latency. New sites will be added as we move forward.
 
-With this new service's introduction, the resources currently available will be retired. Please study the guides below about how to create new databases, migrate existing databases to the new infrastructure, and how the pricing changes.
+With the re-introduction of this new service, the resources currently available will be retired. Please study the guides below about how to create new databases, migrate existing databases to the new infrastructure, and how the pricing changes.
 
 ## New database creation
-Starting November 14th, 2024, you can set up new database instances at all Aiven-powered data centers through the Linode API and in Cloud Manager. These locations might be different from where customers currently have running databases.
+Starting November 14th, 2024, you can set up new database instances through the Linode API and in Cloud Manager. These locations might be different from where customers currently have running databases.
 
 The list of available locations are:
 
@@ -53,14 +53,14 @@ The list of available locations are:
 ## Migration of existing databases
 We highly recommend migrating data from the old database infrastructure as soon as possible because, from November 14th, 2024, the old database infrastructure won’t receive updates anymore.
 
-All customers will be offered two start dates for migration, with the ability to select the final migration schedule window. There will be an option to choose one or more database instances for each migration process. **If a customer does not initiate the migration after two reminders, we will initiate the migration from the backend during off-business hours.**
+All customers will be offered the ability to select the final migration schedule window. There will be an option to choose one or more database instances for each migration process. **If a customer does not initiate the migration after two reminders, we will initiate the migration from the backend during off-business hours.**
 
 At the start of migration, customers will be presented with the following information:
 - Selected database(s) will be migrated to a staging/UAT environment and will continue operating in that environment for 21 days.
 - There will be no extra cost for the migrated database in the staging/UAT environment.
 Once the migration is complete, customers will have read-only access to their old instances for 14 days free of charge.
 - The new pricing table will apply to migrated database instances after March 31, 2025. Customers will be charged based on the current pricing table regardless of the migration schedule.
-- Any new databases created after November 11th (in the new Aiven-supported data centers) will be charged as per the new pricing table from the creation date.
+- Any new databases created on or after November 14th (in the new Aiven-supported data centers) will be charged as per the new pricing table from the creation date.
 
 ## Additional notes
 
@@ -71,7 +71,7 @@ A new forked database is provisioned, and the old one is not automatically delet
 Users have to delete the old database after restoring the data to avoid extra billing.
 
 ## Pricing
-Starting November 11, 2024, we will offer new 2-node plans for dedicated databases. We will introduce dedicated 512GB plans in the second half of 2025.
+Starting November 14, 2024, we will offer new 2-node plans for dedicated databases.
 
 
 ### Shared Managed Database Plans
