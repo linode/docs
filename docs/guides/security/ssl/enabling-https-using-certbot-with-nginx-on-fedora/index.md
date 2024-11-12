@@ -35,7 +35,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 {{% content "configuring-firewalld-for-web-traffic-shortguide" %}}
 
-{{% content "installing-snapd-certbot-dnf-shortguide" %}}
+{{% content "installing-snapd-certbot-dnf-rhel-shortguide" %}}
 
 {{% content "requesting-certificate-nginx-certbot-shortguide" %}}
 

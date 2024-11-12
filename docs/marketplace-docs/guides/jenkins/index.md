@@ -34,7 +34,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 ### Jenkins Options
 
-{{% content "marketplace-required-limited-user-shortguide" %}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 {{% content "marketplace-special-character-limitations-shortguide" %}}
 
 {{% content "marketplace-custom-domain-fields-shortguide" %}}

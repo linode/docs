@@ -1,5 +1,5 @@
 ---
-slug: installing-snapd-certbot-dnf-shortguide
+slug: installing-snapd-certbot-dnf-rhel-shortguide
 title: "Shortguide"
 description: "Shortguide"
 authors: ["Linode"]
