@@ -1,168 +1,296 @@
 ---
 slug: configure-failover-for-haproxy-on-akamai
 title: "Configure Failover for Haproxy on Akamai"
-description: "Two to three sentences describing your guide."
-og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
+description: "Learn how to set up HAProxy load balancing with IP sharing, FRRouting, and BGP failover in this step-by-step guide."
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 published: 2024-09-18
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['haproxy','load balancing','failover','ip sharing','frrouting','bgp','high availability']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
-HAProxy is an HTTP and TCP gateway server that functions as a reverse proxy between a public-facing IP address and backend servers. It manages incoming traffic using frontend rules and distributes it across backend servers, providing load balancing and repairing HTTP requests when needed.
+[HAProxy](https://www.haproxy.org/) is an HTTP and TCP gateway server that functions as a reverse proxy between a public-facing IP address and backend servers. It manages incoming traffic using frontend rules and distributes it across backend servers, providing load balancing and repairing HTTP requests when needed.
 
-However, HAProxy introduces a single point of failure. If HAProxy goes down, client connections to backend services are interrupted. To mitigate this, rapid failover to a backup HAProxy instance re-establishes communications with clients.
+However, HAProxy introduces a single point of failure. If the HAProxy server goes down, client connections to backend services are interrupted. This guide demonstrates how to configure HAProxy with a shared IP address and [FRRouting](https://frrouting.org/) to manage failover. The IP Sharing setup enables two HAProxy instances (primary and backup) to operate under the same IP address. In this setup, one instance is always active and the other stands ready to take over in case of failure. FRRouting, configured with the Border Gateway Protocol (BGP), facilitates this automatic failover, maintaining service continuity.
 
-The free and open source (FOSS) version of HAProxy does not preserve the state of the failed instance during failover. As a result, the backup server must relearn frontend-backend routing upon activation. In contrast, the enterprise edition offers state-saving and restoration capabilities, along with other features that restore a failover with configuration data.
+This guide uses the free and open source (FOSS) version of HAProxy to create and demonstrate basic HAProxy failover pairs. With the FOSS version of HAProxy, the backup server doesn’t retain the connection states of the primary instance. Therefore, when the backup becomes active, clients may need to reconnect to re-establish sessions. In contrast, the enterprise edition offers state-saving and restoration capabilities, along with other features that restore a failover with configuration data.
 
-## Initial Setup: Deploy HAProxy and Backend Instances
+## Before You Begin
 
-This guide builds on the setup covered in [Getting Stated with HAProxy TCP Load Balancing and Health Checks](/docs/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks). Begin by following those instructions to establish your initial platform. This guide uses the FOSS version of HAProxy to create and demonstrate basic HAProxy failover pairs.
+1.  Follow the steps in [Getting Started with HAProxy TCP Load Balancing and Health Checks](/docs/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks/) to create the example HAProxy instance and WordPress backend servers.
 
-## Deploy A Second HAProxy Instance
+1.  Deploy a second HAProxy instance in the same data center, configured identically to the first HAProxy server.
 
-Deploy a second HAProxy instance located in the same data center and using the same configuration settings as the HAProxy server instance generated in [Getting Stated with HAProxy TCP Load Balancing and Health Checks](/docs/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks).
+1.  Disable Network Helper on both HAProxy instances by following the *Individual Compute Instance setting* section of our [Network Helper](https://techdocs.akamai.com/cloud-computing/docs/automatically-configure-networking#individual-compute-instance-setting) guide.
 
-Link the two servers by assigning a shared IP address in the same data center where the HAProxy instances are located. This creates a new network interface on each instance and allows them to communicate over a private network.
+1.  Add an IP address to the first HAProxy instance by following the steps in the *Adding an IP Address* section of [Managing IP Addresses on a Compute Instance](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address).
 
-Install FRRouting (FRR) to connect the newly created network interfaces and establishes a private connection between the instances. Configure FRRouting with the Border Gateway Protocol (BGP) protocol to designate the roles of primary and backup, thus enabling failover. Follow the instructions in our [Configure IP failover over BGP using FRR (advanced)](/docs/products/compute/compute-instances/guides/failover-bgp-frr/#configure-frr) guide to designate these roles on your HAProxy instances.
+1.  Link the second HAProxy instance to the new IP address on the first instance by following the *Configuring IP Sharing* section of the guide linked above.
 
-In this setup, the primary and backup servers are two separate compute instances joined to a single shared IP address using BGP. If the backup HAProxy server detects failure in the primary it then begins to accept traffic. The HAProxy configuration file (`/etc/haproxy/haproxy.conf`) from the primary instance must be replicated verbatim on the backup server. Any subsequent changes made to the HAProxy configuration file on primary must be replicated on the backup instance.
+{{< note >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+{{< /note >}}
 
-## Configure IP Sharing
+## Configure the Shared IP Address
 
-This guide uses Akamai’s IP Host Address Sharing. While the TCP/IP protocol requires unique IP/MAC address pairs, it does support IP sharing within the same data center. IP Sharing allows two distinct IP/MAC pairs on different instances to share the same IP address, with one being active and the other passive.
+Follow the instructions for your distribution to add the shared IP address to the networking configuration on both the primary and backup HAProxy servers:
 
-The primary and backup HAProxy servers communicate over their private network using the BGP protocol chosen in the FRRouting configuration file. The backup server uses a "ping-like" test on the primary server to detect failure. If the primary server fails, the backup automatically takes over the duties of the primary, allowing HAProxy's reverse proxy service to continue operating.
+{{< tabs >}}
+{{< tab "Ubuntu 24.04 LTS" >}}
+Ubuntu 24.04 LTS uses `netplan` to manage network settings.
 
-In order to use IP Sharing, both instances must be within the same datacenter, and IP Sharing is available in most Linode data centers. Follow the instructions in [Getting Stated with HAProxy TCP Load Balancing and Health Checks](/docs/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks) to build an identical instance in the same data center as the original HAProxy server. Once deployed, [configure IP sharing](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-ip-sharing) for both the original HAProxy server and the newly created instance.
+1.  Open the `/etc/netplan/01-netcfg.yaml` file in a text editor such as `nano`:
 
-This additional instance demonstrates both IP Sharing and failover functionality.
+    ```command
+    nano /etc/netplan/01-netcfg.yaml
+    ```
 
-## Configure Failover
+    Append the highlighted lines to the end of the file:
 
-To establish failover, use the FRRouting software daemon (`frr`) with the BGP protocol to connect the primary and backup HAProxy instances.
+    ```file {title="/etc/netplan/01-netcfg.yaml" hl_lines="7-11"}
+    network:
+      version: 2
+      renderer: networkd
+      ethernets:
+        eth0:
+          dhcp4: yes
+        lo:
+          match:
+            name: lo
+          addresses:
+            - {{< placeholder "SHARED_IP_ADDRESS" >}}/{{< placeholder "PREFIX" >}}
+    ```
 
-### Install FRRouting
+    Be sure to make substitute your actual values for the following placeholders:
+
+    -   {{< placeholder "SHARED_IP_ADDRESS" >}}: The shared IP address you set for HAProxy failover.
+    -   {{< placeholder "PREFIX" >}}: Use `32` for IPv4 addresses. For IPv6, use either `56` or `64`, depending on the range you're sharing.
+
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
+1.  Run the following command to apply the changes:
+
+    ```command
+    sudo netplan apply
+    ```
+{{< /tab >}}
+{{< tab "CentOS Stream 9" >}}
+CentOS Stream 9 uses NetworkManager to configure network settings.
+
+1.  Open the network configuration file for editing:
+
+    ```command
+    sudo nano /etc/sysconfig/network-scripts/ifcfg-lo:1
+    ```
+
+    Add the following configurations to set up the shared IP address:
+
+    ```file {title="/etc/sysconfig/network-scripts/ifcfg-lo:1"}
+    DEVICE=lo:1
+    IPADDR={{< placeholder "SHARED_IP_ADDRESS" >}}
+    NETMASK={{< placeholder "NETMASK" >}}
+    ONBOOT=yes
+    ```
+
+    Be sure to make substitute your actual values for the following placeholders:
+
+    -   {{< placeholder "SHARED_IP_ADDRESS" >}}: The shared IP address you set for HAProxy failover.
+    -   {{< placeholder "NETMASK" >}}: Use `255.255.255.255` for IPv4 addresses.
+
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
+1.  Restart `NetworkManager` to apply the settings:
+
+    ```command
+    sudo systemctl restart NetworkManager
+    ```
+{{< /tab >}}
+{{< tab "openSUSE Leap 15.6" >}}
+openSUSE Leap 15.6 uses `wicked` to manage network configurations.
+
+1.  Edit the loopback configuration file:
+
+    ```command
+    sudo nano /etc/sysconfig/network/ifcfg-lo
+    ```
+
+    Append the shared IP address settings to the end of the file:
+
+    ```file {title="/etc/sysconfig/network/ifcfg-lo"}
+    IPADDR={{< placeholder "SHARED_IP_ADDRESS" >}}
+    NETMASK={{< placeholder "NETMASK" >}}
+    LABEL=1
+    ```
+
+    Be sure to make substitute your actual values for the following placeholders:
+
+    -   {{< placeholder "SHARED_IP_ADDRESS" >}}: The shared IP address you set for HAProxy failover.
+    -   {{< placeholder "NETMASK" >}}: Use `255.255.255.255` for IPv4 addresses.
+
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
+1.  Restart the network to activate the settings:
+
+    ```command
+    sudo systemctl restart wicked
+    ```
+{{< /tab >}}
+{{< /tabs >}}
+
+## Duplicate the HAProxy Configuration File
+
+To prepare for failover, the backup HAProxy instance must have an identical HAProxy configuration file to the primary instance. To ensure this, copy the HAProxy configuration file from the primary server to the backup server.
+
+Run this `scp` command on the backup server, replacing {{< placeholder "USERNAME" >}} with either `root` or another user with `sudo` access, and {{< placeholder "PRIMARY_SERVER_IP_ADDRESS" >}} with the actual IP address of the primary HAProxy server:
+
+```command {title="Backup Instance"}
+scp {{< placeholder "USERNAME" >}}@{{< placeholder "PRIMARY_SERVER_IP_ADDRESS" >}}:/etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg
+```
+
+When prompted, enter the primary server's `root` or `sudo` user password to complete the transfer.
+
+Once the command finishes, verify that the configuration files on both servers are identical.
+
+{{< note >}}
+In this example failover configuration, the primary server does not automatically become active once restored. After a failover event, copy the configuration file back to the primary server from the backup server to restore active status.
+{{< /note >}}
+
+## Install FRRouting
+
+With IP Sharing properly configured, you're ready to install FRRouting.
 
 1.  Follow the instructions for your distribution to install FRRouting on both the primary and backup HAProxy servers:
 
     {{< tabs >}}
     {{< tab "Ubuntu 24.04 LTS" >}}
-    Use `apt` to install `frr`:
+    Install `frr` and `frr-pythontools` using `apt`:
 
     ```command
-    apt install frr frrtools frr-pythontools
+    apt install frr frr-pythontools
     ```
     {{< /tab >}}
     {{< tab "CentOS Stream 9" >}}
-    Use `dnf` to install `frr`:
+    Install `frr` and `frr-pythontools` using `dnf`:
 
     ```command
     sudo dnf install frr frr-pythontools
     ```
     {{< /tab >}}
     {{< tab "openSUSE Leap 15.6" >}}
-    Use `zypper` to install `frr`:
+    Install `frr` using `zypper`:
 
     ```command
-    sudo zypper frr
+    sudo zypper install frr
     ```
     {{< /tab >}}
     {{< /tabs >}}
 
-1.  Use `systemctl` to start `frr`:
+1.  Start the FRRouting service using `systemctl`:
 
     ```command
     systemctl start frr
     ```
 
-1.  Enable `frr` to automatically run on startup:
+1.  Enable FRRouting to run on startup:
 
     ```command
     systemctl enable frr
     ```
 
-### Configure FRRouting for Failover
+## Configure FRRouting
 
-FRRouting requires unique configurations for the primary and backup instances. Follow the **Configure FRR** section of our [Configure IP failover over BGP using FRR (advanced)](/docs/products/compute/compute-instances/guides/failover-bgp-frr/#configure-frr) guide to set up the `frr` daemon. The `frr` daemon checks the servers in its configuration list and begins to accept incoming traffic when the primary server fails. The configuration shown monitors the primary server for health using the BGP protocol.
+FRRouting must be configured on both the primary and backup HAProxy instances.
 
-After ensuring that the `frr` configuration files `/etc/frr/daemons` and `/etc/frr/frr.conf` files are updated correctly, restart the `frr` daemon:
+1.  Open the FRRouting `/etc/frr/daemons` file to enable the BGP daemon:
 
-```command
-sudo systemctl restart frr
-```
+    ```command
+    nano /etc/frr/daemons
+    ```
 
-{{< note >}}
-In this example failover configuration, the primary server does not automatically become active once restored.
-{{< /note >}}
+    Locate the `bgpd` line and change its value to `yes` to activate the BGP daemon:
 
-## Sync HAProxy Configuration Between Primary and Backup Servers
+    ```file {title="/etc/frr/daemons"}
+    # The watchfrr and zebra daemons are always started.
+    #
+    bgpd=yes
+    ```
 
-The backup HAProxy server must have an exact copy of the HAProxy configuration file from the primary server. To ensure this, copy the HAProxy configuration file from the primary server to the backup.
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-Issue the following `scp` command from the backup server, substituting {{< placeholder "USERNAME" >}} for either `root` or a user with `sudo` access and {{< placeholder "PRIMARY_SERVER_IP_ADDRESS" >}} with the actual IP address of the primary HAProxy server:
+1.  Open the FRRouting configuration file located at `/etc/frr/frr.conf`:
 
-```command {title="Backup Instance"}
-scp {{< placeholder "USERNAME" >}}@{{< placeholder "PRIMARY_SERVER_IP_ADDRESS" >}}:/etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg
-```
+    ```command
+    nano /etc/frr/frr.conf
+    ```
 
-When prompted, enter the primary server's `root` or `sudo` user password to complete the `scp` command.
+    Append the following content to the end of the file to configure BGP settings:
 
-Before proceeding, verify that the configuration files on both of the servers are identical.
+    ```file {title="/etc/frr/frr.conf" hl_lines="1,11-14,16,17"}
+    hostname {{< placeholder "HOSTNAME" >}}
 
-{{< note >}}
-After a failover event, copy this file back to the primary server from the backup server in order to restore it to active duty.
-{{< /note >}}
+    router bgp 65001
+    no bgp ebgp-requires-policy
+    coalesce-time 1000
+    bgp bestpath as-path multipath-relax
+    neighbor RS peer-group
+    neighbor RS remote-as external
+    neighbor RS ebgp-multihop 10
+    neighbor RS capability extended-nexthop
+    neighbor 2600:3c0f:{{< placeholder "DC_ID" >}}:34::1 peer-group RS
+    neighbor 2600:3c0f:{{< placeholder "DC_ID" >}}:34::2 peer-group RS
+    neighbor 2600:3c0f:{{< placeholder "DC_ID" >}}:34::3 peer-group RS
+    neighbor 2600:3c0f:{{< placeholder "DC_ID" >}}:34::4 peer-group RS
 
-## Configure the Secondary HAProxy Instance with Shared IP Address
+    address-family {{< placeholder "PROTOCOL" >}} unicast
+      network {{< placeholder "SHARED_IP_ADDRESS" >}}/{{< placeholder "PREFIX" >}} route-map {{< placeholder "ROLE" >}}
+      redistribute static
+    exit-address-family
 
-Once the additional HAProxy server instance is set up, [add an additional network interface](/docs/products/compute/compute-instances/guides/failover/#add-the-shared-ip-to-the-networking-configuration) to both servers. This allows both HAProxy servers to operate under the same IP address, though only one instance is active at a time.
+    route-map primary permit 10
+      set community 65000:1
+    route-map secondary permit 10
+      set community 65000:2
 
-Restart both host’s network services to apply the shared IP address setting:
+    ipv6 nht resolve-via-default
+    ```
 
-```command {title="Primary Instance & Backup Instance"}
-systemctl restart networkd
-```
+    Substitute the following placeholders for your actual information:
 
-After restarting, the FRRouting daemon on the backup server begins checking for an active BGP routing path from the primary. If the primary fails to respond, the backup takes over, routing traffic according to the HAproxy configuration rules copied from the primary server.
+    -   {{< placeholder "HOSTNAME" >}}: Your instance's hostname.
+    -   {{< placeholder "DC_ID" >}}: The data center ID where your instances are located. Reference our [IP Sharing Availability table](https://techdocs.akamai.com/cloud-computing/docs/configure-failover-on-a-compute-instance#ip-sharing-availability) to determine the ID for your data center.
+    -   {{< placeholder "PROTOCOL" >}}: Either `ipv4` for IPv4 or `ipv6` for IPv6.
+    -   {{< placeholder "SHARED_IP_ADDRESS" >}}: Your shared IP address.
+    -   {{< placeholder "PREFIX" >}}: Use `32` for IPv4 addresses. For IPv6, use either `56` or `64`, depending on the range you're sharing.
+    -   {{< placeholder "ROLE" >}}: Set as `primary` on the primary instance and `secondary` on the backup instance.
 
-During the backup server's initial activation, some latency may occur as frontend client requests are directed to backend instances. This latency may be noticeable in high-traffic environments, potentially requiring users to refresh sessions or retry connections. Some users may also encounter temporary TCP or HTTP error messages.
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-{{< note >}}
-Client-side applications (such as web browsers or mobile apps) should include code that detects connection errors during failover. When latency or errors occur, the client app can automatically retry the connection until traffic normalizes on the backup server.
-{{< /note >}}
+1.  Restart `frr` to apply the configuration changes:
+
+    ```command
+    sudo systemctl restart frr
+    ```
 
 ## Test Failover
 
-Use the TCP health check setup described in [Getting Stated with HAProxy TCP Load Balancing and Health Checks](/docs/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks) to confirm proper routing to the three backend servers (`backend1`, `backend2`, and `backend3`) through the shared IP address.
+FRRouting on the backup server monitors the primary server’s status using a "ping-like" test. If the primary does not respond, the backup automatically takes over, providing continuous access to backend services.
 
-Follow the steps below to test failover:
+To test failover, follow these steps:
 
-1.  **Verify Initial Access**: Ensure that the primary HAProxy server is serving pages correctly. Navigate to the shared IP address in a web browser and refresh until you can access all three backend servers.
+1.  **Verify Initial Access**: Ensure the primary HAProxy server is actively serving pages. Open the shared IP address in a web browser and refresh until all three backend servers respond successfully.
 
-1.  **Simulate Primary Failure**: In the Akamai Cloud Manager, power down the primary HAProxy server instance to trigger a failover.
+1.  **Simulate Primary Failure**: Use the Akamai Cloud Manager to power down the primary HAProxy instance, triggering a failover to the backup server.
 
-1.  **Confirm Failover**: After shutting down the primary server, refresh the browser. Within a few seconds, the pages should re-appear, now routed through the backup server. This indicates that failover is functioning correctly.
+1.  **Confirm Failover**: Refresh the browser after powering down the primary HAProxy instance. Within a few seconds, the pages should load again, now served through the backup HAProxy instance. This indicates that failover is working as expected.
 
 ### Troubleshooting Test Failures
 
-If the failover test fails and refreshing the browser does not restore page access from the backup server after several seconds, follow these troubleshooting steps:
+If failover does not occur and refreshing the browser does not restore page access through the backup server after several seconds, follow these troubleshooting steps:
 
--   **Verify IP Sharing Configuration**: Ensure that all steps for setting up IP Sharing were followed correctly.
--   **Check Network Connectivity**: Use the ICMP Ping command to verify that the backup server is reachable. If it isn't, there may be an issue with IP Sharing.
--   **Review FRRouting Configuration**: Check the Roles section of`frr.config` to confirm that it is configured according to the provided directions.
--   **Confirm HAProxy Configuration**: Ensure that the backup server's `/etc/haproxy/haproxy.cfg` file was correctly copied from the primary server.
--   **Test Backend Server Accessibility**: Use a web browser to directly access a backend server (e.g. `backend1`) by its IP address. If the server responds, the failover server configuration may no be set up correctly.
+-   **Verify IP Sharing Configuration**: Double-check that all steps for configuring IP Sharing were followed correctly.
+-   **Check Network Connectivity**: Use the ICMP `ping` command to test if the backup server is reachable. If the backup server is not reachable, there may be an issue with the IP Sharing configuration.
+-   **Review FRRouting Configuration**: Ensure that the FRRouting `frr.config` file is correctly configured, especially the Roles section, which should be set according to the provided instructions.
+-   **Confirm HAProxy Configuration**: Verify that the backup server's `/etc/haproxy/haproxy.cfg` file matches the configuration of the primary server by comparing the two files directly.
+-   **Test Backend Server Accessibility**: Try accessing a backend server directly (e.g. `backend1`) by its IP address. If the backend server responds correctly, the issue may lie with the failover configuration rather than the backend services.
 
-Latency during the failover from primary to backup should not exceed a few seconds. The FRRouting daemon's configuration offers several settings to optimize detection and failover speed.
-
-## Conclusion
-
-This series of HAProxy guides show the basic TCP and HTTP backend network load balancing and failover mechanisms available. These examples only skim the surface of a sophisticated number of options that you can deploy. They work for the FOSS version, and more extensive and expansive options are available in the HAProxy non-FOSS Enterprise Edition.
-
-HAProxy is extremely popular for backend load balancing and reverse proxy services, including its ability to serve as an SSL/TLS processor. Akamai IP Sharing services glue high-traffic instances together, using FOSS tools such as FRRouting and HAProxy for higher reliability.
+Failover latency should be minimal, ideally within a few seconds. If failover takes longer, the FRRouting daemon's configuration offers several settings to optimize detection and failover speed.
