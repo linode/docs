@@ -3,11 +3,11 @@ publish = "public"
 command = "hugo version && hugo config && hugo --gc --minify -d public/docs;"
 
 [context.production.environment]
-HUGO_VERSION = "0.125.7"
+HUGO_VERSION = "0.138.0"
 HUGO_PARAMS_TESTENV="Netlify"
 
 [context.deploy-preview.environment]
-HUGO_VERSION = "0.125.7"
+HUGO_VERSION = "0.138.0"
 HUGO_PARAMS_TESTENV="Netlify"
 
 [[plugins]]
