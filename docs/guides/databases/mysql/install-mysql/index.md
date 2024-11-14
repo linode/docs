@@ -5,7 +5,7 @@ description: "Learn how to install MySQL on Linux (through your distribution's n
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2022-07-01
-modified: 2023-05-30
+modified: 2024-11-14
 keywords: ['mysql','repository','database']
 tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -33,7 +33,7 @@ For additional instructions on installing MySQL on any supported operating syste
 
 -   **Consider other deployment options, such as fully managed solutions or automated installations.**
 
-    - [Linode MySQL Managed Databases](https://www.linode.com/products/mysql/): Fully managed database clusters, complete with automatic updates and backups, hosted on Linode's reliable platform.
+    - [Managed Databases](https://techdocs.akamai.com/cloud-computing/docs/managed-databases): Fully managed database clusters hosted on Akamai's reliable platform.
 
     {{% content "dbass-eos" %}}
 

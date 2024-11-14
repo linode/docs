@@ -155,6 +155,6 @@ This test should be performed once you have configured a WireGuard client and up
 | [**WireGuard**](https://www.wireguard.com) | VPN software. |
 | [**UFW (UncomplicatedFireWall)**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. The Port assigned during the [WireGuard Options](#wireguard-options) step of the deployment will allow outgoing and incoming traffic. |
 
-{{% content "marketplace-update-note" %}}
+{{% content "marketplace-update-note-shortguide" %}}
 
 "WireGuard" is a registered trademark of Jason A. Donenfeld.
