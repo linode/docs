@@ -20,22 +20,22 @@ aliases: ['/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/']
 
 ## What is HAProxy?
 
-HAProxy (High Availability Proxy) is a TCP/HTTP load balancer and proxy server that allows a webserver to spread incoming requests across multiple endpoints. This is useful in cases where too many concurrent connections over-saturate the capability of a single server. Instead of a client connecting to a single server which processes all of the requests, the client will connect to an HAProxy instance, which will use a reverse proxy to forward the request to one of the available endpoints, based on a load-balancing algorithm.
+HAProxy (High Availability Proxy) is a TCP/HTTP load balancer and proxy server that allows a webserver to spread incoming requests across multiple endpoints. This is useful in cases where too many concurrent connections over-saturate the capability of a single server. Instead of a client connecting to a single server that processes all of the requests, the client will connect to an HAProxy instance, which will use a reverse proxy to forward the request to one of the available endpoints, based on a load-balancing algorithm.
 
-This guide will describe the installation and configuration of HAProxy for load-balancing HTTP requests, but the configuration can be adapted for most load-balancing scenarios. The setup is simplified from a typical production setup and will use a single HAProxy node with two web server nodes which will service the requests forwarded from the HAProxy node.
+This guide will describe the installation and configuration of HAProxy for load-balancing HTTP requests, but the configuration can be adapted for most load-balancing scenarios. The setup is simplified from a typical production setup and will use a single HAProxy node with two web server nodes to service the requests forwarded from the HAProxy node.
 
 ## Before You Begin
 
-1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  This guide will use `sudo` for commands that require administrative privileges. To get started, follow the steps in our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to set up a standard user account, secure SSH access, and remove any unnecessary network services.
 
 2.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-3.  This guide uses private IP addresses in the example configurations. Refer to our [Linux Static IP Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide to add private IP addresses and internally network your Linodes.
+3.  This guide uses private IP addresses in the example configurations. To set up private IPs and enable internal networking between Linodes, follow the steps in our [Linux Static IP Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands requiring administrative privileges are prefixed with `sudo`. Refer to our [Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on how to use `sudo`.
 {{< /note >}}
 
 ## Installation
@@ -52,7 +52,7 @@ HAProxy is included in the package management systems of most Linux distribution
 
 ## Initial Configuration
 
-1.  Review the default configuration file at `/etc/haproxy/haproxy.cfg`, which is created automatically during installation. This file defines a standard setup without any load balancing:
+1.  Review the default configuration file located at `/etc/haproxy/haproxy.cfg`, which is generated automatically during installation. This file provides a basic setup without any load balancing configured:
 
     {{< file "/etc/haproxy/haproxy.cfg" aconf >}}
 global
@@ -96,23 +96,23 @@ defaults
 {{< /file >}}
 
 
-    The `global` section defines system level parameters such as file locations and the user and group under which HAProxy is executed. In most cases you will not need to change anything in this section. The user **haproxy** and group **haproxy** are both created during installation.
+    The `global` section defines system-level parameters, such as file locations and the user and group that HAProxy runs under. Generally, no changes are needed in this section. During installation, both the **haproxy** user and **haproxy** group are  created automatically.
 
-    The `defaults` section defines additional logging parameters and options related to timeouts and errors. By default, both normal and error messages will be logged.
+    The `defaults` section specifies additional logging parameters and options for handling timeouts and errors. By default, it logs both standard and error messages.
 
-2.  If you wish to disable normal operation messages from being logged you can add the following after `option dontlognull`:
+2.  To stop logging regular operation messages, add the following line after `option dontlognull`:
 
         option dontlog-normal
 
-3.  You can also choose to have the error logs in a separate log file:
+3.  A separate log file for error messages can be configured using the following command:
 
         option log-separate-errors
 
 ## Configure Load Balancing
 
-When you configure load balancing using HAProxy, there are two types of nodes which need to be defined: frontend and backend. The frontend is the node by which HAProxy listens for connections. Backend nodes are those by which HAProxy can forward requests. A third node type, the stats node, can be used to monitor the load balancer and the other two nodes.
+When configuring load balancing with HAProxy, two types of nodes need to be defined: frontend and backend. The frontend node listens for incoming connections, while backend nodes handle the requests forwarded by HAProxy. A third node type, the stats node, can be set up to monitor the load balancer and the other two nodes.
 
-1.  Open `/etc/haproxy/haproxy.cfg` in a text editor and append the configuration for the front end:
+1.  Open `/etc/haproxy/haproxy.cfg` in a text editor and add the following configuration for the frontend node:
 
     {{< file "/etc/haproxy/haproxy.cfg" aconf >}}
 frontend haproxynode
@@ -124,10 +124,10 @@ frontend haproxynode
 
 
     {{< note respectIndent=false >}}
-Throughout this guide, replace `203.0.113.2` with the IP address of your frontend node. 192.168.1.3 and 192.168.1.4 will be used as the IP addresses for the backend nodes.
+Throughout this guide, replace `203.0.113.2` with the IP address of the frontend node. 192.168.1.3 and 192.168.1.4 will be used as the IP addresses for the backend nodes.
 {{< /note >}}
 
-    This configuration block specifies a frontend node named **haproxynode**, which is bound to all network interfaces on port 80. It will listen for HTTP connections (it is possible to use TCP mode for other purposes) and it will use the back end **backendnodes**.
+    This configuration block specifies a frontend node named **haproxynode**, which is bound to all network interfaces on port 80. It will listen for HTTP connections (TCP mode can be used for other purposes) and direct traffic to the back end group, **backendnodes**.
 
 2.  Add the back end configuration:
 
@@ -146,12 +146,12 @@ backend backendnodes
 
     This defines **backendnodes** and specifies several configuration options:
 
-      - The `balance` setting specifies the load-balancing strategy. In this case, the `roundrobin` strategy is used. This strategy uses each server in turn but allows for weights to be assigned to each server: servers with higher weights are used more frequently.
-      Other strategies include `static-rr`, which is similar to `roundrobin` but does not allow weights to be adjusted on the fly; and `leastconn`, which will forward requests to the server with the lowest number of connections.
-      - The `forwardfor` option ensures the forwarded request includes the actual client IP address.
-      - The first `http-request` line allows the forwarded request to include the port of the client HTTP request. The second adds the proto-header containing https if `ssl_fc`, a HAProxy system variable, returns true. This will be the case if the connection was first made via an SSL/TLS transport layer.
-      - `Option httpchk` defines the check HAProxy uses to test if a web server is still valid for forwarding requests. If the server does not respond to the defined request it will not be used for load balancing until it passes the test.
-      - The `server` lines define the actual server nodes and their IP addresses, to which IP addresses will be forwarded. The servers defined here are **node1** and **node2**, each of which will use the health check you have defined.
+      - The `balance` setting specifies the load-balancing strategy. In this example, the `roundrobin` strategy is used, which cycles through each server in turn. This strategy allows for assigning weights to servers, so those with higher weights receive more traffic.
+      Other strategies include `static-rr`, which works like `roundrobin` but does not support dynamic weight adjustments, and `leastconn`, which routes requests to the server with the fewest active connections.
+      - The `forwardfor` option ensures that the client's IP address is included in the forwarded request.
+      - The first `http-request` line includes the client's original port in the forwarded request. The second `http-request` line adds the `proto` header with https if `ssl_fc`, a HAProxy system variable, is true. This happens when the initial connection is made over SSL/TLS.
+      - `Option httpchk` specifies the health check HAProxy uses to determine if a web server is available for forwarding requests. If the server does not respond to the defined check, it will be excluded from load balancing until it passes the test.
+      - The `server` lines define the server nodes and the IP addresses where requests will be forwarded. In this example, the servers are **node1** and **node2**, and each will use the defined health check.
 
 3.  Add the optional stats node to the configuration:
 
@@ -166,9 +166,9 @@ listen stats
 {{< /file >}}
 
 
-    The HAProxy stats node will listen on port 32700 for connections and is configured to hide the version of HAProxy as well as to require a  password login. Replace `password` with a more secure password. In addition, it is recommended to disable stats login in production.
+    The HAProxy stats node is set to listen for connections on port 32700. It is configured to hide the HAProxy version and requires a password login. Replace `password` with a more secure password. It is recommended to disable stats login in production environments.
 
-4.  Here is the complete configuration file after modifications:
+4.  Below is the complete configuration file after applying the modifications:
 
     {{< file "/etc/haproxy/haproxy.cfg" aconf >}}
 global
@@ -235,10 +235,10 @@ listen stats
 
 ## Running and Monitoring
 
-1.  Restart the HAProxy service so that the new configuration can take effect:
+1.  Restart the HAProxy service to apply the new configuration:
 
         sudo service haproxy restart
 
-Now, any incoming requests to the HAProxy node at IP address 203.0.113.2 will be forwarded to an internally networked node with an IP address of either 192.168.1.3 or 192.168.1.4. These backend nodes will serve the HTTP requests. If at any time either of these nodes fails the health check, they will not be used to serve any requests until they pass the test.
+Now, any incoming requests to the HAProxy node at IP address 203.0.113.2 will be forwarded to one of the backend nodes at 192.168.1.3 or 192.168.1.4, which will handle the HTTP requests. If either backend node fails the health check, it will be temporarily removed from service until it passes the test.
 
-In order to view statistics and monitor the health of the nodes, navigate to the IP address or domain name of the frontend node in a web browser at the assigned port, e.g., http://203.0.113.2:32700. This will display statistics such as the number of times a request was forwarded to a particular node as well the number of current and previous sessions handled by the frontend node.
+To view statistics and monitor node health, open a web browser and navigate to the frontend node's IP address or domain using the designated port, e.g., http://203.0.113.2:32700. This page displays statistics such as the number of requests each backend node has handled and the current and previous sessions handled by the frontend node.
