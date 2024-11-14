@@ -32,10 +32,10 @@ This guide will describe the installation and configuration of HAProxy for load-
 
         sudo apt-get update && sudo apt-get upgrade
 
-3.  This guide uses private IP addresses in the example configurations. To set up private IPs and enable internal networking between your Linodes, follow the steps in our [Linux Static IP Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide.
+3.  This guide uses private IP addresses in the example configurations. To set up private IPs and enable internal networking between Linodes, follow the steps in our [Linux Static IP Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide.
 
 {{< note >}}
-This guide is written for a non-root user. Commands requiring administrative privileges are prefixed with `sudo`. If you’re new to using `sudo`, refer to our [Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information.
+This guide is written for a non-root user. Commands requiring administrative privileges are prefixed with `sudo`. Refer to our [Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on how to use `sudo`.
 {{< /note >}}
 
 ## Installation
@@ -104,13 +104,13 @@ defaults
 
         option dontlog-normal
 
-3.  You can also configure a separate log file for error messages using the following command:
+3.  A separate log file for error messages can be configured using the following command:
 
         option log-separate-errors
 
 ## Configure Load Balancing
 
-When configuring load balancing with HAProxy, you need to define two types of nodes: frontend and backend. The frontend node listens for incoming connections, while backend nodes handle the requests forwarded by HAProxy. A third node type, the stats node, can be set up to monitor the load balancer and the other two nodes.
+When configuring load balancing with HAProxy, two types of nodes need to be defined: frontend and backend. The frontend node listens for incoming connections, while backend nodes handle the requests forwarded by HAProxy. A third node type, the stats node, can be set up to monitor the load balancer and the other two nodes.
 
 1.  Open `/etc/haproxy/haproxy.cfg` in a text editor and add the following configuration for the frontend node:
 
@@ -124,7 +124,7 @@ frontend haproxynode
 
 
     {{< note respectIndent=false >}}
-Throughout this guide, replace `203.0.113.2` with the IP address of your frontend node. 192.168.1.3 and 192.168.1.4 will be used as the IP addresses for the backend nodes.
+Throughout this guide, replace `203.0.113.2` with the IP address of the frontend node. 192.168.1.3 and 192.168.1.4 will be used as the IP addresses for the backend nodes.
 {{< /note >}}
 
     This configuration block specifies a frontend node named **haproxynode**, which is bound to all network interfaces on port 80. It will listen for HTTP connections (TCP mode can be used for other purposes) and direct traffic to the back end group, **backendnodes**.
