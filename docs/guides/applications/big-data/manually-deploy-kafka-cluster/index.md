@@ -272,3 +272,73 @@ All secrets are encrypted with the Ansible Vault utility as a best practice.
     See [Linode API: List Types](https://techdocs.akamai.com/linode-api/reference/get-linode-types) for information on Linode API parameters.
 
 ## Provision Your Cluster
+
+1.  Using the `ansible-playbook` utility, run the `provision.yml` playbook with verbose options to keep track of the deployment process. This creates Linode instances and dynamically writes the Ansible inventory to the hosts file:
+
+    ```command
+    ansible-playbook -vvv provision.yml
+    ```
+
+    Once the playbook has finished running, you should see the following output:
+
+    ```output
+    PLAY RECAP *******************************************************************************************************
+    localhost                  : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+    ```
+
+1.  Run the `site.yml` playbook with the hosts inventory file. This playbook configures and installs all required dependencies in the cluster:
+
+    ```command
+    ansible-playbook -vvv -i hosts site.yml
+    ```
+
+    Once complete, you should see similar output to the first playbook, this time including the public IP addresses for each Kafka instance:
+
+    ```output
+    PLAY RECAP *******************************************************************************************************
+    192.0.2.21             : ok=25   changed=24   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+    198.51.100.17              : ok=25   changed=24   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+    203.0.113.24              : ok=49   changed=46   unreachable=0    failed=0    skipped=3    rescued=0    ignored=0
+    ```
+
+## Producing and Consuming Data
+
+Once your cluster is up and running, you can begin producing and consuming messages from the brokers. The steps below produce and consume sample data to test the functionality of your Kafka cluster.
+
+### Install Python Dependency
+
+Using `pip`, install the `confluent_kafka` Python client for Apache Kafka while still in your local virtual environment:
+
+```command
+pip install confluent_kafka
+```
+
+```output
+Installing collected packages: confluent_kafka
+Successfully installed confluent_kafka-2.6.0
+```
+
+### Configure Your /etc/hosts File
+
+On your local machine (or the machine from which you are producing data), you must configure your `/etc/hosts` file to resolve each Kafka node’s IP with a hostname. This is done to facilitate certificate authentication between a client and broker.
+
+1.  On your local machine, open your `/etc/hosts` file using the text editor of your choice in a separate terminal session. You may need to edit the file path to match your local environment:
+
+    ```command
+    nano /etc/hosts
+    ```
+
+1.  Add the highlighted lines underneath your localhost information. Replace the IP addresses with those of your respective Kafka broker nodes. Save your changes when complete:
+
+    ```file {title="/etc/hosts" hl_lines="3-5"}
+    127.0.0.1       localhost
+    (...)
+    {{< placeholder "192.0.2.21" >}}   kafka1
+    {{< placeholder "198.51.100.17" >}}   kafka2
+    {{< placeholder "203.0.113.24" >}}   kafka3
+    ```
+
+    In the file, `kafka1`, `kafka2`, and `kafka3` define the hostnames associated with each Kafka node.
+
+### Obtain Client Certificates
+
