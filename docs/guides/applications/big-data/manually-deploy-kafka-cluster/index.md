@@ -1,7 +1,7 @@
 ---
 slug: manually-deploy-kafka-cluster
 title: "Manually Deploy an Apache Kafka Cluster on Akamai"
-description: "____."
+description: "Learn how to deploy and test a secure Apache Kafka cluster on Akamai using provided, customizable Ansible playbooks."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2024-11-13
