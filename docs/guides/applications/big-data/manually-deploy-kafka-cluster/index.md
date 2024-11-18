@@ -342,3 +342,116 @@ On your local machine (or the machine from which you are producing data), you mu
 
 ### Obtain Client Certificates
 
+In order to send data to the Kafka broker, you must obtain three certificate files (`ca-cert`, `client1.crt`, and `client1.key`) stored on the first Kafka server in your cluster, kafka1. These certificate files must also be located in the same working directory as the `produce.py` and `consume.py` scripts used to produce and consume testing data, respectively. These scripts are located in the /scripts directory of the manual-kafka-cluster folder that was cloned from the docs-cloud-projects repository.
+
+1.  In your local virtual environment, navigate to the `scripts` folder within `manual-kafka-cluster`:
+
+    ```command
+    cd scripts
+    ```
+
+1.  Confirm the contents of the directory:
+
+    ```command
+    ls
+    ```
+
+    You should see both the `produce.py` and `consume.py` scripts, along with the `getcerts.sh` script used to obtain the necessary certificate files from the kafka1 server:
+
+    ```output
+    consume.py  getcerts.sh produce.py
+    ```
+
+1.  To obtain the certificate files, run the `getcerts.sh` script. Replace {{< placeholder "IP_ADDRESS" >}} with the IP address of your first Kafka node, kafka1.
+
+    ```command
+    bash getcerts.sh {{< placeholder "IP_ADDRESS" >}}
+    ```
+
+    ```output
+    [info] fetching /etc/kafka/ssl/cert/client1.crt from 192.0.2.21..
+    [info] fetching /etc/kafka/ssl/key/client1.key from 192.0.2.21..
+    [info] fetching /etc/kafka/ssl/ca/ca-crt from 192.0.2.21..
+    ```
+
+1.  Confirm successful download of the certificate files, `ca-cert`, `client1.crt`, and `client1.key`:
+
+    ```command
+    ls
+    ```
+
+    ```output
+    ca-crt      client1.crt client1.key consume.py  getcerts.sh produce.py
+    ```
+
+### Produce and Consume Data
+
+#### Produce Data
+
+1.  Using a text editor, open the `produce.py` script and update {{< placeholder "REPLACE_ME" >}} with the hostname of one of your Kafka nodes (i.e. `kafka1`, `kafka2`, etc.). Save your changes:
+
+    ```command
+    nano produce.py
+    ```
+
+    ```file {linenostart="6" hl_lines="4"}
+    (...)
+    # Kafka SSL configuration
+    conf = {
+        'bootstrap.servers': '{{< placeholder "REPLACE_ME" >}}:9092',  # Kafka broker
+        'client.id': 'python-producer',
+        'security.protocol': 'SSL',
+        'ssl.ca.location': 'ca-crt',
+        'ssl.certificate.location': 'client1.crt',
+        'ssl.key.location': 'client1.key',
+    }
+    (...)
+    ```
+
+1.  Run the `python.py` script to send sample message data to the broker node:
+
+    ```command
+    python3 produce.py
+    ```
+
+    ```output
+    Message delivered to test [0] at offset 0
+    Message delivered to test [0] at offset 1
+    Message delivered to test [0] at offset 2
+    ```
+
+#### Consume Data
+
+1.  Using a text editor, open the `consume.py` script and update {{< placeholder "REPLACE_ME" >}} with the hostname of one of your other Kafka nodes (i.e. `kafka1`, `kafka2`, etc.) not used for producing data. For example, if you are using the kafka1 node to produce data, use either kafka2 or kafka3 to consume data. Save your changes when complete:
+
+    ```command
+    nano consume.py
+    ```
+
+    ```file {linenostart="3" hl_lines="4"}
+    (...)
+    # Kafka SSL configuration
+    conf = {
+        'bootstrap.servers': '{{< placeholder "REPLACE_ME" >}}:9092',  # Kafka broker
+        'group.id': 'python-consumer-group',
+        'auto.offset.reset': 'earliest',
+        'security.protocol': 'SSL',
+        'ssl.ca.location': 'ca-crt',
+        'ssl.certificate.location': 'client1.crt',
+        'ssl.key.location': 'client1.key',
+    }
+    (...)
+    ```
+
+1.  Run the `consume.py` script to receive the sample data:
+
+    ```command
+    python3 consume.py
+    ```
+
+    ```output
+    Received event: {'event_id': 0, 'timestamp': 1727888292, 'message': 'Event number 0'}
+    Received event: {'event_id': 1, 'timestamp': 1727888292, 'message': 'Event number 1'}
+    Received event: {'event_id': 2, 'timestamp': 1727888292, 'message': 'Event number 2'}
+    ```
+
