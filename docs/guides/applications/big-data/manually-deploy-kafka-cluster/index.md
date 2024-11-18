@@ -16,7 +16,7 @@ Apache Kafka is a scalable open source, distributed system for managing real-tim
 
 This guide includes steps for deploying a Kafka cluster using Ansible. The provided Ansible playbook creates a functioning Kafka cluster comprised of three broker nodes configured to authenticate with encrypted secrets. Also included are steps for producing and consuming sample data for testing cluster functionality.
 
-If you wish to deploy Kafka automatically rather than manually, consider our [Apache Kafka cluster marketplace deployment](https://www.linode.com/docs/marketplace-docs/guides/apache-kafka-cluster/).
+If you wish to deploy Kafka automatically rather than manually, consider our [Apache Kafka cluster marketplace deployment](/docs/marketplace-docs/guides/apache-kafka-cluster/).
 
 ## Architecture Diagram
 
