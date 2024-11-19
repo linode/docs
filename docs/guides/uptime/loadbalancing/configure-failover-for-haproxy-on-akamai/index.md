@@ -42,7 +42,7 @@ Ubuntu 24.04 LTS uses `netplan` to manage network settings.
 1.  Open the `/etc/netplan/01-netcfg.yaml` file in a text editor such as `nano`:
 
     ```command
-    nano /etc/netplan/01-netcfg.yaml
+    sudo nano /etc/netplan/01-netcfg.yaml
     ```
 
     Append the highlighted lines to the end of the file:
@@ -166,14 +166,14 @@ With IP Sharing properly configured, you're ready to install FRRouting.
     Install `frr` and `frr-pythontools` using `apt`:
 
     ```command
-    apt install frr frr-pythontools
+    sudo apt install frr frr-pythontools
     ```
     {{< /tab >}}
     {{< tab "CentOS Stream 9" >}}
     Install `frr` and `frr-pythontools` using `dnf`:
 
     ```command
-    sudo dnf install frr frr-pythontools
+    sudo dnf install frr
     ```
     {{< /tab >}}
     {{< tab "openSUSE Leap 15.6" >}}
@@ -188,13 +188,13 @@ With IP Sharing properly configured, you're ready to install FRRouting.
 1.  Start the FRRouting service using `systemctl`:
 
     ```command
-    systemctl start frr
+    sudo systemctl start frr
     ```
 
 1.  Enable FRRouting to run on startup:
 
     ```command
-    systemctl enable frr
+    sudo systemctl enable frr
     ```
 
 ## Configure FRRouting
@@ -204,7 +204,7 @@ FRRouting must be configured on both the primary and backup HAProxy instances.
 1.  Open the FRRouting `/etc/frr/daemons` file to enable the BGP daemon:
 
     ```command
-    nano /etc/frr/daemons
+    sudo nano /etc/frr/daemons
     ```
 
     Locate the `bgpd` line and change its value to `yes` to activate the BGP daemon:
@@ -220,7 +220,7 @@ FRRouting must be configured on both the primary and backup HAProxy instances.
 1.  Open the FRRouting configuration file located at `/etc/frr/frr.conf`:
 
     ```command
-    nano /etc/frr/frr.conf
+    sudo nano /etc/frr/frr.conf
     ```
 
     Append the following content to the end of the file to configure BGP settings:
