@@ -8,11 +8,10 @@ published: 2024-11-13
 keywords: ['apache kafka','kafka','data stream','stream management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[Kafka One-Click Cluster: README](https://github.com/linode/docs-cloud-projects/tree/main/apps/manual-kafka-cluster)'
 ---
 
-Apache Kafka is a scalable open source, distributed system for managing real-time data streams. Kafka supports a wide range of applications, including those used for log aggregation, monitoring, and real-time analytics. Kafka is considered an industry standard for use cases such as data pipelines, event-driven architectures, and stream-processing applications.
+[Apache Kafka](https://kafka.apache.org/) is a scalable open source, distributed system for managing real-time data streams. Kafka supports a wide range of applications, including those used for log aggregation, monitoring, and real-time analytics. Kafka is considered an industry standard for use cases such as data pipelines, event-driven architectures, and stream-processing applications.
 
 This guide includes steps for deploying a Kafka cluster using Ansible. The provided Ansible playbook creates a functioning Kafka cluster comprised of three broker nodes configured to authenticate with encrypted secrets. Also included are steps for producing and consuming sample data for testing cluster functionality.
 
@@ -45,6 +44,7 @@ The following software and components must be installed and configured on your l
 ### Deployment Details
 
 -   The minimum cluster size is *three* nodes, as three controllers are configured for fault-tolerance at all times.
+-   The nodes used in this deployment default to 4GB dedicated servers. For production environments, it is recommended to use a minimum [plan size](https://www.linode.com/pricing/) of 8GB dedicated servers up to 32GB dedicated servers. Individual use cases may vary.
 -   The manual deployment in this guide uses Kafka’s native consensus protocol, [KRaft](https://kafka.apache.org/documentation/#kraft).
 -   During the provisioning process, the cluster is configured with mTLS for authentication. This means inter-broker communication and client authentication are established via certificate identity.
 -   Clients that connect to the cluster need their own valid certificate. All certificates are created using a self-signed Certificate Authority (CA). Client keystores and truststores are found on the first Kafka node in the following directories:
@@ -388,27 +388,9 @@ In order to send data to the Kafka broker, you must obtain three certificate fil
 
 #### Produce Data
 
-1.  Using a text editor, open the `produce.py` script and update {{< placeholder "REPLACE_ME" >}} with the hostname of one of your Kafka nodes (i.e. `kafka1`, `kafka2`, etc.). Save your changes:
+The `produce.py` script connects to one of the three Kafka broker nodes to send sample data in the form of messages over port 9092. This is the default port Kafka brokers use to communicate with clients that produce and consume data. This test script is provided by Akamai and is not endorsed by Apache.
 
-    ```command
-    nano produce.py
-    ```
-
-    ```file {linenostart="6" hl_lines="4"}
-    (...)
-    # Kafka SSL configuration
-    conf = {
-        'bootstrap.servers': '{{< placeholder "REPLACE_ME" >}}:9092',  # Kafka broker
-        'client.id': 'python-producer',
-        'security.protocol': 'SSL',
-        'ssl.ca.location': 'ca-crt',
-        'ssl.certificate.location': 'client1.crt',
-        'ssl.key.location': 'client1.key',
-    }
-    (...)
-    ```
-
-1.  Run the `python.py` script to send sample message data to the broker node:
+1.  While in the `scripts` directory, run the `python.py` script to send sample message data to the broker node:
 
     ```command
     python3 produce.py
@@ -422,28 +404,9 @@ In order to send data to the Kafka broker, you must obtain three certificate fil
 
 #### Consume Data
 
-1.  Using a text editor, open the `consume.py` script and update {{< placeholder "REPLACE_ME" >}} with the hostname of one of your other Kafka nodes (i.e. `kafka1`, `kafka2`, etc.) not used for producing data. For example, if you are using the kafka1 node to produce data, use either kafka2 or kafka3 to consume data. Save your changes when complete:
+Similar to the `produce.py` script, the `consume.py` script is provided by Akamai to test the consumption of message data. The `consume.py` script connects to one of the available Kafka nodes to consume the messages from the `produce.py` script.
 
-    ```command
-    nano consume.py
-    ```
-
-    ```file {linenostart="3" hl_lines="4"}
-    (...)
-    # Kafka SSL configuration
-    conf = {
-        'bootstrap.servers': '{{< placeholder "REPLACE_ME" >}}:9092',  # Kafka broker
-        'group.id': 'python-consumer-group',
-        'auto.offset.reset': 'earliest',
-        'security.protocol': 'SSL',
-        'ssl.ca.location': 'ca-crt',
-        'ssl.certificate.location': 'client1.crt',
-        'ssl.key.location': 'client1.key',
-    }
-    (...)
-    ```
-
-1.  Run the `consume.py` script to receive the sample data:
+1.  While in the same working directory, `scripts`, run the `consume.py` script to receive the sample data:
 
     ```command
     python3 consume.py
@@ -455,3 +418,17 @@ In order to send data to the Kafka broker, you must obtain three certificate fil
     Received event: {'event_id': 2, 'timestamp': 1727888292, 'message': 'Event number 2'}
     ```
 
+1.  Once the `consume.py` script has successfully fetched the message data, you can break the connection with the broker by pressing <kbd>Ctrl</kbd> + <kbd>C</kbd> on your keyboard.
+
+## What's Next
+
+Once your Kafka cluster is up, running, and fully functional, you may consider the following next steps depending on your application or [use case](https://kafka.apache.org/documentation/#uses):
+
+-   Put the client certificate files onto your "producer" and "consumer" servers so that they can communicate with Kafka. The certificates are located in `/etc/kafka/ssl` on the first Kafka node, kafka1.
+-   Update your connection string to connect to the Kafka brokers
+
+Familiarize yourself with the official Apache Kafka documentation, including use cases, community links, and Kafka support:
+
+-   [Apache Kafka Documentation](https://kafka.apache.org/documentation/)
+-   [Kafka Project Information](https://kafka.apache.org/project)
+-   [Kafka Contact Information](https://kafka.apache.org/contact)
