@@ -16,7 +16,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 1.  Follow the instructions in [Getting Started with HAProxy TCP Load Balancing and Health Checks](/docs/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks/), specifically the [Before You Begin](/docs/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks/#before-you-begin) and [Install HAProxy](/docs/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks/#install-haproxy) sections.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## HTTP Load Balancing
@@ -166,7 +166,7 @@ Follow the steps below to put all of the examples from this article together and
 1.  To update the HAProxy configuration, edit the `/etc/haproxy/haproxy.cfg` file using a text editor such as `nano`:
 
     ```command
-    nano /etc/haproxy/haproxy.cfg
+    sudo nano /etc/haproxy/haproxy.cfg
     ```
 
     Update the HAProxy configuration file to match the code below:
@@ -220,7 +220,7 @@ Follow the steps below to put all of the examples from this article together and
     If you encounter any errors after reloading HAProxy, run the following command to check for syntax errors in your `haproxy.cfg` file:
 
     ```command
-    haproxy -c -f /etc/haproxy/haproxy.cfg
+    sudo haproxy -c -f /etc/haproxy/haproxy.cfg
     ```
 
     An error message is returned if the configuration file has logical or syntax errors. When the check is complete, each error is listed one per line. This command only verifies the syntax and basic logic of the configuration, it does not guarantee that the configuration works as intended when running.
