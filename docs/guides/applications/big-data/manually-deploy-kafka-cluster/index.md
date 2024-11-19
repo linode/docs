@@ -4,7 +4,7 @@ title: "Manually Deploy an Apache Kafka Cluster on Akamai"
 description: "Learn how to deploy and test a secure Apache Kafka cluster on Akamai using provided, customizable Ansible playbooks."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2024-11-13
+published: 2024-11-20
 keywords: ['apache kafka','kafka','data stream','stream management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -31,7 +31,7 @@ If you wish to deploy Kafka automatically rather than manually, consider our [Ap
 
 ## Prerequisites
 
-The following software and components must be installed and configured on your local system in order for the playbooks in this guide to function:
+The following software and components must be installed and configured on your local system in order for the provided playbooks to function:
 
 -   [Python](https://www.python.org/downloads/) version: > v3.8
 -   The [venv](https://docs.python.org/3/library/venv.html) Python module
@@ -44,13 +44,13 @@ The following software and components must be installed and configured on your l
 ### Deployment Details
 
 -   The minimum cluster size is *three* nodes, as three controllers are configured for fault-tolerance at all times.
--   The nodes used in this deployment default to 4GB dedicated servers. For production environments, it is recommended to use a minimum [plan size](https://www.linode.com/pricing/) of 8GB dedicated servers up to 32GB dedicated servers. Individual use cases may vary.
+-   The nodes used in this deployment default to 4GB dedicated instances. For production environments, it is recommended to use a minimum [plan size](https://www.linode.com/pricing/) of 8GB dedicated instances up to 32GB dedicated instances. Individual use cases may vary.
 -   The manual deployment in this guide uses Kafka’s native consensus protocol, [KRaft](https://kafka.apache.org/documentation/#kraft).
 -   During the provisioning process, the cluster is configured with mTLS for authentication. This means inter-broker communication and client authentication are established via certificate identity.
 -   Clients that connect to the cluster need their own valid certificate. All certificates are created using a self-signed Certificate Authority (CA). Client keystores and truststores are found on the first Kafka node in the following directories:
     -   `/etc/kafka/ssl/keystore`
     -   `/etc/kafka/ssl/truststore`
--   The CA key and certificate pair are stored on the first Kafka node in the /etc/kafka/ssl/ca directory.
+-   The CA key and certificate pair are stored on the first Kafka node in the `/etc/kafka/ssl/ca` directory.
 
 ### Included Software
 
@@ -155,7 +155,7 @@ All secrets are encrypted with the Ansible Vault utility as a best practice.
     -   {{< placeholder "KEYSTORE_PASSWORD" >}} with a keystore password
     -   {{< placeholder "CA_PASSWORD" >}} with a certificate authority password
 
-    This command generates encrypted output and also assigns values to the following variables for Ansible to reference later. Do not replace these values:
+    This command generates encrypted output and also assigns values to the following variables for Ansible to reference later. **Do not** replace these values:
 
     -   `root_password`
     -   `sudo_password`
@@ -228,8 +228,8 @@ All secrets are encrypted with the Ansible Vault utility as a best practice.
             34306435376534653961653739653232383262613336383837343962633565356546
     ```
 
-    {{< note title="" >}}
-    When saving your generated encrypted outputs, omit any `Encryption successful` text.
+    {{< note title="Only save the encrypted values" >}}
+    When saving the generated encrypted outputs, omit any `Encryption successful` text.
     {{< /note >}}
 
 1.  Using a text editor, open and edit the Linode instance parameters in the `group_vars/kafka/vars` file. Replace the values for the following variables with your preferred deployment specifications, and save your changes when complete:
@@ -338,11 +338,13 @@ On your local machine (or the machine from which you are producing data), you mu
     {{< placeholder "203.0.113.24" >}}   kafka3
     ```
 
-    In the file, `kafka1`, `kafka2`, and `kafka3` define the hostnames associated with each Kafka node.
+    In the file, `kafka1`, `kafka2`, and `kafka3` define the hostnames associated with each Kafka node and must be included.
 
 ### Obtain Client Certificates
 
-In order to send data to the Kafka broker, you must obtain three certificate files (`ca-cert`, `client1.crt`, and `client1.key`) stored on the first Kafka server in your cluster, kafka1. These certificate files must also be located in the same working directory as the `produce.py` and `consume.py` scripts used to produce and consume testing data, respectively. These scripts are located in the /scripts directory of the manual-kafka-cluster folder that was cloned from the docs-cloud-projects repository.
+In order to send data to the Kafka broker, you must obtain three certificate files (`ca-cert`, `client1.crt`, and `client1.key`) stored on the first Kafka server in your cluster, kafka1. For the purposes of this test, the certificate files must also be located in the same working directory as the `produce.py` and `consume.py` scripts used to produce and consume testing data, respectively. These scripts are located in the `/scripts` directory of the manual-kafka-cluster folder that was cloned from the docs-cloud-projects repository.
+
+The `produce.py`, `consume.py`, and `getcerts.sh` scripts are provided by Akamai for testing and are not endorsed by Apache.
 
 1.  In your local virtual environment, navigate to the `scripts` folder within `manual-kafka-cluster`:
 
@@ -388,9 +390,9 @@ In order to send data to the Kafka broker, you must obtain three certificate fil
 
 #### Produce Data
 
-The `produce.py` script connects to one of the three Kafka broker nodes to send sample data in the form of messages over port 9092. This is the default port Kafka brokers use to communicate with clients that produce and consume data. This test script is provided by Akamai and is not endorsed by Apache.
+The `produce.py` script connects to one of the three Kafka broker nodes to send sample message data over port 9092. This is the default port Kafka brokers use to communicate with clients that produce and consume data.
 
-1.  While in the `scripts` directory, run the `python.py` script to send sample message data to the broker node:
+1.  While in the `scripts` directory, run the `python.py` script to send message data to the broker node:
 
     ```command
     python3 produce.py
@@ -404,7 +406,7 @@ The `produce.py` script connects to one of the three Kafka broker nodes to send 
 
 #### Consume Data
 
-Similar to the `produce.py` script, the `consume.py` script is provided by Akamai to test the consumption of message data. The `consume.py` script connects to one of the available Kafka nodes to consume the messages from the `produce.py` script.
+Similar to the `produce.py` script, the `consume.py` script is provided to test the consumption of message data. The `consume.py` script connects to one of the available Kafka nodes to consume the messages from the `produce.py` script.
 
 1.  While in the same working directory, `scripts`, run the `consume.py` script to receive the sample data:
 
@@ -424,7 +426,7 @@ Similar to the `produce.py` script, the `consume.py` script is provided by Akama
 
 Once your Kafka cluster is up, running, and fully functional, you may consider the following next steps depending on your application or [use case](https://kafka.apache.org/documentation/#uses):
 
--   Put the client certificate files onto your "producer" and "consumer" servers so that they can communicate with Kafka. The certificates are located in `/etc/kafka/ssl` on the first Kafka node, kafka1.
+-   Save the client certificate files on your "producer" and "consumer" servers so that they can communicate with Kafka. The certificates are located in `/etc/kafka/ssl` on the first Kafka node, kafka1.
 -   Update your connection string to connect to the Kafka brokers
 
 Familiarize yourself with the official Apache Kafka documentation, including use cases, community links, and Kafka support:
