@@ -35,7 +35,7 @@ This guide demonstrates how to install HAProxy onto three common Linux distribut
     Each of these servers are generated with an `index.html` home page that indicates the name of the server (`backend1`, `backend2`, `backend3`). Open a web browser and check each server by its IP address to verify that the example test servers are functioning. Take note of the IP addresses of the three instances, as you need them later.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install HAProxy
@@ -49,21 +49,21 @@ To install HAProxy, log in to your HAProxy instance as `root`.
     Use `apt` to install HAProxy on an Ubuntu 24.04 LTS instance:
 
     ```command
-    apt install haproxy
+    sudo apt install haproxy
     ```
     {{< /tab >}}
     {{< tab "CentOS Stream 9" >}}
     Use `dnf` to install HAProxy on a CentOS Stream 9 instance:
 
     ```command
-    dnf install haproxy
+    sudo dnf install haproxy
     ```
     {{< /tab >}}
     {{< tab "openSUSE Leap 15.6" >}}
     Use `zypper` to install HAProxy on a openSUSE Leap 15.6 instance:
 
     ```command
-    zypper in haproxy
+    sudo zypper in haproxy
     ```
     {{< /tab >}}
     {{< /tabs >}}
@@ -71,7 +71,7 @@ To install HAProxy, log in to your HAProxy instance as `root`.
 1.  Verify the HAProxy installation by checking the installed version number:
 
     ```command
-    haproxy -v
+    sudo haproxy -v
     ```
 
     {{< tabs >}}
@@ -104,13 +104,13 @@ To install HAProxy, log in to your HAProxy instance as `root`.
 1.  Use `systemctl` to start HAProxy:
 
     ```command
-    systemctl start haproxy
+    sudo systemctl start haproxy
     ```
 
 1.  Also use `systemctl` to automatically start HAProxy after a reboot:
 
     ```command
-    systemctl enable haproxy
+    sudo systemctl enable haproxy
     ```
 
 1.  Verify that HAProxy is `active (running)`:
@@ -142,7 +142,7 @@ To install HAProxy, log in to your HAProxy instance as `root`.
 HAProxy is controlled through its configuration file and the CLI. The HAProxy configuration file contains the settings needed to perform network balancing and flow control. A default configuration file is created at `/etc/haproxy/haproxy.cfg` during HAProxy installation. It can be edited with `nano` or any other command line text editor:
 
 ```command
-nano /etc/haproxy/haproxy.cfg
+sudo nano /etc/haproxy/haproxy.cfg
 ```
 
 ## TCP Load Balancing
@@ -224,7 +224,7 @@ Set the HAProxy configuration file to perform TCP load balancing with basic pass
 1.  Open the HAProxy configuration file with `nano` or another command line text editor:
 
     ```command
-    nano /etc/haproxy/haproxy.cfg
+    sudo nano /etc/haproxy/haproxy.cfg
     ```
 
 1.  Append the following code to the end of the file:
@@ -248,14 +248,14 @@ Set the HAProxy configuration file to perform TCP load balancing with basic pass
 1.  After making any changes to the configuration file, use the following command to restart HAProxy and enable those changes:
 
     ```command
-    systemctl restart haproxy
+    sudo systemctl restart haproxy
     ```
 
     {{< note >}}
     If you encounter any errors after reloading HAProxy, run the following command to check for syntax errors in your `haproxy.cfg` file:
 
     ```command
-    haproxy -c -f /etc/haproxy/haproxy.cfg
+    sudo haproxy -c -f /etc/haproxy/haproxy.cfg
     ```
 
     An error message is returned if the configuration file has logical or syntax errors. When the check is complete, each error is listed one per line. This command only verifies the syntax and basic logic of the configuration, it does not guarantee that the configuration works as intended when running.
@@ -264,6 +264,21 @@ Set the HAProxy configuration file to perform TCP load balancing with basic pass
 ### Test TCP Load Balancing
 
 Load balancing can be verified by visiting the HAProxy instances's public IP address.
+
+{{< note "CentOS Stream 9" >}}
+The default firewall settings for CentOS Stream 9 must be changed prior to testing. Run the following command to temporarily open port `80` to `tcp` traffic:
+
+```command
+sudo firewall-cmd --add-port=80/tcp
+```
+
+Alternatively, use the commands below to configure the firewall to permanently allow `tcp` traffic on port `80`:
+
+```command
+sudo firewall-cmd --permanent --add-port=80/tcp
+sudo firewall-cmd --reload
+```
+{{< /note >}}
 
 1.  Open a web browser and navigate to the HAPRoxy instance's public IP address:
 
@@ -304,7 +319,7 @@ Health checks can be verified by removing one of the backend instances from the 
 1.  Return to the HAProxy instance and check the logs:
 
     ```command
-    tail -f /var/log/haproxy.log
+    sudo tail -f /var/log/haproxy.log
     ```
 
     Your output should contain a "WARNING" line regarding the "DOWN" status of `server1`:
