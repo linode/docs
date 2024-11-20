@@ -406,7 +406,7 @@ The `produce.py` script connects to one of the three Kafka broker nodes to send 
 
 #### Consume Data
 
-Similar to the `produce.py` script, the `consume.py` script is provided to test the consumption of message data. The `consume.py` script connects to one of the available Kafka nodes to consume the messages from the `produce.py` script.
+Similar to the `produce.py` script, the `consume.py` script is provided to test the consumption of message data. The `consume.py` script connects to one of the available Kafka nodes to consume the messages that were produced by the `produce.py` script.
 
 1.  While in the same working directory, `scripts`, run the `consume.py` script to receive the sample data:
 
