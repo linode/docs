@@ -21,10 +21,10 @@ This guide walks through how to migrate standard Azure Monitor service logs and 
 
 To follow along in this walkthrough, you’ll need the following:
 
-* A [Linode account](https://www.linode.com/cfe)  
-* A [Linode API token (personal access token)](https://www.linode.com/docs/products/platform/accounts/guides/manage-api-tokens/)  
-* The [Linode CLI](https://www.linode.com/docs/products/tools/cli/guides/install/) installed and configured  
-* An [SSH key pair](https://www.linode.com/content/ssh-key-authentication-how-to-create-ssh-key-pairs/)
+-   A [Linode account](https://www.linode.com/cfe)
+-   A [Linode API token (personal access token)](https://www.linode.com/docs/products/platform/accounts/guides/manage-api-tokens/)
+-   The [Linode CLI](https://www.linode.com/docs/products/tools/cli/guides/install/) installed and configured
+-   An [SSH key pair](https://www.linode.com/content/ssh-key-authentication-how-to-create-ssh-key-pairs/)
 
 ## Introduction to Prometheus and Grafana
 
@@ -38,16 +38,17 @@ Prometheus and Grafana are often used together to monitor service health, detect
 
 This guide uses the Linode CLI to provision resources. The Linode Marketplace offers a deployable [Prometheus and Grafana Marketplace app](https://www.linode.com/marketplace/apps/linode/prometheus-grafana/), whereas this tutorial walks through a manual installation.
 
-### Determine instance configuration
+### Determine Instance Configuration
 
 In order to provision a Linode instance, you must specify the desired operating system, geographical region, and Linode plan size. The options available for each of these can be obtained using the Linode CLI.
 
-#### Operating system
+#### Operating System
 
 Run this command to obtain a formatted list of available operating systems:
 
-| $ linode-cli images list \--type=manual |
-| :---- |
+```command
+linode-cli images list --type=manual
+```
 
 This guide will use Ubuntu 22.04, which has the ID linode/ubuntu22.04.
 
