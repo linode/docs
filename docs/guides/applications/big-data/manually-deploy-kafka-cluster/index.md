@@ -392,7 +392,7 @@ The `produce.py`, `consume.py`, and `getcerts.sh` scripts are provided by Akamai
 
 The `produce.py` script connects to one of the three Kafka broker nodes to send sample message data over port 9092. This is the default port Kafka brokers use to communicate with clients that produce and consume data.
 
-1.  While in the `scripts` directory, run the `python.py` script to send message data to the broker node:
+1.  While in the `scripts` directory, run the `produce.py` script to send message data to the broker node:
 
     ```command
     python3 produce.py
