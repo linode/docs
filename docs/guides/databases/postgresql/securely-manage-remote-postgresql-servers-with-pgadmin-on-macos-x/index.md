@@ -42,7 +42,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  Start the pgAdmin interface.
 
-    ![pgAdmin on Mac OS X menu bar icon menu](pg-admin-welcome.png)
+    ![pgAdmin on Mac OS X menu bar icon menu](pg-admin-open-new-window.png)
 
     A welcome page is displayed in the pgAdmin interface.
 
