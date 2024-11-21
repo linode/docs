@@ -60,7 +60,7 @@ This guide is written for a non-root user. Commands that require elevated privil
    - **Maintenance Database**: `postgres` or your database name.
    - **Username**: Your PostgreSQL username. For example, `postgres`.
    - **Password**: The password for your PostgreSQL user.
-5. Go to the **"SSH Tunnel"** tab:
+5. Go to the **SSH Tunnel** tab:
    - **Use SSH tunneling**: Enable this option.
    - **Tunnel host**: Your Linode's IP address.
    - **Tinnel port**: `22` . The default SSH port is `22`.
