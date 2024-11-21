@@ -18,7 +18,7 @@ tags: ["database","postgresql"]
 
 ![Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](Securely_Manage_Remote_PostgreSQL_Servers_with_pgAdmin_on_Mac_OS_X_smg.jpg)
 
-pgAdmin is a free, open-source PostgreSQL database administration GUI for Microsoft Windows, Apple Mac OS X and Linux systems. It offers excellent capabilities with regard to database server information retrieval, development, testing, and ongoing maintenance. This guide will help you get up and running with pgAdmin on Mac OS X, providing secure access to remote PostgreSQL databases. 
+pgAdmin is a free, open-source PostgreSQL database administration GUI for Microsoft Windows, Apple Mac OS X and Linux systems. It offers excellent capabilities with regard to database server information retrieval, development, testing, and ongoing maintenance. This guide will help you get up and running with pgAdmin on Mac OS X, providing secure access to remote PostgreSQL databases.
 
 ## Before You Begin
 
@@ -72,21 +72,21 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ### Verify Connection
 
-1. After saving the configuration, right-click your new server in **pgAdmin** and select **Connect**.  
+1. After saving the configuration, right-click your new server in **pgAdmin** and select **Connect**.
 2. If the connection is successful, you should see your databases listed in the **Servers** panel.
 
 ### Troubleshooting
 
-- **SSH Access Issues**:  
+- **SSH Access Issues**:
   Ensure your Linode firewall allows port `22`.
 
-- **PostgreSQL Bind Address**:  
-  1. Check the PostgreSQL `postgresql.conf` file to confirm it's listening on `127.0.0.1` or `localhost`.  
-  Update `listen_addresses` if necessary:  
+- **PostgreSQL Bind Address**:
+  1. Check the PostgreSQL `postgresql.conf` file to confirm it's listening on `127.0.0.1` or `localhost`.
+  Update `listen_addresses` if necessary:
   ```conf
   listen_addresses = 'localhost'
   ```
-  1. Restart PostgreSQL after making changes:  
+  1. Restart PostgreSQL after making changes:
   ```bash
   sudo systemctl restart postgresql
   ```
