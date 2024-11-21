@@ -27,7 +27,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 22.04 LTS
+- **Supported distributions:** Ubuntu 24.04 LTS
 - **Recommended plan:** For best results, 4GB Dedicated CPU or Shared Compute instance for BeEF
 
 ### BeEF Options
