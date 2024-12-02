@@ -62,7 +62,7 @@ This guide is written for a non-root user. Commands that require elevated privil
    - **Tinnel port**: `22` . This is the default SSH port.
    - **Username**: Your SSH username for the Linode instance.
    - **Authentication**: Choose `Identity file` if you are using an SSH key, or `Password` for password-based authentication.
-   - **Identity file**: If you are using an SSH key, browse and select the private key file.
+   - **Identity file**: If you are using an SSH key, provide the location of the private key file. 
    - **Password**: If you are using password-based authentication, enter your SSH password.
 6. Click **Save** to create the server connection.
 
