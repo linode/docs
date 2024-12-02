@@ -56,6 +56,7 @@ Begin by creating the Linode and making some preliminary changes.
     **Installer profile**
 
     - Label: Installer
+    - VM Mode: Paravirtualization
     - Kernel: Direct Disk
     - /dev/sda: FreeBSD disk image.
     - /dev/sdb: Installer disk image.
@@ -64,6 +65,7 @@ Begin by creating the Linode and making some preliminary changes.
     **Boot profile**
 
     - Label: FreeBSD
+    - VM Mode: Paravirtualization
     - Kernel: Direct Disk
     - /dev/sda: FreeBSD disk image.
     - root / boot device: Standard /dev/sda
