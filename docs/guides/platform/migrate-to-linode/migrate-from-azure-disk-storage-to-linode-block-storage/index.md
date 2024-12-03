@@ -75,7 +75,7 @@ This guide assumes that you have an Azure virtual machine and an attached data d
 
 1. Follow the [Add volumes](https://techdocs.akamai.com/cloud-computing/docs/manage-block-storage-volumes#add-volumes) product documentation to create and attach a new volume to the Linode instance. This volume should have a capacity equal to or higher than the total data stored on the source Azure disk. Review the [Migration Time Estimates](#migration-time-estimates) section for help with determining how much data is stored on the disk.
 
-    When creating the volume, the Linode Cloud Manager displays instructions for how to create a filesystem on the new volume and then mount it. Make a note of the filesystem path that it is mounted under (e.g. `/mnt/your-volume-name`).
+    When creating the volume, the Linode Cloud Manager displays instructions for how to create a filesystem on the new volume and then mount it. Make a note of the filesystem path that it is mounted under (e.g. `/mnt/linode-block-storage-volume`).
 
 ### Configure Firewalls
 
@@ -131,7 +131,7 @@ Migrations can take a long time, so having them run independently of your SSH se
     rsync -chavzP --stats -e "ssh -i /home/linodeuser/.ssh/id_rsa" azureuser@{{< placeholder "AZURE_VM_IP" >}}:/datadrive/ /mnt/linode-block-storage-volume 1>>~/bs-migration-logs.txt 2>>~/bs-migration-errors.txt
     ```
 
-    Be sure to replace these values:
+    Be sure to replace these values with the actual values from your Azure VM and Linode instance:
 
     - `/home/linodeuser/.ssh/id_rsa`: The name and location of the private key
     - `azureuser`: The name of the user on the Azure VM
