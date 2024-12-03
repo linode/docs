@@ -115,7 +115,7 @@ Migrations can take a long time, so having them run independently of your SSH se
 
 1. Install `tmux`: [Installing tmux](https://github.com/tmux/tmux/wiki/Installing#installing-tmux).
 
-1. Create a new tmux session. This session is used to initiate the migration, and it will persist between SSH sessions. This is important for large/long-running migrations. This command creates a session with name `block-storage-migration`:
+1. Create a new tmux session named `block-storage-migration`. This session is used to initiate the migration:
 
     ```command {title="SSH session with Linode instance"}
     tmux new -s block-storage-migration
