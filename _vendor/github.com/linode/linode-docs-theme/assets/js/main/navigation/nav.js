@@ -93,6 +93,10 @@ export function newNavController(weglot_api_key) {
 			});
 		},
 
+		onOptanonGroupsUpdated: function (groups) {
+			this.$store.nav.updateOptanonGroups(groups);
+		},
+
 		onEffect: function () {
 			this.$store.search.updateLocationWithQuery();
 		},

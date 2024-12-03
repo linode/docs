@@ -9,8 +9,8 @@ weglot_api_key = "wg_3b3ef29c81aa81292c64d1368ee318969"
 # For development/staging, see the config dir.
 adobe_launch_script = "https://assets.adobedtm.com/fcfd3580c848/f9e7661907ee/launch-2fb69de42220.min.js"
 
-# Trustarc Domain used in poduction
-trustarc_domain = "linode.com"
+# OneTrust Domain used in production.
+onetrust_domain_script = "01922358-0e47-73fa-9452-fa124177d6d6"
 
 [params.search_config2]
 
@@ -51,7 +51,7 @@ filtering_facets = [
 [params.search_config2.sections]
 [params.search_config2.sections.products]
 name = "products"
-weight = 10 # Used to order the sections in the UI. Higher comes first.
+weight = 35 # Used to order the sections in the UI. Higher comes first.
 title = "Products"
 noun = "Product Guide"
 static_link_url = "https://techdocs.akamai.com/cloud-computing/docs/"
@@ -62,7 +62,7 @@ explorer_icon = "#icon-explorer--products"
 [params.search_config2.sections.guides]
 name = "guides"
 filters = "section.lvl0:guides"
-weight = 20
+weight = 10
 title = "Cloud Guides & Tutorials"
 noun = "Guide"
 explorer_icon = "#icon-explorer--guides"
@@ -70,22 +70,23 @@ explorer_icon = "#icon-explorer--guides"
 [params.search_config2.sections.api]
 name = "api"
 index = "linode-documentation-api"
+static_link_url = "https://techdocs.akamai.com/linode-api/reference/api"
 filters = "section.lvl0:api"
-weight = 30
+weight = 40
 title = "API"
 explorer_icon = "#icon-explorer--api"
 
 [params.search_config2.sections.reference-architecture]
 name = "reference-architecture"
 filters = "section.lvl0:guides"
-weight = 35
-title = "Reference Architecture"
+weight = 20
+title = "Reference Architectures"
 noun = "Reference"
 explorer_icon = "#icon-explorer--reference-architecture"
 
 [params.search_config2.sections.marketplace-docs]
 name = "marketplace-docs"
-weight = 40
+weight = 25
 title = "Marketplace Docs"
 noun = "Marketplace"
 filters = "section.lvl0:marketplace-docs"
@@ -106,8 +107,8 @@ static_link_url = "https://www.linode.com/blog/"
 name = "resources"
 filters = "section.lvl0:Resources"
 weight = 60
-title = "Resources"
-noun = "Resource"
+title = "Content Resources"
+noun = "Content Resource"
 seo_title_template = "Cloud Computing Resources | Linode"
 seo_title_template_category = "Cloud Computing {category} | Linode"
 explorer_icon = "#icon-explorer--resources"
@@ -176,7 +177,7 @@ path = "github.com/gohugoio/hugo-mod-jslibs/turbo/v8"
 [security]
   enableInlineShortcodes = false
   [security.exec]
-    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$']
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^git$']
     osEnv = ['(?i)^(.*)$']
 
   [security.funcs]

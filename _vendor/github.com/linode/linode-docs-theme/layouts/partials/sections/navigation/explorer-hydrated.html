@@ -86,7 +86,7 @@
             <div class="text-basicgray flex items-center">
               <svg
                 class="fill-current block w-5"
-                :class="{ 'text-gray-300': ({{ $.n }}.count <= 0), 'text-brand': {{ $.n }}.open }"
+                :class="{ 'text-gray-300': ({{ $.n }}.count <= 0 && !{{ $.n }}.static_link_url), 'text-brand': {{ $.n }}.open }"
                 style="height: 16.87px;">
                 <use :href="{{ $.n }}.icon"></use>
               </svg>
@@ -109,10 +109,7 @@
             {{ template "explorer-dynamic-button-toggle" $ }}
           </div>
           <a :href="{{ $.n }}.static_link_url">
-            <svg
-              class="w-4 h-3 titlecolor"
-              :class="{ 'text-gray-300': $store.search.query.isFiltered() }"
-              x-show="{{ $.n }}.static_link_url">
+            <svg class="w-4 h-3 titlecolor" x-show="{{ $.n }}.static_link_url">
               <use href="#icon--arrow-up-right"></use>
             </svg>
           </a>
@@ -143,11 +140,11 @@
           'text-textcolor': ({{ $.n }}.level > 1),
           'text-brand': {{ $.n }}.level === 1 && {{ $.n }}.open,
           'text-titlecolor': {{ $.n }}.level === 1 && (!{{ $.n }}.open && {{ $.n }}.count > 0),
-          'text-gray-300': {{ $.n }}.level === 1 && {{ $.n }}.count <= 0,
+          'text-gray-300': {{ $.n }}.level === 1 && ({{ $.n }}.count <= 0 && !{{ $.n }}.static_link_url),
           'font-semibold': ({{ $.n }}.level === 1 || ( {{ $.n }}.level > 1 && {{ $.n }}.open )),
           'text-sm': ({{ $.n }}.level === 2),
           'text-xs': ({{ $.n }}.level > 2),
-          'text-gray-300': ({{ $.n }}.count <= 0),
+          'text-gray-300': ({{ $.n }}.count <= 0 && !{{ $.n }}.static_link_url),
           'explorer-node-open': ({{ $.n }}.level > 1 && {{ $.n }}.open)
           }">
     <span

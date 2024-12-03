@@ -15,7 +15,7 @@
 {{/* styles */}}
 {{ $options := dict "inlineImports" true }}
 {{ $styles := resources.Get "css/styles.css" }}
-{{ $styles = $styles | resources.PostCSS $options }}
+{{ $styles = $styles | css.PostCSS $options }}
 {{ if  (ne hugo.Environment "development") }}
   {{ $styles = $styles | minify | fingerprint | resources.PostProcess }}
 {{ end }}
@@ -43,7 +43,6 @@
 {{ $params := (dict
   "search_config" site.Params.search_config2
   "weglot_api_key" site.Params.weglot_api_key
-  "trustarc_domain" site.Params.trustarc_domain
   "page_title_suffix" site.Params.page_title_suffix
   "search_cachewarmer_urls" $cacheWarmerUrls
   "is_production" (ne hugo.Environment "development")

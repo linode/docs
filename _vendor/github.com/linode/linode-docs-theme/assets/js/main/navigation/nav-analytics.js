@@ -7,14 +7,14 @@ const userTokenCookieName = 'linode_anonymous_usertoken';
 var debug = 0 ? console.log.bind(console, '[nav-analytics]') : function () {};
 
 export class AnalyticsEventsCollector {
-	constructor(searchConfig, getLastQueryID, trustecm) {
+	constructor(searchConfig, getLastQueryID, onetrust) {
 		this.headers = {
 			'X-Algolia-Application-Id': searchConfig.app_id,
 			'X-Algolia-API-Key': searchConfig.api_key,
 		};
 
 		(this.getLastQueryID = getLastQueryID), (this.urlEvents = `https://insights.algolia.io/1/events`);
-		this.trustecm = trustecm;
+		this.onetrust = onetrust;
 		this.anonomousUserToken = unspecificedUserToken;
 		if (supportsCookies()) {
 			this.anonomousUserToken = getCookie(userTokenCookieName);
@@ -46,7 +46,7 @@ export class AnalyticsEventsCollector {
 		if (searchConfig.click_analytics) {
 			const mergedIndex = searchConfig.indexName(searchConfig.sections_merged.index);
 			const userToken = () => {
-				if (trustecm.performance) {
+				if (onetrust.performance) {
 					return this.anonomousUserToken;
 				}
 				return unspecificedUserToken;

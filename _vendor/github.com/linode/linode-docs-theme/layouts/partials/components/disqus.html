@@ -3,7 +3,7 @@
     class="flex justify-between bg-gray-300 pull-out items-center rounded-none md:rounded-md px-4 md:px-8 py-6 mt-8">
     <div class="font-regular tracking-normal">
       <header class="font-semibold text-lg mb-4">Join the conversation.</header>
-      <div x-show="$store.nav.trustecm.functional">
+      <div x-show="$store.nav.onetrust.functional">
         Read other comments or post your own below. Comments must be respectful,
         constructive, and relevant to the topic of the guide. Do not post
         external links or advertisements. Before posting, consider if your
@@ -13,12 +13,12 @@
         <a href="https://www.linode.com/community/questions/">Community Site</a
         >.
       </div>
-      <div x-show="!$store.nav.trustecm.functional && truste.eu">
+      <div x-show="!$store.nav.onetrust.functional">
         The Disqus commenting system for Linode Docs requires the acceptance of
         Functional Cookies, which allow us to analyze site usage so we can
         measure and improve performance. To view and create comments for this
         article, please
-        <a href="#" @click="truste.eu && truste.eu.clickListener()"
+        <a href="#" @click="$store.nav.onetrust.toggleConsentDialog($event);"
           >update your Cookie Preferences</a
         >
         on this website and refresh this web page. Please note: You must have
@@ -29,7 +29,7 @@
 
   <div class="pt-10" x-intersect.once="visible = true">
     <template
-      x-if="$store.nav.trustecm.functional && (visible || (window.location.hash.startsWith('#comment-')))">
+      x-if="$store.nav.onetrust.functional && (visible || (window.location.hash.startsWith('#comment-')))">
       <div>
         <div
           x-data="lncDisqus('{{ site.Config.Services.Disqus.Shortname }}', lnPageInfo)"

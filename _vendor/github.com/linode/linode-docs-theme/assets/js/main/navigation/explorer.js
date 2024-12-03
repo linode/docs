@@ -132,12 +132,18 @@ export function newSearchExplorerHydrated(searchConfig) {
 					(n) => n.level === 1 && n.key !== 'bundles' && n.key != 'community',
 				);
 
-				// Manually add the product section with count -1 to signal a static link.
+				// Manually add the product and api section with count -1 to signal a static link.
 				rootNodes.push({
 					key: 'products',
 					count: -1,
 					level: 1,
 				});
+				rootNodes.push({
+					key: 'api',
+					count: -1,
+					level: 1,
+				});
+
 				// Apply explorer_icon and weight from searchConfig.sections.
 				rootNodes.forEach((n) => {
 					let section = searchConfig.sections[n.key.toLowerCase()];
