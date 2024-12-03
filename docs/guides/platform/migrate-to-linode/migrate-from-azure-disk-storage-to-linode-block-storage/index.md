@@ -36,7 +36,6 @@ df -h
 Your data disk should appear, and the `Used` column shows how much data is stored on the disk:
 
 ```output
-df -h
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sdc1        20G  4.4G   16G  23% /datadrive
 ```
