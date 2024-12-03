@@ -226,7 +226,7 @@ Because the stdout and stderr streams were redirected to log files, the rsync co
 To verify that rsync has synced all the files as expected, re-run the command with the `--dry-run –stats` flags:
 
 ```command {title="SSH session with Linode instance"}
-rsync -chavzP --stats --dry-run -e "ssh -i /path/to/your_azure_vm_key.pem" azureuser@13.93.147.88:/datadrive/ /mnt/linode-bs
+rsync -chavzP --stats --dry-run -e "ssh -i /home/azureuser/.ssh/id_rsa" azureuser@{{< placeholder "AZURE_VM_IP" >}}:/datadrive/ /mnt/linode-block-storage-volume
 ```
 
 If the output displays files yet to be transferred, then rsync did not fully replicate the files in the destination directory. A previous successful rsync transfer should result in the following output. Note that the number of created, deleted, and transferred files are zero:
