@@ -27,27 +27,43 @@ The following are important time, cost, and security considerations you should k
 
 ### Migration Time Estimates
 
-EDITOR: fill in
+The time it takes to migrate a data disk is a function of the data stored on that disk, which can be substantial for larger migrations. To determine how much data is stored on your disk, run the `df` command from your Azure VM:
+
+```command {title="SSH session with Azure VM"}
+df -h
+```
+
+Your data disk should appear, and the `Used` column shows how much data is stored on the disk:
+
+```output
+df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdc1        20G  4.4G   16G  23% /datadrive
+```
+
+TODO: advise on bandwidth testing
 
 ### Migration Egress Costs
 
-EDITOR: fill in
+The cost to migrate a data disk is a function of the data stored on that disk, which can be substantial for larger migrations. These costs are incurred as egress fees when the data leaves the Azure platform and are billed by Azure. Review the [Migration Time Estimates](#migration-time-estimates) section for help with determining how much data is stored on the disk. Please review the Azure documentation for assistance with calculating this amount.
+
+Inbound traffic sent to your Linode instance and Block Storage volume have no fees incurred on the Linode platform.
 
 ### Security and Firewalls
 
-Files should be migrated over an encrypted connection. Rsync supports using SSH as its transport protocol, which is encrypted. This guide describes how to use [public key authentication](/docs/guides/use-public-key-authentication-with-ssh/) when using rsync.
+Files should be migrated over an encrypted connection. Rsync supports using SSH as its transport protocol, which is encrypted.
 
 Your Azure and Linode firewall settings should be configured to allow SSH traffic between the two instances. After the migration is performed, you may wish to close access to SSH between the Linode instance and Azure virtual machine.
 
 ## Block Storage Migration Workflow Diagram
 
-EDITOR: fill in
+TODO: fill in diagram
 
 ## Block Storage Migration Instructions
 
 ### Prerequisites and Assumptions
 
-This guide assumes that you have an Azure virtual machine and an attached data disk on the Azure Disk Storage service. The assumed filesystem path for the Azure data disk is `/datadrive`. The assumed username for the Azure virtual machine is `azureuser`.
+This guide assumes that you have an Azure virtual machine and an attached data disk on the Azure Disk Storage service. The assumed filesystem path for the Azure data disk is `/datadrive`, and the username for the Azure virtual machine is `azureuser`.
 
 ### Prepare a Linode Block Storage Volume
 
@@ -57,7 +73,7 @@ This guide assumes that you have an Azure virtual machine and an attached data d
     If you create an instance to use for this migration, you may wish to delete it after the migration is complete. Deleting an instance that has an attached volume does not delete the volume.
     {{< /note >}}
 
-1. Follow the [Add volumes](https://techdocs.akamai.com/cloud-computing/docs/manage-block-storage-volumes#add-volumes) product documentation to create and attach a new volume to the Linode instance. This volume have a capacity equal to or higher than the source Azure data disk.
+1. Follow the [Add volumes](https://techdocs.akamai.com/cloud-computing/docs/manage-block-storage-volumes#add-volumes) product documentation to create and attach a new volume to the Linode instance. This volume should have a capacity equal to or higher than the total data stored on the source Azure disk. Review the [Migration Time Estimates](#migration-time-estimates) section for help with determining how much data is stored on the disk.
 
     When creating the volume, the Linode Cloud Manager displays instructions for how to create a filesystem on the new volume and then mount it. Make a note of the filesystem path that it is mounted under (e.g. `/mnt/your-volume-name`).
 
@@ -87,37 +103,47 @@ This guide assumes the public and private keys are named `id_rsa.pub` and `id_rs
     chmod 600 /home/linodeuser/.ssh/id_rsa/
     ```
 
-### Configure Known Hosts
-
-```command
-ssh-keyscan test.rebex.net >> ~/.ssh/known_hosts
-```
-
 ### Initiate the Migration
 
-Two recommended practices:
+These instructions implement two recommended practices:
 
-- Running rsync in a persistent process (tmux)
+- Running rsync in a persistent process
 
 - Sending output and errors to log files
 
+Migrations can take a long time, so having them run independently of your SSH session is important. This guide uses `tmux` to create a terminal session that persists between SSH connections. By sending output and errors to log files, you can keep a record of any migration failures that may happen.
+
+1. Install `tmux`: [Installing tmux](https://github.com/tmux/tmux/wiki/Installing#installing-tmux).
+
 1. Create a new tmux session. This session is used to initiate the migration, and it will persist between SSH sessions. This is important for large/long-running migrations. This command creates a session with name `block-storage-migration`:
 
-    ```command
+    ```command {title="SSH session with Linode instance"}
     tmux new -s block-storage-migration
     ```
 
     After running this command, the tmux session is immediately activated in your terminal.
 
-1. Run the rsync command to start migrating the contents of your Azure VM's /datadrive directory to the /mnt/linode-bs directory on your  Linode instance :
+1. Run the following commands to start migrating the contents of your Azure data disk to your Linode block storage volume:
 
     ```command {title="SSH session with Linode instance (bs-migration tmux session)"}
     echo "\n\nInitiating migration $(date)\n---"  | tee -a bs-migration-logs.txt bs-migration-errors.txt >/dev/null
 
-    rsync -chavzP --stats -e "ssh -i /home/azureuser/.ssh/id_rsa" azureuser@{{< placeholder "AZURE_VM_IP" >}}:/datadrive/ /mnt/linode-block-storage-volume 1>>~/bs-migration-logs.txt 2>>~/bs-migration-errors.txt
+    rsync -chavzP --stats -e "ssh -i /home/linodeuser/.ssh/id_rsa" azureuser@{{< placeholder "AZURE_VM_IP" >}}:/datadrive/ /mnt/linode-block-storage-volume 1>>~/bs-migration-logs.txt 2>>~/bs-migration-errors.txt
     ```
 
-    Here's a detailed explanation of the key flags and parameters used in the rsync command:
+    Be sure to replace these values:
+
+    - `/home/linodeuser/.ssh/id_rsa`: The name and location of the private key
+    - `azureuser`: The name of the user on the Azure VM
+    - `AZURE_VM_IP`: The IP address of the Azure VM
+    - `/datadrive/`: The directory the Azure data disk is mounted under
+    - `/mnt/linode-block-storage-volume`: The directory your Linode volume is mounted under
+
+    {{< note >}}
+    You may be prompted to accept the host key of the Azure VM if it is the first time that the Linode has connected to it.
+    {{< /note >}}
+
+    The first `echo` appends a message to the log files. Here's a detailed explanation of the key flags and parameters used in the `rsync` command:
 
     - `-c`: Tells rsync to use checksum comparison for file differences. Normally, rsync uses file size and modification time to decide if files need to be updated, but -c forces it to compute checksums, which is slower but can be more accurate if you want to be sure that files match exactly.
 
@@ -151,17 +177,17 @@ Two recommended practices:
 
     - `--stats`: Provides detailed statistics at the end of the transfer, such as total bytes transferred, transfer speed, and file counts.
 
-    - `-e "ssh -i /path/to/your_azure_vm_key.pem"`: Specifies a remote shell (SSH) with an identity key file for authentication.
+    - `-e "ssh -i /home/linodeuser/.ssh/id_rsa"`: Specifies a remote shell (SSH) with an identity key file for authentication.
 
-    - `azureuser@13.93.147.88:/datadrive/`: This specifies the source directory you're syncing from. Here:
+    - `azureuser@AZURE_VM_IP:/datadrive/`: This specifies the source directory you're syncing from:
 
-        azureuser is the username on the remote server (replace with your username).
+        - `azureuser`: The username on the remote server.
 
-        13.93.147.88 is the IP address of the remote server (replace with your IP address .
+        - `AZURE_VM_IP`: The IP address of the remote server.
 
-        /datadrive/ is the path on the remote server that you want to sync. The trailing slash (/) means rsync will copy the contents of /datadrive, rather than creating a /datadrive directory in the target.
+        - `/datadrive/`: The path on the remote server that you want to sync. The trailing slash (/) means rsync will copy the contents of /datadrive, rather than creating a /datadrive directory in the target.
 
-        /mnt/linode-bs: This is the destination directory on the local machine where rsync will copy the files to. In this case, it will create an exact copy of /datadrive contents here.
+        - `/mnt/linode-block-storage-volume`: The destination directory on the local machine where rsync will copy the files to. In this case, it will create an exact copy of /datadrive contents here.
 
 ### Monitor the Migration
 
@@ -175,11 +201,11 @@ Because the stdout and stderr streams were redirected to log files, the rsync co
 
 1.  Use `tail -f` to inspect the log and error files and monitor any new output from them:
 
-    ```command
+    ```command {title="SSH session with Linode instance"}
     tail -f block-storage-migration-logs.txt
     ```
 
-    ```command
+    ```command {title="SSH session with Linode instance"}
     tail -f block-storage-migration-errors.txt
     ```
 
@@ -187,77 +213,49 @@ Because the stdout and stderr streams were redirected to log files, the rsync co
 
 1.  You can re-enter the tmux session with the `tmux attach` command:
 
-    ```command
+    ```command {title="SSH session with Linode instance"}
     tmux attach -t block-storage-migration
     ```
 
-1.  When inside the tmux session, you can end it with the `exit` command:
-
-    ```command
-    exit
-    ```
-
-1. Once you enter the rsync command, the syncing process will start and display your progress in  real-time:
-
-    ```output
-    receiving incremental file list
-    ./
-    dummyfile
-            10.49M 100%  666.67MB/s    0:00:00 (xfr#1, to-chk=0/2)
-
-    Number of files: 2 (reg: 1, dir: 1)
-    Number of created files: 1 (reg: 1)
-    Number of deleted files: 0
-    Number of regular files transferred: 1
-    Total file size: 10.49M bytes
-    Total transferred file size: 10.49M bytes
-    Literal data: 10.49M bytes
-    Matched data: 0 bytes
-    File list size: 84
-    File list generation time: 0.004 seconds
-    File list transfer time: 0.000 seconds
-    Total bytes sent: 46
-    Total bytes received: 475
-
-    sent 46 bytes  received 475 bytes  347.33 bytes/sec
-    total size is 10.49M  speedup is 20,126.22
-    ```
+    {{< note >}}
+    Review the [tmux guide](/docs/guides/persistent-terminal-sessions-with-tmux/) for help with other tmux commands.
+    {{< /note >}}
 
 ### Verify the Migration
 
-1. Verifying Your Rsync Migration
+To verify that rsync has synced all the files as expected, re-run the command with the `--dry-run –stats` flags:
 
-    To verify that rsync has synced all the files as expected, re-run the command with the --dry-run –stats flags.
+```command {title="SSH session with Linode instance"}
+rsync -chavzP --stats --dry-run -e "ssh -i /path/to/your_azure_vm_key.pem" azureuser@13.93.147.88:/datadrive/ /mnt/linode-bs
+```
 
-    ```command
-    rsync -chavzP --stats --dry-run -e "ssh -i /path/to/your_azure_vm_key.pem" azureuser@13.93.147.88:/datadrive/ /mnt/linode-bs
-    ```
+If the output displays files yet to be transferred, then rsync did not fully replicate the files in the destination directory. A previous successful rsync transfer should result in the following output. Note that the number of created, deleted, and transferred files are zero:
 
-    ```output
-    receiving incremental file list
+```output
+receiving incremental file list
 
-    Number of files: 2 (reg: 1, dir: 1)
-    Number of created files: 0
-    Number of deleted files: 0
-    Number of regular files transferred: 0
-    Total file size: 10.49M bytes
-    Total transferred file size: 0 bytes
-    Literal data: 0 bytes
-    Matched data: 0 bytes
-    File list size: 84
-    File list generation time: 0.003 seconds
-    File list transfer time: 0.000 seconds
-    Total bytes sent: 20
-    Total bytes received: 95
+Number of files: 2 (reg: 1, dir: 1)
+Number of created files: 0
+Number of deleted files: 0
+Number of regular files transferred: 0
+Total file size: 10.49M bytes
+Total transferred file size: 0 bytes
+Literal data: 0 bytes
+Matched data: 0 bytes
+File list size: 84
+File list generation time: 0.003 seconds
+File list transfer time: 0.000 seconds
+Total bytes sent: 20
+Total bytes received: 95
 
-    sent 20 bytes  received 95 bytes  230.00 bytes/sec
-    total size is 10.49M  speedup is 91,180.52 (DRY RUN)
-    ```
+sent 20 bytes  received 95 bytes  230.00 bytes/sec
+total size is 10.49M  speedup is 91,180.52 (DRY RUN)
+```
 
-    If the output displays files yet to be transferred, then rsync did not fully replicate the files in the destination directory. A successful rsync transfer should look like the following output (note the number of created, deleted, and transferred files equal 0).
+### Cleanup after Migration
 
-### Cleanup
+After the migration is complete, you may determine that the Azure VM and Linode instance no logner need to communicate. You can close traffic between these servers by doing the following:
 
-EDITOR:
-close firewall access
-revoke keys for transfer
+- Remove the firewall access granted in the [Configure Firewalls](#configure-firewalls) section
+
+- Revoke the SSH key used for the transfer. This is done by removing the SSH public key that was referenced from the `/home/azureuser/.ssh/authorized_keys` file on the Azure VM.
