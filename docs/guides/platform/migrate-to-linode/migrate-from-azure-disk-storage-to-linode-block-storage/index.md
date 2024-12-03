@@ -8,9 +8,6 @@ contributors: ["Linode"]
 published: 2024-11-18
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
 This guide describes the process of migrating a single volume from Azure Disk Storage to Linode Block Storage using the rsync file synchronization utility. This guide does not cover migrating operating system disks from Azure Disk Storage. Instead, it focuses on migrating data disks.
