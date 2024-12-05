@@ -6,6 +6,7 @@ og_description: "This guide includes steps for installing the Linode Cloud Contr
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2020-07-16
+modified: 2024-12-05
 keywords: ['kubernetes','cloud controller manager','load balancing','nodebalancers']
 tags: ["docker","networking","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,21 +19,27 @@ The [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-clo
 NodeBalancers provide your Kubernetes cluster with a reliable way of exposing resources to the public internet. The Linode CCM handles the creation and deletion of the NodeBalancer, and, along with other Master Plane components, correctly identifies the resources, and their networking, that the NodeBalancer will route traffic to. Whenever a Kubernetes Service of the `LoadBalancer` type is created, your Kubernetes cluster will create a Linode NodeBalancer service with the help of the Linode CCM.
 
 {{< note >}}
-This guide will show you how to manually install the Linode CCM on an unmanaged Kubernetes cluster. This guide exists to support special use cases. For example, if you would like to experiment with various elements of a Kubernetes control plane.
+This guide shows you how to manually install the Linode CCM on an **unmanaged** Kubernetes cluster. This guide exists to support special use cases. For example, if you would like to experiment with various elements of a Kubernetes control plane.
 
 If you would like to use Kubernetes for production scenarios and make use of Linode NodeBalancers to expose your cluster's resources, it is recommended that you [use the Linode Kubernetes Engine to deploy your cluster](/docs/products/compute/kubernetes/). An LKE cluster's control plane has the Linode CCM preinstalled and does not require any of the steps included in this guide.
 
-Similarly, if you would like to deploy an unmanaged Kubernetes cluster on Linode, the best way to accomplish that is using [Terraform and the Linode K8s module](/docs/guides/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/). The Linode K8s module will also include the Linode CCM preinstalled on the Kubernetes master's control plane and does not require any of the steps included in this guide.
+Another option for deploying Kubernetes clusters on Linode is to use [Cluster API Provider Linode (CAPL)](https://linode.github.io/cluster-api-provider-linode/). It provisions a management Kubernetes cluster which can then be used to provision and manage multiple other child Kubernetes clusters on Linode. It installs CCM by default and supports provisioning Kubernetes clusters using kubeadm, rke2 and k3s.
 
-If you have used the Linode Kubernetes Engine (LKE) or the Linode Terraform K8s module to deploy your cluster, you should instead refer to the [Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster](/docs/products/compute/kubernetes/guides/load-balancing/) guide for steps on adding and configuring NodeBalancers on your Kubernetes cluster.
+If you have used the Linode Kubernetes Engine (LKE) or Cluster API Provider Linode (CAPL) to deploy your cluster, you should refer to the [Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster](/docs/products/compute/kubernetes/guides/load-balancing/) guide for steps on adding and configuring NodeBalancers on your Kubernetes cluster.
 {{< /note >}}
 
 ## In this Guide
 
-You will manually install the Linode CCM on your unmanaged Kubernetes cluster. This will include:
+Instructions are shown for manually installing the Linode CCM on your unmanaged Kubernetes cluster. This includes:
 
 - [Updating your Kubernetes cluster's configuration](#update-your-cluster-configuration) to use the CCM for Node scheduling.
-- [Using a helper script to create a manifest file](#install-the-linode-ccm) that will install the Linode CCM and supporting resources on your cluster.
+
+- Two options for installing the Linode CCM:
+
+  - [Using a Helm chart](#install-linode-ccm-using-helm)
+
+  - [Using a helper script to create a manifest file](#install-linode-ccm-using-generated-manifest)
+
 - [Updating the Linode CCM](#updating-the-linode-ccm) running on your cluster with its latest upstream changes.
 
 ### Before You Begin
@@ -45,9 +52,7 @@ You will manually install the Linode CCM on your unmanaged Kubernetes cluster. T
 
 1. Ensure you have [kubectl installed](/docs/guides/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/#install-kubectl) on your local computer and you can access your Kubernetes cluster with it.
 
-1. [Install Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) on your local computer.
-
-1. Generate a [Linode APIv4 token](/docs/products/tools/api/get-started/#get-an-access-token).
+1. Generate a [Linode APIv4 token](/docs/products/tools/api/get-started/#get-an-access-token). This is required for both methods of installing the Linode CCM in this guide.
 
 ## Running the Linode Cloud Controller Manager
 
@@ -60,13 +65,34 @@ In order to run the Linode Cloud Controller Manager:
 
 These configurations will change the behavior of your cluster and how it interacts with its Nodes. For more details, visit the [upstream Cloud Controller documentation](https://kubernetes.io/docs/tasks/administer-cluster/running-cloud-controller/).
 
-### Install the Linode CCM
+### Install Linode CCM using Helm
 
-The Linode CCM's GitHub repository provides a helper script that creates a Kubernetes manifest file that you can use to install the CCM on your cluster. These steps should be run on your local computer and were tested on a macOS.
+Installing the Linode CCM using Helm is the preferred method. Helm chart contents are available in [deploy/chart directory of the linode-cloud-controller-manager GitHub repository](https://github.com/linode/linode-cloud-controller-manager/tree/main/deploy/chart).
 
-{{< note >}}
-You will need your [Linode APIv4](/docs/products/tools/api/get-started/#get-an-access-token) token to complete the steps in this section.
-{{< /note >}}
+1. [Install Helm](https://helm.sh/docs/intro/install/)
+
+1. Install the `ccm-linode` repo.
+
+    ```command
+    helm repo add ccm-linode https://linode.github.io/linode-cloud-controller-manager/
+    helm repo update ccm-linode
+    ```
+
+1. Deploy the `ccm-linode` Helm chart.
+
+    ```command
+    export LINODE_API_TOKEN={{< placeholder "YOUR_LINODE_API_TOKEN" >}}
+    export REGION={{< placeholder "YOUR_LINODE_REGION" >}}
+    helm install ccm-linode --set apiToken=$LINODE_API_TOKEN,region=$REGION ccm-linode/ccm-linode
+    ```
+
+For advanced configuration, one can specify their own [values.yaml](https://github.com/linode/linode-cloud-controller-manager/blob/main/deploy/chart/values.yaml) file when installing the Helm chart.
+
+### Install Linode CCM using Generated Manifest
+
+The Linode CCM's GitHub repository provides a helper script that creates a Kubernetes manifest file that you can use to install the CCM on your cluster. These steps should be run on your local computer and were tested on a macOS workstation.
+
+1. [Install Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) on your local computer.
 
 1. Clone the [Linode CCM's GitHub repository](https://github.com/linode/linode-cloud-controller-manager).
 
@@ -98,6 +124,15 @@ You will need your [Linode APIv4](/docs/products/tools/api/get-started/#get-an-a
     You can create your own `ccm-linode.yaml` manifest file by editing the contents of the `ccm-linode-template.yaml` file and changing the values of the `data.apiToken` and `data.region` fields with your own desired values. This template file is located in the `deploy` directory of the Linode CCM repository.
     {{< /note >}}
 
+    {{< note >}}
+    Helm can also be used to render the ccm-linode Helm chart and apply it manually.
+    {{< /note >}}
+
+    ```command
+    cd linode-cloud-controller-manager/
+    helm template --set apiToken=$LINODE_API_TOKEN,region=$REGION deploy/chart/
+    ```
+
 ## Updating the Linode CCM
 
 The easiest way to update the Linode CCM is to edit the DaemonSet that creates the Linode CCM Pod. To do so:
@@ -111,13 +146,13 @@ The easiest way to update the Linode CCM is to edit the DaemonSet that creates t
 1. The CCM Daemonset manifest will appear in vim. Press `i` to enter insert mode. Navigate to `spec.template.spec.image` and change the field's value to the desired version tag. For instance, if you had the following image:
 
     ```file
-    image: linode/linode-cloud-controller-manager:v0.2.2
+    image: linode/linode-cloud-controller-manager:v0.4.12
     ```
 
-    You could update the image to `v0.2.3` by changing the image tag:
+    You could update the image to `v0.4.20` by changing the image tag:
 
     ```file
-    image: linode/linode-cloud-controller-manager:v0.2.3
+    image: linode/linode-cloud-controller-manager:v0.4.20
     ```
 
     For a complete list of CCM version tags, visit the [CCM DockerHub page](https://hub.docker.com/r/linode/linode-cloud-controller-manager/tags).
