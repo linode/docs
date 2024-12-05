@@ -54,8 +54,6 @@ Instructions are shown for manually installing the Linode CCM on your unmanaged 
 
 1. Generate a [Linode APIv4 token](/docs/products/tools/api/get-started/#get-an-access-token). This is required for both methods of installing the Linode CCM in this guide.
 
-1. [Install Helm](https://helm.sh/docs/intro/install/)
-
 ## Running the Linode Cloud Controller Manager
 
 ### Update Your Cluster Configuration
