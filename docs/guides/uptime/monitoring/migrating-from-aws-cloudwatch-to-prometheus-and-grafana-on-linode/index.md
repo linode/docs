@@ -1,338 +1,362 @@
 ---
 slug: migrating-from-aws-cloudwatch-to-prometheus-and-grafana-on-linode
 title: "Migrating From Aws CloudWatch to Prometheus and Grafana on Linode"
-description: "Two to three sentences describing your guide."
-og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
+description: "Migrating from AWS CloudWatch to Prometheus and Grafana? Learn how to configure metrics, build custom dashboards, and optimize monitoring with cost-effective, open source tools on Linode."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2024-11-19
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['aws','cloudwatch','prometheus','grafana','aws cloudwatch migration','prometheus and grafana setup','migrate to prometheus','grafana dashboards for metrics','cloudwatch alternative','open source monitoring tools','prometheus metrics','grafana visualization','monitoring and observability','prometheus grafana guide','cloudwatch to Prometheus tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[AWS CloudWatch Documentation](https://docs.aws.amazon.com/cloudwatch/)'
+- '[Prometheus Documentation](https://prometheus.io/docs/introduction/overview/)'
+- '[Grafana Installation Documentation](https://grafana.com/docs/grafana/latest/setup-grafana/installation/)'
+- '[Grafana Dashboard Documentation](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/)'
 ---
 
-AWS CloudWatch is a monitoring and observability service designed to collect and track metrics, log files, and events from AWS resources and applications. CloudWatch enables users to monitor the performance and health of their infrastructure by generating real-time insights and alerts.
+AWS CloudWatch is a monitoring and observability service designed to collect and analyze metrics, logs, and events from AWS resources and applications. It provides insights into the performance and health of infrastructure, enabling users to generate real-time alerts and dashboards for proactive monitoring.
 
-This guide walks through how to migrate standard AWS CloudWatch service logs and metrics to Prometheus and Grafana running on a Linode instance.
+While CloudWatch is a useful for AWS environments, organizations may seek alternative solutions for reduced costs and/or greater flexibility across multiple cloud platforms. Prometheus and Grafana offer an open source, platform-agnostic alternative for achieving these goals. This guide walks through how to migrate standard AWS CloudWatch service logs and metrics to Prometheus and Grafana running on a Linode instance.
+
+## Introduction to Prometheus and Grafana
+
+Prometheus is a [time-series database](https://prometheus.io/docs/concepts/data_model/#data-model) that collects and stores metrics from applications and services. It provides a foundation for monitoring system performance using the PromQL query language to extract and analyze granular data. Prometheus autonomously scrapes (*pulls*) metrics from targets at specified intervals, efficiently storing data through compression while retaining the most critical details. It also supports alerting based on metric thresholds, making it suitable for dynamic, cloud-native environments.
+
+Grafana is a visualization and analytics platform that integrates with Prometheus. It enables users to create real-time, interactive dashboards, visualize metrics, and set up alerts to gain deeper insights into system performance. Grafana can unify data from a wide array of data sources, including Prometheus, to provide a centralized view of system metrics.
+
+Prometheus and Grafana are often used together to monitor service health, detect anomalies, and issue alerts. Being both open source and platfrom-agnostic allows them to be deployed across a diverse range of cloud providers and on-premise infrastructures. Organizations often adopt these tools to reduce operational costs while gaining greater control over how data is collected, stored, and visualized.
+
+{{< note >}}
+While the Linode Marketplace offers an easily deployable [Prometheus and Grafana Marketplace app](https://www.linode.com/marketplace/apps/linode/prometheus-grafana/), this tutorial walks through a manual installation.
+{{< /note >}}
 
 ## Before You Begin
 
-1.  If you do not already have a Linode account, create one by following the [Getting started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide.
+1.  If you do not already have a Linode account, create one by following the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide.
 
-1.  Generate a personal access token by following the [Manage Personal Access Tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide. This token is required for provisioning and managing resources through the Linode CLI.
-
-1.  Install and configure the Linode CLI by following the steps in the [Install and Configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
-
-1.  Create an SSH key pair if you do not already have one. Follow the Generate an SSH Key Pair section of the [Use SSH Public Key Authentication on Linux, macOS, and Windows](https://www.linode.com/docs/guides/use-public-key-authentication-with-ssh/#generate-an-ssh-key-pair) guide to securely generate and use SSH keys for accessing your Linode instance.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. The examples in this guide use the Linode 8 GB Shared CPU plan (`g6-standard-4`) Linode with Ubuntu 24.04 LTS.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Introduction to Prometheus and Grafana
+## Install Prometheus as a Service
 
-Prometheus is a [time-series](https://prometheus.io/docs/concepts/data_model/#data-model) database used to collect and store metrics from applications and services, providing a foundation for monitoring system performance. Prometheus uses the PromqL query language to extract and analyze granular data. It autonomously scrapes (*pulls*) data from targets at specified intervals, then stores it efficiently through compression and only keeping the most important details over time. Prometheus also supports alerting based on metric thresholds, making it suitable for dynamic, cloud-native environments.
+In order to install Prometheus, you must first SSH into the newly provisioned Linode.
 
-Grafana is a visualization and analytics platform that integrates with Prometheus, enabling users to create interactive, real-time dashboards. It allows users to visualize metrics, set up alerts, and gain real-time insights into system performance. Grafana's ability to integrate with a wide array of data sources, including Prometheus, allows it to unify metrics from multiple systems into a cohesive view.
+1.  Create a dedicated user for Prometheus, disable its login, and create the necessary directories for Prometheus:
 
-Prometheus and Grafana are often used together to monitor service health, detect anomalies, and issue alerts. Both are open source tools that provide a customizable approach to monitoring services. They are platform-agnostic, meaning they can be used across different cloud providers and on-premise systems. Organizations may adopt these open source tools to lower their operational costs and have greater control over how data is collected, stored, and visualized.
+    ```command
+    sudo useradd --no-create-home --shell /bin/false prometheus
+    sudo mkdir /etc/prometheus
+    sudo mkdir /var/lib/prometheus
+    ```
 
-## Step 1: Initialize a Compute Instance
+1.  Download the latest version of Prometheus from its GitHub repository:
 
-This guide uses the Linode CLI to provision resources. The Linode Marketplace offers a deployable [Prometheus and Grafana Marketplace app](https://www.linode.com/marketplace/apps/linode/prometheus-grafana/), whereas this tutorial walks through a manual installation.
+    ```command
+    wget https://github.com/prometheus/prometheus/releases/download/v2.55.1/prometheus-2.55.1.linux-amd64.tar.gz
+    ```
 
-### Determine Instance Configuration
+    This guide uses version `2.55.1`. Check the project’s [releases page](https://github.com/prometheus/prometheus/releases) for the latest version that aligns with your instance’s operating system.
 
-In order to provision a Linode instance, you must specify the desired operating system, geographical region, and Linode plan size. The options available for each of these can be obtained using the Linode CLI.
+1.  Extract the compressed file and navigate to the extracted folder:
 
-#### Operating System
+    ```command
+    tar xzvf prometheus-2.55.1.linux-amd64.tar.gz
+    cd prometheus-2.55.1.linux-amd64
+    ```
 
-Run this command to obtain a formatted list of available operating systems:
+1.  Move both the `prometheus` and `promtool` binaries to `/usr/local/bin`:
 
-```command
-linode-cli images list --type=manual
-```
+    ```command
+    sudo cp prometheus /usr/local/bin
+    sudo cp promtool /usr/local/bin
+    ```
 
-This guide uses Ubuntu 22.04, which has the ID `linode/ubuntu22.04`.
+    The `prometheus` binary is the main monitoring application, while `promtool` is a utility application that queries and configures a running Prometheus service.
 
-#### Geographical Region
+1.  Move the configuration files and directories to the `/etc/prometheus` folder you created previously:
 
-```command
-linode-cli regions list
-```
+    ```command
+    sudo cp -r consoles /etc/prometheus
+    sudo cp -r console_libraries /etc/prometheus
+    sudo cp prometheus.yml /etc/prometheus/prometheus.yml
+    ```
 
-This guide uses the `us-sea` region (Seattle, WA).
+1.  Set the correct ownership permissions for Prometheus files and directories:
 
-#### Compute Instance Size
-
-```command
-linode-cli linodes types
-```
-
-This guide uses the `g6-standard-4` Linode, which has 4 cores, 160 GB disk, and 8 GB RAM with a 5000 Mbps transfer rate.
-
-### Create the Compute Instance
-
-The following command creates a Linode Compute Instance based on the specified operating system, geographical region, and size as noted above.
-
-```command
-linode-cli linodes create \
-    --image linode/ubuntu22.04 \
-    --region us-sea \
-    --type g6-standard-4 \
-    --root_pass {{< placeholder "PASSWORD" >}} \
-    --authorized_keys "$(cat ~/.ssh/id_rsa.pub)" \
-    --label monitoring-server
-```
-
-Note the following key points:
-
--   Replace {{< placeholder "PASSWORD" >}} with a secure alternative.
--   This command assumes that an SSH public/private key pair exists, with the public key stored as `id\_rsa.pub` in the user's `$HOME/.ssh/` folder.
--   The `--label` argument specifies the name of the new server (`monitoring-server`).
-
-Within a few minutes of executing this command, the instance should be visible in the Linode Cloud Manager. Depending on notification settings, emails detailing the progress of the provisioning process may also be sent to the Linode user's address.
-
-## Step 2: Install Prometheus as a Service
-
-To install Prometheus, you need to SSH into the newly provisioned Linode. The IP address of the new instance can be found in the Linode Cloud Manager dashboard or via the following command:
-
-```command
-linode-cli linodes list
-```
-
-Once the IP address is found, run the following command:
-
-```command
-ssh -l root {{< placeholder "IP_ADDRESS" >}}
-```
-
-{{< note >}}
-This method of connecting uses the `root` user, which is currently the only accessible user on the system. For simplicity, **this guide assumes that all remaining commands are run as the `root` user** on this Linode Compute Instance.
-
-For production systems, it is strongly recommended that you disable the ability to access the instance as the `root` user, instead creating a limited user account for access. See [this guide](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) for more details.
-{{< /note >}}
-
-### Update System Packages
-
-Ensure that the new system is up to date with the latest Ubuntu packages. The Ubuntu package manager (`apt`) needs to be updated to pull the latest package manifests, followed by upgrading any that are outdated.
-
-```command
-apt update && apt upgrade \-y
-```
-
-### Create a Prometheus User
-
-It is considered a best practice to run Prometheus with its own dedicated user. The next set of commands creates the new user, disables its login, and then creates configuration and library directories for the soon-to-be-installed system.
-
-```command
-useradd --no-create-home --shell /bin/false prometheus
-mkdir /etc/prometheus
-mkdir /var/lib/Prometheus
-```
-
-### Download and Install Prometheus
-
-Download the latest version of Prometheus from its GitHub repository:
-
-```command
-wget https://github.com/prometheus/prometheus/releases/download/v2.54.1/prometheus-2.54.1.linux-amd64.tar.gz
-```
-
-As of the time of this writing, the most recent version of Prometheus is 2.54.1. Check the project’s [releases page](https://github.com/prometheus/prometheus/releases) for the latest version, while aligning with your Compute Instance’s operating system and instruction set.
-
-Extract the compressed file and navigate to the new folder:
-
-```command
-tar xzvf prometheus-2.54.1.linux-amd64.tar.gz
-cd prometheus-2.54.1.linux-amd64/
-```
-
-Move the `prometheus` and `promtool` binaries to `/usr/local/bin`:
-
-```command
-cp prometheus /usr/local/bin/
-cp promtool /usr/local/bin/
-```
-
-The `prometheus` binary is the main monitoring application, while `promtool` is a utility application that allows for querying and configuring a running Prometheus service.
-
-Move configuration folders and files to the `/etc/prometheus` folder created previously:
-
-```command
-cp -r consoles /etc/prometheus
-cp -r console\_libraries /etc/prometheus
-cp prometheus.yml /etc/prometheus/prometheus.yml
-```
-
-Set all the correct ownership permissions for these files in their new location:
-
-```command
-chown -R prometheus:prometheus /etc/prometheus
-chown -R prometheus:prometheus /var/lib/prometheus
-chown prometheus:prometheus /usr/local/bin/prometheus
-chown prometheus:prometheus /usr/local/bin/promtool
-```
+    ```command
+    sudo chown -R prometheus:prometheus /etc/prometheus
+    sudo chown -R prometheus:prometheus /var/lib/prometheus
+    sudo chown prometheus:prometheus /usr/local/bin/prometheus
+    sudo chown prometheus:prometheus /usr/local/bin/promtool
+    ```
 
 ### Create a `systemd` Service File
 
-A `systemd` service configuration file needs to be created to run Prometheus as a service. Create and open this file. This guide assumes the use of the `nano` text editor.
+A `systemd` service configuration file must be created to run Prometheus as a service.
 
-```command
-nano /etc/systemd/system/prometheus.Service
-```
+1.  Create the service file using a command line text editor such as `nano`.
 
-Add the following to the file:
+    ```command
+    sudo nano /etc/systemd/system/prometheus.service
+    ```
 
-```file {title="/etc/systemd/system/prometheus.Service"}
-[Unit]
-Description=Prometheus Service
-Wants=network-online.target
-After=network-online.target
+    Add the following content to the file:
 
-[Service]
-User=prometheus
-Group=prometheus
-Type=simple
-ExecStart=/usr/local/bin/prometheus \
-    --config.file=/etc/prometheus/prometheus.yml \
-    --storage.tsdb.path=/var/lib/prometheus \
-    --web.console.templates=/etc/prometheus/consoles \
-    --web.console.libraries=/etc/prometheus/console\_libraries
+    ```file {title="/etc/systemd/system/prometheus.Service"}
+    [Unit]
+    Description=Prometheus Service
+    Wants=network-online.target
+    After=network-online.target
 
-[Install]
-WantedBy=multi-user.targets
-```
+    [Service]
+    User=prometheus
+    Group=prometheus
+    Type=simple
+    ExecStart=/usr/local/bin/prometheus \
+        --config.file=/etc/prometheus/prometheus.yml \
+        --storage.tsdb.path=/var/lib/prometheus \
+        --web.console.templates=/etc/prometheus/consoles \
+        --web.console.libraries=/etc/prometheus/console_libraries
 
-Save and close the file.
+    [Install]
+    WantedBy=multi-user.target
+    ```
 
-### Reload `systemd` and Start Prometheus
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-In order for the new service configuration file to be accessible, `systemd` needs to be reloaded. Run the following command:
+1.  Reload the `systemd` configuration files to apply the new service file:
 
-```command
-systemctl daemon-reload
-```
+    ```command
+    sudo systemctl daemon-reload
+    ```
 
-Now, Prometheus is available in `systemd` to be enabled and started. Enabling a service in `systemd` means it is started at system boot, but enabling alone does not start the service in this session. It also needs to be started. Run the following commands:
+1.  Run the following `systemctl` commands to start the `flash-app` service and enable it to automatically start after a system reboot:
 
-```command
-systemctl enable prometheus
-systemctl start prometheus
-```
+    ```command
+    sudo systemctl start prometheus
+    sudo systemctl enable prometheus
+    ```
 
-Verify the Prometheus service has started and has been enabled by running this command:
+1.  Enter the following command to verify that Prometheus is running:
 
-```command
-systemctl status prometheus
-```
+    ```command
+    systemctl status prometheus
+    ```
 
-If the previous steps were successful, the output for this command should display `active (running)` in green, like the following:
+    The output should display `active (running)`, confirming a successful setup:
 
-```output
-● prometheus.service - Prometheus Service
-     Loaded: loaded (/etc/systemd/system/prometheus.service; enabled; preset: enabled)
-     Active: active (running) since Wed 2024-09-28 11:39:47 MST; 4s ago
-   Main PID: 454941 (prometheus)
-      Tasks: 6 (limit: 1124)
-     Memory: 15.5M (peak: 15.7M)
-        CPU: 63ms
-```
+    ```output
+    ● prometheus.service - Prometheus Service
+         Loaded: loaded (/etc/systemd/system/prometheus.service; enabled; preset: enabled)
+         Active: active (running) since Thu 2024-12-05 16:11:57 EST; 5s ago
+       Main PID: 1165 (prometheus)
+          Tasks: 9 (limit: 9444)
+         Memory: 16.2M (peak: 16.6M)
+            CPU: 77ms
+         CGroup: /system.slice/prometheus.service
+    ```
 
-Another way to check for a successful installation is to visit `http://{{< placeholder "IP_ADDRESS" >}}:9090` in a web browser, verifying that the Prometheus UI appears. The port and security settings for the Prometheus application can be found in the `/etc/prometheus/prometheus.yml` file.
+    When done, press <kbd>Q</kbd> key to exit the status output and return to the terminal prompt.
 
-![][image2.png]
+1.  Open a web browser and visit port `9090` ( Prometheus's default port) of your instance's IP address:
 
-This guide uses the default values for Prometheus. For production systems, care should be taken to enforce authentication and other security measures.
+    ```command
+    http://{{< placeholder "IP_ADDRESS" >}}:9090
+    ```
 
-## Step 3: Install the Grafana Service
+    The Prometheus UI should appear:
 
-Grafana offers an `apt` repository, reducing the number of steps needed to install and upgrade it on Ubuntu.
+    ![Prometheus UI homepage at port :9090, displaying the query and status options.](prometheus-ui-overview.png)
 
-Add the new apt repository:
+    {{< note >}}
+    Prometheus settings are configured in the `/etc/prometheus/prometheus.yml` file. This guide uses the default values. For production systems, consider enabling authentication and other security measures to protect your metrics.
+    {{< /note >}}
 
-```command
-apt-get install -y software-properties-common
-```
+## Install the Grafana Service
 
-Import and add the public key for the repository:
+Grafana provides an `apt` repository, reducing the number of steps needed to install and update it on Ubuntu.
 
-```command
-wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
-add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
-```
+1.  Install the necessary package to add new repositories:
 
-Update package manifests to acquire the listings for Grafana. Then, install Grafana.
+    ```command
+    sudo apt install software-properties-common -y
+    ```
 
-```command
-apt update
-apt install grafana -y
-```
+1.  Import and add the public key for the Grafana repository:
 
-The installation process includes setting up the `systemd` configuration for Grafana. Enable and start Grafana.
+    ```command
+    wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+    sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
+    ```
 
-```command
-systemctl start grafana-server
-systemctl enable grafana-server
-```
+1.  Update package index and install Grafana:
 
-To check for a successful installation of Grafana, run `systemctl status grafana-server` or visit `http://{{< placeholder "IP_ADDRESS" >}}:3000` in your browser to see the Grafana web UI.
+    ```command
+    sudo apt update
+    sudo apt install grafana -y
+    ```
+
+1.  The installation process already sets up the `systemd` configuration for Grafana. Start and enable the Grafana service:
+
+    ```command
+    sudo systemctl start grafana-server
+    sudo systemctl enable grafana-server
+    ```
+
+1.  Run the following command to verify that Grafana is `active (running)`:
+
+    ```command
+    systemctl status grafana-server
+    ```
+
+    ```output
+    ● grafana-server.service - Grafana instance
+         Loaded: loaded (/usr/lib/systemd/system/grafana-server.service; enabled; preset: enabled)
+         Active: active (running) since Thu 2024-12-05 13:57:10 EST; 8s ago
+           Docs: http://docs.grafana.org
+       Main PID: 3434 (grafana)
+          Tasks: 14 (limit: 9444)
+         Memory: 71.4M (peak: 80.4M)
+            CPU: 2.971s
+         CGroup: /system.slice/grafana-server.service
+    ```
 
 ### Connect Grafana to Prometheus
 
-On the login page of Grafana in your browser, enter the username `admin` with password `admin` for the initial login.
+1.  Open a web browser and visit port `3000` (Grafana's default port) of your instance's IP address to access the Grafana web UI:
 
-![][image3.png]
+    ```command
+    http://{{< placeholder "IP_ADDRESS" >}}:3000
+    ```
 
-The next page prompts you for an updated password. Provide a secure replacement for the weak default.
+1.  Login using the default credentials of `admin` for both the username and password:
 
-![][image4.png]
+    ![Grafana login page showing fields for entering username and password.](grafana-login-page.png)
 
-After logging in, add Prometheus as a data source with the following steps:
+1.  After logging in, you are prompted to enter a secure replacement for the default password:
 
-1.  Expand the **Home** menu. Under **Connections**, click **Add New Connection**.
+    ![Grafana user interface prompting for a new password after the first login.](grafana-new-password-prompt.png)
 
-    ![][image5.png]
+    Now it's time to add Prometheus as a data source. Expand the **Home** menu, navigate to the **Connections** entry, then click **Add new connection**:
 
-2.  Search for and select **Prometheus**.
+    ![Grafana home menu with the option to add a new connection under the Connections section.](grafana-add-new-connection.png)
 
-3.  Click **Add New Data Source**.
+1.  Search for and select **Prometheus**.
 
-    ![][image6.png]
+1.  Click **Add new data source**.
 
-4.  In the **URL** field, enter `http://localhost:9090`.
+    ![Grafana interface with Add New Data Source options, displaying Prometheus configuration fields.](grafana-add-datasource.png)
 
-5.  Click **Save & Test** to confirm the connection.
+1.  In the **URL** field, enter `http://localhost:9090`.
 
-    ![][image7.png]
+1.  Click **Save & Test** to confirm the connection.
 
-Assuming the test succeeded, Grafana is now connected to the Prometheus instance running on the same Linode Compute Instance.
+    ![Grafana test result confirming successful connection to a Prometheus data source.](grafana-connection-test-success.png)
 
-## Step 4: Migrate from AWS CloudWatch to Prometheus and Grafana
+    If the test succeeds, your Grafana installation should now be connected to the Prometheus installation running on the same Linode.
 
-Migrating from AWS CloudWatch to Prometheus and Grafana requires planning to ensure continuity of monitoring capabilities while leveraging the added control over data handling and advanced features of these open-source alternatives.
+## Migrate from AWS CloudWatch to Prometheus and Grafana
 
-As an example of usage, this guide shows the migration for an [example Flask server](https://github.com/nathan-gilbert/simple-ec2-cloudwatch) that collects metrics and logs through AWS CloudWatch.
+Migrating from AWS CloudWatch to Prometheus and Grafana requires careful planning. This is important to ensure continuity of monitoring capabilities while leveraging the added control over data handling and advanced features of these open source alternatives.
+
+This guide demonstrates the migration process using an [example Flask server](https://github.com/nathan-gilbert/simple-ec2-cloudwatch) that collects metrics and logs via AWS CloudWatch.
+
+### Configure Example Flask Server
+
+1.  Change into your user's home directory and use `git` to clone the example Flask server's GitHub repository to your compute instance:
+
+    ```command
+    cd ~
+    git clone https://github.com/nathan-gilbert/simple-ec2-cloudwatch.git
+    ```
+
+1.  Change into the `example-flask-prometheus` folder in the new `simple-ec2-cloudwatch` directory:
+
+    ```command
+    cd simple-ec2-cloudwatch/example-flask-prometheus
+    ```
+
+1.  A virtual environment is required to run `pip` commands in Ubuntu 24.04 LTS. Use the following command to install `python3.12-venv`:
+
+    ```command
+    sudo apt install python3.12-venv
+    ```
+
+1.  Create a virtual environment named `venv` within the `example-flask-prometheus` directory:
+
+    ```command
+    python3 -m venv venv
+    ```
+
+1.  Activate the `venv` virtual environment:
+
+    ```command
+    source venv/bin/activate
+    ```
+
+1.  Use `pip` to install the example Flask servers's dependencies:
+
+    ```command
+    pip install -r requirements.txt
+    ```
+
+1.  Exit the virtual environment:
+
+    ```command
+    deactivate
+    ```
+
+1.  Create a `systemd` service file for the example Flask app:
+
+    ```command
+    sudo nano /etc/systemd/system/flask-app.service
+    ```
+
+    Provide the file with the following content, replacing {{< placeholder "USERNAME" >}} with your username:
+
+    ```file {title="/etc/systemd/system/flask-app.service"}
+    [Unit]
+    Description=Flask Application Service
+    After=network.target
+
+    [Service]
+    User={{< placeholder "USERNAME" >}}
+    WorkingDirectory=/home/{{< placeholder "USERNAME" >}}/simple-ec2-cloudwatch/example-flask-prometheus
+    ExecStart=/home/{{< placeholder "USERNAME" >}}/simple-ec2-cloudwatch/example-flask-prometheus/venv/bin/python /home/{{< placeholder "USERNAME" >}}/simple-ec2-cloudwatch/example-flask-prometheus/app.py
+    Restart=always
+
+    [Install]
+    WantedBy=multi-user.target
+    ```
+
+1.  Reload the `systemd` configuration files to apply the new service file:
+
+    ```command
+    sudo systemctl daemon-reload
+    ```
 
 ### Assess Current Monitoring Requirements
 
-Before migrating to Prometheus and Grafana, understand what metrics and logs are currently being collected by CloudWatch and how they are used.
+Before migrating to Prometheus and Grafana, it's important to understand what metrics and logs are currently being collected by CloudWatch and how they are used.
 
-In the example Flask application, metrics for endpoint latency are sent to CloudWatch using the [`put_metric_data`](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudwatch/client/put_metric_data.html) API found in [Boto3](https://github.com/boto/boto3) (a Python library for interfacing with AWS resources), and applications logs are written to a local file which is ingested into CloudWatch Logs for centralization. The endpoint latency metrics are collected on every endpoint, along with HTTP method details. The application log entries record incoming requests and other application events such as exceptions or warnings.
+The example Flask application collects and sends endpoint latency metrics to CloudWatch using the [`put_metric_data`](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudwatch/client/put_metric_data.html) API from [Boto3](https://github.com/boto/boto3), a Python library for interfacing with AWS resources. Application logs are written to a local file and ingested into CloudWatch Logs for centralization.
 
-The Flask application emits logs as it receives and handles requests at its various endpoints. CloudWatch log events look like this, showing the INFO level logs from the example application:
+Metrics such as endpoint latency are collected for every HTTP request, along with HTTP method details. Application logs record incoming requests, exceptions, and warnings. For example, when the Flask application receives and handles requests, it emits logs like the following:
 
-![][image8.png]
+![Example of CloudWatch logs with INFO level log entries for a Flask application.](cloudwatch-logs-example.png)
 
-CloudWatch also displays metrics graphs. For example, by querying the endpoint latency metrics sent from the Flask application, the graphed metric would look like this:
+CloudWatch also visualizes metrics in graphs. For instance, by querying the endpoint latency metrics sent by the Flask application, a graph might look like this:
 
-![][image9.png]
+![CloudWatch metrics graph displaying endpoint latency data over time.](cloudwatch-metrics-latency-graph.png)
 
-### Export existing CloudWatch logs and metrics
+### Export Existing CloudWatch Logs and Metrics
 
-AWS provides some tools and services to assist with exporting CloudWatch data for historical analysis. As a first step, CloudWatch logs can be exported to an S3 bucket for accessing data outside of AWS. The logs can then be re-ingested into other tools using custom tooling. To export CloudWatch Logs to S3, use the [`create-export-task`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/logs/create-export-task.html) command.
+AWS provides tools for exporting CloudWatch data for analysis or migration. CloudWatch logs can be exported to an S3 bucket, making them accessible outside AWS and enabling them to be re-ingested into other tools.
+
+To export CloudWatch Logs to S3, use the [`create-export-task`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/logs/create-export-task.html) command:
 
 ```command
 aws logs create-export-task \
@@ -343,176 +367,253 @@ aws logs create-export-task \
   --destination-prefix cloudwatch-logs/
 ```
 
+Replace the following placeholders with your specific values:
+
+-   {{< placeholder "LOG_GROUP" >}}: The name of the log group to export.
+-   {{< placeholder "START_TIME" >}} and {{< placeholder "END_TIME" >}}: The time range in milliseconds.
+-   {{< placeholder "S3_BUCKET_NAME" >}}: The name of your S3 bucket.
+
 ### Expose Application Metrics to Prometheus
 
-After any existing metrics have been assessed and exported (if needed), the next step is to modify the application to allow metric scraping by Prometheus, so that it can collect the same metrics that were previously being sent to CloudWatch.
+Prometheus works differently from CloudWatch: instead of *pushing* data like CloudWatch, Prometheus *pulls* metrics from the monitored application. After assessing or exporting metrics as needed, modify the application to enable Prometheus metric scraping so that collects the same metrics previously sent to CloudWatch.
 
-In the original version of the application, metrics are *pushed* to CloudWatch. Prometheus works in the opposite direction; it *pulls* data from the application being monitored.
+The [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_flask_exporter) is a standard library for instrumenting Flask applications to expose Prometheus metrics.
 
-A standard library for integrating Flask applications with Prometheus is the [prometheus\_flask\_exporter library](https://github.com/rycus86/prometheus_flask_exporter), which automatically instruments the application to expose Prometheus metrics. Install this library via `pip` with the following command:
+1.  Open the `app.py` file:
 
-```command
-pip install prometheus-flask-exporter
-```
+    ```command
+    nano app.py
+    ```
 
-Using the library to instrument the Flask application requires the following few lines:
+    Ensure the following lines are present, adding or adjusting them if needed:
 
-```file
-...
+    ```file {title="~/simple-ec2-cloudwatch/example-flask-prometheus/app.py" lang="python" hl_lines="5,6,8,11,12,14,34"}
+    import logging
+    import random
+    import time
 
-from flask import Flask
-from prometheus_flask_exporter import PrometheusMetrics
+    from flask import Flask
+    from prometheus_flask_exporter import PrometheusMetrics
 
-...
+    logging.basicConfig(filename="/home/{{< placeholder "USERNAME" >}}/simple-ec2-cloudwatch/example-flask-prometheus/flask-app.log", level=logging.INFO)
+    logger = logging.getLogger(__name__)
 
-app = Flask(__name__)
-metrics = PrometheusMetrics(app)
-metrics.info("FlaskApp", "Application info", version="1.0.0")
+    app = Flask(__name__)
+    metrics = PrometheusMetrics(app)
 
-...
-```
+    metrics.info("FlaskApp", "Application info", version="1.0.0")
 
-Restart the Flask app with the following command:
 
-```command
-systemctl restart flask-app
-```
+    @app.route("/")
+    def hello_world():
+        logger.info("A request was received at the root URL")
+        return {"message": "Hello, World!"}, 200
 
-By default, `prometheus_flask_exporter` exposes metrics at the `/metrics` endpoint. View the metrics by visiting `http://{{< placeholder "FLASK_APP_IP_ADDRESS" >}}/metrics` in a browser. These metrics include histograms such as:
 
--   `http_request_duration_seconds` (Request latency)
--   `http_requests_total` (Total number of requests)
+    @app.route("/long-request")
+    def long_request():
+        n = random.randint(1, 5)
+        logger.info(
+            f"A request was received at the long-request URL. Slept for {n} seconds"
+        )
+        time.sleep(n)
+        return {"message": f"Long running request with {n=}"}, 200
+
+
+    if __name__ == "__main__":
+        app.run(host="0.0.0.0", port=8080)
+    ```
+
+    These lines use the `prometheus_flask_exporter` library to:
+
+    -   Instrument the Flask app for Prometheus metrics.
+    -   Expose default and application-specific metrics at the `/metrics` endpoint.
+    -   Provide metadata such as version information via `metrics.info`.
+
+1.  Save and close the file, then start and enable the `flask-app` service:
+
+    ```command
+    sudo systemctl start flask-app
+    sudo systemctl enable flask-app
+    ```
+
+1.  Verify that the `flask-app` service is `active (running)`:
+
+    ```command
+    systemctl status flask-app
+    ```
+
+    ```output
+    ● flask-app.service - Flask Application Service
+         Loaded: loaded (/etc/systemd/system/flask-app.service; enabled; preset: enabled)
+         Active: active (running) since Thu 2024-12-05 17:26:18 EST; 1min 31s ago
+       Main PID: 4413 (python)
+          Tasks: 1 (limit: 9444)
+         Memory: 20.3M (peak: 20.3M)
+            CPU: 196ms
+         CGroup: /system.slice/flask-app.service
+    ```
+
+1.  Make sure the Flask app is accessible by issuing the following cURL command:
+
+    ```command
+    curl http://{{< placeholder "IP_ADDRESS" >}}:8080
+    ```
+
+    You should receive the following response:
+
+    ```output
+    {"message": "Hello, World!"}
+    ```
+
+1.  To view the metrics, open a web browser and visit the following URL:
+
+    ```command
+    http://{{< placeholder "FLASK_APP_IP_ADDRESS" >}}:8080/metrics
+    ```
+
+    The metrics shown include `http_request_duration_seconds` (request latency) and `http_requests_total` (total number of requests).
 
 ### Configure Prometheus to Ingest Application Metrics
 
-Next, modify the Prometheus configuration on the Linode Compute Instance so that it knows to ingest these metrics. Edit `/etc/prometheus/prometheus.yml` to include the new scrape target.
+1.  Modify the Prometheus configuration at `/etc/prometheus/prometheus.yml` to include the Flask application as a scrape target:
 
-```file
-scrape\_configs:
-  - job_name: 'flask_app'
-    static\_configs:
-      - targets: ['{{< placeholder "FLASK_APP_IP_ADDRESS" >}}:80']
-```
+    ```command
+    sudo nano /etc/prometheus/prometheus.yml
+    ```
 
-After editing the configuration file, restart Prometheus with this command:
+    Append the following content to the `scrap_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the actual IP address of your `monitoring-server` instance:
 
-```command
-systemctl restart prometheus
-```
+    ```file {title="/etc/prometheus/prometheus.yml"}
+      - job_name: 'flask_app'
+        static_configs:
+          - targets: ['{{< placeholder "FLASK_APP_IP_ADDRESS" >}}:8080']
+    ```
 
-To verify, navigate to the Prometheus UI (`http://{{< placeholder "INSTANCE_IP_ADDRESS" >}}:9090`) in a browser. Click the **Status** tab, then click **Targets**. The Flask application service should now appear in the list of targets, indicating a successful scrape by Prometheus of the Flask application data.
+1.  Save the file and restart Prometheus to apply the changes:
 
-![][image10.png]
+    ```command
+    sudo systemctl restart prometheus
+    ```
+
+1.  To verify that Prometheus is successfully scraping the Flask app, navigate to the Prometheus UI in a web browser:
+
+    ```command
+    http://{{< placeholder "INSTANCE_IP_ADDRESS" >}}:9090
+    ```
+
+1.  Click the **Status** tab, then select **Targets**. The Flask application service should now appear in the list of targets with a status of `up`, indicating a successful scrape by Prometheus of the Flask application data.
+
+    ![Prometheus UI showing the status and targets of monitored services.](prometheus-ui-targets.png)
 
 ### Create a Grafana Dashboard with Application Metrics
 
-Grafana serves as the visualization layer, providing an interface for creating dashboards from the Prometheus metrics. In a web browser, visit the Grafana UI (`http://{{< placeholder "INSTANCE_IP_ADDRESS" >}}:3000`). Navigate to the **Dashboards** page.
+Grafana serves as the visualization layer, providing an interface for creating dashboards from the Prometheus metrics.
 
-![][image11.png]
+1.  Open a web browser and visit the following URL to access the Grafana UI:
 
-Create a new dashboard in Grafana by clicking **Create dashboard**.
+    ```command
+    http://{{< placeholder "INSTANCE_IP_ADDRESS" >}}:3000
+    ```
 
-![][image12.png]
+1.  Navigate to the **Dashboards** page:
 
-Next, click **Add visualization**.
+    ![Grafana home menu with the Dashboards section selected.](grafana-home-menu-dashboards.png)
 
-![][image13.png]
+1.  Create a new dashboard in Grafana by clicking **Create dashboard**:
 
-In the resulting dialog, select the **prometheus** data source.
+    ![Grafana Dashboards page with an option to create a new dashboard.](grafana-dashboards-overview.png)
 
-![][image14.png]
+1.  Next, click **Add visualization**:
 
-After selecting the data source, select the appropriate Prometheus metrics and customize the display.
+    ![Grafana interface showing the Add Visualization dialog for creating a new graph.](grafana-add-visualization.png)
 
-![][image15.png]
+1.  In the resulting dialog, select the **prometheus** data source:
 
-To duplicate the CloudWatch metrics around latency for the Flask application, click on the **Code** tab in the right-hand side of the panel editor. Then, enter the following equation:
+    ![Grafana data source selection dialog with Prometheus highlighted.](grafana-prometheus-datasource.png)
 
-```command
-flask_http_request_duration_seconds_sum{method="GET",path="/",status="200"} /
-flask_http_request_duration_seconds_count{method="GET",path="/",status="200"}
-```
+1.  To duplicate the CloudWatch metrics around latency for the Flask application, first click on the **Code** tab in the right-hand side of the panel editor:
 
-After entering the formula, click **Run queries**. This should update the chart with data pulled from Prometheus.
+    ![Grafana panel editor with the Code tab selected for entering a PromQL query.](grafana-panel-editor-query-code.png)
 
-![][image16.png]
+1.  Then, input the following PromQL query:
 
-This graph represents the same information as the one in CloudWatch, detailing the average latency over time for a particular endpoint. Notice that, by default, Prometheus offers additional detail on the labels, providing the endpoint and status codes in the legend.
+    ```command
+    flask_http_request_duration_seconds_sum{method="GET",path="/",status="200"} /
+    flask_http_request_duration_seconds_count{method="GET",path="/",status="200"}
+    ```
+
+1.  After entering the formula, click **Run queries** to execute the PromQL query. This should update the chart with data pulled from Prometheus:
+
+    ![Grafana dashboard displaying a latency graph for a Flask application, based on Prometheus data.](grafana-latency-dashboard.png)
+
+    This visualization replicates CloudWatch's endpoint latency graph, detailing the average latency over time for a particular endpoint. Additionally, Prometheus also provides the endpoint and status codes by default.
 
 ## Additional Considerations and Concerns
 
-When migrating from AWS CloudWatch to Prometheus and Grafana on Linode, several key considerations and potential concerns should be addressed to ensure a smooth transition.
+When migrating from AWS CloudWatch to Prometheus and Grafana, it's important to address several key considerations to ensure a smooth and effective transition.
 
 ### Cost Management
 
-CloudWatch and AWS services can incur costs based on the number of API requests, log volume, and data retention. As monitoring scales, these costs will increase. Migrating to Prometheus and Grafana offers a potential for cost savings since Prometheus is an open-source solution that does not charge for API usage or log storage.
+CloudWatch incurs costs based on the number of API requests, log volume, and data retention. As monitoring scales, these costs increase. In contrast, Prometheus is an open source tool with no direct charges for usage. Therefore, migrating to Prometheus and Grafana offers a potential for cost savings.
 
-However, infrastructure costs with the new setup are still a consideration. Running Prometheus and Grafana requires provisioning compute and storage resources, with expenses for maintaining these nodes and handling network traffic. Additionally, because Prometheus is designed for short-term storage by default, setting up long-term storage often requires integrating with another service, which may add to costs.
+However, infrastructure costs for running Prometheus and Grafana are still a consideration. Running Prometheus and Grafana requires provisioning compute and storage resources, with expenses for maintaining these nodes and handling network traffic. Additionally, because Prometheus is designed for short-term data storage, setting up long-term storage solution may also increase costs.
 
-**Recommendation**: Estimate infrastructure costs for Prometheus and Grafana on Linode by assessing current CloudWatch data volume and access usage. Utilize object storage or other efficient long-term storage mechanisms to minimize costs.
+**Recommendation**:
+
+-   Estimate infrastructure costs for Prometheus and Grafana by assessing current CloudWatch data volume and access usage.
+-   Utilize object storage or other efficient long-term storage mechanisms to minimize costs.
 
 ### Data Consistency and Accuracy
 
-CloudWatch aggregates metrics over intervals, whereas Prometheus provides raw, fine-grained data with a high-resolution time series. This allows for detailed analysis and precision when tracking metrics.
+CloudWatch aggregates metrics over set intervals, whereas Prometheus collects high-resolution raw metrics. Therefore, migrating from CloudWatch to Prometheus raises potential concerns about data consistency and accuracy during and after the transition.
 
-Since CloudWatch and Prometheus measure and log data differently, migrating from CloudWatch to Prometheus raises potential concerns about data consistency and accuracy during and after the transition.
+**Recommendation**:
 
-**Recommendation**: During the migration, ensure that Prometheus scrape intervals are tuned appropriately to capture the necessary level of detail, without overwhelming storage or compute capacities. Additionally, validate that key metrics in CloudWatch map correctly to Prometheus metrics, with the appropriate time resolutions.
+-   Tune Prometheus scrape intervals to capture the necessary level of detail without overwhelming storage or compute capacities.
+-   Validate that CloudWatch metrics correctly map to Prometheus metrics, with the appropriate time resolutions.
 
 ### CloudWatch Aggregated Data Versus Prometheus Raw Data
 
-Aggregated data from CloudWatch offers a high-level view of system health and application performance and is helpful for monitoring broader trends. The raw, fine-grained data from Prometheus enables detailed analyses and granular troubleshooting.
+Aggregated data from CloudWatch offers a high-level view of system health and application performance, which is helpful for monitoring broader trends. However, the raw data from Prometheus enables detailed analyses and granular troubleshooting. Both approaches have their use cases, and it's important to understand which is most appropriate for you.
 
-When migrating, understand which level of data is appropriate for a given use case. Although Prometheus can collect raw data, consider whether the aggregation that CloudWatch provides is more useful, and how to replicate that with Grafana dashboards or Prometheus queries.
+While Prometheus can collect raw data, consider whether CloudWatch's aggregation is more useful, and how to replicate that with Grafana dashboards or Prometheus queries.
 
-**Recommendation**: Leverage Grafana's capabilities to build dashboards that display aggregated data where necessary, while still maintaining the ability to look into detailed, raw metrics for in-depth analysis. It is considered a best practice to find a balance between fine-grained data analysis and overall system-level insights.
+**Recommendation**:
+
+-   Create Grafana dashboards that aggregate Prometheus data for overall system-level insights.
+-   Leverage Prometheus's detailed, raw metrics for fine-grained data analysis.
 
 ### Alert System Migration
 
 CloudWatch’s integrated alerting system is tightly coupled with AWS services and allows for alerts based on metric thresholds, log events, and more. Prometheus offers its own alerting system, [**Alertmanager**](https://prometheus.io/docs/alerting/latest/alertmanager/), which can handle alerts based on Prometheus query results.
 
-Migrating an alerting setup requires translating existing CloudWatch alarms into Prometheus alert rules. Consider the thresholds and conditions set in CloudWatch and how they translate to the query-based alerts in Prometheus.
+Migrating an alerting setup requires translating existing CloudWatch alarms into Prometheus alert rules. Consider how the thresholds and conditions set in CloudWatch translate to query-based alerts in Prometheus.
 
-**Recommendation**: During migration, audit all CloudWatch alerts and replicate them using Prometheus Alertmanager. It may be necessary to refine alert thresholds based on the type of data collected by Prometheus. Additionally, integrate Alertmanager with any existing notification systems (email, Slack, etc.) to maintain consistency in how teams are alerted to critical events.
+**Recommendation**:
+
+-   Audit all CloudWatch alerts and replicate them using Prometheus Alertmanager.
+-   Refine alert thresholds based on the type of data collected by Prometheus.
+-   Integrate Alertmanager with any existing notification systems (e.g. email, Slack, etc.) to maintain consistency in how teams are alerted to critical events.
 
 ### Security and Access Controls
 
-CloudWatch integrates with AWS Identity and Access Management (IAM) for role-based access control (RBAC). This can simplify the management of who can view, edit, or delete logs and metrics. Prometheus and Grafana require manual configuration of security and access controls.
+CloudWatch integrates with AWS Identity and Access Management (IAM) for role-based access control (RBAC). This can help simplify the management of who can view, edit, or delete logs and metrics. Meanwhile, Prometheus and Grafana require manual configuration of security and access controls.
 
-Securing Prometheus and Grafana involves setting up user authentication (such as by OAuth, LDAP, or another method) and ensuring metrics and dashboards are only accessible to authorized personnel. To maintain security, data in transit should be encrypted using TLS.
+Securing Prometheus and Grafana involves setting up user authentication (e.g. OAuth, LDAP, etc.) and ensuring metrics and dashboards are only accessible to authorized personnel. To maintain security, data in transit should be encrypted using TLS.
 
-**Recommendation**: Establish a strong security baseline by implementing secure access controls from the start. Configure Grafana with a well-defined RBAC policy and integrate it with an authentication system, such as OAuth or LDAP. Enable TLS for Prometheus to secure data in transit, and ensure that any sensitive metrics are restricted from unauthorized users.
+**Recommendation**:
+
+-   Implement secure access controls from the start.
+-   Configure Grafana with a well-defined RBAC policy and integrate it with an authentication system, such as OAuth or LDAP.
+-   Enable TLS for Prometheus to secure data in transit, and restrict access to sensitive metrics.
 
 ### Separate Log and Metric Responsibilities
 
-Because Prometheus is primarily a metrics-based monitoring solution, it does not have built-in capabilities for handling logs in the way CloudWatch does. Therefore, when migrating, it's important to decouple log management needs from metric collection.
+Because Prometheus is primarily a metrics-based monitoring solution, it does not have built-in capabilities for handling logs in the way CloudWatch does. Therefore, it's important to decouple log management needs from metric collection when migrating.
 
-**Recommendation**: Introduce a specialized log aggregation solution alongside Prometheus and Grafana for collecting, aggregating, and querying logs.
+**Recommendation**:
 
--   [**Grafana Loki**](https://grafana.com/oss/loki/) is designed to integrate with Grafana. It provides log querying capabilities within Grafana's existing interface, giving a unified view of metrics and logs in a single dashboard.
--   [**Fluentd**](https://www.fluentd.org/) is a log aggregator that can forward logs to multiple destinations, including object storage for long-term retention, and can work with both Loki and ELK.
-
----
-
-The resources below are provided to help you become familiar with migrating AWS CloudWatch to Prometheus and Grafana deployed to a Linode instance.
-
-## Resources
-
--   AWS CloudWatch
-    -   [Documentation](https://docs.aws.amazon.com/cloudwatch/)
--   Linode
-    -   [Create a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance)
-    -   [API Documentation](https://techdocs.akamai.com/linode-api/reference/api)
-    -   [CLI Documentation](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli)
-    -   [How to Install and Configure Prometheus and Grafana on Ubuntu](https://www.linode.com/docs/guides/how-to-install-prometheus-and-grafana-on-ubuntu/)
-    -   [Prometheus and Grafana Marketplace App](https://www.linode.com/marketplace/apps/linode/prometheus-grafana/)
--   Prometheus
-    -   [Releases](https://github.com/prometheus/prometheus/releases)
-    -   [Documentation](https://prometheus.io/docs/introduction/overview/)
-    -   [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/)
--   Grafana
-    -   [Installation Documentation](https://grafana.com/docs/grafana/latest/setup-grafana/installation/)
-    -   [Dashboard Documentation](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/)
--   Log Aggregation
-    -   [Grafana Loki](https://github.com/grafana/loki)
-    -   [Fluentd](https://www.fluentd.org/)
+-   Introduce a specialized log aggregation solution alongside Prometheus and Grafana for collecting, aggregating, and querying logs:
+    -   [**Grafana Loki**](https://grafana.com/oss/loki/) is designed to integrate with Grafana. It provides log querying capabilities within Grafana's existing interface, giving a unified view of metrics and logs in a single dashboard.
+    -   [**Fluentd**](https://www.fluentd.org/) is a log aggregator that can forward logs to multiple destinations, including object storage for long-term retention. It works with both Loki and ELK.
