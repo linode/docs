@@ -39,7 +39,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-{{% content "marketplace-custom-domains-field-shortguide" %}}
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
 - **Zabbix Server Name:** Local hostname for Zabbix server. Defaults to `zabbix-server`
 

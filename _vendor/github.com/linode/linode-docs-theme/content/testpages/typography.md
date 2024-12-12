@@ -3,6 +3,24 @@ title: Testing
 description: This is a test page used in both manual and automatic tests. Do not delete. It will not be listed anywhere.
 ---
 
+## Note shortcode
+
+{{% note type="primary" %}}
+This is a primary note.
+{{% /note %}}
+
+{{% note type="secondary" %}}
+This is a secondary note.
+{{% /note %}}
+
+{{% note type="alert" %}}
+This is an alert.
+{{% /note %}}
+
+{{% note type="warning" %}}
+This is a warning.
+{{% /note %}}
+
 ## Keyboard Shortcuts
 
 Example: Use <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy text.
@@ -183,17 +201,28 @@ sudo systemctl restart apache2
 sudo systemctl restart apache2
 ```
 
-## File Shortcode
+## File Shortcode / code fence
 
 ### As a regular block
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Ut suscipit nec orci vel sagittis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce accumsan fringilla urna et maximus. Aliquam erat volutpat. Nam malesuada faucibus massa ac ultrices. Sed finibus diam at dolor maximus porttitor.
+
+#### Fence
 
 ```file {title="/home/minecraft/run.sh"}
 #!/bin/sh
 
 java -Xms1024M -Xmx1536M -jar minecraft_server.1.13.jar -o true
 ```
+
+#### Shortcode
+
+{{< file title="/home/minecraft/run.sh" >}}
+#!/bin/sh
+
+java -Xms1024M -Xmx1536M -jar minecraft_server.1.13.jar -o true
+{{< /file >}}
+
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 

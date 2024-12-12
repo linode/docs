@@ -55,11 +55,11 @@ The IP address of the default DNS server is found in the properties of the netwo
 
 ### Linux
 
-In Linux, the location of the desired DNS server depends on the values set in the resolver configuration file located at `/etc/resolve.conf`.
+In Linux, the location of the desired DNS server depends on the values set in the resolver configuration file located at `/etc/resolv.conf`.
 
 To find these values via the command line, enter:
 
-    cat /etc/resolve.conf
+    cat /etc/resolv.conf
 
 To find these values via the GUI in Ubuntu 22.04 LTS:
 

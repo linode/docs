@@ -25,7 +25,7 @@
 
         <div class="o-layout__module c-identity">
           <a class="c-identity__link" href="https://www.linode.com" target="_self" itemprop="url">
-            <img width="113.84" height="50" alt="Akamai Logo" class="c-identity__image" src="https://assets.linode.com/akamai-logo.svg" itemprop="image" data-no-lazy="1">
+            <img width="113.84" height="50" alt="Akamai Logo" class="c-identity__image" src="https://assets.linode.com/p2/akamai-logo.svg" itemprop="image" data-no-lazy="1">
           </a>
         </div>
 
@@ -34,7 +34,12 @@
         </div>
 
         <div class="o-layout__module c-consent">
-          <div id="teconsent"></div>
+          <style>
+            #teconsent[consent] { display: block !important; }
+            #teconsent:not([consent]) + a { display: block !important; };
+          </style>
+          <div id="teconsent" style="display:none;"></div>
+          <a href="#open-consent-prefs" class="ot-sdk-show-settings" style="display:none;">Cookie Preferences</a>
         </div>
 
         <div class="o-layout__module c-social --mobile">
@@ -82,34 +87,28 @@
 
         <div class="o-layout__module">
           <nav class="o-menu">
-            <h4 class="o-menu__heading">Why Choose Us</h4>
+            <h4 class="o-menu__heading">Explore</h4>
             <ul class="o-menu__list --d0">
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/choosing-linode/"><span class="o-menu__title">Why Choose Us</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/reduce-cloud-costs/"><span class="o-menu__title">Lower Costs</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/global-infrastructure/"><span class="o-menu__title">Global Infrastructure</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/low-latency-applications/"><span class="o-menu__title">Lower Latency</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/cloud-simplified/"><span class="o-menu__title">Cloud Simplified</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/cloud-portability/"><span class="o-menu__title">Cloud Portability</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/predictable-pricing/"><span class="o-menu__title">Predictable Pricing</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/cloud-global-scale/"><span class="o-menu__title">Global Scale</span></a>
+              </li>
+              <li class="o-menu__item">
+                <a class="o-menu__link" href="https://www.linode.com/global-infrastructure/"><span class="o-menu__title">Our Platform</span></a>
               </li>
               <li class="o-menu__item">
                 <a class="o-menu__link" href="https://www.linode.com/support-experience/"><span class="o-menu__title">Support Experience</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/free-bundled-services/"><span class="o-menu__title">Free Bundled Services</span></a>
-              </li>
-              <li class="o-menu__item">
                 <a class="o-menu__link" href="https://www.linode.com/series/craft-of-code/"><span class="o-menu__title">Customer Stories</span></a>
-              </li>
-              <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/approach/"><span class="o-menu__title">Our Approach</span></a>
-              </li>
-              <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/what-is-cloud-computing/"><span class="o-menu__title">What is Cloud Computing?</span></a>
               </li>
             </ul>
           </nav>

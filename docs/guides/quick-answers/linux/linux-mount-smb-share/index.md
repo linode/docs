@@ -161,7 +161,7 @@ You don’t want to have to type in your credentials every time you access a sha
 1.  Set ownership of the credentials file to the current user by running the following command:
 
     ```command
-    sudo chown <User Name>:<Credentials Filename>
+    sudo chown <User Name[:Group Name]> <Credentials Filename>
     ```
 
     Replace `<User Name>` with your username and `<Credentials Filename>` with the name of your credentials file.

@@ -9,8 +9,8 @@ weglot_api_key = "wg_3b3ef29c81aa81292c64d1368ee318969"
 # For development/staging, see the config dir.
 adobe_launch_script = "https://assets.adobedtm.com/fcfd3580c848/f9e7661907ee/launch-2fb69de42220.min.js"
 
-# Trustarc Domain used in poduction
-trustarc_domain = "linode.com"
+# OneTrust Domain used in production.
+onetrust_domain_script = "01922358-0e47-73fa-9452-fa124177d6d6"
 
 [params.search_config2]
 
@@ -177,7 +177,7 @@ path = "github.com/gohugoio/hugo-mod-jslibs/turbo/v8"
 [security]
   enableInlineShortcodes = false
   [security.exec]
-    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$']
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^git$']
     osEnv = ['(?i)^(.*)$']
 
   [security.funcs]
