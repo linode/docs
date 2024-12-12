@@ -12,6 +12,17 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 This guide describes the process of migrating a single volume from Azure Disk Storage to Linode Block Storage using the rsync file synchronization utility. This guide does not cover migrating operating system disks from Azure Disk Storage. Instead, it focuses on migrating data disks.
 
+## Block Storage Migration Workflow Diagram
+
+![Azure to Linode Block Storage Migration Workflow Diagram](azure-block-storage-migration-workflow.svg?diagram-description-id=azure-linode-bs-migration)
+
+1. rsync command is run on Linode instance and connects to Azure VM.
+
+1. Azure VM sends data on Azure data disk to Block Storage Volume attached to Linode instance via established rsync connection.
+
+    1. Egress costs for the migrated data are measured when the data leaves the Azure platform. These costs are billed by Azure.
+{#azure-linode-bs-migration .large-diagram}
+
 ## Linode Block Storage vs. Azure Disk Storage
 
 When you first create an Azure Virtual Machine, Azure Disk Storage creates a managed disk for the operating system. One or more managed disks can also be created with the Azure Disk Storage service for temporary files and for persistent data disks.
@@ -37,7 +48,18 @@ Filesystem      Size  Used Avail Use% Mounted on
 /dev/sdc1        20G  4.4G   16G  23% /datadrive
 ```
 
-TODO: advise on bandwidth testing
+Bandwidth for the transfer can vary according to different factors, including:
+- Outbound bandwidth limits for your Azure VM
+- Geographic distance between the Azure VM and the Linode instance.
+- Disk operation limits
+
+When planning your migration, you may consider performing a bandwidth test between the two locations first. Then, use the observed bandwidth from the test to calculate the estimated migration time for the data disk.
+
+Utilities like [iperf](https://en.wikipedia.org/wiki/Iperf) can be useful for performing this type of bandwidth measurement. Alternatively, you could create a test file on the Azure VM, migrate it by following the [instructions](#block-storage-migration-instructions) in this guide, and then view the bandwidth reported by rsync's output. A command that can be used to generate a sample 1GB test file is:
+
+```command {title="SSH session with Azure VM"}
+sudo dd if=/dev/zero of=/datadrive/dummyfile bs=1M count=1024
+```
 
 ### Migration Egress Costs
 
@@ -50,10 +72,6 @@ Inbound traffic sent to your Linode instance and Block Storage volume have no fe
 Files should be migrated over an encrypted connection. Rsync supports using SSH as its transport protocol, which is encrypted.
 
 Your Azure and Linode firewall settings should be configured to allow SSH traffic between the two instances. After the migration is performed, you may wish to close access to SSH between the Linode instance and Azure virtual machine.
-
-## Block Storage Migration Workflow Diagram
-
-TODO: fill in diagram
 
 ## Block Storage Migration Instructions
 
