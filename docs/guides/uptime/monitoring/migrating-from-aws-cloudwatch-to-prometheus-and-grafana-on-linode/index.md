@@ -502,7 +502,7 @@ The [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_
     sudo nano /etc/prometheus/prometheus.yml
     ```
 
-    Append the following content to the `scrap_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the actual IP address of your `monitoring-server` instance:
+    Append the following content to the `scrap_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the actual IP address of your `monitoring-server` instance, or in this case, `localhost`:
 
     ```file {title="/etc/prometheus/prometheus.yml"}
       - job_name: 'flask_app'

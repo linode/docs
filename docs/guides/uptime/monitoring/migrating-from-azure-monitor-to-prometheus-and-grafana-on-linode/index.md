@@ -530,7 +530,7 @@ The [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_
     sudo nano /etc/prometheus/prometheus.yml
     ```
 
-    Append the following content to the `scrap_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the actual IP address of your `monitoring-server` instance:
+    Append the following content to the `scrap_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the actual IP address of your `monitoring-server` instance, or in this case, `localhost`:
 
     ```file {title="/etc/prometheus/prometheus.yml"}
       - job_name: 'flask_app'
@@ -667,13 +667,3 @@ Azure Monitor provides a unified interface for managing both metrics and logs. B
 -   Introduce a specialized log aggregation solution alongside Prometheus and Grafana for collecting, aggregating, and querying logs:
     -   [**Grafana Loki**](https://grafana.com/grafana/loki/) is designed to integrate with Grafana. It provides log querying capabilities within Grafana's existing interface, giving a unified view of metrics and logs in a single dashboard.
     -   [**Fluentd**](https://www.fluentd.org/) is a log aggregator that can forward logs to multiple destinations, including object storage for long-term retention. It works with both Loki and ELK.
-
-## Resources
-
-The resources below are provided to help you become familiar with migrating Azure Monitor to Prometheus and Grafana deployed to a Linode instance.
-
-* Linode:
-  * [Create a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance)
-  * [API Documentation](https://techdocs.akamai.com/linode-api/reference/api)
-  * [CLI Documentation](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli)
-  * [How to Install and Configure Prometheus and Grafana on Ubuntu](https://www.linode.com/docs/guides/how-to-install-prometheus-and-grafana-on-ubuntu/)
