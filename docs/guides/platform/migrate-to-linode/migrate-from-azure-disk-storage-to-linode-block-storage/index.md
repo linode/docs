@@ -271,7 +271,7 @@ total size is 10.49M  speedup is 91,180.52 (DRY RUN)
 
 ### Cleanup after Migration
 
-After the migration is complete, you may determine that the Azure VM and Linode instance no logner need to communicate. You can close traffic between these servers by doing the following:
+After the migration is complete, you may determine that the Azure VM and Linode instance no longer need to communicate. You can close traffic between these servers by doing the following:
 
 - Remove the firewall access granted in the [Configure Firewalls](#configure-firewalls) section
 
