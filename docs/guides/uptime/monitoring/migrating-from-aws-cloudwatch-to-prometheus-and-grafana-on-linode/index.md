@@ -1,7 +1,7 @@
 ---
 slug: migrating-from-aws-cloudwatch-to-prometheus-and-grafana-on-linode
 title: "Migrating From Aws CloudWatch to Prometheus and Grafana on Linode"
-description: "Migrating from AWS CloudWatch to Prometheus and Grafana? Learn how to configure metrics, build custom dashboards, and optimize monitoring with cost-effective, open source tools on Linode."
+description: "Migrating from AWS CloudWatch to Prometheus and Grafana? Learn how to configure metrics, build custom dashboards, and optimize monitoring with cost-effective, open source tools."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2024-11-19

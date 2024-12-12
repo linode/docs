@@ -1,7 +1,7 @@
 ---
 slug: migrating-from-azure-monitor-to-prometheus-and-grafana-on-linode
 title: "Migrating From Azure Monitor to Prometheus and Grafana on Linode"
-description: "Two to three sentences describing your guide."
+description: "Migrating from Azure Metrics to Prometheus and Grafana? Learn how to configure metrics, build custom dashboards, and optimize monitoring with cost-effective, open source tools."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2024-11-19
@@ -278,7 +278,7 @@ Grafana provides an `apt` repository, reducing the number of steps needed to ins
 
     If the test succeeds, your Grafana installation should now be connected to the Prometheus installation running on the same Linode.
 
-## Step 4: Migrate from Azure Monitor to Prometheus and Grafana
+## Migrate from Azure Monitor to Prometheus and Grafana
 
 Migrating from Azure Monitor to Prometheus and Grafana offers several advantages. These include increased control data storage and handling, cost reduction, and enhanced monitoring capabilities across multi-cloud or hybrid environments. However, the transition requires careful planning and a clear understanding of the differences between these tools:
 
@@ -369,7 +369,7 @@ Applications monitored by Azure Monitor might use the following tools:
     sudo systemctl daemon-reload
     ```
 
-### Assess current monitoring requirements
+### Assess Current Monitoring Requirements
 
 Begin the migration process by auditing the current Azure Monitor configuration. Identify the following:
 
@@ -599,13 +599,13 @@ Grafana serves as the visualization layer, providing an interface for creating d
 
     This visualization replicates Azure Monitor's latency metrics, detailing the average latency over time for a specific endpoint. Prometheus further enhances this by providing default labels, such as method, path, and status codes, for greater granularity in analysis.
 
-## Other Considerations and Concerns
+## Additional Considerations and Concerns
 
 When migrating from Azure Monitor to Prometheus and Grafana, it's important to address several key considerations to ensure a smooth and effective transition.
 
 ### Cost Management
 
-Migrating to Prometheus and Grafana eliminates the recurring licensing costs associated with Azure Monitor. However, infrastructure costs for running Prometheus and Grafana are still a consideration. Running Prometheus and Grafana requires provisioning compute and storage resources, with expenses for maintenance and handling network traffic. Additionally, because Prometheus is designed for short-term data storage, setting up long-term storage solution may also increase costs.
+Migrating to Prometheus and Grafana eliminates the recurring licensing costs associated with Azure Monitor. However, infrastructure costs for running Prometheus and Grafana are still a consideration. Running Prometheus and Grafana requires provisioning compute and storage resources, with expenses for maintenance and handling network traffic. Additionally, because Prometheus is designed for short-term data storage, setting up a long-term storage solution may also increase costs.
 
 **Recommendation**:
 
