@@ -362,7 +362,7 @@
           <li>
             <a
               href="https://techdocs.akamai.com/cloud-computing/docs/"
-              class="text-normal text-blue-700 hover:text-blue-500"
+              class="text-normal text-blue-700 hover:text-blue-600"
               >Product docs</a
             >
           </li>
@@ -370,7 +370,7 @@
             <a
               href="https://techdocs.akamai.com/linode-api/reference/api"
               target="_blank"
-              class="text-normal text-blue-700 hover:text-blue-500"
+              class="text-normal text-blue-700 hover:text-blue-600"
               >API reference</a
             >
           </li>
@@ -381,18 +381,14 @@
 {{ end }}
 
 {{ define "home/cards" }}
-  <div class="{{ .class }} max-w-screen-xl">
+  <div class="{{ .class }} max-w-screen-xl" x-data="{ showMore: false }">
     <h2 class="text-3 md:text-3xl">{{ .title }}</h2>
-    {{ $numItemsNarrowViewport := 2 }}
-    <div class="grid grid-cols-2 xl:grid-cols-3 gap-4 mt-6 min-h-40">
+    <div
+      class="grid grid-cols-2 xl:grid-cols-3 grid-rows-[1fr] auto-rows-[0] overflow-hidden gap-x-4 gap-y-0 mt-6 min-h-40"
+      :class="{'auto-rows-fr gap-y-4': showMore}">
       {{ range $i, $e := .cards }}
-        {{ $hideOnNarrow := ge $i $numItemsNarrowViewport }}
         <a
-          class="col-span-1 a--block not-prose cursor-pointer flex-col group border p-4 rounded-md hover:shadow-md border-gray-300 m-0 {{ if $hideOnNarrow }}
-            hidden xl:flex
-          {{ else }}
-            flex
-          {{ end }}"
+          class="col-span-1 a--block not-prose cursor-pointer flex flex-col group border p-4 rounded-md hover:shadow-md border-gray-300 m-0"
           href="{{ .href }}">
           <h3
             class="text-2xl tracking-tight pt-0 pb-2 my-0 text-titlecolor group-hover:text-gray-600">
@@ -405,35 +401,68 @@
       {{ end }}
     </div>
     {{ if .more_text }}
-      <p class="mt-4">
-        <a
-          href=" {{ .more_href }}"
-          class="text-brand underline font-semibold hover:text-blue-400"
-          >Explore more {{ .more_text }}</a
-        >
-      </p>
+      <div class="mt-4 flex justify-between">
+        <div>
+          {{ with .whats_new_page }}
+            <a
+              href="{{ .RelPermalink }}"
+              class="text-brand underline font-semibold hover:text-blue-600 leading-loose"
+              >{{ .LinkTitle }}</a
+            >
+            <br />
+          {{ end }}
+          <a
+            href=" {{ .more_href }}"
+            class="text-brand underline font-semibold hover:text-blue-600"
+            >{{ .more_text }}</a
+          >
+        </div>
+        {{ if gt (len .cards) 3 }}
+          <span class="rounded-sm">
+            <button
+              type="button"
+              aria-label="open"
+              @click="showMore = !showMore"
+              class="inline-flex items-center w-full px-4 py-2 md:px-2 md:py-1 text-brand underline font-semibold hover:text-blue-600">
+              <span x-text="showMore ? 'See less' : 'See more'"></span>
+              <svg class="fill-current text-textcolor -mr-1 ml-2 h-4 w-4">
+                <use
+                  :href="showMore ? '#icon--arrow-up' : '#icon--arrow-down'"
+                  href="#icon--arrow-down"></use>
+              </svg>
+            </button>
+          </span>
+        {{ end }}
+      </div>
     {{ end }}
   </div>
 {{ end }}
 
 {{ define "home/cards-from-section" }}
   {{ $pages := slice }}
+  {{ $numPages := cond (eq .page.Section "guides") 9 3 }}
   {{ if eq .page.Section "reference-architecture" }}
     {{ $pages = .page.Sections }}
   {{ else }}
     {{ $pages = .page.RegularPagesRecursive }}
   {{ end }}
-  {{ $featured := $pages | first 3 }}
+  {{ $featured := $pages | first $numPages }}
   {{ $cards := slice }}
   {{ range $featured }}
     {{ $cards = $cards | append (dict "title" .LinkTitle "text" (or .Params.description .Summary) "href" .RelPermalink) }}
   {{ end }}
-  {{ $moreText :=  .page.Title }}
+  {{ $moreText :=  printf "Explore all %s" .page.Title }}
+  {{ $moreHref :=  .page.RelPermalink }}
+  {{ $whatsNewPage := "" }}
+  {{ if eq .page.Section "guides" }}
+    {{ $whatsNewPage = site.GetPage "whatsnew" }}
+  {{ end }}
   {{ template "home/cards" dict
     "title" .page.Title
     "cards" $cards
     "class" .class
     "more_text" $moreText
     "more_href" .page.RelPermalink
+    "whats_new_page" $whatsNewPage
   }}
 {{ end }}

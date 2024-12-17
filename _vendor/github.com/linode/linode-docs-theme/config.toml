@@ -10,7 +10,24 @@ weglot_api_key = "wg_3b3ef29c81aa81292c64d1368ee318969"
 adobe_launch_script = "https://assets.adobedtm.com/fcfd3580c848/f9e7661907ee/launch-2fb69de42220.min.js"
 
 # OneTrust Domain used in production.
+onetrust_script_src = "https://www.linode.com/ns/ot/202410.1.0/prod/scripttemplates/otSDKStub.js"
 onetrust_domain_script = "01922358-0e47-73fa-9452-fa124177d6d6"
+
+# Configuration for the contextual menu over content items that
+# allows the user to send specific feedback/issue about the content
+# to GitHub.
+# We currently pass attribute 'context' and 'file' prefilled from the front-end.
+[params.file_issue_button]
+enable = true
+repo_url = "https://github.com/bep/githubissuestest"
+[[params.file_issue_button.issue_templates]]
+# The id maps to a GitHub issue template in the repository.
+id = "issue-template-1.yml"
+# The title is what gets shown in the contextual menu.
+title = "Report a problem"
+[[params.file_issue_button.issue_templates]]
+id = "issue-template-2.yml"
+title = "Report something else"
 
 [params.search_config2]
 
