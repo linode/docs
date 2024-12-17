@@ -1,19 +1,19 @@
 ---
 slug: configure-failover-for-haproxy-on-akamai
-title: "Configure Failover for Haproxy on Akamai"
+title: "Configure Failover for HAProxy on Akamai"
 description: "Learn how to set up HAProxy load balancing with IP sharing, FRRouting, and BGP failover in this step-by-step guide."
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
-published: 2024-09-18
+published: 2024-12-17
 keywords: ['haproxy','load balancing','failover','ip sharing','frrouting','bgp','high availability']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-[HAProxy](https://www.haproxy.org/) is an HTTP and TCP gateway server that functions as a reverse proxy between a public-facing IP address and backend servers. It manages incoming traffic using frontend rules and distributes it across backend servers, providing load balancing and repairing HTTP requests when needed.
+[HAProxy](https://www.haproxy.org/) is an HTTP and TCP gateway server that functions as a reverse proxy between a public-facing IP address and a set of backend servers. It manages incoming traffic using frontend rules and distributes it across the backend servers, providing load balancing and repairing HTTP requests when needed.
 
-However, HAProxy introduces a single point of failure. If the HAProxy server goes down, client connections to backend services are interrupted. This guide demonstrates how to configure HAProxy with a shared IP address and [FRRouting](https://frrouting.org/) to manage failover. The IP Sharing setup enables two HAProxy instances (primary and backup) to operate under the same IP address. In this setup, one instance is always active and the other stands ready to take over in case of failure. FRRouting, configured with the Border Gateway Protocol (BGP), facilitates this automatic failover, maintaining service continuity.
+However, HAProxy introduces a single point of failure. If the HAProxy server goes down, client connections to backend services are interrupted. This guide demonstrates how to configure HAProxy with a shared IP address and [FRRouting](https://frrouting.org/) to manage failover. The IP Sharing setup enables two HAProxy instances (primary and backup) to operate under the same IP address. In this setup, the primary instance is always active and the backup instance stands ready to take over in case of failure of the primary instance. FRRouting, configured with the Border Gateway Protocol (*BGP*), facilitates this automatic failover and maintains service continuity.
 
-This guide uses the free and open source (FOSS) version of HAProxy to create and demonstrate basic HAProxy failover pairs. With the FOSS version of HAProxy, the backup server doesn’t retain the connection states of the primary instance. Therefore, when the backup becomes active, clients may need to reconnect to re-establish sessions. In contrast, the enterprise edition offers state-saving and restoration capabilities, along with other features that restore a failover with configuration data.
+This guide uses the free and open source (*FOSS*) version of HAProxy to create and demonstrate basic HAProxy failover pairs. With the FOSS version of HAProxy, the backup server doesn't retain the connection states of the primary instance. Therefore, when the backup becomes active, clients may need to reconnect to re-establish sessions. In contrast, the enterprise edition offers state-saving and restoration capabilities, along with other features that restore a failover with configuration data.
 
 ## Before You Begin
 
@@ -23,9 +23,9 @@ This guide uses the free and open source (FOSS) version of HAProxy to create and
 
 1.  Disable Network Helper on both HAProxy instances by following the *Individual Compute Instance setting* section of our [Network Helper](https://techdocs.akamai.com/cloud-computing/docs/automatically-configure-networking#individual-compute-instance-setting) guide.
 
-1.  Add an IP address to the first HAProxy instance by following the steps in the *Adding an IP Address* section of [Managing IP Addresses on a Compute Instance](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address).
+1.  Add an IP address to the first HAProxy instance by following the steps in the *Adding an IP Address* section of [Managing IP Addresses on a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#adding-an-ip-address).
 
-1.  Link the second HAProxy instance to the new IP address on the first instance by following the *Configuring IP Sharing* section of the guide linked above.
+1.  Link the second HAProxy instance to the new IP address on the first instance by following the *Configuring IP Sharing* section of [Managing IP Addresses on a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#configuring-ip-sharing).
 
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -58,13 +58,13 @@ Ubuntu 24.04 LTS uses `netplan` to manage network settings.
           match:
             name: lo
           addresses:
-            - {{< placeholder "SHARED_IP_ADDRESS" >}}/{{< placeholder "PREFIX" >}}
+            - YOUR_SHARED_IP_ADDRESS/YOUR_PREFIX
     ```
 
     Be sure to make substitute your actual values for the following placeholders:
 
-    -   {{< placeholder "SHARED_IP_ADDRESS" >}}: The shared IP address you set for HAProxy failover.
-    -   {{< placeholder "PREFIX" >}}: Use `32` for IPv4 addresses. For IPv6, use either `56` or `64`, depending on the range you're sharing.
+    -   {{< placeholder "YOUR_SHARED_IP_ADDRESS" >}}: The shared IP address you set for HAProxy failover.
+    -   {{< placeholder "YOUR_PREFIX" >}}: Use `32` for IPv4 addresses. For IPv6, use either `56` or `64`, depending on the range you're sharing.
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
@@ -87,15 +87,15 @@ CentOS Stream 9 uses NetworkManager to configure network settings.
 
     ```file {title="/etc/sysconfig/network-scripts/ifcfg-lo:1"}
     DEVICE=lo:1
-    IPADDR={{< placeholder "SHARED_IP_ADDRESS" >}}
-    NETMASK={{< placeholder "NETMASK" >}}
+    IPADDR=YOUR_SHARED_IP_ADDRESS
+    NETMASK=YOUR_NETMASK
     ONBOOT=yes
     ```
 
     Be sure to make substitute your actual values for the following placeholders:
 
-    -   {{< placeholder "SHARED_IP_ADDRESS" >}}: The shared IP address you set for HAProxy failover.
-    -   {{< placeholder "NETMASK" >}}: Use `255.255.255.255` for IPv4 addresses.
+    -   {{< placeholder "YOUR_SHARED_IP_ADDRESS" >}}: The shared IP address you set for HAProxy failover.
+    -   {{< placeholder "YOUR_NETMASK" >}}: Use `255.255.255.255` for IPv4 addresses.
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
@@ -117,15 +117,15 @@ openSUSE Leap 15.6 uses `wicked` to manage network configurations.
     Append the shared IP address settings to the end of the file:
 
     ```file {title="/etc/sysconfig/network/ifcfg-lo"}
-    IPADDR={{< placeholder "SHARED_IP_ADDRESS" >}}
-    NETMASK={{< placeholder "NETMASK" >}}
+    IPADDR=YOUR_SHARED_IP_ADDRESS
+    NETMASK=YOUR_NETMASK
     LABEL=1
     ```
 
     Be sure to make substitute your actual values for the following placeholders:
 
-    -   {{< placeholder "SHARED_IP_ADDRESS" >}}: The shared IP address you set for HAProxy failover.
-    -   {{< placeholder "NETMASK" >}}: Use `255.255.255.255` for IPv4 addresses.
+    -   {{< placeholder "YOUR_SHARED_IP_ADDRESS" >}}: The shared IP address you set for HAProxy failover.
+    -   {{< placeholder "YOUR_NETMASK" >}}: Use `255.255.255.255` for IPv4 addresses.
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
@@ -157,9 +157,9 @@ In this example failover configuration, the primary server does not automaticall
 
 ## Install FRRouting
 
-With IP Sharing properly configured, you're ready to install FRRouting.
+With IP Sharing properly configured, you're ready to install FRRouting. Follow these instructions on both the primary and backup HAProxy servers:
 
-1.  Follow the instructions for your distribution to install FRRouting on both the primary and backup HAProxy servers:
+1.  Install FRRouting:
 
     {{< tabs >}}
     {{< tab "Ubuntu 24.04 LTS" >}}
@@ -199,7 +199,7 @@ With IP Sharing properly configured, you're ready to install FRRouting.
 
 ## Configure FRRouting
 
-FRRouting must be configured on both the primary and backup HAProxy instances.
+FRRouting must be configured on both the primary and backup HAProxy instances. Follow these instructions on both instances:
 
 1.  Open the FRRouting `/etc/frr/daemons` file to enable the BGP daemon:
 
@@ -226,7 +226,7 @@ FRRouting must be configured on both the primary and backup HAProxy instances.
     Append the following content to the end of the file to configure BGP settings:
 
     ```file {title="/etc/frr/frr.conf" hl_lines="1,11-14,16,17"}
-    hostname {{< placeholder "HOSTNAME" >}}
+    hostname {{< placeholder "YOUR_HOSTNAME" >}}
 
     router bgp 65001
     no bgp ebgp-requires-policy
@@ -236,13 +236,13 @@ FRRouting must be configured on both the primary and backup HAProxy instances.
     neighbor RS remote-as external
     neighbor RS ebgp-multihop 10
     neighbor RS capability extended-nexthop
-    neighbor 2600:3c0f:{{< placeholder "DC_ID" >}}:34::1 peer-group RS
-    neighbor 2600:3c0f:{{< placeholder "DC_ID" >}}:34::2 peer-group RS
-    neighbor 2600:3c0f:{{< placeholder "DC_ID" >}}:34::3 peer-group RS
-    neighbor 2600:3c0f:{{< placeholder "DC_ID" >}}:34::4 peer-group RS
+    neighbor 2600:3c0f:{{< placeholder "YOUR_DC_ID" >}}:34::1 peer-group RS
+    neighbor 2600:3c0f:{{< placeholder "YOUR_DC_ID" >}}:34::2 peer-group RS
+    neighbor 2600:3c0f:{{< placeholder "YOUR_DC_ID" >}}:34::3 peer-group RS
+    neighbor 2600:3c0f:{{< placeholder "YOUR_DC_ID" >}}:34::4 peer-group RS
 
-    address-family {{< placeholder "PROTOCOL" >}} unicast
-      network {{< placeholder "SHARED_IP_ADDRESS" >}}/{{< placeholder "PREFIX" >}} route-map {{< placeholder "ROLE" >}}
+    address-family {{< placeholder "YOUR_PROTOCOL" >}} unicast
+      network {{< placeholder "YOUR_SHARED_IP_ADDRESS" >}}/{{< placeholder "YOUR_PREFIX" >}} route-map {{< placeholder "YOUR_ROLE" >}}
       redistribute static
     exit-address-family
 
@@ -256,12 +256,12 @@ FRRouting must be configured on both the primary and backup HAProxy instances.
 
     Substitute the following placeholders for your actual information:
 
-    -   {{< placeholder "HOSTNAME" >}}: Your instance's hostname.
-    -   {{< placeholder "DC_ID" >}}: The data center ID where your instances are located. Reference our [IP Sharing Availability table](https://techdocs.akamai.com/cloud-computing/docs/configure-failover-on-a-compute-instance#ip-sharing-availability) to determine the ID for your data center.
-    -   {{< placeholder "PROTOCOL" >}}: Either `ipv4` for IPv4 or `ipv6` for IPv6.
-    -   {{< placeholder "SHARED_IP_ADDRESS" >}}: Your shared IP address.
-    -   {{< placeholder "PREFIX" >}}: Use `32` for IPv4 addresses. For IPv6, use either `56` or `64`, depending on the range you're sharing.
-    -   {{< placeholder "ROLE" >}}: Set as `primary` on the primary instance and `secondary` on the backup instance.
+    -   {{< placeholder "YOUR_HOSTNAME" >}}: Your instance's hostname.
+    -   {{< placeholder "YOUR_DC_ID" >}}: The data center ID where your instances are located. Reference our [IP Sharing Availability table](https://techdocs.akamai.com/cloud-computing/docs/configure-failover-on-a-compute-instance#ip-sharing-availability) to determine the ID for your data center.
+    -   {{< placeholder "YOUR_PROTOCOL" >}}: Either `ipv4` for IPv4 or `ipv6` for IPv6.
+    -   {{< placeholder "YOUR_SHARED_IP_ADDRESS" >}}: Your shared IP address.
+    -   {{< placeholder "YOUR_PREFIX" >}}: Use `32` for IPv4 addresses. For IPv6, use either `56` or `64`, depending on the range you're sharing.
+    -   {{< placeholder "YOUR_ROLE" >}}: Set as `primary` on the primary instance and `secondary` on the backup instance.
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
@@ -273,7 +273,7 @@ FRRouting must be configured on both the primary and backup HAProxy instances.
 
 ## Test Failover
 
-FRRouting on the backup server monitors the primary server’s status using a "ping-like" test. If the primary does not respond, the backup automatically takes over, providing continuous access to backend services.
+FRRouting on the backup server monitors the primary server's status using a "ping-like" test. If the primary does not respond, the backup automatically takes over, providing continuous access to backend services.
 
 To test failover, follow these steps:
 
