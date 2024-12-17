@@ -42,6 +42,7 @@
 {{ $cacheWarmerUrls := $algoliaData.urls }}
 {{ $params := (dict
   "search_config" site.Params.search_config2
+  "file_issue_button" site.Params.file_issue_button
   "weglot_api_key" site.Params.weglot_api_key
   "page_title_suffix" site.Params.page_title_suffix
   "search_cachewarmer_urls" $cacheWarmerUrls

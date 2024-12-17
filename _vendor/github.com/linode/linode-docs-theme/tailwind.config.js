@@ -150,8 +150,8 @@ module.exports = {
 					maxWidth: '860px',
 
 					'@screen tablet': {
-						paddingLeft: '1.5rem',
-						paddingRight: '1.5rem',
+						paddingLeft: '2rem',
+						paddingRight: '2rem',
 					},
 
 					'@screen lg': {

@@ -5,9 +5,14 @@
 {{/* Scripts to be executed as soon as possible. */}}
 {{- $js := resources.Get "js/body-start/index.js" -}}
 {{ partial "helpers/script-src.html" (dict "js" $js "nodefer" true "params" (dict "is_production" (ne hugo.Environment "development") ) ) }}
+{{ $path := "" }}
+{{ if .File }}
+  {{ $path = .Params.path | default .File.Path }}
+{{ end }}
 
 {{ $pageInfo := dict
   "href" .RelPermalink
+  "path" $path
   "permalink" .Permalink
   "kind" .Kind
   "section" .Section
