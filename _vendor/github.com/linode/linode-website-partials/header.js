@@ -126,7 +126,10 @@
       if (!$slot) return;
       let $feature = generateFeature(item);
       if (!$feature) return;
-      $slot.replaceChildren($feature);
+      while ($slot.firstChild) {
+        $slot.removeChild($slot.firstChild);
+      }
+      $slot.appendChild($feature);
     });
   };
   var generateImage = function(data) {
@@ -240,5 +243,15 @@
   }
   document.addEventListener("turbolinks:render", function(event) {
     mount3();
+  });
+
+  // src/js/Main/consent.js
+  window.addEventListener("click", (e) => {
+    if (e.target.matches('a[href*="#open-consent-prefs"]') || e.target.matches("span#open-consent-prefs")) {
+      e.preventDefault();
+      if (typeof window.OneTrust !== "undefined") {
+        window.OneTrust.ToggleInfoDisplay();
+      }
+    }
   });
 })();

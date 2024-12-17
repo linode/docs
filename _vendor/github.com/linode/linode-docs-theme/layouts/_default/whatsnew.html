@@ -9,13 +9,34 @@
   <div class="mt-8 max-w-2xl">
     {{ .Summary }}
   </div>
-  {{ $deprecated := where site.RegularPages "Params.deprecated" true }}
-  {{ $pages := where site.RegularPages "Section" "in" (slice "guides" "products" ) | complement $deprecated }}
 
-  {{ $pages = $pages.ByLastmod.Reverse | first 20 }}
-  <div class="mt-8 grid mobile:grid-cols-1 grid-cols-2 lg:grid-cols-4 gap-4">
-    {{ range $pages }}
-      {{ partial "components/card.html" (dict "page" .) }}
-    {{ end }}
-  </div>
+  {{ $guides := site.GetPage "guides" }}
+  {{ $pages := $guides.RegularPagesRecursive }}
+
+  {{ $pages = $pages.ByLastmod.Reverse }}
+  {{ range $pages.GroupByLastmod "January 2006" | first 3 }}
+    <h2 class="mt-8">{{ .Key }}</h2>
+    <div class="mt-4 grid grid-cols-2 xl:grid-cols-3 gap-4 min-h-40">
+      {{ range .Pages }}
+        <a
+          class="flex col-span-1 a--block not-prose cursor-pointer flex-col group border p-4 rounded-md hover:shadow-md border-gray-300 m-0"
+          href="{{ .RelPermalink }}">
+          <h3
+            class="text-2xl tracking-tight pt-0 pb-2 my-0 text-titlecolor group-hover:text-gray-600">
+            {{ .LinkTitle }}
+          </h3>
+          <p class="text-titlecolor leading-6 text-sm md:text-base">
+            {{ (or .Params.description .Summary)| truncate 160 | safeHTML }}
+          </p>
+        </a>
+      {{ end }}
+    </div>
+  {{ end }}
+  <p class="mt-6">
+    <a
+      href=" {{ $guides.RelPermalink }}"
+      class="text-brand underline font-semibold hover:text-blue-600"
+      >View All Cloud Guides & Tutorials</a
+    >
+  </p>
 {{ end }}

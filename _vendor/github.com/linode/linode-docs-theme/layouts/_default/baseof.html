@@ -161,7 +161,7 @@
           {{ if eq $mainLayout "content_toc" }}
             <section
               id="main__content"
-              class="main__content mb-20 container mx-auto max-w-content xl:max-w-6xl">
+              class="main__content relative mb-20 container mx-auto max-w-content xl:max-w-6xl">
               <div class="mt-4 md:mt-6 main__breadcrumbs">
                 {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" . "wrap" true) }}
               </div>
@@ -183,6 +183,9 @@
                   </div>
                 </div>
               </div>
+              {{ if site.Params.file_issue_button.enable }}
+                {{ partial "sections/navigation/file-issue-button.html" . }}
+              {{ end }}
             </section>
           {{ else }}
             {{ block "main-section" . }}
