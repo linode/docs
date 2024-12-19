@@ -149,6 +149,9 @@ explorer_regular_pages_start_level = 4 # Not relevant, set it high to avoid trig
 hits_per_page = 4
 # filtering_facets = [{ name = "category", title = "Doc Category" }]
 
+[params.file_issue_button]
+enable = false
+
 [minify]
 disableSVG = false
 

@@ -18,6 +18,7 @@
     {{- range (.Scratch.Get "tabsContent") -}}
       <div
         x-ref="tabs-content-{{ .ordinal }}"
+        class="file-issue-button-content"
         data-testid="tabs-content-{{ .ordinal }}">
         {{ .content }}
       </div>

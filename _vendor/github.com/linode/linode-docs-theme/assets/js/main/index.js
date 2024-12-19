@@ -31,6 +31,7 @@ import { newSearchFiltersController, newSearchInputController, newSearchStore, g
 import { newHomeController } from './sections/home/home';
 import { newSectionsController } from './sections/sections/index';
 import { newSVGViewerController } from './navigation/svg-viewer';
+import { newFileIssueButton } from './navigation/file-issue-button';
 
 // Set up the search configuration (as defined in config.toml).
 const searchConfig = getSearchConfig(params);
@@ -101,6 +102,9 @@ const searchConfig = getSearchConfig(params);
 		Alpine.data('lncPromoCodes', () => newPromoCodesController(params.is_test));
 		Alpine.data('lncFetch', fetchController);
 		Alpine.data('lnvSVGViewer', newSVGViewerController);
+		if (params.file_issue_button && params.file_issue_button.enable) {
+			Alpine.data('lncFileIssueButton', () => newFileIssueButton(params.file_issue_button));
+		}
 
 		// Page controllers.
 		Alpine.data('lncHome', (staticData) => {
