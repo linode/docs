@@ -1,279 +1,645 @@
 ---
 slug: deploying-rabbitmq-on-kubernetes-with-linode-lke
-title: "Deploying Rabbitmq on Kubernetes With Linode Lke"
-description: "Two to three sentences describing your guide."
-og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
+title: "Deploying RabbitMQ on Kubernetes With Linode LKE"
+description: "Learn how to deploy RabbitMQ on Linode Kubernetes Engine (LKE) using the RabbitMQ Cluster Kubernetes Operator in this step-by-step guide."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2024-12-21
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['rabbitmq','kubernetes','linode','lke','cluster','operator','messaging','deployment','virtual-host','rabbitmqadmin','exchange','queue','rabbitmq-on-kubernetes','rabbitmq-cluster-operator','deploying-rabbitmq-lke','linode-kubernetes-engine','rabbitmq-management-gui','messaging-topology-operator','rabbitmq-user-management','rabbitmq-queue-binding','rabbitmq-fanout-exchange','test-messaging-rabbitmq']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[Production RabbitMQ Operator Configuration](https://github.com/rabbitmq/cluster-operator/tree/main/docs/examples/production-ready)'
+- '[RabbitMQ Message Topology Operator](https://www.rabbitmq.com/kubernetes/operator/install-topology-operator)'
+- '[Configuration Documentation](https://www.rabbitmq.com/docs/configure)'
+- '[Deployment Checklist](https://www.rabbitmq.com/docs/production-checklist)'
+- '[Plugins](https://www.rabbitmq.com/docs/plugins)'
+- '[Management CLI](https://www.rabbitmq.com/docs/management-cli)'
+- '[RabbitMQ Linode Marketplace App](https://www.linode.com/marketplace/apps/linode/rabbitmq/)'
 ---
 
-This guide walks through how to deploy RabbitMQ with Linode Kubernetes Engine (LKE) using the [RabbitMQ Kubernetes Operators](https://www.rabbitmq.com/kubernetes/operator/operator-overview).
+The RabbitMQ maintainers advocate *against* manually handling the installation of RabbitMQ on Kubernetes. Instead, they [recommend](https://www.rabbitmq.com/blog/2020/08/10/deploying-rabbitmq-to-kubernetes-whats-involved) using RabbitMQ's Kubernetes tools to streamline its management on Kubernetes:
 
-## Prerequisites
+-   [**Cluster Kubernetes Operator**](https://www.rabbitmq.com/kubernetes/operator/operator-overview#cluster-operator): Automates the provisioning, management, and operation of RabbitMQ clusters on Kubernetes.
+-   [**Messaging Topology Operator**](https://www.rabbitmq.com/kubernetes/operator/operator-overview#topology-operator): Manages messaging topologies within a RabbitMQ cluster deployed using the Cluster Kubernetes Operator.
 
-To follow along in this walkthrough, you’ll need the following:
+These operators extend Kubernetes management capabilities and leverage the Kubernetes API to provide native integration. This guide focuses specifically on the RabbitMQ Cluster Kubernetes Operator for deploying RabbitMQ, utilizing its built-in tooling for management and configuration. The Cluster Kubernetes Operator offers the following key features:
 
-* A [Linode account](https://www.linode.com/cfe)  
-* A [Linode API token (personal access token)](https://www.linode.com/docs/products/platform/accounts/guides/manage-api-tokens/)  
-* The [Linode CLI](https://www.linode.com/docs/products/tools/cli/guides/install/) installed and configured  
-* [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) installed and configured
+-   Provisioning of single-node and multi-node RabbitMQ clusters
+-   Reconciliation to align the deployed clusters with its desired declarative state
+-   Monitoring of RabbitMQ clusters
+-   Scalability
+-   Automated upgrades
 
-## Step 1: Provision a Kubernetes Cluster
+This guide provides step-by-step instructions for deploying RabbitMQ on Linode Kubernetes Engine (LKE) using the [RabbitMQ Kubernetes Operator](https://www.rabbitmq.com/kubernetes/operator/operator-overview).
+
+## Before You Begin
+
+1.  Read our [Getting Started with Linode](https://www.linode.com/docs/products/platform/get-started/) guide, and create a Linode account if you do not already have one.
+
+1.  Create a personal access token using the instructions in our [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
+
+1.  Follow the steps in the *Install kubectl* section of our [Getting started with LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine) guide to install `kubectl`.
+
+1.  Install the Linode CLI using the instructions in our [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
+
+1.  Ensure that `jq`, a lightweight command line JSON processor, is installed:
+
+    ```command
+    sudo apt install jq
+    ```
+
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+{{< /note >}}
+
+## Provision a Kubernetes Cluster
 
 While there are several ways to create a Kubernetes cluster on Linode, this guide uses the [Linode CLI](https://github.com/linode/linode-cli) to provision resources.
 
-1. Use the Linode CLI (linode) to see available Kubernetes versions:
+1.  Use the Linode CLI (`linode`) to see available Kubernetes versions:
+
+    ```command
+    linode lke versions-list
+    ```
+
+    ```output
+    ┌──────┐
+    │ id   │
+    ├──────┤
+    │ 1.31 │
+    ├──────┤
+    │ 1.30 │
+    └──────┘
+    ```
+
+    It is generally recommended to provision the latest version of Kubernetes unless specific requirements dictate otherwise.
+
+1.  Use the following command to list available Linode plans, including plan ID, pricing, and performance details. For more detailed pricing information, see [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/):
+
+    ```command
+    linode linodes types
+    ```
+
+1.  The examples in this guide use the **g6-standard-2** Linode, which features two CPU cores and four GB of memory. Run the following command to display detailed information for this Linode plan in JSON format:
+
+    ```command
+    linode linodes types --label "Linode 4GB" --json --pretty
+    ```
+
+    ```output
+    [
+      {
+        "addons": {...},
+        "class": "standard",
+        "disk": 81920,
+        "gpus": 0,
+        "id": "g6-standard-2",
+        "label": "Linode 4GB",
+        "memory": 4096,
+        "network_out": 4000,
+        "price": {
+          "hourly": 0.036,
+          "monthly": 24.0
+        },
+        "region_prices": [...],
+        "successor": null,
+        "transfer": 4000,
+        "vcpus": 2
+      }
+    ]
+    ```
+
+1.  Use the following command to view available regions:
+
+    ```command
+    linode regions list
+    ```
+
+1.  With a Kubernetes version and Linode type selected, use the following command to create a cluster named `rabbitmq-cluster` in the `us-mia` (Miami, FL) region with three nodes and auto-scaling. Replace `rabbitmq-cluster` and `us-mia` with a cluster label and region of your choosing, respectively:
+
+    ```command
+    linode lke cluster-create \
+      --label rabbitmq-cluster \
+      --k8s_version 1.31 \
+      --region us-mia \
+      --node_pools '[{
+        "type": "g6-standard-2",
+        "count": 3,
+        "autoscaler": {
+          "enabled": true,
+          "min": 3,
+          "max": 8
+      }
+    }]'
+    ```
+
+    Once your cluster is successfully created, you should see output similar to the following:
+
+    ```output
+    Using default values: {}; use the --no-defaults flag to disable defaults
+    ┌────────┬──────────────────┬────────┬─────────────┬─────────────────────────────────┬──────┐
+    │ id     │ label            │ region │ k8s_version │ control_plane.high_availability │ tier │
+    ├────────┼──────────────────┼────────┼─────────────┼─────────────────────────────────┼──────┤
+    │ 301629 │ rabbitmq-cluster │ us-mia │ 1.31        │ False                           │      │
+    └────────┴──────────────────┴────────┴─────────────┴─────────────────────────────────┴──────┘
+    ```
+
+### Access the Kubernetes Cluster
+
+To access your cluster, fetch the cluster credentials in the form of a `kubeconfig` file.
+
+1.  Use the following command to retrieve the cluster’s ID:
+
+    ```command
+    CLUSTER_ID=$(linode lke clusters-list --json | \
+        jq -r \
+          '.[] | select(.label == "rabbitmq-cluster") | .id')
+    ```
+
+1.  Create a hidden `.kube` folder in your user’s home directory:
 
-| $ linode lke versions-list  ┌───────┐ │ id      │ ├───────┤ │ 1.31    │ ├───────┤ │ 1.30    │ └───────┘ |
-| :---- |
+    ```command
+    mkdir ~/.kube
+    ```
 
-It’s generally recommended to provision the latest version of Kubernetes unless specific requirements dictate otherwise.
+1.  Retrieve the `kubeconfig` file and save it to `~/.kube/lke-config`:
 
-2. Use the following command to list available Linode plans, including plan ID, pricing, and performance details. For more detailed pricing information, see [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/):
+    ```command
+    linode lke kubeconfig-view --json "$CLUSTER_ID" | \
+        jq -r '.[0].kubeconfig' | \
+        base64 --decode > ~/.kube/lke-config
+    ```
 
-| $ linode linodes types |
-| :---- |
+1.  Once you have the `kubeconfig` file saved, access your cluster by using `kubectl` and specifying the file:
 
-3. The examples in this guide use the **g6-standard-2** Linode, which features two CPU cores and 4 GB of memory. Run the following command to display detailed information in JSON for this Linode plan:
+    ```command
+    kubectl get no --kubeconfig ~/.kube/lke-config
+    ```
 
-| $ linode linodes types \--label "Linode 4GB" \--json \--pretty\[  {    "addons": {...},     "class": "standard",    "disk": 81920,    "gpus": 0,    "id": "g6-standard-2",    "label": "Linode 4GB",    "memory": 4096,    "network\_out": 4000,    "price": {      "hourly": 0.036,      "monthly": 24.0    },    "region\_prices": \[...\],    "successor": null,    "transfer": 4000,    "vcpus": 2  }\] |
-| :---- |
+    ```output
+    NAME                            STATUS   ROLES    AGE     VERSION
+    lke295620-486011-09172e6e0000   Ready    <none>   6d21h   v1.31.0
+    lke295620-486011-389bbe940000   Ready    <none>   6d21h   v1.31.0
+    lke295620-486011-4045e9410000   Ready    <none>   6d21h   v1.31.0
+    ```
 
-4. View available regions with the regions list command:
+    {{< note >}}
+    Optionally, to avoid specifying ``--kubeconfig ~/.kube/lke-config` with every `kubectl` command, you can set an environment variable for your current terminal window session:
 
-| $ linode regions list |
-| :---- |
+    ```command
+    export KUBECONFIG=~/.kube/lke-config
+    ```
 
-5. With a Kubernetes version and Linode type selected, use the following command to create a cluster named rabbitmq-cluster in the us-mia (Miami, FL) region with three nodes and auto-scaling. Replace rabbitmq-cluster and us-mia with a cluster label and region of your choosing, respectively:
+    Then, you can run:
 
-| $ linode lke cluster-create \\  \--label rabbitmq-cluster \\  \--k8s\_version 1.31 \\  \--region us-mia \\  \--node\_pools '\[{    "type": "g6-standard-2",    "count": 3,    "autoscaler": {      "enabled": true,      "min": 3,      "max": 8    }  }\]' |
-| :---- |
+    ```command
+    kubectl get no
+    ```
+    {{< /note >}}
 
-Once your cluster is successfully created, you should see output similar to the following:
+## Set Up RabbitMQ on LKE
 
-| Using default values: {}; use the \--no-defaults flag to disable defaults\+------------------+--------+-------------+ |      label       | region | k8s\_version | \+------------------+--------+-------------+ | rabbitmq-cluster | us-mia |        1.31 | \+------------------+--------+-------------+ |
-| :---- |
+The following steps assume your LKE cluster is provisioned and your `KUBECONFIG` environment variable is set to `~/.kube/lke-config`.
 
-## Step 2: Access the Kubernetes Cluster
+1.  Install the Cluster Kubernetes Operator by applying the operator manifest:
 
-To access your cluster, fetch the cluster credentials in the form of a kubeconfig file.
+    ```command
+    kubectl apply -f \
+    https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml
+    ```
 
-1. Use the following command to retrieve the cluster’s ID:
+    You should see output similar to the following, indicating that various resources have been created:
 
-| $ CLUSTER\_ID=$(linode lke clusters-list \--json | \\    jq \-r \\       '.\[\] | select(.label \== "rabbitmq-cluster") | .id') |
-| :---- |
+    ```output
+    namespace/rabbitmq-system created
+    customresourcedefinition.apiextensions.k8s.io/rabbitmqclusters.rabbitmq.com created
+    serviceaccount/rabbitmq-cluster-operator created
+    role.rbac.authorization.k8s.io/rabbitmq-cluster-leader-election-role created
+    clusterrole.rbac.authorization.k8s.io/rabbitmq-cluster-operator-role created
+    clusterrole.rbac.authorization.k8s.io/rabbitmq-cluster-service-binding-role created
+    rolebinding.rbac.authorization.k8s.io/rabbitmq-cluster-leader-election-rolebinding created
+    clusterrolebinding.rbac.authorization.k8s.io/rabbitmq-cluster-operator-rolebinding created
+    deployment.apps/rabbitmq-cluster-operator created
+    ```
 
-2. Create a hidden .kube folder in your user’s home directory:
+1.  Verify that the operator was successfully installed by listing all resources in the `rabbitmq-system` namespace:
 
-| $ mkdir \~/.kube |
-| :---- |
+    ```command
+    kubectl get all -n rabbitmq-system
+    ```
 
-3. Retrieve the kubeconfig file and save it to \~/.kube/lke-config:
+    You should see output similar to this:
 
-| $ linode lke kubeconfig-view \--json "$CLUSTER\_ID" | \\     jq \-r '.\[0\].kubeconfig' | \\     base64 \--decode \> \~/.kube/lke-config |
-| :---- |
+    ```output
+    NAME                                             READY   STATUS    RESTARTS   AGE
+    pod/rabbitmq-cluster-operator-7cb8bd8f85-lv8fg   1/1     Running   0          29s
 
-4. Once you have the kubeconfig file saved, access your cluster by using kubectl and specifying the file:
+    NAME                                        READY   UP-TO-DATE   AVAILABLE   AGE
+    deployment.apps/rabbitmq-cluster-operator   1/1     1            1           30s
 
-| $ kubectl get no \--kubeconfig \~/.kube/lke-config  NAME                            STATUS   ROLES    AGE   VERSION lke292179-482071-0f646b210000   Ready    \<none\>   33s   v1.31.0 lke292179-482071-119038ec0000   Ready    \<none\>   38s   v1.31.0 lke292179-482071-354f1bb10000   Ready    \<none\>   35s   v1.31.0 |
-| :---- |
+    NAME                                                   DESIRED   CURRENT   READY   AGE
+    replicaset.apps/rabbitmq-cluster-operator-7cb8bd8f85   1         1         1       30s
+    ```
 
-| Note: Optionally, to avoid specifying \--kubeconfig \~/.kube/lke-config with every kubectl command, you can set an environment variable for your current terminal window session. $ export KUBECONFIG=\~/.kube/lke-config  Then run: $ kubectl get no  |
-| :---- |
+1.  To install RabbitMQ on your cluster, you need a configuration file specifying the declarative state of RabbitMQ cluster. Use a command line text editor, such as `nano`, to create a file named `rabbitmq-basic.yaml` in your user's home directory:
 
-## Step 3: Setup RabbitMQ on LKE
+    ```command
+    nano ~/rabbitmq-basic.yaml
+    ```
 
-[Guidance](https://www.rabbitmq.com/blog/2020/08/10/deploying-rabbitmq-to-kubernetes-whats-involved) from the RabbitMQ maintainers recommends *not* handling the installation of RabbitMQ on Kubernetes directly, but instead using the following RabbitMQ tools to streamline its management on Kubernetes:
+    Populate the file with the following example configuration:
 
-* [**Cluster Kubernetes Operator**](https://www.rabbitmq.com/kubernetes/operator/operator-overview#cluster-operator): Handles the automation of provisioning, management, and operation of RabbitMQ clusters on Kubernetes.  
-* [**Messaging Topology Operator**](https://www.rabbitmq.com/kubernetes/operator/operator-overview#topology-operator): Manages the messaging topologies within a RabbitMQ cluster that has been deployed using the RabbitMQ Cluster Kubernetes Operator.
+    ```file {title="rabbitmq-basic.yaml" lang="yaml"}
+    apiVersion: rabbitmq.com/v1beta1
+    kind: RabbitmqCluster
+    metadata:
+      name: rabbitmq-basic
+    spec:
+      service:
+        type: NodePort
+    ```
 
-These operators are extensions to the Kubernetes management tooling and take advantage of the Kubernetes API. This guide focuses on the RabbitMQ Cluster Kubernetes Operator for deploying RabbitMQ, utilizing native RabbitMQ tooling for management and configuration. The Cluster Kubernetes Operator provides the following key features:
+    To save the file and exit `nano`, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd>.
 
-* Provisioning of single-node and multi-node RabbitMQ clusters  
-* Reconciliation of deployed clusters when the existing state does not match the declarative state  
-* Monitoring of RabbitMQ clusters  
-* Scaling up and automated upgrades
+1.  Apply the configuration to your LKE cluster:
 
-### Install the RabbitMQ Cluster Kubernetes Operator
+    ```command
+    kubectl apply -f ./rabbitmq-basic.yaml
+    ```
 
-With your LKE cluster provisioned and the KUBECONFIG environment variable set to \~/.kube/lke-config, install the Cluster Kubernetes Operator with the following command:
+    ```output
+    rabbitmqcluster.rabbitmq.com/rabbitmq-basic created
+    ```
 
-| $ kubectl apply \-f \\https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml  namespace/rabbitmq-system created customresourcedefinition.apiextensions.k8s.io/rabbitmqclusters.rabbitmq.com created serviceaccount/rabbitmq-cluster-operator created role.rbac.authorization.k8s.io/rabbitmq-cluster-leader-election-role created clusterrole.rbac.authorization.k8s.io/rabbitmq-cluster-operator-role created clusterrole.rbac.authorization.k8s.io/rabbitmq-cluster-service-binding-role created rolebinding.rbac.authorization.k8s.io/rabbitmq-cluster-leader-election-rolebinding created clusterrolebinding.rbac.authorization.k8s.io/rabbitmq-cluster-operator-rolebinding created deployment.apps/rabbitmq-cluster-operator created |
-| :---- |
+1.  Wait a few minutes for the configuration to be applied, then list all provisioned resources to confirm that RabbitMQ is installed:
 
-To verify, list all the resources within the rabbitmq-system namespace.
+    ```command
+    kubectl get all
+    ```
 
-| $ kubectl get all \-n rabbitmq-system NAME                                        READY STATUS   RESTARTS   AGEpod/rabbitmq-cluster-operator-779cb-g699f   1/1   Running  0          3m13sNAME                                       READY UP-TO-DATE AVAILABLE AGEdeployment.apps/rabbitmq-cluster-operator  1/1   1          1         3m13sNAME                                            DESIRED CURRENT READY AGEreplicaset.apps/rabbitmq-cluster-operator-779cb 1       1       1     3m14s |
-| :---- |
+    The HTTP interface for RabbitMQ is exposed on port `15672`. By specifying the `NodePort` service in `rabbitmq-basic.yaml`, this port is mapped to the LKE cluster on port `31412` in the example output below. Similarly, the AQMP protocol, which operates on port `5672`, is mapped to port `30528` on the LKE cluster:
 
-### Install RabbitMQ
+    ```output
+    NAME                          READY   STATUS    RESTARTS   AGE
+    pod/rabbitmq-basic-server-0   1/1     Running   0          93s
 
-Next, install RabbitMQ on this cluster. To do that, a configuration is needed that specifies what the declarative state of the cluster will be. A basic example of a working configuration is:
+    NAME                           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                                          AGE
+    service/kubernetes             ClusterIP   10.128.0.1      <none>        443/TCP                                          6d22h
+    service/rabbitmq-basic         NodePort    10.128.125.42   <none>        5672:30528/TCP,15672:31412/TCP,15692:32494/TCP   94s
+    service/rabbitmq-basic-nodes   ClusterIP   None            <none>        4369/TCP,25672/TCP                               94s
 
-| apiVersion: rabbitmq.com/v1beta1 kind: RabbitmqCluster metadata:   name: rabbitmq-basic spec:   service:     type: NodePort |
-| :---- |
+    NAME                                     READY   AGE
+    statefulset.apps/rabbitmq-basic-server   1/1     93s
 
-Store the above definition in a file called rabbitmq-basic.yaml. Then, apply this configuration to your LKE cluster.
+    NAME                                          ALLREPLICASREADY   RECONCILESUCCESS   AGE
+    rabbitmqcluster.rabbitmq.com/rabbitmq-basic   True               True               94s
+    ```
 
-| $ kubectl apply \-f ./rabbitmq-basic.yamlrabbitmqcluster.rabbitmq.com/rabbitmq-basic created |
-| :---- |
+    ![Command-line output displaying a list of all provisioned RabbitMQ resources, including pods and services.](list-all-resources.png)
 
-### Verify successful installation
+    The ports shown in the example output *do not* match your specific LKE setup. Take note of the port number mapped to `15672` as it is referred to by {{< placeholder "PORT" >}} in later steps.
 
-Confirm that RabbitMQ was installed by showing the resources that have been provisioned.
+1.  View the logs from the RabbitMQ pod listed in the output above:
 
-| $ kubectl get all NAME                          READY   STATUS     RESTARTS   AGEpod/rabbitmq-basic-server-0   0/1     Init:0/1   0          39sNAME                           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                        AGEservice/kubernetes             ClusterIP   10.128.0.1      \<none\>        443/TCP                        15mservice/rabbitmq-basic         ClusterIP   10.128.120.69   \<none\>        5672:31825/TCP,15672:30153/TCP,15692:31520/TCP   39sservice/rabbitmq-basic-nodes   ClusterIP   None            \<none\>        4369/TCP,25672/TCP             39sNAME                                     READY   AGEstatefulset.apps/rabbitmq-basic-server   0/1     39sNAME                                          ALLREPLICASREADY   RECONCILESUCCESS   AGErabbitmqcluster.rabbitmq.com/rabbitmq-basic   True              True            40s |
-| :---- |
+    ```command
+    kubectl logs rabbitmq-basic-server-0
+    ```
 
-![][image2]
+    Look for the `Time to start RabbitMQ` line in the log output, which indicates a successful startup of the application:
 
-The HTTP interface for RabbitMQ is exposed on port 15672. By specifying the NodePort service in rabbitmq-basic.yaml, this port is exposed on the LKE cluster at port 30153. Similarly the AQMP protocol, which runs through port 5672, is exposed on the LKE cluster at port 31825. Note that the ports shown in the example above may not match your specific LKE setup.
+    ```output
+    Defaulted container "rabbitmq" out of: rabbitmq, setup-container (init)
+    ...
+      ##  ##      RabbitMQ 4.0.5
+      ##  ##
+      ##########  Copyright (c) 2007-2024 Broadcom Inc and/or its subsidiaries
+      ######  ##
+      ##########  Licensed under the MPL 2.0. Website: https://rabbitmq.com
+    ...
+      Starting broker...2024-12-29 18:31:42.237065+00:00 [info] <0.216.0>
+    ...
+    2024-12-29 18:31:43.519971+00:00 [info] <0.591.0> Ready to start client connection listeners
+    2024-12-29 18:31:43.521861+00:00 [info] <0.739.0> started TCP listener on [::]:5672
+     completed with 6 plugins.
+    ...
+    2024-12-29 18:31:43.740056+00:00 [info] <0.10.0> Time to start RabbitMQ: 3598 ms
+    ```
 
-To view the logs from the pod listed in the output above, run:
+### Access RabbitMQ Remotely
 
-| $ kubectl logs rabbitmq-basic-server-0 Defaulted container "rabbitmq" out of: rabbitmq, setup-container (init)… \#\#  \#\#      RabbitMQ 3.13.7  \#\#  \#\#  \#\#\#\#\#\#\#\#\#\#  Copyright (c) 2007-2024 Broadcom Inc and/or its subsidiaries  \#\#\#\#\#\#  \#\#  \#\#\#\#\#\#\#\#\#\#  Licensed under the MPL 2.0. Website: https://rabbitmq.com…  Starting broker...2024-12-18 15:50:34.914985+00:00 \[info\] \<0.254.0\> …2024-12-18 15:50:38.290177+00:00 \[info\] \<0.683.0\> Ready to start client connection listeners2024-12-18 15:50:38.292751+00:00 \[info\] \<0.850.0\> started TCP listener on \[::\]:5672 completed with 7 plugins.… 2024-12-18 15:50:38.484024+00:00 \[info\] \<0.9.0\> Time to start RabbitMQ: 6324 ms |
-| :---- |
+To access the RabbitMQ management console, first retrieve the auto-generated credentials for the default administrative user.
 
-If you see the Time to start RabbitMQ line in the log output, this indicates a successful startup of the application.
+1.  Retrieve the username using the following command:
 
-## Step 4: Access RabbitMQ Remotely
+    ```command
+    kubectl get secret rabbitmq-basic-default-user \
+      -o jsonpath='{.data.username}' \
+      | base64 --decode
+    ```
 
-To access the management console, you will need the auto-generated credentials of the default admin user. Use the following two commands:
+    Your default administrative username typically start with `default_user_`. For example:
 
-| $ kubectl get secret rabbitmq-basic-default-user \\     \-o jsonpath='{.data.username}' \\     | base64 \--decode default\_user\_dS\_gWwwjtIEIiMcqdwu$ kubectl get secret rabbitmq-basic-default-user \\     \-o jsonpath='{.data.password}' \\     | base64 \--decode yOOO7ESTmh0DuCBbxz2IWaDGM-YafXSZ |
-| :---- |
+    ```output
+    default_user_DoiEmUZy-rMJfFEa3gM
+    ```
 
-To set the default username and password upon creation of the RabbitMQ servers, modify rabbitmq-basic.yaml to add the additional configuration.
+1.  Retrieve the password using the following command:
 
-| apiVersion: rabbitmq.com/v1beta1 kind: RabbitmqCluster metadata:   name: rabbitmq-basic spec:   service:     type: NodePort     additionalConfig: |         default\_user=\<USERNAME\>         default\_pass=\<PASSWORD\> |
-| :---- |
+    ```command
+    kubectl get secret rabbitmq-basic-default-user \
+      -o jsonpath='{.data.password}' \
+      | base64 --decode
+    ```
 
-### Locate the external IP address of the LKE cluster
+    The password is randomly generated, for example:
 
-| $ kubectl get nodes \\     \-o wide \\     | awk \-v OFS='\\t\\t' '{print $1, $6, $7}' NAME                            INTERNAL-IP      EXTERNAL-IPlke292179-482071-0f646b210000	  192.168.143.176  172.235.141.144lke292179-482071-119038ec0000	  192.168.143.120	 172.235.141.24lke292179-482071-354f1bb10000	  192.168.143.239  172.235.141.151 |
-| :---- |
+    ```output
+    3fNpEwB2R2s3oBibIZ9UDjeqCVgFcBq1
+    ```
 
-The external IP address for one of the LKE nodes is 172.235.141.144. Recall from the earlier kubectl get all command that port 30153 at the cluster level routes to HTTP access to the RabbitMQ server. Therefore, the RabbitMQ management service can be found at 172.235.141.144:30153.
+{{< note >}}
+To set a custom administrative username and password during the creation of the RabbitMQ cluster, modify `rabbitmq-basic.yaml` to include the following additional configuration:
 
-Run the following command to retrieve the current RabbitMQ configuration as a JSON object. Paste in the admin username and password that you obtained above.
+```file {title="rabbitmq-basic.yaml" lang="yaml" hl_lines="8-10"}
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rabbitmq-basic
+spec:
+  service:
+    type: NodePort
+    additionalConfig: |
+      default_user={{< placeholder "USERNAME" >}}
+      default_pass={{< placeholder "PASSWORD" >}}
+```
+{{< /note >}}
 
-| $ curl \\    \--user     default\_user\_dS\_gWwwjtIEIiMcqdwu:yOOO7ESTmh0DuCBbxz2IWaDGM-YafXSZ \\    172.235.141.144:30153/api/overview \\    | jq{  "management\_version": "3.13.7",  "rates\_mode": "basic",  ...    "product\_version": "3.13.7",  "product\_name": "RabbitMQ",  "rabbitmq\_version": "3.13.7",  "cluster\_name": "rabbitmq-basic",  "erlang\_version": "26.2.5.6",  … |
-| :---- |
+### Locate the External IP Address of the LKE Cluster
 
-To access RabbitMQ admin in a web GUI, open a browser and navigate to [http://172.235.141.144:30153/\#/](http://172.235.141.144:30153/#/).
+To access the RabbitMQ server and its management interface remotely, follow these steps to locate the cluster's external IP address and verify its availability.
 
-![][image3]
+1.  Retrieve the external IP addresses of your LKE cluster nodes using the following command:
 
-At the initial login prompt, supply the admin username and password.
+    ```command
+    kubectl get nodes \
+      -o wide \
+      | awk -v OFS='\t\t' '{print $1, $6, $7}'
+    ```
 
-![][image4]
+    This command displays the node names, internal IPs, and external IPs. For example:
 
-## Step 5: Test RabbitMQ with a Messaging Example
+    ```output
+    NAME		INTERNAL-IP		EXTERNAL-IP
+    lke295620-486011-09172e6e0000		192.168.149.243		172.233.162.14
+    lke295620-486011-389bbe940000		192.168.149.206		172.233.175.169
+    lke295620-486011-4045e9410000		192.168.149.217		172.235.133.50
+    ```
 
-To test the RabbitMQ deployment with a messaging example, first download the management script.
+    In this example output, one of the nodes has an external IP address of `172.233.162.14`. Recall from the earlier `kubectl get all` command that port `31412` maps to the HTTP interface of the RabbvitMQ server. Combine the external IP address of a node with this port to locate the RabbitMQ management service (e.g. `http://172.233.162.14:31412`).
 
-| $ wget http://172.235.141.144:30153/cli/rabbitmqadmin |
-| :---- |
+    Record one of the external IP addresses shown in your output as it is referred to later by {{< placeholder "IP_ADDRESS" >}} in subsequent steps.
 
-Make the script executable, and move it somewhere to a location included in the environment PATH.
+1.  Verify RabbitMQ’s availability by retrieving its current configuration as a JSON object. Replace {{< placeholder "USERNAME" >}}, {{< placeholder "PASSWORD" >}}, {{< placeholder "IP_ADDRESS" >}}, and {{< placeholder "PORT" >}} with the administrative credentials and the node's external IP address and port:
 
-| $ chmod \+x rabbitmqadmin $ mv rabbitmqadmin /usr/local/bin/ |
-| :---- |
+    ```command
+    curl --user '{{< placeholder "USERNAME" >}}:{{< placeholder "PASSWORD" >}}' http://{{< placeholder "IP_ADDRESS" >}}:{{< placeholder "PORT" >}}/api/overview | jq
+    ```
 
-### Create exchange and queue
+    This command retrieves an overview of the RabbitMQ server, for example:
 
-The subsequent calls to rabbitmqadmin will need to include admin authentication as well as the host and port information for RabbitMQ. For convenience, set these values as environment variables in your terminal window. This will look similar to the following:
+    ```output
+    {
+      "management_version": "4.0.5",
+      "rates_mode": "basic",
+    ...
+      "product_version": "4.0.5",
+      "product_name": "RabbitMQ",
+      "rabbitmq_version": "4.0.5",
+      "cluster_name": "rabbitmq-basic",
+    ...
+      "erlang_version": "27.2",
+    ...
+    }
+    ```
 
-| $ export USERNAME=default\_user\_dS\_gWwwjtIEIiMcqdwu$ export PASSWORD=yOOO7ESTmh0DuCBbxz2IWaDGM-YafXSZ $ export HOST=172.235.141.144$ export PORT=30153 |
-| :---- |
+1.  To access the RabbitMQ web GUI, open a web browser and navigate to the following URL, replacing {{< placeholder "IP_ADDRESS" >}} and {{< placeholder "PORT" >}} with your actual external IP address and port number (e.g. `http://172.233.162.14:31412/#/`):
 
-Create a fanout style exchange on the RabbitMQ server with the following.
+    ```command
+    http://{{< placeholder "IP_ADDRESS" >}}:{{< placeholder "PORT" >}}/#/
+    ```
 
-| $ rabbitmqadmin \\     \--username=$USERNAME \--password=$PASSWORD \\     \--host=$HOST \--port=$PORT \\     declare exchange \\     name=test\_fanout\_exchange \\     type=fanout exchange declared |
-| :---- |
+    ![RabbitMQ management GUI displayed in a web browser, showing the login page.](rabbitmq-management-gui.png)
 
-Create a queue to attach to this exchange to hold messages.
+1.  At the initial login prompt, enter the default administrative username and password:
 
-| $ rabbitmqadmin \\     \--username=$USERNAME \--password=$PASSWORD \\     \--host=$HOST \--port=$PORT \\     declare queue \\     name=fanout\_queue \\     durable=true queue declared |
-| :---- |
+    ![RabbitMQ web interface login screen for entering credentials.](rabbitmq-login-screen.png)
 
-Bind the queue to the exchange.
+## Test RabbitMQ with a Messaging Example
 
-| $ rabbitmqadmin \\     \--username=$USERNAME \--password=$PASSWORD \\     \--host=$HOST \--port=$PORT \\     declare binding \\     source=test\_fanout\_exchange \\     destination=fanout\_queue binding declared |
-| :---- |
+To test the RabbitMQ deployment, download the RabbitMQ management script, create an exchange and queue, and publish and retrieve messages.
 
-### Test message publishing and retrieval
+### Download and Set Up the Management Script
 
-Publish a message to the exchange (and bound queue):
+1.  Download the management script using the `wget` command. Replace {{< placeholder "IP_ADDRESS" >}} and {{< placeholder "PORT" >}} with your actual external IP address and port number:
 
-| $ rabbitmqadmin \\     \--username=$USERNAME \--password=$PASSWORD \\     \--host=$HOST \--port=$PORT \\     publish \\     exchange=test\_fanout\_exchange \\     routing\_key=dummy\_key \\     payload="Hello, world\!" Message published |
-| :---- |
+    ```command
+    wget http://{{< placeholder "IP_ADDRESS" >}}:{{< placeholder "PORT" >}}/cli/rabbitmqadmin
+    ```
 
-The routing key is not necessary for a fanout exchange, as each message is routed to each queue regardless of the routing key, but it is required for the rabbitmqadmin tool. 
+1.  Make the script executable and move it to a directory included in your `PATH` (e.g `/usr/local/bin`):
 
-Retrieve the messages from the queue.
+    ```command
+    chmod +x rabbitmqadmin
+    sudo mv rabbitmqadmin /usr/local/bin/
+    ```
 
-| $ rabbitmqadmin \\     \--username=$USERNAME \--password=$PASSWORD \\     \--host=$HOST \--port=$PORT \\     get \\     queue=fanout\_queue  \+-------------+----------------------+---------------+---------------+---------------+------------------+------------+-------------+ | routing\_key |       exchange       | message\_count |    payload    | payload\_bytes | payload\_encoding | properties | redelivered | \+-------------+----------------------+---------------+---------------+---------------+------------------+------------+-------------+ | dummy\_key   | test\_fanout\_exchange | 0             | Hello, world\! | 13            | string           |            | False       | \+-------------+----------------------+---------------+---------------+---------------+------------------+------------+-------------+ |
-| :---- |
+### Create Exchange and Queue
 
-![][image5]
+1.  For convenience, set your RabbitMQ credentials and host information as environment variables. Replace {{< placeholder "USERNAME" >}}, {{< placeholder "PASSWORD" >}}, {{< placeholder "IP_ADDRESS" >}}, and {{< placeholder "PORT" >}} with your actual values:
 
-## Step 6: Create New Users
+    ```command
+    export USERNAME={{< placeholder "USERNAME" >}}
+    export PASSWORD={{< placeholder "PASSWORD" >}}
+    export HOST={{< placeholder "IP_ADDRESS" >}}
+    export PORT={{< placeholder "PORT" >}}
+    ```
 
-When connecting applications to your new RabbitMQ deployment, you may want to create and use RabbitMQ users other than the [default administrative user](https://www.rabbitmq.com/docs/access-control#default-state).
+1.  Create a `fanout` style exchange on the RabbitMQ server:
 
-In the RabbitMQ web interface, click the **Admin** tab. This will show the list of users, which currently only includes the default admin user.
+    ```command
+    rabbitmqadmin \
+      --username=$USERNAME --password=$PASSWORD \
+      --host=$HOST --port=$PORT \
+      declare exchange \
+      name=test_fanout_exchange \
+      type=fanout
+    ```
 
-![][image6]
+    ```output
+    exchange declared
+    ```
 
-Provide a username and password for the new user. Then, add any tags to specify the user’s level of permissions.
+1.  Create a queue for the exchange to hold messages:
 
-![][image7]
+    ```command
+    rabbitmqadmin \
+      --username=$USERNAME --password=$PASSWORD \
+      --host=$HOST --port=$PORT \
+      declare queue \
+      name=fanout_queue \
+      durable=true
+    ```
 
-Click **Add user**. The user will be added to the list of users, but you will see that it does not yet have access to any virtual hosts.
+    ```output
+    queue declared
+    ```
 
-![][image8]
+1.  Bind the queue to the exchange:
 
-### Set permissions for the user on the virtual host
+    ```command
+    rabbitmqadmin \
+      --username=$USERNAME --password=$PASSWORD \
+      --host=$HOST --port=$PORT \
+      declare binding \
+      source=test_fanout_exchange \
+      destination=fanout_queue
+    ```
 
-Click the name of the newly created user. Allow full permissions on the default virtual host (which is /). Click **Set permission**.
+    ```output
+    binding declared
+    ```
 
-![][image9]
+### Test Message Publishing and Retrieval
 
-Verify that this newly created user has RabbitMQ management access by logging out and logging in as the new user.
+1.  Publish a message to the exchange (and its bound queue):
 
-![][image10]
+    ```command
+    rabbitmqadmin \
+      --username=$USERNAME --password=$PASSWORD \
+      --host=$HOST --port=$PORT \
+      publish \
+      exchange=test_fanout_exchange \
+      routing_key=dummy_key \
+      payload="Hello, world!"
+    ```
 
-### Send test requests to the RabbitMQ API
+    Upon success, the following message is displayed:
 
-Using curl, send an authenticated request to the RabbitMQ API, testing out the publishing of a message to an exchange. Note the %2f in the request URL. This is the name of the exchange, which is the URL-encoded value for /.
+    ```output
+    Message published
+    ```
 
-The requests below assume that the terminal session still uses the environment variables, HOST and PORT, which were set previously.
+    {{< note >}}
+    While a routing key is not necessary for a `fanout` exchange, it is required for the `rabbitmqadmin` tool.
+    {{< /note >}}
 
-| $ curl \\     \-u linodeuser:mypassword \\     \-H "Content-Type: application/json" \\     \-X POST \\     \-d '{"properties":{},"routing\_key":"dummy\_key","payload":"Hello, curl\!","payload\_encoding":"string"}' \\     http://$HOST:$PORT/api/exchanges/%2f/test\_fanout\_exchange/publish {"routed":true} |
-| :---- |
+1.  Retrieve the messages from the queue:
 
-Next, send an authenticated request to get the last two messages from the queue.
+    ```command
+    rabbitmqadmin \
+      --username=$USERNAME --password=$PASSWORD \
+      --host=$HOST --port=$PORT \
+      get \
+      queue=fanout_queue
+    ```
 
-| $ curl \\   \-u linodeuser:mypassword \\   \-H "Content-type:application/json" \\   \-X POST \\   \-d '{"count":2,"ackmode":"ack\_requeue\_true","encoding":"auto"}' \\   http://$HOST:$PORT/api/queues/%2f/fanout\_queue/get | json\_pp \[    {       "exchange" : "test\_fanout\_exchange",       "message\_count" : 1,       "payload" : "Hello, world\!",       "payload\_bytes" : 13,       "payload\_encoding" : "string",       "properties" : \[\],       "redelivered" : true,       "routing\_key" : "dummy\_key"    },    {       "exchange" : "test\_fanout\_exchange",       "message\_count" : 0,       "payload" : "Hello, curl\!",       "payload\_bytes" : 12,       "payload\_encoding" : "string",       "properties" : \[\],       "redelivered" : true,       "routing\_key" : "dummy\_key"    } \] |
-| :---- |
+    The message should be displayed along with other details:
 
-The resources below are provided to help you become familiar with RabbitMQ when deployed to LKE on Linode.
+    ```output
+    +-------------+----------------------+---------------+---------------+---------------+------------------+------------+-------------+
+    | routing_key |       exchange       | message_count |    payload    | payload_bytes | payload_encoding | properties | redelivered |
+    +-------------+----------------------+---------------+---------------+---------------+------------------+------------+-------------+
+    | dummy_key   | test_fanout_exchange | 0             | Hello, world! | 13            | string           |            | False       |
+    +-------------+----------------------+---------------+---------------+---------------+------------------+------------+-------------+
+    ```
 
-## RabbitMQ Resources
+    ![Command-line output displaying messages retrieved from a RabbitMQ queue.](retrieved-messages-from-queue.png)
 
-* [RabbitMQ Kubernetes Operators](https://www.rabbitmq.com/kubernetes/operator/operator-overview)  
-* [Production RabbitMQ Operator Configuration](https://github.com/rabbitmq/cluster-operator/tree/main/docs/examples/production-ready)  
-* [RabbitMQ Message Topology Operator](https://www.rabbitmq.com/kubernetes/operator/install-topology-operator)  
-* [Configuration Documentation](https://www.rabbitmq.com/docs/configure)  
-* [Deployment Checklist](https://www.rabbitmq.com/docs/production-checklist)  
-* [Plugins](https://www.rabbitmq.com/docs/plugins)  
-* [Management CLI](https://www.rabbitmq.com/docs/management-cli)  
-* [RabbitMQ Linode Marketplace App](https://www.linode.com/marketplace/apps/linode/rabbitmq/)
+## Create New Users
+
+When connecting applications to your RabbitMQ deployment, it's recommended to create and use RabbitMQ users other than the [default administrative user](https://www.rabbitmq.com/docs/access-control#default-state).
+
+1.  In the RabbitMQ web interface, click the **Admin** tab. This shows the list of users, which currently only includes the default administrative user:
+
+    ![The RabbitMQ web interface showing the Admin tab with a list of current users.](rabbitmq-admin-tab.png)
+
+1.  Click **Add a user** then provide a username, password, and tag/s to specify the user’s permission level (e.g. **monitoring**).
+
+    ![The Add User form in the RabbitMQ web interface, allowing input for username, password, and permission tags.](add-new-user-form.png)
+
+1.  Click **Add user**. While the new user is added to the list of users, it does not yet have access to any virtual hosts:
+
+    ![RabbitMQ web interface displaying the newly added user in the list of users.](user-added-confirmation.png)
+
+### Set Permissions for the User on the Virtual Host
+
+1.  Click the name of the newly created user. Click **Set permission** to allow full permissions on the default virtual host (`/`).
+
+    ![RabbitMQ web interface screen showing options to set user permissions for a virtual host.](set-user-permissions.png)
+
+1.  Verify the newly created user's RabbitMQ management access by logging out and logging in as the new user:
+
+    ![RabbitMQ login screen to verify the new user's management access credentials.](user-management-login-test.png)
+
+### Send Test Requests to the RabbitMQ API
+
+The following requests assume that your terminal session still uses the previously set environment variables for `HOST` and `PORT`:
+
+1. Test publishing a message to the exchange using `curl` to send an authenticated request to the RabbitMQ API. Replace {{< placeholder "NEW_USERNAME" >}} and {{< placeholder "NEW_PASSWORD" >}} with the credentials for your newly created user:
+
+    ```command
+    curl \
+      -u '{{< placeholder "NEW_USERNAME" >}}:{{< placeholder "NEW_PASSWORD" >}}' \
+      -H "Content-Type: application/json" \
+      -X POST \
+      -d '{"properties":{},"routing_key":"dummy_key","payload":"Hello, curl!","payload_encoding":"string"}' \
+      http://$HOST:$PORT/api/exchanges/%2f/test_fanout_exchange/publish
+    ```
+
+    {{< note >}}
+    The `%2f` in the request URL is the URL-encoded value for `/`, the name of the default virtual host.
+    {{< /note >}}
+
+    Upon success, you should see the following output:
+
+    ```output
+    {"routed":true}
+    ```
+
+1.  Retrieve the last two messages from the queue by sending an authenticated request:
+
+    ```command
+    curl \
+      -u '{{< placeholder "NEW_USERNAME" >}}:{{< placeholder "NEW_PASSWORD" >}}' \
+      -H "Content-type:application/json" \
+      -X POST \
+      -d '{"count":2,"ackmode":"ack_requeue_true","encoding":"auto"}' \
+      http://$HOST:$PORT/api/queues/%2f/fanout_queue/get | json_pp
+    ```
+
+    This command returns the following output, showing the messages retrieved from the queue:
+
+    ```output
+    [
+       {
+          "exchange" : "test_fanout_exchange",
+          "message_count" : 1,
+          "payload" : "Hello, world!",
+          "payload_bytes" : 13,
+          "payload_encoding" : "string",
+          "properties" : [],
+          "redelivered" : true,
+          "routing_key" : "dummy_key"
+       },
+       {
+          "exchange" : "test_fanout_exchange",
+          "message_count" : 0,
+          "payload" : "Hello, curl!",
+          "payload_bytes" : 12,
+          "payload_encoding" : "string",
+          "properties" : [],
+          "redelivered" : true,
+          "routing_key" : "dummy_key"
+       }
+    ]
+    ```
