@@ -34,7 +34,7 @@ This guide provides step-by-step instructions for deploying RabbitMQ on Linode K
 
 ## Before You Begin
 
-1.  Read our [Getting Started with Linode](https://www.linode.com/docs/products/platform/get-started/) guide, and create a Linode account if you do not already have one.
+1.  Read our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and create a Linode account if you do not already have one.
 
 1.  Create a personal access token using the instructions in our [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
 
