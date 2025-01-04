@@ -668,6 +668,7 @@ EMTs
 ender
 enduser
 enix
+entra
 enum
 env
 envs
@@ -721,6 +722,7 @@ failregexs
 failsafe
 failsafes
 falko
+fanout
 fastcgi
 Fastify
 fastmail
