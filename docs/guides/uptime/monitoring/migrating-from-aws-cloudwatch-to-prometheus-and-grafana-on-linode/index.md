@@ -16,26 +16,26 @@ external_resources:
 
 AWS CloudWatch is a monitoring and observability service designed to collect and analyze metrics, logs, and events from AWS resources and applications. It provides insights into the performance and health of infrastructure, enabling users to generate real-time alerts and dashboards for proactive monitoring.
 
-While CloudWatch is a useful for AWS environments, organizations may seek alternative solutions for reduced costs and/or greater flexibility across multiple cloud platforms. Prometheus and Grafana offer an open source, platform-agnostic alternative for achieving these goals. This guide walks through how to migrate standard AWS CloudWatch service logs and metrics to Prometheus and Grafana running on a Linode instance.
+While CloudWatch can be useful for AWS environments, organizations may seek alternative solutions to reduce costs or increase flexibility across multiple cloud platforms. Prometheus and Grafana offer an open source, platform-agnostic alternative. This guide walks through how to migrate standard AWS CloudWatch service logs and metrics to Prometheus and Grafana running on a Linode instance.
 
 ## Introduction to Prometheus and Grafana
 
-Prometheus is a [time-series database](https://prometheus.io/docs/concepts/data_model/#data-model) that collects and stores metrics from applications and services. It provides a foundation for monitoring system performance using the PromQL query language to extract and analyze granular data. Prometheus autonomously scrapes (*pulls*) metrics from targets at specified intervals, efficiently storing data through compression while retaining the most critical details. It also supports alerting based on metric thresholds, making it suitable for dynamic, cloud-native environments.
+[Prometheus](https://prometheus.io/docs/introduction/overview/) is a [time-series database](https://prometheus.io/docs/concepts/data_model/#data-model) that collects and stores metrics from applications and services. It provides a foundation for monitoring system performance using the PromQL query language to extract and analyze granular data. Prometheus autonomously scrapes (*pulls*) metrics from targets at specified intervals, efficiently storing data through compression while retaining the most critical details. It also supports alerting based on metric thresholds, making it suitable for dynamic, cloud-native environments.
 
-Grafana is a visualization and analytics platform that integrates with Prometheus. It enables users to create real-time, interactive dashboards, visualize metrics, and set up alerts to gain deeper insights into system performance. Grafana can unify data from a wide array of data sources, including Prometheus, to provide a centralized view of system metrics.
+[Grafana](https://grafana.com/docs/) is a visualization and analytics platform that integrates with Prometheus. It enables users to create real-time, interactive dashboards, visualize metrics, and set up alerts to gain deeper insights into system performance. Grafana can unify data from a wide array of data sources, including Prometheus, to provide a centralized view of system metrics.
 
-Prometheus and Grafana are often used together to monitor service health, detect anomalies, and issue alerts. Being both open source and platfrom-agnostic allows them to be deployed across a diverse range of cloud providers and on-premise infrastructures. Organizations often adopt these tools to reduce operational costs while gaining greater control over how data is collected, stored, and visualized.
+Prometheus and Grafana are considered industry standard, and are commonly used together to monitor service health, detect anomalies, and issue alerts. Being both open source and platfrom-agnostic allows them to be deployed across a diverse range of cloud providers and on-premise infrastructures. Organizations often adopt these tools to reduce operational costs while gaining greater control over how data is collected, stored, and visualized.
 
-{{< note >}}
-While the Linode Marketplace offers an easily deployable [Prometheus and Grafana Marketplace app](https://www.linode.com/marketplace/apps/linode/prometheus-grafana/), this tutorial walks through a manual installation.
+{{< note title="Prometheus and Grafana Marketplace App" >}}
+If you prefer an automatic deployment rather than the manual installation steps in this guide, Prometheus and Grafana can be deployed through our [Prometheus and Grafana Marketplace app](https://www.linode.com/marketplace/apps/linode/prometheus-grafana/).
 {{< /note >}}
 
 ## Before You Begin
 
-1.  If you do not already have a virtual machine to use, create a Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides. The examples in this guide use the Linode 8 GB Shared CPU plan with Ubuntu 24.04 LTS.
+1.  If you do not already have a virtual machine to use, create a Compute Instance using the steps in our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Create a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides. The examples in this guide use a Linode 8 GB Shared CPU plan with the Ubuntu 24.04 LTS distribution.
 
     {{< note type="primary" title="Provisioning Compute Instances with the Linode CLI" isCollapsible="true" >}}
-    The [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli) provides an alternative way to provision resources. For example, the following command creates a **Linode 8 GB** compute instance (`g6-standard-4`) running Ubuntu 24.04 LTS (`linode/ubuntu24.04`) in the Miami datacenter (`us-mia`):
+    Use these steps if you prefer to use the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli) to provision resources. The following command creates a **Linode 8 GB** compute instance (`g6-standard-4`) running Ubuntu 24.04 LTS (`linode/ubuntu24.04`) in the Miami datacenter (`us-mia`). Replace the plan type and region as desired:
 
     ```command
     linode-cli linodes create \
@@ -49,12 +49,12 @@ While the Linode Marketplace offers an easily deployable [Prometheus and Grafana
 
     Note the following key points:
 
-    -   Replace {{< placeholder "PASSWORD" >}} with a secure alternative.
+    -   Replace {{< placeholder "PASSWORD" >}} with a secure alternative for your root password.
     -   This command assumes that an SSH public/private key pair exists, with the public key stored as `id\_rsa.pub` in the user’s `$HOME/.ssh/` folder.
     -   The `--label` argument specifies the name of the new server (`monitoring-server`).
     {{< /note >}}
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Set Up and Secure a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -62,7 +62,11 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install Prometheus as a Service
 
-In order to install Prometheus, you must first SSH into the newly provisioned Linode.
+1.  To install Prometheus, login via SSH to your Linode instance as your limited sudo user:
+
+    ```command
+    ssh {{< placeholder "SUDO_USER" >}}@{{< placeholder "LINODE_IP" >}}
+    ```
 
 1.  Create a dedicated user for Prometheus, disable its login, and create the necessary directories for Prometheus:
 
@@ -117,13 +121,13 @@ In order to install Prometheus, you must first SSH into the newly provisioned Li
 
 A `systemd` service configuration file must be created to run Prometheus as a service.
 
-1.  Create the service file using a command line text editor such as `nano`.
+1.  Create the service file using the text editor of your choice. This guide uses `nano`.
 
     ```command
     sudo nano /etc/systemd/system/prometheus.service
     ```
 
-    Add the following content to the file:
+    Add the following content to the file, and save your changes:
 
     ```file {title="/etc/systemd/system/prometheus.Service"}
     [Unit]
@@ -144,8 +148,6 @@ A `systemd` service configuration file must be created to run Prometheus as a se
     [Install]
     WantedBy=multi-user.target
     ```
-
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
 1.  Reload the `systemd` configuration files to apply the new service file:
 
