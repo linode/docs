@@ -6,6 +6,6 @@ cards_sections = ["guides", "reference-architecture", "marketplace-docs"]
 [cards_now_on_tech_docs]
     title = "Now on Akamai TechDocs"
     cards = [
-        { title = "Product docs", href = "https://techdocs.akamai.com/cloud-computing/docs/", text = "Build, deploy, and scale your modern applications faster and easier on Akamai Connected Cloud." },
-        { title = "Linode API reference", href = "https://techdocs.akamai.com/linode-api/reference/api", text = "Programmatically manage the full range of Akamai cloud computing products and services using the Linode API." },
+        { title = "Product docs", href = "https://techdocs.akamai.com/cloud-computing/docs/" },
+        { title = "Linode API reference", href = "https://techdocs.akamai.com/linode-api/reference/api" },
     ]
