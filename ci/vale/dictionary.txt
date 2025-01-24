@@ -2957,6 +2957,7 @@ yubikey
 yubikeys
 Yukihiro
 zabbix
+zalando
 zapier
 zcat
 zend
