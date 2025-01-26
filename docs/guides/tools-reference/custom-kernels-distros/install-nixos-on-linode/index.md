@@ -75,7 +75,7 @@ To create a new Linode, go to the [Create Linode page](https://cloud.linode.com/
 
 ### Prepare the Installer
 
-1.  In your browser, navigate to the [NixOS download page](https://nixos.org/nixos/download.html) and copy the URL from the **Minimal installation CD, 64-bit Intel/AMD** link.
+1.  In your browser, navigate to the [NixOS download page](https://nixos.org/download/) and copy the URL from the **Minimal installation CD, 64-bit Intel/AMD** link.
 
 1.  [Boot your Linode into rescue mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode) with the **Installer** disk mounted as `/dev/sda`.
 
