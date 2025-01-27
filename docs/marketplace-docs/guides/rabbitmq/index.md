@@ -29,7 +29,7 @@ The RabbitMQ Marketplace App installs a RabbitMQ server and a basic default conf
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 24.04
+- **Supported distributions:** Ubuntu 24.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### RabbitMQ Options
