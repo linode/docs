@@ -1,8 +1,15 @@
 :root {
-  --color-note--secondary: 94, 96, 101;
-  --color-note--primary: 2, 177, 89;
-  --color-note--warning: 255, 147, 7;
-  --color-note--alert: 240, 38, 38;
+  /* color-ui-green - #49AC59 */
+  --color-note--primary: 73, 172, 89;
+
+  /* color-grayscale-gray-400 - #90999B */
+  --color-note--secondary: 144, 153, 155;
+
+  /* color-ui-orange - #FF9933 */
+  --color-note--warning: 255, 153, 51;
+
+  /* color-ui-red - #D0343A */
+  --color-note--alert: 208, 52, 58;
 
   --alpha-note--bg: 0.1;
   --alpha-note--border: 1;

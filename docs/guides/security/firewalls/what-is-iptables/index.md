@@ -23,7 +23,14 @@ This guide helps you understand iptables and explains what is iptables. It gets 
 
 A table is a collection of chains that serves a particular function. The 3 main tables in iptables are the Filter, NAT, and Mangle tables.
 
-!["iptables table of tables](iptables-table-of-tables.png "iptables table of tables")
+| **Filter**        | **NAT**                  | **Mangle**                        |
+|-------------------|--------------------------|-----------------------------------|
+| INPUT chain       | INPUT chain              | INPUT chain                       |
+| FORWARD chain     | OUTPUT chain             | FORWARD chain                     |
+| OUTPUT chain      | PREROUTING chain         | OUTPUT chain                      |
+|                   | POSTROUTING chain        | PREROUTING chain                  |
+|                   |                          | POSTROUTING chain                 |
+
 
   - The **Filter Table** is used to control the flow of packets in and out of a system.
   - The **NAT Table** is used to redirect connections to other interfaces on the network.

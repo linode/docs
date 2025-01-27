@@ -11,7 +11,7 @@ tags: ["python", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[pip](https://pip.readthedocs.io/en/stable/#)'
- - '[pypiserver Documentation](https://pypiserver.readthedocs.io/en/latest/)'
+ - '[pypiserver/pypiserver on GitHub](https://github.com/pypiserver/pypiserver)'
  - '[Apache Documentation](https://httpd.apache.org/docs/2.4/)'
 aliases: ['/applications/project-management/how-to-create-a-private-python-package-repository/']
 ---

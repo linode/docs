@@ -5,6 +5,7 @@ description: "This guide shows you how to install and use the MySQL command-Line
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2022-07-01
+modified: 2024-11-14
 keywords: ['mysql connect','remote database','mysql database']
 tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,12 +17,14 @@ external_resources:
 This guide shows you how to connect to a MySQL database using [mysql](https://dev.mysql.com/doc/refman/8.0/en/mysql.html), the MySQL command-line client. This opens up a simple SQL shell environment, allowing you to perform [SQL queries and commands](/docs/guides/sql-commands/) on your database. If you require more advanced capabilities, consider using the [MySQL Shell](https://dev.mysql.com/doc/mysql-shell/8.0/en/).
 
 {{< note >}}
-If you wish to connect to a Linode MySQL Managed Database, review the [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/mysql-connect/) guide instead.
+If you wish to connect to a MySQL Managed Database, review the [Connect to a MySQL Managed Database](https://techdocs.akamai.com/cloud-computing/docs/connect-to-a-mysql-managed-database) guide instead.
 {{< /note >}}
 
 ## Before You Begin
 
-- **Obtain the connection details for the MySQL instance you wish to use.** If you do not have a MySQL instance yet, you can [create a Managed Database](https://www.linode.com/products/mysql/), [deploy the MySQL Marketplace App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/), or [install MySQL server (or MariaDB) on a Compute Instance](/docs/guides/install-mysql/). **This instance must allow remote connections or you must run the mysql command from within same system.**
+- **Obtain the connection details for the MySQL instance you wish to use.** If you do not have a MySQL instance yet, you can [create a Managed Database](https://techdocs.akamai.com/cloud-computing/docs/managed-databases), [deploy the MySQL Marketplace App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/), or [install MySQL server (or MariaDB) on a Compute Instance](/docs/guides/install-mysql/). **This instance must allow remote connections or you must run the mysql command from within same system.**
+
+    {{% content "dbass-eos" %}}
 
 -   **Ensure mysql is installed and is compatible with the MySQL version on your database server.** Run the following command on the system you intend on using to verify that mysql is installed.
 
@@ -44,10 +47,6 @@ The main purpose of the mysql utility is to connect to a MySQL database server a
 -   **Remote database server**: In many cases, the database server is not on the same system you are using. In these cases, you can SSH in to the remote system (if permitted) and run the command above to connect to a local MySQL instance. Alternatively, you can use the mysql command to remotely connect to the database. If your MySQL server does not allow remote connections or your user cannot connect remotely, see [Configure the Database Server to Allow Remote Connections](#configure-the-database-server-to-allow-remote-connections).
 
         mysql -h [host] -p [port] -u [username] -p
-
-    {{< note respectIndent=false >}}
-If you wish to connect to a Linode MySQL Managed Database, review the [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/mysql-connect/) guide instead.
-{{< /note >}}
 
 ## Common Command Options
 

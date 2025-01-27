@@ -1,5 +1,6 @@
 ---
 title: "What’s New"
+linkTitle: "New and updated Cloud Guides & Tutorials"
 date: 2021-04-16
 layout: "whatsnew"
 ---

@@ -118,7 +118,7 @@ export function scrollToActiveExplorerNode() {
 	}
 }
 
-function getOffsetTop(container, el) {
+export function getOffsetTop(container, el) {
 	let offset = 0;
 	while (el && el != container) {
 		offset += el.offsetTop;

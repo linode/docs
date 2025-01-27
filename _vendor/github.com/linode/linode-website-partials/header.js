@@ -4,8 +4,7 @@
   var $header;
   var mount = function() {
     $header = document.querySelector(".c-site-header");
-    if (!$header)
-      return;
+    if (!$header) return;
     bindEvents();
     setActiveMenuItem();
   };
@@ -53,15 +52,12 @@
       current_path = "/company/press/";
     }
     var $current_links = $header.querySelectorAll(':scope a.o-menu__link[href*="' + current_path + '"');
-    if (!$current_links)
-      return;
+    if (!$current_links) return;
     Array.from($current_links).forEach(($link) => {
-      if (!$link.getAttribute("href").split(/[?#]/)[0].endsWith(current_path))
-        return;
+      if (!$link.getAttribute("href").split(/[?#]/)[0].endsWith(current_path)) return;
       $link.classList.add("current");
       const $sub_menu = $link.closest(".c-submenu");
-      if (null === $sub_menu)
-        return;
+      if (null === $sub_menu) return;
       const $trigger_links = $header.querySelectorAll(
         `:scope [data-toggle="#${$sub_menu.id}"]`
       );
@@ -115,62 +111,24 @@
     return output;
   }
 
-  // src/js/Main/header-notification.js
-  var $html2;
-  var $notification;
-  var $notification_link;
-  var $notification_tag;
-  var $notification_message;
-  var mount2 = function() {
-    $notification = document.querySelector(".c-site-header .c-notification");
-    if ($notification) {
-      let api_url = "https://www.linode.com/wp-json/linode/v1/header-notification", lang = getLanguageString();
-      if (lang) {
-        api_url = `https://www.linode.com/${lang}/wp-json/linode/v1/header-notification?lang=${lang}`;
-      }
-      $notification_link = $notification.querySelector(".c-notification__link");
-      $notification_tag = $notification.querySelector(".c-notification__tag");
-      $notification_message = $notification.querySelector(".c-notification__message");
-      fetch(api_url).then(handleFetchErrors).then((response) => response.json()).then((data) => updateDOM(data)).catch((error) => console.log(error));
-    }
-  };
-  var updateDOM = function(data) {
-    if (data && data.url && data.message && $notification && $notification_link && $notification_tag && $notification_message) {
-      $notification_link.href = data.url;
-      if (data.tag) {
-        $notification_tag.textContent = data.tag;
-      } else {
-        $notification_tag.remove();
-      }
-      $notification_message.innerHTML = safeHTML(data.message);
-      $notification.classList.add("--show");
-    }
-  };
-  var $html2 = document.querySelector("html");
-  if (!$html2.classList.contains("fl-builder-edit")) {
-    mount2();
-  }
-  document.addEventListener("turbolinks:render", function(event) {
-    mount2();
-  });
-
   // src/js/Main/header-featured.js
-  var $html3;
-  var mount3 = function() {
+  var $html2;
+  var mount2 = function() {
     let api_url = "https://www.linode.com/wp-json/linode/v1/header-featured", lang = getLanguageString();
     if (lang) {
       api_url = `https://www.linode.com/${lang}/wp-json/linode/v1/header-featured?lang=${lang}`;
     }
-    fetch(api_url).then(handleFetchErrors).then((response) => response.json()).then((data) => updateDOM2(data)).catch((error) => console.log(error));
+    fetch(api_url).then(handleFetchErrors).then((response) => response.json()).then((data) => updateDOM(data)).catch((error) => console.log(error));
   };
-  var updateDOM2 = function(data) {
+  var updateDOM = function(data) {
     data.forEach((item) => {
       let $slot = document.querySelector('.c-site-header [data-featured="' + item.slot + '"]');
-      if (!$slot)
-        return;
+      if (!$slot) return;
       let $feature = generateFeature(item);
-      if (!$feature)
-        return;
+      if (!$feature) return;
+      while ($slot.firstChild) {
+        $slot.removeChild($slot.firstChild);
+      }
       $slot.appendChild($feature);
     });
   };
@@ -228,46 +186,42 @@
     $base.appendChild($style);
     return $base;
   };
-  var $html3 = document.querySelector("html");
-  if (!$html3.classList.contains("fl-builder-edit")) {
-    mount3();
+  var $html2 = document.querySelector("html");
+  if (!$html2.classList.contains("fl-builder-edit")) {
+    mount2();
   }
   document.addEventListener("turbolinks:render", function(event) {
-    mount3();
+    mount2();
   });
 
   // src/js/Main/switcher.js
-  var $html4 = document.querySelector("html");
-  var mount4 = function() {
+  var $html3 = document.querySelector("html");
+  var mount3 = function() {
     bindEvents2();
   };
   var bindEvents2 = function() {
-    $html4.addEventListener("click", handleClick);
+    $html3.addEventListener("click", handleClick);
   };
   var handleClick = function(e) {
     const $trigger = e.target.closest("[data-toggle]");
-    if (null === $trigger)
-      return;
-    if (null !== e.target.closest("form"))
-      return;
-    const $target = $trigger.dataset.toggle ? $html4.querySelector($trigger.dataset.toggle) : $trigger;
-    if (null === $target)
-      return;
+    if (null === $trigger) return;
+    if (null !== e.target.closest("form")) return;
+    const $target = $trigger.dataset.toggle ? $html3.querySelector($trigger.dataset.toggle) : $trigger;
+    if (null === $target) return;
     const $anchor = e.target.closest("a");
     if ($anchor) {
       if ($anchor === $trigger) {
         e.preventDefault();
       } else {
         const $url = new URL($anchor.getAttribute("href"));
-        if ($url && $url.pathname !== window.location.pathname)
-          return;
+        if ($url && $url.pathname !== window.location.pathname) return;
         $anchor.blur();
       }
     }
     toggle($target, $trigger);
   };
   var toggle = function($target, $trigger) {
-    const target_active = $target.classList.contains("active"), group = $target.dataset.group, $active = group ? $html4.querySelectorAll('[data-group="' + group + '"].active') : null, toggle_event = new CustomEvent(
+    const target_active = $target.classList.contains("active"), group = $target.dataset.group, $active = group ? $html3.querySelectorAll('[data-group="' + group + '"].active') : null, toggle_event = new CustomEvent(
       "toggle:" + (target_active ? "off" : "on"),
       {
         bubbles: true
@@ -284,10 +238,20 @@
     }
     $target.dispatchEvent(toggle_event);
   };
-  if (!$html4.classList.contains("fl-builder-edit")) {
-    mount4();
+  if (!$html3.classList.contains("fl-builder-edit")) {
+    mount3();
   }
   document.addEventListener("turbolinks:render", function(event) {
-    mount4();
+    mount3();
+  });
+
+  // src/js/Main/consent.js
+  window.addEventListener("click", (e) => {
+    if (e.target.matches('a[href*="#open-consent-prefs"]') || e.target.matches("span#open-consent-prefs")) {
+      e.preventDefault();
+      if (typeof window.OneTrust !== "undefined") {
+        window.OneTrust.ToggleInfoDisplay();
+      }
+    }
   });
 })();

@@ -30,7 +30,7 @@ This Marketplace App automatically configures a new Compute Instance with a limi
 
 ### Secure Your Server Setup Options
 
-{{% content "marketplace-required-limited-user-shortguide" %}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 {{% content "marketplace-custom-domain-fields-shortguide" %}}
 

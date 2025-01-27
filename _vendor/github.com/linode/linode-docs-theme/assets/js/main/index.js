@@ -31,9 +31,18 @@ import { newSearchFiltersController, newSearchInputController, newSearchStore, g
 import { newHomeController } from './sections/home/home';
 import { newSectionsController } from './sections/sections/index';
 import { newSVGViewerController } from './navigation/svg-viewer';
+import { newFileIssueButton } from './navigation/file-issue-button';
 
 // Set up the search configuration (as defined in config.toml).
 const searchConfig = getSearchConfig(params);
+
+// Handle consent changes.
+(function () {
+	window.OptanonWrapper = function () {
+		const e = new CustomEvent('onetrust:groups-updated', { detail: OnetrustActiveGroups });
+		window.dispatchEvent(e);
+	};
+})();
 
 // Set up and start Alpine.
 (function () {
@@ -93,6 +102,9 @@ const searchConfig = getSearchConfig(params);
 		Alpine.data('lncPromoCodes', () => newPromoCodesController(params.is_test));
 		Alpine.data('lncFetch', fetchController);
 		Alpine.data('lnvSVGViewer', newSVGViewerController);
+		if (params.file_issue_button && params.file_issue_button.enable) {
+			Alpine.data('lncFileIssueButton', () => newFileIssueButton(params.file_issue_button));
+		}
 
 		// Page controllers.
 		Alpine.data('lncHome', (staticData) => {
@@ -191,6 +203,8 @@ const searchConfig = getSearchConfig(params);
 			return;
 		}
 
+		reloadOTBanner();
+
 		pushDataLayer('docs_navigate');
 	});
 
@@ -261,3 +275,28 @@ const searchConfig = getSearchConfig(params);
 	window.addEventListener('turbo:before-render', restoreScroll);
 	window.addEventListener('turbo:render', restoreScroll);
 })();
+
+// See https://my.onetrust.com/s/article/UUID-69162cb7-c4a2-ac70-39a1-ca69c9340046?language=en_US&topicId=0TO1Q000000ssJBWAY
+function reloadOTBanner() {
+	var otConsentSdk = document.getElementById('onetrust-consent-sdk');
+	if (otConsentSdk) {
+		otConsentSdk.remove();
+	}
+
+	if (window.OneTrust != null) {
+		OneTrust.Init();
+
+		setTimeout(function () {
+			OneTrust.LoadBanner();
+
+			var toggleDisplay = document.getElementsByClassName('ot-sdk-show-settings');
+
+			for (var i = 0; i < toggleDisplay.length; i++) {
+				toggleDisplay[i].onclick = function (event) {
+					event.stopImmediatePropagation();
+					window.OneTrust.ToggleInfoDisplay();
+				};
+			}
+		}, 1000);
+	}
+}

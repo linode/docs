@@ -29,6 +29,28 @@
 <link rel="shortcut icon" href="https://assets.linode.com/icons/favicon.ico">
 
 
+{{/* OneTrust Cookies Consent Notice for www.linode.com. Load this before Adobe Analytics. */}}
+<script type="text/javascript">
+  userCountryCode = 'EDGEAKAMAIZERCOUNTRYCODE';
+  userContinent = 'EDGEAKAMAIZERCONTINENT';
+  if ( userCountryCode && !userCountryCode.startsWith( 'EDGEAKAMAIZER' ) ) {
+    window.OneTrust = window.OneTrust || {};
+    window.OneTrust.geolocationResponse = window.OneTrust.geolocationResponse || {};
+    window.OneTrust.geolocationResponse.countryCode = window.OneTrust.geolocationResponse.countryCode || userCountryCode;
+  }
+  if ( userContinent && !userContinent.startsWith( 'EDGEAKAMAIZER' ) ) {
+    window.OneTrust = window.OneTrust || {};
+    window.OneTrust.geolocationResponse = window.OneTrust.geolocationResponse || {};
+    window.OneTrust.geolocationResponse.regionCode = window.OneTrust.geolocationResponse.regionCode || userContinent;
+  }
+</script>
+
+<script
+  src="{{ site.Params.onetrust_script_src }}"
+  type="text/javascript"
+  charset="UTF-8"
+  data-domain-script="{{ site.Params.onetrust_domain_script }}"></script>
+
 {{/* Adobe Analytics.
   This is configured for the environments production, development (Netlify and local) and staging.
 */}}<script
