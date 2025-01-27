@@ -36,15 +36,21 @@ GCP Pub/Sub and RabbitMQ share many key features in common, though there are som
 | **Guaranteed Delivery** | Yes, at least once | Yes, with various modes (at least once, exactly once) |
 | **Integrations** | Strong integration with GCP services, HTTP push/pull models | Various protocols (AMQP, MQTT, STOMP) |
 
-## Deploy RabbitMQ on Linode
+## Before You Begin
 
-Migrating from GCP Pub/Sub to RabbitMQ on Linode requires choosing between a single Linode Compute Instance or a larger scale, more fault-tolerant environment with the Linode Kubernetes Engine (LKE). Follow the appropriate guide below based on your needs:
+1.  Read our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and create a Linode account if you do not already have one.
 
--   [Deploying RabbitMQ on a Linode Compute Instance]()
--   [Deploying RabbitMQ on Kubernetes with Linode LKE]()
--   [RabbitMQ Linode Marketplace App](https://www.linode.com/marketplace/apps/linode/rabbitmq/)
+1.  Migrating from AWS SNS to RabbitMQ on Linode, requires choosing between a single Linode Compute Instance or a larger scale, more fault-tolerant environment with the Linode Kubernetes Engine (LKE). Follow the appropriate guide below based on your needs:
 
-In addition, you mush have access to your Google Cloud account with sufficient permissions to work with Pub/Sub resources.
+    -   [Deploying RabbitMQ on a Linode Compute Instance]()
+    -   [Deploy RabbitMQ through the Linode Marketplace](https://www.linode.com/marketplace/apps/linode/rabbitmq/)
+    -   [Deploying RabbitMQ on Kubernetes with Linode LKE]()
+
+1.  You must have access to your AWS account with sufficient permissions to work with SNS topics.
+
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+{{< /note >}}
 
 ## Migrate from GCP Pub/Sub to RabbitMQ
 
@@ -57,7 +63,7 @@ RabbitMQ exchanges various routing mechanisms to handle message delivery:
 
 While Pub/Sub offers simplicity, scalability, and cloud-native integration, RabbitMQ provides more detailed control over routing for advanced messaging patterns.
 
-This [example project](https://github.com/nathan-gilbert/gcp-pub-sub-example) uses Terraform to set up a Flask application that receives notifications from a GCP Pub/Sub topic and its subscription.
+Migrating your messaging broker service also involves porting any applications that depend on GCP Pub/Sub to use RabbitMQ instead. This guide uses an [example Flask application](https://github.com/nathan-gilbert/gcp-pub-sub-example) that is subscribed to a Pub/Sub topic.
 
 ### Assess Current Messaging Needs
 
@@ -94,19 +100,27 @@ RabbitMQ does not work with GCP IAM. As an alternative, select an authentication
 
 1.  Add the username/password credentials for the RabbitMQ user to your Flask application.
 
+{{< note >}}
+It's best practice to create a separate set of credentials for each application that interacts with RabbitMQ.
+{{< /note >}}
+
 ### Create RabbitMQ Exchange and Queue Your Application
 
 1.  Click the **Exchanges** tab to create a new exchange for your application. Provide a name for the exchange and hen set the exchange type, then click **Add exchange**:
 
     ![The RabbitMQ interface showing steps to create a new exchange.](rabbitmq-create-exchange.png)
 
-1.  Click the **Queues** tab. Create a new queue on the `/` virtual host and specify a name, then click **Add queue**:
+1.  Click the **Queues and Streams** tab. Create a new queue on the `/` virtual host and specify a name, then click **Add queue**:
 
     ![The RabbitMQ interface showing steps to create a new queue.](rabbitmq-create-queue.png)
 
 1.  Click the name of the newly created queue in the list to bring up its details. Locate the **Bindings** section and add a new binding by setting **From exchange** to the name of the newly created exchange, then click **Bind**:
 
     ![The RabbitMQ interface showing the bindings section for queues.](rabbitmq-bind-queue.png)
+
+{{< note >}}
+It's best practice to create an exchange and a queue for each application.
+{{< /note >}}
 
 ### Set Permissions for RabbitMQ User
 

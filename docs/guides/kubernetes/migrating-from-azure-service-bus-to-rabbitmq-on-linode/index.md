@@ -29,22 +29,28 @@ Below is a list comparing the key features of Azure Service Bus and RabbitMQ:
 | Feature | Azure Service Bus | RabbitMQ |
 | ----- | ----- | ----- |
 | **Primary Use Case** | Fully managed enterprise-grade messaging for cloud-native and hybrid systems. | Open-source message broker for on-premise or cloud deployments. |
-| **Deployment** | Fully managed by Azure, no maintenance required. | Self-hosted or managed services (e.g., CloudAMQP); requires maintenance if self-hosted. |
+| **Deployment** | Fully managed by Azure, no maintenance required. | Self-hosted or managed services (e.g. CloudAMQP); requires maintenance if self-hosted. |
 | **Protocol Support** | AMQP, HTTP, and REST APIs. | AMQP, STOMP, MQTT, and more; highly extensible. |
 | **Message Filtering** | Advanced SQL-like filtering rules for topics. | Limited to simple routing logic with exchanges (direct, fanout, topic, header). |
 | **Scalability** | Automatically scales with Azure infrastructure. | Requires manual scaling or external tools for clustering and federation. |
 | **Dead-Letter Queue** | Built-in dead-letter queue for unprocessed messages. | Supports dead-letter queues but requires custom setup. |
-| **Security** | Azure Active Directory (AAD) and RBAC integration. TLS. | Authentication via username/password or external plugins (e.g., OAuth). |
+| **Security** | Azure Active Directory (AAD) and RBAC integration. TLS. | Authentication via username/password or external plugins (e.g. OAuth). |
 
-## Deploy RabbitMQ on Linode
+## Before You Begin
 
-Migrating from Azure Service Bus to RabbitMQ on Linode requires choosing between a single Linode Compute Instance or a larger scale, more fault-tolerant environment with the Linode Kubernetes Engine (LKE). Follow the appropriate guide below based on your needs:
+1.  Read our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and create a Linode account if you do not already have one.
 
--   [Deploying RabbitMQ on a Linode Compute Instance]()
--   [Deploying RabbitMQ on Kubernetes with Linode LKE]()
--   [RabbitMQ Linode Marketplace App](https://www.linode.com/marketplace/apps/linode/rabbitmq/)
+1.  Migrating from AWS SNS to RabbitMQ on Linode, requires choosing between a single Linode Compute Instance or a larger scale, more fault-tolerant environment with the Linode Kubernetes Engine (LKE). Follow the appropriate guide below based on your needs:
 
-In addition, you must have access to your Azure account with sufficient permissions to work with Service Bus resources.
+    -   [Deploying RabbitMQ on a Linode Compute Instance]()
+    -   [Deploy RabbitMQ through the Linode Marketplace](https://www.linode.com/marketplace/apps/linode/rabbitmq/)
+    -   [Deploying RabbitMQ on Kubernetes with Linode LKE]()
+
+1.  You must have access to your AWS account with sufficient permissions to work with SNS topics.
+
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+{{< /note >}}
 
 ## Migrate from Azure Service Bus to RabbitMQ
 
@@ -55,7 +61,7 @@ RabbitMQ exchanges provides various routing mechanisms to handle message deliver
 -   **Fanout** exchanges broadcast messages to all bound queues, similar to the pub/sub model in Azure Service Bus.
 -   **Header** exchanges route messages based on their headers for more nuanced filtering.
 
-This [example project](https://github.com/nathan-gilbert/azure-service-bus-topic-example) uses Terraform to set up a simple Python application that subscribes to Azure Service Bus.
+Migrating your messaging broker service also involves porting any applications that depend on Azure Service Bus to use RabbitMQ instead. This guide uses an [example Flask application](https://github.com/nathan-gilbert/azure-service-bus-topic-example) that is subscribed to an Azure Service Bus topic.
 
 ### Assess Current Messaging Needs
 
@@ -91,19 +97,27 @@ RabbitMQ does not use Microsoft Entra ID or Azure Active Directory (AAD) roles o
 
 1.  Add the username/password credentials for the RabbitMQ user to your Flask application.
 
+{{< note >}}
+It's best practice to create a separate set of credentials for each application that interacts with RabbitMQ.
+{{< /note >}}
+
 ### Create RabbitMQ Exchange and Queue Your Application
 
 1.  Click the **Exchanges** tab to create a new exchange for your application. Provide a name for the exchange and set the exchange type, then click **Add exchange**:
 
     ![The RabbitMQ interface showing steps to create a new exchange.](rabbitmq-create-exchange.png)
 
-1.  Click the **Queues** tab. Create a new queue on the `/` virtual host and specify a name, then click **Add queue**:
+1.  Click the **Queues and Streams** tab. Create a new queue on the `/` virtual host and specify a name, then click **Add queue**:
 
     ![The RabbitMQ interface showing steps to create a new queue.](rabbitmq-create-queue.png)
 
 1.  Click the name of the newly created queue in the list to bring up its details. Locate the **Bindings** section and add a new binding by setting **From exchange** to the name of the newly created exchange, then click **Bind**:
 
     ![The RabbitMQ interface showing the bindings section for queues.](rabbitmq-bind-queue.png)
+
+{{< note >}}
+It's best practice to create an exchange and a queue for each application.
+{{< /note >}}
 
 ### Set Permissions for RabbitMQ User
 
