@@ -27,12 +27,13 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 22.04 LTS
+- **Supported distributions:** Ubuntu 24.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### Uptime Kuma Options
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
+- **Uptime-Kuma Username** *(required)*: Enter the username to login to your Uptime-Kuma instance.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
@@ -40,21 +41,26 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
 
-## Getting Started after Deployment
+### Obtain the Credentials
 
-### Accessing the Uptime Kuma App
+Once the app has been *fully* deployed, you need to obtain the credentials from the server.
 
-1.  Open your web browser and navigate to `https://DOMAIN/`, where *DOMAIN* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
+1.  Log in to your new Compute Instance using one of the methods below:
 
-    ![Screenshot of URL bar](uptimekuma-url.png)
+    - **Lish Console:** Within Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. Log in as the `root` user. See [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **SSH:** Log in to your Compute Instance over SSH using the `root` user. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
-1.  If this is your first time logging in, the account creation page appears. Complete the form and click the **Create** button.
+1.  Once logged in, access the credentials file by running the following command:
 
-    ![Screenshot of account creation form](uptimekuma-create-user.png)
+    ```command
+    cat /home/$USERNAME/.credentials
+    ```
 
-1.  After creating a user, you are automatically logged in and the Uptime Kuma dashboard is displayed.
+1.  This displays the passwords that were automatically generated when the instance was deployed. Once you save these passwords, you can safely delete this file.
 
-    ![Screenshot of Uptime Kuma dashboard](uptimekuma-dashboard.png)
+## Getting Started After Deployment
+
+1.  Open a web browser and navigate to the domain you entered when creating the instance: `https://domain.tld`. If you did not enter a domain, use your Compute Instance's default rDNS domain (`192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing the rDNS value. Ensure that you are securely accessing the website by prefixing `https` to the URL.
 
 Now that you’ve accessed your dashboard, check out [the official Uptime Kuma Repository](https://github.com/louislam/uptime-kuma) to learn how to further use your Uptime Kuma instance.
 

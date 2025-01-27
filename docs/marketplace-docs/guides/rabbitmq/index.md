@@ -29,25 +29,45 @@ The RabbitMQ Marketplace App installs a RabbitMQ server and a basic default conf
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10
+- **Supported distributions:** Ubuntu 24.04
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### RabbitMQ Options
 
-- **RabbitMQ Username** *(required)*: The username for accessing the rabbitMQ management console.
-- **RabbitMQ Password** *(required)*: The user password for SSH access to the Linode.
+- **Email address** *(required)*: Enter the email address to use for generating the SSL certificates as well as configuring the server and DNS records.
+- **Allowed IPs** *(required)*: IP addresses allowed to access the Management UI.
+- **The version of RabbitMQ you'd like installed** *(required)*: This is the version of RabbitMQ that is installed during setup.
+- **RabbitMQ Admin Username** *(required)*: RabbitMQ Admin Username.
+- **RabbitMQ Username** *(required)*: RabbitMQ limited AMQP user (Please ensure the user is different then the Admin username).
+
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
+
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
 
-## Getting Started After Deployment
+### Obtain the Credentials
 
-1.  Open your web browser and navigate to the following URL, replacing *[ip-address]* with your Compute Instance's IPv4 address or default rDNS domain. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
+Once the app has been *fully* deployed, you need to obtain the credentials from the server.
+
+1.  Log in to your new Compute Instance using one of the methods below:
+
+    - **Lish Console:** Within Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. Log in as the `root` user. See [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **SSH:** Log in to your Compute Instance over SSH using the `root` user. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
+
+1.  Once logged in, access the credentials file by running the following command:
 
     ```command
-    http://[ip-address]:15672
+    cat /home/$USERNAME/.credentials
     ```
 
-1.  In the login form that appears, enter the username and password you created during the deployment. Then, click the **Login** button.
+1.  This displays the passwords that were automatically generated when the instance was deployed. Once you save these passwords, you can safely delete this file.
+
+## Getting Started After Deployment
+
+1.  Open a web browser and navigate to the domain you entered when creating the instance: `https://domain.tld`. If you did not enter a domain, use your Compute Instance's default rDNS domain (`192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing the rDNS value. Ensure that you are securely accessing the website by prefixing `https` to the URL.
+
+1.  In the login form that appears, enter the username and password found in your /home/$USERNAME/.credentials file. Then, click the **Login** button.
 
     ![Screenshot of the RabbitMQ Login page](rabbitmq-login.png)
 
