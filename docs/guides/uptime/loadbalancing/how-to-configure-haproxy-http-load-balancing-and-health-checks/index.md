@@ -4,7 +4,7 @@ title: "How to Configure HAProxy HTTP Load Balancing and Health Checks"
 description: "Learn how to configure HAProxy for HTTP load balancing, with instructions on updating frontend and backend settings, path-based routing, and health checks."
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
-published: 2024-09-18
+published: 2025-01-28
 keywords: ['haproxy','http load balancing','http health checks','haproxy acl']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
