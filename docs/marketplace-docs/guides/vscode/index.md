@@ -34,7 +34,7 @@ Run a [Visual Studio Code Server](https://github.com/cdr/code-server) in the bro
 ### VS Code Options
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates as well as configuring the server and DNS records.
-- **The version of VS Code Server you'd like installed** *(required)*: This is the version of VS Code Server that is installed during setup.
+- **The version of VS Code Server you'd like installed** *(required)*: Enter the VS Code Server version to be installed during the setup.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
@@ -44,26 +44,28 @@ Run a [Visual Studio Code Server](https://github.com/cdr/code-server) in the bro
 
 ### Obtain the Credentials
 
-Once the app has been *fully* deployed, you need to obtain the credentials from the server.
+Once the app is deployed, you need to obtain the credentials from the server.
+
+To obtain the credentials:
 
 1.  Log in to your new Compute Instance using one of the methods below:
 
-    - **Lish Console:** Within Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. Log in as the `root` user. See [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
-    - **SSH:** Log in to your Compute Instance over SSH using the `root` user. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
 
-1.  Once logged in, access the credentials file by running the following command:
+1.  Run the following command to access the credentials file:
 
     ```command
     cat /home/$USERNAME/.credentials
     ```
 
-1.  This displays the passwords that were automatically generated when the instance was deployed. Once you save these passwords, you can safely delete this file.
+This returns passwords that were automatically generated when the instance was deployed. Save them. Once saved, you can safely delete the file.
 
 ## Getting Started after Deployment
 
-VS Code is now installed and ready to use. 
+VS Code is now installed. To get started:
 
-1.  Open a web browser and navigate to the domain you entered when creating the instance: `https://domain.tld`. If you did not enter a domain, use your Compute Instance's default rDNS domain (`192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing the rDNS value. Ensure that you are securely accessing the website by prefixing `https` to the URL.
+1.  Open a web browser and navigate to the domain you entered when creating the instance: `https://domain.tld`. If you did not enter a domain, use your Compute Instance's default rDNS domain (`192-0-2-1.ip.linodeusercontent.com`). To learn more on viewing the rDNS value, see [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). Make sure to use the `https` prefix in the URL to access the website securely.
 
 ## Software Included
 
