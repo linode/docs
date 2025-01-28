@@ -75,8 +75,10 @@ To get started:
 
     ![Screenshot of the RabbitMQ Login page](rabbitmq-login.png)
 
-Now, you have full access to the RabbitMQ Management Console and you can start configuring your application. To learn more on RabbitMQ, see [RabbitMQ Tutorials](https://www.rabbitmq.com/getstarted.html).
+Now, you have full access to the RabbitMQ Management Console and you can start configuring your application.
 
-    ![Screenshot of the RabbitMQ Management Console](rabbitmq-dashboard.png)
+![Screenshot of the RabbitMQ Management Console](rabbitmq-dashboard.png)
+
+To learn more on RabbitMQ, see [RabbitMQ Tutorials](https://www.rabbitmq.com/getstarted.html).
 
 {{% content "marketplace-update-note-shortguide" %}}
