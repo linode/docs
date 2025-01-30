@@ -45,8 +45,8 @@ AWS SNS and RabbitMQ serve similar purposes, but they have their differences:
 
 1.  Migrating from AWS SNS to RabbitMQ on Linode, requires choosing between a single Linode Compute Instance or a larger scale, more fault-tolerant environment with the Linode Kubernetes Engine (LKE). Follow the appropriate guide below based on your needs:
 
-    -   [Deploying RabbitMQ on a Linode Compute Instance]()
     -   [Deploy RabbitMQ through the Linode Marketplace](https://www.linode.com/marketplace/apps/linode/rabbitmq/)
+    -   [Deploying RabbitMQ on a Linode Compute Instance]()
     -   [Deploying RabbitMQ on Kubernetes with Linode LKE]()
 
 1.  You must have access to your AWS account with sufficient permissions to work with SNS topics.
@@ -64,7 +64,7 @@ RabbitMQ exchanges provide various routing mechanisms to handle message delivery
 -   **Fanout** exchanges broadcast messages to all bound queues, similar to SNS topics.
 -   **Header** exchanges route messages based on their headers for more nuanced filtering.
 
-Migrating your messaging broker service also involves porting any applications that depend on AWS SNS to use RabbitMQ instead. This guide uses an [example Flask application](https://github.com/nathan-gilbert/rabbitmq-migrations) that is subscribed to an SNS topic.
+Migrating your messaging broker service also involves porting any applications that depend on AWS SNS to use RabbitMQ instead. This guide uses an [example Flask application](https://github.com/linode/docs-cloud-projects/tree/main/demos/rabbitmq-migrations-main) that is subscribed to an SNS topic.
 
 ### Assess Current Messaging Needs
 
@@ -85,9 +85,9 @@ INFO:app:Received SNS message: This is a test message!
 
 ### Convert Authentication to be Compatible with RabbitMQ
 
-RabbitMQ does not work with AWS IAM. As an alternative, select an authentication method compatible with RabbitMQ, such as username/password or SSL/TLS certificates. This guide uses username/password for authentication.
+RabbitMQ does not work with AWS IAM. As an alternative, select an authentication method compatible with RabbitMQ, such as username/password or SSL/TLS certificates. This guide uses username/password for authentication. The following steps create a new read-only RabbitMQ user (e.g. `flaskappuser`) to interact with the example Flask application.
 
-1.  To create a new user, first open a Web browser and navigate to the following URL, replacing {{< placeholder "IP_ADDRESS" >}} with the actual external IP Address of your Linode instance or LKE node:
+1.  To create a new user, open a Web browser and navigate to the following URL, replacing {{< placeholder "IP_ADDRESS" >}} with the actual external IP Address of your Linode instance or LKE node:
 
     ```command
     http://{{< placeholder "IP_ADDRESS" >}}:15672
@@ -112,11 +112,11 @@ RabbitMQ does not work with AWS IAM. As an alternative, select an authentication
         ```
     {{< /note >}}
 
-1.  Click the **Admin** tab and go through the steps for creating a new user:
+1.  Open the **Admin** tab and click the **Add user** button. Provide a **Username** (e.g. `flaskappuser`) and **Password** and apply the **Monitoring** tag:
 
     ![The RabbitMQ Admin interface showing the user creation process.](rabbitmq-create-user.png)
 
-1.  Add the username/password credentials for the RabbitMQ user to your Flask application.
+1.  Take note of the username/password for the newly created RabbitMQ user, as you need to add these credentials to your Flask application.
 
 {{< note >}}
 It's best practice to create a separate set of credentials for each application that interacts with RabbitMQ.
@@ -132,17 +132,17 @@ It's best practice to create a separate set of credentials for each application 
 
     ![The RabbitMQ interface showing steps to create a new queue.](rabbitmq-create-queue.png)
 
-1.  Click the name of the newly created queue in the list to bring up its details. Expand the **Bindings** section and add a new binding by setting **From exchange** to the name of the newly created exchange (e.g. `flask_app_exchange`), then click **Bind**:
+1.  Select the name of the newly created queue in the list to bring up its details. Expand the **Bindings** section and add a new binding by setting **From exchange** to the name of the newly created exchange (e.g. `flask_app_exchange`), then click **Bind**:
 
     ![The RabbitMQ interface showing the bindings section for queues.](rabbitmq-bind-queue.png)
 
 {{< note >}}
-It's best practice to create an exchange and a queue for each application.
+It's best practice to create a distinct exchange and queue for each application.
 {{< /note >}}
 
 ### Set Permissions for RabbitMQ User
 
-Return to the **Admin** page and click the newly created user to bring up its permission details. Set the permissions for the user as follows:
+Return to the **Admin** page and click the newly created user to bring up their permission details. Set the permissions for the user as follows:
 
 ![The RabbitMQ Admin interface showing user permission configuration.](rabbitmq-set-permissions.png)
 
@@ -150,9 +150,24 @@ Return to the **Admin** page and click the newly created user to bring up its pe
 -   The **Write** permission allows the user to publish messages to the queue. The example application in this guide does not write to the queue, so specifying `^$` denies write access.
 -   The **Read** permission, set to `^flask_queue$`, grants the user read access to `flask_queue`, which you created above.
 
+### Configure Example Flask Server
+
+This guide demonstrates the migration process using an [example Flask server](https://github.com/nathan-gilbert/simple-ec2-cloudwatch) that reads messages from RabbitMQ.
+
+1.  If you do not already have a virtual machine to use, create a Compute Instance (a simple Nanode is sufficient). See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and create a limited user account. You may also wish to set the timezone, configure your hostname, and harden SSH access.
+
+1.  Change to your user’s home directory and use `git` to clone the example Flask app's GitHub repository to your compute instance:
+
+    ```command
+    cd ~
+    git clone https://github.com/linode/docs-cloud-projects/tree/main/demos/rabbitmq-migrations-main.git
+    ```
+
 ### Convert Existing Applications from AWS SNS to RabbitMQ
 
-In the example project, the application communicates directly to AWS SNS using the `boto3` library provided by AWS. In order to use RabbitMQ, be sure to carefully switch corresponding code from AWS tooling to RabbitMQ. For Python applications, RabbitMQ support is provided through the [Pika](https://pypi.org/project/pika/) library, which is an AMQP provider with RabbitMQ bindings.
+In the example project, the Flask application communicates directly to AWS SNS using the `boto3` library provided by AWS. In order to use RabbitMQ, be sure to carefully switch corresponding code from AWS tooling to RabbitMQ. For Python applications, RabbitMQ support is provided through the [Pika](https://pypi.org/project/pika/) library, which is an AMQP provider with RabbitMQ bindings.
 
 1.  Use `apt` to install the required libraries for RabbitMQ communication (Pika) and the web application framework (Flask):
 
@@ -160,28 +175,15 @@ In the example project, the application communicates directly to AWS SNS using t
     sudo apt install python3-pika python3-flask
     ```
 
-1.  Change to your user’s home directory and use `git` to clone the example Flask app's GitHub repository to your compute instance:
+1.  Edit the [`app.py`](https://github.com/linode/docs-cloud-projects/blob/main/demos/rabbitmq-migrations-main/rabbitmq-changes/app.py) file located in the `rabbitmq-changes/rabbitmq-migrations` directory to apply the changes required to subscribe to the `flask_queue`:
 
     ```command
-    cd ~
-    git clone https://github.com/nathan-gilbert/rabbitmq-migrations.git
+    nano ~/rabbitmq-migrations-main/rabbitmq-changes/app.py
     ```
 
-1.  Change to the `rabbitmq-changes` folder in the new `rabbitmq-migrations` directory:
+    The resulting file should look like this, replacing {{< placeholder "RABBITMQ_HOST" >}}, {{< placeholder "RABBITMQ_USERNAME" >}} and {{< placeholder "RABBITMQ_PASSWORD" >}} with your actual RabbitMQ IP address, username, and password:
 
-    ```command
-    cd rabbitmq-migrations/rabbitmq-changes
-    ```
-
-1.  Edit [app.py](https://github.com/nathan-gilbert/rabbitmq-migrations/blob/main/rabbitmq-changes/app.py) to apply the code changes required to subscribe to the newly `flask_queue`:
-
-    ```command
-    nano app.py
-    ```
-
-    The resulting file should look like this, with {{< placeholder "RABBITMQ_HOST" >}}, {{< placeholder "RABBITMQ_USERNAME" >}} and {{< placeholder "RABBITMQ_PASSWORD" >}} replaced with your actual RabbitMQ IP address, username, and password:
-
-    ```file {title="app.py" lang="python" hl_lines="18,19"}
+    ```file {title="app.py" lang="python" hl_lines="23,25"}
     from flask import Flask
     import pika
     import threading
@@ -247,9 +249,13 @@ In the example project, the application communicates directly to AWS SNS using t
     INFO:app:Started listening to RabbitMQ...
     ```
 
-1.  Next, publish a message to the queue where this application has subscribed. Open the RabbitMQ Web UI in your browser at `http://{{< placeholder "RABBITMQ_HOST" >}}:15672/` and log in using your RabbitMQ credentials.
+1.  Next, publish a message to the queue where this application has subscribed. Return to the RabbitMQ Web UI in your browser and log in using your administrative credentials (*not* `flaskappuser`):
 
-1.  Click the **Queues and Streams** tab and select `flask_queue` from the list of queues. Expand **Publish message** and enter a message in the **Payload** section (e.g. `Hello, Flask app!`), then click **Publish message**:
+    ```command
+    http://{{< placeholder "RABBITMQ_HOST" >}}:15672
+    ```
+
+1.  Open the **Queues and Streams** tab and select `flask_queue` from the list of queues. Expand **Publish message** and enter a message in the **Payload** section (e.g. `Hello, Flask app!`), then click **Publish message**:
 
     ![The RabbitMQ interface showing how to publish a message to a queue.](rabbitmq-publish-message.png)
 
