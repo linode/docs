@@ -4,7 +4,6 @@
 	let opts = {
 		forceConsent: params.get('__forceconsent') === 'true',
 		apiShouldfail: params.get('__api_shouldfail') === 'true',
-		noticeBehaviour: params.get('__noticebehaviour') || 'expressed,eu',
 	};
 
 	console.log('Loading test environment with options:', opts);
@@ -17,30 +16,10 @@
 	}
 })();
 
-// forceSetCookieConsent simulates setting the TrustArc consent.
+// forceSetCookieConsent simulates setting the OneTrust consent.
 // This function is only included/invoked in test environments.
 function forceSetCookieConsent(opts) {
-	localStorage.setItem(
-		'truste.eu.cookie.cmapi_cookie_privacy',
-		'{"name":"truste.eu.cookie.cmapi_cookie_privacy","value":"permit 1,2,3,4,5","path":"/","expires":1662226579397}',
-	);
-	localStorage.setItem(
-		'truste.eu.cookie.notice_preferences',
-		'{"name":"truste.eu.cookie.notice_preferences","value":"2,4:","path":"/","expires":1662226579393}',
-	);
-	localStorage.setItem(
-		'truste.eu.cookie.notice_gdpr_prefs',
-		'{"name":"truste.eu.cookie.notice_gdpr_prefs","value":"0,1,2,3,4:","path":"/","expires":1662226579395}',
-	);
-
-	localStorage.setItem(
-		'truste.eu.cookie.cmapi_gtm_bl',
-		'{"name":"truste.eu.cookie.cmapi_gtm_bl","value":"","path":"/","expires":1662226579396}',
-	);
-
-	document.cookie = 'cmapi_cookie_privacy=permit 1,2,3;';
-	document.cookie = 'cmapi_gtm_bl=;';
-	document.cookie = 'notice_gdpr_prefs=0,1,2,3,4:;';
-	document.cookie = 'notice_preferences=2,4:;';
-	document.cookie = 'notice_behavior=' + opts.noticeBehaviour;
+	document.cookie = 'OptanonAlertBoxClosed=2024-09-18T09:20:34.230Z';
+	document.cookie =
+		'OptanonConsent=isGpcEnabled=0&datestamp=Mon+Sep+23+2024+10%3A25%3A39+GMT%2B0200+(Central+European+Summer+Time)&version=202403.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=c3c54993-fe07-4044-b425-0ca7d930a31f&interactionCount=60&isAnonUser=1&landingPath=NotLandingPage&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1%2CC0005%3A1&geolocation=NO%3B03&AwaitingReconsent=false';
 }

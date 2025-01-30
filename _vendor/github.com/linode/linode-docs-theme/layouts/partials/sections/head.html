@@ -29,6 +29,36 @@
 <link rel="shortcut icon" href="https://assets.linode.com/icons/favicon.ico">
 
 
+{{/* OneTrust Cookies Consent Notice for www.linode.com. Load this before Adobe Analytics. */}}
+{{/* akamai region code —> onetrust state code */}}
+{{/* akamai country code —> onetrust country code */}}
+{{/* akamai continent —> onetrust region code */}}
+<script type="text/javascript">
+  userRegionCode = 'EDGEAKAMAIZERREGIONCODE';
+  userCountryCode = 'EDGEAKAMAIZERCOUNTRYCODE';
+  userContinent = 'EDGEAKAMAIZERCONTINENT';
+  (function(){
+    let setOTGeoData = function( key, val ) {
+      if ( val && !val.startsWith( 'EDGEAKAMAIZER' ) ) {
+        window.OneTrust = window.OneTrust || {};
+        window.OneTrust.geolocationResponse = window.OneTrust.geolocationResponse || {};
+        window.OneTrust.geolocationResponse[key] = window.OneTrust.geolocationResponse[key] || val;
+      }
+    }
+    if ( userRegionCode && userRegionCode === 'CA' ) {
+      setOTGeoData( 'stateCode', userRegionCode );
+    }
+    setOTGeoData( 'countryCode', userCountryCode );
+    setOTGeoData( 'regionCode', userContinent );
+  })();
+</script>
+
+<script
+  src="{{ site.Params.onetrust_script_src }}"
+  type="text/javascript"
+  charset="UTF-8"
+  data-domain-script="{{ site.Params.onetrust_domain_script }}"></script>
+
 {{/* Adobe Analytics.
   This is configured for the environments production, development (Netlify and local) and staging.
 */}}<script

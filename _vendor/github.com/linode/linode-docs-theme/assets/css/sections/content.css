@@ -84,7 +84,7 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
 }
 
 .content .file .chroma {
-  @apply rounded-b-md m-0;
+  @apply rounded-b-md m-0 py-1;
 }
 
 .content .file .chroma .lntable {

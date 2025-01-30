@@ -33,9 +33,11 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 - **Suggested minimum plan:** All plan types and sizes can be used.
 
 - **SOA Email Address** *(required):* An email address for free Let's Encrypt SSL.
-{{% content "marketplace-required-limited-user-shortguide" %}}
+
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 {{% content "marketplace-custom-domain-fields-shortguide" %}}
+
 ## Getting Started after Deployment
 
 ### Access your Plesk Site

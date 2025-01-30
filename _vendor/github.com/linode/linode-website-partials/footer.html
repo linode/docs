@@ -24,7 +24,7 @@
       <div class="o-layout__col">
 
         <div class="o-layout__module c-identity">
-          <a class="c-identity__link" href="https://www.linode.com" target="_self" itemprop="url">
+          <a class="c-identity__link" href="https://www.linode.com" target="_self" itemprop="url" data-analytics-event="footer | Click | Akamai Logo">
             <img width="113.84" height="50" alt="Akamai Logo" class="c-identity__image" src="https://assets.linode.com/p2/akamai-logo.svg" itemprop="image" data-no-lazy="1">
           </a>
         </div>
@@ -34,7 +34,12 @@
         </div>
 
         <div class="o-layout__module c-consent">
-          <div id="teconsent"></div>
+          <style>
+            #teconsent[consent] { display: block !important; }
+            #teconsent:not([consent]) + #open-consent-prefs { display: block !important; };
+          </style>
+          <div id="teconsent" style="display:none;"></div>
+          <span id="open-consent-prefs" class="o-menu__link" style="display:none;">Cookie Preferences</a>
         </div>
 
         <div class="o-layout__module c-social --mobile">
@@ -56,22 +61,22 @@
           <nav class="o-menu">
             <ul class="o-menu__list --d0">
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/site-map/"><span class="o-menu__title">Site Map</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/site-map/" data-analytics-event="footer | Click | Site Map"><span class="o-menu__title">Site Map</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/support/"><span class="o-menu__title">Support</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/support/" data-analytics-event="footer | Click | Support"><span class="o-menu__title">Support</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/partners/"><span class="o-menu__title">Partners</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/partners/" data-analytics-event="footer | Click | Partners"><span class="o-menu__title">Partners</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/accessibility/"><span class="o-menu__title">Accessibility Commitment</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/accessibility/" data-analytics-event="footer | Click | Accessibility Commitment"><span class="o-menu__title">Accessibility Commitment</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/legal/"><span class="o-menu__title">Legal Center</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/legal/" data-analytics-event="footer | Click | Legal Center"><span class="o-menu__title">Legal Center</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://status.linode.com"><span class="o-menu__title">System Status</span></a>
+                <a class="o-menu__link" href="https://status.linode.com" data-analytics-event="footer | Click | System Status"><span class="o-menu__title">System Status</span></a>
               </li>
             </ul>
           </nav>
@@ -85,25 +90,25 @@
             <h4 class="o-menu__heading">Explore</h4>
             <ul class="o-menu__list --d0">
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/reduce-cloud-costs/"><span class="o-menu__title">Lower Costs</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/reduce-cloud-costs/" data-analytics-event="footer | Click | Lower Costs"><span class="o-menu__title">Lower Costs</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/low-latency-applications/"><span class="o-menu__title">Lower Latency</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/low-latency-applications/" data-analytics-event="footer | Click | Lower Latency"><span class="o-menu__title">Lower Latency</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/cloud-portability/"><span class="o-menu__title">Cloud Portability</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/cloud-portability/" data-analytics-event="footer | Click | Cloud Portability"><span class="o-menu__title">Cloud Portability</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/cloud-global-scale/"><span class="o-menu__title">Global Scale</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/cloud-global-scale/" data-analytics-event="footer | Click | Global Scale"><span class="o-menu__title">Global Scale</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/global-infrastructure/"><span class="o-menu__title">Our Platform</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/global-infrastructure/" data-analytics-event="footer | Click | Our Platform"><span class="o-menu__title">Our Platform</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/support-experience/"><span class="o-menu__title">Support Experience</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/support-experience/" data-analytics-event="footer | Click | Support Experience"><span class="o-menu__title">Support Experience</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/series/craft-of-code/"><span class="o-menu__title">Customer Stories</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/series/craft-of-code/" data-analytics-event="footer | Click | Customer Stories"><span class="o-menu__title">Customer Stories</span></a>
               </li>
             </ul>
           </nav>
@@ -114,16 +119,16 @@
             <h4 class="o-menu__heading">Company</h4>
             <ul class="o-menu__list --d0">
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/company/about/"><span class="o-menu__title">About</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/company/about/" data-analytics-event="footer | Click | About"><span class="o-menu__title">About</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/accessibility/"><span class="o-menu__title">Accessibility Commitment</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/accessibility/" data-analytics-event="footer | Click | Accessibility Commitment"><span class="o-menu__title">Accessibility Commitment</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/partners/"><span class="o-menu__title">Partners</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/partners/" data-analytics-event="footer | Click | Partners"><span class="o-menu__title">Partners</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/legal/"><span class="o-menu__title">Legal</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/legal/" data-analytics-event="footer | Click | Legal"><span class="o-menu__title">Legal</span></a>
               </li>
             </ul>
           </nav>
@@ -137,70 +142,73 @@
             <h4 class="o-menu__heading">Products</h4>
             <ul class="o-menu__list --d0">
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/"><span class="o-menu__title">Products Overview</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/" data-analytics-event="footer | Click | Products Overview"><span class="o-menu__title">Products Overview</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/dedicated-cpu/"><span class="o-menu__title">Dedicated CPU</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/dedicated-cpu/" data-analytics-event="footer | Click | Dedicated CPU"><span class="o-menu__title">Dedicated CPU</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/shared/"><span class="o-menu__title">Shared CPU</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/shared/" data-analytics-event="footer | Click | Shared CPU"><span class="o-menu__title">Shared CPU</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/high-memory/"><span class="o-menu__title">High Memory</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/high-memory/" data-analytics-event="footer | Click | High Memory"><span class="o-menu__title">High Memory</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/premium-cpu/"><span class="o-menu__title">Premium CPU</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/premium-cpu/" data-analytics-event="footer | Click | Premium CPU"><span class="o-menu__title">Premium CPU</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/gpu/"><span class="o-menu__title">GPU</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/gpu/" data-analytics-event="footer | Click | GPU"><span class="o-menu__title">GPU</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/kubernetes/"><span class="o-menu__title">Kubernetes</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/kubernetes/" data-analytics-event="footer | Click | Kubernetes"><span class="o-menu__title">Kubernetes</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/block-storage/"><span class="o-menu__title">Block Storage</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/app-platform/" data-analytics-event="footer | Click | App Platform"><span class="o-menu__title">App Platform</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/object-storage/"><span class="o-menu__title">Object Storage</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/block-storage/" data-analytics-event="footer | Click | Block Storage"><span class="o-menu__title">Block Storage</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/backups/"><span class="o-menu__title">Backups</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/object-storage/" data-analytics-event="footer | Click | Object Storage"><span class="o-menu__title">Object Storage</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/databases/"><span class="o-menu__title">Managed Databases</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/backups/" data-analytics-event="footer | Click | Backups"><span class="o-menu__title">Backups</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/cloud-firewall/"><span class="o-menu__title">Cloud Firewall</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/databases/" data-analytics-event="footer | Click | Managed Databases"><span class="o-menu__title">Managed Databases</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/ddos/"><span class="o-menu__title">DDoS Protection</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/cloud-firewall/" data-analytics-event="footer | Click | Cloud Firewall"><span class="o-menu__title">Cloud Firewall</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/dns-manager/"><span class="o-menu__title">DNS Manager</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/ddos/" data-analytics-event="footer | Click | DDoS Protection"><span class="o-menu__title">DDoS Protection</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/nodebalancers/"><span class="o-menu__title">NodeBalancers</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/dns-manager/" data-analytics-event="footer | Click | DNS Manager"><span class="o-menu__title">DNS Manager</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/private-networking/"><span class="o-menu__title">Private Networking</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/nodebalancers/" data-analytics-event="footer | Click | NodeBalancers"><span class="o-menu__title">NodeBalancers</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/managed/"><span class="o-menu__title">Managed</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/private-networking/" data-analytics-event="footer | Click | Private Networking"><span class="o-menu__title">Private Networking</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/cloud-manager/"><span class="o-menu__title">Cloud Manager</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/managed/" data-analytics-event="footer | Click | Managed"><span class="o-menu__title">Managed</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/linode-api/"><span class="o-menu__title">API</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/cloud-manager/" data-analytics-event="footer | Click | Cloud Manager"><span class="o-menu__title">Cloud Manager</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/cli/"><span class="o-menu__title">CLI</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/linode-api/" data-analytics-event="footer | Click | API"><span class="o-menu__title">API</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/linode-terraform-provider/"><span class="o-menu__title">Terraform Provider</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/cli/" data-analytics-event="footer | Click | CLI"><span class="o-menu__title">CLI</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/products/linode-ansible-collection/"><span class="o-menu__title">Ansible Collection</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/products/linode-terraform-provider/" data-analytics-event="footer | Click | Terraform Provider"><span class="o-menu__title">Terraform Provider</span></a>
+              </li>
+              <li class="o-menu__item">
+                <a class="o-menu__link" href="https://www.linode.com/products/linode-ansible-collection/" data-analytics-event="footer | Click | Ansible Collection"><span class="o-menu__title">Ansible Collection</span></a>
               </li>
             </ul>
           </nav>
@@ -214,25 +222,19 @@
             <h4 class="o-menu__heading">Industries</h4>
             <ul class="o-menu__list --d0">
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/digital-agencies-industry-solutions/"><span class="o-menu__title">Digital Agencies</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/ecommerce-industry-solutions/" data-analytics-event="footer | Click | Ecommerce"><span class="o-menu__title">Ecommerce</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/ecommerce-industry-solutions/"><span class="o-menu__title">Ecommerce</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/gaming-industry-solutions/" data-analytics-event="footer | Click | Gaming"><span class="o-menu__title">Gaming</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/education-industry-solutions/"><span class="o-menu__title">Education</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/managed-hosting-industry-solutions/" data-analytics-event="footer | Click | Managed Hosting"><span class="o-menu__title">Managed Hosting</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/gaming-industry-solutions/"><span class="o-menu__title">Gaming</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/video-streaming-solutions/" data-analytics-event="footer | Click | Media"><span class="o-menu__title">Media</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/managed-hosting-industry-solutions/"><span class="o-menu__title">Managed Hosting</span></a>
-              </li>
-              <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/video-streaming-solutions/"><span class="o-menu__title">Media</span></a>
-              </li>
-              <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/saas-industry-solutions/"><span class="o-menu__title">SaaS</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/saas-industry-solutions/" data-analytics-event="footer | Click | SaaS"><span class="o-menu__title">SaaS</span></a>
               </li>
             </ul>
           </nav>
@@ -243,10 +245,10 @@
             <h4 class="o-menu__heading">Marketplace</h4>
             <ul class="o-menu__list --d0">
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/marketplace/apps/"><span class="o-menu__title">Browse Marketplace</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/marketplace/apps/" data-analytics-event="footer | Click | Browse Marketplace"><span class="o-menu__title">Browse Marketplace</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/marketplace/app-partners/"><span class="o-menu__title">Submit Marketplace App</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/marketplace/app-partners/" data-analytics-event="footer | Click | Submit Marketplace App"><span class="o-menu__title">Submit Marketplace App</span></a>
               </li>
             </ul>
           </nav>
@@ -257,13 +259,13 @@
             <h4 class="o-menu__heading">Pricing</h4>
             <ul class="o-menu__list --d0">
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/pricing/"><span class="o-menu__title">Pricing List</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/pricing/" data-analytics-event="footer | Click | Pricing List"><span class="o-menu__title">Pricing List</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/estimator/"><span class="o-menu__title">Cloud Estimator</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/estimator/" data-analytics-event="footer | Click | Cloud Estimator"><span class="o-menu__title">Cloud Estimator</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/cloud-computing-calculator/"><span class="o-menu__title">Cloud Computing Calculator</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/cloud-computing-calculator/" data-analytics-event="footer | Click | Cloud Computing Calculator"><span class="o-menu__title">Cloud Computing Calculator</span></a>
               </li>
             </ul>
           </nav>
@@ -277,40 +279,40 @@
             <h4 class="o-menu__heading">Community</h4>
             <ul class="o-menu__list --d0">
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/cloud-computing-community/"><span class="o-menu__title">Community Overview</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/cloud-computing-community/" data-analytics-event="footer | Click | Community Overview"><span class="o-menu__title">Community Overview</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/community/questions/"><span class="o-menu__title">Q&amp;A</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/community/questions/" data-analytics-event="footer | Click | Q&A"><span class="o-menu__title">Q&amp;A</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/developers/"><span class="o-menu__title">Developer Portal</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/developers/" data-analytics-event="footer | Click | Developer Portal"><span class="o-menu__title">Developer Portal</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/green-light/"><span class="o-menu__title">Beta Program</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/green-light/" data-analytics-event="footer | Click | Beta Program"><span class="o-menu__title">Beta Program</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/referral-program/"><span class="o-menu__title">Customer Referral Program</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/referral-program/" data-analytics-event="footer | Click | Customer Referral Program"><span class="o-menu__title">Customer Referral Program</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/partners/"><span class="o-menu__title">Partner Program</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/partners/" data-analytics-event="footer | Click | Partner Program"><span class="o-menu__title">Partner Program</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/startup-programs/"><span class="o-menu__title">Startup Programs</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/startup-programs/" data-analytics-event="footer | Click | Startup Programs"><span class="o-menu__title">Startup Programs</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/blog/"><span class="o-menu__title">Blog</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/blog/" data-analytics-event="footer | Click | Blog"><span class="o-menu__title">Blog</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/content/"><span class="o-menu__title">Content Resources</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/content/" data-analytics-event="footer | Click | Content Resources"><span class="o-menu__title">Content Resources</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/events/"><span class="o-menu__title">Events</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/events/" data-analytics-event="footer | Click | Events"><span class="o-menu__title">Events</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/distributions/"><span class="o-menu__title">Distributions</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/distributions/" data-analytics-event="footer | Click | Distributions"><span class="o-menu__title">Distributions</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/kernels/"><span class="o-menu__title">Kernels</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/kernels/" data-analytics-event="footer | Click | Kernels"><span class="o-menu__title">Kernels</span></a>
               </li>
             </ul>
           </nav>
@@ -324,13 +326,13 @@
             <h4 class="o-menu__heading">Contact</h4>
             <ul class="o-menu__list --d0">
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/support/"><span class="o-menu__title">Support</span></a>
+                <a class="o-menu__link" href="https://www.linode.com/support/" data-analytics-event="footer | Click | Support"><span class="o-menu__title">Support</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://status.linode.com"><span class="o-menu__title">System Status</span></a>
+                <a class="o-menu__link" href="https://status.linode.com" data-analytics-event="footer | Click | System Status"><span class="o-menu__title">System Status</span></a>
               </li>
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://login.linode.com/login"><span class="o-menu__title">Log in</span></a>
+                <a class="o-menu__link" href="https://login.linode.com/login" data-analytics-event="footer | Click | Log in"><span class="o-menu__title">Log in</span></a>
               </li>
             </ul>
           </nav>
@@ -341,28 +343,28 @@
             <h4 class="o-menu__heading">Follow Us</h4>
             <ul class="o-menu__list">
               <li class="o-menu__item">
-                <a class="o-menu__link" href="https://twitter.com/linode">
+                <a class="o-menu__link" href="https://twitter.com/linode" data-analytics-event="footer | Click | Twitter">
                   <svg class="o-menu__icon" alt="Twitter Logo">
                     <use xlink:href="#icon--twitter"></use>
                   </svg>
                   <span class="o-menu__title">Twitter</span>
                 </a>
               </li><li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linode.com/youtube">
+                <a class="o-menu__link" href="https://www.linode.com/youtube" data-analytics-event="footer | Click | YouTube">
                   <svg class="o-menu__icon" alt="YouTube Logo">
                     <use xlink:href="#icon--youtube"></use>
                   </svg>
                   <span class="o-menu__title">YouTube</span>
                 </a>
               </li><li class="o-menu__item">
-                <a class="o-menu__link" href="https://www.linkedin.com/company/linode/">
+                <a class="o-menu__link" href="https://www.linkedin.com/company/linode/" data-analytics-event="footer | Click | LinkdeIn">
                   <svg class="o-menu__icon" alt="LinkedIn Logo">
                     <use xlink:href="#icon--linkedin"></use>
                   </svg>
                   <span class="o-menu__title">LinkedIn</span>
                 </a>
               </li><li class="o-menu__item">
-                <a class="o-menu__link" href="https://github.com/linode/">
+                <a class="o-menu__link" href="https://github.com/linode/" data-analytics-event="footer | Click | GitHub">
                   <svg class="o-menu__icon" alt="GitHub Logo">
                     <use xlink:href="#icon--github"></use>
                   </svg>

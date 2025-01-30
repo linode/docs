@@ -5,7 +5,7 @@ description: "Learn how to use mysqldump to back up MySQL (and MariaDB) database
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2018-01-30
-modified: 2022-07-01
+modified: 2024-11-14
 keywords: ["mysql", "mariadb", "backup", "back up", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/backup-options/','/security/backups/back-up-your-mysql-databases/','/databases/mysql/back-up-your-mysql-databases/','/databases/mysql/use-mysqldump-to-back-up-mysql-or-mariadb/','/guides/use-mysqldump-to-back-up-mysql-or-mariadb/']
@@ -24,7 +24,7 @@ Since the mysqldump utility needs to connect to the database, the database manag
 
 ## Before You Begin
 
-- **Obtain the connection details for the MySQL instance you wish to use.** If you do not have a MySQL instance yet, you can [create a Managed Database](https://www.linode.com/products/mysql/), [deploy the MySQL Marketplace App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/), or [install MySQL server (or MariaDB) on a Compute Instance](/docs/guides/install-mysql/).
+- **Obtain the connection details for the MySQL instance you wish to use.** If you do not have a MySQL instance yet, you can [create a Managed Database](https://techdocs.akamai.com/cloud-computing/docs/managed-databases), [deploy the MySQL Marketplace App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/), or [install MySQL server (or MariaDB) on a Compute Instance](/docs/guides/install-mysql/).
 
     {{% content "dbass-eos" %}}
 
@@ -57,7 +57,7 @@ The following list represents mysqldump commands for various scenarios. Within t
         mysqldump [options] --all-databases > backup.sql
 
     {{< note type="alert" respectIndent=false >}}
-Do not use the `--all-databases` option if you intend on restoring this database to a Linode MySQL Managed Database. It may delete existing users and restrict access to your database.
+Do not use the `--all-databases` option if you intend on restoring this database to a MySQL Managed Database. It may delete existing users and restrict access to your database.
 {{< /note >}}
 
 {{< note >}}
@@ -69,7 +69,7 @@ Depending on the size of the database, it could take a while to complete. For la
 The following list is a collection of common options used with the mysqldump command. At minimum, the username and password is required. When connecting to a remote database server, the host (and perhaps the port) should be provided. For a full list of available options, reference the [Option Syntax](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#mysqldump-option-summary) documentation.
 
 {{< note >}}
-When backing up a Linode MySQL [Managed Database](/docs/products/databases/managed-databases/) with mysqldump, review the [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/mysql-connect/) guide for instructions on viewing the connection details (including the username, password, host, and port).
+When backing up a MySQL [Managed Database](https://techdocs.akamai.com/cloud-computing/docs/managed-databases) with mysqldump, review the [Connect to a MySQL Managed Database](https://techdocs.akamai.com/cloud-computing/docs/connect-to-a-mysql-managed-database) guide for instructions on viewing the connection details (including the username, password, host, and port).
 {{< /note >}}
 
 - **Username** (`--user=[]` or `-u []`): The username of your MySQL user. This user must have proper grants to access the database.
@@ -102,7 +102,7 @@ If you are frequently backing up a database with mysqldump or running a backup t
 
         mysqldump -h 192.0.2.1 -u exampleuser -p --single-transaction SampleDatabase > backup-$(date +%F).sql
 
--   **Single database on a *Linode MySQL* [***Managed Database***](/docs/products/databases/managed-databases/):** In this example, the mysqldump command is used to backup a database called *Test* in a Linode MySQL Managed Database cluster. See [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/mysql-connect/) guide for instructions on viewing the connection details (including the username, password, host, and port).
+-   **Single database on a *MySQL* [***Managed Database***](https://techdocs.akamai.com/cloud-computing/docs/managed-databases):** In this example, the mysqldump command is used to backup a database called *Test* in a MySQL Managed Database cluster. See [Connect to a MySQL Managed Database](https://techdocs.akamai.com/cloud-computing/docs/connect-to-a-mysql-managed-database) guide for instructions on viewing the connection details (including the username, password, host, and port).
 
         mysqldump -h lin-1111-1111-mysql-primary.servers.linodedb.net -u linroot -p --single-transaction --set-gtid-purged=OFF Test > backup-$(date +%F-%H.%M.%S).sql
 

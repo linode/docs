@@ -21,6 +21,7 @@ adhoc
 adminpack
 adnanh
 adodb
+adoptium
 aes
 ag
 agentless
@@ -28,6 +29,7 @@ ahci0
 Aho
 ahvz
 aircrack
+Aiven
 ajenti
 ajp
 Akamai
@@ -375,6 +377,7 @@ configr
 configs
 configtest
 configurability
+configurator
 connectionism
 connectionless
 connectionStatus
@@ -1241,12 +1244,14 @@ kickbans
 kickstarter
 killall
 kinect
+kinesis
 kinser
 kitchensalt
 klei
 klocwork
 kloth
 kloxo
+knative
 knockpy
 knowledgebase
 Kodu
@@ -1255,6 +1260,7 @@ Konqueror
 konsole
 konversation
 kotin
+kourier
 KPI
 KPIs
 krita
@@ -1279,6 +1285,7 @@ kubespray
 Kuma
 kustomize
 kuznetosv
+Kyber
 lambdabunker
 Laminas
 Langa
@@ -1300,6 +1307,7 @@ len
 lennart
 Lerna
 letsencrypt
+Letsencrypt
 lf
 li181
 li263
@@ -2273,6 +2281,7 @@ sentdex
 sentora
 seo
 serializable
+serializer
 serv
 server1
 serverless
@@ -2502,6 +2511,7 @@ Tectia
 telecom
 telehealth
 teleporting
+temurin
 tensorflow
 terrahelp
 terraria

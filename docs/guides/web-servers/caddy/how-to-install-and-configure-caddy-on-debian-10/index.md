@@ -36,15 +36,17 @@ aliases: ['/web-servers/caddy/how-to-install-and-configure-caddy-on-debian-10/']
 
 1.  Download `caddy`:
 
-        sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
-        curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo tee /etc/apt/trusted.gpg.d/caddy-stable.asc
+        sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
+        curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
         curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
 
 1.  Install Caddy:
+
         sudo apt update
         sudo apt install caddy
 
 1. To verify the installation of caddy type:
+
        caddy version
     An output similar to the following appears:
 
