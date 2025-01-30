@@ -4,7 +4,7 @@ title: "Migrating From Aws CloudWatch to Prometheus and Grafana on Linode"
 description: "Migrating from AWS CloudWatch to Prometheus and Grafana? Learn how to configure metrics, build custom dashboards, and optimize monitoring with cost-effective, open source tools."
 authors: ["Linode"]
 contributors: ["Linode"]
-published: 2024-11-19
+published: 2025-01-28
 keywords: ['aws','cloudwatch','prometheus','grafana','aws cloudwatch migration','prometheus and grafana setup','migrate to prometheus','grafana dashboards for metrics','cloudwatch alternative','open source monitoring tools','prometheus metrics','grafana visualization','monitoring and observability','prometheus grafana guide','cloudwatch to Prometheus tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -155,14 +155,14 @@ A `systemd` service configuration file must be created to run Prometheus as a se
     sudo systemctl daemon-reload
     ```
 
-1.  Run the following `systemctl` commands to start the `flash-app` service and enable it to automatically start after a system reboot:
+1.  Using `systemctl`, start the `flash-app` service and enable it to automatically start after a system reboot:
 
     ```command
     sudo systemctl start prometheus
     sudo systemctl enable prometheus
     ```
 
-1.  Enter the following command to verify that Prometheus is running:
+1.  Verify that Prometheus is running:
 
     ```command
     systemctl status prometheus
@@ -181,9 +181,9 @@ A `systemd` service configuration file must be created to run Prometheus as a se
          CGroup: /system.slice/prometheus.service
     ```
 
-    When done, press <kbd>Q</kbd> key to exit the status output and return to the terminal prompt.
+    When done, press the <kbd>Q</kbd> key to exit the status output and return to the terminal prompt.
 
-1.  Open a web browser and visit port `9090` ( Prometheus's default port) of your instance's IP address:
+1.  Open a web browser and visit your instance's IP address on port `9090` (Prometheus's default port):
 
     ```command
     http://{{< placeholder "IP_ADDRESS" >}}:9090
@@ -214,7 +214,7 @@ Grafana provides an `apt` repository, reducing the number of steps needed to ins
     sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
     ```
 
-1.  Update package index and install Grafana:
+1.  Update the package index and install Grafana:
 
     ```command
     sudo apt update
@@ -248,7 +248,7 @@ Grafana provides an `apt` repository, reducing the number of steps needed to ins
 
 ### Connect Grafana to Prometheus
 
-1.  Open a web browser and visit port `3000` (Grafana's default port) of your instance's IP address to access the Grafana web UI:
+1.  Open a web browser and visit your instance's IP address on port `3000` (Grafana's default port) to access the Grafana web UI:
 
     ```command
     http://{{< placeholder "IP_ADDRESS" >}}:3000
@@ -262,7 +262,7 @@ Grafana provides an `apt` repository, reducing the number of steps needed to ins
 
     ![Grafana user interface prompting for a new password after the first login.](grafana-new-password-prompt.png)
 
-    Now it's time to add Prometheus as a data source. Expand the **Home** menu, navigate to the **Connections** entry, then click **Add new connection**:
+1.  Add Prometheus as a data source by expanding the **Home** menu, navigating to the **Connections** entry, and clicking **Add new connection**:
 
     ![Grafana home menu with the option to add a new connection under the Connections section.](grafana-add-new-connection.png)
 
@@ -278,11 +278,11 @@ Grafana provides an `apt` repository, reducing the number of steps needed to ins
 
     ![Grafana test result confirming successful connection to a Prometheus data source.](grafana-connection-test-success.png)
 
-    If the test succeeds, your Grafana installation should now be connected to the Prometheus installation running on the same Linode.
+    If successful, your Grafana installation is now connected to the Prometheus installation running on the same Linode.
 
 ## Migrate from AWS CloudWatch to Prometheus and Grafana
 
-Migrating from AWS CloudWatch to Prometheus and Grafana requires careful planning. This is important to ensure continuity of monitoring capabilities while leveraging the added control over data handling and advanced features of these open source alternatives.
+Migrating from AWS CloudWatch to Prometheus and Grafana requires careful planning. It is important to ensure the continuity of your monitoring capabilities while leveraging the added control over data handling and advanced features of Prometheus and Grafana.
 
 This guide demonstrates the migration process using an [example Flask server](https://github.com/nathan-gilbert/simple-ec2-cloudwatch) that collects metrics and logs via AWS CloudWatch.
 
@@ -307,7 +307,7 @@ This guide demonstrates the migration process using an [example Flask server](ht
     sudo apt install python3.12-venv
     ```
 
-1.  Create a virtual environment named `venv` within the `example-flask-prometheus` directory:
+1.  Using the `venv` utility, create a virtual environment named `venv` within the `example-flask-prometheus` directory:
 
     ```command
     python3 -m venv venv
@@ -362,23 +362,23 @@ This guide demonstrates the migration process using an [example Flask server](ht
 
 ### Assess Current Monitoring Requirements
 
-Before migrating to Prometheus and Grafana, it's important to understand what metrics and logs are currently being collected by CloudWatch and how they are used.
+Before migrating to Prometheus and Grafana, it's important to understand what metrics and logs are currently being collected by CloudWatch and how they are used. This may vary depending on your application.
 
-The example Flask application collects and sends endpoint latency metrics to CloudWatch using the [`put_metric_data`](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudwatch/client/put_metric_data.html) API from [Boto3](https://github.com/boto/boto3), a Python library for interfacing with AWS resources. Application logs are written to a local file and ingested into CloudWatch Logs for centralization.
+For example, the Flask application in this guide collects and sends endpoint latency metrics to CloudWatch using the [`put_metric_data`](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudwatch/client/put_metric_data.html) API from [Boto3](https://github.com/boto/boto3), a Python library for interfacing with AWS resources. Application logs are written to a local file and ingested into CloudWatch Logs for centralization.
 
-Metrics such as endpoint latency are collected for every HTTP request, along with HTTP method details. Application logs record incoming requests, exceptions, and warnings. For example, when the Flask application receives and handles requests, it emits logs like the following:
+Metrics such as endpoint latency are collected for every HTTP request, along with HTTP method details. Application logs record incoming requests, exceptions, and warnings. When the Flask application receives and handles requests, it emits logs like the following:
 
 ![Example of CloudWatch logs with INFO level log entries for a Flask application.](cloudwatch-logs-example.png)
 
-CloudWatch also visualizes metrics in graphs. For instance, by querying the endpoint latency metrics sent by the Flask application, a graph might look like this:
+CloudWatch also visualizes metrics in graphs. For instance, by querying the endpoint latency metrics sent by the Flask application, a graph may look like this:
 
 ![CloudWatch metrics graph displaying endpoint latency data over time.](cloudwatch-metrics-latency-graph.png)
 
 ### Export Existing CloudWatch Logs and Metrics
 
-AWS provides tools for exporting CloudWatch data for analysis or migration. CloudWatch logs can be exported to an S3 bucket, making them accessible outside AWS and enabling them to be re-ingested into other tools.
+AWS includes tools for exporting CloudWatch data for analysis or migration. For example, CloudWatch logs can be exported to an S3 bucket, making them accessible outside AWS and enabling them to be re-ingested into other tools.
 
-To export CloudWatch Logs to S3, use the [`create-export-task`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/logs/create-export-task.html) command:
+To export CloudWatch Logs to S3, use the following [`create-export-task`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/logs/create-export-task.html) command from the system where your AWS CLI is configured:
 
 ```command
 aws logs create-export-task \
@@ -397,11 +397,11 @@ Replace the following placeholders with your specific values:
 
 ### Expose Application Metrics to Prometheus
 
-Prometheus works differently from CloudWatch: instead of *pushing* data like CloudWatch, Prometheus *pulls* metrics from the monitored application. After assessing or exporting metrics as needed, modify the application to enable Prometheus metric scraping so that it collects the same metrics previously sent to CloudWatch.
+Prometheus works differently from CloudWatch: Instead of *pushing* data like CloudWatch, Prometheus *pulls* metrics from the monitored application. After assessing or exporting metrics as needed, modify the application to enable Prometheus metric scraping so that it collects the same metrics previously sent to CloudWatch. This process varies from application to application.
 
-The [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_flask_exporter) is a standard library for instrumenting Flask applications to expose Prometheus metrics.
+For the example Flask application in this guide, the [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_flask_exporter) is a standard library that can be used for instrumenting Flask applications to expose Prometheus metrics.
 
-1.  Open the `app.py` file:
+1.  Using a text editor of your choice, open the `app.py` file for the Flask application:
 
     ```command
     nano app.py
@@ -476,10 +476,10 @@ The [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_
          CGroup: /system.slice/flask-app.service
     ```
 
-1.  Make sure the Flask app is accessible by issuing the following cURL command:
+1.  Test to see if the Flask app is accessible by issuing the following cURL command. Replace {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the IP address of the instance where the Flask app is running:
 
     ```command
-    curl http://{{< placeholder "IP_ADDRESS" >}}:8080
+    curl http://{{< placeholder "FLASK_APP_IP_ADDRESS" >}}:8080
     ```
 
     You should receive the following response:
@@ -498,13 +498,13 @@ The [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_
 
 ### Configure Prometheus to Ingest Application Metrics
 
-1.  Modify the Prometheus configuration at `/etc/prometheus/prometheus.yml` to include the Flask application as a scrape target:
+1.  Using a text editor, open and modify the Prometheus configuration at `/etc/prometheus/prometheus.yml` to include the Flask application as a scrape target:
 
     ```command
     sudo nano /etc/prometheus/prometheus.yml
     ```
 
-    Append the following content to the `scrap_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the actual IP address of your `monitoring-server` instance, or in this case, `localhost`:
+    Append the following content to the `scrap_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the IP address of your `monitoring-server` instance, or in this case, `localhost`:
 
     ```file {title="/etc/prometheus/prometheus.yml"}
       - job_name: 'flask_app'
@@ -514,19 +514,19 @@ The [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_
 
     This configuration tell Prometheus to scrape metrics from the Flask application running on port `8080`.
 
-1.  Save the file and restart Prometheus to apply the changes:
+1.  Save the file, and restart Prometheus to apply the changes:
 
     ```command
     sudo systemctl restart prometheus
     ```
 
-1.  To verify that Prometheus is successfully scraping the Flask app, open a web browser and navigate to the Prometheus UI:
+1.  To verify that Prometheus is successfully scraping the Flask app, open a web browser and navigate to the Prometheus user interface on port 9090. This is the default port used for Prometheus. Replace {{< placeholder "INSTANCE_IP_ADDRESS" >}} with the IP of your instance:
 
     ```command
     http://{{< placeholder "INSTANCE_IP_ADDRESS" >}}:9090
     ```
 
-1.  In the Prometheus UI click the **Status** tab and select **Targets**. You should see the Flask application service listed as a target with a status of `up`, indicating that Prometheus is successfully scraping metrics from the application.
+1.  In the Prometheus UI click the **Status** tab and select **Targets**. You should see the Flask application service listed as a target with a status of `UP`, indicating that Prometheus is successfully scraping metrics from the application.
 
     ![Prometheus UI showing the status and targets of monitored services.](prometheus-ui-targets.png)
 
@@ -534,7 +534,7 @@ The [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_
 
 Grafana serves as the visualization layer, providing an interface for creating dashboards from Prometheus metrics.
 
-1.  Open a web browser and visit the following URL to access the Grafana UI:
+1.  Open a web browser and visit the following URL to access the Grafana UI on port 3000 (the default port for Grafana). Replace {{< placeholder "INSTANCE_IP_ADDRESS" >}} with the IP of your instance:
 
     ```command
     http://{{< placeholder "INSTANCE_IP_ADDRESS" >}}:3000
@@ -548,7 +548,7 @@ Grafana serves as the visualization layer, providing an interface for creating d
 
     ![Grafana Dashboards page with an option to create a new dashboard.](grafana-dashboards-overview.png)
 
-1.  Next, click **Add visualization**:
+1.  Click **Add visualization**:
 
     ![Grafana interface showing the Add Visualization dialog for creating a new graph.](grafana-add-visualization.png)
 
@@ -571,17 +571,15 @@ Grafana serves as the visualization layer, providing an interface for creating d
 
     ![Grafana dashboard displaying a latency graph for a Flask application, based on Prometheus data.](grafana-latency-dashboard.png)
 
-    This visualization replicates CloudWatch's endpoint latency graph, detailing the average latency over time for a particular endpoint. Prometheus further enhances this by providing default labels, such as method, path, and status codes, for greater granularity in analysis.
+    This visualization replicates CloudWatch's endpoint latency graph, detailing the average latency over time for a particular endpoint. Prometheus also provides default labels such as method, path, and status codes, for additional granularity in analysis.
 
 ## Additional Considerations and Concerns
 
-When migrating from AWS CloudWatch to Prometheus and Grafana, it's important to address several key considerations to ensure a smooth and effective transition.
-
 ### Cost Management
 
-CloudWatch incurs costs based on the number of API requests, log volume, and data retention. As monitoring scales, these costs increase. In contrast, Prometheus is an open source tool with no direct charges for usage. Therefore, migrating to Prometheus and Grafana offers a potential for cost savings.
+CloudWatch incurs costs based on the number of API requests, log volume, and data retention. As monitoring scales, these costs can increase. Prometheus is an open source tool with no direct charges for usage and offers a potential for cost savings.
 
-However, infrastructure costs for running Prometheus and Grafana are still a consideration. Running Prometheus and Grafana requires provisioning compute and storage resources, with expenses for maintenance and handling network traffic. Additionally, because Prometheus is designed for short-term data storage, setting up long-term storage solution may also increase costs.
+However, infrastructure costs for running Prometheus and Grafana are still a consideration. Running Prometheus and Grafana requires provisioning compute and storage resources, with expenses for maintenance and handling network traffic. Additionally, since Prometheus is primarily designed for short-term data storage, setting up long-term storage solution may also increase costs.
 
 **Recommendation**:
 
@@ -590,7 +588,7 @@ However, infrastructure costs for running Prometheus and Grafana are still a con
 
 ### Data Consistency and Accuracy
 
-CloudWatch aggregates metrics over set intervals, whereas Prometheus collects high-resolution raw metrics. Therefore, migrating from CloudWatch to Prometheus raises potential concerns about data consistency and accuracy during and after the transition.
+CloudWatch aggregates metrics over set intervals, whereas Prometheus collects high-resolution raw metrics. Therefore, migrating from CloudWatch to Prometheus can raise potential concerns about data consistency and accuracy during and after the transition.
 
 **Recommendation**:
 
@@ -599,9 +597,9 @@ CloudWatch aggregates metrics over set intervals, whereas Prometheus collects hi
 
 ### CloudWatch Aggregated Data Versus Prometheus Raw Data
 
-Aggregated data from CloudWatch offers a high-level view of system health and application performance, which is helpful for monitoring broader trends. However, the raw data from Prometheus enables detailed analyses and granular troubleshooting. Both approaches have their use cases, and it's important to understand which is most appropriate for you.
+Aggregated data from CloudWatch offers a high-level view of system health and application performance, and can be helpful for monitoring broader trends. Alternatively, the raw data from Prometheus enables detailed analyses and granular troubleshooting. Both approaches have their use cases, and it's important to understand which is most appropriate for you.
 
-While Prometheus can collect raw data, consider whether CloudWatch's aggregation is more useful, and how to replicate that with Grafana dashboards or Prometheus queries.
+While Prometheus has the ability to collect raw data, consider whether CloudWatch's aggregation is more useful, and how to replicate that with Grafana dashboards or Prometheus queries.
 
 **Recommendation**:
 
@@ -622,7 +620,7 @@ Migrating an alerting setup requires translating existing CloudWatch alarms into
 
 ### Security and Access Controls
 
-CloudWatch integrates with AWS Identity and Access Management (IAM) for role-based access control (RBAC). This can help simplify the management of who can view, edit, or delete logs and metrics. Meanwhile, Prometheus and Grafana require manual configuration of security and access controls.
+CloudWatch integrates with AWS Identity and Access Management (IAM) for role-based access control (RBAC). This helps with management of who can view, edit, or delete logs and metrics. Prometheus and Grafana require manual configuration of security and access controls.
 
 Securing Prometheus and Grafana involves setting up user authentication (e.g. OAuth, LDAP, etc.) and ensuring metrics and dashboards are only accessible to authorized personnel. To maintain security, data in transit should be encrypted using TLS.
 
@@ -634,7 +632,7 @@ Securing Prometheus and Grafana involves setting up user authentication (e.g. OA
 
 ### Separate Log and Metric Responsibilities
 
-Because Prometheus is primarily a metrics-based monitoring solution, it does not have built-in capabilities for handling logs in the way CloudWatch does. Therefore, it's important to decouple log management needs from metric collection when migrating.
+Since Prometheus is primarily a metrics-based monitoring solution, it does not have built-in capabilities for handling logs in the same way CloudWatch does. Therefore, it's important to decouple log management needs from metric collection when migrating.
 
 **Recommendation**:
 

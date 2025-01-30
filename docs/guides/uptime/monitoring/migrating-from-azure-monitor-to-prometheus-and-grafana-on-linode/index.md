@@ -4,7 +4,7 @@ title: "Migrating From Azure Monitor to Prometheus and Grafana on Linode"
 description: "Migrating from Azure Metrics to Prometheus and Grafana? Learn how to configure metrics, build custom dashboards, and optimize monitoring with cost-effective, open source tools."
 authors: ["Linode"]
 contributors: ["Linode"]
-published: 2024-11-19
+published: 2025-01-28
 keywords: ['azure','azure metrics','prometheus','grafana','azure metrics migration','prometheus and grafana setup','migrate to prometheus','grafana dashboards for metrics','azure metrics alternative','open source monitoring tools','prometheus metrics','grafana visualization','monitoring and observability','prometheus grafana guide','azure metrics to Prometheus tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -20,22 +20,22 @@ This guide explains how to migrate Azure Monitor service logs and metrics to Pro
 
 ## Introduction to Prometheus and Grafana
 
-Prometheus is a [time-series database](https://prometheus.io/docs/concepts/data_model/#data-model) that collects and stores metrics from applications and services. It provides a foundation for monitoring system performance using the PromQL query language to extract and analyze granular data. Prometheus autonomously scrapes (*pulls*) metrics from targets at specified intervals, efficiently storing data through compression while retaining the most critical details. It also supports alerting based on metric thresholds, making it suitable for dynamic, cloud-native environments.
+[Prometheus](https://prometheus.io/docs/introduction/overview/) is a [time-series database](https://prometheus.io/docs/concepts/data_model/#data-model) that collects and stores metrics from applications and services. It provides a foundation for monitoring system performance using the PromQL query language to extract and analyze granular data. Prometheus autonomously scrapes (*pulls*) metrics from targets at specified intervals, efficiently storing data through compression while retaining the most critical details. It also supports alerting based on metric thresholds, making it suitable for dynamic, cloud-native environments.
 
-Grafana is a visualization and analytics platform that integrates with Prometheus. It enables users to create real-time, interactive dashboards, visualize metrics, and set up alerts to gain deeper insights into system performance. Grafana can unify data from a wide array of data sources, including Prometheus, to provide a centralized view of system metrics.
+[Grafana](https://grafana.com/docs/) is a visualization and analytics platform that integrates with Prometheus. It enables users to create real-time, interactive dashboards, visualize metrics, and set up alerts to gain deeper insights into system performance. Grafana can unify data from a wide array of data sources, including Prometheus, to provide a centralized view of system metrics.
 
-Prometheus and Grafana are often used together to monitor service health, detect anomalies, and issue alerts. Being both open source and platfrom-agnostic allows them to be deployed across a diverse range of cloud providers and on-premise infrastructures. Organizations often adopt these tools to reduce operational costs while gaining greater control over how data is collected, stored, and visualized.
+Prometheus and Grafana are considered industry standard, and are commonly used together to monitor service health, detect anomalies, and issue alerts. Being both open source and platfrom-agnostic allows them to be deployed across a diverse range of cloud providers and on-premise infrastructures. Organizations often adopt these tools to reduce operational costs while gaining greater control over how data is collected, stored, and visualized.
 
-{{< note >}}
-While the Linode Marketplace offers an easily deployable [Prometheus and Grafana Marketplace app](https://www.linode.com/marketplace/apps/linode/prometheus-grafana/), this tutorial walks through a manual installation.
+{{< note title="Prometheus and Grafana Marketplace App" >}}
+If you prefer an automatic deployment rather than the manual installation steps in this guide, Prometheus and Grafana can be deployed through our [Prometheus and Grafana Marketplace app](https://www.linode.com/marketplace/apps/linode/prometheus-grafana/).
 {{< /note >}}
 
 ## Before You Begin
 
-1.  If you do not already have a virtual machine to use, create a Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides. The examples in this guide use the Linode 8 GB Shared CPU plan with Ubuntu 24.04 LTS.
+1.  If you do not already have a virtual machine to use, create a Compute Instance using the steps in our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Create a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides. The examples in this guide use a Linode 8 GB Shared CPU plan with the Ubuntu 24.04 LTS distribution.
 
     {{< note type="primary" title="Provisioning Compute Instances with the Linode CLI" isCollapsible="true" >}}
-    The [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli) provides an alternative way to provision resources. For example, the following command creates a **Linode 8 GB** compute instance (`g6-standard-4`) running Ubuntu 24.04 LTS (`linode/ubuntu24.04`) in the Miami datacenter (`us-mia`):
+    Use these steps if you prefer to use the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli) to provision resources. The following command creates a **Linode 8 GB** compute instance (`g6-standard-4`) running Ubuntu 24.04 LTS (`linode/ubuntu24.04`) in the Miami datacenter (`us-mia`). Replace the plan type and region as desired:
 
     ```command
     linode-cli linodes create \
@@ -49,12 +49,12 @@ While the Linode Marketplace offers an easily deployable [Prometheus and Grafana
 
     Note the following key points:
 
-    -   Replace {{< placeholder "PASSWORD" >}} with a secure alternative.
+    -   Replace {{< placeholder "PASSWORD" >}} with a secure alternative for your root password.
     -   This command assumes that an SSH public/private key pair exists, with the public key stored as `id\_rsa.pub` in the user’s `$HOME/.ssh/` folder.
     -   The `--label` argument specifies the name of the new server (`monitoring-server`).
     {{< /note >}}
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Set Up and Secure a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -62,7 +62,11 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install Prometheus as a Service
 
-In order to install Prometheus, you must first SSH into the newly provisioned Linode.
+1.  To install Prometheus, login via SSH to your Linode instance as your limited sudo user:
+
+    ```command
+    ssh {{< placeholder "SUDO_USER" >}}@{{< placeholder "LINODE_IP" >}}
+    ```
 
 1.  Create a dedicated user for Prometheus, disable its login, and create the necessary directories for Prometheus:
 
@@ -117,13 +121,13 @@ In order to install Prometheus, you must first SSH into the newly provisioned Li
 
 A `systemd` service configuration file must be created to run Prometheus as a service.
 
-1.  Create the service file using a command line text editor such as `nano`.
+1.  Create the service file using the text editor of your choice. This guide uses `nano`.
 
     ```command
     sudo nano /etc/systemd/system/prometheus.service
     ```
 
-    Add the following content to the file:
+    Add the following content to the file, and save your changes:
 
     ```file {title="/etc/systemd/system/prometheus.Service"}
     [Unit]
@@ -145,22 +149,20 @@ A `systemd` service configuration file must be created to run Prometheus as a se
     WantedBy=multi-user.target
     ```
 
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
-
 1.  Reload the `systemd` configuration files to apply the new service file:
 
     ```command
     sudo systemctl daemon-reload
     ```
 
-1.  Run the following `systemctl` commands to start the `flash-app` service and enable it to automatically start after a system reboot:
+1.  Using `systemctl`, start the `flash-app` service and enable it to automatically start after a system reboot:
 
     ```command
     sudo systemctl start prometheus
     sudo systemctl enable prometheus
     ```
 
-1.  Enter the following command to verify that Prometheus is running:
+1.  Verify that Prometheus is running:
 
     ```command
     systemctl status prometheus
@@ -179,9 +181,9 @@ A `systemd` service configuration file must be created to run Prometheus as a se
          CGroup: /system.slice/prometheus.service
     ```
 
-    When done, press <kbd>Q</kbd> key to exit the status output and return to the terminal prompt.
+    When done, press the <kbd>Q</kbd> key to exit the status output and return to the terminal prompt.
 
-1.  Open a web browser and visit port `9090` ( Prometheus's default port) of your instance's IP address:
+1.  Open a web browser and visit your instance's IP address on port `9090` (Prometheus's default port):
 
     ```command
     http://{{< placeholder "IP_ADDRESS" >}}:9090
@@ -212,7 +214,7 @@ Grafana provides an `apt` repository, reducing the number of steps needed to ins
     sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
     ```
 
-1.  Update package index and install Grafana:
+1.  Update the package index and install Grafana:
 
     ```command
     sudo apt update
@@ -246,7 +248,7 @@ Grafana provides an `apt` repository, reducing the number of steps needed to ins
 
 ### Connect Grafana to Prometheus
 
-1.  Open a web browser and visit port `3000` (Grafana's default port) of your instance's IP address to access the Grafana web UI:
+1.  Open a web browser and visit your instance's IP address on port `3000` (Grafana's default port) to access the Grafana web UI:
 
     ```command
     http://{{< placeholder "IP_ADDRESS" >}}:3000
@@ -260,7 +262,7 @@ Grafana provides an `apt` repository, reducing the number of steps needed to ins
 
     ![Grafana user interface prompting for a new password after the first login.](grafana-new-password-prompt.png)
 
-    Now it's time to add Prometheus as a data source. Expand the **Home** menu, navigate to the **Connections** entry, then click **Add new connection**:
+1.  Add Prometheus as a data source by expanding the **Home** menu, navigating to the **Connections** entry, and clicking **Add new connection**:
 
     ![Grafana home menu with the option to add a new connection under the Connections section.](grafana-add-new-connection.png)
 
@@ -276,21 +278,21 @@ Grafana provides an `apt` repository, reducing the number of steps needed to ins
 
     ![Grafana test result confirming successful connection to a Prometheus data source.](grafana-connection-test-success.png)
 
-    If the test succeeds, your Grafana installation should now be connected to the Prometheus installation running on the same Linode.
+    If successful, your Grafana installation is now connected to the Prometheus installation running on the same Linode.
 
 ## Migrate from Azure Monitor to Prometheus and Grafana
 
-Migrating from Azure Monitor to Prometheus and Grafana offers several advantages. These include increased control data storage and handling, cost reduction, and enhanced monitoring capabilities across multi-cloud or hybrid environments. However, the transition requires careful planning and a clear understanding of the differences between these tools:
+Migrating from Azure Monitor to Prometheus and Grafana can offer several advantages, including increased control data storage and handling, potential reduction in cost, and enhanced monitoring capabilities across multi-cloud or hybrid environments. However, the transition requires careful planning and a clear understanding of the differences between them:
 
 | Feature | Azure Monitor | Prometheus |
 | :---- | :---- | :---- |
-| Integration and Configuration | Provides out-of-the-box integrations to simplify monitoring Azure resources. | Cloud-agnostic and highly configurable, enabling integration across diverse environments. |
+| Integration and Configuration | Out-of-the-box integrations to simplify monitoring Azure resources. | Cloud-agnostic and highly configurable, enabling integration across diverse environments. |
 | Data Collection | Passively collects data from Azure resources. | Actively scrapes data at defined intervals from configured targets. |
 | Data Storage | Fully manages data storage, including long-term retention. | Defaults to local short-term storage but supports integration with external long-term storage solutions. |
 
 While Azure Monitor includes native tools for creating dashboards, Grafana enhances visualization capabilities by supporting multiple data sources. This allows users to combine real-time and historical data from Azure Monitor, Prometheus, and other platforms in a single unified view.
 
-Applications monitored by Azure Monitor might use the following tools:
+Applications monitored by Azure Monitor may use the following tools:
 
 -   [Azure OpenTelemetry Exporter](https://learn.microsoft.com/en-us/python/api/overview/azure/monitor-opentelemetry-exporter-readme?view=azure-python-preview): For intentional collection of application metrics using the OpenTelemetry Standard.
 -   [Application Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview): For automatic collection of metrics and telemetry data from applications.
@@ -316,7 +318,7 @@ Applications monitored by Azure Monitor might use the following tools:
     sudo apt install python3.12-venv
     ```
 
-1.  Create a virtual environment named `venv` within the `example-flask-prometheus` directory:
+1.  Using the `venv` utility, create a virtual environment named `venv` within the `example-flask-prometheus` directory:
 
     ```command
     python3 -m venv venv
@@ -371,7 +373,7 @@ Applications monitored by Azure Monitor might use the following tools:
 
 ### Assess Current Monitoring Requirements
 
-Begin the migration process by auditing the current Azure Monitor configuration. Identify the following:
+Begin the migration process by auditing your current Azure Monitor configuration, including:
 
 -   **Metrics**: Catalog the metrics being monitored, their collection intervals, and how they are utilized in day-to-day operations.
 -   **Logs**: Review logs collected from Azure resources and applications, noting any patterns or specific data points needed for troubleshooting or analysis.
@@ -379,7 +381,7 @@ Begin the migration process by auditing the current Azure Monitor configuration.
 
 This assessment can help determine the equivalent monitoring setup needed for Prometheus and Grafana.
 
-The screenshots below are examples of Azure Monitor metrics captured for a Python Flask application running on an Azure Virtual Machine. These metrics, such as server request counts and response latency, would need to be migrated to Prometheus for continued monitoring.
+The screenshots below are examples of Azure Monitor metrics captured for an example Python Flask application running on an Azure Virtual Machine. These metrics, such as server request counts and response latency, would need to be migrated to Prometheus for continued monitoring.
 
 ![Azure Monitor interface showing a custom metric for server request counts in a Python Flask application running on an Azure Virtual Machine.](azure-monitor-custom-metrics-request-count.png)
 
@@ -391,43 +393,43 @@ Azure Monitor also collects logs from Azure resources. The following example sho
 
 ### Export Existing Azure Monitor Logs and Metrics
 
-There are two commonly used approaches to exporting logs and metrics from Azure Monitor for migration to Prometheus and Grafana:
+There are two common approaches for exporting logs and metrics from Azure Monitor to a Prometheus and Grafana monitoring workflow:
 
 #### Option 1: Azure Monitor Metrics Explorer
 
-The [Azure Monitor Metrics Exporter](https://github.com/webdevops/azure-metrics-exporter) is an open source tool designed to scrape Azure metrics and expose them in a Prometheus-compatible format. It supports collecting metrics from various Azure resources, such as Virtual Machines, App Services, and SQL Databases.
+The [Azure Monitor Metrics Exporter](https://github.com/webdevops/azure-metrics-exporter) is an open source tool designed to scrape Azure metrics and expose them in a Prometheus-compatible format. It supports collecting metrics from various Azure resources such as Virtual Machines, App Services, and SQL Databases.
 
 Typically deployed as a container or agent, the exporter is configured with Azure service principal credentials to access resources. Metrics are exposed at an HTTP endpoint, which Prometheus can scrape at regular intervals.
 
-While this method enables real-time metric collection, it may require tuning to stay within Azure API limits in high-volume environments. Additionally, some Azure Monitor metrics or custom metrics may not be fully compatible with this exporter, necessitating alternative configurations.
+While this method enables real-time metric collection, it may require tuning to stay within Azure API limits in high-volume environments. Additionally, some Azure Monitor metrics or custom metrics may not be fully compatible with the exporter, necessitating alternative configurations.
 
 #### Option 2: Diagnostic Settings in Azure Monitor
 
 Azure Monitor’s [diagnostic settings](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/diagnostic-settings) provide another way to export logs and metrics. This approach uses [Azure Event Hub](https://azure.microsoft.com/en-us/products/event-hubs), a managed data streaming service, to transfer data from Azure Monitor.
 
--   **Metrics Workflow:**
+**Metrics Workflow:**
 
-    1.  Configure diagnostic settings for the Azure resources you want to export metrics from.
+1.  Configure diagnostic settings for the Azure resources from which you want to export metrics.
 
-    1.  Specify Azure Event Hub as the destination.
+1.  Specify Azure Event Hub as the destination.
 
-    1.  Use a streaming service, such as Kafka or a custom consumer, to route data from Event Hub to Prometheus-compatible storage (e.g. a time-series database). Grafana can ingest metrics directly if the format is supported.
+1.  Use a streaming service, such as Kafka or a custom consumer, to route data from Event Hub to Prometheus-compatible storage (e.g. a time-series database). Grafana can ingest metrics directly if the format is supported.
 
--   **Logs Workflow:**
+**Logs Workflow:**
 
-    1.  Set diagnostic settings to route logs from Azure Monitor to Azure Event Hub.
+1.  Set diagnostic settings to route logs from Azure Monitor to Azure Event Hub.
 
-    1.  Stream logs from Event Hub to a log platform such as [Loki](https://github.com/grafana/loki), commonly paired with Grafana for visualization.
+1.  Stream logs from Event Hub to a log platform such as [Loki](https://github.com/grafana/loki), which is commonly paired with Grafana for visualization.
 
-    1.  If needed, employ an ETL (Extract, Transform, Load) pipeline or serverless job to reformat logs for compatibility with Loki or another log storage system.
+1.  If needed, employ an ETL (Extract, Transform, Load) pipeline or serverless job to reformat logs for compatibility with Loki or another log storage system.
 
 ### Expose Application Metrics to Prometheus
 
-Prometheus works differently from Azure Monitor: instead of *pushing* data like Azure Monitor, Prometheus *pulls* metrics from the monitored application. After assessing or exporting metrics as needed, modify the application to enable Prometheus metric scraping so that it collects the same metrics previously sent to Azure Monitor.
+Prometheus works differently from Azure Monitor: instead of *pushing* data like Azure Monitor, Prometheus *pulls* metrics from the monitored application. After assessing or exporting metrics as needed, modify the application to enable Prometheus metric scraping so that it collects the same metrics previously sent to Azure Monitor. This process varies from application to application.
 
-The [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_flask_exporter) is a standard library for instrumenting Flask applications to expose Prometheus metrics.
+For the example Flask application in this guide, the [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_flask_exporter) is a standard library that can be used for instrumenting Flask applications to expose Prometheus metrics.
 
-1.  Open the `app.py` file:
+1.  Using a text editor of your choice, open the `app.py` file for the Flask application:
 
     ```command
     nano app.py
@@ -502,10 +504,10 @@ The [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_
          CGroup: /system.slice/flask-app.service
     ```
 
-1.  Make sure the Flask app is accessible by issuing the following cURL command:
+1.  Test to see if the Flask app is accessible by issuing the following cURL command. Replace {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the IP address of the instance where the Flask app is running:
 
     ```command
-    curl http://{{< placeholder "IP_ADDRESS" >}}:8080
+    curl http://{{< placeholder "FLASK_APP_IP_ADDRESS" >}}:8080
     ```
 
     You should receive the following response:
@@ -524,13 +526,13 @@ The [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_
 
 ### Configure Prometheus to Ingest Application Metrics
 
-1.  Modify the Prometheus configuration at `/etc/prometheus/prometheus.yml` to include the Flask application as a scrape target:
+1.  Using a text editor, open and modify the Prometheus configuration at `/etc/prometheus/prometheus.yml` to include the Flask application as a scrape target:
 
     ```command
     sudo nano /etc/prometheus/prometheus.yml
     ```
 
-    Append the following content to the `scrap_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the actual IP address of your `monitoring-server` instance, or in this case, `localhost`:
+    Append the following content to the `scrap_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the IP address of your `monitoring-server` instance, or in this case, `localhost`:
 
     ```file {title="/etc/prometheus/prometheus.yml"}
       - job_name: 'flask_app'
@@ -540,19 +542,19 @@ The [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_
 
     This configuration tell Prometheus to scrape metrics from the Flask application running on port `8080`.
 
-1.  Save the file and restart Prometheus to apply the changes:
+1.  Save the file, and restart Prometheus to apply the changes:
 
     ```command
     sudo systemctl restart prometheus
     ```
 
-1.  To verify that Prometheus is successfully scraping the Flask app, open a web browser and navigate to the Prometheus UI:
+1.  To verify that Prometheus is successfully scraping the Flask app, open a web browser and navigate to the Prometheus user interface on port 9090. This is the default port used for Prometheus. Replace {{< placeholder "INSTANCE_IP_ADDRESS" >}} with the IP of your instance:
 
     ```command
     http://{{< placeholder "INSTANCE_IP_ADDRESS" >}}:9090
     ```
 
-1.  In the Prometheus UI click the **Status** tab and select **Targets**. You should see the Flask application service listed as a target with a status of `up`, indicating that Prometheus is successfully scraping metrics from the application.
+1.  In the Prometheus UI click the **Status** tab and select **Targets**. You should see the Flask application service listed as a target with a status of `UP`, indicating that Prometheus is successfully scraping metrics from the application.
 
     ![Prometheus UI showing the status and targets of monitored services.](prometheus-ui-targets.png)
 
@@ -560,7 +562,7 @@ The [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_
 
 Grafana serves as the visualization layer, providing an interface for creating dashboards from Prometheus metrics.
 
-1.  Open a web browser and visit the following URL to access the Grafana UI:
+1.  Open a web browser and visit the following URL to access the Grafana UI on port 3000 (the default port for Grafana). Replace {{< placeholder "INSTANCE_IP_ADDRESS" >}} with the IP of your instance:
 
     ```command
     http://{{< placeholder "INSTANCE_IP_ADDRESS" >}}:3000
@@ -574,7 +576,7 @@ Grafana serves as the visualization layer, providing an interface for creating d
 
     ![Grafana Dashboards page with an option to create a new dashboard.](grafana-dashboards-overview.png)
 
-1.  Next, click **Add visualization**:
+1.  Click **Add visualization**:
 
     ![Grafana interface showing the Add Visualization dialog for creating a new graph.](grafana-add-visualization.png)
 
@@ -597,15 +599,13 @@ Grafana serves as the visualization layer, providing an interface for creating d
 
     ![Grafana dashboard displaying a latency graph for a Flask application, based on Prometheus data.](grafana-latency-dashboard.png)
 
-    This visualization replicates Azure Monitor's latency metrics, detailing the average latency over time for a specific endpoint. Prometheus further enhances this by providing default labels, such as method, path, and status codes, for greater granularity in analysis.
+    This visualization replicates Azure Monitor's latency metrics, detailing the average latency over time for a specific endpoint. Prometheus also provides default labels such as method, path, and status codes, for additional granularity in analysis.
 
 ## Additional Considerations and Concerns
 
-When migrating from Azure Monitor to Prometheus and Grafana, it's important to address several key considerations to ensure a smooth and effective transition.
-
 ### Cost Management
 
-Migrating to Prometheus and Grafana eliminates the recurring licensing costs associated with Azure Monitor. However, infrastructure costs for running Prometheus and Grafana are still a consideration. Running Prometheus and Grafana requires provisioning compute and storage resources, with expenses for maintenance and handling network traffic. Additionally, because Prometheus is designed for short-term data storage, setting up a long-term storage solution may also increase costs.
+Migrating to Prometheus and Grafana eliminates the recurring licensing costs associated with Azure Monitor. However, infrastructure costs for running Prometheus and Grafana are still a consideration. Running Prometheus and Grafana requires provisioning compute and storage resources, with expenses for maintenance and handling network traffic. Additionally, since Prometheus is primarily designed for short-term data storage, setting up a long-term storage solution may also increase costs.
 
 **Recommendation**:
 
@@ -616,18 +616,18 @@ Migrating to Prometheus and Grafana eliminates the recurring licensing costs ass
 
 ### Data Consistency and Accuracy
 
-Azure Monitor automatically standardizes metrics and logs within its centralized system. In contrast, Prometheus and Grafana require custom configurations, raising concerns about consistency in data formatting, collection intervals, and overall accuracy during migration.
+Azure Monitor automatically standardizes metrics and logs within its centralized system. In contrast, Prometheus and Grafana require custom configurations, which can raise concerns about consistency in data formatting, collection intervals, and overall accuracy during migration.
 
 **Recommendation**:
 
--   Document and map existing Azure Monitor metrics. logs, and alerts to align collection intervals and query formats.
+-   Document and map existing Azure Monitor metrics, logs, and alerts to align collection intervals and query formats.
 -   Standardize scrape intervals and retention policies across all Prometheus exporters to ensure consistent and comparable data.
--   Regularly audit and validate data accuracy between Azure Monitor and Prometheus to detect any discrepancies early in the migration process.
+-   Early in the migration process, regularly audit and validate data accuracy between Azure Monitor and Prometheus to detect any discrepancies.
 -   Utilize Grafana dashboards to compare data from both systems during the migration to ensure equivalence and reliability.
 
 ### Azure Monitor Aggregated Data Versus Prometheus Raw Data
 
-Azure Monitor simplifies analysis by aggregating data, offering summary metrics that reduce data volume while providing a high-level view of system health. In contrast, Prometheus collects raw, fine-grained metrics. While this enables detailed analyses and granular troubleshooting, it can also increase storage requirements and complexity when interpreting data.
+Azure Monitor aggregates data to offer summary metrics that can reduce data volume while providing a high-level view of system health. Alternatively, Prometheus collects raw, fine-grained metrics. While this enables detailed analyses and granular troubleshooting, it can also increase storage requirements and complexity when interpreting data.
 
 **Recommendation**:
 
@@ -641,13 +641,13 @@ Azure Monitor supports custom alerts based on queries or thresholds. These can b
 
 **Recommendation**:
 
--   Audit all Azure Monitor alerts to understand their conditions and thresholds
+-   Audit all Azure Monitor alerts to understand their conditions and thresholds.
 -   Replicate these alerts in Prometheus using PromQL, ensuring they match the original intent and refining where necessary.
 -   Integrate Alertmanager with any existing notification systems (e.g. email, Slack, etc.) to maintain consistency in how teams are alerted to critical events.
 
 ### Security and Access Controls
 
-Azure Monitor integrates with Azure Active Directory to provide built-in role-based access control (RBAC). In contrast, securing Prometheus and Grafana involves setting up user authentication (e.g. OAuth, LDAP, etc.) and ensure metrics and dashboards are only accessible to authorized personnel. To maintain security, data in transit should be encrypted using TLS.
+Azure Monitor integrates with Azure Active Directory to provide built-in, role-based access control (RBAC). Securing Prometheus and Grafana requires configuring user authentication (e.g. OAuth, LDAP, etc.) manually to ensure metrics and dashboards are only accessible to authorized personnel. To maintain security, data in transit should be encrypted using TLS.
 
 **Recommendation**:
 

@@ -4,7 +4,7 @@ title: "Migrating From GCP Cloud Monitoring to Prometheus and Grafana on Linode"
 description: "Migrating from GCP Cloud Monitoring to Prometheus and Grafana? Learn how to configure metrics, build custom dashboards, and optimize monitoring with cost-effective, open source tools."
 authors: ["Linode"]
 contributors: ["Linode"]
-published: 2024-11-19
+published: 2025-01-28
 keywords: ['gcp','gcp cloud monitoring','prometheus','grafana','gcp cloud monitoring migration','prometheus and grafana setup','migrate to prometheus','grafana dashboards for metrics','gcp cloud monitoring alternative','open source monitoring tools','prometheus metrics','grafana visualization','monitoring and observability','prometheus grafana guide','gcp cloud monitoring to Prometheus tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -21,22 +21,22 @@ This guide explains how to migrate standard GCP Cloud Monitoring service logs an
 
 ## Introduction to Prometheus and Grafana
 
-Prometheus is a [time-series database](https://prometheus.io/docs/concepts/data_model/#data-model) that collects and stores metrics from applications and services. It provides a foundation for monitoring system performance using the PromQL query language to extract and analyze granular data. Prometheus autonomously scrapes (*pulls*) metrics from targets at specified intervals, efficiently storing data through compression while retaining the most critical details. It also supports alerting based on metric thresholds, making it suitable for dynamic, cloud-native environments.
+[Prometheus](https://prometheus.io/docs/introduction/overview/) is a [time-series database](https://prometheus.io/docs/concepts/data_model/#data-model) that collects and stores metrics from applications and services. It provides a foundation for monitoring system performance using the PromQL query language to extract and analyze granular data. Prometheus autonomously scrapes (*pulls*) metrics from targets at specified intervals, efficiently storing data through compression while retaining the most critical details. It also supports alerting based on metric thresholds, making it suitable for dynamic, cloud-native environments.
 
-Grafana is a visualization and analytics platform that integrates with Prometheus. It enables users to create real-time, interactive dashboards, visualize metrics, and set up alerts to gain deeper insights into system performance. Grafana can unify data from a wide array of data sources, including Prometheus, to provide a centralized view of system metrics.
+[Grafana](https://grafana.com/docs/) is a visualization and analytics platform that integrates with Prometheus. It enables users to create real-time, interactive dashboards, visualize metrics, and set up alerts to gain deeper insights into system performance. Grafana can unify data from a wide array of data sources, including Prometheus, to provide a centralized view of system metrics.
 
-Prometheus and Grafana are often used together to monitor service health, detect anomalies, and issue alerts. Being both open source and platfrom-agnostic allows them to be deployed across a diverse range of cloud providers and on-premise infrastructures. Organizations often adopt these tools to reduce operational costs while gaining greater control over how data is collected, stored, and visualized.
+Prometheus and Grafana are considered industry standard, and are commonly used together to monitor service health, detect anomalies, and issue alerts. Being both open source and platfrom-agnostic allows them to be deployed across a diverse range of cloud providers and on-premise infrastructures. Organizations often adopt these tools to reduce operational costs while gaining greater control over how data is collected, stored, and visualized.
 
-{{< note >}}
-While the Linode Marketplace offers an easily deployable [Prometheus and Grafana Marketplace app](https://www.linode.com/marketplace/apps/linode/prometheus-grafana/), this tutorial walks through a manual installation.
+{{< note title="Prometheus and Grafana Marketplace App" >}}
+If you prefer an automatic deployment rather than the manual installation steps in this guide, Prometheus and Grafana can be deployed through our [Prometheus and Grafana Marketplace app](https://www.linode.com/marketplace/apps/linode/prometheus-grafana/).
 {{< /note >}}
 
 ## Before You Begin
 
-1.  If you do not already have a virtual machine to use, create a Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides. The examples in this guide use the Linode 8 GB Shared CPU plan with Ubuntu 24.04 LTS.
+1.  If you do not already have a virtual machine to use, create a Compute Instance using the steps in our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Create a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides. The examples in this guide use a Linode 8 GB Shared CPU plan with the Ubuntu 24.04 LTS distribution.
 
     {{< note type="primary" title="Provisioning Compute Instances with the Linode CLI" isCollapsible="true" >}}
-    The [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli) provides an alternative way to provision resources. For example, the following command creates a **Linode 8 GB** compute instance (`g6-standard-4`) running Ubuntu 24.04 LTS (`linode/ubuntu24.04`) in the Miami datacenter (`us-mia`):
+    Use these steps if you prefer to use the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli) to provision resources. The following command creates a **Linode 8 GB** compute instance (`g6-standard-4`) running Ubuntu 24.04 LTS (`linode/ubuntu24.04`) in the Miami datacenter (`us-mia`). Replace the plan type and region as desired:
 
     ```command
     linode-cli linodes create \
@@ -50,12 +50,12 @@ While the Linode Marketplace offers an easily deployable [Prometheus and Grafana
 
     Note the following key points:
 
-    -   Replace {{< placeholder "PASSWORD" >}} with a secure alternative.
+    -   Replace {{< placeholder "PASSWORD" >}} with a secure alternative for your root password.
     -   This command assumes that an SSH public/private key pair exists, with the public key stored as `id\_rsa.pub` in the user’s `$HOME/.ssh/` folder.
     -   The `--label` argument specifies the name of the new server (`monitoring-server`).
     {{< /note >}}
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Set Up and Secure a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -63,7 +63,11 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install Prometheus as a Service
 
-In order to install Prometheus, you must first SSH into the newly provisioned Linode.
+1.  To install Prometheus, login via SSH to your Linode instance as your limited sudo user:
+
+    ```command
+    ssh {{< placeholder "SUDO_USER" >}}@{{< placeholder "LINODE_IP" >}}
+    ```
 
 1.  Create a dedicated user for Prometheus, disable its login, and create the necessary directories for Prometheus:
 
@@ -118,13 +122,13 @@ In order to install Prometheus, you must first SSH into the newly provisioned Li
 
 A `systemd` service configuration file must be created to run Prometheus as a service.
 
-1.  Create the service file using a command line text editor such as `nano`.
+1.  Create the service file using the text editor of your choice. This guide uses `nano`.
 
     ```command
     sudo nano /etc/systemd/system/prometheus.service
     ```
 
-    Add the following content to the file:
+    Add the following content to the file, and save your changes:
 
     ```file {title="/etc/systemd/system/prometheus.Service"}
     [Unit]
@@ -146,22 +150,20 @@ A `systemd` service configuration file must be created to run Prometheus as a se
     WantedBy=multi-user.target
     ```
 
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
-
 1.  Reload the `systemd` configuration files to apply the new service file:
 
     ```command
     sudo systemctl daemon-reload
     ```
 
-1.  Run the following `systemctl` commands to start the `flash-app` service and enable it to automatically start after a system reboot:
+1.  Using `systemctl`, start the `flash-app` service and enable it to automatically start after a system reboot:
 
     ```command
     sudo systemctl start prometheus
     sudo systemctl enable prometheus
     ```
 
-1.  Enter the following command to verify that Prometheus is running:
+1.  Verify that Prometheus is running:
 
     ```command
     systemctl status prometheus
@@ -180,9 +182,9 @@ A `systemd` service configuration file must be created to run Prometheus as a se
          CGroup: /system.slice/prometheus.service
     ```
 
-    When done, press <kbd>Q</kbd> key to exit the status output and return to the terminal prompt.
+    When done, press the <kbd>Q</kbd> key to exit the status output and return to the terminal prompt.
 
-1.  Open a web browser and visit port `9090` ( Prometheus's default port) of your instance's IP address:
+1.  Open a web browser and visit your instance's IP address on port `9090` (Prometheus's default port):
 
     ```command
     http://{{< placeholder "IP_ADDRESS" >}}:9090
@@ -213,7 +215,7 @@ Grafana provides an `apt` repository, reducing the number of steps needed to ins
     sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
     ```
 
-1.  Update package index and install Grafana:
+1.  Update the package index and install Grafana:
 
     ```command
     sudo apt update
@@ -247,7 +249,7 @@ Grafana provides an `apt` repository, reducing the number of steps needed to ins
 
 ### Connect Grafana to Prometheus
 
-1.  Open a web browser and visit port `3000` (Grafana's default port) of your instance's IP address to access the Grafana web UI:
+1.  Open a web browser and visit your instance's IP address on port `3000` (Grafana's default port) to access the Grafana web UI:
 
     ```command
     http://{{< placeholder "IP_ADDRESS" >}}:3000
@@ -261,7 +263,7 @@ Grafana provides an `apt` repository, reducing the number of steps needed to ins
 
     ![Grafana user interface prompting for a new password after the first login.](grafana-new-password-prompt.png)
 
-    Now it's time to add Prometheus as a data source. Expand the **Home** menu, navigate to the **Connections** entry, then click **Add new connection**:
+1.  Add Prometheus as a data source by expanding the **Home** menu, navigating to the **Connections** entry, and clicking **Add new connection**:
 
     ![Grafana home menu with the option to add a new connection under the Connections section.](grafana-add-new-connection.png)
 
@@ -277,11 +279,11 @@ Grafana provides an `apt` repository, reducing the number of steps needed to ins
 
     ![Grafana test result confirming successful connection to a Prometheus data source.](grafana-connection-test-success.png)
 
-    If the test succeeds, your Grafana installation should now be connected to the Prometheus installation running on the same Linode.
+    If successful, your Grafana installation is now connected to the Prometheus installation running on the same Linode.
 
 ## Migrate from GCP Cloud Monitoring to Prometheus and Grafana
 
-Migrating from GCP Cloud Monitoring to Prometheus and Grafana requires planning to ensure the continuity of monitoring capabilities. This transition provides greater control over data storage and handling while unlocking the advanced customization and visualization features offered by these open source alternatives.
+Migrating from GCP Cloud Monitoring to Prometheus and Grafana requires planning to ensure the continuity of your monitoring capabilities. Transitioning from GCP Cloud Monitoring provides greater control over data storage and handling while unlocking the advanced customization and visualization features offered by Prometheus and Grafana.
 
 ### Configure Example Flask Server
 
@@ -304,7 +306,7 @@ Migrating from GCP Cloud Monitoring to Prometheus and Grafana requires planning 
     sudo apt install python3.12-venv
     ```
 
-1.  Create a virtual environment named `venv` within the `example-flask-prometheus` directory:
+1.  Using the `venv` utility, create a virtual environment named `venv` within the `example-flask-prometheus` directory:
 
     ```command
     python3 -m venv venv
@@ -359,9 +361,9 @@ Migrating from GCP Cloud Monitoring to Prometheus and Grafana requires planning 
 
 ### Assess current monitoring requirements
 
-Begin by cataloging all metrics currently monitored in GCP Cloud Monitoring. Identify common metrics for web applications, such as latency, request rates, CPU usage, and memory consumption, in order to recreate similar tracking in Prometheus. Also document existing alert configurations, as alerting strategies must be ported to [Prometheus Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/).
+Begin by cataloging all metrics currently monitored in GCP Cloud Monitoring. So that you can recreate similar monitoring with Prometheus, identify common metrics for web applications, such as latency, request rates, CPU usage, and memory consumption. Remember to document existing alert configurations, as alerting strategies must also be ported to [Prometheus Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/).
 
-In the example Python Flask application, Cloud Monitoring collects key metrics such as API requests, latency, and application logs. Below are examples of metrics visualized in GCP Cloud Monitoring dashboards:
+Using the example Python Flask application, GCP Cloud Monitoring collects key metrics such as API requests, latency, and application logs. This may vary depending on your application. Below are examples of metrics visualized in GCP Cloud Monitoring dashboards:
 
 -   **API Requests Over Time**: This dashboard tracks the total number of API requests served by the application:
 
@@ -375,27 +377,27 @@ In the example Python Flask application, Cloud Monitoring collects key metrics s
 
     ![GCP Cloud Monitoring dashboard illustrating API request latency over time.](gcp-api-request-latency.png)
 
-The metrics shown above are typically tracked in a web application. Cloud Monitoring provides these metrics by default when deployed in a GCP Compute Engine, without the need to modify the application code. Documenting these existing metrics and alerts can help you configure equivalent monitoring in Prometheus and Grafana.
+The metrics shown above are typically tracked in a web application. GCP Cloud Monitoring provides these metrics by default when deployed in a GCP Compute Engine, without the need to modify the application code. Documenting these existing metrics and alerts can help you configure equivalent monitoring using Prometheus and Grafana.
 
 ### Export Existing Cloud Monitoring Logs and Metrics
 
-Determine the current usage of Cloud Monitoring and identify any existing logs or data that need to be exported. [GCP Cloud Logging](https://cloud.google.com/logging?hl=en) integrates with Cloud Monitoring and allows you to [create sinks that export logs to different destinations](https://cloud.google.com/logging/docs/export/configure_export_v2). Sinks can be configured to filter logs for a specific application, exporting only relevant entries. Below is an example sink that facilitates the export of logs out of GCP:
+[GCP Cloud Logging](https://cloud.google.com/logging?hl=en) integrates with Cloud Monitoring and allows you to [create sinks that export logs to different destinations](https://cloud.google.com/logging/docs/export/configure_export_v2). Sinks can be configured to filter logs for a specific application, exporting only relevant entries. Below is an example sink that facilitates the export of logs from GCP:
 
 ![The GCP Cloud Logging interface showing the configuration of a log export sink.](gcp-create-log-sink.png)
 
-The [Cloud Monitoring API](https://cloud.google.com/monitoring/api/v3) allows you to programmatically retrieve metric data. Once this data is retrieved, it can be stored locally or sent to another monitoring system. The [Google Cloud Managed Service for Prometheus](https://cloud.google.com/stackdriver/docs/managed-prometheus) includes an adapter to fetch GCP metrics directly. This avoids the need for manual exporting or scripts, providing real-time observability as if these metrics were local to Prometheus.
+The [Cloud Monitoring API](https://cloud.google.com/monitoring/api/v3) allows you to programmatically retrieve metric data. Once this data is retrieved, it can be stored locally or sent to another monitoring system. The [Google Cloud Managed Service for Prometheus](https://cloud.google.com/stackdriver/docs/managed-prometheus) includes an adapter to fetch GCP metrics directly. This avoids the need for manual exporting or scripts, providing real-time observability as if the metrics were local to Prometheus.
 
-GCP Cloud Monitoring has default data retention policies that may limit the availability of historical data. Ensure the exported data frequency meets system requirements, especially when using the API. Data may need to be reformatted to match the destination’s schema. For example, some destinations may require data formatted as JSON, while others might need CSV.
+GCP Cloud Monitoring has default data retention policies that may limit the availability of historical data. Ensure the exported data frequency meets system requirements, especially when using the API since data may need to be reformatted to match the destination’s schema. For example, some destinations may require data formatted as JSON, while others may need CSV.
 
-GCP may charge for API calls and data exports, especially when querying metrics at high frequency. Review GCP’s billing policies to avoid unexpected costs. Keep these considerations in mind to facilitate a smooth transition to Prometheus and Grafana.
+To avoid unexpected costs, review GCP’s billing policies. GCP may charge for API calls and data exports, especially when querying metrics at high frequency.
 
 ### Expose Application Metrics to Prometheus
 
-Prometheus works differently from GCP Cloud Monitoring: instead of *pushing* data like GCP Cloud Monitoring, Prometheus *pulls* metrics from the monitored application. After assessing or exporting metrics as needed, modify the application to enable Prometheus metric scraping so that it collects the same metrics previously sent to GCP Cloud Monitoring.
+Prometheus works differently from GCP Cloud Monitoring: instead of *pushing* data like GCP Cloud Monitoring, Prometheus *pulls* metrics from the monitored application. After assessing or exporting metrics as needed, modify the application to enable Prometheus metric scraping so that it collects the same metrics previously sent to GCP Cloud Monitoring. This process varies from application to application.
 
-The [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_flask_exporter) is a standard library for instrumenting Flask applications to expose Prometheus metrics.
+For the example Flask application in this guide, the [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_flask_exporter) is a standard library that can be used for instrumenting Flask applications to expose Prometheus metrics.
 
-1.  Open the `app.py` file:
+1.  Using a text editor of your choice, open the `app.py` file for the Flask application:
 
     ```command
     nano app.py
@@ -470,10 +472,10 @@ The [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_
          CGroup: /system.slice/flask-app.service
     ```
 
-1.  Make sure the Flask app is accessible by issuing the following cURL command:
+1.  Test to see if the Flask app is accessible by issuing the following cURL command. Replace {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the IP address of the instance where the Flask app is running:
 
     ```command
-    curl http://{{< placeholder "IP_ADDRESS" >}}:8080
+    curl http://{{< placeholder "FLASK_APP_IP_ADDRESS" >}}:8080
     ```
 
     You should receive the following response:
@@ -492,13 +494,13 @@ The [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_
 
 ### Configure Prometheus to Ingest Application Metrics
 
-1.  Modify the Prometheus configuration at `/etc/prometheus/prometheus.yml` to include the Flask application as a scrape target:
+1.  Using a text editor, open and modify the Prometheus configuration at `/etc/prometheus/prometheus.yml` to include the Flask application as a scrape target:
 
     ```command
     sudo nano /etc/prometheus/prometheus.yml
     ```
 
-    Append the following content to the `scrap_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the actual IP address of your `monitoring-server` instance, or in this case, `localhost`:
+    Append the following content to the `scrap_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the IP address of your `monitoring-server` instance, or in this case, `localhost`:
 
     ```file {title="/etc/prometheus/prometheus.yml"}
       - job_name: 'flask_app'
@@ -508,19 +510,19 @@ The [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_
 
     This configuration tell Prometheus to scrape metrics from the Flask application running on port `8080`.
 
-1.  Save the file and restart Prometheus to apply the changes:
+1.  Save the file, and restart Prometheus to apply the changes:
 
     ```command
     sudo systemctl restart prometheus
     ```
 
-1.  To verify that Prometheus is successfully scraping the Flask app, open a web browser and navigate to the Prometheus UI:
+1.  To verify that Prometheus is successfully scraping the Flask app, open a web browser and navigate to the Prometheus user interface on port 9090. This is the default port used for Prometheus. Replace {{< placeholder "INSTANCE_IP_ADDRESS" >}} with the IP of your instance:
 
     ```command
     http://{{< placeholder "INSTANCE_IP_ADDRESS" >}}:9090
     ```
 
-1.  In the Prometheus UI click the **Status** tab and select **Targets**. You should see the Flask application service listed as a target with a status of `up`, indicating that Prometheus is successfully scraping metrics from the application.
+1.  In the Prometheus UI click the **Status** tab and select **Targets**. You should see the Flask application service listed as a target with a status of `UP`, indicating that Prometheus is successfully scraping metrics from the application.
 
     ![Prometheus UI showing the status and targets of monitored services.](prometheus-ui-targets.png)
 
@@ -528,7 +530,7 @@ The [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_
 
 Grafana serves as the visualization layer, providing an interface for creating dashboards from Prometheus metrics.
 
-1.  Open a web browser and visit the following URL to access the Grafana UI:
+1.  Open a web browser and visit the following URL to access the Grafana UI on port 3000 (the default port for Grafana). Replace {{< placeholder "INSTANCE_IP_ADDRESS" >}} with the IP of your instance:
 
     ```command
     http://{{< placeholder "INSTANCE_IP_ADDRESS" >}}:3000
@@ -542,7 +544,7 @@ Grafana serves as the visualization layer, providing an interface for creating d
 
     ![Grafana Dashboards page with an option to create a new dashboard.](grafana-dashboards-overview.png)
 
-1.  Next, click **Add visualization**:
+1.  Click **Add visualization**:
 
     ![Grafana interface showing the Add Visualization dialog for creating a new graph.](grafana-add-visualization.png)
 
@@ -565,27 +567,25 @@ Grafana serves as the visualization layer, providing an interface for creating d
 
     ![Grafana dashboard displaying a latency graph for a Flask application, based on Prometheus data.](grafana-latency-dashboard.png)
 
-    This visualization replicates GCP Cloud Monitoring's latency metrics, detailing the average latency over time for a specific endpoint. Prometheus further enhances this by providing default labels, such as method, path, and status codes, for greater granularity in analysis.
+    This visualization replicates GCP Cloud Monitoring's latency metrics, detailing the average latency over time for a specific endpoint. Prometheus also provides default labels such as method, path, and status codes, for additional granularity in analysis.
 
 ## Additional Considerations and Concerns
 
-When migrating from GCP Cloud Monitoring to Prometheus and Grafana, it's important to address several key considerations to ensure a smooth and effective transition.
-
 ### Cost Management
 
-GCP Cloud Monitoring incurs [costs](https://cloud.google.com/stackdriver/pricing) for log storage and retention, data ingestion, API calls, and alerting policies. Migrating to Prometheus and Grafana eliminates these charges but introduces infrastructure costs for compute, storage, maintenance, and network traffic. Additionally, because Prometheus is designed for short-term data storage, setting up a long-term storage solution may also increase costs.
+GCP Cloud Monitoring incurs [costs](https://cloud.google.com/stackdriver/pricing) for log storage and retention, data ingestion, API calls, and alerting policies. Migrating to Prometheus and Grafana eliminates these charges but introduces infrastructure costs for compute, storage, maintenance, and network traffic. Additionally, since Prometheus is primarily designed for short-term data storage, setting up a long-term storage solution may also increase costs.
 
 **Recommendation**:
 
 -   Estimate infrastructure costs for Prometheus and Grafana by assessing current GCP Cloud Monitoring data volume and access usage.
 -   Access the [Google Cloud Billing](https://console.cloud.google.com/billing) report to determine a baseline for costs related to GCP Cloud Monitoring and Cloud Logging.
--   Use Prometheus’s default short-term storage for real-time data and configure a long-term storage solution for essential data to optimize costs.
+-   Use Prometheus’s default short-term storage for real-time data, and configure a long-term storage solution for essential data to optimize costs.
 -   Employ Grafana’s alerting and dashboards strategically to reduce high-frequency scrapes and unnecessary data retention.
 -   Regularly review and refine retention policies and scraping intervals to balance cost against visibility needs.
 
 ### Data Consistency and Accuracy
 
-GCP Cloud Monitoring automates metric collection with built-in aggregation, while Prometheus relies on manual configuration through exporters and application instrumentation. Prometheus stores raw data with high granularity, but does not provide the same level of aggregated historical data as GCP Cloud Monitoring. This may lead to gaps in insights if retention isn’t properly managed.
+GCP Cloud Monitoring automates metric collection with built-in aggregation, whereas Prometheus relies on manual configuration through exporters and application instrumentation. Prometheus stores raw data with high granularity, but does not provide the same level of aggregated historical data as GCP Cloud Monitoring. This may lead to gaps in insights if retention isn’t properly managed.
 
 **Recommendation**:
 
@@ -596,7 +596,7 @@ GCP Cloud Monitoring automates metric collection with built-in aggregation, whil
 
 ### GCP Cloud Monitoring Aggregated Data Versus Prometheus Raw Data
 
-GCP Cloud Monitoring aggregates data automatically to provide a straightforward approach to historical trend analysis. In contrast, Prometheus captures high-resolution, raw data, which can require custom queries to derive similar insights.
+GCP Cloud Monitoring aggregates data automatically and can provide a straightforward approach to historical trend analysis. Prometheus captures high-resolution, raw data, which can require custom queries to derive similar insights.
 
 **Recommendation**:
 
@@ -616,7 +616,7 @@ GCP Cloud Monitoring alerts are configured with thresholds and conditions that m
 
 ### Security and Access Controls
 
-GCP Cloud Monitoring integrates with GCP’s Identity and Access Management (IAM) system for Role-Based Access Control (RBAC). This can simplify the management of who can view, edit, or delete logs and metrics. However, Prometheus and Grafana require manual configuration of security and access controls.
+GCP Cloud Monitoring integrates with GCP’s Identity and Access Management (IAM) system for Role-Based Access Control (RBAC). This helps manage who can view, edit, or delete logs and metrics. Prometheus and Grafana require manual configuration of security and access controls.
 
 Securing Prometheus and Grafana involves setting up user authentication (e.g. OAuth, LDAP, etc.) and ensuring metrics and dashboards are only accessible to authorized personnel. Additionally, data in transit should be encrypted using TLS to maintain security.
 
@@ -627,7 +627,7 @@ Securing Prometheus and Grafana involves setting up user authentication (e.g. OA
 
 ### Separate Log and Metric Responsibilities
 
-Prometheus is designed for metrics collection and lacks built-in capabilities for managing logs. GCP Cloud Monitoring natively combines logs and metrics, so migration requires decoupling those functions.
+Prometheus is primarily designed for metrics collection and does not include built-in capabilities for managing logs. Since GCP Cloud Monitoring natively combines logs and metrics, migration requires decoupling those functions.
 
 **Recommendation**:
 
