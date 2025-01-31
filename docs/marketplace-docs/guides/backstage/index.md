@@ -88,6 +88,6 @@ For reference, you can use the following image as a guideline to configure the O
 
 ![Logged-In](./gituser.png)
 
-You are now ready to start developing developer portals with Backstage! Please refere to Backstage's [documentation](https://backstage.io/docs/overview/what-is-backstage) for further configuration and usage of the sofware.
+You are now ready to start developing developer portals with Backstage! Please refer to Backstage's [documentation](https://backstage.io/docs/overview/what-is-backstage) for further configuration and usage of the software.
 
 {{% content "marketplace-update-note-shortguide" %}}
