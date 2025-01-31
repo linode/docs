@@ -29,6 +29,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Apache Kafka Cluster](/docs/marketplace-docs/guides/apache-kafka-cluster/)
 - [Appwrite](/docs/marketplace-docs/guides/appwrite/)
 - [AzuraCast](/docs/marketplace-docs/guides/azuracast/)
+- [Backstage](/docs/marketplace-docs/guides/backstage/)
 - [BeEF](/docs/marketplace-docs/guides/beef/)
 - [Budibase](/docs/marketplace-docs/guides/budibase/)
 - [Chevereto](/docs/marketplace-docs/guides/chevereto/)
