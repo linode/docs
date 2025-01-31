@@ -532,7 +532,7 @@ For the example Flask application in this guide, the [`prometheus_flask_exporter
     sudo nano /etc/prometheus/prometheus.yml
     ```
 
-    Append the following content to the `scrap_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the IP address of your `monitoring-server` instance, or in this case, `localhost`:
+    Append the following content to the `scrape_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the IP address of your `monitoring-server` instance, or in this case, `localhost`:
 
     ```file {title="/etc/prometheus/prometheus.yml"}
       - job_name: 'flask_app'
