@@ -154,38 +154,63 @@ Return to the **Admin** page and click the newly created user to bring up their 
 
 ### Configure Example Flask Server
 
-This guide demonstrates the migration process using an [example Flask server](https://github.com/nathan-gilbert/simple-ec2-cloudwatch) that reads messages from RabbitMQ.
+This guide demonstrates the migration process using an [example Flask server](https://github.com/linode/docs-cloud-projects/tree/main/demos/rabbitmq-migrations-main) that reads messages from RabbitMQ.
 
 1.  If you do not already have a virtual machine to use, create a Compute Instance (a simple Nanode is sufficient). See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and create a limited user account. You may also wish to set the timezone, configure your hostname, and harden SSH access.
 
-1.  Change to your user’s home directory and use `git` to clone the example Flask app's GitHub repository to your compute instance:
+1.  Log in to the compute instance as a user with `sudo` privileges using SSH or LISH.
+
+1.  Use `apt` to install Flask:
 
     ```command
-    cd ~
-    git clone https://github.com/linode/docs-cloud-projects/tree/main/demos/rabbitmq-migrations-main.git
+    sudo apt install python3-flask
+    ```
+
+1.  Use `git` to clone the `docs-cloud-projects` GitHub repository. This includes all playbooks, configurations, and files for all project directories in the repository, including those for the example Flask app.
+
+    ```command
+    git clone https://github.com/linode/docs-cloud-projects.git
+    ```
+
+1.  Navigate to the `main/demos/rabbitmq-migration-main` directory within the cloned `docs-cloud-projects` repository:
+
+    ```command
+    cd docs-cloud-projects/demos/rabbitmq-migrations-main
+    ```
+
+1.  Confirm the `rabbitmq-migration-main` directory contents on your system:
+
+    ```command
+    ls
+    ```
+
+    The following contents should be visible:
+
+    ```output
+    rabbitmq-changes  README.md
     ```
 
 ### Convert Existing Applications from Azure Service Bus to RabbitMQ
 
 In the example project, the subscribing application communicates directly with Azure Service Bus by using the [azure-servicebus library](https://pypi.org/project/azure-servicebus/). In order to use RabbitMQ, be sure to carefully switch corresponding code from Azure tooling to RabbitMQ. For Python applications, RabbitMQ support is provided through the [Pika](https://pypi.org/project/pika/) library, which is an AMQP provider with RabbitMQ bindings.
 
-1.  Use `apt` to install the required libraries for RabbitMQ communication (Pika) and the web application framework (Flask):
+1.  Use `apt` to install Pika:
 
     ```command
-    sudo apt install python3-pika python3-flask
+    sudo apt install python3-pika
     ```
 
-1.  Edit the [`app.py`](https://github.com/linode/docs-cloud-projects/blob/main/demos/rabbitmq-migrations-main/rabbitmq-changes/app.py) file located in the `rabbitmq-changes/rabbitmq-migrations` directory to apply the changes required to subscribe to the `flask_queue`:
+1.  Edit the [`app.py`](https://github.com/linode/docs-cloud-projects/blob/main/demos/rabbitmq-migrations-main/rabbitmq-changes/app.py) file located in the `rabbitmq-migrations-main/rabbitmq-changes` directory to apply the changes required to subscribe to the `flask_queue`:
 
     ```command
-    nano ~/rabbitmq-migrations-main/rabbitmq-changes/app.py
+    nano rabbitmq-changes/app.py
     ```
 
     The resulting file should look like this, replacing {{< placeholder "RABBITMQ_HOST" >}}, {{< placeholder "RABBITMQ_USERNAME" >}} and {{< placeholder "RABBITMQ_PASSWORD" >}} with your actual RabbitMQ IP address, username, and password:
 
-    ```file {title="app.py" lang="python" hl_lines="23,25"}
+    ```file {title="rabbitmq-changesapp.py" lang="python" hl_lines="23,25"}
     from flask import Flask
     import pika
     import threading
