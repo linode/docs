@@ -16,22 +16,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 Backstage is an open-source platform for building developer portals designed to simplify and unify software development processes. It provides a centralized hub for managing services, tools, and documentation. Backstage enables teams to improve efficiency, collaboration, and scalability across projects.
 
-## Deploying a Marketplace App
-
-{{% content "deploy-marketplace-apps-shortguide" %}}
-
-{{% content "marketplace-verify-standard-shortguide" %}}
-
-{{< note >}}
-**Estimated deployment time:** Once a compute instance finishes provisioning, the Backstage installation takes 3-5 minutes.
-{{< /note >}}
-
-## Configuration Options
-
-- **Supported distributions:** Ubuntu 24.04 LTS
-- **Recommended minimum plan:** All plan types and sizes can be used.
-
-
 ## Prerequisites
 
 The Backstage application for Cloud Manager is configured with a Github authentication and allows you to integrate pulling catalog entities from Github directly. Before you can deploy the One-Click application, you need to create an OAuth application and authorize it to use your domain name.
@@ -52,6 +36,21 @@ Once done, save the following data to use in the following steps:
 - Client ID,
 - Client Secret,
 - Personal Access Token (not required).
+
+## Deploying a Marketplace App
+
+{{% content "deploy-marketplace-apps-shortguide" %}}
+
+{{% content "marketplace-verify-standard-shortguide" %}}
+
+{{< note >}}
+**Estimated deployment time:** Once a compute instance finishes provisioning, the Backstage installation takes 3-5 minutes.
+{{< /note >}}
+
+## Configuration Options
+
+- **Supported distributions:** Ubuntu 24.04 LTS
+- **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Backstage Options
 
