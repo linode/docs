@@ -18,13 +18,13 @@ This guide will walk you through the process of migrating an application from Or
 
 To follow along in this walkthrough, you’ll need the following:
 
-* A [Linode account](https://www.linode.com/cfe)  
-* A [Linode API token (personal access token)](https://www.linode.com/docs/products/platform/accounts/guides/manage-api-tokens/)  
-* The [Linode CLI](https://www.linode.com/docs/products/tools/cli/guides/install/) installed and configured  
-* Access to your [Oracle Cloud account](https://cloud.oracle.com) with sufficient permissions to work with OKE clusters  
-* The [OCI CLI](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm) installed and configured  
-* [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) installed and configured  
-* [jq](https://jqlang.github.io/jq/download/) installed and configured  
+* A [Linode account](https://www.linode.com/cfe)
+* A [Linode API token (personal access token)](https://www.linode.com/docs/products/platform/accounts/guides/manage-api-tokens/)
+* The [Linode CLI](https://www.linode.com/docs/products/tools/cli/guides/install/) installed and configured
+* Access to your [Oracle Cloud account](https://cloud.oracle.com) with sufficient permissions to work with OKE clusters
+* The [OCI CLI](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm) installed and configured
+* [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) installed and configured
+* [jq](https://jqlang.github.io/jq/download/) installed and configured
 * [yq](https://github.com/mikefarah/yq) installed and configured
 
 ## Step 1: Connect kubectl to your OKE cluster
@@ -138,7 +138,7 @@ Unless specific requirements dictate otherwise, it’s generally recommended to 
 | $ linode linodes types \--vcpus 2 \--json \--pretty \\     | jq '.\[\] | {class, id, vcpus, memory, price}' {   "class": "standard",   "id": "g6-standard-2",   "vcpus": 2,   "memory": 4096,   "price": {     "hourly": 0.036,     "monthly": 24   } } {   "class": "highmem",   "id": "g7-highmem-1",   "vcpus": 2,   "memory": 24576,   "price": {     "hourly": 0.09,     "monthly": 60   } } {   "class": "highmem",   "id": "g7-highmem-2",   "vcpus": 2,   "memory": 49152,   "price": {     "hourly": 0.18,     "monthly": 120   } } {   "class": "dedicated",   "id": "g6-dedicated-2",   "vcpus": 2,   "memory": 4096,   "price": {     "hourly": 0.054,     "monthly": 36   } } {   "class": "premium",   "id": "g7-premium-2",   "vcpus": 2,   "memory": 4096,   "price": {     "hourly": 0.0645,     "monthly": 43   } } |
 | :---- |
 
-See [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/) for more detailed pricing information. 
+See [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/) for more detailed pricing information.
 
 3\. The examples in this guide will use the **g6-standard-2** Linode, which features two CPU cores and 4 GB of memory. Run the following command to display detailed information in JSON for this Linode plan:
 
@@ -150,7 +150,7 @@ See [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/) for more 
 | $ linode regions list |
 | :---- |
 
-5\. After selecting a Kubernetes version and Linode type, use the following command to create a cluster named oke-to-lke in the us-lax (Los Angeles, CA) region with three nodes and auto-scaling. 
+5\. After selecting a Kubernetes version and Linode type, use the following command to create a cluster named oke-to-lke in the us-lax (Los Angeles, CA) region with three nodes and auto-scaling.
 
 Replace oke-to-lke and us-lax with a cluster label and region of your choosing, respectively:
 
@@ -270,7 +270,8 @@ Cost reduction is one reason an organization might migrate from Oracle Kubernete
 
 Reference [Oracle’s Compute Pricing page](https://www.oracle.com/cloud/compute/pricing/#compute-vm) to find the cost for your OKE instance. Compare this with the cost of an Linode instance with comparable resources by examining the [Linode pricing page](https://www.linode.com/pricing/).
 
-Applications with a lot of data egress can also be impacted significantly by egress costs. Consider the typical networking usage of applications running on your OKE cluster, and determine your outbound [data transfer costs Oracle](https://www.oracle.com/cloud/networking/pricing/#:~:text=Outbound%20Data%20Transfer%20%2D%20Originating%20in%20North%20America). Compare this with data transfer numbers allocated to your Linode.  
+Applications with a lot of data egress can also be impacted significantly by egress costs. Consider the typical networking usage of applications running on your OKE cluster, and determine your outbound [data transfer costs Oracle](https://www.oracle.com/cloud/networking/pricing/#:~:text=Outbound%20Data%20Transfer%20%2D%20Originating%20in%20North%20America). Compare this with data transfer numbers allocated to your Linode.
+
 This is a VM.Standard.E3.Flex Compute Shape for Oracle, which is a template that determines the amount of resources to allocate to a compute instance. Referencing  [Oracle’s Compute Pricing page](https://www.oracle.com/cloud/compute/pricing/#compute-vm), the hourly cost for this type of instance is $0.0125 per vCPU and $0.0015 per GB of memory, which totals to **$0.0185 per hour**.
 
 ![][image8]
@@ -295,11 +296,11 @@ Cloud-native workloads are ephemeral. As a container orchestration platform, Kub
 
 However, if you need to perform a live migration with minimal downtime, you must develop proper migration procedures and test them before trying them on your production environment. This may include:
 
-* Parallel storage and databases on both clouds  
-* Cross-cloud replication between storage and databases  
-* Double writes at the application level  
-* Failover reads at the application level  
-* Switching the Oracle Cloud Infrastructure storage and databases to read-only  
+* Parallel storage and databases on both clouds
+* Cross-cloud replication between storage and databases
+* Double writes at the application level
+* Failover reads at the application level
+* Switching the Oracle Cloud Infrastructure storage and databases to read-only
 * Storage and database indirection at the configuration or DNS level
 
 ### Advanced network configuration
@@ -320,7 +321,7 @@ If you use OCI DNS and plan to migrate away from it, reference [Linode’s DNS m
 
 ### Alternative to OCI Container Registry
 
-LKE on Linode doesn't have its own container registry. However, if you need to migrate away from the Oracle Container Registry, you can set up a third-party private container registry, such as [Docker Hub](https://hub.docker.com/) or [GitHub Container Registry](https://github.blog/news-insights/product-news/introducing-github-container-registry/). 
+LKE on Linode doesn't have its own container registry. However, if you need to migrate away from the Oracle Container Registry, you can set up a third-party private container registry, such as [Docker Hub](https://hub.docker.com/) or [GitHub Container Registry](https://github.blog/news-insights/product-news/introducing-github-container-registry/).
 
 Another option is to set up your container registry. See [How to Set Up a Docker Registry with LKE and Object Storage](https://www.linode.com/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/).
 
@@ -328,16 +329,16 @@ Another option is to set up your container registry. See [How to Set Up a Docker
 
 For Kubernetes cluster observability, Oracle provides its [Cloud Observability and Management Platform](https://www.oracle.com/manageability/). With Linode, you can install an alternative observability solution on LKE. One example of such a solution is [The Observability Stack (TOBS)](https://github.com/timescale/tobs), which includes:
 
-* Kube-Prometheus  
-  * Prometheus  
-  * AlertManager  
-  * Grafana  
-  * Node-Exporter  
-  * Kube-State-Metrics  
-  * Prometheus-Operator  
-* Promscale  
-* TimescaleDB  
-  * Postgres-Exporter  
+* Kube-Prometheus
+  * Prometheus
+  * AlertManager
+  * Grafana
+  * Node-Exporter
+  * Kube-State-Metrics
+  * Prometheus-Operator
+* Promscale
+* TimescaleDB
+  * Postgres-Exporter
 * OpenTelemetry-Operator
 
 See [How to Deploy TOBS (The Observability Stack) on LKE](https://www.linode.com/docs/guides/deploy-tobs-on-linode-kubernetes-engine/) for more information.
@@ -348,13 +349,13 @@ The [OCI Vault](https://docs.oracle.com/en-us/iaas/Content/KeyManagement/home.ht
 
 ## Resources
 
-* Oracle Kubernetes Engine  
-  * [Documentation](https://docs.oracle.com/en-us/iaas/Content/ContEng/home.htm)  
-  * [Connecting kubectl to an OKE cluster](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengdownloadkubeconfigfile.htm#localdownload)  
-* Linode  
-  * [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/)  
-  * [LKE Documentation](https://www.linode.com/docs/guides/kubernetes-on-linode/)  
-  * [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager)  
-* Setting up other technologies to run on Linode  
-  * [How to Set Up a Docker Registry with LKE and Object Storage](https://www.linode.com/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)  
+* Oracle Kubernetes Engine
+  * [Documentation](https://docs.oracle.com/en-us/iaas/Content/ContEng/home.htm)
+  * [Connecting kubectl to an OKE cluster](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengdownloadkubeconfigfile.htm#localdownload)
+* Linode
+  * [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/)
+  * [LKE Documentation](https://www.linode.com/docs/guides/kubernetes-on-linode/)
+  * [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager)
+* Setting up other technologies to run on Linode
+  * [How to Set Up a Docker Registry with LKE and Object Storage](https://www.linode.com/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)
   * [How to Deploy TOBS (The Observability Stack) on LKE](https://www.linode.com/docs/guides/deploy-tobs-on-linode-kubernetes-engine/)

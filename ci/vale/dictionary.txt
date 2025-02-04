@@ -668,6 +668,7 @@ EMTs
 ender
 enduser
 enix
+entra
 enum
 env
 envs

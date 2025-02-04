@@ -18,13 +18,13 @@ This guide will walk you through the process of migrating an application from Go
 
 To follow along in this walkthrough, you’ll need the following:
 
-* A [Linode account](https://www.linode.com/cfe)  
-* A [Linode API token (personal access token)](https://www.linode.com/docs/products/platform/accounts/guides/manage-api-tokens/)  
-* The [Linode CLI](https://www.linode.com/docs/products/tools/cli/guides/install/) installed and configured  
-* Access to your GCP account with sufficient permissions to work with GKE clusters  
-* The [gcloud CLI](https://cloud.google.com/sdk/docs/install) installed and configured  
-* [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) installed and configured  
-* [jq](https://jqlang.github.io/jq/download/) installed and configured  
+* A [Linode account](https://www.linode.com/cfe)
+* A [Linode API token (personal access token)](https://www.linode.com/docs/products/platform/accounts/guides/manage-api-tokens/)
+* The [Linode CLI](https://www.linode.com/docs/products/tools/cli/guides/install/) installed and configured
+* Access to your GCP account with sufficient permissions to work with GKE clusters
+* The [gcloud CLI](https://cloud.google.com/sdk/docs/install) installed and configured
+* [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) installed and configured
+* [jq](https://jqlang.github.io/jq/download/) installed and configured
 * [yq](https://github.com/mikefarah/yq) installed and configured
 
 ## Step 1: Connect kubectl to your GKE cluster
@@ -136,7 +136,7 @@ Unless specific requirements dictate otherwise, it’s generally recommended to 
 | $ linode linodes types \--vcpus 2 \--json \--pretty \\     | jq '.\[\] | {class, id, vcpus, memory, price}' {   "class": "standard",   "id": "g6-standard-2",   "vcpus": 2,   "memory": 4096,   "price": {     "hourly": 0.036,     "monthly": 24   } } {   "class": "highmem",   "id": "g7-highmem-1",   "vcpus": 2,   "memory": 24576,   "price": {     "hourly": 0.09,     "monthly": 60   } } {   "class": "highmem",   "id": "g7-highmem-2",   "vcpus": 2,   "memory": 49152,   "price": {     "hourly": 0.18,     "monthly": 120   } } {   "class": "dedicated",   "id": "g6-dedicated-2",   "vcpus": 2,   "memory": 4096,   "price": {     "hourly": 0.054,     "monthly": 36   } } {   "class": "premium",   "id": "g7-premium-2",   "vcpus": 2,   "memory": 4096,   "price": {     "hourly": 0.0645,     "monthly": 43   } } |
 | :---- |
 
-See [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/) for more detailed pricing information. 
+See [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/) for more detailed pricing information.
 
 3\. The examples in this guide will use the **g6-standard-2** Linode, which features two CPU cores and 4 GB of memory. Run the following command to display detailed information in JSON for this Linode plan:
 
@@ -148,7 +148,7 @@ See [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/) for more 
 | $ linode regions list |
 | :---- |
 
-5\. After selecting a Kubernetes version and Linode type, use the following command to create a cluster named gke-to-lke in the us-lax (Los Angeles, CA) region with three nodes and auto-scaling. 
+5\. After selecting a Kubernetes version and Linode type, use the following command to create a cluster named gke-to-lke in the us-lax (Los Angeles, CA) region with three nodes and auto-scaling.
 
 Replace gke-to-lke and us-lax with a cluster label and region of your choosing, respectively:
 
@@ -290,11 +290,11 @@ Cloud-native workloads are ephemeral. As a container orchestration platform, Kub
 
 However, if you need to perform a live migration with minimal downtime, you must develop proper migration procedures and test them before trying them on your production environment. This may include:
 
-* Parallel storage and databases on both clouds  
-* Cross-cloud replication between storage and databases  
-* Double writes at the application level  
-* Failover reads at the application level  
-* Switching the GCP storage and databases to read-only  
+* Parallel storage and databases on both clouds
+* Cross-cloud replication between storage and databases
+* Double writes at the application level
+* Failover reads at the application level
+* Switching the GCP storage and databases to read-only
 * Storage and database indirection at the configuration or DNS level
 
 ### Advanced network configuration
@@ -315,7 +315,7 @@ If you use Google Cloud DNS and plan to migrate away from it, reference [Linode�
 
 ### Alternative to GCP Artifact Registry
 
-LKE on Linode doesn't have its own container registry. However, if you need to migrate away from GCP Artifact Registry, you can set up a third-party private container registry, such as [Docker Hub](https://hub.docker.com/) or [GitHub Container Registry](https://github.blog/news-insights/product-news/introducing-github-container-registry/). 
+LKE on Linode doesn't have its own container registry. However, if you need to migrate away from GCP Artifact Registry, you can set up a third-party private container registry, such as [Docker Hub](https://hub.docker.com/) or [GitHub Container Registry](https://github.blog/news-insights/product-news/introducing-github-container-registry/).
 
 Another option is to set up your container registry. See [How to Set Up a Docker Registry with LKE and Object Storage](https://www.linode.com/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/).
 
@@ -323,16 +323,16 @@ Another option is to set up your container registry. See [How to Set Up a Docker
 
 For Kubernetes cluster observability, GCP provides its [cloud operations suite](https://cloud.google.com/blog/topics/developers-practitioners/introduction-google-clouds-operations-suite). With Linode, you can install an alternative observability solution on LKE. One example of such a solution is [The Observability Stack (TOBS)](https://github.com/timescale/tobs), which includes:
 
-* Kube-Prometheus  
-  * Prometheus  
-  * AlertManager  
-  * Grafana  
-  * Node-Exporter  
-  * Kube-State-Metrics  
-  * Prometheus-Operator  
-* Promscale  
-* TimescaleDB  
-  * Postgres-Exporter  
+* Kube-Prometheus
+  * Prometheus
+  * AlertManager
+  * Grafana
+  * Node-Exporter
+  * Kube-State-Metrics
+  * Prometheus-Operator
+* Promscale
+* TimescaleDB
+  * Postgres-Exporter
 * OpenTelemetry-Operator
 
 See [How to Deploy TOBS (The Observability Stack) on LKE](https://www.linode.com/docs/guides/deploy-tobs-on-linode-kubernetes-engine/) for more information.
@@ -343,13 +343,13 @@ The [GCP Secrets Manager](https://cloud.google.com/security/products/secret-mana
 
 ## Resources
 
-* GCP GKE  
-  * [Documentation](https://cloud.google.com/kubernetes-engine/docs)  
-  * [Connecting kubectl to a GKE cluster](https://cloud.google.com/sdk/gcloud/reference/container/clusters/get-credentials)  
-* Linode  
-  * [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/)  
-  * [LKE Documentation](https://www.linode.com/docs/guides/kubernetes-on-linode/)  
-  * [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager)  
-* Setting up other technologies to run on Linode  
-  * [How to Set Up a Docker Registry with LKE and Object Storage](https://www.linode.com/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)  
+* GCP GKE
+  * [Documentation](https://cloud.google.com/kubernetes-engine/docs)
+  * [Connecting kubectl to a GKE cluster](https://cloud.google.com/sdk/gcloud/reference/container/clusters/get-credentials)
+* Linode
+  * [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/)
+  * [LKE Documentation](https://www.linode.com/docs/guides/kubernetes-on-linode/)
+  * [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager)
+* Setting up other technologies to run on Linode
+  * [How to Set Up a Docker Registry with LKE and Object Storage](https://www.linode.com/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)
   * [How to Deploy TOBS (The Observability Stack) on LKE](https://www.linode.com/docs/guides/deploy-tobs-on-linode-kubernetes-engine/)
