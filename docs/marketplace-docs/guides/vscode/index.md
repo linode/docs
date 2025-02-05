@@ -28,40 +28,44 @@ Run a [Visual Studio Code Server](https://github.com/cdr/code-server) in the bro
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10
+- **Supported distributions:** Ubuntu 24.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### VS Code Options
 
-- **The password used to log in to the VS Code Web UI** *(required)*: Enter a *strong* password that can be used to access VS Code.
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates as well as configuring the server and DNS records.
-- **The version of VS Code Server you'd like installed** *(required)*: This is the version of VS Code Server that is installed during setup. The default at the time that this guide was written is 3.10.2. This field is filled in and it is recommended that you use this value. If you do not fill in this field, the latest version is used.
+- **The version of VS Code Server you'd like installed** *(required)*: Enter the VS Code Server version to be installed during the setup.
 
-{{% content "marketplace-limited-user-fields-shortguide" %}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 {{% content "marketplace-custom-domain-fields-shortguide" %}}
-- **Would you like to use a free Let's Encrypt SSL certificate?** Select `Yes` if you want the install to create an SSL certificate for you, or `No` if you do not. If `No` is selected, the VS Code app triggers security warnings in most web browsers. If you create a certificate and do not create a domain, the installer uses the Linode rDNS assigned name for the certificate.
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
 
+### Obtain the Credentials
+
+Once the app is deployed, you need to obtain the credentials from the server.
+
+To obtain the credentials:
+
+1.  Log in to your new Compute Instance using one of the methods below:
+
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
+
+1.  Run the following command to access the credentials file:
+
+    ```command
+    cat /home/$USERNAME/.credentials
+    ```
+
+This returns passwords that were automatically generated when the instance was deployed. Save them. Once saved, you can safely delete the file.
+
 ## Getting Started after Deployment
 
-VS Code is now installed and ready to use.
+VS Code is now installed. To get started:
 
-1.  Before you go to the app, if you filled out the optional VS Code configuration fields for domain:
-
-    - In Cloud Manager's [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/) there is now an entry for the domain with possible subdomain records pointing to the new server.
-    - [Configure the rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on the Linode server.
-
-1.  VS Code is accessed via the domain name if you entered one, or by the rDNS name if you did not. For example, `http://example.com` or `http://203-0-113-0.ip.linodeusercontent.com`, replacing the domain name or rDNS name with values for the server.
-
-1.  At the login screen, login using the password you entered during installation.
-
-    ![Code Server Login Screen](vscode-login-screen.png "Code Server Login Screen")
-
-1.  After logging in, the VS Code Welcome screen appears in the browser and ready to code.
-
-    ![VS Code Welcome Screen](vscode-welcome-screen.png "VS Code Welcome Screen")
+1.  Open a web browser and navigate to the domain you entered when creating the instance: `https://domain.tld`. If you did not enter a domain, use your Compute Instance's default rDNS domain (`192-0-2-1.ip.linodeusercontent.com`). To learn more on viewing the rDNS value, see [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). Make sure to use the `https` prefix in the URL to access the website securely.
 
 ## Software Included
 

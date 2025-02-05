@@ -30,19 +30,27 @@
 
 
 {{/* OneTrust Cookies Consent Notice for www.linode.com. Load this before Adobe Analytics. */}}
+{{/* akamai region code —> onetrust state code */}}
+{{/* akamai country code —> onetrust country code */}}
+{{/* akamai continent —> onetrust region code */}}
 <script type="text/javascript">
+  userRegionCode = 'EDGEAKAMAIZERREGIONCODE';
   userCountryCode = 'EDGEAKAMAIZERCOUNTRYCODE';
   userContinent = 'EDGEAKAMAIZERCONTINENT';
-  if ( userCountryCode && !userCountryCode.startsWith( 'EDGEAKAMAIZER' ) ) {
-    window.OneTrust = window.OneTrust || {};
-    window.OneTrust.geolocationResponse = window.OneTrust.geolocationResponse || {};
-    window.OneTrust.geolocationResponse.countryCode = window.OneTrust.geolocationResponse.countryCode || userCountryCode;
-  }
-  if ( userContinent && !userContinent.startsWith( 'EDGEAKAMAIZER' ) ) {
-    window.OneTrust = window.OneTrust || {};
-    window.OneTrust.geolocationResponse = window.OneTrust.geolocationResponse || {};
-    window.OneTrust.geolocationResponse.regionCode = window.OneTrust.geolocationResponse.regionCode || userContinent;
-  }
+  (function(){
+    let setOTGeoData = function( key, val ) {
+      if ( val && !val.startsWith( 'EDGEAKAMAIZER' ) ) {
+        window.OneTrust = window.OneTrust || {};
+        window.OneTrust.geolocationResponse = window.OneTrust.geolocationResponse || {};
+        window.OneTrust.geolocationResponse[key] = window.OneTrust.geolocationResponse[key] || val;
+      }
+    }
+    if ( userRegionCode && userRegionCode === 'CA' ) {
+      setOTGeoData( 'stateCode', userRegionCode );
+    }
+    setOTGeoData( 'countryCode', userCountryCode );
+    setOTGeoData( 'regionCode', userContinent );
+  })();
 </script>
 
 <script

@@ -198,15 +198,15 @@ ModSecurity is a firewall and therefore requires rules to function. This section
 1.  Copy over the unicode mapping file and the ModSecurity configuration file from your cloned ModSecurity GitHub repository:
 
         sudo cp /opt/ModSecurity/unicode.mapping /etc/nginx/modsec
-        sudo cp /opt/ModSecurity/modsecurity.conf-recommended /etc/nginx/modsec/modsecurity.conf
+        sudo cp /opt/ModSecurity/modsecurity.conf-recommended /etc/nginx/modsec
 
-1. Remove the `.recommended` extension from the ModSecurity configuration filename with the following command:
+1. Remove the `-recommended` extension from the ModSecurity configuration filename with the following command:
 
-        sudo cp /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
+        sudo cp /etc/nginx/modsec/modsecurity.conf-recommended /etc/nginx/modsec/modsecurity.conf
 
-1.  With a text editor such as vim, open `/etc/modsecurity/modsecurity.conf` and change the value for `SecRuleEngine` to `On`:
+1.  With a text editor such as vim, open `/etc/nginx/modsec/modsecurity.conf` and change the value for `SecRuleEngine` to `On`:
 
-    {{< file "/etc/modsecurity/modsecurity.conf" aconf >}}
+    {{< file "/etc/nginx/modsec/modsecurity.conf" aconf >}}
 # -- Rule engine initialization ----------------------------------------------
 
 # Enable ModSecurity, attaching it to every transaction. Use detection
