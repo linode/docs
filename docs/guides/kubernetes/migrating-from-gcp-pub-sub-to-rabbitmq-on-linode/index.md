@@ -4,7 +4,7 @@ title: "Migrating from GCP Pub/Sub to RabbitMQ on Linode"
 description: "Learn how to migrate from GCP Pub/Sub to RabbitMQ on Linode. Discover RabbitMQ's flexibility and advanced routing capabilities over GCP Pub/Sub."
 authors: ["Linode"]
 contributors: ["Linode"]
-published: 2024-12-30
+published: 2025-02-05
 keywords: ['gcp','pubsub','rabbitmq','migration','gcp pubsub migration','rabbitmq on linode','gcp to rabbitmq','pubsub rabbitmq comparison']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -18,9 +18,9 @@ external_resources:
 
 Google Cloud Platform (GCP) Pub/Sub is a fully managed, topic-based messaging service designed for real-time, event-driven architectures. It facilitates communication between independent applications with high throughput and automatic scalability.
 
-RabbitMQ is an open source alternative message broker that uses queue-based messaging to provide greater flexibility with advanced routing mechanisms. Migrating to RabbitMQ offers developers more control over their messaging systems, with features like multi-protocol support not offered by GCP Pub/Sub.
+RabbitMQ is an open source alternative message broker that uses queue-based messaging to provide flexibility with advanced routing mechanisms. Migrating to RabbitMQ can offer developers more control over their messaging systems, including features like multi-protocol support.
 
-This guide covers how to migrate from GCP Pub/Sub to RabbitMQ running on Linode.
+This guide includes steps and recommendations on how to migrate from GCP Pub/Sub to RabbitMQ running on Linode. To help illustrate the migration process, an example Flask-based Python application running on a separate instance is used as a placeholder for your application or workload.
 
 ## Feature Comparison
 
@@ -40,7 +40,7 @@ GCP Pub/Sub and RabbitMQ share many key features in common, though there are som
 
 1.  Read our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and create a Linode account if you do not already have one.
 
-1.  Migrating from GCP Pub/Sub to RabbitMQ on Linode, requires choosing between a single Linode Compute Instance or a larger scale, more fault-tolerant environment with the Linode Kubernetes Engine (LKE). Follow the appropriate guide below based on your needs:
+1.  Migrating from GCP Pub/Sub to RabbitMQ on Linode requires choosing between a single Linode instance or a larger scale, more fault-tolerant environment with Linode Kubernetes Engine (LKE). Follow the appropriate guide below based on your needs:
 
     -   [Deploying RabbitMQ on a Linode Compute Instance]()
     -   [Deploying RabbitMQ on Kubernetes with Linode LKE]()
@@ -54,20 +54,18 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Migrate from GCP Pub/Sub to RabbitMQ
 
-RabbitMQ exchanges various routing mechanisms to handle message delivery:
+RabbitMQ exchanges various routing mechanisms to handle message delivery and offers control over routing for advanced messaging patterns:
 
 -   **Direct** exchanges deliver messages to queues with a specific routing key.
 -   **Topic** exchanges enable pattern-based routing, which allow wildcard matches.
 -   **Fanout** exchanges broadcast messages to all bound queues, similar to GCP Pub/Sub topics.
 -   **Header** exchanges route messages based on their headers for more nuanced filtering.
 
-While Pub/Sub offers simplicity, scalability, and cloud-native integration, RabbitMQ provides more detailed control over routing for advanced messaging patterns.
-
-Migrating your messaging broker service also involves porting any applications that depend on GCP Pub/Sub to use RabbitMQ instead. This guide uses an [example Flask application](https://github.com/nathan-gilbert/gcp-pub-sub-example) that is subscribed to a Pub/Sub topic.
+Migrating your messaging broker service involves porting any applications that depend on GCP Pub/Sub to use RabbitMQ instead. To illustrate the process, this guide uses an [example Flask application](https://github.com/linode/docs-cloud-projects/tree/main/demos/rabbitmq-migrations-main) running on a Linode instance that is subscribed to a Pub/Sub topic.
 
 ### Assess Current Messaging Needs
 
-In the example project, GCP Pub/Sub provides a single topic for pushing messages. The UI displays the current subscribers to this topic (i.e. the single Flask app). This provides guidance as to which services would need to be updated when migrating to RabbitMQ.
+Using the example Flask app integration, GCP Pub/Sub provides a single topic for pushing messages. The UI displays the current subscribers to a given topic. This provides guidance as to which services may need to be updated when migrating to RabbitMQ.
 
 ![The GCP Pub/Sub Console UI showing current topic subscribers.](gcp-pubsub-subscribers-ui.png)
 
@@ -90,9 +88,9 @@ GCP Pub/Sub also provides a logging and monitoring system:
 
 ### Convert Authentication to be Compatible with RabbitMQ
 
-RabbitMQ does not work with GCP IAM. As an alternative, select an authentication method compatible with RabbitMQ, such as username/password or SSL/TLS certificates. This guide uses username/password for authentication. The following steps create a new read-only RabbitMQ user (e.g. `flaskappuser`) to interact with the example Flask application.
+RabbitMQ does not work with GCP IAM. As an alternative, select an authentication method compatible with RabbitMQ such as username/password or SSL/TLS certificates. This guide uses username/password for authentication. The following steps create a new read-only RabbitMQ user (e.g. `flaskappuser`) to interact with the example Flask application.
 
-1.  To create a new user, open a Web browser and navigate to the following URL, replacing {{< placeholder "IP_ADDRESS" >}} with the actual external IP Address of your Linode instance or LKE node:
+1.  To create a new user, open a web browser and navigate to the following URL over port 15672, replacing {{< placeholder "IP_ADDRESS" >}} with the external IP address of your Linode instance or LKE node running RabbitMQ:
 
     ```command
     http://{{< placeholder "IP_ADDRESS" >}}:15672
@@ -100,7 +98,7 @@ RabbitMQ does not work with GCP IAM. As an alternative, select an authentication
 
 1.  Log in to the RabbitMQ web interface as an administrator user.
 
-    {{< note >}}
+    {{< note title="Create a new admin user for single instance deployments" >}}
     If you set up RabbitMQ manually on a single Linode instance, the default administrative username (`guest`) and password (`guest`) are only permitted to log in via `localhost`. Therefore, you must create a new administrative user.
 
     1. Use the following command to create a new RabbbitMQ user:
@@ -121,13 +119,13 @@ RabbitMQ does not work with GCP IAM. As an alternative, select an authentication
 
     ![The RabbitMQ Admin interface showing the user creation process.](rabbitmq-create-user.png)
 
-1.  Take note of the username/password for the newly created RabbitMQ user, as you need to add these credentials to your Flask application.
+1.  Take note of the username/password for the newly created RabbitMQ user, as these credentials must be added to your application for authentication. Later in the guide, these are added directly to the example Flask app configuration.
 
-{{< note >}}
-It's best practice to create a separate set of credentials for each application that interacts with RabbitMQ.
+{{< note title="Make separate users for each application" >}}
+It's considered a best practice to create a separate set of credentials for each application interacting with RabbitMQ.
 {{< /note >}}
 
-### Create RabbitMQ Exchange and Queue Your Application
+### Create a RabbitMQ Exchange and Queue Your Application
 
 1.  To create a new exchange for your application, open the **Exchanges** tab. Under **Add a new exchange**, provide a **Name** (e.g. `flask_app_exchange`) and set the **Type** to `fanout`. Leave the default values in the rest of the fields, then click **Add exchange**:
 
@@ -141,29 +139,33 @@ It's best practice to create a separate set of credentials for each application 
 
     ![The RabbitMQ interface showing the bindings section for queues.](rabbitmq-bind-queue.png)
 
-{{< note >}}
-It's best practice to create a distinct exchange and queue for each application.
+{{< note title="Make a separate exchange and queue for each application" >}}
+It's considered a best practice to create a distinct exchange and queue for each application.
 {{< /note >}}
 
 ### Set Permissions for RabbitMQ User
 
-Return to the **Admin** page and click the newly created user to bring up its permission details. Set the permissions for the user as follows:
+Return to the **Admin** page and select the newly created user to bring up its permission details. The following permissions are recommended:
 
 ![The RabbitMQ Admin interface showing user permission configuration.](rabbitmq-set-permissions.png)
 
--   The **Configure** permission allows the user to create or modify queues. By setting this to the regular expression `^$`, you are prohibiting this user from making and configuration changes. Your application assumes the queue(s) it subscribes to already exist.
+-   The **Configure** permission allows the user to create or modify queues. By setting this to the regular expression `^$`, the user is prohibited from making any configuration changes. Your application assumes the queue(s) it subscribes to already exist.
 -   The **Write** permission allows the user to publish messages to the queue. The example application in this guide does not write to the queue, so specifying `^$` denies write access.
--   The **Read** permission, set to `^flask_queue$`, grants the user read access to `flask_queue`, which you created above.
+-   The **Read** permission, set to `^flask_queue$`, grants the user read access to the previously created queue (`flask_queue`). Replace `flask_queue` with the name of your application's queue.
 
 ### Configure Example Flask Server
 
-This guide demonstrates the migration process using an [example Flask server](https://github.com/linode/docs-cloud-projects/tree/main/demos/rabbitmq-migrations-main) that reads messages from RabbitMQ.
+This guide demonstrates the migration process using an [example Flask server](https://github.com/linode/docs-cloud-projects/tree/main/demos/rabbitmq-migrations-main) that reads messages from RabbitMQ. The example app is deployed on a separate Linode instance to emulate a remote application in production.
 
-1.  If you do not already have a virtual machine to use, create a Compute Instance (a simple Nanode is sufficient). See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  Create a new Compute Instance (a [Nanode](https://techdocs.akamai.com/cloud-computing/docs/how-to-choose-a-compute-instance-plan) is sufficient) on which to install and configure Flask. See our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-compute-instances) guide for information on deploying an instance.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and create a limited user account. You may also wish to set the timezone, configure your hostname, and harden SSH access.
+1.  Follow our [Set Up and Secure](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system and create a limited user account. You may also wish to set the timezone, configure your hostname, and harden SSH access.
 
-1.  Log in to the compute instance as a user with `sudo` privileges using SSH or LISH.
+1.  If you haven't done so already, log in to your instance via SSH as a limited user with `sudo` privileges. Replace {{< placeholder "USER" >}} with your limited username and {{< placeholder "FLASK_IP_ADDRESS" >}} with the IP address your new instance:
+
+    ```command
+    ssh {{< placeholder "USER" >}}@{{< placeholder "FLASK_IP_ADDRESS" >}}
+    ```
 
 1.  Use `apt` to install Flask:
 
@@ -176,6 +178,12 @@ This guide demonstrates the migration process using an [example Flask server](ht
     ```command
     git clone https://github.com/linode/docs-cloud-projects.git
     ```
+
+    {{< note title="Installing git" >}}
+    Depending on the distribution installed on your instance, you may need to install the `git` utility prior to cloning the docs-cloud-projects repository.
+
+    See GitHub's documentation on [installing git](https://github.com/git-guides/install-git).
+    {{< /note >}}
 
 1.  Navigate to the `main/demos/rabbitmq-migration-main` directory within the cloned `docs-cloud-projects` repository:
 
@@ -197,7 +205,13 @@ This guide demonstrates the migration process using an [example Flask server](ht
 
 ### Convert Existing Applications from GCP Pub/Sub to RabbitMQ
 
-In the example project, the Flask application receives and decodes GCP Pub/Sub messages using standard Python libraries. In order to use RabbitMQ, be sure to carefully switch corresponding code from GCP Pub/Sub tooling to RabbitMQ. For Python applications, RabbitMQ support is provided through the [Pika](https://pypi.org/project/pika/) library, which is an AMQP provider with RabbitMQ bindings.
+{{< note title="Steps may vary from application to application" >}}
+The specific steps for converting applications from GCP Pub/Sub to RabbitMQ depend on your application configuration and type.
+
+The conversion steps in this guide are specific to the featured example Flask Python app, however the concepts still apply. When converting your message broker service to RabbitMQ, ensure you are configuring it to authenticate to your RabbitMQ exchange and queue as described.
+{{< /note >}}
+
+In the example, the Flask application receives and decodes GCP Pub/Sub messages using standard Python libraries. In order to use RabbitMQ, corresponding code must be carefully switched from GCP Pub/Sub tooling to RabbitMQ. For Python applications like the Flask app in this guide, RabbitMQ support is provided through the [Pika](https://pypi.org/project/pika/) library, which is an AMQP provider with RabbitMQ bindings.
 
 1.  Use `apt` to install Pika:
 
@@ -205,7 +219,7 @@ In the example project, the Flask application receives and decodes GCP Pub/Sub m
     sudo apt install python3-pika
     ```
 
-1.  Edit the [`app.py`](https://github.com/linode/docs-cloud-projects/blob/main/demos/rabbitmq-migrations-main/rabbitmq-changes/app.py) file located in the `rabbitmq-migrations-main/rabbitmq-changes` directory to apply the changes required to subscribe to the `flask_queue`:
+1.  Using a text editor of your choice, edit the [`app.py`](https://github.com/linode/docs-cloud-projects/blob/main/demos/rabbitmq-migrations-main/rabbitmq-changes/app.py) file located in the `rabbitmq-migrations-main/rabbitmq-changes` directory to apply the changes required to subscribe to the `flask_queue` queue. Save your changes when complete:
 
     ```command
     nano rabbitmq-changes/app.py
@@ -259,8 +273,6 @@ In the example project, the Flask application receives and decodes GCP Pub/Sub m
         app.run(host="0.0.0.0", port=5000)
     ```
 
-    Press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
-
 1.  Run the updated application:
 
     ```command
@@ -297,7 +309,7 @@ In the example project, the Flask application receives and decodes GCP Pub/Sub m
 
 ## Production Considerations
 
-Several considerations ought to be weighed when migrating from GCP Pub/Sub to RabbitMQ for application messaging, including authentication, security, performance, and overall architecture.
+Considerations to weigh when migrating your application messaging from GCP Pub/Sub to RabbitMQ include authentication, security, performance, and overall architecture.
 
 ### Authentication and Authorization
 
@@ -327,9 +339,7 @@ GCP Pub/Sub is directly connected to GCP Cloud Monitoring. Basic monitoring of R
 
 ### Scaling, Load Balancing, and Availability
 
-RabbitMQ supports clustering and federation for scaling, though it doesn’t offer auto-scaling like GCP Pub/Sub does. For load balancing, configure multiple nodes and use connection sharding.
-
-Set up cross-node distribution by configuring queues and connections across multiple nodes to balance load. Avoid single points of failure by ensuring that both applications and consumers can failover to different nodes within the cluster.
+While RabbitMQ does not offer auto-scaling like GCP Pub/Sub, it supports clustering and federation for scaling options. For load balancing, configure multiple nodes and use connection sharding. You can set up cross-node distribution by configuring queues and connections across multiple nodes to balance load. Avoid single points of failure by ensuring that both applications and consumers can failover to different nodes within the cluster.
 
 If RabbitMQ nodes span different data centers, use the [Federation](https://www.rabbitmq.com/docs/federation) or [Shovel](https://www.rabbitmq.com/docs/shovel) plugins. Federation allows controlled mirroring across remote clusters, while Shovel enables continuous transfer of messages from one RabbitMQ instance to another, even across data centers.
 
