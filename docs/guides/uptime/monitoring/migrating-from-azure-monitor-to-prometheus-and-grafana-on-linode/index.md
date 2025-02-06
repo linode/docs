@@ -18,6 +18,8 @@ Azure Monitor is Microsoft's built-in observability platform. It is designed to 
 
 This guide explains how to migrate Azure Monitor service logs and metrics to Prometheus and Grafana running on a Linode instance.
 
+This guide walks through how to migrate standard Azure Monitor service logs, metrics, and monitoring to a Prometheus and Grafana software stack on a Linode instance. To illustrate the migration process, an example Flask-based Python application running on a separate instance is configured to send logs and metrics to Azure Monitor, and then modified to integrate with Prometheus and Grafana. While this guide uses a Flask application as an example, the principles can be applied to any workload currently monitored via Azure Monitor.
+
 ## Introduction to Prometheus and Grafana
 
 [Prometheus](https://prometheus.io/docs/introduction/overview/) is a [time-series database](https://prometheus.io/docs/concepts/data_model/#data-model) that collects and stores metrics from applications and services. It provides a foundation for monitoring system performance using the PromQL query language to extract and analyze granular data. Prometheus autonomously scrapes (*pulls*) metrics from targets at specified intervals, efficiently storing data through compression while retaining the most critical details. It also supports alerting based on metric thresholds, making it suitable for dynamic, cloud-native environments.
@@ -32,10 +34,12 @@ If you prefer an automatic deployment rather than the manual installation steps 
 
 ## Before You Begin
 
-1.  If you do not already have a virtual machine to use, create a Compute Instance using the steps in our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Create a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides. The examples in this guide use a Linode 8 GB Shared CPU plan with the Ubuntu 24.04 LTS distribution.
+1.  If you do not already have a virtual machine to use, create a Compute Instance using the steps in our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Create a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides. The examples in this guide use a Linode 8 GB Shared CPU plan with the Ubuntu 24.04 LTS distribution for Prometheus and Grafana. A Nanode 1 GB Shared CPU plan with Ubuntu 24.04 LTS is sufficient for the example Flask server.
 
     {{< note type="primary" title="Provisioning Compute Instances with the Linode CLI" isCollapsible="true" >}}
-    Use these steps if you prefer to use the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli) to provision resources. The following command creates a **Linode 8 GB** compute instance (`g6-standard-4`) running Ubuntu 24.04 LTS (`linode/ubuntu24.04`) in the Miami datacenter (`us-mia`). Replace the plan type and region as desired:
+    Use these steps if you prefer to use the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli) to provision resources.
+
+    The following command creates a **Linode 8 GB** compute instance (`g6-standard-4`) running Ubuntu 24.04 LTS (`linode/ubuntu24.04`) in the Miami datacenter (`us-mia`):
 
     ```command
     linode-cli linodes create \
@@ -47,8 +51,21 @@ If you prefer an automatic deployment rather than the manual installation steps 
         --label monitoring-server
     ```
 
+    The following command creates a **Nanode 1 GB** compute instance (`g6-nanode-1`) running Ubuntu 24.04 LTS (`linode/ubuntu24.04`) in the Miami datacenter (`us-mia`):
+
+    ```command
+    linode-cli linodes create \
+        --image linode/ubuntu24.04 \
+        --region us-mia \
+        --type g6-nanode-1 \
+        --root_pass {{< placeholder "PASSWORD" >}} \
+        --authorized_keys "$(cat ~/.ssh/id_rsa.pub)" \
+        --label flask-server
+    ```
+
     Note the following key points:
 
+    -   Replace the `region` as desired.
     -   Replace {{< placeholder "PASSWORD" >}} with a secure alternative for your root password.
     -   This command assumes that an SSH public/private key pair exists, with the public key stored as `id\_rsa.pub` in the user’s `$HOME/.ssh/` folder.
     -   The `--label` argument specifies the name of the new server (`monitoring-server`).
@@ -280,6 +297,191 @@ Grafana provides an `apt` repository, reducing the number of steps needed to ins
 
     If successful, your Grafana installation is now connected to the Prometheus installation running on the same Linode.
 
+## Configure Example Flask Server
+
+This guide demonstrates the migration process using an example Flask server that collects metrics and logs via Azure Monitor.
+
+1.  Log in to the example Flask application server as a user with `sudo` privileges.
+
+1.  Create a directory for the project named `exmaple-flask-app` and change into it:
+
+    ```command
+    mkdir example-flask-app
+    cd example-flask-app
+    ```
+
+1.  Create a file called `app.py`:
+
+    ```command
+    nano app.py
+    ```
+
+    Give it the following contents, replacing {{< placeholder "USERNAME" >}} with your actual `sudo` user:
+
+    ```file {title="app.py", lang="python" hl_lines="8"}
+    import json
+    import logging
+    import time
+
+    from flask import Flask, request
+    from applicationinsights import TelemetryClient # Note: pip install applicationinsights
+
+    logging.basicConfig(filename='/home/{{< placeholder "USERNAME" >}}/example-flask-app/flask-app.log', level=logging.INFO)
+    logger = logging.getLogger(__name__)
+
+    app = Flask(__name__)
+
+    # Azure Monitoring setup
+    tc = TelemetryClient('YOUR_INSTRUMENTATION_KEY')
+
+    @app.before_request
+    def start_timer():
+        request.start_time = time.time()
+
+    @app.after_request
+    def send_latency_metric(response):
+        latency = time.time() - request.start_time
+
+        # Send latency metric to Azure Monitoring
+        tc.track_metric("EndpointLatency", latency, properties={
+            "Endpoint": request.path,
+            "Method": request.method
+        })
+        tc.flush()
+
+        return response
+
+    @app.route('/')
+    def hello_world():
+        logger.info("A request was received at the root URL")
+        return {'message': 'Hello, World!'}, 200
+
+    if __name__ == '__main__':
+        app.run(host='0.0.0.0', port=80)
+    ```
+
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
+1.  Now create a text file called `requirements.txt`:
+
+    ```command
+    nano requirements.txt
+    ```
+
+    Provide it with the following basic dependencies for the Flask application to function:
+
+    ```file {title="requirements.txt"}
+    Flask==3.0.3
+    itsdangerous==2.2.0
+    Jinja2==3.1.4
+    MarkupSafe==2.1.5
+    Werkzeug==3.0.4
+    ```
+
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
+1.  A virtual environment is required to run `pip` commands in Ubuntu 24.04 LTS. Use the following command to install `python3.12-venv`:
+
+    ```command
+    sudo apt install python3.12-venv
+    ```
+
+1.  Using the `venv` utility, create a virtual environment named `venv` within the `example-flask-app` directory:
+
+    ```command
+    python3 -m venv venv
+    ```
+
+1.  Activate the `venv` virtual environment:
+
+    ```command
+    source venv/bin/activate
+    ```
+
+1.  Use `pip` to install the example Flask application's dependencies from the `requirements.txt` file:
+
+    ```command
+    pip install -r requirements.txt
+    ```
+
+1.  Additionally, use `pip` to install `applicationinsights`, which is required for interfacing with Azure Monitor:
+
+    ```command
+    pip install applicationinsights
+    ```
+
+1.  Exit the virtual environment:
+
+    ```command
+    deactivate
+    ```
+
+### Create a `systemd` Service File
+
+1.  Create a `systemd` service file for the example Flask app:
+
+    ```command
+    sudo nano /etc/systemd/system/flask-app.service
+    ```
+
+    Provide the file with the following content, replacing {{< placeholder "USERNAME" >}} with your actual `sudo` user:
+
+    ```file {title="/etc/systemd/system/flask-app.service"}
+    [Unit]
+    Description=Flask Application Service
+    After=network.target
+
+    [Service]
+    User={{< placeholder "USERNAME" >}}
+    WorkingDirectory=/home/{{< placeholder "USERNAME" >}}/example-flask-app
+    ExecStart=/home/{{< placeholder "USERNAME" >}}/example-flask-app/venv/bin/python /home/{{< placeholder "USERNAME" >}}/example-flask-app/app.py
+    Restart=always
+
+    [Install]
+    WantedBy=multi-user.target
+    ```
+
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
+1.  Reload the `systemd` configuration files to apply the new service file, then start and enable the service:
+
+    ```command
+    sudo systemctl daemon-reload
+    sudo systemctl start flask-app
+    sudo systemctl enable flask-app
+    ```
+
+1.  Verify that the `flask-app` service is `active (running)`:
+
+    ```command
+    systemctl status flask-app
+    ```
+
+    ```output
+    ● flask-app.service - Flask Application Service
+         Loaded: loaded (/etc/systemd/system/flask-app.service; enabled; preset: enabled)
+         Active: active (running) since Thu 2024-12-05 17:26:18 EST; 1min 31s ago
+       Main PID: 4413 (python)
+          Tasks: 1 (limit: 9444)
+         Memory: 20.3M (peak: 20.3M)
+            CPU: 196ms
+         CGroup: /system.slice/flask-app.service
+    ```
+
+    Once the Flask application is running, Azure Monitor can monitor its data.
+
+1.  Generate data by issuing an HTTP request using the following cURL command. Replace {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the IP address of the instance where the Flask app is running:
+
+    ```command
+    curl http://{{< placeholder "FLASK_APP_IP_ADDRESS" >}}:8080
+    ```
+
+    You should receive the following response:
+
+    ```output
+    {"message": "Hello, World!"}
+    ```
+
 ## Migrate from Azure Monitor to Prometheus and Grafana
 
 Migrating from Azure Monitor to Prometheus and Grafana can offer several advantages, including increased control data storage and handling, potential reduction in cost, and enhanced monitoring capabilities across multi-cloud or hybrid environments. However, the transition requires careful planning and a clear understanding of the differences between them:
@@ -296,80 +498,6 @@ Applications monitored by Azure Monitor may use the following tools:
 
 -   [Azure OpenTelemetry Exporter](https://learn.microsoft.com/en-us/python/api/overview/azure/monitor-opentelemetry-exporter-readme?view=azure-python-preview): For intentional collection of application metrics using the OpenTelemetry Standard.
 -   [Application Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview): For automatic collection of metrics and telemetry data from applications.
-
-### Configure Example Flask Server
-
-1.  Change into your user's home directory and use `git` to clone the example Flask server's GitHub repository to your compute instance:
-
-    ```command
-    cd ~
-    git clone https://github.com/nathan-gilbert/simple-ec2-cloudwatch.git
-    ```
-
-1.  Change into the `example-flask-prometheus` folder in the new `simple-ec2-cloudwatch` directory:
-
-    ```command
-    cd simple-ec2-cloudwatch/example-flask-prometheus
-    ```
-
-1.  A virtual environment is required to run `pip` commands in Ubuntu 24.04 LTS. Use the following command to install `python3.12-venv`:
-
-    ```command
-    sudo apt install python3.12-venv
-    ```
-
-1.  Using the `venv` utility, create a virtual environment named `venv` within the `example-flask-prometheus` directory:
-
-    ```command
-    python3 -m venv venv
-    ```
-
-1.  Activate the `venv` virtual environment:
-
-    ```command
-    source venv/bin/activate
-    ```
-
-1.  Use `pip` to install the example Flask servers's dependencies:
-
-    ```command
-    pip install -r requirements.txt
-    ```
-
-1.  Exit the virtual environment:
-
-    ```command
-    deactivate
-    ```
-
-1.  Create a `systemd` service file for the example Flask app:
-
-    ```command
-    sudo nano /etc/systemd/system/flask-app.service
-    ```
-
-    Provide the file with the following content, replacing {{< placeholder "USERNAME" >}} with your username:
-
-    ```file {title="/etc/systemd/system/flask-app.service"}
-    [Unit]
-    Description=Flask Application Service
-    After=network.target
-
-    [Service]
-    User={{< placeholder "USERNAME" >}}
-    WorkingDirectory=/home/{{< placeholder "USERNAME" >}}/simple-ec2-cloudwatch/example-flask-prometheus
-    ExecStart=/home/{{< placeholder "USERNAME" >}}/simple-ec2-cloudwatch/example-flask-prometheus/venv/bin/python /home/{{< placeholder "USERNAME" >}}/simple-ec2-cloudwatch/example-flask-prometheus/app.py
-    Restart=always
-
-    [Install]
-    WantedBy=multi-user.target
-    ```
-
-1.  Reload the `systemd` configuration files to apply the new service file:
-
-    ```command
-    sudo systemctl daemon-reload
-    ```
 
 ### Assess Current Monitoring Requirements
 
@@ -429,15 +557,33 @@ Prometheus works differently from Azure Monitor: instead of *pushing* data like 
 
 For the example Flask application in this guide, the [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_flask_exporter) is a standard library that can be used for instrumenting Flask applications to expose Prometheus metrics.
 
+1.  Reactivate the `venv` virtual environment:
+
+    ```command
+    source venv/bin/activate
+    ```
+
+1.  Use `pip` to install the `prometheus_client` and `prometheus_flask_exporter` libraries:
+
+    ```command
+    pip install prometheus_client prometheus_flask_exporter
+    ```
+
+1.  Exit the virtual environment:
+
+    ```command
+    deactivate
+    ```
+
 1.  Using a text editor of your choice, open the `app.py` file for the Flask application:
 
     ```command
     nano app.py
     ```
 
-    Ensure the following lines are present, adding or adjusting them if needed:
+    Replace the file's current Azure Monitor-specific contents with the Prometheus-specific code below, making sure to replace {{< placeholder "USERNAME" >}} with your actual username:
 
-    ```file {title="~/simple-ec2-cloudwatch/example-flask-prometheus/app.py" lang="python" hl_lines="5,6,8,11,12,14,34"}
+    ```file {title="app.py" lang="python" hl_lines="8"}
     import logging
     import random
     import time
@@ -445,7 +591,7 @@ For the example Flask application in this guide, the [`prometheus_flask_exporter
     from flask import Flask
     from prometheus_flask_exporter import PrometheusMetrics
 
-    logging.basicConfig(filename="/home/{{< placeholder "USERNAME" >}}/simple-ec2-cloudwatch/example-flask-prometheus/flask-app.log", level=logging.INFO)
+    logging.basicConfig(filename="/home/{{< placeholder "USERNAME" >}}/example-flask-app/flask-app.log", level=logging.INFO)
     logger = logging.getLogger(__name__)
 
     app = Flask(__name__)
@@ -480,11 +626,10 @@ For the example Flask application in this guide, the [`prometheus_flask_exporter
     -   Expose default and application-specific metrics at the `/metrics` endpoint.
     -   Provide metadata such as version information via `metrics.info`.
 
-1.  Save and close the file, then start and enable the `flask-app` service:
+1.  Save and close the file, then restart the `flask-app` service:
 
     ```command
-    sudo systemctl start flask-app
-    sudo systemctl enable flask-app
+    sudo systemctl restart flask-app
     ```
 
 1.  Verify that the `flask-app` service is `active (running)`:
@@ -526,13 +671,15 @@ For the example Flask application in this guide, the [`prometheus_flask_exporter
 
 ### Configure Prometheus to Ingest Application Metrics
 
+1.  Log back in to the Prometheus & Grafana instance.
+
 1.  Using a text editor, open and modify the Prometheus configuration at `/etc/prometheus/prometheus.yml` to include the Flask application as a scrape target:
 
     ```command
     sudo nano /etc/prometheus/prometheus.yml
     ```
 
-    Append the following content to the `scrape_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the IP address of your `monitoring-server` instance, or in this case, `localhost`:
+    Append the following content to the `scrape_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the IP address of your `monitoring-server` instance:
 
     ```file {title="/etc/prometheus/prometheus.yml"}
       - job_name: 'flask_app'

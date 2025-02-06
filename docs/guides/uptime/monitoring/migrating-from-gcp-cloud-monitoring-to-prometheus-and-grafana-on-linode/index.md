@@ -17,7 +17,8 @@ external_resources:
 
 Cloud Monitoring is an observability solution from Google Cloud Platform (GCP). It allows users to monitor their applications, infrastructure, and services within the GCP ecosystem as well as in external and hybrid environments. Cloud Monitoring provides real-time insights into system health, performance, and availability by collecting metrics, logs, and traces.
 
-This guide explains how to migrate standard GCP Cloud Monitoring service logs and metrics to Grafana and Prometheus running on a Linode instance.
+This guide walks through how to migrate standard GCP Cloud Monitoring service logs, metrics, and monitoring to a Prometheus and Grafana software stack on a Linode instance. To illustrate the migration process, an example Flask-based Python application running on a separate instance is configured to send logs and metrics to Cloud Monitoring, and then modified to integrate with Prometheus and Grafana. While this guide uses a Flask application as an example, the principles can be applied to any workload currently monitored via Cloud Monitoring.
+
 
 ## Introduction to Prometheus and Grafana
 
@@ -36,7 +37,9 @@ If you prefer an automatic deployment rather than the manual installation steps 
 1.  If you do not already have a virtual machine to use, create a Compute Instance using the steps in our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Create a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides. The examples in this guide use a Linode 8 GB Shared CPU plan with the Ubuntu 24.04 LTS distribution.
 
     {{< note type="primary" title="Provisioning Compute Instances with the Linode CLI" isCollapsible="true" >}}
-    Use these steps if you prefer to use the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli) to provision resources. The following command creates a **Linode 8 GB** compute instance (`g6-standard-4`) running Ubuntu 24.04 LTS (`linode/ubuntu24.04`) in the Miami datacenter (`us-mia`). Replace the plan type and region as desired:
+    Use these steps if you prefer to use the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli) to provision resources.
+
+    The following command creates a **Linode 8 GB** compute instance (`g6-standard-4`) running Ubuntu 24.04 LTS (`linode/ubuntu24.04`) in the Miami datacenter (`us-mia`):
 
     ```command
     linode-cli linodes create \
@@ -48,8 +51,21 @@ If you prefer an automatic deployment rather than the manual installation steps 
         --label monitoring-server
     ```
 
+    The following command creates a **Nanode 1 GB** compute instance (`g6-nanode-1`) running Ubuntu 24.04 LTS (`linode/ubuntu24.04`) in the Miami datacenter (`us-mia`):
+
+    ```command
+    linode-cli linodes create \
+        --image linode/ubuntu24.04 \
+        --region us-mia \
+        --type g6-nanode-1 \
+        --root_pass {{< placeholder "PASSWORD" >}} \
+        --authorized_keys "$(cat ~/.ssh/id_rsa.pub)" \
+        --label flask-server
+    ```
+
     Note the following key points:
 
+    -   Replace the `region` as desired.
     -   Replace {{< placeholder "PASSWORD" >}} with a secure alternative for your root password.
     -   This command assumes that an SSH public/private key pair exists, with the public key stored as `id\_rsa.pub` in the user’s `$HOME/.ssh/` folder.
     -   The `--label` argument specifies the name of the new server (`monitoring-server`).
@@ -285,20 +301,101 @@ Grafana provides an `apt` repository, reducing the number of steps needed to ins
 
 Migrating from GCP Cloud Monitoring to Prometheus and Grafana requires planning to ensure the continuity of your monitoring capabilities. Transitioning from GCP Cloud Monitoring provides greater control over data storage and handling while unlocking the advanced customization and visualization features offered by Prometheus and Grafana.
 
-### Configure Example Flask Server
+## Configure Example Flask Server
 
-1.  Change into your user's home directory and use `git` to clone the example Flask server's GitHub repository to your compute instance:
+This guide demonstrates the migration process using an example Flask server that collects metrics and logs via GCP Cloud Monitoring.
 
-    ```command
-    cd ~
-    git clone https://github.com/nathan-gilbert/simple-ec2-cloudwatch.git
-    ```
+1.  Log in to the example Flask application server as a user with `sudo` privileges.
 
-1.  Change into the `example-flask-prometheus` folder in the new `simple-ec2-cloudwatch` directory:
+1.  Create a directory for the project named `exmaple-flask-app` and change into it:
 
     ```command
-    cd simple-ec2-cloudwatch/example-flask-prometheus
+    mkdir example-flask-app
+    cd example-flask-app
     ```
+
+1.  Create a file called `app.py`:
+
+    ```command
+    nano app.py
+    ```
+
+    Give it the following contents, replacing {{< placeholder "USERNAME" >}} with your actual `sudo` user:
+
+    ```file {title="app.py", lang="python" hl_lines="8"}
+    import json
+    import logging
+    import time
+
+    from flask import Flask, request
+    from google.cloud import monitoring_v3 # Note: pip install google-cloud-monitoring
+
+    logging.basicConfig(filename='/home/<USERNAME>/docs-cloud-projects/demos/prometheus-grafana-example-flask-app/flask-app.log', level=logging.INFO)
+    logger = logging.getLogger(__name__)
+
+    app = Flask(__name__)
+
+    # Google Cloud Monitoring setup
+    metric_client = monitoring_v3.MetricServiceClient()
+    project_id = 'YOUR_PROJECT_ID'  # replace with your project ID
+    project_name = f"projects/{project_id}"
+
+    @app.before_request
+    def start_timer():
+        request.start_time = time.time()
+
+    @app.after_request
+    def send_latency_metric(response):
+        latency = time.time() - request.start_time
+
+        # Send latency metric to Google Cloud Monitoring
+        series = monitoring_v3.TimeSeries()
+        series.metric.type = 'custom.googleapis.com/EndpointLatency'
+        series.resource.type = 'global'
+        series.metric.labels['endpoint'] = request.path
+        series.metric.labels['method'] = request.method
+
+        point = monitoring_v3.Point()
+        now = time.time()
+        seconds = int(now)
+        nanos = int((now - seconds) * 10**9)
+        point.interval.end_time.seconds = seconds
+        point.interval.end_time.nanos = nanos
+        point.value.double_value = latency
+
+        series.points.append(point)
+        metric_client.create_time_series(name=project_name, time_series=[series])
+
+        return response
+
+    @app.route('/')
+    def hello_world():
+        logger.info("A request was received at the root URL")
+        return {'message': 'Hello, World!'}, 200
+
+    if __name__ == '__main__':
+        app.run(host='0.0.0.0', port=80)
+    ```
+
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
+1.  Now create a text file called `requirements.txt`:
+
+    ```command
+    nano requirements.txt
+    ```
+
+    Provide it with the following basic dependencies for the Flask application to function:
+
+    ```file {title="requirements.txt"}
+    Flask==3.0.3
+    itsdangerous==2.2.0
+    Jinja2==3.1.4
+    MarkupSafe==2.1.5
+    Werkzeug==3.0.4
+    ```
+
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
 1.  A virtual environment is required to run `pip` commands in Ubuntu 24.04 LTS. Use the following command to install `python3.12-venv`:
 
@@ -306,7 +403,7 @@ Migrating from GCP Cloud Monitoring to Prometheus and Grafana requires planning 
     sudo apt install python3.12-venv
     ```
 
-1.  Using the `venv` utility, create a virtual environment named `venv` within the `example-flask-prometheus` directory:
+1.  Using the `venv` utility, create a virtual environment named `venv` within the `example-flask-app` directory:
 
     ```command
     python3 -m venv venv
@@ -318,10 +415,16 @@ Migrating from GCP Cloud Monitoring to Prometheus and Grafana requires planning 
     source venv/bin/activate
     ```
 
-1.  Use `pip` to install the example Flask servers's dependencies:
+1.  Use `pip` to install the example Flask application's dependencies from the `requirements.txt` file:
 
     ```command
     pip install -r requirements.txt
+    ```
+
+1.  Additionally, use `pip` to install `google-cloud-monitoring`, which is required for interfacing with GCP resources:
+
+    ```command
+    pip install google-cloud-monitoring
     ```
 
 1.  Exit the virtual environment:
@@ -330,13 +433,15 @@ Migrating from GCP Cloud Monitoring to Prometheus and Grafana requires planning 
     deactivate
     ```
 
+### Create a `systemd` Service File
+
 1.  Create a `systemd` service file for the example Flask app:
 
     ```command
     sudo nano /etc/systemd/system/flask-app.service
     ```
 
-    Provide the file with the following content, replacing {{< placeholder "USERNAME" >}} with your username:
+    Provide the file with the following content, replacing {{< placeholder "USERNAME" >}} with your actual `sudo` user:
 
     ```file {title="/etc/systemd/system/flask-app.service"}
     [Unit]
@@ -345,21 +450,56 @@ Migrating from GCP Cloud Monitoring to Prometheus and Grafana requires planning 
 
     [Service]
     User={{< placeholder "USERNAME" >}}
-    WorkingDirectory=/home/{{< placeholder "USERNAME" >}}/simple-ec2-cloudwatch/example-flask-prometheus
-    ExecStart=/home/{{< placeholder "USERNAME" >}}/simple-ec2-cloudwatch/example-flask-prometheus/venv/bin/python /home/{{< placeholder "USERNAME" >}}/simple-ec2-cloudwatch/example-flask-prometheus/app.py
+    WorkingDirectory=/home/{{< placeholder "USERNAME" >}}/example-flask-app
+    ExecStart=/home/{{< placeholder "USERNAME" >}}/example-flask-app/venv/bin/python /home/{{< placeholder "USERNAME" >}}/example-flask-app/app.py
     Restart=always
 
     [Install]
     WantedBy=multi-user.target
     ```
 
-1.  Reload the `systemd` configuration files to apply the new service file:
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
+1.  Reload the `systemd` configuration files to apply the new service file, then start and enable the service:
 
     ```command
     sudo systemctl daemon-reload
+    sudo systemctl start flask-app
+    sudo systemctl enable flask-app
     ```
 
-### Assess current monitoring requirements
+1.  Verify that the `flask-app` service is `active (running)`:
+
+    ```command
+    systemctl status flask-app
+    ```
+
+    ```output
+    ● flask-app.service - Flask Application Service
+         Loaded: loaded (/etc/systemd/system/flask-app.service; enabled; preset: enabled)
+         Active: active (running) since Thu 2024-12-05 17:26:18 EST; 1min 31s ago
+       Main PID: 4413 (python)
+          Tasks: 1 (limit: 9444)
+         Memory: 20.3M (peak: 20.3M)
+            CPU: 196ms
+         CGroup: /system.slice/flask-app.service
+    ```
+
+    Once the Flask application is running, GCP Cloud Monitoring can monitor its data.
+
+1.  Generate data by issuing an HTTP request using the following cURL command. Replace {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the IP address of the instance where the Flask app is running:
+
+    ```command
+    curl http://{{< placeholder "FLASK_APP_IP_ADDRESS" >}}:8080
+    ```
+
+    You should receive the following response:
+
+    ```output
+    {"message": "Hello, World!"}
+    ```
+
+### Assess Current Monitoring Requirements
 
 Begin by cataloging all metrics currently monitored in GCP Cloud Monitoring. So that you can recreate similar monitoring with Prometheus, identify common metrics for web applications, such as latency, request rates, CPU usage, and memory consumption. Remember to document existing alert configurations, as alerting strategies must also be ported to [Prometheus Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/).
 
@@ -397,15 +537,33 @@ Prometheus works differently from GCP Cloud Monitoring: instead of *pushing* dat
 
 For the example Flask application in this guide, the [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_flask_exporter) is a standard library that can be used for instrumenting Flask applications to expose Prometheus metrics.
 
+1.  Reactivate the `venv` virtual environment:
+
+    ```command
+    source venv/bin/activate
+    ```
+
+1.  Use `pip` to install the `prometheus_client` and `prometheus_flask_exporter` libraries:
+
+    ```command
+    pip install prometheus_client prometheus_flask_exporter
+    ```
+
+1.  Exit the virtual environment:
+
+    ```command
+    deactivate
+    ```
+
 1.  Using a text editor of your choice, open the `app.py` file for the Flask application:
 
     ```command
     nano app.py
     ```
 
-    Ensure the following lines are present, adding or adjusting them if needed:
+    Replace the file's current GCP Cloud Monitoring-specific contents with the Prometheus-specific code below, making sure to replace {{< placeholder "USERNAME" >}} with your actual username:
 
-    ```file {title="~/simple-ec2-cloudwatch/example-flask-prometheus/app.py" lang="python" hl_lines="5,6,8,11,12,14,34"}
+   ```file {title="app.py" lang="python" hl_lines="8"}
     import logging
     import random
     import time
@@ -413,7 +571,7 @@ For the example Flask application in this guide, the [`prometheus_flask_exporter
     from flask import Flask
     from prometheus_flask_exporter import PrometheusMetrics
 
-    logging.basicConfig(filename="/home/{{< placeholder "USERNAME" >}}/simple-ec2-cloudwatch/example-flask-prometheus/flask-app.log", level=logging.INFO)
+    logging.basicConfig(filename="/home/{{< placeholder "USERNAME" >}}/example-flask-app/flask-app.log", level=logging.INFO)
     logger = logging.getLogger(__name__)
 
     app = Flask(__name__)
@@ -448,11 +606,10 @@ For the example Flask application in this guide, the [`prometheus_flask_exporter
     -   Expose default and application-specific metrics at the `/metrics` endpoint.
     -   Provide metadata such as version information via `metrics.info`.
 
-1.  Save and close the file, then start and enable the `flask-app` service:
+1.  Save and close the file, then restart the `flask-app` service:
 
     ```command
-    sudo systemctl start flask-app
-    sudo systemctl enable flask-app
+    sudo systemctl restart flask-app
     ```
 
 1.  Verify that the `flask-app` service is `active (running)`:
@@ -500,7 +657,7 @@ For the example Flask application in this guide, the [`prometheus_flask_exporter
     sudo nano /etc/prometheus/prometheus.yml
     ```
 
-    Append the following content to the `scrape_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the IP address of your `monitoring-server` instance, or in this case, `localhost`:
+    Append the following content to the `scrape_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the IP address of your `monitoring-server` instance:
 
     ```file {title="/etc/prometheus/prometheus.yml"}
       - job_name: 'flask_app'

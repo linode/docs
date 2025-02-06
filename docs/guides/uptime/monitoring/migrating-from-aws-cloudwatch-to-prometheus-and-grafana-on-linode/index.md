@@ -18,7 +18,7 @@ AWS CloudWatch is a monitoring and observability service designed to collect and
 
 While CloudWatch can be useful for AWS environments, organizations may seek alternative solutions to reduce costs or increase flexibility across multiple cloud platforms. Prometheus and Grafana offer an open source, platform-agnostic alternative.
 
-This guide walks through how to migrate standard AWS CloudWatch service logs, metrics, and monitoring to a Prometheus and Grafana software stack on a Linode instance. To illustrate the migration process, an [example Flask-based Python application](https://github.com/linode/docs-cloud-projects/tree/main/demos/prometheus-grafana-example-flask-app) running on a separate instance is configured to send logs and metrics to CloudWatch, and then modified to integrate with Prometheus and Grafana. While this guide uses a Flask application as an example, the principles can be applied to any workload currently monitored via AWS CloudWatch.
+This guide walks through how to migrate standard AWS CloudWatch service logs, metrics, and monitoring to a Prometheus and Grafana software stack on a Linode instance. To illustrate the migration process, an example Flask-based Python application running on a separate instance is configured to send logs and metrics to CloudWatch, and then modified to integrate with Prometheus and Grafana. While this guide uses a Flask application as an example, the principles can be applied to any workload currently monitored via AWS CloudWatch.
 
 ## Introduction to Prometheus and Grafana
 
@@ -34,12 +34,12 @@ If you prefer an automatic deployment rather than the manual installation steps 
 
 ## Before You Begin
 
-1.  If you do not already have a virtual machine to use, create a Compute Instance using the steps in our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Create a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides. The examples in this guide use a Linode 8 GB Shared CPU plan with the Ubuntu 24.04 LTS distribution for Prometheus & Grafana. A Nanode 1 GB Shared CPU plan with Ubuntu 24.04 LTS is sufficient for the example Flask server.
+1.  If you do not already have a virtual machine to use, create a Compute Instance using the steps in our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Create a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides. The examples in this guide use a Linode 8 GB Shared CPU plan with the Ubuntu 24.04 LTS distribution for Prometheus and Grafana. A Nanode 1 GB Shared CPU plan with Ubuntu 24.04 LTS is sufficient for the example Flask server.
 
     {{< note type="primary" title="Provisioning Compute Instances with the Linode CLI" isCollapsible="true" >}}
     Use these steps if you prefer to use the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli) to provision resources.
 
-    The following command creates a **Linode 8 GB** compute instance (`g6-standard-4`) running Ubuntu 24.04 LTS (`linode/ubuntu24.04`) in the Miami datacenter (`us-mia`). Replace the plan type and region as desired:
+    The following command creates a **Linode 8 GB** compute instance (`g6-standard-4`) running Ubuntu 24.04 LTS (`linode/ubuntu24.04`) in the Miami datacenter (`us-mia`):
 
     ```command
     linode-cli linodes create \
@@ -51,7 +51,7 @@ If you prefer an automatic deployment rather than the manual installation steps 
         --label monitoring-server
     ```
 
-    The following command creates a **Nanode 1 GB** compute instance (`g6-nanode-1`) running Ubuntu 24.04 LTS (`linode/ubuntu24.04`) in the Miami datacenter (`us-mia`). Replace the plan type and region as desired:
+    The following command creates a **Nanode 1 GB** compute instance (`g6-nanode-1`) running Ubuntu 24.04 LTS (`linode/ubuntu24.04`) in the Miami datacenter (`us-mia`):
 
     ```command
     linode-cli linodes create \
@@ -65,6 +65,7 @@ If you prefer an automatic deployment rather than the manual installation steps 
 
     Note the following key points:
 
+    -   Replace the `region` as desired.
     -   Replace {{< placeholder "PASSWORD" >}} with a secure alternative for your root password.
     -   This command assumes that an SSH public/private key pair exists, with the public key stored as `id\_rsa.pub` in the user’s `$HOME/.ssh/` folder.
     -   The `--label` argument specifies the name of the new server (`monitoring-server`).
@@ -298,74 +299,34 @@ Grafana provides an `apt` repository, reducing the number of steps needed to ins
 
 ## Configure Example Flask Server
 
-This guide demonstrates the migration process using an [example Flask server](https://github.com/nathan-gilbert/simple-ec2-cloudwatch) that collects metrics and logs via AWS CloudWatch.
+This guide demonstrates the migration process using an example Flask server that collects metrics and logs via AWS CloudWatch.
 
 1.  Log in to the example Flask application server as a user with `sudo` privileges.
 
-1.  Use `git` to clone the example Flask server's GitHub repository to your compute instance:
+1.  Create a directory for the project named `exmaple-flask-app` and change into it:
 
     ```command
-    git clone https://github.com/linode/docs-cloud-projects.git
+    mkdir example-flask-app
+    cd example-flask-app
     ```
 
-1.  Change into the `docs-cloud-projects/demos/prometheus-grafana-example-flask-app` directory:
-
-    ```command
-    cd docs-cloud-projects/demos/prometheus-grafana-example-flask-app
-    ```
-
-1.  A virtual environment is required to run `pip` commands in Ubuntu 24.04 LTS. Use the following command to install `python3.12-venv`:
-
-    ```command
-    sudo apt install python3.12-venv
-    ```
-
-1.  Using the `venv` utility, create a virtual environment named `venv` within the `prometheus-grafana-example-flask-app` directory:
-
-    ```command
-    python3 -m venv venv
-    ```
-
-1.  Activate the `venv` virtual environment:
-
-    ```command
-    source venv/bin/activate
-    ```
-
-1.  Use `pip` to install the example Flask servers's dependencies from the `requirements.txt` file:
-
-    ```command
-    pip install -r requirements.txt
-    ```
-
-1.  Use `pip` to install the `boto3` library, which is a required Python library for interfacing with AWS resources:
-
-    ```command
-    pip install boto3
-    ```
-
-1.  Exit the virtual environment:
-
-    ```command
-    deactivate
-    ```
-
-1.  Open `app.py` in a command line text editor such as `nano`:
+1.  Create a file called `app.py`:
 
     ```command
     nano app.py
     ```
 
-    Replace the file's current generic contents with the AWS-specific code below, making sure to replace {{< placeholder "USERNAME" >}} with your actual username:
+    Give it the following contents, replacing {{< placeholder "USERNAME" >}} with your actual `sudo` user:
 
-    ```file {title="app.py" lang="python"}
+    ```file {title="app.py", lang="python"}
+    import boto3 # Note: pip install boto3
     import json
     import logging
     import time
 
     from flask import Flask, request
 
-    logging.basicConfig(filename='/home/{{< placeholder "USERNAME" >}}/docs-cloud-projects/demos/prometheus-grafana-example-flask-app/flask-app.log', level=logging.INFO)
+    logging.basicConfig(filename='/home/{{< placeholder "USERNAME" >}}/example-flask-app/flask-app.log', level=logging.INFO)
     logger = logging.getLogger(__name__)
 
     app = Flask(__name__)
@@ -414,9 +375,65 @@ This guide demonstrates the migration process using an [example Flask server](ht
         app.run(host='0.0.0.0', port=80)
     ```
 
+    The example Flask application in this guide collects and sends endpoint latency metrics to CloudWatch using the [`put_metric_data`](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudwatch/client/put_metric_data.html) API from [Boto3](https://github.com/boto/boto3). Application logs are written to a local file and ingested into CloudWatch Logs for centralization.
+
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-### Create a systemd Service File
+1.  Now create a text file called `requirements.txt`:
+
+    ```command
+    nano requirements.txt
+    ```
+
+    Provide it with the following basic dependencies for the Flask application to function:
+
+    ```file {title="requirements.txt"}
+    Flask==3.0.3
+    itsdangerous==2.2.0
+    Jinja2==3.1.4
+    MarkupSafe==2.1.5
+    Werkzeug==3.0.4
+    ```
+
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
+1.  A virtual environment is required to run `pip` commands in Ubuntu 24.04 LTS. Use the following command to install `python3.12-venv`:
+
+    ```command
+    sudo apt install python3.12-venv
+    ```
+
+1.  Using the `venv` utility, create a virtual environment named `venv` within the `example-flask-app` directory:
+
+    ```command
+    python3 -m venv venv
+    ```
+
+1.  Activate the `venv` virtual environment:
+
+    ```command
+    source venv/bin/activate
+    ```
+
+1.  Use `pip` to install the example Flask application's dependencies from the `requirements.txt` file:
+
+    ```command
+    pip install -r requirements.txt
+    ```
+
+1.  Additionally, use `pip` to install the `boto3` library, which is a Python library required for interfacing with AWS resources:
+
+    ```command
+    pip install boto3
+    ```
+
+1.  Exit the virtual environment:
+
+    ```command
+    deactivate
+    ```
+
+### Create a `systemd` Service File
 
 1.  Create a `systemd` service file for the example Flask app:
 
@@ -424,7 +441,7 @@ This guide demonstrates the migration process using an [example Flask server](ht
     sudo nano /etc/systemd/system/flask-app.service
     ```
 
-    Provide the file with the following content, replacing {{< placeholder "USERNAME" >}} with your username:
+    Provide the file with the following content, replacing {{< placeholder "USERNAME" >}} with your actual `sudo` user:
 
     ```file {title="/etc/systemd/system/flask-app.service"}
     [Unit]
@@ -433,8 +450,8 @@ This guide demonstrates the migration process using an [example Flask server](ht
 
     [Service]
     User={{< placeholder "USERNAME" >}}
-    WorkingDirectory=/home/{{< placeholder "USERNAME" >}}/docs-cloud-projects/demos/prometheus-grafana-example-flask-app
-    ExecStart=/home/{{< placeholder "USERNAME" >}}/docs-cloud-projects/demos/prometheus-grafana-example-flask-app/venv/bin/python /home/{{< placeholder "USERNAME" >}}/docs-cloud-projects/demos/prometheus-grafana-example-flask-app/app.py
+    WorkingDirectory=/home/{{< placeholder "USERNAME" >}}/example-flask-app
+    ExecStart=/home/{{< placeholder "USERNAME" >}}/example-flask-app/venv/bin/python /home/{{< placeholder "USERNAME" >}}/example-flask-app/app.py
     Restart=always
 
     [Install]
@@ -451,6 +468,37 @@ This guide demonstrates the migration process using an [example Flask server](ht
     sudo systemctl enable flask-app
     ```
 
+1.  Verify that the `flask-app` service is `active (running)`:
+
+    ```command
+    systemctl status flask-app
+    ```
+
+    ```output
+    ● flask-app.service - Flask Application Service
+         Loaded: loaded (/etc/systemd/system/flask-app.service; enabled; preset: enabled)
+         Active: active (running) since Thu 2024-12-05 17:26:18 EST; 1min 31s ago
+       Main PID: 4413 (python)
+          Tasks: 1 (limit: 9444)
+         Memory: 20.3M (peak: 20.3M)
+            CPU: 196ms
+         CGroup: /system.slice/flask-app.service
+    ```
+
+    Once the Flask application is running, CloudWatch can monitor its data.
+
+1.  Generate data by issuing an HTTP request using the following cURL command. Replace {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the IP address of the instance where the Flask app is running:
+
+    ```command
+    curl http://{{< placeholder "FLASK_APP_IP_ADDRESS" >}}:8080
+    ```
+
+    You should receive the following response:
+
+    ```output
+    {"message": "Hello, World!"}
+    ```
+
 ## Migrate from AWS CloudWatch to Prometheus and Grafana
 
 Migrating from AWS CloudWatch to Prometheus and Grafana requires careful planning. It is important to ensure the continuity of your monitoring capabilities while leveraging the added control over data handling and advanced features of Prometheus and Grafana.
@@ -458,8 +506,6 @@ Migrating from AWS CloudWatch to Prometheus and Grafana requires careful plannin
 ### Assess Current Monitoring Requirements
 
 Before migrating to Prometheus and Grafana, it's important to understand what metrics and logs are currently being collected by CloudWatch and how they are used. This may vary depending on your application.
-
-For example, the Flask application in this guide collects and sends endpoint latency metrics to CloudWatch using the [`put_metric_data`](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudwatch/client/put_metric_data.html) API from [Boto3](https://github.com/boto/boto3), a Python library for interfacing with AWS resources. Application logs are written to a local file and ingested into CloudWatch Logs for centralization.
 
 Metrics such as endpoint latency are collected for every HTTP request, along with HTTP method details. Application logs record incoming requests, exceptions, and warnings. When the Flask application receives and handles requests, it emits logs like the following:
 
@@ -492,7 +538,7 @@ Replace the following placeholders with your specific values:
 
 ### Expose Application Metrics to Prometheus
 
-Prometheus works differently from CloudWatch: Instead of *pushing* data like CloudWatch, Prometheus *pulls* metrics from the monitored application. After assessing or exporting metrics as needed, modify the application to enable Prometheus metric scraping so that it collects the same metrics previously sent to CloudWatch. This process varies from application to application.
+Prometheus works differently from CloudWatch. Instead of *pushing* data like CloudWatch, Prometheus *pulls* metrics from the monitored application. After assessing or exporting metrics as needed, modify the application to enable Prometheus metric scraping so that it collects the same metrics previously sent to CloudWatch. This process varies from application to application.
 
 For the example Flask application in this guide, the [`prometheus_flask_exporter` library](https://github.com/rycus86/prometheus_flask_exporter) is a standard library that can be used for instrumenting Flask applications to expose Prometheus metrics.
 
@@ -530,7 +576,7 @@ For the example Flask application in this guide, the [`prometheus_flask_exporter
     from flask import Flask
     from prometheus_flask_exporter import PrometheusMetrics
 
-    logging.basicConfig(filename="/home/{{< placeholder "USERNAME" >}}/docs-cloud-projects/demos/prometheus-grafana-example-flask-app/flask-app.log", level=logging.INFO)
+    logging.basicConfig(filename="/home/{{< placeholder "USERNAME" >}}/example-flask-app/flask-app.log", level=logging.INFO)
     logger = logging.getLogger(__name__)
 
     app = Flask(__name__)
@@ -565,9 +611,7 @@ For the example Flask application in this guide, the [`prometheus_flask_exporter
     -   Expose default and application-specific metrics at the `/metrics` endpoint.
     -   Provide metadata such as version information via `metrics.info`.
 
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
-
-1.  Restart the `flask-app` service:
+1.  Save and close the file, then restart the `flask-app` service:
 
     ```command
     sudo systemctl restart flask-app
@@ -612,13 +656,15 @@ For the example Flask application in this guide, the [`prometheus_flask_exporter
 
 ### Configure Prometheus to Ingest Application Metrics
 
+1.  Log back in to the Prometheus & Grafana instance.
+
 1.  Using a text editor, open and modify the Prometheus configuration at `/etc/prometheus/prometheus.yml` to include the Flask application as a scrape target:
 
     ```command
     sudo nano /etc/prometheus/prometheus.yml
     ```
 
-    Append the following content to the `scrape_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the IP address of your `monitoring-server` instance, or in this case, `localhost`:
+    Append the following content to the `scrape_configs` section of the file, replacing {{< placeholder "FLASK_APP_IP_ADDRESS" >}} with the IP address of your `monitoring-server` instance:
 
     ```file {title="/etc/prometheus/prometheus.yml"}
       - job_name: 'flask_app'
@@ -626,7 +672,7 @@ For the example Flask application in this guide, the [`prometheus_flask_exporter
           - targets: ['{{< placeholder "FLASK_APP_IP_ADDRESS" >}}:8080']
     ```
 
-    This configuration tell Prometheus to scrape metrics from the Flask application running on port `8080`.
+    This configuration tells Prometheus to scrape metrics from the Flask application running on port `8080`.
 
 1.  Save the file, and restart Prometheus to apply the changes:
 
