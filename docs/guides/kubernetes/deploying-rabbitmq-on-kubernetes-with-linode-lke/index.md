@@ -4,7 +4,7 @@ title: "Deploying RabbitMQ on Kubernetes With Linode LKE"
 description: "Learn how to deploy RabbitMQ on Linode Kubernetes Engine (LKE) using the RabbitMQ Cluster Kubernetes Operator in this step-by-step guide."
 authors: ["Linode"]
 contributors: ["Linode"]
-published: 2024-12-21
+published: 2025-02-06
 keywords: ['rabbitmq','kubernetes','linode','lke','cluster','operator','messaging','deployment','virtual-host','rabbitmqadmin','exchange','queue','rabbitmq-on-kubernetes','rabbitmq-cluster-operator','deploying-rabbitmq-lke','linode-kubernetes-engine','rabbitmq-management-gui','messaging-topology-operator','rabbitmq-user-management','rabbitmq-queue-binding','rabbitmq-fanout-exchange','test-messaging-rabbitmq']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -17,10 +17,14 @@ external_resources:
 - '[RabbitMQ Linode Marketplace App](https://www.linode.com/marketplace/apps/linode/rabbitmq/)'
 ---
 
-The RabbitMQ maintainers advocate *against* manually handling the installation of RabbitMQ on Kubernetes. Instead, they [recommend](https://www.rabbitmq.com/blog/2020/08/10/deploying-rabbitmq-to-kubernetes-whats-involved) using RabbitMQ's Kubernetes tools to streamline its management on Kubernetes:
+This guide provides step-by-step instructions for deploying RabbitMQ on Linode Kubernetes Engine (LKE) using the [RabbitMQ Kubernetes Operator](https://www.rabbitmq.com/kubernetes/operator/operator-overview). This is part of a set of tools that RabbitMQ provides to streamline its management on Kubernetes:
 
 -   [**Cluster Kubernetes Operator**](https://www.rabbitmq.com/kubernetes/operator/operator-overview#cluster-operator): Automates the provisioning, management, and operation of RabbitMQ clusters on Kubernetes.
 -   [**Messaging Topology Operator**](https://www.rabbitmq.com/kubernetes/operator/operator-overview#topology-operator): Manages messaging topologies within a RabbitMQ cluster deployed using the Cluster Kubernetes Operator.
+
+{{< note >}}
+The RabbitMQ maintainers advocate *against* manually handling the installation of RabbitMQ on Kubernetes and instead [recommend](https://www.rabbitmq.com/blog/2020/08/10/deploying-rabbitmq-to-kubernetes-whats-involved) using the above tools.
+{{< /note >}}
 
 These operators extend Kubernetes management capabilities and leverage the Kubernetes API to provide native integration. This guide focuses specifically on the RabbitMQ Cluster Kubernetes Operator for deploying RabbitMQ, utilizing its built-in tooling for management and configuration. The Cluster Kubernetes Operator offers the following key features:
 
@@ -30,33 +34,27 @@ These operators extend Kubernetes management capabilities and leverage the Kuber
 -   Scalability
 -   Automated upgrades
 
-This guide provides step-by-step instructions for deploying RabbitMQ on Linode Kubernetes Engine (LKE) using the [RabbitMQ Kubernetes Operator](https://www.rabbitmq.com/kubernetes/operator/operator-overview).
-
 ## Before You Begin
 
-1.  Read our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and create a Linode account if you do not already have one.
+1.  Read the [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and create a Linode account if you do not already have one.
 
-1.  Create a personal access token using the instructions in our [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
+1.  Create a personal access token using the instructions in the [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
 
-1.  Follow the steps in the *Install kubectl* section of our [Getting started with LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine) guide to install `kubectl`.
+1.  Follow the steps in the [Install kubectl](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#install-kubectl) section of the [Getting started with LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine) guide to install `kubectl`.
 
-1.  Install the Linode CLI using the instructions in our [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
+1.  Install the Linode CLI using the instructions in the [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
 
-1.  Ensure that `jq`, a lightweight command line JSON processor, is installed:
-
-    ```command
-    sudo apt install jq
-    ```
+1.  [Install `jq`](/docs/guides/using-jq-to-process-json-on-the-command-line/#install-jq-with-package-managers), a lightweight command line JSON processor.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Provision a Kubernetes Cluster
 
 While there are several ways to create a Kubernetes cluster on Linode, this guide uses the [Linode CLI](https://github.com/linode/linode-cli) to provision resources.
 
-1.  Use the Linode CLI (`linode`) to see available Kubernetes versions:
+1.  Use the Linode CLI to see available Kubernetes versions:
 
     ```command
     linode lke versions-list
@@ -74,13 +72,15 @@ While there are several ways to create a Kubernetes cluster on Linode, this guid
 
     It is generally recommended to provision the latest version of Kubernetes unless specific requirements dictate otherwise.
 
-1.  Use the following command to list available Linode plans, including plan ID, pricing, and performance details. For more detailed pricing information, see [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/):
+1.  Use the following command to list available Linode plans, including plan ID, pricing, and performance details:
 
     ```command
     linode linodes types
     ```
 
-1.  The examples in this guide use the **g6-standard-2** Linode, which features two CPU cores and four GB of memory. Run the following command to display detailed information for this Linode plan in JSON format:
+    For more detailed pricing information, see the [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/) page.
+
+1.  The examples in this guide use the **g6-standard-2** Linode, which features two CPU cores and 4GB of memory. Run the following command to display detailed information for this Linode plan in JSON format:
 
     ```command
     linode linodes types --label "Linode 4GB" --json --pretty
@@ -115,13 +115,15 @@ While there are several ways to create a Kubernetes cluster on Linode, this guid
     linode regions list
     ```
 
-1.  With a Kubernetes version and Linode type selected, use the following command to create a cluster named `rabbitmq-cluster` in the `us-mia` (Miami, FL) region with three nodes and auto-scaling. Replace `rabbitmq-cluster` and `us-mia` with a cluster label and region of your choosing, respectively:
+    Choosing a location geographically closest to yours is recommended.
+
+1.  Use the following command to create a cluster with three nodes and auto-scaling. Replace `CLUSTER_NAME` with a name of your choosing, `KUBERNETES_VERSION` with your selected cluster version (e.g. 1.31), and `REGION_LABEL` with your desired region's label (e.g. `us-mia`):
 
     ```command
     linode lke cluster-create \
-      --label rabbitmq-cluster \
-      --k8s_version 1.31 \
-      --region us-mia \
+      --label {{< placeholder "CLUSTER_NAME" >}} \
+      --k8s_version {{< placeholder "KUBERNETES_VERSION" >}} \
+      --region {{< placeholder "REGION_LABEL" >}} \
       --node_pools '[{
         "type": "g6-standard-2",
         "count": 3,
@@ -146,9 +148,9 @@ While there are several ways to create a Kubernetes cluster on Linode, this guid
 
 ### Access the Kubernetes Cluster
 
-To access your cluster, fetch the cluster credentials in the form of a `kubeconfig` file.
+To access your cluster, fetch the cluster credentials in the form of a `kubeconfig` file:
 
-1.  Use the following command to retrieve the cluster’s ID:
+1.  Use the following command to retrieve the cluster's ID and store it in variable named `CLUSTER_ID`:
 
     ```command
     CLUSTER_ID=$(linode lke clusters-list --json | \
@@ -156,7 +158,7 @@ To access your cluster, fetch the cluster credentials in the form of a `kubeconf
           '.[] | select(.label == "rabbitmq-cluster") | .id')
     ```
 
-1.  Create a hidden `.kube` folder in your user’s home directory:
+1.  Create a hidden `.kube` folder in your user's home directory:
 
     ```command
     mkdir ~/.kube
@@ -183,19 +185,17 @@ To access your cluster, fetch the cluster credentials in the form of a `kubeconf
     lke295620-486011-4045e9410000   Ready    <none>   6d21h   v1.31.0
     ```
 
-    {{< note >}}
-    Optionally, to avoid specifying ``--kubeconfig ~/.kube/lke-config` with every `kubectl` command, you can set an environment variable for your current terminal window session:
+5. To avoid specifying `--kubeconfig ~/.kube/lke-config` with every `kubectl` command, you can set an environment variable for your current terminal window session:
 
     ```command
     export KUBECONFIG=~/.kube/lke-config
     ```
 
-    Then, you can run:
+    The config file is automatically used on subsequent kubectl commands in that terminal:
 
     ```command
     kubectl get no
     ```
-    {{< /note >}}
 
 ## Set Up RabbitMQ on LKE
 
@@ -261,6 +261,23 @@ The following steps assume your LKE cluster is provisioned and your `KUBECONFIG`
 
     To save the file and exit `nano`, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd>.
 
+    {{< note >}}
+    To set a custom administrative username and password during the creation of the RabbitMQ cluster, modify `rabbitmq-basic.yaml` to include the following additional configuration. Insert values for `YOUR_USERNAME` and `YOUR_PASSWORD` as desired:
+
+    ```file {title="rabbitmq-basic.yaml" lang="yaml" hl_lines="8-10"}
+    apiVersion: rabbitmq.com/v1beta1
+    kind: RabbitmqCluster
+    metadata:
+      name: rabbitmq-basic
+    spec:
+      service:
+        type: NodePort
+        additionalConfig: |
+          default_user=YOUR_USERNAME
+          default_pass=YOUR_PASSWORD
+    ```
+    {{< /note >}}
+
 1.  Apply the configuration to your LKE cluster:
 
     ```command
@@ -295,9 +312,7 @@ The following steps assume your LKE cluster is provisioned and your `KUBECONFIG`
     rabbitmqcluster.rabbitmq.com/rabbitmq-basic   True               True               94s
     ```
 
-    ![Command-line output displaying a list of all provisioned RabbitMQ resources, including pods and services.](list-all-resources.png)
-
-    The ports shown in the example output *do not* match your specific LKE setup. Take note of the port number mapped to `15672` as it is referred to by {{< placeholder "PORT" >}} in later steps.
+1.  The ports shown in the example output *do not* match your specific LKE setup. Take note of the port number mapped to `15672` as it is referred to by {{< placeholder "PORT" >}} in later steps.
 
 1.  View the logs from the RabbitMQ pod listed in the output above:
 
@@ -327,7 +342,7 @@ The following steps assume your LKE cluster is provisioned and your `KUBECONFIG`
 
 ### Access RabbitMQ Remotely
 
-To access the RabbitMQ management console, first retrieve the auto-generated credentials for the default administrative user.
+To access the RabbitMQ management console, first retrieve the auto-generated credentials for the default administrative user. If you chose to set `default_user` and `default_pass` values in your `rabbitmq-basic.yaml` in the previous section, you can use those values instead of following these steps:
 
 1.  Retrieve the username using the following command:
 
@@ -357,23 +372,6 @@ To access the RabbitMQ management console, first retrieve the auto-generated cre
     3fNpEwB2R2s3oBibIZ9UDjeqCVgFcBq1
     ```
 
-{{< note >}}
-To set a custom administrative username and password during the creation of the RabbitMQ cluster, modify `rabbitmq-basic.yaml` to include the following additional configuration:
-
-```file {title="rabbitmq-basic.yaml" lang="yaml" hl_lines="8-10"}
-apiVersion: rabbitmq.com/v1beta1
-kind: RabbitmqCluster
-metadata:
-  name: rabbitmq-basic
-spec:
-  service:
-    type: NodePort
-    additionalConfig: |
-      default_user={{< placeholder "USERNAME" >}}
-      default_pass={{< placeholder "PASSWORD" >}}
-```
-{{< /note >}}
-
 ### Locate the External IP Address of the LKE Cluster
 
 To access the RabbitMQ server and its management interface remotely, follow these steps to locate the cluster's external IP address and verify its availability.
@@ -395,11 +393,11 @@ To access the RabbitMQ server and its management interface remotely, follow thes
     lke295620-486011-4045e9410000		192.168.149.217		172.235.133.50
     ```
 
-    In this example output, one of the nodes has an external IP address of `172.233.162.14`. Recall from the earlier `kubectl get all` command that port `31412` maps to the HTTP interface of the RabbvitMQ server. Combine the external IP address of a node with this port to locate the RabbitMQ management service (e.g. `http://172.233.162.14:31412`).
+    In this example output, one of the nodes has an external IP address of `172.233.162.14`. Recall from the earlier `kubectl get all` command that port `31412` maps to the HTTP interface of the RabbitMQ server. Combine the external IP address of a node with this port to locate the RabbitMQ management service (e.g. `http://172.233.162.14:31412`).
 
-    Record one of the external IP addresses shown in your output as it is referred to later by {{< placeholder "IP_ADDRESS" >}} in subsequent steps.
+    Record one of the external IP addresses shown in your output. It is referred to later by {{< placeholder "IP_ADDRESS" >}} in subsequent steps.
 
-1.  Verify RabbitMQ’s availability by retrieving its current configuration as a JSON object. Replace {{< placeholder "USERNAME" >}}, {{< placeholder "PASSWORD" >}}, {{< placeholder "IP_ADDRESS" >}}, and {{< placeholder "PORT" >}} with the administrative credentials and the node's external IP address and port:
+1.  Verify RabbitMQ's availability by retrieving its current configuration as a JSON object. Replace {{< placeholder "USERNAME" >}}, {{< placeholder "PASSWORD" >}}, {{< placeholder "IP_ADDRESS" >}}, and {{< placeholder "PORT" >}} with the administrative credentials and the node's external IP address and port:
 
     ```command
     curl --user '{{< placeholder "USERNAME" >}}:{{< placeholder "PASSWORD" >}}' http://{{< placeholder "IP_ADDRESS" >}}:{{< placeholder "PORT" >}}/api/overview | jq
@@ -464,7 +462,7 @@ To test the RabbitMQ deployment, download the RabbitMQ management script, create
     export PORT={{< placeholder "PORT" >}}
     ```
 
-1.  Create a `fanout` style exchange on the RabbitMQ server:
+1.  Create a [`fanout` style exchange](https://www.rabbitmq.com/tutorials/amqp-concepts#exchange-fanout) on the RabbitMQ server:
 
     ```command
     rabbitmqadmin \
@@ -551,9 +549,7 @@ To test the RabbitMQ deployment, download the RabbitMQ management script, create
     +-------------+----------------------+---------------+---------------+---------------+------------------+------------+-------------+
     | dummy_key   | test_fanout_exchange | 0             | Hello, world! | 13            | string           |            | False       |
     +-------------+----------------------+---------------+---------------+---------------+------------------+------------+-------------+
-    ```
-
-    ![Command-line output displaying messages retrieved from a RabbitMQ queue.](retrieved-messages-from-queue.png)
+    ```å
 
 ## Create New Users
 
@@ -563,7 +559,7 @@ When connecting applications to your RabbitMQ deployment, it's recommended to cr
 
     ![The RabbitMQ web interface showing the Admin tab with a list of current users.](rabbitmq-admin-tab.png)
 
-1.  Click **Add a user** then provide a username, password, and tag/s to specify the user’s permission level (e.g. **monitoring**).
+1.  Click **Add a user**, then provide a username, password, and tag(s) to specify the user's permission level (e.g. **monitoring**).
 
     ![The Add User form in the RabbitMQ web interface, allowing input for username, password, and permission tags.](add-new-user-form.png)
 
