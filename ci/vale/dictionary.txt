@@ -721,6 +721,7 @@ failregexs
 failsafe
 failsafes
 falko
+fanout
 fastcgi
 Fastify
 fastmail
