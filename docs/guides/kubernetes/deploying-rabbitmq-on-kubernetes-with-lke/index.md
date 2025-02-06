@@ -1,6 +1,6 @@
 ---
-slug: deploying-rabbitmq-on-kubernetes-with-linode-lke
-title: "Deploying RabbitMQ on Kubernetes With Linode LKE"
+slug: deploying-rabbitmq-on-kubernetes-with-lke
+title: "Deploying RabbitMQ on Kubernetes with LKE"
 description: "Learn how to deploy RabbitMQ on Linode Kubernetes Engine (LKE) using the RabbitMQ Cluster Kubernetes Operator in this step-by-step guide."
 authors: ["Linode"]
 contributors: ["Linode"]
