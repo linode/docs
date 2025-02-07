@@ -2,8 +2,8 @@
 slug: migrating-from-azure-service-bus-to-rabbitmq-on-linode
 title: "Migrating from Azure Service Bus to RabbitMQ on Linode"
 description: "Learn how to migrate from Azure Service Bus to RabbitMQ on Linode. Discover RabbitMQ's customizable routing and multi-protocol messaging advantages over Azure Service Bus."
-authors: ["Linode"]
-contributors: ["Linode"]
+authors: ["Akamai"]
+contributors: ["Akamai"]
 published: 2025-02-05
 keywords: ['azure','service','bus','rabbitmq','migration','azure service bus migration','rabbitmq on linode','azure to rabbitmq','service bus rabbitmq comparison']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -43,7 +43,7 @@ Below is a list comparing the key features of Azure Service Bus and RabbitMQ:
 1.  Migrating from Azure Service Bus to RabbitMQ on Linode requires choosing between a single Linode instance or a larger scale, more fault-tolerant environment with Linode Kubernetes Engine (LKE). Follow the appropriate guide below based on your needs:
 
     -   [Deploying RabbitMQ on a Linode Compute Instance]()
-    -   [Deploying RabbitMQ on Kubernetes with Linode LKE]()
+    -   [Deploying RabbitMQ on Kubernetes with LKE](/docs/guides/deploying-rabbitmq-on-kubernetes-with-lke/)
     -   [Deploy RabbitMQ through the Linode Marketplace](https://www.linode.com/marketplace/apps/linode/rabbitmq/)
 
 1.  You must have access to your Azure account with sufficient permissions to work with Service Bus resources.

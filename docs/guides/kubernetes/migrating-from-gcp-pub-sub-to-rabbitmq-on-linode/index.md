@@ -2,8 +2,8 @@
 slug: migrating-from-gcp-pub-sub-to-rabbitmq-on-linode
 title: "Migrating from GCP Pub/Sub to RabbitMQ on Linode"
 description: "Learn how to migrate from GCP Pub/Sub to RabbitMQ on Linode. Discover RabbitMQ's flexibility and advanced routing capabilities over GCP Pub/Sub."
-authors: ["Linode"]
-contributors: ["Linode"]
+authors: ["Akamai"]
+contributors: ["Akamai"]
 published: 2025-02-05
 keywords: ['gcp','pubsub','rabbitmq','migration','gcp pubsub migration','rabbitmq on linode','gcp to rabbitmq','pubsub rabbitmq comparison']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -43,7 +43,7 @@ GCP Pub/Sub and RabbitMQ share many key features in common, though there are som
 1.  Migrating from GCP Pub/Sub to RabbitMQ on Linode requires choosing between a single Linode instance or a larger scale, more fault-tolerant environment with Linode Kubernetes Engine (LKE). Follow the appropriate guide below based on your needs:
 
     -   [Deploying RabbitMQ on a Linode Compute Instance]()
-    -   [Deploying RabbitMQ on Kubernetes with Linode LKE]()
+    -   [Deploying RabbitMQ on Kubernetes with LKE](/docs/guides/deploying-rabbitmq-on-kubernetes-with-lke/)
     -   [Deploy RabbitMQ through the Linode Marketplace](https://www.linode.com/marketplace/apps/linode/rabbitmq/)
 
 1.  You must have access to your Google Cloud account with sufficient permissions to work with Pub/Sub resources.

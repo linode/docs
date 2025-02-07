@@ -2,8 +2,8 @@
 slug: migrating-from-aws-sns-to-rabbitmq-on-linode
 title: "Migrating from AWS SNS to RabbitMQ on Linode"
 description: "Learn how to migrate from AWS SNS to RabbitMQ running on Linode. Discover RabbitMQ's queue-based messaging and advanced routing features compared to AWS SNS."
-authors: ["Linode"]
-contributors: ["Linode"]
+authors: ["Akamai"]
+contributors: ["Akamai"]
 published: 2025-02-05
 keywords: ['aws','sns','rabbitmq','migration','aws sns migration','rabbitmq on linode','aws to rabbitmq','sns rabbitmq comparison']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -45,7 +45,7 @@ This guide includes steps and recommendations on how to migrate from AWS SNS to 
 
     -   [Deploy RabbitMQ through the Linode Marketplace](https://www.linode.com/marketplace/apps/linode/rabbitmq/)
     -   [Deploying RabbitMQ on a Linode Compute Instance]()
-    -   [Deploying RabbitMQ on Kubernetes with Linode LKE]()
+    -   [Deploying RabbitMQ on Kubernetes with LKE](/docs/guides/deploying-rabbitmq-on-kubernetes-with-lke/)
 
 1.  You must have access to your AWS account with sufficient permissions to work with SNS topics.
 
