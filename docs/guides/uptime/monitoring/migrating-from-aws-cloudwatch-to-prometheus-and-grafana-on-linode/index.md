@@ -316,7 +316,7 @@ This guide demonstrates the migration process using an example Flask server that
     nano app.py
     ```
 
-    Give it the following contents, replacing {{< placeholder "USERNAME" >}} with your actual `sudo` user:
+    Give it the following contents:
 
     ```file {title="app.py", lang="python"}
     import boto3 # Note: pip install boto3
@@ -326,7 +326,7 @@ This guide demonstrates the migration process using an example Flask server that
 
     from flask import Flask, request
 
-    logging.basicConfig(filename='/home/{{< placeholder "USERNAME" >}}/example-flask-app/flask-app.log', level=logging.INFO)
+    logging.basicConfig(filename='flask-app.log', level=logging.INFO)
     logger = logging.getLogger(__name__)
 
     app = Flask(__name__)
@@ -372,7 +372,7 @@ This guide demonstrates the migration process using an example Flask server that
         return {'message': 'Hello, World!'}, 200
 
     if __name__ == '__main__':
-        app.run(host='0.0.0.0', port=80)
+        app.run(host='0.0.0.0', port=8080)
     ```
 
     The example Flask application in this guide collects and sends endpoint latency metrics to CloudWatch using the [`put_metric_data`](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudwatch/client/put_metric_data.html) API from [Boto3](https://github.com/boto/boto3). Application logs are written to a local file and ingested into CloudWatch Logs for centralization.
@@ -566,9 +566,9 @@ For the example Flask application in this guide, the [`prometheus_flask_exporter
     nano app.py
     ```
 
-    Replace the file's current AWS-specific contents with the Prometheus-specific code below, making sure to replace {{< placeholder "USERNAME" >}} with your actual username:
+    Replace the file's current AWS-specific contents with the Prometheus-specific code below:
 
-    ```file {title="app.py" lang="python" hl_lines="8"}
+    ```file {title="app.py" lang="python"}
     import logging
     import random
     import time
@@ -576,7 +576,7 @@ For the example Flask application in this guide, the [`prometheus_flask_exporter
     from flask import Flask
     from prometheus_flask_exporter import PrometheusMetrics
 
-    logging.basicConfig(filename="/home/{{< placeholder "USERNAME" >}}/example-flask-app/flask-app.log", level=logging.INFO)
+    logging.basicConfig(filename="flask-app.log", level=logging.INFO)
     logger = logging.getLogger(__name__)
 
     app = Flask(__name__)

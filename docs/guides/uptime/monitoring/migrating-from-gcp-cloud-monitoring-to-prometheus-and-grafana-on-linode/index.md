@@ -19,7 +19,6 @@ Cloud Monitoring is an observability solution from Google Cloud Platform (GCP). 
 
 This guide walks through how to migrate standard GCP Cloud Monitoring service logs, metrics, and monitoring to a Prometheus and Grafana software stack on a Linode instance. To illustrate the migration process, an example Flask-based Python application running on a separate instance is configured to send logs and metrics to Cloud Monitoring, and then modified to integrate with Prometheus and Grafana. While this guide uses a Flask application as an example, the principles can be applied to any workload currently monitored via Cloud Monitoring.
 
-
 ## Introduction to Prometheus and Grafana
 
 [Prometheus](https://prometheus.io/docs/introduction/overview/) is a [time-series database](https://prometheus.io/docs/concepts/data_model/#data-model) that collects and stores metrics from applications and services. It provides a foundation for monitoring system performance using the PromQL query language to extract and analyze granular data. Prometheus autonomously scrapes (*pulls*) metrics from targets at specified intervals, efficiently storing data through compression while retaining the most critical details. It also supports alerting based on metric thresholds, making it suitable for dynamic, cloud-native environments.
@@ -320,9 +319,9 @@ This guide demonstrates the migration process using an example Flask server that
     nano app.py
     ```
 
-    Give it the following contents, replacing {{< placeholder "USERNAME" >}} with your actual `sudo` user:
+    Give it the following contents, replacing {{< placeholder "YOUR_PROJECT_ID" >}} with your actual project ID:
 
-    ```file {title="app.py", lang="python" hl_lines="8"}
+    ```file {title="app.py", lang="python" hl_lines="15"}
     import json
     import logging
     import time
@@ -330,14 +329,14 @@ This guide demonstrates the migration process using an example Flask server that
     from flask import Flask, request
     from google.cloud import monitoring_v3 # Note: pip install google-cloud-monitoring
 
-    logging.basicConfig(filename='/home/<USERNAME>/docs-cloud-projects/demos/prometheus-grafana-example-flask-app/flask-app.log', level=logging.INFO)
+    logging.basicConfig(filename='flask-app.log', level=logging.INFO)
     logger = logging.getLogger(__name__)
 
     app = Flask(__name__)
 
     # Google Cloud Monitoring setup
     metric_client = monitoring_v3.MetricServiceClient()
-    project_id = 'YOUR_PROJECT_ID'  # replace with your project ID
+    project_id = '{{< placeholder "YOUR_PROJECT_ID" >}}'  # replace with your project ID
     project_name = f"projects/{project_id}"
 
     @app.before_request
@@ -374,7 +373,7 @@ This guide demonstrates the migration process using an example Flask server that
         return {'message': 'Hello, World!'}, 200
 
     if __name__ == '__main__':
-        app.run(host='0.0.0.0', port=80)
+        app.run(host='0.0.0.0', port=8080)
     ```
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
@@ -563,7 +562,7 @@ For the example Flask application in this guide, the [`prometheus_flask_exporter
 
     Replace the file's current GCP Cloud Monitoring-specific contents with the Prometheus-specific code below, making sure to replace {{< placeholder "USERNAME" >}} with your actual username:
 
-   ```file {title="app.py" lang="python" hl_lines="8"}
+   ```file {title="app.py" lang="python"}
     import logging
     import random
     import time
@@ -571,7 +570,7 @@ For the example Flask application in this guide, the [`prometheus_flask_exporter
     from flask import Flask
     from prometheus_flask_exporter import PrometheusMetrics
 
-    logging.basicConfig(filename="/home/{{< placeholder "USERNAME" >}}/example-flask-app/flask-app.log", level=logging.INFO)
+    logging.basicConfig(filename="flask-app.log", level=logging.INFO)
     logger = logging.getLogger(__name__)
 
     app = Flask(__name__)
