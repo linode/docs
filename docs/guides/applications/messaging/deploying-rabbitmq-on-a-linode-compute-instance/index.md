@@ -302,11 +302,13 @@ This guide demonstrates creating a [fanout exchange](https://www.rabbitmq.com/tu
       payload="Hello, world!"
     ```
 
-    The routing key is not necessary for a fanout exchange, as each message is routed to each queue regardless of the routing key, but it is required for the `rabbitmqadmin` tool.
-
     ```output
     Message published
     ```
+
+    {{< note >}}
+    The routing key is not necessary for a fanout exchange, as each message is routed to each queue regardless of the routing key. However, it is required for the `rabbitmqadmin` tool.
+    {{< /note >}}
 
 1.  Retrieve the messages from the queue:
 
@@ -326,7 +328,7 @@ This guide demonstrates creating a [fanout exchange](https://www.rabbitmq.com/tu
 
 ## Access RabbitMQ Remotely
 
-The RabbitMQ management plugin enables a web interface and API accessible at port `15672`. Assuming this port on your compute instance is not blocked by any firewall rules, you can access the web interface in your browser by visiting:
+The RabbitMQ management plugin enables a web interface and API accessible at port `15672`. Assuming this port is not blocked by any firewall rules, you can access the web interface in your browser by visiting the following URL:
 
 ```command
 http://{{< placeholder "IP_ADDRESS" >}}:15672
@@ -338,7 +340,7 @@ By default, RabbitMQ is initiated with a default [virtual host](https://www.rabb
 
 ### Create a New RabbitMQ Management User
 
-1.  Use `rabbitmqctl add_user` command and provide a username and password:
+1.  Use the `rabbitmqctl add_user` command and provide a username and password:
 
     ```command
     sudo rabbitmqctl add_user "{{< placeholder "RABBITMQ_USERNAME" >}}" "{{< placeholder "RABBITMQ_PASSWORD" >}}"
@@ -349,7 +351,7 @@ By default, RabbitMQ is initiated with a default [virtual host](https://www.rabb
     Done. Don't forget to grant the user permissions to some virtual hosts! See 'rabbitmqctl help set_permissions' to learn more.
     ```
 
-1.  Add the `administrator` tag to the newly created user, giving it management privileges.
+1.  Add the `administrator` tag to the newly created user, giving them management privileges.
 
     ```command
     sudo rabbitmqctl set_user_tags {{< placeholder "RABBITMQ_USERNAME" >}} administrator
@@ -361,11 +363,13 @@ By default, RabbitMQ is initiated with a default [virtual host](https://www.rabb
 
 ### Set Permissions for the User on the Virtual Host
 
-1.  Verify the name of the existing virtual host. The default virtual host is named `/`.
+1.  Verify the name of the existing virtual host:
 
     ```command
     sudo rabbitmqctl -q --formatter=pretty_table list_vhosts name description
     ```
+
+    The default virtual host is named `/`:
 
     ```output
     ┌──────┬──────────────────────┐
@@ -375,7 +379,7 @@ By default, RabbitMQ is initiated with a default [virtual host](https://www.rabb
     └──────┴──────────────────────┘
     ```
 
-1.  Grant permissions on this virtual host to the newly created user.
+1.  Grant permissions to the newly created user on this virtual host:
 
     ```command
     sudo rabbitmqctl set_permissions -p "/" "{{< placeholder "RABBITMQ_USERNAME" >}}" ".*" ".*" ".*"
@@ -387,7 +391,7 @@ By default, RabbitMQ is initiated with a default [virtual host](https://www.rabb
 
 ### Access the RabbitMQ Management Interface Remotely
 
-1.  At the management console UI in the web browser, log in with the credentials of the newly created user:
+1.  Return to the management console UI in a web browser and log in with the credentials of the newly created user:
 
     ![RabbitMQ management interface login screen displaying username and password fields.](rabbitmq-login-screen.png)
 
@@ -397,7 +401,7 @@ By default, RabbitMQ is initiated with a default [virtual host](https://www.rabb
 
 ### Send Test Requests to the RabbitMQ API
 
-1.  Using `curl`, send an authenticated request to the RabbitMQ API, testing out the publishing of a message to an exchange. Note the `%2f` in the request URL. This is the name of the exchange, which is the URL-encoded value for `/`.
+1.  Test publishing a message to an exchange using `curl` to send an authenticated request to the RabbitMQ API:
 
     ```command
     curl \
@@ -412,7 +416,11 @@ By default, RabbitMQ is initiated with a default [virtual host](https://www.rabb
     {"routed":true}
     ```
 
-1.  Next, send an authenticated request to get the last two messages from the queue.
+    {{< note >}}
+    The `%2f` in the request URL is the URL-encoded value for the name of the exchange (`/`).
+    {{< /note >}}
+
+1.  Now send an authenticated request to retrieve the last two messages from the queue:
 
     ```command
     curl \
