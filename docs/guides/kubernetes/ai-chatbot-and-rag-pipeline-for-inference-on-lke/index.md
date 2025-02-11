@@ -136,7 +136,7 @@ After Kubeflow has been installed, we can now deploy the Llama 3 LLM to KServe. 
 
 1. Create a config file for deploying the Llama 3 model on your cluster.
 
-    ```file {title="llama3.yaml" lang="yaml"}
+    ```file {title="model.yaml" lang="yaml"}
     apiVersion: serving.kserve.io/v1beta1
     kind: InferenceService
     metadata:
@@ -171,7 +171,7 @@ After Kubeflow has been installed, we can now deploy the Llama 3 LLM to KServe. 
 1. Apply the configuration.
 
     ```command
-    kubectl apply -f llama3.yaml
+    kubectl apply -f model.yaml
     ```
 
 Once the configuration applies, Llama 3 will be running on your LKE cluster.
@@ -186,9 +186,9 @@ Milvus, the vector database designed for AI inference workloads, will be used as
     standalone:
       resources:
         requests:
-        nvidia.com/gpu: "1"
+          nvidia.com/gpu: "1"
         limits:
-        nvidia.com/gpu: "1"
+          nvidia.com/gpu: "1"
     ```
 
 1. Add Milvus to Helm.
@@ -238,54 +238,54 @@ This tutorial employs a Python script to create the YAML file used within Kubefl
     from kfp import dsl
 
     @dsl.component(
-          base_image='nvcr.io/nvidia/ai-workbench/python-cuda117:1.0.3',
-          packages_to_install=['pymilvus>=2.4.2', 'llama-index', 'llama-index-vector-stores-milvus', 'llama-index-embeddings-huggingface', 'llama-index-llms-openai-like']
-          )
+            base_image='nvcr.io/nvidia/ai-workbench/python-cuda117:1.0.3',
+            packages_to_install=['pymilvus>=2.4.2', 'llama-index', 'llama-index-vector-stores-milvus', 'llama-index-embeddings-huggingface', 'llama-index-llms-openai-like']
+            )
     def doc_ingest_component(url: str, collection: str) -> None:
-      print(">>> doc_ingest_component")
+        print(">>> doc_ingest_component")
 
-      from urllib.request import urlopen
-      from io import BytesIO
-      from zipfile import ZipFile
+        from urllib.request import urlopen
+        from io import BytesIO
+        from zipfile import ZipFile
 
-      http_response = urlopen(url)
-      zipfile = ZipFile(BytesIO(http_response.read()))
-      zipfile.extractall(path='./md_docs')
+        http_response = urlopen(url)
+        zipfile = ZipFile(BytesIO(http_response.read()))
+        zipfile.extractall(path='./md_docs')
 
-      from llama_index.core import SimpleDirectoryReader
+        from llama_index.core import SimpleDirectoryReader
 
-      # load documents
-      documents = SimpleDirectoryReader("./md_docs/", recursive=True, required_exts=[".md"]).load_data()
+        # load documents
+        documents = SimpleDirectoryReader("./md_docs/", recursive=True, required_exts=[".md"]).load_data()
 
-      from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-      from llama_index.core import Settings
+        from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+        from llama_index.core import Settings
 
-      Settings.embed_model = HuggingFaceEmbedding(
-          model_name="BAAI/bge-large-en-v1.5"
-      )
+        Settings.embed_model = HuggingFaceEmbedding(
+            model_name="BAAI/bge-large-en-v1.5"
+        )
 
-      from llama_index.llms.openai_like import OpenAILike
+        from llama_index.llms.openai_like import OpenAILike
 
-      llm = OpenAILike(
-          model="llama3",
-          api_base="http://huggingface-llama3-predictor-00001.default.svc.cluster.local/openai/v1",
-          api_key = "EMPTY",
-          max_tokens = 512)
+        llm = OpenAILike(
+            model="llama3",
+            api_base="http://huggingface-llama3-predictor-00001.default.svc.cluster.local/openai/v1",
+            api_key = "EMPTY",
+            max_tokens = 512)
 
-      Settings.llm = llm
+        Settings.llm = llm
 
-      from llama_index.core import VectorStoreIndex, StorageContext
-      from llama_index.vector_stores.milvus import MilvusVectorStore
+        from llama_index.core import VectorStoreIndex, StorageContext
+        from llama_index.vector_stores.milvus import MilvusVectorStore
 
-      vector_store = MilvusVectorStore(uri="http://my-release-milvus.default.svc.cluster.local:19530", collection=collection, dim=1024, overwrite=True)
-      storage_context = StorageContext.from_defaults(vector_store=vector_store)
-      index = VectorStoreIndex.from_documents(
-          documents, storage_context=storage_context
-      )
+        vector_store = MilvusVectorStore(uri="http://my-release-milvus.default.svc.cluster.local:19530", collection=collection, dim=1024, overwrite=True)
+        storage_context = StorageContext.from_defaults(vector_store=vector_store)
+        index = VectorStoreIndex.from_documents(
+            documents, storage_context=storage_context
+        )
 
     @dsl.pipeline
     def doc_ingest_pipeline(url: str, collection: str) -> None:
-      comp = doc_ingest_component(url=url, collection=collection)
+        comp = doc_ingest_component(url=url, collection=collection)
 
     from kfp import compiler
 
@@ -430,7 +430,8 @@ After the pipeline files have been created, we can deploy the chatbot and config
 
 1. Use the following YAML configuration file to deploy the pipelines and open-webui applications.
 
-    ```file {title="open-webui.yaml" lang="yaml"}
+    ```file {title="webui-pipelines.yaml" lang="yaml"}
+    ---
     apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -439,38 +440,38 @@ After the pipeline files have been created, we can deploy the chatbot and config
     spec:
       replicas: 1
       selector:
-      matchLabels:
-        app: pipelines-webui
-      template:
-      metadata:
-        labels:
+        matchLabels:
           app: pipelines-webui
-      spec:
-        containers:
-        - name: pipelines-webui
-          image: ghcr.io/open-webui/pipelines:main
-          ports:
-          - containerPort: 9099
-          resources:
-            requests:
-              cpu: "500m"
-              memory: "500Mi"
-            limits:
-              cpu: "1000m"
-              memory: "1Gi"
-          env:
-          - name: PIPELINES_REQUIREMENTS_PATH
-            value: "/opt/pipeline-requirements.txt"
-          - name: PIPELINES_URLS
-            value: "file:///opt/rag_pipeline.py"
-          tty: true
-          volumeMounts:
+      template:
+        metadata:
+          labels:
+            app: pipelines-webui
+        spec:
+          containers:
+          - name: pipelines-webui
+            image: ghcr.io/open-webui/pipelines:main
+            ports:
+            - containerPort: 9099
+            resources:
+              requests:
+                cpu: "500m"
+                memory: "500Mi"
+              limits:
+                cpu: "1000m"
+                memory: "1Gi"
+            env:
+            - name: PIPELINES_REQUIREMENTS_PATH
+              value: "/opt/pipeline-requirements.txt"
+            - name: PIPELINES_URLS
+              value: "file:///opt/rag_pipeline.py"
+            tty: true
+            volumeMounts:
+            - name: config-volume
+              mountPath: /opt
+          volumes:
           - name: config-volume
-            mountPath: /opt
-        volumes:
-        - name: config-volume
-          configMap:
-            name: pipelines-files
+            configMap:
+              name: pipelines-files
     ---
     apiVersion: v1
     kind: Service
@@ -480,24 +481,24 @@ After the pipeline files have been created, we can deploy the chatbot and config
     spec:
       type: ClusterIP
       selector:
-      app: pipelines-webui
+        app: pipelines-webui
       ports:
-      - protocol: TCP
-        port: 9099
-        targetPort: 9099
+        - protocol: TCP
+          port: 9099
+          targetPort: 9099
     ---
     apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
       labels:
-      app: open-webui
+        app: open-webui
       name: open-webui-pvc
       namespace: open-webui
     spec:
       accessModes: ["ReadWriteOnce"]
       resources:
-      requests:
-        storage: 2Gi
+        requests:
+          storage: 2Gi
     ---
     apiVersion: apps/v1
     kind: Deployment
@@ -507,40 +508,40 @@ After the pipeline files have been created, we can deploy the chatbot and config
     spec:
       replicas: 1
       selector:
-      matchLabels:
-        app: open-webui
-      template:
-      metadata:
-        labels:
+        matchLabels:
           app: open-webui
-      spec:
-        containers:
-        - name: open-webui
-          image: ghcr.io/open-webui/open-webui:main
-          ports:
-          - containerPort: 8080
-          resources:
-            requests:
-              cpu: "500m"
-              memory: "500Mi"
-            limits:
-              cpu: "1000m"
-              memory: "1Gi"
-          env:
-          - name: ENABLE_OLLAMA_API
-            value: "False"
-          - name: OPENAI_API_BASE_URLS
-            value: "http://huggingface-llama3-predictor-00001.default.svc.cluster.local/openai/v1;http://pipelines-service.open-webui.svc.cluster.local:9099"
-          - name: OPENAI_API_KEYS
-            value: "EMPTY;0p3n-w3bu!"
-          tty: true
-          volumeMounts:
+      template:
+        metadata:
+          labels:
+            app: open-webui
+        spec:
+          containers:
+          - name: open-webui
+            image: ghcr.io/open-webui/open-webui:main
+            ports:
+            - containerPort: 8080
+            resources:
+              requests:
+                cpu: "500m"
+                memory: "500Mi"
+              limits:
+                cpu: "1000m"
+                memory: "1Gi"
+            env:
+            - name: ENABLE_OLLAMA_API
+              value: "False"
+            - name: OPENAI_API_BASE_URLS
+              value: "http://huggingface-llama3-predictor-00001.default.svc.cluster.local/openai/v1;http://pipelines-service.open-webui.svc.cluster.local:9099"
+            - name: OPENAI_API_KEYS
+              value: "EMPTY;0p3n-w3bu!"
+            tty: true
+            volumeMounts:
+            - name: webui-volume
+              mountPath: /app/backend/data
+          volumes:
           - name: webui-volume
-            mountPath: /app/backend/data
-        volumes:
-        - name: webui-volume
-          persistentVolumeClaim:
-            claimName: open-webui-pvc
+            persistentVolumeClaim:
+              claimName: open-webui-pvc
     ---
     apiVersion: v1
     kind: Service
@@ -550,18 +551,17 @@ After the pipeline files have been created, we can deploy the chatbot and config
     spec:
       type: ClusterIP
       selector:
-      app: open-webui
+        app: open-webui
       ports:
-      - protocol: TCP
-        port: 8080
-        targetPort: 8080
-    ---
+        - protocol: TCP
+          port: 8080
+          targetPort: 8080
     ```
 
 1. Apply the configuration.
 
     ```command
-    kubectl apply -f open-webui.yaml
+    kubectl apply -f webui-pipelines.yaml
     ```
 
 ### Access and test the chatbot application
