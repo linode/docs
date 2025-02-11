@@ -1,9 +1,9 @@
 ---
-slug: migrating-from-gcp-cloud-monitoring-to-prometheus-and-grafana-on-linode
-title: "Migrating From GCP Cloud Monitoring to Prometheus and Grafana on Linode"
+slug: migrating-from-gcp-cloud-monitoring-to-prometheus-and-grafana-on-akamai
+title: "Migrating From GCP Cloud Monitoring to Prometheus and Grafana on Akamai"
 description: "Migrating from GCP Cloud Monitoring to Prometheus and Grafana? Learn how to configure metrics, build custom dashboards, and optimize monitoring with cost-effective, open source tools."
-authors: ["Linode"]
-contributors: ["Linode"]
+authors: ["Akamai"]
+contributors: ["Akamai"]
 published: 2025-02-10
 keywords: ['gcp','gcp cloud monitoring','prometheus','grafana','gcp cloud monitoring migration','prometheus and grafana setup','migrate to prometheus','grafana dashboards for metrics','gcp cloud monitoring alternative','open source monitoring tools','prometheus metrics','grafana visualization','monitoring and observability','prometheus grafana guide','gcp cloud monitoring to Prometheus tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
