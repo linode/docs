@@ -328,8 +328,6 @@ See RabbitMQ's official documentation for more on exchanges and queues: [RabbitM
     +-------------+----------------------+---------------+---------------+---------------+------------------+------------+-------------+
     ```
 
-    ![RabbitMQ queue message retrieval output showing a successfully retrieved message.](rabbitmq-queue-message-retrieval.png)
-
 ## The RabbitMQ Web Interface
 
 The RabbitMQ management plugin enables a web interface and API accessible at port `15672`. Assuming this port is not blocked by any firewall rules, you can access the web interface in your browser by visiting the following URL, replacing {{< placeholder "IP_ADDRESS" >}} with the IP of your Linode instance:
