@@ -7,6 +7,7 @@ contributors: ["Linode"]
 published: 2025-02-11
 keywords: ['kubernetes','lke','ai','inferencing','rag','chatbot','architecture']
 tags: ["kubernetes","lke"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 ## Overview
