@@ -54,7 +54,7 @@ The configuration instructions in this document are expected to not expose any s
 It’s not part of the scope of this document to cover the setup required to secure this configuration for a production deployment.
 {{< /note >}}
 
-# Set up infrastructure
+## Set up infrastructure
 
 The first step is to provision the infrastructure needed for this tutorial and configure it with kubectl, so that you can manage it locally and install software through helm. As part of this process, we’ll also need to install the NVIDIA GPU operator at this step so that the NVIDIA cards within the GPU worker nodes can be used on Kubernetes.
 
