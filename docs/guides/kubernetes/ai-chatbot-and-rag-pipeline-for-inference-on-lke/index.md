@@ -45,14 +45,18 @@ This tutorial requires you to have access to a few different services and local 
 - You should have both [kubectl](https://kubernetes.io/docs/reference/kubectl/) and [Helm](https://helm.sh/) installed on your local machine. These apps are used for managing your LKE cluster and installing applications to your cluster.
 - A **custom dataset** is needed, preferably in Markdown format, though you can use other types of data if you modify the LlamaIndex configuration provided in this tutorial. This dataset should contain all of the information you want used by the Llama 3 LLM. This tutorial uses a Markdown dataset containing all of the Linode Docs.
 
-# Set up infrastructure
-
-The first step is to provision the infrastructure needed for this tutorial and configure it with kubectl, so that you can manage it locally and install software through helm. As part of this process, we’ll also need to install the NVIDIA GPU operator at this step so that the NVIDIA cards within the GPU worker nodes can be used on Kubernetes.
+{{< note type="warning" title="Production workloads" >}}
+These instructions are intended as a proof of concept for testing and demonstration purposes. They are not designed as a complete production reference architecture.
+{{< /note >}}
 
 {{< note type="warning" title="Security notice" >}}
 The configuration instructions in this document are expected to not expose any services to the Internet. Instead, they run on the Kubernetes cluster's internal network, and to access the services it’s necessary to forward their ports locally first. This configuration is restricted by design to avoid accidentally exposing those services before they can be properly secured. Additionally, some services will run with no authentication or default credentials configured.
 It’s not part of the scope of this document to cover the setup required to secure this configuration for a production deployment.
 {{< /note >}}
+
+# Set up infrastructure
+
+The first step is to provision the infrastructure needed for this tutorial and configure it with kubectl, so that you can manage it locally and install software through helm. As part of this process, we’ll also need to install the NVIDIA GPU operator at this step so that the NVIDIA cards within the GPU worker nodes can be used on Kubernetes.
 
 1. **Provision an LKE cluster.** We recommend using at least two **RTX4000 Ada x2 Medium** GPU plans (plan ID: `g2-gpu-rtx4000a2-m`), though you can adjust this as needed. For reference, Kubeflow recommends 32 GB of RAM and 16 CPU cores. This tutorial has been tested using Kubernetes v1.31, though other versions should also work. To learn more about provisioning a cluster, see the [Create a cluster](https://techdocs.akamai.com/cloud-computing/docs/create-a-cluster) guide.
 
@@ -114,7 +118,7 @@ Next, let’s deploy Kubeflow on the LKE cluster. These instructions deploy all 
 
 After Kubeflow has been installed, we can now deploy the Llama 3 LLM to KServe. This tutorial uses HuggingFace (a platform that provides pre-trained AI models) to deploy Llama 3 to the LKE cluster. Specifically, these instructions use the [meta-llama/Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) model.
 
-1. Create a Hugging Face token to use for this project. See the Hugging Face user documentation on [User access tokens](https://huggingface.co/docs/hub/en/security-tokens) for instructions.
+1. Create a Hugging Face token with **READ** access to use for this project. See the Hugging Face user documentation on [User access tokens](https://huggingface.co/docs/hub/en/security-tokens) for instructions.
 
 1. Create the manifest file for the [Kubernetes secret](https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-config-file/). You can use the following as a template:
 
@@ -131,7 +135,7 @@ After Kubeflow has been installed, we can now deploy the Llama 3 LLM to KServe. 
 1. Then, create the secret on your cluster by applying the manifest file:
 
     ```command
-    kubectl apply -f hf-secret.yaml
+    kubectl apply -f ./hf-secret.yaml
     ```
 
 1. Create a config file for deploying the Llama 3 model on your cluster.
@@ -174,7 +178,11 @@ After Kubeflow has been installed, we can now deploy the Llama 3 LLM to KServe. 
     kubectl apply -f model.yaml
     ```
 
-Once the configuration applies, Llama 3 will be running on your LKE cluster.
+1. Verify that the new Llama 3 pod is ready before continuing.
+
+    ```command
+    kubectl get pods -A
+    ```
 
 ### Install Milvus
 
@@ -300,6 +308,8 @@ This tutorial employs a Python script to create the YAML file used within Kubefl
 
     This creates a file called pipeline.yaml, which you will upload to Kubeflow in the following section.
 
+1. Run `deactivate` to exit the Python virtual environment.
+
 ### Run the pipeline workflow
 
 1. Configure port forwarding on your cluster through kubectl so that you can access the Kubeflow interface from your local computer.
@@ -309,6 +319,10 @@ This tutorial employs a Python script to create the YAML file used within Kubefl
     ```
 
 1. Open a web browser and navigate to the Kubeflow interface at http://localhost:8080. A login screen should appear.
+
+    {{< note type="warning" noTitle=true >}}
+    If the browser instead shows the error `Jwks doesn't have key to match kid or alg from Jwt`, there may be a previous JWT session that is interfering. Opening this URL in your browser's private or incognito mode should resolve this.
+    {{< /note >}}
 
 1. Log in with the username `user@example.com` and use the password that you created in a previous step.
 
@@ -359,60 +373,49 @@ Despite the naming, these RAG pipeline files are not related to the Kubeflow pip
 
     class Pipeline:
 
-      def __init__(self):
-          self.name = "RAG Pipeline"
-          self.index = None
-          pass
+        def __init__(self):
+            self.name = "RAG Pipeline"
+            self.index = None
+            pass
 
 
-      async def on_startup(self):
-          # This function is called when the server is started.
-          from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-          from llama_index.core import Settings, VectorStoreIndex
-          from llama_index.llms.openai_like import OpenAILike
-          from llama_index.vector_stores.milvus import MilvusVectorStore
+        async def on_startup(self):
+            from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+            from llama_index.core import Settings, VectorStoreIndex
+            from llama_index.llms.openai_like import OpenAILike
+            from llama_index.vector_stores.milvus import MilvusVectorStore
 
-          print(f"on_startup:{__name__}")
+            print(f"on_startup:{__name__}")
 
-          Settings.embed_model = HuggingFaceEmbedding(
-              model_name="BAAI/bge-large-en-v1.5"
-          )
+            Settings.embed_model = HuggingFaceEmbedding(
+                model_name="BAAI/bge-large-en-v1.5"
+            )
 
-          llm = OpenAILike(
-              model="llama3",
-            api_base="http://huggingface-llama3-predictor-00001.default.svc.cluster.local/openai/v1",
-              api_key = "EMPTY",
-              max_tokens = 512)
+            llm = OpenAILike(
+                model="llama3",
+                api_base="http://huggingface-llama3-predictor-00001.default.svc.cluster.local/openai/v1",
+                api_key = "EMPTY",
+                max_tokens = 512)
 
-          Settings.llm = llm
+            Settings.llm = llm
 
-          vector_store = MilvusVectorStore(uri="http://my-release-milvus.default.svc.cluster.local:19530", collection="linode_docs", dim=1024, overwrite=False)
-          self.index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
+            vector_store = MilvusVectorStore(uri="http://my-release-milvus.default.svc.cluster.local:19530", collection="linode_docs", dim=1024, overwrite=False)
+            self.index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
 
-      async def on_shutdown(self):
-          # This function is called when the server is stopped.
-          print(f"on_shutdown:{__name__}")
-          pass
+        async def on_shutdown(self):
+            print(f"on_shutdown:{__name__}")
+            pass
 
 
-      def pipe(
-          self, user_message: str, model_id: str, messages: List[dict], body: dict
-      ) -> Union[str, Generator, Iterator]:
-          # This is where you can add your custom RAG pipeline.
-          # Typically, you would retrieve relevant information from your knowledge base and synthesize it to generate a response.
+        def pipe(
+            self, user_message: str, model_id: str, messages: List[dict], body: dict
+        ) -> Union[str, Generator, Iterator]:
+            print(f"pipe:{__name__}")
 
-          print(f"pipe:{__name__}")
-          print(messages)
-          print(user_message)
-
-          query_engine = self.index.as_query_engine(streaming=True, similarity_top_k=5)
-          response = query_engine.query(user_message)
-
-          print(f"rag_response:{response}")
-
-          # return response.response_gen
-          # return f"RAG says: {response}"
-          return f"{response}"
+            query_engine = self.index.as_query_engine(streaming=True, similarity_top_k=5)
+            response = query_engine.query(user_message)
+            print(f"rag_response:{response}")
+            return f"{response}"
     ```
 
 Both of these files are used in the next section.
