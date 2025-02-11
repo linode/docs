@@ -1266,6 +1266,7 @@ KPI
 KPIs
 krita
 kroll
+KServe
 ksmbd
 KStream
 KStreams
@@ -1278,6 +1279,7 @@ kubeconfig
 Kubecost
 kubectl
 kubectx
+Kubeflow
 kubeflow
 kubelet
 kubelets
@@ -1359,6 +1361,8 @@ Livestatus
 livigno
 lke
 lksemel
+LLM
+LLMs
 lmctfy
 lo0
 loadavg
@@ -1498,6 +1502,7 @@ Microweber
 middlebox
 middleboxes
 middleware
+Milvus
 mimikatz
 minecraft
 mineshafts
