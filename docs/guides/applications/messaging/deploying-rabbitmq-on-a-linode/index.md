@@ -1,10 +1,10 @@
 ---
-slug: deploying-rabbitmq-on-a-linode-compute-instance
-title: "Deploying RabbitMQ on a Linode Compute Instance"
-description: "Learn how to install and configure RabbitMQ on Linode. This guide covers setting up the message broker, enabling management tools, and testing message queues."
-authors: ["Linode"]
-contributors: ["Linode"]
-published: 2025-02-07
+slug: deploying-rabbitmq-on-a-linode
+title: "Deploying RabbitMQ on a Linode"
+description: "Learn how to install and configure RabbitMQ on a Linode instance. This guide covers setting up the message broker, enabling management tools, and testing message queues."
+authors: ["Akamai"]
+contributors: ["Akamai"]
+published: 2025-02-11
 keywords: ['rabbitmq','rabbitmq installation','install rabbitmq','rabbitmq setup','rabbitmq ubuntu 24.04','deploy rabbitmq']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -13,11 +13,13 @@ external_resources:
 - '[RabbitMQ Deployment Checklist](https://www.rabbitmq.com/docs/production-checklist)'
 ---
 
-RabbitMQ is an open source message broker that facilitates communication between distributed applications. While the Linode Marketplace provides a [one-click RabbitMQ deployment option](https://www.linode.com/marketplace/apps/linode/rabbitmq/), this guide walks you through manually installing, configuring, and testing RabbitMQ on a Linode Compute Instance running Ubuntu 24.04 LTS.
+RabbitMQ is an open source message broker that facilitates communication between distributed applications. This guide covers steps for manually installing, configuring, and testing RabbitMQ on a Linode instance running Ubuntu 24.04 LTS.
+
+If you prefer an automated deployment, consider our [RabbitMQ Marketplace app](/docs/marketplace-docs/guides/rabbitmq/).
 
 ## Before You Begin
 
-1.  If you do not already have a virtual machine to use, create a Compute Instance with at least 2 GB of memory running Ubuntu 24.04 LTS. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you do not already have a virtual machine to use, create a Compute Instance with at least 2 GB of memory running Ubuntu 24.04 LTS. For resources and instructions on deploying an instance using Cloud Manager, see our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Create a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
     {{< note title="Provisioning Compute Instances with the Linode CLI" type="secondary" isCollapsible="true" >}}
     Use these steps if you prefer to use the Linode CLI to provision resources.
@@ -42,7 +44,7 @@ RabbitMQ is an open source message broker that facilitates communication between
     -   The `--label` argument specifies the name of the new server (`rabbitmq-linode`).
     {{< /note >}}
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and create a limited user account, You may also wish to set the timezone, configure your hostname, and harden SSH access.
+1.  Follow our [Set Up and Secure a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system and create a limited user account. You may also wish to set the timezone, configure your hostname, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -50,9 +52,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install RabbitMQ as a Service
 
-The RabbitMQ team offers an [install script](https://www.rabbitmq.com/docs/install-debian#apt-quick-start-cloudsmith) for Ubuntu 24.04 LTS. This install script uses the latest versions of Erlang supported by RabbitMQ along with the latest version of the server itself.
+RabbitMQ offers an [installation script](https://www.rabbitmq.com/docs/install-debian#apt-quick-start-cloudsmith) for Ubuntu 24.04 LTS. This script uses the latest versions of Erlang supported by RabbitMQ along with the latest version of the server itself.
 
-1.  SSH into the newly provisioned Linode as a user with `sudo` privileges:
+1.  SSH into your instance as a user with `sudo` privileges:
 
     ```command
     ssh {{< placeholder "USERNAME" >}}@{{< placeholder "IP-ADDRESS" >}}
@@ -121,7 +123,7 @@ The RabbitMQ team offers an [install script](https://www.rabbitmq.com/docs/insta
     source ./install-rabbitmq.sh
     ```
 
-1.  Your compute instance should now have the latest version of the RabbitMQ server running as a SystemD service. Verify this with the following command:
+1.  Your instance should now have the latest version of the RabbitMQ server running as a systemd service. Verify this with the following command:
 
     ```command
     systemctl status rabbitmq-server
@@ -146,7 +148,7 @@ The RabbitMQ team offers an [install script](https://www.rabbitmq.com/docs/insta
     sudo rabbitmq-diagnostics status
     ```
 
-    This prints a list of diagnostic information about the server such as CPU and memory usage as well as locations of the logs and configuration files on the system.
+    This prints a list of diagnostic information about the server such as CPU and memory usage, as well as locations of the logs and configuration files on the system.
 
     ```output
     Status of node rabbit@rabbitmq-ubuntu-2404-1 ...
@@ -179,17 +181,17 @@ The RabbitMQ team offers an [install script](https://www.rabbitmq.com/docs/insta
 
 ### Starting and Stopping RabbitMQ
 
-RabbitMQ requires no additional configuration upon installation. While not required, configuration files can be stored in `/etc/rabbitmq`. The [RabbitMQ documentation](https://www.rabbitmq.com/docs/configure) contains more information on configuration options.
+RabbitMQ requires no additional configuration upon installation. While not required, configuration files can be stored in `/etc/rabbitmq`. See [RabbitMQ's official documentation](https://www.rabbitmq.com/docs/configure) for more information on configuration options.
 
-The RabbitMQ server can be controlled via `systemd`. For example:
+The RabbitMQ server can be controlled via systemd-managed services. For example:
 
--   Stop the RabbitMQ server:
+-   Use `systemctl` to stop the RabbitMQ server:
 
     ```command
     systemctl stop rabbitmq-server
     ```
 
--   Start the RabbitMQ server:
+-   Use `systemctl` to start the RabbitMQ server:
 
     ```command
     systemctl start rabbitmq-server
@@ -201,7 +203,7 @@ The RabbitMQ server can be controlled via `systemd`. For example:
     journalctl -u rabbitmq-server
     ```
 
-## Test RabbitMQ with a Messaging Example
+## Testing RabbitMQ
 
 1.  To test the RabbitMQ deployment, first enable the RabbitMQ management plugin:
 
@@ -251,9 +253,11 @@ The RabbitMQ server can be controlled via `systemd`. For example:
     sudo mv rabbitmqadmin /usr/local/bin/
     ```
 
-### Create Exchange and Queue
+### Create An Exchange and Queue
 
 This guide demonstrates creating a [fanout exchange](https://www.rabbitmq.com/tutorials/amqp-concepts#exchange-fanout), which "routes messages to all of the queues that are bound to it". A fanout closely resembles the pub/sub pattern and is typically used for broadcasting messages.
+
+See RabbitMQ's official documentation for more on exchanges and queues: [RabbitMQ Tutorials](https://www.rabbitmq.com/tutorials)
 
 1.  Create a `fanout` style exchange on the RabbitMQ server with the following:
 
@@ -326,9 +330,9 @@ This guide demonstrates creating a [fanout exchange](https://www.rabbitmq.com/tu
 
     ![RabbitMQ queue message retrieval output showing a successfully retrieved message.](rabbitmq-queue-message-retrieval.png)
 
-## Access RabbitMQ Remotely
+## The RabbitMQ Web Interface
 
-The RabbitMQ management plugin enables a web interface and API accessible at port `15672`. Assuming this port is not blocked by any firewall rules, you can access the web interface in your browser by visiting the following URL:
+The RabbitMQ management plugin enables a web interface and API accessible at port `15672`. Assuming this port is not blocked by any firewall rules, you can access the web interface in your browser by visiting the following URL, replacing {{< placeholder "IP_ADDRESS" >}} with the IP of your Linode instance:
 
 ```command
 http://{{< placeholder "IP_ADDRESS" >}}:15672
@@ -391,13 +395,13 @@ By default, RabbitMQ is initiated with a default [virtual host](https://www.rabb
 
 ### Access the RabbitMQ Management Interface Remotely
 
-1.  Return to the management console UI in a web browser and log in with the credentials of the newly created user:
+Return to the management console UI in a web browser, and log in with the credentials of the newly created user:
 
-    ![RabbitMQ management interface login screen displaying username and password fields.](rabbitmq-login-screen.png)
+![RabbitMQ management interface login screen displaying username and password fields.](rabbitmq-login-screen.png)
 
-    After logging in, the **Overview** page displays metrics about the currently running RabbitMQ instance:
+After logging in, the **Overview** page displays metrics about the currently running RabbitMQ instance:
 
-    ![RabbitMQ management dashboard overview displaying server metrics, queue status, and connection details.](rabbitmq-dashboard-overview.png)
+![RabbitMQ management dashboard overview displaying server metrics, queue status, and connection details.](rabbitmq-dashboard-overview.png)
 
 ### Send Test Requests to the RabbitMQ API
 
