@@ -1,93 +1,89 @@
 ---
-slug: migrating-from-azure-service-bus-to-rabbitmq-on-linode
-title: "Migrating from Azure Service Bus to RabbitMQ on Linode"
-description: "Learn how to migrate from Azure Service Bus to RabbitMQ on Linode. Discover RabbitMQ's customizable routing and multi-protocol messaging advantages over Azure Service Bus."
+slug: migrating-from-aws-sns-to-rabbitmq-on-akamai
+title: "Migrating from AWS SNS to RabbitMQ on Akamai"
+description: "Learn how to migrate from AWS SNS to RabbitMQ running on Akamai. Discover RabbitMQ's queue-based messaging and advanced routing features compared to AWS SNS."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-02-05
-keywords: ['azure','service','bus','rabbitmq','migration','azure service bus migration','rabbitmq on linode','azure to rabbitmq','service bus rabbitmq comparison']
+published: 2025-02-12
+keywords: ['aws','sns','rabbitmq','migration','aws sns migration','rabbitmq on akamai','aws to rabbitmq','sns rabbitmq comparison']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[Azure Service Bus Documentation](https://learn.microsoft.com/en-us/azure/service-bus-messaging/)'
+- '[AWS SNS Documentation](https://docs.aws.amazon.com/sns/)'
 - '[RabbitMQ Configuration Documentation](https://www.rabbitmq.com/docs/configure)'
 - '[RabbitMQ Deployment Checklist](https://www.rabbitmq.com/docs/production-checklist)'
-- '[RabbitMQ Plugins](https://www.rabbitmq.com/docs/plugins)'
+- '[RabbitMQPlugins](https://www.rabbitmq.com/docs/plugins)'
 - '[RabbitMQ Management CLI](https://www.rabbitmq.com/docs/management-cli)'
 - '[RabbitMQ Pub/Sub Tutorial](https://www.rabbitmq.com/tutorials/tutorial-three-python)'
 ---
 
-Microsoft Azure Service Bus is an enterprise-grade messaging service that supports pub/sub and point-to-point patterns with features like at-least-once delivery and dead-letter queues. It allows for advanced message filtering using SQL-like expressions, enabling sophisticated routing scenarios.
+Amazon Web Services (AWS) Simple Notification Service (SNS) is a fully managed, topic-based messaging service used for event-driven architectures and decoupled applications.
 
-RabbitMQ is an open source alternative message broker that provides similar flexibility while offering a self-hosted deployment model. Migrating to RabbitMQ can offer developers more control over their messaging systems, with features like custom routing and multi-protocol support.
+RabbitMQ is an open source alternative message broker that uses queue-based messaging to provide customization and control over message routing and delivery patterns. Migrating to RabbitMQ can offer developers more control over their messaging systems, with features like advanced routing and multi-protocol support.
 
-This guide includes steps and recommendations on how to migrate from Azure Service Bus to RabbitMQ running on Linode. To help illustrate the migration process, an example Flask-based Python application running on a separate instance is used as a placeholder for your application or workload.
+This guide includes steps and recommendations on how to migrate from AWS SNS to RabbitMQ running on Akamai Cloud. To help illustrate the migration process, an example Flask-based Python application running on a separate instance is used as a placeholder for your application or workload.
 
 ## Feature Comparison
 
-Below is a list comparing the key features of Azure Service Bus and RabbitMQ:
-
-| Feature | Azure Service Bus | RabbitMQ |
+| Feature | AWS SNS | RabbitMQ |
 | ----- | ----- | ----- |
-| **Primary Use Case** | Fully managed enterprise-grade messaging for cloud-native and hybrid systems. | Open-source message broker for on-premise or cloud deployments. |
-| **Deployment** | Fully managed by Azure, no maintenance required. | Self-hosted or managed services (e.g. CloudAMQP); requires maintenance if self-hosted. |
-| **Protocol Support** | AMQP, HTTP, and REST APIs. | AMQP, STOMP, MQTT, and more; highly extensible. |
-| **Message Filtering** | Advanced SQL-like filtering rules for topics. | Limited to simple routing logic with exchanges (direct, fanout, topic, header). |
-| **Scalability** | Automatically scales with Azure infrastructure. | Requires manual scaling or external tools for clustering and federation. |
-| **Dead-Letter Queue** | Built-in dead-letter queue for unprocessed messages. | Supports dead-letter queues but requires custom setup. |
-| **Security** | Azure Active Directory (AAD) and RBAC integration. TLS. | Authentication via username/password or external plugins (e.g. OAuth). |
+| **Architecture** | Topic-based (pub/sub model) | Queue-based (AMQP standard; pub/sub and point-to-point) |
+| **Message Routing** | Uses topics; broadcasts messages to all subscribers | Flexible routing via exchanges and queues |
+| **Delivery Semantics** | Best-effort, at-least-once delivery | Configurable (acknowledgments, at-most-once, at-least-once, exactly-once) |
+| **Durability** | No message persistence; ephemeral by default | Configurable persistence; durable queues supported |
+| **Message Ordering** | Generally unordered | FIFO and priority queues supported |
+| **Supported Protocols** | HTTP/S, email, SMS, mobile push, Lambda | AMQP, MQTT, STOMP, HTTP |
+| **Use Cases** | Notifications, alerts, fanout messaging | Complex workflows, task queues, custom routing |
+| **Scaling** | Auto-scaling with AWS infrastructure | Can scale but may need manual clustering and tuning |
+| **Managed Service** | Fully managed (AWS handles scaling and maintenance) | Self-hosted or managed (like CloudAMQP) but requires more operational management |
+| **Integration with AWS** | Native AWS integration, seamless with services like Lambda | Integrates but requires custom setup on AWS |
 
 ## Before You Begin
 
-1.  Read our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and create a Linode account if you do not already have one.
+1.  Read our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and create an Akamai Cloud account if you do not already have one.
 
-1.  Migrating from Azure Service Bus to RabbitMQ on Linode requires choosing between a single Linode instance or a larger scale, more fault-tolerant environment with Linode Kubernetes Engine (LKE). Follow the appropriate guide below based on your needs:
+1.  Migrating from AWS SNS to RabbitMQ on Akamai requires choosing between a single Linode instance or a larger scale, more fault-tolerant environment with Linode Kubernetes Engine (LKE). Follow the appropriate guide below based on your needs:
 
-    -   [Deploying RabbitMQ on a Linode Compute Instance]()
+    -   [Deploy RabbitMQ through the Linode Marketplace](/docs/marketplace-docs/guides/rabbitmq/)
+    -   [Deploying RabbitMQ on a Linode](/docs/guides/deploying-rabbitmq-on-a-linode/)
     -   [Deploying RabbitMQ on Kubernetes with LKE](/docs/guides/deploying-rabbitmq-on-kubernetes-with-lke/)
-    -   [Deploy RabbitMQ through the Linode Marketplace](https://www.linode.com/marketplace/apps/linode/rabbitmq/)
 
-1.  You must have access to your Azure account with sufficient permissions to work with Service Bus resources.
+1.  You must have access to your AWS account with sufficient permissions to work with SNS topics.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Migrate from Azure Service Bus to RabbitMQ
+## Migrate from AWS SNS to RabbitMQ
 
-RabbitMQ exchanges provides various routing mechanisms to handle message delivery:
+RabbitMQ exchanges provide various routing mechanisms to handle message delivery:
 
 -   **Direct** exchanges deliver messages to queues with a specific routing key.
 -   **Topic** exchanges enable pattern-based routing, which allow wildcard matches.
--   **Fanout** exchanges broadcast messages to all bound queues, similar to the pub/sub model in Azure Service Bus.
+-   **Fanout** exchanges broadcast messages to all bound queues, similar to SNS topics.
 -   **Header** exchanges route messages based on their headers for more nuanced filtering.
 
-Migrating your messaging broker service involves porting any applications that depend on Azure Service Bus to use RabbitMQ instead. To illustrate the process, this guide uses an [example Flask application](https://github.com/linode/docs-cloud-projects/tree/main/demos/rabbitmq-migrations-main) running on a Linode instance that is subscribed to an Azure Service Bus topic.
+Migrating your messaging broker service involves porting any applications that depend on AWS SNS to use RabbitMQ instead. To illustrate the process, this guide uses an [example Flask application](https://github.com/linode/docs-cloud-projects/tree/main/demos/rabbitmq-migrations-main) running on a Linode instance that is subscribed to an SNS topic.
 
 ### Assess Current Messaging Needs
 
-Using the example Flask app integration, Azure Service Bus provides a topic for publishing messages to web application subscriptions. The UI displays the current subscribers to each topic. This provides guidance as to which services may need to be updated when migrating to RabbitMQ.
+Using the example Flask app integration, AWS SNS provides multiple topics for publishing messages. The AWS Console UI displays the current subscribers for each topic. This provides guidance as to which services may need to be updated after migrating to RabbitMQ.
 
-![The Azure Service Bus Console UI showing current topic subscribers.](azure-servicebus-subscribers-ui.png)
+![The AWS SNS Console UI showing current topic subscribers.](aws-sns-subscribers-ui.png)
 
-The Azure Service Bus Explorer provides a UI for publishing messages to all subscribers of a topic. This has a similar interface to `rabbitmqadmin` for command line interactions with topics.
+AWS provides a UI for publishing messages to all subscribers of a topic. This has a similar interface to `rabbitmqadmin` for command line interactions with topics.
 
-![Azure Service Bus Explorer UI for publishing messages to a topic.](azure-servicebus-publish-message.png)
+![AWS SNS UI for publishing messages to all topic subscribers.](aws-sns-publish-message.png)
 
 This message should appear in the example application’s logs as the following:
 
 ```output
-2024-11-23 19:15:20,634 - azure.servicebus._pyamqp.cbs - DEBUG - CBS status check: state == <CbsAuthState.OK: 0>, expired == False, refresh required == False
-2024-11-23 19:15:20,651 _____main___ - DEBUG Received: This is a test message!
-2024-11-23 19:15:20,652 - azure.servicebus._pyamqp.cbs - DEBUG - CBS status check: state == <CbsAuthState.OK: 0>, expired == False, refresh required == False
+INFO:app:Notification
+INFO:app:Received SNS message: This is a test message!
 ```
-
-The Azure Service Bus overview UI displays all related resources associated with the service as well as monitoring of message throughput, latency, and errors:
-
-![Azure Monitor interface showing Service Bus metrics and diagnostics.](azure-servicebus-logging-metrics.png)
 
 ### Convert Authentication to be Compatible with RabbitMQ
 
-RabbitMQ does not use Microsoft Entra ID or Azure Active Directory (AAD) roles or policies. As an alternative, select an authentication method compatible with RabbitMQ such as username/password or SSL/TLS certificates. This guide uses username/password for authentication. The following steps create a new read-only RabbitMQ user (e.g. `flaskappuser`) to interact with the example Flask application.
+RabbitMQ does not work with AWS IAM. As an alternative, select an authentication method compatible with RabbitMQ such as username/password or SSL/TLS certificates. This guide uses username/password for authentication. The following steps create a new read-only RabbitMQ user (e.g. `flaskappuser`) to interact with the example Flask application.
 
 1.  To create a new user, open a web browser and navigate to the following URL over port 15672, replacing {{< placeholder "IP_ADDRESS" >}} with the external IP address of your Linode instance or LKE node running RabbitMQ:
 
@@ -202,7 +198,7 @@ This guide demonstrates the migration process using an [example Flask server](ht
     rabbitmq-changes  README.md
     ```
 
-### Convert Existing Applications from Azure Service Bus to RabbitMQ
+### Convert Existing Applications from AWS SNS to RabbitMQ
 
 {{< note title="Steps may vary from application to application" >}}
 The specific steps for converting applications from GCP Pub/Sub to RabbitMQ depend on your application configuration and type.
@@ -210,7 +206,7 @@ The specific steps for converting applications from GCP Pub/Sub to RabbitMQ depe
 The conversion steps in this guide are specific to the featured example Flask Python app, however the concepts still apply. When converting your message broker service to RabbitMQ, ensure you are configuring it to authenticate to your RabbitMQ exchange and queue as described.
 {{< /note >}}
 
-In the example, the subscribing application communicates directly with Azure Service Bus by using the [azure-servicebus library](https://pypi.org/project/azure-servicebus/). In order to use RabbitMQ, corresponding code must be carefully switched from Azure tooling to RabbitMQ. For Python applications like the Flask app in this guide, RabbitMQ support is provided through the [Pika](https://pypi.org/project/pika/) library, which is an AMQP provider with RabbitMQ bindings.
+In the example, the Flask application communicates directly to AWS SNS using the `boto3` library provided by AWS. In order to use RabbitMQ, corresponding code must be carefully switched from AWS tooling to RabbitMQ. For Python applications like the Flask app in this guide, RabbitMQ support is provided through the [Pika](https://pypi.org/project/pika/) library, which is an AMQP provider with RabbitMQ bindings.
 
 1.  Use `apt` to install Pika:
 
@@ -226,7 +222,7 @@ In the example, the subscribing application communicates directly with Azure Ser
 
     The resulting file should look like this, replacing {{< placeholder "RABBITMQ_HOST" >}}, {{< placeholder "RABBITMQ_USERNAME" >}} and {{< placeholder "RABBITMQ_PASSWORD" >}} with your actual RabbitMQ IP address, username, and password:
 
-    ```file {title="rabbitmq-changesapp.py" lang="python" hl_lines="23,25"}
+    ```file {title="rabbitmq-changes/app.py" lang="python" hl_lines="23,25"}
     from flask import Flask
     import pika
     import threading
@@ -308,13 +304,11 @@ In the example, the subscribing application communicates directly with Azure Ser
 
 ## Production Considerations
 
-Considerations to weigh when migrating your application messaging from Azure Service Bus to RabbitMQ include authentication, security, performance, and overall architecture.
+Considerations to weigh when migrating your application messaging from AWS SNS to RabbitMQ include authentication, security, performance, and overall architecture.
 
 ### Authentication and Authorization
 
-For authentication and authorization, Azure Service Bus uses AAD and role-based access control (RBAC). With AAD integration, users and applications can authenticate using managed identities, OAuth 2.0 tokens, or service principals. For fine-grained access control, using RBAC allows administrators to define roles and permissions at the entity level (queues, topics, and subscriptions).
-
-In comparison, RabbitMQ offers multiple authentication methods, including username/password, OAuth2, and certificate-based authentication. For production-level security, RabbitMQ should use federated authentication services or certificates to match the enterprise-grade capabilities of Azure Service Bus. Implement access controls through RabbitMQ’s virtual hosts and user permissions to replicate the RBAC and AAD model from Azure Service Bus.
+AWS SNS typically uses IAM roles and policies for authentication, while RabbitMQ supports multiple methods like username/password and OAuth2. For production-level security, RabbitMQ should use federated authentication services or certificates. Also consider implementing access controls through RabbitMQ’s virtual hosts and user permissions to match or exceed the granular controls SNS provides with IAM policies.
 
 ### Message Reliability, Durability, and Delivery
 
@@ -325,9 +319,7 @@ RabbitMQ offers different delivery guarantees that help control message reliabil
 -   **At-least-once delivery** delivers messages to consumers at least once. This is the default delivery model in RabbitMQ.
 -   **At-most-once delivery** removes messages from the queue as soon as they are sent to the consumer. This mode is generally suitable for non-critical or low-stakes messages.
 
-In addition to basic pub/sub functionality, Azure Service Bus ensures reliable message ordering when using sessions. If sessions are enabled, subscribers can process messages in the exact order they were sent. This provides deterministic processing for applications where order matters. Azure Service Bus provides tools to manage reliable and predictable messaging workflows, including at-least-once delivery guarantees, dead-letter queues for handling undeliverable messages, and configurable message time-to-live (TTL).
-
-To handle messages that can’t be processed after multiple retries, configure a Dead-Letter Exchange (DLX) in RabbitMQ. A DLX redirects unprocessed messages to a separate queue after exceeding the configured retry limit. A DLX is a best practice to mitigate temporary outages or network errors that cause message failures, retrying delivery without affecting primary processing. Failed messages can be inspected or logged for later analysis after landing the DLX.
+To handle messages that can’t be processed after multiple retries, configure a Dead-Letter Exchange (DLX). A DLX redirects unprocessed messages to a separate queue after exceeding the configured retry limit. A DLX is a best practice to mitigate temporary outages or network errors that cause message failures, retrying delivery without affecting primary processing. Failed messages can be inspected or logged for later analysis after landing the DLX.
 
 Adopt the following best practices for delivery and ordering:
 
@@ -338,13 +330,11 @@ Adopt the following best practices for delivery and ordering:
 
 ### Monitoring and Observability
 
-Azure Service Bus provides built-in monitoring capabilities through Azure Monitor, offering a suite of metrics and diagnostics. Key metrics, such as message count, delivery success rates, dead-letter messages, and queue length, are available for real-time tracking. Logs and metrics can also be exported to Azure Log Analytics for deeper analysis. This allows teams to monitor system health, performance, and potential bottlenecks across the entire messaging infrastructure.
-
-Basic monitoring of RabbitMQ is available through the RabbitMQ Management plugin. You can also use tools such as Prometheus and Grafana for real-time performance tracking.
+SNS includes AWS CloudWatch metrics by default. Basic monitoring of RabbitMQ is available through the RabbitMQ Management plugin. You can also use tools such as Prometheus and Grafana for real-time performance tracking.
 
 ### Scaling, Load Balancing, and Availability
 
-While RabbitMQ does not offer auto-scaling like Azure, it supports clustering and federation for scaling options. For load balancing, configure multiple nodes and use connection sharding. You can set up cross-node distribution by configuring queues and connections across multiple nodes to balance load. Avoid single points of failure by ensuring that both applications and consumers can failover to different nodes within the cluster.
+While RabbitMQ does not offer auto-scaling like AWS SNS, it supports clustering and federation for scaling options. For load balancing, configure multiple nodes and use connection sharding. You can set up cross-node distribution by configuring queues and connections across multiple nodes to balance load. Avoid single points of failure by ensuring that both applications and consumers can failover to different nodes within the cluster.
 
 If RabbitMQ nodes span different data centers, use the [Federation](https://www.rabbitmq.com/docs/federation) or [Shovel](https://www.rabbitmq.com/docs/shovel) plugins. Federation allows controlled mirroring across remote clusters, while Shovel enables continuous transfer of messages from one RabbitMQ instance to another, even across data centers.
 
