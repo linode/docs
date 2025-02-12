@@ -5,6 +5,7 @@ description: "Utilize the Retrieval-Augmented Generation technique to supplement
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2025-02-11
+updated: 2025-02-12
 keywords: ['kubernetes','lke','ai','inferencing','rag','chatbot','architecture']
 tags: ["kubernetes","lke"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -218,7 +219,7 @@ Kubeflow Pipeline pulls together the entire workflow for ingesting data from our
 
 1. Download a zip archive from the specified URL.
 1. Uses LlamaIndex to read the Markdown files within the archive.
-1. Generate embeddings from the content of those files using the [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5) model.
+1. Generate embeddings from the content of those files.
 1. Store the embeddings within the Milvus database collection.
 
 Keep this workflow in mind when going through the Kubeflow Pipeline set up steps in this section. If you require a different pipeline workflow, you will need to adjust the python file and Kubeflow Pipeline configuration discussed in this section.
@@ -240,7 +241,7 @@ This tutorial employs a Python script to create the YAML file used within Kubefl
     pip install kfp
     ```
 
-1. Use the following python script to generate a YAML file to use for the Kubeflow Pipeline. This script configures the pipeline to download the Markdown data you wish to ingest, read the content using LlamaIndex, generate embeddings of the content using BAAI general embedding model, and store the embeddings in the Milvus database. Replace values as needed before proceeding.
+1. Use the following python script to generate a YAML file to use for the Kubeflow Pipeline. This script configures the pipeline to download the Markdown data you wish to ingest, read the content using LlamaIndex, generate embeddings of the content, and store the embeddings in the Milvus database. Replace values as needed before proceeding.
 
     ```file {title="doc-ingest-pipeline.py" lang="python"}
     from kfp import dsl
@@ -269,7 +270,7 @@ This tutorial employs a Python script to create the YAML file used within Kubefl
         from llama_index.core import Settings
 
         Settings.embed_model = HuggingFaceEmbedding(
-            model_name="BAAI/bge-large-en-v1.5"
+            model_name="sentence-transformers/all-MiniLM-L6-v2"
         )
 
         from llama_index.llms.openai_like import OpenAILike
@@ -285,7 +286,7 @@ This tutorial employs a Python script to create the YAML file used within Kubefl
         from llama_index.core import VectorStoreIndex, StorageContext
         from llama_index.vector_stores.milvus import MilvusVectorStore
 
-        vector_store = MilvusVectorStore(uri="http://my-release-milvus.default.svc.cluster.local:19530", collection=collection, dim=1024, overwrite=True)
+        vector_store = MilvusVectorStore(uri="http://my-release-milvus.default.svc.cluster.local:19530", collection=collection, dim=384, overwrite=True)
         storage_context = StorageContext.from_defaults(vector_store=vector_store)
         index = VectorStoreIndex.from_documents(
             documents, storage_context=storage_context
@@ -388,7 +389,7 @@ Despite the naming, these RAG pipeline files are not related to the Kubeflow pip
             print(f"on_startup:{__name__}")
 
             Settings.embed_model = HuggingFaceEmbedding(
-                model_name="BAAI/bge-large-en-v1.5"
+                model_name="sentence-transformers/all-MiniLM-L6-v2"
             )
 
             llm = OpenAILike(
@@ -399,7 +400,7 @@ Despite the naming, these RAG pipeline files are not related to the Kubeflow pip
 
             Settings.llm = llm
 
-            vector_store = MilvusVectorStore(uri="http://my-release-milvus.default.svc.cluster.local:19530", collection="linode_docs", dim=1024, overwrite=False)
+            vector_store = MilvusVectorStore(uri="http://my-release-milvus.default.svc.cluster.local:19530", collection="linode_docs", dim=384, overwrite=False)
             self.index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
 
         async def on_shutdown(self):
