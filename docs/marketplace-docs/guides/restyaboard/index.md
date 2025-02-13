@@ -8,16 +8,12 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Restyaboard](https://restya.com/board)'
 aliases: ['/products/tools/marketplace/guides/restyaboard/','/guides/deploying-restyaboard-marketplace-app/','/guides/restyaboard-marketplace-app/']
-_build:
-  list: false
-noindex: true
-deprecated: true
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-Restyaboard has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only. 
+Restyaboard has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
 {{< /note >}}
 
 [Restyaboard](https://restya.com/board) is an open-source alternative to Trello, but with smart additional features like offline sync, revisions, diff, nested comments, multiple view layouts, chat, and more. And since it is self-hosted, data, privacy, and IP security are under your full control.

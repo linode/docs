@@ -7,16 +7,12 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[GoPaddle](https://gopaddle.io/)'
 aliases: ['/products/tools/marketplace/guides/gopaddle/']
-_build:
-  list: false
-noindex: true
-deprecated: true
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-gopaddle has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only. 
+gopaddle has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
 {{< /note >}}
 
 [gopaddle](https://gopaddle.io/) is a low-code Internal Developer Platform (IDP) for Kubernetes developers and operators. It provides a self-service portal through which developers can scaffold code to containers, auto-generate YAML files, build Docker images, deploy applications on to Kubernetes, and manage the application life cycle centrally.

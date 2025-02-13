@@ -10,16 +10,12 @@ external_resources:
 - '[ServerWand Documentation](https://serverwand.com/docs/)'
 - '[ServerWand Blog](https://serverwand.com/blog/)'
 aliases: ['/products/tools/marketplace/guides/serverwand/','/platform/marketplace/deploy-serverwand-with-marketplace-apps/', '/platform/one-click/deploy-serverwand-with-one-click-apps/','/guides/deploy-serverwand-with-one-click-apps/','/guides/deploy-serverwand-with-marketplace-apps/','/guides/serverwand-marketplace-app/']
-_build:
-  list: false
-noindex: true
-deprecated: true
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-ServerWand has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only.
+ServerWand has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
 {{< /note >}}
 
 [ServerWand](https://serverwand.com) is a magical control panel for managing websites and servers. Host multiple sites on a single server, manage apps, firewall, databases, backups, system users, cron jobs, SSL, and email with an intuitive interface.
