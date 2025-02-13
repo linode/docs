@@ -17,7 +17,7 @@ contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-Terraria has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only. For information on how to deploy and set up Terraria manually on a Compute Instance, see our [How to Setup a Terraria Linux Server](/docs/guides/host-a-terraria-server-on-your-linode/) guide.
+Terraria has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only. For information on how to deploy and set up Terraria manually on a Compute Instance, see our [How to Setup a Terraria Linux Server](/docs/guides/host-a-terraria-server-on-your-linode/) guide.
 {{< /note >}}
 
 Terraria is a two-dimensional sandbox game in which players explore the world, collect resources, build structures, and battle enemies in procedurally generated environments. In Terraria a player begins by digging for ore, and the further they dig the more adventure they find. Multiplayer mode can be either cooperative or PvP.
