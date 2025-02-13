@@ -65,17 +65,17 @@ This returns passwords that were automatically generated when the instance was d
 1.  Open a web browser and navigate to the domain you entered when creating the instance: `https://domain.tld`. If you didn't enter a domain, use your Compute Instance's default rDNS domain (`192-0-2-1.ip.linodeusercontent.com`). To learn more on viewing the rDNS value, see [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). Make sure to use the `https` prefix in the URL to access the website securely.
 
     {{< note >}}
-    In Chrome, you can accept the self-signed certificate by clicking on Advanced and then click Proceed to <ip> (unsafe). In Firefox, click on Advanced, then Add Exception, and then Confirm Security Exception.
+    In Chrome, you can accept the self-signed certificate by clicking **Advanced** and then **Proceed to** <ip> (unsafe). In Firefox, click **Advanced**, then **Add Exception**, and **Confirm Security Exception**.
     {{< /note >}}
 
-1.  The login prompt appears. Enter `pritunl` as the username and then use the password generated in the credentials file.
+1.  To log in, enter `pritunl` as the username and the password you generated in the credentials file.
 
     ![Pritunl Username Setup](pritunl-config2.png)
 
-1.  Once you're logged in, you can change the default password and enter the domain information so Pritunl can setup the SSL certificates automatically:
+1.  Change the default password and enter the domain information so Pritunl can setup the SSL certificates automatically:
 
     ![Pritunl Domain Setup](pritunl-config3.png)
 
-Now that you’ve accessed your dashboard, check out [the official Pritunl documentation](https://docs.pritunl.com/docs/connecting) to learn how to add users and further use your Pritunl instance.
+Now that you’ve accessed your dashboard, check out [the official Pritunl documentation](https://docs.pritunl.com/docs/connecting) to learn how to add users and use your Pritunl instance.
 
 {{% content "marketplace-update-note-shortguide" %}}
