@@ -78,7 +78,7 @@ The first step is to provision the infrastructure needed for this tutorial and c
     You can confirm that the operator has been installed on your cluster by running reviewing your pods. You should see a number of pods in the `gpu-operator` namespace.
 
     ```command
-    kubectl get pods -A
+    kubectl get pods -n gpu-operator
     ```
 
 ### Deploy Kubeflow
@@ -114,6 +114,8 @@ Next, let’s deploy Kubeflow on the LKE cluster. These instructions deploy all 
     ```command
     kubectl get pods -A
     ```
+
+    You may notice a status of `CrashLoopBackOff` on one or more pods. This can be caused to a temporary issue with a persistent volume attaching to a worker node and should be resolved within a minute or so.
 
 ### Install Llama3 LLM on KServe
 
@@ -153,7 +155,7 @@ After Kubeflow has been installed, we can now deploy the Llama 3 LLM to KServe. 
             name: huggingface
           args:
             - --model_name=llama3
-            - --model_id=NousResearch/Meta-Llama-3-8B-Instruct
+            - --model_id=meta-llama/meta-llama-3-8b-instruct
             - --max-model-len=4096
           env:
             - name: HF_TOKEN
