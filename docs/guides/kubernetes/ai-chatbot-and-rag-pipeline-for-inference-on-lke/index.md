@@ -5,7 +5,7 @@ description: "Utilize the Retrieval-Augmented Generation technique to supplement
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2025-02-11
-updated: 2025-02-12
+modified: 2025-02-13
 keywords: ['kubernetes','lke','ai','inferencing','rag','chatbot','architecture']
 tags: ["kubernetes","lke"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
