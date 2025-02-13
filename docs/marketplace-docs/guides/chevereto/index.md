@@ -13,6 +13,9 @@ authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
+{{< note type="warning" title="This app is no longer available for deployment" >}}
+Chevereto has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
+{{< /note >}}
 
 [Chevereto](https://chevereto.com/) is a self-hosted image sharing solution. It can be used to create a myriad of applications or to empower existing systems. Chevereto's features include multi-user support, multi-server support, bulk importing, integration with social media, and more.
 

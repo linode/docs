@@ -9,6 +9,9 @@ authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
+{{< note type="warning" title="This app is no longer available for deployment" >}}
+ILLA Builder has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
+{{< /note >}}
 
 [ILLA Builder](https://github.com/illacloud/illa-builder) is an open-source low-code development tool that allows developers to quickly build internal tools. ILLA lets developers focus more on the core functionality of the tools they are building and spend less time on websites and integrations.
 

@@ -13,6 +13,9 @@ authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
+{{< note type="warning" title="This app is no longer available for deployment" >}}
+Webuzo has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
+{{< /note >}}
 
 Softaculous [Webuzo](https://www.webuzo.com) is a single user LAMP stack control panel that lets you deploy a growing number of applications and scripts on your server with a single click.
 
