@@ -2,7 +2,7 @@
 title: "Deploy Plex Media Server through the Linode Marketplace"
 description: "Stream your personal media collection to nearly any device with your own Plex Media Server using Linode Marketplace Apps."
 published: 2020-09-28
-modified: 2024-06-06
+modified: 2025-02-19
 keywords: ['streaming','plex','video','media server']
 tags: ["debian","docker","marketplace", "web applications","linode platform", "cloud manager"]
 image: Deploy_Plex_oneclickapps.png
@@ -32,21 +32,14 @@ Owning a Plex Media Server enables you to maintain a personal media library in a
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10
-- **Recommended minimum plan:** 4GB Dedicated CPU or Shared Compute Instance
+- **Supported distributions:** Ubuntu 24.04 LTS
+- **Suggested minimum plan:** 4GB Dedicated CPU or Shared Compute Instance
 
 ### Plex Options
-
-The following configuration options create a secure [Limited User](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) to run your Plex Media Server.
-
-{{< note >}}
-- As a security measure, [root login over SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) is disabled for this App. Use your Limited User credentials to access your Linode via SSH instead.
-- The Limited User configurations below are for your Linode's [Linux user](/docs/guides/linux-users-and-groups/), which is distinct from your [Plex account user](https://www.plex.tv/sign-up/).
-{{< /note >}}
-
-- **Limited User Name** *(required)*: Enter your preferred username for the limited user. If the username `root` is specified, a limited user is not created and extra security features are not configured.
-- **Limited User Password** *(required)*: Enter a *strong* password for the new user.
-- **Limited User SSH Key:** If you wish to log in as the limited user through public key authentication (without entering a password), enter your public key here. See [Creating an SSH Key Pair and Configuring Public Key Authentication on a Server](/docs/guides/use-public-key-authentication-with-ssh/) for instructions on generating a key pair.
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
+- **SOA Email Address:** *(required)*: Email address to use for generating the SSL certificates and configuring the server and DNS records.
+- **Plex Version:** The Plex One-Click App is configured to use the [Plex Ubuntu repo](https://support.plex.tv/articles/235974187-enable-repository-updating-for-supported-linux-server-distributions/), which provides the Public Main release. 
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
 
@@ -58,34 +51,7 @@ Before you begin, ensure that you have signed up for a [Plex account](https://ww
 
 ### Initial Setup
 
-Administration of your Plex Server is performed from its web interface. Before you can connect to the web interface from your workstation, you first need to create an SSH tunnel to your Linode.
-
-{{< note >}}
-This guide occasionally directs you to substitute variables beginning with `$` in certain commands.
-
-An easy way to make these substitutions is to set the variables in your shell, then simply copy the commands as they are provided in this guide — your shell automatically substitutes the `$` variables in those commands with the values you have set.
-
-For example, you can set configure a substitution for `$IP_ADDRESS` like so:
-
-    IP_ADDRESS=192.0.2.0
-
-Your shell then interprets `$IP_ADDRESS` as the value you have provided in following commands, for example:
-
-    echo $IP_ADDRESS
-
-```output
-192.0.2.0
-```
-{{< /note >}}
-
-1.  From your workstation [terminal](/docs/guides/using-the-terminal/), enter the following the command, substituting `$USERNAME` with your Linux [Limited User Name](#plex-marketplace-app-options), and `$IP_ADDRESS` with the [IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) of your Plex Server Linode:
-
-        ssh $USERNAME@$IP_ADDRESS -L 8888:localhost:32400
-
-    You now have an established SSH connection to your Plex Server Linode in your terminal, and can also access the Plex web interface from your workstation browser.
-
-1.  Enter `http://localhost:8888/web` into your workstation browser to access the Plex Server setup web interface. Enter your Plex account username and password to proceed with the setup.
-
+Administration of your Plex Server is performed from its web interface. Open a web browser and navigate to the custom domain provided during deployment, or the instance's default rDNS. 
     ![Plex Login Screen](plex-login.png "Plex login screen.")
 
 1.  Give your Plex Server a name. Be sure to leave the **Allow me to access my media outside my home** box **checked**, and select **NEXT**.
@@ -225,7 +191,8 @@ The Plex Marketplace App installs the following required software on your Linode
 
 | **Software** | **Description** |
 |:--------------|:------------|
-| [**Docker Engine**](https://docs.docker.com/engine/) | Docker Engine is an open source containerization technology for building and containerizing your applications. This Marketplace App deploys Plex Media Server as a Docker container. |
+| [**NGINX**](https://www.nginx.com/) | Open Source webserver and reverse proxy. See our guide on [Getting Started with NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) for more information. |
+| [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Ports 22/tcp, 80/tcp, and 443/tcp for IPv4 and IPv6 are enabled with installation of this app. Additional ports must be opened to send email from your Linode for use with this app. See our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) for instructions. |
 | [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) | The Plex Media Server transmits locally-stored media files, enabling you to stream your personal media collection to any device that can support a [Plex Client](https://www.plex.tv/apps-devices/). |
 
 {{% content "marketplace-update-note-shortguide" %}}
