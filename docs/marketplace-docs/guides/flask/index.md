@@ -13,6 +13,8 @@ aliases: ['/products/tools/marketplace/guides/flask/','/platform/marketplace/how
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 609392
+marketplace_app_name: "Flask"
 ---
 
 [Flask](https://flask.palletsprojects.com/en/1.1.x/) is a quick and light-weight web framework for Python that includes several utilities and libraries you can use to create a web application. It is designed to make getting started quick and easy, with the ability to scale up to support more complex applications.
@@ -78,7 +80,7 @@ To get started:
 In addition to installing Flask, this Marketplace app installs and configures software to support running Flask in a production environment. Below is a list of the installed software:
 
 - The [NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) web server is installed with a basic NGINX configuration, located in `/etc/nginx/sites-enabled/$DOMAIN`. The $DOMAIN will be the domain entered during deployment or the default rDNS address that comes with each instance.
-- An sample Flask application is downloaded to your Linode's `/var/www/flask_project` directory. 
+- An sample Flask application is downloaded to your Linode's `/var/www/flask_project` directory.
 
 - [Gunicorn](https://gunicorn.org/), a Python WSGI (web server gateway interface) HTTP Server for UNIX, is installed and running. It is used to forward requests from your NGINX web server to your Flask application.
 

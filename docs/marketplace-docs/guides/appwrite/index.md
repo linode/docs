@@ -8,6 +8,8 @@ aliases: ['/products/tools/marketplace/guides/appwrite/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 1160820
+marketplace_app_name: "Appwrite"
 ---
 
 [Appwrite](https://appwrite.io/) is an open-source, self-hosted back-end server that provides developers with a set of tools and services to build and manage web and mobile applications. It offers various features to simplify the development process, including user authentication, database management, file storage, and more.

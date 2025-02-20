@@ -12,6 +12,8 @@ aliases: ['/products/tools/marketplace/guides/openvpn/','/platform/marketplace/m
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 401719
+marketplace_app_name: "OpenVPN"
 ---
 
 OpenVPN is a widely trusted, free, and open-source VPN (virtual private network) application that creates encrypted tunnels for secure data transfer between computers that are not on the same local network. Your traffic is encrypted by OpenVPN using [OpenSSL](https://www.openssl.org/). You can use OpenVPN to:

@@ -15,6 +15,8 @@ aliases: ['/products/tools/marketplace/guides/mean-stack/','/platform/marketplac
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 611895
+marketplace_app_name: "MEAN"
 ---
 
 A MEAN (MongoDB, Express, Angular, Node.js) stack is a free and open-source web software bundle used to build modern web applications:

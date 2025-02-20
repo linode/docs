@@ -14,6 +14,8 @@ aliases: ['/products/tools/marketplace/guides/mern-stack/','/platform/marketplac
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 401702
+marketplace_app_name: "MERN"
 ---
 
 A MERN (MongoDB, Express, React, Node.js) stack is a free and open-source web software bundle used to build modern web applications:
