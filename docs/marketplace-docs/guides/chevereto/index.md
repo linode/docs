@@ -12,6 +12,8 @@ aliases: ['/products/tools/marketplace/guides/chevereto/','/guides/deploying-che
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 869155
+marketplace_app_name: "Chevereto"
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
 Chevereto has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.

@@ -12,6 +12,8 @@ aliases: ['/products/tools/marketplace/guides/pritunl/','/guides/deploying-pritu
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 925722
+marketplace_app_name: "Pritunl"
 ---
 
 Pritunl is an open source VPN server and management panel. It gives the user the power of the OpenVPN protocol while using an intuitive web interface.

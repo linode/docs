@@ -11,6 +11,8 @@ aliases: ['/products/tools/marketplace/guides/filecloud/','/platform/marketplace
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 691620
+marketplace_app_name: "FileCloud Community"
 ---
 
 [FileCloud](https://www.filecloud.com/) is a cloud-based file-sharing application, similar to tools like Dropbox, that allows users to remotely access, upload, and sync hosted files.

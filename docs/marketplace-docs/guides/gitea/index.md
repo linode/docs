@@ -11,6 +11,8 @@ aliases: ['/products/tools/marketplace/guides/gitea/','/guides/deploy-gitea-with
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 688911
+marketplace_app_name: "Gitea"
 ---
 
 [Gitea](https://gitea.io/) is a community managed, painless, self-hosted Git service. Gitea is a complete solution for all aspects of your software development. At its core, Gitea serves as your centralized remote Git repository. Gitea also features built-in tools that represent every task in your development workflow, from planning to testing to releasing.

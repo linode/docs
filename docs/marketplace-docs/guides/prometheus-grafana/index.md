@@ -12,6 +12,8 @@ aliases: ['/products/tools/marketplace/guides/prometheus-grafana/','/products/to
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 985364
+marketplace_app_name: "Prometheus & Grafana"
 ---
 
 This Marketplace App installs both [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/oss/grafana/), two open source tools that are commonly used together to collect and view data.

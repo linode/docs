@@ -12,6 +12,8 @@ aliases: ['/products/tools/marketplace/guides/jitsi-cluster/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 1350733
+marketplace_app_name: "Jitsi Cluster"
 ---
 
 ## Cluster Deployment Architecture
