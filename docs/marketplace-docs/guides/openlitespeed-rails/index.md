@@ -11,6 +11,8 @@ aliases: ['/products/tools/marketplace/guides/openlitespeed-rails/','/guides/dep
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 923030
+marketplace_app_name: "OpenLiteSpeed Rails"
 ---
 
 The OpenLiteSpeed Rails app automatically installs the performance web server OpenLiteSpeed, Ruby, and Rails. OpenLiteSpeed features easy setup for SSL and RewriteRules. It is flexible and also supports Python and Node.js apps, as well as CMS software like WordPress.

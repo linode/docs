@@ -14,6 +14,8 @@ aliases: ['/products/tools/marketplace/guides/wireguard/','/platform/marketplace
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 401706
+marketplace_app_name: "WireGuard"
 ---
 
 WireGuard&#174; is a simple, fast, and modern virtual private network (VPN) which uses state-of-the-art cryptography. It aims to be faster and leaner than other VPN protocols such as OpenVPN and IPSec, and it has a much smaller source code footprint.

@@ -12,6 +12,8 @@ aliases: ['/products/tools/marketplace/guides/postgresql/','/platform/marketplac
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 611376
+marketplace_app_name: "PostgreSQL"
 ---
 
 The PostgreSQL relational database system is a powerful, scalable, and standards-compliant open-source database platform. It is designed to handle a range of workloads, from single machines to data warehouses or Web services with many concurrent users.
