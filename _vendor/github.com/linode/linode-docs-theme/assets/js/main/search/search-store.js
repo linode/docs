@@ -376,11 +376,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 
 		let hitsPerPage = 0;
 		let q = '';
-		// TODO(bep) we have removed the QA section from explorer/search, but the
-		// data is still there. The docType filter below can be remove when we have completed the migration.
-		let filters =
-			sectionConfig.filters ||
-			'NOT docType:community AND NOT docType:products AND NOT docType:api AND NOT docType:Marketplace';
+		let filters = sectionConfig.filters || '';
 		let facetFilters = [];
 		let attributesToHighlight = [];
 		let analyticsTags = [];
