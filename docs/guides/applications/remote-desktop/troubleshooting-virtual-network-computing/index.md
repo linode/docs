@@ -1,5 +1,5 @@
 ---
-slug: troubleshooting-virtual-network-connections
+slug: troubleshooting-virtual-network-computing
 title: "Troubleshooting Virtual Network Computing"
 title_meta: "How to Troubleshoot Virtual Network Computing"
 description: 'It is important to monitor all the network connections that are critical to your business. In this guide, you learn how to troubleshoot Virtual Network Computing for different operating systems.'
