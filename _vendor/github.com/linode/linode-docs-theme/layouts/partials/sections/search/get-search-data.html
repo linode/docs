@@ -1,5 +1,6 @@
 {{- $index := slice -}}
-{{- $pages := where .Site.Pages "Type" "not in"  (slice "page" "json" "api" "contributors" "testpages" "release-notes" ) -}}
+{{- $sectionNames := partial "sections/search/get-search-data-sectionnames.html" . }}
+{{- $pages := where .Site.Pages "Section" "in"  $sectionNames -}}
 {{- range $i, $p := $pages -}}
   {{- $shouldAdd := true }}
   {{- $thumb := partial "sections/search/get-search-data-thumb.html" (dict "page" .) -}}
