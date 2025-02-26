@@ -33,7 +33,7 @@
   <template x-if="visible">
     <div
       class="w-full border-2 large-diagram-animate on-load"
-      x-data="lnvSVGViewer({diagramDescriptionID: '{{ $diagramDescriptionID }}' })"
+      x-data="lnvSVGViewer({diagramDescriptionID: '{{ $diagramDescriptionID }}', svgHref: '{{ .image.RelPermalink }}'})"
       @dblclick="toggleModal()"
       @click.once="activate()">
       <div class="large-diagram-svg-modal-wrapper relative z-50">
@@ -70,9 +70,7 @@
         <div
           class="z-5 cursor-move {{ $aspectRatioClass }} grow overflow-hidden max-h-[80vh] p-4">
           <div class="large-diagram-svg-container w-full h-full">
-            <div class="svg-container w-full h-full">
-              {{ .image.Content | safeHTML }}
-            </div>
+            <div class="svg-container w-full h-full"></div>
           </div>
         </div>
         <button

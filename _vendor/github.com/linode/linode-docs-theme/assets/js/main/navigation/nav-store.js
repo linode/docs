@@ -48,7 +48,6 @@ export function newNavStore(searchConfig, searchStore, params, Alpine) {
 					return;
 				}
 				debug('toggleConsentDialog');
-				// TODO1 see https://github.com/linode/linode-docs-theme/issues/954 Cookie Consent Links
 				window.OneTrust.ToggleInfoDisplay();
 				event.preventDefault();
 			},

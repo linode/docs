@@ -62,8 +62,6 @@
 {{ end }}
 
 {{ $searchData := partialCached "sections/search/get-search-data.html" . -}}
-{{ $searchDataAPI := partialCached "sections/search/get-search-data-api.html" . -}}
-{{ $searchData = $searchData | append $searchDataAPI }}
 {{ $searchData = sort $searchData "section" }}
 {{ $currentSection := "" }}
 {{ $currentSectionData := slice }}
