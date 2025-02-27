@@ -4,5 +4,4 @@ description: 'Akamai Cloud's virtual machine offerings include options for Dedic
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/virtual-machines']
 show_on_frontpage: true
-
 ---
