@@ -11,13 +11,13 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 As more users subscribe to on-demand media streaming and engage with live streaming outside of broadcast television, both a larger quantity of and specialized resources are needed to support performance-critical media transcoding and adaptive streaming functionalities.
 
-Our set of Accelerated Compute Instances, featuring first-to-market NETINT Quadra T1U VPUs, adds to our media solutions that give media organizations a range of infrastructure options specifically optimized for media transcoding. Accelerated Compute Instances can help media providers optimize cloud spend and save on their media transcoding architectures. Compared to CPU-based transcoding, accelerated instances equipped with NETINT VPUs have reported 15-30x improved performance.
+Our set of Accelerated Compute Instances, featuring first-to-market NETINT Quadra T1U VPUs, adds to our media solutions that give media organizations a range of infrastructure options specifically optimized for media transcoding workloads. Accelerated Compute Instances can help media providers optimize cloud spend and save on their media transcoding architectures. Compared to transcoding on general-purpose CPUs, accelerated instances equipped with NETINT VPUs have reported 15-30x improved performance.
 
-This guide walks through the technology behind VPUs and compares VPU architecture to traditional CPU and GPU cloud offerings.
+This guide walks through the technology behind VPUs and compares VPU architecture to traditional central processing unit (CPU) and graphic processing unit (GPU) cloud offerings.
 
 ## What is a VPU?
 
-A video processing unit (VPU) is a type of application-specific integrated circuit (ASIC) that is specifically designed to optimize performance for digital media transcoding. Transcoding is the process of converting a media source into different file formats and resolutions to transmit the media’s data from one device (or origin) to another.
+A video processing unit (VPU) is a type of application-specific integrated circuit (ASIC) that is specifically designed to optimize performance for digital media transcoding. Transcoding is the process of converting a media source into different file formats and resolutions to transmit the media’s data from one device (or origin) to another. Aside from pure processing power, transcoding workloads require specialized hardware for maximum efficiency.
 
 As the media technology landscape has evolved, so has the software, tools, and algorithms used to transcode more efficiently for various devices and across different network bandwidths. The size of the media technology market, the variety of different applications, and expanding use cases now require specialized data center hardware to accompany software and other media hardware.
 
@@ -49,9 +49,9 @@ Advances in processor unit design and technology are generally defined by two pr
 
 Different raw materials and ratios of those materials are used to create circuits and other micro components of computer hardware to optimize for specific operations and functionalities. Each raw material (copper, silicon, nickel, etc.) serves a different purpose based on its natural properties and how that material responds to heat to create energy.
 
-For example, GPUs will have a higher quantity of copper than an external SSD storage device for power delivery and heatsinks to rapidly heat and cool their densely packed arithmetic logic units (ALUs). ASICs like VPUs will have a higher quantity of gold than a standard CPU or GPU to enhance the reliability of the fixed-function circuits to maximize hardware performance and efficiency for its designated specialization.
+For example, GPUs generally have a higher quantity of copper than an external SSD storage device for power delivery and heatsinks to rapidly heat and cool their densely packed arithmetic logic units (ALUs). ASICs like VPUs will have a higher quantity of gold than a standard CPU or GPU to enhance the reliability of the fixed-function circuits. This helps maximize hardware performance and efficiency for its designated specialization.
 
-The below diagram illustrates the quantity and ratio of different circuits and engines in a CPU vs. GPU vs. VPU. GPUs are designed to be extremely densely packed with ALUs for parallel processing, whereas VPUs have fixed-function circuits programmed to perform specific tasks very efficiently.
+The below diagram illustrates the quantity and ratio of different circuits and engines in a CPU vs. GPU vs. VPU. GPUs are designed to be extremely densely packed with ALUs for parallel processing (used for tasks like graphics rendering and machine learning), whereas VPUs have fixed-function circuits programmed to efficiently perform specific media-based tasks.
 
 [DIAGRAM]
 
@@ -63,7 +63,7 @@ The below diagram illustrates the quantity and ratio of different circuits and e
 
 - **Fixed Function Video Processing**: Circuits dedicated to performing specific, pre-defined tasks with hyper efficiency and low power consumption.
 
-- **AI Engine**: Digital circuit dedicated to AI tasks by maximizing matrix and vector processing.
+- **AI Engine**: Digital circuit dedicated to artificial intelligence (AI) tasks by maximizing matrix and vector processing.
 
 ## VPU Use Cases
 
@@ -71,9 +71,11 @@ Transcoding workflows often use large amounts of CPU processing that may be crit
 
 - **Media**: Transcoding for live streaming, video on-demand, and media SaaS.
 
-- **CCTV Video Surveillance**: Transcoding live video security monitoring for viewing across digital and IoT devices.
+- **CCTV Video Surveillance**: Transcoding real-time video security monitoring for viewing across digital and IoT devices.
 
 - **Gaming**: Transcoding for live user video and voice chat.
+
+- **AI**:
 
 ## Other Features and Benefits of VPUs
 
