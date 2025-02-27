@@ -1,7 +1,12 @@
 ---
-title: "Virtual Machines"
-description: "Akamai Cloud's virtual machine offerings include options for Dedicated, Shared, High Memory, and Premium CPU, as well as GPU and Accelerated CPU deployments."
+title:  Linode Platform
+description: 'Learn about everything Linode!'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/platform/virtual-machines']
+aliases: ['/platform/','/linode-platform/']
 show_on_frontpage: true
+weight: 30
+cascade:
+    weightAge: 0
+    weightSearchBoost: true
+icon: "cube"
 ---
