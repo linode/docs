@@ -2,7 +2,7 @@
 title: "Deploy MySQL/MariaDB through the Linode Marketplace"
 description: "This guide shows how to install and configure MySQL/MariaDB so you can run databases for anything from a CRM to WordPress by using the Linode One-Click Marketplace."
 published: 2020-03-13
-modified: 2022-03-08
+modified: 2025-02-28
 keywords: ['database','mysql','rdbms','relational database','mariadb']
 tags: ["database","cloud-manager","linode platform","mysql","marketplace","mariadb"]
 external_resources:
@@ -15,7 +15,7 @@ contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-MySQL is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. In Debian 9, MySQL is replaced with MariaDB as the default database system. MariaDB is an open-source, multi-threaded relational database management system, backward compatible replacement for MySQL. It is maintained and developed by the MariaDB Foundation.
+MySQL is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. This Marketplace app can deploy MySQL or MariaDB. MariaDB is an open-source, multi-threaded relational database management system, backward compatible replacement for MySQL. It is maintained and developed by the MariaDB Foundation.
 
 ## Deploying a Marketplace App
 
@@ -29,36 +29,37 @@ MySQL is an open-source database management system that uses a relational databa
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
-- **Recommended plan:** Depends on the size of your MySQL database and the amount of traffic you expect.
+- **Supported distributions:** Ubuntu 24.04 LTS
+- **Suggested plan:** All plan types and sizes can be used. We suggest using a [High Memory Compute Instance](https://www.linode.com/products/high-memory/) for larger databases in a production environment.
 
 ### MySQL/MariaDB Options
 
 - **MySQL or MariaDB** *(required)*: Select which database service you'd like to use.
-- **MySQL Root Password** *(required)*: The root password for your MySQL database.
-- **MySQL User** *(required)*: The user for your MySQLDB database.
-- **MySQL User Password** *(required)*: The user password for your MySQL database.
-- **Create Database** *(required)*: The database on your MySQL.
 
-{{% content "marketplace-limited-user-fields-shortguide" %}}
-
-{{% content "marketplace-custom-domain-fields-shortguide" %}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started after Deployment
 
-### Access MySQL/MariaDB
+### Obtain the Credentials
 
-After MySQL has finished installing, you will be able to access MySQL from the console via ssh with your Linode's IPv4 address:
+Once the app is deployed, you need to obtain the credentials from the server.
 
-1.  [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) and [create a limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
+To obtain credentials:
 
-1.  Log out and log back in as your limited user account.
+1.  Log in to your new Compute Instance using one of the methods below:
 
-1.  Update your server:
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
 
-        sudo apt-get update && apt-get upgrade
+1.  Run the following command to access the credentials file:
+
+    ```command
+    cat /home/$USERNAME/.credentials
+    ```
+
+This returns passwords that were automatically generated when the instance was deployed. Save them. Once saved, you can safely delete the file.
 
 ## Using MySQL/MariaDB
 
@@ -68,11 +69,9 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
 1.  To log in to MySQL as the root user:
 
-        sudo mysql -u root -p
+        sudo mysql -u root -p 
 
-1.  When prompted, enter the MySQL root password that you set when launching the Marketplace App. You'll then be presented with a welcome header and the MySQL prompt as shown below:
-
-        MariaDB [(none)]>
+1.  When prompted, enter the MySQL root password that was provided in the `/home/$USERNAME/.credentials` file. You'll then be presented with a welcome header and the MySQL prompt.
 
 1.  To generate a list of commands for the MySQL prompt, enter `\h`. You'll then see:
 
@@ -105,19 +104,9 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
         For server side help, type 'help contents'
 
-        MariaDB [(none)]>
-
-1.  Grant access to the database that you created when launching the Marketplace App for **MySQL User**. In this example, the database is called `webdata`, the user `webuser`, and password of the user is `password`. Be sure to enter your own password. This should be different from the root password for MySQL:
-
-        GRANT ALL ON webdata.* TO 'webuser' IDENTIFIED BY 'password';
-
-1.  To Exit MySQL/MariaDB type:
-
-        exit
-
 ### Create a Sample Table
 
-1.  Log back in as **MySQL User** that you set when launching the Marketplace App. In the following example the **MySQL User** is `webuser`.
+1.  Log back in as sudo user that you set when launching the Marketplace App. In the following example the sudo user is `webuser`.
 
         sudo mysql -u webuser -p
 
@@ -139,7 +128,6 @@ The standard tool for interacting with MySQL is the `mysql` client which install
         | first_name  | text    | YES  |     | NULL    |                |
         | last_name   | text    | YES  |     | NULL    |                |
         +-------------+---------+------+-----+---------+----------------+
-
 
 4. Then exit MySQL/MariaDB.
 
