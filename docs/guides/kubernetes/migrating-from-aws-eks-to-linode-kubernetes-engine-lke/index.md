@@ -12,83 +12,89 @@ external_resources:
 - '[Link Title 2](http://www.example.net)'
 ---
 
-This guide walks you through the process of migrating from AWS Elastic Kubernetes Engine (EKS) to Linode Kubernetes Engine (LKE). The example in this guide is a sample REST API service that is migrated from an AWS EKS cluster to an LKE cluster.
+This guide walks you through the process of migrating an application from Amazon Web Services (AWS) Elastic Kubernetes Service (EKS) to Linode Kubernetes Engine (LKE). To keep the scope of this guide manageable, the example application is a simple REST API service.
 
-## Prerequisites
+## Before You Begin
 
-To follow along in this walkthrough, you’ll need the following:
+1.  Read the [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and create a Linode account if you do not already have one.
 
--   A [Linode account](https://www.linode.com/cfe)
--   A [Linode API token (personal access token)](https://www.linode.com/docs/products/platform/accounts/guides/manage-api-tokens/)
--   The [Linode CLI](https://www.linode.com/docs/products/tools/cli/guides/install/) installed and configured
--   Access to your AWS account with sufficient permissions to work with EKS clusters
--   The [AWS CLI](https://aws.amazon.com/cli/) installed and configured
--   [`kubectl`](https://kubernetes.io/docs/tasks/tools/#kubectl) installed and configured
--   [`eksctl`](https://eksctl.io/) installed and configured
--   [`jq`](https://jqlang.github.io/jq/download/) installed and configured
--   [`yq`](https://github.com/mikefarah/yq) installed and configured
+1.  Create a personal access token using the instructions in the [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
 
-## Step 1: Connect `kubectl` to Your EKS Cluster
+1.  Install the Linode CLI using the instructions in the [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
 
-[Connect kubectl to the EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html) that you want to migrate. If your local machine already has a kubeconfig file with your EKS cluster information, then you can skip this step.
+1.  Follow the steps in the *Install `kubectl`* section of the [Getting started with LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#install-kubectl) guide to install `kubectl`.
 
-In the AWS console, navigate to the EKS service and find the name of your EKS cluster.
+1.  You must have access to your AWS account with sufficient permissions to work with EKS clusters. The [AWS CLI](https://aws.amazon.com/cli/) and [`eksctl`](https://eksctl.io/) must also be installed and configured.
 
-![](image1.png)
+1.  Install [`jq`](docs/guides/using-jq-to-process-json-on-the-command-line/#install-jq-with-package-managers), a lightweight command line JSON processor.
 
-In the example above, the cluster name is `wonderful-hideout-1734286097`. You also need to know the AWS region where your cluster resides. For this example (not shown in the screenshot), the region is `us-west-1`.
+1.  Install [`yq`](https://github.com/mikefarah/yq), a YAML processor for the command line.
 
-Use the AWS CLI to update your local kubeconfig file with your EKS cluster information:
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+{{< /note >}}
 
-```command
-aws eks update-kubeconfig \
-    --region us-west-1 \
-    --name wonderful-hideout-1734286097
-```
+## Connect `kubectl` to Your EKS Cluster
 
-```output
-Added new context arn:aws:eks:us-west-1:153917289119:cluster/wonderful-hideout-1734286097 to /home/user/.kube/config
- ```
+[Connect `kubectl` to the EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html) that you want to migrate. Skip this step if your local machine already has a `kubeconfig` file with your EKS cluster information.
 
-If your kubeconfig file has information from multiple clusters, use the following command to list the contexts that kubectl knows about:
+1.  In the AWS console, navigate to the EKS service and find the name of your EKS cluster:
 
-```command
-kubectl config get-contexts
-```
+    ![](image1.png)
 
-Find the name of the kubectl context pointing to your EKS cluster. Then, set the kubectl context to this cluster. For example:
+    In the screenshot above, the cluster name is `wonderful-hideout-1734286097`. You also need to know the AWS region where your cluster resides. For this example, the region is `us-west-1` (not shown).
 
-```commmand
-kubectl config use-context \
-    user@wonderful-hideout-1734286097.us-west-1.eksctl.io
-```
+1.  Use the AWS CLI to update your local `kubeconfig` file with your EKS cluster information:
 
-## Step 2: Assess Your EKS Cluster
+    ```command
+    aws eks update-kubeconfig \
+        --region us-west-1 \
+        --name wonderful-hideout-1734286097
+    ```
 
-Assuming you have set your kubectl context to the EKS cluster for migration, review your cluster status with the following command:
+    ```output
+    Added new context arn:aws:eks:us-west-1:153917289119:cluster/wonderful-hideout-1734286097 to /home/user/.kube/config
+    ```
 
-```command
-kubectl cluster-info
-```
+1.  If your `kubeconfig` file includes multiple clusters, use the following command to list the available contexts:
 
-```output
-Kubernetes control plane is running at https://35057E565F73FD2804B94EF5C9D24A34.yl4.us-west-1.eks.amazonaws.com
-CoreDNS is running at https://35057E565F73FD2804B94EF5C9D24A34.yl4.us-west-1.eks.amazonaws.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+    ```command
+    kubectl config get-contexts
+    ```
 
-To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
-```
+1.  Identify the context name for your EKS cluster, then set it to the active context, for example:
 
-For more detailed information at the command line, run this command:
+    ```commmand
+    kubectl config use-context \
+        user@wonderful-hideout-1734286097.us-west-1.eksctl.io
+    ```
 
-```command
-kubectl cluster-info dump
-```
+### Assess Your EKS Cluster
+
+1.  Run the following `kubectl` command to verify that the EKS cluster is operational:
+
+    ```command
+    kubectl cluster-info
+    ```
+
+    ```output
+    Kubernetes control plane is running at https://35057E565F73FD2804B94EF5C9D24A34.yl4.us-west-1.eks.amazonaws.com
+    CoreDNS is running at https://35057E565F73FD2804B94EF5C9D24A34.yl4.us-west-1.eks.amazonaws.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+    To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+    ```
+
+1.  For more detailed information, run this command:
+
+    ```command
+    kubectl cluster-info dump
+    ```
 
 ### Review the Node Group
 
 In AWS EKS, the node group defines the type of worker nodes in your EKS cluster. This is a key aspect of the migration process. In a production cluster, you may have multiple node groups with different node types.
 
-Kubernetes does not have a concept of a node group. However, because all the nodes in the same node group have the same configuration, inspecting just one of the nodes yields all the information needed for migration.
+While Kubernetes does not have a native concept of a node group, all the nodes within a given EKS node group share the same configuration. Therefore, inspecting a single node provides all the information needed for migration.
 
 ```command
 kubectl get nodes
@@ -96,8 +102,8 @@ kubectl get nodes
 
 ```output
 NAME                                          STATUS   ROLES    AGE   VERSION
-ip-192-168-31-10.us-west-1.compute.internal   Ready    \<none\>   24m   v1.30.7-eks-59bf375
-ip-192-168-36-4.us-west-1.compute.internal    Ready    \<none\>   24m   v1.30.7-eks-59bf375
+ip-192-168-31-10.us-west-1.compute.internal   Ready    <none>   24m   v1.30.7-eks-59bf375
+ip-192-168-36-4.us-west-1.compute.internal    Ready    <none>   24m   v1.30.7-eks-59bf375
 ```
 
 To retrieve the information about the first node listed, run the following command:
@@ -124,7 +130,7 @@ memory: 6.89 Gi
 
 ### Verify the Application Is Running
 
-An application—a [REST API service written in Go](https://github.com/linode/docs-cloud-projects/tree/main/demos/go-quote-service-main)—has been deployed to the example EKS cluster. This service allows you to add a quote (a string) to a stored list, or retrieve that list. The application has been deployed to the cluster, creating a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+For this guide, a [REST API service application written in Go](https://github.com/linode/docs-cloud-projects/tree/main/demos/go-quote-service-main) is deployed to the example EKS cluster. This service allows you to add a quote (a string) to a stored list, or to retrieve that list. The application has been deployed to the cluster, creating a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
 The manifest (`manifest.yaml`) for deploying this application is as follows:
 
@@ -194,54 +200,64 @@ spec:
           averageUtilization: 50
 ```
 
-To see these resources, run the following commands:
+1.  With the application deployed, run the following `kubectl` command to verify that the deployment is available:
 
-```command
-kubectl get deploy
-```
+    ```command
+    kubectl get deploy
+    ```
 
-```output
-NAME       READY   UP-TO-DATE   AVAILABLE   AGE
-go-quote   1/1     1            1           5m7s
-```
+    ```output
+    NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+    go-quote   1/1     1            1           5m7s
+    ```
 
-```command
-kubectl get svc
-```
+1.  Run the following `kubectl` command to retrieve the external IP address assigned to the service:
 
-```output
-NAME               TYPE           CLUSTER-IP       EXTERNAL-IP                                                              PORT(S)        AGE
-go-quote-service   LoadBalancer   10.100.215.161   a4da1d7958fa64559a460e2ae07b57e5-771162568.us-west-1.elb.amazonaws.com   80:30570/TCP   5m27s
-kubernetes         ClusterIP      10.100.0.1       <none>
-```
+    ```command
+    kubectl get svc
+    ```
 
-The service is a [LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer), which means it can be accessed from outside the cluster. Testing the publicly-available service yields the following results:
+    The service is a [LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer), which means it can be accessed from outside the cluster:
 
-```command
-curl -X POST \
-  --data '{"quote":"This is my first quote."}' \
-a4da1d7958fa64559a460e2ae07b57e5-771162568.us-west-1.elb.amazonaws.com/quotes
-```
+    ```output
+    NAME               TYPE           CLUSTER-IP       EXTERNAL-IP                                                              PORT(S)        AGE
+    go-quote-service   LoadBalancer   10.100.215.161   a4da1d7958fa64559a460e2ae07b57e5-771162568.us-west-1.elb.amazonaws.com   80:30570/TCP   5m27s
+    kubernetes         ClusterIP      10.100.0.1       <none>
+    ```
 
-```command
-curl -X POST \
-  --data '{"quote":"This is my second quote."}' \
-  a4da1d7958fa64559a460e2ae07b57e5-771162568.us-west-1.elb.amazonaws.com/quotes
-```
+1.  Test the service by adding a quote:
 
-```command
-curl a4da1d7958fa64559a460e2ae07b57e5-771162568.us-west-1.elb.amazonaws.com/quotes
-```
+    ```command
+    curl -X POST \
+      --data '{"quote":"This is my first quote."}' \
+      a4da1d7958fa64559a460e2ae07b57e5-771162568.us-west-1.elb.amazonaws.com/quotes
+    ```
 
-```output
-["This is my first quote.","This is my second quote."]
-```
+1.  Add a second quote:
+
+    ```command
+    curl -X POST \
+      --data '{"quote":"This is my second quote."}' \
+      a4da1d7958fa64559a460e2ae07b57e5-771162568.us-west-1.elb.amazonaws.com/quotes
+    ```
+
+1.  Now retrieve the stored quotes:
+
+    ```command
+    curl a4da1d7958fa64559a460e2ae07b57e5-771162568.us-west-1.elb.amazonaws.com/quotes
+    ```
+
+    This should yield the following result:
+
+    ```output
+    ["This is my first quote.","This is my second quote."]
+    ```
 
 After verifying that your EKS cluster is fully operational and running a live service, you are ready for migration.
 
-## Step 3: Provision an LKE cluster
+## Provision an LKE Cluster
 
-When migrating from EKS to LKE, provision an LKE cluster with similar resources to run the same workloads. While there are several ways to create a Kubernetes cluster on Linode, this guide uses the [Linode CLI](https://github.com/linode/linode-cli) to provision resources.
+When migrating from EKS to LKE, provision an LKE cluster with similar resources to run the same workloads. While there are several ways to create a Kubernetes cluster on Akamai Cloud, this guide uses the [Linode CLI](https://github.com/linode/linode-cli) to provision resources.
 
 1.  Use the Linode CLI (`linode`) to see available Kubernetes versions:
 
@@ -250,18 +266,18 @@ When migrating from EKS to LKE, provision an LKE cluster with similar resources 
     ```
 
     ```output
-    ┌───────┐
-    │ id    │
-    ├───────┤
-    │ 1.31  │
-    ├───────┤
-    │ 1.30  │
-    ├───────┤
-    │ 1.29  │
-    └───────┘
+    ┌──────┐
+    │ id   │
+    ├──────┤
+    │ 1.32 │
+    ├──────┤
+    │ 1.31 │
+    ├──────┤
+    │ 1.30 │
+    └──────┘
     ```
 
-    Unless specific requirements dictate otherwise, it’s generall|y recommended to provision the latest version of Kubernetes.
+    Unless specific requirements dictate otherwise, it’s generally recommended to provision the latest version of Kubernetes.
 
 1.  Determine the type of Linode to provision. The example EKS cluster configuration uses nodes with two CPUs and 8 GB of memory. To find a Linode type with a similar configuration, run the following command with the Linode CLI:
 
@@ -276,56 +292,41 @@ When migrating from EKS to LKE, provision an LKE cluster with similar resources 
       "id": "g6-standard-2",
       "vcpus": 2,
       "memory": 4096,
-      "price": {
-        "hourly": 0.036,
-        "monthly": 24
-      }
+      "price": { ... }
     }
     {
       "class": "highmem",
       "id": "g7-highmem-1",
       "vcpus": 2,
       "memory": 24576,
-      "price": {
-        "hourly": 0.09,
-        "monthly": 60
-      }
+      "price": { ... }
     }
     {
       "class": "highmem",
       "id": "g7-highmem-2",
       "vcpus": 2,
       "memory": 49152,
-      "price": {
-        "hourly": 0.18,
-        "monthly": 120
-      }
+      "price": { ... }
     }
     {
       "class": "dedicated",
       "id": "g6-dedicated-2",
       "vcpus": 2,
       "memory": 4096,
-      "price": {
-        "hourly": 0.054,
-        "monthly": 36
-      }
+      "price": { ... }
     }
     {
       "class": "premium",
       "id": "g7-premium-2",
       "vcpus": 2,
       "memory": 4096,
-      "price": {
-        "hourly": 0.0645,
-        "monthly": 43
-      }
+      "price": { ... }
     }
     ```
 
     See [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/) for more detailed pricing information.
 
-1.  The examples in this guide uses the **g6-standard-2** Linode, which features two CPU cores and 4 GB of memory. Run the following command to display detailed information in JSON for this Linode plan:
+1.  The examples in this guide uses the `g6-standard-2` Linode, which features two CPU cores and 4 GB of memory. Run the following command to display detailed information in JSON for this Linode plan:
 
     ```command
     linode linodes types --label "Linode 4GB" --json --pretty
@@ -334,7 +335,7 @@ When migrating from EKS to LKE, provision an LKE cluster with similar resources 
     ```output
     [
       {
-        "addons": {...},
+        "addons": { ... },
         "class": "standard",
         "disk": 81920,
         "gpus": 0,
@@ -342,11 +343,8 @@ When migrating from EKS to LKE, provision an LKE cluster with similar resources 
         "label": "Linode 4GB",
         "memory": 4096,
         "network_out": 4000,
-        "price": {
-          "hourly": 0.036,
-          "monthly": 24.0
-        },
-        "region_prices": [...],
+        "price": { ... },
+        "region_prices": [ ... ],
         "successor": null,
         "transfer": 4000,
         "vcpus": 2
@@ -354,22 +352,20 @@ When migrating from EKS to LKE, provision an LKE cluster with similar resources 
     ]
     ```
 
-1.  View available regions with the regions list command:
+1.  View available regions with the `regions list` command:
 
     ```command
     linode regions list
     ```
 
-1.  After selecting a Kubernetes version and Linode type, use the following command to create a cluster named `eks-to-lke` in the `us-lax` (Los Angeles, CA) region with three nodes and auto-scaling.
-
-    Replace `eks-to-lke` and `us-lax` with a cluster label and region of your choosing, respectively:
+1.  After selecting a Kubernetes version and Linode type, use the following command to create a cluster named `eks-to-lke` in the `us-mia` (Miami, FL) region with three nodes and auto-scaling. Replace `eks-to-lke` and `us-mia` with a cluster label and region of your choosing, respectively:
 
     ```command
     linode lke cluster-create \
       --label eks-to-lke \
-      --k8s\_version 1.31 \
-      --region us-lax \
-      --node\_pools '[{
+      --k8s_version 1.32 \
+      --region us-mia \
+      --node_pools '[{
         "type": "g6-standard-2",
         "count": 1,
         "autoscaler": {
@@ -383,17 +379,17 @@ When migrating from EKS to LKE, provision an LKE cluster with similar resources 
     After creating your cluster successfully, you should see output similar to the following:
 
     ```output
-    Using default values: {}; use the \--no-defaults flag to disable defaults
-    +------------------+--------+-------------+
-    |      label       | region | k8s\_version |
-    +------------------+--------+-------------+
-    | eks-to-lke       | us-lax |        1.31 |
-    +------------------+--------+-------------+
+    Using default values: {}; use the --no-defaults flag to disable defaults
+    ┌────────┬────────────┬────────┬─────────────┬──────────────────────────┬──────┐
+    │ id     │ label      │ region │ k8s_version │ control_plane.high_avai… │ tier │
+    ├────────┼────────────┼────────┼─────────────┼──────────────────────────┼──────┤
+    │ 343326 │ eks-to-lke │ us-mia │ 1.32        │ False                    │      │
+    └────────┴────────────┴────────┴─────────────┴──────────────────────────┴──────┘
     ```
 
-## Step 4: Access the Kubernetes Cluster
+## Access the Kubernetes Cluster
 
-To access your cluster, fetch the cluster credentials as a kubeconfig file.
+To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
 
 1.  Use the following command to retrieve the cluster’s ID:
 
@@ -419,10 +415,10 @@ To access your cluster, fetch the cluster credentials as a kubeconfig file.
 
     ```output
     NAME                            STATUS   ROLES    AGE   VERSION
-    lke289125-478490-4569f8b60000   Ready    <none>   85s   v1.31.0
+    lke289125-478490-4569f8b60000   Ready    <none>   85s   v1.32.0
     ```
 
-    One node is ready, and it uses Kubernetes version 1.31.
+    One node is ready, and it uses Kubernetes version 1.32.
 
 1.  Next, verify the cluster's health and readiness for application deployment.
 
@@ -431,52 +427,68 @@ To access your cluster, fetch the cluster credentials as a kubeconfig file.
     ```
 
     ```output
-    Kubernetes control plane is running at https://1a6a67c2-4c6f-4c75-a4ff-1fbef1be1807.us-lax-1.linodelke.net:443
-    KubeDNS is running at https://1a6a67c2-4c6f-4c75-a4ff-1fbef1be1807.us-lax-1.linodelke.net:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+    Kubernetes control plane is running at https://fa127859-38c1-4e40-971d-b5c7d5bd5e97.us-lax-2.linodelke.net:443
+    KubeDNS is running at https://fa127859-38c1-4e40-971d-b5c7d5bd5e97.us-lax-2.linodelke.net:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
 
-## Step 5: Migrate From AWS EKS to LKE on Linode
+## Migrate From AWS EKS to LKE
 
-In some cases, migrating Kubernetes applications requires an incremental approach because moving large, interconnected systems all at once isn’t practical. For example, imagine Service A interacts with other services: B, C, D. You might be able to migrate Service A and Service B together to LKE, where they can communicate efficiently. However, Services C and D may still rely heavily on AWS infrastructure or native services, making their migration more complex.
+In some cases, migrating Kubernetes applications requires an incremental approach, as moving large interconnected systems all at once isn’t always practical.
 
-In this scenario, you’d temporarily run Service A in both AWS EKS and LKE on Linode. Service A on LKE would interact with Service B there, while the version of Service A on AWS EKS continues communicating with Services C and D. This setup minimizes disruptions while you work through the complexities of migrating the remaining services to LKE. Although cross-cloud communication incurs higher latency and costs, this approach helps maintain functionality during the transition.
+For example, if **Service A** interacts with **Services B, C, and D**, you may be able to migrate **Services A and B** together to LKE, where they can communicate efficiently. However, **Services C and D** may still rely on AWS infrastructure or native services, making their migration more complex.
+
+In this scenario, you may need to temporarily run **Service A** in both AWS EKS and LKE. **Service A on LKE** would interact with **Service B on LKE**, while the version of **Service A on AWS EKS** continues communicating with **Services C and D**. This setup minimizes disruptions while you work through the complexities of migrating the remaining services to LKE. Although cross-cloud communication incurs higher latency and costs, this approach helps maintain functionality during the transition.
 
 This guide covers the key steps required to migrate the example application from EKS to LKE.
 
 ### Assess Current Workloads and Dependencies in AWS EKS
 
-Ensure that kubectl uses the original kubeconfig file with the EKS cluster context.
+Ensure that `kubectl` uses the original `kubeconfig` file with the EKS cluster context.
 
 ```command
 kubectl get all \
   --context user@wonderful-hideout-1734286097.us-west-1.eksctl.io
 ```
 
+The output shows the running pod and the one active replica set created by the deployment:
+
 ```output
-NAME                           READY   STATUS    RESTARTS   AGE pod/go-quote-c575f6ccb-tls9g   1/1     Running   0          170m NAME                       TYPE           CLUSTER-IP       EXTERNAL-IP                                                              PORT(S)        AGE service/go-quote-service   LoadBalancer   10.100.215.161   a4da1d7958fa64559a460e2ae07b57e5-771162568.us-west-1.elb.amazonaws.com   80:30570/TCP   170m service/kubernetes         ClusterIP      10.100.0.1       <none>                                                                   443/TCP        3h30m
+NAME                           READY   STATUS    RESTARTS   AGE
+pod/go-quote-c575f6ccb-tls9g   1/1     Running   0          170m
 
-NAME                       READY   UP-TO-DATE   AVAILABLE   AGE deployment.apps/go-quote   1/1     1            1           170m
+NAME                       TYPE           CLUSTER-IP       EXTERNAL-IP                                                              PORT(S)        AGE
+service/go-quote-service   LoadBalancer   10.100.215.161   a4da1d7958fa64559a460e2ae07b57e5-771162568.us-west-1.elb.amazonaws.com   80:30570/TCP   170m
+service/kubernetes         ClusterIP      10.100.0.1       <none>                                                                   443/TCP        3h30m
 
-NAME                                 DESIRED   CURRENT   READY   AGE replicaset.apps/go-quote-c575f6ccb   1         1         1       170m
+NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/go-quote   1/1     1            1           170m
 
-NAME                                               REFERENCE             TARGETS              MINPODS   MAXPODS   REPLICAS   AGE horizontalpodautoscaler.autoscaling/go-quote-hpa   Deployment/go-quote   cpu: <unknown>/50%   1         1         1          170m
+NAME                                 DESIRED   CURRENT   READY   AGE
+replicaset.apps/go-quote-c575f6ccb   1         1         1       170m
+
+NAME                                               REFERENCE             TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/go-quote-hpa   Deployment/go-quote   cpu: <unknown>/50%   1         1         1          170m
 ```
 
-The output shows the pod of the deployment and the one active replica set. These resources are derivatives of the deployment.
+{{< note >}}
+By default, `kubectl get all` only displays resources in the `default` namespace. If your workloads are deployed in a different namespace (recommended for production clusters), use:
 
-Note that this is all in the default namespace. If you deploy workloads to other namespaces (recommended for production-grade clusters), then you would need to check every namespace.
+```command
+kubectl get all --namespace={{< placeholder "YOUR_NAMESPACE" >}}
+```
+{{< /note >}}
 
 ### Export Kubernetes Manifests of AWS EKS
 
-There are many ways to specify the resources you want to deploy to Kubernetes, which include YAML manifests, Kustomize, and Helm charts. Store these in source control and apply them through a CI/CD pipeline. The guide uses plain YAML manifests for the example. Exporting these manifests means storing them as files in a git repository.
+There are multiple ways to define the resources you want to deploy to Kubernetes, including YAML manifests, Kustomize configurations, and Helm charts. For consistency and version control, store these in a git repository and deploy them via your CI/CD pipeline. The guide uses plain YAML manifests as the example.
 
-### Update Manifests for Compatibility With LKE on Linode
+### Update Manifests for Compatibility With LKE
 
-You may need to update your manifests to accommodate for differences between EKS and LKE. For example, your configuration on EKS may use the [AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/), which helps manage AWS Application Load Balancers (ALB) as Kubernetes [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resources. As an alternative to AWS ALBs when running LKE on Linode, you can [deploy a dedicated NGINX Ingress on LKE](https://www.linode.com/docs/guides/deploy-nginx-ingress-on-lke/).
+You may need to update your manifests to accommodate for differences between EKS and LKE. For example, your configuration on EKS may use the [AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/), which helps manage AWS Application Load Balancers (ALB) as Kubernetes [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resources. As an alternative to AWS ALBs, you can [deploy a dedicated NGINX Ingress on LKE](/docs/guides/deploy-nginx-ingress-on-lke/).
 
-The deployment image may point to AWS Elastic Container Registry (ECR). Modify this to point to an alternative registry. For example, the Deployment section of your application manifest may look like this:
+The deployment image may point to AWS Elastic Container Registry (ECR). Modify this to point to an alternative registry. For example, the `Deployment` section of your application manifest may look like this:
 
 ```file
 apiVersion: apps/v1
@@ -497,95 +509,113 @@ spec:
 The container image, pointing to AWS ECR, has the following format:
 
 ```command
-<aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repository_name>:<tag>
+{{< placeholder "AWS_ACCOUNT_ID" >}}.dkr.ecr.{{< placeholder "REGION" >}}.amazonaws.com/{{< placeholder "REPOSITORY_NAME" >}}:{{< placeholder "TAG" >}}
 ```
 
-When migrating away from AWS ECR, upload the container image to a different registry service (such as Docker Hub) or [Set Up a Docker Registry with LKE and Object Storage](https://www.linode.com/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/). Then, modify your Kubernetes manifest to point to the new location for your image.
+To migrate away from AWS ECR, upload the container image to another registry service (e.g. Docker Hub) or [Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/). Then, modify your Kubernetes manifest to point to the new location for your image.
 
-For the example service application in this guide, the image comes from Docker Hub; therefore, redirecting the registry is unnecessary.
+{{< note >}}
+Since the image for the example service application in this guide comes from Docker Hub, redirecting the registry is unnecessary.
+{{< /note >}}
 
 ### Transfer Persistent Data
 
-If the workload depends on persistent data in AWS S3 or a database, then transfer the data or make it available to LKE. The example application, with its in-memory configuration, does not rely on any persistent data.
+If the workload depends on persistent data in AWS S3 or a database, then transfer the data or make it available to LKE.
 
-### Deploy Workloads to LKE on Linode
+{{< note >}}
+The example application, with its in-memory configuration, does not rely on any persistent data.
+{{< /note >}}
 
-First, deploy your application to the newly created LKE cluster. Because you are switching back and forth between two different clusters, verify the current kubectl context to ensure you are pointing to the right kubeconfig file and cluster.
+### Deploy Workloads to LKE
 
-```command
-kubectl config current-context --kubeconfig ~/.kube/lke-config
-```
+Deploy your application to the newly created LKE cluster.
 
-```output
-lke289125-ctx
-```
+1.  Verify the current `kubectl` context to ensure you are pointing to the `kubeconfig` file for the LKE cluster.
 
-Apply the same manifest used to deploy your application to EKS, but this time on your LKE cluster:
+    ```command
+    kubectl config current-context --kubeconfig ~/.kube/lke-config
+    ```
 
-```command
-kubectl apply \
-  --kubeconfig ~/.kube/lke-config \
-  -f manifest.yaml
-```
+    ```output
+    lke289125-ctx
+    ```
 
-```output
-deployment.apps/go-quote created
-service/go-quote-service created
-horizontalpodautoscaler.autoscaling/go-quote-hpa created
-```
+1.  Apply the same `manifest.yaml` file used to deploy your application to EKS, but this time on your LKE cluster:
+
+    ```command
+    kubectl apply --kubeconfig ~/.kube/lke-config -f manifest.yaml
+    ```
+
+    ```output
+    deployment.apps/go-quote created
+    service/go-quote-service created
+    horizontalpodautoscaler.autoscaling/go-quote-hpa created
+    ```
 
 ### Validate Application Functionality
 
 Verify that the deployment and the service were created successfully.
 
-```command
-kubectl get deploy --kubeconfig ~/.kube/lke-config
-```
+1.  With the application deployed, run the following `kubectl` command to verify that the deployment is available:
 
-```output
-NAME       READY   UP-TO-DATE   AVAILABLE   AGE
-go-quote   1/1     1            1           108s
-```
+    ```command
+    kubectl get deploy --kubeconfig ~/.kube/lke-config
+    ```
 
-```command
-kubectl get service --kubeconfig ~/.kube/lke-config
-```
+    ```output
+    NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+    go-quote   1/1     1            1           108s
+    ```
 
-```output
-NAME               TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
-go-quote-service   LoadBalancer   10.128.183.194   172.235.44.28   80:30407/TCP   117s
-kubernetes         ClusterIP      10.128.0.1       <none>          443/TCP        157m
-```
+1.  Run the following `kubectl` command to retrieve the external IP address assigned to the service:
 
-The service exposes a public IP address to the REST API service (in this example, it is `172.235.44.28`).
+    ```command
+    kubectl get service --kubeconfig ~/.kube/lke-config
+    ```
 
-```command
-curl -X POST \
-  --data '{"quote":"This is my first quote for LKE."}' \
-  172.235.44.28/quotes
-```
+    The service exposes a public IP address to the REST API service (e.g. `172.235.44.28`).
 
-```command
-curl -X POST \
-  --data '{"quote":"This is my second quote for LKE."}' \
-  172.235.44.28/quotes
-```
+    ```output
+    NAME               TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
+    go-quote-service   LoadBalancer   10.128.183.194   172.235.44.28   80:30407/TCP   117s
+    kubernetes         ClusterIP      10.128.0.1       <none>          443/TCP        157m
+    ```
 
-```command
-curl 172.235.44.28/quotes
-```
+1.  Test the service by adding a quote:
 
-```output
-["This is my first quote for LKE.","This is my second quote for LKE."]
-```
+    ```command
+    curl -X POST \
+      --data '{"quote":"This is my first quote for LKE."}' \
+      {{< placeholder "IP_ADDRESS" >}}/quotes
+    ```
 
-The REST API service is up and running on LKE. Find any services dependent on the EKS cluster deployment and point them to the LKE cluster deployment instead. After testing and verifying the application running on LKE, you can terminate the EKS cluster.
+1.  Add a second quote:
+
+    ```command
+    curl -X POST \
+      --data '{"quote":"This is my second quote for LKE."}' \
+      {{< placeholder "IP_ADDRESS" >}}/quotes
+    ```
+
+1.  Now retrieve the stored quotes:
+
+    ```command
+    curl {{< placeholder "IP_ADDRESS" >}}/quotes
+    ```
+
+    ```output
+    ["This is my first quote for LKE.","This is my second quote for LKE."]
+    ```
+
+The REST API service is up and running on LKE. Point any services dependent on the EKS cluster deployment to the LKE cluster deployment instead. After testing and verifying the application running on LKE, you can terminate the EKS cluster.
 
 ## Additional Considerations and Concerns
 
+When migrating from AWS EKS to LKE, there are several important factors to keep in mind, including cost management, data persistence, networking, security, and alternative solutions for cloud-specific services.
+
 ### Cost Management
 
-Cost reduction is one reason an organization might migrate from AWS EKS to LKE on Linode. Typically, the compute cost of Kubernetes is the primary driver for migration. Use kubectl to find the instance type and capacity type for your AWS EKS instance.
+Cost reduction is one reason an organization might migrate from AWS EKS to LKE. Typically, the compute cost of Kubernetes is the primary driver for migration. Use `kubectl` to find the instance type and capacity type for your AWS EKS instance.
 
 ```command
 kubectl get node ip-192-168-31-10.us-west-1.compute.internal \
@@ -598,15 +628,15 @@ kubectl get node ip-192-168-31-10.us-west-1.compute.internal \
 eks.amazonaws.com/capacityType: ON_DEMAND node.kubernetes.io/instance-type: m5.large
 ```
 
-Reference the [AWS pricing page for EC2 On-Demand Instances](https://aws.amazon.com/ec2/pricing/on-demand/) to find the cost for your EKS instance. Compare this with the cost of an Linode instance with comparable resources by examining the [Linode pricing page](https://www.linode.com/pricing/).
+Reference the [AWS pricing page for EC2 On-Demand Instances](https://aws.amazon.com/ec2/pricing/on-demand/) to find the cost for your EKS instance. Compare this with the cost of a Linode instance with comparable resources by examining the [Linode pricing page](https://www.linode.com/pricing/).
 
-Applications with a lot of data egress can also be impacted significantly by egress costs. Consider the typical networking usage of applications running on your EKS cluster, and determine your [data transfer costs with AWS.](https://aws.amazon.com/ec2/pricing/on-demand/#Data_Transfer) Compare this with data transfer numbers allocated to your Linode.
+Additionally, applications with substantial data egress can be significantly impacted by egress costs. Consider the typical networking usage of applications running on your EKS cluster, and determine your [data transfer costs with AWS](https://aws.amazon.com/ec2/pricing/on-demand/#Data_Transfer). Compare this with data transfer limits allocated to your LKE nodes.
 
-### Data persistence and storage
+### Data Persistence and Storage
 
-Cloud-native workloads are ephemeral. As a container orchestration platform, Kubernetes is designed to ensure your pods are up and running and autoscaling to handle demand. However, it’s important to handle persistent data carefully. If you are in a position to impose a large maintenance window with system downtime, then migrating data will be simpler.
+Cloud-native workloads are ephemeral. As a container orchestration platform, Kubernetes is designed to ensure your pods are up and running, with autoscaling to handle demand. However, it’s important to handle persistent data carefully. If you are in a position to impose a large maintenance window with system downtime, migrating data should be far simpler.
 
-However, if you need to perform a live migration with minimal downtime, you must develop proper migration procedures and test them before trying them on your production environment. This may include:
+Should you need to perform a live migration with minimal downtime, you must develop proper migration procedures and test them in a non-production environment. This may include:
 
 -   Parallel storage and databases on both clouds
 -   Cross-cloud replication between storage and databases
@@ -617,47 +647,47 @@ However, if you need to perform a live migration with minimal downtime, you must
 
 ### Advanced Network Configuration
 
-The AWS network model includes virtual private clouds (VPCs), virtual private networks (VPNs), and different types of load balancers. Linode and LKE provide [NodeBalancers](https://www.linode.com/products/nodebalancers/), equivalent to application load balancers. If you use advanced features of AWS networking, then you may need to perform some non-trivial work mapping them to Linode networking.
+The AWS network model includes virtual private clouds (VPCs), virtual private networks (VPNs), and different types of load balancers. For LKE, Akamai Cloud provides [NodeBalancers](https://www.linode.com/products/nodebalancers/), which are equivalent to application load balancers. If you use advanced features of AWS networking, adapting them to Akamai Cloud networking may require significant configuration changes.
 
 For network security, you may need to port AWS security group rules into [Kubernetes Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/) on LKE.
 
 ### Security and Access Management
 
-AWS EKS integrates AWS IAM with Kubernetes access. On LKE with Linode, you use standard Kubernetes user and service accounts, as well as [Kubernetes role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
+AWS EKS integrates AWS Identity and Access Management (IAM) with Kubernetes access. LKE uses standard Kubernetes user and service accounts, as well as [Kubernetes role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
 ### DNS
 
-If you use an independent DNS provider—such as Cloudflare—for your application, then you need to update various DNS records to point to LKE endpoints and NodeBalancers instead of AWS endpoints.
+If you use an independent DNS provider (e.g. Cloudflare) for your application, you must update various DNS records to point to LKE endpoints and NodeBalancers instead of AWS endpoints.
 
-If you use Route53, the DNS service from AWS, and plan to migrate away from it, reference [Linode’s DNS manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) as a migration option.
+If you use Route53, the AWS DNS service, and plan to migrate away from it, reference [Linode’s DNS manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) as a migration option.
 
 ### Alternative to AWS Elastic Container Registry (ECR)
 
-LKE on Linode doesn't have its own container registry. However, if you need to migrate away from AWS ECR, you can set up a third-party private container registry, such as [Docker Hub](https://hub.docker.com/) or [GitHub Container Registry](https://github.blog/news-insights/product-news/introducing-github-container-registry/).
+LKE doesn't have its own container registry. To migrate away from AWS ECR, set up a third-party private container registry, such as [Docker Hub](https://hub.docker.com/) or [GitHub Container Registry](https://github.blog/news-insights/product-news/introducing-github-container-registry/).
 
-Another option is to set up your container registry. See [How to Set Up a Docker Registry with LKE and Object Storage](https://www.linode.com/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/).
+Alternatively, you can set up your own container registry, see [How to Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/) for instructions.
 
 ### Alternative to AWS CloudWatch
 
-For Kubernetes cluster observability, AWS provides its CloudWatch service. With Linode, you can install an alternative observability solution on LKE. One example of such a solution is [The Observability Stack (TOBS)](https://github.com/timescale/tobs), which includes:
+AWS provides CloudWatch for Kubernetes cluster observability. With Akamai Cloud, you can install an alternative observability solution on LKE. One example of such a solution is [The Observability Stack (TOBS)](https://github.com/timescale/tobs), which includes:
 
 -   Kube-Prometheus
     -   Prometheus
     -   AlertManager
     -   Grafana
-    -    Node-Exporter
-    -    Kube-State-Metrics
-    -    Prometheus-Operator
+    -   Node-Exporter
+    -   Kube-State-Metrics
+    -   Prometheus-Operator
 -   Promscale
 -   TimescaleDB
     -   Postgres-Exporter
 -   OpenTelemetry-Operator
 
-See [How to Deploy TOBS (The Observability Stack) on LKE](https://www.linode.com/docs/guides/deploy-tobs-on-linode-kubernetes-engine/) for more information.
+See [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-tobs-on-linode-kubernetes-engine/) for more information.
 
 ### Alternative to AWS Secrets Manager
 
-The AWS Secrets Manager can be leveraged to provide Kubernetes secrets on EKS. With LKE on Linode, you need another solution. Consider migrating to OpenBao on Linode.
+The AWS Secrets Manager can be leveraged to provide Kubernetes secrets on EKS. With LKE, you need an alternative solution, such as OpenBao on Akamai Cloud.
 
 ## Resources
 
@@ -666,8 +696,8 @@ The AWS Secrets Manager can be leveraged to provide Kubernetes secrets on EKS. W
     -   [Connecting kubectl to an EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html)
 -   Linode
     -   [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/)
-    -   [LKE Documentation](https://www.linode.com/docs/guides/kubernetes-on-linode/)
+    -   [LKE Documentation](/docs/guides/kubernetes-on-linode/)
     -   [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager)
 -   Setting up other technologies to run on Linode
-    -   [How to Set Up a Docker Registry with LKE and Object Storage](https://www.linode.com/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)
-    -   [How to Deploy TOBS (The Observability Stack) on LKE](https://www.linode.com/docs/guides/deploy-tobs-on-linode-kubernetes-engine/)
+    -   [How to Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)
+    -   [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-tobs-on-linode-kubernetes-engine/)

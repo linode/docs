@@ -12,350 +12,708 @@ external_resources:
 - '[Link Title 2](http://www.example.net)'
 ---
 
-This guide will walk you through the process of migrating an application from Oracle Kubernetes Engine (OKE) to Linode Kubernetes Engine (LKE). To keep the scope of this guide manageable while still covering all the key aspects involved, the example in this guide will be a simple REST API service.
+This guide walks you through the process of migrating an application from Oracle Cloud Infrastructure (OCI) Oracle Kubernetes Engine (OKE) to Linode Kubernetes Engine (LKE). To keep the scope of this guide manageable, the example application is a simple REST API service.
 
-## Prerequisites
+## Before You Begin
 
-To follow along in this walkthrough, you’ll need the following:
+1.  Read the [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and create a Linode account if you do not already have one.
 
-* A [Linode account](https://www.linode.com/cfe)
-* A [Linode API token (personal access token)](https://www.linode.com/docs/products/platform/accounts/guides/manage-api-tokens/)
-* The [Linode CLI](https://www.linode.com/docs/products/tools/cli/guides/install/) installed and configured
-* Access to your [Oracle Cloud account](https://cloud.oracle.com) with sufficient permissions to work with OKE clusters
-* The [OCI CLI](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm) installed and configured
-* [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) installed and configured
-* [jq](https://jqlang.github.io/jq/download/) installed and configured
-* [yq](https://github.com/mikefarah/yq) installed and configured
+1.  Create a personal access token using the instructions in the [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
 
-## Step 1: Connect kubectl to your OKE cluster
+1.  Install the Linode CLI using the instructions in the [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
 
-[Connect kubectl to the OKE cluster](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengdownloadkubeconfigfile.htm#localdownload) that you want to migrate. If your local machine already has a kubeconfig file with your OKE cluster information, then you can skip this step.
+1.  Follow the steps in the *Install `kubectl`* section of the [Getting started with LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#install-kubectl) guide to install `kubectl`.
 
-In the Oracle Cloud console, search for the **Kubernetes Clusters (OKE)** service.
+1.  You must have access to your Oracle Cloud account with sufficient permissions to work with OKE clusters. The [OCI CLI](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm) must also be installed and configured
 
-![][image2]
+1.  Install [`jq`](docs/guides/using-jq-to-process-json-on-the-command-line/#install-jq-with-package-managers), a lightweight command line JSON processor.
 
-On the page listing all of your OKE clusters, find the cluster you want to migrate. Click on it.
+1.  Install [`yq`](https://github.com/mikefarah/yq), a YAML processor for the command line.
 
-![][image3]
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+{{< /note >}}
 
-On the cluster details page, find the Cluster Id and copy it.
+## Connect `kubectl` to Your OKE Cluster
 
-![][image4]
+[Connect `kubectl` to the OKE cluster](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengdownloadkubeconfigfile.htm#localdownload) that you want to migrate. Skip this step if your local machine already has a `kubeconfig` file with your OKE cluster information.
 
-Note also the region where your cluster has been provisioned. Click on the region in the top-right part of the page. Then, navigate to **Manage regions**.
+1.  In the Oracle Cloud console, search for the **Kubernetes Clusters (OKE)** service:
 
-![][image5]
+    ![](image2.png)
 
-In the list of regions available, find the region identifier for your home region.
+1.  On the page listing all of your OKE clusters, select the cluster you want to migrate:
 
-![][image6]
+    ![](image10.png)
 
-In the example for this guide, the cluster name is my-oke-cluster, and the cluster ID is ocid1.cluster.oc1.phx.aaaaaaaa5spjobcrfpqy5p2uosdjzvmatj3kw2tsmdrl3447fcmux6nk5oza. The cluster location is us-phoenix-1.
+1.  Find the **Cluster Id** on the cluster details page, then copy it:
 
-Use the Oracle CLI to update your local kubeconfig file with your OKE cluster information:
+    ![](image6.png)
 
-| $ oci ce cluster create-kubeconfig \\     \--cluster-id ocid1.cluster.oc1.phx.aaaaaaaa5spjobcrfpqy5p2uosdjzvmatj3kw2tsmdrl3447fcmux6nk5oza \\     \--file $HOME/.kube/config  \\     \--region us-phoenix-1 \\     \--token-version 2.0.0 \\     \--kube-endpoint PUBLIC\_ENDPOINT New config written to the Kubeconfig file /home/user/.kube/config |
-| :---- |
+1.  Also note the **region** where your cluster has been provisioned. Click on the **region** in the top-right part of the page, then navigate to **Manage regions**:
 
-If your kubeconfig file has information from multiple clusters, use the following command to list the contexts that kubectl knows about:
+    ![](image8.png)
 
-| $ kubectl config get-contexts |
-| :---- |
+1.  In the list of regions available, find the region identifier for your home region:
 
-Find the name of the kubectl context pointing to your OKE cluster. Then, set the kubectl context to this cluster. For example:
+    ![](image1.png)
 
-| $ kubectl config use-context context-cmux6nk5oza |
-| :---- |
+    In the example for this guide, the cluster name is `my-oke-cluster`, and the cluster ID is `ocid1.cluster.oc1.phx.aaaaaaaa5spjobcrfpqy5p2uosdjzvmatj3kw2tsmdrl3447fcmux6nk5oza`. The cluster location is `us-phoenix-1`.
 
-## Step 2: Assess your OKE cluster
+1.  Use the Oracle CLI to update your local `kubeconfig` file with your OKE cluster information:
 
-Assuming you have set your kubectl context to the OKE cluster for migration, review your cluster status with the following command:
+    ```command
+    oci ce cluster create-kubeconfig \
+      --cluster-id ocid1.cluster.oc1.phx.aaaaaaaa5spjobcrfpqy5p2uosdjzvmatj3kw2tsmdrl3447fcmux6nk5oza \
+      --file $HOME/.kube/config  \
+      --region us-phoenix-1 \
+      --token-version 2.0.0 \
+      --kube-endpoint PUBLIC_ENDPOINT
+    ```
 
-| $ kubectl cluster-info Kubernetes control plane is running at https://129.153.124.158:6443 CoreDNS is running at https://129.153.124.158:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'. |
-| :---- |
+    ```output
+    New config written to the Kubeconfig file /home/user/.kube/config
+    ```
 
-For more detailed information at the command line, run this command:
+1.  If your `kubeconfig` file includes multiple clusters, use the following command to list the available contexts:
 
-| $ kubectl cluster-info dump |
-| :---- |
+    ```command
+    kubectl config get-contexts
+    ```
 
+1.  Identify the context name for your OKE cluster, then set it to the active context, for example:
+
+    ```command
+    kubectl config use-context context-cmux6nk5oza
+    ```
+
+### Assess Your OKE Cluster
+
+1.  Run the following `kubectl` command to verify that the OKE cluster is operational:
+
+    ```command
+    kubectl cluster-info
+    ```
+
+    ```output
+    Kubernetes control plane is running at https://129.153.124.158:6443
+    CoreDNS is running at https://129.153.124.158:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+    To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+    ```
+
+1.  For more detailed information at the command line, run this command:
+
+    ```command
+    kubectl cluster-info dump
+    ```
+
+{{< note >}}
 Detailed information about your cluster is also available in the Oracle Cloud console.
 
-![][image7]
+![](image7.png)
+{{< /note >}}
 
-### Review the node
+### Review the Node
 
 Retrieve the name of the first (and only) node with the following command:
 
-| $ kubectl get nodes NAME         STATUS   ROLES   AGE   VERSION 10.0.10.54   Ready    node    7h    v1.31.1 |
-| :---- |
+```command
+kubectl get nodes
+```
+
+```output
+NAME         STATUS   ROLES   AGE   VERSION
+10.0.10.54   Ready    node    7h    v1.31.1
+```
 
 To retrieve more information about this node, run the following command:
 
-| $ kubectl get node 10.0.10.54 \-o yaml |
-| :---- |
+```command
+kubectl get node 10.0.10.54 -o yaml
+```
 
 The above command retrieves all the information about the node in YAML format. Run the previous command through a pipe to filter for specific fields, such as allocatable CPU and memory.
 
-| $ kubectl get node 10.0.10.54 \-o yaml \\     | yq '.status.allocatable | {"cpu": .cpu, "memory": .memory}' \\     | awk \-F': ' ' /cpu/ {cpu=$2} /memory/ {mem=$2} \\         END {printf "cpu: %s\\nmemory: %.2f Gi\\n", cpu, mem / 1024 / 1024}'  cpu: 1830m memory: 3.34 Gi |
-| :---- |
+```command
+kubectl get node 10.0.10.54 -o yaml \
+  | yq '.status.allocatable | {"cpu": .cpu, "memory": .memory}' \
+  | awk -F': ' ' /cpu/ {cpu=$2} /memory/ {mem=$2} \
+      END {printf "cpu: %s\nmemory: %.2f Gi\n", cpu, mem / 1024 / 1024}'
+```
 
-### Deploy an application, verify it is running
+```output
+cpu: 1830m
+memory: 3.34 Gi
+```
 
-For this guide, a [REST API service application written in Go](https://github.com/linode/docs-cloud-projects/tree/main/demos/go-quote-service-main) was deployed to the example OKE cluster. This service allows you to add a quote (a string) to a stored list, or retrieve that list. Deploying the application creates a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+### Verify the Application Is Running
 
-The manifest (manifest.yaml) for deploying this application is as follows:
+For this guide, a [REST API service application written in Go](https://github.com/linode/docs-cloud-projects/tree/main/demos/go-quote-service-main) is deployed to the example OKE cluster. This service allows you to add a quote (a string) to a stored list, or to retrieve that list. Deploying the application creates a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
-| apiVersion: apps/v1kind: Deploymentmetadata:  name: go-quote  labels:    app: go-quotespec:  replicas: 1  selector:    matchLabels:      app: go-quote  template:    metadata:      labels:        app: go-quote    spec:      containers:        \- name: go-quote          image: linodedocsg1g1/go-quote-service:latest          ports:            \- containerPort: 7777          resources:            requests:              cpu: "100m"              memory: "128Mi"            limits:              cpu: "250m"              memory: "256Mi"\---apiVersion: v1kind: Servicemetadata:  name: go-quote-service  labels:    app: go-quotespec:  type: LoadBalancer  ports:    \- port: 80      targetPort: 7777  selector:    app: go-quote\---apiVersion: autoscaling/v2kind: HorizontalPodAutoscalermetadata:  name: go-quote-hpa  labels:    app: go-quotespec:  scaleTargetRef:    apiVersion: apps/v1    kind: Deployment    name: go-quote  minReplicas: 1  maxReplicas: 1  metrics:    \- type: Resource      resource:        name: cpu        target:          type: Utilization          averageUtilization: 50 |
-| :---- |
+The manifest (`manifest.yaml`) for deploying this application is as follows:
 
-With the application deployed, running the following commands will show the newly provisioned resources:
+```file {title="manifest.yaml" lang="yaml"}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-quote
+  labels:
+    app: go-quote
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-quote
+  template:
+    metadata:
+      labels:
+        app: go-quote
+    spec:
+      containers:
+        - name: go-quote
+          image: linodedocsg1g1/go-quote-service:latest
+          ports:
+            - containerPort: 7777
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-quote-service
+  labels:
+    app: go-quote
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 7777
+  selector:
+    app: go-quote
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: go-quote-hpa
+  labels:
+    app: go-quote
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: go-quote
+  minReplicas: 1
+  maxReplicas: 1
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+```
 
-| $ kubectl get deployNAME       READY   UP-TO-DATE   AVAILABLE   AGEgo-quote   1/1     1            1           9s$ kubectl get servicesNAME               TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE go-quote-service   LoadBalancer   10.96.185.11     152.70.128.150   80:30972/TCP       41s kubernetes         ClusterIP      10.96.0.1        \<none\>          443/TCP,12250/TCP  29m |
-| :---- |
+1.  With the application deployed, run the following `kubectl` command to verify that the deployment is available:
 
-The service is a [LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer), which means it can be accessed from outside the cluster. Testing the publicly-available service using the external IP yields the following results:
+    ```command
+    kubectl get deploy
+    ```
 
-| $ curl \-X POST \\    \--data '{"quote":"This is my first quote."}' \\    152.70.128.150/quotes$ curl \-X POST \\    \--data '{"quote":"This is my second quote."}' \\    152.70.128.150/quotes$ curl 152.70.128.150/quotes  \["This is my first quote.","This is my second quote."\] |
-| :---- |
+    ```output
+    NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+    go-quote   1/1     1            1           9s
+    ```
+
+1.  Run the following `kubectl` command to retrieve the external IP address assigned to the service:
+
+    ```command
+    kubectl get services
+    ```
+
+    The service is a [LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer), which means it can be accessed from outside the cluster:
+
+    ```output
+    NAME               TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
+    go-quote-service   LoadBalancer   10.96.185.11     152.70.128.150   80:30972/TCP       41s
+    kubernetes         ClusterIP      10.96.0.1        <none>          443/TCP,12250/TCP  29m
+    ```
+
+1.  Test the service by adding a quote:
+
+    ```command
+    curl -X POST \
+      --data '{"quote":"This is my first quote."}' \
+      {{< placeholder "IP_ADDRESS" >}}/quotes
+    ```
+
+1.  Add a second quote:
+
+    ```command
+    curl -X POST \
+      --data '{"quote":"This is my second quote."}' \
+      {{< placeholder "IP_ADDRESS" >}}/quotes
+    ```
+
+1.  Now retrieve the stored quotes:
+
+    ```command
+    curl {{< placeholder "IP_ADDRESS" >}}/quotes
+    ```
+
+    This should yield the following result:
+
+    ```output
+    ["This is my first quote.","This is my second quote."]
+    ```
 
 After verifying that your OKE cluster is fully operational and running a live service, you are ready for migration.
 
-## Step 3: Provision an LKE cluster
+## Provision an LKE Cluster
 
-When migrating from OKE to LKE, provision an LKE cluster with similar resources to run the same workloads. While there are several ways to create a Kubernetes cluster on Linode, this guide uses the [Linode CLI](https://github.com/linode/linode-cli) to provision resources.
+When migrating from OKE to LKE, provision an LKE cluster with similar resources to run the same workloads. While there are several ways to create a Kubernetes cluster on Akamai Cloud, this guide uses the [Linode CLI](https://github.com/linode/linode-cli) to provision resources.
 
-1. Use the Linode CLI (linode) to see available Kubernetes versions:
+1.  Use the Linode CLI (`linode`) to see available Kubernetes versions:
 
-| $ linode lke versions-list  ┌───────┐ │ id      │ ├───────┤ │ 1.31    │ ├───────┤ │ 1.30    │ └───────┘ |
-| :---- |
+    ```command
+    linode lke versions-list
+    ```
 
-Unless specific requirements dictate otherwise, it’s generally recommended to provision the latest version of Kubernetes.
+    ```output
+    ┌──────┐
+    │ id   │
+    ├──────┤
+    │ 1.32 │
+    ├──────┤
+    │ 1.31 │
+    ├──────┤
+    │ 1.30 │
+    └──────┘
+    ```
 
-2\. Determine the type of Linode to provision. The example OKE cluster configuration uses nodes with one CPU and 4 GB of memory. To find a Linode type with a similar configuration, run the following command with the Linode CLI:
+    Unless specific requirements dictate otherwise, it’s generally recommended to provision the latest version of Kubernetes.
 
-| $ linode linodes types \--vcpus 2 \--json \--pretty \\     | jq '.\[\] | {class, id, vcpus, memory, price}' {   "class": "standard",   "id": "g6-standard-2",   "vcpus": 2,   "memory": 4096,   "price": {     "hourly": 0.036,     "monthly": 24   } } {   "class": "highmem",   "id": "g7-highmem-1",   "vcpus": 2,   "memory": 24576,   "price": {     "hourly": 0.09,     "monthly": 60   } } {   "class": "highmem",   "id": "g7-highmem-2",   "vcpus": 2,   "memory": 49152,   "price": {     "hourly": 0.18,     "monthly": 120   } } {   "class": "dedicated",   "id": "g6-dedicated-2",   "vcpus": 2,   "memory": 4096,   "price": {     "hourly": 0.054,     "monthly": 36   } } {   "class": "premium",   "id": "g7-premium-2",   "vcpus": 2,   "memory": 4096,   "price": {     "hourly": 0.0645,     "monthly": 43   } } |
-| :---- |
+1.  Determine the type of Linode to provision. The example OKE cluster configuration uses nodes with one CPU and 4 GB of memory. To find a Linode type with a similar configuration, run the following command with the Linode CLI:
 
-See [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/) for more detailed pricing information.
+    ```command
+    linode linodes types --vcpus 1 --json --pretty \
+      | jq '.[] | {class, id, vcpus, memory, price}'
+    ```
 
-3\. The examples in this guide will use the **g6-standard-2** Linode, which features two CPU cores and 4 GB of memory. Run the following command to display detailed information in JSON for this Linode plan:
+    ```output
+    {
+      "class": "standard",
+      "id": "g6-standard-2",
+      "vcpus": 2,
+      "memory": 4096,
+      "price": { ... }
+    }
+    {
+      "class": "highmem",
+      "id": "g7-highmem-1",
+      "vcpus": 2,
+      "memory": 24576,
+      "price": { ... }
+    }
+    {
+      "class": "highmem",
+      "id": "g7-highmem-2",
+      "vcpus": 2,
+      "memory": 49152,
+      "price": { ... }
+    }
+    {
+      "class": "dedicated",
+      "id": "g6-dedicated-2",
+      "vcpus": 2,
+      "memory": 4096,
+      "price": { ... }
+    }
+    {
+      "class": "premium",
+      "id": "g7-premium-2",
+      "vcpus": 2,
+      "memory": 4096,
+      "price": { ... }
+    }
+    ```
 
-| $ linode linodes types \--label "Linode 4GB" \--json \--pretty\[  {    "addons": {...},     "class": "standard",    "disk": 81920,    "gpus": 0,    "id": "g6-standard-2",    "label": "Linode 4GB",    "memory": 4096,    "network\_out": 4000,    "price": {      "hourly": 0.036,      "monthly": 24.0    },    "region\_prices": \[...\],    "successor": null,    "transfer": 4000,    "vcpus": 2  }\] |
-| :---- |
+    See [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/) for more detailed pricing information.
 
-4\. View available regions with the regions list command:
+1.  The examples in this guide use the `g6-standard-2` Linode, which features two CPU cores and 4 GB of memory. Run the following command to display detailed information in JSON for this Linode plan:
 
-| $ linode regions list |
-| :---- |
+    ```command
+    linode linodes types --label "Linode 4GB" --json --pretty
+    ```
 
-5\. After selecting a Kubernetes version and Linode type, use the following command to create a cluster named oke-to-lke in the us-lax (Los Angeles, CA) region with three nodes and auto-scaling.
+    ```output
+    [
+      {
+        "addons": { ... },
+        "class": "standard",
+        "disk": 81920,
+        "gpus": 0,
+        "id": "g6-standard-2",
+        "label": "Linode 4GB",
+        "memory": 4096,
+        "network_out": 4000,
+        "price": { ... },
+        "region_prices": [ ... ],
+        "successor": null,
+        "transfer": 4000,
+        "vcpus": 2
+      }
+    ]
+    ```
 
-Replace oke-to-lke and us-lax with a cluster label and region of your choosing, respectively:
+1.  View available regions with the `regions list` command:
 
-| $ linode lke cluster-create \\   \--label oke-to-lke \\   \--k8s\_version 1.31 \\   \--region us-lax \\   \--node\_pools '\[{     "type": "g6-standard-2",     "count": 1,     "autoscaler": {       "enabled": true,       "min": 1,       "max": 3     }   }\]' |
-| :---- |
+    ```command
+    linode regions list
+    ```
 
-After creating your cluster successfully, you should see output similar to the following:
+1.  After selecting a Kubernetes version and Linode type, use the following command to create a cluster named `oke-to-lke` in the `us-mia` (Miami, FL) region with three nodes and auto-scaling. Replace `oke-to-lke` and `us-mia` with a cluster label and region of your choosing, respectively:
 
-| Using default values: {}; use the \--no-defaults flag to disable defaults\+------------------+--------+-------------+ |      label       | region | k8s\_version | \+------------------+--------+-------------+ | oke-to-lke       | us-lax |        1.31 | \+------------------+--------+-------------+ |
-| :---- |
+    ```command
+    linode lke cluster-create \
+      --label oke-to-lke \
+      --k8s_version 1.32 \
+      --region us-mia \
+      --node_pools '[{
+        "type": "g6-standard-2",
+        "count": 1,
+        "autoscaler": {
+          "enabled": true,
+          "min": 1,
+          "max": 3
+        }
+    }]'
+    ```
 
-## Step 4: Access the Kubernetes Cluster
+    After creating your cluster successfully, you should see output similar to the following:
 
-To access your cluster, fetch the cluster credentials as a kubeconfig file.
+    ```output
+    Using default values: {}; use the --no-defaults flag to disable defaults
+    ┌────────┬────────────┬────────┬─────────────┬──────────────────────────┬──────┐
+    │ id     │ label      │ region │ k8s_version │ control_plane.high_avai… │ tier │
+    ├────────┼────────────┼────────┼─────────────┼──────────────────────────┼──────┤
+    │ 343326 │ oke-to-lke │ us-mia │ 1.32        │ False                    │      │
+    └────────┴────────────┴────────┴─────────────┴──────────────────────────┴──────┘
+    ```
 
-1. Use the following command to retrieve the cluster’s ID:
+## Access the Kubernetes Cluster
 
-| $ CLUSTER\_ID=$(linode lke clusters-list \--json | \\    jq \-r \\       '.\[\] | select(.label \== "oke-to-lke") | .id') |
-| :---- |
+To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
 
-2. Retrieve the kubeconfig file and save it to \~/.kube/lke-config:.
+1.  Use the following command to retrieve the cluster’s ID:
 
-| $ linode lke kubeconfig-view \--json "$CLUSTER\_ID" | \\     jq \-r '.\[0\].kubeconfig' | \\     base64 \--decode \> \~/.kube/lke-config |
-| :---- |
+    ```command
+    CLUSTER_ID=$(linode lke clusters-list --json | \
+      jq -r \
+        '.[] | select(.label == "eks-to-lke") | .id')
+    ```
 
-3. After saving the kubeconfig, access your cluster by using kubectl and specifying the file:
+1.  Retrieve the `kubeconfig` file and save it to `~/.kube/lke-config`:.
 
-| $ kubectl get no \--kubeconfig \~/.kube/lke-config  NAME                            STATUS   ROLES    AGE   VERSION lke289125-478490-4569f8b60000   Ready    \<none\>   85s   v1.31.0 |
-| :---- |
+    ```command
+    linode lke kubeconfig-view --json "$CLUSTER_ID" | \
+      jq -r '.[0].kubeconfig' | \
+      base64 --decode > ~/.kube/lke-config
+    ```
 
-One node is ready, and it uses Kubernetes version 1.31.
+1.  After saving the `kubeconfig`, access your cluster by using `kubectl` and specifying the file:
 
-Next, verify the cluster's health and readiness for application deployment.
+    ```command
+    kubectl get no --kubeconfig ~/.kube/lke-config
+    ```
 
-| $ kubectl cluster-info \--kubeconfig \~/.kube/lke-config Kubernetes control plane is running at https://1a6a67c2-4c6f-4c75-a4ff-1fbef1be1807.us-lax-1.linodelke.net:443KubeDNS is running at https://1a6a67c2-4c6f-4c75-a4ff-1fbef1be1807.us-lax-1.linodelke.net:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxyTo further debug and diagnose cluster problems, use 'kubectl cluster-info dump'. |
-| :---- |
+    ```output
+    NAME                            STATUS   ROLES    AGE   VERSION
+    lke289125-478490-4569f8b60000   Ready    <none>   85s   v1.32.0
+    ```
 
-## Step 5: Migrate from Oracle Kubernetes Engine to LKE on Linode
+    One node is ready, and it uses Kubernetes version 1.32.
 
-In some cases, migrating Kubernetes applications requires an incremental approach because moving large, interconnected systems all at once isn’t practical. For example, imagine Service A interacts with other services: B, C, D. You might be able to migrate Service A and Service B together to LKE, where they can communicate efficiently. However, Services C and D may still rely heavily on GCP infrastructure or native services, making their migration more complex.
+1.  Next, verify the cluster's health and readiness for application deployment.
 
-In this scenario, you’d temporarily run Service A in both OKE and LKE. Service A on LKE would interact with Service B there, while the version of Service A on Oracle continues communicating with Services C and D. This setup minimizes disruptions while you work through the complexities of migrating the remaining services to LKE. Although cross-cloud communication incurs higher latency and costs, this approach helps maintain functionality during the transition.
+    ```command
+    kubectl cluster-info --kubeconfig ~/.kube/lke-config
+    ```
 
-This guide will cover the key steps required to migrate the example application from OKE to LKE.
+    ```output
+    Kubernetes control plane is running at https://fa127859-38c1-4e40-971d-b5c7d5bd5e97.us-lax-2.linodelke.net:443
+    KubeDNS is running at https://fa127859-38c1-4e40-971d-b5c7d5bd5e97.us-lax-2.linodelke.net:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
-### Assess current workloads and dependencies in OKE
+    To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+    ```
 
-Ensure that kubectl uses the original kubeconfig file with the OKE cluster context.
+## Migrate from Oracle Kubernetes Engine to LKE
 
-| $ kubectl get all \--context context-cmux6nk5oza  NAME                            READY   STATUS    RESTARTS   AGE pod/go-quote-6689b659df-th4g4   1/1     Running   0          6h16m NAME                       TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE service/go-quote-service   LoadBalancer   10.96.185.11     152.70.128.150   80:32703/TCP   6h16m service/kubernetes         ClusterIP      10.96.0.1        \<none\>          443/TCP,12250/TCP        10h NAME                       READY   UP-TO-DATE   AVAILABLE   AGE deployment.apps/go-quote   1/1     1            1           6h16m NAME                                  DESIRED   CURRENT   READY   AGE replicaset.apps/go-quote-6689b659df   1         1         1       6h16m NAME                                               REFERENCE             TARGETS              MINPODS   MAXPODS   REPLICAS   AGE horizontalpodautoscaler.autoscaling/go-quote-hpa   Deployment/go-quote   cpu: \<unknown\>/50%   1         1         1          6h16m |
-| :---- |
+In some cases, migrating Kubernetes applications requires an incremental approach, as moving large interconnected systems all at once isn’t always practical.
 
-The output shows the pod of the deployment and the one active replica set. These resources are derivatives of the deployment.
+For example, if **Service A** interacts with **Services B, C, and D**, you may be able to migrate **Services A and B** together to LKE, where they can communicate efficiently. However, **Services C and D** may still rely on GCP infrastructure or native services, making their migration more complex.
 
-Note that this is all in the default namespace. If you deploy workloads to other namespaces (recommended for production-grade clusters), then you would need to check every namespace.
+In this scenario, you may need to temporarily run **Service A** in both OKE and LKE. **Service A on LKE** would interact with **Service B on LKE**, while the version of **Service A on Oracle OKE** continues communicating with **Services C and D**. This setup minimizes disruptions while you work through the complexities of migrating the remaining services to LKE. Although cross-cloud communication incurs higher latency and costs, this approach helps maintain functionality during the transition.
 
-### Export Kubernetes manifests of OKE
+This guide covers the key steps required to migrate the example application from OKE to LKE.
 
-There are many ways to specify the resources you want to deploy to Kubernetes, which include YAML manifests, Kustomize, and Helm charts. Store these in source control and apply them through a CI/CD pipeline. The guide uses plain YAML manifests for the example. Exporting these manifests means storing them as files in a git repository.
+### Assess Current Workloads and Dependencies in OKE
 
-### Update manifests for compatibility with LKE on Linode
+Ensure that `kubectl` uses the original `kubeconfig` file with the OKE cluster context.
 
-You may need to update your manifests to accommodate for differences between OKE and LKE. For example, your configuration on OKE may use the [OCI native ingress controller](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengsettingupnativeingresscontroller.htm) and the [LoadBalancer Service](https://docs.oracle.com/en-us/iaas/Content/Balance/Tasks/managingloadbalancer_topic-Creating_Load_Balancers.htm#top) to provide access to clients located outside of your Oracle virtual cloud network. As an alternative to using these OCI load balancer and ingress services, you can [deploy a dedicated NGINX Ingress on LKE](https://www.linode.com/docs/guides/deploy-nginx-ingress-on-lke/).
+```command
+kubectl get all --context context-cmux6nk5oza
+```
 
-The deployment image may point to Oracle Cloud Infrastructure Container Registry. Modify this to point to an alternative registry. For example, the Deployment section of your application manifest may look like this:
+The output shows the running pod and the one active replica set created by the deployment:
 
-| apiVersion: apps/v1kind: Deploymentmetadata:… spec:   …  template:     …    spec:      containers:        \- name: go-quote          image: ocir.us-phoenix-1.oci.oraclecloud.com/axheevowwcsc/gq/go-quote-service:latest          … |
-| :---- |
+```output
+NAME                            READY   STATUS    RESTARTS   AGE
+pod/go-quote-6689b659df-th4g4   1/1     Running   0          6h16m
+
+NAME                       TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
+service/go-quote-service   LoadBalancer   10.96.185.11     152.70.128.150   80:32703/TCP   6h16m
+service/kubernetes         ClusterIP      10.96.0.1        <none>          443/TCP,12250/TCP        10h
+
+NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/go-quote   1/1     1            1           6h16m
+
+NAME                                  DESIRED   CURRENT   READY   AGE
+replicaset.apps/go-quote-6689b659df   1         1         1       6h16m
+
+NAME                                               REFERENCE             TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/go-quote-hpa   Deployment/go-quote   cpu: <unknown>/50%   1         1         1          6h16m
+```
+
+{{< note >}}
+By default, `kubectl get all` only displays resources in the `default` namespace. If your workloads are deployed in a different namespace (recommended for production clusters), use:
+
+```command
+kubectl get all --namespace={{< placeholder "YOUR_NAMESPACE" >}}
+```
+{{< /note >}}
+
+### Export Kubernetes Manifests of OKE
+
+There are multiple ways to define the resources you want to deploy to Kubernetes, including YAML manifests, Kustomize configurations, and Helm charts. For consistency and version control, store these in a git repository and deploy them via your CI/CD pipeline. The guide uses plain YAML manifests as the example.
+
+### Update Manifests for Compatibility with LKE
+
+You may need to update your manifests to accommodate for differences between OKE and LKE. For example, your configuration on OKE may use the [OCI native ingress controller](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengsettingupnativeingresscontroller.htm) and the [LoadBalancer Service](https://docs.oracle.com/en-us/iaas/Content/Balance/Tasks/managingloadbalancer_topic-Creating_Load_Balancers.htm#top) to provide access to clients located outside of your Oracle virtual cloud network. As an alternative to using these OCI load balancer and ingress services, you can [deploy a dedicated NGINX Ingress on LKE](/docs/guides/deploy-nginx-ingress-on-lke/).
+
+The deployment image may point to Oracle Cloud Infrastructure Container Registry. Modify this to point to an alternative registry. For example, the `Deployment` section of your application manifest may look like this:
+
+```file
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+...
+spec:
+  ...
+  template:
+    ...
+    spec:
+      containers:
+        - name: go-quote
+          image: ocir.us-phoenix-1.oci.oraclecloud.com/axheevowwcsc/gq/go-quote-service:latest
+          ...
+```
 
 The container image, pointing to Oracle Container Registry, has the following format:
 
-| ocir.\<region\>.oci.oraclecloud.com/\<tenancy-object-storage-namespace\>/\<repository\_name\>/\<image\_name\>:\<tag\> |
-| :---- |
+```command
+ocir.{{< placeholder "REGION" >}}.oci.oraclecloud.com/{{< placeholder "TENANCY_OBJECT_STORAGE_NAMESPACE" >}}/{{< placeholder "REPOSITORY_NAME" >}}/{{< placeholder "IMAGE_NAME" >}}:{{< placeholder "TAG" >}}
+```
 
-When migrating away from the Oracle Container Registry, upload the container image to a different registry service (such as Docker Hub) or [Set Up a Docker Registry with LKE and Object Storage](https://www.linode.com/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/). Then, modify your Kubernetes manifest to point to the new location for your image.
+To migrate away from the Oracle Container Registry, upload the container image to another registry service (e.g. Docker Hub) or [Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/). Then, modify your Kubernetes manifest to point to the new location for your image.
 
-For the example service application in this guide, the image comes from Docker Hub; therefore, repointing the registry is unnecessary.
+{{< note >}}
+Since the image for the example service application in this guide comes from Docker Hub, redirecting the registry is unnecessary.
+{{< /note >}}
 
-### Transfer persistent data
+### Transfer Persistent Data
 
-If the workload depends on persistent data in OCI Cloud Storage or a database, then transfer the data or make it available to LKE. The example application, with its in-memory configuration, does not rely on any persistent data.
+If the workload depends on persistent data in OCI Cloud Storage or a database, transfer the data or make it available to LKE.
 
-### Deploy workloads to LKE on Linode
+{{< note >}}
+The example application, with its in-memory configuration, does not rely on any persistent data.
+{{< /note >}}
 
-First, deploy your application to the newly created LKE cluster. Because you are switching back and forth between two different clusters, verify the current kubectl context to ensure you are pointing to the right kubeconfig file and cluster.
+### Deploy Workloads to LKE
 
-| $ kubectl config current-context \--kubeconfig \~/.kube/lke-configlke289125-ctx |
-| :---- |
+Deploy your application to the newly created LKE cluster.
 
-Apply the same manifest used to deploy your application to OKE, but this time on your LKE cluster:
+1.  Verify the current `kubectl` context to ensure you are pointing to the `kubeconfig` file for the LKE cluster.
 
-| $ kubectl apply \\    \--kubeconfig \~/.kube/lke-config \\    \-f manifest.yamldeployment.apps/go-quote createdservice/go-quote-service createdhorizontalpodautoscaler.autoscaling/go-quote-hpa created |
-| :---- |
+    ```command
+    kubectl config current-context --kubeconfig ~/.kube/lke-config
+    ```
 
-### Validate application functionality
+    ```output
+    lke289125-ctx
+    ```
+
+1.  Apply the same `manifest.yaml` file used to deploy your application to OKE, but this time on your LKE cluster:
+
+    ```command
+    kubectl apply --kubeconfig ~/.kube/lke-config -f manifest.yaml
+    ```
+
+    ```output
+    deployment.apps/go-quote created
+    service/go-quote-service created
+    horizontalpodautoscaler.autoscaling/go-quote-hpa created
+    ```
+
+### Validate Application Functionality
 
 Verify that the deployment and the service were created successfully.
 
-| $ kubectl get deploy \--kubeconfig \~/.kube/lke-config NAME       READY   UP-TO-DATE   AVAILABLE   AGEgo-quote   1/1     1            1           108s$ kubectl get service \--kubeconfig \~/.kube/lke-config NAME               TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGEgo-quote-service   LoadBalancer   10.128.183.194   172.235.44.28   80:30407/TCP   117skubernetes         ClusterIP      10.128.0.1       \<none\>          443/TCP        157m |
-| :---- |
+1.  With the application deployed, run the following `kubectl` command to verify that the deployment is available:
 
-The service exposes a public IP address to the REST API service (in this example, it is 172.235.44.28).
+    ```command
+    kubectl get deploy --kubeconfig ~/.kube/lke-config
+    ```
 
-| $ curl \-X POST \\    \--data '{"quote":"This is my first quote for LKE."}' \\    172.235.44.28/quotes$ curl \-X POST \\    \--data '{"quote":"This is my second quote for LKE."}' \\    172.235.44.28/quotes$ curl 172.235.44.28/quotes  \["This is my first quote for LKE.","This is my second quote for LKE."\] |
-| :---- |
+    ```output
+    NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+    go-quote   1/1     1            1           108s
+    ```
 
-The REST API service is up and running on LKE. Find any services dependent on the OKE cluster deployment and point them to the LKE cluster deployment instead. After testing and verifying the application running on LKE, you can terminate the OKE cluster.
+1.  Run the following `kubectl` command to retrieve the external IP address assigned to the service:
+
+    ```command
+    kubectl get service --kubeconfig ~/.kube/lke-config
+    ```
+
+    The service exposes a public IP address to the REST API service (e.g. `172.235.44.28`):
+
+    ```output
+    NAME               TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
+    go-quote-service   LoadBalancer   10.128.183.194   172.235.44.28   80:30407/TCP   117s
+    kubernetes         ClusterIP      10.128.0.1       <none>          443/TCP        157m
+    ```
+
+1.  Test the service by adding a quote:
+
+    ```command
+    curl -X POST \
+      --data '{"quote":"This is my first quote for LKE."}' \
+      {{< placeholder "IP_ADDRESS" >}}/quotes
+    ```
+
+1.  Add a second quote:
+
+    ```command
+    curl -X POST \
+      --data '{"quote":"This is my second quote for LKE."}' \
+      {{< placeholder "IP_ADDRESS" >}}/quotes
+    ```
+
+1.  Now retrieve the stored quotes:
+
+    ```command
+    curl {{< placeholder "IP_ADDRESS" >}}/quotes
+    ```
+
+    ```output
+    ["This is my first quote for LKE.","This is my second quote for LKE."]
+    ```
+
+The REST API service is up and running on LKE. Point any services dependent on the OKE cluster deployment to the LKE cluster deployment instead. After testing and verifying the application running on LKE, you can terminate the OKE cluster.
 
 ## Additional Considerations and Concerns
 
-### Cost management
+When migrating from Oracle OKS to LKE, there are several important factors to keep in mind, including cost management, data persistence, networking, security, and alternative solutions for cloud-specific services.
 
-Cost reduction is one reason an organization might migrate from Oracle Kubernetes Engine to LKE on Linode. Typically, the compute cost of Kubernetes is the primary driver for migration. Use kubectl to find the instance type and capacity type for your OKE instance.
+### Cost Management
 
-| $ kubectl get node 10.0.10.54 \-o yaml \\     | yq .metadata.labels \\     | grep node.kubernetes.io/instance-type node.kubernetes.io/instance-type: VM.Standard.E3.Flex |
-| :---- |
+Cost reduction is one reason an organization might migrate from Oracle Kubernetes Engine to LKE. Typically, the compute cost of Kubernetes is the primary driver for migration. Use `kubectl` to find the instance type and capacity for your OKE instance.
 
-Reference [Oracle’s Compute Pricing page](https://www.oracle.com/cloud/compute/pricing/#compute-vm) to find the cost for your OKE instance. Compare this with the cost of an Linode instance with comparable resources by examining the [Linode pricing page](https://www.linode.com/pricing/).
+```command
+kubectl get node 10.0.10.54 -o yaml \
+  | yq .metadata.labels \
+  | grep node.kubernetes.io/instance-type
+```
 
-Applications with a lot of data egress can also be impacted significantly by egress costs. Consider the typical networking usage of applications running on your OKE cluster, and determine your outbound [data transfer costs Oracle](https://www.oracle.com/cloud/networking/pricing/#:~:text=Outbound%20Data%20Transfer%20%2D%20Originating%20in%20North%20America). Compare this with data transfer numbers allocated to your Linode.
+```output
+node.kubernetes.io/instance-type: VM.Standard.E3.Flex
+```
 
-This is a VM.Standard.E3.Flex Compute Shape for Oracle, which is a template that determines the amount of resources to allocate to a compute instance. Referencing  [Oracle’s Compute Pricing page](https://www.oracle.com/cloud/compute/pricing/#compute-vm), the hourly cost for this type of instance is $0.0125 per vCPU and $0.0015 per GB of memory, which totals to **$0.0185 per hour**.
+Reference [Oracle’s Compute Pricing page](https://www.oracle.com/cloud/compute/pricing/#compute-vm) to find the cost for your OKE instance. Compare this with the cost of a Linode instance with comparable resources by examining the [Linode pricing page](https://www.linode.com/pricing/).
 
-![][image8]
+Additionally, applications with substantial data egress can be significantly impacted by egress costs. Consider the typical networking usage of applications running on your OKE cluster, and determine your outbound [data transfer costs](https://www.oracle.com/cloud/networking/pricing/#:~:text=Outbound%20Data%20Transfer%20%2D%20Originating%20in%20North%20America). Compare this with data transfer limits allocated to your LKE nodes.
 
-The example Linode instance used in this guide had two CPU cores and 4 GB of memory. Referencing the [Linode pricing page](https://www.linode.com/pricing/), the hourly cost of this instance for a shared CPU plan is **$0.036**.
+### Data Persistence and Storage
 
-**![][image9]**
+Cloud-native workloads are ephemeral. As a container orchestration platform, Kubernetes is designed to ensure your pods are up and running, with autoscaling to handle demand. However, it’s important to handle persistent data carefully. If you are in a position to impose a large maintenance window with system downtime, migrating data should be far simpler.
 
-For a dedicated CPU plan, the cost is $0.054 per hour.
+Should you need to perform a live migration with minimal downtime, you must develop proper migration procedures and test them in a non-production environment. This may include:
 
-**![][image10]**
+-   Parallel storage and databases on both clouds
+-   Cross-cloud replication between storage and databases
+-   Double writes at the application level
+-   Failover reads at the application level
+-   Switching the Oracle Cloud Infrastructure storage and databases to read-only
+-   Storage and database indirection at the configuration or DNS level
 
-Applications with a lot of data egress can also be impacted significantly by egress costs. For example, outbound [data transfer costs Oracle](https://www.oracle.com/cloud/networking/pricing/#:~:text=Outbound%20Data%20Transfer%20%2D%20Originating%20in%20North%20America) are free for the first 10 TB per month, but then $0.0085 per GB when the data originates from North America (and higher for other regions).
+### Advanced Network Configuration
 
-![][image11]
-
-Both the shared and dedicated CPU plans for the example Linode instance chosen include monthly data transfer of 4 TB for free.
-
-### Data persistence and storage
-
-Cloud-native workloads are ephemeral. As a container orchestration platform, Kubernetes is designed to ensure your pods are up and running and autoscaling to handle demand. However, it’s important to handle persistent data carefully. If you are in a position to impose a large maintenance window with system downtime, then migrating data will be simpler.
-
-However, if you need to perform a live migration with minimal downtime, you must develop proper migration procedures and test them before trying them on your production environment. This may include:
-
-* Parallel storage and databases on both clouds
-* Cross-cloud replication between storage and databases
-* Double writes at the application level
-* Failover reads at the application level
-* Switching the Oracle Cloud Infrastructure storage and databases to read-only
-* Storage and database indirection at the configuration or DNS level
-
-### Advanced network configuration
-
-Oracle Cloud Infrastructure has a network model that includes [virtual cloud networks (VCNs)](https://www.oracle.com/cloud/networking/virtual-cloud-network/) and [different types of load balancers](https://docs.oracle.com/en-us/iaas/Content/Balance/Concepts/load_balancer_types.htm). Linode and LKE provide [NodeBalancers](https://www.linode.com/products/nodebalancers/), equivalent to application load balancers. If you use advanced features of OCI networking, then you may need to perform some non-trivial work mapping them to Linode networking.
+The Oracle Cloud Infrastructure network model includes [virtual cloud networks (VCNs)](https://www.oracle.com/cloud/networking/virtual-cloud-network/) and [different types of load balancers](https://docs.oracle.com/en-us/iaas/Content/Balance/Concepts/load_balancer_types.htm). For LKE, Akamai Cloud provides [NodeBalancers](https://www.linode.com/products/nodebalancers/), which are equivalent to application load balancers. If you use advanced features of OCI networking, adapting them to Akamai Cloud networking may require significant configuration changes.
 
 For network security, you may need to port OCI Network Firewall policy rules to [Kubernetes Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/) on LKE.
 
-### Security and access management
+### Security and Access Management
 
-Oracle integrates OCI IAM with Kubernetes access. On LKE with Linode, you will use standard Kubernetes user and service accounts, as well as [Kubernetes role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
+Oracle integrates OCI Identity and Access Management (IAM) with Kubernetes access. LKE uses standard Kubernetes user and service accounts, as well as [Kubernetes role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
 ### DNS
 
-If you use an independent DNS provider—such as Cloudflare—for your application, then you will need to update various DNS records to point to LKE endpoints and NodeBalancers instead of GCP endpoints.
+If you use an independent DNS provider (e.g. Cloudflare) for your application, you must update various DNS records to point to LKE endpoints and NodeBalancers instead of GCP endpoints.
 
 If you use OCI DNS and plan to migrate away from it, reference [Linode’s DNS manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) as a migration option.
 
 ### Alternative to OCI Container Registry
 
-LKE on Linode doesn't have its own container registry. However, if you need to migrate away from the Oracle Container Registry, you can set up a third-party private container registry, such as [Docker Hub](https://hub.docker.com/) or [GitHub Container Registry](https://github.blog/news-insights/product-news/introducing-github-container-registry/).
+LKE doesn't have its own container registry. To migrate away from the Oracle Container Registry, set up a third-party private container registry, such as [Docker Hub](https://hub.docker.com/) or [GitHub Container Registry](https://github.blog/news-insights/product-news/introducing-github-container-registry/).
 
-Another option is to set up your container registry. See [How to Set Up a Docker Registry with LKE and Object Storage](https://www.linode.com/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/).
+Alternatively, you can set up your own container registry, see [How to Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/) for instructions.
 
 ### Alternative to the Oracle Cloud Observability and Management Platform
 
-For Kubernetes cluster observability, Oracle provides its [Cloud Observability and Management Platform](https://www.oracle.com/manageability/). With Linode, you can install an alternative observability solution on LKE. One example of such a solution is [The Observability Stack (TOBS)](https://github.com/timescale/tobs), which includes:
+Oracle provides its [Cloud Observability and Management Platform](https://www.oracle.com/manageability/) for Kubernetes cluster observability. With Akamai Cloud, you can install an alternative observability solution on LKE. One example of such a solution is [The Observability Stack (TOBS)](https://github.com/timescale/tobs), which includes:
 
-* Kube-Prometheus
-  * Prometheus
-  * AlertManager
-  * Grafana
-  * Node-Exporter
-  * Kube-State-Metrics
-  * Prometheus-Operator
-* Promscale
-* TimescaleDB
-  * Postgres-Exporter
-* OpenTelemetry-Operator
+-   Kube-Prometheus
+    -   Prometheus
+    -   AlertManager
+    -   Grafana
+    -   Node-Exporter
+    -   Kube-State-Metrics
+    -   Prometheus-Operator
+-   Promscale
+-   TimescaleDB
+    -   Postgres-Exporter
+-   OpenTelemetry-Operator
 
-See [How to Deploy TOBS (The Observability Stack) on LKE](https://www.linode.com/docs/guides/deploy-tobs-on-linode-kubernetes-engine/) for more information.
+See [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-tobs-on-linode-kubernetes-engine/) for more information.
 
 ### Alternative to GCP Secrets Manager
 
-The [OCI Vault](https://docs.oracle.com/en-us/iaas/Content/KeyManagement/home.htm) can be leveraged to provide Kubernetes secrets on OKE. With LKE on Linode, you will need another solution. Consider migrating to OpenBao on Linode.
+The [OCI Vault](https://docs.oracle.com/en-us/iaas/Content/KeyManagement/home.htm) can be leveraged to provide Kubernetes secrets on OKE. With LKE, you need an alternative solution, such as OpenBao on Akamai Cloud.
 
 ## Resources
 
-* Oracle Kubernetes Engine
-  * [Documentation](https://docs.oracle.com/en-us/iaas/Content/ContEng/home.htm)
-  * [Connecting kubectl to an OKE cluster](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengdownloadkubeconfigfile.htm#localdownload)
-* Linode
-  * [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/)
-  * [LKE Documentation](https://www.linode.com/docs/guides/kubernetes-on-linode/)
-  * [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager)
-* Setting up other technologies to run on Linode
-  * [How to Set Up a Docker Registry with LKE and Object Storage](https://www.linode.com/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)
-  * [How to Deploy TOBS (The Observability Stack) on LKE](https://www.linode.com/docs/guides/deploy-tobs-on-linode-kubernetes-engine/)
+-   Oracle Kubernetes Engine
+    -   [Documentation](https://docs.oracle.com/en-us/iaas/Content/ContEng/home.htm)
+    -   [Connecting kubectl to an OKE cluster](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengdownloadkubeconfigfile.htm#localdownload)
+-   Linode
+    -   [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/)
+    -   [LKE Documentation](/docs/guides/kubernetes-on-linode/)
+    -   [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager)
+-   Setting up other technologies to run on Linode
+    -   [How to Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)
+    -   [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-tobs-on-linode-kubernetes-engine/)
