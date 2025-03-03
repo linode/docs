@@ -17,7 +17,7 @@ Most applications use databases to store and organize the information they handl
 
 ## Select a Database Management System
 
-Before determining how to deploy and host a database on the Akamai Connecetd Cloud platform, you should first determine *which* database management system (DBMS) to use. This section covers many different databases (including both [relational](#relational-databases) and [non-relational](#non-relational-nosql-databases) database), as well as the factors that should inform you decision.
+Before determining how to deploy and host a database on the Akamai Connected Cloud platform, you should first determine *which* database management system (DBMS) to use. This section covers many different databases (including both [relational](#relational-databases) and [non-relational](#non-relational-nosql-databases) database), as well as the factors that should inform you decision.
 
 {{< note >}}
 For an in-depth comparison of database management systems (DBMSs) and to learn which DBMS is right for you and your application, review the [Comparing DBMSs: The 8 Most Popular Databases](/docs/guides/list-of-databases/) guide.
