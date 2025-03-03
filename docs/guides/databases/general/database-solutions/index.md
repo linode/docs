@@ -1,7 +1,7 @@
 ---
 slug: database-solutions
 title: "Determine the Best Database and Cloud Hosting Solution for Your Next Application"
-description: "Learn about the most popular database management systems and how to host them on the Akamai cloud computing platform."
+description: "Learn about the most popular database management systems and how to host them on the Akamai Connecetd Cloud computing platform."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2023-07-11
@@ -17,7 +17,7 @@ Most applications use databases to store and organize the information they handl
 
 ## Select a Database Management System
 
-Before determining how to deploy and host a database on the Akamai cloud computing platform, you should first determine *which* database management system (DBMS) to use. This section covers many different databases (including both [relational](#relational-databases) and [non-relational](#non-relational-nosql-databases) database), as well as the factors that should inform you decision.
+Before determining how to deploy and host a database on the Akamai Connecetd Cloud platform, you should first determine *which* database management system (DBMS) to use. This section covers many different databases (including both [relational](#relational-databases) and [non-relational](#non-relational-nosql-databases) database), as well as the factors that should inform you decision.
 
 {{< note >}}
 For an in-depth comparison of database management systems (DBMSs) and to learn which DBMS is right for you and your application, review the [Comparing DBMSs: The 8 Most Popular Databases](/docs/guides/list-of-databases/) guide.
@@ -63,7 +63,7 @@ Non-relational databases (also referred to as [NoSQL Databases](/docs/guides/wha
 
 ## Select a Database Hosting Solution
 
-After determining which database management system to use for your application, you need to decide how to deploy, configure, and manage that system in the cloud. The Akamai cloud computing platform offers the following solutions:
+After determining which database management system to use for your application, you need to decide how to deploy, configure, and manage that system in the cloud. The Akamai Connecetd Cloud platform offers the following solutions:
 
 - [Managed Databases](#managed-databases)
 
@@ -99,7 +99,7 @@ Updates and security patches are automatically applied to the underlying operati
 
 Another solution available on our platform is Marketplace Apps, which can greatly simplify application provisioning. When deploying a Marketplace App, a Compute Instance is created on your account. When the Compute Instance first boots up, a script runs to automatically install and configure the application. Beyond this automatic installation, you have root access and full control over the Compute Instance. This means that you are also responsible for managing and configuring the application, as well as installing updates and security patches.
 
-The following Marketplace Apps (and Clusters) are available on the Akamai cloud computing platform.
+The following Marketplace Apps (and Clusters) are available on the Akamai Connecetd Cloud platform.
 
 **Marketplace Apps** (single instance): Deploys a single Compute Instance. Additional manual configuration is needed for applications that require high availability and scalability.
 
