@@ -63,7 +63,7 @@ Non-relational databases (also referred to as [NoSQL Databases](/docs/guides/wha
 
 ## Select a Database Hosting Solution
 
-After determining which database management system to use for your application, you need to decide how to deploy, configure, and manage that system in the cloud. The Akamai Connecetd Cloud platform offers the following solutions:
+After determining which database management system to use for your application, you need to decide how to deploy, configure, and manage that system in the cloud. The Akamai Connected Cloud platform offers the following solutions:
 
 - [Managed Databases](#managed-databases)
 
