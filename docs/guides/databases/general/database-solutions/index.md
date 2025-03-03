@@ -1,7 +1,7 @@
 ---
 slug: database-solutions
 title: "Determine the Best Database and Cloud Hosting Solution for Your Next Application"
-description: "Learn about the most popular database management systems and how to host them on the Akamai Connecetd Cloud computing platform."
+description: "Learn about the most popular database management systems and how to host them on the Akamai Connected Cloud computing platform."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2023-07-11
