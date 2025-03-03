@@ -1,6 +1,6 @@
 ---
 slug: compute-migrations
-title: "Compute Migrations on Akamai Connecetd Cloud"
+title: "Compute Migrations on Akamai Connected Cloud"
 description: 'This guide reviews the various types of compute migrations available on the Akamai Connected Cloud platform.'
 published: 2023-11-14
 keywords: ['migrate','migration','host']
