@@ -53,7 +53,7 @@ For example, GPUs generally have a higher quantity of copper than an external SS
 
 The below diagram illustrates the quantity and ratio of different circuits and engines in a CPU vs. GPU vs. VPU. GPUs are designed to be extremely densely packed with ALUs for parallel processing (used for tasks like graphics rendering and machine learning), whereas VPUs have fixed-function circuits programmed to efficiently perform specific media-based tasks.
 
-[DIAGRAM]
+![CPUs, GPUs, and VPUs](cpus-gpus-vpus.jpg)
 
 - **Control**: Synchronous (i.e. events happen in a specified order) digital circuit dedicated to interpreting processor instructions and managing execution of those instructions.
 
