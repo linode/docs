@@ -12,7 +12,7 @@ external_resources:
 - '[Linode Object Storage guides & tutorials](/docs/guides/platform/object-storage/)'
 ---
 
-Linode Object Storage is an S3-compatible service used for storing large amounts of unstructured data. This guide includes steps on how to migrate up to 100TB of static content from Google Cloud Storage to Linode Object Storage using rclone, along with how to monitor your migration using rclone’s WebUI GUI.
+Linode Object Storage is an Amazon S3-compatible service used for storing large amounts of unstructured data. This guide includes steps on how to migrate up to 100TB of static content from Google Cloud Storage to Linode Object Storage using rclone, along with how to monitor your migration using rclone’s WebUI GUI.
 
 ## Migration Considerations
 
@@ -310,4 +310,4 @@ There are several next steps to consider after a successful object storage migra
 
 -   **Confirm the changeover is functioning as expected.** Allow some time to make sure your updated workloads and jobs are interacting successfully with Linode Object Storage. Once you confirm everything is working as expected, you can safely delete the original source bucket and its contents.
 
--   **Take any additional steps to update your system for S3 compatibility.** You may need to make additional internal configuration changes to ensure your system is set up to communicate using S3 protocol. See Google’s documentation for [interoperability with other storage providers](https://cloud.google.com/storage/docs/interoperability).
+-   **Take any additional steps to update your system for Amazon S3 compatibility.** You may need to make additional internal configuration changes to ensure your system is set up to communicate using S3 protocol. See Google’s documentation for [interoperability with other storage providers](https://cloud.google.com/storage/docs/interoperability).
