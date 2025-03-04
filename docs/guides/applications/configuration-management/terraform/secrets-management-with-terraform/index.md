@@ -173,7 +173,7 @@ As of the writing of this guide, **sensitive information used to generate your T
 
 ### Remote Backends
 
-Terraform [*backends*](https://www.terraform.io/docs/backends/index.html) allow the user to securely store their state in a remote location. For example, a key/value store like [Consul](https://www.consul.io/), or an S3 compatible bucket storage like [Minio](https://www.minio.io/). This allows the Terraform state to be read from the remote store. Because the state only ever exists locally in memory, there is no worry about storing secrets in plain text.
+Terraform [*backends*](https://www.terraform.io/docs/backends/index.html) allow the user to securely store their state in a remote location. For example, a key/value store like [Consul](https://www.consul.io/), or an Amazon S3-compatible bucket storage like [Minio](https://www.minio.io/). This allows the Terraform state to be read from the remote store. Because the state only ever exists locally in memory, there is no worry about storing secrets in plain text.
 
 Some backends, like Consul, also allow for state locking. If one user is applying a state, another user cannot make any changes.
 

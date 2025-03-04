@@ -395,7 +395,7 @@ test-job-1:
 
 By default, cached files are stored locally alongside your GitLab Runner Manager. But that option may not be the most efficient, especially as your GitLab pipelines become more complicated and your projects' storage needs expand.
 
-To remedy this, you can adjust your GitLab Runner configuration to use an S3-compatible object storage solution, like [Linode Object Storage](/docs/products/storage/object-storage/get-started/).
+To remedy this, you can adjust your GitLab Runner configuration to use an Amazon S3-compatible object storage solution, like [Linode Object Storage](/docs/products/storage/object-storage/get-started/).
 
 These next steps show you how you can integrate a Linode Object Storage bucket with your GitLab Runner to store cached resources from CI/CD jobs.
 

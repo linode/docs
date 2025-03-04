@@ -73,7 +73,7 @@ Before you configure Rclone, [create a new Linode bucket](/docs/products/storage
 
 1.  Next, enter a name to use your new remote.
 
-1.  When prompted for the type of storage, select the option that corresponds with **S3** (*"AWS S3 Compliant Storage Providers including..."*).
+1.  When prompted for the type of storage, select the option that corresponds with **S3** (*"Amazon S3 Compliant Storage Providers including..."*).
 
     ```output
     / Amazon S3 Compliant Storage Providers including AWS, Alibaba, ArvanCloud, Ceph, China Mobile, Cloudflare, GCS, DigitalOcean, Dreamhost, Huawei OBS, IBM COS, IDrive e2, IONOS Cloud, Liara, Lyve Cloud, Minio, Netease, Petabox, RackCorp, Scaleway, SeaweedFS, StackPath, Storj, Tencent COS, Qiniu and Wasabi

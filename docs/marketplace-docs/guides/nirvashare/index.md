@@ -18,7 +18,7 @@ marketplace_app_name: "NirvaShare"
 NirvaShare has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
 {{< /note >}}
 
-NirvaShare is a simplified and secure enterprise file sharing solution built on top of your existing file storage. Use NirvaShare with SFTP, local storage, or even S3-compatible storage like Linode's [Object Storage](https://www.linode.com/products/object-storage/). Collaborate with your internal or external users such as customers, partners, and vendors. NirvaShare provides fine-tuned access control in a very simplified manner. NirvaShare integrates with multiple many external identity providers such as Active Directory, Google Workspace, AWS SSO, KeyClock, and others.
+NirvaShare is a simplified and secure enterprise file sharing solution built on top of your existing file storage. Use NirvaShare with SFTP, local storage, or even Amazon S3-compatible storage like Linode's [Object Storage](https://www.linode.com/products/object-storage/). Collaborate with your internal or external users such as customers, partners, and vendors. NirvaShare provides fine-tuned access control in a very simplified manner. NirvaShare integrates with multiple many external identity providers such as Active Directory, Google Workspace, AWS SSO, KeyClock, and others.
 
 ## Deploying a Marketplace App
 
