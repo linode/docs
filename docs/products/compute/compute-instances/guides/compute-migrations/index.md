@@ -1,7 +1,7 @@
 ---
 slug: compute-migrations
-title: "Compute Migrations on Akamai Connected Cloud"
-description: 'This guide reviews the various types of compute migrations available on the Akamai Connected Cloud platform.'
+title: "Compute Migrations on Akamai Cloud"
+description: 'This guide reviews the various types of compute migrations available on the Akamai Cloud platform.'
 published: 2023-11-14
 keywords: ['migrate','migration','host']
 tags: ["linode platform","cloud manager"]
