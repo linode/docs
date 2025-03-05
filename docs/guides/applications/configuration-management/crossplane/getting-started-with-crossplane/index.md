@@ -11,7 +11,7 @@ external_resources:
 - '[Crossplane: Documentation](https://docs.crossplane.io/)'
 ---
 
-Crossplane offers an open-source extension to Kubernetes for creating a universal control plane. With Crossplane, you can orchestrate and manage your broader infrastructure entirely with Kubernetes tools. Crossplane can interface with just about any cloud platform API, including Akamai Connected Cloud's, and provides features like API abstractions and Kubernetes's access control.
+Crossplane offers an open-source extension to Kubernetes for creating a universal control plane. With Crossplane, you can orchestrate and manage your broader infrastructure entirely with Kubernetes tools. Crossplane can interface with just about any cloud platform API, including Akamai Cloud's, and provides features like API abstractions and Kubernetes's access control.
 
 In this guide, you learn more about what Crossplane is and how it compares to similar tools. You can also follow step-by-step instructions to set up your own Crossplane instance.
 
