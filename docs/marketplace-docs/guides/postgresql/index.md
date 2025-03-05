@@ -2,7 +2,7 @@
 title: "Deploy PostgreSQL through the Linode Marketplace"
 description: "PostgreSQL is a powerful, scalable, and standards-compliant open-source database. Here''s how to easily deploy PostgreSQL using Marketplace Apps."
 published: 2020-03-17
-modified: 2022-03-08
+modified: 2025-03-05
 keywords: ['database','postgresql','rdbms','relational database']
 tags: ["linode platform","postgresql","marketplace","cloud-manager"]
 external_resources:
@@ -30,28 +30,35 @@ The PostgreSQL relational database system is a powerful, scalable, and standards
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 11
-- **Recommended minimum plan:** All plan types and sizes can be used.
+- **Supported distributions:** Ubuntu 24.04 LTS
+- **Suggested minimum plan:** All plan types and sizes can be used.
 
 ### PostgreSQL Options
 
-{{% content "marketplace-limited-user-fields-shortguide" %}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
 
-## Getting Started after Deployment
+### Getting Started after Deployment
 
-### Access PostgreSQL
+### Obtain the Credentials
 
-After PostgreSQL has finished installing, you will be able to access PostgreSQL from the console via ssh with your Linode's IPv4 address:
+Once the app is deployed, you need to obtain the credentials from the server.
 
-1.  [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) and [create a limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
+To obtain credentials:
 
-1.  Log out and log back in as your limited user account.
+1.  Log in to your new Compute Instance using one of the methods below:
 
-1.  Update your server:
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
 
-        sudo apt-get update && sudo apt-get upgrade
+1.  Run the following command to access the credentials file:
+
+    ```command
+    cat /home/$USERNAME/.credentials
+    ```
+
+This returns passwords that were automatically generated when the instance was deployed. Save them. Once saved, you can safely delete the file.
 
 ## Using PostgreSQL
 
@@ -62,20 +69,11 @@ By default, PostgreSQL will create a Linux user named `postgres` to access the d
 {{< note type="alert" >}}
 The `postgres` user should not be used for other purposes (e.g. connecting to other networks). Doing so presents a serious risk to the security of your databases.
 {{< /note >}}
-
-1.  Change the `postgres` user's Linux password:
-
-        sudo passwd postgres
-
-2.  Issue the following commands to set a password for the `postgres` database user. Be sure to replace `newpassword` with a strong password and keep it in a secure place.
-
-        su - postgres
-        psql -d template1 -c "ALTER USER postgres WITH PASSWORD 'newpassword';"
-
-    This user is distinct from the `postgres` Linux user. The Linux user is used to access the database, and the PostgreSQL user is used to perform administrative tasks on the databases.
-
-    The password set in this step will be used to connect to the database via the network. Peer authentication will be used by default for local connections. See the [Secure Local PostgreSQL Access section](#secure-local-postgresql-access) for information about changing this setting.
-
+1. You can change to the PostgreSQL user's Linux shell from `root` or the sudo user created during deployment. 
+```
+as root: su postgres
+as sudo: sudo su postgres
+```
 ### Create a Database
 
 Run the commands in this section as the `postgres` Linux user.
