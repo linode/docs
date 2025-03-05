@@ -21,7 +21,7 @@ image: modify_file_permissions_with_chmod_smg.png
 
 The `chmod` command allows users to change read and write permissions in Unix systems. This guide covers how to use `chmod` to view and modify these permission on files and directories.
 
-Unix-like systems, including the Linux distributions that run on the Akamai Cloud platform, have an incredibly robust access control system. It allows systems administrators to effectively permit multiple users access to a single system, without giving every user access to every file. The `chmod` command is the simplest way to modify these file permissions.
+Unix-like systems, including the Linux distributions that run on the Akamai cloud computing platform, have an incredibly robust access control system. It allows systems administrators to effectively permit multiple users access to a single system, without giving every user access to every file. The `chmod` command is the simplest way to modify these file permissions.
 
 This guide provides an overview of file permissions and the `chmod` command, along with a number of practical examples and applications of `chmod`. If you find this guide helpful, also consider reading our [basic administration practices guide](/docs/guides/linux-system-administration-basics/) and the [Linux users and groups guide](/docs/guides/linux-users-and-groups/).
 
