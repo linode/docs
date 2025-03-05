@@ -31,7 +31,7 @@ This guide shows how to set up a Harbor registry on a dedicated compute instance
 
 The Harbor installation in this guide assumes that you have [a domain name registered through a domain registrar](/docs/products/networking/dns-manager/get-started/#register-the-domain), and that you can edit the DNS records for this domain. This is so that SSL connections can be configured for the Harbor server. If you do not have a domain name, register one now.
 
-The infrastructure for this guide is created on the Akamai Connected Cloud platform. If you do not already have one, [create an account](/docs/products/platform/get-started/) for the platform.
+The infrastructure for this guide is created on the Akamai cloud computing platform. If you do not already have one, [create an account](/docs/products/platform/get-started/) for the platform.
 
 The following is a summary of the infrastructure created in this guide. Instructions for creating these services are included later in the guide:
 
