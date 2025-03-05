@@ -114,7 +114,7 @@ While relatively simple, this example provides a strong base model. You can easi
 The configurations and commands used in this guide add one or more Linode instances to your account. Be sure to monitor your account closely in the Linode Cloud Manager to avoid unwanted charges.
 {{< /note >}}
 
-1. The provider allows you to deploy Akamai Connected Cloud (formerly Linode) instances with Crossplane.
+1. The provider allows you to deploy Akamai Cloud (formerly Linode) instances with Crossplane.
 
 1.  Create a deployment manifest (e.g. `provider.yml`) for installing the [Linode provider](https://marketplace.upbound.io/providers/linode/provider-linode/) (`provider-linode`) to your Crossplane instance:
 
