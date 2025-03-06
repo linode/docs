@@ -1,5 +1,6 @@
 {{- $sections := where site.Pages "Kind" "section" -}}
-{{- $sections = where $sections "Section" "not in" (slice "content" "development") -}}
+{{- $sectionNames := partial "sections/search/get-search-data-sectionnames.html" . }}
+{{- $sections = where $sections "Section" "in" $sectionNames -}}
 {{- $list := slice -}}
 {{- range $i, $e := $sections -}}
   {{- $thumb := partial "sections/search/get-search-data-thumb.html" (dict "page" . "tryFeatureSVG" true) -}}

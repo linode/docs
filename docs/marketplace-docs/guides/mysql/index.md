@@ -13,6 +13,8 @@ aliases: ['/products/tools/marketplace/guides/mysql/','/platform/marketplace/dep
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 607026
+marketplace_app_name: "MySQL/MariaDB"
 ---
 
 MySQL is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. This Marketplace app can deploy MySQL or MariaDB. MariaDB is an open-source, multi-threaded relational database management system, backward compatible replacement for MySQL. It is maintained and developed by the MariaDB Foundation.

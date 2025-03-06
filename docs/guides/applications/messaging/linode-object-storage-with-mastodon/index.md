@@ -34,13 +34,13 @@ Mastodon by default stores its media attachments locally. Every upload is saved 
 
 If your Mastodon instance stays below a certain size and traffic level, these image uploads might not cause issues. But as your Mastodon instance grows, the local storage approach can cause difficulties. Media stored in this way is often difficult to manage and a burden on your server.
 
-But object storage, by contrast, excels when it comes to storing static files — like Mastodon's media attachments. An S3-compatible object storage bucket can more readily store a large number of static files and scale appropriately.
+But object storage, by contrast, excels when it comes to storing static files — like Mastodon's media attachments. An Amazon S3-compatible object storage bucket can more readily store a large number of static files and scale appropriately.
 
 To learn more about the features of object storage generally and Linode Object Storage more particularly, take a look at our [Linode Object Storage overview](/docs/products/storage/object-storage/).
 
 ## How to Use Linode Object Storage with Mastodon
 
-The rest of this guide walks you through setting up a Mastodon instance to use Linode Object Storage for storing its media attachments. Although the guide uses Linode Object Storage, the steps should also provide an effective model for using other S3-compatible object storage buckets with Mastodon.
+The rest of this guide walks you through setting up a Mastodon instance to use Linode Object Storage for storing its media attachments. Although the guide uses Linode Object Storage, the steps should also provide an effective model for using other Amazon S3-compatible object storage buckets with Mastodon.
 
 The tutorial gives instructions for creating a new Mastodon instance, but the instructions should also work for most existing Mastodon instances regardless of whether it was installed on Docker or from source. Additionally, the tutorial includes steps for migrating existing, locally-stored Mastodon media to the object storage instance.
 
@@ -195,7 +195,7 @@ At this point, your Mastodon instance is ready to start storing media on your Li
 
 If you are adding object storage to an existing Mastodon instance, likely already have content stored locally. And likely you want to migrate that content to your new Linode Object Storage bucket.
 
-To do so, you can use a tool for managing S3 storage to copy local contents to your remote object storage bucket. For instance, AWS has a command-line S3 tool that should be configurable for Linode Object Storage.
+To do so, you can use a tool for managing Amazon S3-compatible storage to copy local contents to your remote object storage bucket. For instance, AWS has a command-line S3 tool that should be configurable for Linode Object Storage.
 
 However, this guide uses the powerful and flexible [rclone](https://rclone.org/s3/). `rclone` operates on a wide range of storage devices and platforms, not just S3, and it is exceptional for syncing across storage mediums.
 
@@ -239,6 +239,6 @@ Perhaps the simplest way to verify your Mastodon configuration is by making a po
 
 You Mastodon instance now has its media storage needs being handled by object storage. And with that your server has become more scalable and prepared for an expanding user base.
 
-The links below provide additional information on how the setup between Mastodon and an S3-compatible storage works.
+The links below provide additional information on how the setup between Mastodon and Amazon S3-compatible storage works.
 
 To keep learning about Mastodon, be sure to take a look at the official [Mastodon blog](https://blog.joinmastodon.org/) and the [Mastodon discussion board](https://discourse.joinmastodon.org/).

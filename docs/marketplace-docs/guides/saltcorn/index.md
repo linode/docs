@@ -11,6 +11,8 @@ aliases: ['/products/tools/marketplace/guides/saltcorn/','/guides/saltcorn-marke
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 971042
+marketplace_app_name: "Saltcorn"
 ---
 
 [Saltcorn](https://saltcorn.com/) is an flexible open source no-code database application builder. You can use it to build web applications based on relational data with flexible views, data types, and layouts.

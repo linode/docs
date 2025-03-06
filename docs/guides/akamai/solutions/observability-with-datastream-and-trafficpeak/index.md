@@ -87,4 +87,4 @@ Below is a high-level diagram and walkthrough of a DataStream and TrafficPeak ar
 
 -   **VMs:** Compute Instances used to run TrafficPeak’s log ingest and processing software. Managed by Akamai.
 
--   **Object Storage:** S3 compatible object storage used to store log data from TrafficPeak. Managed by Akamai.
+-   **Object Storage:** Amazon S3-compatible object storage used to store log data from TrafficPeak. Managed by Akamai.

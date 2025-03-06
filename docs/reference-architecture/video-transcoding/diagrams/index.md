@@ -114,7 +114,7 @@ Some key features of figure 3 are described as follows:
 
     1. The workflow creates a persistent volume to be shared by all steps of the workflow. This is a common file-based workspace for all steps of the workflow to access. The source files and output files are stored on this volume.
 
-    1.  Argo has integrated capabilities to communicate with S3-compliant storage, which includes Linode Object Storage. The source file is transferred from Object Storage to the local persistent volume claim.
+    1.  Argo has integrated capabilities to communicate with Amazon S3-compliant storage, which includes Linode Object Storage. The source file is transferred from Object Storage to the local persistent volume claim.
 
     1.  MediaInfo and FFmpeg are two industry-standard open source tools for media processing workflows. These are incorporated into the reference architecture with community-supported containers from [DockerHub](https://hub.docker.com/). MediaInfo gathers information about the source file, and this metadata is passed to the transcoding process.
 

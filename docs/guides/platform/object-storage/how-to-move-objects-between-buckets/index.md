@@ -17,7 +17,7 @@ aliases: ['/platform/object-storage/how-to-move-objects-between-buckets/']
 
 {{% content "object-storage-ga-shortguide" %}}
 
-Linode’s Object Storage is a globally-available, S3-compatible method for storing and accessing data. With Object Storage more widely available, you may have buckets in multiple locations, this guide shows you how to move objects between buckets quickly and easily.
+Linode’s Object Storage is a globally-available, Amazon S3-compatible method for storing and accessing data. With Object Storage more widely available, you may have buckets in multiple locations, this guide shows you how to move objects between buckets quickly and easily.
 
 In this guide you learn how to move objects between buckets using:
 

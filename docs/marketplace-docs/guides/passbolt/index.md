@@ -8,6 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/products/tools/marketplace/guides/passbolt/','/products/tools/marketplace/guides/deploy-passbolt-through-the-linode-marketplace/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+marketplace_app_id: 1329430
+marketplace_app_name: "Passbolt Community Edition"
 ---
 
 This Marketplace App deploys the latest unmodified version of [Passbolt Community Edition](https://github.com/passbolt/passbolt_api), an open-source password manager designed for teams and businesses. It allows users to securely store, share, and manage passwords.

@@ -39,24 +39,19 @@
 {{ $globalTargetPathLayout := "cachewarmers/global/%s.json" }}
 
 {{ with $res }}
-  {{ with .Err }}
-    {{ erroridf "algolia-cachewarmer" "Failed to warm Algolia cache: %s" . }}
-  {{ else }}
-    {{/* Create one JSON file per Algolia result. */}}
-    {{ $data := .Content | transform.Unmarshal }}
+  {{/* Create one JSON file per Algolia result. */}}
+  {{ $data := .Content | transform.Unmarshal }}
+  {{ range $i, $e := $queries }}
+    {{ $name := path.Base $e.Name | strings.TrimSuffix ".json" }}
 
-    {{ range $i, $e := $queries }}
-      {{ $name := path.Base $e.Name | strings.TrimSuffix ".json" }}
-
-      {{ $targetPath := printf $globalTargetPathLayout $name }}
-      {{ $res := index $data.results $i }}
-      {{ $targetResource := resources.FromString $targetPath (jsonify $res) }}
-      {{ if (ne hugo.Environment "development") }}
-        {{ $targetResource = $targetResource | minify }}
-      {{ end }}
-      {{ $resourcem = merge $resourcem (dict $name $targetResource.RelPermalink) }}
-      {{ $datam = merge $datam (dict $name $res) }}}
+    {{ $targetPath := printf $globalTargetPathLayout $name }}
+    {{ $res := index $data.results $i }}
+    {{ $targetResource := resources.FromString $targetPath (jsonify $res) }}
+    {{ if (ne hugo.Environment "development") }}
+      {{ $targetResource = $targetResource | minify }}
     {{ end }}
+    {{ $resourcem = merge $resourcem (dict $name $targetResource.RelPermalink) }}
+    {{ $datam = merge $datam (dict $name $res) }}}
   {{ end }}
 {{ else }}
   {{ $help := "" }}
@@ -67,8 +62,6 @@
 {{ end }}
 
 {{ $searchData := partialCached "sections/search/get-search-data.html" . -}}
-{{ $searchDataAPI := partialCached "sections/search/get-search-data-api.html" . -}}
-{{ $searchData = $searchData | append $searchDataAPI }}
 {{ $searchData = sort $searchData "section" }}
 {{ $currentSection := "" }}
 {{ $currentSectionData := slice }}
