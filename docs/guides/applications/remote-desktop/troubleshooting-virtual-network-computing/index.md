@@ -1,17 +1,18 @@
 ---
-slug: troubleshooting-virtual-network-connections
-title: "Troubleshooting Virtual Network Connections"
-title_meta: "How to Troubleshoot Virtual Network Connections"
-description: 'It is important to monitor all the network connections that are critical to your business. In this guide, you learn how to troubleshoot Virtual Network Connections for different operating systems.'
+slug: troubleshooting-virtual-network-computing
+title: "Troubleshooting Virtual Network Computing"
+title_meta: "How to Troubleshoot Virtual Network Computing"
+description: 'It is important to monitor all the network connections that are critical to your business. In this guide, you learn how to troubleshoot Virtual Network Computing for different operating systems.'
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 published: 2023-03-20
+modified: 2025-02-25
 keywords: ['troubleshoot vnc', 'troubleshoot linx', 'troubleshoot macOS', 'vnc encryption support']
 tags: ['vpn']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-Troubleshooting Virtual Network Connections (VNC) is a progression of tasks from checking network connections, VNC version compatibility, option tweaks interoperability, and encryption matches.
+Troubleshooting Virtual Network Computing (VNC) is a progression of tasks from checking network connections, VNC version compatibility, option tweaks interoperability, and encryption matches.
 
 VNC software serves remote GUI connection needs. It connects hosts that support VNC, regardless of operating system, hardware, or network connection speed. VNC, similar to Microsoft’s Remote Desktop Protocol, is also found to be compatible with Apple’s Remote Desktop Protocol, and many desktops, servers, and IoT devices.
 

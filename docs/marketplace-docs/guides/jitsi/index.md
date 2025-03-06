@@ -14,6 +14,8 @@ aliases: ['/products/tools/marketplace/guides/jitsi/','/platform/marketplace/how
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 662121
+marketplace_app_name: "Jitsi"
 ---
 !["Jitsi Start a Meeting"](Deploy_Jitsi_oneclickapps.png "Jitsi Start a Meeting")
 [Jitsi](https://jitsi.org) is a suite of open source projects that lets you host your own virtual video conferences.

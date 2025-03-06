@@ -12,7 +12,7 @@ external_resources:
 - '[Linode Object Storage guides & tutorials](/docs/guides/platform/object-storage/)'
 ---
 
-Linode Object Storage is an S3-compatible service used for storing large amounts of unstructured data. This guide includes steps on how to migrate up to 100TB of static content from Azure Blob Storage to Linode Object Storage using rclone, along with how to monitor your migration using rclone’s WebUI GUI.
+Linode Object Storage is an Amazon S3-compatible service used for storing large amounts of unstructured data. This guide includes steps on how to migrate up to 100TB of static content from Azure Blob Storage to Linode Object Storage using rclone, along with how to monitor your migration using rclone’s WebUI GUI.
 
 ## Migration Considerations
 
@@ -305,4 +305,4 @@ There are several next steps to consider after a successful object storage migra
 
 -   **Confirm the changeover is functioning as expected.** Allow some time to make sure your updated workloads and jobs are interacting successfully with Linode Object Storage. Once you confirm everything is working as expected, you can safely delete the original source bucket and its contents.
 
--   **Take any additional steps to update your system for S3 compatibility.** Since the Azure Blob Storage API is not S3 compatible, you may need to make internal configuration changes to ensure your system is set up to communicate using S3 protocol. This means your system should be updated to use an S3-compatible [SDK](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html) like [Boto3](https://aws.amazon.com/sdk-for-python/) or S3-compatible command line utility like [s3cmd](https://s3tools.org/s3cmd). The [AWS SDK](https://techdocs.akamai.com/cloud-computing/docs/using-the-aws-sdk-for-php-with-object-storage) can also be configured to function with Linode Object Storage.
+-   **Take any additional steps to update your system for Amazon S3 compatibility.** Since the Azure Blob Storage API is not Amazon S3-compatible, you may need to make internal configuration changes to ensure your system is set up to communicate using S3 protocol. This means your system should be updated to use an Amazon S3-compatible [SDK](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html) like [Boto3](https://aws.amazon.com/sdk-for-python/) or Amazon S3-compatible command line utility like [s3cmd](https://s3tools.org/s3cmd). The [AWS SDK](https://techdocs.akamai.com/cloud-computing/docs/using-the-aws-sdk-for-php-with-object-storage) can also be configured to function with Linode Object Storage.

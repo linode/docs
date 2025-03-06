@@ -51,7 +51,7 @@ An optimized pipeline consists of a set of one or more "gold images". These beco
 
 Lightning code is configured to include multiple data loader steps to train neural networks. Depending on the desired training iterations and epochs, configured code can optionally store numerous intermediate storage objects and spaces. This allows for the isolation of training and validation steps for further testing, validation, and feedback loops.
 
-Throughout the modeling process, various storage spaces are used for staging purposes. These spaces might be confined to the Linux instance running PyTorch Lightning. Alternatively, they can have inputs sourced from static or streaming objects located either within or outside the instance. Such sourced locations can include various URLs, local Linode volumes, Linode (or other S3 buckets), or external sources. This allows instances to be chained across multiple GPU instances if desired.
+Throughout the modeling process, various storage spaces are used for staging purposes. These spaces might be confined to the Linux instance running PyTorch Lightning. Alternatively, they can have inputs sourced from static or streaming objects located either within or outside the instance. Such sourced locations can include various URLs, local Linode volumes, Linode (or other Amazon S3-compatible buckets), or external sources. This allows instances to be chained across multiple GPU instances if desired.
 
 This introduces an additional stage in the pipeline between and among instances for high-volume or large tensor data source research.
 
@@ -91,7 +91,7 @@ Several storage profiles work for the needs of modeling research, including:
 
 -   **Mounted Linode Volumes**: Up to eight logical disk volumes ranging from 10 GB to 80 TB can be optionally added to any Linode. Volumes are mounted and unmounted either manually or programmatically. Volumes may be added, deleted, and/or backed-up during the research cycle. Volume storage costs are optional.
 
--   **Linode Object Storage**: Similar to CORS S3 storage, Linode Object Storage emulates AWS or DreamHost S3 storage, so S3 objects can be migrated to Linode and behave similarly. Standard S3 buckets can be imported, stored, or deleted as needed during the research cycle. Object storage costs are optional.
+-   **Linode Object Storage**: Similar to CORS S3 storage, Linode Object Storage emulates AWS or DreamHost S3 storage, so Amazon S3-compatible objects can be migrated to Linode and behave similarly. Standard S3 buckets can be imported, stored, or deleted as needed during the research cycle. Object storage costs are optional.
 
 -   **External URL Code Calls**: External networked data sources are subject to the data flow charges associated with the Linode GPU or other instance cost.
 

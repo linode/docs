@@ -12,6 +12,8 @@ aliases: ['/products/tools/marketplace/guides/plex/','/platform/marketplace/depl
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 662119
+marketplace_app_name: "Plex Media Server"
 ---
 
 [Plex](https://www.plex.tv/) is a feature-rich streaming platform that lets you organize and stream your own digital video and audio to your devices. This guide shows you how to deploy the [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) using Linode's Plex Marketplace App, upload media to your Plex Server, and connect to it from a Plex client application. Your Plex Media Server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this app.

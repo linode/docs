@@ -11,6 +11,8 @@ aliases: ['/products/tools/marketplace/guides/focalboard/','/guides/focalboard-m
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 971045
+marketplace_app_name: "Focalboard"
 ---
 
 [Focalboard](https://www.focalboard.com/) is an open source alternative to project management tools such as Asana, Trello, and Notion. It helps teams, individuals, and developers stay aligned and organized on their everyday tasks. With Focalboard, you can reach milestones, keep track of project notes, and achieve goals.

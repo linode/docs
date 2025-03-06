@@ -12,6 +12,8 @@ aliases: ['/products/tools/marketplace/guides/clustercontrol/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 869158
+marketplace_app_name: "ClusterControl"
 ---
 
 [ClusterControl](https://severalnines.com/product/clustercontrol) (by developer Severalnines) is a unified console to manage the full database lifecycle of the most popular open-source databases (on-premise or in the cloud). Provision, monitor and manage highly available database clusters in minutes with dashboards, backups, notifications, reports and automated recovery.

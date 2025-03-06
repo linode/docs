@@ -61,7 +61,7 @@ The minimum RAM requirement for the worker nodes is 4GB RAM to ensure that jobs 
 
 Once the deployment is complete, visit the Spark UI at the URL provided at `/etc/motd`. This is either the domain you entered when deploying the cluster or the reverse DNS value of the master node.
 
-The Spark Cluster needs access to external storage such as S3, HDFS, Azure Blob Storage, Apache HBase, or your local filesystem. For more details on this, see [Integration With Cloud Infrastructures](https://spark.apache.org/docs/3.5.1/cloud-integration.html).
+The Spark Cluster needs access to external storage such as Amazon S3 or S3-compatible storage, HDFS, Azure Blob Storage, Apache HBase, or your local filesystem. For more details on this, see [Integration With Cloud Infrastructures](https://spark.apache.org/docs/3.5.1/cloud-integration.html).
 
 ### Authentication
 

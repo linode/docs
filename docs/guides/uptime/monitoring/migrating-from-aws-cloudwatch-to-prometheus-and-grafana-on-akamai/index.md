@@ -509,7 +509,7 @@ CloudWatch also visualizes metrics in graphs. For instance, by querying the endp
 
 ### Export Existing CloudWatch Logs and Metrics
 
-AWS includes tools for exporting CloudWatch data for analysis or migration. For example, CloudWatch logs can be exported to an S3 bucket, making them accessible outside AWS and enabling them to be re-ingested into other tools.
+AWS includes tools for exporting CloudWatch data for analysis or migration. For example, CloudWatch logs can be exported to an S3 bucket. This allows them to be accessible outside AWS and enables them to be re-ingested into other Amazon S3-compatible tools.
 
 To export CloudWatch Logs to S3, use the following [`create-export-task`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/logs/create-export-task.html) command from the system where your AWS CLI is configured:
 

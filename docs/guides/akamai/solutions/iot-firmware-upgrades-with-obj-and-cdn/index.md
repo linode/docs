@@ -39,7 +39,7 @@ This solution creates a streamlined delivery pipeline that allows developers to 
 
 ### Systems and Components
 
-- **Linode Object Storage:** An S3 compatible Object Storage bucket
+- **Linode Object Storage:** An Amazon S3-compatible Object Storage bucket
 
 - **Linode VM:** A Dedicated 16GB Linode virtual machine
 

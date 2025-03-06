@@ -11,6 +11,8 @@ aliases: ['/products/tools/marketplace/guides/cloudron/','/platform/marketplace/
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 691621
+marketplace_app_name: "Cloudron"
 ---
 
 [Cloudron](https://www.cloudron.io) is a platform that makes it easy to install, manage, and secure web apps on a server. Cloudron provides a centralized way to manage users and specify which apps they can access.

@@ -12,7 +12,7 @@ external_resources:
 - '[Ubuntu Forums: Heliode - Howto: Backup and Restore Your System!](https://ubuntuforums.org/showthread.php?t=35087)'
 ---
 
-Linode's [Object Storage](https://www.linode.com/products/object-storage/) service is an S3-compatible cloud-based file storage solution that offers high availability. In addition to many other data-storage uses, Linode Object Storage can efficiently store backups of your Linode Compute Instances.
+Linode's [Object Storage](https://www.linode.com/products/object-storage/) service is an Amazon S3-compatible cloud-based file storage solution that offers high availability. In addition to many other data-storage uses, Linode Object Storage can efficiently store backups of your Linode Compute Instances.
 
 In this tutorial, learn how to create full-system backups from the command line and store them on Linode Object Storage. Afterwards, find out how to automate and schedule the entire process.
 
@@ -66,7 +66,7 @@ The tar command also supports incremental backups, using its `--listed-increment
 
 With your backup made and stored in a convenient `backup.tgz` file, you can start the process of storing it on an Object Storage bucket.
 
-The [rclone](https://rclone.org/) utility handles that process efficiently, especially when you plan on automating backups (covered in the next section). You can learn more about rclone and its usage with S3 object storage in our guide [Use Rclone to Sync Files to Linode Object Storage](/docs/guides/rclone-object-storage-file-sync/).
+The [rclone](https://rclone.org/) utility handles that process efficiently, especially when you plan on automating backups (covered in the next section). You can learn more about rclone and its usage with object storage in our guide [Use Rclone to Sync Files to Linode Object Storage](/docs/guides/rclone-object-storage-file-sync/).
 
 Follow along with the steps here to set up rclone and store your initial backup file to a Linode Object Storage instance.
 
