@@ -13,7 +13,7 @@ tab_group_main:
 
 This abstract provides a concrete example of how to autoscale a generic, highly available application runtime running on Compute Instances using Prometheus and a Jenkins CI/CD pipeline. For an introduction to CI/CD pipelines and use cases see [Introduction to Continuous Integration and Continuous Delivery (CI/CD)](/docs/guides/introduction-ci-cd/).
 
-Cloud-based highly available workloads often need to scale horizontally when faced with periods of high demand, which can include traffic bursts based on marketing campaigns, new product launches, industry-based cyclical usage patterns, or unanticipated demand. Regardless of the reason, having the flexibility to reduce your costs when traffic is low, while also having the capability to expand your workload capacity on-demand, can be critical to customer satisfaction, your reputation, and your bottom line.  This reference architecture demonstrates how to scale your workloads up or down within Akamai cloud computing instances hosting your application runtime.
+Cloud-based highly available workloads often need to scale horizontally when faced with periods of high demand, which can include traffic bursts based on marketing campaigns, new product launches, industry-based cyclical usage patterns, or unanticipated demand. Regardless of the reason, having the flexibility to reduce your costs when traffic is low, while also having the capability to expand your workload capacity on-demand, can be critical to customer satisfaction, your reputation, and your bottom line.  This reference architecture demonstrates how to scale your workloads up or down within Akamai Cloud instances hosting your application runtime.
 
 ### Figure 1: A Common Highly Available Application Architecture
 
