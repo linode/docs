@@ -9,7 +9,7 @@ keywords: ['migrate','gcp hyperdisk','gcp persistent disk','linode block storage
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-This guide describes the process of migrating a single disk from Google Cloud Platform's (GCP) Hyperdisk or Persistent Disk services to Linode Block Storage using the rsync file synchronization utility. This guide focuses on migrating secondary persistent data storage disks and does not address migrating the boot disk of a Google Compute Engine instance.
+This guide describes the process of migrating a single disk from Google Cloud Platform's (GCP) Hyperdisk or Persistent Disk services to Linode Block Storage using the rsync file synchronization utility. This guide focuses on migrating secondary persistent data storage disks rather than migrating the boot disk of a Google Compute Engine instance.
 
 ## Block Storage Migration Workflow Diagram
 
@@ -53,12 +53,12 @@ Filesystem      Size  Used Avail Use% Mounted on
 Bandwidth for the transfer can vary according to different factors, including:
 
 - Outbound bandwidth limits for your Compute Engine instance
-- Geographic distance between the Compute Engine instance and the Linode instance.
+- Geographic distance between the Compute Engine instance and the Linode instance
 - Disk operation limits
 
 When planning your migration, consider performing a bandwidth test between the two locations first. Then, use the observed bandwidth from the test to calculate the estimated migration time for the disk.
 
-Utilities like [iperf](https://en.wikipedia.org/wiki/Iperf) can be useful for performing this type of bandwidth measurement. Alternatively, you can create a test file on the Compute Engine instance, migrate it following the [instructions](#block-storage-migration-instructions) in this guide, and then view the bandwidth reported by rsync's output.
+Utilities like [iperf](/docs/guides/install-iperf-to-diagnose-network-speed-in-linux/) can be useful for performing this type of bandwidth measurement. Alternatively, you can create a test file on the Compute Engine instance, migrate it following the [instructions](#block-storage-migration-instructions) in this guide, and then view the bandwidth reported by rsync's output.
 
 You can use the `dd` command to generate a sample 1GB test file:
 
@@ -74,19 +74,19 @@ The cost to migrate a disk is a function of the data stored on that disk, which 
 Egress costs for migrations out of GCP *may* be waived by Google. Review this [GCP documentation](https://cloud.google.com/exit-cloud?hl=en) for more information on this scenario.
 {{< /note >}}
 
-Inbound traffic sent to your Linode instance and Block Storage Volume have no fees incurred on the Linode platform.
+Inbound traffic sent to your Linode instance and Block Storage Volume have no fees incurred on the Akamai Cloud platform.
 
 ### Security and Firewalls
 
 For data security reasons, files should be migrated over an encrypted connection. Rsync supports using SSH as its transport protocol, which is encrypted by default.
 
-Both your Compute Engine and Linode firewall settings should be configured to allow SSH traffic between the two instances. After the migration is performed, you may wish to close access to SSH between the Linode instance and Compute Engine instance.
+Both your Compute Engine and Akamai Cloud firewall settings should be configured to allow SSH traffic between the two instances. After the migration is performed, you may wish to close access to SSH between the Linode instance and Compute Engine instance.
 
 ## Block Storage Migration Instructions
 
 ### Prerequisites and Assumptions
 
-This guide assumes that you have a Compute Engine instance running Linux. The guide also assumes you have a secondary EBS volume attached to the instance in addition to the instance's boot disk. The assumed filesystem path for this EBS volume is `/mnt/disks/data`, and the username for the Compute Engine instance is `gcpuser`.
+This guide assumes that you have a Compute Engine instance running Linux. The guide also assumes you have a secondary Hyperdisk or Persistent Disk volume attached to the instance in addition to the instance's boot disk. The assumed filesystem path for the volume is `/mnt/disks/data`, and the username for the Compute Engine instance is `gcpuser`.
 
 ### Prepare a Linode Block Storage Volume
 
@@ -96,7 +96,7 @@ This guide assumes that you have a Compute Engine instance running Linux. The gu
     If you create an instance to use for this migration, you may wish to delete it after the migration is complete. Deleting an instance that has an attached volume does not delete the volume.
     {{< /note >}}
 
-1. Follow the [Add volumes](https://techdocs.akamai.com/cloud-computing/docs/manage-block-storage-volumes#add-volumes) product documentation to create and attach a new volume to the Linode instance. This volume should have a capacity equal to or higher than the total data stored on the source EBS volume. Review the [Migration Time Estimates](#migration-time-estimates) section for help with determining how much data is stored on the volume.
+1. Follow the [Add volumes](https://techdocs.akamai.com/cloud-computing/docs/manage-block-storage-volumes#add-volumes) product documentation to create and attach a new volume to the Linode instance. This volume should have a capacity equal to or higher than the total data stored on the source Hyperdisk or Persistent Disk volume. Review the [Migration Time Estimates](#migration-time-estimates) section for help with determining how much data is stored on the volume.
 
     When creating the volume, Cloud Manager displays instructions for how to create a filesystem on the new volume and then mount it. Make a note of the filesystem path that it is mounted under (e.g. `/mnt/linode-block-storage-volume`).
 
@@ -110,7 +110,7 @@ Linux distributions (on both Linode instances and Compute Engine instances) can 
 - [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/)
 - [A Tutorial for Controlling Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/)
 
-You may also configure Cloud Firewalls to control traffic before it arrives at your computing instance. Our [Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall/) product documentation describes how to configure these rules. The [Comparing Cloud Firewalls to Linux firewall software](https://techdocs.akamai.com/cloud-computing/docs/comparing-cloud-firewalls-to-linux-firewall-software) guide further describes the difference between network firewalls and software firewalls. [GCP's product documentation](https://cloud.google.com/security/products/firewall?hl=en) describes how to configure cloud firewalls for Compute Engine instances.
+You may also configure Cloud Firewalls to control traffic before it arrives at your Linode instance. Our [Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall/) product documentation describes how to configure these rules. The [Comparing Cloud Firewalls to Linux firewall software](https://techdocs.akamai.com/cloud-computing/docs/comparing-cloud-firewalls-to-linux-firewall-software) guide further describes the difference between network firewalls and software firewalls. [GCP's product documentation](https://cloud.google.com/security/products/firewall?hl=en) describes how to configure cloud firewalls for Compute Engine instances.
 
 ### Configure SSH Key Pair
 
@@ -148,7 +148,7 @@ Review our [tmux guide](/docs/guides/persistent-terminal-sessions-with-tmux/) fo
 
     After running this command, the tmux session is immediately activated in your terminal.
 
-1. Run the following commands to start migrating the contents of your EBS volume to your Linode Block Storage Volume:
+1. Run the following commands to start migrating the contents of your Hyperdisk or Persistent Disk volume to your Linode Block Storage Volume:
 
     ```command {title="SSH session with Linode instance (bs-migration tmux session)"}
     echo "\n\nInitiating migration $(date)\n---"  | tee -a bs-migration-logs.txt bs-migration-errors.txt >/dev/null
@@ -161,7 +161,7 @@ Review our [tmux guide](/docs/guides/persistent-terminal-sessions-with-tmux/) fo
     - `/home/linodeuser/.ssh/id_rsa`: The name and location of the private key on your Linode instance
     - `{{< placeholder "gcpuser" >}}`: The name of the user on the Compute Engine instance
     - `{{< placeholder "COMPUTE_ENGINE_INSTANCE_IP" >}}`: The IP address of the Compute Engine instance
-    - `/mnt/disks/data/`: The directory under which the EBS volume is mounted
+    - `/mnt/disks/data/`: The directory under which the Hyperdisk or Persistent Disk volume is mounted
     - `/mnt/linode-block-storage-volume`: The directory under which your Linode volume is mounted
 
     {{< note >}}
@@ -172,7 +172,7 @@ Review our [tmux guide](/docs/guides/persistent-terminal-sessions-with-tmux/) fo
 
     The first `echo` appends a message to the log files. Below is a detailed explanation of the key flags and parameters used in the `rsync` command:
 
-    - `-c`: Tells rsync to use checksum comparison for file differences. Normally, rsync uses file size and modification time to decide if files need to be updated, but `-c` forces it to compute checksums, which is slower but can be more accurate if you want to be sure that files match exactly.
+    - `-c`: Tells rsync to use checksum comparison for file differences. Normally, rsync uses file size and modification time to decide if files need to be updated, but `-c` forces it to compute checksums. This is slower but can be more accurate if you want to be sure that files match exactly.
 
     - `-h`: Human-readable output, which makes file sizes like transfer statistics easier to read by using units like KB and MB, rather than raw byte counts.
 
@@ -220,7 +220,7 @@ Review our [tmux guide](/docs/guides/persistent-terminal-sessions-with-tmux/) fo
 
 Because the stdout and stderr streams were redirected to log files, the rsync command will not produce output in the terminal. Follow these steps to inspect and monitor the contents of the logs:
 
-1. To avoid interrupting the rsync process, *detach* from the tmux session by entering this sequence of keystrokes: <kbd>Ctrl</kbd> + <kbd>B</kbd> followed by <kbd>D</kbd>. You are returned to the SSH session that created the tmux session:
+1. To avoid interrupting the rsync process, *detach* from the tmux session by entering the following sequence of keystrokes: <kbd>Ctrl</kbd> + <kbd>B</kbd> followed by <kbd>D</kbd>. You are returned to the SSH session that created the tmux session:
 
     ```output
     [detached (from session block-storage-migration)]
@@ -246,7 +246,7 @@ Because the stdout and stderr streams were redirected to log files, the rsync co
 
 ### Verify the Migration
 
-To verify that rsync has synced all the files as expected, re-run the `rsync` command with the `--dry-run –stats` flags, replacing the same values as before:
+To verify that rsync has synced all the files as expected, re-run the `rsync` command with the `--dry-run –-stats` flags, replacing the same values as before:
 
 ```command {title="SSH session with Linode instance"}
 rsync -chavzP --stats --dry-run -e "ssh -i /home/gcpuser/.ssh/id_rsa" {{< placeholder "gcpuser" >}}@{{< placeholder "COMPUTE_ENGINE_INSTANCE_IP" >}}:/mnt/disks/data/ /mnt/linode-block-storage-volume

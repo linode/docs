@@ -9,7 +9,7 @@ keywords: ['migrate','aws ebs','linode block storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-This guide describes the process of migrating a single volume from AWS Elastic Block Store (EBS) to Linode Block Storage using the rsync file synchronization utility. This guide focuses on migrating secondary EBS persistent data storage volumes and does not address migrating the root volume of an AWS EC2 instance.
+This guide describes the process of migrating a single volume from AWS Elastic Block Store (EBS) to Linode Block Storage using the rsync file synchronization utility. This guide focuses on migrating secondary EBS persistent data storage volumes rather than migrating the root volume of an AWS EC2 instance.
 
 ## Block Storage Migration Workflow Diagram
 
@@ -30,8 +30,8 @@ When an AWS EC2 instance is first created, AWS creates a root volume from an Ama
 Like EBS, Linode Block Storage also provides block-level storage volumes to be used with virtual machines. Unlike EBS, Linode Block Storage is generally used for persistent data rather than operating system, boot disks, or temporary data. These other roles are fulfilled by a Linode instance's bundled disk, which is stored on the same host as the Compute Instance. Linode's bundled disk storage is also more suitable for applications that feature high disk operations, like high-traffic databases.
 
 {{< note >}}
-EC2 root volumes can also be created on AWS's [instance store](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html), but these volumes are destroyed when the instance is shut down (or fails). Bundled disk storage for Linode instances persists between shut downs/reboots and is only removed when the Linode instance is destroyed.
-{{{< /note >}}}
+EC2 root volumes can also be created on AWS's [instance store](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html), but these volumes are destroyed when the instance is shut down (or fails). Bundled disk storage for Linode instances persists between shut downs and reboots, and is only removed when the Linode instance is destroyed.
+{{< /note >}}
 
 ## Migration Considerations
 
@@ -55,12 +55,12 @@ Filesystem      Size  Used Avail Use% Mounted on
 Bandwidth for the transfer can vary according to different factors, including:
 
 - Outbound bandwidth limits for your EC2 instance
-- Geographic distance between the EC2 instance and the Linode instance.
+- Geographic distance between the EC2 instance and the Linode instance
 - Disk operation limits
 
 When planning your migration, consider performing a bandwidth test between the two locations first. Then, use the observed bandwidth from the test to calculate the estimated migration time for the volume.
 
-Utilities like [iperf](https://en.wikipedia.org/wiki/Iperf) can be useful for performing this type of bandwidth measurement. Alternatively, you can create a test file on the EC2 instance, migrate it following the [instructions](#block-storage-migration-instructions) in this guide, and then view the bandwidth reported by rsync's output.
+Utilities like [iperf](/docs/guides/install-iperf-to-diagnose-network-speed-in-linux/) can be useful for performing this type of bandwidth measurement. Alternatively, you can create a test file on the EC2 instance, migrate it following the [instructions](#block-storage-migration-instructions) in this guide, and then view the bandwidth reported by rsync's output.
 
 You can use the `dd` command to generate a sample 1GB test file:
 
@@ -76,13 +76,13 @@ The cost to migrate a volume is a function of the data stored on that volume, wh
 Egress costs for migrations out of the AWS platform *may* be waived by AWS. Review this [AWS blog post](https://aws.amazon.com/blogs/aws/free-data-transfer-out-to-internet-when-moving-out-of-aws/) for more information on this scenario.
 {{< /note >}}
 
-Inbound traffic sent to your Linode instance and Block Storage volume have no fees incurred on the Linode platform.
+Inbound traffic sent to your Linode instance and Block Storage Volume have no fees incurred on the Akamai Cloud platform.
 
 ### Security and Firewalls
 
 For data security reasons, files should be migrated over an encrypted connection. Rsync supports using SSH as its transport protocol, which is encrypted by default.
 
-Both your EC2 and Linode firewall settings should be configured to allow SSH traffic between the two instances. After the migration is performed, you may wish to close access to SSH between the Linode instance and EC2 instance.
+Both your EC2 and Akamai Cloud firewall settings should be configured to allow SSH traffic between the two instances. After the migration is performed, you may wish to close access to SSH between the Linode instance and EC2 instance.
 
 ## Block Storage Migration Instructions
 
@@ -112,7 +112,7 @@ Linux distributions (on both Linode instances and EC2 instances) can have softwa
 - [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/)
 - [A Tutorial for Controlling Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/)
 
-You may also configure Cloud Firewalls to control traffic before it arrives at your computing instance. Our [Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall/) product documentation describes how to configure these rules. The [Comparing Cloud Firewalls to Linux firewall software](https://techdocs.akamai.com/cloud-computing/docs/comparing-cloud-firewalls-to-linux-firewall-software) guide further describes the difference between network firewalls and software firewalls. [AWS's product documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html) describes how to configure *security groups* for EC2 instances which function as a network firewall.
+You may also configure Cloud Firewalls to control traffic before it arrives at your Linode instance. Our [Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall/) product documentation describes how to configure these rules. The [Comparing Cloud Firewalls to Linux firewall software](https://techdocs.akamai.com/cloud-computing/docs/comparing-cloud-firewalls-to-linux-firewall-software) guide further describes the difference between network firewalls and software firewalls. [AWS's product documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html) describes how to configure *security groups* for EC2 instances which function as a network firewall.
 
 ### Configure SSH Key Pair
 
@@ -174,7 +174,7 @@ Review our [tmux guide](/docs/guides/persistent-terminal-sessions-with-tmux/) fo
 
     The first `echo` appends a message to the log files. Below is a detailed explanation of the key flags and parameters used in the `rsync` command:
 
-    - `-c`: Tells rsync to use checksum comparison for file differences. Normally, rsync uses file size and modification time to decide if files need to be updated, but `-c` forces it to compute checksums, which is slower but can be more accurate if you want to be sure that files match exactly.
+    - `-c`: Tells rsync to use checksum comparison for file differences. Normally, rsync uses file size and modification time to decide if files need to be updated, but `-c` forces it to compute checksums. This is slower but can be more accurate if you want to be sure that files match exactly.
 
     - `-h`: Human-readable output, which makes file sizes like transfer statistics easier to read by using units like KB and MB, rather than raw byte counts.
 
@@ -222,7 +222,7 @@ Review our [tmux guide](/docs/guides/persistent-terminal-sessions-with-tmux/) fo
 
 Because the stdout and stderr streams were redirected to log files, the rsync command will not produce output in the terminal. Follow these steps to inspect and monitor the contents of the logs:
 
-1. To avoid interrupting the rsync process, *detach* from the tmux session by entering this sequence of keystrokes: <kbd>Ctrl</kbd> + <kbd>B</kbd> followed by <kbd>D</kbd>. You are returned to the SSH session that created the tmux session:
+1. To avoid interrupting the rsync process, *detach* from the tmux session by entering the following sequence of keystrokes: <kbd>Ctrl</kbd> + <kbd>B</kbd> followed by <kbd>D</kbd>. You are returned to the SSH session that created the tmux session:
 
     ```output
     [detached (from session block-storage-migration)]
@@ -248,7 +248,7 @@ Because the stdout and stderr streams were redirected to log files, the rsync co
 
 ### Verify the Migration
 
-To verify that rsync has synced all the files as expected, re-run the `rsync` command with the `--dry-run –stats` flags, replacing the same values as before:
+To verify that rsync has synced all the files as expected, re-run the `rsync` command with the `--dry-run –-stats` flags, replacing the same values as before:
 
 ```command {title="SSH session with Linode instance"}
 rsync -chavzP --stats --dry-run -e "ssh -i /home/awsuser/.ssh/id_rsa" {{< placeholder "awsuser" >}}@{{< placeholder "EC2_INSTANCE_IP" >}}:/data/ /mnt/linode-block-storage-volume
