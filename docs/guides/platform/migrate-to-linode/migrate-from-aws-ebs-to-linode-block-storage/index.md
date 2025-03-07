@@ -2,8 +2,8 @@
 slug: migrate-from-aws-ebs-to-linode-block-storage
 title: "Migrate From AWS EBS to Linode Block Storage"
 description: "Learn how to migrate data from an AWS EBS volume to a Linode Block Storage Volume."
-authors: ["Nathan Melehan"]
-contributors: ["Nathan Melehan"]
+authors: ["Akamai"]
+contributors: ["Akamai"]
 published: 2025-03-07
 keywords: ['migrate','aws ebs','linode block storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
