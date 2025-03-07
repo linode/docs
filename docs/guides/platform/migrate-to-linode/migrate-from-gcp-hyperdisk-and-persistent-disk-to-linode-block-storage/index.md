@@ -123,7 +123,7 @@ This guide assumes the public and private keys are named `id_rsa.pub` and `id_rs
 - The *private key* should be located on the Linode instance. It should be uploaded to the `.ssh/` directory of the user on the Linode instance (e.g. `/home/linodeuser/.ssh/`) and have permissions set to `600`:
 
     ```command {title="SSH session with Linode instance"}
-    chmod 600 /home/linodeuser/.ssh/id_rsa/
+    chmod 600 /home/linodeuser/.ssh/id_rsa
     ```
 
 ### Initiate the Migration
