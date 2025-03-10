@@ -2,7 +2,7 @@
 title: "Deploy Owncast through the Linode Marketplace"
 description: "This guide shows how to install Owncast, a self-hosted live video and webchat server that works with common broadcasting software, from the Linode One-Click Marketplace."
 published: 2021-03-31
-modified: 2022-03-08
+modified: 2025-03-10
 keywords: ['live streaming','marketplace','web chat']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
@@ -30,23 +30,61 @@ marketplace_app_name: "Owncast"
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10
-- **Recommended plan:** All plan types and sizes can be used with Owncast.
+- **Supported distributions:** Ubuntu 24.04 LTS
+- **Suggested plan:** All plan types and sizes can be used with Owncast.
 
 ### Owncast Options
 
 - **Hostname**: Your public hostname for your Owncast server. Required for SSL.
 - **Email**: Your email address for configuring SSL.
 
+{{% content "marketplace-limited-user-fields-shortguide" %}}
+
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
+
 ## Getting Started after Deployment
 
-### Access your Owncast App
+### Obtain the Credentials
 
-After Owncast has finished installing, you can access your server with your Linode's IPv4 address. Copy your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com), and then connect to the server from your browser using your Linode's IPv4 address and port `8080`(for example `192.0.2.0:8080`).
+Once the app is deployed, you need to obtain the credentials from the server.
+
+To obtain credentials:
+
+1.  Log in to your new Compute Instance using one of the methods below:
+
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
+
+1.  Run the following command to access the credentials file:
+
+    ```command
+    cat /home/$USERNAME/.credentials
+    ```
+
+This returns passwords that were automatically generated when the instance was deployed. Save them. Once saved, you can safely delete the file.
+
+## Using Owncast
+
+After Owncast has finished installing, you can access your server with your Linode's custom domain or Reverse DNS.
 
 ![owncast.png 'The Owncast stream view'](owncast.png)
 
-With Owncast running, you can begin to configure your new server. Visit the Admin settings, located at `/admin` (for example `192.0.2.0:8080/admin`). Visit the [Configuration Instructions](https://owncast.online/docs/configuration/?source=linodemarketplace) to learn how you can change your video settings, web page content, and more.
+With Owncast running, you can begin to configure your new server. Visit the Admin settings, located at `/admin` (for example `example.com/admin`) and use the credentials (for the `admin` user) you obtained in the previous section to log in. Visit the [Owncast Documentation](https://owncast.online/docs/) to learn how you can change your video settings, web page content, and more.
+
+### Connecting Your Streaming Software
+
+To start streaming with Owncast:
+
+1. Log in to the Owncast admin panel at `/admin`
+2. Navigate to the **Stream Keys** section
+3. Copy your streaming key
+4. Open your broadcasting software (like OBS Studio)
+5. Configure your streaming settings:
+   - Service: Custom
+   - Server: `rtmp://your-domain-or-ip/live`
+   - Stream Key: The key you copied from the admin panel
+
+For more detailed instructions on configuring specific streaming software, refer to the [Owncast Documentation](https://owncast.online/docs/broadcasting/).
 
 On the server, Owncast is installed in the  `/opt/owncast` directory. You'll find all your data files there. This is also where you can upgrade your Owncast server in the future.
 
