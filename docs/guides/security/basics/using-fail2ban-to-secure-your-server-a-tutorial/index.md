@@ -483,13 +483,7 @@ The best way to understand how failregex works is to write one. Although we do n
     <HOST> - - \[(\d{2})/\w{3}/\d{4}:
     ```
 
-1.  The next sequence is a series of two-digit numbers that make up the time. Because we defined the day of the month as a two-digit number in a capture group (the parentheses), we can backreference it using `\1` (since it is the *first* capture group). Again, the colons are literals:
-
-    ```command
-    <HOST> - - \[(\d{2})/\w{3}/\d{4}:\1:\1:\1
-    ```
-
-    If you do not want to use backreferences this can also be written as:
+1.  The next sequence is a series of two-digit numbers that make up the time. Again, the colons are literals:
 
     ```command
     <HOST> - - \[\d{2}/\w{3}/\d{4}:\d{2}:\d{2}:\d{2}
