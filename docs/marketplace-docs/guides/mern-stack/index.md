@@ -2,14 +2,14 @@
 title: "Deploy a MERN Stack through the Linode Marketplace"
 description: "This guide shows you how to install and configure a MERN (MongoDB, Express, React, Node.js) stack on a Linode using our One-Click Marketplace App."
 published: 2019-04-02
-modified: 2022-03-08
+modified: 2025-03-10
 keywords: ['mongodb','mern','react','express', 'web app']
 tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
 external_resources:
 - '[MongoDB Getting Started](https://docs.mongodb.com/manual/tutorial/getting-started/)'
 - '[Express Hello World Example](https://expressjs.com/en/starter/hello-world.html)'
 - '[React Getting Started](https://reactjs.org/docs/getting-started.html)'
-- '[Node.js Getting Started](https://nodejs.org/es/docs/guides/getting-started-guide/)'
+- '[Node.js Getting Started](https://nodejs.org/en/docs/guides/getting-started-guide/)'
 aliases: ['/products/tools/marketplace/guides/mern-stack/','/platform/marketplace/deploy-mern-with-marketplace-apps/', '/platform/one-click/deploy-mern-with-one-click-apps/', '/guides/deploy-mern-with-one-click-apps/','/guides/deploy-mern-with-marketplace-apps/','/guides/mern-stack-marketplace-app/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -42,22 +42,39 @@ All of these technologies are well-established, offer robust feature sets, and a
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10, Debian 11, and Ubuntu 20.04 LTS
-- **Recommended minimum plan:** 1GB Shared Compute Instance or higher, depending on the number of sites and size of the sites you plan on hosting.
+- **Supported distributions:** Ubuntu 24.04 LTS
+- **Suggested plan:** 1GB Shared Compute Instance or higher, depending on the number of sites and size of the sites you plan on hosting.
 
 ### MERN Stack Options
 
 {{% content "marketplace-limited-user-fields-shortguide" %}}
 
-{{% content "marketplace-custom-domain-fields-shortguide" %}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
 
 ## Getting Started After Deployment
 
-After your MERN One-click App has finished installing, you can:
+### Obtain the Credentials
 
-- [Connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). You need your Linode's root password to proceed.
+Once the app is deployed, you need to obtain the credentials from the server.
+
+To obtain credentials:
+
+1.  Log in to your new Compute Instance using one of the methods below:
+
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
+
+1.  Run the following command to access the credentials file:
+
+    ```command
+    cat /home/$USERNAME/.credentials
+    ```
+
+This returns passwords that were automatically generated when the instance was deployed. Save them. Once saved, you can safely delete the file.
+
+### Additional Resources
 
 - Consult the following guides to learn more about working with the various components of the MERN stack:
 
@@ -71,7 +88,7 @@ After your MERN One-click App has finished installing, you can:
 | **MongoDB** | Document-based database |
 | **Express** | Web application framework |
 | **React** | JavaScript library |
-| **Node JS** | Runtime environment |
-| **UFW (UncomplicatedFirewall)** | Firewall utility. Ports 22/tcp for IPv4 and IPv6 allows incoming traffic. All other ports have the following firewall rules: deny (incoming), allow (outgoing). |
+| **Node.js** | Runtime environment |
+| **UFW (Uncomplicated Firewall)** | Firewall utility. Ports 22/tcp for IPv4 and IPv6 allows incoming traffic. All other ports have the following firewall rules: deny (incoming), allow (outgoing). |
 
 {{% content "marketplace-update-note-shortguide" %}}
