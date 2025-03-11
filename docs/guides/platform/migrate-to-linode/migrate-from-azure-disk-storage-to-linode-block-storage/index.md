@@ -1,12 +1,11 @@
 ---
 slug: migrate-from-azure-disk-storage-to-linode-block-storage
 title: "Migrate From Azure Disk Storage to Linode Block Storage"
-description: "Two to three sentences describing your guide."
-og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
+description: "Learn how to migrate data from an Azure Disk Storage managed disk to a Linode Block Storage Volume."
 authors: ["Leon Yen","Nathan Melehan"]
 contributors: ["Leon Yen","Nathan Melehan"]
 published: 2024-11-18
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['migrate','azure disk storage','linode block storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
