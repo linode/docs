@@ -1,11 +1,11 @@
 ---
 slug: ai-chatbot-and-rag-pipeline-for-inference-on-lke
-title: "Deploy an AI Chatbot and RAG Pipeline for Inferencing on LKE"
+title: "Deploy a Chatbot and RAG Pipeline for AI Inferencing on LKE"
 description: "Utilize the Retrieval-Augmented Generation technique to supplement an LLM with your own custom data."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2025-02-11
-modified: 2025-02-13
+modified: 2025-03-11
 keywords: ['kubernetes','lke','ai','inferencing','rag','chatbot','architecture']
 tags: ["kubernetes","lke"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -45,7 +45,7 @@ This tutorial requires you to have access to a few different services and local 
 
 - A [Cloud Manager](https://cloud.linode.com/) account is required to use many of Akamai’s cloud computing services, including LKE.
 - A [Hugging Face](https://huggingface.co/) account is used for deploying the Llama 3 LLM to KServe.
-- You should have both [kubectl](https://kubernetes.io/docs/reference/kubectl/) and [Helm](https://helm.sh/) installed on your local machine. These apps are used for managing your LKE cluster and installing applications to your cluster.
+- You should have [kubectl](https://kubernetes.io/docs/reference/kubectl/), [Kustomize](https://kustomize.io/), and [Helm](https://helm.sh/) installed on your local machine. These apps are used for managing your LKE cluster and installing applications to your cluster.
 - A **custom dataset** is needed, preferably in Markdown format, though you can use other types of data if you modify the LlamaIndex configuration provided in this tutorial. This dataset should contain all of the information you want used by the Llama 3 LLM. This tutorial uses a Markdown dataset containing all of the Linode Docs.
 
 {{< note type="warning" title="Production workloads" >}}
@@ -61,7 +61,7 @@ It’s not part of the scope of this document to cover the setup required to sec
 
 The first step is to provision the infrastructure needed for this tutorial and configure it with kubectl, so that you can manage it locally and install software through helm. As part of this process, we’ll also need to install the NVIDIA GPU operator at this step so that the NVIDIA cards within the GPU worker nodes can be used on Kubernetes.
 
-1. **Provision an LKE cluster.** We recommend using at least 3 **RTX4000 Ada x1 Medium** GPU plans (plan ID: `g2-gpu-rtx4000a1-m`), though you can adjust this as needed. For reference, Kubeflow recommends 32 GB of RAM and 16 CPU cores for just their own application. This tutorial has been tested using Kubernetes v1.31, though other versions should also work. To learn more about provisioning a cluster, see the [Create a cluster](https://techdocs.akamai.com/cloud-computing/docs/create-a-cluster) guide.
+1. **Provision an LKE cluster.** We recommend using at least 2 **RTX4000 Ada x1 Medium** GPU plans (plan ID: `g2-gpu-rtx4000a1-m`), though you can adjust this as needed. For reference, Kubeflow recommends 32 GB of RAM and 16 CPU cores for just their own application. This tutorial has been tested using Kubernetes v1.31, though other versions should also work. To learn more about provisioning a cluster, see the [Create a cluster](https://techdocs.akamai.com/cloud-computing/docs/create-a-cluster) guide.
 
     {{< note noTitle=true >}}
     GPU plans are available in a limited number of data centers. Review the [GPU product documentation](https://techdocs.akamai.com/cloud-computing/docs/gpu-compute-instances#availability) to learn more about availability.
@@ -97,10 +97,10 @@ Next, let’s deploy Kubeflow on the LKE cluster. These instructions deploy all 
         openssl rand -base64 18
         ```
 
-    1. Create a hash of this password, replacing PASSWORD with the password generated in the previous step. This outputs a string starting with `$2y$12$`, which is password hash.
+    1. Create a hash of this password, replacing PASSWORD with the password generated in the previous step. This outputs the password hash, which starts with `$2y$12$`.
 
         ```command
-        htpasswd -bnBC 12 "" <PASSWORD> | tr -d ':\n'
+        htpasswd -bnBC 12 "" PASSWORD | tr -d ':\n'
         ```
 
     1. Edit the `common/dex/base/dex-passwords.yaml` file, replacing the value for `DEX_USER_PASSWORD` with the password hash generated in the previous step.
@@ -111,7 +111,7 @@ Next, let’s deploy Kubeflow on the LKE cluster. These instructions deploy all 
     while ! kustomize build example | kubectl apply -f -; do echo "Retrying to apply resources"; sleep 20; done
     ```
 
-1. This may take some time to finish. Once it’s complete, verify that all pods are in the ready state.
+1. This may take some time to finish. Once it’s complete, verify that all pods are in the running state.
 
     ```command
     kubectl get pods -A
@@ -152,6 +152,7 @@ After Kubeflow has been installed, we can now deploy the Llama 3 LLM to KServe. 
       name: huggingface-llama3
     spec:
       predictor:
+      minReplicas: 1
         model:
           modelFormat:
             name: huggingface
@@ -202,6 +203,11 @@ Milvus, the vector database designed for AI inference workloads, will be used as
           nvidia.com/gpu: "1"
         limits:
           nvidia.com/gpu: "1"
+        persistentVolumeClaim:
+          size: 5Gi
+    minio:
+      persistence:
+        size: 50Gi
     ```
 
 1. Add Milvus to Helm.
@@ -214,7 +220,7 @@ Milvus, the vector database designed for AI inference workloads, will be used as
 1. Install Milvus using Helm.
 
     ```command
-    helm install my-release milvus/milvus --set cluster.enabled=false --set etcd.replicaCount=1 --set minio.mode=standalone --set pulsar.enabled=false -f milvus-custom-values.yaml
+    helm install my-release milvus/milvus --set cluster.enabled=false --set etcd.replicaCount=1 --set minio.mode=standalone --set pulsarv3.enabled=false -f milvus-custom-values.yaml
     ```
 
 ## Set up Kubeflow Pipeline to ingest data
@@ -335,7 +341,7 @@ This tutorial employs a Python script to create the YAML file used within Kubefl
 
     ![Screenshot of the "New Experiment" page within Kubeflow](kubeflow-new-experiment.jpg)
 
-1. Next, navigate to Pipelines > Pipelines and click the **Upload Pipeline** link. Select **Upload a file** and use the **Choose file** dialog box to select the pipeline YAML file that was created in a previous step.
+1. Next, navigate to Pipelines > Pipelines and click the **Upload Pipeline** link. Select **Upload a file** and use the **Choose file** dialog box to select the pipeline YAML file that was created in a previous step. Click the **Create** button to create the pipeline.
 
     ![Screenshot of the "New Pipeline" page within Kubeflow](kubeflow-new-pipeline.jpg)
 
@@ -368,7 +374,7 @@ Despite the naming, these RAG pipeline files are not related to the Kubeflow pip
 
 1. Create a file called `rag_pipeline.py` with the following contents. The filenames of both the `pipeline-requirements.txt` and `rag_pipeline.py` files should not be changed as they are referenced within the Open WebUI Pipeline configuration file.
 
-    ```file {title="rag-pipeline.py"}
+    ```file {title="rag_pipeline.py"}
     """
     title: RAG Pipeline
     version: 1.0
@@ -595,3 +601,5 @@ Now that the chatbot has been configured, the final step is to access the chatbo
     - The **RAG Pipeline** model that you defined in a previous section does use data from your custom dataset. Ask it a question relevant to your data and the chatbot should respond with an answer that is informed by the custom dataset you configured.
 
         ![Screenshot of a RAG Pipeline query in Open WebUI](open-webui-rag-pipeline.jpg)
+
+        The response time depends on a variety of factors. Using similar cluster resources and the same dataset as this guide, an estimated response time is between 6 to 70 seconds.
