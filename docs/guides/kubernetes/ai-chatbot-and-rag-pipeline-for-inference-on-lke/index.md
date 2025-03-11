@@ -366,6 +366,7 @@ Despite the naming, these RAG pipeline files are not related to the Kubeflow pip
     ```file {title="pipeline-requirements.txt"}
     requests
     pymilvus
+    opencv-python-headless
     llama-index
     llama-index-vector-stores-milvus
     llama-index-embeddings-huggingface
