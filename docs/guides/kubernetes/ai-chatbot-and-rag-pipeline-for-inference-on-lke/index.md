@@ -345,15 +345,15 @@ This tutorial employs a Python script to create the YAML file used within Kubefl
 
     ![Screenshot of the "New Pipeline" page within Kubeflow](kubeflow-new-pipeline.jpg)
 
-1. Navigate to the Pipelines > Runs page and click **Create Run**. Within the Run details section, select the pipeline and experiment that you just created. Choose *One-off* as the **Run Type** and provide the collection name and URL of the dataset (the zip file with the documents you wish to process) in the **Run parameters** section. For this tutorial, we are using `linode_docs` as the name and `https://github.com/linode/docs/archive/refs/tags/v1.360.0.zip` and the dataset URL.
+1. Navigate to the Pipelines > Runs page and click **Create Run**. Within the Run details section, select the pipeline and experiment that you just created. Choose *One-off* as the **Run Type** and provide the collection name and URL of the dataset (the zip file with the documents you wish to process) in the **Run parameters** section. For this tutorial, we are using `linode_docs` as the name and `https://github.com/linode/docs/archive/refs/tags/v1.366.0.zip` as the dataset URL.
 
     ![Screenshot of the "Start a new run" page within Kubeflow](kubeflow-new-run.jpg)
 
-1. Click **Start** to run the pipeline. This process takes some time. For reference, it took ~10 minutes for the run to complete successfully on the linode.com/docs dataset.
+1. Click **Start** to run the pipeline. This process takes some time. For reference, it takes about ~10 minutes for the run to complete on the linode.com/docs dataset.
 
 ## Deploy the chatbot
 
-To finish up this tutorial, we will install the Open-WebUI chatbot and configure it to connect the data generated in the Kubernetes Pipeline with the LLM deployed in KServe. Once this is up and running, you can open up a browser interface to the chatbot and ask it questions. Chatbot UI will use the Milvus database to load context related to the search and send it, along with your query, to the Llama 3 instance within KServe. The LLM will send back a response to the chatbot and your browser will display an answer that is informed by your own custom data.
+To finish up this tutorial, install the Open-WebUI chatbot and configure it to connect the data generated in the Kubernetes Pipeline with the LLM deployed in KServe. Once this is up and running, you can open up a browser interface to the chatbot and ask it questions. Chatbot UI uses the Milvus database to load context related to the search and sends it, along with your query, to the Llama 3 instance within KServe. The LLM then sends back a response to the chatbot and your browser displays an answer that is informed by your own custom data.
 
 ### Create the RAG pipeline files
 
