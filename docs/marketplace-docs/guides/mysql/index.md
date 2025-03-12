@@ -17,7 +17,7 @@ marketplace_app_id: 607026
 marketplace_app_name: "MySQL/MariaDB"
 ---
 
-MySQL is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. This Marketplace app can deploy MySQL or MariaDB. MariaDB is an open-source, multi-threaded relational database management system, backward compatible replacement for MySQL. It is maintained and developed by the MariaDB Foundation.
+The MySQL/MariaDB Marketplace app can deploy MySQL or MariaDB. MySQL is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. MariaDB is an open-source, multi-threaded relational database management system, backward compatible replacement for MySQL that's maintained and developed by the MariaDB Foundation.
 
 ## Deploying a Marketplace App
 
@@ -26,7 +26,7 @@ MySQL is an open-source database management system that uses a relational databa
 {{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
-**Estimated deployment time:** MySQL should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
+**Estimated deployment time:** The app should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
 {{< /note >}}
 
 ## Configuration Options
@@ -71,9 +71,9 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
 1.  To log in to MySQL as the root user:
 
-        sudo mysql -u root -p 
+        sudo mysql -u root -p
 
-1.  When prompted, enter the MySQL root password that was provided in the `/home/$USERNAME/.credentials` file. You'll then be presented with a welcome header and the MySQL prompt.
+1.  When prompted, enter the MySQL root password that was provided in the `/home/$USERNAME/.credentials` file. You get a welcome header and the MySQL prompt.
 
 1.  To generate a list of commands for the MySQL prompt, enter `\h`. You'll then see:
 
@@ -117,7 +117,7 @@ The standard tool for interacting with MySQL is the `mysql` client which install
         use webdata;
         create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
 
-3.  To view the contents of the table that you created:
+3.  To view the contents of the table that you created, enter the command:
 
         describe customers;
 
@@ -131,7 +131,7 @@ The standard tool for interacting with MySQL is the `mysql` client which install
         | last_name   | text    | YES  |     | NULL    |                |
         +-------------+---------+------+-----+---------+----------------+
 
-4. Then exit MySQL/MariaDB.
+4. To exit MySQL/MariaDB, enter:
 
         exit
 
