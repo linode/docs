@@ -20,7 +20,7 @@ marketplace_app_name: "Plex Media Server"
 
 ## Why Use Plex Media Server
 
-Owning a Plex Media Server enables you to maintain a personal media library in addition to accessing [Plex's own content](https://mediaverse.plex.tv/), all available to stream to nearly [any device](https://www.plex.tv/apps-devices/). The ability to stream your own media is a unique advantage over other streaming services like [Netflix](https://www.netflix.com/), and comes only at the cost of your Linode services. Additional features, including local downloading, bandwidth limiting, and hardware transcoding are also available through the paid [Plex Pass](https://www.plex.tv/plex-pass/) service.
+Owning a Plex Media Server enables you to maintain a personal media library in addition to accessing [Plex's own content](https://mediaverse.plex.tv/), all available to stream to nearly [any device](https://www.plex.tv/apps-devices/). The ability to stream your own media is a unique advantage over other streaming services like [Netflix](https://www.netflix.com/), and comes only at the cost of your Akamai cloud computing services. Additional features, including local downloading, bandwidth limiting, and hardware transcoding are also available through the paid [Plex Pass](https://www.plex.tv/plex-pass/) service.
 
 ## Deploying a Marketplace App
 
@@ -39,8 +39,9 @@ Owning a Plex Media Server enables you to maintain a personal media library in a
 
 ### Plex Options
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
-- **SOA Email Address:** *(required)*: Email address to use for generating the SSL certificates and configuring the server and DNS records.
-- **Plex Version:** The Plex One-Click App is configured to use the [Plex Ubuntu repo](https://support.plex.tv/articles/235974187-enable-repository-updating-for-supported-linux-server-distributions/), which provides the Public Main release. 
+- **SOA Email Address:** *(required)*: Enter an email address you want to use for generating the SSL certificates and configuring the server and DNS records.
+- **Plex Version:** The Plex One-Click App is configured to use the [Plex Ubuntu repo](https://support.plex.tv/articles/235974187-enable-repository-updating-for-supported-linux-server-distributions/), which provides the Public Main release.
+
 {{% content "marketplace-custom-domain-fields-shortguide" %}}
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
@@ -49,44 +50,44 @@ Owning a Plex Media Server enables you to maintain a personal media library in a
 
 After your Plex Server has been deployed, you can upload media and configure access to your Plex Server from Plex clients for your media devices.
 
-Before you begin, ensure that you have signed up for a [Plex account](https://www.plex.tv/sign-up/).
+Before you begin, ensure that you signed up to [Plex](https://www.plex.tv/sign-up/).
 
 ### Initial Setup
 
-Administration of your Plex Server is performed from its web interface. Open a web browser and navigate to the custom domain provided during deployment, or the instance's default rDNS. 
+Administration of your Plex Server is performed from its web interface. Open a web browser and go to the custom domain provided during deployment, or the instance's default rDNS.
     ![Plex Login Screen](plex-login.png "Plex login screen.")
 
-1.  Give your Plex Server a name. Be sure to leave the **Allow me to access my media outside my home** box **checked**, and select **NEXT**.
+1.  Enter a name for your Plex server and select the **Allow me to access my media outside my home** checkbox. Click **NEXT**.
 
     ![Plex Server Setup - Name](initial-setup-set-hostname.png "Plex Server Setup - Name.")
 
-1.  Skip Media Library setup by selecting **NEXT** for now. You will [Upload Media](#upload-media) and [Add Media Libraries](#add-media-libraries) in the sections below.
+1.  Skip Media Library setup by clicking **NEXT**. You will [Upload Media](#uploading-media) and [Add Media Libraries](#adding-media-libraries) in the sections below.
 
     ![Plex Server Setup - Skip Add Media Library](initial-setup-skip-media-library.png "Plex Server Setup - Skip Add Media Library.")
 
-1.  Finish initial setup and reach the Plex home screen by selecting **DONE**.
+1.  To finish the initial setup, click **DONE**.
 
     ![Plex Server Setup - Finish](initial-setup-finish.png "Plex Server Setup - Finish.")
 
-1.  Click on the **Settings** icon in top-right corner of the Plex web interface.
+1.  Click the **Settings** icon in top-right corner of the Plex web interface.
 
     ![Plex Settings Icon](initial-setup-settings-icon.png "Plex Settings Icon.")
 
-1.  On the left side bar, ensure that your new Plex Server is selected and select **Remote Access** under the **Settings** section.
+1.  On the left side bar, ensure that your new Plex Server is selected and in the **Settings** section, select **Remote Access**.
 
     ![Plex Server Remote Access Settings](initial-setup-remote-access.png "Plex Remote Access Settings.")
 
-1.  Click the check box next to **Manually specify public port**, keep the default value of `32400`, and select **RETRY** or **APPLY**. You may need to select **SHOW ADVANCED** to see these settings.
+1.  Select the **Manually specify public port** checkbox and keep the default value of `32400`. Click **Retry** or **Apply**. You may need to select **Show advanced** to see these settings.
 
     ![Enable Plex Server Remote Access](initial-setup-enable-remote-access.png "Enable Plex Server Remote Access.")
 
-1.  Wait until you see a message stating that your Plex Server is **Fully accessible outside your network**.
+1.  Wait until you see a message stating that your Plex Server is *Fully accessible outside your network*.
 
     ![Plex Server Remote Access Successful](initial-setup-remote-access-success.png "Plex Server Remote Access Successful.")
 
-You can now access [uploaded media](#upload-media) and manage your Plex Server from any Plex Client, such as the [Plex Web App](https://app.plex.tv). If you are unable to reach your Plex Server remotely, you can repeat the steps in this section to re-establish a direct connection for administrative purposes.
+You can now access [uploaded media](#uploading-media) and manage your Plex Server from any Plex Client, such as the [Plex Web App](https://app.plex.tv). If you are unable to reach your Plex Server remotely, you can repeat the steps in this section to re-establish a direct connection for administrative purposes.
 
-### (Optional) Connect a Linode Block Storage Volume
+### (Optional) Connecting a Linode Block Storage Volume
 
 If your media collection is larger than the space available from your Linode plan, [Block Storage](/docs/products/storage/block-storage/) is a convenient solution. This section outlines the steps for creating and connecting a Block Storage Volume for use with your Plex Server.
 
@@ -94,7 +95,7 @@ If your media collection is larger than the space available from your Linode pla
 For future reference, you can find examples of the instructions provided in this section in Cloud Manager by navigating to [**Volumes**](https://cloud.linode.com/volumes), then selecting **Show Configuration** from the option menu for your Volume.
 {{< /note >}}
 
-1.  [View, Create, and Delete Block Storage Volumes](/docs/products/storage/block-storage/guides/manage-volumes/) if you do not already have one prepared.
+1.  [View, Create, and Delete Block Storage Volumes](/docs/products/storage/block-storage/guides/manage-volumes/) if you don't have one already prepared.
 
 1.  Establish an SSH connection to your Plex Server Linode as your [Limited User](#plex-marketplace-app-options).
 
@@ -102,7 +103,7 @@ For future reference, you can find examples of the instructions provided in this
 
         mkdir ~/plex/media/linode-volume
 
-1.  Mount your Volume path to the mountpoint you have created, substituting `$FILE_SYSTEM_PATH` with your Volume's file system path (which is viewable from Cloud Manager's [**Volumes**](https://cloud.linode.com/volumes) dashboard):
+1.  Mount your Volume path to the mountpoint you have created, substituting `$FILE_SYSTEM_PATH` with your Volume's file system path (which you can get in the Cloud Manager's [**Volumes**](https://cloud.linode.com/volumes) dashboard):
 
         sudo mount $FILE_SYSTEM_PATH ~/plex/media/linode-volume
 
@@ -133,9 +134,9 @@ For future reference, you can find examples of the instructions provided in this
 
         docker restart plex
 
-Media on your Volume is now accessible through the Plex web interface at the mounted directory on your Linode. Next, follow the instructions below on how to [Upload Media](#upload-media) to your Volume (use your Volume's mountpoint instead of creating a new subdirectory), and [Add Media Libraries](#add-media-libraries) to enable streaming media stored on your Volume.
+Media on your Volume is now accessible through the Plex web interface at the mounted directory on your Linode. Next, follow the instructions below on how to [Upload Media](#uploading-media) to your Volume (use your Volume's mountpoint instead of creating a new subdirectory), and [Add Media Libraries](#adding-media-libraries) to enable streaming media stored on your Volume.
 
-### Upload Media
+### Uploading Media
 
 Your Plex Server is set up to access media files in the `~/plex/media` directory. You have many options for uploading or downloading media to your Plex Server. This section shows you how to organize and upload files to your Plex Server using the `scp` command.
 
@@ -151,31 +152,31 @@ This section directs you to run commands either on your Plex Server Linode throu
 
         scp example_video.mp4 $USERNAME@$IP_ADDRESS:~/plex/media/movies
 
-    Depending on the file size(s), this may take a few minutes.
+    Depending on the files' size, this may take a few minutes.
 
     {{< note >}}
     There are other ways to upload files to your Plex Server Linode. See our section in [Linux System Administration Basics](/docs/guides/linux-system-administration-basics/#upload-files-to-a-remote-server) for more information.
     {{< /note >}}
 
-### Add Media Libraries
+### Adding Media Libraries
 
-1.  Log into a Plex Client, such as the [Plex Web App](https://app.plex.tv), then select the **MORE >** link on the Plex side bar.
+1.  Log into a Plex Client, such as the [Plex Web App](https://app.plex.tv), and on the side bar, click **More**.
 
     ![Plex Home Side Bar — More](media-library-side-bar.png "Plex Home Side Bar — More.")
 
-1.  Hover over your Plex Server's name in the Plex side bar, then select the **+** icon.
+1.  Hover over your Plex Server's name in the Plex side bar and click **+**.
 
     ![Add Media Library — Start](media-library-add.png "Add Media Library — Start.")
 
-1.  Select your library type, set the name for your media library, select your language, then select the **NEXT** button.
+1.  Select your library type, set a name and language for your media library. Click **Next**.
 
     ![Set Media Library Type, Name, and Language](media-library-type-name-language.png "Set Media Library Type, Name, and Language.")
 
-1.  Click **BROWSE FOR MEDIA FOLDER**, navigate to the directory within `/media` where your files are stored, then select the **ADD** button.
+1.  Click **Browse for media folder**. Go to the directory within `/media` where your files are stored and click **Add**.
 
     ![Select Media Library Directory](media-library-select-directory.png "Select Media Library Directory.")
 
-1.  Once you are satisfied with your selection, select the **ADD LIBRARY** button.
+1.  Once you are satisfied with your selection, click **Add library**.
 
     ![Add Media Library — Finish](media-library-finish.png "Add Media Library — Finish.")
 
@@ -194,7 +195,8 @@ The Plex Marketplace App installs the following required software on your Linode
 | **Software** | **Description** |
 |:--------------|:------------|
 | [**NGINX**](https://www.nginx.com/) | Open Source webserver and reverse proxy. See our guide on [Getting Started with NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) for more information. |
-| [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Ports 22/tcp, 80/tcp, and 443/tcp for IPv4 and IPv6 are enabled with installation of this app. Additional ports must be opened to send email from your Linode for use with this app. See our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) for instructions. |
+| [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Ports 22/tcp, 80/tcp, and 443/tcp for IPv4 and IPv6 are enabled with installation of this app. Additional ports must be opened to send email from your Linode for use with this app. To learn more, see [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). |
 | [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) | The Plex Media Server transmits locally-stored media files, enabling you to stream your personal media collection to any device that can support a [Plex Client](https://www.plex.tv/apps-devices/). |
+
 
 {{% content "marketplace-update-note-shortguide" %}}
