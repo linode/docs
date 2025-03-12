@@ -40,7 +40,6 @@ Owning a Plex Media Server enables you to maintain a personal media library in a
 ### Plex Options
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 - **SOA Email Address:** *(required)*: Enter an email address you want to use for generating the SSL certificates and configuring the server and DNS records.
-- **Plex Version:** The Plex One-Click App is configured to use the [Plex Ubuntu repo](https://support.plex.tv/articles/235974187-enable-repository-updating-for-supported-linux-server-distributions/), which provides the Public Main release.
 
 {{% content "marketplace-custom-domain-fields-shortguide" %}}
 
@@ -196,7 +195,7 @@ The Plex Marketplace App installs the following required software on your Linode
 |:--------------|:------------|
 | [**NGINX**](https://www.nginx.com/) | Open Source webserver and reverse proxy. See our guide on [Getting Started with NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) for more information. |
 | [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Ports 22/tcp, 80/tcp, and 443/tcp for IPv4 and IPv6 are enabled with installation of this app. Additional ports must be opened to send email from your Linode for use with this app. To learn more, see [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). |
-| [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) | The Plex Media Server transmits locally-stored media files, enabling you to stream your personal media collection to any device that can support a [Plex Client](https://www.plex.tv/apps-devices/). |
+| [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) | The Plex Media Server transmits locally-stored media files, enabling you to stream your personal media collection to any device that can support a [Plex Client](https://www.plex.tv/apps-devices/). The Latest release in Plex's Public Main branch is installed by this deployment. |
 
 
 {{% content "marketplace-update-note-shortguide" %}}
