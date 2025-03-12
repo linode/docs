@@ -35,7 +35,7 @@ marketplace_app_name: "aaPanel"
 
 ## aaPanel Options
 
-- **Email address** *(required)*: Enter the email address to use for generating the SSL certificates as well as configuring the server and DNS records.
+- **Email address** *(required)*: Enter the email address you want to use for generating the SSL certificates and configuring the server and DNS records.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
@@ -68,10 +68,12 @@ This returns passwords that were automatically generated when the instance was d
 
 1.  Log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Once you've login via SSH you will see the message of the day (MOTD) which includes the login URL for this instance.
 
-2.  Once you visit the URL and enter the login credentials you will be prompted to choose which One-Click services (LAMP/LNMP) you would like to install:
+2.  Open the URL and enter the login credentials.
+
+1. Choose which One-Click services (LAMP/LNMP) you want to install.
 
     ![aaPanel One-Click](aaPanel-one-click.png)
 
-Now that you’ve accessed your dashboard, checkout [the official aaPanel documentation](https://doc.aapanel.com/) to learn how to further configure your instance.
+Now that you’ve accessed your dashboard, checkout [the official aaPanel documentation](https://doc.aapanel.com/) to learn how to configure your instance.
 
 {{% content "marketplace-update-note-shortguide" %}}

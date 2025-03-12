@@ -7,6 +7,7 @@ keywords: ['gitlab','marketplace apps','version control','git']
 tags: ["linode platform","version control system","marketplace","cloud-manager"]
 external_resources:
 - '[GitLab Administrator Documentation](https://docs.gitlab.com/ee/administration/)'
+- '[GitLab Official Documentation](https://docs.gitlab.com/ee/university/training/topics/getting_started.html)'
 aliases: ['/products/tools/marketplace/guides/gitlab/','/platform/one-click/deploy-gitlab-with-one-click-apps/','/guides/deploy-gitlab-with-one-click-apps/', '/platform/marketplace/deploy-gitlab-with-marketplace-apps/', '/guides/deploy-gitlab-with-marketplace-apps/','/guides/gitlab-marketplace-app/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -36,7 +37,7 @@ Self-hosting your software development with GitLab offers total control of your 
 
 ### GitLab Options
 
-- **Email address** *(required)*: Enter the email address to use for generating the SSL certificates as well as configuring the server and DNS records.
+- **Email address** *(required)*: Enter the email address you want to use for generating the SSL certificates and configuring the server and DNS records.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
@@ -67,18 +68,18 @@ This returns passwords that were automatically generated when the instance was d
 
 Once your new Compute Instance has been fully deployed, follow the instructions below to access your new Gitlab app.
 
-1. **Log in to your Gitlab site:** Open a web browser and enter either your Compute Instance's default rDNS domain or your domain name (if you entered one during deployment). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing and setting the rDNS value.
+1. Log in to your Gitlab site by opening a web browser and entering either your Compute Instance's default rDNS domain or your domain name (if you entered one during deployment). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing and setting the rDNS value.
 
-    When presented with a login screen, enter the following credentials:
+    On the login screen, enter the following credentials:
 
     - **Username:** `root`
     - **Password:** Use the password obtained from your credentials file.
 
-1.  **Reset the root password:** Once you're logged in, it's recommended that you reset the root password. To do so, navigate to the following URL, replacing *[domain]* with the rDNS domain of your Compute instance or your custom domain:
+1.  Once you're logged in, it's recommended that you reset the root password. To do so, go to the following URL, replacing *[domain]* with the rDNS domain of your Compute instance or your custom domain:
 
         https://[domain]/-/profile/password/edit
 
-You can now begin creating GitLab repositories, users, and more. See [GitLab's official documentation](https://docs.gitlab.com/ee/university/training/topics/getting_started.html) for more information.
+You can now begin creating GitLab repositories, users, and more. To learn more, see [GitLab's official documentation](https://docs.gitlab.com/ee/university/training/topics/getting_started.html).
 
 ## Software Included
 
