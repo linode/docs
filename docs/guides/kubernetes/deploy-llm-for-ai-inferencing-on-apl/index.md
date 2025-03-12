@@ -1,6 +1,6 @@
 ---
 slug: deploy-llm-for-ai-inferencing-on-apl
-title: "Deploy an LLM for AI Inferencing with App Platform on LKE"
+title: "Deploy an LLM for AI Inferencing with App Platform for LKE"
 description: "Two to three sentences describing your guide."
 og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
 authors: ["Akamai"]
@@ -323,4 +323,16 @@ If you haven't done it already, request access to the Llama 3 LLM model. To do t
 Once complete, copy the URL for the `llama3-model-service`, and add it to your clipboard.
 
 ## Deploy and Expose the AI Interface
+
+The publicly-exposed LLM in this guide uses a wide range of ports, and as a result, all Pods in a Team are automatically injected with an Istio sidecar. Sidecar injection is a method of adding additional containers and their configurations to a pod template.
+
+The Istio sidecar in this case prevents the `open-webui` Pod from connecting to the `llama3-model` service, because all egress traffic for Pods in the Team namespace are blocked by an Istio ServiceEntry by default. This means that prior to deploying the AI interface using the `open-webui` Helm chart, the `open-webui` Pod must be prevented from getting the Istio sidecar.
+
+Since the `open-webui` Helm chart does not allow for the addition of extra labels, there are two workarounds:
+
+1.  Adjust the `open-webui` Helm chart in the chart's Git repository. This is the Git repository where the `open-webui` Helm chart was been stored when the Helm chart was added to the Catalog.
+
+2.  Add a Kyverno **Policy** that mutates the `open-webui` Pod so that it will have the `sidecar.istio.io/inject: "false"` label.
+
+Follow the steps below to follow option 2 and add the necessary security policy.
 
