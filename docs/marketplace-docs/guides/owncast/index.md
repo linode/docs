@@ -8,6 +8,7 @@ tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Owncast](https://owncast.online/)'
 - '[Owncast Github](https://github.com/owncast/owncast)'
+- '[Owncast Documentation](https://owncast.online/docs/)'
 aliases: ['/products/tools/marketplace/guides/owncast/','/guides/deploy-owncast-with-marketplace-apps/','/guides/owncast-marketplace-app/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -44,8 +45,6 @@ marketplace_app_name: "Owncast"
 
 ## Getting Started after Deployment
 
-### Obtain the Credentials
-
 Once the app is deployed, you need to obtain the credentials from the server.
 
 To obtain credentials:
@@ -67,25 +66,25 @@ This returns passwords that were automatically generated when the instance was d
 
 After Owncast has finished installing, you can access your server with your Linode's custom domain or Reverse DNS.
 
-![owncast.png 'The Owncast stream view'](owncast.png)
+With Owncast running, you can begin to configure your new server. Visit the Admin settings, located at `/admin` (for example `example.com/admin`) and use the credentials (for the `admin` user) you obtained in the previous section to log in.
 
-With Owncast running, you can begin to configure your new server. Visit the Admin settings, located at `/admin` (for example `example.com/admin`) and use the credentials (for the `admin` user) you obtained in the previous section to log in. Visit the [Owncast Documentation](https://owncast.online/docs/) to learn how you can change your video settings, web page content, and more.
+![owncast.png 'The Owncast stream view'](owncast.png)
 
 ### Connecting Your Streaming Software
 
 To start streaming with Owncast:
 
-1. Log in to the Owncast admin panel at `/admin`
-2. Navigate to the **Stream Keys** section
-3. Copy your streaming key
-4. Open your broadcasting software (like OBS Studio)
-5. Configure your streaming settings:
-   - Service: Custom
-   - Server: `rtmp://your-domain-or-ip/live`
-   - Stream Key: The key you copied from the admin panel
+1. Log in to the Owncast admin panel at `/admin`.
+1. Go to the **Stream Keys** section and copy your streaming key.
+1. Open your broadcasting software, for example OBS Studio.
+1. Configure your streaming settings with following values:
+   - **Service**: **Custom**,
+   - **Server**: `rtmp://your-domain-or-ip/live`,
+   - **Stream Key**: The key you copied from the admin panel.
 
 For more detailed instructions on configuring specific streaming software, refer to the [Owncast Documentation](https://owncast.online/docs/broadcasting/).
 
 On the server, Owncast is installed in the  `/opt/owncast` directory. You'll find all your data files there. This is also where you can upgrade your Owncast server in the future.
+
 
 {{% content "marketplace-update-note-shortguide" %}}
