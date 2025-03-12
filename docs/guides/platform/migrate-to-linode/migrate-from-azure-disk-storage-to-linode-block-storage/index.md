@@ -19,8 +19,7 @@ This guide describes the process of migrating a single volume from Azure Disk St
 
 2. The Azure VM sends data on the Azure data disk to a Block Storage Volume attached to the Linode instance via an established rsync connection.
 
-    2a. Egress costs for the migrated data are measured when the data leaves the Azure platform. These costs are billed by Azure.
-
+    1. Egress costs for the migrated data are measured when the data leaves the Azure platform. These costs are billed by Azure.
 {#azure-linode-bs-migration .large-diagram}
 
 ## Linode Block Storage vs. Azure Disk Storage

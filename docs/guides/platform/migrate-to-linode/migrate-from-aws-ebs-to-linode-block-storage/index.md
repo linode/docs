@@ -19,8 +19,7 @@ This guide describes the process of migrating a single volume from AWS Elastic B
 
 2. The EC2 instance sends data on the EBS volume to a Block Storage Volume attached to the Linode instance via an established rsync connection.
 
-    2a. Egress costs for the migrated data are measured when the data leaves the AWS platform. These costs are billed by AWS.
-
+    1. Egress costs for the migrated data are measured when the data leaves the AWS platform. These costs are billed by AWS.
 {#aws-linode-bs-migration .large-diagram}
 
 ## Linode Block Storage vs. AWS EBS

@@ -19,8 +19,7 @@ This guide describes the process of migrating a single disk from Google Cloud Pl
 
 2. The Compute Engine instance sends data on the Hyperdisk or Persistent Disk to a Block Storage Volume attached to the Linode instance via an established rsync connection.
 
-    2a. Egress costs for the migrated data are measured when the data leaves the GCP platform. These costs are billed by Google.
-
+    1. Egress costs for the migrated data are measured when the data leaves the GCP platform. These costs are billed by Google.
 {#gcp-linode-bs-migration .large-diagram}
 
 ## Linode Block Storage vs. GCP Hyperdisk and Persistent Disk
