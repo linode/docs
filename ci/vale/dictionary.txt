@@ -1023,6 +1023,7 @@ Hydrolix
 hykes
 hypercorn
 Hyperdisk
+Hyperdisks
 hyperefficient
 HyperLogLog
 hyperparameter
