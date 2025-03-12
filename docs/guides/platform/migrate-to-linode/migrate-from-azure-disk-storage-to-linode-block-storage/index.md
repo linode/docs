@@ -1,12 +1,11 @@
 ---
 slug: migrate-from-azure-disk-storage-to-linode-block-storage
 title: "Migrate From Azure Disk Storage to Linode Block Storage"
-description: "Two to three sentences describing your guide."
-og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
+description: "Learn how to migrate data from an Azure Disk Storage managed disk to a Linode Block Storage Volume."
 authors: ["Leon Yen","Nathan Melehan"]
 contributors: ["Leon Yen","Nathan Melehan"]
 published: 2024-11-18
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['migrate','azure disk storage','linode block storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
@@ -20,8 +19,7 @@ This guide describes the process of migrating a single volume from Azure Disk St
 
 2. The Azure VM sends data on the Azure data disk to a Block Storage Volume attached to the Linode instance via an established rsync connection.
 
-    2a. Egress costs for the migrated data are measured when the data leaves the Azure platform. These costs are billed by Azure.
-
+    1. Egress costs for the migrated data are measured when the data leaves the Azure platform. These costs are billed by Azure.
 {#azure-linode-bs-migration .large-diagram}
 
 ## Linode Block Storage vs. Azure Disk Storage
