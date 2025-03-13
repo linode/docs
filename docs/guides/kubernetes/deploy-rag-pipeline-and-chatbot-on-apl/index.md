@@ -504,7 +504,7 @@ Update the Kyverno **Policy** created in the previous tutorial ([Deploy an LLM f
     https://github.com/open-webui/helm-charts/blob/pipelines-0.4.0/charts/pipelines/Chart.yaml
     ```
 
-1.  Click **Get Details** to populate the Helm chart details.
+1.  Click **Get Details** to populate the `open-webui-pipelines` Helm chart details.
 
 1.  Click **Add Chart**.
 
@@ -555,3 +555,90 @@ Update the Kyverno **Policy** created in the previous tutorial ([Deploy an LLM f
 
 1.  Click **Submit**.
 
+#### Expose the linode-docs-pipeline Service
+
+1.  Select **Services**.
+
+1.  Click **Create Service**.
+
+1.  In the **Name** dropdown menu, select the `linode-docs-pipeline` service.
+
+1.  Under **Exposure**, select **External**.
+
+1.  Click **Submit**.
+
+1.  Once submitted, copy the URL of the `linode-docs-pipeline` service to your clipboard.
+
+#### Add the open-webui Helm Chart to the Catalog
+
+1.  Select **view** > **team** and **team** > **demo** in the top bar.
+
+1.  Click on **Catalog** in the left menu.
+
+1.  Select **Add Helm Chart**.
+
+1.  Under **Github URL**, add the URL to the `open-webui` Helm chart:
+
+    ```command
+    https://github.com/open-webui/helm-charts/blob/open-webui-5.20.0/charts/open-webui/Chart.yaml
+    ```
+
+1.  Click **Get Details** to populate the `open-webui` Helm chart details.
+
+1.  Click **Add Chart**.
+
+#### Create a Workload to Install the open-webui Helm Chart
+
+1.  Select **view** > **team** and **team** > **demo** in the top bar.
+
+1.  Select **Workloads**.
+
+1.  Click on **Create Workload**.
+
+1.  Select the `open-webui-pipelines` Helm chart from the Catalog.
+
+1.  Click on **Values**.
+
+1.  Provide a name for the Workload.
+
+1.  Edit the chart to include the below values, and set the name of the Workload in the `nameOverride` field:
+
+    ```
+    nameOverride: linode-docs-chatbot
+    ollama:
+    enabled: false
+    pipelines:
+    enabled: false
+    persistence:
+    enabled: false
+    replicaCount: 1
+    extraEnvVars:
+    - name: WEBUI_AUTH
+        value: "false"
+    - name: OPENAI_API_BASE_URLS
+        value: https://llama3-model-predictor-team-demo.<cluster-domain>/openai/v1/openai/v1;https://linode-docs-pipeline-demo.lke366246.<cluster-domain>
+    - name: OPENAI_API_KEYS
+        value: EMPTY;0p3n-w3bu!
+    ```
+
+#### Expose the linode-docs-chatbot Service
+
+1.  Select **Services**.
+
+1.  Click **Create Service**.
+
+1.  In the **Name** dropdown menu, select the `linode-docs-chatbot` service.
+
+1.  Under **Exposure**, select **External**.
+
+1.  Click **Submit**.
+
+## Access the Open Web User Interface
+
+In your list of available **Services**, click on the URL of the `linode-docs-chatbot` to navigate to the Open WebUI chatbot interface. Select the model you wish to use in the top left dropdown menu (`llama3-model` or `RAG Pipeline`).
+
+Meta AI's Llama 3 model uses information that is pre-trained by other data sources - not your custom data set. If you give this model a query, it will use its pre-trained data set to answer your question.
+
+The RAG Pipeline model defined in this guide uses data from the custom data set with which it was provided. The example data set used in this guide is sourced from Linode Docs. If you give this model a query relevant to your custom data, the chatbot should respond with an answer informed by that data set.
+
+[SCREENSHOT]
