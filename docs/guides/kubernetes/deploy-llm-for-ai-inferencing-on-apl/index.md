@@ -1,7 +1,7 @@
 ---
 slug: deploy-llm-for-ai-inferencing-on-apl
 title: "Deploy an LLM for AI Inferencing with App Platform for LKE"
-description: "Two to three sentences describing your guide."
+description: "This guide includes steps and guidance for deploying a large language model for AI inferencing using App Platform for Linode Kubernetes Engine."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-03-11
