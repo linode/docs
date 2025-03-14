@@ -51,8 +51,8 @@ The steps in this guide are written for non-root users. Commands that require el
 1. Create and sign the root certificate with the configurations included below. Ensure you replace the value of the `CN` configuration with your own desired name for your StrongSwan VPN server.
 
         sudo ipsec pki --self --in /etc/ipsec.d/private/ca.key.pem --type rsa \
-          --dn "CN=<Name of this VPN Server>" --ca --lifetime 3650 --outform pem | \
-          sudo tee /etc/ipsec.d/cacerts/ca.cert.pem > /dev/null
+        --dn "CN=<Name of this VPN Server>" --ca --lifetime 3650 --outform pem | \
+        sudo tee /etc/ipsec.d/cacerts/ca.cert.pem > /dev/null
 
     In the example above, the `--lifetime 3650` configuration sets the certificate's lifetime to 3650 days or approximately ten years. The lifetime of the certificate determines when it is to be regenerated and distributed to your StrongSwan server and connected clients. You can adjust this setting to your preferred value.
 
