@@ -56,7 +56,7 @@ The steps in this guide are written for non-root users. Commands that require el
 
     In the example above, the `--lifetime 3650` configuration sets the certificate's lifetime to 3650 days or approximately ten years. The lifetime of the certificate determines when it is to be regenerated and distributed to your StrongSwan server and connected clients. You can adjust this setting to your preferred value.
 
-1. Generate the StrongSwan VPN server's private certificate.
+1. Generate the StrongSwan VPN server’s private key and save it to `/etc/ipsec.d/private/server.key.pem`. This command ensures root permissions for file creation, and suppresses terminal output.
 
         sudo ipsec pki --gen --size 4096 --type rsa --outform pem | sudo tee /etc/ipsec.d/private/server.key.pem > /dev/null
 
