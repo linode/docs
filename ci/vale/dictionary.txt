@@ -1292,6 +1292,7 @@ Kuma
 kustomize
 kuznetosv
 Kyber
+Kyverno
 lambdabunker
 Laminas
 Langa
