@@ -7,17 +7,14 @@ contributors: ["Akamai"]
 published: 2025-03-11
 keywords: ['ai','ai inference','ai inferencing','llm','large language model','app platform','lke','linode kubernetes engine','llama 3','kserve','istio','knative']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+external_resources:
+- '[Akamai App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/application-platform)'
+- '[Akamai App Platform Documentation](https://apl-docs.net/docs/akamai-app-platform/introduction)'
 ---
 
-LLMs (Large Language Models) are deep-learning models that are pre-trained on large amounts of information. AI inferencing is the method by which an AI model (such as an LLM) is trained to "infer", and subsequently deliver accurate information. The LLM used in this deployment, Meta AI's [Llama 3](https://www.llama.com/docs/overview/), is an open-source, pre-trained LLM often used for tasks like responding to questions in multiple languages, coding, and advanced reasoning.
+LLMs (large language models) are deep-learning models that are pre-trained on vast amounts of information. AI inferencing is the method by which an AI model (such as an LLM) is trained to "infer", and subsequently deliver accurate information. The LLM used in this deployment, Meta AI's [Llama 3](https://www.llama.com/docs/overview/), is an open-source, pre-trained LLM often used for tasks like responding to questions in multiple languages, coding, and advanced reasoning.
 
-[KServe](https://kserve.github.io/website/latest/) is a standard Model Inference Platform for Kubernetes, built for highly-scalable use cases. KServe comes with multiple Model Serving Runtimes, including the [Hugging Face](https://huggingface.co/welcome) serving runtime. The Hugging Face runtime supports the following machine learning (ML) tasks:
-
-- Text generation
-- Text2Text generation
-- Fill mask
-- Token classification
-- Sequence and text classification
+[KServe](https://kserve.github.io/website/latest/) is a standard Model Inference Platform for Kubernetes, built for highly-scalable use cases. KServe comes with multiple Model Serving Runtimes, including the [Hugging Face](https://huggingface.co/welcome) serving runtime. The Hugging Face runtime supports the following machine learning (ML) tasks: text generation, Text2Text generation, token classification, sequence and text classification, and fill mask.
 
 Akamai App Platform for LKE comes with a set of preconfigured and integrated open source Kubernetes applications like [Istio](https://istio.io/latest/docs/overview/what-is-istio/) and [Knative](https://knative.dev/docs/concepts/), both of which are prerequisites for using KServe. App Platform automates the provisioning process of these applications.
 
@@ -29,13 +26,19 @@ This guide describes the steps required to: install KServe with Akamai App Platf
 
 ### Infrastructure
 
--   **Linode GPU instances**:
+-   **Linode GPUs (NVIDIA RTX 4000)**: Akamai has several GPU virtual machines available, including NVIDIA RTX 4000 (used in this tutorial) and Quadro RTX 6000. NVIDIA’s Ada Lovelace architecture in the RTX 4000 VMs are adept at many AI tasks, including [inferencing](https://www.nvidia.com/en-us/solutions/ai/inference/) and [image generation](https://blogs.nvidia.com/blog/ai-decoded-flux-one/).
 
--   **Linode Kubernetes Engine (LKE)**:
+-   **Linode Kubernetes Engine (LKE)**: LKE is Akamai’s managed Kubernetes service, enabling you to deploy containerized applications without needing to build out and maintain your own Kubernetes cluster.
 
--   **App Platform for LKE**:
+-   **App Platform for LKE**: Akamai App Platform is a ready-to-run solution for LKE that allows you to build, deploy, and manage distributed applications. App Platform automates the provisioning process so that you can build your distributed workloads in a few clicks, rather than manually configuring each component of your architecture.
 
 ### Software
+
+-   **Open WebUI**: A self-hosted AI chatbot application that’s compatible with LLMs like Llama 3 and includes a built-in inference engine for RAG (Retrieval-Augmented Generation) solutions. Users interact with this interface to query the LLM.
+
+-   **Hugging Face**: A data science platform and open-source library of data sets and pre-trained AI models. A Hugging Face account and access key is required to access the Llama 3 large language model (LLM) used in this deployment.
+
+-   **Meta AI's Llama 3**: The [meta-llama/Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) model is used as the LLM in this guide. You must review and agree to the licensing agreement before deploying.
 
 -   **KServe**: Serves machine learning models. This tutorial installs the Llama 3 LLM to KServe, which then serves it to other applications, such as the chatbot UI.
 
@@ -43,9 +46,7 @@ This guide describes the steps required to: install KServe with Akamai App Platf
 
 -   **Knative**: Used for deploying and managing serverless workloads on the Kubernetes platform.
 
--   **Meta AI's Llama 3**: The [meta-llama/Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) model is used as the LLM. It is recommended that you review and agree to the licensing agreement before deploying.
-
--   **Open WebUI**: A self-hosted AI chatbot application that’s compatible with LLMs like Llama 3 and includes a built-in inference engine for RAG (Retrieval-Augmented Generation) solutions. Users interact with this interface to query the LLM.
+-   **Kyverno**: A comprehensive toolset used for managing the Policy-as-Code (PaC) lifecycle for Kubernetes.
 
 ## Prerequisites
 
@@ -81,6 +82,8 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 
 ### Create a New Team
 
+[Teams](https://apl-docs.net/docs/for-ops/console/teams) are isolated tenants on the platform to support Development/DevOps teams, projects or even DTAP. A Team gets access to the Console, including access to self-service features and all shared apps available on the platform.
+
 1.  Select **view** > **platform**.
 
 1.  Select **Teams** in the left menu.
@@ -90,6 +93,8 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 1.  Provide a **Name** for the Team. Keep all other default values, and click **Submit**. This guide uses the Team name `demo`.
 
 ### Install the NVIDIA GPU Operator
+
+The [NVIDIA GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html) automates the management of NVIDIA software components needed for provisioning the GPUs, including drivers, the Kubernetes device plugin for GPUs, the NVIDIA Container Toolkit, and others.
 
 1.  Select **view** > **team** and **team** > **admin** in the top bar.
 
@@ -111,6 +116,8 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 
 1.  Select **Add Helm Chart**.
 
+    ![Add Helm Chart](APL-LLM-Add-Helm-Chart.jpg)
+
 1.  Under **Github URL**, add the URL to the `kserve-crd` Helm chart:
 
     ```command
@@ -123,13 +130,13 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
     Use an image URL in the **Icon URL** field to optionally add an icon to your custom Helm chart in the Catalog.
     {{< /note >}}
 
-1.  Deselect **Do not allow teams to use this chart**.
-
-    [SCREENSHOT]
+1.  Deselect **Allow teams to use this chart**.
 
 1.  Click **Add Chart**.
 
 ### Create a Workload for the kserve-crd Helm Chart
+
+A [Workload](https://apl-docs.net/docs/for-devs/console/workloads) is a self-service feature for creating Kubernetes resources using Helm charts from the Catalog.
 
 1.  Select **view** > **team** and **team** > **admin** in the top bar.
 
@@ -151,11 +158,11 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 
 After the Workload is submitted, App Platform creates an Argo CD application to install the `kserve-crd` Helm chart. Wait for the **Status** of the Workload to become healthy as represented by a green check mark. This may take a few minutes.
 
-[SCREENSHOT]
+![Workload Status](APL-LLM-Workloads.jpg)
 
-Click on the ArgoCD **Application** link once the Workload is ready. You should be brought to the following screen:
+Click on the ArgoCD **Application** link once the Workload is ready. You should be brought to the Argo CD screen:
 
-[SCREESHOT]
+![Argo CD](APL-LLM-ArgoCDScreen.jpg)
 
 ### Add the kserve-resources Helm Chart to the Catalog
 
@@ -171,7 +178,7 @@ Click on the ArgoCD **Application** link once the Workload is ready. You should 
 
 1.  Click **Get Details** to populate the `kserve-resources` Helm chart details.
 
-1.  Deselect **Do not allow teams to use this chart**.
+1.  Deselect **Allow teams to use this chart**.
 
 1.  Click **Add Chart**.
 
@@ -247,13 +254,15 @@ If you haven't done it already, request access to the Llama 3 LLM model. To do t
 
 ## Deploy and Expose the Model
 
-### Create a SealedSecret
+### Create a Sealed Secret
+
+[Sealed Secrets](https://apl-docs.net/docs/for-devs/console/secrets) are encrypted Kubernetes Secrets stored in the Values Git repository. When a Sealed Secret is created in the Console, the Kubernetes Secret will appear in the Team's namespace.
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
-1.  Select **SealedSecrets** from the menu.
+1.  Select **Sealed Secrets** from the menu.
 
-1.  Click **Create SealedSecret**.
+1.  Click **Create Sealed Secret**.
 
 1.  Add the name `hf-secret`.
 
@@ -418,14 +427,14 @@ Follow the steps below to follow the second option and add the Kyverno security 
 
 ## Access the Open Web User Interface
 
-Once the inference service and AI user interface have been deployed, you should be able to access the web UI.
+Once the inference service and AI user interface have been deployed, you should be able to access the web UI for the Open WebUI chatbot.
 
 1.  Click on **Services** in the menu.
 
-1.  In the list of available services, click on the URL for the `llama3-ui` service. This should bring you to the Open WebUI chatbot.
+1.  In the list of available services, click on the URL for the `llama3-ui` service. This should bring you to the chatbot user interface.
 
-    [SCREENSHOT]
+    ![Llama 3 LLM](APL-LLM-Llama3.jpg)
 
 ## Next Steps
 
-See our [Deploy a RAG Pipeline and Chatbot with App Platform for LKE](/docs/guides/deploy-rag-pipeline-and-chatbot-on-apl) guide to expand on the architecture built in this guide. This tutorial deploys a RAG (Retrieval-Augmented Generation) pipeline that indexes a custom data set and attaches relevant data as context when users sends the LLM queries.
+See our [Deploy a RAG Pipeline and Chatbot with App Platform for LKE](/docs/guides/deploy-rag-pipeline-and-chatbot-on-apl) guide to expand on the architecture built in this guide. This tutorial deploys a RAG (Retrieval-Augmented Generation) pipeline that indexes a custom data set and attaches relevant data as context when users send the LLM queries.
