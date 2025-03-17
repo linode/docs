@@ -137,7 +137,7 @@ This guide demonstrates how to install and manage server software for Xonotic, a
 
     To access these regions, [contact customer support](https://techdocs.akamai.com/cloud-computing/docs/help-and-support#contact-customer-support).
 
-    When deploying in a distributed compute region, note that there is a different [list of supported instance types](https://techdocs.akamai.com/cloud-computing/docs/plans-distributed). The instance type can be updated on line 48 of the `main.tf` file.
+    When deploying in a distributed compute region, note that there is a different [list of supported instance types](https://techdocs.akamai.com/cloud-computing/docs/plans-distributed). The recommended distributed compute instance type for this guide is `g6-dedicated-edge-4`. The instance type can be updated in your Terraform configuration on line 48 of the `main.tf` file.
     {{< /note >}}
 
 1. In the `xonotic` directory, create a file named `terraform.tfvars` with the following code. Insert your personal access token, create a unique and complex root password, and insert your workstation's IP address (maintain the `/32` suffix after the IP).
