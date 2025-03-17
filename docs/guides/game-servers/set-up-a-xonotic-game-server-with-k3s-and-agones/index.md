@@ -219,7 +219,7 @@ curl -sfL https://get.k3s.io | sh -
     watch kubectl describe gameserver
     ```
 
-    Enter <kbd>Ctrl</kbd> + <kbd>c</kbd> to exit the `watch` command.
+    Enter <kbd>Ctrl</kbd> + <kbd>C</kbd> to exit the `watch` command.
 
 1. Get a list of your game servers and their IP addresses and ports:
 
