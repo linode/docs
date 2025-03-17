@@ -1,5 +1,5 @@
 ---
-slug: xonotic-game-server
+slug: set-up-a-xonotic-game-server-with-k3s-and-agones
 title: "Set Up a Xonotic Gaming Server with K3s and Agones"
 description: "This guide demonstrates how to install and manage server software for Xonotic using Terraform, K3s, and Agones."
 authors: ["Michael Archer"]
