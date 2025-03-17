@@ -1,6 +1,6 @@
 ---
 slug: set-up-a-xonotic-game-server-with-k3s-and-agones
-title: "Set Up a Xonotic Gaming Server with K3s and Agones"
+title: "Set Up a Xonotic Game Server with K3s and Agones"
 description: "This guide demonstrates how to install and manage server software for Xonotic using Terraform, K3s, and Agones."
 authors: ["Michael Archer"]
 contributors: ["Michael Archer"]
@@ -23,7 +23,7 @@ This guide demonstrates how to install and manage server software for Xonotic, a
 
 ### Configure Terraform
 
-1. Create a directory for the Terraform project:
+1. Create a directory for the Terraform project on your workstation:
 
     ```command {title="Your workstation"}
     mkdir xonotic
@@ -32,9 +32,9 @@ This guide demonstrates how to install and manage server software for Xonotic, a
 
 1. Inside the new directory, create a file named `main.tf` and paste in the following code. This code defines a Linode instance and sets up a firewall.
 
-    Be sure to replace {{< placeholder "LINODE_REGION" >}} and {{< placeholder "LINODE_TYPE" >}} with a [region](https://www.linode.com/global-infrastructure/availability/) that's geographically closest to your location.
+    Be sure to replace {{< placeholder "LINODE_REGION" >}} on line 47 with a slug for a region (e.g. `us-central` for the Dallas, TX region) that's geographically closest to your location. Regions and slugs are listed on the [region availability](https://www.linode.com/global-infrastructure/availability/) page.
 
-    ```file {title="main.tf"}
+    ```file {title="main.tf" hl_lines="47"}
     # Specify the required Terraform provider
     terraform {
       required_providers {
@@ -147,8 +147,8 @@ This guide demonstrates how to install and manage server software for Xonotic, a
     ```
 
     {{< caution >}}
-    Keep your terraform.tfvars file safe and *never* commit it to a public repository.
-    {{< /caution >}}
+Keep your `terraform.tfvars` file safe and *never* commit it to a public repository.
+{{< /caution >}}
 
 ### Create Resources with Terraform
 
@@ -166,7 +166,7 @@ This guide demonstrates how to install and manage server software for Xonotic, a
     terraform apply
     ```
 
-1. When prompted to confirm the changes, type yes and hit Enter. Terraform provisions your Linode instance and sets up the firewall.
+1. When prompted to confirm the changes, type `yes` and hit <kbd>Enter</kbd>. Terraform provisions your Linode instance and sets up the firewall.
 
 1. Once Terraform is finished, it outputs the IP address of your new Linode instance. SSH into the instance using this IP address:
 
@@ -237,8 +237,8 @@ curl -sfL https://get.k3s.io | sh -
 
 1. Enter the IP address and port of your game server in the **Address** field of the Xonotic client UI, separated by a colon:
 
-    ```
-    {{< placeholder "GAME_SERVER_IP_ADDRESS" >}}:{{< placeholder "GAME_SERVER_PORT" >}}
+        {{< placeholder "GAME_SERVER_IP_ADDRESS" >}}:{{< placeholder "GAME_SERVER_PORT" >}}
+
 
 1. Click **Join!** to join the game server.
 
@@ -260,6 +260,6 @@ When you're finished playing, it's good practice to clean up your resources:
 
 1. To remove the Linode instance and firewall, run this Terraform command from the `xonotic` directory on your workstation:
 
-    ```command {title"Your workstation"}
+    ```command {title="Your workstation"}
     terraform destroy
     ```
