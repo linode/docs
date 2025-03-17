@@ -13,7 +13,7 @@ This guide demonstrates how to install and manage server software for Xonotic, a
 
 [K3s](https://k3s.io/) is a lightweight Kubernetes distribution. This guide deploys K3s on a single Linode and uses it to manage your game server software. [Agones](https://agones.dev/site/) is an open-source, Kubernetes-native project specifically designed for managing dedicated game servers, and it is deployed on the K3s installation in this guide. Agones is then used to deploy and manage containers for the Xonotic game server software.
 
-### Before You Begin
+## Before You Begin
 
 1. [Install Terraform](https://developer.hashicorp.com/terraform/install) on your workstation.
 
@@ -21,7 +21,7 @@ This guide demonstrates how to install and manage server software for Xonotic, a
 
 1. [Create a Linode personal access token](https://techdocs.akamai.com/linode-api/reference/get-started#personal-access-tokens), which is later used by Terraform to create resources on your Linode account.
 
-### Configure Terraform
+## Configure Terraform
 
 1. Create a directory for the Terraform project on your workstation:
 
@@ -150,7 +150,7 @@ This guide demonstrates how to install and manage server software for Xonotic, a
 Keep your `terraform.tfvars` file safe and *never* commit it to a public repository.
 {{< /caution >}}
 
-### Create Resources with Terraform
+## Create Resources with Terraform
 
 1. While inside the `xonotic` directory, initialize Terraform:
 
@@ -178,7 +178,7 @@ Keep your `terraform.tfvars` file safe and *never* commit it to a public reposit
 
 1. Before proceeding with game server software installation, take time to [secure your new instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance).
 
-### Install K3s
+## Install K3s
 
 From your SSH session with your Linode instance, run:
 
@@ -186,7 +186,7 @@ From your SSH session with your Linode instance, run:
 curl -sfL https://get.k3s.io | sh -
 ```
 
-### Install Agones on K3s
+## Install Agones on K3s
 
 1. From your SSH session with your Linode instance, run:
 
@@ -205,7 +205,7 @@ curl -sfL https://get.k3s.io | sh -
 
     You should see output indicating that the Agones pods are running. If the Agones pods are not running yet, wait until they are before proceeding to the next section.
 
-### Deploy Xonotic on K3s
+## Deploy Xonotic on K3s
 
 1. From your SSH session with your Linode instance, run this command to deploy a container for the Xonotic game server software using Agones:
 
@@ -229,7 +229,7 @@ curl -sfL https://get.k3s.io | sh -
 
     Make a note of the IP address and port, which is used to configure the Xonotic client software in the next section.
 
-### Install and Configure Xonotic Client
+## Install and Configure Xonotic Client
 
 1. If you don't have it already, download and install the Xonotic client for your workstation's operating system from [https://xonotic.org/](https://xonotic.org/).
 
@@ -242,7 +242,7 @@ curl -sfL https://get.k3s.io | sh -
 
 1. Click **Join!** to join the game server.
 
-### Clean Up Resources
+## Clean Up Resources
 
 When you're finished playing, it's good practice to clean up your resources:
 
