@@ -32,7 +32,7 @@ This guide demonstrates how to install and manage server software for Xonotic, a
 
 1. Inside the new directory, create a file named `main.tf` and paste in the following code. This code defines a Linode instance and sets up a firewall.
 
-    Be sure to replace {{< placeholder "LINODE_REGION" >}} on line 47 with a slug for a region (e.g. `us-central` for the Dallas, TX region) that's geographically closest to your location. Regions and slugs are listed on the [region availability](https://www.linode.com/global-infrastructure/availability/) page.
+    Be sure to replace {{< placeholder "LINODE_REGION" >}} on line 47 with a slug for a region (e.g. `us-central` for the Dallas, TX region) that's geographically closest to your location. Regions and slugs are listed on the [region availability](https://www.linode.com/global-infrastructure/availability/) page. Closer locations reduce lag/latency for players on your game server.
 
     ```file {title="main.tf" hl_lines="47"}
     # Specify the required Terraform provider
@@ -131,6 +131,14 @@ This guide demonstrates how to install and manage server software for Xonotic, a
       value = linode_instance.my_instance.ip_address
     }
     ```
+
+    {{< note >}}
+    Akamai now offers an expanded set of [distributed compute regions](https://techdocs.akamai.com/cloud-computing/docs/distributed-compute-regions). Deploying in these regions are currently in limited availability. These regions may include locations that are closer to you than the set of core compute regions.
+
+    To access these regions, [contact customer support](https://techdocs.akamai.com/cloud-computing/docs/help-and-support#contact-customer-support).
+
+    When deploying in a distributed compute region, note that there is a different [list of supported instance types](https://techdocs.akamai.com/cloud-computing/docs/plans-distributed). The instance type can be updated on line 48 of the `main.tf` file.
+    {{< /note >}}
 
 1. In the `xonotic` directory, create a file named `terraform.tfvars` with the following code. Insert your personal access token, create a unique and complex root password, and insert your workstation's IP address.
 
