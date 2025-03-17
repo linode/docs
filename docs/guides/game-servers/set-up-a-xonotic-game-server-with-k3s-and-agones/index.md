@@ -4,7 +4,7 @@ title: "Set Up a Xonotic Gaming Server with K3s and Agones"
 description: "This guide demonstrates how to install and manage server software for Xonotic using Terraform, K3s, and Agones."
 authors: ["Michael Archer"]
 contributors: ["Michael Archer"]
-published: 2025-03-20
+published: 2025-03-17
 keywords: ['agones','xonotic','k3s','self-hosted game server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
