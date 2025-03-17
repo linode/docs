@@ -205,7 +205,7 @@ curl -sfL https://get.k3s.io | sh -
 
     You should see output indicating that the Agones pods are running. If the Agones pods are not running yet, wait until they are before proceeding to the next section.
 
-## Deploy Xonotic on K3s
+## Install Xonotic Game Server on K3s
 
 1. From your SSH session with your Linode instance, run this command to deploy a container for the Xonotic game server software using Agones:
 
