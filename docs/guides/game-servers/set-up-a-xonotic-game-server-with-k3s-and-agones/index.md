@@ -17,9 +17,9 @@ This guide demonstrates how to install and manage server software for Xonotic, a
 
 1. [Install Terraform](https://developer.hashicorp.com/terraform/install) on your workstation.
 
-1. Create an account with Linode, if you do not already have one.
+1. Create an account with Linode if you do not already have one.
 
-1. [Create a Linode personal access token](https://techdocs.akamai.com/linode-api/reference/get-started#personal-access-tokens), which is later used by Terraform to create resources on your Linode account.
+1. [Create a Linode personal access token](https://techdocs.akamai.com/linode-api/reference/get-started#personal-access-tokens). This token is used later by Terraform to create resources on your Linode account.
 
 ## Configure Terraform
 
