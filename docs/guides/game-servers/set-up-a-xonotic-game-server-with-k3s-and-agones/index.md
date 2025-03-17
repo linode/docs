@@ -252,7 +252,7 @@ curl -sfL https://get.k3s.io | sh -
 
 ## Clean Up Resources
 
-When you're finished playing, it's good practice to clean up your resources:
+To remove the software and resources created in this guide, follow these steps:
 
 1. To remove the Xonotic game server, run this kubectl command on your Linode instance:
 
