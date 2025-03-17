@@ -9,17 +9,17 @@ keywords: ['agones','xonotic','k3s','self-hosted game server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-This guide demonstrates how to install and manage server software for Xonotic, a free and fast arena shooter game. Resources are deployed on Linode using [Terraform](https://www.terraform.io/), the infrastructure-as-code tool, and the game server installation is supported by K3s and Agones.
+This guide demonstrates how to install and manage software for a Xonotic server, a free and fast arena shooter game. Resources are deployed on Akamai Cloud using [Terraform](https://www.terraform.io/), an infrastructure-as-code (IaC) tool, and the game server installation is supported by K3s and Agones.
 
-[K3s](https://k3s.io/) is a lightweight Kubernetes distribution. This guide deploys K3s on a single Linode and uses it to manage your game server software. [Agones](https://agones.dev/site/) is an open-source, Kubernetes-native project specifically designed for managing dedicated game servers, and it is deployed on the K3s installation in this guide. Agones is then used to deploy and manage containers for the Xonotic game server software.
+[K3s](https://k3s.io/) is a lightweight Kubernetes distribution. This tutorial deploys K3s on a single compute instance running the Ubuntu 20.04 LTS Linux distribution and uses it to manage your game server software. [Agones](https://agones.dev/site/) is an open-source, Kubernetes-native project specifically designed for managing dedicated game servers, and it is deployed on the K3s installation in this guide. Agones is then used to deploy and manage containers for the Xonotic server software.
 
 ## Before You Begin
 
-1. [Install Terraform](https://developer.hashicorp.com/terraform/install) on your workstation.
+1. [Install Terraform](https://developer.hashicorp.com/terraform/install) on your local machine or workstation.
 
-1. Create an account with Linode if you do not already have one.
+1. Create an Akamai Cloud account if you do not already have one.
 
-1. [Create a Linode personal access token](https://techdocs.akamai.com/linode-api/reference/get-started#personal-access-tokens). This token is used later by Terraform to create resources on your Linode account.
+1. [Create a Linode personal access token](https://techdocs.akamai.com/linode-api/reference/get-started#personal-access-tokens). This token is used later by Terraform to create resources on your Akamai Cloud account.
 
 ## Configure Terraform
 
@@ -30,7 +30,7 @@ This guide demonstrates how to install and manage server software for Xonotic, a
     cd xonotic
     ```
 
-1. Inside the new directory, create a file named `main.tf` and paste in the following code. This code defines a Linode instance and sets up a firewall.
+1. Inside the new directory, create a Terraform configuration file named `main.tf`, and paste in the following code. This code defines a Linode instance type and sets up a firewall.
 
     Be sure to replace {{< placeholder "LINODE_REGION" >}} on line 47 with a slug for a region (e.g. `us-central` for the Dallas, TX region) that's geographically closest to your location. Regions and slugs are listed on the [region availability](https://www.linode.com/global-infrastructure/availability/) page. Closer locations reduce lag/latency for players on your game server.
 
@@ -137,7 +137,7 @@ This guide demonstrates how to install and manage server software for Xonotic, a
 
     To access these regions, [contact customer support](https://techdocs.akamai.com/cloud-computing/docs/help-and-support#contact-customer-support).
 
-    When deploying in a distributed compute region, note that there is a different [list of supported instance types](https://techdocs.akamai.com/cloud-computing/docs/plans-distributed). The recommended distributed compute instance type for this guide is `g6-dedicated-edge-4`. The instance type can be updated in your Terraform configuration on line 48 of the `main.tf` file.
+    When deploying in a distributed compute region, note that there is a different [list of supported instance types](https://techdocs.akamai.com/cloud-computing/docs/plans-distributed). The recommended distributed instance type for the deployment in this guide is a `g6-dedicated-edge-4` dedicated server. The instance type can be updated in your Terraform configuration on line 48 of the `main.tf` file under the “type” field.
     {{< /note >}}
 
 1. In the `xonotic` directory, create a file named `terraform.tfvars` with the following code. Insert your personal access token, create a unique and complex root password, and insert your workstation's IP address (maintain the `/32` suffix after the IP).
@@ -148,14 +148,14 @@ This guide demonstrates how to install and manage server software for Xonotic, a
     admin_ip = "{{< placeholder "WORKSTATION_IP_ADDRESS">}}/32"
     ```
 
-    If you’re not sure of your current IP address you can use the following command which will return your current public IP address.
+    If you’re not sure of your IP address, you can use the following command which will return your current public IP address.
 
     ```{title="Your workstation"}
     curl http://whatismyip.akamai.com
     ```
 
     {{< caution >}}
-Keep your `terraform.tfvars` file safe and *never* commit it to a public repository.
+Keep your `terraform.tfvars` file safe, and *never* commit it to a public repository.
 {{< /caution >}}
 
 ## Create Resources with Terraform
@@ -166,7 +166,7 @@ Keep your `terraform.tfvars` file safe and *never* commit it to a public reposit
     terraform init
     ```
 
-    This command downloads the necessary Linode provider.
+    This command downloads the necessary [Linode Terraform provider](https://registry.terraform.io/providers/linode/linode/latest/docs).
 
 1. Apply the configuration defined in the previous section of this guide:
 
@@ -176,7 +176,7 @@ Keep your `terraform.tfvars` file safe and *never* commit it to a public reposit
 
 1. When prompted to confirm the changes, type `yes` and hit <kbd>Enter</kbd>. Terraform provisions your Linode instance and sets up the firewall.
 
-1. Once Terraform is finished, it outputs the IP address of your new Linode instance. SSH into the instance using this IP address:
+1. Once Terraform is finished, it outputs the IP address of your new Linode instance. SSH into the instance as the root user using this IP address:
 
     ```command {title="Your workstation"}
     ssh root@{{< placeholder "LINODE_INSTANCE_IP_ADDRESS" >}}
@@ -184,11 +184,11 @@ Keep your `terraform.tfvars` file safe and *never* commit it to a public reposit
 
     Enter the root password when prompted, which you defined in the `terraform.tfvars` file in the previous section of this guide.
 
-1. Before proceeding with game server software installation, take time to [secure your new instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance).
+1. Before proceeding with game server software installation, take time to [secure your new instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). Make sure to create a limited sudo user, set your timezone, configure your hostname, and harden SSH access.
 
 ## Install K3s
 
-From your SSH session with your Linode instance, run:
+Once fully deployed and secured, continue your server setup while logged into your instance. First, install K3’s using the following curl command:
 
 ```command {title="Linode SSH session"}
 curl -sfL https://get.k3s.io | sh -
@@ -196,14 +196,14 @@ curl -sfL https://get.k3s.io | sh -
 
 ## Install Agones on K3s
 
-1. From your SSH session with your Linode instance, run:
+While logged into your instance, continue your server configuration by installing Agones.
+
+1. Create a dedicated namespace for Agones, and deploy it to your K3s cluster via the installation YAML file hosted on GitHub:
 
     ```command {title="Linode SSH session"}
     kubectl create namespace agones-system
     kubectl apply --server-side -f https://raw.githubusercontent.com/googleforgames/agones/release-1.47.0/install/yaml/install.yaml
     ```
-
-    This creates a dedicated namespace for Agones and deploys it to your K3s cluster.
 
 1. Observe the new pods created by Agones:
 
@@ -239,9 +239,9 @@ curl -sfL https://get.k3s.io | sh -
 
 ## Install and Configure Xonotic Client
 
-1. If you don't have it already, download and install the Xonotic client for your workstation's operating system from [https://xonotic.org/](https://xonotic.org/).
+1. If you don't have it already, download and install the Xonotic client for your workstation's operating system from [https://xonotic.org/](https://xonotic.org/). See the Xonotic [Forums](https://forums.xonotic.org/) and [FAQ](https://xonotic.org/faq/) for additional application support, docs, and in-game information.
 
-1. Launch the Xonotic client and choose the multiplayer mode.
+1. Launch the Xonotic client and choose the multiplayer game mode.
 
 1. Enter the IP address and port of your game server in the **Address** field of the Xonotic client UI, separated by a colon:
 
@@ -252,7 +252,7 @@ curl -sfL https://get.k3s.io | sh -
 
 ## Clean Up Resources
 
-To remove the software and resources created in this guide, follow these steps:
+Follow these steps to remove the software and resources created in this tutorial:
 
 1. To remove the Xonotic game server, run this kubectl command on your Linode instance:
 
@@ -266,7 +266,7 @@ To remove the software and resources created in this guide, follow these steps:
     kubectl delete -f https://raw.githubusercontent.com/googleforgames/agones/release-1.47.0/install/yaml/install.yaml
     ```
 
-1. To remove the Linode instance and firewall, run this Terraform command from the `xonotic` directory on your workstation:
+1. To remove the Linode instance and firewall created by Terraform, run this Terraform command from the `xonotic` directory on your workstation
 
     ```command {title="Your workstation"}
     terraform destroy
