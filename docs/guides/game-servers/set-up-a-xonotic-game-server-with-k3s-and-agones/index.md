@@ -103,7 +103,7 @@ This guide demonstrates how to install and manage server software for Xonotic, a
         action   = "ACCEPT"
         protocol = "TCP"
         ports    = "22"
-        ipv4     = var.admin_ip
+        ipv4     = [var.admin_ip]
       }
       # Rule to allow custom port range (7000-8000)
       inbound {
