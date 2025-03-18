@@ -84,7 +84,6 @@ class IssueType:
 
 DOCS_DIR = [
     "docs/guides",
-    "docs/products",
     "docs/bundles",
     "docs/assets",
     "docs/api",
