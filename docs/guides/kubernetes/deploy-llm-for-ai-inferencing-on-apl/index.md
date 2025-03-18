@@ -22,6 +22,8 @@ This guide describes the steps required to: install KServe with Akamai App Platf
 
 ## Diagram
 
+![Diagram Test](APL-LLM-diagram-test.jpg)
+
 ## Components
 
 ### Infrastructure
@@ -66,7 +68,7 @@ To learn more about provisioning a LKE cluster with App Platform, see our [Getti
 
 Once your LKE cluster is provisioned and the App Platform web UI is available, complete the following steps to continue setting up your infrastructure.
 
-Sign into the App Platform web UI using the `platform-admin` account, or another account that uses the `platform-admin` role.
+Sign into the App Platform web UI using the `platform-admin` account, or another account that uses the `platform-admin` role. Instructions for signing into App Platform for the first time can be found in our [Getting Started with Akamai App Platform](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-akamai-application-platform) guide.
 
 ### Enable Knative
 
@@ -74,7 +76,7 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 
 1.  Select **Apps** in the left menu.
 
-1.  Enable the **Knative** and **Kyverno** apps by hovering over each app icon and clicking the **power on** button. Each app may take a few minutes to enable.
+1.  Enable the **Knative** and **Kyverno** apps by hovering over each app icon and clicking the **power on** button. It may take a few minutes for the apps to enable.
 
     Enabled apps move up and appear in color towards the top of the available app list.
 
@@ -112,13 +114,15 @@ The [NVIDIA GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-op
 
 ### Add the kserve-crd Helm Chart to the Catalog
 
+[Helm charts](https://helm.sh/) provide information for defining, installing, and managing resources on a Kubernetes cluster. Custom Helm charts can be added to App Platform Catalog using the **Add Helm Chart** feature.
+
 1.  Click on **Catalog** in the left menu.
 
 1.  Select **Add Helm Chart**.
 
     ![Add Helm Chart](APL-LLM-Add-Helm-Chart.jpg)
 
-1.  Under **Github URL**, add the URL to the `kserve-crd` Helm chart:
+1.  Under **Git Repository URL**, add the URL to the `kserve-crd` Helm chart:
 
     ```command
     https://github.com/kserve/kserve/blob/v0.14.1/charts/kserve-crd/Chart.yaml
@@ -144,25 +148,27 @@ A [Workload](https://apl-docs.net/docs/for-devs/console/workloads) is a self-ser
 
 1.  Click on **Create Workload**.
 
-1.  Select the `kserve-crd` Helm chart from the Catalog.
+1.  Select the _Kserve-Crd_ Helm chart from the Catalog.
 
 1.  Click on **Values**.
 
-1.  Provide a name for the Workload. This guide uses the Workload name "kserve-crd".
+1.  Provide a name for the Workload. This guide uses the Workload name `kserve-crd`.
 
-1.  Add **kserve** as the namespace.
+1.  Add `kserve` as the namespace.
 
-1.  Select **Create Namespace**.
+1.  Select **Create a new namespace**.
 
-1.  Continue with the default values, and click **Submit**.
+1.  Continue with the rest of the default values, and click **Submit**.
 
 After the Workload is submitted, App Platform creates an Argo CD application to install the `kserve-crd` Helm chart. Wait for the **Status** of the Workload to become healthy as represented by a green check mark. This may take a few minutes.
 
 ![Workload Status](APL-LLM-Workloads.jpg)
 
-Click on the ArgoCD **Application** link once the Workload is ready. You should be brought to the Argo CD screen:
+Click on the ArgoCD **Application** link once the Workload is ready. You should be brought to the Argo CD screen in a separate window:
 
 ![Argo CD](APL-LLM-ArgoCDScreen.jpg)
+
+Confirm the **App Health** is marked "Healthy", and return to the App Platform UI.
 
 ### Add the kserve-resources Helm Chart to the Catalog
 
@@ -170,13 +176,15 @@ Click on the ArgoCD **Application** link once the Workload is ready. You should 
 
 1.  Select **Add Helm Chart**.
 
-1.  Under **Github URL**, add the URL to the `kserve-resources` Helm chart:
+1.  Under **Git Repository URL**, add the URL to the `kserve-resources` Helm chart:
 
     ```command
     https://github.com/kserve/kserve/blob/v0.14.1/charts/kserve-resources/Chart.yaml
     ```
 
 1.  Click **Get Details** to populate the `kserve-resources` Helm chart details.
+
+1.  Note the name of the Helm chart populates as `Kserve` rather than `Kserve-Resources`. Edit **Target Directory Name** to read `Kserve-Resources` so that it can be identified later.
 
 1.  Deselect **Allow teams to use this chart**.
 
@@ -190,17 +198,17 @@ Click on the ArgoCD **Application** link once the Workload is ready. You should 
 
 1.  Click on **Create Workload**.
 
-1.  Select the `kserve-resources` Helm chart from the Catalog.
+1.  Select the _Kserve-Resources_ Helm chart from the Catalog.
 
 1.  Click on **Values**.
 
-1.  Provide a name for the Workload. This guide uses the Workload name "kserve-resources".
+1.  Provide a name for the Workload. This guide uses the Workload name `kserve-resources`.
 
-1.  Add **kserve** as the namespace.
+1.  Add `kserve` as the namespace.
 
-1.  Select **Create Namespace**.
+1.  Select **Create a new namespace**.
 
-1.  Continue with the default values, and click **Submit**.
+1.  Continue with the default values, and click **Submit**. The Workload may take a few minutes to become ready.
 
 ### Add the open-webui Helm Chart to the Catalog
 
@@ -208,13 +216,15 @@ Click on the ArgoCD **Application** link once the Workload is ready. You should 
 
 1.  Select **Add Helm Chart**.
 
-1.  Under **Github URL**, add the URL to the `open-webui` Helm chart:
+1.  Under **Git Repository URL**, add the URL to the `open-webui` Helm chart:
 
     ```command
     https://github.com/open-webui/helm-charts/blob/open-webui-5.20.0/charts/open-webui/Chart.yaml
     ```
 
 1.  Click **Get Details** to populate the `open-webui` Helm chart details.
+
+1.  Leave the **Allow teams to use this chart** option selected.
 
 1.  Click **Add Chart**.
 
@@ -224,13 +234,15 @@ Click on the ArgoCD **Application** link once the Workload is ready. You should 
 
 1.  Select **Add Helm Chart**.
 
-1.  Under **Github URL**, add the URL to the `inferencing-service` Helm chart:
+1.  Under **Git Repository URL**, add the URL to the `inferencing-service` Helm chart:
 
     ```command
-    https://github.com/linode/apl-examples/blob/main/kserve-ai-inferencing/Chart.yaml
+    https://github.com/linode/apl-examples/blob/main/inferencing-service/Chart.yaml
     ```
 
 1.  Click **Get Details** to populate the `inferencing-service` Helm chart details.
+
+1.  Leave the **Allow teams to use this chart** option selected.
 
 1.  Click **Add Chart**.
 
@@ -240,7 +252,7 @@ Click on the ArgoCD **Application** link once the Workload is ready. You should 
 
 1.  Click **Create new token**.
 
-1.  Under **Toekn type**, select "Write" access.
+1.  Under **Token type**, select "Write" access.
 
 1.  Enter a name for your token, and click **Create token**.
 
@@ -262,19 +274,17 @@ If you haven't done it already, request access to the Llama 3 LLM model. To do t
 
 1.  Select **Sealed Secrets** from the menu.
 
-1.  Click **Create Sealed Secret**.
+1.  Click **Create SealedSecret**.
 
 1.  Add the name `hf-secret`.
 
-1.  Select type [kubernetes.io/opaque](kubernetes.io/opaque).
+1.  Select type _[kubernetes.io/opaque](kubernetes.io/opaque)_ from the **type** dropdown menu.
 
 1.  Add **Key**: `HF_TOKEN`.
 
-1.  Add **Value**: {{< placeholder "HUGGING_FACE_TOKEN" >}}
+1.  Add your Hugging Face Access Token in the **Value** field: {{< placeholder "HUGGING_FACE_TOKEN" >}}
 
-    [SCREENSHOT]
-
-1.  Click **Submit**.
+1.  Click **Submit**. The Sealed Secret may take a few minutes to become ready.
 
 ### Create a Workload to Deploy the Model
 
@@ -282,39 +292,83 @@ If you haven't done it already, request access to the Llama 3 LLM model. To do t
 
 1.  Select **Catalog** from the menu.
 
-1.  Select the `Inferencing-Service` chart.
+1.  Select the _Kserve-Ai-Inferencing-Service_ chart.
 
 1.  Click on **Values**.
 
-1.  Provide a name for the Workload. This guide uses the Workload name "llama3-model".
+1.  Provide a name for the Workload. This guide uses the Workload name `llama3-model`.
 
 1.  Set the following values:
 
     ```
     labels:
-    sidecar.istio.io/inject: "false"
+      sidecar.istio.io/inject: "{{< placeholder "false" >}}"
     env:
-    - name: HF_TOKEN
+      - name: {{< placeholder "HF_TOKEN" >}}
         valueFrom:
-        secretKeyRef:
-            name: hf-secret
-            key: HF_TOKEN
-            optional: false
+          secretKeyRef:
+            name: {{< placeholder "hf-secret" >}}
+            key: {{< placeholder "HF_TOKEN" >}}
+            optional: "{{< placeholder "false" >}}"
     args:
-    - --model_name=llama3
-    - --model_id=meta-llama/meta-llama-3-8b-instruct
+      - --model_name=llama3
+      - --model_id=meta-llama/meta-llama-3-8b-instruct
     resources:
-    limits:
-        cpu: "12"
-        memory: 24Gi
-        nvidia.com/gpu: "1"
-    requests:
-        cpu: "12"
-        memory: 24Gi
-        nvidia.com/gpu: "1"
+      limits:
+        cpu: "{{< placeholder "12" >}}"
+        memory: {{< placeholder "24Gi" >}}
+        nvidia.com/gpu: "{{< placeholder "1" >}}"
+      requests:
+        cpu: "{{< placeholder "6" >}}"
+        memory: {{< placeholder "12Gi" >}}
+        nvidia.com/gpu: "{{< placeholder "1" >}}"
     ```
 
 1.  Click **Submit**.
+
+#### Check the Status of Your Workload
+
+1.  It may take a few minutes for the _Kserve-Ai-Inferencing-Service_ Workload to become ready. To check the status of the Workload, open a Shell session, and check the status of the pods with `kubectl`:
+
+    ```command
+    kubectl get pods
+    ```
+    ```output
+    NAME                                                       READY   STATUS    RESTARTS   AGE
+    llama3-model-predictor-00001-deployment-86f5fc5d5d-7299c   0/2     Pending   0          4m22s
+    tekton-dashboard-5f57787b8c-gswc2                          2/2     Running   0          19h
+    ```
+
+1.  To gather more information about a pod in a `Pending` state, run the `kubectl describe pod` command below, replacing {{< placeholder "POD_NAME" >}} with the name of your pod. In the output above, `llama3-model-predictor-00001-deployment-86f5fc5d5d-7299c` is the name of the pending pod:
+
+    ```command
+    kubectl describe pod {{< placeholder "POD_NAME" >}}
+    ```
+
+    Scroll to the bottom of the output and look for `Events`. If there is an event with Reason `FailedScheduling`, the `resources.request` values in your _Kserve-Ai-Inferencing-Service_ Workload may need to be adjusted.
+
+    ```output
+    Events:
+    Type     Reason            Age                From               Message
+    ----     ------            ----               ----               -------
+    Warning  FailedScheduling  12s                default-scheduler  0/3 nodes are available: 3 Insufficient cpu. preemption: 0/3 nodes are available: 3 No preemption victims found for incoming pod.
+    ```
+
+    Based on the output above, the `Insufficient cpu` warning denotes the CPU `resources.request` is set too high.
+
+1.  If this is the case, edit the `resources.request` values for your _Kserve-Ai-Inferencing-Service_ Workload:
+
+    1.  Navigate to **Workloads**.
+
+    1.  Select your `llama3-model` Workload.
+
+    1.  Click the **Values** tab.
+
+    1.  Adjust the necessary `resources.request` value. In the example above, the number of CPUs should be lowered.
+
+    1.  Click **Submit** when you have finished adjusting your resources values.
+
+Wait for the Workload to be ready again, and proceed to the following steps for [exposing the model](#expose-the-model).
 
 ### Expose the Model
 
@@ -324,11 +378,11 @@ If you haven't done it already, request access to the Llama 3 LLM model. To do t
 
 1.  In the **Name** dropdown list, select the `llama3-model-predictor` service.
 
-1.  Under **Exposure**, select **External**.
+1.  Under **Exposure (ingress)**, select **External**.
 
 1.  Click **Submit**.
 
-Once complete, copy the URL for the `llama3-model-service`, and add it to your clipboard.
+Once the Service is ready, copy the URL for the `llama3-model-predictor` service, and add it to your clipboard.
 
 ## Deploy and Expose the AI Interface
 
@@ -346,40 +400,50 @@ Follow the steps below to follow the second option and add the Kyverno security 
 
 1.  In the **Apps** section, select the **Gitea** app.
 
-1.  Navigate to the `team-<team-name>-argocd` repository.
+1.  Navigate to the `team-demo-argocd` repository.
 
-1.  Select **Add File**, and create a file named `open-webui-policy.yaml` with the following contents:
+1.  Click the **Add File** dropdown, and select **New File**. Create a file named `open-webui-policy.yaml` with the following contents:
 
     ```file
     apiVersion: kyverno.io/v1
     kind: Policy
     metadata:
-    name: disable-sidecar-injection
-    annotations:
+      name: disable-sidecar-injection
+      annotations:
         policies.kyverno.io/title: Disable Istio sidecar injection
     spec:
-    rules:
-    - name: disable-sidecar-injection
+      rules:
+      - name: disable-sidecar-injection
         match:
-        any:
-        - resources:
-            kinds:
-            - StatefulSet
-            - Deployment
-            selector:
+          any:
+          - resources:
+              kinds:
+              - StatefulSet
+              - Deployment
+              selector:
                 matchLabels:
-                ## change the value to match the name of the Workload
-                app.kubernetes.io/instance: "llama3-ui"
+                  ## change the value to match the name of the Workload
+                  app.kubernetes.io/instance: "llama3-ui"
         mutate:
-        patchStrategicMerge:
+          patchStrategicMerge:
             spec:
-            template:
+              template:
                 metadata:
-                labels:
+                  labels:
                     sidecar.istio.io/inject: "false"
     ```
 
-1.  Open the Argo CD application. Go to the `team-<team-name>` application to see if the policy has been created. If it isn't there yet, click **Refresh** as needed.
+1.  Optionally add a title and any notes to the change history, and click **Commit Changes**.
+
+    ![Add Open WebUI Policy](APL-LLM-Add-OpenWebUIPolicy.jpg)
+
+1.  Check to see if the policy has been created in the Argo CD application:
+
+    1.  Open the Argo CD application (**Workloads** > `llama3-model` > Argocd **Application**).
+
+    1.  Click **Applications**.
+
+    1.  Using the search feature, go to the `team-demo` application to see if the policy has been created. If it isn't there yet, view the `team-demo` application in the list of **Applications**, and click **Refresh** as needed.
 
 ### Create a Workload to Deploy the AI Interface
 
@@ -387,28 +451,30 @@ Follow the steps below to follow the second option and add the Kyverno security 
 
 1.  Select **Catalog** from the menu.
 
-1.  Select the `Open-Webui` chart.
+1.  Select the _Open-Webui_ chart.
 
 1.  Click on **Values**.
 
-1.  Provide a name for the Workload. This guide uses the Workload name "llama3-ui".
+1.  Provide a name for the Workload. This guide uses the Workload name `llama3-ui`.
 
-1.  Add the following values, and change the `openaiBaseApiUrl` to the host and domain name you added to your clipboard when [exposing the model](#expose-the-model) (the URL for the `llama3-model-service`):
+1.  Add the following values, and change the `openaiBaseApiUrl` to the host and domain name you added to your clipboard when [exposing the model](#expose-the-model) (the URL for the `llama3-model-predictor` service). Make sure to append `/openai/v1` to your URL as shown below.
+
+    Remember to change the `nameOverride` value to the name of your Workload, `llama3-ui`:
 
     ```
     # Change the nameOverride to match the name of the Workload
-    nameOverride: llama3-ui
+    nameOverride: {{< placeholder "llama3-ui" >}}
     ollama:
-    enabled: false
+      enabled: {{< placeholder "false" >}}
     pipelines:
-    enabled: false
+      enabled: {{< placeholder "false" >}}
+    replicaCount: {{< placeholder "1" >}}
     persistence:
-    enabled: false
-    replicaCount: 1
-    openaiBaseApiUrl: https://llama3-model--predictor-team-demo.<cluster-domain>/openai/v1
+      enabled: {{< placeholder "false" >}}
+    openaiBaseApiUrl: {{< placeholder "https://llama3-model--predictor-team-demo.<cluster-domain>/openai/v1" >}}
     extraEnvVars:
-    - name: WEBUI_AUTH
-        value: "false"
+      - name: {{< placeholder "WEBUI_AUTH" >}}
+        value: "{{< placeholder "false" >}}"
     ```
 
 1.  Click **Submit**.
@@ -421,13 +487,13 @@ Follow the steps below to follow the second option and add the Kyverno security 
 
 1.  In the **Name** dropdown menu, select the `llama3-ui` service.
 
-1.  Under **Exposure**, select **External**.
+1.  Under **Exposure (ingress)**, select **External**.
 
 1.  Click **Submit**.
 
 ## Access the Open Web User Interface
 
-Once the inference service and AI user interface have been deployed, you should be able to access the web UI for the Open WebUI chatbot.
+Once the AI user interface is ready, you should be able to access the web UI for the Open WebUI chatbot.
 
 1.  Click on **Services** in the menu.
 
