@@ -25,6 +25,7 @@ adoptium
 aes
 ag
 agentless
+Agones
 ahci0
 Aho
 ahvz
@@ -2928,6 +2929,7 @@ xml
 xmpp
 xms
 xmx
+Xonotic
 XPath
 XQuartz
 XQuery
