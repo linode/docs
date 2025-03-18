@@ -43,9 +43,9 @@ done
         sudo cp test_service.sh /usr/bin/test_service.sh
         sudo chmod +x /usr/bin/test_service.sh
 
-3.  Create a **Unit file** to define a systemd service:
+3.  Create a **Unit file** to define a systemd service in your application such as `/opt/myapp/`.
 
-    {{< file "/lib/systemd/system/myservice.service" conf >}}
+    {{< file "/opt/myapp/myservice.service" conf >}}
 [Unit]
 Description=Example systemd service.
 
@@ -57,12 +57,19 @@ ExecStart=/bin/bash /usr/bin/test_service.sh
 WantedBy=multi-user.target
 {{< /file >}}
 
-    This defines a simple service. The critical part is the `ExecStart` directive, which specifies the command that will be run to start the service.
+  * This defines a simple service that runs `/usr/bin/test_service.sh` through Bash.
+  * The `ExecStart` directive specifies the command to run.
+  * The `[Install]` section allows the service to be enabled at boot.
+4.  Link the unit file from your application directory. This approach can streamline deployments by keeping the service definition with your codebase:
 
-4.  Copy the unit file to `/etc/systemd/system` and give it permissions:
+      sudo systemctl enable /opt/myapp/myservice.service
+    
+      If the [Install] section is present, this creates the necessary symlinks in `/etc/systemd/system/`.
 
-        sudo cp myservice.service /etc/systemd/system/myservice.service
-        sudo chmod 644 /etc/systemd/system/myservice.service
+    Alternatively, copy the unit file to `/etc/systemd/system/` and give permissions:
+
+      sudo cp myservice.service /etc/systemd/system/myservice.service
+      sudo chmod 644 /etc/systemd/system/myservice.service
 
     For more information about the unit file and its available configuration options, see the [systemd documentation](https://www.freedesktop.org/wiki/Software/systemd/).
 
