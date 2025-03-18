@@ -58,27 +58,7 @@ Once your LLM has been deployed and is accessible, complete the following steps 
 
 Sign into the App Platform web UI using the `platform-admin` account, or another account that uses the `platform-admin` role.
 
-### Add Custom Helm Charts
-
-Follow the below steps to add `kfp-cluster-resources`, `kubeflow-pipelines`, and `milvus` Helm charts to the Catalog. Repeat the process for each Helm chart using the Github URL for the Helm chart you are adding:
-
--   `kfp-cluster-resources`:
-
-    ```command
-    URL
-    ```
-
--   `kubeflow-pipelines`:
-
-    ```command
-    URL
-    ```
-
--   `milvus`:
-
-    ```command
-    URL
-    ```
+### Add the milvus Helm Chart to the Catalog
 
 1.  Select **view** > **team** and **team** > **admin** in the top bar.
 
@@ -86,19 +66,19 @@ Follow the below steps to add `kfp-cluster-resources`, `kubeflow-pipelines`, and
 
 1.  Select **Add Helm Chart**.
 
-1.  Under **Github URL**, add the respective URL for the Helm chart you're adding:
+1.  Under **Git Repository URL**, add the URL to the `milvus` Helm chart:
 
     ```command
-    {{< placeholder "HELM_CHART_GITHUB_URL" >}}
+    https://github.com/zilliztech/milvus-helm/blob/milvus-4.2.40/charts/milvus/Chart.yaml
     ```
 
 1.  Click **Get Details** to populate the Helm chart details.
 
-1.  Deselect **Do not allow teams to use this chart**.
+1.  Deselect **Allow teams to use this chart**.
 
 1.  Click **Add Chart**.
 
-### Create a Workload for the kfp-cluster-resources Helm Chart
+### Create a Workload and Install the kfp-cluster-resources Helm Chart
 
 1.  Select **view** > **team** and **team** > **admin** in the top bar.
 
@@ -106,21 +86,33 @@ Follow the below steps to add `kfp-cluster-resources`, `kubeflow-pipelines`, and
 
 1.  Click on **Create Workload**.
 
-1.  Select the `kfp-cluster-resources` Helm chart from the Catalog.
+1.  Select the _Kfp-Cluster-Resources_ Helm chart from the Catalog.
 
 1.  Click on **Values**.
 
-1.  Provide a name for the Workload. This guide uses the Workload name "kfp-cluster-resources".
+1.  Provide a name for the Workload. This guide uses the Workload name `kfp-cluster-resources`.
 
-1.  Add **kserve** as the namespace.
+1.  Add `kubeflow` as the namespace.
 
-1.  Select **Create Namespace**.
+1.  Select **Create a new namespace**.
 
-1.  Continue with the default values, and click **Submit**.
+1.  Continue with the default values, and click **Submit**. The Workload may take a few minutes to become ready.
 
-### Create an Object Storage Bucket for Milvus
+### Create an Object Storage Bucket and Access Key for Milvus
 
-### Create a Workload for the milvus Helm Chart
+1.  In Cloud Manager, navigate to **Object Storage**.
+
+1.  Click **Create Bucket**.
+
+1.  Enter a name for your bucket, and select the same **Region** as your App Platform LKE cluster.
+
+1.  While on the **Object Storage** page, select the **Access Keys** tab, and then click **Create Access Key**.
+
+1.  Enter a name for your access key, select the same **Region** as your Milvus bucket, and make sure your access key has "Read/Write" access enabled for your bucket.
+
+1.  Save your access key information.
+
+### Create a Workload for the Milvus Helm Chart
 
 1.  Select **view** > **team** and **team** > **admin** in the top bar.
 
@@ -128,64 +120,76 @@ Follow the below steps to add `kfp-cluster-resources`, `kubeflow-pipelines`, and
 
 1.  Click on **Create Workload**.
 
-1.  Select the `milvus` Helm chart from the Catalog.
+1.  Select the _Milvus_ Helm chart from the Catalog.
 
 1.  Click on **Values**.
 
-1.  Provide a name for the Workload. This guide uses the Workload name "milvus".
+1.  Provide a name for the Workload. This guide uses the Workload name `milvus`.
 
-1.  Add **kserve** as the namespace.
+1.  Add `kserve` as the namespace.
 
-1.  Select **Create Namespace**.
+1.  Select **Create a new namespace**.
 
-1.  Set the following values:
+1.  Set the following values. Make sure to replace `externalS3` values with those of your Milvus bucket and access key:
 
     ```
     cluster:
-    enabled: false
+      enabled: {{< placeholder "false" >}}
     pulsarv3:
-    enabled: false
+      enabled: {{< placeholder "false" >}}
     minio:
-    enabled: false
+      enabled: {{< placeholder "false" >}}
     externalS3:
-    enabled: true
-    host: <your-region>.linodeobjects.com
-    port: "443"
-    accessKey: <your-accesskey>
-    secretKey: <your-secretkey>
-    useSSL: true
-    bucketName: <your-bucket>
-    cloudProvider: aws
-    region: <your-region>
+      enabled: {{< placeholder "true" >}}
+      host: {{< placeholder "<your-region>.linodeobjects.com" >}}
+      port: "{{< placeholder "443" >}}"
+      accessKey: {{< placeholder "<your-accesskey>" >}}
+      secretKey: {{< placeholder "<your-secretkey>" >}}
+      useSSL: {{< placeholder "true" >}}
+      bucketName: {{< placeholder "<your-bucket-name>" >}}
+      cloudProvider: aws
+      region: {{< placeholder "<your-bucket-region-id>" >}}
     standalone:
-    resources:
+      resources:
         requests:
-        nvidia.com/gpu: "1"
+          nvidia.com/gpu: "{{< placeholder "1" >}}"
         limits:
-        nvidia.com/gpu: "1"
+          nvidia.com/gpu: "{{< placeholder "1" >}}"
     ```
 
     {{< note >}}
-    The milvus Helm chart does not support the use of a secretKeyRef. Using unencrypted Secret Keys in chart values is not a Kubernetes security best-practice.
+    The Milvus Helm chart does not support the use of a secretKeyRef. Using unencrypted Secret Keys in chart values is not considered a Kubernetes security best-practice.
     {{< /note >}}
 
 1.  Click **Submit**.
 
-### Create an Object Storage Bucket for kubeflow-pipelines
+### Create an Object Storage Bucket and Access Key for kubeflow-pipelines
+
+1.  In Cloud Manager, navigate to **Object Storage**.
+
+1.  Click **Create Bucket**.
+
+1.  Enter a name for your bucket, and select the same **Region** as your App Platform LKE cluster.
+
+1.  While on the **Object Storage** page, select the **Access Keys** tab, and then click **Create Access Key**.
+
+1.  Enter a name for your access key, select the same **Region** as your Kubeflow-Pipelines bucket, and make sure your access key has "Read/Write" access enabled for your bucket.
+
+1.  Save your access key information.
 
 ### Create SealedSecrets
 
 Create two SealedSecrets with names `mlpipeline-minio-artifact` and `mysql-credentials` using the steps and respective values below:
 
 -   `mlpipeline-minio-artifact`
-    -   Type: opaque
+    -   Type: `kubernetes.io/opaque`
     -   Key=`accesskey`, Value={{< placeholder "YOUR_ACCESS_KEY" >}}
     -   Key=`secretkey`, Value={{< placeholder "YOUR_SECRET_KEY" >}}
 
 -   `mysql-credentials`
-    -   Type: opaque
+    -   Type: `kubernetes.io/opaque`
     -   Key=`username`, Value=`root`
-    -   Key=`password`, Value={{< placeholder "YOUR_PASSWORD" >}}
+    -   Key=`password`, Value={{< placeholder "YOUR_ROOT_PASSWORD" >}}
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
@@ -195,7 +199,7 @@ Create two SealedSecrets with names `mlpipeline-minio-artifact` and `mysql-crede
 
 1.  Add a name for your SealedSecret; `mlpipeline-minio-artifact` or `mysql-credentials`, respectively.
 
-1.  Select type [kubernetes.io/opaque](kubernetes.io/opaque).
+1.  Select type _[kubernetes.io/opaque](kubernetes.io/opaque)_ from the **type** dropdown menu.
 
 1.  Add the **Key** and **Value** details as listed for each SealedSecret above.
 
@@ -203,7 +207,7 @@ Create two SealedSecrets with names `mlpipeline-minio-artifact` and `mysql-crede
 
 ### Create a Network Policy
 
-Create a **Network Policy** in the Team where the `kubeflow-pipelines` Helm chart will be installed (Team name **demo** in this guide). This allows communication between all Kubeflow Pipelines Pods.
+Create a [**Network Policy**](https://apl-docs.net/docs/for-ops/console/netpols) in the Team where the `kubeflow-pipelines` Helm chart will be installed (Team name **demo** in this guide). This allows communication between all Kubeflow Pipelines Pods.
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
@@ -213,11 +217,13 @@ Create a **Network Policy** in the Team where the `kubeflow-pipelines` Helm char
 
 1.  Add a name for the Network Policy.
 
-1.  Select rule type `ingress`.
+1.  Select **Rule type** `ingress`.
 
-1.  Add [app.kubernetes.io/instance](http://app.kubernetes.io/instance) as the **Selector label name**.
+1.  Add [`app.kubernetes.io/instance`](http://app.kubernetes.io/instance) as the **Selector label name**.
 
-1.  Add `kfp` for the **Selector label value**. This is the name of the workload created in the next step.
+1.  Add `kfp` as the **Selector label value**. This is the name of the workload created in the next step.
+
+1.  Click **Submit**.
 
 ### Create a Workload for the kubeflow-pipelines Helm Chart
 
@@ -227,24 +233,24 @@ Create a **Network Policy** in the Team where the `kubeflow-pipelines` Helm char
 
 1.  Click on **Create Workload**.
 
-1.  Select the `kubeflow-pipelines` Helm chart from the Catalog.
+1.  Select the _Kubeflow-Pipelines_ Helm chart from the Catalog.
 
 1.  Click on **Values**.
 
 1.  Provide a name for the Workload. This guide uses the Workload name `kfp`.
 
-1.  Add **team-demo** as the namespace.
+1.  Add `team-demo` as the namespace.
 
-1.  Select **Create Namespace**.
+1.  Select **Create a new namespace**.
 
 1.  Set the following values:
 
     ```
     objectStorage:
-        region: <your-region>
-        bucket: <bucketname>
+      region: {{< placeholder "<your-bucket-region>" >}}
+      bucket: {{< placeholder "<your-bucket-name>" >}}
     mysql:
-        secret: mysql-credentials
+      secret: mysql-credentials
     ```
 
 1.  Click **Submit**.
