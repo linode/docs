@@ -63,7 +63,7 @@ WantedBy=multi-user.target
 4.  Link the unit file from your application directory. This approach can streamline deployments by keeping the service definition with your codebase:
 
         sudo systemctl enable /opt/myapp/myservice.service
-    
+
       If the [Install] section is present, this creates the necessary symlinks in `/etc/systemd/system/`.
 
       Alternatively, copy the unit file to `/etc/systemd/system/` and give permissions:
@@ -78,7 +78,6 @@ WantedBy=multi-user.target
 1.  Once you have a unit file, you are ready to test the service:
 
         sudo systemctl start myservice
-
 
 2.  Check the status of the service:
 
@@ -139,7 +138,6 @@ May 02 15:03:37 localhost bash[2973]: Looping...
 
 For more information about using `systemctl` commands, see the [systemctl guide](/docs/guides/introduction-to-systemctl).
 
-
 ## Troubleshooting
 
 - "Example service started at ..." line does not appear in the output of the status command. The `systemd-cat` output is not reliable because of a race condition. As a workaround update the `test_service.sh` file as follows:
@@ -158,4 +156,4 @@ do
 echo "Looping...";
 sleep 30;
 done
-{{< /file >}}  
+{{< /file >}}
