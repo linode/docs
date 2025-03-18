@@ -44,17 +44,21 @@ The steps in this guide are written for non-root users. Commands that require el
 
 1. Use the IPsec command-line utility to create your IPsec private key. In the case of this tutorial, the private key is used to create the root certificate for StrongSwan. You can also use this key to generate other certificates.
 
-        sudo ipsec pki --gen --size 4096 --type rsa --outform pem > /etc/ipsec.d/private/ca.key.pem
+        sudo ipsec pki --gen --size 4096 --type rsa --outform pem > ca.key.pem
+        sudo mv ca.key.pem /etc/ipsec.d/private/ca.key.pem
+        sudo chmod 600 /etc/ipsec.d/private/ca.key.pem
 
 1. Create and sign the root certificate with the configurations included below. Ensure you replace the value of the `CN` configuration with your own desired name for your StrongSwan VPN server.
 
-        ipsec pki --self --in /etc/ipsec.d/private/ca.key.pem --type rsa --dn "CN=<Name of this VPN Server>" --ca --lifetime 3650 --outform pem > /etc/ipsec.d/cacerts/ca.cert.pem
+        sudo ipsec pki --self --in /etc/ipsec.d/private/ca.key.pem --type rsa \
+        --dn "CN=<Name of this VPN Server>" --ca --lifetime 3650 --outform pem | \
+        sudo tee /etc/ipsec.d/cacerts/ca.cert.pem > /dev/null
 
     In the example above, the `--lifetime 3650` configuration sets the certificate's lifetime to 3650 days or approximately ten years. The lifetime of the certificate determines when it is to be regenerated and distributed to your StrongSwan server and connected clients. You can adjust this setting to your preferred value.
 
-1. Generate the StrongSwan VPN server's private certificate.
+1. Generate the StrongSwan VPN server’s private key and save it to `/etc/ipsec.d/private/server.key.pem`. This command ensures root permissions for file creation, and suppresses terminal output.
 
-        ipsec pki --gen --size 4096 --type rsa --outform pem > /etc/ipsec.d/private/server.key.pem
+        sudo ipsec pki --gen --size 4096 --type rsa --outform pem | sudo tee /etc/ipsec.d/private/server.key.pem > /dev/null
 
 1. Generate the host server certificate. There are two ways to generate the certificate, however, they cannot be mixed. The two ways are as follows:
 
@@ -64,13 +68,26 @@ The steps in this guide are written for non-root users. Commands that require el
     **Local Resolver Method**
     The example below uses a local resolver. The IPsec utility takes the server key from step 2 and uses it as an input private certificate source, and generates a resolver-based certificate. Ensure you replace the value of `CN` and `san` with your own. The `--dn “CN=<serverhost.ourdomain.tld>` is a DNS or `/etc/hosts` call that should be changed to reflect your organization's own hostname.
 
-        ipsec pki --pub --in /etc/ipsec.d/private/server.key.pem --type rsa | ipsec pki --issue --lifetime 3650 --cacert /etc/ipsec.d/cacerts/ca.cert.pem --cakey /etc/ipsec.d/private/ca.key.pem --dn "CN=<serverhost.ourdomain.tld>" --san="<server.ourdomain.tld>" --flag serverAuth --flag ikeIntermediate --outform pem > /etc/ipsec.d/certs/server.cert.pem
+        sudo ipsec pki --pub --in /etc/ipsec.d/private/server.key.pem --type rsa | \
+        sudo ipsec pki --issue --lifetime 3650 \
+        --cacert /etc/ipsec.d/cacerts/ca.cert.pem --cakey /etc/ipsec.d/private/ca.key.pem \
+        --dn "CN=<serverhost.ourdomain.tld>" --san="<server.ourdomain.tld>" \
+        --flag serverAuth --flag ikeIntermediate --outform pem | \
+        sudo tee /etc/ipsec.d/certs/server.cert.pem > /dev/null
+
 
     **Gateway Server IPv4 Address**
 
     The duplicate `–san=”<server static IP address>` configuration in the command below is correct; do not omit both configurations. Replace their values with your own gateway server's IPv4 address.
 
-        ipsec pki --pub --in /etc/ipsec.d/private/server.key.pem --type rsa | ipsec pki --issue --lifetime 3650 --cacert /etc/ipsec.d/cacerts/ca.cert.pem --cakey /etc/ipsec.d/private/ca.key.pem --dn "CN=<server static IP address>" –san=”<server static IP address>” --san="<server static IP address>" --flag serverAuth --flag ikeIntermediate --outform pem > /etc/ipsec.d/certs/server.cert.pem
+        sudo ipsec pki --pub --in /etc/ipsec.d/private/server.key.pem --type rsa | \
+        sudo ipsec pki --issue --lifetime 3650 \
+        --cacert /etc/ipsec.d/cacerts/ca.cert.pem --cakey /etc/ipsec.d/private/ca.key.pem \
+        --dn "CN=<server static IP address>" \
+        --san="<server static IP address>" --san="<server static IP address>" \
+        --flag serverAuth --flag ikeIntermediate --outform pem | \
+        sudo tee /etc/ipsec.d/certs/server.cert.pem > /dev/null
+
 
 At the end of this section, you should have generated the following files on your Ubuntu 20.04 server:
 
