@@ -34,7 +34,7 @@ INTRO
 
 - **Argo CD**:
 
--
+- **Buildpacks**:
 
 ## Prerequisites
 
