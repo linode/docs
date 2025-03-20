@@ -447,67 +447,67 @@ The RAG pipeline files in this section are not related to the Kubeflow pipeline 
     ```file
     apiVersion: v1
     data:
-    pipeline-requirements.txt: |
-      requests
-      pymilvus
-      llama-index
-      llama-index-vector-stores-milvus
-      llama-index-embeddings-huggingface
-      llama-index-llms-openai-like
-      opencv-python-headless
-    rag-pipeline.py: |
-      """
-      title: RAG Pipeline
-      version: 1.0
-      description: RAG Pipeline
-      """
-      from typing import List, Optional, Union, Generator, Iterator
+        pipeline-requirements.txt: |
+          requests
+          pymilvus
+          llama-index
+          llama-index-vector-stores-milvus
+          llama-index-embeddings-huggingface
+          llama-index-llms-openai-like
+          opencv-python-headless
+        rag-pipeline.py: |
+          """
+          title: RAG Pipeline
+          version: 1.0
+          description: RAG Pipeline
+          """
+          from typing import List, Optional, Union, Generator, Iterator
 
-      class Pipeline:
+          class Pipeline:
 
-          def __init__(self):
-              self.name = "RAG Pipeline"
-              self.index = None
-              pass
-
-
-          async def on_startup(self):
-              from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-              from llama_index.core import Settings, VectorStoreIndex
-              from llama_index.llms.openai_like import OpenAILike
-              from llama_index.vector_stores.milvus import MilvusVectorStore
-
-              print(f"on_startup:{__name__}")
-
-              Settings.embed_model = HuggingFaceEmbedding(
-                    model_name="sentence-transformers/all-MiniLM-L6-v2"
-              )
-
-              llm = OpenAILike(
-                  model="llama3",
-                  api_base="https://llama3-model-predictor-team-demo.{{< placeholder "<cluster-domain>" >}}/openai/v1",
-                  api_key = "EMPTY",
-                  max_tokens = 512)
-
-              Settings.llm = llm
-
-              vector_store = MilvusVectorStore(uri="http://milvus.milvus.svc.cluster.local:19530", collection="linode_docs", dim=384, overwrite=False)
-              self.index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
-
-          async def on_shutdown(self):
-              print(f"on_shutdown:{__name__}")
-              pass
+            def __init__(self):
+                self.name = "RAG Pipeline"
+                self.index = None
+                pass
 
 
-          def pipe(
-              self, user_message: str, model_id: str, messages: List[dict], body: dict
-          ) -> Union[str, Generator, Iterator]:
-              print(f"pipe:{__name__}")
+            async def on_startup(self):
+                from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+                from llama_index.core import Settings, VectorStoreIndex
+                from llama_index.llms.openai_like import OpenAILike
+                from llama_index.vector_stores.milvus import MilvusVectorStore
 
-              query_engine = self.index.as_query_engine(streaming=True, similarity_top_k=5)
-              response = query_engine.query(user_message)
-              print(f"rag_response:{response}")
-              return f"{response}"
+                print(f"on_startup:{__name__}")
+
+                Settings.embed_model = HuggingFaceEmbedding(
+                        model_name="sentence-transformers/all-MiniLM-L6-v2"
+                )
+
+                llm = OpenAILike(
+                    model="llama3",
+                    api_base="https://llama3-model-predictor-team-demo.{{< placeholder "<cluster-domain>" >}}/openai/v1",
+                    api_key = "EMPTY",
+                    max_tokens = 512)
+
+                Settings.llm = llm
+
+                vector_store = MilvusVectorStore(uri="http://milvus.milvus.svc.cluster.local:19530", collection="linode_docs", dim=384, overwrite=False)
+                self.index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
+
+            async def on_shutdown(self):
+                print(f"on_shutdown:{__name__}")
+                pass
+
+
+            def pipe(
+                self, user_message: str, model_id: str, messages: List[dict], body: dict
+            ) -> Union[str, Generator, Iterator]:
+                print(f"pipe:{__name__}")
+
+                query_engine = self.index.as_query_engine(streaming=True, similarity_top_k=5)
+                response = query_engine.query(user_message)
+                print(f"rag_response:{response}")
+                return f"{response}"
     kind: ConfigMap
     metadata:
       name: pipelines-files
@@ -543,7 +543,7 @@ Update the Kyverno **Policy** `open-webui-policy.yaml` created in the previous t
               selector:
                 matchLabels:
                   ## change the value to match the name of the Workload
-                  app.kubernetes.io/instance: "linode-docs-pipeline"
+                  app.kubernetes.io/instance: "open-webui-pipelines"
     ```
 
     {{< note title="YAML Spacing" isCollapsible=true >}}
@@ -667,7 +667,7 @@ Update the Kyverno **Policy** `open-webui-policy.yaml` created in the previous t
       - name: {{< placeholder "WEBUI_AUTH" >}}
         value: "{{< placeholder "false" >}}"
       - name: {{< placeholder "OPENAI_API_BASE_URLS" >}}
-        value: https://llama3-model-predictor-team-demo.{{< placeholder "<cluster-domain>" >}}/openai/v1/openai/v1;https://linode-docs-pipeline-demo.{{< placeholder "<cluster-domain>" >}}
+        value: https://llama3-model-predictor-team-demo.{{< placeholder "<cluster-domain>" >}}/openai/v1;https://linode-docs-pipeline-demo.{{< placeholder "<cluster-domain>" >}}
       - name: {{< placeholder "OPENAI_API_KEYS" >}}
         value: {{< placeholder "EMPTY;0p3n-w3bu!" >}}
     ```
