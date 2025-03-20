@@ -104,7 +104,7 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 
 1.  Click **Create Bucket**.
 
-1.  Enter a name for your bucket, and select the same **Region** as your App Platform LKE cluster.
+1.  Enter a name for your bucket, and select a **Region** close to, or the same as, your App Platform LKE cluster.
 
 1.  While on the **Object Storage** page, select the **Access Keys** tab, and then click **Create Access Key**.
 
@@ -173,11 +173,11 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 
 1.  Click **Create Bucket**.
 
-1.  Enter a name for your bucket, and select the same **Region** as your App Platform LKE cluster.
+1.  Enter a name for your bucket, and select a **Region** close to, or the same as, your App Platform LKE cluster.
 
 1.  While on the **Object Storage** page, select the **Access Keys** tab, and then click **Create Access Key**.
 
-1.  Enter a name for your access key, select the same **Region** as your Kubeflow-Pipelines bucket, and make sure your access key has "Read/Write" access enabled for your bucket.
+1.  Enter a name for your access key, select a **Region** as your Kubeflow-Pipelines bucket, and make sure your access key has "Read/Write" access enabled for your bucket.
 
 1.  Save your access key information.
 
