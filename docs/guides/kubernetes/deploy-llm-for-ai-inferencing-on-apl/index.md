@@ -437,11 +437,9 @@ Follow the steps below to follow the second option and add the Kyverno security 
 
     ![Add Open WebUI Policy](APL-LLM-Add-OpenWebUIPolicy.jpg)
 
-1.  Check to see if the policy has been created in the Argo CD application:
+1.  Check to see if the policy has been created in Argo CD:
 
-    1.  Open the Argo CD application (**Workloads** > `llama3-model` > Argocd **Application**).
-
-    1.  Click **Applications**.
+    1.  Go to **Apps**, and open the _Argocd_ application.
 
     1.  Using the search feature, go to the `team-demo` application to see if the policy has been created. If it isn't there yet, view the `team-demo` application in the list of **Applications**, and click **Refresh** as needed.
 

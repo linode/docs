@@ -126,11 +126,15 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 
 1.  Provide a name for the Workload. This guide uses the Workload name `milvus`.
 
-1.  Add `kserve` as the namespace.
+1.  Add `milvus` as the namespace.
 
 1.  Select **Create a new namespace**.
 
-1.  Set the following values. Make sure to replace `externalS3` values with those of your Milvus bucket and access key:
+1.  Set the following values. Make sure to replace `externalS3` values with those of your Milvus bucket and access key. You may also need to add lines for the resources requests and limits under `standalone`:
+
+    {{< note title="Tip: Use Command + F" >}}
+    While navigating the **Values** configuration window, use the <kbd>cmd</kbd> + <kbd>F</kbd> keyboard search feature to locate each value.
+    {{< /note >}}
 
     ```
     cluster:
@@ -157,7 +161,7 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
           nvidia.com/gpu: "{{< placeholder "1" >}}"
     ```
 
-    {{< note >}}
+    {{< note type="warning" title="Unencrypted Secret Keys" >}}
     The Milvus Helm chart does not support the use of a secretKeyRef. Using unencrypted Secret Keys in chart values is not considered a Kubernetes security best-practice.
     {{< /note >}}
 
@@ -177,31 +181,47 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 
 1.  Save your access key information.
 
-### Create SealedSecrets
+### Make Sealed Secrets
 
-Create two SealedSecrets with names `mlpipeline-minio-artifact` and `mysql-credentials` using the steps and respective values below:
+#### Create a Sealed Secret for mlpipeline-minio-artifact
 
--   `mlpipeline-minio-artifact`
+Make a Sealed Secret named `mlpipeline-minio-artifact` granting access to your `kubeflow-pipelines` bucket.
+
+1.  Select **view** > **team** and **team** > **demo** in the top bar.
+
+1.  Select **Sealed Secrets** from the menu, and click **Create SealedSecret**.
+
+1.  Add a name for your SealedSecret, `mlpipeline-minio-artifact`.
+
+1.  Select type _[kubernetes.io/opaque](kubernetes.io/opaque)_ from the **type** dropdown menu.
+
+1.  Add the **Key** and **Value** details below. Replace {{< placeholder "YOUR_ACCESS_KEY" >}} and {{< placeholder "YOUR_SECRET_KEY" >}} with your `kubeflow-pipelines` access key information.
+
+    To add a second key for your secret key, click the **Add Item** button after entering your access key information:
+
     -   Type: `kubernetes.io/opaque`
     -   Key=`accesskey`, Value={{< placeholder "YOUR_ACCESS_KEY" >}}
     -   Key=`secretkey`, Value={{< placeholder "YOUR_SECRET_KEY" >}}
 
--   `mysql-credentials`
-    -   Type: `kubernetes.io/opaque`
-    -   Key=`username`, Value=`root`
-    -   Key=`password`, Value={{< placeholder "YOUR_ROOT_PASSWORD" >}}
+1.  Click **Submit**.
+
+#### Create a Sealed Secret for mysql-credentials
+
+Make another Sealed Secret named `mysql-credentials` to establish root user credentials. Make a strong root password, and save it somewhere secure.
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
-1.  Select **SealedSecrets** from the menu.
+1.  Select **Sealed Secrets** from the menu, and click **Create SealedSecret**.
 
-1.  Click **Create SealedSecret**.
-
-1.  Add a name for your SealedSecret; `mlpipeline-minio-artifact` or `mysql-credentials`, respectively.
+1.  Add a name for your SealedSecret, `mysql-credentials`.
 
 1.  Select type _[kubernetes.io/opaque](kubernetes.io/opaque)_ from the **type** dropdown menu.
 
-1.  Add the **Key** and **Value** details as listed for each SealedSecret above.
+1.  Add the **Key** and **Value** details, replacing {{< placeholder "YOUR_ROOT_PASSWORD" >}} with a strong root password you've created and saved:
+
+    -   Type: `kubernetes.io/opaque`
+    -   Key=`username`, Value=`root`
+    -   Key=`password`, Value={{< placeholder "YOUR_ROOT_PASSWORD" >}}
 
 1.  Click **Submit**.
 
@@ -217,11 +237,11 @@ Create a [**Network Policy**](https://apl-docs.net/docs/for-ops/console/netpols)
 
 1.  Add a name for the Network Policy.
 
-1.  Select **Rule type** `ingress`.
+1.  Select **Rule type** `ingress` using the following values, where `kfp` is the name of the Workload created in the next step:
 
-1.  Add [`app.kubernetes.io/instance`](http://app.kubernetes.io/instance) as the **Selector label name**.
+    - **Selector label name**: [`app.kubernetes.io/instance`](http://app.kubernetes.io/instance)
 
-1.  Add `kfp` as the **Selector label value**. This is the name of the workload created in the next step.
+    - **Selector label value**: `kfp`
 
 1.  Click **Submit**.
 
@@ -243,7 +263,7 @@ Create a [**Network Policy**](https://apl-docs.net/docs/for-ops/console/netpols)
 
 1.  Select **Create a new namespace**.
 
-1.  Set the following values:
+1.  Set the following values. Replace {{< placeholder "<your-bucket-region>" >}} and {{< placeholder "<your-bucket-name>" >}} with those of your `kubeflow-pipelines` bucket:
 
     ```
     objectStorage:
@@ -253,7 +273,7 @@ Create a [**Network Policy**](https://apl-docs.net/docs/for-ops/console/netpols)
       secret: mysql-credentials
     ```
 
-1.  Click **Submit**.
+1.  Click **Submit**. It may take a few minutes for the Workload to be ready.
 
 ### Expose the Kubeflow Pipelines UI
 
@@ -290,7 +310,9 @@ The steps below create and use a Python script to create a Kubeflow pipeline fil
     pip install kfp
     ```
 
-1.  Create a file named `doc-ingest-pipeline.py` with the following contents. Replace {{< placeholder "<cluster-domain>" >}} with the domain of your App Platform instance.
+1.  Create a file named `doc-ingest-pipeline.py` with the following contents.
+
+    Replace {{< placeholder "<cluster-domain>" >}} with the domain of your App Platform instance. The {{< placeholder "<cluster-domain>" >}} is contained in the console URL in your browser, where `console.lke123456.akamai-apl.net` is the URL and `lke123456.akamai-apl.net` is the {{< placeholder "<cluster-domain>" >}}.
 
     This script configures the pipeline that downloads the Markdown data set to be ingested, reads the content using LlamaIndex, generates embeddings of the content, and stores the embeddings in the milvus database:
 
@@ -328,7 +350,7 @@ The steps below create and use a Python script to create a Kubeflow pipeline fil
 
         llm = OpenAILike(
             model="llama3",
-            api_base="https://llama3-model-predictor-team-demo.<cluster-domain>/openai/v1",
+            api_base="https://llama3-model-predictor-team-demo.{{< placeholder "<cluster-domain>" >}}/openai/v1",
             api_key = "EMPTY",
             max_tokens = 512)
 
@@ -374,23 +396,35 @@ The steps below create and use a Python script to create a Kubeflow pipeline fil
 
 1.  Click on the URL of the service `ml-pipeline-ui`.
 
-1.  Navigate to the **Pipelines** section, click **Upload pipeline**, and select the `pipeline.yaml` file created in the previous section.
+1.  Navigate to the **Pipelines** section, click **Upload pipeline**.
 
-1.  Select **Experiments** from the menu, and click **Create experiment**. Enter a name and description for the experiment, and click **Next**.
+1.  Under **Upload a file**, select the `pipeline.yaml` file created in the previous section, and click **Create**.
 
-    [SCREENSHOT]
+    ![Upload Pipeline YAML](APL-RAG-upload-pipeline-yaml.jpg)
 
-1.  Navigate to the **Runs** section. Select the pipeline `pipeline.yaml` you just created to start a new run.
+1.  Select **Experiments** from the left menu, and click **Create experiment**. Enter a name and description for the experiment, and click **Next**.
 
-1.  For **Run Type** choose **One-off**. Provide the collection name and URL of the data set to be processed. To use the sample Linode Docs data set in this guide, use the name `lindoe_docs` and the following GitHub URL:
+    ![Create Experiment](APL-RAG-create-experiment.jpg)
 
-    ```command
-    https://github.com/linode/docs/archive/refs/tags/v1.360.0.zip
-    ```
+    When complete, you should be brought to the **Runs** > **Start a new run** page.
 
-1.  Click **Start** to run the pipeline. This may take a few minutes to complete.
+1.  Complete the following steps to start a new run:
 
-    [SCREENSHOT]
+    -   Under **Pipeline**, choose the pipeline `pipeline.yaml` you just created.
+
+    -   For **Run Type** choose **One-off**.
+
+    -   Provide the collection name and URL of the data set to be processed. This is the zip file with the documents you wish to process.
+
+        To use the sample Linode Docs data set in this guide, use the name `linode_docs` for **collection-string** and the following GitHub URL for **url-string**:
+
+        ```command
+        https://github.com/linode/docs/archive/refs/tags/v1.360.0.zip
+        ```
+
+1.  Click **Start** to run the pipeline. When completed, the run is shown with a green checkmark to the left of the run title.
+
+    ![Docs Run Complete](APL-RAG-docs-run-complete.jpg)
 
 ## Deploy the Chatbot
 
@@ -402,109 +436,126 @@ The Open WebUI Pipeline uses the Milvus database to load context related to the 
 
 The RAG pipeline files in this section are not related to the Kubeflow pipeline create in the previous section. Rather, the RAG pipeline instructs the chatbot how to interact with each component created thus far, including the Milvus data store and the Llama 3 LLM.
 
+1.  Select **view** > **team** and **team** > **demo** in the top bar.
+
 1.  Navigate to the **Apps** section, and click on **Gitea**.
 
-1.  In Gitea, navigate to the `team-demo-argocd` repository.
+1.  In Gitea, navigate to the `team-demo-argocd` repository on the right.
 
-1.  Create a file with the name `pipeline-files.yaml` with the following contents. Replace {{< placeholder "<cluster-domain>" >}} with the domain of your App Platform instance:
+1.  Click the **Add File** dropdown, and select **New File**. Create a file with the name `pipeline-files.yaml` with the following contents. Replace {{< placeholder "<cluster-domain>" >}} with the domain of your App Platform instance:
 
     ```file
     apiVersion: v1
     data:
     pipeline-requirements.txt: |
-        requests
-        pymilvus
-        llama-index
-        llama-index-vector-stores-milvus
-        llama-index-embeddings-huggingface
-        llama-index-llms-openai-like
-        opencv-python-headless
+      requests
+      pymilvus
+      llama-index
+      llama-index-vector-stores-milvus
+      llama-index-embeddings-huggingface
+      llama-index-llms-openai-like
+      opencv-python-headless
     rag-pipeline.py: |
-        """
-        title: RAG Pipeline
-        version: 1.0
-        description: RAG Pipeline
-        """
-        from typing import List, Optional, Union, Generator, Iterator
+      """
+      title: RAG Pipeline
+      version: 1.0
+      description: RAG Pipeline
+      """
+      from typing import List, Optional, Union, Generator, Iterator
 
-        class Pipeline:
+      class Pipeline:
 
-            def __init__(self):
-                self.name = "RAG Pipeline"
-                self.index = None
-                pass
+          def __init__(self):
+              self.name = "RAG Pipeline"
+              self.index = None
+              pass
 
 
-            async def on_startup(self):
-                from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-                from llama_index.core import Settings, VectorStoreIndex
-                from llama_index.llms.openai_like import OpenAILike
-                from llama_index.vector_stores.milvus import MilvusVectorStore
+          async def on_startup(self):
+              from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+              from llama_index.core import Settings, VectorStoreIndex
+              from llama_index.llms.openai_like import OpenAILike
+              from llama_index.vector_stores.milvus import MilvusVectorStore
 
-                print(f"on_startup:{__name__}")
+              print(f"on_startup:{__name__}")
 
-                Settings.embed_model = HuggingFaceEmbedding(
+              Settings.embed_model = HuggingFaceEmbedding(
                     model_name="sentence-transformers/all-MiniLM-L6-v2"
-                )
+              )
 
-                llm = OpenAILike(
-                    model="llama3",
-                    api_base="https://llama3-model-predictor-team-demo.<cluster-domain>/openai/v1",
-                    api_key = "EMPTY",
-                    max_tokens = 512)
+              llm = OpenAILike(
+                  model="llama3",
+                  api_base="https://llama3-model-predictor-team-demo.{{< placeholder "<cluster-domain>" >}}/openai/v1",
+                  api_key = "EMPTY",
+                  max_tokens = 512)
 
-                Settings.llm = llm
+              Settings.llm = llm
 
-                vector_store = MilvusVectorStore(uri="http://milvus.milvus.svc.cluster.local:19530", collection="linode_docs", dim=384, overwrite=False)
-                self.index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
+              vector_store = MilvusVectorStore(uri="http://milvus.milvus.svc.cluster.local:19530", collection="linode_docs", dim=384, overwrite=False)
+              self.index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
 
-            async def on_shutdown(self):
-                print(f"on_shutdown:{__name__}")
-                pass
+          async def on_shutdown(self):
+              print(f"on_shutdown:{__name__}")
+              pass
 
 
-            def pipe(
-                self, user_message: str, model_id: str, messages: List[dict], body: dict
-            ) -> Union[str, Generator, Iterator]:
-                print(f"pipe:{__name__}")
+          def pipe(
+              self, user_message: str, model_id: str, messages: List[dict], body: dict
+          ) -> Union[str, Generator, Iterator]:
+              print(f"pipe:{__name__}")
 
-                query_engine = self.index.as_query_engine(streaming=True, similarity_top_k=5)
-                response = query_engine.query(user_message)
-                print(f"rag_response:{response}")
-                return f"{response}"
+              query_engine = self.index.as_query_engine(streaming=True, similarity_top_k=5)
+              response = query_engine.query(user_message)
+              print(f"rag_response:{response}")
+              return f"{response}"
     kind: ConfigMap
     metadata:
-    name: pipelines-files
+      name: pipelines-files
     ```
 
-1.  Open the Argo CD application, and navigate to the `team-<team-name>` application to see if the configmap has been created. If it is not ready yet, click **Refresh** as needed.
+    Optionally add a title and any notes to the change history, and click **Commit Changes**.
+
+1.  Go to **Apps**, and open the _Argocd_ application. Navigate to the `team-demo` application to see if the configmap has been created. If it is not ready yet, click **Refresh** as needed.
+
+    ![Pipelines-files CM](APL-RAG-pipelines-files-CM.jpg)
 
 ### Deploy the open-webui Pipeline and Web Interface
 
-Update the Kyverno **Policy** created in the previous tutorial ([Deploy an LLM for AI Inferencing with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl)) to mutate the `open-webui` pods that will be deployed. Add the following contents so that the pods are deployed with the `sidecar.istio.io/inject: "false"` label that prevents Istio sidecar injection:
+Update the Kyverno **Policy** `open-webui-policy.yaml` created in the previous tutorial ([Deploy an LLM for AI Inferencing with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl)) to mutate the `open-webui` pods that will be deployed.
 
-```file
-     - resources:
-          kinds:
-          - StatefulSet
-          - Deployment
-          selector:
-            matchLabels:
-              ## change the value to match the name of the Workload
-              app.kubernetes.io/instance: "linode-docs-chatbot"
-      - resources:
-          kinds:
-          - StatefulSet
-          - Deployment
-          selector:
-            matchLabels:
-              ## change the value to match the name of the Workload
-              app.kubernetes.io/instance: "linode-docs-pipeline"
-```
+1.  Open the **Gitea** app, navigate to the `team-demo-argocd` repository, and open the `open-webui-policy.yaml` file.
+
+1.  Add the following resources so that the `open-webui` pods are deployed with the `sidecar.istio.io/inject: "false"` label that prevents Istio sidecar injection:
+
+    ```file
+          - resources:
+              kinds:
+              - StatefulSet
+              - Deployment
+              selector:
+                matchLabels:
+                  ## change the value to match the name of the Workload
+                  app.kubernetes.io/instance: "linode-docs-chatbot"
+          - resources:
+              kinds:
+              - StatefulSet
+              - Deployment
+              selector:
+                matchLabels:
+                  ## change the value to match the name of the Workload
+                  app.kubernetes.io/instance: "linode-docs-pipeline"
+    ```
+
+    {{< note title="YAML Spacing" isCollapsible=true >}}
+    Be mindful of indentations when editing the YAML file. Both `-resources` sections should live under the `-name` > `match` > `any` block in `rules`.
+
+    ![Open WebUI Policy YAML Edit](APL-RAG-openwebui-policy-edit.jpg)
+
+    {{< /note >}}
 
 #### Add the open-webui-pipelines Helm Chart to the Catalog
 
-1.  Select **view** > **team** and **team** > **demo** in the top bar.
+1.  Select **view** > **team** and **team** > **admin** in the top bar.
 
 1.  Click on **Catalog** in the left menu.
 
@@ -516,7 +567,9 @@ Update the Kyverno **Policy** created in the previous tutorial ([Deploy an LLM f
     https://github.com/open-webui/helm-charts/blob/pipelines-0.4.0/charts/pipelines/Chart.yaml
     ```
 
-1.  Click **Get Details** to populate the `open-webui-pipelines` Helm chart details.
+1.  Click **Get Details** to populate the `open-webui-pipelines` Helm chart details. If preferred, rename the **Target Directory Name** from `pipelines` to `open-webui-pipelines` for reference later on.
+
+1.  Leave **Allow teams to use this chart** selected.
 
 1.  Click **Add Chart**.
 
@@ -528,46 +581,46 @@ Update the Kyverno **Policy** created in the previous tutorial ([Deploy an LLM f
 
 1.  Click on **Create Workload**.
 
-1.  Select the `open-webui-pipelines` Helm chart from the Catalog.
+1.  Select the _Open-Webui-Pipelines_ Helm chart from the Catalog.
 
 1.  Click on **Values**.
 
-1.  Provide a name for the Workload. This guide uses the Workload name "open-webui-pipelines".
+1.  Provide a name for the Workload. This guide uses the Workload name `open-webui-pipelines`.
 
-1.  Add **______** as the namespace.
+1.  Add in or change the following chart values. Make sure to set the name of the Workload in the `nameOverride` field.
 
-1.  Select **Create Namespace**.
-
-1.  Change the following chart values:
+    You may need to uncomment some fields by removing the `#` sign in order to make them active. Remember to be mindful of indentations:
 
     ```
-    nameOverride: linode-docs-pipeline
+    nameOverride: {{< placeholder "linode-docs-pipeline" >}}
     resources:
-    requests:
-        cpu: "1"
-        memory: 512Mi
-    limits:
-        cpu: "3"
-        memory: 2Gi
+      requests:
+        cpu: "{{< placeholder "1" >}}"
+        memory: {{< placeholder "512Mi" >}}
+      limits:
+        cpu: "{{< placeholder "3" >}}"
+        memory: {{< placeholder "2Gi" >}}
     ingress:
-    enabled: false
+      enabled: {{< placeholder "false" >}}
     extraEnvVars:
-    - name: PIPELINES_REQUIREMENTS_PATH
-        value: /opt/pipeline-requirements.txt
-    - name: PIPELINES_URLS
-        value: file:///opt/rag-pipeline.py
+      - name: {{< placeholder "PIPELINES_REQUIREMENTS_PATH" >}}
+        value: {{< placeholder "/opt/pipeline-requirements.txt" >}}
+      - name: {{< placeholder "PIPELINES_URLS" >}}
+        value: {{< placeholder "file:///opt/rag-pipeline.py" >}}
     volumeMounts:
-    - name: config-volume
-        mountPath: /opt
+      - name: {{< placeholder "config-volume" >}}
+        mountPath: {{< placeholder "/opt" >}}
     volumes:
-    - name: config-volume
+      - name: {{< placeholder "config-volume" >}}
         configMap:
-        name: pipelines-files
+          name: {{< placeholder "pipelines-files" >}}
     ```
 
 1.  Click **Submit**.
 
 #### Expose the linode-docs-pipeline Service
+
+1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
 1.  Select **Services**.
 
@@ -575,29 +628,13 @@ Update the Kyverno **Policy** created in the previous tutorial ([Deploy an LLM f
 
 1.  In the **Name** dropdown menu, select the `linode-docs-pipeline` service.
 
+1.  In the **Port** dropdown, select port `9099`.
+
 1.  Under **Exposure**, select **External**.
 
 1.  Click **Submit**.
 
 1.  Once submitted, copy the URL of the `linode-docs-pipeline` service to your clipboard.
-
-#### Add the open-webui Helm Chart to the Catalog
-
-1.  Select **view** > **team** and **team** > **demo** in the top bar.
-
-1.  Click on **Catalog** in the left menu.
-
-1.  Select **Add Helm Chart**.
-
-1.  Under **Github URL**, add the URL to the `open-webui` Helm chart:
-
-    ```command
-    https://github.com/open-webui/helm-charts/blob/open-webui-5.20.0/charts/open-webui/Chart.yaml
-    ```
-
-1.  Click **Get Details** to populate the `open-webui` Helm chart details.
-
-1.  Click **Add Chart**.
 
 #### Create a Workload to Install the open-webui Helm Chart
 
@@ -607,31 +644,35 @@ Update the Kyverno **Policy** created in the previous tutorial ([Deploy an LLM f
 
 1.  Click on **Create Workload**.
 
-1.  Select the `open-webui-pipelines` Helm chart from the Catalog.
+1.  Select the _Open-Webui_ Helm chart from the Catalog. This Helm chart should have been added in the previous [Deploy an LLM for AI Inferencing with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl/#add-the-open-webui-helm-chart-to-the-catalog) guide.
 
 1.  Click on **Values**.
 
-1.  Provide a name for the Workload.
+1.  Provide a name for the Workload. This guide uses the name `linode-docs-chatbot`.
 
-1.  Edit the chart to include the below values, and set the name of the Workload in the `nameOverride` field:
+1.  Edit the chart to include the below values, and set the name of the Workload in the `nameOverride` field. Replace {{< placeholder "<cluster-domain>" >}} with your App Platform cluster domain.
+
+    You may need to add new lines for the additional names and values under `extraEnvVars` (extra environment variables):
 
     ```
-    nameOverride: linode-docs-chatbot
+    nameOverride: {{< placeholder "linode-docs-chatbot" >}}
     ollama:
-    enabled: false
+      enabled: {{< placeholder "false" >}}
     pipelines:
-    enabled: false
+      enabled: {{< placeholder "false" >}}
     persistence:
-    enabled: false
-    replicaCount: 1
+      enabled: {{< placeholder "false" >}}
+    replicaCount: {{< placeholder "1" >}}
     extraEnvVars:
-    - name: WEBUI_AUTH
-        value: "false"
-    - name: OPENAI_API_BASE_URLS
-        value: https://llama3-model-predictor-team-demo.<cluster-domain>/openai/v1/openai/v1;https://linode-docs-pipeline-demo.lke366246.<cluster-domain>
-    - name: OPENAI_API_KEYS
-        value: EMPTY;0p3n-w3bu!
+      - name: {{< placeholder "WEBUI_AUTH" >}}
+        value: "{{< placeholder "false" >}}"
+      - name: {{< placeholder "OPENAI_API_BASE_URLS" >}}
+        value: https://llama3-model-predictor-team-demo.{{< placeholder "<cluster-domain>" >}}/openai/v1/openai/v1;https://linode-docs-pipeline-demo.{{< placeholder "<cluster-domain>" >}}
+      - name: {{< placeholder "OPENAI_API_KEYS" >}}
+        value: {{< placeholder "EMPTY;0p3n-w3bu!" >}}
     ```
+
+1.  Click **Submit**.
 
 #### Expose the linode-docs-chatbot Service
 
@@ -653,4 +694,4 @@ Meta AI's Llama 3 model uses information that is pre-trained by other data sourc
 
 The RAG Pipeline model defined in this guide uses data from the custom data set with which it was provided. The example data set used in this guide is sourced from Linode Docs. If you give this model a query relevant to your custom data, the chatbot should respond with an answer informed by that data set.
 
-[SCREENSHOT]
+![Llama and RAG LLMs](APL-RAG-LLMs.jpg)
