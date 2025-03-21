@@ -244,6 +244,7 @@ bufio
 bugtracker
 buildah
 buildbot
+buildpack
 bukkit
 bundler
 bungeecord

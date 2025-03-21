@@ -1,6 +1,6 @@
 ---
 slug: inter-service-communication-with-rabbitmq-and-apl
-title: "Set Up Inter-Microservice Communication Using Rabbitmq On App Platform For LKE"
+title: "Set Up Inter-Microservice Communication Using RabbitMQ On App Platform For LKE"
 description: "Two to three sentences describing your guide."
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -12,7 +12,19 @@ external_resources:
 - '[Akamai App Platform Documentation](https://apl-docs.net/docs/akamai-app-platform/introduction)'
 ---
 
-INTRO
+## Introduction
+
+Asynchronous messaging is a common microservice architecture pattern used to decouple inter-service communication. Akamai App Platform uses RabbitMQ, an open-source message broker, to provide an integrated messaging and streaming broker.
+
+This guide provides steps for creating a RabbitMQ cluster on App Platform, as well as building and deploying an example Python application configured to send messages to a RabbitMQ queue using a fanout exchange. The example app consists of a static website built to send messages through the application server to a connected RabbitMQ cluster.
+
+### What is a Fanout Exchange?
+
+A "fanout" exchange is a message protocol method that relays messages to all bound queues. The result in this architecture is RabbitMQ sending all messages to all connected clients.
+
+The fanout exchange protocol is built into RabbitMQ and can be used to route one message to multiple users, where a common use case would be sending a single notification to all customers. A consideration for this use case is customer preference; some customers may wish to receive information via email while others prefer to receive messages over SMS or social media network.
+
+To address this, RabbitMQ allows you to bind each service - email, SMS, social media - to a fanout exchange, thus allowing you to send one message to reach all services. The means that when a message is delivered, queues bound to the exchange receive it and can then process the message to each connected client without needing to send multiple messages to reach each service.
 
 ## Diagram
 
@@ -28,13 +40,13 @@ INTRO
 
 ### Software
 
-- **RabbitMQ**:
+-   **RabbitMQ**: [RabbitMQ](https://www.rabbitmq.com/) is an open source alternative message broker that uses queue-based messaging to provide customization and control over message routing and delivery patterns.
 
-- **Harbor**:
+-   **Harbor**: [Harbor](https://goharbor.io/) is an open-source registry that helps store and manage container images and OCI artifacts like Helm charts. Harbor uses RBAC (role-based access control) for secure artifact and policy management.
 
-- **Argo CD**:
+-   **Argo CD**: [Argo CD](https://argo-cd.readthedocs.io/en/stable/) is an open-source, declarative, continuous delivery tool for Kubernetes. Argo CD uses the GitOps workflow to continuously monitor applications and compare their current states against desired states in a Git repository.
 
-- **Buildpacks**:
+-   **Cloud Native Buildpacks**: A [buildpack](https://buildpacks.io/) is software used to take application source code and transform it into containerized images for building applications.
 
 ## Prerequisites
 
@@ -60,7 +72,9 @@ Once your LKE cluster with App Platform has been fully deployed, sign into the A
 
     Enabled apps move up and appear in color towards the top of the available app list.
 
-    ![SCREENSHOT]()
+    {{< note title="Using Object Storage With Harbor" >}}
+    Optionally, Harbor can be configured to use object storage when first activated. While not necessary for the demo in this tutorial, it is recommended for production environments.
+    {{< /note >}}
 
 ### Create a New Team
 
@@ -78,37 +92,43 @@ Once your LKE cluster with App Platform has been fully deployed, sign into the A
 
 A [Workload](https://apl-docs.net/docs/for-devs/console/workloads) is a self-service feature for creating Kubernetes resources using Helm charts from the Catalog.
 
-1.  Select **view** > **team** and **team** > **demo** in the top bar.
+1.  Switch to your newly created team view by selecting **view** > **team** and **team** > **demo** in the top bar. You can switch back to team `admin` as needed by selecting **view** > **team** and **team** > **admin**.
 
 1.  Select **Workloads** from the left menu, and then click **Create Workload**.
 
 1.  Select the _Rabbitmq-Cluster_ Helm chart from the Catalog.
 
+1.  Click **Values**.
+
 1.  Provide a name for the Workload. This guide uses the Workload name `rabbitmq-demo`.
 
-1.  Continue with the default values, and click **Submit**. The Workload may take a few minutes to become ready.
+1.  Continue with the rest of the default values, and click **Submit**. The Workload may take a few minutes to become ready.
+
+1.  A Workload is ready when there is a green checkmark in the **Status** column:
+
+    ![RabbitMQ Ready Workload](APL-RabbitMQ-workload-ready.jpg)
 
 ## Build the App
 
-This guide uses an example Python chat app to send messages to connected clients. The example in this guide is not meant for production workloads, and steps may vary depending on the app you use.
+This guide uses an example Python chat app to send messages to all connected clients. The example in this guide is not meant for production workloads, and steps may vary depending on the app you are using.
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
 1.  Select **Builds**, and click **Create Build**.
 
-1.  Provide a name for the Build. This name is the same name used for the image stored in the private Harbor registry of your Team. This guide uses the Build name `rmp-example-app` with the tag `latest`.
+1.  Provide a name for the Build. This is the same name used for the image stored in the private Harbor registry of your Team. This guide uses the Build name `rmp-example-app` with the tag `latest`.
 
-1.  Select the Mode **Buildpacks**.
+1.  Select the **Mode** `Buildpacks`.
 
-1.  To use the example app, provide the following GitHub repository URL:
+1.  To use the example Python messaging app, provide the following GitHub repository URL:
 
     ```command
     https://github.com/linode/apl-examples.git
     ```
 
-1.  Set the path to `rabbitmq-python`.
+1.  Set the **Buildpacks** path to `rabbitmq-python`.
 
-1.  Click **Submit**.
+1.  Click **Submit**. It may take a few minutes for the Build to become ready.
 
 ### Check the Build Status
 
@@ -117,6 +137,8 @@ To see if the app build was successful:
 1.  Select **Apps** from the left menu, and open the _Tekton_ app.
 
 1.  Click **PipelineRuns** in the left menu.
+
+1.  Click the link of your build in the list of available Pipelines.
 
 1.  A successful build is denoted with a green check mark and `Completed` status:
 
