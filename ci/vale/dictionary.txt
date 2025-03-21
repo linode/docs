@@ -245,6 +245,7 @@ bufio
 bugtracker
 buildah
 buildbot
+buildpack
 bukkit
 bundler
 bungeecord
@@ -2518,6 +2519,7 @@ teardown
 techdocs
 techland
 Tectia
+Tekton
 telecom
 telehealth
 teleporting
