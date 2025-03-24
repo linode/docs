@@ -28,7 +28,13 @@ To address this, RabbitMQ allows you to bind each service - email, SMS, social m
 
 ## Diagram
 
-![RabbitMQ on APL](APL-RabbitMQ-diagram-test.jpg)
+![RabbitMQ on APL](APL-RabbitMQ-diagram-cropped.jpg)
+
+1.  Buildpacks pulls and converts an app from GitHub repository into a containerized image. Harbor manages the containerized image.
+
+2.  RabbitMQ manages incoming messages and sends them to a consumer app ready to ingest messages. The example Python app in this guide is configured to both produce and consume messages for demo purposes.
+
+3.  Argo CD monitors the status of the app against the desired state hosted in the GitHub repository.
 
 ## Components
 
@@ -50,11 +56,13 @@ To address this, RabbitMQ allows you to bind each service - email, SMS, social m
 
 ## Prerequisites
 
-- A [Cloud Manager](https://cloud.linode.com/) account is required to use Akamai's cloud computing services, including LKE.
+-   A [Cloud Manager](https://cloud.linode.com/) account is required to use Akamai's cloud computing services, including LKE.
 
-- Enrollment into the Akamai App Platform's [beta program](https://cloud.linode.com/betas).
+-   Enrollment into the Akamai App Platform's [beta program](https://cloud.linode.com/betas).
 
-- An provisioned and configured LKE cluster with App Platform enabled. An LKE cluster consisting of 3 Dedicated Compute Instances is sufficient for the deployment in this guide.
+-   An provisioned and configured LKE cluster with App Platform enabled and [auto-scaling](https://techdocs.akamai.com/cloud-computing/docs/manage-nodes-and-node-pools#autoscale-automatically-resize-node-pools) turned on.
+
+    An LKE cluster consisting of 3 Dedicated Compute Instances is sufficient for the deployment in this guide to run, but additional resources may be required during the configuration of your App Platform architecture. To ensure sufficient resources are available, it is recommended that auto-scaling for your LKE cluster is enabled once the cluster is deployed.
 
 To learn more about provisioning a LKE cluster with App Platform, see our [Getting Started with App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-akamai-application-platform) guide.
 
@@ -110,13 +118,15 @@ A [Workload](https://apl-docs.net/docs/for-devs/console/workloads) is a self-ser
 
 ## Build the App
 
-This guide uses an example Python chat app to send messages to all connected clients. The example in this guide is not meant for production workloads, and steps may vary depending on the app you are using.
+This guide uses an example Python chat app to send messages to all connected clients. The steps below pull the example app code from the Linode Git repository and deploy it using the "Build" feature in App Platform.
+
+The example app in this guide is not meant for production workloads, and steps may vary depending on the app you are using.
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
 1.  Select **Builds**, and click **Create Build**.
 
-1.  Provide a name for the Build. This is the same name used for the image stored in the private Harbor registry of your Team. This guide uses the Build name `rmp-example-app` with the tag `latest`.
+1.  Provide a name for the Build. This is the same name used for the image stored in the private Harbor registry of your Team. This guide uses the Build name `rmq-example-app` with the tag `latest`.
 
 1.  Select the **Mode** `Buildpacks`.
 
@@ -128,11 +138,15 @@ This guide uses an example Python chat app to send messages to all connected cli
 
 1.  Set the **Buildpacks** path to `rabbitmq-python`.
 
-1.  Click **Submit**. It may take a few minutes for the Build to become ready.
+1.  Click **Submit**. The build may take a few minutes to be ready.
+
+    {{< note title="Make sure auto-scaling is enabled on your cluster" >}}
+    When a build is created, each task in the pipeline runs in a pod, which requires a certain amount of CPU and memory resources. To ensure the sufficient number of resources are available, it is recommended that auto-scaling for your LKE cluster is enabled prior to creating the build.
+    {{< /note >}}
 
 ### Check the Build Status
 
-To see if the app build was successful:
+The backend status of the build can be checked from the **PipelineRuns** section of the Tekton app interface:
 
 1.  Select **Apps** from the left menu, and open the _Tekton_ app.
 
@@ -150,9 +164,9 @@ Once successfully built, copy the image repository link so that you can create a
 
 1.  Select **Builds** to view the status of your build.
 
-1.  A green check mark in the **Status** column denotes the `rmp-example-app` build as ready.
-
 1.  When ready, use the "copy" button in the **Repository** column to copy the repository URL link to your clipboard.
+
+    ![App Build Ready](APL-RabbitMQ-build-ready.jpg)
 
 ## Deploy the App
 
@@ -162,13 +176,15 @@ Once successfully built, copy the image repository link so that you can create a
 
 1.  Select the _K8s-Deployment_ Helm chart from the Catalog.
 
+1.  Click **Values**.
+
 1.  Provide a name for the Workload. This guide uses the Workload name `rmq-example-app`.
 
 1.  Click on **Values**.
 
-1.  Edit the following chart values:
+1.  Add or edit the following chart values. You may need to uncomment or add additional lines in the Values configuration:
 
-    - Update {{< placeholder "<image-repo-link>" >}} under `image` > `repository`, where {{< placeholder "<image-repo-link>" >}} is the repository URL link from the `rmp-example-app` build in the previous section.
+    - Update {{< placeholder "<image-repo-link>" >}} under `image` > `repository`, where {{< placeholder "<image-repo-link>" >}} is the repository URL link from the `rmq-example-app` build in the previous section.
 
     - Update the `name` references under each `secretKeyRef` entry. The format is `{{< placeholder "<workload-name>" >}}-rabbitmq-cluster-default-user`, where {{< placeholder "<workload-name>" >}} is the name of the RabbitMQ cluster Workload, `rabbitmq-demo`.
 
@@ -176,23 +192,23 @@ Once successfully built, copy the image repository link so that you can create a
     image:
       repository: {{< placeholder "<image-repo-link>" >}}
       pullPolicy: IfNotPresent
-      tag: latest
+      tag: {{< placeholder "latest" >}}
     env:
       - name: {{< placeholder "NOTIFIER_RABBITMQ_HOST" >}}
         valueFrom:
           secretKeyRef:
             name: {{< placeholder "<workload-name>" >}}-rabbitmq-cluster-default-user
-            key: host
+            key: {{< placeholder "host" >}}
       - name: {{< placeholder "NOTIFIER_RABBITMQ_USER" >}}
         valueFrom:
           secretKeyRef:
             name: {{< placeholder "<workload-name>" >}}-rabbitmq-cluster-default-user
-            key: username
-      - name: NOTIFIER_RABBITMQ_PASSWORD
+            key: {{< placeholder "username" >}}
+      - name: {{< placeholder "NOTIFIER_RABBITMQ_PASSWORD" >}}
         valueFrom:
           secretKeyRef:
             name: {{< placeholder "<workload-name>" >}}-rabbitmq-cluster-default-user
-            key: password
+            key: {{< placeholder "password" >}}
     ```
 
 1.  Click **Submit**. It may take a few minutes for the Workload to be ready.
@@ -200,6 +216,8 @@ Once successfully built, copy the image repository link so that you can create a
 ### Allow Traffic to the RabbitMQ Cluster
 
 In order for the RabbitMQ Cluster to be accessible, a Network Policy must be created.
+
+A [Network Policy](https://apl-docs.net/docs/for-devs/console/netpols) is a self-service method of controlling traffic to and from your deployment. Ingress (inbound) policies control access to internal Team pods, and egress (outbound) policies control traffic to external endpoints.
 
 1.  Select **Network Policies** from the left menu, and click **Create NetPol**.
 
@@ -215,7 +233,9 @@ In order for the RabbitMQ Cluster to be accessible, a Network Policy must be cre
 
 1.  Set the namespace to `team-demo`, or your created team name.
 
-1.  Optionally limit the in-cluster exposure to the app. For example, set the **Selector label name** to `otomi.io/app` and the **Selector label value** to the name of your app's Workload (i.e. `rmp-example-app`).
+1.  Optionally limit the in-cluster exposure to the app. For example, set the **Selector label name** to `otomi.io/app` and the **Selector label value** to the name of your app's Workload (i.e. `rmq-example-app`).
+
+1.  Click **Submit**.
 
 ## Expose the App
 
@@ -227,7 +247,7 @@ Create a service to expose the `rmq-example-app` application to external traffic
 
 1.  Under **Exposure**, select **External**.
 
-1.  Click **Submit**.
+1.  Click **Submit**. The service may take a few minutes to be ready.
 
 ### Access the Demo App
 
@@ -237,4 +257,4 @@ Create a service to expose the `rmq-example-app` application to external traffic
 
     ![Demo Chat App](APL-RabbitMQ-chat-demo.jpg)
 
-1.  Once sent, you should see a confirmation that your message was received.
+1.  Once sent, you should your message display in the messages list. This acts as confirmation that your message was received.
