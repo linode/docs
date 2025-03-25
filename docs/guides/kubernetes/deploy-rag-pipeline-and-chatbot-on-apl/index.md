@@ -5,9 +5,11 @@ description: "This guide expands on a previously built LLM and AI inferencing ar
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-03-31
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['ai','ai inference','ai inferencing','llm','large language model','app platform','lke','linode kubernetes engine','rag pipeline','retrieval augmented generation','open webui','kubeflow']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
+- '[Akamai App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/application-platform)'
+- '[Akamai App Platform Documentation](https://apl-docs.net/docs/akamai-app-platform/introduction)'
 ---
 
 {{< note title="Beta Notice" type="warning" >}}
