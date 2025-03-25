@@ -4,21 +4,21 @@ title: "Deploy a RAG Pipeline and Chatbot with App Platform for LKE"
 description: "This guide expands on a previously built LLM and AI inferencing architecture to include a RAG pipeline that indexes a custom data set. The steps provided utilize Akamai App Platform for Linode Kubernetes Engine to deploy the RAG pipeline."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-03-11
+published: 2025-03-31
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 ---
+
+{{< note title="Beta Notice" type="warning" >}}
+The Akamai App Platform is now available as a limited beta. It is not recommended for production workloads. To register for the beta, visit the [Betas](https://cloud.linode.com/betas) page in the Cloud Manager and click the Sign Up button next to the Akamai App Platform Beta.
+{{< /note >}}
 
 This guide builds on the LLM (Large Language Model) architecture built in our [Deploy an LLM for AI Inferencing with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl) guide by deploying a RAG (Retrieval-Augmented Generation) pipeline that indexes a custom data set. RAG is a particular method of context augmentation that attaches relevant data as context when users send queries to an LLM.
 
 Follow the steps in this tutorial to install Kubeflow Pipelines and deploy a RAG pipeline using Akamai App Platform for LKE. The deployment in this guide uses the previously deployed Open WebUI chatbot to respond to queries using a custom data set. For example purposes, this guide uses a sample data set from Linode Docs in Markdown format.
 
 If you prefer a manual installation rather than one using App Platform for LKE, see our [Deploy a Chatbot and RAG Pipeline for AI Inferencing on LKE](/docs/guides/ai-chatbot-and-rag-pipeline-for-inference-on-lke/) guide.
-
-{{< note title="Deploy an LLM for AI inferencing first" type="warning" >}}
-This guide requires the completion of the [Deploy an LLM for AI Inferencing with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl) in order to function.
-{{< /note >}}
 
 ## Diagram
 

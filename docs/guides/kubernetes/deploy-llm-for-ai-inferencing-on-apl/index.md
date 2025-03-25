@@ -4,7 +4,7 @@ title: "Deploy an LLM for AI Inferencing with App Platform for LKE"
 description: "This guide includes steps and guidance for deploying a large language model for AI inferencing using App Platform for Linode Kubernetes Engine."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-03-11
+published: 2025-03-31
 keywords: ['ai','ai inference','ai inferencing','llm','large language model','app platform','lke','linode kubernetes engine','llama 3','kserve','istio','knative']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -12,13 +12,19 @@ external_resources:
 - '[Akamai App Platform Documentation](https://apl-docs.net/docs/akamai-app-platform/introduction)'
 ---
 
+{{< note title="Beta Notice" type="warning" >}}
+The Akamai App Platform is now available as a limited beta. It is not recommended for production workloads. To register for the beta, visit the [Betas](https://cloud.linode.com/betas) page in the Cloud Manager and click the Sign Up button next to the Akamai App Platform Beta.
+{{< /note >}}
+
 LLMs (large language models) are deep-learning models that are pre-trained on vast amounts of information. AI inferencing is the method by which an AI model (such as an LLM) is trained to "infer", and subsequently deliver accurate information. The LLM used in this deployment, Meta AI's [Llama 3](https://www.llama.com/docs/overview/), is an open-source, pre-trained LLM often used for tasks like responding to questions in multiple languages, coding, and advanced reasoning.
 
 [KServe](https://kserve.github.io/website/latest/) is a standard Model Inference Platform for Kubernetes, built for highly-scalable use cases. KServe comes with multiple Model Serving Runtimes, including the [Hugging Face](https://huggingface.co/welcome) serving runtime. The Hugging Face runtime supports the following machine learning (ML) tasks: text generation, Text2Text generation, token classification, sequence and text classification, and fill mask.
 
 Akamai App Platform for LKE comes with a set of preconfigured and integrated open source Kubernetes applications like [Istio](https://istio.io/latest/docs/overview/what-is-istio/) and [Knative](https://knative.dev/docs/concepts/), both of which are prerequisites for using KServe. App Platform automates the provisioning process of these applications.
 
-This guide describes the steps required to: install KServe with Akamai App Platform for LKE, deploy Meta AI's Llama 3 model using the Hugging Face service runtime, and deploy a chatbot using Open WebUI.
+This guide describes the steps required to: install KServe with Akamai App Platform for LKE, deploy Meta AI's Llama 3 model using the Hugging Face service runtime, and deploy a chatbot using Open WebUI. Once functional, use our [Deploy a RAG Pipeline and Chatbot with App Platform for LKE](/docs/guides/deploy-rag-pipeline-and-chatbot-on-apl/) guide to configure an additional LLM trained on a custom data set.
+
+If you prefer to manually install an LLM and RAG Pipeline on LKE rather than using Akamai App Platform, see our [Deploy a Chatbot and RAG Pipeline for AI Inferencing on LKE](/docs/guides/ai-chatbot-and-rag-pipeline-for-inference-on-lke/) guide.
 
 ## Diagram
 
