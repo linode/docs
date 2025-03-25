@@ -34,11 +34,15 @@ To address this, RabbitMQ allows you to bind, or link, each service - email, SMS
 
 ![RabbitMQ on APL](APL-RabbitMQ-diagram-cropped.jpg)
 
-1.  A **buildpack** pulls and converts an app from GitHub repository into a containerized image. Harbor manages the containerized image.
+1.  A **RabbitMQ** cluster is created using the _RabbitMQ-Cluster_ Helm chart in the App Platform Catalog.
 
-2.  **RabbitMQ** manages incoming messages and sends them to a consumer app ready to ingest messages. The example Python web application in this guide is configured to both produce and consume messages for demo purposes.
+2.  A **Tekton** pipeline is created by App Platform that pulls the source code from a GitHub repository. A **Buildpacks** task is used to build the image and push it to the private registry in **Harbor**.
 
-3.  **Argo CD** monitors the status of the app against the desired state hosted in the GitHub repository.
+3.  An **Argo CD** application is created by App Platform to deploy the image built by Buildpacks.
+
+4.  The example Python web application sends messages to RabbitMQ's fanout exchange and binds to the exchange to receive the message.
+
+5.  The **Istio** virtual service and ingress are created by App Platform to expose the example Python application to the public internet via the NGINX ingress controller.
 
 ## Components
 
@@ -57,6 +61,8 @@ To address this, RabbitMQ allows you to bind, or link, each service - email, SMS
 -   [**Argo CD**](https://argo-cd.readthedocs.io/en/stable/): An open source, declarative, continuous delivery tool for Kubernetes. Argo CD uses the GitOps workflow to continuously monitor applications and compare their current states against desired states in a Git repository.
 
 -   [**Cloud Native Buildpacks**](https://buildpacks.io/): A buildpack is software used to take application source code and transform it into containerized images for building applications.
+
+-   [**Istio**](https://istio.io/): An open source service mesh used for securing, connecting, and monitoring microservices.
 
 ## Prerequisites
 
