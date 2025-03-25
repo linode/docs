@@ -1,7 +1,7 @@
 ---
 slug: inter-service-communication-with-rabbitmq-and-apl
 title: "Set Up Inter-Microservice Communication Using RabbitMQ On App Platform For LKE"
-description: "Two to three sentences describing your guide."
+description: "This guide shows how to deploy a RabbitMQ message broker architecture on Akamai App Platform for LKE. The architecture also includes a sample Python app used to produce and consume messages managed by RabbitMQ."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-03-20
@@ -9,12 +9,16 @@ keywords: ['app platform','lke','linode kubernetes engine','rabbitmq','microserv
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Akamai App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/application-platform)'
-- '[Akamai App Platform Documentation](https://apl-docs.net/docs/akamai-app-platform/introduction)'
+- '[Akamai App Platform Docs](https://apl-docs.net/docs/akamai-app-platform/introduction)'
 ---
+
+{{< note title="Beta Notice" type="warning" >}}
+The Akamai App Platform is now available as a limited beta. It is not recommended for production workloads. To register for the beta, visit the [Betas](https://cloud.linode.com/betas) page in the Cloud Manager and click the Sign Up button next to the Akamai App Platform Beta.
+{{< /note >}}
 
 ## Introduction
 
-Asynchronous messaging is a common microservice architecture pattern used to decouple inter-service communication. Akamai App Platform uses RabbitMQ, an open-source message broker, to provide an integrated messaging and streaming broker.
+Asynchronous messaging is a common microservice architecture pattern used to decouple inter-service communication. Akamai App Platform uses RabbitMQ to provide an integrated messaging and streaming broker. RabbitMQ is a widely-adopted, open source message broker that uses AMQP (Advanced Message Queuing Protocol) to communicate with producers (apps that send messages) and consumers (apps that receive messages).
 
 This guide provides steps for creating a RabbitMQ cluster on App Platform, as well as building and deploying an example Python application configured to send messages to a RabbitMQ queue using a fanout exchange. The example app consists of a static website built to send messages through the application server to a connected RabbitMQ cluster.
 
@@ -24,17 +28,17 @@ A "fanout" exchange is a message protocol method that relays messages to all bou
 
 The fanout exchange protocol is built into RabbitMQ and can be used to route one message to multiple users, where a common use case would be sending a single notification to all customers. A consideration for this use case is customer preference; some customers may wish to receive information via email while others prefer to receive messages over SMS or social media network.
 
-To address this, RabbitMQ allows you to bind each service - email, SMS, social media - to a fanout exchange, thus allowing you to send one message to reach all services. The means that when a message is delivered, queues bound to the exchange receive it and can then process the message to each connected client without needing to send multiple messages to reach each service.
+To address this, RabbitMQ allows you to bind, or link, each service - email, SMS, social media - to a fanout exchange, thus allowing you to send one message to reach all services. The means that when a message is delivered, queues bound to the exchange receive it and can then process the message to each connected client without needing to send multiple messages to reach each service.
 
 ## Diagram
 
 ![RabbitMQ on APL](APL-RabbitMQ-diagram-cropped.jpg)
 
-1.  Buildpacks pulls and converts an app from GitHub repository into a containerized image. Harbor manages the containerized image.
+1.  A **buildpack** pulls and converts an app from GitHub repository into a containerized image. Harbor manages the containerized image.
 
-2.  RabbitMQ manages incoming messages and sends them to a consumer app ready to ingest messages. The example Python app in this guide is configured to both produce and consume messages for demo purposes.
+2.  **RabbitMQ** manages incoming messages and sends them to a consumer app ready to ingest messages. The example Python web application in this guide is configured to both produce and consume messages for demo purposes.
 
-3.  Argo CD monitors the status of the app against the desired state hosted in the GitHub repository.
+3.  **Argo CD** monitors the status of the app against the desired state hosted in the GitHub repository.
 
 ## Components
 
@@ -46,13 +50,13 @@ To address this, RabbitMQ allows you to bind each service - email, SMS, social m
 
 ### Software
 
--   **RabbitMQ**: [RabbitMQ](https://www.rabbitmq.com/) is an open source alternative message broker that uses queue-based messaging to provide customization and control over message routing and delivery patterns.
+-   [**RabbitMQ**](https://www.rabbitmq.com/): An open source alternative message broker that uses queue-based messaging to provide customization and control over message routing and delivery patterns.
 
--   **Harbor**: [Harbor](https://goharbor.io/) is an open-source registry that helps store and manage container images and OCI artifacts like Helm charts. Harbor uses RBAC (role-based access control) for secure artifact and policy management.
+-   [**Harbor**](https://goharbor.io/): An open source registry that helps store and manage container images and OCI artifacts like Helm charts. Harbor uses RBAC (role-based access control) for secure artifact and policy management.
 
--   **Argo CD**: [Argo CD](https://argo-cd.readthedocs.io/en/stable/) is an open-source, declarative, continuous delivery tool for Kubernetes. Argo CD uses the GitOps workflow to continuously monitor applications and compare their current states against desired states in a Git repository.
+-   [**Argo CD**](https://argo-cd.readthedocs.io/en/stable/): An open source, declarative, continuous delivery tool for Kubernetes. Argo CD uses the GitOps workflow to continuously monitor applications and compare their current states against desired states in a Git repository.
 
--   **Cloud Native Buildpacks**: A [buildpack](https://buildpacks.io/) is software used to take application source code and transform it into containerized images for building applications.
+-   [**Cloud Native Buildpacks**](https://buildpacks.io/): A buildpack is software used to take application source code and transform it into containerized images for building applications.
 
 ## Prerequisites
 
@@ -62,13 +66,13 @@ To address this, RabbitMQ allows you to bind each service - email, SMS, social m
 
 -   An provisioned and configured LKE cluster with App Platform enabled and [auto-scaling](https://techdocs.akamai.com/cloud-computing/docs/manage-nodes-and-node-pools#autoscale-automatically-resize-node-pools) turned on.
 
-    An LKE cluster consisting of 3 Dedicated Compute Instances is sufficient for the deployment in this guide to run, but additional resources may be required during the configuration of your App Platform architecture. To ensure sufficient resources are available, it is recommended that auto-scaling for your LKE cluster is enabled once the cluster is deployed.
+    An LKE cluster consisting of 3 Dedicated Compute Instances is sufficient for the deployment in this guide to run, but additional resources may be required during the configuration of your App Platform architecture. To ensure sufficient resources are available, it is recommended that auto-scaling for your LKE cluster is enabled once it is deployed.
 
 To learn more about provisioning a LKE cluster with App Platform, see our [Getting Started with App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-akamai-application-platform) guide.
 
 ## Set Up Infrastructure
 
-Once your LKE cluster with App Platform has been fully deployed, sign into the App Platform web UI using the `platform-admin` account, or another account that uses the `platform-admin` role.
+Once your LKE cluster with App Platform has been fully deployed, [sign in](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-akamai-application-platform#obtain-the-initial-access-credentials-and-sign-in) to the App Platform web UI using the `platform-admin` account, or another account that uses the `platform-admin` role.
 
 ### Enable RabbitMQ and Harbor
 
@@ -86,7 +90,7 @@ Once your LKE cluster with App Platform has been fully deployed, sign into the A
 
 ### Create a New Team
 
-[Teams](https://apl-docs.net/docs/for-ops/console/teams) are isolated tenants on the platform to support Development/DevOps teams, projects or even DTAP. A Team gets access to the Console, including access to self-service features and all shared apps available on the platform.
+[Teams](https://apl-docs.net/docs/for-ops/console/teams) are isolated tenants on the platform to support Development and DevOps teams, projects or even DTAP. A Team gets access to the Console, including access to self-service features and all shared apps available on the platform. Permissions for shared apps are configurable by admin-level users.
 
 1.  Select **view** > **platform**.
 
@@ -217,7 +221,7 @@ Once successfully built, copy the image repository link so that you can create a
 
 In order for the RabbitMQ Cluster to be accessible, a Network Policy must be created.
 
-A [Network Policy](https://apl-docs.net/docs/for-devs/console/netpols) is a self-service method of controlling traffic to and from your deployment. Ingress (inbound) policies control access to internal Team pods, and egress (outbound) policies control traffic to external endpoints.
+A [Network Policy](https://apl-docs.net/docs/for-devs/console/netpols) in App Platform is a self-service method of controlling traffic to and from your deployment. Ingress (inbound) policies control access to internal Team pods, and egress (outbound) policies control traffic to external endpoints.
 
 1.  Select **Network Policies** from the left menu, and click **Create NetPol**.
 
@@ -231,9 +235,11 @@ A [Network Policy](https://apl-docs.net/docs/for-devs/console/netpols) is a self
 
 1.  Set the **Mode** to `AllowOnly`.
 
-1.  Set the namespace to `team-demo`, or your created team name.
+1.  To give permissions to your Team, set the namespace to `team-demo` or your created team name.
 
-1.  Optionally limit the in-cluster exposure to the app. For example, set the **Selector label name** to `otomi.io/app` and the **Selector label value** to the name of your app's Workload (i.e. `rmq-example-app`).
+1.  Optionally, you can limit the in-cluster exposure to the app by configuring Workload-level authentication.
+
+    To do this, set the **Selector label name** to `otomi.io/app` and the **Selector label value** to the name of your app's Workload (i.e. `rmq-example-app`).
 
 1.  Click **Submit**.
 
