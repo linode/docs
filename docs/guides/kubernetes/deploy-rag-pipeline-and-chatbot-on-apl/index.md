@@ -4,7 +4,7 @@ title: "Deploy a RAG Pipeline and Chatbot with App Platform for LKE"
 description: "This guide expands on a previously built LLM and AI inferencing architecture to include a RAG pipeline that indexes a custom data set. The steps provided utilize Akamai App Platform for Linode Kubernetes Engine to deploy the RAG pipeline."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-03-31
+published: 2025-03-25
 keywords: ['ai','ai inference','ai inferencing','llm','large language model','app platform','lke','linode kubernetes engine','rag pipeline','retrieval augmented generation','open webui','kubeflow']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:

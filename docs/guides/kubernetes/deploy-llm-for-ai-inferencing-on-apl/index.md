@@ -4,7 +4,7 @@ title: "Deploy an LLM for AI Inferencing with App Platform for LKE"
 description: "This guide includes steps and guidance for deploying a large language model for AI inferencing using App Platform for Linode Kubernetes Engine."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-03-31
+published: 2025-03-25
 keywords: ['ai','ai inference','ai inferencing','llm','large language model','app platform','lke','linode kubernetes engine','llama 3','kserve','istio','knative']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
