@@ -28,7 +28,7 @@ If you prefer to manually install an LLM and RAG Pipeline on LKE rather than usi
 
 ## Diagram
 
-![Diagram Test](APL-LLM-diagram-test.jpg)
+![Diagram Test](Diagram_APL_LLM_guide.svg)
 
 ## Components
 
