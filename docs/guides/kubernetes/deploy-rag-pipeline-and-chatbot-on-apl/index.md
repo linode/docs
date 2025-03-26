@@ -24,7 +24,7 @@ If you prefer a manual installation rather than one using App Platform for LKE, 
 
 ## Diagram
 
-![RAG Diagram Test](APL-RAG-diagram-test.jpg)
+![RAG Diagram Test](AI_RAG_Diagram.svg)
 
 ## Components
 
