@@ -19,7 +19,7 @@ Intro placeholder
 
 diagram_placeholder
 
-## Concepts
+### Concepts
 
 - Wasm
 
@@ -27,9 +27,9 @@ diagram_placeholder
 
 - SpinKube
 
-Spin
+### Infrastructure
 
-## App Platform Resources
+- App Platform
 
 ### Apps
 
@@ -131,7 +131,7 @@ Spin
 
    3. In the console shell, run:
 
-    ```command {title="App Platform console shell (admin team selected)}
+    ```command {title="App Platform console shell (admin team selected)"}
     kubectl annotate node --all kwasm.sh/kwasm-node=true
     ```
 
