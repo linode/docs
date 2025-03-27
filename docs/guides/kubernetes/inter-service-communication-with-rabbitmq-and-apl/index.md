@@ -98,7 +98,7 @@ Once your LKE cluster with App Platform has been fully deployed, [sign in](https
 
 ### Create a New Team
 
-[Teams](https://apl-docs.net/docs/for-ops/console/teams) are isolated tenants on the platform to support Development and DevOps teams, projects, or even DTAP (Development, Testing, Acceptance, Production). A Team gets access to the Console, including access to self-service features and all shared apps available on the platform. Permissions for shared apps are configurable by admin Teams.
+[Teams](https://apl-docs.net/docs/for-ops/console/teams) are isolated tenants on the platform to support Development and DevOps teams, projects, or even DTAP (Development, Testing, Acceptance, Production). A Team gets access to the Console, including access to self-service features and all shared apps available on the platform.
 
 When working in the context of an admin-level Team, users can create and access resources in any namespace. When working in the context of a non-admin Team, users can only create and access resources used in that Team's namespace.
 
