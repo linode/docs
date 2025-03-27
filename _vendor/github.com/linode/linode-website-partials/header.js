@@ -46,8 +46,8 @@
       current_path = current_path.replace(/^\/([^\/]+)\/.+/, "/$1/");
     } else if (current_path.match(/^\/event\/.+/)) {
       current_path = "/events/";
-    } else if (current_path.match(/^\/content|content-type|featuring|series\/.+/)) {
-      current_path = "/content/";
+    } else if (current_path.match(/^\/content|content-type|featuring|resources|series\/.+/)) {
+      current_path = "/resources/";
     } else if (current_path.match(/^\/media\-coverage|press\-release\/.+/)) {
       current_path = "/company/press/";
     }
