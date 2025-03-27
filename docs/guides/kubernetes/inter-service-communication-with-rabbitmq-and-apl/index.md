@@ -42,7 +42,7 @@ To address this, RabbitMQ allows you to bind, or link, each service - email, SMS
 
 4.  The example Python web application sends messages to RabbitMQ's fanout exchange and binds to the exchange to receive the message.
 
-5.  The **Istio** virtual service and ingress are created by App Platform to expose the example Python application to the public internet via the NGINX ingress controller.
+5.  The **Istio** virtual service and ingress are created by App Platform to expose the example Python application to the public internet via the NGINX Ingress Controller.
 
 ## Components
 
@@ -50,7 +50,7 @@ To address this, RabbitMQ allows you to bind, or link, each service - email, SMS
 
 -   **Linode Kubernetes Engine (LKE)**: LKE is Akamai’s managed Kubernetes service, enabling you to deploy containerized applications without needing to build out and maintain your own Kubernetes cluster.
 
--   **App Platform for LKE**: Akamai App Platform is a ready-to-run solution for LKE that allows you to build, deploy, and manage distributed applications. App Platform automates the provisioning process so that you can build your distributed workloads in a few clicks, rather than manually configuring each component of your architecture.
+-   **App Platform for LKE**: A Kubernetes-based platform that combines developer and operations-centric tools, automation, self-service, and management of containerized application workloads. App Platform for LKE streamlines the application lifecycle from development to delivery and connects numerous CNCF (Cloud Native Computing Foundation) technologies in a single environment, allowing you to construct a bespoke Kubernetes architecture.
 
 ### Software
 
@@ -64,15 +64,17 @@ To address this, RabbitMQ allows you to bind, or link, each service - email, SMS
 
 -   [**Istio**](https://istio.io/): An open source service mesh used for securing, connecting, and monitoring microservices.
 
+-   [**Ingress NGINX Controller**](https://github.com/kubernetes/ingress-nginx): When creating a Service in App Platform, an `ingress` is created using NGINX's Ingress Controller to allow public access to internal services.
+
 ## Prerequisites
 
 -   A [Cloud Manager](https://cloud.linode.com/) account is required to use Akamai's cloud computing services, including LKE.
 
 -   Enrollment into the Akamai App Platform's [beta program](https://cloud.linode.com/betas).
 
--   An provisioned and configured LKE cluster with App Platform enabled and [auto-scaling](https://techdocs.akamai.com/cloud-computing/docs/manage-nodes-and-node-pools#autoscale-automatically-resize-node-pools) turned on.
+-   An provisioned and configured LKE cluster with App Platform enabled and [auto-scaling](https://techdocs.akamai.com/cloud-computing/docs/manage-nodes-and-node-pools#autoscale-automatically-resize-node-pools) turned on. An LKE cluster consisting of 3 Dedicated Compute Instances is sufficient for the deployment in this guide to run, but additional resources may be required during the configuration of your App Platform architecture.
 
-    An LKE cluster consisting of 3 Dedicated Compute Instances is sufficient for the deployment in this guide to run, but additional resources may be required during the configuration of your App Platform architecture. To ensure sufficient resources are available, it is recommended that auto-scaling for your LKE cluster is enabled once it is deployed.
+    To ensure sufficient resources are available, it is recommended that node pool auto-scaling for your LKE cluster is enabled after deployment. Make sure to set the max number of nodes higher than your minimum. This may result in higher billing costs.
 
 To learn more about provisioning a LKE cluster with App Platform, see our [Getting Started with App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-akamai-application-platform) guide.
 
@@ -96,7 +98,9 @@ Once your LKE cluster with App Platform has been fully deployed, [sign in](https
 
 ### Create a New Team
 
-[Teams](https://apl-docs.net/docs/for-ops/console/teams) are isolated tenants on the platform to support Development and DevOps teams, projects or even DTAP. A Team gets access to the Console, including access to self-service features and all shared apps available on the platform. Permissions for shared apps are configurable by admin-level users.
+[Teams](https://apl-docs.net/docs/for-ops/console/teams) are isolated tenants on the platform to support Development and DevOps teams, projects, or even DTAP (Development, Testing, Acceptance, Production). A Team gets access to the Console, including access to self-service features and all shared apps available on the platform. Permissions for shared apps are configurable by admin Teams.
+
+When working in the context of an admin-level Team, users can create and access resources in any namespace. When working in the context of a non-admin Team, users can only create and access resources used in that Team's namespace.
 
 1.  Select **view** > **platform**.
 
