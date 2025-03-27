@@ -44,7 +44,7 @@
 }
 @media (max-width: 47.99em) {
   :root {
-    --site-header-height: 61px;
+    --site-header-height: 81px;
   }
 }
 
@@ -320,39 +320,6 @@ body.om-position-floating-top {
     padding-block: 17px 15px;
   }
 }
-.c-site-header:not(.--v3) .c-identity,
-.c-site-footer:not(.--v3) .c-identity {
-  --gap: 24px;
-  vertical-align: top;
-}
-.c-site-header:not(.--v3) .c-identity__image,
-.c-site-footer:not(.--v3) .c-identity__image {
-  height: 52px;
-}
-@media (max-width: 47.99em) {
-  .c-site-header:not(.--v3) .c-identity__image,
-  .c-site-footer:not(.--v3) .c-identity__image {
-    height: 38px;
-  }
-}
-.c-site-header:not(.--v3) .c-identity__link + .c-identity__link,
-.c-site-footer:not(.--v3) .c-identity__link + .c-identity__link {
-  border-left: 1px solid #aaafb1;
-  padding-left: var(--gap);
-}
-@media (min-width: 62em) and (max-width: 65.3125em) {
-  .c-site-header:not(.--v3) .c-identity__image,
-  .c-site-footer:not(.--v3) .c-identity__image {
-    height: 42px;
-  }
-}
-@media (max-width: 65.3125em) {
-  .c-site-header:not(.--v3) .c-identity,
-  .c-site-footer:not(.--v3) .c-identity {
-    --gap: 16px;
-  }
-}
-
 .c-site-header {
   color: #32363b;
   font-family: "Source Sans Pro", sans-serif;
