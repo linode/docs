@@ -138,17 +138,3 @@
 .c-site-footer__primary .c-identity__logo {
   padding: 0;
 }
-
-.c-site-footer:not(.--v3) .c-site-footer__primary .o-layout__colset {
-  max-width: none;
-}
-@media (min-width: 48em) {
-  .c-site-footer:not(.--v3) .c-site-footer__primary .--mobile {
-    display: none;
-  }
-}
-@media (max-width: 47.99em) {
-  .c-site-footer:not(.--v3) .c-site-footer__primary .o-layout__col:nth-child(n+2) {
-    display: none;
-  }
-}

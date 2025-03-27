@@ -9,7 +9,7 @@
   adobe_launch_script = "https://assets.adobedtm.com/fcfd3580c848/f9e7661907ee/launch-2fb69de42220.min.js"
 
   # OneTrust Domain used in production.
-  onetrust_script_src    = "https://www.linode.com/ns/ot/202410.1.0/prod/scripttemplates/otSDKStub.js"
+  onetrust_script_src    = "https://www.linode.com/ns/ot/202501.2.0/prod/scripttemplates/otSDKStub.js"
   onetrust_domain_script = "01922358-0e47-73fa-9452-fa124177d6d6"
 
   [params.marketplace_deploy_this_app_button]
