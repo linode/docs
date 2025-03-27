@@ -38,7 +38,7 @@ If you prefer to manually install an LLM and RAG Pipeline on LKE rather than usi
 
 -   **Linode Kubernetes Engine (LKE)**: LKE is Akamai’s managed Kubernetes service, enabling you to deploy containerized applications without needing to build out and maintain your own Kubernetes cluster.
 
--   **App Platform for LKE**: Akamai App Platform is a ready-to-run solution for LKE that allows you to build, deploy, and manage distributed applications. App Platform automates the provisioning process so that you can build your distributed workloads in a few clicks, rather than manually configuring each component of your architecture.
+-   **App Platform for LKE**: A Kubernetes-based platform that combines developer and operations-centric tools, automation, self-service, and management of containerized application workloads. App Platform for LKE streamlines the application lifecycle from development to delivery and connects numerous CNCF (Cloud Native Computing Foundation) technologies in a single environment, allowing you to construct a bespoke Kubernetes architecture.
 
 ### Software
 
@@ -304,7 +304,7 @@ If you haven't done it already, request access to the Llama 3 LLM model. To do t
 
 1.  Provide a name for the Workload. This guide uses the Workload name `llama3-model`.
 
-1.  Set the following values:
+1.  Set the following values to disable sidecar injection, define your Hugging Face token, and specify resource limits:
 
     ```
     labels:
@@ -334,7 +334,7 @@ If you haven't done it already, request access to the Llama 3 LLM model. To do t
 
 #### Check the Status of Your Workload
 
-1.  It may take a few minutes for the _Kserve-Ai-Inferencing-Service_ Workload to become ready. To check the status of the Workload, open a Shell session, and check the status of the pods with `kubectl`:
+1.  It may take a few minutes for the _Kserve-Ai-Inferencing-Service_ Workload to become ready. To check the status of the Workload build, open a shell session by selecting **Shell** in the left menu, and use the following command to check the status of the pods with `kubectl`:
 
     ```command
     kubectl get pods

@@ -18,7 +18,7 @@ The Akamai App Platform is now available as a limited beta. It is not recommende
 
 This guide builds on the LLM (Large Language Model) architecture built in our [Deploy an LLM for AI Inferencing with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl) guide by deploying a RAG (Retrieval-Augmented Generation) pipeline that indexes a custom data set. RAG is a particular method of context augmentation that attaches relevant data as context when users send queries to an LLM.
 
-Follow the steps in this tutorial to install Kubeflow Pipelines and deploy a RAG pipeline using Akamai App Platform for LKE. The deployment in this guide uses the previously deployed Open WebUI chatbot to respond to queries using a custom data set. For example purposes, this guide uses a sample data set from Linode Docs in Markdown format.
+Follow the steps in this tutorial to install Kubeflow Pipelines and deploy a RAG pipeline using Akamai App Platform for LKE. The deployment in this guide uses the previously deployed Open WebUI chatbot to respond to queries using a custom data set. The data set you use may vary depending on your use case. For example purposes, this guide uses a sample data set from Linode Docs in Markdown format.
 
 If you prefer a manual installation rather than one using App Platform for LKE, see our [Deploy a Chatbot and RAG Pipeline for AI Inferencing on LKE](/docs/guides/ai-chatbot-and-rag-pipeline-for-inference-on-lke/) guide.
 
@@ -30,11 +30,11 @@ If you prefer a manual installation rather than one using App Platform for LKE, 
 
 ### Infrastructure
 
--   **Linode GPUs (NVIDIA RTX 4000)**: Akamai has several GPU virtual machines available, including NVIDIA RTX 4000 (used in this tutorial) and Quadro RTX 6000. NVIDIA’s Ada Lovelace architecture in the RTX 4000 VMs are adept at many AI tasks, including [inferencing](https://www.nvidia.com/en-us/solutions/ai/inference/) and [image generation](https://blogs.nvidia.com/blog/ai-decoded-flux-one/).
+-   **Linode GPUs (NVIDIA RTX 4000)**: Akamai has several high-performance GPU virtual machines available, including NVIDIA RTX 4000 (used in this tutorial) and Quadro RTX 6000. NVIDIA’s Ada Lovelace architecture in the RTX 4000 VMs are adept at many AI tasks, including [inferencing](https://www.nvidia.com/en-us/solutions/ai/inference/) and [image generation](https://blogs.nvidia.com/blog/ai-decoded-flux-one/).
 
 -   **Linode Kubernetes Engine (LKE)**: LKE is Akamai’s managed Kubernetes service, enabling you to deploy containerized applications without needing to build out and maintain your own Kubernetes cluster.
 
--   **App Platform for LKE**: Akamai App Platform is a ready-to-run solution for LKE that allows you to build, deploy, and manage distributed applications. App Platform automates the provisioning process so that you can build your distributed workloads in a few clicks, rather than manually configuring each component of your architecture.
+-   **App Platform for LKE**: A Kubernetes-based platform that combines developer and operations-centric tools, automation, self-service, and management of containerized application workloads. App Platform for LKE streamlines the application lifecycle from development to delivery and connects numerous CNCF (Cloud Native Computing Foundation) technologies in a single environment, allowing you to construct a bespoke Kubernetes architecture.
 
 ### Additional Software
 
@@ -50,7 +50,7 @@ If you prefer a manual installation rather than one using App Platform for LKE, 
 
 ## Prerequisites
 
--   Complete the deployment in the [Deploy an LLM for AI Inferencing with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl) guide.
+-   Complete the deployment in the [Deploy an LLM for AI Inferencing with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl) guide. An LKE cluster consisting of at least 3 RTX4000 Ada x1 Medium [GPU](https://techdocs.akamai.com/cloud-computing/docs/gpu-compute-instances) nodes is recommended for AI inference workloads.
 
 -   [Python3](https://www.python.org/downloads/) and the [venv](https://docs.python.org/3/library/venv.html) Python module installed on your local machine.
 
@@ -79,26 +79,6 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 1.  Deselect **Allow teams to use this chart**.
 
 1.  Click **Add Chart**.
-
-### Create a Workload and Install the kfp-cluster-resources Helm Chart
-
-1.  Select **view** > **team** and **team** > **admin** in the top bar.
-
-1.  Select **Workloads**.
-
-1.  Click on **Create Workload**.
-
-1.  Select the _Kfp-Cluster-Resources_ Helm chart from the Catalog.
-
-1.  Click on **Values**.
-
-1.  Provide a name for the Workload. This guide uses the Workload name `kfp-cluster-resources`.
-
-1.  Add `kubeflow` as the namespace.
-
-1.  Select **Create a new namespace**.
-
-1.  Continue with the default values, and click **Submit**. The Workload may take a few minutes to become ready.
 
 ### Create an Object Storage Bucket and Access Key for Milvus
 
@@ -246,6 +226,26 @@ Create a [**Network Policy**](https://apl-docs.net/docs/for-ops/console/netpols)
     - **Selector label value**: `kfp`
 
 1.  Click **Submit**.
+
+### Create a Workload and Install the kfp-cluster-resources Helm Chart
+
+1.  Select **view** > **team** and **team** > **admin** in the top bar.
+
+1.  Select **Workloads**.
+
+1.  Click on **Create Workload**.
+
+1.  Select the _Kfp-Cluster-Resources_ Helm chart from the Catalog.
+
+1.  Click on **Values**.
+
+1.  Provide a name for the Workload. This guide uses the Workload name `kfp-cluster-resources`.
+
+1.  Add `kubeflow` as the namespace.
+
+1.  Select **Create a new namespace**.
+
+1.  Continue with the default values, and click **Submit**. The Workload may take a few minutes to become ready.
 
 ### Create a Workload for the kubeflow-pipelines Helm Chart
 
@@ -692,7 +692,7 @@ Update the Kyverno **Policy** `open-webui-policy.yaml` created in the previous t
 
 In your list of available **Services**, click on the URL of the `linode-docs-chatbot` to navigate to the Open WebUI chatbot interface. Select the model you wish to use in the top left dropdown menu (`llama3-model` or `RAG Pipeline`).
 
-Meta AI's Llama 3 model uses information that is pre-trained by other data sources - not your custom data set. If you give this model a query, it will use its pre-trained data set to answer your question.
+The Llama 3 AI model uses information that is pre-trained by other data sources - not your custom data set. If you give this model a query, it will use its pre-trained data set to answer your question in real time.
 
 The RAG Pipeline model defined in this guide uses data from the custom data set with which it was provided. The example data set used in this guide is sourced from Linode Docs. If you give this model a query relevant to your custom data, the chatbot should respond with an answer informed by that data set.
 
