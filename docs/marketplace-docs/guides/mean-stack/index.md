@@ -2,7 +2,7 @@
 title: "Deploy a MEAN Stack through the Linode Marketplace"
 description: "Learn how to easily deploy MEAN (MongoDB, Express, Angular, Node.js) using Linode's Marketplace Apps."
 published: 2020-03-17
-modified: 2022-03-08
+modified: 2025-03-19
 keywords: ['mongodb','mean','angular','express', 'web app', 'node']
 tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
 external_resources:
@@ -29,8 +29,6 @@ A MEAN (MongoDB, Express, Angular, Node.js) stack is a free and open-source web 
 
 - [Node.js](https://nodejs.org/en/about/) serves as the run-time environment for your application.
 
-- [PM2](https://pm2.keymetrics.io) is a daemon process manager that helps you manage and keep your application online.
-
 MEAN is a full-stack JavaScript-based framework consisting of MongoDB database, ExpressJS, AngularJS, and NodeJS. You can build entire web applications on JavaScript, from client to server to database with this stack. Single-language programming makes it easier to develop working applications more quickly without sacrificing functionality and features.
 
 ## Deploying a Marketplace App
@@ -45,14 +43,14 @@ MEAN is a full-stack JavaScript-based framework consisting of MongoDB database, 
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 24.04 LTS
 - **Recommended minimum plan:** 1GB Shared Compute Instance or higher, depending on the number of sites and size of the sites you plan on hosting.
 
 ### MEAN Options
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{% content "marketplace-limited-user-fields-shortguide" %}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 {{% content "marketplace-custom-domain-fields-shortguide" %}}
 
@@ -60,21 +58,47 @@ MEAN is a full-stack JavaScript-based framework consisting of MongoDB database, 
 
 ## Getting Started After Deployment
 
-Once deployed, a "Hello World" sample application should be running on `http://localhost:3000`. An Nginx reverse proxy then serves the application through your custom domain or rDNS domain over ports 80 and 443. Follow the instructions below to view or access it.
+Once the app is deployed, you need to obtain the credentials from the server.
+
+To obtain credentials:
+
+1.  Log in to your new Compute Instance using one of the methods below:
+
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
+
+1.  Run the following command to access the credentials file:
+
+    ```command
+    cat /home/$USERNAME/.credentials
+    ```
+
+This returns passwords that were automatically generated when the instance was deployed. Save them. Once saved, you can safely delete the file.
+
+Once deployed, a "Hello World" sample application should be running. The Express backend runs on port 5000, and Nginx serves the Angular frontend through your custom domain or rDNS domain over ports 80 and 443. Follow the instructions below to view or access it.
 
 ### Accessing the MEAN App through the Command Line
 
-The MEAN sample application is stored in the `/opt/mean/` directory. To access it within the command line, follow the instructions below.
+The MEAN stack components are organized as follows:
+- Frontend (Angular): `/var/www/[domain]`
+- Backend (Express): `/var/www/[domain]/backend`
+
+To access these components within the command line, follow the instructions below.
 
 1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
-1.  Navigate to the directory in which the application is stored:
+1.  Navigate to the backend directory:
 
-        cd /opt/mean/
+        cd /var/www/[domain]/backend
 
-1.  Open the sample application with your preferred command line text editor, such as [nano](/docs/guides/use-nano-to-edit-files-in-linux/) or [vim](/docs/guides/what-is-vi/).
+1.  View the Express server file:
 
-        nano server.js
+        cat server.js
+
+1.  To view the Angular frontend files:
+
+        cd /var/www/[domain]
+        ls
 
 ### Viewing the MEAN App through a Web Browser
 
@@ -84,11 +108,10 @@ Open your web browser and navigate to `https://[domain]`, where *[domain]* can b
 
 | **Software** | **Description** |
 |:--------------|:------------|
-| **MongoDB** | Document-based database |
+| **MongoDB 8.0** | Document-based database |
 | **Express** | Web application framework |
-| **Angular** | JavaScript library |
-| **Node JS** | Runtime environment |
-| **PM2**     | Daemon process manager |
+| **Angular** | JavaScript frontend framework with CLI |
+| **Node.js 22.x** | Runtime environment |
 | **NGINX** | Web server |
 | **UFW (UncomplicatedFirewall)** | Firewall utility. Ports 22, 80, and 443 for IPv4 and IPv6 are set to allow traffic. All other ports have the following firewall rules: deny (incoming), allow (outgoing). |
 
