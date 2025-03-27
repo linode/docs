@@ -364,7 +364,7 @@ The Spin app is now deployed on the cluster, but it is not exposed to the intern
 
 ## Update the Spin App
 
-When you installed the Spin-App Helm chart, you set the **Auto image updater** to **Digest**. This automatically updates the deployed image to the most recent pushed version of a given tag. So, to update and re-deploy the Spin app, you just need to build a new version of it and push it to Harbor:
+When you installed the Spin-App Helm chart, you set the **Auto image updater** to **Semver**. This automatically updates the deployed image to the most recent pushed version of a given tag. So, to update and re-deploy the Spin app, you just need to build a new version of it and push it to Harbor:
 
 1. On your workstation, update the contents of the `main.go` file:
 
