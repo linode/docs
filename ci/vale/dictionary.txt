@@ -86,6 +86,7 @@ apxs
 architected
 architecting
 aren
+Argocd
 argv
 arpack
 arping
@@ -376,6 +377,7 @@ completekey
 composable
 conda
 config
+configmap
 configr
 configs
 configtest
@@ -1295,6 +1297,7 @@ Kuma
 kustomize
 kuznetosv
 Kyber
+Kyverno
 lambdabunker
 Laminas
 Langa
@@ -1508,6 +1511,7 @@ Microweber
 middlebox
 middleboxes
 middleware
+milvus
 Milvus
 mimikatz
 minecraft
