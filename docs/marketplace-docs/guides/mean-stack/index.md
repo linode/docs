@@ -75,7 +75,7 @@ To obtain credentials:
 
 This returns passwords that were automatically generated when the instance was deployed. Save them. Once saved, you can safely delete the file.
 
-Once deployed, a "Hello World" sample application should be running. The Express backend runs on port 5000, and Nginx serves the Angular frontend through your custom domain or rDNS domain over ports 80 and 443. Follow the instructions below to view or access it.
+Once deployed, a *Hello World* sample application should be running. The Express backend runs on port `5000`, and Nginx serves the Angular frontend through your custom domain or rDNS domain over ports `80` and `443`. Follow the instructions below to view or access it.
 
 ### Accessing the MEAN App through the Command Line
 
@@ -83,26 +83,26 @@ The MEAN stack components are organized as follows:
 - Frontend (Angular): `/var/www/[domain]`
 - Backend (Express): `/var/www/[domain]/backend`
 
-To access these components within the command line, follow the instructions below.
+To access these components within the command line:
 
 1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
-1.  Navigate to the backend directory:
+1.  Go to the backend directory:
 
         cd /var/www/[domain]/backend
 
-1.  View the Express server file:
+1.  To view the Express server file, run:
 
         cat server.js
 
-1.  To view the Angular frontend files:
+1.  To view the Angular frontend files, run:
 
         cd /var/www/[domain]
         ls
 
 ### Viewing the MEAN App through a Web Browser
 
-Open your web browser and navigate to `https://[domain]`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
+Open your web browser and navigate to `https://[domain]`, where `[domain]` is the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
 
 ## Software Included
 
@@ -114,5 +114,6 @@ Open your web browser and navigate to `https://[domain]`, where *[domain]* can b
 | **Node.js 22.x** | Runtime environment |
 | **NGINX** | Web server |
 | **UFW (UncomplicatedFirewall)** | Firewall utility. Ports 22, 80, and 443 for IPv4 and IPv6 are set to allow traffic. All other ports have the following firewall rules: deny (incoming), allow (outgoing). |
+
 
 {{% content "marketplace-update-note-shortguide" %}}
