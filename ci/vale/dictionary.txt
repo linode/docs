@@ -86,6 +86,7 @@ apxs
 architected
 architecting
 aren
+Argocd
 argv
 arpack
 arping
@@ -245,6 +246,8 @@ bufio
 bugtracker
 buildah
 buildbot
+buildpack
+Buildpacks
 bukkit
 bundler
 bungeecord
@@ -374,6 +377,7 @@ completekey
 composable
 conda
 config
+configmap
 configr
 configs
 configtest
@@ -1293,6 +1297,7 @@ Kuma
 kustomize
 kuznetosv
 Kyber
+Kyverno
 lambdabunker
 Laminas
 Langa
@@ -1506,6 +1511,7 @@ Microweber
 middlebox
 middleboxes
 middleware
+milvus
 Milvus
 mimikatz
 minecraft
@@ -2518,6 +2524,7 @@ teardown
 techdocs
 techland
 Tectia
+Tekton
 telecom
 telehealth
 teleporting
