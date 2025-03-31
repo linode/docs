@@ -1,11 +1,11 @@
 ---
 slug: migrating-from-azure-aks-to-linode-kubernetes-engine-lke
 title: "Migrating from Azure AKS to Linode Kubernetes Engine (LKE)"
-description: "Two to three sentences describing your guide."
+description: "Learn how to migrate Kubernetes applications from Azure AKS to Linode Kubernetes Engine (LKE) using a simple example and clear steps."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2025-02-03
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['azure aks','azure aks alternatives','azure kubernetes alternatives','microsoft kubernetes alternatives','replace azure aks','replace azure kubernetes','replace microsoft kubernetes','migrate azure aks to linode','migrate azure kubernetes to linode','migrate microsoft kubernetes to linode','migrate kubernetes applications to linode','azure aks migration','azure kubernetes migration','microsoft kubernetes migration','azure aks replacement','azure kubernetes replacement','microsoft kubernetes replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Link Title 1](http://www.example.com)'
@@ -40,11 +40,11 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  In the Azure portal, search the available services for the **Kubernetes services** option and navigate to that page:
 
-    ![](image2.png)
+    ![Azure portal interface highlighting the Kubernetes services navigation option.](azure-portal-kubernetes-services-navigation.png)
 
 1.  Find the name and resource group of your AKS cluster.
 
-    ![](image1.png)
+    ![Azure portal showing AKS cluster name 'aks-go-cluster' and resource group 'my-aks-group'.](azure-aks-cluster-name-resource-group.png)
 
     In the example above, the cluster name is `aks-go-cluster`, and its resource group is `my-aks-group`.
 
@@ -99,40 +99,43 @@ This guide is written for a non-root user. Commands that require elevated privil
 {{< note >}}
 Detailed information about your cluster is also available in the Azure portal.
 
-![](image3.png)
+![Azure portal displaying detailed overview information for an AKS cluster.](azure-aks-cluster-overview-details.png)
 {{< /note >}}
 
 ### Review the Node
 
-Retrieve the name of the first (and only) node with the following command:
+1.  Retrieve the name of the first (and only) node with the following command:
 
-```command
-kubectl get nodes
-```
+    ```command
+    kubectl get nodes
+    ```
 
-```output
-NAME                                STATUS   ROLES    AGE   VERSION aks-nodepool1-23390877-vmss000000   Ready    <none>   11m   v1.30.6
-```
+    ```output
+    NAME                                STATUS   ROLES    AGE   VERSION
+    aks-nodepool1-23390877-vmss000000   Ready    <none>   11m   v1.30.6
+    ```
 
-To retrieve more information about this node, run the following command:
+1.  To retrieve more information about this node, run the following command:
 
-```command
-kubectl get node aks-nodepool1-23390877-vmss000000 -o yaml
-```
+    ```command
+    kubectl get node aks-nodepool1-23390877-vmss000000 -o yaml
+    ```
 
-The above command retrieves all the information about the node in YAML format. Run the previous command through a pipe to filter for specific fields, such as allocatable CPU and memory.
+    The above command retrieves all the information about the node in YAML format.
 
-```command
-kubectl get node aks-nodepool1-23390877-vmss000000 -o yaml \
-  | yq '.status.allocatable | {"cpu": .cpu, "memory": .memory}' \
-  | awk -F': ' ' /cpu/ {cpu=$2} /memory/ {mem=$2} \
-      END {printf "cpu: %s\nmemory: %.2f Gi\n", cpu, mem / 1024 / 1024}'
-```
+1.  Run the previous command through a pipe to filter for specific fields (e.g. allocatable CPU and memory):
 
-```output
-cpu: 1900m
-memory: 4.92 Gi
-```
+    ```command
+    kubectl get node aks-nodepool1-23390877-vmss000000 -o yaml \
+      | yq '.status.allocatable | {"cpu": .cpu, "memory": .memory}' \
+      | awk -F': ' ' /cpu/ {cpu=$2} /memory/ {mem=$2} \
+          END {printf "cpu: %s\nmemory: %.2f Gi\n", cpu, mem / 1024 / 1024}'
+    ```
+
+    ```output
+    cpu: 1900m
+    memory: 4.92 Gi
+    ```
 
 ### Verify the Application Is Running
 

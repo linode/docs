@@ -1,11 +1,11 @@
 ---
 slug: migrating-from-oracle-kubernetes-engine-to-linode-kubernetes-engine-lke
 title: "Migrating from Oracle Kubernetes Engine to Linode Kubernetes Engine (LKE)"
-description: "Two to three sentences describing your guide."
+description: "Learn how to migrate Kubernetes applications from Oracle OKE to Linode Kubernetes Engine (LKE) using a simple example and clear steps."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2025-02-03
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['oke','oracle kubernetes engine','oracle oke alternatives','oracle kubernetes alternatives','oci kubernetes alternatives','replace oracle oke','replace oracle kubernetes','replace oci kubernetes','migrate oracle oke to linode','migrate oracle kubernetes to linode','migrate oci kubernetes to linode','migrate kubernetes applications to linode','oracle oke migration','oracle kubernetes migration','oci kubernetes migration','oracle oke replacement','oracle kubernetes replacement','oci kubernetes replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Link Title 1](http://www.example.com)'
@@ -40,23 +40,23 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  In the Oracle Cloud console, search for the **Kubernetes Clusters (OKE)** service:
 
-    ![](image2.png)
+    ![Oracle Cloud console showing search result for Kubernetes Clusters (OKE) service.](oracle-oke-service-search.png)
 
 1.  On the page listing all of your OKE clusters, select the cluster you want to migrate:
 
-    ![](image10.png)
+    ![List of OKE clusters in Oracle Cloud console with one cluster selected.](oracle-oke-cluster-list.png)
 
 1.  Find the **Cluster Id** on the cluster details page, then copy it:
 
-    ![](image6.png)
+    ![OKE cluster details page in Oracle Cloud showing Cluster ID.](oracle-oke-cluster-id-details.png)
 
 1.  Also note the **region** where your cluster has been provisioned. Click on the **region** in the top-right part of the page, then navigate to **Manage regions**:
 
-    ![](image8.png)
+    ![Oracle Cloud console with region selection dropdown open and Manage regions option highlighted.](oracle-region-selection.png)
 
 1.  In the list of regions available, find the region identifier for your home region:
 
-    ![](image1.png)
+    ![List of region identifiers in Oracle Cloud console.](oracle-region-identifier-list.png)
 
     In the example for this guide, the cluster name is `my-oke-cluster`, and the cluster ID is `ocid1.cluster.oc1.phx.aaaaaaaa5spjobcrfpqy5p2uosdjzvmatj3kw2tsmdrl3447fcmux6nk5oza`. The cluster location is `us-phoenix-1`.
 
@@ -110,41 +110,43 @@ This guide is written for a non-root user. Commands that require elevated privil
 {{< note >}}
 Detailed information about your cluster is also available in the Oracle Cloud console.
 
-![](image7.png)
+![Oracle Cloud console showing detailed overview of an OKE cluster.](oracle-cluster-overview-page.png)
 {{< /note >}}
 
 ### Review the Node
 
-Retrieve the name of the first (and only) node with the following command:
+1.  Retrieve the name of the first (and only) node with the following command:
 
-```command
-kubectl get nodes
-```
+    ```command
+    kubectl get nodes
+    ```
 
-```output
-NAME         STATUS   ROLES   AGE   VERSION
-10.0.10.54   Ready    node    7h    v1.31.1
-```
+    ```output
+    NAME         STATUS   ROLES   AGE   VERSION
+    10.0.10.54   Ready    node    7h    v1.31.1
+    ```
 
-To retrieve more information about this node, run the following command:
+1.  To retrieve more information about this node, run the following command:
 
-```command
-kubectl get node 10.0.10.54 -o yaml
-```
+    ```command
+    kubectl get node 10.0.10.54 -o yaml
+    ```
 
-The above command retrieves all the information about the node in YAML format. Run the previous command through a pipe to filter for specific fields, such as allocatable CPU and memory.
+    The above command retrieves all the information about the node in YAML format.
 
-```command
-kubectl get node 10.0.10.54 -o yaml \
-  | yq '.status.allocatable | {"cpu": .cpu, "memory": .memory}' \
-  | awk -F': ' ' /cpu/ {cpu=$2} /memory/ {mem=$2} \
-      END {printf "cpu: %s\nmemory: %.2f Gi\n", cpu, mem / 1024 / 1024}'
-```
+1.  Run the previous command through a pipe to filter for specific fields (e.g. allocatable CPU and memory):
 
-```output
-cpu: 1830m
-memory: 3.34 Gi
-```
+    ```command
+    kubectl get node 10.0.10.54 -o yaml \
+      | yq '.status.allocatable | {"cpu": .cpu, "memory": .memory}' \
+      | awk -F': ' ' /cpu/ {cpu=$2} /memory/ {mem=$2} \
+          END {printf "cpu: %s\nmemory: %.2f Gi\n", cpu, mem / 1024 / 1024}'
+    ```
+
+    ```output
+    cpu: 1830m
+    memory: 3.34 Gi
+    ```
 
 ### Verify the Application Is Running
 

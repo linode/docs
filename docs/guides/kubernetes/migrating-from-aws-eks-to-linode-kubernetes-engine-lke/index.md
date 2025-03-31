@@ -1,11 +1,11 @@
 ---
 slug: migrating-from-aws-eks-to-linode-kubernetes-engine-lke
 title: "Migrating from AWS EKS to Linode Kubernetes Engine (LKE)"
-description: "Two to three sentences describing your guide."
+description: "Learn how to migrate Kubernetes applications from AWS EKS to Linode Kubernetes Engine (LKE) using a simple example and clear steps."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2025-02-03
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['aws eks','aws eks alternatives','aws kubernetes alternatives','amazon kubernetes alternatives','replace aws eks','replace aws kubernetes','replace amazon kubernetes','migrate aws eks to linode','migrate aws kubernetes to linode','migrate amazon kubernetes to linode','migrate kubernetes applications to linode','aws eks migration','aws kubernetes migration','amazon kubernetes migration','aws eks replacement','aws kubernetes replacement','amazon kubernetes replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Link Title 1](http://www.example.com)'
@@ -40,7 +40,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  In the AWS console, navigate to the EKS service and find the name of your EKS cluster:
 
-    ![](image1.png)
+    ![The EKS service page in the AWS Console showing the example cluster name.](aws-eks-cluster-name-console.png)
 
     In the screenshot above, the cluster name is `wonderful-hideout-1734286097`. You also need to know the AWS region where your cluster resides. For this example, the region is `us-west-1` (not shown).
 
@@ -92,41 +92,45 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ### Review the Node Group
 
-In AWS EKS, the node group defines the type of worker nodes in your EKS cluster. This is a key aspect of the migration process. In a production cluster, you may have multiple node groups with different node types.
+In AWS EKS, the *node group* defines the type of worker nodes in your cluster. This is a key aspect of the migration process. In a production cluster, you may have multiple node groups with different node types.
 
 While Kubernetes does not have a native concept of a node group, all the nodes within a given EKS node group share the same configuration. Therefore, inspecting a single node provides all the information needed for migration.
 
-```command
-kubectl get nodes
-```
+1.  List the nodes in your cluster:
 
-```output
-NAME                                          STATUS   ROLES    AGE   VERSION
-ip-192-168-31-10.us-west-1.compute.internal   Ready    <none>   24m   v1.30.7-eks-59bf375
-ip-192-168-36-4.us-west-1.compute.internal    Ready    <none>   24m   v1.30.7-eks-59bf375
-```
+    ```command
+    kubectl get nodes
+    ```
 
-To retrieve the information about the first node listed, run the following command:
+    ```output
+    NAME                                          STATUS   ROLES    AGE   VERSION
+    ip-192-168-31-10.us-west-1.compute.internal   Ready    <none>   24m   v1.30.7-eks-59bf375
+    ip-192-168-36-4.us-west-1.compute.internal    Ready    <none>   24m   v1.30.7-eks-59bf375
+    ```
 
-```command
-kubectl get node \
-    $(kubectl get nodes -o jsonpath='{.items[0].metadata.name}') -o yaml
-```
+1.  Run the following command to retrieve detailed information about the first node listed:
 
-The above command retrieves all the information about the node in YAML format. Run the previous command through a pipe to filter for specific fields, such as allocatable CPU and memory.
+    ```command
+    kubectl get node \
+        $(kubectl get nodes -o jsonpath='{.items[0].metadata.name}') -o yaml
+    ```
 
-```command
-kubectl get node \
-    $(kubectl get nodes -o jsonpath='{.items[0].metadata.name}') -o yaml \
-        | yq '.status.allocatable | {"cpu": .cpu, "memory": .memory}' \
-            | awk -F': ' ' /cpu/ {cpu=$2} /memory/ {mem=$2} \
-                END {printf "cpu: %s\nmemory: %.2f Gi\n", cpu, mem / 1024 / 1024}'
-```
+    This command retrieves all the information about the node in YAML format.
 
-```output
-cpu: 1930m
-memory: 6.89 Gi
-```
+1.  Run the previous command through a pipe to filter for specific fields (e.g. allocatable CPU and memory):
+
+    ```command
+    kubectl get node \
+        $(kubectl get nodes -o jsonpath='{.items[0].metadata.name}') -o yaml \
+            | yq '.status.allocatable | {"cpu": .cpu, "memory": .memory}' \
+                | awk -F': ' ' /cpu/ {cpu=$2} /memory/ {mem=$2} \
+                    END {printf "cpu: %s\nmemory: %.2f Gi\n", cpu, mem / 1024 / 1024}'
+    ```
+
+    ```output
+    cpu: 1930m
+    memory: 6.89 Gi
+    ```
 
 ### Verify the Application Is Running
 

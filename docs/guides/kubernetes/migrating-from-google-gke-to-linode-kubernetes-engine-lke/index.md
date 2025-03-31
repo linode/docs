@@ -1,11 +1,11 @@
 ---
 slug: migrating-from-google-gke-to-linode-kubernetes-engine-lke
 title: "Migrating from Google GKE to Linode Kubernetes Engine (LKE)"
-description: "Two to three sentences describing your guide."
+description: "Learn how to migrate Kubernetes applications from Google GKE to Linode Kubernetes Engine (LKE) using a simple example and clear steps."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2025-02-03
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['gke','google kubernetes engine','google gke alternatives','google kubernetes alternatives','gcp kubernetes alternatives','replace google gke','replace google kubernetes','replace gcp kubernetes','migrate google gke to linode','migrate google kubernetes to linode','migrate gcp kubernetes to linode','migrate kubernetes applications to linode','google gke migration','google kubernetes migration','gcp kubernetes migration','google gke replacement','google kubernetes replacement','gcp kubernetes replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Link Title 1](http://www.example.com)'
@@ -40,11 +40,11 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  In the Google Cloud console, navigate to the **Kubernetes Engine** service, to the **Clusters** page:
 
-    ![](image1.png)
+    ![Google Cloud console showing the Kubernetes Engine clusters page.](gcp-kubernetes-engine-clusters-page.png)
 
 1.  Find the name and location of your GKE cluster:
 
-    ![](image8.png)
+    ![Details panel in Google Cloud showing the name and location of a GKE cluster.](gcp-gke-cluster-name-and-location.png)
 
     In the example above, the cluster name is `test-cluster`, and its location is `us-west3`.
 
@@ -93,48 +93,55 @@ This guide is written for a non-root user. Commands that require elevated privil
     ```command
     kubectl cluster-info dump
     ```
+
 {{< note >}}
 Detailed information about your cluster is also available in the Google Cloud console.
 
-![](image6.png)
+![Google Cloud console displaying detailed information about a GKE cluster.](gcp-gke-cluster-details-panel.png)
 {{< /note >}}
 
 ### Provisioned Nodes Depend on Workloads
 
 With GKE clusters in Autopilot mode (as in the above example), there are no nodes unless workloads are running in the cluster. When the cluster is created, one node is created, but this node is removed shortly after.
 
-```command
-kubectl get nodes
-```
+1.  List the nodes in your cluster:
 
-```output
-No resources found
-```
+    ```command
+    kubectl get nodes
+    ```
 
-This is a feature of GKE Autopilot clusters, which scale the entire cluster to zero when no workloads are running. Note that a lot of system pods are pending at this stage, but don't trigger a scale up, since no application workloads are present.
+    ```output
+    No resources found
+    ```
 
-```command
-kubectl get pods -A \
-    -o custom-columns='NAMESPACE:.metadata.namespace,NAME:.metadata.name'
-```
+    This is a feature of GKE Autopilot clusters, which scale the entire cluster to zero when no workloads are running.
 
-```output
-NAMESPACE         NAME
-gke-gmp-system    alertmanager-0
-gke-gmp-system    gmp-operator-5bc8795cdf-zzsg8
-gke-gmp-system    rule-evaluator-7888d55887-pv4w8
-gke-managed-cim   kube-state-metrics-0
-kube-system       antrea-controller-horizontal-autoscaler-5cdc558796-22bp9
-kube-system       egress-nat-controller-85f6f977dd-fbxcj
-kube-system       event-exporter-gke-8bfd444fb-mnxl5
-kube-system       konnectivity-agent-79bbb5c5c4-ld7lj
-kube-system       konnectivity-agent-autoscaler-6c6ffbcf45-phjww
-kube-system       kube-dns-76f855548f-8xplr
-kube-system       kube-dns-autoscaler-6f896b6968-rhjxb
-kube-system       l7-default-backend-74c4b886f7-94xr9
-kube-system       metrics-server-v1.30.3-56bfbfd6db-xs2ps
-kube-system       metrics-server-v1.30.3-7bfbf95754-s9ldc
-```
+1.  List the pods running across all namespaces:
+
+    ```command
+    kubectl get pods -A \
+        -o custom-columns='NAMESPACE:.metadata.namespace,NAME:.metadata.name'
+    ```
+
+    Although system pods are pending at this stage, they do not trigger a scale up until application workloads are present:
+
+    ```output
+    NAMESPACE         NAME
+    gke-gmp-system    alertmanager-0
+    gke-gmp-system    gmp-operator-5bc8795cdf-zzsg8
+    gke-gmp-system    rule-evaluator-7888d55887-pv4w8
+    gke-managed-cim   kube-state-metrics-0
+    kube-system       antrea-controller-horizontal-autoscaler-5cdc558796-22bp9
+    kube-system       egress-nat-controller-85f6f977dd-fbxcj
+    kube-system       event-exporter-gke-8bfd444fb-mnxl5
+    kube-system       konnectivity-agent-79bbb5c5c4-ld7lj
+    kube-system       konnectivity-agent-autoscaler-6c6ffbcf45-phjww
+    kube-system       kube-dns-76f855548f-8xplr
+    kube-system       kube-dns-autoscaler-6f896b6968-rhjxb
+    kube-system       l7-default-backend-74c4b886f7-94xr9
+    kube-system       metrics-server-v1.30.3-56bfbfd6db-xs2ps
+    kube-system       metrics-server-v1.30.3-7bfbf95754-s9ldc
+    ```
 
 ### Verify the Application Is Running
 
@@ -669,19 +676,19 @@ node.kubernetes.io/instance-type: e2-standard-2
 
 This is an `e2-standard-2` instance of the GCP compute engine. Referencing [Google’s VM instance pricing page](https://cloud.google.com/compute/vm-instance-pricing), the hourly cost for this type of instance in the `us-west3` region is **$0.080486**.
 
-![](image4.png)
+![Google Cloud VM instance pricing table showing cost for e2-standard-2 instance in us-west3 region.](gcp-e2-standard-2-pricing-table.png)
 
 The example Linode instance used in this guide has two CPU cores and 4 GB of memory. Referencing the [Linode pricing page](https://www.linode.com/pricing/), the hourly cost of this instance for a shared CPU plan is **$0.036**.
 
-![](image2.png)
+![Linode pricing table showing cost for shared CPU plan with 2 CPU cores and 4 GB of memory.](linode-shared-cpu-pricing-table.png)
 
 For a dedicated CPU plan, the cost is $0.054 per hour.
 
-![](image3.png)
+![Linode pricing table showing cost for dedicated CPU plan with 2 CPU cores and 4 GB of memory.](linode-dedicated-cpu-pricing-table.png)
 
 Additionally, applications with substantial data egress can be significantly impacted by egress costs. For example, outbound [data transfer costs for the GCP standard tier](https://cloud.google.com/vpc/network-pricing#vpc-pricing?#:~:text=Standard%20Tier%20pricing) are $0.085 per GB between 200 GB and 10 TB of transfer in a month. An application with outbound data of 1 TB in a month incurs a cost of **$68**.
 
-![](image5.png)
+![Google Cloud networking pricing table showing standard tier outbound data transfer costs.](gcp-egress-data-transfer-costs.png)
 
 In contrast, both the shared and dedicated CPU plans for the example Linode instance chosen include monthly data transfer of 4 TB for free.
 
