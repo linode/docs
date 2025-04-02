@@ -9,7 +9,7 @@ keywords: ['aws eks','aws eks alternatives','aws kubernetes alternatives','amazo
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-This guide walks you through the process of migrating an application from [Amazon Web Services (AWS) Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/) to [Linode Kubernetes Engine (LKE)](/docs/guides/kubernetes-on-linode/). To keep the scope of this guide manageable, the example application is a simple REST API service.
+This guide walks you through the process of migrating an application from [Amazon Web Services (AWS) Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/) to Linode Kubernetes Engine (LKE). To keep the scope of this guide manageable, the example application is a simple REST API service.
 
 ## Before You Begin
 
