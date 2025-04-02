@@ -7,12 +7,9 @@ contributors: ["Linode"]
 published: 2025-02-03
 keywords: ['aws eks','aws eks alternatives','aws kubernetes alternatives','amazon kubernetes alternatives','replace aws eks','replace aws kubernetes','replace amazon kubernetes','migrate aws eks to linode','migrate aws kubernetes to linode','migrate amazon kubernetes to linode','migrate kubernetes applications to linode','aws eks migration','aws kubernetes migration','amazon kubernetes migration','aws eks replacement','aws kubernetes replacement','amazon kubernetes replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
-This guide walks you through the process of migrating an application from Amazon Web Services (AWS) Elastic Kubernetes Service (EKS) to Linode Kubernetes Engine (LKE). To keep the scope of this guide manageable, the example application is a simple REST API service.
+This guide walks you through the process of migrating an application from [Amazon Web Services (AWS) Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/) to [Linode Kubernetes Engine (LKE)](/docs/guides/kubernetes-on-linode/). To keep the scope of this guide manageable, the example application is a simple REST API service.
 
 ## Before You Begin
 
@@ -24,11 +21,13 @@ This guide walks you through the process of migrating an application from Amazon
 
 1.  Follow the steps in the *Install `kubectl`* section of the [Getting started with LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#install-kubectl) guide to install `kubectl`.
 
-1.  You must have access to your AWS account with sufficient permissions to work with EKS clusters. The [AWS CLI](https://aws.amazon.com/cli/) and [`eksctl`](https://eksctl.io/) must also be installed and configured.
+1.  Ensure that you have access to your AWS account with sufficient permissions to work with EKS clusters. The [AWS CLI](https://aws.amazon.com/cli/) and [`eksctl`](https://eksctl.io/) must also be installed and configured.
 
 1.  Install [`jq`](docs/guides/using-jq-to-process-json-on-the-command-line/#install-jq-with-package-managers), a lightweight command line JSON processor.
 
 1.  Install [`yq`](https://github.com/mikefarah/yq), a YAML processor for the command line.
+
+1.  Install [ripgrep (`rg`)](https://github.com/BurntSushi/ripgrep), a faster alternative to `grep` written in Rust.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -136,73 +135,93 @@ While Kubernetes does not have a native concept of a node group, all the nodes w
 
 For this guide, a [REST API service application written in Go](https://github.com/linode/docs-cloud-projects/tree/main/demos/go-quote-service-main) is deployed to the example EKS cluster. This service allows you to add a quote (a string) to a stored list, or to retrieve that list. The application has been deployed to the cluster, creating a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
-The manifest (`manifest.yaml`) for deploying this application is as follows:
+1.  Use a command line text editor such as `nano` to create a Kubernetes manifest file that defines the application ans its supporting resources:
 
-```file {title="manifest.yaml" lang="yaml"}
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: go-quote
-  labels:
-    app: go-quote
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: go-quote
-  template:
+    ```command
+    nano manifest.yaml
+    ```
+
+    Give the file the following contents:
+
+    ```file {title="manifest.yaml" lang="yaml"}
+    apiVersion: apps/v1
+    kind: Deployment
     metadata:
+      name: go-quote
       labels:
         app: go-quote
     spec:
-      containers:
-        - name: go-quote
-          image: linodedocs/go-quote-service:latest
-          ports:
-            - containerPort: 7777
-          resources:
-            requests:
-              cpu: "100m"
-              memory: "128Mi"
-            limits:
-              cpu: "250m"
-              memory: "256Mi"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: go-quote-service
-  labels:
-    app: go-quote
-spec:
-  type: LoadBalancer
-  ports:
-    - port: 80
-      targetPort: 7777
-  selector:
-    app: go-quote
----
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: go-quote-hpa
-  labels:
-    app: go-quote
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: go-quote
-  minReplicas: 1
-  maxReplicas: 1
-  metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        target:
-          type: Utilization
-          averageUtilization: 50
-```
+      replicas: 1
+      selector:
+        matchLabels:
+          app: go-quote
+      template:
+        metadata:
+          labels:
+            app: go-quote
+        spec:
+          containers:
+            - name: go-quote
+              image: linodedocs/go-quote-service:latest
+              ports:
+                - containerPort: 7777
+              resources:
+                requests:
+                  cpu: "100m"
+                  memory: "128Mi"
+                limits:
+                  cpu: "250m"
+                  memory: "256Mi"
+    ---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: go-quote-service
+      labels:
+        app: go-quote
+    spec:
+      type: LoadBalancer
+      ports:
+        - port: 80
+          targetPort: 7777
+      selector:
+        app: go-quote
+    ---
+    apiVersion: autoscaling/v2
+    kind: HorizontalPodAutoscaler
+    metadata:
+      name: go-quote-hpa
+      labels:
+        app: go-quote
+    spec:
+      scaleTargetRef:
+        apiVersion: apps/v1
+        kind: Deployment
+        name: go-quote
+      minReplicas: 1
+      maxReplicas: 1
+      metrics:
+        - type: Resource
+          resource:
+            name: cpu
+            target:
+              type: Utilization
+              averageUtilization: 50
+    ```
+
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
+1.  Apply the manifest to deploy the application on your EKS cluster:
+
+    ```command
+    kubectl apply -f manifest.yaml
+    ```
+
+    ```output
+    deployment.apps/go-quote created
+    service/go-quote-service created
+    horizontalpodautoscaler.autoscaling/go-quote-hpa created
+    ```
 
 1.  With the application deployed, run the following `kubectl` command to verify that the deployment is available:
 
@@ -276,8 +295,6 @@ When migrating from EKS to LKE, provision an LKE cluster with similar resources 
     │ 1.32 │
     ├──────┤
     │ 1.31 │
-    ├──────┤
-    │ 1.30 │
     └──────┘
     ```
 
@@ -330,7 +347,7 @@ When migrating from EKS to LKE, provision an LKE cluster with similar resources 
 
     See [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/) for more detailed pricing information.
 
-1.  The examples in this guide uses the `g6-standard-2` Linode, which features two CPU cores and 4 GB of memory. Run the following command to display detailed information in JSON for this Linode plan:
+1.  The examples in this guide use the `g6-standard-2` Linode, which features two CPU cores and 4 GB of memory. Run the following command to display detailed information in JSON for this Linode plan:
 
     ```command
     linode linodes types --label "Linode 4GB" --json --pretty
@@ -414,7 +431,7 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
 1.  After saving the `kubeconfig`, access your cluster by using `kubectl` and specifying the file:
 
     ```command
-    kubectl get no --kubeconfig ~/.kube/lke-config
+    kubectl get nodes --kubeconfig ~/.kube/lke-config
     ```
 
     ```output
@@ -629,7 +646,8 @@ kubectl get node ip-192-168-31-10.us-west-1.compute.internal \
 ```
 
 ```output
-eks.amazonaws.com/capacityType: ON_DEMAND node.kubernetes.io/instance-type: m5.large
+eks.amazonaws.com/capacityType: ON_DEMAND
+node.kubernetes.io/instance-type: t3.medium
 ```
 
 Reference the [AWS pricing page for EC2 On-Demand Instances](https://aws.amazon.com/ec2/pricing/on-demand/) to find the cost for your EKS instance. Compare this with the cost of a Linode instance with comparable resources by examining the [Linode pricing page](https://www.linode.com/pricing/).
@@ -692,16 +710,3 @@ See [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-to
 ### Alternative to AWS Secrets Manager
 
 The AWS Secrets Manager can be leveraged to provide Kubernetes secrets on EKS. With LKE, you need an alternative solution, such as OpenBao on Akamai Cloud.
-
-## Resources
-
--   AWS EKS
-    -   [Documentation](https://aws.amazon.com/eks/)
-    -   [Connecting kubectl to an EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html)
--   Linode
-    -   [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/)
-    -   [LKE Documentation](/docs/guides/kubernetes-on-linode/)
-    -   [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager)
--   Setting up other technologies to run on Linode
-    -   [How to Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)
-    -   [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-tobs-on-linode-kubernetes-engine/)

@@ -24,7 +24,7 @@ This guide walks you through the process of migrating an application from Oracle
 
 1.  Follow the steps in the *Install `kubectl`* section of the [Getting started with LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#install-kubectl) guide to install `kubectl`.
 
-1.  You must have access to your Oracle Cloud account with sufficient permissions to work with OKE clusters. The [OCI CLI](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm) must also be installed and configured
+1.  Ensure that you have access to your Oracle Cloud account with sufficient permissions to work with OKE clusters. The [OCI CLI](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm) must also be installed and configured
 
 1.  Install [`jq`](docs/guides/using-jq-to-process-json-on-the-command-line/#install-jq-with-package-managers), a lightweight command line JSON processor.
 
@@ -430,7 +430,7 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
 1.  After saving the `kubeconfig`, access your cluster by using `kubectl` and specifying the file:
 
     ```command
-    kubectl get no --kubeconfig ~/.kube/lke-config
+    kubectl get nodes --kubeconfig ~/.kube/lke-config
     ```
 
     ```output
