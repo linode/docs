@@ -69,7 +69,7 @@ To install Packer on Mac, [Homebrew](https://brew.sh/) will be used. Run the fol
 Verify that Packer was successfully installed by running the command `packer --version`. This should output the version number for this installation of Packer. For reference, this guide was last tested using version 1.7.2.
 
 ### Install the Linode plugin
-You can use packer plugins install to manage installation of the Linode plugin.
+You can use packer plugins install to install and manage the Linode plugin, enabling Packer to interact with Linode instances.
 
     packer plugins install github.com/linode/linode
 
