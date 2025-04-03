@@ -68,6 +68,11 @@ To install Packer on Mac, [Homebrew](https://brew.sh/) will be used. Run the fol
 
 Verify that Packer was successfully installed by running the command `packer --version`. This should output the version number for this installation of Packer. For reference, this guide was last tested using version 1.7.2.
 
+### Install the Linode plugin
+You can use packer plugins install to manage installation of the Linode plugin.
+
+    packer plugins install github.com/linode/linode
+
 ## Constructing a Template for Packer
 
 Now that Packer is installed, you can make a Packer [template](https://www.packer.io/docs/templates). A template is a file that contains the configurations needed to build a machine image. A template can be formatted in [JSON](https://www.packer.io/docs/templates/legacy_json_templates) or [HCL2](https://www.packer.io/docs/templates/hcl_templates) (Hashicorp Configuration Language). As of Packer v1.7.0, the HCL2 template format is preferred and, as such, will be used in the examples within this guide.
