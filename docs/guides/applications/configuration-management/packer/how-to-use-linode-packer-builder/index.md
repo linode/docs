@@ -6,7 +6,7 @@ description: "Packer is a HashiCorp maintained open source tool for creating mac
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2019-11-12
-modified: 2021-05-21
+modified: 2025-04-03
 keywords: ['packer hashicorp','hashicorp packer','image','machine image','immutable infrastructure','continuous delivery','ansible','ansible playbook','hashicorp terraform','hashicorp']
 tags: ["automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -68,10 +68,13 @@ To install Packer on Mac, [Homebrew](https://brew.sh/) will be used. Run the fol
 
 Verify that Packer was successfully installed by running the command `packer --version`. This should output the version number for this installation of Packer. For reference, this guide was last tested using version 1.7.2.
 
-### Install the Linode plugin
-You can use packer plugins install to install and manage the Linode plugin, enabling Packer to interact with Linode instances.
+### Install the Linode Plugin
 
-    packer plugins install github.com/linode/linode
+Install the `Linode` [plugin](https://developer.hashicorp.com/packer/integrations/linode/linode) so that Packer can interact with Linode instances.
+
+```command
+packer plugins install github.com/linode/linode
+```
 
 ## Constructing a Template for Packer
 
