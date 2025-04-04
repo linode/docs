@@ -135,7 +135,7 @@ While Kubernetes does not have a native concept of a node group, all the nodes w
 
 For this guide, a [REST API service application written in Go](https://github.com/linode/docs-cloud-projects/tree/main/demos/go-quote-service-main) is deployed to the example EKS cluster. This service allows you to add a quote (a string) to a stored list, or to retrieve that list. The application has been deployed to the cluster, creating a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
-1.  Use a command line text editor such as `nano` to create a Kubernetes manifest file that defines the application ans its supporting resources:
+1.  Use a command line text editor such as `nano` to create a Kubernetes manifest file that defines the application and its supporting resources:
 
     ```command
     nano manifest.yaml
@@ -253,7 +253,7 @@ For this guide, a [REST API service application written in Go](https://github.co
     ```command
     curl -X POST \
       --data '{"quote":"This is my first quote."}' \
-      a4da1d7958fa64559a460e2ae07b57e5-771162568.us-west-1.elb.amazonaws.com/quotes
+      {{< placeholder "IP_ADDRESS" >}}/quotes
     ```
 
 1.  Add a second quote:
@@ -261,13 +261,13 @@ For this guide, a [REST API service application written in Go](https://github.co
     ```command
     curl -X POST \
       --data '{"quote":"This is my second quote."}' \
-      a4da1d7958fa64559a460e2ae07b57e5-771162568.us-west-1.elb.amazonaws.com/quotes
+      {{< placeholder "IP_ADDRESS" >}}/quotes
     ```
 
 1.  Now retrieve the stored quotes:
 
     ```command
-    curl a4da1d7958fa64559a460e2ae07b57e5-771162568.us-west-1.elb.amazonaws.com/quotes
+    curl {{< placeholder "IP_ADDRESS" >}}/quotes
     ```
 
     This should yield the following result:

@@ -1,15 +1,12 @@
 ---
 slug: migrating-from-google-gke-to-linode-kubernetes-engine-lke
 title: "Migrating from Google GKE to Linode Kubernetes Engine (LKE)"
-description: "Learn how to migrate Kubernetes applications from Google GKE to Linode Kubernetes Engine (LKE) using a simple example and clear steps."
+description: "Learn how to migrate Kubernetes applications from Google GKE to Linode Kubernetes Engine (LKE) using a simple example application with clear steps."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2025-02-03
 keywords: ['gke','google kubernetes engine','google gke alternatives','google kubernetes alternatives','gcp kubernetes alternatives','replace google gke','replace google kubernetes','replace gcp kubernetes','migrate google gke to linode','migrate google kubernetes to linode','migrate gcp kubernetes to linode','migrate kubernetes applications to linode','google gke migration','google kubernetes migration','gcp kubernetes migration','google gke replacement','google kubernetes replacement','gcp kubernetes replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
 This guide walks you through the process of migrating an application from Google Kubernetes Engine (GKE) on Google Cloud Platform (GCP) to Linode Kubernetes Engine (LKE). To keep the scope of this guide manageable, the example application is a simple REST API service.
@@ -85,6 +82,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     GLBCDefaultBackend is running at https://34.106.155.168/api/v1/namespaces/kube-system/services/default-http-backend:http/proxy
     KubeDNS is running at https://34.106.155.168/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
     Metrics-server is running at https://34.106.155.168/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
+
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
 
@@ -100,9 +98,7 @@ Detailed information about your cluster is also available in the Google Cloud co
 ![Google Cloud console displaying detailed information about a GKE cluster.](gcp-gke-cluster-details-panel.png)
 {{< /note >}}
 
-### Provisioned Nodes Depend on Workloads
-
-With GKE clusters in Autopilot mode (as in the above example), there are no nodes unless workloads are running in the cluster. When the cluster is created, one node is created, but this node is removed shortly after.
+### Review the Node
 
 1.  List the nodes in your cluster:
 
@@ -111,10 +107,19 @@ With GKE clusters in Autopilot mode (as in the above example), there are no node
     ```
 
     ```output
+    NAME                                        STATUS   ROLES    AGE   VERSION
+    gke-gke-to-lke-default-pool-32bae215-j9x9   Ready    <none>   57m   v1.31.6-gke.1020000
+    ```
+
+    {{< note title="Autopilot Clusters" >}}
+    If your GKE cluster was created in Autopilot mode, you may see the following output:
+
+    ```output
     No resources found
     ```
 
-    This is a feature of GKE Autopilot clusters, which scale the entire cluster to zero when no workloads are running.
+    This is expected - GKE Autopilot clusters scale to zero when no workloads are running and nodes are provisioned on demand.
+    {{< /note >}}
 
 1.  List the pods running across all namespaces:
 
@@ -122,8 +127,6 @@ With GKE clusters in Autopilot mode (as in the above example), there are no node
     kubectl get pods -A \
         -o custom-columns='NAMESPACE:.metadata.namespace,NAME:.metadata.name'
     ```
-
-    Although system pods are pending at this stage, they do not trigger a scale up until application workloads are present:
 
     ```output
     NAMESPACE         NAME
@@ -145,75 +148,95 @@ With GKE clusters in Autopilot mode (as in the above example), there are no node
 
 ### Verify the Application Is Running
 
-For this guide, a [REST API service application written in Go](https://github.com/the-gigi/go-quote-service) is deployed to the example GKE cluster. This service allows you to add a quote (a string) to a stored list, or to retrieve that list. Deploying the application creates a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+For this guide, a [REST API service application written in Go](https://github.com/linode/docs-cloud-projects/tree/main/demos/go-quote-service-main) is deployed to the example GKE cluster. This service allows you to add a quote (a string) to a stored list, or to retrieve that list. Deploying the application creates a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
-The manifest (`manifest.yaml`) for deploying this application is as follows:
+1.  Use a command line text editor such as `nano` to create a Kubernetes manifest file that defines the application and its supporting resources:
 
-```file {title="manifest.yaml" lang="yaml"}
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: go-quote
-  labels:
-    app: go-quote
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: go-quote
-  template:
+    ```command
+    nano manifest.yaml
+    ```
+
+    Give the file the following contents:
+
+    ```file {title="manifest.yaml" lang="yaml"}
+    apiVersion: apps/v1
+    kind: Deployment
     metadata:
+      name: go-quote
       labels:
         app: go-quote
     spec:
-      containers:
-        - name: go-quote
-          image: g1g1/go-quote-service:latest
-          ports:
-            - containerPort: 7777
-          resources:
-            requests:
-              cpu: "100m"
-              memory: "128Mi"
-            limits:
-              cpu: "250m"
-              memory: "256Mi"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: go-quote-service
-  labels:
-    app: go-quote
-spec:
-  type: LoadBalancer
-  ports:
-    - port: 80
-      targetPort: 7777
-  selector:
-    app: go-quote
----
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: go-quote-hpa
-  labels:
-    app: go-quote
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: go-quote
-  minReplicas: 1
-  maxReplicas: 1
-  metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        target:
-          type: Utilization
-          averageUtilization: 50
-```
+      replicas: 1
+      selector:
+        matchLabels:
+          app: go-quote
+      template:
+        metadata:
+          labels:
+            app: go-quote
+        spec:
+          containers:
+            - name: go-quote
+              image: linodedocs/go-quote-service:latest
+              ports:
+                - containerPort: 7777
+              resources:
+                requests:
+                  cpu: "100m"
+                  memory: "128Mi"
+                limits:
+                  cpu: "250m"
+                  memory: "256Mi"
+    ---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: go-quote-service
+      labels:
+        app: go-quote
+    spec:
+      type: LoadBalancer
+      ports:
+        - port: 80
+          targetPort: 7777
+      selector:
+        app: go-quote
+    ---
+    apiVersion: autoscaling/v2
+    kind: HorizontalPodAutoscaler
+    metadata:
+      name: go-quote-hpa
+      labels:
+        app: go-quote
+    spec:
+      scaleTargetRef:
+        apiVersion: apps/v1
+        kind: Deployment
+        name: go-quote
+      minReplicas: 1
+      maxReplicas: 1
+      metrics:
+        - type: Resource
+          resource:
+            name: cpu
+            target:
+              type: Utilization
+              averageUtilization: 50
+    ```
+
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
+1.  Apply the manifest to deploy the application on your GKE cluster:
+
+    ```command
+    kubectl apply -f manifest.yaml
+    ```
+
+    ```output
+    deployment.apps/go-quote created
+    service/go-quote-service created
+    horizontalpodautoscaler.autoscaling/go-quote-hpa created
+    ```
 
 1.  With the application deployed, run the following `kubectl` command to verify that the deployment is available:
 
@@ -320,8 +343,6 @@ When migrating from GKE to LKE, provision an LKE cluster with similar resources 
     │ 1.32 │
     ├──────┤
     │ 1.31 │
-    ├──────┤
-    │ 1.30 │
     └──────┘
     ```
 
@@ -447,7 +468,7 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
         '.[] | select(.label == "eks-to-lke") | .id')
     ```
 
-1.  Retrieve the `kubeconfig` file and save it to `~/.kube/lke-config`:.
+1.  Retrieve the `kubeconfig` file and save it to `~/.kube/lke-config`:
 
     ```command
     linode lke kubeconfig-view --json "$CLUSTER_ID" | \
@@ -748,16 +769,3 @@ See [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-to
 ### Alternative to GCP Secrets Manager
 
 The [GCP Secrets Manager](https://cloud.google.com/security/products/secret-manager) can be leveraged to provide Kubernetes secrets on GKE. With LKE, you need an alternative solution, such as OpenBao on Akamai Cloud.
-
-## Resources
-
--   GCP GKE
-    -   [Documentation](https://cloud.google.com/kubernetes-engine/docs)
-    -   [Connecting kubectl to a GKE cluster](https://cloud.google.com/sdk/gcloud/reference/container/clusters/get-credentials)
--   Linode
-    -   [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/)
-    -   [LKE Documentation](/docs/guides/kubernetes-on-linode/)
-    -   [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager)
--   Setting up other technologies to run on Linode
-    -   [How to Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)
-    -   [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-tobs-on-linode-kubernetes-engine/)

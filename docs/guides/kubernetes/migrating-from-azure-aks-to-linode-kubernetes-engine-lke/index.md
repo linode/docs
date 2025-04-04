@@ -162,7 +162,7 @@ spec:
     spec:
       containers:
         - name: go-quote
-          image: linodedocsg1g1/go-quote-service:latest
+          image: linodedocs/go-quote-service:latest
           ports:
             - containerPort: 7777
           resources:
@@ -281,8 +281,6 @@ When migrating from AKS to LKE, provision an LKE cluster with similar resources 
     │ 1.32 │
     ├──────┤
     │ 1.31 │
-    ├──────┤
-    │ 1.30 │
     └──────┘
     ```
 
