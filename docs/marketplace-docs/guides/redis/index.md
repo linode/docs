@@ -83,7 +83,7 @@ This returns passwords that were automatically generated when the instance was d
 
 1.  Once you have logged in and obtained the credentials, you can use the redis-cli. Redis is configured to require authentication for the default user, and a valid client SSL certificate. 
 
-    - `redis-cli --tls --cacert /etc/redis/ssl/ca/ca.crt --cert /etc/redis/ssl/certs/client1.crt --key /etc/redis/ssl/keys/client1.key.pem -a $REDIS_DEFAULT_USER_PASSWORD`: This opens the interactive mode where you can type in whichever commands you wish. 
+    - `redis-cli --tls --cacert /etc/redis/ssl/ca/ca.crt --cert /etc/redis/ssl/certs/client1.crt --key /etc/redis/ssl/keys/client1.key.pem -a $REDIS_DEFAULT_USER_PASSWORD`: This opens the interactive mode where you can type in whichever commands you wish.
 
 For more information about the redis-cli and the commands you have available, see [redis-cli, the Redis command line interface](https://redis.io/topics/rediscli).
 
