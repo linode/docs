@@ -66,8 +66,6 @@ When working in the context of an admin-level Team, users can create and access 
 
 ### Add the MySQL Helm Chart to the Catalog
 
-Repeat the steps above to add the MySQL Helm chart.
-
 1.  Click on **Catalog** in the left menu.
 
 1.  Select **Add Helm Chart**.
@@ -85,4 +83,199 @@ Repeat the steps above to add the MySQL Helm chart.
 1.  Deselect **Allow teams to use this chart**.
 
 1.  Click **Add Chart**.
+
+## Deploy a MySQL Database and WordPress Site
+
+Separate Workloads are created for MySQL and WordPress in order to deploy a database and site, respectively. Both Workloads require passwords, so to prevent the passwords from being stored unencrypted, Sealed Secrets are created for each first.
+
+[Sealed Secrets](https://apl-docs.net/docs/for-devs/console/secrets) are encrypted Kubernetes Secrets stored in the Values Git repository. When a Sealed Secret is created in the Console, the Kubernetes Secret will appear in the Team's namespace.
+
+### Create a Sealed Secret to Store MySQL Passwords
+
+1.  Select **view** > **team** and **team** > **demo** in the top bar.
+
+1.  Select **Sealed Secrets** from the menu.
+
+1.  Click **Create SealedSecret**.
+
+1.  Add a name for your Sealed Secret, where this name is also used when creating the MySQL Workload. This guide uses the name `mysql-credentials`.
+
+1.  Select type _[kubernetes.io/opaque](kubernetes.io/opaque)_ from the **type** dropdown menu.
+
+1.  Add the following **Key** and **Value** pairs, replacing `{{< placeholder "YOUR_PASSWORD" >}}` and `{{< placeholder "YOUR_ROOT_PASSWORD" >}}` with your own secure passwords:
+
+    - Key=`mysql-password`, Value=`{{< placeholder "YOUR_PASSWORD" >}}`
+    - Key=`mysql-root-password`, Value=`{{< placeholder "YOUR_ROOT_PASSWORD" >}}`
+
+1.  Click **Submit**. The Sealed Secret may take a few minutes to become ready.
+
+### Create a Sealed Secret to Store WordPress Credentials
+
+1.  Select **view** > **team** and **team** > **demo** in the top bar.
+
+1.  Select **Sealed Secrets** from the menu.
+
+1.  Click **Create SealedSecret**.
+
+1.  Add a name for your Sealed Secret, where this name is also used when creating the WordPress Workload. This guide uses the name `wordpress-credentials`.
+
+1.  Select type _[kubernetes.io/opaque](kubernetes.io/opaque)_ from the **type** dropdown menu.
+
+1.  Add the following **Key** and **Value** pairs.
+
+    Replace `{{< placeholder "YOUR_MYSQL_PASSWORD" >}}` with the same password you used for your `mysql-password` when creating the `mysql-credentials` Sealed Secret above. Replace `{{< placeholder "YOUR_PASSWORD" >}}` with your own secure password:
+
+    - Key=`mariadb-password`, Value=`{{< placeholder "YOUR_MYSQL_PASSWORD" >}}`
+    - Key=`wordpress-password`, Value=`{{< placeholder "YOUR_PASSWORD" >}}`
+
+1.  Click **Submit**. The Sealed Secret may take a few minutes to become ready.
+
+### Create the MySQL Workload
+
+1.  Select **view** > **team** and **team** > **demo** in the top bar.
+
+1.  Select **Workloads**.
+
+1.  Click on **Create Workload**.
+
+1.  Select the _MySQL_ Helm chart from the Catalog.
+
+1.  Click on **Values**.
+
+1.  Provide a name for the Workload. This guide uses the Workload name `wordpress-mysql`.
+
+1.  Set the following chart values:
+
+    ```
+    auth:
+      database: "{{< placeholder "wordpress" >}}"
+      username: "{{< placeholder "wordpress" >}}"
+      existingSecret: "{{< placeholder "mysql-credentials" >}}" # Change when using a different name
+    networkPolicy:
+      enabled: {{< placeholder "false" >}}
+    ```
+
+    {{< note title="Managing Network Policies" >}}
+    The `networkPolicy` is disabled since all traffic is allowed by default. Rather than configuring `networkPolicy` values directly in the Workload, this guide centrally manages all network policies using App Platform's [**Network Policies**](https://apl-docs.net/docs/for-ops/console/netpols) function.
+    {{< /note >}}
+
+1.  Click **Submit**. The Workload may take a few minutes to become ready.
+
+### Create the WordPress Workload
+
+1.  Select **view** > **team** and **team** > **demo** in the top bar.
+
+1.  Select **Workloads**.
+
+1.  Click on **Create Workload**.
+
+1.  Select the _Wordpress_ Helm chart from the Catalog.
+
+1.  Click on **Values**.
+
+1.  Provide a name for the Workload. This guide uses the Workload name `wordpress`.
+
+1.  Set the following chart values. Replace {{< placeholder "YOUR_USERNAME" >}} with the username you wish to use for logging into WordPress:
+
+    ```
+    mariadb:
+      enabled: {{< placeholder "false" >}}
+    externalDatabase:
+      host: {{< placeholder "wordpress-mysql.team-labs.svc.cluster.local" >}}
+      user: {{< placeholder "wordpress" >}}
+      database: {{< placeholder "wordpress" >}}
+      existingSecret: "{{< placeholder "wordpress-credentials" >}}"
+    service:
+      type: {{< placeholder "ClusterIP" >}}
+    networkPolicy:
+      enabled: {{< placeholder "false" >}}
+    existingSecret: "{{< placeholder "wordpress-credentials" >}}"
+    wordpressUsername: "{{< placeholder "YOUR_USERNAME" >}}"
+    ```
+
+1.  Click **Submit**. The Workload may take a few minutes to become ready.
+
+### Create Network Policies
+
+Create a Network Policy allowing only the WordPress Pod to connect to the MySQL database.
+
+1.  Select **view** > **team** and **team** > **demo** in the top bar.
+
+1.  Select **Network Policies** from the menu.
+
+1.  Click **Create Netpol**.
+
+1.  Add a name for the Network Policy. This guide uses the name `wordpress-mysql`.
+
+1.  Select **Rule type** `ingress` using the following values, where `kfp` is the name of the Workload created in the next step:
+
+    - **Selector label name**: [`app.kubernetes.io/instance`](http://app.kubernetes.io/instance)
+
+    - **Selector label value**: `kfp`
+
+1.  Select **AllowOnly**, and enter the following values:
+
+    - **Namespace name**: __
+
+    - **Selector label name**: [`app.kubernetes.io/instance`](http://app.kubernetes.io/instance)
+
+    - **Selector label value**: `wordpress`
+
+1.  Click **Submit**.
+
+#### Check the Pod Status
+
+Using the App Platform **Shell** feature, you can check to see if the WordPress Pod has started and connected to the MySQL database.
+
+1.  Select **view** > **team** and **team** > **demo** in the top bar.
+
+1.  In the left menu, select **Shell**.
+
+1.  Once the Shell session has loaded, enter the following command to launch the k9s interface. [k9s](https://k9scli.io/) is a terminal-based Kubernetes user interface and is pre-installed with Akamai App Platform:
+
+    ```command
+    k9s
+    ```
+
+1.  A `CrashLoopBackOff` status signifies that WordPress has not successfully connected to the database.
+
+    ![SCREENSHOT]()
+
+    In order to force a restart, click on the WordPress Pod, and type <kbd>Ctrl</kbd> + <kbd>D</kbd>. This kills the current Pod and starts a new one.
+
+    ![SCREENSHOT]()
+
+## Create a Service to Expose the WordPress Site
+
+1.  Select **view** > **team** and **team** > **demo** in the top bar.
+
+1.  Click **Services**, and select **Create Service**.
+
+1.  In the **Name** dropdown menu, select the `wordpress` service.
+
+1.  Under **Exposure (ingress)**, select **External**.
+
+1.  Click **Submit**.
+
+1.  Once the Service is ready, click the URL of the `wordpress` service to navigate to the live WordPress site:
+
+    ![SCREENSHOT]()
+
+### Access the WordPress UI
+
+1.  While viewing the WordPress site in your browser, add `/wp-admin` to the end of the URL, where {{< placeholder "MY_WORDPRESS_URL" >}} is your site URL:
+
+    ```
+    http://{{< placeholder "MY_WORDPRESS_URL" >}}/wp-admin
+    ```
+
+    This should bring you to the WordPress admin panel login screen:
+
+    ![SCREENSHOT]()
+
+1.  To access the Wordpress UI, sign in with your WordPress username and password.
+
+    Your username is the value used for `wordpressUsername` when creating the [WordPress Workload](#create-the-wordpress-workload). Your password is the value used for `wordpress-password` when making your `wordpress-credentials` [Sealed Secret](#create-a-sealed-secret-to-store-wordpress-credentials):
+
+    ![SCREENSHOT]()
 

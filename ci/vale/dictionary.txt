@@ -2897,6 +2897,7 @@ wordcount
 wordfence
 wordlist
 wordlists
+Wordpress
 wordpress
 worker1
 worker2
