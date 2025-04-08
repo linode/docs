@@ -48,7 +48,7 @@ After Gitea has finished installing, you can access your Gitea site using a web 
 
 Enter your Compute Instance's fully qualified domain name (for example, `https://www.example.com`) or [Reverse DNS Address](https://techdocs.akamai.com/cloud-computing/docs/configure-rdns-reverse-dns-on-a-compute-instance) into a browser window to access the Gitea welcome page. Select the **Sign In** link.
 
-    ![The Gitea welcome page.](gitea-welcome-page.png 'Gitea welcome page')
+![The Gitea welcome page.](gitea-welcome-page.png 'Gitea welcome page')
 
 ## Software Included
 
