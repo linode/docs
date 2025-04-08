@@ -16,11 +16,37 @@ external_resources:
 The Akamai App Platform is now available as a limited beta. It is not recommended for production workloads. To register for the beta, visit the [Betas](https://cloud.linode.com/betas) page in the Cloud Manager and click the Sign Up button next to the Akamai App Platform Beta.
 {{< /note >}}
 
-This guide includes steps for deploying a WordPress site and MySQL database using App Platform for LKE. In this architecture, both WordPress and MySQL use PersistentVolumes and PersistentVolumeClaimes to store data.
+This guide includes steps for deploying a WordPress site and MySQL database using App Platform for Linode Kubernetes Engine (LKE). In this architecture, both WordPress and MySQL use PersistentVolumes (PV) and PersistentVolumeClaims (PVC) to store data.
 
 Akamai App Platform for LKE uses the Add Helm Chart feature to add the WordPress and MySQL Helm charts to the App Platform Catalog.
 
 ## Prerequisites
+
+-   A [Cloud Manager](https://cloud.linode.com/) account is required to use Akamai's cloud computing services, including LKE.
+
+-   Enrollment into the Akamai App Platform's [beta program](https://cloud.linode.com/betas).
+
+-   An provisioned and configured LKE cluster with App Platform enabled and [auto-scaling](https://techdocs.akamai.com/cloud-computing/docs/manage-nodes-and-node-pools#autoscale-automatically-resize-node-pools) turned on. A Kubernetes cluster consisting of 3 [Dedicated CPU Compute Instances](https://techdocs.akamai.com/cloud-computing/docs/dedicated-cpu-compute-instances) is sufficient for the deployment in this guide to run, but additional resources may be required during the configuration of your App Platform architecture.
+
+    To ensure sufficient resources are available, it is recommended that node pool auto-scaling for your LKE cluster is enabled after deployment. Make sure to set the max number of nodes higher than your minimum. This may result in higher billing costs.
+
+To learn more about provisioning a LKE cluster with App Platform, see our [Getting Started with App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-akamai-application-platform) guide.
+
+## Components
+
+### Infrastructure
+
+-   **Linode Kubernetes Engine (LKE)**: LKE is Akamai’s managed Kubernetes service, enabling you to deploy containerized applications without needing to build out and maintain your own Kubernetes cluster.
+
+-   **App Platform for LKE**: A Kubernetes-based platform that combines developer and operations-centric tools, automation, self-service, and management of containerized application workloads. App Platform for LKE streamlines the application lifecycle from development to delivery and connects numerous CNCF (Cloud Native Computing Foundation) technologies in a single environment, allowing you to construct a bespoke Kubernetes architecture.
+
+### Software
+
+-   [**MySQL**](https://www.mysql.com/): An open source database management system that uses a relational database and SQL (Structured Query Language) to manage its data.
+
+-   [**WordPress**](https://wordpress.com/): The WordPress application is an industry standard, open source CMS (content management system) often used for creating and publishing websites.
+
+-   [**Ingress NGINX Controller**](https://github.com/kubernetes/ingress-nginx): When creating a Service in App Platform, an `ingress` is created using NGINX's Ingress Controller to allow public access to internal services.
 
 ## Set Up Infrastructure
 
@@ -46,13 +72,15 @@ When working in the context of an admin-level Team, users can create and access 
 
 [Helm charts](https://helm.sh/) provide information for defining, installing, and managing resources on a Kubernetes cluster. Custom Helm charts can be added to App Platform Catalog using the **Add Helm Chart** feature.
 
+To install WordPress on your cluster, add the WordPress Helm chart using the Git Repository URL.
+
 1.  While still using the `admin` team view, click on **Catalog** in the left menu.
 
 1.  Select **Add Helm Chart**.
 
     ![Add Helm Chart](APL-LLM-Add-Helm-Chart.jpg)
 
-1.  Under **Git Repository URL**, add the URL to the `wordpress` Helm chart:
+1.  Under **Git Repository URL**, add the URL to the `wordpress` Helm chart .yaml file:
 
     ```command
     https://github.com/bitnami/charts/blob/wordpress/24.1.18/bitnami/wordpress/Chart.yaml
@@ -66,13 +94,15 @@ When working in the context of an admin-level Team, users can create and access 
 
 ### Add the MySQL Helm Chart to the Catalog
 
+Repeat the same steps for installing the MySQL service on your cluster.
+
 1.  Click on **Catalog** in the left menu.
 
 1.  Select **Add Helm Chart**.
 
     ![Add Helm Chart](APL-LLM-Add-Helm-Chart.jpg)
 
-1.  Under **Git Repository URL**, add the URL to the `mysql` Helm chart:
+1.  Under **Git Repository URL**, add the URL to the `mysql` Helm chart .yaml file:
 
     ```command
     https://github.com/bitnami/charts/blob/mysql/12.3.1/bitnami/wordpress/Chart.yaml
@@ -156,7 +186,7 @@ Separate Workloads are created for MySQL and WordPress in order to deploy a data
     ```
 
     {{< note title="Managing Network Policies" >}}
-    The `networkPolicy` is disabled since all traffic is allowed by default. Rather than configuring `networkPolicy` values directly in the Workload, this guide centrally manages all network policies using App Platform's [**Network Policies**](https://apl-docs.net/docs/for-ops/console/netpols) function.
+    The `networkPolicy` is disabled since all traffic is allowed by default. Rather than configuring `networkPolicy` values directly in the Workload config, this guide centrally manages all network policies using App Platform's [**Network Policies**](https://apl-docs.net/docs/for-ops/console/netpols) function.
     {{< /note >}}
 
 1.  Click **Submit**. The Workload may take a few minutes to become ready.
@@ -231,7 +261,7 @@ Using the App Platform **Shell** feature, you can check to see if the WordPress 
 
 1.  In the left menu, select **Shell**.
 
-1.  Once the Shell session has loaded, enter the following command to launch the k9s interface. [k9s](https://k9scli.io/) is a terminal-based Kubernetes user interface and is pre-installed with Akamai App Platform:
+1.  Once the Shell session has loaded, enter the following command to launch the k9s interface. [k9s](https://k9scli.io/) is an open source, terminal-based Kubernetes user interface pre-installed with Akamai App Platform:
 
     ```command
     k9s
@@ -247,6 +277,8 @@ Using the App Platform **Shell** feature, you can check to see if the WordPress 
 
 ## Create a Service to Expose the WordPress Site
 
+Creating a [Service](https://apl-docs.net/docs/for-devs/console/services) in App Platform configures NGINX’s Ingress Controller. This allows you to enable public access to services running internally on your cluster.
+
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
 1.  Click **Services**, and select **Create Service**.
@@ -260,6 +292,12 @@ Using the App Platform **Shell** feature, you can check to see if the WordPress 
 1.  Once the Service is ready, click the URL of the `wordpress` service to navigate to the live WordPress site:
 
     ![SCREENSHOT]()
+
+### Setting Up DNS
+
+When creating a Service, DNS for your site can be configure using a CNAME rather than using an external IP address. To do this, configure a CNAME entry with your domain name provider, and follow the steps in our [Using a CNAME](https://apl-docs.net/docs/for-devs/console/services#using-a-cname) App Platform documentation.
+
+See our guide on [CNAME records](https://techdocs.akamai.com/cloud-computing/docs/cname-records) for more information on how CNAME records work.
 
 ### Access the WordPress UI
 
@@ -279,3 +317,12 @@ Using the App Platform **Shell** feature, you can check to see if the WordPress 
 
     ![SCREENSHOT]()
 
+## Going Further
+
+Once you've accessed the WordPress UI, you can begin modifying your site using WordPress templates, themes, and plugins. For more information, see WordPress's resources below:
+
+- [WordPress Support](https://wordpress.org/support/): Learn the basic workflows for using WordPress.
+
+- [Securing WordPress](https://www.linode.com/docs/guides/how-to-secure-wordpress/): Advice on securing WordPress through HTTPS, using a secure password, changing the admin username, and more.
+
+- [WordPress Themes](https://wordpress.org/themes/#): A collection of thousands of available WordPress themes.
