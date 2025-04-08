@@ -33,7 +33,7 @@ If you wish to deploy Kafka automatically rather than manually, consider our [Ap
 
 The following software and components must be installed and configured on your local system in order for the provided playbooks to function:
 
--   [Python](https://www.python.org/downloads/) version: > v3.8
+-   [Python](https://www.python.org/downloads/) version: > v3.11
 -   The [venv](https://docs.python.org/3/library/venv.html) Python module
 -   A [Linode API access token](/docs/products/tools/api/get-started/#get-an-access-token)
 -   A configured [SSH key pair](/docs/guides/use-public-key-authentication-with-ssh/) along with your public key
