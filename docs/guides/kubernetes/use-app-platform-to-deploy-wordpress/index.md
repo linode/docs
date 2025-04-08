@@ -169,7 +169,7 @@ Separate Workloads are created for MySQL and WordPress in order to deploy a data
 
 1.  Click on **Create Workload**.
 
-1.  Select the _Wordpress_ Helm chart from the Catalog.
+1.  Select the _WordPress_ Helm chart from the Catalog.
 
 1.  Click on **Values**.
 
@@ -273,7 +273,7 @@ Using the App Platform **Shell** feature, you can check to see if the WordPress 
 
     ![SCREENSHOT]()
 
-1.  To access the Wordpress UI, sign in with your WordPress username and password.
+1.  To access the WordPress UI, sign in with your WordPress username and password.
 
     Your username is the value used for `wordpressUsername` when creating the [WordPress Workload](#create-the-wordpress-workload). Your password is the value used for `wordpress-password` when making your `wordpress-credentials` [Sealed Secret](#create-a-sealed-secret-to-store-wordpress-credentials):
 
