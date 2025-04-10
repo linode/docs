@@ -51,9 +51,9 @@ The One-Click App for Redis installs Redis version 7.2.7.
 
 - **Email Address:** Enter the email address you wish to use for your certificate file.
 
-- **CA Common Name:** The common name that will be shared as the authority for all SSL certificates. Example: "Redis CA"
+- **CA Common Name:** Enter a common name to be shared as the authority for all SSL certificates, for example *Redis CA*.
 
-- **Client Count:** Generate up to ten SSL certificates for external clients connecting to Redis. 
+- **Client Count:** Generate up to ten SSL certificates for external clients connecting to Redis.
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
 
@@ -80,12 +80,14 @@ This returns passwords that were automatically generated when the instance was d
 
 
 ### Access the Redis CLI
+After you log in and obtain the credentials, you can use the Redis CLI. Redis is configured to require authentication for the default user, and a valid client SSL certificate.
 
-1.  Once you have logged in and obtained the credentials, you can use the redis-cli. Redis is configured to require authentication for the default user, and a valid client SSL certificate. 
+To access the Redis CLI, run the command:
 
-    - `redis-cli --tls --cacert /etc/redis/ssl/ca/ca.crt --cert /etc/redis/ssl/certs/client1.crt --key /etc/redis/ssl/keys/client1.key.pem -a $REDIS_DEFAULT_USER_PASSWORD`: This opens the interactive mode where you can type in whichever commands you wish.
+`redis-cli --tls --cacert /etc/redis/ssl/ca/ca.crt --cert /etc/redis/ssl/certs/client1.crt --key /etc/redis/ssl/keys/client1.key.pem -a $REDIS_DEFAULT_USER_PASSWORD`
 
-For more information about the redis-cli and the commands you have available, see [redis-cli, the Redis command line interface](https://redis.io/topics/rediscli).
+This opens the interactive mode where you can type commands. To learn more on the Redis CLI and available commands, see [Redis CLI
+](https://redis.io/topics/rediscli).
 
 ### Determining How to Use Redis
 
