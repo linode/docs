@@ -46,7 +46,7 @@ Self-hosting your software development with the Gitea Marketplace App offers tot
 
 With Gitea installed, you can access your Gitea site using a web browser to log in and begin using your app.
 
-To acess the Gitea site:
+To access the Gitea site:
 
 1. In a browser, enter your Compute Instance's fully qualified domain name (for example, *ht<span>tp://</span>example.com*) or [Reverse DNS Address](https://techdocs.akamai.com/cloud-computing/docs/configure-rdns-reverse-dns-on-a-compute-instance).
 
