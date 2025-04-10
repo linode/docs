@@ -64,36 +64,36 @@ This returns passwords that were automatically generated when the instance was d
 
 ### Modify the Postgres Users
 
-By default, PostgreSQL will create a Linux user named `postgres` to access the database software.
+By default, PostgreSQL creates a Linux user named `postgres` to access the database software.
 
 {{< note type="alert" >}}
 The `postgres` user should not be used for other purposes (e.g. connecting to other networks). Doing so presents a serious risk to the security of your databases.
 {{< /note >}}
-1. You can change to the PostgreSQL user's Linux shell from `root` or the sudo user created during deployment. 
+1. To change to the PostgreSQL user's Linux shell from `root` or the sudo user created during deployment, run the commands:
 ```
 as root: su postgres
 as sudo: sudo su postgres
 ```
 ### Create a Database
 
-Run the commands in this section as the `postgres` Linux user.
+To create a database and connect to it as the `postgres` Linux user:
 
-1.  Create a sample database called `mytestdb`:
+1.  To create a sample database called `mytestdb`, run:
 
         createdb mytestdb
 
-2.  Connect to the test database:
+2.  To connect to the `mytestdb` database, run:
 
         psql mytestdb
 
-3.  You will see the following output:
+You get the following output:
 
         psql (12.2 (Debian 12.2-2.pgdg90+1))
         Type "help" for help.
 
         mytestdb=#
 
-    This is the PostgreSQL client shell, in which you can issue SQL commands. To see a list of available commands, use the `\h` command. You may find more information on a specific command by adding it after `\h`.
+This is the PostgreSQL client shell, in which you can issue SQL commands. To see a list of available commands, use the `\h` command. You may find more information on a specific command by adding it after `\h`.
 
 ### Create Tables
 
