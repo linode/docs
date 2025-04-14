@@ -13,7 +13,7 @@
   --row-explorer: 2; /* The grid row for the left side explorer menu. */
   --row-main: 3; /* The grid row for the main content. */
   --col-navbar: 1; /* The grid column for the top navbar. */
-  --height-linode-menu-row: 61px;
+  --height-linode-menu-row: 81px;
   --height-navbar-row: 45px;
   --width-left-column: 240px;
   --width-right-column: 240px;
