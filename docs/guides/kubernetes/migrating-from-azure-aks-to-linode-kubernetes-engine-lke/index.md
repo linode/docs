@@ -81,7 +81,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     ```output
     Kubernetes control plane is running at {{< placeholder "AKS_CONTROL_PLANE_URL" >}}
-    CoreDNS is running at {{< placeholder "AKS_CORE_DNS_URL" >}}
+    CoreDNS is running at {{< placeholder "AKS_DNS_URL" >}}
     Metrics-server is running at {{< placeholder "AKS_METRICS_URL" >}}
 
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
@@ -108,7 +108,7 @@ Detailed information about your cluster is also available in the Azure portal.
     ```
 
     ```output
-    NAME                                STATUS   ROLES    AGE   VERSION
+    NAME            STATUS   ROLES    AGE   VERSION
     {{< placeholder "AKS_NODE_NAME" >}}   Ready    <none>   11m   v1.30.6
     ```
 
@@ -247,17 +247,17 @@ For this guide, a [REST API service application written in Go](https://github.co
     The service is a [LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer), which means it can be accessed from outside the cluster:
 
     ```output
-    NAME               TYPE           CLUSTER-IP   EXTERNAL-IP     PORT(S)        AGE
-    go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_SERVICE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}   80:30398/TCP   83s
-    kubernetes         ClusterIP      {{< placeholder "KUBERNETES_CLUSTER_IP" >}}     <none>          443/TCP        2m14s
+    NAME               TYPE           CLUSTER-IP            EXTERNAL-IP            PORT(S)        AGE
+    go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}   80:30398/TCP   83s
+    kubernetes         ClusterIP      {{< placeholder "K8S_CLUSTER_IP" >}}        <none>                 443/TCP        2m14s
     ```
 
-1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}} with the `EXTERNAL_IP` of your `LoadBalancer`:
+1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}} with the `EXTERNAL_IP` of your `LoadBalancer`:
 
     ```command
     curl -X POST \
       --data '{"quote":"This is my first quote."}' \
-      {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
+      {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Add a second quote:
@@ -265,13 +265,13 @@ For this guide, a [REST API service application written in Go](https://github.co
     ```command
     curl -X POST \
       --data '{"quote":"This is my second quote."}' \
-      {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
+      {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Now retrieve the stored quotes:
 
     ```command
-    curl {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
+    curl {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
     This should yield the following result:
@@ -439,7 +439,7 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
     ```
 
     ```output
-    NAME                            STATUS   ROLES    AGE   VERSION
+    NAME            STATUS   ROLES    AGE   VERSION
     {{< placeholder "LKE_NODE_NAME" >}}   Ready    <none>   85s   v1.32.0
     ```
 
@@ -479,17 +479,17 @@ kubectl get all --context {{< placeholder "AKS_CLUSTER_CONTEXT_NAME" >}}
 The output shows the running pod and the one active replica set created by the deployment:
 
 ```output
-NAME                           READY   STATUS    RESTARTS   AGE
+NAME                      READY   STATUS    RESTARTS   AGE
 pod/go-quote-{{< placeholder "POD_SUFFIX" >}}   1/1     Running   0          97s
 
-NAME                       TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)        AGE
-service/go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_SERVICE_INTERNAL_IP" >}}     {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}   80:30398/TCP   97s
-service/kubernetes         ClusterIP      {{< placeholder "KUBERNETES_INTERNAL_IP" >}}       <none>           443/TCP        22m
+NAME                       TYPE           CLUSTER-IP            EXTERNAL-IP            PORT(S)        AGE
+service/go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_CLUSTER_IP" >}}  {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}   80:30398/TCP   97s
+service/kubernetes         ClusterIP      {{< placeholder "K8S_CLUSTER_IP" >}}       <none>                 443/TCP        22m
 
 NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
 deployment.apps/go-quote   1/1     1            1           97s
 
-NAME                                 DESIRED   CURRENT   READY   AGE
+NAME                                          DESIRED   CURRENT   READY   AGE
 replicaset.apps/go-quote-{{< placeholder "REPLICA_SET_SUFFIX" >}}   1         1         1       97s
 
 NAME                                               REFERENCE             TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
@@ -600,17 +600,17 @@ Verify that the deployment and the service were created successfully.
     The service exposes a public IP address to the REST API service (e.g. `172.235.44.28`):
 
     ```output
-    NAME               TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
-    go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_SERVICE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}   80:30407/TCP   117s
-    kubernetes         ClusterIP      {{< placeholder "KUBERNETES_CLUSTER_IP" >}}       <none>          443/TCP        157m
+    NAME               TYPE           CLUSTER-IP           EXTERNAL-IP            PORT(S)        AGE
+    go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_CLUSTER_IP" >}}  {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}   80:30407/TCP   117s
+    kubernetes         ClusterIP      {{< placeholder "K8S_CLUSTER_IP" >}}       <none>                 443/TCP        157m
     ```
 
-1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}} with the actual external IP address of your load balancer::
+1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}} with the actual external IP address of your load balancer::
 
     ```command
     curl -X POST \
       --data '{"quote":"This is my first quote for LKE."}' \
-      {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
+      {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Add a second quote:
@@ -618,13 +618,13 @@ Verify that the deployment and the service were created successfully.
     ```command
     curl -X POST \
       --data '{"quote":"This is my second quote for LKE."}' \
-      {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
+      {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Now retrieve the stored quotes:
 
     ```command
-    curl {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
+    curl {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
     ```output

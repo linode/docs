@@ -46,9 +46,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 1.  Use the AWS CLI to update your local `kubeconfig` file, replacing {{< placeholder "AWS_REGION" >}} and {{< placeholder "EKS_CLUSTER_NAME" >}} with your actual EKS cluster information:
 
     ```command
-    aws eks update-kubeconfig \
-        --region {{< placeholder "AWS_REGION" >}} \
-        --name {{< placeholder "EKS_CLUSTER_NAME" >}}
+    aws eks update-kubeconfig --region {{< placeholder "AWS_REGION" >}} --name {{< placeholder "EKS_CLUSTER_NAME" >}}
     ```
 
     ```output
@@ -101,7 +99,7 @@ While Kubernetes does not have a native concept of a node group, all the nodes w
     ```
 
     ```output
-    NAME           STATUS   ROLES    AGE   VERSION
+    NAME               STATUS   ROLES    AGE   VERSION
     {{< placeholder "EKS_NODE_1_NAME" >}}    Ready    <none>   24m   v1.31.5-eks-5d632ec
     {{< placeholder "EKS_NODE_2_NAME" >}}    Ready    <none>   24m   v1.31.5-eks-5d632ec
     ```
@@ -119,10 +117,10 @@ While Kubernetes does not have a native concept of a node group, all the nodes w
 
     ```command
     kubectl get node \
-        $(kubectl get nodes -o jsonpath='{.items[0].metadata.name}') -o yaml \
-            | yq '.status.allocatable | {"cpu": .cpu, "memory": .memory}' \
-                | awk -F': ' ' /cpu/ {cpu=$2} /memory/ {mem=$2} \
-                    END {printf "cpu: %s\nmemory: %.2f Gi\n", cpu, mem / 1024 / 1024}'
+      $(kubectl get nodes -o jsonpath='{.items[0].metadata.name}') -o yaml \
+        | yq '.status.allocatable | {"cpu": .cpu, "memory": .memory}' \
+          | awk -F': ' ' /cpu/ {cpu=$2} /memory/ {mem=$2} \
+            END {printf "cpu: %s\nmemory: %.2f Gi\n", cpu, mem / 1024 / 1024}'
     ```
 
     ```output
@@ -242,17 +240,17 @@ For this guide, a [REST API service application written in Go](https://github.co
     The service is a [LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer), which means it can be accessed from outside the cluster:
 
     ```output
-    NAME               TYPE           CLUSTER-IP       EXTERNAL-IP                                                              PORT(S)        AGE
-    go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_SERVICE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_HOSTNAME" >}}   80:30570/TCP   5m27s
-    kubernetes         ClusterIP      {{< placeholder "KUBERNETES_CLUSTER_IP" >}}       <none>
+    NAME               TYPE           CLUSTER-IP            EXTERNAL-IP                  PORT(S)        AGE
+    go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_EXTERNAL_HOSTNAME" >}}   80:30570/TCP   5m27s
+    kubernetes         ClusterIP      {{< placeholder "K8S_CLUSTER_IP" >}}        <none>
     ```
 
-1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_HOSTNAME" >}} with the actual `EXTERNAL-IP` of your `LoadBalancer`:
+1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_EXTERNAL_HOSTNAME" >}} with the actual `EXTERNAL-IP` of your `LoadBalancer`:
 
     ```command
     curl -X POST \
         --data '{"quote":"This is my first quote."}' \
-        {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_HOSTNAME" >}}/quotes
+        {{< placeholder "GO_QUOTE_EXTERNAL_HOSTNAME" >}}/quotes
     ```
 
 1.  Add a second quote:
@@ -260,13 +258,13 @@ For this guide, a [REST API service application written in Go](https://github.co
     ```command
     curl -X POST \
         --data '{"quote":"This is my second quote."}' \
-        {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_HOSTNAME" >}}/quotes
+        {{< placeholder "GO_QUOTE_EXTERNAL_HOSTNAME" >}}/quotes
     ```
 
 1.  Now retrieve the stored quotes:
 
     ```command
-    curl {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_HOSTNAME" >}}/quotes
+    curl {{< placeholder "GO_QUOTE_EXTERNAL_HOSTNAME" >}}/quotes
     ```
 
     This should yield the following result:
@@ -414,17 +412,16 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
 1.  Use the following command to retrieve the cluster’s ID:
 
     ```command
-    CLUSTER_ID=$(linode lke clusters-list --json | \
-        jq -r \
-        '.[] | select(.label == "eks-to-lke") | .id')
+    CLUSTER_ID=$(linode lke clusters-list --json | jq -r \
+      '.[] | select(.label == "eks-to-lke") | .id')
     ```
 
 1.  Retrieve the `kubeconfig` file and save it to `~/.kube/lke-config`:.
 
     ```command
     linode lke kubeconfig-view --json "$CLUSTER_ID" | \
-        jq -r '.[0].kubeconfig' | \
-        base64 --decode > ~/.kube/lke-config
+      jq -r '.[0].kubeconfig' | \
+      base64 --decode > ~/.kube/lke-config
     ```
 
 1.  After saving the `kubeconfig`, access your cluster by using `kubectl` and specifying the file:
@@ -434,7 +431,7 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
     ```
 
     ```output
-    NAME                            STATUS   ROLES    AGE   VERSION
+    NAME            STATUS   ROLES    AGE   VERSION
     {{< placeholder "LKE_NODE_NAME" >}}   Ready    <none>   85s   v1.32.0
     ```
 
@@ -468,24 +465,23 @@ This guide covers the key steps required to migrate the example application from
 Ensure that `kubectl` uses the original `kubeconfig` file with the EKS cluster context.
 
 ```command
-kubectl get all \
-    --context {{< placeholder "EKS_CLUSTER_CONTEXT_NAME" >}}
+kubectl get all --context {{< placeholder "EKS_CLUSTER_CONTEXT_NAME" >}}
 ```
 
 The output shows the running pod and the one active replica set created by the deployment:
 
 ```output
-NAME                           READY   STATUS    RESTARTS   AGE
+NAME                      READY   STATUS    RESTARTS   AGE
 pod/go-quote-{{< placeholder "POD_SUFFIX" >}}   1/1     Running   0          170m
 
-NAME                       TYPE           CLUSTER-IP       EXTERNAL-IP                                                              PORT(S)        AGE
-service/go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_SERVICE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_HOSTNAME" >}}   80:30570/TCP   170m
-service/kubernetes         ClusterIP      {{< placeholder "KUBERNETES_CLUSTER_IP" >}}       <none>                                                                   443/TCP        3h30m
+NAME                       TYPE           CLUSTER-IP           EXTERNAL-IP                  PORT(S)        AGE
+service/go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_CLUSTER_IP" >}}  {{< placeholder "GO_QUOTE_EXTERNAL_HOSTNAME" >}}   80:30570/TCP   170m
+service/kubernetes         ClusterIP      {{< placeholder "K8S_CLUSTER_IP" >}}       <none>                       443/TCP        3h30m
 
 NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
 deployment.apps/go-quote   1/1     1            1           170m
 
-NAME                                 DESIRED   CURRENT   READY   AGE
+NAME                                         DESIRED   CURRENT   READY   AGE
 replicaset.apps/go-quote-{{< placeholder "REPLICASET_SUFFIX" >}}   1         1         1       170m
 
 NAME                                               REFERENCE             TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
@@ -596,17 +592,17 @@ Verify that the deployment and the service were created successfully.
     The service exposes a public IP address to the REST API service:
 
     ```output
-    NAME               TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
-    go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_SERVICE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}   80:30407/TCP   117s
-    kubernetes         ClusterIP      {{< placeholder "KUBERNETES_CLUSTER_IP" >}}       <none>          443/TCP        157m
+    NAME               TYPE           CLUSTER-IP            EXTERNAL-IP            PORT(S)        AGE
+    go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}   80:30407/TCP   117s
+    kubernetes         ClusterIP      {{< placeholder "K8S_CLUSTER_IP" >}}        <none>                 443/TCP        157m
     ```
 
-1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}} with the actual external IP address of your load balancer:
+1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}} with the actual external IP address of your load balancer:
 
     ```command
     curl -X POST \
       --data '{"quote":"This is my first quote for LKE."}' \
-      {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
+      {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Add a second quote:
@@ -614,13 +610,13 @@ Verify that the deployment and the service were created successfully.
     ```command
     curl -X POST \
       --data '{"quote":"This is my second quote for LKE."}' \
-      {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
+      {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Now retrieve the stored quotes:
 
     ```command
-    curl {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
+    curl {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
     ```output
@@ -644,8 +640,8 @@ kubectl get node {{< placeholder "EKS_NODE_1_NAME" >}} -o yaml \
 ```
 
 ```output
-eks.amazonaws.com/capacityType: {{< placeholder "CAPACITY_TYPE" >}}
-node.kubernetes.io/instance-type: {{< placeholder "INSTANCE_TYPE" >}}
+eks.amazonaws.com/capacityType: {{< placeholder "EKS_CAPACITY_TYPE" >}}
+node.kubernetes.io/instance-type: {{< placeholder "EKS_INSTANCE_TYPE" >}}
 ```
 
 Reference the [AWS pricing page for EC2 On-Demand Instances](https://aws.amazon.com/ec2/pricing/on-demand/) to find the cost for your EKS instance. Compare this with the cost of a Linode instance with comparable resources by examining the [Linode pricing page](https://www.linode.com/pricing/).
