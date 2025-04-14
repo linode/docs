@@ -633,10 +633,10 @@ body.om-position-floating-top {
   margin-bottom: 16px;
 }
 .c-submenu .c-featured__button {
-  background-color: #017ac6;
+  background-color: var(--button-background-color, #017ac6);
   border: 0 solid;
   border-radius: 4px;
-  color: #ffffff;
+  color: var(--button-text-color, #ffffff);
   cursor: pointer;
   display: inline-block;
   font-size: 0.8125rem;
@@ -646,6 +646,10 @@ body.om-position-floating-top {
   text-align: center;
   white-space: nowrap;
   width: auto;
+}
+.c-submenu .c-featured__button:hover {
+  background-color: var(--button-background-color--hover, #32363b);
+  color: var(--button-text-color--hover, #ffffff);
 }
 .c-submenu .c-featured:hover, .c-submenu .c-featured:visited {
   color: var(--c-featured-color, #32363b);
