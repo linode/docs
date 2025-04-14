@@ -43,13 +43,14 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     ![Details panel in Google Cloud showing the name and location of a GKE cluster.](gcp-gke-cluster-name-and-location.png)
 
-    In the example above, the cluster name is `test-cluster`, and its location is `us-west3`.
+    In the screenshot above, the cluster name is `test-cluster`, and its location is `us-west3`.
 
 1.  Use the gcloud CLI to update your local `kubeconfig` file with your GKE cluster information:
 
     ```command
     gcloud container clusters \
-        get-credentials test-cluster --location=us-west3
+        get-credentials {{< placeholder "GKE_CLUSTER_NAME" >}} \
+        --location={{< placeholder "GCP_REGION" >}}
     ```
 
     ```output
@@ -66,7 +67,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     ```command
     kubectl config use-context \
-        gke_gke-to-lke_us-west3_test-cluster
+        {{< placeholder "GKE_CLUSTER_CONTEXT_NAME" >}}
     ```
 
 ### Assess Your GKE Cluster
@@ -78,10 +79,10 @@ This guide is written for a non-root user. Commands that require elevated privil
     ```
 
     ```output
-    Kubernetes control plane is running at https://34.106.155.168
-    GLBCDefaultBackend is running at https://34.106.155.168/api/v1/namespaces/kube-system/services/default-http-backend:http/proxy
-    KubeDNS is running at https://34.106.155.168/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-    Metrics-server is running at https://34.106.155.168/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
+    Kubernetes control plane is running at {{< placeholder "GKE_CONTROL_PLANE_URL" >}}
+    GLBCDefaultBackend is running at {{< placeholder "GKE_GLBC_URL" >}}
+    KubeDNS is running at {{< placeholder "GKE_DNS_URL" >}}
+    Metrics-server is running at {{< placeholder "GKE_METRICS_URL" >}}
 
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
@@ -108,7 +109,7 @@ Detailed information about your cluster is also available in the Google Cloud co
 
     ```output
     NAME                                        STATUS   ROLES    AGE   VERSION
-    gke-gke-to-lke-default-pool-32bae215-j9x9   Ready    <none>   57m   v1.31.6-gke.1020000
+    {{< placeholder "GKE_NODE_NAME" >}}   Ready    <none>   57m   v1.31.6-gke.1020000
     ```
 
     {{< note title="Autopilot Clusters" >}}
@@ -259,8 +260,8 @@ For this guide, a [REST API service application written in Go](https://github.co
 
     ```output
     NAME               TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
-    go-quote-service   LoadBalancer   34.118.229.116   34.106.133.10   80:30972/TCP   5m37s
-    kubernetes         ClusterIP      34.118.224.1     <none>          443/TCP        29m
+    go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_SERVICE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}   80:30972/TCP   5m37s
+    kubernetes         ClusterIP      {{< placeholder "KUBERNETES_CLUSTER_IP" >}}     <none>          443/TCP        29m
     ```
 
 1.  With workloads running, you can now verify that a node has been provisioned:
@@ -271,20 +272,20 @@ For this guide, a [REST API service application written in Go](https://github.co
 
     ```output
     NAME                                          STATUS     ROLES    AGE   VERSION
-    gk3-test-cluster-nap-1np6k37u-5baac581-mwqs   NotReady   <none>   7s    v1.30.6-gke.1125000
+    {{< placeholder "GKE_NODE_NAME" >}}   NotReady   <none>   7s    v1.30.6-gke.1125000
     ```
 
 1.  To retrieve more information about this node, run the following command:
 
     ```command
-    kubectl get node gk3-test-cluster-nap-1np6k37u-5baac581-mwqs -o yaml
+    kubectl get node {{< placeholder "GKE_NODE_NAME" >}} -o yaml
     ```
 
     {{< note >}}
     The above command retrieves all the information about the node in YAML format. To filter for specific fields, such as allocatable CPU and memory, run the previous command through a pipe:
 
     ```command
-    kubectl get node gk3-test-cluster-nap-1np6k37u-5baac581-mwqs -o yaml \
+    kubectl get node {{< placeholder "GKE_NODE_NAME" >}} -o yaml \
       | yq '.status.allocatable | {"cpu": .cpu, "memory": .memory}' \
       | awk -F': ' ' /cpu/ {cpu=$2} /memory/ {mem=$2} \
           END {printf "cpu: %s\nmemory: %.2f Gi\n", cpu, mem / 1024 / 1024}'
@@ -296,12 +297,12 @@ For this guide, a [REST API service application written in Go](https://github.co
     ```
     {{< /note >}}
 
-1.  Test the service by adding a quote:
+1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}} with the actual external IP address of your load balancer:
 
     ```command
     curl -X POST \
       --data '{"quote":"This is my first quote."}' \
-      {{< placeholder "IP_ADDRESS" >}}/quotes
+      {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Add a second quote:
@@ -309,13 +310,13 @@ For this guide, a [REST API service application written in Go](https://github.co
     ```command
     curl -X POST \
       --data '{"quote":"This is my second quote."}' \
-      {{< placeholder "IP_ADDRESS" >}}/quotes
+      {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Now retrieve the stored quotes:
 
     ```command
-    curl {{< placeholder "IP_ADDRESS" >}}/quotes
+    curl {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
     ```
 
     This should yield the following result:
@@ -484,7 +485,7 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
 
     ```output
     NAME                            STATUS   ROLES    AGE   VERSION
-    lke289125-478490-4569f8b60000   Ready    <none>   85s   v1.32.0
+    {{< placeholder "LKE_NODE_NAME" >}}   Ready    <none>   85s   v1.32.0
     ```
 
     One node is ready, and it uses Kubernetes version 1.32.
@@ -496,8 +497,8 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
     ```
 
     ```output
-    Kubernetes control plane is running at https://fa127859-38c1-4e40-971d-b5c7d5bd5e97.us-lax-2.linodelke.net:443
-    KubeDNS is running at https://fa127859-38c1-4e40-971d-b5c7d5bd5e97.us-lax-2.linodelke.net:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+    Kubernetes control plane is running at {{< placeholder "LKE_CONTROL_URL" >}}
+    KubeDNS is running at {{< placeholder "LKE_DNS_URL" >}}
 
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
@@ -517,24 +518,24 @@ This guide covers the key steps required to migrate the example application from
 Ensure that `kubectl` uses the original `kubeconfig` file with the GKE cluster context.
 
 ```command
-kubectl get all --context gke_gke-to-lke_us-west3_test-cluster
+kubectl get all --context {{< placeholder "GKE_CLUSTER_CONTEXT_NAME" >}}
 ```
 
 The output shows the running pod and the one active replica set created by the deployment:
 
 ```output
 NAME                            READY   STATUS    RESTARTS   AGE
-pod/go-quote-7b747d5f8f-pc2cd   1/1     Running   0          3h36m
+pod/go-quote-{{< placeholder "POD_SUFFIX" >}}   1/1     Running   0          3h36m
 
 NAME                       TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
-service/go-quote-service   LoadBalancer   34.118.229.116   34.106.133.10   80:30972/TCP   3h36m
-service/kubernetes         ClusterIP      34.118.224.1     <none>          443/TCP        3h59m
+service/go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}   80:30972/TCP   3h36m
+service/kubernetes         ClusterIP      {{< placeholder "KUBERNETES_CLUSTER_IP" >}}     <none>          443/TCP        3h59m
 
 NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
 deployment.apps/go-quote   1/1     1            1           3h36m
 
 NAME                                  DESIRED   CURRENT   READY   AGE
-replicaset.apps/go-quote-7b747d5f8f   1         1         1       3h36m
+replicaset.apps/go-quote-{{< placeholder "REPLICASET_SUFFIX" >}}   1         1         1       3h36m
 
 NAME                                               REFERENCE             TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
 horizontalpodautoscaler.autoscaling/go-quote-hpa   Deployment/go-quote   cpu: 0%/50%   1         1         1          3h36m
@@ -605,7 +606,7 @@ Deploy your application to the newly created LKE cluster.
     ```
 
     ```output
-    lke289125-ctx
+    {{< placeholder "LKE_CLUSTER_CONTEXT_NAME" >}}
     ```
 
 1.  Apply the same `manifest.yaml` file used to deploy your application to GKE, but this time on your LKE cluster:
@@ -645,16 +646,16 @@ Verify that the deployment and the service were created successfully
 
     ```output
     NAME               TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
-    go-quote-service   LoadBalancer   10.128.183.194   172.235.44.28   80:30407/TCP   117s
-    kubernetes         ClusterIP      10.128.0.1       <none>          443/TCP        157m
+    go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_SERVICE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}   80:30407/TCP   117s
+    kubernetes         ClusterIP      {{< placeholder "KUBERNETES_CLUSTER_IP" >}}       <none>          443/TCP        157m
     ```
 
-1.  Test the service by adding a quote:
+1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}} with the actual external IP address of your load balancer:
 
     ```command
     curl -X POST \
       --data '{"quote":"This is my first quote for LKE."}' \
-      172.235.44.28/quotes
+      {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Add a second quote:
@@ -662,13 +663,13 @@ Verify that the deployment and the service were created successfully
     ```command
     curl -X POST \
       --data '{"quote":"This is my second quote for LKE."}' \
-      172.235.44.28/quotes
+      {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Now retrieve the stored quotes:
 
     ```command
-    curl 172.235.44.28/quotes
+    curl {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP_ADDRESS" >}}/quotes
     ```
 
     ```output
@@ -686,7 +687,7 @@ When migrating from GCP GKE to LKE, there are several important factors to keep 
 Cost reduction is one reason an organization might migrate from GCP GKE to LKE. Typically, the compute cost of Kubernetes is the primary driver for migration. Use `kubectl` to find the instance type and capacity type for your GKE instance.
 
 ```command
-kubectl get node gk3-test-cluster-nap-1np6k37u-5baac581-mwqs -o yaml \
+kubectl get node {{< placeholder "GKE_NODE_NAME" >}} -o yaml \
   | yq .metadata.labels \
   | grep node.kubernetes.io/instance-type
 ```

@@ -41,18 +41,18 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     ![The EKS service page in the AWS Console showing the example cluster name.](aws-eks-cluster-name-console.png)
 
-    In the screenshot above, the cluster name is `wonderful-hideout-1734286097`. You also need to know the AWS region where your cluster resides. For this example, the region is `us-west-1` (not shown).
+    In the screenshot above, the cluster name is `wonderful-hideout-1734286097`. You also need to know the AWS region where your cluster resides (e.g. `us-west-1`).
 
-1.  Use the AWS CLI to update your local `kubeconfig` file with your EKS cluster information:
+1.  Use the AWS CLI to update your local `kubeconfig` file, replacing {{< placeholder "AWS_REGION" >}} and {{< placeholder "EKS_CLUSTER_NAME" >}} with your actual EKS cluster information:
 
     ```command
     aws eks update-kubeconfig \
-        --region us-west-1 \
-        --name wonderful-hideout-1734286097
+        --region {{< placeholder "AWS_REGION" >}} \
+        --name {{< placeholder "EKS_CLUSTER_NAME" >}}
     ```
 
     ```output
-    Added new context arn:aws:eks:us-west-1:153917289119:cluster/wonderful-hideout-1734286097 to /home/user/.kube/config
+    Added new context arn:aws:eks:{{< placeholder "AWS_REGION" >}}:{{< placeholder "AWS_ACCOUNT_ID" >}}:cluster/{{< placeholder "EKS_CLUSTER_NAME" >}} to /home/user/.kube/config
     ```
 
 1.  If your `kubeconfig` file includes multiple clusters, use the following command to list the available contexts:
@@ -64,8 +64,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 1.  Identify the context name for your EKS cluster, then set it to the active context, for example:
 
     ```commmand
-    kubectl config use-context \
-        user@wonderful-hideout-1734286097.us-west-1.eksctl.io
+    kubectl config use-context {{< placeholder "EKS_CLUSTER_CONTEXT_NAME" >}}
     ```
 
 ### Assess Your EKS Cluster
@@ -77,8 +76,8 @@ This guide is written for a non-root user. Commands that require elevated privil
     ```
 
     ```output
-    Kubernetes control plane is running at https://35057E565F73FD2804B94EF5C9D24A34.yl4.us-west-1.eks.amazonaws.com
-    CoreDNS is running at https://35057E565F73FD2804B94EF5C9D24A34.yl4.us-west-1.eks.amazonaws.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+    Kubernetes control plane is running at {{< placeholder "EKS_CONTROL_PLANE_URL" >}}
+    CoreDNS is running at {{< placeholder "EKS_DNS_URL" >}}
 
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
@@ -102,9 +101,9 @@ While Kubernetes does not have a native concept of a node group, all the nodes w
     ```
 
     ```output
-    NAME                                          STATUS   ROLES    AGE   VERSION
-    ip-192-168-31-10.us-west-1.compute.internal   Ready    <none>   24m   v1.30.7-eks-59bf375
-    ip-192-168-36-4.us-west-1.compute.internal    Ready    <none>   24m   v1.30.7-eks-59bf375
+    NAME           STATUS   ROLES    AGE   VERSION
+    {{< placeholder "EKS_NODE_1_NAME" >}}    Ready    <none>   24m   v1.31.5-eks-5d632ec
+    {{< placeholder "EKS_NODE_2_NAME" >}}    Ready    <none>   24m   v1.31.5-eks-5d632ec
     ```
 
 1.  Run the following command to retrieve detailed information about the first node listed:
@@ -244,30 +243,30 @@ For this guide, a [REST API service application written in Go](https://github.co
 
     ```output
     NAME               TYPE           CLUSTER-IP       EXTERNAL-IP                                                              PORT(S)        AGE
-    go-quote-service   LoadBalancer   10.100.215.161   a4da1d7958fa64559a460e2ae07b57e5-771162568.us-west-1.elb.amazonaws.com   80:30570/TCP   5m27s
-    kubernetes         ClusterIP      10.100.0.1       <none>
+    go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_SERVICE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_HOSTNAME" >}}   80:30570/TCP   5m27s
+    kubernetes         ClusterIP      {{< placeholder "KUBERNETES_CLUSTER_IP" >}}       <none>
     ```
 
-1.  Test the service by adding a quote:
+1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_HOSTNAME" >}} with the actual `EXTERNAL-IP` of your `LoadBalancer`:
 
     ```command
     curl -X POST \
-      --data '{"quote":"This is my first quote."}' \
-      {{< placeholder "IP_ADDRESS" >}}/quotes
+        --data '{"quote":"This is my first quote."}' \
+        {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_HOSTNAME" >}}/quotes
     ```
 
 1.  Add a second quote:
 
     ```command
     curl -X POST \
-      --data '{"quote":"This is my second quote."}' \
-      {{< placeholder "IP_ADDRESS" >}}/quotes
+        --data '{"quote":"This is my second quote."}' \
+        {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_HOSTNAME" >}}/quotes
     ```
 
 1.  Now retrieve the stored quotes:
 
     ```command
-    curl {{< placeholder "IP_ADDRESS" >}}/quotes
+    curl {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_HOSTNAME" >}}/quotes
     ```
 
     This should yield the following result:
@@ -416,7 +415,7 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
 
     ```command
     CLUSTER_ID=$(linode lke clusters-list --json | \
-      jq -r \
+        jq -r \
         '.[] | select(.label == "eks-to-lke") | .id')
     ```
 
@@ -424,8 +423,8 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
 
     ```command
     linode lke kubeconfig-view --json "$CLUSTER_ID" | \
-      jq -r '.[0].kubeconfig' | \
-      base64 --decode > ~/.kube/lke-config
+        jq -r '.[0].kubeconfig' | \
+        base64 --decode > ~/.kube/lke-config
     ```
 
 1.  After saving the `kubeconfig`, access your cluster by using `kubectl` and specifying the file:
@@ -436,7 +435,7 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
 
     ```output
     NAME                            STATUS   ROLES    AGE   VERSION
-    lke289125-478490-4569f8b60000   Ready    <none>   85s   v1.32.0
+    {{< placeholder "LKE_NODE_NAME" >}}   Ready    <none>   85s   v1.32.0
     ```
 
     One node is ready, and it uses Kubernetes version 1.32.
@@ -448,8 +447,8 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
     ```
 
     ```output
-    Kubernetes control plane is running at https://fa127859-38c1-4e40-971d-b5c7d5bd5e97.us-lax-2.linodelke.net:443
-    KubeDNS is running at https://fa127859-38c1-4e40-971d-b5c7d5bd5e97.us-lax-2.linodelke.net:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+    Kubernetes control plane is running at {{< placeholder "LKE_CONTROL_PLANE_URL" >}}
+    KubeDNS is running at {{< placeholder "LKE_DNS_URL" >}}
 
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
@@ -470,24 +469,24 @@ Ensure that `kubectl` uses the original `kubeconfig` file with the EKS cluster c
 
 ```command
 kubectl get all \
-  --context user@wonderful-hideout-1734286097.us-west-1.eksctl.io
+    --context {{< placeholder "EKS_CLUSTER_CONTEXT_NAME" >}}
 ```
 
 The output shows the running pod and the one active replica set created by the deployment:
 
 ```output
 NAME                           READY   STATUS    RESTARTS   AGE
-pod/go-quote-c575f6ccb-tls9g   1/1     Running   0          170m
+pod/go-quote-{{< placeholder "POD_SUFFIX" >}}   1/1     Running   0          170m
 
 NAME                       TYPE           CLUSTER-IP       EXTERNAL-IP                                                              PORT(S)        AGE
-service/go-quote-service   LoadBalancer   10.100.215.161   a4da1d7958fa64559a460e2ae07b57e5-771162568.us-west-1.elb.amazonaws.com   80:30570/TCP   170m
-service/kubernetes         ClusterIP      10.100.0.1       <none>                                                                   443/TCP        3h30m
+service/go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_SERVICE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_HOSTNAME" >}}   80:30570/TCP   170m
+service/kubernetes         ClusterIP      {{< placeholder "KUBERNETES_CLUSTER_IP" >}}       <none>                                                                   443/TCP        3h30m
 
 NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
 deployment.apps/go-quote   1/1     1            1           170m
 
 NAME                                 DESIRED   CURRENT   READY   AGE
-replicaset.apps/go-quote-c575f6ccb   1         1         1       170m
+replicaset.apps/go-quote-{{< placeholder "REPLICASET_SUFFIX" >}}   1         1         1       170m
 
 NAME                                               REFERENCE             TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
 horizontalpodautoscaler.autoscaling/go-quote-hpa   Deployment/go-quote   cpu: <unknown>/50%   1         1         1          170m
@@ -558,7 +557,7 @@ Deploy your application to the newly created LKE cluster.
     ```
 
     ```output
-    lke289125-ctx
+    {{< placeholder "LKE_CLUSTER_CONTEXT_NAME" >}}
     ```
 
 1.  Apply the same `manifest.yaml` file used to deploy your application to EKS, but this time on your LKE cluster:
@@ -594,20 +593,20 @@ Verify that the deployment and the service were created successfully.
     kubectl get service --kubeconfig ~/.kube/lke-config
     ```
 
-    The service exposes a public IP address to the REST API service (e.g. `172.235.44.28`).
+    The service exposes a public IP address to the REST API service:
 
     ```output
     NAME               TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
-    go-quote-service   LoadBalancer   10.128.183.194   172.235.44.28   80:30407/TCP   117s
-    kubernetes         ClusterIP      10.128.0.1       <none>          443/TCP        157m
+    go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_SERVICE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}   80:30407/TCP   117s
+    kubernetes         ClusterIP      {{< placeholder "KUBERNETES_CLUSTER_IP" >}}       <none>          443/TCP        157m
     ```
 
-1.  Test the service by adding a quote:
+1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}} with the actual external IP address of your load balancer:
 
     ```command
     curl -X POST \
       --data '{"quote":"This is my first quote for LKE."}' \
-      {{< placeholder "IP_ADDRESS" >}}/quotes
+      {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Add a second quote:
@@ -615,13 +614,13 @@ Verify that the deployment and the service were created successfully.
     ```command
     curl -X POST \
       --data '{"quote":"This is my second quote for LKE."}' \
-      {{< placeholder "IP_ADDRESS" >}}/quotes
+      {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Now retrieve the stored quotes:
 
     ```command
-    curl {{< placeholder "IP_ADDRESS" >}}/quotes
+    curl {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
     ```
 
     ```output
@@ -639,15 +638,14 @@ When migrating from AWS EKS to LKE, there are several important factors to keep 
 Cost reduction is one reason an organization might migrate from AWS EKS to LKE. Typically, the compute cost of Kubernetes is the primary driver for migration. Use `kubectl` to find the instance type and capacity type for your AWS EKS instance.
 
 ```command
-kubectl get node ip-192-168-31-10.us-west-1.compute.internal \
-        -o yaml \
-        | yq .metadata.labels \
-        | rg 'node.kubernetes.io/instance-type|capacityType'
+kubectl get node {{< placeholder "EKS_NODE_1_NAME" >}} -o yaml \
+  | yq .metadata.labels \
+  | rg 'node.kubernetes.io/instance-type|capacityType'
 ```
 
 ```output
-eks.amazonaws.com/capacityType: ON_DEMAND
-node.kubernetes.io/instance-type: t3.medium
+eks.amazonaws.com/capacityType: {{< placeholder "CAPACITY_TYPE" >}}
+node.kubernetes.io/instance-type: {{< placeholder "INSTANCE_TYPE" >}}
 ```
 
 Reference the [AWS pricing page for EC2 On-Demand Instances](https://aws.amazon.com/ec2/pricing/on-demand/) to find the cost for your EKS instance. Compare this with the cost of a Linode instance with comparable resources by examining the [Linode pricing page](https://www.linode.com/pricing/).

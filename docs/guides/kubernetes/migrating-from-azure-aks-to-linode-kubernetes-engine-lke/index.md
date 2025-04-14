@@ -7,12 +7,9 @@ contributors: ["Linode"]
 published: 2025-02-03
 keywords: ['azure aks','azure aks alternatives','azure kubernetes alternatives','microsoft kubernetes alternatives','replace azure aks','replace azure kubernetes','replace microsoft kubernetes','migrate azure aks to linode','migrate azure kubernetes to linode','migrate microsoft kubernetes to linode','migrate kubernetes applications to linode','azure aks migration','azure kubernetes migration','microsoft kubernetes migration','azure aks replacement','azure kubernetes replacement','microsoft kubernetes replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
-This guide walks you through the process of migrating an application from Azure Kubernetes Engine (AKS) to Linode Kubernetes Engine (LKE). To keep the scope of this guide manageable, the example application is a simple REST API service.
+This guide walks you through the process of migrating an application from [Azure Kubernetes Engine (AKS)](https://learn.microsoft.com/en-us/azure/aks/) to Linode Kubernetes Engine (LKE). To keep the scope of this guide manageable, the example application is a simple REST API service.
 
 ## Before You Begin
 
@@ -46,20 +43,20 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     ![Azure portal showing AKS cluster name 'aks-go-cluster' and resource group 'my-aks-group'.](azure-aks-cluster-name-resource-group.png)
 
-    In the example above, the cluster name is `aks-go-cluster`, and its resource group is `my-aks-group`.
+    In the screenshot above, the cluster name is `aks-go-cluster` and its resource group is `my-aks-group`.
 
-1.  Use the Azure CLI to update your local kubeconfig file with your AKS cluster information:
+1.  Use the Azure CLI to update your local kubeconfig file with your AKS cluster information, replacing {{< placeholder "AKS_RESOURCE_GROUP" >}} and {{< placeholder "AKS_CLUSTER_NAME" >}} with your actual resource group and cluster name:
 
     ```command
     az aks get-credentials \
-      --resource-group my-aks-group \
-      --name aks-go-cluster \
+      --resource-group {{< placeholder "AKS_RESOURCE_GROUP" >}} \
+      --name {{< placeholder "AKS_CLUSTER_NAME" >}} \
       --admin
     ```
 
     ```output
     The behavior of this command has been altered by the following extension: aks-preview
-    Merged "aks-go-cluster" as current context in /home/user/.kube/config
+    Merged "{{< placeholder "AKS_CLUSTER_NAME" >}}" as current context in /home/user/.kube/config
     ```
 
 1.  If your `kubeconfig` file includes multiple clusters, use the following command to list the available contexts:
@@ -71,7 +68,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 1.  Identify the context name for your AKS cluster, then set it to the active context, for example:
 
     ```command
-    kubectl config use-context aks-go-cluster
+    kubectl config use-context {{< placeholder "AKS_CLUSTER_CONTEXT_NAME" >}}
     ```
 
 ### Assess Your AKS Cluster
@@ -83,9 +80,9 @@ This guide is written for a non-root user. Commands that require elevated privil
     ```
 
     ```output
-    Kubernetes control plane is running at https://aks-go-clu-my-aks-group-219c80-iil863ok.hcp.westus2.azmk8s.io:443
-    CoreDNS is running at https://aks-go-clu-my-aks-group-219c80-iil863ok.hcp.westus2.azmk8s.io:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-    Metrics-server is running at https://aks-go-clu-my-aks-group-219c80-iil863ok.hcp.westus2.azmk8s.io:443/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
+    Kubernetes control plane is running at {{< placeholder "AKS_CONTROL_PLANE_URL" >}}
+    CoreDNS is running at {{< placeholder "AKS_CORE_DNS_URL" >}}
+    Metrics-server is running at {{< placeholder "AKS_METRICS_URL" >}}
 
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
@@ -112,13 +109,13 @@ Detailed information about your cluster is also available in the Azure portal.
 
     ```output
     NAME                                STATUS   ROLES    AGE   VERSION
-    aks-nodepool1-23390877-vmss000000   Ready    <none>   11m   v1.30.6
+    {{< placeholder "AKS_NODE_NAME" >}}   Ready    <none>   11m   v1.30.6
     ```
 
-1.  To retrieve more information about this node, run the following command:
+1.  Run the following command to retrieve more information about your node, replacing {{< placeholder "AKS_NODE_NAME" >}} with the name of your AKS node:
 
     ```command
-    kubectl get node aks-nodepool1-23390877-vmss000000 -o yaml
+    kubectl get node {{< placeholder "AKS_NODE_NAME" >}} -o yaml
     ```
 
     The above command retrieves all the information about the node in YAML format.
@@ -126,7 +123,7 @@ Detailed information about your cluster is also available in the Azure portal.
 1.  Run the previous command through a pipe to filter for specific fields (e.g. allocatable CPU and memory):
 
     ```command
-    kubectl get node aks-nodepool1-23390877-vmss000000 -o yaml \
+    kubectl get node {{< placeholder "AKS_NODE_NAME" >}} -o yaml \
       | yq '.status.allocatable | {"cpu": .cpu, "memory": .memory}' \
       | awk -F': ' ' /cpu/ {cpu=$2} /memory/ {mem=$2} \
           END {printf "cpu: %s\nmemory: %.2f Gi\n", cpu, mem / 1024 / 1024}'
@@ -141,73 +138,94 @@ Detailed information about your cluster is also available in the Azure portal.
 
 For this guide, a [REST API service application written in Go](https://github.com/linode/docs-cloud-projects/tree/main/demos/go-quote-service-main) is deployed to the example AKS cluster. This service allows you to add a quote (a string) to a stored list, or to retrieve that list. Deploying the application creates a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
-The manifest (`manifest.yaml`) for deploying this application is as follows:
+1.  Use a command line text editor such as `nano` to create a Kubernetes manifest file that defines the application and its supporting resources:
 
-```file {title="manifest.yaml" lang="yaml"}
-| apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: go-quote
-  labels:
-    app: go-quote
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: go-quote
-  template:
+    ```command
+    nano manifest.yaml
+    ```
+
+    Give the file the following contents:
+
+
+    ```file {title="manifest.yaml" lang="yaml"}
+    apiVersion: apps/v1
+    kind: Deployment
     metadata:
+      name: go-quote
       labels:
         app: go-quote
     spec:
-      containers:
-        - name: go-quote
-          image: linodedocs/go-quote-service:latest
-          ports:
-            - containerPort: 7777
-          resources:
-            requests:
-              cpu: "100m"
-              memory: "128Mi"
-            limits:
-              cpu: "250m"
-              memory: "256Mi"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: go-quote-service
-  labels:
-    app: go-quote
-spec:
-  type: LoadBalancer
-  ports:
-    - port: 80
-      targetPort: 7777
-  selector:
-    app: go-quote
----
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: go-quote-hpa
-  labels:
-    app: go-quote
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: go-quote
-  minReplicas: 1
-  maxReplicas: 1
-  metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        target:
-          type: Utilization
-          averageUtilization: 50
-```
+      replicas: 1
+      selector:
+        matchLabels:
+          app: go-quote
+      template:
+        metadata:
+          labels:
+            app: go-quote
+        spec:
+          containers:
+            - name: go-quote
+              image: linodedocs/go-quote-service:latest
+              ports:
+                - containerPort: 7777
+              resources:
+                requests:
+                  cpu: "100m"
+                  memory: "128Mi"
+                limits:
+                  cpu: "250m"
+                  memory: "256Mi"
+    ---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: go-quote-service
+      labels:
+        app: go-quote
+    spec:
+      type: LoadBalancer
+      ports:
+        - port: 80
+          targetPort: 7777
+      selector:
+        app: go-quote
+    ---
+    apiVersion: autoscaling/v2
+    kind: HorizontalPodAutoscaler
+    metadata:
+      name: go-quote-hpa
+      labels:
+        app: go-quote
+    spec:
+      scaleTargetRef:
+        apiVersion: apps/v1
+        kind: Deployment
+        name: go-quote
+      minReplicas: 1
+      maxReplicas: 1
+      metrics:
+        - type: Resource
+          resource:
+            name: cpu
+            target:
+              type: Utilization
+              averageUtilization: 50
+    ```
+
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
+1.  Apply the manifest to deploy the application on your EKS cluster:
+
+    ```command
+    kubectl apply -f manifest.yaml
+    ```
+
+    ```output
+    deployment.apps/go-quote created
+    service/go-quote-service created
+    horizontalpodautoscaler.autoscaling/go-quote-hpa created
+    ```
 
 1.  With the application deployed, run the following `kubectl` command to verify that the deployment is available:
 
@@ -230,16 +248,16 @@ spec:
 
     ```output
     NAME               TYPE           CLUSTER-IP   EXTERNAL-IP     PORT(S)        AGE
-    go-quote-service   LoadBalancer   10.0.80.37   52.250.81.212   80:30398/TCP   83s
-    kubernetes         ClusterIP      10.0.0.1     <none>          443/TCP        2m14s
+    go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_SERVICE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}   80:30398/TCP   83s
+    kubernetes         ClusterIP      {{< placeholder "KUBERNETES_CLUSTER_IP" >}}     <none>          443/TCP        2m14s
     ```
 
-1.  Test the service by adding a quote:
+1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}} with the `EXTERNAL_IP` of your `LoadBalancer`:
 
     ```command
     curl -X POST \
       --data '{"quote":"This is my first quote."}' \
-      {{< placeholder "IP_ADDRESS" >}}/quotes
+      {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Add a second quote:
@@ -247,13 +265,13 @@ spec:
     ```command
     curl -X POST \
       --data '{"quote":"This is my second quote."}' \
-      {{< placeholder "IP_ADDRESS" >}}/quotes
+      {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Now retrieve the stored quotes:
 
     ```command
-    curl {{< placeholder "IP_ADDRESS" >}}/quotes
+    curl {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
     ```
 
     This should yield the following result:
@@ -403,7 +421,7 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
     ```command
     CLUSTER_ID=$(linode lke clusters-list --json | \
       jq -r \
-        '.[] | select(.label == "eks-to-lke") | .id')
+        '.[] | select(.label == "aks-to-lke") | .id')
     ```
 
 1.  Retrieve the `kubeconfig` file and save it to `~/.kube/lke-config`:.
@@ -422,7 +440,7 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
 
     ```output
     NAME                            STATUS   ROLES    AGE   VERSION
-    lke289125-478490-4569f8b60000   Ready    <none>   85s   v1.32.0
+    {{< placeholder "LKE_NODE_NAME" >}}   Ready    <none>   85s   v1.32.0
     ```
 
     One node is ready, and it uses Kubernetes version 1.32.
@@ -434,8 +452,8 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
     ```
 
     ```output
-    Kubernetes control plane is running at https://fa127859-38c1-4e40-971d-b5c7d5bd5e97.us-lax-2.linodelke.net:443
-    KubeDNS is running at https://fa127859-38c1-4e40-971d-b5c7d5bd5e97.us-lax-2.linodelke.net:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+    Kubernetes control plane is running at {{< placeholder "LKE_CONTROL_PLANE_URL" >}}
+    KubeDNS is running at {{< placeholder "LKE_DNS_URL" >}}
 
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
@@ -455,23 +473,24 @@ This guide covers the key steps required to migrate the example application from
 Ensure that `kubectl` uses the original `kubeconfig` file with the AKS cluster context.
 
 ```command
-kubectl get all --context aks-go-cluster
+kubectl get all --context {{< placeholder "AKS_CLUSTER_CONTEXT_NAME" >}}
 ```
 
 The output shows the running pod and the one active replica set created by the deployment:
 
 ```output
-NAME                           READY   STATUS    RESTARTS   AGE pod/go-quote-c575f6ccb-2gckb   1/1     Running   0          97s
+NAME                           READY   STATUS    RESTARTS   AGE
+pod/go-quote-{{< placeholder "POD_SUFFIX" >}}   1/1     Running   0          97s
 
 NAME                       TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)        AGE
-service/go-quote-service   LoadBalancer   10.0.80.37     52.250.81.212   80:30398/TCP   97s
-service/kubernetes         ClusterIP      10.0.0.1       <none>           443/TCP        22m
+service/go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_SERVICE_INTERNAL_IP" >}}     {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}   80:30398/TCP   97s
+service/kubernetes         ClusterIP      {{< placeholder "KUBERNETES_INTERNAL_IP" >}}       <none>           443/TCP        22m
 
 NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
 deployment.apps/go-quote   1/1     1            1           97s
 
 NAME                                 DESIRED   CURRENT   READY   AGE
-replicaset.apps/go-quote-c575f6ccb   1         1         1       97s
+replicaset.apps/go-quote-{{< placeholder "REPLICA_SET_SUFFIX" >}}   1         1         1       97s
 
 NAME                                               REFERENCE             TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
 horizontalpodautoscaler.autoscaling/go-quote-hpa   Deployment/go-quote   cpu: <unknown>/50%   1         1         1          98s
@@ -542,7 +561,7 @@ Deploy your application to the newly created LKE cluster.
     ```
 
     ```output
-    lke289125-ctx
+    {{< placeholder "LKE_CLUSTER_CONTEXT_NAME" >}}
     ```
 
 1.  Apply the same `manifest.yaml` file used to deploy your application to AKS, but this time on your LKE cluster:
@@ -582,16 +601,16 @@ Verify that the deployment and the service were created successfully.
 
     ```output
     NAME               TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
-    go-quote-service   LoadBalancer   10.128.183.194   172.235.44.28   80:30407/TCP   117s
-    kubernetes         ClusterIP      10.128.0.1       <none>          443/TCP        157m
+    go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_SERVICE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}   80:30407/TCP   117s
+    kubernetes         ClusterIP      {{< placeholder "KUBERNETES_CLUSTER_IP" >}}       <none>          443/TCP        157m
     ```
 
-1.  Test the service by adding a quote:
+1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}} with the actual external IP address of your load balancer::
 
     ```command
     curl -X POST \
       --data '{"quote":"This is my first quote for LKE."}' \
-      172.235.44.28/quotes
+      {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Add a second quote:
@@ -599,13 +618,13 @@ Verify that the deployment and the service were created successfully.
     ```command
     curl -X POST \
       --data '{"quote":"This is my second quote for LKE."}' \
-      172.235.44.28/quotes
+      {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Now retrieve the stored quotes:
 
     ```command
-    curl 172.235.44.28/quotes
+    curl {{< placeholder "GO_QUOTE_SERVICE_EXTERNAL_IP" >}}/quotes
     ```
 
     ```output
@@ -623,13 +642,13 @@ When migrating from Azure AKS to LKE, there are several important factors to kee
 Cost reduction is one reason an organization might migrate from Azure AKS to LKE. Typically, the compute cost of Kubernetes is the primary driver for migration. Use `kubectl` to find the instance type and capacity type for your AKS instance.
 
 ```command
-kubectl get node aks-nodepool1-23390877-vmss000000 -o yaml \
+kubectl get node {{< placeholder "AKS_NODE_NAME" >}} -o yaml \
   | yq .metadata.labels \
   | grep node.kubernetes.io/instance-type
 ```
 
 ```output
-node.kubernetes.io/instance-type: Standard_DS2_v2
+node.kubernetes.io/instance-type: {{< placeholder "AKS_INSTANCE_TYPE" >}}
 ```
 
 Reference the [Windows VM pricing page](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/windows/) to find the cost for the Azure VM powering your AKS instance. Compare this with the cost of a Linode instance with comparable resources by examining the [Linode pricing page](https://www.linode.com/pricing/).
@@ -692,16 +711,3 @@ See [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-to
 ### Alternative to Azure Key Vault
 
 The [Azure Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/general/overview) can be leveraged to provide Kubernetes secrets on Azure. With LKE, you need an alternative solution, such as OpenBao on Akamai Cloud.
-
-## Resources
-
--   Azure AKS
-    -   [Documentation](https://learn.microsoft.com/en-us/azure/aks/)
-    -   [Connecting kubectl to an Azure AKS cluster](https://learn.microsoft.com/en-us/azure/aks/control-kubeconfig-access)
--   Linode
-    -   [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/)
-    -   [LKE Documentation](/docs/guides/kubernetes-on-linode/)
-    -   [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager)
--   Setting up other technologies to run on Linode
-    -   [How to Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)
-    -   [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-tobs-on-linode-kubernetes-engine/)

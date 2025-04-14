@@ -245,12 +245,12 @@ spec:
     kubernetes         ClusterIP      10.96.0.1        <none>          443/TCP,12250/TCP  29m
     ```
 
-1.  Test the service by adding a quote:
+1.  Test the service by adding a quote, replacing {{< placeholder "EXTERNAL_IP_ADDRESS" >}} with the actual external IP address of your load balancer:
 
     ```command
     curl -X POST \
       --data '{"quote":"This is my first quote."}' \
-      {{< placeholder "IP_ADDRESS" >}}/quotes
+      {{< placeholder "EXTERNAL_IP_ADDRESS" >}}/quotes
     ```
 
 1.  Add a second quote:
@@ -258,13 +258,13 @@ spec:
     ```command
     curl -X POST \
       --data '{"quote":"This is my second quote."}' \
-      {{< placeholder "IP_ADDRESS" >}}/quotes
+      {{< placeholder "EXTERNAL_IP_ADDRESS" >}}/quotes
     ```
 
 1.  Now retrieve the stored quotes:
 
     ```command
-    curl {{< placeholder "IP_ADDRESS" >}}/quotes
+    curl {{< placeholder "EXTERNAL_IP_ADDRESS" >}}/quotes
     ```
 
     This should yield the following result:
@@ -598,12 +598,12 @@ Verify that the deployment and the service were created successfully.
     kubernetes         ClusterIP      10.128.0.1       <none>          443/TCP        157m
     ```
 
-1.  Test the service by adding a quote:
+1.  Test the service by adding a quote, replacing {{< placeholder "EXTERNAL_IP_ADDRESS" >}} with the actual external IP address of your load balancer:
 
     ```command
     curl -X POST \
       --data '{"quote":"This is my first quote for LKE."}' \
-      {{< placeholder "IP_ADDRESS" >}}/quotes
+      {{< placeholder "EXTERNAL_IP_ADDRESS" >}}/quotes
     ```
 
 1.  Add a second quote:
@@ -611,13 +611,13 @@ Verify that the deployment and the service were created successfully.
     ```command
     curl -X POST \
       --data '{"quote":"This is my second quote for LKE."}' \
-      {{< placeholder "IP_ADDRESS" >}}/quotes
+      {{< placeholder "EXTERNAL_IP_ADDRESS" >}}/quotes
     ```
 
 1.  Now retrieve the stored quotes:
 
     ```command
-    curl {{< placeholder "IP_ADDRESS" >}}/quotes
+    curl {{< placeholder "EXTERNAL_IP_ADDRESS" >}}/quotes
     ```
 
     ```output
