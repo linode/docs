@@ -2,7 +2,7 @@
 title: "Deploy Node.js through the Linode Marketplace"
 description: "Deploy Node.js on a Linode Compute Instance. This provides a JavaScript runtime to use with web applications."
 published: 2022-02-22
-modified: 2022-03-08
+modified: 2022-04-09
 keywords: ['nodejs','development','javascript']
 tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/nodejs/','/guides/nodejs-marketplace-app/']
@@ -27,14 +27,14 @@ marketplace_app_name: "Node.js"
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 24.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### Node.js Options
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{% content "marketplace-limited-user-fields-shortguide" %}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 {{% content "marketplace-custom-domain-fields-shortguide" %}}
 
@@ -42,26 +42,33 @@ marketplace_app_name: "Node.js"
 
 ## Getting Started after Deployment
 
-The Node.js Marketplace App is running [Nginx](https://www.nginx.com/), [Node.js](https://nodejs.org/en/), [NPM](https://www.npmjs.com/), and [PM2](https://pm2.keymetrics.io/). Once deployed, a "Hello World" sample application should be running on `http://localhost:3000`. An Nginx reverse proxy then serves the application through your custom domain or rDNS domain over ports 80 and 443
+The Node.js Marketplace App is running [Nginx](https://www.nginx.com/), [Node.js](https://nodejs.org/en/), and [NPM](https://www.npmjs.com/). Once deployed, a sample page should be running on your FQDN (if applicable) or the Compute Instance's Reverse DNS address.
 
 ### Accessing the Node.js App through the Command Line
 
-The Node.js sample application is stored in the `hello.js` file within `/opt/nodejs/`. To access it within the command line, follow the instructions below.
+The Node.js sample application is stored in the `app.js` file within `/var/www/[domain]/`.
 
 1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Navigate to the directory in which the application is stored:
 
-        cd /opt/nodejs/
+        cd /var/www/[domain]
 
 1.  Open the sample application with your preferred command line text editor, such as [nano](/docs/guides/use-nano-to-edit-files-in-linux/) or [vim](/docs/guides/what-is-vi/).
 
-        nano hello.js
+        nano app.js
 
 ### Viewing the Node.js App through a Web Browser
 
-Open your web browser and navigate to `http://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
+Open your web browser and navigate to `https://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
 
-![Screenshot of Node.js sample application](nodejs-site.png)
+## Software Included
+
+| **Software** | **Description** |
+|:--------------|:------------|
+| **Node.js** | JavaScript runtime environment |
+| **NPM** | Node.js package manager |
+| **NGINX** | Web server and reverse proxy |
+| **UFW (Uncomplicated Firewall)** | Firewall utility. Ports 22/tcp, 80/tcp, and 443/tcp for IPv4 and IPv6 are enabled with installation of this app. All other ports have the following firewall rules: deny (incoming), allow (outgoing). |
 
 {{% content "marketplace-update-note-shortguide" %}}
