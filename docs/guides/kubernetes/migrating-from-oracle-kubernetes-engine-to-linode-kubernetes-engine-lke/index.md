@@ -12,7 +12,7 @@ external_resources:
 - '[Link Title 2](http://www.example.net)'
 ---
 
-This guide walks you through the process of migrating an application from Oracle Cloud Infrastructure (OCI)[Oracle Kubernetes Engine (OKE)](https://docs.oracle.com/en-us/iaas/Content/ContEng/home.htm) to [Linode Kubernetes Engine (LKE)](/docs/guides/kubernetes-on-linode/). To keep the scope of this guide manageable, the example application is a simple REST API service.
+This guide walks you through the process of migrating an application from Oracle Cloud Infrastructure (OCI)[Oracle Kubernetes Engine (OKE)](https://docs.oracle.com/en-us/iaas/Content/ContEng/home.htm) to Linode Kubernetes Engine (LKE). To keep the scope of this guide manageable, the example application is a simple REST API service.
 
 ## Before You Begin
 
