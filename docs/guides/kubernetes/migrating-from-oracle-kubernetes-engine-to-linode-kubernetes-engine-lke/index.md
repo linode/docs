@@ -7,9 +7,6 @@ contributors: ["Linode"]
 published: 2025-02-03
 keywords: ['oke','oracle kubernetes engine','oracle oke alternatives','oracle kubernetes alternatives','oci kubernetes alternatives','replace oracle oke','replace oracle kubernetes','replace oci kubernetes','migrate oracle oke to linode','migrate oracle kubernetes to linode','migrate oci kubernetes to linode','migrate kubernetes applications to linode','oracle oke migration','oracle kubernetes migration','oci kubernetes migration','oracle oke replacement','oracle kubernetes replacement','oci kubernetes replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
 This guide walks you through the process of migrating an application from Oracle Cloud Infrastructure (OCI)[Oracle Kubernetes Engine (OKE)](https://docs.oracle.com/en-us/iaas/Content/ContEng/home.htm) to Linode Kubernetes Engine (LKE). To keep the scope of this guide manageable, the example application is a simple REST API service.
@@ -292,10 +289,10 @@ After verifying that your OKE cluster is fully operational and running a live se
 
 When migrating from OKE to LKE, provision an LKE cluster with similar resources to run the same workloads. While there are several ways to create a Kubernetes cluster on Akamai Cloud, this guide uses the [Linode CLI](https://github.com/linode/linode-cli) to provision resources.
 
-1.  Use the Linode CLI (`linode`) to see available Kubernetes versions:
+1.  Use the Linode CLI (`linode-cli`) to see available Kubernetes versions:
 
     ```command
-    linode lke versions-list
+    linode-cli lke versions-list
     ```
 
     ```output
@@ -313,7 +310,7 @@ When migrating from OKE to LKE, provision an LKE cluster with similar resources 
 1.  Determine the type of Linode to provision. The example OKE cluster configuration uses nodes with one CPU and 4 GB of memory. To find a Linode type with a similar configuration, run the following command with the Linode CLI:
 
     ```command
-    linode linodes types --vcpus 1 --json --pretty \
+    linode-cli linodes types --vcpus 1 --json --pretty \
       | jq '.[] | {class, id, vcpus, memory, price}'
     ```
 
@@ -360,7 +357,7 @@ When migrating from OKE to LKE, provision an LKE cluster with similar resources 
 1.  The examples in this guide use the `g6-standard-2` Linode, which features two CPU cores and 4 GB of memory. Run the following command to display detailed information in JSON for this Linode plan:
 
     ```command
-    linode linodes types --label "Linode 4GB" --json --pretty
+    linode-cli linodes types --label "Linode 4GB" --json --pretty
     ```
 
     ```output
@@ -386,13 +383,13 @@ When migrating from OKE to LKE, provision an LKE cluster with similar resources 
 1.  View available regions with the `regions list` command:
 
     ```command
-    linode regions list
+    linode-cli regions list
     ```
 
 1.  After selecting a Kubernetes version and Linode type, use the following command to create a cluster named `oke-to-lke` in the `us-mia` (Miami, FL) region with three nodes and auto-scaling. Replace `oke-to-lke` and `us-mia` with a cluster label and region of your choosing, respectively:
 
     ```command
-    linode lke cluster-create \
+    linode-cli lke cluster-create \
       --label oke-to-lke \
       --k8s_version 1.32 \
       --region us-mia \
@@ -425,7 +422,7 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
 1.  Use the following command to retrieve the cluster’s ID:
 
     ```command
-    CLUSTER_ID=$(linode lke clusters-list --json | \
+    CLUSTER_ID=$(linode-cli lke clusters-list --json | \
       jq -r \
         '.[] | select(.label == "eks-to-lke") | .id')
     ```
@@ -433,7 +430,7 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
 1.  Retrieve the `kubeconfig` file and save it to `~/.kube/lke-config`:.
 
     ```command
-    linode lke kubeconfig-view --json "$CLUSTER_ID" | \
+    linode-cli lke kubeconfig-view --json "$CLUSTER_ID" | \
       jq -r '.[0].kubeconfig' | \
       base64 --decode > ~/.kube/lke-config
     ```
