@@ -1,25 +1,25 @@
 ---
 slug: migrating-from-aws-eks-to-linode-kubernetes-engine-lke
 title: "Migrating from AWS EKS to Linode Kubernetes Engine (LKE)"
-description: "Learn how to migrate Kubernetes applications from AWS EKS to Linode Kubernetes Engine (LKE) using a simple example and clear steps."
-authors: ["Linode"]
-contributors: ["Linode"]
-published: 2025-02-03
+description: "Learn how to migrate Kubernetes applications from AWS EKS to Linode Kubernetes Engine (LKE) using a sample rest API service."
+authors: ["Akamai"]
+contributors: ["Akamai"]
+published: 2025-04-09
 keywords: ['aws eks','aws eks alternatives','aws kubernetes alternatives','amazon kubernetes alternatives','replace aws eks','replace aws kubernetes','replace amazon kubernetes','migrate aws eks to linode','migrate aws kubernetes to linode','migrate amazon kubernetes to linode','migrate kubernetes applications to linode','aws eks migration','aws kubernetes migration','amazon kubernetes migration','aws eks replacement','aws kubernetes replacement','amazon kubernetes replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-This guide walks you through the process of migrating an application from [Amazon Web Services (AWS) Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/) to Linode Kubernetes Engine (LKE). To keep the scope of this guide manageable, the example application is a simple REST API service.
+This guide walks you through the process of migrating an application from [Amazon Web Services (AWS) Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/) to Linode Kubernetes Engine (LKE). An example REST API service is used to demonstrate the steps for migrating an application.
 
 ## Before You Begin
 
-1.  Read the [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and create a Linode account if you do not already have one.
+1.  Follow our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and create an Akamai Cloud account if you do not already have one.
 
-1.  Create a personal access token using the instructions in the [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
+1.  Create a personal access token using the instructions in our [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
 
 1.  Install the Linode CLI using the instructions in the [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
 
-1.  Follow the steps in the *Install `kubectl`* section of the [Getting started with LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#install-kubectl) guide to install `kubectl`.
+1.  Follow the steps in the *Install `kubectl`* section of the [Getting started with LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#install-kubectl) guide to install and configure `kubectl`.
 
 1.  Ensure that you have access to your AWS account with sufficient permissions to work with EKS clusters. The [AWS CLI](https://aws.amazon.com/cli/) and [`eksctl`](https://eksctl.io/) must also be installed and configured.
 
@@ -27,7 +27,7 @@ This guide walks you through the process of migrating an application from [Amazo
 
 1.  Install [`yq`](https://github.com/mikefarah/yq), a YAML processor for the command line.
 
-1.  Install [ripgrep (`rg`)](https://github.com/BurntSushi/ripgrep), a faster alternative to `grep` written in Rust.
+1.  Install [ripgrep (`rg`)](https://github.com/BurntSushi/ripgrep), an alternative to `grep` written in Rust.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -35,15 +35,15 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Connect `kubectl` to Your EKS Cluster
 
-[Connect `kubectl` to the EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html) that you want to migrate. Skip this step if your local machine already has a `kubeconfig` file with your EKS cluster information.
+[Connect `kubectl` to the EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html) that you want to migrate. Skip this step if your local machine is already using a `kubeconfig` file with your EKS cluster information.
 
-1.  In the AWS console, navigate to the EKS service and find the name of your EKS cluster:
+1.  In the AWS console, navigate to the EKS service and find the name of your EKS cluster. In the screenshot below, the cluster name is `wonderful-hideout-1734286097`:
 
     ![The EKS service page in the AWS Console showing the example cluster name.](aws-eks-cluster-name-console.png)
 
-    In the screenshot above, the cluster name is `wonderful-hideout-1734286097`. You also need to know the AWS region where your cluster resides. For this example, the region is `us-west-1` (not shown).
+    You also need to know the AWS region where your cluster resides. For this example, the region is `us-west-1` (not shown).
 
-1.  Use the AWS CLI to update your local `kubeconfig` file with your EKS cluster information:
+1.  Use the AWS CLI to update your local `kubeconfig` file with your EKS cluster information. Replace `us-west-1` and `wonderful-hideout-1734286097` with the region and name of your cluster:
 
     ```command
     aws eks update-kubeconfig \
@@ -61,7 +61,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     kubectl config get-contexts
     ```
 
-1.  Identify the context name for your EKS cluster, then set it to the active context, for example:
+1.  Identify the context name for your EKS cluster, and set it to the active context. Replace the values with those of your cluster:
 
     ```commmand
     kubectl config use-context \
@@ -70,7 +70,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ### Assess Your EKS Cluster
 
-1.  Run the following `kubectl` command to verify that the EKS cluster is operational:
+1.  Verify the EKS cluster is operational with `kubectl`:
 
     ```command
     kubectl cluster-info
@@ -83,7 +83,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
 
-1.  For more detailed information, run this command:
+1.  If you wish to see more detailed cluster information, run the following command:
 
     ```command
     kubectl cluster-info dump
@@ -91,7 +91,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ### Review the Node Group
 
-In AWS EKS, the *node group* defines the type of worker nodes in your cluster. This is a key aspect of the migration process. In a production cluster, you may have multiple node groups with different node types.
+In AWS EKS, the *node group* defines the type of worker nodes in your cluster. Since a production cluster may have multiple node groups with different node types, it can be a key factor for the migration process.
 
 While Kubernetes does not have a native concept of a node group, all the nodes within a given EKS node group share the same configuration. Therefore, inspecting a single node provides all the information needed for migration.
 
@@ -107,16 +107,14 @@ While Kubernetes does not have a native concept of a node group, all the nodes w
     ip-192-168-36-4.us-west-1.compute.internal    Ready    <none>   24m   v1.30.7-eks-59bf375
     ```
 
-1.  Run the following command to retrieve detailed information about the first node listed:
+1.  Run the following command to retrieve detailed information about the first node in YAML format:
 
     ```command
     kubectl get node \
         $(kubectl get nodes -o jsonpath='{.items[0].metadata.name}') -o yaml
     ```
 
-    This command retrieves all the information about the node in YAML format.
-
-1.  Run the previous command through a pipe to filter for specific fields (e.g. allocatable CPU and memory):
+1.  You can run the previous command through a pipe to filter for specific fields (e.g. allocatable CPU and memory):
 
     ```command
     kubectl get node \
@@ -133,9 +131,13 @@ While Kubernetes does not have a native concept of a node group, all the nodes w
 
 ### Verify the Application Is Running
 
-For this guide, a [REST API service application written in Go](https://github.com/linode/docs-cloud-projects/tree/main/demos/go-quote-service-main) is deployed to the example EKS cluster. This service allows you to add a quote (a string) to a stored list, or to retrieve that list. The application has been deployed to the cluster, creating a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+To illustrate an application running in a production environment, a [REST API service application written in Go](https://github.com/linode/docs-cloud-projects/tree/main/demos/go-quote-service-main) is deployed to the example EKS cluster. If you already have one or more applications running on your EKS cluster, you may skip this section.
 
-1.  Use a command line text editor such as `nano` to create a Kubernetes manifest file that defines the application and its supporting resources:
+The function of the REST API service allows you to add a quote (a string) to a stored list, or to retrieve that list. The application has been deployed to the cluster, creating a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+
+Follow the steps below to install, configure, and test the REST API service application on your EKS cluster.
+
+1.  Use a command line text editor such as `nano` to create a Kubernetes manifest file (`manifest.yaml`) that defines the application and its supporting resources:
 
     ```command
     nano manifest.yaml
@@ -281,6 +283,8 @@ After verifying that your EKS cluster is fully operational and running a live se
 ## Provision an LKE Cluster
 
 When migrating from EKS to LKE, provision an LKE cluster with similar resources to run the same workloads. While there are several ways to create a Kubernetes cluster on Akamai Cloud, this guide uses the [Linode CLI](https://github.com/linode/linode-cli) to provision resources.
+
+See our [LKE documentation](https://techdocs.akamai.com/cloud-computing/docs/create-a-cluster) for instructions on how to provision a cluster using Cloud Manager.
 
 1.  Use the Linode CLI (`linode`) to see available Kubernetes versions:
 

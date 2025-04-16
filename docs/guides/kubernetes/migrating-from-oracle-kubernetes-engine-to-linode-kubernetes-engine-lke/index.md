@@ -1,10 +1,10 @@
 ---
 slug: migrating-from-oracle-kubernetes-engine-to-linode-kubernetes-engine-lke
-title: "Migrating from Oracle Kubernetes Engine to Linode Kubernetes Engine (LKE)"
-description: "Learn how to migrate Kubernetes applications from Oracle OKE to Linode Kubernetes Engine (LKE) using a simple example and clear steps."
-authors: ["Linode"]
-contributors: ["Linode"]
-published: 2025-02-03
+title: "Migrating from Oracle Kubernetes Engine (OKE) to Linode Kubernetes Engine (LKE)"
+description: "Learn how to migrate Kubernetes applications from Oracle OKE to Linode Kubernetes Engine (LKE) using a using a sample rest API service."
+authors: ["Akamai"]
+contributors: ["Akamai"]
+published: 2025-04-09
 keywords: ['oke','oracle kubernetes engine','oracle oke alternatives','oracle kubernetes alternatives','oci kubernetes alternatives','replace oracle oke','replace oracle kubernetes','replace oci kubernetes','migrate oracle oke to linode','migrate oracle kubernetes to linode','migrate oci kubernetes to linode','migrate kubernetes applications to linode','oracle oke migration','oracle kubernetes migration','oci kubernetes migration','oracle oke replacement','oracle kubernetes replacement','oci kubernetes replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -12,17 +12,17 @@ external_resources:
 - '[Link Title 2](http://www.example.net)'
 ---
 
-This guide walks you through the process of migrating an application from Oracle Cloud Infrastructure (OCI) Oracle Kubernetes Engine (OKE) to Linode Kubernetes Engine (LKE). To keep the scope of this guide manageable, the example application is a simple REST API service.
+This guide walks you through the process of migrating an application from Oracle Cloud Infrastructure (OCI) Oracle Kubernetes Engine (OKE) to Linode Kubernetes Engine (LKE). An example REST API service is used to demonstrate the steps for migrating an application.
 
 ## Before You Begin
 
-1.  Read the [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and create a Linode account if you do not already have one.
+1.  Follow our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and create an Akamai Cloud account if you do not already have one.
 
-1.  Create a personal access token using the instructions in the [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
+1.  Create a personal access token using the instructions in our [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
 
 1.  Install the Linode CLI using the instructions in the [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
 
-1.  Follow the steps in the *Install `kubectl`* section of the [Getting started with LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#install-kubectl) guide to install `kubectl`.
+1.  Follow the steps in the *Install `kubectl`* section of the [Getting started with LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#install-kubectl) guide to install and configure `kubectl`.
 
 1.  Ensure that you have access to your Oracle Cloud account with sufficient permissions to work with OKE clusters. The [OCI CLI](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm) must also be installed and configured
 
@@ -36,7 +36,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Connect `kubectl` to Your OKE Cluster
 
-[Connect `kubectl` to the OKE cluster](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengdownloadkubeconfigfile.htm#localdownload) that you want to migrate. Skip this step if your local machine already has a `kubeconfig` file with your OKE cluster information.
+[Connect `kubectl` to the OKE cluster](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengdownloadkubeconfigfile.htm#localdownload) that you want to migrate. Skip this step if your local machine is already using a `kubeconfig` file with your OKE cluster information.
 
 1.  In the Oracle Cloud console, search for the **Kubernetes Clusters (OKE)** service:
 
@@ -50,7 +50,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     ![OKE cluster details page in Oracle Cloud showing Cluster ID.](oracle-oke-cluster-id-details.png)
 
-1.  Also note the **region** where your cluster has been provisioned. Click on the **region** in the top-right part of the page, then navigate to **Manage regions**:
+1.  Note the **region** where your cluster has been provisioned. Click on the **region** in the top-right part of the page, then navigate to **Manage regions**:
 
     ![Oracle Cloud console with region selection dropdown open and Manage regions option highlighted.](oracle-region-selection.png)
 
@@ -60,7 +60,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     In the example for this guide, the cluster name is `my-oke-cluster`, and the cluster ID is `ocid1.cluster.oc1.phx.aaaaaaaa5spjobcrfpqy5p2uosdjzvmatj3kw2tsmdrl3447fcmux6nk5oza`. The cluster location is `us-phoenix-1`.
 
-1.  Use the Oracle CLI to update your local `kubeconfig` file with your OKE cluster information:
+1.  Use the Oracle CLI to update your local `kubeconfig` file with your OKE cluster information. Replace the appropriate values with values associated with your cluster:
 
     ```command
     oci ce cluster create-kubeconfig \
@@ -81,7 +81,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     kubectl config get-contexts
     ```
 
-1.  Identify the context name for your OKE cluster, then set it to the active context, for example:
+1.  Identify the context name for your OKE cluster, and set it to the active context. Replace the values with those of your cluster:
 
     ```command
     kubectl config use-context context-cmux6nk5oza
@@ -89,7 +89,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ### Assess Your OKE Cluster
 
-1.  Run the following `kubectl` command to verify that the OKE cluster is operational:
+1.  Verify the OKE cluster is operational with `kubectl`:
 
     ```command
     kubectl cluster-info
@@ -101,7 +101,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
 
-1.  For more detailed information at the command line, run this command:
+1.  If you wish to see more detailed cluster information, run the following command:
 
     ```command
     kubectl cluster-info dump
@@ -113,9 +113,9 @@ Detailed information about your cluster is also available in the Oracle Cloud co
 ![Oracle Cloud console showing detailed overview of an OKE cluster.](oracle-cluster-overview-page.png)
 {{< /note >}}
 
-### Review the Node
+### Review the Cluster Nodes
 
-1.  Retrieve the name of the first (and only) node with the following command:
+1.  List the nodes in your cluster:
 
     ```command
     kubectl get nodes
@@ -126,15 +126,13 @@ Detailed information about your cluster is also available in the Oracle Cloud co
     10.0.10.54   Ready    node    7h    v1.31.1
     ```
 
-1.  To retrieve more information about this node, run the following command:
+1.  To retrieve more information about a node in YAML format, run the following command. Substitute `10.0.10.54` with the name of the node you want to inspect:
 
     ```command
     kubectl get node 10.0.10.54 -o yaml
     ```
 
-    The above command retrieves all the information about the node in YAML format.
-
-1.  Run the previous command through a pipe to filter for specific fields (e.g. allocatable CPU and memory):
+1.  You can run the previous command through a pipe to filter for specific fields (e.g. allocatable CPU and memory):
 
     ```command
     kubectl get node 10.0.10.54 -o yaml \
@@ -150,75 +148,93 @@ Detailed information about your cluster is also available in the Oracle Cloud co
 
 ### Verify the Application Is Running
 
-For this guide, a [REST API service application written in Go](https://github.com/linode/docs-cloud-projects/tree/main/demos/go-quote-service-main) is deployed to the example OKE cluster. This service allows you to add a quote (a string) to a stored list, or to retrieve that list. Deploying the application creates a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+To illustrate an application running in a production environment, a [REST API service application written in Go](https://github.com/linode/docs-cloud-projects/tree/main/demos/go-quote-service-main) is deployed to the example OKE cluster. If you already have one or more applications running on your OKE cluster, you may skip this section.
 
-The manifest (`manifest.yaml`) for deploying this application is as follows:
+The function of the REST API service allows you to add a quote (a string) to a stored list, or to retrieve that list. Deploying the application creates a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
-```file {title="manifest.yaml" lang="yaml"}
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: go-quote
-  labels:
-    app: go-quote
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: go-quote
-  template:
+Follow the steps below to install, configure, and test the REST API service application on your OKE cluster.
+
+1.  Use a command line text editor such as `nano` to create a Kubernetes manifest file (`manifest.yaml`) that defines the application and its supporting resources:
+
+    ```command
+    nano manifest.yaml
+    ```
+
+    Give the file the following contents:
+
+    ```file {title="manifest.yaml" lang="yaml"}
+    apiVersion: apps/v1
+    kind: Deployment
     metadata:
+      name: go-quote
       labels:
         app: go-quote
     spec:
-      containers:
-        - name: go-quote
-          image: linodedocs/go-quote-service:latest
-          ports:
-            - containerPort: 7777
-          resources:
-            requests:
-              cpu: "100m"
-              memory: "128Mi"
-            limits:
-              cpu: "250m"
-              memory: "256Mi"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: go-quote-service
-  labels:
-    app: go-quote
-spec:
-  type: LoadBalancer
-  ports:
-    - port: 80
-      targetPort: 7777
-  selector:
-    app: go-quote
----
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: go-quote-hpa
-  labels:
-    app: go-quote
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: go-quote
-  minReplicas: 1
-  maxReplicas: 1
-  metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        target:
-          type: Utilization
-          averageUtilization: 50
-```
+      replicas: 1
+      selector:
+        matchLabels:
+          app: go-quote
+      template:
+        metadata:
+          labels:
+            app: go-quote
+        spec:
+          containers:
+            - name: go-quote
+              image: linodedocs/go-quote-service:latest
+              ports:
+                - containerPort: 7777
+              resources:
+                requests:
+                  cpu: "100m"
+                  memory: "128Mi"
+                limits:
+                  cpu: "250m"
+                  memory: "256Mi"
+    ---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: go-quote-service
+      labels:
+        app: go-quote
+    spec:
+      type: LoadBalancer
+      ports:
+        - port: 80
+          targetPort: 7777
+      selector:
+        app: go-quote
+    ---
+    apiVersion: autoscaling/v2
+    kind: HorizontalPodAutoscaler
+    metadata:
+      name: go-quote-hpa
+      labels:
+        app: go-quote
+    spec:
+      scaleTargetRef:
+        apiVersion: apps/v1
+        kind: Deployment
+        name: go-quote
+      minReplicas: 1
+      maxReplicas: 1
+      metrics:
+        - type: Resource
+          resource:
+            name: cpu
+            target:
+              type: Utilization
+              averageUtilization: 50
+    ```
+
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
+1.  Apply the manifest to deploy the application on your GKE cluster:
+
+    ```command
+    kubectl apply -f manifest.yaml
+    ```
 
 1.  With the application deployed, run the following `kubectl` command to verify that the deployment is available:
 
@@ -278,6 +294,8 @@ After verifying that your OKE cluster is fully operational and running a live se
 ## Provision an LKE Cluster
 
 When migrating from OKE to LKE, provision an LKE cluster with similar resources to run the same workloads. While there are several ways to create a Kubernetes cluster on Akamai Cloud, this guide uses the [Linode CLI](https://github.com/linode/linode-cli) to provision resources.
+
+See our [LKE documentation](https://techdocs.akamai.com/cloud-computing/docs/create-a-cluster) for instructions on how to provision a cluster using Cloud Manager.
 
 1.  Use the Linode CLI (`linode`) to see available Kubernetes versions:
 

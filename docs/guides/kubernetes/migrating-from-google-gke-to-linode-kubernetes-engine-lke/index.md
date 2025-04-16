@@ -1,25 +1,25 @@
 ---
 slug: migrating-from-google-gke-to-linode-kubernetes-engine-lke
 title: "Migrating from Google GKE to Linode Kubernetes Engine (LKE)"
-description: "Learn how to migrate Kubernetes applications from Google GKE to Linode Kubernetes Engine (LKE) using a simple example application with clear steps."
-authors: ["Linode"]
-contributors: ["Linode"]
-published: 2025-02-03
+description: "Learn how to migrate Kubernetes applications from Google GKE to Linode Kubernetes Engine (LKE) using a using a sample rest API service.."
+authors: ["Akamai"]
+contributors: ["Akamai"]
+published: 2025-04-09
 keywords: ['gke','google kubernetes engine','google gke alternatives','google kubernetes alternatives','gcp kubernetes alternatives','replace google gke','replace google kubernetes','replace gcp kubernetes','migrate google gke to linode','migrate google kubernetes to linode','migrate gcp kubernetes to linode','migrate kubernetes applications to linode','google gke migration','google kubernetes migration','gcp kubernetes migration','google gke replacement','google kubernetes replacement','gcp kubernetes replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-This guide walks you through the process of migrating an application from Google Kubernetes Engine (GKE) on Google Cloud Platform (GCP) to Linode Kubernetes Engine (LKE). To keep the scope of this guide manageable, the example application is a simple REST API service.
+This guide walks you through the process of migrating an application from [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine) on Google Cloud Platform (GCP) to Linode Kubernetes Engine (LKE). An example REST API service is used to demonstrate the steps for migrating an application.
 
 ## Before You Begin
 
-1.  Read the [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and create a Linode account if you do not already have one.
+1.  Follow our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and create an Akamai Cloud account if you do not already have one.
 
-1.  Create a personal access token using the instructions in the [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
+1.  Create a personal access token using the instructions in our [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
 
 1.  Install the Linode CLI using the instructions in the [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
 
-1.  Follow the steps in the *Install `kubectl`* section of the [Getting started with LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#install-kubectl) guide to install `kubectl`.
+1.  Follow the steps in the *Install `kubectl`* section of the [Getting started with LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#install-kubectl) guide to install and configure `kubectl`.
 
 1.  Ensure that you have access to your GCP account with sufficient permissions to work with GKE clusters. The [gcloud CLI](https://cloud.google.com/sdk/docs/install) must also be installed and configured.
 
@@ -33,19 +33,17 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Connect `kubectl` to Your GKE Cluster
 
-[Connect `kubectl` to the GKE cluster](https://cloud.google.com/sdk/gcloud/reference/container/clusters/get-credentials) that you want to migrate. Skip this step if your local machine already has a `kubeconfig` file with your GKE cluster information.
+[Connect `kubectl` to the GKE cluster](https://cloud.google.com/sdk/gcloud/reference/container/clusters/get-credentials) that you want to migrate. Skip this step if your local machine is already using a `kubeconfig` file with your GKE cluster information.
 
 1.  In the Google Cloud console, navigate to the **Kubernetes Engine** service, to the **Clusters** page:
 
     ![Google Cloud console showing the Kubernetes Engine clusters page.](gcp-kubernetes-engine-clusters-page.png)
 
-1.  Find the name and location of your GKE cluster:
+1.  Find the name and location of your GKE cluster. In the example below, the cluster name is `test-cluster`, and its location is `us-west3`:
 
     ![Details panel in Google Cloud showing the name and location of a GKE cluster.](gcp-gke-cluster-name-and-location.png)
 
-    In the example above, the cluster name is `test-cluster`, and its location is `us-west3`.
-
-1.  Use the gcloud CLI to update your local `kubeconfig` file with your GKE cluster information:
+1.  Use the gcloud CLI to update your local `kubeconfig` file with your GKE cluster information. Replace `test-cluster` and `us-west3` with the name and location of your cluster:
 
     ```command
     gcloud container clusters \
@@ -62,7 +60,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     kubectl config get-contexts
     ```
 
-1.  Identify the context name for your GKE cluster, then set it to the active context, for example:
+1.  Identify the context name for your GKE cluster, and set it to the active context. Replace the values with those of your cluster:
 
     ```command
     kubectl config use-context \
@@ -71,7 +69,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ### Assess Your GKE Cluster
 
-1.  Run the following `kubectl` command to verify that the GKE cluster is operational:
+1.  Verify the GKE cluster is operational with `kubectl`:
 
     ```command
     kubectl cluster-info
@@ -86,7 +84,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
 
-1.  For more detailed information at the command line, run this command:
+1.  If you wish to see more detailed cluster information, run the following command:
 
     ```command
     kubectl cluster-info dump
@@ -98,7 +96,7 @@ Detailed information about your cluster is also available in the Google Cloud co
 ![Google Cloud console displaying detailed information about a GKE cluster.](gcp-gke-cluster-details-panel.png)
 {{< /note >}}
 
-### Review the Node
+### Review the Cluster Nodes
 
 1.  List the nodes in your cluster:
 
@@ -148,9 +146,13 @@ Detailed information about your cluster is also available in the Google Cloud co
 
 ### Verify the Application Is Running
 
-For this guide, a [REST API service application written in Go](https://github.com/linode/docs-cloud-projects/tree/main/demos/go-quote-service-main) is deployed to the example GKE cluster. This service allows you to add a quote (a string) to a stored list, or to retrieve that list. Deploying the application creates a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+To illustrate an application running in a production environment, a [REST API service application written in Go](https://github.com/linode/docs-cloud-projects/tree/main/demos/go-quote-service-main) is deployed to the example GKE cluster. If you already have one or more applications running on your GKE cluster, you may skip this section.
 
-1.  Use a command line text editor such as `nano` to create a Kubernetes manifest file that defines the application and its supporting resources:
+The function of the REST API service allows you to add a quote (a string) to a stored list, or to retrieve that list. Deploying the application creates a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+
+Follow the steps below to install, configure, and test the REST API service application on your GKE cluster.
+
+1.  Use a command line text editor such as `nano` to create a Kubernetes manifest file (`manifest.yaml`) that defines the application and its supporting resources:
 
     ```command
     nano manifest.yaml
@@ -329,6 +331,8 @@ After verifying that your GKE cluster is fully operational and running a live se
 ## Provision an LKE Cluster
 
 When migrating from GKE to LKE, provision an LKE cluster with similar resources to run the same workloads. While there are several ways to create a Kubernetes cluster on Akamai Cloud, this guide uses the [Linode CLI](https://github.com/linode/linode-cli) to provision resources.
+
+See our [LKE documentation](https://techdocs.akamai.com/cloud-computing/docs/create-a-cluster) for instructions on how to provision a cluster using Cloud Manager.
 
 1.  Use the Linode CLI (`linode`) to see available Kubernetes versions:
 
