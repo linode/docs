@@ -17,7 +17,7 @@ marketplace_app_name: "WarpSpeed"
 ---
 
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-Warpspeed has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
+WarpSpeed has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
 {{< /note >}}
 
 WarpSpeed makes it easy for developers to access cloud infrastructure via the powerful WireGuard® VPN protocol. It can also be used to enable remote workers to access the internet securely while on public WiFi.

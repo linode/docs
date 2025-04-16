@@ -12,7 +12,7 @@ marketplace_app_id: 1177225
 marketplace_app_name: "SeaTable"
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-Seatable has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
+SeaTable has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
 {{< /note >}}
 
 [SeaTable](https://seatable.io/) is a simple and flexible database management interface with native Python automation support. It is designed to mimic the user-friendly interfaces of common spreadsheet software (like Microsoft Excel and Google Sheets). SeaTable offers advanced data linking capabilities and allows for custom data organization and visualization.
