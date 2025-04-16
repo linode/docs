@@ -4,7 +4,7 @@ title: "Migrating from Google GKE to Linode Kubernetes Engine (LKE)"
 description: "Learn how to migrate Kubernetes applications from Google GKE to Linode Kubernetes Engine (LKE) using a using a sample rest API service.."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-04-09
+published: 2025-04-16
 keywords: ['gke','google kubernetes engine','google gke alternatives','google kubernetes alternatives','gcp kubernetes alternatives','replace google gke','replace google kubernetes','replace gcp kubernetes','migrate google gke to linode','migrate google kubernetes to linode','migrate gcp kubernetes to linode','migrate kubernetes applications to linode','google gke migration','google kubernetes migration','gcp kubernetes migration','google gke replacement','google kubernetes replacement','gcp kubernetes replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
@@ -43,11 +43,10 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     ![Details panel in Google Cloud showing the name and location of a GKE cluster.](gcp-gke-cluster-name-and-location.png)
 
-1.  Use the gcloud CLI to update your local `kubeconfig` file with your GKE cluster information. Replace `test-cluster` and `us-west3` with the name and location of your cluster:
+1.  Use the gcloud CLI to update your local `kubeconfig` file with your GKE cluster information. Replace {{< placeholder "GKE_CLUSTER_NAME" >}} and {{< placeholder "GCP_REGION" >}} with your GKE cluster name and region, respectively:
 
     ```command
-    gcloud container clusters \
-        get-credentials test-cluster --location=us-west3
+    gcloud container clusters get-credentials {{< placeholder "GKE_CLUSTER_NAME" >}} --location={{< placeholder "GCP_REGION" >}}
     ```
 
     ```output
@@ -63,8 +62,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 1.  Identify the context name for your GKE cluster, and set it to the active context. Replace the values with those of your cluster:
 
     ```command
-    kubectl config use-context \
-        gke_gke-to-lke_us-west3_test-cluster
+    kubectl config use-context {{< placeholder "GKE_CLUSTER_CONTEXT_NAME" >}}
     ```
 
 ### Assess Your GKE Cluster
@@ -76,10 +74,10 @@ This guide is written for a non-root user. Commands that require elevated privil
     ```
 
     ```output
-    Kubernetes control plane is running at https://34.106.155.168
-    GLBCDefaultBackend is running at https://34.106.155.168/api/v1/namespaces/kube-system/services/default-http-backend:http/proxy
-    KubeDNS is running at https://34.106.155.168/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-    Metrics-server is running at https://34.106.155.168/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
+    Kubernetes control plane is running at {{< placeholder "GKE_CONTROL_PLANE_URL" >}}
+    GLBCDefaultBackend is running at {{< placeholder "GKE_GLBC_URL" >}}
+    KubeDNS is running at {{< placeholder "GKE_DNS_URL" >}}
+    Metrics-server is running at {{< placeholder "GKE_METRICS_URL" >}}
 
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
@@ -105,8 +103,8 @@ Detailed information about your cluster is also available in the Google Cloud co
     ```
 
     ```output
-    NAME                                        STATUS   ROLES    AGE   VERSION
-    gke-gke-to-lke-default-pool-32bae215-j9x9   Ready    <none>   57m   v1.31.6-gke.1020000
+    NAME            STATUS   ROLES    AGE   VERSION
+    {{< placeholder "GKE_NODE_NAME" >}}   Ready    <none>   57m   v1.31.6-gke.1020000
     ```
 
     {{< note title="Autopilot Clusters" >}}
@@ -123,7 +121,7 @@ Detailed information about your cluster is also available in the Google Cloud co
 
     ```command
     kubectl get pods -A \
-        -o custom-columns='NAMESPACE:.metadata.namespace,NAME:.metadata.name'
+      -o custom-columns='NAMESPACE:.metadata.namespace,NAME:.metadata.name'
     ```
 
     ```output
@@ -260,9 +258,9 @@ Follow the steps below to install, configure, and test the REST API service appl
     The service is a [LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer), which means it can be accessed from outside the cluster:
 
     ```output
-    NAME               TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
-    go-quote-service   LoadBalancer   34.118.229.116   34.106.133.10   80:30972/TCP   5m37s
-    kubernetes         ClusterIP      34.118.224.1     <none>          443/TCP        29m
+    NAME               TYPE           CLUSTER-IP            EXTERNAL-IP            PORT(S)        AGE
+    go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}   80:30972/TCP   5m37s
+    kubernetes         ClusterIP      {{< placeholder "K8S_CLUSTER_IP" >}}        <none>                 443/TCP        29m
     ```
 
 1.  With workloads running, you can now verify that a node has been provisioned:
@@ -272,24 +270,24 @@ Follow the steps below to install, configure, and test the REST API service appl
     ```
 
     ```output
-    NAME                                          STATUS     ROLES    AGE   VERSION
-    gk3-test-cluster-nap-1np6k37u-5baac581-mwqs   NotReady   <none>   7s    v1.30.6-gke.1125000
+    NAME            STATUS     ROLES    AGE   VERSION
+    {{< placeholder "GKE_NODE_NAME" >}}   NotReady   <none>   7s    v1.30.6-gke.1125000
     ```
 
 1.  To retrieve more information about this node, run the following command:
 
     ```command
-    kubectl get node gk3-test-cluster-nap-1np6k37u-5baac581-mwqs -o yaml
+    kubectl get node {{< placeholder "GKE_NODE_NAME" >}} -o yaml
     ```
 
     {{< note >}}
     The above command retrieves all the information about the node in YAML format. To filter for specific fields, such as allocatable CPU and memory, run the previous command through a pipe:
 
     ```command
-    kubectl get node gk3-test-cluster-nap-1np6k37u-5baac581-mwqs -o yaml \
+    kubectl get node {{< placeholder "GKE_NODE_NAME" >}} -o yaml \
       | yq '.status.allocatable | {"cpu": .cpu, "memory": .memory}' \
       | awk -F': ' ' /cpu/ {cpu=$2} /memory/ {mem=$2} \
-          END {printf "cpu: %s\nmemory: %.2f Gi\n", cpu, mem / 1024 / 1024}'
+        END {printf "cpu: %s\nmemory: %.2f Gi\n", cpu, mem / 1024 / 1024}'
     ```
 
     ```output
@@ -298,12 +296,12 @@ Follow the steps below to install, configure, and test the REST API service appl
     ```
     {{< /note >}}
 
-1.  Test the service by adding a quote:
+1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}} with the actual external IP address of your load balancer:
 
     ```command
     curl -X POST \
       --data '{"quote":"This is my first quote."}' \
-      {{< placeholder "IP_ADDRESS" >}}/quotes
+      {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Add a second quote:
@@ -311,13 +309,13 @@ Follow the steps below to install, configure, and test the REST API service appl
     ```command
     curl -X POST \
       --data '{"quote":"This is my second quote."}' \
-      {{< placeholder "IP_ADDRESS" >}}/quotes
+      {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Now retrieve the stored quotes:
 
     ```command
-    curl {{< placeholder "IP_ADDRESS" >}}/quotes
+    curl {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
     This should yield the following result:
@@ -330,14 +328,14 @@ After verifying that your GKE cluster is fully operational and running a live se
 
 ## Provision an LKE Cluster
 
-When migrating from GKE to LKE, provision an LKE cluster with similar resources to run the same workloads. While there are several ways to create a Kubernetes cluster on Akamai Cloud, this guide uses the [Linode CLI](https://github.com/linode/linode-cli) to provision resources.
+When migrating from GKE to LKE, provision an LKE cluster with similar resources to run the same workloads. While there are several ways to create a Kubernetes cluster on Akamai Cloud, this guide uses the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/cli) to provision resources.
 
 See our [LKE documentation](https://techdocs.akamai.com/cloud-computing/docs/create-a-cluster) for instructions on how to provision a cluster using Cloud Manager.
 
-1.  Use the Linode CLI (`linode`) to see available Kubernetes versions:
+1.  Use the Linode CLI (`linode-cli`) to see available Kubernetes versions:
 
     ```command
-    linode lke versions-list
+    linode-cli lke versions-list
     ```
 
     ```output
@@ -355,7 +353,7 @@ See our [LKE documentation](https://techdocs.akamai.com/cloud-computing/docs/cre
 1.  Determine the type of Linode to provision. The example GKE cluster configuration uses nodes with two CPUs and 8 GB of memory. To find a Linode type with a similar configuration, run the following command with the Linode CLI:
 
     ```command
-    linode linodes types --vcpus 2 --json --pretty \
+    linode-cli linodes types --vcpus 2 --json --pretty \
       | jq '.[] | {class, id, vcpus, memory, price}'
     ```
 
@@ -397,12 +395,12 @@ See our [LKE documentation](https://techdocs.akamai.com/cloud-computing/docs/cre
     }
     ```
 
-    See [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/) for more detailed pricing information.
+    See [Akamai Cloud: Pricing](https://www.linode.com/pricing/) for more detailed pricing information.
 
 1.  The examples in this guide use the `g6-standard-2` Linode, which features two CPU cores and 4 GB of memory. Run the following command to display detailed information in JSON for this Linode plan:
 
     ```command
-    linode linodes types --label "Linode 4GB" --json --pretty
+    linode-cli linodes types --label "Linode 4GB" --json --pretty
     ```
 
     ```output
@@ -428,13 +426,13 @@ See our [LKE documentation](https://techdocs.akamai.com/cloud-computing/docs/cre
 1.  View available regions with the `regions list` command:
 
     ```command
-    linode regions list
+    linode-cli regions list
     ```
 
 1.  After selecting a Kubernetes version and Linode type, use the following command to create a cluster named `gke-to-lke` in the `us-mia` (Miami, FL) region with three nodes and auto-scaling. Replace `gke-to-lke` and `us-mia` with a cluster label and region of your choosing, respectively:
 
     ```command
-    linode lke cluster-create \
+    linode-cli lke cluster-create \
       --label gke-to-lke \
       --k8s_version 1.32 \
       --region us-mia \
@@ -462,14 +460,13 @@ See our [LKE documentation](https://techdocs.akamai.com/cloud-computing/docs/cre
 
 ## Access the Kubernetes Cluster
 
-To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
+To access your cluster, fetch the cluster credentials as a `kubeconfig` file. Your cluster's `kubeconfig` can also be [downloaded via the Cloud Manager](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#access-and-download-your-kubeconfig).
 
 1.  Use the following command to retrieve the cluster’s ID:
 
     ```command
-    CLUSTER_ID=$(linode lke clusters-list --json | \
-      jq -r \
-        '.[] | select(.label == "eks-to-lke") | .id')
+    CLUSTER_ID=$(linode-cli lke clusters-list --json | jq -r \
+      '.[] | select(.label == "eks-to-lke") | .id')
     ```
 
 1.  Retrieve the `kubeconfig` file and save it to `~/.kube/lke-config`:
@@ -487,8 +484,8 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
     ```
 
     ```output
-    NAME                            STATUS   ROLES    AGE   VERSION
-    lke289125-478490-4569f8b60000   Ready    <none>   85s   v1.32.0
+    NAME            STATUS   ROLES    AGE   VERSION
+    {{< placeholder "LKE_NODE_NAME" >}}   Ready    <none>   85s   v1.32.0
     ```
 
     One node is ready, and it uses Kubernetes version 1.32.
@@ -500,8 +497,8 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
     ```
 
     ```output
-    Kubernetes control plane is running at https://fa127859-38c1-4e40-971d-b5c7d5bd5e97.us-lax-2.linodelke.net:443
-    KubeDNS is running at https://fa127859-38c1-4e40-971d-b5c7d5bd5e97.us-lax-2.linodelke.net:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+    Kubernetes control plane is running at {{< placeholder "LKE_CONTROL_URL" >}}
+    KubeDNS is running at {{< placeholder "LKE_DNS_URL" >}}
 
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
@@ -512,7 +509,7 @@ In some cases, migrating Kubernetes applications requires an incremental approac
 
 For example, if **Service A** interacts with **Services B, C, and D**, you may be able to migrate **Services A and B** together to LKE, where they can communicate efficiently. However, **Services C and D** may still rely on GCP infrastructure or native services, making their migration more complex.
 
-In this scenario, you may need to temporarily run **Service A** in both Google GKE and LKE. **Service A on LKE** would interact with **Service B on LKE**, while the version of **Service A on Google GKE** continues communicating with **Services C and D**. This setup minimizes disruptions while you work through the complexities of migrating the remaining services to LKE. Although cross-cloud communication incurs higher latency and costs, this approach helps maintain functionality during the transition.
+In this scenario, you may need to temporarily run **Service A** in both Google GKE and LKE. **Service A on LKE** would interact with **Service B on LKE**, while the version of **Service A on Google GKE** continues communicating with **Services C and D**. This setup minimizes disruptions while you work through the complexities of migrating the remaining services to LKE. Although cross-cloud communication may incur higher latency and costs, this approach helps maintain functionality during the transition.
 
 This guide covers the key steps required to migrate the example application from GKE to LKE.
 
@@ -520,25 +517,27 @@ This guide covers the key steps required to migrate the example application from
 
 Ensure that `kubectl` uses the original `kubeconfig` file with the GKE cluster context.
 
+If necessary, you may need to re-save your GKE cluster's `kubeconfig` file path to your `$KUBECONFIG` environment variable.
+
 ```command
-kubectl get all --context gke_gke-to-lke_us-west3_test-cluster
+kubectl get all --context {{< placeholder "GKE_CLUSTER_CONTEXT_NAME" >}}
 ```
 
 The output shows the running pod and the one active replica set created by the deployment:
 
 ```output
-NAME                            READY   STATUS    RESTARTS   AGE
-pod/go-quote-7b747d5f8f-pc2cd   1/1     Running   0          3h36m
+NAME                      READY   STATUS    RESTARTS   AGE
+pod/go-quote-{{< placeholder "POD_SUFFIX" >}}   1/1     Running   0          3h36m
 
-NAME                       TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
-service/go-quote-service   LoadBalancer   34.118.229.116   34.106.133.10   80:30972/TCP   3h36m
-service/kubernetes         ClusterIP      34.118.224.1     <none>          443/TCP        3h59m
+NAME                       TYPE           CLUSTER-IP            EXTERNAL-IP            PORT(S)        AGE
+service/go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}   80:30972/TCP   3h36m
+service/kubernetes         ClusterIP      {{< placeholder "K8S_CLUSTER_IP" >}}        <none>                 443/TCP        3h59m
 
 NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
 deployment.apps/go-quote   1/1     1            1           3h36m
 
-NAME                                  DESIRED   CURRENT   READY   AGE
-replicaset.apps/go-quote-7b747d5f8f   1         1         1       3h36m
+NAME                                         DESIRED   CURRENT   READY   AGE
+replicaset.apps/go-quote-{{< placeholder "REPLICASET_SUFFIX" >}}   1         1         1       3h36m
 
 NAME                                               REFERENCE             TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
 horizontalpodautoscaler.autoscaling/go-quote-hpa   Deployment/go-quote   cpu: 0%/50%   1         1         1          3h36m
@@ -592,7 +591,10 @@ Since the image for the example service application in this guide comes from Doc
 
 ### Transfer Persistent Data
 
-If the workload depends on persistent data in Google Cloud Storage or a database, then transfer the data or make it available to LKE.
+If the workload depends on persistent data in Google Cloud Storage or a database, then transfer the data or make it available to LKE. See the following guides for more information:
+
+- [How to Migrate From Google Cloud Storage to Linode Object Storage](/docs/guides/migrate-from-google-cloud-storage-to-linode-object-storage/)
+- [Migrate from GCP Hyperdisk and Persistent Disk to Linode Block Storage](/docs/guides/migrate-from-gcp-hyperdisk-and-persistent-disk-to-linode-block-storage/)
 
 {{< note >}}
 The example application, with its in-memory configuration, does not rely on any persistent data.
@@ -602,14 +604,14 @@ The example application, with its in-memory configuration, does not rely on any 
 
 Deploy your application to the newly created LKE cluster.
 
-1.  Verify the current `kubectl` context to ensure you are pointing to the `kubeconfig` file for the LKE cluster.
+1.  Verify the current `kubectl` context to ensure you are pointing to the `kubeconfig` file for the LKE cluster. This may require re-saving your LKE `kubeconfig` file's path to your `$KUBECONFIG` environment variable.
 
     ```command
     kubectl config current-context --kubeconfig ~/.kube/lke-config
     ```
 
     ```output
-    lke289125-ctx
+    {{< placeholder "LKE_CLUSTER_CONTEXT_NAME" >}}
     ```
 
 1.  Apply the same `manifest.yaml` file used to deploy your application to GKE, but this time on your LKE cluster:
@@ -626,7 +628,7 @@ Deploy your application to the newly created LKE cluster.
 
 ### Validate Application Functionality
 
-Verify that the deployment and the service were created successfully
+Verify that the deployment and the service were created successfully. The steps below validate and test the functionality of the example REST API service.
 
 1.  With the application deployed, run the following `kubectl` command to verify that the deployment is available:
 
@@ -648,17 +650,17 @@ Verify that the deployment and the service were created successfully
     The service exposes a public IP address to the REST API service (e.g. `172.235.44.28`):
 
     ```output
-    NAME               TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
-    go-quote-service   LoadBalancer   10.128.183.194   172.235.44.28   80:30407/TCP   117s
-    kubernetes         ClusterIP      10.128.0.1       <none>          443/TCP        157m
+    NAME               TYPE           CLUSTER-IP            EXTERNAL-IP            PORT(S)        AGE
+    go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}   80:30407/TCP   117s
+    kubernetes         ClusterIP      {{< placeholder "K8S_CLUSTER_IP" >}}        <none>                 443/TCP        157m
     ```
 
-1.  Test the service by adding a quote:
+1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}} with the actual external IP address of your load balancer:
 
     ```command
     curl -X POST \
       --data '{"quote":"This is my first quote for LKE."}' \
-      172.235.44.28/quotes
+      {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Add a second quote:
@@ -666,20 +668,22 @@ Verify that the deployment and the service were created successfully
     ```command
     curl -X POST \
       --data '{"quote":"This is my second quote for LKE."}' \
-      172.235.44.28/quotes
+      {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Now retrieve the stored quotes:
 
     ```command
-    curl 172.235.44.28/quotes
+    curl {{< placeholder "GO_QUOTE_EXTERNAL_IP_ADDRESS" >}}/quotes
     ```
 
     ```output
     ["This is my first quote for LKE.","This is my second quote for LKE."]
     ```
 
-The REST API service is up and running on LKE. Point any services dependent on the GKE cluster deployment to the LKE cluster deployment instead. After testing and verifying the application running on LKE, you can terminate the GKE cluster.
+The example REST API service is up and running on LKE.
+
+Depending on your application, point any services dependent on the GKE cluster deployment to the LKE cluster deployment instead. After testing and verifying your application is running on LKE, you can terminate your GKE cluster.
 
 ## Additional Considerations and Concerns
 
@@ -687,39 +691,25 @@ When migrating from GCP GKE to LKE, there are several important factors to keep 
 
 ### Cost Management
 
-Cost reduction is one reason an organization might migrate from GCP GKE to LKE. Typically, the compute cost of Kubernetes is the primary driver for migration. Use `kubectl` to find the instance type and capacity type for your GKE instance.
+Cost reduction is one reason an organization might migrate from GCP GKE to LKE. Typically, the compute cost of Kubernetes can be a primary driver for migration. Use `kubectl` to find the instance type and capacity type for your GKE instance.
 
 ```command
-kubectl get node gk3-test-cluster-nap-1np6k37u-5baac581-mwqs -o yaml \
+kubectl get node {{< placeholder "GKE_NODE_NAME" >}} -o yaml \
   | yq .metadata.labels \
   | grep node.kubernetes.io/instance-type
 ```
 
 ```output
-node.kubernetes.io/instance-type: e2-standard-2
+node.kubernetes.io/instance-type: {{< placeholder "GKE_INSTANCE_TYPE" >}}
 ```
 
-This is an `e2-standard-2` instance of the GCP compute engine. Referencing [Google’s VM instance pricing page](https://cloud.google.com/compute/vm-instance-pricing), the hourly cost for this type of instance in the `us-west3` region is **$0.080486**.
+Reference [Google’s VM instance pricing page](https://cloud.google.com/compute/vm-instance-pricing) to find the cost for the Google VM powering your GCP instance. Compare this with the cost of a Linode instance with comparable resources by examining [our pricing page](https://www.linode.com/pricing/).
 
-![Google Cloud VM instance pricing table showing cost for e2-standard-2 instance in us-west3 region.](gcp-e2-standard-2-pricing-table.png)
-
-The example Linode instance used in this guide has two CPU cores and 4 GB of memory. Referencing the [Linode pricing page](https://www.linode.com/pricing/), the hourly cost of this instance for a shared CPU plan is **$0.036**.
-
-![Linode pricing table showing cost for shared CPU plan with 2 CPU cores and 4 GB of memory.](linode-shared-cpu-pricing-table.png)
-
-For a dedicated CPU plan, the cost is $0.054 per hour.
-
-![Linode pricing table showing cost for dedicated CPU plan with 2 CPU cores and 4 GB of memory.](linode-dedicated-cpu-pricing-table.png)
-
-Additionally, applications with substantial data egress can be significantly impacted by egress costs. For example, outbound [data transfer costs for the GCP standard tier](https://cloud.google.com/vpc/network-pricing#vpc-pricing?#:~:text=Standard%20Tier%20pricing) are $0.085 per GB between 200 GB and 10 TB of transfer in a month. An application with outbound data of 1 TB in a month incurs a cost of **$68**.
-
-![Google Cloud networking pricing table showing standard tier outbound data transfer costs.](gcp-egress-data-transfer-costs.png)
-
-In contrast, both the shared and dedicated CPU plans for the example Linode instance chosen include monthly data transfer of 4 TB for free.
+Additionally, applications with substantial data egress can be significantly impacted by egress costs. Consider the typical networking usage of applications running on your GKE cluster, and determine your outbound [costs for Google bandwidth](https://cloud.google.com/vpc/network-pricing). Compare this with data transfer limits allocated to your LKE nodes.
 
 ### Data Persistence and Storage
 
-Cloud-native workloads are ephemeral. As a container orchestration platform, Kubernetes is designed to ensure your pods are up and running, with autoscaling to handle demand. However, it’s important to handle persistent data carefully. If you are in a position to impose a large maintenance window with system downtime, migrating data should be far simpler.
+Cloud-native workloads are ephemeral. As a container orchestration platform, Kubernetes is designed to ensure your pods are up and running, with autoscaling to handle demand. However, it’s important to handle persistent data carefully. If you are in a position to impose a large maintenance window with system downtime, migrating workloads can be a simpler task.
 
 Should you need to perform a live migration with minimal downtime, you must develop proper migration procedures and test them in a non-production environment. This may include:
 
@@ -742,9 +732,9 @@ Google GKE integrates Google Cloud Identity and Access Management (IAM) with Kub
 
 ### DNS
 
-If you use an independent DNS provider (e.g. Cloudflare) for your application, you must update various DNS records to point to LKE endpoints and NodeBalancers instead of GCP endpoints.
+If you use an independent DNS provider for your application, you must update various DNS records to point to LKE endpoints and NodeBalancers instead of GCP endpoints.
 
-If you use Google Cloud DNS and plan to migrate away from it, reference [Linode’s DNS manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) as a migration option.
+If you use Google Cloud DNS and plan to migrate away from it, [our DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) may be a migration option.
 
 ### Alternative to GCP Artifact Registry
 
@@ -754,7 +744,7 @@ Alternatively, you can set up your own container registry, see [How to Set Up a 
 
 ### Alternative to Google Cloud Operations Suite
 
-GCP provides its [cloud operations suite](https://cloud.google.com/blog/topics/developers-practitioners/introduction-google-clouds-operations-suite) for Kubernetes cluster observability. With Akamai Cloud, you can install an alternative observability solution on LKE. One example of such a solution is [The Observability Stack (TOBS)](https://github.com/timescale/tobs), which includes:
+GCP uses its [cloud operations suite](https://cloud.google.com/blog/topics/developers-practitioners/introduction-google-clouds-operations-suite) for Kubernetes cluster observability. With Akamai Cloud, you can install an alternative observability solution on LKE. One example of such a solution is [The Observability Stack (TOBS)](https://github.com/timescale/tobs), which includes:
 
 -   Kube-Prometheus
     -   Prometheus
@@ -768,8 +758,11 @@ GCP provides its [cloud operations suite](https://cloud.google.com/blog/topics/d
     -   Postgres-Exporter
 -   OpenTelemetry-Operator
 
-See [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-tobs-on-linode-kubernetes-engine/) for more information.
+See the following guides for more information:
+
+- [Migrating From GCP Cloud Monitoring to Prometheus and Grafana on Akamai](/docs/guides/migrating-from-gcp-cloud-monitoring-to-prometheus-and-grafana-on-akamai/)
+- [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-tobs-on-linode-kubernetes-engine/)
 
 ### Alternative to GCP Secrets Manager
 
-The [GCP Secrets Manager](https://cloud.google.com/security/products/secret-manager) can be leveraged to provide Kubernetes secrets on GKE. With LKE, you need an alternative solution, such as OpenBao on Akamai Cloud.
+The [GCP Secrets Manager](https://cloud.google.com/security/products/secret-manager) can be leveraged to provide Kubernetes secrets on GKE. With LKE, you need an alternative solution, such as [OpenBao on Akamai Cloud](/docs/marketplace-docs/guides/openbao/).

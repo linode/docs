@@ -1021,6 +1021,7 @@ hybla
 Hydrolix
 hykes
 hypercorn
+Hyperdisk
 hyperefficient
 HyperLogLog
 hyperparameter

@@ -4,15 +4,12 @@ title: "Migrating from Azure AKS to Linode Kubernetes Engine (LKE)"
 description: "Learn how to migrate Kubernetes applications from Azure AKS to Linode Kubernetes Engine (LKE) using a sample rest API service."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-04-09
+published: 2025-04-16
 keywords: ['azure aks','azure aks alternatives','azure kubernetes alternatives','microsoft kubernetes alternatives','replace azure aks','replace azure kubernetes','replace microsoft kubernetes','migrate azure aks to linode','migrate azure kubernetes to linode','migrate microsoft kubernetes to linode','migrate kubernetes applications to linode','azure aks migration','azure kubernetes migration','microsoft kubernetes migration','azure aks replacement','azure kubernetes replacement','microsoft kubernetes replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
-This guide walks you through the process of migrating an application from [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-us/products/kubernetes-service) to Linode Kubernetes Engine (LKE). An example REST API service is used to demonstrate the steps for migrating an application.
+This guide walks you through the process of migrating an application from [Azure Kubernetes Service (AKS)](https://learn.microsoft.com/en-us/azure/aks/) to Linode Kubernetes Engine (LKE). An example REST API service is used to demonstrate the steps for migrating an application.
 
 ## Before You Begin
 
@@ -46,18 +43,18 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     ![Azure portal showing AKS cluster name 'aks-go-cluster' and resource group 'my-aks-group'.](azure-aks-cluster-name-resource-group.png)
 
-1.  Use the Azure CLI to update your local kubeconfig file with your AKS cluster information. Replace `my-aks-group` and `aks-go-cluster` with the name and resource group for your cluster:
+1.  Use the Azure CLI to update your local kubeconfig file with your AKS cluster information, replacing {{< placeholder "AKS_RESOURCE_GROUP" >}} and {{< placeholder "AKS_CLUSTER_NAME" >}} with your actual resource group and cluster name:
 
     ```command
     az aks get-credentials \
-      --resource-group my-aks-group \
-      --name aks-go-cluster \
+      --resource-group {{< placeholder "AKS_RESOURCE_GROUP" >}} \
+      --name {{< placeholder "AKS_CLUSTER_NAME" >}} \
       --admin
     ```
 
     ```output
     The behavior of this command has been altered by the following extension: aks-preview
-    Merged "aks-go-cluster" as current context in /home/user/.kube/config
+    Merged "{{< placeholder "AKS_CLUSTER_NAME" >}}" as current context in /home/user/.kube/config
     ```
 
 1.  If your `kubeconfig` file includes multiple clusters, use the following command to list the available contexts:
@@ -69,7 +66,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 1.  Identify the context name for your AKS cluster, and set it to the active context. Replace the values with those of your cluster:
 
     ```command
-    kubectl config use-context aks-go-cluster
+    kubectl config use-context {{< placeholder "AKS_CLUSTER_CONTEXT_NAME" >}}
     ```
 
 ### Assess Your AKS Cluster
@@ -81,9 +78,9 @@ This guide is written for a non-root user. Commands that require elevated privil
     ```
 
     ```output
-    Kubernetes control plane is running at https://aks-go-clu-my-aks-group-219c80-iil863ok.hcp.westus2.azmk8s.io:443
-    CoreDNS is running at https://aks-go-clu-my-aks-group-219c80-iil863ok.hcp.westus2.azmk8s.io:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-    Metrics-server is running at https://aks-go-clu-my-aks-group-219c80-iil863ok.hcp.westus2.azmk8s.io:443/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
+    Kubernetes control plane is running at {{< placeholder "AKS_CONTROL_PLANE_URL" >}}
+    CoreDNS is running at {{< placeholder "AKS_DNS_URL" >}}
+    Metrics-server is running at {{< placeholder "AKS_METRICS_URL" >}}
 
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
@@ -109,20 +106,20 @@ Detailed information about your cluster is also available in the Azure portal.
     ```
 
     ```output
-    NAME                                STATUS   ROLES    AGE   VERSION
-    aks-nodepool1-23390877-vmss000000   Ready    <none>   11m   v1.30.6
+    NAME            STATUS   ROLES    AGE   VERSION
+    {{< placeholder "AKS_NODE_NAME" >}}   Ready    <none>   11m   v1.30.6
     ```
 
-1.  To retrieve detailed information about the node in YAML format, run the following command. Substitute `aks-nodepool1-23390877-vmss000000` with the name of the node you want to inspect:
+1.  To retrieve detailed information about the node in YAML format, run the following command. Replace {{< placeholder "AKS_NODE_NAME" >}} with the name of your AKS node:
 
     ```command
-    kubectl get node aks-nodepool1-23390877-vmss000000 -o yaml
+    kubectl get node {{< placeholder "AKS_NODE_NAME" >}} -o yaml
     ```
 
 1.  You can also run the previous command through a pipe to filter for specific fields (e.g. allocatable CPU and memory):
 
     ```command
-    kubectl get node aks-nodepool1-23390877-vmss000000 -o yaml \
+    kubectl get node {{< placeholder "AKS_NODE_NAME" >}} -o yaml \
       | yq '.status.allocatable | {"cpu": .cpu, "memory": .memory}' \
       | awk -F': ' ' /cpu/ {cpu=$2} /memory/ {mem=$2} \
           END {printf "cpu: %s\nmemory: %.2f Gi\n", cpu, mem / 1024 / 1024}'
@@ -141,7 +138,7 @@ The function of the REST API service allows you to add a quote (a string) to a s
 
 Follow the steps below to install, configure, and test the REST API service application on your AKS cluster.
 
-1.  Use a command line text editor such as `nano` to create a Kubernetes manifest file (`manifest.yaml`) that defines the application and its supporting resources:
+1.  Use a command line text editor such as `nano` to create a Kubernetes manifest file that defines the application and its supporting resources:
 
     ```command
     nano manifest.yaml
@@ -150,7 +147,7 @@ Follow the steps below to install, configure, and test the REST API service appl
     Give the file the following contents:
 
     ```file {title="manifest.yaml" lang="yaml"}
-    | apiVersion: apps/v1
+    apiVersion: apps/v1
     kind: Deployment
     metadata:
       name: go-quote
@@ -223,6 +220,12 @@ Follow the steps below to install, configure, and test the REST API service appl
     kubectl apply -f manifest.yaml
     ```
 
+    ```output
+    deployment.apps/go-quote created
+    service/go-quote-service created
+    horizontalpodautoscaler.autoscaling/go-quote-hpa created
+    ```
+
 1.  With the application deployed, run the following `kubectl` command to verify that the deployment is available:
 
     ```command
@@ -243,17 +246,17 @@ Follow the steps below to install, configure, and test the REST API service appl
     The service is a [LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer), which means it can be accessed from outside the cluster:
 
     ```output
-    NAME               TYPE           CLUSTER-IP   EXTERNAL-IP     PORT(S)        AGE
-    go-quote-service   LoadBalancer   10.0.80.37   52.250.81.212   80:30398/TCP   83s
-    kubernetes         ClusterIP      10.0.0.1     <none>          443/TCP        2m14s
+    NAME               TYPE           CLUSTER-IP            EXTERNAL-IP            PORT(S)        AGE
+    go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_CLUSTER_IP" >}}   {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}   80:30398/TCP   83s
+    kubernetes         ClusterIP      {{< placeholder "K8S_CLUSTER_IP" >}}        <none>                 443/TCP        2m14s
     ```
 
-1.  Test the service by adding a quote:
+1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}} with the `EXTERNAL_IP` of your `LoadBalancer`:
 
     ```command
     curl -X POST \
       --data '{"quote":"This is my first quote."}' \
-      {{< placeholder "IP_ADDRESS" >}}/quotes
+      {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Add a second quote:
@@ -261,13 +264,13 @@ Follow the steps below to install, configure, and test the REST API service appl
     ```command
     curl -X POST \
       --data '{"quote":"This is my second quote."}' \
-      {{< placeholder "IP_ADDRESS" >}}/quotes
+      {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Now retrieve the stored quotes:
 
     ```command
-    curl {{< placeholder "IP_ADDRESS" >}}/quotes
+    curl {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
     This should yield the following result:
@@ -280,14 +283,14 @@ After verifying that your AKS cluster is fully operational and running a live se
 
 ## Provision an LKE Cluster
 
-When migrating from AKS to LKE, provision an LKE cluster with similar resources to run the same workloads. While there are several ways to create a Kubernetes cluster on Akamai Cloud, this guide uses the [Linode CLI](https://github.com/linode/linode-cli) to provision resources.
+When migrating from AKS to LKE, provision an LKE cluster with similar resources to run the same workloads. While there are several ways to create a Kubernetes cluster on Akamai Cloud, this guide uses the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/cli) to provision resources.
 
 See our [LKE documentation](https://techdocs.akamai.com/cloud-computing/docs/create-a-cluster) for instructions on how to provision a cluster using Cloud Manager.
 
-1.  Use the Linode CLI (`linode`) to see available Kubernetes versions:
+1.  Use the Linode CLI (`linode-cli`) to see available Kubernetes versions:
 
     ```command
-    linode lke versions-list
+    linode-cli lke versions-list
     ```
 
     ```output
@@ -305,7 +308,7 @@ See our [LKE documentation](https://techdocs.akamai.com/cloud-computing/docs/cre
 1.  Determine the type of Linode to provision. The example AKS cluster configuration uses nodes with two CPUs and 8 GB of memory. To find a Linode type with a similar configuration, run the following command with the Linode CLI:
 
     ```command
-    linode linodes types --vcpus 2 --json --pretty \
+    linode-cli linodes types --vcpus 2 --json --pretty \
       | jq '.[] | {class, id, vcpus, memory, price}'
     ```
 
@@ -347,12 +350,12 @@ See our [LKE documentation](https://techdocs.akamai.com/cloud-computing/docs/cre
     }
     ```
 
-    See [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/) for more detailed pricing information.
+    See [Akamai Cloud: Pricing](https://www.linode.com/pricing/) for more detailed pricing information.
 
 1.  The examples in this guide use the **g6-standard-2** Linode, which features two CPU cores and 4 GB of memory. Run the following command to display detailed information in JSON for this Linode plan:
 
     ```command
-    linode linodes types --label "Linode 4GB" --json --pretty
+    linode-cli linodes types --label "Linode 4GB" --json --pretty
     ```
 
     ```output
@@ -378,7 +381,7 @@ See our [LKE documentation](https://techdocs.akamai.com/cloud-computing/docs/cre
 1.  View available regions with the `regions list` command:
 
     ```command
-    linode regions list
+    linode-cli regions list
     ```
 
 1.  After selecting a Kubernetes version and Linode type, use the following command to create a cluster named `aks-to-lke` in the `us-mia` (Miami, FL) region with three nodes and auto-scaling. Replace `aks-to-lke` and `us-mia` with a cluster label and region of your choosing, respectively:
@@ -412,20 +415,20 @@ See our [LKE documentation](https://techdocs.akamai.com/cloud-computing/docs/cre
 
 ## Access the Kubernetes Cluster
 
-To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
+To access your cluster, fetch the cluster credentials as a `kubeconfig` file. Your cluster's `kubeconfig` can also be [downloaded via the Cloud Manager](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#access-and-download-your-kubeconfig).
 
 1.  Use the following command to retrieve the cluster’s ID:
 
     ```command
-    CLUSTER_ID=$(linode lke clusters-list --json | \
+    CLUSTER_ID=$(linode-cli lke clusters-list --json | \
       jq -r \
-        '.[] | select(.label == "eks-to-lke") | .id')
+        '.[] | select(.label == "aks-to-lke") | .id')
     ```
 
 1.  Retrieve the `kubeconfig` file and save it to `~/.kube/lke-config`:.
 
     ```command
-    linode lke kubeconfig-view --json "$CLUSTER_ID" | \
+    linode-cli lke kubeconfig-view --json "$CLUSTER_ID" | \
       jq -r '.[0].kubeconfig' | \
       base64 --decode > ~/.kube/lke-config
     ```
@@ -437,8 +440,8 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
     ```
 
     ```output
-    NAME                            STATUS   ROLES    AGE   VERSION
-    lke289125-478490-4569f8b60000   Ready    <none>   85s   v1.32.0
+    NAME            STATUS   ROLES    AGE   VERSION
+    {{< placeholder "LKE_NODE_NAME" >}}   Ready    <none>   85s   v1.32.0
     ```
 
     One node is ready, and it uses Kubernetes version 1.32.
@@ -450,8 +453,8 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file.
     ```
 
     ```output
-    Kubernetes control plane is running at https://fa127859-38c1-4e40-971d-b5c7d5bd5e97.us-lax-2.linodelke.net:443
-    KubeDNS is running at https://fa127859-38c1-4e40-971d-b5c7d5bd5e97.us-lax-2.linodelke.net:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+    Kubernetes control plane is running at {{< placeholder "LKE_CONTROL_PLANE_URL" >}}
+    KubeDNS is running at {{< placeholder "LKE_DNS_URL" >}}
 
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
@@ -462,7 +465,7 @@ In some cases, migrating Kubernetes applications requires an incremental approac
 
 For example, if **Service A** interacts with **Services B, C, and D**, you may be able to migrate **Services A and B** together to LKE, where they can communicate efficiently. However, **Services C and D** may still rely on Azure infrastructure or native services, making their migration more complex.
 
-In this scenario, you may need to temporarily run **Service A** on both Azure AKS and LKE. **Service A on LKE** would interact with **Service B on LKE**, while the version on **Service A on Azure AKS** continues communicating with **Services C and D**. This setup minimizes disruptions while you work through the complexities of migrating the remaining services to LKE. Although cross-cloud communication incurs higher latency and costs, this approach helps maintain functionality during the transition.
+In this scenario, you may need to temporarily run **Service A** on both Azure AKS and LKE. **Service A on LKE** would interact with **Service B on LKE**, while the version on **Service A on Azure AKS** continues communicating with **Services C and D**. This setup minimizes disruptions while you work through the complexities of migrating the remaining services to LKE. Although cross-cloud communication may incur higher latency and costs, this approach helps maintain functionality during the transition.
 
 This guide covers the key steps required to migrate the example application from AKS to LKE.
 
@@ -470,24 +473,27 @@ This guide covers the key steps required to migrate the example application from
 
 Ensure that `kubectl` uses the original `kubeconfig` file with the AKS cluster context.
 
+If necessary, you may need to re-save your AKS cluster's `kubeconfig` file path to your `$KUBECONFIG` environment variable.
+
 ```command
-kubectl get all --context aks-go-cluster
+kubectl get all --context {{< placeholder "AKS_CLUSTER_CONTEXT_NAME" >}}
 ```
 
 The output shows the running pod and the one active replica set created by the deployment:
 
 ```output
-NAME                           READY   STATUS    RESTARTS   AGE pod/go-quote-c575f6ccb-2gckb   1/1     Running   0          97s
+NAME                      READY   STATUS    RESTARTS   AGE
+pod/go-quote-{{< placeholder "POD_SUFFIX" >}}   1/1     Running   0          97s
 
-NAME                       TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)        AGE
-service/go-quote-service   LoadBalancer   10.0.80.37     52.250.81.212   80:30398/TCP   97s
-service/kubernetes         ClusterIP      10.0.0.1       <none>           443/TCP        22m
+NAME                       TYPE           CLUSTER-IP            EXTERNAL-IP            PORT(S)        AGE
+service/go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_CLUSTER_IP" >}}  {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}   80:30398/TCP   97s
+service/kubernetes         ClusterIP      {{< placeholder "K8S_CLUSTER_IP" >}}       <none>                 443/TCP        22m
 
 NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
 deployment.apps/go-quote   1/1     1            1           97s
 
-NAME                                 DESIRED   CURRENT   READY   AGE
-replicaset.apps/go-quote-c575f6ccb   1         1         1       97s
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/go-quote-{{< placeholder "REPLICA_SET_SUFFIX" >}}   1         1         1       97s
 
 NAME                                               REFERENCE             TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
 horizontalpodautoscaler.autoscaling/go-quote-hpa   Deployment/go-quote   cpu: <unknown>/50%   1         1         1          98s
@@ -541,7 +547,10 @@ Since the image for the example service application in this guide comes from Doc
 
 ### Transfer Persistent Data
 
-If the workload depends on persistent data in Azure Storage or a database, then transfer the data or make it available to LKE.
+If the workload depends on persistent data in Azure Storage or a database, then transfer the data or make it available to LKE. See the following guides for more information:
+
+- [How to Migrate From Azure Blob Storage to Linode Object Storage](/docs/guides/migrate-from-azure-blob-storage-to-linode-object-storage/)
+- [Migrate From Azure Disk Storage to Linode Block Storage](/docs/guides/migrate-from-azure-disk-storage-to-linode-block-storage/)
 
 {{< note >}}
 The example application, with its in-memory configuration, does not rely on any persistent data.
@@ -551,14 +560,14 @@ The example application, with its in-memory configuration, does not rely on any 
 
 Deploy your application to the newly created LKE cluster.
 
-1.  Verify the current `kubectl` context to ensure you are pointing to the `kubeconfig` file for the LKE cluster.
+1.  Verify the current `kubectl` context to ensure you are pointing to the `kubeconfig` file for the LKE cluster. This may require re-saving your LKE `kubeconfig` file's path to your `$KUBECONFIG` environment variable.
 
     ```command
     kubectl config current-context --kubeconfig ~/.kube/lke-config
     ```
 
     ```output
-    lke289125-ctx
+    {{< placeholder "LKE_CLUSTER_CONTEXT_NAME" >}}
     ```
 
 1.  Apply the same `manifest.yaml` file used to deploy your application to AKS, but this time on your LKE cluster:
@@ -575,7 +584,7 @@ Deploy your application to the newly created LKE cluster.
 
 ### Validate Application Functionality
 
-Verify that the deployment and the service were created successfully.
+Verify that the deployment and the service were created successfully. The steps below validate and test the functionality of the example REST API service.
 
 1.  With the application deployed, run the following `kubectl` command to verify that the deployment is available:
 
@@ -597,17 +606,17 @@ Verify that the deployment and the service were created successfully.
     The service exposes a public IP address to the REST API service (e.g. `172.235.44.28`):
 
     ```output
-    NAME               TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
-    go-quote-service   LoadBalancer   10.128.183.194   172.235.44.28   80:30407/TCP   117s
-    kubernetes         ClusterIP      10.128.0.1       <none>          443/TCP        157m
+    NAME               TYPE           CLUSTER-IP           EXTERNAL-IP            PORT(S)        AGE
+    go-quote-service   LoadBalancer   {{< placeholder "GO_QUOTE_CLUSTER_IP" >}}  {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}   80:30407/TCP   117s
+    kubernetes         ClusterIP      {{< placeholder "K8S_CLUSTER_IP" >}}       <none>                 443/TCP        157m
     ```
 
-1.  Test the service by adding a quote:
+1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}} with the actual external IP address of your load balancer::
 
     ```command
     curl -X POST \
       --data '{"quote":"This is my first quote for LKE."}' \
-      172.235.44.28/quotes
+      {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Add a second quote:
@@ -615,20 +624,22 @@ Verify that the deployment and the service were created successfully.
     ```command
     curl -X POST \
       --data '{"quote":"This is my second quote for LKE."}' \
-      172.235.44.28/quotes
+      {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
 1.  Now retrieve the stored quotes:
 
     ```command
-    curl 172.235.44.28/quotes
+    curl {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}}/quotes
     ```
 
     ```output
     ["This is my first quote for LKE.","This is my second quote for LKE."]
     ```
 
-The REST API service is up and running on LKE. Point any services dependent on the AKS cluster deployment to the LKE cluster deployment instead. After testing and verifying the application running on LKE, you can terminate the AKS cluster.
+The example REST API service is up and running on LKE.
+
+Depending on your application, point any services dependent on the AKS cluster deployment to the LKE cluster deployment instead. After testing and verifying your application is running on LKE, you can terminate your AKS cluster.
 
 ## Additional Considerations and Concerns
 
@@ -636,25 +647,25 @@ When migrating from Azure AKS to LKE, there are several important factors to kee
 
 ### Cost Management
 
-Cost reduction is one reason an organization might migrate from Azure AKS to LKE. Typically, the compute cost of Kubernetes is the primary driver for migration. Use `kubectl` to find the instance type and capacity type for your AKS instance.
+Cost reduction is one reason an organization might migrate from Azure AKS to LKE. Typically, the compute cost of Kubernetes can be a primary driver for migration. Use `kubectl` to find the instance type and capacity type for your AKS instance.
 
 ```command
-kubectl get node aks-nodepool1-23390877-vmss000000 -o yaml \
+kubectl get node {{< placeholder "AKS_NODE_NAME" >}} -o yaml \
   | yq .metadata.labels \
   | grep node.kubernetes.io/instance-type
 ```
 
 ```output
-node.kubernetes.io/instance-type: Standard_DS2_v2
+node.kubernetes.io/instance-type: {{< placeholder "AKS_INSTANCE_TYPE" >}}
 ```
 
-Reference the [Windows VM pricing page](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/windows/) to find the cost for the Azure VM powering your AKS instance. Compare this with the cost of a Linode instance with comparable resources by examining the [Linode pricing page](https://www.linode.com/pricing/).
+Reference the [Windows VM pricing page](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/windows/) to find the cost for the Azure VM powering your AKS instance. Compare this with the cost of a Linode instance with comparable resources by examining [our pricing page](https://www.linode.com/pricing/).
 
 Additionally, applications with substantial data egress can be significantly impacted by egress costs. Consider the typical networking usage of applications running on your AKS cluster, and determine your outbound [costs for Azure bandwidth](https://azure.microsoft.com/en-us/pricing/details/bandwidth/#pricing). Compare this with data transfer limits allocated to your LKE nodes.
 
 ### Data Persistence and Storage
 
-Cloud-native workloads are ephemeral. As a container orchestration platform, Kubernetes is designed to ensure your pods are up and running, with autoscaling to handle demand. However, it’s important to handle persistent data carefully. If you are in a position to impose a large maintenance window with system downtime, migrating data should be far simpler.
+Cloud-native workloads are ephemeral. As a container orchestration platform, Kubernetes is designed to ensure your pods are up and running, with autoscaling to handle demand. However, it’s important to handle persistent data carefully. If you are in a position to impose a large maintenance window with system downtime, migrating workloads can be a simpler task.
 
 Should you need to perform a live migration with minimal downtime, you must develop proper migration procedures and test them in a non-production environment. This may include:
 
@@ -677,9 +688,9 @@ Azure AKS integrates Entra ID (formerly known as Azure Active Directory) with Ku
 
 ### DNS
 
-If you use an independent DNS provider (e.g. Cloudflare) for your application, you must update various DNS records to point to LKE endpoints and NodeBalancers instead of AKS endpoints.
+If you use an independent DNS provider for your application, you must update various DNS records to point to LKE endpoints and NodeBalancers instead of AKS endpoints.
 
-If you use Azure DNS and plan to migrate away from it, reference [Linode’s DNS manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) as a migration option.
+If you use Azure DNS and plan to migrate away from it, [our DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) may be a migration option.
 
 ### Alternative to Azure Container Registry
 
@@ -689,7 +700,7 @@ Alternatively, you can set up your own container registry, see [How to Set Up a 
 
 ### Alternative to Google Cloud Operations Suite
 
-Microsoft provides [Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/) for Kubernetes cluster observability. With Akamai Cloud, you can install an alternative observability solution on LKE. One example of such a solution is [The Observability Stack (TOBS)](https://github.com/timescale/tobs), which includes:
+Microsoft uses [Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/) for Kubernetes cluster observability. With Akamai Cloud, you can install an alternative observability solution on LKE. One example of such a solution is [The Observability Stack (TOBS)](https://github.com/timescale/tobs), which includes:
 
 -   Kube-Prometheus
     -   Prometheus
@@ -703,21 +714,11 @@ Microsoft provides [Azure Monitor](https://learn.microsoft.com/en-us/azure/azure
     -   Postgres-Exporter
 -   OpenTelemetry-Operator
 
-See [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-tobs-on-linode-kubernetes-engine/) for more information.
+See the following guides for more information:
+
+- [Migrating From Azure Monitor to Prometheus and Grafana on Akamai](/docs/guides/migrating-from-azure-monitor-to-prometheus-and-grafana-on-akamai/)
+- [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-tobs-on-linode-kubernetes-engine/)
 
 ### Alternative to Azure Key Vault
 
-The [Azure Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/general/overview) can be leveraged to provide Kubernetes secrets on Azure. With LKE, you need an alternative solution, such as OpenBao on Akamai Cloud.
-
-## Resources
-
--   Azure AKS
-    -   [Documentation](https://learn.microsoft.com/en-us/azure/aks/)
-    -   [Connecting kubectl to an Azure AKS cluster](https://learn.microsoft.com/en-us/azure/aks/control-kubeconfig-access)
--   Linode
-    -   [Akamai Connected Cloud: Pricing](https://www.linode.com/pricing/)
-    -   [LKE Documentation](/docs/guides/kubernetes-on-linode/)
-    -   [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager)
--   Setting up other technologies to run on Linode
-    -   [How to Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)
-    -   [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-tobs-on-linode-kubernetes-engine/)
+The [Azure Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/general/overview) can be leveraged to provide Kubernetes secrets on Azure. With LKE, you need an alternative solution, such as [OpenBao on Akamai Cloud](/docs/marketplace-docs/guides/openbao/).
