@@ -78,8 +78,6 @@ To install WordPress on your cluster, add the WordPress Helm chart using the Git
 
 1.  Select **Add Helm Chart**.
 
-    ![Add Helm Chart](APL-LLM-Add-Helm-Chart.jpg)
-
 1.  Under **Git Repository URL**, add the URL to the `wordpress` Helm chart .yaml file:
 
     ```command
@@ -100,12 +98,10 @@ Repeat the same steps for installing the MySQL service on your cluster.
 
 1.  Select **Add Helm Chart**.
 
-    ![Add Helm Chart](APL-LLM-Add-Helm-Chart.jpg)
-
 1.  Under **Git Repository URL**, add the URL to the `mysql` Helm chart .yaml file:
 
     ```command
-    https://github.com/bitnami/charts/blob/mysql/12.3.1/bitnami/wordpress/Chart.yaml
+    https://github.com/bitnami/charts/blob/mysql/12.3.1/bitnami/mysql/Chart.yaml
     ```
 
 1.  Click **Get Details** to populate the `mysql` Helm chart details. You may need to change the **Target Directory Name** field to read "MySQL". This is used to differentiate Helm charts within the Catalog.
