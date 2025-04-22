@@ -5,6 +5,7 @@ description: "This guide expands on a previously built LLM and AI inferencing ar
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-03-25
+modified: 2025-04-17
 keywords: ['ai','ai inference','ai inferencing','llm','large language model','app platform','lke','linode kubernetes engine','rag pipeline','retrieval augmented generation','open webui','kubeflow']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -50,9 +51,13 @@ If you prefer a manual installation rather than one using App Platform for LKE, 
 
 ## Prerequisites
 
--   Complete the deployment in the [Deploy an LLM for AI Inferencing with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl) guide. An LKE cluster consisting of at least 3 RTX4000 Ada x1 Medium [GPU](https://techdocs.akamai.com/cloud-computing/docs/gpu-compute-instances) nodes is recommended for AI inference workloads.
+-   Complete the deployment in the [Deploy an LLM for AI Inferencing with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl) guide. Your LKE cluster should include the following minimum hardware requirements:
 
--   [Python3](https://www.python.org/downloads/) and the [venv](https://docs.python.org/3/library/venv.html) Python module installed on your local machine.
+    -   3 **8GB Dedicated CPUs** with [autoscaling](https://techdocs.akamai.com/cloud-computing/docs/manage-nodes-and-node-pools#autoscale-automatically-resize-node-pools) turned on
+
+    -   A second node pool consisting of at least 2 **RTX4000 Ada x1 Medium [GPU](https://techdocs.akamai.com/cloud-computing/docs/gpu-compute-instances)** plans
+
+-   [Python3](https://www.python.org/downloads/) and the [venv](https://docs.python.org/3/library/venv.html) Python module installed on your local machine
 
 ## Set Up Infrastructure
 
