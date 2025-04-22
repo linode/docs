@@ -74,7 +74,9 @@ When working in the context of an admin-level Team, users can create and access 
 
 To install WordPress on your cluster, add the WordPress Helm chart using the Git Repository URL.
 
-1.  While still using the `admin` team view, click on **Catalog** in the left menu.
+1.  Select **view** > **team** and **team** > **admin**.
+
+1.  Once using the `admin` team view, click on **Catalog** in the left menu.
 
 1.  Select **Add Helm Chart**.
 
@@ -86,15 +88,15 @@ To install WordPress on your cluster, add the WordPress Helm chart using the Git
 
 1.  Click **Get Details** to populate the `wordpress` Helm chart details.
 
-1.  Deselect **Allow teams to use this chart**. This allows teams other than `admin` to use the Helm chart.
+1.  Leave **Allow teams to use this chart** selected (default). This allows teams other than `admin` to use the Helm chart.
 
-1.  Click **Add Chart**.
+1.  Click **Add Chart**. It may take a few minutes for the Helm chart to be added to the Catalog.
 
 ### Add the MySQL Helm Chart to the Catalog
 
 Repeat the same steps for installing the MySQL service on your cluster.
 
-1.  Click on **Catalog** in the left menu.
+1.  While still using the `admin` team view, click on **Catalog** in the left menu.
 
 1.  Select **Add Helm Chart**.
 
@@ -104,9 +106,9 @@ Repeat the same steps for installing the MySQL service on your cluster.
     https://github.com/bitnami/charts/blob/mysql/12.3.1/bitnami/mysql/Chart.yaml
     ```
 
-1.  Click **Get Details** to populate the `mysql` Helm chart details. You may need to change the **Target Directory Name** field to read "MySQL". This is used to differentiate Helm charts within the Catalog.
+1.  Click **Get Details** to populate the `mysql` Helm chart details. If necessary, change the **Target Directory Name** field to read "MySQL". This is used to differentiate Helm charts within the Catalog.
 
-1.  Deselect **Allow teams to use this chart**.
+1.  Leave **Allow teams to use this chart** selected.
 
 1.  Click **Add Chart**.
 
@@ -128,7 +130,7 @@ Separate Workloads are created for MySQL and WordPress in order to deploy a data
 
 1.  Select type _[kubernetes.io/opaque](kubernetes.io/opaque)_ from the **type** dropdown menu.
 
-1.  Add the following **Key** and **Value** pairs, replacing `{{< placeholder "YOUR_PASSWORD" >}}` and `{{< placeholder "YOUR_ROOT_PASSWORD" >}}` with your own secure passwords:
+1.  Add the following **Key** and **Value** pairs, replacing `{{< placeholder "YOUR_PASSWORD" >}}` and `{{< placeholder "YOUR_ROOT_PASSWORD" >}}` with your own secure passwords. To add a second Key and Value combination, select **Add Item** after entering the first pair below:
 
     - Key=`mysql-password`, Value=`{{< placeholder "YOUR_PASSWORD" >}}`
     - Key=`mysql-root-password`, Value=`{{< placeholder "YOUR_ROOT_PASSWORD" >}}`
@@ -149,10 +151,10 @@ Separate Workloads are created for MySQL and WordPress in order to deploy a data
 
 1.  Add the following **Key** and **Value** pairs.
 
-    Replace `{{< placeholder "YOUR_MYSQL_PASSWORD" >}}` with the same password you used for your `mysql-password` when creating the `mysql-credentials` Sealed Secret above. Replace `{{< placeholder "YOUR_PASSWORD" >}}` with your own secure password:
+    Replace `{{< placeholder "YOUR_MYSQL_PASSWORD" >}}` with the same password you used for your `mysql-password` when creating the `mysql-credentials` Sealed Secret above. Replace `{{< placeholder "YOUR_WORDPRESS_PASSWORD" >}}` with your own secure password:
 
     - Key=`mariadb-password`, Value=`{{< placeholder "YOUR_MYSQL_PASSWORD" >}}`
-    - Key=`wordpress-password`, Value=`{{< placeholder "YOUR_PASSWORD" >}}`
+    - Key=`wordpress-password`, Value=`{{< placeholder "YOUR_WORDPRESS_PASSWORD" >}}`
 
 1.  Click **Submit**. The Sealed Secret may take a few minutes to become ready.
 
@@ -239,9 +241,9 @@ Create a Network Policy allowing only the WordPress Pod to connect to the MySQL 
 
     - **Selector label value**: `kfp`
 
-1.  Select **AllowOnly**, and enter the following values:
+1.  Select **AllowOnly**, and enter the following values. This allows only the WordPress Pod to connect to the database:
 
-    - **Namespace name**: __
+    - **Namespace name**: `team-demo`
 
     - **Selector label name**: [`app.kubernetes.io/instance`](http://app.kubernetes.io/instance)
 
@@ -257,19 +259,19 @@ Using the App Platform **Shell** feature, you can check to see if the WordPress 
 
 1.  In the left menu, select **Shell**.
 
-1.  Once the Shell session has loaded, enter the following command to launch the k9s interface. [k9s](https://k9scli.io/) is an open source, terminal-based Kubernetes user interface pre-installed with Akamai App Platform:
+1.  Enter the following command to launch the k9s interface once the Shell session has loaded. [k9s](https://k9scli.io/) is an open source, terminal-based Kubernetes user interface pre-installed with Akamai App Platform:
 
     ```command
     k9s
     ```
 
-1.  A `CrashLoopBackOff` status signifies that WordPress has not successfully connected to the database.
+1.  If you see a `CrashLoopBackOff` status, WordPress has not successfully connected to the database.
 
-    ![SCREENSHOT]()
+    ![CrashLoopBackOff](APL-WordPress-CrashLoopBackOff.jpg)
 
     In order to force a restart, click on the WordPress Pod, and type <kbd>Ctrl</kbd> + <kbd>D</kbd>. This kills the current Pod and starts a new one.
 
-    ![SCREENSHOT]()
+    ![Pod Running](APL-WordPress-PodRunning.jpg)
 
 ## Create a Service to Expose the WordPress Site
 
@@ -287,7 +289,7 @@ Creating a [Service](https://apl-docs.net/docs/for-devs/console/services) in App
 
 1.  Once the Service is ready, click the URL of the `wordpress` service to navigate to the live WordPress site:
 
-    ![SCREENSHOT]()
+    ![WordPress Live Site](APL-WordPress-LiveSite.jpg)
 
 ### Setting Up DNS
 
@@ -305,13 +307,11 @@ See our guide on [CNAME records](https://techdocs.akamai.com/cloud-computing/doc
 
     This should bring you to the WordPress admin panel login screen:
 
-    ![SCREENSHOT]()
+    ![WordPress Login Screen](APL-WordPress-WPlogin.jpg)
 
 1.  To access the WordPress UI, sign in with your WordPress username and password.
 
-    Your username is the value used for `wordpressUsername` when creating the [WordPress Workload](#create-the-wordpress-workload). Your password is the value used for `wordpress-password` when making your `wordpress-credentials` [Sealed Secret](#create-a-sealed-secret-to-store-wordpress-credentials):
-
-    ![SCREENSHOT]()
+    Your username is the value used for `wordpressUsername` when creating the [WordPress Workload](#create-the-wordpress-workload). Your password is the value used for `wordpress-password` when making your `wordpress-credentials` [Sealed Secret](#create-a-sealed-secret-to-store-wordpress-credentials).
 
 ## Going Further
 
