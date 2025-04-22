@@ -16,7 +16,7 @@ external_resources:
 The Akamai App Platform is now available as a limited beta. It is not recommended for production workloads. To register for the beta, visit the [Betas](https://cloud.linode.com/betas) page in the Cloud Manager and click the Sign Up button next to the Akamai App Platform Beta.
 {{< /note >}}
 
-This guide includes steps for deploying a WordPress site and MySQL database using App Platform for Linode Kubernetes Engine (LKE). In this architecture, both WordPress and MySQL use PersistentVolumes (PV) and PersistentVolumeClaims (PVC) to store data.
+This guide includes steps for deploying a WordPress site and persistent MySQL database using App Platform for Linode Kubernetes Engine (LKE). In this architecture, both WordPress and MySQL use PersistentVolumes (PV) and PersistentVolumeClaims (PVC) to store data.
 
 Akamai App Platform for LKE uses the Add Helm Chart feature to add the WordPress and MySQL Helm charts to the App Platform Catalog.
 
@@ -114,7 +114,7 @@ Repeat the same steps for installing the MySQL service on your cluster.
 
 ## Deploy a MySQL Database and WordPress Site
 
-Separate Workloads are created for MySQL and WordPress in order to deploy a database and site, respectively. Both Workloads require passwords, so to prevent the passwords from being stored unencrypted, Sealed Secrets are created for each first.
+Separate Workloads are created for MySQL and WordPress in order to deploy a persistent database and site, respectively. Both Workloads require passwords, so to prevent the passwords from being stored unencrypted, Sealed Secrets are created for each first.
 
 [Sealed Secrets](https://apl-docs.net/docs/for-devs/console/secrets) are encrypted Kubernetes Secrets stored in the Values Git repository. When a Sealed Secret is created in the Console, the Kubernetes Secret will appear in the Team's namespace.
 
@@ -209,7 +209,7 @@ Separate Workloads are created for MySQL and WordPress in order to deploy a data
     mariadb:
       enabled: {{< placeholder "false" >}}
     externalDatabase:
-      host: {{< placeholder "wordpress-mysql.team-labs.svc.cluster.local" >}}
+      host: {{< placeholder "wordpress-mysql.team-demo.svc.cluster.local" >}}
       user: {{< placeholder "wordpress" >}}
       database: {{< placeholder "wordpress" >}}
       existingSecret: "{{< placeholder "wordpress-credentials" >}}"
@@ -235,11 +235,11 @@ Create a Network Policy allowing only the WordPress Pod to connect to the MySQL 
 
 1.  Add a name for the Network Policy. This guide uses the name `wordpress-mysql`.
 
-1.  Select **Rule type** `ingress` using the following values, where `kfp` is the name of the Workload created in the next step:
+1.  Select **Rule type** `ingress` using the following values:
 
     - **Selector label name**: [`app.kubernetes.io/instance`](http://app.kubernetes.io/instance)
 
-    - **Selector label value**: `kfp`
+    - **Selector label value**: `wordpress-mysql`
 
 1.  Select **AllowOnly**, and enter the following values. This allows only the WordPress Pod to connect to the database:
 
@@ -268,6 +268,8 @@ Using the App Platform **Shell** feature, you can check to see if the WordPress 
 1.  If you see a `CrashLoopBackOff` status, WordPress has not successfully connected to the database.
 
     ![CrashLoopBackOff](APL-WordPress-CrashLoopBackOff.jpg)
+
+    This may occur if Workload or Network Policy values are not correct. Check your values as needed, and restart the Pod.
 
     In order to force a restart, click on the WordPress Pod, and type <kbd>Ctrl</kbd> + <kbd>D</kbd>. This kills the current Pod and starts a new one.
 
