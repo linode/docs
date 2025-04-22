@@ -5,6 +5,7 @@ description: "This guide includes steps and guidance for deploying a large langu
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-03-25
+modified: 2025-04-17
 keywords: ['ai','ai inference','ai inferencing','llm','large language model','app platform','lke','linode kubernetes engine','llama 3','kserve','istio','knative']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -66,11 +67,14 @@ If you prefer to manually install an LLM and RAG Pipeline on LKE rather than usi
 
 - Enrollment into the Akamai App Platform's [beta program](https://cloud.linode.com/betas).
 
-- An provisioned and configured LKE cluster with App Platform enabled. We recommend an LKE cluster consisting of at least 3 RTX4000 Ada x1 Medium [GPU](https://techdocs.akamai.com/cloud-computing/docs/gpu-compute-instances) plans.
-
-To learn more about provisioning a LKE cluster with App Platform, see our [Getting Started with App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-akamai-application-platform) guide.
-
 ## Set Up Infrastructure
+
+### Provision an LKE Cluster
+
+We recommend provisioning an LKE cluster with [App Platform](https://techdocs.akamai.com/cloud-computing/docs/application-platform) enabled and the following minimum requirements:
+
+- 3 **8GB Dedicated CPUs** with [autoscaling](https://techdocs.akamai.com/cloud-computing/docs/manage-nodes-and-node-pools#autoscale-automatically-resize-node-pools) turned on
+- A second node pool consisting of at least 2 **RTX4000 Ada x1 Medium [GPU](https://techdocs.akamai.com/cloud-computing/docs/gpu-compute-instances)** plans
 
 Once your LKE cluster is provisioned and the App Platform web UI is available, complete the following steps to continue setting up your infrastructure.
 

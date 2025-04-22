@@ -15,6 +15,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 marketplace_app_id: 925530
 marketplace_app_name: "UTunnel VPN"
 ---
+{{< note type="warning" title="This app is no longer available for deployment" >}}
+UTunnel VPN has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
+{{< /note >}}
 
 [UTunnel VPN](https://www.utunnel.io/) lets you set up your own private VPN server quickly and easily; no technical expertise is required. It is well suited for small and medium businesses to set up easy and secure remote access for their employees, or for anyone who wants to keep their data private using their own VPN. UTunnel VPN supports multiple VPN protocols and comes with a server management console, secure 256-bit encryption, easy team management, single sign-on, 2-factor authentication, and an inbuilt firewall.
 
