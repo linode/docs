@@ -12,7 +12,13 @@ aliases: ['/products/tools/marketplace/guides/warpspeed/','/guides/deploying-war
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 923037
+marketplace_app_name: "WarpSpeed"
 ---
+
+{{< note type="warning" title="This app is no longer available for deployment" >}}
+WarpSpeed has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
+{{< /note >}}
 
 WarpSpeed makes it easy for developers to access cloud infrastructure via the powerful WireGuard® VPN protocol. It can also be used to enable remote workers to access the internet securely while on public WiFi.
 

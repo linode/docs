@@ -11,6 +11,8 @@ aliases: ['/products/tools/marketplace/guides/litespeed-cpanel/','/guides/deploy
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 923032
+marketplace_app_name: "LiteSpeed cPanel"
 ---
 
 The LiteSpeed cPanel App automatically installs [cPanel](https://cpanel.net/), [LiteSpeed Web Server](https://www.litespeedtech.com/products/litespeed-web-server), and the[WHM/cPanel LiteSpeed Plugin](https://www.litespeedtech.com/products/litespeed-web-server/control-panel-plugins/cpanel).

@@ -12,6 +12,8 @@ aliases: ['/products/tools/marketplace/guides/vscode/','/platform/marketplace/ho
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 688903
+marketplace_app_name: "VS Code Server"
 ---
 
 Run a [Visual Studio Code Server](https://github.com/cdr/code-server) in the browser with the Visual Studio (VS) Code Marketplace App. Code Server uses the open source code to provide a web interface for VS Code.

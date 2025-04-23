@@ -11,6 +11,8 @@ aliases: ['/products/tools/marketplace/guides/harbor/','/products/tools/marketpl
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 1350783
+marketplace_app_name: "GlusterFS Cluster"
 ---
 
 ## Cluster Deployment Architecture

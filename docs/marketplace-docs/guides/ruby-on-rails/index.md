@@ -14,6 +14,8 @@ aliases: ['/products/tools/marketplace/guides/ruby-on-rails/','/platform/marketp
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 609048
+marketplace_app_name: "Roby on Rails"
 ---
 
 [Ruby on Rails](http://rubyonrails.org/) is a server-side web application framework that allows web designers and developers to implement dynamic, fully featured web applications.

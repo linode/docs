@@ -15,7 +15,12 @@ aliases: ['/products/tools/marketplace/guides/victoriametrics-single/','/guides/
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 954759
+marketplace_app_name: "VictoriaMetrics"
 ---
+{{< note type="warning" title="This app is no longer available for deployment" >}}
+VictoriaMetrics has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
+{{< /note >}}
 
 [VictoriaMetrics](https://victoriametrics.com/) is a free [open source time series database](https://en.wikipedia.org/wiki/Time_series_database) (TSDB) and monitoring solution that is designed to collect, store, and process real-time metrics. It supports the [Prometheus](https://en.wikipedia.org/wiki/Prometheus_(software)) pull model and various push protocols ([Graphite](https://en.wikipedia.org/wiki/Graphite_(software)), [InfluxDB](https://en.wikipedia.org/wiki/InfluxDB), OpenTSDB) for data ingestion. It is optimized for storage with high-latency IO, low IOPS, and time series with [high churn rate](https://docs.victoriametrics.com/FAQ.html#what-is-high-churn-rate). For reading the data and evaluating alerting rules, VictoriaMetrics supports the PromQL, [MetricsQL](https://docs.victoriametrics.com/MetricsQL.html), and Graphite query languages.
 

@@ -2,7 +2,7 @@
 title: "Deploy Flask through the Linode Marketplace"
 description: "Learn how to deploy Flask, a quick and light-weight web framework for Python, through the Linode Marketplace."
 published: 2020-03-11
-modified: 2022-03-08
+modified: 2025-02-12
 keywords: ['flask','python','marketplace']
 tags: ["linode platform","python","marketplace","cloud-manager"]
 image: Flask_oneclickapps.png
@@ -13,6 +13,8 @@ aliases: ['/products/tools/marketplace/guides/flask/','/platform/marketplace/how
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 609392
+marketplace_app_name: "Flask"
 ---
 
 [Flask](https://flask.palletsprojects.com/en/1.1.x/) is a quick and light-weight web framework for Python that includes several utilities and libraries you can use to create a web application. It is designed to make getting started quick and easy, with the ability to scale up to support more complex applications.
@@ -32,39 +34,55 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 - **Supported distributions:** Debian 10
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
-## Getting Started after Deployment
+## Flask options
+
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
+- **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
+
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
+
+{{% content "marketplace-special-character-limitations-shortguide" %}}
+
+
+### Obtain the Credentials
+
+Once the app is deployed, you need to obtain the credentials from the server.
+
+To obtain credentials:
+
+1.  Log in to your new Compute Instance using one of the methods below:
+
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
+
+1.  Run the following command to access the credentials file:
+
+    ```command
+    cat /home/$USERNAME/.credentials
+    ```
+
+This returns passwords that were automatically generated when the instance was deployed. Save them. Once saved, you can safely delete the file.
+
+## Getting Started After Deployment
+
+To get started:
+
+1.  Open a web browser and navigate to the domain you entered when creating the instance: `https://domain.tld`. If you didn't enter a domain, use your Compute Instance's default rDNS domain (`192-0-2-1.ip.linodeusercontent.com`). To learn more on viewing the rDNS value, see [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). Make sure to use the `https` prefix in the URL to access the website securely.
+
+1. The deployment ships with a sample application, but you can review the flask app and it's components below:
+
+* The sample project can be found in /var/www/flask_project
+* The Gunicorn systemd service can be found in /etc/systemd/system/gunicorn.service
+* The Gunicorn socket is located at /tmp/gunicorn.sock
 
 ### Installed Software
 
 In addition to installing Flask, this Marketplace app installs and configures software to support running Flask in a production environment. Below is a list of the installed software:
 
-- The [NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) web server is installed with a basic NGINX configuration, located in `/etc/nginx/sites-enabled/flask_app`, and listening on your Linode's IP address.
-- An example Flask application is downloaded to your Linode's `/home/flask_app_project` directory. If you visit your [Linode's IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/), you will see the example Flask application running and serving boiler plate blog content.
-- Your example Flask application's environment will be configured with basic settings located in the `/etc/config.json` file.
+- The [NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) web server is installed with a basic NGINX configuration, located in `/etc/nginx/sites-enabled/$DOMAIN`. The $DOMAIN will be the domain entered during deployment or the default rDNS address that comes with each instance.
+- An sample Flask application is downloaded to your Linode's `/var/www/flask_project` directory.
+
 - [Gunicorn](https://gunicorn.org/), a Python WSGI (web server gateway interface) HTTP Server for UNIX, is installed and running. It is used to forward requests from your NGINX web server to your Flask application.
-- [Supervisor](http://supervisord.org/), a client/server system that allows its users to monitor and control a number of processes on UNIX-like operating systems, is installed and running on your Linode. Its configuration file can be found in the following location, `/etc/supervisor/conf.d/flask_app.conf`.
-- The example Flask app's logs can be found in the following locations, `var/log/flask_app/flask_app.out.log` and `/var/log/flask_app/flask_app.err.log`
-
-### Removing Default Application
-
-Users may find that they need to remove access to the default Flask application on port 80 to free up space for another application, or to otherwise remove components. The following steps can help to disable and decouple various aspects of the default Flask application included with the Flask Marketplace App:
-
-- Unlink the default NGINX site for the Flask app:
-
-      sudo unlink /etc/nginx/sites-enabled/flask_app
-
-- Stop the application from being monitored and maintained by supervisorctl:
-
-      sudo supervisorctl stop all
-
-- Remove configuration files for the Flask application:
-
-      sudo rm -rf /home/flask_app_project
-      sudo rm /etc/config.json
-
-- Remove the Supervisor configuration files:
-
-      sudo rm /etc/supervisor/conf.d/flask_app.conf
 
 {{< note >}}
 Many configuration files can be overwritten to support a new configuration instead of deleted outright. For more information on the default configuration, see our [Flask Installation Guide](/docs/guides/flask-and-gunicorn-on-ubuntu/) and the [Installed Software Section](/docs/marketplace-docs/guides/flask/#installed-software) of this guide.

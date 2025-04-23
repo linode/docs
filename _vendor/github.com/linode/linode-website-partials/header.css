@@ -44,7 +44,7 @@
 }
 @media (max-width: 47.99em) {
   :root {
-    --site-header-height: 61px;
+    --site-header-height: 81px;
   }
 }
 
@@ -281,10 +281,10 @@ body.om-position-floating-top {
 }
 
 .c-identity {
-  --gap: 24px;
+  --gap: 10px;
+  align-items: center;
   display: flex;
   gap: var(--gap);
-  vertical-align: top;
 }
 
 .c-identity__link {
@@ -293,28 +293,31 @@ body.om-position-floating-top {
 
 .c-identity__image {
   display: block;
-  height: 52px;
   width: auto;
 }
+
+.c-identity__logomark {
+  border-right: 1px solid #e2e5e6;
+  padding-right: var(--gap);
+}
+
 @media (max-width: 47.99em) {
-  .c-identity__image {
-    height: 38px;
+  .c-identity__logomark img {
+    height: 40px;
+  }
+  .c-identity__text img {
+    height: 20px;
   }
 }
-
-.c-identity__link + .c-identity__link {
-  border-left: 1px solid #aaafb1;
-  padding-left: var(--gap);
-}
-
-@media (min-width: 62em) and (max-width: 65.3125em) {
-  .c-identity__image {
-    height: 42px;
-  }
-}
-@media (max-width: 65.3125em) {
+@media (min-width: 48em) {
   .c-identity {
-    --gap: 16px;
+    --gap: 12px;
+  }
+  .c-identity__logo {
+    padding-block: 2px 5px;
+  }
+  .c-identity__text {
+    padding-block: 17px 15px;
   }
 }
 .c-site-header {
@@ -543,7 +546,7 @@ body.om-position-floating-top {
   margin-top: 32px;
 }
 .c-submenu h6 {
-  color: #999b9d;
+  color: rgb(152.5, 154.5, 157);
   font-family: "Source Sans Pro", sans-serif;
   font-size: 0.75rem;
   letter-spacing: 0;
@@ -630,10 +633,10 @@ body.om-position-floating-top {
   margin-bottom: 16px;
 }
 .c-submenu .c-featured__button {
-  background-color: #017ac6;
+  background-color: var(--button-background-color, #017ac6);
   border: 0 solid;
   border-radius: 4px;
-  color: #ffffff;
+  color: var(--button-text-color, #ffffff);
   cursor: pointer;
   display: inline-block;
   font-size: 0.8125rem;
@@ -643,6 +646,10 @@ body.om-position-floating-top {
   text-align: center;
   white-space: nowrap;
   width: auto;
+}
+.c-submenu .c-featured__button:hover {
+  background-color: var(--button-background-color--hover, #32363b);
+  color: var(--button-text-color--hover, #ffffff);
 }
 .c-submenu .c-featured:hover, .c-submenu .c-featured:visited {
   color: var(--c-featured-color, #32363b);

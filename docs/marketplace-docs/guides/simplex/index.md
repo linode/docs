@@ -10,6 +10,8 @@ aliases: ['/products/tools/marketplace/guides/simplex/']
 authors: ["Shum"]
 contributors: ["Shum"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 1243760
+marketplace_app_name: "SimpleX Chat"
 ---
 
 SimpleX Chat is a private messaging platform that uses temporary anonymous identifiers to eliminate the need for long-term user identification. This app deploys a self-hosted SMP relay server used to pass messages in the SimpleX network. It also installs the XFTP server to support XFTP file transfer protocol.

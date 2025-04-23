@@ -13,7 +13,7 @@ external_resources:
 - '[Linode Object Storage guides & tutorials](/docs/guides/platform/object-storage/)'
 ---
 
-Linode Object Storage is an S3-compatible service used for storing large amounts of unstructured data. This guide includes steps on how to migrate up to 100TB of static content from AWS S3 to Linode Object Storage using rclone, along with how to monitor your migration using rclone’s WebUI GUI.
+Linode Object Storage is an Amazon S3-compatible service used for storing large amounts of unstructured data. This guide includes steps on how to migrate up to 100TB of static content from AWS S3 to Linode Object Storage using rclone, along with how to monitor your migration using rclone’s WebUI GUI.
 
 ## Migration Considerations
 
@@ -37,7 +37,7 @@ Linode Object Storage is an S3-compatible service used for storing large amounts
 
 There are two architecture options for completing a data migration from AWS S3 to Linode Object Storage. One of these architectures is required to be in place prior to initiating the data migration:
 
-**Architecture 1:** Utilizes an EC2 instance running rclone in the same region as the source S3 bucket. Data is transferred internally from the S3 bucket to the EC2 instance and then over the public internet from the EC2 instance to the target Linode Object Storage bucket.
+**Architecture 1:** Utilizes an EC2 instance running rclone in the same region as the source AWS S3 bucket. Data is transferred internally from the AWS S3 bucket to the EC2 instance and then over the public internet from the EC2 instance to the target Linode Object Storage bucket.
 
 -   **Recommended for:** speed of transfer, users with AWS platform familiarity
 
@@ -53,7 +53,7 @@ Rclone generally performs better when placed closer to the source data being cop
 
 1.  A source AWS S3 bucket with the content to be transferred.
 
-1.  An AWS EC2 instance running rclone in the same region as the source S3 bucket. The S3 bucket communicates with the EC2 instance via VPC Endpoint within the AWS region. Your IAM policy should allow S3 access only via your VPC Endpoint.
+1.  An AWS EC2 instance running rclone in the same region as the source AWS S3 bucket. The AWS S3 bucket communicates with the EC2 instance via VPC Endpoint within the AWS region. Your IAM policy should allow S3 access only via your VPC Endpoint.
 
 1.  Data is copied across the public internet from the AWS EC2 instance to a target Linode Object Storage bucket. This results in egress (outbound traffic) being calculated by AWS.
 
@@ -93,7 +93,7 @@ Rclone generally performs better when placed closer to the source data being cop
     -   Secret key
     -   Region ID
 
--   If using Architecture 1, there must be a [VPC gateway endpoint created](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html) for S3 in the same VPC where your EC2 instance is deployed. This should be the same region as your S3 bucket.
+-   If using Architecture 1, there must be a [VPC gateway endpoint created](https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html) for S3 in the same VPC where your EC2 instance is deployed. This should be the same region as your AWS S3 bucket.
 
 -   An **existing Linode Object Storage bucket** with:
 
@@ -194,7 +194,7 @@ Rclone generally performs better when placed closer to the source data being cop
 
 #### Rclone Copy Command Breakdown
 
--   `aws:aws-bucket-name/`: The AWS remote provider and source S3 bucket. Including the slash at the end informs the `copy` command to include everything within the bucket.
+-   `aws:aws-bucket-name/`: The AWS remote provider and source AWS S3 bucket. Including the slash at the end informs the `copy` command to include everything within the bucket.
 
 -   `linode:linode-bucket-name/`: The Linode remote provider and target Object Storage bucket.
 

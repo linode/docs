@@ -1,2 +1,0 @@
-{{ $index := partialCached "sections/search/get-search-data-api.html" . }}
-{{- $index | jsonify (dict "indent" "  ") -}}

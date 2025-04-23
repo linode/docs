@@ -9,7 +9,7 @@ keywords: ['build cloud-native container registry with quay','red hat quay','cen
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-Docker doesn’t provide long term storage or image distribution capabilities, so developers need something more. [Docker Registry](https://docs.docker.com/registry/) performs these tasks, and using it guarantees the same application runtime environment through virtualization. However, building an image can involve a significant time investment, which is where [Quay](https://www.redhat.com/en/resources/quay-datasheet) (pronounced *kway*) comes in. A registry like Quay can both build and store containers. You can then deploy these containers in a shorter time and with less effort than using Docker Registry. This guide explains how Quay can be an essential part of the development process and details how to deploy a Quay registry.
+Docker doesn’t provide long term storage or image distribution capabilities, so developers need something more. [Docker Registry](https://docs.docker.com/registry/) performs these tasks, and using it guarantees the same application runtime environment through virtualization. However, building an image can involve a significant time investment, which is where [Quay](https://www.redhat.com/en/resources/quay-datasheet) comes in. A registry like Quay can both build and store containers. You can then deploy these containers in a shorter time and with less effort than using Docker Registry. This guide explains how Quay can be an essential part of the development process and details how to deploy a Quay registry.
 
 ## What is Red Hat Quay?
 

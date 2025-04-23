@@ -11,6 +11,8 @@ aliases: ['/products/tools/marketplace/guides/wazuh/','/guides/deploying-wazuh-m
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 913276
+marketplace_app_name: "Wazuh"
 ---
 
 [Wazuh](https://wazuh.com/) provides a security solution for monitoring your infrastructure and detecting threats, intrusion attempts, system anomalies, poorly configured applications, and unauthorized user actions. It also provides a framework for incident response and regulatory compliance.
