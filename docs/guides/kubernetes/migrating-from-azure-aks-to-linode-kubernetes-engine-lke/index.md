@@ -1,11 +1,11 @@
 ---
 slug: migrating-from-azure-aks-to-linode-kubernetes-engine-lke
 title: "Migrating from Azure AKS to Linode Kubernetes Engine (LKE)"
-description: "Learn how to migrate Kubernetes applications from Azure AKS to Linode Kubernetes Engine (LKE) using a sample rest API service."
+description: "Learn how to migrate Kubernetes applications from Azure AKS to Linode Kubernetes Engine (LKE) using a sample REST API service."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-04-16
-keywords: ['azure aks','azure aks alternatives','azure kubernetes alternatives','microsoft kubernetes alternatives','replace azure aks','replace azure kubernetes','replace microsoft kubernetes','migrate azure aks to linode','migrate azure kubernetes to linode','migrate microsoft kubernetes to linode','migrate kubernetes applications to linode','azure aks migration','azure kubernetes migration','microsoft kubernetes migration','azure aks replacement','azure kubernetes replacement','microsoft kubernetes replacement']
+keywords: ['azure aks','azure aks alternatives','azure kubernetes alternatives','replace azure aks','replace azure kubernetes','migrate azure aks to linode','migrate azure kubernetes to linode','migrate kubernetes applications to linode','azure aks migration','azure kubernetes migration','azure aks replacement','azure kubernetes replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
@@ -134,7 +134,7 @@ Detailed information about your cluster is also available in the Azure portal.
 
 To illustrate an application running in a production environment, a [REST API service application written in Go](https://github.com/linode/docs-cloud-projects/tree/main/demos/go-quote-service-main) is deployed to the example AKS cluster. If you already have one or more applications running on your AKS cluster, you may skip this section.
 
-The function of the REST API service allows you to add a quote (a string) to a stored list, or to retrieve that list. Deploying the application creates a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+The function of the REST API service allows you to add quotes (string) to a stored list, or to retrieve that list. Deploying the application creates a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
 Follow the steps below to install, configure, and test the REST API service application on your AKS cluster.
 
@@ -214,7 +214,7 @@ Follow the steps below to install, configure, and test the REST API service appl
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-1.  Apply the manifest to deploy the application on your EKS cluster:
+1.  Apply the manifest to deploy the application on your AKS cluster:
 
     ```command
     kubectl apply -f manifest.yaml
@@ -425,7 +425,7 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file. Yo
         '.[] | select(.label == "aks-to-lke") | .id')
     ```
 
-1.  Retrieve the `kubeconfig` file and save it to `~/.kube/lke-config`:.
+1.  Retrieve the `kubeconfig` file and save it to `~/.kube/lke-config`:
 
     ```command
     linode-cli lke kubeconfig-view --json "$CLUSTER_ID" | \
@@ -611,7 +611,7 @@ Verify that the deployment and the service were created successfully. The steps 
     kubernetes         ClusterIP      {{< placeholder "K8S_CLUSTER_IP" >}}       <none>                 443/TCP        157m
     ```
 
-1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}} with the actual external IP address of your load balancer::
+1.  Test the service by adding a quote, replacing {{< placeholder "GO_QUOTE_EXTERNAL_IP" >}} with the actual external IP address of your load balancer:
 
     ```command
     curl -X POST \

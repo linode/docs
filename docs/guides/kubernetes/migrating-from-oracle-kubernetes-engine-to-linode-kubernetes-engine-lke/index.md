@@ -1,7 +1,7 @@
 ---
 slug: migrating-from-oracle-kubernetes-engine-to-linode-kubernetes-engine-lke
 title: "Migrating from Oracle Kubernetes Engine (OKE) to Linode Kubernetes Engine (LKE)"
-description: "Learn how to migrate Kubernetes applications from Oracle OKE to Linode Kubernetes Engine (LKE) using a using a sample rest API service."
+description: "Learn how to migrate Kubernetes applications from Oracle OKE to Linode Kubernetes Engine (LKE) using a sample REST API service."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-04-16
@@ -47,7 +47,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     ![OKE cluster details page in Oracle Cloud showing Cluster ID.](oracle-oke-cluster-id-details.png)
 
-1.  Note the **region** where your cluster has been provisioned. Click on the **region** in the top-right part of the page, then navigate to **Manage regions**:
+1.  Note the **Region** where your cluster has been provisioned. Click on the **Region** in the top-right part of the page, then navigate to **Manage regions**:
 
     ![Oracle Cloud console with region selection dropdown open and Manage regions option highlighted.](oracle-region-selection.png)
 
@@ -55,13 +55,13 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     ![List of region identifiers in Oracle Cloud console.](oracle-region-identifier-list.png)
 
-    In the screenshot above, the cluster name is `my-oke-cluster` and the cluster ID is `ocid1.cluster.oc1.phx.aaaaaaaa5spjobcrfpqy5p2uosdjzvmatj3kw2tsmdrl3447fcmux6nk5oza`. The cluster location is `us-phoenix-1`.
+    In the screenshots above, the cluster name is `my-oke-cluster`, the cluster ID is `ocid1.cluster.oc1.phx.aaaaaaaa5spjobcrfpqy5p2uosdjzvmatj3kw2tsmdrl3447fcmux6nk5oza`, and the cluster location is `us-phoenix-1`.
 
-1.  Use the Oracle CLI to update your local `kubeconfig` file with your OKE cluster information, replacing {{< placeholder "OKE_CLUSTER_ID" >}} and {{< placeholder "OKE_REGION" >}} with your actual OKE cluster ID and region:
+1.  Use the Oracle CLI to update your local `kubeconfig` file with your OKE cluster information, replacing {{< placeholder "OKE_CLUSTER_OCID" >}} and {{< placeholder "OKE_REGION" >}} with your actual OKE cluster ID and region:
 
     ```command
     oci ce cluster create-kubeconfig \
-      --cluster-id {{< placeholder "OKE_CLUSTER_ID" >}} \
+      --cluster-id {{< placeholder "OKE_CLUSTER_OCID" >}} \
       --file $HOME/.kube/config  \
       --region {{< placeholder "OKE_REGION" >}} \
       --token-version 2.0.0 \
@@ -120,7 +120,7 @@ Detailed information about your cluster is also available in the Oracle Cloud co
     ```
 
     ```output
-    NAME         STATUS   ROLES   AGE   VERSION
+    NAME            STATUS   ROLES   AGE   VERSION
     {{< placeholder "OKE_NODE_NAME" >}}   Ready    node    7h    v1.31.1
     ```
 
@@ -152,7 +152,7 @@ Detailed information about your cluster is also available in the Oracle Cloud co
 
 To illustrate an application running in a production environment, a [REST API service application written in Go](https://github.com/linode/docs-cloud-projects/tree/main/demos/go-quote-service-main) is deployed to the example OKE cluster. If you already have one or more applications running on your OKE cluster, you may skip this section.
 
-The function of the REST API service allows you to add a quote (a string) to a stored list, or to retrieve that list. Deploying the application creates a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+The function of the REST API service allows you to add quotes (strings) to a stored list, or to retrieve that list. Deploying the application creates a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
 Follow the steps below to install, configure, and test the REST API service application on your OKE cluster.
 
@@ -232,10 +232,16 @@ Follow the steps below to install, configure, and test the REST API service appl
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-1.  Apply the manifest to deploy the application on your GKE cluster:
+1.  Apply the manifest to deploy the application on your OKE cluster:
 
     ```command
     kubectl apply -f manifest.yaml
+    ```
+
+    ```output
+    deployment.apps/go-quote created
+    service/go-quote-service created
+    horizontalpodautoscaler.autoscaling/go-quote-hpa created
     ```
 
 1.  With the application deployed, run the following `kubectl` command to verify that the deployment is available:
@@ -434,7 +440,7 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file. Yo
     ```command
     CLUSTER_ID=$(linode-cli lke clusters-list --json | \
       jq -r \
-        '.[] | select(.label == "eks-to-lke") | .id')
+        '.[] | select(.label == "oke-to-lke") | .id')
     ```
 
 1.  Retrieve the `kubeconfig` file and save it to `~/.kube/lke-config`:.
@@ -475,7 +481,7 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file. Yo
 
 In some cases, migrating Kubernetes applications requires an incremental approach, as moving large interconnected systems all at once isn’t always practical.
 
-For example, if **Service A** interacts with **Services B, C, and D**, you may be able to migrate **Services A and B** together to LKE, where they can communicate efficiently. However, **Services C and D** may still rely on GCP infrastructure or native services, making their migration more complex.
+For example, if **Service A** interacts with **Services B, C, and D**, you may be able to migrate **Services A and B** together to LKE, where they can communicate efficiently. However, **Services C and D** may still rely on OKE infrastructure or native services, making their migration more complex.
 
 In this scenario, you may need to temporarily run **Service A** in both OKE and LKE. **Service A on LKE** would interact with **Service B on LKE**, while the version of **Service A on Oracle OKE** continues communicating with **Services C and D**. This setup minimizes disruptions while you work through the complexities of migrating the remaining services to LKE. Although cross-cloud communication may incur higher latency and costs, this approach helps maintain functionality during the transition.
 
@@ -652,7 +658,7 @@ Depending on your application, point any services dependent on the OKE cluster d
 
 ## Additional Considerations and Concerns
 
-When migrating from Oracle OKS to LKE, there are several important factors to keep in mind, including cost management, data persistence, networking, security, and alternative solutions for cloud-specific services.
+When migrating from Oracle OKE to LKE, there are several important factors to keep in mind, including cost management, data persistence, networking, security, and alternative solutions for cloud-specific services.
 
 ### Cost Management
 
@@ -697,7 +703,7 @@ Oracle integrates OCI Identity and Access Management (IAM) with Kubernetes acces
 
 ### DNS
 
-If you use an independent DNS provider for your application, you must update various DNS records to point to LKE endpoints and NodeBalancers instead of GCP endpoints.
+If you use an independent DNS provider for your application, you must update various DNS records to point to LKE endpoints and NodeBalancers instead of OKE endpoints.
 
 If you use OCI DNS and plan to migrate away from it, [our DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) may be a migration option.
 
@@ -725,6 +731,6 @@ Oracle provides its [Cloud Observability and Management Platform](https://www.or
 
 See [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-tobs-on-linode-kubernetes-engine/) for more information.
 
-### Alternative to GCP Secrets Manager
+### Alternative to OCI Vault
 
 The [OCI Vault](https://docs.oracle.com/en-us/iaas/Content/KeyManagement/home.htm) can be leveraged to provide Kubernetes secrets on OKE. With LKE, you need an alternative solution, such as [OpenBao on Akamai Cloud](/docs/marketplace-docs/guides/openbao/).

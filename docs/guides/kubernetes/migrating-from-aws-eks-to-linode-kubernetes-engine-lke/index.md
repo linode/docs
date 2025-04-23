@@ -61,7 +61,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  Identify the context name for your EKS cluster, and set it to the active context. Replace the values with those of your cluster:
 
-    ```commmand
+    ```command
     kubectl config use-context {{< placeholder "EKS_CLUSTER_CONTEXT_NAME" >}}
     ```
 
@@ -130,7 +130,7 @@ While Kubernetes does not have a native concept of a node group, all the nodes w
 
 To illustrate an application running in a production environment, a [REST API service application written in Go](https://github.com/linode/docs-cloud-projects/tree/main/demos/go-quote-service-main) is deployed to the example EKS cluster. If you already have one or more applications running on your EKS cluster, you may skip this section.
 
-The function of the REST API service allows you to add a quote (a string) to a stored list, or to retrieve that list. The application has been deployed to the cluster, creating a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+The function of the REST API service allows you to add quotes (strings) to a stored list, or to retrieve that list. The application has been deployed to the cluster, creating a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
 Follow the steps below to install, configure, and test the REST API service application on your EKS cluster.
 
@@ -420,7 +420,7 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file. Yo
       '.[] | select(.label == "eks-to-lke") | .id')
     ```
 
-1.  Retrieve the `kubeconfig` file and save it to `~/.kube/lke-config`:.
+1.  Retrieve the `kubeconfig` file and save it to `~/.kube/lke-config`:
 
     ```command
     linode-cli lke kubeconfig-view --json "$CLUSTER_ID" | \

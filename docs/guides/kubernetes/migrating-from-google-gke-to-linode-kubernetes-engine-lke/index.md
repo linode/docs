@@ -1,7 +1,7 @@
 ---
 slug: migrating-from-google-gke-to-linode-kubernetes-engine-lke
 title: "Migrating from Google GKE to Linode Kubernetes Engine (LKE)"
-description: "Learn how to migrate Kubernetes applications from Google GKE to Linode Kubernetes Engine (LKE) using a using a sample rest API service.."
+description: "Learn how to migrate Kubernetes applications from Google GKE to Linode Kubernetes Engine (LKE) using a using a sample REST API service.."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-04-16
@@ -146,7 +146,7 @@ Detailed information about your cluster is also available in the Google Cloud co
 
 To illustrate an application running in a production environment, a [REST API service application written in Go](https://github.com/linode/docs-cloud-projects/tree/main/demos/go-quote-service-main) is deployed to the example GKE cluster. If you already have one or more applications running on your GKE cluster, you may skip this section.
 
-The function of the REST API service allows you to add a quote (a string) to a stored list, or to retrieve that list. Deploying the application creates a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+The function of the REST API service allows you to add quotes (strings) to a stored list, or to retrieve that list. Deploying the application creates a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
 Follow the steps below to install, configure, and test the REST API service application on your GKE cluster.
 
@@ -466,7 +466,7 @@ To access your cluster, fetch the cluster credentials as a `kubeconfig` file. Yo
 
     ```command
     CLUSTER_ID=$(linode-cli lke clusters-list --json | jq -r \
-      '.[] | select(.label == "eks-to-lke") | .id')
+      '.[] | select(.label == "gke-to-lke") | .id')
     ```
 
 1.  Retrieve the `kubeconfig` file and save it to `~/.kube/lke-config`:
