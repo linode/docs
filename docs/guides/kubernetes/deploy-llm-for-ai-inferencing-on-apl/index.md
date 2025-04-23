@@ -5,7 +5,7 @@ description: "This guide includes steps and guidance for deploying a large langu
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-03-25
-modified: 2025-04-17
+modified: 2025-04-23
 keywords: ['ai','ai inference','ai inferencing','llm','large language model','app platform','lke','linode kubernetes engine','llama 3','kserve','istio','knative']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -170,11 +170,7 @@ A [Workload](https://apl-docs.net/docs/for-devs/console/workloads) is a self-ser
 
 1.  Continue with the rest of the default values, and click **Submit**.
 
-After the Workload is submitted, App Platform creates an Argo CD application to install the `kserve-crd` Helm chart. Wait for the **Status** of the Workload to become healthy as represented by a green check mark. This may take a few minutes.
-
-![Workload Status](APL-LLM-Workloads.jpg)
-
-Click on the ArgoCD **Application** link once the Workload is ready. You should be brought to the Argo CD screen in a separate window:
+After the Workload is submitted, App Platform creates an Argo CD application to install the `kserve-crd` Helm chart. Wait for the **Status** of the Workload to become ready, and click on the ArgoCD **Application** link. You should be brought to the Argo CD screen in a separate window:
 
 ![Argo CD](APL-LLM-ArgoCDScreen.jpg)
 
