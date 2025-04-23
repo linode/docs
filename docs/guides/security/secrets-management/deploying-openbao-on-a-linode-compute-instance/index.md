@@ -9,148 +9,61 @@ keywords: ['openbao','openbao linode','openbao ubuntu install','secrets manageme
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-This guide walks through how to deploy OpenBao on a single Linode Compute Instance using the [Linode CLI](https://github.com/linode/linode-cli).
-
-## Prerequisites
-
-To follow along in this walkthrough, you’ll need the following:
-
--   A [Linode account](https://www.linode.com/cfe)
--   A [Linode API token (personal access token)](/docs/products/platform/accounts/guides/manage-api-tokens/)
--   The [Linode CLI](/docs/products/tools/cli/guides/install/) installed and configured
--   An [SSH key pair](https://www.linode.com/content/ssh-key-authentication-how-to-create-ssh-key-pairs/)
+[OpenBao](https://openbao.org/) is an open source secrets management solution and fork of HashiCorp Vault. While our [OpenBao Marketplace app](/docs/marketplace-docs/guides/openbao/) offers one-click deployment, this guide walks through a manual installation on a single Ubuntu 24.04 LTS compute instance.
 
 ## Before You Begin
 
-1.  If you do not already have a virtual machine to use, create a Compute Instance with at least 4 GB of memory. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you do not already have a virtual machine to use, see our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides. While OpenBao does not provide explicit hardware recommendations, its architecture closely mirrors that of Vault. As such, this guide uses a `g6-standard-4` Linode (8 GB RAM, 4 vCPUs, 160 GB storage), which aligns with Vault’s recommended specs for a small cluster:
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+    -   2–4 CPU cores
+    -   8–16 GB RAM
+    -   100+ GB disk
+    -   75+ Mbps network bandwidth
 
-{{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
-{{< /note >}}
+    {{< note title="Provisioning Compute Instances with the Linode CLI" type="secondary" isCollapsible="yes" >}}
+    Use these steps if you prefer to use the [Linode CLI](https://github.com/linode/linode-cli) to provision resources.
 
-## Step 1: Initialize a Compute Instance
-
-This guide uses the Linode CLI to provision resources. The Linode Marketplace offers a one-click [OpenBao Marketplace app](/docs/marketplace-docs/guides/openbao/), whereas this tutorial walks through a manual installation.
-
-### Determine Instance Configuration
-
-In order to provision a Linode instance, you must specify the desired operating system, geographical region, and Linode plan size. The options available for each of these can be obtained using the Linode CLI.
-
-#### Operating System
-
-Run this command to obtain a formatted list of available operating systems:
-
-```command
-linode-cli images list --type=manual
-```
-
-This guide uses Ubuntu 24.04 LTS, which has the ID `linode/ubuntu24.04`.
-
-#### Geographical Region
-
-```command
-linode-cli regions list
-```
-
-This guide uses the `us-mia` region (Miami, FL).
-
-#### Compute Instance Size
-
-```command
-linode-cli linodes types
-```
-
-The OpenBao documentation does not explicitly state hardware resource requirements for deploying OpenBao. However, as a fork of HashiCorp Vault, the [hardware size guide](https://developer.hashicorp.com/vault/tutorials/day-one-raft/raft-reference-architecture#hardware-sizing-for-vault-servers) for Vault can serve as a reference. For an initial, small cluster deployment of HashiCorp Vault (and thus, OpenBao), the documentation recommends:
-
--   2-4 CPU cores
--   8-16 GB RAM
--   100+ GB disk capacity
--   75+ Mbps transfer rate
-
-This guide uses the `g6-standard-4` Linode, which has 4 cores, 160 GB disk, and 8 GB RAM with a 5000 Mbps transfer rate. These capabilities are comparable to the hardware sizing recommendations.
-
-### Create the Compute Instance
-
-1.  The following command creates a Linode Compute Instance based on the specified operating system, geographical region, and size as noted above.
+    The following command creates a Linode 8 GB compute instance (`g6-standard-4`) running Ubuntu 24.04 LTS (`linode/ubuntu24.04`) in the Miami datacenter (`us-mia`):
 
     ```command
     linode-cli linodes create \
       --image linode/ubuntu24.04 \
       --region us-mia \
       --type g6-standard-4 \
-      --root_pass {{< placeholder "PASSWORD" >}} \
+      --root_pass {{< placeholder "ROOT_PASSWORD" >}} \
       --authorized_keys "$(cat ~/.ssh/id_ed25519.pub)" \
       --label openbao-linode
     ```
 
     Note the following key points:
 
-    -   Replace {{< placeholder "PASSWORD" >}} with a secure alternative.
-    -   This command assumes that an SSH public/private key pair exists, with the public key stored as `id_ed25519.pub` in the user’s `$HOME/.ssh` folder.
+    -   Replace `us-mia` with your preferred data center region. Run `linode-cli regions list` to view options.
+    -   Replace {{< placeholder "ROOT_PASSWORD" >}} with a secure alternative for your root password.
+    -   This command assumes that an SSH public/private key pair exists, with the public key stored as `id_ed25519.pub` in the user’s `$HOME/.ssh/` folder.
     -   The `--label` argument specifies the name of the new server (e.g. `openbao-linode`).
+    {{< /note >}}
 
-    ```output
-    Using default values: {'authorized_users': ['{{< placeholder "USERNAME" >}}']}; use the --no-defaults flag to disable defaults
-    ┌────┬────────────────┬────────┬───────────────┬────────────────────┬──────────────┬──────────────┬─────────────────┬───────────────────────┐
-    │ id │ label          │ region │ type          │ image              │ status       │ ipv4         │ disk_encryption │ placement_group.label │
-    ├────┼────────────────┼────────┼───────────────┼────────────────────┼──────────────┼──────────────┼─────────────────┼───────────────────────┤
-    │ {{< placeholder "ID" >}} │ openbao-linode │ us-mia │ g6-standard-4 │ linode/ubuntu24.04 │ provisioning │ {{< placeholder "IPV4_ADDRESS" >}} │ enabled         │                       │
-    └────┴────────────────┴────────┴───────────────┴────────────────────┴──────────────┴──────────────┴─────────────────┴───────────────────────┘
-    ```
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and create a limited user account. You may also wish to set the timezone, configure your hostname, and harden SSH access.
 
-1.  Within a few minutes of executing this command, the instance should be visible with status `running` in the Akamai Cloud Manager or via the following Linode CLI command:
+1.  Follow our [Use SSH Public Key Authentication on Linux, macOS, and Windows](https://www.linode.com/docs/guides/use-public-key-authentication-with-ssh/#generate-an-ssh-key-pair) guide to generate an SSH key pair.
 
-    ```command
-    linode-cli linodes list --label openbao-linode
-    ```
+1.  Create a personal access token using the instructions in our [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
 
-    ```output
-    ┌────┬────────────────┬────────┬───────────────┬────────────────────┬─────────┬──────────────┬─────────────────┬───────────────────────┐
-    │ id │ label          │ region │ type          │ image              │ status  │ ipv4         │ disk_encryption │ placement_group.label │
-    ├────┼────────────────┼────────┼───────────────┼────────────────────┼─────────┼──────────────┼─────────────────┼───────────────────────┤
-    │ {{< placeholder "ID" >}} │ openbao-linode │ us-mia │ g6-standard-4 │ linode/ubuntu24.04 │ running │ {{< placeholder "IPV4_ADDRESS" >}} │ enabled         │                       │
-    └────┴────────────────┴────────┴───────────────┴────────────────────┴─────────┴──────────────┴─────────────────┴───────────────────────┘
-    ```
-
-Depending on notification settings, emails detailing the progress of the provisioning process may also be sent to the Linode user’s address.
-
-## Step 2: Install OpenBao on the Linode Compute Instance
-
-To install OpenBao, you need to SSH into the newly provisioned Linode:
-
-1.  The IP address of the new instance can be found in the Linode Cloud Manager dashboard or via the following command:
-
-    ```command
-    linode-cli linodes list
-    ```
-
-1.  Once the IP address is found, run the following command:
-
-    ```command
-    ssh -l root {{< placeholder "IP_ADDRESS" >}}
-    ```
+1.  Install the Linode CLI using the instructions in our [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
 
 {{< note >}}
-This method of connecting uses the `root` user, which is initially the only accessible user on the system. For production systems, it is strongly recommended that you disable the ability to access the instance as the `root` user, instead creating a limited user account with sudo privileges for access. See [this guide](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) for more details.
-
-This guide assumes that all remaining commands are run with `sudo` as a newly created user on the Linode instance.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-### Update System Packages
+## Install OpenBao
 
-Ensure that the new system is up to date with the latest Ubuntu packages. The Ubuntu package manager (`apt`) needs to be updated to pull the latest package manifests, followed by upgrading any that are outdated.
+1.  SSH into the newly provisioned Linode as a user with `sudo` privileges:
 
-```command
-sudo apt update && apt upgrade -y
-```
+    ```command
+    ssh -l {{< placeholder "USERNAME" >}} {{< placeholder "IP_ADDRESS" >}}
+    ```
 
-### Download and Install the OpenBao Package
-
-Find the desired version of OpenBao from the [downloads page](https://openbao.org/downloads/).
-
-1.  In this case, the AMD 64-bit Debian package works with the provisioned Linode Compute Instance.
+1.  Download the latest appropriate version of OpenBao from the [downloads page](https://openbao.org/downloads/). In this case, `v2.2.0` of the AMD 64-bit Debian package:
 
     ```command
     wget https://github.com/openbao/openbao/releases/download/v2.2.0/bao_2.2.0_linux_amd64.deb
@@ -173,13 +86,13 @@ Find the desired version of OpenBao from the [downloads page](https://openbao.or
     OpenBao TLS key and self-signed certificate have been generated in '/opt/openbao/tls'.
     ```
 
-1.  Verify the install was successful:
+1.  Verify if the install is successful:
 
     ```command
     bao -h
     ```
 
-### Verify Swap Memory Limits
+{{< note title="Verify Swap Memory Limits" >}}
 
 For Linux distributions, ensure that the OpenBao service settings do not impose a soft limit on Swap memory. To check this with a systemd-based Linux distro, use the following command:
 
@@ -204,57 +117,62 @@ WantedBy=multi-user.target
 ```
 
 Verify that `MemorySwapMax=0` appears in the results under the `Service` heading.
+{{< /note >}}
 
-## Step 3: Test the OpenBao Development Server
+## Test the OpenBao Development Server
 
-OpenBao provides a development server that runs completely in memory. Use this to verify settings and explore OpenBao features.
+OpenBao provides a development server that you can use to verify settings and explore OpenBao features.
 
-### Start the Development Server
+{{< caution >}}
+The development server runs entirely in memory and is not suitable for production use. Data is not persisted between restarts, and TLS is disabled.
+{{< /caution >}}
 
-To start the server in development mode and set a primary key run this command:
+1.  Run this command to start the server in development mode and set a primary key:
 
-```command
-bao server -dev \
-  -dev-root-token-id="this-is-my-test-dev-token"
-```
+    ```command
+    bao server -dev \
+      -dev-root-token-id="this-is-my-test-dev-token"
+    ```
 
-The OpenBao server configuration should print to the screen along with a tail of the logs:
+    The OpenBao server configuration should print to the screen along with a tail of the logs:
 
-```output
-==> OpenBao server configuration:
+    ```output
+    ==> OpenBao server configuration:
 
-Administrative Namespace:
-             Api Address: http://127.0.0.1:8200
-                     Cgo: disabled
-         Cluster Address: https://127.0.0.1:8201
-   Environment Variables: HOME, LANG, LESSCLOSE, LESSOPEN, LOGNAME, LS_COLORS, MAIL, PATH, PWD, SHELL, SHLVL, SUDO_COMMAND, SUDO_GID, SUDO_UID, SUDO_USER, TERM, USER, _
-              Go Version: go1.22.9
-              Listener 1: tcp (addr: "127.0.0.1:8200", cluster address: "127.0.0.1:8201", max_request_duration: "1m30s", max_request_size: "33554432", tls: "disabled")
-               Log Level:
-           Recovery Mode: false
-                 Storage: inmem
-                 Version: OpenBao v2.0.3, built 2024-11-15T16:54:47Z
-             Version Sha: a2522eb71d1854f83c7e2e02fdbfc01ae74c3a78
+    Administrative Namespace:
+                 Api Address: http://127.0.0.1:8200
+                         Cgo: disabled
+             Cluster Address: https://127.0.0.1:8201
+       Environment Variables: HOME, LANG, LESSCLOSE, LESSOPEN, LOGNAME, LS_COLORS, MAIL, PATH, PWD, SHELL, SHLVL, SUDO_COMMAND, SUDO_GID, SUDO_UID, SUDO_USER, TERM, USER, _
+                  Go Version: go1.22.9
+                  Listener 1: tcp (addr: "127.0.0.1:8200", cluster address: "127.0.0.1:8201", max_request_duration: "1m30s", max_request_size: "33554432", tls: "disabled")
+                   Log Level:
+               Recovery Mode: false
+                     Storage: inmem
+                     Version: OpenBao v2.0.3, built 2024-11-15T16:54:47Z
+                 Version Sha: a2522eb71d1854f83c7e2e02fdbfc01ae74c3a78
 
-             ==> OpenBao server started! Log data will stream in below:
+                 ==> OpenBao server started! Log data will stream in below:
 
-             ...
-             2024-11-25T10:07:57.493-0700 [INFO]  core: vault is unsealed
-             2024-11-25T10:07:57.495-0700 [INFO]  expiration: revoked lease: lease_id=auth/token/root/hf0285ed983c6c93bd02f9422f179d20f12508b046d39228a7b2e13c245293de6
-             2024-11-25T10:07:57.498-0700 [INFO]  core: successful mount: namespace="" path=secret/ type=kv version=""
-             2024-11-25T10:07:57.499-0700 [INFO]  secrets.kv.kv_cd63d9f9: collecting keys to upgrade
-             2024-11-25T10:07:57.499-0700 [INFO]  secrets.kv.kv_cd63d9f9: done collecting keys: num_keys=1
-             2024-11-25T10:07:57.499-0700 [INFO]  secrets.kv.kv_cd63d9f9: upgrading keys finished
-...
-```
+                 ...
+                 2024-11-25T10:07:57.493-0700 [INFO]  core: vault is unsealed
+                 2024-11-25T10:07:57.495-0700 [INFO]  expiration: revoked lease: lease_id=auth/token/root/hf0285ed983c6c93bd02f9422f179d20f12508b046d39228a7b2e13c245293de6
+                 2024-11-25T10:07:57.498-0700 [INFO]  core: successful mount: namespace="" path=secret/ type=kv version=""
+                 2024-11-25T10:07:57.499-0700 [INFO]  secrets.kv.kv_cd63d9f9: collecting keys to upgrade
+                 2024-11-25T10:07:57.499-0700 [INFO]  secrets.kv.kv_cd63d9f9: done collecting keys: num_keys=1
+                 2024-11-25T10:07:57.499-0700 [INFO]  secrets.kv.kv_cd63d9f9: upgrading keys finished
+    ...
+    ```
 
-Leave this server process running in the background. In a separate terminal window, connect to the Linode instance with another shell session.
+    Leave this server process running in the background.
 
-### Setting and Retrieving a Test Secret
+1.  Open a separate terminal window and connect to the Linode instance with another shell session:
 
-Use `curl` requests to test setting and retrieving a test secret. OpenBao expects certain variables to be set for every request.
+    ```command
+    ssh -l {{< placeholder "USERNAME" >}} {{< placeholder "IP_ADDRESS" >}}
+    ```
 
-1.  Instead of setting these variables repeatedly with each command, set the following environment variables in the shell:
+1.  OpenBao expects certain variables to be set for every request. Instead of setting these variables repeatedly with each command, set the following environment variables in the shell:
 
     ```command
     export VAULT_TOKEN="this-is-my-test-dev-token"
@@ -335,7 +253,7 @@ Use `curl` requests to test setting and retrieving a test secret. OpenBao expect
 
 1.  Return to the original terminal session with OpenBao running and press <kbd>Ctrl</kbd>+<kbd>C</kbd> to stop OpenBao.
 
-## Step 4: Run OpenBao as a Service
+## Run OpenBao as a Service
 
 In a real-world use case, OpenBao should run as a service managed by a tool such as `systemd`.
 
@@ -408,7 +326,7 @@ In a real-world use case, OpenBao should run as a service managed by a tool such
     systemctl enable openbao
     ```
 
-## Step 5: Configure OpenBao for External Access
+## Configure OpenBao for External Access
 
 Although OpenBao is now running as a service on the Linode Compute Instance, it is still not ready for use. Use the [OpenBao CLI](https://openbao.org/docs/commands/) to interact with the running server, retrieving its current status:
 
@@ -650,7 +568,7 @@ Enable and configure secure authentication methods such as:
 -   LDAP
 -   OpenID Connect (OIDC)
 
-TLS certificate authentication provides secure, mutual TLS verification for sensitive environments, while AppRole allows service accounts and applications to securely authenticate without human interaction.
+TLS certificate authentication provides secure, mutual TLS verification for sensitive environments. Meanwhile, AppRole allows service accounts and applications to securely authenticate without human interaction.
 
 For LDAP or OIDC deployments, enforce Multi Factor Authentication (MFA) for human operators to enhance security if supported.
 
