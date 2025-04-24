@@ -55,7 +55,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     ![List of region identifiers in Oracle Cloud console.](oracle-region-identifier-list.png)
 
-    In the screenshots above, the cluster name is `my-oke-cluster`, the cluster ID is `ocid1.cluster.oc1.phx.aaaaaaaa5spjobcrfpqy5p2uosdjzvmatj3kw2tsmdrl3447fcmux6nk5oza`, and the cluster location is `us-phoenix-1`.
+    In the example above, the cluster name is `my-oke-cluster`, the cluster ID is `ocid1.cluster.oc1.phx.aaaaaaaa5spjobcrfpqy5p2uosdjzvmatj3kw2tsmdrl3447fcmux6nk5oza`, and the cluster location is `us-phoenix-1`.
 
 1.  Use the Oracle CLI to update your local `kubeconfig` file with your OKE cluster information, replacing {{< placeholder "OKE_CLUSTER_OCID" >}} and {{< placeholder "OKE_REGION" >}} with your actual OKE cluster ID and region:
 
