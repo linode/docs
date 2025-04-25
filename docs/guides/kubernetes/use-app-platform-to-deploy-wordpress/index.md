@@ -4,7 +4,7 @@ title: "Use App Platform to Deploy WordPress with Persistent Volumes on LKE"
 description: "Two to three sentences describing your guide."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-04-03
+published: 2025-04-25
 keywords: ['app platform','app platform for lke','lke','linode kubernetes engine','kubernetes','persistent volumes','mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -66,7 +66,7 @@ When working in the context of an admin-level Team, users can create and access 
 
 1.  Click **Create Team**.
 
-1.  Provide a **Name** for the Team. Keep all other default values, and click **Submit**. This guide uses the Team name `demo`.
+1.  Provide a **Name** for the Team. Keep all other default values, and click **Create Team**. This guide uses the Team name `demo`.
 
 ### Add the WordPress Helm Chart to the Catalog
 
