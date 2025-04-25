@@ -5,7 +5,7 @@ description: "This guide includes steps and guidance for deploying a large langu
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-03-25
-modified: 2025-04-23
+modified: 2025-04-25
 keywords: ['ai','ai inference','ai inferencing','llm','large language model','app platform','lke','linode kubernetes engine','llama 3','kserve','istio','knative']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -102,7 +102,7 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 
 1.  Click **Create Team**.
 
-1.  Provide a **Name** for the Team. Keep all other default values, and click **Submit**. This guide uses the Team name `demo`.
+1.  Provide a **Name** for the Team. Keep all other default values, and click **Create Team**. This guide uses the Team name `demo`.
 
 ### Install the NVIDIA GPU Operator
 
@@ -382,11 +382,9 @@ Wait for the Workload to be ready again, and proceed to the following steps for 
 
 1.  Click **Create Service**.
 
-1.  In the **Name** dropdown list, select the `llama3-model-predictor` service.
+1.  In the **Service Name** dropdown list, select the `llama3-model-predictor` service.
 
-1.  Under **Exposure (ingress)**, select **External**.
-
-1.  Click **Submit**.
+1.  Click **Create Service**.
 
 Once the Service is ready, copy the URL for the `llama3-model-predictor` service, and add it to your clipboard.
 
@@ -489,11 +487,9 @@ Follow the steps below to follow the second option and add the Kyverno security 
 
 1.  Click **Create Service**.
 
-1.  In the **Name** dropdown menu, select the `llama3-ui` service.
+1.  In the **Service Name** dropdown menu, select the `llama3-ui` service.
 
-1.  Under **Exposure (ingress)**, select **External**.
-
-1.  Click **Submit**.
+1.  Click **Create Service**.
 
 ## Access the Open Web User Interface
 
