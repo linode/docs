@@ -265,11 +265,9 @@ Using the App Platform **Shell** feature, you can check to see if the WordPress 
     k9s
     ```
 
-1.  If you see a `CrashLoopBackOff` status, WordPress has not successfully connected to the database.
+1.  A `CrashLoopBackOff` status signifies that WordPress has not successfully connected to the database. If this is the case, check to see if label values are correct in your Network Policy.
 
     ![CrashLoopBackOff](APL-WordPress-CrashLoopBackOff.jpg)
-
-    This may occur if Workload or Network Policy values are not correct. Check your values as needed, and restart the Pod.
 
     In order to force a restart, click on the WordPress Pod, and type <kbd>Ctrl</kbd> + <kbd>D</kbd>. This kills the current Pod and starts a new one.
 
@@ -283,11 +281,11 @@ Creating a [Service](https://apl-docs.net/docs/for-devs/console/services) in App
 
 1.  Click **Services**, and select **Create Service**.
 
-1.  In the **Name** dropdown menu, select the `wordpress` service.
+1.  In the **Service Name** dropdown menu, select the `wordpress` service.
 
 1.  Under **Exposure (ingress)**, select **External**.
 
-1.  Click **Submit**.
+1.  Click **Create Service**.
 
 1.  Once the Service is ready, click the URL of the `wordpress` service to navigate to the live WordPress site:
 
