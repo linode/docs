@@ -4,7 +4,7 @@ title: "Migrating from AWS EKS to Linode Kubernetes Engine (LKE)"
 description: "Learn how to migrate Kubernetes applications from AWS EKS to Linode Kubernetes Engine (LKE) using a sample rest API service."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-04-16
+published: 2025-04-25
 keywords: ['aws eks','aws eks alternatives','aws kubernetes alternatives','amazon kubernetes alternatives','replace aws eks','replace aws kubernetes','replace amazon kubernetes','migrate aws eks to linode','migrate aws kubernetes to linode','migrate amazon kubernetes to linode','migrate kubernetes applications to linode','aws eks migration','aws kubernetes migration','amazon kubernetes migration','aws eks replacement','aws kubernetes replacement','amazon kubernetes replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---

@@ -4,7 +4,7 @@ title: "Migrating from Azure AKS to Linode Kubernetes Engine (LKE)"
 description: "Learn how to migrate Kubernetes applications from Azure AKS to Linode Kubernetes Engine (LKE) using a sample REST API service."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-04-16
+published: 2025-04-25
 keywords: ['azure aks','azure aks alternatives','azure kubernetes alternatives','replace azure aks','replace azure kubernetes','migrate azure aks to linode','migrate azure kubernetes to linode','migrate kubernetes applications to linode','azure aks migration','azure kubernetes migration','azure aks replacement','azure kubernetes replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
@@ -698,7 +698,7 @@ LKE doesn't have its own container registry. To migrate away from Azure Containe
 
 Alternatively, you can set up your own container registry, see [How to Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/) for instructions.
 
-### Alternative to Google Cloud Operations Suite
+### Alternative to Azure Monitor
 
 Microsoft uses [Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/) for Kubernetes cluster observability. With Akamai Cloud, you can install an alternative observability solution on LKE. One example of such a solution is [The Observability Stack (TOBS)](https://github.com/timescale/tobs), which includes:
 

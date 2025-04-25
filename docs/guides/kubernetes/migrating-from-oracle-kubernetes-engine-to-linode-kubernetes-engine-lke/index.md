@@ -4,7 +4,7 @@ title: "Migrating from Oracle Kubernetes Engine (OKE) to Linode Kubernetes Engin
 description: "Learn how to migrate Kubernetes applications from Oracle OKE to Linode Kubernetes Engine (LKE) using a sample REST API service."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-04-16
+published: 2025-04-25
 keywords: ['oke','oracle kubernetes engine','oracle oke alternatives','oracle kubernetes alternatives','oci kubernetes alternatives','replace oracle oke','replace oracle kubernetes','replace oci kubernetes','migrate oracle oke to linode','migrate oracle kubernetes to linode','migrate oci kubernetes to linode','migrate kubernetes applications to linode','oracle oke migration','oracle kubernetes migration','oci kubernetes migration','oracle oke replacement','oracle kubernetes replacement','oci kubernetes replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---

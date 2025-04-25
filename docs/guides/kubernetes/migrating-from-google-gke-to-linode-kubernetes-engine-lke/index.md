@@ -4,7 +4,7 @@ title: "Migrating from Google GKE to Linode Kubernetes Engine (LKE)"
 description: "Learn how to migrate Kubernetes applications from Google GKE to Linode Kubernetes Engine (LKE) using a using a sample REST API service.."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-04-16
+published: 2025-04-25
 keywords: ['gke','google kubernetes engine','google gke alternatives','google kubernetes alternatives','gcp kubernetes alternatives','replace google gke','replace google kubernetes','replace gcp kubernetes','migrate google gke to linode','migrate google kubernetes to linode','migrate gcp kubernetes to linode','migrate kubernetes applications to linode','google gke migration','google kubernetes migration','gcp kubernetes migration','google gke replacement','google kubernetes replacement','gcp kubernetes replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
