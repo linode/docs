@@ -18,7 +18,7 @@ The Akamai App Platform is now available as a limited beta. It is not recommende
 
 This guide includes steps for deploying a WordPress site and persistent MySQL database using App Platform for Linode Kubernetes Engine (LKE). In this architecture, both WordPress and MySQL use PersistentVolumes (PV) and PersistentVolumeClaims (PVC) to store data.
 
-Akamai App Platform for LKE uses the Add Helm Chart feature to add the WordPress and MySQL Helm charts to the App Platform Catalog.
+To add the WordPress and MySQL Helm charts to the App Platform Catalog, the **Add Helm Chart** feature of Akamai App Platform for LKE is used.
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ Akamai App Platform for LKE uses the Add Helm Chart feature to add the WordPress
 
     To ensure sufficient resources are available, it is recommended that node pool auto-scaling for your LKE cluster is enabled after deployment. Make sure to set the max number of nodes higher than your minimum. This may result in higher billing costs.
 
-To learn more about provisioning a LKE cluster with App Platform, see our [Getting Started with App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-akamai-application-platform) guide.
+    To learn more about provisioning a LKE cluster with App Platform, see our [Getting Started with App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-akamai-application-platform) guide.
 
 ## Components
 
@@ -56,13 +56,13 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 
 ### Create a New Team
 
-[Teams](https://apl-docs.net/docs/for-ops/console/teams) are isolated tenants on the platform to support Development/DevOps teams, projects or even DTAP. A Team gets access to the Console, including access to self-service features and all shared apps available on the platform.
+[Teams](https://apl-docs.net/docs/for-ops/console/teams) are isolated tenants on the platform to support Development/DevOps teams, projects, and methodologies, like [DTAP](https://en.wikipedia.org/wiki/Development,_testing,_acceptance_and_production). A Team gets access to the Console, which provides access to self-service features and the shared apps available on the platform.
 
 When working in the context of an admin-level Team, users can create and access resources in any namespace. When working in the context of a non-admin Team, users can only create and access resources used in that Team’s namespace.
 
-1.  Select **view** > **platform**.
+1.  Select **view** > **platform** in the top bar.
 
-1.  Select **Teams** in the left menu.
+1.  Click **Teams** in the left menu.
 
 1.  Click **Create Team**.
 
@@ -74,7 +74,7 @@ When working in the context of an admin-level Team, users can create and access 
 
 To install WordPress on your cluster, add the WordPress Helm chart using the Git Repository URL.
 
-1.  Select **view** > **team** and **team** > **admin**.
+1.  Select **view** > **team** and **team** > **admin** in the top bar.
 
 1.  Once using the `admin` team view, click on **Catalog** in the left menu.
 
@@ -96,7 +96,7 @@ To install WordPress on your cluster, add the WordPress Helm chart using the Git
 
 Repeat the same steps for installing the MySQL service on your cluster.
 
-1.  While still using the `admin` team view, click on **Catalog** in the left menu.
+1.  While still using the `admin` team view, click **Catalog** in the left menu.
 
 1.  Select **Add Helm Chart**.
 
@@ -122,11 +122,11 @@ Separate Workloads are created for MySQL and WordPress in order to deploy a pers
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
-1.  Select **Sealed Secrets** from the menu.
+1.  Click **Sealed Secrets** in the left menu.
 
 1.  Click **Create SealedSecret**.
 
-1.  Add a name for your Sealed Secret, where this name is also used when creating the MySQL Workload. This guide uses the name `mysql-credentials`.
+1.  Add a name for your Sealed Secret. This name is also used when creating the MySQL Workload. This guide uses the name `mysql-credentials`.
 
 1.  Select type _[kubernetes.io/opaque](kubernetes.io/opaque)_ from the **type** dropdown menu.
 
@@ -141,11 +141,11 @@ Separate Workloads are created for MySQL and WordPress in order to deploy a pers
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
-1.  Select **Sealed Secrets** from the menu.
+1.  Click **Sealed Secrets** in the left menu.
 
 1.  Click **Create SealedSecret**.
 
-1.  Add a name for your Sealed Secret, where this name is also used when creating the WordPress Workload. This guide uses the name `wordpress-credentials`.
+1.  Add a name for your Sealed Secret. This name is also used when creating the WordPress Workload. This guide uses the name `wordpress-credentials`.
 
 1.  Select type _[kubernetes.io/opaque](kubernetes.io/opaque)_ from the **type** dropdown menu.
 
@@ -162,7 +162,7 @@ Separate Workloads are created for MySQL and WordPress in order to deploy a pers
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
-1.  Select **Workloads**.
+1.  Select **Workloads** in the left menu.
 
 1.  Click on **Create Workload**.
 
@@ -193,7 +193,7 @@ Separate Workloads are created for MySQL and WordPress in order to deploy a pers
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
-1.  Select **Workloads**.
+1.  Click **Workloads** in the left menu.
 
 1.  Click on **Create Workload**.
 
@@ -229,7 +229,7 @@ Create a Network Policy allowing only the WordPress Pod to connect to the MySQL 
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
-1.  Select **Network Policies** from the menu.
+1.  Click **Network Policies** in the left menu.
 
 1.  Click **Create Netpol**.
 
@@ -257,7 +257,7 @@ Using the App Platform **Shell** feature, you can check to see if the WordPress 
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
-1.  In the left menu, select **Shell**.
+1.  Click **Shell** in the left menu.
 
 1.  Enter the following command to launch the k9s interface once the Shell session has loaded. [k9s](https://k9scli.io/) is an open source, terminal-based Kubernetes user interface pre-installed with Akamai App Platform:
 
@@ -279,7 +279,9 @@ Creating a [Service](https://apl-docs.net/docs/for-devs/console/services) in App
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
-1.  Click **Services**, and select **Create Service**.
+1.  Click **Services** in the left menu.
+
+1.  Click **Create Service**.
 
 1.  In the **Service Name** dropdown menu, select the `wordpress` service.
 
