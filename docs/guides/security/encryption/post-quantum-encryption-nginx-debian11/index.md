@@ -24,7 +24,7 @@ In August 2024, the National Institute of Standards and Technology (NIST) [relea
 Deploying this algorithm for your web server currently requires the use of a recent library that implements the hybrid key exchange, such as e.g., the [Open Quantum Safe OpenSSL provider](https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider) or the recently released [OpenSSL 3.5.0](https://github.com/openssl/openssl/releases/tag/openssl-3.5.0).  This guide shows how to deploy this algorithm with NGINX on Debian 11.
 
 {{< note >}}
-On Debian 11, the versions of OpenSSL and NGINX available from apt are not compatible with post quantum encryption, so this guide shows how to build them from source instead. You can also check the guide for Ubuntu 24.04, [this guide](/docs/guides/post-quantum-encryption-nginx-ubuntu2404/) which explains how to configure the encryption algorithm on that distribution.
+On Debian 11, the versions of OpenSSL and NGINX available from apt are not compatible with post quantum encryption, so this guide shows how to build them from source instead. You can also check the [guide for Ubuntu 24.04](/docs/guides/post-quantum-encryption-nginx-ubuntu2404/), which explains how to configure the encryption algorithm on that distribution.
 {{< /note >}}
 
 ## Before You Begin
@@ -266,11 +266,11 @@ Adjust your `PATH` environment variable to prioritize the `/opt/bin` directory.
     ```
 
 
-## Install Nginx from Source
+## Install NGINX from Source
 
-The version of Nginx available for Debian 11 uses OpenSSL version `1.1.1w`. In order to use OpenSSL 3.5.0, you must build Nginx from source.
+The version of NGINX available for Debian 11 uses OpenSSL version `1.1.1w`. In order to use OpenSSL 3.5.0, you must build NGINX from source.
 
-### Fetch Nginx Source
+### Fetch NGINX Source
 
 1.  Before continuing, change back into your user's home directory:
 
@@ -278,7 +278,7 @@ The version of Nginx available for Debian 11 uses OpenSSL version `1.1.1w`. In o
     cd ~
     ```
 
-1.  Use `wget` to download the Nginx source files:
+1.  Use `wget` to download the NGINX source files:
 
     ```command
     wget https://nginx.org/download/nginx-1.27.4.tar.gz
@@ -324,12 +324,12 @@ The version of Nginx available for Debian 11 uses OpenSSL version `1.1.1w`. In o
     ```
 
     {{< note >}}
-    Nginx uses individual developer keys to sign its releases, so don't be alarmed if you see unfamiliar names during verification. If verification fails, additional signing keys can be found at [https://nginx.org/en/pgp_keys.html](https://nginx.org/en/pgp_keys.html).
+    NGINX uses individual developer keys to sign its releases, so don't be alarmed if you see unfamiliar names during verification. If verification fails, additional signing keys can be found at [https://nginx.org/en/pgp_keys.html](https://nginx.org/en/pgp_keys.html).
     {{< /note >}}
 
 ### Install Dependencies
 
-A couple of libraries are required before building Nginx:
+A couple of libraries are required before building NGINX:
 
 1.  Install `zlib1g-dev`, a compression library for handling compressed content:
 
@@ -343,7 +343,7 @@ A couple of libraries are required before building Nginx:
     sudo apt install -y libpcre3 libpcre3-dev
     ```
 
-### Build Nginx
+### Build NGINX
 
 1.  Extract the source:
 
@@ -396,13 +396,13 @@ A couple of libraries are required before building Nginx:
 
     Except for the destination `prefix`, this example uses the same configuration parameters as the binary package. This is to retain feature parity and integrate with system scripts. The last three options passed to the `configure` script are necessary to use the OpenSSL version built earlier.
 
-1.  Compile Nginx:
+1.  Compile NGINX:
 
     ```command
     make
     ```
 
-1.  Install Nginx:
+1.  Install NGINX:
 
     ```command
     sudo make install
@@ -420,9 +420,9 @@ A couple of libraries are required before building Nginx:
     sudo mkdir /opt/nginx/conf.d
     ```
 
-### Configure Nginx
+### Configure NGINX
 
-1.  Edit the main Nginx configuration file:
+1.  Edit the main NGINX configuration file:
 
     ```command
     sudo nano /opt/nginx/nginx.conf
@@ -482,7 +482,7 @@ A couple of libraries are required before building Nginx:
 
 Ensure that you include the necessary certificates (whether self-signed or from a trusted Certificate Authority) to enable proper TLS/SSL functionality. Without certificates, you won’t be able to establish a secure HTTPS connection.
 
--   **Using Let's Encrpyt (Recommended for Production)**: To use automatic certificate renewal with Let's Encrypt, follow [Use Certbot to Enable HTTPS with NGINX on Ubuntu](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) to properly configure the Nginx server.
+-   **Using Let's Encrpyt (Recommended for Production)**: To use automatic certificate renewal with Let's Encrypt, follow [Use Certbot to Enable HTTPS with NGINX on Ubuntu](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) to properly configure the NGINX server.
 
 -   **Using Self-Signed Certificate (Suitable for Testing/Development)**: To use a self-signed certificate, see our [Enable TLS/SSL for HTTPS](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) guide, or create certificates using the following command:
 
@@ -498,9 +498,9 @@ Ensure that you include the necessary certificates (whether self-signed or from 
     sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /opt/certs/pqc.key -out /opt/certs/pqc.crt
     ```
 
-### Configure `systemd` and Start Nginx
+### Configure `systemd` and Start NGINX
 
-1.  Create a `systemd` service file for Nginx:
+1.  Create a `systemd` service file for NGINX:
 
     ```command
     sudo nano /etc/systemd/system/nginx.service
@@ -528,15 +528,15 @@ Ensure that you include the necessary certificates (whether self-signed or from 
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-1.  Start the Nginx service:
+1.  Start the NGINX service:
 
     ```command
     sudo service nginx start
     ```
 
-Nginx should now be installed, configured, and running with OpenSSL 3.5.0 support.
+NGINX should now be installed, configured, and running with OpenSSL 3.5.0 support.
 
-## Verify Nginx Is Using Post-Quantum Algorithms
+## Verify NGINX Is Using Post-Quantum Algorithms
 
 Run the `openssl` command with the flags shown below:
 
