@@ -2,7 +2,7 @@
 title: "Deploy Grav through the Linode Marketplace"
 description: "Learn how to deploy Grav, a modern open source flat-file CMS, on a Linode Compute Instance."
 published: 2022-02-22
-modified: 2022-03-08
+modified: 2025-04-08
 keywords: ['cms','blog','website']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
@@ -29,14 +29,14 @@ marketplace_app_name: "Grav"
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 24.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### Grav Options
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
-{{% content "marketplace-limited-user-fields-shortguide" %}}
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 {{% content "marketplace-custom-domain-fields-shortguide" %}}
 
@@ -50,11 +50,16 @@ marketplace_app_name: "Grav"
 
     ![Screenshot of the URL bar with the Grav URL](grav-url.png)
 
-1.  You are now prompted to create a new admin user for Grav. Complete the form and click the **Create User** button.
+1.  You will be presented with the Grav login page. Use the following credentials:
+    - **Username:** admin
+    - **Password:** The password can be found in the credentials file on your server. To obtain it, log in to your Compute Instance via SSH or Lish and run:
+        ```command
+        cat /home/$USER/.credentials
+        ```
 
-    ![Screenshot of the Create Admin Account form in Grav](grav-create-user.png)
+    ![Screenshot of the Grav login page](grav-login.png)
 
-1.  Once the admin user had been created, you are automatically logged in and taken to the Admin dashboard. From here, you can fully administer your new Grav site, including creating content, modifying your configuration, changing your theme, and much more.
+1.  Once logged in, you will be taken to the Admin dashboard. From here, you can fully administer your new Grav site, including creating content, modifying your configuration, changing your theme, and much more.
 
     ![Screenshot of the Admin dashboard](grav-admin.png)
 

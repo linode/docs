@@ -2,7 +2,7 @@
 title: "Deploy a LAMP Stack through the Linode Marketplace"
 description: "This guide shows you how to use the Linode Marketplace One-Click Application to deploy a LAMP (Linux, Apache, MySQL, PHP) stack on a Linode running Linux."
 published: 2019-03-26
-modified: 2023-06-06
+modified: 2025-04-29
 keywords: ['LAMP', 'apache', 'web server', 'mysql', 'php']
 tags: ["apache","lamp","cloud-manager","linode platform","php","mysql","marketplace"]
 external_resources:
@@ -35,6 +35,8 @@ A LAMP (Linux, [Apache](https://www.apache.org), [MySQL](https://www.mysql.com),
 ### LAMP Stack Options
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
+
+- **Install PHPMyAdmin**: Choose whether to install PHPMyAdmin during deployment. This provides a web-based interface for managing your MySQL databases.
 
     {{< note >}}
     The password for the MySQL root user is automatically generated and provided in the file `/home/$USERNAME/.credentials` when the LAMP deployment completes.
