@@ -1,0 +1,14 @@
+{{ $guides := site.GetPage "guides" -}}
+{{ $pages := $guides.RegularPagesRecursive -}}
+URL,Title,Description,Keyword(s),Deprecation Status,Published Date,Updated Date
+{{ "" }}
+{{- range $pages -}}
+{{ $description := .Params.description | default .Summary -}}
+{{ $keywords := delimit .Keywords ", " -}}
+{{ $publishDate := .PublishDate.Format "2006-01-02" -}}
+{{ $lastMod := .Lastmod.Format "2006-01-02" -}}
+{{ $deprecated := (.Params.deprecated | default false) | string -}}
+{{ $row := printf "%q,%q,%q,%q,%q,%q,%q" .Permalink .Title $description $keywords $deprecated $publishDate $lastMod -}}
+{{ $row = replace $row `\"` `""` -}}
+{{ $row }}
+{{ end -}}
