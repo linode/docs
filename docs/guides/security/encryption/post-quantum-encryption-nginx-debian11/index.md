@@ -1,14 +1,15 @@
 ---
 slug: post-quantum-encryption-nginx-debian11
 title: "Post Quantum Encryption with NGINX on Debian 11"
-description: "Learn how to set up a Debian 11 Nginx web server with support for the post-quantum cryptography X25519Kyber768Draft00 / ML-KEM key exchange in TLS 1.3."
+description: "Learn how to set up a Debian 11 Nginx web server with support for the post-quantum cryptography ML-KEM key exchange in TLS 1.3."
 authors: ["Seweryn Krajczok", "Jan Schaumann"]
 contributors: ["Seweryn Krajczok", "Jan Schaumann"]
 published: 2024-11-05
+modified: 2025-04-29
 keywords: ['X25519Kyber768Draft00','X25519MLKEM768', 'ML-KEM', 'post-quantum cryptography','tls 1.3','cybersecurity','debian 11','key exhange','OpenSSL','encryption','secure website']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[Open Quantum Safe](https://openquantumsafe.org/liboqs/)'
+- '[Open Quantum Safe](https://openquantumsafe.org/)'
 - '[OpenSSL Library](https://openssl-library.org/)'
 - '[GitHub: Open Quantum Safe oqs-provider](https://github.com/open-quantum-safe/oqs-provider)'
 relations:
@@ -18,12 +19,12 @@ relations:
             - distribution: Debian 11
 ---
 
-The National Institute of Standards and Technology (NIST) recently [released](https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards) its first finalized Post-Quantum Encryption Standards to protect against quantum computer attacks. This includes the Module-Lattice-based Key-Encapsulation Mechanism standard (ML-KEM, defined in [FIPS-203](https://csrc.nist.gov/pubs/fips/203/final)). It is already being implemented in the industry using an early [pre-standardization draft](https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00/) for use with TLS.
+In August 2024, the National Institute of Standards and Technology (NIST) [released](https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards) its first finalized Post-Quantum Encryption Standards to protect against quantum computer attacks. This includes the Module-Lattice-based Key-Encapsulation Mechanism standard (ML-KEM, defined in [FIPS-203](https://csrc.nist.gov/pubs/fips/203/final)). It is already being implemented in the industry using an early [pre-standardization draft](https://datatracker.ietf.org/doc/draft-kwiatkowski-tls-ecdhe-mlkem/) for use with TLS.
 
-Deploying this algorithm for your web server currently requires some additional steps. The process may vary depending on your operating system's version of OpenSSL. This guide shows how to deploy this algorithm with NGINX on Debian 11, using the [Open Quantum Safe (OQS) provider](https://github.com/open-quantum-safe/oqs-provider) for OpenSSL, which is used to enable the post quantum encryption algorithm.
+Deploying this algorithm for your web server currently requires the use of a recent library that implements the hybrid key exchange, such as e.g., the [Open Quantum Safe OpenSSL provider](https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider) or the recently released [OpenSSL 3.5.0](https://github.com/openssl/openssl/releases/tag/openssl-3.5.0).  This guide shows how to deploy this algorithm with NGINX on Debian 11.
 
 {{< note >}}
-On Debian 11, the versions of OpenSSL and NGINX available from apt are not compatible with post quantum encryption, so this guide shows how to build them from source instead.  On Ubuntu 24.04, post quantum encryption-compatible versions are available through apt, and [this guide](/docs/guides/post-quantum-encryption-nginx-ubuntu2404/) describes how to configure the encryption algorithm on that distribution.
+On Debian 11, the versions of OpenSSL and NGINX available from apt are not compatible with post quantum encryption, so this guide shows how to build them from source instead. You can also check the guide for Ubuntu 24.04, [this guide](/docs/guides/post-quantum-encryption-nginx-ubuntu2404/) which explains how to configure the encryption algorithm on that distribution.
 {{< /note >}}
 
 ## Before You Begin
@@ -42,7 +43,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ### Install Dependencies
 
-Once your Debian 11 compute instance is set up and secured, install the dependencies and system packages needed to build OpenSSL and the OQS provider.
+Once your Debian 11 compute instance is set up and secured, install the dependencies and system packages needed to build OpenSSL.
 
 1.  First, update your package list to ensure you download the latest available versions:
 
@@ -64,7 +65,7 @@ Once your Debian 11 compute instance is set up and secured, install the dependen
 
 ## Install OpenSSL from Source
 
-Debian 11 comes with OpenSSL version `1.1.1w` by default, but the OQS provider requires OpenSSL 3.x. Therefore, you need to build a newer version from source.
+Debian 11 comes with OpenSSL version `1.1.1w` by default, but support for PQC algorithms (ML-KEM, ML-DSA, and SLH-DSA) is provided only by OpenSSL version 3.5.0. Therefore, you need to build a newer version from source.
 
 1.  First, change into your user's home directory, if not already:
 
@@ -75,13 +76,13 @@ Debian 11 comes with OpenSSL version `1.1.1w` by default, but the OQS provider r
 1.  Download the OpenSSL source code:
 
     ```command
-    wget https://github.com/openssl/openssl/releases/download/openssl-3.4.0/openssl-3.4.0.tar.gz
+    wget https://github.com/openssl/openssl/releases/download/openssl-3.5.0/openssl-3.5.0.tar.gz
     ```
 
 1.  Download the corresponding signature file:
 
     ```command
-    wget https://github.com/openssl/openssl/releases/download/openssl-3.4.0/openssl-3.4.0.tar.gz.asc
+    wget https://github.com/openssl/openssl/releases/download/openssl-3.5.0/openssl-3.5.0.tar.gz.asc
     ```
 
 ### Verify the OpenSSL Code Signature
@@ -137,13 +138,13 @@ Before proceeding with the installation, verify the integrity and authenticity o
 1.  Finally, verify the OpenSSL source file against its signature:
 
     ```command
-    gpg --verify openssl-3.4.0.tar.gz.asc openssl-3.4.0.tar.gz
+    gpg --verify openssl-3.5.0.tar.gz.asc openssl-3.5.0.tar.gz
     ```
 
     You should see a confirmation similar to the output below:
 
     ```output
-    gpg: Signature made Tue 22 Oct 2024 12:27:03 PM UTC
+    gpg: Signature made Tue 08 Apr 2025 01:14:28 PM UTC
     gpg:                using RSA key BA5473A2B0587B07FB27CF2D216094DFD0CB81EF
     gpg: Good signature from "OpenSSL <openssl@openssl.org>" [unknown]
     ```
@@ -167,13 +168,13 @@ After verifying the source code, the next step is to build OpenSSL from source.
 1.  Extract the downloaded OpenSSL archive:
 
     ```command
-    tar zxf openssl-3.4.0.tar.gz
+    tar zxf openssl-3.5.0.tar.gz
     ```
 
 1.  Change into the extracted OpenSSL source directory:
 
     ```command
-    cd openssl-3.4.0
+    cd openssl-3.5.0
     ```
 
 1.  Configure the OpenSSL build, specifying the installation path as `/opt` and setting the appropriate runtime library search path:
@@ -211,7 +212,7 @@ After verifying the source code, the next step is to build OpenSSL from source.
     This should return the version number of the OpenSSL build you just installed to `/opt/bin`:
 
     ```output
-    OpenSSL 3.4.0 22 Oct 2024 (Library: OpenSSL 3.4.0 22 Oct 2024)
+    OpenSSL 3.5.0 8 Apr 2025 (Library: OpenSSL 3.5.0 8 Apr 2025)
     ```
 
 1.  Now check the active version via the basic `openssl` command:
@@ -258,136 +259,16 @@ Adjust your `PATH` environment variable to prioritize the `/opt/bin` directory.
     openssl version
     ```
 
-    The output should now show version `3.4.0`, which you installed in `/opt/bin`:
+    The output should now show version `3.5.0`, which you installed in `/opt/bin`:
 
     ```output
-    OpenSSL 3.4.0 3 Sep 2024 (Library: OpenSSL 3.4.0 3 Sep 2024)
+    OpenSSL 3.5.0 8 Apr 2025 (Library: OpenSSL 3.5.0 8 Apr 2025)
     ```
 
-## Install `oqs-provider`
-
-The `oqs-provider` is a library that integrates post-quantum cryptographic algorithms into OpenSSL. This section outlines the steps needed to install it and leverage this advanced cryptography.
-
-### Install Dependencies
-
-A couple of dependencies must be installed prior to `oqs-provider`, along with Git:
-
-1.  First, change back into your user's home directory:
-
-    ```command
-    cd ~
-    ```
-
-1.  Install `git`, a distributed version control system that can manage code repositories:
-
-    ```command
-    sudo apt install -y git
-    ```
-
-1.  Now install `cmake`, a cross-platform build system generator that helps automate the compilation and build process for software projects:
-
-    ```command
-    sudo apt install -y cmake
-    ```
-
-1.  Finally, install `ninja-build`, a build system designed to run builds in parallel, which reduces the compilation time of large projects:
-
-    ```command
-    sudo apt install -y ninja-build
-    ```
-
-### Clone the `oqs-provider` Repository
-
-1.  Use `git` to clone the `oqs-provider` repository from GitHub:
-
-    ```command
-    git clone https://github.com/open-quantum-safe/oqs-provider.git
-    ```
-
-1.  Change into the `oqs-provider` directory:
-
-    ```command
-    cd oqs-provider
-    ```
-
-### Build `oqs-provider`
-
-1.  Set the OpenSSL root directory and build the `oqs-provider` using the provided script:
-
-    ```command
-    env OPENSSL_ROOT=/opt CMAKE_PARAMS="-DOPENSSL_CRYPTO_LIBRARY=/opt/lib64/libcrypto.so" bash scripts/fullbuild.sh
-    ```
-
-    {{< note >}}
-    This process may take a few minutes depending on your system.
-    {{< /note >}}
-
-1.  Use `cmake` to install the compiled `oqs-provider`:
-
-    ```command
-    sudo cmake --install _build
-    ```
-
-1.  Run the test suite to verify the `oqs-provider` build:
-
-    ```command
-    scripts/runtests.sh
-    ```
-
-### Configure OpenSSL to Use the OQS Provider
-
-1.  Use `nano` to edit the OpenSSL configuration file:
-
-    ```command
-    sudo nano /opt/ssl/openssl.cnf
-    ```
-
-    Add the following lines at the end:
-
-    ```file {title="/opt/ssl/openssl.cnf"}
-    # PQC via OpenQuantumSafe
-    [provider_sect]
-    default = default_sect
-    oqsprovider = oqsprovider_sect
-
-    [default_sect]
-    activate = 1
-
-    [oqsprovider_sect]
-    activate = 1
-    ```
-
-    {{< note >}}
-    In this case, you are editing the `/opt/ssl/openssl.cnf` file, not the configuration file for the system OpenSSL.
-    {{< /note >}}
-
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
-
-### Check Provider Version Information
-
-1.  List the active OpenSSL providers to verify the installation:
-
-    ```command
-    openssl list -providers
-    ```
-
-    You should see output similar to the following:
-
-    ```output
-    Providers:
-      default
-        name: OpenSSL Default Provider
-        version: 3.4.0
-        status: active
-      oqsprovider
-        name: OpenSSL OQS Provider
-        version: 0.7.1-dev
-        status: active
-    ```
 
 ## Install Nginx from Source
 
-The version of Nginx available for Debian 11 uses OpenSSL version `1.1.1w`. In order to use OpenSSL 3.x, you must build Nginx from source.
+The version of Nginx available for Debian 11 uses OpenSSL version `1.1.1w`. In order to use OpenSSL 3.5.0, you must build Nginx from source.
 
 ### Fetch Nginx Source
 
@@ -400,13 +281,13 @@ The version of Nginx available for Debian 11 uses OpenSSL version `1.1.1w`. In o
 1.  Use `wget` to download the Nginx source files:
 
     ```command
-    wget https://nginx.org/download/nginx-1.27.2.tar.gz
+    wget https://nginx.org/download/nginx-1.27.4.tar.gz
     ```
 
 1.  Also download the corresponding signature for verification:
 
     ```command
-    wget https://nginx.org/download/nginx-1.27.2.tar.gz.asc
+    wget https://nginx.org/download/nginx-1.27.4.tar.gz.asc
     ```
 
 ### Verify the Signature
@@ -426,13 +307,13 @@ The version of Nginx available for Debian 11 uses OpenSSL version `1.1.1w`. In o
 1.  Verify the signature:
 
     ```command
-    gpg --verify nginx-1.27.2.tar.gz.asc nginx-1.27.2.tar.gz
+    gpg --verify nginx-1.27.4.tar.gz.asc nginx-1.27.4.tar.gz
     ```
 
     If verification succeeds, you should see output similar to the following:
 
     ```output
-    gpg: Signature made Wed 02 Oct 2024 03:31:12 PM UTC
+    gpg: Signature made Wed 05 Feb 2025 12:24:19 PM CET
     gpg:                using RSA key D6786CE303D9A9022998DC6CC8464D549AF75C0A
     gpg:                issuer "s.kandaurov@f5.com"
     gpg: Good signature from "Sergey Kandaurov <s.kandaurov@f5.com>" [unknown]
@@ -467,13 +348,13 @@ A couple of libraries are required before building Nginx:
 1.  Extract the source:
 
     ```command
-    tar zxf nginx-1.27.2.tar.gz
+    tar zxf nginx-1.27.4.tar.gz
     ```
 
 1.  Change into the extracted source directory:
 
     ```command
-    cd nginx-1.27.2
+    cd nginx-1.27.4
     ```
 
 1.  Configure the build with the necessary flags:
@@ -587,7 +468,7 @@ A couple of libraries are required before building Nginx:
 
         ssl_protocols TLSv1.3;
         ssl_prefer_server_ciphers on;
-        ssl_ecdh_curve X25519MLKEM768:x25519_kyber768:p384_kyber768:x25519:secp384r1:x448:secp256r1:secp521r1;
+        ssl_ecdh_curve X25519MLKEM768;
 
         location / {
             try_files $uri $uri/ =404;
@@ -653,7 +534,7 @@ Ensure that you include the necessary certificates (whether self-signed or from 
     sudo service nginx start
     ```
 
-Nginx should now be installed, configured, and running with OpenSSL 3.x support.
+Nginx should now be installed, configured, and running with OpenSSL 3.5.0 support.
 
 ## Verify Nginx Is Using Post-Quantum Algorithms
 
@@ -663,4 +544,4 @@ Run the `openssl` command with the flags shown below:
 openssl s_client -groups X25519MLKEM768 -connect localhost:443
 ```
 
-This command specifically checks for the `X25519_Kyber768` algorithm during a TLS connection.
+This command specifically uses the `X25519MLKEM768` key group for the TLS key exchange.
