@@ -21,7 +21,7 @@ relations:
 
 In August 2024, the National Institute of Standards and Technology (NIST) [released](https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards) its first finalized Post-Quantum Encryption Standards to protect against quantum computer attacks. This includes the Module-Lattice-based Key-Encapsulation Mechanism standard (ML-KEM, defined in [FIPS-203](https://csrc.nist.gov/pubs/fips/203/final)). It is already being implemented in the industry using an early [pre-standardization draft](https://datatracker.ietf.org/doc/draft-kwiatkowski-tls-ecdhe-mlkem/) for use with TLS.
 
-Deploying this algorithm for your web server currently requires the use of a recent library that implements the hybrid key exchange, such as e.g., the [Open Quantum Safe OpenSSL provider](https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider) or the recently released [OpenSSL 3.5.0](https://github.com/openssl/openssl/releases/tag/openssl-3.5.0).  This guide shows how to deploy this algorithm with NGINX on Ubuntu 24.04. After it is configured for the web server, several ways to verify that the server is using the algorithm are demonstrated.
+Deploying this algorithm for your web server currently requires the use of a recent library that implements the hybrid key exchange, such as the [Open Quantum Safe OpenSSL provider](https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider) or [OpenSSL 3.5.0](https://github.com/openssl/openssl/releases/tag/openssl-3.5.0). This guide shows how to deploy this algorithm with NGINX on Ubuntu 24.04. After it is configured for the web server, several ways to verify that the server is using the algorithm are demonstrated.
 
 On Ubuntu 24.04, the versions of OpenSSL and NGINX available from apt are not compatible with post quantum encryption, so this guide shows how to build them from source instead.
 
@@ -41,7 +41,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ### Install Dependencies
 
-Once your Ubuntu24.04 compute instance is set up and secured, install the dependencies and system packages needed to build OpenSSL.
+Once your Ubuntu 24.04 compute instance is set up and secured, install the dependencies and system packages needed to build OpenSSL.
 
 1.  First, update your package list to ensure you download the latest available versions:
 
@@ -65,7 +65,7 @@ Once your Ubuntu24.04 compute instance is set up and secured, install the depend
 
 Ubuntu 24.04 comes with OpenSSL version `3.0.13` by default, but support for PQC algorithms (ML-KEM, ML-DSA, and SLH-DSA) is provided only by OpenSSL version 3.5.0. Therefore, you need to build a newer version from source.
 
-1.  First, change into your user's home directory, if not already:
+1.  Change into your user's home directory:
 
     ```command
     cd ~
@@ -87,13 +87,13 @@ Ubuntu 24.04 comes with OpenSSL version `3.0.13` by default, but support for PQC
 
 Before proceeding with the installation, verify the integrity and authenticity of the downloaded files using GnuPG (`gnupg`).
 
-1.  First, install `gnupg`:
+1.  Install `gnupg`:
 
     ```command
     sudo apt -y install gnupg
     ```
 
-1.  Next, import the public OpenSSL signing key:
+1.  Import the public OpenSSL signing key:
 
     ```command
     gpg --search-keys openssl@openssl.org
@@ -213,7 +213,7 @@ After verifying the source code, the next step is to build OpenSSL from source.
     OpenSSL 3.5.0 8 Apr 2025 (Library: OpenSSL 3.5.0 8 Apr 2025)
     ```
 
-1.  Now check the active version via the basic `openssl` command:
+1.  Check the active version via the `openssl` command:
 
     ```command
     openssl version
@@ -245,13 +245,17 @@ Adjust your `PATH` environment variable to prioritize the `/opt/bin` directory.
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
+    {{< note >}}
+    If you use a different shell, (e.g. zsh), update the appropriate configuration file for your shell instead (e.g. `.zshrc`).
+    {{< /note >}}
+
 1.  Apply the changes:
 
     ```command
     source ~/.bashrc
     ```
 
-1.  Use the basic `openssl` command to recheck the active version of OpenSSL:
+1.  Use the `openssl` command to recheck the active version of OpenSSL:
 
     ```command
     openssl version
@@ -263,14 +267,13 @@ Adjust your `PATH` environment variable to prioritize the `/opt/bin` directory.
     OpenSSL 3.5.0 8 Apr 2025 (Library: OpenSSL 3.5.0 8 Apr 2025)
     ```
 
-
 ## Install NGINX from Source
 
 The version of NGINX available for Ubuntu 24.04 uses OpenSSL version `3.0.13`. In order to use OpenSSL 3.5.0, you must build NGINX from source.
 
 ### Fetch NGINX Source
 
-1.  Before continuing, change back into your user's home directory:
+1.  Change back into your user's home directory:
 
     ```command
     cd ~
@@ -282,7 +285,7 @@ The version of NGINX available for Ubuntu 24.04 uses OpenSSL version `3.0.13`. I
     wget https://nginx.org/download/nginx-1.27.4.tar.gz
     ```
 
-1.  Also download the corresponding signature for verification:
+1.  Download the corresponding signature for verification:
 
     ```command
     wget https://nginx.org/download/nginx-1.27.4.tar.gz.asc
@@ -536,7 +539,7 @@ NGINX should now be installed, configured, and running with OpenSSL 3.5.0 suppor
 
 ## Verify NGINX Is Using Post-Quantum Algorithms
 
-### Option 1: test with `openssl s_client` command
+### Option 1: Test with `openssl s_client` Command
 
 To test the TLS configuration with MLKEM key groups using the `openssl s_client` command, you can use the following options:
 
@@ -544,7 +547,7 @@ To test the TLS configuration with MLKEM key groups using the `openssl s_client`
 openssl s_client -groups X25519MLKEM768 -connect localhost:443
 ```
 
-### Option 2: Capture connection using tcpdump
+### Option 2: Capture Connection Using Tcpdump
 
 1. Enable MLKEM support in either Google Chrome or Mozilla Firefox:
 
@@ -621,7 +624,7 @@ These steps create an index.php page on your web server that displays informatio
         }
         ```
 
-1.  Create a file named `index.php` in /var/www/example.com with this snippet:
+1.  Create a file named `index.php` in `/var/www/example.com` with this snippet:
 
     ```command
     sudo mkdir -p /var/www/example.com

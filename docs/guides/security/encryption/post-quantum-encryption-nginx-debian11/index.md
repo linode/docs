@@ -21,7 +21,7 @@ relations:
 
 In August 2024, the National Institute of Standards and Technology (NIST) [released](https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards) its first finalized Post-Quantum Encryption Standards to protect against quantum computer attacks. This includes the Module-Lattice-based Key-Encapsulation Mechanism standard (ML-KEM, defined in [FIPS-203](https://csrc.nist.gov/pubs/fips/203/final)). It is already being implemented in the industry using an early [pre-standardization draft](https://datatracker.ietf.org/doc/draft-kwiatkowski-tls-ecdhe-mlkem/) for use with TLS.
 
-Deploying this algorithm for your web server currently requires the use of a recent library that implements the hybrid key exchange, such as e.g., the [Open Quantum Safe OpenSSL provider](https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider) or the recently released [OpenSSL 3.5.0](https://github.com/openssl/openssl/releases/tag/openssl-3.5.0).  This guide shows how to deploy this algorithm with NGINX on Debian 11.
+Deploying this algorithm for your web server currently requires the use of a recent library that implements the hybrid key exchange, such as the [Open Quantum Safe OpenSSL provider](https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider) or [OpenSSL 3.5.0](https://github.com/openssl/openssl/releases/tag/openssl-3.5.0).  This guide shows how to deploy this algorithm with NGINX on Debian 11.
 
 {{< note >}}
 On Debian 11, the versions of OpenSSL and NGINX available from apt are not compatible with post quantum encryption, so this guide shows how to build them from source instead. You can also check the [guide for Ubuntu 24.04](/docs/guides/post-quantum-encryption-nginx-ubuntu2404/), which explains how to configure the encryption algorithm on that distribution.
@@ -45,19 +45,19 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Once your Debian 11 compute instance is set up and secured, install the dependencies and system packages needed to build OpenSSL.
 
-1.  First, update your package list to ensure you download the latest available versions:
+1.  Update your package list to ensure you download the latest available versions:
 
     ```command
     sudo apt update
     ```
 
-1.  Next, install `make`, a build automation tool used to compile and link programs from source code. It reads instructions from a Makefile, which defines how to compile and build the software:
+1.  Install `make`, a build automation tool used to compile and link programs from source code. It reads instructions from a Makefile, which defines how to compile and build the software:
 
     ```command
     sudo apt install -y make
     ```
 
-1.  Now install `gcc` (GNU Compiler Collection), which compiles source code written in languages like C and C++ into executable programs. It is essential for building OpenSSL and other software from source code:
+1.  Install `gcc` (GNU Compiler Collection), which compiles source code written in languages like C and C++ into executable programs. It is essential for building OpenSSL and other software from source code:
 
     ```command
     sudo apt install -y gcc
@@ -67,7 +67,7 @@ Once your Debian 11 compute instance is set up and secured, install the dependen
 
 Debian 11 comes with OpenSSL version `1.1.1w` by default, but support for PQC algorithms (ML-KEM, ML-DSA, and SLH-DSA) is provided only by OpenSSL version 3.5.0. Therefore, you need to build a newer version from source.
 
-1.  First, change into your user's home directory, if not already:
+1.  Change into your user's home directory:
 
     ```command
     cd ~
@@ -89,13 +89,13 @@ Debian 11 comes with OpenSSL version `1.1.1w` by default, but support for PQC al
 
 Before proceeding with the installation, verify the integrity and authenticity of the downloaded files using GnuPG (`gnupg`).
 
-1.  First, install `gnupg`:
+1.  Install `gnupg`:
 
     ```command
     sudo apt -y install gnupg
     ```
 
-1.  Next, import the public OpenSSL signing key:
+1.  Import the public OpenSSL signing key:
 
     ```command
     gpg --search-keys openssl@openssl.org
@@ -135,7 +135,7 @@ Before proceeding with the installation, verify the integrity and authenticity o
     uid           [ unknown] OpenSSL <openssl@openssl.org>
     ```
 
-1.  Finally, verify the OpenSSL source file against its signature:
+1.  Verify the OpenSSL source file against its signature:
 
     ```command
     gpg --verify openssl-3.5.0.tar.gz.asc openssl-3.5.0.tar.gz
@@ -215,7 +215,7 @@ After verifying the source code, the next step is to build OpenSSL from source.
     OpenSSL 3.5.0 8 Apr 2025 (Library: OpenSSL 3.5.0 8 Apr 2025)
     ```
 
-1.  Now check the active version via the basic `openssl` command:
+1.  Check the active version via the basic `openssl` command:
 
     ```command
     openssl version
@@ -247,6 +247,10 @@ Adjust your `PATH` environment variable to prioritize the `/opt/bin` directory.
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
+    {{< note >}}
+    If you use a different shell, (e.g. zsh), update the appropriate configuration file for your shell instead (e.g. `.zshrc`).
+    {{< /note >}}
+
 1.  Apply the changes:
 
     ```command
@@ -272,7 +276,7 @@ The version of NGINX available for Debian 11 uses OpenSSL version `1.1.1w`. In o
 
 ### Fetch NGINX Source
 
-1.  Before continuing, change back into your user's home directory:
+1.  Change back into your user's home directory:
 
     ```command
     cd ~
@@ -284,7 +288,7 @@ The version of NGINX available for Debian 11 uses OpenSSL version `1.1.1w`. In o
     wget https://nginx.org/download/nginx-1.27.4.tar.gz
     ```
 
-1.  Also download the corresponding signature for verification:
+1.  Download the corresponding signature for verification:
 
     ```command
     wget https://nginx.org/download/nginx-1.27.4.tar.gz.asc
