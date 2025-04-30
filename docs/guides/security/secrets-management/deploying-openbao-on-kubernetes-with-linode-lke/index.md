@@ -1,6 +1,6 @@
 ---
 slug: deploying-openbao-on-kubernetes-with-linode-lke
-title: "Deploying OpenBao on Kubernetes With Linode LKE"
+title: "Deploying OpenBao on Kubernetes with Akamai Cloud LKE"
 description: "Learn to deploy and manage OpenBao on Linode Kubernetes Engine (LKE) using Helm. This guide covers setup, unsealing, testing, and production best practices."
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -128,9 +128,8 @@ To access your cluster, fetch the cluster credentials in the form of a `kubeconf
 1.  Use the following command to retrieve the cluster’s ID:
 
     ```command
-    CLUSTER_ID=$(linode lke clusters-list --json | \
-      jq -r \
-        '.[] | select(.label == "openbao-cluster") | .id')
+    CLUSTER_ID=$(linode lke clusters-list --json | jq -r \
+      '.[] | select(.label == "openbao-cluster") | .id')
     ```
 
 1.  Create a hidden `.kube` folder in your user’s home directory:
@@ -178,7 +177,7 @@ To access your cluster, fetch the cluster credentials in the form of a `kubeconf
 
 [Helm](https://helm.sh/) is a package manager for Kubernetes that simplifies application deployment via *charts*. The OpenBao development team maintains an official [Helm chart](https://github.com/openbao/openbao-helm), which is the recommended method for deploying OpenBao on Kubernetes.
 
-By default, this Helm chart installs OpenBao in *standalone mode*, which sets up a single server with a file storage backend. This profile is useful for testing. However, production-ready profiles are available in this chart, including a development server and high-availability cluster. See the [OpenBao Helm README](https://github.com/openbao/openbao-helm/blob/main/charts/openbao/README.md) for more information.
+By default, this Helm chart installs OpenBao in *standalone mode*, which sets up a single server with a file storage backend. This profile is useful for testing, but other profiles are available in this chart (e.g. development server, high-availability cluster). See the [OpenBao Helm README](https://github.com/openbao/openbao-helm/blob/main/charts/openbao/README.md) for more information.
 
 1.  Add the OpenBao chart repository to your local Helm installation:
 
