@@ -1,5 +1,5 @@
 ---
-slug: deploying-openbao-on-kubernetes-with-linode-lke
+slug: deploy-openbao-on-linode-kubernetes-engine
 title: "Deploy OpenBao on Linode Kubernetes Engine"
 description: "Learn to deploy and manage OpenBao on Linode Kubernetes Engine (LKE) using Helm. This guide covers setup, unsealing, testing, and production best practices."
 authors: ["Akamai"]
