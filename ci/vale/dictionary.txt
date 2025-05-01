@@ -50,6 +50,8 @@ allmasquerade
 allowlist
 allowlisting
 alphanumerics
+ALU
+ALUs
 amavis
 amavisd
 amd64
@@ -94,6 +96,8 @@ arptables
 arthashastra
 Asana
 ASCIIbetical
+ASIC
+ASICs
 askbot
 aske
 ASNs
@@ -371,6 +375,7 @@ collabnet
 Collabora
 colormaps
 com2sec
+Combinational
 commoditization
 comodo
 completekey
@@ -966,6 +971,8 @@ hdfs
 healthcheck
 healthtech
 heartbleed
+heatsink
+heatsinks
 hebb
 hebbian
 hebern
@@ -2050,6 +2057,7 @@ qemu
 qmail
 qmgr
 QRadar
+Quadra
 quadro
 qualys
 quickconnect
@@ -2809,6 +2817,8 @@ VNode
 VPCs
 VPLs
 vpns
+VPU
+VPUs
 vQmod
 vServers
 vset
