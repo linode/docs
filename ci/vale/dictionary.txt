@@ -404,6 +404,7 @@ coreutils
 coroutine
 coroutines
 corporateclean
+correlator
 couchbase
 Countly
 courseware
@@ -2005,6 +2006,7 @@ prolog
 promlens
 promo_codes
 promscale
+promtail
 prosodyctl
 proto
 protobuf
@@ -2558,6 +2560,7 @@ tika
 timedatectl
 timeframe
 timespan
+timestamping
 timewait
 timey
 tinc
