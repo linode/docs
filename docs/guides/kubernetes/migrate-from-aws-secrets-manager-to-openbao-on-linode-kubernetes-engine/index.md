@@ -24,7 +24,7 @@ When migrating from AWS Secrets Manager to OpenBao on Linode, your requirements 
 
 -   [Deploying OpenBao on a Linode Compute Instance](https://docs.google.com/document/d/1x30v1xT_EDuRNnhE9jv5VkFqj9Lo4N3kNO6ICOoSrOM/edit?usp=sharing)
 -   [Deploying OpenBao on Kubernetes with Linode LKE](https://docs.google.com/document/d/1gS6hQg09Ufr1Ku0v528acLESnyj1ZpXTxLhkLIlP-u8/edit?usp=sharing)
--   [Deploying OpenBao through the Linode Marketplace](https://www.linode.com/docs/marketplace-docs/guides/openbao/)
+-   [Deploying OpenBao through the Linode Marketplace](/docs/marketplace-docs/guides/openbao/)
 
 In addition to the prerequisites needed for either of the above deployment methods, you will also need access to your AWS account with sufficient permissions to work with AWS Secrets Manager.
 
