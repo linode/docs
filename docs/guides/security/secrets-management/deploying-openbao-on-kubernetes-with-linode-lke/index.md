@@ -1,10 +1,10 @@
 ---
 slug: deploying-openbao-on-kubernetes-with-linode-lke
-title: "Deploying OpenBao on Kubernetes with Akamai Cloud LKE"
+title: "Deploy OpenBao on Linode Kubernetes Engine"
 description: "Learn to deploy and manage OpenBao on Linode Kubernetes Engine (LKE) using Helm. This guide covers setup, unsealing, testing, and production best practices."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-04-30
+published: 2025-05-01
 keywords: ['openbao','openbao kubernetes deployment','install openbao on linode','openbao lke','linode kubernetes engine openbao','helm openbao chart','initialize openbao','unseal openbao kubernetes','openbao on akamai cloud','openbao cluster setup','openbao helm install guide','deploy openbao on kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
