@@ -1,15 +1,17 @@
 ---
 slug: migrate-from-oracle-vault-to-openbao-on-linode-kubernetes-engine
 title: "Migrate From Oracle Vault to OpenBao on Linode Kubernetes Engine"
-description: "Two to three sentences describing your guide."
+description: "Securely migrate secrets from Oracle Vault to OpenBao on Linode Kubernetes Engine (LKE), using Helm and AppRole-based access control."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-05-01
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['oracle vault','openbao','migrate secrets from oci','openbao helm install','linode kubernetes engine','oke to openbao','bao kv put','bao approle authentication','open source vault alternative','manage secrets on lke']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[Oracle Vault Documentation](https://docs.oracle.com/en-us/iaas/Content/KeyManagement/Concepts/keyoverview.htm)'
+- '[Oracle `oci` CLI Documentation](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/cliconcepts.htm)'
+- '[OpenBao Configuration Documentation](https://openbao.org/docs/configuration/)'
+- '[OpenBao Integrated Storage](https://openbao.org/docs/concepts/integrated-storage/)'
 ---
 
 This guide walks through how to migrate secrets from Oracle Vault to OpenBao running on Linode.
@@ -44,7 +46,7 @@ For example, you may have an application that uses services from multiple cloud 
 
 In the Oracle Vault, find the vault you want to migrate, and review its existing secrets:
 
-![](image1.png)
+![Oracle Vault UI displaying secrets in selected vault.](oracle-vault-secret-list.png)
 
 You can also use the Oracle Cloud CLI (`oci`) to manage the secrets in your Oracle Vault. First, you will need the ID of the compartment to which the vault belongs. For example, the `credentials` vault in the image above belongs to the `web-application` compartment.
 
@@ -138,7 +140,7 @@ Ensure that you securely handle any exposed secrets, as they will no longer bene
 
 Alternatively, the value of a secret can be viewed in the Oracle Vault UI by selecting the secret, selecting the latest version, and clicking **View Secret Contents**.
 
-![](image2.png)
+![Oracle Vault showing how to view the content of a selected secret.](oracle-vault-secret-value.png)
 
 Oracle Vault doesn’t use the concept of *roles* in a granular way, but it does use identity and access management (IAM) policies to control access. To adopt a permissions approach that uses RBAC in OpenBao, take the following steps:
 
@@ -360,7 +362,7 @@ secret_access_key   XdqD0BPa8aLFaN+EI8SAYm9U4ZYeXQdMGAIjKD/x
 Test that the AppRole can retrieve the secret, using the AppRole token saved earlier:
 
 ```command
-curl --header "X-Vault-Token: s.Q9n7KPnLKSDoYnVdrHnphEml" \
+curl --header "X-Vault-Token: s.36Yb3ijEOJbifprhdEiFtPhR" \
      --request GET \
      $BAO_ADDR/v1/cloud-credentials/provider-a \
      | jq
@@ -423,24 +425,3 @@ For production environments, OpenBao should be deployed with fault tolerance and
 -   **Raft storage backend**: Use OpenBao’s [integrated storage](https://openbao.org/docs/internals/integrated-storage/), based on the [Raft protocol](https://thesecretlivesofdata.com/raft/), to enable distributed data replication across multiple nodes. This ensures data consistency and fault tolerance while reducing reliance on external storage backends. Configure regular Raft snapshots for disaster recovery.
 -   **Deploy multiple nodes**: OpenBao recommends at least five nodes for a [high-availability deployment](https://openbao.org/docs/concepts/ha/). The active node handles all requests, while standby nodes remain ready to take over in case of failure.
 -   **Monitor leader status**: Use [bao operator raft list-peers](https://openbao.org/docs/commands/operator/raft/#list-peers) to check the cluster’s leader and node statuses. This command helps ensure that standby nodes are correctly registered and ready for failover.
-
-The resources below are provided to help you become familiar with OpenBao when migrating from Oracle Vault to Linode.
-
-## Additional Resources
-
--   Oracle Cloud
-    -   [Vault Documentation](https://docs.oracle.com/en-us/iaas/Content/KeyManagement/Concepts/keyoverview.htm)
-    -   [oci CLI Documentation](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/cliconcepts.htm)
--   OpenBao
-    -   [Configuration Documentation](https://openbao.org/docs/configuration/)
-    -   High Availability
-        -   [Architectural Internals](https://openbao.org/docs/internals/high-availability/)
-        -   [Detailed Concepts](https://openbao.org/docs/concepts/ha/)
-    -   [Integrated Storage](https://openbao.org/docs/concepts/integrated-storage/)
-    -   [Vault client libraries](https://developer.hashicorp.com/vault/api-docs/libraries) (compatible with OpenBao) for multiple programming languages
--   Linode
-    -   [Documentation](https://www.linode.com/docs/)
-    -   [Linode Cloud Manager](https://cloud.linode.com/)
-    -   [Deploying OpenBao on a Linode Compute Instance](https://docs.google.com/document/d/1x30v1xT_EDuRNnhE9jv5VkFqj9Lo4N3kNO6ICOoSrOM/edit?usp=sharing)
-    -   [Deploying OpenBao on Kubernetes with Linode LKE](https://docs.google.com/document/d/1gS6hQg09Ufr1Ku0v528acLESnyj1ZpXTxLhkLIlP-u8/edit?usp=sharing)
-    -   [Deploying OpenBao through the Linode Marketplace](https://www.linode.com/docs/marketplace-docs/guides/openbao/)

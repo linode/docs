@@ -1,15 +1,17 @@
 ---
 slug: migrate-from-gcp-secret-manager-to-openbao-on-linode-kubernetes-engine
 title: "Migrate From GCP Secret Manager to OpenBao on Linode Kubernetes Engine"
-description: "Two to three sentences describing your guide."
+description: "Migrate secrets from GCP Secret Manager to OpenBao on Linode Kubernetes Engine (LKE) using Helm charts and role-based access policies."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-05-01
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['gcp secret manager','openbao','migrate secrets from gcp','openbao helm install','linode kubernetes engine','gke to openbao','bao kv put','bao approle authentication','open source vault alternative','manage secrets on lke']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[Google Cloud Secret Manager Documentation](https://cloud.google.com/secret-manager/docs)'
+- '[gcloud secrets documentation](https://cloud.google.com/sdk/gcloud/reference/secrets)'
+- '[OpenBao Configuration Documentation](https://openbao.org/docs/configuration/)'
+- '[OpenBao Integrated Storage](https://openbao.org/docs/concepts/integrated-storage/)'
 ---
 
 This guide walks through how to migrate GCP Secret Manager secrets to OpenBao running Linode.
@@ -42,7 +44,7 @@ For example, you may have a web application which validates the authenticity of 
 
 In the GCP Secret Manager dashboard, review your existing secrets.
 
-![](image1.png)
+![GCP Secret Manager UI showing list of stored secrets.](gcp-secret-manager-secret-list.png)
 
 Alternatively, use the Google Cloud CLI (`gcloud`) to provide insight into your existing secrets and their usage. Authenticate the CLI. Then, [set the `gcloud` configuration to your current project](https://cloud.google.com/sdk/gcloud/reference/config/set). For example:
 
@@ -80,7 +82,7 @@ Ensure that you securely handle any exported secrets, as they will no longer ben
 
 Alternatively, secrets can be viewed in the GCP UI by selecting the secret, finding the latest version, and clicking **Actions > View secret value**.
 
-![](image2.png)
+![GCP Secret Manager UI displaying how to value of a selected secret.](gcp-secret-manager-secret-value.png)
 
 GCP uses IAM to manage roles and principals with access to a particular secret. For example, a GCP Compute Instance might run an API that handles authentication for a web application. That workload may have an IAM role called `JWTSigner`, and the role has an attached policy which gives it read access to the `jwt-signing-secret` value in GCP Secret Manager.
 
@@ -300,7 +302,7 @@ secret      EU&&7O^#c2GAMIdRyJlZkPEdoWKgy%CW
 Test that the AppRole can retrieve the secret, using the AppRole token saved earlier:
 
 ```command
-curl --header "X-Vault-Token: s.dy572yUtTNvHTZgIoxdNVO41" \
+curl --header "X-Vault-Token: s.36Yb3ijEOJbifprhdEiFtPhR" \
      --request GET \
      $BAO_ADDR/v1/jwt/signer \
      | jq
@@ -362,24 +364,3 @@ For production environments, OpenBao should be deployed with fault tolerance and
 -   **Raft storage backend**: Use OpenBao’s [integrated storage](https://openbao.org/docs/internals/integrated-storage/), based on the [Raft protocol](https://thesecretlivesofdata.com/raft/), to enable distributed data replication across multiple nodes. This ensures data consistency and fault tolerance while reducing reliance on external storage backends. Configure regular Raft snapshots for disaster recovery.
 -   **Deploy multiple nodes**: OpenBao recommends at least five nodes for a [high-availability deployment](https://openbao.org/docs/concepts/ha/). The active node handles all requests, while standby nodes remain ready to take over in case of failure.
 -   **Monitor leader status**: Use [bao operator raft list-peers](https://openbao.org/docs/commands/operator/raft/#list-peers) to check the cluster’s leader and node statuses. This command helps ensure that standby nodes are correctly registered and ready for failover.
-
-The resources below are provided to help you become familiar with OpenBao when migrating from GCP Secret Manager to Linode.
-
-## Additional Resources
-
--   GCP
-    -   [Secret Manager Documentation](https://cloud.google.com/secret-manager/docs)
-    -   [gcloud secrets documentation](https://cloud.google.com/sdk/gcloud/reference/secrets)
--   OpenBao
-    -   [Configuration Documentation](https://openbao.org/docs/configuration/)
-    -   High Availability
-        -    [Architectural Internals](https://openbao.org/docs/internals/high-availability/)
-        -    [Detailed Concepts](https://openbao.org/docs/concepts/ha/)
-    -   [Integrated Storage](https://openbao.org/docs/concepts/integrated-storage/)
-    -   [Vault client libraries](https://developer.hashicorp.com/vault/api-docs/libraries) (compatible with OpenBao) for multiple programming languages
--   Linode
-    -   [Documentation](https://www.linode.com/docs/)
-    -   [Linode Cloud Manager](https://cloud.linode.com/)
-    -   [Deploying OpenBao on a Linode Compute Instance](https://docs.google.com/document/d/1x30v1xT_EDuRNnhE9jv5VkFqj9Lo4N3kNO6ICOoSrOM/edit?usp=sharing)
-    -   [Deploying OpenBao on Kubernetes with Linode LKE](https://docs.google.com/document/d/1gS6hQg09Ufr1Ku0v528acLESnyj1ZpXTxLhkLIlP-u8/edit?usp=sharing)
-    -   [Deploying OpenBao through the Linode Marketplace](https://www.linode.com/docs/marketplace-docs/guides/openbao/)

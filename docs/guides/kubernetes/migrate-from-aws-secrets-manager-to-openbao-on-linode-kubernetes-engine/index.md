@@ -1,15 +1,16 @@
 ---
 slug: migrate-from-aws-secrets-manager-to-openbao-on-linode-kubernetes-engine
 title: "Migrate From AWS Secrets Manager to OpenBao on Linode Kubernetes Engine"
-description: "Two to three sentences describing your guide."
+description: "Learn how to migrate secrets from AWS Secrets Manager to OpenBao on Linode Kubernetes Engine (LKE) using Helm and AppRole authentication."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-05-01
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['aws secrets manager','openbao','migrate secrets from aws','openbao helm install','linode kubernetes engine','eks to openbao','bao kv put','bao approle authentication','open source vault alternative','manage secrets on lke']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[AWS Secrets Manager Documentation](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)'
+- '[OpenBao Configuration Documentation](https://openbao.org/docs/configuration/)'
+- '[OpenBao Integrated Storage](https://openbao.org/docs/concepts/integrated-storage/)'
 ---
 
 This guide walks through how to migrate secrets from AWS Secrets Manager to OpenBao running on Linode.
@@ -42,7 +43,7 @@ For example, you may have a web application with a corresponding database depend
 
 In the AWS Secrets Manager dashboard, review your existing secrets.
 
-![](image1.png)
+![AWS Secrets Manager showing list of stored secrets.](aws-secrets-manager-dashboard.png)
 
 Alternatively, using the AWS CLI can quickly provide insight into existing secrets and their usage. To list all secrets, run the following command:
 
@@ -334,7 +335,7 @@ username    psqluser
 Test that the AppRole can retrieve the secret, using the AppRole token saved earlier:
 
 ```command
-curl --header "X-Vault-Token: s.kpKsgWNtYLAktRYQT4BiMVMy" \
+curl --header "X-Vault-Token: s.36Yb3ijEOJbifprhdEiFtPhR" \
      --request GET \
      $BAO_ADDR/v1/database-credentials/psql \
      | jq
@@ -401,23 +402,3 @@ For production environments, OpenBao should be deployed with fault tolerance and
 -   **Raft storage backend**: Use OpenBao’s [integrated storage](https://openbao.org/docs/internals/integrated-storage/), based on the [Raft protocol](https://thesecretlivesofdata.com/raft/), to enable distributed data replication across multiple nodes. This ensures data consistency and fault tolerance while reducing reliance on external storage backends. Configure regular Raft snapshots for disaster recovery.
 -   **Deploy multiple nodes**: OpenBao recommends at least five nodes for a [high-availability deployment](https://openbao.org/docs/concepts/ha/). The active node handles all requests, while standby nodes remain ready to take over in case of failure.
 -   **Monitor leader status**: Use [bao operator raft list-peers](https://openbao.org/docs/commands/operator/raft/#list-peers) to check the cluster’s leader and node statuses. This command helps ensure that standby nodes are correctly registered and ready for failover.
-
-The resources below are provided to help you become familiar with OpenBao when migrating from AWS Secrets Manager to Linode.
-
-## Additional Resources
-
--   AWS
-    -   [Secrets Manager Documentation](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)
--   OpenBao
-    -   [Configuration Documentation](https://openbao.org/docs/configuration/)
-    -   High Availability
-        -   [Architectural Internals](https://openbao.org/docs/internals/high-availability/)
-        -   [Detailed Concepts](https://openbao.org/docs/concepts/ha/)
-    -   [Integrated Storage](https://openbao.org/docs/concepts/integrated-storage/)
-    -   [Vault client libraries](https://developer.hashicorp.com/vault/api-docs/libraries) (compatible with OpenBao) for multiple programming languages
--   Linode
-    -   [Documentation](https://www.linode.com/docs/)
-    -   [Linode Cloud Manager](https://cloud.linode.com/)
-    -   [Deploying OpenBao on a Linode Compute Instance](https://docs.google.com/document/d/1x30v1xT_EDuRNnhE9jv5VkFqj9Lo4N3kNO6ICOoSrOM/edit?usp=sharing)
-    -   [Deploying OpenBao on Kubernetes with Linode LKE](https://docs.google.com/document/d/1gS6hQg09Ufr1Ku0v528acLESnyj1ZpXTxLhkLIlP-u8/edit?usp=sharing)
-    -   [Deploying OpenBao through the Linode Marketplace](https://www.linode.com/docs/marketplace-docs/guides/openbao/)
