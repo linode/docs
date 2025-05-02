@@ -34,7 +34,7 @@ To follow this guide, perform these steps first:
     A [list of other clients on wiki.postgresql.org](https://wiki.postgresql.org/wiki/PostgreSQL_Clients) is available, but the instructions in this guide are intended for `psql`.
     {{< /note >}}
 
-## File Structure
+## Terraform Project File Structure
 
 The project in this guide follows the directory structure shown below:
 
@@ -58,7 +58,7 @@ In this structure, the root Terraform files (`main.tf`, `outputs.tf`, `terraform
 While it is not within the scope of this guide, you can also add a [null resource](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) and a [local-exec provisioner](https://developer.hashicorp.com/terraform/language/resources/provisioners/local-exec) that uses `psql` to create tables within the module.
 {{< /note >}}
 
-## Preparing to Deploy
+## Database Cluster Options
 
 There are several options that can be configured for a new database cluster, including:
 
