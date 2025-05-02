@@ -1,12 +1,12 @@
 ---
 slug: dbaas-postgres-terraform
-title: "Managed PostgreSQL Clusters on Akamai Cloud with Terraform"
+title: "Managed PostgreSQL Databases on Akamai Cloud with Terraform"
 description: "Two to three sentences describing your guide."
 og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
 authors: ["Peter Sari"]
 contributors: ["Peter Sari", "Nathan Melehan"]
 published: 2025-05-02
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['managed database','database managed services','managed postgresql','managed postgres','managed postgres database','terraform postgresql provider​','terraform postgresql​','postgresql terraform provider​','terraform postgres provider','postgres terraform provider','terraform postgres','terraform database','postgresql_database terraform','terraform create postgres database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Link Title 1](http://www.example.com)'
