@@ -43,9 +43,9 @@ The project in this guide follows the directory structure shown below:
 ├── main.tf
 ├── modules
 │   └── databases
-│   	├── main.tf
-│   	├── outputs.tf
-│   	└── variables.tf
+│       ├── main.tf
+│       ├── outputs.tf
+│       └── variables.tf
 ├── outputs.tf
 ├── providers.tf
 ├── terraform.tfvars
@@ -188,14 +188,14 @@ Providers map the Hashicorp Configuration Language to an API, like the Linode AP
     ```file {title="postgres-terraform/providers.tf"}
     terraform {
       required_providers {
-    	linode = {
-      	source  = "linode/linode"
-      	version = "2.35.1"
-    	}
-    	postgresql = {
-      	source  = "a0s/postgresql"
-      	version = "1.14.0-jumphost-1"
-    	}
+        linode = {
+          source  = "linode/linode"
+          version = "2.35.1"
+        }
+        postgresql = {
+          source  = "a0s/postgresql"
+          version = "1.14.0-jumphost-1"
+        }
       }
     }
 
@@ -205,8 +205,8 @@ Providers map the Hashicorp Configuration Language to an API, like the Linode AP
 
     provider "postgresql" {
       database = "defaultdb"
-      host 	= linode_database_postgresql_v2.pgsql-cluster-1.host_primary
-      port 	= linode_database_postgresql_v2.pgsql-cluster-1.port
+      host     = linode_database_postgresql_v2.pgsql-cluster-1.host_primary
+      port     = linode_database_postgresql_v2.pgsql-cluster-1.port
       username = linode_database_postgresql_v2.pgsql-cluster-1.root_username
       password = linode_database_postgresql_v2.pgsql-cluster-1.root_password
       sslmode  = "require"
@@ -510,7 +510,7 @@ The providers need to be configured to work with your specific environment:
 
     ```file {title="postgres-terraform/modules/databases/outputs.tf"}
     output "databases" {
-      value   	= keys(postgresql_database.databases)
+      value       = keys(postgresql_database.databases)
       description = "List of created databases"
     }
     ```
