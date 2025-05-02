@@ -1,5 +1,5 @@
 ---
-slug: dbaas-postgres-terraform
+slug: managed-postgresql-databases-on-akamai-cloud-with-terraform
 title: "Managed PostgreSQL Databases on Akamai Cloud with Terraform"
 description: "Two to three sentences describing your guide."
 og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
