@@ -1,16 +1,15 @@
 ---
 slug: managed-postgresql-databases-on-akamai-cloud-with-terraform
 title: "Managed PostgreSQL Databases on Akamai Cloud with Terraform"
-description: "Two to three sentences describing your guide."
-og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
+description: "Learn how to use Terraform to provision a managed PostgreSQL database cluster on Akamai Cloud."
 authors: ["Peter Sari"]
 contributors: ["Peter Sari", "Nathan Melehan"]
 published: 2025-05-02
 keywords: ['managed database','database managed services','managed postgresql','managed postgres','managed postgres database','terraform postgresql provider​','terraform postgresql​','postgresql terraform provider​','terraform postgres provider','postgres terraform provider','terraform postgres','terraform database','postgresql_database terraform','terraform create postgres database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[Terraform documentation](https://developer.hashicorp.com/terraform)'
+- '[PostgreSQL documentation](https://www.postgresql.org/docs/)'
 ---
 
 This guide demonstrates how to use [Terraform](https://developer.hashicorp.com/terraform) to set up a PostgreSQL database cluster on the [Managed Database](https://www.linode.com/products/databases/?utm_medium=website&utm_source=akamai) service in Akamai Cloud.
