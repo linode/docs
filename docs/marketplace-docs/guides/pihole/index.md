@@ -67,12 +67,12 @@ This returns passwords that were automatically generated when the instance was d
 
 1.  Open your web browser and navigate to `http://[domain]/admin`, where *[domain]* can be replaced with the custom domain you entered during deployment, your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`), or your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
-    The Pi-Hole dashboard should now be displayed.
+    The Pi-Hole dashboard opens.
 
     ![Screenshot of the Pi-hole dashboard](pihole-dashboard.png)
 
-1.  To log yourself in and access most of Pi-hole's features, click the **Login** link on the left menu. Enter the Pi-hole user password that is found in your credentials file.
+1.  To log in and access most of Pi-hole's features, in the main menu, click **Login**. Enter the Pi-hole user password that is found in your credentials file.
 
-Now that you’ve accessed your dashboard, check out [the official Pi-hole documentation](https://docs.pi-hole.net/) to learn how to further use your Pi-hole instance.
+Check out [the official Pi-hole documentation](https://docs.pi-hole.net/) to learn how to further use your Pi-hole instance.
 
 {{% content "marketplace-update-note-shortguide" %}}
