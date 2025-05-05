@@ -5,22 +5,23 @@ description: "Learn how to use Terraform to provision a managed PostgreSQL datab
 authors: ["Peter Sari"]
 contributors: ["Peter Sari", "Nathan Melehan"]
 published: 2025-05-02
-keywords: ['managed database','database managed services','managed postgresql','managed postgres','managed postgres database','terraform postgresql provider​','terraform postgresql​','postgresql terraform provider​','terraform postgres provider','postgres terraform provider','terraform postgres','terraform database','postgresql_database terraform','terraform create postgres database']
+keywords: ['managed database','database managed services','managed postgresql','managed postgres','managed postgres database','terraform postgresql provider​','terraform postgresql​','postgresql terraform provider​','terraform postgres provider','postgres terraform provider','terraform postgres','terraform database','postgresql_database terraform','terraform create postgres database','infrastructure as code','iac']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Terraform documentation](https://developer.hashicorp.com/terraform)'
+- '[Terraform GitHub](https://github.com/hashicorp/terraform)'
 - '[PostgreSQL documentation](https://www.postgresql.org/docs/)'
 ---
 
-This guide demonstrates how to use [Terraform](https://developer.hashicorp.com/terraform) to set up a PostgreSQL database cluster on the [Managed Database](https://www.linode.com/products/databases/?utm_medium=website&utm_source=akamai) service in Akamai Cloud.
+This guide demonstrates how to use Terraform to set up a PostgreSQL cluster with the [Managed Database](https://www.linode.com/products/databases/?utm_medium=website&utm_source=akamai) service on Akamai Cloud. [Terraform](https://developer.hashicorp.com/terraform) is an infrastructure as code (IaC) tool that allows you to automate the deployment of cloud infrastructure. [PostgreSQL](https://www.postgresql.org/) is a widely-adopted, open source database solution used by many DevOps engineers and supported by a large range of operating systems.
 
-Akamai's Managed Database is a Relational Database Management System as a Service. Akamai manages both the underlying compute instances and the relational database management system software. Akamai updates the software and maintains the health of these systems. Using Managed Database, you can instantiate managed clusters of MySQL and PgSQL with a range of supported versions.
+Akamai's Managed Database is a Relational Database Management System as a Service. Akamai manages both the underlying compute instances and the relational database management system software. Akamai also updates the software and maintains the health of these systems. Using Managed Databases, you can instantiate managed clusters of MySQL and PgSQL with a range of supported versions.
 
-These clusters can support multiple database, and this guide also shows how to use Terraform to deploy individual databases on the cluster. To accomplish this, two [Terraform providers](https://developer.hashicorp.com/terraform/language/providers) are used, and a modular configuration handles the database deployments.
+Managed Database clusters on Akamai Cloud also support multiple databases. This guide shows how to use Terraform to deploy individual databases on a cluster using two [Terraform providers](https://developer.hashicorp.com/terraform/language/providers), where a modular configuration handles the database deployments.
 
 ## Before You Begin
 
-To follow this guide, perform these steps first:
+To follow this tutorial, perform these steps first:
 
 - [Install Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) on your workstation
 
@@ -60,7 +61,7 @@ While it is not within the scope of this guide, you can also add a [null resourc
 
 ## Database Cluster Options
 
-There are several options that can be configured for a new database cluster, including:
+There are several options that can be configured when provisioning a new Managed Database cluster, including:
 
 - The size of the cluster you would like to deploy
 
@@ -94,7 +95,7 @@ The output resembles:
 ...
 ```
 
-The ID is used as the value for the variable region in the Terraform configuration.
+The ID is used as the value for the variable region in the Terraform configuration. See our [Region Availability](https://www.linode.com/global-infrastructure/availability/) page for a full list of compute region IDs. Availability for Managed Database deployment may vary.
 
 ### Instance Types
 
@@ -130,15 +131,15 @@ The output resembles:
 ...
 ```
 
-This command outputs the `id`, which is later referenced in `db_instance_type` variable in your Terraform configuration, along with some information related to diskspace (in MB) and vCPUs. The amount of RAM per instance is indicated in the description.
+This command outputs the `id`, which is later referenced in `db_instance_type` variable in your Terraform configuration, along with some information related to disk space (in MB) and vCPUs. The amount of RAM per instance is indicated in the description.
 
-{{< note >}}
+{{< note title="Changing the Instance Type After Provisioning" >}}
 The database cluster instance type can be changed in the future by altering the instance type variable in your Terraform configuration. Note that resizing is implemented by creating entirely new cluster and migrating the database to the new cluster. As a result, resizes are not instantaneous changes.
 {{< /note >}}
 
-### RDBMS Software and Version
+### Relational Database Management System (RDBMS) Software and Version
 
-When creating the cluster, the server software (currently, PostgreSQL or MySQL) and version need to be specified. For this guide, PostgreSQL v17 is used. The list of currently supported RDBMS with associated versions is returned by this API call:
+When creating the cluster, the server software (PostgreSQL or MySQL at the time of this writing) and version need to be specified. For this guide, PostgreSQL v17 is used. The list of currently supported RDBMS with associated versions is returned by this API call:
 
 ```command
 curl -s https://api.linode.com/v4/databases/engines | jq '.data[].id'
@@ -157,7 +158,7 @@ The value `postgresql/17` is later referenced by the variable `rdbms_ver` in the
 
 ### Cluster Size
 
-The size of the cluster (the number of nodes in the cluster) determines its read capacity and whether it remains available when a node fails. Clusters can be built as a single node, for smaller, less mission critical applications, or they can be provisioned with 2 or 3 nodes, for those that require high availability and/or higher read capacity.
+The size of the cluster (the number of database instances, or nodes, in the cluster) determines its read capacity and whether it remains available when a node fails. Clusters can be built as a single node, for smaller, less critical applications, or they can be provisioned with 2 or 3 nodes, for those that require high availability or higher read capacity.
 
 Your cluster size can be changed at any time after the cluster is first provisioned. In the Terraform configuration demonstrated later, this is done by configuring the `cluster_nodes` variable.
 
@@ -165,19 +166,19 @@ Your cluster size can be changed at any time after the cluster is first provisio
 
 Because the cluster nodes and RDBMS software are managed and kept up to date by Akamai, it is important to provide a viable maintenance window. This window is specified in the time zone of the cluster's region.
 
-In the Terraform configuration shown later, the `update_hour` and `update_day` variables control this window. Both variables are integer values:
+In the Terraform configuration, the `update_hour` and `update_day` variables control this window. Both variables are integer values:
 
 - `update_day` ranges from 1 (Sunday) to 7 (Saturday)
 
 - `update_hour` ranges from 0 (midnight) to 23 (11PM).
 
-These variables can also be changed after the cluster is first created.
+These variables can also be modified after the cluster is first created.
 
 ## Configure Terraform Providers
 
-Providers map the Hashicorp Configuration Language to an API, like the Linode API. In order to configure the database cluster with Terraform, you first need to declare which Terraform [providers](https://developer.hashicorp.com/terraform/language/providers) are used in the configuration and enter some required information.
+A “provider” in Terraform maps the Hashicorp Configuration Language to an API, like the [Linode API](https://techdocs.akamai.com/linode-api/reference/api), so it can communicate with various software and cloud providers. In order to configure the database cluster with Terraform, you first need to declare which Terraform [providers](https://developer.hashicorp.com/terraform/language/providers) are used in the configuration and enter some required information.
 
-1. On your workstation, create a directory named `postgres-terraform`. All Terraform files in this guide are stored under this directory:
+1. On your workstation, create a directory named `postgres-terraform`. All Terraform configuration files in this guide are stored under this directory:
 
     ```command
     mkdir postgres-terraform
@@ -213,33 +214,33 @@ Providers map the Hashicorp Configuration Language to an API, like the Linode AP
     }
     ```
 
-Two providers are used in this guide:
+The Terraform file above uses two providers:
 
 - The Linode provider (`linode/linode`) talks to the Linode API to build the infrastructure. At the time of writing, version 2.35.1 of the Linode provider is the latest.
 
-    {{< note >}}
-    Please check the [Terraform Registry](https://registry.terraform.io/providers/linode/linode/latest/docs) for the latest versions prior to deploying.
+    {{< note title="Latest Version" >}}
+    Check the [Terraform Registry](https://registry.terraform.io/providers/linode/linode/latest/docs) for the latest versions prior to deploying. If using a different version, please be aware of proper version syntax.
     {{< /note >}}
 
 - A PostgreSQL provider talks to the PostgreSQL management endpoint. There are multiple PostgreSQL providers, and this guide uses the [`a0s/postgresql` provider](https://registry.terraform.io/providers/a0s/postgresql/latest/docs).
 
-    {{< note >}}
-    MySQL providers are also available if you need to provision a MySQL cluster.
+    {{< note title="MySQL Providers" >}}
+    MySQL providers are also available if you want to provision a MySQL cluster.
     {{< /note >}}
 
 The providers need to be configured to work with your specific environment:
 
-- The Linode provider requires a personal access token (PAT) with read and write permissions for the Managed Databases service.
+- The Linode provider requires a personal access token (PAT) with **read** and **write** permissions for the Managed Databases service. This helps ensure proper user authentication to your Akamai Cloud account.
 
 - The PostgreSQL provider requires:
 
   - A collection of information that is derived from the cluster deployment: the username, password, hostname, and TCP port to use when connecting. These values are attributes of the `linode_database_postgresql_v2.pgsql-cluster-1` resource, defined later in a file called `main.tf`.
 
-  - The name of the database to connect to. This is assigned the value `defaultdb`. This entry is important as the `psql` interface requires an existing database in the connection string, even when creating a new database. `defaultdb` is created for you during the creation of the database cluster.
+  - The name of the database you wish to connect to. This is assigned the value `defaultdb`. This entry is important as the `psql` interface requires an existing database in the connection string, even when creating a new database. `defaultdb` is created for you during the creation of the database cluster.
 
 ## Configure the Managed PostgreSQL Cluster with Terraform
 
-1. Create a file named `main.tf` in your `postgres-terraform/` directory and paste in the following snippet:
+1. Create a file named `main.tf` in your `postgres-terraform/` directory and paste in the following Terraform code snippet:
 
     ```file {title="postgres-terraform/main.tf"}
     resource "linode_database_postgresql_v2" "pgsql-cluster-1" {
@@ -300,7 +301,7 @@ The providers need to be configured to work with your specific environment:
     }
     ```
 
-    This represents the primary logic of the [root module](https://developer.hashicorp.com/terraform/language/modules#the-root-module) in your Terraform configuration. These Terraform [resources](https://developer.hashicorp.com/terraform/language/resources) and [modules](https://developer.hashicorp.com/terraform/language/modules) are declared:
+    This represents the primary logic of the [root module](https://developer.hashicorp.com/terraform/language/modules#the-root-module) in your Terraform configuration. The following Terraform [resources](https://developer.hashicorp.com/terraform/language/resources) and [modules](https://developer.hashicorp.com/terraform/language/modules) are declared:
 
     - A `linode_database_postgresql_v2` resource named `pgsql-cluster-1`. This is the Managed Database cluster that is provisioned.
 
@@ -379,7 +380,7 @@ The providers need to be configured to work with your specific environment:
     }
     ```
 
-    The variable definitions in this file are referenced in your resource and module declarations to build the database cluster and deploy two databases. The definitions include descriptions to show formatting and describe acceptable values, and a default value. The `rdbms_ver`, `region`, `db_instance_type`, `cluster_nodes`, `update_hour`, and `update_day` variables correspond to the values you decided on in the [Preparing to Deploy](#preparing-to-deploy) section.
+    The variable definitions in this file are referenced in your resource and module declarations to build the database cluster and deploy two databases. The definitions include descriptions to show formatting and describe acceptable values, and a default value. The `rdbms_ver`, `region`, `db_instance_type`, `cluster_nodes`, `update_hour`, and `update_day` variables correspond to the values chosen in the [Preparing to Deploy](#preparing-to-deploy) section.
 
 1. Create a file named `outputs.tf` in your `postgres-terraform/` directory and paste in the following snippet:
 
@@ -461,7 +462,7 @@ The providers need to be configured to work with your specific environment:
 
     This is a [child module](https://developer.hashicorp.com/terraform/language/modules#child-modules) of the root module. It represents a reusable set of instructions referenced by the root module to create databases in the cluster in a repeatable fashion.
 
-    This module uses the `postgresql_database` resource from the `a0s/postgres` provider to create our databases.
+    This module uses the `postgresql_database` resource from the `a0s/postgres` provider to create our Managed Databases.
 
 1.  Create a file named `variables.tf` in your `postgres-terraform/modules/databases/` directory and paste in the following snippet:
 
@@ -504,7 +505,7 @@ The providers need to be configured to work with your specific environment:
     }
     ```
 
-    These variables are assigned values in the `module` declarations of the `main.tf` file in the root module (in step 1 of this section).
+    These variables are assigned values in the `module` declarations of the `main.tf` file in the root module (step 1 of this section).
 
 1.  Create a file named `outputs.tf` in your `postgres-terraform/modules/databases/` directory and paste in the following snippet:
 
@@ -543,18 +544,13 @@ The Terraform configuration is now complete and ready to be used to create infra
     Terraform has been successfully initialized!
     ```
 
-1. Run Terraform's `plan` command:
+1. Run Terraform's `plan` command. This performs a test run of your configuration and ensures it is syntactically correct. This command also asks for your Linode API token, but it does not actually use it to create infrastructure:
 
     ```command
     terraform plan
     ```
 
-    This performs a test run of your configuration and ensures it is syntactically correct. This command also asks for your Linode API token, but it does not actually use it to create infrastructure.
-
-    A summary of proposed changes is displayed, along with any warnings.
-
-    {{< note >}}
-    The configuration from the previous section results in a warning, but this is expected:
+    A summary of proposed changes is displayed, along with any warnings. The configuration from the previous section results in a warning, but this is expected behavior:
 
     ```output
     │ Warning: Redundant ignore_changes element
@@ -565,9 +561,7 @@ The Terraform configuration is now complete and ready to be used to create infra
     │ ignore_changes to quiet this warning.
     ```
 
-    In order to combine database management and infrastructure management in the configuration, we must use lifecycle policies to ignore changes to the `host_primary` attribute. The PostgreSQL provider generates a warning for this. Since this value doesn't actually change, it is safe to ignore future changes to the value. This should be fixed in a future version of the Linode Terraform provider.
-    {{< /note >}}
-
+    In order to combine database management and infrastructure management in the configuration, lifecycle policies must be used to ignore changes to the `host_primary` attribute. The PostgreSQL provider generates a warning for this. Since this value doesn't actually change, it is safe to ignore future changes to the value.
 
 1. If there are no errors (aside from the warning that was described), you can run Terraform's `apply` command.
 
@@ -579,7 +573,7 @@ The Terraform configuration is now complete and ready to be used to create infra
 
 1. Terraform shows a summary of the proposed changes and asks if you would like to proceed. Enter `yes` for this prompt.
 
-1. The build process begins, but it can take time to complete. Once complete, Terraform provides a summary of successful actions and a list of non-sensitive outputs, like below:
+1. The build process begins, and can take time to complete. Once complete, Terraform provides a summary of successful actions and a list of non-sensitive outputs, like below:
 
     ```output
     Plan: 4 to add, 0 to change, 0 to destroy.
@@ -613,7 +607,7 @@ The Terraform configuration is now complete and ready to be used to create infra
 
 ## Connect to the Managed PostgreSQL Cluster with psql
 
-You should now have a fully functional PostgresSQL cluster running on the Akamai Cloud Managed Database service with two databases. You can now test access to the cluster using the `psql` command:
+You should now have a fully functional PostgresSQL cluster running on Akamai Cloud's Managed Database service with two databases. You can now test access to the cluster using the `psql` command:
 
 1. Gather the information needed for the connection from Terraform's outputs. This information was displayed after the `terraform apply` command completed, but you can also run Terraform's `output` command to retrieve it:
 
@@ -627,7 +621,7 @@ You should now have a fully functional PostgresSQL cluster running on the Akamai
     terraform output -raw database_password
     ```
 
-    This password is later used by the `psql` command, so record it in a temporary note on your workstation.
+    Save this password as it is used later by the `psql` command.
 
 1. Run the following commands to create environment variables in your terminal for your database FQDN, port, and username:
 
@@ -691,11 +685,11 @@ You should now have a fully functional PostgresSQL cluster running on the Akamai
 
 ## Destroy the Managed PostgreSQL Cluster
 
-If you would like to destroy the database cluster and the underlying compute instances, run Terraform's `destroy` command on your workstation (while inside your `postgres-terraform/` directory):
+If you would like to destroy the database cluster and the underlying compute instances, run Terraform's `destroy` command on your workstation while inside your `postgres-terraform/` directory:
 
 ```command
 terraform destroy
 ```
 
-Destroying this infrastructure stops new costs from accruing for it.
+Once destroyed, new costs stop accruing for the cloud infrastructure that was previously provisioned.
 
