@@ -50,19 +50,19 @@ marketplace_app_name: "Grav"
 
     ![Screenshot of the URL bar with the Grav URL](grav-url.png)
 
-1.  You will be presented with the Grav login page. Use the following credentials:
-    - **Username:** admin
-    - **Password:** The password can be found in the credentials file on your server. To obtain it, log in to your Compute Instance via SSH or Lish and run:
+1.  Use the following credentials to log in:
+    - **Username:** *admin*
+    - **Password:** Enter the password stored in the credentials file on your server. To obtain it, log in to your Compute Instance via SSH or Lish and run:
         ```command
         cat /home/$USER/.credentials
         ```
 
     ![Screenshot of the Grav login page](grav-login.png)
 
-1.  Once logged in, you will be taken to the Admin dashboard. From here, you can fully administer your new Grav site, including creating content, modifying your configuration, changing your theme, and much more.
+You're now logged in and on the Admin dashboard. From here, you can fully administer your new Grav site, including creation of content, modification of your configuration, change your theme, and much more.
 
-    ![Screenshot of the Admin dashboard](grav-admin.png)
+![Screenshot of the Admin dashboard](grav-admin.png)
 
-Now that you’ve accessed your dashboard, check out [the official Grav documentation](https://learn.getgrav.org/) to learn how to further use your Grav instance.
+Check out [the official Grav documentation](https://learn.getgrav.org/) to learn how to further use your Grav instance.
 
 {{% content "marketplace-update-note-shortguide" %}}
