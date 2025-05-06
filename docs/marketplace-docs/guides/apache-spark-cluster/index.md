@@ -2,7 +2,7 @@
 title: "Deploy Apache Spark through the Linode Marketplace"
 description: "Apache Spark is a powerful open-source unified analytics engine for large-scale data processing. It provides high-level APIs in Java, Scala, Python, and R, and an optimized engine that supports general execution graphs. Spark is designed for both batch and streaming data processing, and it's significantly faster than traditional big data processing frameworks."
 published: 2024-07-09
-modified: 2024-07-09
+modified: 2024-05-01
 keywords: ['spark','apache spark', 'marketplace', 'bigdata','analytics']
 tags: ["ubuntu","marketplace", "big data", "linode platform", "cloud manager", "analytics", "cloud storage", "high availability", "compute storage"]
 external_resources:
@@ -38,7 +38,7 @@ The minimum RAM requirement for the worker nodes is 4GB RAM to ensure that jobs 
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 22.04 LTS
+- **Supported distributions:** Ubuntu 24.04 LTS
 - **Suggested minimum plan:** 4GB RAM
 
 ### Spark Options
@@ -77,10 +77,10 @@ The Apache Spark Marketplace App installs the following software on your Linode:
 
 | **Software**  | **Version**   | **Description**   |
 | :---      | :----     | :---          |
-| **Apache Spark** | 3.4 | Unified analytics engine for large-scale data processing |
+| **Apache Spark** | 3.5 | Unified analytics engine for large-scale data processing |
 | **Java OpenJDK** | 11.0 | Runtime environment for Spark |
-| **Scala** | 2.11 | Programming language that Spark is built with, providing a powerful interface to Spark's APIs |
-| **NGINX** | 1.18 | High-performance HTTP server and reverse proxy |
+| **Scala** | Latest | Programming language that Spark is built with, providing a powerful interface to Spark's APIs |
+| **NGINX** | Latest | High-performance HTTP server and reverse proxy |
 | **UFW** | | Uncomplicated Firewall for managing firewall rules |
 | **Fail2ban** | | Intrusion prevention software framework for protection against brute-force attacks |
 
