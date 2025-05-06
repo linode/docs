@@ -5,6 +5,7 @@ description: "This guide shows how to deploy a RabbitMQ message broker architect
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-03-20
+modified: 2025-04-25
 keywords: ['app platform','lke','linode kubernetes engine','rabbitmq','microservice','message broker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -108,7 +109,7 @@ When working in the context of an admin-level Team, users can create and access 
 
 1.  Click **Create Team**.
 
-1.  Provide a **Name** for the Team. Keep all other default values, and click **Submit**. This guide uses the Team name `demo`.
+1.  Provide a **Name** for the Team. Keep all other default values, and click **Create Team**. This guide uses the Team name `demo`.
 
 ### Create a RabbitMQ Cluster with Workloads
 
@@ -136,27 +137,37 @@ This guide uses an example Python chat app to send messages to all connected cli
 
 The example app in this guide is not meant for production workloads, and steps may vary depending on the app you are using.
 
+### Add the Code Repository for the Example App
+
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
-1.  Select **Builds**, and click **Create Build**.
+1.  Select **Code Repositories**, and click **Add Code Repository**.
 
-1.  Provide a name for the Build. This is the same name used for the image stored in the private Harbor registry of your Team. This guide uses the Build name `rmq-example-app` with the tag `latest`.
+1.  Provide the name `apl-examples` for the Code Repository.
 
-1.  Select the **Mode** `Buildpacks`.
+1.  Select *GitHub* as the **Git Service**.
 
-1.  To use the example Python messaging app, provide the following GitHub repository URL:
+1.  Under **Repository URL**, add the following GitHub URL:
 
     ```command
     https://github.com/linode/apl-examples.git
     ```
 
-1.  Set the **Buildpacks** path to `rabbitmq-python`.
+1.  Click **Add Code Repository**.
 
-1.  Click **Submit**. The build may take a few minutes to be ready.
+### Create a Container Image
 
-    {{< note title="Make sure auto-scaling is enabled on your cluster" >}}
-    When a build is created, each task in the pipeline runs in a pod, which requires a certain amount of CPU and memory resources. To ensure the sufficient number of resources are available, it is recommended that auto-scaling for your LKE cluster is enabled prior to creating the build.
-    {{< /note >}}
+1.  Select **Container Images** from the menu.
+
+1.  Select the *BuildPacks* build task.
+
+1.  In the **Repository** dropdown list, select `apl-examples`.
+
+1.  In the **Reference** dropdown list, select `main`.
+
+1.  Set the **Path** field to `rabbitmq-python`.
+
+1.  Click **Create Container Image**.
 
 ### Check the Build Status
 
@@ -176,11 +187,9 @@ The backend status of the build can be checked from the **PipelineRuns** section
 
 Once successfully built, copy the image repository link so that you can create a Workload for deploying the app in the next step.
 
-1.  Select **Builds** to view the status of your build.
+1.  Select **Container Images** to view the status of your build.
 
 1.  When ready, use the "copy" button in the **Repository** column to copy the repository URL link to your clipboard.
-
-    ![App Build Ready](APL-RabbitMQ-build-ready.jpg)
 
 ## Deploy the App
 
@@ -206,7 +215,7 @@ Once successfully built, copy the image repository link so that you can create a
     image:
       repository: {{< placeholder "<image-repo-link>" >}}
       pullPolicy: IfNotPresent
-      tag: {{< placeholder "latest" >}}
+      tag: {{< placeholder "main" >}}
     env:
       - name: {{< placeholder "NOTIFIER_RABBITMQ_HOST" >}}
         valueFrom:
@@ -259,11 +268,9 @@ Create a service to expose the `rmq-example-app` application to external traffic
 
 1.  Select **Services** in the left menu, and click **Create Service**.
 
-1.  In the **Name** dropdown menu, select the `rmq-example-app` service.
+1.  In the **Service Name** dropdown list, select the `rmq-example-app` service.
 
-1.  Under **Exposure**, select **External**.
-
-1.  Click **Submit**. The service may take a few minutes to be ready.
+1.  Click **Create Service**. The service may take around 30 seconds to be ready.
 
 ### Access the Demo App
 

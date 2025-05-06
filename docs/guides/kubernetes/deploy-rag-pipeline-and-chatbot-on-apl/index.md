@@ -5,7 +5,7 @@ description: "This guide expands on a previously built LLM and AI inferencing ar
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-03-25
-modified: 2025-04-17
+modified: 2025-04-25
 keywords: ['ai','ai inference','ai inferencing','llm','large language model','app platform','lke','linode kubernetes engine','rag pipeline','retrieval augmented generation','open webui','kubeflow']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -290,11 +290,9 @@ Create a [**Network Policy**](https://apl-docs.net/docs/for-ops/console/netpols)
 
 1.  Click **Create Service**.
 
-1.  In the **Name** dropdown menu, select the `ml-pipeline-ui` service.
+1.  In the **Service Name** dropdown menu, select the `ml-pipeline-ui` service.
 
-1.  Under **Exposure**, select **External**.
-
-1.  Click **Submit**.
+1.  Click **Create Service**.
 
 Kubeflow Pipelines is now ready to be used by members of the Team **demo**.
 
@@ -633,13 +631,9 @@ Update the Kyverno **Policy** `open-webui-policy.yaml` created in the previous t
 
 1.  Click **Create Service**.
 
-1.  In the **Name** dropdown menu, select the `linode-docs-pipeline` service.
+1.  In the **Service Name** dropdown menu, select the `linode-docs-pipeline` service.
 
-1.  In the **Port** dropdown, select port `9099`.
-
-1.  Under **Exposure**, select **External**.
-
-1.  Click **Submit**.
+1.  Click **Create Service**.
 
 1.  Once submitted, copy the URL of the `linode-docs-pipeline` service to your clipboard.
 
@@ -687,11 +681,9 @@ Update the Kyverno **Policy** `open-webui-policy.yaml` created in the previous t
 
 1.  Click **Create Service**.
 
-1.  In the **Name** dropdown menu, select the `linode-docs-chatbot` service.
+1.  In the **Service Name** dropdown list, select the `linode-docs-chatbot` service.
 
-1.  Under **Exposure**, select **External**.
-
-1.  Click **Submit**.
+1.  Click **Create Service**.
 
 ## Access the Open Web User Interface
 
