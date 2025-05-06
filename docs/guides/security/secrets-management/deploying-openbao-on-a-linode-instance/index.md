@@ -1,19 +1,23 @@
 ---
-slug: deploying-openbao-on-a-linode-compute-instance
-title: "Deploying OpenBao on a Linode Compute Instance"
-description: "Deploy OpenBao on a Linode Compute Instance using Ubuntu 24.04 LTS and the Linode CLI. Learn how to install, configure, unseal, and securely manage secrets."
+slug: deploying-openbao-on-a-linode-instance
+title: "Deploying OpenBao on a Linode Instance"
+description: "Deploy OpenBao on a Linode instance using Ubuntu 24.04 LTS and the Linode CLI. Learn how to install, configure, unseal, and securely manage secrets."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-04-25
+published: 2025-05-06
 keywords: ['openbao','openbao linode','openbao ubuntu install','secrets management linode','how to install openbao','secure secrets storage linux','openbao ubuntu 24.04','deploy openbao cli','install vault alternative','hashicorp vault fork','openbao setup tutorial','linux secrets manager','initialize openbao server','openbao unseal process','openbao vs vault','openbao config hcl','how to deploy openbao on a linode instance','secure secrets management with openbao','install and configure openbao on ubuntu','openbao systemd service setup','openbao cli secret storage example','openbao firewall and api access configuration','openbao key value store example','setting up openbao secrets engine']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-[OpenBao](https://openbao.org/) is an open source secrets management solution and fork of HashiCorp Vault. While our [OpenBao Marketplace app](/docs/marketplace-docs/guides/openbao/) offers one-click deployment, this guide walks through a manual installation on a single Ubuntu 24.04 LTS Compute Instance.
+[OpenBao](https://openbao.org/) is an open source secrets management solution and fork of HashiCorp Vault. This guide walks through a manual installation of OpenBao on a Linode instance with an Ubuntu 24.04 distribution.
+
+If you prefer an automated one-click deployment, see our [OpenBao Marketplace app](/docs/marketplace-docs/guides/openbao/).
 
 ## Before You Begin
 
-1.  If you do not already have a virtual machine to use, see our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides. While OpenBao does not provide explicit hardware recommendations, its architecture closely mirrors that of Vault. Based on [Vault’s recommended specifications](https://developer.hashicorp.com/vault/tutorials/day-one-raft/raft-reference-architecture#hardware-sizing-for-vault-servers), this guide uses a Shared CPU **Linode 8 GB** plan (`g6-standard-4`) with 4 vCPUs and 160 GB of storage.
+1.  If you do not already have an account or virtual machine to use, see our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Create a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides to create an Akamai Cloud account, familiarize yourself with Cloud Manager, and provision a new Compute Instance.
+
+    While OpenBao does not provide explicit hardware recommendations, its architecture closely mirrors that of HashiCorp Vault. Based on [Vault’s recommended specifications](https://developer.hashicorp.com/vault/tutorials/day-one-raft/raft-reference-architecture#hardware-sizing-for-vault-servers), this guide uses a Shared CPU **Linode 8 GB** plan (`g6-standard-4`) with 4 vCPUs and 160 GB of storage. Deployment time may vary.
 
     {{< note title="Provisioning Compute Instances with the Linode CLI" type="secondary" isCollapsible="yes" >}}
     Use these steps if you prefer to use the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) to provision resources.
@@ -38,21 +42,23 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
     -   The `--label` argument specifies the name of the new server (e.g. `openbao-linode`).
     {{< /note >}}
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and create a limited user account. You may also wish to set the timezone, configure your hostname, and harden SSH access.
+1.  Follow our [Set Up and Secure a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system and create a limited user account. You may also wish to set the timezone, configure your hostname, and harden SSH access.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
-{{< /note >}}
+    {{< note >}}
+    This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+    {{< /note >}}
 
 ## Install OpenBao
 
-1.  SSH into the newly provisioned Linode as a user with `sudo` privileges:
+Log into your Linode instance, and install the OpenBao package.
+
+1.  SSH into the newly provisioned Linode as a user with `sudo` privileges, replacing {{< placeholder "USERNAME" >}} with your username and {{< placeholder "IP_ADDRESS" >}} with the IP address of your Linode:
 
     ```command
     ssh {{< placeholder "USERNAME" >}}@{{< placeholder "IP_ADDRESS" >}}
     ```
 
-1.  Download the latest appropriate version of OpenBao from the [downloads page](https://openbao.org/downloads/). In this case, `v2.2.0` of the AMD 64-bit Debian package:
+1.  Download the latest appropriate version of OpenBao from the [downloads page](https://openbao.org/downloads/). This tutorial uses `v2.2.0` of the AMD 64-bit Debian package:
 
     ```command
     wget https://github.com/openbao/openbao/releases/download/v2.2.0/bao_2.2.0_linux_amd64.deb
@@ -75,7 +81,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     OpenBao TLS key and self-signed certificate have been generated in '/opt/openbao/tls'.
     ```
 
-1.  Verify if the install is successful:
+1.  Verify successful installation by checking the OpenBao version:
 
     ```command
     bao -v
@@ -84,8 +90,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     ```output
     OpenBao v2.2.0 (a2bf51c891680240888f7363322ac5b2d080bb23), built 2025-03-05T13:07:08Z
     ```
-
-{{< note title="Verify Swap Memory Limits" >}}
+### Verify Swap Memory Limits
 
 For Linux distributions, ensure that the OpenBao service settings do not impose a soft limit on Swap memory. To check this with a systemd-based Linux distro, use the following command:
 
@@ -110,7 +115,6 @@ WantedBy=multi-user.target
 ```
 
 Verify that `MemorySwapMax=0` appears in the results under the `Service` heading.
-{{< /note >}}
 
 ## Test the OpenBao Development Server
 
@@ -120,11 +124,11 @@ OpenBao provides a development server that you can use to verify settings and ex
 The development server runs entirely in memory and is not suitable for production use. Data is not persisted between restarts, and TLS is disabled.
 {{< /note >}}
 
-1.  Run this command to start the server in development mode and set a primary key:
+1.  Run this command to start the server in development mode and set a primary key. Replace {{< placeholder "MY_DEV_TOKEN" >}} with a secure key that you have created:
 
     ```command
     bao server -dev \
-      -dev-root-token-id="this-is-my-test-dev-token"
+      -dev-root-token-id="{{< placeholder "MY_DEV_TOKEN" >}}"
     ```
 
     The OpenBao server configuration should print to the screen along with a tail of the logs:
@@ -159,27 +163,27 @@ The development server runs entirely in memory and is not suitable for productio
 
     Leave this server process running in the background.
 
-1.  Open a separate terminal window and connect to the Linode instance with another shell session:
+1.  Open a separate terminal window and connect to the Linode instance using another shell session:
 
     ```command
     ssh {{< placeholder "USERNAME" >}}@{{< placeholder "IP_ADDRESS" >}}
     ```
 
-1.  OpenBao expects certain variables to be set for every request. Instead of setting these variables repeatedly with each command, set the following environment variables in the shell:
+1.  OpenBao expects certain variables to be set for every request. Rather than setting these variables repeatedly with each command, set the following environment variables in the shell:
 
     ```command
-    export VAULT_TOKEN="this-is-my-test-dev-token"
+    export VAULT_TOKEN="{{< placeholder "MY_DEV_TOKEN" >}}"
     export OPENBAO_IP="127.0.0.1"
     export OPENBAO_PORT="8200"
     ```
 
-1.  Send a request with `curl` to store a secret as a key-value pair.
+1.  Send a request with `curl` to store a secret as a key-value pair. Replace {{< placeholder "VAULT_PASSWORD" >}} with a secure password.
 
     ```command
     curl -X POST \
       --header "X-Vault-Token: $VAULT_TOKEN" \
       --header "Content-Type: application/json" \
-      --data '{"data": {"password": "OpenBao123"}}' \
+      --data '{"data": {"password": "{{< placeholder "VAULT_PASSWORD" >}}"}}' \
       http://$OPENBAO_IP:$OPENBAO_PORT/v1/secret/data/test-password-1 \
         | json_pp
     ```
@@ -205,7 +209,7 @@ The development server runs entirely in memory and is not suitable for productio
 
     The development server is only exposed on `localhost`. Therefore, this command must be run on the server itself. Authentication is handled by supplying the `X-Vault-Token` header. The structure of the URI follows the pattern `/v1/secret/data/{{< placeholder "SECRET_NAME" >}}`. This `POST` request stores the key-value pair at location `/data/{{< placeholder "SECRET_NAME" >}}`.
 
-    The response provides metadata regarding the secret stored in the `data` object, including versioning (how many times this secret has been updated).
+    The response provides metadata regarding the secret stored in the `data` object, including versioning when the secret gets updated.
 
 1.  To retrieve the secret, send the following request:
 
@@ -244,11 +248,11 @@ The development server runs entirely in memory and is not suitable for productio
 
 1.  When done, you can close the second terminal session.
 
-1.  Return to the original terminal session with OpenBao running and press <kbd>Ctrl</kbd>+<kbd>C</kbd> to stop OpenBao.
+1.  Return to the original terminal session with OpenBao running, and press <kbd>Ctrl</kbd>+<kbd>C</kbd> to stop OpenBao.
 
 ## Run OpenBao as a Service
 
-In a real-world use case, OpenBao should run as a service managed by a tool such as `systemd`.
+In a real-world use case, OpenBao is ideally run as a service managed by a tool like `systemd`.
 
 1.  Run the following `systemctl` command to check the status of the OpenBao service:
 
@@ -256,7 +260,7 @@ In a real-world use case, OpenBao should run as a service managed by a tool such
     systemctl status openbao
     ```
 
-    This shows that `systemd` is aware of the OpenBao service but it has not been started:
+    This shows that `systemd` is aware of the OpenBao service, but it has not been started:
 
     ```output
     ○ openbao.service - "OpenBao - A tool for managing secrets"
@@ -265,7 +269,7 @@ In a real-world use case, OpenBao should run as a service managed by a tool such
            Docs: https://github.com/openbao/openbao/tree/main/website/content/docs
     ```
 
-1.  Edit the OpenBao configuration file, located at `/etc/openbao/openbao.hcl`, in a command line text editor such as `nano`:
+1.  Edit the OpenBao configuration file located at `/etc/openbao/openbao.hcl` in a command line text editor such as `nano`:
 
     ```command
     sudo nano /etc/openbao/openbao.hcl
@@ -288,7 +292,7 @@ In a real-world use case, OpenBao should run as a service managed by a tool such
     ```
 
     {{< note type="warning">}}
-    The configuration above is insecure and not suitable for production use. It is only for demonstration purposes of this tutorial. For a production-grade deployment, reference the [configuration](#configuration) near the end of this guide.
+    The configuration above is insecure and not suitable for production use. It is only for demonstration purposes of this tutorial. For a production-grade deployment, reference the [**Configuration**](#configuration) section at the end of this guide.
     {{< /note >}}
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
@@ -322,7 +326,7 @@ In a real-world use case, OpenBao should run as a service managed by a tool such
 
     Press the <kbd>Q</kbd> key to exit the status output and return to the terminal prompt.
 
-1.  Enable the service to start automatically on boot:
+1.  Run the following command to enable the service to start automatically on boot:
 
     ```command
     systemctl enable openbao
@@ -330,7 +334,7 @@ In a real-world use case, OpenBao should run as a service managed by a tool such
 
 ## Configure OpenBao for External Access
 
-Although OpenBao is now running as a service on the Linode Compute Instance, additional configuration is required before it can be used. Use the [OpenBao CLI](https://openbao.org/docs/commands/) to interact with the running server, retrieving its current status:
+Although OpenBao is now running as a service on the Linode instance, additional configuration is required before it can be used. Use the [OpenBao CLI](https://openbao.org/docs/commands/) (`bao`) to interact with the running server, retrieving its current status:
 
 ```command
 bao status --address=http://0.0.0.0:8200
@@ -352,7 +356,7 @@ Storage Type       file
 HA Enabled         false
 ```
 
-This shows that the server has not been initialized, and is sealed. Both of these issues must be resolved before you can interact with the server.
+This shows that the server has not been initialized and is sealed. Both of these issues must be resolved before you can interact with the server.
 
 ### Initialize the Server
 
@@ -363,7 +367,7 @@ This shows that the server has not been initialized, and is sealed. Both of thes
     ```
 
     {{< note type="warning">}}
-    For simplicity, this tutorial sets `BAO_ADDR` to `http://0.0.0.0:8200`. In production deployments, it should match the public IP address or domain name used to connect to the server.
+    This tutorial sets `BAO_ADDR` to `http://0.0.0.0:8200` for demonstration purposes. In production deployments, it should match the public IP address or domain name used to connect to the server.
     {{< /note >}}
 
 1.  Initialize the server:
@@ -393,9 +397,11 @@ This shows that the server has not been initialized, and is sealed. Both of thes
     existing unseal keys shares. See "bao operator rekey" for more information.
     ```
 
-Store the unseal keys and initial root token in a secure location.
+    Store the values for each `Unseal Key` and `Initial Root Token` in a secure location.
 
 ### Unseal the Vault (Three Times for Quorum)
+
+When unsealing a vault, the `bao operator unseal` command must be performed a total of three times using different `Unseal Key` values each time. This is the default quorum for OpenBao's unsealing process.
 
 1.  Use the following command to begin unsealing the vault:
 
@@ -409,7 +415,7 @@ Store the unseal keys and initial root token in a secure location.
     Unseal Key (will be hidden): SNP+diKq1L2MYYre8pn+PIqSEn/nK76n7C6coUoVby4g
     ```
 
-    After this first execution, the unseal progress shows `1/3`:
+    After this first execution, the `Unseal Progress` output value shows `1/3`:
 
     ```output
     Key                Value
@@ -426,8 +432,6 @@ Store the unseal keys and initial root token in a secure location.
     Storage Type       file
     HA Enabled         false
     ```
-
-    Unsealing must be done a total of three times, as this is the default quorum for OpenBao unsealing.
 
 1.  Unseal the vault again, but enter a different unseal key when prompted:
 
@@ -477,11 +481,11 @@ Store the unseal keys and initial root token in a secure location.
     HA Enabled      false
     ```
 
-The vault has now been initialized and unsealed.
+    The vault has now been initialized and unsealed.
 
 ### Authenticate the CLI
 
-To authenticate the CLI with the server, use the `bao login` command with the initial root token provided upon vault initialization.
+To authenticate the CLI with the server, use the `bao login` command with the `Initial Root Token` output value provided upon vault initialization.
 
 ```command
 bao login -method=token {{< placeholder "INITIAL_ROOT_TOKEN" >}}
@@ -505,9 +509,7 @@ policies             ["root"]
 
 ### Enable Key-Value Storage
 
-Lastly, enable a key-value store in OpenBao for storing and retrieving secrets via the API.
-
-To do this, run the following command:
+Lastly, run the following command to enable a key-value store in OpenBao for storing and retrieving secrets via the API:
 
 ```command
 bao secrets enable kv
@@ -519,9 +521,9 @@ Success! Enabled the kv secrets engine at: kv/
 
 ### Storing and Retrieving a Secret Remotely Over HTTP
 
-OpenBao can now be accessed externally via the API. Ensure that any firewall on the Linode Compute Instance allows traffic on port `8200`.
+OpenBao can now be accessed externally via the API. Ensure that any firewall on the Linode instance allows traffic on port `8200`.
 
-1.  From a remote machine, store a new secret, providing the initial root token for authentication.
+1.  From a remote machine, store a new secret, providing the `Initial Root Token` for authentication.
 
     ```command
     curl -X POST \
@@ -561,7 +563,7 @@ Several additional steps are recommended to harden an OpenBao server for product
 
 ### Auto Unseal
 
-OpenBao starts with its vault in a sealed state, meaning all data is encrypted. See the [OpenBao documentation](https://openbao.org/docs/concepts/seal/) for more information on the seal/unseal concept.
+OpenBao starts with its vault in a sealed state, meaning all data is encrypted. For more information on the seal and unseal concepts, see the [OpenBao documentation](https://openbao.org/docs/concepts/seal/).
 
 In production, [auto-unseal](https://openbao.org/docs/concepts/seal/#auto-unseal) is recommended to minimize manual operations that could lead to mistakes or exposure. Auto-unseal is configured using cloud-based key management systems to ensure the unsealing key is never exposed directly.
 
@@ -572,14 +574,16 @@ Enable and configure secure authentication methods such as:
 -   AppRole
 -   JSON Web Tokens (JWT)
 -   TLS certificates
--   LDAP
+-   Lightweight directory access protocol (LDAP)
 -   OpenID Connect (OIDC)
 
-TLS certificate authentication provides secure, mutual TLS verification for sensitive environments. Meanwhile, AppRole allows service accounts and applications to securely authenticate without human interaction. For LDAP or OIDC deployments, enforce Multi Factor Authentication (MFA) for human operators to enhance security, if supported.
+TLS certificate authentication provides secure, mutual TLS verification for sensitive environments. Meanwhile, AppRole allows service accounts and applications to securely authenticate without human interaction. For LDAP or OIDC deployments, enforce multi-factor authentication (MFA) for human operators to enhance security, if supported.
 
 ### Configuration
 
-OpenBao supports two configuration formats: HashiCorp Configuration Language (HCL) and JSON. Properly configuring the OpenBao server is essential to ensure a secure production environment. The main configuration aspects include the UI, TLS certificate, and address/port settings. A default production configuration HCL file may look like this:
+OpenBao supports two configuration formats: [HashiCorp Configuration Language](https://developer.hashicorp.com/terraform/language/syntax/configuration) (HCL) and JSON.
+
+Properly configuring your OpenBao server is essential to ensuring a secure production environment. The main configuration aspects include the UI, TLS certificate, and address/port settings. A default production configuration HCL file may look like this:
 
 ```file {title="/etc/openbao/openbao.hcl" lang="hcl"}
 ui = false
@@ -600,10 +604,10 @@ In production, disabling or securing the UI is crucial, as it exposes OpenBao's 
 
 If the UI is not required, set `ui = false`.
 
-TLS certificates encrypt traffic to and from the OpenBao server, ensuring data confidentiality and integrity. Using a valid, trusted TLS certificate prevents man-in-the-middle attacks and validates the server's identity to clients. Obtain a certificate from a trusted Certificate Authority (CA) and configure OpenBao to use it as shown in the example configuration above.
+TLS or SSL certificates encrypt traffic to and from the OpenBao server, ensuring data confidentiality and integrity. Using a valid, trusted TLS certificate prevents man-in-the-middle attacks and validates the server's identity to clients. Obtain a certificate from a trusted Certificate Authority (CA) and configure OpenBao to use it as shown in the example configuration above.
 
 For environments using an internal CA, ensure that all clients trust it, and renew the certificates periodically to avoid downtime.
 
-Controlling the address and ports on which OpenBao listens reduces exposure and minimizes the risk of unauthorized access. Limit OpenBao's exposure by binding it to an internal IP address (such as `127.0.0.1` or a specific internal network IP). Ensure that OpenBao only listens on the necessary port (default is `8200`). Use firewall rules to restrict access to this port to authorized networks or users only.
+Controlling the address and ports on which OpenBao listens reduces exposure and minimizes the risk of unauthorized access. Limit OpenBao's exposure by binding it to an internal IP address such as `127.0.0.1` or a specific internal network IP. Ensure that OpenBao only listens on the necessary port, where the default port is `8200`. Use firewall rules to restrict access to this port to authorized networks or users only.
 
-These hardening measures reduce the attack surface of the OpenBao server, enhance security controls, and ensure that only authorized entities have access.
+These hardening measures can reduce the attack surface of the OpenBao server, enhance security controls, and ensure that only authorized entities have access.
