@@ -4,7 +4,7 @@ title: "Deploy OpenBao on Linode Kubernetes Engine"
 description: "Learn to deploy and manage OpenBao on Linode Kubernetes Engine (LKE) using Helm. This guide covers setup, unsealing, testing, and production best practices."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-05-01
+published: 2025-05-07
 keywords: ['openbao','openbao kubernetes deployment','install openbao on linode','openbao lke','linode kubernetes engine openbao','helm openbao chart','initialize openbao','unseal openbao kubernetes','openbao on akamai cloud','openbao cluster setup','openbao helm install guide','deploy openbao on kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -12,13 +12,15 @@ external_resources:
 - '[Helm](https://helm.sh/)'
 ---
 
-This guide walks through how to deploy [OpenBao on Kubernetes](https://openbao.org/docs/platform/k8s/) with Akamai Cloud Linode Kubernetes Engine (LKE) using the [OpenBao Helm chart](https://github.com/openbao/openbao-helm).
+[OpenBao](https://openbao.org/) is an open source secrets management solution and fork of HashiCorp Vault. This guide walks through how to deploy [OpenBao on Kubernetes](https://openbao.org/docs/platform/k8s/) with Linode Kubernetes Engine (LKE) on Akamai Cloud using the [OpenBao Helm chart](https://github.com/openbao/openbao-helm).
+
+If you prefer a one-click, single-instance deployment, see our [OpenBao Marketplace app](/docs/marketplace-docs/guides/openbao/).
 
 ## Before You Begin
 
-1.  Follow our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and create an Akamai Cloud account if you do not already have one.
+1.  Follow our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and create an Akamai Cloud account if you do not already have one.
 
-1.  Create a personal access token using the instructions in our [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
+1.  Create an API token with proper permissions using the instructions in our [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
 
 1.  Install the Linode CLI using the instructions in our [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
 
@@ -34,9 +36,11 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Provision an LKE Cluster
 
-While there are several ways to create a Kubernetes cluster on Akamai Cloud, this guide uses the [Linode CLI](https://github.com/linode/linode-cli) to provision resources.
+While there are several ways to create a Kubernetes cluster on Akamai Cloud, this tutorial uses the [Linode CLI](https://github.com/linode/linode-cli) to provision resources.
 
-1.  Use the Linode CLI (`linode-cli`) to see available Kubernetes versions:
+See our [Create a cluster](https://techdocs.akamai.com/cloud-computing/docs/create-a-cluster) guide for instructions on provisioning an LKE cluster using Cloud Manager.
+
+1.  Using the Linode CLI (`linode-cli`), list available Kubernetes versions:
 
     ```command
     linode-cli lke versions-list
@@ -54,13 +58,13 @@ While there are several ways to create a Kubernetes cluster on Akamai Cloud, thi
 
     It’s generally recommended to provision the latest version of Kubernetes unless specific requirements dictate otherwise.
 
-1.  Use the following command to list available Akamai Cloud plans, including plan ID, pricing, and performance details. For more detailed pricing information, see [Akamai Cloud: Pricing](https://www.linode.com/pricing/):
+1.  Use the following command to list available Akamai Cloud plans, including plan ID, pricing, and performance details. For more detailed plan and pricing information, see [Akamai Cloud: Pricing](https://www.linode.com/pricing/):
 
     ```command
     linode-cli linodes types
     ```
 
-1.  The examples in this guide use the **g6-standard-2** Linode, which features two CPU cores and 4 GB of memory. Run the following command to display detailed information in JSON for this Akamai Cloud plan:
+1.  The examples in this guide use the **g6-standard-2** Linode, which features 2 CPU cores and 4 GB of memory. Run the following command to display detailed information in JSON for this Akamai Cloud plan:
 
     ```command
     linode-cli linodes types --label "Linode 4GB" --json --pretty
@@ -86,19 +90,19 @@ While there are several ways to create a Kubernetes cluster on Akamai Cloud, thi
     ]
     ```
 
-1.  View available regions with the `regions list` command:
+1.  View available regions with the `regions list` command. See our [Region Availability](https://www.linode.com/global-infrastructure/availability/) page for a complete list of compute regions and region IDs:
 
     ```command
     linode-cli regions list
     ```
 
-1.  After selecting a Kubernetes version and Linode type, use the following command to create a cluster named `openbao-cluster` in the `us-mia` (Miami, FL) region with three nodes and auto-scaling. Replace `openbao-cluster` and `us-mia` with a cluster label and region of your choosing, respectively:
+1.  After selecting a Kubernetes version and Linode instance type, use the following command to create a cluster named `openbao-cluster` in the `us-mia` (Miami, FL) region with three nodes and auto-scaling. Replace `{{< placeholder "openbao-cluster" >}}` and `{{< placeholder "us-mia" >}}` with a cluster label and region of your choosing, respectively:
 
     ```command
     linode lke cluster-create \
-      --label openbao-cluster \
+      --label {{< placeholder "openbao-cluster" >}} \
       --k8s_version 1.32 \
-      --region us-mia \
+      --region {{< placeholder "us-mia" >}} \
       --node_pools '[{
         "type": "g6-standard-2",
         "count": 3,
@@ -132,7 +136,7 @@ To access your cluster, fetch the cluster credentials in the form of a `kubeconf
       '.[] | select(.label == "openbao-cluster") | .id')
     ```
 
-1.  Create a hidden `.kube` folder in your user’s home directory:
+1.  On your workstation, create a hidden `.kube` folder in your user’s home directory:
 
     ```command
     mkdir ~/.kube
@@ -146,7 +150,7 @@ To access your cluster, fetch the cluster credentials in the form of a `kubeconf
       base64 --decode > ~/.kube/lke-config
     ```
 
-1.  After saving the `kubeconfig` file, access your cluster by specifying the file with `kubectl`:
+1.  After saving the `kubeconfig` file, confirm access to your cluster by checking the status of your cluster nodes with `kubectl` and specifying the file name:
 
     ```command
     kubectl get no --kubeconfig ~/.kube/lke-config
@@ -175,7 +179,7 @@ To access your cluster, fetch the cluster credentials in the form of a `kubeconf
 
 ## Set Up OpenBao on LKE
 
-[Helm](https://helm.sh/) is a package manager for Kubernetes that simplifies application deployment via *charts*. The OpenBao development team maintains an official [Helm chart](https://github.com/openbao/openbao-helm), which is the recommended method for deploying OpenBao on Kubernetes.
+[Helm](https://helm.sh/) is a package manager for Kubernetes that simplifies application deployment via [*charts*](https://helm.sh/docs/topics/charts/). The OpenBao development team maintains an official [Helm chart](https://github.com/openbao/openbao-helm) and is the recommended method for deploying OpenBao on Kubernetes.
 
 By default, this Helm chart installs OpenBao in *standalone mode*, which sets up a single server with a file storage backend. This profile is useful for testing, but other profiles are available in this chart (e.g. development server, high-availability cluster). See the [OpenBao Helm README](https://github.com/openbao/openbao-helm/blob/main/charts/openbao/README.md) for more information.
 
@@ -222,7 +226,7 @@ By default, this Helm chart installs OpenBao in *standalone mode*, which sets up
     helm get manifest openbao
     ```
 
-    This returns all the YAML configuration files for the newly deployed OpenBao system, which is useful for inspecting the system’s initial configuration data.
+    This returns all the YAML configuration files for the newly deployed OpenBao system, which can be useful for inspecting the system’s initial configuration data.
 
     {{< note title="Customize the Installation" >}}
     To override any of these configuration options at installation time, use the `--set` command line argument when installing the Helm chart, for example:
@@ -240,7 +244,7 @@ By default, this Helm chart installs OpenBao in *standalone mode*, which sets up
 
 ## Initialize and Unseal the OpenBao Development Server
 
-Once the OpenBao server is installed in the Kubernetes cluster, it must be initialized. The initialization generates the credentials needed to [unseal](https://openbao.org/docs/concepts/seal/#why) the server for use.
+Once the OpenBao server is installed on the Kubernetes cluster, it must be initialized. The initialization generates the credentials needed to [unseal](https://openbao.org/docs/concepts/seal/#why) the server for use.
 
 1.  To view all the currently configured OpenBao servers in your cluster, run the following:
 
@@ -248,7 +252,7 @@ Once the OpenBao server is installed in the Kubernetes cluster, it must be initi
     kubectl get pods -l app.kubernetes.io/name=openbao
     ```
 
-    There should only be one for the `standalone` profile. Notice that the `READY` count is `0`, indicating the server has not been initialized yet:
+    There should only be one pod for the `standalone` profile. Notice that the `READY` count is `0`, indicating the server has not been initialized yet:
 
     ```output
     NAME        READY   STATUS    RESTARTS   AGE
@@ -261,7 +265,7 @@ Once the OpenBao server is installed in the Kubernetes cluster, it must be initi
     kubectl exec -ti openbao-0 -- bao operator init
     ```
 
-    The output displays the key shares and the initial root key for the server:
+    The output displays the `Unseal Key` shares and the `Initial Root Token` for the server:
 
     ```output
     Unseal Key 1: amIfRt7lBrC0/x5mOtkyk9WvOF5IH6ycPEl8Gy4FnqTh
@@ -284,7 +288,9 @@ Once the OpenBao server is installed in the Kubernetes cluster, it must be initi
     existing unseal keys shares. See "bao operator rekey" for more information.
     ```
 
-    You must unseal the OpenBao server with the unseal keys provided until the key threshold is met. Unsealing must be done a total of three times, as this is the default quorum for OpenBao unsealing. Also take note of the Initial Root Token as it is needed in subsequent steps.
+    You must unseal the OpenBao server with the unseal keys provided until the key threshold is met. Unsealing must be done a **total of three times**, as this is the default quorum for the OpenBao unsealing process.
+
+    Take note of the `Initial Root Token` as it is needed in subsequent steps.
 
 1.  Use the following command to begin unsealing the vault using one of the unseal keys:
 
@@ -332,7 +338,7 @@ Once the OpenBao server is installed in the Kubernetes cluster, it must be initi
     HA Enabled         false
     ```
 
-1.  Unseal the vault for the third and final time, using yet another unseal:
+1.  Unseal the vault for the third and final time, using yet another unseal key:
 
     ```command
     kubectl exec -ti openbao-0 -- \
@@ -365,7 +371,7 @@ Once the OpenBao server is installed in the Kubernetes cluster, it must be initi
     kubectl get pods -l app.kubernetes.io/name=openbao
     ```
 
-    After the OpenBao server is unsealed, its pod should also report as `READY`:
+    After the OpenBao server is unsealed, the pod should also report as `READY`:
 
     ```output
     NAME        READY   STATUS    RESTARTS   AGE
@@ -376,7 +382,7 @@ Once the OpenBao server is installed in the Kubernetes cluster, it must be initi
 
 ## Test the OpenBao Development Server
 
-1.  To test the connection directly through the Kubernetes cluster, forward port `8200` from the cluster to your `localhost` with the following:
+1.  To test the connection directly through the Kubernetes cluster, forward port `8200` from the cluster to your `localhost` with the following command:
 
     ```command
     kubectl port-forward openbao-0 8200:8200
@@ -387,13 +393,13 @@ Once the OpenBao server is installed in the Kubernetes cluster, it must be initi
     Forwarding from [::1]:8200 -> 8200
     ```
 
-1.  Open a new terminal window. Set the following environment variable so that the OpenBao CLI looks to the forwarded port on `localhost`.
+1.  With port forwarding enabled and active, open a separate terminal window. Set the following environment variable so that the OpenBao CLI looks to the forwarded port on `localhost`.
 
     ```command
     export BAO_ADDR=http://127.0.0.1:8200
     ```
 
-1.  Use the `bao login` command with the initial root token provided upon vault initialization to log in to the OpenBao server on the LKE cluster:
+1.  While in the new terminal session, use the `bao login` command with the `Initial Root Token` provided upon vault initialization to log in to the OpenBao server on the LKE cluster:
 
     ```command
     bao login -method=token {{< placeholder "INITIAL_ROOT_TOKEN" >}}
@@ -425,7 +431,9 @@ Once the OpenBao server is installed in the Kubernetes cluster, it must be initi
     Success! Enabled the kv secrets engine at: kv/
     ```
 
-1.  Use cURL to test storing and retrieving secrets from the OpenBao server. Store a secret with the following command, providing your actual initial root token in place of {{< placeholder "INITIAL_ROOT_TOKEN" >}}:
+1.  Use cURL to test storing and retrieving secrets from the OpenBao server. Store a secret with the following command, replacing {{< placeholder "INITIAL_ROOT_TOKEN" >}} with your `Initial Root Token` value.
+
+    In the example below, the secret stored is represented under the `--data` field as `"hello"` and `"world"`:
 
     ```command
     curl -X POST \
@@ -435,7 +443,7 @@ Once the OpenBao server is installed in the Kubernetes cluster, it must be initi
           http://127.0.0.1:8200/v1/kv/test-secret
     ```
 
-1.  Run the following cURL to retrieve the secret:
+1.  Run the following cURL command to retrieve the secret, once again using your `Initial Root Token` as verification:
 
     ```command
     curl -X GET \
@@ -460,13 +468,15 @@ Once the OpenBao server is installed in the Kubernetes cluster, it must be initi
     }
     ```
 
+    If successful, you should see the secret data `"hello"` and `"world"` as displayed above.
+
 1.  When done, you can close the second terminal session.
 
-1.  Return to the original terminal session and press <kbd>Ctrl</kbd>+<kbd>C</kbd> to stop port forwarding.
+1.  In the original terminal session, press <kbd>Ctrl</kbd>+<kbd>C</kbd> to stop port forwarding.
 
 ## Configure OpenBao for External Access
 
-To access the OpenBao server externally, rather than through Kubernetes port-forwarding, use a [LoadBalancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/) service.
+To access the OpenBao server externally rather than through Kubernetes port-forwarding, use a [LoadBalancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/) service.
 
 1.  Open the pod configuration for OpenBao:
 
@@ -474,7 +484,7 @@ To access the OpenBao server externally, rather than through Kubernetes port-for
     kubectl edit service openbao
     ```
 
-    By default, the OpenBao service is created as a `ClusterIP`. To expose it externally, change the service type to `LoadBalancer`. Press the <kbd>I</kbd> key to edit the file, and make the following change, leaving the rest of the file unchanged:
+    By default, the OpenBao service is created as a `ClusterIP`. To expose it externally, change the service type to `LoadBalancer`. Press the <kbd>I</kbd> key to edit the file, and make the following change (see Line 44), leaving the rest of the file unchanged:
 
     ```file {hl_lines="44"}
     # Please edit the object below. Lines beginning with a '#' will be ignored,
@@ -542,7 +552,7 @@ To access the OpenBao server externally, rather than through Kubernetes port-for
     openbao   LoadBalancer   10.128.154.209   172.233.167.79   8200:31550/TCP,8201:32438/TCP   47m
     ```
 
-1.  To test this connection, issue the `curl` command again to retrieve the previously stored secret, but change the IP address to the external one shown above, at port `8200`. For example:
+1.  To test this connection, issue the `curl` command again to retrieve the previously stored secret, changing the {{< placeholder "EXTERNAL_IP_ADDRESS" >}} field to the external one shown above (under `EXTERNAL-IP`), at port `8200`. For example:
 
     ```command
     curl -X GET \
@@ -569,7 +579,7 @@ To access the OpenBao server externally, rather than through Kubernetes port-for
 
 ## Additional Considerations for Production Deployments
 
-When deploying OpenBao to a production-grade Kubernetes cluster, consider the following additional points.
+When deploying OpenBao to a Kubernetes cluster for production-grade workloads, consider the following additional points.
 
 ### Auto-Unseal in a Clustered Environment
 
