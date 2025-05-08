@@ -1,6 +1,6 @@
 ---
 slug: migrate-from-aws-secrets-manager-to-openbao-on-linode-kubernetes-engine
-title: "Migrate From AWS Secrets Manager to OpenBao on Linode Kubernetes Engine"
+title: "Migrate From AWS Secrets Manager to OpenBao on Akamai Cloud"
 description: "Learn how to migrate secrets from AWS Secrets Manager to OpenBao on Linode Kubernetes Engine (LKE) using Helm and AppRole authentication."
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -13,37 +13,45 @@ external_resources:
 - '[OpenBao Integrated Storage](https://openbao.org/docs/concepts/integrated-storage/)'
 ---
 
-This guide walks through how to migrate secrets from AWS Secrets Manager to OpenBao running on Linode.
+AWS Secrets Manager is a fully managed service that securely stores and retrieves sensitive information such as database credentials, API keys, and other application secrets.
 
-AWS Secrets Manager is a fully managed service that securely stores and retrieves sensitive information such as database credentials, API keys, and other application secrets. [OpenBao](https://openbao.org/) is an open-source fork of [HashiCorp Vault](https://www.vaultproject.io/) designed to give organizations control over their cryptographic infrastructure. With OpenBao, organizations can deploy, configure, and manage keys and secrets in both cloud and on-premise environments without relying on vendor-managed services.
+[OpenBao](https://openbao.org/) is an open source fork of [HashiCorp Vault](https://www.vaultproject.io/) that gives teams full control over how secrets are stored, encrypted, and accessed. Unlike managed platforms, OpenBao can be self-hosted in any environment, including on-premises and across multiple clouds.
 
-An organization may choose to migrate from AWS Secrets Manager to OpenBao when it is looking for a cost-effective alternative to secrets management systems offered by major cloud providers.
+This guide walks through how to migrate secrets from AWS Secrets Manager to OpenBao running on Akamai Cloud.
 
-## Deploy OpenBao on Linode
+## Before You Begin
 
-When migrating from AWS Secrets Manager to OpenBao on Linode, your requirements will dictate whether to install OpenBao on a single Linode Compute Instance or to pursue a larger scale, more fault tolerant environment with OpenBao on Kubernetes through the Linode Kubernetes Engine (LKE). Follow the appropriate guide based on your requirements:
+1.  Follow our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide to create an Akamai Cloud account if you do not already have one.
 
--   [Deploying OpenBao on a Linode Compute Instance](https://docs.google.com/document/d/1x30v1xT_EDuRNnhE9jv5VkFqj9Lo4N3kNO6ICOoSrOM/edit?usp=sharing)
--   [Deploying OpenBao on Kubernetes with Linode LKE](https://docs.google.com/document/d/1gS6hQg09Ufr1Ku0v528acLESnyj1ZpXTxLhkLIlP-u8/edit?usp=sharing)
--   [Deploying OpenBao through the Linode Marketplace](/docs/marketplace-docs/guides/openbao/)
+1.  Create a personal access token using the instructions in our [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
 
-In addition to the prerequisites needed for either of the above deployment methods, you will also need access to your AWS account with sufficient permissions to work with AWS Secrets Manager.
+1.  Install the Linode CLI using the instructions in the [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
 
-## Migrate from AWS Secrets Manager to OpenBao
+1.  Follow the steps in the *Install `kubectl`* section of the [Getting started with LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#install-kubectl) guide to install and configure `kubectl`.
 
-When migrating from AWS Secrets Manager to OpenBao deployed on Linode, begin by determining your existing use cases for AWS Secrets Manager.
+1.  Ensure that you have access to your AWS account with sufficient permissions to work with AWS Secrets Manager. The [AWS CLI](https://aws.amazon.com/cli/) and [`eksctl`](https://eksctl.io/) must also be installed and configured.
 
-### Assess Current Secrets Management Requirements in AWS
+1.  Install `jq`, a lightweight command line JSON processor.
 
-Review how your organization uses AWS Secrets Manager.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+{{< /note >}}
 
-For example, you may have a web application with a corresponding database dependency. Security best practices would dictate that you don’t hardcode secrets—such as database credentials—in the deployed application image or in the source code itself. Instead, the secrets would be injected directly into the deployment at runtime. The application would be granted a role for accessing the credentials in AWS Secrets Manager, which is provided for injection on-the-fly. This keeps the secret safe from being leaked via CI/CD processes or by being checked into a code repository.
+## Review Existing Secrets in AWS Secrets Manager
 
-### Review Existing Secrets
+Before migrating to OpenBao, evaluate how your organization currently uses AWS Secrets Manager.
+
+For example, a web application might rely on database credentials stored in AWS Secrets Manager. Rather than hardcoding these credentials in source code or container images, the application is assigned a role that allows it to retrieve them securely at runtime. This prevents secrets from being exposed through version control or CI/CD pipelines.
+
+OpenBao supports similar access workflows using dynamic injection, AppRole-based access control, and tight integration with Kubernetes workloads.
+
+### Review Secrets Using the AWS Console
 
 In the AWS Secrets Manager dashboard, review your existing secrets.
 
 ![AWS Secrets Manager showing list of stored secrets.](aws-secrets-manager-dashboard.png)
+
+### Review Secrets Using the AWS CLI
 
 Alternatively, using the AWS CLI can quickly provide insight into existing secrets and their usage. To list all secrets, run the following command:
 
@@ -86,319 +94,285 @@ AWS Secrets Manager uses AWS IAM to control access to secrets. As an example tha
 
 Replicating this setup using OpenBao will involve creating an [application role (AppRole)](https://openbao.org/docs/auth/approle/) to take the place of the AWS IAM role so that applications can use an API token associated with the AppRole to authenticate requests for the secret.
 
-### Authenticate the CLI
+## Deploy OpenBao on Akamai Cloud
 
-First, ensure that the OpenBao server is running.
+When migrating from AWS Secrets Manager to OpenBao on Akamai Cloud, your deployment requirements determine whether to install OpenBao on a single Linode Instance or to deploy it in a fault-tolerant environment using the Linode Kubernetes Engine (LKE). Follow the appropriate guide below:
 
-{{< note >}}
-This guide assumes that the `BAO_ADDR` environment variable has been set. If you are working directly on a Linode, then an example value may be `http://0.0.0.0:8200`. If you are using LKE and have set up port forwarding from your cluster to a port on your local machine, then an example value may be `http://127.0.0.1:8200`.
-{{< /note >}}
+-   [Deploying OpenBao on a Linode Instance](https://docs.google.com/document/d/1x30v1xT_EDuRNnhE9jv5VkFqj9Lo4N3kNO6ICOoSrOM/edit?usp=sharing)
+-   [Deploying OpenBao on Linode Kubernetes Engine](https://docs.google.com/document/d/1gS6hQg09Ufr1Ku0v528acLESnyj1ZpXTxLhkLIlP-u8/edit?usp=sharing)
+-   [Deploying OpenBao through the Linode Marketplace](/docs/marketplace-docs/guides/openbao/)
 
-Retrieve the initial root token you were given when OpenBao was initialized. Authenticate the CLI with `bao login`, providing your root token. For example:
+Regardless of the method used, make sure that:
 
-```command
-bao login --method=token s.36Yb3ijEOJbifprhdEiFtPhR
-```
-
-```output
-WARNING! The BAO_TOKEN environment variable is set! The value of this variable will take precedence; if this is unwanted please unset BAO_TOKEN or update its value accordingly.
-
-Success! You are now authenticated. The token information displayed below is already stored in the token helper. You do NOT need to run "bao login" again. Future OpenBao requests will automatically use this token.
-
-Key                  Value
----                  -----
-token                s.36Yb3ijEOJbifprhdEiFtPhR
-token_accessor       ykmfH8QV7E1OU86bth3GMCdf
-token_duration       ∞
-token_renewable      false
-token_policies       ["root"]
-identity_policies    []
-policies             ["root"]
-```
-
-### Unseal the OpenBao Vault
-
-OpenBao uses a [*sealing* and *unsealing* mechanism](https://openbao.org/docs/concepts/seal/) to protect its stored data, ensuring that sensitive information remains encrypted and inaccessible while the data is sealed. When OpenBao starts, it is initially sealed by a distributed key. Authorized users or automation systems must then unseal OpenBao by providing a quorum of key shares, which reassembles the master key and allows access to stored secrets. This architecture ensures that even if the server is compromised, the sensitive data remains protected unless the unseal keys are presented.
-
-Before continuing, unseal the OpenBao vault. With unseal keys in hand, run the following command as many times as necessary to reach quorum (default is three), using a different unseal key for each execution:
-
-```command
-bao operator unseal
-```
-
-```output
-Unseal Key (will be hidden): ********************************************
-```
-
-After quorum has been reached, the OpenBao status will show the following:
-
-```output
-Key             Value
----             -----
-Seal Type       shamir
-Initialized     true
-Sealed          false
-...
-```
+-   OpenBao is successfully initialized.
+-   The vault is unsealed.
+-   The `BAO_ADDR` environment variable is set.
+-   You are authenticated using the root token.
 
 ### Create a Policy and AppRole
 
-Creating and using an OpenBao AppRole involves a few steps.
+Use AppRoles to replicate AWS IAM-style access control in OpenBao. In AWS Secrets Manager, applications typically assume IAM roles (e.g. `DatabaseReader`) that permit secret retrieval via policies like `secretsmanager:GetSecretValue`. In OpenBao, equivalent functionality is achieved through policy-bound AppRoles that authorize secrets access through token-based authentication.
 
-#### Step #1: Enable AppRole
+Follow these steps to create an OpenBao AppRole that mimics IAM-based access used in AWS Secrets Manager.
 
-[Enable the AppRole authentication method](https://openbao.org/docs/auth/approle/#via-the-api-1) with the following CLI command:
+#### Enable AppRole
 
-```command
-bao auth enable approle
-```
+1.  [Enable the AppRole authentication method](https://openbao.org/docs/auth/approle/#via-the-api-1):
 
-```output
-Success! Enabled approle auth method at: approle/
-```
+    ```command
+    bao auth enable approle
+    ```
 
-#### Step #2: Create a Policy
+    ```output
+    Success! Enabled approle auth method at: approle/
+    ```
 
-In `/etc/openbao`, [create a new policy](https://openbao.org/docs/concepts/policies/) file for reading the secret. For example, a new file called `db-secrets-policy.hcl` would have the following contents:
+#### Create a Policy
 
-```file {title="db-secrets-policy.hcl"}
-path "database-credentials/*" {
-  capabilities = ["read"]
-}
-```
+2.  [Create a new `.hcl` policy](https://openbao.org/docs/concepts/policies/) file in `/etc/openbao`, replacing {{< placeholder "POLICY_FILENAME" >}} (e.g. `db-secrets-policy.hcl`) with a policy filename of your choosing:
 
-This policy grants read permissions to any secrets within the `database-credentials` secrets store path. Add the policy to OpenBao with the following command:
+    ```command
+    sudo nano /etc/openbao/{{< placeholder "POLICY_FILENAME" >}}
+    ```
 
-```command
-bao policy write db-secrets-policy /etc/openbao/db-secrets-policy.hcl
-```
+    Give the file the following contents, replacing {{< placeholder "SECRET_MOUNT_PATH" >}} (e.g. `database-credentials`) with your chosen mount path:
 
-```output
-Success! Uploaded policy: db-secrets-policy
-```
+    ```file {title="db-secrets-policy.hcl"}
+    path "{{< placeholder "SECRET_MOUNT_PATH" >}}/*" {
+      capabilities = ["read"]
+    }
+    ```
 
-#### Step #3: Create an AppRole with Policy Attached
+    This policy grants read access to any secrets within the specified mount path (e.g. `database-credentials`).
 
-Create an AppRole for the application that will need to access this secret:
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-```command
-bao write \
-  auth/approle/role/web-app-approle \
-  token_policies=db-secrets-policy
-```
+3.  Add the policy to OpenBao, replacing {{< placeholder "POLICY_NAME" >}} (e.g. `db-secrets-policy`) and {{< placeholder "POLICY_FILENAME" >}} (e.g. `db-secrets-policy.hcl`):
 
-```output
-Success! Data written to: auth/approle/role/web-app-approle
-```
+    ```command
+    bao policy write {{< placeholder "POLICY_NAME" >}} /etc/openbao/{{< placeholder "POLICY_FILENAME" >}}
+    ```
 
-Verify that the AppRole was written successfully:
+    ```output
+    Success! Uploaded policy: db-secrets-policy
+    ```
 
-```command
-bao read auth/approle/role/web-app-approle
-```
+#### Create an AppRole
 
-```output
-Key                        Value
----                        -----
-bind_secret_id             true
-local_secret_ids           false
-secret_id_bound_cidrs      <nil>
-secret_id_num_uses         0
-secret_id_ttl              0s
-token_bound_cidrs          []
-token_explicit_max_ttl     0s
-token_max_ttl              0s
-token_no_default_policy    false
-token_num_uses             0
-token_period               0s
-token_policies             [db-secrets-policy]
-token_strictly_bind_ip     false
-token_ttl                  0s
-token_type                 default
-```
+4.  Create an AppRole for the application that needs access to the secret, replacing {{< placeholder "APPROLE_NAME" >}} (e.g. `web-app-approle`) and {{< placeholder "POLICY_NAME" >}} (e.g. `db-secrets-policy`):
 
-Fetch the AppRole ID with the following command:
+    ```command
+    bao write auth/approle/role/{{< placeholder "APPROLE_NAME" >}} token_policies={{< placeholder "POLICY_NAME" >}}
+    ```
 
-```command
-bao read auth/approle/role/web-app-approle/role-id
-```
+    ```output
+    Success! Data written to: auth/approle/role/web-app-approle
+    ```
 
-```output
-Key        Value
----        -----
-role_id    1d41b8be-03d2-6f61-702d-1731c957fd13
-```
+5.  Verify that the AppRole was written successfully, replacing {{< placeholder "APPROLE_NAME" >}} (e.g. `web-app-approle`):
 
-#### Step #4: Generate secret ID
+    ```command
+    bao read auth/approle/role/{{< placeholder "APPROLE_NAME" >}}
+    ```
 
-Generate a secret ID for the role:
+    ```output
+    Key                        Value
+    ---                        -----
+    bind_secret_id             true
+    local_secret_ids           false
+    secret_id_bound_cidrs      <nil>
+    secret_id_num_uses         0
+    secret_id_ttl              0s
+    token_bound_cidrs          []
+    token_explicit_max_ttl     0s
+    token_max_ttl              0s
+    token_no_default_policy    false
+    token_num_uses             0
+    token_period               0s
+    token_policies             [db-secrets-policy]
+    token_strictly_bind_ip     false
+    token_ttl                  0s
+    token_type                 default
+    ```
 
-```command
-bao write -f auth/approle/role/web-app-approle/secret-id
-```
+6.  Fetch the AppRole ID, replacing {{< placeholder "APPROLE_NAME" >}} (e.g. `web-app-approle`):
 
-```output
-Key                   Value
----                   -----
-secret_id             4eb6e604-681c-3fc3-bedd-a2dc774955bb
-secret_id_accessor    fe899dc6-85f7-f596-fb93-3c961f7919a9
-secret_id_num_uses    0
-secret_id_ttl         0s
-```
+    ```command
+    bao read auth/approle/role/web-app-approle/role-id
+    ```
 
-#### Step #5: Generate API token
+    ```output
+    Key        Value
+    ---        -----
+    role_id    1d41b8be-03d2-6f61-702d-1731c957fd13
+    ```
 
-Generate an API token for the AppRole, supplying the AppRole ID and the secret ID from the previous commands.
+#### Generate a Secret ID
 
-```command
-bao write auth/approle/login \
-  role_id="1d41b8be-03d2-6f61-702d-1731c957fd13" \
-  secret_id="4eb6e604-681c-3fc3-bedd-a2dc774955bb"
-```
+7.  Generate a secret ID for the role, replacing {{< placeholder "APPROLE_NAME" >}} (e.g. `web-app-approle`):
 
-```output
-Key                     Value
----                     -----
-token                   s.kpKsgWNtYLAktRYQT4BiMVMy
-token_accessor          Rwlq5EmvrHC8VvvHwoRyJzUh
-token_duration          768h
-token_renewable         true
-token_policies          ["db-secrets-policy" "default"]
-identity_policies       []
-policies                ["db-secrets-policy" "default"]
-token_meta_role_name    web-app-approle
-```
+    ```command
+    bao write -f auth/approle/role/{{< placeholder "APPROLE_NAME" >}}/secret-id
+    ```
 
-The AppRole token (`s.kpKsgWNtYLAktRYQT4BiMVMy` in the previous example) can be used by a user, machine, or service—such a web application—to authenticate OpenBao API calls, giving the caller authorization to read the database credential secret.
+    ```output
+    Key                   Value
+    ---                   -----
+    secret_id             4eb6e604-681c-3fc3-bedd-a2dc774955bb
+    secret_id_accessor    fe899dc6-85f7-f596-fb93-3c961f7919a9
+    secret_id_num_uses    0
+    secret_id_ttl         0s
+    ```
 
-### Store the Secret
+#### Generate an API Token
 
-Create the secret store that is defined in the policy. For this example, all secrets will be stored under the `database-credentials` path. Run the following command:
+8.  Generate an API token for the AppRole, supplying the {{< placeholder "APPROLE_ID" >}} (e.g. `1d41b8be-03d2-6f61-702d-1731c957fd13`) and the {{< placeholder "APPROLE_SECRET_ID" >}} (e.g. `4eb6e604-681c-3fc3-bedd-a2dc774955bb`) from the previous commands:
 
-```command
-bao secrets enable --path=database-credentials kv
-```
+    ```command
+    bao write auth/approle/login \
+      role_id="{{< placeholder "APPROLE_ID" >}}" \
+      secret_id="{{< placeholder "APPROLE_SECRET_ID" >}}"
+    ```
 
-```output
-Success! Enabled the kv secrets engine at: database-credentials/
-```
+    ```output
+    Key                     Value
+    ---                     -----
+    token                   s.kpKsgWNtYLAktRYQT4BiMVMy
+    token_accessor          Rwlq5EmvrHC8VvvHwoRyJzUh
+    token_duration          768h
+    token_renewable         true
+    token_policies          ["db-secrets-policy" "default"]
+    identity_policies       []
+    policies                ["db-secrets-policy" "default"]
+    token_meta_role_name    web-app-approle
+    ```
 
-The database secret stored at AWS Secrets Manager had the following form:
+    The AppRole token (e.g. `s.kpKsgWNtYLAktRYQT4BiMVMy`) can be used by a user, machine, or service, such a web application, to authenticate OpenBao API calls, giving the caller authorization to read the database credential secret.
 
-```
-{
-  "username": "psqluser",
-  "password": "W0H@Z52IGI0VjqoGS3xMkJ9SO533w$fcfrmzs!m$TudDxEe#",
-  "engine": "postgres",
-  "host": "psql.example-cloud.com",
-  "port": "5432",
-  "dbname": "web_app_production"
-}
-```
+### Storing Secrets
 
-To store these key-value pairs in OpenBao underneath the `database-credentials` path as a secret named `psql`, run the following command:
+Create the secret store defined in the policy created above.
 
-```command
-bao kv put --mount=database-credentials psql \
-  "username"="psqluser" \
-  "password"="W0H@Z52IGI0VjqoGS3xMkJ9SO533w$fcfrmzs.vault-tokenTudDxEe\#"  \
-  "engine"="postgres" \
-  "host"="psql.example-cloud.com" \
-  "port"="5432" \
-  "dbname"="web_app_production"
-```
+1.  Enable the KV secrets engine, replacing {{< placeholder "SECRET_MOUNT_PATH" >}} (e.g. `database-credentials`):
 
-```output
-Success! Data written to: database-credentials/psql
-```
+    ```command
+    bao secrets enable --path={{< placeholder "SECRET_MOUNT_PATH" >}} kv
+    ```
 
-### Retrieve the Secret
+    ```output
+    Success! Enabled the kv secrets engine at: database-credentials/
+    ```
 
-To retrieve this secret with the OpenBao CLI, while still authenticated with the root token, run the following command:
+    The example database secret stored at AWS Secrets Manager includes multiple fields stored as a JSON object:
 
-```command
-bao kv get --mount=database-credentials psql
-```
+    ```
+    {
+      "username": "psqluser",
+      "password": "W0H@Z52IGI0VjqoGS3xMkJ9SO533w$fcfrmzs!m$TudDxEe#",
+      "engine": "postgres",
+      "host": "psql.example-cloud.com",
+      "port": "5432",
+      "dbname": "web_app_production"
+    }
+    ```
 
-```output
-====== Data ======
-Key         Value
----         -----
-dbname      web_app_production
-engine      postgres
-host        psql.example-cloud.com
-password    W0H@Z52IGI0VjqoGS3xMkJ9SO533w.vault-tokenTudDxEe\#
-port        5432
-username    psqluser
-```
+1.  Store this structured secret in the {{< placeholder "SECRET_MOUNT_PATH" >}} (e.g. `database-credentials`) as a secret named {{< placeholder "SECRET_NAME" >}} (e.g. `psql`) like this:
 
-Test that the AppRole can retrieve the secret, using the AppRole token saved earlier:
+    ```command
+    bao kv put --mount={{< placeholder "SECRET_MOUNT_PATH" >}} {{< placeholder "SECRET_NAME" >}} \
+      "username"="psqluser" \
+      "password"="W0H@Z52IGI0VjqoGS3xMkJ9SO533w$fcfrmzs.vault-tokenTudDxEe\#"  \
+      "engine"="postgres" \
+      "host"="psql.example-cloud.com" \
+      "port"="5432" \
+      "dbname"="web_app_production"
+    ```
 
-```command
-curl --header "X-Vault-Token: s.36Yb3ijEOJbifprhdEiFtPhR" \
-     --request GET \
-     $BAO_ADDR/v1/database-credentials/psql \
-     | jq
-```
+    ```output
+    Success! Data written to: database-credentials/psql
+    ```
 
-```output
-{
-  "request_id": "00237a0b-4349-351d-50a0-ef127534ed18",
-  "lease_id": "",
-  "renewable": false,
-  "lease_duration": 2764800,
-  "data": {
-    "dbname": "web_app_production",
-    "engine": "postgres",
-    "host": "psql.example-cloud.com",
-    "password": "W0H@Z52IGI0VjqoGS3xMkJ9SO533w.vault-tokenTudDxEe#",
-    "port": "5432",
-    "username": "psqluser"
-  },
-  "wrap_info": null,
-  "warnings": null,
-  "auth": null
-}
-```
+### Retrieving Secrets
 
-This API token can be used in applications and services to access the database credentials. According to the [documentation](https://openbao.org/api-docs/libraries/), “OpenBao intends to remain API compatible with HashiCorp Vault. This means that most of the existing libraries for Vault should also work with OpenBao.” Vault has [client libraries](https://developer.hashicorp.com/vault/api-docs/libraries) for various programming languages:
+1.  While authenticated with the root token, retrieve the secret using the OpenBao CLI, replacing {{< placeholder "SECRET_MOUNT_PATH" >}} (e.g. `database-credentials`) and {{< placeholder "SECRET_NAME" >}} (e.g. `psql`):
 
--   [Go](https://github.com/hashicorp/vault/tree/main/api)
--   [Ruby](https://github.com/hashicorp/vault-ruby)
--   [C#](https://github.com/rajanadar/VaultSharp)
--   [Java](https://developer.hashicorp.com/vault/api-docs/libraries#java)
--   [Kotlin](https://github.com/kunickiaj/vault-kotlin)
--   [Node.js](https://developer.hashicorp.com/vault/api-docs/libraries#node-js)
--   [PHP](https://developer.hashicorp.com/vault/api-docs/libraries#php)
--   [Python](https://github.com/hvac/hvac)
+    ```command
+    bao kv get --mount={{< placeholder "SECRET_MOUNT_PATH" >}} {{< placeholder "SECRET_NAME" >}}
+    ```
 
-### Convert Existing Secrets from AWS Secrets Manager to OpenBao
+    ```output
+    ====== Data ======
+    Key         Value
+    ---         -----
+    dbname      web_app_production
+    engine      postgres
+    host        psql.example-cloud.com
+    password    W0H@Z52IGI0VjqoGS3xMkJ9SO533w.vault-tokenTudDxEe\#
+    port        5432
+    username    psqluser
+    ```
 
-The above steps outline how to migrate a single secret stored in AWS Secrets Manager to OpenBao on Linode, using RBAC for authorizing an application to read that secret with an API token. Migrating the remainder of your secrets stored in AWS Secrets Manager involves iterating on the following process:
+1.  Test access using the {{< placeholder "APPROLE_TOKEN" >}} (e.g. `s.36Yb3ijEOJbifprhdEiFtPhR`) saved earlier, {{< placeholder "SECRET_MOUNT_PATH" >}} (e.g. `database-credentials`), and {{< placeholder "SECRET_NAME" >}} (e.g. `psql`):
 
-1.  Retrieve the secret in AWS.
-1.  Determine which entities (users, machines, and services) need read or write access to that secret.
-1.  Create a permissions policy and attach it to an AppRole in OpenBao.
-1.  Generate an API token for the AppRole.
-1.  Update any entity code or configurations to use the API token to access the secret in OpenBao.
+    ```command
+    curl --header "X-Vault-Token: {{< placeholder "APPROLE_TOKEN" >}}" \
+         --request GET \
+         $BAO_ADDR/v1/{{< placeholder "SECRET_MOUNT_PATH" >}}/{{< placeholder "SECRET_NAME" >}} \
+         | jq
+    ```
+
+    ```output
+    {
+      "request_id": "00237a0b-4349-351d-50a0-ef127534ed18",
+      "lease_id": "",
+      "renewable": false,
+      "lease_duration": 2764800,
+      "data": {
+        "dbname": "web_app_production",
+        "engine": "postgres",
+        "host": "psql.example-cloud.com",
+        "password": "W0H@Z52IGI0VjqoGS3xMkJ9SO533w.vault-tokenTudDxEe#",
+        "port": "5432",
+        "username": "psqluser"
+      },
+      "wrap_info": null,
+      "warnings": null,
+      "auth": null
+    }
+    ```
+
+    The AppRole token can be used by applications or services to retrieve secrets through the OpenBao API.
+
+    {{< note >}}
+    According to the [OpenBao API documentation](https://openbao.org/api-docs/libraries/), OpenBao is API-compatible with HashiCorp Vault. This means most Vault client libraries should also work with OpenBao, including:
+
+    -   [Go](https://github.com/hashicorp/vault/tree/main/api)
+    -   [Ruby](https://github.com/hashicorp/vault-ruby)
+    -   [C#](https://github.com/rajanadar/VaultSharp)
+    -   [Java](https://developer.hashicorp.com/vault/api-docs/libraries#java)
+    -   [Kotlin](https://github.com/kunickiaj/vault-kotlin)
+    -   [Node.js](https://developer.hashicorp.com/vault/api-docs/libraries#node-js)
+    -   [PHP](https://developer.hashicorp.com/vault/api-docs/libraries#php)
+    -   [Python](https://github.com/hvac/hvac)
+    {{< /note >}}
 
 ## Production Considerations
 
-When migrating from AWS Secrets Manager to OpenBao on Linode, it's important to ensure your deployment is secure, resilient, and optimized for performance. This section covers key security and high availability considerations to help you maintain a reliable and protected secrets management system.
+When migrating from AWS Secrets Manager to OpenBao on Akamai Cloud, it's important to ensure your deployment is secure, resilient, and optimized for performance. This section covers key security and high availability considerations to help you maintain a reliable and protected secrets management system.
 
 ### Security
 
 For a production-grade OpenBao deployment, security should be a top priority. Protecting secrets from unauthorized access, ensuring secure communication, and enforcing strict access controls are essential to maintaining a secure environment.
 
--   **Access control policies**: Use OpenBao's [policy](https://openbao.org/docs/concepts/policies/) system to enforce RBAC. Define granular policies that grant only the necessary permissions, following the principle of least privilege.
--   **Audit logging**: Enable [detailed audit logs](https://openbao.org/docs/configuration/log-requests-level/) to track all access and modifications to secrets. OpenBao supports multiple logging backends, such as syslog and file-based logs, to help monitor suspicious activity.
--   **Secrets lifecycle management**: Implement automated secrets rotation, revocation, and expiration to ensure secrets do not become stale or overexposed. Consider using dynamic secrets where possible to generate time-limited credentials.
--   **Securing network communication**: Configure OpenBao to [use TLS for encrypting](https://openbao.org/docs/configuration/listener/tcp/#configuring-tls) all communications, ensuring data in transit remains secure. Regularly rotate TLS certificates to prevent expiration-related outages and reduce the risk of compromised certificates.
+-   **Access Control Policies**: Use OpenBao's [policy](https://openbao.org/docs/concepts/policies/) system to enforce RBAC. Define granular policies that grant only the necessary permissions, following the principle of least privilege.
+-   **Audit Logging**: Enable [detailed audit logs](https://openbao.org/docs/configuration/log-requests-level/) to track all access and modifications to secrets. OpenBao supports multiple logging backends, such as syslog and file-based logs, to help monitor suspicious activity.
+-   **Secrets Lifecycle Management**: Implement automated secrets rotation, revocation, and expiration to ensure secrets do not become stale or overexposed. Consider using dynamic secrets where possible to generate time-limited credentials.
+-   **Securing Network Communication**: Configure OpenBao to [use TLS to encrypt](https://openbao.org/docs/configuration/listener/tcp/#configuring-tls) all communications, ensuring data in transit remains secure. Regularly rotate TLS certificates to prevent expiration-related outages and reduce the risk of compromised certificates.
 
 ### High Availability
 
-For production environments, OpenBao should be deployed with fault tolerance and scalability in mind. OpenBao’s [Autopilot mode](https://openbao.org/docs/concepts/integrated-storage/autopilot) for [high availability](https://openbao.org/docs/internals/high-availability/) ensures that if the active node fails, the cluster automatically elects a new leader, maintaining uptime without manual intervention. However, to enable seamless failover, organizations must configure their deployment correctly and proactively monitor system health.
+For production environments, OpenBao should be deployed with fault tolerance and scalability in mind. OpenBao’s [Autopilot mode](https://openbao.org/docs/concepts/integrated-storage/autopilot) for [high availability](https://openbao.org/docs/internals/high-availability/) ensures that if the active node fails, the cluster automatically elects a new leader, maintaining uptime without manual intervention. However, to enable seamless failover, organizations must configure their deployment correctly, and proactively monitor system health.
 
--   **Raft storage backend**: Use OpenBao’s [integrated storage](https://openbao.org/docs/internals/integrated-storage/), based on the [Raft protocol](https://thesecretlivesofdata.com/raft/), to enable distributed data replication across multiple nodes. This ensures data consistency and fault tolerance while reducing reliance on external storage backends. Configure regular Raft snapshots for disaster recovery.
--   **Deploy multiple nodes**: OpenBao recommends at least five nodes for a [high-availability deployment](https://openbao.org/docs/concepts/ha/). The active node handles all requests, while standby nodes remain ready to take over in case of failure.
--   **Monitor leader status**: Use [bao operator raft list-peers](https://openbao.org/docs/commands/operator/raft/#list-peers) to check the cluster’s leader and node statuses. This command helps ensure that standby nodes are correctly registered and ready for failover.
+-   **Raft Storage Backend**: Use OpenBao’s [integrated storage](https://openbao.org/docs/internals/integrated-storage/), based on the [Raft protocol](https://thesecretlivesofdata.com/raft/), to enable distributed data replication across multiple nodes. This ensures data consistency and fault tolerance while reducing reliance on external storage backends. Configure regular Raft snapshots for disaster recovery.
+-   **Deploy Multiple Nodes**: OpenBao recommends at least five nodes for a [high-availability deployment](https://openbao.org/docs/concepts/ha/). The active node handles all requests, while standby nodes remain ready to take over in case of failure.
+-   **Monitor Leader Status**: Use [bao operator raft list-peers](https://openbao.org/docs/commands/operator/raft/#list-peers) to check the cluster’s leader and node statuses. This command helps ensure that standby nodes are correctly registered and ready for failover.
