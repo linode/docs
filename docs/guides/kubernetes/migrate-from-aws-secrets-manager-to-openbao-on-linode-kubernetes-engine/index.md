@@ -52,12 +52,6 @@ Additionally, this guide contains a number of placeholders that are intended to 
 | `{{< placeholder "SECRET_KEY_X" >}}`      | A key in a structured secret (repeatable).                      | `username`, `password`, `engine`, `host`, `port`, `dbname`           |
 | `{{< placeholder "SECRET_VALUE_X" >}}`    | The value associated with a `SECRET_KEY_X` (repeatable).                | `psqluser`, `W0H@Z52IGI0VjqoGS3xMkJ9SO533w$fcfrmzs.vault-tokenTudDxEe\#`, `postgres`, `psql.example-cloud.com`, `5432`, `web_app_production`  |
 
-"username"="psqluser" \
-  "password"="W0H@Z52IGI0VjqoGS3xMkJ9SO533w$fcfrmzs.vault-tokenTudDxEe\#"  \
-  "engine"="postgres" \
-  "host"="psql.example-cloud.com" \
-  "port"="5432" \
-  "dbname"="web_app_production
 {{< note >}}
 All of the example values used in this guide are purely examples to mimic the format of actual secrets. These are *not* real credentials to any exisiting systems.
 {{< /note >}}
