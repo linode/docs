@@ -2,7 +2,7 @@
 slug: managed-postgresql-databases-on-akamai-cloud-with-terraform
 title: "Managed PostgreSQL Databases on Akamai Cloud with Terraform"
 description: "Learn how to use Terraform to provision a managed PostgreSQL database cluster on Akamai Cloud."
-authors: ["Brent Eiler", "Peter Sari"]
+authors: ["Brent Eiler"]
 contributors: ["Brent Eiler", "Peter Sari", "Nathan Melehan"]
 published: 2025-05-02
 keywords: ['managed database','database managed services','managed postgresql','managed postgres','managed postgres database','terraform postgresql provider​','terraform postgresql​','postgresql terraform provider​','terraform postgres provider','postgres terraform provider','terraform postgres','terraform database','postgresql_database terraform','terraform create postgres database','infrastructure as code','iac']
