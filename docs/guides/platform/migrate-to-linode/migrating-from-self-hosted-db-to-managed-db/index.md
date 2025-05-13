@@ -4,7 +4,7 @@ title: "Migrating From Self-Hosted to Managed Databases"
 description: "Two to three sentences describing your guide."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-05-12
+published: 2025-05-13
 keywords: ['managed database','db','self hosted database','database admin','migration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -349,34 +349,183 @@ Liquibase command 'rollbackCount' was executed successfully.
 
 ## Monitoring and Logging
 
+Managed environments typically abstract access to raw system logs and OS-level monitoring. However, solutions like Managed Database Clusters on Akamai Cloud provide [integrated dashboards and performance insights](https://techdocs.akamai.com/cloud-computing/docs/monitor-database-cluster).
+
 ### Benefits of Self-Hosting
+
+Self-hosted environments allow direct access to detailed system logs, query logs, and custom monitoring setups. The level of insight supports advanced troubleshooting and performance tuning.
 
 ### Benefits of Managed
 
+Managed services usually offer built-in dashboards and monitoring features, including performance tracking and resource allocation. These tools are designed to cover common diagnostic needs.
+
 ### How to Adapt
+
+For database monitoring or performance diagnostics apart from provider tooling, you can look into application-layer tools or using a database client CLI to tap into performance insights without needing external access. For example:
+
+-   **PostgreSQL** makes database server activity statistics through its [cumulative statistics system](https://www.postgresql.org/docs/current/monitoring-stats.html#MONITORING-STATS).
+
+-   **MySQL** server statistics can be found in the [MySQL Performance Schema](https://dev.mysql.com/doc/refman/8.4/en/performance-schema.html) and [server status variables](https://dev.mysql.com/doc/refman/5.7/en/server-status-variables.html).
+
+To maintain visibility, log queries, response times, and error details at the application level. Some platforms support exporting metrics to tools like Prometheus, Grafana, or third-party services. If database metrics are exposed on a protected endpoint, configure Prometheus to scrape metrics from that endpoint.
+
+Akamai's Managed Databases use Akamai Cloud Pulse (ACLP) to help users monitor Managed Database Clusters and visualize performance trends. You can view ACLP in Cloud Manager by selecting a database's **Metrics** tab.
+
+![Akamai Cloud Pulse](Self-Hosted-to-Managed-DB-ACLP.jpg)
 
 ## Hardware Tuning and Infrastructure Control
 
+Managed databases run on fixed hardware profiles and instance types, which can limit options for fine-grained infrastructure tuning.
+
 ### Benefits of Self-Hosting
+
+In self-hosted setups, DBAs have the ability to choose CPU models, configure RAID (redundant array of independent disks), control disk IOPS (input/output operations per second), and fine-tune memory and storage allocations. These decisions are abstracted in managed services.
 
 ### Benefits of Managed
 
+Managed services offer preconfigured plan tiers optimized for availability, scaling, and consistency. These plans eliminate the need to manage hardware directly and can simplify capacity planning.
+
 ### How to Adapt
+
+When choosing a plan or database instance type with a managed database service, **match the compute profile to the expected workload**. At the time of this writing, Akamai's Managed Databases offer both [shared and dedicated](https://techdocs.akamai.com/cloud-computing/docs/database-engines-plans#database-plans) Compute Instance options.
+
+Monitor your database usage to determine when to scale. Consider provisioning additional database nodes for high availability.
+
+Offload read-heavy queries to replicas, or try a solution like [Memcached](https://memcached.org/) to reduce database load. Move infrequently accessed records to archival storage to improve query performance and reduce costs.
 
 ## Custom Audit Workflows
 
+Managed environments often do not provide access to system-level audit trails, but custom workflows can be implemented using database and application logic.
+
 ### Benefits of Self-Hosting
+
+With self-hosted databases, DBAs can configure audit plugins or access system logs for forensic analysis. This level of granularity is not always supported in a managed offering.
 
 ### Benefits of Managed
 
+Managed environments often offload logging tasks and may offer log insight via Support upon request.
+
 ### How to Adapt
+
+Capture data updates to critical tables by implementing triggers that write to audit logs.
+
+Consider the following example of a PostgreSQL database with a `customers` table for an ecommerce site. To track and audit any data operations on the table -- such as `INSERT`, `UPDATE`, or `DELETE` -- a database trigger can be created that logs those operations to a separate table.
+
+The following query creates the logging table:
+
+```
+psql=> CREATE TABLE data_change_audit (
+       id SERIAL PRIMARY KEY,
+       event_time TIMESTAMP WITH TIME ZONE DEFAULT now(),
+       operation TEXT,      -- 'INSERT', 'UPDATE', 'DELETE'
+       table_name TEXT,     -- e.g., 'customers'
+       record_id TEXT,      -- primary key or identifier (optional)
+       old_data JSONB,      -- previous row (for UPDATE/DELETE)
+       new_data JSONB       -- new row (for INSERT/UPDATE)
+       );
+```
+
+You can then [create a function](https://www.postgresql.org/docs/17/sql-createfunction.html) to be called by the trigger that handles inserting a recording into the `data_change_audit` table:
+
+```
+psql=> CREATE OR REPLACE FUNCTION audit_data_changes()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+AS $$
+BEGIN
+  IF (TG_OP = 'INSERT') THEN
+    INSERT INTO data_change_audit(operation, table_name, record_id, old_data, new_data)
+    VALUES ('INSERT', TG_TABLE_NAME, NEW.id::TEXT, NULL, to_jsonb(NEW));
+
+  ELSIF (TG_OP = 'UPDATE') THEN
+    INSERT INTO data_change_audit(operation, table_name, record_id, old_data, new_data)
+    VALUES ('UPDATE', TG_TABLE_NAME, NEW.id::TEXT, to_jsonb(OLD), to_jsonb(NEW));
+
+  ELSIF (TG_OP = 'DELETE') THEN
+    INSERT INTO data_change_audit(operation, table_name, record_id, old_data, new_data)
+    VALUES ('DELETE', TG_TABLE_NAME, OLD.id::TEXT, to_jsonb(OLD), NULL);
+  END IF;
+
+  RETURN NULL;
+END;
+$$;
+```
+
+Lastly, [create the trigger](https://www.postgresql.org/docs/current/sql-createtrigger.html) that executes the function on data changes in the `customers` table:
+
+```
+psql=> CREATE TRIGGER trigger_audit_customer_changes
+       AFTER INSERT OR UPDATE OR DELETE ON customers
+       FOR EACH ROW
+       EXECUTE FUNCTION audit_data_changes();
+```
+
+Now when data in the `customers` table changes, a record exists in the `data_change_audit` table:
+
+```
+psql=> select * from data_change_audit;
+(0 rows)
+
+psql=> delete from customers where id=5;
+DELETE 1
+
+psql=> select * from data_change_audit;
+-[ RECORD 1 ]
+id         | 2
+event_time | 2025-04-27 05:10:36.78078+00
+operation  | DELETE
+table_name | customers
+record_id  | 5
+old_data   | {"id": 5, "email": "eve@example.com", "phone": "555-567-8901", "created_at": "2025-04-27T04:56:40.002589+00:00", "updated_at": "2025-04-27T04:56:40.002589+00:00", "shipping_address": "202 Birch Ln, Salem, OR 97301"}
+new_data   |
+```
+
+By keeping audit trails in dedicated tables, you can implement separate application-level processes to export audit trail records to an external logging system.
+
+MySQL has similar [trigger](https://dev.mysql.com/doc/refman/8.4/en/triggers.html) capabilities, though with slight [trigger syntax](https://dev.mysql.com/doc/refman/8.4/en/trigger-syntax.html) differences from PostgreSQL.
 
 ## Security and Access Control
 
+Managed database services typically provide built-in controls for secure connections and limited exposure, but do not allow full control over network-layer firewalls or OS-level security.
+
 ### Benefits of Self-Hosting
+
+Self-hosted environments can use host-based firewalls, OS hardening, and custom ACLs to tailor security posture. These operations are often abstracted in managed environments.
 
 ### Benefits of Managed
 
+Managed services provide built-in TLS encryption, disk encryption, and IP-based access control. These defaults support [secure-by-design](https://en.wikipedia.org/wiki/Secure_by_design) principles.
+
 ### How to Adapt
 
+Many managed database providers, including Akamai, offer IP allowlist and denylist features directly in their dashboards or APIs. These settings let you specify exactly which IP addresses or ranges are permitted to initiate a connection to your database.
+
+Role-based access control (RBAC) allows you to define granular permissions, ensuring users and applications only have access to the actions and data they require. To follow this methodology, create a new user and restrict their access to specific tables and operations by granting minimal privileges.
+
+For example, to create a user who can only read from the `customers` table in the previous scenario, run the following:
+
+```
+CREATE USER readonly_user WITH PASSWORD '{{< placeholder "SECURE_USER_PASSWORD" >}}';
+GRANT CONNECT ON DATABASE defaultdb TO readonly_user;
+GRANT USAGE ON SCHEMA public TO readonly_user;
+GRANT SELECT ON TABLE customers TO readonly_user;
+```
+
+If that user attempts to `INSERT` or `DELETE` rows to the `customers` table, they would encounter the following results since they only have `readonly` permissions:
+
+```
+psql=> DELETE FROM customers WHERE id=1;
+ERROR:  permission denied for table customers
+
+psql=> INSERT INTO customers(email, shipping_address, phone)
+       VALUES ('ivan@example.com',
+               '606 Chestnut Cir, Tampa, FL 33602',
+               '555-901-2345');
+ERROR:  permission denied for table customers
+```
+
 ## Conclusion
+
+Migrating to a managed database changes how DBAs interact with their systems. While some low-level controls may no longer be available, managed platforms provide reliability, scalability, and integrated tooling that reduce operational overhead.
+
+By understanding what capabilities change, and adapting in the necessary ways, DBAs can achieve the level of visibility and control they need to maintain performance and effectiveness.
