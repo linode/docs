@@ -5,7 +5,7 @@ description: "Two to three sentences describing your guide."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-05-12
-keywords: ['managed database','db','self-hosted database','database admin','migration']
+keywords: ['managed database','db','self hosted database','database admin','migration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Managed Databases Product Documentation](https://techdocs.akamai.com/cloud-computing/docs/aiven-database-clusters)'
@@ -257,11 +257,95 @@ You can also test backups by restoring them to a temporary environment to ensure
 
 ## Maintenance Scheduling and Version Control
 
+Managed services regularly apply patches and upgrades to ensure security and reliability. This helps remove the burden of manual maintenance, but it can also limit control over when updates occur and how they are tested.
+
 ### Benefits of Self-Hosting
+
+In a self-hosted environment, DBA can choose when to apply patches, test updates in staging environments, and defer changes that might disrupt production workloads. This level of control is often not available in managed environments, where providers control the patch cycle.
 
 ### Benefits of Managed
 
+Managed providers apply critical updates automatically, reducing exposure to known vulnerabilities and ensuring software remains up-to-date. Some platforms like Akamai Cloud allow users to [define preferred maintenance windows](https://techdocs.akamai.com/cloud-computing/docs/aiven-manage-database#automatic-updates-and-maintenance-window) to avoid peak traffic periods.
+
 ### How to Adapt
+
+Although you may be unable to configure database maintenance schedules down to the minute, managed databases let you set a preferred maintenance window (i.e. day of the week, hour of the day) to help reduce impact on production workloads. High-availability clusters also enable automatic failover between nodes to reduce the possibility of downtime.
+
+Consider spinning up additional database instances for development and staging. This way, you can roll out and test proposed database changes before promoting them to production. When rolling out significant changes, use [blue-green deployments](https://en.wikipedia.org/wiki/Blue%E2%80%93green_deployment) to reduce downtime and verify stability before directing traffic to the updated environment.
+
+You can also use schema versioning tools -- such as [Liquibase Open Source](https://www.liquibase.com/open-source) -- to help manage migrations and provide a structured rollback path if issues arise. For example, you can define a `liquibase.properties` file with credentials to access your managed database. Then, define migrations with XML in individual files. See the below example file that creates a `products` table for an ecommerce site database:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="1" author="alvin">
+        <createTable tableName="products">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="text"/>
+            <column name="price" type="decimal(11,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
+```
+
+Then, update your database schema by applying your migrations:
+
+```
+$ liquibase update
+
+…
+Starting Liquibase at 13:53:48 using Java 21.0.6 (version 4.31.1 #6739 built at 2025-02-13 13:46+0000)
+Liquibase Version: 4.31.1
+Liquibase Open Source 4.31.1 by Liquibase
+Running Changeset: db/changelog/changes/01-create-products-table.xml::1::user
+Running Changeset: db/changelog/changes/02-add-stock-column.xml::2::user
+Running Changeset: db/changelog/changes/03-remove-stock-column.xml::3::user
+Running Changeset: db/changelog/changes/04-create-orders-table.xml::4::user
+
+UPDATE SUMMARY
+Run:                          4
+Previously run:               0
+Filtered out:                 0
+-------------------------------
+Total change sets:            4
+
+Liquibase: Update has been successful. Rows affected: 4
+Liquibase command 'update' was executed successfully.
+```
+
+You can also roll back migrations incrementally. For example:
+
+```
+$ liquibase rollbackCount 2
+
+
+…
+Starting Liquibase at 13:54:12 using Java 21.0.6 (version 4.31.1 #6739 built at 2025-02-13 13:46+0000)
+Liquibase Version: 4.31.1
+Liquibase Open Source 4.31.1 by Liquibase
+Rolling Back Changeset: db/changelog/changes/04-create-orders-table.xml::4::user
+Rolling Back Changeset: db/changelog/changes/03-remove-stock-column.xml::3::user
+Liquibase command 'rollbackCount' was executed successfully.
+```
 
 ## Monitoring and Logging
 
