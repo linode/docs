@@ -7,17 +7,27 @@ contributors: ["Akamai"]
 published: 2025-05-13
 keywords: ['managed database','db','self hosted database','database admin','migration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-external_resources:
-- '[Managed Databases Product Documentation](https://techdocs.akamai.com/cloud-computing/docs/aiven-database-clusters)'
 ---
 
 ## Introduction
 
-Managed databases can offload many day-to-day responsibilities that database administrators (DBAs) traditionally hold when managing self-hosted databases, such as software patching and backup scheduling. By handling these tasks, managed services -- like [Managed Database Clusters](https://techdocs.akamai.com/cloud-computing/docs/aiven-database-clusters) on Akamai Cloud -- allow teams to direct more attention to database performance tuning, data architecture, and operational alignment.
+Managed databases can offload many day-to-day responsibilities that database administrators (DBAs) traditionally hold when managing self-hosted databases, such as software patching and backup scheduling. By handling these tasks, fully managed services -- like [Managed Database Clusters](https://techdocs.akamai.com/cloud-computing/docs/aiven-database-clusters) on Akamai Cloud -- allow teams to direct more attention to database performance tuning, data architecture, and operational alignment.
 
-Adopting a managed database also involves giving up certain capabilities typically associated with self-hosted environments. DBAs who are accustomed to full system control may encounter restrictions, particularly in multi-tenant environments where superuser privileges and host-level access are not available. These trade-offs do not eliminate the role of the DBA, rather, they shift the focus toward higher-level responsibilities.
+Adopting a managed database involves giving up certain capabilities typically associated with self-managed environments. DBAs who are accustomed to full system control may encounter restrictions, particularly in multi-tenant environments where superuser privileges and host-level access are not available. These trade-offs do not eliminate the role of the DBA, rather, they shift the focus toward higher-level responsibilities.
 
-This guide outlines key differences between self-hosted and managed databases. It compares the upsides of both solutions, as well as what techniques can be used to help maintain control and performance within a managed environment.
+This guide outlines key feature and administrative differences between self-hosted and managed databases. It compares the upsides of both solutions, as well as what techniques can be used to help maintain control and performance within a managed environment.
+
+## Resources
+
+-   [Get Started with Managed Databases](https://techdocs.akamai.com/cloud-computing/docs/get-started-new-clusters): A quickstart tutorial on setting up a managed database cluster, including: provisioning, selecting a data center, and connecting to your database.
+
+-   Data migration instructions on how to move from a source database to a target database:
+
+    -   [Migrate a PostgreSQL database to a Managed Database](https://techdocs.akamai.com/cloud-computing/docs/aiven-postgresql#migrate-a-postgresql-database-to-a-managed-database)
+
+    -   [Migrate a MySQL database to a Managed Database](https://techdocs.akamai.com/cloud-computing/docs/aiven-mysql#migrate-a-mysql-database-to-a-managed-database)
+
+-   [Managed Databases Product Documentation](https://techdocs.akamai.com/cloud-computing/docs/aiven-database-clusters): Complete documentation for our Managed Databases service.
 
 ## Superuser and OS-Level Access
 
@@ -27,11 +37,11 @@ Self-hosted database environments inherently provide a higher level of administr
 
 Self-hosted environments give DBAs unrestricted access to the operating system (OS) and superuser roles such as `root`, `postgres`, or `mysql`. This level of access enables direct control over user privileges, background processes, file system operations, and system configurations.
 
-In managed environments, users typically interact with the database through a restricted administrative account that doesn't include full superuser privileges. Operating system access is generally not available, and many system-level commands or settings are locked down by the provider.
+In managed environments, users typically interact with the database through a restricted administrative account that doesn't include full superuser privileges. Operating system access is generally not available, and many system-level commands or settings are locked down by the cloud provider.
 
 ### Benefits of Managed
 
-Managed database models can reduce the risk of misconfiguration, as well as limit the impact of potential security issues. Tasks like patching, system upgrades, and critical maintenance are handled automatically by the provider.
+One of the primary use cases for managed database models is reducing the risk of misconfiguration, as well as limiting the impact of potential security issues. Tasks like patching, system upgrades, and critical maintenance are handled automatically by the provider.
 
 ### How to Adapt
 
@@ -149,7 +159,7 @@ The curated extension list provided by managed database services includes common
 
 ### How to Adapt
 
-Before migrating from self-hosted to managed, compare the list of extensions required by your applications against what the provider supports. Most providers publish an [extension compatibility matrix](https://aiven.io/docs/products/postgresql/reference/list-of-extensions).
+Before migrating databases from self-hosted to managed, compare the list of extensions required by your applications against what the provider supports. Most providers publish an [extension compatibility matrix](https://aiven.io/docs/products/postgresql/reference/list-of-extensions) to help you optimize compatibility before cutover.
 
 In PostgreSQL, you can view the extensions available in your current environment by running the following query:
 
@@ -216,11 +226,11 @@ Managed databases [automate the backup process](https://techdocs.akamai.com/clou
 
 ### Benefits of Self-Hosting
 
-In self-hosted environments, DBAs can schedule backups at highly specific times, select backup formats and destinations, and define retention policies tailored to compliance or business continuity needs. Managed services can abstract some of these options, applying provider-defined scheduling windows and storage durations.
+In self-hosted environments, DBAs have access to backup files, can schedule backups at highly specific times, select backup formats and destinations, and define retention policies tailored to compliance or business continuity needs. Managed services can abstract some of these options, applying provider-defined scheduling windows and storage durations.
 
 ### Benefits of Managed
 
-Automated backups can significantly reduce operational overhead, with free backups included with Akamai's Managed Database Clusters. Backups are handled on a daily basis, are retained for 14 days, and include point-in-time [recovery](https://techdocs.akamai.com/cloud-computing/docs/aiven-database-clusters#disaster-recovery). This helps ensure data safety without requiring manual oversight.
+Another primary use case for managed database solutions is offloading backup tasks, with the added benefit of significantly reducing operational overhead. Free backups are included with Akamai’s Managed Database Clusters and are enabled upon startup. Backups are handled on a daily basis, are retained for 14 days, and include point-in-time [recovery](https://techdocs.akamai.com/cloud-computing/docs/aiven-database-clusters#disaster-recovery). This helps ensure data safety without requiring manual oversight.
 
 ### How to Adapt
 
@@ -271,7 +281,7 @@ Managed providers apply critical updates automatically, reducing exposure to kno
 
 Although you may be unable to configure database maintenance schedules down to the minute, managed databases let you set a preferred maintenance window (i.e. day of the week, hour of the day) to help reduce impact on production workloads. High-availability clusters also enable automatic failover between nodes to reduce the possibility of downtime.
 
-Consider spinning up additional database instances for development and staging. This way, you can roll out and test proposed database changes before promoting them to production. When rolling out significant changes, use [blue-green deployments](https://en.wikipedia.org/wiki/Blue%E2%80%93green_deployment) to reduce downtime and verify stability before directing traffic to the updated environment.
+Consider spinning up additional new database instances for development and staging. This way, you can roll out and test proposed database changes before promoting them to production. When rolling out significant changes, use [blue-green deployments](https://en.wikipedia.org/wiki/Blue%E2%80%93green_deployment) to reduce downtime and verify stability before directing traffic to the updated environment.
 
 You can also use schema versioning tools -- such as [Liquibase Open Source](https://www.liquibase.com/open-source) -- to help manage migrations and provide a structured rollback path if issues arise. For example, you can define a `liquibase.properties` file with credentials to access your managed database. Then, define migrations with XML in individual files. See the below example file that creates a `products` table for an ecommerce site database:
 
@@ -349,7 +359,7 @@ Liquibase command 'rollbackCount' was executed successfully.
 
 ## Monitoring and Logging
 
-Managed environments typically abstract access to raw system logs and OS-level monitoring. However, solutions like Managed Database Clusters on Akamai Cloud provide [integrated dashboards and performance insights](https://techdocs.akamai.com/cloud-computing/docs/monitor-database-cluster).
+When you migrate data to any managed environment, access to raw system logs and OS-level monitoring is typically abstracted. However, solutions like Managed Database Clusters on Akamai Cloud provide [integrated dashboards and performance insights](https://techdocs.akamai.com/cloud-computing/docs/monitor-database-cluster).
 
 ### Benefits of Self-Hosting
 
@@ -494,7 +504,7 @@ Self-hosted environments can use host-based firewalls, OS hardening, and custom 
 
 ### Benefits of Managed
 
-Managed services provide built-in TLS encryption, disk encryption, and IP-based access control. These defaults support [secure-by-design](https://en.wikipedia.org/wiki/Secure_by_design) principles.
+Managed services provide built-in TLS encryption, disk encryption, and IP-based access control. These defaults support [secure-by-design](https://en.wikipedia.org/wiki/Secure_by_design) principles. See our doc on [managing access control](https://techdocs.akamai.com/cloud-computing/docs/aiven-manage-database#access-control) for your database clusters.
 
 ### How to Adapt
 
