@@ -533,6 +533,7 @@ delpy
 demultiplexer
 Deno
 denormalized
+denylist
 deprovision
 deprovisioning
 deque
@@ -1358,6 +1359,7 @@ linodego
 linodes
 linroot
 linter
+Liquibase
 lish
 liskov
 listdir
