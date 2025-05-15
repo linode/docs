@@ -1,4 +1,4 @@
-{{ $schemaCommonParts := partialCached "sections/head-structured-data-parts" . }}
+{{ $schemaCommonParts := partialCached "sections/body-structured-data-parts-common" . }}
 {{ $img := (partial "funcs/get-social-image.html" .).img }}
 
 {{ $p := .Params }}
@@ -19,17 +19,30 @@
 {{ end }}
 
 {{ $mainEntityOfPage := dict "@type" "WebPage" "@id" .Permalink }}
-
+{{ $ancestors := .Ancestors.Reverse }}
+{{ $ancestorsSlice := slice }}
+{{ range $ancestors }}
+  {{ if .IsHome }}
+    {{ continue }}
+  {{ end }}
+  {{ $ancestorsSlice = $ancestorsSlice | append .LinkTitle }}
+{{ end }}
 {{ $schema := dict
   "@context" "https://schema.org"
-  "@type" "NewsArticle"
+  "@type" "TechArticle"
   "mainEntityOfPage" $mainEntityOfPage
+  "name" .LinkTitle
   "headline" .Title
+  "description" (or .Params.description .Summary)
+  "keywords" .Keywords
   "image" $img.Permalink
   "datePublished" .PublishDate
   "dateModified" .Lastmod
   "author" $author
   "publisher"  $schemaCommonParts.publisher
+  "potentialAction" (dict "@type" "ReadAction" "target" (slice .Permalink))
+  "articleSection" $ancestorsSlice
+  "hasPart" (partial "sections/body-structured-data-parts-haspart" .)
 }}
 
 {{ $script := printf `<script type="application/ld+json">%s%s%s</script>` "\n\t" ($schema | jsonify ) "\n" }}
@@ -45,7 +58,7 @@
   {{ end }}
 {{ end }}
 
-{{ define "partials/sections/head-structured-data-parts" }}
+{{ define "partials/sections/body-structured-data-parts-common" }}
   {{ $logo := "media/images/linode-logo-black.png" | absURL }}
   {{ $publisher := printf `{
     "@type": "Organization",
@@ -59,4 +72,121 @@
 
   {{ $parts := dict "publisher" $publisher }}
   {{ return $parts }}
+{{ end }}
+
+{{ define "partials/sections/body-structured-data-parts-haspart" }}
+  {{/* First look for either schema_sections front matter or schema_sections.yml bundle resource. */}}
+  {{/* If not found, generate that structure from the hierarchy of the sections in the guide. */}}
+  {{ $parts := slice }}
+  {{ if or true (eq .Path "/guides/web-servers/nginx/using-nginx-proxy-manager") }}
+    {{ $schemaFromFrontMatter := .Params.schema_sections }}
+    {{ if not $schemaFromFrontMatter }}
+      {{ with .Resources.Get "schema_sections.yml" }}
+        {{ $schemaFromFrontMatter = . | transform.Unmarshal }}
+      {{ end }}
+    {{ end }}
+    {{ if $schemaFromFrontMatter }}
+      {{ $s := newScratch }}
+      {{ template "sections/body-structured-data-sections-frontmatter-recursive" (dict "headings" $schemaFromFrontMatter "s" $s "level" 0 ) }}
+      {{ $items := ($s.Get "itemListElement") }}
+      {{ $parts = $items }}
+    {{ else }}
+      {{ $s := newScratch }}
+      {{ template "sections/body-structured-data-sections-recursive" (dict "headings" .Fragments.Headings "s" $s ) }}
+      {{ $items := ($s.Get "itemListElement") }}
+      {{ if eq (len $items) 1 }}
+        {{ $first := index $items 0 }}
+        {{ if not $first.name }}
+          {{/* Remove empty root. */}}
+          {{ $items = index $first "itemListElement" | default slice }}
+        {{ end }}
+      {{ end }}
+      {{ $parts = $items }}
+    {{ end }}
+  {{ end }}
+  {{ return $parts }}
+{{ end }}
+
+{{ define "sections/body-structured-data-sections-recursive" }}
+  {{ $headings := .headings }}
+  {{ $s1 := .s }}
+  {{ $s1.Set "itemListElement" slice }}
+  {{ range $i, $e := $headings }}
+    {{ $pos := add $i 1 }}
+    {{ $type := "HowToSection" }}
+    {{ $name := .Title }}
+    {{ $itemListElement := slice }}
+    {{ with .Headings }}
+      {{ $s2 := newScratch }}
+      {{ template "sections/body-structured-data-sections-recursive" (dict "headings" . "s" $s2 ) }}
+      {{ $itemListElement = $s2.Get "itemListElement" }}
+    {{ end }}
+
+    {{ $item := "" }}
+    {{ if $itemListElement }}
+      {{ $item = dict
+        "@type" $type
+        "position" $pos
+        "name" $name
+        "itemListElement" $itemListElement
+      }}
+    {{ else }}
+      {{ $item = dict
+        "@type" $type
+        "position" $pos
+        "name" $name
+      }}
+    {{ end }}
+    {{ $s1.Add "itemListElement" $item }}
+  {{ end }}
+
+{{ end }}
+
+{{ define "sections/body-structured-data-sections-frontmatter-recursive" }}
+  {{ $headings := .headings }}
+  {{ $s1 := .s }}
+  {{ $level := .level }}
+  {{ $s1.Set "itemListElement" slice }}
+  {{ $isStep := true }}
+  {{ range $headings }}
+    {{ $items := (index . "items") }}
+    {{ if $items }}
+      {{/* Make branch nodes into sections. */}}
+      {{ $isStep = false }}
+      {{ break }}
+    {{ end }}
+  {{ end }}
+  {{ range $i, $e := $headings }}
+    {{ $pos := add $i 1 }}
+    {{ $items := (index $e "items") }}
+    {{ $type := "HowToSection" }}
+    {{ if $isStep }}
+      {{ $type = "HowToStep" }}
+    {{ end }}
+    {{ $name := .name }}
+    {{ $itemListElement := slice }}
+    {{ with $items }}
+      {{ $s2 := newScratch }}
+      {{ template "sections/body-structured-data-sections-frontmatter-recursive" (dict "headings" . "s" $s2 "level" (add $level 1) ) }}
+      {{ $itemListElement = $s2.Get "itemListElement" }}
+    {{ end }}
+
+    {{ $item := "" }}
+    {{ if $itemListElement }}
+      {{ $item = dict
+        "@type" $type
+        "position" $pos
+        "name" $name
+        "itemListElement" $itemListElement
+      }}
+    {{ else }}
+      {{ $item = dict
+        "@type" $type
+        "position" $pos
+        "name" $name
+      }}
+    {{ end }}
+    {{ $s1.Add "itemListElement" $item }}
+  {{ end }}
+
 {{ end }}

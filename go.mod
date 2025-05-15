@@ -7,5 +7,5 @@ require (
 	github.com/gohugoio/hugo-mod-jslibs/turbo/v7 v7.20300.20000 // indirect
 	github.com/instantpage/instant.page v5.1.1+incompatible // indirect
 	github.com/linode/linode-api-docs/v4 v4.176.0 // indirect
-	github.com/linode/linode-docs-theme v0.0.0-20250429183205-b5ce62d26795 // indirect
+	github.com/linode/linode-docs-theme v0.0.0-20250513144910-cddeb56c075c // indirect
 )
