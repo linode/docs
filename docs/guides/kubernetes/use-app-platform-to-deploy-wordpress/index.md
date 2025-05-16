@@ -4,7 +4,7 @@ title: "Use App Platform to Deploy WordPress with Persistent Volumes on LKE"
 description: "Two to three sentences describing your guide."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-04-25
+published: 2025-05-06
 keywords: ['app platform','app platform for lke','lke','linode kubernetes engine','kubernetes','persistent volumes','mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -16,7 +16,7 @@ external_resources:
 The Akamai App Platform is now available as a limited beta. It is not recommended for production workloads. To register for the beta, visit the [Betas](https://cloud.linode.com/betas) page in the Cloud Manager and click the Sign Up button next to the Akamai App Platform Beta.
 {{< /note >}}
 
-This guide includes steps for deploying a WordPress site and persistent MySQL database using App Platform for Linode Kubernetes Engine (LKE). In this architecture, both WordPress and MySQL use PersistentVolumes (PV) and PersistentVolumeClaims (PVC) to store data.
+This guide includes steps for deploying a WordPress site and persistent MySQL database using [App Platform for Linode Kubernetes Engine](https://techdocs.akamai.com/cloud-computing/docs/application-platform) (LKE). In this architecture, both WordPress and MySQL use PersistentVolumes (PV) and PersistentVolumeClaims (PVC) to store data.
 
 To add the WordPress and MySQL Helm charts to the App Platform Catalog, the **Add Helm Chart** feature of Akamai App Platform for LKE is used.
 
