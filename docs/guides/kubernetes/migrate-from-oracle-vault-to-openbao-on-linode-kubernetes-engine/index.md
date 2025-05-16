@@ -38,6 +38,27 @@ This guide walks through how to migrate secrets from Oracle Vault to OpenBao run
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
+Additionally, this guide contains a number of placeholders that are intended to be replaced by your own unique values. The table below lists these placeholders, what they represent, and the example values used in this guide:
+
+| Placeholder                              | Represents                                           | Example Value                                                     |
+|------------------------------------------|------------------------------------------------------|-------------------------------------------------------------------|
+| {{< placeholder "OCI_COMPARTMENT_ID" >}} | The OCID of the compartment containing your vault.   | ocid1.compartment.oc1..aaaaaaaawrrlh7hw6b4tnsbxevyoywscike5ygn... |
+| {{< placeholder "OCI_SECRET_ID" >}}      | The OCID of the secret stored in Oracle Vault.       | ocid1.vaultsecret.oc1.phx.amaaaaaaogvqnkqaepiqln7ztj43ugit...     |
+| {{< placeholder "OCI_ENCODED_SECRET" >}} | The base64-encoded value of the Oracle secret.       | eyAiYWNjZXNzX2tleV9pZCIgOiAiQUtJQTUxM0oyRERSQVhDRktYRjUi...       |
+| {{< placeholder "POLICY_FILE" >}}        | The name of the policy file.                         | cloud-credentials-policy.hcl                                      |
+| {{< placeholder "SECRET_MOUNT_PATH" >}}  | The mount path (namespace) where secrets are stored. | cloud-credentials                                                 |
+| {{< placeholder "POLICY_NAME" >}}        | The internal name for the policy in OpenBao.         | cloud-credentials-policy                                          |
+| {{< placeholder "APPROLE_NAME" >}}       | The name of the AppRole.                             | cloud-credential-reader-approle                                   |
+| {{< placeholder "APPROLE_ID" >}}         | The role ID generated for the AppRole.               | c8663988-136f-42de-af40-1dfb94f0c1f6                              |
+| {{< placeholder "APPROLE_SECRET_ID" >}}  | The secret ID generated for the AppRole.             | 9b9c27a3-dc27-4eea-921f-773164ec17c7                              |
+| {{< placeholder "SECRET_VALUE" >}}       | The actual secret contents to store in OpenBao.      | { "access_key_id": "...", "secret_access_key": "..." }            |
+| {{< placeholder "SECRET_NAME" >}}        | The name of the secret stored under the mount path.  | provider-a                                                        |
+| {{< placeholder "APPROLE_TOKEN" >}}      | The API token generated from the AppRole login.      | s.36Yb3ijEOJbifprhdEiFtPhR                                        |
+
+{{< note >}}
+All of the example values used in this guide are purely examples to mimic the format of actual secrets. These are *not* real credentials to any exisiting systems.
+{{< /note >}}
+
 ## Review Existing Secrets in Oracle Vault
 
 Before migrating to OpenBao, evaluate how your organization currently uses Oracle Vault.
@@ -86,11 +107,19 @@ You can also use the Oracle Cloud CLI (`oci`) to manage the secrets in your Orac
     ]
     ```
 
-1.  [List the secrets in your vault](https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.53.0/oci_cli_docs/cmdref/vault/secret/list.html) by specifying the {{< placeholder "COMPARTMENT_ID" >}} (e.g. `ocid1.compartment.oc1..aaaaaaaawrrlh7hw6b4tnsbxevyoywscike5ygn4ut5n734mjsclijgpjjgq`):
+1.  [List the secrets in your vault](https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.53.0/oci_cli_docs/cmdref/vault/secret/list.html) by specifying the {{< placeholder "OCI_COMPARTMENT_ID" >}} (e.g. `ocid1.compartment.oc1..aaaaaaaawrrlh7hw6b4tnsbxevyoywscike5ygn4ut5n734mjsclijgpjjgq`):
 
     ```command
     oci vault secret list \
-      --compartment-id {{< placeholder "COMPARTMENT_ID" >}} \
+      --compartment-id {{< placeholder "OCI_COMPARTMENT_ID" >}} \
+      --query 'data[].["secret-name","description","id"]'
+    ```
+
+    **For Example**:
+
+    ```command
+    oci vault secret list \
+      --compartment-id ocid1.compartment.oc1..aaaaaaaawrrlh7hw6b4tnsbxevyoywscike5ygn4ut5n734mjsclijgpjjgq \
       --query 'data[].["secret-name","description","id"]'
     ```
 
@@ -114,11 +143,20 @@ You can also use the Oracle Cloud CLI (`oci`) to manage the secrets in your Orac
     ]
     ```
 
-1.  Retrieve the [value of a secret](https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.53.0/oci_cli_docs/cmdref/secrets/secret-bundle/get.html) by specifying its {{< placeholder "SECRET_ID" >}} (e.g. `ocid1.vaultsecret.oc1.phx.amaaaaaaogvqnkqaepiqln7ztj43ugit75w3wl7kyzldk3rbqkfd2zmtp3ea`):
+1.  Retrieve the [value of a secret](https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.53.0/oci_cli_docs/cmdref/secrets/secret-bundle/get.html) by specifying its {{< placeholder "OCI_SECRET_ID" >}} (e.g. `ocid1.vaultsecret.oc1.phx.amaaaaaaogvqnkqaepiqln7ztj43ugit75w3wl7kyzldk3rbqkfd2zmtp3ea`):
 
     ```command
     oci secrets secret-bundle get \
-      --secret-id {{< placeholder "SECRET_ID" >}} \
+      --secret-id {{< placeholder "OCI_SECRET_ID" >}} \
+      --stage CURRENT \
+      --query 'data."secret-bundle-content"'
+    ```
+
+    **For Example**:
+
+    ```command
+    oci secrets secret-bundle get \
+      --secret-id ocid1.vaultsecret.oc1.phx.amaaaaaaogvqnkqaepiqln7ztj43ugit75w3wl7kyzldk3rbqkfd2zmtp3ea \
       --stage CURRENT \
       --query 'data."secret-bundle-content"'
     ```
@@ -134,7 +172,14 @@ You can also use the Oracle Cloud CLI (`oci`) to manage the secrets in your Orac
 1.  If the secret bundle `content-type` is `BASE64` (e.g. `eyAiYWNjZXNzX2tleV9pZCIgOiAiQUtJQTUxM0oyRERSQVhDRktYRjUiLCAic2VjcmV0X2FjY2Vzc19rZXkiIDoiWGRxRDBCUGE4YUxGYU4rRUk4U0FZbTlVNFpZZVhRZE1HQUlqS0QveCIgfQ==`), you must decode it to reveal the original value:
 
     ```command
-    echo {{< placeholder "BASE64_ENCODED_SECRET" >}} \
+    echo {{< placeholder "OCI_ENCODED_SECRET" >}} \
+      | base64 --decode
+    ```
+
+    **For Example**:
+
+    ```command
+    echo eyAiYWNjZXNzX2tleV9pZCIgOiAiQUtJQTUxM0oyRERSQVhDRktYRjUiLCAic2VjcmV0X2FjY2Vzc19rZXkiIDoiWGRxRDBCUGE4YUxGYU4rRUk4U0FZbTlVNFpZZVhRZE1HQUlqS0QveCIgfQ== \
       | base64 --decode
     ```
 
@@ -147,15 +192,11 @@ You can also use the Oracle Cloud CLI (`oci`) to manage the secrets in your Orac
 
     ```command
     oci secrets secret-bundle get \
-      --secret-id {{< placeholder "SECRET_ID" >}} \
+      --secret-id {{< placeholder "OCI_SECRET_ID" >}} \
       --stage CURRENT \
       --query 'data."secret-bundle-content".content' \
       --raw-output \
       | base64 --decode
-    ```
-
-    ```output
-    { "access_key_id": "AKIA513J2DDRAXCFKXF5", "secret_access_key": "XdqD0BPa8aLFaN+EI8SAYm9U4ZYeXQdMGAIjKD/x" }
     ```
     {{< /note >}}
 
@@ -194,28 +235,47 @@ Follow these steps to create an OpenBao AppRole that mirrors access controls use
 
 #### Create a Policy
 
-2.  Create a new `.hcl` policy file in `/etc/openbao`, replacing {{< placeholder "POLICY_FILENAME" >}} (e.g. `cloud-credentials-policy.hcl`) with a policy filename of your choosing:
+2.  Create a new `.hcl` [policy file](https://openbao.org/docs/concepts/policies/) in `/etc/openbao`, replacing {{< placeholder "POLICY_FILE" >}} (e.g. `cloud-credentials-policy.hcl`) with a policy filename of your choosing:
 
     ```command
-    sudo nano /etc/openbao/{{< placeholder "POLICY_FILENAME" >}}
+    sudo nano /etc/openbao/{{< placeholder "POLICY_FILE" >}}
     ```
 
-    Give the file the following contents, replacing {{< placeholder "SECRET_MOUNT_PATH" >}} (e.g. `cloud-credentials`) with your chosen mount path:
+    **For Example**:
 
-    ```file {title="cloud-credentials-policy.hcl"}
+    ```command
+    sudo nano /etc/openbao/cloud-credentials-policy.hcl
+    ```
+1.  Give the file the following contents, replacing {{< placeholder "SECRET_MOUNT_PATH" >}} (e.g. `cloud-credentials`) with your chosen mount path:
+
+    ```file {title="POLICY_FILE.hcl"}
     path "{{< placeholder "SECRET_MOUNT_PATH" >}}/*" {
       capabilities = ["read"]
     }
     ```
 
-    This policy grants read access to any secrets within the specified mount path (e.g. `cloud-credentials`).
+    **For Example**:
+
+    ```file {title="cloud-credentials-policy.hcl"}
+    path "cloud-credentials/*" {
+      capabilities = ["read"]
+    }
+    ```
+
+    This policy grants read access to any secrets within the specified mount path.
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-3.  Add the policy to OpenBao, replacing {{< placeholder "POLICY_NAME" >}} (e.g. `cloud-credentials-policy`) and {{< placeholder "POLICY_FILENAME" >}} (e.g. `cloud-credentials-policy.hcl`):
+1.  Add the policy to OpenBao, replacing {{< placeholder "POLICY_NAME" >}} (e.g. `cloud-credentials-policy`) and {{< placeholder "POLICY_FILE" >}}:
 
     ```command
-    bao policy write {{< placeholder "POLICY_NAME" >}} /etc/openbao/{{< placeholder "POLICY_FILENAME" >}}
+    bao policy write {{< placeholder "POLICY_NAME" >}} /etc/openbao/{{< placeholder "POLICY_FILE" >}}
+    ```
+
+    **For Example**:
+
+    ```command
+    bao policy write cloud-credentials-policy /etc/openbao/cloud-credentials-policy.hcl
     ```
 
     ```output
@@ -224,7 +284,7 @@ Follow these steps to create an OpenBao AppRole that mirrors access controls use
 
 #### Create an AppRole
 
-4.  Create an AppRole for the application that needs access to the secret, replacing {{< placeholder "APPROLE_NAME" >}} (e.g. `cloud-credential-reader-approle`) and {{< placeholder "POLICY_NAME" >}} (e.g. `cloud-credentials-policy`):
+5.  Create an AppRole for the application that needs access to the secret, replacing {{< placeholder "APPROLE_NAME" >}} (e.g. `cloud-credential-reader-approle`) and {{< placeholder "POLICY_NAME" >}}:
 
     ```command
     bao write \
@@ -232,14 +292,28 @@ Follow these steps to create an OpenBao AppRole that mirrors access controls use
         token_policies={{< placeholder "POLICY_NAME" >}}
     ```
 
+    **For Example**:
+
+    ```command
+    bao write \
+        auth/approle/role/cloud-credential-reader-approle \
+        token_policies=cloud-credentials-policy
+    ```
+
     ```output
     Success! Data written to: auth/approle/role/cloud-credential-reader-approle
     ```
 
-5.  Verify that the AppRole was written successfully, replacing {{< placeholder "APPROLE_NAME" >}} (e.g. `cloud-credential-reader-approle`):
+1.  Verify that the AppRole was written successfully, replacing {{< placeholder "APPROLE_NAME" >}}:
 
     ```command
     bao read auth/approle/role/{{< placeholder "APPROLE_NAME" >}}
+    ```
+
+    **For Example**:
+
+    ```command
+    bao read auth/approle/role/cloud-credential-reader-approle
     ```
 
     ```output
@@ -262,10 +336,16 @@ Follow these steps to create an OpenBao AppRole that mirrors access controls use
     token_type                 default
     ```
 
-6.  Fetch the AppRole ID, replacing {{< placeholder "APPROLE_NAME" >}} (e.g. `cloud-credential-reader-approle`):
+1.  Fetch the AppRole ID, replacing {{< placeholder "APPROLE_NAME" >}}:
 
     ```command
     bao read auth/approle/role/{{< placeholder "APPROLE_NAME" >}}/role-id
+    ```
+
+    **For Example**:
+
+    ```command
+    bao read auth/approle/role/cloud-credential-reader-approle/role-id
     ```
 
     ```output
@@ -276,10 +356,16 @@ Follow these steps to create an OpenBao AppRole that mirrors access controls use
 
 #### Generate a Secret ID
 
-7.  Generate a secret ID for the role, replacing {{< placeholder "APPROLE_NAME" >}} (e.g. `cloud-credential-reader-approle`):
+8.  Generate a secret ID for the role, replacing {{< placeholder "APPROLE_NAME" >}}:
 
     ```command
     bao write -f auth/approle/role/{{< placeholder "APPROLE_NAME" >}}/secret-id
+    ```
+
+    **For Example**:
+
+    ```command
+    bao write -f auth/approle/role/cloud-credential-reader-approle/secret-id
     ```
 
     ```output
@@ -293,12 +379,20 @@ Follow these steps to create an OpenBao AppRole that mirrors access controls use
 
 #### Generate an API Token
 
-8.  Generate an API token for the AppRole, supplying the {{< placeholder "APPROLE_ID" >}} (e.g. `c8663988-136f-42de-af40-1dfb94f0c1f6`) and {{< placeholder "APPROLE_SECRET_ID" >}} (e.g. `9b9c27a3-dc27-4eea-921f-773164ec17c7`) from the previous commands:
+9.  Generate an API token for the AppRole, supplying the {{< placeholder "APPROLE_ID" >}} (e.g. `c8663988-136f-42de-af40-1dfb94f0c1f6`) and {{< placeholder "APPROLE_SECRET_ID" >}} (e.g. `9b9c27a3-dc27-4eea-921f-773164ec17c7`) from the previous commands:
 
     ```command
     bao write auth/approle/login \
       role_id="{{< placeholder "APPROLE_ID" >}}" \
       secret_id="{{< placeholder "APPROLE_SECRET_ID" >}}"
+    ```
+
+    **For Example**:
+
+    ```command
+    bao write auth/approle/login \
+      role_id="c8663988-136f-42de-af40-1dfb94f0c1f6" \
+      secret_id="9b9c27a3-dc27-4eea-921f-773164ec17c7"
     ```
 
     ```output
@@ -314,27 +408,40 @@ Follow these steps to create an OpenBao AppRole that mirrors access controls use
     token_meta_role_name    cloud-credential-reader-approle
     ```
 
-    The AppRole token (`s.Q9n7KPnLKSDoYnVdrHnphEml` in the previous example) can be used by a user, machine, or service, such as an infrastructure management application, to authenticate OpenBao API calls, giving the caller authorization to read the cloud provider credentials secrets.
+    The resulting AppRole token (e.g. `s.Q9n7KPnLKSDoYnVdrHnphEml`) can be used by a user, machine, or service, such as an infrastructure management application, to authenticate OpenBao API calls, giving the caller authorization to read the cloud provider credentials secrets.
 
 ### Storing Secrets
 
 Create the secret store defined in the policy created above.
 
-1.  Enable the KV secrets engine, replacing {{< placeholder "SECRET_MOUNT_PATH" >}} (e.g. `cloud-credentials`):
+1.  Enable the KV secrets engine, replacing {{< placeholder "SECRET_MOUNT_PATH" >}}:
 
     ```command
     bao secrets enable --path={{< placeholder "SECRET_MOUNT_PATH" >}} kv
+    ```
+
+    **For Example**:
+
+    ```command
+    bao secrets enable --path=cloud-credentials kv
     ```
 
     ```output
     Success! Enabled the kv secrets engine at: cloud-credentials/
     ```
 
-1.  Store your {{< placeholder "SECRET_VALUE" >}} (e.g. `{ "access_key_id": "AKIA513J2DDRAXCFKXF5", "secret_access_key": "XdqD0BPa8aLFaN+EI8SAYm9U4ZYeXQdMGAIjKD/x" }`) in the {{< placeholder "SECRET_MOUNT_PATH" >}} (e.g. `cloud-credentials`) as a secret named {{< placeholder "SECRET_NAME" >}} (e.g. `provider-a`):
+1.  Store your {{< placeholder "SECRET_VALUE" >}} (e.g. `{ "access_key_id": "AKIA513J2DDRAXCFKXF5", "secret_access_key": "XdqD0BPa8aLFaN+EI8SAYm9U4ZYeXQdMGAIjKD/x" }`) in the {{< placeholder "SECRET_MOUNT_PATH" >}} as a secret named {{< placeholder "SECRET_NAME" >}} (e.g. `provider-a`):
 
     ```command
     bao kv put --mount={{< placeholder "SECRET_MOUNT_PATH" >}} {{< placeholder "SECRET_NAME" >}} \
       "secret"="{{< placeholder "SECRET_VALUE" >}}"
+    ```
+
+    **For Example**:
+
+    ```command
+    bao kv put --mount=cloud-credentials provider-a \
+      "secret"="{ "access_key_id": "AKIA513J2DDRAXCFKXF5", "secret_access_key": "XdqD0BPa8aLFaN+EI8SAYm9U4ZYeXQdMGAIjKD/x" }"
     ```
 
     ```output
@@ -343,10 +450,16 @@ Create the secret store defined in the policy created above.
 
 ### Retrieving Secrets
 
-1.  While authenticated with the root token, retrieve the secret using the OpenBao CLI, replacing {{< placeholder "SECRET_MOUNT_PATH" >}} (e.g. `cloud-credentials`) and {{< placeholder "SECRET_NAME" >}} (e.g. `provider-a`):
+1.  While authenticated with the root token, retrieve the secret using the OpenBao CLI, replacing {{< placeholder "SECRET_MOUNT_PATH" >}} and {{< placeholder "SECRET_NAME" >}}:
 
     ```command
     bao kv get --mount={{< placeholder "SECRET_MOUNT_PATH" >}} {{< placeholder "SECRET_NAME" >}}
+    ```
+
+    **For Example**:
+
+    ```command
+    bao kv get --mount=cloud-credentials provider-a
     ```
 
     ```output
@@ -357,12 +470,21 @@ Create the secret store defined in the policy created above.
     secret_access_key   XdqD0BPa8aLFaN+EI8SAYm9U4ZYeXQdMGAIjKD/x
     ```
 
-1.  Test access using the {{< placeholder "APPROLE_TOKEN" >}} (e.g. `s.36Yb3ijEOJbifprhdEiFtPhR`) saved earlier, {{< placeholder "SECRET_MOUNT_PATH" >}} (e.g. `cloud-credentials`), and {{< placeholder "SECRET_NAME" >}} (e.g. `provider-a`):
+1.  Test access using the {{< placeholder "APPROLE_TOKEN" >}} (e.g. `s.36Yb3ijEOJbifprhdEiFtPhR`) saved earlier, your {{< placeholder "SECRET_MOUNT_PATH" >}}, and the {{< placeholder "SECRET_NAME" >}}:
 
     ```command
     curl --header "X-Vault-Token: {{< placeholder "APPROLE_TOKEN" >}}" \
          --request GET \
          $BAO_ADDR/v1/{{< placeholder "SECRET_MOUNT_PATH" >}}/{{< placeholder "SECRET_NAME" >}} \
+         | jq
+    ```
+
+    **For Example**:
+
+    ```command
+    curl --header "X-Vault-Token: s.36Yb3ijEOJbifprhdEiFtPhR" \
+         --request GET \
+         $BAO_ADDR/v1/cloud-credentials/provider-a \
          | jq
     ```
 

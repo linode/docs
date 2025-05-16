@@ -38,6 +38,26 @@ This guide walks through how to migrate secrets stored in Azure Key Vault to Ope
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
+Additionally, this guide contains a number of placeholders that are intended to be replaced by your own unique values. The table below lists these placeholders, what they represent, and the example values used in this guide:
+
+| Placeholder                               | Represents                                            | Example Value                          |
+|-------------------------------------------|-------------------------------------------------------|----------------------------------------|
+| `{{< placeholder "AZURE_VAULT_NAME" >}}`  | The name of the Azure Key Vault                       | `my-app-vault`                         |
+| `{{< placeholder "AZURE_SECRET_NAME" >}}` | Name of a secret stored in Azure Key Vault            | `LLM-service-key`                      |
+| `{{< placeholder "POLICY_FILE" >}}`       | Filename of the `.hcl` policy definition              | `api-keys-secrets-policy.hcl`          |
+| `{{< placeholder "SECRET_MOUNT_PATH" >}}` | Mount path in OpenBao KV store for organizing secrets | `api-keys`                             |
+| `{{< placeholder "POLICY_NAME" >}}`       | Name of the OpenBao policy                            | `api-keys-secrets-policy`              |
+| `{{< placeholder "APPROLE_NAME" >}}`      | Name of the OpenBao AppRole                           | `api-key-reader-approle`               |
+| `{{< placeholder "APPROLE_ID" >}}`        | AppRole ID for authenticating in OpenBao              | `e633701e-893e-460d-8012-ea2afedbcd87` |
+| `{{< placeholder "APPROLE_SECRET_ID" >}}` | Secret ID associated with the AppRole                 | `725d9076-5a5c-4921-98f7-7535c767386a` |
+| `{{< placeholder "APPROLE_TOKEN" >}}`     | API token retrieved from OpenBao using the AppRole    | `s.36Yb3ijEOJbifprhdEiFtPhR`           |
+| `{{< placeholder "SECRET_NAME" >}}`       | Name of the secret to store in OpenBao                | `llm-service`                          |
+| `{{< placeholder "SECRET_VALUE" >}}`      | Value of the secret to store in OpenBao               | `0z7NUSJ6gHKoWLkO5q2%Zq1E1do%m&...`    |
+
+{{< note >}}
+All of the example values used in this guide are purely examples to mimic the format of actual secrets. These are *not* real credentials to any exisiting systems.
+{{< /note >}}
+
 ## Review Existing Secrets in Azure Key Vault
 
 Before migrating to OpenBao, evaluate how your organization currently uses Azure Key Vault.
@@ -74,11 +94,19 @@ To view role assignments in the Azure portal, navigate to your key vault, select
 
 You can also use the Azure CLI (`az`) to manage the secrets in your key vault.
 
-1.  [List all the secrets in your vault](https://learn.microsoft.com/en-us/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-list) by specifying the {{< placeholder "VAULT_NAME" >}} (e.g. `my-app-vault`):
+1.  [List all the secrets in your vault](https://learn.microsoft.com/en-us/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-list) by specifying the {{< placeholder "AZURE_VAULT_NAME" >}} (e.g. `my-app-vault`):
 
     ```command
     az keyvault secret list \
-      --vault-name "{{< placeholder "VAULT_NAME" >}}" \
+      --vault-name "{{< placeholder "AZURE_VAULT_NAME" >}}" \
+      --query "\[\].name"
+    ```
+
+    **For Example**:
+
+    ```command
+    az keyvault secret list \
+      --vault-name "my-app-vault" \
       --query "\[\].name"
     ```
 
@@ -91,12 +119,21 @@ You can also use the Azure CLI (`az`) to manage the secrets in your key vault.
     ]
     ```
 
-1.  Retrieve the [value of a single secret](https://learn.microsoft.com/en-us/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) by providing both the {{< placeholder "VAULT_NAME" >}} (e.g. `my-app-vault`) and {{< placeholder "SECRET_NAME" >}} (e.g. `LLM-service-key`).
+1.  Retrieve the [value of a single secret](https://learn.microsoft.com/en-us/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) by providing both the {{< placeholder "AZURE_VAULT_NAME" >}} and {{< placeholder "AZURE_SECRET_NAME" >}} (e.g. `LLM-service-key`).
 
     ```command
     az keyvault secret show \
-      --vault-name "{{< placeholder "VAULT_NAME" >}}" \
-      --name "{{< placeholder "SECRET_NAME" >}}" \
+      --vault-name "{{< placeholder "AZURE_VAULT_NAME" >}}" \
+      --name "{{< placeholder "AZURE_SECRET_NAME" >}}" \
+      --query "value"
+    ```
+
+    **For Example**:
+
+    ```command
+    az keyvault secret show \
+      --vault-name "my-app-vault" \
+      --name "LLM-service-key" \
       --query "value"
     ```
 
@@ -139,28 +176,48 @@ Follow these steps to create an OpenBao AppRole that mirrors the access control 
 
 #### Create a Policy
 
-2.  Create a new `.hcl` policy file in `/etc/openbao`, replacing {{< placeholder "POLICY_FILENAME" >}} (e.g. `api-keys-secrets-policy.hcl`) with a policy filename of your choosing:
+2.  Create a new `.hcl` [policy file](https://openbao.org/docs/concepts/policies/) in `/etc/openbao`, replacing {{< placeholder "POLICY_FILE" >}} (e.g. `api-keys-secrets-policy.hcl`) with a policy filename of your choosing:
 
     ```command
-    sudo nano /etc/openbao/{{< placeholder "POLICY_FILENAME" >}}
+    sudo nano /etc/openbao/{{< placeholder "POLICY_FILE" >}}
     ```
 
-    Give the file the following contents, replacing {{< placeholder "SECRET_MOUNT_PATH" >}} (e.g. `api-keys`) with your chosen mount path:
+    **For Example**:
 
-    ```file {title="api-keys-secrets-policy.hcl"}
+    ```command
+    sudo nano /etc/openbao/api-keys-secrets-policy.hcl
+    ```
+
+1.  Give the file the following contents, replacing {{< placeholder "SECRET_MOUNT_PATH" >}} (e.g. `api-keys`) with your chosen mount path:
+
+    ```file {title="POLICY_FILE.hcl"}
     path "{{< placeholder "SECRET_MOUNT_PATH" >}}/*" {
       capabilities = ["read"]
     }
     ```
 
-    This policy grants read access to any secrets within the specified mount path (e.g. `api-keys`).
+    **For Example**:
+
+    ```file {title="api-keys-secrets-policy.hcl"}
+    path "api-keys/*" {
+      capabilities = ["read"]
+    }
+    ```
+
+    This policy grants read access to any secrets within the specified mount path.
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-3.  Add the policy to OpenBao, replacing {{< placeholder "POLICY_NAME" >}} (e.g. `api-keys-secrets-policy`) and {{< placeholder "POLICY_FILENAME" >}} (e.g. `api-keys-secrets-policy.hcl`):
+1.  Add the policy to OpenBao, replacing {{< placeholder "POLICY_NAME" >}} (e.g. `api-keys-secrets-policy`) and {{< placeholder "POLICY_FILE" >}}:
 
     ```command
-    bao policy write {{< placeholder "POLICY_NAME" >}} /etc/openbao/{{< placeholder "POLICY_FILENAME" >}}
+    bao policy write {{< placeholder "POLICY_NAME" >}} /etc/openbao/{{< placeholder "POLICY_FILE" >}}
+    ```
+
+    **For Example**:
+
+    ```command
+    bao policy write api-keys-secrets-policy /etc/openbao/api-keys-secrets-policy.hcl
     ```
 
     ```output
@@ -169,20 +226,32 @@ Follow these steps to create an OpenBao AppRole that mirrors the access control 
 
 #### Create an AppRole
 
-4.  Create an AppRole for the application that needs access to the secret, replacing {{< placeholder "APPROLE_NAME" >}} (e.g. `api-key-reader-approle`) and {{< placeholder "POLICY_NAME" >}} (e.g. `api-keys-secrets-policy`):
+5.  Create an AppRole for the application that needs access to the secret, replacing {{< placeholder "APPROLE_NAME" >}} (e.g. `api-key-reader-approle`) and {{< placeholder "POLICY_NAME" >}}:
 
     ```command
     bao write auth/approle/role/{{< placeholder "APPROLE_NAME" >}} token_policies={{< placeholder "POLICY_NAME" >}}
+    ```
+
+    **For Example**:
+
+    ```command
+    bao write auth/approle/role/api-key-reader-approle token_policies=api-keys-secrets-policy
     ```
 
     ```output
     Success! Data written to: auth/approle/role/api-key-reader-approle
     ```
 
-5.  Verify that the AppRole was written successfully, replacing {{< placeholder "APPROLE_NAME" >}} (e.g. `api-key-reader-approle`):
+1.  Verify that the AppRole was written successfully, replacing {{< placeholder "APPROLE_NAME" >}}:
 
     ```command
     bao read auth/approle/role/{{< placeholder "APPROLE_NAME" >}}
+    ```
+
+    **For Example**:
+
+    ```command
+    bao read auth/approle/role/api-key-reader-approle
     ```
 
     ```output
@@ -205,10 +274,16 @@ Follow these steps to create an OpenBao AppRole that mirrors the access control 
     token_type                 default
     ```
 
-6.  Fetch the AppRole ID, replacing {{< placeholder "APPROLE_NAME" >}} (e.g. `api-key-reader-approle`):
+1.  Fetch the AppRole ID, replacing {{< placeholder "APPROLE_NAME" >}}:
 
     ```command
     bao read auth/approle/role/{{< placeholder "APPROLE_NAME" >}}/role-id
+    ```
+
+    **For Example**:
+
+    ```command
+    bao read auth/approle/role/api-key-reader-approle/role-id
     ```
 
     ```output
@@ -219,10 +294,16 @@ Follow these steps to create an OpenBao AppRole that mirrors the access control 
 
 #### Generate a Secret ID
 
-7.  Generate a secret ID for the role, replacing {{< placeholder "APPROLE_NAME" >}} (e.g. `api-key-reader-approle`):
+8.  Generate a secret ID for the role, replacing {{< placeholder "APPROLE_NAME" >}}:
 
     ```command
     bao write -f auth/approle/role/{{< placeholder "APPROLE_NAME" >}}/secret-id
+    ```
+
+    **For Example**:
+
+    ```command
+    bao write -f auth/approle/role/api-key-reader-approle/secret-id
     ```
 
     ```output
@@ -236,12 +317,20 @@ Follow these steps to create an OpenBao AppRole that mirrors the access control 
 
 #### Generate an API Token
 
-8.  Generate an API token for the AppRole, supplying the {{< placeholder "APPROLE_ID" >}} (e.g. `e633701e-893e-460d-8012-ea2afedbcd87`) and the {{< placeholder "APPROLE_SECRET_ID" >}} (e.g. `725d9076-5a5c-4921-98f7-7535c767386a`) from the previous commands:
+9.  Generate an API token for the AppRole, supplying the {{< placeholder "APPROLE_ID" >}} (e.g. `e633701e-893e-460d-8012-ea2afedbcd87`) and the {{< placeholder "APPROLE_SECRET_ID" >}} (e.g. `725d9076-5a5c-4921-98f7-7535c767386a`) from the previous commands:
 
     ```command
     bao write auth/approle/login \
       role_id=" {{< placeholder "APPROLE_ID" >}}" \
       secret_id="{{< placeholder "APPROLE_SECRET_ID" >}}"
+    ```
+
+    **For Example**:
+
+    ```command
+    bao write auth/approle/login \
+      role_id=" e633701e-893e-460d-8012-ea2afedbcd87" \
+      secret_id="725d9076-5a5c-4921-98f7-7535c767386a"
     ```
 
     ```output
@@ -257,27 +346,40 @@ Follow these steps to create an OpenBao AppRole that mirrors the access control 
     token_meta_role_name    api-key-reader-approle
     ```
 
-    The AppRole token (e.g. `s.TuQBY39kkpEDOqKcKYbWvpmZ`) can be used by a user, machine, or service, such a web application, to authenticate OpenBao API calls, giving the caller authorization to read the LLM service API key secret.
+    The resulting AppRole token (e.g. `s.TuQBY39kkpEDOqKcKYbWvpmZ`) can be used by a user, machine, or service, such a web application, to authenticate OpenBao API calls, giving the caller authorization to read the LLM service API key secret.
 
 ### Storing Secrets
 
 Create the secret store defined in the policy created above.
 
-1.  Enable the KV secrets engine, replacing {{< placeholder "SECRET_MOUNT_PATH" >}} (e.g. `api-keys`):
+1.  Enable the KV secrets engine, replacing {{< placeholder "SECRET_MOUNT_PATH" >}}:
 
     ```command
     bao secrets enable --path={{< placeholder "SECRET_MOUNT_PATH" >}} kv
+    ```
+
+    **For Example**:
+
+    ```command
+    bao secrets enable --path=api-keys kv
     ```
 
     ```output
     Success! Enabled the kv secrets engine at: api-keys/
     ```
 
-1.  Store your {{< placeholder "SECRET_VALUE" >}} (e.g. `0z7NUSJ6gHKoWLkO5q2%Zq1E1do%m&RSa47jljP4nMVs7qG#n87Lai46niZUCrLP`) in the {{< placeholder "SECRET_MOUNT_PATH" >}} (e.g. `api-keys`) as a secret named {{< placeholder "SECRET_NAME" >}} (e.g. `llm-service`):
+1.  Store your {{< placeholder "SECRET_VALUE" >}} (e.g. `0z7NUSJ6gHKoWLkO5q2%Zq1E1do%m&RSa47jljP4nMVs7qG#n87Lai46niZUCrLP`) in the {{< placeholder "SECRET_MOUNT_PATH" >}} as a secret named {{< placeholder "SECRET_NAME" >}} (e.g. `llm-service`):
 
     ```command
     bao kv put --mount={{< placeholder "SECRET_MOUNT_PATH" >}} {{< placeholder "SECRET_NAME" >}} \
       "key"="{{< placeholder "SECRET_VALUE" >}}"
+    ```
+
+    **For Example**:
+
+    ```command
+    bao kv put --mount=api-keys llm-service \
+      "key"="0z7NUSJ6gHKoWLkO5q2%Zq1E1do%m&RSa47jljP4nMVs7qG#n87Lai46niZUCrLP"
     ```
 
     ```output
@@ -286,10 +388,16 @@ Create the secret store defined in the policy created above.
 
 ### Retrieving Secrets
 
-1.  While authenticated with the root token, retrieve the secret using the OpenBao CLI, replacing {{< placeholder "SECRET_MOUNT_PATH" >}} (e.g. `api-keys`) and {{< placeholder "SECRET_NAME" >}} (e.g. `llm-service`):
+1.  While authenticated with the root token, retrieve the secret using the OpenBao CLI, replacing {{< placeholder "SECRET_MOUNT_PATH" >}} and {{< placeholder "SECRET_NAME" >}}:
 
     ```command
     bao kv get --mount={{< placeholder "SECRET_MOUNT_PATH" >}} {{< placeholder "SECRET_NAME" >}}
+    ```
+
+    **For Example**:
+
+    ```command
+    bao kv get --mount=api-keys llm-service
     ```
 
     ```output
@@ -299,12 +407,21 @@ Create the secret store defined in the policy created above.
     key       0z7NUSJ6gHKoWLkO5q2%Zq1E1do%m&RSa47jljP4nMVs7qG#n87Lai46niZUCrLP
     ```
 
-1.  Test access using the {{< placeholder "APPROLE_TOKEN" >}} (e.g. `s.36Yb3ijEOJbifprhdEiFtPhR`) saved earlier, {{< placeholder "SECRET_MOUNT_PATH" >}} (e.g. `api-keys`), and {{< placeholder "SECRET_NAME" >}} (e.g. `llm-service`):
+1.  Test access using the {{< placeholder "APPROLE_TOKEN" >}} (e.g. `s.36Yb3ijEOJbifprhdEiFtPhR`) saved earlier, your {{< placeholder "SECRET_MOUNT_PATH" >}}, and the {{< placeholder "SECRET_NAME" >}}:
 
     ```command
     curl --header "X-Vault-Token: {{< placeholder "APPROLE_TOKEN" >}}" \
          --request GET \
          $BAO_ADDR/v1/{{< placeholder "SECRET_MOUNT_PATH" >}}/{{< placeholder "SECRET_NAME" >}} \
+         | jq
+    ```
+
+    **For Example**:
+
+    ```command
+    curl --header "X-Vault-Token: s.36Yb3ijEOJbifprhdEiFtPhR" \
+         --request GET \
+         $BAO_ADDR/v1/api-keys/llm-service \
          | jq
     ```
 
