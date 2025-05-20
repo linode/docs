@@ -9,9 +9,9 @@ keywords: ['openbao','openbao linode','openbao ubuntu install','secrets manageme
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-[OpenBao](https://openbao.org/) is an open source secrets management solution and fork of HashiCorp Vault. This guide walks through a manual installation of OpenBao on a Linode instance with an Ubuntu 24.04 distribution.
+[OpenBao](https://openbao.org/) is an open source secrets management solution and fork of HashiCorp Vault. This guide walks through a manual installation of OpenBao on a single Linode instance running the Ubuntu 24.04 LTS distribution.
 
-If you prefer an automated one-click deployment, see our [OpenBao Marketplace app](/docs/marketplace-docs/guides/openbao/).
+For a Kubernetes cluster deployment, see our [Deploy OpenBao on Linode Kubernetes Engine](/docs/guides/deploy-openbao-on-linode-kubernetes-engine/) guide. If you prefer an automated one-click deployment, see our [OpenBao Marketplace app](/docs/marketplace-docs/guides/openbao/).
 
 ## Before You Begin
 
