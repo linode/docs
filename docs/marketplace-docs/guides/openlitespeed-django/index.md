@@ -51,7 +51,7 @@ The OpenLiteSpeed Django app automatically installs Linux, the performance web s
 
     ```output
     *********************************************************
-    Akamai Connected Cloud OpenLiteSpeed Django Marketplace App
+    Akamai Cloud OpenLiteSpeed Django Marketplace App
     App URL:
     * The OpenLiteSpeed Web Admin: https://$EXAMPLE_DOMAIN:7080
     * The sample Django site: https://EXAMPLE_DOMAIN/

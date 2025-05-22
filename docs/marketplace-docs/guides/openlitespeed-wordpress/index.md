@@ -62,7 +62,7 @@ cat /etc/motd
 
 ```output
 *********************************************************
-Akamai Connected Cloud OpenLiteSpeed Wordpress Marketplace App
+Akamai Cloud OpenLiteSpeed Wordpress Marketplace App
 App URL:
 * The Wordpress site: https://example-domain.tld/
 * The Wordpress admin login site: https://example-domain.tld/wp-login.php
