@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 ## Overview
-As more and more consumer electronics join the Internet of Things (IoT), the need to deliver feature and security firmware updates to these devices becomes more critical for IoT device manufacturers. One of the main aspects of delivery manufacturers need to plan for is how much egress data these systems will use. At scale, the price of keeping both consumers and the business happy and secure can be enormous. Using Linode Object Storage on Akamai Connected Cloud as an origin for this data, and connecting that service to Akamai CDN, can provide a huge cost savings over other competing hyperscalers.
+As more and more consumer electronics join the Internet of Things (IoT), the need to deliver feature and security firmware updates to these devices becomes more critical for IoT device manufacturers. One of the main aspects of delivery manufacturers need to plan for is how much egress data these systems will use. At scale, the price of keeping both consumers and the business happy and secure can be enormous. Using Linode Object Storage on Akamai Cloud as an origin for this data, and connecting that service to Akamai CDN, can provide a huge cost savings over other competing hyperscalers.
 
 ## Firmware Update Workflow
 1.  A manufacturer uploads a new firmware package to an Object Storage bucket.
@@ -29,7 +29,7 @@ An IoT manufacturer found themselves struggling to send OS and firmware updates 
 
 Another challenge the IoT manufacturer encountered was supporting more IoT devices worldwide. This resulted in the scale of their firmware delivery service growing in both storage and delivery costs. The IoT manufacturer was looking for a service that could help them save money on egress and improve their bottom line.
 
-**Solution**: Because Linode Object Storage on Akamai Connected Cloud has much lower egress rates than AWS’ offerings, and because it can be set as an origin for Akamai CDN, the IoT manufacturer was not only able to keep file system access to firmware objects, but decrease egress costs by 90%.
+**Solution**: Because Linode Object Storage on Akamai Cloud has much lower egress rates than AWS’ offerings, and because it can be set as an origin for Akamai CDN, the IoT manufacturer was not only able to keep file system access to firmware objects, but decrease egress costs by 90%.
 
 ## Architecture
 
