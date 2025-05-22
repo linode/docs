@@ -1,13 +1,14 @@
 ---
-title: "Deploy Netfoundry Edge Router through the Linode Marketplace"
-description: "Deploy a Netfoundry zero trust optimized connectivity Edge Router"
+title: "Deploy NetFoundry Edge Router through the Linode Marketplace"
+description: "Deploy a NetFoundry zero trust optimized connectivity Edge Router"
 published: 2020-01-31
 modified: 2025-01-31
 keywords: ['netfoundry', 'edge', 'networking']
 tags: ["ubuntu", "marketplace", "networking", "developer", "linode platform", "cloud manager"]
 external_resources:
-- '[Netfoundry](https://netfoundry.io/)'
-- '[Netfoundry documentation](https://support.netfoundry.io/hc/en-us/articles/360044956032-Create-and-Manage-Edge-Routers)'
+- '[NetFoundry](https://netfoundry.io/)'
+- '[NetFoundry official documentation](https://support.netfoundry.io/hc/en-us)'
+- '[Create and Manage Edge Routers - NetFoundry documentation](https://support.netfoundry.io/hc/en-us/articles/360044956032-Create-and-Manage-Edge-Routers)'
 aliases: ['/products/tools/marketplace/guides/netfoundry/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -23,7 +24,7 @@ The NetFoundry Edge Router is a lightweight, software-based gateway that provide
 {{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
-**Estimated deployment time:** Once a compute instance finishes provisioning, the Netfoundry installation takes 3-5 minutes.
+**Estimated deployment time:** Once a compute instance finishes provisioning, the NetFoundry installation takes 3-5 minutes.
 {{< /note >}}
 
 ## Configuration Options
@@ -31,11 +32,11 @@ The NetFoundry Edge Router is a lightweight, software-based gateway that provide
 - **Supported distributions:** Ubuntu 24.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
-### Netfoundry Options
+### NetFoundry Options
 
-- **Limited sudo user** *(required)*: Enter your preferred username for the limited user. No Capital Letters, Spaces, or Special Characters.
-- **Disable root access over SSH** *(required)*:  To block the root user from logging in over SSH, select Yes. You can still switch to the root user once logged in, and you can also log in as root through Lish.
-- **Registration Key** *(required)*: Enter your Netfoundry Edge Router registration key. You can obtain a registration key by creating an account with [Netfoundry](https://netfoundry.io/)
+- **Limited sudo user** *(required)*: Enter your preferred username for the limited user. Don't use capital letters, spaces, or special characters.
+- **Disable root access over SSH** *(required)*:  Select whether you want to block the root user from logging in over SSH. You can still switch to the root user once logged in, and you can also log in as root through Lish.
+- **Registration Key** *(required)*: Enter your NetFoundry Edge Router registration key. To obtain a registration key, create a [NetFoundry](https://netfoundry.io/) account.
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
 
@@ -60,9 +61,7 @@ This returns passwords that were automatically generated when the instance was d
 
 ## Getting Started After Deployment
 
-In order to utilize this Marketplace app, we assume you have a working account in the NetFoundry console and have the ability to manage/create endpoints and edge routers. If you don't have an account, you will need to [create an account](https://netfoundry.zendesk.com/auth/v2/login/registration) & login in order to fully use this deployment.
-
-For help setting up your account, please refer to [Netfoundry's official documentation](https://support.netfoundry.io/hc/en-us) to further utilize your instance.
+In order to utilize this Marketplace app, we assume you have a working account in the NetFoundry console and have the ability to create and manage endpoints and edge routers. If you don't have an account, you need to [create it](https://netfoundry.zendesk.com/auth/v2/login/registration) and log in to it in order to fully use this deployment.
 
 
 {{% content "marketplace-update-note-shortguide" %}}
