@@ -13,7 +13,7 @@ The diagrams featured here provide different perspectives on the architecture of
 
 - [Figure 1](#figure-1-high-level-typical-media-ingest-workflow) describes the high-level components of a general video transcoding architecture without referring to particular technologies that may be used (with some exceptions).
 
-- [Figure 2](#figure-2-akamai-cloud-compute-lke-with-argo-events-and-argo-workflow) presents the same components of figure 1, but with an overlay of how those components can be powered by Akamai Connected Cloud, Linode Kubernetes Engine (LKE), and [Argo](https://argoproj.github.io/).
+- [Figure 2](#figure-2-akamai-cloud-compute-lke-with-argo-events-and-argo-workflow) presents the same components of figure 1, but with an overlay of how those components can be powered by Akamai Cloud, Linode Kubernetes Engine (LKE), and [Argo](https://argoproj.github.io/).
 
 - [Figure 3](#figure-3-end-to-end-vod-workflow-with-hls-video-output) presents a detailed version of this architecture with descriptions of how specific technologies are used to implement the components of the video transcoding workflow.
 
@@ -78,7 +78,7 @@ A system is set up to allow observability of the content workflows. Content dist
 *Click to interact, scroll to zoom, click-and-hold to pan*
 {{< /note >}}
 
-**Figure 2** provides an overview of the tools and technologies overlaid onto the VOD workflow use case. This overview illustrates how the Akamai Connected Cloud and Linode Kubernetes Engine (LKE) are combined with an event-driven and highly scalable workflow management tool called [Argo](https://argoproj.github.io/). Argo is an open source Kubernetes-native workflow engine supporting DAG and step-based workflows, and it is a member of the Cloud Native Computing Foundation (CNCF). This combination of technologies allows for a flexible, portable, and cost-effective media processing solution.
+**Figure 2** provides an overview of the tools and technologies overlaid onto the VOD workflow use case. This overview illustrates how the Akamai Cloud and Linode Kubernetes Engine (LKE) are combined with an event-driven and highly scalable workflow management tool called [Argo](https://argoproj.github.io/). Argo is an open source Kubernetes-native workflow engine supporting DAG and step-based workflows, and it is a member of the Cloud Native Computing Foundation (CNCF). This combination of technologies allows for a flexible, portable, and cost-effective media processing solution.
 
 ## Figure 3: End-to-End VOD Workflow with HLS Video Output
 
