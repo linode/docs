@@ -14,7 +14,7 @@ aliases: ['/products/tools/marketplace/guides/','/products/tools/marketplace-one
 
 ## Become a Partner
 
-- [Become a Marketplace Partner](https://www.linode.com/marketplace/app-partners/) - Learn how to submit your own application to the Linode Marketplace.
+- Become a Marketplace Partner - Learn how to submit your own application to the Linode Marketplace.
 
 ## List of Marketplace Apps
 
