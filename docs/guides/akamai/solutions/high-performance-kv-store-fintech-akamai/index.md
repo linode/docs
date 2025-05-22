@@ -14,7 +14,7 @@ external_resources:
 
 Fintech and eCommerce services process high volumes of transactions and have demanding requirements for performance, reliability, and resiliency. The data storage size for a given transaction in these services may not be as large as in other industries like media or gaming, but they must adhere to rigorous standards for security, latency, and consistency.
 
-This guide outlines a distributed key-value (KV) storage architecture that supports registration for users between a global fintech service and a banking system. In particular, the data stored represents users' credit card information, and it is encrypted in this storage system. This KV store is implemented with NATS and the JetStream persistence engine, and it is deployed across 11 core compute regions on Akamai Connected Cloud. The system is capable of storing hundreds of millions of keys while guaranteeing low latency for registration requests and a resilient method for quickly publishing and updating key-value data.
+This guide outlines a distributed key-value (KV) storage architecture that supports registration for users between a global fintech service and a banking system. In particular, the data stored represents users' credit card information, and it is encrypted in this storage system. This KV store is implemented with NATS and the JetStream persistence engine, and it is deployed across 11 core compute regions on Akamai Cloud. The system is capable of storing hundreds of millions of keys while guaranteeing low latency for registration requests and a resilient method for quickly publishing and updating key-value data.
 
 ## Distributed KV Store Workflow
 
@@ -58,7 +58,7 @@ For this reason, it is important for these update operations to be propagated qu
 
 ## Distributed Key-Value Store Design Diagram
 
-This solution creates a key-value storage service on Akamai Connected Cloud. The service is composed of a primary storage cluster in one compute region and ten storage leaf nodes installed across ten other compute locations. Akamai Global Traffic Management routes requests from users to these leaf nodes.
+This solution creates a key-value storage service on Akamai Cloud. The service is composed of a primary storage cluster in one compute region and ten storage leaf nodes installed across ten other compute locations. Akamai Global Traffic Management routes requests from users to these leaf nodes.
 
 ![NATS Key-Value Store Design Diagram](nats-kv-store.svg?diagram-description-id=nats-kv-store-design-diagram)
 
