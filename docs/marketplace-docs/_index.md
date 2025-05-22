@@ -42,7 +42,7 @@ Run your apps the way you want. If the default configuration doesn't meet your n
 
 ### Create Your Own
 
-Help users find your app in the Linode Marketplace, an online library for developers and businesses looking to make cloud deployments easier through Marketplace applications and tools. [Become a Marketplace Partner](https://www.linode.com/marketplace/app-partners/).
+Help users find your app in the Linode Marketplace, an online library for developers and businesses looking to make cloud deployments easier through Marketplace applications and tools.
 
 ## Pricing and Availability
 
