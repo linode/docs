@@ -13,7 +13,7 @@ contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-Valkey is an open-source (BSD) key/value datastore that supports diverse workloads such as caching and message queues, and can act as a primary database. The Akamai Connected Cloud One-Click App for Valkey is configured as a standalone system daemon with TLS support.
+Valkey is an open-source (BSD) key/value datastore that supports diverse workloads such as caching and message queues, and can act as a primary database. The Akamai Cloud One-Click App for Valkey is configured as a standalone system daemon with TLS support.
 
 Valkey natively supports a broad collection of data types, extensibility with built-in scripting support for Lua, and module plugins to create new commands, data types, and more.
 
@@ -66,7 +66,7 @@ Connect to the compute instance using either `root` or the `sudo user` created d
 
 ```output
 *********************************************************
-Akamai Connected Cloud Valkey Marketplace App
+Akamai Cloud Valkey Marketplace App
 Credentials File: /home/$SUDO_USER/.credentials
 Valkey Configuration Directory: /etc/valkey/
 Valkey Configuration File: /etc/valkey/valkey.conf
