@@ -15,7 +15,7 @@ external_resources:
 
 Live streaming events require complete observability in order to deliver a seamless user experience during periods of extreme traffic. Supporting large amounts of concurrent viewers depends on live application and infrastructure insights so that you can troubleshoot issues in real-time.
 
-Complete observability for live streams poses multiple challenges, including implementing data logging at each step, logging storage costs, analyzing data, and timely data reporting. This guide discusses these challenges and considerations, how they can be addressed using TrafficPeak, and a high-level architecture review for achieving live stream observability on Akamai Connected Cloud.
+Complete observability for live streams poses multiple challenges, including implementing data logging at each step, logging storage costs, analyzing data, and timely data reporting. This guide discusses these challenges and considerations, how they can be addressed using TrafficPeak, and a high-level architecture review for achieving live stream observability on Akamai Cloud.
 
 The architecture diagram in this guide references a workflow used to stream one of the largest ad-supported sporting events in the world, supporting one of the largest concurrent user bases ever with an average of 18 million concurrent viewers. The observability solution implemented via Akamai DataStream and TrafficPeak was able to ingest, store, organize, and display insights into the entire streaming media workflow, while Akamai CDN delivered the event to end-users.
 
@@ -31,7 +31,7 @@ TrafficPeak’s observability solution allows you to ingest, store, and analyze 
 
 Complete observability means logging each step of the live stream process, including ingesting live camera feeds, content storage, content delivery, ad insertion, and user playback. Doing this on a global scale, for millions of concurrent users, can result in processing billions of logs and large cloud bills in a very short amount of time.
 
-TrafficPeak uses a highly efficient compression algorithm that helps store more logs, for longer, and cheaper - up to 75% less than other observability solutions. And since Linode Object Storage, TrafficPeak, and Akamai CDN are all part of Akamai Connected Cloud, egress costs can also be reduced by up to 100%.
+TrafficPeak uses a highly efficient compression algorithm that helps store more logs, for longer, and cheaper - up to 75% less than other observability solutions. And since Linode Object Storage, TrafficPeak, and Akamai CDN are all part of Akamai Cloud, egress costs can also be reduced by up to 100%.
 
 ### Log Analysis
 
@@ -54,12 +54,12 @@ TrafficPeak offers sub-second querying and optimizes log indexing with fully cus
 
 ### Systems and Components
 
--   **Akamai DataStream + TrafficPeak:** Akamai’s complete observability solution. DataStream sends logs from the edge to TrafficPeak on compute and object storage, all while on the Akamai Connected Cloud network.
+-   **Akamai DataStream + TrafficPeak:** Akamai’s complete observability solution. DataStream sends logs from the edge to TrafficPeak on compute and object storage, all while on the Akamai Cloud network.
 
 -   **Akamai CDN:** Akamai’s industry-leading content delivery network used for caching and global delivery.
 
 -   **Akamai Media Services Live (MSL):** Low-latency ingest of media content for high-quality live streaming.
 
--   **Linode Object Storage:** Cost-effective object storage used for media and log storage on Akamai Connected Cloud.
+-   **Linode Object Storage:** Cost-effective object storage used for media and log storage on Akamai Cloud.
 
 -   **Server-Side Ad Insertion (SSAI):** The process of attaching, or stitching, ads to content prior to reaching end-user devices. Ad logs (i.e. ad played and ad interacted) can also be sent to TrafficPeak with the TrafficPeak Video Analytics add-on.
