@@ -1,6 +1,6 @@
 ---
 title: "Deploy Couchbase One-Click Cluster through the Linode Marketplace"
-description: "Deploy Couchbase Enterprise Server One-Click Cluster on Akamai Connected Cloud. Couchbase Enterprise Server is a high-performance NoSQL database, designed for scale."
+description: "Deploy Couchbase Enterprise Server One-Click Cluster on Akamai Cloud. Couchbase Enterprise Server is a high-performance NoSQL database, designed for scale."
 keywords: ['database','nosql','high availability','data','cluster']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2024-06-10
@@ -16,7 +16,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 [Couchbase](https://www.couchbase.com/) is an enterprise class NoSQL database designed with memory-first architecture, built-in cache and workload isolation. The Couchbase One-Click cluster deploys three, five, or seven connected Couchbase Enterprise Server nodes split between Data, Index, and Query services. This initial configuration allows quick deployment and cluster expansion with Couchbase's multi-dimensional scaling.
 
 {{< note title="Couchbase Enterprise Server License" >}}
-Couchbase Enterprise Server is not free to use in production. Contact [Couchbase Support](https://www.couchbase.com/pricing/) to activate your license on Akamai Connected Cloud and enable [Couchbase application support](https://support.couchbase.com/hc/en-us/articles/360043247551-Accessing-Couchbase-Support).
+Couchbase Enterprise Server is not free to use in production. Contact [Couchbase Support](https://www.couchbase.com/pricing/) to activate your license on Akamai Cloud and enable [Couchbase application support](https://support.couchbase.com/hc/en-us/articles/360043247551-Accessing-Couchbase-Support).
 {{< /note >}}
 
 ![Couchbase Enterprise Server Cluster Architecture](couchbase_ref_arch_white.png)
@@ -96,4 +96,5 @@ You may wish to consult the following resources for additional information on th
 - [Couchbase](https://www.couchbase.com/)
 - [Couchbase Documentation](https://docs.couchbase.com/home/server.html)
 
+{{% content "marketplace-update-note-shortguide" %}}
 {{% content "marketplace-update-note-shortguide" %}}
