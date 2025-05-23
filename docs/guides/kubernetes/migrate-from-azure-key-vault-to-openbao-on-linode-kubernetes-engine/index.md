@@ -55,14 +55,14 @@ Additionally, this guide contains a number of placeholders that are intended to 
 | `{{< placeholder "SECRET_VALUE" >}}`      | Value of the secret to store in OpenBao               | `0z7NUSJ6gHKoWLkO5q2%Zq1E1do%m&...`    |
 
 {{< note >}}
-All of the example values used in this guide are purely examples to mimic the format of actual secrets. These are *not* real credentials to any exisiting systems.
+All of the example values used in this guide are purely examples to mimic the format of actual secrets. These are *not* real credentials to any existing systems.
 {{< /note >}}
 
 ## Review Existing Secrets in Azure Key Vault
 
 Before migrating to OpenBao, evaluate how your organization currently uses Azure Key Vault.
 
-For example, an application that uses third-party services, such as an LLM platform or a digital payment processor, might retrieve API keys at runtime using a role assignment. This ensures the keys aren't hardcoded into application images or checked into source control.
+For example, an application that uses third-party services, such as an LLM platform or a digital payment processor, might retrieve API keys at runtime using a role assignment. This ensures the keys aren't embedded into application images or checked into source control.
 
 OpenBao offers similar capabilities using role-based access, dynamic injection, and integration with Kubernetes.
 

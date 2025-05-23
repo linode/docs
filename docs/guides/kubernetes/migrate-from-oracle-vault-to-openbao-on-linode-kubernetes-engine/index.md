@@ -56,7 +56,7 @@ Additionally, this guide contains a number of placeholders that are intended to 
 | {{< placeholder "APPROLE_TOKEN" >}}      | The API token generated from the AppRole login.      | s.36Yb3ijEOJbifprhdEiFtPhR                                        |
 
 {{< note >}}
-All of the example values used in this guide are purely examples to mimic the format of actual secrets. These are *not* real credentials to any exisiting systems.
+All of the example values used in this guide are purely examples to mimic the format of actual secrets. These are *not* real credentials to any existing systems.
 {{< /note >}}
 
 ## Review Existing Secrets in Oracle Vault

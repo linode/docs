@@ -54,14 +54,14 @@ Additionally, this guide contains a number of placeholders that are intended to 
 | `{{< placeholder "SECRET_VALUE_X" >}}`    | The value associated with a `SECRET_KEY_X` (repeatable). | `psqluser`, `W0H@Z52IGI0VjqoGS3xMkJ9SO533w$fcfrmzs.vault-tokenTudDxEe\#`, `postgres`, `psql.example-cloud.com`, `5432`, `web_app_production` |
 
 {{< note >}}
-All of the example values used in this guide are purely examples to mimic the format of actual secrets. These are *not* real credentials to any exisiting systems.
+All of the example values used in this guide are purely examples to mimic the format of actual secrets. These are *not* real credentials to any existing systems.
 {{< /note >}}
 
 ## Review Existing Secrets in AWS Secrets Manager
 
 Before migrating to OpenBao, evaluate how your organization currently uses AWS Secrets Manager.
 
-For example, a web application might rely on database credentials stored in AWS Secrets Manager. Rather than hardcoding these credentials in source code or container images, the application is assigned a role that allows it to retrieve them securely at runtime. This prevents secrets from being exposed through version control or CI/CD pipelines.
+For example, a web application might rely on database credentials stored in AWS Secrets Manager. Rather than embedding these credentials in source code or container images, the application is assigned a role that allows it to retrieve them securely at runtime. This prevents secrets from being exposed through version control or CI/CD pipelines.
 
 OpenBao supports similar access workflows using dynamic injection, AppRole-based access control, and tight integration with Kubernetes workloads.
 

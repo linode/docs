@@ -55,14 +55,14 @@ Additionally, this guide contains a number of placeholders that are intended to 
 | {{< placeholder "APPROLE_TOKEN" >}}     | Token generated from AppRole login.                        | `s.dy572yUtTNvHTZgIoxdNVO41`           |
 
 {{< note >}}
-All of the example values used in this guide are purely examples to mimic the format of actual secrets. These are *not* real credentials to any exisiting systems.
+All of the example values used in this guide are purely examples to mimic the format of actual secrets. These are *not* real credentials to any existing systems.
 {{< /note >}}
 
 ## Review Existing Secrets in GCP Secret Manager
 
 Before migrating to OpenBao, evaluate how your organization currently uses GCP Secret Manager.
 
-For example, a web application might verify the signature of a JSON Web Token (JWT) using a secret key stored in GCP Secret Manager. Instead of hardcoding the secret in source code or container images, the application is granted a role that allows it to retrieve the secret at runtime. This protects the secret from being exposed through version control or CI/CD pipelines.
+For example, a web application might verify the signature of a JSON Web Token (JWT) using a secret key stored in GCP Secret Manager. Instead of embedding the secret in source code or container images, the application is granted a role that allows it to retrieve the secret at runtime. This protects the secret from being exposed through version control or CI/CD pipelines.
 
 OpenBao supports similar access workflows using dynamic injection, AppRole-based access control, and tight integration with Kubernetes workloads.
 
