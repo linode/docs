@@ -83,7 +83,7 @@ Ensure that you securely handle any exposed secrets, as they no longer benefit f
 {{< note >}}
 Azure uses IAM with role based access control (RBAC) to manage which users and services can access secrets.
 
-For example, an Azure VM within your Resource Group might need access to the LLM service API key stored within your vault. The VM would be assigned the [`Key Vault Secrets User role`](https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide?tabs=azure-cli#azure-built-in-roles-for-key-vault-data-plane-operations), allowing it to read the contents of secrets in the vault.
+For example, an Azure VM within your Resource Group might need access to the LLM service API key stored within your vault. The VM would be assigned the [`Key Vault Secrets User` role](https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide?tabs=azure-cli#azure-built-in-roles-for-key-vault-data-plane-operations), allowing it to read the contents of secrets in the vault.
 
 To view role assignments in the Azure portal, navigate to your key vault, select **Access control (IAM)**, then open the **Role assignments** tab:
 
@@ -99,7 +99,7 @@ You can also use the Azure CLI (`az`) to manage the secrets in your key vault.
     ```command
     az keyvault secret list \
       --vault-name "{{< placeholder "AZURE_VAULT_NAME" >}}" \
-      --query "\[\].name"
+      --query "[].name"
     ```
 
     **For Example**:
@@ -321,7 +321,7 @@ Follow these steps to create an OpenBao AppRole that mirrors the access control 
 
     ```command
     bao write auth/approle/login \
-      role_id=" {{< placeholder "APPROLE_ID" >}}" \
+      role_id="{{< placeholder "APPROLE_ID" >}}" \
       secret_id="{{< placeholder "APPROLE_SECRET_ID" >}}"
     ```
 

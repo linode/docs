@@ -77,56 +77,58 @@ In the AWS Secrets Manager dashboard, review your existing secrets.
 
 ### Review Secrets Using the AWS CLI
 
-Alternatively, use the AWS CLI can quickly provide insight into existing secrets and their usage. To list all secrets, run the following command:
+Alternatively, the AWS CLI can quickly provide insight into existing secrets and their usage.
 
-```command
-aws secretsmanager list-secrets --query 'SecretList[*].Name'
-```
+1.  Run the following command to list all secrets:
 
-```output
-[
-    "psql-credentials",
-    "jwt-signing-secret",
-    "shipping_service_api_key"
-]
-```
+    ```command
+    aws secretsmanager list-secrets --query 'SecretList[*].Name'
+    ```
 
-To retrieve the secret value for a specific secret, use the {{< placeholder "AWS_SECRET_NAME" >}} (e.g. `jwt-signing-secret`) with the `get-secret-value` command:
+    ```output
+    [
+        "psql-credentials",
+        "jwt-signing-secret",
+        "shipping_service_api_key"
+    ]
+    ```
 
-```command
-aws secretsmanager get-secret-value \
-  --secret-id {{< placeholder "AWS_SECRET_NAME" >}} \
-  --query SecretString \
-  --output text \
-  | jq
-```
+1.  To retrieve the secret value for a specific secret, use the {{< placeholder "AWS_SECRET_NAME" >}} (e.g. `jwt-signing-secret`) with the `get-secret-value` command:
 
-**For Example**:
+    ```command
+    aws secretsmanager get-secret-value \
+      --secret-id {{< placeholder "AWS_SECRET_NAME" >}} \
+      --query SecretString \
+      --output text \
+      | jq
+    ```
 
-```command
-aws secretsmanager get-secret-value \
-  --secret-id psql-credentials \
-  --query SecretString \
-  --output text \
-  | jq
-```
+    **For Example**:
 
-```output
-{
-  "username": "psqluser",
-  "password": "W0H@Z52IGI0VjqoGS3xMkJ9SO533w$fcfrmzs!m$TudDxEe#",
-  "engine": "postgres",
-  "host": "psql.example-cloud.com",
-  "port": "5432",
-  "dbname": "web_app_production"
-}
-```
+    ```command
+    aws secretsmanager get-secret-value \
+      --secret-id psql-credentials \
+      --query SecretString \
+      --output text \
+      | jq
+    ```
+
+    ```output
+    {
+      "username": "psqluser",
+      "password": "W0H@Z52IGI0VjqoGS3xMkJ9SO533w$fcfrmzs!m$TudDxEe#",
+      "engine": "postgres",
+      "host": "psql.example-cloud.com",
+      "port": "5432",
+      "dbname": "web_app_production"
+    }
+    ```
 
 In AWS Secrets Manager, secrets are stored either as key/value pairs or as plaintext. In the previous example, the single `psql-credentials` secret is a set of key/value pairs.
 
 AWS Secrets Manager uses AWS IAM to control access to secrets. As an example that adopts role-based access control (RBAC), a role such as `DatabaseReader` might have a policy attached that allows the `secretsmanager:GetSecretValue` action on the `psql-credentials` resource. Then, the web application that accesses the database would be given the `DatabaseReader` role so that it can obtain the secret values which would allow it to connect to the database.
 
-Replicating this setup using OpenBao will involve creating an [application role (AppRole)](https://openbao.org/docs/auth/approle/) to take the place of the AWS IAM role so that applications can use an API token associated with the AppRole to authenticate requests for the secret.
+Replicating this setup using OpenBao involves creating an [application role (AppRole)](https://openbao.org/docs/auth/approle/) to take the place of the AWS IAM role so that applications can use an API token associated with the AppRole to authenticate requests for the secret.
 
 ## Deploy OpenBao on Akamai Cloud
 
