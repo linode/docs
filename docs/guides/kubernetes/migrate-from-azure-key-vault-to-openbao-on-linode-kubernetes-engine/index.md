@@ -4,7 +4,7 @@ title: "Migrate From Azure Key Vault to OpenBao on Akamai Cloud"
 description: "Migrate secrets from Azure Key Vault to OpenBao on Linode Kubernetes Engine (LKE) with Helm and RBAC for secure secret management."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-05-01
+published: 2025-05-27
 keywords: ['azure key vault','openbao','migrate secrets from azure','openbao helm install','linode kubernetes engine','aks to openbao','bao kv put','bao approle authentication','open source vault alternative','manage secrets on lke']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -14,21 +14,21 @@ external_resources:
 - '[OpenBao Integrated Storage](https://openbao.org/docs/concepts/integrated-storage/)'
 ---
 
-Azure Key Vault is a managed cloud service that secures secrets, keys, and certificates for application security and compliance in Microsoft Azure. It provides centralized control and access policies so that developers and security teams can safeguard sensitive information such as API keys or passwords.
+Azure Key Vault secures secrets, keys, and certificates for application security and compliance in Microsoft Azure. It provides centralized control and access policies so that developers and security teams can safeguard sensitive information such as API keys or passwords.
 
-[OpenBao](https://openbao.org/) is an open source fork of [HashiCorp Vault](https://www.vaultproject.io/) that gives teams full control over how secrets are stored, encrypted, and accessed. Unlike managed platforms, OpenBao can be self-hosted in any environment, including on-premises and across multiple clouds.
+[OpenBao](https://openbao.org/) is an open source fork of [HashiCorp Vault](https://www.vaultproject.io/). It gives teams full control over how secrets are stored, encrypted, and accessed. Unlike managed platforms, OpenBao can be self-hosted in any environment, including on-premises and across multiple clouds.
 
-This guide walks through how to migrate secrets stored in Azure Key Vault to OpenBao running on Akamai Cloud.
+This guide explains how to migrate secrets stored in Azure Key Vault to OpenBao running on Akamai Cloud.
 
 ## Before You Begin
 
 1.  Follow our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide to create an Akamai Cloud account if you do not already have one.
 
-1.  Create a personal access token using the instructions in our [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
+1.  When migrating from Azure Key Vault to OpenBao on Akamai Cloud, your deployment requirements determine whether to install OpenBao on a single Linode Instance or to deploy it in a fault-tolerant environment using the Linode Kubernetes Engine (LKE). Follow the appropriate guide below:
 
-1.  Install the Linode CLI using the instructions in the [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
-
-1.  Follow the steps in the *Install `kubectl`* section of the [Getting started with LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#install-kubectl) guide to install and configure `kubectl`.
+    -   [Deploying OpenBao on a Linode Instance](https://docs.google.com/document/d/1x30v1xT_EDuRNnhE9jv5VkFqj9Lo4N3kNO6ICOoSrOM/edit?usp=sharing)
+    -   [Deploying OpenBao on Linode Kubernetes Engine](https://docs.google.com/document/d/1gS6hQg09Ufr1Ku0v528acLESnyj1ZpXTxLhkLIlP-u8/edit?usp=sharing)
+    -   [Deploying OpenBao through the Linode Marketplace](/docs/marketplace-docs/guides/openbao/)
 
 1.  Ensure that you have access to your Azure account with sufficient permissions to work with Azure Key Vault. The [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) must also be installed and configured.
 
@@ -40,19 +40,20 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Additionally, this guide contains a number of placeholders that are intended to be replaced by your own unique values. The table below lists these placeholders, what they represent, and the example values used in this guide:
 
-| Placeholder                               | Represents                                            | Example Value                          |
-|-------------------------------------------|-------------------------------------------------------|----------------------------------------|
-| `{{< placeholder "AZURE_VAULT_NAME" >}}`  | The name of the Azure Key Vault                       | `my-app-vault`                         |
-| `{{< placeholder "AZURE_SECRET_NAME" >}}` | Name of a secret stored in Azure Key Vault            | `LLM-service-key`                      |
-| `{{< placeholder "POLICY_FILE" >}}`       | Filename of the `.hcl` policy definition              | `api-keys-secrets-policy.hcl`          |
-| `{{< placeholder "SECRET_MOUNT_PATH" >}}` | Mount path in OpenBao KV store for organizing secrets | `api-keys`                             |
-| `{{< placeholder "POLICY_NAME" >}}`       | Name of the OpenBao policy                            | `api-keys-secrets-policy`              |
-| `{{< placeholder "APPROLE_NAME" >}}`      | Name of the OpenBao AppRole                           | `api-key-reader-approle`               |
-| `{{< placeholder "APPROLE_ID" >}}`        | AppRole ID for authenticating in OpenBao              | `e633701e-893e-460d-8012-ea2afedbcd87` |
-| `{{< placeholder "APPROLE_SECRET_ID" >}}` | Secret ID associated with the AppRole                 | `725d9076-5a5c-4921-98f7-7535c767386a` |
-| `{{< placeholder "APPROLE_TOKEN" >}}`     | API token retrieved from OpenBao using the AppRole    | `s.36Yb3ijEOJbifprhdEiFtPhR`           |
-| `{{< placeholder "SECRET_NAME" >}}`       | Name of the secret to store in OpenBao                | `llm-service`                          |
-| `{{< placeholder "SECRET_VALUE" >}}`      | Value of the secret to store in OpenBao               | `0z7NUSJ6gHKoWLkO5q2%Zq1E1do%m&...`    |
+| Placeholder                             | Represents                                             | Example Value                          |
+|-----------------------------------------|--------------------------------------------------------|----------------------------------------|
+| {{< placeholder "AZURE_VAULT_NAME" >}}  | The name of the Azure Key Vault.                       | `my-app-vault`                         |
+| {{< placeholder "AZURE_SECRET_NAME" >}} | Name of a secret stored in Azure Key Vault.            | `LLM-service-key`                      |
+| {{< placeholder "POLICY_FILE" >}}       | Filename of the `.hcl` policy definition.              | `api-keys-secrets-policy.hcl`          |
+| {{< placeholder "SECRET_MOUNT_PATH" >}} | Mount path in OpenBao KV store for organizing secrets. | `api-keys`                             |
+| {{< placeholder "POLICY_NAME" >}}       | Name of the OpenBao policy.                            | `api-keys-secrets-policy`              |
+| {{< placeholder "APPROLE_NAME" >}}      | Name of the OpenBao AppRole.                           | `api-key-reader-approle`               |
+| {{< placeholder "APPROLE_ID" >}}        | AppRole ID for authenticating in OpenBao.              | `e633701e-893e-460d-8012-ea2afedbcd87` |
+| {{< placeholder "APPROLE_SECRET_ID" >}} | Secret ID associated with the AppRole.                 | `725d9076-5a5c-4921-98f7-7535c767386a` |
+| {{< placeholder "APPROLE_TOKEN" >}}     | API token retrieved from OpenBao using the AppRole.    | `s.36Yb3ijEOJbifprhdEiFtPhR`           |
+| {{< placeholder "SECRET_NAME" >}}       | Name of the secret to store in OpenBao.                | `llm-service`                          |
+| {{< placeholder "SECRET_KEY" >}}        | Key of the secret to store in OpenBao.                 | `key`                                  |
+| {{< placeholder "SECRET_VALUE" >}}      | Value of the secret to store in OpenBao.               | `0z7NUSJ6gHKoWLkO5q2%Zq1E1do%m&...`    |
 
 {{< note >}}
 All of the example values used in this guide are purely examples to mimic the format of actual secrets. These are *not* real credentials to any existing systems.
@@ -62,7 +63,7 @@ All of the example values used in this guide are purely examples to mimic the fo
 
 Before migrating to OpenBao, evaluate how your organization currently uses Azure Key Vault.
 
-For example, an application that uses third-party services, such as an LLM platform or a digital payment processor, might retrieve API keys at runtime using a role assignment. This ensures the keys aren't embedded into application images or checked into source control.
+For example, an application that uses third-party services (e.g. an LLM platform or digital payment processor) might retrieve API keys at runtime using a role assignment. This ensures the keys aren't embedded into application images or checked into source control.
 
 OpenBao offers similar capabilities using role-based access, dynamic injection, and integration with Kubernetes.
 
@@ -141,15 +142,13 @@ You can also use the Azure CLI (`az`) to manage the secrets in your key vault.
     "0z7NUSJ6gHKoWLkO5q2%Zq1E1do%m&RSa47jljP4nMVs7qG#n87Lai46niZUCrLP"
     ```
 
-## Deploy OpenBao on Akamai Cloud
+## Access Your OpenBao Deployment on Akamai Cloud
 
-When migrating from Azure Key Vault to OpenBao on Akamai Cloud, your deployment requirements determine whether to install OpenBao on a single Linode Instance or to deploy it in a fault-tolerant environment using the Linode Kubernetes Engine (LKE). Follow the appropriate guide below:
+The remainder of this guide focuses on migrating secrets *into* your OpenBao deployment on Akamai Cloud. You should already have a running OpenBao instance on either a standalone Linode instance, in an LKE cluster, or deployed via the Linode Marketplace.
 
--   [Deploying OpenBao on a Linode Instance](https://docs.google.com/document/d/1x30v1xT_EDuRNnhE9jv5VkFqj9Lo4N3kNO6ICOoSrOM/edit?usp=sharing)
--   [Deploying OpenBao on Linode Kubernetes Engine](https://docs.google.com/document/d/1gS6hQg09Ufr1Ku0v528acLESnyj1ZpXTxLhkLIlP-u8/edit?usp=sharing)
--   [Deploying OpenBao through the Linode Marketplace](/docs/marketplace-docs/guides/openbao/)
+If your OpenBao environment is not yet ready, refer to the appropriate deployment guide listed in the [Before You Begin](#before-you-begin) section and complete the setup.
 
-Regardless of the method used, make sure that:
+Once deployed, log in to your OpenBao environment. Before continuing, verify that:
 
 -   OpenBao is successfully initialized.
 -   The vault is unsealed.
@@ -346,7 +345,7 @@ Follow these steps to create an OpenBao AppRole that mirrors the access control 
     token_meta_role_name    api-key-reader-approle
     ```
 
-    The resulting AppRole token (e.g. `s.TuQBY39kkpEDOqKcKYbWvpmZ`) can be used by a user, machine, or service, such a web application, to authenticate OpenBao API calls, giving the caller authorization to read the LLM service API key secret.
+    The resulting AppRole token (e.g. `s.TuQBY39kkpEDOqKcKYbWvpmZ`) can be used by a user, machine, or service (e.g. a web application) to authenticate OpenBao API calls and read the LLM service API key secret.
 
 ### Storing Secrets
 
@@ -368,11 +367,11 @@ Create the secret store defined in the policy created above.
     Success! Enabled the kv secrets engine at: api-keys/
     ```
 
-1.  Store your {{< placeholder "SECRET_VALUE" >}} (e.g. `0z7NUSJ6gHKoWLkO5q2%Zq1E1do%m&RSa47jljP4nMVs7qG#n87Lai46niZUCrLP`) in the {{< placeholder "SECRET_MOUNT_PATH" >}} as a secret named {{< placeholder "SECRET_NAME" >}} (e.g. `llm-service`):
+1.  The example secret from Azure contains a single sensitive value. Store this value in the {{< placeholder "SECRET_MOUNT_PATH" >}} using a {{< placeholder "SECRET_KEY" >}} (e.g. `key`) and assign it a {{< placeholder "SECRET_NAME" >}} (e.g. `llm-service`):
 
     ```command
     bao kv put --mount={{< placeholder "SECRET_MOUNT_PATH" >}} {{< placeholder "SECRET_NAME" >}} \
-      "key"="{{< placeholder "SECRET_VALUE" >}}"
+      "{{< placeholder "SECRET_KEY" >}}"="{{< placeholder "SECRET_VALUE" >}}"
     ```
 
     **For Example**:
@@ -461,16 +460,16 @@ When migrating from Azure Key Vault to OpenBao on Akamai Cloud, it's important t
 
 ### Security
 
-For a production-grade OpenBao deployment, security should be a top priority. Protecting secrets from unauthorized access, ensuring secure communication, and enforcing strict access controls are essential to maintaining a secure environment.
+Security should be a top priority for a production-grade OpenBao deployment. Protecting secrets from unauthorized access, ensuring secure communication, and enforcing strict access controls are essential to maintaining a secure environment.
 
 -   **Access Control Policies**: Use OpenBao's [policy](https://openbao.org/docs/concepts/policies/) system to enforce RBAC. Define granular policies that grant only the necessary permissions, following the principle of least privilege.
--   **Audit Logging**: Enable [detailed audit logs](https://openbao.org/docs/configuration/log-requests-level/) to track all access and modifications to secrets. OpenBao supports multiple logging backends, such as syslog and file-based logs, to help monitor suspicious activity.
+-   **Audit Logging**: Enable [detailed audit logs](https://openbao.org/docs/configuration/log-requests-level/) to track all access and modifications to secrets. OpenBao supports multiple logging backends, such as `syslog` and file-based logs, to help monitor suspicious activity.
 -   **Secrets Lifecycle Management**: Implement automated secrets rotation, revocation, and expiration to ensure secrets do not become stale or overexposed. Consider using dynamic secrets where possible to generate time-limited credentials.
--   **Securing Network Communication**: Configure OpenBao to [use TLS to encrypt](https://openbao.org/docs/configuration/listener/tcp/#configuring-tls) all communications, ensuring data in transit remains secure. Regularly rotate TLS certificates to prevent expiration-related outages and reduce the risk of compromised certificates.
+-   **Securing Network Communication**: [Configure OpenBao to use TLS](https://openbao.org/docs/configuration/listener/tcp/#configuring-tls) to encrypt all communications, ensuring data in transit remains secure. Regularly rotate TLS certificates to prevent expiration-related outages and reduce the risk of compromised certificates.
 
 ### High Availability
 
-For production environments, OpenBao should be deployed with fault tolerance and scalability in mind. OpenBao’s [Autopilot mode](https://openbao.org/docs/concepts/integrated-storage/autopilot) for [high availability](https://openbao.org/docs/internals/high-availability/) ensures that if the active node fails, the cluster automatically elects a new leader, maintaining uptime without manual intervention. However, to enable seamless failover, organizations must configure their deployment correctly, and proactively monitor system health.
+Production-grade OpenBao environments should be deployed with fault tolerance and scalability in mind. OpenBao’s [Autopilot mode](https://openbao.org/docs/concepts/integrated-storage/autopilot) for [high availability](https://openbao.org/docs/internals/high-availability/) ensures that if the active node fails, the cluster automatically elects a new leader, maintaining uptime without manual intervention. However, to enable seamless failover, organizations must configure their deployment correctly, and proactively monitor system health.
 
 -   **Raft Storage Backend**: Use OpenBao’s [integrated storage](https://openbao.org/docs/internals/integrated-storage/), based on the [Raft protocol](https://thesecretlivesofdata.com/raft/), to enable distributed data replication across multiple nodes. This ensures data consistency and fault tolerance while reducing reliance on external storage backends. Configure regular Raft snapshots for disaster recovery.
 -   **Deploy Multiple Nodes**: OpenBao recommends at least five nodes for a [high-availability deployment](https://openbao.org/docs/concepts/ha/). The active node handles all requests, while standby nodes remain ready to take over in case of failure.
