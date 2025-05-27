@@ -16,7 +16,7 @@ This Marketplace App deploys the latest unmodified version of [Passbolt Communit
 
 {{< note >}}
 Passbolt and the Passbolt logo are registered trademarks of Passbolt S.A.
-This service is provided by Akamai Cloud and is not affiliated with Passbolt S.A.
+This service is provided by Akamai and is not affiliated with Passbolt S.A.
 {{< /note >}}
 
 ## Deploying a Marketplace App

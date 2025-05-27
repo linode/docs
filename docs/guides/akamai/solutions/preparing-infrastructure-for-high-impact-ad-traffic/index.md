@@ -1,7 +1,7 @@
 ---
 slug: preparing-infrastructure-for-high-impact-ad-traffic
 title: "Preparing Infrastructure for High-Impact Advertising Traffic on Akamai"
-description: "This guide discusses the infrastructure challenges related to traffic associated with high-impact ad campaigns. It also proposes a reference architecture and strategies used to support surges during high-traffic events on Akamai Cloud."
+description: "This guide discusses the infrastructure challenges related to traffic associated with high-impact ad campaigns. It also proposes a reference architecture and strategies used to support surges during high-traffic events on Akamai."
 authors: ["John Dutton"]
 contributors: ["John Dutton"]
 published: 2024-07-10
@@ -70,7 +70,7 @@ At the edge, Akamai’s [App & API Protector](https://www.akamai.com/products/ap
 
 5.  Queue-it waiting rooms allow for user prioritization and enhance the user experience during periods of extremely high traffic.
 
-6.  TrafficPeak on Akamai Cloud provides near real-time visualization of event data.
+6.  TrafficPeak on Akamai provides near real-time visualization of event data.
 
 7.  Akamai routes CDN traffic through designated edge servers. This allows customers to drop traffic from other sources and prevent attackers from bypassing edge-based protection.
 {#high-impact-ad-arch .large-diagram}
@@ -93,4 +93,4 @@ At the edge, Akamai’s [App & API Protector](https://www.akamai.com/products/ap
 
 -  **Load Testing (CloudTest):** CloudTest is a load testing tool that lets customers run peak traffic performance testing for environments at scale.
 
--  **TrafficPeak:** Akamai’s managed observability solution. Runs on Akamai Cloud and is comprised of Compute Instances, Object Storage, and a visual Grafana dashboard for near real-time monitoring.
+-  **TrafficPeak:** Akamai’s managed observability solution. Runs on Akamai Cloud infrastructure and is comprised of Compute Instances, Object Storage, and a visual Grafana dashboard for near real-time monitoring.

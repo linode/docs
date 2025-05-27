@@ -66,7 +66,7 @@ Connect to the compute instance using either `root` or the `sudo user` created d
 
 ```output
 *********************************************************
-Akamai Cloud Valkey Marketplace App
+Akamai Connected Cloud Valkey Marketplace App
 Credentials File: /home/$SUDO_USER/.credentials
 Valkey Configuration Directory: /etc/valkey/
 Valkey Configuration File: /etc/valkey/valkey.conf

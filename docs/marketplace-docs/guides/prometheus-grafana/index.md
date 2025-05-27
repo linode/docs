@@ -91,7 +91,7 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 
     ```output
     *********************************************************
-    Akamai Cloud Prometheus & Grafana Marketplace App
+    Akamai Connected Cloud Prometheus & Grafana Marketplace App
     Grafana URL: https://$EXAMPLE_DOMAIN.COM
     Prometheus URL: https://$EXAMPLE_DOMAIN.COM/prometheus
     Credentials File: /home/$SUDO_USER/.credentials

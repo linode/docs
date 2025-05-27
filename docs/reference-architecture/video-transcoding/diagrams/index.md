@@ -78,7 +78,7 @@ A system is set up to allow observability of the content workflows. Content dist
 *Click to interact, scroll to zoom, click-and-hold to pan*
 {{< /note >}}
 
-**Figure 2** provides an overview of the tools and technologies overlaid onto the VOD workflow use case. This overview illustrates how the Akamai Cloud and Linode Kubernetes Engine (LKE) are combined with an event-driven and highly scalable workflow management tool called [Argo](https://argoproj.github.io/). Argo is an open source Kubernetes-native workflow engine supporting DAG and step-based workflows, and it is a member of the Cloud Native Computing Foundation (CNCF). This combination of technologies allows for a flexible, portable, and cost-effective media processing solution.
+**Figure 2** provides an overview of the tools and technologies overlaid onto the VOD workflow use case. This overview illustrates how the Akamai CDN and Linode Kubernetes Engine (LKE) are combined with an event-driven and highly scalable workflow management tool called [Argo](https://argoproj.github.io/). Argo is an open source Kubernetes-native workflow engine supporting DAG and step-based workflows, and it is a member of the Cloud Native Computing Foundation (CNCF). This combination of technologies allows for a flexible, portable, and cost-effective media processing solution.
 
 ## Figure 3: End-to-End VOD Workflow with HLS Video Output
 

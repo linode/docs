@@ -21,7 +21,7 @@ Review the [video transcoding architecture diagrams](/docs/reference-architectur
 
 ## Technologies Used
 
-The workflow in this document is implemented on the [Akamai Cloud](https://www.akamai.com/) (in particular, the [Linode Kubernetes Engine](https://www.linode.com/products/kubernetes/)), Akamai CDN, and a GitHub Actions-powered CI/CD powered pipeline. The full accounting of technologies used includes:
+The workflow in this document is implemented on [Akamai Cloud](https://www.akamai.com/) (in particular, [Linode Kubernetes Engine](https://www.linode.com/products/kubernetes/)), Akamai CDN, and a GitHub Actions-powered CI/CD powered pipeline. The full accounting of technologies used includes:
 
 - **Akamai Cloud technologies**:
 
