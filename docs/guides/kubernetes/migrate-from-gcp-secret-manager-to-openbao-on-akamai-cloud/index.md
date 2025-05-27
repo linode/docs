@@ -1,5 +1,5 @@
 ---
-slug: migrate-from-gcp-secret-manager-to-openbao-on-linode-kubernetes-engine
+slug: migrate-from-gcp-secret-manager-to-openbao-on-akamai-cloud
 title: "Migrate From GCP Secret Manager to OpenBao on Akamai Cloud"
 description: "Migrate secrets from GCP Secret Manager to OpenBao on Linode Kubernetes Engine (LKE) using Helm charts and role-based access policies."
 authors: ["Akamai"]

@@ -1,5 +1,5 @@
 ---
-slug: migrate-from-oracle-vault-to-openbao-on-linode-kubernetes-engine
+slug: migrate-from-oracle-vault-to-openbao-on-akamai-cloud
 title: "Migrate From Oracle Vault to OpenBao on Akamai Cloud"
 description: "Securely migrate secrets from Oracle Vault to OpenBao on Linode Kubernetes Engine (LKE), using Helm and AppRole-based access control."
 authors: ["Akamai"]

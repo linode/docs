@@ -1,5 +1,5 @@
 ---
-slug: migrate-from-aws-secrets-manager-to-openbao-on-linode-kubernetes-engine
+slug: migrate-from-aws-secrets-manager-to-openbao-on-akamai-cloud
 title: "Migrate From AWS Secrets Manager to OpenBao on Akamai Cloud"
 description: "Learn how to migrate secrets from AWS Secrets Manager to OpenBao on Linode Kubernetes Engine (LKE) using Helm and AppRole authentication."
 authors: ["Akamai"]

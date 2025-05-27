@@ -1,5 +1,5 @@
 ---
-slug: migrate-from-azure-key-vault-to-openbao-on-linode-kubernetes-engine
+slug: migrate-from-azure-key-vault-to-openbao-on-akamai-cloud
 title: "Migrate From Azure Key Vault to OpenBao on Akamai Cloud"
 description: "Migrate secrets from Azure Key Vault to OpenBao on Linode Kubernetes Engine (LKE) with Helm and RBAC for secure secret management."
 authors: ["Akamai"]
