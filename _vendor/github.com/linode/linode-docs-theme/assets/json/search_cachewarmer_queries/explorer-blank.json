@@ -1,5 +1,0 @@
-{
-  "indexName": "linode-merged",
-  "facets": ["section.*", "docType", "category", "tags"],
-  "distinct": 1
-}

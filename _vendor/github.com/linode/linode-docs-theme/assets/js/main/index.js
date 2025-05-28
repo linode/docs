@@ -15,7 +15,6 @@ import { toggleBooleanClass, setIsTranslating, getCurrentLang, scrollToActiveExp
 import { leackChecker } from './helpers/leak-checker';
 import {
 	addLangToLinks,
-	newBreadcrumbsController,
 	newLanguageSwitcherController,
 	newNavController,
 	newPromoCodesController,
@@ -94,7 +93,6 @@ const searchConfig = getSearchConfig(params);
 		Alpine.data('lncSearchExplorerInitial', () => newSearchExplorerInitial());
 		Alpine.data('lncSearchExplorerHydrated', () => newSearchExplorerHydrated(searchConfig));
 		Alpine.data('lncToc', newToCController);
-		Alpine.data('lncBreadcrumbs', () => newBreadcrumbsController(searchConfig));
 		Alpine.data('lncDropdowns', newDropdownsController);
 		Alpine.data('lncTabs', newTabsController);
 		Alpine.data('lncDisqus', newDisqus);

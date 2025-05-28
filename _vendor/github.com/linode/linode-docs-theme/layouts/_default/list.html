@@ -5,18 +5,12 @@
 
 {{ define "main" }}
   <noscript>
-    {{ $isDynamic :=  (eq .Type "sections") }}
-    {{ if $isDynamic }}
-      {{ partial "components/nojs.html" . }}
-    {{ else }}
-      {{ template "list-nojs" . }}
-    {{ end }}
+    {{ template "list-nojs" . }}
   </noscript>
   {{ template "list-js" . }}
 {{ end }}
 
 {{ define "list-js" }}
-  {{ $isDynamic := eq .RelPermalink "/docs/sections/" }}
   <div class="w-full" x-cloak x-data="lncSections()">
     {{ partial "components/error.html" . }}
     <template x-if="loaded">
@@ -24,15 +18,10 @@
         <div class="mb-8" x-show="loaded">
           <div
             class="flex flex-col lg:flex-row lg:items-center flex-wrap space-y-2 mb-8">
-            {{ if $isDynamic }}
-              <h1
-                class="font-semibold tracking-tighter pb-4 lg:pb-0 pr-4"
-                x-html="data.meta.title"></h1>
-            {{ else }}
-              <h1 class="font-semibold tracking-tighter pb-4 lg:pb-0 pr-4">
-                {{ $.Title }}
-              </h1>
-            {{ end }}
+            <h1 class="font-semibold tracking-tighter pb-4 lg:pb-0 pr-4">
+              {{ $.Title }}
+            </h1>
+
             <div x-show="!uiState.noToggleGuidesLink">
               <button
                 @click="toggleShowGuides();"
@@ -50,28 +39,18 @@
             </div>
           </div>
           <div class="mb-8">
-            {{ if $isDynamic }}
-              <p x-html="data.meta.excerpt"></p>
+            {{ if ge (len .Content) 20 }}
+              <div class="content max-w-full prose">
+                {{ $.Content }}
+              </div>
             {{ else }}
-              {{ if ge (len .Content) 20 }}
-                <div class="content max-w-full prose">
-                  {{ $.Content }}
-                </div>
-              {{ else }}
-                <p>{{ $.Params.description }}</p>
-              {{ end }}
+              <p>{{ $.Params.description }}</p>
             {{ end }}
           </div>
           <hr class="mb-6" />
         </div>
-        {{ $isStatic := (ne $.RelPermalink "/docs/sections/") }}
-        {{/* TODO1 if query set. */}}
         <template
-          x-if="(!{{ $isStatic }} || $store.search.query.isFiltered()) && uiState.showSectionsTiles()">
-          {{ template "section-list-tiles-dynamic" (dict "page" $) }}
-        </template>
-        <template
-          x-if="({{ $isStatic }} && !$store.search.query.isFiltered()) && uiState.showSectionsTiles()">
+          x-if="(!$store.search.query.isFiltered()) && uiState.showSectionsTiles()">
           {{ template "section-list-tiles-static" (dict "page" $) }}
         </template>
         <div x-show="uiState.showGuidesWithSortOption()">

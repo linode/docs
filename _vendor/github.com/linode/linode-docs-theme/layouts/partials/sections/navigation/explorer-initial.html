@@ -10,78 +10,52 @@
   x-data="lncSearchExplorerInitial()"
   x-show="isOpen() && !$store.search.shouldShowHydratedExplorerAndIsHydrated()"
   x-transition.opacity.duration.30ms>
-  {{ if hugo.IsServer }}
-    <div class="bg-brand h-2">&nbsp;</div>
-  {{ end }}
   <ul class="search-explorer-root bg-backgroundcolor">
     {{ template "explorer-static" . }}
   </ul>
 </div>
 {{ define "explorer-static" }}
-  {{ $configSections := site.Params.search_config2.sections }}
-  {{ $data := (partialCached "sections/search/create-cachewarmers-urls.html" . ).data }}
-  {{ $sectionfacets := index $data "sectionfacets" }}
-  {{ $sectionsmeta := (index $data "sectionsmetamap") }}
-  {{ $pageSectionsHref := "" }}
-  {{ $pageSectionsEntries := slice }}
-  {{ if eq .Section "api" }}
-    {{/* The API section is currently a little different. */}}
-    {{ $pageSectionsHref = .RelPermalink }}
-    {{ $pageSectionsEntries = split .RelPermalink "/" | after 2 }}
-  {{ else }}
-    {{ $pageSectionsHref = $.CurrentSection.RelPermalink }}
-    {{ $pageSectionsEntries = $.CurrentSection.SectionsEntries }}
-  {{ end }}
-
-  {{/* For blog, marketplace etc. we render one page for all sections. */}}
-  {{ $isStatic := (ne $.RelPermalink "/docs/sections/") }}
-
-  {{ $delim := " > " }}
-  {{ $prefixes := slice }}
-  {{ $prefix := "" }}
-  {{ if $isStatic }}
-    {{ range $pageSectionsEntries }}
-      {{ $prefix = printf "%s%s%s" $prefix . $delim }}
-      {{ $prefixes = $prefixes | append $prefix }}
-    {{ end }}
-  {{ end }}
-
-  {{/* We don't want/need to render everything. */}}
-  {{ $facets := slice }}
-  {{ $otherFacets := slice }}
-  {{ range $i, $v := $sectionfacets -}}
-    {{ $open :=  and (not $.IsHome) $isStatic (strings.HasPrefix $pageSectionsHref $v.href) }}
-    {{ $include := or $open (eq $v.level 1) }}
-    {{ if not $include }}
-      {{ range $prefixes }}
-        {{ $level := add (. | strings.Count $delim) 1 }}
-        {{ if and (eq $level $v.level)  (strings.HasPrefix $v.key .) }}
-          {{ $include = true }}
-          {{ break }}
-        {{ end }}
+  {{ $configSections := sort site.Params.search_config2.sections "weight" }}
+  {{ $roots := slice }}
+  {{ range $configSections }}
+    {{ $section := "" }}
+    {{ $open := false }}
+    {{ with .hugo_section }}
+      {{ $section = site.GetPage . }}
+      {{ if not $section }}
+        {{ errorf "explorer: section %q not found" . }}
       {{ end }}
+      {{ $open = eq $.FirstSection $section }}
+    {{ end }}
+    {{ $root := dict "section" $section "config" . "page" $ "open" $open }}
+    {{ $roots = $roots | append $root }}
+  {{ end }}
+
+  {{ range $roots }}
+    {{ $href := "" }}
+    {{ $title := .config.title }}
+    {{ with .config.static_link_url }}
+      {{ $href  = . }}
+    {{ else with .section }}
+      {{ $href = .RelPermalink }}
+    {{ else }}
+      {{ errorf "invalid search config for the explorer nodes, one of static_link_url or hugo_section must be set" }}
     {{ end }}
 
-    {{ if $include }}
-      {{ $facets = $facets | append (merge $v (dict "open" $open)) -}}
-    {{ end }}
-  {{ end -}}
+    {{ $node := dict
+      "level" 1
+      "count" 1
+      "open" .open
+      "title" $title
+      "href" $href
+      "key" .config.name
+      "page" .section
+      "icon" .config.explorer_icon
+    }}
 
-  {{ $facets = sort $facets "weight" }}
-
-  {{ $d := dict
-    "facets" $facets
-    "data" $data
-    "dot" $
-  }}
-
-  {{ range $d.facets }}
-    {{ if ne .level 1 -}}
-      {{ continue -}}
-    {{ end }}
     {{ $d := dict
-      "data"  $d
-      "node" .
+      "node" $node
+      "root" .
     }}
     {{ template "explorer-static-node-recursive" $d }}
   {{ end }}
@@ -94,7 +68,6 @@
   }}
 
   {{ $classes := partial "inline/get-classes" $classesm -}}
-  {{ $nodeJSON := (dict "open" .node.open "level" .node.level "key" .node.key "href" .node.href "count" .node.count) | jsonify -}}
   <li class="explorer__node {{ $classes }}" data-testid="node-{{ .node.key }}">
     <div class="explorer__node__inner" data-testid="li-{{ .node.level }}">
       {{ $classes := partial "inline/get-classes" (dict
@@ -140,7 +113,7 @@
             data-testid="node-link"
             class="block relative cursor-pointer pr-3 no-underline capitalize z-10 flex-auto {{ $classes }}">
             <span class="bg-container h-full"></span>
-            <span>{{ .node.linkTitle | default .node.title }}</span>
+            <span>{{ .node.title }}</span>
           </a>
         </div>
 
@@ -197,37 +170,24 @@
       {{ if .node.open }}
         {{ $node := .node }}
         <ul class="node-tree h-full {{ $classes }}">
-          {{ $pages := index $.data.data $.node.key }}
-          {{ if $pages }}
-            {{ $pages = sort $pages "linkTitle" }}
-          {{ end }}
-          {{ with $pages }}
-            {{ $pageCount := 0 }}
-            {{ $pageCountHidden := 0 }}
-            {{ range $i, $p := . }}
-              {{ if $p.isBranch }}
+          {{ $nextLevel := add .node.level 1 }}
+          {{ if and .root.section .node.page (or (eq .node.page .root.section) (.node.page.IsDescendant .root.section)) }}
+            {{ $pageCountHidden  := 0 }}
+            {{ $pageCount  := 0 }}
+            {{ $parent := . }}
+            {{ $regularPages := .node.page.RegularPages.ByLinkTitle }}
+            {{/* This matches how we sort facets from Algolia when search kicks in. */}}
+            {{ $sections :=  sort .node.page.Sections "RelPermalink" }}
+            {{ range $regularPages }}
+              {{ $pageCount = add $pageCount 1 }}
+              {{ if .Params.deprecated }}
+                {{ $pageCountHidden = add $pageCountHidden 1 }}
                 {{ continue }}
               {{ end }}
-              {{ $pageCount  = add $pageCount 1 }}
-              {{ if $p.deprecated }}
-                {{ $pageCountHidden  = add $pageCountHidden 1 }}
-                {{ continue }}
-              {{ end }}
+              {{ $isActive := and $parent.root.page (eq . $parent.root.page ) }}
+              {{ $objectID := "" }}{{/* uses href for analytics, this can be blank. */}}
+              {{ $href := .RelPermalink }}
 
-              {{ if $p.hierarchy }}
-                {{/* This is the reference-section.
-                  All pages in a section shares the same href (the section),
-                  and the best match is selected while searching using Algolia's distinct keyword.
-                  This is the explorer and we needk link to the detail page.
-                */}}
-                {{ $p = index $p.hierarchy (sub (len $p.hierarchy) 1) }}
-              {{ end }}
-
-              {{ $target := "" }}
-              {{ if strings.HasPrefix $p.href "http" }}
-                {{ $target = "_blank" }}
-              {{ end }}
-              {{ $isActive := (eq $p.href $.data.dot.RelPermalink) }}
               {{ $classes := partial "inline/get-classes"  (dict
                 "text-textcolor" (not $isActive)
                 "text-brand font-semibold is-active-page" $isActive
@@ -236,12 +196,11 @@
               }}
               <li>
                 <a
-                  @click="onClickStaticLeafNode($event, '{{ $p.href }}', '{{ $p.objectID }}');"
-                  href="{{ $p.href }}"
-                  target="{{ $target }}"
+                  @click="onClickStaticLeafNode($event, '{{ $href }}', '{{ $objectID }}');"
+                  href="{{ $href }}"
                   class="py-1-5 inline-block page-link mr-2 text-xs capitalize cursor-pointer no-underline active:text-brand hover:text-gray-900 focus:outline-none {{ $classes }}
                   ">
-                  {{ $p.linkTitle }}
+                  {{ .LinkTitle }}
                 </a>
               </li>
             {{ end }}
@@ -257,21 +216,25 @@
                 </a>
               </li>
             {{ end }}
-          {{ end }}
-          {{ $facetsNextLevel := slice }}
-          {{ $nextLevel := add .node.level 1 }}
-          {{ range $.data.facets -}}
-            {{ if or  (not (eq .level $nextLevel)) (not (strings.HasPrefix .href  $.node.href)) -}}
-              {{ continue -}}
-            {{ end -}}
-            {{ $d := dict
-              "data" $.data
-              "node" .
-            }}
-            {{ $facetsNextLevel = $facetsNextLevel | append $d -}}
-          {{ end -}}
-          {{ range $facetsNextLevel -}}
-            {{ template "explorer-static-node-recursive" . }}
+            {{ range $sections }}
+              {{ $open := and (not .IsPage) (or (eq $parent.root.page .) (.IsAncestor $parent.root.page)) }}
+              {{ $key :=  delimit .SectionsEntries " > " }}
+              {{ $node := dict
+                "level" $nextLevel
+                "count" (len .Pages)
+                "open" $open
+                "title" .LinkTitle
+                "href" .RelPermalink
+                "key" $key
+                "page" .
+              }}
+
+              {{ $d := dict
+                "node" $node
+                "root" $parent.root
+              }}
+              {{ template "explorer-static-node-recursive" $d }}
+            {{ end }}
           {{ end }}
         </ul>
       {{ end }}

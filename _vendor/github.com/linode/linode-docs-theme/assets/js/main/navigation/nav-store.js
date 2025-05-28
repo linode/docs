@@ -128,8 +128,6 @@ export function newNavStore(searchConfig, searchStore, params, Alpine) {
 			this.onetrust.functional = groupArray.includes('C0003');
 			this.onetrust.targeting = groupArray.includes('C0004');
 			this.onetrust.socialmedia = groupArray.includes('C0005');
-
-			console.log('updateOptanonGroups', this.onetrust);
 		},
 
 		openSearchPanel(scrollUp = false) {

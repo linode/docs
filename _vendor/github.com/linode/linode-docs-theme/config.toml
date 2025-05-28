@@ -94,6 +94,7 @@
 
       [params.search_config2.sections.guides]
         name          = "guides"
+        hugo_section  = "guides"
         filters       = "section.lvl0:guides"
         weight        = 10
         title         = "Cloud Guides & Tutorials"
@@ -111,7 +112,8 @@
 
       [params.search_config2.sections.reference-architecture]
         name          = "reference-architecture"
-        filters       = "section.lvl0:guides"
+        hugo_section  = "reference-architecture"
+        filters       = "section.lvl0:reference-architecture"
         weight        = 20
         title         = "Reference Architectures"
         noun          = "Reference"
@@ -119,6 +121,7 @@
 
       [params.search_config2.sections.marketplace-docs]
         name          = "marketplace-docs"
+        hugo_section  = "marketplace-docs"
         weight        = 25
         title         = "Marketplace Docs"
         noun          = "Marketplace"
