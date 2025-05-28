@@ -29,7 +29,7 @@ marketplace_app_name: "ONLYOFFICE Docs"
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 22.04 LTS
-- **Recommended plan:** All plan types and sizes can be used.
+- **Recommended plan:** 2GB Shared CPU Compute Instance or higher required for this deployment.
 
 ### ONLYOFFICE Docs Options
 
