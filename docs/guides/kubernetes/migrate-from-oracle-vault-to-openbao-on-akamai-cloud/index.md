@@ -40,21 +40,21 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Additionally, this guide contains a number of placeholders that are intended to be replaced by your own unique values. The table below lists these placeholders, what they represent, and the example values used in this guide:
 
-| Placeholder                              | Represents                                           | Example Value                                                       |
-|------------------------------------------|------------------------------------------------------|---------------------------------------------------------------------|
-| {{< placeholder "OCI_COMPARTMENT_ID" >}} | The OCID of the compartment containing your vault.   | `ocid1.compartment.oc1..aaaaaaaawrrlh7hw6b4tnsbxevyoywscike5ygn...` |
-| {{< placeholder "OCI_SECRET_ID" >}}      | The OCID of the secret stored in Oracle Vault.       | `ocid1.vaultsecret.oc1.phx.amaaaaaaogvqnkqaepiqln7ztj43ugit...`     |
-| {{< placeholder "OCI_ENCODED_SECRET" >}} | The base64-encoded value of the Oracle secret.       | `eyAiYWNjZXNzX2tleV9pZCIgOiAiQUtJQTUxM0oyRERSQVhDRktYRjUi...`       |
-| {{< placeholder "POLICY_FILE" >}}        | The name of the policy file.                         | `cloud-credentials-policy.hcl`                                      |
-| {{< placeholder "SECRET_MOUNT_PATH" >}}  | The mount path (namespace) where secrets are stored. | `cloud-credentials`                                                 |
-| {{< placeholder "POLICY_NAME" >}}        | The internal name for the policy in OpenBao.         | `cloud-credentials-policy`                                          |
-| {{< placeholder "APPROLE_NAME" >}}       | The name of the AppRole.                             | `cloud-credential-reader-approle`                                   |
-| {{< placeholder "APPROLE_ID" >}}         | The role ID generated for the AppRole.               | `c8663988-136f-42de-af40-1dfb94f0c1f6`                              |
-| {{< placeholder "APPROLE_SECRET_ID" >}}  | The secret ID generated for the AppRole.             | `9b9c27a3-dc27-4eea-921f-773164ec17c7`                              |
-| {{< placeholder "SECRET_KEY" >}}         | Key of the secret to store in OpenBao                | `secret`                                                            |
-| {{< placeholder "SECRET_VALUE" >}}       | The actual secret contents to store in OpenBao.      | `{ "access_key_id": "...", "secret_access_key": "..." }`            |
-| {{< placeholder "SECRET_NAME" >}}        | The name of the secret stored under the mount path.  | `provider-a`                                                        |
-| {{< placeholder "APPROLE_TOKEN" >}}      | The API token generated from the AppRole login.      | `s.36Yb3ijEOJbifprhdEiFtPhR`                                        |
+| Placeholder                              | Represents                                              | Example Value                                                                                                                                                  |
+|------------------------------------------|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| {{< placeholder "OCI_COMPARTMENT_ID" >}} | The OCID of the compartment containing your vault.      | `ocid1.compartment.oc1..aaaaaaaawrrlh7hw6b4tnsbxevyoywscike5ygn4ut5n734mjsclijgpjjgq`                                                                                          |
+| {{< placeholder "OCI_SECRET_ID" >}}      | The OCID of the secret stored in Oracle Vault.          | `ocid1.vaultsecret.oc1.phx.amaaaaaaogvqnkqaepiqln7ztj43ugit75w3wl7kyzldk3rbqkfd2zmtp3ea`                                                                                          |
+| {{< placeholder "OCI_ENCODED_SECRET" >}} | The base64-encoded value of the Oracle secret.          | `eyAiYWNjZXNzX2tleV9pZCIgOiAiQUtJQTUxM0oyRERSQVhDRktYRjUiLCAic2VjcmV0X2FjY2Vzc19rZXkiIDoiWGRxRDBCUGE4YUxGYU4rRUk4U0FZbTlVNFpZZVhRZE1HQUlqS0QveCIgfQ==` |
+| {{< placeholder "POLICY_FILE" >}}        | The name of the file containing the OpenBao policy.     | `cloud-credentials-policy.hcl`                                                                                                                                                   |
+| {{< placeholder "SECRET_MOUNT_PATH" >}}  | The KV mount path used in OpenBao to organize secrets.  | `cloud-credentials`                                                                                                                                    |
+| {{< placeholder "POLICY_NAME" >}}        | The internal name for the policy in OpenBao.            | `cloud-credentials-policy`                                                                                                                             |
+| {{< placeholder "APPROLE_NAME" >}}       | The name of the AppRole in OpenBao.                     | `cloud-credential-reader-approle`                                                                                                                      |
+| {{< placeholder "APPROLE_ID" >}}         | The role ID generated for the AppRole by OpenBao.       | `c8663988-136f-42de-af40-1dfb94f0c1f6`                                                                                                                 |
+| {{< placeholder "APPROLE_SECRET_ID" >}}  | The secret ID generated for the AppRole by OpenBao.     | `9b9c27a3-dc27-4eea-921f-773164ec17c7`                                                                                                                 |
+| {{< placeholder "APPROLE_TOKEN" >}}      | The API token retrieved from OpenBao using the AppRole. | `s.36Yb3ijEOJbifprhdEiFtPhR`                                                                                                                              |
+| {{< placeholder "SECRET_NAME" >}}        | The name of the secret to store in OpenBao.             | `provider-a`                                                                                                                                           |
+| {{< placeholder "SECRET_KEY" >}}         | The key of the secret to store in OpenBao               | `secret`                                                                                                                                               |
+| {{< placeholder "SECRET_VALUE" >}}       | The value of the secret to store in OpenBao.            | `{ "access_key_id": "AKIA513J2DDRAXCFKXF5", "secret_access_key": "XdqD0BPa8aLFaN+EI8SAYm9U4ZYeXQdMGAIjKD/x" }`                                                                                                                         |
 
 {{< note >}}
 All of the example values used in this guide are purely examples to mimic the format of actual secrets. These are *not* real credentials to any existing systems.

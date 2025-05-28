@@ -40,20 +40,20 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Additionally, this guide contains a number of placeholders that are intended to be replaced by your own unique values. The table below lists these placeholders, what they represent, and the example values used in this guide:
 
-| Placeholder                             | Represents                                             | Example Value                          |
-|-----------------------------------------|--------------------------------------------------------|----------------------------------------|
-| {{< placeholder "AZURE_VAULT_NAME" >}}  | The name of the Azure Key Vault.                       | `my-app-vault`                         |
-| {{< placeholder "AZURE_SECRET_NAME" >}} | Name of a secret stored in Azure Key Vault.            | `LLM-service-key`                      |
-| {{< placeholder "POLICY_FILE" >}}       | Filename of the `.hcl` policy definition.              | `api-keys-secrets-policy.hcl`          |
-| {{< placeholder "SECRET_MOUNT_PATH" >}} | Mount path in OpenBao KV store for organizing secrets. | `api-keys`                             |
-| {{< placeholder "POLICY_NAME" >}}       | Name of the OpenBao policy.                            | `api-keys-secrets-policy`              |
-| {{< placeholder "APPROLE_NAME" >}}      | Name of the OpenBao AppRole.                           | `api-key-reader-approle`               |
-| {{< placeholder "APPROLE_ID" >}}        | AppRole ID for authenticating in OpenBao.              | `e633701e-893e-460d-8012-ea2afedbcd87` |
-| {{< placeholder "APPROLE_SECRET_ID" >}} | Secret ID associated with the AppRole.                 | `725d9076-5a5c-4921-98f7-7535c767386a` |
-| {{< placeholder "APPROLE_TOKEN" >}}     | API token retrieved from OpenBao using the AppRole.    | `s.36Yb3ijEOJbifprhdEiFtPhR`           |
-| {{< placeholder "SECRET_NAME" >}}       | Name of the secret to store in OpenBao.                | `llm-service`                          |
-| {{< placeholder "SECRET_KEY" >}}        | Key of the secret to store in OpenBao.                 | `key`                                  |
-| {{< placeholder "SECRET_VALUE" >}}      | Value of the secret to store in OpenBao.               | `0z7NUSJ6gHKoWLkO5q2%Zq1E1do%m&...`    |
+| Placeholder                             | Represents                                              | Example Value                          |
+|-----------------------------------------|---------------------------------------------------------|----------------------------------------|
+| {{< placeholder "AZURE_VAULT_NAME" >}}  | The name of the Azure Key Vault.                        | `my-app-vault`                         |
+| {{< placeholder "AZURE_SECRET_NAME" >}} | The name of a secret stored in Azure Key Vault.         | `LLM-service-key`                      |
+| {{< placeholder "POLICY_FILE" >}}       | The name of the file containing the OpenBao policy.     | `api-keys-secrets-policy.hcl`          |
+| {{< placeholder "SECRET_MOUNT_PATH" >}} | The KV mount path used in OpenBao to organize secrets.  | `api-keys`                             |
+| {{< placeholder "POLICY_NAME" >}}       | The internal name for the policy in OpenBao.            | `api-keys-secrets-policy`              |
+| {{< placeholder "APPROLE_NAME" >}}      | The name of the AppRole in OpenBao.                     | `api-key-reader-approle`               |
+| {{< placeholder "APPROLE_ID" >}}        | The role ID generated for the AppRole by OpenBao.       | `e633701e-893e-460d-8012-ea2afedbcd87` |
+| {{< placeholder "APPROLE_SECRET_ID" >}} | The secret ID generated for the AppRole by OpenBao.     | `725d9076-5a5c-4921-98f7-7535c767386a` |
+| {{< placeholder "APPROLE_TOKEN" >}}     | The API token retrieved from OpenBao using the AppRole. | `s.36Yb3ijEOJbifprhdEiFtPhR`           |
+| {{< placeholder "SECRET_NAME" >}}       | The name of the secret to store in OpenBao.             | `llm-service`                          |
+| {{< placeholder "SECRET_KEY" >}}        | The key of the secret to store in OpenBao.              | `key`                                  |
+| {{< placeholder "SECRET_VALUE" >}}      | The value of the secret to store in OpenBao.            | `0z7NUSJ6gHKoWLkO5q2%Zq1E1do%m&...`    |
 
 {{< note >}}
 All of the example values used in this guide are purely examples to mimic the format of actual secrets. These are *not* real credentials to any existing systems.
