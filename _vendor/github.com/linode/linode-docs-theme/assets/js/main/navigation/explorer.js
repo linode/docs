@@ -86,29 +86,75 @@ export function newSearchExplorerHydrated(searchConfig) {
 			facets: [],
 		},
 
+		// Flag to indicate if the explorer has been activated.
+		activated: false,
+
 		isActive: function () {
 			return this.isOpen() && this.$store.search.shouldShowHydratedExplorerAndIsHydrated();
 		},
 
-		init: async function () {
-			debug('newSearchExplorerHydrated.init');
-			const handleKeyOpenStack = () => {
-				let stack = this.$store.search.explorer.keyOpenStack;
-				debug('handleKeyOpenStack', stack.length);
-				if (!stack.length) {
+		init: function () {
+			let isInit = false;
+			let activate = () => {
+				if (isInit) {
 					return;
 				}
-				let nn = stack.pop();
-				let open = !nn.open;
-				let n = this.explorer.facets.find((n) => n.key === nn.key);
-				if (n && n.open != open) {
-					n.open = open;
-					if (open) {
-						openNodeAndCloseTheOthers(n, this.explorer.facets);
-					}
-				}
-				this.activateHydration();
+				isInit = true;
+				this.doActivate();
+				this.activated = true;
 			};
+
+			this.$watch('$store.search.results.main.result', (value) => {
+				activate();
+			});
+
+			this.$watch('$store.search.explorer.keyOpenStack', (value) => {
+				activate();
+				if (this.$store.search.explorer.hydrated) {
+					this.handleKeyOpenStack();
+				}
+			});
+
+			this.$watch(' $store.search.explorer.hydrated', (value) => {
+				this.handleKeyOpenStack();
+			});
+
+			this.doInit();
+		},
+
+		handleKeyOpenStack: function () {
+			if (!this.activated) {
+				return;
+			}
+			let stack = this.$store.search.explorer.keyOpenStack;
+			debugDev('handleKeyOpenStack', stack.length, this.explorer.facets.length);
+			if (!stack.length || !this.explorer.facets.length) {
+				return;
+			}
+
+			let nn = stack.pop();
+			let open = !nn.open;
+			let n = this.explorer.facets.find((n) => n.key === nn.key);
+			if (n && n.open != open) {
+				n.open = open;
+				if (open) {
+					openNodeAndCloseTheOthers(n, this.explorer.facets);
+				}
+			}
+			this.activateHydration();
+		},
+
+		doInit: function () {
+			debug('newSearchExplorerHydrated.doActivate');
+
+			this.$watch('$store.search.results.main.sectionFacets', (value) => {
+				debug('watch $store.search.results.main.sectionFacets');
+				updateFacetState(this.explorer.facets, value);
+			});
+		},
+
+		doActivate: function () {
+			debug('newSearchExplorerHydrated.doInit');
 
 			this.$store.search.withExplorerData((data) => {
 				let facets = data.blank.sectionFacets;
@@ -168,18 +214,9 @@ export function newSearchExplorerHydrated(searchConfig) {
 
 				this.explorer.rootNodes = rootNodes;
 
-				this.$watch('$store.search.results.main.sectionFacets', (value) => {
-					debug('watch $store.search.results.main.sectionFacets');
-					updateFacetState(this.explorer.facets, value);
-				});
-
-				this.$watch('$store.search.explorer.keyOpenStack', (value) => {
-					debug('$store.search.explorer.keyOpenStack', value);
-					handleKeyOpenStack();
-				});
-
 				this.openAndCloseNodes();
 				this.$store.search.explorer.hydrated = true;
+				debugDev('hydrated');
 			}, createExplorerNodeRequest);
 		},
 
@@ -224,18 +261,7 @@ export function newSearchExplorerHydrated(searchConfig) {
 				closeLevel(1, this.explorer.facets);
 			} else {
 				let hrefSection = pageInfo.hrefSection;
-				if (pageInfo.section === 'api') {
-					// The API section is currently a little special.
-					hrefSection = pageInfo.href;
-				} else if (pageInfo.href === '/docs/sections/') {
-					// E.g. blog, marketplace. These are static only on the first level.
-					// We need to open up the second level.
-					hrefSection = decodeURI(window.location.pathname);
-
-					// We don't have a static representation of these nodes.
-					this.activateHydration(true);
-				}
-				debugDev('openAndCloseNodes.hrefSection', hrefSection);
+				debug('openAndCloseNodes.hrefSection', hrefSection);
 				let currentNode = this.findNode(hrefSection);
 				if (currentNode) {
 					currentNode.open = currentNode.count > 0;
@@ -255,7 +281,6 @@ export function newSearchExplorerNode(searchConfig, node) {
 
 	let ctrl = {
 		node: node,
-		counter: 0,
 		state: {
 			childNodes: [],
 			pages: [], // Includes only visible pages.
@@ -409,7 +434,6 @@ export function newSearchExplorerNode(searchConfig, node) {
 						{
 							pronto: true,
 							query: query,
-							fileCacheID: self.node.key,
 						},
 					);
 				},
@@ -480,7 +504,7 @@ const findChildren = function (href, nodes) {
 };
 
 const openNodeAndCloseTheOthers = function (node, nodes) {
-	debugDev('openNodeAndCloseTheOthers', node.href);
+	debug('openNodeAndCloseTheOthers', node.href);
 	for (let i = 0; i < nodes.length; i++) {
 		let n = nodes[i];
 		if (node.href.startsWith(n.href)) {
@@ -489,7 +513,7 @@ const openNodeAndCloseTheOthers = function (node, nodes) {
 			n.open = false;
 		}
 		if (n.open) {
-			debugDev('openNodeAndCloseTheOthers.open', n.href);
+			debug('openNodeAndCloseTheOthers.open', n.href);
 		}
 	}
 };

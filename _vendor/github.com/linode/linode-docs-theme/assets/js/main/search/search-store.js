@@ -60,8 +60,6 @@ const createSectionFacetsSorted = function (searchConfig, result) {
 };
 
 export function newSearchStore(searchConfig, params, Alpine) {
-	let cacheWarmerUrls = params.search_cachewarmer_urls;
-
 	let setResult = function (result, loaded = true) {
 		let facets = createSectionFacetsSorted(searchConfig, result);
 		this.sectionFacets = facets;
@@ -84,7 +82,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 		results.lastQueryID = result.queryID;
 	};
 
-	const searcher = new Searcher(searchConfig, results.blank, cacheWarmerUrls, resultCallback, debug);
+	const searcher = new Searcher(searchConfig, results.blank, resultCallback, debug);
 	let searchEffectMain = null;
 	const router = newCreateHref(searchConfig);
 	const queryHandler = new QueryHandler();
@@ -298,7 +296,6 @@ export function newSearchStore(searchConfig, params, Alpine) {
 								},
 								{
 									query: query,
-									fileCacheID: sectionKey,
 								},
 							);
 						},
@@ -342,24 +339,15 @@ export function newSearchStore(searchConfig, params, Alpine) {
 						}, new Map());
 						markLoaded();
 					},
-					{
-						fileCacheID: 'sectionsmeta',
-					},
 				),
-				newRequestCallback(
-					createSectionRequest(null),
-					(result) => {
-						if (!result.index.endsWith('linode-merged')) {
-							throw `invalid state: ${result.index}`;
-						}
-						debug('withBlank.blank.result:', result);
-						this.results.blank.set(result, false);
-						markLoaded();
-					},
-					{
-						fileCacheID: 'explorer-blank',
-					},
-				),
+				newRequestCallback(createSectionRequest(null), (result) => {
+					if (!result.index.endsWith('linode-merged')) {
+						throw `invalid state: ${result.index}`;
+					}
+					debug('withBlank.blank.result:', result);
+					this.results.blank.set(result, false);
+					markLoaded();
+				}),
 			);
 		},
 	};
@@ -589,7 +577,7 @@ const normalizeResult = function (self, result) {
 };
 
 class SearchBatcher {
-	constructor(searchConfig, metaProvider, cacheWarmerUrls, resultCallback = (result) => {}) {
+	constructor(searchConfig, metaProvider, resultCallback = (result) => {}) {
 		const algoliaHost = `https://${searchConfig.app_id}-dsn.algolia.net`;
 		this.headers = {
 			'X-Algolia-Application-Id': searchConfig.app_id,
@@ -601,7 +589,6 @@ class SearchBatcher {
 		this.cacheEnabled = true;
 		this.metaProvider = metaProvider;
 		this.resultCallback = resultCallback;
-		this.cacheWarmerUrls = cacheWarmerUrls;
 		this.interval = () => {
 			return 100;
 		};
@@ -674,33 +661,6 @@ class SearchBatcher {
 		return { cacheMisses: cacheMisses, cacheMissesKeys: cacheMissesKeys };
 	}
 
-	async checkFileCache(fileCacheID) {
-		// Try the local file cache if found.
-		let fileCacheUrl = this.cacheWarmerUrls[fileCacheID];
-
-		if (fileCacheUrl) {
-			debug('fetch data from file cache:', fileCacheUrl);
-			const response = await fetch(fileCacheUrl, { credentials: 'same-origin' });
-
-			if (response.ok) {
-				let data = await response.json();
-				if (Array.isArray(data)) {
-					if (data.length > 0) {
-						// We currently don't want the branch nodes (in the explorer).
-						data = data.filter((item) => !item.isBranch);
-					}
-					data = {
-						hits: data,
-					};
-				}
-
-				normalizeResult(this, data);
-				return data;
-			}
-		}
-		return null;
-	}
-
 	async search(...requestCallbacks) {
 		debug('search, num requests:', requestCallbacks.length);
 		if (requestCallbacks.length === 0) {
@@ -732,21 +692,6 @@ class SearchBatcher {
 					rc.callback(cachedResult);
 					this.resultCallback(cachedResult);
 					continue;
-				}
-
-				if (!rc.isFiltered()) {
-					let fileCacheID = rc.getFileCacheID();
-					if (fileCacheID) {
-						let data = await this.checkFileCache(fileCacheID);
-						if (data) {
-							rc.callback(data);
-							this.resultCallback(data);
-							if (this.cacheEnabled) {
-								this.cache.set(rck, data);
-							}
-							continue;
-						}
-					}
 				}
 
 				requests.push(req);
@@ -803,8 +748,8 @@ class SearchBatcher {
 }
 
 class Searcher {
-	constructor(searchConfig, metaProvider, cacheWarmerUrls, resultCallback, debug = function () {}) {
-		this.batcher = new SearchBatcher(searchConfig, metaProvider, cacheWarmerUrls, resultCallback);
+	constructor(searchConfig, metaProvider, resultCallback, debug = function () {}) {
+		this.batcher = new SearchBatcher(searchConfig, metaProvider, resultCallback);
 	}
 
 	searchFactories(factories, query) {
