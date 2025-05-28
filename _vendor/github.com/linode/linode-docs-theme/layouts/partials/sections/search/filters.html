@@ -86,7 +86,7 @@
                       @change="apply()" />
                     <span
                       x-bind:class="{ 'text-titlecolor':  checkbox.checked || (!checkbox.checked && checkbox.count > 0), 'text-gray-400': !checkbox.checked && checkbox.count === 0 }"
-                      class="text-xxs font-semibold"
+                      class="text-xxs font-semibold capitalize"
                       style="letter-spacing: 0.07px;"
                       x-text="checkbox.title"></span>
                   </label>
