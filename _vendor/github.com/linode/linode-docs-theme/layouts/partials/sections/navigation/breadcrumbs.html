@@ -1,47 +1,19 @@
 {{ $p := .page }}
 {{ $wrap := .wrap }}
-{{ if and (not (eq $p.Type "sections") ) (not (eq $p.Type "content") ) }}
-  {{/* This is a fully static Hugo hosted page. Render the breadcrumbs statically. */}}
-  <nav class="breadcrumbs breadcrumbs-static text-sm" x-data>
-    <ol
-      class="list-none pb-0 inline-flex {{ if $wrap }}flex-wrap{{ end }} -mt-1">
-      {{ template "breadcrums-item" (dict "p1" $p "p2" $p ) }}
-      {{ $platformParent := partial "funcs/get-relation-platform-parent.html" $p }}
-      {{ if $platformParent }}
-        <li class="flex items-center mt-1">
-          {{ template "breadcrumbs-arrow" . }}
-          <a href="{{ $platformParent.page.Permalink }}" class="truncate"
-            >{{ $platformParent.page.LinkTitle }}</a
-          >
-        </li>
-      {{ end }}
-    </ol>
-  </nav>
-{{ else }}
-  <nav
-    class="breadcrumbs needs-js text-sm "
-    aria-label="breadcrumbs"
-    x-data="lncBreadcrumbs"
-    id="breadcrumbs-{{ $wrap }}">
-    <ol
-      class="list-none pb-0 inline-flex {{ if $wrap }}flex-wrap{{ end }} -mt-1">
+<nav class="breadcrumbs breadcrumbs-static text-sm" x-data>
+  <ol class="list-none pb-0 inline-flex {{ if $wrap }}flex-wrap{{ end }} -mt-1">
+    {{ template "breadcrums-item" (dict "p1" $p "p2" $p ) }}
+    {{ $platformParent := partial "funcs/get-relation-platform-parent.html" $p }}
+    {{ if $platformParent }}
       <li class="flex items-center mt-1">
-        {{ template "breadcrumbs-home" . }}
-        <template x-if="data.breadcrumbs.sections.length > 0">
-          {{ template "breadcrumbs-arrow" . }}
-        </template>
+        {{ template "breadcrumbs-arrow" . }}
+        <a href="{{ $platformParent.page.Permalink }}" class="truncate"
+          >{{ $platformParent.page.LinkTitle }}</a
+        >
       </li>
-      <template x-for="(b, i) in data.breadcrumbs.sections" :key="b.href">
-        <li class="flex items-center mt-1">
-          <a x-html="b.linkTitle" :href="b.href" class="truncate"></a>
-          <template x-if="i < (data.breadcrumbs.sections.length - 1)">
-            {{ template "breadcrumbs-arrow" . }}
-          </template>
-        </li>
-      </template>
-    </ol>
-  </nav>
-{{ end }}
+    {{ end }}
+  </ol>
+</nav>
 
 {{ define "breadcrumbs-home" }}
   <a
