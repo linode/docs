@@ -5,7 +5,7 @@ description: "This guide discusses design strategies and best practices for opti
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2024-09-27
-keywords: ['object storage','cdn','delivery','linode object storage','akamai cdn','akamai connected cloud','bucket architecture']
+keywords: ['object storage','cdn','delivery','linode object storage','akamai cdn','akamai cloud','bucket architecture']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Object Storage Product Documentation](https://techdocs.akamai.com/cloud-computing/docs/object-storage)'
@@ -13,7 +13,7 @@ external_resources:
 - '[Using Object Storage With Akamai CDN](/docs/guides/using-object-storage-with-akamai-cdn/)'
 ---
 
-Linode Object Storage can be an efficient, cost-effective solution for streaming and data delivery applications when used as an origin point for Akamai CDN. Since Object Storage is a part of Akamai Connected Cloud and uses the same backbone as Akamai CDN, egress can also be significantly reduced.
+Linode Object Storage can be an efficient, cost-effective solution for streaming and data delivery applications when used as an origin point for Akamai CDN. Since Object Storage is a part of Akamai Cloud and uses the same backbone as Akamai CDN, egress can also be significantly reduced.
 
 Your Object Storage bucket architecture is critical to performance success. In particular, distributing content across multiple buckets helps with load distribution, CDN optimization, and adds security benefits like segmentation and origin obfuscation. This guide walks through bucket design strategies using a commerce site example, including an optimal bucket architecture for Akamai CDN integration.
 
