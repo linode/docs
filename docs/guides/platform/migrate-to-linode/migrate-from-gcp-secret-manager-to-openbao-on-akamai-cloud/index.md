@@ -14,20 +14,20 @@ external_resources:
 - '[OpenBao Integrated Storage](https://openbao.org/docs/concepts/integrated-storage/)'
 ---
 
-Google Cloud Platform (GCP) Secret Manager securely stores sensitive data like API keys, passwords, and certificates. It integrates with other GCP services and simplifies access control through Identity and Access Management (IAM).
+[OpenBao](https://openbao.org/) is an open source secrets management tool and fork of [HashiCorp Vault](https://www.vaultproject.io/) that provides teams control over how secrets are stored, encrypted, and accessed. OpenBao can be self-hosted in any environment, including on-premises and across multiple clouds.
 
-[OpenBao](https://openbao.org/) is an open source fork of [HashiCorp Vault](https://www.vaultproject.io/). It gives teams full control over how secrets are stored, encrypted, and accessed. Unlike managed platforms, OpenBao can be self-hosted in any environment, including on-premises and across multiple clouds.
+[Google Cloud Platform (GCP) Secret Manager](https://cloud.google.com/security/products/secret-manager) is a managed secrets service that securely stores sensitive data like API keys, passwords, and certificates. It integrates with other GCP services and simplifies access control through Identity and Access Management (IAM).
 
-This guide explains how to migrate secrets from GCP Secret Manager to OpenBao running on Akamai Cloud.
+This guide provides steps and considerations for how to migrate secrets stored in GCP Secret Manager to OpenBao running on Akamai Cloud.
 
 ## Before You Begin
 
-1.  Follow our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide to create an Akamai Cloud account if you do not already have one.
+1.  Follow our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide to create an Akamai Cloud account if you do not already have one.
 
-1.  When migrating from GCP Secret Manager to OpenBao on Akamai Cloud, your deployment requirements determine whether to install OpenBao on a single Linode Instance or to deploy it in a fault-tolerant environment using the Linode Kubernetes Engine (LKE). Follow the appropriate guide below:
+1.  When migrating from GCP Secret Manager to OpenBao on Akamai Cloud, OpenBao should be deployed before you begin. OpenBao can be installed on a single Linode instance or deployed to a multi-node cluster using Linode Kubernetes Engine (LKE). Follow the appropriate guide below based on your production needs:
 
-    -   [Deploying OpenBao on a Linode Instance](https://docs.google.com/document/d/1x30v1xT_EDuRNnhE9jv5VkFqj9Lo4N3kNO6ICOoSrOM/edit?usp=sharing)
-    -   [Deploying OpenBao on Linode Kubernetes Engine](https://docs.google.com/document/d/1gS6hQg09Ufr1Ku0v528acLESnyj1ZpXTxLhkLIlP-u8/edit?usp=sharing)
+    -   [Deploying OpenBao on a Linode Instance](/docs/guides/deploying-openbao-on-a-linode-instance/)
+    -   [Deploy OpenBao on Linode Kubernetes Engine](/docs/guides/deploy-openbao-on-linode-kubernetes-engine/)
     -   [Deploying OpenBao through the Linode Marketplace](/docs/marketplace-docs/guides/openbao/)
 
 1.  Ensure that you have access to your GCP account with sufficient permissions to work with GCP Secret Manager. The [gcloud CLI](https://cloud.google.com/sdk/docs/install) must also be installed and configured.
@@ -38,7 +38,9 @@ This guide explains how to migrate secrets from GCP Secret Manager to OpenBao ru
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-Additionally, this guide contains a number of placeholders that are intended to be replaced by your own unique values. The table below lists these placeholders, what they represent, and the example values used in this guide:
+### Using This Guide
+
+This tutorial contains a number of placeholders that are intended to be replaced by your own unique values. For reference purposes, the table below lists these placeholders, what they represent, and the example values used in this guide:
 
 | Placeholder                             | Represents                                              | Example Value                          |
 |-----------------------------------------|---------------------------------------------------------|----------------------------------------|
@@ -55,8 +57,10 @@ Additionally, this guide contains a number of placeholders that are intended to 
 | {{< placeholder "SECRET_KEY" >}}        | The key of the secret to store in OpenBao               | `secret`                               |
 | {{< placeholder "SECRET_VALUE" >}}      | The value of the secret to store in OpenBao.            | `EU&&7O^#c2GAMIdRyJlZkPEdoWKgy%CW`     |
 
-{{< note >}}
-All of the example values used in this guide are purely examples to mimic the format of actual secrets. These are *not* real credentials to any existing systems.
+{{< note title="All Values Have Been Sanitized" >}}
+All of the example values used in this guide are purely examples to mimic and display the format of actual secrets. Nothing listed is a real credential to any existing system.
+
+When creating your own values, **do not** use any of the above credentials.
 {{< /note >}}
 
 ## Review Existing Secrets in GCP Secret Manager
@@ -65,7 +69,7 @@ Before migrating to OpenBao, evaluate how your organization currently uses GCP S
 
 For example, a web application might verify the signature of a JSON Web Token (JWT) using a secret key stored in GCP Secret Manager. Instead of embedding the secret in source code or container images, the application is granted a role that allows it to retrieve the secret at runtime. This protects the secret from being exposed through version control or CI/CD pipelines.
 
-OpenBao supports similar access workflows using dynamic injection, AppRole-based access control, and tight integration with Kubernetes workloads.
+OpenBao supports similar access workflows using dynamic injection, AppRole-based access control, and integration with Kubernetes workloads.
 
 {{< note type="warning" >}}
 Ensure that you securely handle any exported secrets, as they no longer benefit from encryption by GCP Secret Manager.
@@ -73,11 +77,11 @@ Ensure that you securely handle any exported secrets, as they no longer benefit 
 
 ### Review Secrets Using the GCP Console
 
-1.  Navigate to **Security > Secret Manager** to list secrets:
+1.  Navigate to **Security > Secret Manager** to list secrets. The example secrets below are used throughout this guide:
 
     ![GCP Secret Manager UI showing list of stored secrets.](gcp-secret-manager-secret-list.png)
 
-1.  Select a secret, open the latest version, and click **Actions > View secret value**:
+1.  To display a secret's value, select the secret, open the latest version, and click **Actions > View secret value**:
 
     ![GCP Secret Manager UI displaying how to value of a selected secret.](gcp-secret-manager-secret-value.png)
 

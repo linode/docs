@@ -13,31 +13,33 @@ external_resources:
 - '[OpenBao Integrated Storage](https://openbao.org/docs/concepts/integrated-storage/)'
 ---
 
-AWS Secrets Manager securely stores and retrieves sensitive information such as database credentials, API keys, and other application secrets.
+[OpenBao](https://openbao.org/) is an open source secrets management tool and fork of [HashiCorp Vault](https://www.vaultproject.io/) that provides teams control over how secrets are stored, encrypted, and accessed. OpenBao can be self-hosted in any environment, including on-premises and across multiple clouds.
 
-[OpenBao](https://openbao.org/) is an open source fork of [HashiCorp Vault](https://www.vaultproject.io/). It gives teams full control over how secrets are stored, encrypted, and accessed. Unlike managed platforms, OpenBao can be self-hosted in any environment, including on-premises and across multiple clouds.
+[AWS Secrets Manager](https://aws.amazon.com/secrets-manager/) is Amazon's platform-integrated, managed secrets service that securely stores and retrieves sensitive information such as database credentials, API keys, and other application secrets.
 
-This guide explains how to migrate secrets from AWS Secrets Manager to OpenBao running on Akamai Cloud.
+This guide provides steps and considerations for how to migrate secrets stored in AWS Secrets Manager to OpenBao running on Akamai Cloud.
 
 ## Before You Begin
 
-1.  Follow our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide to create an Akamai Cloud account if you do not already have one.
+1.  Follow our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide to create an Akamai Cloud account if you do not already have one.
 
 1.  Ensure that you have access to your AWS account with sufficient permissions to work with AWS Secrets Manager. The [AWS CLI](https://aws.amazon.com/cli/) and [`eksctl`](https://eksctl.io/) must also be installed and configured.
 
 1.  Install `jq`, a lightweight command line JSON processor.
 
-1.  When migrating from AWS Secrets Manager to OpenBao on Akamai Cloud, your deployment requirements determine whether to install OpenBao on a single Linode Instance or to deploy it in a fault-tolerant environment using the Linode Kubernetes Engine (LKE). Follow the appropriate guide below:
+1.  When migrating from AWS Secrets Manager to OpenBao on Akamai Cloud, OpenBao should be deployed before you begin. OpenBao can be installed on a single Linode instance or deployed to a multi-node cluster using Linode Kubernetes Engine (LKE). Follow the appropriate guide below based on your production needs:
 
-    -   [Deploying OpenBao on a Linode Instance](https://docs.google.com/document/d/1x30v1xT_EDuRNnhE9jv5VkFqj9Lo4N3kNO6ICOoSrOM/edit?usp=sharing)
-    -   [Deploying OpenBao on Linode Kubernetes Engine](https://docs.google.com/document/d/1gS6hQg09Ufr1Ku0v528acLESnyj1ZpXTxLhkLIlP-u8/edit?usp=sharing)
+    -   [Deploying OpenBao on a Linode Instance](/docs/guides/deploying-openbao-on-a-linode-instance/)
+    -   [Deploy OpenBao on Linode Kubernetes Engine](/docs/guides/deploy-openbao-on-linode-kubernetes-engine/)
     -   [Deploying OpenBao through the Linode Marketplace](/docs/marketplace-docs/guides/openbao/)
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-Additionally, this guide contains a number of placeholders that are intended to be replaced by your own unique values. The table below lists these placeholders, what they represent, and the example values used in this guide:
+### Using This Guide
+
+This tutorial contains a number of placeholders that are intended to be replaced by your own unique values. For reference purposes, the table below lists these placeholders, what they represent, and the example values used in this guide:
 
 | Placeholder                             | Represents                                               | Example Value                                              |
 |-----------------------------------------|----------------------------------------------------------|------------------------------------------------------------|
@@ -53,8 +55,10 @@ Additionally, this guide contains a number of placeholders that are intended to 
 | {{< placeholder "SECRET_KEY" >}}        | The key of the secret to store in OpenBao.               | `username`, `password`, `engine`, `host`, `port`, `dbname` |
 | {{< placeholder "SECRET_VALUE" >}}      | The value of the secret to store in OpenBao.             | `psqluser`, `W0H@Z52IGI0VjqoGS3xMkJ9SO533w$fcfrmzs.vault-tokenTudDxEe\#`, `postgres`, `psql.example-cloud.com`, `5432`, `web_app_production` |
 
-{{< note >}}
-All of the example values used in this guide are purely examples to mimic the format of actual secrets. These are *not* real credentials to any existing systems.
+{{< note title="All Values Have Been Sanitized" >}}
+All of the example values used in this guide are purely examples to mimic and display the format of actual secrets. Nothing listed is a real credential to any existing system.
+
+When creating your own values, **do not** use any of the above credentials.
 {{< /note >}}
 
 ## Review Existing Secrets in AWS Secrets Manager
@@ -63,7 +67,7 @@ Before migrating to OpenBao, evaluate how your organization currently uses AWS S
 
 For example, a web application might rely on database credentials stored in AWS Secrets Manager. Rather than embedding these credentials in source code or container images, the application is assigned a role that allows it to retrieve them securely at runtime. This prevents secrets from being exposed through version control or CI/CD pipelines.
 
-OpenBao supports similar access workflows using dynamic injection, AppRole-based access control, and tight integration with Kubernetes workloads.
+OpenBao supports similar access workflows using dynamic injection, AppRole-based access control, and integration with Kubernetes workloads.
 
 {{< note type="warning" >}}
 Ensure that you securely handle any exposed secrets, as they no longer benefit from encryption by AWS Secrets Manager.
@@ -71,7 +75,9 @@ Ensure that you securely handle any exposed secrets, as they no longer benefit f
 
 ### Review Secrets Using the AWS Console
 
-In the AWS Secrets Manager dashboard, review your existing secrets.
+In the **AWS Secrets Manager** dashboard, navigate to the **Secrets** menu to review your existing secrets and their descriptions.
+
+The below example secrets are used throughout this guide.
 
 ![AWS Secrets Manager showing list of stored secrets.](aws-secrets-manager-dashboard.png)
 
@@ -79,7 +85,7 @@ In the AWS Secrets Manager dashboard, review your existing secrets.
 
 Alternatively, the AWS CLI can quickly provide insight into existing secrets and their usage.
 
-1.  Run the following command to list all secrets:
+1.  Run the following AWS CLI command to list all secrets:
 
     ```command
     aws secretsmanager list-secrets --query 'SecretList[*].Name'
@@ -93,7 +99,7 @@ Alternatively, the AWS CLI can quickly provide insight into existing secrets and
     ]
     ```
 
-1.  To retrieve the secret value for a specific secret, use the {{< placeholder "AWS_SECRET_NAME" >}} (e.g. `jwt-signing-secret`) with the `get-secret-value` command:
+1.  To retrieve the value for a specific secret, use the {{< placeholder "AWS_SECRET_NAME" >}} (e.g. `jwt-signing-secret`) with the `get-secret-value` command:
 
     ```command
     aws secretsmanager get-secret-value \
@@ -126,7 +132,7 @@ Alternatively, the AWS CLI can quickly provide insight into existing secrets and
 
 In AWS Secrets Manager, secrets are stored either as key/value pairs or as plaintext. In the previous example, the single `psql-credentials` secret is a set of key/value pairs.
 
-AWS Secrets Manager uses AWS IAM to control access to secrets. As an example of role-based access control (RBAC), a role such as `DatabaseReader` might have an attached policy that allows the `secretsmanager:GetSecretValue` action on the `psql-credentials` resource. Here, the web application that accesses the database would be given the `DatabaseReader` role so that it can obtain the secret values that allow it to connect to the database.
+AWS Secrets Manager uses AWS Identity and Access Management (IAM) to control access to secrets. As an example of role-based access control (RBAC), a role such as `DatabaseReader` might have an attached policy that allows the `secretsmanager:GetSecretValue` action on the `psql-credentials` resource. Here, the web application that accesses the database would be given the `DatabaseReader` role so that it can obtain the secret values that allow it to connect to the database.
 
 Replicating this setup using OpenBao involves creating an [application role (AppRole)](https://openbao.org/docs/auth/approle/) to take the place of the AWS IAM role. This allows applications to use an API token associated with the AppRole to authenticate requests for the secret.
 

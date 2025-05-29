@@ -14,20 +14,20 @@ external_resources:
 - '[OpenBao Integrated Storage](https://openbao.org/docs/concepts/integrated-storage/)'
 ---
 
-Azure Key Vault secures secrets, keys, and certificates for application security and compliance in Microsoft Azure. It provides centralized control and access policies so that developers and security teams can safeguard sensitive information such as API keys or passwords.
+[OpenBao](https://openbao.org/) is an open source secrets management tool and fork of [HashiCorp Vault](https://www.vaultproject.io/) that provides teams control over how secrets are stored, encrypted, and accessed. OpenBao can be self-hosted in any environment, including on-premises and across multiple clouds.
 
-[OpenBao](https://openbao.org/) is an open source fork of [HashiCorp Vault](https://www.vaultproject.io/). It gives teams full control over how secrets are stored, encrypted, and accessed. Unlike managed platforms, OpenBao can be self-hosted in any environment, including on-premises and across multiple clouds.
+[Azure Key Vault](https://azure.microsoft.com/en-us/products/key-vault) is a managed secrets service that secures secrets, keys, and certificates for application security and compliance on the Microsoft Azure platform. It provides centralized control and access policies so that developers and security teams can safeguard sensitive information such as API keys or passwords.
 
-This guide explains how to migrate secrets stored in Azure Key Vault to OpenBao running on Akamai Cloud.
+This guide provides steps and considerations for how to migrate secrets stored in Azure Key Vault to OpenBao running on Akamai Cloud.
 
 ## Before You Begin
 
-1.  Follow our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide to create an Akamai Cloud account if you do not already have one.
+1.  Follow our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide to create an Akamai Cloud account if you do not already have one.
 
-1.  When migrating from Azure Key Vault to OpenBao on Akamai Cloud, your deployment requirements determine whether to install OpenBao on a single Linode Instance or to deploy it in a fault-tolerant environment using the Linode Kubernetes Engine (LKE). Follow the appropriate guide below:
+1.  When migrating from Azure Key Vault to OpenBao on Akamai Cloud, OpenBao should be deployed before you begin. OpenBao can be installed on a single Linode instance or deployed to a multi-node cluster using Linode Kubernetes Engine (LKE). Follow the appropriate guide below based on your production needs:
 
-    -   [Deploying OpenBao on a Linode Instance](https://docs.google.com/document/d/1x30v1xT_EDuRNnhE9jv5VkFqj9Lo4N3kNO6ICOoSrOM/edit?usp=sharing)
-    -   [Deploying OpenBao on Linode Kubernetes Engine](https://docs.google.com/document/d/1gS6hQg09Ufr1Ku0v528acLESnyj1ZpXTxLhkLIlP-u8/edit?usp=sharing)
+    -   [Deploying OpenBao on a Linode Instance](/docs/guides/deploying-openbao-on-a-linode-instance/)
+    -   [Deploy OpenBao on Linode Kubernetes Engine](/docs/guides/deploy-openbao-on-linode-kubernetes-engine/)
     -   [Deploying OpenBao through the Linode Marketplace](/docs/marketplace-docs/guides/openbao/)
 
 1.  Ensure that you have access to your Azure account with sufficient permissions to work with Azure Key Vault. The [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) must also be installed and configured.
@@ -38,7 +38,9 @@ This guide explains how to migrate secrets stored in Azure Key Vault to OpenBao 
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-Additionally, this guide contains a number of placeholders that are intended to be replaced by your own unique values. The table below lists these placeholders, what they represent, and the example values used in this guide:
+### Using This Guide
+
+This tutorial contains a number of placeholders that are intended to be replaced by your own unique values. For reference purposes, the table below lists these placeholders, what they represent, and the example values used in this guide:
 
 | Placeholder                             | Represents                                              | Example Value                          |
 |-----------------------------------------|---------------------------------------------------------|----------------------------------------|
@@ -55,8 +57,10 @@ Additionally, this guide contains a number of placeholders that are intended to 
 | {{< placeholder "SECRET_KEY" >}}        | The key of the secret to store in OpenBao.              | `key`                                  |
 | {{< placeholder "SECRET_VALUE" >}}      | The value of the secret to store in OpenBao.            | `0z7NUSJ6gHKoWLkO5q2%Zq1E1do%m&...`    |
 
-{{< note >}}
-All of the example values used in this guide are purely examples to mimic the format of actual secrets. These are *not* real credentials to any existing systems.
+{{< note title="All Values Have Been Sanitized" >}}
+All of the example values used in this guide are purely examples to mimic and display the format of actual secrets. Nothing listed is a real credential to any existing system.
+
+When creating your own values, **do not** use any of the above credentials.
 {{< /note >}}
 
 ## Review Existing Secrets in Azure Key Vault
@@ -73,16 +77,16 @@ Ensure that you securely handle any exposed secrets, as they no longer benefit f
 
 ### Review Secrets Using the Azure Portal
 
-1.  Navigate to your key vault and open the **Secrets** tab:
+1.  Navigate to your key vault and open the **Secrets** tab. The example secrets below are used throughout this guide:
 
     ![Azure Key Vault UI showing list of secrets.](azure-key-vault-secret-list.png)
 
-1.  Select a secret, choose the latest version, then click **Show Secret Value**:
+1.  To display a secret's value, select the secret, choose the latest version, and then click **Show Secret Value**:
 
     ![Azure Key Vault UI showing how to view the value of a selected secret.](azure-key-vault-secret-value.png)
 
 {{< note >}}
-Azure uses IAM with role based access control (RBAC) to manage which users and services can access secrets.
+Azure uses identity and access management (IAM) with role based access control (RBAC) to manage which users and services can access secrets.
 
 For example, an Azure VM within your Resource Group might need access to the LLM service API key stored within your vault. The VM would be assigned the [`Key Vault Secrets User` role](https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide?tabs=azure-cli#azure-built-in-roles-for-key-vault-data-plane-operations), allowing it to read the contents of secrets in the vault.
 
