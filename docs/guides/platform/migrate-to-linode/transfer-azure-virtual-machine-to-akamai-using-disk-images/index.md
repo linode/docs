@@ -634,7 +634,7 @@ This guide covered migrating a VM by exporting an image from the original Azure 
 ## Resources
 
 Azure:
--   [Azure CLI (az) Documentation](https://learn.microsoft.com/en-us/cli/azure/)
+-   [Azure CLI (`az`) Documentation](https://learn.microsoft.com/en-us/cli/azure/)
 -   Downloading a VHD from Azure
     -   [Linux](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/download-vhd)
     -   [Windows](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/download-vhd?tabs=azure-portal)
