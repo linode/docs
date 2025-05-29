@@ -3,8 +3,9 @@ slug: manually-deploy-kafka-cluster
 title: "Manually Deploy an Apache Kafka Cluster on Akamai"
 description: "Learn how to deploy and test a secure Apache Kafka cluster on Akamai using provided, customizable Ansible playbooks."
 authors: ["John Dutton","Elvis Segura"]
-contributors: ["John Dutton","Elvis Segura"]
+contributors: ["John Dutton","Elvis Segura","Philip Tellis","Nathan Melehan"]
 published: 2024-11-20
+modified: 2025-05-29
 keywords: ['apache kafka','kafka','data stream','stream management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
