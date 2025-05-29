@@ -53,6 +53,7 @@ alphanumerics
 amavis
 amavisd
 amd64
+AMIs
 ananke
 aniszczyk
 anonymization
@@ -520,6 +521,7 @@ dcid
 dcs
 deadman
 deallocated
+deallocating
 deallocation
 deathmatch
 debconf
@@ -905,6 +907,7 @@ gopwt
 goroutine
 goroutines
 goto
+gparted
 gpasswd
 gpc
 gpg
