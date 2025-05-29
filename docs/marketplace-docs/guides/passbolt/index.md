@@ -16,7 +16,7 @@ This Marketplace App deploys the latest unmodified version of [Passbolt Communit
 
 {{< note >}}
 Passbolt and the Passbolt logo are registered trademarks of Passbolt S.A.
-This service is provided by Akamai Connected Cloud and is not affiliated with Passbolt S.A.
+This service is provided by Akamai and is not affiliated with Passbolt S.A.
 {{< /note >}}
 
 ## Deploying a Marketplace App
@@ -45,7 +45,7 @@ To start registration follow the link provided in `/etc/motd` to visit the DNS y
 ```output
 cat /etc/motd
 *********************************************************
-Akamai Connected Cloud passbolt Marketplace App
+Akamai Cloud passbolt Marketplace App
 
 Registering admin user: https://$DNS_NAME/setup/start/$UUID
 

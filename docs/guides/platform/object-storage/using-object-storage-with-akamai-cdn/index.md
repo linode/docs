@@ -1,11 +1,11 @@
 ---
 slug: using-object-storage-with-akamai-cdn
 title: "Using Object Storage With Akamai CDN"
-description: "This guide presents the benefits and strategies for pairing Linode Object Storage with Akamai CDN for data delivery."
+description: "This guide presents the benefits, strategies, and high-level architectures for using Object Storage on Akamai Cloud with Akamai CDN for data delivery."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2024-09-27
-keywords: ['object storage','cdn','delivery','linode object storage','akamai cdn','akamai connected cloud']
+keywords: ['object storage','cdn','delivery','object storage','akamai cdn','akamai cloud']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Object Storage Product Documentation](https://techdocs.akamai.com/cloud-computing/docs/object-storage)'
@@ -14,9 +14,9 @@ external_resources:
 
 Object storage stores data in an unstructured, flat format where data is stored as “objects”. Object storage is cheaper than block storage, and it can be especially useful for large volumes of unstructured data like photos, videos, documents, web pages, sensor data, and audio files. Cloud-based object storage systems distribute this unstructured data across multiple physical devices for redundancy, while users are able to access the content from a single interface. Object storage is HTTP accessible and ideal for building cloud-native applications that require scale and flexibility, as well as storage for application artifacts like analytics, backups, and archives.
 
-With its reliability and cost-effectiveness, Linode Object Storage can be coupled with Akamai’s content delivery network (CDN) to create a viable solution for applications that need to serve large files and large amounts of data. This includes video on demand (VOD) streaming, ecommerce, firmware update distribution, media-based website content, and other applications.
+With its reliability and cost-effectiveness, Object Storage on Akamai Cloud can be coupled with Akamai’s content delivery network (CDN) to create a viable solution for applications that need to serve large files and large amounts of data. This includes video on demand (VOD) streaming, ecommerce, firmware update distribution, media-based website content, and other applications.
 
-The solution presented in this guide focuses on the architectural best practices for designing and operating reliable, secure, efficient, and sustainable content storage and delivery systems using [Linode Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage) on Akamai Connected Cloud with [Akamai CDN](https://techdocs.akamai.com/platform-basics/docs/content-delivery).
+The solution presented in this guide focuses on the architectural best practices for designing and operating reliable, secure, efficient, and sustainable content storage and delivery systems using [Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage) on Akamai Cloud with [Akamai CDN](https://techdocs.akamai.com/platform-basics/docs/content-delivery).
 
 ## Object Storage For Data Delivery
 
@@ -72,7 +72,7 @@ Object storage can’t scale linearly with the number of users, but using it as 
 
 ### CDN-Based Distributed Architecture
 
-In the CDN-based architectures below, Akamai CDN lives between end users and the origin data point. As end users request information, Akamai CDN sources and caches data from Linode Object Storage on Akamai Connected Cloud, and then serves that data from an edge server close to the end user.
+In the CDN-based architectures below, Akamai CDN lives between end users and the origin data point. As end users request information, Akamai CDN sources and caches data from Object Storage on Akamai Cloud, and then serves that data from an edge server close to the end user.
 
 In this scenario, latency is reduced, users never need to interact with the origin, and the object storage infrastructure remains protected and optimized for efficiency and growth.
 
@@ -82,7 +82,7 @@ In this scenario, latency is reduced, users never need to interact with the orig
 
 ## Benefits of Using Akamai CDN with Object Storage for Data Delivery
 
-Akamai Connected Cloud brings content closer to end-users and offers several technical benefits for streaming applications, including:
+Akamai brings content closer to end-users and offers several technical benefits for streaming applications, including:
 
 -   Audience and end-user geographic reach
 -   Programmability through well-defined APIs
@@ -93,11 +93,11 @@ Akamai Connected Cloud brings content closer to end-users and offers several tec
 -   Enhanced data durability and availability through replication and distribution mechanisms
 -   Limiting reliance on transit networks
 -   Origin offloading, content caching, and reduced latency
--   Significantly reduced object storage-based egress costs since no egress is imposed between Linode Object Storage and Akamai CDN
+-   Significantly reduced object storage-based egress costs since no egress is imposed between Object Storage on Akamai Cloud and Akamai CDN
 
 Object storage is a standardized, key component in many content production tools, enabling seamless integration and organization of large amounts of files. Its interoperability across various applications, tools, and workflows ensures data is centralized and easily accessible. Object storage simplifies content distribution and backup processes, and it provides a secure, cost-effective method for storing and sharing large volumes of unstructured data.
 
-When architected properly and paired with Akamai’s CDN, Linode Object Storage allows for fast, efficient access to vast libraries of content connected on the same backbone. This results in readily available content - a crucial factor for streaming and other data delivery workflows.
+When architected properly and paired with Akamai’s CDN, Object Storage on Akamai Cloud allows for fast, efficient access to vast libraries of content connected on the same backbone. This results in readily available content - a crucial factor for streaming and other data delivery workflows.
 
 ## Next Steps
 

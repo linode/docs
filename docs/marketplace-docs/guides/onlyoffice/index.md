@@ -23,13 +23,13 @@ marketplace_app_name: "ONLYOFFICE Docs"
 {{% content "marketplace-verify-standard-shortguide" %}}
 
 {{<note>}}
-**Estimated deployment time:** ONLYOFFICE Docs should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
+**Estimated deployment time:** ONLYOFFICE Docs should be fully installed within 15-25 minutes after the Compute Instance has finished provisioning.
 {{</note>}}
 
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 22.04 LTS
-- **Recommended plan:** All plan types and sizes can be used.
+- **Recommended plan:** 2GB Shared CPU Compute Instance or higher required for this deployment.
 
 ### ONLYOFFICE Docs Options
 
