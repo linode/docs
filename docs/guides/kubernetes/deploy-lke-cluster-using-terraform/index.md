@@ -54,13 +54,30 @@ In this section, you will create Terraform configuration files that define the r
 
 [LKE Enterprise](https://techdocs.akamai.com/cloud-computing/docs/lke-enterprise) is Akamai's enterprise-grade managed Kubernetes offering and has a specific set of requirements and recommendations for successful deployment:
 
--   **Availability**: As of this writing, LKE Enterprise is in limited availability and only deployable in the Dallas, TX region.
-
-    The region ID for the Dallas compute region is `us-central`. A full list of region IDs can be found on our [Availability](https://www.linode.com/global-infrastructure/availability/) page.
-
 -   **Plan type**: In order to accommodate production-level enterprise workloads that require high network performance, [Premium CPU](https://www.linode.com/pricing/#compute-premium) plans are highly recommended for LKE Enterprise clusters.
 
 -   **Specify the tier**: When creating an LKE Enterprise cluster using Terraform, the [`tier`](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/lke_cluster) argument must be [defined as a variable](#define-your-input-variables) and [assigned the value](#assign-values-to-your-input-variables) `"enterprise"` in order for the cluster to be successfully deployed.
+
+-   **Availability**: As of this writing, LKE Enterprise is in limited availability and only deployable in the below regions:
+
+    | Region | Region ID |
+    | -- | -- |
+    | **Amsterdam, NL** | nl-ams |
+    | **Chennai, IN** | in-maa |
+    | **Chicago, IL** | us-ord |
+    | **London, UK** | eu-west |
+    | **Los Angeles, CA** | us-lax |
+    | **Miami, FL** | us-mia |
+    | **Milan, IT** | it-mil |
+    | **Osaka, JP** | jp-osa |
+    | **Paris, FR** | fr-par |
+    | **São Paulo, BR** | br-gru |
+    | **Seattle, WA** | us-sea |
+    | **Singapore Expansion, SP** | sg-sin-2 |
+    | **Stockholm, SE** | se-sto |
+    | **Washington, DC** | us-iad |
+
+    A full list of regions and region IDs can be found on our [Availability](https://www.linode.com/global-infrastructure/availability/) page.
 
 ### Create your Resource Configuration File
 
