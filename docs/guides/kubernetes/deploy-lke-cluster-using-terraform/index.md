@@ -3,7 +3,7 @@ slug: deploy-lke-cluster-using-terraform
 title: "Deploy a Linode Kubernetes Engine Cluster Using Terraform"
 description: "In this tutorial, you'll deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Terraform."
 published: 2020-05-05
-modified: 2023-02-09
+modified: 2025-05-30
 authors: ['Linode']
 contributors: ['Linode']
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
@@ -11,8 +11,9 @@ keywords: ['kubernetes','terraform','infrastructure as code','container orchestr
 tags: ["linode platform","kubernetes","automation","managed hosting"]
 image: deploy-lke-cluster-with-terraform.png
 external_resources:
+- '[LKE Product Documentation](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine)'
+- '[LKE Enterprise Product Documentation](https://techdocs.akamai.com/cloud-computing/docs/lke-enterprise)'
 - '[Setting Up a Private Docker Registry with Linode Kubernetes Engine and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)'
-- '[Deploying a Static Site on Linode Kubernetes Engine](/docs/guides/how-to-deploy-a-static-site-on-linode-kubernetes-engine/)'
 - '[Linode Provider Terraform Documentation](https://www.terraform.io/docs/providers/linode/index.html)'
 aliases: ['/kubernetes/how-to-deploy-an-lke-cluster-using-terraform/','/guides/how-to-deploy-an-lke-cluster-using-terraform/','/products/compute/kubernetes/guides/deploy-cluster-using-terraform/']
 ---
@@ -48,6 +49,18 @@ Install Terraform on your computer by following the [Install Terraform](/docs/gu
 ## Create your Terraform Configuration Files
 
 In this section, you will create Terraform configuration files that define the resources needed to create a Kubernetes cluster. You will create a `main.tf` file to store your [resource declarations](https://www.terraform.io/docs/configuration/resources.html), a `variables.tf` file to store your [input variable](https://www.terraform.io/docs/configuration/variables.html) definitions, and a `terraform.tfvars` file to [assign values](https://www.terraform.io/docs/configuration/variables.html#variable-definitions-tfvars-files) to your input variables. Setting up your Terraform project in this way will allow you to reuse your configuration files to deploy more Kubernetes clusters, if desired.
+
+### LKE Enterprise Clusters
+
+[LKE Enterprise](https://techdocs.akamai.com/cloud-computing/docs/lke-enterprise) is Akamai's enterprise-grade managed Kubernetes offering and has a specific set of requirements and recommendations for successful deployment:
+
+-   **Availability**: As of this writing, LKE Enterprise is in limited availability and only deployable in the Dallas, TX region.
+
+    The region ID for the Dallas compute region is `us-central`. A full list of region IDs can be found on our [Availability](https://www.linode.com/global-infrastructure/availability/) page.
+
+-   **Plan type**: In order to accommodate production-level enterprise workloads that require high network performance, [Premium CPU](https://www.linode.com/pricing/#compute-premium) plans are highly recommended for LKE Enterprise clusters.
+
+-   **Specify the tier**: When creating an LKE Enterprise cluster using Terraform, the [`tier`](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/lke_cluster) argument must be [defined as a variable](#define-your-input-variables) and [assigned the value](#assign-values-to-your-input-variables) `"enterprise"` in order for the cluster to be successfully deployed.
 
 ### Create your Resource Configuration File
 
@@ -202,8 +215,8 @@ You will now need to define the values you would like to use in order to create 
 
     ```file {title="~/terraform/lke-cluster/terraform.tfvars"}
     label = "example-lke-cluster"
-    k8s_version = "1.26"
-    region = "us-west"
+    k8s_version = "1.32"
+    region = "us-central"
     pools = [
       {
         type : "g6-standard-2"
@@ -212,7 +225,7 @@ You will now need to define the values you would like to use in order to create 
     ]
     ```
 
-    Terraform will use the values in this file to create a new Kubernetes cluster with one node pool that contains three 4 GB nodes. The cluster will be located in the `us-west` data center (Dallas, Texas, USA). Each node in the cluster's node pool will use Kubernetes version `1.25` and the cluster will be named `example-lke-cluster`. You can replace any of the values in this file with your own preferred cluster configurations.
+    Terraform will use the values in this file to create a new Kubernetes cluster with one node pool that contains three 4 GB nodes. The cluster will be located in the `us-central` data center (Dallas, Texas, USA). Each node in the cluster's node pool will use Kubernetes version `1.32` and the cluster will be named `example-lke-cluster`. You can replace any of the values in this file with your own preferred cluster configurations.
 
 ## Deploy your Kubernetes Cluster
 
