@@ -11,6 +11,7 @@ external_resources:
 - '[AWS Secrets Manager Documentation](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)'
 - '[OpenBao Configuration Documentation](https://openbao.org/docs/configuration/)'
 - '[OpenBao Integrated Storage](https://openbao.org/docs/concepts/integrated-storage/)'
+- '[OpenBao GitHub](https://github.com/openbao/openbao)'
 ---
 
 [OpenBao](https://openbao.org/) is an open source secrets management tool and fork of [HashiCorp Vault](https://www.vaultproject.io/) that provides teams control over how secrets are stored, encrypted, and accessed. OpenBao can be self-hosted in any environment, including on-premises and across multiple clouds.
@@ -23,7 +24,7 @@ This guide provides steps and considerations for how to migrate secrets stored i
 
 1.  Follow our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide to create an Akamai Cloud account if you do not already have one.
 
-1.  Ensure that you have access to your AWS account with sufficient permissions to work with AWS Secrets Manager. The [AWS CLI](https://aws.amazon.com/cli/) and [`eksctl`](https://eksctl.io/) must also be installed and configured.
+1.  Ensure that you have access to your AWS cloud platform account with sufficient permissions to work with AWS Secrets Manager. The [AWS CLI](https://aws.amazon.com/cli/) and [`eksctl`](https://eksctl.io/) must also be installed and configured.
 
 1.  Install `jq`, a lightweight command line JSON processor.
 
@@ -34,7 +35,7 @@ This guide provides steps and considerations for how to migrate secrets stored i
     -   [Deploying OpenBao through the Linode Marketplace](/docs/marketplace-docs/guides/openbao/)
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/guides/linux-users-and-groups/) doc.
 {{< /note >}}
 
 ### Using This Guide
@@ -70,7 +71,7 @@ For example, a web application might rely on database credentials stored in AWS 
 OpenBao supports similar access workflows using dynamic injection, AppRole-based access control, and integration with Kubernetes workloads.
 
 {{< note type="warning" >}}
-Ensure that you securely handle any exposed secrets, as they no longer benefit from encryption by AWS Secrets Manager.
+Ensure that you securely handle any exposed secrets or other sensitive data, as they no longer benefit from encryption by AWS Secrets Manager.
 {{< /note >}}
 
 ### Review Secrets Using the AWS Console
@@ -130,7 +131,7 @@ Alternatively, the AWS CLI can quickly provide insight into existing secrets and
     }
     ```
 
-In AWS Secrets Manager, secrets are stored either as key/value pairs or as plaintext. In the previous example, the single `psql-credentials` secret is a set of key/value pairs.
+AWS Secrets Manager secrets are stored either as key/value pairs or as plaintext. In the previous example, the single `psql-credentials` secret is a set of key/value pairs.
 
 AWS Secrets Manager uses AWS Identity and Access Management (IAM) to control access to secrets. As an example of role-based access control (RBAC), a role such as `DatabaseReader` might have an attached policy that allows the `secretsmanager:GetSecretValue` action on the `psql-credentials` resource. Here, the web application that accesses the database would be given the `DatabaseReader` role so that it can obtain the secret values that allow it to connect to the database.
 
@@ -470,7 +471,7 @@ Create the secret store defined in the policy created above.
 
 ## Production Considerations
 
-When migrating from AWS Secrets Manager to OpenBao on Akamai Cloud, it's important to ensure your deployment is secure, resilient, and optimized for performance. This section covers key security and high availability considerations to help you maintain a reliable and protected secrets management system.
+When migrating workloads from AWS Secrets Manager across providers to OpenBao on Akamai Cloud, it's important to ensure your deployment is secure, resilient, and optimized for performance. This section covers key security and high availability considerations to help you maintain a reliable and protected secrets management system.
 
 ### Security
 

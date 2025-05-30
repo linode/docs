@@ -12,6 +12,7 @@ external_resources:
 - '[Azure `az` CLI Documentation](https://learn.microsoft.com/en-us/cli/azure/)'
 - '[OpenBao Configuration Documentation](https://openbao.org/docs/configuration/)'
 - '[OpenBao Integrated Storage](https://openbao.org/docs/concepts/integrated-storage/)'
+- '[OpenBao GitHub](https://github.com/openbao/openbao)'
 ---
 
 [OpenBao](https://openbao.org/) is an open source secrets management tool and fork of [HashiCorp Vault](https://www.vaultproject.io/) that provides teams control over how secrets are stored, encrypted, and accessed. OpenBao can be self-hosted in any environment, including on-premises and across multiple clouds.
@@ -30,12 +31,12 @@ This guide provides steps and considerations for how to migrate secrets stored i
     -   [Deploy OpenBao on Linode Kubernetes Engine](/docs/guides/deploy-openbao-on-linode-kubernetes-engine/)
     -   [Deploying OpenBao through the Linode Marketplace](/docs/marketplace-docs/guides/openbao/)
 
-1.  Ensure that you have access to your Azure account with sufficient permissions to work with Azure Key Vault. The [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) must also be installed and configured.
+1.  Ensure that you have access to your Azure cloud platform account with sufficient permissions to work with Azure Key Vault. The [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) must also be installed and configured.
 
 1.  Install `jq`, a lightweight command line JSON processor.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/guides/linux-users-and-groups/) doc.
 {{< /note >}}
 
 ### Using This Guide
@@ -72,7 +73,7 @@ For example, an application that uses third-party services (e.g. an LLM platform
 OpenBao offers similar capabilities using role-based access, dynamic injection, and integration with Kubernetes.
 
 {{< note type="warning" >}}
-Ensure that you securely handle any exposed secrets, as they no longer benefit from encryption by Azure Key Vault.
+Ensure that you securely handle any exposed secrets or other sensitive data, as they no longer benefit from encryption by Azure Key Vault.
 {{< /note >}}
 
 ### Review Secrets Using the Azure Portal
@@ -460,7 +461,7 @@ Create the secret store defined in the policy created above.
 
 ## Production Considerations
 
-When migrating from Azure Key Vault to OpenBao on Akamai Cloud, it's important to ensure your deployment is secure, resilient, and optimized for performance. This section covers key security and high availability considerations to help you maintain a reliable and protected secrets management system.
+When migrating workloads from Azure Key Vault across providers to OpenBao on Akamai Cloud, it's important to ensure your deployment is secure, resilient, and optimized for performance. This section covers key security and high availability considerations to help you maintain a reliable and protected secrets management system.
 
 ### Security
 
