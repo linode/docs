@@ -4,7 +4,7 @@ title: "Migrate From Azure Key Vault to OpenBao on Akamai Cloud"
 description: "Migrate secrets from Azure Key Vault to OpenBao on Linode Kubernetes Engine (LKE) with Helm and RBAC for secure secret management."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-05-27
+published: 2025-05-30
 keywords: ['azure key vault','openbao','migrate secrets from azure','openbao helm install','linode kubernetes engine','aks to openbao','bao kv put','bao approle authentication','open source vault alternative','manage secrets on lke']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -148,11 +148,11 @@ You can also use the Azure CLI (`az`) to manage the secrets in your key vault.
 
 ## Access Your OpenBao Deployment on Akamai Cloud
 
-The remainder of this guide focuses on migrating secrets *into* your OpenBao deployment on Akamai Cloud. You should already have a running OpenBao instance on either a standalone Linode instance, in an LKE cluster, or deployed via the Linode Marketplace.
+The following steps focus on migrating secrets into your OpenBao deployment on Akamai Cloud. You should already have a running OpenBao instance on either a standalone Linode instance, in an LKE cluster, or deployed via the Linode Marketplace.
 
 If your OpenBao environment is not yet ready, refer to the appropriate deployment guide listed in the [Before You Begin](#before-you-begin) section and complete the setup.
 
-Once deployed, log in to your OpenBao environment. Before continuing, verify that:
+Once deployed, log into your OpenBao environment. Before continuing, verify that:
 
 -   OpenBao is successfully initialized.
 -   The vault is unsealed.
@@ -179,7 +179,7 @@ Follow these steps to create an OpenBao AppRole that mirrors the access control 
 
 #### Create a Policy
 
-2.  Create a new `.hcl` [policy file](https://openbao.org/docs/concepts/policies/) in `/etc/openbao`, replacing {{< placeholder "POLICY_FILE" >}} (e.g. `api-keys-secrets-policy.hcl`) with a policy filename of your choosing:
+2.  Using a text editor like `nano`, create a new `.hcl` [policy file](https://openbao.org/docs/concepts/policies/) in `/etc/openbao`, replacing {{< placeholder "POLICY_FILE" >}} (e.g. `api-keys-secrets-policy.hcl`) with a policy filename of your choosing:
 
     ```command
     sudo nano /etc/openbao/{{< placeholder "POLICY_FILE" >}}
@@ -391,7 +391,7 @@ Create the secret store defined in the policy created above.
 
 ### Retrieving Secrets
 
-1.  While authenticated with the root token, retrieve the secret using the OpenBao CLI, replacing {{< placeholder "SECRET_MOUNT_PATH" >}} and {{< placeholder "SECRET_NAME" >}}:
+1.  While authenticated with the root token, retrieve the secret using the OpenBao CLI (`bao`), replacing {{< placeholder "SECRET_MOUNT_PATH" >}} and {{< placeholder "SECRET_NAME" >}}:
 
     ```command
     bao kv get --mount={{< placeholder "SECRET_MOUNT_PATH" >}} {{< placeholder "SECRET_NAME" >}}
@@ -477,4 +477,4 @@ Production-grade OpenBao environments should be deployed with fault tolerance an
 
 -   **Raft Storage Backend**: Use OpenBao’s [integrated storage](https://openbao.org/docs/internals/integrated-storage/), based on the [Raft protocol](https://thesecretlivesofdata.com/raft/), to enable distributed data replication across multiple nodes. This ensures data consistency and fault tolerance while reducing reliance on external storage backends. Configure regular Raft snapshots for disaster recovery.
 -   **Deploy Multiple Nodes**: OpenBao recommends at least five nodes for a [high-availability deployment](https://openbao.org/docs/concepts/ha/). The active node handles all requests, while standby nodes remain ready to take over in case of failure.
--   **Monitor Leader Status**: Use [bao operator raft list-peers](https://openbao.org/docs/commands/operator/raft/#list-peers) to check the cluster’s leader and node statuses. This command helps ensure that standby nodes are correctly registered and ready for failover.
+-   **Monitor Leader Status**: Use [`bao operator raft list-peers`](https://openbao.org/docs/commands/operator/raft/#list-peers) to check the cluster’s leader and node statuses. This command helps ensure that standby nodes are correctly registered and ready for failover.

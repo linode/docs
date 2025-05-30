@@ -4,7 +4,7 @@ title: "Migrate From Oracle Vault to OpenBao on Akamai Cloud"
 description: "Securely migrate secrets from Oracle Vault to OpenBao on Linode Kubernetes Engine (LKE), using Helm and AppRole-based access control."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-05-27
+published: 2025-05-30
 keywords: ['oracle vault','openbao','migrate secrets from oci','openbao helm install','linode kubernetes engine','oke to openbao','bao kv put','bao approle authentication','open source vault alternative','manage secrets on lke']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -207,11 +207,11 @@ You can also use the Oracle Cloud CLI (`oci`) to manage the secrets in your Orac
 
 ## Access Your OpenBao Deployment on Akamai Cloud
 
-The remainder of this guide focuses on migrating secrets *into* your OpenBao deployment on Akamai Cloud. You should already have a running OpenBao instance on either a standalone Linode instance, in an LKE cluster, or deployed via the Linode Marketplace.
+The following steps focus on migrating secrets into your OpenBao deployment on Akamai Cloud. You should already have a running OpenBao instance on either a standalone Linode instance, in an LKE cluster, or deployed via the Linode Marketplace.
 
 If your OpenBao environment is not yet ready, refer to the appropriate deployment guide listed in the [Before You Begin](#before-you-begin) section and complete the setup.
 
-Once deployed, log in to your OpenBao environment. Before continuing, verify that:
+Once deployed, log into your OpenBao environment. Before continuing, verify that:
 
 -   OpenBao is successfully initialized.
 -   The vault is unsealed.
@@ -238,7 +238,7 @@ Follow these steps to create an OpenBao AppRole that mirrors the access controls
 
 #### Create a Policy
 
-2.  Create a new `.hcl` [policy file](https://openbao.org/docs/concepts/policies/) in `/etc/openbao`, replacing {{< placeholder "POLICY_FILE" >}} (e.g. `cloud-credentials-policy.hcl`) with a policy filename of your choosing:
+2.  Using a text editor like `nano`, create a new `.hcl` [policy file](https://openbao.org/docs/concepts/policies/) in `/etc/openbao`, replacing {{< placeholder "POLICY_FILE" >}} (e.g. `cloud-credentials-policy.hcl`) with a policy filename of your choosing:
 
     ```command
     sudo nano /etc/openbao/{{< placeholder "POLICY_FILE" >}}
@@ -453,7 +453,7 @@ Create the secret store defined in the policy created above.
 
 ### Retrieving Secrets
 
-1.  While authenticated with the root token, retrieve the secret using the OpenBao CLI, replacing {{< placeholder "SECRET_MOUNT_PATH" >}} and {{< placeholder "SECRET_NAME" >}}:
+1.  While authenticated with the root token, retrieve the secret using the OpenBao CLI (`bao`), replacing {{< placeholder "SECRET_MOUNT_PATH" >}} and {{< placeholder "SECRET_NAME" >}}:
 
     ```command
     bao kv get --mount={{< placeholder "SECRET_MOUNT_PATH" >}} {{< placeholder "SECRET_NAME" >}}
