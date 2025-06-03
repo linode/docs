@@ -2,7 +2,7 @@
 title: "Deploy Rocket.Chat through the Linode Marketplace"
 description: "Deploy Rocket.Chat on a Linode Compute Instance. This provides you with a self-hosted open source chat application (Slack alternative)."
 published: 2021-11-12
-modified: 2022-03-08
+modified: 2025-06-03
 keywords: ['rocketchat','chat','slack','communication']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
@@ -29,7 +29,7 @@ Rocket.Chat is a self-hosted open source chat application that can be used as an
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 24.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### Rocket.Chat Options
@@ -41,19 +41,33 @@ Rocket.Chat is a self-hosted open source chat application that can be used as an
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
 
+### Obtain the Credentials
+
+Once the app is deployed, you need to obtain the credentials from the server.
+
+To obtain the credentials:
+
+1.  Log in to your new Compute Instance using one of the methods below:
+
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
+
+1.  Run the following command to access the credentials file:
+
+    ```command
+    cat /home/$USERNAME/.credentials
+    ```
+
+This returns passwords that were automatically generated when the instance was deployed. Save them. Once saved, you can safely delete the file.
+
 ## Getting Started after Deployment
 
 ### Accessing the Rocket.Chat App
 
 1.  Open a browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which will appear like `203-0-113-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing and setting the rDNS value.
 
-1.  From there, Rocket.Chat prompts you to fill out multiple forms to get your instance created and ready to use:
+1.  From there, Rocket.Chat prompts you to enter your credentials which can be found in the credentials file on the server.
 
-    ![Rocket.Chat Step 1](rocketchat-setup.png)
-    ![Rocket.Chat Step 2](rocketchat-setup2.png)
-    ![Rocket.Chat Step 3](rocketchat-setup3.png)
-    ![Rocket.Chat Step 4](rocketchat-setup4.png)
-
-Now that you’ve gone through the setup and accessed your Rocket.Chat instance, check out [the official Rocket.Chat documentation](https://docs.rocket.chat/guides/user-guides) to learn how to further use your Rocket.Chat instance.
+Now that you’ve accessed your Rocket.Chat instance, check out [the official Rocket.Chat documentation](https://docs.rocket.chat/guides/user-guides) to learn how to further use your Rocket.Chat instance.
 
 {{% content "marketplace-update-note-shortguide" %}}
