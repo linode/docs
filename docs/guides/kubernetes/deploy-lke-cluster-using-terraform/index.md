@@ -50,35 +50,6 @@ Install Terraform on your computer by following the [Install Terraform](/docs/gu
 
 In this section, you will create Terraform configuration files that define the resources needed to create a Kubernetes cluster. You will create a `main.tf` file to store your [resource declarations](https://www.terraform.io/docs/configuration/resources.html), a `variables.tf` file to store your [input variable](https://www.terraform.io/docs/configuration/variables.html) definitions, and a `terraform.tfvars` file to [assign values](https://www.terraform.io/docs/configuration/variables.html#variable-definitions-tfvars-files) to your input variables. Setting up your Terraform project in this way will allow you to reuse your configuration files to deploy more Kubernetes clusters, if desired.
 
-### LKE Enterprise Clusters
-
-[LKE Enterprise](https://techdocs.akamai.com/cloud-computing/docs/lke-enterprise) is Akamai's enterprise-grade managed Kubernetes offering and has a specific set of requirements and recommendations for successful deployment:
-
--   **Plan type**: In order to accommodate production-level enterprise workloads that require high network performance, [Premium CPU](https://www.linode.com/pricing/#compute-premium) plans are highly recommended for LKE Enterprise clusters.
-
--   **Specify the tier**: When creating an LKE Enterprise cluster using Terraform, the [`tier`](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/lke_cluster) argument must be [defined as a variable](#define-your-input-variables) and [assigned the value](#assign-values-to-your-input-variables) `"enterprise"` in order for the cluster to be successfully deployed.
-
--   **Availability**: As of this writing, LKE Enterprise is in limited availability and only deployable in the below regions:
-
-    | Region | Region ID |
-    | -- | -- |
-    | **Amsterdam, NL** | nl-ams |
-    | **Chennai, IN** | in-maa |
-    | **Chicago, IL** | us-ord |
-    | **London, UK** | eu-west |
-    | **Los Angeles, CA** | us-lax |
-    | **Miami, FL** | us-mia |
-    | **Milan, IT** | it-mil |
-    | **Osaka, JP** | jp-osa |
-    | **Paris, FR** | fr-par |
-    | **São Paulo, BR** | br-gru |
-    | **Seattle, WA** | us-sea |
-    | **Singapore Expansion, SP** | sg-sin-2 |
-    | **Stockholm, SE** | se-sto |
-    | **Washington, DC** | us-iad |
-
-    A full list of regions and region IDs can be found on our [Availability](https://www.linode.com/global-infrastructure/availability/) page.
-
 ### Create your Resource Configuration File
 
 Terraform defines the elements of your Linode infrastructure inside of configuration files. Terraform refers to these infrastructure elements as *resources*. Once you declare your Terraform configuration, you then *apply* it, which results in the creation of those resources on the Linode platform. The Linode Provider for Terraform exposes the Linode resources you will need to deploy a Kubernetes cluster using LKE.
@@ -243,6 +214,66 @@ You will now need to define the values you would like to use in order to create 
     ```
 
     Terraform will use the values in this file to create a new Kubernetes cluster with one node pool that contains three 4 GB nodes. The cluster will be located in the `us-central` data center (Dallas, Texas, USA). Each node in the cluster's node pool will use Kubernetes version `1.32` and the cluster will be named `example-lke-cluster`. You can replace any of the values in this file with your own preferred cluster configurations.
+
+### LKE Enterprise Clusters
+
+[LKE Enterprise](https://techdocs.akamai.com/cloud-computing/docs/lke-enterprise) is Akamai's enterprise-grade managed Kubernetes offering and has a specific set of requirements and recommendations for successful deployment:
+
+-   **Plan type**: [Premium CPU](https://www.linode.com/pricing/#compute-premium) plans are highly recommended for LKE Enterprise clusters to accommodate production-level enterprise workloads that require high network performance.
+
+-   **Enterprise tier values**: To deploy an LKE Enterprise cluster using Terraform, you must use the `linode_lke_cluster` resource, a valid enterprise Kubernetes version (`k8s_version`), and the [`tier`](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/lke_cluster) argument must be [assigned the value](#assign-values-to-your-input-variables) `"enterprise"`. For example:
+
+    ```file
+    resource "linode_lke_cluster" "{{< placeholder "test" >}}" {
+        label       = "lke-e-cluster"
+        region      = "us-lax"
+        k8s_version = "v1.31.1+lke4"
+        tags        = ["{{< placeholder "test" >}}"]
+        tier = "enterprise"
+
+        pool {
+          type  = "g7-premium-2"
+          count = 3
+          tags  = ["{{< placeholder "test" >}}"]
+        }
+    }
+    ```
+    Make sure to replace all {{< placeholder "test" >}} label values with your own.
+
+    To get a list of valid enterprise `k8s_version` values, specify the `enterprise` tier using the `linode_lke_versions` [data source](https://registry.terraform.io/providers/linode/linode/latest/docs/data-sources/lke_versions):
+
+    ```command
+    data "linode_lke_versions" "example_enterprise" {tier = "enterprise"}
+
+    output "example_enterprise_output" {
+      value = data.linode_lke_versions.example_enterprise
+    }
+
+    output "example_enterprise_output_first_version" {
+      value = data.linode_lke_versions.example_enterprise.versions[0]
+    }
+    ```
+
+-   **Availability**: As of this writing, LKE Enterprise is in limited availability and only deployable in the below regions:
+
+    | Region | Region ID |
+    | -- | -- |
+    | **Amsterdam, NL** | nl-ams |
+    | **Chennai, IN** | in-maa |
+    | **Chicago, IL** | us-ord |
+    | **London, UK** | eu-west |
+    | **Los Angeles, CA** | us-lax |
+    | **Miami, FL** | us-mia |
+    | **Milan, IT** | it-mil |
+    | **Osaka, JP** | jp-osa |
+    | **Paris, FR** | fr-par |
+    | **São Paulo, BR** | br-gru |
+    | **Seattle, WA** | us-sea |
+    | **Singapore Expansion, SP** | sg-sin-2 |
+    | **Stockholm, SE** | se-sto |
+    | **Washington, DC** | us-iad |
+
+    A full list of regions and region IDs can be found on our [Availability](https://www.linode.com/global-infrastructure/availability/) page.
 
 ## Deploy your Kubernetes Cluster
 
