@@ -227,7 +227,7 @@ You will now need to define the values you would like to use in order to create 
     resource "linode_lke_cluster" "{{< placeholder "test" >}}" {
         label       = "lke-e-cluster"
         region      = "us-lax"
-        k8s_version = "v1.31.1+lke4"
+        k8s_version = "v1.31.8+lke1"
         tags        = ["{{< placeholder "test" >}}"]
         tier = "enterprise"
 
