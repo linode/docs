@@ -5,11 +5,12 @@ description: "Two to three sentences describing your guide."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-05-06
+modified: 2025-06-04
 keywords: ['app platform','app platform for lke','lke','linode kubernetes engine','kubernetes','persistent volumes','mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Akamai App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/application-platform)'
-- '[Akamai App Platform Documentation](https://apl-docs.net/docs/akamai-app-platform/introduction)'
+- '[Akamai App Platform Documentation](https://techdocs.akamai.com/app-platform/docs/welcome)'
 ---
 
 {{< note title="Beta Notice" type="warning" >}}
@@ -56,7 +57,7 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 
 ### Create a New Team
 
-[Teams](https://apl-docs.net/docs/for-ops/console/teams) are isolated tenants on the platform to support Development/DevOps teams, projects, and methodologies, like [DTAP](https://en.wikipedia.org/wiki/Development,_testing,_acceptance_and_production). A Team gets access to the Console, which provides access to self-service features and the shared apps available on the platform.
+[Teams](https://techdocs.akamai.com/app-platform/docs/platform-teams) are isolated tenants on the platform to support Development/DevOps teams, projects, and methodologies, like [DTAP](https://en.wikipedia.org/wiki/Development,_testing,_acceptance_and_production). A Team gets access to the Console, which provides access to self-service features and the shared apps available on the platform.
 
 When working in the context of an admin-level Team, users can create and access resources in any namespace. When working in the context of a non-admin Team, users can only create and access resources used in that Team’s namespace.
 
@@ -116,7 +117,7 @@ Repeat the same steps for installing the MySQL service on your cluster.
 
 Separate Workloads are created for MySQL and WordPress in order to deploy a persistent database and site, respectively. Both Workloads require passwords, so to prevent the passwords from being stored unencrypted, Sealed Secrets are created for each first.
 
-[Sealed Secrets](https://apl-docs.net/docs/for-devs/console/secrets) are encrypted Kubernetes Secrets stored in the Values Git repository. When a Sealed Secret is created in the Console, the Kubernetes Secret will appear in the Team's namespace.
+[Sealed Secrets](https://techdocs.akamai.com/app-platform/docs/team-secrets) are encrypted Kubernetes Secrets stored in the Values Git repository. When a Sealed Secret is created in the Console, the Kubernetes Secret will appear in the Team's namespace.
 
 ### Create a Sealed Secret to Store MySQL Passwords
 
@@ -184,7 +185,7 @@ Separate Workloads are created for MySQL and WordPress in order to deploy a pers
     ```
 
     {{< note title="Managing Network Policies" >}}
-    The `networkPolicy` is disabled since all traffic is allowed by default. Rather than configuring `networkPolicy` values directly in the Workload config, this guide centrally manages all network policies using App Platform's [**Network Policies**](https://apl-docs.net/docs/for-ops/console/netpols) function.
+    The `networkPolicy` is disabled since all traffic is allowed by default. Rather than configuring `networkPolicy` values directly in the Workload config, this guide centrally manages all network policies using App Platform's [**Network Policies**](https://techdocs.akamai.com/app-platform/docs/team-network-policies) function.
     {{< /note >}}
 
 1.  Click **Submit**. The Workload may take a few minutes to become ready.
@@ -275,7 +276,7 @@ Using the App Platform **Shell** feature, you can check to see if the WordPress 
 
 ## Create a Service to Expose the WordPress Site
 
-Creating a [Service](https://apl-docs.net/docs/for-devs/console/services) in App Platform configures NGINX’s Ingress Controller. This allows you to enable public access to services running internally on your cluster.
+Creating a [Service](https://techdocs.akamai.com/app-platform/docs/team-services) in App Platform configures NGINX’s Ingress Controller. This allows you to enable public access to services running internally on your cluster.
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
@@ -295,7 +296,7 @@ Creating a [Service](https://apl-docs.net/docs/for-devs/console/services) in App
 
 ### Setting Up DNS
 
-When creating a Service, DNS for your site can be configure using a CNAME rather than using an external IP address. To do this, configure a CNAME entry with your domain name provider, and follow the steps in our [Using a CNAME](https://apl-docs.net/docs/for-devs/console/services#using-a-cname) App Platform documentation.
+When creating a Service, DNS for your site can be configure using a CNAME rather than using an external IP address. To do this, configure a CNAME entry with your domain name provider, and follow the steps in our [Using a CNAME](https://techdocs.akamai.com/app-platform/docs/configure-cname) App Platform documentation.
 
 See our guide on [CNAME records](https://techdocs.akamai.com/cloud-computing/docs/cname-records) for more information on how CNAME records work.
 
