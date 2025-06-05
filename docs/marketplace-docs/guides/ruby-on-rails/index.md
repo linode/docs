@@ -37,7 +37,7 @@ marketplace_app_name: "Ruby on Rails"
 
 ### Ruby on Rails Options
 
-- **Rails Application name** *(required)*: The name for your rails application.
+- **Rails Application name** *(required)*: Enter the name for your rails application.
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
@@ -72,11 +72,11 @@ The Ruby on Rails Marketplace App is running [Nginx](https://www.nginx.com/), [R
 
 ### Accessing the Ruby on Rails App through the Command Line
 
-The Ruby on Rails sample application can be found within `/var/www/$APPNAME` directory.
+The Ruby on Rails sample application can be found in the `/var/www/$APPNAME` directory.
 
 1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
-1.  Navigate to the directory in which the application is stored:
+1.  Go to the directory in which the application is stored, by running the following command:
 
         cd /var/www/$APPNAME
 

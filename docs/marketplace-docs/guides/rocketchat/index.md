@@ -7,6 +7,7 @@ keywords: ['rocketchat','chat','slack','communication']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
 - '[Rocket.Chat](https://rocket.chat/)'
+- '[Rocket.Chat documentation](https://docs.rocket.chat/guides/user-guides)'
 aliases: ['/products/tools/marketplace/guides/rocketchat/','/guides/deploying-rocketchat-marketplace-app/','/guides/rocketchat-marketplace-app/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -66,8 +67,8 @@ This returns passwords that were automatically generated when the instance was d
 
 1.  Open a browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which will appear like `203-0-113-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing and setting the rDNS value.
 
-1.  From there, Rocket.Chat prompts you to enter your credentials which can be found in the credentials file on the server.
+1.  Enter your credentials which can be found in the credentials file on the server.
 
-Now that you’ve accessed your Rocket.Chat instance, check out [the official Rocket.Chat documentation](https://docs.rocket.chat/guides/user-guides) to learn how to further use your Rocket.Chat instance.
+Now that you’ve accessed your Rocket.Chat instance, check out [the official Rocket.Chat documentation](https://docs.rocket.chat/guides/user-guides) to learn how to use the instance.
 
 {{% content "marketplace-update-note-shortguide" %}}
