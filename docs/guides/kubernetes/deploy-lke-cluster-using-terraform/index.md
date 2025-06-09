@@ -3,7 +3,7 @@ slug: deploy-lke-cluster-using-terraform
 title: "Deploy a Linode Kubernetes Engine Cluster Using Terraform"
 description: "In this tutorial, you'll deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Terraform."
 published: 2020-05-05
-modified: 2023-02-09
+modified: 2025-05-30
 authors: ['Linode']
 contributors: ['Linode']
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
@@ -11,8 +11,9 @@ keywords: ['kubernetes','terraform','infrastructure as code','container orchestr
 tags: ["linode platform","kubernetes","automation","managed hosting"]
 image: deploy-lke-cluster-with-terraform.png
 external_resources:
+- '[LKE Product Documentation](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine)'
+- '[LKE Enterprise Product Documentation](https://techdocs.akamai.com/cloud-computing/docs/lke-enterprise)'
 - '[Setting Up a Private Docker Registry with Linode Kubernetes Engine and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)'
-- '[Deploying a Static Site on Linode Kubernetes Engine](/docs/guides/how-to-deploy-a-static-site-on-linode-kubernetes-engine/)'
 - '[Linode Provider Terraform Documentation](https://www.terraform.io/docs/providers/linode/index.html)'
 aliases: ['/kubernetes/how-to-deploy-an-lke-cluster-using-terraform/','/guides/how-to-deploy-an-lke-cluster-using-terraform/','/products/compute/kubernetes/guides/deploy-cluster-using-terraform/']
 ---
@@ -202,8 +203,8 @@ You will now need to define the values you would like to use in order to create 
 
     ```file {title="~/terraform/lke-cluster/terraform.tfvars"}
     label = "example-lke-cluster"
-    k8s_version = "1.26"
-    region = "us-west"
+    k8s_version = "1.32"
+    region = "us-central"
     pools = [
       {
         type : "g6-standard-2"
@@ -212,7 +213,67 @@ You will now need to define the values you would like to use in order to create 
     ]
     ```
 
-    Terraform will use the values in this file to create a new Kubernetes cluster with one node pool that contains three 4 GB nodes. The cluster will be located in the `us-west` data center (Dallas, Texas, USA). Each node in the cluster's node pool will use Kubernetes version `1.25` and the cluster will be named `example-lke-cluster`. You can replace any of the values in this file with your own preferred cluster configurations.
+    Terraform will use the values in this file to create a new Kubernetes cluster with one node pool that contains three 4 GB nodes. The cluster will be located in the `us-central` data center (Dallas, Texas, USA). Each node in the cluster's node pool will use Kubernetes version `1.32` and the cluster will be named `example-lke-cluster`. You can replace any of the values in this file with your own preferred cluster configurations.
+
+### LKE Enterprise Clusters
+
+[LKE Enterprise](https://techdocs.akamai.com/cloud-computing/docs/lke-enterprise) is Akamai's enterprise-grade managed Kubernetes offering and has a specific set of requirements and recommendations for successful deployment:
+
+-   **Plan type**: [Premium CPU](https://www.linode.com/pricing/#compute-premium) plans are highly recommended for LKE Enterprise clusters to accommodate production-level enterprise workloads that require high network performance.
+
+-   **Enterprise tier values**: To deploy an LKE Enterprise cluster using Terraform, you must use the `linode_lke_cluster` resource, a valid enterprise Kubernetes version (`k8s_version`), and the [`tier`](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/lke_cluster) argument must be [assigned the value](#assign-values-to-your-input-variables) `"enterprise"`. For example:
+
+    ```file
+    resource "linode_lke_cluster" "{{< placeholder "test" >}}" {
+        label       = "lke-e-cluster"
+        region      = "us-lax"
+        k8s_version = "v1.31.8+lke1"
+        tags        = ["{{< placeholder "test" >}}"]
+        tier = "enterprise"
+
+        pool {
+          type  = "g7-premium-2"
+          count = 3
+          tags  = ["{{< placeholder "test" >}}"]
+        }
+    }
+    ```
+    Make sure to replace all {{< placeholder "test" >}} label values with your own.
+
+    To get a list of valid enterprise `k8s_version` values, specify the `enterprise` tier using the `linode_lke_versions` [data source](https://registry.terraform.io/providers/linode/linode/latest/docs/data-sources/lke_versions):
+
+    ```command
+    data "linode_lke_versions" "example_enterprise" {tier = "enterprise"}
+
+    output "example_enterprise_output" {
+      value = data.linode_lke_versions.example_enterprise
+    }
+
+    output "example_enterprise_output_first_version" {
+      value = data.linode_lke_versions.example_enterprise.versions[0]
+    }
+    ```
+
+-   **Availability**: As of this writing, LKE Enterprise is in limited availability and only deployable in the below regions:
+
+    | Region | Region ID |
+    | -- | -- |
+    | **Amsterdam, NL** | nl-ams |
+    | **Chennai, IN** | in-maa |
+    | **Chicago, IL** | us-ord |
+    | **London, UK** | eu-west |
+    | **Los Angeles, CA** | us-lax |
+    | **Miami, FL** | us-mia |
+    | **Milan, IT** | it-mil |
+    | **Osaka, JP** | jp-osa |
+    | **Paris, FR** | fr-par |
+    | **São Paulo, BR** | br-gru |
+    | **Seattle, WA** | us-sea |
+    | **Singapore Expansion, SP** | sg-sin-2 |
+    | **Stockholm, SE** | se-sto |
+    | **Washington, DC** | us-iad |
+
+    A full list of regions and region IDs can be found on our [Availability](https://www.linode.com/global-infrastructure/availability/) page.
 
 ## Deploy your Kubernetes Cluster
 
