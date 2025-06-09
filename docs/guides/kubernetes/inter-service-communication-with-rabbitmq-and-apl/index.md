@@ -5,12 +5,12 @@ description: "This guide shows how to deploy a RabbitMQ message broker architect
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-03-20
-modified: 2025-04-25
+modified: 2025-06-04
 keywords: ['app platform','lke','linode kubernetes engine','rabbitmq','microservice','message broker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Akamai App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/application-platform)'
-- '[Akamai App Platform Docs](https://apl-docs.net/docs/akamai-app-platform/introduction)'
+- '[Akamai App Platform Documentation](https://techdocs.akamai.com/app-platform/docs/welcome)'
 ---
 
 {{< note title="Beta Notice" type="warning" >}}
@@ -99,7 +99,7 @@ Once your LKE cluster with App Platform has been fully deployed, [sign in](https
 
 ### Create a New Team
 
-[Teams](https://apl-docs.net/docs/for-ops/console/teams) are isolated tenants on the platform to support Development and DevOps teams, projects, or even DTAP (Development, Testing, Acceptance, Production). A Team gets access to the Console, including access to self-service features and all shared apps available on the platform.
+[Teams](https://techdocs.akamai.com/app-platform/docs/platform-teams) are isolated tenants on the platform to support Development and DevOps teams, projects, or even DTAP (Development, Testing, Acceptance, Production). A Team gets access to the Console, including access to self-service features and all shared apps available on the platform.
 
 When working in the context of an admin-level Team, users can create and access resources in any namespace. When working in the context of a non-admin Team, users can only create and access resources used in that Team's namespace.
 
@@ -113,7 +113,7 @@ When working in the context of an admin-level Team, users can create and access 
 
 ### Create a RabbitMQ Cluster with Workloads
 
-A [Workload](https://apl-docs.net/docs/for-devs/console/workloads) is a self-service feature for creating Kubernetes resources using Helm charts from the Catalog.
+A [Workload](https://techdocs.akamai.com/app-platform/docs/team-workloads) is a self-service feature for creating Kubernetes resources using Helm charts from the Catalog.
 
 1.  Switch to your newly created team view by selecting **view** > **team** and **team** > **demo** in the top bar. You can switch back to team `admin` as needed by selecting **view** > **team** and **team** > **admin**.
 
@@ -240,7 +240,7 @@ Once successfully built, copy the image repository link so that you can create a
 
 In order for the RabbitMQ Cluster to be accessible, a Network Policy must be created.
 
-A [Network Policy](https://apl-docs.net/docs/for-devs/console/netpols) in App Platform is a self-service method of controlling traffic to and from your deployment. Ingress (inbound) policies control access to internal Team pods, and egress (outbound) policies control traffic to external endpoints.
+A [Network Policy](https://techdocs.akamai.com/app-platform/docs/team-network-policies) in App Platform is a self-service method of controlling traffic to and from your deployment. Ingress (inbound) policies control access to internal Team pods, and egress (outbound) policies control traffic to external endpoints.
 
 1.  Select **Network Policies** from the left menu, and click **Create NetPol**.
 
