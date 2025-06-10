@@ -61,28 +61,58 @@ Here's a simple example of a complete Terraform configuration in HCL:
 terraform {
   required_providers {
     linode = {
-      source = "linode/linode"
+      source  = "linode/linode"
       version = "1.16.0"
     }
   }
 }
 
 provider "linode" {
-    token = "your-linode-api-token"
+  token = "your-linode-api-token"
 }
 
 resource "linode_instance" "example_instance" {
-    label = "example_instance_label"
-    image = "linode/ubuntu18.04"
-    region = "us-central"
-    type = "g6-standard-1"
-    authorized_keys = ["ssh-rsa AAAA...Gw== user@example.local"]
-    root_pass = "your-root-password"
+  label           = "example_instance_label"
+  image           = "linode/ubuntu18.04"
+  region          = "us-central"
+  type            = "g6-standard-1"
+  authorized_keys = ["ssh-rsa AAAA...Gw== user@example.local"]
+  root_pass       = "your-root-password"
 }
+
+output "ipv4" {
+  value = linode_instance.example_instance.ipv4
+}
+
+output "login_ipv4" {
+  value = "ssh -i ~/.ssh/id_rsa root@${tolist(linode_instance.example_instance.ipv4)[0]}"
+}
+
+output "ipv6" {
+  value = linode_instance.example_instance.ipv6
+}
+
+output "login_ipv6" {
+  value = "ssh -6 -i ~/.ssh/id_rsa root@${linode_instance.example_instance.ipv6}"
+}
+
 {{< /file >}}
 
 {{< note >}}
-The SSH key in this example was truncated for brevity.
+* The SSH key in this example was truncated for brevity.
+* SSH Access Defaults to Root:
+  By default, the authorized_keys argument sets up SSH access for the root user. If you attempt to SSH as a different user such as `ubuntu`, it fails unless you’ve   configured additional steps inside the instance.
+Example SSH command:
+```ssh -i ~/.ssh/id_rsa root@<linode-ip>```
+You can use the login_ipv4 and login_ipv6 outputs to get ready-to-use commands after terraform apply.
+* Non-root Users:
+  The linode_instance resource does not support creating or configuring additional users directly. If you prefer to log in as a non-root user (such as ubuntu), you must either:
+  - Use a startup script such as stackscript or user_data to create and configure that user.
+  - Log in as root and manually create the user, then add your SSH key to their `~/.ssh/authorized_keys` file.
+* Root Password and SSH Key Usage:
+ This example provides both a root_pass and authorized_keys. While the password offers a fallback for debugging or recovery, using SSH keys is more secure. It is not recommended to keep the `root_pass` in production use. Consider omitting it or managing access through SSH keys and minimal sudo privileges instead.
+* Outputs for Easier Connectivity:
+The example includes output values that generate SSH commands. These make it easy to copy/paste commands to access your Linode instance after provisioning.
 {{< /note >}}
 
 This example Terraform file, with the Terraform file extension `.tf`, represents the creation of a single Linode instance labeled `example_instance_label`. This example file is prefixed with a mandatory `provider` block, which sets up the Linode provider and which you must list somewhere in your configuration.
