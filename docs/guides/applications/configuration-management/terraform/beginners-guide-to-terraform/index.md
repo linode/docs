@@ -5,7 +5,7 @@ description: 'A look into Terraform''s primary components, features, and configu
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2018-12-21
-modified: 2019-08-07
+modified: 2025-06-12
 keywords: ['terraform', 'orchestration', 'linode provider']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: ABeginnersGuidetoTerraform.png
@@ -62,22 +62,22 @@ terraform {
   required_providers {
     linode = {
       source = "linode/linode"
-      version = "1.16.0"
+      version = "2.41.0"
     }
   }
 }
 
 provider "linode" {
-    token = "your-linode-api-token"
+  token = "your-linode-api-token"
 }
 
 resource "linode_instance" "example_instance" {
-    label = "example_instance_label"
-    image = "linode/ubuntu18.04"
-    region = "us-central"
-    type = "g6-standard-1"
-    authorized_keys = ["ssh-rsa AAAA...Gw== user@example.local"]
-    root_pass = "your-root-password"
+  label           = "simple_instance"
+  image           = "linode/ubuntu22.04"
+  region          = "us-central"
+  type            = "g6-standard-1"
+  authorized_keys = ["ssh-rsa AAAA...Gw== user@example.local"]
+  root_pass       = "this-is-not-a-safe-password"
 }
 {{< /file >}}
 
@@ -87,14 +87,16 @@ The SSH key in this example was truncated for brevity.
 
 This example Terraform file, with the Terraform file extension `.tf`, represents the creation of a single Linode instance labeled `example_instance_label`. This example file is prefixed with a mandatory `provider` block, which sets up the Linode provider and which you must list somewhere in your configuration.
 
-The `provider` block is followed by a *resource* declaration. Resource declarations correspond with the components of your Linode infrastructure: Linode instances, Block Storage Volumes, etc.
+The `provider` block is followed by a *resource* declaration. The `example_instance` string that follows the `linode_instance` resource type declaration is Terraform's name for the resource. You cannot declare more than one Terraform resource with the same name and resource type. Resource declarations correspond with the components of your Linode infrastructure: Linode instances, Block Storage Volumes, etc.
 
-Resources can accept arguments. `region` and `type` are required arguments for the `linode_instance` resource. A root password must be assigned to every Linode, but the `root_pass` Terraform argument is optional; if it is not specified, a random password will be generated.
+Resources can accept arguments. The `label` argument specifies the label for the Linode instance in the Linode Manager. This name is independent of Terraform's name for the resource (though you can assign the same value to both). The Terraform name is only recorded in Terraform's [state](#state) and is not communicated to the Linode API. Labels for Linode instances in the same Linode account must be unique.
 
-{{< note >}}
-The `example_instance` string that follows the `linode_instance` resource type declaration is Terraform's name for the resource. You cannot declare more than one Terraform resource with the same name and resource type.
+`region` and `type` are required arguments for the `linode_instance` resource. The `authorized_keys` argument allows you to optionally provide one or more SSH public keys to deploy for the *root* user. A root password must be assigned to every Linode, but the `root_pass` Terraform argument is optional; if it is not specified, a random password will be generated.
 
-The `label` argument specifies the label for the Linode instance in the Linode Manager. This name is independent of Terraform's name for the resource (though you can assign the same value to both). The Terraform name is only recorded in Terraform's [state](#state) and is not communicated to the Linode API. Labels for Linode instances in the same Linode account must be unique.
+{{< note title="Root Access & Non-Root Users" >}}
+It is considered a best practice to limit root user access on any compute instance. For security best practices and configuration steps after deployment, see our [Set Up and Secure a Linode](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide.
+
+Additionally, non-root users can not be created upon initial deployment using the Linode Terraform Provider. See our [Linux Users and Groups](/docs/guides/linux-users-and-groups/#creating-and-deleting-user-accounts) guide for steps on creating and configuring user accounts on a Linode instance.
 {{< /note >}}
 
 ### Data Sources
