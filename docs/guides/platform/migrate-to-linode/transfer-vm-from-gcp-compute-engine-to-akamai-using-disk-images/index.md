@@ -14,24 +14,21 @@ external_resources:
 
 In modern cloud computing, virtual machine (VM) migration is a process that enables organizations to transition workloads between cloud platforms to optimize costs, improve performance, or enhance flexibility. By migrating VMs, organizations can select the capabilities of various cloud providers that best satisfy their business needs.
 
-This guide focuses on migrating a VM from Google Cloud Platform (GCP) to Akamai Cloud and suggests how to plan, execute, and validate the migration.
-
-## Prerequisites
-
-To follow along in this walkthrough, you’ll need the following:
-
--   An [account with Akamai Cloud](https://www.linode.com/cfe).
--   A [Linode API token (personal access token)](/docs/products/platform/accounts/guides/manage-api-tokens/)
--   The [Linode CLI](/docs/products/tools/cli/guides/install/) installed and configured.
--   A GCP account with sufficient permissions to work with Disks, Storage, and Build Jobs.
--   The [GCP CLI](https://cloud.google.com/sdk/docs/install-sdk) (`gcloud`) installed and configured.
--   [QEMU](https://www.qemu.org/) installed and configured.
+This guide focuses on migrating a VM from Google Cloud Platform (GCP) to Akamai Cloud using disk images suggests how to plan, execute, and validate the migration.
 
 ## Before You Begin
 
-1.  If you do not already have a virtual machine to use, create a Compute Instance with at least 4 GB of memory. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  Log in to your [Akamai Cloud](https://www.linode.com/cfe) account to prepare the destination environment.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Create a [Linode API token (personal access token)](/docs/products/platform/accounts/guides/manage-api-tokens/) so you can authenticate with the Linode CLI.
+
+1.  Install and configure the [Linode CLI](/docs/products/tools/cli/guides/install/) on your local system.
+
+1.  You must also have access to a GCP account with sufficient permissions to work with Disks, Storage, and Build Jobs.
+
+1.  Install and configure the [GCP CLI](https://cloud.google.com/sdk/docs/install-sdk) (`gcloud`) to interact with your GCP VM instances.
+
+1.  Install [QEMU](https://www.qemu.org/) to convert the exported disk image into a format compatible with Akamai Cloud.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -39,421 +36,507 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Preparing Your Compute Engine Image for Migration
 
-Prepare your current GCP environment to ensure a smooth and efficient transition. As you assess your Compute Engine requirements, familiarize yourself with any limitations that Akamai Cloud imposes on resources imported into its systems.
+Before migrating, review your GCP environment to ensure compatibility with Akamai Cloud. Note any instance-specific dependencies, such as storage size, image type, or hardware requirements, that may impact the transition.
+
+Record the configuration details of your Compute Engine VM to help choose an [Akamai Cloud plan](https://www.linode.com/pricing/#compute-shared) that matches your resource needs after migration.
 
 {{< note >}}
-[Images imported into Akamai Cloud](https://techdocs.akamai.com/cloud-computing/docs/upload-an-image) must be smaller than 6 GB unzipped and 5 GB zipped. Larger images will be rejected and not imported.
+[Images imported into Akamai Cloud](https://techdocs.akamai.com/cloud-computing/docs/upload-an-image) must be smaller than 6 GB unzipped or 5 GB zipped. Images exceeding the size limit are rejected during upload and not imported.
 {{< /note >}}
 
 ### Assess Current Compute Engine Requirements
 
-Capture the current configuration of your Compute Engine VM so that you can select the appropriate [Akamai Cloud plan](https://www.linode.com/pricing/#compute-shared) to ensure post-migration performance. In the GCP Console, navigate to **Compute Engine > VM Instances**.
+Assess your Compute Engine VM using either the GCP Console or the gcloud CLI. Use these methods to gather the CPU, memory, storage, networking, and firewall details needed for migration.
 
-![](image2.png)
+{{< tabs >}}
+{{< tab "GCP Console" >}}
+#### Machine Type, CPU, and Memory
 
-Note the name and zone of your running Compute Engine instance. Click on the name.
+1.  In the GCP Console, navigate to **Compute Engine > VM instances**:
 
-![](image7.png)
+    ![GCP Console showing the VM instances page in Compute Engine.](gcp-vm-instances-page.png)
 
-#### Machine Type
+1.  Select the instance you intend to migrate to view its details:
 
-Navigate to the **Machine Configuration** section of the details page to see the machine type for this VM instance. In the following example, the machine type is `e2-medium`.
+    ![Details page for a selected Compute Engine VM instance.](gcp-vm-instance-details.png)
 
-![](image3.png)
+    Note the **Name** (e.g. `instance-20250208-003502`) and **Zone** (e.g. `us-west1-a`).
 
-Alternatively, the machine type can be found through the `gcloud`. First, configure the CLI by setting the project ID. The project ID can be found by clicking on the project name in the upper left of the page, which opens a modal.
+1.  In the **Machine Configuration** section of the **Details** page, review the **Machine type** (e.g. `e2-medium`):
 
-![](image14.png)
+    ![GCP VM details page showing the Machine configuration section with machine type.](gcp-vm-machine-type-ui.png)
 
-Run the following command:
+    For this guide, the example Compute Instance VM has 2 CPUs and 4GB of memory.
 
-```command
-gcloud config set project {{< placeholder "PROJECT_ID" >}}
-```
+#### Storage
 
-```output
-Updated property [core/project].
-```
+4.  Scroll to the **Storage > Boot disk** section to view the type and size of the storage disk associated with your VM:
 
-To find the machine type for your instance, run this command, replacing the instance name and zone with your own:
-
-```command
-gcloud compute instances \
-    describe instance-20250208-003502 \
-    --zone=us-west1-a \
-    --format="value(machineType)"
-```
-
-```output
-https://www.googleapis.com/compute/v1/projects/gcp-vm-migration-450215/zones/us-west1-a/machineTypes/e2-medium
-```
-
-#### CPU and Memory Usage
-
-Use the CLI to determine the CPU and memory configurations for this Compute Engine machine type:
-
-```command
-gcloud compute machine-types \
-    describe e2-medium \
-    --zone=us-west1-a \
-    --format="table(name, guestCpus, memoryMb)"
-```
-
-```output
-NAME       GUEST_CPUS  MEMORY_MB
-e2-medium  2           4096
-```
-
-For this guide, the example Compute Instance VM has 2 CPUs and 4GB of memory.
-
-#### Storage Usage
-
-The type and size of the storage disk associated with your VM are displayed in the **Storage (Boot disk)** section of the instance details page.
-
-![](image16.png)
+    ![GCP VM storage section showing the boot disk type and size.](gcp-vm-boot-disk-storage.png)
 
 #### IP Addresses
 
-In the **Network Interfaces** section of the instance details, you will see the IP addresses listed in this instance:
+5.  IP addresses are listed in the **Network Interfaces** section of the instance **Details** page:
 
-![](image19.png)
+    ![GCP VM details page showing internal and external IP addresses.](gcp-vm-ip-addresses.png)
 
-To find the internal and external IP address of the running instance with `gcloud`, run the following command:
+#### Security Groups and Firewall Rules
 
-```command
-gcloud compute instances list \
-    --filter="name=instance-20250208-003502" \
-    --format=\ "table(name, networkInterfaces[0].accessConfigs[0].natIP, networkInterfaces[0].networkIP)"
-```
+6.  In the **Network Interfaces** section, select the network name to view its associated firewall rules and other network settings:
 
-```output
-NAME                      NAT_IP           NETWORK_IP
-instance-20250208-003502  104.198.111.144  10.138.0.3
-```
+    ![GCP network settings page showing firewall rules for the VM's network.](gcp-network-firewall-rules.png)
+{{< /tab >}}
+{{< tab "gcloud CLI" >}}
+#### Machine Type
+
+1.  List all projects in your account:
+
+    ```command
+    gcloud projects list
+    ```
+
+    ```output
+    PROJECT_ID                  NAME             PROJECT_NUMBER
+    gcp-vm-migration            GCP VM Migration 123456789012
+    another-project-id          Another Project  987654321098
+    ```
+
+1.  Set your desired {{< placeholder "PROJECT_ID" >}} to the active project in `gcloud` (e.g. `gcp-vm-migration`):
+
+    ```command
+    gcloud config set project {{< placeholder "PROJECT_ID" >}}
+    ```
+
+    ```output
+    Updated property [core/project].
+    ```
+
+1.  List all VM instances in the selected project:
+
+    ```command
+    gcloud compute instances list
+    ```
+
+    ```output
+    NAME                      ZONE           MACHINE_TYPE  PREEMPTIBLE  INTERNAL_IP  EXTERNAL_IP     STATUS
+    instance-20250208-003502  us-west1-a     e2-medium     false        10.138.0.3    104.198.111.144  RUNNING
+    ```
+
+1.  Describe your instance to return its full machine type URL, replacing {{< placeholder "INSTANCE_NAME" >}} (e.g. `instance-20250208-003502`) and {{< placeholder "ZONE" >}} (e.g. `us-west1-a`):
+
+    ```command
+    gcloud compute instances describe {{< placeholder "INSTANCE_NAME" >}} \
+        --zone={{< placeholder "ZONE" >}} \
+        --format="value(machineType)"
+    ```
+
+    The {{< placeholder "MACHINE_TYPE" >}} is the final part of the resulting URL (e.g. `e2-medium`):
+
+    ```output
+    https://www.googleapis.com/compute/v1/projects/gcp-vm-migration-450215/zones/us-west1-a/machineTypes/e2-medium
+    ```
+
+#### CPU and Memory
+
+5.  Use the CLI to determine the CPU and memory configurations for this Compute Engine {{< placeholder "MACHINE_TYPE" >}} (e.g. `e2-medium`):
+
+    ```command
+    gcloud compute machine-types \
+        describe {{< placeholder "MACHINE_TYPE" >}} \
+        --zone=us-{{< placeholder "REGION" >}} \
+        --format="table(name, guestCpus, memoryMb)"
+    ```
+
+    ```output
+    NAME       GUEST_CPUS  MEMORY_MB
+    e2-medium  2           4096
+    ```
+
+    For this guide, the example Compute Instance VM has 2 CPUs and 4GB of memory.
+
+#### IP Addresses
+
+6.  Run the following `gcloud` command to find the internal and external IP address of the running instance:
+
+    ```command
+    gcloud compute instances list \
+        --filter="name={{< placeholder "INSTANCE_NAME" >}}" \
+        --format=\ "table(name, networkInterfaces[0].accessConfigs[0].natIP, networkInterfaces[0].networkIP)"
+    ```
+
+    ```output
+    NAME                      NAT_IP           NETWORK_IP
+    instance-20250208-003502  104.198.111.144  10.138.0.3
+    ```
 
 ####  Security Groups and Firewall Rules
 
-Select the network name in the Network Interfaces section to see the current network resources and configurations, such as the firewall settings:
+7.  Run the following `gcloud` command to find all the firewall rules for a VM:
 
-![](image4.png)
+    ```command
+    gcloud compute firewall-rules list --filter="network:default"
+    ```
 
-On the command line, to find all the firewall rules for a VM, run the following:
+    ```output
+    NAME                    DIRECTION  PRIORITY   ALLOW
+    default-allow-icmp      INGRESS    65534      icmp
+    default-allow-internal  INGRESS    65534      tcp:0-65535,udp:0-65535,icmp
+    default-allow-rdp       INGRESS    65534      tcp:3389
+    default-allow-ssh       INGRESS    65534      tcp:22
+    ```
+{{< /tab >}}
+{{< /tabs >}}
 
-```command
-gcloud compute firewall-rules list --filter="network:default"
-```
+#### Optional: Back up Your Compute Engine Disk
 
-```output
-NAME                    DIRECTION  PRIORITY   ALLOW
-default-allow-icmp      INGRESS    65534      icmp
-default-allow-internal  INGRESS    65534      tcp:0-65535,udp:0-65535,icmp
-default-allow-rdp       INGRESS    65534      tcp:3389
-default-allow-ssh       INGRESS    65534      tcp:22
-```
+Before starting your migration, consider backing up the Compute Engine disk in case a restoration is needed in the future.
 
-#### Back up Your Compute Engine Disk (Optional)
+{{< tabs >}}
+{{< tab "GCP Console" >}}
+1.  In the **Storage** section of your Compute Instance **Details** page, select the disk associated with the VM you wish to export:
 
-Before starting your migration, consider backing up the Compute Engine disk just in case a restoration is needed in the future. In the **Storage** section of your Compute Instance details, find the disk associated with the VM you wish to export and select it.
+    ![GCP storage section showing list of disks for the VM.](gcp-disk-list-select.png)
 
-![](image20.png)
+1.  Select **Create Snapshot**:
 
-Click the **Create Snapshot**.
+    ![Snapshot creation interface for a selected GCP Compute Engine disk.](gcp-disk-create-snapshot.png)
+{{< /tab >}}
+{{< tab "gcloud CLI" >}}
+1.  Retrieve a list of available {{< placeholder "SNAPSHOT_LOCATION" >}}s:
 
-![](image13.png)
+    ```command
+    gcloud compute snapshot-locations list
+    ```
 
-To achieve the same on the command line, run the following:
+    You can choose either a regional location (e.g. `us-west-1`) or a multi-regional location (e.g. `us`):
 
-```command
-gcloud compute snapshots \
-    create my-vm-snapshot \
-    --source-disk=instance-20250208-003502 \
-    --source-disk-zone=us-west1-a \
-    --storage-location=us-west1
-```
+    ```output
+    NAME
+    asia
+    asia-east1
+    europe
+    europe-west1
+    us
+    us-central1
+    us-west1
+    ```
 
-```output
-Creating gce snapshot my-vm-snapshot...done.
-```
+1.  Run the following `gcloud` command to create a backup of your GCP Compute Instance, replacing {{< placeholder "SNAPSHOT_NAME">}} with a name of your choosing (e.g. `my-vm-snapshot`):
 
+    ```command
+    gcloud compute snapshots \
+        create {{< placeholder "SNAPSHOT_NAME" >}} \
+        --source-disk={{< placeholder "DISK_NAME" >}} \
+        --source-disk-zone={{< placeholder "ZONE" >}} \
+        --storage-location={{< placeholder "SNAPSHOT_LOCATION" >}}
+    ```
+
+    For Example:
+
+    ```command
+    gcloud compute snapshots \
+        create my-vm-snapshot \
+        --source-disk=instance-20250208-003502 \
+        --source-disk-zone=us-west1-a \
+        --storage-location=us-west1
+    ```
+
+    ```output
+    Creating gce snapshot my-vm-snapshot...done.
+    ```
+{{< /tab >}}
+{{< /tabs >}}
 ## Migrating to Akamai Cloud
 
-Migrating a Google Compute Engine Image to Akamai Cloud primarily involves capturing and exporting the instance image from GCP, then resizing and importing it when launching a new Linode Compute Instance.
+Migrating a Google Compute Engine VM to Akamai Cloud involves the following steps:
+
+-   Export the VM disk image from your Compute Engine instance.
+-   Resize and prepare the image file for import.
+-   Upload the compressed image to Akamai Cloud.
+-   Launch a new Linode Compute Instance from the uploaded image.
+-   Verify and configure the new instance.
 
 ### Export Your Compute Engine VM Disk Image
 
-First, export your VM to a Machine Image using the UI or the CLI. Navigate to **Compute Engine \> Images**.
+Export your VM to a Machine Image using either the Google Cloud Console or the `gCloud` CLI:
+{{< tabs >}}
+{{< tab "Google Cloud Console" >}}
+1.  In the Google Cloud Console, navigate to **Compute Engine > Images**:
 
-![](image12.png)
+    ![Google Cloud Console showing the Compute Engine Images page with the "Create Image" button highlighted.](gcp-images-page.png)
 
-Click **Create Image** at the top of the page. On the next page, specify a name for your image. Then, find the disk for your VM instance, specifying it as the source disk for the image.
+1.  Click **Create Image** at the top of the page. On the next screen, enter a name for the image, then your VM's disk as the **Source disk**:
 
-![](image17.png)
+    ![Google Cloud Console create image form with name and source disk fields highlighted.](gcp-create-image-form.png)
 
-Specify the remaining location and encryption options for your image. Then, click **Create**.
+1.  Set any required location and encryption options, then click **Create**.
+{{< /tab >}}
+{{< tab "gCloud CLI" >}}
+1.  Run the following `gCloud` CLI command to create an image, replacing {{< placeholder "IMAGE_NAME" >}} (e.g. `my-vm-image`), {{< placeholder "SOURCE_DISK_NAME" >}} (e.g. `instance-20250208-003502`), {{< placeholder "SOURCE_DISK_ZONE" >}} (e.g. `us-west1-a`), {{< placeholder "STORAGE_LOCATION" >}} (e.g. `us-west1`), and {{< placeholder "PROJECT_ID" >}} (e.g. `vm-migration-450215`) with your own values:
 
-To create an image with the CLI, run the following equivalent command:
+    ```command
+    gcloud compute images create {{< placeholder "IMAGE_NAME" >}} \
+        --source-disk={{< placeholder "SOURCE_DISK_NAME" >}} \
+        --source-disk-zone={{< placeholder "SOURCE_DISK_ZONE" >}} \
+        --storage-location={{< placeholder "STORAGE_LOCATION" >}} \
+        --project={{< placeholder "PROJECT_ID" >}}
+    ```
 
-```command
-gcloud compute images \
-    create my-vm-image \
-    --source-disk=instance-20250208-003502 \
-    --source-disk-zone=us-west1-a \
-    --storage-location=us-west1 \
-    --project=gcp-vm-migration-450215
-```
+    ```output
+    Created [https://www.googleapis.com/compute/v1/projects/gcp-vm-migration-450215/global/images/my-vm-image\].
+    NAME         PROJECT                  FAMILY  DEPRECATED  STATUS
+    my-vm-image  gcp-vm-migration-450215                      READY
+    ```
 
-```output
-Created [https://www.googleapis.com/compute/v1/projects/gcp-vm-migration-450215/global/images/my-vm-image\].
-NAME         PROJECT                  FAMILY  DEPRECATED  STATUS
-my-vm-image  gcp-vm-migration-450215                      READY
-```
+1.  Confirm the image was created:
 
-You can verify the image was created with the following command, inserting the name you specified for the new image:
+    ```command
+    gcloud compute images list --filter="name={{< placeholder "IMAGE_NAME" >}}"
+    ```
 
-```command
-gcloud compute images list --filter="name=my-vm-image"
-```
+    ```output
+    NAME         PROJECT                  FAMILY  DEPRECATED  STATUS
+    my-vm-image  gcp-vm-migration-450215                      READY
+    ```
+{{< /tab >}}
+{{< /tabs >}}
 
-```output
-NAME         PROJECT                  FAMILY  DEPRECATED  STATUS
-my-vm-image  gcp-vm-migration-450215                      READY
-```
+The following steps (exporting and downloading the image) require the `gcloud` CLI, as these operations are not available through the Google Cloud Console:
 
-Next, create a Cloud Storage bucket to store your image for downloading. Google has [restrictions on which Cloud Storage bucket locations can export images](https://cloud.google.com/build/docs/locations#restricted_regions_for_some_projects). For bucket location, make sure to choose from the list of allowable regions.
+1.  Create a Cloud Storage bucket to store the exported image. Google has restrictions on which Cloud Storage bucket locations can export images, so be sure to choose from the [list of supported regions](https://cloud.google.com/build/docs/locations#restricted_regions_for_some_projects):
 
-```command
-gcloud storage buckets create gs://{{< placeholder "BUCKET_NAME" >}} --location={{< placeholder "REGION" >}}
-```
+    ```command
+    gcloud storage buckets create gs://{{< placeholder "BUCKET_NAME" >}} --location={{< placeholder "REGION" >}}
+    ```
 
-Using the name of the image from above, fill in the following:
+1.  Export the image to the bucket in `RAW` format, which is compatible with importing to Akamai Cloud:
 
-```command
-gcloud compute images export \
-    --destination-uri=gs://{{< placeholder "BUCKET_NAME" >}}/{{< placeholder "IMAGE_NAME" >}} \
-    --image={{< placeholder "IMAGE_NAME" >}} \
-    --export-format={{< placeholder "FORMAT" >}} \
-    --project={{< placeholder "PROJECT_NAME" >}}
-```
+    ```command
+    gcloud compute images export \
+        --destination-uri=gs://{{< placeholder "BUCKET_NAME" >}}/{{< placeholder "IMAGE_NAME" >}} \
+        --image={{< placeholder "IMAGE_NAME" >}} \
+        --export-format=RAW \
+        --project={{< placeholder "PROJECT_ID" >}}
+    ```
 
-For `--export-format`, use `RAW`, which is compatible with importing to Linode.
+    ```output
+    Created [https://cloudbuild.googleapis.com/v1/projects/gcp-vm-migration-450215/builds/b6d6fbf5-bc51-4228-9ca5-c1b988477fe4\].
+    Logs are available at [https://console.cloud.google.com/cloud-build/builds/b6d6fbf5-bc51-4228-9ca5-c1b988477fe4?project=133697932277\].
+    [image-export]: 2025-02-08T15:39:47Z Fetching image "my-vm-image" from project "gcp-vm-migration-450215".
+    [image-export-ext]: 2025-02-08T15:39:48Z Validating workflow
+    [image-export-ext]: 2025-02-08T15:39:48Z Validating step "setup-disks"
+    [image-export-ext]: 2025-02-08T15:39:48Z Validating step "export-disk"
+    [image-export-ext.export-disk]: 2025-02-08T15:39:48Z Validating step "setup-disks"
+    [image-export-ext.export-disk]: 2025-02-08T15:39:48Z Validating step "run-export-disk"
+    ...
+    [image-export-ext]: 2025-02-08T15:39:50Z Uploading sources
+    [image-export-ext]: 2025-02-08T15:39:50Z Running workflow
+    [image-export-ext]: 2025-02-08T15:39:50Z Running step "setup-disks" (CreateDisks)
+    ...
+    [image-export-ext]: 2025-02-08T15:42:30Z Step "export-disk" (IncludeWorkflow) successfully finished.
+    [image-export-ext]: 2025-02-08T15:42:30Z Running step "delete-disks" (DeleteResources)
+    [image-export-ext.delete-disks]: 2025-02-08T15:42:30Z DeleteResources: Deleting disk "disk-image-export-ext".
+    [image-export-ext]: 2025-02-08T15:42:30Z Step "delete-disks" (DeleteResources) successfully finished.
+    [image-export-ext]: 2025-02-08T15:42:30Z Serial-output value -> source-size-gb:10
+    [image-export-ext]: 2025-02-08T15:42:30Z Serial-output value -> target-size-gb:10
+    [image-export-ext]: 2025-02-08T15:42:30Z Workflow "image-export-ext" cleaning up (this may take up to 2 minutes).
+    [image-export-ext]: 2025-02-08T15:42:30Z Workflow "image-export-ext" finished cleanup.
+    ```
 
-An example run of the export command looks like this:
+1.  Verify the file was exported, replacing {{< placeholder "BUCKET_NAME" >}} with your actual bucket name (e.g. `migration-vm-images`):
 
-```command
-gcloud compute images export \
-    --destination-uri=gs://migration-vm-images/my-vm-image \
-    --image=my-vm-image \
-    --export-format=RAW \
-    --project=gcp-vm-migration-450215
-```
+    ```command
+    gcloud storage ls gs://{{< placeholder "BUCKET_NAME" >}}
+    ```
 
-```output
-Created [https://cloudbuild.googleapis.com/v1/projects/gcp-vm-migration-450215/builds/b6d6fbf5-bc51-4228-9ca5-c1b988477fe4\].
-Logs are available at [https://console.cloud.google.com/cloud-build/builds/b6d6fbf5-bc51-4228-9ca5-c1b988477fe4?project=133697932277\].
-[image-export]: 2025-02-08T15:39:47Z Fetching image "my-vm-image" from project "gcp-vm-migration-450215".
-[image-export-ext]: 2025-02-08T15:39:48Z Validating workflow
-[image-export-ext]: 2025-02-08T15:39:48Z Validating step "setup-disks"
-[image-export-ext]: 2025-02-08T15:39:48Z Validating step "export-disk"
-[image-export-ext.export-disk]: 2025-02-08T15:39:48Z Validating step "setup-disks"
-[image-export-ext.export-disk]: 2025-02-08T15:39:48Z Validating step "run-export-disk"
-...
-[image-export-ext]: 2025-02-08T15:39:50Z Uploading sources
-[image-export-ext]: 2025-02-08T15:39:50Z Running workflow
-[image-export-ext]: 2025-02-08T15:39:50Z Running step "setup-disks" (CreateDisks)
-...
-[image-export-ext]: 2025-02-08T15:42:30Z Step "export-disk" (IncludeWorkflow) successfully finished.
-[image-export-ext]: 2025-02-08T15:42:30Z Running step "delete-disks" (DeleteResources)
-[image-export-ext.delete-disks]: 2025-02-08T15:42:30Z DeleteResources: Deleting disk "disk-image-export-ext".
-[image-export-ext]: 2025-02-08T15:42:30Z Step "delete-disks" (DeleteResources) successfully finished.
-[image-export-ext]: 2025-02-08T15:42:30Z Serial-output value -> source-size-gb:10
-[image-export-ext]: 2025-02-08T15:42:30Z Serial-output value -> target-size-gb:10
-[image-export-ext]: 2025-02-08T15:42:30Z Workflow "image-export-ext" cleaning up (this may take up to 2 minutes).
-[image-export-ext]: 2025-02-08T15:42:30Z Workflow "image-export-ext" finished cleanup.
-```
+    ```output
+    gs://migration-vm-images/my-vm-image
+    ```
 
-After the job completes, verify the image exists in the bucket:
+1.  Download the file to your local machine:
 
-```command
-gcloud storage ls gs://migration-vm-images
-```
+    ```command
+    gsutil cp gs://{{< placeholder "BUCKET_NAME" >}}/{{< placeholder "IMAGE_NAME" >}} .
+    ```
 
-```output
-gs://migration-vm-images/my-vm-image
-```
-
-Download the image from the command line:
-
-```command
-gsutil cp gs://migration-vm-images/my-vm-image .
-```
-
-```output
-Copying gs://migration-vm-images/my-vm-image...
-| [1 files][ 10.0 GiB/ 10.0 GiB]   22.8 MiB/s
-Operation completed over 1 objects/10.0 GiB.
-```
+    ```output
+    Copying gs://migration-vm-images/my-vm-image...
+    | [1 files][ 10.0 GiB/ 10.0 GiB]   22.8 MiB/s
+    Operation completed over 1 objects/10.0 GiB.
+    ```
 
 ### Resize Disk Image
 
-The size of persistent disks from GCP have a minimum size of 10 GB. Therefore, your downloaded image file might be around this size.
+GCP persistent disks have a minimum size of 10 GB, so the exported image may be larger than actually necessary.
 
-```command
-du -BM my-vm-image
-```
-
-```output
-10241M	my-vm-image
-```
-
-As noted earlier, images imported into Akamai Cloud must be smaller than 6 GB unzipped and 5 GB zipped. If you know that your actual disk usage within the image is within those limits, then you can shrink the size of the disk image file by deallocating unused disk space and truncating the disk size.
+To import a VM image into Akamai Cloud, it must be smaller than 6 GB unzipped or 5 GB zipped. If your actual disk usage is below those limits, you can reduce the image size by deallocating unused disk space and truncating the disk size.
 
 Shrinking the disk image size involves using [GParted](https://gparted.org/), [`fdisk`](https://tldp.org/HOWTO/Partition/fdisk_partitioning.html), and [`qemu-img`](https://qemu-project.gitlab.io/qemu/tools/qemu-img.html) on your local machine.
 
-1.  Because GParted works on devices (not images), create a [loopback device](https://wiki.osdev.org/Loopback_Device) for the image. Run the following commands, using the path to the newly created loopback device and the name of your image file.
+1.  Check the current size of the disk image file in megabytes:
 
-Enable loopback:
+    ```command
+    du -BM {{< placeholder "IMAGE_NAME" >}}
+    ```
 
-```command
-sudo modprobe loop
-```
+    ```output
+    10241M	my-vm-image
+    ```
 
-Create a loopback device, return its path:
+1.  GParted works on block devices, not raw image files, so you must create a [loopback device](https://wiki.osdev.org/Loopback_Device) for your image. Enable loopback support:
 
-```command
-sudo losetup -f
-```
+    ```command
+    sudo modprobe loop
+    ```
 
-```output
-/dev/loop48
-```
+1.  Create a loopback device and return its path:
 
-Create a device with the disk image:
+    ```command
+    sudo losetup -f
+    ```
 
-```command
-sudo losetup /dev/loop48 my-vm-image
-```
+    ```output
+    /dev/loop48
+    ```
 
-Load the image partitions:
+1.  Associate the device with the disk image:
 
-```command
-sudo partprobe /dev/loop48
-```
+    ```command
+    sudo losetup /dev/loop48 {{< placeholder "IMAGE_NAME" >}}
+    ```
 
-Backup the GUID Partition Table (GPT):
+1.  Load the image partitions:
 
-```command
-sudo sgdisk -b gpt-backup.bin my-vm-image
-```
+    ```command
+    sudo partprobe /dev/loop48
+    ```
 
-1.  Run GParted on the device.
+1.  Backup the GUID Partition Table (GPT):
 
-```command
-sudo gparted /dev/loop48
-```
+    ```command
+    sudo sgdisk -b gpt-backup.bin {{< placeholder "IMAGE_NAME" >}}
+    ```
 
-![](image10.png)
+1.  Open GParted on the device:
 
-In GParted, notice how there is unused space in the file system partition. Select that partition, then select **Partition \> Resize/Move**.
+    ```command
+    sudo gparted /dev/loop48
+    ```
 
-![](image11.png)
+1.  In GParted, select the unused space in the file system partition:
 
-Shrink down the data partition to remove most of the unused space.
+    ![GParted showing a disk image with unused space at the end of the main partition.](gcp-gparted-overview.png)
 
-![](image5.png)
+1.  Open the **Partition** file menu entry, then select **Resize/Move**:
 
-Click **Resize/Move**, and then click the green checkmark to apply this change.
+    ![GParted interface with Resize/Move option selected on the primary partition.](gcp-gparted-resize-partition.png)
 
-![](image15.png)
+1.  Shrink the partition to eliminate most of the unused space:
 
-Close GParted.
+    ![Resize/Move dialog in GParted showing the partition being resized to remove free space.](gcp-gparted-resize-confirm.png)
 
-1.  Shrink the partition table to match the last used partition:
+1.  Select **Resize/Move**, and then click the green checkmark to apply this change.
 
-```command
-sudo sgdisk --set-alternative-lba my-vm-image
-```
+    ![GParted interface with the green checkmark button to apply the resize changes highlighted.](gcp-gparted-apply-resize.png)
 
-1.  Use [`qemu-img`](https://qemu-project.gitlab.io/qemu/tools/qemu-img.html) to shrink the disk image file, eliminating the unallocated space while still fitting the partitions. A quick sum of the partition sizes from looking at GParted above shows the disk image will need approximately 5.5 GB of space. Shrink the image accordingly, adding some buffer space if desired.
+    When done, close GParted.
 
-```command
-qemu-img resize -f raw --shrink my-vm-image 5.8G
-```
+1.  Use `sgdisk` to shrink the partition table to match the last used partition:
 
-1.  Recreate the partition table headers using [`gdisk`](https://linux.die.net/man/8/gdisk). Use the following commands:
+    ```command
+    sudo sgdisk --set-alternative-lba {{< placeholder "IMAGE_NAME" >}}
+    ```
 
--   `x`: Navigate to extra functionality.
--   `e`: Relocate the backup GPT structure to the back of the disk.
--   `w`: Write the partition table to disk and exit (then <kbd>Y</kbd> to confirm.)
+1.  Use [`qemu-img`](https://qemu-project.gitlab.io/qemu/tools/qemu-img.html) to shrink the disk image file, leaving some additional buffer space. For example, if your disk image is approximately 5.5 GB, shrink the image file to 5.8 GB:
 
-```command
-sudo gdisk my-vm-image
-```
+    ```command
+    qemu-img resize -f raw --shrink {{< placeholder "IMAGE_NAME" >}} 5.8G
+    ```
 
-```output
-...
-Command (? for help): x
+1.  Use [`gdisk`](https://linux.die.net/man/8/gdisk) to recreate the partition table headers using:
 
-Expert command (? for help): e
-Relocating backup data structures to the end of the disk
+    ```command
+    sudo gdisk {{< placeholder "IMAGE_NAME" >}}
+    ```
 
-Expert command (? for help): w
+    Within `gdisk`, enter the following commands:
 
-Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING PARTITIONS!!
+    -   `x`: Switch to expert mode.
+    -   `e`: Relocate backup GPT to end of disk.
+    -   `w`: Write the new GPT to disk and exit.
+    -   `Y`: Confirm write when prompted.
 
-Do you want to proceed? (Y/N): Y
-OK; writing new GUID partition table (GPT) to gmy-vm-image.
-Warning: The kernel is still using the old partition table.
-The new table will be used at the next reboot or after you run partprobe(8) or kpartx(8)
-The operation has completed successfully.
-```
+    ```output
+    ...
+    Command (? for help): x
 
-The resulting size of the disk image file is smaller, within the size constraints for importing into Akamai Cloud.
+    Expert command (? for help): e
+    Relocating backup data structures to the end of the disk
 
-```command
-du -BM my-vm-image
-```
+    Expert command (? for help): w
 
-```output
-5940M	my-vm-image
-```
+    Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING PARTITIONS!!
 
-1.  Unload the loopback device to clean up.
+    Do you want to proceed? (Y/N): Y
+    OK; writing new GUID partition table (GPT) to my-vm-image.
+    Warning: The kernel is still using the old partition table.
+    The new table will be used at the next reboot or after you run partprobe(8) or kpartx(8)
+    The operation has completed successfully.
+    ```
 
-```command
-sudo losetup -d /dev/loop48
-```
+1.  Confirm that the resulting disk image file is now within the size constraints for import into Akamai Cloud:
 
-For a deeper dive into this image-shrinking technique, see "[Shrinking images on Linux](https://softwarebakery.com//shrinking-images-on-linux)".
+    ```command
+    du -BM {{< placeholder "IMAGE_NAME" >}}
+    ```
+
+    ```output
+    5940M	my-vm-image
+    ```
+
+1.  Detach the loopback device:
+
+    ```command
+    sudo losetup -d /dev/loop48
+    ```
+
+{{< note >}}
+For a deeper dive into this image-shrinking technique, see [Shrinking images on Linux](https://softwarebakery.com/shrinking-images-on-linux).
+{{< /note >}}
 
 ### Import and Deploy VM Image on Akamai Cloud
 
-To provision a Linode Compute Instance by importing an existing VM image, ensure the image is in the proper format and compressed with `gzip`.
+To provision a Linode by importing an existing VM image, ensure the image is in the proper format and compressed with `gzip`.
 
 #### Prepare Image File for Import
 
-You may have already named the image file above with the `.raw` file extension or nothing. Linode requires an image file to have a `.img` extension. The naming convention does not have a functional difference; simply rename the file to use the `.img` extension, and it will be ready for import.
+Linode requires image files to use the `.img` extension. If your exported image file does not already have this extension, rename it accordingly.
 
-```command
-mv my-vm-image my-vm-image.img
-```
+1.  Rename the file to use the `.img` extension:
 
-Compress the image using `gzip` to reduce its size:
+    ```command
+    mv my-vm-image my-vm-image.img
+    ```
 
-```command
-gzip my-vm-image.img
-```
+1.  Compress the image using `gzip` to reduce its size:
 
-```command
-du -BM my-vm-image.img.gz
-```
+    ```command
+    gzip my-vm-image.img
+    ```
 
-```output
-1060M	my-vm-image.img.gz
-```
+1.  Confirm the compressed image was created and check its size:
 
-#### Upload the Compressed IMG File to Akamai Cloud
+    ```command
+    du -BM my-vm-image.img.gz
+    ```
 
-Use the Linode CLI to upload the compressed image file. Replace the `.gz` file with your specific file name. Specify the label, description, and region based on your use case.
+    ```output
+    1060M	my-vm-image.img.gz
+    ```
+
+#### Upload the Compressed File to Akamai Cloud
+
+Use the Linode CLI to upload your compressed image file. Replace the filename with your specific `.gz` image, and specify the label, description, and region based on your use case.
 
 ```command
 linode-cli image-upload \
@@ -471,11 +554,11 @@ linode-cli image-upload \
 └-----------------------┴-----------┴----------------┘
 ```
 
-The upload may take several minutes, depending on your image's size and internet speed.
+The upload process may take several minutes depending on the size of your image and network speed.
 
 #### Verify the Successful Image Upload
 
-After the upload, ensure the image is successfully processed and available for use. Run the following command to list your private images:
+After uploading the image, verify that is was processed and is available for use. Run the following command to list your private images:
 
 ```command
 linode-cli images list --is_public false
@@ -489,24 +572,22 @@ linode-cli images list --is_public false
 └------------------┴-----------------------┴-----------┴--------┘
 ```
 
-Verify that the `status` of the image is `available`. If the `status` is `pending`, wait a few minutes and then check again.
+Check that the `status` is `available`. If the `status` is `pending`, wait a few minutes and try again.
 
-You can also watch the progress of the image ingestion via the Linode Images dashboard:
+You can also monitor the upload status from the **Images** section of the Akamai Cloud Manager:
 
-![](image8.png)
+![Linode Cloud Manager showing a private image labeled gcp-vm-migration with status available.](linode-cloud-manager-private-image-status-gcp.png)
 
 #### Launch a Linode Compute Instance from the Uploaded Image
 
-Once the image is available, you can deploy it to a new Linode Compute instance. For this command, provide the ID of your uploaded image, which was displayed when running the previous command. In addition, provide the following:
+Once your image is available, you can deploy it to a new Linode instance. For this command, provide the ID of your uploaded image (shown in the previous step). Also include the following values:
 
--   `--label`: A unique label for your instance.
--   `--region`: The region for your instance.
--   `--type`: The size of the instance to deploy.
--   `--root_pass`: A unique, secure root password for your new instance.
+-   `--label`: A unique label for the instance.
+-   `--region`: The preferred deployment region.
+-   `--type`: The type of instance to deploy.
+-   `--root_pass`: A secure root password for SSH access.
 
-The following example deploys a `g6-standard-2` Linode with two cores, 80 GB disk, and 4 GB RAM with a 4000 Mbps transfer rate. Recall that the original GCP VM instance for this migration is a `e2-medium`, which has 2 CPUs and 4 GiB RAM. Therefore, the `g6-standard-2` Linode instance is comparable.
-
-See the [pricing page for Akamai Cloud](https://www.linode.com/pricing/#compute-shared) for details on different Linode types.
+This example deploys a `g6-standard-2` Linode with 2 vCPUs, 80 GB storage, 4 GB RAM, and a 4000 Mbps transfer rate. This is a comparable configuration to the original GCP `e2-medium` VM instance, which also features 2 vCPUs and 4 GB RAM. See the [Akamai Cloud pricing page](https://www.linode.com/pricing/#compute-shared) for more details on available instance types and their associated costs.
 
 ```command
 linode-cli linodes create \
@@ -525,27 +606,31 @@ linode-cli linodes create \
 └-----------------------┴--------┴---------------┴--------------┘
 ```
 
-After several minutes, your Linode Compute Instance will be up and running based on the exported VM image from your original cloud provider.
+By default, Linode boots instances using its own kernel. To instead boot from the kernel embedded in your imported image:
 
-By default, Linode boots instances with its own kernel. However, you should use the kernel inside your image when booting it up. This can be done in the Linode dashboard. Navigate to your Linode Compute Instance. Click the **Configurations** tab at the bottom. Then, click **Edit**.
+1.  Navigate to your Linode under **Compute > Linodes** in the Akamai Cloud Manager.
 
-![](image6.png)
+1.  Select your Linode instance.
 
-Under **Boot Settings**, select **Direct Disk** as the kernel.
+1.  Open the **Configurations** tab at the bottom, then click **Edit**.
 
-![](image9.png)
+    ![Linode dashboard with the Configurations tab selected.](linode-configurations-tab.png)
 
-Click **Save Changes**. Then, **reboot** your Linode.
+1.  Under **Boot Settings**, select **Direct Disk** as the kernel option.
 
-![](image1.png)
+    ![Linode configuration editor showing Direct Disk selected under Boot Settings.](linode-select-direct-disk-kernel.png)
 
-After several minutes, your Linode Compute Instance will be up and running, based on the exported VM image from your original cloud provider.
+1.  Click **Save Changes**, then **Reboot** your Linode.
+
+    ![Linode interface showing the Reboot button after saving configuration changes.](linode-reboot-after-config-save.png)
+
+After several minutes, your Linode instance should be running using the image exported from your GCP VM.
 
 ### Configure and Validate the Linode Instance
 
-By migrating via a disk image that fully captures your GCP VM and disk, you ensure that the operating system and all installed software and services are on the newly provisioned Linode. This reduces the time needed to configure the Linode instance to closely match the environment of the original VM.
+Migrating using a disk image exported from your GCP VM and disk ensures that the operating system and all installed software and services are preserved on the newly provisioned Linode. This reduces the time needed to reconfigure the Linode instance to closely match the original VM.
 
-However, you must perform steps to configure networking to align with your needs. Recall the configurations from your original GCP Compute Engine VM:
+However, you must still configure the Linode's networking to align with your workload. Refer to the configuration details from your original GCP Compute Engine VM and apply them to your Linode as appropriate:
 
 -   [IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance)
 -   [Firewall Rules](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-cloud-firewalls)
@@ -554,81 +639,81 @@ However, you must perform steps to configure networking to align with your needs
 
 Linode does not have a direct equivalent to GCP security groups. However, you can still implement a firewall with rules to control traffic. Options include:
 
--   [Linode Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall), for setting up inbound and outbound rules on Linode Compute Instances, either through the Linode API or the Linode CLI.
--   [`iptables`](/docs/guides/control-network-traffic-with-iptables/) or [`ufw`](/docs/guides/configure-firewall-with-ufw/), which run from within the Linode instance to manage the Linux kernel firewall (Netfilter).
+-   [Linode Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) to set up inbound and outbound rules through the Akamai Cloud Manager, the Linode CLI, or API.
+-   [`iptables`](/docs/guides/control-network-traffic-with-iptables/) or [`ufw`](/docs/guides/configure-firewall-with-ufw/) to manage the Linux kernel firewall (Netfilter).
 
-Akamai Cloud provides [NodeBalancers](https://www.linode.com/products/nodebalancers/), which are equivalent to GCP’s HTTPS LoadBalancers. If you are migrating a Compute Engine VM with an HTTPS LoadBalancer, you can implement a similar configuration for your Linode.
+To replicate GCP’s HTTPS LoadBalancers, use Akamai Cloud's [NodeBalancers](https://www.linode.com/products/nodebalancers/) to distribute traffic across multiple Linode instances.
 
-If you used Cloud DNS to implement DNS rules to route traffic to your VM, then you will need to modify your DNS settings to ensure traffic routes to your new Linode instance. This may involve pointing nameservers to Akamai Cloud and creating DNS rules within the Akamai Cloud Manager.
+If you used Cloud DNS to route traffic to your GCP VM, you need to update your DNS records to route traffic to your new Linode instance instead. This may involve pointing your domain nameservers to Akamai Cloud and creating DNS rules within the Akamai Cloud Manager.
 
 After completing your configurations, test your Linode instance to verify that the migration was successful. Validation steps may include:
 
--   **Check Running Services**. Ensure that all critical services, such as web servers, databases, and application processes are running as expected and configured to start on boot.
--   **Test Application Functionality**. Access any applications on the new Linode through their web interface or API endpoints to confirm that they behave as expected, including core functionality and error handling.
--   **Inspect Resource Utilization**. Monitor CPU, memory, and disk usage on the Linode to ensure the system performs within acceptable thresholds post-migration.
--   **Validate DNS Configuration**. Ensure DNS changes (if made) are propagating correctly, pointing to your Linode instance, and resolving to the expected IP addresses.
--   **Check External Connectivity**. Verify that the instance can access any required external resources, such as third-party APIs, databases, or storage, and that outbound requests succeed.
--   **Review Logs**. Examine system and application logs for errors or warnings that might indicate migration-related issues.
--   **Backup and Snapshot Functionality**. Confirm that backups and snapshots can be created successfully on Linode to safeguard your data post migration.
+-   **Check Running Services**: Confirm that all critical services (e.g. web servers, databases, and application processes) are running as expected and configured to start on boot.
+-   **Test Application Functionality**: Access your applications through their web interface or API endpoints to confirm that they behave as expected, including core functionality and error handling.
+-   **Inspect Resource Utilization**: Monitor the Linode's CPU, memory, and disk usage to ensure the system performs within acceptable thresholds post-migration.
+-   **Validate DNS Configuration**: Ensure that any DNS changes are propagating correctly, pointing to your Linode instance, and resolving to the expected IP addresses.
+-   **Check External Connectivity**: Verify that the Linode can access any required external resources (e.g. third-party APIs, databases, or storage) and that outbound requests succeed.
+-   **Review Logs**: Examine system and application logs for errors or warnings that might indicate migration-related issues.
+-   **Backup and Snapshot Functionality**: To safeguard your data post-migration, confirm that backups and snapshots can be created successfully.
 -   **Verify Externally Attached Storage**: Ensure that any additional storage volumes, block devices, or network-attached storage are properly mounted and accessible. Check `/etc/fstab` entries and update disk mappings as needed.
 
 ## Additional Considerations
 
 ### Cost Management
 
-Review the pricing for your current GCP Compute Engine VM instance ([compute](https://cloud.google.com/compute/vm-instance-pricing?hl=en), [storage](https://cloud.google.com/compute/disks-image-pricing?hl=en#tg1-t0), and [bandwidth](https://cloud.google.com/vpc/network-pricing?hl=en)). Compare this with the [pricing plans for Akamai Cloud](https://www.linode.com/pricing/). Use [Akamai’s Cloud Computing Calculator](https://www.linode.com/cloud-computing-calculator/) to estimate potential costs.
+Review the pricing for your current GCP Compute Engine VM instance including [compute](https://cloud.google.com/compute/vm-instance-pricing?hl=en), [storage](https://cloud.google.com/compute/disks-image-pricing?hl=en#tg1-t0), and [bandwidth](https://cloud.google.com/vpc/network-pricing?hl=en). Compare those costs with the [Akamai Cloud pricing plans](https://www.linode.com/pricing/) using [Akamai’s Cloud Computing Calculator](https://www.linode.com/cloud-computing-calculator/) to estimate your usage.
 
 ### Data Consistency and Accuracy
 
-Verify that the Linode migrated from the image export contains all necessary files, configurations, and application data. Double-check for corrupted or missing files during the image export and upload process. Verification steps may include:
+After importing your image and launching your Linode, verify that all expected files, configurations, and application data are intact. Verification steps may include:
 
--   **Generate and Compare File Checksums**: Use tools like `md5sum` to generate checksums of critical files or directories on both the source VM and the migrated Linode. Ensure the checksums match to confirm data integrity.
--   **Count Files and Directories**: Use `find` or `ls` commands to count the number of files and directories in key locations (e.g. `find /path -type f | wc -l`). Compare these counts between the source and destination to identify any discrepancies.
--   **Check Application Logs and Settings**: Compare configuration files, environment variables, and application logs between the source and the destination to confirm they are identical or appropriately modified for the new environment. Common locations to review may include:
+-   **Generate and Compare File Checksums**: Use tools like `md5sum` to generate checksums of both the source VM and your Linode. Ensure the checksums match to confirm data integrity.
+-   **Count Files and Directories**: Use commands like `find` or `ls` to count the number of files and directories in key locations (e.g. `find /path -type f | wc -l`). Compare these counts between the source VM and your Linode to identify any discrepancies.
+-   **Check Application Logs and Settings**: Compare configuration files, environment variables, and application logs between the source VM and your Linode to confirm they are identical (or appropriately modified for the new environment). Common locations to review may include:
 
-    | Application           | Configuration           | Location                       |
-    |-----------------------|-------------------------|--------------------------------|
-    | **Apache Web Server** | Main                    | `/etc/apache2/apache2.conf`    |
-    |                       | Virtual hosts           | `/etc/apache2/sites-available` |
-    |                       |                         | `/etc/apache2/sites-enabled`   |
-    | **NGINX Web Server**  | Main                    | `/etc/nginx/nginx.conf`        |
-    |                       | Virtual hosts           | `/etc/nginx/sites-available`   |
-    |                       |                         | `/etc/nginx/sites-enabled`     |
-    | **Cron**              | Application             | `/etc/cron.d`                  |
-    |                       | System-wide cron jobs   | `/etc/crontab`                 |
-    |                       | User-specific cron jobs | `/var/spool/cron/crontabs`     |
-    | **MySQL/MariaDB**     | Main                    | `/etc/mysql`                   |
-    | **PostgreSQL**        | Main                    | `/etc/postgresql`              |
-    | **SSH**               | Main                    | `/etc/ssh/sshd_config`         |
-    | **Networking**        | Hostname                | `/etc/hostname`                |
-    |                       | Hosts file              | `/etc/hosts`                   |
-    | **Rsyslog**           | Main                    | `/etc/rsyslog.conf`            |
+    | Application           | Configuration             | Location                       |
+    |-----------------------|---------------------------|--------------------------------|
+    | **Apache Web Server** | Main                      | `/etc/apache2/apache2.conf`    |
+    |                       | Virtual hosts             | `/etc/apache2/sites-available` |
+    |                       |                           | `/etc/apache2/sites-enabled`   |
+    | **NGINX Web Server**  | Main                      | `/etc/nginx/nginx.conf`        |
+    |                       | Virtual hosts             | `/etc/nginx/sites-available`   |
+    |                       |                           | `/etc/nginx/sites-enabled`     |
+    | **Cron**              | Application               | `/etc/cron.d`                  |
+    |                       | System-wide `cron` jobs   | `/etc/crontab`                 |
+    |                       | User-specific `cron` jobs | `/var/spool/cron/crontabs`     |
+    | **MySQL/MariaDB**     | Main                      | `/etc/mysql`                   |
+    | **PostgreSQL**        | Main                      | `/etc/postgresql`              |
+    | **SSH**               | Main                      | `/etc/ssh/sshd_config`         |
+    | **Networking**        | Hostname                  | `/etc/hostname`                |
+    |                       | Hosts file                | `/etc/hosts`                   |
+    | **Rsyslog**           | Main                      | `/etc/rsyslog.conf`            |
 
--   **Review Symbolic Links and Permissions**: Use CLI tools and commands to confirm that symbolic links and file permissions on the migrated Linode match those on the source VM. Examples include:
+-   **Review Symbolic Links and Permissions**: Use CLI tools and commands to confirm that symbolic links and file permissions on your Linode match those on the source VM. Examples include:
 
     | Description                                                                                                                                             | Command                                                                    |
     |---------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
-    | List all symbolic links in folder (recursive)                                                                                                           | `ls -Rla /path/to/folder | grep "\->"`                                     |
+    | List all symbolic links in folder (recursive).                                                                                                          | `ls -Rla /path/to/folder | grep "\->"`                                     |
     | Calculate md5 hash for all files in a folder, then sort by filename and write to file. Then, compare files from both VMs using `diff`.                  | `find /path/to/folder/ -type f -exec md5sum {} + | sort -k 2 > hashes.txt` |
     | Write to file the folder contents (recursive) with permissions, owner name, and group name. Then, compare permissions files from both VMs using `diff`. | `tree /path/to/folder -fpuig > permissions.txt`                            |
 
-After deploying your Linode, confirm that configurations (network settings, environment variables, and application dependencies) match the original VM to avoid runtime issues.
+After deploying your Linode, confirm that configurations (network settings, environment variables, and application dependencies) match the source VM to avoid runtime issues.
 
 ### Security and Access Controls
 
-GCP IAM roles govern instance access. Migrate these roles and permissions to Linode by setting up Linode API tokens and fine-tuning user permissions.
+GCP IAM roles govern instance access. To migrate these roles and permissions to Akamai Cloud:
 
-Use the Linode Cloud Firewall or existing system firewall on your instance to restrict access. Ensure SSH keys are properly configured, and disable root login if not required. Map GCP security group policy rules to your firewall for consistent protection.
+-   Create Linode API tokens and fine-tune user permissions.
+-   Reproduce GCP security group policy rules on the Linode Cloud Firewall or existing system firewall.
+-   Properly configure SSH keys and disable root login if not required.
 
 ### Alternative Migration Options
 
-This guide covered migrating a VM by creating a disk image of the original GCP Compute Engine VM instance and importing that image to Akamai Cloud as the basis of a new Linode Compute Instance. When cloud provider restrictions or image size limits make this approach unavailable, consider other migration options, including:
+If exporting a disk image is not viable due to provider restrictions or image size limits, consider these alternative migration options:
 
--   **Rclone**: For example, provision a Linode Compute Instance with resource levels comparable to your original VM. Then, use [rclone](https://rclone.org/)—a command line utility for managing files in cloud storage—to move all data from your original VM to your new Linode. This can effectively move your workloads from your GCP VM to your Linode.
-
--   **IaC**: You can also leverage infrastructure-as-code (IaC) and configuration management tools to streamline your migration process. Tools like [Ansible](https://docs.ansible.com/ansible/latest/index.html), [Terraform](https://www.terraform.io/), [Chef](https://www.chef.io/products/chef-infra), and [Puppet](https://www.puppet.com/why-puppet/use-cases/continuous-configuration-automation) can help you automatically replicate server configurations, deploy applications, and ensure consistent settings across your source and destination VMs. By using these tools, you can create repeatable migration workflows that reduce manual intervention and minimize the risk of configuration errors during the transition.
-
--   **Containerization**: Another option is to containerize any workloads on your original VM. These containerized images can be run in the Akamai Cloud. For example, you can provision a [Linode Kubernetes Engine (LKE)](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) cluster to host and run these containers, thereby removing the need for a VM.
+-   **Data-only Transfer**: Provision a Linode with resource levels comparable to your source VM, then use [rclone](https://rclone.org/) to move all data from your source VM to your new Linode.
+-   **Infrastructure-as-Code (Ia)**: Replicate your source VM on Akamai Cloud using tools like [Ansible](https://docs.ansible.com/ansible/latest/index.html), [Terraform](https://www.terraform.io/), [Chef](https://www.chef.io/products/chef-infra), and [Puppet](https://www.puppet.com/why-puppet/use-cases/continuous-configuration-automation). These tools can help replicate server configurations, deploy applications, and ensure consistency.
+-   **Containerization**: Containerize workloads and deploy them to a [Linode Kubernetes Engine (LKE)](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) cluster, eliminating the need to migrate the VM entirely.
 
 ## Resources
 
