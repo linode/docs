@@ -5,7 +5,7 @@ description: 'A look into Terraform''s primary components, features, and configu
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2018-12-21
-modified: 2025-06-12
+modified: 2025-06-13
 keywords: ['terraform', 'orchestration', 'linode provider']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: ABeginnersGuidetoTerraform.png
@@ -25,16 +25,14 @@ Terraform's primary job is to create, modify, and destroy servers and other reso
 
 ## The Linode Provider
 
-Terraform is a general orchestration tool that can interface with a number of different cloud platforms. These integrations are referred to as *providers*. The Terraform provider for Linode was [officially released](https://blog.linode.com/2018/10/30/now-available-linode-terraform-provider/) in October 2018.
-
-{{< note >}}
-The Linode provider relies on Linode's [APIv4](/docs/products/tools/api/), so an API access token is needed to use it. See [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) for instructions on getting an API token and installing Terraform and the Linode provider on your computer.
-{{< /note >}}
+Terraform is a general orchestration tool that can interface with a number of different cloud platforms. These integrations are referred to as *providers*. The Terraform provider for Linode was [officially released](https://blog.linode.com/2018/10/30/now-available-linode-terraform-provider/) in October 2018. A version history, including the latest provider release number, can be found on [Terraform's Registry](https://registry.terraform.io/providers/linode/linode/latest).
 
 The Linode provider can be used to create Linode instances, Images, domain records, Block Storage Volumes, StackScripts, and other resources. Terraform's [official Linode provider documentation](https://www.terraform.io/docs/providers/linode/index.html) details each resource that can be managed.
 
+The Linode provider relies on Linode's [APIv4](/docs/products/tools/api/), and an API access token is needed to use it. See [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) for instructions on getting an API token and installing Terraform and the Linode provider on your computer.
+
 {{< note >}}
-[Terraform’s Linode Provider](https://github.com/linode/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
+As of May 22, 2019, [Terraform’s Linode Provider](https://github.com/linode/terraform-provider-linode) requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of Terraform versions, features, and incompatibility notes.
 {{< /note >}}
 
 ## Infrastructure as Code
@@ -57,12 +55,16 @@ The next sections will illustrate core Terraform concepts with examples written 
 
 Here's a simple example of a complete Terraform configuration in HCL:
 
+{{< note >}}
+The SSH key in this example is truncated for brevity.
+{{< /note >}}
+
 {{< file "example.tf" >}}
 terraform {
   required_providers {
     linode = {
       source = "linode/linode"
-      version = "2.41.0"
+      version = "3.0.0"
     }
   }
 }
@@ -81,11 +83,7 @@ resource "linode_instance" "example_instance" {
 }
 {{< /file >}}
 
-{{< note >}}
-The SSH key in this example was truncated for brevity.
-{{< /note >}}
-
-This example Terraform file, with the Terraform file extension `.tf`, represents the creation of a single Linode instance labeled `example_instance_label`. This example file is prefixed with a mandatory `provider` block, which sets up the Linode provider and which you must list somewhere in your configuration.
+This example Terraform file, with the Terraform file extension `.tf`, represents the creation of a single Linode instance labeled `example_instance_label`. This example file is prefixed with a mandatory `provider` block, which sets up the Linode provider must be listed in your configuration.
 
 The `provider` block is followed by a *resource* declaration. The `example_instance` string that follows the `linode_instance` resource type declaration is Terraform's name for the resource. You cannot declare more than one Terraform resource with the same name and resource type. Resource declarations correspond with the components of your Linode infrastructure: Linode instances, Block Storage Volumes, etc.
 
@@ -164,7 +162,7 @@ terraform {
   required_providers {
     linode = {
       source = "linode/linode"
-      version = "1.16.0"
+      version = "3.0.0"
     }
   }
 }
@@ -175,7 +173,7 @@ provider "linode" {
 
 resource "linode_instance" "example_instance" {
     label = "example_instance_label"
-    image = "linode/ubuntu18.04"
+    image = "linode/ubuntu22.04"
     region = var.region
     type = "g6-standard-1"
     authorized_keys = [var.ssh_key]
