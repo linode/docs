@@ -13,8 +13,6 @@ external_resources:
 aliases: ['/websites/introduction-to-high-availability/','/websites/hosting/introduction-to-high-availability/']
 ---
 
-![Introduction to High Availability](Introduction_to_High_Availability_smg.jpg)
-
 ## What is High Availability?
 
 High availability (HA) is a term that describes a website or application with maximum potential uptime and accessibility for the content stored on it. While a more basic system will be adequate to serve content to a low or medium number of users, it may include a single point of failure. This means that if one server goes down, whether due to traffic overload or any number of other issues, the entire site or application could become unavailable.
