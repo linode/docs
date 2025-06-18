@@ -5,7 +5,7 @@ description: 'This article gives you step-by-step instructions on how to use Ter
 authors: ["Damaso Sanoja"]
 contributors: ["Damaso Sanoja"]
 published: 2017-11-06
-modified: 2024-08-26
+modified: 2025-06-18
 keywords: ["terraform", "infrastructure", "IaC"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/configuration-management/terraform/how-to-build-your-infrastructure-using-terraform-and-linode/','/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/','/platform/how-to-build-your-infrastructure-using-terraform-and-linode/']
@@ -25,17 +25,19 @@ The configurations and commands used in this guide results in multiple Linodes b
 
 ## Before You Begin
 
+{{< note title ="Linode Provider Version 3.0.0" >}}
+As of June, 2025, the [Linode Terraform Provider](https://github.com/linode/terraform-provider-linode/) version is 3.0.0. To determine the current version, see the [Linode Namespace](https://registry.terraform.io/namespaces/linode) in the Terraform Registry.
+
+The Linode Terraform Provider version 3.0.0 requires `terraform` version 1.0 or greater. See [Terraform's developer documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/upgrade-guides/1-0) for guidance on upgrading to version 1.0.
+
+The examples in this guide were originally written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html).
+{{< /note >}}
+
 -   This guide shows you how to install and use the Terraform client software from a Linux system. Terraform can be installed on other operating systems, and the instructions for those platforms are analogous to the commands presented in this guide.
 
-    {{< note >}}
-    When following this guide, your Linux user may need sudo privileges in order to install supplementary software packages.
-    {{< /note >}}
+-   When following this guide, your Linux user may need sudo privileges in order to install supplementary software packages.
 
 -   You need a personal access token for Linode's [v4 API](/docs/api/) to use with Terraform. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
-
-    {{< note >}}
-    Any Personal Access Tokens generated from the previous Linode Manager are API v3 tokens and do not work with Terraform's Linode provider.
-    {{< /note >}}
 
 ## Install Terraform
 
@@ -122,7 +124,7 @@ Terraform uses a declarative approach in which configuration files specify the d
       required_providers {
         linode = {
           source = "linode/linode"
-          version = "2.5.2"
+          version = "3.0.0"
         }
       }
     }
@@ -132,7 +134,7 @@ Terraform uses a declarative approach in which configuration files specify the d
     }
 
     resource "linode_instance" "terraform-web" {
-            image = "linode/ubuntu18.04"
+            image = "linode/ubuntu24.04"
             label = "Terraform-Web-Example"
             group = "Terraform"
             region = "us-east"
@@ -157,19 +159,19 @@ Terraform uses a declarative approach in which configuration files specify the d
     Terraform confirms successful initialization:
 
     ```output
+    Initializing the backend...
     Initializing provider plugins...
-    - Checking for available provider plugins on https://releases.hashicorp.com...
-    - Downloading plugin for provider "linode" (1.0.0)...
+    - Finding linode/linode versions matching "3.0.0"...
+    - Installing linode/linode v3.0.0...
+    - Installed linode/linode v3.0.0 (signed by a HashiCorp partner, key ID F4E6BBD0EA4FE463)
+    Partner and community providers are signed by their developers.
+    If you'd like to know more about provider signing, you can read about it here:
+    https://developer.hashicorp.com/terraform/cli/plugins/signing
+    Terraform has created a lock file .terraform.lock.hcl to record the provider
+    selections it made above. Include this file in your version control repository
+    so that Terraform can guarantee to make the same selections by default when
+    you run "terraform init" in the future.
 
-    The following providers do not have any version constraints in configuration,
-    so the latest version was installed.
-
-    To prevent automatic upgrades to new major versions that may contain breaking
-    changes, it is recommended to add version = "..." constraints to the
-    corresponding provider blocks in configuration, with the constraint strings
-    suggested below.
-
-    * provider.linode: version = "~> 1.0"
     Terraform has been successfully initialized!
     ```
 
@@ -210,7 +212,7 @@ Terraform uses a declarative approach in which configuration files specify the d
           backups_enabled:    <computed>
           boot_config_label:  <computed>
           group:              "Terraform"
-          image:              "linode/ubuntu18.04"
+          image:              "linode/ubuntu24.04"
           ip_address:         <computed>
           ipv4.#:             <computed>
           ipv6:               <computed>
@@ -267,7 +269,7 @@ Terraform uses a declarative approach in which configuration files specify the d
       backups_enabled:    "" => "<computed>"
       boot_config_label:  "" => "<computed>"
       group:              "" => "Terraform"
-      image:              "" => "linode/ubuntu18.04"
+      image:              "" => "linode/ubuntu24.04"
       ip_address:         "" => "<computed>"
       ipv4.#:             "" => "<computed>"
       ipv6:               "" => "<computed>"
@@ -432,7 +434,7 @@ To solve these issues, Terraform allows you to declare variables and insert thos
       required_providers {
         linode = {
           source = "linode/linode"
-          version = "2.5.2"
+          version = "3.0.0"
         }
       }
     }
@@ -455,7 +457,7 @@ To solve these issues, Terraform allows you to declare variables and insert thos
 
     # Example Database Server
     resource "linode_instance" "terraform-db" {
-            image = "linode/ubuntu18.04"
+            image = "linode/ubuntu24.04"
             label = "Terraform-Db-Example"
             group = "Terraform"
             region = var.region
@@ -557,7 +559,7 @@ The module structure is flexible, so you can use as many Terraform files as need
     ```file {title="~/terraform/modules/app-deployment/main.tf"}
     # Web Server
     resource "linode_instance" "terraform-web" {
-            image = "linode/ubuntu18.04"
+            image = "linode/ubuntu24.04"
             label = var.webserver_label
             group = "Terraform"
             region = var.region
@@ -635,7 +637,7 @@ Create a deployment for an imaginary client:
       required_providers {
         linode = {
           source = "linode/linode"
-          version = "2.5.2"
+          version = "3.0.0"
         }
       }
     }
