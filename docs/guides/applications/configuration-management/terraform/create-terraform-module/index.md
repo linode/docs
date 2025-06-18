@@ -6,7 +6,7 @@ description: 'This guide shows you how to create a Terraform module with nested 
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2018-12-12
-modified: 2021-06-01
+modified: 2025-06-18
 keywords: ['terraform','resource','modules','provider']
 tags: ["terraform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -36,8 +36,10 @@ This guide covers the creation of a Terraform module used to deploy a Linode ins
 
 1. Install Terraform on your local computer using the steps found in the **Install Terraform** section of the [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide. Your Terraform project directory should be named `linode_stackscripts`.
 
-    {{< note respectIndent=false >}}
-[Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
+    {{< note title ="Linode Provider Version 3.0.0" >}}
+    As of June, 2025, the [Linode Terraform Provider](https://github.com/linode/terraform-provider-linode/) version is 3.0.0. To determine the current version, see the [Linode Namespace](https://registry.terraform.io/namespaces/linode) in the Terraform Registry.
+
+    The Linode Terraform Provider version 3.0.0 requires `terraform` version 1.0 or greater. See [Terraform's developer documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/upgrade-guides/1-0) for guidance on upgrading to version 1.0.
     {{< /note >}}
 
 2. Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) guide to obtain a token.
@@ -242,7 +244,7 @@ variable "stackscript_data" {
 
     - Modules must include a description for each input variable to help document your configuration’s usage. This will make it easier for anyone else to use this module.
 
-    - Every variable can contain a default value. The default value is only used if no other value is provided. For example, if you have a favorite Linux distribution, you may want to provide it as your image variable’s default value. In this case, `linode/ubuntu18.04` is set as the default value.
+    - Every variable can contain a default value. The default value is only used if no other value is provided. For example, if you have a preferred Linux distribution, you may want to provide it as your image variable’s default value. In this case, `linode/ubuntu18.04` is set as the default value.
 
     - You can declare a `type` for each variable. If no `type` is provided, the variable will default to `type = "string"`.
 
@@ -327,7 +329,7 @@ terraform {
   required_providers {
     linode = {
       source = "linode/linode"
-      version = "1.16.0"
+      version = "3.0.0"
     }
   }
 }
