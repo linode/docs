@@ -50,7 +50,7 @@ Referencing those two guides, you need to do the following to keep up with the r
 1.  Create a limited user with database-level access. This example names the user `exampleUser`.
 
     ```command
-    DEFINE LOGIN exampleUser ON DATABASE PASSWORD 'examplePass';
+    DEFINE USER exampleUser ON DATABASE PASSWORD 'examplePass';
     ```
 
 1.  Close the SurrealDB CLI and stop the SurrealDB server with the <kbd>Ctrl</kbd> + <kbd>C</kbd> key combination.
