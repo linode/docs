@@ -195,7 +195,7 @@ Open source software and tools can support load balancing, including:
 
 - [HAProxy](/docs/guides/how-to-configure-haproxy-http-load-balancing-and-health-checks/): a dedicated reverse proxy software solution.
 
-- [Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/): [a range of load balancing functionality](https://kubernetes.io/docs/concepts/services-networking/) is offered by Kubernetes. [Services](https://kubernetes.io/docs/concepts/services-networking/service/) are an abstraction layer for a set of Pods that run your application code, and traffic is collectively routed across them. [LoadBalancer-type Services](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) are available
+- [Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/): [a range of load balancing functionality](https://kubernetes.io/docs/concepts/services-networking/) is offered by Kubernetes. [Services](https://kubernetes.io/docs/concepts/services-networking/service/) are an abstraction layer for a set of Pods that run your application code, and traffic is collectively routed across them. [LoadBalancer-type Services](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) correspond to cloud load balancing products provided by cloud platforms.
 
 ### Replication
 
