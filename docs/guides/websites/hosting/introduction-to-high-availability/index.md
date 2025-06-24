@@ -1,9 +1,9 @@
 ---
 slug: introduction-to-high-availability
-title: 'Introduction to High Availability'
+title: 'Intro to High Availability and Disaster Recovery'
 description: 'This guide provides you with an introduction to concepts and terminology relating to high availability, a method of keeping your web servers up with maximum uptime.'
-authors: ["Phil Zona"]
-contributors: ["Phil Zona"]
+authors: ["Phil Zona", "Kazuki Fukushima", "Nathan Melehan"]
+contributors: ["Phil Zona", "Kazuki Fukushima", "Nathan Melehan"]
 published: 2016-07-12
 keywords: ["high availability", "hosting", "website", "failover", "ssd ha"]
 tags: ["web server","monitoring"]
@@ -13,96 +13,238 @@ external_resources:
 aliases: ['/websites/introduction-to-high-availability/','/websites/hosting/introduction-to-high-availability/']
 ---
 
+Designing applications with *high availability (HA)* and *disaster recovery* strategies in mind is essential for minimizing downtime and maintaining business continuity during infrastructure maintenance, upgrades, or temporary outages. This guide provides **Akamai Cloud Computing customers** with actionable strategies and architectural guidance to build resilient and highly available systems using Akamai.
+
 ## What is High Availability?
 
-High availability (HA) is a term that describes a website or application with maximum potential uptime and accessibility for the content stored on it. While a more basic system will be adequate to serve content to a low or medium number of users, it may include a single point of failure. This means that if one server goes down, whether due to traffic overload or any number of other issues, the entire site or application could become unavailable.
+High availability (HA) is a term that describes a website or application with maximum potential uptime and accessibility for the content stored on it. While a more basic system will be adequate to serve content to a low or medium number of users, it may include a single point of failure. This means that if one server goes down (because of traffic overload, application failures, etc) the entire site or application could become unavailable. Systems with high availability avoid this problem by eliminating single points of failure, which prevents the site or application from going down when one component fails.
 
-Systems with high availability avoid this problem by eliminating single points of failure, which prevents the site or application from going down when one component fails.
+High availability does **not** mean your site or application will never experience downtime. The safeguards in a highly available system can offer protection in a number of scenarios, but no system is perfect. The uptime provided by an HA architecture is often measured in percentages, like 99.99%, 99.999%, and so on. These tiers of uptime depend on variables in your architecture, like the number of redundant components, their configuration settings, and the resources allocated to each component. Some of these variables, like the compute resources for a given server, can be [scaled](#scaling) to accomodate spikes in traffic.
 
-## What High Availability is Not
+Some scenarios, like natural disasters or cyber attacks, may disrupt a highly-available system entirely. In these situations, [disaster recovery](#disaster-recovery) strategies should be implemented.
 
-High availability does **not** mean your site or application will never go down. Although it provides a number of failsafes, and aims for a 99.999% uptime, no system is perfect. Availability will still depend on the number of components, their configuration settings, and the resources allocated to each component. While high availability solutions offer your site or application greater uptime than a single host, remember that the system is only equal to the sum of its parts.
-
-However, because highly available systems are made up of so many components, they can be scaled horizontally when needed, thus improving their ability to serve content.
-
-## How High Availability Works
+### How High Availability Works
 
 To create a highly available system, three characteristics should be present:
 
-1.  Redundancy
-2.  Monitoring
-3.  Failover
+1.  [Redundancy](#redundancy)
+1.  [Monitoring](#monitoring-and-failover)
+1.  [Failover](#monitoring-and-failover)
 
 In general, a high availability system works by having more components than it needs, performing regular checks to make sure each component is working properly, and if one fails, switching it out for one that is working.
 
-### Redundancy
+## What is Disaster Recovery?
 
-In computing, *redundancy* means that there are multiple components that can perform the same task. This eliminates the single point of failure problem by allowing a second server to take over a task if the first one goes down or becomes disabled. Because the same tasks are handled by multiple components, *replication* is also critical. In a replicated system, the components that handle the same tasks communicate with one another to ensure that they have the same information at all times.
+Disaster recovery is a process that is employed in the event of a wider-ranging outage of an organization's systems. These might occur because of cyber attacks, natural disasters, human error, and other reasons. An organization follows a disaster recovery plan to restore service and data for the systems that have experienced downtime and/or data loss.
 
-For example, suppose you have a LAMP stack running a website hosted on a single Linode. If the database in the LAMP stack were to stop working, PHP may be unable to perform queries properly, and your website will be unavailable to display the requested content or handle user authentication.
+A disaster recovery plan documents key information and procedures that should be adhered to in these scenarios. This can include lists of staff that are responsible for the plan, inventories of systems and software, activation of backup sites and systems, criteria that should be met during the recovery operation (including [RTO and RPO](#rtorpo)), and other considerations.
 
-In a highly available configuration, however, this problem is mitigated because the databases are distributed across several servers. If one of the database servers becomes disabled for any reason, data can still be read from one of the others, and because the databases are replicated, any one of them can serve the same information. Even if one database becomes disabled, another can take its place.
+## High Availability Architecture
 
-### Monitoring and Failover
+This section describes an example of a high availability architecture that features a WordPress website running in a single data center. There are redundant copies of each component in the architecture, and the health of each set of components is continually monitored. If any component fails, automatic failover is triggered and other healthy components are promoted.
 
-In a highly available setup, the system needs to be able to *monitor* itself for failure. This means that there are regular checks to ensure that all components are working properly. *Failover* is the process by which a secondary component becomes primary when monitoring reveals that a primary component has failed.
-
-To expand on the example above, suppose your database stops working, disabling your website. The reason the website becomes disabled in this example is because there is no backup database from which to read information. However, even if there were a backup database, the system needs a way to know that it failed, and to enable the backup for requests for information.
-
-In a highly available setup, regular checks are performed to ensure that the primary database is working properly. If a check results in an error, meaning that the primary database has become disabled, the system fails over. This means that database requests are sent to a secondary database instead, and because the secondary database has been replicated to include the same information, there is no disruption in service.
-
-## Elements of High Availability
-
-In this section, we'll go over the function of each component of the high availability configuration, and explain how the pieces work together. There are a number of combinations of software to perform each task in a high availability configuration, and the software mentioned in this section serves as just one possible solution to creating a highly available site or application.
-
-The concepts discussed here are specifically geared toward the configuration described in our guide on how to [host a website with high availability](/docs/guides/host-a-website-with-high-availability/), but will apply to highly available systems in general. The  diagram below shows the configuration we use in our guide.
+{{< note >}}
+This specific architecture is implemented in the [host a website with high availability](/docs/guides/host-a-website-with-high-availability/) guide. While some of the technologies used are specific to this example, the concepts can be more broadly applied to other HA systems.
+{{< /note >}}
 
 ![High availability server configuration](high-availability-diagram.png)
 
-### File System
+1. A user requests a page from the WordPress website. The user's DNS servers return the address of a NodeBalancer in an Akamai Cloud compute region.
 
-In order to store uploads and plugins, your site will need a networked file system. Our high availability guide uses [GlusterFS](https://www.gluster.org/).
+1. The NodeBalancer routes traffic to a cluster of application servers running the Apache web server and WordPress.
 
-In a high availability setup, a *distributed replicated volume* is used to store files. You can think of the volume as the entire shared file system across all servers. The volume is made up of *bricks*, which are the shared file directories on any one server.
+1. Apache serves a file from the document root (e.g. `/srv/www/`). These files are not stored on the application server, but are instead retrieved from the networked GlusterFS filesystem cluster.
 
-In our configuration, a cluster of three GlusterFS nodes are configured to replicate data across a given volume, which is then mounted onto each Apache application server. Because the volume is replicated across three nodes, it is redundant. One of the advantages of using GlusterFS for the file system cluster is that it handles monitoring and failover by default, making it an excellent choice when building a highly available system.
+1. When a WordPress plugin is installed, or when an image or other asset is uploaded to WordPress, it is added to the document root. When this happens in this architecture, the application server actually adds these files to one (and only one) of the servers in the GlusterFS cluster. GlusterFS then replicates these changes across the GlusterFS cluster.
 
-### Database
+1. WordPress PHP files from the document root are executed by the application server. These PHP files make requests on a database to retrieve website data. These database requests are fulfilled by a cluster of database servers running Percona XtraDB. One database server within the cluster is the master, and requests are routed to this server.
 
-The database stores the content and user credentials for your site. In our guide, we use [Percona XtraDB](https://www.percona.com/software/mysql-database/percona-server/xtradb), but other database management systems work in a similar way. A database is particularly important when using a CMS like Wordpress, as it stores the information that makes up your pages and posts.
+1. The database servers use the Galera software to replicate data across the database cluster.
 
-In our configuration, the database nodes are a cluster of Percona XtraDB servers, using Galera for replication. Galera offers *synchronous replication*, meaning data is written to secondary database nodes at the same time as it's being written to the primary. This method of replication provides excellent redundancy to the database cluster because it avoids periods of time where the database nodes are not in matching states. Galera also provides *multi-master replication*, meaning any one of the database nodes can respond to client queries.
+1. The Keepalived service runs on each database server and monitors for database failures. If the master database server fails, the Keepalived service reassigns its private IP address to one of the other databases in the cluster, and that database starts responding to requests from WordPress.
 
-Our configuration also uses [XtraBackup](https://www.percona.com/software/mysql-database/percona-xtrabackup), an efficient method of *state snapshot transfer*. This means that when a new node joins the cluster, the node from which it's syncing data (the donor) is still available to handle queries. This not only helps with efficiency in the initial setup, it also allows nearly seamless horizontal scaling as your needs grow.
+### Systems and Components
 
-### Web Server
+- **NodeBalancer**: An [Akamai load balancer service](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer). NodeBalancers can evenly distribute incoming traffic to a set of backend application servers.
 
-Web servers monitor for requests for web content, and serve them accordingly. Our guide uses [Apache HTTPD](https://www.apache.org/), but other web servers like NGINX and lighttpd will fill this role as well.
+    The NodeBalancer in this architecture continually monitors the health of the application servers. If one of the application servers experiences downtime, the NodeBalancer stops sending traffic to it. The NodeBalancer service has an internal high-availability mechanism that reduces downtime for the service itself.
 
-In most setups, the web server will read from a database to generate its content and write to a database if a form is filled out. On a dynamic website or application, the database is crucial to fulfilling web requests. The web server also stores software, such as Wordpress, and plugins within the file system.
+- **Application server cluster**: A set of three servers running Apache and WordPress. WordPress relies on a database to dynamically render posts and pages.
 
-The Apache server in our configuration specifies its *document root*, or the location from which it serves content, as the mountpoint for our Gluster file system cluster. In doing this, Apache serves certain files (such as images and CMS assets) not from the server it is running on, but from a separate highly available cluster of nodes. Each Apache node works the same way, so there are three available web servers that can all read from any of three replicated file servers.
+    Apache's `/srv/www/` document root folder on each application server is *mounted* to a *volume* from the GlusterFS cluster. This means that the files in the document root folder are not stored on the application server itself, but are instead stored on a separate cluster of servers running a networked filesystem called GlusterFS. When such a file is requested, it is retrieved from the GlusterFS cluster.
 
-Apache's communication with the database nodes works in a similar way. Because the database cluster has multiple masters, any one of the databases can respond to queries from Apache. Because of its synchronous replication, when Apache writes to one database, the others are updated in real time to serve requests from any of the other Apache servers.
+- **GlusterFS cluster**: A set of three servers running GlusterFS, a networked filesystem. The servers store a GlusterFS *volume*, the contents of which are replicated across the cluster. GlusterFS handles monitoring and failover by default.
 
-### Failover
+    GlusterFS continually monitors the contents of the volume across the GlusterFS cluster. If any files are added/removed/modified files to the volume on one of the servers, those changes are automatically replicated to the other GlusterFS servers.
 
-*Failover* is the process by which one node takes over the job of another in the event that one becomes disabled. This comes as a result of monitoring for failures by the system.
+- **Database cluster**: A set of servers running the Percona XtraDB database cluster software, Galera, Xtrabackup, and Keepalived.
 
-While GlusterFS handles monitoring and failover itself, a separate service is needed for the database cluster. For this, we use [Keepalived](http://www.keepalived.org/) with a *failover IP address*. The failover IP address is simply a private IP address that can be reassigned between nodes as needed when one fails.
+    Galera is used for replication, and it offers *synchronous replication*, meaning data is written to secondary database nodes at the same time as it's being written to the primary. This method of replication provides excellent redundancy to the database cluster because it avoids periods of time where the database nodes are not in matching states. Galera also provides *multi-master replication*, meaning any one of the database nodes can respond to client queries.
 
-Keepalived uses *virtual router redundancy protocol*, or VRRP, to automatically assign the failover IP address to any of the database nodes. The keepalived service uses user-defined rules to monitor for a certain number of failures by a database node. When that failure threshold is met, keepalived assigns the failover IP address to a different node so that there is no interruption to the fulfillment of requests while the first node waits to be fixed.
+    [XtraBackup](https://www.percona.com/software/mysql-database/percona-xtrabackup) is used for *state snapshot transfer*. This means that when a new node joins the cluster, the node from which it's syncing data (the donor) is still available to handle queries. This not only helps with efficiency in the initial setup, it also allows nearly seamless horizontal scaling as your needs grow.
+
+    Keepalived uses *virtual router redundancy protocol*, or VRRP, to automatically assign the failover IP address to any of the database nodes. The keepalived service uses user-defined rules to monitor for a certain number of failures by a database node. When that failure threshold is met, keepalived assigns the failover IP address to a different node so that there is no interruption to the fulfillment of requests while the first node waits to be fixed.
+
+## Disaster Recovery Architecture
+
+![Disaster recovery architecture](disaster-recovery-architecture.jpg)
+
+1. EdgeDNS resolves client request's domain to CNAME in Akamai GTM
+1. Client DNS requests route/addresses from Akamai GTM
+1. Traffic to Kubernetes cluster in one of two regions
+1. NodeBalancer acts as Kubernetes ingest
+1. Directs traffic to a pod within the cluster
+1. Pod makes DB requests on DB
+1. DB contents are replicated to DB in second region
+
+### Systems and Components
+
+## High Availability and Disaster Recovery Concepts
+
+### Redundancy
+
+In computing, *redundancy* means that there are multiple components that can perform the same task. This eliminates the single point of failure problem by allowing a second server to take over a task if the first one goes down or becomes disabled. Some redundant components, like databases, need to also maintain equivalent sets of data in order to fulfill requests. To maintain equivalent data, [*replication*](#replication) is continually performed between those components.
+
+Redundant components can work together through mechanisms like [load balancing](#load-balancing) and [monitoring and failover](#monitoring-and-failover).
+
+Different kinds of redundancy can be considered:
+
+- **Application redundancy**:
+
+    Multiple instances of application servers that fulfill the same function can be run in parallel. These servers can collectively share the traffic service receives, which reduces the probability that a given server fails from being overburdened. If a server fails, the other servers can continue operating and maintain operation of the service.
+
+    Multiple application server clusters can exist in a single HA system, including web server clusters, database clusters, and networked filesystems.
+
+    **Kubernetes** offers a number of tools that make it simpler to maintain redundant components:
+
+    - **Containerized applications**: Applications are packaged as *containers* that run in *pods*, and Kubernetes can quickly scale up and down the number of running pods.
+
+    - **StatefulSets** maintain state consistency during restarts. [More on StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/).
+
+    - **Deployments** provide a way to configure stateless applications. [More on Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
+
+- **Data center infrastructure redundancy**:
+
+    Each Akamai Cloud region corresponds to a single physical data center and does not provide built-in multi-site high availability. This means that in the rare event of a full data center outage, such as a total network failure, Linodes within that Cloud region may become temporarily inaccessible.
+
+    Having said that, Akamai Cloud data centers are built with internal redundancy for critical infrastructure. For example:
+
+    - **Power**: Facilities are equipped with backup generators and UPS systems to ensure power continuity during outages.
+
+    - **Networking**: Core network components such as routers, switches, and BOLTs are designed with redundancy, allowing traffic to reroute automatically if a component fails.
+
+- **Geography/region redundancy**:
+
+    Highly available applications can be architected with redundancy *across multiple regions/data centers*. This can be useful for a number of reasons:
+
+    - Running your application in multiple regions can distribute the load for your service across those regions.
+
+    - If your system's user base is located across different regions, you can run your application in data centers closer to your users, reducing latency.
+
+    - Maintaining backups in multiple regions protects against localized outages, data loss, and corruption.
+
+### Monitoring and Failover
+
+In a highly available setup, the system needs to be able to *monitor* itself for failure. This means that there are regular *health checks* to ensure that all components are working properly. *Failover* is the process by which a secondary component becomes primary when monitoring reveals that a primary component has failed.
+
+There are different kinds of health checks that can be performed, including:
+
+- **ICMP (Ping) checks**: Monitors basic network connectivity.
+- **TCP checks**: Ensures responsiveness for most application-layer protocols.
+- **HTTP(S) checks**: Used for web applications, and can verify that specific strings are present in the response body from a web server.
+
+Akamai offers multiple tools to assist with monitoring and failover, including:
+
+- **[NodeBalancers]()** performs health checks on a set of backend application servers within a data center, and can route traffic around backend servers that experience downtime.
+
+- **Global Traffic Management (GTM)** continuously monitors the health of application clusters running in multiple regions. If a cluster fails health checks, GTM updates DNS routes for users in real-time and redirects traffic to healthy clusters.
 
 ### Load Balancing
 
-The load balancing component of a high availability system is one of its most important components, acting as the first barrier to handle traffic from users to the application servers. Without a load balancer, your site would be hosted on three application servers that have no way of assigning priority among themselves.
+The load balancing component of a high availability system acts as the first barrier to handle traffic from users to the application servers. Load balancing evenly distributes traffic among multiple backend servers, which reduces the chance that any given server fails from being overburdened.
 
-Our solution to load balancing is the [NodeBalancer](/docs/products/networking/nodebalancers/get-started/), a highly available component that will evenly distribute incoming traffic to one of the three application servers, ensuring that no single server experiences a much heavier load than the others.
+Akamai offers multiple tools to assist with load balancing, including:
 
-The NodeBalancer is critical because it provides a single point of access without a single point of failure. It offers backend monitoring, and failover at the top level of the highly available system (the bottom level is handled by Gluster FS and Keepalived).
+- Use [**Node Balancers**](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-nodebalancers#putting-the-nodebalancer-in-charge) to distribute traffic evenly across clusters within a data center.
 
-## Overview
+- [LKE](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) and Kubernetes-based load balancing simplifies traffic management and ensures consistent performance.
 
-A system must offer redundancy, monitoring, and failover on each service in order to be highly available. In our configuration, the NodeBalancer offers monitoring and failover for the three (redundant) application servers. The application servers read from clusters of three database and three file system nodes, which are replicated, making them redundant. Monitoring and failover are each handled separately for these clusters, ensuring that the failure of any one service does not affect the availability of the entire system.
+- [Akamai GTM](https://techdocs.akamai.com/gtm/docs/welcome-to-global-traffic-management) enables dynamic traffic routing based on real-time health checks and failover policies:
 
-Now that you understand high availability, you can begin to apply its concepts when designing your own systems and setting up your own hosting configurations. If you're ready to get started right away, check our guide to [hosting a website with high availability](/docs/guides/host-a-website-with-high-availability/) for instructions on how to set up the system described above.
+    - **Round-Robin** – Distributes traffic evenly between clusters.
+    - **Weighted Traffic** – Directs more traffic to preferred clusters.
+    - **Geo-Location Routing** – Routes traffic to the nearest cluster for reduced latency.
+    - **Failover Mode** – Automatically redirects traffic if a cluster becomes unhealthy.
+
+### Replication
+
+- [**Akamai Object Storage**](https://techdocs.akamai.com/cloud-computing/docs/object-storage):  Enhance redundancy by [synchronizing bucket data across regions using rclone](https://www.linode.com/docs/guides/replicate-bucket-contents-with-rclone/) for robust data replication.
+
+- [**Block Storage**](https://techdocs.akamai.com/cloud-computing/docs/block-storage): Use multi-attach or cross-AZ replication for persistent data.
+
+- **Database Replication**:  Ensure automated backups and replication. Although known for its stability, MySQL is even more reliable if [source-replica replication is configured](https://www.linode.com/docs/guides/configure-source-replica-replication-in-mysql/)
+
+- **Networked filesystems**, like GlusterFS.
+
+### Distributed Application Design
+
+* Use microservices and distributed architectures to minimize the impact of individual component failures.
+* Design for **graceful degradation** so unaffected services remain available even if one component fails.
+
+### RTO/RPO
+
+Align your architecture with **Recovery Time Objective** (RTO) and **Recovery Point Objective** (RPO) requirements:
+
+| Approach | RTO | RPO | Complexity | Cost | Use Case |
+| ----- | ----- | ----- | ----- | ----- | ----- |
+| **Backup & Restore** | Minutes to hours | Minutes to hours | Low | $ | Non-critical apps, dev/test environments |
+| **Light/Warm Standby** | Tens of minutes | Seconds to minutes | Moderate | $$ | Faster recovery with minimal data loss |
+| **Multi-Site Active-Active** | Near zero | Near zero | High | $$$$ | Mission-critical apps requiring real-time data sync |
+
+For mission-critical apps, use **Multi-Site Active-Active** with Akamai GTM for real-time failover.
+
+|  | Backup & Restore | Light | Warm Standby | Multi-Site |
+| ----- | :---: | :---: | :---: | :---: |
+| **RTO** | Minutes to Hours | Tens of minutes | Minutes | **Zero downtime** |
+| **RPO** | Minutes to Hours | Seconds to Tens of minute | Seconds to Tens of Minute(s) | Near zero loss |
+| **Cost** | **$** | **$$** | **$$$** | **$$$$** |
+| **Architecture Complexity** | \* | \*\* | \*\*\* | \*\*\*\* |
+| **Use Case** | Non-critical apps with tolerable downtime and data loss | Apps require faster recovery with minimal data loss | Critical apps require quick recovery with minimal data loss | Mission-critical apps requiring continuous availability and real-time data sync |
+| **Auto-scaling** | None, manual provision | None, manual resizing | Yes, post-disaster | Yes |
+| **Failover** | Manual restoration | Automated failover | Automated failover | Active-active  |
+| **Data Replication** | Periodic backups | Log shipping or block-level replication | Async replication or block-level replication | Real-time multi-master replication |
+| **Linodes Solutions** | Linode Backup Service (VM), Linode Object Storage for data backups | Linode Backup Service (VM) with scheduled automated backup, data replication at DB level | Warm standby VMs or standby LKE clusters. VM with cross-region data replication | Multi-region LKE clusters, Akamai GTM for traffic management |
+
+
+### Anti-Affinity Groups
+
+Use anti-affinity rules to spread workloads across multiple devices within the same data center, reducing the risk of correlated failures. In Akamai Cloud regions, these rules can be expressed with [placement groups](https://techdocs.akamai.com/cloud-computing/docs/work-with-placement-groups).
+
+### Live Migrations
+
+Akamai Cloud Computing supports [**Linode live migrations**](https://techdocs.akamai.com/cloud-computing/docs/compute-migrations) to minimize downtime during maintenance.
+
+### Scaling
+
+Scaling ensures performance and availability during increased demand:
+
+* **Horizontal Scaling**  \- Add more instances of an application to handle load.
+* **Vertical Scaling** \- Increase resource limits per instance.
+* **Auto-Scaling** \- Configure LKE/Kubernetes to adjust resources based on load.
+
+## Best Practices for Linode Maintenance
+
+* Configure Akamai GTM for automated failover and geo-routing.
+* Use Kubernetes StatefulSets and Deployments for resilience.
+* Set up health checks and real-time monitoring.
+* Implement multi-region storage- and database replication.
+* Regularly test failover and disaster recovery plans
+
+**References & further reading:**
+
+* [https://www.linode.com/docs/guides/introduction-to-high-availability/](https://www.linode.com/docs/guides/introduction-to-high-availability/)
+* [https://www.linode.com/docs/guides/host-a-website-with-high-availability/](https://www.linode.com/docs/guides/host-a-website-with-high-availability/)
+* [https://www.linode.com/docs/guides/high-availability-wordpress/](https://www.linode.com/docs/guides/high-availability-wordpress/)
+* [https://techdocs.akamai.com/cloud-computing/docs/configure-failover-on-a-compute-instance](https://techdocs.akamai.com/cloud-computing/docs/configure-failover-on-a-compute-instance)
+* https://techdocs.akamai.com/cloud-computing/docs/high-availability-ha-control-plane-on-lke
+* [https://techdocs.akamai.com/cloud-computing/docs/monitor-and-maintain-a-compute-instance](https://techdocs.akamai.com/cloud-computing/docs/monitor-and-maintain-a-compute-instance)
