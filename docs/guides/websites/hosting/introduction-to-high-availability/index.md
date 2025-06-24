@@ -157,7 +157,7 @@ There are different kinds of health checks that can be performed, including:
 
 Akamai offers multiple tools to assist with monitoring and failover, including:
 
-- **[NodeBalancers](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer)** performs health checks on a set of backend application servers within a data center, and can route traffic around backend servers that experience downtime.
+- **[NodeBalancers](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer)** perform health checks on a set of backend application servers within a data center, and can route traffic around backend servers that experience downtime.
 
 - **[Global Traffic Management (GTM)](https://techdocs.akamai.com/gtm/docs/welcome-to-global-traffic-management)** continuously monitors the health of application clusters running in multiple regions. If a cluster fails health checks, GTM updates DNS routes for users in real-time and redirects traffic to healthy clusters.
 
