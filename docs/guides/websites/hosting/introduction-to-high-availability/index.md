@@ -236,11 +236,11 @@ Open source software that supports replication includes:
 
 **Recovery Time Objective** (RTO) and **Recovery Point Objective** (RPO) are requirements that should be met in disaster recovery scenarios. RTO refers to the maximum time it should take for your organization to recover from an outage, and RPO refers to the maximum amount of data that may be lost when recovering from an outage. RTO and RPO are influenced by your architecture and by your disaster recovery plan. General categories for your RTO and RPO approach could include:
 
-- **Backup and restore**: placeholder
+- **Backup and restore**: placeholder, will add detail
 
-- **Light/warm standby**: placeholder
+- **Light/warm standby**: placeholder, will add detail
 
-- **Multi-site Active-Active**: placeholder
+- **Multi-site Active-Active**: placeholder, will add detail
 
 |  | Backup & Restore | Light | Warm Standby | Multi-Site |
 | ----- | :---: | :---: | :---: | :---: |
