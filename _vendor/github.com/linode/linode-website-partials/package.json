@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "build:eleventy": "npx eleventy",
+    "postbuild:assets": "node scripts/assets.js",
+    "postbuild:finalize": "node scripts/finalize.js",
+    "build": "npm run build:eleventy && npm run postbuild:finalize && npm run postbuild:assets"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.0",
+    "esbuild": "^0.25.5",
+    "fast-glob": "^3.3.3",
+    "globby": "^14.1.0"
+  }
+}
