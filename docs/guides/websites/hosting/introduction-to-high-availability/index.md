@@ -39,6 +39,8 @@ Disaster recovery is a process that is employed in the event of a wider-ranging 
 
 A disaster recovery plan documents key information and procedures that should be adhered to in these scenarios. This can include lists of staff that are responsible for the plan, inventories of systems and software, activation of backup sites and systems, criteria that should be met during the recovery operation (including [RTO and RPO](#rtorpo)), and other considerations.
 
+Our [Creating a Disaster Recovery Plan: A Definitive Guide](/docs/guides/disaster-recovery/) contains further guidance for creating a disaster recovery plan.
+
 ## High Availability Architecture
 
 This section describes an example of a high availability architecture that features a WordPress website running in a single data center. There are redundant copies of each component in the architecture, and the health of each set of components is continually monitored. If any component fails, automatic failover is triggered and other healthy components are promoted.
@@ -57,11 +59,11 @@ This specific architecture is implemented in the [host a website with high avail
 
 1. When a WordPress plugin is installed, or when an image or other asset is uploaded to WordPress, it is added to the document root. When this happens in this architecture, the application server actually adds these files to one (and only one) of the servers in the GlusterFS cluster. GlusterFS then replicates these changes across the GlusterFS cluster.
 
-1. WordPress PHP files from the document root are executed by the application server. These PHP files make requests on a database to retrieve website data. These database requests are fulfilled by a cluster of database servers running Percona XtraDB. One database server within the cluster is the master, and requests are routed to this server.
+1. WordPress PHP files from the document root are executed by the application server. These PHP files make requests on a database to retrieve website data. These database requests are fulfilled by a cluster of database servers running Percona XtraDB. One database server within the cluster is the primary, and requests are routed to this server.
 
 1. The database servers use the Galera software to replicate data across the database cluster.
 
-1. The Keepalived service runs on each database server and monitors for database failures. If the master database server fails, the Keepalived service reassigns its private IP address to one of the other databases in the cluster, and that database starts responding to requests from WordPress.
+1. The Keepalived service runs on each database server and monitors for database failures. If the primary database server fails, the Keepalived service reassigns its private IP address to one of the other databases in the cluster, and that database starts responding to requests from WordPress.
 
 ### Systems and Components
 
@@ -145,7 +147,7 @@ Different kinds of redundancy can be considered:
 
 ### Monitoring and Failover
 
-In a highly available setup, the system needs to be able to *monitor* itself for failure. This means that there are regular *health checks* to ensure that all components are working properly. *Failover* is the process by which a secondary component becomes primary when monitoring reveals that a primary component has failed.
+In a highly available architecture, the system needs to be able to *monitor* itself for failure. This means that there are regular *health checks* to ensure that all components are working properly. *Failover* is the process by which a secondary component becomes primary when monitoring reveals that a primary component has failed.
 
 There are different kinds of health checks that can be performed, including:
 
@@ -155,53 +157,90 @@ There are different kinds of health checks that can be performed, including:
 
 Akamai offers multiple tools to assist with monitoring and failover, including:
 
-- **[NodeBalancers]()** performs health checks on a set of backend application servers within a data center, and can route traffic around backend servers that experience downtime.
+- **[NodeBalancers](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer)** performs health checks on a set of backend application servers within a data center, and can route traffic around backend servers that experience downtime.
 
-- **Global Traffic Management (GTM)** continuously monitors the health of application clusters running in multiple regions. If a cluster fails health checks, GTM updates DNS routes for users in real-time and redirects traffic to healthy clusters.
+- **[Global Traffic Management (GTM)](https://techdocs.akamai.com/gtm/docs/welcome-to-global-traffic-management)** continuously monitors the health of application clusters running in multiple regions. If a cluster fails health checks, GTM updates DNS routes for users in real-time and redirects traffic to healthy clusters.
+
+- **[Linode Kubernetes Engine (LKE)](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine)**, Akamai's managed Kubernetes service: the Kubernetes control plane natively performs monitoring of Pods and other resources in your cluster. For [LKE Enterprise](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine#lke-enterprise), the control plane itself has built-in monitoring and failover that is managed by Akamai.
+
+- **[IP Sharing and BGP-based failover](https://techdocs.akamai.com/cloud-computing/docs/configure-failover-on-a-compute-instance)**: features that support failover of a service between Linodes.
+
+Open source software and tools can support monitoring and failover, including:
+
+- [Keepalived](https://www.keepalived.org/): a software package that can run periodic health checks and run notification scripts that are triggered by different health check changes over time. These notification scripts can then interact with features of your cloud platform (like [IP Sharing and BGP-based failover](https://techdocs.akamai.com/cloud-computing/docs/use-keepalived-health-checks-with-bgp-based-failover) on Akamai Cloud) to support failover of infrastructure. In the [high availability architecture](#high-availability-architecture) example in this guide, the database cluster runs keepalived to monitor failures of the primary database server and then promote a backup DB to be the new primary.
+
+- [HAProxy](/docs/guides/how-to-configure-haproxy-http-load-balancing-and-health-checks/): a dedicated reverse proxy software solution. HAProxy can perform health checks of backend servers and stop routing traffic to backends that experience failures.
 
 ### Load Balancing
 
-The load balancing component of a high availability system acts as the first barrier to handle traffic from users to the application servers. Load balancing evenly distributes traffic among multiple backend servers, which reduces the chance that any given server fails from being overburdened.
+Load balancing distributes traffic among multiple backend servers or compute regions, which reduces the chance that any given server fails from being overburdened. Different algorithms can be used by different kinds of load balancers to route traffic, including:
+
+- **Round-Robin**: Traffic is routed evenly between clusters or servers.
+
+- **Weighted Traffic**: Traffic is routed to preferred clusters or servers.
+
+- **Geo-Location Routing**: With DNS load balancing tools like Akamai GTM, traffic can be routed to the nearest cluster for reduced latency.
 
 Akamai offers multiple tools to assist with load balancing, including:
 
-- Use [**Node Balancers**](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-nodebalancers#putting-the-nodebalancer-in-charge) to distribute traffic evenly across clusters within a data center.
+- **[NodeBalancers](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer)**: A cloud load balancer service that distributes traffic between servers within a data center.
 
-- [LKE](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) and Kubernetes-based load balancing simplifies traffic management and ensures consistent performance.
+- **[Global Traffic Management (GTM)](https://techdocs.akamai.com/gtm/docs/welcome-to-global-traffic-management)**: GTM provides DNS load balancing, which allows traffic to be dynamically routed across multiple regions, including Akamai Cloud regions.
 
-- [Akamai GTM](https://techdocs.akamai.com/gtm/docs/welcome-to-global-traffic-management) enables dynamic traffic routing based on real-time health checks and failover policies:
+- **[Linode Kubernetes Engine (LKE)](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine)**, Akamai's managed Kubernetes service: Kubernetes clusters created with LKE have the [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager/) preinstalled, which provides an interface for your cluster to interact with Linode resources. In particular, any Kubernetes [LoadBalancer service](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) that you declare is created as a NodeBalancer.
 
-    - **Round-Robin** – Distributes traffic evenly between clusters.
-    - **Weighted Traffic** – Directs more traffic to preferred clusters.
-    - **Geo-Location Routing** – Routes traffic to the nearest cluster for reduced latency.
-    - **Failover Mode** – Automatically redirects traffic if a cluster becomes unhealthy.
+Open source software and tools can support load balancing, including:
+
+- Web servers, like NGINX and Apache: these can be configured as [reverse proxies](/docs/guides/use-nginx-reverse-proxy/#what-is-a-reverse-proxy) for backend servers.
+
+- [HAProxy](/docs/guides/how-to-configure-haproxy-http-load-balancing-and-health-checks/): a dedicated reverse proxy software solution.
+
+- [Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/): [a range of load balancing functionality](https://kubernetes.io/docs/concepts/services-networking/) is offered by Kubernetes. [Services](https://kubernetes.io/docs/concepts/services-networking/service/) are an abstraction later for a set of Pods that run your application code, and traffic is collectively routed across them. [LoadBalancer-type Services](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) are available
 
 ### Replication
 
-- [**Akamai Object Storage**](https://techdocs.akamai.com/cloud-computing/docs/object-storage):  Enhance redundancy by [synchronizing bucket data across regions using rclone](https://www.linode.com/docs/guides/replicate-bucket-contents-with-rclone/) for robust data replication.
+*Replication* is the process of copying data between redundant servers and systems. Data replication can be synchronous or asynchronous:
 
-- [**Block Storage**](https://techdocs.akamai.com/cloud-computing/docs/block-storage): Use multi-attach or cross-AZ replication for persistent data.
+- Synchronous replication prioritizes immediate data consistency across components.
+- Asynchronous replication prioritizes performance of a primary component, and data is eventually copied to a secondary component.
 
-- **Database Replication**:  Ensure automated backups and replication. Although known for its stability, MySQL is even more reliable if [source-replica replication is configured](https://www.linode.com/docs/guides/configure-source-replica-replication-in-mysql/)
+Replication supports high availability strategies and disaster recovery strategies:
 
-- **Networked filesystems**, like GlusterFS.
+- In a high availability architecture, synchronous data replication across redundant components allows each component to serve user requests. These components can be load balanced and run in parallel, or they can be run in a primary-backup configuration with immediate failover to the backup component.
 
-### Distributed Application Design
+- For disaster recovery scenarios, data should be replicated to regions and systems that are separated (by geography and/or by system architecture) from primary systems. This copied data can be used in the recovery process.
 
-* Use microservices and distributed architectures to minimize the impact of individual component failures.
-* Design for **graceful degradation** so unaffected services remain available even if one component fails.
+Multiple Akamai services provide data replication, or can be used to support data replication workflows:
+
+- [Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage): Akamai's object storage has [an internal replication system](https://www.linode.com/products/object-storage/#accordion-7252094bf6-item-97b2f59293) to ensure that data is highly-available.
+
+    Users can enhance redundancy of their object storage data by [synchronizing bucket data across regions using rclone](/docs/guides/replicate-bucket-contents-with-rclone/), which can support high availability, disaster recovery, and load balancing strategies.
+
+    Users can also [backup files from a Linode to Object Storage](/docs/guides/rclone-object-storage-file-sync/), which can play a role in backup and recovery.
+
+- [Managed Databases](https://techdocs.akamai.com/cloud-computing/docs/aiven-database-clusters): All database clusters created with Akamai's Managed Databases receive daily backups. For 3-node clusters, built-in data replication, redundancy, and automatic failover are provided.
+
+- [Block Storage](https://techdocs.akamai.com/cloud-computing/docs/block-storage): Users can choose to attach multiple Block Storage volumes to a Linode instance, and they can replicate data from one volume to another. If a Linode that a volume is destroyed, the volume persists, so it can be attached and used with another Linode.
+
+- [Net Storage](https://techdocs.akamai.com/netstorage/docs/welcome-to-netstorage): Net Storage provides [controls for replication across geographic zones](https://techdocs.akamai.com/netstorage/docs/create-a-storage-group#geo-replication-settings).
+
+Open source software that supports replication includes:
+
+- Database replication tools: Some tools are built into the database system, like MySQL's [source-replica replication mechanism](/docs/guides/configure-source-replica-replication-in-mysql/). Other tools, like [Galera](https://galeracluster.com/), can be additionally installed to support replication.
+
+- Networked filesystems, like [GlusterFS](https://www.gluster.org/): these are used to create distributed storage systems across multiple block storage devices, like a Linode's built-in storage disk, or a Block Storage volume.
+
+- [Command-line data transfer utilities](/docs/guides/comparing-data-transfer-utilities/) like [rsync](/docs/guides/introduction-to-rsync/) and [rclone](https://www.linode.com/docs/guides/rclone-object-storage-file-sync/).
 
 ### RTO/RPO
 
-Align your architecture with **Recovery Time Objective** (RTO) and **Recovery Point Objective** (RPO) requirements:
+**Recovery Time Objective** (RTO) and **Recovery Point Objective** (RPO) are requirements that should be met in disaster recovery scenarios. RTO refers to the maximum time it should take for your organization to recover from an outage, and RPO refers to the maximum amount of data that may be lost when recovering from an outage. RTO and RPO are influenced by your architecture and by your disaster recovery plan. General categories for your RTO and RPO approach could include:
 
-| Approach | RTO | RPO | Complexity | Cost | Use Case |
-| ----- | ----- | ----- | ----- | ----- | ----- |
-| **Backup & Restore** | Minutes to hours | Minutes to hours | Low | $ | Non-critical apps, dev/test environments |
-| **Light/Warm Standby** | Tens of minutes | Seconds to minutes | Moderate | $$ | Faster recovery with minimal data loss |
-| **Multi-Site Active-Active** | Near zero | Near zero | High | $$$$ | Mission-critical apps requiring real-time data sync |
+- **Backup and restore**: placeholder
 
-For mission-critical apps, use **Multi-Site Active-Active** with Akamai GTM for real-time failover.
+- **Light/warm standby**: placeholder
+
+- **Multi-site Active-Active**: placeholder
 
 |  | Backup & Restore | Light | Warm Standby | Multi-Site |
 | ----- | :---: | :---: | :---: | :---: |
@@ -215,22 +254,26 @@ For mission-critical apps, use **Multi-Site Active-Active** with Akamai GTM for 
 | **Data Replication** | Periodic backups | Log shipping or block-level replication | Async replication or block-level replication | Real-time multi-master replication |
 | **Linodes Solutions** | Linode Backup Service (VM), Linode Object Storage for data backups | Linode Backup Service (VM) with scheduled automated backup, data replication at DB level | Warm standby VMs or standby LKE clusters. VM with cross-region data replication | Multi-region LKE clusters, Akamai GTM for traffic management |
 
+### Placement Groups
 
-### Anti-Affinity Groups
+[*Placement groups*](https://techdocs.akamai.com/cloud-computing/docs/work-with-placement-groups) specify where your compute instances should be created within a data center. An *anti-affinity rule* is used to spread workloads across multiple devices within the same data center, reducing the risk of correlated failures. Akamai Cloud [supports placement groups](https://techdocs.akamai.com/cloud-computing/docs/work-with-placement-groups#create-a-placement-group).
 
-Use anti-affinity rules to spread workloads across multiple devices within the same data center, reducing the risk of correlated failures. In Akamai Cloud regions, these rules can be expressed with [placement groups](https://techdocs.akamai.com/cloud-computing/docs/work-with-placement-groups).
+### Distributed Application Design
+
+* Use microservices and distributed architectures to minimize the impact of individual component failures.
+* Design for **graceful degradation** so unaffected services remain available even if one component fails.
 
 ### Live Migrations
 
-Akamai Cloud Computing supports [**Linode live migrations**](https://techdocs.akamai.com/cloud-computing/docs/compute-migrations) to minimize downtime during maintenance.
+Akamai Cloud supports [**Linode live migrations**](https://techdocs.akamai.com/cloud-computing/docs/compute-migrations) to minimize downtime during maintenance.
 
 ### Scaling
 
 Scaling ensures performance and availability during increased demand:
 
-* **Horizontal Scaling**  \- Add more instances of an application to handle load.
-* **Vertical Scaling** \- Increase resource limits per instance.
-* **Auto-Scaling** \- Configure LKE/Kubernetes to adjust resources based on load.
+* **Horizontal Scaling**: Add more instances of an application to handle load.
+* **Vertical Scaling**: Increase resource limits per instance.
+* **Auto-Scaling**: Configure LKE/Kubernetes to adjust resources based on load.
 
 ## Best Practices for Linode Maintenance
 
