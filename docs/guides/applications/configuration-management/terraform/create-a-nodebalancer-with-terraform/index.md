@@ -5,7 +5,7 @@ description: 'This guide provides you with step-by-step instructions for install
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2018-12-12
-modified: 2021-12-29
+modified: 2025-06-18
 keywords: ['terraform','nodebalancer','node','balancer','provider','linode']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: CreateaNodeBalancerwitTerraform.png
@@ -32,10 +32,12 @@ If you would like to stop billing for the resources created in this guide, [remo
 
 1.  You should have Terraform installed in your development environment, and have a working knowledge of Terraform resource configuration and the [Linode provider](https://www.terraform.io/docs/providers/linode/index.html). For more information on how to install and use Terraform, check out our [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
 
-    {{< note respectIndent=false >}}
-[Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
+    {{< note title ="Linode Provider Version 3.0.0" >}}
+    As of June, 2025, the [Linode Terraform Provider](https://github.com/linode/terraform-provider-linode/) version is 3.0.0. To determine the current version, see the [Linode Namespace](https://registry.terraform.io/namespaces/linode) in the Terraform Registry.
 
-The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and will be updated in the near future.
+    The Linode Terraform Provider version 3.0.0 requires `terraform` version 1.0 or greater. See [Terraform's developer documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/upgrade-guides/1-0) for guidance on upgrading to version 1.0.
+
+    The examples in this guide were originally written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html).
     {{< /note >}}
 
 1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) guide to obtain a token.
@@ -56,7 +58,7 @@ terraform {
   required_providers {
     linode = {
       source = "linode/linode"
-      version = "1.16.0"
+      version = "3.0.0"
     }
   }
 }
@@ -156,7 +158,7 @@ resource "linode_instance" "example-instance" {
     tags = ["nodebalancer-example"]
     region = var.region
     type = "g6-nanode-1"
-    image = "linode/ubuntu18.10"
+    image = "linode/ubuntu24.04"
     authorized_keys = [chomp(file(var.ssh_key))]
     root_pass = random_string.password.result
     private_ip = true

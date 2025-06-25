@@ -5,7 +5,7 @@ description: 'In this guide you will learn how to use a Community StackScript to
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2018-12-12
-modified: 2023-01-31
+modified: 2025-06-18
 keywords: ['terraform','stackscripts','wordpress','orchestration']
 tags: ["wordpress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -28,8 +28,10 @@ Following this guide results in the creation of billable resources on your accou
 
 1. Install Terraform on your computer by following the *Install Terraform* section of our [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide.
 
-    {{< note >}}
-    [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
+    {{< note title ="Linode Provider Version 3.0.0" >}}
+    As of June, 2025, the [Linode Terraform Provider](https://github.com/linode/terraform-provider-linode/) version is 3.0.0. To determine the current version, see the [Linode Namespace](https://registry.terraform.io/namespaces/linode) in the Terraform Registry.
+
+    The Linode Terraform Provider version 3.0.0 requires `terraform` version 1.0 or greater. See [Terraform's developer documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/upgrade-guides/1-0) for guidance on upgrading to version 1.0.
     {{< /note >}}
 
 1. Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) guide to obtain one.
@@ -57,7 +59,7 @@ Terraform defines the elements of your Linode infrastructure inside of configura
       required_providers {
         linode = {
           source = "linode/linode"
-          version = "1.26.0"
+          version = "3.0.0"
         }
       }
     }
@@ -316,12 +318,12 @@ Terraform will automatically load any file named `terraform.tfvars` and use its 
     }
     ```
 
-    {{< note >}}
-    In Terraform 0.12, variables with map and object values will use the last value found and override previous values. This is different from previous versions of Terraform, which would merge map values instead of overriding them. For this reason the `stackscript_data` map and its values are defined in a single variable definitions file.
+    {{< note title="Terraform v0.12 or greater" >}}
+    Starting with Terraform 0.12, variables with map and object values will use the last value found and override previous values. This is different from previous versions of Terraform, which would merge map values instead of overriding them. For this reason the `stackscript_data` map and its values are defined in a single variable definitions file.
     {{< /note >}}
 
     {{< note >}}
-    It is helpful to reference Terraform's [Linode provider](https://www.terraform.io/docs/providers/linode/) documentation and the [Linode APIv4 documentation](/docs/api/) for assistance in determining appropriate values for Linode resources.
+    It can be helpful to reference Terraform's [Linode provider](https://www.terraform.io/docs/providers/linode/) documentation and the [Linode APIv4 documentation](/docs/api/) for assistance in determining appropriate values for Linode resources.
     {{< /note >}}
 
 1. Replace the following values in your new `.tfvars` files:
