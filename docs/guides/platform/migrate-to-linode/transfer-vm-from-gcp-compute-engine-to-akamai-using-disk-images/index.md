@@ -141,9 +141,8 @@ Assess your Compute Engine VM using either the GCP Console or the gcloud CLI. Us
 5.  Use the CLI to determine the CPU and memory configurations for this Compute Engine {{< placeholder "MACHINE_TYPE" >}} (e.g. `e2-medium`):
 
     ```command
-    gcloud compute machine-types \
-        describe {{< placeholder "MACHINE_TYPE" >}} \
-        --zone=us-{{< placeholder "REGION" >}} \
+    gcloud compute machine-types describe {{< placeholder "MACHINE_TYPE" >}} \
+        --zone={{< placeholder "ZONE" >}} \
         --format="table(name, guestCpus, memoryMb)"
     ```
 
@@ -154,14 +153,27 @@ Assess your Compute Engine VM using either the GCP Console or the gcloud CLI. Us
 
     For this guide, the example Compute Instance VM has 2 CPUs and 4GB of memory.
 
+#### Storage
+
+6.  View the disk(s) attached to your VM:
+
+    ```command
+    gcloud compute disks list --zones={{< placeholder "ZONE" >}}
+    ```
+
+    ```output
+    NAME                      LOCATION     SIZE_GB  TYPE         STATUS
+    instance-20250208-003502  us-west1-a   10       pd-balanced  READY
+    ```
+
 #### IP Addresses
 
-6.  Run the following `gcloud` command to find the internal and external IP address of the running instance:
+7.  Run the following `gcloud` command to find the internal and external IP address of the running instance:
 
     ```command
     gcloud compute instances list \
         --filter="name={{< placeholder "INSTANCE_NAME" >}}" \
-        --format=\ "table(name, networkInterfaces[0].accessConfigs[0].natIP, networkInterfaces[0].networkIP)"
+        --format="table(name,networkInterfaces[0].accessConfigs[0].natIP,networkInterfaces[0].networkIP)"
     ```
 
     ```output
@@ -171,18 +183,21 @@ Assess your Compute Engine VM using either the GCP Console or the gcloud CLI. Us
 
 ####  Security Groups and Firewall Rules
 
-7.  Run the following `gcloud` command to find all the firewall rules for a VM:
+8.  Run the following `gcloud` command to find all the firewall rules for a VM:
 
     ```command
     gcloud compute firewall-rules list --filter="network:default"
     ```
 
     ```output
-    NAME                    DIRECTION  PRIORITY   ALLOW
-    default-allow-icmp      INGRESS    65534      icmp
-    default-allow-internal  INGRESS    65534      tcp:0-65535,udp:0-65535,icmp
-    default-allow-rdp       INGRESS    65534      tcp:3389
-    default-allow-ssh       INGRESS    65534      tcp:22
+    NAME                    NETWORK  DIRECTION  PRIORITY  ALLOW                         DENY  DISABLED
+    default-allow-icmp      default  INGRESS    65534     icmp                                False
+    default-allow-internal  default  INGRESS    65534     tcp:0-65535,udp:0-65535,icmp        False
+    default-allow-rdp       default  INGRESS    65534     tcp:3389                            False
+    default-allow-ssh       default  INGRESS    65534     tcp:22                              False
+
+    To show all fields of the firewall, please show in JSON format: --format=json
+    To show all fields in table format, please see the examples in --help.
     ```
 {{< /tab >}}
 {{< /tabs >}}
@@ -202,48 +217,18 @@ Before starting your migration, consider backing up the Compute Engine disk in c
     ![Snapshot creation interface for a selected GCP Compute Engine disk.](gcp-disk-create-snapshot.png)
 {{< /tab >}}
 {{< tab "gcloud CLI" >}}
-1.  Retrieve a list of available {{< placeholder "SNAPSHOT_LOCATION" >}}s:
+Run the following `gcloud` command to create a backup of your GCP Compute Instance, replacing {{< placeholder "SNAPSHOT_NAME">}} with a name of your choosing (e.g. `my-vm-snapshot`):
 
-    ```command
-    gcloud compute snapshot-locations list
-    ```
+```command
+gcloud compute snapshots \
+    create {{< placeholder "SNAPSHOT_NAME" >}} \
+    --source-disk={{< placeholder "DISK_NAME" >}} \
+    --source-disk-zone={{< placeholder "ZONE" >}}
+```
 
-    You can choose either a regional location (e.g. `us-west-1`) or a multi-regional location (e.g. `us`):
-
-    ```output
-    NAME
-    asia
-    asia-east1
-    europe
-    europe-west1
-    us
-    us-central1
-    us-west1
-    ```
-
-1.  Run the following `gcloud` command to create a backup of your GCP Compute Instance, replacing {{< placeholder "SNAPSHOT_NAME">}} with a name of your choosing (e.g. `my-vm-snapshot`):
-
-    ```command
-    gcloud compute snapshots \
-        create {{< placeholder "SNAPSHOT_NAME" >}} \
-        --source-disk={{< placeholder "DISK_NAME" >}} \
-        --source-disk-zone={{< placeholder "ZONE" >}} \
-        --storage-location={{< placeholder "SNAPSHOT_LOCATION" >}}
-    ```
-
-    For Example:
-
-    ```command
-    gcloud compute snapshots \
-        create my-vm-snapshot \
-        --source-disk=instance-20250208-003502 \
-        --source-disk-zone=us-west1-a \
-        --storage-location=us-west1
-    ```
-
-    ```output
-    Creating gce snapshot my-vm-snapshot...done.
-    ```
+```output
+Creating gce snapshot my-vm-snapshot...done.
+```
 {{< /tab >}}
 {{< /tabs >}}
 ## Migrating to Akamai Cloud
@@ -258,7 +243,7 @@ Migrating a Google Compute Engine VM to Akamai Cloud involves the following step
 
 ### Export Your Compute Engine VM Disk Image
 
-Export your VM to a Machine Image using either the Google Cloud Console or the `gCloud` CLI:
+Export your VM to a Machine Image using either the Google Cloud Console or the `gcloud` CLI:
 {{< tabs >}}
 {{< tab "Google Cloud Console" >}}
 1.  In the Google Cloud Console, navigate to **Compute Engine > Images**:
@@ -271,15 +256,23 @@ Export your VM to a Machine Image using either the Google Cloud Console or the `
 
 1.  Set any required location and encryption options, then click **Create**.
 {{< /tab >}}
-{{< tab "gCloud CLI" >}}
-1.  Run the following `gCloud` CLI command to create an image, replacing {{< placeholder "IMAGE_NAME" >}} (e.g. `my-vm-image`), {{< placeholder "SOURCE_DISK_NAME" >}} (e.g. `instance-20250208-003502`), {{< placeholder "SOURCE_DISK_ZONE" >}} (e.g. `us-west1-a`), {{< placeholder "STORAGE_LOCATION" >}} (e.g. `us-west1`), and {{< placeholder "PROJECT_ID" >}} (e.g. `vm-migration-450215`) with your own values:
+{{< tab "gcloud CLI" >}}
+1.  Before creating an image you must stop the VM if it is running:
+
+    ```command
+    gcloud compute instances stop {{< placeholder "INSTANCE_NAME" >}} --zone={{< placeholder "ZONE" >}}
+    ```
+
+    ```output
+    Stopping instance(s) instance-20250208-003502...done.
+    ```
+
+1.  Run the following `gcloud` CLI command to create an image, replacing {{< placeholder "IMAGE_NAME" >}} with a name of your choosing (e.g. `my-vm-image`):
 
     ```command
     gcloud compute images create {{< placeholder "IMAGE_NAME" >}} \
-        --source-disk={{< placeholder "SOURCE_DISK_NAME" >}} \
-        --source-disk-zone={{< placeholder "SOURCE_DISK_ZONE" >}} \
-        --storage-location={{< placeholder "STORAGE_LOCATION" >}} \
-        --project={{< placeholder "PROJECT_ID" >}}
+        --source-disk={{< placeholder "DISK_NAME" >}} \
+        --source-disk-zone={{< placeholder "ZONE" >}}
     ```
 
     ```output
@@ -303,20 +296,22 @@ Export your VM to a Machine Image using either the Google Cloud Console or the `
 
 The following steps (exporting and downloading the image) require the `gcloud` CLI, as these operations are not available through the Google Cloud Console:
 
-1.  Create a Cloud Storage bucket to store the exported image. Google has restrictions on which Cloud Storage bucket locations can export images, so be sure to choose from the [list of supported regions](https://cloud.google.com/build/docs/locations#restricted_regions_for_some_projects):
+1.  Create a Cloud Storage bucket to store the exported image. Replace {{< placeholder "BUCKET_NAME" >}} with a unique bucket name (e.g. `migration-vm-images`) and {{< placeholder "REGION" >}} with a supported region for Cloud Build image exports (e.g. `us` or `us-central1`). See [Google's list of supported regions](https://cloud.google.com/build/docs/locations#restricted_regions_for_some_projects):
 
     ```command
     gcloud storage buckets create gs://{{< placeholder "BUCKET_NAME" >}} --location={{< placeholder "REGION" >}}
     ```
 
-1.  Export the image to the bucket in `RAW` format, which is compatible with importing to Akamai Cloud:
+    ```output
+    Creating gs://migration-vm-images/...
+    ```
+
+1.  Export a compressed copy of the image to the bucket:
 
     ```command
     gcloud compute images export \
         --destination-uri=gs://{{< placeholder "BUCKET_NAME" >}}/{{< placeholder "IMAGE_NAME" >}} \
-        --image={{< placeholder "IMAGE_NAME" >}} \
-        --export-format=RAW \
-        --project={{< placeholder "PROJECT_ID" >}}
+        --image={{< placeholder "IMAGE_NAME" >}}
     ```
 
     ```output
@@ -343,6 +338,10 @@ The following steps (exporting and downloading the image) require the `gcloud` C
     [image-export-ext]: 2025-02-08T15:42:30Z Workflow "image-export-ext" finished cleanup.
     ```
 
+```output
+???
+```
+
 1.  Verify the file was exported, replacing {{< placeholder "BUCKET_NAME" >}} with your actual bucket name (e.g. `migration-vm-images`):
 
     ```command
@@ -365,81 +364,164 @@ The following steps (exporting and downloading the image) require the `gcloud` C
     Operation completed over 1 objects/10.0 GiB.
     ```
 
-### Resize Disk Image
-
-GCP persistent disks have a minimum size of 10 GB, so the exported image may be larger than actually necessary.
-
-To import a VM image into Akamai Cloud, it must be smaller than 6 GB unzipped or 5 GB zipped. If your actual disk usage is below those limits, you can reduce the image size by deallocating unused disk space and truncating the disk size.
-
-Shrinking the disk image size involves using [GParted](https://gparted.org/), [`fdisk`](https://tldp.org/HOWTO/Partition/fdisk_partitioning.html), and [`qemu-img`](https://qemu-project.gitlab.io/qemu/tools/qemu-img.html) on your local machine.
-
-1.  Check the current size of the disk image file in megabytes:
+1.  Confirm the download and check the current size of the compressed disk image file in megabytes:
 
     ```command
     du -BM {{< placeholder "IMAGE_NAME" >}}
     ```
 
     ```output
-    10241M	my-vm-image
+    748M	my-vm-image
     ```
 
-1.  GParted works on block devices, not raw image files, so you must create a [loopback device](https://wiki.osdev.org/Loopback_Device) for your image. Enable loopback support:
+1.  Decompress the downloaded archive:
+
+    ```command
+    tar -xzvf {{< placeholder "IMAGE_NAME" >}}
+    ```
+
+    ```output
+    disk.raw
+    ```
+
+1.  Check the size of the uncompressed raw disk image:
+
+    ```command
+    du -BM disk.raw
+    ```
+
+    ```output
+    10241M  disk.raw
+    ```
+
+    GCP persistent disks have a *minimum* size of 10 GB. An uncompressed size of 10 GB and a compressed size of just 750 MB indicates that the exported image includes a large amount of unused disk space.
+
+### Resize Disk Image
+
+To import a VM image into Akamai Cloud, it must be smaller than 5 GB zipped and 6 GB unzipped. If your *actual* disk usage is below those limits, you can reduce the image size by deallocating unused disk space and truncating the disk size.
+
+Shrinking the disk image involves using `parted` (or [`fdisk`](https://tldp.org/HOWTO/Partition/fdisk_partitioning.html)) and [`qemu-img`](https://qemu-project.gitlab.io/qemu/tools/qemu-img.html) on your local machine. These utilities operate on block devices, so you must attach the raw image using a [loopback device](https://wiki.osdev.org/Loopback_Device) before resizing partitions and truncating the file.
+
+1.  Enable loopback support:
 
     ```command
     sudo modprobe loop
     ```
 
-1.  Create a loopback device and return its path:
+1.  Attach the image to a free loop device:
 
     ```command
-    sudo losetup -f
+    sudo losetup -f --show disk.raw
     ```
 
     ```output
-    /dev/loop48
+    /dev/loop3
     ```
 
-1.  Associate the device with the disk image:
+1.  Inspect partitions to find the main root partition number:
 
     ```command
-    sudo losetup /dev/loop48 {{< placeholder "IMAGE_NAME" >}}
+    sudo parted /dev/loop{{< placeholder "LOOP_NUMBER" >}} print
     ```
 
-1.  Load the image partitions:
+    In the example below, the main partition is number `1`:
+
+    ```output
+    Model: Loopback device (loopback)
+    Disk /dev/loop3: 10.7GB
+    Sector size (logical/physical): 512B/512B
+    Partition Table: gpt
+    Disk Flags:
+
+    Number  Start   End     Size    File system  Name  Flags
+    14      1049kB  4194kB  3146kB                     bios_grub
+    15      4194kB  134MB   130MB   fat16              boot, esp
+     1      134MB   10.7GB  10.6GB  ext4
+    ```
+
+1.  Reload partition info:
 
     ```command
-    sudo partprobe /dev/loop48
+    sudo partprobe /dev/loop{{< placeholder "LOOP_NUMBER" >}}
     ```
 
-1.  Backup the GUID Partition Table (GPT):
+1.  Mount the main partition:
 
     ```command
-    sudo sgdisk -b gpt-backup.bin {{< placeholder "IMAGE_NAME" >}}
+    sudo mount /dev/loop{{< placeholder "LOOP_NUMBER" >}}p{{< placeholder "PARTITION_NUMBER" >}} /mnt
     ```
 
-1.  Open GParted on the device:
+1.  Check used space:
 
     ```command
-    sudo gparted /dev/loop48
+    df -h /mnt
     ```
 
-1.  In GParted, select the unused space in the file system partition:
+    In the example below, the main partition is actually only using 2.1 GB of disk space.
 
-    ![GParted showing a disk image with unused space at the end of the main partition.](gcp-gparted-overview.png)
+    ```output
+    Filesystem      Size  Used Avail Use% Mounted on
+    /dev/loop3p1    9.7G  2.1G  7.1G  23% /mnt
+    ```
 
-1.  Open the **Partition** file menu entry, then select **Resize/Move**:
+1.  Unmount the main partition:
 
-    ![GParted interface with Resize/Move option selected on the primary partition.](gcp-gparted-resize-partition.png)
+    ```command
+    sudo umount /mnt
+    ```
 
-1.  Shrink the partition to eliminate most of the unused space:
+1.  Use `parted` to resize the partition to the actual usage plus a buffer of free space (e.g. `2.5GB`):
 
-    ![Resize/Move dialog in GParted showing the partition being resized to remove free space.](gcp-gparted-resize-confirm.png)
+    ```command
+    sudo parted /dev/loop{{< placeholder "LOOP_NUMBER" >}} -- resizepart 1 2.5GB
+    ```
 
-1.  Select **Resize/Move**, and then click the green checkmark to apply this change.
+    Enter `Yes` and press <kbd>Enter</kbd> when prompted:
 
-    ![GParted interface with the green checkmark button to apply the resize changes highlighted.](gcp-gparted-apply-resize.png)
+    ```output
+    Warning: Shrinking a partition can cause data loss, are you sure you want to
+    continue?
+    Yes/No? Yes
 
-    When done, close GParted.
+    Information: You may need to update /etc/fstab.
+    ```
+
+1.  Check and resize the file system inside the resized partition:
+
+    ```command
+    sudo e2fsck -f /dev/loop{{< placeholder "LOOP_NUMBER" >}}p{{< placeholder "PARTITION_NUMBER" >}}
+    sudo resize2fs /dev/loop{{< placeholder "LOOP_NUMBER" >}}p{{< placeholder "PARTITION_NUMBER" >}}
+    ```
+
+1.  Detach the loop device:
+
+    ```
+    sudo losetup -d /dev/loop{{< placeholder "LOOP_NUMBER" >}}
+    ```
+
+1.  Truncate the disk image file to match the new end:
+
+    ```command
+    qemu-img resize --shrink {{< placeholder "IMAGE_NAME" >}} 2.5G
+    ```
+
+1.  Fix the GPT backup header to match the new size:
+
+    ```command
+    sudo sgdisk --move-second-header {{< placeholder "IMAGE_NAME" >}}
+    ```
+
+1.  Verify the final file size:
+
+    ```command
+    du -BM {{< placeholder "IMAGE_NAME" >}}
+    ```
+
+    ```output
+    2500M my-vm-image
+    ```
+
+#### OLD
 
 1.  Use `sgdisk` to shrink the partition table to match the last used partition:
 
@@ -576,7 +658,7 @@ Check that the `status` is `available`. If the `status` is `pending`, wait a few
 
 You can also monitor the upload status from the **Images** section of the Akamai Cloud Manager:
 
-![Linode Cloud Manager showing a private image labeled gcp-vm-migration with status available.](linode-cloud-manager-private-image-status-gcp.png)
+![Akamai Cloud Manager showing a private image labeled gcp-vm-migration with status available.](linode-cloud-manager-private-image-status-gcp.png)
 
 #### Launch a Linode Compute Instance from the Uploaded Image
 
@@ -639,7 +721,7 @@ However, you must still configure the Linode's networking to align with your wor
 
 Linode does not have a direct equivalent to GCP security groups. However, you can still implement a firewall with rules to control traffic. Options include:
 
--   [Linode Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) to set up inbound and outbound rules through the Akamai Cloud Manager, the Linode CLI, or API.
+-   [Akamai Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) to set up inbound and outbound rules through the Akamai Cloud Manager, the Linode CLI, or API.
 -   [`iptables`](/docs/guides/control-network-traffic-with-iptables/) or [`ufw`](/docs/guides/configure-firewall-with-ufw/) to manage the Linux kernel firewall (Netfilter).
 
 To replicate GCP’s HTTPS LoadBalancers, use Akamai Cloud's [NodeBalancers](https://www.linode.com/products/nodebalancers/) to distribute traffic across multiple Linode instances.
@@ -704,7 +786,7 @@ After deploying your Linode, confirm that configurations (network settings, envi
 GCP IAM roles govern instance access. To migrate these roles and permissions to Akamai Cloud:
 
 -   Create Linode API tokens and fine-tune user permissions.
--   Reproduce GCP security group policy rules on the Linode Cloud Firewall or existing system firewall.
+-   Reproduce GCP security group policy rules on the Akamai Cloud Firewall or existing system firewall.
 -   Properly configure SSH keys and disable root login if not required.
 
 ### Alternative Migration Options

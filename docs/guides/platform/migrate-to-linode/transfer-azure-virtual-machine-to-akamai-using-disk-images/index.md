@@ -121,20 +121,24 @@ Assess your Azure Virtual Machine using either the Azure Portal or the Azure CLI
 1.  Show the specifications for a VM size by replacing {{< placeholder "LOCATION" >}} (e.g. `westus`) and {{< placeholder "VM_SIZE" >}} (e.g. `Standard_B2s`) with the location of your Resource Group and your VM size:
 
     ```command
-    az vm list-sizes --location {{< placeholder "LOCATION" >}} --query "[?name=='{{< placeholder "VM_SIZE" >}}']"
+    az vm list-skus \
+      --location {{< placeholder "LOCATION" >}} \
+      --resource-type virtualMachines \
+      --size {{< placeholder "VM_SIZE" >}} \
+      --query "[?name=='{{< placeholder "VM_SIZE" >}}'].{
+        Name: name,
+        vCPUs: capabilities[?name=='vCPUs']           | [0].value,
+        MemoryGB: capabilities[?name=='MemoryGB']     | [0].value,
+        OSVhdSizeMB: capabilities[?name=='OSVhdSizeMB'] | [0].value,
+        MaxDataDisks: capabilities[?name=='MaxDataDiskCount'] | [0].value
+      }" \
+      --output table
     ```
 
     ```output
-    [
-        {
-            "maxDataDiskCount": 4,
-            "memoryInMB": 4096,
-            "name": "Standard_B2s",
-            "numberOfCores": 2,
-            "osDiskSizeInMB": 1047552,
-            "resourceDiskSizeInMB": 8192
-        }
-    ]
+    Name          VCPUs    MemoryGB    OSVhdSizeMB    MaxDataDisks
+    ------------  -------  ----------  -------------  --------------
+    Standard_B2s  2        4           1047552        4
     ```
 
 #### Storage
@@ -180,8 +184,8 @@ Assess your Azure Virtual Machine using either the Azure Portal or the Azure CLI
     ```command
     az vm show \
         --resource-group {{< placeholder "RESOURCE_GROUP" >}} \
-        --name my-azure-vm \
-        --query "networkProfile.networkInterfaces\[0\].id"
+        --name {{< placeholder "VM_NAME" >}} \
+        --query "networkProfile.networkInterfaces[0].id"
     ```
 
     In Azure, resources such as network interfaces have both an ID and a name. The ID has the form of a full path, for example:
@@ -190,7 +194,7 @@ Assess your Azure Virtual Machine using either the Azure Portal or the Azure CLI
     "/subscriptions/980e30f1-992f-4635-9eb0-1b5fe23ec084/resourceGroups/my-resource-group/providers/Microsoft.Network/networkInterfaces/my-azure-vm930"
     ```
 
-    The name of the network interface can be inferred through the final part of the path (e.g. `my-azure-vm930`).
+    The {{< placeholder "NETWORK_INTERFACE_NAME" >}} can be inferred through the final part of the path (e.g. `my-azure-vm930`).
 
 1.  Use the resulting {{< placeholder "NETWORK_INTERFACE_NAME" >}} to get the name of the public IP address created by Azure:
 
@@ -198,8 +202,10 @@ Assess your Azure Virtual Machine using either the Azure Portal or the Azure CLI
     az network nic show \
         --name {{< placeholder "NETWORK_INTERFACE_NAME" >}} \
         --resource-group {{< placeholder "RESOURCE_GROUP" >}} \
-        --query "ipConfigurations\[0\].publicIPAddress.id"
+        --query "ipConfigurations[0].publicIPAddress.id"
     ```
+
+    The {{< placeholder "IP_ADDRESS_NAME" >}} can be inferred through the final part of the path (e.g. `my-azure-vm-ip`):
 
     ```output
     "/subscriptions/980e30f1-992f-4635-9eb0-1b5fe23ec084/resourceGroups/my-resource-group/providers/Microsoft.Network/publicIPAddresses/my-azure-vm-ip"
@@ -210,7 +216,7 @@ Assess your Azure Virtual Machine using either the Azure Portal or the Azure CLI
     ```command
     az network public-ip show \
         --name {{< placeholder "IP_ADDRESS_NAME" >}} \
-        --resource-group {{< placeholder "RESOURCE_GROUP" >}}
+        --resource-group {{< placeholder "RESOURCE_GROUP" >}} \
         --query "ipAddress"
     ```
 
@@ -220,26 +226,26 @@ Assess your Azure Virtual Machine using either the Azure Portal or the Azure CLI
 
 #### Network Security Groups and Firewall Rules
 
-8.  Use the {{< placeholder "RESOURCE_GROUP" >}} and the {{< placeholder "NETWORK_INTERFACE_NAME" >}} obtained from your VM information to obtain the network security group name:
+8.  Use the {{< placeholder "RESOURCE_GROUP" >}} and the {{< placeholder "NETWORK_INTERFACE" >}} name obtained from your VM information to obtain the network security group name:
 
     ```command
     az network nic show \
-        --name {{< placeholder "NETWORK_INTERFACE_NAME" >}} \
+        --name {{< placeholder "NETWORK_INTERFACE" >}} \
         --resource-group {{< placeholder "RESOURCE_GROUP" >}} \
         --query "networkSecurityGroup.id"
     ```
+
+    The name of the {{< placeholder "NETWORK_SECURITY_GROUP" >}} can be inferred through the final part of the path (e.g. `my-azure-vm-nsg`):
 
     ```output
     "/subscriptions/980e30f1-992f-4635-9eb0-1b5fe23ec084/resourceGroups/my-resource-group/providers/Microsoft.Network/networkSecurityGroups/my-azure-vm-nsg"
     ```
 
-    The network security group name can be inferred through the final part of the path (e.g. `my-azure-vm-nsg`).
-
-1.  Replace {{< placeholder "NETWORK_SECURITY_GROUP_NAME" >}} in the following command for a detailed breakdown of the network security group’s configuration, including ingress/egress ports and firewall settings:
+1.  Replace {{< placeholder "NETWORK_SECURITY_GROUP" >}} in the following command for a detailed breakdown of the network security group’s configuration, including ingress/egress ports and firewall settings:
 
     ```command
     az network nsg show \
-        --name {{< placeholder "NETWORK_SECURITY_GROUP_NAME" >}} \
+        --name {{< placeholder "NETWORK_SECURITY_GROUP" >}} \
         --resource-group {{< placeholder "RESOURCE_GROUP" >}}
     ```
 
@@ -310,7 +316,7 @@ Before starting your migration, consider backing up the Azure VM disk in case a 
 
     ```command
     az snapshot create \
-        --resource-group {{< placeholder "RESOURCE_GROUP_NAME" >}} \
+        --resource-group {{< placeholder "RESOURCE_GROUP" >}} \
         --name {{< placeholder "SNAPSHOT_NAME" >}} \
         --source {{< placeholder "DISK_NAME_OR_ID" >}} \
         --location {{< placeholder "LOCATION" >}}
@@ -323,7 +329,7 @@ Before starting your migration, consider backing up the Azure VM disk in case a 
         --resource-group my-resource-group \
         --name my-disk-snapshot \
         --source my-azure-vm_disk1_bfb86e561c3a4716b164f82f4e558b8e \
-        -location westus
+        --location westus
     ```
 
     ```output
@@ -348,7 +354,7 @@ Before starting your migration, consider backing up the Azure VM disk in case a 
 1.  List all snapshots for a given resource group:
 
     ```command
-    az snapshot list --resource-group my-resource-group
+    az snapshot list --resource-group {{< placeholder "RESOURCE_GROUP" >}}
     ```
 
     ```output
@@ -402,9 +408,9 @@ Before exporting the disk, you must first stop the virtual machine.
 
     ```command
     az disk grant-access \
-        --name my-azure-vm_disk1_bfb86e561c3a4716b164f82f4e558b8e \
-        --resource-group my-resource-group \
-        --duration-in-seconds 120
+        --name {{< placeholder "DISK_NAME_OR_ID" >}} \
+        --resource-group {{< placeholder "RESOURCE_GROUP" >}} \
+        --duration-in-seconds 3600
     ```
 
     ```output
@@ -413,21 +419,28 @@ Before exporting the disk, you must first stop the virtual machine.
     }
     ```
 
-1.  Use `wget` and the {{< placeholder "GENERATED_URL" >}} to download and save the file to your local machine:
+1.  Use `azcopy` and the {{< placeholder "GENERATED_URL" >}} to download and save the file to your local machine:
 
     ```command
-    wget -O azure-download.vhd "{{< placeholder "GENERATED_URL" >}}"
+    azcopy copy "{{< placeholder "GENERATED_URL" >}}" ./azure-download.vhd
     ```
 
     ```output
-    HTTP request sent, awaiting response... 200 OK
-    Length: 5368709632 (5.0G) [text/x-vhdl]
-    Saving to: 'azure-download.vhd'
-
-    azure-download.vhd
-    100%[=====================================>]  5.00G  2.91MB/s    in 24m 45s
-
-    'azure-download.vhd' saved [5368709632/5368709632]
+    ...
+    Job d62cb212-1b78-6a46-6f32-67fed0d3b112 summary
+    Elapsed Time (Minutes): 4.3353
+    Number of File Transfers: 1
+    Number of Folder Property Transfers: 0
+    Number of Symlink Transfers: 0
+    Total Number of Transfers: 1
+    Number of File Transfers Completed: 1
+    Number of Folder Transfers Completed: 0
+    Number of File Transfers Failed: 0
+    Number of Folder Transfers Failed: 0
+    Number of File Transfers Skipped: 0
+    Number of Folder Transfers Skipped: 0
+    Total Number of Bytes Transferred: 32213303808
+    Final Job Status: Completed
     ```
 
     The download depends on your internet connection and the size of the exported disk image.
@@ -527,7 +540,7 @@ Check that the `status` is `available`. If the `status` is `pending`, wait a few
 
 You can also monitor the upload status from the **Images** section of the Akamai Cloud Manager:
 
-![Linode Cloud Manager showing a private image labeled azure-vm-migration with status available.](linode-cloud-manager-private-image-status-azure.png)
+![Akamai Cloud Manager showing a private image labeled azure-vm-migration with status available.](linode-cloud-manager-private-image-status-azure.png)
 
 #### Launch a Linode Compute Instance from the Uploaded Image
 
@@ -659,7 +672,7 @@ After deploying your Linode, confirm that the configurations (network settings, 
 [Azure roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles) govern instance access. To migrate these roles and permissions to Akamai Cloud:
 
 -   Create Linode API tokens and fine-tune user permissions.
--   Reproduce Azure network security group policy rules in the Linode Cloud Firewall or existing system firewall.
+-   Reproduce Azure network security group policy rules in the Akamai Cloud Firewall or existing system firewall.
 -   Properly configure SSH keys and disable root login if not required.
 
 ### Alternative Migration Options

@@ -660,7 +660,7 @@ linode-cli linodes create \
 
 After several minutes, your Linode instance should be running using the image exported from your AWS EC2 instance.
 
-![Linode Cloud Manager showing a new Compute Instance being created from a custom image.](linode-create-instance-from-uploaded-image.png)
+![Akamai Cloud Manager showing a new Compute Instance being created from a custom image.](linode-create-instance-from-uploaded-image.png)
 
 ### Configure and Validate the Linode Instance
 
@@ -740,7 +740,7 @@ After deploying your Linode, confirm that the configuration (network settings, e
 AWS IAM roles govern instance access. To migrate these roles and permissions to Akamai Cloud:
 
 -   Create Linode API tokens and fine-tune user permissions.
--   Reproduce AWS security group policy rules in the Linode Cloud Firewall or existing system firewall.
+-   Reproduce AWS security group policy rules in the Akamai Cloud Firewall or existing system firewall.
 -   Properly configure SSH keys and disable root login if not required.
 
 ### Alternative Migration Options
