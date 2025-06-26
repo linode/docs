@@ -5,17 +5,13 @@ description: "Two to three sentences describing your guide."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-05-06
-modified: 2025-06-04
+modified: 2025-06-26
 keywords: ['app platform','app platform for lke','lke','linode kubernetes engine','kubernetes','persistent volumes','mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Akamai App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/application-platform)'
 - '[Akamai App Platform Documentation](https://techdocs.akamai.com/app-platform/docs/welcome)'
 ---
-
-{{< note title="Beta Notice" type="warning" >}}
-The Akamai App Platform is now available as a limited beta. It is not recommended for production workloads. To register for the beta, visit the [Betas](https://cloud.linode.com/betas) page in the Cloud Manager and click the Sign Up button next to the Akamai App Platform Beta.
-{{< /note >}}
 
 This guide includes steps for deploying a WordPress site and persistent MySQL database using [App Platform for Linode Kubernetes Engine](https://techdocs.akamai.com/cloud-computing/docs/application-platform) (LKE). In this architecture, both WordPress and MySQL use PersistentVolumes (PV) and PersistentVolumeClaims (PVC) to store data.
 
@@ -24,8 +20,6 @@ To add the WordPress and MySQL Helm charts to the App Platform Catalog, the **Ad
 ## Prerequisites
 
 -   A [Cloud Manager](https://cloud.linode.com/) account is required to use Akamai's cloud computing services, including LKE.
-
--   Enrollment into the Akamai App Platform's [beta program](https://cloud.linode.com/betas).
 
 -   An provisioned and configured LKE cluster with App Platform enabled and [auto-scaling](https://techdocs.akamai.com/cloud-computing/docs/manage-nodes-and-node-pools#autoscale-automatically-resize-node-pools) turned on. A Kubernetes cluster consisting of 3 [Dedicated CPU Compute Instances](https://techdocs.akamai.com/cloud-computing/docs/dedicated-cpu-compute-instances) is sufficient for the deployment in this guide to run, but additional resources may be required during the configuration of your App Platform architecture.
 
