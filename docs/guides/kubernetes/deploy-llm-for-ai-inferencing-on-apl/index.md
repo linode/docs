@@ -5,17 +5,13 @@ description: "This guide includes steps and guidance for deploying a large langu
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-03-25
-modified: 2025-06-04
+modified: 2025-06-26
 keywords: ['ai','ai inference','ai inferencing','llm','large language model','app platform','lke','linode kubernetes engine','llama 3','kserve','istio','knative']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Akamai App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/application-platform)'
 - '[Akamai App Platform Documentation](https://techdocs.akamai.com/app-platform/docs/welcome)'
 ---
-
-{{< note title="Beta Notice" type="warning" >}}
-The Akamai App Platform is now available as a limited beta. It is not recommended for production workloads. To register for the beta, visit the [Betas](https://cloud.linode.com/betas) page in the Cloud Manager and click the Sign Up button next to the Akamai App Platform Beta.
-{{< /note >}}
 
 LLMs (large language models) are deep-learning models that are pre-trained on vast amounts of information. AI inferencing is the method by which an AI model (such as an LLM) is trained to "infer", and subsequently deliver accurate information. The LLM used in this deployment, Meta AI's [Llama 3](https://www.llama.com/docs/overview/), is an open-source, pre-trained LLM often used for tasks like responding to questions in multiple languages, coding, and advanced reasoning.
 
@@ -64,8 +60,6 @@ If you prefer to manually install an LLM and RAG Pipeline on LKE rather than usi
 - A [Hugging Face](https://huggingface.co/) account is used for pulling Meta AI's Llama 3 model.
 
 - Access granted to Meta AI's Llama 3 model is required. To request access, navigate to Hugging Face's [Llama 3-8B Instruct LLM link](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct), read and accept the license agreement, and submit your information.
-
-- Enrollment into the Akamai App Platform's [beta program](https://cloud.linode.com/betas).
 
 ## Set Up Infrastructure
 

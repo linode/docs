@@ -5,17 +5,13 @@ description: "This guide shows how to deploy a RabbitMQ message broker architect
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-03-20
-modified: 2025-06-04
+modified: 2025-06-26
 keywords: ['app platform','lke','linode kubernetes engine','rabbitmq','microservice','message broker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Akamai App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/application-platform)'
 - '[Akamai App Platform Documentation](https://techdocs.akamai.com/app-platform/docs/welcome)'
 ---
-
-{{< note title="Beta Notice" type="warning" >}}
-The Akamai App Platform is now available as a limited beta. It is not recommended for production workloads. To register for the beta, visit the [Betas](https://cloud.linode.com/betas) page in the Cloud Manager and click the Sign Up button next to the Akamai App Platform Beta.
-{{< /note >}}
 
 ## Introduction
 
@@ -71,8 +67,6 @@ To address this, RabbitMQ allows you to bind, or link, each service - email, SMS
 
 -   A [Cloud Manager](https://cloud.linode.com/) account is required to use Akamai's cloud computing services, including LKE.
 
--   Enrollment into the Akamai App Platform's [beta program](https://cloud.linode.com/betas).
-
 -   An provisioned and configured LKE cluster with App Platform enabled and [auto-scaling](https://techdocs.akamai.com/cloud-computing/docs/manage-nodes-and-node-pools#autoscale-automatically-resize-node-pools) turned on. An LKE cluster consisting of 3 Dedicated Compute Instances is sufficient for the deployment in this guide to run, but additional resources may be required during the configuration of your App Platform architecture.
 
     To ensure sufficient resources are available, it is recommended that node pool auto-scaling for your LKE cluster is enabled after deployment. Make sure to set the max number of nodes higher than your minimum. This may result in higher billing costs.
@@ -99,7 +93,7 @@ Once your LKE cluster with App Platform has been fully deployed, [sign in](https
 
 ### Create a New Team
 
-[Teams](https://techdocs.akamai.com/app-platform/docs/platform-teams) are isolated tenants on the platform to support Development and DevOps teams, projects, or even DTAP (Development, Testing, Acceptance, Production). A Team gets access to the Console, including access to self-service features and all shared apps available on the platform.
+[Teams](https://techdocs.akamai.com/app-platform/docs/platform-teams) are isolated tenants on the platform to support Development and DevOps teams, projects, or DTAP (Development, Testing, Acceptance, Production). A Team gets access to the Console, including access to self-service features and all shared apps available on the platform.
 
 When working in the context of an admin-level Team, users can create and access resources in any namespace. When working in the context of a non-admin Team, users can only create and access resources used in that Team's namespace.
 
