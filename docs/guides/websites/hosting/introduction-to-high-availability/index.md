@@ -99,13 +99,13 @@ This specific architecture is implemented in the [host a website with high avail
 
 1. A user makes a request on the application's address, and the user's browser requests the address of the application's domain from their name server.
 
-1. The user's name server (usually operated by their ISP) requests the IP address of the application from Akamai EdgeDNS, which is acting as the authoritative name server for the application domain.
+1. The user's name server (usually operated by their ISP) requests the IP address of the application from Akamai EdgeDNS, which is acting as the authoritative name server for the application domain. EdgeDNS returns a CNAME associated with Akamai Global Traffic Management (GTM).
 
-1. EdgeDNS returns a CNAME associated with Akamai Global Traffic Management (GTM).
+1. The user's DNS requests the IP addresses from Akamai GTM for the CNAME record. Akamai GTM returns the IP address of a Kubernetes cluster ingress in an Akamai Cloud compute (region 1).
 
-1. The user's DNS requests the IP addresses from Akamai GTM for the CNAME record.
+1. The user's DNS returns that IP address to the user's client.
 
-1. Traffic is then routed to a Kubernetes cluster in one of two Akamai Cloud regions. A NodeBalancer acts as the Kubernetes ingest.
+1. The user's client sends a request to the Kubernetes cluster. A NodeBalancer acts as the Kubernetes ingress.
 
 1. The NodeBalancer directs traffic to a pod within the cluster.
 
