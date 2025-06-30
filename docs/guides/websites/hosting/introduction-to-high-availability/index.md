@@ -55,15 +55,19 @@ This section describes an example of a high availability architecture that featu
 This specific architecture is implemented in the [host a website with high availability](/docs/guides/host-a-website-with-high-availability/) guide. While some of the technologies used are specific to this example, the concepts can be more broadly applied to other HA systems.
 {{< /note >}}
 
-![High availability server configuration](high-availability-diagram.png)
+![High availability server configuration](ha-diagram.svg)
 
-1. A user requests a page from the WordPress website. The user's DNS servers return the address of a NodeBalancer in an Akamai Cloud compute region.
+1. A user requests a page from the WordPress website, and the user's browser requests the address of the website's domain from their name server. The user's DNS servers return the IP address of a NodeBalancer in an Akamai Cloud compute region.
+
+1. The user's client sends the request to the NodeBalancer's address.
 
 1. The NodeBalancer routes traffic to a cluster of application servers running the Apache web server and WordPress.
 
-1. Apache serves a file from the document root (e.g. `/srv/www/`). These files are not stored on the application server, but are instead retrieved from the networked GlusterFS filesystem cluster.
+1. Apache serves a file from the document root (e.g. `/srv/www/`). These files are not stored on the application server, but are instead retrieved from a volume on the networked GlusterFS filesystem cluster.
 
-1. When a WordPress plugin is installed, or when an image or other asset is uploaded to WordPress, it is added to the document root. When this happens in this architecture, the application server actually adds these files to one (and only one) of the servers in the GlusterFS cluster. GlusterFS then replicates these changes across the GlusterFS cluster.
+1. GlusterFS relicates any file changes in this volume across the GlusterFS cluster.
+
+    For example, this happens when a WordPress plugin is installed, or when an image or other asset is uploaded to WordPress. These files are added to the document root by an application server. The application server actually adds these files to one (and only one) of the servers in the GlusterFS cluster, which are then replicated by GlusterFS.
 
 1. WordPress PHP files from the document root are executed by the application server. These PHP files make requests on a database to retrieve website data. These database requests are fulfilled by a cluster of database servers running Percona XtraDB. One database server within the cluster is the primary, and requests are routed to this server.
 
@@ -116,6 +120,8 @@ This specific architecture is implemented in the [host a website with high avail
 1. If the service in region 1 fails, Akamai GTM detects the outage, and future traffic is instead routed to region 2. The replicated database data in region 2 is used when responding to user's requests.
 
 ### Systems and Components
+
+EDITOR: placeholder outline, will add details
 
 - User's name servers
 
