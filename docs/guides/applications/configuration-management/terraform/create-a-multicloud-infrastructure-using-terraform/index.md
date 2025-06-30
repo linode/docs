@@ -6,6 +6,7 @@ description: 'This guide shows you how to use Multicloud Terraform to provide a 
 authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 published: 2021-04-23
+modified: 2025-06-18
 keywords: ['Terraform','Linode','IaC','multicloud', 'automation', 'cloud manager']
 tags: ['terraform','ubuntu', 'ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -69,7 +70,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Downloading Terraform on your Linode Server
 
-In this section, you install Terraform on an Ubuntu 20.04 Linode. These steps are generally applicable to most Debian-based distributions. You can use the Linode server as the hub for your Terraform-managed infrastructure, however, you can also install Terraform on your computer.
+In this section, you install Terraform on an Ubuntu 24.04 LTS Linode. These steps are generally applicable to most Debian-based distributions. You can use the Linode server as the hub for your Terraform-managed infrastructure, however, you can also install Terraform on your computer.
 
 To download Terraform on a Linode server, follow the steps below:
 
@@ -87,72 +88,68 @@ To download Terraform on a Linode server, follow the steps below:
         mkdir terraform
         cd terraform
 
-1. Download Terraform using the `wget` command or from [Terraform's download page](https://www.terraform.io/downloads.html). This guide is written for the latest Terraform version 0.15.0 (at the time of writing this guide).
+1. Download Terraform using the `wget` command or from [Terraform's download page](https://www.terraform.io/downloads.html). This guide is written for Terraform version 1.12.2 (at the time of this writing).
 
-        wget https://releases.hashicorp.com/terraform/0.15.0/terraform_0.15.0_linux_amd64.zip
+        wget https://releases.hashicorp.com/terraform/1.12.2/terraform_1.12.2_linux_amd64.zip
 
-    {{< note respectIndent=false >}}
-  Previous versions of Terraform can be found on the [Terraform releases page](https://releases.hashicorp.com/terraform/).
-  {{< /note >}}
+    {{< note >}}
+    See the [Terraform releases page](https://releases.hashicorp.com/terraform/) for release date and version information.
+    {{< /note >}}
 
-1. Download the `SHA256SUMS` file, and checksum `sig` file for the most recent version of Terraform (0.15.0 in this case).
+1. Download the `SHA256SUMS` file, and checksum `sig` file for the most recent version of Terraform (1.12.2 in this case).
 
     - The SHA256 checksum file:
 
-            wget https://releases.hashicorp.com/terraform/0.15.0/terraform_0.15.0_SHA256SUMS
+            wget https://releases.hashicorp.com/terraform/1.12.2/terraform_1.12.2_SHA256SUMS
 
     - The checksum signature file:
 
-            wget https://releases.hashicorp.com/terraform/0.15.0/terraform_0.15.0_SHA256SUMS.sig
+            wget https://releases.hashicorp.com/terraform/1.12.2/terraform_1.12.2_SHA256SUMS.sig
 
 ### Verify the Terraform Download
 
-1. Locate HashiCorp's public GPG key on their [Security page](https://www.hashicorp.com/security) under the “Secure Communications” section. The key ID is `51852D87348FFC4C`.
+1. Locate HashiCorp's public GPG key on their [Security page](https://www.hashicorp.com/security) under the “Secure Communications” section. Replace `51852D87348FFC4C` with the current public key value.
 
         gpg --recv-keys 51852D87348FFC4C
 
     The following output confirms that the `gpg` key has been successfully imported.
 
     {{< output >}}
-gpg: directory '/root/.gnupg' created
-gpg: keybox '/root/.gnupg/pubring.kbx' created
 gpg: /root/.gnupg/trustdb.gpg: trustdb created
-gpg: key 51852D87348FFC4C: public key "HashiCorp Security <security@hashicorp.com>" imported
+gpg: key 34365D9472D7468F: public key "HashiCorp Security (hashicorp.com/security) <security@hashicorp.com>" imported
 gpg: Total number processed: 1
-gpg: imported: 1
+gpg:               imported: 1
 {{< /output >}}
 
 1. Use `gpg` to validate the signature file. Use the exact names of the `sig` and `SHA256` files.
 
-          gpg --verify terraform_0.15.0_SHA256SUMS.sig terraform_0.15.0_SHA256SUMS
+          gpg --verify terraform_1.12.2_SHA256SUMS.sig terraform_1.12.2_SHA256SUMS
 
     The following output confirms that the `sig` file is a good signature from HashiCorp Security.
 
     {{< output >}}
-gpg: Signature made Wed Apr 14 15:41:39 2021 UTC
-gpg: using RSA key 91A6E7F85D05C65630BEF18951852D87348FFC4C
-gpg: Good signature from "HashiCorp Security <security@hashicorp.com>" [unknown]
+gpg: Signature made Wed 11 Jun 2025 10:34:29 AM UTC
+gpg: using RSA key 374EC75B485913604A831CC7C820C6D5CD27AB87
+gpg: Good signature from "HashiCorp Security (hashicorp.com/security) <security@hashicorp.com>" [unknown]
 {{< /output >}}
 
 1. Ensure the RSA key displayed in the output of the last step matches the fingerprint shown on the [Terraform Security page](https://www.hashicorp.com/security). The fingerprint is located in the same place as the GPG key in the "Secure Communications" section.
 
 1. Verify the checksum of the `zip` archive. For the following command, use the exact name of the `SHA256SUMS` file.
 
-        sha256sum -c terraform_0.15.0_SHA256SUMS 2>&1 | grep OK
+        sha256sum -c terraform_1.12.2_SHA256SUMS 2>&1 | grep OK
 
     The `sha256sum` program displays the name of the `zip` file along with the status. If the status is **NOT** `OK`, then the `zip` file is corrupt and must be downloaded again.
 
     {{< output >}}
-
-terraform_0.15.0_linux_amd64.zip: OK
-
-  {{< /output >}}
+terraform_1.12.2_linux_amd64.zip: OK
+{{< /output >}}
 
 ### Installing and Configuring Terraform on the Linode Server
 
 1. Unzip the `terraform_*_linux_amd64.zip` to your `terraform` directory.
 
-        unzip terraform_0.15.0_linux_amd64.zip
+        unzip terraform_1.12.2_linux_amd64.zip
 
     {{< note respectIndent=false >}}
   If you receive an error that indicates `unzip` is missing from your system, install the `unzip` package using the following command `sudo apt install unzip` and try again.
@@ -204,13 +201,19 @@ The following steps explain how you can construct a multicloud configuration con
 
 1. At the top of the file, add a `terraform` block to define the [Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs), followed by the declaration of the Linode provider itself. Within the provider block, add the `token` declaration. See Linode’s guide on [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to learn how to create an API token, if you have not done so already.
 
+    {{< note title ="Linode Provider Version 3.0.0" >}}
+    As of June, 2025, the Linode Terraform Provider version is 3.0.0. To determine the current version, see the [Linode Namespace](https://registry.terraform.io/namespaces/linode) in the Terraform Registry.
+
+    The Linode Terraform Provider version 3.0.0 requires `terraform` version 1.0 or greater. See [Terraform's developer documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/upgrade-guides/1-0) for guidance on upgrading to version 1.0.
+    {{< /note >}}
+
     {{< file "~/terraform/linode-terraform.tf" >}}
 
 terraform {
   required_providers {
       linode = {
         source = "linode/linode"
-        version = "1.16.0"
+        version = "3.0.0"
       }
   }
 }
@@ -227,7 +230,7 @@ provider  "linode" {
     {{< file "~/terraform/linode-terraform.tf" >}}
 
 resource  "linode_instance"  "terraform" {
-  image = "linode/ubuntu20.04"
+  image = "linode/ubuntu24.04"
   label = "Terraform-Example"
   group = "Terraform"
   region = "us-east"
@@ -247,7 +250,7 @@ terraform {
   required_providers {
   linode = {
     source = "linode/linode"
-    version = "1.16.0"
+    version = "3.0.0"
     }
   }
 }
@@ -259,7 +262,7 @@ provider  "linode" {
 }
 
 resource  "linode_instance"  "terraform" {
-  image = "linode/ubuntu20.04"
+  image = "linode/ubuntu24.04"
   label = "terraform-example"
   group = "terraform"
   region = "us-east"
@@ -390,12 +393,12 @@ This guide describes all three steps in detail.
 
     {{< output >}}
 
-* Finding linode/linode versions matching "1.16.0"...
+* Finding linode/linode versions matching "3.0.0"...
 * Finding latest version of hashicorp/aws...
-* Installing linode/linode v1.16.0...
-* Installed linode/linode v1.16.0 (signed by a HashiCorp partner, key ID F4E6BBD0EA4FE463)
-* Installing hashicorp/aws v3.34.0...
-* Installed hashicorp/aws v3.34.0 (signed by HashiCorp)
+* Installing linode/linode v3.0.0...
+* Installed linode/linode v3.0.0 (signed by a HashiCorp partner, key ID F4E6BBD0EA4FE463)
+* Installing hashicorp/aws v6.0.0...
+* Installed hashicorp/aws v6.0.0 (signed by HashiCorp)
 ...
 Terraform has been successfully initialized!
 
@@ -463,7 +466,7 @@ Terraform will perform the following actions:
   * boot_config_label  = (known after apply)
   * group              = "Terraform"
   * id                 = (known after apply)
-  * image              = "linode/ubuntu20.04"
+  * image              = "linode/ubuntu24.04"
   * ip_address         = (known after apply)
   * ipv4               = (known after apply)
   * ipv6               = (known after apply)
@@ -522,7 +525,7 @@ linode_instance.terraform-web: Creating...
   backups_enabled:    "" => "<computed>"
   boot_config_label:  "" => "<computed>"
   group:              "" => "Terraform"
-  image:              "" => "linode/ubuntu18.04"
+  image:              "" => "linode/ubuntu24.04"
   ip_address:         "" => "<computed>"
   ipv4.#:             "" => "<computed>"
   ipv6:               "" => "<computed>"
@@ -557,12 +560,12 @@ Terraform can modify a resource without affecting the other elements of your inf
 
 The following example illustrates how to simultaneously add a new Linode and change the AWS database table.
 
-1. Edit the `linode-terraform.tf` file, and add the following snippet to the end of the file. This defines a 1GB Linode running Ubuntu 20.04 as a new resource.
+1. Edit the `linode-terraform.tf` file, and add the following snippet to the end of the file. This defines a 1GB Linode running Ubuntu 24.04 as a new resource.
 
     {{< file "~/terraform/linode-terraform.tf" aconf >}}
 ...
 resource "linode_instance" "terraform2-example" {
-  image = "linode/ubuntu20.04"
+  image = "linode/ubuntu24.04"
   label = "terraform-web-example-2"
   group = "terraform"
   region = "eu-west"
@@ -649,7 +652,7 @@ Terraform will perform the following actions:
   * boot_config_label  = (known after apply)
   * group              = "Terraform"
   * id                 = (known after apply)
-  * image              = "linode/ubuntu18.04"
+  * image              = "linode/ubuntu24.04"
   * ip_address         = (known after apply)
   * ipv4               = (known after apply)
   * ipv6               = (known after apply)
