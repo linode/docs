@@ -148,17 +148,17 @@ Set up and use a Python Virtual Environment (venv) so that you can isolate Pytho
 
 ### Install PyTorch and TensorRT
 
-1.  While using your virtual environment, install PyTorch, TensorRT, and dependencies. These are the primary AI libraries needed to run your inference workloads.
+While using your virtual environment, install PyTorch, TensorRT, and dependencies. These are the primary AI libraries needed to run your inference workloads.
 
-    ```command
-    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-    pip install requests
-    pip install nvidia-pyindex
-    pip install nvidia-tensorrt
-    pip install torch-tensorrt -U
-    ```
+```command
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip install requests
+pip install nvidia-pyindex
+pip install nvidia-tensorrt
+pip install torch-tensorrt -U
+```
 
-## Create a Benchmark Using the ResNet50 Inference Model
+## Test and Benchmark the ResNet50 Inference Model
 
 Create and run a Python script using a pre-trained ResNet50 computer vision model. Running this script tests to make sure the environment is configured correctly while providing a way to evaluate GPU performance using a real-world example. This example script is a foundation that can be adapted for other inference model architectures.
 
@@ -236,7 +236,7 @@ Create and run a Python script using a pre-trained ResNet50 computer vision mode
     Average inference time: 0.0025 seconds
     ```
 
-    We recommend timing how long it takes to run the model 20 times, and then divide by 20 to get the average time per inference. This should give you an idea of how quickly your GPU can process input using this model.
+    It is recommended to time how long it takes to run the model 20 times, and then divide by 20 to get the average time per inference. This should give you an idea of how quickly your GPU can process input using this model.
 
 ## Next Steps
 
