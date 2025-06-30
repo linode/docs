@@ -6,7 +6,7 @@ description: 'This guide provides a brief introduction to Terraform, and explain
 authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 published: 2022-10-25
-modified: 2024-08-26
+modified: 2025-06-18
 keywords: ['Linode Terraform','Terraform Linode Object Storage','Install Terraform']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -89,20 +89,20 @@ These instructions are geared towards Ubuntu 22.04 users, but are generally appl
     sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
     ```
 
-1. Download the updates for Terraform and install the application. This installs Terraform release 1.3.4, the most recent release.
+1. Download the updates for Terraform and install the most recent version of the application. The version downloaded may vary based on release date. See Terraform's [Releases](https://github.com/hashicorp/terraform/releases) page for version information.
 
     ```command
     sudo apt update && sudo apt install terraform
     ```
 
     ```output
-    Get:1 https://apt.releases.hashicorp.com jammy/main amd64 terraform amd64 1.3.4 [19.5 MB]
-    Fetched 19.5 MB in 0s (210 MB/s)
+    Get:1 https://apt.releases.hashicorp.com noble/main amd64 terraform amd64 1.12.2-1 [28.4 MB]
+    Fetched 28.4 MB in 0s (187 MB/s)
     Selecting previously unselected package terraform.
-    (Reading database ... 109186 files and directories currently installed.)
-    Preparing to unpack .../terraform_1.3.4_amd64.deb ...
-    Unpacking terraform (1.3.4) ...
-    Setting up terraform (1.3.4) ...
+    (Reading database ... 124941 files and directories currently installed.)
+    Preparing to unpack .../terraform_1.12.2-1_amd64.deb ...
+    Unpacking terraform (1.12.2-1) ...
+    Setting up terraform (1.12.2-1) ...
     ```
 
 1. Confirm the application has been installed correctly. Use the `terraform` command without any parameters and ensure the Terraform help information is displayed.
@@ -124,14 +124,14 @@ These instructions are geared towards Ubuntu 22.04 users, but are generally appl
     -version      An alias for the "version" subcommand.
     ```
 
-1. To determine the current release of Terraform, use the `terraform -v` command.
+1. To see the version of Terraform installed, use the `terraform -v` command.
 
     ```command
     terraform -v
     ```
 
     ```output
-    Terraform v1.3.4
+    Terraform v1.12.2
     on linux_amd64
     ```
 
@@ -155,13 +155,19 @@ To deploy the necessary infrastructure for a Linode Object Storage solution, cre
 
 To construct the Terraform file, execute the following instructions. For more information on how to create a Terraform file, see the [Terraform documentation](https://developer.hashicorp.com/terraform/docs).
 
-1. Create the file `linode-terraform-storage.tf` inside the `terraform` directory.
+1. Using a text editor such as `nano`, create a Terraform configuration file named `linode-terraform-storage.tf` inside the `terraform` directory.
 
     ```command
     nano linode-terraform-storage.tf
     ```
 
-1. At the top of the file, add a `terraform` section, including all `required_providers` for the infrastructure. In this case, the only required provider is `linode`. Set the source to `linode/linode`. Use the current `version` of the `linode` provider. At publication time, the version is `1.29.4`. To determine the current version, see the [Linode Namespace](https://registry.terraform.io/namespaces/linode) in the Terraform Registry.
+1. At the top of the file, add a `terraform` section, including all `required_providers` for the infrastructure. In this case, the only required provider is `linode`. Set the source to `linode/linode`. Use the current `version` of the `linode` provider.
+
+    As of June, 2025, the Linode Terraform Provider version is 3.0.0. To determine the current version, see the [Linode Namespace](https://registry.terraform.io/namespaces/linode) in the Terraform Registry.
+
+    {{< note title ="Linode Provider Version 3.0.0" >}}
+    The Linode Terraform Provider version 3.0.0 requires `terraform` version 1.0 or greater. See [Terraform's developer documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/upgrade-guides/1-0) for guidance on upgrading to version 1.0.
+    {{< /note >}}
 
     ```file {title="/terraform/linode-terraform-storage.tf" lang="aconf"}
 
@@ -169,7 +175,7 @@ To construct the Terraform file, execute the following instructions. For more in
       required_providers {
         linode = {
           source = "linode/linode"
-          version = "1.29.4"
+          version = "3.0.0"
         }
       }
     }
@@ -265,7 +271,7 @@ The Linode Object Storage Bucket resource contains many other configurable attri
       required_providers {
         linode = {
           source = "linode/linode"
-          version = "1.29.4"
+          version = "3.0.0"
         }
       }
     }
@@ -330,9 +336,9 @@ Terraform commands act upon the `linode-terraform-storage.tf` file to analyze th
     Initializing the backend...
 
     Initializing provider plugins...
-    - Finding linode/linode versions matching "1.29.4"...
-    - Installing linode/linode v1.29.4...
-    - Installed linode/linode v1.29.4 (signed by a HashiCorp partner, key ID F4E6BBD0EA4FE463)
+    - Finding linode/linode versions matching "3.0.0"...
+    - Installing linode/linode v3.0.0...
+    - Installed linode/linode v3.0.0 (signed by a HashiCorp partner, key ID F4E6BBD0EA4FE463)
     ...
     Terraform has been successfully initialized!
     ...
