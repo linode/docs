@@ -27,11 +27,11 @@ The primary AI model used in this guide is a ResNet50 computer vision (CV) model
 
 ### TensorRt
 
-
+[TensorRT](https://developer.nvidia.com/tensorrt) is an API and tool ecosystem by NVIDIA that includes inference compilers, runtimes, and deep learning model optimizations. TensorRT is trained on all major frameworks and is used to improve performance on NVIDIA GPUs using techniques like kernel auto-tuning, dynamic tensor memory management, and multi-stream execution. It directly integrates with PyTorch using the TensorRT Framework Integrations API to achieve up to 6x faster inferencing.
 
 ### PyTorch
 
-
+[PyTorch](https://pytorch.org/) is an open-source machine learning framework based on the [Torch library](https://docs.pytorch.org/docs/stable/library.html) and developed by Meta AI for training deep learning models. PyTorch is written in Python and integrates with TensorRT through [Torch-TensorRT](https://github.com/pytorch/TensorRT), so developers can optimize PyTorch models without changing existing codebases. PyTorch integrates with [CUDA](https://en.wikipedia.org/wiki/CUDA) (Compute Unified Device Architecture) to take advantage of parallel computing architectures found in NVIDIA GPUs.
 
 ## Before You Begin
 
@@ -48,7 +48,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Deploy an NVIDIA RTX 4000 Ada Instance
 
-Akamai's NVIDIA RTX 4000 Ada GPU instances can be deployed using Cloud Manager or the Linode CLI.
+Akamai's NVIDIA RTX 4000 Ada GPU instances can be deployed using Cloud Manager or the Linode CLI. This guide is written for use with the Ubuntu 24.04 LTS distribution.
 
 ### Deploy Using Cloud Manager
 
@@ -59,14 +59,14 @@ Akamai's NVIDIA RTX 4000 Ada GPU instances can be deployed using Cloud Manager o
 
 ## Set Up Your Development Environment
 
-Once it is fully deployed, connect to your GPU instance to update system packages and install system dependencies.
+Once it is fully deployed, connect to your GPU instance to update system packages and install system dependencies. It is recommended to follow the steps in our [Set up and secure a Linode](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to configure a limited user with sudo access and secure your sever.
 
 ### Update Packages
 
-1.  Log into your instance via SSH:
+1.  Log into your instance via SSH. Replace {{< placeholder "user" >}} with your sudo username and {{< placeholder "IP_ADDRESS" >}} with your Linode instance's IP address:
 
     ```command
-    ssh user@{{< placeholder "IP_ADDRESS" >}}
+    ssh {{< placeholder "user" >}}@{{< placeholder "IP_ADDRESS" >}}
     ```
 
 1.  Update your system and install build tools and system dependencies:
@@ -112,7 +112,7 @@ Once it is fully deployed, connect to your GPU instance to update system package
 1.  After the reboot is complete, log back into your instance:
 
     ```command
-    ssh user@{{< placeholder "IP_ADDRESS" >}}
+    ssh {{< placeholder "user" >}}@{{< placeholder "IP_ADDRESS" >}}
     ```
 
 1.  Use the following command to verify successful driver installation:
@@ -121,10 +121,28 @@ Once it is fully deployed, connect to your GPU instance to update system package
     nvidia-smi
     ```
 
-    You should see basic information about your RTX 4000 Ada instance and its driver version:
+    This displays basic information about your RTX 4000 Ada instance and its driver version. Your driver and software versions may vary based on release date:
 
     ```output
+    +-----------------------------------------------------------------------------------------+
+    | NVIDIA-SMI 575.57.08              Driver Version: 575.57.08      CUDA Version: 12.9     |
+    |-----------------------------------------+------------------------+----------------------+
+    | GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+    | Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+    |                                         |                        |               MIG M. |
+    |=========================================+========================+======================|
+    |   0  NVIDIA RTX 4000 Ada Gene...    On  |   00000000:00:02.0 Off |                  Off |
+    | 30%   35C    P8              4W /  130W |       2MiB /  20475MiB |      0%      Default |
+    |                                         |                        |                  N/A |
+    +-----------------------------------------+------------------------+----------------------+
 
+    +-----------------------------------------------------------------------------------------+
+    | Processes:                                                                              |
+    |  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+    |        ID   ID                                                               Usage      |
+    |=========================================================================================|
+    |  No running processes found                                                             |
+    +-----------------------------------------------------------------------------------------+
     ```
 
 ## Configure Your Python Environment
@@ -140,17 +158,23 @@ Set up and use a Python Virtual Environment (venv) so that you can isolate Pytho
     source ~/venv/bin/activate
     ```
 
-1.  Upgrade pip to the latest version to complete the setup:
+    You can confirm you are using your virtual environment when you see `(venv)` at the beginning of your command prompt:
 
-    ```command
+    ```output
+    (venv) user@hostname
+    ```
+
+1.  While in your virtual environment, upgrade pip to the latest version to complete the setup:
+
+    ```command {title="(venv)"}
     pip install --upgrade pip
     ```
 
 ### Install PyTorch and TensorRT
 
-While using your virtual environment, install PyTorch, TensorRT, and dependencies. These are the primary AI libraries needed to run your inference workloads.
+Remain in your virtual environment to install PyTorch, TensorRT, and dependencies. These are the primary AI libraries needed to run your inference workloads.
 
-```command
+```command {title="(venv)"}
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 pip install requests
 pip install nvidia-pyindex
