@@ -56,7 +56,7 @@ This section describes an example of a high availability architecture that featu
 This specific architecture is implemented in the [host a website with high availability](/docs/guides/host-a-website-with-high-availability/) guide. While some of the technologies used are specific to this example, the concepts can be more broadly applied to other HA systems.
 {{< /note >}}
 
-![High availability server configuration](ha-diagram.svg)
+![High availability server configuration](ha-diagram.svg?diagram-description-id=ha-architecture)
 
 1. A user requests a page from the WordPress website, and the user's browser requests the address of the website's domain from their name server. The user's DNS servers return the IP address of a NodeBalancer in an Akamai Cloud compute region.
 
@@ -75,6 +75,7 @@ This specific architecture is implemented in the [host a website with high avail
 1. The database servers use the Galera software to replicate data across the database cluster.
 
 1. The Keepalived service runs on each database server and monitors for database failures. If the primary database server fails, the Keepalived service reassigns its private IP address to one of the other databases in the cluster, and that database starts responding to requests from WordPress.
+{#ha-architecture .large-diagram}
 
 ### Systems and Components
 
@@ -108,7 +109,7 @@ This section describes an example of an architecture that supports disaster reco
 Note that deploying this kind of architecture does not constitute a full disaster recovery plan. Other information and procedures need to be documented as well, as described by the [What is Disaster Recovery?](#what-is-disaster-recovery) section.
 {{< /note >}}
 
-![Disaster recovery architecture](dr-architecture.svg)
+![Disaster recovery architecture](dr-architecture.svg?diagram-description-id=dr-architecture)
 
 1. A user makes a request on the application's address, and the user's browser requests the address of the application's domain from their name server.
 
@@ -118,7 +119,7 @@ Note that deploying this kind of architecture does not constitute a full disaste
 
 1. The user's DNS returns that IP address to the user's client.
 
-1. The user's client sends a request to the Kubernetes cluster. A NodeBalancer acts as the Kubernetes LoadBalancer service.
+1. The user's client sends a request to the Kubernetes cluster in region 1. A NodeBalancer acts as the Kubernetes LoadBalancer service.
 
 1. The NodeBalancer directs traffic to a pod within the cluster.
 
@@ -131,6 +132,7 @@ Note that deploying this kind of architecture does not constitute a full disaste
     {{< /note >}}
 
 1. If the service in region 1 fails, Akamai GTM detects the outage, and future traffic is instead routed to region 2. The replicated database data in region 2 is used when responding to user's requests.
+{#dr-architecture .large-diagram}
 
 {{< note >}}
 Variations on this architecture can also be considered in which region 2 is not only a backup region used when outages occur. Instead, you might operate region 2 at all times and route a share of users' traffic to it.
