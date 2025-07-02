@@ -17,7 +17,7 @@ external_resources:
 aliases: ['/websites/introduction-to-high-availability/','/websites/hosting/introduction-to-high-availability/']
 ---
 
-Designing applications with *high availability (HA)* and *disaster recovery* strategies in mind is essential for minimizing downtime and maintaining business continuity during infrastructure maintenance, upgrades, or temporary outages. This guide provides **Akamai Cloud Computing customers** with actionable strategies and architectural guidance to build resilient and highly available systems using Akamai.
+Designing applications with *high availability (HA)* and *disaster recovery* strategies in mind is essential for minimizing downtime and maintaining business continuity. These strategies are useful in a range of scenarios, including routine infrastructure maintenance and upgrades, to application/software failures, to operator/human errors, to natural disasters and cyber attacks. This guide provides **Akamai Cloud Computing customers** with actionable strategies and architectural guidance to build resilient and highly available systems using Akamai.
 
 ## What is High Availability?
 
