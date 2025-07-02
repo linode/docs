@@ -126,6 +126,10 @@ Note that deploying this kind of architecture does not constitute a full disaste
 
 1. Data in this database is continually replicated to a database in a second backup Akamai Cloud region
 
+    {{< note >}}
+    The [kind of replication (synchronous, asynchronous)](#replication) used can influence the [RTO/RPO](#rtorpo) objectives for disaster recovery. For example, if synchronous replication is used, all data between the primary and replica DBs is kept fully in sync as new data is added, and therefore the recovery point objective (RPO) would be zero.
+    {{< /note >}}
+
 1. If the service in region 1 fails, Akamai GTM detects the outage, and future traffic is instead routed to region 2. The replicated database data in region 2 is used when responding to user's requests.
 
 ### Systems and Components
