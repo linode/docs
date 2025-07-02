@@ -102,6 +102,12 @@ This specific architecture is implemented in the [host a website with high avail
 
 ## Disaster Recovery Architecture
 
+This section describes an example of an architecture that supports disaster recovery scenarios and features identical services running in two different Akamai Cloud compute regions, one of which is the primary active region, and the other is a backup region. The services are composed of a Kubernetes cluster and a database. The Kubernetes cluster natively provides high-availability mechanisms for the application code that it runs.
+
+{{< note >}}
+Note that deploying this kind of architecture does not constitute a full disaster recovery plan. Other information and procedures need to be documented as well, as described by the [What is Disaster Recovery?](#what-is-disaster-recovery) section.
+{{< /note >}}
+
 ![Disaster recovery architecture](dr-architecture.svg)
 
 1. A user makes a request on the application's address, and the user's browser requests the address of the application's domain from their name server.
