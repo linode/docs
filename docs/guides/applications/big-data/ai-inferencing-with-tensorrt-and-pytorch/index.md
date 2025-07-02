@@ -23,6 +23,10 @@ This guide shows how to build and benchmark a complete AI inferencing solution u
 
 The primary AI model used in this guide is a ResNet50 computer vision (CV) model. However, the techniques used can be applied to other model architectures like object detection ([YOLO](https://en.wikipedia.org/wiki/You_Only_Look_Once); You Only Look Once) models, speech recognition systems (OpenAI's [Whisper](https://openai.com/index/whisper/)), and large language models (LLMs) like [ChatGPT](https://openai.com/index/chatgpt/), [Llama](https://www.llama.com/), or [Claude](https://www.anthropic.com/claude).
 
+{{< note title="GPU Plan Access" >}}
+In some cases, a $100 deposit may be required to deploy GPU Linodes. This may include new accounts that have been active for less than 90 days and accounts that have spent less than $100 on services. If you are unable to deploy GPU Linodes, contact [Support](https://www.linode.com/support/) for assistance.
+{{< /note >}}
+
 ## What are TensorRT and PyTorch?
 
 ### TensorRt
@@ -42,24 +46,27 @@ The following prerequisites are recommended before starting the implementation s
 - An understanding of Python virtual environments and package management
 - General familiarity of deep learning concepts and models
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](https://www.linode.com/docs/guides/linux-users-and-groups/) doc.
+{{< note title="Sudo Users & Distribution" >}}
+This guide is written for a non-root user on the Ubuntu 24.04 LTS Linux distribution. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](https://www.linode.com/docs/guides/linux-users-and-groups/) doc.
 {{< /note >}}
+
+## Architecture Diagram
+
+![PyTorch and TensorRT Diagram](PyTorch-TensorRT-Diagram.svg)
 
 ## Deploy an NVIDIA RTX 4000 Ada Instance
 
-Akamai's NVIDIA RTX 4000 Ada GPU instances can be deployed using Cloud Manager or the Linode CLI. This guide is written for use with the Ubuntu 24.04 LTS distribution.
+Akamai's NVIDIA RTX 4000 Ada GPU instances can be deployed using Cloud Manager or the Linode CLI.
 
-### Deploy Using Cloud Manager
+- For instructions on deploying a GPU instance via the Cloud Manager, see our [Create a Linode](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide.
 
+- For guidance on deploying a GPU instance using the Linode CLI, see the [Create a Linode](https://techdocs.akamai.com/linode-api/reference/post-linode-instance) section of our API documentation.
 
-### Deploy Using the Linode CLI
-
-
+- For a list of GPU region availability, see our [Choose a Data Center](https://techdocs.akamai.com/cloud-computing/docs/how-to-choose-a-data-center) guide. See our API documentation to see a [region's service availability](https://techdocs.akamai.com/linode-api/reference/get-account-availability) using the Linode API or CLI.
 
 ## Set Up Your Development Environment
 
-Once it is fully deployed, connect to your GPU instance to update system packages and install system dependencies. It is recommended to follow the steps in our [Set up and secure a Linode](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to configure a limited user with sudo access and secure your sever.
+Once your GPU is fully deployed, connect to your instance to update system packages and install system dependencies. It is recommended to first follow the steps in our [Set up and secure a Linode](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to configure a limited user with sudo access and secure your sever.
 
 ### Update Packages
 
