@@ -129,6 +129,10 @@ This specific architecture is implemented in the [host a website with high avail
 
 - **[Akamai Global Traffic Management (GTM)](https://techdocs.akamai.com/gtm/docs/welcome-to-global-traffic-management)** is a DNS-based load balancing service that continuously monitors the health of application clusters running in multiple regions. In this architecture, GTM routes traffic to a service hosted in Akamai Cloud region 1 by default, and it reroutes traffic to region 2 if an outage in region 1 is detected.
 
+    {{< note >}}
+    Please note that access to Akamai GTM requires account assistance from Akamai's sales team.
+    {{< /note >}}
+
 - **Akamai Cloud region 1 and region 2**: Two cloud compute regions that host the same high-availability service. Region 1 acts as the default/primary service location, and region 2 acts as a backup location if outages occur in region 1.
 
 - ****LKE Cluster**: A managed Kubernetes cluster on the [Linode Kubernetes Engine](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) service. This cluster coordinates the components of the example application.
@@ -209,9 +213,9 @@ Akamai offers multiple tools to assist with monitoring and failover, including:
 
 Open source software and tools can support monitoring and failover, including:
 
-- [Keepalived](https://www.keepalived.org/): a software package that can run periodic health checks and run notification scripts that are triggered by different health check changes over time. These notification scripts can then interact with features of your cloud platform (like [IP Sharing and BGP-based failover](https://techdocs.akamai.com/cloud-computing/docs/use-keepalived-health-checks-with-bgp-based-failover) on Akamai Cloud) to support failover of infrastructure. In the [high availability architecture](#high-availability-architecture) example in this guide, the database cluster runs keepalived to monitor failures of the primary database server and then promote a backup DB to be the new primary.
+- **[Keepalived](https://www.keepalived.org/)**: a software package that can run periodic health checks and run notification scripts that are triggered by different health check changes over time. These notification scripts can then interact with features of your cloud platform (like [IP Sharing and BGP-based failover](https://techdocs.akamai.com/cloud-computing/docs/use-keepalived-health-checks-with-bgp-based-failover) on Akamai Cloud) to support failover of infrastructure. In the [high availability architecture](#high-availability-architecture) example in this guide, the database cluster runs keepalived to monitor failures of the primary database server and then promote a backup DB to be the new primary.
 
-- [HAProxy](/docs/guides/how-to-configure-haproxy-http-load-balancing-and-health-checks/): a dedicated reverse proxy software solution. HAProxy can perform health checks of backend servers and stop routing traffic to backends that experience failures.
+- **[HAProxy](/docs/guides/how-to-configure-haproxy-http-load-balancing-and-health-checks/)**: a dedicated reverse proxy software solution. HAProxy can perform health checks of backend servers and stop routing traffic to backends that experience failures.
 
 ### Load Balancing
 
@@ -233,18 +237,18 @@ Akamai offers multiple tools to assist with load balancing, including:
 
 Open source software and tools can support load balancing, including:
 
-- Web servers, like NGINX and Apache: these can be configured as [reverse proxies](/docs/guides/use-nginx-reverse-proxy/#what-is-a-reverse-proxy) for backend servers.
+- **Web servers**, like NGINX and Apache: these can be configured as [reverse proxies](/docs/guides/use-nginx-reverse-proxy/#what-is-a-reverse-proxy) for backend servers.
 
-- [HAProxy](/docs/guides/how-to-configure-haproxy-http-load-balancing-and-health-checks/): a dedicated reverse proxy software solution.
+- **[HAProxy](/docs/guides/how-to-configure-haproxy-http-load-balancing-and-health-checks/)**: a dedicated reverse proxy software solution.
 
-- [Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/): [a range of load balancing functionality](https://kubernetes.io/docs/concepts/services-networking/) is offered by Kubernetes. [Services](https://kubernetes.io/docs/concepts/services-networking/service/) are an abstraction layer for a set of Pods that run your application code, and traffic is collectively routed across them. [LoadBalancer-type Services](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) correspond to cloud load balancing products provided by cloud platforms.
+- **[Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/)**: [a range of load balancing functionality](https://kubernetes.io/docs/concepts/services-networking/) is offered by Kubernetes. [Services](https://kubernetes.io/docs/concepts/services-networking/service/) are an abstraction layer for a set of Pods that run your application code, and traffic is collectively routed across them. [LoadBalancer-type Services](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) correspond to cloud load balancing products provided by cloud platforms.
 
 ### Replication
 
 *Replication* is the process of copying data between redundant servers and systems. Data replication can be synchronous or asynchronous:
 
-- Synchronous replication prioritizes immediate data consistency across components.
-- Asynchronous replication prioritizes performance of a primary component, and data is eventually copied to a secondary component.
+- **Synchronous replication** prioritizes immediate data consistency across components.
+- **Asynchronous replication** prioritizes performance of a primary component, and data is eventually copied to a secondary component.
 
 Replication supports high availability strategies and disaster recovery strategies:
 
@@ -254,25 +258,29 @@ Replication supports high availability strategies and disaster recovery strategi
 
 Multiple Akamai services provide data replication, or can be used to support data replication workflows:
 
-- [Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage): Akamai's object storage has [an internal replication system](https://www.linode.com/products/object-storage/#accordion-7252094bf6-item-97b2f59293) to ensure that data is highly-available.
+- **[Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage)**: Akamai's object storage has [an internal replication system](https://www.linode.com/products/object-storage/#accordion-7252094bf6-item-97b2f59293) to ensure that data is highly-available.
 
     Users can enhance redundancy of their object storage data by [synchronizing bucket data across regions using rclone](/docs/guides/replicate-bucket-contents-with-rclone/), which can support high availability, disaster recovery, and load balancing strategies.
 
     Users can also [backup files from a Linode to Object Storage](/docs/guides/rclone-object-storage-file-sync/), which can play a role in backup and recovery.
 
-- [Managed Databases](https://techdocs.akamai.com/cloud-computing/docs/aiven-database-clusters): All database clusters created with Akamai's Managed Databases receive daily backups. For 3-node clusters, built-in data replication, redundancy, and automatic failover are provided.
+- **[Managed Databases](https://techdocs.akamai.com/cloud-computing/docs/aiven-database-clusters)**: All database clusters created with Akamai's Managed Databases receive daily backups. For 3-node clusters, built-in data replication, redundancy, and automatic failover are provided.
 
-- [Block Storage](https://techdocs.akamai.com/cloud-computing/docs/block-storage): Users can choose to attach multiple Block Storage volumes to a Linode instance, and they can replicate data from one volume to another. If a Linode that a volume is attached to is destroyed, the volume persists, so it can be attached and used with another Linode.
+- **[Block Storage](https://techdocs.akamai.com/cloud-computing/docs/block-storage)**: Users can choose to attach multiple Block Storage volumes to a Linode instance, and they can replicate data from one volume to another. If a Linode that a volume is attached to is destroyed, the volume persists, so it can be attached and used with another Linode.
 
-- [Net Storage](https://techdocs.akamai.com/netstorage/docs/welcome-to-netstorage): Net Storage provides [controls for replication across geographic zones](https://techdocs.akamai.com/netstorage/docs/create-a-storage-group#geo-replication-settings).
+- **[Net Storage](https://techdocs.akamai.com/netstorage/docs/welcome-to-netstorage)**: Net Storage provides [controls for replication across geographic zones](https://techdocs.akamai.com/netstorage/docs/create-a-storage-group#geo-replication-settings).
+
+    {{< note >}}
+    Please note that access to Net Storage requires account assistance from Akamai's sales team.
+    {{< /note >}}
 
 Open source software that supports replication includes:
 
-- Database replication tools: Some tools are built into the database system, like MySQL's [source-replica replication mechanism](/docs/guides/configure-source-replica-replication-in-mysql/). Other tools, like [Galera](https://galeracluster.com/), can be additionally installed to support replication.
+- **Database replication tools**: Some tools are built into the database system, like MySQL's [source-replica replication mechanism](/docs/guides/configure-source-replica-replication-in-mysql/). Other tools, like [Galera](https://galeracluster.com/), can be additionally installed to support replication.
 
-- Networked filesystems, like [GlusterFS](https://www.gluster.org/): these are used to create distributed storage systems across multiple block storage devices, like a Linode's built-in storage disk, or a Block Storage volume.
+- **Networked filesystems, like [GlusterFS](https://www.gluster.org/)**: these are used to create distributed storage systems across multiple block storage devices, like a Linode's built-in storage disk, or a Block Storage volume.
 
-- [Command-line data transfer utilities](/docs/guides/comparing-data-transfer-utilities/) like [rsync](/docs/guides/introduction-to-rsync/) and [rclone](/docs/guides/rclone-object-storage-file-sync/).
+- **[Command-line data transfer utilities](/docs/guides/comparing-data-transfer-utilities/)** like [rsync](/docs/guides/introduction-to-rsync/) and [rclone](/docs/guides/rclone-object-storage-file-sync/).
 
 ### Scaling
 
