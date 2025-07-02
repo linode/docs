@@ -132,6 +132,12 @@ Note that deploying this kind of architecture does not constitute a full disaste
 
 1. If the service in region 1 fails, Akamai GTM detects the outage, and future traffic is instead routed to region 2. The replicated database data in region 2 is used when responding to user's requests.
 
+{{< note >}}
+Variations on this architecture can also be considered in which region 2 is not only a backup region used when outages occur. Instead, you might operate region 2 at all times and route a share of users' traffic to it.
+
+For example, your service might represent a user-generated content/social network platform, where users upload their own content and also consume other users' content. In this case, you could specify that all user upload requests should be routed to region 1 (which hosts the primary DB), while any requests for content could be split 50/50 between region 1 and region 2 by Akamai GTM. Because data for new uploads to the primary DB would be replicated to the replica DB in region 2, it could also serve those content requests, which would lower the traffic burden of region 1.
+{{< /note >}}
+
 ### Systems and Components
 
 - **User's name server**: The user's local name server, usually operated by their ISP.
