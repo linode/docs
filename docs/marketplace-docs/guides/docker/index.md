@@ -2,7 +2,7 @@
 title: "Deploy Docker through the Linode Marketplace"
 description: "This guide provides you with step-by-step instructions for deploying Docker, a tool which you can use to run containerized apps, from the Linode One-Click Marketplace."
 published: 2020-03-11
-modified: 2023-10-27
+modified: 2025-07-01
 keywords: ['docker','marketplace', 'container']
 tags: ["container","cloud-manager","linode platform","docker","marketplace"]
 image: Docker_oneclickapps.png
@@ -33,7 +33,7 @@ marketplace_app_name: "Docker"
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 22.04 LTS
+- **Supported distributions:** Ubuntu 24.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Docker Options
