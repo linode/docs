@@ -77,6 +77,8 @@ This specific architecture is implemented in the [host a website with high avail
 
 ### Systems and Components
 
+- **User's name server**: The user's local name servers, usually operated by their ISP.
+
 - **NodeBalancer**: An [Akamai load balancer service](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer). NodeBalancers can evenly distribute incoming traffic to a set of backend servers.
 
     The NodeBalancer in this architecture continually monitors the health of the application servers. If one of the application servers experiences downtime, the NodeBalancer stops sending traffic to it. The NodeBalancer service has an internal high-availability mechanism that reduces downtime for the service itself.
@@ -103,13 +105,13 @@ This specific architecture is implemented in the [host a website with high avail
 
 1. A user makes a request on the application's address, and the user's browser requests the address of the application's domain from their name server.
 
-1. The user's name server (usually operated by their ISP) requests the IP address of the application from Akamai EdgeDNS, which is acting as the authoritative name server for the application domain. EdgeDNS returns a CNAME associated with Akamai Global Traffic Management (GTM).
+1. The user's name server requests the IP address of the application from Akamai EdgeDNS, which is acting as the authoritative name server for the application domain. EdgeDNS returns a CNAME associated with Akamai Global Traffic Management (GTM).
 
-1. The user's DNS requests the IP addresses from Akamai GTM for the CNAME record. Akamai GTM returns the IP address of a Kubernetes cluster ingress in an Akamai Cloud compute (region 1).
+1. The user's DNS requests the IP addresses from Akamai GTM for the CNAME record. Akamai GTM returns the IP address of a Kubernetes cluster LoadBalancer service in an Akamai Cloud compute (region 1).
 
 1. The user's DNS returns that IP address to the user's client.
 
-1. The user's client sends a request to the Kubernetes cluster. A NodeBalancer acts as the Kubernetes ingress.
+1. The user's client sends a request to the Kubernetes cluster. A NodeBalancer acts as the Kubernetes LoadBalancer service.
 
 1. The NodeBalancer directs traffic to a pod within the cluster.
 
@@ -121,25 +123,25 @@ This specific architecture is implemented in the [host a website with high avail
 
 ### Systems and Components
 
-EDITOR: placeholder outline, will add details
+- **User's name server**: The user's local name server, usually operated by their ISP.
 
-- User's name servers
+- **[Akamai EdgeDNS](https://techdocs.akamai.com/edge-dns/docs/welcome-edge-dns)**: Akamai's globally-distributed authoritative DNS service. In this architecture, it uses a CNAME record to associate the example application's domain to the Akamai GTM service.
 
-- EdgeDNS
+- **[Akamai Global Traffic Management (GTM)](https://techdocs.akamai.com/gtm/docs/welcome-to-global-traffic-management)** is a DNS-based load balancing service that continuously monitors the health of application clusters running in multiple regions. In this architecture, GTM routes traffic to a service hosted in Akamai Cloud region 1 by default, and it reroutes traffic to region 2 if an outage in region 1 is detected.
 
-- Akamai GTM
+- **Akamai Cloud region 1 and region 2**: Two cloud compute regions that host the same high-availability service. Region 1 acts as the default/primary service location, and region 2 acts as a backup location if outages occur in region 1.
 
-- Akamai Cloud Region 1 and Region 2
-
-- LKE Cluster
+- ****LKE Cluster**: A managed Kubernetes cluster on the [Linode Kubernetes Engine](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) service. This cluster coordinates the components of the example application.
 
 - **NodeBalancer**: An [Akamai load balancer service](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer). NodeBalancers can evenly distribute incoming traffic to a set of backend servers.
 
-- Pods
+    In this architecture, [the NodeBalancer acts as a Kubernetes LoadBalancer service](https://techdocs.akamai.com/cloud-computing/docs/get-started-with-load-balancing-on-an-lke-cluster) that provides access to the backend Kubernetes pods that run the application code. The [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager) assist with creating the NodeBalancer.
 
-- Primary DB
+- **[Pods](https://kubernetes.io/docs/concepts/workloads/pods/)**: A set of Kubernetes pods that run the application's code. These are managed by the Kubernetes control plane, and if any pods experience failures, new ones are created to replace them.
 
-- Replica DB
+- **Primary DB**: A primary database (located in region 1) that serves requests from the Kubernetes cluster pods.
+
+- **Replica DB**: A replica database (located in region 2) that serves as a backup when outages happen in region 1. Data in region 1 is replicated to region 2 over time so that it the replica DB will have up-to-date information in the case of an outage.
 
 ## High Availability and Disaster Recovery Concepts
 
