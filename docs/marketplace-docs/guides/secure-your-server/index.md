@@ -2,7 +2,7 @@
 title: "Secure Your Server through the Linode Marketplace"
 description: "Automate common security tasks on a Linode Compute Instance by using the Secure Your Server Marketplace App."
 published: 2023-01-24
-modified: 2024-08-06
+modified: 2025-07-02
 keywords: ['security']
 tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/secure-your-server/']
@@ -27,7 +27,7 @@ This Marketplace App automatically configures a new Compute Instance with a limi
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 22.04 LTS
+- **Supported distributions:** Ubuntu 24.04 LTS
 - **Suggested plan:** All plan types and sizes can be used
 
 ### Secure Your Server Setup Options
