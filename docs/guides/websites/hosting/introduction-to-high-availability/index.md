@@ -18,15 +18,15 @@ external_resources:
 aliases: ['/websites/introduction-to-high-availability/','/websites/hosting/introduction-to-high-availability/']
 ---
 
-Designing applications with *high availability (HA)* and *disaster recovery* strategies in mind is essential for minimizing downtime and maintaining business continuity. These strategies are useful in a range of scenarios, including routine infrastructure maintenance and upgrades, to application/software failures, to operator/human errors, to natural disasters and cyber attacks. This guide provides **Akamai Cloud Computing customers** with actionable strategies and architectural guidance to build resilient and highly available systems using Akamai.
+Designing applications with *high availability (HA)* and *disaster recovery* strategies in mind is essential for minimizing downtime and maintaining business continuity. These strategies are useful in a range of scenarios, including routine infrastructure maintenance and upgrades, application or software failures, operator or human errors, natural disasters, and cyber attacks. This guide provides **Akamai Cloud Computing customers** with actionable strategies and architectural guidance to build resilient and highly available systems using Akamai services.
 
 ## What is High Availability?
 
-High availability (HA) is a term that describes a website or application with maximum potential uptime and accessibility for the content stored on it. While a more basic system will be adequate to serve content to a low or medium number of users, it may include a single point of failure. This means that if one server goes down (because of traffic overload, application failures, etc) the entire site or application could become unavailable. Systems with high availability avoid this problem by eliminating single points of failure, which prevents the site or application from going down when one component fails.
+High availability (HA) is a term that describes a website or application with maximum potential uptime and accessibility for the content stored on it. While more basic systems can be adequate for serving content to a low or medium number of users, it may include a single point of failure. This means that if one server goes down (because of traffic overload, application failures, etc.) the entire site or application could become unavailable. Systems with high availability avoid this problem by eliminating single points of failure, preventing the site or application from going down if one component fails.
 
-High availability does **not** mean your site or application will never experience downtime. The safeguards in a highly available system can offer protection in a number of scenarios, but no system is perfect. The uptime provided by an HA architecture is often measured in percentages, like 99.99%, 99.999%, and so on. These tiers of uptime depend on variables in your architecture, like the number of redundant components, their configuration settings, and the resources allocated to each component. Some of these variables, like the compute resources for a given server, can be [scaled](#scaling) to accomodate spikes in traffic.
+High availability does **not** mean your site or application will never experience downtime. The safeguards in a highly available system can offer protection in a number of scenarios, but no system is perfect. The uptime provided by an HA architecture is often measured in percentages, like 99.99%, 99.999%, and so on. These tiers of uptime depend on variables in your architecture, like the number of redundant components, their configuration settings, and the resources allocated to each component. Some of these variables, such as compute resources on a given server, can be [scaled](#scaling) to accommodate spikes in traffic.
 
-Some scenarios, like natural disasters or cyber attacks, may disrupt a highly-available system entirely. In these situations, [disaster recovery](#disaster-recovery) strategies should be implemented.
+Some scenarios, like natural disasters or cyber attacks, have the potential to disrupt a highly-available system entirely. In these situations, [disaster recovery](#disaster-recovery) strategies should be implemented.
 
 ### How High Availability Works
 
@@ -40,7 +40,7 @@ In general, a high availability system works by having more components than it n
 
 ## What is Disaster Recovery?
 
-Disaster recovery is a process that is employed in the event of a wider-ranging outage of an organization's systems. These might occur because of cyber attacks, natural disasters, human error, and other reasons. An organization follows a disaster recovery plan to restore service and data for the systems that have experienced downtime and/or data loss.
+Disaster recovery is a process that is employed in the event of a wider-ranging outage of an organization's systems. These might occur because of cyber attacks, natural disasters, human error, or other reasons. An organization follows a disaster recovery plan to restore service and data for the systems that have experienced downtime and/or data loss.
 
 A disaster recovery plan documents key information and procedures that should be adhered to in these scenarios. This can include lists of staff that are responsible for the plan, inventories of systems and software, activation of backup sites and systems, criteria that should be met during the recovery operation (including [RTO and RPO](#rtorpo)), and other considerations.
 
@@ -66,7 +66,7 @@ This specific architecture is implemented in the [host a website with high avail
 
 1. Apache serves a file from the document root (e.g. `/srv/www/`). These files are not stored on the application server, but are instead retrieved from a volume on the networked GlusterFS filesystem cluster.
 
-1. GlusterFS relicates any file changes in this volume across the GlusterFS cluster.
+1. GlusterFS replicates any file changes in this volume across the GlusterFS cluster.
 
     For example, this happens when a WordPress plugin is installed, or when an image or other asset is uploaded to WordPress. These files are added to the document root by an application server. The application server actually adds these files to one (and only one) of the servers in the GlusterFS cluster, which are then replicated by GlusterFS.
 
@@ -81,7 +81,7 @@ This specific architecture is implemented in the [host a website with high avail
 
 - **User's name server**: The user's local name servers, usually operated by their ISP.
 
-- **NodeBalancer**: An [Akamai load balancer service](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer). NodeBalancers can evenly distribute incoming traffic to a set of backend servers.
+- **NodeBalancer**: An [Akamai Cloud load balancing service](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer). NodeBalancers can evenly distribute incoming traffic to a set of backend servers within the same data center.
 
     The NodeBalancer in this architecture continually monitors the health of the application servers. If one of the application servers experiences downtime, the NodeBalancer stops sending traffic to it. The NodeBalancer service has an internal high-availability mechanism that reduces downtime for the service itself.
 
@@ -93,7 +93,7 @@ This specific architecture is implemented in the [host a website with high avail
 
     GlusterFS continually monitors the contents of the volume across the GlusterFS cluster. If any files are added/removed/modified files to the volume on one of the servers, those changes are automatically replicated to the other GlusterFS servers.
 
-- **Database cluster**: A set of servers running the Percona XtraDB database cluster software, Galera, Xtrabackup, and Keepalived.
+- **Database cluster**: A set of servers running the Percona XtraDB database cluster software, Galera, XtraBackup, and Keepalived.
 
     Galera is used for replication, and it offers *synchronous replication*, meaning data is written to secondary database nodes at the same time as it's being written to the primary. This method of replication provides excellent redundancy to the database cluster because it avoids periods of time where the database nodes are not in matching states. Galera also provides *multi-master replication*, meaning any one of the database nodes can respond to client queries.
 
@@ -113,7 +113,7 @@ Note that deploying this kind of architecture does not constitute a full disaste
 
 1. A user makes a request on the application's address, and the user's browser requests the address of the application's domain from their name server.
 
-1. The user's name server requests the IP address of the application from Akamai EdgeDNS, which is acting as the authoritative name server for the application domain. EdgeDNS returns a CNAME associated with Akamai Global Traffic Management (GTM).
+1. The user's name server requests the IP address of the application from Akamai EdgeDNS, which acts as the authoritative name server for the application domain. EdgeDNS returns a CNAME associated with Akamai Global Traffic Management (GTM).
 
 1. The user's DNS requests the IP addresses from Akamai GTM for the CNAME record. Akamai GTM returns the IP address of a Kubernetes cluster LoadBalancer service in an Akamai Cloud compute (region 1).
 
@@ -127,14 +127,14 @@ Note that deploying this kind of architecture does not constitute a full disaste
 
 1. Data in this database is continually replicated to a database in a second backup Akamai Cloud region
 
-    {{< note >}}
+    {{< note title="Replication Type" >}}
     The [kind of replication (synchronous, asynchronous)](#replication) used can influence the [RTO/RPO](#rtorpo) objectives for disaster recovery. For example, if synchronous replication is used, all data between the primary and replica DBs is kept fully in sync as new data is added, and therefore the recovery point objective (RPO) would be zero.
     {{< /note >}}
 
 1. If the service in region 1 fails, Akamai GTM detects the outage, and future traffic is instead routed to region 2. The replicated database data in region 2 is used when responding to user's requests.
 {#dr-architecture .large-diagram}
 
-{{< note >}}
+{{< note title="Other Architecture Variations" >}}
 Variations on this architecture can also be considered in which region 2 is not only a backup region used when outages occur. Instead, you might operate region 2 at all times and route a share of users' traffic to it.
 
 For example, your service might represent a user-generated content/social network platform, where users upload their own content and also consume other users' content. In this case, you could specify that all user upload requests should be routed to region 1 (which hosts the primary DB), while any requests for content could be split 50/50 between region 1 and region 2 by Akamai GTM. Because data for new uploads to the primary DB would be replicated to the replica DB in region 2, it could also serve those content requests, which would lower the traffic burden of region 1.
@@ -148,15 +148,11 @@ For example, your service might represent a user-generated content/social networ
 
 - **[Akamai Global Traffic Management (GTM)](https://techdocs.akamai.com/gtm/docs/welcome-to-global-traffic-management)** is a DNS-based load balancing service that continuously monitors the health of application clusters running in multiple regions. In this architecture, GTM routes traffic to a service hosted in Akamai Cloud region 1 by default, and it reroutes traffic to region 2 if an outage in region 1 is detected.
 
-    {{< note >}}
-    Please note that access to Akamai GTM requires account assistance from Akamai's sales team.
-    {{< /note >}}
-
 - **Akamai Cloud region 1 and region 2**: Two cloud compute regions that host the same high-availability service. Region 1 acts as the default/primary service location, and region 2 acts as a backup location if outages occur in region 1.
 
 - ****LKE Cluster**: A managed Kubernetes cluster on the [Linode Kubernetes Engine](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) service. This cluster coordinates the components of the example application.
 
-- **NodeBalancer**: An [Akamai load balancer service](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer). NodeBalancers can evenly distribute incoming traffic to a set of backend servers.
+- **NodeBalancer**: An [Akamai Cloud load balancer service](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer). NodeBalancers can evenly distribute incoming traffic to a set of backend servers.
 
     In this architecture, [the NodeBalancer acts as a Kubernetes LoadBalancer service](https://techdocs.akamai.com/cloud-computing/docs/get-started-with-load-balancing-on-an-lke-cluster) that provides access to the backend Kubernetes pods that run the application code. The [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager) assist with creating the NodeBalancer.
 
@@ -165,6 +161,10 @@ For example, your service might represent a user-generated content/social networ
 - **Primary DB**: A primary database (located in region 1) that serves requests from the Kubernetes cluster pods.
 
 - **Replica DB**: A replica database (located in region 2) that serves as a backup when outages happen in region 1. Data in region 1 is replicated to region 2 over time so that it the replica DB will have up-to-date information in the case of an outage.
+
+{{< note title="Access to Akamai Security and CDN Services" >}}
+Please note that access to Akamai Security and CDN services - such as EdgeDNS and Global Traffic Management (GTM) - require account assistance from Akamai's sales team.
+{{< /note >}}
 
 ## High Availability and Disaster Recovery Concepts
 
@@ -192,17 +192,17 @@ Different kinds of redundancy can be considered:
 
 - **Data center infrastructure redundancy**:
 
-    Each Akamai Cloud region corresponds to a single physical data center and does not provide built-in multi-site high availability. This means that in the rare event of a full data center outage, such as a total network failure, Linodes within that Cloud region may become temporarily inaccessible.
+    Each Akamai Cloud region corresponds to a single physical data center and does not provide built-in multi-site high availability. This means that in the rare event of a full data center outage, such as a total network failure, services within that Cloud region may become temporarily inaccessible.
 
-    Having said that, Akamai Cloud data centers are built with internal redundancy for critical infrastructure. For example:
+    Akamai Cloud data centers are built with internal redundancy for critical infrastructure. For example:
 
-    - **Power**: Facilities are equipped with backup generators and UPS systems to ensure power continuity during outages.
+    - **Power**: Facilities are equipped with backup generators and uninterruptible power supply (UPS) systems to ensure power continuity during outages.
 
     - **Networking**: Core network components such as routers, switches, and BOLTs are designed with redundancy, allowing traffic to reroute automatically if a component fails.
 
 - **Geography/region redundancy**:
 
-    Highly available applications can be architected with redundancy *across multiple regions/data centers*. This can be useful for a number of reasons:
+    Highly available applications can be architected with redundancy *across multiple regions/data centers* (see [Disaster Recover Architecture](#disaster-recovery-architecture)). This can be useful for a number of reasons:
 
     - Running your application in multiple regions can distribute the load for your service across those regions.
 
@@ -214,7 +214,7 @@ Different kinds of redundancy can be considered:
 
 In a highly available architecture, the system needs to be able to *monitor* itself for failure. This means that there are regular *health checks* to ensure that all components are working properly. *Failover* is the process by which a secondary component becomes primary when monitoring reveals that a primary component has failed.
 
-There are different kinds of health checks that can be performed, including:
+There are different kinds of [health checks](https://techdocs.akamai.com/cloud-computing/docs/configuration-options-for-nodebalancers#health-checks) that can be performed, including:
 
 - **ICMP (Ping) checks**: Monitors basic network connectivity.
 - **TCP checks**: Ensures responsiveness for most application-layer protocols.
@@ -228,13 +228,13 @@ Akamai offers multiple tools to assist with monitoring and failover, including:
 
 - **[Linode Kubernetes Engine (LKE)](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine)**, Akamai's managed Kubernetes service: the Kubernetes control plane natively performs monitoring of Pods and other resources in your cluster. For [LKE Enterprise](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine#lke-enterprise), the control plane itself has built-in monitoring and failover that is managed by Akamai.
 
-- **[IP Sharing and BGP-based failover](https://techdocs.akamai.com/cloud-computing/docs/configure-failover-on-a-compute-instance)**: features that support failover of a service between Linodes.
+- **[IP Sharing and BGP-based failover](https://techdocs.akamai.com/cloud-computing/docs/configure-failover-on-a-compute-instance)** are features that support failover of a service between Linodes.
 
 Open source software and tools can support monitoring and failover, including:
 
-- **[Keepalived](https://www.keepalived.org/)**: a software package that can run periodic health checks and run notification scripts that are triggered by different health check changes over time. These notification scripts can then interact with features of your cloud platform (like [IP Sharing and BGP-based failover](https://techdocs.akamai.com/cloud-computing/docs/use-keepalived-health-checks-with-bgp-based-failover) on Akamai Cloud) to support failover of infrastructure. In the [high availability architecture](#high-availability-architecture) example in this guide, the database cluster runs keepalived to monitor failures of the primary database server and then promote a backup DB to be the new primary.
+- **[Keepalived](https://www.keepalived.org/)**: A software package that can run periodic health checks and run notification scripts that are triggered by different health check changes over time. These notification scripts can then interact with features of your cloud platform (like [IP Sharing and BGP-based failover](https://techdocs.akamai.com/cloud-computing/docs/use-keepalived-health-checks-with-bgp-based-failover) on Akamai Cloud) to support failover of infrastructure. In the [high availability architecture](#high-availability-architecture) example in this guide, the database cluster runs keepalived to monitor failures of the primary database server and then promote a backup DB to be the new primary.
 
-- **[HAProxy](/docs/guides/how-to-configure-haproxy-http-load-balancing-and-health-checks/)**: a dedicated reverse proxy software solution. HAProxy can perform health checks of backend servers and stop routing traffic to backends that experience failures.
+- **[HAProxy](/docs/guides/how-to-configure-haproxy-http-load-balancing-and-health-checks/)**: A dedicated reverse proxy software solution. HAProxy can perform health checks of backend servers and stop routing traffic to backends that experience failures.
 
 ### Load Balancing
 
