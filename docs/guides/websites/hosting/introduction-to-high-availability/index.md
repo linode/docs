@@ -238,7 +238,7 @@ Open source software and tools can support monitoring and failover, including:
 
 ### Load Balancing
 
-Load balancing distributes traffic among multiple backend servers or compute regions, which reduces the chance that any given server fails from being overburdened. Different algorithms can be used by different kinds of load balancers to route traffic, including:
+Load balancing is a technique used to distribute traffic among multiple backend servers or compute regions to reduce the chance of any given server failing from being overburdened. Different [algorithms](https://techdocs.akamai.com/cloud-computing/docs/configuration-options-for-nodebalancers#algorithm) can be used by different kinds of load balancers to route traffic, including:
 
 - **Round-Robin**: Traffic is routed evenly between clusters or servers.
 
@@ -250,17 +250,17 @@ Akamai offers multiple tools to assist with load balancing, including:
 
 - **[NodeBalancers](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer)**: A cloud load balancer service that distributes traffic between servers within a data center.
 
-- **[Global Traffic Management (GTM)](https://techdocs.akamai.com/gtm/docs/welcome-to-global-traffic-management)**: GTM provides DNS load balancing, which allows traffic to be dynamically routed across multiple regions, including Akamai Cloud regions.
+- **[Global Traffic Management (GTM)](https://techdocs.akamai.com/gtm/docs/welcome-to-global-traffic-management)**: GTM provides DNS-based load balancing, which allows traffic to be dynamically routed across multiple regions, including Akamai Cloud regions.
 
 - **[Linode Kubernetes Engine (LKE)](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine)**, Akamai's managed Kubernetes service: Kubernetes clusters created with LKE have the [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager/) preinstalled, which provides an interface for your cluster to interact with Linode resources. In particular, any Kubernetes [LoadBalancer service](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) that you declare is created as a NodeBalancer.
 
 Open source software and tools can support load balancing, including:
 
-- **Web servers**, like NGINX and Apache: these can be configured as [reverse proxies](/docs/guides/use-nginx-reverse-proxy/#what-is-a-reverse-proxy) for backend servers.
+- **Web servers**, like NGINX and Apache: These can be configured as [reverse proxies](/docs/guides/use-nginx-reverse-proxy/#what-is-a-reverse-proxy) for backend servers.
 
-- **[HAProxy](/docs/guides/how-to-configure-haproxy-http-load-balancing-and-health-checks/)**: a dedicated reverse proxy software solution.
+- **[HAProxy](/docs/guides/how-to-configure-haproxy-http-load-balancing-and-health-checks/)**: A dedicated reverse proxy software solution.
 
-- **[Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/)**: [a range of load balancing functionality](https://kubernetes.io/docs/concepts/services-networking/) is offered by Kubernetes. [Services](https://kubernetes.io/docs/concepts/services-networking/service/) are an abstraction layer for a set of Pods that run your application code, and traffic is collectively routed across them. [LoadBalancer-type Services](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) correspond to cloud load balancing products provided by cloud platforms.
+- **[Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/)**: [A range of load balancing functionality](https://kubernetes.io/docs/concepts/services-networking/) is offered by Kubernetes. [Services](https://kubernetes.io/docs/concepts/services-networking/service/) are an abstraction layer for a set of Pods that run your application code, and traffic is collectively routed across them. [LoadBalancer-type Services](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) correspond to cloud load balancing products provided by cloud platforms.
 
 ### Replication
 
@@ -277,7 +277,7 @@ Replication supports high availability strategies and disaster recovery strategi
 
 Multiple Akamai services provide data replication, or can be used to support data replication workflows:
 
-- **[Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage)**: Akamai's object storage has [an internal replication system](https://www.linode.com/products/object-storage/#accordion-7252094bf6-item-97b2f59293) to ensure that data is highly-available.
+- **[Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage)**: Akamai Cloud's object storage service uses [an internal replication system](https://www.linode.com/products/object-storage/#accordion-7252094bf6-item-97b2f59293) to ensure that data is highly-available.
 
     Users can enhance redundancy of their object storage data by [synchronizing bucket data across regions using rclone](/docs/guides/replicate-bucket-contents-with-rclone/), which can support high availability, disaster recovery, and load balancing strategies.
 
@@ -287,17 +287,17 @@ Multiple Akamai services provide data replication, or can be used to support dat
 
 - **[Block Storage](https://techdocs.akamai.com/cloud-computing/docs/block-storage)**: Users can choose to attach multiple Block Storage volumes to a Linode instance, and they can replicate data from one volume to another. If a Linode that a volume is attached to is destroyed, the volume persists, so it can be attached and used with another Linode.
 
-- **[Net Storage](https://techdocs.akamai.com/netstorage/docs/welcome-to-netstorage)**: Net Storage provides [controls for replication across geographic zones](https://techdocs.akamai.com/netstorage/docs/create-a-storage-group#geo-replication-settings).
+- **[NetStorage](https://techdocs.akamai.com/netstorage/docs/welcome-to-netstorage)**: NetStorage provides [controls for replication across geographic zones](https://techdocs.akamai.com/netstorage/docs/create-a-storage-group#geo-replication-settings).
 
-    {{< note >}}
-    Please note that access to Net Storage requires account assistance from Akamai's sales team.
+    {{< note title="NetStorage Access" >}}
+    Please note that access to NetStorage requires account assistance from Akamai's sales team.
     {{< /note >}}
 
 Open source software that supports replication includes:
 
 - **Database replication tools**: Some tools are built into the database system, like MySQL's [source-replica replication mechanism](/docs/guides/configure-source-replica-replication-in-mysql/). Other tools, like [Galera](https://galeracluster.com/), can be additionally installed to support replication.
 
-- **Networked filesystems, like [GlusterFS](https://www.gluster.org/)**: these are used to create distributed storage systems across multiple block storage devices, like a Linode's built-in storage disk, or a Block Storage volume.
+- **Networked filesystems, like [GlusterFS](https://www.gluster.org/)**: These are used to create distributed storage systems across multiple block storage devices, like a Linode's built-in storage disk, or a Block Storage volume.
 
 - **[Command-line data transfer utilities](/docs/guides/comparing-data-transfer-utilities/)** like [rsync](/docs/guides/introduction-to-rsync/) and [rclone](/docs/guides/rclone-object-storage-file-sync/).
 
@@ -343,7 +343,7 @@ Scaling is the practice of increasing or reducing compute and storage capacity t
 
 ### Placement Groups
 
-[*Placement groups*](https://techdocs.akamai.com/cloud-computing/docs/work-with-placement-groups) specify where your compute instances should be created within a data center. An *anti-affinity rule* is used to spread workloads across multiple devices within the same data center, reducing the risk of correlated failures. Akamai Cloud [supports placement groups](https://techdocs.akamai.com/cloud-computing/docs/work-with-placement-groups#create-a-placement-group).
+[*Placement groups*](https://techdocs.akamai.com/cloud-computing/docs/work-with-placement-groups) specify where your compute instances should be physically created within a data center. An *anti-affinity rule* is used to spread workloads across multiple devices within the same data center, reducing the risk of correlated failures. Akamai Cloud [supports placement groups](https://techdocs.akamai.com/cloud-computing/docs/work-with-placement-groups#create-a-placement-group).
 
 ## Best Practices for Linode Maintenance
 
