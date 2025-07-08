@@ -2,7 +2,7 @@
 title: "Deploy WireGuard through the Linode Marketplace"
 description: 'Deploy a WireGuard Server or Client on Linode with Marketplace Apps.'
 published: 2019-03-28
-modified: 2022-06-09
+modified: 2025-07-08
 keywords: ['vpn','wireguard','tunnel']
 tags: ["cloud-manager","linode platform","security","marketplace","vpn"]
 bundles: ['network-security']
