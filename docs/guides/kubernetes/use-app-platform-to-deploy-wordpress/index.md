@@ -5,16 +5,13 @@ description: "Two to three sentences describing your guide."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-05-06
+modified: 2025-06-26
 keywords: ['app platform','app platform for lke','lke','linode kubernetes engine','kubernetes','persistent volumes','mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Akamai App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/application-platform)'
-- '[Akamai App Platform Documentation](https://apl-docs.net/docs/akamai-app-platform/introduction)'
+- '[Akamai App Platform Documentation](https://techdocs.akamai.com/app-platform/docs/welcome)'
 ---
-
-{{< note title="Beta Notice" type="warning" >}}
-The Akamai App Platform is now available as a limited beta. It is not recommended for production workloads. To register for the beta, visit the [Betas](https://cloud.linode.com/betas) page in the Cloud Manager and click the Sign Up button next to the Akamai App Platform Beta.
-{{< /note >}}
 
 This guide includes steps for deploying a WordPress site and persistent MySQL database using [App Platform for Linode Kubernetes Engine](https://techdocs.akamai.com/cloud-computing/docs/application-platform) (LKE). In this architecture, both WordPress and MySQL use PersistentVolumes (PV) and PersistentVolumeClaims (PVC) to store data.
 
@@ -23,8 +20,6 @@ To add the WordPress and MySQL Helm charts to the App Platform Catalog, the **Ad
 ## Prerequisites
 
 -   A [Cloud Manager](https://cloud.linode.com/) account is required to use Akamai's cloud computing services, including LKE.
-
--   Enrollment into the Akamai App Platform's [beta program](https://cloud.linode.com/betas).
 
 -   An provisioned and configured LKE cluster with App Platform enabled and [auto-scaling](https://techdocs.akamai.com/cloud-computing/docs/manage-nodes-and-node-pools#autoscale-automatically-resize-node-pools) turned on. A Kubernetes cluster consisting of 3 [Dedicated CPU Compute Instances](https://techdocs.akamai.com/cloud-computing/docs/dedicated-cpu-compute-instances) is sufficient for the deployment in this guide to run, but additional resources may be required during the configuration of your App Platform architecture.
 
@@ -56,7 +51,7 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 
 ### Create a New Team
 
-[Teams](https://apl-docs.net/docs/for-ops/console/teams) are isolated tenants on the platform to support Development/DevOps teams, projects, and methodologies, like [DTAP](https://en.wikipedia.org/wiki/Development,_testing,_acceptance_and_production). A Team gets access to the Console, which provides access to self-service features and the shared apps available on the platform.
+[Teams](https://techdocs.akamai.com/app-platform/docs/platform-teams) are isolated tenants on the platform to support Development/DevOps teams, projects, and methodologies, like [DTAP](https://en.wikipedia.org/wiki/Development,_testing,_acceptance_and_production). A Team gets access to the Console, which provides access to self-service features and the shared apps available on the platform.
 
 When working in the context of an admin-level Team, users can create and access resources in any namespace. When working in the context of a non-admin Team, users can only create and access resources used in that Team’s namespace.
 
@@ -116,7 +111,7 @@ Repeat the same steps for installing the MySQL service on your cluster.
 
 Separate Workloads are created for MySQL and WordPress in order to deploy a persistent database and site, respectively. Both Workloads require passwords, so to prevent the passwords from being stored unencrypted, Sealed Secrets are created for each first.
 
-[Sealed Secrets](https://apl-docs.net/docs/for-devs/console/secrets) are encrypted Kubernetes Secrets stored in the Values Git repository. When a Sealed Secret is created in the Console, the Kubernetes Secret will appear in the Team's namespace.
+[Sealed Secrets](https://techdocs.akamai.com/app-platform/docs/team-secrets) are encrypted Kubernetes Secrets stored in the Values Git repository. When a Sealed Secret is created in the Console, the Kubernetes Secret will appear in the Team's namespace.
 
 ### Create a Sealed Secret to Store MySQL Passwords
 
@@ -184,7 +179,7 @@ Separate Workloads are created for MySQL and WordPress in order to deploy a pers
     ```
 
     {{< note title="Managing Network Policies" >}}
-    The `networkPolicy` is disabled since all traffic is allowed by default. Rather than configuring `networkPolicy` values directly in the Workload config, this guide centrally manages all network policies using App Platform's [**Network Policies**](https://apl-docs.net/docs/for-ops/console/netpols) function.
+    The `networkPolicy` is disabled since all traffic is allowed by default. Rather than configuring `networkPolicy` values directly in the Workload config, this guide centrally manages all network policies using App Platform's [**Network Policies**](https://techdocs.akamai.com/app-platform/docs/team-network-policies) function.
     {{< /note >}}
 
 1.  Click **Submit**. The Workload may take a few minutes to become ready.
@@ -275,7 +270,7 @@ Using the App Platform **Shell** feature, you can check to see if the WordPress 
 
 ## Create a Service to Expose the WordPress Site
 
-Creating a [Service](https://apl-docs.net/docs/for-devs/console/services) in App Platform configures NGINX’s Ingress Controller. This allows you to enable public access to services running internally on your cluster.
+Creating a [Service](https://techdocs.akamai.com/app-platform/docs/team-services) in App Platform configures NGINX’s Ingress Controller. This allows you to enable public access to services running internally on your cluster.
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
@@ -295,7 +290,7 @@ Creating a [Service](https://apl-docs.net/docs/for-devs/console/services) in App
 
 ### Setting Up DNS
 
-When creating a Service, DNS for your site can be configure using a CNAME rather than using an external IP address. To do this, configure a CNAME entry with your domain name provider, and follow the steps in our [Using a CNAME](https://apl-docs.net/docs/for-devs/console/services#using-a-cname) App Platform documentation.
+When creating a Service, DNS for your site can be configure using a CNAME rather than using an external IP address. To do this, configure a CNAME entry with your domain name provider, and follow the steps in our [Using a CNAME](https://techdocs.akamai.com/app-platform/docs/configure-cname) App Platform documentation.
 
 See our guide on [CNAME records](https://techdocs.akamai.com/cloud-computing/docs/cname-records) for more information on how CNAME records work.
 

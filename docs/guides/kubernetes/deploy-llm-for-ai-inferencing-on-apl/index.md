@@ -5,17 +5,13 @@ description: "This guide includes steps and guidance for deploying a large langu
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-03-25
-modified: 2025-04-25
+modified: 2025-06-26
 keywords: ['ai','ai inference','ai inferencing','llm','large language model','app platform','lke','linode kubernetes engine','llama 3','kserve','istio','knative']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Akamai App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/application-platform)'
-- '[Akamai App Platform Documentation](https://apl-docs.net/docs/akamai-app-platform/introduction)'
+- '[Akamai App Platform Documentation](https://techdocs.akamai.com/app-platform/docs/welcome)'
 ---
-
-{{< note title="Beta Notice" type="warning" >}}
-The Akamai App Platform is now available as a limited beta. It is not recommended for production workloads. To register for the beta, visit the [Betas](https://cloud.linode.com/betas) page in the Cloud Manager and click the Sign Up button next to the Akamai App Platform Beta.
-{{< /note >}}
 
 LLMs (large language models) are deep-learning models that are pre-trained on vast amounts of information. AI inferencing is the method by which an AI model (such as an LLM) is trained to "infer", and subsequently deliver accurate information. The LLM used in this deployment, Meta AI's [Llama 3](https://www.llama.com/docs/overview/), is an open-source, pre-trained LLM often used for tasks like responding to questions in multiple languages, coding, and advanced reasoning.
 
@@ -65,8 +61,6 @@ If you prefer to manually install an LLM and RAG Pipeline on LKE rather than usi
 
 - Access granted to Meta AI's Llama 3 model is required. To request access, navigate to Hugging Face's [Llama 3-8B Instruct LLM link](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct), read and accept the license agreement, and submit your information.
 
-- Enrollment into the Akamai App Platform's [beta program](https://cloud.linode.com/betas).
-
 ## Set Up Infrastructure
 
 ### Provision an LKE Cluster
@@ -94,7 +88,7 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 
 ### Create a New Team
 
-[Teams](https://apl-docs.net/docs/for-ops/console/teams) are isolated tenants on the platform to support Development/DevOps teams, projects or even DTAP. A Team gets access to the Console, including access to self-service features and all shared apps available on the platform.
+[Teams](https://techdocs.akamai.com/app-platform/docs/platform-teams) are isolated tenants on the platform to support Development/DevOps teams, projects or even DTAP. A Team gets access to the Console, including access to self-service features and all shared apps available on the platform.
 
 1.  Select **view** > **platform**.
 
@@ -150,7 +144,7 @@ The [NVIDIA GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-op
 
 ### Create a Workload for the kserve-crd Helm Chart
 
-A [Workload](https://apl-docs.net/docs/for-devs/console/workloads) is a self-service feature for creating Kubernetes resources using Helm charts from the Catalog.
+A [Workload](https://techdocs.akamai.com/app-platform/docs/team-workloads) is a self-service feature for creating Kubernetes resources using Helm charts from the Catalog.
 
 1.  Select **view** > **team** and **team** > **admin** in the top bar.
 
@@ -274,7 +268,7 @@ If you haven't done it already, request access to the Llama 3 LLM model. To do t
 
 ### Create a Sealed Secret
 
-[Sealed Secrets](https://apl-docs.net/docs/for-devs/console/secrets) are encrypted Kubernetes Secrets stored in the Values Git repository. When a Sealed Secret is created in the Console, the Kubernetes Secret will appear in the Team's namespace.
+[Sealed Secrets](https://techdocs.akamai.com/app-platform/docs/team-secrets) are encrypted Kubernetes Secrets stored in the Values Git repository. When a Sealed Secret is created in the Console, the Kubernetes Secret will appear in the Team's namespace.
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 

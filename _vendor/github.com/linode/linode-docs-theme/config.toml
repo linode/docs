@@ -176,31 +176,31 @@
     path = "github.com/linode/linode-website-partials"
 
     [[module.imports.mounts]]
-      source = "header.html"
+      source = "dist/wordpress/header.html"
       target = "layouts/partials/linode-header.html"
 
     [[module.imports.mounts]]
-      source = "footer.html"
+      source = "dist/wordpress/footer.html"
       target = "layouts/partials/linode-footer.html"
 
     [[module.imports.mounts]]
-      source = "header.css"
+      source = "dist/css/header.css"
       target = "assets/linode/header.css"
 
     [[module.imports.mounts]]
-      source = "footer.css"
+      source = "dist/css/footer.css"
       target = "assets/linode/footer.css"
 
     [[module.imports.mounts]]
-      source = "header.js"
+      source = "dist/js/header.js"
       target = "assets/linode/header.js"
 
     [[module.imports.mounts]]
-      source = "footer-inline.js"
+      source = "dist/js/footer-inline.js"
       target = "assets/linode/footer-inline.js"
 
     [[module.imports.mounts]]
-      source = "attribution-inline.js"
+      source = "dist/js/attribution-inline.js"
       target = "assets/linode/attribution-inline.js"
 
   # JS components packaged as Hugo Modules.
