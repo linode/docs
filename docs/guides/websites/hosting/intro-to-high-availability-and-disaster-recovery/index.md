@@ -15,7 +15,7 @@ external_resources:
 - '[Configure failover on a Linode](https://techdocs.akamai.com/cloud-computing/docs/configure-failover-on-a-compute-instance)'
 - '[High availability (HA) control plane on LKE](https://techdocs.akamai.com/cloud-computing/docs/high-availability-ha-control-plane-on-lke)'
 - '[Monitor and maintain a Linode](https://techdocs.akamai.com/cloud-computing/docs/monitor-and-maintain-a-compute-instance)'
-aliases: ['/websites/introduction-to-high-availability/','/websites/hosting/introduction-to-high-availability/']
+aliases: ['/websites/introduction-to-high-availability/','/websites/hosting/introduction-to-high-availability/','/guides/introduction-to-high-availability/']
 ---
 
 Designing applications with *high availability (HA)* and *disaster recovery* strategies in mind is essential for minimizing downtime and maintaining business continuity. These strategies are useful in a range of scenarios, including routine infrastructure maintenance and upgrades, application or software failures, operator or human errors, natural disasters, and cyber attacks. This guide provides **Akamai Cloud Computing customers** with actionable strategies and architectural guidance to build resilient and highly available systems using Akamai services.
