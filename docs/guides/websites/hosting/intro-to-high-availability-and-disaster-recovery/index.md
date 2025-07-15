@@ -10,8 +10,8 @@ keywords: ["high availability", "disaster recovery", "hosting", "website", "fail
 tags: ["web server","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[Host a Website with High Availability](https://www.linode.com/docs/guides/host-a-website-with-high-availability/)'
-- '[Deploy a High Availability WordPress Website on Linode](https://www.linode.com/docs/guides/high-availability-wordpress/)'
+- '[Host a Website with High Availability](/docs/guides/host-a-website-with-high-availability/)'
+- '[Deploy a High Availability WordPress Website on Linode](/docs/guides/high-availability-wordpress/)'
 - '[Configure failover on a Linode](https://techdocs.akamai.com/cloud-computing/docs/configure-failover-on-a-compute-instance)'
 - '[High availability (HA) control plane on LKE](https://techdocs.akamai.com/cloud-computing/docs/high-availability-ha-control-plane-on-lke)'
 - '[Monitor and maintain a Linode](https://techdocs.akamai.com/cloud-computing/docs/monitor-and-maintain-a-compute-instance)'
