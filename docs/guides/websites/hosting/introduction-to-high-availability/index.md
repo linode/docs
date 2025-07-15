@@ -327,7 +327,7 @@ Scaling is the practice of increasing or reducing compute and storage capacity t
 
 - **Light/warm standby**: An alternate system is provisioned alongside the primary one prior to any disaster recovery scenario occurring, and data from the primary system is continually backed up to it. This system can take over operation relatively quickly during disaster recovery. This system may only be able to handle a reduced load initially, and may require [scaling](#scaling) its resources to meet full traffic demand. The [Disaster Recovery Architecture](#disaster-recovery-architecture) section features an example of this approach.
 
-- **Multi-site Active-Active**: An alternate system continually operates alongside a primary system and shares traffic load at all times. If one system suffers an outage, the other seamlessly takes over.
+- **Multi-site Active-Active**: An alternate system continually operates alongside a primary system and shares traffic load at all times, with continuous data replication between the two. If one system suffers an outage, the other seamlessly takes over.
 
 In each of these approaches, [Akamai GTM](https://techdocs.akamai.com/gtm/docs/welcome-to-global-traffic-management) can be used to handle rerouting traffic away from the region that has suffered an outage.
 
