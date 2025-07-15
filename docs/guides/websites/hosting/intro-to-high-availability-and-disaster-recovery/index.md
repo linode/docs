@@ -1,5 +1,5 @@
 ---
-slug: introduction-to-high-availability
+slug: intro-to-high-availability-and-disaster-recovery
 title: 'Intro to High Availability and Disaster Recovery'
 description: 'This guide provides you with an introduction to concepts and terminology relating to high availability, a method of keeping your web servers up with maximum uptime.'
 authors: ["Phil Zona", "Kazuki Fukushima", "Nathan Melehan"]
