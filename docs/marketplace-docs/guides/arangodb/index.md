@@ -11,7 +11,7 @@ aliases: ['/products/tools/marketplace/guides/arangodb/','/guides/arangodb-marke
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-marketplace_app_id: 970559
+marketplace_app_id: 1873119
 marketplace_app_name: "ArangoDB"
 ---
 
