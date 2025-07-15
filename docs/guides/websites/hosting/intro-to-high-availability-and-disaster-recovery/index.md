@@ -46,8 +46,6 @@ A disaster recovery plan documents key information and procedures that should be
 
 Our [Creating a Disaster Recovery Plan: A Definitive Guide](/docs/guides/disaster-recovery/) contains further guidance for creating a disaster recovery plan.
 
-[Creating a Disaster Recovery Plan: A Definitive Guide](/docs/guides/disaster-recovery/?cardstyling)
-
 ## High Availability Architecture
 
 This section describes an example of a high availability architecture that features a WordPress website running in a single data center. There are redundant copies of each component in the architecture, and the health of each set of components is continually monitored. If any component fails, automatic failover is triggered and other healthy components are promoted.
