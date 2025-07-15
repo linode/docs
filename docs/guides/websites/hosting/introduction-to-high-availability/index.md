@@ -150,7 +150,7 @@ For example, your service might represent a user-generated content/social networ
 
 - **Akamai Cloud region 1 and region 2**: Two cloud compute regions that host the same high-availability service. Region 1 acts as the default/primary service location, and region 2 acts as a backup location if outages occur in region 1.
 
-- ****LKE Cluster**: A managed Kubernetes cluster on the [Linode Kubernetes Engine](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) service. This cluster coordinates the components of the example application.
+- **LKE Cluster**: A managed Kubernetes cluster on the [Linode Kubernetes Engine](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) service. This cluster coordinates the components of the example application.
 
 - **NodeBalancer**: An [Akamai Cloud load balancer service](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer). NodeBalancers can evenly distribute incoming traffic to a set of backend servers.
 
@@ -323,11 +323,15 @@ Scaling is the practice of increasing or reducing compute and storage capacity t
 
 **Recovery Time Objective** (RTO) and **Recovery Point Objective** (RPO) are requirements that should be met in disaster recovery scenarios. RTO refers to the maximum time it should take for your organization to recover from an outage, and RPO refers to the maximum amount of data that may be lost when recovering from an outage. RTO and RPO are influenced by your architecture and by your disaster recovery plan. General categories for your RTO and RPO approach could include:
 
-- **Backup and restore**: placeholder, will add detail
+- **Backup and restore**: In this approach, backups are created for your primary system and are available in the case of an outage or other disaster recovery scenario. No alternate system for handling traffic is provisioned during normal operation, which means that one needs to be provisioned when the disaster recovery procedure is followed. The backup data can then be restored to this alternate system.
 
-- **Light/warm standby**: placeholder, will add detail
+- **Light/warm standby**: An alternate system is provisioned alongside the primary one prior to any disaster recovery scenario occurring, and data from the primary system is continually backed up to it. This system can take over operation relatively quickly during disaster recovery. This system may only be able to handle a reduced load initially, and may require [scaling](#scaling) its resources to meet full traffic demand. The [Disaster Recovery Architecture](#disaster-recovery-architecture) section features an example of this approach.
 
-- **Multi-site Active-Active**: placeholder, will add detail
+- **Multi-site Active-Active**: An alternate system continually operates alongside a primary system and shares traffic load at all times. If one system suffers an outage, the other seamlessly takes over.
+
+In each of these approaches, [Akamai GTM](https://techdocs.akamai.com/gtm/docs/welcome-to-global-traffic-management) can be used to handle rerouting traffic away from the region that has suffered an outage.
+
+Here's a summary of the tradeoffs between these approaches:
 
 |  | Backup & Restore | Light | Warm Standby | Multi-Site |
 | ----- | :---: | :---: | :---: | :---: |
