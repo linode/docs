@@ -5,7 +5,7 @@ description: 'This guide provides you with an introduction to concepts and termi
 authors: ["Phil Zona", "Kazuki Fukushima", "Nathan Melehan"]
 contributors: ["Phil Zona", "Kazuki Fukushima", "Nathan Melehan"]
 published: 2016-07-12
-modified: 2025-07-02
+modified: 2025-07-15
 keywords: ["high availability", "disaster recovery", "hosting", "website", "failover", "ssd ha"]
 tags: ["web server","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
