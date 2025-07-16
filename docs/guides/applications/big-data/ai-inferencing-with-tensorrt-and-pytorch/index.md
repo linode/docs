@@ -203,7 +203,7 @@ pip install nvidia-tensorrt
 pip install torch-tensorrt -U
 ```
 
-## Test and Benchmark the ResNet50 Inference Model
+## Run and Benchmark the ResNet50 Inference Model
 
 Create and run a Python script using a pre-trained ResNet50 computer vision model. Running this script tests to make sure the environment is configured correctly while providing a way to evaluate GPU performance using a real-world example. This example script is a foundation that can be adapted for other inference model architectures.
 
