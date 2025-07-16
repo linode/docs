@@ -8,7 +8,7 @@ published: 2025-06-27
 keywords: ['ai','inference','inferencing','llm','model','pytorch','tensorrt','gpu','nvidia']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[Link Title 1](http://www.example.com)'
+- '[Akamai TechDocs: GPU Linodes](https://techdocs.akamai.com/cloud-computing/docs/gpu-compute-instances)'
 - '[Link Title 2](http://www.example.net)'
 ---
 
@@ -46,7 +46,7 @@ The following prerequisites are recommended before starting the implementation s
 - An understanding of Python virtual environments and package management
 - General familiarity of deep learning concepts and models
 
-{{< note title="Sudo Users & Distribution" >}}
+{{< note title="Sudo Users & Linux Distribution" >}}
 This guide is written for a non-root user on the Ubuntu 24.04 LTS Linux distribution. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](https://www.linode.com/docs/guides/linux-users-and-groups/) doc.
 {{< /note >}}
 
@@ -54,15 +54,29 @@ This guide is written for a non-root user on the Ubuntu 24.04 LTS Linux distribu
 
 ![PyTorch and TensorRT Diagram](PyTorch-TensorRT-Diagram.svg)
 
+1.  User connects to the NVIDIA RTX 4000 Ada GPU instance via SSH.
+
+1.  CUDA (Compute Unified Device Architecture) and NVIDIA drivers are installed via CUDA keyring to ensure the latest stable versions are running.
+
+1.  PyTorch, TensorRT, and their dependencies are installed in a Python Virtual Environment (venv) to prevent any conflicts with system-wide packages.
+
+1.  An inferencing script written in Python is created. The script imports a pre-trained AI model (ResNet50) and benchmarks the inference time against sample images to test GPU performance.
+
+1.  The inference script outputs the average time per inference across a number of runs for a given sample image.
+
 ## Deploy an NVIDIA RTX 4000 Ada Instance
 
-Akamai's NVIDIA RTX 4000 Ada GPU instances can be deployed using Cloud Manager or the Linode CLI.
+Akamai's NVIDIA RTX 4000 Ada GPU instances can be deployed using Cloud Manager or the Linode CLI. Deployment instructions and technical requirements:
 
-- For instructions on deploying a GPU instance via the Cloud Manager, see our [Create a Linode](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide.
+- **Cloud Manager deployment**: For instructions on deploying a GPU instance via the Cloud Manager, see our [Create a Linode](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide.
 
-- For guidance on deploying a GPU instance using the Linode CLI, see the [Create a Linode](https://techdocs.akamai.com/linode-api/reference/post-linode-instance) section of our API documentation.
+- **CLI deployment**: For guidance on deploying a GPU instance using the Linode CLI, see the [Create a Linode](https://techdocs.akamai.com/linode-api/reference/post-linode-instance) section of our API documentation.
 
-- For a list of GPU region availability, see our [Choose a Data Center](https://techdocs.akamai.com/cloud-computing/docs/how-to-choose-a-data-center) guide. See our API documentation to see a [region's service availability](https://techdocs.akamai.com/linode-api/reference/get-account-availability) using the Linode API or CLI.
+- **Distribution**: Select the latest stable Ubuntu version (Ubuntu 24.04 LTS as of this writing)
+
+- **Plan type**: All RTX 4000 Ada GPU plan types support the AI inference workload in this guide
+
+- **Region**: For a list of GPU region availability, see our [Choose a Data Center](https://techdocs.akamai.com/cloud-computing/docs/how-to-choose-a-data-center) guide. See our API documentation to see a [region's service availability](https://techdocs.akamai.com/linode-api/reference/get-account-availability) using the Linode API or CLI.
 
 ## Set Up Your Development Environment
 
@@ -182,7 +196,7 @@ Set up and use a Python Virtual Environment (venv) so that you can isolate Pytho
 Remain in your virtual environment to install PyTorch, TensorRT, and dependencies. These are the primary AI libraries needed to run your inference workloads.
 
 ```command {title="(venv)"}
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip install torch==2.5.1+cu121 torchvision==0.16.1+cu121 torchaudio==2.5.1+cu121 --index-url https://download.pytorch.org/whl/cu121
 pip install requests
 pip install nvidia-pyindex
 pip install nvidia-tensorrt
@@ -199,7 +213,19 @@ Create and run a Python script using a pre-trained ResNet50 computer vision mode
     nano {{< placeholder "inference_test.py" >}}
     ```
 
-1.  Copy and insert the following code content into the script. Note the commented descriptions for what each section of code performs:
+1.  Copy and insert the below code content into the script. In order, the script performs the following actions:
+
+    - Imports the PyTorch framework and its pre-trained models
+
+    - Pulls an example sample image of a dog from PyTorch's GitHub repository
+
+    - Preprocessing for the sample image: Image resizing for compatibility with the ResNet50 model, format conversion for PyTorch, add a "batch dimension" to emulate multiple images, moves the processed data to the GPU
+
+    - Loads the ResNet50 pre-trained model, including a library of images
+
+    - GPU optimization and preparation for benchmarking
+
+    - Runs the inference benchmark 20 times against the ResNet50 AI model
 
     ```file {title="inference_test.py"}
     # import PyTorch, pre-trained models from torchvision and image utilities
@@ -267,7 +293,62 @@ Create and run a Python script using a pre-trained ResNet50 computer vision mode
     Average inference time: 0.0025 seconds
     ```
 
-    It is recommended to time how long it takes to run the model 20 times, and then divide by 20 to get the average time per inference. This should give you an idea of how quickly your GPU can process input using this model.
+    The model runs 20 times, and the total inference time is then divided by 20 to get the *average time per inference*. This provides an idea of how quickly your GPU can process input using this model.
+
+### Accelerate Inferencing with TensorRT
+
+If you want to accelerate your GPU's inferencing power further, you can use NVIDIA's optimized inference runtime, TensorRT, to deliver faster inference with lower latency.
+
+1.  Add the highlighted line (line 10) to the `import` section at the top of your inference script to import the TensorRT model (`torch_tensorrt`) previously installed:
+
+    ```file {title="inference_test.py" hl_lines="10"}
+    # import PyTorch, pre-trained models from torchvision and image utilities
+
+    import torch
+    import torchvision.models as models
+    import torchvision.transforms as transforms
+    from PIL import Image
+    import requests
+    from io import BytesIO
+    import time
+    import torch_tensorrt
+    ```
+
+1.  Next, add the highlighted code block (lines 35-51) after the `Load a model` section to load the TensorRT-optimized model:
+
+    ```file {title="inference_test.py" linenostart="31" hl_lines="5-21"}
+    # Load a model (ResNet50) pretrained on the ImageNet dataset containing millions of images
+
+    model = models.resnet50(pretrained=True).cuda().eval()
+
+    # Compile with TensorRT
+    model = torch_tensorrt.compile(
+        model,
+        inputs=[torch_tensorrt.Input(input_tensor.shape)],
+        enabled_precisions={torch.float}
+    )
+
+    # Benchmark TensorRT Inference
+    for _ in range(5):
+        _ = model_trt(input_tensor)
+
+    start = time.time()
+    with torch.no_grad():
+        for _ in range(20):
+            _ = model_trt(input_tensor)
+    end = time.time()
+    print(f" TensorRT average inference time: {(end - start) / 20:.4f} seconds")
+    ```
+
+    Save your changes when complete.
+
+1.  Run the script again, and compare the `Average inference time` output to that of your PyTorch results:
+
+    ```output
+    Average inference time:
+    ```
+
+As you scale your inference, using TensorRT can help keep your model smaller and more performant.
 
 ## Next Steps
 
