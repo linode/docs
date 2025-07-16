@@ -60,9 +60,6 @@ The WireGuard Client Marketplace form includes the following fields:
 - **WireGuard Server Endpoint:** The public IP address and port of your WireGuard server in the format `IP:PORT` (e.g., `192.0.2.1:51820`).
 - **WireGuard Client Tunnel IP:** Your WireGuard client's tunnel IP address with /32 subnet. The default is: `10.0.0.2/32`.
 - **Allowed IPs:** The IP addresses that should be routed through the WireGuard tunnel. The default is: `10.0.0.1/32`.
-- **Persistent Keepalive:** How often (in seconds) to send keepalive packets to maintain the connection. The default is: `25`.
-- **WireGuard MTU:** The Maximum Transmission Unit for the WireGuard interface. The default is: `1420`.
-- **DNS Servers:** Optional comma-separated list of DNS servers to use (e.g., `1.1.1.1,8.8.8.8`).
 
 ## Getting Started after Deployment
 
@@ -97,13 +94,13 @@ The initial `wg0.conf` will look like this:
 [Interface]
 PrivateKey = <client-private-key>
 Address = <client-tunnel-ip>
-MTU = <mtu-value>
+MTU = 1420
+DNS = 8.8.8.8
 
 [Peer]
 PublicKey = <server-public-key>
 AllowedIPs = <allowed-ips>
 Endpoint = <server-endpoint>
-PersistentKeepalive = <keepalive>
 ```
 
 ### Adding Clients to the Server
