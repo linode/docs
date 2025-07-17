@@ -1,393 +1,631 @@
 ---
 slug: migrating-from-aws-security-groups-to-akamai-cloud-firewall
-title: "Migrating From Aws Security Groups to Akamai Cloud Firewall"
-description: "Two to three sentences describing your guide."
-og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
-authors: ["Linode"]
-contributors: ["Linode"]
-published: 2025-06-30
-keywords: ['list','of','keywords','and key phrases']
+title: "Migrating From AWS Security Groups to Akamai Cloud Firewall"
+description: "Learn how to migrate AWS Security Group rules to Akamai Cloud Firewall. This guide covers planning, exporting, rule mapping, and validating traffic."
+authors: ["Akamai"]
+contributors: ["Akamai"]
+published: 2025-07-17
+keywords: ['aws firewall','aws firewall migration','aws security groups','aws security groups migration','akamai cloud firewall','linode cloud firewall','migrate aws firewall rules','cloud firewall migration','firewall rule mapping','network security migration','aws to akamai firewall']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[AWS Security Groups documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html)'
+- '[AWS CLI EC2 Reference](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/index.html#cli-aws-ec2)'
 ---
 
 AWS Security Groups are virtual firewalls that control inbound and outbound traffic to AWS resources like EC2 instances. They operate at the instance level and allow administrators to define traffic rules based on IP addresses, protocols, and ports.
 
-Linode Cloud Firewall is a network-level firewall service that controls traffic for Linode instances and NodeBalancers, Akamai Cloud’s load balancing service. Cloud Firewalls support inbound and outbound traffic management with Linode instances and inbound traffic for NodeBalancers. It operates at \[Layers 3 and 4\](https://www.akamai.com/glossary/what-are-network-layers), providing IP, protocol, and port filtering.
+[Akamai Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) is a network-level firewall service that controls traffic for Linode instances and NodeBalancers, Akamai Cloud’s load balancing service. Cloud Firewall supports inbound and outbound traffic management with Linode instances and inbound traffic for NodeBalancers. It operates at [Layers 3 and 4](https://www.akamai.com/glossary/what-are-network-layers), providing IP, protocol, and port filtering.
 
-![][image2]  
-\[Source\](https://www.akamai.com/glossary/what-are-network-layers)
+![OSI layers 1–7 with attack vectors noted for Layers 3 (Network), 4 (Transport), 5 (Session), and 7 (Application).](network-layers-diagram.png)
 
-This guide covers how to migrate a basic security setup from AWS Security Groups to Linode Cloud Firewall, including planning, documenting your configuration, creating equivalent rules on Akamai Cloud, and testing the results.
+This guide explains how to migrate a basic security setup from AWS Security Groups to Akamai Cloud Firewall. It covers planning, documenting your configuration, creating equivalent rules on Akamai Cloud, and testing the results.
 
-## \#\# Feature comparison
+## Feature Comparison
 
-Before beginning the migration process, it's important to understand the capabilities and limitations of both AWS Security Groups and Linode Cloud Firewall. This will help you determine what rules can be migrated directly and where compensatory actions are needed.
+Before beginning the migration process, it's important to understand the capabilities and limitations of both AWS Security Groups and Akamai Cloud Firewall. This helps you identify which rules can be migrated directly and which require additional configuration.
 
-### \#\#\# What AWS Security Groups offer
+### What AWS Security Groups Offer
 
-AWS Security Groups allow you to create sets of firewall rules that control traffic based on IP addresses, CIDR blocks, ports, and protocols. Security Groups are stateful, meaning return traffic is automatically allowed, and they apply to network interfaces attached to AWS resources.
+AWS Security Groups allow you to create sets of firewall rules that control traffic based on IP addresses, CIDR blocks, ports, and protocols. Security Groups are stateful, so return traffic is automatically allowed, and they apply to network interfaces attached to AWS resources.
 
-### \#\#\# What Cloud Firewall offers
+### What Cloud Firewall Offers
 
-Linode Cloud Firewall is a Layer 3/4 stateless packet filter. It is designed for simplicity and performance, allowing users to specify rules that allow or deny traffic based on source IP, destination port, and protocol (TCP, UDP, ICMP, and IPEncap). It does not inspect application-layer traffic but is effective at managing access to services based on IP and port-level rules.
+Akamai Cloud Firewall is a Layer 3/4 stateless packet filter designed for simplicity and performance. It allows users to specify rules that allow or deny traffic based on source IP, destination port, and protocol (TCP, UDP, ICMP, and IPEncap). It does not inspect application-layer traffic, but it is effective at managing access to services based on IP and port-level rules.
 
-### \#\#\# What’s not directly portable
+### What’s Not Directly Portable
 
-Because Linode Cloud Firewall doesn’t currently support Layer 7 inspection, features such as pattern matching, geographic filtering, and rate limiting cannot be replicated natively. These must be implemented at the application level using reverse proxies like NGINX or additional third-party services.
+Because Akamai Cloud Firewall doesn’t currently support Layer 7 inspection, features such as pattern matching, geographic filtering, and rate limiting cannot be replicated natively. These must be implemented at the application level using reverse proxies like NGINX or additional third-party services.
 
-## \#\# Prerequisites and assumptions
+## Before You Begin
 
-This guide assumes access to administrative credentials and CLI tools for both AWS and Akamai  Cloud. You should have the ability to view and modify relevant cloud resources in both environments.
+1.  Follow our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide to create an Akamai Cloud account if you do not already have one.
 
-### \#\#\# AWS CLI and permissions
+1.  Create a personal access token using the instructions in our [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
 
-Ensure that the AWS CLI is installed and configured with a user or role that has permission to list, view, and modify Security Groups and EC2 networking configurations.
+1.  Install the Linode CLI using the instructions in the [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
 
-### \#\#\# Linode CLI and permissions
+1.  You need an AWS account with a user or role that has permission to list, view, and modify EC2 networking settings and Security Groups.
 
-Install the Linode CLI and authenticate using a personal access token with permissions for managing Linode instances and firewall rules. While Cloud Firewalls support functionality with NodeBalancers, NodeBalancer permissions are not required for this tutorial.
+1.  Ensure the AWS CLI (v2) is installed locally and configured (via `aws configure`) for the appropriate credentials and default region.
 
-### \#\#\# Example environment used in this guide
+### Example Environment Used in This Guide
 
 The example used throughout this guide involves an AWS Security Group associated with a single EC2 instance. The EC2 is configured for several services:
 
-\- Web traffic handled by NGINX on ports \`80\` and \`443\`  
-\- PostgreSQL database on port \`5432\`  
-\- SSH on port \`22\`  
-\- Redis on port \`6379\`
+-   Web traffic handled by NGINX on ports `80` and `443`
+-   PostgreSQL database on port `5432`
+-   SSH on port `22`
+-   Redis on port `6379`
 
 The AWS Security Group is configured with inbound rules to restrict access to known IP addresses.
 
-The equivalent setup on Akamai Cloud will use a single Linode instance running the same services. Linode Cloud Firewall will be used to recreate the access controls previously handled by the AWS Security Group.  
-**![][image3]**
+The equivalent setup on Akamai Cloud uses a single Linode instance running the same services. Akamai Cloud Firewall is used to recreate the access controls previously handled by the AWS Security Group.
 
-## \#\# Document your current configuration
+![Architecture diagram of AWS EC2 instance and services environment.](example-environment-architecture.svg)
 
-Before making changes, it's essential to fully understand your existing EC2 and Security Group configuration in AWS. Documenting how traffic flows to your EC2 instance—by noting which ports are open and which services are bound to each port—will help ensure that you set up equivalent access controls using Linode Cloud Firewall.
+## Document Your Current Configuration
 
-### \#\#\# Review AWS Security Group rules
+Before making changes, it's essential to fully understand your existing AWS EC2 and Security Group configuration. Document how traffic flows to your EC2 instance by noting which ports are open and which services are bound to each port. This can help you set up equivalent access controls using Akamai Cloud Firewall.
 
-Use the AWS CLI or Console to export or list your active Security Group rules. In the AWS Console, navigate to the EC2 service. Find the EC2 instance you’re focused on, and click to see its details. Under the \*\***Security**\*\* tab, find the Security Group associated with the EC2 instance. Click on it.
+### Review AWS Security Group Rules
 
-You will see the list of inbound rules for the Security Group.  
-![][image4]
+Use the AWS Consoled or `aws` CLI to export or list your active Security Group rules.
 
-To access this information from the AWS CLI, run the following commands:
+{{< tabs >}}
+{{< tab "AWS Console" >}}
+1.  In the AWS Console, navigate to the EC2 service.
 
-\`\`\`command {title="Query for security group(s) associated with EC2 instance"}
+1.  Select the EC2 instance you’re focused on to see its details.
 
-| $ aws ec2 describe-instances \\       \--region REPLACE-AWS-REGION \\       \--instance-ids REPLACE-EC2-INSTANCE-ID \\       \--query "Reservations\[0\].Instances\[0\].SecurityGroups" |
-| :---- |
+1.  Under the **Security** tab, select the Security Group associated with the EC2 instance to view the list of inbound rules for the Security Group:
 
-\`\`\`
+    ![AWS Console screenshot listing EC2 Security Group rules.](security-group-rules-list.png)
+{{< /tab >}}
+{{< tab "AWS CLI" >}}
+To access this information from the `aws` CLI, run the following commands:
 
-\`\`\`output
+1.  Query for security group(s) associated with EC2 instance, replacing {{< placeholder "AWS_REGION" >}} and {{< placeholder "EC2_INSTANCE_ID" >}} with your values:
 
-| \[    {        "GroupName": "launch-wizard-1",        "GroupId": "sg-046f0337540471bd1"    }\] |
-| :---- |
+    ```command
+    aws ec2 describe-instances \
+        --region {{< placeholder "AWS_REGION" >}} \
+        --instance-ids {{< placeholder "EC2_INSTANCE_ID" >}} \
+        --query "Reservations[0].Instances[0].SecurityGroups"
+    ```
 
-\`\`\`
+    ```output
+    [
+        {
+            "GroupName": "launch-wizard-1",
+            "GroupId": "sg-046f0337540471bd1"
+        }
+    ]
+    ```
 
-\`\`\`command {title="For each Security Group, query for all associated rules"}
+1.  Query for all associated rules for each security group, replacing {{< placeholder "SECURITY_GROUP_ID" >}} (e.g. `sg-046f0337540471bd1`):
 
-| $ aws ec2 describe-security-group-rules \\       \--region REPLACE-AWS-REGION \\       \--filters Name=group-id,Values=sg-046f0337540471bd1 |
-| :---- |
+    ```command
+    aws ec2 describe-security-group-rules \
+        --region {{< placeholder "AWS_REGION" >}} \
+        --filters Name=group-id,Values={{< placeholder "SECURITY_GROUP_ID" >}}
+    ```
 
-\`\`\`
+    This lists all inbound and outbound rules for the Security Group, detailing what traffic is allowed specific ports on the EC2 instance:
 
-\`\`\`output
+    ```output
+    {
+        "SecurityGroupRules": [
+            {
+                "SecurityGroupRuleId": "sgr-09de63fe55f86984c",
+                "GroupId": "sg-046f0337540471bd1",
+                "IsEgress": false,
+                "IpProtocol": "tcp",
+                "FromPort": 22,
+                "ToPort": 22,
+                "CidrIpv4": "0.0.0.0/0",
+                "Description": "Anywhere",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "SSH"
+                    }
+                ]
+            },
+            {
+                "SecurityGroupRuleId": "sgr-05e5d6e0ee20b4ced",
+                "GroupId": "sg-046f0337540471bd1",
+                "IsEgress": true,
+                "IpProtocol": "-1",
+                "FromPort": -1,
+                "ToPort": -1,
+                "CidrIpv4": "0.0.0.0/0",
+                "Tags": []
+            },
+            {
+                "SecurityGroupRuleId": "sgr-0cee9d70f10153c73",
+                "GroupId": "sg-046f0337540471bd1",
+                "IsEgress": false,
+                "IpProtocol": "tcp",
+                "FromPort": 5432,
+                "ToPort": 5432,
+                "CidrIpv4": "50.116.12.84/32",
+                "Description": "Postgres access for admin server",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "Postgres"
+                    }
+                ]
+            },
+            {
+                "SecurityGroupRuleId": "sgr-033f9a4a8d0c2c7f1",
+                "GroupId": "sg-046f0337540471bd1",
+                "IsEgress": false,
+                "IpProtocol": "tcp",
+                "FromPort": 6379,
+                "ToPort": 6379,
+                "CidrIpv4": "50.116.12.84/32",
+                "Description": "Redis access for admin server",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "Redis"
+                    }
+                ]
+            },
+            {
+                "SecurityGroupRuleId": "sgr-010dd8ce746ddf1e6",
+                "GroupId": "sg-046f0337540471bd1",
+                "IsEgress": false,
+                "IpProtocol": "tcp",
+                "FromPort": 6379,
+                "ToPort": 6379,
+                "CidrIpv4": "173.230.145.119/32",
+                "Description": "Redis access for external service",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "Redis"
+                    }
+                ]
+            },
+            {
+                "SecurityGroupRuleId": "sgr-0ade40a7b507e4f6a",
+                "GroupId": "sg-046f0337540471bd1",
+                "IsEgress": false,
+                "IpProtocol": "tcp",
+                "FromPort": 80,
+                "ToPort": 80,
+                "CidrIpv4": "0.0.0.0/0",
+                "Description": "Anywhere",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "HTTP Web"
+                    }
+                ]
+            },
+            {
+                "SecurityGroupRuleId": "sgr-0d4de7c5f03e750e7",
+                "GroupId": "sg-046f0337540471bd1",
+                "IsEgress": false,
+                "IpProtocol": "tcp",
+                "FromPort": 443,
+                "ToPort": 443,
+                "CidrIpv4": "0.0.0.0/0",
+                "Description": "Anywhere",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "HTTPS Web"
+                    }
+                ]
+            }
+        ]
+    }
+    ```
+{{< /tab >}}
+{{< /tabs >}}
 
-| {     "SecurityGroupRules": \[         {             "SecurityGroupRuleId": "sgr-09de63fe55f86984c",             "GroupId": "sg-046f0337540471bd1",             "IsEgress": false,             "IpProtocol": "tcp",             "FromPort": 22,             "ToPort": 22,             "CidrIpv4": "0.0.0.0/0",             "Description": "Anywhere",             "Tags": \[                 {                     "Key": "Name",                     "Value": "SSH"                 }             \]         },         {             "SecurityGroupRuleId": "sgr-05e5d6e0ee20b4ced",             "GroupId": "sg-046f0337540471bd1",             "IsEgress": true,             "IpProtocol": "-1",             "FromPort": \-1,             "ToPort": \-1,             "CidrIpv4": "0.0.0.0/0",             "Tags": \[\]         },         {             "SecurityGroupRuleId": "sgr-0cee9d70f10153c73",             "GroupId": "sg-046f0337540471bd1",             "IsEgress": false,             "IpProtocol": "tcp",             "FromPort": 5432,             "ToPort": 5432,             "CidrIpv4": "50.116.12.84/32",             "Description": "Postgres access for admin server",             "Tags": \[                 {                     "Key": "Name",                     "Value": "Postgres"                 }             \]         },         {             "SecurityGroupRuleId": "sgr-033f9a4a8d0c2c7f1",             "GroupId": "sg-046f0337540471bd1",             "IsEgress": false,             "IpProtocol": "tcp",             "FromPort": 6379,             "ToPort": 6379,             "CidrIpv4": "50.116.12.84/32",             "Description": "Redis access for admin server",             "Tags": \[                 {                     "Key": "Name",                     "Value": "Redis"                 }             \]         },         {             "SecurityGroupRuleId": "sgr-010dd8ce746ddf1e6",             "GroupId": "sg-046f0337540471bd1",             "IsEgress": false,             "IpProtocol": "tcp",             "FromPort": 6379,             "ToPort": 6379,             "CidrIpv4": "173.230.145.119/32",             "Description": "Redis access for external service",             "Tags": \[                 {                     "Key": "Name",                     "Value": "Redis"                 }             \]         },         {             "SecurityGroupRuleId": "sgr-0ade40a7b507e4f6a",             "GroupId": "sg-046f0337540471bd1",             "IsEgress": false,             "IpProtocol": "tcp",             "FromPort": 80,             "ToPort": 80,             "CidrIpv4": "0.0.0.0/0",             "Description": "Anywhere",             "Tags": \[                 {                     "Key": "Name",                     "Value": "HTTP Web"                 }             \]         },         {             "SecurityGroupRuleId": "sgr-0d4de7c5f03e750e7",             "GroupId": "sg-046f0337540471bd1",             "IsEgress": false,             "IpProtocol": "tcp",             "FromPort": 443,             "ToPort": 443,             "CidrIpv4": "0.0.0.0/0",             "Description": "Anywhere",             "Tags": \[                 {                     "Key": "Name",                     "Value": "HTTPS Web"                 }             \]         }     \] } |
-| :---- |
+The example in this guide only has inbound rules, with traffic allowed for specific IP addresses. The inbound permissions for the example in this guide are diagrammed below:
 
-\`\`\`
+![Visual flowchart of inbound port permissions in the example setup.](inbound-permissions-diagram.svg)
 
-The command shown above lists all the inbound and outbound rules for the Security Group, detailing what traffic is allowed to and from specific ports on the EC2 instance. The example in this guide has only inbound rules with traffic allowed for specific IP addresses. Your firewall may have both inbound and outbound rules, with traffic allowed for specific IP addresses or denied for specific IP addresses.
+{{< note >}}
+Your firewall may have both inbound and outbound rules, with traffic allowed or denied for specific IP addresses.
+{{< /note >}}
 
-The inbound permissions for the example in this guide can be diagrammed as follows:
+### Plan Your Rule-Mapping Strategy
 
-![][image5]
+After documenting your AWS configuration, plan how to translate those rules into Akamai Cloud Firewall’s syntax and feature set.
 
-### \#\#\# Plan your rule-mapping strategy
+In this example, core services are exposed on ports `22`, `80`, `443`, `5432`, and `6379`. The AWS Security Group allows access to certain ports (`5432` and `6379`) only from an approved IP allowlist, while traffic from any source can reach ports `22`, `80`, `443`. These rules must be recreated on Akamai Cloud to maintain equivalent protection.
 
-After documenting your AWS configuration, plan how to translate those rules into the Linode Cloud Firewall’s syntax and feature set.
+Create a side-by-side comparison mapping AWS Security Group rules to their Akamai Cloud Firewall equivalents. For example, a rule that allows PostgreSQL traffic (TCP `5432`) from a specific IP should be represented as an Akamai Cloud Firewall rule allowing TCP traffic on port `5432` from that same IP.
 
-For this example, core services are exposed on ports \`22\`, \`80\`, \`443\`, \`5432\`, and \`6379\`. The AWS Security Group allows access to certain ports (\`5432\` and \`6379\`) only from an approved IP allowlist, while traffic from any source can reach ports \`22\`, \`80\`, \`443\`. These rules must be faithfully recreated on Linode to maintain equivalent protection.
+### Back up Your Existing Configuration
 
-Create a side-by-side comparison mapping AWS Security Group rules to their Linode Cloud Firewall equivalents. For instance, a rule that allows PostgreSQL traffic (TCP \`5432\`) from a specific IP should be represented as a Linode Cloud Firewall rule allowing TCP traffic on port \`5432\` from that same IP.
+Before disabling or removing AWS resources, create a backup of all relevant configuration data.
 
-### \#\#\# Back up your existing configuration
+Export your existing Security Group configurations by running the following command and saving the output to a file:
 
-Before disabling or removing AWS resources, create a backup of all relevant configuration data.   
-Export your existing Security Group configurations by running the above AWS CLI commands and saving the outputs to file.
+```command
+aws ec2 describe-security-group-rules \
+    --region {{< placeholder "AWS_REGION" >}} \
+    --filters Name=group-id,Values={{< placeholder "SECURITY_GROUP_ID" >}} \
+    --output json \
+    > sg-rules.json
+```
 
-## \#\# Create equivalent rules on Linode Cloud Firewall
+## Create Equivalent Rules on Akamai Cloud Firewall
 
 Once the planning and documentation are complete, begin building your new configuration in Akamai Cloud.
 
-### \#\#\# Via dashboard and CLI
-
-Linode Cloud Firewall rules can be managed through the Cloud Manager web interface or via the Linode CLI. This section will demonstrate both methods.
-
-### \#\#\# Enable Linode Cloud Firewall
-
-From the Akamai Cloud Manager, navigate to \*\***Firewalls**\*\*. Click \*\***Create Firewall**\*\*. Specify a label for the Linode Cloud Firewall. Accept the defaults for the inbound and outbound policies. Initially, you do not need to assign any services. You can focus on rule creation first, then associate services later. Click \*\***Create Firewall**\*\*.
-
-Using the Linode CLI, the command to create a firewall would be:
-
-\`\`\`command
-
-| $ linode-cli firewalls create \\     \--rules.inbound\_policy DROP \\     \--rules.outbound\_policy ACCEPT \\     \--label "my-cloud-firewall" |
-| :---- |
-
-\`\`\`
-
-\`\`\`output
-
-| ┌---------┬--------------------┬---------┬---------------------┐ │ id      │ label              │ status  │ created             │ ├---------┼--------------------┼---------┼---------------------┤ │ 2420060 │ my-cloud-firewall  │ enabled │ 2025-04-28T17:42:45 │ └---------┴--------------------┴---------┴---------------------┘ |
-| :---- |
-
-\`\`\`
-
-Once the Cloud Firewall has been created, you will see an initially empty list of inbound and outbound firewall rules.
-
-![][image6]
-
-### Recreate rules within Akamai Cloud Manager web UI
-
-Recreate each of the rules documented from your AWS Security Group. Within the web UI, create a new rule by clicking \*\***Add An Inbound Rule**\*\*.
-
-Specify a label and description for the rule. For example:
-
-![][image7]
-
-Next, select the protocol and which ports this rule will apply to. You can select from commonly used ports or select \*\***Custom**\*\* to specify a custom port range. For example:
-
-![][image8]
-
-For Sources, specify whether you want the rule to apply to \**all\** IPv4 or IPv6 addresses, or if you want to provide specific IP addresses. If providing specific IP addresses, add them one at a time.
-
-![][image9]
-
-Finally, decide whether the rule is meant to serve as an allowlist (Accept) or denylist (Drop). For this example migration from AWS Security Groups, the action would be Accept. Click \*\***Add Rule**\*\*.
-
-Repeat the steps above to recreate all the equivalent rules from the AWS Security Group configuration. After adding all rules, click \*\***Save Changes**\*\*.
-
-### \#\#\# Recreate rules with Linode CLI
-
-When using the web UI, rules must be created one at a time. With the Linode CLI, you can add all rules with a single call of the \[\`rules-update\`\](https://techdocs.akamai.com/linode-api/reference/put-firewall-rules) action for the \[\`firewalls\`\](https://techdocs.akamai.com/linode-api/reference/post-firewalls) command.
-
-First, create a file called \`inbound-rules.json\` with all the inbound rules as a JSON array. For example:
-
-\`\`\`command {title="inbound-rules.json"}
-
-| \[    {      "action": "ACCEPT",      "addresses": {        "ipv4": \[          "173.230.145.119/32",          "50.116.12.84/32"        \]      },      "description": "Redis",      "label": "restrict",      "ports": "6379",      "protocol": "TCP"    },    {      "action": "ACCEPT",      "addresses": {        "ipv4": \[          "50.116.12.84/32"        \]      },      "description": "PostgreSQL",      "label": "restrict",      "ports": "5432",      "protocol": "TCP"    },    {      "action": "ACCEPT",      "addresses": {        "ipv4": \[          "0.0.0.0/0"        \]      },      "description": "SSH",      "label": "allow",      "ports": "22",      "protocol": "TCP"    },    {      "action": "ACCEPT",      "addresses": {        "ipv4": \[          "0.0.0.0/0"        \]      },      "description": "HTTP web",      "label": "allow",      "ports": "80",      "protocol": "TCP"    },    {      "action": "ACCEPT",      "addresses": {        "ipv4": \[          "0.0.0.0/0"        \]      },      "description": "HTTPS web",      "label": "allow",      "ports": "443",      "protocol": "TCP"    } \] |
-| :---- |
-
-\`\`\`
-
-With the file in place, run the following Linode CLI command, making sure to supply your Linode Cloud Firewall id.
-
-\`\`\`command
-
-| $ linode-cli firewalls rules-update 2420060 \\     \--inbound "$(cat inbound-rules.json)" |
-| :---- |
-
-\`\`\`
-
-\`\`\`output
-
-| ┌-------------┬----------------┬-----------------┬---------┐│ fingerprint │ inbound\_policy │ outbound\_policy │ version │├-------------┼----------------┼-----------------┼---------┤│ 96379b42    │ DROP           │ ACCEPT          │ 2       │└-------------┴----------------┴-----------------┴---------┘inbound                                                                                                                          ┌--------┬--------------------┬-------------┬---------┬-------┬---------┐│ action │ addresses.ipv4     │ description │ label   │ ports │ protocol│├--------┼--------------------┼-------------┼---------┼-------┼---------┤│ ACCEPT │ 173.230.145.119/32,│             │         │       │         │  │        │ 50.116.12.84/32    │ Redis       │ restrict│ 6379  │ TCP     │├--------┼--------------------┼-------------┼---------┼-------┼---------┤│ ACCEPT │ 50.116.12.84/32    │ PostgreSQL  │ restrict│ 5432  │ TCP     │├--------┼--------------------┼-------------┼---------┼-------┼---------┤│ ACCEPT │ 0.0.0.0/0          │ SSH         │ allow   │ 22    │ TCP     │├--------┼--------------------┼-------------┼---------┼-------┼---------┤│ ACCEPT │ 0.0.0.0/0          │ HTTP web    │ allow   │ 80    │ TCP     │├--------┼--------------------┼-------------┼---------┼-------┼---------┤│ ACCEPT │ 0.0.0.0/0          │ HTTPS web   │ allow   │ 443   │ TCP     │ └--------┴--------------------┴-------------┴---------┴-------┴---------┘outbound                                                                                                                          ┌--------┬--------------------┬-------------┬---------┬-------┬---------┐│ action │ addresses.ipv4     │ description │ label   │ ports │ protocol│├--------┼--------------------┼-------------┼---------┼-------┼---------┤ └--------┴--------------------┴-------------┴---------┴-------┴---------┘ |
-| :---- |
-
-\`\`\`
-
-### \#\#\# Attach instances to the firewall
-
-With Cloud Firewall rules in place, you can attach multiple Linodes or NodeBalancers to the Cloud Firewall. Note that inbound and outbound rules apply to Linode instances, whereas only inbound rules apply to NodeBalancers.
-
-In the web UI, navigate to the \*\***Linodes**\*\* tab for your Cloud Firewall. Click \*\***Add Linodes to Firewall**\*\*.
-
-![][image10]
-
-Select from the list which Linodes (you can specify multiple Linodes) to assign to this Cloud Firewall. Click \*\***Add**\*\*.
-
-![][image11]
-
-Now, the firewall rules specified will be applied to the Linode(s) you have added.
-
-To assign Linodes to a Cloud Firewall using the Linode CLI, first retrieve the id of the Linode you want to add with the following command:
-
-\`\`\`command
-
-| $ linode-cli linodes list  |
-| :---- |
-
-\`\`\`
-
-\`\`\`output
-
-| ┌----------┬-------------┬--------┬---------┬-----------------┐│ id       │ label       │ region │ status  │ ipv4            │├----------┼-------------│--------┼---------┼-----------------┤│ 76033001 │ my-linode   │ us-lax │ running │ 172.235.225.120 │├----------┼-------------│--------┼---------┼-----------------┤│ 76033002 │ my-linode-2 │ us-lax │ running │ 172.221.114.36  │├----------┼-------------│--------┼---------┼-----------------┤│ 76033003 │ my-linode-3 │ us-lax │ running │ 172.218.17.4    │└----------┴-------------┴--------┴---------┴-----------------┘ |
-| :---- |
-
-\`\`\`
-
-Next, execute the \[\`device-create\`\](https://techdocs.akamai.com/linode-api/reference/post-firewall-device) action to assign a Linode to the Cloud Firewall, supplying the Linode id and the Cloud Firewall id.
-
-\`\`\`command
-
-| $ linode-cli firewalls device-create \\     \--type linode \--id 76033001 \\     2420060 |
-| :---- |
-
-\`\`\`
-
-\`\`\`output
-
-| ┌---------┬---------------------┬---------------------┐ │ id      │ created             │ updated             │ │---------│---------------------│---------------------│ │ 4877449 │ 2025-04-28T18:55:59 │ 2025-04-28T18:55:59 │ └---------┴---------------------┴---------------------┘ |
-| :---- |
-
-\`\`\`
-
-## \#\# Test and validate your configuration
-
-After applying rules to your Linode Cloud Firewall, confirm that they behave as expected under real traffic conditions. Note that your firewall configurations may require different testing methods than those listed in this section.
-
-### \#\#\# Simulate expected and blocked traffic
-
-From an IP on the allowlist, test access to each service and confirm that the connection succeeds. Use \`ssh\` to test connections from any IP address. Use \`curl\` to test HTTP and HTTPS traffic through NGINX. For example:
-
-\`\`\`command
-
-| $ curl \-I http://172.235.225.120 |
-| :---- |
-
-\`\`\`
-
-\`\`\`output
-
-| HTTP/1.1 200 OKServer: nginx/1.24.0 (Ubuntu)Date: Mon, 28 Apr 2025 21:00:32 GMTContent-Type: text/htmlContent-Length: 615Last-Modified: Mon, 28 Apr 2025 20:58:01 GMTConnection: keep-aliveETag: "680febd9-267"Accept-Ranges: bytes |
-| :---- |
-
-\`\`\`
-
-\`\`\`command
-
-| $ curl \-I https://172.235.225.120 |
-| :---- |
-
-\`\`\`
-
-\`\`\`output
-
-| HTTP/1.1 200 OKServer: nginx/1.24.0 (Ubuntu)Date: Mon, 28 Apr 2025 21:02:02 GMTContent-Type: text/htmlContent-Length: 615Last-Modified: Mon, 28 Apr 2025 20:58:01 GMTConnection: keep-aliveETag: "6434bbbe-267"Accept-Ranges: bytes |
-| :---- |
-
-\`\`\`
-
-Attempt to connect to the PostgreSQL server with the \`psql\` client from an allowed IP address.
-
-\`\`\`command {title="Successful PostgreSQL connection attempt"}
-
-| $ psql \--host 172.236.228.122 \\        \--port 5432 \\        \--username postgres \\        \--passwordPassword: \*\*\*\*\*\*\*\* |
-| :---- |
-
-\`\`\`
-
-\`\`\`output
-
-| psql (17.2 (Ubuntu 17.2-1.pgdg20.04+1), server 16.8 (Ubuntu 16.8-0ubuntu0.24.04.1))SSL connection (protocol: TLSv1.3, cipher: TLS\_AES\_256\_GCM\_SHA384, compression: off, ALPN: none)Type "help" for help.postgres=\# |
-| :---- |
-
-\`\`\`
-
-From an IP address that is not allowed through the Cloud Firewall rules, the execution will simply hang after prompting for the password.
-
-\`\`\`command {title="Blocked PostgreSQL connection attempt"}
-
-| $ psql \--host 172.236.228.122 \\       \--port 5432 \\       \--username postgres \\       \--passwordPassword: \*\*\*\*\*\*\*\* |
-| :---- |
-
-\`\`\`
-
-\`\`\`output
-
-|  |
-| :---- |
-
-\`\`\`
-
-Similarly, attempt to connect to Redis with \`redis-cli\`. From an allowed IP address, the result will be as follows:
-
-\`\`\`command {title="Successful Redis connection attempt"}
-
-| $ redis-cli \-h 172.235.225.120 \-p 6379 |
-| :---- |
-
-\`\`\`
-
-\`\`\`output
-
-| 172.236.228.122:6379\> INFO Server\# Serverredis\_version:7.0.15…executable:/usr/bin/redis-serverconfig\_file:/etc/redis/redis.confio\_threads\_active:0 |
-| :---- |
-
-\`\`\`
-
-From an IP address that is not on the allowlist, the connection attempt will simply hang:
-
-\`\`\`command {title="Blocked Redis connection attempt"}
-
-| $ redis-cli \-h 172.235.225.120 \-p 6379 |
-| :---- |
-
-\`\`\`
-
-\`\`\`output
-
-|  |
-| :---- |
-
-\`\`\`
-
-### \#\#\# Log and monitor behavior
-
-Linode Cloud Firewall does not provide per-packet or rule-level logging. To verify behavior, rely on logs from the services themselves. For example:
-
-\- NGINX access logs, as configured in individual virtual server configuration files, found in \`/etc/nginx/sites-available\`  
-\- SSH authentication logs (\`/var/log/auth.log\`)  
-\- Redis logs, typically found in \`/var/log/redis/redis-server.log\`, though this is configurable in \`/etc/redis/redis.conf\`  
-\- PostgreSQL logs, typically found in \`/var/log/postgresql/\`, though this is configurable in \`/etc/postgresql/\[PATH-TO-VERISON\]/postgresql.conf\`
+Akamai Cloud Firewall rules can be managed through the [Akamai Cloud Manager](https://cloud.linode.com/) web interface or via the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/cli). This section demonstrates both methods.
+
+### Enable Akamai Cloud Firewall
+
+{{< tabs >}}
+{{< tab "Akamai Cloud Manager" >}}
+1.  From the Akamai Cloud Manager, navigate to **Firewalls** and click **Create Firewall**.
+
+1.  Specify a label for the Akamai Cloud Firewall and accept the defaults for the inbound and outbound policies. Initially, you do not need to assign any services. You can focus on rule creation first, then associate services later. Click **Create Firewall**.
+
+Once the Cloud Firewall has been created, you should see an initially empty list of inbound and outbound firewall rules.
+
+![Akamai Cloud Manager screenshot showing newly created firewall.](cloudmanager-firewall-created-ui.png)
+{{< /tab >}}
+{{< tab "Linode CLI" >}}
+Use the Linode CLI to create a firewall, replacing {{< placeholder "CLOUD_FIREWALL_LABEL" >}} with a label of your choosing (e.g. `my-cloud-firewall`):
+
+```command
+linode-cli firewalls create \
+    --rules.inbound_policy DROP \
+    --rules.outbound_policy ACCEPT \
+    --label "{{< placeholder "CLOUD_FIREWALL_LABEL" >}}"
+```
+
+```output
+┌---------┬--------------------┬---------┬---------------------┐
+│ id      │ label              │ status  │ created             │
+├---------┼--------------------┼---------┼---------------------┤
+│ 2420060 │ my-cloud-firewall  │ enabled │ 2025-04-28T17:42:45 │
+└---------┴--------------------┴---------┴---------------------┘
+```
+{{< /tab >}}
+{{< /tabs >}}
+
+### Recreate Rules
+
+Recreate each of the rules documented from your AWS Security Group.
+
+{{< tabs >}}
+{{< tab "Akamai Cloud Manager" >}}
+1.  Within the web UI, create a new rule by clicking **Add An Inbound Rule**.
+
+1.  Specify a label and description for the rule. For example:
+
+    ![Akamai Cloud Manager UI for adding an inbound firewall rule.](add-inbound-rule-ui.png)
+
+1.  Next, select the protocol and which ports to apply this rule to. You can select from commonly used ports or select **Custom** to specify a custom port range. For example:
+
+    ![Akamai Cloud Manager UI for selecting protocol and port range.](specify-port-range-ui.png)
+
+1.  For Sources, specify whether you want the rule to apply to **all** IPv4 or IPv6 addresses, or if you want to provide specific IP addresses. If providing specific IP addresses, add them one at a time.
+
+    ![Akamai Cloud Manager UI for entering source IP addresses.](specify-source-addresses-ui.png)
+
+1.  Finally, decide whether the rule is meant to serve as an allowlist (Accept) or denylist (Drop). For this example migration from AWS Security Groups, the action would be Accept. Click **Add Rule**.
+
+1.  Repeat the steps above to recreate all the equivalent rules from the AWS Security Group configuration.
+
+1.  After adding all rules, click **Save Changes**.
+{{< /tab >}}
+{{< tab "Linode CLI" >}}
+When using the web UI, rules must be created one at a time. With the Linode CLI, you can add all rules with a single call of the [`rules-update`](https://techdocs.akamai.com/linode-api/reference/put-firewall-rules) action for the [`firewalls`](https://techdocs.akamai.com/linode-api/reference/post-firewalls) command.
+
+1.  First, use `nano` or text editor of your choice to create a file called `inbound-rules.json`:
+
+    ```command
+    nano inbound-rules.json
+    ```
+
+    Enter all the inbound rules as a JSON array, for example:
+
+    ```file {title="inbound-rules.json"}
+    [
+        {
+            "action": "ACCEPT",
+            "addresses": {
+                "ipv4": [
+                    "{{< placeholder "ALLOWED_IP_ADDRESS_1" >}}/32",
+                    "{{< placeholder "ALLOWED_IP_ADDRESS_2" >}}/32"
+                ]
+            },
+            "description": "Redis",
+            "label": "restrict",
+            "ports": "6379",
+            "protocol": "TCP"
+        },
+        {
+            "action": "ACCEPT",
+            "addresses": {
+                "ipv4": [
+                    "{{< placeholder "ALLOWED_IP_ADDRESS_1" >}}/32",
+                    "{{< placeholder "ALLOWED_IP_ADDRESS_2" >}}/32"
+                ]
+            },
+            "description": "PostgreSQL",
+            "label": "restrict",
+            "ports": "5432",
+            "protocol": "TCP"
+        },
+        {
+            "action": "ACCEPT",
+            "addresses": {
+                "ipv4": [
+                    "0.0.0.0/0"
+                ]
+            },
+            "description": "SSH",
+            "label": "allow",
+            "ports": "22",
+            "protocol": "TCP"
+        },
+        {
+            "action": "ACCEPT",
+            "addresses": {
+                "ipv4": [
+                    "0.0.0.0/0"
+                ]
+            },
+            "description": "HTTP web",
+            "label": "allow",
+            "ports": "80",
+            "protocol": "TCP"
+        },
+        {
+            "action": "ACCEPT",
+            "addresses": {
+                "ipv4": [
+                    "0.0.0.0/0"
+                ]
+            },
+            "description": "HTTPS web",
+            "label": "allow",
+            "ports": "443",
+            "protocol": "TCP"
+        }
+    ]
+    ```
+
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
+1.  With the file in place, run the following Linode CLI command, making sure to supply your Akamai {{< placeholder "CLOUD_FIREWALL_ID" >}} (e.g `2420060`):
+
+    ```command
+    linode-cli firewalls rules-update {{< placeholder "CLOUD_FIREWALL_ID" >}} \
+        --inbound "$(cat inbound-rules.json)"
+    ```
+
+    ```output
+    ┌-------------┬----------------┬-----------------┬---------┐
+    │ fingerprint │ inbound_policy │ outbound_policy │ version │
+    ├-------------┼----------------┼-----------------┼---------┤
+    │ 96379b42    │ DROP           │ ACCEPT          │ 2       │
+    └-------------┴----------------┴-----------------┴---------┘
+
+    inbound
+    ┌--------┬--------------------┬-------------┬---------┬-------┬---------┐
+    │ action │ addresses.ipv4     │ description │ label   │ ports │ protocol│
+    ├--------┼--------------------┼-------------┼---------┼-------┼---------┤
+    │ ACCEPT │ 173.230.145.119/32 │ Redis       │ restrict│ 6379  │ TCP     │
+    ├--------┼--------------------┼-------------┼---------┼-------┼---------┤
+    │ ACCEPT │ 50.116.12.84/32    │ PostgreSQL  │ restrict│ 5432  │ TCP     │
+    ├--------┼--------------------┼-------------┼---------┼-------┼---------┤
+    │ ACCEPT │ 0.0.0.0/0          │ SSH         │ allow   │ 22    │ TCP     │
+    ├--------┼--------------------┼-------------┼---------┼-------┼---------┤
+    │ ACCEPT │ 0.0.0.0/0          │ HTTP web    │ allow   │ 80    │ TCP     │
+    ├--------┼--------------------┼-------------┼---------┼-------┼---------┤
+    │ ACCEPT │ 0.0.0.0/0          │ HTTPS web   │ allow   │ 443   │ TCP     │
+    └--------┴--------------------┴-------------┴---------┴-------┴---------┘
+
+    outbound
+    ┌--------┬--------------------┬-------------┬---------┬-------┬---------┐
+    │ action │ addresses.ipv4     │ description │ label   │ ports │ protocol│
+    ├--------┼--------------------┼-------------┼---------┼-------┼---------┤
+    └--------┴--------------------┴-------------┴---------┴-------┴---------┘
+    ```
+{{< /tab >}}
+{{< /tabs >}}
+
+### Attach Instances to the Firewall
+
+You can attach multiple Linodes or NodeBalancers to the Cloud Firewall. Note that inbound and outbound rules apply to Linode instances, whereas only inbound rules apply to NodeBalancers.
+
+{{< tabs >}}
+{{< tab "Akamai Cloud Manager" >}}
+1.  Navigate to the **Linodes** tab for your Cloud Firewall and click **Add Linodes to Firewall**:
+
+    ![Akamai Cloud Manager UI for attaching Linodes to the firewall.](attach-instances-ui.png)
+
+1.  From the list, select which Linode (or Linodes) to assign to this Cloud Firewall and click **Add**:
+
+    ![List of Linode instances attached to the firewall in the UI.](attached-linodes-list-ui.png)
+
+The firewall rules you specified should now be applied to the Linode (or Linodes) you have added.
+{{< /tab >}}
+{{< tab "Linode CLI" >}}
+1.  To assign Linodes to a Cloud Firewall using the Linode CLI, first retrieve the id of the Linode you want to add:
+
+    ```command
+    linode-cli linodes list
+    ```
+
+    ```output
+    ┌----------┬-------------┬--------┬---------┬-----------------┐
+    │ id       │ label       │ region │ status  │ ipv4            │
+    ├----------┼-------------┼--------┼---------┼-----------------┤
+    │ 76033001 │ my-linode   │ us-lax │ running │ 172.235.225.120 │
+    ├----------┼-------------┼--------┼---------┼-----------------┤
+    │ 76033002 │ my-linode-2 │ us-lax │ running │ 172.221.114.36  │
+    ├----------┼-------------┼--------┼---------┼-----------------┤
+    │ 76033003 │ my-linode-3 │ us-lax │ running │ 172.218.17.4    │
+    └----------┴-------------┴--------┴---------┴-----------------┘
+    ```
+
+1.  Next, execute the [`device-create`](https://techdocs.akamai.com/linode-api/reference/post-firewall-device) action to assign a Linode to the Cloud Firewall, supplying both the {{< placeholder "LINODE_ID" >}} (e.g. `76033001`) and the {{< placeholder "CLOUD_FIREWALL_ID" >}} (e.g. `2420060`):
+
+    ```command
+    linode-cli firewalls device-create \
+        --type linode --id {{< placeholder "LINODE_ID" >}} \
+        {{< placeholder "CLOUD_FIREWALL_ID" >}}
+    ```
+
+    ```output
+    ┌---------┬---------------------┬---------------------┐
+    │ id      │ created             │ updated             │
+    ├---------┼---------------------┼---------------------┤
+    │ 4877449 │ 2025-04-28T18:55:59 │ 2025-04-28T18:55:59 │
+    └---------┴---------------------┴---------------------┘
+    ```
+{{< /tab >}}
+{{< /tabs >}}
+
+## Test and Validate Your Configuration
+
+After applying rules to your Akamai Cloud Firewall, confirm that they behave as expected under real traffic conditions. Note that your firewall configurations may require different testing methods than those listed in this section.
+
+### Simulate Expected and Blocked Traffic
+
+From an IP on the allowlist, test access to each service and confirm that the connection succeeds. Use `ssh` to test connections from any IP address.
+
+1.  Use `curl` to test HTTP traffic through NGINX, replacing {{< placeholder "SERVER_IP_ADDRESS" >}} (e.g. `172.236.228.122`):
+
+    ```command {title="cURL HTTP Connection Attempt"}
+    curl -I http://{{< placeholder "SERVER_IP_ADDRESS" >}}
+    ```
+
+    ```output
+    HTTP/1.1 200 OK
+    Server: nginx/1.24.0 (Ubuntu)
+    Date: Mon, 28 Apr 2025 21:00:32 GMT
+    Content-Type: text/html
+    Content-Length: 615
+    Last-Modified: Mon, 28 Apr 2025 20:58:01 GMT
+    Connection: keep-alive
+    ETag: "680febd9-267"
+    Accept-Ranges: bytes
+    ```
+
+1.  Use `curl` to test HTTPS traffic through NGINX:
+
+    ```command {title="cURL HTTPS Connection Attempt"}
+    curl -I https://{{< placeholder "SERVER_IP_ADDRESS" >}}
+    ```
+
+    ```output
+    HTTP/1.1 200 OK
+    Server: nginx/1.24.0 (Ubuntu)
+    Date: Mon, 28 Apr 2025 21:02:02 GMT
+    Content-Type: text/html
+    Content-Length: 615
+    Last-Modified: Mon, 28 Apr 2025 20:58:01 GMT
+    Connection: keep-alive
+    ETag: "6434bbbe-267"
+    Accept-Ranges: bytes
+    ```
+
+1.  Attempt to connect to the PostgreSQL server with the `psql` client from an allowed IP address, replacing {{< placeholder "PSQL_PORT" >}} (e.g. `5432`), {{< placeholder "PSQL_USERNAME" >}} (e.g. `testuser`), and {{< placeholder "PSQL_DATABASE" >}} (e.g. `testdb`):
+
+    ```command {title="Successful PostgreSQL Connection Attempt"}
+    psql --host {{< placeholder "SERVER_IP_ADDRESS" >}} \
+        --port {{< placeholder "PSQL_PORT" >}} \
+        --username {{< placeholder "PSQL_USERNAME" >}} \
+        --dbname {{< placeholder "PSQL_DATABASE" >}} \
+        --password
+    ```
+
+    ```output
+    Password: ********
+    psql (17.2 (Ubuntu 17.2-1.pgdg20.04+1), server 16.8 (Ubuntu 16.8-0ubuntu0.24.04.1))
+    SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, compression: off, ALPN: none)
+    Type "help" for help.
+
+    postgres=#
+    ```
+
+1.  Now attempt to connect to the PostgreSQL server with the `psql` client from an IP address that is not allowed through the Cloud Firewall rules:
+
+    ```command {title="Blocked PostgreSQL Connection Attempt"}
+    psql --host {{< placeholder "SERVER_IP_ADDRESS" >}} \
+        --port {{< placeholder "PSQL_PORT" >}} \
+        --username {{< placeholder "PSQL_USERNAME" >}} \
+        --dbname {{< placeholder "PSQL_DATABASE" >}} \
+        --password
+    ```
+
+    The execution simply hangs after prompting for the password:
+
+    ```output
+    Password: ********
+
+    ```
+
+1.  Similarly, attempt to connect to Redis with `redis-cli` from an allowed IP address, replacing {{< placeholder "REDIS_PORT" >}} (e.g. `6379`):
+
+    ```command {title="Successful Redis Connection Attempt"}
+    redis-cli -h {{< placeholder "SERVER_IP_ADDRESS" >}} -p {{< placeholder "REDIS_PORT" >}}
+    ```
+
+    The result should be similar to the following:
+
+    ```output
+    172.236.228.122:6379> INFO Server
+    # Server
+    redis_version:7.0.15
+    …
+    executable:/usr/bin/redis-server
+    config_file:/etc/redis/redis.conf
+    io_threads_active:0
+    ```
+
+1.  Now attempt to connect to Redis with `redis-cli` from an IP address that is not on the allowlist:
+
+    ```command {title="Blocked Redis Connection Attempt"}
+    redis-cli -h {{< placeholder "SERVER_IP_ADDRESS" >}} -p {{< placeholder "REDIS_PORT" >}}
+    ```
+
+    The connection attempt simply hangs:
+
+    ```output
+
+    ```
+
+### Log and Monitor Behavior
+
+Akamai Cloud Firewall does not provide per-packet or rule-level logging. To verify behavior, rely on logs from the services themselves. For example:
+
+-   NGINX access logs, as configured in individual virtual server configuration files, found in `/etc/nginx/sites-available`
+-   SSH authentication logs (`/var/log/auth.log`)
+-   Redis logs, typically found in `/var/log/redis/redis-server.log`, though this is configurable in `/etc/redis/redis.conf`
+-   PostgreSQL logs, typically found in `/var/log/postgresql/`, though this is configurable in `/etc/postgresql/[PATH-TO-VERISON]/postgresql.conf`
 
 Connection and activity logs from these services can help you confirm whether traffic is reaching them as expected.
 
-## \#\# Monitor post-migration performance
+## Monitor Post-Migration Performance
 
 Ongoing monitoring helps identify any overlooked configuration issues or unexpected traffic patterns. Continue observing application logs and metrics after the switch. Make sure services are available to intended users and there are no spikes in error rates or timeouts.
 
-If legitimate traffic is being blocked or malicious traffic is being allowed, refine your Linode Cloud Firewall rules. It may take a few iterations to achieve parity with your original AWS Security Group behavior.
+If legitimate traffic is being blocked or malicious traffic is being allowed, refine your Akamai Cloud Firewall rules. It may take a few iterations to achieve parity with your original AWS Security Group behavior.
 
-## \#\# Finalize your migration
+## Finalize Your Migration
 
 Once you've validated the new firewall configuration, clean up legacy resources and update internal references.
 
-\- Find components that were connecting with your AWS EC2 instance. Create equivalent Linode Cloud Firewall rules to allow traffic from legitimate components.  
-\- Remove the AWS Security Group.  
-\- Remove the AWS EC2 instance.
+-   Find components that were connecting with your AWS EC2 instance.
+-   Create equivalent Akamai Cloud Firewall rules to allow traffic from legitimate components.
+-   Remove the AWS Security Group.
+-   Remove the AWS EC2 instance.
 
-Update runbooks, internal network diagrams, and configuration documentation to reflect the new firewall architecture based on Linode Cloud Firewall.
-
-The resources below are provided to help you become familiar with Linode Cloud Firewall when migrating from AWS Security Groups.
-
-## \#\# Additional Resources
-
-\- AWS  
-  \- \[Security Groups documentation\](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html)  
-  \- \[AWS CLI commands related to EC2\](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/index.html\#cli-aws-ec2)  
-\- Akamai  
-  \- \[Linode Cloud Manager\](https://cloud.linode.com/)  
-  \- \[Linode Cloud Firewall\](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall)  
-  \- Linode CLI commands related to Linode Cloud Firewall  
-    \- \[API reference\](https://techdocs.akamai.com/linode-api/reference/post-firewalls)  
-    \- \[Example of firewall rule JSON structure\](https://techdocs.akamai.com/linode-api/reference/put-firewall-rules)
+Update runbooks, internal network diagrams, and configuration documentation to reflect the new firewall architecture based on Akamai Cloud Firewall.
