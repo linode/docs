@@ -61,7 +61,7 @@ The Google Cloud NGFW is configured with inbound rules to restrict access to kno
 
 The equivalent setup on Akamai Cloud uses a single Linode instance running the same services. Akamai Cloud Firewall is used to recreate the access controls previously handled by the Google Cloud NGFW.
 
-![Architecture diagram of Google Cloud VM instance and services environment.](example-environment-architecture.svg)
+![Architecture diagram of Google Cloud VM instance and services environment with equivalent setup on Akamai Cloud.](example-environment-architecture.svg)
 
 ## Document your Current Configuration
 
