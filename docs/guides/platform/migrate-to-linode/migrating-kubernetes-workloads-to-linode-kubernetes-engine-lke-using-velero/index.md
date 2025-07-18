@@ -28,7 +28,7 @@ In scenarios such as these, DevOps engineers may depend on Velero.
 
 [**Velero**](https://velero.io/) is an open source, Kubernetes-native tool for backing up and restoring Kubernetes resources and persistent volumes. It supports backup of core resources, namespaces, deployments, services, ConfigMaps, Secrets, and customer resource definitions (CRDs). It integrates with different storage backends—such AWS S3 or Linode Object Storage—for storing and restoring backups.
 
-This guide will walk through the process of using Velero to migrate a Kubernetes cluster with persistent volumes to Linode Kubernetes Engine (LKE). The focus of the guide will be on backing up and restoring a persistent data volume. For other aspects—such as adapting load balancing and DNS switching after the restore—refer to the Akamai Cloud guides on migrating to LKE (from [AWS EKS](https://www.linode.com/docs/guides/migrating-from-aws-eks-to-linode-kubernetes-engine-lke/), [Google GKE](https://www.linode.com/docs/guides/migrating-from-google-gke-to-linode-kubernetes-engine-lke/), [Azure AKS](https://www.linode.com/docs/guides/migrating-from-azure-aks-to-linode-kubernetes-engine-lke/), or [Oracle OKE](https://www.linode.com/docs/guides/migrating-from-oracle-kubernetes-engine-to-linode-kubernetes-engine-lke/)).
+This guide will walk through the process of using Velero to migrate a Kubernetes cluster with persistent volumes to Linode Kubernetes Engine (LKE). The focus of the guide will be on backing up and restoring a persistent data volume. For other aspects—such as adapting load balancing and DNS switching after the restore—refer to the Akamai Cloud guides on migrating to LKE (from [AWS EKS](/docs/guides/migrating-from-aws-eks-to-linode-kubernetes-engine-lke/), [Google GKE](/docs/guides/migrating-from-google-gke-to-linode-kubernetes-engine-lke/), [Azure AKS](/docs/guides/migrating-from-azure-aks-to-linode-kubernetes-engine-lke/), or [Oracle OKE](/docs/guides/migrating-from-oracle-kubernetes-engine-to-linode-kubernetes-engine-lke/)).
 
 Although what's shown in this guide will start with an AWS EKS cluster as an example, the same process can apply to most Kubernetes providers.
 
@@ -40,7 +40,7 @@ Although what's shown in this guide will start with an AWS EKS cluster as an exa
 1.  Follow the steps in the _*Install* `*kubectl*`_ section of the [Getting started with LKE](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#install-kubectl) guide to install and configure `kubectl`.
 1.  If migrating a cluster from AWS, ensure that you have access to your AWS account with sufficient permissions to work with EKS clusters.
 1.  Install and configure the [AWS CLI](https://aws.amazon.com/cli/) and [`eksctl`](https://eksctl.io/). The command line tooling you use may vary if migrating a cluster from another provider.
-1.  Install `[jq](https://www.linode.com/docs/guides/migrating-from-aws-eks-to-linode-kubernetes-engine-lke/docs/guides/using-jq-to-process-json-on-the-command-line/#install-jq-with-package-managers)`.
+1.  Install `[jq](/docs/guides/migrating-from-aws-eks-to-linode-kubernetes-engine-lke/docs/guides/using-jq-to-process-json-on-the-command-line/#install-jq-with-package-managers)`.
 1.  Install the `[velero](https://velero.io/docs/v1.3.0/velero-install/)` [CLI](https://velero.io/docs/v1.3.0/velero-install/).
 
 ## Downtime During the Migration
@@ -395,8 +395,8 @@ velero version
 
 ```output
 Client:
-	Version: v1.16.1
-	Git commit: -
+    Version: v1.16.1
+    Git commit: -
 Server:
     Version: v1.16.1
 ```
@@ -920,7 +920,7 @@ The resources below are provided to help you become familiar with Velero when mi
     - [Installing the Velero CLI](https://velero.io/docs/v1.16/basic-install/#install-the-cli)
     - [Storage provider plugins][https://velero.io/docs/v1.16/supported-providers/]
 -   Akamai Cloud:
-    - [Linode LKE]([https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine))
-    - [Migrating from AWS EKS to Linode Kubernetes Engine (LKE)]([https://www.linode.com/docs/guides/migrating-from-aws-eks-to-linode-kubernetes-engine-lke/](https://www.linode.com/docs/guides/migrating-from-aws-eks-to-linode-kubernetes-engine-lke/))
-    - [Migrating from Azure AKS to Linode Kubernetes Engine (LKE)]([https://www.linode.com/docs/guides/migrating-from-azure-aks-to-linode-kubernetes-engine-lke/](https://www.linode.com/docs/guides/migrating-from-azure-aks-to-linode-kubernetes-engine-lke/))
-    - [Migrating from Google GKE to Linode Kubernetes Engine (LKE)]([https://www.linode.com/docs/guides/migrating-from-google-gke-to-linode-kubernetes-engine-lke/](https://www.linode.com/docs/guides/migrating-from-google-gke-to-linode-kubernetes-engine-lke/))
+    - [Linode LKE](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine)
+    - [Migrating from AWS EKS to Linode Kubernetes Engine (LKE)](/docs/guides/migrating-from-aws-eks-to-linode-kubernetes-engine-lke/)
+    - [Migrating from Azure AKS to Linode Kubernetes Engine (LKE)](/docs/guides/migrating-from-azure-aks-to-linode-kubernetes-engine-lke/)
+    - [Migrating from Google GKE to Linode Kubernetes Engine (LKE)](/docs/guides/migrating-from-google-gke-to-linode-kubernetes-engine-lke/)
