@@ -18,7 +18,7 @@ Azure Firewall is a managed firewall service that provides stateful traffic insp
 
 ![OSI layers 1–7 with attack vectors noted for Layers 3 (Network), 4 (Transport), 5 (Session), and 7 (Application).](network-layers-diagram.png)
 
-This guide explains how to migrate a basic security setup from Azure Firewall to Akamai Cloud Firewall. It covers planning, documenting your configuration, creating equivalent rules on Akamai Cloud, and testing the results.
+This guide explains how to migrate a basic security setup from Azure Firewall to Akamai Cloud Firewall. It covers planning, documenting your configuration, creating equivalent rules on Akamai Cloud Firewall, and testing the results.
 
 ## Feature Comparison
 
@@ -73,9 +73,9 @@ Use the Azure Portal of the `az` CLI to export or list your Azure Firewall rules
 
 {{< tabs >}}
 {{< tab "Azure Portal" >}}
-1.  In the Azure Portal, navigate to your Resource group to see your list of Azure resources.
+1.  In the Azure Portal, navigate to your **Resource group** to view your list of Azure resources.
 
-1.  Find the VM instance you're focused on, and click to see its details:
+1.  Select the appropriate VM instance to view its details:
 
     ![Azure Portal VM network settings page.](azure-portal-vm-network-settings.png)
 
@@ -255,7 +255,7 @@ After documenting your Azure networking setup, plan how to translate those rules
 
 In this example, core services are exposed on ports `22`, `80`, `443`, `5432`, and `6379`. The Azure Firewall routes traffic to certain ports (`5432` and `6379`) only from an approved IP allowlist, while traffic from any source can reach ports `22`, `80`, `443`. These rules must be recreated on Akamai Cloud to maintain equivalent protection.
 
-Create a side-by-side comparison mapping Azure Firewall rules to their Akamai Cloud Firewall equivalents. For example, a rule that allows PostgreSQL traffic (TCP `5432`) from a specific IP should be represented as a Akamai Cloud Firewall rule allowing TCP traffic on port `5432` from that same IP.
+Create a side-by-side comparison, mapping Azure Firewall rules to their Akamai Cloud Firewall equivalents. For example, a rule that allows PostgreSQL traffic (TCP `5432`) from a specific IP should be represented as a Akamai Cloud Firewall rule allowing TCP traffic on port `5432` from that same IP.
 
 ### Back up Your Existing Configuration
 
@@ -354,7 +354,8 @@ When using the web UI, rules must be created one at a time. With the Linode CLI,
                 "ipv4": [
                     "{{< placeholder "ALLOWED_IP_ADDRESS_1" >}}/32",
                     "{{< placeholder "ALLOWED_IP_ADDRESS_2" >}}/32"
-                ]
+                ],
+                "ipv6": []
             },
             "description": "Redis",
             "label": "restrict",
@@ -367,7 +368,8 @@ When using the web UI, rules must be created one at a time. With the Linode CLI,
                 "ipv4": [
                     "{{< placeholder "ALLOWED_IP_ADDRESS_1" >}}/32",
                     "{{< placeholder "ALLOWED_IP_ADDRESS_2" >}}/32"
-                ]
+                ],
+                "ipv6": []
             },
             "description": "PostgreSQL",
             "label": "restrict",
@@ -379,7 +381,8 @@ When using the web UI, rules must be created one at a time. With the Linode CLI,
             "addresses": {
                 "ipv4": [
                     "0.0.0.0/0"
-                ]
+                ],
+                "ipv6": []
             },
             "description": "SSH",
             "label": "allow",
@@ -391,7 +394,8 @@ When using the web UI, rules must be created one at a time. With the Linode CLI,
             "addresses": {
                 "ipv4": [
                     "0.0.0.0/0"
-                ]
+                ],
+                "ipv6": []
             },
             "description": "HTTP web",
             "label": "allow",
@@ -403,7 +407,8 @@ When using the web UI, rules must be created one at a time. With the Linode CLI,
             "addresses": {
                 "ipv4": [
                     "0.0.0.0/0"
-                ]
+                ],
+                "ipv6": []
             },
             "description": "HTTPS web",
             "label": "allow",
@@ -550,6 +555,14 @@ From an IP on the allowlist, test access to each service and confirm that the co
     Accept-Ranges: bytes
     ```
 
+    {{< note >}}
+    If you generated a self-signed certificate, skip certificate verification by adding the `-k` flag:
+
+    ```command
+    curl -Ik https://{{< placeholder "SERVER_IP_ADDRESS" >}}
+    ```
+    {{< /note >}}
+
 1.  Attempt to connect to the PostgreSQL server with the `psql` client from an allowed IP address, replacing {{< placeholder "PSQL_PORT" >}} (e.g. `5432`), {{< placeholder "PSQL_USERNAME" >}} (e.g. `testuser`), and {{< placeholder "PSQL_DATABASE" >}} (e.g. `testdb`):
 
     ```command {title="Successful PostgreSQL Connection Attempt"}
@@ -566,7 +579,7 @@ From an IP on the allowlist, test access to each service and confirm that the co
     SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, compression: off, ALPN: none)
     Type "help" for help.
 
-    postgres=#
+    testdb=#
     ```
 
 1.  Now attempt to connect to the PostgreSQL server with the `psql` client from an IP address that is not allowed through the Cloud Firewall rules:
@@ -607,7 +620,7 @@ From an IP on the allowlist, test access to each service and confirm that the co
 1.  Now attempt to connect to Redis with `redis-cli` from an IP address that is not on the allowlist:
 
     ```command {title="Blocked Redis Connection Attempt"}
-    redis-cli -h 172.235.225.120 -p {{< placeholder "REDIS_PORT" >}}
+    redis-cli -h {{< placeholder "SERVER_IP_ADDRESS" >}} -p {{< placeholder "REDIS_PORT" >}}
     ```
 
     The connection attempt simply hangs:
@@ -620,22 +633,22 @@ From an IP on the allowlist, test access to each service and confirm that the co
 
 Akamai Cloud Firewall does not provide per-packet or rule-level logging. To verify behavior, rely on logs from the services themselves. For example:
 
--   NGINX access logs, as configured in individual virtual server configuration files, found in `/etc/nginx/sites-available`
--   SSH authentication logs (`/var/log/auth.log`)
--   Redis logs, typically found in `/var/log/redis/redis-server.log`, though this is configurable in `/etc/redis/redis.conf`
--   PostgreSQL logs, typically found in `/var/log/postgresql/`, though this is configurable in `/etc/postgresql/[PATH-TO-VERISON]/postgresql.conf`
+-   NGINX access logs, as configured in individual virtual server configuration files, are found in `/etc/nginx/sites-available`.
+-   SSH authentication logs are located at (`/var/log/auth.log`).
+-   Redis logs are typically found in `/var/log/redis/redis-server.log`, though this is configurable in `/etc/redis/redis.conf`.
+-   PostgreSQL logs are typically found in `/var/log/postgresql/`, though this is configurable in `/etc/postgresql/[PATH-TO-VERISON]/postgresql.conf`.
 
-Connection and activity logs from these services can help you confirm whether traffic is reaching them as expected.
+Connection and activity logs from these services can help to confirm whether traffic is reaching them as expected.
 
 ## Monitor Post-Migration Performance
 
-Ongoing monitoring helps identify any overlooked configuration issues or unexpected traffic patterns. Continue observing application logs and metrics after the switch. Make sure services are available to intended users and there are no spikes in error rates or timeouts.
+Ongoing monitoring helps identify any overlooked configuration issues or unexpected traffic patterns. Continue observing application logs and metrics post-migration. Make sure services are available to intended users and there are no spikes in error rates or timeouts.
 
 If legitimate traffic is being blocked or malicious traffic is being allowed, refine your Akamai Cloud Firewall rules. It may take a few iterations to achieve parity with your original Azure Firewall behavior.
 
 ## Finalize Your Migration
 
-Once you've validated the new firewall configuration, clean up legacy resources and update internal references.
+Once you've validated the new firewall configuration, clean up legacy resources and update internal references:
 
 -   Find components that were connecting with your Azure VM instance.
 -   Create equivalent Akamai Cloud Firewall rules to allow traffic from legitimate components.

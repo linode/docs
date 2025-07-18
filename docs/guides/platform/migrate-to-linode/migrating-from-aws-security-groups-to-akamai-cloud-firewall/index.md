@@ -18,7 +18,7 @@ AWS Security Groups are virtual firewalls that control inbound and outbound traf
 
 ![OSI layers 1–7 with attack vectors noted for Layers 3 (Network), 4 (Transport), 5 (Session), and 7 (Application).](network-layers-diagram.png)
 
-This guide explains how to migrate a basic security setup from AWS Security Groups to Akamai Cloud Firewall. It covers planning, documenting your configuration, creating equivalent rules on Akamai Cloud, and testing the results.
+This guide explains how to migrate a basic security setup from AWS Security Groups to Akamai Cloud Firewall. It covers planning, documenting your configuration, creating equivalent rules on Akamai Cloud Firewall, and testing the results.
 
 ## Feature Comparison
 
@@ -26,11 +26,11 @@ Before beginning the migration process, it's important to understand the capabil
 
 ### What AWS Security Groups Offer
 
-AWS Security Groups allow you to create sets of firewall rules that control traffic based on IP addresses, CIDR blocks, ports, and protocols. Security Groups are stateful, so return traffic is automatically allowed, and they apply to network interfaces attached to AWS resources.
+AWS Security Groups allow you to create sets of firewall rules that control traffic based on IP addresses, CIDR blocks, ports, and protocols. Security groups are stateful (i.e. return traffic is automatically allowed) and attach directly to the network interfaces of your AWS resources.
 
 ### What Cloud Firewall Offers
 
-Akamai Cloud Firewall is a Layer 3/4 stateless packet filter designed for simplicity and performance. It allows users to specify rules that allow or deny traffic based on source IP, destination port, and protocol (TCP, UDP, ICMP, and IPEncap). It does not inspect application-layer traffic, but it is effective at managing access to services based on IP and port-level rules.
+Akamai Cloud Firewall is a Layer 3/4 stateless packet filter designed for simplicity and performance. It allows users to specify rules that allow or deny traffic based on source IP, destination port, and protocol (e.g. TCP, UDP, ICMP, and IPEncap). It does not inspect application-layer traffic, but it is effective at managing access to services based on IP and port-level rules.
 
 ### What’s Not Directly Portable
 
@@ -69,22 +69,22 @@ Before making changes, it's essential to fully understand your existing AWS EC2 
 
 ### Review AWS Security Group Rules
 
-Use the AWS Consoled or `aws` CLI to export or list your active Security Group rules.
+Use the AWS Console or `aws` CLI to export or list your active Security Group rules.
 
 {{< tabs >}}
 {{< tab "AWS Console" >}}
-1.  In the AWS Console, navigate to the EC2 service.
+1.  In the AWS Console, navigate to the **EC2** service.
 
-1.  Select the EC2 instance you’re focused on to see its details.
+1.  Select the appropriate EC2 instance to view its details.
 
-1.  Under the **Security** tab, select the Security Group associated with the EC2 instance to view the list of inbound rules for the Security Group:
+1.  Under the **Security** tab, select the Security Group associated with the EC2 instance to view a list of inbound rules for the Security Group:
 
     ![AWS Console screenshot listing EC2 Security Group rules.](security-group-rules-list.png)
 {{< /tab >}}
 {{< tab "AWS CLI" >}}
 To access this information from the `aws` CLI, run the following commands:
 
-1.  Query for security group(s) associated with EC2 instance, replacing {{< placeholder "AWS_REGION" >}} and {{< placeholder "EC2_INSTANCE_ID" >}} with your values:
+1.  Query for security group(s) associated with the EC2 instance, replacing {{< placeholder "AWS_REGION" >}} and {{< placeholder "EC2_INSTANCE_ID" >}} with your values:
 
     ```command
     aws ec2 describe-instances \
@@ -110,7 +110,7 @@ To access this information from the `aws` CLI, run the following commands:
         --filters Name=group-id,Values={{< placeholder "SECURITY_GROUP_ID" >}}
     ```
 
-    This lists all inbound and outbound rules for the Security Group, detailing what traffic is allowed specific ports on the EC2 instance:
+    This command lists all inbound and outbound rules for the security group. It shows exactly which traffic is allowed on each port of your EC2 instance.
 
     ```output
     {
@@ -241,7 +241,7 @@ After documenting your AWS configuration, plan how to translate those rules into
 
 In this example, core services are exposed on ports `22`, `80`, `443`, `5432`, and `6379`. The AWS Security Group allows access to certain ports (`5432` and `6379`) only from an approved IP allowlist, while traffic from any source can reach ports `22`, `80`, `443`. These rules must be recreated on Akamai Cloud to maintain equivalent protection.
 
-Create a side-by-side comparison mapping AWS Security Group rules to their Akamai Cloud Firewall equivalents. For example, a rule that allows PostgreSQL traffic (TCP `5432`) from a specific IP should be represented as an Akamai Cloud Firewall rule allowing TCP traffic on port `5432` from that same IP.
+Create a side-by-side comparison, mapping AWS Security Group rules to their Akamai Cloud Firewall equivalents. For example, a rule that allows PostgreSQL traffic (TCP `5432`) from a specific IP should be represented as an Akamai Cloud Firewall rule allowing TCP traffic on port `5432` from that same IP.
 
 ### Back up Your Existing Configuration
 
@@ -340,7 +340,8 @@ When using the web UI, rules must be created one at a time. With the Linode CLI,
                 "ipv4": [
                     "{{< placeholder "ALLOWED_IP_ADDRESS_1" >}}/32",
                     "{{< placeholder "ALLOWED_IP_ADDRESS_2" >}}/32"
-                ]
+                ],
+                "ipv6": []
             },
             "description": "Redis",
             "label": "restrict",
@@ -353,7 +354,8 @@ When using the web UI, rules must be created one at a time. With the Linode CLI,
                 "ipv4": [
                     "{{< placeholder "ALLOWED_IP_ADDRESS_1" >}}/32",
                     "{{< placeholder "ALLOWED_IP_ADDRESS_2" >}}/32"
-                ]
+                ],
+                "ipv6": []
             },
             "description": "PostgreSQL",
             "label": "restrict",
@@ -365,7 +367,8 @@ When using the web UI, rules must be created one at a time. With the Linode CLI,
             "addresses": {
                 "ipv4": [
                     "0.0.0.0/0"
-                ]
+                ],
+                "ipv6": []
             },
             "description": "SSH",
             "label": "allow",
@@ -377,7 +380,8 @@ When using the web UI, rules must be created one at a time. With the Linode CLI,
             "addresses": {
                 "ipv4": [
                     "0.0.0.0/0"
-                ]
+                ],
+                "ipv6": []
             },
             "description": "HTTP web",
             "label": "allow",
@@ -389,7 +393,8 @@ When using the web UI, rules must be created one at a time. With the Linode CLI,
             "addresses": {
                 "ipv4": [
                     "0.0.0.0/0"
-                ]
+                ],
+                "ipv6": []
             },
             "description": "HTTPS web",
             "label": "allow",
@@ -536,6 +541,14 @@ From an IP on the allowlist, test access to each service and confirm that the co
     Accept-Ranges: bytes
     ```
 
+    {{< note >}}
+    If you generated a self-signed certificate, skip certificate verification by adding the `-k` flag:
+
+    ```command
+    curl -Ik https://{{< placeholder "SERVER_IP_ADDRESS" >}}
+    ```
+    {{< /note >}}
+
 1.  Attempt to connect to the PostgreSQL server with the `psql` client from an allowed IP address, replacing {{< placeholder "PSQL_PORT" >}} (e.g. `5432`), {{< placeholder "PSQL_USERNAME" >}} (e.g. `testuser`), and {{< placeholder "PSQL_DATABASE" >}} (e.g. `testdb`):
 
     ```command {title="Successful PostgreSQL Connection Attempt"}
@@ -552,7 +565,7 @@ From an IP on the allowlist, test access to each service and confirm that the co
     SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, compression: off, ALPN: none)
     Type "help" for help.
 
-    postgres=#
+    tesdb=#
     ```
 
 1.  Now attempt to connect to the PostgreSQL server with the `psql` client from an IP address that is not allowed through the Cloud Firewall rules:
@@ -606,22 +619,22 @@ From an IP on the allowlist, test access to each service and confirm that the co
 
 Akamai Cloud Firewall does not provide per-packet or rule-level logging. To verify behavior, rely on logs from the services themselves. For example:
 
--   NGINX access logs, as configured in individual virtual server configuration files, found in `/etc/nginx/sites-available`
--   SSH authentication logs (`/var/log/auth.log`)
--   Redis logs, typically found in `/var/log/redis/redis-server.log`, though this is configurable in `/etc/redis/redis.conf`
--   PostgreSQL logs, typically found in `/var/log/postgresql/`, though this is configurable in `/etc/postgresql/[PATH-TO-VERISON]/postgresql.conf`
+-   NGINX access logs, as configured in individual virtual server configuration files, are found in `/etc/nginx/sites-available`.
+-   SSH authentication logs are located at `/var/log/auth.log`.
+-   Redis logs are typically found in `/var/log/redis/redis-server.log`, though this is configurable in `/etc/redis/redis.conf`.
+-   PostgreSQL logs are typically found in `/var/log/postgresql/`, though this is configurable in `/etc/postgresql/[PATH-TO-VERISON]/postgresql.conf`.
 
-Connection and activity logs from these services can help you confirm whether traffic is reaching them as expected.
+Connection and activity logs from these services can help to confirm whether traffic is reaching them as expected.
 
 ## Monitor Post-Migration Performance
 
-Ongoing monitoring helps identify any overlooked configuration issues or unexpected traffic patterns. Continue observing application logs and metrics after the switch. Make sure services are available to intended users and there are no spikes in error rates or timeouts.
+Ongoing monitoring helps identify any overlooked configuration issues or unexpected traffic patterns. Continue observing application logs and metrics post-migration. Make sure services are available to intended users and there are no spikes in error rates or timeouts.
 
 If legitimate traffic is being blocked or malicious traffic is being allowed, refine your Akamai Cloud Firewall rules. It may take a few iterations to achieve parity with your original AWS Security Group behavior.
 
 ## Finalize Your Migration
 
-Once you've validated the new firewall configuration, clean up legacy resources and update internal references.
+Once you've validated the new firewall configuration, clean up legacy resources and update internal references:
 
 -   Find components that were connecting with your AWS EC2 instance.
 -   Create equivalent Akamai Cloud Firewall rules to allow traffic from legitimate components.
