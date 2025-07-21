@@ -14,27 +14,27 @@ external_resources:
 
 Google Cloud Next Generation Firewall (NGFW) is a network-level firewall that allows administrators to define granular rules based on IP ranges, ports, protocols, and service accounts. NGFW supports threat intelligence-based filtering and hierarchical policy enforcement, offering centralized control for securing workloads across projects and regions.
 
-[Akamai Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) is a network-level firewall service that controls traffic for Linode instances and NodeBalancers, Akamai Cloud’s load balancing service. Cloud Firewall supports inbound and outbound traffic management with Linode instances and inbound traffic for NodeBalancers. It operates at [Layers 3 and 4](https://www.akamai.com/glossary/what-are-network-layers), providing IP, protocol, and port filtering.
+[Cloud Firewalls](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) on Akamai Cloud is a network-level firewall service that lets users control traffic for Linode instances and NodeBalancers, Akamai Cloud’s load balancing service. Cloud Firewalls support inbound and outbound traffic management for Linode instances and inbound traffic for NodeBalancers. They operate at [Layers 3 and 4](https://www.akamai.com/glossary/what-are-network-layers) of the [OSI model](https://en.wikipedia.org/wiki/OSI_model) (see diagram below), providing IP, protocol, and port filtering.
+
+This guide includes steps on how to migrate a basic security setup from Google Cloud NGFW to Cloud Firewalls. It covers planning, documenting your configuration, creating equivalent rules with Cloud Firewalls, and testing the results.
 
 ![OSI layers 1–7 with attack vectors noted for Layers 3 (Network), 4 (Transport), 5 (Session), and 7 (Application).](network-layers-diagram.png)
 
-This guide explains how to migrate a basic security setup from Google Cloud NGFW to Akamai Cloud Firewall. It covers planning, documenting your configuration, creating equivalent rules on Akamai Cloud Firewall, and testing the results.
-
 ## Feature Comparison
 
-Before beginning the migration process, it's important to understand the capabilities and limitations of both Google Cloud NGFW and Akamai Cloud Firewall. This helps you identify which rules can be migrated directly and which require additional configuration.
+Before beginning the migration process, it's important to understand the capabilities and specifications of both Google Cloud NGFW and Cloud Firewalls. This can help you identify which rules can be migrated directly and which may require additional configuration.
 
-### What Google Cloud NGFW Offers
+### Features of Google Cloud NGFW
 
 Google Cloud NGFW filters traffic at the VPC network level. It supports rules based on IP ranges, ports, protocols, and targets (e.g. network tags or service accounts). NGFW also enables centralized policy management across projects, with features like threat intelligence-based blocking and hierarchical enforcement for consistent, scalable security controls.
 
-### What Cloud Firewall Offers
+### Features of Cloud Firewalls
 
-Akamai Cloud Firewall is a Layer 3/4 stateless packet filter designed for simplicity and performance. It allows users to specify rules that allow or deny traffic based on source IP, destination port, and protocol (TCP, UDP, ICMP, and IPEncap). It does not inspect application-layer traffic, but it is effective at managing access to services based on IP and port-level rules.
+Cloud Firewalls on Akamai Cloud is a Layer 3/4 stateless packet filter designed for simplicity and performance. It allows users to specify rules that allow or deny traffic based on source IP, destination port, and protocol (TCP, UDP, ICMP, and IPEncap). The Cloud Firewalls service does not inspect application-layer traffic; however, it is effective at managing access to services based on IP and port-level rules.
 
 ### What’s Not Directly Portable
 
-Because Akamai Cloud Firewall doesn't currently support Layer 7 inspection, features such as pattern matching, geographic filtering, and rate limiting cannot be replicated natively. These must be implemented at the application level using reverse proxies like NGINX or additional third-party services.
+Since Cloud Firewalls doesn’t currently support Layer 7 inspection, features such as pattern matching, geographic filtering, and rate limiting cannot be replicated natively. These must be implemented at the application level using reverse proxies like NGINX or other third-party services.
 
 ## Before You Begin
 
@@ -59,13 +59,13 @@ The example used throughout this guide involves a GCP VM instance on a network w
 
 The Google Cloud NGFW is configured with inbound rules to restrict access to known IP addresses.
 
-The equivalent setup on Akamai Cloud uses a single Linode instance running the same services. Akamai Cloud Firewall is used to recreate the access controls previously handled by the Google Cloud NGFW.
+The equivalent setup on Akamai Cloud uses a single Linode instance running the same services. The Cloud Firewalls service is used to recreate the access controls previously handled by the Google Cloud NGFW.
 
 ![Architecture diagram of Google Cloud VM instance and services environment with equivalent setup on Akamai Cloud.](example-environment-architecture.svg)
 
 ## Document your Current Configuration
 
-Before making changes, it's essential to fully understand your existing GCP VM instance and Google Cloud NGFW configuration. Document how traffic flows to your Compute Engine VM by noting which ports are open and which services are bound to each port. This can help you set up equivalent access controls using Akamai Cloud Firewall.
+Before making changes, it's essential to fully understand your existing GCP VM instance and Google Cloud NGFW configuration. Document how traffic flows to your Compute Engine VM by noting which ports are open and which services are bound to each port. This can help you set up equivalent access controls using Cloud Firewalls.
 
 ### Review Google Cloud NGFW Rules
 
@@ -182,17 +182,17 @@ The example in this guide only has inbound rules, with traffic allowed for speci
 
 ![Visual flowchart of inbound port permissions in the example setup.](inbound-permissions-diagram.svg)
 
-{{< note >}}
+{{< note title="Note Your Own Firewall Configuration" >}}
 Your firewall may have both inbound and outbound rules, with traffic allowed for specific IP addresses or denied for specific IP addresses.
 {{< /note >}}
 
 ### Plan Your Rule-Mapping Strategy
 
-After documenting your Google Cloud setup, plan how to translate those rules into Akamai Cloud Firewall’s syntax and feature set.
+After documenting your Google Cloud setup, plan how to translate those rules using the Cloud Firewalls syntax and feature set.
 
 In this example, core services are exposed on ports `22`, `80`, `443`, `5432`, and `6379`. The Google Cloud NGFW allows access to certain ports (`5432` and `6379`) only from an approved IP allowlist, while traffic from any source can reach ports `22`, `80`, `443`. These rules must be recreated on Akamai Cloud to maintain equivalent protection.
 
-Create a side-by-side comparison, mapping Google Cloud NGFW rules to their Akamai Cloud Firewall equivalents. For example, a rule that allows PostgreSQL traffic (TCP `5432`) from a specific IP should be represented as an Akamai Cloud Firewall rule allowing TCP traffic on port `5432` from that same IP.
+It can be helpful to create a side-by-side comparison, mapping Google Cloud NGFW rules to their Cloud Firewalls equivalents. For example, a rule that allows PostgreSQL traffic (TCP `5432`) from a specific IP should be represented as a Cloud Firewalls rule allowing TCP traffic on port `5432` from that same IP.
 
 ### Back up Your Existing Configuration
 
@@ -204,65 +204,61 @@ Export your existing Google Cloud NGFW rules by running the following command an
 gcloud compute firewall-rules list --format=json > firewall-rules.json
 ```
 
-## Create Equivalent Rules on Akamai Cloud Firewall
+## Create Equivalent Rules with Cloud Firewalls
 
 Once the planning and documentation are complete, begin building your new configuration in Akamai Cloud.
 
-Akamai Cloud Firewall rules can be managed through the [Akamai Cloud Manager](https://cloud.linode.com/) web interface or via the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/cli). This section demonstrates both methods.
+Cloud Firewalls rules can be managed through the [Cloud Manager](https://cloud.linode.com/) web interface or via the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/cli). This section demonstrates both methods.
 
-### Enable Akamai Cloud Firewall
+### Enable Cloud Firewalls
 
 {{< tabs >}}
-{{< tab "Akamai Cloud Manager" >}}
-1.  From the Akamai Cloud Manager, navigate to **Firewalls** and click **Create Firewall**.
+{{< tab "Cloud Manager" >}}
+1.  While logged into Cloud Manager, navigate to **Firewalls** and click **Create Firewall**.
 
-1.  Specify a label for the Akamai Cloud Firewall, accept the defaults for the inbound and outbound policies, then click **Create Firewall**.
+1.  Specify a label for the Cloud Firewall, accept the defaults for the inbound and outbound policies, and click **Create Firewall**. Initially, you do not need to assign any services. You can focus on rule creation first, then associate services later.
 
-    {{< note >}}
-    Initially, you do not need to assign any services. You can focus on rule creation first, then associate services later.
-    {{< /note >}}
+Once the Cloud Firewall has been created, you should see an initially empty list of inbound and outbound firewall rules.
 
-    Once the Cloud Firewall has been created, you should see an initially empty list of inbound and outbound firewall rules.
+![Cloud Manager screenshot showing newly created firewall.](cloudmanager-firewall-created-ui.png)
+{{< /tab >}}
+{{< tab "Linode CLI" >}}
+Use the Linode CLI to create a firewall, replacing {{< placeholder "CLOUD_FIREWALL_LABEL" >}} with a label of your choosing (e.g. `my-cloud-firewall`):
 
-    ![Akamai Cloud Manager screenshot showing newly created firewall.](cloudmanager-firewall-created-ui.png)
-    {{< /tab >}}
-    {{< tab "Linode CLI" >}}
-    Use the Linode CLI to create a firewall, replacing {{< placeholder "CLOUD_FIREWALL_LABEL" >}} with a label of your choosing (e.g. `my-cloud-firewall`):
+```command
+linode-cli firewalls create \
+    --rules.inbound_policy DROP \
+    --rules.outbound_policy ACCEPT \
+    --label "{{< placeholder "CLOUD_FIREWALL_LABEL" >}}"
+```
 
-    ```command
-    linode-cli firewalls create \
-        --rules.inbound_policy DROP \
-        --rules.outbound_policy ACCEPT \
-        --label "{{< placeholder "CLOUD_FIREWALL_LABEL" >}}"
-    ```
-
-    ```output
-    ┌---------┬--------------------┬---------┬---------------------┐
-    │ id      │ label              │ status  │ created             │
-    ├---------┼--------------------┼---------┼---------------------┤
-    │ 2420060 │ my-cloud-firewall  │ enabled │ 2025-04-28T17:42:45 │
-    └---------┴--------------------┴---------┴---------------------┘
-    ```
+```output
+┌---------┬--------------------┬---------┬---------------------┐
+│ id      │ label              │ status  │ created             │
+├---------┼--------------------┼---------┼---------------------┤
+│ 2420060 │ my-cloud-firewall  │ enabled │ 2025-04-28T17:42:45 │
+└---------┴--------------------┴---------┴---------------------┘
+```
 {{< /tab >}}
 {{< /tabs >}}
 
 ### Recreate Rules
 
 {{< tabs >}}
-{{< tab "Akamai Cloud Manager" >}}
-1.  Within the web UI, create a new rule by clicking **Add An Inbound Rule**.
+{{< tab "Cloud Manager" >}}
+1.  Select your Cloud Firewall, and create a new rule by clicking **Add An Inbound Rule**.
 
 1.  Specify a label and description for the rule. For example:
 
-    ![Akamai Cloud Manager UI for adding an inbound firewall rule.](add-inbound-rule-ui.png)
+    ![Cloud Manager UI for adding an inbound firewall rule.](add-inbound-rule-ui.png)
 
 1.  Next, select the protocol and which ports to apply this rule to. You can select from commonly used ports or select **Custom** to specify a custom port range. For example:
 
-    ![Akamai Cloud Manager UI for selecting protocol and port range.](specify-port-range-ui.png)
+    ![Cloud Manager UI for selecting protocol and port range.](specify-port-range-ui.png)
 
-1.  For Sources, specify whether you want the rule to apply to **all** IPv4 or IPv6 addresses, or if you want to provide specific IP addresses. If providing specific IP addresses, add them one at a time.
+1.  For Sources, specify whether you want the rule to apply to **all** IPv4 or IPv6 addresses, or if you want to provide specific IP addresses. If providing specific IP addresses, add them one at a time. See our guide on [managing firewall rules](https://techdocs.akamai.com/cloud-computing/docs/manage-firewall-rules) for syntax specifications.
 
-    ![Akamai Cloud Manager UI for entering source IP addresses.](specify-source-addresses-ui.png)
+    ![Cloud Manager UI for entering source IP addresses.](specify-source-addresses-ui.png)
 
 1.  Finally, decide whether the rule is meant to serve as an allowlist (Accept) or denylist (Drop). For this example migration from AWS Security Groups, the action would be Accept. Click **Add Rule**.
 
@@ -399,13 +395,15 @@ When using the web UI, rules must be created one at a time. With the Linode CLI,
 
 You can attach multiple Linodes or NodeBalancers to the Cloud Firewall. Note that inbound and outbound rules apply to Linode instances, whereas only inbound rules apply to NodeBalancers.
 
+See our additional [migration documentation](https://www.linode.com/docs/guides/platform/migrate-to-linode/) for guidance on migrating other services -- such as compute instances -- to Akamai Cloud.
+
 {{< tabs >}}
-{{< tab "Akamai Cloud Manager" >}}
+{{< tab "Cloud Manager" >}}
 1.  Navigate to the **Linodes** tab for your Cloud Firewall and click **Add Linodes to Firewall**:
 
-    ![Akamai Cloud Manager UI for attaching Linodes to the firewall.](attach-instances-ui.png)
+    ![Cloud Manager UI for attaching Linodes to the firewall.](attach-instances-ui.png)
 
-1.  From the list, select which Linode (or Linodes) to assign to this Cloud Firewall and click **Add**:
+1.  From the list, select which Linode (or Linodes) to assign to the Cloud Firewall and click **Add**:
 
     ![List of Linode instances attached to the firewall in the UI.](attached-linodes-list-ui.png)
 
@@ -450,7 +448,7 @@ The firewall rules you specified should now be applied to the Linode (or Linodes
 
 ## Test and Validate Your Configuration
 
-After applying rules to your Akamai Cloud Firewall, confirm that they behave as expected under real traffic conditions. Note that your firewall configurations may require different testing methods than those listed in this section.
+After applying rules to your Cloud Firewalls, confirm that they behave as expected under real traffic conditions. Note that your firewall configurations may require different testing methods than those listed in this section.
 
 ### Simulate Expected and Blocked Traffic
 
@@ -568,7 +566,7 @@ From an IP on the allowlist, test access to each service and confirm that the co
 
 ### Log and Monitor Behavior
 
-Akamai Cloud Firewall does not provide per-packet or rule-level logging. To verify behavior, rely on logs from the services themselves. For example:
+The Cloud Firewalls service does not show per-packet or rule-level logging. To verify behavior, rely on logs from the services themselves. For example:
 
 -   NGINX access logs, as configured in individual virtual server configuration files, are found in `/etc/nginx/sites-available`.
 -   SSH authentication logs are located at (`/var/log/auth.log`).
@@ -581,14 +579,14 @@ Connection and activity logs from these services can help to confirm whether tra
 
 Ongoing monitoring helps identify any overlooked configuration issues or unexpected traffic patterns. Continue observing application logs and metrics post-migration. Make sure services are available to intended users and there are no spikes in error rates or timeouts.
 
-If legitimate traffic is being blocked or malicious traffic is being allowed, refine your Akamai Cloud Firewall rules. It may take a few iterations to achieve parity with your original Google Cloud NGFW behavior.
+If legitimate traffic is being blocked or malicious traffic is being allowed, refine your Cloud Firewalls rules. It may take a few iterations to achieve parity with your original Google Cloud NGFW behavior.
 
 ## Finalize Your Migration
 
 Once you've validated the new firewall configuration, clean up legacy resources and update internal references:
 
 -   Find components that were connecting with your GCP Compute Engine VM instance.
--   Create equivalent Akamai Cloud Firewall rules to allow traffic from legitimate components.
+-   Create equivalent rules with Cloud Firewalls to allow traffic from legitimate components.
 -   Remove the Google Cloud NGFW rules.
 -   Remove the GCP Compute Engine VM instance.
 
