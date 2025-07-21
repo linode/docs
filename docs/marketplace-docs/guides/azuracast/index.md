@@ -35,7 +35,7 @@ marketplace_app_name: "AzuraCast"
 - **Supported distributions:** Ubuntu 24.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
-## Azuracast Options
+## AzuraCast Options
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
