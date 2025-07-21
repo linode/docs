@@ -18,7 +18,7 @@ marketplace_app_id: 662118
 marketplace_app_name: "AzuraCast"
 ---
 
-[AzuraCast](https://www.azuracast.com) is a free self-hosted web radio station and management suite. Installation is simple with Marketplace Apps, and the intuitive web interface makes running a web station easy. After installation, you can be broadcasting within in minutes.
+[AzuraCast](https://www.azuracast.com) is a free self-hosted web radio station and management suite. The installation with Marketplace Apps is simple and the intuitive web interface makes the running a web station easy. After installation, you can be broadcasting within minutes.
 
 ## Deploying a Marketplace App
 
@@ -51,25 +51,21 @@ marketplace_app_name: "AzuraCast"
 
 AzuraCast is now installed and ready to use.
 
-1.  Open your web browser and navigate to `http://[domain]/admin`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1.  Open your web browser and navigate to `http://[domain]/admin`, where *[domain]* is the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). To learn more about viewing IP addresses and rDNS, see [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/).
 
-1.  The first thing you want to do is login with your *Super Administrator* account that has system-wide permissions. This account was set up during the installation when you entered your Administrator Email Address.
+1. Log in with your *Super Administrator* credentials. This account has system-wide permissions and was set up during the installation when you entered your Administrator Email Address.
 
     !["AzuraCast Login"](azuracast-login.png "AzuraCast Login")
 
-1.  Next, AzuraCast prompts you to create a new radio station. Fill out the required fields, then click the **Create and Continue** button at the bottom of the screen to continue.
+1.  Fill out the required fields in the registration form and click **Create and Continue**.
 
     !["AzuraCast Create Station"](azuracast-create-station.png "AzuraCast Create Station")
 
-1.  On the next page you can set other settings including using a custom URL if you have one set up. Learn more about using a custom URL with Linode DNS in our [DNS Manager](/docs/products/networking/dns-manager/) guide. When you are finished, click the **Save Changes** button at the bottom of the screen to continue.
+1.  Configure station's settings including using a custom URL if you have one set up. To learn more about using a custom URL with Linode DNS, see [DNS Manager](/docs/products/networking/dns-manager/). Click **Save Changes**.
 
-1.  Your station is now ready. On the following page, you are taken to the control panel, and you are ready to start broadcasting your station.
+Your station is now ready and you are ready to start broadcasting. To manage the created station, click **Manage Stations** in the **Dashboard** section. This opens the *Station Dashboard* that you can use to control your station, add songs, add DJs, take requests, and more.
 
-1.  To manage the station you just created click the **Manage Stations** button in the **Dashboard** section. This will open the Station Dashboard for the station you created during setup.
-
-    !["AzuraCast Manage Station"](azuracast-manage-station.png "AzuraCast Manage Station")
-
-1.  Here you can control your station, add songs, add DJs, take requests, and more.
+!["AzuraCast Manage Station"](azuracast-manage-station.png "AzuraCast Manage Station")
 
 ## Software Included
 
