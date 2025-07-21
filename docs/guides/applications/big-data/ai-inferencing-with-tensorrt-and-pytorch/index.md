@@ -27,6 +27,16 @@ The primary AI model used in this guide is a ResNet50 computer vision (CV) model
 In some cases, a $100 deposit may be required to deploy GPU Linodes. This may include new accounts that have been active for less than 90 days and accounts that have spent less than $100 on services. If you are unable to deploy GPU Linodes, contact [Support](https://www.linode.com/support/) for assistance.
 {{< /note >}}
 
+## AI Inferencing
+
+### What is AI Inference?
+
+
+
+### What is Computer Vision (CV)?
+
+Computer vision is a type of artificial intelligence that interprets images and outputs physical information about what is detected in the image. This guide uses a CV model (ResNet50) that uses a specific pre-trained set of images and runs an example image against that set. In this example, inferencing occurs when the CV model returns information about the example image (i.e. "this is a picture of a dog") based on its pre-trained knowledge base of millions of sample images.
+
 ## What are TensorRT and PyTorch?
 
 ### TensorRt
@@ -217,7 +227,7 @@ Create and run a Python script using a pre-trained ResNet50 computer vision mode
 
     - Imports the PyTorch framework and its pre-trained models
 
-    - Pulls an example sample image of a dog from PyTorch's GitHub repository
+    - Pulls an example sample image of a dog from PyTorch's GitHub repository on which to run AI inference
 
     - Preprocessing for the sample image: Image resizing for compatibility with the ResNet50 model, format conversion for PyTorch, add a "batch dimension" to emulate multiple images, moves the processed data to the GPU
 
