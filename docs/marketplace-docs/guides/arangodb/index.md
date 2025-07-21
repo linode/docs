@@ -16,7 +16,7 @@ marketplace_app_id: 1873119
 marketplace_app_name: "ArangoDB"
 ---
 
-[ArangoDB](https://arangodb.com/community-server/) is a native multimodel database that combines graph, document, and search capabilities into a single platform. It provides a unified query language (AQL) to access all data models seamlessly. ArangoDB is designed for high performance and scalability, making it suitable for various applications including fraud detection, recommendation systems, knowledge graphs, and IoT data management. The Community Edition offers core functionality including native graph traversal, document storage, and ArangoSearch capabilities. With its flexible schema and powerful query capabilities, ArangoDB enables developers to build applications that can handle complex data relationships and perform sophisticated analytics.
+[ArangoDB](https://arangodb.com/community-server/) is a native multi-model database that combines graph, document, and search capabilities into a single platform. It provides a unified query language (AQL) to access all data models seamlessly. ArangoDB is designed for high performance and scalability, making it suitable for various applications including fraud detection, recommendation systems, knowledge graphs, and IoT data management. The Community Edition offers core functionality including native graph traversal, document storage, and ArangoSearch capabilities. With its flexible schema and powerful query capabilities, ArangoDB enables developers to build applications that can handle complex data relationships and perform sophisticated analytics.
 
 ## Deploying a Marketplace App
 
