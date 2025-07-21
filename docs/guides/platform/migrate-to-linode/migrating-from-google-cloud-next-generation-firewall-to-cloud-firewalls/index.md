@@ -1,40 +1,40 @@
 ---
-slug: migrating-from-aws-security-groups-to-akamai-cloud-firewall
-title: "Migrating From AWS Security Groups to Akamai Cloud Firewall"
-description: "Learn how to migrate AWS Security Group rules to Akamai Cloud Firewall. This guide covers planning, exporting, rule mapping, and validating traffic."
+slug: migrating-from-google-cloud-next-generation-firewall-to-cloud-firewalls
+title: "Migrating From Google Cloud Next Generation Firewall (NGFW) to Cloud Firewalls"
+description: "Learn how to migrate Google Cloud NGFW rules to Cloud Firewalls on Akamai Cloud. This guide covers planning, exporting, rule mapping, and traffic validation."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-07-17
-keywords: ['aws firewall','aws firewall migration','aws security groups','aws security groups migration','akamai cloud firewall','linode cloud firewall','migrate aws firewall rules','cloud firewall migration','firewall rule mapping','network security migration','aws to akamai firewall']
+keywords: ['google cloud next generation firewall','gcp ngfw','gcp ngfw migration','akamai cloud firewall','linode cloud firewall','migrate gcp firewall rules','cloud firewall migration','firewall rule mapping','network security migration','gcp to akamai firewall']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[AWS Security Groups documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html)'
-- '[AWS CLI EC2 Reference](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/index.html#cli-aws-ec2)'
+  - '[Google Cloud NGFW Documentation](https://cloud.google.com/firewall/docs/about-firewalls)'
+  - '[Google Cloud CLI Commands Related to NGFW Rules](https://cloud.google.com/sdk/gcloud/reference/compute/firewall-rules)'
 ---
 
-AWS Security Groups are virtual firewalls that control inbound and outbound traffic to AWS resources like EC2 instances. They operate at the instance level and allow administrators to define traffic rules based on IP addresses, protocols, and ports.
+Google Cloud Next Generation Firewall (NGFW) is a network-level firewall that allows administrators to define granular rules based on IP ranges, ports, protocols, and service accounts. NGFW supports threat intelligence-based filtering and hierarchical policy enforcement, offering centralized control for securing workloads across projects and regions.
 
 [Akamai Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) is a network-level firewall service that controls traffic for Linode instances and NodeBalancers, Akamai Cloud’s load balancing service. Cloud Firewall supports inbound and outbound traffic management with Linode instances and inbound traffic for NodeBalancers. It operates at [Layers 3 and 4](https://www.akamai.com/glossary/what-are-network-layers), providing IP, protocol, and port filtering.
 
 ![OSI layers 1–7 with attack vectors noted for Layers 3 (Network), 4 (Transport), 5 (Session), and 7 (Application).](network-layers-diagram.png)
 
-This guide explains how to migrate a basic security setup from AWS Security Groups to Akamai Cloud Firewall. It covers planning, documenting your configuration, creating equivalent rules on Akamai Cloud Firewall, and testing the results.
+This guide explains how to migrate a basic security setup from Google Cloud NGFW to Akamai Cloud Firewall. It covers planning, documenting your configuration, creating equivalent rules on Akamai Cloud Firewall, and testing the results.
 
 ## Feature Comparison
 
-Before beginning the migration process, it's important to understand the capabilities and limitations of both AWS Security Groups and Akamai Cloud Firewall. This helps you identify which rules can be migrated directly and which require additional configuration.
+Before beginning the migration process, it's important to understand the capabilities and limitations of both Google Cloud NGFW and Akamai Cloud Firewall. This helps you identify which rules can be migrated directly and which require additional configuration.
 
-### What AWS Security Groups Offer
+### What Google Cloud NGFW Offers
 
-AWS Security Groups allow you to create sets of firewall rules that control traffic based on IP addresses, CIDR blocks, ports, and protocols. Security groups are stateful (i.e. return traffic is automatically allowed) and attach directly to the network interfaces of your AWS resources.
+Google Cloud NGFW filters traffic at the VPC network level. It supports rules based on IP ranges, ports, protocols, and targets (e.g. network tags or service accounts). NGFW also enables centralized policy management across projects, with features like threat intelligence-based blocking and hierarchical enforcement for consistent, scalable security controls.
 
 ### What Cloud Firewall Offers
 
-Akamai Cloud Firewall is a Layer 3/4 stateless packet filter designed for simplicity and performance. It allows users to specify rules that allow or deny traffic based on source IP, destination port, and protocol (e.g. TCP, UDP, ICMP, and IPEncap). It does not inspect application-layer traffic, but it is effective at managing access to services based on IP and port-level rules.
+Akamai Cloud Firewall is a Layer 3/4 stateless packet filter designed for simplicity and performance. It allows users to specify rules that allow or deny traffic based on source IP, destination port, and protocol (TCP, UDP, ICMP, and IPEncap). It does not inspect application-layer traffic, but it is effective at managing access to services based on IP and port-level rules.
 
 ### What’s Not Directly Portable
 
-Because Akamai Cloud Firewall doesn’t currently support Layer 7 inspection, features such as pattern matching, geographic filtering, and rate limiting cannot be replicated natively. These must be implemented at the application level using reverse proxies like NGINX or additional third-party services.
+Because Akamai Cloud Firewall doesn't currently support Layer 7 inspection, features such as pattern matching, geographic filtering, and rate limiting cannot be replicated natively. These must be implemented at the application level using reverse proxies like NGINX or additional third-party services.
 
 ## Before You Begin
 
@@ -44,186 +44,137 @@ Because Akamai Cloud Firewall doesn’t currently support Layer 7 inspection, fe
 
 1.  Install the Linode CLI using the instructions in the [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
 
-1.  You need an AWS account with a user or role that has permission to list, view, and modify EC2 networking settings and Security Groups.
+1.  You need a Google Cloud project with a user or service account that has permissions to list, view, and modify VPC firewall rules.
 
-1.  Ensure the AWS CLI (v2) is installed locally and configured (via `aws configure`) for the appropriate credentials and default region.
+1.  Ensure the Google Cloud CLI is installed locally and authenticated (via `gcloud auth login`) for the correct project (via `gcloud config set project`).
 
 ### Example Environment Used in This Guide
 
-The example used throughout this guide involves an AWS Security Group associated with a single EC2 instance. The EC2 is configured for several services:
+The example used throughout this guide involves a GCP VM instance on a network with traffic governed by a Google Cloud NGFW. The VM instance is configured for several services:
 
 -   Web traffic handled by NGINX on ports `80` and `443`
 -   PostgreSQL database on port `5432`
 -   SSH on port `22`
 -   Redis on port `6379`
 
-The AWS Security Group is configured with inbound rules to restrict access to known IP addresses.
+The Google Cloud NGFW is configured with inbound rules to restrict access to known IP addresses.
 
-The equivalent setup on Akamai Cloud uses a single Linode instance running the same services. Akamai Cloud Firewall is used to recreate the access controls previously handled by the AWS Security Group.
+The equivalent setup on Akamai Cloud uses a single Linode instance running the same services. Akamai Cloud Firewall is used to recreate the access controls previously handled by the Google Cloud NGFW.
 
-![Architecture diagram of AWS EC2 instance and services environment with equivalent setup on Akamai Cloud.](example-environment-architecture.svg)
+![Architecture diagram of Google Cloud VM instance and services environment with equivalent setup on Akamai Cloud.](example-environment-architecture.svg)
 
-## Document Your Current Configuration
+## Document your Current Configuration
 
-Before making changes, it's essential to fully understand your existing AWS EC2 and Security Group configuration. Document how traffic flows to your EC2 instance by noting which ports are open and which services are bound to each port. This can help you set up equivalent access controls using Akamai Cloud Firewall.
+Before making changes, it's essential to fully understand your existing GCP VM instance and Google Cloud NGFW configuration. Document how traffic flows to your Compute Engine VM by noting which ports are open and which services are bound to each port. This can help you set up equivalent access controls using Akamai Cloud Firewall.
 
-### Review AWS Security Group Rules
+### Review Google Cloud NGFW Rules
 
-Use the AWS Console or `aws` CLI to export or list your active Security Group rules.
+Use the Google Cloud Console or `gcloud` CLI to export or list your NGFW rules.
 
 {{< tabs >}}
-{{< tab "AWS Console" >}}
-1.  In the AWS Console, navigate to the **EC2** service.
+{{< tab "Google Cloud Console" >}}
+1.  In the Google Cloud Console, navigate to GCP **Compute Engine** > **VM Instances**.
 
-1.  Select the appropriate EC2 instance to view its details.
+1.  Select the appropriate VM instance to view its details:
 
-1.  Under the **Security** tab, select the Security Group associated with the EC2 instance to view a list of inbound rules for the Security Group:
+    ![Google Cloud Console screenshot listing VM instances.](gcp-console-vm-instances-list.png)
 
-    ![AWS Console screenshot listing EC2 Security Group rules.](security-group-rules-list.png)
+1.  Within the **Details** tab, under **Network interfaces**, select the name of the Network associated with this VM:
+
+    ![Google Cloud Console screenshot of VM’s Network interfaces details.](gcp-console-network-interfaces-details.png)
+
+1.  On the VPC network details page, navigate to the **Firewalls** tab to view a list of Google Cloud NGFW rules applied to your VPC:
+
+    ![Google Cloud Console screenshot listing VPC firewall rules.](gcp-console-firewall-rules-list.png)
 {{< /tab >}}
-{{< tab "AWS CLI" >}}
-To access this information from the `aws` CLI, run the following commands:
+{{< tab "Google Cloud CLI" >}}
+Run the following `gcloud` CLI command to list all NGFW rules:
 
-1.  Query for security group(s) associated with the EC2 instance, replacing {{< placeholder "AWS_REGION" >}} and {{< placeholder "EC2_INSTANCE_ID" >}} with your values:
+```command
+gcloud compute firewall-rules list \
+    --format="json(name,description,allowed,sourceRanges)"
+```
 
-    ```command
-    aws ec2 describe-instances \
-        --region {{< placeholder "AWS_REGION" >}} \
-        --instance-ids {{< placeholder "EC2_INSTANCE_ID" >}} \
-        --query "Reservations[0].Instances[0].SecurityGroups"
-    ```
-
-    ```output
-    [
-        {
-            "GroupName": "launch-wizard-1",
-            "GroupId": "sg-046f0337540471bd1"
-        }
-    ]
-    ```
-
-1.  Query for all associated rules for each security group, replacing {{< placeholder "SECURITY_GROUP_ID" >}} (e.g. `sg-046f0337540471bd1`):
-
-    ```command
-    aws ec2 describe-security-group-rules \
-        --region {{< placeholder "AWS_REGION" >}} \
-        --filters Name=group-id,Values={{< placeholder "SECURITY_GROUP_ID" >}}
-    ```
-
-    This command lists all inbound and outbound rules for the security group. It shows exactly which traffic is allowed on each port of your EC2 instance.
-
-    ```output
-    {
-        "SecurityGroupRules": [
-            {
-                "SecurityGroupRuleId": "sgr-09de63fe55f86984c",
-                "GroupId": "sg-046f0337540471bd1",
-                "IsEgress": false,
-                "IpProtocol": "tcp",
-                "FromPort": 22,
-                "ToPort": 22,
-                "CidrIpv4": "0.0.0.0/0",
-                "Description": "Anywhere",
-                "Tags": [
-                    {
-                        "Key": "Name",
-                        "Value": "SSH"
-                    }
-                ]
-            },
-            {
-                "SecurityGroupRuleId": "sgr-05e5d6e0ee20b4ced",
-                "GroupId": "sg-046f0337540471bd1",
-                "IsEgress": true,
-                "IpProtocol": "-1",
-                "FromPort": -1,
-                "ToPort": -1,
-                "CidrIpv4": "0.0.0.0/0",
-                "Tags": []
-            },
-            {
-                "SecurityGroupRuleId": "sgr-0cee9d70f10153c73",
-                "GroupId": "sg-046f0337540471bd1",
-                "IsEgress": false,
-                "IpProtocol": "tcp",
-                "FromPort": 5432,
-                "ToPort": 5432,
-                "CidrIpv4": "50.116.12.84/32",
-                "Description": "Postgres access for admin server",
-                "Tags": [
-                    {
-                        "Key": "Name",
-                        "Value": "Postgres"
-                    }
-                ]
-            },
-            {
-                "SecurityGroupRuleId": "sgr-033f9a4a8d0c2c7f1",
-                "GroupId": "sg-046f0337540471bd1",
-                "IsEgress": false,
-                "IpProtocol": "tcp",
-                "FromPort": 6379,
-                "ToPort": 6379,
-                "CidrIpv4": "50.116.12.84/32",
-                "Description": "Redis access for admin server",
-                "Tags": [
-                    {
-                        "Key": "Name",
-                        "Value": "Redis"
-                    }
-                ]
-            },
-            {
-                "SecurityGroupRuleId": "sgr-010dd8ce746ddf1e6",
-                "GroupId": "sg-046f0337540471bd1",
-                "IsEgress": false,
-                "IpProtocol": "tcp",
-                "FromPort": 6379,
-                "ToPort": 6379,
-                "CidrIpv4": "173.230.145.119/32",
-                "Description": "Redis access for external service",
-                "Tags": [
-                    {
-                        "Key": "Name",
-                        "Value": "Redis"
-                    }
-                ]
-            },
-            {
-                "SecurityGroupRuleId": "sgr-0ade40a7b507e4f6a",
-                "GroupId": "sg-046f0337540471bd1",
-                "IsEgress": false,
-                "IpProtocol": "tcp",
-                "FromPort": 80,
-                "ToPort": 80,
-                "CidrIpv4": "0.0.0.0/0",
-                "Description": "Anywhere",
-                "Tags": [
-                    {
-                        "Key": "Name",
-                        "Value": "HTTP Web"
-                    }
-                ]
-            },
-            {
-                "SecurityGroupRuleId": "sgr-0d4de7c5f03e750e7",
-                "GroupId": "sg-046f0337540471bd1",
-                "IsEgress": false,
-                "IpProtocol": "tcp",
-                "FromPort": 443,
-                "ToPort": 443,
-                "CidrIpv4": "0.0.0.0/0",
-                "Description": "Anywhere",
-                "Tags": [
-                    {
-                        "Key": "Name",
-                        "Value": "HTTPS Web"
-                    }
-                ]
-            }
+```output
+[
+  {
+    "allowed": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "22"
         ]
-    }
-    ```
+      }
+    ],
+    "description": "Allow SSH from anywhere",
+    "name": "default-allow-ssh",
+    "sourceRanges": [
+      "0.0.0.0/0"
+    ]
+  },
+  {
+    "allowed": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "80"
+        ]
+      }
+    ],
+    "description": "Allow any IP to port 80",
+    "name": "http-allow-any",
+    "sourceRanges": [
+      "0.0.0.0/0"
+    ]
+  },
+  {
+    "allowed": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "443"
+        ]
+      }
+    ],
+    "description": "Allow any to port 443",
+    "name": "https-allow-any",
+    "sourceRanges": [
+      "0.0.0.0/0"
+    ]
+  },
+  {
+    "allowed": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "5432"
+        ]
+      }
+    ],
+    "description": "Only allow superadmin to port 5432",
+    "name": "psql-allow-superadmin",
+    "sourceRanges": [
+      "174.17.24.41/32"
+    ]
+  },
+  {
+    "allowed": [
+      {
+        "IPProtocol": "tcp",
+        "ports": [
+          "6379"
+        ]
+      }
+    ],
+    "description": "Allow to port 6379 from specific IPs",
+    "name": "redis-allow-admin",
+    "sourceRanges": [
+      "174.17.24.41/32",
+      "173.230.174.213/32"
+    ]
+  }
+]
+```
 {{< /tab >}}
 {{< /tabs >}}
 
@@ -232,29 +183,25 @@ The example in this guide only has inbound rules, with traffic allowed for speci
 ![Visual flowchart of inbound port permissions in the example setup.](inbound-permissions-diagram.svg)
 
 {{< note >}}
-Your firewall may have both inbound and outbound rules, with traffic allowed or denied for specific IP addresses.
+Your firewall may have both inbound and outbound rules, with traffic allowed for specific IP addresses or denied for specific IP addresses.
 {{< /note >}}
 
 ### Plan Your Rule-Mapping Strategy
 
-After documenting your AWS configuration, plan how to translate those rules into Akamai Cloud Firewall’s syntax and feature set.
+After documenting your Google Cloud setup, plan how to translate those rules into Akamai Cloud Firewall’s syntax and feature set.
 
-In this example, core services are exposed on ports `22`, `80`, `443`, `5432`, and `6379`. The AWS Security Group allows access to certain ports (`5432` and `6379`) only from an approved IP allowlist, while traffic from any source can reach ports `22`, `80`, `443`. These rules must be recreated on Akamai Cloud to maintain equivalent protection.
+In this example, core services are exposed on ports `22`, `80`, `443`, `5432`, and `6379`. The Google Cloud NGFW allows access to certain ports (`5432` and `6379`) only from an approved IP allowlist, while traffic from any source can reach ports `22`, `80`, `443`. These rules must be recreated on Akamai Cloud to maintain equivalent protection.
 
-Create a side-by-side comparison, mapping AWS Security Group rules to their Akamai Cloud Firewall equivalents. For example, a rule that allows PostgreSQL traffic (TCP `5432`) from a specific IP should be represented as an Akamai Cloud Firewall rule allowing TCP traffic on port `5432` from that same IP.
+Create a side-by-side comparison, mapping Google Cloud NGFW rules to their Akamai Cloud Firewall equivalents. For example, a rule that allows PostgreSQL traffic (TCP `5432`) from a specific IP should be represented as an Akamai Cloud Firewall rule allowing TCP traffic on port `5432` from that same IP.
 
 ### Back up Your Existing Configuration
 
-Before disabling or removing AWS resources, create a backup of all relevant configuration data.
+Before disabling or removing Google Cloud resources, create a backup of all relevant configuration data.
 
-Export your existing Security Group configurations by running the following command and saving the output to a file:
+Export your existing Google Cloud NGFW rules by running the following command and saving the output to a file:
 
 ```command
-aws ec2 describe-security-group-rules \
-    --region {{< placeholder "AWS_REGION" >}} \
-    --filters Name=group-id,Values={{< placeholder "SECURITY_GROUP_ID" >}} \
-    --output json \
-    > sg-rules.json
+gcloud compute firewall-rules list --format=json > firewall-rules.json
 ```
 
 ## Create Equivalent Rules on Akamai Cloud Firewall
@@ -269,35 +216,37 @@ Akamai Cloud Firewall rules can be managed through the [Akamai Cloud Manager](ht
 {{< tab "Akamai Cloud Manager" >}}
 1.  From the Akamai Cloud Manager, navigate to **Firewalls** and click **Create Firewall**.
 
-1.  Specify a label for the Akamai Cloud Firewall and accept the defaults for the inbound and outbound policies. Initially, you do not need to assign any services. You can focus on rule creation first, then associate services later. Click **Create Firewall**.
+1.  Specify a label for the Akamai Cloud Firewall, accept the defaults for the inbound and outbound policies, then click **Create Firewall**.
 
-Once the Cloud Firewall has been created, you should see an initially empty list of inbound and outbound firewall rules.
+    {{< note >}}
+    Initially, you do not need to assign any services. You can focus on rule creation first, then associate services later.
+    {{< /note >}}
 
-![Akamai Cloud Manager screenshot showing newly created firewall.](cloudmanager-firewall-created-ui.png)
-{{< /tab >}}
-{{< tab "Linode CLI" >}}
-Use the Linode CLI to create a firewall, replacing {{< placeholder "CLOUD_FIREWALL_LABEL" >}} with a label of your choosing (e.g. `my-cloud-firewall`):
+    Once the Cloud Firewall has been created, you should see an initially empty list of inbound and outbound firewall rules.
 
-```command
-linode-cli firewalls create \
-    --rules.inbound_policy DROP \
-    --rules.outbound_policy ACCEPT \
-    --label "{{< placeholder "CLOUD_FIREWALL_LABEL" >}}"
-```
+    ![Akamai Cloud Manager screenshot showing newly created firewall.](cloudmanager-firewall-created-ui.png)
+    {{< /tab >}}
+    {{< tab "Linode CLI" >}}
+    Use the Linode CLI to create a firewall, replacing {{< placeholder "CLOUD_FIREWALL_LABEL" >}} with a label of your choosing (e.g. `my-cloud-firewall`):
 
-```output
-┌---------┬--------------------┬---------┬---------------------┐
-│ id      │ label              │ status  │ created             │
-├---------┼--------------------┼---------┼---------------------┤
-│ 2420060 │ my-cloud-firewall  │ enabled │ 2025-04-28T17:42:45 │
-└---------┴--------------------┴---------┴---------------------┘
-```
+    ```command
+    linode-cli firewalls create \
+        --rules.inbound_policy DROP \
+        --rules.outbound_policy ACCEPT \
+        --label "{{< placeholder "CLOUD_FIREWALL_LABEL" >}}"
+    ```
+
+    ```output
+    ┌---------┬--------------------┬---------┬---------------------┐
+    │ id      │ label              │ status  │ created             │
+    ├---------┼--------------------┼---------┼---------------------┤
+    │ 2420060 │ my-cloud-firewall  │ enabled │ 2025-04-28T17:42:45 │
+    └---------┴--------------------┴---------┴---------------------┘
+    ```
 {{< /tab >}}
 {{< /tabs >}}
 
 ### Recreate Rules
-
-Recreate each of the rules documented from your AWS Security Group.
 
 {{< tabs >}}
 {{< tab "Akamai Cloud Manager" >}}
@@ -317,7 +266,9 @@ Recreate each of the rules documented from your AWS Security Group.
 
 1.  Finally, decide whether the rule is meant to serve as an allowlist (Accept) or denylist (Drop). For this example migration from AWS Security Groups, the action would be Accept. Click **Add Rule**.
 
-1.  Repeat the steps above to recreate all the equivalent rules from the AWS Security Group configuration.
+1.  Recreate each of the rules documented from your Google Cloud NGFW. Within the web UI, create a new rule by clicking **Add An Inbound Rule**.
+
+1.  Repeat the steps above to recreate all the equivalent rules from the Google Cloud NGFW configuration.
 
 1.  After adding all rules, click **Save Changes**.
 {{< /tab >}}
@@ -406,7 +357,7 @@ When using the web UI, rules must be created one at a time. With the Linode CLI,
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-1.  With the file in place, run the following Linode CLI command, making sure to supply your Akamai {{< placeholder "CLOUD_FIREWALL_ID" >}} (e.g `2420060`):
+1.  With the file in place, run the following Linode CLI command, making sure to supply your Akamai {{< placeholder "CLOUD_FIREWALL_ID" >}} (e.g. `2420060`):
 
     ```command
     linode-cli firewalls rules-update {{< placeholder "CLOUD_FIREWALL_ID" >}} \
@@ -565,7 +516,7 @@ From an IP on the allowlist, test access to each service and confirm that the co
     SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, compression: off, ALPN: none)
     Type "help" for help.
 
-    tesdb=#
+    testdb=#
     ```
 
 1.  Now attempt to connect to the PostgreSQL server with the `psql` client from an IP address that is not allowed through the Cloud Firewall rules:
@@ -620,7 +571,7 @@ From an IP on the allowlist, test access to each service and confirm that the co
 Akamai Cloud Firewall does not provide per-packet or rule-level logging. To verify behavior, rely on logs from the services themselves. For example:
 
 -   NGINX access logs, as configured in individual virtual server configuration files, are found in `/etc/nginx/sites-available`.
--   SSH authentication logs are located at `/var/log/auth.log`.
+-   SSH authentication logs are located at (`/var/log/auth.log`).
 -   Redis logs are typically found in `/var/log/redis/redis-server.log`, though this is configurable in `/etc/redis/redis.conf`.
 -   PostgreSQL logs are typically found in `/var/log/postgresql/`, though this is configurable in `/etc/postgresql/[PATH-TO-VERISON]/postgresql.conf`.
 
@@ -630,15 +581,15 @@ Connection and activity logs from these services can help to confirm whether tra
 
 Ongoing monitoring helps identify any overlooked configuration issues or unexpected traffic patterns. Continue observing application logs and metrics post-migration. Make sure services are available to intended users and there are no spikes in error rates or timeouts.
 
-If legitimate traffic is being blocked or malicious traffic is being allowed, refine your Akamai Cloud Firewall rules. It may take a few iterations to achieve parity with your original AWS Security Group behavior.
+If legitimate traffic is being blocked or malicious traffic is being allowed, refine your Akamai Cloud Firewall rules. It may take a few iterations to achieve parity with your original Google Cloud NGFW behavior.
 
 ## Finalize Your Migration
 
 Once you've validated the new firewall configuration, clean up legacy resources and update internal references:
 
--   Find components that were connecting with your AWS EC2 instance.
+-   Find components that were connecting with your GCP Compute Engine VM instance.
 -   Create equivalent Akamai Cloud Firewall rules to allow traffic from legitimate components.
--   Remove the AWS Security Group.
--   Remove the AWS EC2 instance.
+-   Remove the Google Cloud NGFW rules.
+-   Remove the GCP Compute Engine VM instance.
 
 Update runbooks, internal network diagrams, and configuration documentation to reflect the new firewall architecture based on Akamai Cloud Firewall.
