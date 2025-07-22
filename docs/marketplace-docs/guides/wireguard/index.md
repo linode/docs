@@ -143,7 +143,7 @@ To test the connection between your WireGuard client and server:
    sudo wg show
    ```
 
-   You should see an similar output similar:
+   You should see a similar output:
    ```output
    interface: wg0
      public key: <server-public-key>
@@ -162,7 +162,7 @@ To test the connection between your WireGuard client and server:
 | **Software** | **Description** |
 |--------------|-----------------|
 | [**WireGuard**](https://www.wireguard.com) | VPN software. |
-| [**UFW (UncomplicatedFireWall)**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. The Port assigned during the deployment that allows outgoing and incoming traffic. |
+| [**UFW (UncomplicatedFireWall)**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. The port assigned during the deployment that allows outgoing and incoming traffic. |
 
 {{% content "marketplace-update-note-shortguide" %}}
 
