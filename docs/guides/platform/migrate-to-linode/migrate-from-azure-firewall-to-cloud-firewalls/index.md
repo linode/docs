@@ -1,6 +1,6 @@
 ---
-slug: migrating-from-azure-firewall-to-cloud-firewalls
-title: "Migrating From Azure Firewall to Cloud Firewalls"
+slug: migrate-from-azure-firewall-to-cloud-firewalls
+title: "Migrate From Azure Firewall to Cloud Firewalls"
 description: "Learn how to migrate Azure Firewall rules to Cloud Firewalls on Akamai Cloud. This guide covers planning, exporting, mapping rules, and traffic validation."
 authors: ["Akamai"]
 contributors: ["Akamai"]

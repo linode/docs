@@ -1,6 +1,6 @@
 ---
-slug: migrating-from-google-cloud-next-generation-firewall-to-cloud-firewalls
-title: "Migrating From Google Cloud Next Generation Firewall (NGFW) to Cloud Firewalls"
+slug: migrate-from-google-cloud-next-generation-firewall-to-cloud-firewalls
+title: "Migrate From Google Cloud Next Generation Firewall (NGFW) to Cloud Firewalls"
 description: "Learn how to migrate Google Cloud NGFW rules to Cloud Firewalls on Akamai Cloud. This guide covers planning, exporting, rule mapping, and traffic validation."
 authors: ["Akamai"]
 contributors: ["Akamai"]
