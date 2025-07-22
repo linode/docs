@@ -18,13 +18,13 @@ marketplace_app_id: 401706
 marketplace_app_name: "WireGuard"
 ---
 
-WireGuard&#174; is a simple, fast, and modern virtual private network (VPN) which uses state-of-the-art cryptography. It aims to be faster and leaner than other VPN protocols such as OpenVPN and IPSec, and it has a much smaller source code footprint.
+WireGuard&#174; is a simple, fast, and modern virtual private network (VPN) which uses state-of-the-art cryptography. It aims to be faster and leaner than other VPN protocols such as OpenVPN and IPSec and it has a much smaller source code footprint.
 
-Configuring WireGuard is as simple as configuring SSH. A connection is established by an exchange of public keys between server and client, and only a client whose public key is present in the server's configuration file is considered authorized. WireGuard sets up standard network interfaces which behave similarly to other common network interfaces, like `eth0`. This makes it possible to configure and manage WireGuard interfaces using standard networking tools such as ifconfig and ip.
+Configuring WireGuard is as simple as configuring SSH. A connection is established by an exchange of public keys between server and client, and only a client whose public key is present in the server's configuration file is considered authorized. WireGuard sets up standard network interfaces which behave similarly to other common network interfaces, like `eth0`. This makes it possible to configure and manage WireGuard interfaces using standard networking tools such as `ifconfig` and `ip`.
 
 The WireGuard Marketplace App provides two separate applications:
-1. **WireGuard Server**: Creates a Akamai Compute instance and sets up a WireGuard network device named `wg0` on it. This device will act as the central hub for your WireGuard network.
-2. **WireGuard Client**: Creates a Akamai Compute instance that can connect to your WireGuard server. You can deploy multiple clients to connect to the same server.
+1. **WireGuard Server**. Creates a Linode and sets up a WireGuard network device named `wg0` on it. This device acts as the central hub for your WireGuard network.
+2. **WireGuard Client**. Creates a Linode that can connect to your WireGuard server. You can deploy multiple clients to connect to the same server.
 
 {{< note >}}
 The WireGuard Server and Client apps can be deployed independently. If you already have a WireGuard server running, you can simply deploy the client app and configure it to connect to your existing server.
@@ -50,28 +50,28 @@ The WireGuard Server and Client apps can be deployed independently. If you alrea
 The WireGuard Server Marketplace form includes the following fields:
 
 - **WireGuard Server Tunnel Address:** Your WireGuard server's tunnel IP address and subnet in CIDR notation. The default is: `10.0.0.1/24`. This is not the same as a private IP address that Linode can assign to your Linode instance; instead, this address is managed by the network that WireGuard creates.
-- **WireGuard Listen Port:** Set your WireGuard server's listening port number. The default is: `51820`.
+- **WireGuard Listen Port:** Your WireGuard server's listening port number. The default is: `51820`.
 
 ### WireGuard Client Options
 
 The WireGuard Client Marketplace form includes the following fields:
 
-- **WireGuard Server Public Key:** The public key of your WireGuard server. This can be found in `/etc/wireguard/server_public.key` on your server instance.
+- **WireGuard Server Public Key:** The public key of your WireGuard server. You can find it in `/etc/wireguard/server_public.key` on your server instance.
 - **WireGuard Server Endpoint:** The public IP address and port of your WireGuard server in the format `IP:PORT` (e.g., `192.0.2.1:51820`).
-- **WireGuard Client Tunnel IP:** Your WireGuard client's tunnel IP address with /32 subnet. The default is: `10.0.0.2/32`.
+- **WireGuard Client Tunnel IP:** Your WireGuard client's tunnel IP address with the `/32` subnet. The default is: `10.0.0.2/32`.
 - **Allowed IPs:** The IP addresses that should be routed through the WireGuard tunnel. The default is: `10.0.0.1/32`.
 
 ## Getting Started after Deployment
 
 ### Server-Side Configuration
 
-After your WireGuard Server Marketplace App has been deployed, the following files will be automatically created:
+The deployment of the WireGuard Server Marketplace App automatically creates following files:
 
-- `/etc/wireguard/server_private.key`: The server's private key
-- `/etc/wireguard/server_public.key`: The server's public key
-- `/etc/wireguard/wg0.conf`: The server's WireGuard configuration file
+- `/etc/wireguard/server_private.key`: The server's private key.
+- `/etc/wireguard/server_public.key`: The server's public key.
+- `/etc/wireguard/wg0.conf`: The server's WireGuard configuration file.
 
-The initial `wg0.conf` will look like this:
+The initial `wg0.conf` looks like this:
 
 ```file
 [Interface]
@@ -82,13 +82,13 @@ ListenPort = <listen-port>
 
 ### Client-Side Configuration
 
-After your WireGuard Client Marketplace App has been deployed, the following files will be automatically created:
+The deployment of the WireGuard Client Marketplace App automatically creates following files:
 
-- `/etc/wireguard/client_private.key`: The client's private key
-- `/etc/wireguard/client_public.key`: The client's public key
-- `/etc/wireguard/wg0.conf`: The client's WireGuard configuration file
+- `/etc/wireguard/client_private.key`: The client's private key.
+- `/etc/wireguard/client_public.key`: The client's public key.
+- `/etc/wireguard/wg0.conf`: The client's WireGuard configuration file.
 
-The initial `wg0.conf` will look like this:
+The initial `wg0.conf` looks like this:
 
 ```file
 [Interface]
@@ -143,7 +143,7 @@ To test the connection between your WireGuard client and server:
    sudo wg show
    ```
 
-   You should see output similar to:
+   You should see an similar output similar:
    ```output
    interface: wg0
      public key: <server-public-key>
@@ -162,7 +162,7 @@ To test the connection between your WireGuard client and server:
 | **Software** | **Description** |
 |--------------|-----------------|
 | [**WireGuard**](https://www.wireguard.com) | VPN software. |
-| [**UFW (UncomplicatedFireWall)**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. The Port assigned during the deployment will allow outgoing and incoming traffic. |
+| [**UFW (UncomplicatedFireWall)**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. The Port assigned during the deployment that allows outgoing and incoming traffic. |
 
 {{% content "marketplace-update-note-shortguide" %}}
 
