@@ -16,17 +16,17 @@ Google Cloud Next Generation Firewall (NGFW) is a network-level firewall that al
 
 [Cloud Firewalls](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) on Akamai Cloud is a network-level firewall service that lets users control traffic for Linode instances and NodeBalancers, Akamai Cloud’s load balancing service. Cloud Firewalls support inbound and outbound traffic management for Linode instances and inbound traffic for NodeBalancers. They operate at [Layers 3 and 4](https://www.akamai.com/glossary/what-are-network-layers) of the [OSI model](https://en.wikipedia.org/wiki/OSI_model) (see diagram below), providing IP, protocol, and port filtering.
 
-This guide includes steps on how to migrate a basic security setup from Google Cloud NGFW to Cloud Firewalls. It covers planning, documenting your configuration, creating equivalent rules with Cloud Firewalls, and testing the results.
+This guide includes steps on how to migrate a basic security setup from Google Cloud NGFW to Cloud Firewalls. It covers planning, documenting your configuration, creating equivalent rules with Cloud Firewalls, and testing results to ensure network security after migration.
 
 ![OSI layers 1–7 with attack vectors noted for Layers 3 (Network), 4 (Transport), 5 (Session), and 7 (Application).](network-layers-diagram.png)
 
 ## Feature Comparison
 
-Before beginning the migration process, it's important to understand the capabilities and specifications of both Google Cloud NGFW and Cloud Firewalls. This can help you identify which rules can be migrated directly and which may require additional configuration.
+Before beginning the migration process between service providers, it's important to understand the capabilities and specifications of both Google Cloud NGFW and Cloud Firewalls. This can help optimize your results by identifying which rules can be migrated directly and which may require additional configuration.
 
 ### Features of Google Cloud NGFW
 
-Google Cloud NGFW filters traffic at the VPC network level. It supports rules based on IP ranges, ports, protocols, and targets (e.g. network tags or service accounts). NGFW also enables centralized policy management across projects, with features like threat intelligence-based blocking and hierarchical enforcement for consistent, scalable security controls.
+Google Cloud NGFW filters traffic at the VPC network level. It supports rules based on IP ranges, ports, protocols, and targets (e.g. network tags or service accounts).  NGFW also enables centralized firewall policy management across projects, including threat intelligence-based blocking and hierarchical enforcement for consistent, scalable security controls.
 
 ### Features of Cloud Firewalls
 
@@ -38,11 +38,13 @@ Since Cloud Firewalls doesn’t currently support Layer 7 inspection, features s
 
 ## Before You Begin
 
+Complete the following prerequisites prior to following the steps in this guide.
+
 1.  Follow our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide to create an Akamai Cloud account if you do not already have one.
 
 1.  Create a personal access token using the instructions in our [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
 
-1.  Install the Linode CLI using the instructions in the [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
+1.  Install the Linode CLI using the instructions in the [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide. See our [API reference](https://techdocs.akamai.com/linode-api/reference/api) for comprehensive documentation of Linode CLI functionality.
 
 1.  You need a Google Cloud project with a user or service account that has permissions to list, view, and modify VPC firewall rules.
 
@@ -65,7 +67,7 @@ The equivalent setup on Akamai Cloud uses a single Linode instance running the s
 
 ## Document your Current Configuration
 
-Before making changes, it's essential to fully understand your existing GCP VM instance and Google Cloud NGFW configuration. Document how traffic flows to your Compute Engine VM by noting which ports are open and which services are bound to each port. This can help you set up equivalent access controls using Cloud Firewalls.
+Before making changes, it's essential to fully understand your existing GCP VM instance and Google Cloud NGFW configuration. Document and template how traffic flows to your Compute Engine virtual machine by noting which ports are open and which services are bound to each port. This can help you set up equivalent access controls using Cloud Firewalls.
 
 ### Review Google Cloud NGFW Rules
 
@@ -206,7 +208,7 @@ gcloud compute firewall-rules list --format=json > firewall-rules.json
 
 ## Create Equivalent Rules with Cloud Firewalls
 
-Once the planning and documentation are complete, begin building your new configuration in Akamai Cloud.
+Once planning and documentation are complete, begin building your new network firewall configuration in Akamai Cloud.
 
 Cloud Firewalls rules can be managed through the [Cloud Manager](https://cloud.linode.com/) web interface or via the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/cli). This section demonstrates both methods.
 
@@ -214,7 +216,7 @@ Cloud Firewalls rules can be managed through the [Cloud Manager](https://cloud.l
 
 {{< tabs >}}
 {{< tab "Cloud Manager" >}}
-1.  While logged into Cloud Manager, navigate to **Firewalls** and click **Create Firewall**.
+1.  While logged into Cloud Manager, navigate to the **Firewalls** dashboard, and click **Create Firewall**.
 
 1.  Specify a label for the Cloud Firewall, accept the defaults for the inbound and outbound policies, and click **Create Firewall**. Initially, you do not need to assign any services. You can focus on rule creation first, then associate services later.
 
@@ -452,9 +454,11 @@ After applying rules to your Cloud Firewalls, confirm that they behave as expect
 
 ### Simulate Expected and Blocked Traffic
 
-From an IP on the allowlist, test access to each service and confirm that the connection succeeds. Use `ssh` to test connections from any IP address.
+From an IP on the allowlist, test access for each service and confirm that the connection succeeds to your instance’s endpoint. Use `ssh` to test connections from any IP address.
 
-1.  Use `curl` to test HTTP traffic through NGINX, replacing {{< placeholder "SERVER_IP_ADDRESS" >}} (e.g. `172.236.228.122`):
+In all examples, replace {{< placeholder "SERVER_IP_ADDRESS" >}} with the IP address of the instance assigned to your Cloud Firewall (e.g. `172.236.228.122`).
+
+1.  Use `curl` to test HTTP traffic through NGINX:
 
     ```command {title="cURL HTTP Connection Attempt"}
     curl -I http://{{< placeholder "SERVER_IP_ADDRESS" >}}
@@ -472,7 +476,7 @@ From an IP on the allowlist, test access to each service and confirm that the co
     Accept-Ranges: bytes
     ```
 
-1.  Use `curl` to test HTTPS traffic through NGINX:
+1.  Similarly, you can also use `curl` to test HTTPS traffic through NGINX:
 
     ```command {title="cURL HTTPS Connection Attempt"}
     curl -I https://{{< placeholder "SERVER_IP_ADDRESS" >}}
@@ -517,7 +521,7 @@ From an IP on the allowlist, test access to each service and confirm that the co
     testdb=#
     ```
 
-1.  Now attempt to connect to the PostgreSQL server with the `psql` client from an IP address that is not allowed through the Cloud Firewall rules:
+1.  In contrast, if you attempt to connect to the PostgreSQL server with the `psql` client from an IP address not allowed through the Cloud Firewall rules, the execution hangs after prompting for the password:
 
     ```command {title="Blocked PostgreSQL Connection Attempt"}
     psql --host {{< placeholder "SERVER_IP_ADDRESS" >}} \
@@ -527,14 +531,12 @@ From an IP on the allowlist, test access to each service and confirm that the co
         --password
     ```
 
-    The execution simply hangs after prompting for the password:
-
     ```output
     Password: ********
 
     ```
 
-1.  Similarly, attempt to connect to Redis with `redis-cli` from an allowed IP address, replacing {{< placeholder "REDIS_PORT" >}} (e.g. `6379`):
+1.  Attempt to connect to Redis with `redis-cli` from an allowed IP address, replacing {{< placeholder "REDIS_PORT" >}} (e.g. `6379`):
 
     ```command {title="Successful Redis Connection Attempt"}
     redis-cli -h {{< placeholder "SERVER_IP_ADDRESS" >}} -p {{< placeholder "REDIS_PORT" >}}
@@ -579,9 +581,9 @@ Connection and activity logs from these services can help to confirm whether tra
 
 Ongoing monitoring helps identify any overlooked configuration issues or unexpected traffic patterns. Continue observing application logs and metrics post-migration. Make sure services are available to intended users and there are no spikes in error rates or timeouts.
 
-If legitimate traffic is being blocked or malicious traffic is being allowed, refine your Cloud Firewalls rules. It may take a few iterations to achieve parity with your original Google Cloud NGFW behavior.
+If legitimate traffic is being blocked or malicious traffic is being allowed, refine your Cloud Firewalls rules. It may take a few iterations and troubleshooting to achieve parity with your original Google Cloud NGFW behavior.
 
-## Finalize Your Migration
+## Finalize Your Firewall Migration
 
 Once you've validated the new firewall configuration, clean up legacy resources and update internal references:
 
@@ -590,4 +592,4 @@ Once you've validated the new firewall configuration, clean up legacy resources 
 -   Remove the Google Cloud NGFW rules.
 -   Remove the GCP Compute Engine VM instance.
 
-Update runbooks, internal network diagrams, and configuration documentation to reflect the new firewall architecture based on Akamai Cloud Firewall.
+Update runbooks, internal network diagrams, and configuration documentation to reflect the new firewall architecture based on Cloud Firewalls.
