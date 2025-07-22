@@ -1,7 +1,7 @@
 ---
 slug: migrate-from-aws-security-groups-to-cloud-firewalls
 title: "Migrate From AWS Security Groups to Cloud Firewalls"
-description: "Learn how to migrate AWS Security Group rules to Cloud Firewalls on Akamai Cloud. This guide covers planning, exporting, rule mapping, and validating traffic."
+description: "Get step-by-step guidance on migrating your firewall solution from AWS Security Groups to Cloud Firewalls on Akamai Cloud. Simplify your firewall management, and get migraiton tips for planning, exporting, rule mapping, and validating traffic."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-07-17
