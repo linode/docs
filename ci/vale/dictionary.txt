@@ -1128,6 +1128,7 @@ iPads
 ipaserver
 ipchains
 ipconfig
+ipencap
 iperf
 iPhones
 ips
@@ -2217,6 +2218,7 @@ rubydebug
 rubygems
 ruleset
 rulesets
+runbooks
 rundir
 runfile
 runlevels
