@@ -1,3 +1,4 @@
 {
-    "git.autorefresh": false
+    "git.autorefresh": false,
+    "powershell.pester.codeLens": false
 }

@@ -1,16 +1,16 @@
 ---
-slug: how-to-install-mariadb-on-debian-9
-title: "Installing MariaDB on Debian 9"
-title_meta: "How to Install MariaDB on Debian 9"
-description: "This guide shows how to install and configure the MariaDB server on Debian 9."
-og_description: "MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on Debian 9."
+slug: how-to-install-mariadb-on-debian-12
+title: "Installing MariaDB on Debian 12"
+title_meta: "How to Install MariaDB on Debian 12"
+description: "This guide shows how to install and configure the MariaDB server on Debian 12."
+og_description: "MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on Debian 12 (Bookworm)."
 authors: ["Ryan Syracuse"]
 contributors: ["Ryan Syracuse"]
-published: 2020-01-31
-keywords: ["mariadb", "Debian 9", "debian", "database", "mysql"]
+published: 2025-07-22
+keywords: ["mariadb", "Debian 12", "debian", "bookworm", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mariadb/how-to-install-mariadb-on-debian-9/','/databases/mariadb/mariadb-setup-debian/']
-image: Installing_MariaDB_on_Debian9.png
+aliases: ['/databases/mariadb/how-to-install-mariadb-on-debian-12/','/databases/mariadb/mariadb-setup-debian/']
+image: Installing_MariaDB_on_Debian12.png
 external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
@@ -19,22 +19,21 @@ relations:
     platform:
         key: how-to-install-mariadb
         keywords:
-            - distribution: Debian 9
+            - distribution: Debian 12
 tags: ["debian","mariadb","database"]
-deprecated: true
+deprecated: false
 ---
 
 MariaDB is a fork of the popular cross-platform MySQL database management system and is considered a full [drop-in replacement](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-features/) for MySQL. MariaDB was created by one of MySQL's original developers in 2009 after MySQL was acquired by Oracle during the Sun Microsystems merger. Today MariaDB is maintained and developed by the [MariaDB Foundation](https://mariadb.org/en/foundation/) and community contributors with the intention of it remaining GNU GPL software.
 
-{{< note >}}
+**Note:**
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
-{{< /note >}}
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Get Started](/docs/products/platform/get-started/) with Linode and [Creating a Linode (Compute Instance)](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and configure your hostname. You can also to set the timezone, create a limited user account, and harden SSH access.
 
     To check your hostname run:
 
@@ -49,23 +48,24 @@ Install MariaDB using the package manager.
 
     sudo apt install mariadb-server
 
-MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access guide](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/), which also applies to MariaDB.
+MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/) guide, which also applies to MariaDB.
 
-{{< note >}}
-Allowing unrestricted access to MariaDB on a public IP not advised but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MariaDB to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
-{{< /note >}}
+**Note:**
+Allowing unrestricted access to MariaDB on a public IP is not advised. However, you can change the address it listens on by modifying the `bind-address` parameter in `/etc/mysql/mariahdb.conf.d/50-server.cnf`. If you decide to bind MariaDB to your public IP address, you should implement firewall rules that restrict access to specific IP addresses.
 
 ### MariaDB Client
 
-The standard tool for interacting with MariaDB is the `mariadb` client, which installs with the `mariadb-server` package. The MariaDB client is used through a terminal using the `mysql` command.
+The standard tool for interacting with MariaDB is the `mariadb` client, which is installed alongside the `mariadb-server` package. You can access the MariaDB client in the terminal using the `mysql` command.
 
 ### Root Login
 
-1.  Log into MariaDB as the root user:
+Log into MariaDB as the root user:
 
         sudo mysql -u root -p
 
-1.  When prompted for login credentials, hit enter. By default MariaDB will authenticate you via the **unix_socket plugin** and credentials are not required.
+
+**Note:**
+  On Debian 12, MariaDB uses the `unix_socket` plugin by default. This means that if you're logged into the system as a user with root privileges, you can press **Enter** at the password prompt and still gain access--no password is required.
 
     You'll then be presented with a welcome header and the MariaDB prompt as shown below:
 
@@ -73,7 +73,7 @@ The standard tool for interacting with MariaDB is the `mariadb` client, which in
 MariaDB [(none)]>
 {{</ output >}}
 
-1.  To generate a list of commands for the MariaDB prompt, enter `\h`. You'll then see:
+To view a list of available commands, type `\h` at the prompt. You then see:
 
     {{< output >}}
 General information about MariaDB can be found at
@@ -113,25 +113,33 @@ MariaDB [(none)]>
 
 ### Securing the Installation
 
-1. After accessing MariaDB as the root user of your database, enable the **mysql_native_password**
-plugin to enable root password authentication:
+After accessing MariaDB as the root user, you can switch from socket-based authentication to password-based authentication by enabling the `mysql_native_password` plugin:
 
         USE mysql;
         UPDATE user SET plugin='mysql_native_password' WHERE user='root';
         FLUSH PRIVILEGES;
         exit;
 
-1.  Run the `mysql_secure_installation` script to address several security concerns in a default MariaDB installation:
+**New in MariaDB 10.11 on Debian 12:**
+The `mysql_secure_installation` script now offers the option to *set a root password,** which automatically switches the authentication method from `unix_socket` to `mysql_native_password`. This is a change from earlier versions, where socket-based authentication was the default and required manual reconfiguration.
+
+Next, run the `mysql_secure_installation` script to address several security concerns in a default MariaDB installation:
 
         sudo mysql_secure_installation
 
-You will be given the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
+This script will guide you through several options, including:
+  - Setting a root password (if you haven't already).
+  - Removing anonymous user accounts.
+  - Disabling remote root logins
+  - Removing the test database
+
+It's recommended that you answer `yes` to these prompts for a more secure setup (to harden your MariaDB installation against unauthorized access). You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
 ## Using MariaDB
 
 ### Create a New MariaDB User and Database
 
-1.  Login to the database again. This time, if you set a password above, enter it at the prompt.
+1.  Log in to the database again. When you're prompted to log in to MariaDB again, you should enter the password only if you previously set one during an earlier step. 
 
         sudo mysql -u root -p
 
@@ -207,22 +215,24 @@ If you forget your root MariaDB password, it can be reset.
 
         sudo systemctl stop mariadb
 
-1.  Then execute the following command which will allow the database to start without loading the grant tables or networking.
+1.  Then execute the following command which allows the database to start without loading the grant tables or networking.
 
         sudo systemctl set-environment MYSQLD_OPTS="--skip-grant-tables --skip-networking"
+
+This still works in Debian 12, but it is temporary and insecure, and should only be used in emergency recovery situations.
 
 1.  Restart MariaDB:
 
         sudo systemctl start mariadb
 
-1.  Login to the MariaDB server with the root account, this time without supplying a password:
+1.  Log in to the MariaDB server with the root account, this time without supplying a password:
 
         sudo mysql -u root
 
 1.  Use the following commands to reset root's password. Replace `password` with a strong password:
 
         FLUSH PRIVILEGES;
-        UPDATE mysql.user SET password = PASSWORD('password') WHERE user = 'root';
+        ALTER USER 'root'@'localhost' IDENTIFIED BY 'your_new_password';
         exit;
 
 1.  Revert the environment settings to allow the database to start with grant tables and networking:
