@@ -63,7 +63,7 @@ The Google Cloud NGFW is configured with inbound rules to restrict access to kno
 
 The equivalent setup on Akamai Cloud uses a single Linode instance running the same services. The Cloud Firewalls service is used to recreate the access controls previously handled by the Google Cloud NGFW.
 
-![Architecture diagram of Google Cloud VM instance and services environment with equivalent setup on Akamai Cloud.](Equivalent_architectures_Google_Cloud.svg)
+![Architecture diagram of Google Cloud VM instance and services environment with equivalent setup on Akamai Cloud.](equivalent-architectures-google-cloud.svg)
 
 ## Document your Current Configuration
 
@@ -182,7 +182,7 @@ gcloud compute firewall-rules list \
 
 The example in this guide only has inbound rules, with traffic allowed for specific IP addresses. The inbound permissions for the example in this guide are diagrammed below:
 
-![Visual flowchart of inbound port permissions in the example setup.](Inbound_policies_example_Google_Cloud.svg)
+![Visual flowchart of inbound port permissions in the example setup.](inbound-policies-example-google-cloud.svg)
 
 {{< note title="Note Your Own Firewall Configuration" >}}
 Your firewall may have both inbound and outbound rules, with traffic allowed for specific IP addresses or denied for specific IP addresses.

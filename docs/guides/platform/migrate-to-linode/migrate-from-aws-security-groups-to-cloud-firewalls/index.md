@@ -63,7 +63,7 @@ The AWS Security Group is configured with inbound rules to restrict access to kn
 
 The equivalent setup on Akamai Cloud uses a single Linode instance running the same services. The Cloud Firewalls service is used to recreate the access controls previously handled by the AWS Security Group.
 
-![Architecture diagram of AWS EC2 instance and services environment with equivalent setup on Akamai Cloud.](Equivalent_architectures_AWS.svg)
+![Architecture diagram of AWS EC2 instance and services environment with equivalent setup on Akamai Cloud.](equivalent-architectures-aws.svg)
 
 ## Document Your Current Configuration
 
@@ -231,7 +231,7 @@ To access this information using the `aws` CLI, run the following commands:
 
 The example in this guide only has inbound rules, with traffic allowed for specific IP addresses. The inbound permissions for the example in this guide are diagrammed below:
 
-![Visual flowchart of inbound port permissions in the example setup.](Inbound_policies_example_AWS.svg)
+![Visual flowchart of inbound port permissions in the example setup.](inbound-policies-example-aws.svg)
 
 {{< note title="Note Your Own Firewall Configuration" >}}
 Your firewall may have both inbound and outbound rules, with traffic allowed or denied for specific IP addresses.

@@ -63,7 +63,7 @@ The Azure Firewall is configured with inbound rules to restrict access to known 
 
 The equivalent setup on Akamai Cloud uses a single Linode instance running the same services. The Cloud Firewalls service is used to recreate the access controls previously handled by the Azure Firewall.
 
-![Architecture overview of Azure Firewall and VM network with equivalent setup on Akamai Cloud.](Equivalent_architectures_Azure.svg)
+![Architecture overview of Azure Firewall and VM network with equivalent setup on Akamai Cloud.](equivalent-architectures-azure.svg)
 
 ## Document Your Current Configuration
 
@@ -249,7 +249,7 @@ To view Azure Firewall rules from the `az` CLI, run the following commands:
 
 The inbound traffic routing rules for the example in this guide are diagrammed below:
 
-![Inbound traffic routing through Azure Firewall to VM.](Inbound_policies_example_Azure.svg)
+![Inbound traffic routing through Azure Firewall to VM.](inbound-policies-example-azure.svg)
 
 ### Plan Your Rule-Mapping Strategy
 
