@@ -331,7 +331,7 @@ Recreate each of the rules documented from your Azure Firewall.
 
     ![Cloud Manager UI for entering source IP addresses.](specify-source-addresses-ui.png)
 
-1.  Finally, decide whether the rule is meant to serve as an allowlist (Accept) or denylist (Drop). For this example migration from AWS Security Groups, the action would be Accept. Click **Add Rule**.
+1.  Finally, decide whether the rule is meant to serve as an allowlist (Accept) or denylist (Drop). For this example migration from Azure Firewall, the action would be Accept. Click **Add Rule**.
 
 1.  Repeat the steps above to recreate all the equivalent rules from the Azure Firewall configuration.
 

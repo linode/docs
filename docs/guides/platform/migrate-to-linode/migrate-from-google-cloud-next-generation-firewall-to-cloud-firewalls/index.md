@@ -262,7 +262,7 @@ linode-cli firewalls create \
 
     ![Cloud Manager UI for entering source IP addresses.](specify-source-addresses-ui.png)
 
-1.  Finally, decide whether the rule is meant to serve as an allowlist (Accept) or denylist (Drop). For this example migration from AWS Security Groups, the action would be Accept. Click **Add Rule**.
+1.  Finally, decide whether the rule is meant to serve as an allowlist (Accept) or denylist (Drop). For this example migration from NGFW, the action would be Accept. Click **Add Rule**.
 
 1.  Recreate each of the rules documented from your Google Cloud NGFW. Within the web UI, create a new rule by clicking **Add An Inbound Rule**.
 
