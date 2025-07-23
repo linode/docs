@@ -2,8 +2,8 @@
 slug: intro-to-high-availability-and-disaster-recovery
 title: 'Intro to High Availability and Disaster Recovery'
 description: 'This guide provides you with an introduction to concepts and terminology relating to high availability, a method of keeping your web servers up with maximum uptime.'
-authors: ["Phil Zona", "Kazuki Fukushima", "Nathan Melehan", "Nathan LeSueur", "Kit Tan"]
-contributors: ["Phil Zona", "Kazuki Fukushima", "Nathan Melehan", "Nathan LeSueur", "Kit Tan"]
+authors: ["Phil Zona", "Kazuki Fukushima", "Nathan Melehan", "Nathan LeSueur", "Kit Tan", "Boris Chalinski"]
+contributors: ["Phil Zona", "Kazuki Fukushima", "Nathan Melehan", "Nathan LeSueur", "Kit Tan", "Boris Chalinski"]
 published: 2016-07-12
 modified: 2025-07-15
 keywords: ["high availability", "disaster recovery", "hosting", "website", "failover", "ssd ha"]
