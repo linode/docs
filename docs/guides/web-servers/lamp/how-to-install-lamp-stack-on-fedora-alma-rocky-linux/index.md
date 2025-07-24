@@ -4,7 +4,7 @@ title: "How to Install a LAMP Stack on Fedora, AlmaLinux, or Rocky Linux"
 description: "This guide explains how to install a LAMP stack on Fedora and the AlmaLinux and Rocky Linux variants."
 authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
-published: 2024-05-01
+published: 2025-07-31
 keywords: ['LAMP stack Fedora','test LAMP stack','Apache Fedora','MariaDB PHP Fedora']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-fedora-11/','/lamp-guides/fedora-11/','/web-servers/lamp/lamp-server-on-fedora-11/','/guides/lamp-server-on-fedora-11/','/websites/lamp/lamp-server-on-fedora-12/','/web-servers/lamp/lamp-server-on-fedora-12/','/lamp-guides/fedora-12/','/guides/lamp-server-on-fedora-12/','/websites/lamp/lamp-server-on-fedora-13/','/lamp-guides/fedora-13/','/web-servers/lamp/lamp-server-on-fedora-13/','/guides/lamp-server-on-fedora-13/','/web-servers/lamp/lamp-server-on-fedora-14/','/lamp-guides/fedora-14/','/websites/lamp/lamp-server-on-fedora-14/','/guides/lamp-server-on-fedora-14/','/websites/lamp/lamp-server-on-fedora-15/','/lamp-guides/fedora-15/','/web-servers/lamp/lamp-server-on-fedora-15/','/guides/lamp-server-on-fedora-15/']
@@ -23,36 +23,35 @@ relations:
            - distribution: Fedora 38
 ---
 
-The most common web architecture for Linux-based systems is the [*LAMP Stack*](https://en.wikipedia.org/wiki/LAMP_(software_bundle)). This stack includes all necessary components for a web application, including an operating system, web server, relational database, and programming language. This guide explains how to install and test a LAMP stack on the Fedora Linux platform and the related AlmaLinux and Rocky Linux distributions.
+One of the most popular opern-source web development platforms is the Linux-based [*LAMP Stack*](https://en.wikipedia.org/wiki/LAMP_(software_bundle)). It provides all the essential components to host dynamic websites and web applications. This guide explains how to install and test a LAMP stack on Fedora 38, as well as compatible RHEL-based distributions like **AlmaLinux 9** and **Rocky Linux 9**.
 
 ## What is a LAMP Stack?
 
-The LAMP stack is a core architecture for the open source Linux environment. LAMP is an acronym standing for Linux, [Apache](https://httpd.apache.org/), [MySQL](https://dev.mysql.com/) or [MariaDB](https://mariadb.com/), and [PHP](https://www.php.net/), [Perl](https://www.perl.org), or [Python](https://www.python.org). This software stack is sufficient to support most modern web sites and applications, including WordPress.
+The LAMP stack is a foundatioinal architecture for open source web development on Linux systems. It includes four core components: Linux, [Apache](https://httpd.apache.org/), [MySQL](https://dev.mysql.com/) or [MariaDB](https://mariadb.com/), and [PHP](https://www.php.net/), [Perl](https://www.perl.org), or [Python](https://www.python.org). This stack supports a wide range of modern websites and applications, including WordPress.
 
-The main LAMP stack components are as follows:
+The main components are:
 
--   **Linux**: Linux is a free and open source UNIX-based operating system. It is available in several distinct implementations, called *distributions*. This guide uses Fedora, one of the most popular distributions. The same instructions in this guide are also applicable to the similar AlmaLinux and Rocky Linux platforms. Both of these alternatives are binary-compatible with Fedora. Each distribution of Linux has its own software library which includes the other LAMP stack components.
+-   **Linux**: A free and open source UNIX-based operating system. It is available in several distinct implementations, called *distributions*. This guide uses Fedora 38, a cutting-edge distribution with frequent updates. The same instructions apply to AlmaLinux 9 and Rocky Linux 9, which are binary-compatible with Red Hat Enterprise Linux (RHEL). Each distribution of Linux has its own software library which includes the other LAMP stack components.
 
--   **Apache**: The open source Apache web server is the most common Linux web server. The Apache Software Foundation produces the free standard edition, containing all components required to host a web site. However, extra modules enable additional features such as authentication and programming language APIs.
+-   **Apache**: A widely used open source web server. Apache provides the core tools to host web sites and supports additional features through optional modules such as authentication and programming language APIs.
 
--   **MariaDB/MySQL**: MySQL and MariaDB are free and open source *relational database management systems* (RDBMS). They can be used interchangeably in the LAMP Stack. MariaDB is a fork of the original MySQL code with additional features, higher scalability, and faster query speed.
+-   **MariaDB/MySQL**: Both are open source *relational database management systems* (RDBMS). MariaDB, a fork of MySQL, offers improved performance and additional features. Either can serve as the database layer in a LAMP stack.
 
--   **PHP/Perl/Python**: PHP is the main server-side scripting and programming language for the LAMP stack. PHP commands can be efficiently embedded within an HTML page, making it a very useful language for web development. It also powers many common open source web applications. PHP is available for free under the PHP License. See the [PHP documentation](https://www.php.net/docs.php) for usage instructions. Alternatives to PHP include Perl and Python.
+-   **PHP/Perl/Python**: PHP is the most common server-side scripting in LAMP environments. It integrates easily with HTML and powers many popular web applications. PHP is available for free under the PHP License. See the [PHP documentation](https://www.php.net/docs.php) for usage instructions. Perl and Python are supported alternatives.
 
-All of these applications are available in the core Fedora software library.
+All components are available through Fedora 38's default software repositories.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  Before installing the LAMP stack, make sure you have a Linode account and an active Compute Instance. Refer to our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Next, follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also want to set the timezone, configure the hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
-{{< /note >}}
+{{< note "type:important" >}}
+This guide assumes you're using a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
-{{< note >}}
-The commands, file contents, and other instructions provided throughout this guide may include placeholders. These are typically domain names, IP addresses, usernames, passwords, and other values that are unique to you. The table below identifies these placeholder values and explains what to replace them with:
+**Note:**
+The commands, file contents, and configuration examples may include placeholders such as domain names, IP addresses, usernames, and passwords. Refer to the table below to replace these values with your own:
 
 | Placeholders: | Replace With: |
 | -- | -- |
@@ -64,31 +63,30 @@ The commands, file contents, and other instructions provided throughout this gui
 
 ## How to Install a LAMP Stack on Fedora
 
-These instructions are designed for Fedora 38, but work for AlmaLinux and Rocky Linux as well. The guide provides alternate commands whenever the process differs between distributions.
+These instructions are designed for Fedora 38, but most steps also apply to AlmaLinux 9 and Rocky Linux 9. Where necessary the guide includes  alternate commands for RHEL-based distributions.
 
 ### How to Install the Apache Web Server
 
-1.  Ensure the system is updated:
+1.  Update your system:
 
     ```command
-    sudo dnf upgrade
-    sudo dnf update
+    sudo dnf upgrade --refresh
     ```
 
-1.  Install the Apache web server:
+1.  Install Apache:
 
     ```command
     sudo dnf install httpd -y
     ```
 
-1.  Start and enable the web server. The `enable` command automatically launches Apache when the system reboots.
+1.  Enable and start Apache. (The `enable` command automatically launches Apache when the system reboots.)
 
     ```command
     sudo systemctl enable httpd
     sudo systemctl start httpd
     ```
 
-1.  Use `systemctl` to ensure the web server is `active (running)`:
+1.  Verify Apache is running:
 
     ```command
     systemctl status httpd
@@ -102,47 +100,39 @@ These instructions are designed for Fedora 38, but work for AlmaLinux and Rocky 
          Active: active (running) since Mon 2023-08-28 12:20:09 EDT; 47s ago
     ```
 
-    Press the <kbd>Q</kbd> key to exit the `systemctl status` output and return to the terminal prompt.
+    Press <kbd>Q</kbd> to exit the `systemctl status` output and return to the terminal prompt.
 
-1.  Configure the firewall settings to allow HTTP and HTTPS connections:
+1.  Configure the firewall settings to allow HTTP and HTTPS traffic:
 
     ```command
     sudo firewall-cmd --permanent --add-service=http
     sudo firewall-cmd --permanent --add-service=https
-    ```
-
-    ```output
-    success
-    success
-    ```
-
-1.  Reload the firewall:
-
-    ```command
     sudo firewall-cmd --reload
     ```
 
-    ```output
-    success
-    ```
+1.  Test Apache in a Browser
 
-1.  Open a Web browser and navigate to the IP address of the Fedora system. It should display the default "Fedora Webserver Test Page":
+    Open a Web browser and navigate to your server's IP address. You should see the "Fedora Webserver Test Page". AlmaLinux and Rocy Linux display similar default pages.
 
     ![The default Fedora web landing page](Fedora-default-web-page.png)
 
     This indicates the web server is working but has not been fully configured yet. The AlmaLinux and Rocky Linux distributions have their own web server test pages which are similar but slightly different.
 
-    {{< note >}}
-    If the connection is blocked, it could be due to the default *Security-Enhanced Linux* (SELinux) settings. SELinux is a kernel security module packaged with several Linux distributions. The default security setting is the fairly restrictive `enforcing` mode. To reduce the security level, change the mode to `permissive` using the following command:
+    **Note:**
+    If the page doesn't load, *Security-Enhanced Linux* (SELinux) may be blocking access. Fedora uses SELinux in enforcing mode by default which is the fairly restrictive. You can temporarily switch to `permissive` mode for troubleshooting:
 
     ```command
     sudo setenforce 0
+    ```
+    To make this change persistent (not recommended for production), edit the SELinux config:
+
+    ```
     sudo sed -i 's/^SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
     ```
-    {{< /note >}}
+
 
     {{< note type="secondary" title="Optional" >}}
-    If a domain name is pointing to the server, it can be added to the `/etc/httpd/conf/httpd.conf` file for better performance.
+    If your domain name points to the server, it can be added to the `/etc/httpd/conf/httpd.conf` file for better performance.
 
     1.  Open the `/etc/httpd/conf/httpd.conf` in a text editor with root permissions:
 
@@ -150,30 +140,40 @@ These instructions are designed for Fedora 38, but work for AlmaLinux and Rocky 
         sudo nano /etc/httpd/conf/httpd.conf
         ```
 
-    1.  Add the following information to the end of file and be sure to replace `EXAMPLE_DOMAIN` with your fully-qualified domain name:
+    2.  Add the following lines at the end of file, replacing `EXAMPLE_DOMAIN` with your fully-qualified domain:
 
         ```file {title="/etc/httpd/conf/httpd.conf"}
         ServerAdmin admin@EXAMPLE_DOMAIN
         ServerName  EXAMPLE_DOMAIN:80
         ```
 
-    1.  When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+    3.  To save and exit, press <kbd>CTRL</kbd>+<kbd>X</kbd>, then <kbd>Y</kbd> then <kbd>Enter</kbd>.
 
-    1.  Restart the web server:
+    4.  Restart the Apache web server:
 
         ```command
         sudo systemctl restart httpd
         ```
 
-    1.  Open a Web browser and navigate to your domain name. The browser should now display the default Fedora web server page.
+    5.  Open a Web browser and navigate to your domain name. The browser should now display the default Fedora web server page.
     {{< /note >}}
 
 ### How to Install the MariaDB Database
 
-This guide installs MariaDB as the database, but the LAMP stack can also use MySQL. MariaDB is an increasingly popular fork of the original MySQL application with some performance advantages.
+This guide installs MariaDB, a drop-in replacement for MySQL and the default database in Fedora 38. MariaDB is widely adopted and offers improved performance and additional features compared to the original MySQL application. While the LAMP stack can also use MySQL, MariaDB is fully compatible and recommended for Fedora-based systems.
 
 {{< note >}}
-To install MySQL instead of MariaDB, replace the first command with `sudo dnf install mysql-server`, then follow the other instructions. To run the `mysql_secure_installation` script in MySQL, first add a new password for the root account.
+If you prefer to use MySQL instead of MariaDB, install it with: `sudo dnf install mysql-server`. 
+Then follow the same steps to enable, start, and secure the database.
+Before running `mysql_secure_installation`, you may need to set a root password manually.
+
+```command
+1  sudo mysql
+2  ALTER USER 'root'@'localhost' IDENTIFIED BY 'your_secure_password';
+3  FLUSH PRIVILEGES;
+4  EXIT;
+5
+
 {{< /note >}}
 
 1.  Install the MariaDB server:
@@ -189,7 +189,7 @@ To install MySQL instead of MariaDB, replace the first command with `sudo dnf in
     sudo systemctl start mariadb
     ```
 
-1.  Verify the status of MariaDB by running the `systemctl status` command to confirm it is `active`:
+1.  Check status to confirm it is `active`:
 
     ```command
     sudo systemctl status mariadb
@@ -203,6 +203,7 @@ To install MySQL instead of MariaDB, replace the first command with `sudo dnf in
          Active: active (running) since Mon 2023-08-28 13:20:57 EDT; 24s ago
     ```
 
+    Depending on your system, output may show MariaDB 10.11.
     Press the <kbd>Q</kbd> key to exit the status output and return to the terminal prompt.
 
 1.  To secure the database, use the interactive `mysql_secure_installation` utility:
@@ -227,12 +228,12 @@ To install MySQL instead of MariaDB, replace the first command with `sudo dnf in
     sudo mysql
     ```
 
-    MariaDB displays background information about the application along with the `>` prompt:
+    MariaDB displays background information about the application along with the `>` prompt and may show a newer version, 10.11:
 
     ```output
     Welcome to the MariaDB monitor.  Commands end with ; or \g.
     Your MariaDB connection id is 9
-    Server version: 10.5.21-MariaDB MariaDB Server
+    Server version: 10.11.6-MariaDB MariaDB Server
 
     Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
 
@@ -245,8 +246,8 @@ To install MySQL instead of MariaDB, replace the first command with `sudo dnf in
 
     ```command
     CREATE DATABASE webdata;
-    CREATE USER 'EXAMPLE_USERNAME' IDENTIFIED BY 'EXAMPLE_PASSWORD';
-    GRANT ALL ON webdata.* TO 'EXAMPLE_USERNAME';
+    CREATE USER 'EXAMPLE_USERNAME'@'localhost' IDENTIFIED BY 'EXAMPLE_PASSWORD';
+    GRANT ALL PRIVILEGES ON webdata.* TO 'EXAMPLE_USERNAME'@'localhost';
     FLUSH PRIVILEGES;
     ```
 
@@ -271,7 +272,7 @@ To install MySQL instead of MariaDB, replace the first command with `sudo dnf in
     {{< tabs >}}
     {{< tab "Fedora" >}}
     ```command
-    sudo dnf install php-cli php-gettext php-mbstring php-mcrypt php-pear php-curl php-gd php-xml php-bcmath php-zip php-json -y
+    sudo dnf install php-cli php-gettext php-mbstring php-pear php-curl php-gd php-xml php-bcmath php-zip php-json -y
     ```
     {{< /tab >}}
     {{< tab "AlmaLinux & Rocky Linux" >}}
@@ -281,11 +282,7 @@ To install MySQL instead of MariaDB, replace the first command with `sudo dnf in
     {{< /tab >}}
     {{< /tabs >}}
 
-    {{< note >}}
-    AlmaLinux and Rocky Linux do not support the `php-mcrypt` component. The omission of this package is the only difference from the Fedora version of the command above.
-    {{< /note >}}
-
-1.  Verify the PHP release to confirm a successful installation:
+    1.  Verify the PHP release to confirm a successful installation:
 
     ```command
     php -v
@@ -312,9 +309,9 @@ To install MySQL instead of MariaDB, replace the first command with `sudo dnf in
 
 ## How to Verify the LAMP Stack Installation
 
-To verify the stack components, embed a PHP code block containing a database connection inside an HTML page. PHP code can be integrated into an HTML file using the `<?php` tag. The PHP code block can then connect to an SQL-based database using the `mysqli_connect` command. Provide the appropriate database credentials to connect.
+To verify the stack components, embed a PHP code block containing a database connection inside an HTML page. PHP code can be integrated into an HTML page. PHP code can be integrated into an HTML file using the <?php tag. The PHP code block can then connect to an SQL-based database using the `mysqli_connect` command. Provide the appropriate database credentials to connect.
 
-To fully test all components of the LAMP stack, follow these steps.
+To fully test all components of the LAMP stack, follow the steps below.
 
 1.  Change into the `var/www/html` directory and create a new `phptest.php` file:
 
@@ -360,7 +357,7 @@ To fully test all components of the LAMP stack, follow these steps.
     ![Results of the PHP test](PHP-Test.png)
 
     {{< note >}}
-    If the page displays the `Connection failed` message, verify the database credentials and try again. If an HTML error occurs, ensure the contents of the sample file are complete and correct. To isolate the PHP functionality, replace the contents between `<?php` and `?>`, with `phpinfo();`. This command displays information about the PHP installation and confirms if PHP is working.
+    If the page displays the `Connection failed` message, verify the database credentials and try again. If an HTML error occurs, ensure the contents of the sample file are complete and correct. To isolate the PHP functionality, replace the contents between <?php and ?> with `phpinfo();`. This command displays information about the PHP installation and confirms if PHP is working.
     {{< /note >}}
 
 ## Additional LAMP Stack Production Considerations
@@ -376,9 +373,11 @@ The previous instructions are sufficient for small personal sites. However, comm
 
 1.  To run multiple sites from the same server, configure a virtual host for each site. This is considered a more professional configuration even for a single site.
 
-    To configure a virtual host, add a new directory at `/var/www/html/EXAMPLE_DOMAIN/public_html`. Replace `EXAMPLE_DOMAIN` with the actual domain name. Add the website files to this directory. Then edit the file at `/etc/httpd/conf/httpd.conf` to add the virtual hosts. Each virtual host must define a `DocumentRoot`, `ServerName`, and `ServerAdmin`.
+    Configure a virtual host, add a new directory at `/var/www/html/EXAMPLE_DOMAIN/public_html`. Replace `EXAMPLE_DOMAIN` with the actual domain name. Add the website files to this directory. Then edit the file at `/etc/httpd/conf/httpd.conf` to add the virtual hosts. Each virtual host must define a `DocumentRoot`, `ServerName`, and `ServerAdmin`.
 
     Consult the [Apache Virtual Host documentation](https://httpd.apache.org/docs/current/vhosts/) for more information.
+
+1.  Secure and Optimize MariaDB: After installation, it's important to run `mysql_secure_installation` to remove insecure defaults and set a root password. For production environments, consider configuring `bind-address` in the MariaDB configuration file (typically `/etc/my.cnf.d/mariadb-server.cnf` or `/etc/mysql/mariadb.conf.d/50-server.cnf`) to restrict remote access. You can also improve performance by tuning settings like `innodb_buffer_pool_size, query_cache_size,` and `max_connections` based on your server's workload and available memory.
 
 1.  To remove the default welcome page, edit the file `/etc/httpd/conf.d/welcome.conf` and comment out all directives using the `#` symbol.
 
