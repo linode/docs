@@ -23,7 +23,7 @@ relations:
            - distribution: Fedora 38
 ---
 
-One of the most popular opern-source web development platforms is the Linux-based [*LAMP Stack*](https://en.wikipedia.org/wiki/LAMP_(software_bundle)). It provides all the essential components to host dynamic websites and web applications. This guide explains how to install and test a LAMP stack on Fedora 38, as well as compatible RHEL-based distributions like **AlmaLinux 9** and **Rocky Linux 9**.
+One of the most popular open-source web development platforms is the Linux-based [*LAMP Stack*](https://en.wikipedia.org/wiki/LAMP_(software_bundle)). It provides all the essential components to host dynamic websites and web applications. This guide explains how to install and test a LAMP stack on Fedora 38, as well as compatible RHEL-based distributions like **AlmaLinux 9** and **Rocky Linux 9**.
 
 ## What is a LAMP Stack?
 
