@@ -174,7 +174,6 @@ It's recommended that you answer `yes` to these prompts for a more secure setup 
     - Two other fields are created, `first_name` and `last_name` for storing the customer's name.
 
 1.  View the new table:
-
         SHOW TABLES;
 
     {{< output >}}
