@@ -6,7 +6,7 @@ description: "This guide shows how to install and configure the MariaDB server o
 og_description: "MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on Debian 12 (Bookworm)."
 authors: ["Ryan Syracuse"]
 contributors: ["Ryan Syracuse"]
-published: 2025-07-22
+published: 2025-07-31
 keywords: ["mariadb", "Debian 12", "debian", "bookworm", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mariadb/how-to-install-mariadb-on-debian-12/','/databases/mariadb/mariadb-setup-debian/']
