@@ -1042,6 +1042,7 @@ iaas
 IaC
 icanhazip
 icann
+Icecast
 iceweasel
 icinga
 icingacli
@@ -1362,6 +1363,7 @@ linodes
 linroot
 linter
 Liquibase
+Liquidsoap
 lish
 liskov
 listdir
