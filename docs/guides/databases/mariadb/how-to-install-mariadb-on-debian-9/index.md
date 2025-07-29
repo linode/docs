@@ -6,7 +6,7 @@ description: "This guide shows how to install and configure the MariaDB server o
 og_description: "MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on Debian 12 (Bookworm)."
 authors: ["Ryan Syracuse"]
 contributors: ["Ryan Syracuse"]
-published: 2025-07-22
+published: 2020-01-30
 keywords: ["mariadb", "Debian 12", "debian", "bookworm", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mariadb/how-to-install-mariadb-on-debian-12/','/databases/mariadb/mariadb-setup-debian/']
@@ -51,7 +51,7 @@ Install MariaDB using the package manager.
 MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/) guide, which also applies to MariaDB.
 
 **Note:**
-Allowing unrestricted access to MariaDB on a public IP is not advised. However, you can change the address it listens on by modifying the `bind-address` parameter in `/etc/mysql/mariahdb.conf.d/50-server.cnf`. If you decide to bind MariaDB to your public IP address, you should implement firewall rules that restrict access to specific IP addresses.
+Allowing unrestricted access to MariaDB on a public IP is not advised. However, you can change the address it listens on by modifying the `bind-address` parameter in `/etc/mysql/mariadb.conf.d/50-server.cnf`. If you decide to bind MariaDB to your public IP address, you should implement firewall rules that restrict access to specific IP addresses.
 
 ### MariaDB Client
 
@@ -218,7 +218,8 @@ If you forget your root MariaDB password, it can be reset.
 
         sudo systemctl set-environment MYSQLD_OPTS="--skip-grant-tables --skip-networking"
 
-This still works in Debian 12, but it is temporary and insecure, and should only be used in emergency recovery situations.
+**Note:** 
+This method disables grant tables and networking. While it still works in Debian 12, it is temporary and insecure--use only in emergency recovery situations.
 
 1.  Restart MariaDB:
 
