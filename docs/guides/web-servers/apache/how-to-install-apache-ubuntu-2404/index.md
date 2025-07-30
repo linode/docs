@@ -1,7 +1,7 @@
 ---
 slug: how-to-install-apache-ubuntu-2404
 title: "How to Install and Use Apache on Ubuntu 24.04"
-description: "Apache is an open-source web server, the most widely used on Linux systems, with a modular design that makes it highly adaptable. This guide shows you how to install Apache on Ubuntu 20.04 and how to get started using it."
+description: "Apache is an open-source web server, the most widely used on Linux systems, with a modular design that makes it highly adaptable. This guide shows you how to install Apache on Ubuntu 24.04 and how to get started using it."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2025-07-30
@@ -17,7 +17,7 @@ relations:
             - distribution: Ubuntu 24.04
 ---
 
-The Apache HTTP Web Server — usually just called Apache — is one of the most widely used open-source web servers. It comes with a long history of success in a wide range of applications. In this guide, you can see how to install Apache on Ubuntu 20.04 and learn how to get started using it.
+The Apache HTTP Web Server — usually just called Apache — is one of the most widely used open-source web servers. It comes with a long history of success in a wide range of applications. In this guide, you can see how to install Apache on Ubuntu 24.04 and learn how to get started using it.
 
 ## Before You Begin
 
@@ -105,7 +105,7 @@ The Apache service runs on `systemd`, which can be used to manage the Apache ser
 
 ### Apache Modules
 
-Apache can be extended and modified with modules. These range from modules that integrate interpreters like PHP and Python, enabling dynamic content, to modules that change Apache's fundamental model for handling connections. (See the next section for more on the latter type of modules, called [Multi-processing Modules](/docs/guides/how-to-install-apache-ubuntu-2004/#multi-processing-modules)).
+Apache can be extended and modified with modules. These range from modules that integrate interpreters like PHP and Python, enabling dynamic content, to modules that change Apache's fundamental model for handling connections. (See the next section for more on the latter type of modules, called [Multi-processing Modules](/docs/guides/how-to-install-apache-ubuntu-2404/#multi-processing-modules)).
 
 Apache modules are typically installed via the package manager. After that, you can manage modules through Apache.
 
@@ -115,7 +115,7 @@ Apache modules are typically installed via the package manager. After that, you 
     sudo apt search libapache2-*
     ```
 
-1.  To install a module, use a command like the following. In this and the following examples, the guide uses the `php8.3` module, which is available in the package manager as `libapache2-mod-php7.4`:
+1.  To install a module, use a command like the following. In this and the following examples, the guide uses the `php8.3` module, which is available in the package manager as `libapache2-mod-php8.3`:
 
     ```command
     sudo apt install libapache2-mod-php8.3
