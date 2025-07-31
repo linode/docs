@@ -126,12 +126,12 @@ gzip -9 {{< placeholder "exampleimage.img" >}}
     s3cmd uses multi-part uploading for objects over a certain size. Allow this process to complete for the upload to finish:
 
     ```output
-    upload: '/path/to/image/{{< placeholder "exampleimage.img" >}}' -> 's3:/{{< placeholder "bucket1" >}}/{{< placeholder "exampleimage.img" >}}'  [part 1 of 1672, 15MB] [1 of 1]
-    15728640 of 15728640   100% in    3s     4.59 MB/s  done
-    upload: '/path/to/image/{{< placeholder "exampleimage.img" >}}' -> 's3://{{< placeholder "bucket1" >}}/{{< placeholder "exampleimage.img" >}}'  [part 2 of 1672, 15MB] [1 of 1]
-    15728640 of 15728640   100% in    3s     4.58 MB/s  done
-    upload: '/path/to/image/{{< placeholder "exampleimage.img" >}}' -> 's3:/{{< placeholder "bucket1" >}}/{{< placeholder "exampleimage.img" >}}'  [part 3 of 1672, 15MB] [1 of 1]
-    15728640 of 15728640   100% in    3s     4.58 MB/s  done
+    upload: '/path/to/image/{{< placeholder "exampleimage.img" >}}' -> 's3:/{{< placeholder "bucket1" >}}/{{< placeholder "exampleimage.img" >}}'  [part 1 of 80, 15MB] [1 of 1]
+    15728640 of 15728640   100% in    1s    10.46 MB/s  done
+    upload: '/path/to/image/{{< placeholder "exampleimage.img" >}}' -> 's3://{{< placeholder "bucket1" >}}/{{< placeholder "exampleimage.img" >}}'  [part 2 of 80, 15MB] [1 of 1]
+    15728640 of 15728640   100% in    1s    13.66 MB/s  done
+    upload: '/path/to/image/{{< placeholder "exampleimage.img" >}}' -> 's3:/{{< placeholder "bucket1" >}}/{{< placeholder "exampleimage.img" >}}'  [part 3 of 80, 15MB] [1 of 1]
+    15728640 of 15728640   100% in    1s    14.60 MB/s  done
     ...
     ```
 
