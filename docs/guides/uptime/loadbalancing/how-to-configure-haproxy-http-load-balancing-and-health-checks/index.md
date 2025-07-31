@@ -11,13 +11,13 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 [HAProxy](http://www.haproxy.org) is an intermediary gateway application that manages traffic between frontend clients and backend server resources. HAProxy can be configured to load balance traffic between a set of backend servers, and it can be configured to route HTTP requests according to the URL path of the request.
 
-This guide is the second part in a series on HAProxy. The first guide, [Getting Started with HAProxy TCP Load Balancing and Health Checks](/docs/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks/), provided steps to build a minimally configured network of Nanodes:
+This guide is the second part of a series on HAProxy. The first guide, [Getting Started with HAProxy TCP Load Balancing and Health Checks](/docs/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks/), provided steps to build a minimally configured network of Nanodes:
 
-- An HAProxy node was set up as a TCP load balancer
-- Three Linode Marketplace WordPress servers served as the backends
-- TCP health checks were configured on the HAProxy node
+- An HAProxy node was set up as a TCP load balancer.
+- Three Linode Marketplace WordPress servers served as the backends.
+- TCP health checks were configured on the HAProxy node.
 
-This second guide presents another configuration for this server cluster that demonstrates how to use path-based routing and HTTP health checks.
+This second guide provides another configuration for this server cluster that demonstrates how to use path-based routing and HTTP health checks.
 
 ## Before You Begin
 
