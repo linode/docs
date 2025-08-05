@@ -179,9 +179,15 @@ Save your signed URL somewhere secure so that it can be used in the cloud-init c
     - **Linux Distribution**: Ubuntu 24.04 LTS
     - **Linode Plan**: Select a compute plan with a larger RAM disk than your disk image size. For example, if your disk image is 25GB, select a Linode plan with 32GB RAM. The cloud-init script used in this guide swaps out the root boot disk and uses your new instance’s RAM disk to temporarily house your uploaded disk image. After your new instance is up and running, you can optionally downsize your Linode to a smaller plan with less RAM.
 
-1.  Under **Add User Data**, copy and paste the following cloud-init config file contents in the **User Data** field.
+    {{< note title="Linode Plan Size Minimum" >}}
+    A [Linode plan](https://www.linode.com/pricing/) with a minimum of 16GB RAM is recommended for the cloud-init configuration to successfully run.
+    {{< /note >}}
 
-    In the line `mount none /tmp/tmproot -t tmpfs -o size=30G` (row 9), adjust the temporary disk size in accordance with your chosen RAM disk size. For example, if your Linode plan has 64GB of RAM and your disk image size is between 30GB and 60GB (i.e. 48GB), change the disk size to `60G`. This allows for some extra room between your disk image size and the total RAM disk. The `30G` example in the script assumes your disk image is large enough to require a RAM disk of 32GB.
+1.  Under **Add User Data**, insert the following cloud-init config file contents in the **User Data** field.
+
+    In the line `mount none /tmp/tmproot -t tmpfs -o size=30G` (row 9), adjust the temporary disk size in accordance with your chosen RAM disk size. Make sure to specify a smaller `tempfs` (temporary file system) than your total RAM. It must be large enough to hold the cloud-init Ubuntu OS and disk image coming from Object Storage, and small enough that it doesn’t use up all the RAM available. Generally this means a `tempfs` 2-4GB smaller than your total plan RAM size.
+
+    For example, if your Linode plan has 64GB of RAM and your disk image size is between 30GB and 60GB (i.e. 48GB), change the disk size to `60G`. This allows for some extra room between your disk image size and the total RAM disk. The `30G` example in the script assumes your disk image is large enough to require a plan size of 32GB.
 
     Replace the `SIGNED_URL` placeholder in the `wget` command (row 13) with the signed URL for your disk image generated in the previous section:
 
@@ -194,11 +200,17 @@ Save your signed URL somewhere secure so that it can be used in the cloud-init c
             echo 'making directory /tmp/tmproot' >&2
             mkdir /tmp/tmproot
             echo 'mounting tmpfs to /tmp/tmproot' >&2
-            mount none /tmp/tmproot -t tmpfs -o size={{< placeholder "30G">}}
+            mount none /tmp/tmproot -t tmpfs -o size={{< placeholder "30G" >}}
             echo 'changing directory to /tmp/tmproot' >&2
             cd /tmp/tmproot
             echo 'downloading signed image from object storage' >&2
             wget "{{< placeholder "SIGNED_URL" >}}" -O /tmp/tmproot/signed_image.img
+            filename="signed_image.img"
+            if [[ $(file -b signed_image.img) == *gzip* ]]; then
+                echo 'detected a compressed file gzip' >&2
+                mv signed_image.img signed_image.img.gz
+                filename="signed_image.img.gz"
+            fi
             echo 'running telinit 2 to switch to runlevel 2' >&2
             telinit 2
             echo 'making directories in /tmp/tmproot' >&2
@@ -235,6 +247,7 @@ Save your signed URL somewhere secure so that it can be used in the cloud-init c
             echo '#!/bin/bash' > /tmp/test-script-cont.sh
             chmod +x /tmp/test-script-cont.sh
             echo 'exec >/dev/ttyS0 2>&1' >> /tmp/test-script-cont.sh
+            echo 'cd /' >> /tmp/test-script-cont.sh
             echo 'echo "started sub script"' >> /tmp/test-script-cont.sh
             echo 'pids=$(fuser -vm /oldroot | xargs | sed "s/kernel //") >> /tmp/test-script-cont.sh'
             echo 'echo "got pids: $pids"' >> /tmp/test-script-cont.sh
@@ -242,8 +255,11 @@ Save your signed URL somewhere secure so that it can be used in the cloud-init c
             echo 'echo "killed pids"' >> /tmp/test-script-cont.sh
             echo 'umount /oldroot' >> /tmp/test-script-cont.sh
             echo 'echo "umounted /oldroot"' >> /tmp/test-script-cont.sh
-            if [[ $(file -b signed_image.img) == *gzip* ]]; then
-                echo 'gzip -d signed_image.img | dd of=/dev/sda status=progress' >> /tmp/test-script-cont.sh
+            # if filename matches gzip, decompress it
+            if [[ $filename == "signed_image.img.gz" ]]; then
+                echo 'echo "detected a compressed file gzip"' >> /tmp/test-script-cont.sh
+                echo 'which gzip' >> /tmp/test-script-cont.sh
+                echo 'gzip -cd signed_image.img.gz | dd of=/dev/sda status=progress' >> /tmp/test-script-cont.sh
             else
                 echo 'dd if=signed_image.img of=/dev/sda status=progress' >> /tmp/test-script-cont.sh
             fi
