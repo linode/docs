@@ -4,7 +4,7 @@ title: "How to Install and Use Apache on Ubuntu 24.04"
 description: "Apache is an open-source web server, the most widely used on Linux systems, with a modular design that makes it highly adaptable. This guide shows you how to install Apache on Ubuntu 24.04 and how to get started using it."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-07-30
+published: 2025-08-05
 keywords: ['apache','apache web server','apache http server','httpd','install apache on ubuntu']
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
