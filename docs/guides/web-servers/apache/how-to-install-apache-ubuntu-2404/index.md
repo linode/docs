@@ -143,7 +143,8 @@ Apache modules are typically installed via the package manager. After that, you 
 
 ## Multi-processing Modules
 
-Apache supports several models for handling connections through a particular kind of module: Multi-processing Modules (MPMs). On Ubuntu and many other Linux distributions, the `event` module is Apache's default MPM. This section provides an overview of each of the three MPMs available and gives you the necessary commands for using them.
+Apache supports several models for handling connections through a particular kind of module: Multi-processing Modules (MPMs). On many Linux distributions, the `event` module is Apache's default MPM. However, in Ubuntu 24.04, Apache defaults to the `mpm_prefork` module. This change is primarily due to the continued use of `libapache2-mod-php`, which is not thread-safe and requires the single-threaded prefork MPM for compatibility.
+This section provides an overview of each of the three MPMs available and gives you the necessary commands for using them.
 
 ### Prefork Module
 
