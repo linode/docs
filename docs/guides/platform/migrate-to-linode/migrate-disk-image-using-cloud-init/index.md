@@ -49,7 +49,7 @@ There are several requirements that must be met for your disk image to successfu
 
 -   **Linux kernel**: It is recommended to use a platform-agnostic kernel such as the distro-provided kernel with GRUB 2 as the bootloader - rather than a provider-optimized kernel (i.e. [Amazon Linux](https://docs.aws.amazon.com/linux/) kernels). This helps avoid any platform-based dependencies or compatibility issues.
 
--   **Disk format**: The disk must use the ext3 or ext4 file system in order to be compatible.
+-   **Disk format and partitions**: The disk must use the ext3 or ext4 file system in order to be compatible. The cloud-init configuration provided in this guide only supports non-partitioned disk images.
 
 -   **File type**: Your disk image can be either in uncompressed `.img` or compressed `.gz` (gzip) format. At the time of this writing, `.iso` image files are not supported.
 
@@ -57,7 +57,7 @@ There are several requirements that must be met for your disk image to successfu
 The provided cloud-init configuration uses a file’s metadata to gather information and does not look for specific file extensions.
 {{< /note >}}
 
-If you are using a disk image that requires direct disk to boot (i.e. an image with a Master Boot Record, or MBR), you may need to take additional steps to configure your system after deployment for full compatibility with the Akamai Cloud platform. See our guide on [Installing a Custom Distribution](/docs/guides/install-a-custom-distribution/#make-the-system-compatible-with-the-linode-platform) for guidance and configuration options for a direct disk image.
+If you are using a disk image that requires direct disk to boot (i.e. an image with partitioned disks or a Master Boot Record, or MBR), you may need to take additional steps to configure your system before image creation or after deployment for full compatibility with the Akamai Cloud platform. See our guide on [Installing a Custom Distribution](/docs/guides/install-a-custom-distribution/#make-the-system-compatible-with-the-linode-platform) for guidance and configuration options for a direct disk image.
 
 ## Upload a Disk Image to Object Storage
 
@@ -65,7 +65,7 @@ If you are using a disk image that requires direct disk to boot (i.e. an image w
 If you haven’t done so already, [create an Object Storage bucket](https://techdocs.akamai.com/cloud-computing/docs/create-and-manage-buckets) in which to store your disk image.
 {{< /note >}}
 
-The Object Storage item upload limit is 5GB. This is the same as our [Custom Image upload limit](https://techdocs.akamai.com/cloud-computing/docs/upload-an-image). If using an uncompressed or compressed disk image larger than 5GB, you must use a third party tool such as s3cmd when uploading your image file.
+The Object Storage item upload limit is 5GB. This is the same as our [Custom Image upload limit](https://techdocs.akamai.com/cloud-computing/docs/upload-an-image). If using an uncompressed or compressed disk image larger than 5GB, you must use an alternative tool such as s3cmd when uploading your image file.
 
 You can optionally compress your disk image file using the following gzip command. The `-9` flag [regulates the speed](https://linux.die.net/man/1/gzip) of compression by running at a slower speed while maintaining the highest quality:
 
@@ -183,7 +183,7 @@ Save your signed URL somewhere secure so that it can be used in the cloud-init c
     A [Linode plan](https://www.linode.com/pricing/) with a minimum of 16GB RAM is recommended for the cloud-init configuration to successfully run.
     {{< /note >}}
 
-1.  Under **Add User Data**, insert the following cloud-init config file contents in the **User Data** field.
+1.  Under **Add User Data**, insert the following cloud-init config file contents in the **User Data** field. Make sure the config appears exactly as displayed below with no leading or trailing spaces.
 
     In the line `mount none /tmp/tmproot -t tmpfs -o size=30G` (row 9), adjust the temporary disk size in accordance with your chosen RAM disk size. Make sure to specify a smaller `tempfs` (temporary file system) than your total RAM. It must be large enough to hold the cloud-init Ubuntu OS and disk image coming from Object Storage, and small enough that it doesn’t use up all the RAM available. Generally this means a `tempfs` 2-4GB smaller than your total plan RAM size.
 
