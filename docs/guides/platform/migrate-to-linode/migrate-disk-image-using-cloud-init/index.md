@@ -283,7 +283,7 @@ Save your signed URL somewhere secure so that it can be used in the cloud-init c
 1.  Complete the steps in our [Set Up and Secure a Linode](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to secure your instance, including updating your system, adding a limited sudo user, hardening SSH access with public key authentication, and configuring a firewall.
 
 {{< note title="Disk Name" >}}
-Once the process is complete, Cloud Manager displays the disk name as “Ubuntu 24.04” upon first boot regardless of the incoming operating system used by the original disk image.
+Once the process is complete, the Linode instance's configuration displays the disk name as “Ubuntu 24.04” in Cloud Manager upon first boot regardless of the incoming operating system used by the origin disk. The *actual* operating system on the instance will match that of the incoming disk image. The configuration can be renamed within the Cloud Manager interface.
 {{< /note >}}
 
 ## Resizing the Instance
