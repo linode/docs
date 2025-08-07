@@ -4,7 +4,7 @@ title: "Migrate a Disk Image to Akamai Cloud Using Cloud-Init"
 description: "This guide provides steps and configurations for migrating and deploying a disk image to a new Linode instance using cloud-init."
 authors: ["John Dutton","Abe Massry"]
 contributors: ["John Dutton","Abe Massry"]
-published: 2025-07-30
+published: 2025-08-07
 keywords: ['cloud-init','migrate','migration','disk image','aws','azure','google cloud','gcp','metadata']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -17,7 +17,7 @@ The ability to migrate a virtual machine’s disk image across cloud providers i
 
 This tutorial includes steps for deploying a disk image to a new compute instance using *cloud-init* and the Ubuntu 24.04 LTS distribution. Cloud-init is an industry standard configuration tool that helps automate the configuration of new compute instances upon initial boot.
 
-The method in this guide uses Object Storage on Akamai Cloud for disk image storage, and provides a custom cloud-init configuration compatible with Akamai’s Metadata service.
+The method in this guide uses Object Storage on Akamai Cloud for disk image storage, and provides a custom cloud-init configuration compatible with [Akamai’s Metadata service](https://techdocs.akamai.com/cloud-computing/docs/overview-of-the-metadata-service).
 
 ## How It Works
 
@@ -32,8 +32,6 @@ In order for the cloud-init script to function, the RAM disk of your new instanc
 The following prerequisites are required for completing the steps in this guide:
 
 -   An Akamai Cloud account with permissions in place for managing Object Storage and Compute Instances
-
--   Access to your AWS cloud platform account with sufficient permissions to work with AWS EC2 instances, IAM (Identity and Access Management), Images, and s3. The AWS CLI must also be installed and configured.
 
 -   The [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli) installed and configured for use with your Akamai Cloud account
 
@@ -185,9 +183,9 @@ Save your signed URL somewhere secure so that it can be used in the cloud-init c
 
 1.  Under **Add User Data**, insert the following cloud-init config file contents in the **User Data** field. Make sure the config appears exactly as displayed below with no leading or trailing spaces.
 
-    In the line `mount none /tmp/tmproot -t tmpfs -o size=30G` (row 9), adjust the temporary disk size in accordance with your chosen RAM disk size. Make sure to specify a smaller `tempfs` (temporary file system) than your total RAM. It must be large enough to hold the cloud-init Ubuntu OS and disk image coming from Object Storage, and small enough that it doesn’t use up all the RAM available. Generally this means a `tempfs` 2-4GB smaller than your total plan RAM size.
+    In the line `mount none /tmp/tmproot -t tmpfs -o size=30G` (row 9), adjust the temporary disk size in accordance with your chosen RAM disk size. Make sure to specify a smaller `tmpfs` (temporary file system) than your total RAM. It must be large enough to hold the cloud-init Ubuntu OS and disk image coming from Object Storage, and small enough that it doesn’t use up all the RAM available. Generally this means a `tmpfs` 2-4GB smaller than your total plan RAM size.
 
-    For example, if your Linode plan has 64GB of RAM and your disk image size is between 30GB and 60GB (i.e. 48GB), change the disk size to `60G`. This allows for some extra room between your disk image size and the total RAM disk. The `30G` example in the script assumes your disk image is large enough to require a plan size of 32GB.
+    For example, if your Linode plan has 64GB of RAM and your disk image size is between 30GB and 60GB (i.e. 48GB), change the RAM disk size to `60G`. This allows for some extra room between your disk image size and the total RAM disk. The `30G` example in the script assumes your disk image is large enough to require a plan size of 32GB.
 
     Replace the `SIGNED_URL` placeholder in the `wget` command (row 13) with the signed URL for your disk image generated in the previous section:
 
@@ -274,10 +272,10 @@ Save your signed URL somewhere secure so that it can be used in the cloud-init c
 
 1.  Finish selecting your Linode instance parameters, and click **Create Linode**. Depending on the contents and configuration of your disk image, this may take some time to complete. You can monitor the status of your instance’s deployment using the [Lish console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
 
-1.  Once fully booted, log into your new Linode instance using the default user (`root`), replacing {{< placeholder "IP_ADDRESS" >}} with the IPv4 of your Linode:
+1.  Once fully booted, log into your new instance using the user and credentials from your original disk image, replacing {{< placeholder "IP_ADDRESS" >}} with the IPv4 of your Linode instance:
 
     ```command
-    ssh root@{{< placeholder "IP_ADDRESS" >}}
+    ssh {{< placeholder "USER" >}}@{{< placeholder "IP_ADDRESS" >}}
     ```
 
 1.  Complete the steps in our [Set Up and Secure a Linode](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to secure your instance, including updating your system, adding a limited sudo user, hardening SSH access with public key authentication, and configuring a firewall.
