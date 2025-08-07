@@ -17,7 +17,7 @@ The ability to migrate a virtual machine’s disk image across cloud providers i
 
 This tutorial includes steps for deploying a disk image to a new compute instance using *cloud-init* and the Ubuntu 24.04 LTS distribution. Cloud-init is an industry standard configuration tool that helps automate the configuration of new compute instances upon initial boot.
 
-The method in this guide uses Object Storage on Akamai Cloud for disk image storage, and provides a custom cloud-init configuration compatible with Akamai’s Metadata service.
+The method in this guide uses Object Storage on Akamai Cloud for disk image storage, and provides a custom cloud-init configuration compatible with [Akamai’s Metadata service](https://techdocs.akamai.com/cloud-computing/docs/overview-of-the-metadata-service).
 
 ## How It Works
 
