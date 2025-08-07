@@ -1,7 +1,7 @@
 ---
 slug: migrate-disk-image-using-cloud-init
 title: "Migrate a Disk Image to Akamai Cloud Using Cloud-Init"
-description: "Two to three sentences describing your guide."
+description: "This guide provides steps and configurations for migrating and deploying a disk image to a new Linode instance using cloud-init."
 authors: ["John Dutton","Abe Massry"]
 contributors: ["John Dutton","Abe Massry"]
 published: 2025-07-30
@@ -15,7 +15,7 @@ external_resources:
 
 The ability to migrate a virtual machine’s disk image across cloud providers is essential to cloud architecture durability and a key component of multi-cloud portability. There are numerous methods of migrating a disk image, several of which can be found in our documentation library: [Migrate to Linode](/docs/guides/platform/migrate-to-linode/)
 
-This tutorial includes steps for deploying an uncompressed disk image to a new compute instance using *cloud-init* and the Ubuntu 24.04 LTS distribution. Cloud-init is an industry standard configuration tool that helps automate the configuration of new compute instances upon initial boot.
+This tutorial includes steps for deploying a disk image to a new compute instance using *cloud-init* and the Ubuntu 24.04 LTS distribution. Cloud-init is an industry standard configuration tool that helps automate the configuration of new compute instances upon initial boot.
 
 The method in this guide uses Object Storage on Akamai Cloud for disk image storage, and provides a custom cloud-init configuration compatible with Akamai’s Metadata service.
 
