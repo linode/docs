@@ -4,7 +4,7 @@ title: "Migrate a Disk Image to Akamai Cloud Using Cloud-Init"
 description: "This guide provides steps and configurations for migrating and deploying a disk image to a new Linode instance using cloud-init."
 authors: ["John Dutton","Abe Massry"]
 contributors: ["John Dutton","Abe Massry"]
-published: 2025-08-07
+published: 2025-08-06
 keywords: ['cloud-init','migrate','migration','disk image','aws','azure','google cloud','gcp','metadata']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
