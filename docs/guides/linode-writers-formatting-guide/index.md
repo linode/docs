@@ -935,7 +935,7 @@ This content is hidden until the user expands the note.
 
 #### Indentation
 
-Content within note shortcode tags must match the indentation of parent elements, such as list items. Since list content uses 4 spaces indentation, note conteent within lists must also be indented 4 spaces.
+Content within note shortcode tags must match the indentation of parent elements, such as list items. Since list content uses 4 spaces indentation, note content within lists must also be indented 4 spaces.
 
 By default, content between shortcode tags uses `.InnerDeindent`, which automatically adjusts indentation to match parent elements (like lists). When set to `false`, `.Inner` is used instead, which maintains the original indentation regardless of parent elements. Defaults to true.
 
@@ -969,7 +969,7 @@ When writing guides, Hugo  shortcodes (like {{< note >}}, {{< file >}}, {{< comm
 
 Shortguides allow you to extend a Markdown file by inserting content from another file. For common tasks such as basic software installation, you can create reusable shortguides and insert them using the content shortcode. This allows our library to maintain consistent and up-to-date installation instructions for frequently used tools such as Python, MySQL, and Docker.
 
-To create one, start by drafting a standalone Markdown file that contains the task-specific instructions. Once saved, it can be referenced across multiple guides using the content shortode, ensuring consistency and reduing duplication.
+To create one, start by drafting a standalone Markdown file that contains the task-specific instructions. Once saved, it can be referenced across multiple guides using the content shortode, ensuring consistency and reducing duplication.
 
 1.    Create a directory using the name of your shortguide anywhere within the docs/ folder.
 
@@ -1028,7 +1028,7 @@ To use this shortguide in another guide, use the following syntax:
 ```
 
 {{< note >}}
-Be sure to use the `%` delimiter inside the surrounding `{{ }}` braces when embedding a `content` shortcodes.
+Be sure to use the `%` delimiter inside the surrounding `{{ }}` braces when embedding `content` shortcodes.
 {{< /note >}}
 
 ## Standards and Best Practices
@@ -1094,7 +1094,7 @@ The second step is optional. If you do not follow this step, a profile page is s
     contributors: ["FirstName LastName"]
     ```
 
-1.  (Optional) Create a new directory and Markdown file for your author page under the `docs/authors` directory in the docs repository. The new directory (folder) should named after you. Replace uppercase letters with lower case, and replace spaces with a dash. For example, an author with the name `Nathan Smith` would have a new profile page created at `docs/authors/nathan-smith/_index.md`.
+1.  (Optional) Create a new directory and Markdown file for your author page under the `docs/authors` directory in the docs repository. The new directory (folder) should be named after you. Replace uppercase letters with lower case, and replace spaces with a dash. For example, an author with the name `Nathan Smith` would have a new profile page created at `docs/authors/nathan-smith/_index.md`.
 
     {{< note >}}
     Markdown file name is named `_index.md`, not `index.md`
@@ -1119,7 +1119,7 @@ The second step is optional. If you do not follow this step, a profile page is s
     A short biography of the docs author/contributor. This biography text is displayed above a listing of their published docs/content.
     ```
 
-    You can add an email, website link, and short meta description in the frontmatter of this file. You can also update the body of the file with a biography of the author. This biography displays above the author's published guides listing.
+    You can add an email, website links, and a short meta description in the frontmatter of this file. You can also update the body of the file with a biography of the author. This biography displays above the author's published guides listing.
 
 ## Legal Information
 
