@@ -738,10 +738,7 @@ The older syntax should not be used for new content. Use the newer code fence sy
 
 {{< /note >}}
 
-### File Paths and F
-
-
-ile Names
+### File Paths and File Names
 
 Inline file paths and file names should be formatted as inline code blocks.
 
