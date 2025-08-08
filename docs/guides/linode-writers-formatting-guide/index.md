@@ -171,9 +171,11 @@ Headings should be written in title case and can be up to 3 levels deep.
 
 | Syntax | Output |
 | -- | -- |
-| `## Section title (h2)` | <font size="5"><strong>Section title (h2)</strong></font> |
-| `### Subsection (h3)` | <font size="4"><strong>Subsection (h3)</strong></font> |
-| `#### Subsection (h4)` | <strong>Subsection (h4)</strong> |
+| `## Section title (h2)` | approx. 18-24pt **Section title (h2)** |
+| `### Subsection (h3)` | approx. 16-20pt **Subsection (h3)** |
+| `#### Subsection (h4)` | approx. 14-18pt **Subsection (h4)** |
+
+Font sizes are approximate and depend on your site's theme or editor.
 
 ### Lists
 
