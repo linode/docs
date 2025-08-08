@@ -181,7 +181,7 @@ Font sizes are approximate and depend on your site's theme or editor.
 
 #### Ordered Lists
 
-Ordered lists are numbered and should be used to denote a series of steps or sequential items. Sequential procedures and step-by-step instructions should always use numbered lists rather than bullet points to emphasize the proper order. Use the following guidance when creating ordered lists:
+Ordered lists are numbered and should be used to indicate a series of steps or other content that follows a defined sequence (i.e., apps to be installed in a certain order). Sequential procedures and step-by-step instructions should always use numbered lists rather than bullet points to emphasize the proper order. Use the following guidance when creating ordered lists:
 
 -   **Longer lists that may change and where nested content is possible:**
 
