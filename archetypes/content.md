@@ -19,4 +19,4 @@ When writing content, please reference the [Linode Writer's Formatting Guide](ht
 
 In this section, list out any prerequisites necessary for the reader to complete the guide, including: services or products to be created beforehand, hardware and plan requirements, or software that needs to be preinstalled.
 
-See: [Linode Writer's Formatting Guide: Before You Begin](http://www.linode.com/docs/guides/linode-writers-formatting-guide/#before-you-begin)
+See: [Linode Writer's Formatting Guide: Before You Begin](https://www.linode.com/docs/guides/linode-writers-formatting-guide/#before-you-begin)
