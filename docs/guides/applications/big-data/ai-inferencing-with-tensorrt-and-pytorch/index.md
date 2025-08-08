@@ -4,7 +4,7 @@ title: "Build an AI Inferencing Solution With TensorRt and PyTorch"
 description: "Enhance deep learning capabilities with TensorRT and PyTorch on Akamai Cloud. Optimize inferencing for various AI models using NVIDIA RTX 4000 Ada GPU instances."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-06-27
+published: 2025-08-08
 keywords: ['ai','inference','inferencing','llm','model','pytorch','tensorrt','gpu','nvidia']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -31,7 +31,11 @@ In some cases, a $100 deposit may be required to deploy GPU Linodes. This may in
 
 ### What is AI Inference?
 
+AI inference occurs after model training - it’s the point at which the AI model generates an “opinion” or decision based on how it was trained. Think of inference like how people have the ability to form a point of view based on prior knowledge and experience.
 
+Consider an AI model trained on a data set that includes millions of images of dogs. If given a new image of a dog not in the data set, the AI model uses inference to determine information about the new dog (i.e. the dog’s breed).
+
+The goal of AI inference is to generate an educated, accurate result from a well-trained model with speed and efficiency.
 
 ### What is Computer Vision (CV)?
 
