@@ -66,7 +66,7 @@ The standard tool for interacting with MariaDB is the `mariadb` client, which is
         sudo mysql -u root -p
 
    {{< note >}}
-   On Debian 12, MariaDB uses the 'unix_socket' plugin by default. This means that if you're logged into the system as a user with root privileges, you can press **Enter* at the password prompt and still gain access--no password is required.
+   On Debian 12, MariaDB uses the `unix_socket` plugin by default. This means that if you're logged into the system as a user with root privileges, you can press **Enter* at the password prompt and still gain access--no password is required.
    {{< /note >}}
 
     You'll then be presented with a welcome header and the MariaDB prompt as shown below:
