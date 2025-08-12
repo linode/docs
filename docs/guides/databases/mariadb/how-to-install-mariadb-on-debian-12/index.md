@@ -3,16 +3,11 @@ slug: how-to-install-mariadb-on-debian-12
 title: "Installing MariaDB on Debian 12"
 title_meta: "How to Install MariaDB on Debian 12"
 description: "This guide shows how to install and configure the MariaDB server on Debian 12."
-og_description: "MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on Debian 9."
+og_description: "MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on Debian 12 (Bookworm)."
 authors: ["Ryan Syracuse"]
 contributors: ["Ryan Syracuse"]
-<<<<<<< HEAD:docs/guides/databases/mariadb/how-to-install-mariadb-on-debian-12/index.md
 published: 2020-01-31
-keywords: ["mariadb", "Debian 12", "debian", "database", "mysql"]
-=======
-published: 2025-07-31
-keywords: ["mariadb", "Debian 12", "debian", "bookworm", "database", "mysql"]
->>>>>>> 4f51b0a79 (Renamed folder to match guide slug for Hugo build):docs/guides/databases/mariadb/how-to-install-mariadb-on-debian-12/index.md
+keywords: ["mariadb", "Debian 12", "debian", "database", "bookworm", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mariadb/how-to-install-mariadb-on-debian-12/','/databases/mariadb/mariadb-setup-debian/']
 image: Installing_MariaDB_on_Debian9.png
