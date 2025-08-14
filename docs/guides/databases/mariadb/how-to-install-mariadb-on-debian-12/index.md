@@ -70,6 +70,9 @@ The standard tool for interacting with MariaDB is the `mariadb` client, which is
    {{< /note >}}
 
     You'll then be presented with a welcome header and the MariaDB prompt as shown below:
+    ```output
+    Hello world!
+    ```
 
     ```output
     Welcome to the MariaDB monitor.  Commands end with ; or \g.
