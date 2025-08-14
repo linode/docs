@@ -184,14 +184,14 @@ It's recommended that you answer `yes` to these prompts for a more secure setup 
 
         SHOW TABLES;
 
-   ```output
-   +------------------+
-   | Tables_in_testdb |
-   +------------------+
-   | customers        |
-   +------------------+
-   1 row in set (0.00 sec)
-   ```
+       ```output
+       +------------------+
+       | Tables_in_testdb |
+       +------------------+
+       | customers        |
+       +------------------+
+       1 row in set (0.00 sec)
+       ```
 
 1.  Add some data:
 
