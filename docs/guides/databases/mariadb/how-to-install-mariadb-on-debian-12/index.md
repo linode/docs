@@ -81,7 +81,6 @@ The standard tool for interacting with MariaDB is the `mariadb` client, which is
     Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
    ```
 
-
 To view a list of available commands, type '\h' at the prompt. You then see:
 
 ```output
