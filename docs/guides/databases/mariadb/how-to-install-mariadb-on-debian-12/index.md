@@ -69,11 +69,8 @@ The standard tool for interacting with MariaDB is the `mariadb` client, which is
    On Debian 12, MariaDB uses the `unix_socket` plugin by default. This means that if you're logged into the system as a user with root privileges, you can press **Enter* at the password prompt and still gain access--no password is required.
    {{< /note >}}
 
-    You'll then be presented with a welcome header and the MariaDB prompt as shown below:
-    ```output
-    Hello world!
-    ```
-
+You'll then be presented with a welcome header and the MariaDB prompt as shown below:
+    
     ```output
     Welcome to the MariaDB monitor.  Commands end with ; or \g.
     Your MariaDB connection id is 31
@@ -82,7 +79,7 @@ The standard tool for interacting with MariaDB is the `mariadb` client, which is
     Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
 
     Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-   ```
+    ```
 
 To view a list of available commands, type '\h' at the prompt. You then see:
 
