@@ -184,14 +184,14 @@ It's recommended that you answer `yes` to these prompts for a more secure setup 
 
         SHOW TABLES;
 
-    {{< output >}}
+```output
 +------------------+
 | Tables_in_testdb |
 +------------------+
 | customers        |
 +------------------+
 1 row in set (0.00 sec)
-{{</ output >}}
+```
 
 1.  Add some data:
 
@@ -201,14 +201,14 @@ It's recommended that you answer `yes` to these prompts for a more secure setup 
 
         SELECT * FROM customers;
 
-    {{< output >}}
+```output
 +-------------+------------+-----------+
 | customer_id | first_name | last_name |
 +-------------+------------+-----------+
 |           1 | John       | Doe       |
 +-------------+------------+-----------+
 1 row in set (0.00 sec)
-{{</ output >}}
+```
 
 1.  Then exit MariaDB:
 
