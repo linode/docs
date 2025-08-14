@@ -123,9 +123,9 @@ plugin:
         FLUSH PRIVILEGES;
         exit;
 **New in MariaDB 10.11 on Debian 12**
-The `mysql_secure_installation` script now offers the option to *set a root password,* which automatically switches the authentication method from `unix_socket` to `mysql_native_password`. This is a change from earlier verions, where socket-based authentication was the default and required manual reconfiguration.
+The `mysql_secure_installation` script now offers the option to *set a root password,* which automatically switches the authentication method from `unix_socket` to `mysql_native_password`. This is a change from earlier versions, where socket-based authentication was the default and required manual reconfiguration.
 
-Next, run the `mysql_secure_installation` script to address sseveral security concerns in a default MariaDB installation.
+Next, run the `mysql_secure_installation` script to address several security concerns in a default MariaDB installation.
 
         sudo mysql_secure_installation
 
@@ -134,7 +134,7 @@ This script will guide you through several options, including:
 -    Removing anonymous user accounts.
 -    Disabling remote root logins.
 -    Removing the test database.
--    
+-
 It's recommended that you answer `yes` to these prompts for a more secure setup (to harden your MariaDB installation against unauthorized access).  You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
 ## Using MariaDB
