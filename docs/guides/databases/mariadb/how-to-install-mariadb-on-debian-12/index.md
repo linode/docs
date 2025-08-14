@@ -71,15 +71,15 @@ The standard tool for interacting with MariaDB is the `mariadb` client, which is
 
 You'll then be presented with a welcome header and the MariaDB prompt as shown below:
     
-    ```output
-    Welcome to the MariaDB monitor.  Commands end with ; or \g.
-    Your MariaDB connection id is 31
-    Server version: 10.11.11-MariaDB-0+deb12u1 Debian 12
+```output
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 31
+Server version: 10.11.11-MariaDB-0+deb12u1 Debian 12
 
-    Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
 
-    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-    ```
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+```
 
 To view a list of available commands, type '\h' at the prompt. You then see:
 
