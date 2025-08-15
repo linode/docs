@@ -134,7 +134,7 @@ This script will guide you through several options, including:
 -    Removing anonymous user accounts.
 -    Disabling remote root logins.
 -    Removing the test database.
--    
+-
 It's recommended that you answer `yes` to these prompts for a more secure setup (to harden your MariaDB installation against unauthorized access).  You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
 ## Using MariaDB
