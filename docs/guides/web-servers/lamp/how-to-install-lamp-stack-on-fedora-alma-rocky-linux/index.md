@@ -94,7 +94,7 @@ These instructions are designed for Fedora 38, but most steps also apply to Alma
 
     ```output
     ● httpd.service - The Apache HTTP Server
-         Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; preset: di>
+        Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; preset: di>
         Drop-In: /usr/lib/systemd/system/service.d
                  └─10-timeout-abort.conf
          Active: active (running) since Mon 2023-08-28 12:20:09 EDT; 47s ago
@@ -163,7 +163,7 @@ These instructions are designed for Fedora 38, but most steps also apply to Alma
 This guide installs MariaDB, a drop-in replacement for MySQL and the default database in Fedora 38. MariaDB is widely adopted and offers improved performance and additional features compared to the original MySQL application. While the LAMP stack can also use MySQL, MariaDB is fully compatible and recommended for Fedora-based systems.
 
 {{< note >}}
-If you prefer to use MySQL instead of MariaDB, install it with: `sudo dnf install mysql-server`. 
+If you prefer to use MySQL instead of MariaDB, install it with: `sudo dnf install mysql-server`.
 Then follow the same steps to enable, start, and secure the database.
 Before running `mysql_secure_installation`, you may need to set a root password manually.
 
