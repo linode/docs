@@ -23,11 +23,11 @@ relations:
            - distribution: Fedora 38
 ---
 
-One of the most popular opern-source web development platforms is the Linux-based [*LAMP Stack*](https://en.wikipedia.org/wiki/LAMP_(software_bundle)). It provides all the essential components to host dynamic websites and web applications. This guide explains how to install and test a LAMP stack on Fedora 38, as well as compatible RHEL-based distributions like **AlmaLinux 9** and **Rocky Linux 9**.
+One of the most popular open-source web development platforms is the Linux-based [*LAMP Stack*](https://en.wikipedia.org/wiki/LAMP_(software_bundle)). It provides all the essential components to host dynamic websites and web applications. This guide explains how to install and test a LAMP stack on Fedora 38, as well as compatible RHEL-based distributions like **AlmaLinux 9** and **Rocky Linux 9**.
 
 ## What is a LAMP Stack?
 
-The LAMP stack is a foundatioinal architecture for open source web development on Linux systems. It includes four core components: Linux, [Apache](https://httpd.apache.org/), [MySQL](https://dev.mysql.com/) or [MariaDB](https://mariadb.com/), and [PHP](https://www.php.net/), [Perl](https://www.perl.org), or [Python](https://www.python.org). This stack supports a wide range of modern websites and applications, including WordPress.
+The LAMP stack is a foundational architecture for open source web development on Linux systems. It includes four core components: Linux, [Apache](https://httpd.apache.org/), [MySQL](https://dev.mysql.com/) or [MariaDB](https://mariadb.com/), and [PHP](https://www.php.net/), [Perl](https://www.perl.org), or [Python](https://www.python.org). This stack supports a wide range of modern websites and applications, including WordPress.
 
 The main components are:
 
@@ -112,7 +112,7 @@ These instructions are designed for Fedora 38, but most steps also apply to Alma
 
 1.  Test Apache in a Browser
 
-    Open a Web browser and navigate to your server's IP address. You should see the "Fedora Webserver Test Page". AlmaLinux and Rocy Linux display similar default pages.
+    Open a Web browser and navigate to your server's IP address. You should see the "Fedora Webserver Test Page". AlmaLinux and Rocky Linux display similar default pages.
 
     ![The default Fedora web landing page](Fedora-default-web-page.png)
 
@@ -261,11 +261,29 @@ Before running `mysql_secure_installation`, you may need to set a root password 
 
 ### How to Install PHP
 
-1.  Install the main PHP component, including the `php-mysqlnd` package for database integration:
+Fedora 38 includes PHP 8.2 in its default repositories. If you want to install the latest stable version of PHP (such as PHP 8.3 or 8.4), you can use the Remi repository, which is a trusted third-party source for up-to-date PHP packages.
+
+1.  Option 1: Install PHP 8.2 component, (Default Fedora Package)
+This includes the `php-mysqlnd` package for database integration):
 
     ```command
-    sudo dnf install php php-common php-mysqlnd -y
+    sudo dnf install -y php php-mysqlnd
     ```
+**Note:** This version is maintained by the Fedora project and may not include the latest PHP features. To learn more: [Fedora PHP Packages}(https://packages.fedoraproject.org/pkgs/php/)
+
+1.  Option 2: Install the Latest PHP Version (via Remi Repository)
+
+To install PHP 8.3 or 8.4, enable the Remi repository and select the desired PHP module:
+
+```command
+   sudo dnf install -y https://rpms.remirepo.net/fedora/remi-release-38.rpm
+   sudo dnf module reset php
+   sudo dnf module enable php:remi-8.3
+   sudo dnf install php php-mysqlnd
+```
+This includes the php-mysqlnd package, which enables PHP to communicate with MySQL and MariaDB databases.
+
+**Note:** PHP 8.3 and 8.4 are stable and production-ready. These versions are not available in Fedora's default repositories and must be installed via Remi.
 
 1.  **Optional:** Install a selection of other commonly-used PHP extensions. Different applications might require additional PHP packages. Consult the application documentation for details.
 
