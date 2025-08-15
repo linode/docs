@@ -92,13 +92,13 @@ These instructions are designed for Fedora 38, but most steps also apply to Alma
     systemctl status httpd
     ```
 
-    ```output
+```output
     ● httpd.service - The Apache HTTP Server
         Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; preset: disabled)
         Drop-In: /usr/lib/systemd/system/service.d
-                 └─10-timeout-abort.conf
-         Active: active (running) since Mon 2023-08-28 12:20:09 EDT; 47s ago
-    ```
+                └─10-timeout-abort.conf
+        Active: active (running) since Mon 2023-08-28 12:20:09 EDT; 47s ago
+```
 
     Press <kbd>Q</kbd> to exit the `systemctl status` output and return to the terminal prompt.
 
