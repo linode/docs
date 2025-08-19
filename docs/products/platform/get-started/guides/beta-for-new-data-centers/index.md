@@ -2,7 +2,7 @@
 title: "Limited Beta for Akamai's New Data Centers"
 description: "This document provides details for the limited availability beta of Akamai Cloud Compute's latest data centers."
 published: 2023-04-17
-modified: 2024-07-05
+modified: 2024-07-31
 tags: ["linode platform"]
 _build:
   list: false
@@ -20,8 +20,8 @@ Capacity in beta data centers may be limited as we continue to scale up resource
 
 | Data Center | Status | Region ID |
 | -- | -- | -- |
-| London, England | **Limited Availability** | `gb-lon` |
-| Melbourne, Australia | **Limited Availability** | `au-mel` |
+| London 2, United Kingdom | **Now available to all customers** | `gb-lon` |
+| Melbourne, Australia | **Now available to all customers** | `au-mel` |
 
 ## Deploy Services in a Beta Data Center
 
@@ -45,7 +45,7 @@ Each data center in this beta is slated to have most of Akamai’s cloud computi
 
 ### Object Storage
 
-The London (gb-lon) and Melbourne (au-mel) data centers do not support Object Storage during the beta period.
+The London 2 (gb-lon) and Melbourne (au-mel) data centers do not support Object Storage.
 
 ### Premium Plans
 
@@ -91,14 +91,14 @@ Beta data centers support IP sharing and BGP-based failover, which can be config
 
 | Data Center | IP Sharing Support | Failover Method | Software | ID |
 | --- | --- | --- | --- | --- |
-| London, England | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 44 |
+| London 2, United Kingdom | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 44 |
 | Melbourne, Australia | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 45 |
 
 ### Lish Gateways
 
 Lish and Glish provide direct access to your Compute Instances, bypassing the need for SSH or a VNC. For more information on Lish, consult our guide on how to [Access Your System Console Using Lish](/docs/products/compute/compute-instances/guides/lish/).
 
-#### London, England
+#### London 2, United Kingdom
 
 -   **Lish SSH Gateway:** `lish-gb-lon.linode.com`
 

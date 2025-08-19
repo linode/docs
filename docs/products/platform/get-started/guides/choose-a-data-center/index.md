@@ -2,7 +2,7 @@
 title: How to Choose a Data Center
 description: 'This article gives you information to help you determine which data center you should choose when deploying your website or app on a Compute Instance.'
 published: 2018-10-31
-modified: 2024-04-03
+modified: 2024-07-31
 keywords: ["data center", "datacenter", "dc", "speed"]
 tags: ["linode platform"]
 aliases: ['/platform/how-to-choose-a-data-center/','/guides/how-to-choose-a-data-center/']
@@ -33,9 +33,11 @@ An important consideration when choosing a data center is the availability of sp
 | Frankfurt      | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ |
 | Fremont        | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
 | Jakarta        | ✔ | ✔ |   | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
-| Los Angeles    | ✔ | ✔ |   | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
 | London         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| London 2       | ✔ | ✔ |   | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
+| Los Angeles    | ✔ | ✔ |   | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
 | Madrid         | ✔ | ✔ |   | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Melbourne      | ✔ | ✔ |   | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
 | Miami          | ✔ | ✔ |   | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
 | Milan          | ✔ | ✔ |   | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
 | Mumbai         | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
