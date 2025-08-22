@@ -5,7 +5,7 @@ title_meta: 'How to Install Apache Web Server on Debian 12'
 description: 'Install Apache on your Debian 12 server, configure virtual hosting, and set up modules and scripting.'
 authors: ["Linode"]
 contributors: ["Linode"]
-published: 22-08-2025
+published: 2025-08-22
 keywords: ["apache", "debian", "debian 12", "http", "web server"]
 tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
