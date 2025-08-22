@@ -2,6 +2,7 @@
 title: "Deploy Kali Linux through the Linode Marketplace"
 description: "Deploy Kali Linux, a popular Linux distribution for penetration testing and security research, on a Linode Compute Instance."
 published: 2022-07-05
+modified: 2025-08-22
 keywords: ['kali','security','pentest']
 tags: ["marketplace", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/kali-linux/','/products/tools/marketplace/guides/kalilinux/']
@@ -28,7 +29,7 @@ This Marketplace App extends Linode's Kali Linux distribution image by allowing 
 {{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
-**Estimated deployment time:** Kali Linux should be fully installed within 45-60 minutes after the Compute Instance has finished provisioning.
+**Estimated deployment time:** Kali Linux should be fully installed within 5-10 minutes (Core), 15-20 minutes (Default), and 45-60 minutes (Everything) after the Compute Instance has finished provisioning. VNC installation adds approximately 5-10 additional minutes.
 {{< /note >}}
 
 ## Configuration Options
@@ -38,16 +39,16 @@ This Marketplace App extends Linode's Kali Linux distribution image by allowing 
 
 ### Kali Options
 
-- **Kali Headless Package** *(required)*: This installs the [kali-linux-headless](https://www.kali.org/tools/kali-meta/#kali-linux-headless) metapackage, which includes all non-GUI packages.
-- **Kali Everything Package** *(required)*: This installs the [kali-linux-everything](https://www.kali.org/tools/kali-meta/#kali-linux-everything) metapackage, which includes all available Kali packages.
+- **Kali Linux Package** *(required)*: Select the Kali Linux metapackage to install:
+  - **Core**: Installs the [kali-linux-core](https://www.kali.org/tools/kali-meta/#kali-linux-core) metapackage, which includes essential penetration testing tools
+  - **Default**: Installs the [kali-linux-default](https://www.kali.org/tools/kali-meta/#kali-linux-default) metapackage, which includes commonly used tools and utilities
+  - **Everything**: Installs the [kali-linux-everything](https://www.kali.org/tools/kali-meta/#kali-linux-everything) metapackage, which includes all available Kali packages
 
-    {{< note >}}
-    If both packages are selected, only the [kali-linux-everything](https://www.kali.org/tools/kali-meta/#kali-linux-everything) package is installed (which includes everything in [kali-linux-headless](https://www.kali.org/tools/kali-meta/#kali-linux-headless)).
-    {{< /note >}}
+- **Setup VNC Remote Desktop?** *(required)*: Choose whether to install and configure [TigerVNC](https://tigervnc.org/) with [XFCE Desktop](https://www.xfce.org/) for remote desktop access. This is recommended for the Everything package and adds desktop functionality to Default/Core packages.
 
-- **VNC Installation** *(required)*: This option installs and starts [TigerVNC](https://tigervnc.org/) and [XFCE Desktop package](https://www.xfce.org/).
-- **Sudo/VNC Username** *(required)*: The VNC username you wish to create for this Compute Instance. This is used for your VNC session and will have elevated privileges (`sudo`).
-- **Sudo/VNC User Password** *(required)*: The password you wish to use for your VNC user.
+{{% content "marketplace-required-limited-user-fields-shortguide" %}}
+
+- **VNC Username** *(conditional)*: Required only if VNC is enabled. The VNC username you wish to create for this Compute Instance. This user will have elevated privileges (`sudo`) and can access the VNC session.
 
 {{% content "marketplace-custom-domain-fields-shortguide" %}}
 
@@ -55,11 +56,11 @@ This Marketplace App extends Linode's Kali Linux distribution image by allowing 
 
 ## Getting Started after Deployment
 
-After Kali Linux has been fully deployed, you can log in through an SSH session as the `root` user and perform your workloads as needed. See the [Kali Linux documentation](https://www.kali.org/docs/) to learn how to further use your instance.
+After Kali Linux has been fully deployed, you can log in through an SSH session as the `root` user and perform your workloads as needed. Your deployment credentials are stored in `/home/[username]/.credentials` for reference. See the [Kali Linux documentation](https://www.kali.org/docs/) to learn how to further use your instance.
 
 ### Remote Desktop Connection with VNC
 
-If you selected the VNC installation option, [TigerVNC](https://tigervnc.org/) is installed. This lets you connect remotely to the desktop environment and access Kali's GUI tools. Perform the steps below to access your Kali Linux desktop through a VNC client. While there are many options for OS X and Windows, this guide will use [RealVNC Viewer](https://www.realvnc.com/en/connect/download/viewer/).
+If you enabled VNC during deployment, [TigerVNC](https://tigervnc.org/) and the XFCE desktop environment are installed. This allows you to connect remotely to the desktop environment and access Kali's GUI tools. Perform the steps below to access your Kali Linux desktop through a VNC client. While there are many options for OS X and Windows, this guide will use [RealVNC Viewer](https://www.realvnc.com/en/connect/download/viewer/).
 
 1. From your desktop, create an SSH tunnel to your Compute Instance with the following command. Be sure to replace *[username]* with the VNC username you created and *[ip]* with the IPv4 address of your Compute Instance. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
 
