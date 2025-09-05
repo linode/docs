@@ -52,6 +52,8 @@ If you are switching from another monitoring system (e.g., Zabbix, Prometheus, I
 
 ## System Preparation
 
+Before installing Nagios, ensure your compute instance is fully online and has received an IPv4 address. This is required for package updates, SSH access, and alert configuration.
+
 Update your system:
 
     sudo apt update && sudo apt upgrade -y
