@@ -171,7 +171,6 @@ Use this version if you are managing group-based multi-access, enforcing IPv6 re
 
         sudo a2enmod authz_groupfile
 
-    {{< note>}}
 
 Restart the Apache service to apply changes:
 
