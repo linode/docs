@@ -143,7 +143,7 @@ Use this version if you are managing group-based multi-access, enforcing IPv6 re
             AuthGroupFile "/etc/group"
             AuthName "Nagios4"
             AuthType Digest
-            Allow from 127.0.0.1 198.51.100.0
+            Require from 127.0.0.1 198.51.100.0
             #Require all granted
             Require valid-user
         </Files>
