@@ -110,7 +110,22 @@ Common issues and how to resolve them:
     sudo apt install monitoring-plugins
     sudo apt install nagios-nrpe-plugin
 Then you can tell which package is causing issues.
+Use this checklist to confirm your install steps or isolate issues during setup.
 
+{{< details "Quick Troubleshooting Checklist" >}}
+- [ ] Refresh package cache: `sudo apt update`
+- [ ] Search for Nagios packages: `apt search nagios`
+- [ ] Fix broken dependencies: `sudo apt --fix-broken install`
+- [ ] Resolve APT lock errors: remove lock files if no other process is running
+- [ ] Check for missing packages in `/etc/apt/sources.list`
+- [ ] Use `sudo` for all install commands
+- [ ] Verify network connectivity or switch mirrors
+- [ ] Install packages one at a time to isolate issues:
+  - `sudo apt install nagios4`
+  - `sudo apt install nagios-plugins-contrib`
+  - `sudo apt install monitoring-plugins`
+  - `sudo apt install nagios-nrpe-plugin`
+{{< /details >}}
 ## Configure Apache Authentication
 
 Nagios authentication can be configured at varying levels of complexity. Use the basic setup shown below, and move on to the advanced configuration if you find your environment requires group-based access, IPv6 support or broader directory matching.
