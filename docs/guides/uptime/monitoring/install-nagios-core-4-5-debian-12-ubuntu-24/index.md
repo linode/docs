@@ -75,7 +75,7 @@ Adding both the `nagios` service user and Apache2 web server user to the `nagcmd
 ## Install Nagios and Plugins
 
 For a simpler install you can use Debian's package manager, [HowtoForge's guide for Debian 12](https://www.howtoforge.com/nagios-debian-12/#google_vignette) which walks you through the APT-based setup, including:
-- Installing Nagios and plugins via `apt install`
+- Prerequisites
 - Creating the `nagiosadmin` user with Apache Basic Auth
 - Verifying the dashboard and service status
 
