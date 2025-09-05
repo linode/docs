@@ -195,7 +195,7 @@ If errors appear, Nagios will point to the specific file and line number. Fix th
 ## Next Steps
 
 - Explore [Nagios plugins](https://nagios-plugins.org/)
-- Configure [email alerts](https://support.nagios.com/kb/article/how-to-configure-email-notifications-in-nagios-xi-1036.html) via mailutils or msmtp
+- Configure [email alerts](https://support.nagios.com/kb/article/how-to-configure-email-notifications-in-nagios-xi-1036.html) via mailutils or msmtp for Nagios **Core**
 - Set up remote monitoring with [NRPE or SNMP](https://www.thomas-krenn.com/en/wiki/Icinga_NRPE_Plugin_how-to)
 - Consider integrating with [Deploy Prometheus and Grafana through the Linode Marketplace](https://www.linode.com/docs/marketplace-docs/guides/prometheus-grafana/) for visualization
 
