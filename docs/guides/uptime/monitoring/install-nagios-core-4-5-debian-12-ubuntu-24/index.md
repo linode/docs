@@ -98,7 +98,6 @@ To confirm the installed version:
         
 This validates the correct package was installed and is useful when comparing behavior across environments or debugging version-specific issues.
 
-- Missing package: One of the listed packages may not be available in your distro's repositories.
 
 Or any of these common issues:
 
