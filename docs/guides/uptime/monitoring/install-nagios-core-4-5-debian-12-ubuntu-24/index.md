@@ -61,10 +61,6 @@ Update your system:
 
     sudo apt update && sudo apt upgrade -y
 
-Install the required packages for Apache, MariaDB, and PHP:
-
-    sudo apt install apache2 mariadb-server php libapache2-mod-php php-mysql -y
-
 ## Create Nagios User and Group
 
  Creating a dedicated `nagios` user and `nagcmd` user group ensures that Nagios runs securely and can execute commands via the web interface:
