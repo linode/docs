@@ -79,7 +79,7 @@ For a simpler install you can use Debian's package manager, [HowtoForge's guide 
 - Creating the `nagiosadmin` user with Apache Basic Auth
 - Verifying the dashboard and service status
 
-This method doesn't use manual compilation and is ideal for quick deployments. Once installed, return here to configure alerts.
+This method doesn't use manual compilation and is ideal for quick deployments. Once installed, return to [Nagios Alert Setup on Debian 12 and Ubuntu 22.04](guides\uptime\monitoring\monitor-and-configure-nagios-alerts-on-debian-12-ubuntu-22-04\index.md) to configure alerts.
 
 
 
