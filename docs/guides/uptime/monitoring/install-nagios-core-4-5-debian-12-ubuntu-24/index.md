@@ -76,7 +76,8 @@ Adding both the `nagios` service user and Apache2 web server user to the `nagcmd
 
 For a simpler install you can use Debian's package manager, [HowtoForge's guide for Debian 12](https://www.howtoforge.com/nagios-debian-12/#google_vignette) which walks you through the APT-based setup, including:
 - Prerequisites
-- Creating the `nagiosadmin` user with Apache Basic Auth
+- Installing Nagios on Debian
+- Nagios Configuration Files and Directories
 - Verifying the dashboard and service status
 
 This method doesn't use manual compilation and is ideal for quick deployments. Once installed, return to [Nagios Alert Setup on Debian 12 and Ubuntu 22.04](guides\uptime\monitoring\monitor-and-configure-nagios-alerts-on-debian-12-ubuntu-22-04\index.md) to configure alerts.
