@@ -129,7 +129,7 @@ Use this checklist to confirm your install steps or isolate issues during setup.
 
 ## Advanced Apache Configuration
 
-Use this version if you need group-based access, IPv6 support, and broader directory matching across multiple Nagios paths.
+Use this version if you are managing group-based multi-access, enforcing IPv6 restrictions, or customizing Nagios interface paths. For simpler setups, refer to the basic configuration [Configure Apache Authentication](#configure-apache-authentication) section above.
 
 1. Update `<DirectoryMatch>` Block
 
