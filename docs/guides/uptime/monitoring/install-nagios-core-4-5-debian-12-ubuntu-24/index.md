@@ -176,7 +176,6 @@ Use this version if you are managing group-based multi-access, enforcing IPv6 re
 
     sudo systemctl restart apache2
 
-{{< /note >}}
 
 ## Monitor Hosts and Services
 
