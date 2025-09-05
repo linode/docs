@@ -29,7 +29,7 @@ On Debian 12 and Ubuntu 22.04, the Nagios dashboard is typically accessible at `
 
 You should have:
 
-- An Akamai Compute Instance (formerly Linode) running Debian 12 or Ubuntu 22.04
+- A Compute Instance (formerly Linode) running Debian 12 or Ubuntu 22.04
 - A non-root user with `sudo` privileges
 - LAMP stack installed (Linux, Apache, MariaDB/MySQL, PHP). Install and configure a LAMP (Linux, Apache, MySQL, and PHP) stack.
     [How to Install and Configure a LAMP Stack](https://techdocs.akamai.com/get-started-cloud-computing/docs/install-lamp-api)
