@@ -172,7 +172,7 @@ Use this version if you are managing group-based multi-access, enforcing IPv6 re
         sudo a2enmod authz_groupfile
 
 
-Restart the Apache service to apply changes:
+1. Restart the Apache service to apply changes:
 
     sudo systemctl restart apache2
 
