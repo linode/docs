@@ -82,7 +82,6 @@ For a simpler install you can use Debian's package manager, [HowtoForge's guide 
 This method doesn't use manual compilation and is ideal for quick deployments. Once installed, return to [Nagios Alert Setup on Debian 12 and Ubuntu 22.04](guides\uptime\monitoring\monitor-and-configure-nagios-alerts-on-debian-12-ubuntu-22-04\index.md) to configure alerts.
 
 
-
 If it fails, look for clues in the terminal output:
 
     apt search nagios
