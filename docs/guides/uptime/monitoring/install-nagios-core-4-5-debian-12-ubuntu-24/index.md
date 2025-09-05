@@ -170,7 +170,6 @@ This configuration enforces dual-layer access control for Nagios: users must aut
 
     Replace <your-trusted-ip> with your actual IP address. Avoid hardcoding contributor IPs in PRs.
 
-    {{< /caution >}}
 
     For advanced scenarios--such as managing access by user groups, supporting IPv6 ranges, or customizing multiple directory paths--refer to the full [Advanced Apache](#advanced-apache-configuration) configuration example below.
 
