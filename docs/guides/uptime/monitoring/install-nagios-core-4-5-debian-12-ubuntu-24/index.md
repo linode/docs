@@ -126,6 +126,7 @@ Use this checklist to confirm your install steps or isolate issues during setup.
   - `sudo apt install nagios-nrpe-plugin`
 {{< /details >}}
 
+This guide intentionally omits manual compilation steps. For contributors needing source-based installs or plugin customization, refer to the [Nagios Core Installation Guide](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html)
 ## Advanced Apache Configuration
 
 Use this version if you are managing group-based multi-access, enforcing IPv6 restrictions, or customizing Nagios interface paths. For simpler setups, refer to the Apache Authentication steps in the installation guide linked above.
