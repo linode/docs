@@ -104,7 +104,7 @@ Common issues and how to resolve them:
 
  - **Permission denied**: If you didn't use `sudo`, the install will fail. Always run `apt` commands with elevated privileges.
 - **Network**: A broken internet connection or unreachable mirror can prevent downloads. Try pinging a known host or switching mirrors.
-- Broken dependencies: If your system has conflicting packages or unmet dependencies, `apt` will usually suggest a fix. Then isolate the problem by installing packages one at a time:
+- **Broken dependencies**: If your system has conflicting packages or unmet dependencies, `apt` usually suggests a fix. To isolate the problem, install packages one at a time:
     sudo apt install nagios4
     sudo apt install nagios-plugins-contrib
     sudo apt install monitoring-plugins
