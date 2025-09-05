@@ -89,6 +89,8 @@ This method doesn't use manual compilation and is ideal for quick deployments. O
 If installation fails or a package isn't found, check the terminal output for clues. Then run:
 
     apt search nagios
+    
+This will confirm whether the required packages are available in your distro's repositories.
 
 - Missing package: One of the listed packages may not be available in your distro's repositories.
 
