@@ -32,7 +32,6 @@ You should have:
 - A Compute Instance (formerly Linode) running Debian 12 or Ubuntu 22.04
 - A non-root user with `sudo` privileges
 - Install and configure a LAMP stack (Linux, Apache, MariaDB/MySQL, PHP). This is required for Nagios's web interface and plugin support. [How to Install and Configure a LAMP Stack](https://techdocs.akamai.com/get-started-cloud-computing/docs/install-lamp-api)
-    [How to Install and Configure a LAMP Stack](https://techdocs.akamai.com/get-started-cloud-computing/docs/install-lamp-api)
 - Firewall configured to allow HTTP/HTTPS access
    Ensure your instance allows inbound traffic on ports **80 (HTTP)** and **443 (HTTPS)**. If you're using a local firewall like **UFW** (Uncomplicated Firewall), run:
        sudo ufw allow 80/tcp
