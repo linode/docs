@@ -52,6 +52,9 @@ If you are switching from another monitoring system (e.g., Zabbix, Prometheus, I
 
 ## System Preparation
 
+If this command fails or your SSH connection times out, your instance may have booted without an IPv4address. This is a known edge case in Ubuntu 22.04 cloud images.
+Note: If you see only inet6 entries and no inet (IPv4) address, then see [IPv4](https://github.com/linode/docs/pull/7325/files#ipv4-recovery-guide). Once this is resolved, update your system with the previous commands.
+
 Before installing Nagios, ensure your compute instance is fully online and has received an IPv4 address. This is required for package updates, SSH access, and alert configuration.
 
 Update your system:
