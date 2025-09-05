@@ -82,7 +82,6 @@ For a simpler install you can use Debian's package manager, [HowtoForge's guide 
 This method doesn't use manual compilation and is ideal for quick deployments. Once installed, return here to configure alerts.
 
 
-    sudo apt install nagios4 nagios-plugins-contrib monitoring-plugins nagios-nrpe-plugin -y
 
 If it fails, look for clues in the terminal output:
 
