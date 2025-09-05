@@ -68,7 +68,7 @@ Update your system:
     sudo useradd nagios
     sudo groupadd nagcmd
 
-Add the user and Apache2 user to the `nagcmd` user group:
+Adding both the `nagios` service user and Apache2 web server user to the `nagcmd` user group makes it possible for Nagios to securely execute commands via the web interface. This step aligns with least-privilege principles--granting only the necessary access for command execution while maintaining separation between service and interface roles:
 
     sudo usermod -aG nagcmd nagios && sudo usermod -aG nagcmd www-data
 
