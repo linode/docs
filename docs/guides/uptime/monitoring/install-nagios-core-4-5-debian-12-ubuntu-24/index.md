@@ -55,7 +55,7 @@ Install the required packages for Apache, MariaDB, and PHP:
 
 ## Create Nagios User and Group
 
- Create a user and `nagcmd` user group:
+ Creating a dedicated `nagios` user and `nagcmd` user group ensures that Nagios runs securely and can execute commands via the web interface:
 
     sudo useradd nagios
     sudo groupadd nagcmd
