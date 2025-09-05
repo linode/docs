@@ -90,6 +90,14 @@ If installation fails or a package isn't found, check the terminal output for cl
 
     apt search nagios
     
+ ### Check Nagios Version
+    
+To confirm the installed version:
+    
+    /usr/sbin/nagios4 --version
+        
+This validates the correct package was installed and is useful when comparing behavior across environments or debugging version-specific issues.
+
 This will confirm whether the required packages are available in your distro's repositories.
 
 - Missing package: One of the listed packages may not be available in your distro's repositories.
