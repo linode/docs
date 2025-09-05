@@ -180,7 +180,14 @@ Use this version if you are managing group-based multi-access, enforcing IPv6 re
 ## Monitor Hosts and Services
 
 - Use the left sidebar in Nagios to view Hosts and Services.
-- Add new hosts by editing files in `/etc/nagios4/conf.d/`.
+- Add new hosts by editing configuration files in:
+        `/etc/nagios4/conf.d/`
+         
+- After making changes, validate your configuration before restarting:
+        sudo nagios4 -v /etc/nagios4/nagios.cfg
+        
+If errors appear, Nagios will point to the specific file and line number. Fix those *before* restarting.
+
 - Restart Nagios after changes:
 
         sudo systemctl restart nagios4
