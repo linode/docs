@@ -86,7 +86,7 @@ This method doesn't use manual compilation and is ideal for quick deployments. O
 
 ### Verify it's running:
     systemctl status nagios
-If it fails, look for clues in the terminal output:
+If installation fails or a package isn't found, check the terminal output for clues. Then run:
 
     apt search nagios
 
