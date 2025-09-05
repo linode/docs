@@ -102,7 +102,7 @@ This validates the correct package was installed and is useful when comparing be
 Common issues and how to resolve them:
  - **Missing package**: One or more packages may not be available in your distro's repositories. Double-check your `/etc/apt/sources.list` and run `sudo apt update` to refresh the cache.    
 
-- Permission issues: If you're not using `sudo`, you might see permission denied.
+ - **Permission denied**: If you didn't use `sudo`, the install will fail. Always run `apt` commands with elevated privileges.
 - Network: A broken internet connection or unreachable mirror can cause download failures.
 - Broken dependencies: If your system has conflicting packages or unmet dependencies, `apt` will usually suggest a fix. Then isolate the problem by installing packages one at a time:
     sudo apt install nagios4
