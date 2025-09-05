@@ -5,7 +5,7 @@ description: "This guide walks you through installing and configuring Nagios Cor
 authors: ["D Hoober"]
 contributors: ["D Hoober"]
 published: 2025-08-31
-keywords: ['nagios', 'nagios Core','monitoring','debian 12','ubuntu 22.04', "server health", "nagios plugins']
+keywords: ["nagios", "nagios Core", "monitoring", "debian 12", "ubuntu 22.04", "server health", "nagios plugins"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Nagios Core Documentation](https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/index.html)'
