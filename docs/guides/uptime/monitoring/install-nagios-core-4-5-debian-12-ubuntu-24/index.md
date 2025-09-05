@@ -34,6 +34,13 @@ You should have:
 - LAMP stack installed (Linux, Apache, MariaDB/MySQL, PHP). Install and configure a LAMP (Linux, Apache, MySQL, and PHP) stack.
     [How to Install and Configure a LAMP Stack](https://techdocs.akamai.com/get-started-cloud-computing/docs/install-lamp-api)
 - Firewall configured to allow HTTP/HTTPS access
+   Ensure your instance allows inbound traffic on ports **80 (HTTP)** and **443 (HTTPS)**. If you're using a local firewall like **UFW** (Uncomplicated Firewall), run:
+       sudo ufw allow 80/tcp
+       sudo ufw allow 443/tcp
+       
+- If your instance is hosted in a cloud environment (e.g., Linode, AWS, GCP), check the *cloud firewall or security group settings and confirm that these ports are open to the public.
+
+This step is required to access the nagios web interface after installation.
 
 If you are switching from another monitoring system (e.g., Zabbix, Prometheus, Icinga), prior to installation:
 
