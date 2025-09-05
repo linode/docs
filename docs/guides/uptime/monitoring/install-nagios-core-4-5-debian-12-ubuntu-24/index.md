@@ -133,7 +133,7 @@ Use this version if you are managing group-based multi-access, enforcing IPv6 re
 
 1. Update `<DirectoryMatch>` Block
 
-    <DirectoryMatch (/usr/share/nagios4/htdocs|/usr/lib/cgi-bin/nagios4|/etc/nagios4/stylesheets)>
+    <DirectoryMatch "^(/usr/share/nagios4/htdocs|/usr/lib/cgi-bin/nagios4|/etc/nagios4/stylesheets)">
 
         #Require ip ::1/128 fc00::/7 fe80::/10 10.0.0.0/8 127.0.0.0/8 169.254.0.0/16 172.16.0.0/12 192.168.0.0/16
         <Files "cmd.cgi">
