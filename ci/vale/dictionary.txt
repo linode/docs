@@ -2587,6 +2587,7 @@ togami
 tokenization
 tokenize
 tokenized
+tokenizer
 tokenizing
 tokyo
 tokyo2

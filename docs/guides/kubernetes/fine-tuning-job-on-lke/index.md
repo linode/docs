@@ -4,8 +4,8 @@ title: "Teaching new skills to an LLM: Deploy a fine-tuning job on LKE"
 description: "Fine-tuning trains AI models with specialized data to improve the accuracy of their responses."
 authors: ["Linode"]
 contributors: ["Linode"]
-published: 2025-09-04
-modified: 2025-09-04
+published: 2025-09-08
+modified: 2025-09-08
 keywords: ['kubernetes','lke','ai','fine-tuning']
 tags: ["kubernetes","lke"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -143,12 +143,12 @@ This tutorial employs a Python script to create the YAML file used within Kubefl
     - `--model_name_or_path` (str): The model checkpoint for weights initialization. Don't set if you want to train a model from scratch.
     - `--config_overrides` (str): Override some existing default config settings when a model is trained from scratch. Example: `n_embd=10,resid_pdrop=0.2,scale_attn_weights=false,summary_type=cls_index`
     - `--config_name` (str): Pre-trained config name or path if not the same as `model_name`.
-    - `--cache_dir` (str): Where do you want to store the pre-trained models downloaded from huggingface.co.
+    - `--cache_dir` (str): Where do you want to store the pre-trained models downloaded from `huggingface.co`.
     - `--use_fast_tokenizer` (bool): Determines whether or not to use one of the fast tokenizer (backed by the `tokenizers` library).
     - `--model_revision` (str): The specific model version to use (can be a branch name, tag name or commit id).
     - `--token` (str): The token to use as HTTP bearer authorization for remote files. If not specified, will use the token generated when running `huggingface-cli login` (stored in `~/.huggingface`).
     - `--trust_remote_code` (bool): Whether to trust the execution of code from datasets/models defined on the Hub. This option should only be set to `True` for repositories you trust and in which you have read the code, as it will execute code present on the Hub on your local machine.
-    - `--torch_dtype` (str): Override the default `torch.dtype` and load the model under this dtype. If `auto` is passed, the dtype is automatically derived from the model's weights. Select from `auto`, `bfloat16`, `float16`, or `float32`.
+    - `--torch_dtype` (str): Override the default `torch.dtype` and load the model under this data type. If `auto` is passed, the data type is automatically derived from the model's weights. Select from `auto`, `bfloat16`, `float16`, or `float32`.
     - `--low_cpu_mem_usage` (bool): It is an option to create the model as an empty shell, then only materialize its parameters when the pre-trained weights are loaded. Setting this as `true` benefits loading time and RAM consumption.
 
 1. Run `deactivate` to exit the Python virtual environment.
