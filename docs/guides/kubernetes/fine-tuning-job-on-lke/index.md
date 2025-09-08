@@ -187,4 +187,4 @@ This tutorial employs a Python script to create the YAML file used within Kubefl
 
 ### Evaluate the result
 
-After your model is trained on your custom data, you should evaluate the performace of the new model. Based on the results provided, you may need to keep iterating by adjusting the fine-tuning parameters, running additional epochs, or making adjustments to your dataset.
+After your model is trained on your custom data, you should evaluate the performance of the new model. Based on the results provided, you may need to keep iterating by adjusting the fine-tuning parameters, running additional epochs, or making adjustments to your dataset.
