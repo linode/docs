@@ -47,7 +47,7 @@ marketplace_app_name: "Jaeger"
 
 ### Accessing the Jaeger Web Interface
 
-1.  Open your web browser and navigate to `https://[domain]`, where `[domain]` is the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, but this connection is not encrypted. To learn more about viewing IP addresses and rDNS, see the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/).
+1.  Open your web browser and navigate to `https://{{< placeholder "DOMAIN" >}}`, where `{{< placeholder "DOMAIN" >}}` is the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, but this connection is not encrypted. To learn more about viewing IP addresses and rDNS, see the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/).
 
 2.  Use the following credentials to log in:
     - **Username**: Enter the administrator username you configured during deployment. The default is `jaegeradmin`.
@@ -61,12 +61,12 @@ marketplace_app_name: "Jaeger"
 To send traces to your Jaeger instance, configure your applications to use [OpenTelemetry](https://opentelemetry.io/docs/) with the following endpoints:
 
 #### OTLP gRPC Endpoint (Recommended)
-- **Endpoint**: `https://[domain]:4317`
+- **Endpoint**: `https://{{< placeholder "DOMAIN" >}}:4317`
 - **Protocol**: OTLP/gRPC with mTLS
 - **Client Certificate Required**: Yes
 
 #### OTLP HTTP Endpoint
-- **Endpoint**: `https://[domain]:4318`
+- **Endpoint**: `https://{{< placeholder "DOMAIN" >}}:4318`
 - **Protocol**: OTLP/HTTP with mTLS
 - **Client Certificate Required**: Yes
 
