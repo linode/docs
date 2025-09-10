@@ -49,7 +49,7 @@ This Marketplace App extends Linode's Kali Linux distribution image by allowing 
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-- **VNC Username** *(Required only if VNC is enabled)*. It's the VNC username for this Compute Instance. This username has elevated privileges (`sudo`) and can access the VNC session.
+- **VNC Username:** *(Required only if VNC is enabled)*. It's the VNC username for this Compute Instance. This username has elevated privileges (`sudo`) and can access the VNC session.
 
 {{% content "marketplace-custom-domain-fields-shortguide" %}}
 
@@ -57,7 +57,7 @@ This Marketplace App extends Linode's Kali Linux distribution image by allowing 
 
 ## Getting Started after Deployment
 
-After Kali Linux is deployed, you can log in through an SSH session as the `root` user and perform your workloads as needed. Your deployment credentials are stored in `/home/[username]/.credentials` for reference. To learn more, See the [Kali Linux documentation](https://www.kali.org/docs/) to learn how to further use your instance.
+After Kali Linux is deployed, you can log in through an SSH session as the `root` user and perform your workloads as needed. Your deployment credentials are stored in `/home/{{< placeholder "USERNAME" >}}/.credentials` for reference. To learn more, See the [Kali Linux documentation](https://www.kali.org/docs/) to learn how to further use your instance.
 
 ### Remote Desktop Connection with VNC
 
@@ -66,13 +66,13 @@ If you enabled VNC during deployment, [TigerVNC](https://tigervnc.org/) and the 
 To access your Kali Linux desktop through a VNC client:
 
 {{< note >}}
-There are many options for OS X and Windows, but this guide uses [RealVNC Viewer](https://www.realvnc.com/en/connect/download/viewer/).
+There are many options for macOS and Windows, but this guide uses [RealVNC Viewer](https://www.realvnc.com/en/connect/download/viewer/).
 {{< /note >}}
 
-1. From your desktop, create an SSH tunnel to your Compute Instance with the command below replacing `[username]` with the VNC username you created and `[ip]` with the IPv4 address of your Compute Instance. To learn more on viewing IP addresses, see [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/).
+1. From your desktop, create an SSH tunnel to your Compute Instance with the command below replacing `{{< placeholder "USERNAME" >}}` with the VNC username you created and `[ip]` with the IPv4 address of your Compute Instance. To learn more on viewing IP addresses, see [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/).
 
     ```output
-    ssh -L 61000:localhost:5901 -N -l [username] [ip]
+    ssh -L 61000:localhost:5901 -N -l {{< placeholder "USERNAME" >}} [ip]
     ```
 
 2. Open your preferred VNC viewer application and connect to your Compute Instance through the SSH tunnel you created. The format is `localhost:61000`.
