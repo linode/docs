@@ -330,6 +330,10 @@ github.com/linode/linode-docs-theme v0.0.0-20250624150139-09c1c3b7a94d h1:nErtgV
 github.com/linode/linode-docs-theme v0.0.0-20250624150139-09c1c3b7a94d/go.mod h1:l2L/o9wC9Hzy6MmArUxOfeMCYy8UzkguyvdV4RMVWmA=
 github.com/linode/linode-docs-theme v0.0.0-20250723145205-205da05abd91 h1:XFFmG0iiDOLjS0kD4Oo4jebrF7ahV8f84U7YldmvSWI=
 github.com/linode/linode-docs-theme v0.0.0-20250723145205-205da05abd91/go.mod h1:UPXeFI83iapBkD6B4SLHCyrDZduYaznxXLPS4emlm20=
+github.com/linode/linode-docs-theme v0.0.0-20250813175745-70d37cf7afed h1:9XmHUFkf5g1p3LCJ7y/u9+9lE22+1TIlA3kxkD/Pz5U=
+github.com/linode/linode-docs-theme v0.0.0-20250813175745-70d37cf7afed/go.mod h1:j0WAF+BIr1MmkKWgQgbJjO3qnot2/d7c6o9Edj3jd/0=
+github.com/linode/linode-docs-theme v0.0.0-20250902163319-d09d95b9ed25 h1:DqCQjEiIdHl/252hMkvwKwXunahcfzLIs8+D9xAHsUA=
+github.com/linode/linode-docs-theme v0.0.0-20250902163319-d09d95b9ed25/go.mod h1:sMRfMYZ0n0E2/EJTPRPwbkXX/RKLhDma1cs4FyszErE=
 github.com/linode/linode-website-partials v0.0.0-20221205205120-b6ea1aaa59fb/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
 github.com/linode/linode-website-partials v0.0.0-20221222200538-99862e429110/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
 github.com/linode/linode-website-partials v0.0.0-20230201145731-a8703d0a954a/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
@@ -362,3 +366,5 @@ github.com/linode/linode-website-partials v0.0.0-20250326190321-bed77d268dc5/go.
 github.com/linode/linode-website-partials v0.0.0-20250409155719-a69a3433df0c/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
 github.com/linode/linode-website-partials v0.0.0-20250613135058-1f0f32424646/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
 github.com/linode/linode-website-partials v0.0.0-20250714201257-b4c2d5e13c4b/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
+github.com/linode/linode-website-partials v0.0.0-20250808160825-b7007b72ffe9/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
+github.com/linode/linode-website-partials v0.0.0-20250814204525-0d7fe4159951/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
