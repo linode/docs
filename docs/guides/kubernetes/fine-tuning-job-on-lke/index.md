@@ -1,6 +1,6 @@
 ---
 slug: fine-tuning-job-on-lke
-title: "Teaching new skills to an LLM: Deploy a fine-tuning job on LKE"
+title: "Teaching New Skills to an LLM: Deploy a Fine-Tuning Job on LKE"
 description: "Fine-tuning trains AI models with specialized data to improve the accuracy of their responses."
 authors: ["Linode"]
 contributors: ["Linode"]
@@ -25,14 +25,14 @@ The tutorial below shows you how to perform a fine-tuning job using training log
 
 ### Infrastructure
 
-- **LKE (Linode Kubernetes Engine):** LKE is Akamai’s managed Kubernetes service, enabling you to deploy containerized applications without needing to build out and maintain your own Kubernetes cluster. This tutorial deploys all software components to the same LKE cluster and node pool, though you should consider your own needs if using this solution for a production workload.
+- **LKE (Linode Kubernetes Engine):** LKE is Akamai’s managed Kubernetes service, enabling you to deploy containerized applications without needing to build out and maintain your own Kubernetes cluster. This tutorial deploys all software components to the same LKE cluster and node pool, though you should consider your own needs if using this solution is for a production workload.
 - **Linode GPUs (NVIDIA RTX 4000):** Akamai has several GPU virtual machines available, including NVIDIA RTX 4000 (used in this tutorial). NVIDIA’s Ada Lovelace architecture in the RTX 4000 VMs are adept at many AI tasks, including [inferencing](https://www.nvidia.com/en-us/solutions/ai/inference/) and [image generation](https://blogs.nvidia.com/blog/ai-decoded-flux-one/). While you can also deploy NVIDIA Quadro RTX 6000, these GPUs have not been tested with this workload and are not recommended for use in this tutorial.
 
 ### Software
 
 - **Kubeflow:** This open-source software platform includes a suite of applications that are used for machine learning tasks. It is designed to be run on Kubernetes. While each application can be installed individually, this tutorial installs all default applications and makes specific use of the following:
     - **Kubeflow Pipeline:** Used to deploy pipelines, reusable machine learning workflows built using the Kubeflow Pipelines SDK.
-- **ModernBert (base):** The [answerdotai/ModernBERT-base](https://huggingface.co/answerdotai/ModernBERT-base) model is used in this tutorial.
+    - **ModernBert (base):** The [answerdotai/ModernBERT-base](https://huggingface.co/answerdotai/ModernBERT-base) model is used in this tutorial.
 
 ## Prerequisites
 
@@ -51,9 +51,9 @@ The configuration instructions in this document are expected to not expose any s
 It’s not part of the scope of this document to cover the setup required to secure this configuration for a production deployment.
 {{< /note >}}
 
-## Set up infrastructure
+## Set Up Infrastructure
 
-The first step is to provision the infrastructure needed for this tutorial and configure it with kubectl, so that you can manage it locally and install software through helm. As part of this process, we’ll also need to install the NVIDIA GPU operator at this step so that the NVIDIA cards within the GPU worker nodes can be used on Kubernetes.
+The first step is to provision the infrastructure needed for this tutorial and configure it with kubectl, so that you can manage it locally and install software through Helm. As part of this process, we’ll also need to install the NVIDIA GPU operator at this step so that the NVIDIA cards within the GPU worker nodes can be used on Kubernetes.
 
 1. **Provision an LKE cluster.** We recommend using at least 2 **RTX4000 Ada x1 Medium** GPU plans (plan ID: `g2-gpu-rtx4000a1-m`), though you can adjust this as needed. For reference, Kubeflow recommends 32 GB of RAM and 16 CPU cores for just their own application. This tutorial has been tested using Kubernetes v1.33, though other versions should also work, including any newer versions that are available on LKE. To learn more about provisioning a cluster, see the [Create a cluster](https://techdocs.akamai.com/cloud-computing/docs/create-a-cluster) guide.
 
@@ -91,10 +91,10 @@ Next, let’s deploy Kubeflow on the LKE cluster. These instructions deploy all 
         openssl rand -base64 18
         ```
 
-    1. Create a hash of this password, replacing PASSWORD with the password generated in the previous step. This outputs the password hash, which starts with `$2y$12$`.
+    1. Create a hash of this password, replacing `{{< placeholder "PASSWORD" >}}` with the password generated in the previous step. This outputs the password hash, which starts with `$2y$12$`.
 
         ```command
-        htpasswd -bnBC 12 "" PASSWORD | tr -d ':\n'
+        htpasswd -bnBC 12 "" {{< placeholder "PASSWORD" >}} | tr -d ':\n'
         ```
 
     1. Edit the `common/dex/base/dex-passwords.yaml` file, replacing the value for `DEX_USER_PASSWORD` with the password hash generated in the previous step.
@@ -111,11 +111,11 @@ Next, let’s deploy Kubeflow on the LKE cluster. These instructions deploy all 
     kubectl get pods -A
     ```
 
-    You may notice a status of `CrashLoopBackOff` on one or more pods. This can be caused to a temporary issue with a persistent volume attaching to a worker node and should be resolved within a minute or so.
+    You may notice a status of `CrashLoopBackOff` on one or more pods. This can be because of a temporary issue with a persistent volume attaching to a worker node and should be resolved within a minute or so.
 
-## Set up Kubeflow Pipeline
+## Set Up Kubeflow Pipeline
 
-### Generate the pipeline YAML file
+### Generate the Pipeline YAML File
 
 This tutorial employs a Python script to create the YAML file used within Kubeflow Pipeline. This YAML file describes each step of the pipeline workflow.
 
@@ -144,7 +144,7 @@ This tutorial employs a Python script to create the YAML file used within Kubefl
     - `--config_overrides` (str): Override some existing default config settings when a model is trained from scratch. Example: `n_embd=10,resid_pdrop=0.2,scale_attn_weights=false,summary_type=cls_index`
     - `--config_name` (str): Pre-trained config name or path if not the same as `model_name`.
     - `--cache_dir` (str): Where do you want to store the pre-trained models downloaded from `huggingface.co`.
-    - `--use_fast_tokenizer` (bool): Determines whether or not to use one of the fast tokenizer (backed by the `tokenizers` library).
+    - `--use_fast_tokenizer` (bool): Determines whether or not to use one of the fast tokenizers (backed by the `tokenizers` library).
     - `--model_revision` (str): The specific model version to use (can be a branch name, tag name or commit id).
     - `--token` (str): The token to use as HTTP bearer authorization for remote files. If not specified, will use the token generated when running `huggingface-cli login` (stored in `~/.huggingface`).
     - `--trust_remote_code` (bool): Whether to trust the execution of code from datasets/models defined on the Hub. This option should only be set to `True` for repositories you trust and in which you have read the code, as it will execute code present on the Hub on your local machine.
@@ -153,7 +153,7 @@ This tutorial employs a Python script to create the YAML file used within Kubefl
 
 1. Run `deactivate` to exit the Python virtual environment.
 
-### Create the pipeline
+### Create the Pipeline
 
 1. Configure port forwarding on your cluster through kubectl so that you can access the Kubeflow interface from your local computer.
 
@@ -177,7 +177,7 @@ This tutorial employs a Python script to create the YAML file used within Kubefl
 
     ![Screenshot of the "New Pipeline" page within Kubeflow](kubeflow-new-pipeline.jpg)
 
-### Run the pipeline
+### Run the Pipeline
 
 1. Navigate to the Pipelines > Runs page and click **Create Run**. Within the Run details section, select the pipeline and experiment that you just created. Choose *One-off* as the **Run Type** and, within the **Run parameters** section, enter the number of epochs to run. Using the default model and datasets, a 3 epoch run takes 13 minutes to complete, a 30 epoch run takes 1 hour and 53 minutes, and a 100 epoch run takes 6 hours and 10 minutes.
 
@@ -185,6 +185,6 @@ This tutorial employs a Python script to create the YAML file used within Kubefl
 
 1. Click **Start** to run the pipeline. This process takes some time, depending on the number of epochs you entered.
 
-### Evaluate the result
+### Evaluate the Result
 
 After your model is trained on your custom data, you should evaluate the performance of the new model. Based on the results provided, you may need to keep iterating by adjusting the fine-tuning parameters, running additional epochs, or making adjustments to your dataset.
