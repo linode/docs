@@ -1170,6 +1170,7 @@ java6
 javac
 javalin
 javascript
+jaegeradmin
 JBoss
 jdbc
 jdk
@@ -2587,6 +2588,8 @@ togami
 tokenization
 tokenize
 tokenized
+tokenizer
+tokenizers
 tokenizing
 tokyo
 tokyo2
