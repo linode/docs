@@ -14,6 +14,8 @@ external_resources:
 - '[Fish Cookbook](https://github.com/jbucaran/fish-shell-cookbook#how-to-find-my-current-location-in-fish)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-install-configure-and-run-fish/']
+deprecated: true
+
 ---
 
 ![How to Install, Configure, and Run the Fish Shell](fish_banner.jpg)
@@ -60,7 +62,7 @@ If you can't function without `!!` and `&&`, check [this](https://github.com/fis
 
 ## Use Fish
 
-Fish boasts a full-featured scripting language. You can use scripts written in Fish to do anything you would do with a scripting language, and even some cooler [things](https://github.com/onodera-punpun/neet), like managing your anime/drama series.
+Fish boasts a full-featured scripting language. You can use scripts written in Fish to do anything you would do with a scripting language such as managing your anime/drama series.
 
 
 ### Functions
