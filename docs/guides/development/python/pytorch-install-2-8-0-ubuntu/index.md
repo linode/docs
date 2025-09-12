@@ -1,19 +1,14 @@
 ---
 slug: pytorch-install-22-04-ubuntu
-title: Installation of Pytorch on Ubuntu 22.04
-description: This version updates to the current stable version using Pip as the installation tool and expands on how to use the services and features for CPU and GPU.
-Authors: D Hoober
-Contributors: D Hoober
+title: Install Pytorch on Ubuntu 22.04
+title_meta: "how to Install PyTorch on Ubuntu 22.04
+description: 'This guide updates to the current stable version using Pip as the installation tool and expands on how to use the services and features for CPU and GPU.'
+Authors: Diana Hoober
+Contributors: Diana Hoober
 published: 2021-11-05
-modified: 2025-9-11
+modified: 2025-9-12
 keywords: ['pytorch install','pytorch cpu','conda install pytorch','what is pytorch', 'uninstall pytorch']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-external resources:
-- '[PyTorch's official install guide](https://pytorch.org/get-started/locally/)'
-- '[Markaicode's Complete Guide to Uninstally PyTorch](https://markaicode.com/how-to-uninstall-pytorch-complete-guide-for-all-systems/)'
-- '[official PyTorch Tutorials and Knowledge Base](https://docs.pytorch.org/tutorials/)'
-- '[PyTorch Get Started page](https://pytorch.org/get-started/locally/)'
-
 ---
 
 This guide shows examples for installing PyTorch, a Python framework, on an Ubuntu 22.04 compute instance and provides support for math-intensive applications that run on GPU and CPU. These instances are both available with Akamai Technologies.
