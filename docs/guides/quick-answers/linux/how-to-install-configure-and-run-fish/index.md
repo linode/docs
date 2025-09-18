@@ -40,7 +40,7 @@ The configuration file for Fish is located at: `~/.config/fish/config.fish`. You
 
 ![Customized Fish Shell Configuration File](fish_config.png)
 
-## Regarding Fish
+## Use Fish
 
 Fish is similar to other shells: you type commands followed by arguments.
 
@@ -59,13 +59,8 @@ However, in Fish, you chain commands with `;`, instead of `&&`:
 
 If you can't function without `!!` and `&&`, check [this](https://github.com/fish-shell/fish-shell/wiki/Bash-Refugees) repo out for a solution.
 
-
-## Use Fish
-
-Fish boasts a full-featured scripting language. You can use scripts written in Fish to do anything you would do with a scripting language such as managing your anime/drama series.
-
-
 ### Functions
+
 Fish does not support aliasing. Instead Fish uses `functions`. Typing `functions` into Fish will output a list of functions that exist by default:
 
 
