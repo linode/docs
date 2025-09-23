@@ -1,13 +1,13 @@
 ---
-slug: how-to-install-and-configure-drupal-on-ubuntu-22-04
-title: How to Install and Configure Drupal on Ubuntu 22.04
-title_meta:
-description: Step-by-step guide for installing Drupal on Ubuntu 22.04 with contributor-safe practices.
+slug: "how-to-install-and-configure-drupal-on-ubuntu-22-04"
+title: "How to Install and Configure Drupal on Ubuntu 22.04"
+title_meta: "How to Install and Configure Drupal on Ubuntu 22.04"
+description: "Step-by-step guide for installing Drupal on Ubuntu 22.04 with contributor-safe practices."
 author: ["Diana Hoober"]
 contributors: ["Diana Hoober"]
-published: 2025-9-30
+published: 2025-09-30
 keywords: [Drupal, Ubuntu 22.04, CMS, installation, contributor-safe, Composer]
-license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 ---
 
 Drupal is a flexible content management system (CMS) designed for structured content and scalable site architecture. While it runs well in many hosting environments, Akamai’s compute instance offers a particularly strong foundation for high-traffic, content-rich deployments. This guide walks through installing and configuring Drupal 11 on Ubuntu 22.04 with systems-aware practices and contributor-safe steps that hold up in real-world scenarios.
