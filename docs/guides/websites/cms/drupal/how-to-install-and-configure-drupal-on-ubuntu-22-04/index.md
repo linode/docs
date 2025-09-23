@@ -1,7 +1,7 @@
 ---
-slug: install-configure-initialize-Drupal-on-ubuntu-22-04
+slug: how-to-install-and-configure-drupal-on-ubuntu-22-04
 title: How to Install and Configure Drupal on Ubuntu 22.04
-titlee_meta:
+title_meta:
 description: Step-by-step guide for installing Drupal on Ubuntu 22.04 with contributor-safe practices.
 author: ["Diana Hoober"]
 contributors: ["Diana Hoober"]
@@ -10,18 +10,15 @@ keywords: [Drupal, Ubuntu 22.04, CMS, installation, contributor-safe, Composer]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-This guide walks through installing and configuring Drupal 11 in a contributor-safe, systems-aware environment.
-
-Drupal is a flexible content management system (CMS) used for structured content and scalable site architecture. While it runs in many hosting contexts, it performs especially well on Akamai’s compute instance, which supports high-traffic, content-rich deployments.
-
+Drupal is a flexible content management system (CMS) designed for structured content and scalable site architecture. While it runs well in many hosting environments, Akamai’s compute instance offers a particularly strong foundation for high-traffic, content-rich deployments. This guide walks through installing and configuring Drupal 11 on Ubuntu 22.04 with systems-aware practices and contributor-safe steps that hold up in real-world scenarios.
 
 ## Before You Begin
 
-This guide uses Drupal 11.1.8 to avoid known packaging issues in newer releases--specifically a syntax error in `drupal/core-recipe-unpack` introduced in 11.2.x (see [Drupal issue #3536487](https://www.drupal.org/project/drupal/issues/3536487)). You'll install the stable version later using Composer. First, we'll walk through prerequisites, setup and verification to ensure a reliable install, then move into installing Drupal .
+This guide uses Drupal 11.1.8 to avoid known packaging issues in newer releases--specifically a syntax error in `drupal/core-recipe-unpack` introduced in 11.2.x (see [Drupal issue #3536487](https://www.drupal.org/project/drupal/issues/3536487)). You'll install the stable version later using Composer. First, we'll walk through prerequisites, setup and verification to ensure a reliable install, then move into installing Drupal.
 
 ## System Prerequisites
 
-To ensure Drupal 11 installs cleanly and performs reliably within an Akamai-optimized infrastructure, the following prerequisites must be in place.
+This guide is based on a tested configuration that ensures Drupal 11 installs cleanly and performs reliably within an Akamai-optimized infrastructure. The following prerequisites were used for validation.
 
 - ✅ OS: Ubuntu 22.04 LTS
 - ✅ Apache: Version 2.4.52+
@@ -30,11 +27,11 @@ To ensure Drupal 11 installs cleanly and performs reliably within an Akamai-opti
 - ✅ Composer: 2.7.0+ (Drupal 11) Installed globally
 - ✅ Drupal: Latest stable version (11.1.8 as of Sept 2025) will be installed after the environment setup
 
-This configuration provides a stable foundation for structured content management, contributor workflows, and integration with Akamai’s caching and security layers.
+This configuration was verified to support structured content management, contributor workflows, and integration with Akamai’s caching and security layers.
 
 ## Environment Setup: Preparing to Install Drupal
 
-This section walks through verifying system components, setting up file structure and preparing the database--everything Drupal needs before installation begins.
+This section outlines the steps used to verify system components, establish the file structure, and prepare the database--everything Drupal requires prior to installation.
 
 ### Infrastructure Verification
 
@@ -42,16 +39,16 @@ Confirm that required components are correctly installed and active to prevent s
 
 #### Check PHP Version and Extensions
 
-Run the following commands to verifiy what extensions are installed:
+Use the following commands to check what PHP extensions are available:
 
     php -v
     php -m | grep -E 'gd|mbstring|xml|curl|zip|mysqli|pdo_mysql|opcache'
 
-If not all required PHP extensions are installed, you can safely add any needed extensions by running:
+If any required PHP extensions are missing, install them with:
 
-    sudo apt install php-gd php-mbstring php-xml php-curl php-zip php-mysql php-opcache (see [Troubleshooting Tips](websites\cms\drupal\how-to-install-and-configure-drupal-on-ubuntu-22-04\index.md\#troubleshooting-tips)).
+    sudo apt install php-gd php-mbstring php-xml php-curl php-zip php-mysql php-opcache
 
-Following the installation, restart Apache or Nginx to load the new extensions.
+Following installation, restart Apache or Nginx to activate the new extensions.
 
     sudo systemctl restart apache2
 
@@ -59,17 +56,21 @@ Verify they're active:
 
     php -m | grep -E 'gd|mbstring|xml|curl|zip|mysqli|pdo_mysql|opcache'
 
-Each one should be listed.
+Each one should now be listed.
 
 #### Check Composer
 
-If check Composer installation yields `composer` not found error, you can install it with:
+If checking for Composer installation yields a `composer` not found error, you can install it with:
 
     sudo apt update && sudo apt install composer
 
-To verify installation, run:
+To verify installation:
 
     composer --version
+
+You should see output like `Composer version 2.7.0 or higher.
+
+If the command fails, see [Composer Installation - Manual Download](https://getcomposer.org/doc/00-intro.md#manual-installation).
 
 #### Verify the Web Server
 
@@ -77,11 +78,11 @@ Before proceeding, make sure your web server has permission to interact with the
 
     sudo chown -R www-data:www-data web
 
-This step prevents permission errors during runtime and ensures that Drupal can generate files, manage uploads, and interact with modules safely.
+This step prevents permission errors during runtime and ensures that Drupal can safely generate files, manage uploads, and interact with modules.
 
-{{< Tip>}}
+{{< tip >}}
 If you're using Nginx or a different web server, replace `www-data` with your actual server user (e.g., `nginx`, `apache`, or a custom service account).
-{{< /Tip>}}
+{{< /tip >}}
 
 To confirm ownership was updated, run this from the parent directory of `web`:
 
@@ -101,14 +102,17 @@ To check ownership of a file, run:
 
     ls -l path/to/your/file (e.g., 'ls -l web/index.php')
 
-This tells you who the file is owned by and the group.
+This shows the file's owner and group.
 
-{{< Tip>}}
-If you need to replace incorrect ownership, rerun:
+{{< tip >}}
+
+If ownership is incorrect, rerun:
 
     sudo chown -R www-data:www-data web
 
 And replace `www-data` with your actual web server user if different.
+
+{{< /tip >}}
 
 #### Drupal Project Presence
 
@@ -118,9 +122,9 @@ To confirm the project was scaffolded correctly, verify the presence of key file
     ls web/index.php
     ls -d vendor/
 
-{{< Note>}}
-If these files are missing, drupal has not been initialized. See the next section to scaffold the project using Composer.
-{{< /Note>}}
+{{< note >}}
+If any of these files are missing, Drupal has not been initialized. See the Initialize the Drupal Application Environment section to scaffold the project using Composer.
+{{< /note >}}
 
 Contributor-Safe Tips
 
@@ -129,25 +133,35 @@ Contributor-Safe Tips
 
 If all checks pass, your infrastructure is ready for Drupal initialization and configuration.
 
+If `vendor/` is missing but `composer.json` is present, run:
+
+    composer install
+
+- This installs required dependencies and generates the `vendor/` directory.
+- If file permissions are relevant to your environment (e.g., restrictive umask settings or shared hosting), consider verifying ownership and access using `chmod` and `chown`.
+
+If at this point all checks pass the infrastructure is ready for Drupal initialization and configuration.
+
 ## Initialize the Drupal Application Environment
 
-After the `composer create-project` command, your environment should now include the core Drupal files and folder structure. This phase confirms that setup, prepares optional configuration scaffolding, and gets the application ready for site installation.
+After running the `composer create-project` command, your environment should now include the core Drupal files and folder structure (`composer.json`, `web/index.php`, and `vendor/`). This phase was validated and confirms that setup succeeded, prepares optional configuration scaffolding, and gets the application ready for site installation.
 
 ## Create Project Structure
 
 Creating the project structure sets up Drupal for modular development and secure deployment.
 
-This step separates application logic from public content, making updates easier to manage and reduce security risks.
+This step separates application logic from public content, making updates easier to manage and reducing security risks.
 
-{{< Note>}}
-This guide assumes you're using Drupal 11.1.8 as noted earlier.
-{{< /Note>}}
+{{< note >}}
+This guide was validated using Drupal 11.1.8 as noted earlier.
+{{< /note >}}
 
-### Create the Drupal project structure
+### Create the Drupal Project Structure
 
-- Run the install command to scaffold (create) the Drupal 11.1.8 structure, see [Drupal.org's Directory Structure guide](https://www.drupal.org/docs/getting-started/understanding-drupal/directory-structure) and customize the "my_drupal_site" name to fit your needs:
+- Run the install command to scaffold (create) the Drupal 11.1.8 structure. Customize the "my_drupal_site" name to fit your needs. For
+directory layout details, see [Drupal.org's Directory Structure guide](https://www.drupal.org/docs/getting-started/understanding-drupal/directory-structure).
 
-        composer create-project drupal/recommended-project:11.1.8 my_drupal_site
+    composer create-project drupal/recommended-project:11.1.8 my_drupal_site
 
 -Then change to the project folder:
 
@@ -168,17 +182,13 @@ If any of these are missing or return errors, installation may have failed or be
 
 **Following Composer Initialization** (scaffolded Drupal Project), confirm your environment against the **Drupal Site Setup checklist**:
 
-- Change to the project folder.
-
-    cd my_drupal_site
-
 - Copy the default settings file.
 
     cp web/sites/default/default.settings.php web/sites/default/settings.php
 
 This creates the active configuration file that Drupal reads and writes to during installation and runtime.
 
-### Set file permissions
+### Set File Permissions
 
 - This is for `settings.php` (allows the owner to read/write, group and others to read, and the web server to access it during installation). Make sure you are in the Drupal project root folder and then run:
 
@@ -186,7 +196,8 @@ This creates the active configuration file that Drupal reads and writes to durin
 
     *Optional: If you're on a shared host or strict environment, you may need to tighten permissions in the `settings.php` file to `640` or even `600`.*
 
-    Also, if you skip this step and Drupal can't write to the file, the installer will fail with a permissions error. Running `chmod 644` now avoids this.
+If you skip this step and Drupal can't write to the file, the installer will fail with a permissions error. Running `chmod 644` now avoids this.
+
 ### Create the files directory.
 
 Drupal uses a writable `files` directory to store uploaded content, temporary files, and other runtime assets. From your project root (`my_drupal_site`) run:
@@ -249,14 +260,14 @@ Sensitive credentials can be abstracted using `.env` files or environment-specif
 
 ### CLI-based Installation
 
-This guide uses the CLI method for consistency, automation, and contributor safety (using Drush 11.x for CLI-based installation, matching Drupal 11/1/8).
+This guide uses the CLI method for consistency, automation, and contributor safety (leveraging Drush 11.x for CLI-based installation, matching Drupal 11/1/8).
 
 **Environment Validation**(Phase 1)
 
 | **Check**               | **Purpose**                              | **Command**                                                | **Expected Output**                                   | **If Output Differs**                                      | 🔗 **Further Info** |
 |------------------------|------------------------------------------|------------------------------------------------------------|--------------------------------------------------------|------------------------------------------------------------|---------------------|
-| PHP Version            | Ensure PHP 8.1+ is installed              | `php -v`                                                   | `PHP 8.1.2-1ubuntu2.22` or higher                      | Upgrade PHP or switch environments                          | [PHP Docs](https://www.php.net/manual/en/) |
-| Required Extensions    | Confirm required PHP modules              | `php -m \| grep -E 'pdo'`|mbstring|xml|json|ctype|tokenizer|curl|openssl|zip'` | All listed extensions appear                          | Install missing modules via `apt`, `dnf`, or `brew`         | [Drupal Requirements](https://www.drupal.org/docs/system-requirements) |
+| PHP Version            | Ensure PHP 8.1+ is installed              | `php -v`                                                   | `PHP 8.1.2-` or higher                      | Upgrade PHP or switch environments                          | [PHP Docs](https://www.php.net/manual/en/) |
+| Required Extensions    | Confirm required PHP modules              | php -m | grep -E 'pdo|mbstring|xml|json|ctype|tokenizer|curl|openssl|zip' | All listed extensions appear                          | Install missing modules via `apt`, `dnf`, or `brew`         | [Drupal Requirements](https://www.drupal.org/docs/system-requirements) |
 | Composer Health Check  | Validate Composer setup                   | `composer diagnose`                                        | All checks return `OK` or `WARNING` (non-blocking)     | Type `yes` if prompted about root; note any warnings*         | [Composer Docs](https://getcomposer.org/doc/) |
 | Composer Version       | Ensure Composer 2.x is installed          | `composer --version`                                       | `Composer version 2.x.x`                              | Upgrade Composer if version is < 2                          | [Composer Install Guide](https://getcomposer.org/download/) |
 
@@ -264,17 +275,19 @@ This guide uses the CLI method for consistency, automation, and contributor safe
 
 If you experience silent failures during verification and need to install missing components (e.g., PHP extensions):
 
-{{< Tip>}}
+{{< tip >}}
 During installation, you may see a prompt like:
 
 `Do you want to continue?[Y/n]`
 
 This is a standard confirmation step. Type `Y` and press Enter to proceed. (If using a different package manager or install method, the prompt may vary slightly--but the intent is the same: confirm you want to install the listed components.)
-{{< /Tip>}}
+{{< /tip >}}
 
 **Installation** (Phase 2)
 
-Install the Drupal codebase using Composer. This sets up the recommended project scaffold. Also assumes Composer and PHP are installed and working. See Phase 1 for environment prep.
+Install the Drupal codebase using Composer. This sets up the recommended project scaffold.
+
+Composer and PHP should already be installed and working. See Phase 1 for environment prep.
 
 | **Step**               | **Purpose**                              | **Command**                                                | **Expected Output**                                   | **If Output Differs**                                      | 🔗 **Further Info** |
 |------------------------|------------------------------------------|------------------------------------------------------------|--------------------------------------------------------|------------------------------------------------------------|---------------------|
@@ -285,20 +298,20 @@ Install the Drupal codebase using Composer. This sets up the recommended project
  `chmod +x drush.phar` and `mv drush.phar /usr/local/bin/drush`
   `drush --version` | `Drush version 11.5.1` from global path     | If not executable, recheck permissions or path             | [Drush Phar Install](https://github.com/drush-ops/drush/releases) |
 
-* Confirm `composer.json` is writable and not locked by another process
-** Make sure your PHP version meets Drush’s minimum requirement (PHP 8.1+ for Drush 11.x)
-*** If you see a memory error, try: `COMPOSER_MEMORY_LIMIT=-1 composer require drush/drush:11.5.1`
+* Confirm `composer.json` is writable and not locked by another process.
+** Make sure your PHP version meets Drush’s minimum requirement (PHP 8.1+ for Drush 11.x).
+*** If you see a memory error, try: `COMPOSER_MEMORY_LIMIT=-1 composer require drush/drush:11.5.1`.
 **** If Drush throws a `NotFoundHttpException`, it was likely run outside a valid Drupal project root. Navigate to the directory containing `composer.json` before running Drush commands. See: [Drush Usage Guide](https://www.drush.org/latest/usage/) for valid command contexts.
 
-** Post-Install Validation** (Phase 3)
+**Post-Install Validation** (Phase 3)
 
-After installation, confirm the setup is complete and ready for configuration.
+After installation, confirm that setup completed successfully and is complete and ready for configuration.
 
 | **Check**               | **Purpose**                              | **Command**                                                | **Expected Output**                                   | **If Output Differs**                                      | 🔗 **Further Info** |
 |------------------------|------------------------------------------|------------------------------------------------------------|--------------------------------------------------------|------------------------------------------------------------|---------------------|
-| Success Confirmation   | Validate install completion               | Review terminal output                                     | “Project created successfully” or similar message      | If error shown, rerun with `-vvv` for verbose output        | [Composer Troubleshooting](https://getcomposer.org/doc/articles/troubleshooting.md) |
+| Success Confirmation   | Validate install completion               | *Review terminal output*                                     | “Project created successfully” or similar message      | If error shown, rerun with `-vvv` for verbose output        | [Composer Troubleshooting](https://getcomposer.org/doc/articles/troubleshooting.md) |
 | Folder Structure        | Confirm expected files exist              | `ls mysite`                                                | `composer.json`, `web/`, `vendor/`, etc.               | If missing, check install logs or rerun install             | [Drupal File Structure](https://www.drupal.org/docs/develop/structure-of-a-drupal-codebase) |
-| Optional Cleanup        | Remove message plugin (optional)          | `composer remove drupal/core-project-message`              | Plugin removed, no errors                              | If error, check Composer version or plugin dependencies     | [Project Message Plugin](https://www.drupal.org/project/core_project_message) |
+| Optional Cleanup        | Remove message plugin (optional)          | `composer`              | Plugin removed, no errors                              | Check Composer version or plugin dependencies     | [Project Message Plugin](https://www.drupal.org/project/core_project_message) |
 
 ### Launch the installer.
 
@@ -306,10 +319,10 @@ Once your project structure is in place and Drush is installed, you can launch t
 
 | **Method**              | **Purpose**                              | **Action / Command**                                       | **Expected Result**                                   | **If Output Differs**                                      | 🔗 **Further Info** |
 |-------------------------|------------------------------------------|------------------------------------------------------------|--------------------------------------------------------|------------------------------------------------------------|---------------------|
-| Browser-based install   | Begin visual site setup via browser      | Visit `http://localhost:8888` or `http://localhost/my_drupal_site/web` | Drupal installer page loads                            | Check PHP server is running, confirm `web` folder exists   | [Drupal Installer Guide](https://www.drupal.org/docs/installing-drupal) |
+| Browser-based install   | Begin visual site setup via browser      | Visit `http://localhost:8888` or `http://localhost/my_drupal_site/web` | Drupal installer page loads                            | Confirm PHP server is running, and `web/` folder exists   | [Drupal Installer Guide](https://www.drupal.org/docs/installing-drupal) |
 | CLI-based install       | Install Drupal via Drush                 | `vendor/bin/drush site:install`                            | Site installed with default config                     | Confirm database access, Drush version, and PHP compatibility | [Drush Site Install](https://www.drush.org/latest/commands/site-install/) |
 
-> If using the PHP built-in server, run from your project root:
+> Using the PHP built-in server, run:
 > ```
 > php -S localhost:8888 -t web
 > ```
@@ -328,10 +341,10 @@ Apache is assumed to be installed and running. This section focuses on enabling 
 | **Step**                  | **Purpose**                                  | **Command / Config**                                                                 |
 |---------------------------|----------------------------------------------|--------------------------------------------------------------------------------------|
 | Enable `mod_rewrite`      | Support clean URLs                           | `sudo a2enmod rewrite`<br>`sudo systemctl restart apache2`                          |
-| Set `AllowOverride All`   | Allow `.htaccess` overrides                  | Edit Apache config file (`000-default.conf` or `drupal.conf`)                       |
+| Set `AllowOverride All`   | Allow `.htaccess` overrides                  | Edit Apache config file (`000-default.conf` or `drupal.conf`) and set:<br>`AllowOverride All` inside the `<Directory>` block for your `/web` folder                       |
 | Reload Apache             | Apply config changes                         | `sudo systemctl reload apache2`                                                     |
-| Optional: Virtual Host    | Use custom domain for local dev              | Define `<VirtualHost>` block pointing to `/web` folder                              |
-| Update `/etc/hosts`       | Map custom domain to localhost               | `127.0.0.1 drupal.local`                                                            |
+| Optional: Virtual Host    | Use custom domain for local dev              | Define `<VirtualHost>` block pointing to `/web` folder in `drupal.conf`                              |
+| Update `/etc/hosts`       | Map custom domain to localhost               | Add: `127.0.0.1 drupal.local`                                                            |
 | Enable site config        | Activate virtual host                        | `sudo a2ensite drupal.conf`<br>`sudo systemctl reload apache2`                      |
 ---
 
@@ -342,7 +355,14 @@ Apache is assumed to be installed and running. This section focuses on enabling 
 Drupal uses clean URLs, which depend on Apache’s rewrite module. Enable it with:
 
 sudo a2enmod rewrite
+
 sudo systemctl restart apache2
+
+This activates `mod_rewrite` and restarts Apache to apply the change.
+
+Success is achieved if there is no error output and Apache restarts cleanly.
+
+If you see an error like `Module rewrite already enabled`, it's safe to proceed--Apache is alrady configured for clean URLs.
 
 ## Local Testing Setup
 
@@ -370,7 +390,9 @@ This maps `drupal.local` to your local machine:
 
 ## Security and Optimization
 
-1. Run the MySQL hardening script to remove insecure defaults and set a root password:
+1. Harden the MySQL Installation
+
+Run the MySQL hardening script to remove insecure defaults and set a root password:
 
     sudo mysql_secure_installation
 
@@ -382,9 +404,9 @@ This interactive tool lets you:
 - Remove the test database
 - Reload privilege tables
 
-{{< note>}}
+{{< note >}}
 These steps help protect your Drupal site from unauthorized access and are strongly recommended for production environments.
-{{< /note>}}
+{{< /note >}}
 
 2. Enable SSL (Optional)
 
@@ -418,7 +440,7 @@ For local development, SSL is optional. For public sites it is essential.
     - Enforcing clean URLs
 
 {{< tip>}}
-If `.htaccess` rules aren't being applied, double-check `AllowOverride All` in your Apache config.
+If `.htaccess` rules aren't being applied, double-check `AllowOverride All` is set in your Apache config.
 {{< /tip>}}
 
 4. Security Checklist
@@ -431,15 +453,15 @@ If `.htaccess` rules aren't being applied, double-check `AllowOverride All` in y
 
 ## Contributor-Safe Notes: Composer-First Workflow
 
-- Legacy bridging for users coming from Drupal 8
+- Legacy Bridging for Users Coming From Drupal 8
 
 Drupal 11.x expects a Composer-managed workflow. Composer is now the official and recommended method for managing Drupal core, contributed modules, and dependencies. Contributors familiar with manual installs or `.tar.gz` packages from Drupal 8 may encounter unexpected behavior. This guide assumes a Composer-first setup to ensure compatibility with modern module management and depencency resolution.
 
-- Avoiding brittle installs and opaque errors
+- Avoiding brittle Installs and Opaque Errors
 
 Composer tracks dependencies explicitly, reducing the risk of missing extensions or mismatched versions. Manual installs often fail silently or introduce hard-to-trace errors. Using `composer create-project` ensures a reproducible, contributor-safe environment.
 
-- Encouraging use of Drush for command-line efficiency
+- Encouraging use of Drush for Command-Line Efficiency
 
 Drush streamlines tasks like site installation, cache clearing, and module management. Once installed via Composer, it becomes available in the project’s `/vendor/bin` directory. Run Drush from you project directory:
 
@@ -449,12 +471,14 @@ If you see errors about missing Symfony classes or autoloading failures, double-
 
     - You're inside the correct project folder (with `composer.json`, `vendor/`, and `web/`).
     - Drush is intalled locally--not globally or in `/root/vendor`.
-    - You're not running Drus from outside the project root.
+    - You're not running Drush from outside the project root.
 
 To confirm you're in the right place, look for:
 
     ls
     # Should include: composer.json, vendor/, web/
+
+### Contributor-Safe References
 
 For official Drush installation guidance, see [Drush on Drupal.org](https://www.drupal.org/docs/develop/development-tools/drush).
 
@@ -462,11 +486,11 @@ You can find additional information on [Drupal's Composer guide](https://www.dru
 
 ## Conclusion: What Comes Next
 
-From here, you can begin customizing your site:
+Your Drupal environment is now scaffolded, validated, and ready for customization. From here, you can begin shaping your site:
 
-- Official [Drupal Documentation](https://www.drupal.org/documentation).
+- Explore the Official [Drupal Documentation](https://www.drupal.org/documentation) for guidance on modules, configuration, and site building.
 
-- Theme development: Create or install themes to control layout and styling. Browse the [Drupal Themes Directory](https://www.drupal.org/project/project_theme) to get a clear sense of what's possible.
+- Get into theme development: create or install themes to control layout and styling. Browse the [Drupal Themes Directory](https://www.drupal.org/project/project_theme) to see hat's possible.
 
-To see demonstrated [Drupal Websites](https://htmlburger.com/blog/drupal-websites-examples/)
+To see inspiring real-world [Drupal Websites](https://htmlburger.com/blog/drupal-websites-examples/) explore how others have extended and styled their sites.
 
