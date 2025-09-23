@@ -4,85 +4,81 @@ title: "Migrating Your Virtual Private Cloud (VPC) From GCP to Akamai Cloud"
 description: "Learn to migrate from GCP VPC to Akamai Cloud. Recreate subnets and instances, configure a bastion as a NAT router, and enable secure VLAN SSH access."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-08-18
+published: 2025-09-23
 keywords: ['gcp vpc migration','migrate gcp vpc to akamai','gcp to akamai vpc','linode vpc migration','akamai cloud vpc','cloud nat alternative akamai','gcp networking migration','gcp vpc to linode vpc']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[VPC Key Features](https://cloud.google.com/vpc?hl=en)'
-- '[VPC Documentation]([https://cloud.google.com/network-connectivity/docs/vpn/](https://cloud.google.com/network-connectivity/docs/vpn/))'
+- '[VPC Documentation](https://cloud.google.com/network-connectivity/docs/vpn/)'
 - '[Cloud NAT Documentation]([https://cloud.google.com/nat/docs](https://cloud.google.com/nat/docs))'
 - '[gcloud CLI Overview](https://cloud.google.com/sdk/gcloud)'
 ---
 
-A Virtual Private Cloud (VPC) is a private network environment that lets you define IP address ranges, segment workloads into subnets, and control how resources communicate. VPCs help isolate and organize infrastructure while enabling internal and external traffic control.
+A Virtual Private Cloud (VPC) is a private network environment that lets you define IP address ranges, create subnets, and control how resources communicate. VPCs isolate workloads while providing controlled access to internal and external traffic.
 
-A managed VPC service handles key networking functions like NAT, internet access, and routing. It also integrates with other cloud features, so you don't need to configure them manually.
-
-This guide covers how to migrate a basic Google Cloud Platform (GCP) VPC environment to Akamai Cloud. The GCP setup includes three private compute instances, a cloud NAT gateway for selective outgoing traffic, and a bastion host for SSH access. It walks through how to recreate this setup in Akamai Cloud using Linode compute instances and a manual NAT router.
+This guide shows how to migrate a basic Google Cloud Platform (GCP) VPC environment to Akamai Cloud. The GCP setup includes three private compute instances, a cloud NAT gateway for selective outgoing traffic, and a bastion host for SSH access. It walks through how to recreate this setup in Akamai Cloud using Linode compute instances, a VLAN, and a manually configured NAT router.
 
 ## Feature Comparison
 
-Before migrating, it's useful to understand the differences between managed VPC offerings from Google Cloud and Akamai.
+Before migrating, it’s useful to understand the differences between GCP VPCs and [Akamai Cloud VPCs](https://techdocs.akamai.com/cloud-computing/docs/vpc).
 
-### What Google Cloud VPCs Offer
+### Akamai Cloud VPCs
 
-Google Cloud VPCs are global in scope, allowing you to span a single VPC across multiple regions. Administrators can define subnets within specific regions, attach internet gateways for public access, and use Cloud NAT for managed outbound access from private subnets.
+- Deliver private, regional networks where you control IP ranges and subnets.
+- Isolate all traffic by default, with internet access only where you explicitly configure it.
+- Provide a straightforward model: no hidden routing, fewer managed abstractions, and predictable behavior.
+- Ideal for teams that want fine-grained control and freedom to use open source or self-managed components.
 
-In addition to firewall rules and custom routes, GCP VPCs integrate tightly with Google's managed services (e.g., Cloud SQL, GKE, and Cloud Functions) and can be deployed directly into the VPC. Identity and policy controls (e.g., IAM and Shared VPCs) also enable fine-grained management at scale.
+### GCP VPCs
 
-### What Akamai Cloud VPCs Offer
-
-[VPCs from Akamai Cloud](https://techdocs.akamai.com/cloud-computing/docs/vpc) provide private, regional networks that let you define custom IP ranges and subnets. All traffic is isolated from the public internet unless explicitly routed through a configured gateway. This lightweight model is ideal for tightly scoped environments where users want fine-grained control without added complexity.
+- Are global in scope, spanning a single VPC across multiple regions.
+- Support regional subnets, internet gateways for public access, and Cloud NAT for managed outbound traffic.
+- Provide firewall rules, custom routes, and integration with Google managed services (e.g., Cloud SQL, GKE, Cloud Functions).
+- Include advanced policy features such as IAM and Shared VPCs for fine-grained management.
 
 ### How to Adapt
 
-Some GCP features don't have direct equivalents in Akamai Cloud, but can be replicated with custom configuration. For example, Akamai Cloud doesn't offer a managed NAT service. However, outgoing traffic can be enabled using a Linode compute instance manually configured to act as a NAT router. This approach suits teams that prefer direct management of network behavior.
-
-At present, Akamai Cloud does not integrate other services (e.g., NodeBalancers, LKE clusters, or managed databases) with its VPCs. However, some of these services can be replaced with self-managed equivalents and open source tooling.
+GCP’s Cloud NAT can be replicated on Akamai Cloud with a Linode Compute Instance configured as a NAT router. Managed integrations (e.g., Cloud SQL, load balancers, or Kubernetes services) can be replaced with self-managed equivalents or open source tools on Akamai.
 
 ## Before You Begin
 
-1.  If you do not already have a virtual machine to use, create a Compute Instance with at least 4 GB of memory. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+Complete the following prerequisites prior to following the steps in this guide:
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide to create an Akamai Cloud account if you do not already have one.
 
-## Prerequisites and Assumptions
+1.  Create a personal access token with permissions to manage Linode instances and VPCs using the instructions in our [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
 
-This guide assumes access to administrative credentials and CLI tools for both GCP and Akamai Cloud. You should have the ability to view and modify relevant cloud resources in both environments.
+1.  Install the Linode CLI using the instructions in the [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide. See our [API reference](https://techdocs.akamai.com/linode-api/reference/api) for comprehensive documentation of Linode CLI functionality.
 
-### Google Cloud CLI and Permissions
+1.  You need a GCP account with a user or role that has permission to manage GCP compute instances, VPCs, subnets, and routes.
 
-Ensure that the Google Cloud CLI (`gcloud`) is installed and configured with a user or role that has permission to manage GCP compute instances, VPCs, subnets, and routes.
+1.  Ensure that the Google Cloud CLI (`gcloud`) is installed and configured.
 
-### Linode CLI and Permissions
-
-Install the Linode CLI and authenticate using a personal access token with permissions to manage Linode instances and VPCs. Some familiarity with creating and modifying basic Linux network configuration, including IP routes and `ufw` rules, is helpful.
-
-### Example Environment Used in This Guide
+### Example Environment
 
 The example used throughout this guide involves four GCP compute instances that all belong to a single VPC:
 
--   **Alice**: A private GCP compute instance with no internet access.
--   **Bob**: Another private GCP compute instance with no internet access.
--   **Charlie**: A private GCP compute instance that requires outgoing internet access via GCP Cloud NAT, but is not accessible from the public internet.
--   **Bastion**: A public GCP compute instance with a public IP address, used for SSH access to Alice, Bob, and Charlie.
+-   **Alice** (`10.0.1.18`): Private EC2 instance with no internet access.
+-   **Bob** (`10.0.1.236`): Private EC2 instance with no internet access.
+-   **Charlie** (`10.0.1.179`): Private EC2 instance that requires outgoing internet access via a NAT, but no direct inbound access.
+-   **Bastion** (`10.0.2.78`): Public EC2 instance with a public IP address, used to SSH into Alice, Bob, and Charlie.
 
 These instances are distributed across two subnets within a single Google Cloud VPC:
 
--   A **private subnet** (`10.0.1.0/24`) that hosts Alice, Bob, and Charlie.
--   A **public subnet** (`10.0.2.0/24`) that hosts the bastion instance.
+-   **Private subnet** (`10.0.1.0/24`): Alice, Bob, and Charlie.
+-   **Public subnet** (`10.0.2.0/24`): Bastion, with a NAT gateway to provide outbound internet for the private subnet.
 
 In addition, the VPC network has a public Cloud NAT router that routes any outgoing traffic from the private subnet to the internet.
 
-Visually, the GCP environment looks like this:
+The diagram below offers a visual representation of the example GCP setup:
 
 ![Diagram of example GCP VPC environment with Alice, Bob, Charlie, and Bastion across public and private subnets.](gcp-vpc-environment-diagram.png)
 
-This example layout is representative of many small-to-medium GCP environments where internal workloads are kept isolated from the public internet but require selective outgoing access and secure administrative access.
+This reflects common small-to-medium GCP environments where workloads remain private but need selective egress and secure administrative access.
 
-## Document and Back Up Your Current Configuration
+## Document Your Current Configuration
 
-Before making any changes, document the current GCP setup. Having a full record of your environment can help you replicate the configuration accurately, and recover if needed.
+Before migrating, capture the details of your GCP setup. This record ensures you can replicate it in Akamai Cloud.
 
 ### VPC and Subnet CIDR Blocks
 
@@ -94,7 +90,7 @@ Start by recording the CIDR blocks used with your GCP VPC subnets.
 
     ![Google Cloud Console showing list of VPC networks.](gcp-console-vpc-list.png)
 
-1.  On the details page for your VPC network, click on the **Subnets** tab. This shows the CIDR block for each subnet, listed as the **Primary IPv4 range**:
+1.  On the details page for your VPC network, click on the **Subnets** tab. This shows the CIDR block for each subnet, listed as **Primary IPv4 range**:
 
     ![Google Cloud Console VPC subnets tab with CIDR ranges.](gcp-console-vpc-subnets.png)
 {{< /tab >}}
@@ -124,7 +120,7 @@ gcloud compute networks subnets list \
 
 ### IP Addresses and Subnets of GCP Compute Instances
 
-Next, find the private IP addresses assigned to each GCP compute instance in your VPC. Also note which subnet each instance belongs to. This can also be discerned by viewing the CIDR block to which the IP address belongs (e.g., `10.0.1.0/24` versus `10.0.2.0/24`).
+Record the private IPs of each GCP compute instance in your VPC and the subnet it belongs to (e.g., `10.0.1.0/24` versus `10.0.2.0/24`).
 
 {{< tabs >}}
 {{< tab "Google Cloud Console" >}}
@@ -133,7 +129,7 @@ Within the **VPC Network** service page, click **IP addresses**:
 ![Google Cloud Console VPC IP addresses page showing instance IPs.](gcp-console-vpc-ip-addresses.png)
 {{< /tab >}}
 {{< tab "Google Cloud CLI" >}}
-To obtain this information with the `gcloud` CLI, run the following `gcloud` CLI command to query for IP addresses of compute instances belonging to a VPC:
+Run the following `gcloud` CLI command to list the IP addresses of compute instances in your VPC:
 
 ```command
 gcloud compute instances list \
@@ -153,19 +149,19 @@ charlie  ['10.0.1.179']  [None]
 
 ### Cloud NAT Configuration and Firewall Rules
 
-The example VPC network also has an associated Cloud NAT router, which the Charlie private instance depends on for outgoing internet access.
+The example VPC network includes a Cloud NAT gateway, which enables outbound internet access for the private subnet.
 
 {{< tabs >}}
 {{< tab "Google Cloud Console" >}}
-1.  Within the GCP Console, search for **Cloud NAT** and then find the associated cloud router with NAT gateway:
+1.  In the GCP Console, search for **Cloud NAT** and select the associated Cloud Router:
 
     ![Google Cloud Console Cloud NAT service page with router gateway.](gcp-console-cloud-nat-list.png)
 
-1.  Click on the NAT gateway to show its details. This gateway is of type Public and it takes packets from the private subnet:
+1.  Select the NAT gateway to display its details. This gateway is of type **Public** and maps traffic from the `private-subnet`:
 
     ![Google Cloud Console Cloud NAT gateway details page.](gcp-console-nat-gateway-details.png)
 
-    This Cloud NAT configuration forwards outgoing traffic to the internet from *any* VM instance within the private subnet. However, only Charlie (not Alice or Bob) is supposed to have outgoing internet access.
+    By default, this configuration would allow any VM in the private subnet to reach the internet. In this environment, however, only Charlie (not Alice or Bob) is intended to have that access.
 
 1.  A review of the **VPC firewall rules** for the VPC network shows:
 
@@ -173,7 +169,7 @@ The example VPC network also has an associated Cloud NAT router, which the Charl
 
 {{< /tab >}}
 {{< tab "Google Cloud CLI" >}}
-1.  Run the following `gcloud` CLI command to query for NAT gateway details, replacing {{< placeholder "GCP_NAT_GATEWAY" >}}, {{< placeholder "GCP_NAT_ROUTER" >}}, {{< placeholder "GCP_REGION" >}}:
+1.  Run the following `gcloud` CLI command to display for NAT gateway details, replacing {{< placeholder "GCP_NAT_GATEWAY" >}}, {{< placeholder "GCP_NAT_ROUTER" >}}, {{< placeholder "GCP_REGION" >}}:
 
     ```command
     gcloud compute routers nats \
@@ -201,9 +197,9 @@ The example VPC network also has an associated Cloud NAT router, which the Charl
     type: PUBLIC
     ```
 
-    This Cloud NAT configuration forwards outgoing traffic to the internet from *any* VM instance within the private subnet. However, only Charlie (not Alice or Bob) is supposed to have outgoing internet access.
+    By default, this configuration would allow any VM in the private subnet to reach the internet. In this environment, however, only Charlie (not Alice or Bob) is intended to have that access.
 
-1.  Query for VPC firewall rules:
+1.  List the firewall rules for the VPC:
 
     ```command
     gcloud compute firewall-rules list \
@@ -287,99 +283,98 @@ The example VPC network also has an associated Cloud NAT router, which the Charl
 {{< /tab >}}
 {{< /tabs >}}
 
-The `deny-egress-all` rule denies any outgoing traffic by targets with the tag `private-subnet`. However, a higher priority `allow-egress-nat` rule allows outgoing traffic for any targets with the tag `egress-allow`, including those tagged with `private-subnet`.
+The `deny-egress-all` rule blocks outbound traffic from VMs tagged with `private-subnet`. However, a higher-priority `allow-egress-nat` rule permits outbound traffic for instances tagged `egress-allow`. In practice, this means Alice and Bob are denied internet access, while Charlie is allowed.
 
 The goal is to have a complete snapshot of your VPC layout, connectivity, and access controls before starting the migration.
 
-## Plan Your VPC Mapping Strategy
+## Recreate the Environment in Akamai Cloud
 
-With your GCP environment documented, the next step is to design the equivalent layout in Akamai Cloud. Your goal is to replicate routing behavior, instance roles, and access controls as closely as possible. For example, to replicate the GCP environment in Akamai Cloud, you would need:
+With your GCP environment documented, the next step is to design the equivalent layout in Akamai Cloud. The goal is to replicate routing behavior, instance roles, and access controls as closely as possible. To replicate the GCP environment in Akamai Cloud, you would need:
 
--   An Akamai VPC with a CIDR block that matches the GCP configuration, if possible:
-    -   10.0.1.0/24 for private workloads
-    -   10.0.2.0/24 for public resources
+-   An Akamai VPC with a CIDR block that matches the GCP configuration, for example:
+    -   `10.0.1.0/24` for private workloads
+    -   `10.0.2.0/24` for public resources
 -   2 Linode instances (Alice and Bob) isolated within the private subnet
 -   1 Linode instance (Charlie) with access to the internet, but within the private subnet
--   1 Linode instance (Bastion) for SSH access to all instances, within the public subnet, which also act as a NAT router
+-   1 Linode instance (Bastion) for SSH access to all instances, within the public subnet, which also acts as a NAT router
 -   Static private IPs assigned to all Linode instances, to match their GCP counterparts
 
-![Diagram of Akamai Cloud VPC layout replicating GCP environment.](akamai-vpc-mapping-diagram.png)
+Additionally, a [VLAN](https://techdocs.akamai.com/cloud-computing/docs/vlan) provides a private Layer-2 link between Linodes in the same VPC, enabling secure internal communication across subnets without exposing traffic to the public internet.
 
-## Recreate the Environment in Akamai Cloud
+The diagram below offers a visual representation of the equivalent Akamai Cloud setup:
+
+![Diagram of Akamai Cloud VPC layout replicating GCP environment.](akamai-vpc-mapping-diagram.png)
 
 With your strategy mapped out, you can begin provisioning resources in Akamai Cloud.
 
 ### Create the VPC and Subnets
 
-Start by creating a new VPC in your preferred region. This can be done within the [Akamai Cloud Manager](https://cloud.linode.com/) console, or via the `linode` CLI. Within the VPC, define two subnets:
+Create a new VPC in your preferred region. Within the VPC, define a private subnet for Alice, Bob, and Charlie, and a public subnet for Bastion. This can be done within the [Akamai Cloud Manager](https://cloud.linode.com/), or via the `linode` CLI.
 
--   A private subnet for Alice, Bob, and Charlie
--   A public subnet for the bastion host
-
-Run the following `linode-cli` command to [create an equivalent VPC](https://techdocs.akamai.com/linode-api/reference/post-vpc):
+Run the following `linode-cli` command to [create an equivalent VPC](https://techdocs.akamai.com/linode-api/reference/post-vpc), replacing {{< placeholder "AKAMAI_REGION" >}} (e.g., `us-mia`) with the Akamai Cloud region closest to you or your users:
 
 ```command
-linode vpcs create \
-  --label "my-migrated-vpc" \
-  --description "VPC migrated from GCP" \
-  --region us-lax \
-  --pretty
-  --subnets '[{"label":"private-subnet","ipv4":"10.0.1.0/24"},{"label":"public-subnet","ipv4":"10.0.2.0/24"}]'
+linode-cli vpcs create \
+    --label "my-migrated-vpc" \
+    --description "VPC migrated from GCP" \
+    --region {{< placeholder "AKAMAI_REGION" >}} \
+    --pretty \
+    --subnets '[{"label":"private-subnet","ipv4":"10.0.1.0/24"},{"label":"public-subnet","ipv4":"10.0.2.0/24"}]'
 ```
+
+Take note of the `id` fields associated with each subnet (e.g., `254564` for `private-subnet` and `254565` for `public-subnet`) for use in subsequent commands:
 
 ```output
 [
   {
+    "created": "2025-09-05T16:25:24",
     "description": "VPC migrated from GCP",
-    "id": 197854,
+    "id": 249729,
     "label": "my-migrated-vpc",
-    "region": "us-lax",
+    "region": "us-mia",
     "subnets": [
       {
+        "created": "2025-09-05T16:25:24",
         "databases": [],
-        "id": 199163,
+        "id": 254564,
         "ipv4": "10.0.1.0/24",
         "label": "private-subnet",
         "linodes": [],
-        "nodebalancers": []
+        "nodebalancers": [],
+        "updated": "2025-09-05T16:25:24"
       },
       {
+        "created": "2025-09-05T16:25:24",
         "databases": [],
-        "id": 199164,
+        "id": 254565,
         "ipv4": "10.0.2.0/24",
         "label": "public-subnet",
         "linodes": [],
-        "nodebalancers": []
+        "nodebalancers": [],
+        "updated": "2025-09-05T16:25:24"
       }
-    ]
+    ],
+    "updated": "2025-09-05T16:25:24"
   }
 ]
 ```
 
-### Create the Private Linode Compute Instances
+### Create the Private Linodes
 
-Next, deploy Linode compute instances that correspond with the private compute instances from your GCP environment. For the example in this guide, this means deploying Alice, Bob, and Charlie in the private subnet.
+Deploy Linode compute instances that correspond with the private compute instances from your GCP environment (e.g., Alice, Bob, and Charlie) to the `private-subnet`. The Linodes can communicate with each other through a [VLAN](https://techdocs.akamai.com/cloud-computing/docs/vlan), which is a private network link between Linodes in the same VPC. It allows internal traffic to flow securely, even between instances in different subnets, as long as they share the same VLAN.
 
-The Linodes can communicate with one another through a [VLAN](https://techdocs.akamai.com/cloud-computing/docs/vlan), which is a private network link between Linodes in the same VPC. It allows internal traffic to flow securely, even between instances in different subnets, as long as they share the same VLAN.
-
-Use the Linode CLI to create each Linode in the private subnet. Configure each instance with the following:
-
--   A VPC network interface on the private subnet
--   No public IPv4 address
--   A VLAN interface with an IP address management (IPAM) address
-
-1.  For example, the command below creates the Alice instance, attaches it to the private subnet, assigns it the same VPC IP address used in the original GCP environment, and adds it to a VLAN:
+1.  The command below creates the Alice instance, attaches it to the private subnet, assigns it the same VPC IP address used in the original GCP environment (e.g, `10.0.1.18`), and adds it to the VLAN at `10.0.99.18/24`. Substitute {{< placeholder "AKAMAI_REGION" >}} (e.g., `us-mia`), {{< placeholder "ALICE_ROOT_PASSWORD" >}} (e.g., `myalicerootpassword`), and {{< placeholder "AKAMAI_PRIVATE_SUBNET_ID" >}} (e.g., `254564`) with your own values:
 
     ```command
-    linode linodes create \
-      --region us-lax \
+    linode-cli linodes create \
+      --region {{< placeholder "AKAMAI_REGION" >}} \
       --type g6-standard-2 \
-      --image linode/ubuntu20.04 \
+      --image linode/ubuntu24.04 \
       --label alice \
       --backups_enabled false \
       --private_ip false \
-      --root_pass mylinodepassword \
-      --interfaces '[{"purpose":"vpc","subnet_id":199163,"ipv4":{"vpc":"10.0.1.18"}},{"purpose":"vlan","label":"my-vlan","ipam_address":"10.0.1.18/24"}]' \
+      --root_pass {{< placeholder "ALICE_ROOT_PASSWORD" >}} \
+      --interfaces '[{"purpose":"vpc","subnet_id":{{< placeholder "AKAMAI_PRIVATE_SUBNET_ID" >}},"ipv4":{"vpc":"10.0.1.18"}},{"purpose":"vlan","label":"my-vlan","ipam_address":"10.0.99.18/24"}]' \
       --pretty
     ```
 
@@ -390,383 +385,140 @@ Use the Linode CLI to create each Linode in the private subnet. Configure each i
         "disk_encryption": "enabled",
         "group": "",
         "has_user_data": false,
-        "host_uuid": "6b4ea6a82e3a8bfe2bee090b3caf31dee2f94850",
+        "host_uuid": "4a53d44b88e1a32a4194cde65aa65f04721a8a7d",
         "hypervisor": "kvm",
-        "id": 78417007,
-        "image": "linode/ubuntu20.04",
+        "id": 84164398,
+        "image": "linode/ubuntu24.04",
         "ipv4": [
-          "172.235.252.246"
+          "172.238.217.174"
         ],
+        "ipv6": "2a01:7e04::2000:43ff:feae:fdd2/128",
         "label": "alice",
-        "region": "us-lax",
-        "status": "provisioning",
-        "tags": [],
-        "type": "g6-nanode-1",
-        ...
-      }
-    ]
-    ```
-
-1.  Supply the Alice Linode's `id` to retrieve its network configuration:
-
-    ```command
-    linode linodes configs-list 78417007 --pretty
-    ```
-
-    This lists its network interfaces with VPC IP and VLAN IPAM addresses:
-
-    ```output
-    [
-      {
-        ...
-        "interfaces": [
-          {
-            "active": true,
-            "id": 5629467,
-            "ip_ranges": [],
-            "ipam_address": null,
-            "ipv4": {
-              "nat_1_1": null,
-              "vpc": "10.0.1.18"
-            },
-            "label": null,
-            "primary": false,
-            "purpose": "vpc",
-            "subnet_id": 199163,
-            "vpc_id": 197854
-          },
-          {
-            "active": true,
-            "id": 5629468,
-            "ip_ranges": null,
-            "ipam_address": "10.0.1.18/24",
-            "label": "my-vlan",
-            "primary": false,
-            "purpose": "vlan",
-            "subnet_id": null,
-            "vpc_id": null
-          }
-        ],
-        ...
-      }
-    ]
-    ```
-
-    The command to create the Alice Linode provides a VPC interface with the VPC IP address `10.0.1.18` and a VLAN IPAM address of `10.0.1.18/24`.
-
-    {{< note >}}
-    While a public IP address is created for every Linode, because the Linode creation command did not include a `public` interface, the public IP address is not attached to a network interface for the Linode.
-    {{< /note >}}
-
-1.  Repeat the steps above to create the Bob and Charlie Linodes. Afterwards, you should have:
-
-    | Linode | VPC IP  |
-    | :---- | :---- |
-    | Alice | 10.0.1.18 |
-    | Bob | 10.0.1.236 |
-    | Charlie | 10.0.1.179 |
-
-### Create the Public Linode Compute Instance
-
-Deploy the bastion host in the public subnet. This is the only instance you can SSH into from the public internet. From this machine, you can SSH into the other private instances in the VLAN.
-
-In the original GCP environment, the Cloud NAT service was used to allow outgoing internet access for a machine in the private subnet (for example, Charlie). Because Linode does not offer a NAT gateway service, the bastion host can be configured to function as a NAT router.
-
-The important configurations for the bastion instance are:
-
--   It has a VPC network interface using the public subnet.
--   It *is* assigned a public IPv4 address.
--   It has a VLAN network interface with an IP Address Management (IPAM) address.
-
-1.  Create the Bastion Linode on the public subnet:
-
-    ```command
-    linode linodes create \
-      --region us-lax \
-      --type g6-standard-2 \
-      --image linode/ubuntu20.04 \
-      --label bastion \
-      --backups_enabled false \
-      --private_ip false \
-      --root_pass mylinodepassword \
-      --interfaces '[{"purpose":"vpc","subnet_id":199164,"ipv4":{"vpc":"10.0.2.78","nat_1_1":"any"}},{"purpose":"vlan","label":"my-vlan","ipam_address":"10.0.2.78/24"}]' \
-      --pretty
-    ```
-
-    Including `nat_1_1:any` in the options for the VPC interface enables the assigned public IPv4 address for the Linode:
-
-    ```output
-    [
-      {
-        ...
-        "disk_encryption": "enabled",
-        "id": 78472676,
-        "image": "linode/ubuntu20.04",
-        "ipv4": [
-          "172.236.243.216"
-        ],
-        "label": "bastion",
         "lke_cluster_id": null,
-        "region": "us-lax",
+        "region": "us-mia",
+        "specs": {
+          "disk": 81920,
+          "gpus": 0,
+          "memory": 4096,
+          "transfer": 4000,
+          "vcpus": 2
+        },
         "status": "provisioning",
         "tags": [],
         "type": "g6-standard-2",
+        ...
       }
     ]
     ```
 
-1.  Examine the resulting network configuration for the bastion instance:
+    {{< note >}}
+    A public IP address is created for every Linode, however, because the Linode creation command did not include a `public` interface, the public IP address is not attached to a network interface.
+    {{< /note >}}
+
+1.  Use a variation of the `create` command to deploy the Bob Linode, attach it to the private subnet, assign it the original GCP VPC IP (e.g, `10.0.1.236`), and add it to the VLAN at `10.0.99.236/24`:
 
     ```command
-    linode linodes configs-list 78472676 --pretty
+    linode-cli linodes create \
+      --region {{< placeholder "AKAMAI_REGION" >}} \
+      --type g6-standard-2 \
+      --image linode/ubuntu24.04 \
+      --label bob \
+      --backups_enabled false \
+      --private_ip false \
+      --root_pass {{< placeholder "BOB_ROOT_PASSWORD" >}} \
+      --interfaces '[{"purpose":"vpc","subnet_id":{{< placeholder "AKAMAI_PRIVATE_SUBNET_ID" >}},"ipv4":{"vpc":"10.0.1.236"}},{"purpose":"vlan","label":"my-vlan","ipam_address":"10.0.99.236/24"}]' \
+      --pretty
     ```
 
-    Notice for this instance that the `nat_1_1` address for the VPC interface is set to the auto-generated public IP address (`172.236.243.216`):
+1.  Repeat the `create` command once more to deploy the Charlie Linode, attach it to the private subnet, assign it the original GCP VPC IP (e.g, `10.0.1.179`), and add it to the VLAN at `10.0.99.179/24`:
 
-    ```output
-    [
-      {
-        ...
-        "interfaces": [
-          {
-            "active": false,
-            "id": 5646878,
-            "ip_ranges": [],
-            "ipam_address": null,
-            "ipv4": {
-              "nat_1_1": "172.236.243.216",
-              "vpc": "10.0.2.78"
-            },
-            "label": null,
-            "primary": false,
-            "purpose": "vpc",
-            "subnet_id": 199164,
-            "vpc_id": 197854
-          },
-          {
-            "active": false,
-            "id": 5646879,
-            "ip_ranges": null,
-            "ipam_address": "10.0.2.78/24",
-            "label": "my-vlan",
-            "primary": false,
-            "purpose": "vlan",
-            "subnet_id": null,
-            "vpc_id": null
-          }
-        ],
-        ...
-      }
-    ]
+    ```command
+    linode-cli linodes create \
+      --region {{< placeholder "AKAMAI_REGION" >}} \
+      --type g6-standard-2 \
+      --image linode/ubuntu24.04 \
+      --label charlie \
+      --backups_enabled false \
+      --private_ip false \
+      --root_pass {{< placeholder "CHARLIE_ROOT_PASSWORD" >}} \
+      --interfaces '[{"purpose":"vpc","subnet_id":{{< placeholder "AKAMAI_PRIVATE_SUBNET_ID" >}},"ipv4":{"vpc":"10.0.1.179"}},{"purpose":"vlan","label":"my-vlan","ipam_address":"10.0.99.179/24"}]' \
+      --pretty
     ```
 
-#### Verify SSH Access for Bastion
+Afterwards, you should have three instances with the following corresponding VPC IP addresses and VLAN IPAM addresses:
 
-Using the public IP address for the bastion instance, connect with SSH to verify access:
+| Instance | VPC IP Address | VLAN IPAM Address |
+| -- | -- | -- |
+| **Alice** | `10.0.1.18` | `10.0.99.18/24` |
+| **Bob** | `10.0.1.236` | `10.0.99.236/24` |
+| **Charlie** | `10.0.1.179` | `10.0.99.179/24` |
+
+### Create the Public Linode
+
+In the original GCP environment, the Cloud NAT service is used to allow outgoing internet access for a machine in the private subnet (e.g., Charlie). Because Linode does not offer a NAT gateway service, Bastion is configured to function as a NAT router.
+
+Use the following command to create the Bastion instance on the public subnet. This command assigns it the same VPC IP as in the original GCP environment (e.g, `10.0.2.78`) and adds it to the VLAN at `10.0.99.78/24`. Replace {{< placeholder "AKAMAI_REGION" >}} (e.g., `us-mia`), {{< placeholder "BASTION_ROOT_PASSWORD" >}} (e.g., `mybastionrootpassword`), and {{< placeholder "AKAMAI_PUBLIC_SUBNET_ID" >}} (e.g., `254565`) with your own values:
 
 ```command
-ssh root@172.236.243.216
+linode-cli linodes create \
+  --region {{< placeholder "AKAMAI_REGION" >}} \
+  --type g6-standard-2 \
+  --image linode/ubuntu24.04 \
+  --label bastion \
+  --backups_enabled false \
+  --private_ip false \
+  --root_pass {{< placeholder "BASTION_ROOT_PASSWORD" >}} \
+  --interfaces '[{"purpose":"vpc","subnet_id":{{< placeholder "AKAMAI_PUBLIC_SUBNET_ID" >}},"ipv4":{"vpc":"10.0.2.78","nat_1_1":"any"}},{"purpose":"vlan","label":"my-vlan","ipam_address":"10.0.99.78/24"}]' \
+  --pretty
 ```
 
-{{< note >}}
-The remainder of this guide assumes commands are performed while logged in as `root`. However, you should consider [creating and using a limited `sudo` user](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) to reduce your risk of accidentally performing damaging operations.
-{{< /note >}}
-
-### Configure Linodes for SSH Access Within the VPC
-
-You can connect to the bastion instance with SSH because it has a public IP address attached to its VPC network interface. As expected, you cannot connect to any of the private Linode instances from outside the VPC. This matches the original GCP VPC environment.
-
-To ensure you can SSH into each of the private instances, configure VLAN and firewall settings on each Linode.
-
-#### Verify VLAN IPAM Address on Bastion
-
-1.  Using your already established SSH connection to the bastion instance, use the following command to examine its VLAN network interface configuration:
-
-    ```command
-    ip addr show dev eth1
-    ```
-
-    The command output should show a line with the IPAM address you specified when creating the Linode, for example:
-
-    ```command
-    inet 10.0.2.78/24 scope global eth1
-    ```
-
-1.  If it does not, use a command-line text editor such as `nano` to  edit the system's Netplan configuration file found in `/etc/netplan/`:
-
-    ```command
-    nano /etc/netplan/01-netcfg.yaml
-    ```
-
-    Edit the contents of the file to set the `eth1` VLAN address:
-
-    ```file {title="/etc/netplan/01-netcfg.yaml" lang="yaml"}
-    network:
-      version: 2
-      ethernets:
-        eth0:
-          dhcp4: true
-        eth1:
-          addresses:
-            - 10.0.2.78/24
-    ```
-
-    This assigns a static IP of `10.0.2.78/24` to `eth1`. This also ensures that the setting persists even when the machine is rebooted.
-
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
-
-1.  Set proper permissions on the file, then apply the new Netplan configuration:
-
-    ```command
-    chmod 600 /etc/netplan/01-netcfg.yaml
-    netplan apply
-    ```
-
-1.  Check the VLAN network interface configuration again:
-
-    ```command
-    ip addr show dev eth1
-    ```
-
-    You should see the line that begins with `inet` which includes the IPAM address you specified:
-
-    ```output
-    4: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
-        link/ether 90:de:01:3c:2e:58 brd ff:ff:ff:ff:ff:ff
-        inet 10.0.2.78/24 brd 10.0.2.255 scope global eth1
-            valid_lft forever preferred_lft forever
-        inet6 fe80::92de:1ff:fe3c:2e58/64 scope link
-            valid_lft forever preferred_lft forever
-    ```
-
-#### Configure Private Instances for Intra-VLAN SSH
-
-For each of the private Linode instances (Alice, Bob, Charlie), you need to verify properly configured VLAN IPAM addresses and set the firewall (`ufw`) to allow SSH connections from within the VLAN.
-
-Because these Linode instances do not have a public IP address, you cannot connect with SSH from either your local machine or the bastion instance. You need to log in to your Akamai Cloud Manager, navigate to each Linode, and click **Launch LISH Console**.
-
-![Akamai Cloud Manager showing the Launch LISH Console option for a Linode instance.](akamai-cloud-launch-lish.png)
-
-Within the LISH Console, connect to each machine as `root`, using the password specified when creating the Linode.
-
-1.  Verify that the `eth1` VLAN interface shows the `inet` line with the expected IPAM address:
-
-    ```command {title="Alice/Bob/Charlie via LISH"}
-    ip addr show dev eth1
-    ```
-
-1.  If the output does not include the `inet` line, edit `/etc/netplan/01-netcfg.yaml`:
-
-    ```command {title="Alice/Bob/Charlie via LISH"}
-    nano /etc/netplan/01-netcfg.yaml
-    ```
-
-    Manually assign a VLAN address to `eth1`:
-
-    ```file {title="/etc/netplan/01-netcfg.yaml" lang="yaml"}
-    network:
-      version: 2
-      ethernets:
-        eth0:
-          dhcp4: true
-        eth1:
-          addresses:
-            - 10.0.1.18/24
-    ```
-
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
-
-1.  Set proper permissions on the file, then apply the new Netplan configuration.
-
-    ```command {title="Alice/Bob/Charlie via LISH"}
-    chmod 600 /etc/netplan/01-netcfg.yaml
-    netplan apply
-    ```
-
-1.  Configure `ufw` rules to deny any incoming or outgoing connections by default, but explicitly allow incoming and outgoing SSH connections within the VLAN:
-
-    ```command {title="Alice/Bob/Charlie via LISH"}
-    ufw default deny incoming
-    ufw default deny outgoing
-    ufw allow from 10.0.0.0/16 to any port 22 proto tcp
-    ufw allow out to 10.0.0.0/16 port 22 proto tcp
-    ```
-
-1.  Enable and restart `ufw`, then verify the rule setup:
-
-    ```command {title="Alice/Bob/Charlie via LISH"}
-    ufw enable
-    ufw reload
-    ufw status numbered
-    ```
-
-    ```output
-    Status: active
-
-         To                       Action      From
-         --                       ------      ----
-    [ 1] 22/tcp                   ALLOW IN    10.0.0.0/16
-    [ 2] 10.0.0.0/16 22/tcp       ALLOW OUT   Anywhere      (out)
-    ```
-
-    You can now SSH into these private Linodes from the bastion instance using the VLAN IPAM address and `root` password.
-
-1.  From within your existing SSH connection to the bastion instance, SSH into another instance, for example:
-
-    ```command {title="Bastion via SSH"}
-    ssh root@10.0.1.18
-    ```
-
-    ```output
-    root@10.0.1.18's password: ****************
-    Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.14.3-x86_64-linode168 x86_64)
-
-    ...
-    ```
-
-    Once you have successfully configured each Linode instance for SSH access from the Bastion Linode, you can close the LISH Console.
-
-After configuring each Linode instance in the VPC, you can SSH from any machine in the VPC to any other machine in the VPC.
-
-### Configure Private Instance for Outgoing Internet Access
-
-At this point, Alice and Bob are now fully configured. However, the Charlie instance requires outgoing internet access. To enable this, Charlie routed traffic through the bastion instance, which is configured to function as a NAT router.
-
-In the original GCP environment, outgoing internet access on the private subnet was controlled with VPC firewall rules. On Linode, you can instead manage this with `ufw`, using either `ufw default deny outgoing` or `ufw default allow outgoing`.
-
-#### Verify Outgoing Internet Access from Bastion Instance
-
-Establish an SSH connection to the bastion instance, then verify that it has outgoing internet access:
-
-```command {title="Bastion via SSH"}
-curl -i ifconfig.me
-```
+Including `nat_1_1:any` in the options for the VPC interface enables the assigned public IPv4 address for the Linode (e.g, `172.233.162.30`):
 
 ```output
-HTTP/1.1 200 OK
-Content-Length: 15
-access-control-allow-origin: *
-content-type: text/plain
-...
-
-172.236.243.216
+[
+  {
+    ...
+    "id": 83120114,
+    "image": "linode/ubuntu24.04",
+    "ipv4": [
+      "172.233.162.30"
+    ],
+    ...
+  }
+]
 ```
 
-{{< note >}}
-[ifconfig.me](http://ifconfig.me) is an online service that returns the IP address of the calling machine.
+Afterwards, you should have one instance with the following addresses:
+
+| Instance | VPC IP Address | VLAN IPAM Address | Public IPv4 Address |
+| -- | -- | -- | -- |
+| **Bastion** | `10.0.1.18` | `10.0.99.18/24` | `172.233.162.30` |
+
+## Connect to the Public Linode
+
+You can connect to the Bastion instance with SSH because it has a public IP address. This is the only instance you can SSH into from the public internet. From this machine, you can SSH into the other private instances in the VLAN. This matches the original AWS VPC environment.
+
+Supply the {{< placeholder "BASTION_PUBLIC_IP_ADDRESS" >}} (e.g., `172.236.243.216`) to connect with SSH and verify access to the Linode:
+
+```command
+ssh root@{{< placeholder "BASTION_PUBLIC_IP_ADDRESS" >}}
+```
+
+{{< note type="warning" >}}
+The remainder of this guide assumes commands are performed while logged in as `root`. However, you should consider [creating and using a limited `sudo` user](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) on each Linode to reduce your risk of accidentally performing damaging operations.
 {{< /note >}}
 
-#### Enable IP Forwarding on Bastion Instance
+### Enable IP Forwarding
 
-IP forwarding enables a machine to forward packets between network interfaces. To turn the bastion instance into a basic router, it must be configured to forward packets received on one interface to another. For example, between the VLAN on `eth1` and the public VPC subnet on `eth0`.
+IP forwarding enables a machine to forward packets between network interfaces. For example, between the VLAN on `eth1` and the public VPC subnet on `eth0`.
 
-1.  Modify `/etc/sysctl.conf` on the bastion instance:
+1.  From your existing SSH connection, use `nano` to modify `/etc/sysctl.conf` on the Bastion instance:
 
     ```command {title="Bastion via SSH"}
     nano /etc/sysctl.conf
     ```
 
-    Add or uncomment the following line to tell the Linux kernel to pass IPv4 packets between interfaces, enabling IP forwarding:
+    Add or uncomment the following line to enable IP forwarding:
 
     ```file {title="/etc/sysctl.conf"}
     net.ipv4.ip_forward=1
@@ -774,7 +526,7 @@ IP forwarding enables a machine to forward packets between network interfaces. T
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-1.  Reload `sysctl` to apply the new settings:
+1.  Reload `sysctl` to apply the change:
 
     ```command {title="Bastion via SSH"}
     sysctl -p /etc/sysctl.conf
@@ -784,17 +536,17 @@ IP forwarding enables a machine to forward packets between network interfaces. T
     net.ipv4.ip_forward = 1
     ```
 
-#### Configure `ufw` on Bastion Instance to Allow Packet Forwarding
+### Allow Packet Forwarding
 
-By default, `ufw` drops forwarded packets by default, so you need to change that behavior on the bastion instance.
+By default, `ufw` drops forwarded packets, so you need to change that behavior on the Bastion instance.
 
-1.  Use a command-line text editor such as `nano` to modify `/etc/default/ufw`:
+1.  Modify the `/etc/default/ufw` file:
 
     ```command {title="Bastion via SSH"}
     nano /etc/default/ufw
     ```
 
-    Locate the `DEFAULT_FORWARD_POLICY` line and change the value from `DROP` to `ACCEPT`.
+    Locate the `DEFAULT_FORWARD_POLICY` line and change the value from `DROP` to `ACCEPT`:
 
     ```file {title="/etc/default/ufw"}
     DEFAULT_FORWARD_POLICY="ACCEPT"
@@ -802,16 +554,50 @@ By default, `ufw` drops forwarded packets by default, so you need to change that
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-1.  Add `ufw` rules to allow inbound traffic from `eth1` (the VLAN) and outgoing traffic on `eth0` (the public interface):
+1.  Add `ufw` rules to allow inbound traffic from `eth1` (the VLAN), outgoing traffic on `eth0` (the public interface), and SSH everywhere:
 
     ```command {title="Bastion via SSH"}
     ufw allow in on eth1
     ufw allow out on eth0
+    ufw allow 22/tcp
+    ufw allow out to 10.0.0.0/16 port 22 proto tcp
+    ```
+
+    ```output
+    Rules updated
+    Rules updated (v6)
+    Rules updated
+    Rules updated (v6)
+    Rules updated
+    Rules updated (v6)
+    Rules updated
+    ```
+
+1.  Enable `ufw`:
+
+    ```command
+    ufw enable
+    ```
+
+    ```output
+    Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
+    ```
+
+    When prompted, press <kbd>Y</kbd> then <kbd>Enter</kbd> to proceed:
+
+    ```output
+    Firewall is active and enabled on system startup
+    ```
+
+1.  Restart `ufw` and verify the rule setup:
+
+    ```command
     ufw reload
     ufw status verbose
     ```
 
     ```output
+    Firewall reloaded
     Status: active
     Logging: on (low)
     Default: deny (incoming), allow (outgoing), allow (routed)
@@ -819,23 +605,27 @@ By default, `ufw` drops forwarded packets by default, so you need to change that
 
     To                         Action      From
     --                         ------      ----
-    22/tcp                     ALLOW IN    10.0.0.0/16
     Anywhere on eth1           ALLOW IN    Anywhere
-    10.0.0.0/16 22/tcp         ALLOW OUT   Anywhere
+    22/tcp                     ALLOW IN    Anywhere
+    Anywhere (v6) on eth1      ALLOW IN    Anywhere (v6)
+    22/tcp (v6)                ALLOW IN    Anywhere (v6)
+
     Anywhere                   ALLOW OUT   Anywhere on eth0
+    10.0.0.0/16 22/tcp         ALLOW OUT   Anywhere
+    Anywhere (v6)              ALLOW OUT   Anywhere (v6) on eth0
     ```
 
-#### Configure Bastion to Use NAT Masquerading
+### Configure NAT Masquerading
 
-NAT masquerading rewrites the source IP of packets from other machines in the VPC, replacing it with the bastion’s public IP. This allows Charlie’s traffic to reach the internet without a public IP of its own. Response packets return to the bastion instance, which maps them back to Charlie.
+NAT masquerading rewrites the source IP of packets from private instances with Bastion’s public IP, allowing them to reach the internet. Bastion then maps the return traffic back to the originating instance (e.g., Charlie).
 
-1.  On the bastion instance, edit `/etc/ufw/before.rules` to add NAT masquerading:
+1.  On the Bastion instance, edit `/etc/ufw/before.rules` to add NAT masquerading:
 
     ```command {title="Bastion via SSH"}
     nano /etc/ufw/before.rules
     ```
 
-    Near the top of the file, above the `*filter` line, add the following lines:
+    Near the top of the file, add the following lines above the `*filter` line:
 
     ```file {title="/etc/ufw/before.rules"}
     # NAT table rules
@@ -848,7 +638,7 @@ NAT masquerading rewrites the source IP of packets from other machines in the VP
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-1.  Restart ufw, then verify NAT masquerading behavior:
+1.  Restart `ufw`, then verify NAT masquerading behavior:
 
     ```command {title="Bastion via SSH"}
     ufw reload
@@ -858,81 +648,194 @@ NAT masquerading rewrites the source IP of packets from other machines in the VP
     ```output
     ...
     Chain POSTROUTING (policy ACCEPT 0 packets, 0 bytes)
-      pkts bytes target      prot opt in  out   source           destination
-         0     0 MASQUERADE  0    --  *   eth0  10.0.0.0/16      0.0.0.0/0
+     pkts bytes target      prot opt in  out   source           destination
+        0     0 MASQUERADE  0    --  *   eth0  10.0.0.0/16      0.0.0.0/0
     ```
 
-    This confirms that private subnet traffic is being masqueraded out the bastion instance's external interface (`eth0`).
+    This confirms that private subnet traffic exits via Bastion’s external interface (`eth0`).
 
-#### Configure Private Instance to Route Outgoing Traffic Through Bastion
+## Secure Firewall on Private Linodes
 
-On the private Charlie instance, set the default route to use bastion's VLAN IPAM address and configure `ufw` to allow outgoing traffic.
+Set the firewall (`ufw`) on each of the private instances (Alice, Bob, Charlie) to only allow SSH connections from within the VLAN.
 
-1.  SSH into the Charlie instance from the bastion instance:
+1.  Use your existing SSH connection to Bastion to connect to Alice (e.g., `10.0.99.18`), Bob (e.g., `10.0.99.236`), and Charlie (e.g., `10.0.99.179`) via their respective VLAN IP Addresses:
 
     ```command {title="Bastion via SSH"}
-    ssh root@{{< placeholder "CHARLIE_IP_ADDRESS" >}}
+    ssh root@VLAN_IP_ADDRESS
     ```
 
-1.  Confirm that Charlie does not currently have outgoing internet access:
+    {{< note >}}
+    If your VLAN configuration initially prevents SSH access, you can use [Lish (Linode Shell)](https://www.linode.com/docs/products/compute/compute-instances/guides/lish/) instead.
+
+    Log in to your Akamai Cloud Manager, navigate to each Linode, and click **Launch LISH Console**:
+
+    ![Akamai Cloud Manager showing the Launch LISH Console option for a Linode instance.](akamai-cloud-launch-lish.png)
+
+    Within the LISH Console, connect to the machine as `root`, using the password specified when creating the Linode.
+    {{< /note >}}
+
+1.  Configure `ufw` rules to deny all incoming and outgoing connections by default, but explicitly allow incoming and outgoing SSH connections within the VLAN:
+
+    ```command {title="Alice/Bob/Charlie via SSH from Bastion"}
+    ufw default deny incoming
+    ufw default deny outgoing
+    ufw allow from 10.0.0.0/16 to any port 22 proto tcp
+    ufw allow out to 10.0.0.0/16 port 22 proto tcp
+    ```
+
+    ```output
+    Default incoming policy changed to 'deny'
+    (be sure to update your rules accordingly)
+    Default outgoing policy changed to 'deny'
+    (be sure to update your rules accordingly)
+    Rules updated
+    Rules updated
+    ```
+
+1.  Enable `ufw`:
+
+    ```command {title="Alice/Bob/Charlie via SSH from Bastion"}
+    ufw enable
+    ```
+
+    ```output
+    Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
+    ```
+
+    When prompted, press <kbd>Y</kbd> then <kbd>Enter</kbd> to proceed:
+
+    ```output
+    Firewall is active and enabled on system startup
+    ```
+
+1.  Restart `ufw` and verify the rule setup:
+
+    ```command {title="Alice/Bob/Charlie via SSH from Bastion"}
+    ufw reload
+    ufw status numbered
+    ```
+
+    ```output
+    Firewall reloaded
+    Status: active
+
+         To                       Action      From
+         --                       ------      ----
+    [ 1] 22/tcp                   ALLOW IN    10.0.0.0/16
+    [ 2] 10.0.0.0/16 22/tcp       ALLOW OUT   Anywhere      (out)
+    ```
+
+1.  Log out and return to the Bastion instance:
+
+    ```command {title="Alice/Bob/Charlie via SSH from Bastion"}
+    exit
+    ```
+
+1.  Repeat the steps above for the Bob and Charlie instances.
+
+## Configure Charlie for Internet Access
+
+At this point, Alice and Bob are now fully configured. However, Charlie requires outgoing internet access. To enable this, Charlie routes traffic through Bastion, which is now configured to function as a NAT router.
+
+### Disable Network Helper
+
+By default, Linode’s Network Helper rewrites `systemd-networkd` configs at boot and forces a public default route (`10.0.1.1`). For Charlie to use Bastion as its gateway for public internet access, you must first disable Network Helper.
+
+1.  In the Akamai Cloud Manager, navigate to **Linodes** and click on the entry for **charlie**.
+
+1.  Click the three horizontal dots (**...**) in the upper-right corner and select **Power Off**, then choose **Power Off Linode**.
+
+1.  Once the instance reports as **Offline**, open the **Configurations** tab.
+
+1.  Click the three horizontal dots (**...**) to the right of the listed **Network Interfaces** and select **Edit**.
+
+1.  Scroll to the bottom of the window and switch the toggle next to **Auto-configure networking** to the off position, then click **Save Changes** to disable Network Helper.
+
+1.  Click the three horizontal dots (**...**) in the upper-right corner and select **Power On**, then choose **Power On Linode**.
+
+### Route Outgoing Traffic Through Bastion
+
+Set Charlie's default route to use Bastion's VLAN IPAM address and configure `ufw` to allow outgoing traffic.
+
+1.  SSH into the Charlie instance from your existing SSH connection to the Bastion instance:
+
+    ```command {title="Bastion via SSH"}
+    ssh root@{{< placeholder "CHARLIE_VLAN_IP" >}}
+    ```
+
+1.  Use `nano` to edit the `05-eth0.network` configuration file in `/etc/systemd/network/` on the Charlie instance:
 
     ```command {title="Charlie via SSH from Bastion"}
-    curl ifconfig.me
+    nano /etc/systemd/network/05-eth0.network
     ```
 
-    The above command should hang, with no response. This is expected.
+    Comment out the `Gateway` line:
 
-1.  Use a command-line text editor such as `nano` to edit the Netplan configuration file in `/etc/netplan/`:
+    ```file {title="/etc/systemd/network/05-eth0.network" hl_lines="11"}
+    [Match]
+    Name=eth0
 
-    ```command {title="Charlie via SSH from Bastion"}
-    nano /etc/netplan/01-netcfg.yaml
+    [Network]
+    DHCP=no
+    DNS=172.233.160.27 172.233.160.30 172.233.160.34
+
+    Domains=members.linode.com
+    IPv6PrivacyExtensions=false
+
+    #Gateway=10.0.1.1
+    Address=10.0.1.179/24
     ```
-
-    Edit the contents of the file to look like the following:
-
-    ```file {title="/etc/netplan/01-netcfg.yaml"}
-    network:
-      version: 2
-      ethernets:
-        eth0:
-          addresses:
-            - 10.0.1.179/24
-        eth1:
-          addresses:
-            - 10.0.2.100/24
-          nameservers:
-            addresses:
-              - 8.8.8.8
-              - 8.8.4.4
-          routes:
-            - to: 0.0.0.0/0
-              via: 10.0.2.78
-    ```
-
-    This configuration assigns Charlie two static IPs:
-
-    -   `10.0.1.179` on `eth0` to communicate with other machines in the internal subnet
-    -   `10.0.2.100` on `eth1` to route outgoing traffic through the NAT router on the bastion instance at `10.0.2.78`
-
-    By placing Charlie's default route on `eth1`, all internet-bound traffic is directed through the bastion instance, which handles NAT and forwards the traffic externally. This setup keeps internal communication and internet routing on separate interfaces, helping isolate local traffic from upstream NAT operations.
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-1.  Set proper permissions on the file, then apply the new Netplan configuration:
+1.  Now edit the edit the `05-eth1.network` configuration file:
 
     ```command {title="Charlie via SSH from Bastion"}
-    chmod 600 /etc/netplan/01-netcfg.yaml
-    netplan apply
+    nano /etc/systemd/network/05-eth1.network
     ```
 
-    Change the `ufw` rules to allow outgoing traffic, which is now routed through the bastion instance:
+    Add the following lines for `Gateway` and `DNS`:
+
+    ```file {title="/etc/systemd/network/05-eth1.network" hl_lines="11-13"}
+    [Match]
+    Name=eth1
+
+    [Network]
+    DHCP=no
+
+    Domains=members.linode.com
+    IPv6PrivacyExtensions=false
+
+    Address=10.0.99.179/24
+    Gateway=10.0.99.78
+    DNS=1.1.1.1
+    DNS=8.8.8.8
+    ```
+
+    By setting Charlie's default route on `eth1`, all internet-bound traffic goes through Bastion. This separates internal communication from external routing, isolate local traffic from NAT operations.
+
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
+1.  Restart `networkd` to apply the new configuration:
+
+    ```command {title="Charlie via SSH from Bastion"}
+    systemctl restart systemd-networkd
+    ```
+
+1.  Change the `ufw` rules to allow outgoing traffic, which is now routed through the Bastion instance:
 
     ```command {title="Charlie via SSH from Bastion"}
     ufw default allow outgoing
     ufw reload
     ```
 
-1.  Use `curl` to verify that Charlie now has outgoing access to the internet:
+    ```output
+    Default outgoing policy changed to 'allow'
+    (be sure to update your rules accordingly)
+    Firewall reloaded
+    ```
+
+1.  Use `curl` to query [ifconfig.me](http://ifconfig.me), an online service that simply returns the public IP address of the calling machine, to verify that Charlie now has outgoing internet access:
 
     ```command {title="Charlie via SSH from Bastion"}
     curl -i ifconfig.me
@@ -969,10 +872,10 @@ On the private Charlie instance, set the default route to use bastion's VLAN IPA
 
 After initial testing, continue to monitor the new environment to ensure it operates as expected.
 
-On the NAT router (bastion), check for dropped or rejected traffic using tools like `dmesg`, `journalctl`, or `iptables`. For example:
+On the NAT router (Bastion), check for dropped or rejected traffic using tools like `dmesg`, `journalctl`, or `iptables`. For example:
 
 -   `dmesg | grep -i drop` shows kernel log messages that contain the word "drop", which can surface dropped packets.
--   `journalctl -u ufw` shows `ufw` logs.
+-   `journalctl -u ufw` shows ufw logs.
 -   `journalctl -k` shows kernel messages.
 -   `iptables -t nat -L POSTROUTING -v -n` helps confirm that NAT rules such as `MASQUERADE` are being used. For example:
 
@@ -985,12 +888,12 @@ On the NAT router (bastion), check for dropped or rejected traffic using tools l
     ```output
     Chain POSTROUTING (policy ACCEPT 25 packets, 1846 bytes)
      pkts bytes target     prot opt in   out   source           destination
-      653  149K MASQUERADE  0    --  *   eth0  10.0.0.0/16      0.0.0.0/0
+     653  149K MASQUERADE  0    --  *   eth0  10.0.0.0/16      0.0.0.0/0
     ```
 
 Monitor resource usage on the NAT router to ensure it is not becoming a bottleneck. Tools like `top`, `htop`, and `iftop` can help you keep an eye on CPU, memory, and bandwidth usage.
 
-Within the Akamai Cloud Manager, you can set up monitoring and alerts for Linode compute instances:
+Within the Akamai Cloud Manager, you can set up monitoring and alerts for Linode compute instances.
 
 ![Akamai Cloud Manager monitoring dashboard for compute instances.](akamai-monitoring-dashboard.png)
 
@@ -1019,7 +922,7 @@ grep 'sshd' /var/log/auth.log
 
 Once you've verified that the Linode environment is functioning correctly, complete the migration by updating services and decommissioning the original GCP infrastructure.
 
-Update any scripts, applications, or service configurations that reference GCP-specific hostnames or IPs. If you use DNS, point records to any new Linode instances with public IPs. This helps minimize downtime and makes the transition seamless for users.
+Update any scripts, applications, or service configurations that reference GCP-specific hostnames or IPs. If you use DNS, point records to any new Linode instances with public IPs. This helps minimize downtime and makes the transition seamless to users.
 
 Check your monitoring and alerting setup. Make sure Linode compute instances are covered by any health checks or observability tools your team depends on. If you used Google Cloud Monitoring or other GCP-native tools, replace them with Linode monitoring or third-party alternatives. See [Migrating From GCP Cloud Monitoring to Prometheus and Grafana on Akamai](https://www.linode.com/docs/guides/migrating-from-gcp-cloud-monitoring-to-prometheus-and-grafana-on-akamai/) for more information.
 
