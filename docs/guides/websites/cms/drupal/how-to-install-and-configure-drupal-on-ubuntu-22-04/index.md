@@ -80,9 +80,9 @@ Before proceeding, make sure your web server has permission to interact with the
 
 This step prevents permission errors during runtime and ensures that Drupal can safely generate files, manage uploads, and interact with modules.
 
-{{< tip >}}
+{{< note >}}
 If you're using Nginx or a different web server, replace `www-data` with your actual server user (e.g., `nginx`, `apache`, or a custom service account).
-{{< /tip >}}
+{{< /note >}}
 
 To confirm ownership was updated, run this from the parent directory of `web`:
 
@@ -104,7 +104,7 @@ To check ownership of a file, run:
 
 This shows the file's owner and group.
 
-{{< tip >}}
+{{< note >}}
 
 If ownership is incorrect, rerun:
 
@@ -112,7 +112,7 @@ If ownership is incorrect, rerun:
 
 And replace `www-data` with your actual web server user if different.
 
-{{< /tip >}}
+{{< /note >}}
 
 #### Drupal Project Presence
 
@@ -275,13 +275,13 @@ This guide uses the CLI method for consistency, automation, and contributor safe
 
 If you experience silent failures during verification and need to install missing components (e.g., PHP extensions):
 
-{{< tip >}}
+{{< note >}}
 During installation, you may see a prompt like:
 
 `Do you want to continue?[Y/n]`
 
 This is a standard confirmation step. Type `Y` and press Enter to proceed. (If using a different package manager or install method, the prompt may vary slightly--but the intent is the same: confirm you want to install the listed components.)
-{{< /tip >}}
+{{< /note >}}
 
 **Installation** (Phase 2)
 
@@ -439,9 +439,9 @@ For local development, SSL is optional. For public sites it is essential.
     - Blocking directory listings
     - Enforcing clean URLs
 
-{{< tip>}}
+{{< note >}}
 If `.htaccess` rules aren't being applied, double-check `AllowOverride All` is set in your Apache config.
-{{< /tip>}}
+{{< /note >}}
 
 4. Security Checklist
     - **Database hardened** with `mysql_secure_installation`
