@@ -455,7 +455,7 @@ If `.htaccess` rules aren't being applied, double-check `AllowOverride All` is s
 
 - Legacy Bridging for Users Coming From Drupal 8
 
-Drupal 11.x expects a Composer-managed workflow. Composer is now the official and recommended method for managing Drupal core, contributed modules, and dependencies. Contributors familiar with manual installs or `.tar.gz` packages from Drupal 8 may encounter unexpected behavior. This guide assumes a Composer-first setup to ensure compatibility with modern module management and depencency resolution.
+Drupal 11.x expects Composer-managed workflow. Composer is now the official and recommended method for managing Drupal core, contributed modules, and dependencies. Contributors familiar with manual installs or `.tar.gz` packages from Drupal 8 may encounter unexpected behavior. This guide assumes a Composer-first setup to ensure compatibility with modern module management and depencency resolution.
 
 - Avoiding brittle Installs and Opaque Errors
 
