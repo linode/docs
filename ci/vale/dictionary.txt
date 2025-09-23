@@ -1764,6 +1764,7 @@ nrcpt
 ns1
 ns2
 nsd4
+NSGs
 nsinit
 nslookup
 NSoft
@@ -2815,6 +2816,8 @@ vmstat
 vmui
 vmware
 vnc
+VNet
+VNets
 VNode
 VPCs
 VPLs
