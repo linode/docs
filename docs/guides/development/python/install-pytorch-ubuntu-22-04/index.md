@@ -1,5 +1,5 @@
 ---
-slug: "pytorch-install-22-04-ubuntu"
+slug: "install-pytorch-ubuntu-22-04"
 title: "Install PyTorch on Ubuntu 22.04"
 title_meta: "How to Install PyTorch on Ubuntu 22.04"
 description: "This guide updates to the current stable version using Pip as the installation tool"
