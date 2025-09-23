@@ -48,9 +48,9 @@ Once you have taken care of prerequisties, run:
 
 After running these commands, the system prompts you for confirmation [Y/n] before upgrading to ensure you are aware of resource usage and system changes before continuing. Choose "n" to stop and remedy this situation if you don't have the required resources.
 
-{{< Note>}}
+{{< note >}}
 After confirming the upgrade, you may be prompted to restart services or resolve config file changes. These are expected so carefully read and follow the contributor-safe defaults when available.
-{{< /Note>}}
+{{< /note >}}
 
 1. Services restart
 
@@ -63,9 +63,9 @@ Next you will be prompted to select which services to restart. You can accept th
 
     If you selected *<Cancel>* the upgraded packages are still installed, but the changes won't take effect until the affected services are manually restarted or the system is rebooted.
 
-{{< Note>}}
+{{< note >}}
 Rebooting may seem like a quick fix, but it can obscure errors and delay troubleshooting. Restart services directly unless reboot is explicitly required.
-{{< /Note>}}
+{{< /note >}}
 
 If you skipped service restarts during the upgrade process, you can apply the updates manually using `systemctl`:
 
@@ -130,9 +130,9 @@ To keep your PyTorch install separate from system-wide Python packages and:
 
 You can also spin up multiple environments for different projects (e.g., PyTorch CPU-only vs. GPU-enabled), without cross-contamination. CPU-only installs are ideal for low-resource environments. Then when you are done, just delete the environment folder--no lingering packages or broken dependencies.
 
-{{< Note>}}
+{{< note >}}
 This is optional but recommended. It isolates your PyTorch install, protects system packages, and makes contributor onboarding reproducible and frustration-free.
-{{< /Note>}}
+{{< /note >}}
 
 1. Install PyTorch via pip
 
@@ -154,9 +154,9 @@ This confirms PyTorch is installed correctly when it returns something like `2.8
 
 This gives contributors immediate feedback on both install success and CUDA availability. If `torch.cuda.is_available()` returns `False`, you're running a CPU-only install--which is expected unless you've configured CUDA.
 
-{{<Note>}}
+{{< note >}}
 This guide reflects real-world troubleshooting and contributor-safe practices. If you encounter issues during install, check for conflicting Python packages, insufficient RAM, or missing dependencies.
-{{< /Note>}}
+{{< /note >}}
 
 ## Uninstalling PyTorch
 
