@@ -42,7 +42,7 @@ To install and run PyTorch comfortably, your system should have:
 
 1. Update your system
 
-Once you have taken care of prerequisties, run:
+Once you have taken care of prerequisites, run:
 
     sudo apt update && sudo apt upgrade
 
@@ -88,7 +88,7 @@ This ensures upgraded packages are used without requiring a full reboot. However
         Run a quick health check (e.g., `curl localhost:<port>` or confirm CLI tool availability).
 
 **Summary**:
-Messages like "no containers need to be restarted" or "No VM guests are running..." confirm that no action is needed in those areas. These checks are part of `needrestart` that can be ignored unless you're working in a containerized or virtualized environment. Also, some services may show "restart deferred" messages. This means they were flagged for retart but not restarted automatically. Use `sudo systemctl restart <service> if needed.
+Messages like "no containers need to be restarted" or "No VM guests are running..." confirm that no action is needed in those areas. These checks are part of `needrestart` that can be ignored unless you're working in a containerized or virtualized environment. Also, some services may show "restart deferred" messages. This means they were flagged for restart but not restarted automatically. Use `sudo systemctl restart <service> if needed.
 
 If the service fails to restart or behaves unexpectedly, see Troubleshooting: [Restart Response for edge-case handling](guides\development\python\pytorch-install-2-8-0-ubuntu\index.md\#restart-ts).
 
@@ -166,7 +166,7 @@ Whether you're switching builds, cleaning up an environment, or troubleshooting 
 
     pip uninstall torch torchvision torchaudio
 
-If you are dealing with uninstalling PyTorch that was installed outside a virtual environment these instructions still work, but may affect other projects or scripts that rely on PyTorch globally (you might need `sudo` and elevated permissions depending on how it was installed). For help, under these circumstances, with safe uninstall practices see [Markaicode's Complete Guide to Uninstally PyTorch](https://markaicode.com/how-to-uninstall-pytorch-complete-guide-for-all-systems/).
+If you are dealing with uninstalling PyTorch that was installed outside a virtual environment these instructions still work, but may affect other projects or scripts that rely on PyTorch globally (you might need `sudo` and elevated permissions depending on how it was installed). For help, under these circumstances, with safe uninstall practices see [Markaicode's Complete Guide to Uninstall PyTorch](https://markaicode.com/how-to-uninstall-pytorch-complete-guide-for-all-systems/).
 
 ## Troubleshooting Tips
 
