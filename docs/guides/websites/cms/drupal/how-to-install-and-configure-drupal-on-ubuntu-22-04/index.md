@@ -363,7 +363,7 @@ This activates `mod_rewrite` and restarts Apache to apply the change.
 
 Success is achieved if there is no error output and Apache restarts cleanly.
 
-If you see an error like `Module rewrite already enabled`, it's safe to proceed--Apache is alrady configured for clean URLs.
+If you see an error like `Module rewrite already enabled`, it's safe to proceed--Apache is already configured for clean URLs.
 
 ## Local Testing Setup
 
