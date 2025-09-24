@@ -7,7 +7,7 @@ authors: ["Diana Hoober"]
 contributors: ["Diana Hoober"]
 published: 2025-09-30
 modified: 2025-09-30
-keywords: ["Drupal", "Ubuntu 22.04", "CMS", "installation", "contributor-safe", "Composer"]
+keywords: ["Drupal", "Ubuntu 22.04", "installation", "contributor-safe", "Composer"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)"
 ---
 
