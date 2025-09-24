@@ -11,11 +11,11 @@ keywords: ["Drupal", "Ubuntu 22.04", "installation", "contributor-safe", "Compos
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)"
 ---
 
-Drupal is a flexible content management system (CMS) designed for structured content and scalable site architecture. While it runs well in many hosting environments, Akamai’s compute instance offers a particularly strong foundation for high-traffic, content-rich deployments. This guide walks through installing and configuring Drupal 11 on Ubuntu 22.04 with systems-aware practices and contributor-safe steps that hold up in real-world scenarios.
+Drupal is a flexible content management system (CMS) designed for structured content and scalable site architecture. While it runs well in many hosting environments, Akamai’s compute instance provides a resilient foundation for high-traffic, content-rich deployments. This guide walks through installing and configuring Drupal 11 on Ubuntu 22.04 with systems-aware practices and contributor-safe steps that hold up in real-world scenarios.
 
 ## Before You Begin
 
-This guide uses Drupal 11.1.8 to avoid known packaging issues in newer releases--specifically a syntax error in `drupal/core-recipe-unpack` introduced in 11.2.x (see [Drupal issue #3536487](https://www.drupal.org/project/drupal/issues/3536487)). You'll install the stable version later using Composer. First, we'll walk through prerequisites, setup and verification to ensure a reliable install, then move into installing Drupal.
+This guide uses Drupal 11.1.8 to avoid known packaging issues in newer releases. Specifically a syntax error in `drupal/core-recipe-unpack` introduced in 11.2.x (see [Drupal issue #3536487](https://www.drupal.org/project/drupal/issues/3536487)). You'll install the stable version later using Composer after verifying system prerequisites.
 
 ## System Prerequisites
 
@@ -69,9 +69,9 @@ To verify installation:
 
     composer --version
 
-You should see output like `Composer version 2.7.0 or higher.
+You should see output like `Composer version 2.7.0` or higher.
 
-If the command fails, see [Composer Installation - Manual Download](https://getcomposer.org/doc/00-intro.md#manual-installation).
+If the command fails, see [Composer Installation - Manual Download](https://getcomposer.org/doc/00-intro.md#manual-installation) for fallback steps.
 
 #### Verify the Web Server
 
@@ -89,7 +89,7 @@ To confirm ownership was updated, run this from the parent directory of `web`:
 
     ls -ld web
 
-This shows you the ownership and permission of the `web` directory itself:
+This confirms the ownership and permissions of the `web` directory:
 
     drwxr-xr-x 7 www-data -www-data 4096 Sep 16 22:28 web
 
@@ -99,7 +99,7 @@ This means:
 - `www-data` is also the group
 - The permissions are `drwxr-xr-x` (read/write/execute for owner, read/execute for group and others.)
 
-To check ownership of a file, run:
+To verify ownership of individual files, run:
 
     ls -l path/to/your/file (e.g., 'ls -l web/index.php')
 
