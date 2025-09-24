@@ -132,15 +132,6 @@ Contributor-Safe Tips
 - Be sure to consider mentioning file permissions if they are relevant to your environment (e.g., `chmod`, `chown`).
 - If `vendor/` is missing but `composer.json` is present, run `composer install`.
 
-If all checks pass, your infrastructure is ready for Drupal initialization and configuration.
-
-If `vendor/` is missing but `composer.json` is present, run:
-
-    composer install
-
-- This installs required dependencies and generates the `vendor/` directory.
-- If file permissions are relevant to your environment (e.g., restrictive umask settings or shared hosting), consider verifying ownership and access using `chmod` and `chown`.
-
 If at this point all checks pass the infrastructure is ready for Drupal initialization and configuration.
 
 ## Create Project Structure
