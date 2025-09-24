@@ -143,19 +143,19 @@ If `vendor/` is missing but `composer.json` is present, run:
 
 If at this point all checks pass the infrastructure is ready for Drupal initialization and configuration.
 
-## Initialize the Drupal Application Environment
-
-After running the `composer create-project` command, your environment should now include the core Drupal files and folder structure (`composer.json`, `web/index.php`, and `vendor/`). This phase was validated and confirms that setup succeeded, prepares optional configuration scaffolding, and gets the application ready for site installation.
-
 ## Create Project Structure
 
 Creating the project structure sets up Drupal for modular development and secure deployment.
 
 This step separates application logic from public content, making updates easier to manage and reducing security risks.
 
-{{< note >}}
-This guide was validated using Drupal 11.1.8 as noted earlier.
-{{< /note >}}
+After you run the `composer create-project` command below, your environment will include the core Drupal files and folder structure:
+
+- `composer.json`
+- `web/index.php`
+- `vendor/`.
+
+This confirms that setup succeeded, prepares optional configuration scaffolding, and gets the application ready for site installation. *This guide was validated using Drupal 11.1.8 as noted earlier.*
 
 ### Create the Drupal Project Structure
 
@@ -164,9 +164,9 @@ directory layout details, see [Drupal.org's Directory Structure guide](https://w
 
     composer create-project drupal/recommended-project:11.1.8 my_drupal_site
 
--Then change to the project folder:
+-Then change to your project folder (removing the <> symbols and replacing with your folder name):
 
-    cd my_drupal_site
+    cd <my_drupal_site>
 
 - Inside the scaffolded project folder `my_drupal_site`, confirm the environment after installation with:
 
