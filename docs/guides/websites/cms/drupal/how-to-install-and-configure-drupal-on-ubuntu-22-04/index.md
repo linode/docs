@@ -462,7 +462,7 @@ Drush streamlines tasks like site installation, cache clearing, and module manag
 If you see errors about missing Symfony classes or autoloading failures, double-check that:
 
     - You're inside the correct project folder (with `composer.json`, `vendor/`, and `web/`).
-    - Drush is intalled locally--not globally or in `/root/vendor`.
+    - Drush is installed locally--not globally or in `/root/vendor`.
     - You're not running Drush from outside the project root.
 
 To confirm you're in the right place, look for:
