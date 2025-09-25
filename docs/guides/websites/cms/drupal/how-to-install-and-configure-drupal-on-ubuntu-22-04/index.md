@@ -482,7 +482,7 @@ Your Drupal environment is now scaffolded, validated, and ready for customizatio
 
 - Explore the Official [Drupal Documentation](https://www.drupal.org/documentation) for guidance on modules, configuration, and site building.
 
-- Get into theme development: create or install themes to control layout and styling. Browse the [Drupal Themes Directory](https://www.drupal.org/project/project_theme) to see hat's possible.
+- Get into theme development: create or install themes to control layout and styling. Browse the [Drupal Themes Directory](https://www.drupal.org/project/project_theme) to see what's possible.
 
 To see inspiring real-world [Drupal Websites](https://htmlburger.com/blog/drupal-websites-examples/) explore how others have extended and styled their sites.
 
