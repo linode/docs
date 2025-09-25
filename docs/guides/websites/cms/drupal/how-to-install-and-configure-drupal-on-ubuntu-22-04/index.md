@@ -5,8 +5,8 @@ title_meta: "How to Install and Configure Drupal on Ubuntu 22.04"
 description: "Step-by-step guide for installing Drupal on Ubuntu 22.04 with contributor-safe practices"
 authors: ["Diana Hoober"]
 contributors: ["Diana Hoober"]
-published: 2025-09-30
-modified: 2025-09-30
+published: 2025-09-25
+modified: 2025-09-25
 keywords: ["Drupal", "Ubuntu 22.04", "installation", "contributor-safe", "Composer"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)"
 ---
