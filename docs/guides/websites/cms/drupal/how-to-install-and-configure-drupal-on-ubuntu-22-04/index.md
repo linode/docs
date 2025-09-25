@@ -478,7 +478,7 @@ You can find additional information on [Drupal's Composer guide](https://www.dru
 
 ## Conclusion: What Comes Next
 
-Your Drupal environment is now scaffolded, validated, and ready for customization. From here, you can begin shaping your site:
+Your Drupal environment is now structured, validated, and ready for customization. From here, you can begin shaping your site:
 
 - Explore the Official [Drupal Documentation](https://www.drupal.org/documentation) for guidance on modules, configuration, and site building.
 
