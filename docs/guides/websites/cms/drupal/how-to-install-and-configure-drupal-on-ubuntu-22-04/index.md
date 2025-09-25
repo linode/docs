@@ -1,5 +1,5 @@
 ---
-slug: "how-to-install-and-configure-drupal-on-ubuntu-22-04"
+slug: how-to-install-and-configure-drupal-on-ubuntu-22-04
 title: "How to Install and Configure Drupal on Ubuntu 22.04"
 title_meta: "How to Install and Configure Drupal on Ubuntu 22.04"
 description: "Step-by-step guide for installing Drupal on Ubuntu 22.04 with contributor-safe practices"
