@@ -338,6 +338,7 @@ clickboard
 clickjacking
 client1
 client2
+clientless
 CLIs
 clojure
 cloudant
