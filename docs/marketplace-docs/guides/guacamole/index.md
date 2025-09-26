@@ -1,6 +1,6 @@
 ---
 title: "Deploy Apache Guacamole through the Linode Marketplace"
-description: "Deploy Apache Guacamole, a clientless remote desktop gateway supporting VNC, RDP, and SSH protocols through a web browser, on an Akamai Compute Instance."
+description: "Deploy Apache Guacamole, a clientless remote desktop gateway that supports VNC, RDP, and SSH protocols through a web browser, on an Akamai Compute Instance."
 published: 2020-12-11
 modified: 2025-09-04
 keywords: ['guacamole', 'marketplace', 'remote desktop']
@@ -34,7 +34,7 @@ marketplace_app_name: "Apache Guacamole"
 
 ### Guacamole Options
 
-- **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
+- **Email address** *(required)*: Enter a valid email address to use for generating the SSL certificates.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
@@ -48,13 +48,13 @@ marketplace_app_name: "Apache Guacamole"
 
 1.  Open your web browser and navigate to `https://[domain]`, where *[domain]* is the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). To learn more about viewing IP addresses and rDNS, see the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/).
 
-2.  You will see the Apache Guacamole login page. Log in using the default credentials:
+2.  You should see the Apache Guacamole login page. Log in using the default credentials:
     - **Username:** `guacadmin`
-    - **Password:** The password is automatically generated and stored in the credentials file. To retrieve it, log in to your Compute Instance via SSH or Lish and run:
+    - **Password:** The password is automatically generated and stored in the credentials file. To retrieve it, log in to your Compute Instance via SSH or Lish and run the below `cat` command:
         ```command
         cat /home/$USER/.credentials
         ```
 
-You're now logged in to the Guacamole Web Interface. This is your central dashboard where you can create connections, and manage user accounts and permissions.
+After logging in, you are brought to the Guacamole Web Interface. This is your central dashboard where you can create connections, and manage user accounts and permissions.
 
 {{% content "marketplace-update-note-shortguide" %}}
