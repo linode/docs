@@ -153,10 +153,10 @@ These files confirm that setup succeeded, prepare optional configuration scaffol
 
 ### Create the Drupal Project Structure
 
-- Run the install command to generate the Drupal 11.1.8 structure. Replace `my_drupal_site` with your desired folder name. For directory layout details, see [Drupal.org's Directory Structure guide](https://www.drupal.org/docs/getting-started/understanding-drupal/directory-structure).
+- Run the install command to generate the Drupal 11.1.8 structure. Replace `my-drupal-site` with your desired folder name. For directory layout details, see [Drupal.org's Directory Structure guide](https://www.drupal.org/docs/getting-started/understanding-drupal/directory-structure).
 directory layout details, see [Drupal.org's Directory Structure guide](https://www.drupal.org/docs/getting-started/understanding-drupal/directory-structure).
 
-    composer create-project drupal/recommended-project:11.1.8 my_drupal_site
+    composer create-project drupal/recommended-project:11.1.8 my-drupal-site
 
 -Change to your project folder (remove the angle brackets (<>) and use your actual folder name):
 
