@@ -153,7 +153,7 @@ These files confirm that setup succeeded, prepare optional configuration scaffol
 
 ### Create the Drupal Project Structure
 
-- Run the install command to generate the Drupal 11.1.8 structure. Replace "my_drupal_site" with your desired folder name. For directory layout details, see [Drupal.org's Directory Structure guide](https://www.drupal.org/docs/getting-started/understanding-drupal/directory-structure).
+- Run the install command to generate the Drupal 11.1.8 structure. Replace `my_drupal_site` with your desired folder name. For directory layout details, see [Drupal.org's Directory Structure guide](https://www.drupal.org/docs/getting-started/understanding-drupal/directory-structure).
 directory layout details, see [Drupal.org's Directory Structure guide](https://www.drupal.org/docs/getting-started/understanding-drupal/directory-structure).
 
     composer create-project drupal/recommended-project:11.1.8 my_drupal_site
@@ -218,31 +218,40 @@ Use your actual web server for `www-data`. A writable `files` directory allows D
 
 Before installing Drupal, follow the official guide to create a database and user: [Database Configuration](https://www.drupal.org/docs/drupal-apis/database-api/database-configuration).
 
-- Once complete, confirm access with a contributor-safe check:
+1.  Once complete, confirm access with a contributor-safe check:
 
+    ```command
     mysql -u drupal_user -p -h localhost drupal_db
+    ```
 
-Replace `drupaluser` and `drubaldb` with your database username and name. You should be able to enter the MariaDB shell without errors.
-Confirm that your database uses `utf8mb4` encoding:
+    Replace `drupaluser` and `drubaldb` with your database username and name. You should be able to enter the MariaDB shell without errors.
 
+1.  Confirm that your database uses `utf8mb4` encoding:
+
+    ```command
     SHOW CREATE DATABASE drupal_db;
+    ```
 
-- Look for `CHARACTER SET utf8mb4`. Your credentials match what you'll enter in `settings.php`:
+1.  Look for `CHARACTER SET utf8mb4`. Your credentials match what you'll enter in `settings.php`:
 
-$databases['default']['default'] = [
+    ```file
+    $databases['default']['default'] = [
 
-    'driver' => 'mysql',
-    'database' => 'drupal_db',
-    'username' => 'drupal_user',
-    'password' => 'your_secure_password',
-    'host' => 'localhost',
-    ];
+        'driver' => 'mysql',
+        'database' => 'drupal_db',
+        'username' => 'drupal_user',
+        'password' => 'your_secure_password',
+        'host' => 'localhost',
+        ];
+    ```
 
-- This configuration is located in `sites/default/settings.php`.
+    This configuration is located in `sites/default/settings.php`.
 
-- During setup you may need to temporarily relax file permissions:
+1.  During setup you may need to temporarily relax file permissions:
 
+    ```command
     chmod 664 sites/default/settings.php
+    ```
 
 Common Errors and Fixes
 
@@ -266,7 +275,7 @@ This guide uses the command-line method for consistency, automation, and contrib
 | **Check**               | **Purpose**                              | **Command**                                                | **Expected Output**                                   | **If Output Differs**                                      | 🔗 **Further Info** |
 |------------------------|------------------------------------------|------------------------------------------------------------|--------------------------------------------------------|------------------------------------------------------------|---------------------|
 | PHP Version            | Ensure PHP 8.1+ is installed              | `php -v`                                                   | `PHP 8.1.2-` or higher                      | Upgrade PHP or switch environments                          | [PHP Docs](https://www.php.net/manual/en/) |
-| Required Extensions    | Confirm required PHP modules              | php -m \| grep -E 'pdo|mbstring|xml|json|ctype|tokenizer|curl|openssl|zip' | All listed extensions appear                          | Install missing modules via `apt`, `dnf`, or `brew`         | [Drupal Requirements](https://www.drupal.org/docs/system-requirements) |
+| Required Extensions    | Confirm required PHP modules              | `php -m \| grep -E 'pdo\|mbstring\|xml\|json\|ctype\|tokenizer\|curl\|openssl\|zip'` | All listed extensions appear                          | Install missing modules via `apt`, `dnf`, or `brew`         | [Drupal Requirements](https://www.drupal.org/docs/system-requirements) |
 | Composer Health Check  | Validate Composer setup                   | `composer diagnose`                                        | All checks return `OK` or `WARNING` (non-blocking)     | Type `yes` if prompted about root; note any warnings*         | [Composer Docs](https://getcomposer.org/doc/) |
 | Composer Version       | Ensure Composer 2.x is installed          | `composer --version`                                       | `Composer version 2.x.x`                              | Upgrade Composer if version is < 2                          | [Composer Install Guide](https://getcomposer.org/download/) |
 
@@ -295,7 +304,7 @@ Composer and PHP should already be installed and working. See Phase 1 for enviro
 | Validate Drush         | Confirm Drush is working                 | `vendor/bin/drush --version`                              | `Drush version 11.5.1` or similar                      | Rerun install or check PHP/Composer compatibility**** | [Drush Troubleshooting](https://www.drush.org/latest/install/#troubleshooting) |
 | Optional Global Install| Make Drush available system-wide         | Download `drush.phar`, then run:
  `chmod +x drush.phar` and `mv drush.phar /usr/local/bin/drush`
-  `drush --version` | `Drush version 11.5.1` from global path     | Recheck permissions or path if not executable             | [Drush Phar Install](https://github.com/drush-ops/drush/releases) |
+  `drush --version` | `Drush version 11.5.1` from global path     | Recheck permissions or path if not executable             | [Drush `.phar` Install](https://github.com/drush-ops/drush/releases) |
 
 * Confirm `composer.json` is writable and not locked by another process.
 ** Make sure your PHP version meets Drush’s minimum requirement (PHP 8.1+ for Drush 11.x).
