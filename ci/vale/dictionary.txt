@@ -429,6 +429,7 @@ createdt
 createfromstackscript
 crewless
 cri
+Cribl
 CRM
 CRMs
 cron
@@ -2343,6 +2344,7 @@ shotcut
 shoutcast
 shutil
 sidekiq
+SIEMs
 sievers
 signup
 Simula
