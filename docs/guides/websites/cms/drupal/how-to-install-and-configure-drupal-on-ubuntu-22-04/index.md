@@ -117,14 +117,14 @@ And replace `www-data` with your actual web server user if different.
 
 #### Drupal Project Presence
 
-To confirm the project was scaffolded correctly, verify the presence of key files and directories:
+To confirm the project was structured correctly, verify the presence of key files and directories:
 
     ls composer.json
     ls web/index.php
     ls -d vendor/
 
 {{< note >}}
-If any of these files are missing, Drupal has not been initialized. See the Initialize the Drupal Application Environment section to scaffold the project using Composer.
+If any of these files are missing, Drupal has not been initialized. See the [Create the Drupal Project Structure](#create-the-drupal-project-structure) to scaffold the project using Composer.
 {{< /note >}}
 
 Contributor-Safe Tips
@@ -259,11 +259,12 @@ This guide uses the CLI method for consistency, automation, and contributor safe
 | **Check**               | **Purpose**                              | **Command**                                                | **Expected Output**                                   | **If Output Differs**                                      | 🔗 **Further Info** |
 |------------------------|------------------------------------------|------------------------------------------------------------|--------------------------------------------------------|------------------------------------------------------------|---------------------|
 | PHP Version            | Ensure PHP 8.1+ is installed              | `php -v`                                                   | `PHP 8.1.2-` or higher                      | Upgrade PHP or switch environments                          | [PHP Docs](https://www.php.net/manual/en/) |
-| Required Extensions    | Confirm required PHP modules              | php -m | grep -E 'pdo|mbstring|xml|json|ctype|tokenizer|curl|openssl|zip' | All listed extensions appear                          | Install missing modules via `apt`, `dnf`, or `brew`         | [Drupal Requirements](https://www.drupal.org/docs/system-requirements) |
+| Required Extensions    | Confirm required PHP modules              | See command below** | All listed extensions appear                          | Install missing modules via `apt`, `dnf`, or `brew`         | [Drupal Requirements](https://www.drupal.org/docs/system-requirements) |
 | Composer Health Check  | Validate Composer setup                   | `composer diagnose`                                        | All checks return `OK` or `WARNING` (non-blocking)     | Type `yes` if prompted about root; note any warnings*         | [Composer Docs](https://getcomposer.org/doc/) |
 | Composer Version       | Ensure Composer 2.x is installed          | `composer --version`                                       | `Composer version 2.x.x`                              | Upgrade Composer if version is < 2                          | [Composer Install Guide](https://getcomposer.org/download/) |
 
 * Running Composer as root is discouraged. Safe for local testing, but avoid in production.
+** php -m | grep -E 'pdo|mbstring|xml|json|ctype|tokenizer|curl|openssl|gd|dom|simplexml|zip'
 
 If you experience silent failures during verification and need to install missing components (e.g., PHP extensions):
 
@@ -285,7 +286,7 @@ Composer and PHP should already be installed and working. See Phase 1 for enviro
 |------------------------|------------------------------------------|------------------------------------------------------------|--------------------------------------------------------|------------------------------------------------------------|---------------------|
 | Create Project         | Scaffold Drupal site                     | `composer create-project drupal/recommended-project mysite` | `mysite` folder created with Drupal scaffold           | Rename or delete existing folder before retry              | [Drupal Install Guide](https://www.drupal.org/docs/installing-drupal) |
 | Install Drush (local)  | Add Drush to project via Composer        | `composer require drush/drush:11.5.1`                      | Drush installed in `vendor/bin/`                       | If error, check Composer version or package constraints*, **, ***     | [Drush Docs](https://www.drush.org/latest/install/) |
-| Validate Drush         | Confirm Drush is working                 | `vendor/bin/drush --version`                              | `Drush version 11.5.1` or similar                      | If error, rerun install or check PHP/Composer compatibility**** | [Drush Troubleshooting](https://www.drush.org/latest/install/#troubleshooting) |
+| Validate Drush         | Confirm Drush is working                 | `vendor/bin/drush --version`                              | `Drush version 11.5.1` or similar                      | If error, rerun install or check PHP/Composer compatibility**** |  |
 | Optional Global Install| Make Drush available system-wide         | Download `drush.phar`, then run:
  `chmod +x drush.phar` and `mv drush.phar /usr/local/bin/drush`
   `drush --version` | `Drush version 11.5.1` from global path     | If not executable, recheck permissions or path             | [Drush Phar Install](https://github.com/drush-ops/drush/releases) |
@@ -346,9 +347,8 @@ Apache is assumed to be installed and running. This section focuses on enabling 
 
 Drupal uses clean URLs, which depend on Apache’s rewrite module. Enable it with:
 
-sudo a2enmod rewrite
-
-sudo systemctl restart apache2
+    sudo a2enmod rewrite
+    sudo systemctl restart apache2
 
 This activates `mod_rewrite` and restarts Apache to apply the change.
 
@@ -371,13 +371,12 @@ Before continuing, confirm that your local environment is serving the Drupal sit
 
 ---
 
-### Line-by-Line Walkthrough
+#### Line-by-Line Walkthrough
 
 **1. Add an entry to `/etc/hosts`**
 
 This maps `drupal.local` to your local machine:
 
-```
 127.0.0.1 drupal.local
 
 ## Security and Optimization
@@ -459,16 +458,17 @@ Drush streamlines tasks like site installation, cache clearing, and module manag
 
     ./vendor/bin/drush/status
 
-If you see errors about missing Symfony classes or autoloading failures, double-check that:
+If you see errors about missing Symfony classes or auto-loading failures, double-check that:
 
     - You're inside the correct project folder (with `composer.json`, `vendor/`, and `web/`).
-    - Drush is intalled locally--not globally or in `/root/vendor`.
+    - Drush is installed locally--not globally or in `/root/vendor`.
     - You're not running Drush from outside the project root.
 
 To confirm you're in the right place, look for:
 
     ls
-    # Should include: composer.json, vendor/, web/
+
+This should list: composer.json, vendor/, web/
 
 ### Contributor-Safe References
 
@@ -485,4 +485,3 @@ Your Drupal environment is now scaffolded, validated, and ready for customizatio
 - Get into theme development: create or install themes to control layout and styling. Browse the [Drupal Themes Directory](https://www.drupal.org/project/project_theme) to see hat's possible.
 
 To see inspiring real-world [Drupal Websites](https://htmlburger.com/blog/drupal-websites-examples/) explore how others have extended and styled their sites.
-
