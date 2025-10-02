@@ -288,15 +288,13 @@ This guide uses the command-line method for consistency, automation, and contrib
 
 | **Check**               | **Purpose**                              | **Command**                                                | **Expected Output**                                   | **If Output Differs**                                      | 🔗 **Further Info** |
 |------------------------|------------------------------------------|------------------------------------------------------------|--------------------------------------------------------|------------------------------------------------------------|---------------------|
-| PHP Version            | Ensure PHP 8.1+ is installed              | `php -v`                                                   | `PHP 8.1.2-` or higher                      | Upgrade PHP or switch environments                          | [PHP Docs](https://www.php.net/manual/en/) |
-<<<<<<< HEAD
-| Required Extensions    | Confirm required PHP modules              | See command below* | All listed extensions appear                          | Install missing modules via `apt`, `dnf`, or `brew`         | [Drupal Requirements](https://www.drupal.org/docs/system-requirements) |
-| Composer Health Check  | Validate Composer setup                   | `composer diagnose`                                        | All checks return `OK` or `WARNING` (non-blocking)     | Type `yes` if prompted about root; note any warnings**         | [Composer Docs](https://getcomposer.org/doc/) |
+| PHP Version            | Ensure PHP 8.1+ is installed              | `php -v`                                                   | `PHP 8.1.2` or higher                                  | Upgrade PHP or switch environments                          | [PHP Docs](https://www.php.net/manual/en/) |
+| Required Extensions[^exts] | Confirm required PHP modules              | See command below                                          | All listed extensions appear                          | Install missing modules via `apt`, `dnf`, or `brew`         | [Drupal Requirements](https://www.drupal.org/docs/system-requirements) |
+| Composer Health Check[^root] | Validate Composer setup                   | `composer diagnose`                                        | All checks return `OK` or `WARNING` (non-blocking)     | Type `yes` if prompted about root; note any warnings         | [Composer Docs](https://getcomposer.org/doc/) |
 | Composer Version       | Ensure Composer 2.x is installed          | `composer --version`                                       | `Composer version 2.x.x`                              | Upgrade Composer if version is < 2                          | [Composer Install Guide](https://getcomposer.org/download/) |
----
 
-[^*] php -m | grep -E 'pdo|mbstring|xml|json|ctype|tokenizer|curl|openssl|gd|dom|simplexml|zip'
-[^**] Running Composer as root is discouraged. Safe for local testing, but avoid in production.
+[^exts]: Run `php -m | grep -E 'pdo|mbstring|xml|json|ctype|tokenizer|curl|openssl|gd|dom|simplexml|zip'` to confirm required extensions.
+[^root]: Running Composer as root is discouraged. Safe for local testing, but avoid in production.
 
 If you experience silent failures during verification and need to install missing components (e.g., PHP extensions):
 
@@ -316,16 +314,18 @@ Composer and PHP should already be installed and working. See Phase 1 for enviro
 
 | **Step**               | **Purpose**                              | **Command**                                                | **Expected Output**                                   | **If Output Differs**                                      | 🔗 **Further Info** |
 |------------------------|------------------------------------------|------------------------------------------------------------|--------------------------------------------------------|------------------------------------------------------------|---------------------|
-| Create Project         | Set up Drupal starter template                     | `composer` | `mysite` folder created with Drupal structure | Rename or delete existing folder before retry              | [Drupal Install Guide](https://www.drupal.org/docs/installing-drupal) |
-| Install Drush (local)  | Add Drush to project via Composer        | `composer require drush/drush:11.5.1`                      | Drush installed in `vendor/bin/`                       | If error, check Composer version or package constraints*, **, ***     | [Drush Docs](https://www.drush.org/latest/install/) |
-| Validate Drush         | Confirm Drush is working                 | `vendor/bin/drush --version`                              | `Drush version 11.5.1` or similar                      | If error, rerun install or check PHP/Composer compatibility**** |  |
----
+| Create Project         | Set up Drupal starter template           | `composer`                                                 | `mysite` folder created with Drupal structure          | Rename or delete existing folder before retry              | [Drupal Install Guide](https://www.drupal.org/docs/installing-drupal) |
+| Install Drush (local)[^drush-install] | Add Drush to project via Composer        | `composer require drush/drush:11.5.1`                      | Drush installed in `vendor/bin/`                       | If error, check Composer version or package constraints     | [Drush Docs](https://www.drush.org/latest/install/) |
+| Validate Drush[^drush-validate] | Confirm Drush is working                 | `vendor/bin/drush --version`                              | `Drush version 11.5.1` or similar                      | If error, rerun install or check PHP/Composer compatibility | [Drush Usage Guide](https://www.drush.org/latest/usage/) |
 
-[^*] Confirm `composer.json` is writable and not locked by another process.
-[^**] Make sure your PHP version meets Drush’s minimum requirement (PHP 8.1+ for Drush 11.x).
-[^***] If you see a memory error, try:
-`COMPOSER_MEMORY_LIMIT=-1 composer require drush/drush:11.5.1`.
-[^****] If Drush throws a `NotFoundHttpException`, it was likely run outside a valid Drupal project root. Navigate to the directory containing `composer.json` before running Drush commands. See: [Drush Usage Guide](https://www.drush.org/latest/usage/) for valid command contexts.
+[^drush-install]:
+- Confirm `composer.json` is writable and not locked by another process.
+- Make sure your PHP version meets Drush’s minimum requirement (PHP 8.1+ for Drush 11.x).
+- If you see a memory error, try:
+  `COMPOSER_MEMORY_LIMIT=-1 composer require drush/drush:11.5.1`
+
+[^drush-validate]:
+If Drush throws a `NotFoundHttpException`, it was likely run outside a valid Drupal project root. Navigate to the directory containing `composer.json` before running Drush commands. See: [Drush Usage Guide](https://www.drush.org/latest/usage/) for valid command contexts.
 
 **Post-Install Validation** (Phase 3)
 
@@ -492,25 +492,31 @@ Composer tracks dependencies explicitly, reducing the risk of missing extensions
 
 **Encouraging use of Drush for Command-Line Efficiency**
 
-Drush streamlines tasks like site installation, cache clearing, and module management. Once installed via Composer, it becomes available in the project’s `/vendor/bin` directory. Run Drush from you project directory:
+Drush streamlines tasks like site installation, cache clearing, and module management. Once installed via Composer, it becomes available in the project’s `/vendor/bin` directory.Check Drush status:
 
 ```
     ./vendor/bin/drush/status
 ```
 
-If you see errors about missing Symfony classes or auto-loading failures, double-check that:
+If you get errors like missing "Symfony" classes or auto-load failures, check that you're in the correct project folder containing:
 
-    - You're inside the correct project folder (with `composer.json`, `vendor/`, and `web/`).
-    - Drush is installed locally--not globally or in `/root/vendor`.
-    - You're not running Drush from outside the project root.
+```
+    `composer.json`, `vendor/`, and `web/`
+```
 
-To confirm you're in the right place, look for:
+- Drush is installed locally--not globally in `vendor/`.
+- You're running Drush from the project root--not from a parent or nested directory.
+
+To confirm you're in the right directory, run:
 
 ```
     ls
 ```
 
-This should list: composer.json, vendor/, web/
+Expected output:
+```
+    composer.json, vendor/, web/
+```
 
 ### Contributor-Safe References
 
