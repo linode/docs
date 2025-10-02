@@ -213,7 +213,7 @@ If you skip this step and Drupal can't write to the file, the installer will fai
 
 ### Create the Files Directory
 
-Drupal uses a writable `files` directory to store uploaded content, temporary files, and other runtime assets. From your project root (`my_drupal_site`) run:
+Drupal uses a writable `files` directory to store uploaded content, temporary files, and other runtime assets. From your project root ({{< placeholder "my_drupal_site" >}}) run:
 
     mkdir -p web/sites/default/files
     chmod 755 web/sites/default/files
@@ -343,7 +343,7 @@ Once your project structure is in place and Drush is installed, you can launch t
 
 | **Method**              | **Purpose**                              | **Action / Command**                                       | **Expected Result**                                   | **If Output Differs**                                      | 🔗 **Further Info** |
 |-------------------------|------------------------------------------|------------------------------------------------------------|--------------------------------------------------------|------------------------------------------------------------|---------------------|
-| Browser-based install   | Begin visual site setup via browser      | Visit `http://localhost:8888` or `http://localhost/my_drupal_site/web` | Drupal installer page loads                            | Confirm PHP server is running, and `web/` folder exists   | [Drupal Installer Guide](https://www.drupal.org/docs/installing-drupal) |
+| Browser-based install   | Begin visual site setup via browser      | Visit `http://localhost:8888` or `http://localhost/{{< placeholder "my_drupal_site" >}}/web` | Drupal installer page loads                            | Confirm PHP server is running, and `web/` folder exists   | [Drupal Installer Guide](https://www.drupal.org/docs/installing-drupal) |
 | CLI-based install       | Install Drupal via Drush                 | `vendor/bin/drush site:install`                            | Site installed with default config                     | Confirm database access, Drush version, and PHP compatibility | [Drush Site Install](https://www.drush.org/latest/commands/site-install/) |
 ---
 
