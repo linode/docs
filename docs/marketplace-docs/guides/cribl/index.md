@@ -1,7 +1,7 @@
 ---
 title: "Deploy Cribl Stream through the Linode Marketplace"
 description: "Deploy Cribl Stream for data routing, shaping, and observability pipeline management"
-published: 2025-08-13
+published: 2025-10-03
 keywords: ['cribl', 'stream', 'observability', 'log routing', 'data pipeline']
 tags: ["ubuntu", "marketplace", "observability", "developer", "linode platform", "cloud manager"]
 external_resources:
