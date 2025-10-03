@@ -2,7 +2,7 @@
 title: "Deploy Apache Guacamole through the Linode Marketplace"
 description: "Deploy Apache Guacamole, a clientless remote desktop gateway that supports VNC, RDP, and SSH protocols through a web browser, on an Akamai Compute Instance."
 published: 2020-12-11
-modified: 2025-09-04
+modified: 2025-10-03
 keywords: ['guacamole', 'marketplace', 'remote desktop']
 tags: ["cloud-manager","linode platform","marketplace"]
 aliases: ['/products/tools/marketplace/guides/guacamole/','/platform/marketplace/guacamole/','/guides/deploy-guacamole-with-marketplace-apps/','/guides/guacamole-marketplace-app/']
