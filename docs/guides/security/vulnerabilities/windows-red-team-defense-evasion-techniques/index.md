@@ -8,9 +8,12 @@ published: 2021-11-03
 keywords: ['security']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+deprecated: true
 ---
 
 {{% content "hackersploit-red-team-series-note-shortguide" %}}
+
+{{% content "hackersploit-note-shortguide" %}}
 
 {{% content "hackersploit-caution-shortguide" %}}
 

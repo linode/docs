@@ -10,9 +10,12 @@ tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Official Caldera documentation](https://caldera.readthedocs.io/en/latest/index.html)'
+deprecated: true
 ---
 
 {{% content "hackersploit-red-team-series-note-shortguide" %}}
+
+{{% content "hackersploit-note-shortguide" %}}
 
 {{% content "hackersploit-caution-shortguide" %}}
 
