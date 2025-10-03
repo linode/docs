@@ -2,7 +2,7 @@
 title: "Deploy Prometheus and Grafana through the Linode Marketplace"
 description: "Deploy Prometheus & Grafana on a Linode Compute Instance. This application provides you with a reliable monitoring solution for all of your infrastructure. "
 published: 2022-03-29
-modified: 2024-10-15
+modified: 2025-09-30
 keywords: ['monitoring','observability']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
@@ -16,11 +16,13 @@ marketplace_app_id: 985364
 marketplace_app_name: "Prometheus & Grafana"
 ---
 
-This Marketplace App installs both [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/oss/grafana/), two open source tools that are commonly used together to collect and view data.
+This Marketplace App installs both [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/oss/grafana/), two open source tools that are commonly used together to collect and view data. Optionally, you can also install [Loki](https://grafana.com/oss/loki/), a log aggregation system designed to work seamlessly with Grafana.
 
-Use Prometheus to collect metrics and receive alerts. Prometheus monitors targets that you define at given intervals by scraping their metrics HTTP endpoints. This tool is particularly well-suited for numeric time series data, which makes it ideal for machine-centric monitoring as well as monitoring of highly dynamic service-oriented architectures.
+**Prometheus** is used to collect metrics and receive alerts. Prometheus monitors targets that you define at given intervals by scraping their metrics HTTP endpoints. This tool is particularly well-suited for numeric time series data, which makes it ideal for machine-centric monitoring as well as monitoring of highly dynamic service-oriented architectures.
 
-Grafana is an analytics and monitoring solution with a focus on accessibility for metric visualization. You can use Grafana to create, monitor, store, and share metrics with your team to keep tabs on your infrastructure. Grafana is very lightweight and does not use a lot of memory and CPU resources.
+**Grafana** is an analytics and monitoring solution with a focus on accessibility for metric visualization. You can use Grafana to create, monitor, store, and share metrics with your team to keep tabs on your infrastructure. Grafana is very lightweight and does not use a lot of memory and CPU resources.
+
+**Loki** (optional) is a log aggregation and storage system inspired by Prometheus. It is designed to be cost-effective and easy to operate, as it does not index the contents of the logs, but rather a set of labels for each log stream. When installed, Loki is automatically configured as a data source in Grafana.
 
 ## Deploying a Marketplace App
 
@@ -34,7 +36,7 @@ Grafana is an analytics and monitoring solution with a focus on accessibility fo
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 22.04 LTS
+- **Supported distributions:** Ubuntu 24.04 LTS
 - **Suggested plan:** All plan types and sizes can be used.
 
 ### Prometheus and Grafana Options
@@ -46,6 +48,10 @@ Grafana is an analytics and monitoring solution with a focus on accessibility fo
 {{% content "marketplace-custom-domain-fields-shortguide" %}}
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
+
+#### Loki Log Aggregation (Optional)
+
+- **Install Loki?**: Select **Yes** to install Loki, a log aggregation system that integrates with Grafana. Select **No** to skip Loki installation.
 
 #### Akamai Insights Datasource Plugin (Optional)
 
@@ -72,7 +78,7 @@ Akamai's Grafana Datasource plugin uses [Grafana's Plugin tools](https://github.
 
 ### Access Grafana and Prometheus
 
-To access the front end interfaces for either Grafana or Prometheus, first [obtain the credentials](#obtain-the-credentials). Then, open your web browser and navigate to the *Location* URL of the app you wish to access. In the login prompt that appears, enter the username and password as shown in the *credentials.txt* file.
+To access the front end interfaces for Grafana and Prometheus, first [obtain the credentials](#obtain-the-credentials). Then, open your web browser and navigate to the *Location* URL of the app you wish to access. In the login prompt that appears, enter the username and password as shown in the credentials file.
 
 ### Obtain the Credentials
 
@@ -101,7 +107,7 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 
     To delete this message of the day, use `rm /etc/motd`.
 
-1.  The `/home/$SUDO_USER/.credentials` file contains the credentials for the created sudo user, Prometheus, and Grafana, as shown in the example output below:
+1.  The `/home/$SUDO_USER/.credentials` file contains the credentials for the created sudo user, Prometheus, Grafana, and Loki (if installed), as shown in the example output below:
 
     ```command
     cat /home/$SUDO_USER/.credentials
@@ -114,7 +120,13 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
     Prometheus Password: XnYGi8CTPNKugQhaC9@2nze6
     Grafana Username: admin
     Grafana Password: *qs6.rbpWyb_rwKm3ciFYW82
+    Loki Username: loki
+    Loki Password: 8Vx!mKp2Yn-HdJ7QzR4s
     ```
+
+    {{< note >}}
+    If you did not install Loki, the Loki username and password will not appear in the credentials file.
+    {{< /note >}}
 
 ### Add Prometheus as a Data Source to Grafana
 
@@ -135,6 +147,10 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
     ![Screenshot of the Prometheus data source](grafana-prometheus-source.png)
 
 Now that the Prometheus Data Source is set, you can browse the [available Grafana dashboards](https://grafana.com/grafana/dashboards/) to see which dashboard fits your needs. Review the official [Prometheus](https://prometheus.io/docs/introduction/overview/) and [Grafana](https://grafana.com/docs/grafana/latest/) documentation to learn how to further use your instance.
+
+### Configure Loki for Log Collection (If Installed)
+
+If you installed Loki during deployment, it is automatically configured as a data source in Grafana. To send logs from your applications and systems to Loki, you need to install and configure a log collection agent, such as [Grafana Alloy](https://grafana.com/docs/alloy/latest/), on the client systems.
 
 ### Akamai Insights Datasource
 
