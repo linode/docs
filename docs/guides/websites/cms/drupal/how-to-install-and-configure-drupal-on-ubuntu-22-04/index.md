@@ -15,7 +15,7 @@ Drupal is a flexible content management system (CMS) designed for structured con
 
 ## Before You Begin
 
-This guide uses Drupal 11.1.8 to avoid known packaging issues in newer releases. Specifically a syntax error in `drupal/core-recipe-unpack` introduced in 11.2.x (see [Drupal issue #3536487](https://www.drupal.org/project/drupal/issues/3536487)). You'll install the stable version later using Composer after verifying system prerequisites. 
+This guide uses Drupal 11.1.8 to avoid known packaging issues in newer releases. Specifically a syntax error in `drupal/core-recipe-unpack` introduced in 11.2.x (see [Drupal issue #3536487](https://www.drupal.org/project/drupal/issues/3536487)). You'll install the stable version later using Composer after verifying system prerequisites.
 
 **Coming from Drupal 8 or new to Composer-based workflows?** See [Contributor-Safe Notes](#contributor-safe-notes) for context on modern Drupal workflows and what's changed since earlier versions.
 
@@ -94,12 +94,12 @@ For local development using a custom domain (e.g., `drupal.local`):
 <VirtualHost *:80>
     ServerName drupal.local
     DocumentRoot /var/www/html/my-drupal-site/web
-    
+
     <Directory /var/www/html/my-drupal-site/web>
         AllowOverride All
         Require all granted
     </Directory>
-    
+
     ErrorLog ${APACHE_LOG_DIR}/drupal-error.log
     CustomLog ${APACHE_LOG_DIR}/drupal-access.log combined
 </VirtualHost>
@@ -512,7 +512,7 @@ If the page i blank or shows errors:
 
 ## Security and Optimization (Post-Install)
 
-After your Drupal site is installed and validate, take these steps to harden security and optimize perfomance.
+After your Drupal site is installed and validate, take these steps to harden security and optimize performance.
 
 1. Harden the MySQL Installation
 
@@ -542,7 +542,7 @@ Ensure the `web/sites/default` directory is writable by the web server during in
 After installation, lock down permissions:
 
 ```
-    sudo dhmod 444 web/sites/default/settings.php
+    sudo chmod 444 web/sites/default/settings.php
 ```
 
 3. Verify .htaccess Rules
@@ -555,6 +555,7 @@ Drupal relies on `.htaccess` for security rules like:
 
 {{< note >}}
 If `.htaccess` rules aren't being applied, double-check `AllowOverride All` is set in your Apache config.
+{{< /note >}}
 
 4. Enable SSL (Optional)
 
@@ -569,7 +570,7 @@ If deploying Drupal in a production or public-facing environment, configure SSL 
     SSLCertificateFile /path/to/cert.pem
     SSLCertificateKeyFile /path/to/key.pem
     ```
-    
+
 For local development, SSL is optional. For public sites it is essential.
 
 5. Security Checklist
