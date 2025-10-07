@@ -58,6 +58,7 @@ aniszczyk
 anonymization
 anonymize
 anonymizing
+anotheruser
 ansi
 ansible
 ansible's
@@ -994,6 +995,7 @@ host1
 host2
 hostname
 hostnames
+hotcopy
 hotfix
 hotfixes
 hotlink
@@ -1331,6 +1333,8 @@ li181
 li263
 lib32
 libaprutil1
+libapache
+libapache2
 libc
 libc6
 libcontainer
@@ -2010,6 +2014,7 @@ procfile
 procmail
 procs
 productpage
+projectname
 prolog
 promlens
 promo_codes
@@ -2321,6 +2326,7 @@ setguid
 setsebool
 setters
 setuid
+setuuid
 setuptools
 Severalnines
 sfadmin
@@ -2491,6 +2497,9 @@ sury
 suse
 Sussman
 svn
+svnadmin
+svnserve
+svnuser
 swappable
 swappiness
 symantec
@@ -2981,8 +2990,10 @@ yoast
 yourdomain
 yourdomainorsubdomainhere
 yourname
+yourserver
 yourservice
 yoursite
+yourusername
 youtube
 yubico
 yubikey
