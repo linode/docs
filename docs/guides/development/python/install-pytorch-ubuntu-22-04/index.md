@@ -55,7 +55,7 @@ After running these commands, the system prompts you for confirmation [Y/n] befo
 After confirming the upgrade, you may be prompted to restart services or resolve config file changes. These are expected so carefully read and follow the contributor-safe defaults when available.
 {{< /note >}}
 
-1. Services restart
+2. Services restart
 
 Next you will be prompted to select which services to restart. You can accept the defaults and select any others you know are needed. If you are not sure, skip restarts by selecting Cancel, but it may delay updates taking effect. To navigate inside the Restart Services box:
 
@@ -64,7 +64,7 @@ Next you will be prompted to select which services to restart. You can accept th
     **Tab**: Moves the cursor to the *<Ok>* or *<Cancel>* button
     **Enter**: Confirms your selection (activates the highlighted button)
 
-If you selected *<Cancel>* the upgraded packages are still installed, but the changes won't take effect until the affected services are manually restarted or the system is rebooted.
+If you selected **Cancel** (or skipped the restart) the upgraded packages are still installed, but the changes won't take effect until the affected services are manually restarted or the system is rebooted.
 
 {{< note >}}
 Rebooting may seem like a quick fix, but it can obscure errors and delay troubleshooting. Restart services directly unless reboot is explicitly required.
@@ -98,7 +98,7 @@ Messages like "no containers need to be restarted" or "No VM guests are running.
 
 If the service fails to restart or behaves unexpectedly, see Troubleshooting: [Restart Response for edge-case handling](guides\development\python\pytorch-install-2-8-0-ubuntu\index.md\#restart-ts).
 
-1. Install Python and pip (if not already installed). To check:
+3. Install Python and pip (if not already installed). To check:
 
 ```
     python3 --version
@@ -113,7 +113,7 @@ If it isn't installed, fails or shows an older version (e.g., Python 2.x), then 
 
 Then re-run the above validate version steps to confirm.
 
-1. Create a Virtual Environment (Optional)
+4. Create a Virtual Environment (Optional)
 
 To isolate dependencies and avoid system-wide installs, you can create a virtual environment by running:
 
@@ -154,7 +154,7 @@ You can also spin up multiple environments for different projects (e.g., PyTorch
 This is optional but recommended. It isolates your PyTorch install, protects system packages, and makes contributor onboarding reproducible and frustration-free.
 {{< /note >}}
 
-1. Install PyTorch via pip
+5. Install PyTorch via pip
 
 To install the latest stable versions optimized for CPU use--perfect for lightweight experimentation or server-side work, run:
 
@@ -166,7 +166,7 @@ Respond with "Y" when prompted unless you are unsure about available space. See 
 
 For other configurations (e.g., GPU-enabled installs), refer to [PyTorch's official install guide](https://pytorch.org/get-started/locally/). Be sure to select your OS, package manager, and compute platform carefully.
 
-1. Validate the Installation
+6. Validate the Installation
 
 Run the following Python commands to confirm PyTorch is installed and check for CUDA support:
 
