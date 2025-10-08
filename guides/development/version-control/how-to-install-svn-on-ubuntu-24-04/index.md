@@ -21,16 +21,16 @@ This guide outlines multiple installation paths for Apache Subversion (SVN) on U
 
 Root or sudo permissions are required for installing packages, configuring Apache, and managing repository permissions.
 
-- Ubuntu 24.04 LTS system (fresh or upgraded)
+- Ubuntu 24.04 LTS system (fresh or upgraded). To verify:
+```
+    lsb_release -a
+```
+  Expected output should show "Ubuntu 24.04 LTS"
 - Internet access
-- Optional: Apache (`apache2`) if serving SVN over HTTP/WebDAV
-  - **Fresh install:** Apache must be installed explicitly using `sudo apt install apache2`.
-  - **Upgraded system:** Apache may already be present; validate and restart as needed.
-    ```
-    sudo systemctl restart apache2
-    apache2ctl -M | grep dav_svn
-    ```
-
+- Optional: Apache (`apache2`) if you plan to serve SVN over HTTP/WebDAV
+  - Fresh systems will need to install Apache (covered in the installation steps below).
+  - Upgraded systems may already have Apache installed.
+   
 ### Subversion Components by Role
 
 | **Role**                                           | **Required Components**                      | **Use Case**                                                                 |
@@ -58,33 +58,6 @@ Follow the installation path that matches your needs:
 
 Each path is self-contained. Choose one and follow it from start to finish.
 
-## Install Apache Web Server (Optional)
-
-If you're using Apache to serve Subversion repositories over HTTP:
-```
-    sudo apt update
-    sudo apt install apache2 libapache2-mod-svn
-    sudo systemctl enable apache2
-    sudo systemctl start apache2
-```
-
-{{< note >}}
-If you're using SSH access only, you can skip Apache and the `libapache2-mod-svn` package.
-{{< /note >}}
-
-To confirm Apache is running:
-```
-    systemctl status apache2
-```
-If you see `active (running)`, you're ready to configure the repo path in Step 3.
-
-## Install or Update Subversion
-
-To install Subversion and its required packages on Ubuntu 22.04 or later:
-```
-    sudo apt update
-    sudo apt install subversion
-```
 ## Client-Only Setup
 
 For contributors who need to interact with an existing Subversion repository hosted elsewhere.
@@ -127,22 +100,66 @@ For deeper usage examples and command options, refer to:
 
 ## Fresh Server Installation
 
-For users starting from a clean system with no prior SVN setup. Install required packages:
+For users starting from a clean system with no prior SVN setup. 
+
+**Install required packages**:
 
 ```
     sudo apt update
     sudo add-apt-repository universe
     sudo apt install subversion apache2 libapache2-mod-svn
-    sudo systemctl restart apache2
+  ```
+Pressing `[ENTER]` when prompted confirms that you want to add the universe repository.
+For further details about what is installed, see the [Apache Subversion documentation](https://subversion.apache.org/docs/).
+
+**Verify the Installation**
+
+```
+    svn --version
+    apache2 -v
+```
+Expected versions for Ubuntu 24.04: Subversion 1.14.x and Apache 2.4.x. If the versions differ verify you're on Ubuntu 24.04 with `lsb_release -a`.
+
+**Enable and start Apache**:
+
+```
+    sudo systemctl enable apache2
+    sudo systemctl start apache2
 ```
 
-**Create a new repository**
+**Verify Apache is running**
+
+```
+    systemctl status apache2
+```
+You should see `active (running)`
+```
+{{< note >}}
+If you're using SSH access only, you can skip Apache and the `libapache2-mod-svn package.
+{{< /note >}}
+
+** Create Your First Repository**
+
+The following steps create a basic Subversion repository to verify your installation and demonstrate core functionality. This example uses `/var/svn/project` as the repository path and configures Apache to serve it over HTTP with basic authentication.
 
 ```
     sudo mkdir -p /var/svn/project
     sudo svnadmin create /var/svn/project
     sudo chown -R www-data:www-data /var/svn/project
 ```
+
+This creates the project folder, initializes it as an SVN repository by creating the internal structure (conf/, db/, hooks/, locks/ folders), and sets ownership of the repository directory and its contents which allows Apache to be able to:
+
+-  Read the repository files
+-  Write to the repository (when changes are committed)
+-  And, access the db/,locks/, and other folders.
+
+**Verify the Repository Structure and Ownership after each command with:
+
+```
+    ls -la /var/svn/project
+```
+You should see these directories: `conf/`, `db/`, `hooks/`, `locks/` and owned by `www-data:www-data`.
 
 For a minimal Apache configuration, edit `/etc/apache2/mods-enabled/dav_svn.conf` and add this block:
 
