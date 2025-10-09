@@ -91,14 +91,15 @@ You should see the installed version (1.14.3 on Ubuntu 24.04) and supported prot
 ```
 
 {{< note >}}
-- HTTPS access requires valid credentials and the remote server must support WebDAV
-- SSH access requires proper SSH key setup and filesystem permissions on the remote server
+- HTTPS access requires valid credentials, and the remote server must support WebDAV
+- SSH access requires proper SSH key setup and file system permissions on the remote server
 - On first connection, you'll be prompted to accept the server certificate (HTTPS) or host key (SSH)
 {{< /note >}}
 
 **External References**
 
-For deeper usage examples and command options:
+For examples of more complex usage and server configuration details:
+
 - [Subversion Quick Start](https://subversion.apache.org/quick-start.html)
 - [SVN Book - Remote Access](https://svnbook.red-bean.com/en/1.7/svn.serverconfig.html)
 
@@ -138,11 +139,11 @@ Expected versions for Ubuntu 24.04: Subversion 1.14.x and Apache 2.4.x. If the v
     systemctl status apache2
 ```
 
-You should see `active (running)`
+You should see `active (running)`.
 
 ```
 {{< note >}}
-If you're using SSH access only, you can skip Apache and the `libapache2-mod-svn package.
+If you're using SSH access only, you can skip installing Apache and the `libapache2-mod-svn` package.
 {{< /note >}}
 
 **Create Your First Repository**
@@ -155,26 +156,29 @@ The following steps create a basic Subversion repository to verify your installa
     sudo chown -R www-data:www-data /var/svn/project
 ```
 
-This creates the project folder, initializes it as an SVN repository by creating the internal structure (conf/, db/, hooks/, locks/ folders), and sets ownership of the repository directory and its contents which allows Apache to be able to:
+This creates a project folder, initializes it as an SVN repository by creating the internal structure (conf/, db/, hooks/, locks/ folders), and sets ownership of the repository directory and its contents which allows Apache to be able to:
 
 -  Read the repository files
 -  Write to the repository (when changes are committed)
--  And, access the db/,locks/, and other folders.
+-  And, access the db/, locks/, and other folders.
 
-**Verify the Repository Structure and Ownership** after each command with:
+**Verify the Repository Structure and Ownership**
+
+After each command:
 
 ```
     ls -la /var/svn/project
 ```
 
-You should see these directories: `conf/`, `db/`, `hooks/`, `locks/` and owned by `www-data:www-data`.
+You'll see these directories: `conf/`, `db/`, `hooks/`, `locks/` and owned by `www-data:www-data`.
 
 For a minimal Apache configuration, open `/etc/apache2/mods-enabled/dav_svn.conf` in a text editor:
 
 ```
     sudo nano /etc/apache2/mods-enabled/dav_svn.conf
 ```
-and add this block:
+and add this block to the end of the file:
+
 ```
 <Location /svn>
   DAV svn
@@ -197,6 +201,7 @@ Then create your first SVN user for HTTP authentication (replace 'yourusername'w
 ```
     sudo htpasswd -c /etc/apache2/dav_svn.passwd yourusername
 ```
+
 After running the command, you are prompted to:
 
 1. Enter a password (choose a strong password and be sure to record it for future use).
@@ -211,8 +216,8 @@ The `-c` flag creates a new password file. **Use it only for the first user** - 
 ```
 You are again prompted to enter and confirm a password for the new user. If you are creating this account for another person, you can either:
 
-    - Set a temporary password and communicate it securely to them (they cannot change it themselves via `htpasswd`)
-    - Ask them to provide you with their desired password to enter during creation
+    - Set a temporary password and communicate it securely to them (they cannot change it themselves via `htpasswd`).
+    - Ask them to provide you with their desired password to enter during creation.
 
 Unlike system accounts, there is no built-in "force password change on first login" mechanism for HTTP Basic Authentication. Users cannot change their own passwords - only administrators with server access can update passwords using the `htpasswd` command.
 
@@ -229,16 +234,17 @@ Restart Apache:
 
 ### Validate Setup
 
-Verify SVN and the Apache module is loaded:
+Verify that SVN and the Apache module is loaded:
 
 **Check SVN version**
 
 ```
     svn --version
 ```
+
 You should see the Subversion version information (e.g., version 1.14.3) along with available repository access modules.
 
-**Verify the Apache DAV SVN module is loaded:**
+**Verify that the Apache DAV SVN module is loaded:**
 
     apache2ctl -M | grep dav_svn
 ```
@@ -247,7 +253,7 @@ You should see `dav_svn_module` in the output.
 
 **Test repository access**
 
-Opening your web browser and navigate to :
+Open your web browser and navigate to :
 
     http://your-server-ip/svn/project
 
@@ -256,7 +262,7 @@ You should:
 2. Enter the credentials yiou created with 'htpasswd'.
 3. See a page displaying **"project - Revision 0: /"** with "Powered by Apache Subversion
 
-   The repository will show Revision 0 because it's empty - no files have been committed yet. This is normal and confirms your setup is working correctly.
+The repository will show Revision 0 because it's empty - no files have been committed yet. This is normal and confirms your setup is working correctly.
 
 **Troubleshooting**
 
@@ -270,7 +276,7 @@ If you encounter issues:
 
 For those who are upgrading their system and retaining or reconfiguring an existing SVN setup.
 
-**Before You Begin**
+**Before You Start**
 
 Document your current SVN configuration before upgrading. Run these commands and save the output:
 
@@ -282,7 +288,7 @@ Document your current SVN configuration before upgrading. Run these commands and
 {{< note >}}
 Record the SVN version (typically **1.14.1** on Ubuntu 22.04). You'll compare this after the upgrade to confirm the update to version 1.14.3 on Ubuntu 24.04. If you have custom configurations in your `dav_svn.conf` file, consider backing up the file:
 ```
-    sudo cp /etc/apache2/mods-enable/dav_svn.cont/root/dav_svn.conf.backup
+    sudo cp /etc/apache2/mods-enabled/dav_svn.conf/ root/dav_svn.conf.backup
 ```
 {{< /note >}}
 
@@ -293,7 +299,7 @@ Ensure all packages are up to date and reboot if necessary:
 ```
     sudo apt update && sudo apt upgrade -y
 ```
-If the system indicates a regoot is required (common after kernel updates), reboot your system now:
+If the system indicates a reboot is required (common after kernel updates), reboot your system now:
 
 ```
     sudo reboot
@@ -327,7 +333,7 @@ The upgrade process will:
 ```
 Wait for the system to come back online before proceeding to the next step.
 
-**After reboot: validate the Upgrade** 
+**After reboot: Validate the Upgrade** 
 
 Once the system restarts, log back in and verify you're on Ubuntu 24.04:
 
@@ -351,7 +357,7 @@ You should see **version 1.14.3** (upgraded from 1.14.1 on Ubuntu 22.04).
 Verify the Apache SVN module is still loaded:
 
 ```
-apache2ctl -M | grep dav_svn
+    apache2ctl -M | grep dav_svn
 ```
 You should see `dav_svn_module (shared)` listed.
 
@@ -373,7 +379,7 @@ The repository structure should be intact with `www-data:www-data` ownership. If
 
 Open your browser and navigate to:
 
-    http://your-server-ip/svn/testproject
+http://your-server-ip/svn/testproject
 
 You should be able to authenticate and see your repository, now powered by Subversion 1.14.3.
 
@@ -421,35 +427,35 @@ Whether you're restoring from backup or migrating to a new server, start by prep
 - *Optional: Create a dedicated SVN admin user for ownership and SSH access.*
 
 ```
-    sudo useradd -m -s /usr/bin/git-shell svnuser
+    sudo useradd -m -s /usr/bin/bin/bash svnuser
 ```
 
 {{< note >}}
-This SVN admin is a dedicated user for managing repositories--not a system administrator. You can define their access level using `authz` rules or filesystem permissions.
+This SVN admin is a dedicated user for managing repositories-not a system administrator. You can define their access level using `authz` rules or filesystem permissions.
 {{< /note >}}
 
 - Create a placeholder repo directory (e.g., /srv/svn/projectname) if restoring from filesystem snapshot or hotcopy.
-- Ensure correct file ownership
+- Ensure correct file ownership before restoring data.
 ```
-    chown -R svnuser:svnuser /srv/svn
+    sudo chown -R svnuser:svnuser /srv/svn
 ```
-before restoring data.
 
 - *If migrating to a new server*, confirm that the hostname, IP, and firewall rules match your intended access method (e.g., HTTP or SSH).
+- 
 - *If restoring to a shared machine*, set group ownership and permissions carefully:
 
     ```
-    chown -R svnuser:devteam /srv/svn
-    chmod -R g+rw /srv/svn
+    sudo chown -R svnuser:devteam /srv/svn
+    sudo chmod -R g+rw /srv/svn
     ```
 
-    Consider setting `umask 002` for collaborative edits.
+Consider setting `umask 002` for collaborative edits.
 
 - *If using Apache*, ensure `mod_dav_svn` is installed and enabled before restoring. You’ll re-map the repo path in Step 3 (Validate Restore and Server Setup).
 
 ### Step 2: Restore from Backup
 
-Choose the restore method that matches your backup format. All methods assume the target system is prepared (see Step 1 Prepare the Target System).
+Choose the restore method that matches your backup format. All methods assume the target system is prepared (see Step 1: Prepare the Target System).
 
 **Option A: Restore from .dump File**
 
@@ -458,8 +464,8 @@ Choose the restore method that matches your backup format. All methods assume th
     svnadmin load /srv/svn/projectname < /path/to/backup.dump
 ```
 
-Creates a fresh repo and loads historical data.
-Preserves commit history and UUID unless overridden.
+- Creates a fresh repo and loads historical data.
+- Preserves commit history and UUID unless overridden.
 
 **Option B: Restore from Hotcopy**
 
@@ -467,39 +473,39 @@ Preserves commit history and UUID unless overridden.
     cp -r /path/to/hotcopy /srv/svn/projectname
 ```
 
-This is the fastest method if source and target OS match.
-Preserves hooks, config, and UUID.
+- This is the fastest method if source and target OS match.
+- Preserves hooks, config, and UUID.
 
 **Option C: Restore from Filesystem Snapshot**
 
-Mount or extract snapshot to `/srv/svn/projectname`.
-Validate file integrity and permissions post-restore.
+- Mount or extract snapshot to `/srv/svn/projectname`.
+- Validate file integrity and permissions post-restore.
 
-**Footnotes:**
+**Additional Steps:**
 
-If restoring to a new server, confirm that the repo UUID matches expected value:
+- If restoring to a new server, confirm that the repo UUID matches expected value:
 
 ```
     svnlook uuid /srv/svn/projectname
 ```
 
-    If needed, override with:
+- If needed, override with:
 
 ```
     svnadmin setuuid /srv/svn/projectname NEW-UUID
 ```
 
-If using Apache, ensure svn.conf or httpd.conf maps to the restored path:
+- If using Apache, ensure svn.conf or httpd.conf maps to the restored path:
 
 ```
     SVNPath /srv/svn/projectname
 ```
 
-If restoring to a shared machine, reapply group ownership:
+- If restoring to a shared machine, reapply group ownership:
 
 ```
-    chown -R svnuser:devteam /srv/svn/projectname
-    chmod -R g+rw /srv/svn/projectname
+    sudo chown -R svnuser:devteam /srv/svn/projectname
+    sudo chmod -R g+rw /srv/svn/projectname
 ```
 
 ### Step 3: Validate Restore and Server Setup
@@ -531,9 +537,9 @@ After restoring the repository, confirm that the server is ready to serve it—w
 ```
 
 - Confirms shell access and repo visibility via SSH.
-- Requires SSH key setup and shell access to `svnserve`.
+- Requires SSH key setup and shell access to the repository path.
 
-**Footnotes**
+**Troubleshooting**
 
 *If* `svn info` fails, check file permissions and ownership:
 
@@ -552,14 +558,14 @@ After restoring the repository, confirm that the server is ready to serve it—w
 *If SSH fails*, confirm:
 
     - SSH public key is in `~/.ssh/authorized_keys` on the server
-    - `svnserve` is installed and accessible
     - Shell access is allowed for the target user
+    - User has filesystem permissions to access the repository path
 
 ### Step 4: Reconfigure Apache or SSH Access
 
 After restoring the repository, update your access configuration to reflect the new server paths, users, or hostname.
 
-Update Apache Config for Apache (HTTP Access):
+#### Option A: Configure Apache for HTTP Access
 
 Edit your Subversion config file (e.g., `/etc/apache2/sites-available/svn.conf`):
 
@@ -573,99 +579,34 @@ Edit your Subversion config file (e.g., `/etc/apache2/sites-available/svn.conf`)
   Require valid-user
 </Location>
 ```
-#### Restart Apache
+Restart Apache:
 
 ```
     sudo systemctl restart apache2
 ```
 
-#### Validate
+Validate Apache Access:
 
 ```
     svn info http://yourserver/svn/projectname
 ```
 
-## SSH (svn+ssh:// Access)
+#### Option B: Configure SSH Access
 
-**Footnotes**
+For `svn+ssh://` access, ensure proper permissions and validate connectivity:
 
-*SSH Setup for Contributors*
-
-To enable `svn+ssh://` access, each contributor must:
-
-1. Generate an SSH key pair (if they don’t already have one):
+1. Confirm contributors have SSH access to the server
+2. Set filesystem permissions for the repository:
 
 ```
-    ssh-keygen -t ed25519 -C "your_email@example.com"
+    sudo chown -R svnuser:devteam /srv/svn/projectname
+    sudo chmod -R g+rw /srv/svn/projectname
 ```
 
-2. Copy their public key to the server:
-
-```
-    ssh-copy-id username@yourserver
-```
-
-    Or manually append to `~/.ssh/authorized_keys`.
-
-3. Confirm shell access and repo visibility:
-
-```
-    ssh username@yourserver
-    svn info /srv/svn/projectname
-```
-
-4. Use the correct access URL:
-
-```
-    svn checkout svn+ssh://yourserver/srv/svn/projectname
-```
-
-- Optional: Restrict the `svn` user’s shell for security:
-
-```
-    useradd -m -s /usr/bin/git-shell svnuser
-```
-
-5. Confirm `svnserve` is Installed
-    which svnserve
-
-*Set Up SSH Access*
-
-Ensure your contributor’s public key is in `~/.ssh/authorized_keys` on the server.
-
-**Launch `svnserve` (Optional Daemon Mode)**
-
-```
-    svnserve -d -r /srv/svn
-```
-
-**Validate**
+3. Validate SSH access:
 
 ```
     svn info svn+ssh://yourserver/srv/svn/projectname
-```
-
-**Footnotes**
-
-- *If migrating to a new hostname*, contributors may need to run:
-
-```
-    svn switch --relocate OLD_URL NEW_URL
-```
-
-  This updates local working copies without re-checkout.
-
-- *If using Apache*, confirm that `mod_dav_svn` is enabled:
-
-```
-    sudo a2enmod dav
-    sudo a2enmod dav_svn
-```
-
-- *If using SSH*, consider creating a dedicated svn user with restricted shell access for security:
-
-```
-    useradd -m -s /usr/bin/git-shell svnuser
 ```
 
 ### Step 5: Contributor Validation and Local Checkout
@@ -676,26 +617,27 @@ Once the server is restored and access is configured, contributors should valida
 
 ```
     svn checkout http://yourserver/svn/projectname
-or
+```
+Or for SSH:
+```
     svn checkout svn+ssh://yourserver/srv/svn/projectname
 ```
 
-    - Ensures clean sync with the restored repo.
-    - Validates authentication and access method.
+- Ensures clean sync with the restored repo.
+- Validates authentication and access method.
 
 **Relocate Existing Working Copy**
 
 If the repo URL changed (e.g., new hostname or protocol), contributors can run:
 
 ```
-    svn switch --relocate OLD_URL NEW_UR
+    svn switch --relocate OLD_URL NEW_URL
 ```
 
-Avoids full re-checkout.
+- Avoids full re-checkout.
+- Preserves local changes and history.
 
-Preserves local changes and history.
-
-**Footnotes**
+**Additional Notes**
 
 - *If contributors report UUID mismatch*, they may need to re-checkout or ask the repository administrator to override the UUID using:
 
@@ -711,14 +653,6 @@ Preserves local changes and history.
 
 - *If using Apache*, confirm that `.htpasswd` is updated and that contributors are using the correct realm name.
 
-#### Verify the Required Packages by Role
-
-| **Role**                          | **Packages to Install**                              | **Purpose**                                                                 |
-|-----------------------------------|-------------------------------------------------------|------------------------------------------------------------------------------|
-| Client-only user                  | `subversion`                                          | Provides the `svn` client for interacting with remote repositories          |
-| Server host (Apache-based)        | `subversion`, `apache2`, `libapache2-mod-svn`         | Hosts a Subversion repo via Apache; enables HTTP access and user control    |
-| Local team (shared machine setup) | `subversion`, `apache2`, `libapache2-mod-svn`         | Supports both hosting and local access for multi-user collaboration         |
-
 ## Troubleshooting
 
 ### Common Errors and Contributor-Safe Resets
@@ -731,27 +665,33 @@ Preserves local changes and history.
 | `svn: E155000`                    | Working copy mismatch or corrupted local state         | Run `svn cleanup`, or re-checkout if needed.                                             |
 | `svn: E155007`                    | Path is not a working copy                             | Confirm you're inside a valid working copy. Use `svn info` or `svn status`.              |
 | UUID mismatch                     | Repo was recreated or restored with a different UUID   | Use `svnadmin setuuid` to match expected UUID, or re-checkout with updated URL.          |
-| `svnserve` not found              | SSH access fails due to missing binary                 | Install `subversion` on server and confirm `svnserve` is in `$PATH`.                     |
 | Permission denied (SSH)          | SSH key missing or wrong user                          | Re-add public key to `authorized_keys`, confirm shell access, and test with `ssh`.       |
 
 ## References
 
 - If contributors are unsure of whether to re-checkout or relocate, recommend:
-    svn switch --relocate OLD_URL NEW_URL
+```
+     svn switch --relocate OLD_URL NEW_URL
+```
 
 This preserves local changes and avoids unnecessary resets.
 
 - If Apache logs are unclear, use these commands for more information:
-    journalctl -u apache2
-    tail -f /var/log/apache2/error.log
+
+  ```
+      journalctl -u apache2
+      tail -f /var/log/apache2/error.log
+```
 
 - If SSH access is flaky, validate with:
-    ssh -v username@yourserver
 
-### 🔗 Additional Resources
+```
+    ssh -v username@yourserver
+```
+
+### Additional Resources
 
 | **Topic**                      | **Resource**                                                                 | **Why It’s Useful**                                                                 |
 |-------------------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | Subversion Admin Guide        | [Apache Subversion Documentation](https://subversion.apache.org/docs/)     | Searchable documentation index                   |
 | Apache + SVN Integration      | [httpd, the Apache HTTP Server](https://svnbook.red-bean.com/en/1.7/svn.serverconfig.httpd.html) | How Apache serves SVN repos via mod_dav_svn                    |
-| `svnserve` Usage              | [SVNserve Overview](https://svnbook.red-bean.com/en/1.7/svn.serverconfig.svnserve.html) | Detailed guide to advanced daemon configuration, access control, and SSH tunneling configuration                           |
