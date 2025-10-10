@@ -1,5 +1,5 @@
 ---
-slug: install-subversion-on-ubuntu-24-04
+slug: how-to-install-svn-on-ubuntu-24-04
 title: "Install Subversion on Ubuntu 24.04"
 title_meta: "Install Subversion on Ubuntu 24.04"
 description: "Step-by-step guide for installing Subversion on Ubuntu 24.04 with contributor-safe practices"
