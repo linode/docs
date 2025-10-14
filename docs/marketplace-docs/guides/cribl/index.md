@@ -8,7 +8,7 @@ external_resources:
 - '[Cribl](https://cribl.io/)'
 - '[Cribl Stream official documentation](https://docs.cribl.io/stream/)'
 - '[Getting Started with Cribl Stream](https://docs.cribl.io/stream/getting-started/)'
-aliases: ['/products/tools/marketplace/guides/cribl-stream/']
+aliases: ['/products/tools/marketplace/guides/cribl/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
