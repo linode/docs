@@ -10,23 +10,9 @@ keywords: ['LAMP stack','LAMP CentOS 8,'install LAMP stack', 'install Apache', '
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-## About CentOS 8 and Rocky Linux 9
+If you're moving from CentOS 8 to a compatible operating system, this guide walks you through installing a LAMP stack on Rocky Linux 9. The process and commands are nearly identical to what you're used to on CentOS 8 making migration straightforward.
 
-If you're moving from CentOS 8 to a similar operating system, then this guide is for you. The installation process and commands are nearly identical to what you are used to on CentOS 8. We strongly recommend migrating to Rocky Linux 9 for continued security updates and support.
-
-CentOS 8 reached end-of-life in December 2021 and is no longer supported or safe to use in production environments.
-
-**Rocky Linux 9 is the recommended replacement operating system for CentOS 8.** 
-
-It is:
-
-- A direct successor created by the original CentOS founder
-- Fully compatible with RHEL 9
-- Enterprise-grade and production-ready
-- Free and open-source
-- A drop-in replacement with the same package manager (dnf) and system structure
-
-The commands in this guide work identically on both Rocky Linux 9 and AlmaLinux 9 (another CentOS replacement OS).
+CentOS 8 reached end-of-life in December 2021 and is no longer supported or safe for production use. **Rocky Linux 9 is the recommended replacement**--a free, open-source, enterprise-grade OS created by the original CentOS founder. It's fully compatible with RHEL 9 and serves as a drop-in replacement with the same package manager (`dnf`) and system structure.
 
 ## What is a LAMP Stack?
 
@@ -108,7 +94,7 @@ Press **q** (for quit) to END.
 
 ### Test Apache
 
-{{< note type="alert" >}}
+{{< note type="warning" >}}
 Before testing Apache, you must configure the firewall to allow HTTP/HTTPS traffic. See the [Configure Firewall](#configure-firewall) section under Security Hardening below.
 {{< /note >}}
 
