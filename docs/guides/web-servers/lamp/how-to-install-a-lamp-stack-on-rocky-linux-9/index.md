@@ -1,7 +1,7 @@
 ---
 slug: how-to-install-a-lamp-stack-on-rocky-linux-9
 title: "Install a LAMP Stack on Rocky Linux 9 (CentOS 8 Replacement)"
-title_meta: Install a LAMP Stack on Rocky Linux 9 (CentOS 8 Replacement)"
+title_meta: "Install a LAMP Stack on Rocky Linux 9 (CentOS 8 Replacement)"
 description: 'This guide provides some background about a Linux LAMP stack installation and security hardening and includes step by step instruction on how to install a LAMP stack on Rocky Linux 9 and Ubuntu 22.04.'
 authors: ["Diana Hoober"]
 contributors: ["Diana Hoober"]
