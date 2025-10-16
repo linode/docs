@@ -62,7 +62,7 @@ Apache is the web server component that handles HTTP requests and serves web pag
 
 If the system is already fully updated, you might see `Nothing to do.` or `Complete!`. Either message indicates success. The key is that there are no error messages and the command returns you to the command prompt.
 
-1. Install Apache:
+2. Install Apache:
 
     ```command
     sudo dnf install httpd -y
@@ -73,7 +73,7 @@ At the end you should see the key indicators of success:
 
    Complete!
 
-1. Start the Apache service:
+3. Start the Apache service:
 
     ```command
     sudo systemctl start httpd
@@ -81,7 +81,7 @@ At the end you should see the key indicators of success:
 
 Silently returns to the prompt when successful.
 
-1. Enable Apache to start automatically on boot:
+4. Enable Apache to start automatically on boot:
 
     ```command
     sudo systemctl enable httpd
@@ -89,7 +89,7 @@ Silently returns to the prompt when successful.
 
 If you see `Create symlink...` automatic reboot is enabled.
 
-1. Verify Apache is running:
+5. Verify Apache is running:
 
     ```command
     sudo systemctl status httpd
@@ -106,48 +106,13 @@ To exit and get back to your command prompt:
 
 Press **q** (for quit) to END.
 
-## Configure the Firewall
+### Test Apache
 
-Rocky Linux 9 uses `firewalld` by default. You need to allow HTTP and HTTPS traffic through the firewall.
+{{< note type="alert" >}}
+Before testing Apache, you must configure the firewall to allow HTTP/HTTPS traffic. See the [Configure Firewall](#configure-firewall) section under Security Hardening below.
+{{< /note >}}
 
-1. Allow HTTP traffic (port 80):
-
-    ```command
-    sudo firewall-cmd --permanent --add-service=http
-    ```
-
-1. Allow HTTPS traffic (port 443):
-
-    ```command
-    sudo firewall-cmd --permanent --add-service=https
-    ```
-
-1. Reload the firewall to apply changes:
-
-    ```command
-    sudo firewall-cmd --reload
-    ```
-
-1. Verify the firewall rules:
-
-    ```command
-    sudo firewall-cmd --list-all
-    ```
-
-    You should see `http` and `https` listed under services:
-
-    ```output
-    public (active)
-      target: default
-      services: cockpit dhcpv6-client http https ssh
-    ```
-
-1. Test Apache by visiting your server's IP address in a web browser. To find your server's IP address, you can check the Cloud Manager or run:
-
-    ```command
-    hostname -I
-    ```
-Open a web browser and navigate to `http://YOUR_IP_ADDRESS` (replace with your actual IP address). You should see the default Rocky Linux Apache test page.
+After configuring the firewall, test Apache by visiting your server's IP address (replace with your actual IP address). You should see the default Rocky Linux Apache test page.
 
 ## Install MariaDB
 
