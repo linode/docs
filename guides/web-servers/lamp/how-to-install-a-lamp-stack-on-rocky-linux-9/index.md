@@ -1,16 +1,14 @@
 ---
 slug: how-to-install-a-lamp-stack-on-rocky-linux-9
-title: "Install a LAMP Stack on Rocky Linux 9 (CentOS 8 Replacement"
+title: "Install a LAMP Stack on Rocky Linux 9 (CentOS 8 Replacement)"
 title_meta: "How to Install a LAMP Stack on Ubuntu 22.04"
-description: 'This guide provides some background about a Linux LAMP stack and explains how to install a LAMP stack on Ubuntu 22.04.'
+description: 'This guide provides some background about a Linux LAMP stack installation and security hardening and includes step by step instruction on how to install a LAMP stack on Rocky Linux 9 and Ubuntu 22.04.'
 authors: ["Diana Hoober"]
 contributors: ["Diana Hoober"]
 published: 2025-10-10
-keywords: ['LAMP stack','LAMP CentOS 8,'install LAMP stack','how to install a LAMP Stack on CentOS 8']
+keywords: ['LAMP stack','LAMP CentOS 8,'install LAMP stack', 'install Apache', 'MariaDB', 'PHP on Rocky Linux 9', 'how to install a LAMP Stack on Rocky Linux 9', 'Ubuntu 22.04', 'centos 8', 'centos replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
-
-# How to Install a LAMP Stack on Rocky Linux 9 to Replace CentOS 8
 
 ## About CentOS 8 and Rocky Linux 9
 
@@ -18,7 +16,9 @@ If you're moving from CentOS 8 to a similar operating system, then this guide is
 
 CentOS 8 reached end-of-life in December 2021 and is no longer supported or safe to use in production environments.
 
-**Rocky Linux 9 is the recommended replacement operating system for CentOS 8.** It's:
+**Rocky Linux 9 is the recommended replacement operating system for CentOS 8.** 
+
+It is:
 
 - A direct successor created by the original CentOS founder
 - Fully compatible with RHEL 9
@@ -34,20 +34,20 @@ A **LAMP stack** is a collection of four open-source software components that wo
 
 - **Linux**: The operating system running the server
 - **Apache**: The web server software that delivers web pages to visitors and handles web requests
-- **MariaDB (or MySQL)**: The database that stores data
+- **MariaDB**: Database server
 - **PHP**: The programming language that processes logic and creates dynamic content
 
 ## Prerequisites
 
 Before installing the LAMP stack, ensure you have:
 
-- A server or virtual machine running Rocky Linux 9 (or AlmaLinux 9)
+- A server or virtual machine with Rocky Linux 9 already installed
 - Root access or a user account with sudo privileges
 - Basic familiarity with the Linux command line
 - An active internet connection
 
 {{< note >}}
-If you're setting up a fresh Rocky Linux 9 server, review [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for initial server configuration (timezone, hostname, SSH hardening, firewall basics).
+When setting up a fresh Rocky Linux 9 server, review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for initial server configuration (timezone, hostname, SSH hardening, firewall basics).
 {{< /note >}}
 
 ## Install Apache
