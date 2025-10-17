@@ -54,7 +54,7 @@ Apache is assumed to be installed and running. This section focuses on enabling 
 
 Drupal uses clean URLs, which depend on Apache’s rewrite module. Enable it with:
 
-```
+```command
     sudo a2enmod rewrite
     sudo systemctl restart apache2
 ```
@@ -69,7 +69,7 @@ If you see an error like `Module rewrite already enabled`, it's safe to proceed-
 
 Edit your Apache configuration file (typically `/etc/apache2/sites-available/000-default.conf` or a custom `drupal.conf`). Locate or add the `<Directory>` block for your Drupal web root and ensure it includes:
 
-```
+```command
 <Directory /var/www/html/my-drupal-site/web>
     AllowOverride All
 </Directory>
@@ -78,7 +78,7 @@ Edit your Apache configuration file (typically `/etc/apache2/sites-available/000
 This allows Drupal's `.htaccess` file to apply security rules and URL rewrites.
 After editing, reload Apache:
 
-```
+```command
 sudo systemctl reload apache2
 ```
 
@@ -107,14 +107,14 @@ For local development using a custom domain (e.g., `drupal.local`):
 
 2. Add an entry to `/etc/hosts`:
 
-```
+```command
     127.0.0.1 drupal.local
 ```
 
 This maps `drupal.local` to your local machine.
 
 3. Enable the site configuration:
-```
+```command
 sudo a2ensite drupal.conf
 sudo systemctl reload apache2
 ```
@@ -152,19 +152,20 @@ This section outlines the steps used to verify system components, establish the 
 
 Use the following commands to check what PHP extensions are available:
 
+```command
     php -v
     php -m | grep -E 'gd|mbstring|xml|curl|zip|mysql|pdo_mysql|opcache'
 
 If any required PHP extensions are missing, install them with:
-```
+```command
     sudo apt install php-gd php-mbstring php-xml php-curl php-zip php-mysql php-opcache
 ```
 Following installation, restart Apache or Nginx to activate the new extensions.
-```
+```command
     sudo systemctl restart apache2
 ```
 Verify they're active:
-```
+```command
     php -m | grep -E 'gd|mbstring|xml|curl|zip|mysql|pdo_mysql|opcache'
 ```
 Each one should now be listed.
@@ -174,12 +175,14 @@ Each one should now be listed.
 #### Check Composer
 
 If checking for Composer installation yields a `composer` not found error, you can install it with:
-
+```command
     sudo apt update && sudo apt install composer
+```
 
 To verify installation:
-
+```command
     composer --version
+```
 
 You should see output like `Composer version 2.7.0` or higher.
 
@@ -208,13 +211,13 @@ These files confirm that setup succeeded, prepare optional configuration scaffol
 
 Run the install command to generate the Drupal 11.1.8 structure. Replace my-drupal-site with your desired folder name. For directory layout details, see Drupal.org's [Directory Structure guide](https://www.drupal.org/docs/getting-started/understanding-drupal/directory-structure)
 
-```
+```command
     composer create-project drupal/recommended-project:11.1.8 my-drupal-site
 ```
 
 - Change to your project folder (remove the angle brackets (<>) and use your actual folder name):
 
-```
+```command
     cd my-drupal-site
 ```
 
@@ -222,8 +225,8 @@ Run the install command to generate the Drupal 11.1.8 structure. Replace my-drup
 
 Add Drush to your project via Composer:
 
-```
-composer require drush/drush:11.5.1
+```command
+    composer require drush/drush:11.5.1
 ```
 
 Drush will be installed in `vendor/bin/`.
@@ -232,8 +235,8 @@ Drush will be installed in `vendor/bin/`.
 
 Confirm Drush is working:
 
-```
-vendor/bin/drush --version
+```command
+    vendor/bin/drush --version
 ```
 
 Expected output: `Drush version 11.5.1` or similar.
@@ -247,8 +250,8 @@ If you encounter errors, see the [Troubleshooting](#troubleshooting) section.
 - Make sure your PHP version meets Drush's minimum requirement (PHP 8.1+ for Drush 11.x).
 - If you see a memory error, try:
 
-```
-COMPOSER_MEMORY_LIMIT=-1 composer require drush/drush:11.5.1
+```command
+    COMPOSER_MEMORY_LIMIT=-1 composer require drush/drush:11.5.1
 ```
 
 *(drush-validate)*: If Drush throws a `NotFoundHttpException`, it was likely run outside a valid Drupal project root. Navigate to the directory containing `composer.json` before running Drush commands. See: [Drush Usage Guide](https://www.drush.org/latest/usage/) for valid command contexts.
@@ -258,16 +261,16 @@ COMPOSER_MEMORY_LIMIT=-1 composer require drush/drush:11.5.1
 
 This creates the active configuration file that Drupal reads and writes to during installation and runtime.
 
-```
-cp web/sites/default/default.settings.php web/sites/default/settings.php
+```command
+    cp web/sites/default/default.settings.php web/sites/default/settings.php
 ```
 
 #### Set File Permissions
 
 Before running the Drupal installer, you need to make settings.php writable so Drupal can configure it during installation. Make sure you are in the Drupal project root folder and then run:
 
-```
-chmod 644 web/sites/default/settings.php
+```command
+    chmod 644 web/sites/default/settings.php
 ```
 
 This sets permissions to allow the owner to read/write and the web server to access the file during installation.
@@ -280,33 +283,30 @@ If you skip this step and Drupal can't write to the file, the installer will fai
 
 Drupal uses a writable `files` directory to store uploaded content, temporary files, and other runtime assets. From your project root ({{< placeholder "my-drupal-site" >}}) run:
 
-```
+```command
     mkdir -p web/sites/default/files
     chmod 755 web/sites/default/files
 ```
 
 To verify that it worked, run:
 
-```
+```command
     ls -ld web/sites/default/files
 ```
 
 The `chmod` allows owner and group read, write, and execute permissions and others read and execute rights. For stricter environments you can adjust ownership with:
 
-```
+```command
     chown -R www-data web/sites/default/files
 ```
 
 Use your actual web server for `www-data`. A writable `files` directory allows Drupal to store uploads (i.e., images or enabled modules) or generate cached assets so you don't see any errors.
 
-
-[TROUBLESHOOTING NOTE] - The file permissions sections could benefit from troubleshooting entries for permission denied errors.
-
 #### Verify the Web Server
 
 Before proceeding, make sure your web server has permission to interact with the Drupal environment. Set the `/web` directory and its contents to be owned by `www-data` (or your system’s web server user), using:
 
-```
+```command
     sudo chown -R www-data:www-data web
 ```
 
@@ -318,7 +318,7 @@ If you're using Nginx or a different web server, replace `www-data` with your ac
 
 To confirm ownership was updated, run this from the parent directory of `web`:
 
-```
+```command
     ls -ld web
 ```
 
@@ -334,7 +334,7 @@ This means:
 
 To verify ownership of individual files, run:
 
-```
+```command
     ls -l path/to/your/file (for example: `ls -l web/index.php`)
 ```
 
@@ -343,7 +343,7 @@ This shows the file's owner and group.
 {{< note >}}
 If ownership is incorrect, rerun:
 
-```
+```command
     sudo chown -R www-data:www-data web
 ```
 
@@ -358,23 +358,22 @@ Before installing Drupal, follow the official guide to create a database and use
 
 1.  Once complete, confirm access with a contributor-safe check:
 
-    ```
+```command
     mysql -u drupal_user -p -h localhost drupal_db
-    ```
+```
 
     Replace `drupaluser` and `drubaldb` with your database username and name. You should be able to enter the MariaDB shell without errors.
 
 1.  Confirm that your database uses `utf8mb4` encoding:
 
-    ```
+```command
     SHOW CREATE DATABASE drupal_db;
-    ```
+```
 
 1.  Look for `CHARACTER SET utf8mb4` in the output. If it's missing, you may need to recreate the database with the correct encoding or convert it.
 
 1.  Your database credentials should match what you'll enter in `settings.php`:
-
-    ```
+```command
     $databases['default']['default'] = [
         'driver' => 'mysql',
         'database' => 'drupal_db',
@@ -382,15 +381,15 @@ Before installing Drupal, follow the official guide to create a database and use
         'password' => 'your_secure_password',
         'host' => 'localhost',
         ];
-    ```
+```
 
 This configuration is located in `sites/default/settings.php`.
 
 1.  During setup you may need to temporarily relax file permissions:
 
-    ```command
+```command
     chmod 664 sites/default/settings.php
-    ```
+```
 
 **Common Errors and Fixes**
 
@@ -413,8 +412,8 @@ Once your project structure is in place and Drush is installed, you can launch t
 
 Using the PHP built-in server, run:
 
-```
-php -S localhost:8888 -t web
+```command
+    php -S localhost:8888 -t web
 ```
 
 Then visit `http://localhost:8888` in your browser. The Drupal installer page should load.
@@ -428,8 +427,8 @@ If the installer page is blank or throws errors:
 
 Install Drupal via Drush:
 
-```
-vendor/bin/drush site:install
+```command
+    vendor/bin/drush site:install
 ```
 
 The site will be installed with default configuration.
@@ -447,10 +446,10 @@ After installation, confirm that setup completed successfully and is complete an
 
 Confirm the project was initialized correctly:
 
-```
-ls composer.json
-ls -ld web/index.php
-ls -ld vendor/
+```command
+    ls composer.json
+    ls -ld web/index.php
+    ls -ld vendor/
 ```
 
 Expected results:
@@ -495,7 +494,7 @@ Before continuing, confirm that your local environment is serving the Drupal sit
 This maps `drupal.local` to your local machine:
 
 ```
-127.0.0.1 drupal.local
+    127.0.0.1 drupal.local
 ```
 
 **2. Test in browser**
@@ -516,7 +515,7 @@ After your Drupal site is installed and validate, take these steps to harden sec
 
 1. Harden the MySQL Installation
 
-```
+```command
     sudo mysql_secure_installation
 ```
 
@@ -536,12 +535,12 @@ These steps help protect your Drupal site from unauthorized access and are stron
 
 Ensure the `web/sites/default` directory is writable by the web server during installation:
 
-```
+```command
     sudo chown -R www-data:www-data web/sites/default
 ```
 After installation, lock down permissions:
 
-```
+```command
     sudo chmod 444 web/sites/default/settings.php
 ```
 
@@ -595,14 +594,14 @@ Composer tracks dependencies explicitly, reducing the risk of missing extensions
 **Encouraging use of Drush for Command-Line Efficiency**
 
 Drush streamlines tasks like site installation, cache clearing, and module management. Once installed via Composer, it becomes available in the project’s `/vendor/bin` directory.Check Drush status:
-
+command
 ```
     ./vendor/bin/drush/status
 ```
 
 If you get errors like missing "Symfony" classes or auto-load failures, check that you're in the correct project folder containing:
 
-```
+```command
     `composer.json`, `vendor/`, and `web/`
 ```
 
@@ -611,7 +610,7 @@ If you get errors like missing "Symfony" classes or auto-load failures, check th
 
 To confirm you're in the right directory, run:
 
-```
+```command
     ls
 ```
 
