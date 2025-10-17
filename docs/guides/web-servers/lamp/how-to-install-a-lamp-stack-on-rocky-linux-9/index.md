@@ -132,7 +132,7 @@ You will see "Complete!" when it has successfully installed.
     - Press **Enter** when asked for the current root password (there isn't one yet)
 
 {{< note >}}
-On some systems, you may see a message that your root account is already protected with unix_socket authentication. If so, you can safely answer **n** to skip this step and continue with the remaining prompts.
+On some systems, you may see a message that your root account is already protected with unix socket authentication. If so, you can safely answer **n** to skip this step and continue with the remaining prompts.
 {{< /note >}}
 
     - Type **Y** to change the root password, then enter and confirm a strong password
@@ -558,7 +558,7 @@ Some systems may not support `apachectl -M`. Using `httpd -M` is more reliable o
 For detailed ModSecurity configuration and rules:
 
 [Apache ModSecurity Guide](https://www.linode.com/docs/guides/securing-apache2-with-modsecurity/).
-[Apache mod_security module: A practical guide - Sling Academy](https://www.slingacademy.com/article/apache-mod-security-module-practical-guide/#google_vignette).
+[Apache Modsecurity module: A practical guide - Sling Academy](https://www.slingacademy.com/article/apache-mod-security-module-practical-guide/#google_vignette).
 [How to Install Modsecurity 2 OWASP CRS with Apache on Ubuntu 24.04/22.04/20.04 - LinuxCapable](https://linuxcapable.com/how-to-install-modsecurity-with-apache-on-ubuntu-linux/).
 
 For advanced rule sets and customization, see the [OWASP ModSecurity Core Rule Set](https://coreruleset.org/) and [Sling Academy’s practical guide](https://www.slingacademy.com/article/apache-mod-security-module-practical-guide/).
