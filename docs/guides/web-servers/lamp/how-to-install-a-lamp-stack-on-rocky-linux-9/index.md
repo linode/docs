@@ -6,7 +6,7 @@ description: 'This guide provides some background about a Linux LAMP stack insta
 authors: ["Diana Hoober"]
 contributors: ["Diana Hoober"]
 published: 2025-10-10
-keywords: ['LAMP stack','LAMP CentOS 8,'install LAMP stack', 'install Apache', 'MariaDB', 'PHP on Rocky Linux 9', 'how to install a LAMP Stack on Rocky Linux 9', 'Ubuntu 22.04', 'centos 8', 'centos replacement']
+keywords: ['LAMP stack','LAMP CentOS 8','install LAMP stack', 'install Apache', 'MariaDB', 'PHP on Rocky Linux 9', 'how to install a LAMP Stack on Rocky Linux 9', 'Ubuntu 22.04', 'centos 8', 'centos replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
