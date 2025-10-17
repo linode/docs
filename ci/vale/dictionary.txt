@@ -58,6 +58,7 @@ aniszczyk
 anonymization
 anonymize
 anonymizing
+anotheruser
 ansi
 ansible
 ansible's
@@ -68,6 +69,7 @@ anycasted
 anycasting
 ap
 apache2
+apachectl
 APCu
 apfs
 api
@@ -285,6 +287,7 @@ centos7
 ceph
 cer
 certbot
+Certbot
 certcheck
 certutil
 cetera
@@ -561,6 +564,7 @@ devtmpfs
 dex
 df
 dhclient
+dhcpv6
 dhparams
 dia
 dialogs
@@ -593,6 +597,7 @@ dmg
 dmitriy
 dmz
 dnf
+dnf-automatic
 dns
 dns_linode
 DNSdumpster
@@ -743,6 +748,7 @@ fb4c
 fcgi
 fcgid
 fcgiwrap
+fcontext
 fcrontab
 fd
 fdisk
@@ -779,6 +785,7 @@ fintech
 firefart
 firehose
 firewalld
+firewalld's
 firewalled
 firewalling
 firstsite
@@ -795,6 +802,7 @@ fn
 fn
 Focalboard
 foodcritic
+fopen
 fordham
 fordham
 formatters
@@ -862,6 +870,7 @@ geoip
 geolocating
 geolocation
 geospatial
+getenforce
 getmail
 getprivs
 getpwent
@@ -994,6 +1003,7 @@ host1
 host2
 hostname
 hostnames
+hotcopy
 hotfix
 hotfixes
 hotlink
@@ -1087,6 +1097,7 @@ inet
 inet6
 infector
 inferencing
+infile
 infographic
 infosec
 ingester
@@ -1331,6 +1342,8 @@ li181
 li263
 lib32
 libaprutil1
+libapache
+libapache2
 libc
 libc6
 libcontainer
@@ -1477,6 +1490,7 @@ mBlock
 mbox
 Mbps
 MBps
+mbstring
 mbstrings
 mcrypt
 mcy
@@ -1576,6 +1590,7 @@ mod_wsgi
 moddable
 modinfo
 modsecurity
+Modsecurity
 modularization
 Mojang
 mongocryptd
@@ -1658,6 +1673,7 @@ mysql_config_editor
 mysql_secure_installation
 mysqlclient10
 mysqld
+mysqlnd
 mysqldefault
 mysqldump
 mysqli
@@ -1876,6 +1892,7 @@ passdb
 Passky
 passlib
 passphraseless
+passthru
 passwd
 passwdcolumn
 passwdfile
@@ -1919,6 +1936,7 @@ php
 php5
 php7
 phpFox
+phpinfo
 PHPMailer
 phpmyadmin
 Phrack
@@ -1956,6 +1974,7 @@ pop3
 pop3d
 pop3s
 popeye
+popen
 poplib
 portainer
 portmapper
@@ -2010,6 +2029,7 @@ procfile
 procmail
 procs
 productpage
+projectname
 prolog
 promlens
 promo_codes
@@ -2162,6 +2182,7 @@ respawn
 resque
 restapi
 restic
+restorecon
 restreaming
 Restyaboard
 retargetly
@@ -2300,6 +2321,7 @@ sed
 sekurlsa
 Seldon
 selinux
+semanage
 sendable
 sendmail
 sentdex
@@ -2321,6 +2343,7 @@ setguid
 setsebool
 setters
 setuid
+setuuid
 setuptools
 Severalnines
 sfadmin
@@ -2491,6 +2514,9 @@ sury
 suse
 Sussman
 svn
+svnadmin
+svnserve
+svnuser
 swappable
 swappiness
 symantec
@@ -2981,8 +3007,10 @@ yoast
 yourdomain
 yourdomainorsubdomainhere
 yourname
+yourserver
 yourservice
 yoursite
+yourusername
 youtube
 yubico
 yubikey
