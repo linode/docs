@@ -22,15 +22,16 @@ This guide outlines multiple installation paths for Apache Subversion (SVN) on U
 Root or sudo permissions are required for installing packages, configuring Apache, and managing repository permissions.
 
 - Ubuntu 24.04 LTS system (fresh or upgraded). To verify:
-- 
+
 ```command
     lsb_release -a
 ```
-  Expected output should show "Ubuntu 24.04 LTS"
+ Expected output should show "Ubuntu 24.04 LTS"
+  
 - Internet access
 - Optional: Apache (`apache2`) if you plan to serve SVN over HTTP/WebDAV
-  - Fresh systems will need to install Apache (covered in the installation steps below).
-  - Upgraded systems may already have Apache installed.
+- Fresh systems will need to install Apache (covered in the installation steps below).
+- Upgraded systems may already have Apache installed.
 
 ### Subversion Components by Role
 
@@ -116,6 +117,7 @@ For users starting from a clean system with no prior SVN setup.
     sudo add-apt-repository universe
     sudo apt install subversion apache2 libapache2-mod-svn
 ```
+
 Pressing `[ENTER]` when prompted confirms that you want to add the universe repository.
 For further details about what is installed, see the [Apache Subversion documentation](https://subversion.apache.org/docs/).
 
@@ -261,6 +263,7 @@ Open your web browser and navigate to :
     http://your-server-ip/svn/project
 
 You should:
+
 1. Be prompted for authentication (username and password you created).
 2. Enter the credentials yiou created with 'htpasswd'.
 3. See a page displaying **"project - Revision 0: /"** with "Powered by Apache Subversion
@@ -290,6 +293,7 @@ Document your current SVN configuration before upgrading. Run these commands and
 ```
 {{< note >}}
 Record the SVN version (typically **1.14.1** on Ubuntu 22.04). You'll compare this after the upgrade to confirm the update to version 1.14.3 on Ubuntu 24.04. If you have custom configurations in your `dav_svn.conf` file, consider backing up the file:
+
 ```command
     sudo cp /etc/apache2/mods-enabled/dav_svn.conf/ root/dav_svn.conf.backup
 ```
@@ -334,6 +338,7 @@ The upgrade process will:
 ```command
     sudo reboot
 ```
+
 Wait for the system to come back online before proceeding to the next step.
 
 **After reboot: Validate the Upgrade**
@@ -357,11 +362,13 @@ Check the SVN version:
 You should see **version 1.14.3** (upgraded from 1.14.1 on Ubuntu 22.04).
 
 **Confirm Apache SVN Module**
+
 Verify the Apache SVN module is still loaded:
 
 ```command
     apache2ctl -M | grep dav_svn
 ```
+
 You should see `dav_svn_module (shared)` listed.
 
 **Validate Existing Repositories**
@@ -372,6 +379,7 @@ Verify your repository integrity and permissions:
     ls -la /var/svn/testproject
     svnadmin verify /var/svn/testproject
 ```
+
 The repository structure should be intact with `www-data:www-data` ownership. If permissions were changed during upgrade, restore them:
 
 ```command
@@ -386,7 +394,7 @@ http://your-server-ip/svn/testproject
 
 You should be able to authenticate and see your repository, now powered by Subversion 1.14.3.
 
-**Troubleshooting Post-Upgrade Issues**
+### Troubleshooting Post-Upgrade Issues
 
 **If Apache fails to start after upgrade:**
 
@@ -574,12 +582,12 @@ Edit your Subversion config file (e.g., `/etc/apache2/sites-available/svn.conf`)
 
 ```command
 <Location /svn/projectname>
-  DAV svn
-  SVNPath /srv/svn/projectname
-  AuthType Basic
-  AuthName "SVN Project"
-  AuthUserFile /etc/apache2/dav_svn.passwd
-  Require valid-user
+    DAV svn
+    SVNPath /srv/svn/projectname
+    AuthType Basic
+    AuthName "SVN Project"
+    AuthUserFile /etc/apache2/dav_svn.passwd
+    Require valid-user
 </Location>
 ```
 Restart Apache:
