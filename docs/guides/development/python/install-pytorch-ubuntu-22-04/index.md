@@ -35,7 +35,7 @@ To install and run PyTorch comfortably, your system should have:
 - No conflicting Python packages
 - At least 3 - 5 GB of free disk space, depending on your python version, virtual environment setup, and additional packages. If working on a minimal or resource-constrained system, consider checking available disk space with:
 
-```
+```command
     df -h
 ```
 
@@ -45,7 +45,7 @@ To install and run PyTorch comfortably, your system should have:
 
 Once you have taken care of prerequisites, run:
 
-```
+```command
     sudo apt update && sudo apt upgrade
 ```
 
@@ -72,13 +72,13 @@ Rebooting may seem like a quick fix, but it can obscure errors and delay trouble
 
 If you skipped service restarts during the upgrade process, you can apply the updates manually using `systemctl`:
 
-```
+```command
     sudo systemctl restart <service-name>
 ```
 
     Replacing `<service-name>` with the actual service, such as:
 
-```
+```command
     sudo systemctl restart ssh
     sudo systemctl restart samba
     sudo systemctl restart apache2
@@ -100,14 +100,14 @@ If the service fails to restart or behaves unexpectedly, see Troubleshooting: [R
 
 3. Install Python and pip (if not already installed). To check:
 
-```
+```command
     python3 --version
     pip3 --version
 ```
 
 If it isn't installed, fails or shows an older version (e.g., Python 2.x), then install or update with:
 
-```
+```command
     sudo apt install python3 python3-pip
 ```
 
@@ -117,25 +117,25 @@ Then re-run the above validate version steps to confirm.
 
 To isolate dependencies and avoid system-wide installs, you can create a virtual environment by running:
 
-```
+```command
     python3 -m venv pytorch-env
 ```
 
 Then do:
 
-```
+```command
     ls pytorch-env/bin
 ```
 
 You should see files like `activate`, `pip`, and `python`. If you see these files then run:
 
-```
+```command
     source pytorch-env/bin/activate
 ```
 
 To activate the virtual environment. If you do not see activate, then install the missing package:
 
-```
+```command
     sudo apt install python3.10-venv (where .10 is the latest stable version)
 ```
 
@@ -158,7 +158,7 @@ This is optional but recommended. It isolates your PyTorch install, protects sys
 
 To install the latest stable versions optimized for CPU use--perfect for lightweight experimentation or server-side work, run:
 
-```
+```command
     pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 ```
 
@@ -170,7 +170,7 @@ For other configurations (e.g., GPU-enabled installs), refer to [PyTorch's offic
 
 Run the following Python commands to confirm PyTorch is installed and check for CUDA support:
 
-```
+```command
     python -c "import torch; print(torch.__version__)"
 ```
 
@@ -188,7 +188,7 @@ Whether you're switching builds, cleaning up an environment, or troubleshooting 
 
 ### Uninstall inside a virtual environment:
 
-```
+```command
     pip uninstall torch torchvision torchaudio
 ```
 
