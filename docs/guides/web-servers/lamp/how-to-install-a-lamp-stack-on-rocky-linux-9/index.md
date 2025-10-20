@@ -515,9 +515,9 @@ allow_url_include = Off
 
 1. Restart Apache:
 
-    ```command
+```command
     sudo systemctl restart httpd
-    ```
+```
 
 ### Install and Configure ModSecurity (Optional)
 
@@ -530,7 +530,7 @@ These steps enhance the security of your LAMP Stack on Rocky Linux 9, especially
 ```command
     sudo dnf install mod_security -y
 ```
-    
+
 Expected output: The terminal will display a summary ending with "Complete!" indicating successful installation.
 
 2. Enable and start ModSecurity:
