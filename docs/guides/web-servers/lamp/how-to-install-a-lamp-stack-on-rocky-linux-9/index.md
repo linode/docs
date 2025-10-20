@@ -540,7 +540,7 @@ Restart Apache to load the ModSecurity module:
 ```command
     sudo systemctl restart httpd
 ```
-    
+
 A silent return to the prompt indicates success.
 
 1. Verify ModSecurity is loaded:
