@@ -98,7 +98,7 @@ Press **q** (for quit) to END.
 Before testing Apache, you must configure the firewall to allow HTTP/HTTPS traffic. See the [Configure Firewall](#configure-firewall) section under Security Hardening below.
 {{< /note >}}
 
-After configuring the firewall, test Apache by visiting your server's IP address (replace with your actual IP address). You should see the default Rocky Linux Apache test page.
+After configuring the firewall, test Apache by visiting your server's IP address http://your_server_ip (replace with your actual IP address). You should see the default Rocky Linux Apache test page.
 
 ## Install MariaDB
 
@@ -135,19 +135,19 @@ You will see "Complete!" when it has successfully installed.
 On some systems, you may see a message that your root account is already protected with unix socket authentication. If so, you can safely answer **n** to skip this step and continue with the remaining prompts.
 {{< /note >}}
 
-    - Type **Y** to change the root password, then enter and confirm a strong password
+Type **Y** to change the root password, then enter and confirm a strong password
 
-    {{< note >}}
-    **Important:** Store this root password securely. You will need it to:
+{{< note >}}
+**Important:** Store this root password securely. You will need it to:
     - Access the MariaDB command line (`mysql -u root -p`)
     - Create databases and users
     - Perform database administration tasks
-    {{< /note >}}
+{{< /note >}}
 
-    - Type **Y** to remove anonymous users
-    - Type **Y** to disallow root login remotely
-    - Type **Y** to remove the test database
-    - Type **Y** to reload privilege tables
+- Type **Y** to remove anonymous users
+- Type **Y** to disallow root login remotely
+- Type **Y** to remove the test database
+- Type **Y** to reload privilege tables
 
 1. Verify MariaDB is running:
 
@@ -218,7 +218,7 @@ phpinfo();
 
 3. Save and exit the file (Ctrl+X, then Y, then Enter).
 
-4. Set proper permissions:
+4. Set appropriate permissions:
 ```command
     sudo chown apache:apache /var/www/html/info.php
 ```
@@ -309,14 +309,15 @@ Modern servers face constant, automated attacks from across the internet. This s
 
 ### Security Prerequisites
 
-Before hardening the LAMP stack, secure SSH access to your server. SSH is the most frequently attacked service on internet-facing systems—new servers often receive hundreds of unauthorized login attempts within the first hour.
+Before hardening the LAMP stack, secure SSH access to your server. SSH is the most frequently attacked service on internet-facing systems--as mentioned, new servers often receive hundreds of unauthorized login attempts within the first hour.
 
 **Complete these essential security steps first:**
 
-- **[Securing Your Server](link-to-ssh-guide)** - Create non-root user, configure SSH keys, disable root login
-- **[Using Fail2ban to Block Brute Force Attacks](link-to-fail2ban-guide)** - Automatically block repeated failed login attempts
+- **Securing Your Server[SSH Hub](https://www.linode.com/docs/guides/security/ssh/)** - Create non-root user, configure SSH keys, disable root login
+- **[How to Use Fail2ban to Secure Your Server](https://www.linode.com/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/)** - Automatically block repeated failed login attempts.
+- **[What is Fail2Ban with Setup & Configuration? (Detailed Guide)]**(https://runcloud.io/blog/what-is-fail2ban)
 
-These guides must be completed before proceeding with LAMP stack hardening to ensure your server has basic protection against the most common attack vectors.
+These guides **must** be completed before proceeding with LAMP stack hardening to ensure your server has basic protection against the most common attack vectors.
 
 {{< note >}}
 If SSH is not secured yet, your server remains vulnerable to automated attacks-even with a hardened LAMP stack. Address SSH security first.
@@ -324,7 +325,7 @@ If SSH is not secured yet, your server remains vulnerable to automated attacks-e
 
 ### Configure Firewall
 
-Rocky Linux 9 uses firewalld to manage network traffic. A properly configured firewall defines your network perimeter, blocking all traffic except explicitly allowed services. This minimizes exposure and prevents unauthorized access.
+Rocky Linux 9 uses [firewalld](https://firewalld.org/documentation/) to manage network traffic. A properly configured firewall defines your network perimeter, blocking all traffic except explicitly allowed services. This minimizes exposure and prevents unauthorized access.
 
 1. Verify firewalld is running:
 ```command
@@ -342,7 +343,7 @@ The output should show `enabled` and `active (running)`. If firewalld is not run
     sudo firewall-cmd --permanent --add-service=http
     sudo firewall-cmd --permanent --add-service=https
 ```
-    The `--permanent` flag ensures these rules persist across reboots.
+The `--permanent` flag ensures these rules persist across reboots.
 
 3. If you changed SSH to a non-standard port (recommended for security), allow it:
 ```command
@@ -379,6 +380,7 @@ Rocky Linux 9 has SELinux (Security-Enhanced Linux) enabled by default. SELinux 
 ```command
     getenforce
 ```
+
 ```output
     Enforcing
 ```
@@ -393,14 +395,15 @@ Rocky Linux 9 has SELinux (Security-Enhanced Linux) enabled by default. SELinux 
     sudo setsebool -P httpd_can_sendmail 1
 ```
 
-    {{< note >}}
-    Only enable these if your applications require them. The `-P` flag makes the setting persistent across reboots.
-    {{< /note >}}
+{{< note >}}
+Only enable these if your applications require them. The `-P` flag makes the setting persistent across reboots.
+{{< /note >}}
 
 Then verify both:
 ```command
     getsebool httpd_can_network_connect_db httpd_can_sendmail
     ```
+
 Expected output:
 ```output
 httpd_can_network_connect_db --> on
@@ -417,6 +420,7 @@ Check the SELinux context of the directory:
     ls -Z /var/www/html
     ls -Zd /var/www/html
 ```
+
 ```output
     system_u:object_r:httpd_sys_content_t:s0 /var/www/html
 ```
@@ -451,9 +455,9 @@ Options -Indexes FollowSymLinks
     sudo systemctl status httpd
     ```
 Expected output:
-    - First command: `Syntax OK`
-    - Second command: Silent return to prompt (no output)
-    - Third command: Shows `active (running)` and `Started The Apache HTTP Server`
+- First command: `Syntax OK`
+- Second command: Silent return to prompt (no output)
+- Third command: Shows `active (running)` and `Started The Apache HTTP Server`
 
 ### Secure MariaDB
 
@@ -476,7 +480,7 @@ local-infile = 0
     ```command
     sudo systemctl restart mariadb
     ```
-1.Verify MariaDB is running:
+1. Verify MariaDB is running:
 
 ```command
     sudo systemctl status mariadb
@@ -523,33 +527,36 @@ ModSecurity is a web application firewall (WAF) that provides additional protect
 
 These steps enhance the security of your LAMP Stack on Rocky Linux 9, especially for production environments or public-facing servers.
 
-    ```command
+```command
     sudo dnf install mod_security -y
-    ```
+```
+    
 Expected output: The terminal will display a summary ending with "Complete!" indicating successful installation.
 
 2. Enable and start ModSecurity:
 
 Restart Apache to load the ModSecurity module:
 
-    ```command
+```command
     sudo systemctl restart httpd
-    ```
+```
+    
 A silent return to the prompt indicates success.
 
 1. Verify ModSecurity is loaded:
 
 To confirm that Mod Security is active, use the following command:
 
-    ```command
+```command
     sudo httpd -M | grep security
     ```
 
 This lists all loaded Apache modules and filters for ModSecurity. If installed correctly, you should see:
 
-    ```output
+
+```output
     security2_module (shared)
-    ```
+```
 
 {{< note >}}
 Some systems may not support `apachectl -M`. Using `httpd -M` is more reliable on Rocky Linux 9.
@@ -558,7 +565,9 @@ Some systems may not support `apachectl -M`. Using `httpd -M` is more reliable o
 For detailed ModSecurity configuration and rules:
 
 [Apache ModSecurity Guide](https://www.linode.com/docs/guides/securing-apache2-with-modsecurity/).
+
 [Apache Modsecurity module: A practical guide - Sling Academy](https://www.slingacademy.com/article/apache-mod-security-module-practical-guide/#google_vignette).
+
 [How to Install Modsecurity 2 OWASP CRS with Apache on Ubuntu 24.04/22.04/20.04 - LinuxCapable](https://linuxcapable.com/how-to-install-modsecurity-with-apache-on-ubuntu-linux/).
 
 For advanced rule sets and customization, see the [OWASP ModSecurity Core Rule Set](https://coreruleset.org/) and [Sling Academy’s practical guide](https://www.slingacademy.com/article/apache-mod-security-module-practical-guide/).
@@ -569,16 +578,16 @@ Security vulnerabilities are discovered constantly. Manually checking for and ap
 
 1. Install the `dnf-automatic` package:
 
-    ```command
+```command
     sudo dnf install dnf-automatic -y
-    ```
+```
 Expected output: The terminal will display a summary ending with "Complete!" indicating successful installation.
 
 1. Configure automatic updates by editing the configuration:
 
-    ```command
+```command
     sudo nano /etc/dnf/automatic.conf
-    ```
+```
 
 1. Set `apply_updates` to `yes`:
 
@@ -589,16 +598,15 @@ apply_updates = yes
 
 1. Enable and start the automatic update timer:
 
-    ```command
-    sudo systemctl enable --now dnf-automatic.timer
-    ```
+```command
+    sudo systemctl enable --now dnf-automatic.timer```
 
 ### Configure Log Rotation
 
 Log rotation is enabled by default: Rocky Linux 9 includes `logrotate` as part of its base system, and it's configured to rotate logs for common services like Apache (`httpd`) and MariaDB:
 
 ```command
-ls /etc/logrotate.d/
+    ls /etc/logrotate.d/
 ```
 -  Lists all service-specific rotation configs.
 
@@ -608,7 +616,7 @@ ls /etc/logrotate.d/
     cat /etc/logrotate.d/httpd
     cat /etc/logrotate.d/mariadb
 ```
-These files define how logs are rotated-for example, weekly rotation, retention of four weeks, and compression of older logs.
+These files define how logs are rotated-for example: weekly rotation, retention of four weeks, and compression of older logs.
 
 ## Post-Install Best Practices
 
@@ -624,7 +632,7 @@ For production environments, implement regular backups:
 For production websites, always use HTTPS with a valid SSL/TLS certificate.
 
 {{< note >}}
-See the guide for [Enabling HTTPS Using Certbot with Apache on CentOS 8](https://www.linode.com/docs/guides/enabling-https-using-certbot-with-apache-on-centos-8/) for detailed instructions. The process is nearly identical on Rocky Linux 9.Alternatively, see [CrownCloud's updated guide](https://wiki.crowncloud.net/?How_to_Install_Lets_Encrypt_SSL_with_LAMP_Stack_on_Rocky_Linux_9) for a Rocky-specific walkthrough.
+See the guide for [Reintech Guide]([https://www.linode.com/docs/guides/enabling-https-using-certbot-with-apache-on-centos-8](https://reintech.io/blog/securing-apache-with-lets-encrypt-rocky-linux-9)/) for detailed instructions. Specifically written for Rocky Linux 9. Alternatively, see [CrownCloud's updated guide](https://wiki.crowncloud.net/?How_to_Install_Lets_Encrypt_SSL_with_LAMP_Stack_on_Rocky_Linux_9) for a Rocky-specific walkthrough.
 {{< /note >}}
 
 ## Migration-Specific Considerations
@@ -668,6 +676,5 @@ Rocky Linux 9 provides a stable, long-term CentOS 8 replacement with identical c
 ## Additional Resources
 
 - [Linode's LAMP Installation Guide](https://www.linode.com/docs/guides/how-to-install-lamp-stack-on-fedora-alma-rocky-linux/) - Complete installation walkthrough
-- [SELinux Guide for CentOS 8](https://www.linode.com/docs/guides/a-beginners-guide-to-selinux-on-centos-8/) - Applicable to Rocky Linux 9
-- [Apache ModSecurity Guide](https://www.linode.com/docs/guides/securing-apache2-with-modsecurity/) - Advanced web application firewall
-- [Certbot with Apache](https://www.linode.com/docs/guides/enabling-https-using-certbot-with-apache-on-centos-8/) - SSL/TLS certificate automation
+- [Rocky Linux Official SELinux Documentation:](https://docs.rockylinux.org/10/guides/security/learning_selinux/) - Applicable to Rocky Linux 9
+- [Rocky Linux Official ModSecurity/WAF Guide:]https://docs.rockylinux.org/guides/web/apache_hardened_webserver/modsecurity/) - Advanced web application firewall
