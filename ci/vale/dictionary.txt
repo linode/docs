@@ -58,6 +58,7 @@ aniszczyk
 anonymization
 anonymize
 anonymizing
+anotheruser
 ansi
 ansible
 ansible's
@@ -557,6 +558,7 @@ devel
 devfs
 devops
 devpts
+devteam
 devtmpfs
 dex
 df
@@ -578,6 +580,7 @@ direnv
 dirtycow
 discoverability
 diskpart
+dismod
 disqus
 distro
 distros
@@ -674,6 +677,7 @@ emisoft
 emojivoto
 emscripten
 EMTs
+enconf
 ender
 enduser
 enix
@@ -994,6 +998,8 @@ host1
 host2
 hostname
 hostnames
+hotcopy
+Hotcopy
 hotfix
 hotfixes
 hotlink
@@ -1330,6 +1336,7 @@ lf
 li181
 li263
 lib32
+libapache
 libaprutil1
 libc
 libc6
@@ -2010,6 +2017,7 @@ procfile
 procmail
 procs
 productpage
+projectname
 prolog
 promlens
 promo_codes
@@ -2321,6 +2329,7 @@ setguid
 setsebool
 setters
 setuid
+setuuid
 setuptools
 Severalnines
 sfadmin
@@ -2491,6 +2500,8 @@ sury
 suse
 Sussman
 svn
+svnadmin
+svnuser
 swappable
 swappiness
 symantec
@@ -2549,6 +2560,7 @@ testdeep
 testfile
 testkeys
 testparam
+testproject
 testuser
 tetris
 tf
@@ -2981,8 +2993,10 @@ yoast
 yourdomain
 yourdomainorsubdomainhere
 yourname
+yourserver
 yourservice
 yoursite
+yourusername
 youtube
 yubico
 yubikey
