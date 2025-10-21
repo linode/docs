@@ -377,6 +377,7 @@ Replace `2222` with whatever port number you configured for SSH. Common non-stan
 Rocky Linux 9 has SELinux (Security-Enhanced Linux) enabled by default. SELinux provides mandatory access control, limiting the damage an attacker can cause even if they compromise a service. Never disable SELinux in production environments.
 
 1. Verify SELinux is enforcing:
+2.
 ```command
     getenforce
 ```
@@ -386,12 +387,13 @@ Rocky Linux 9 has SELinux (Security-Enhanced Linux) enabled by default. SELinux 
 ```
 
 2. If your web applications need to connect to remote databases or send email, configure the appropriate SELinux booleans:
+
 ```command
     # Allow Apache to connect to remote databases
     sudo setsebool -P httpd_can_network_connect_db 1
 
     # Allow Apache to send email
-    command
+
     sudo setsebool -P httpd_can_sendmail 1
 ```
 
@@ -400,9 +402,10 @@ Only enable these if your applications require them. The `-P` flag makes the set
 {{< /note >}}
 
 Then verify both:
+
 ```command
     getsebool httpd_can_network_connect_db httpd_can_sendmail
-    ```
+```
 
 Expected output:
 ```output
@@ -411,12 +414,14 @@ httpd_can_sendmail --> on
 ```
 
 3. Set correct SELinux contexts for web content:
+4.
 ```command
     sudo semanage fcontext -a -t httpd_sys_content_t "/var/www/html(/.*)?"
     sudo restorecon -Rv /var/www/html
 ```
 Check the SELinux context of the directory:
-```
+
+```command
     ls -Z /var/www/html
     ls -Zd /var/www/html
 ```
@@ -430,9 +435,9 @@ The `httpd_sys_content_t` context allows Apache to serve files from this directo
 
 1. Hide Apache version information by editing the Apache configuration:
 
-    ```command
+```command
     sudo nano /etc/httpd/conf/httpd.conf
-    ```
+```
 
 1. Add or modify these lines:
 
@@ -463,9 +468,9 @@ Expected output:
 
 1. Edit the MariaDB configuration:
 
-    ```command
+```command
     sudo nano /etc/my.cnf.d/mariadb-server.cnf
-    ```
+```
 
 1. Add these security settings under the `[mysqld]` section:
 
@@ -477,9 +482,9 @@ local-infile = 0
 
 1. Restart MariaDB:
 
-    ```command
+```command
     sudo systemctl restart mariadb
-    ```
+```
 1. Verify MariaDB is running:
 
 ```command
@@ -490,9 +495,9 @@ local-infile = 0
 
 1. Edit the PHP configuration:
 
-    ```command
+```command
     sudo nano /etc/php.ini
-    ```
+```
 
 1. Modify these security-related settings:
 
@@ -508,10 +513,10 @@ allow_url_include = Off
 
 1. Create the PHP log directory:
 
-    ```command
+```command
     sudo mkdir -p /var/log/php
     sudo chown apache:apache /var/log/php
-    ```
+```
 
 1. Restart Apache:
 
@@ -533,7 +538,7 @@ These steps enhance the security of your LAMP Stack on Rocky Linux 9, especially
 
 Expected output: The terminal will display a summary ending with "Complete!" indicating successful installation.
 
-2. Enable and start ModSecurity:
+1. Enable and start ModSecurity:
 
 Restart Apache to load the ModSecurity module:
 
@@ -549,10 +554,9 @@ To confirm that Mod Security is active, use the following command:
 
 ```command
     sudo httpd -M | grep security
-    ```
+```
 
 This lists all loaded Apache modules and filters for ModSecurity. If installed correctly, you should see:
-
 
 ```output
     security2_module (shared)
@@ -599,7 +603,8 @@ apply_updates = yes
 1. Enable and start the automatic update timer:
 
 ```command
-    sudo systemctl enable --now dnf-automatic.timer```
+    sudo systemctl enable --now dnf-automatic.timer
+```
 
 ### Configure Log Rotation
 
@@ -608,6 +613,7 @@ Log rotation is enabled by default: Rocky Linux 9 includes `logrotate` as part o
 ```command
     ls /etc/logrotate.d/
 ```
+
 -  Lists all service-specific rotation configs.
 
 -  To see configuration files for `httpd` and `mariadb`:
@@ -632,7 +638,7 @@ For production environments, implement regular backups:
 For production websites, always use HTTPS with a valid SSL/TLS certificate.
 
 {{< note >}}
-See the guide for [Reintech Guide]([https://www.linode.com/docs/guides/enabling-https-using-certbot-with-apache-on-centos-8](https://reintech.io/blog/securing-apache-with-lets-encrypt-rocky-linux-9)/) for detailed instructions. Specifically written for Rocky Linux 9. Alternatively, see [CrownCloud's updated guide](https://wiki.crowncloud.net/?How_to_Install_Lets_Encrypt_SSL_with_LAMP_Stack_on_Rocky_Linux_9) for a Rocky-specific walkthrough.
+See the guide for [Reintech]([https://www.linode.com/docs/guides/enabling-https-using-certbot-with-apache-on-centos-8](https://reintech.io/blog/securing-apache-with-lets-encrypt-rocky-linux-9)/) for detailed instructions. Specifically written for Rocky Linux 9. Alternatively, see [CrownCloud's updated guide](https://wiki.crowncloud.net/?How_to_Install_Lets_Encrypt_SSL_with_LAMP_Stack_on_Rocky_Linux_9) for a Rocky-specific walkthrough.
 {{< /note >}}
 
 ## Migration-Specific Considerations
@@ -677,4 +683,4 @@ Rocky Linux 9 provides a stable, long-term CentOS 8 replacement with identical c
 
 - [Linode's LAMP Installation Guide](https://www.linode.com/docs/guides/how-to-install-lamp-stack-on-fedora-alma-rocky-linux/) - Complete installation walkthrough
 - [Rocky Linux Official SELinux Documentation:](https://docs.rockylinux.org/10/guides/security/learning_selinux/) - Applicable to Rocky Linux 9
-- [Rocky Linux Official ModSecurity/WAF Guide:]https://docs.rockylinux.org/guides/web/apache_hardened_webserver/modsecurity/) - Advanced web application firewall
+- [Rocky Linux Official ModSecurity/WAF Guide:](https://docs.rockylinux.org/guides/web/apache_hardened_webserver/modsecurity/) - Advanced web application firewall
