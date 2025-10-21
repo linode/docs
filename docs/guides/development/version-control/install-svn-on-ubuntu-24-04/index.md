@@ -1,5 +1,5 @@
 ---
-slug: how-to-install-svn-on-ubuntu-24-04
+slug: install-svn-on-ubuntu-24-04
 title: "Install Subversion on Ubuntu 24.04"
 title_meta: "Install Subversion on Ubuntu 24.04"
 description: "Step-by-step guide for installing Subversion on Ubuntu 24.04 with contributor-safe practices"
@@ -43,7 +43,7 @@ Root or sudo permissions are required for installing packages, configuring Apach
 
 Contributor-Safe Notes
 •	The client-only setup is lean and ideal for contributors who don’t need to host anything.
-•	The server setup requires Apache modules (mod_dav_svn) and configuration for access control.
+•	The server setup requires Apache modules (mod dav svn (use underscores for spaces)) and configuration for access control.
 •	The local team setup is useful for small groups sharing a single machine or LAN-based repo.
 
 ## Choose Your Path
@@ -52,7 +52,7 @@ Follow the installation path that matches your needs:
 
 - **Path A: [Client-Only Setup](#client-only-setup)** - You need to connect to an existing remote Subversion repository. Install only the `svn` client.
 
-- **Path B: [Fresh Server Installation](#fresh-server-installation)** - You're setting up a new Subversion server with Apache for your team. Install Apache, Subversion, and mod_dav_svn.
+- **Path B: [Fresh Server Installation](#fresh-server-installation)** - You're setting up a new Subversion server with Apache for your team. Install Apache, Subversion, and mod dav svn (use underscores for spaces).
 
 - **Path C: [Upgrade from Ubuntu 22.04](#upgrade-from-ubuntu-2204)** - You're upgrading your system and need to validate or reconfigure existing SVN setup.
 
@@ -707,4 +707,4 @@ This preserves local changes and avoids unnecessary resets.
 | **Topic**                      | **Resource**                                                                 | **Why It’s Useful**                                                                 |
 |-------------------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | Subversion Admin Guide        | [Apache Subversion Documentation](https://subversion.apache.org/docs/)     | Searchable documentation index                   |
-| Apache + SVN Integration      | [httpd, the Apache HTTP Server](https://svnbook.red-bean.com/en/1.7/svn.serverconfig.httpd.html) | How Apache serves SVN repos via mod_dav_svn                    |
+| Apache + SVN Integration      | [httpd, the Apache HTTP Server](https://svnbook.red-bean.com/en/1.7/svn.serverconfig.httpd.html) | How Apache serves SVN repos via mod dav svn (use underscores for spaces)                    |
