@@ -691,7 +691,7 @@ This preserves local changes and avoids unnecessary resets.
 
 - If Apache logs are unclear, use these commands for more information:
 
-  ```command
+```command
       journalctl -u apache2
       tail -f /var/log/apache2/error.log
 ```
