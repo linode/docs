@@ -3,8 +3,10 @@ slug: install-pytorch-ubuntu-22-04
 title: Install PyTorch on Ubuntu 22.04
 title_meta: "how to Install PyTorch on Ubuntu 22.04"
 description: 'This guide updates to the current stable version using Pip as the installation tool and expands on how to use the services and features for CPU and GPU.'
-authors: Diana Hoober
-contributors: Diana Hoober
+authors:
+  - Diana Hoober
+contributors:
+  - Diana Hoober
 published: 2021-11-05
 modified: 2025-09-29
 keywords: ["pytorch install", "pytorch cpu", "conda install pytorch", "what is pytorch", "uninstall pytorch"]
