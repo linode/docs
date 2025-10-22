@@ -170,8 +170,6 @@ Verify they're active:
 ```
 Each one should now be listed.
 
-[TROUBLESHOOTING NOTE] This section could benefit from troubleshooting links if PHP extensions fail to install or if the grep command returns no results.
-
 #### Check Composer
 
 If checking for Composer installation yields a `composer` not found error, you can install it with:
@@ -349,8 +347,6 @@ If ownership is incorrect, rerun:
 
 And replace `www-data` with your actual web server user if different.
 {{< /note >}}
-
-[TROUBLESHOOTING NOTE] - Could add troubleshooting for permission denied errors when running chown command.
 
 #### Prepare the Database
 
