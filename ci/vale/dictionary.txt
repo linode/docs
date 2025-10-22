@@ -2052,6 +2052,8 @@ pyspark
 pytest
 python3
 pythonic
+pytorch
+Pytorch
 qemu
 qmail
 qmgr
