@@ -8,11 +8,6 @@ contributors: ["Diana Hoober"]
 published: 2025-10-23
 keywords: ["subversion", "ubuntu 24.04", "repository", "version control system", "contributor-safe", "apache", "svn"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)"
-external_resources:
-- '[Subversion Quick Start](https://subversion.apache.org/quick-start.html)'
-- '[SVN Book - Remote Access](https://svnbook.red-bean.com/en/1.7/svn.serverconfig.html)'
-- '[Apache Subversion documentation](https://subversion.apache.org/docs/)'
-- '[httpd, the Apache HTTP Server](https://svnbook.red-bean.com/en/1.7/svn.serverconfig.httpd.html)'
 ---
 
 Subversion (SVN) is a centralized version control system used to track changes in files and directories. SVN remains widely used as a reliable choice for legacy systems, enterprise environments, and collaborative documentation projects. This guide walks through several paths for installation and migration.
