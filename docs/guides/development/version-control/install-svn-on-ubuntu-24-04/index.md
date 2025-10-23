@@ -23,7 +23,7 @@ This guide assumes you're using a fresh or updated Ubuntu 24.04 system and:
 
 -  You'll need a user account with `sudo` privileges.
 -  Familiarity with the command line is helpful but not required.
--  If you're new to version control, see [Introduction to Version Control](https://www.linode.com/docs/guides/introduction-to-version-control/) for an overview of Git, SVN, and other tools.
+-  If you're new to version control, see [Introduction to Version Control](/docs/guides/introduction-to-version-control/) for an overview of Git, SVN, and other tools.
 
 ## System Prerequisites
 
