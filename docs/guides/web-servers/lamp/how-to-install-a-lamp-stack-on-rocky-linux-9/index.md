@@ -8,6 +8,11 @@ contributors: ["Diana Hoober"]
 published: 2025-10-10
 keywords: ['LAMP stack','LAMP CentOS 8','install LAMP stack', 'install Apache', 'MariaDB', 'PHP on Rocky Linux 9', 'how to install a LAMP Stack on Rocky Linux 9', 'Ubuntu 22.04', 'centos 8', 'centos replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+external resources:
+- '[Reintech](https://reintech.io/blog/securing-apache-with-lets-encrypt-rocky-linux-9)'
+- '[CrownCloud's updated guide](https://wiki.crowncloud.net/?How_to_Install_Lets_Encrypt_SSL_with_LAMP_Stack_on_Rocky_Linux_9)'
+- '[Rocky Linux Official SELinux Documentation:](https://docs.rockylinux.org/10/guides/security/learning_selinux/)'
+- '[Rocky Linux Official ModSecurity/WAF Guide:](https://docs.rockylinux.org/guides/web/apache_hardened_webserver/modsecurity/)'
 ---
 
 If you're moving from CentOS 8 to a compatible operating system, this guide walks you through installing a LAMP stack on Rocky Linux 9. The process and commands are nearly identical to what you're used to on CentOS 8 making migration straightforward.
@@ -638,7 +643,7 @@ For production environments, implement regular backups:
 For production websites, always use HTTPS with a valid SSL/TLS certificate.
 
 {{< note >}}
-See the guide for [Reintech]([https://www.linode.com/docs/guides/enabling-https-using-certbot-with-apache-on-centos-8](https://reintech.io/blog/securing-apache-with-lets-encrypt-rocky-linux-9)/) for detailed instructions. Specifically written for Rocky Linux 9. Alternatively, see [CrownCloud's updated guide](https://wiki.crowncloud.net/?How_to_Install_Lets_Encrypt_SSL_with_LAMP_Stack_on_Rocky_Linux_9) for a Rocky-specific walkthrough.
+See the guide for [Reintech](https://reintech.io/blog/securing-apache-with-lets-encrypt-rocky-linux-9) for detailed instructions. Specifically written for Rocky Linux 9. Alternatively, see [CrownCloud's updated guide](https://wiki.crowncloud.net/?How_to_Install_Lets_Encrypt_SSL_with_LAMP_Stack_on_Rocky_Linux_9) for a Rocky-specific walkthrough.
 {{< /note >}}
 
 ## Migration-Specific Considerations
@@ -681,6 +686,6 @@ Rocky Linux 9 provides a stable, long-term CentOS 8 replacement with identical c
 
 ## Additional Resources
 
-- [Linode's LAMP Installation Guide](https://www.linode.com/docs/guides/how-to-install-lamp-stack-on-fedora-alma-rocky-linux/) - Complete installation walkthrough
+- [Linode's LAMP Installation Guide](/docs/guides/how-to-install-lamp-stack-on-fedora-alma-rocky-linux/) - Complete installation walkthrough
 - [Rocky Linux Official SELinux Documentation:](https://docs.rockylinux.org/10/guides/security/learning_selinux/) - Applicable to Rocky Linux 9
 - [Rocky Linux Official ModSecurity/WAF Guide:](https://docs.rockylinux.org/guides/web/apache_hardened_webserver/modsecurity/) - Advanced web application firewall
