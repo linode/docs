@@ -1000,7 +1000,6 @@ host2
 hostname
 hostnames
 hotcopy
-Hotcopy
 hotfix
 hotfixes
 hotlink
@@ -1339,6 +1338,8 @@ li263
 lib32
 libapache
 libaprutil1
+libapache
+libapache2
 libc
 libc6
 libcontainer
@@ -2502,6 +2503,7 @@ suse
 Sussman
 svn
 svnadmin
+svnserve
 svnuser
 swappable
 swappiness
