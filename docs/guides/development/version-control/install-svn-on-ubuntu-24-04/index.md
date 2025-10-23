@@ -1,37 +1,37 @@
 ---
 slug: install-svn-on-ubuntu-24-04
-title: "Install Subversion on Ubuntu 24.04"
+title: "Installing Subversion on Ubuntu 24.04"
 title_meta: "Install Subversion on Ubuntu 24.04"
-description: "Step-by-step guide for installing Subversion on Ubuntu 24.04 with contributor-safe practices"
+description: "Step-by-step guide for installing Subversion on Ubuntu 24.04 with contributor-safe practices using apt or source builds. This guide supports clean server setups."
 authors: ["Diana Hoober"]
 contributors: ["Diana Hoober"]
-published: 2025-09-29
-modified: 2025-09-29
-keywords: ["Subversion", "Ubuntu 24.04", "installation", "version control system", "contributor-safe", "apache"]
+published: 2025-10-23
+keywords: ["subversion", "ubuntu 24.04", "repository", "version control system", "contributor-safe", "apache", "svn"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)"
+external_resources:
+- '[Subversion Quick Start](https://subversion.apache.org/quick-start.html)'
+- '[SVN Book - Remote Access](https://svnbook.red-bean.com/en/1.7/svn.serverconfig.html)'
+- '[Apache Subversion documentation](https://subversion.apache.org/docs/)'
+- '[httpd, the Apache HTTP Server](https://svnbook.red-bean.com/en/1.7/svn.serverconfig.httpd.html)'
 ---
 
-Subversion (SVN) is a centralized version control system used to track changes in files and directories. While Git has become the dominant tool for distributed workflows, Subversion remains widely used in legacy systems, enterprise environments, and collaborative documentation projects.
+Subversion (SVN) is a centralized version control system used to track changes in files and directories. SVN remains widely used as a reliable choice for legacy systems, enterprise environments, and collaborative documentation projects. This guide walks through several paths for installation and migration.
 
 ## Before You Begin
 
-This guide outlines multiple installation paths for Apache Subversion (SVN) on Ubuntu 24.04, and is tailored to the real-world contributor scenario for **Fresh Server Installation**. It skips long configuration dumps in favor of modular steps with links to deeper resources to support a clean starting point.
+This guide assumes you're using a fresh or updated Ubuntu 24.04 system and:
+
+-  You'll need a user account with `sudo` privileges.
+-  Familiarity with the command line is helpful but not required.
+-  If you're new to version control, see [Introduction to Version Control](https://www.linode.com/docs/guides/introduction-to-version-control/) for an overview of Git, SVN, and other tools.
 
 ## System Prerequisites
 
-Root or sudo permissions are required for installing packages, configuring Apache, and managing repository permissions.
-
-- Ubuntu 24.04 LTS system (fresh or upgraded). To verify:
-
-```command
-    lsb_release -a
-```
- Expected output should show "Ubuntu 24.04 LTS"
-
-- Internet access
-- Optional: Apache (`apache2`) if you plan to serve SVN over HTTP/WebDAV
-- Fresh systems will need to install Apache (covered in the installation steps below).
-- Upgraded systems may already have Apache installed.
+-  Ubuntu 24.04 LTS system (fresh or upgraded). To verify:
+-  Internet access to install packages using `apt`
+-  Basic system utilities (`curl`, `wget`, etc.)
+-  Optional: Apache (`apache2`) if you plan to serve SVN over HTTP/WebDAV
+-  Fresh systems will need to install Apache (covered in the installation steps below). Upgraded systems may already have Apache installed.
 
 ### Subversion Components by Role
 
