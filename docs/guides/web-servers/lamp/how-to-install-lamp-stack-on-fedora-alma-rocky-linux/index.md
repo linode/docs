@@ -3,8 +3,9 @@ slug: how-to-install-lamp-stack-on-fedora-alma-rocky-linux
 title: "How to Install a LAMP Stack on Fedora, AlmaLinux, or Rocky Linux"
 description: "This guide explains how to install a LAMP stack on Fedora and the AlmaLinux and Rocky Linux variants."
 authors: ["Jeff Novotny"]
-contributors: ["Jeff Novotny"]
+contributors: ["Diana Hoober"]
 published: 2025-07-31
+modified: 2025-08-31
 keywords: ['LAMP stack Fedora','test LAMP stack','Apache Fedora','MariaDB PHP Fedora']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-fedora-11/','/lamp-guides/fedora-11/','/web-servers/lamp/lamp-server-on-fedora-11/','/guides/lamp-server-on-fedora-11/','/websites/lamp/lamp-server-on-fedora-12/','/web-servers/lamp/lamp-server-on-fedora-12/','/lamp-guides/fedora-12/','/guides/lamp-server-on-fedora-12/','/websites/lamp/lamp-server-on-fedora-13/','/lamp-guides/fedora-13/','/web-servers/lamp/lamp-server-on-fedora-13/','/guides/lamp-server-on-fedora-13/','/web-servers/lamp/lamp-server-on-fedora-14/','/lamp-guides/fedora-14/','/websites/lamp/lamp-server-on-fedora-14/','/guides/lamp-server-on-fedora-14/','/websites/lamp/lamp-server-on-fedora-15/','/lamp-guides/fedora-15/','/web-servers/lamp/lamp-server-on-fedora-15/','/guides/lamp-server-on-fedora-15/']
@@ -21,6 +22,8 @@ relations:
         key: install-lamp-stack
         keywords:
            - distribution: Fedora 38
+           - distribution: AlmaLinux
+           - distribution: Rocky Linux
 ---
 
 One of the most popular open-source web development platforms is the Linux-based [*LAMP Stack*](https://en.wikipedia.org/wiki/LAMP_(software_bundle)). It provides all the essential components to host dynamic websites and web applications. This guide explains how to install and test a LAMP stack on Fedora 38, as well as compatible RHEL-based distributions like **AlmaLinux 9** and **Rocky Linux 9**.
