@@ -182,6 +182,7 @@ basename
 bashdoor
 bashrc
 bc
+bcrypt
 bdd
 bellovin
 benchmarked
@@ -994,6 +995,8 @@ host1
 host2
 hostname
 hostnames
+hotcopy
+Hotcopy
 hotfix
 hotfixes
 hotlink
@@ -2983,6 +2986,7 @@ yourdomainorsubdomainhere
 yourname
 yourservice
 yoursite
+yourusername
 youtube
 yubico
 yubikey
