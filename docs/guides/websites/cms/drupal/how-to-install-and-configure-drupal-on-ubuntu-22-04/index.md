@@ -499,7 +499,7 @@ Visit `http://drupal.local` in your browser. The Drupal site should load.
 
 **3. Troubleshoot blank pae or errors**
 
-If the page i blank or shows errors:
+If the page is blank or shows errors:
 
 - Check file permissions in the `web` folder.
 - Verify Apache configuration (ensure `AllowOverride All` is set).
@@ -507,7 +507,7 @@ If the page i blank or shows errors:
 
 ## Security and Optimization (Post-Install)
 
-After your Drupal site is installed and validate, take these steps to harden security and optimize performance.
+After your Drupal site is installed and validated, take these steps to harden security and optimize performance.
 
 1. Harden the MySQL Installation
 
