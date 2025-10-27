@@ -155,19 +155,26 @@ Use the following commands to check what PHP extensions are available:
 ```command
     php -v
     php -m | grep -E 'gd|mbstring|xml|curl|zip|mysql|pdo_mysql|opcache'
+```
 
 If any required PHP extensions are missing, install them with:
+
 ```command
     sudo apt install php-gd php-mbstring php-xml php-curl php-zip php-mysql php-opcache
 ```
+
 Following installation, restart Apache or Nginx to activate the new extensions.
+
 ```command
     sudo systemctl restart apache2
 ```
+
 Verify they're active:
+
 ```command
     php -m | grep -E 'gd|mbstring|xml|curl|zip|mysql|pdo_mysql|opcache'
 ```
+
 Each one should now be listed.
 
 #### Check Composer
@@ -358,17 +365,17 @@ Before installing Drupal, follow the official guide to create a database and use
     mysql -u drupal_user -p -h localhost drupal_db
 ```
 
-    Replace `drupaluser` and `drubaldb` with your database username and name. You should be able to enter the MariaDB shell without errors.
+Replace `drupaluser` and `drubaldb` with your database username and name. You should be able to enter the MariaDB shell without errors.
 
-1.  Confirm that your database uses `utf8mb4` encoding:
+2.  Confirm that your database uses `utf8mb4` encoding:
 
 ```command
     SHOW CREATE DATABASE drupal_db;
 ```
 
-1.  Look for `CHARACTER SET utf8mb4` in the output. If it's missing, you may need to recreate the database with the correct encoding or convert it.
+3.  Look for `CHARACTER SET utf8mb4` in the output. If it's missing, you may need to recreate the database with the correct encoding or convert it.
 
-1.  Your database credentials should match what you'll enter in `settings.php`:
+4.  Your database credentials should match what you'll enter in `settings.php`:
 ```command
     $databases['default']['default'] = [
         'driver' => 'mysql',
@@ -381,7 +388,7 @@ Before installing Drupal, follow the official guide to create a database and use
 
 This configuration is located in `sites/default/settings.php`.
 
-1.  During setup you may need to temporarily relax file permissions:
+5.  During setup you may need to temporarily relax file permissions:
 
 ```command
     chmod 664 sites/default/settings.php
@@ -458,7 +465,7 @@ If any of these files are missing or return errors, installation may have failed
 
 If any are missing:
 
-If `vendor/` is missing but `composer.json` exists, run: `composer install`
+If `vendor/` is missing but `composer.json` exists, run: `composer install`.
 If all are missing, the project wasn't created. Return to Phase 2.
 
 | **Check**               | **Purpose**                              | **Command**                                                | **Expected Output**                                   | **If Output Differs**                                      | 🔗 **Further Info** |
@@ -559,12 +566,12 @@ If deploying Drupal in a production or public-facing environment, configure SSL 
 - Use Let's Encrypt or a self-signed certificate.
 - Update your Apache virtual host to include:
 
-  ```
+```command
 <VirtualHost *:443>
     SSLEngine on
     SSLCertificateFile /path/to/cert.pem
     SSLCertificateKeyFile /path/to/key.pem
-    ```
+```
 
 For local development, SSL is optional. For public sites it is essential.
 
