@@ -25,6 +25,7 @@ adoptium
 aes
 ag
 agentless
+Agones
 ahci0
 Aho
 ahvz
@@ -85,6 +86,7 @@ apxs
 architected
 architecting
 aren
+Argocd
 argv
 arpack
 arping
@@ -171,6 +173,7 @@ balarin
 bampton
 banaction
 bantime
+bao
 barchart
 barebones
 base64
@@ -244,6 +247,8 @@ bufio
 bugtracker
 buildah
 buildbot
+buildpack
+Buildpacks
 bukkit
 bundler
 bungeecord
@@ -333,6 +338,7 @@ clickboard
 clickjacking
 client1
 client2
+clientless
 CLIs
 clojure
 cloudant
@@ -373,6 +379,7 @@ completekey
 composable
 conda
 config
+configmap
 configr
 configs
 configtest
@@ -423,6 +430,7 @@ createdt
 createfromstackscript
 crewless
 cri
+Cribl
 CRM
 CRMs
 cron
@@ -528,6 +536,7 @@ delpy
 demultiplexer
 Deno
 denormalized
+denylist
 deprovision
 deprovisioning
 deque
@@ -668,6 +677,7 @@ EMTs
 ender
 enduser
 enix
+entra
 enum
 env
 envs
@@ -721,6 +731,7 @@ failregexs
 failsafe
 failsafes
 falko
+fanout
 fastcgi
 Fastify
 fastmail
@@ -1020,6 +1031,7 @@ hybla
 Hydrolix
 hykes
 hypercorn
+Hyperdisk
 hyperefficient
 HyperLogLog
 hyperparameter
@@ -1032,6 +1044,7 @@ iaas
 IaC
 icanhazip
 icann
+Icecast
 iceweasel
 icinga
 icingacli
@@ -1118,6 +1131,7 @@ iPads
 ipaserver
 ipchains
 ipconfig
+ipencap
 iperf
 iPhones
 ips
@@ -1158,6 +1172,7 @@ java6
 javac
 javalin
 javascript
+jaegeradmin
 JBoss
 jdbc
 jdk
@@ -1265,6 +1280,7 @@ KPI
 KPIs
 krita
 kroll
+KServe
 ksmbd
 KStream
 KStreams
@@ -1277,6 +1293,7 @@ kubeconfig
 Kubecost
 kubectl
 kubectx
+Kubeflow
 kubeflow
 kubelet
 kubelets
@@ -1286,6 +1303,7 @@ Kuma
 kustomize
 kuznetosv
 Kyber
+Kyverno
 lambdabunker
 Laminas
 Langa
@@ -1347,6 +1365,8 @@ linodego
 linodes
 linroot
 linter
+Liquibase
+Liquidsoap
 lish
 liskov
 listdir
@@ -1358,6 +1378,8 @@ Livestatus
 livigno
 lke
 lksemel
+LLM
+LLMs
 lmctfy
 lo0
 loadavg
@@ -1497,6 +1519,8 @@ Microweber
 middlebox
 middleboxes
 middleware
+milvus
+Milvus
 mimikatz
 minecraft
 mineshafts
@@ -2199,6 +2223,7 @@ rubydebug
 rubygems
 ruleset
 rulesets
+runbooks
 rundir
 runfile
 runlevels
@@ -2321,6 +2346,7 @@ shotcut
 shoutcast
 shutil
 sidekiq
+SIEMs
 sievers
 signup
 Simula
@@ -2508,6 +2534,7 @@ teardown
 techdocs
 techland
 Tectia
+Tekton
 telecom
 telehealth
 teleporting
@@ -2564,6 +2591,8 @@ togami
 tokenization
 tokenize
 tokenized
+tokenizer
+tokenizers
 tokenizing
 tokyo
 tokyo2
@@ -2741,6 +2770,7 @@ vaultwarden
 vBulletin
 vCPU
 vCPUs
+vcns
 vcs
 vdev
 vdevs
@@ -2880,6 +2910,7 @@ wordcount
 wordfence
 wordlist
 wordlists
+Wordpress
 wordpress
 worker1
 worker2
@@ -2919,6 +2950,7 @@ xml
 xmpp
 xms
 xmx
+Xonotic
 XPath
 XQuartz
 XQuery

@@ -21,18 +21,18 @@ Review the [video transcoding architecture diagrams](/docs/reference-architectur
 
 ## Technologies Used
 
-The workflow in this document is implemented on the [Akamai Connected Cloud](https://www.akamai.com/) (in particular, the [Linode Kubernetes Engine](https://www.linode.com/products/kubernetes/)), Akamai CDN, and a GitHub Actions-powered CI/CD powered pipeline. The full accounting of technologies used includes:
+The workflow in this document is implemented on [Akamai Cloud](https://www.akamai.com/) (in particular, [Linode Kubernetes Engine](https://www.linode.com/products/kubernetes/)), Akamai CDN, and a GitHub Actions-powered CI/CD powered pipeline. The full accounting of technologies used includes:
 
-- **Akamai Connected Cloud technologies**:
+- **Akamai Cloud technologies**:
 
     | Technology                        | Description |
     |-----------------------------------|-------------|
     | [Linode Kubernetes Engine (LKE)](https://www.linode.com/products/kubernetes/)    | A fully-managed K8s container orchestration engine for deploying and managing containerized applications and workloads |
     | [NodeBalancers](https://www.linode.com/products/nodebalancers/)                     | Managed cloud load balancers |
-    | [Object Storage](https://www.linode.com/products/object-storage/)                    | S3-compatible Object Storage, used to manage unstructured data like video files |
+    | [Object Storage](https://www.linode.com/products/object-storage/)                    | Amazon S3-compatible Object Storage, used to manage unstructured data like video files |
     | [Block Storage](https://www.linode.com/products/block-storage/)                           | Network-attached block file storage volumes |
     | [API](https://www.linode.com/products/linode-api/)                               | Programmatic access to Linode products and services |
-    | [DNS Manager](https://www.linode.com/products/dns-manager/)                               | Domain management, free for Akamai Connected Cloud customers |
+    | [DNS Manager](https://www.linode.com/products/dns-manager/)                               | Domain management, free for Akamai Cloud customers |
 
 - **Other software and services**:
 

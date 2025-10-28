@@ -20,7 +20,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-Virtualmin has been removed from the App Marketplace and can no longer be deployed. This guide has been retained for reference only.
+Virtualmin has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
 {{< /note >}}
 
 [Virtualmin](https://www.virtualmin.com) is an open source control panel for web hosting management. It offers an easy to use graphical interface for managing websites, email, and databases. It's built on top of and integrated with the popular Webmin.

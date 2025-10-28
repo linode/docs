@@ -12,10 +12,6 @@ aliases: ['/products/tools/marketplace/guides/','/products/tools/marketplace-one
 
 - [Get Started with Marketplace Apps](/docs/marketplace-docs/get-started/): Learn how to deploy and access a One-Click App from the Linode Marketplace.
 
-## Become a Partner
-
-- [Become a Marketplace Partner](https://www.linode.com/marketplace/app-partners/) - Learn how to submit your own application to the Linode Marketplace.
-
 ## List of Marketplace Apps
 
 See the [Marketplace](/docs/marketplace/) listing page for a full list of all Marketplace Apps sorted by category.
@@ -31,8 +27,6 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [AzuraCast](/docs/marketplace-docs/guides/azuracast/)
 - [Backstage](/docs/marketplace-docs/guides/backstage/)
 - [BeEF](/docs/marketplace-docs/guides/beef/)
-- [Budibase](/docs/marketplace-docs/guides/budibase/)
-- [Chevereto](/docs/marketplace-docs/guides/chevereto/)
 - [Cloudron](/docs/marketplace-docs/guides/cloudron/)
 - [ClusterControl](/docs/marketplace-docs/guides/clustercontrol/)
 - [Couchbase Cluster](/docs/marketplace-docs/guides/couchbase-cluster/)
@@ -51,14 +45,12 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Gitea](/docs/marketplace-docs/guides/gitea/)
 - [Gitlab](/docs/marketplace-docs/guides/gitlab/)
 - [GlusterFS Cluster](/docs/marketplace-docs/guides/glusterfs-cluster/)
-- [gopaddle](/docs/marketplace-docs/guides/gopaddle/)
 - [Grav](/docs/marketplace-docs/guides/grav/)
 - [Guacamole](/docs/marketplace-docs/guides/guacamole/)
 - [Haltdos Community WAF](/docs/marketplace-docs/guides/haltdos-community-waf/)
 - [Harbor](/docs/marketplace-docs/guides/harbor/)
 - [HashiCorp Nomad](/docs/marketplace-docs/guides/hashicorp-nomad/)
 - [HashiCorp Vault](/docs/marketplace-docs/guides/hashicorp-vault/)
-- [ILLA Builder](/docs/marketplace-docs/guides/illa-builder/)
 - [InfluxDB](/docs/marketplace-docs/guides/influxdb/)
 - [Jenkins](/docs/marketplace-docs/guides/jenkins/)
 - [JetBackup](/docs/marketplace-docs/guides/jetbackup/)
@@ -68,7 +60,6 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Joplin](/docs/marketplace-docs/guides/joplin/)
 - [JupyterLab](/docs/marketplace-docs/guides/jupyterlab/)
 - [Kali Linux](/docs/marketplace-docs/guides/kali-linux/)
-- [Kepler](/docs/marketplace-docs/guides/kepler/)
 - [LAMP Stack](/docs/marketplace-docs/guides/lamp-stack/)
 - [LEMP Stack](/docs/marketplace-docs/guides/lemp-stack/)
 - [LinuxGSM](/docs/marketplace-docs/guides/linuxgsm/)
@@ -83,7 +74,6 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [MySQL/MariaDB](/docs/marketplace-docs/guides/mysql/)
 - [NATS Single Node](/docs/marketplace-docs/guides/nats-single-node/)
 - [Nextcloud](/docs/marketplace-docs/guides/nextcloud/)
-- [NirvaShare](/docs/marketplace-docs/guides/nirvashare/)
 - [Node.js](/docs/marketplace-docs/guides/nodejs/)
 - [Odoo](/docs/marketplace-docs/guides/odoo/)
 - [ONLYOFFICE](/docs/marketplace-docs/guides/onlyoffice/)
@@ -109,24 +99,17 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [RabbitMQ](/docs/marketplace-docs/guides/rabbitmq/)
 - [Redis](/docs/marketplace-docs/guides/redis/)
 - [Redis Sentinel](/docs/marketplace-docs/guides/redis-cluster/)
-- [Restyaboard](/docs/marketplace-docs/guides/restyaboard/)
 - [Rocket.Chat](/docs/marketplace-docs/guides/rocketchat/)
 - [Ruby on Rails](/docs/marketplace-docs/guides/ruby-on-rails/)
 - [Saltcorn](/docs/marketplace-docs/guides/saltcorn/)
-- [SeaTable](/docs/marketplace-docs/guides/seatable/)
 - [Secure Your Server](/docs/marketplace-docs/guides/secure-your-server/)
-- [ServerWand](/docs/marketplace-docs/guides/serverwand/)
 - [Shadowsocks](/docs/marketplace-docs/guides/shadowsocks/)
 - [Splunk](/docs/marketplace-docs/guides/splunk/)
 - [Superinsight](/docs/marketplace-docs/guides/superinsight/)
 - [Uptime Kuma](/docs/marketplace-docs/guides/uptime-kuma/)
-- [UTunnel VPN](/docs/marketplace-docs/guides/utunnel/)
 - [Valkey](/docs/marketplace-docs/guides/valkey/)
-- [VictoriaMetrics Single](/docs/marketplace-docs/guides/victoriametrics-single/)
 - [VS Code](/docs/marketplace-docs/guides/vscode/)
-- [WarpSpeed VPN](/docs/marketplace-docs/guides/warpspeed/)
 - [Wazuh](/docs/marketplace-docs/guides/wazuh/)
-- [Webuzo](/docs/marketplace-docs/guides/webuzo/)
 - [WireGuard](/docs/marketplace-docs/guides/wireguard/)
 - [WooCommerce](/docs/marketplace-docs/guides/woocommerce/)
 - [WordPress](/docs/marketplace-docs/guides/wordpress/)

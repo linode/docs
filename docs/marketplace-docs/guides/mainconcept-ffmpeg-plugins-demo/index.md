@@ -8,6 +8,8 @@ aliases: ['/products/tools/marketplace/guides/mainconcept-ffmpeg-plugins-demo/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 1243759
+marketplace_app_name: "MainConcept Plugins for FFmpeg Demo"
 ---
 
 The [MainConcept Plugins for FFmpeg](https://www.mainconcept.com/ffmpeg) are media encoding tools that use advanced features such as Hybrid GPU acceleration, professional production format, xHE-AAC audio, and MPEG-H 3D audio content creation to help improve visual quality and performance. Use cases include both VOD and live production workflows.

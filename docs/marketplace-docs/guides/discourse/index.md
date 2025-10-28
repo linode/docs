@@ -13,6 +13,8 @@ aliases: ['/products/tools/marketplace/guides/discourse/','/platform/marketplace
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 688891
+marketplace_app_name: "Discourse"
 ---
 
 [Discourse](https://www.discourse.org/) is a self-hosted open-source discussion platform that provides a forum, mailing list, chat room, and more.

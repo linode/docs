@@ -5,7 +5,7 @@ description: 'This guide will describe how to import existing Linode infrastruct
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2018-12-17
-modified: 2020-12-03
+modified: 2025-06-18
 keywords: ['terraform','configuration management','import']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: ImportExistingInfrastructuretoTerraform.png
@@ -18,8 +18,10 @@ tags: ["saas"]
 
 Terraform is an orchestration tool that uses declarative code to build, change, and version infrastructure that is made up of server instances and services. You can use [Linode's official Terraform provider](https://www.terraform.io/docs/providers/linode/index.html) to interact with Linode services. Existing Linode infrastructure can be imported and brought under Terraform management. This guide describes how to import existing Linode infrastructure into Terraform using the official Linode provider plugin.
 
-{{< note >}}
-[Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+. To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
+{{< note title ="Linode Provider Version 3.0.0" >}}
+As of June, 2025, the [Linode Terraform Provider](https://github.com/linode/terraform-provider-linode/) version is 3.0.0. To determine the current version, see the [Linode Namespace](https://registry.terraform.io/namespaces/linode) in the Terraform Registry.
+
+The Linode Terraform Provider version 3.0.0 requires `terraform` version 1.0 or greater. See [Terraform's developer documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/upgrade-guides/1-0) for guidance on upgrading to version 1.0.
 {{< /note >}}
 
 ## Before You Begin

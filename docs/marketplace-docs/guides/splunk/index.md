@@ -11,11 +11,13 @@ external_resources:
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 869153
+marketplace_app_name: "Splunk"
 ---
 
 Splunk is a powerful log analyzer that can be used to obtain insight into your infrastructure. Splunk collects, monitors, analyzes, and visualizes data from database applications, web servers, cloud networks, and a variety of other sources.
 
-The Akamai Connected Cloud Splunk Marketplace App includes support for the [Akamai SIEM integration](https://techdocs.akamai.com/siem-integration/docs/akamai-siem-integration-for-splunk-and-cef-syslog) on deployment. For details on generating valid tokens, see [create authentication credentials](https://techdocs.akamai.com/developer/docs/set-up-authentication-credentials).
+The Splunk Marketplace App on Akamai Cloud includes support for the [Akamai SIEM integration](https://techdocs.akamai.com/siem-integration/docs/akamai-siem-integration-for-splunk-and-cef-syslog) on deployment. For details on generating valid tokens, see [create authentication credentials](https://techdocs.akamai.com/developer/docs/set-up-authentication-credentials).
 
 ## Deploying a Marketplace App
 

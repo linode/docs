@@ -20,7 +20,7 @@ external_resources:
 
 ## What is Minio?
 
-Minio is an open source, S3 compatible object store that can be hosted on a Linode. Deployment on a Kubernetes cluster is supported in both standalone and distributed modes. This guide uses [Kubespray](https://github.com/kubernetes-incubator/kubespray) to deploy a Kubernetes cluster on three servers running Ubuntu 16.04. Kubespray comes packaged with Ansible playbooks that simplify setup on the cluster. Minio is then installed in standalone mode on the cluster to demonstrate how to create a service.
+Minio is an open source, Amazon S3-compatible object store that can be hosted on a Linode. Deployment on a Kubernetes cluster is supported in both standalone and distributed modes. This guide uses [Kubespray](https://github.com/kubernetes-incubator/kubespray) to deploy a Kubernetes cluster on three servers running Ubuntu 16.04. Kubespray comes packaged with Ansible playbooks that simplify setup on the cluster. Minio is then installed in standalone mode on the cluster to demonstrate how to create a service.
 
 ## Before You Begin
 
@@ -411,6 +411,6 @@ Persistent Volumes(PV) are an abstraction in Kubernetes that represents a unit o
 
     ![Minio Login Screen](minio-login-screen.png)
 
-1.  Minio has similar functionality to S3: file uploads, creating buckets, and storing other data.
+1.  Minio has similar functionality to Amazon S3: file uploads, creating buckets, and storing other data.
 
     ![Minio Browser](minio-browser.png)

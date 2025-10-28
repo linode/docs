@@ -11,6 +11,8 @@ aliases: ['/products/tools/marketplace/guides/linuxgsm/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 1329462
+marketplace_app_name: "LinuxGSM"
 ---
 
 [LinuxGSM](https://linuxgsm.com/) is a command-line tool for managing game servers.

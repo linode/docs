@@ -58,7 +58,7 @@ Coupling cloud-based multiplexing with DataStream edge logging allows you to con
 
 ### Integration and Migration Effort
 
-The multiplexing solution in this guide does not require the migration of any application-critical software or data. This solution exists as a location-agnostic, cloud-based pipeline between your edge delivery infrastructure and log storage endpoints (i.e. s3 buckets, Google Cloud Storage, etc.).
+The multiplexing solution in this guide does not require the migration of any application-critical software or data. This solution exists as a location-agnostic, cloud-based pipeline between your edge delivery infrastructure and log storage endpoints (i.e. Amazon S3-compatible buckets, Google Cloud Storage, etc.).
 
 Using the following example, you can reduce your overall egress costs by pointing your cloud multiplexing architecture to Akamai’s Object Storage rather than a third-party object storage solution.
 

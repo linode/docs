@@ -8,13 +8,15 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/products/tools/marketplace/guides/passbolt/','/products/tools/marketplace/guides/deploy-passbolt-through-the-linode-marketplace/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
+marketplace_app_id: 1329430
+marketplace_app_name: "Passbolt Community Edition"
 ---
 
 This Marketplace App deploys the latest unmodified version of [Passbolt Community Edition](https://github.com/passbolt/passbolt_api), an open-source password manager designed for teams and businesses. It allows users to securely store, share, and manage passwords.
 
 {{< note >}}
 Passbolt and the Passbolt logo are registered trademarks of Passbolt S.A.
-This service is provided by Akamai Connected Cloud and is not affiliated with Passbolt S.A.
+This service is provided by Akamai and is not affiliated with Passbolt S.A.
 {{< /note >}}
 
 ## Deploying a Marketplace App
@@ -43,7 +45,7 @@ To start registration follow the link provided in `/etc/motd` to visit the DNS y
 ```output
 cat /etc/motd
 *********************************************************
-Akamai Connected Cloud passbolt Marketplace App
+Akamai Cloud passbolt Marketplace App
 
 Registering admin user: https://$DNS_NAME/setup/start/$UUID
 

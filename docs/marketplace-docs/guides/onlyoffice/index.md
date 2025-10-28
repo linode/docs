@@ -10,6 +10,8 @@ aliases: ['/products/tools/marketplace/guides/onlyoffice/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 1102907
+marketplace_app_name: "ONLYOFFICE Docs"
 ---
 
 [ONLYOFFICE Docs](https://github.com/ONLYOFFICE/Docker-DocumentServer) is an open-source office suite that comprises web-based viewers and collaborative editors for text documents, spreadsheets, and presentations providing high compatibility with OOXML files (.docx, .xlsx, .pptx). Other popular formats such as .doc, .odt, .rtf, .txt, .pdf, .xls, .ods, .csv, .ppt, .odp, etc. are also supported.
@@ -21,13 +23,13 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 {{% content "marketplace-verify-standard-shortguide" %}}
 
 {{<note>}}
-**Estimated deployment time:** ONLYOFFICE Docs should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
+**Estimated deployment time:** ONLYOFFICE Docs should be fully installed within 15-25 minutes after the Compute Instance has finished provisioning.
 {{</note>}}
 
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 22.04 LTS
-- **Recommended plan:** All plan types and sizes can be used.
+- **Recommended plan:** 2GB Shared CPU Compute Instance or higher required for this deployment.
 
 ### ONLYOFFICE Docs Options
 

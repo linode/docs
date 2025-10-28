@@ -2,7 +2,7 @@
 title: "Deploy Docker through the Linode Marketplace"
 description: "This guide provides you with step-by-step instructions for deploying Docker, a tool which you can use to run containerized apps, from the Linode One-Click Marketplace."
 published: 2020-03-11
-modified: 2023-10-27
+modified: 2025-07-01
 keywords: ['docker','marketplace', 'container']
 tags: ["container","cloud-manager","linode platform","docker","marketplace"]
 image: Docker_oneclickapps.png
@@ -15,6 +15,8 @@ aliases: ['/products/tools/marketplace/guides/docker/','/platform/marketplace/de
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 607433
+marketplace_app_name: "Docker"
 ---
 
 [Docker](https://www.docker.com/) is a tool that enables you to create, deploy, and manage *containers*. Each container is a lightweight stand-alone package that containing the code, libraries, runtime, system settings, and dependencies that are required to run an application. Every container is deployed with its own CPU, memory, block I/O, and network resources, without having to depend upon an individual kernel and operating system. While it may be easiest to compare Docker to virtual machines, they differ in the way they share or dedicate resources.
@@ -31,7 +33,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 22.04 LTS
+- **Supported distributions:** Ubuntu 24.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Docker Options

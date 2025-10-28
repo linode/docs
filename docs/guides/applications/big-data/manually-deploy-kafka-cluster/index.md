@@ -3,8 +3,9 @@ slug: manually-deploy-kafka-cluster
 title: "Manually Deploy an Apache Kafka Cluster on Akamai"
 description: "Learn how to deploy and test a secure Apache Kafka cluster on Akamai using provided, customizable Ansible playbooks."
 authors: ["John Dutton","Elvis Segura"]
-contributors: ["John Dutton","Elvis Segura"]
+contributors: ["John Dutton","Elvis Segura","Philip Tellis","Nathan Melehan"]
 published: 2024-11-20
+modified: 2025-05-29
 keywords: ['apache kafka','kafka','data stream','stream management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -33,7 +34,7 @@ If you wish to deploy Kafka automatically rather than manually, consider our [Ap
 
 The following software and components must be installed and configured on your local system in order for the provided playbooks to function:
 
--   [Python](https://www.python.org/downloads/) version: > v3.8
+-   [Python](https://www.python.org/downloads/) version: > v3.11
 -   The [venv](https://docs.python.org/3/library/venv.html) Python module
 -   A [Linode API access token](/docs/products/tools/api/get-started/#get-an-access-token)
 -   A configured [SSH key pair](/docs/guides/use-public-key-authentication-with-ssh/) along with your public key
@@ -239,6 +240,9 @@ All secrets are encrypted with the Ansible Vault utility as a best practice.
     -   `region`: The data center region for the cluster.
     -   `image`: The distribution image to be installed on each Kafka instance. The deployment in this guide supports the `ubuntu24.04` image.
     -   `group` and `linode_tags` (optional): Any [groups or tags](/docs/guides/tags-and-groups/) you with to apply to your cluster’s instances for organizational purposes.
+    -   `firewall_label` (optional): The label for a [Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) that can be created for the cluster. If this label is not provided, the firewall is not created.
+    -   `vpc_label` (optional): The label for a [VPC](https://techdocs.akamai.com/cloud-computing/docs/vpc) that can be created for the cluster. If this label is not provided, the VPC is not created.
+    -   `domain_name` and `ttl_sec` (optional): A domain name and [TTL (in seconds)](https://techdocs.akamai.com/cloud-computing/docs/troubleshooting-dns-records#set-the-time-to-live-or-ttl) for the cluster. Each cluster instance is assigned a subdomain of this domain name. For example, if your domain name is `example.com`, a record named `instance_label.example.com` is created for each instance. If a domain name is not provided, these records are not created.
     -   `cluster_size`: The number of Kafka instances in the cluster deployment. Minimum value of 3.
     -   `sudo_username`: A sudo username for each cluster instance.
     -   `country_name`, `state_or_province_name`, `locality_name`, and `organization_name`: The geographical and organizational information for your self-signed TLS certificate.
@@ -255,6 +259,12 @@ All secrets are encrypted with the Ansible Vault utility as a best practice.
     image: linode/ubuntu24.04
     group:
     linode_tags:
+    firewall_label:
+    vpc_label:
+
+    # Optional settings for DNS
+    domain_name:
+    ttl_sec:
 
     cluster_size: 3
     client_count: 2

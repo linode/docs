@@ -48,7 +48,6 @@ export function newNavStore(searchConfig, searchStore, params, Alpine) {
 					return;
 				}
 				debug('toggleConsentDialog');
-				// TODO1 see https://github.com/linode/linode-docs-theme/issues/954 Cookie Consent Links
 				window.OneTrust.ToggleInfoDisplay();
 				event.preventDefault();
 			},
@@ -129,8 +128,6 @@ export function newNavStore(searchConfig, searchStore, params, Alpine) {
 			this.onetrust.functional = groupArray.includes('C0003');
 			this.onetrust.targeting = groupArray.includes('C0004');
 			this.onetrust.socialmedia = groupArray.includes('C0005');
-
-			console.log('updateOptanonGroups', this.onetrust);
 		},
 
 		openSearchPanel(scrollUp = false) {

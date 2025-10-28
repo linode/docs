@@ -150,13 +150,12 @@ In this section, you will create a Helm chart values file and use it to deploy P
 1.  Using Helm, deploy a Prometheus Operator release labeled `lke-monitor` in the `monitoring` namespace on your LKE cluster with the settings established in your `values.yaml` file:
 
     ```command
-    helm install \
-    lke-monitor stable/kube-prometheus-stack\
+    helm install lke-monitor kube-prometheus-stack \
+    --repo https://prometheus-community.github.io/helm-charts \
     -f ~/lke-monitor/values.yaml \
     --namespace monitoring \
-    --set grafana.adminPassword=$GRAFANA_ADMINPASSWORD \
-    --set prometheusOperator.createCustomResource=false \
-    --repo https://prometheus-community.github.io/helm-charts
+    --set grafana.adminPassword="$GRAFANA_ADMINPASSWORD" \
+    --set prometheusOperator.createCustomResource=false
     ```
 
     {{< note >}}

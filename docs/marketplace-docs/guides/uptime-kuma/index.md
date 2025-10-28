@@ -11,6 +11,8 @@ aliases: ['/products/tools/marketplace/guides/uptime-kuma/','/guides/uptimekuma-
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+marketplace_app_id: 970523
+marketplace_app_name: "Uptime Kuma"
 ---
 
 [Uptime Kuma](https://github.com/louislam/uptime-kuma) is an open source monitoring tool. It enables you to monitor services over HTTP/S, TCP, DNS, and other protocols. You can receive notification alerts of downtime and even create custom status pages for your users.

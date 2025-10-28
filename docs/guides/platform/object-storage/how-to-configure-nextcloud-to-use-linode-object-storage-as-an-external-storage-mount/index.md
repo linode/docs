@@ -23,7 +23,7 @@ You can configure Nextcloud to enable external storage devices and services, lik
 
 1. Deploy a Nextcloud server instance. You can use the [Linode Nextcloud Marketplace App](/docs/marketplace-docs/guides/nextcloud/) for an easy and quick deployment.
 
-1. [Generate Object Storage access keys](/docs/products/storage/object-storage/guides/access-keys/.
+1. [Generate Object Storage access keys](/docs/products/storage/object-storage/guides/access-keys/).
 
 1. If you are not familiar with Linode Object Storage, review the [Get Started with Object Storage](/docs/products/storage/object-storage/get-started/) guide or take a look through the available [Object Storage guides](/docs/products/storage/object-storage/guides/).
 
@@ -79,7 +79,7 @@ If you have not yet [created an Object Storage access key](/docs/products/storag
 1. From the **External Storage** dropdown menu, select the **Amazon S3** option.
 
     {{< note respectIndent=false >}}
-Linode Object Storage is *S3-compatible*. Nextcloud connects to Amazon's Object Storage service by default, however, in the next step you override the default behavior to use Linode Object Storage hosts instead.
+Linode Object Storage is *Amazon S3-compatible*. Nextcloud connects to Amazon's Object Storage service by default, however, in the next step you override the default behavior to use Linode Object Storage hosts instead.
     {{< /note >}}
 
 1. Select **Access Key** from the **Authentication** dropdown menu.
