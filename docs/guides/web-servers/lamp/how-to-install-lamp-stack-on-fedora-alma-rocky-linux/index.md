@@ -76,24 +76,26 @@ These instructions are designed for Fedora 38, but most steps also apply to Alma
     sudo dnf upgrade --refresh
     ```
 
-1.  Install Apache:
+2.  Install Apache:
 
     ```command
     sudo dnf install httpd -y
     ```
 
-1.  Enable and start Apache. (The `enable` command automatically launches Apache when the system reboots.)
+3.  Enable and start Apache. (The `enable` command automatically launches Apache when the system reboots.)
 
     ```command
     sudo systemctl enable httpd
     sudo systemctl start httpd
     ```
 
-1.  Verify Apache is running:
+4.  Verify Apache is running:
 
     ```command
     systemctl status httpd
     ```
+
+Output:
 
 ```output
     ● httpd.service - The Apache HTTP Server
@@ -103,9 +105,9 @@ These instructions are designed for Fedora 38, but most steps also apply to Alma
         Active: active (running) since Mon 2023-08-28 12:20:09 EDT; 47s ago
 ```
 
-    Press <kbd>Q</kbd> to exit the `systemctl status` output and return to the terminal prompt.
+Press <kbd>Q</kbd> to exit the `systemctl status` output and return to the terminal prompt.
 
-1.  Configure the firewall settings to allow HTTP and HTTPS traffic:
+5.  Configure the firewall settings to allow HTTP and HTTPS traffic:
 
     ```command
     sudo firewall-cmd --permanent --add-service=http
@@ -113,13 +115,13 @@ These instructions are designed for Fedora 38, but most steps also apply to Alma
     sudo firewall-cmd --reload
     ```
 
-1.  Test Apache in a Browser
+6.  Test Apache in a Browser
 
     Open a Web browser and navigate to your server's IP address. You should see the "Fedora Webserver Test Page". AlmaLinux and Rocky Linux display similar default pages.
 
     ![The default Fedora web landing page](Fedora-default-web-page.png)
 
-    This indicates the web server is working but has not been fully configured yet. The AlmaLinux and Rocky Linux distributions have their own web server test pages which are similar but slightly different.
+    This indicates the web server is working but has not been fully configured yet. The AlmaLinux and Rocky Linux distributions have their own web server test pages which are similar.
 
     **Note:**
     If the page doesn't load, *Security-Enhanced Linux* (SELinux) may be blocking access. Fedora uses SELinux in enforcing mode by default which is the fairly restrictive. You can temporarily switch to `permissive` mode for troubleshooting:
@@ -150,7 +152,7 @@ These instructions are designed for Fedora 38, but most steps also apply to Alma
         ServerName  EXAMPLE_DOMAIN:80
         ```
 
-    3.  To save and exit, press <kbd>CTRL</kbd>+<kbd>X</kbd>, then <kbd>Y</kbd> then <kbd>Enter</kbd>.
+    3.  To save, press <kbd>CTRL</kbd>+<kbd>O</kbd>, then <kbd>Y</kbd> if asked, then <kbd>Enter</kbd> and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
 
     4.  Restart the Apache web server:
 
@@ -198,6 +200,8 @@ Before running `mysql_secure_installation`, you may need to set a root password 
     sudo systemctl status mariadb
     ```
 
+Output:
+
     ```output
     ● mariadb.service - MariaDB 10.5 database server
          Loaded: loaded (/usr/lib/systemd/system/mariadb.service; enabled; preset:>
@@ -232,6 +236,8 @@ Before running `mysql_secure_installation`, you may need to set a root password 
     ```
 
     MariaDB displays background information about the application along with the `>` prompt and may show a newer version, 10.11:
+
+Output:
 
     ```output
     Welcome to the MariaDB monitor.  Commands end with ; or \g.
@@ -311,6 +317,8 @@ This includes the php-mysqlnd package, which enables PHP to communicate with MyS
 
     On Fedora, the current PHP release is `8.2.9`. AlmaLinux and Rocky Linux currently install release `8.0.27`.
 
+Output:
+
     ```output
     PHP 8.2.9 (cli) (built: Aug  3 2023 11:39:08) (NTS gcc x86_64)
     Copyright (c) The PHP Group
@@ -369,7 +377,7 @@ To fully test all components of the LAMP stack, follow the steps below.
     </html>
     ```
 
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.(You can also use <kbd>CTRL</kbd>+<kbd>O</kbd>, followed by <kbd>Enter</kbd> then <kbd>CTRL</kbd>+<kbd>X</kbd>, to save the file and exit `nano`).
 
 1.  Run the LAMP stack script test. Open a Web browser and navigate to either the IP address or the domain name followed by `/phptest.php`. For example, `http://example.com/phptest.php`, but replace `example.com` with your actual domain name or IP address.
 
@@ -404,4 +412,4 @@ The previous instructions are sufficient for small personal sites. However, comm
 
 ## Conclusion
 
-The Fedora LAMP stack consists of the Linux operating system, Apache web server, the MariaDB/MySQL database, and the PHP/Perl/Python programming language. Together, this architecture is suitable for most modern computing environments. All LAMP components are available in the standard Fedora package library and are installed using `dnf`. To test the stack, configure a database for the web user and create a simple script using HTML and PHP.
+The Fedora LAMP stack consists of the Linux operating system, Apache web server, the MariaDB/MySQL database, and the PHP/Perl/Python programming language (LAMP). Together, this architecture is suitable for most modern computing environments. All LAMP components are available in the standard Fedora package library and are installed using `dnf`. To test the stack, configure a database for the web user and create a simple script using HTML and PHP.
