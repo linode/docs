@@ -17,7 +17,7 @@ Drupal is a flexible content management system (CMS) designed for structured con
 
 This guide uses Drupal 11.1.8 to avoid known packaging issues in newer releases. Specifically a syntax error in `drupal/core-recipe-unpack` introduced in 11.2.x (see [Drupal issue #3536487](https://www.drupal.org/project/drupal/issues/3536487)). You'll install the stable version later using Composer after verifying system prerequisites.
 
-**Coming from Drupal 8 or new to Composer-based workflows?** See [Contributor-Safe Notes](#contributor-safe-notes) for context on modern Drupal workflows and what's changed since earlier versions.
+**Coming from Drupal 8 or new to Composer-based workflows?** See [Contributor-Safe Notes](#contributor-safe-notes-composer-first-workflow) for context on modern Drupal workflows and what's changed since earlier versions.
 
 ## System Prerequisites
 
@@ -207,7 +207,9 @@ This step separates application logic from public content, making updates easier
 After running the composer create-project command below, your environment should include the core Drupal files and folder structure:
 
 composer.json
+
 web/index.php
+
 vendor/
 
 These files confirm that setup succeeded, prepare optional configuration scaffolding, and get the application ready for site installation. This guide was validated using Drupal 11.1.8 as noted earlier.
@@ -220,7 +222,7 @@ Run the install command to generate the Drupal 11.1.8 structure. Replace my-drup
     composer create-project drupal/recommended-project:11.1.8 my-drupal-site
 ```
 
-- Change to your project folder (remove the angle brackets (<>) and use your actual folder name):
+Change to your project folder (remove the angle brackets (<>) and use your actual folder name):
 
 ```command
     cd my-drupal-site
@@ -260,7 +262,6 @@ If you encounter errors, see the [Troubleshooting](#troubleshooting) section.
 ```
 
 *(drush-validate)*: If Drush throws a `NotFoundHttpException`, it was likely run outside a valid Drupal project root. Navigate to the directory containing `composer.json` before running Drush commands. See: [Drush Usage Guide](https://www.drush.org/latest/usage/) for valid command contexts.
-
 
 #### Copy the Default Settings File
 
@@ -471,8 +472,8 @@ If all are missing, the project wasn't created. Return to Phase 2.
 | **Check**               | **Purpose**                              | **Command**                                                | **Expected Output**                                   | **If Output Differs**                                      | 🔗 **Further Info** |
 |------------------------|------------------------------------------|------------------------------------------------------------|--------------------------------------------------------|------------------------------------------------------------|---------------------|
 | Success Confirmation   | Validate install completion               | *Review terminal output*                                     | “Project created successfully” or similar message      | If error shown, rerun with `-vvv` for verbose output        | [Composer Troubleshooting](https://getcomposer.org/doc/articles/troubleshooting.md) |
-| Folder Structure        | Confirm expected files exist              | `ls mysite`                                                | `composer.json`, `web/`, `vendor/`, etc.               | If missing, check install logs or rerun install             | [Drupal File Structure](https://www.drupal.org/docs/develop/structure-of-a-drupal-codebase) |
-| Optional Cleanup        | Remove message plugin (optional)          | `composer`              | Plugin removed, no errors                              | Check Composer version or plugin dependencies     | [Project Message Plugin](https://www.drupal.org/project/core_project_message) |
+| Folder Structure        | Confirm expected files exist              | `ls mysite`                                                | `composer.json`, `web/`, `vendor/`, etc.               | If missing, check install logs or rerun install             | [Drupal File Structure](https://www.drupal.org/docs/develop/using-composer/using-composer-with-drupal) |
+| Optional Cleanup        | Remove message plugin (optional)          | `composer`              | Plugin removed, no errors                              | Check Composer version or plugin dependencies     | [Project Message Plugin](https://getcomposer.org/doc/articles/plugins.md) |
 ---
 
 #### Local Testing Setup
@@ -551,9 +552,9 @@ After installation, lock down permissions:
 
 Drupal relies on `.htaccess` for security rules like:
 
-    - Preventing access to sensitive files
-    - Blocking directory listings
-    - Enforcing clean URLs
+- Preventing access to sensitive files
+- Blocking directory listings
+- Enforcing clean URLs
 
 {{< note >}}
 If `.htaccess` rules aren't being applied, double-check `AllowOverride All` is set in your Apache config.
@@ -566,11 +567,12 @@ If deploying Drupal in a production or public-facing environment, configure SSL 
 - Use Let's Encrypt or a self-signed certificate.
 - Update your Apache virtual host to include:
 
-```command
+```apache
 <VirtualHost *:443>
     SSLEngine on
     SSLCertificateFile /path/to/cert.pem
     SSLCertificateKeyFile /path/to/key.pem
+</VirtualHost>
 ```
 
 For local development, SSL is optional. For public sites it is essential.
@@ -596,17 +598,17 @@ Composer tracks dependencies explicitly, reducing the risk of missing extensions
 
 **Encouraging use of Drush for Command-Line Efficiency**
 
-Drush streamlines tasks like site installation, cache clearing, and module management. Once installed via Composer, it becomes available in the project’s `/vendor/bin` directory.Check Drush status:
-command
-```
+Drush streamlines tasks like site installation, cache clearing, and module management. Once installed via Composer, it becomes available in the project’s `/vendor/bin` directory. Check Drush status:
+
+```command
     ./vendor/bin/drush/status
 ```
 
 If you get errors like missing "Symfony" classes or auto-load failures, check that you're in the correct project folder containing:
 
-```command
+
     `composer.json`, `vendor/`, and `web/`
-```
+
 
 - Drush is installed locally--not globally in `vendor/`.
 - You're running Drush from the project root--not from a parent or nested directory.
