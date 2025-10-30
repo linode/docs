@@ -2,8 +2,8 @@
 slug: understanding-storage-solutions
 title: "Understanding Storage Solutions"
 description: "This guide connects the storage architectures requirements of modern applications (data types, access patterns, and performance) to available storage solutions."
-authors: ["Linode"]
-contributors: ["Linode"]
+authors: ["Akamai"]
+contributors: ["Akamai"]
 published: 2025-10-30
 keywords: ['storage solutions','block storage','object storage','managed databases','akamai netstorage','akamai edgekv']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
