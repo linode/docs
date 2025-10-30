@@ -19,7 +19,7 @@ Block storage partitions data into fixed-size blocks stored on attached volumes.
 
 Block storage delivers consistent, fast response times and high input/output performance, making it suitable for structured workloads requiring frequent read/write operations. The direct-attached nature ensures consistent performance because volumes connect to instances over the data center's high-speed internal network rather than the public internet. This reduces latency and provides predictable I/O operations.
 
-[Linode Block Storage](https://www.linode.com/products/block-storage/) attaches directly to Linode compute instances, providing persistent storage that survives instance lifecycle changes. Volumes can be resized, detached, and reattached as needed.
+[Akamai's Block Storage service](https://www.linode.com/products/block-storage/) attaches directly to Akamai compute instances, providing persistent storage that survives instance lifecycle changes. Volumes can be resized, detached, and reattached as needed.
 
 ### Primary Use Cases for Block Storage
 
@@ -27,12 +27,12 @@ Block storage delivers consistent, fast response times and high input/output per
 - Operating system boot volumes
 
     {{< note >}}
-    Not all providers use block storage for boot volumes. For example, Linode instances use bundled storage for boot, with block storage used for additional capacity.
+    Not all providers use block storage for boot volumes. For example, Akamai compute instances use bundled storage for boot, with block storage used for additional capacity.
     {{< /note >}}
 
 ### Block Storage Cost Structure
 
-[Linode Block Storage pricing](https://www.linode.com/pricing/#block-storage) is based on allocated storage space per month, regardless of actual usage or access frequency. This predictable pricing model simplifies capacity planning.
+[Akamai Block Storage pricing](https://www.linode.com/pricing/#block-storage) is based on allocated storage space per month, regardless of actual usage or access frequency. This predictable pricing model simplifies capacity planning.
 
 ## Object Storage
 
@@ -40,7 +40,7 @@ Object storage treats data as discrete objects, each containing the data payload
 
 This architecture works well with unstructured data--including images, videos, backups, and log files. Object storage systems scale up easily, and they can offer additional durability if users choose to replicate their data across multiple servers and geographic regions.
 
-[Linode Object Storage](https://www.linode.com/products/object-storage/) provides S3-compatible APIs, and users can store data copies in multiple locations for backup and speed. The service integrates seamlessly with existing S3-compatible tools and workflows. For Linode Object Storage, the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/using-the-linode-cli-with-object-storage) can also be used to access objects.
+[Akamai Object Storage](https://www.linode.com/products/object-storage/) provides S3-compatible APIs, and users can store data copies in multiple locations for backup and speed. The service integrates seamlessly with existing S3-compatible tools and workflows. For Akamai Object Storage, the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/using-the-linode-cli-with-object-storage) can also be used to access objects.
 
 ### Primary Use Cases for Object Storage
 
@@ -59,7 +59,7 @@ Databases differ from general storage by providing a managed query layer and enf
 
 Database software handles indexing, consistency guarantees, and transaction processing. They provide query languages (SQL, NoSQL APIs) and manage complex operations like joins, aggregations, and concurrent access control.
 
-Managed database services provision databases in the cloud so that users don't have to install and maintain the software on compute instances. Linode offers [managed PostgreSQL and MySQL databases](https://www.linode.com/products/databases/) with automated backups, scaling, and maintenance. These services handle database maintenance for you while providing high availability.
+Managed database services provision databases in the cloud so that users don't have to install and maintain the software on compute instances. Akamai offers [managed PostgreSQL and MySQL databases](https://www.linode.com/products/databases/) with automated backups, scaling, and maintenance. These services handle database maintenance for you while providing high availability.
 
 ### Primary Use Cases for Managed Databases
 
@@ -179,4 +179,4 @@ Each storage solution addresses specific architectural requirements. Object stor
 
 Evaluate your data characteristics, access patterns, performance requirements, and budget constraints before making storage decisions. The optimal choice aligns with your application architecture, scalability objectives, and operational requirements.
 
-For applications that require modern object storage capabilities, Linode Object Storage offers S3-compatible APIs with geographic distribution and competitive pricing.
+For applications that require modern object storage capabilities, Akamai Object Storage offers S3-compatible APIs with geographic distribution and competitive pricing.
