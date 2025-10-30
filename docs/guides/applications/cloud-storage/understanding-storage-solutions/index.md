@@ -112,11 +112,11 @@ When selecting storage for your applications, it is essential to evaluate severa
 
 | Storage Type | Data Structure | Performance Profile | Durability | Scalability |
 | :---- | :---- | :---- | :---- | :---- |
-| **Object Storage*- | Objects with metadata | High throughput, eventual consistency | High (replicated) | Very high |
-| **Block Storage*- | Fixed-size blocks | Consistent and predictable for moderate I/O needs | High (persistent) | Scales with instance |
-| **Managed Databases*- | Structured (tables, docs) | High consistency, indexed queries | High (redundant \+ backups) | Scales vertically and horizontally |
-| **Akamai NetStorage*- | Object-like | Optimized for media workflows and software downloads | High | High |
-| **EdgeKV*- | Key-value pairs | Ultra-low latency at the edge | Medium | Edge-scaled |
+| Object Storage | Objects with metadata | High throughput, eventual consistency | High (replicated) | Very high |
+| Block Storage | Fixed-size blocks | Consistent and predictable for moderate I/O needs | High (persistent) | Scales with instance |
+| Managed Databases | Structured (tables, docs) | High consistency, indexed queries | High (redundant \+ backups) | Scales vertically and horizontally |
+| Akamai NetStorage | Object-like | Optimized for media workflows and software downloads | High | High |
+| EdgeKV | Key-value pairs | Ultra-low latency at the edge | Medium | Edge-scaled |
 
 ### Data Type and Structure
 
