@@ -2,8 +2,8 @@
 title: "Deploy ___App_Name___ through the Linode Marketplace"
 description: "Two to three sentences describing your guide."
 og_description: "Two to three sentences describing your guide when shared on social media. Delete this if not needed."
-authors: ["Linode"]
-contributors: ["Linode"]
+authors: ["Akamai"]
+contributors: ["Akamai"]
 published: {{ now.Format "2006-01-02" }}
 keywords: ['list','of','keywords','and key phrases']
 tags: ["marketplace", "linode platform", "cloud manager"]
