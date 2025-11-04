@@ -84,7 +84,6 @@ class IssueType:
 
 DOCS_DIR = [
     "docs/guides",
-    "docs/products",
     "docs/bundles",
     "docs/assets",
     "docs/api",
@@ -156,7 +155,6 @@ def get_guides():
 
     # Add top level guides
     guides.append(Guide("docs/","docs/_index.md", "Docs Home", "/docs/"))
-    guides.append(Guide("docs/products/","docs/products/_index.md", "Product Docs", "/docs/products/"))
     guides.append(Guide("docs/marketplace/", "", "Marketplace", "/docs/marketplace/"))
     guides.append(Guide("docs/marketplace-docs/", "", "Marketplace Docs", "/docs/marketplace-docs/"))
     guides.append(Guide("docs/resources/", "", "Resources", "/docs/resources/"))
