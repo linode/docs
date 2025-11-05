@@ -12,7 +12,6 @@ bundles: ['debian-security', 'centos-security']
 tags: ["mysql","security","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: SecureMySQLserver.png
-tags: ["saas"]
 ---
 
 ## MySQL

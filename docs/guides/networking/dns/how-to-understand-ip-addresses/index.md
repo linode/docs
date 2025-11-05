@@ -15,7 +15,6 @@ external_resources:
 - '[Wikipedia IPv4 Packet Description Page](https://en.wikipedia.org/wiki/IPv4#Packet_structure)'
 - '[RFC 2460 for IPv6](https://datatracker.ietf.org/doc/html/rfc2460)'
 - '[Subnet Calculator](http://www.csgnetwork.com/ipaddconv.html)'
-tags: ["saas"]
 ---
 
 The *Internet Protocol* (IP), as described in [RFC 791](https://datatracker.ietf.org/doc/html/rfc791), is the framework that underlies the behavior of the entire internet. The Internet Protocol Version 4 (IPv4) and Version 6 (IPv6) address systems are used to identify interfaces and locate hosts on the network. This allows hosts and routers to determine the path to another networking device and send packets to it. This guide outlines how to understand IP addresses, and how to describe and use them.
