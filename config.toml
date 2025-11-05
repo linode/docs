@@ -4,6 +4,9 @@ baseURL = "https://www.linode.com/docs/"
 languageCode = "en-us"
 title = "Linode Guides & Tutorials"
 
+
+disableAliases = true
+
 # disableKinds = ["taxonomy", "taxonomyTerm"]
 themeDir = ".."
 rssLimit = 30
