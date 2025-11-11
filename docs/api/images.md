@@ -1,5 +1,0 @@
----
-slug: images
-title: Images
----
-
