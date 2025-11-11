@@ -17,9 +17,11 @@ disqusShortname="linode-1"
 
 enableGitInfo = true
 
+[sitemap]
+filename = "sitemap_linodedocs.xml"
+
 [outputs]
-# The JSON is for the search index. We build this on every build to make sure we have the image thumbnails in sync.
-home = ["HTML", "JSON", "RSS"]
+home = ["HTML", "RSS"]
 
 [taxonomies]
 bundle = "bundles"
