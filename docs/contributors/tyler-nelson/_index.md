@@ -1,7 +1,7 @@
 ---
 title: "Tyler Nelson"
 link: ""
-email: "tylernelson12@gmail.com"
+email: ""
 description: "The Linode documentation library's profile page and submission listing for Tyler Nelson"
 ---
 
