@@ -21,7 +21,6 @@ external_resources:
 - '[Chef Supermarket](https://supermarket.chef.io/)'
 - '[Chef Supermarket documentation](https://docs.chef.io/workstation/knife_supermarket/)'
 - '[Chef bootstrap documentation](https://docs.chef.io/install_bootstrap/)'
-tags: ["saas"]
 ---
 
 [Chef](https://www.chef.io/) is a free and open source *Infrastructure as Code* (IaC) application. It's a configuration management system that allows administrators to provision and manage infrastructure using automation. A complete Chef workflow includes one or more Chef Workstations, a Chef Server, and a set of nodes. This guide provides some background on how Chef works, and explains how to install and configure Chef on Ubuntu 20.04.

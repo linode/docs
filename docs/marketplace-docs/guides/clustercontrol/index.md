@@ -5,10 +5,9 @@ published: 2021-08-13
 modified: 2022-05-17
 keywords: ['database','cluster','backups','configuration management']
 tags: ["marketplace", "linode platform", "cloud manager"]
-aliases: ['/guides/deploying-clustercontrol-marketplace-app/','/guides/clustercontrol-marketplace-app/']
 external_resources:
 - '[ClusterControl](https://severalnines.com/product/clustercontrol/clustercontrol-community-edition)'
-aliases: ['/products/tools/marketplace/guides/clustercontrol/']
+aliases: ['/products/tools/marketplace/guides/clustercontrol/','/guides/deploying-clustercontrol-marketplace-app/','/guides/clustercontrol-marketplace-app/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -14,7 +14,6 @@ external_resources:
 - '[Open Stack](https://www.openstack.org/)'
 - '[Apache CloudStack](https://cloudstack.apache.org/)'
 - '[Docker](https://www.docker.com/)'
-tags: ["saas"]
 ---
 
 *Infrastructure as a Service* (IaaS) is a cloud computing service that provides virtual infrastructure to customers on demand. However, customers still manage and operate their own resources. This model frees users from having to operate and maintain their own costly equipment. Some of the infrastructure components offered by IaaS providers include servers, data storage, and networking capabilities. This guide describes IaaS and explains its advantages and rationale, and outlines how to use it.

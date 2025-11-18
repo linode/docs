@@ -10,7 +10,6 @@ keywords: ["apache tomcat centos 8", "tomcat java", "java centos 8", "tomcat ubu
 tags: ["web applications","java","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/apache-tomcat-on-centos-8/','/development/frameworks/apache-tomcat/apache-tomcat-on-centos-8/','/websites/frameworks/apache-tomcat-on-centos-8/']
-image: ApacheTomcat_CentOS8.png
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
