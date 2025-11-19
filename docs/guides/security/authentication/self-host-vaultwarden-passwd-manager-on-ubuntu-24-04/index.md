@@ -91,9 +91,9 @@ If your hostname appears as expected and the time is synchronized with NTP, your
 If you configure a firewall, opening ports 80 and 443 allow HTTP/HTTPS traffic to Vaultwarden or the reverse proxy. DNS records should point to the public [IPv4 and IPv6 Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) of the compute instance. For help with setting up a domain refer to [Overview of DNS and DNS records](/docs/guides/dns-overview/) and [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager).
 {{< /note >}}
 
-{{< important >}}
+{{< note >}}
 When setting up or starting a production system, you may see the message: **"Enable ESM Apps to receive additional future security updates."** It means your system may be eligible for extended security updates. To understand and benefit from this coverage, see [Ubuntu's official ESM documentation](https://documentation.ubuntu.com/pro-client/en/docs/explanations/about_esm/).
-{{< /important >}}
+{{< /note >}}
 
 ## Prerequisite Support for Containerized Services
 
@@ -117,7 +117,7 @@ If the commands complete without errors and you see confirmation messages like `
 
 Ubuntu 24.04 uses the new codename `noble`, which may not yet be fully supported by Docker's official stable repository. This can cause issues when trying to install Docker CE using standard package commands.
 
-{{< important >}}
+{{< note >}}
 Running `sudo apt update` and `sudo apt upgrade -y` **does not install Docker-CE** or prepare your system to use it. Attempting to install `docker-ce` without first adding Dockers' repository will result in:
 
 ```command
@@ -125,17 +125,66 @@ Package 'docker-ce' has no installation candidate
 ```
 
 Installing `docker.io` from Ubuntu's default repository may appear to work, but it lacks the modern Compose plugin and may cause compatibility issues with Vaultwarden's setup.
-{{< /important >}}
+{{< /note >}}
 
 {{< note >}}
 If you're using Ubuntu 24.04, expect potential friction when installing Docker CE. This is due to upstream repository timing--not a misstep on your part or a flaw in this guide.
 {{< /note >}}
+<<<<<<< HEAD
+=======
+
+### What This Guide Uses
+
+This guide uses **Docker CE** for full compatibility with Vaultwarden's containerized deployment and walks you through:
+
+- Adding Docker's official repository (with `noble` codename)
+- Installing Docker CE and its plugins
+- Removing legacy packages like `docker.io` if present
+
+This ensures a clean, modern setup that aligns with Vaultwarden's current architecture and avoids silent conflicts--especially when integrating with a reverse proxy like Nginx.
+>>>>>>> 396dfadfa6f18fb3d14a471efbcfd0d83283851f
 
 ##  Install Docker CE and Compose Plugin
 
 ### Prerequisite Support for Containerized Services
 
+<<<<<<< HEAD
 To self-host Vaultwarden after preparating your Ubuntu 24.04 compute instance to run containerized applications, this setup ensures your system is ready to deploy Vaultwarden cleanly and securely.
+=======
+To self-host Vaultwarden, we’ll first prepare your Ubuntu 24.04 compute instance to run containerized applications. This setup ensures your system is ready to deploy Vaultwarden cleanly and securely.
+
+#### Update system packages
+
+Before installing anything new, update your system to ensure all packages are current:
+
+```command
+sudo apt update
+sudo apt upgrade -y
+```
+If prompted about a modified configuration file (e.g., `sshd_config`), choose to keep the local version unless you're intentionally resetting to the package maintainer's defaults. This preserves your current access settings and avoids unexpected changes. Ensures compatibility and security before installing new components.
+
+{{< note >}}
+If the commands complete without errors and you see confirmation messages like `Setting up [package]`, or `Restarting services...`, your system is up to date and ready for the next step.
+{{< /note >}}
+
+#### Understand Docker Compatibility on Ubuntu 24.04
+
+Ubuntu 24.04 uses the new codename `noble`, which may not yet be fully supported by Docker's official stable repository. This can cause issues when trying to install Docker CE using standard package commands.
+
+{{< note >}}
+Running `sudo apt update` and `sudo apt upgrade -y` **does not install Docker-CE** or prepare your system to use it. Attempting to install `docker-ce` without first adding Dockers' repository will result in:
+
+```command
+Package 'docker-ce' has no installation candidate
+```
+
+Installing `docker.io` from Ubuntu's default repository may appear to work, but it lacks the modern Compose plugin and may cause compatibility issues with Vaultwarden's setup.
+{{< /note >}}
+
+{{< note >}}
+If you're using Ubuntu 24.04, expect potential friction when installing Docker CE. This is due to upstream repository timing--not a misstep on your part or a flaw in this guide.
+{{< /note >}}
+>>>>>>> 396dfadfa6f18fb3d14a471efbcfd0d83283851f
 
 #### What This Guide Uses
 
@@ -262,7 +311,7 @@ Paste the following content:
 # Vaultwarden reverse proxy configuration
 # Replace 'your-domain-name' with your actual domain
 # Ensure Vaultwarden is bound to 127.0.0.1:80 or update proxy_pass accordingly
-
+```nginx
 server {
     listen 80;
     server_name your-domain.com;
@@ -275,7 +324,7 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
-
+```
 Replace your-domain.com with your actual domain name. This configuration forwards all traffic to Vaultwarden running on localhost.
 
 Step 3:Configure Vaultwarden Environment Variables
@@ -387,7 +436,7 @@ Certbot will:
 Before running Certbot, ensure your domain's DNS records point to your server's public IP. You can verify this with a DNS lookup to or by running`dig your-domain.com+short`.
 {{< /note >}}
 
-If Certbot completes successfully and reloads NGINX, HTTPS is now active. You can access Vaultwarden securely fia`https//your-domain.com`.
+If Certbot completes successfully and reloads NGINX, HTTPS is now active. You can access Vaultwarden securely via`https//your-domain.com`.
 
 Step 7: Recovery: Fix Redirect Loop
 
@@ -409,8 +458,12 @@ docker compose up -d
 Confirm NGINX is proxying HTTPS
 
 If you used a separate config file (e.g., /etc/nginx/sites-available/vaultwarden), ensure it includes:
+<<<<<<< HEAD
 
 ```command
+=======
+```nginx
+>>>>>>> 396dfadfa6f18fb3d14a471efbcfd0d83283851f
 server {
     listen 443 ssl;
     server_name your-domain.com;
@@ -427,7 +480,10 @@ server {
     }
 }
 ```
+<<<<<<< HEAD
 
+=======
+>>>>>>> 396dfadfa6f18fb3d14a471efbcfd0d83283851f
 Then restart NGINX:
 ```command
 sudo systemctl restart nginx
