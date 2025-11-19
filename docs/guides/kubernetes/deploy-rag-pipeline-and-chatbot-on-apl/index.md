@@ -158,16 +158,17 @@ Follow the steps below to create a Kubeflow pipeline file. This YAML file descri
 
 1.  Create a file named `doc-ingest-pipeline.py` with the following contents.
 
-    This script configures the pipeline that downloads the Markdown data set to be ingested, reads the content using LlamaIndex, generates embeddings of the content, and stores the embeddings in the PGvector database. You do not need to make any changes in the script!
+    This script configures the pipeline that downloads the Markdown data set to be ingested, reads the content using LlamaIndex, generates embeddings of the content, and stores the embeddings in the PGvector database.
 
     ```file
     from kfp import dsl
 
     @dsl.component(
-            base_image='nvcr.io/nvidia/ai-workbench/python-cuda117:1.0.3',
-            packages_to_install=['pymilvus>=2.4.2', 'llama-index', 'llama-index-vector-stores-milvus', 'llama-index-embeddings-huggingface', 'llama-index-llms-openai-like']
-            )
-    def doc_ingest_component(url: str, collection: str) -> None:
+        base_image='nvcr.io/nvidia/ai-workbench/python-cuda117:1.0.3',
+        packages_to_install=['psycopg2-binary', 'llama-index', 'llama-index-vector-stores-postgres',
+                            'llama-index-embeddings-openai-like', 'llama-index-llms-openai-like', 'kubernetes']
+    )
+    def doc_ingest_component(url: str, table_name: str) -> None:
         print(">>> doc_ingest_component")
 
         from urllib.request import urlopen
@@ -183,35 +184,54 @@ Follow the steps below to create a Kubeflow pipeline file. This YAML file descri
         # load documents
         documents = SimpleDirectoryReader("./md_docs/", recursive=True, required_exts=[".md"]).load_data()
 
-        from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+        from llama_index.embeddings.openai_like import OpenAILikeEmbedding
         from llama_index.core import Settings
 
-        Settings.embed_model = HuggingFaceEmbedding(
-            model_name="sentence-transformers/all-MiniLM-L6-v2"
+        Settings.embed_model = OpenAILikeEmbedding(
+            model_name="mistral-7b-instruct",
+            api_base="http://mistral-7b.team-models.svc.cluster.local/openai/v1",
+            api_key="EMPTY",
+            embed_batch_size=50,
+            max_retries=3,
+            timeout=180.0
         )
 
-        from llama_index.llms.openai_like import OpenAILike
-
-        llm = OpenAILike(
-            model="llama3",
-            api_base="https://llama3-model-predictor-team-demo.{{< placeholder "<cluster-domain>" >}}/openai/v1",
-            api_key = "EMPTY",
-            max_tokens = 512)
-
-        Settings.llm = llm
-
         from llama_index.core import VectorStoreIndex, StorageContext
-        from llama_index.vector_stores.milvus import MilvusVectorStore
+        from llama_index.vector_stores.postgres import PGVectorStore
+        import base64
+        from kubernetes import client, config
 
-        vector_store = MilvusVectorStore(uri="http://milvus.milvus.svc.cluster.local:19530", collection=collection, dim=384, overwrite=True)
+        def get_secret_credentials():
+            try:
+                config.load_incluster_config()  # For in-cluster access
+                v1 = client.CoreV1Api()
+                secret = v1.read_namespaced_secret(name="pgvector-app", namespace="team-demo")
+                password = base64.b64decode(secret.data['password']).decode('utf-8')
+                username = base64.b64decode(secret.data['username']).decode('utf-8')
+                return username, password
+            except Exception as e:
+                print(f"Error getting secret: {e}")
+                return 'app', 'changeme'
+
+        pg_user, pg_password = get_secret_credentials()
+
+        vector_store = PGVectorStore.from_params(
+            database="app",
+            host="pgvector-rw.team-demo.svc.cluster.local",
+            port=5432,
+            user=pg_user,
+            password=pg_password,
+            table_name=table_name,
+            embed_dim=4096
+        )
         storage_context = StorageContext.from_defaults(vector_store=vector_store)
         index = VectorStoreIndex.from_documents(
             documents, storage_context=storage_context
         )
 
     @dsl.pipeline
-    def doc_ingest_pipeline(url: str, collection: str) -> None:
-        comp = doc_ingest_component(url=url, collection=collection)
+    def doc_ingest_pipeline(url: str, table_name: str) -> None:
+        comp = doc_ingest_component(url=url, table_name=table_name)
 
     from kfp import compiler
 
