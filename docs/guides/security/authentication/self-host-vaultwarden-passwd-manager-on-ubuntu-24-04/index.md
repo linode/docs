@@ -429,7 +429,7 @@ Certbot will:
 Before running Certbot, ensure your domain's DNS records point to your server's public IP. You can verify this with a DNS lookup to or by running`dig your-domain.com+short`.
 {{< /note >}}
 
-If Certbot completes successfully and reloads NGINX, HTTPS is now active. You can access Vaultwarden securely fia`https//your-domain.com`.
+If Certbot completes successfully and reloads NGINX, HTTPS is now active. You can access Vaultwarden securely via`https//your-domain.com`.
 
 Step 7: Recovery: Fix Redirect Loop
 
@@ -451,7 +451,7 @@ docker compose up -d
 Confirm NGINX is proxying HTTPS
 
 If you used a separate config file (e.g., /etc/nginx/sites-available/vaultwarden), ensure it includes:
-
+```nginx
 server {
     listen 443 ssl;
     server_name your-domain.com;
@@ -467,7 +467,7 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
-
+```
 Then restart NGINX:
 ```command
 sudo systemctl restart nginx
