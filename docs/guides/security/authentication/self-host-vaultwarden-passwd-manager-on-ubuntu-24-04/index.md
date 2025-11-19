@@ -149,7 +149,7 @@ This ensures a clean, modern setup that aligns with Vaultwarden's current archit
 ### Prerequisite Support for Containerized Services
 
 <<<<<<< HEAD
-To self-host Vaultwarden after preparating your Ubuntu 24.04 compute instance to run containerized applications, this setup ensures your system is ready to deploy Vaultwarden cleanly and securely.
+To self-host Vaultwarden after preparing your Ubuntu 24.04 compute instance to run containerized applications, this setup ensures your system is ready to deploy Vaultwarden cleanly and securely.
 =======
 To self-host Vaultwarden, we’ll first prepare your Ubuntu 24.04 compute instance to run containerized applications. This setup ensures your system is ready to deploy Vaultwarden cleanly and securely.
 
