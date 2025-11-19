@@ -31,7 +31,7 @@ If you prefer to manually install an LLM and RAG Pipeline on LKE rather than usi
 
 ### Infrastructure
 
--   **Linode GPUs (NVIDIA RTX 4000)**: Akamai has several GPU virtual machines available, including NVIDIA RTX 4000 (used in this tutorial) and Quadro RTX 6000. NVIDIA’s Ada Lovelace architecture in the RTX 4000 VMs are adept at many AI tasks, including [inferencing](https://www.nvidia.com/en-us/solutions/ai/inference/) and [image generation](https://blogs.nvidia.com/blog/ai-decoded-flux-one/).
+-   **Linode GPUs (NVIDIA RTX 4000)**: Akamai has several GPU virtual machines available, including NVIDIA RTX 4000 (used in this tutorial) and Quadro RTX 6000. NVIDIA’s Ada Lovelace architecture in the RTX 4000 VMs are adept at many AI tasks, including [inference](https://www.nvidia.com/en-us/solutions/ai/inference/) and [image generation](https://blogs.nvidia.com/blog/ai-decoded-flux-one/).
 
 -   **Linode Kubernetes Engine (LKE)**: LKE is Akamai’s managed Kubernetes service, enabling you to deploy containerized applications without needing to build out and maintain your own Kubernetes cluster.
 
@@ -160,10 +160,10 @@ The [NVIDIA GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-op
 
 1.  Select **Add Helm Chart**.
 
-1.  Under **Git Repository URL**, add the URL to the `inferencing-service` Helm chart:
+1.  Under **Git Repository URL**, add the URL to the `hf-meta-llama-3-1-8b-instruct` Helm chart:
 
     ```command
-    https://github.com/linode/apl-examples/blob/main/inferencing/kserve/hf-meta-llama-3-1-8b-instruct/Chart.yaml
+    https://github.com/linode/apl-examples/blob/main/inference/kserve/hf-meta-llama-3-1-8b-instruct/Chart.yaml
     ```
 
 1.  Click **Get Details** to populate the Helm chart details.
@@ -180,7 +180,7 @@ Now configure the RBAC of the Catalog:
 
 1.  Click on the `Gitea` app.
 
-1.  In the list of Repositories, click on `otomo/charts`.
+1.  In the list of Repositories, click on `otomi/charts`.
 
 1.  At the bottom, click on the file `rbac.yaml`.
 
@@ -398,4 +398,4 @@ The `open-webui` Helm chart used in this guide does not support to add additiona
 
     1.  Go to **Apps**, and open the _Argocd_ application.
 
-    1.  Using the search feature, go to the `team-demo` application to see if the policy has been created. If it isn't there yet, view the `team-demo` application in the list of **Applications**, and click **Refresh** as needed.
+    1.  Using the search feature, go to the `team-demo` application to see if the policy has been created. If it isn't there yet, view the `team-demo` application in the list of **Applications**, and click **Refresh** if needed.

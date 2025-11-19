@@ -27,7 +27,7 @@ If you prefer a manual installation rather than one using App Platform for LKE, 
 
 ### Infrastructure
 
--   **Linode GPUs (NVIDIA RTX 4000)**: Akamai has several high-performance GPU virtual machines available, including NVIDIA RTX 4000 (used in this tutorial) and Quadro RTX 6000. NVIDIA’s Ada Lovelace architecture in the RTX 4000 VMs are adept at many AI tasks, including [inferencing](https://www.nvidia.com/en-us/solutions/ai/inference/) and [image generation](https://blogs.nvidia.com/blog/ai-decoded-flux-one/).
+-   **Linode GPUs (NVIDIA RTX 4000)**: Akamai has several high-performance GPU virtual machines available, including NVIDIA RTX 4000 (used in this tutorial) and Quadro RTX 6000. NVIDIA’s Ada Lovelace architecture in the RTX 4000 VMs are adept at many AI tasks, including [inference](https://www.nvidia.com/en-us/solutions/ai/inference/) and [image generation](https://blogs.nvidia.com/blog/ai-decoded-flux-one/).
 
 -   **Linode Kubernetes Engine (LKE)**: LKE is Akamai’s managed Kubernetes service, enabling you to deploy containerized applications without needing to build out and maintain your own Kubernetes cluster.
 
@@ -47,7 +47,7 @@ If you prefer a manual installation rather than one using App Platform for LKE, 
 
 ## Prerequisites
 
--   Complete the deployment in the [Deploy an LLM for AI Inferencing with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl) guide. Your LKE cluster should include the following minimum hardware requirements:
+-   Complete the deployment in the [Deploy an LLM for AI Inference with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl) guide. Your LKE cluster should include the following minimum hardware requirements:
 
     -   3 **8GB Dedicated CPUs** with [autoscaling](https://techdocs.akamai.com/cloud-computing/docs/manage-nodes-and-node-pools#autoscale-automatically-resize-node-pools) turned on
 
@@ -70,7 +70,7 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 1.  Under **Git Repository URL**, add the URL to the `hf-e5-mistral-7b-instruct` Helm chart:
 
     ```command
-    https://github.com/linode/apl-examples/blob/main/inferencing/kserve/hf-e5-mistral-7b-instruct/Chart.yaml
+    https://github.com/linode/apl-examples/blob/main/inference/kserve/hf-e5-mistral-7b-instruct/Chart.yaml
     ```
 
 1.  Click **Get Details** to populate the Helm chart details.
@@ -87,7 +87,7 @@ Now configure the RBAC of the Catalog:
 
 1.  Click on the `Gitea` app.
 
-1.  In the list of Repositories, click on `otomo/charts`.
+1.  In the list of Repositories, click on `otomi/charts`.
 
 1.  At the bottom, click on the file `rbac.yaml`.
 
@@ -443,11 +443,11 @@ The Agent pipeline files in this section are not related to the Kubeflow pipelin
 
 1.  Optionally add a title and any notes to the change history, and click **Commit Changes**.
 
-1.  Go to **Apps**, and open the _Argocd_ application. Navigate to the `team-demo` application to see if the configmap has been created. If it is not ready yet, click **Refresh** as needed.
+1.  Go to **Apps**, and open the _Argocd_ application. Navigate to the `team-demo` application to see if the configmap has been created. If it is not ready yet, click **Refresh** if needed.
 
 ### Deploy the open-webui Pipeline and Web Interface
 
-Update the Kyverno **Policy** `open-webui-policy.yaml` created in the previous tutorial ([Deploy an LLM for AI Inferencing with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl)) to mutate the `open-webui` pods that will be deployed.
+Update the Kyverno **Policy** `open-webui-policy.yaml` created in the previous tutorial ([Deploy an LLM for AI Inference with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl)) to mutate the `open-webui` pods that will be deployed.
 
 #### Add the pipelines Helm Chart to the Catalog
 
@@ -457,7 +457,7 @@ Update the Kyverno **Policy** `open-webui-policy.yaml` created in the previous t
 
 1.  Select **Add Helm Chart**.
 
-1.  Under **Github URL**, add the URL to the openweb-ui `pipelines` Helm chart:
+1.  Under **Github URL**, add the URL to the open-webui `pipelines` Helm chart:
 
     ```command
     https://github.com/open-webui/helm-charts/blob/pipelines-0.4.0/charts/pipelines/Chart.yaml
@@ -561,7 +561,7 @@ The agent pipeline will need access to the PGvector database. For this the Servi
 
 1.  Click on **Create Workload**.
 
-1.  Select the _open-webui_ Helm chart from the Catalog. This Helm chart should have been added in the previous [Deploy an LLM for AI Inferencing with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl/#add-the-open-webui-helm-chart-to-the-catalog) guide.
+1.  Select the _open-webui_ Helm chart from the Catalog. This Helm chart should have been added in the previous [Deploy an LLM for AI Inference with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl/#add-the-open-webui-helm-chart-to-the-catalog) guide.
 
 1.  Click on **Values**.
 
