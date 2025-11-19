@@ -205,6 +205,7 @@ bitrate
 bitshift
 bitstream
 bitwarden
+Bitwarden
 bitwise
 Bjarne
 blkid
@@ -249,6 +250,7 @@ buildah
 buildbot
 buildpack
 Buildpacks
+buildx
 bukkit
 bundler
 bungeecord
@@ -285,6 +287,7 @@ centos7
 ceph
 cer
 certbot
+Certbot
 certcheck
 certutil
 cetera
@@ -1246,6 +1249,8 @@ keylogging
 keymap
 keypair
 keypairs
+keyring
+keyrings
 keysize
 keyspace
 keyspaces
@@ -2003,6 +2008,7 @@ Printf
 printf
 prismic
 pritunl
+privkey
 privesc
 prizm
 processhider
@@ -2767,6 +2773,8 @@ variadic
 varnishlog
 varonis
 vaultwarden
+Vaultwarden
+vaultserver
 vBulletin
 vCPU
 vCPUs
@@ -2969,6 +2977,7 @@ xvdc
 xvnc
 xxen
 xy
+xyzf
 xzio
 xzip
 yaml
