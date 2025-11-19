@@ -1909,6 +1909,7 @@ pg_dump
 pg_dumpall
 pg_restore
 pgAdmin
+PGvector
 pgpass
 Phalcon
 pharmer

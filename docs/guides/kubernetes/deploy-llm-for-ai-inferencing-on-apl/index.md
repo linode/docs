@@ -1,9 +1,9 @@
 ---
 slug: deploy-llm-for-ai-inferencing-on-apl
-title: "Deploy an LLM for AI Inferencing with App Platform for LKE"
-description: "This guide includes steps and guidance for deploying a large language model for AI inferencing using App Platform for Linode Kubernetes Engine."
-authors: ["Akamai"]
-contributors: ["Akamai"]
+title: "Deploy an LLM for AI Inference with App Platform for LKE"
+description: "This guide includes steps and guidance for deploying a large language model for AI inference using App Platform for Linode Kubernetes Engine."
+authors: ["Sander Rodenhuis"]
+contributors: ["Sander Rodenhuis"]
 published: 2025-03-25
 modified: 2025-11-18
 keywords: ['ai','ai inference','ai inference','llm','large language model','app platform','lke','linode kubernetes engine','llama 3','kserve','istio','knative']
@@ -341,13 +341,13 @@ Note that in some cases, the **Target** Pod needs to be restarted if it already 
 
 ## appendix 2: Egress control
 
-When we created the Teams **demo** and **models**, we turned off the **Egress Control**. Egress Control is implemented using Istio Service Entries and Istio sidecar injection is enabled by default. Egress Control controls Pod access to public URLs. Because the Hugging Face models need to be downloaded from an external repository and the openweb-ui installs multiple binaries from external sources, both the LLM Pod and the openweb-ui need to have access to multiple public URLs. For the simplicity of this guide we turned the Egress Control off. If you don't want to disable Egress Control for all the workloads in a Team, then you can turn Egress Control on and create **Outbound Rules** in the Team's Network Policies or turn of the sidecar injection for a specific workloads (Pods). There are 2 ways to do this:
+When we created the Teams **demo** and **models**, we turned off the **Egress Control**. Egress Control is implemented using Istio Service Entries and Istio sidecar injection is enabled by default. Egress Control controls Pod access to public URLs. Because the Hugging Face models need to be downloaded from an external repository and the open-webui installs multiple binaries from external sources, both the LLM Pod and the open-webui need to have access to multiple public URLs. For the simplicity of this guide we turned the Egress Control off. If you don't want to disable Egress Control for all the workloads in a Team, then you can turn Egress Control on and create **Outbound Rules** in the Team's Network Policies or turn of the sidecar injection for a specific workloads (Pods). There are 2 ways to do this:
 
 1.  Add the label `sidecar.istio.io/inject: "false"` to the workload using the Chart Values
 
 1.  Enable Kyverno and create a Kyverno **Policy** that mutates the a pod so that it will have the `sidecar.istio.io/inject: "false"` label.
 
-The `openweb-ui` Helm chart used in this guide does not support to add additional labels to Pods. The following instruction and example shows how to use Kyverno to mutate the openweb-ui Pods and add the `sidecar.istio.io/inject: "false"` label.
+The `open-webui` Helm chart used in this guide does not support to add additional labels to Pods. The following instruction and example shows how to use Kyverno to mutate the open-webui Pods and add the `sidecar.istio.io/inject: "false"` label.
 
 1.  Select **view** > **platform** in the top bar.
 

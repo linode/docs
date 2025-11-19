@@ -1,9 +1,9 @@
 ---
 slug: deploy-rag-pipeline-and-chatbot-on-apl
 title: "Deploy a RAG Pipeline and Chatbot with App Platform for LKE"
-description: "This guide expands on a previously built LLM and AI inferencing architecture to include a RAG pipeline that indexes a custom data set. The steps provided utilize Akamai App Platform for Linode Kubernetes Engine to deploy the RAG pipeline."
-authors: ["Akamai"]
-contributors: ["Akamai"]
+description: "This guide expands on a previously built LLM and AI inference architecture to include a RAG pipeline that indexes a custom data set. The steps provided utilize Akamai App Platform for Linode Kubernetes Engine to deploy the RAG pipeline."
+authors: ["Sander Rodenhuis"]
+contributors: ["Sander Rodenhuis"]
 published: 2025-03-25
 modified: 2025-11-18
 keywords: ['ai','ai inference','ai inference','llm','large language model','app platform','lke','linode kubernetes engine','rag pipeline','retrieval augmented generation','open webui','kubeflow pipelines']
@@ -126,7 +126,7 @@ Now configure the RBAC of the Catalog:
 
 1.  Use the default values and Click **Submit**.
 
-Note that the `pgvector-cluster` chart will also create a database in the pgvector cluster with the name `app`.
+Note that the `pgvector-cluster` chart will also create a database in the PGvector cluster with the name `app`.
 
 
 ## Set Up Kubeflow Pipelines
