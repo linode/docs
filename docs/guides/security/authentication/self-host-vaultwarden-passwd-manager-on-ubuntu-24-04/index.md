@@ -127,9 +127,9 @@ Package 'docker-ce' has no installation candidate
 Installing `docker.io` from Ubuntu's default repository may appear to work, but it lacks the modern Compose plugin and may cause compatibility issues with Vaultwarden's setup.
 {{< /note >}}
 
-{{< warning >}}
+{{< note >}}
 If you're using Ubuntu 24.04, expect potential friction when installing Docker CE. This is due to upstream repository timing--not a misstep on your part or a flaw in this guide.
-{{< /warning >}}
+{{< /note >}}
 
 ### What This Guide Uses
 
@@ -175,9 +175,9 @@ Package 'docker-ce' has no installation candidate
 Installing `docker.io` from Ubuntu's default repository may appear to work, but it lacks the modern Compose plugin and may cause compatibility issues with Vaultwarden's setup.
 {{< /note >}}
 
-{{< warning >}}
+{{< note >}}
 If you're using Ubuntu 24.04, expect potential friction when installing Docker CE. This is due to upstream repository timing--not a misstep on your part or a flaw in this guide.
-{{< /warning >}}
+{{< /note >}}
 
 #### What This Guide Uses
 
