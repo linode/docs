@@ -78,11 +78,11 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 
 1.  Select **Apps** in the left menu.
 
-1.  Enable the **Knative** and **Kserve** apps by hovering over each app icon and clicking the **power on** button. It may take a few minutes for the apps to enable.
+1.  Enable the **Knative** and **KServe** apps by hovering over each app icon and clicking the **power on** button. It may take a few minutes for the apps to enable.
 
     Enabled apps move up and appear in color towards the top of the available app list.
 
-    ![Enable Knative and Kserve](APL-LLM-Enable-Knative.jpg)
+    ![Enable Knative and KServe](APL-LLM-Enable-Knative.jpg)
 
 ### Create Teams
 
