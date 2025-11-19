@@ -95,11 +95,13 @@ If you configure a firewall, opening ports 80 and 443 allow HTTP/HTTPS traffic t
 When setting up or starting a production system, you may see the message: **"Enable ESM Apps to receive additional future security updates."** It means your system may be eligible for extended security updates. To understand and benefit from this coverage, see [Ubuntu's official ESM documentation](https://documentation.ubuntu.com/pro-client/en/docs/explanations/about_esm/).
 {{< /note >}}
 
-## Prerequisite Support for Containerized Services
+##  Install Docker CE and Compose Plugin
 
-To self-host Vaultwarden, we’ll first prepare your Ubuntu 24.04 compute instance to run containerized applications. This setup ensures your system is ready to deploy Vaultwarden cleanly and securely.
+### Prerequisite Support for Containerized Services
 
-### Update system packages
+To self-host Vaultwarden after preparing your Ubuntu 24.04 compute instance to run containerized applications, this setup ensures your system is ready to deploy Vaultwarden cleanly and securely.
+
+#### Update system packages
 
 Before installing anything new, update your system to ensure all packages are current:
 
@@ -113,7 +115,7 @@ If prompted about a modified configuration file (e.g., `sshd_config`), choose to
 If the commands complete without errors and you see confirmation messages like `Setting up [package]`, or `Restarting services...`, your system is up to date and ready for the next step.
 {{< /note >}}
 
-### Understand Docker Compatibility on Ubuntu 24.04
+#### Understand Docker Compatibility on Ubuntu 24.04
 
 Ubuntu 24.04 uses the new codename `noble`, which may not yet be fully supported by Docker's official stable repository. This can cause issues when trying to install Docker CE using standard package commands.
 
@@ -130,25 +132,8 @@ Installing `docker.io` from Ubuntu's default repository may appear to work, but 
 {{< note >}}
 If you're using Ubuntu 24.04, expect potential friction when installing Docker CE. This is due to upstream repository timing--not a misstep on your part or a flaw in this guide.
 {{< /note >}}
-<<<<<<< HEAD
-=======
-
-### What This Guide Uses
-
-This guide uses **Docker CE** for full compatibility with Vaultwarden's containerized deployment and walks you through:
-
-- Adding Docker's official repository (with `noble` codename)
-- Installing Docker CE and its plugins
-- Removing legacy packages like `docker.io` if present
-
-This ensures a clean, modern setup that aligns with Vaultwarden's current architecture and avoids silent conflicts--especially when integrating with a reverse proxy like NGINX.
 >>>>>>> 396dfadfa6f18fb3d14a471efbcfd0d83283851f
-
-##  Install Docker CE and Compose Plugin
-
-### Prerequisite Support for Containerized Services
-
-To self-host Vaultwarden after preparing your Ubuntu 24.04 compute instance to run containerized applications, this setup ensures your system is ready to deploy Vaultwarden cleanly and securely.
+>>>>>>> f1b11e12eca4220ff21d0f5c79e112af01938909
 
 #### What This Guide Uses
 
