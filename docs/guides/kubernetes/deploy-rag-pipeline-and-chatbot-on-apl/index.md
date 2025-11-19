@@ -1,37 +1,33 @@
 ---
 slug: deploy-rag-pipeline-and-chatbot-on-apl
-title: "Deploy a RAG Pipeline and Chatbot with App Platform for LKE"
-description: "This guide expands on a previously built LLM and AI inferencing architecture to include a RAG pipeline that indexes a custom data set. The steps provided utilize Akamai App Platform for Linode Kubernetes Engine to deploy the RAG pipeline."
-authors: ["Akamai"]
-contributors: ["Akamai"]
+title: "Implement RAG (Retrieval-Augmented Generation) with App Platform for LKE"
+description: "This guide expands on a previously AI inference with App Platform for LKE guide. The steps provided utilize Akamai App Platform for LKE to implement Retrieval-Augmented Generation (RAG)."
+authors: ["Sander Rodenhuis"]
+contributors: ["Sander Rodenhuis"]
 published: 2025-03-25
-modified: 2025-07-23
-keywords: ['ai','ai inference','ai inferencing','llm','large language model','app platform','lke','linode kubernetes engine','rag pipeline','retrieval augmented generation','open webui','kubeflow']
+modified: 2025-11-18
+keywords: ['ai','ai inference','ai inference','llm','large language model','app platform','lke','linode kubernetes engine','rag pipeline','retrieval augmented generation','open webui','kubeflow pipelines']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Akamai App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/application-platform)'
 - '[Akamai App Platform Documentation](https://techdocs.akamai.com/app-platform/docs/welcome)'
 ---
 
-{{< note title="This guide is being updated" type="warning" >}}
-This guide is currently undergoing updates due to ongoing development of App Platform and may not function as expected. An updated version will be available soon that incorporates these changes. Check back for the revised guide before proceeding with this deployment.
-{{< /note >}}
+This guide builds on the LLM (Large Language Model) inference architecture built in our [Deploy an LLM for AI Inference with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl) guide by deploying a RAG (Retrieval-Augmented Generation) pipeline that indexes a custom data set. RAG is a particular method of context augmentation that attaches relevant data as context when users send queries to an LLM.
 
-This guide builds on the LLM (Large Language Model) architecture built in our [Deploy an LLM for AI Inferencing with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl) guide by deploying a RAG (Retrieval-Augmented Generation) pipeline that indexes a custom data set. RAG is a particular method of context augmentation that attaches relevant data as context when users send queries to an LLM.
+Follow the steps in this tutorial to enable Kubeflow Pipelines and deploy a RAG pipeline using Akamai App Platform for LKE. The data set you use may vary depending on your use case. For example purposes, this guide uses a sample data set from Akamai Techdocs that includes documentation about all Linode cloud services.
 
-Follow the steps in this tutorial to install Kubeflow Pipelines and deploy a RAG pipeline using Akamai App Platform for LKE. The deployment in this guide uses the previously deployed Open WebUI chatbot to respond to queries using a custom data set. The data set you use may vary depending on your use case. For example purposes, this guide uses a sample data set from Linode Docs in Markdown format.
-
-If you prefer a manual installation rather than one using App Platform for LKE, see our [Deploy a Chatbot and RAG Pipeline for AI Inferencing on LKE](/docs/guides/ai-chatbot-and-rag-pipeline-for-inference-on-lke/) guide.
+If you prefer a manual installation rather than one using App Platform for LKE, see our [Deploy a Chatbot and RAG Pipeline for AI Inference on LKE](/docs/guides/ai-chatbot-and-rag-pipeline-for-inference-on-lke/) guide.
 
 ## Diagram
 
-![RAG Diagram Test](AI_RAG_Diagram.svg)
+![RAG Diagram Test](AI_RAG_Diagram.jpg)
 
 ## Components
 
 ### Infrastructure
 
--   **Linode GPUs (NVIDIA RTX 4000)**: Akamai has several high-performance GPU virtual machines available, including NVIDIA RTX 4000 (used in this tutorial) and Quadro RTX 6000. NVIDIA’s Ada Lovelace architecture in the RTX 4000 VMs are adept at many AI tasks, including [inferencing](https://www.nvidia.com/en-us/solutions/ai/inference/) and [image generation](https://blogs.nvidia.com/blog/ai-decoded-flux-one/).
+-   **Linode GPUs (NVIDIA RTX 4000)**: Akamai has several high-performance GPU virtual machines available, including NVIDIA RTX 4000 (used in this tutorial) and Quadro RTX 6000. NVIDIA’s Ada Lovelace architecture in the RTX 4000 VMs are adept at many AI tasks, including [inference](https://www.nvidia.com/en-us/solutions/ai/inference/) and [image generation](https://blogs.nvidia.com/blog/ai-decoded-flux-one/).
 
 -   **Linode Kubernetes Engine (LKE)**: LKE is Akamai’s managed Kubernetes service, enabling you to deploy containerized applications without needing to build out and maintain your own Kubernetes cluster.
 
@@ -39,19 +35,19 @@ If you prefer a manual installation rather than one using App Platform for LKE, 
 
 ### Additional Software
 
--   **Open WebUI**: A self-hosted AI chatbot application that’s compatible with LLMs like Llama 3 and includes a built-in inference engine for RAG (Retrieval-Augmented Generation) solutions. Users interact with this interface to query the LLM.
+-   **Open WebUI Pipelines**: A self-hosted UI-Agnostic OpenAI API Plugin Framework that brings modular, customizable workflows to any UI client supporting OpenAI API specs.
 
--  **Milvus**: Milvus is an open-source vector database and is used for generative AI workloads. This tutorial uses Milvus to store embeddings generated by LlamaIndex and make them available to queries sent to the Llama 3 LLM.
+-  **PGvector**: Vector similarity search for Postgres. This tutorial uses a Postgres database with a `vector` extension to store embeddings generated by LlamaIndex and make them available to queries sent to the Llama 3.1 8B LLM.
 
--  **Kubeflow**: An open-source software platform designed for Kubernetes that includes a suite of applications used for machine learning tasks. This tutorial installs all default applications and makes specific use of the following:
+-  **KServe**: Serves machine learning models. The architecture in this guide uses the [Llama 3 LLM](https://huggingface.co/meta-llama/Meta-Llama-3-1-8B) deployed using the Hugging Face Runtime Server with KServe, which then serves it to other applications, including the chatbot UI.
 
-    -  **KServe**: Serves machine learning models. The architecture in this guide uses the [Llama 3 LLM](https://huggingface.co/meta-llama/Meta-Llama-3-8B) installed on KServe, which then serves it to other applications, including the chatbot UI.
+-   **intfloat/e5-mistral-7b-instruct LLM**: The [intfloat/e5-mistral-7b-instruct](https://huggingface.co/intfloat/e5-mistral-7b-instruct) model is used as the embedding LLM in this guide.
 
-    -  **Kubeflow Pipeline**: Used to deploy pipelines, reusable machine learning workflows built using the Kubeflow Pipelines SDK. In this tutorial, a pipeline is used to run LlamaIndex to process the dataset and store embeddings.
+-  **Kubeflow Pipelines**: Used to deploy pipelines, reusable machine learning workflows built using the Kubeflow Pipelines SDK. In this tutorial, a pipeline is used to run a pipeline to process the dataset and store embeddings in the PGvector database.
 
 ## Prerequisites
 
--   Complete the deployment in the [Deploy an LLM for AI Inferencing with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl) guide. Your LKE cluster should include the following minimum hardware requirements:
+-   Complete the deployment in the [Deploy an LLM for AI Inference with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl) guide. Your LKE cluster should include the following minimum hardware requirements:
 
     -   3 **8GB Dedicated CPUs** with [autoscaling](https://techdocs.akamai.com/cloud-computing/docs/manage-nodes-and-node-pools#autoscale-automatically-resize-node-pools) turned on
 
@@ -59,248 +55,93 @@ If you prefer a manual installation rather than one using App Platform for LKE, 
 
 -   [Python3](https://www.python.org/downloads/) and the [venv](https://docs.python.org/3/library/venv.html) Python module installed on your local machine
 
+-   Object Storage configured. Make sure to configure Object Storage as described [here](https://techdocs.akamai.com/app-platform/docs/lke-automatic-install#provision-object-storage-for-the-app-platform) before Kubeflow Pipelines is enabled.
+
 ## Set Up Infrastructure
 
-Once your LLM has been deployed and is accessible, complete the following steps to continue setting up your infrastructure.
+Sign into the App Platform web UI using the `platform-admin` account, or another account that uses the `platform-admin` role and follow the next steps:
 
-Sign into the App Platform web UI using the `platform-admin` account, or another account that uses the `platform-admin` role.
-
-### Add the milvus Helm Chart to the Catalog
-
-1.  Select **view** > **team** and **team** > **admin** in the top bar.
+### Add the hf-e5-mistral-7b-instruct Helm Chart to the Catalog
 
 1.  Click on **Catalog** in the left menu.
 
 1.  Select **Add Helm Chart**.
 
-1.  Under **Git Repository URL**, add the URL to the `milvus` Helm chart:
+1.  Under **Git Repository URL**, add the URL to the `hf-e5-mistral-7b-instruct` Helm chart:
 
     ```command
-    https://github.com/zilliztech/milvus-helm/blob/milvus-4.2.40/charts/milvus/Chart.yaml
+    https://github.com/linode/apl-examples/blob/main/inference/kserve/hf-e5-mistral-7b-instruct/Chart.yaml
     ```
 
 1.  Click **Get Details** to populate the Helm chart details.
 
-1.  Deselect **Allow teams to use this chart**.
+1.  Uncheck the **Allow teams to use this chart** option. In the next step we'll configure the RBAC of the Catalog to make this Helm chart available for the Team `models` to use.
 
 1.  Click **Add Chart**.
 
-### Create an Object Storage Bucket and Access Key for Milvus
+Now configure the RBAC of the Catalog:
 
-1.  In Cloud Manager, navigate to **Object Storage**.
+1.  Select **view** > **platform**.
 
-1.  Click **Create Bucket**.
+1.  Select **App** in the left menu.
 
-1.  Enter a name for your bucket, and select a **Region** close to, or the same as, your App Platform LKE cluster.
+1.  Click on the `Gitea` app.
 
-1.  While on the **Object Storage** page, select the **Access Keys** tab, and then click **Create Access Key**.
+1.  In the list of Repositories, click on `otomi/charts`.
 
-1.  Enter a name for your access key, select the same **Region** as your Milvus bucket, and make sure your access key has "Read/Write" access enabled for your bucket.
+1.  At the bottom, click on the file `rbac.yaml`.
 
-1.  Save your access key information.
+1.  Change the RBAC for the `hf-e5-mistral-7b-instruct` Helm chart as shown below:
 
-### Create a Workload for the Milvus Helm Chart
+    ```
+    hf-e5-mistral-7b-instruct:
+      - team-models
+    ```
 
-1.  Select **view** > **team** and **team** > **admin** in the top bar.
+### Create a Workload to Deploy the Model
 
-1.  Select **Workloads**.
+1.  Select **view** > **team** and **team** > **models** in the top bar.
 
-1.  Click on **Create Workload**.
+1.  Select **Catalog** from the menu.
 
-1.  Select the _Milvus_ Helm chart from the Catalog.
+1.  Select the _hf-e5-mistral-7b-instruct_ chart.
 
 1.  Click on **Values**.
 
-1.  Provide a name for the Workload. This guide uses the Workload name `milvus`.
+1.  Provide a name for the Workload. This guide uses the Workload name `mistral-7b`.
 
-1.  Add `milvus` as the namespace.
+1.  Use the default values and Click **Submit**.
 
-1.  Select **Create a new namespace**.
-
-1.  Set the following values. Make sure to replace `externalS3` values with those of your Milvus bucket and access key. You may also need to add lines for the resources requests and limits under `standalone`:
-
-    {{< note title="Tip: Use Command + F" >}}
-    While navigating the **Values** configuration window, use the <kbd>cmd</kbd> + <kbd>F</kbd> keyboard search feature to locate each value.
-    {{< /note >}}
-
-    ```
-    cluster:
-      enabled: {{< placeholder "false" >}}
-    pulsarv3:
-      enabled: {{< placeholder "false" >}}
-    minio:
-      enabled: {{< placeholder "false" >}}
-    externalS3:
-      enabled: {{< placeholder "true" >}}
-      host: {{< placeholder "<your-region>.linodeobjects.com" >}}
-      port: "{{< placeholder "443" >}}"
-      accessKey: {{< placeholder "<your-accesskey>" >}}
-      secretKey: {{< placeholder "<your-secretkey>" >}}
-      useSSL: {{< placeholder "true" >}}
-      bucketName: {{< placeholder "<your-bucket-name>" >}}
-      cloudProvider: aws
-      region: {{< placeholder "<your-bucket-region-id>" >}}
-    standalone:
-      resources:
-        requests:
-          nvidia.com/gpu: "{{< placeholder "1" >}}"
-        limits:
-          nvidia.com/gpu: "{{< placeholder "1" >}}"
-    ```
-
-    {{< note type="warning" title="Unencrypted Secret Keys" >}}
-    The Milvus Helm chart does not support the use of a secretKeyRef. Using unencrypted Secret Keys in chart values is not considered a Kubernetes security best-practice.
-    {{< /note >}}
-
-1.  Click **Submit**.
-
-### Create an Object Storage Bucket and Access Key for kubeflow-pipelines
-
-1.  In Cloud Manager, navigate to **Object Storage**.
-
-1.  Click **Create Bucket**.
-
-1.  Enter a name for your bucket, and select a **Region** close to, or the same as, your App Platform LKE cluster.
-
-1.  While on the **Object Storage** page, select the **Access Keys** tab, and then click **Create Access Key**.
-
-1.  Enter a name for your access key, select a **Region** as your Kubeflow-Pipelines bucket, and make sure your access key has "Read/Write" access enabled for your bucket.
-
-1.  Save your access key information.
-
-### Make Sealed Secrets
-
-#### Create a Sealed Secret for mlpipeline-minio-artifact
-
-Make a Sealed Secret named `mlpipeline-minio-artifact` granting access to your `kubeflow-pipelines` bucket.
+### Create a Workload to deploy a PGvector cluster
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
-1.  Select **Sealed Secrets** from the menu, and click **Create SealedSecret**.
+1.  Select **Catalog** from the menu.
 
-1.  Add a name for your SealedSecret, `mlpipeline-minio-artifact`.
-
-1.  Select type _[kubernetes.io/opaque](kubernetes.io/opaque)_ from the **type** dropdown menu.
-
-1.  Add the **Key** and **Value** details below. Replace {{< placeholder "YOUR_ACCESS_KEY" >}} and {{< placeholder "YOUR_SECRET_KEY" >}} with your `kubeflow-pipelines` access key information.
-
-    To add a second key for your secret key, click the **Add Item** button after entering your access key information:
-
-    -   Type: `kubernetes.io/opaque`
-    -   Key=`accesskey`, Value={{< placeholder "YOUR_ACCESS_KEY" >}}
-    -   Key=`secretkey`, Value={{< placeholder "YOUR_SECRET_KEY" >}}
-
-1.  Click **Submit**.
-
-#### Create a Sealed Secret for mysql-credentials
-
-Make another Sealed Secret named `mysql-credentials` to establish root user credentials. Make a strong root password, and save it somewhere secure.
-
-1.  Select **view** > **team** and **team** > **demo** in the top bar.
-
-1.  Select **Sealed Secrets** from the menu, and click **Create SealedSecret**.
-
-1.  Add a name for your SealedSecret, `mysql-credentials`.
-
-1.  Select type _[kubernetes.io/opaque](kubernetes.io/opaque)_ from the **type** dropdown menu.
-
-1.  Add the **Key** and **Value** details, replacing {{< placeholder "YOUR_ROOT_PASSWORD" >}} with a strong root password you've created and saved:
-
-    -   Type: `kubernetes.io/opaque`
-    -   Key=`username`, Value=`root`
-    -   Key=`password`, Value={{< placeholder "YOUR_ROOT_PASSWORD" >}}
-
-1.  Click **Submit**.
-
-### Create a Network Policy
-
-Create a [**Network Policy**](https://techdocs.akamai.com/app-platform/docs/team-network-policies) in the Team where the `kubeflow-pipelines` Helm chart will be installed (Team name **demo** in this guide). This allows communication between all Kubeflow Pipelines Pods.
-
-1.  Select **view** > **team** and **team** > **demo** in the top bar.
-
-1.  Select **Network Policies** from the menu.
-
-1.  Click **Create Netpol**.
-
-1.  Add a name for the Network Policy.
-
-1.  Select **Rule type** `ingress` using the following values, where `kfp` is the name of the Workload created in the next step:
-
-    - **Selector label name**: [`app.kubernetes.io/instance`](http://app.kubernetes.io/instance)
-
-    - **Selector label value**: `kfp`
-
-1.  Click **Submit**.
-
-### Create a Workload and Install the kfp-cluster-resources Helm Chart
-
-1.  Select **view** > **team** and **team** > **admin** in the top bar.
-
-1.  Select **Workloads**.
-
-1.  Click on **Create Workload**.
-
-1.  Select the _Kfp-Cluster-Resources_ Helm chart from the Catalog.
+1.  Select the _pgvector-cluster_ chart.
 
 1.  Click on **Values**.
 
-1.  Provide a name for the Workload. This guide uses the Workload name `kfp-cluster-resources`.
+1.  Provide a name for the Workload. This guide uses the Workload name `pgvector`.
 
-1.  Add `kubeflow` as the namespace.
+1.  Use the default values and Click **Submit**.
 
-1.  Select **Create a new namespace**.
+Note that the `pgvector-cluster` chart will also create a database in the PGvector cluster with the name `app`.
 
-1.  Continue with the default values, and click **Submit**. The Workload may take a few minutes to become ready.
 
-### Create a Workload for the kubeflow-pipelines Helm Chart
+## Set Up Kubeflow Pipelines
 
-1.  Select **view** > **team** and **team** > **admin** in the top bar.
+### Enable Kubeflow Pipelines
 
-1.  Select **Workloads**.
+1.  Select **view** > **platform** in the top bar.
 
-1.  Click on **Create Workload**.
+1.  Select **Apps** in the left menu.
 
-1.  Select the _Kubeflow-Pipelines_ Helm chart from the Catalog.
-
-1.  Click on **Values**.
-
-1.  Provide a name for the Workload. This guide uses the Workload name `kfp`.
-
-1.  Add `team-demo` as the namespace.
-
-1.  Select **Create a new namespace**.
-
-1.  Set the following values. Replace {{< placeholder "<your-bucket-region>" >}} and {{< placeholder "<your-bucket-name>" >}} with those of your `kubeflow-pipelines` bucket:
-
-    ```
-    objectStorage:
-      region: {{< placeholder "<your-bucket-region>" >}}
-      bucket: {{< placeholder "<your-bucket-name>" >}}
-    mysql:
-      secret: mysql-credentials
-    ```
-
-1.  Click **Submit**. It may take a few minutes for the Workload to be ready.
-
-### Expose the Kubeflow Pipelines UI
-
-1.  Select **view** > **team** and **team** > **demo** in the top bar.
-
-1.  Select **Services**.
-
-1.  Click **Create Service**.
-
-1.  In the **Service Name** dropdown menu, select the `ml-pipeline-ui` service.
-
-1.  Click **Create Service**.
-
-Kubeflow Pipelines is now ready to be used by members of the Team **demo**.
-
-## Set Up Kubeflow Pipeline to Ingest Data
+1.  Enable the **Kubeflow Pipelines** app by hovering over the app icon and clicking the **power on** button. It may take a few minutes for the apps to enable.
 
 ### Generate the Pipeline YAML File
 
-The steps below create and use a Python script to create a Kubeflow pipeline file. This YAML file describes each step of the pipeline workflow.
+Follow the steps below to create a Kubeflow pipeline file. This YAML file describes each step of the pipeline workflow.
 
 1.  On your local machine, create a virtual environment for Python:
 
@@ -317,18 +158,17 @@ The steps below create and use a Python script to create a Kubeflow pipeline fil
 
 1.  Create a file named `doc-ingest-pipeline.py` with the following contents.
 
-    Replace {{< placeholder "<cluster-domain>" >}} with the domain of your App Platform instance. The {{< placeholder "<cluster-domain>" >}} is contained in the console URL in your browser, where `console.lke123456.akamai-apl.net` is the URL and `lke123456.akamai-apl.net` is the {{< placeholder "<cluster-domain>" >}}.
-
-    This script configures the pipeline that downloads the Markdown data set to be ingested, reads the content using LlamaIndex, generates embeddings of the content, and stores the embeddings in the milvus database:
+    This script configures the pipeline that downloads the Markdown data set to be ingested, reads the content using LlamaIndex, generates embeddings of the content, and stores the embeddings in the PGvector database.
 
     ```file
     from kfp import dsl
 
     @dsl.component(
-            base_image='nvcr.io/nvidia/ai-workbench/python-cuda117:1.0.3',
-            packages_to_install=['pymilvus>=2.4.2', 'llama-index', 'llama-index-vector-stores-milvus', 'llama-index-embeddings-huggingface', 'llama-index-llms-openai-like']
-            )
-    def doc_ingest_component(url: str, collection: str) -> None:
+        base_image='nvcr.io/nvidia/ai-workbench/python-cuda117:1.0.3',
+        packages_to_install=['psycopg2-binary', 'llama-index', 'llama-index-vector-stores-postgres',
+                            'llama-index-embeddings-openai-like', 'llama-index-llms-openai-like', 'kubernetes']
+    )
+    def doc_ingest_component(url: str, table_name: str) -> None:
         print(">>> doc_ingest_component")
 
         from urllib.request import urlopen
@@ -344,35 +184,54 @@ The steps below create and use a Python script to create a Kubeflow pipeline fil
         # load documents
         documents = SimpleDirectoryReader("./md_docs/", recursive=True, required_exts=[".md"]).load_data()
 
-        from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+        from llama_index.embeddings.openai_like import OpenAILikeEmbedding
         from llama_index.core import Settings
 
-        Settings.embed_model = HuggingFaceEmbedding(
-            model_name="sentence-transformers/all-MiniLM-L6-v2"
+        Settings.embed_model = OpenAILikeEmbedding(
+            model_name="mistral-7b-instruct",
+            api_base="http://mistral-7b.team-models.svc.cluster.local/openai/v1",
+            api_key="EMPTY",
+            embed_batch_size=50,
+            max_retries=3,
+            timeout=180.0
         )
 
-        from llama_index.llms.openai_like import OpenAILike
-
-        llm = OpenAILike(
-            model="llama3",
-            api_base="https://llama3-model-predictor-team-demo.{{< placeholder "<cluster-domain>" >}}/openai/v1",
-            api_key = "EMPTY",
-            max_tokens = 512)
-
-        Settings.llm = llm
-
         from llama_index.core import VectorStoreIndex, StorageContext
-        from llama_index.vector_stores.milvus import MilvusVectorStore
+        from llama_index.vector_stores.postgres import PGVectorStore
+        import base64
+        from kubernetes import client, config
 
-        vector_store = MilvusVectorStore(uri="http://milvus.milvus.svc.cluster.local:19530", collection=collection, dim=384, overwrite=True)
+        def get_secret_credentials():
+            try:
+                config.load_incluster_config()  # For in-cluster access
+                v1 = client.CoreV1Api()
+                secret = v1.read_namespaced_secret(name="pgvector-app", namespace="team-demo")
+                password = base64.b64decode(secret.data['password']).decode('utf-8')
+                username = base64.b64decode(secret.data['username']).decode('utf-8')
+                return username, password
+            except Exception as e:
+                print(f"Error getting secret: {e}")
+                return 'app', 'changeme'
+
+        pg_user, pg_password = get_secret_credentials()
+
+        vector_store = PGVectorStore.from_params(
+            database="app",
+            host="pgvector-rw.team-demo.svc.cluster.local",
+            port=5432,
+            user=pg_user,
+            password=pg_password,
+            table_name=table_name,
+            embed_dim=4096
+        )
         storage_context = StorageContext.from_defaults(vector_store=vector_store)
         index = VectorStoreIndex.from_documents(
             documents, storage_context=storage_context
         )
 
     @dsl.pipeline
-    def doc_ingest_pipeline(url: str, collection: str) -> None:
-        comp = doc_ingest_component(url=url, collection=collection)
+    def doc_ingest_pipeline(url: str, table_name: str) -> None:
+        comp = doc_ingest_component(url=url, table_name=table_name)
 
     from kfp import compiler
 
@@ -397,49 +256,43 @@ The steps below create and use a Python script to create a Kubeflow pipeline fil
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
-1.  Select **Services**.
+1.  Select **Apps**.
 
-1.  Click on the URL of the service `ml-pipeline-ui`.
+1.  Click on the `kubeflow-pipelines` app.
 
-1.  Navigate to the **Pipelines** section, click **Upload pipeline**.
+1.  The UI will open in the **Pipelines** section. Click **Upload pipeline**.
 
 1.  Under **Upload a file**, select the `pipeline.yaml` file created in the previous section, and click **Create**.
 
     ![Upload Pipeline YAML](APL-RAG-upload-pipeline-yaml.jpg)
 
-1.  Select **Experiments** from the left menu, and click **Create experiment**. Enter a name and description for the experiment, and click **Next**.
+1.  Select **Runs** from the left menu, and click **Create run**.
 
-    ![Create Experiment](APL-RAG-create-experiment.jpg)
+1.  Under **Pipeline**, choose the pipeline `pipeline.yaml` you just created.
 
-    When complete, you should be brought to the **Runs** > **Start a new run** page.
+1. For **Run Type** choose **One-off**.
 
-1.  Complete the following steps to start a new run:
+1. Use `linode_docs` for the **table_name**
 
-    -   Under **Pipeline**, choose the pipeline `pipeline.yaml` you just created.
-
-    -   For **Run Type** choose **One-off**.
-
-    -   Provide the collection name and URL of the data set to be processed. This is the zip file with the documents you wish to process.
-
-        To use the sample Linode Docs data set in this guide, use the name `linode_docs` for **collection-string** and the following GitHub URL for **url-string**:
+1. To use the sample Linode Docs data set in this guide, use the following GitHub URL for **url-string**:
 
         ```command
-        https://github.com/linode/docs/archive/refs/tags/v1.360.0.zip
+        https://github.com/linode/rag-datasets/raw/refs/heads/main/cloud-computing.zip
         ```
 
 1.  Click **Start** to run the pipeline. When completed, the run is shown with a green checkmark to the left of the run title.
 
     ![Docs Run Complete](APL-RAG-docs-run-complete.jpg)
 
-## Deploy the Chatbot
+## Deploy the AI Agent
 
-The next step is to install the Open WebUI pipeline and web interface and configure it to connect the data generated in the Kubernetes Pipeline with the LLM deployed in KServe.
+The next step is to use the Open WebUI pipelines that will be configured with an agent pipeline to connect the data generated in the Kubernetes Pipeline with the LLM deployed in KServe and expose an OpenAI API endpoint for the chatbot to connect to.
 
-The Open WebUI Pipeline uses the Milvus database to load context related to the search. The pipeline sends it, and the query, to the Llama 3 LLM instance within KServe. The LLM then sends back a response to the chatbot, and your browser displays an answer informed by the custom data set.
+The Open WebUI Pipeline uses the PGvector database to load context related to the search. The pipeline sends it, and the query, to the Llama LLM instance within KServe. The LLM then sends back a response to the chatbot, and your browser displays an answer informed by the custom data set.
 
-### Create a configmap with the RAG Pipeline Files
+### Create a configmap with the Agent Pipeline Files
 
-The RAG pipeline files in this section are not related to the Kubeflow pipeline create in the previous section. Rather, the RAG pipeline instructs the chatbot how to interact with each component created thus far, including the Milvus data store and the Llama 3 LLM.
+The Agent pipeline files in this section are not related to the Kubeflow pipeline created in the previous section. Rather, the Agent pipeline instructs the agent how to interact with each component created thus far, including the PGvector data store, the embedding model and the Llama (foundation) model.
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
@@ -447,118 +300,156 @@ The RAG pipeline files in this section are not related to the Kubeflow pipeline 
 
 1.  In Gitea, navigate to the `team-demo-argocd` repository on the right.
 
-1.  Click the **Add File** dropdown, and select **New File**. Create a file with the name `pipeline-files.yaml` with the following contents. Replace {{< placeholder "<cluster-domain>" >}} with the domain of your App Platform instance:
+1.  Click the **Add File** dropdown, and select **New File**. Create a file with the name `my-agent-pipeline-files.yaml` with the following contents:
 
     ```file
     apiVersion: v1
-    data:
-        pipeline-requirements.txt: |
-          requests
-          pymilvus
-          llama-index
-          llama-index-vector-stores-milvus
-          llama-index-embeddings-huggingface
-          llama-index-llms-openai-like
-          opencv-python-headless
-        rag-pipeline.py: |
-          """
-          title: RAG Pipeline
-          version: 1.0
-          description: RAG Pipeline
-          """
-          from typing import List, Optional, Union, Generator, Iterator
-
-          class Pipeline:
-
-            def __init__(self):
-                self.name = "RAG Pipeline"
-                self.index = None
-                pass
-
-
-            async def on_startup(self):
-                from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-                from llama_index.core import Settings, VectorStoreIndex
-                from llama_index.llms.openai_like import OpenAILike
-                from llama_index.vector_stores.milvus import MilvusVectorStore
-
-                print(f"on_startup:{__name__}")
-
-                Settings.embed_model = HuggingFaceEmbedding(
-                        model_name="sentence-transformers/all-MiniLM-L6-v2"
-                )
-
-                llm = OpenAILike(
-                    model="llama3",
-                    api_base="https://llama3-model-predictor-team-demo.{{< placeholder "<cluster-domain>" >}}/openai/v1",
-                    api_key = "EMPTY",
-                    max_tokens = 512)
-
-                Settings.llm = llm
-
-                vector_store = MilvusVectorStore(uri="http://milvus.milvus.svc.cluster.local:19530", collection="linode_docs", dim=384, overwrite=False)
-                self.index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
-
-            async def on_shutdown(self):
-                print(f"on_shutdown:{__name__}")
-                pass
-
-
-            def pipe(
-                self, user_message: str, model_id: str, messages: List[dict], body: dict
-            ) -> Union[str, Generator, Iterator]:
-                print(f"pipe:{__name__}")
-
-                query_engine = self.index.as_query_engine(streaming=True, similarity_top_k=5)
-                response = query_engine.query(user_message)
-                print(f"rag_response:{response}")
-                return f"{response}"
     kind: ConfigMap
     metadata:
-      name: pipelines-files
+      name: my-agent-pipeline
+    data:
+      agent-pipeline-requirements.txt: |
+        psycopg2-binary
+        llama-index
+        llama-index-vector-stores-postgres
+        llama-index-embeddings-openai-like
+        llama-index-llms-openai-like
+        opencv-python-headless
+        kubernetes
+      agent-pipeline.py: |
+        import base64
+        from llama_index.core import Settings, VectorStoreIndex
+        from llama_index.core.llms import ChatMessage
+        from llama_index.llms.openai_like import OpenAILike
+        from llama_index.embeddings.openai_like import OpenAILikeEmbedding
+        from llama_index.vector_stores.postgres import PGVectorStore
+        from kubernetes import client, config as k8s_config
+
+        # LLM configuration
+        LLM_MODEL = "meta-llama-3-1-8b"
+        LLM_API_BASE = "http://llama-3-1-8b.team-models.svc.cluster.local/openai/v1"
+        LLM_API_KEY = "EMPTY"
+        LLM_MAX_TOKENS = 512
+
+        # Embedding configuration
+        EMBEDDING_MODEL = "mistral-7b-instruct"
+        EMBEDDING_API_BASE = "http://mistral-7b.team-models.svc.cluster.local/openai/v1"
+        EMBED_BATCH_SIZE = 10
+        EMBED_DIM = 4096
+
+        # Database configuration
+        DB_NAME = "app"
+        DB_TABLE_NAME = "linode_docs"
+        DB_SECRET_NAME = "pgvector-app"
+        DB_SECRET_NAMESPACE = "team-demo"
+
+        # RAG configuration
+        SIMILARITY_TOP_K = 3
+        SYSTEM_PROMPT = """You are a helpful AI assistant for Linode."""
+
+        class Pipeline:
+          def __init__(self):
+            self.name = "my-agent"
+            self.kb_index = None  # Store the KB index for creating chat engines
+            self.system_prompt = SYSTEM_PROMPT  # Store system prompt for LLM-only mode
+
+          async def on_startup(self):
+            Settings.llm = OpenAILike(
+              model=LLM_MODEL,
+              api_base=LLM_API_BASE,
+              api_key=LLM_API_KEY,
+              max_tokens=LLM_MAX_TOKENS,
+              is_chat_model=True,
+              is_function_calling_model=True
+            )
+            Settings.embed_model = OpenAILikeEmbedding(
+              model_name=EMBEDDING_MODEL,
+              api_base=EMBEDDING_API_BASE,
+              embed_batch_size=EMBED_BATCH_SIZE,
+              max_retries=3,
+              timeout=180.0
+            )
+            self.kb_index = self._build_vector_index()
+
+          def _build_vector_index(self):
+            """Builds a vector index from database."""
+            db_credentials = self._get_db_credentials()
+
+            vector_store = PGVectorStore.from_params(
+              database=DB_NAME,
+              host=db_credentials["host"],
+              port=db_credentials["port"],
+              user=db_credentials["username"],
+              password=db_credentials["password"],
+              table_name=DB_TABLE_NAME,
+              embed_dim=EMBED_DIM,
+            )
+            return VectorStoreIndex.from_vector_store(vector_store)
+
+          def _get_db_credentials(self):
+            """Get database credentials from Kubernetes secret."""
+            k8s_config.load_incluster_config()
+            v1 = client.CoreV1Api()
+            secret = v1.read_namespaced_secret(
+              name=DB_SECRET_NAME,
+              namespace=DB_SECRET_NAMESPACE,
+            )
+            return {
+              "username": base64.b64decode(secret.data["username"]).decode("utf-8"),
+              "password": base64.b64decode(secret.data["password"]).decode("utf-8"),
+              "host": base64.b64decode(secret.data["host"]).decode("utf-8"),
+              "port": int(base64.b64decode(secret.data["port"]).decode("utf-8")),
+            }
+
+          def _convert_to_chat_history(self, messages):
+            """Convert request messages to ChatMessage objects for chat history.
+
+            Args:
+              messages: List of message dicts with 'role' and 'content'
+
+            Returns:
+              List of ChatMessage objects excluding the last message (current message)
+            """
+            chat_history = []
+            if messages and len(messages) > 1:
+                for msg in messages[:-1]:  # Exclude current message
+                    chat_history.append(ChatMessage(role=msg['role'], content=msg['content']))
+            return chat_history
+
+          def pipe(self, user_message, model_id, messages, body):
+            try:
+                if self.kb_index is None:
+                  yield "Error: Knowledge base not initialized. Please check system configuration."
+                  return
+
+                chat_history = self._convert_to_chat_history(messages)
+
+                # Create chat engine on-demand (stateless)
+                chat_engine = self.kb_index.as_chat_engine(
+                    chat_mode="condense_plus_context",
+                    streaming=True,
+                    similarity_top_k=SIMILARITY_TOP_K,
+                    system_prompt=self.system_prompt
+                )
+                # Get streaming response
+                streaming_response = chat_engine.stream_chat(user_message, chat_history=chat_history)
+                for token in streaming_response.response_gen:
+                    yield token
+            except Exception as e:
+              print(f"\nDEBUG: Unexpected error: {type(e).__name__}: {str(e)}")
+              yield "I apologize, but I encountered an unexpected error while processing your request. Please try again."
+              return
     ```
 
-    Optionally add a title and any notes to the change history, and click **Commit Changes**.
+1.  Optionally add a title and any notes to the change history, and click **Commit Changes**.
 
-1.  Go to **Apps**, and open the _Argocd_ application. Navigate to the `team-demo` application to see if the configmap has been created. If it is not ready yet, click **Refresh** as needed.
-
-    ![Pipelines-files CM](APL-RAG-pipelines-files-CM.jpg)
+1.  Go to **Apps**, and open the _Argocd_ application. Navigate to the `team-demo` application to see if the configmap has been created. If it is not ready yet, click **Refresh** if needed.
 
 ### Deploy the open-webui Pipeline and Web Interface
 
-Update the Kyverno **Policy** `open-webui-policy.yaml` created in the previous tutorial ([Deploy an LLM for AI Inferencing with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl)) to mutate the `open-webui` pods that will be deployed.
+Update the Kyverno **Policy** `open-webui-policy.yaml` created in the previous tutorial ([Deploy an LLM for AI Inference with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl)) to mutate the `open-webui` pods that will be deployed.
 
-1.  Open the **Gitea** app, navigate to the `team-demo-argocd` repository, and open the `open-webui-policy.yaml` file.
-
-1.  Add the following resources so that the `open-webui` pods are deployed with the `sidecar.istio.io/inject: "false"` label that prevents Istio sidecar injection:
-
-    ```file
-          - resources:
-              kinds:
-              - StatefulSet
-              - Deployment
-              selector:
-                matchLabels:
-                  ## change the value to match the name of the Workload
-                  app.kubernetes.io/instance: "linode-docs-chatbot"
-          - resources:
-              kinds:
-              - StatefulSet
-              - Deployment
-              selector:
-                matchLabels:
-                  ## change the value to match the name of the Workload
-                  app.kubernetes.io/instance: "open-webui-pipelines"
-    ```
-
-    {{< note title="YAML Spacing" isCollapsible=true >}}
-    Be mindful of indentations when editing the YAML file. Both `-resources` sections should live under the `-name` > `match` > `any` block in `rules`.
-
-    ![Open WebUI Policy YAML Edit](APL-RAG-openwebui-policy-edit.jpg)
-
-    {{< /note >}}
-
-#### Add the open-webui-pipelines Helm Chart to the Catalog
+#### Add the pipelines Helm Chart to the Catalog
 
 1.  Select **view** > **team** and **team** > **admin** in the top bar.
 
@@ -566,19 +457,19 @@ Update the Kyverno **Policy** `open-webui-policy.yaml` created in the previous t
 
 1.  Select **Add Helm Chart**.
 
-1.  Under **Github URL**, add the URL to the `open-webui-pipelines` Helm chart:
+1.  Under **Github URL**, add the URL to the open-webui `pipelines` Helm chart:
 
     ```command
     https://github.com/open-webui/helm-charts/blob/pipelines-0.4.0/charts/pipelines/Chart.yaml
     ```
 
-1.  Click **Get Details** to populate the `open-webui-pipelines` Helm chart details. If preferred, rename the **Target Directory Name** from `pipelines` to `open-webui-pipelines` for reference later on.
+1.  Click **Get Details** to populate the `pipelines` Helm chart details.
 
 1.  Leave **Allow teams to use this chart** selected.
 
 1.  Click **Add Chart**.
 
-#### Create a Workload for the open-webui-pipelines Helm Chart
+#### Create a Workload for the pipelines Helm Chart
 
 1.  Select **view** > **team** and **team** > **demo** in the top bar.
 
@@ -586,11 +477,11 @@ Update the Kyverno **Policy** `open-webui-policy.yaml` created in the previous t
 
 1.  Click on **Create Workload**.
 
-1.  Select the _Open-Webui-Pipelines_ Helm chart from the Catalog.
+1.  Select the _pipelines_ Helm chart from the Catalog.
 
 1.  Click on **Values**.
 
-1.  Provide a name for the Workload. This guide uses the Workload name `open-webui-pipelines`.
+1.  Provide a name for the Workload. This guide uses the Workload name `my-agent`.
 
 1.  Add in or change the following chart values. Make sure to set the name of the Workload in the `nameOverride` field.
 
@@ -600,42 +491,67 @@ Update the Kyverno **Policy** `open-webui-policy.yaml` created in the previous t
     nameOverride: {{< placeholder "linode-docs-pipeline" >}}
     resources:
       requests:
-        cpu: "{{< placeholder "1" >}}"
-        memory: {{< placeholder "512Mi" >}}
+        cpu: "1"
+        memory: "512Mi"
       limits:
-        cpu: "{{< placeholder "3" >}}"
-        memory: {{< placeholder "2Gi" >}}
+        cpu: "3"
+        memory: "2Gi"
     ingress:
-      enabled: {{< placeholder "false" >}}
+      enabled: false
     extraEnvVars:
-      - name: {{< placeholder "PIPELINES_REQUIREMENTS_PATH" >}}
-        value: {{< placeholder "/opt/pipeline-requirements.txt" >}}
-      - name: {{< placeholder "PIPELINES_URLS" >}}
-        value: {{< placeholder "file:///opt/rag-pipeline.py" >}}
+      - name: PIPELINES_REQUIREMENTS_PATH
+        value: "/opt/agent-pipeline-requirements.txt"
+      - name: PIPELINES_URLS
+        value: "file:///opt/agent-pipeline.py"
     volumeMounts:
-      - name: {{< placeholder "config-volume" >}}
-        mountPath: {{< placeholder "/opt" >}}
+      - name: config-volume
+        mountPath: "/opt"
     volumes:
-      - name: {{< placeholder "config-volume" >}}
+      - name: config-volume
         configMap:
-          name: {{< placeholder "pipelines-files" >}}
+          name: my-agent-pipeline
     ```
 
 1.  Click **Submit**.
 
-#### Expose the linode-docs-pipeline Service
+#### Add a new Role and a RoleBinding for the Agent
 
-1.  Select **view** > **team** and **team** > **demo** in the top bar.
+The agent pipeline will need access to the PGvector database. For this the ServiceAccount of the Agent will need access to the `pgvector-app` secret that includes the database credentials. Create the Role and RoleBinding:
 
-1.  Select **Services**.
+1.  Select **view** > **platform** in the top bar.
 
-1.  Click **Create Service**.
+1.  Select **Apps** in the left menu.
 
-1.  In the **Service Name** dropdown menu, select the `linode-docs-pipeline` service.
+1.  In the **Apps** section, select the **Gitea** app.
 
-1.  Click **Create Service**.
+1.  In Gitea, navigate to the `team-demo-argocd` repository.
 
-1.  Once submitted, copy the URL of the `linode-docs-pipeline` service to your clipboard.
+1.  Click the **Add File** dropdown, and select **New File**. Create a file named `my-agent-rbac.yaml` with the following contents:
+
+    ```file
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: Role
+    metadata:
+      name: pgvector-app-secret-reader
+    rules:
+      - apiGroups: [""]
+        resources: ["secrets"]
+        resourceNames: ["pgvector-app"]
+        verbs: ["get", "list"]
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: pgvector-app-secret-reader
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: Role
+      name: pgvector-app-secret-reader
+    subjects:
+      - kind: ServiceAccount
+        name: my-agent
+        namespace: team-demo
+    ```
 
 #### Create a Workload to Install the open-webui Helm Chart
 
@@ -645,52 +561,43 @@ Update the Kyverno **Policy** `open-webui-policy.yaml` created in the previous t
 
 1.  Click on **Create Workload**.
 
-1.  Select the _Open-Webui_ Helm chart from the Catalog. This Helm chart should have been added in the previous [Deploy an LLM for AI Inferencing with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl/#add-the-open-webui-helm-chart-to-the-catalog) guide.
+1.  Select the _open-webui_ Helm chart from the Catalog. This Helm chart should have been added in the previous [Deploy an LLM for AI Inference with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl/#add-the-open-webui-helm-chart-to-the-catalog) guide.
 
 1.  Click on **Values**.
 
-1.  Provide a name for the Workload. This guide uses the name `linode-docs-chatbot`.
+1.  Provide a name for the Workload. This guide uses the name `my-agent-ui`.
 
-1.  Edit the chart to include the below values, and set the name of the Workload in the `nameOverride` field. Replace {{< placeholder "<cluster-domain>" >}} with your App Platform cluster domain.
-
-    You may need to add new lines for the additional names and values under `extraEnvVars` (extra environment variables):
+1.  Edit the chart to include the below values, and set the name of the Workload in the `nameOverride` field.
 
     ```
-    nameOverride: {{< placeholder "linode-docs-chatbot" >}}
+    nameOverride: {{< placeholder "my-agent-ui" >}}
     ollama:
-      enabled: {{< placeholder "false" >}}
+      enabled: false
     pipelines:
-      enabled: {{< placeholder "false" >}}
+      enabled: false
     persistence:
-      enabled: {{< placeholder "false" >}}
-    replicaCount: {{< placeholder "1" >}}
+      enabled: false
+    replicaCount: 1
+    openaiBaseApiUrl: "http://my-agent.team-demo.svc.cluster.local:9099"
     extraEnvVars:
-      - name: {{< placeholder "WEBUI_AUTH" >}}
-        value: "{{< placeholder "false" >}}"
-      - name: {{< placeholder "OPENAI_API_BASE_URLS" >}}
-        value: https://llama3-model-predictor-team-demo.{{< placeholder "<cluster-domain>" >}}/openai/v1;https://linode-docs-pipeline-demo.{{< placeholder "<cluster-domain>" >}}
-      - name: {{< placeholder "OPENAI_API_KEYS" >}}
-        value: {{< placeholder "EMPTY;0p3n-w3bu!" >}}
+      - name: WEBUI_AUTH
+        value: false
+      - name: OPENAI_API_KEY
+        value: "0p3n-w3bu!"
     ```
 
 1.  Click **Submit**.
 
-#### Expose the linode-docs-chatbot Service
+#### Publicly expose the my-agent-ui Service
 
 1.  Select **Services**.
 
 1.  Click **Create Service**.
 
-1.  In the **Service Name** dropdown list, select the `linode-docs-chatbot` service.
+1.  In the **Service Name** dropdown list, select the `my-agent-ui` service.
 
 1.  Click **Create Service**.
 
-## Access the Open Web User Interface
-
-In your list of available **Services**, click on the URL of the `linode-docs-chatbot` to navigate to the Open WebUI chatbot interface. Select the model you wish to use in the top left dropdown menu (`llama3-model` or `RAG Pipeline`).
-
-The Llama 3 AI model uses information that is pre-trained by other data sources - not your custom data set. If you give this model a query, it will use its pre-trained data set to answer your question in real time.
-
-The RAG Pipeline model defined in this guide uses data from the custom data set with which it was provided. The example data set used in this guide is sourced from Linode Docs. If you give this model a query relevant to your custom data, the chatbot should respond with an answer informed by that data set.
+In the list of available **Services**, click on the URL of the `my-agent-ui` to navigate to the Open WebUI.
 
 ![Llama and RAG LLMs](APL-RAG-LLMs.jpg)
