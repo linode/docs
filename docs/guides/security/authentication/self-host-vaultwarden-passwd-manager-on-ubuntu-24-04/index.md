@@ -127,57 +127,15 @@ Package 'docker-ce' has no installation candidate
 Installing `docker.io` from Ubuntu's default repository may appear to work, but it lacks the modern Compose plugin and may cause compatibility issues with Vaultwarden's setup.
 {{< /important >}}
 
-{{< warning >}}
+{{< note >}}
 If you're using Ubuntu 24.04, expect potential friction when installing Docker CE. This is due to upstream repository timing--not a misstep on your part or a flaw in this guide.
-{{< /warning >}}
-
-### What This Guide Uses
-
-This guide uses **Docker CE** for full compatibility with Vaultwarden's containerized deployment and walks you through:
-
-- Adding Docker's official repository (with `noble` codename)
-- Installing Docker CE and its plugins
-- Removing legacy packages like `docker.io` if present
-
-This ensures a clean, modern setup that aligns with Vaultwarden's current architecture and avoids silent conflicts--especially when integrating with a reverse proxy like Nginx.
+{{< /note >}}
 
 ##  Install Docker CE and Compose Plugin
 
 ### Prerequisite Support for Containerized Services
 
-To self-host Vaultwarden, we’ll first prepare your Ubuntu 24.04 compute instance to run containerized applications. This setup ensures your system is ready to deploy Vaultwarden cleanly and securely.
-
-#### Update system packages
-
-Before installing anything new, update your system to ensure all packages are current:
-
-```command
-sudo apt update
-sudo apt upgrade -y
-```
-If prompted about a modified configuration file (e.g., `sshd_config`), choose to keep the local version unless you're intentionally resetting to the package maintainer's defaults. This preserves your current access settings and avoids unexpected changes. Ensures compatibility and security before installing new components.
-
-{{< note >}}
-If the commands complete without errors and you see confirmation messages like `Setting up [package]`, or `Restarting services...`, your system is up to date and ready for the next step.
-{{< /note >}}
-
-#### Understand Docker Compatibility on Ubuntu 24.04
-
-Ubuntu 24.04 uses the new codename `noble`, which may not yet be fully supported by Docker's official stable repository. This can cause issues when trying to install Docker CE using standard package commands.
-
-{{< important >}}
-Running `sudo apt update` and `sudo apt upgrade -y` **does not install Docker-CE** or prepare your system to use it. Attempting to install `docker-ce` without first adding Dockers' repository will result in:
-
-```command
-Package 'docker-ce' has no installation candidate
-```
-
-Installing `docker.io` from Ubuntu's default repository may appear to work, but it lacks the modern Compose plugin and may cause compatibility issues with Vaultwarden's setup.
-{{< /important >}}
-
-{{< warning >}}
-If you're using Ubuntu 24.04, expect potential friction when installing Docker CE. This is due to upstream repository timing--not a misstep on your part or a flaw in this guide.
-{{< /warning >}}
+To self-host Vaultwarden after preparating your Ubuntu 24.04 compute instance to run containerized applications, this setup ensures your system is ready to deploy Vaultwarden cleanly and securely.
 
 #### What This Guide Uses
 
@@ -254,13 +212,13 @@ sudo apt purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker
 ```
 This ensures a clean environment for Vaultwarden and modern Compose workflows.
 
-{{< important >}}
+{{< note >}}
 If you installed docker.io earlier, remove it with:
 ```command
 sudo apt purge docker.io
 ```
 Then follow the steps above (step 6) to install Docker CE. This guide is designed to help you recover safely and proceed with confidence.
-{{< /important >}}
+{{< /note >}}
 
 If both `docker --version` and `docker compose version` return expected output, you're ready to deploy Vaultwarden. No further Docker configuration is needed.
 
