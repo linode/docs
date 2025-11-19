@@ -10,7 +10,7 @@ keywords: ['vaultwarden','bitwarden','password manager', 'install vaultwarden', 
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-This guide walks you through deploying Vaultwarden—a lightweight, Bitwarden-compatible password manager—using Docker and Nginx on Ubuntu 24.04 LTS. It’s designed for clarity, validation, and long-term maintainability, with a focus on predictable behavior and user trust.
+This guide walks you through deploying Vaultwarden—a lightweight, Bitwarden-compatible password manager—using Docker and NGINX on Ubuntu 24.04 LTS. It’s designed for clarity, validation, and long-term maintainability, with a focus on predictable behavior and user trust.
 
 ## About This Deployment
 
@@ -20,7 +20,7 @@ This setup uses:
 - Docker Compose: To manage Vaultwarden as a container
 - Nginx: A reverse proxy that handles HTTPS and websocket support
 
-Why this matters: Vaultwarden doesn’t handle HTTPS on its own. Nginx ensures secure, encrypted access to your web vault and offers predictable behavior across environments.
+Why this matters: Vaultwarden doesn’t handle HTTPS on its own. NGINX ensures secure, encrypted access to your web vault and offers predictable behavior across environments.
 
 ### Prerequisites
 
@@ -30,7 +30,7 @@ Before starting, ensure your server is secure and ready:
 - Root or sudo access to the server
 - A registered domain name with DNS records pointing to your server
 - Docker Engine with Docker Compose plugin (V2) installed
-- Nginx installed (we'll configure it later to reverse proxy Vaultwarden)
+- NGINX installed (we'll configure it later to reverse proxy Vaultwarden)
 
 ## Before You Begin
 
@@ -85,7 +85,7 @@ If your hostname appears as expected and the time is synchronized with NTP, your
 - Follow the [Set Up and Secure a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to harden your server.
 - Configure a firewall and open ports 80 and 443.
 - Register a Fully Qualified Domain Name (FQDN) and [Set Up A and AAAA DNS Records](/docs/guides/dns-overview/#a-and-aaaa) see note below.
-- Use a reverse proxy like Nginx to enable HTTPS and route traffic to Vaultwarden.
+- Use a reverse proxy like NGINX to enable HTTPS and route traffic to Vaultwarden.
 
 {{< note >}}
 If you configure a firewall, opening ports 80 and 443 allow HTTP/HTTPS traffic to Vaultwarden or the reverse proxy. DNS records should point to the public [IPv4 and IPv6 Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) of the compute instance. For help with setting up a domain refer to [Overview of DNS and DNS records](/docs/guides/dns-overview/) and [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager).
@@ -141,50 +141,14 @@ This guide uses **Docker CE** for full compatibility with Vaultwarden's containe
 - Installing Docker CE and its plugins
 - Removing legacy packages like `docker.io` if present
 
-This ensures a clean, modern setup that aligns with Vaultwarden's current architecture and avoids silent conflicts--especially when integrating with a reverse proxy like Nginx.
+This ensures a clean, modern setup that aligns with Vaultwarden's current architecture and avoids silent conflicts--especially when integrating with a reverse proxy like NGINX.
 >>>>>>> 396dfadfa6f18fb3d14a471efbcfd0d83283851f
 
 ##  Install Docker CE and Compose Plugin
 
 ### Prerequisite Support for Containerized Services
 
-<<<<<<< HEAD
-To self-host Vaultwarden after preparating your Ubuntu 24.04 compute instance to run containerized applications, this setup ensures your system is ready to deploy Vaultwarden cleanly and securely.
-=======
-To self-host Vaultwarden, we’ll first prepare your Ubuntu 24.04 compute instance to run containerized applications. This setup ensures your system is ready to deploy Vaultwarden cleanly and securely.
-
-#### Update system packages
-
-Before installing anything new, update your system to ensure all packages are current:
-
-```command
-sudo apt update
-sudo apt upgrade -y
-```
-If prompted about a modified configuration file (e.g., `sshd_config`), choose to keep the local version unless you're intentionally resetting to the package maintainer's defaults. This preserves your current access settings and avoids unexpected changes. Ensures compatibility and security before installing new components.
-
-{{< note >}}
-If the commands complete without errors and you see confirmation messages like `Setting up [package]`, or `Restarting services...`, your system is up to date and ready for the next step.
-{{< /note >}}
-
-#### Understand Docker Compatibility on Ubuntu 24.04
-
-Ubuntu 24.04 uses the new codename `noble`, which may not yet be fully supported by Docker's official stable repository. This can cause issues when trying to install Docker CE using standard package commands.
-
-{{< note >}}
-Running `sudo apt update` and `sudo apt upgrade -y` **does not install Docker-CE** or prepare your system to use it. Attempting to install `docker-ce` without first adding Dockers' repository will result in:
-
-```command
-Package 'docker-ce' has no installation candidate
-```
-
-Installing `docker.io` from Ubuntu's default repository may appear to work, but it lacks the modern Compose plugin and may cause compatibility issues with Vaultwarden's setup.
-{{< /note >}}
-
-{{< note >}}
-If you're using Ubuntu 24.04, expect potential friction when installing Docker CE. This is due to upstream repository timing--not a misstep on your part or a flaw in this guide.
-{{< /note >}}
->>>>>>> 396dfadfa6f18fb3d14a471efbcfd0d83283851f
+To self-host Vaultwarden after preparing your Ubuntu 24.04 compute instance to run containerized applications, this setup ensures your system is ready to deploy Vaultwarden cleanly and securely.
 
 #### What This Guide Uses
 
@@ -194,7 +158,7 @@ This guide uses **Docker CE** for full compatibility with Vaultwarden's containe
 - Installing Docker CE and its plugins
 - Removing legacy packages like `docker.io` if present
 
-This ensures a clean, modern setup that aligns with Vaultwarden's current architecture and avoids silent conflicts--especially when integrating with a reverse proxy like Nginx.
+This ensures a clean, modern setup that aligns with Vaultwarden's current architecture and avoids silent conflicts--especially when integrating with a reverse proxy like NGINX.
 
 Vaultwarden runs inside Docker containers, so you’ll need to install Docker CE (Community Edition) and its Compose plugin. This section walks you through a validated setup for Ubuntu 24.04 (noble), including repository configuration and plugin installation.
 
@@ -271,17 +235,17 @@ Then follow the steps above (step 6) to install Docker CE. This guide is designe
 
 If both `docker --version` and `docker compose version` return expected output, you're ready to deploy Vaultwarden. No further Docker configuration is needed.
 
-## Enable HTTPS and Reverse Proxy with Nginx (Recommended for Production)
+## Enable HTTPS and Reverse Proxy with NGINX (Recommended for Production)
 
-If you plan to access Vaultwarden over the internet, configuring a reverse proxy and enabling HTTPS are essential. We'll use Nginx—a modern web server that automatically provisions TLS certificates via Let's Encrypt and securely routes traffic to backend services like Vaultwarden.
+If you plan to access Vaultwarden over the internet, configuring a reverse proxy and enabling HTTPS are essential. We'll use NGINX—a modern web server that automatically provisions TLS certificates via Let's Encrypt and securely routes traffic to backend services like Vaultwarden.
 
-Nginx offers predictable behavior across environments and is widely used in self-hosted deployments. It's especially reliable when paired with Docker.
+NGINX offers predictable behavior across environments and is widely used in self-hosted deployments. It's especially reliable when paired with Docker.
 
-### Why Nginx?
+### Why NGINX?
 
-Vaultwarden doesn’t handle HTTPS on its own, so a reverse proxy is essential. While earlier guides used Caddy, this update pivots to Nginx for stability, transparency, and ease of validation.
+Vaultwarden doesn’t handle HTTPS on its own, so a reverse proxy is essential. While earlier guides used Caddy, this update pivots to NGINX for stability, transparency, and ease of validation.
 
-Why Nginx is the Better Fit
+Why NGINX is the Better Fit
 
 - Predictable behavior across Docker and systemd environments
 - Clear error messages and extensive community support
@@ -291,14 +255,14 @@ Why Nginx is the Better Fit
 
 ### Install and Configure NGINX (Reverse Proxy for Vaultwarden)
 
-Vaultwarden doesn’t handle HTTPS on its own, so we’ll use Nginx to securely route traffic and enable TLS. This setup ensures encrypted access to your password vault and isolates Vaultwarden from direct exposure.
+Vaultwarden doesn’t handle HTTPS on its own, so we’ll use NGINX to securely route traffic and enable TLS. This setup ensures encrypted access to your password vault and isolates Vaultwarden from direct exposure.
 
 Step 1: Install NGINX
 ```command
 sudo apt update
 sudo apt install nginx -y
 ```
-If the install completes without errors, Nginx is now available as a system service.
+If the install completes without errors, NGINX is now available as a system service.
 
 Step 2: Configure NGINX as a Reverse Proxy
 
@@ -458,12 +422,8 @@ docker compose up -d
 Confirm NGINX is proxying HTTPS
 
 If you used a separate config file (e.g., /etc/nginx/sites-available/vaultwarden), ensure it includes:
-<<<<<<< HEAD
 
-```command
-=======
 ```nginx
->>>>>>> 396dfadfa6f18fb3d14a471efbcfd0d83283851f
 server {
     listen 443 ssl;
     server_name your-domain.com;
@@ -480,10 +440,6 @@ server {
     }
 }
 ```
-<<<<<<< HEAD
-
-=======
->>>>>>> 396dfadfa6f18fb3d14a471efbcfd0d83283851f
 Then restart NGINX:
 ```command
 sudo systemctl restart nginx
@@ -531,7 +487,7 @@ services:
 ```
 
 {{< note >}}
-This configuration exposes Vaultwarden on host port 3012 (mapped to port 80 inside the container) and stores its data in a local `vw-data` folder. This leaves port 80 for use by Nginx reverse proxy traffic without conflicts. You can customize ports or add environment variables--such as SMTP, admin tokens, or HTTPS--later in the setup.
+This configuration exposes Vaultwarden on host port 3012 (mapped to port 80 inside the container) and stores its data in a local `vw-data` folder. This leaves port 80 for use by NGINX reverse proxy traffic without conflicts. You can customize ports or add environment variables--such as SMTP, admin tokens, or HTTPS--later in the setup.
 {{< /note >}}
 
 3. Start Vaultwarden
@@ -608,7 +564,8 @@ ADMIN_TOKEN: your_generated_token_here
 ```
 Your updated section should look like this:
 
-```
+```command
+
 services:
   vaultwarden:
     image: vaultwarden/server:latest
