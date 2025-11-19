@@ -1,7 +1,7 @@
 ---
 slug: deploy-rag-pipeline-and-chatbot-on-apl
-title: "Deploy a RAG Pipeline and Chatbot with App Platform for LKE"
-description: "This guide expands on a previously built LLM and AI inference architecture to include a RAG pipeline that indexes a custom data set. The steps provided utilize Akamai App Platform for Linode Kubernetes Engine to deploy the RAG pipeline."
+title: "Implement RAG (Retrieval-Augmented Generation) with App Platform for LKE"
+description: "This guide expands on a previously AI inference with App Platform for LKE guide. The steps provided utilize Akamai App Platform for LKE to implement Retrieval-Augmented Generation (RAG)."
 authors: ["Sander Rodenhuis"]
 contributors: ["Sander Rodenhuis"]
 published: 2025-03-25
