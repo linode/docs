@@ -410,6 +410,7 @@ Confirm NGINX is proxying HTTPS
 
 If you used a separate config file (e.g., /etc/nginx/sites-available/vaultwarden), ensure it includes:
 
+```command
 server {
     listen 443 ssl;
     server_name your-domain.com;
@@ -425,6 +426,7 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
+```
 
 Then restart NGINX:
 ```command
