@@ -65,8 +65,8 @@ If you prefer to manually install an LLM and RAG Pipeline on LKE rather than usi
 
 We recommend provisioning an LKE cluster with [App Platform](https://techdocs.akamai.com/cloud-computing/docs/application-platform) enabled and the following minimum requirements:
 
-- 3 **8GB Dedicated CPUs** with [autoscaling](https://techdocs.akamai.com/cloud-computing/docs/manage-nodes-and-node-pools#autoscale-automatically-resize-node-pools) turned on
-- A second node pool consisting of at least 2 **RTX4000 Ada x1 Medium [GPU](https://techdocs.akamai.com/cloud-computing/docs/gpu-compute-instances)** plans
+- 3 **8GB Dedicated CPUs** with [autoscaling](https://techdocs.akamai.com/cloud-computing/docs/manage-nodes-and-node-pools#autoscale-automatically-resize-node-pools) turned on.
+- A second node pool consisting of at least 2 **RTX4000 Ada x1 Medium [GPU](https://techdocs.akamai.com/cloud-computing/docs/gpu-compute-instances)** plans.
 
 Once your LKE cluster is provisioned and the App Platform portal is available, complete the following steps to continue setting up your infrastructure.
 
@@ -82,7 +82,7 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 
     Enabled apps move up and appear in color towards the top of the available app list.
 
-    ![Enable Knative and Kyverno](APL-LLM-Enable-Knative.jpg)
+    ![Enable Knative and Kserve](APL-LLM-Enable-Knative.jpg)
 
 ### Create Teams
 
@@ -102,7 +102,7 @@ First create the Team that will run the LLMs:
 
 1.  Under **Resource Quota**, change the **Compute Resource Quota** to 50 Cores and 64 Gi
 
-1.  Under **Network Policies**, disable **Egress Control** and **Ingress Control**. 
+1.  Under **Network Policies**, disable **Egress Control** and **Ingress Control**.
 
     See Appendix 1 and 2 to learn what to do when **Egress Control** and **Ingress Control** should be enabled because of compliance.
 
@@ -114,7 +114,7 @@ Now create the Team that will run the apps that are going to use the LLMs:
 
 1.  Provide a **Name** for the Team. This guide uses the Team name `demo`.
 
-1.  Under **Network Policies**, disable **Egress Control** and **Ingress Control**. 
+1.  Under **Network Policies**, disable **Egress Control** and **Ingress Control**.
 
 1.  Click **Create Team**.
 
@@ -276,7 +276,7 @@ Wait for the Workload to be ready, and proceed with the following steps.
 
 1.  Add the following values and change the `nameOverride` value to the name of your Workload, `llama3-ui`:
 
-    ```
+    ```file
     # Change the nameOverride to match the name of the Workload
     nameOverride: {{< placeholder "llama3-ui" >}}
     ollama:
