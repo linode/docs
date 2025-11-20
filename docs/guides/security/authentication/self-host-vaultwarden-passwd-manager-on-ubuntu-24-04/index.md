@@ -362,7 +362,7 @@ Step 6: Enable HTTPS with Certbot
 
 Once Vaultwarden is accessible via HTTP, you can optionally enable HTTPS for secure access.
 
-HTTPS Setup with Cerbot (Requires DNS):
+HTTPS Setup with Certbot (Requires DNS):
 ```command
 sudo certbot --nginx -d your-domain.com
 ```
