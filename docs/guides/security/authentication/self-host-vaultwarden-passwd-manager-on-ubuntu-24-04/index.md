@@ -18,7 +18,7 @@ This setup uses:
 
 - Vaultwarden: A secure, self-hosted password manager
 - Docker Compose: To manage Vaultwarden as a container
-- Nginx: A reverse proxy that handles HTTPS and websocket support
+- NGINX: A reverse proxy that handles HTTPS and websocket support
 
 Why this matters: Vaultwarden doesn’t handle HTTPS on its own. NGINX ensures secure, encrypted access to your web vault and offers predictable behavior across environments.
 
@@ -109,7 +109,7 @@ Before installing anything new, update your system to ensure all packages are cu
 sudo apt update
 sudo apt upgrade -y
 ```
-If prompted about a modified configuration file (e.g., `sshd_config`), choose to keep the local version unless you're intentionally resetting to the package maintainer's defaults. This preserves your current access settings and avoids unexpected changes. Ensures compatibility and security before installing new components.
+If prompted about a modified configuration file (e.g., `sshd_config`), choose to keep the local version unless you're intentionally resetting to the package maintainer's defaults. This preserves your current access settings and avoids unexpected changes. This also ensures compatibility and security before installing new components.
 
 {{< note >}}
 If the commands complete without errors and you see confirmation messages like `Setting up [package]`, or `Restarting services...`, your system is up to date and ready for the next step.
@@ -127,13 +127,9 @@ Package 'docker-ce' has no installation candidate
 ```
 
 Installing `docker.io` from Ubuntu's default repository may appear to work, but it lacks the modern Compose plugin and may cause compatibility issues with Vaultwarden's setup.
-{{< /note >}}
 
-{{< note >}}
 If you're using Ubuntu 24.04, expect potential friction when installing Docker CE. This is due to upstream repository timing--not a misstep on your part or a flaw in this guide.
 {{< /note >}}
->>>>>>> 396dfadfa6f18fb3d14a471efbcfd0d83283851f
->>>>>>> f1b11e12eca4220ff21d0f5c79e112af01938909
 
 #### What This Guide Uses
 
@@ -187,7 +183,8 @@ sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 This installs Docker CE, its CLI tools, and the modern Compose plugin (docker compose).
 
 {{< note >}}
-While the Compose plugin is usually installed alongside Docker CE, some environments—especially minimal or cloud-based ones—may omit it. To confirm it's available, run: ```command
+While the Compose plugin is usually installed alongside Docker CE, some environments—especially minimal or cloud-based ones—may omit it. To confirm it's available, run:
+```command
 docker compose version
 ```
 If you see an error or "unknown command," install the plugin with:
@@ -198,7 +195,7 @@ sudo apt install docker-compose-plugin
 
 To validate:
 
-After installation, run `docker --version`. You should see something like `Docker version 28.5.2`. This confirms that Docker was successfully installed and is ready to use. To validate, run `docker compose version` and you should see something like `Docker Compose version v2.40.3`.
+After installation, run `docker --version`. You should see something like `Docker version 28.5.2`. This confirms that Docker was successfully installed and is ready to use. To validate, run `docker compose version` and you should see the version `Docker Compose version v2.40.3`.
 
 If both `docker --version` and `docker compose version` return expected output, your system is ready to deploy Vaultwarden with full container support.
 
@@ -230,7 +227,7 @@ NGINX offers predictable behavior across environments and is widely used in self
 
 Vaultwarden doesn’t handle HTTPS on its own, so a reverse proxy is essential. While earlier guides used Caddy, this update pivots to NGINX for stability, transparency, and ease of validation.
 
-Why NGINX is the Better Fit
+Why NGINX is the Better Fit:
 
 - Predictable behavior across Docker and systemd environments
 - Clear error messages and extensive community support
@@ -273,7 +270,7 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
-
+```
 Replace your-domain.com with your actual domain name. This configuration forwards all traffic to Vaultwarden running on localhost.
 
 Step 3: Configure Vaultwarden Environment Variables
@@ -306,7 +303,7 @@ To access the admin interface, open a browser and go to:
 `http://your-domain.com/admin`
 
 - If using your server's IP address directly (and not yet behind NGINX):
-`http//your server-ip:3012/admin
+`http//your server-ip:3012/admin`
 
 You should see a login field prompting you to enter your ADMIN_TOKEN—the same value defined in your `.env` file or `docker-compose.yml`.
 
@@ -372,7 +369,7 @@ Certbot will:
 - Set up automatic certificate renewal
 
 {{< note >}}
-Before running Certbot, ensure your domain's DNS records point to your server's public IP. You can verify this with a DNS lookup or by running `dig your-domain.com+short`.
+Before running Certbot, ensure your domain's DNS records point to your server's public IP. You can verify this with a DNS lookup or by running `dig your-domain.com +short`.
 {{< /note >}}
 
 If Certbot completes successfully and reloads NGINX, HTTPS is now active. You can access Vaultwarden securely via `https//your-domain.com`.
@@ -646,7 +643,7 @@ docker run -d --name vaultwarden
   -p 80:80 vaultwarden/server:latest
 ```
 - `-v /vw-data/:/data`ensures persistent data is preserved.
-- `-p 80:80` maps container port80 to host port 80, which is standard unless you've customized it (e.g., using HTTPS or reverse proxy).
+- `-p 80:80` maps container port 80 to host port 80, which is standard unless you've customized it (e.g., using HTTPS or reverse proxy).
 
 Your data is preserved via the mounted volume.
 
