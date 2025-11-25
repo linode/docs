@@ -34,7 +34,7 @@ Before starting, ensure your server is secure and ready:
 
 ## Before You Begin
 
-These steps are introduced in our [Get Started](/docs/products/platform/get-started/) guide. They are included here for clarity and contributor safety.
+These steps are introduced in our [Get Started](/docs/products/platform/get-started/) and [Cloud Manager](https://techdocs.akamai.com/cloud-computing/docs/overview-of-cloud-manager) guides. The steps are included here for clarity and contributor safety.
 
 ### For Testing and Configuration
 
@@ -201,21 +201,17 @@ If both `docker --version` and `docker compose version` return expected output, 
 
 Step 7: How to Remove Legacy Docker Packages (if applicable)
 
-If you previously installed docker.io, and need to remove it to avoid silent conflicts:
-```command
-sudo apt purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
-```
-This ensures a clean environment for Vaultwarden and modern Compose workflows.
-
-{{< note >}}
-If you installed docker.io earlier, remove it with:
+If you previously installed docker.io, remove it with:
 ```command
 sudo apt purge docker.io
 ```
-Then follow the steps above (step 6) to install Docker CE. This guide is designed to help you recover safely and proceed with confidence.
-{{< /note >}}
+If you installed older Docker CE packages, remove them with:
+```command
+sudo apt purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+```
+This ensures a clean environment for Vaultwarden and modern Compose workflows.Then follow the steps above (step 6) to install Docker CE. This guide is designed to help you recover safely and proceed with confidence.
 
-If both `docker --version` and `docker compose version` return expected output, you're ready to deploy Vaultwarden. No further Docker configuration is needed.
+If both `docker --version` and `docker compose version` return expected output, you're ready to deploy Vaultwarden, no further Docker configuration is needed.
 
 ## Enable HTTPS and Reverse Proxy with NGINX (Recommended for Production)
 
@@ -237,7 +233,7 @@ Why NGINX is the Better Fit:
 
 ### Install and Configure NGINX (Reverse Proxy for Vaultwarden)
 
-Vaultwarden doesn’t handle HTTPS on its own, so we’ll use NGINX to securely route traffic and enable TLS. This setup ensures encrypted access to your password vault and isolates Vaultwarden from direct exposure.
+NGINX securely routes traffic, enables TLS, and ensures encrypted access to your password vault; this isolates Vaultwarden from direct exposure.
 
 Step 1: Install NGINX
 ```command
@@ -303,7 +299,7 @@ To access the admin interface, open a browser and go to:
 `http://your-domain.com/admin`
 
 - If using your server's IP address directly (and not yet behind NGINX):
-`http//your server-ip:3012/admin`
+`http://your server-ip:3012/admin`
 
 You should see a login field prompting you to enter your ADMIN_TOKEN—the same value defined in your `.env` file or `docker-compose.yml`.
 
@@ -334,11 +330,10 @@ sudo ln -s /etc/nginx/sites-available/vaultwarden /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl reload nginx
 ```
-If `nginx -t` returns **“syntax is ok”** and **“test is successful,”** your proxy is active.
 
 Validation Check:
 
-After running `sudo nginx -t`, look for both confirmation lines. If they appear, your proxy configuration is valid and ready to reload. If not, NGINX will point to the error line--fix it before proceeding.
+After running `sudo nginx -t`, look for both confirmation lines. If they appear, your proxy If `nginx -t` returns **“syntax is ok”** and **“test is successful,”** your proxy is active and ready to reload. If not, NGINX will point to the error line--fix it before proceeding.
 
 {{< note >}}
 If you see a warning about a deprecated `version:` line in your `docker-compose.yml`, it’s safe to remove it. Docker Compose now infers behavior automatically.
@@ -359,7 +354,7 @@ Step 6: Enable HTTPS with Certbot
 
 Once Vaultwarden is accessible via HTTP, you can optionally enable HTTPS for secure access.
 
-HTTPS Setup with Certbot (Requires DNS):
+HTTPS setup with Certbot (Requires DNS):
 ```command
 sudo certbot --nginx -d your-domain.com
 ```
@@ -369,10 +364,10 @@ Certbot will:
 - Set up automatic certificate renewal
 
 {{< note >}}
-Before running Certbot, ensure your domain's DNS records point to your server's public IP. You can verify this with a DNS lookup or by running `dig your-domain.com +short`.
+Before running Certbot, ensure your domain's DNS records point to your server's public IP. You can verify this with a DNS lookup or by running `dig your-domain.com +short`. If Certbot completes successfully and reloads NGINX, HTTPS is now active.
 {{< /note >}}
 
-If Certbot completes successfully and reloads NGINX, HTTPS is now active. You can access Vaultwarden securely via `https//your-domain.com`.
+You can access Vaultwarden securely via `https//your-domain.com`.
 
 Step 7: Recovery: Fix Redirect Loop
 
@@ -484,7 +479,7 @@ If `docker ps` shows your Vaultwarden container as "Up" and `docker logs vaultwa
 
 ## Updating Vaultwarden
 
-It is good to check for updates often to ensure you have the latest solutions. Subscribe to the [Vaultwarden GitHub releases](https://github.com/dani-garcia/vaultwarden/releases) to stay informed (be sure to read what is being updated). To update Vaultwarden to the latest version:
+It is good to check for updates often to ensure you have the latest solutions. Subscribe to the [Vaultwarden GitHub releases](https://github.com/dani-garcia/vaultwarden/releases) to stay informed (be sure to read what is being updated before applying it). To update Vaultwarden to the latest version:
 
 1. Navigate to your compose directory:
 ```command
@@ -508,7 +503,7 @@ This downloads the newest version and restarts Vaultwarden with minimal downtime
 {{< note >}}
 **See a warning?** Docker Compose may show warnings about deprecated keys or ignored attributes. These usually don't affect functionality. For example, you might see:
 
-WARN[0000] /root/vaultwarden/docker-compose.yml: the attribute version is obsolete, it will be ignored, please remove it to avoid potential confusion
+`WARN[0000] /root/vaultwarden/docker-compose.yml: the attribute version is obsolete, it will be ignored, please remove it to avoid potential confusion`
 
 This means the `version:` line in your `docker-compose.yml` file is no longer needed. You can safely delete it—Docker Compose now auto-detects the format and doesn’t require a version declaration.
 
@@ -519,7 +514,7 @@ For details, see the Docker [Compose file reference](https://docs.docker.com/ref
 
 Vaultwarden supports an admin interface for managing users and settings. To enable it:
 
-1. Generate a secure admin token:
+1. Generate a secure admin token
 
 You can use openssl or any password generator:
 ```command
@@ -558,7 +553,7 @@ Replace `your_generated_token_here` with the secure admin token you created usin
 docker compose down
 docker compose up -d
 ```
-If the admin interface loads and accepts your token, your configuration is complete. You can now manage Vaultwarden setting securely.
+If the admin interface loads and accepts your token, your configuration is complete. You can now manage Vaultwarden settings securely.
 
 {{< note >}}
 Keep your admin token secure. Anyone with access to it can modify Vaultwarden settings.
