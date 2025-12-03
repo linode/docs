@@ -1,28 +1,28 @@
 ---
-title: "Deploy A ELK stack through the Linode Marketplace"
-description: "This guide will help you configure an ELK stack using Akamai's Compute Marketplace and outline directories information about your deployment."
+title: "Deploy A Elastic Stack through the Linode Marketplace"
+description: "This guide will help you configure an Elastic Stack using Akamai's Compute Marketplace."
 published: 2025-11-25
 modified: 2025-11-25
-keywords: ['elk stack', 'elk', 'kibana', 'logstash', 'elasticsearch', 'logging', 'siem', 'cluster']
+keywords: ['elk stack', 'elk', 'kibana', 'logstash', 'elasticsearch', 'logging', 'siem', 'cluster', 'elastic stack']
 tags: ["marketplace", "linode platform", "cloud manager", "elk", "logging"]
-aliases: ['/products/tools/marketplace/guides/elk-stack/']
+aliases: ['/products/tools/marketplace/guides/elastic-stack/']
 external_resources:
-- '[ELK Documentation](https://www.elastic.co/docs)'
+- '[Elastic Stack Documentation](https://www.elastic.co/docs)'
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-marketplace_app_id: 00000
-marketplace_app_name: "ELK"
+marketplace_app_id: 804144
+marketplace_app_name: "Elastic Stack"
 ---
 ## Cluster Deployment Architecture
 
-!["ELK Cluster Architecture"](elasticstack-overview.png "ELK Cluster Architecture")
+!["Elastic Stack Cluster Architecture"](elasticstack-overview.png "Elastic Stack Cluster Architecture")
 
-The ELK Stack is a unified observability platform that brings together search, data processing, and visualization through Elasticsearch, Logstash, and Kibana. It provides an end-to-end pipeline for ingesting, transforming, indexing, and exploring operational data at scale. Elasticsearch delivers distributed search and analytics with near real-time indexing, while Logstash enables flexible data collection and enrichment from diverse sources. Kibana offers an interactive interface for visualizing log streams, building dashboards, and performing advanced analysis.
+An Elastic Stack is a unified observability platform that brings together search, data processing, and visualization through Elasticsearch, Logstash, and Kibana. It provides an end-to-end pipeline for ingesting, transforming, indexing, and exploring operational data at scale. Elasticsearch delivers distributed search and analytics with near real-time indexing, while Logstash enables flexible data collection and enrichment from diverse sources. Kibana offers an interactive interface for visualizing log streams, building dashboards, and performing advanced analysis.
 
-The ELK Stack is well-suited for log aggregation, application monitoring, infrastructure observability, and security analytics. Its open architecture and extensive ecosystem make it adaptable to a wide range of use cases—including distributed system debugging, SIEM workflows, API performance monitoring, and centralized logging. 
+This solution is well-suited for log aggregation, application monitoring, infrastructure observability, and security analytics. Its open architecture and extensive ecosystem make it adaptable to a wide range of use cases—including distributed system debugging, SIEM workflows, API performance monitoring, and centralized logging. 
 
-This Marketplace application stands up a multi-cluster ELK stack with the ease of a few clicks!
+This Marketplace application stands up a multi-cluster Elastic Stack with the ease of a few clicks!
 
 ## Deploying a Marketplace App
 
@@ -31,12 +31,12 @@ This Marketplace application stands up a multi-cluster ELK stack with the ease o
 {{% content "marketplace-verify-standard-shortguide" %}}
 
 {{< note >}}
-**Estimated deployment time:** ELK should be fully installed within 5-10 minutes with a cluster of 5 nodes. Larger clusters will take longer to provision but we can use the formula, 8 minutes per 5 nodes, to estimate completion.
+**Estimated deployment time:** Your cluster should be fully installed within 5-10 minutes with a cluster of 5 nodes. Larger clusters will take longer to provision but we can use the formula, 8 minutes per 5 nodes, to estimate completion.
 {{< /note >}}
 
 ## Configuration Options
 
-### ELK Options
+### Elastic Stack Options
 
 - **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) to create one.
 
@@ -59,7 +59,7 @@ The following fields are used when creating the self-signed TLS/SSL certificates
 
 #### Picking The Correct Instance Plan and Size
 
-In the **Cluster Settings** section you will find a way to designate the size for each component in your ELK deployment. The size of the cluster will depend on your needs. If you are looking for a quick deployment, stick with the defaults provided.
+In the **Cluster Settings** section you will find a way to designate the size for each component in your Elastic deployment. The size of the cluster will depend on your needs. If you are looking for a quick deployment, stick with the defaults provided.
 
 - **Kibana Size**: This deployment will only create a single Kibina instance will Let's Encrypt certificates. This option cannot be changed.
 - **Elasticsearch Cluster Size**: The total number of nodes your Elasticsearch cluster will have.
@@ -83,6 +83,8 @@ In this next part, you will be able to associate your Elasticsearch and Logstash
 - **Elasticsearch index to be created for log ingestion**: We are creating this index so that you can start ingesting logs quickly. For example, if you have wordpress application you want perform log aggregation for the index name `wordpress-logs` would make sense. You can change this for your specific use-case.
 
 ## Getting Started After Deployment
+
+### Accessing Elastic Frontend
 
 Once you cluster has finished deploying, you will be able to log into your Elastic cluster via the browser. The first thing you need to do is log into the provisioner node and open the the credentials file. You use the following command:
 
