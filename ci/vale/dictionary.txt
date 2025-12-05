@@ -307,6 +307,8 @@ chatrooms
 chcon
 cheatsheet
 checkmarx
+checkpointer
+checkpointing
 checksummed
 checksums
 chefspec
@@ -1307,6 +1309,8 @@ Kyverno
 lambdabunker
 Laminas
 Langa
+langchain
+langgraph
 LANs
 laravel
 largebiomes
@@ -1904,6 +1908,7 @@ permalink
 permalinks
 Petazzoni
 pflogsumm
+pgvector
 pg_auto_failover
 pg_dump
 pg_dumpall
@@ -2750,6 +2755,7 @@ utils
 UTunnel
 uuid
 uuids
+uvicorn
 uwls
 uwsgi
 v1
