@@ -101,33 +101,33 @@ This design means you can destroy any pod without losing data. A replacement pod
 
 ## Set Up the Code Repository, Object Storage, Databases, and OpenAI API Key
 
-Follow these sections from the [RAG Chatbot LangChain Compute Instance](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode) guide:
+Follow these sections from the [Deploy a RAG-Powered Chatbot with LangChain on an Akamai Compute Instance](/docs/guides/deploy-rag-powered-chatbot-langchain-akamai-compute-instance) guide:
 
 {{< note >}}
 Wherever an instruction says to run a command on an Akamai compute instance, run that command locally on your workstation instead.
 {{< /note >}}
 
-1. [Clone the Chatbot Codebase](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode/#clone-the-chatbot-codebase)
+1. [Clone the Chatbot Codebase](/docs/guides/deploy-rag-powered-chatbot-langchain-akamai-compute-instance/#clone-the-chatbot-codebase)
 
-1. [Start a Python Virtual Environment](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode/#start-a-python-virtual-environment)
+1. [Start a Python Virtual Environment](/docs/guides/deploy-rag-powered-chatbot-langchain-akamai-compute-instance/#start-a-python-virtual-environment)
 
-1. [Copy the .env.example Template](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode/#copy-the-envexample-template)
+1. [Copy the .env.example Template](/docs/guides/deploy-rag-powered-chatbot-langchain-akamai-compute-instance/#copy-the-envexample-template)
 
-1. [Install Python Dependencies](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode/#install-python-dependencies)
+1. [Install Python Dependencies](/docs/guides/deploy-rag-powered-chatbot-langchain-akamai-compute-instance/#install-python-dependencies)
 
-1. [Create an OpenAI API Key](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode/#create-an-openai-api-key)
+1. [Create an OpenAI API Key](/docs/guides/deploy-rag-powered-chatbot-langchain-akamai-compute-instance/#create-an-openai-api-key)
 
-1. [Provision Managed PostgreSQL Databases](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode/#provision-managed-postgresql-databases)
+1. [Provision Managed PostgreSQL Databases](/docs/guides/deploy-rag-powered-chatbot-langchain-akamai-compute-instance/#provision-managed-postgresql-databases)
 
    - When selecting a region for your databases, use the same region as your LKE cluster.
 
    - When configuring network access for the database, add your workstation's IP address to the allowed list of IPs.
 
-1. [Set Up Linode Object Storage](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode/#set-up-linode-object-storage)
+1. [Set Up Linode Object Storage](/docs/guides/deploy-rag-powered-chatbot-langchain-akamai-compute-instance/#set-up-linode-object-storage)
 
    - When selecting a region for your object storage bucket, use the same region as your LKE cluster.
 
-1. [Upload Documents to the Object Storage Bucket](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode/#upload-documents-to-the-object-storage-bucket)
+1. [Upload Documents to the Object Storage Bucket](/docs/guides/deploy-rag-powered-chatbot-langchain-akamai-compute-instance/#upload-documents-to-the-object-storage-bucket)
 
 ### Verify Database Access from LKE
 
@@ -169,7 +169,7 @@ Your cluster can now reach your databases.
 
 ### Index Documents with LangChain
 
-Follow the [Index Documents with LangChain](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode/#index-documents-with-langchain) section of the [RAG Chatbot LangChain Compute Instance](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode) guide to initialize your vector database and generate the vector embeddings of your documents.
+Follow the [Index Documents with LangChain](/docs/guides/deploy-rag-powered-chatbot-langchain-akamai-compute-instance/#index-documents-with-langchain) section of the [RAG Chatbot LangChain Compute Instance](/docs/guides/deploy-rag-powered-chatbot-langchain-akamai-compute-instance) guide to initialize your vector database and generate the vector embeddings of your documents.
 
 ## Containerize your Chatbot Application
 
