@@ -31,8 +31,8 @@ This guide describes how to leverage LangChain and LangGraph, two open-source pr
 
 {{< note >}}
 Two companion guides demonstrate how to deploy this chatbot on Akamai Cloud:
-- [Deploy a RAG-Powered Chatbot with LangChain on an Akamai Compute Instance](deploy-rag-powered-chatbot-langchain-akamai-compute-instance)
-- [Deploy a RAG-Powered Chatbot with LangChain on LKE](deploy-rag-powered-chatbot-langchain-lke)
+- [Deploy a RAG-Powered Chatbot with LangChain on an Akamai Compute Instance](/docs/guides/deploy-rag-powered-chatbot-langchain-akamai-compute-instance)
+- [Deploy a RAG-Powered Chatbot with LangChain on LKE](/docs/guides/deploy-rag-powered-chatbot-langchain-lke)
 {{< /note >}}
 
 ## Workflow Diagram
@@ -81,7 +81,7 @@ Below is a workflow diagram of an example RAG chatbot architecture built with th
 
 ## LangChain vs LangGraph
 
-LangChain offers a comprehensive toolkit for building LLM-powered applications. It provides pre-built integrations with popular vector databases and language models. For retrieval-augmented generation (RAG) chatbots, LangChain includes methods for document loading, text splitting, embedding generation, and the retrieval pipeline. Its *LCEL* expression language lets you chain operations together declaratively, improving the readibility of your chatbot code.
+LangChain offers a comprehensive toolkit for building LLM-powered applications. It provides pre-built integrations with popular vector databases and language models. For retrieval-augmented generation (RAG) chatbots, LangChain includes methods for document loading, text splitting, embedding generation, and the retrieval pipeline. Its *LCEL* expression language lets you chain operations together declaratively, improving the readability of your chatbot code.
 
 LangGraph orchestrates stateful AI agents. LangGraph provides persistent checkpointing that saves conversation history to a database. This means users can close a chat and resume it later without losing context. LangGraph models conversations as state graphs, where each node represents a processing step (like retrieval or response generation) and edges control the flow. This architecture makes it straightforward to build chatbots that remember context, handle multi-turn conversations, and maintain state across restarts.
 

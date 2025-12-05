@@ -28,7 +28,7 @@ Deploying to Kubernetes unlocks production capabilities essential for reliable a
 
 The [Using LangChain and LangGraph to Build a RAG-Powered Chatbot](/docs/guides/using-langchain-langgraph-build-rag-powered-chatbot/) guide explains the workflow of the application in more detail and provides a walkthrough of relevant code that leverages the LangChain, LangGraph, and FastAPI frameworks.
 
-If you prefer a simpler deployment, the [Deploy a RAG-Powered Chatbot with LangChain on an Akamai Compute Instance](deploy-rag-powered-chatbot-langchain-akamai-compute-instance) guide shows how to run the chatbot on a single compute instance.
+If you prefer a simpler deployment, the [Deploy a RAG-Powered Chatbot with LangChain on an Akamai Compute Instance](/docs/guides/deploy-rag-powered-chatbot-langchain-akamai-compute-instance) guide shows how to run the chatbot on a single compute instance.
 
 ## Systems and Components
 
@@ -211,7 +211,7 @@ The cloned GitHub repository for your chatbot has two files that are used to cre
 
     * **Slim base image**: Uses [python:3.11-slim](https://hub.docker.com/layers/library/python/3.11-slim) to minimize image size
     * **Layer caching**: Copies requirements.txt first so dependency installation is cached
-    * **Non-root user**: Creates and switches to appuser for security
+    * **Non-root user**: Creates and switches to `appuser` for security
     * **Single process**: Runs uvicorn directly, removing the need for a shell script wrapper
 
 
