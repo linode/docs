@@ -1,8 +1,8 @@
 ---
-title: "Deploy A Elastic Stack through the Linode Marketplace"
-description: "This guide will help you configure an Elastic Stack using Akamai's Compute Marketplace."
-published: 2025-11-25
-modified: 2025-11-25
+title: "Deploy the Elastic Stack through the Linode Marketplace"
+description: "This guide helps you configure the Elastic Stack using the Akamai Compute Marketplace."
+published: 2025-12-05
+modified: 2025-12-05
 keywords: ['elk stack', 'elk', 'kibana', 'logstash', 'elasticsearch', 'logging', 'siem', 'cluster', 'elastic stack']
 tags: ["marketplace", "linode platform", "cloud manager", "elk", "logging"]
 aliases: ['/products/tools/marketplace/guides/elastic-stack/']
@@ -18,11 +18,11 @@ marketplace_app_name: "Elastic Stack"
 
 !["Elastic Stack Cluster Architecture"](elasticstack-overview.png "Elastic Stack Cluster Architecture")
 
-An Elastic Stack is a unified observability platform that brings together search, data processing, and visualization through Elasticsearch, Logstash, and Kibana. It provides an end-to-end pipeline for ingesting, transforming, indexing, and exploring operational data at scale. Elasticsearch delivers distributed search and analytics with near real-time indexing, while Logstash enables flexible data collection and enrichment from diverse sources. Kibana offers an interactive interface for visualizing log streams, building dashboards, and performing advanced analysis.
+The Elastic Stack is a unified observability platform that brings together search, data processing, and visualization through Elasticsearch, Logstash, and Kibana. It provides an end-to-end pipeline for ingesting, transforming, indexing, and exploring operational data at scale. Elasticsearch delivers distributed search and analytics with near real-time indexing, while Logstash enables flexible data collection and enrichment from diverse sources. Kibana offers an interactive interface for visualizing log streams, building dashboards, and performing advanced analysis.
 
-This solution is well-suited for log aggregation, application monitoring, infrastructure observability, and security analytics. Its open architecture and extensive ecosystem make it adaptable to a wide range of use cases—including distributed system debugging, SIEM workflows, API performance monitoring, and centralized logging. 
+This solution is well-suited for log aggregation, application monitoring, infrastructure observability, and security analytics. Its open architecture and extensive ecosystem make it adaptable to a wide range of use cases—including distributed system debugging, SIEM workflows, API performance monitoring, and centralized logging.
 
-This Marketplace application stands up a multi-cluster Elastic Stack with the ease of a few clicks!
+This Marketplace application stands up a multi-node Elastic Stack cluster using an automated deployment script configured by Akamai.
 
 ## Deploying a Marketplace App
 
@@ -30,8 +30,8 @@ This Marketplace application stands up a multi-cluster Elastic Stack with the ea
 
 {{% content "marketplace-verify-standard-shortguide" %}}
 
-{{< note >}}
-**Estimated deployment time:** Your cluster should be fully installed within 5-10 minutes with a cluster of 5 nodes. Larger clusters will take longer to provision but we can use the formula, 8 minutes per 5 nodes, to estimate completion.
+{{< note title="Estimated deployment time" >}}
+Your cluster should be fully installed within 5-10 minutes with a cluster of 5 nodes. Larger clusters may take longer to provision, and you can use the formula, 8 minutes per 5 nodes, to estimate completion time.
 {{< /note >}}
 
 ## Configuration Options
@@ -40,7 +40,7 @@ This Marketplace application stands up a multi-cluster Elastic Stack with the ea
 
 - **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) to create one.
 
-- **Email address (for the Let's Encrypt SSL certificate)** *(required)*: Your email will be used for Let's Encrypt renewal notices. A valid SSL certificate is validated through certbot and installed on the Kibana instance in the cluster. This will allow you to visit Kibana securely through a browser.
+- **Email address (for the Let's Encrypt SSL certificate)** *(required)*: Your email is used for Let's Encrypt renewal notices. A valid SSL certificate is validated through certbot and installed on the Kibana instance in the cluster. This allows you to visit Kibana securely through a browser.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
@@ -59,107 +59,110 @@ The following fields are used when creating the self-signed TLS/SSL certificates
 
 #### Picking The Correct Instance Plan and Size
 
-In the **Cluster Settings** section you will find a way to designate the size for each component in your Elastic deployment. The size of the cluster will depend on your needs. If you are looking for a quick deployment, stick with the defaults provided.
+In the **Cluster Settings** section you can designate the size for each component in your Elastic deployment. The size of the cluster depends on your needs--if you are looking for a faster deployment, stick with the defaults provided.
 
-- **Kibana Size**: This deployment will only create a single Kibina instance will Let's Encrypt certificates. This option cannot be changed.
-- **Elasticsearch Cluster Size**: The total number of nodes your Elasticsearch cluster will have.
-- **Logstash Cluster Size**: The total number of nodes your Logstash cluster will have.
+- **Kibana Size**: This deployment creates a single Kibana instance with Let's Encrypt certificates. This option cannot be changed.
+- **Elasticsearch Cluster Size**: The total number of nodes in your Elasticsearch cluster.
+- **Logstash Cluster Size**: The total number of nodes in your Logstash cluster.
 
-In this next part, you will be able to associate your Elasticsearch and Logstash clusters with their corresponding instance plans.
+Next, associate your Elasticsearch and Logstash clusters with a corresponding instance plan option.
 
-- **Elasticsearch Instance Type**: This is plan type that will be used for your Elasticsearch cluster.
-- **Logstash Instance Type**: This is plan type that will be used for your Logstash cluster.
+- **Elasticsearch Instance Type**: This is the plan type used for your Elasticsearch cluster.
+- **Logstash Instance Type**: This is the plan type used for your Logstash cluster.
 
-{{< note >}}
-**Kibana Instance Type:** To choose the Kibana instance type you will first need to click the region that you want to deploy and then picking the plan from the **[Linode Plan](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance#choose-a-linode-type-and-plan)** section. 
+{{< note title="Kibana Instance Type" >}}
+In order to choose the Kibana instance, you first need to select a deployment region and then pick a plan from the **[Linode Plan](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance#choose-a-linode-type-and-plan)** section.
 {{< /note >}}
 
 #### Additional Configuration
 
-- **Filebeat IP addresses allowed to access Logstash**: If you have existing filebeat agents already installed, you can provide their IP addresses for whitelisting. The IP addresses must be comma separated.
+- **Filebeat IP addresses allowed to access Logstash**: If you have existing Filebeat agents already installed, you can provide their IP addresses for an allowlist. The IP addresses must be comma separated.
 
-- **Logstash username to be created for index**: This is the username that is created and can access index below. We create this so that you can start ingesting logs after deployment.
+- **Logstash username to be created for index**: This is the username that is created and can access index below. This is created so that you can begin ingesting logs after deployment.
 
-- **Elasticsearch index to be created for log ingestion**: We are creating this index so that you can start ingesting logs quickly. For example, if you have wordpress application you want perform log aggregation for the index name `wordpress-logs` would make sense. You can change this for your specific use-case.
+- **Elasticsearch index to be created for log ingestion**: This lets you start ingesting logs. Edit the index name for your specific use-case. For example, if you have WordPress application you want to perform log aggregation for, the index name `wordpress-logs` would be appropriate.
 
 ## Getting Started After Deployment
 
 ### Accessing Elastic Frontend
 
-Once you cluster has finished deploying, you will be able to log into your Elastic cluster via the browser. The first thing you need to do is log into the provisioner node and open the the credentials file. You use the following command:
+Once you cluster has finished deploying, you can log into your Elastic cluster using your local browser.
 
-```command
-cat /home/$user/.credentials
-```
+1.  Log into the provisioner node as your limited sudo user, replacing `{{< placeholder "USER" >}}` with the sudo username you created, and `{{< placeholder "IP_ADDRESS" >}}` with your instance's IPv4 address:
 
-Where `$user` is the sudo user you created. In the credentials file you will notice the Kibana URL. Paste that into your browser of choice and you should be able to see the login page.
+    ```command
+    ssh {{< placeholder "USER" >}}@{{< placeholder "IP_ADDRESS" >}}
+    ```
 
+1.  Open the `.credentials` file with the following command. Replace `{{< placeholder "USER" >}}` with your sudo username:
 
-!["Elastic Login Page"](elastic-login.png "Elastic Login Page")
+    ```command
+    sudo cat /home/{{< placeholder "USER" >}}/.credentials
+    ```
 
+1.  In the `.credentials` file, locate the Kibana URL. Paste the URL into your browser of choice, and you should be greeted with a login page.
 
-To access the console enter `elastic` as the username and the password posted in the credentials file. A successful login will redirect you to the welcome page. From there you are able to add integrations, visualization and other config changes.
+    !["Elastic Login Page"](elastic-login.png "Elastic Login Page")
 
-!["Elastic Welcome Page"](elastic-home.png "Elastic Welcome Page")
+1.  To access the console, enter `elastic` as the username along with the password posted in the `.credentials` file. A successful login redirects you to the welcome page. From there you are able to add integrations, visualizations, and make other config changes.
+
+    !["Elastic Welcome Page"](elastic-home.png "Elastic Welcome Page")
 
 #### Configure Filebeat (Optional)
 
-If you already have Filebeat configured on a system follow the next steps.
+Follow the next steps if you already have Filebeat configured on a system.
 
-- Create a backup of your `/etc/filebeat/filebeat.yml` configuration:
+1.  Create a backup of your `/etc/filebeat/filebeat.yml` configuration:
 
-```command
-cp /etc/filebeat/filebeat.yml{,.bak}
-```
+    ```command
+    cp /etc/filebeat/filebeat.yml{,.bak}
+    ```
 
-- Update your filebeat inputs:
+1.  Update your Filebeat inputs:
 
+    ```file {title="/etc/filebeat/filebeat.yml" lang="yaml"}
+    filebeat.inputs:
 
-`/etc/filebeat/filebeat.yml`:
-```yaml
-filebeat.inputs:
+    # Each - is an input. Most options can be set at the input level, so
+    # you can use different inputs for various configurations.
+    # Below are the input-specific configurations.
 
-# Each - is an input. Most options can be set at the input level, so
-# you can use different inputs for various configurations.
-# Below are the input-specific configurations.
+    # filestream is an input for collecting log messages from files.
+    - type: filestream
 
-# filestream is an input for collecting log messages from files.
-- type: filestream
- 
-  # Unique ID among all inputs, an ID is required.
-  id: web-01 
- 
-  # Change to true to enable this input configuration.
-  #enabled: false
-  enabled: true
- 
-  # Paths that should be crawled and fetched. Glob based paths.
-  paths:
-    - /var/log/apache2/access.log
-```
+      # Unique ID among all inputs, an ID is required.
+      id: web-01
 
-In this example, the `id` must be unique to the instance that way you know the source of the log. Ideally this should be the hostname of the instance, in this example we are calling it **web-01**. Update `paths` to the log that you want to send to Logstash.
+      # Change to true to enable this input configuration.
+      #enabled: false
+      enabled: true
 
-Next, while in the `/etc/filebeat/filebeat.yml`, update the Filbeat output directive:
+      # Paths that should be crawled and fetched. Glob based paths.
+      paths:
+        - /var/log/apache2/access.log
+    ```
 
-```yaml
-output.logstash:
-  # Logstash hosts
-  hosts: ["logstash-1.example.com:5044", "logstash-2.example.com:5044"]
-  loadbalance: true
+    In this example, the `id` must be unique to the instance so you know the source of the log. Ideally this should be the hostname of the instance, and this example uses the value **web-01**. Update `paths` to the log that you want to send to Logstash.
 
-  # List of root certificates for HTTPS server verifications
-  ssl.certificate_authorities: ["/etc/filebeat/certs/ca.pem"]
-```
-The `hosts` param can be the IP addresses of your Logstash host or a FQDN if wanted. In this example, we added **logstash-1.example.com** and **logstash-2.example.com** to our `/etc/hosts` file.
+1.  While in the `/etc/filebeat/filebeat.yml`, update the Filebeat output directive:
 
-- Add CA certificate. 
+    ```file {title="/etc/filebeat/filebeat.yml" lang="yaml"}
+    output.logstash:
+      # Logstash hosts
+      hosts: ["logstash-1.example.com:5044", "logstash-2.example.com:5044"]
+      loadbalance: true
 
-The last thing that you want to do is add the `ca.pem` to `/etc/filebeat/certs/ca.pem`. You can grab the `ca.crt` from any node in the cluster. Once that's in place, just restart the filebeat service:
+      # List of root certificates for HTTPS server verifications
+      ssl.certificate_authorities: ["/etc/filebeat/certs/ca.pem"]
+    ```
 
-```bash 
-systemctl start filebeat
-systemctl enable filebeat
-```
+    The `hosts` param can be the IP addresses of your Logstash host or a FQDN. In this example, **logstash-1.example.com** and **logstash-2.example.com** are added to the `/etc/hosts` file.
 
-At this point you should be able to start ingesting logs into your cluster using the index you created!
+1.  Add a CA certificate by adding the contents of the `ca.crt` certificate file to `/etc/filebeat/certs/ca.pem`. You can obtain the `ca.crt` from any node in the cluster. Once you've added the certificate to your `ca.pem` file, restart the Filebeat service:
+
+    ```command
+    systemctl start filebeat
+    systemctl enable filebeat
+    ```
+
+Once complete, you should be able to start ingesting logs into your cluster using the index you created.
