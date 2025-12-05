@@ -139,7 +139,7 @@ Your Kubernetes nodes need network access to your managed PostgreSQL databases. 
 
 1. Test database connectivity from a temporary pod:
 
-    ```command {title="Test database connectivity from a pod in a node"}
+    ```command
     kubectl run -it \
     --rm debug \
     --image=postgres:18 \
@@ -265,7 +265,7 @@ Before pushing to a registry, verify your container works.
 
 1. Run this command and replace the variable values with the corresponding values from your `.env` file:
 
-    ```command {title="Run Docker container locally"}
+    ```command
     docker run --rm \
     -e OPENAI_API_KEY={{< placeholder "YOUR_OPENAI_API_KEY" >}} \
     -e VECTOR_DB_URL={{< placeholder "YOUR_VECTOR_DB_URL" >}} \
@@ -677,7 +677,7 @@ Kubernetes now creates your pods and provisions a LoadBalancer.
 
 Check your Service for the external IP:
 
-```command {title="Get Service status and external IP"}
+```command
 kubectl get service chatbot-service
 ```
 
@@ -762,13 +762,13 @@ Notice how different requests, all originating from the same HTML page, are bein
 
 1. Manually force a pod deletion, using a specific pod name:
 
-    ```command {title="Delete a pod"}
+    ```command
     kubectl delete pod chatbot-deployment-598f6cbd78-2n8js
     ```
 
 1. Immediately check the status of your pods.
 
-    ```command {title="Get pods"}
+    ```command
     kubectl get pods
     ```
 
@@ -800,7 +800,7 @@ Kubernetes performs a rolling update; it creates new pods with the updated image
 
 Scale manually by changing the replica count. This changes the number of pods (application instances), not the number of nodes (compute instances). Your three nodes can run many more than three pods, and Kubernetes distributes them based on available resources.
 
-```command {title="Increase deployment replica count"}
+```command
 kubectl scale deployment chatbot-deployment --replicas=8
 ```
 
@@ -828,13 +828,13 @@ For automatic scaling based on CPU usage, create a [HorizontalPodAutoscaler](htt
 
 To check resource usage across nodes and pods, install the [Kubernetes Metric Server](https://github.com/kubernetes-sigs/metrics-server).
 
-```command {title="Install Metrics Server onto cluster"}
+```command
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 ```
 
 Then, after a few minutes, you can run commands to show usage.
 
-```command {title="Show CPU and memory usage per node"}
+```command
 kubectl top nodes
 ```
 
@@ -845,7 +845,7 @@ lke525573-759963-2db7d3ab0000   105m         5%       2002Mi          52%
 lke525573-759963-5b4330b90000   72m          3%       1547Mi          40%
 ```
 
-```command {title="Show CPU and memory usage per pod"}
+```command
 kubectl top pods
 ```
 
