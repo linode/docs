@@ -30,9 +30,9 @@ This guide deploys a chatbot written in Python using these open-source software 
 
 - **FastAPI**: Provides components for building a REST API. The API for the example chatbot handles chat requests and responses.
 
-The [RAG Chatbot Langchain Workflow](/docs/guides/using-langchain-create-chatbot-rag-pipeline) guide explains the workflow of the application in more detail and provides a walkthrough of relevant code that leverages the LangChain, LangGraph, and FastAPI frameworks.
+The [Using LangChain and LangGraph to Build a RAG-Powered Chatbot](/docs/guides/using-langchain-langgraph-build-rag-powered-chatbot/) guide explains the workflow of the application in more detail and provides a walkthrough of relevant code that leverages the LangChain, LangGraph, and FastAPI frameworks.
 
-If you prefer to deploy to Kubernetes, the [RAG Chatbot Langchain LKE](/docs/guides/deploy-chatbot-rag-pipeline-langchain-lke) guide shows how to containerize and deploy this application on Linode Kubernetes Engine (LKE).
+If you prefer to deploy to Kubernetes, the [Deploy a RAG-Powered Chatbot with LangChain on LKE](deploy-rag-powered-chatbot-langchain-lke) guide shows how to containerize and deploy this application on Linode Kubernetes Engine (LKE).
 
 ## Systems and Components
 

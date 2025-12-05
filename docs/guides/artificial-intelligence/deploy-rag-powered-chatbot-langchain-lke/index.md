@@ -26,15 +26,15 @@ This guide demonstrates deploying a Python-based RAG chatbot to Linode Kubernete
 
 Deploying to Kubernetes unlocks production capabilities essential for reliable applications. LKE distributes your chatbot across multiple pods for high availability, automatically replaces failed instances, performs rolling updates without downtime, and scales horizontally under load. This guide covers containerizing your application, creating Kubernetes manifests for secrets and configuration, and deploying to a managed cluster.
 
-The [RAG Chatbot Langchain Workflow](/docs/guides/using-langchain-create-chatbot-rag-pipeline) guide explains the workflow of the application in more detail and provides a walkthrough of relevant code that leverages the LangChain, LangGraph, and FastAPI frameworks.
+The [Using LangChain and LangGraph to Build a RAG-Powered Chatbot](/docs/guides/using-langchain-langgraph-build-rag-powered-chatbot/) guide explains the workflow of the application in more detail and provides a walkthrough of relevant code that leverages the LangChain, LangGraph, and FastAPI frameworks.
 
-If you prefer a simpler deployment, the [RAG Chatbot Langchain Compute Instance](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode) guide shows how to run the chatbot on a single compute instance.
+If you prefer a simpler deployment, the [Deploy a RAG-Powered Chatbot with LangChain on an Akamai Compute Instance](deploy-rag-powered-chatbot-langchain-akamai-compute-instance) guide shows how to run the chatbot on a single compute instance.
 
 ## Systems and Components
 
 This diagram describes which systems and components are present in the chatbot deployment on LKE:
 
-![RAG chatbot with Langchain deployed on LKE](rag-chatbot-langchain-lke.svg)
+![RAG chatbot with LangChain deployed on LKE](rag-chatbot-langchain-lke.svg)
 
 - **LKE Cluster**: A [Linode Kubernetes Engine](https://www.linode.com/products/kubernetes/) cluster in Akamai Cloud.
 
@@ -101,7 +101,7 @@ This design means you can destroy any pod without losing data. A replacement pod
 
 ## Set Up the Code Repository, Object Storage, Databases, and OpenAI API Key
 
-Follow these sections from the [RAG Chatbot Langchain Compute Instance](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode) guide:
+Follow these sections from the [RAG Chatbot LangChain Compute Instance](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode) guide:
 
 {{< note >}}
 Wherever an instruction says to run a command on an Akamai compute instance, run that command locally on your workstation instead.
@@ -169,7 +169,7 @@ Your cluster can now reach your databases.
 
 ### Index Documents with LangChain
 
-Follow the [Index Documents with LangChain](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode/#index-documents-with-langchain) section of the [RAG Chatbot Langchain Compute Instance](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode) guide to initialize your vector database and generate the vector embeddings of your documents.
+Follow the [Index Documents with LangChain](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode/#index-documents-with-langchain) section of the [RAG Chatbot LangChain Compute Instance](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode) guide to initialize your vector database and generate the vector embeddings of your documents.
 
 ## Containerize your Chatbot Application
 

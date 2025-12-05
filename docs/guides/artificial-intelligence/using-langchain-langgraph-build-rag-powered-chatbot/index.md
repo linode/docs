@@ -31,8 +31,8 @@ This guide describes how to leverage LangChain and LangGraph, two open-source pr
 
 {{< note >}}
 Two companion guides demonstrate how to deploy this chatbot on Akamai Cloud:
-- [RAG Chatbot Langchain Compute Instance](/docs/guides/deploy-chatbot-rag-pipeline-langchain-linode)
-- [RAG Chatbot Langchain LKE](/docs/guides/deploy-chatbot-rag-pipeline-langchain-lke)
+- [Deploy a RAG-Powered Chatbot with LangChain on an Akamai Compute Instance](deploy-rag-powered-chatbot-langchain-akamai-compute-instance)
+- [Deploy a RAG-Powered Chatbot with LangChain on LKE](deploy-rag-powered-chatbot-langchain-lke)
 {{< /note >}}
 
 ## Workflow Diagram
