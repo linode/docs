@@ -428,7 +428,7 @@ ConfigMaps separate configuration from code, making it easy to change settings w
 
 ### Create a Deployment Manifest
 
-The Deployment defines how Kubernetes runs your application. Create `deployment.yaml` inside the `manifests/` directory with this file snippet:
+The Deployment defines how Kubernetes runs your application. Create `deployment.yaml` inside the `manifests/` directory with this file snippet. Replace {{< placeholder "YOUR_DOCKERHUB_USERNAME" >}} with your username on line 17.
 
 ```file {title="manifests/deployment.yaml", lang="yaml"}
 apiVersion: apps/v1
@@ -447,7 +447,7 @@ spec:
     spec:
       containers:
       - name: chatbot
-        image: YOUR_DOCKERHUB_USERNAME/langchain-chatbot:1.0.0
+        image: {{< placeholder "YOUR_DOCKERHUB_USERNAME" >}}/langchain-chatbot:1.0.0
         ports:
         - containerPort: 8000
         env:
@@ -756,7 +756,7 @@ Check how requests distribute across pods:
     [pod/chatbot-deployment-598f6cbd78-p9nnz/chatbot] 2025-10-18 16:03:18,521 - app.api.chat - INFO - Processing chat message: Do the two of them have any other friends?...
     ```
 
-Notice how different requests, all originating from the same HTML page, are being distributed across your pods by the LoadBalancer.
+Notice how different requests are being distributed across your pods by the LoadBalancer.
 
 ### Test Kubernetes Self-Healing by Deleting a Pod
 

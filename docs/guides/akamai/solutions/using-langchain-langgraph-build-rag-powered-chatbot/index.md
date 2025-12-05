@@ -63,27 +63,27 @@ Below is a workflow diagram of an example RAG chatbot architecture built with th
 
 ### Systems and Components
 
-- **Object Storage**: Akamai's S3-compatible object storage used to store source documents that form the chatbot's knowledge base.
-
-- **Vector Database**: Akamai's Managed Database running PostgreSQL with the pgvector extension enabled. Used for storing document embeddings and performing vector similarity searches.
-
-- **State Database**: Akamai's Managed Database running PostgreSQL. Used by LangGraph to persist conversation history across chatbot sessions.
-
-- **Compute Instance**: An Akamai compute instance. Runs the Uvicorn .
+- **Python Application**: Your chatbot application, built with LangChain, LangGraph, and FastAPI.
 
 - **LangChain**: Open-source framework that orchestrates document processing, embedding generation, vector retrieval, and prompt engineering.
 
-- **LangGraph**: Framework built on LangChain for managing stateful conversations with persistent checkpointing to the state database.
+- **LangGraph**: Open-source framework that manages stateful language model conversations.
 
 - **FastAPI**: Python web framework providing the REST API endpoints that handle chat requests and responses.
 
+- **Source Documents**: S3-compatible object storage used to store source documents that form the chatbot's knowledge base.
+
 - **OpenAI API**: External LLM service providing both the embedding model (text-embedding-3-small) for document vectorization and the chat model (gpt-4o-mini) for generating responses.
+
+- **Vector Database**: A PostgreSQL database with the pgvector extension enabled. Used for storing document embeddings and performing vector similarity searches.
+
+- **State Database**: A PostgreSQL database used by LangGraph to persist conversation history across chatbot sessions.
 
 ## LangChain vs LangGraph
 
 LangChain offers a comprehensive toolkit for building LLM-powered applications. It provides pre-built integrations with popular vector databases and language models. For retrieval-augmented generation (RAG) chatbots, LangChain includes methods for document loading, text splitting, embedding generation, and the retrieval pipeline. Its *LCEL* expression language lets you chain operations together declaratively, improving the readability of your chatbot code.
 
-LangGraph orchestrates stateful AI agents. LangGraph provides persistent checkpointing that saves conversation history to a database. This means users can close a chat and resume it later without losing context. LangGraph models conversations as state graphs, where each node represents a processing step (like retrieval or response generation) and edges control the flow. This architecture makes it straightforward to build chatbots that remember context, handle multi-turn conversations, and maintain state across restarts.
+LangGraph orchestrates stateful AI agents. LangGraph provides persistent checkpointing that saves conversation history to a database. This means users can close a chat and resume it later without losing context. LangGraph models conversations as state graphs, where each node represents a processing step (like retrieval or response generation) and edges control the flow of the agent's logic. LangChain and LangGraph can be used together, LangGraph can also be used without LangChain.
 
 ## Understanding Retrieval-Augmented Generation (RAG)
 
@@ -218,8 +218,8 @@ def index_documents_from_s3(self, object_keys: List[str]) -> Dict[str, Any]:
 ```
 
 - On lines 139-147, LangChain's [S3FileLoader](https://docs.langchain.com/oss/javascript/integrations/document_loaders/web_loaders/s3) is used to load documents from S3-compatible object storage. It handles authentication and retrieval of documents from object storage
-- [RecursiveCharacterTextSplitter](https://docs.langchain.com/oss/python/integrations/splitters/recursive_text_splitter) (lines 154-159), a LangChain text splitting utility, is used to intelligently splits documents into chunks while. It respects a configurable chunk size (`chunk_size`), creates overlaps between chunks (`chunk_overlap`), and uses hierarchical separators (paragraphs / lines / spaces / characters).
-- On Line 188, the `add_documents` method of LangChain's vector store interface is used to add chunks to the vector database.
+- [RecursiveCharacterTextSplitter](https://docs.langchain.com/oss/python/integrations/splitters/recursive_text_splitter) (lines 154-159), a LangChain text splitting utility, is used to intelligently splits documents into chunks while also respecting a configurable chunk size (`chunk_size`), creating overlaps between chunks (`chunk_overlap`), and using hierarchical separators (paragraphs / lines / spaces / characters).
+- On Line 188, the `add_documents` method of LangChain's [vector store](https://docs.langchain.com/oss/python/integrations/vectorstores) interface is used to add chunks to the vector database.
 
 ### Building the RAG Query Pipeline
 
@@ -304,13 +304,13 @@ To make the RAG system more user-friendly within a chatbot interface, extend it 
 
     Graphs specify the state of the chatbot application, the actions performed by the agent, and which actions an agent should take based on its current state.
 
-    - Lines 154-155 create *nodes* for the graph. Nodes are individual processing steps for your agent. The `rag_query` node retrieves relevant documents, and the `generate_response` node generates the AI response.
+    - Lines 154-155 create *nodes* for the graph. Nodes are individual processing steps for your agent. The `rag_query` node retrieves relevant documents, and the `generate_response` node generates the LLM response.
 
-    - Lines 158-160 create *edges* for the graph. Edges determine which states should follow from each other, or the logical flow of the agent. These lines define this execution path: the agent starts with `rag_query`, flows to `generate_response`, then ends.
+    - Lines 158-160 create *edges* for the graph. Edges determine which states should follow from each other, or the logical flow of the agent. These lines define this execution path: the agent starts with `rag_query`, proceeds to `generate_response`, then ends.
 
     - Line 163 *compiles* the graph, which performs some validation of the logical consistency of the graph. The graph is compiled with a PostgreSQL checkpointer that automatically persists conversation state after each step, enabling conversation history across sessions.
 
-- **process_message**: This message handles a user's chatbot question and retrieves an answer from the LLM. It does this while referring to and preserving the user's conversation history. It can accept a unique thread ID as an argument, which corresponds to a user's conversation history with the chatbot.
+- **process_message**: This method handles a user's chatbot question and retrieves an answer from the LLM. It does this while referring to and preserving the user's conversation history. It can accept a unique thread ID as an argument which corresponds to a user's conversation history with the chatbot.
 
     ```file {title="app/core/memory.py" lang="python" linenostart="272"}
         def process_message(self, message: str, thread_id: Optional[str] = None) -> Dict[str, Any]:
@@ -373,13 +373,13 @@ To make the RAG system more user-friendly within a chatbot interface, extend it 
 
     - Lines 292-305 combine the previous conversation history with the new user message into an initial state for the agent's graph.
 
-    - Lines 307-311 ensure that the graph execution has access to the thread ID, and therefore the allowing the PostgresSQL checkpointer, to store and retrieve state for the conversation.
+    - Lines 307-311 ensure that the graph execution has access to the thread ID. This allows the PostgresSQL checkpointer to store and retrieve state for the conversation.
 
-    - Line 311: The graph is invoked to execute the agent's workflow (RAG querying and LLM response generation)
+    - Line 311: The graph is invoked to execute the agent's workflow (RAG querying and LLM response generation).
 
 ### Creating the API
 
-The application uses the FastAPI framework to create the web API that clients interact with to send messages and receive responses. The API is implemented in []`app/api/chat.py`]. The key endpoint, which accepts messages and returns AI-generated responses, is implemented like this:
+The application uses the FastAPI framework to create the web API that clients interact with to send messages and receive responses. The API is implemented in [https://github.com/linode/docs-cloud-projects/blob/rag-pipeline-chatbot-langchain/app/api/chat.py](`app/api/chat.py`). The key endpoint, which accepts messages and returns AI-generated responses, is implemented like this:
 
 ```file {title="app/api/chat.py" lang="python" linenostart="21"}
 @router.post("/chat", response_model=ChatResponse)

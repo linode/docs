@@ -203,7 +203,7 @@ The application requires two separate PostgreSQL databases: one for vector embed
     STATE_DB_URL=postgresql://{{< placeholder "YOUR_POSTGRESQL_USERNAME" >}}:{{< placeholder "YOUR_POSTGRESQL_PASSWORD" >}}@{{< placeholder "YOUR_POSTGRESQL_HOSTNAME" >}}:{{< placeholder "YOUR_POSTGRESQL_PORT" >}}/{{< placeholder "YOUR_POSTGRESQL_DB_NAME" >}}
     ```
 
-1.  Create a database for vector storage. Use the same instructions as you did for your conversation state database. The suggested name for the cluster label is `rag-chatbot-embeddings`. Choose the same database creation form values for your conversation state database.
+1.  Create another database for vector storage. Use the same instructions as you did for your conversation state database. The suggested name for the cluster label is `rag-chatbot-embeddings`. Choose the same database creation form values as you did for your conversation state database.
 
     {{< note >}}
     Wait for the vector storage database to finish provisioning before proceeding.
@@ -346,7 +346,7 @@ Your databases have been initialized. Documents have been uploaded to Linode Obj
     INFO:     Application startup complete.
     ```
 
-1. Open your browser and navigate to the IP address for your Linode instance, to port 8000.
+1. Open your browser and navigate to the IP address for your Linode instance (on port 8000).
 
     ![](chatbot-no-questions.jpg)
 
