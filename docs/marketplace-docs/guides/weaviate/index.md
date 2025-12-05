@@ -1,7 +1,8 @@
 ---
 title: "Deploy Weaviate through the Linode Marketplace"
 description: "Learn how to deploy Weaviate, an AI-native vector database with GPU-accelerated semantic search capabilities, on an Akamai Compute Instance."
-published: 2025-11-14
+published: 2025-12-05
+modified: 2025-12-05
 keywords: ['vector database','database','weaviate']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
@@ -22,8 +23,8 @@ marketplace_app_name: "Weaviate"
 
 {{% content "marketplace-verify-standard-shortguide" %}}
 
-{{< note >}}
-**Estimated deployment time:** Weaviate should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
+{{< note title="Estimated deployment time" >}}
+Weaviate should be fully installed within 5-10 minutes after your instance has finished provisioning.
 {{< /note >}}
 
 ## Configuration Options
@@ -43,14 +44,14 @@ marketplace_app_name: "Weaviate"
 
 ### Obtain Your API Keys
 
-Weaviate is a database service accessed programmatically through its API, not through a web-based UI. Your deployment includes two API keys stored in a credentials file.
+Weaviate is a database service accessed programmatically through its API rather than through a web-based user interface. Your deployment includes two API keys stored in a credentials file.
 
-1.  Log in to your Compute Instance via SSH or Lish. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance, or use the [Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+1.  Log in to your instance via SSH or Lish. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance, or use the [Lish Console](/docs/products/compute/compute-instances/guides/lish/).
 
-1.  Once logged in, retrieve your API keys from the credentials file:
+1.  Once logged in, retrieve your API keys from the `.credentials` file:
 
     ```command
-    cat /home/$USER/.credentials
+    sudo cat /home/$USER/.credentials
     ```
 
     The credentials file contains two API keys:
@@ -64,6 +65,5 @@ To integrate Weaviate into your application, use one of the official client libr
 See the [Weaviate Client Libraries documentation](https://docs.weaviate.io/weaviate/client-libraries) for installation instructions and API references.
 
 For complete examples and advanced usage, refer to the [Weaviate Quickstart Guide](https://docs.weaviate.io/weaviate/quickstart) and the client library documentation for your preferred language.
-
 
 {{% content "marketplace-update-note-shortguide" %}}

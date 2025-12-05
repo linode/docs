@@ -2845,6 +2845,7 @@ wazuh
 wc
 wchar
 wchar_t
+Weaviate
 webadmin
 webalizer
 webapp
