@@ -99,7 +99,7 @@ This design means you can destroy any pod without losing data. A replacement pod
 
 1. Follow the [Connect to a cluster with kubectl](https://techdocs.akamai.com/cloud-computing/docs/manage-a-cluster-with-kubectl#connect-to-a-cluster-with-kubectl) guide, including the [Access and download your kubeconfig](https://techdocs.akamai.com/cloud-computing/docs/manage-a-cluster-with-kubectl#access-and-download-your-kubeconfig) section, to verify the connection to your cluster.
 
-## Set Up the Code Repository, Object Storage, Databases, and OpenAI API Key
+### Set Up the Code Repository, Object Storage, Databases, and OpenAI API Key
 
 Follow these sections from the [Deploy a RAG-Powered Chatbot with LangChain on an Akamai Compute Instance](/docs/guides/deploy-rag-powered-chatbot-langchain-akamai-compute-instance) guide:
 
