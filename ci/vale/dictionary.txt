@@ -462,6 +462,7 @@ csv
 CTAs
 ctools
 ctrl
+ctype
 ctx
 cuda
 curlie
@@ -679,6 +680,8 @@ EMTs
 ender
 enduser
 enix
+enmod
+ensite
 entra
 enum
 env
@@ -722,6 +725,7 @@ exploitability
 ext2
 ext3
 ext4
+exts
 facter
 facto
 fail2ban
@@ -1481,6 +1485,7 @@ mBlock
 mbox
 Mbps
 MBps
+mbstring
 mbstrings
 mcrypt
 mcy
@@ -2355,6 +2360,7 @@ SIEMs
 sievers
 signup
 Simula
+simplexml
 singapore
 sintra
 siri
@@ -2420,6 +2426,7 @@ sshing
 sshpass
 ssi
 ssl
+sslengine
 stackhawk
 stackscript
 stackscripts
@@ -2751,6 +2758,7 @@ usermod
 usersor
 usr
 ust
+utf8mb4
 utils
 UTunnel
 uuid
