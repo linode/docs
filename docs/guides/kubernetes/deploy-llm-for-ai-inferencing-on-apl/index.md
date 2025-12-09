@@ -5,21 +5,21 @@ description: "This guide provides steps and guidance for deploying LLMs (large l
 authors: ["Sander Rodenhuis"]
 contributors: ["Sander Rodenhuis"]
 published: 2025-03-25
-modified: 2025-11-18
-keywords: ['ai','ai inference','ai inference','llm','large language model','app platform','lke','linode kubernetes engine','llama 3','kserve','istio','knative']
+modified: 2025-12-09
+keywords: ['ai','ai inference','llm','large language model','app platform','lke','linode kubernetes engine','llama 3','kserve','istio','knative']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Akamai App Platform for LKE](https://techdocs.akamai.com/cloud-computing/docs/application-platform)'
 - '[Akamai App Platform Documentation](https://techdocs.akamai.com/app-platform/docs/welcome)'
 ---
 
-LLMs (large language models) generate human-like text and perform language-based tasks by being trained on massive datasets. AI inference is the process to make predictions or decisions on new, unseen data. The LLM used in this deployment, Meta AI's [Llama 3](https://www.llama.com/docs/overview/), is an open-source, pre-trained LLM often used for tasks like responding to questions in multiple languages, coding, and advanced reasoning.
+LLMs (large language models) generate human-like text and perform language-based tasks by being trained on massive datasets. AI inference is the process to make predictions or decisions on new data outside of the training datasets. The LLM used in this deployment, Meta AI's [Llama 3](https://www.llama.com/docs/overview/), is an open-source, pre-trained LLM often used for tasks like responding to questions in multiple languages, coding, and advanced reasoning.
 
-[KServe](https://kserve.github.io/website/latest/) is a Model Inference Framework for Kubernetes, built for highly-scalable use cases. KServe comes with multiple Model Serving Runtimes, including the [Hugging Face](https://huggingface.co/welcome) serving runtime. The Hugging Face runtime supports the following machine learning (ML) tasks: text generation, Text2Text generation, token classification, sequence and text classification, and fill mask. KServe is integrated in Akamai App Platform for LKE.
+[KServe](https://kserve.github.io/website/latest/) is a Model Inference Framework for Kubernetes, built for highly-scalable use cases. KServe comes with multiple Model Serving Runtimes, including the [Hugging Face](https://huggingface.co/welcome) serving runtime. The Hugging Face runtime supports the following machine learning (ML) tasks: text generation, Text2Text generation, token classification, sequence and text classification, and fill mask. KServe is integrated in App Platform for LKE, Akamai's pre-built Kubernetes developer platform.
 
-Akamai App Platform for LKE also integrates [Istio](https://istio.io/latest/docs/overview/what-is-istio/) and [Knative](https://knative.dev/docs/concepts/), both of which are prerequisites for using KServe. App Platform for LKE automates the provisioning process of these applications.
+App Platform also integrates [Istio](https://istio.io/latest/docs/overview/what-is-istio/) and [Knative](https://knative.dev/docs/concepts/), both of which are prerequisites for using KServe. App Platform automates the provisioning process of these applications.
 
-This guide describes the steps required to: install KServe with Akamai App Platform for LKE, deploy the Meta Llama 3.1 8B model using the Hugging Face runtime server, and deploy a chatbot interface using Open WebUI. Once functional, use our [Deploy a RAG Pipeline and Chatbot with App Platform for LKE](/docs/guides/deploy-rag-pipeline-and-chatbot-on-apl/) guide to add and run a RAG pipeline and deploy an AI Agent that exposes an OpenAI compatible API.
+This guide describes the steps required to: install KServe with App Platform, deploy the Meta Llama 3.1 8B model using the Hugging Face runtime server, and deploy a chatbot interface using Open WebUI. Once functional, use our [Deploy a RAG Pipeline and Chatbot with App Platform for LKE](/docs/guides/deploy-rag-pipeline-and-chatbot-on-apl/) guide to add and run a RAG pipeline and deploy an AI Agent that exposes an OpenAI compatible API.
 
 If you prefer to manually install an LLM and RAG Pipeline on LKE rather than using Akamai App Platform, see our [Deploy a Chatbot and RAG Pipeline for AI Inference on LKE](/docs/guides/ai-chatbot-and-rag-pipeline-for-inference-on-lke/) guide.
 
@@ -35,7 +35,7 @@ If you prefer to manually install an LLM and RAG Pipeline on LKE rather than usi
 
 -   **Linode Kubernetes Engine (LKE)**: LKE is Akamai’s managed Kubernetes service, enabling you to deploy containerized applications without needing to build out and maintain your own Kubernetes cluster.
 
--   **App Platform for LKE**: A Kubernetes-based platform that combines developer and operations-centric tools, automation, self-service, and management of containerized application workloads. App Platform for LKE streamlines the application lifecycle from development to delivery and connects numerous CNCF (Cloud Native Computing Foundation) technologies in a single environment, allowing you to construct a bespoke Kubernetes architecture.
+-   **App Platform for LKE**: A Kubernetes-based platform that combines developer and operations-centric tools, automation, self-service, and management of containerized application workloads. App Platform streamlines the application lifecycle from development to delivery and connects numerous CNCF (Cloud Native Computing Foundation) technologies in a single environment, allowing you to construct a bespoke Kubernetes architecture.
 
 ### Software
 
@@ -86,11 +86,11 @@ Sign into the App Platform web UI using the `platform-admin` account, or another
 
 ### Create Teams
 
-[Teams](https://techdocs.akamai.com/app-platform/docs/platform-teams) are isolated tenants on the platform to support Development/DevOps teams, projects or even DTAP. A Team gets access to the App Platform portal, including access to self-service features and all shared apps available on the platform.
+[Teams](https://techdocs.akamai.com/app-platform/docs/platform-teams) are isolated tenants on the platform to support development and DevOps teams, projects or even DTAP. A team gets access to the App Platform portal, including access to self-service features and all shared apps available on the platform.
 
-For this guide you will need to create 2 Teams. One Team that will offer access to LLMs as a shared service and one Team that will consume the LLMs.
+For this guide you will need to create 2 teams. One team that offers access to LLMs as a shared service and one team that consumes the LLMs.
 
-First create the Team that will run the LLMs:
+First, create a team to run the LLMs:
 
 1.  Select **view** > **platform**.
 
@@ -98,7 +98,7 @@ First create the Team that will run the LLMs:
 
 1.  Click **Create Team**.
 
-1.  Provide a **Name** for the Team. This guide uses the Team name `models`.
+1.  Provide a **Name** for the team. This guide uses the team name `models`.
 
 1.  Under **Resource Quota**, change the **Compute Resource Quota** to 50 Cores and 64 Gi
 
@@ -108,11 +108,11 @@ First create the Team that will run the LLMs:
 
 1.  Click **Create Team**.
 
-Now create the Team that will run the apps that are going to use the LLMs:
+Now create a team to run the apps that are to consume the LLMs:
 
 1.  Click **Create Team**.
 
-1.  Provide a **Name** for the Team. This guide uses the Team name `demo`.
+1.  Provide a **Name** for the team. This guide uses the team name `demo`.
 
 1.  Under **Network Policies**, disable **Egress Control** and **Ingress Control**.
 
@@ -136,7 +136,7 @@ The [NVIDIA GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-op
     helm install --wait --generate-name -n gpu-operator --create-namespace nvidia/gpu-operator --version=v24.9.1
     ```
 
-### Add the open-webui Helm Chart to the Catalog
+### Add the open-webui Helm Chart to the catalog
 
 1.  Click on **Catalog** in the left menu.
 
@@ -154,7 +154,7 @@ The [NVIDIA GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-op
 
 1.  Click **Add Chart**.
 
-### Add the hf-meta-llama-3-1-8b-instruct Helm Chart to the Catalog
+### Add the hf-meta-llama-3-1-8b-instruct Helm Chart to the catalog
 
 1.  Click on **Catalog** in the left menu.
 
@@ -168,11 +168,11 @@ The [NVIDIA GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-op
 
 1.  Click **Get Details** to populate the Helm chart details.
 
-1.  Uncheck the **Allow teams to use this chart** option. In the next step we'll configure the RBAC of the Catalog to make this Helm chart available for the Team `models` to use.
+1.  Uncheck the **Allow teams to use this chart** option. In the next step, configure the RBAC of the catalog to make this Helm chart available to the `models` team.
 
 1.  Click **Add Chart**.
 
-Now configure the RBAC of the Catalog:
+Now, configure the RBAC of the catalog:
 
 1.  Select **view** > **platform**.
 
@@ -180,7 +180,7 @@ Now configure the RBAC of the Catalog:
 
 1.  Click on the `Gitea` app.
 
-1.  In the list of Repositories, click on `otomi/charts`.
+1.  In the list of repositories, click on `otomi/charts`.
 
 1.  At the bottom, click on the file `rbac.yaml`.
 
@@ -201,7 +201,7 @@ Now configure the RBAC of the Catalog:
 
 1.  Enter a name for your token, and click **Create token**.
 
-1.  Save your Access Token information.
+1.  Save your access token information.
 
 See the Hugging Face user documentation on [User access tokens](https://huggingface.co/docs/hub/en/security-tokens) for additional information.
 
@@ -213,7 +213,7 @@ If you haven't done it already, request access to the Llama 3 LLM model. To do t
 
 ### Create a Sealed Secret
 
-[Sealed Secrets](https://techdocs.akamai.com/app-platform/docs/team-secrets) are encrypted Kubernetes Secrets stored in the Values Git repository. When a Sealed Secret is created in the Console, the Kubernetes Secret will appear in the Team's namespace.
+[Sealed Secrets](https://techdocs.akamai.com/app-platform/docs/team-secrets) are encrypted Kubernetes secrets stored in the Values repository. When a sealed secret is created in the console, the Kubernetes secret appears in the team's namespace.
 
 1.  Select **view** > **team** and **team** > **models** in the top bar.
 
@@ -227,9 +227,9 @@ If you haven't done it already, request access to the Llama 3 LLM model. To do t
 
 1.  Add **Key**: `HF_TOKEN`.
 
-1.  Add your Hugging Face Access Token in the **Value** field: {{< placeholder "HUGGING_FACE_TOKEN" >}}
+1.  Add your Hugging Face access token in the **Value** field: {{< placeholder "HUGGING_FACE_TOKEN" >}}
 
-1.  Click **Submit**. The Sealed Secret may take a few minutes to become ready.
+1.  Click **Submit**. The sealed secret may take a few minutes to become ready.
 
 ### Create a Workload to Deploy the Model
 
@@ -241,13 +241,13 @@ If you haven't done it already, request access to the Llama 3 LLM model. To do t
 
 1.  Click on **Values**.
 
-1.  Provide a name for the Workload. This guide uses the Workload name `llama-3-1-8b`.
+1.  Provide a name for the workload. This guide uses the workload name `llama-3-1-8b`.
 
-1.  Use the default values and Click **Submit**.
+1.  Use the default values and click **Submit**.
 
 #### Check the Status of Your Workload
 
-1.  It may take a few minutes for the _llama-3-1-8b_ Workload to become ready. To check the status of the Workload build, open a shell session by selecting **Shell** in the left menu, and use the following command to check the status of the pods with `kubectl`:
+1.  It may take a few minutes for the _llama-3-1-8b_ workload to become ready. To check the status of the workload build, open a shell session by selecting **Shell** in the left menu, and use the following command to check the status of the pods with `kubectl`:
 
     ```command
     kubectl get pods -n team-models
@@ -258,7 +258,7 @@ If you haven't done it already, request access to the Llama 3 LLM model. To do t
     tekton-dashboard-5f57787b8c-gswc2                          2/2     Running   0          1h
     ```
 
-Wait for the Workload to be ready, and proceed with the following steps.
+Wait for the workload to be ready before proceeding.
 
 ## Deploy and Expose the AI Interface
 
@@ -272,9 +272,9 @@ Wait for the Workload to be ready, and proceed with the following steps.
 
 1.  Click on **Values**.
 
-1.  Provide a name for the Workload. This guide uses the Workload name `llama3-ui`.
+1.  Provide a name for the workload. This guide uses the workload name `llama3-ui`.
 
-1.  Add the following values and change the `nameOverride` value to the name of your Workload, `llama3-ui`:
+1.  Add the following values and change the `nameOverride` value to the name of your workload, `llama3-ui`:
 
     ```file
     # Change the nameOverride to match the name of the Workload
@@ -320,7 +320,7 @@ See our [Deploy a RAG Pipeline and Chatbot with App Platform for LKE](/docs/guid
 
 ## appendix 1: Ingress control
 
-When we created the Teams **demo** and **models**, we turned off the **Ingress Control**. Ingress Control controls internal access to Pods. When Ingress Control is enabled, Pods in the Team namespace are not accessible for other Pods (in the Team namespace and in other Team namespaces). For the simplicity of this guide we turned the Ingress Control off. If you don't want to disable Ingress Control for all the workloads in a Team, then you can turn Ingress Control on and create **Inbound Rules** in the Team's Network Policies. Follow these steps to create Inbound Policies to control access to the models hosted in the Team `models`:
+When we created the teams **demo** and **models**, we turned off the **Ingress Control**. Ingress Control controls internal access to pods. When Ingress Control is enabled, pods in the team namespace are not accessible to other pods (in the same team namespace or in other team namespaces). For the simplicity of this guide, Ingress Control was turned off. If you don't want to disable Ingress Control for all the workloads in a team, then you can turn Ingress Control on and create **Inbound Rules** in the team's network policies. Follow these steps to create inbound policies to control access to the models hosted in the team `models`:
 
 1.  Select **view** > **team** and **team** > **models** in the top bar.
 
@@ -330,24 +330,24 @@ When we created the Teams **demo** and **models**, we turned off the **Ingress C
 
 1.  Add a name for the rule (like model-access)
 
-1.  Under **Sources**, select the Workload (in this case the `llama3-ui` workload) and select a Pod label.
+1.  Under **Sources**, select the workload (in this case the `llama3-ui` workload) and select a pod label.
 
-1.  Under **Target**, select the workload (in this case the `llama-3-1-8b` workload) and select a Pod label.
+1.  Under **Target**, select the workload (in this case the `llama-3-1-8b` workload) and select a pod label.
 
 1.  Click **Create Inbound Rule**
 
-Note that in some cases, the **Target** Pod needs to be restarted if it already had accepted connections before the Inbound Rule was created.
+Note that in some cases, the **Target** pod needs to be restarted if it already had accepted connections before the inbound rule was created.
 
 
 ## appendix 2: Egress control
 
-When we created the Teams **demo** and **models**, we turned off the **Egress Control**. Egress Control is implemented using Istio Service Entries and Istio sidecar injection is enabled by default. Egress Control controls Pod access to public URLs. Because the Hugging Face models need to be downloaded from an external repository and the open-webui installs multiple binaries from external sources, both the LLM Pod and the open-webui need to have access to multiple public URLs. For the simplicity of this guide we turned the Egress Control off. If you don't want to disable Egress Control for all the workloads in a Team, then you can turn Egress Control on and create **Outbound Rules** in the Team's Network Policies or turn of the sidecar injection for a specific workloads (Pods). There are 2 ways to do this:
+When we created the teams **demo** and **models**, we turned off the **Egress Control**. Egress Control is implemented using Istio Service Entries and Istio sidecar injection is enabled by default. Egress Control controls pod access to public URLs. Because the Hugging Face models need to be downloaded from an external repository and open-webui installs multiple binaries from external sources, both the LLM pod and open-webui need to have access to multiple public URLs. For the simplicity of this guide we turned the Egress Control off. If you don't want to disable Egress Control for all the workloads in a team, then you can turn Egress Control on and create **Outbound Rules** in the team's network policies or turn of the sidecar injection for a specific workloads (pods). There are several ways to do this:
 
-1.  Add the label `sidecar.istio.io/inject: "false"` to the workload using the Chart Values
+- Add the label `sidecar.istio.io/inject: "false"` to the workload using the Chart Values
 
-1.  Enable Kyverno and create a Kyverno **Policy** that mutates the a pod so that it will have the `sidecar.istio.io/inject: "false"` label.
+- Enable Kyverno and create a Kyverno **Policy** that mutates the a pod so that it has the `sidecar.istio.io/inject: "false"` label.
 
-The `open-webui` Helm chart used in this guide does not support to add additional labels to Pods. The following instruction and example shows how to use Kyverno to mutate the open-webui Pods and add the `sidecar.istio.io/inject: "false"` label.
+The `open-webui` Helm chart used in this guide does not support adding additional labels to pods. The following instructions and example show how to use Kyverno to mutate the open-webui pods and add the `sidecar.istio.io/inject: "false"` label.
 
 1.  Select **view** > **platform** in the top bar.
 
@@ -390,12 +390,12 @@ The `open-webui` Helm chart used in this guide does not support to add additiona
                     sidecar.istio.io/inject: "false"
     ```
 
-1.  Optionally add a title and any notes to the change history, and click **Commit Changes**.
+1.  Optionally add a title and any notes to the change history. Then, click **Commit Changes**.
 
     ![Add Open WebUI Policy](APL-LLM-Add-OpenWebUIPolicy.jpg)
 
 1.  Check to see if the policy has been created in Argo CD:
 
-    1.  Go to **Apps**, and open the _Argocd_ application.
+    1.  Go to **Apps** and open the _Argocd_ application.
 
     1.  Using the search feature, go to the `team-demo` application to see if the policy has been created. If it isn't there yet, view the `team-demo` application in the list of **Applications**, and click **Refresh** if needed.
