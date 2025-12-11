@@ -57,7 +57,7 @@ The following fields are used when creating the self-signed TLS/SSL certificates
 - **Email address** *(required)*: Enter the email address you wish to use for your certificate file.
 - **CA Common name:** This is the common name for the self-signed Certificate Authority.
 
-#### Picking The Correct Instance Plan and Size
+#### Picking the Correct Instance Plan and Size
 
 In the **Cluster Settings** section you can designate the size for each component in your Elastic deployment. The size of the cluster depends on your needs--if you are looking for a faster deployment, stick with the defaults provided.
 
@@ -70,7 +70,7 @@ Next, associate your Elasticsearch and Logstash clusters with a corresponding in
 - **Elasticsearch Instance Type**: This is the plan type used for your Elasticsearch cluster.
 - **Logstash Instance Type**: This is the plan type used for your Logstash cluster.
 
-{{< note title="Kibana Instance Type" >}}
+{{< note title="Kibana instance type" >}}
 In order to choose the Kibana instance, you first need to select a deployment region and then pick a plan from the **[Linode Plan](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance#choose-a-linode-type-and-plan)** section.
 {{< /note >}}
 
@@ -88,11 +88,15 @@ In order to choose the Kibana instance, you first need to select a deployment re
 
 Once you cluster has finished deploying, you can log into your Elastic cluster using your local browser.
 
-1.  Log into the provisioner node as your limited sudo user, replacing `{{< placeholder "USER" >}}` with the sudo username you created, and `{{< placeholder "IP_ADDRESS" >}}` with your instance's IPv4 address:
+1.  Log into the provisioner node as your limited sudo user, replacing `{{< placeholder "USER" >}}` with the sudo username you created, and `{{< placeholder "IP_ADDRESS" >}}` with the instance's IPv4 address:
 
     ```command
     ssh {{< placeholder "USER" >}}@{{< placeholder "IP_ADDRESS" >}}
     ```
+
+    {{< note title="The provisioner node is also the Kibana node" >}}
+    Your provisioner node is the first Linode created in your cluster and is also the instance running Kibana. To identify the node in your list of Linodes, look for the node appended with the name "kibana". For example: `kibana-76f0443c`
+    {{< /note >}}
 
 1.  Open the `.credentials` file with the following command. Replace `{{< placeholder "USER" >}}` with your sudo username:
 
@@ -158,7 +162,18 @@ Follow the next steps if you already have Filebeat configured on a system.
 
     The `hosts` param can be the IP addresses of your Logstash host or a FQDN. In this example, **logstash-1.example.com** and **logstash-2.example.com** are added to the `/etc/hosts` file.
 
-1.  Add a CA certificate by adding the contents of the `ca.crt` certificate file to `/etc/filebeat/certs/ca.pem`. You can obtain the `ca.crt` from any node in the cluster. Once you've added the certificate to your `ca.pem` file, restart the Filebeat service:
+1.  Add a Certificate Authority (CA) certificate by adding the contents of `ca.crt` to your `/etc/filebeat/certs/ca.pem` file.
+
+    To obtain your `ca.crt`, open a separate terminal session, and log into your Kibana node. Navigate to the `/etc/kibana/certs/ca` directory, and view the file contents with the `cat` command:
+
+    ```command
+    cd /etc/kibana/certs/ca
+    sudo cat ca.crt
+    ```
+
+    Copy the file contents, and add it to your `ca.pem` file on your Filebeat system.
+
+1.  Once you've added the certificate to your `ca.pem` file, restart the Filebeat service:
 
     ```command
     systemctl start filebeat
