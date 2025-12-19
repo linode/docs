@@ -95,7 +95,7 @@ The following procedures outline the process of setting up the apache-rootkit mo
 
         cd /tmp
 
-1. The next step will involve cloning the apache-rootkit repository on to the target system. 
+1. The next step will involve cloning the apache-rootkit repository on to the target system.
 1. After cloning the repository you will need to navigate to the “apache-rootkit” directory:
 
         cd apache-rootkit
