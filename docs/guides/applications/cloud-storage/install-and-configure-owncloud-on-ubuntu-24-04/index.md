@@ -4,6 +4,7 @@ title: "Installing and Configuring ownCloud on Ubuntu 22.04"
 title_meta: "How to Install and Configure ownCloud on Ubuntu 24.04"
 description: "We'll walk you through the step-by-step process for setting up ownCloud, including installing Apache, PHP packages, and Apache domain name configuration."
 authors: ["Linode"]
+contributors: ["Linode"]
 published: 2026-01-20
 keywords: ['ownCloud on Ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
