@@ -95,15 +95,15 @@ Now that you have installed the prerequisites, it’s time to create the ownClou
         sudo mysql -u root -p
 
 
-1. create your ownCloud database:
+1. Create your ownCloud database:
 
         CREATE DATABASE ownclouddb;
 
 
 1. Create a new user with the necessary privileges, including a strong and unique password. Be sure to substitute `PASSWORD` with your own password:
 
-        GRANT ALL ON ownclouddb.* TO 'ownclouduser'@'localhost' IDENTIFIED BY 'PASSWORD';
-
+        CREATE USER 'ownclouduser'@'localhost' IDENTIFIED BY 'PASSWORD';
+        GRANT ALL PRIVILEGES ON ownclouddb.* TO 'ownclouduser'@'localhost';
 
 1. Flush your database's privileges:
 
