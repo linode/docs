@@ -3,7 +3,7 @@ title: "Deploy Mistral 7B Instruct with Open WebUI through the Linode Marketplac
 description: "This guide includes instructions on how to deploy Open WebUI with Mistral 7B Instruct self-hosted LLM on an Akamai Compute Instance."
 published: 2026-01-26
 modified: 2026-01-26
-keywords: ['mistral', 'mistral-7b-instruct', 'open-webui', 'vllm', 'ai', 'llm', 'llm-inference', 'mistral-7b]
+keywords: ['mistral', 'mistral-7b-instruct', 'open-webui', 'vllm', 'ai', 'llm', 'llm-inference', 'mistral-7b']
 tags: ["marketplace", "linode platform", "cloud manager", "ai", "llm-inference", "llm"]
 aliases: ['/products/tools/marketplace/guides/mistral7b-instruct-with-openwebui/']
 external_resources:
