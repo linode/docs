@@ -29,7 +29,7 @@ marketplace_app_name: "Chroma"
 ## Configuration Options
 
 - **Supported distributions**: Ubuntu 24.04 LTS
-- **Recommended plan**: Chroma [recommends](https://docs.trychroma.com/guides/deploy/performance) deploying on a plan with at least 2GB of RAM.
+- **Recommended plan**: Chroma [recommends](https://docs.trychroma.com/guides/deploy/performance) deploying on a plan with at least 2GB of RAM. In general, running Chroma on higher-tier plans reduces query latency and allows for larger collection sizes.
 
 ### Chroma Options
 
