@@ -1,7 +1,7 @@
 ---
 title: "Deploy Chroma through the Linode Marketplace"
 description: "Learn how to deploy Chroma, the AI-native open-source embedding database, on an Akamai Compute Instance."
-published: 2025-12-16
+published: 2026-01-29
 keywords: ['vector database','database','chromadb']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
