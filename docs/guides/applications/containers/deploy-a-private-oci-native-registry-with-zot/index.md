@@ -1,6 +1,6 @@
 ---
 slug: deploy-a-private-oci-native-registry-with-zot
-title: "Deploy Zot as a Pull-Through OCI Cache for Docker Hub"
+title: "Deploy Zot as a Pull Through OCI Cache for Docker Hub"
 description: "Zot is a vendor-neutral Open Container Initiative (OCI) Native Registry. Learn how to deploy Zot and configure it as a cache for images from Docker Hub."
 authors: ["Vishwas Rajashekar"]
 contributors: ["Vishwas Rajashekar"]
