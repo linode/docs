@@ -119,7 +119,7 @@ This section walks through the process of configuring Zot as a pull through cach
 
 ### Identify the Right Zot Build to Use
 
-Zot builds are all published on the [project's GitHub Releases page](https://github.com/project-zot/zot/releases). There are builds for different CPU architectures and platforms. For this guide, the machine plaform is `Linux` and the CPU architecture is `amd64`.
+Zot builds are all published on the [project's GitHub Releases page](https://github.com/project-zot/zot/releases). There are builds for different CPU architectures and platforms. For this guide, the machine platform is `Linux` and the CPU architecture is `amd64`.
 
 Zot is also built in 2 flavors: a "normal" version and a minimal version. The builds for the minimal version have a suffix of `-minimal`. The minimal version is intended for systems where only the OCI registry functionality is required. The normal version includes more features, such as the UI, container scanning, etc. This guide will use the normal build.
 
