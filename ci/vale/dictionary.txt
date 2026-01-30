@@ -3008,6 +3008,7 @@ znc
 zonefiles
 zope
 zorin
+zot
 zoxide
 zpool
 zsh
