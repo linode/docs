@@ -1,7 +1,7 @@
 ---
 title: "Deploy Milvus through the Linode Marketplace"
 description: "Deploy Milvus, an open-source vector database for AI, similarity search, and embeddings workloads."
-published: 2025-10-03
+published: 2026-02-03
 keywords: ['milvus', 'vector database', 'AI', 'embeddings', 'similarity search']
 tags: ["ubuntu", "marketplace", "developer", "milvus", "linode platform", "machine learning"]
 external_resources:
@@ -66,10 +66,6 @@ To interact with Milvus, install the a supported client SDK (Python, Go, Java, N
     - **[milvus-sdk-node](https://github.com/milvus-io/milvus-sdk-node)**: node.js SDK for Milvus Vector Database
     - **[Milvus Go SDK](https://milvus.io/docs/install-go.md)**: GO SDK for Milvus Vector Database
     - **[Milvus Java SDK](https://milvus.io/docs/install-java.md)**: Java SDK for Milvus Vector Database
-
-## Getting Started After Deployment
-
-Once your Milvus standalone deployment is running via Docker, you can begin validating the deployment and accessing the supporting services.
 
 ### Verify Running Containers
 
