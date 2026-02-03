@@ -13,7 +13,11 @@ contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 marketplace_app_id: 691620
 marketplace_app_name: "FileCloud Community"
+deprecated: true
 ---
+{{< note type="warning" >}}
+FileCloud will no longer be providing new distribution images on the Akamai Cloud Marketplace. To continue using the latest version of FileCloud, please visit https://www.filecloud.com/filecloud-server/ to download the most recent release.
+{{< /note >}}
 
 [FileCloud](https://www.filecloud.com/) is a cloud-based file-sharing application, similar to tools like Dropbox, that allows users to remotely access, upload, and sync hosted files.
 
@@ -41,7 +45,6 @@ marketplace_app_name: "FileCloud Community"
 {{% content "marketplace-custom-domain-fields-shortguide" %}}
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
-
 
 ## Getting Started after Deployment
 

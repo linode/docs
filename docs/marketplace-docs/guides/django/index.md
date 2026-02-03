@@ -1,8 +1,8 @@
 ---
 title: "Deploy Django through the Linode Marketplace"
-description: "Learn how to deploy Django, a web framework that provides much of the core functionality required in modern web development, through the Linode Marketpplace"
+description: "Learn how to deploy Django, a web framework that provides much of the core functionality required in modern web development, through the Linode Marketplace"
 published: 2020-03-11
-modified: 2024-04-16
+modified: 2025-10-13
 keywords: ['django','marketplace', 'cms']
 tags: ["cloud-manager","linode platform","cms","django","marketplace","digital agencies"]
 image: Django_oneclickapps.png
@@ -31,7 +31,7 @@ marketplace_app_name: "Django"
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 22.04 LTS
+- **Supported distributions:** Ubuntu 24.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Django Options
@@ -50,10 +50,12 @@ marketplace_app_name: "Django"
 ### Access Django
 
 {{< note >}}
-The Django Marketplace App will assign `DjangoApp` as the [Django project name](https://docs.djangoproject.com/en/5.0/intro/tutorial01/#creating-a-project).
+The Django Marketplace App will assign `django_sample` as the [Django project name](https://docs.djangoproject.com/en/5.0/intro/tutorial01/#creating-a-project) at `/var/www/django_app/django_sample/`.
 {{< /note >}}
 
 1. Open your web browser and navigate to `https://[domain]`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+
+    ![View your Django site's test page.](django-test-page.png "View your Django site's test page")
 
 1.  Once you have verified that you can access your Django site via the browser, you can log in using the admin credentials generated during the deployment. The credentials can be found in `/home/$USERNAME/.credentials`. Update the address in the browser to: `https://[domain]/admin`.
 

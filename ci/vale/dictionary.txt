@@ -307,6 +307,8 @@ chatrooms
 chcon
 cheatsheet
 checkmarx
+checkpointer
+checkpointing
 checksummed
 checksums
 chefspec
@@ -1307,6 +1309,8 @@ Kyverno
 lambdabunker
 Laminas
 Langa
+langchain
+langgraph
 LANs
 laravel
 largebiomes
@@ -1904,11 +1908,13 @@ permalink
 permalinks
 Petazzoni
 pflogsumm
+pgvector
 pg_auto_failover
 pg_dump
 pg_dumpall
 pg_restore
 pgAdmin
+PGvector
 pgpass
 Phalcon
 pharmer
@@ -2750,6 +2756,7 @@ utils
 UTunnel
 uuid
 uuids
+uvicorn
 uwls
 uwsgi
 v1
@@ -2845,6 +2852,7 @@ wazuh
 wc
 wchar
 wchar_t
+Weaviate
 webadmin
 webalizer
 webapp
@@ -3008,6 +3016,7 @@ znc
 zonefiles
 zope
 zorin
+zot
 zoxide
 zpool
 zsh
