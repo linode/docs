@@ -2,6 +2,7 @@
 title: "Deploy Chroma through the Linode Marketplace"
 description: "Learn how to deploy Chroma, the AI-native open-source embedding database, on an Akamai Compute Instance."
 published: 2026-01-29
+modified: 2026-02-09
 keywords: ['vector database','database','chromadb']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
@@ -44,6 +45,5 @@ marketplace_app_name: "Chroma"
 ### Connect Your Application to Chroma Server
 
 This Marketplace App deploys Chroma as a single-node Docker setup secured with Basic Authentication. To start using your Chroma instance, you must configure your client application to connect to this server using the provided credentials. For detailed instructions on setting up a client/server environment, please refer to the officially supported [Chroma Client/Server documentation](https://docs.trychroma.com/docs/run-chroma/client-server).
-
 
 {{% content "marketplace-update-note-shortguide" %}}
