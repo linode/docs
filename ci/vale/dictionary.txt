@@ -1910,6 +1910,7 @@ pg_dumpall
 pg_restore
 pgAdmin
 pgpass
+Pgvector
 Phalcon
 pharmer
 pharo
