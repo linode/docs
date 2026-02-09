@@ -1,7 +1,8 @@
 ---
 title: "Deploy Milvus through the Linode Marketplace"
 description: "Deploy Milvus, an open-source vector database for AI, similarity search, and embeddings workloads."
-published: 2026-02-03
+published: 2026-02-09
+modified: 2026-02-09
 keywords: ['milvus', 'vector database', 'AI', 'embeddings', 'similarity search']
 tags: ["ubuntu", "marketplace", "developer", "milvus", "linode platform", "machine learning"]
 external_resources:
@@ -31,7 +32,7 @@ This guide includes steps for deploying the Milvus Standalone Marketplace App on
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 24.04 LTS
-- **Recommended minimum plan:** Dedicated 16GB instance or higher for baseline development and testing with support for GPU instances. Larger plans are recommended for compute
+- **Recommended minimum plan:** Dedicated 16GB instance or higher for baseline development and testing with support for GPU instances.
 
 ### Milvus Deployment Options
 
@@ -43,14 +44,14 @@ This guide includes steps for deploying the Milvus Standalone Marketplace App on
 
 ### Obtain the Credentials
 
-When deployment completes, the system automatically generates credentials for internal MinIO storage and other parameters needed to administer your Milvus instance. These are stored in the limited user’s credentials file.
+When deployment completes, the system automatically generates credentials for internal MinIO storage and other parameters needed to administer your Milvus instance. These are stored in the limited user’s `.credentials` file.
 
 1. Log in to your Compute Instance using one of the methods below:
 
     - **Lish Console**: Log in to Cloud Manager, click **Linodes**, select your instance, and click **Launch LISH Console**. Log in as `root`. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
     - **SSH**: Log in to your instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
 
-2. Run the following command to access the credentials file:
+2. Run the following command to access the `.credentials` file:
 
 ```command
 cat /home/$USERNAME/.credentials
@@ -79,7 +80,7 @@ You should see containers for Milvus, etcd, and MinIO in a running state.
 ### Access the MinIO Dashboard
 Milvus uses MinIO as its object storage backend. You can access the MinIO web interface to verify bucket creation and storage activity.
 
-To access your MinIO Dashboard, Open a browser and navigate to your Linode rDNS domain `https://203-0-113-0.ip.linodeusercontent.com`. Replace `https://203-0-113-0.ip.linodeusercontent.com` with your [Linode's RDNS domain](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses). The credentials can be found in the credentials file (/home/$USERNAME/.credentials).
+To access your MinIO Dashboard, Open a browser and navigate to your Linode rDNS domain `https://203-0-113-0.ip.linodeusercontent.com`. Replace `https://203-0-113-0.ip.linodeusercontent.com` with your [Linode's RDNS domain](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses). The credentials can be found in the `.credentials` file (/home/$USERNAME/.credentials).
 
 If you want to learn more about Milvus, checkout [the official Milvus documentation](https://milvus.io/docs) to learn how to further utilize your instance.
 
