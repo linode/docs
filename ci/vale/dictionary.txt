@@ -490,6 +490,7 @@ dallas
 dao
 databags
 datacenter
+datacenters
 datadir
 datadog
 dataflow

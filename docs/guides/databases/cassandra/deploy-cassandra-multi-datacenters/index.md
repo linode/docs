@@ -476,7 +476,7 @@ cluster_name: 'Test Cluster'
 
 **Seed Guidance**
 
-This block appears elsewhere in the configuration file (sometimes prior to listen_address). The only change will be to the `- seeds: "IP1,IP2,IP3"` line.
+This block appears elsewhere in the configuration file (sometimes prior to `listen_address`). The only change will be to the `- seeds: "IP1,IP2,IP3"` line.
 
 ```yaml
 seed_provider:
