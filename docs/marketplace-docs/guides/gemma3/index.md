@@ -1,7 +1,8 @@
 ---
 title: "Deploy Gemma3 through the Linode Marketplace"
 description: "Learn how to deploy Gemma3, the  open-source generative AI model from Google DeepMind, on an Akamai Compute Instance."
-published: 2026-01-20
+published: 2026-02-11
+modified: 2026-02-11
 keywords: ['artificial intelligence','ai','LLM','machine learning','gemma','open webui']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
@@ -45,10 +46,10 @@ Gemma3 with Open WebUI should be fully installed within 5-10 minutes after your 
 
 Before deployment, you need a Hugging Face API token to access the Gemma 3 model. To obtain one:
 
-1. Create a free account at [huggingface.co/join](https://huggingface.co/join)
-1. Accept the Gemma license at [huggingface.co/google/gemma-3-12b-it](https://huggingface.co/google/gemma-3-12b-it)
-1. Generate a token at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens) (Read-only access is sufficient)
-1. Provide this token during the Marketplace deployment process
+1. Create a free account at [huggingface.co/join](https://huggingface.co/join).
+1. Accept the Gemma license at [huggingface.co/google/gemma-3-12b-it](https://huggingface.co/google/gemma-3-12b-it).
+1. Generate a token at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens). Read-only access is sufficient.
+1. Provide this token during the Marketplace deployment process.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
@@ -61,7 +62,7 @@ Before deployment, you need a Hugging Face API token to access the Gemma 3 model
 
 ### Access Your Credentials
 
-Your Open WebUI admin credentials are stored in a credentials file on your instance. To retrieve them:
+Your Open WebUI admin credentials are stored in a `.credentials` file on your instance. To retrieve them:
 
 1.  Log in to your instance via SSH or Lish. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance, or use the [Lish Console](/docs/products/compute/compute-instances/guides/lish/).
 
@@ -71,7 +72,7 @@ Your Open WebUI admin credentials are stored in a credentials file on your insta
     sudo cat /home/$USER/.credentials
     ```
 
-    The credentials file contains:
+    The `.credentials` file contains:
     - **Sudo Username and Password**: Your limited sudo user credentials
     - **Open WebUI Admin Name**: The admin username for the web interface
     - **Open WebUI Admin Email**: The admin email address
@@ -81,18 +82,24 @@ Your Open WebUI admin credentials are stored in a credentials file on your insta
 
 Once your instance has finished deploying, you can access the Open WebUI interface through your browser:
 
-1. Navigate to your instance's domain or rDNS address via HTTPS (e.g., `https://your-domain.com` or `https://192-0-2-1.ip.linodeusercontent.com`)
-1. Log in using the admin email and password from the credentials file
-1. You can now start chatting with the Gemma 3 model
+1.  Navigate to your instance's domain or rDNS address via HTTPS (e.g., `https://your-domain.com` or `https://192-0-2-1.ip.linodeusercontent.com`).
+
+1.  Log in using the admin email and password from the `.credentials` file.
+
+1.  You can now start chatting with the Gemma 3 model.
 
 ### Working with RAG Operations
 
 Open WebUI provides built-in support for RAG (Retrieval Augmented Generation) operations, allowing you to upload documents and chat with them. By default, the deployment supports file uploads up to 100MB.
 
-If you need to upload larger documents, you can modify the Nginx configuration:
+If you need to upload larger documents, you can modify the NGINX configuration:
 
-1. Edit the Nginx virtual host configuration file located at `/etc/nginx/sites-enabled/your-domain`
-1. Update the `client_max_body_size` directive to a larger value (e.g., `client_max_body_size 500M;` for 500MB)
-1. Reload Nginx: `sudo systemctl reload nginx`
+1.  Edit the NGINX virtual host configuration file located at `/etc/nginx/sites-enabled/your-domain`.
+1.  Update the `client_max_body_size` directive to a larger value (e.g., `client_max_body_size 500M;` for 500MB).
+1.  Reload NGINX:
+
+    ```command
+    sudo systemctl reload nginx
+    ```
 
 {{% content "marketplace-update-note-shortguide" %}}
