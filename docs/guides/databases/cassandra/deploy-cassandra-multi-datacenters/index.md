@@ -51,10 +51,10 @@ You'll configure multi-datacenter replication, implement monitoring with Prometh
 - Working knowledge of Apache Cassandra architecture (nodes, datacenters, replication, and gossip)
 
 ```command
-<details>
-<summary>Choosing a database</summary>
+{{< note >}}
+**Choosing a database**
 Akamai supports multiple database engines. This guide includes embedded Cassandra installation and configuration steps to support users who choose Cassandra, as it requires more setup than other options. Before proceeding, take a moment to "confirm" that Cassandra aligns with your application’s requirements and your operational experience.
-</details>
+{{</ note>}}
 ```
 
 ## Architecture and Planning
@@ -85,9 +85,9 @@ Deploy a minimum of 3 nodes per data center (odd numbers preferred to prevent sp
 
 ### Multi-Region Network Planning
 
-**Akamai Data Center Selection**:
+**Akamai Data Center Selection**
 
-Choose data center pairs based on your latency requirements:
+Choose data center pairs based on your latency requirements.
 
 **Same-region deployments (< 50ms latency)**:
 
@@ -102,14 +102,14 @@ Choose data center pairs based on your latency requirements:
 - **Asia-Pacific**: Singapore and Tokyo
 - **Global**: Newark, London, Singapore
 
-Network Architecture:
+Network Architecture
 
 Configure the following Akamai networking features for cluster communication:
 
-- **VLANs**: Create private VLANs for cluster communication within and across data centers
-- **Cloud Firewall**: Implement rules limiting access to required Cassandra ports (7000, 9042, 7199)
-- **Private IP addresses**: Use private IPs for all node-to-node communication
-- **Network interfaces**: 1Gbps+ interfaces (standard on Dedicated and Premium CPU instances)
+- **VLANs**: Create private VLANs for cluster communication within and across data centers.
+- **Cloud Firewall**: Implement rules limiting access to required Cassandra ports (7000, 9042, 7199).
+- **Private IP addresses**: Use private IPs for all node-to-node communication.
+- **Network interfaces**: 1Gbps+ interfaces (standard on Dedicated and Premium CPU instances).
 
 For complete port requirements and security configuration, see the [Cassandra Security](https://cassandra.apache.org/doc/4.1/cassandra/operating/security.html) documentation.
 
@@ -142,22 +142,22 @@ This section covers provisioning the underlying infrastructure for your multi-da
 
 Provision compute instances in each selected Akamai data center according to your planning worksheet.
 
-**Instance Selection Guidelines**:
+#### Instance Selection Guidelines
 
 See the [Instance Sizing Recommendations](#instance-sizing-recommendations) table for recommended instance types and specifications based on your workload requirements.
 
-**Operating System**:
+#### Operating System
 
 Use **Ubuntu 22.04 LTS** across all nodes for consistency in maintenance and troubleshooting.
 
-**Multi-Region Deployment Considerations**
+#### Multi-Region Deployment Considerations
 
 - Deploy primary-region nodes first, then secondary regions.
 - Maintain consistent instance specifications within each region.
 - Document private and public IPs for all nodes.
 - Ensure each region has sufficient node count for quorum and replication.
 
-**Example topology**
+#### Example topology
 
 - Newark: 3 nodes
 - London: 3 nodes
@@ -167,7 +167,7 @@ Use **Ubuntu 22.04 LTS** across all nodes for consistency in maintenance and tro
 
 VLANs provide private, low‑latency connectivity between Cassandra nodes.
 
-**Within a data center**
+#### Within a data center
 
 - Use one VLAN per data center.
 - Assign private IPs from a dedicated subnet.
@@ -175,36 +175,37 @@ VLANs provide private, low‑latency connectivity between Cassandra nodes.
 - Confirm that the VLAN is created before provisioning compute instances to avoid re-IP operations later
 - Record the assigned subnet and VLAN ID in your deployment worksheet for later reference.
 
-**Across data centers**
+#### Across data centers
+
 - Configure VLAN routing between regions.
 - Use non‑overlapping private subnets.
 - Validate cross-region connectivity and latency between all nodes.
 - Verify that firewall rules allow inter-DC Cassandra ports before cluster initialization.
 
-**Example VLAN scheme**:
+#### Example VLAN scheme
 
 - Newark VLAN: 10.0.1.0/24
 - London VLAN: 10.0.2.0/24
 
-#### Block Storage
+### Block Storage
 
 Cassandra requires dedicated storage for data and commit logs.
 
-**Volume specifications**:
+#### Volume specifications
 
 - **Size**: 100GB-1TB per node (based on data requirements).
 - **Performance**: NVMe-backed for production workloads.
 - **Attachment**: Attach and mount volumes before installing Cassandra.
 - Ensure each volume is attached as a persistent Block Storage device so it survives instance reboots.
 
-**Filesystem and layout**
+#### Filesystem and layout
 
 - Use ext4 or XFS.
 - Mount at `/var/lib/cassandra`.
 - Optionally user separate volumes for commit logs.
 - Format and mount volumes before running `cassandra` for the first time to avoid auto-creating directories on the root disk.
 
-**Example mount points**:
+#### Example mount points
 
 - Data directory: `/var/lib/cassandra/data`
 - Commit log directory: `/var/lib/cassandra/commitlog` (if using separate volume)
@@ -215,29 +216,30 @@ Cross-data-center VLAN behavior was not tested in this environment but reflects 
 
 Cassandra requires specific ports for internode communication, client access, and monitoring. For complete port reference and security considerations, see the [Cassandra Security documentation](https://cassandra.apache.org/doc/4.1/cassandra/operating/security.html).
 
-**Cluster communication**:
+#### Cluster communication
 
 - Port 7000/TCP(intra-cluster) – allow from private IPs only
 - Port 7001/TCP(encrypted intra-cluster, if internode encryption is enabled) – allow from private IPs only
 
-**Client connections**:
+#### Client connections
 
 - Port 9042/TCP - allow from application servers
 
-**Monitoring**:
+
+#### Monitoring
 
 - Port 7199/TCP - allow from monitoring infrastructure
 
-**Management**:
+#### Management
 
 - Port 22/TCP - restrict to administrative IPs
 
-**Outbound traffic**:
+#### Outbound traffic
 
 - Allow outbound access for package installation and updates
 - Apply egress restrictions only if required by policy
 
-**Security Best Practices**:
+#### Security Best Practices
 
 - Use private IPs for all cluster communication.
 - Apply consistent firewall rules across all nodes.
@@ -247,13 +249,13 @@ Cassandra requires specific ports for internode communication, client access, an
 
 Confirm network connectivity meets your requirements before installing Cassandra.
 
-**Connectivity expectations**:
+#### Connectivity expectations
 
 - Nodes must reach each other over private IPs
 - Cross-region latency should align with your replication strategy
 - Required ports must be reachable between nodes
 
-**Latency guidelines**
+#### Latency guidelines
 
 - Intra‑DC: < 10ms
 - Same‑region multi‑DC: < 50ms
@@ -281,29 +283,31 @@ Because Cassandra 4.1.x is no longer included in Ubuntu’s default package repo
 
 Ubuntu 22.04 LTS is fully compatible with Cassandra 4.1.x and is the recommended operating system for this deployment guide.
 
-**Installation approach**:
+### Installation approach
 
 Begin by installing and validating Cassandra on a single node first. Once the installation is confirmed working, repeat the same steps on the remaining nodes to ensure consistency across the cluster.
 
-### Add the Apache Cassandra repository
+### Add the Apache Cassandra Repository
 
-Create a repository definition:
+#### Create a Repository Definition
+
 ```command
 echo "deb https://debian.cassandra.apache.org 41x main" | sudo tee /etc/apt/sources.list.d/cassandra.sources.list
 ```
-Import the Apache Cassandra GPG key:
+#### Import the Apache Cassandra GPG Key
 
 ```command
 sudo curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -
 ```
-Note: Debian and Ubuntu are transitioning away from apt-key.  For background about how APT verifies repository signatures or how to manage repository keys using modern gpg‑based methods, refer to the Debian documentation topic [SecureApt](https://wiki.debian.org/SecureApt). If this link becomes unavailable, search the Debian documentation for “SecureApt” or “APT repository key management”.
+{{< note>}}: Debian and Ubuntu are transitioning away from apt-key. For background about how APT verifies repository signatures or how to manage repository keys using modern gpg‑based methods, refer to the Debian documentation topic [SecureApt](https://wiki.debian.org/SecureApt). If this link becomes unavailable, search the Debian documentation for “SecureApt” or “APT repository key management”.
+{{< /note >}}
 
-**Update package lists**:
+#### Update Package Lists
 
 ```command
 sudo apt update
 ```
-#### Install Cassandra
+### Install Cassandra
 
 Install Cassandra and its dependencies:
 
@@ -314,7 +318,7 @@ When prompted with "Do you want to continue? [Y/n]" press "Y" and "Enter" to pro
 
 Cassandra automatically installs OpenJDK 11 as a dependency, so no separate Java installation is required.
 
-#### Optional: Environment Checks
+### Optional: Environment Checks
 
 After installation, confirm your kernel and package versions match expected compatibility. Ubuntu 22.04.5 LTS is generally safe, but minimal images or custom build may vary.
 ```command
@@ -330,7 +334,7 @@ You are looking for:
 
 If there is no output Cassandra is not installed.
 
-#### Verify installation on the first node
+#### Verify Installation on the First Node
 
 Check the service status:
 ```command
@@ -338,7 +342,7 @@ sudo nodetool status
 ```
 Press `q` to exit the status view.
 
-#### Verify installation on the second node
+#### Verify Installation on the Second Node
 Repeat the same check as for the first node.
 
 Test CQL shell access:
@@ -411,7 +415,7 @@ This section focuses on Akamai‑specific requirements, and cloud networking con
 Cassandra maintains version‑specific documentation under `/doc/<version>/`. These links point to the Apache Cassandra 4.1 documentation. Content may evolve over time, but the URLs remain stable.
 
 1. [Multi‑DC Cluster Initialization](https://cassandra.apache.org/doc/latest/cassandra/getting_started/initialize_cluster_multi_dc.html)
-2. []`cassandra.yaml` Configuration Reference](https://cassandra.apache.org/doc/4.1/cassandra/configuration/cass_yaml_file.html)
+2. [`cassandra.yaml` Configuration Reference](https://cassandra.apache.org/doc/4.1/cassandra/configuration/cass_yaml_file.html)
 3. [Snitch Architecture](https://cassandra.apache.org/doc/4.1/cassandra/architecture/snitch.html)
 
 You can deploy Cassandra nodes within the same region or across multiple regions. Multi‑region deployments are typically used for geographic redundancy, global applications, or regulatory data‑residency requirements. For guidance on designing multi‑datacenter topologies and understanding how distance affects replication and consistency, refer to the official [Cassandra documentation](https://cassandra.apache.org/doc/4.1/cassandra/architecture/dynamo.html).
@@ -460,13 +464,13 @@ grep -n cluster_name /etc/cassandra/cassandra.yaml
 ```
 Remember to activate line numbers when you open the configuration file (for example, in Weblish use "alt N").
 
-**Open the configuration file on each node**:
+#### Open the configuration file on each node
 
 ```command
 sudo nano /etc/cassandra/cassandra.yaml
 ```
 
-**Verify the Cluster Name**
+#### Verify the Cluster Name
 
 Verify that the `cluster_name` is the same on all nodes (this will be towards the top of the file). If it matches, no changes are required–proceed to the next step.
 
@@ -474,7 +478,7 @@ Verify that the `cluster_name` is the same on all nodes (this will be towards th
 cluster_name: 'Test Cluster'
 ```
 
-**Seed Guidance**
+#### Seed Guidance
 
 This block appears elsewhere in the configuration file (sometimes prior to `listen_address`). The only change will be to the `- seeds: "IP1,IP2,IP3"` line.
 
@@ -492,7 +496,7 @@ seed_provider:
 - **Do not make every node a seed**
 
 
-**Listen_address**
+#### Listen_address
 
 Set the node's private Akamai IP.
 
@@ -500,7 +504,7 @@ Set the node's private Akamai IP.
 listen_address: 10.0.1.5
 ```
 
-**rpc_address**
+#### rpc_address
 
 The default value (localhost) binds RPC to the loopback interface only. For a cluster, replace it with the node’s private IP so other nodes and clients can reach it.
 
@@ -508,7 +512,7 @@ The default value (localhost) binds RPC to the loopback interface only. For a cl
 rpc_address: 10.0.1.5
 ```
 
-**Snitch**
+#### Snitch
 
 Required for multi-datacenter deployments.
 
@@ -516,7 +520,7 @@ Required for multi-datacenter deployments.
 endpoint_snitch: GossipingPropertyFileSnitch
 ```
 
-**Transport Settings**
+#### Transport Settings
 
 Locate the native transport settings in `cassandra.yaml` and confirm these lines are present:
 
@@ -528,33 +532,35 @@ These are the correct defaults.
 
 If they are missing or incorrect, Cassandra may start but clients (including `cqlsh`) will not be able to connect to the node.
 
-Save the file.
+#### Save the File
 
 ### Setting Data Center and Rack Topology
 
 Each node must declare its datacenter and rack so Cassandra can place replicas correctly in a multi-DC cluster. These values must match the snitch configuration you set earlier.
 
-**Note**: The `dc` and `rack` values in this file are your choice. They don't need to match your VM names or cloud regions-–they only need to be consistent across nodes in the same datacenter.
+{{< note>}}: The `dc` and `rack` values in this file are your choice. They don't need to match your VM names or cloud regions-–they only need to be consistent across nodes in the same datacenter.
+{{< /note >}}
 
-**Edit the topology file on each node:
+#### Edit the Topology file on each Node
 
 ```command
 sudo nano /etc/cassandra/cassandra-rackdc.properties
+```
 
-**Specify the data center and rack**:
+#### Specify the Data Center and Rack
 
 ```properties
 dc=datacenter_name
 rack=rack_name
 ```
 
-**Important**:
-
+{{< note>}}:
 If Cassandra has ever been started on this node before you changed the datacenter name, the node will not start because the stored datacenter value won't match the new one.
+{{< /note >}}
 
 To avoid this, make sure Cassandra has not yet been started. If it has, stop the service and clear the node's local data before continuing. (See the earlier section "Preparing Nodes for Multi-DC Configuration" for the command used to clear the local data `/var/lib/cassandra/`.)
 
-Then use the following commands to manage the Cassandra service
+Then use the following commands to manage the Cassandra service:
 
 - Start Cassandra
 
@@ -575,7 +581,7 @@ sudo systemctl status cassandra
 
 These commands help ensure Cassandra loads the updated configuration before you continue with cluster setup.
 
-**Examples**:
+#### Examples
 
 Newark DC - Node 1
 ```properties
@@ -610,7 +616,8 @@ These values are read at startup, so any changes require restarting the node.
 
 Start nodes in the correct order to ensure proper cluster formation.
 
-**Note**: The "primary seed" is the first IP address in your seed list. Start that node (whose IP appears first in the seed list) first before starting the other nodes. This ensures clean cluster formation.
+{{< note >}}: The "primary seed" is the first IP address in your seed list. Start that node (whose IP appears first in the seed list) first before starting the other nodes. This ensures clean cluster formation.
+{{< /note >}}
 
 1.Start the primary seed in the first data center:
 
@@ -645,11 +652,10 @@ You should see:
 - nodes marked **UN (Up / Normal)**
 - correct datacenter and rack assignments
 - reasonable token distribution across nodes
--
 
-**Example output:**
+#### Example output
 
-A healthy two‑node, two‑datacenter cluster will show each node as UN under its correct datacenter. For example (Shown below is the real output from a two‑datacenter cluster created using this guide, included to help you compare your results):
+A healthy two‑node, two‑datacenter cluster will show each node as UN under its correct datacenter. For example, shown below is the real output from a two‑datacenter cluster created using this guide (included to help you compare your results):
 
 ```command
 Datacenter: ubuntu-gb-lon
@@ -669,16 +675,16 @@ Use the following section if your `nodetool status` output does not match the ex
 
 If a node does not appear in the UN (Up/Normal) or shows up in the wrong datacenter, check the following:
 
-- Confirm the Cassandra service is running:
+1. Confirm the Cassandra service is running:
 
  ```command
 sudo systemctl status cassandra
 ```
-- Verify the `dc` and `rack` values in `cassandra-rackdc.properties`
-- Ensure rack names are unique **within** each datacenter
-- Check that the node is using the correct **private IP** in `listen_address`
-- Confirm that required ports (7000/7001/7199/9042) are open between regions
-- Review logs for gossip, snitch, or connection errors:
+2. Verify the `dc` and `rack` values in `cassandra-rackdc.properties`.
+3. Ensure rack names are unique **within** each datacenter.
+4. Check that the node is using the correct **private IP** in `listen_address`.
+4. Confirm that required ports (7000/7001/7199/9042) are open between regions.
+5. Review logs for gossip, snitch, or connection errors:
 
  ```command
 tail - 100 /var/log/cassandra/system.log
