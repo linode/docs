@@ -509,7 +509,7 @@ This output should appear:
 
 1. Access the Zot UI from a web browser by navigating to `https://{{< placeholder "ZOT_MACHINE_HOST_NAME_OR_IP" >}}:8080`. Replace {{< placeholder "ZOT_MACHINE_HOST_NAME_OR_IP" >}} with your machine's host name or IP address. This should bring up a login page:
 
-    ![zot login page](zot-login-page.png)
+    ![zot login page](zot-1-login-page.png)
 
     The credentials supplied for htpasswd file creation earlier can be used to login.
 
