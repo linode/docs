@@ -2,6 +2,7 @@
 title: "Deploy GPT-OSS with Open WebUI through the Linode Marketplace"
 description: "This guide includes instructions on how to deploy Open WebUI with GPT-OSS self-hosted LLM on an Akamai Compute Instance."
 published: 2026-02-05
+modified: 2026-02-05
 keywords: ['gpt-oss', 'open-webui', 'vllm', 'ai', 'llm', 'llm-inference', 'openai-gpt-oss']
 tags: ["marketplace", "linode platform", "cloud manager", "ai", "llm-inference", "llm"]
 aliases: ['/products/tools/marketplace/guides/gpt-oss-with-openwebui/']
