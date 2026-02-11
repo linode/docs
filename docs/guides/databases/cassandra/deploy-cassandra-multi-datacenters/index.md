@@ -496,7 +496,7 @@ seed_provider:
 - **Do not make every node a seed**
 
 
-#### Listen_address
+#### `listen_address`
 
 Set the node's private Akamai IP.
 
@@ -504,7 +504,7 @@ Set the node's private Akamai IP.
 listen_address: 10.0.1.5
 ```
 
-#### rpc_address
+#### `rpc_address`
 
 The default value (localhost) binds RPC to the loopback interface only. For a cluster, replace it with the node’s private IP so other nodes and clients can reach it.
 
