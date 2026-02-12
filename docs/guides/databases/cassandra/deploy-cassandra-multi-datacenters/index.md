@@ -2,8 +2,8 @@
 slug: deploy-cassandra-multi-datacenters
 title: "Deploying Apache Cassandra Across Multiple Data Centers"
 description: 'Deploy Apache Cassandra across multiple data centers (MDC) on Akamai cloud computing services. This guide covers VM based, containerized, and Kubernetes (LKE) deployment models; multi data center replication; monitoring with Prometheus and Grafana; cluster security; backup and recovery; and operational best practices for scaling and long term maintenance.'
-authors: ["Diana Hoober"]
-contributors: ["Diana Hoober"]
+authors: ["Akamai"]
+contributors: ["Akamai"]
 published: 2026-01-31
 keywords: ['cassandra', 'apache cassandra', 'nosql', 'database', 'distributed database', 'multi-datacenter', 'replication', 'high availability', 'docker', 'kubernetes', 'k8ssandra', 'containers', 'prometheus', 'grafana', 'monitoring', 'security', 'encryption', 'authentication', 'backup', 'disaster recovery', 'scaling', 'block storage', 'object storage', 'vlan', 'lke', 'linode kubernetes engine']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -22,7 +22,7 @@ external_resources:
 
 Apache Cassandra is a distributed NoSQL database designed for low-latency replication across geographically separated data centers. Multi-data center deployments reduce latency for your global users, support regional failover, and help you meet data residency requirements.
 
-This guide shows you how to deploy Apache Cassandra across multiple data centers on Akamai cloud computing services. You'll configure multi-data center replication, implement production-ready monitoring and security, and learn operational procedures for scaling and maintenance.
+This guide shows you how to deploy Apache Cassandra across multiple data centers on Akamai cloud computing services. You'll configure multi-data center replication, integrate monitoring with Prometheus and Grafana, apply essential security settings, and learn operational procedures for scaling and maintenance.
 
 ## Why Multi-Data Center Cassandra on Akamai Cloud Computing Services
 
@@ -41,7 +41,7 @@ This guide covers three deployment approaches:
 - Container-based deployment - Docker containers
 - Kubernetes orchestration - Linode Kubernetes Engine (LKE)
 
-You'll configure multi-datacenter replication, implement monitoring with Prometheus and Grafana, secure your cluster with encryption and authentication, and establish backup procedures using Akamai Object Storage.
+Your final deployment will span multiple data centers, surface metrics to Prometheus and Grafana, enforce essential security controls, and maintain backups in Akamai Object Storage.
 
 ### Prerequisites and Preparation
 
@@ -50,12 +50,10 @@ You'll configure multi-datacenter replication, implement monitoring with Prometh
 - Familiarity with database concepts and networking
 - Working knowledge of Apache Cassandra architecture (nodes, datacenters, replication, and gossip)
 
-```command
 {{< note >}}
 **Choosing a database**
 Akamai supports multiple database engines. This guide includes embedded Cassandra installation and configuration steps to support users who choose Cassandra, as it requires more setup than other options. Before proceeding, take a moment to "confirm" that Cassandra aligns with your application’s requirements and your operational experience.
 {{</ note>}}
-```
 
 ## Architecture and Planning
 
@@ -81,11 +79,13 @@ For optimal performance, attach NVMe-backed Block Storage volumes to Dedicated o
 
 Cluster Topology:
 
-Deploy a minimum of 3 nodes per data center (odd numbers preferred to prevent split-brain scenarios) with a replication factor of 3 for production environments. Designate 2+ stable nodes per data center as seed nodes. For capacity planning guidelines and topology best practices, see the [Cassandra Planning](https://cassandra.apache.org/doc/latest/cassandra/managing/operating/hardware.html) documentation.
+Use three nodes per data center (odd numbers reduce split brain risk) with a replication factor of three. Assign at least two stable nodes in each data center as seed nodes. For capacity planning guidelines and topology best practices, see the [Cassandra Planning](https://cassandra.apache.org/doc/latest/cassandra/managing/operating/hardware.html) documentation.
 
 ### Multi-Region Network Planning
 
-**Akamai Data Center Selection**
+#### Akamai Data Center Selection
+
+Before configuring multi-datacenter replication, you need to choose Akamai data centers that meet Cassandra’s latency expectations for cross region communication.
 
 Choose data center pairs based on your latency requirements.
 
@@ -102,7 +102,7 @@ Choose data center pairs based on your latency requirements.
 - **Asia-Pacific**: Singapore and Tokyo
 - **Global**: Newark, London, Singapore
 
-Network Architecture
+#### Network Architecture
 
 Configure the following Akamai networking features for cluster communication:
 
@@ -111,7 +111,7 @@ Configure the following Akamai networking features for cluster communication:
 - **Private IP addresses**: Use private IPs for all node-to-node communication.
 - **Network interfaces**: 1Gbps+ interfaces (standard on Dedicated and Premium CPU instances).
 
-For complete port requirements and security configuration, see the [Cassandra Security](https://cassandra.apache.org/doc/4.1/cassandra/operating/security.html) documentation.
+Review the [Cassandra Security](https://cassandra.apache.org/doc/4.1/cassandra/operating/security.html) documentation for complete port requirements and security configuration details, because these settings must be in place for your cluster to operate correctly.
 
 ### Software Versions
 
@@ -140,7 +140,7 @@ This section covers provisioning the underlying infrastructure for your multi-da
 
 ### Compute Instances
 
-Provision compute instances in each selected Akamai data center according to your planning worksheet.
+Provision compute instances according to the specifications in your planning worksheet. If you have not yet finalized instance types, OS selection, or deployment order, review the considerations below before proceeding.
 
 #### Instance Selection Guidelines
 
@@ -159,13 +159,15 @@ Use **Ubuntu 22.04 LTS** across all nodes for consistency in maintenance and tro
 
 #### Example topology
 
+Use the example below to validate your instance counts and regional layout while you visualize and finalize your planning worksheet.
+
 - Newark: 3 nodes
 - London: 3 nodes
 - **Total**: 6 nodes across 2 data centers
 
 ### VLAN Architecture
 
-VLANs provide private, low‑latency connectivity between Cassandra nodes.
+VLANs provide private, low latency connectivity between Cassandra nodes, and the VLAN design captured in your planning worksheet defines how nodes communicate within and across regions.
 
 #### Within a data center
 
@@ -184,12 +186,16 @@ VLANs provide private, low‑latency connectivity between Cassandra nodes.
 
 #### Example VLAN scheme
 
+Use the example below to validate your VLAN assignments as you document your network design in the planning worksheet.
+
 - Newark VLAN: 10.0.1.0/24
 - London VLAN: 10.0.2.0/24
 
+Cross-data-center VLAN behavior was not tested in this environment but reflects required Akamai Cloud architecture.
+
 ### Block Storage
 
-Cassandra requires dedicated storage for data and commit logs.
+Cassandra requires dedicated storage for data and commit logs, and documenting your block storage plan in the planning worksheet helps ensure each node is provisioned with the correct capacity and performance.
 
 #### Volume specifications
 
@@ -207,14 +213,14 @@ Cassandra requires dedicated storage for data and commit logs.
 
 #### Example mount points
 
+The example below shows how to validate your directory layout to document block storage configuration for the planning worksheet.
+
 - Data directory: `/var/lib/cassandra/data`
 - Commit log directory: `/var/lib/cassandra/commitlog` (if using separate volume)
 
-Cross-data-center VLAN behavior was not tested in this environment but reflects required Akamai Cloud architecture.
-
 ### Cloud Firewall Strategy
 
-Cassandra requires specific ports for internode communication, client access, and monitoring. For complete port reference and security considerations, see the [Cassandra Security documentation](https://cassandra.apache.org/doc/4.1/cassandra/operating/security.html).
+Cassandra requires specific ports for internode communication, client access, and monitoring. Use the following firewall rules and connectivity requirements to validate your network design and document the necessary settings in your planning worksheet before deployment. For complete port reference and security considerations, see the [Cassandra Security documentation](https://cassandra.apache.org/doc/4.1/cassandra/operating/security.html).
 
 #### Cluster communication
 
@@ -261,8 +267,6 @@ Confirm network connectivity meets your requirements before installing Cassandra
 - Same‑region multi‑DC: < 50ms
 - Cross‑region: < 300ms
 
-Cross-data-center firewall behavior and latency validation were not tested in this environment but reflect Akamai Cloud architecture.
-
 ### Infrastructure Readiness Checklist
 
 Before proceeding to Cassandra installation, confirm:
@@ -289,6 +293,8 @@ Begin by installing and validating Cassandra on a single node first. Once the in
 
 ### Add the Apache Cassandra Repository
 
+Add the Apache Cassandra repository as part of your installation preparation so each node can retrieve the correct 4.1.x packages; document this step in your planning worksheet to ensure consistency across regions.
+
 #### Create a Repository Definition
 
 ```command
@@ -299,7 +305,8 @@ echo "deb https://debian.cassandra.apache.org 41x main" | sudo tee /etc/apt/sour
 ```command
 sudo curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -
 ```
-{{< note>}}: Debian and Ubuntu are transitioning away from apt-key. For background about how APT verifies repository signatures or how to manage repository keys using modern gpg‑based methods, refer to the Debian documentation topic [SecureApt](https://wiki.debian.org/SecureApt). If this link becomes unavailable, search the Debian documentation for “SecureApt” or “APT repository key management”.
+{{< note>}}
+Debian and Ubuntu are transitioning away from apt-key. For background about how APT verifies repository signatures or how to manage repository keys using modern gpg‑based methods, refer to the Debian documentation topic [SecureApt](https://wiki.debian.org/SecureApt). If this link becomes unavailable, search the Debian documentation for “SecureApt” or “APT repository key management”.
 {{< /note >}}
 
 #### Update Package Lists
@@ -320,7 +327,7 @@ Cassandra automatically installs OpenJDK 11 as a dependency, so no separate Java
 
 ### Optional: Environment Checks
 
-After installation, confirm your kernel and package versions match expected compatibility. Ubuntu 22.04.5 LTS is generally safe, but minimal images or custom build may vary.
+After installation, confirm your kernel and package versions match expected compatibility. Ubuntu 22.04.5 LTS is generally safe, but minimal images or custom builds may vary.
 ```command
 sudo uname -r         # Check kernel version
 sudo java -version    # Confirm Java runtime
@@ -380,11 +387,9 @@ sudo nodetool status
 ```
 What you should see:
 
-- **Single-node environment:
-  One node listed in the **UN (Up/Normal)** state.
+- **Single-node environment**: One node listed in the **UN (Up/Normal)** state.
 
-- **Multi-node environment:
-You should see each node listed with its IP address and state Nodes may briefly appear as UJ (Up/Joining) while they bootstrap
+- **Multi-node environment**: You should see each node listed with its IP address and state Nodes may briefly appear as UJ (Up/Joining) while they bootstrap
 
 #### If you expect multiple nodes but only see one
 
@@ -412,17 +417,19 @@ This section focuses on Akamai‑specific requirements, and cloud networking con
 
 ### Upstream Cassandra Documentation
 
-Cassandra maintains version‑specific documentation under `/doc/<version>/`. These links point to the Apache Cassandra 4.1 documentation. Content may evolve over time, but the URLs remain stable.
+Cassandra maintains version‑specific documentation under `/doc/<version>/`. These links point to the Apache Cassandra 4.1 documentation.
 
-1. [Multi‑DC Cluster Initialization](https://cassandra.apache.org/doc/latest/cassandra/getting_started/initialize_cluster_multi_dc.html)
-2. [`cassandra.yaml` Configuration Reference](https://cassandra.apache.org/doc/4.1/cassandra/configuration/cass_yaml_file.html)
-3. [Snitch Architecture](https://cassandra.apache.org/doc/4.1/cassandra/architecture/snitch.html)
+Cassandra no longer provides a dedicated Multi-DC initialization walkthrough. Multi-datacenter behavior is not a separate procedure: it emerges from the replication model and the configuration of snitches and `NetworkTopologyStrategy`. New users should rely on the upstream conceptual and configuration documentation rather than expecting a step-by-step Multi-DC guide.
 
-You can deploy Cassandra nodes within the same region or across multiple regions. Multi‑region deployments are typically used for geographic redundancy, global applications, or regulatory data‑residency requirements. For guidance on designing multi‑datacenter topologies and understanding how distance affects replication and consistency, refer to the official [Cassandra documentation](https://cassandra.apache.org/doc/4.1/cassandra/architecture/dynamo.html).
+1. [Multi-master Replication: Versioned Data and Tunable Consistency](https://cassandra.apache.org/doc/4.1/cassandra/architecture/dynamo.html#multi-master-replication:-versioned-data-and-tunable-consistency)explains the replication model that underpins multi-DC behavior.
+2. [`cassandra.yaml` Configuration Reference](https://cassandra.apache.org/doc/4.1/cassandra/configuration/cass_yaml_file.html) covers the settings used when configuring datacenter and rack placement.
+3. [Snitch Architecture](https://cassandra.apache.org/doc/4.1/cassandra/architecture/snitch.html)describes how Cassandra identifies datacenters and routes requests.
+
+You can deploy Cassandra nodes within a single region or across multiple regions. Multi‑region deployments are typically used for geographic redundancy, global applications, or regulatory data‑residency requirements. For guidance on designing multi‑datacenter topologies and understanding how distance affects replication and consistency, refer to the official Cassandra documentation.
 
 ### Akamai‑Specific Multi‑DC Requirements
 
-When deploying Cassandra on Akamai Cloud Computing Services:
+These requirements supplement the upstream Cassandra documentation and describe only the Akamai specific networking and instance level considerations for multi datacenter deployments.
 
 - Use each node’s private IP address from the Akamai instance details page.
 - Ensure nodes are reachable across regions using VPC peering or shared private networks.
@@ -532,13 +539,13 @@ These are the correct defaults.
 
 If they are missing or incorrect, Cassandra may start but clients (including `cqlsh`) will not be able to connect to the node.
 
-#### Save the File
+Save the File.(Ctrl X, Y, Enter)
 
 ### Setting Data Center and Rack Topology
 
 Each node must declare its datacenter and rack so Cassandra can place replicas correctly in a multi-DC cluster. These values must match the snitch configuration you set earlier.
 
-{{< note>}}: The `dc` and `rack` values in this file are your choice. They don't need to match your VM names or cloud regions-–they only need to be consistent across nodes in the same datacenter.
+{{< note>}} The `dc` and `rack` values in this file are your choice. They don't need to match your VM names or cloud regions-–they only need to be **consistent across nodes** in the same datacenter.
 {{< /note >}}
 
 #### Edit the Topology file on each Node
@@ -549,12 +556,15 @@ sudo nano /etc/cassandra/cassandra-rackdc.properties
 
 #### Specify the Data Center and Rack
 
+Cassandra reads the datacenter and rack labels from `/etc/cassandra/cassandra-rackdc.properties`. Edit this file and ensure the following entries are present or updated to match your deployment:
+
 ```properties
 dc=datacenter_name
 rack=rack_name
 ```
+These values must align with the datacenter and rack names you use in your `NetworkTopologyStrategy` configuration.
 
-{{< note>}}:
+{{< note>}}
 If Cassandra has ever been started on this node before you changed the datacenter name, the node will not start because the stored datacenter value won't match the new one.
 {{< /note >}}
 
@@ -616,10 +626,10 @@ These values are read at startup, so any changes require restarting the node.
 
 Start nodes in the correct order to ensure proper cluster formation.
 
-{{< note >}}: The "primary seed" is the first IP address in your seed list. Start that node (whose IP appears first in the seed list) first before starting the other nodes. This ensures clean cluster formation.
+{{< note >}} The "primary seed" is the first IP address in your seed list. Start that node (whose IP appears first in the seed list) first before starting the other nodes. This ensures clean cluster formation.
 {{< /note >}}
 
-1.Start the primary seed in the first data center:
+1. Start the primary seed in the first data center:
 
 ```command
 sudo systemctl start cassandra
@@ -646,7 +656,7 @@ From any node:
 sudo nodetool status
 ```
 
-You should see:
+In the output you should see:
 
 - each datacenter listed
 - nodes marked **UN (Up / Normal)**
@@ -697,3 +707,5 @@ For guidance on creating keyspaces, tables, and working with data, refer to the 
 - [CQL Reference](https://cassandra.apache.org/doc/latest/cassandra/developing/cql/cql_singlefile.html)
 - [Data Definition (DDL) - includes replication strategies](https://cassandra.apache.org/doc/3.11.13/cassandra/cql/ddl.html)
 - [Schema Design](https://cassandra.apache.org/doc/latest/cassandra/developing/data-modeling/data-modeling_schema.html)
+
+[Cassandra documentation](https://cassandra.apache.org/_/index.html) provides in depth support.
