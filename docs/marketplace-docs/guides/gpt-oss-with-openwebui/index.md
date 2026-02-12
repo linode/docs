@@ -1,8 +1,8 @@
 ---
 title: "Deploy GPT-OSS with Open WebUI through the Linode Marketplace"
 description: "This guide includes instructions on how to deploy Open WebUI with GPT-OSS self-hosted LLM on an Akamai Compute Instance."
-published: 2026-02-05
-modified: 2026-02-05
+published: 2026-02-12
+modified: 2026-02-12
 keywords: ['gpt-oss', 'open-webui', 'vllm', 'ai', 'llm', 'llm-inference', 'openai-gpt-oss']
 tags: ["marketplace", "linode platform", "cloud manager", "ai", "llm-inference", "llm"]
 aliases: ['/products/tools/marketplace/guides/gpt-oss-with-openwebui/']
@@ -76,7 +76,7 @@ Once your app has finished deploying, you can log into Open WebUI using your bro
     ```command
     sudo cat /home/{{< placeholder "USER" >}}/.credentials
     ```
-4.  In the `.credentials` file, locate the Open WebUI login email and password. Go back to the Open WebUI login page, and paste the credentials to log in. When you successfully login, you should see the following page.
+4.  In the `.credentials` file, locate the Open WebUI login email and password. Go back to the Open WebUI login page, and paste the credentials to log in. When you successfully login, you should see the following page:
 
     !["Open WebUI Welcome 1"](openwebui-w1.png "Open WebUI Welcome 1")
 
