@@ -26,7 +26,11 @@ For complete documentation and configuration options see the official:
 
 ## Before You Begin
 
-Complete these prerequisites before installing PHP-FPM and NGINX. For initial server setup and OS installation, see the [Ubuntu Server](https://ubuntu.com/server/docs) documentation and [Akamai's Getting Started](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides.
+Complete these prerequisites before installing PHP-FPM and NGINX.
+
+Create and configure your instance using Akamai's [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) and [Set Up and Secure a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides.
+
+For OS-level documentation, see the [Ubuntu Server](https://ubuntu.com/server/docs) documentation.
 
 ### Prerequisites:
 
@@ -139,15 +143,15 @@ The socket path must match the `fastcgi_pass` directive in the NGINX server bloc
 
 Create an NGINX server block to handle PHP requests. This example assumes a site served from `/var/www/example.com`.
 
-Create the server block configuration file:
+Next, create the server block configuration file:
 
 ```command
 sudo nano /etc/nginx/sites-available/example.com
 ```
 
 Add the following configuration:
-```
-fileserver {
+```nginx
+server {
     listen 80;
     listen [::]:80;
     server_name example.com www.example.com;
@@ -343,7 +347,7 @@ Files should be readable by the web server but writable only by the owner. Direc
 
 Configure TLS/SSL certificates to encrypt traffic between clients and your server. HTTPS prevents credential interception and protects session data.
 
-For TLS/SSL certificate configuration on Akamai cloud compute, see [Enable TLS for HTTPS](??????????).
+For TLS/SSL certificate configuration on Akamai cloud compute, see [Use Certbot to Enable HTTPS with NGINX on Ubuntu](https://www.linode.com/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/).
 
 ### Remove Default Content
 
@@ -412,8 +416,8 @@ PHP-FPM logs process manager events and PHP errors separately from NGINX.
 
 **Log locations**:
 
-- PHP-FPM process log: /var/log/php8.1-fpm.log - Pool manager events
-- PHP error log: Configured in php.ini via the error_log directive
+- PHP-FPM process log: `/var/log/php8.1-fpm.log` - Pool manager events
+- PHP error log: Configured in php.ini via the `error_log` directive
 
 View PHP-FPM process events:
 
@@ -421,11 +425,11 @@ View PHP-FPM process events:
 sudo tail -f /var/log/php8.1-fpm.log
 ```
 
-PHP application errors appear in the location specified by the 1error_log1 directive in `/etc/php/8.1/fpm/php.ini`.
+PHP application errors appear in the location specified by the 1`rror_log` directive in `/etc/php/8.1/fpm/php.ini`.
 
 ### Performance Monitoring
 
-Monitor CPU, memory, and network usage through Cloud Manager's built-in metrics dashboard. Track PHP-FPM process counts and memory consumption to identify resource constraints.
+Monitor CPU, memory, and network usage through [Cloud Manager's built-in metrics dashboard](https://techdocs.akamai.com/cloud-computing/docs/monitor-and-maintain-a-compute-instance). Track PHP-FPM process counts and memory consumption to identify resource constraints.
 
 Key metrics to monitor:
 
@@ -443,60 +447,54 @@ Resolve common issues with PHP-FPM and NGINX deployments. Each section identifie
 
 **Symptom**: Browser displays "502 Bad Gateway" or "504 Gateway Timeout" errors when accessing PHP pages.
 
-**Causes and solutions:
+---
 
-PHP-FPM not running**:
+**Cause**: PHP-FPM service is not running.
 
-Check PHP-FPM service status:
-
+**Solution**: Check the service status and start it if stopped:
 ```command
 sudo systemctl status php8.1-fpm
-```
-
-Start the service if stopped:
-
-```command
 sudo systemctl start php8.1-fpm
 ```
-**Socket path mismatch**:
 
-Verify the socket path in NGINX configuration matches PHP-FPM pool configuration:
+---
 
+**Cause**: Socket path mismatch between NGINX and PHP-FPM configurations.
+
+**Solution**: Verify both paths are identical:
 ```command
 grep "fastcgi_pass" /etc/nginx/sites-available/example.com
 grep "listen" /etc/php/8.1/fpm/pool.d/www.conf
 ```
 
-Both values must be identical. Restart both services after correcting mismatches.
-**Insufficient PHP-FPM workers**:
+Correct any mismatch and restart both services.
 
-Check if `pm.max_children` limit is reached:
+---
+
+**Cause**: Insufficient PHP-FPM worker processes.
+
+**Solution**: Check whether `pm.max_children` is being reached:
 ```command
 sudo grep "max_children" /var/log/php8.1-fpm.log
 ```
 
-Increase `pm.max_children` in `/etc/php/8.1/fpm/pool.d/www.conf` if processes are hitting the limit.
+If the limit is being hit, increase `pm.max_children` in `/etc/php/8.1/fpm/pool.d/www.conf`.
 
 ### File Permission Issues
 
 **Symptom**: "Permission denied" errors in NGINX error log or blank pages when accessing PHP files.
 
-**Solution**:
-
-Verify NGINX can read PHP files:
-
+**Solution**: Verify NGINX can read PHP files:
 ```command
 sudo -u www-data test -r /var/www/example.com/index.php && echo "Readable" || echo "Permission denied"
 ```
 
 Set correct ownership:
-
 ```command
 sudo chown -R www-data:www-data /var/www/example.com
 ```
 
 Ensure directories are executable and files are readable:
-
 ```command
 sudo find /var/www/example.com -type d -exec chmod 755 {} \;
 sudo find /var/www/example.com -type f -exec chmod 644 {} \;
@@ -506,22 +504,18 @@ sudo find /var/www/example.com -type f -exec chmod 644 {} \;
 
 **Symptom**: Cannot access website from external network, or connection times out.
 
-**Solution**:
-
-Verify Cloud Firewall allows HTTP/HTTPS traffic:
+**Solution**: Verify Cloud Firewall allows HTTP/HTTPS traffic:
 
 1. Navigate to Cloud Manager > Firewalls
 2. Select the firewall attached to your instance
 3. Confirm inbound rules allow TCP ports 80 and 443
 
 Check local firewall rules if using UFW or iptables:
-
 ```command
 sudo ufw status
 ```
 
 Allow HTTP and HTTPS if blocked:
-
 ```command
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
@@ -531,20 +525,17 @@ sudo ufw allow 443/tcp
 
 **Symptom**: PHP-FPM fails to start or access specific files despite correct permissions.
 
-Ubuntu 22.04 uses AppArmor for mandatory access control. Check AppArmor status:
-
+**Solution**: Ubuntu 22.04 uses AppArmor for mandatory access control. Check AppArmor status:
 ```command
 sudo aa-status
 ```
 
 Review AppArmor denials in system log:
-
 ```command
 sudo grep "apparmor" /var/log/syslog
 ```
 
 PHP-FPM's AppArmor profile is located at `/etc/apparmor.d/php-fpm`. Modify the profile only if legitimate application requirements conflict with default restrictions. Reload AppArmor after profile changes:
-
 ```command
 sudo systemctl reload apparmor
 ```
@@ -557,15 +548,15 @@ Expand your PHP-FPM deployment with database connectivity, advanced performance 
 
 Connect your PHP application to a database server:
 
-- [MySQL on Ubuntu 22.04](https://www.linode.com/docs/???) - Install and configure MySQL for PHP applications
-- [PostgreSQL on Ubuntu 22.04](https://www.linode.com/docs/???) - Deploy PostgreSQL database server
+- [MySQL on Ubuntu 22.04](https://www.linode.com/docs/guides/install-and-configure-mysql-on-ubuntu-22-04/) - Install and configure MySQL for PHP applications
+- [PostgreSQL on Ubuntu 22.04](https://www.postgresql.org/download/linux/ubuntu/) - Deploy PostgreSQL database server
 - [Akamai Managed Databases](https://techdocs.akamai.com/cloud-computing/docs/aiven-database-clusters) - Fully managed database clusters
 
 ### Performance Optimization
 
 Advanced tuning for production workloads:
 
-- [NGINX Performance Tuning](https://nginx.org/en/docs/http/ngx_http_core_module.html???) - Worker processes, connection limits, and buffer sizing
+- [NGINX Performance Tuning: Tips and Tricks](https://blog.nginx.org/blog/performance-tuning-tips-tricks) - Worker processes, connection limits, and buffer sizing
 - [PHP-FPM Performance](https://www.php.net/manual/en/install.fpm.configuration.php) - Process manager optimization and OPcache configuration
 - [PHP OPcache Configuration](https://www.php.net/manual/en/opcache.configuration.php) - Bytecode caching for improved performance
 
@@ -582,3 +573,4 @@ Scale your deployment across multiple instances:
 
 - [Getting Started with NodeBalancers](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-nodebalancers) - Load balancing for PHP-FPM instances
 - [Cloud Firewall Advanced Configuration](https://techdocs.akamai.com/cloud-computing/docs/manage-firewall-rules) - Security rules for multi-instance deployments
+
