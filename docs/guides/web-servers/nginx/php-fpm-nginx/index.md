@@ -6,7 +6,7 @@ authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2026-03-22
 keywords: ["php", "php-fpm", "nginx", "web servers", "linux"]
-tags:["web-servers", "nginx", "php", "serve"]
+tags: ["web-servers", "nginx", "php", "serve"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - [PHP-FPM documentation](https://www.php.net/manual/en/install.fpm.php)
