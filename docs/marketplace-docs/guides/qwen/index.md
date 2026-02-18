@@ -1,8 +1,8 @@
 ---
 title: "Deploy Qwen Instruct with Open WebUI through the Linode Marketplace"
 description: "This guide includes instructions on how to deploy Open WebUI with a self-hosted Qwen Instruct Large Language Model (LLM) on an Akamai Compute Instance."
-published: 2026-01-26
-modified: 2026-01-26
+published: 2026-02-18
+modified: 2026-02-18
 keywords: ['qwen', 'qwen-instruct', 'open-webui', 'vllm', 'ai', 'llm', 'llm-inference', 'qwen-llm']
 tags: ["marketplace", "linode platform", "cloud manager", "ai", "llm-inference", "llm"]
 aliases: ['/products/tools/marketplace/guides/qwen-instruct-with-openwebui/']
@@ -56,7 +56,7 @@ This Marketplace App only works with Akamai GPU instances. If you choose a plan 
 
 ### Obtain the Credentials
 
-When deployment completes, the system automatically generates credentials to administer your Pgvector instance. These are stored in the limited user’s `.credentials` file.
+When deployment completes, the system automatically generates credentials to administer your pgvector instance. These are stored in the limited user’s `.credentials` file.
 
 1. Log in to your Compute Instance using one of the methods below:
 

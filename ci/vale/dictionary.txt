@@ -1910,6 +1910,7 @@ pg_dumpall
 pg_restore
 pgAdmin
 pgpass
+pgvector
 Phalcon
 pharmer
 pharo
@@ -2061,6 +2062,7 @@ qmgr
 QRadar
 quadro
 qualys
+Qwen
 quickconnect
 quicklisp
 quickstart
