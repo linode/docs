@@ -7,7 +7,7 @@ og_description: "When a web application needs to maintain state from one request
 authors: ["Martin Heller"]
 contributors: ["Martin Heller"]
 published: 2021-02-23
-keywords: [‘loadbalancer sticky session']
+keywords: ['loadbalancer sticky session']
 tags: ['nginx','networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---

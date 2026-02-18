@@ -12,10 +12,10 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[NGINX Documentation](https://nginx.org/en/docs/)'
 relations:
-    platform:
-        key: how-to-install-nginx
-        keywords:
-            - distribution: Ubuntu 20.04
+  platform:
+    key: how-to-install-nginx
+    keywords:
+      - "distribution: Ubuntu 20.04"
 aliases: ['/web-servers/nginx/installation/ubuntu-10.04-lucid/','/web-servers/nginx/installation/ubuntu-12.04-precise-pangolin/']
 ---
 
