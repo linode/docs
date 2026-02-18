@@ -2062,10 +2062,10 @@ qmgr
 QRadar
 quadro
 qualys
-Qwen
 quickconnect
 quicklisp
 quickstart
+Qwen
 radeon
 rainloop
 Ramaze
