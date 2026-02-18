@@ -15,7 +15,7 @@ external_resources:
 
 The PHP FastCGI Process Manager (PHP-FPM) manages PHP processes independent of the web server as a modern FastCGI implementation with NGINX.
 
-Use PHP-FPM with NGINX when you need process isolation, independent PHP and web server scaling, or improved resource management for PHP applications compared to mod_php or CGI implementations
+Use PHP-FPM with NGINX when you need process isolation, independent PHP, and web server scaling, or improved resource management for PHP applications compared to mod_php or CGI implementations
 
 This guide demonstrates how to deploy PHP-FPM and NGINX on Akamai cloud compute infrastructure. It covers installation of both components on a supported Linux distribution, NGINX configuration for FastCGI proxy, PHP-FPM pool setup, deployment testing, and application of basic security hardening. It addresses Akamai-specific requirements for instance sizing, firewall configuration through Cloud Manager, and performance tuning.
 
