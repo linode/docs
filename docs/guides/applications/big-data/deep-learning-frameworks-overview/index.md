@@ -9,7 +9,6 @@ published: 2021-08-27
 keywords: ['deep learning frameworks']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-tags: ["saas"]
 ---
 
 ## What is Deep Learning?

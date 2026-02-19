@@ -4,7 +4,6 @@ title: "An Introduction to Neo4j"
 description: "Neoj4 is a graph database that excels at complex datasets. Learn how it differs from relational databases like SQL and discover some practical use cases."
 authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
-published: 2022-03-30
 published: 2024-05-09
 keywords: ['what is neo4j','what is neo4j used for','what is neo4j graph database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

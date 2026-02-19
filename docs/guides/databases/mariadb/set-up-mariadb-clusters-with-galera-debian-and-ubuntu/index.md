@@ -12,7 +12,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[MariaDB Foundation: Installing MariaDB Galera Cluster on Debian/Ubuntu](https://blog.mariadb.org/installing-mariadb-galera-cluster-on-debian-ubuntu/)'
 tags: ["ubuntu","debian","mariadb","database"]
-tags: ["ecommerce"]
 relations:
     platform:
         key: mariadb-galera-clusters

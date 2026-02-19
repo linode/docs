@@ -5,7 +5,6 @@ published: 2020-03-18
 modified: 2022-03-08
 keywords: ['shadowsocks','marketplace', 'server']
 tags: ["proxy","cloud-manager","linode platform","security","marketplace"]
-image: DeployShadowsocksServer_oneclickapps.png
 external_resources:
 - '[Shadowsocks Official](https://shadowsocks.org)'
 - '[Shadowsocks-libev Github](https://github.com/shadowsocks/shadowsocks-libev)'

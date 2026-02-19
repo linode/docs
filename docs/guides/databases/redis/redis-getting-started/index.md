@@ -12,7 +12,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Redis: Commands](https://redis.io/commands)'
 aliases: ['/guides/how-to-connect-to-redis/']
-tags: ["saas"]
 ---
 
 Redis is an open-source NoSQL database used for in-memory storage of data structures. It works exceptionally well for caching, messaging, and other data storage contexts where quick, and low-latency storage is needed.
