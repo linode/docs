@@ -1,13 +1,13 @@
 ---
-slug: 'php-fpm-nginx'
-title: 'Modern PHP-FPM and NGINX Configuration'
-description: 'Install and configure PHP-FPM and NGINX using current upstream best practices and Akamai-specific considerations.'
+slug: php-fpm-nginx
+title: "Modern PHP-FPM and NGINX Configuration"
+description: "Install and configure PHP-FPM and NGINX using current upstream best practices and Akamai-specific considerations."
 authors: ['Akamai']
 contributors: ['Akamai']
 published: 2026-02-20
-keywords: ['php', 'php-fpm', 'fpm', 'nginx', 'web servers', 'linux']
-tags: ['web-servers', 'nginx', 'php', 'serve', 'fpm']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+keywords: ['php','php-fpm','fpm','nginx','web servers','linux']
+tags: ['web-servers','nginx','php','serve','fpm']
+license: [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)
 external_resources:
 - [PHP-FPM documentation](https://www.php.net/manual/en/install.fpm.php)
 - [NGINX](https://nginx.org/en/docs/)
