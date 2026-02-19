@@ -6,9 +6,9 @@ description: "Learn the basics of installing and configuring NGINX on your Ubunt
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2021-07-09
-keywords: ['nginx','web server']
+keywords: ['nginx', 'web server']
 tags: ['ubuntu', 'nginx', 'web server']
-license: [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)
+license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 external_resources:
 - '[NGINX Documentation](https://nginx.org/en/docs/)'
 relations:

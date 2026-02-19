@@ -8,7 +8,7 @@ contributors: ["Linode"]
 published: 2018-02-09
 modified: 2021-12-29
 keywords: ["nginx", "web server", "nginx configuration", "multiple sites", "configure caching"]
-license: [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)
+license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 aliases: ['/web-servers/nginx/configure-nginx-for-optimized-performance/','/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/','/websites/nginx/configure-nginx-for-optimized-performance/', '/guides/slightly-more-advanced-configurations-for-nginx/']
 tags: ["web server","nginx"]
 image: "Getting-Started-with-NGINX-Part-2-smg.jpg"

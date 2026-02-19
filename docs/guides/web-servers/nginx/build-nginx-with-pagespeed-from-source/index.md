@@ -6,7 +6,7 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2019-02-01
 modified: 2018-02-12
-keywords: ["nginx","pagespeed","optimization"]
+keywords: ["nginx", "pagespeed", "optimization"]
 license: "[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)"
 aliases: ['/web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1604/','/web-servers/nginx/nginx-with-pagespeed-on-ubuntu-14-04/','/web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1804/','/web-servers/nginx/build-nginx-with-pagespeed-from-source/']
 dedicated_cpu_link: true

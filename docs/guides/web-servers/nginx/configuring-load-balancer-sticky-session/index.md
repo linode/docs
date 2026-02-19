@@ -9,7 +9,7 @@ contributors: ["Martin Heller"]
 published: 2021-02-23
 keywords: ['loadbalancer sticky session']
 tags: ['nginx','networking']
-license: [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)
+license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 ---
 
 ## What is Load Balancing and Why is it Necessary?
