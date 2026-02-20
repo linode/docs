@@ -14,8 +14,6 @@ external_resources:
 relations:
   platform:
     key: how-to-install-nginx
-    keywords:
-      - "distribution: Ubuntu 20.04"
 aliases: ['/web-servers/nginx/installation/ubuntu-10.04-lucid/','/web-servers/nginx/installation/ubuntu-12.04-precise-pangolin/']
 ---
 
