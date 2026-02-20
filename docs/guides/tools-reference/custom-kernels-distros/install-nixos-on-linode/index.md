@@ -79,7 +79,7 @@ To create a new Linode, go to the [Create Linode page](https://cloud.linode.com/
 
 1.  [Boot your Linode into rescue mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode) with the **Installer** disk mounted as `/dev/sda`.
 
-1.  Once in rescue mode, click the **Launch Console** link to launch the Finnix rescue console and run the following commands, replacing the URL with the latest 64-bit minimal installation image copied from the [NixOS download page](https://nixos.org/nixos/download.html):
+1.  Once in rescue mode, click the **Launch Console** link to launch the Finnix rescue console and run the following commands, replacing the URL with the latest 64-bit minimal installation image copied from the [NixOS download page](https://nixos.org/download/):
 
     ```command
     # Update SSL certificates to allow HTTPS connections:
