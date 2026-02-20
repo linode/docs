@@ -9,7 +9,7 @@ contributors: ["Jeff Novotny"]
 published: 2021-07-16
 keywords: ['nginx http2']
 tags: ['web server', 'nginx']
-license: [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)
+license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 image: "HowtoConfigureHTTP-2onNGINX.jpg"
 ---
 
