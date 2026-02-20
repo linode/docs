@@ -13,16 +13,11 @@ external_resources:
 - "[NGINX](https://nginx.org/en/docs/)"
 ---
 
-The PHP FastCGI Process Manager (PHP-FPM) manages PHP processes independent of the web server as a modern FastCGI implementation with NGINX.
+PHP FastCGI Process Manager (PHP-FPM) runs PHP processes independently of the web server, enabling process isolation, independent scaling, and better resource management than mod_php or CGI implementations.
 
-Use PHP-FPM with NGINX when you need process isolation, independent PHP, and web server scaling or improved resource management for PHP applications compared to mod_php or CGI implementations
+This guide shows how to deploy PHP-FPM with NGINX on Akamai cloud compute, including installation, FastCGI proxy configuration, PHP-FPM pool setup, and security hardening for Akamai infrastructure.
 
-This guide demonstrates how to deploy PHP-FPM and NGINX on Akamai cloud compute infrastructure. It covers installation of both components on a supported Linux distribution, NGINX configuration for FastCGI proxy, PHP-FPM pool setup, deployment testing, and application of basic security hardening. It addresses Akamai-specific requirements for instance sizing, firewall configuration through Cloud Manager as well as performance tuning.
-
-For complete documentation and configuration options see the official:
-
-- [PHP-FPM documentation](https://www.php.net/manual/en/install.fpm.php)
-- [NGINX](https://nginx.org/en/docs/)
+For full configuration options, see the official [PHP-FPM](https://www.php.net/manual/en/install.fpm.php) and [NGINX](https://nginx.org/en/docs/) documentation.
 
 ## Before You Begin
 
@@ -425,7 +420,7 @@ View PHP-FPM process events:
 sudo tail -f /var/log/php8.1-fpm.log
 ```
 
-PHP application errors appear in the location specified by the 1`rror_log` directive in `/etc/php/8.1/fpm/php.ini`.
+PHP application errors are written to the file defined by the `error_log` directive in `/etc/php/8.1/fpm/php.ini`.
 
 ### Performance Monitoring
 
@@ -441,104 +436,87 @@ For advanced monitoring, integrate with external observability platforms. See th
 
 ## Troubleshooting
 
-Resolve common issues with PHP-FPM and NGINX deployments. Each section identifies symptoms and provides diagnostic steps.
+If your PHP-FPM and NGINX configuration isn't working as expected, use the following steps to diagnose and resolve common issues. PHP, PHP-FPM, and NGINX each log different types of errors, so identifying which component is failing helps you choose the right log and to interpret the issue correctly.
 
-### NGINX Gateway Errors
+1. Check the NGINX Error Log
 
-**Symptom**: Browser displays "502 Bad Gateway" or "504 Gateway Timeout" errors when accessing PHP pages.
+NGINX logs routing, FastCGI, and upstream connection issues. Common symptoms include:
+- 502 Bad Gateway → NGINX cannot reach PHP FPM
+- 403 or 404 errors → incorrect root path or permissions
+- PHP file downloads instead of executing → PHP module not loaded
 
----
-
-**Cause**: PHP-FPM service is not running.
-
-**Solution**: Check the service status and start it if stopped:
+View the log:
 ```command
-sudo systemctl status php8.1-fpm
-sudo systemctl start php8.1-fpm
+sudo tail -f /var/log/nginx/error.log
 ```
 
----
+2. Check the PHP FPM Service Log
 
-**Cause**: Socket path mismatch between NGINX and PHP-FPM configurations.
-
-**Solution**: Verify both paths are identical:
+PHP FPM logs process level issues such as pool misconfiguration, socket failures, crashes, or resource exhaustion.
 ```command
-grep "fastcgi_pass" /etc/nginx/sites-available/example.com
-grep "listen" /etc/php/8.1/fpm/pool.d/www.conf
+sudo tail -f /var/log/php8.1-fpm.log
+```
+Restart PHP FPM if needed:
+```command
+sudo systemctl restart php8.1-fpm
 ```
 
-Correct any mismatch and restart both services.
+3. Check PHP Application Errors
 
----
-
-**Cause**: Insufficient PHP-FPM worker processes.
-
-**Solution**: Check whether `pm.max_children` is being reached:
+PHP application level errors (syntax errors, fatal errors, exceptions) are written to the file defined by the `error_log` directive in:
 ```command
-sudo grep "max_children" /var/log/php8.1-fpm.log
+/etc/php/8.1/fpm/php.ini
 ```
 
-If the limit is being hit, increase `pm.max_children` in `/etc/php/8.1/fpm/pool.d/www.conf`.
+Some frameworks override this setting. If the file is empty, check your application’s log directory or the NGINX error log.
 
-### File Permission Issues
+4. Verify the PHP FPM Socket or Port
 
-**Symptom**: "Permission denied" errors in NGINX error log or blank pages when accessing PHP files.
+If NGINX cannot reach PHP FPM, you may see:
 
-**Solution**: Verify NGINX can read PHP files:
+- 502 Bad Gateway
+- Connection refused
+- No such file or directory
+
+Confirm the socket exists:
 ```command
-sudo -u www-data test -r /var/www/example.com/index.php && echo "Readable" || echo "Permission denied"
+ls -l /run/php/php8.1-fpm.sock
 ```
 
-Set correct ownership:
+If your configuration uses TCP instead of a socket:
+```command
+fastcgi_pass 127.0.0.1:9000;
+```
+
+Ensure PHP FPM is listening on that address.
+
+5. Check File and Directory Permissions
+
+Incorrect ownership or permissions can prevent PHP FPM from reading or executing files. A safe baseline for most deployments:
 ```command
 sudo chown -R www-data:www-data /var/www/example.com
-```
-
-Ensure directories are executable and files are readable:
-```command
 sudo find /var/www/example.com -type d -exec chmod 755 {} \;
 sudo find /var/www/example.com -type f -exec chmod 644 {} \;
 ```
 
-### Firewall Configuration
+AppArmor Restrictions (Ubuntu Only)
 
-**Symptom**: Cannot access website from external network, or connection times out.
-
-**Solution**: Verify Cloud Firewall allows HTTP/HTTPS traffic:
-
-1. Navigate to Cloud Manager > Firewalls
-2. Select the firewall attached to your instance
-3. Confirm inbound rules allow TCP ports 80 and 443
-
-Check local firewall rules if using UFW or iptables:
+If you’re using custom directories or non standard paths, AppArmor may block PHP FPM from reading files even when permissions are correct. Check for denials:
 ```command
-sudo ufw status
+sudo journalctl -xe | grep DENIED
 ```
 
-Allow HTTP and HTTPS if blocked:
+If AppArmor is the cause, update the PHP FPM AppArmor profile or place your files in approved locations.
+
+6. Reload or Restart Services
+
+After making configuration changes:
 ```command
-sudo ufw allow 80/tcp
-sudo ufw allow 443/tcp
+sudo systemctl reload nginx
+sudo systemctl restart php8.1-fpm
 ```
 
-### AppArmor Restrictions
-
-**Symptom**: PHP-FPM fails to start or access specific files despite correct permissions.
-
-**Solution**: Ubuntu 22.04 uses AppArmor for mandatory access control. Check AppArmor status:
-```command
-sudo aa-status
-```
-
-Review AppArmor denials in system log:
-```command
-sudo grep "apparmor" /var/log/syslog
-```
-
-PHP-FPM's AppArmor profile is located at `/etc/apparmor.d/php-fpm`. Modify the profile only if legitimate application requirements conflict with default restrictions. Reload AppArmor after profile changes:
-```command
-sudo systemctl reload apparmor
-```
+Reloading NGINX applies configuration changes without dropping active connections.
 
 ## Next Steps
 
