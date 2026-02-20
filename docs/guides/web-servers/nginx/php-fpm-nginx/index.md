@@ -9,8 +9,8 @@ keywords: ['php', 'php-fpm', 'fpm', 'nginx', 'web servers', 'linux']
 tags: ['web-servers', 'nginx', 'php', 'serve', 'fpm']
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 external_resources:
-- [PHP-FPM documentation](https://www.php.net/manual/en/install.fpm.php)
-- [NGINX](https://nginx.org/en/docs/)
+- "[PHP-FPM documentation](https://www.php.net/manual/en/install.fpm.php)"
+- "[NGINX](https://nginx.org/en/docs/)"
 ---
 
 The PHP FastCGI Process Manager (PHP-FPM) manages PHP processes independent of the web server as a modern FastCGI implementation with NGINX.
