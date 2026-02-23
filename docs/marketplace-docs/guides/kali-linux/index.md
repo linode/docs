@@ -1,10 +1,10 @@
 ---
-title: "Deploy Kali Linux through the Linode Marketplace"
+title: "Deploy Kali Linux"
 description: "Deploy Kali Linux, a popular Linux distribution for penetration testing and security research, on a Linode Compute Instance."
 published: 2022-07-05
 modified: 2025-08-22
 keywords: ['kali','security','pentest']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[What is Kali Linux?](https://www.kali.org/docs/introduction/what-is-kali-linux/)'
 - '[Should I Use Kali Linux?](https://www.kali.org/docs/introduction/should-i-use-kali-linux/)'
@@ -20,10 +20,10 @@ marketplace_app_name: "Kali Linux"
 [Kali Linux](https://www.kali.org/) is a specialized Debian-based Linux distribution that has become an industry-standard tool for penetration testing. Kali Linux includes hundreds of free tools for reverse engineering, penetration testing, computer forensics, security audits, and more. It is open source and prioritizes simplicity.
 
 {{< note >}}
-This Marketplace App extends Linode's Kali Linux distribution image by allowing the user to preinstall one of the available metapackages.
+This Quick Deploy App extends Linode's Kali Linux distribution image by allowing the user to preinstall one of the available metapackages.
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

@@ -1,10 +1,10 @@
 ---
-title: "Deploy MySQL/MariaDB through the Linode Marketplace"
-description: "This guide shows how to install and configure MySQL/MariaDB so you can run databases for anything from a CRM to WordPress by using the Linode One-Click Marketplace."
+title: "Deploy MySQL/MariaDB"
+description: "This guide shows how to install and configure MySQL/MariaDB so you can run databases for anything from a CRM to WordPress by using the Linode Quick Deploy App."
 published: 2020-03-13
 modified: 2025-02-28
 keywords: ['database','mysql','rdbms','relational database','mariadb']
-tags: ["database","cloud-manager","linode platform","mysql","marketplace","mariadb"]
+tags: ["database","cloud-manager","linode platform","mysql","quick deploy apps","mariadb"]
 external_resources:
 - '[MySQL 5.6 Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/index.html)'
 - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
@@ -17,9 +17,9 @@ marketplace_app_id: 607026
 marketplace_app_name: "MySQL/MariaDB"
 ---
 
-The MySQL/MariaDB Marketplace app can deploy MySQL or MariaDB. MySQL is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. MariaDB is an open-source, multi-threaded relational database management system, backward compatible replacement for MySQL that's maintained and developed by the MariaDB Foundation.
+The MySQL/MariaDB Quick Deploy App app can deploy MySQL or MariaDB. MySQL is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. MariaDB is an open-source, multi-threaded relational database management system, backward compatible replacement for MySQL that's maintained and developed by the MariaDB Foundation.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -108,11 +108,11 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
 ### Create a Sample Table
 
-1.  Log back in as sudo user that you set when launching the Marketplace App. In the following example the sudo user is `webuser`.
+1.  Log back in as sudo user that you set when launching the Quick Deploy App. In the following example the sudo user is `webuser`.
 
         sudo mysql -u webuser -p
 
-2.  Create a sample table called `customers`. This creates a table with a customer ID field of the type `INT` for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name. In the following example `webdata` is the database that you created when launching the Marketplace App.
+2.  Create a sample table called `customers`. This creates a table with a customer ID field of the type `INT` for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name. In the following example `webdata` is the database that you created when launching the Quick Deploy App.
 
         use webdata;
         create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);

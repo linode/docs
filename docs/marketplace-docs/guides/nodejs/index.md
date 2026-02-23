@@ -1,10 +1,10 @@
 ---
-title: "Deploy Node.js through the Linode Marketplace"
+title: "Deploy Node.js"
 description: "Deploy Node.js on a Linode Compute Instance. This provides a JavaScript runtime to use with web applications."
 published: 2022-02-22
 modified: 2022-04-09
 keywords: ['nodejs','development','javascript']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/nodejs/','/guides/nodejs-marketplace-app/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -15,7 +15,7 @@ marketplace_app_name: "Node.js"
 
 [Node.js](https://nodejs.org/en/) is a lightweight development platform for building fast and scalable applications using Javascript. Since it's based on Javascript, it's relatively easy to learn and has a large community with lots of resources. Node.js can be used for almost any time of web application, including websites, but its asynchronous nature shines when used to develop real-time data-intensive applications
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -42,7 +42,7 @@ marketplace_app_name: "Node.js"
 
 ## Getting Started after Deployment
 
-The Node.js Marketplace App is running [Nginx](https://www.nginx.com/), [Node.js](https://nodejs.org/en/), and [NPM](https://www.npmjs.com/). Once deployed, a sample page should be running on your FQDN (if applicable) or the Compute Instance's Reverse DNS address.
+The Node.js Quick Deploy App is running [Nginx](https://www.nginx.com/), [Node.js](https://nodejs.org/en/), and [NPM](https://www.npmjs.com/). Once deployed, a sample page should be running on your FQDN (if applicable) or the Compute Instance's Reverse DNS address.
 
 ### Accessing the Node.js App through the Command Line
 

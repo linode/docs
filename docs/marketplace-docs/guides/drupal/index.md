@@ -1,10 +1,10 @@
 ---
-title: "Deploy Drupal through the Linode Marketplace"
-description: "Learn how to use the Drupal Marketplace App to easily install the popular open source content management system."
+title: "Deploy Drupal"
+description: "Learn how to use the Drupal Quick Deploy App to easily install the popular open source content management system."
 published: 2019-03-25
 modified: 2023-09-11
 keywords: ['drupal','marketplace', 'cms']
-tags: ["cloud-manager","linode platform","drupal","cms","marketplace"]
+tags: ["cloud-manager","linode platform","drupal","cms","quick deploy apps"]
 aliases: ['/products/tools/marketplace/guides/drupal/','/platform/marketplace/deploying-drupal-with-marketplace-apps/','/platform/marketplace/how-to-deploy-drupal-with-marketplace-apps/', '/platform/one-click/deploying-drupal-with-one-click-apps/','/guides/deploying-drupal-with-one-click-apps/','/platform/one-click/how-to-deploy-drupal-with-one-click-apps/','/guides/how-to-deploy-drupal-with-one-click-apps/','/guides/how-to-deploy-drupal-with-marketplace-apps/','/guides/drupal-marketplace-app/']
 external_resources:
  - '[Drupal 9 Official Documentation](https://www.drupal.org/docs/understanding-drupal)'
@@ -19,7 +19,7 @@ marketplace_app_name: "Drupal"
 
 In addition to the core infrastructure, there are a number of freely available Drupal modules that allow administrators of Drupal sites to provide additional functionality, and a robust API makes it easy to enable these features. Furthermore, Drupal has an advanced theming engine that allows for a great amount of flexibility for displaying content.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -77,7 +77,7 @@ To access your Drupal site:
 
 ## Software Included
 
-The Drupal Marketplace App installs the following required software on your Linode:
+The Drupal Quick Deploy App installs the following required software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|

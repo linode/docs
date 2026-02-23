@@ -1,9 +1,9 @@
 ---
-title: "Deploy HashiCorp Vault through the Linode Marketplace"
+title: "Deploy HashiCorp Vault"
 description: "Deploy HashiCorp Vault, an open source, centralized secrets management system, on a Linode Compute Instance.'"
 published: 2022-08-09
 keywords: ['HashiCorp','vault','secrets',]
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/hashicorp-vault/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -14,7 +14,7 @@ marketplace_app_name: "HashiCorp Vault"
 
 [HashiCorp Vault](https://www.vaultproject.io/) is an open source, centralized secrets management system. It provides a secure and reliable way of storing and distributing secrets like API keys, access tokens, and passwords.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -79,6 +79,6 @@ Follow the instructions below to view the unseal key and root token.
     https://www.vaultproject.io/docs/secrets/pki/setup
     {{< /note >}}
 
-1. Additional configurations are required to use the Linode Marketplace Vault instance in a production environment. We recommend reviewing the [Configuration](https://www.vaultproject.io/docs/configuration), [Secrets Engine](https://www.vaultproject.io/docs/secrets), and [Authentication](https://www.vaultproject.io/docs/auth) documentation before proceeding further.
+1. Additional configurations are required to use the Linode Quick Deploy App Vault instance in a production environment. We recommend reviewing the [Configuration](https://www.vaultproject.io/docs/configuration), [Secrets Engine](https://www.vaultproject.io/docs/secrets), and [Authentication](https://www.vaultproject.io/docs/auth) documentation before proceeding further.
 
 {{% content "marketplace-update-note-shortguide" %}}

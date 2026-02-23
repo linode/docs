@@ -1,10 +1,10 @@
 ---
-title: "Deploy LiveSwitch through the Linode Marketplace"
-description: "Learn how to deploy LiveSwitch Server, an enterprise video streaming service, through the Linode Marketplace."
+title: "Deploy LiveSwitch"
+description: "Learn how to deploy LiveSwitch Server, an enterprise video streaming service,."
 published: 2022-05-31
 modified: 2025-05-19
 keywords: ['liveswitch','streaming','video']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[LiveSwitch](https://www.liveswitch.io/)'
 aliases: ['/products/tools/marketplace/guides/liveswitch/']
@@ -17,13 +17,13 @@ marketplace_app_name: "LiveSwitch"
 
 [LiveSwitch Server](https://www.liveswitch.io/products/liveswitch-server) is a self-hosted WebRTC live video streaming platform for building low-latency video, audio, and data streaming apps using WebRTC with support for P2P, SFU, MCU, recording, and SIP integration.
 
-This Marketplace App deploys a back-end demonstration server, with signalling, media, and TURN services all provided by a single `liveswitch-gateway` container running on one server. It's designed to be tested alongside the official client SDKs for .NET, .NET Core, iOS, Android, Xamarin, Maui, Unity, and more. To download these SDKs, see the [Client SDK](https://developer.liveswitch.io/liveswitch-server/guides/intro.html) documentation.
+This Quick Deploy App deploys a back-end demonstration server, with signalling, media, and TURN services all provided by a single `liveswitch-gateway` container running on one server. It's designed to be tested alongside the official client SDKs for .NET, .NET Core, iOS, Android, Xamarin, Maui, Unity, and more. To download these SDKs, see the [Client SDK](https://developer.liveswitch.io/liveswitch-server/guides/intro.html) documentation.
 
 {{< note >}}
 Using LiveSwitch Server may require a paid license. To obtain a license, [contact LiveSwitch](https://support.liveswitch.io/kb-tickets/new). Licenses are not available directly through Akamai.
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

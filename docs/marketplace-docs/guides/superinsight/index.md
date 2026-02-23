@@ -1,9 +1,9 @@
 ---
-title: "Deploy Superinsight DB through the Linode Marketplace"
+title: "Deploy Superinsight DB"
 description: "Deploy Superinsight DB, a relational database for unstructured data, on the Linode platform."
 published: 2023-01-23
 keywords: ['superinsight','database','relational','unstructured','postgresql']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Superinsight DB](https://github.com/superinsight/superinsight-db)'
 aliases: ['/products/tools/marketplace/guides/superinsight/']
@@ -16,7 +16,7 @@ marketplace_app_name: "Superinsight"
 
 [Superinsight DB](https://github.com/superinsight/superinsight-db) is a relational database for unstructured data. Its main purpose is to provide a simple SQL interface to store and search unstructured data. Superinsight is built on top of PostgreSQL, which means you can take advantage of PostgreSQL features and the ability to run machine learning operations using SQL statements.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

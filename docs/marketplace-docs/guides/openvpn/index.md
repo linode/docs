@@ -1,10 +1,10 @@
 ---
-title: "Deploy OpenVPN through the Linode Marketplace"
-description: "This guide shows you how to configure and deploy your own private and secure OpenVPN Server on a Linude using the One-Click Marketplace Application."
+title: "Deploy OpenVPN"
+description: "This guide shows you how to configure and deploy your own private and secure OpenVPN Server on a Linude using the Quick Deploy Application."
 published: 2019-04-05
 modified: 2024-01-30
 keywords: ['vpn','openvpn','tunnel','marketplace app']
-tags: ["ssl","cloud-manager","linode platform","security","marketplace","vpn"]
+tags: ["ssl","cloud-manager","linode platform","security","quick deploy apps","vpn"]
 bundles: ['network-security']
 external_resources:
 - '[OpenVPN Community Resources](https://openvpn.net/community-resources/)'
@@ -22,7 +22,7 @@ OpenVPN is a widely trusted, free, and open-source VPN (virtual private network)
 
 - Connect your computer to services that you don't want to expose to the public Internet. Keep your sensitive applications isolated on your servers' private networking and use OpenVPN to access them remotely.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

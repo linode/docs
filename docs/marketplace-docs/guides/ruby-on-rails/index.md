@@ -1,10 +1,10 @@
 ---
-title: "Deploy Ruby on Rails through the Linode Marketplace"
-description: "This guide provides you with installation and configuration instructions for deploying Ruby on Rails using the Lindoe One-Click Apps Marketplace."
+title: "Deploy Ruby on Rails"
+description: "This guide provides you with installation and configuration instructions for deploying Ruby on Rails using the Lindoe One-Click Apps Quick Deploy App."
 published: 2020-03-11
 modified: 2025-06-03
 keywords: ['ruby on rails','marketplace', 'marketplace apps']
-tags: ["ruby","linode platform","marketplace","cloud-manager"]
+tags: ["ruby","linode platform","quick deploy apps","cloud-manager"]
 image: RubyonRails_oneclickapps.png
 external_resources:
  - '[Ruby on Rails Documentation](https://guides.rubyonrails.org/)'
@@ -20,7 +20,7 @@ marketplace_app_name: "Ruby on Rails"
 
 [Ruby on Rails](http://rubyonrails.org/) is a server-side web application framework that allows web designers and developers to implement dynamic, fully featured web applications.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -68,7 +68,7 @@ This returns passwords that were automatically generated when the instance was d
 ## Getting Started after Deployment
 ### Access Ruby on Rails
 
-The Ruby on Rails Marketplace App is running [Nginx](https://www.nginx.com/), [Ruby](https://www.ruby-lang.org/en/), [Rails](https://rubyonrails.org/), [Puma](https://github.com/puma/puma), and [Mise](https://github.com/jdx/mise). Once deployed, a sample page should be running on your FQDN (if applicable) or the Compute Instance's Reverse DNS address.
+The Ruby on Rails Quick Deploy App is running [Nginx](https://www.nginx.com/), [Ruby](https://www.ruby-lang.org/en/), [Rails](https://rubyonrails.org/), [Puma](https://github.com/puma/puma), and [Mise](https://github.com/jdx/mise). Once deployed, a sample page should be running on your FQDN (if applicable) or the Compute Instance's Reverse DNS address.
 
 ### Accessing the Ruby on Rails App through the Command Line
 

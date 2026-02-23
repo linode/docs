@@ -1,10 +1,10 @@
 ---
-title: "Deploy Apache Spark through the Linode Marketplace"
+title: "Deploy Apache Spark"
 description: "Apache Spark is a powerful open-source unified analytics engine for large-scale data processing. It provides high-level APIs in Java, Scala, Python, and R, and an optimized engine that supports general execution graphs. Spark is designed for both batch and streaming data processing, and it's significantly faster than traditional big data processing frameworks."
 published: 2024-07-09
 modified: 2024-05-01
 keywords: ['spark','apache spark', 'marketplace', 'bigdata','analytics']
-tags: ["ubuntu","marketplace", "big data", "linode platform", "cloud manager", "analytics", "cloud storage", "high availability", "compute storage"]
+tags: ["ubuntu","quick deploy apps", "big data", "linode platform", "cloud manager", "analytics", "cloud storage", "high availability", "compute storage"]
 external_resources:
 - '[About Apache Spark](https://spark.apache.org/)'
 - '[Apache Spark Documentation](https://spark.apache.org/docs/latest/)'
@@ -26,7 +26,7 @@ The minimum RAM requirement for the worker nodes is 4GB RAM to ensure that jobs 
 
 ![Spark Architecture](spark-cluster.png)
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -73,7 +73,7 @@ The `spark-shell` is included with the installation. The `spark-shell` is an int
 
 ## Software Included
 
-The Apache Spark Marketplace App installs the following software on your Linode:
+The Apache Spark Quick Deploy App installs the following software on your Linode:
 
 | **Software**  | **Version**   | **Description**   |
 | :---      | :----     | :---          |

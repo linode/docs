@@ -1,10 +1,10 @@
 ---
-title: "Deploy a Team Fortress 2 Server through the Linode Marketplace"
-description: "This guide provides you with instructions for deploying Team Fortress 2, a team-based multiplayer first-person shooter game, on a Linode using the Marketplace Apps."
+title: "Deploy a Team Fortress 2 Server"
+description: "This guide provides you with instructions for deploying Team Fortress 2, a team-based multiplayer first-person shooter game, on a Linode using the Quick Deploy Apps."
 published: 2019-04-04
 modified: 2024-01-22
 keywords: ['team fortress','marketplace', 'tf2', 'server']
-tags: ["linode platform","marketplace","cloud-manager"]
+tags: ["linode platform","quick deploy apps","cloud-manager"]
 aliases: ['/products/tools/marketplace/guides/team-fortress-2/','/platform/marketplace/deploying-team-fortress-2-with-marketplace-apps/', '/platform/one-click/deploying-team-fortress-2-with-one-click-apps/','/guides/deploying-team-fortress-2-with-one-click-apps/','/guides/deploying-team-fortress-2-with-marketplace-apps/','/guides/team-fortress-2-marketplace-app/']
 _build:
   list: false
@@ -15,14 +15,14 @@ contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-Team Fortress 2 has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only. For information on how to deploy and set up Team Fortress 2 manually on a Compute Instance, see our [Team Fortress 2 on Debian and Ubuntu](/docs/guides/team-fortress2-on-debian-and-ubuntu/) guide.
+Team Fortress 2 has been removed from the App Quick Deploy App and can no longer be deployed. This guide is retained for reference only. For information on how to deploy and set up Team Fortress 2 manually on a Compute Instance, see our [Team Fortress 2 on Debian and Ubuntu](/docs/guides/team-fortress2-on-debian-and-ubuntu/) guide.
 {{< /note >}}
 
 Team Fortress 2 (TF2) is a team-based multiplayer first-person shooter game. In TF2, you and your team choose from 9 unique classes and play against an enemy team in a variety of game modes. These modes include capture the flag, king of the hill, and even a battle pitting your team against a robotic horde.
 
 Setting up a personal game server puts you in control of the game modes and maps you use, as well as a variety of other settings to customize your experience.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -54,7 +54,7 @@ Setting up a personal game server puts you in control of the game modes and maps
 
 Ensure that you have installed Team Fortress 2 to your computer before getting started with this section. You can install Team Fortress 2 from [Steam's Web Store](https://store.steampowered.com/app/440/Team_Fortress_2/).
 
-After the Team Fortress 2 Server Marketplace App has finished deploying to your Linode, you will be able to access your server by copying your Linode's IPv4 address and connecting to it within the game installed on your computer. To find your Linode's IPv4 address and connect to it:
+After the Team Fortress 2 Server Quick Deploy App has finished deploying to your Linode, you will be able to access your server by copying your Linode's IPv4 address and connecting to it within the game installed on your computer. To find your Linode's IPv4 address and connect to it:
 
 1. Click on the **Linodes** link in the sidebar. You will see a list of all your Linodes.
 
@@ -76,7 +76,7 @@ After the Team Fortress 2 Server Marketplace App has finished deploying to your 
 
 ## Software Included
 
-The Team Fortress 2 Marketplace App will install the following required software on your Linode:
+The Team Fortress 2 Quick Deploy App will install the following required software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|

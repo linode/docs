@@ -1,6 +1,6 @@
 ---
-title: "Deploy Discourse through the Linode Marketplace"
-description: "In this guide, learn how to install Discourse, an open source discussion platform that provides powerful features using the Linode One-Click Marketplace."
+title: "Deploy Discourse"
+description: "In this guide, learn how to install Discourse, an open source discussion platform that provides powerful features using the Linode Quick Deploy App."
 published: 2020-11-19
 modified: 2022-03-08
 keywords: ['discourse','one-click', 'server']
@@ -21,7 +21,7 @@ marketplace_app_name: "Discourse"
 
 ## Before You Begin
 
-Discourse requires that you have a domain name and access to a personal SMTP email server before installation. This requires either having access to a pre-existing SMTP server, or setting up an [SMTP Relay](https://www.linode.com/community/questions/387/does-linode-offer-an-smtp-relay-service) through a third party. The Discourse Marketplace App **requires** an SMTP username and password for a server under your control in order to successfully complete the installation.
+Discourse requires that you have a domain name and access to a personal SMTP email server before installation. This requires either having access to a pre-existing SMTP server, or setting up an [SMTP Relay](https://www.linode.com/community/questions/387/does-linode-offer-an-smtp-relay-service) through a third party. The Discourse Quick Deploy App **requires** an SMTP username and password for a server under your control in order to successfully complete the installation.
 
   - If you don't already have your domain hosted at Linode, the install creates A and AAAA domain records for you.
 
@@ -35,7 +35,7 @@ Discourse requires that you have a domain name and access to a personal SMTP ema
 
     - You are not required to use a subdomain. Therefore, if you only setup `example.com` with no subdomain, the email used for verification would be `noreply@example.com`.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -100,7 +100,7 @@ Discourse is now installed and ready to use.
 
 ## Software Included
 
-The Discourse Marketplace App installs the following software on your Linode:
+The Discourse Quick Deploy App installs the following software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|
@@ -121,7 +121,7 @@ Ensure that you have correctly setup the [email DNS records](/docs/products/netw
 ### Change the Confirmation Email Sender
 Discourse sends this email from `noreply@subdomain.your-domain.com`. The SMTP user you entered during setup must have permissions to send from this address. If this is not the case, and you did not receive the email, you can change this address in a configuration file.
 
-1.  [Connect to your Marketplace App's Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
+1.  [Connect to your Quick Deploy App's Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Change into the directory `/var/discourse/containers/`:
 

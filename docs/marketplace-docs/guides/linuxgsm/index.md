@@ -1,10 +1,10 @@
 ---
-title: "Deploy LinuxGSM through the Linode Marketplace"
+title: "Deploy LinuxGSM"
 description: "Deploy LinuxGSM on a Linode Compute Instance. LinuxGSM is a command line utility for managing multiplayer game servers."
 published: 2024-03-19
 modified: 2024-03-22
 keywords: ['game servers','multiplayer','game']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[LinuxGSM](https://linuxgsm.com/)'
 aliases: ['/products/tools/marketplace/guides/linuxgsm/']
@@ -17,7 +17,7 @@ marketplace_app_name: "LinuxGSM"
 
 [LinuxGSM](https://linuxgsm.com/) is a command-line tool for managing game servers.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

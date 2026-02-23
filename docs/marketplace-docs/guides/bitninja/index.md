@@ -1,10 +1,10 @@
 ---
-title: "Deploy BitNinja through the Linode Marketplace"
+title: "Deploy BitNinja"
 description: "Deploy BitNinja on a Linode Compute Instance. This provides you with a general purpose security-as-a-service server defense tool powered by a social defense system."
 published: 2021-11-12
 modified: 2024-01-22
 keywords: ['spam','security','waf']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[BitNinja](https://bitninja.com/)'
 aliases: ['/products/tools/marketplace/guides/bitninja/','/guides/deploying-bitninja-marketplace-app/','/guides/bitninja-marketplace-app/']
@@ -19,7 +19,7 @@ marketplace_app_id: 923034
 marketplace_app_name: "BitNinja"
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-BitNinja has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
+BitNinja has been removed from the App Quick Deploy App and can no longer be deployed. This guide is retained for reference only.
 {{< /note >}}
 
 
@@ -29,7 +29,7 @@ BitNinja has been removed from the App Marketplace and can no longer be deployed
 BitNinja requires a valid license to use the software beyond the initial 7 day [free trial](https://registration.bitninja.io/) period. To purchase a license, visit [BitNinja's website](https://bitninja.com/pricing/) and select a plan that fits your needs. Licenses are not available directly through Linode.
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

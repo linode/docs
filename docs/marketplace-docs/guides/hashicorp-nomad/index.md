@@ -1,9 +1,9 @@
 ---
-title: "Deploy HashiCorp Nomad through the Linode Marketplace"
+title: "Deploy HashiCorp Nomad"
 description: "Deploy HashiCorp Nomad, a flexible scheduling and orchestration for diverse workloads, on a Linode Compute Instance.'"
 published: 2022-08-09
 keywords: ['HashiCorp','Nomad','Scheduling', 'orchestration']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/hashicorp-nomad/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -14,7 +14,7 @@ marketplace_app_name: "HashiCorp Nomad"
 
 [HashiCorp Nomad](https://www.nomadproject.io/) is a simple and flexible scheduler and orchestrator to deploy and manage containers and non-containerized applications across cloud platforms (and on-premises servers) at scale.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -27,7 +27,7 @@ marketplace_app_name: "HashiCorp Nomad"
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 22.04 LTS, Debian 11
-- **Recommended plan:** We recommend a 4GB Dedicated CPU or Shared Compute instance for the Nomad Server. Nomad Clients (deployed separately from this Marketplace App) can use plans of any size.
+- **Recommended plan:** We recommend a 4GB Dedicated CPU or Shared Compute instance for the Nomad Server. Nomad Clients (deployed separately from this Quick Deploy App) can use plans of any size.
 
 {{% content "marketplace-limited-user-fields-shortguide" %}}
 
@@ -49,6 +49,6 @@ marketplace_app_name: "HashiCorp Nomad"
     https://www.nomadproject.io/docs/configuration/tls#http
     {{< /note >}}
 
-1. Additional configurations are required to use the Linode Marketplace Nomad Server in a production environment. We recommend reviewing the [Configuration](https://www.nomadproject.io/docs/configuration) and [Job Spec](https://www.nomadproject.io/docs/job-specification) documentation before proceeding.
+1. Additional configurations are required to use the Linode Quick Deploy App Nomad Server in a production environment. We recommend reviewing the [Configuration](https://www.nomadproject.io/docs/configuration) and [Job Spec](https://www.nomadproject.io/docs/job-specification) documentation before proceeding.
 
 {{% content "marketplace-update-note-shortguide" %}}

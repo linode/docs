@@ -1,10 +1,10 @@
 ---
-title: "Deploy Cloudron through the Linode Marketplace"
-description: "Cloudron is a platform that makes it easy to install, manage and secure web apps on a server. Deploy Cloudron on a Linode with Marketplace Apps."
+title: "Deploy Cloudron"
+description: "Cloudron is a platform that makes it easy to install, manage and secure web apps on a server. Deploy Cloudron on a Linode with Quick Deploy Apps."
 published: 2020-12-15
 modified: 2023-01-30
 keywords: ['cloudron','web apps','platform','marketplace']
-tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
+tags: ["ubuntu","quick deploy apps", "web applications","linode platform", "cloud manager"]
 external_resources:
 - '[Cloudron Documentation](https://docs.cloudron.io)'
 aliases: ['/products/tools/marketplace/guides/cloudron/','/platform/marketplace/how-to-deploy-cloudron-with-marketplace-apps/', '/platform/one-click/how-to-deploy-cloudron-with-one-click-apps/','/guides/how-to-deploy-cloudron-with-one-click-apps/','/guides/deploy-cloudron-with-marketplace-apps/','/guides/cloudron-marketplace-app/']
@@ -21,7 +21,7 @@ marketplace_app_name: "Cloudron"
 Cloudron offers both free and paid plans. Visit [Cloudron's website](https://www.cloudron.io/pricing.html) to view available plans and pricing information.
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

@@ -1,10 +1,10 @@
 ---
-title: "Deploy a LEMP Stack through the Linode Marketplace"
-description: "This guide shows you how to use the Linode Marketplace to deploy a LEMP (Linux, NGINX, MySQL, PHP) server stack on a Linode Compute Instance."
+title: "Deploy a LEMP Stack"
+description: "This guide shows you how to use the Linode Quick Deploy App to deploy a LEMP (Linux, NGINX, MySQL, PHP) server stack on a Linode Compute Instance."
 published: 2020-03-11
 modified: 2022-03-08
 keywords: ['LEMP', 'nginx', 'web server', 'mysql', 'php']
-tags: ["lemp","nginx","cloud-manager","linode platform","php","mysql","marketplace"]
+tags: ["lemp","nginx","cloud-manager","linode platform","php","mysql","quick deploy apps"]
 image: feature.png
 external_resources:
 - '[NGINX Getting Started](https://www.nginx.com/resources/wiki/start/)'
@@ -18,7 +18,7 @@ marketplace_app_name: "LEMP"
 
 The LEMP stack (Linux, [NGINX](https://www.nginx.com/), [MySQL](https://www.mysql.com/), [PHP](https://www.php.net/)) is a popular, free, and open-source web software bundle used for hosting websites on the Linux operating system. While similar to the [LAMP Stack](/docs/marketplace-docs/guides/lamp-stack/), a LEMP stack uses the NGINX web server instead of [Apache](https://httpd.apache.org/). NGINX is preferred by many users for a variety of reasons, including its flexibility, speed, and ability to perform under high load.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -65,7 +65,7 @@ After your LEMP stack has finished deploying, you can view it and upload your ow
 
 ## Software Included
 
-The LEMP Stack Marketplace App installs the following software on your Compute Instance:
+The LEMP Stack Quick Deploy App installs the following software on your Compute Instance:
 
 | **Software** | **Description** |
 |:--------------|:------------|
@@ -76,6 +76,6 @@ The LEMP Stack Marketplace App installs the following software on your Compute I
 
 ## Going Further
 
-- [Marketplace Apps Repository](https://github.com/akamai-compute-marketplace/marketplace-apps): Review the deployment Ansible playbooks.
+- [Quick Deploy Apps Repository](https://github.com/akamai-compute-marketplace/marketplace-apps): Review the deployment Ansible playbooks.
 
 {{% content "marketplace-update-note-shortguide" %}}

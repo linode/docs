@@ -1,9 +1,9 @@
 ---
-title: "Deploying Apache Airflow through the Linode Marketplace"
+title: "Deploying Apache Airflow"
 description: "Deploy Apache Airflow on a Linode Compute Instance. This provides you with an open-source workflow management platform for data engineering pipelines."
 published: 2023-01-23
 keywords: ['airflow','workflow management','data engineering']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Apache Airflow](https://airflow.apache.org/docs/)'
 aliases: ['/products/tools/marketplace/guides/apache-airflow/']
@@ -20,7 +20,7 @@ marketplace_app_name: "Apache Airflow"
 To learn more about Airflow and determine if it's the right tool for you, read through the [What is Airflow](https://airflow.apache.org/docs/apache-airflow/stable/index.html) guide within the official Apache Airflow docs.
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -85,5 +85,5 @@ To learn more about Airflow and determine if it's the right tool for you, read t
     - [Create Connections and Variables in Apache Airflow](/docs/guides/apache-airflow-tutorial-creating-connections-and-variables/)
 
 {{< note type="warning">}}
-The Linode Marketplace app deploys Apache Airflow in standalone mode, suitable for development, testing, and initial configurations. Standalone mode is not recommended for [production deployments](https://airflow.apache.org/docs/apache-airflow/stable/production-deployment.html).
+The Linode Quick Deploy App app deploys Apache Airflow in standalone mode, suitable for development, testing, and initial configurations. Standalone mode is not recommended for [production deployments](https://airflow.apache.org/docs/apache-airflow/stable/production-deployment.html).
 {{< /note >}}

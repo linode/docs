@@ -1,10 +1,10 @@
 ---
-title: "Deploy Gitlab through the Linode Marketplace"
-description: "This is a step-by-step guide on how to deploy the GitLab application, a solution for your software development needs, by using the Linode Marketplace."
+title: "Deploy Gitlab"
+description: "This is a step-by-step guide on how to deploy the GitLab application, a solution for your software development needs, by using the Linode Quick Deploy App."
 published: 2019-03-27
 modified: 2022-03-08
 keywords: ['gitlab','marketplace apps','version control','git']
-tags: ["linode platform","version control system","marketplace","cloud-manager"]
+tags: ["linode platform","version control system","quick deploy apps","cloud-manager"]
 external_resources:
 - '[GitLab Administrator Documentation](https://docs.gitlab.com/ee/administration/)'
 - '[GitLab Official Documentation](https://docs.gitlab.com/ee/university/training/topics/getting_started.html)'
@@ -20,7 +20,7 @@ marketplace_app_name: "Gitlab"
 
 Self-hosting your software development with GitLab offers total control of your codebase. At the same time, its familiar interface will ease collaboration for you and your team. GitLab is the most popular self-hosted Git repository software, so you'll benefit from a robust set of integrated tools and an active community.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -83,7 +83,7 @@ You can now begin creating GitLab repositories, users, and more. To learn more, 
 
 ## Software Included
 
-The GitLab Marketplace App installs the following required software on your Linode:
+The GitLab Quick Deploy App installs the following required software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|

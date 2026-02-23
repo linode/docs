@@ -1,10 +1,10 @@
 ---
-title: "Deploy FileCloud through the Linode Marketplace"
-description: "This guide provides you with step-by-step instructions for deploying your own FileCloud Server on a Linode using the One-Click Marketplace Apps."
+title: "Deploy FileCloud"
+description: "This guide provides you with step-by-step instructions for deploying your own FileCloud Server on a Linode using the Quick Deploy Apps."
 published: 2020-03-18
 modified: 2024-04-16
 keywords: [ 'filecloud','marketplace', 'server']
-tags: ["cloud-manager","linode platform", "marketplace"]
+tags: ["cloud-manager","linode platform", "quick deploy apps"]
 external_resources:
 - '[FileCloud Official](https://www.getfilecloud.com/supportdocs/display/cloud/Home)'
 aliases: ['/products/tools/marketplace/guides/filecloud/','/platform/marketplace/deploy-filecloud-with-marketplace-apps/', '/platform/one-click/deploy-filecloud-with-one-click-apps/', '/guides/deploy-filecloud-with-one-click-apps/','/guides/deploy-filecloud-with-marketplace-apps/','/guides/filecloud-marketplace-app/']
@@ -16,12 +16,12 @@ marketplace_app_name: "FileCloud Community"
 deprecated: true
 ---
 {{< note type="warning" >}}
-FileCloud will no longer be providing new distribution images on the Akamai Cloud Marketplace. To continue using the latest version of FileCloud, please visit https://www.filecloud.com/filecloud-server/ to download the most recent release.
+FileCloud will no longer be providing new distribution images on the Akamai Cloud Quick Deploy App. To continue using the latest version of FileCloud, please visit https://www.filecloud.com/filecloud-server/ to download the most recent release.
 {{< /note >}}
 
 [FileCloud](https://www.filecloud.com/) is a cloud-based file-sharing application, similar to tools like Dropbox, that allows users to remotely access, upload, and sync hosted files.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

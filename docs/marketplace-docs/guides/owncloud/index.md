@@ -1,9 +1,9 @@
 ---
-title: "Deploy ownCloud Server through the Linode Marketplace"
-description: "Learn how to deploy ownCloud Server, a self-hosted file-sharing and collaboration platform on the Linode Marketplace."
+title: "Deploy ownCloud Server"
+description: "Learn how to deploy ownCloud Server, a self-hosted file-sharing and collaboration platform on the Linode Quick Deploy App."
 published: 2023-06-26
 keywords: ['owncloud','filesharing','collaboration']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[ownCloud](https://owncloud.com/)'
 aliases: ['/products/tools/marketplace/guides/owncloud/']
@@ -16,7 +16,7 @@ marketplace_app_name: "ownCloud"
 
 ownCloud is a self-hosted file sharing and collaboration platform. It allows users to securely access and share files, calendars, and contacts from any device. With ownCloud, you have complete control over your data and can easily share files with others while maintaining full privacy and security. The app is easy to configure and offers a wide range of features, including file syncing, versioning, access control, and more.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

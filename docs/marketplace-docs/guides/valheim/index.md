@@ -1,10 +1,10 @@
 ---
-title: "Deploy Valheim through the Linode Marketplace"
-description: "Deploy Valheim, an open-world Viking themed survivial game, on Linode using Marketplace Apps."
+title: "Deploy Valheim"
+description: "Deploy Valheim, an open-world Viking themed survivial game, on Linode using Quick Deploy Apps."
 published: 2021-03-09
 modified: 2024-04-29
 keywords: ['gaming','game server','valheim']
-tags: ["linode platform", "cloud manager", "marketplace"]
+tags: ["linode platform", "cloud manager", "quick deploy apps"]
 external_resources:
 - '[LinuxGSM Valheim Documentation](https://linuxgsm.com/lgsm/vhserver/)'
 - '[Valheim official website](https://www.valheimgame.com/)'
@@ -19,14 +19,14 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-Valheim has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
+Valheim has been removed from the App Quick Deploy App and can no longer be deployed. This guide is retained for reference only.
 {{< /note >}}
 
 Valheim is an open-world Viking-themed survival and sandbox game developed by [Iron Gate Studio](https://irongatestudio.se/). Play solo in single player mode, or invite your friends for player vs. environment multiplayer mode. With challenging combat, numerous boss battles, and a creative building system that lets you craft things like halls, forts, and even imposing Viking warships, there's always something to do. Explore, build, conquer, and survive. The further you travel the more challenging adventures await.
 
-Install Valheim on Linode with the Valheim Game Server Marketplace App to maximize your gaming experience.
+Install Valheim on Linode with the Valheim Game Server Quick Deploy App to maximize your gaming experience.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

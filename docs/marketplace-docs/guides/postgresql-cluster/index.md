@@ -1,9 +1,9 @@
 ---
-title: "Deploy a PostgreSQL Cluster through the Linode Marketplace"
-description: "PostgreSQL is a powerful, scalable, and standards-compliant open-source database. Here''s how to easily deploy PostgreSQL using Marketplace Apps."
+title: "Deploy a PostgreSQL Cluster"
+description: "PostgreSQL is a powerful, scalable, and standards-compliant open-source database. Here''s how to easily deploy PostgreSQL using Quick Deploy Apps."
 published: 2023-03-20
 keywords: ['database','postgresql','rdbms','relational database']
-tags: ["linode platform","postgresql","marketplace","cloud-manager"]
+tags: ["linode platform","postgresql","quick deploy apps","cloud-manager"]
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
@@ -17,11 +17,11 @@ marketplace_app_name: "PostgreSQL Cluster"
 
 The PostgreSQL relational database system is a powerful, scalable, and standards-compliant open-source database platform. It is designed to handle a range of workloads, from single machines to data warehouses or Web services with many concurrent users.
 
-{{< note type="warning" title="Marketplace App Cluster Notice" >}}
-This Marketplace App deploys 3 Compute Instances to create a highly available and redundant PostgreSQL cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy PostgreSQL on a single Compute Instance, see [Deploy PostgreSQL through the Linode Marketplace](/docs/marketplace-docs/guides/postgresql/).
+{{< note type="warning" title="Quick Deploy App Cluster Notice" >}}
+This Quick Deploy App deploys 3 Compute Instances to create a highly available and redundant PostgreSQL cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy PostgreSQL on a single Compute Instance, see [Deploy PostgreSQL](/docs/marketplace-docs/guides/postgresql/).
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-app-cluster-shortguide" %}}
 

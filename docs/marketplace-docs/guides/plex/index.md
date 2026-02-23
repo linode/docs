@@ -1,10 +1,10 @@
 ---
-title: "Deploy Plex Media Server through the Linode Marketplace"
-description: "Stream your personal media collection to nearly any device with your own Plex Media Server using Linode Marketplace Apps."
+title: "Deploy Plex Media Server"
+description: "Stream your personal media collection to nearly any device with your own Plex Media Server using Linode Quick Deploy Apps."
 published: 2020-09-28
 modified: 2025-02-19
 keywords: ['streaming','plex','video','media server']
-tags: ["debian","docker","marketplace", "web applications","linode platform", "cloud manager"]
+tags: ["debian","docker","quick deploy apps", "web applications","linode platform", "cloud manager"]
 image: Deploy_Plex_oneclickapps.png
 external_resources:
 - '[Plex Support Articles](https://support.plex.tv/articles/)'
@@ -16,13 +16,13 @@ marketplace_app_id: 662119
 marketplace_app_name: "Plex Media Server"
 ---
 
-[Plex](https://www.plex.tv/) is a feature-rich streaming platform that lets you organize and stream your own digital video and audio to your devices. This guide shows you how to deploy the [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) using Linode's Plex Marketplace App, upload media to your Plex Server, and connect to it from a Plex client application. Your Plex Media Server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this app.
+[Plex](https://www.plex.tv/) is a feature-rich streaming platform that lets you organize and stream your own digital video and audio to your devices. This guide shows you how to deploy the [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) using Linode's Plex Quick Deploy App, upload media to your Plex Server, and connect to it from a Plex client application. Your Plex Media Server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this app.
 
 ## Why Use Plex Media Server
 
 Owning a Plex Media Server enables you to maintain a personal media library in addition to accessing [Plex's own content](https://mediaverse.plex.tv/), all available to stream to nearly [any device](https://www.plex.tv/apps-devices/). The ability to stream your own media is a unique advantage over other streaming services like [Netflix](https://www.netflix.com/), and comes only at the cost of your Akamai cloud computing services. Additional features, including local downloading, bandwidth limiting, and hardware transcoding are also available through the paid [Plex Pass](https://www.plex.tv/plex-pass/) service.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -189,7 +189,7 @@ You now have all the tools you need to create an online media library and stream
 
 ## Software Included
 
-The Plex Marketplace App installs the following required software on your Linode:
+The Plex Quick Deploy App installs the following required software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|
