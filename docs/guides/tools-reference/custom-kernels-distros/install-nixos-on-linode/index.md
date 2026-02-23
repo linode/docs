@@ -32,7 +32,7 @@ NixOS is not officially supported by Linode at the time of publishing this guide
 
 ## Before You Begin
 
-Familiarize yourself with [LISH](https://www.linode.com/docs/products/compute/compute-instances/guides/lish/) and [GLISH](https://www.linode.com/docs/products/compute/compute-instances/guides/glish/) to connect to your Linode. You will use them throughout this guide.
+Familiarize yourself with [LISH](/docs/products/compute/compute-instances/guides/lish/) and [GLISH](/docs/products/compute/compute-instances/guides/glish/) to connect to your Linode. You will use them throughout this guide.
 
 The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for NixOS. It explores the concepts at a high level and serves as a reference for some system configuration concepts.
 
