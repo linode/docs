@@ -1,6 +1,6 @@
 ---
 title: "Deploy LiveSwitch"
-description: "Learn how to deploy LiveSwitch Server, an enterprise video streaming service,."
+description: "Learn how to deploy LiveSwitch Server, an enterprise video streaming service."
 published: 2022-05-31
 modified: 2025-05-19
 keywords: ['liveswitch','streaming','video']

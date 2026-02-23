@@ -1,6 +1,6 @@
 ---
 title: "Deploy Django"
-description: "Learn how to deploy Django, a web framework that provides much of the core functionality required in modern web development,"
+description: "Learn how to deploy Django, a web framework that provides much of the core functionality required in modern web development."
 published: 2020-03-11
 modified: 2025-10-13
 keywords: ['django','marketplace', 'cms']

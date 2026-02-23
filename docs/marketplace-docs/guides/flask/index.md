@@ -1,6 +1,6 @@
 ---
 title: "Deploy Flask"
-description: "Learn how to deploy Flask, a quick and light-weight web framework for Python,."
+description: "Learn how to deploy Flask, a quick and light-weight web framework for Python."
 published: 2020-03-11
 modified: 2025-02-12
 keywords: ['flask','python','marketplace']

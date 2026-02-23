@@ -1,6 +1,6 @@
 ---
 title: "Deploy PostgreSQL"
-description: "PostgreSQL is a powerful, scalable, and standards-compliant open-source database. Here''s how to easily deploy PostgreSQL using Quick Deploy Apps."
+description: "PostgreSQL is a powerful, scalable, and standards-compliant open-source database. Here's how to easily deploy PostgreSQL using Quick Deploy Apps."
 published: 2020-03-17
 modified: 2025-03-05
 keywords: ['database','postgresql','rdbms','relational database']

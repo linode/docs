@@ -1,6 +1,6 @@
 ---
 title: "Deploy Virtualmin"
-description: "Virtualmin is an open source control panel for web hosting management. Deploy a Virtualmin server using Linode''s Quick Deploy Apps."
+description: "Virtualmin is an open source control panel for web hosting management. Deploy a Virtualmin server using Linode's Quick Deploy Apps."
 published: 2020-09-28
 modified: 2024-04-29
 keywords: ['virtualmin','control panel','dashboard','marketplace']

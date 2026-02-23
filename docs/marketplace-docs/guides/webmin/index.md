@@ -1,6 +1,6 @@
 ---
 title: "Deploy Webmin"
-description: "Webmin is an open source interface for Unix system administration. Deploy Webmin using Linode''s Quick Deploy Apps."
+description: "Webmin is an open source interface for Unix system administration. Deploy Webmin using Linode's Quick Deploy Apps."
 published: 2020-09-28
 modified: 2024-04-29
 keywords: ['webmin','system administration','marketplace']
@@ -21,7 +21,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-Webmin has been removed from the App Quick Deploy App and can no longer be deployed. This guide is retained for reference only.
+Webmin has been removed from Quick Deploy Apps and can no longer be deployed. This guide is retained for reference only.
 {{< /note >}}
 
 [Webmin](http://www.webmin.com) is an open source interface for Unix system administration that offers an easy to use graphical interface for managing user accounts, DNS, file sharing, and more. Webmin alleviates the need to use the command line to edit Unix system configuration files and lets you configure your system easily from a simple web interface.

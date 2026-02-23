@@ -1,6 +1,6 @@
 ---
 title: "Deploy Valheim"
-description: "Deploy Valheim, an open-world Viking themed survivial game, on Linode using Quick Deploy Apps."
+description: "Deploy Valheim, an open-world Viking themed survival game, on Linode using Quick Deploy Apps."
 published: 2021-03-09
 modified: 2024-04-29
 keywords: ['gaming','game server','valheim']

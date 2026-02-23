@@ -1,6 +1,6 @@
 ---
 title: "Deploy Ruby on Rails"
-description: "This guide provides you with installation and configuration instructions for deploying Ruby on Rails using the Lindoe One-Click Apps Quick Deploy App."
+description: "This guide provides you with installation and configuration instructions for deploying Ruby on Rails using the Linode One-Click Apps Quick Deploy App."
 published: 2020-03-11
 modified: 2025-06-03
 keywords: ['ruby on rails','marketplace', 'marketplace apps']

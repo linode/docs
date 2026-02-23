@@ -1,6 +1,6 @@
 ---
 title: "Deploy OpenVPN"
-description: "This guide shows you how to configure and deploy your own private and secure OpenVPN Server on a Linude using the Quick Deploy Application."
+description: "This guide shows you how to configure and deploy your own private and secure OpenVPN Server on a Linode using the Quick Deploy Application."
 published: 2019-04-05
 modified: 2024-01-30
 keywords: ['vpn','openvpn','tunnel','marketplace app']
