@@ -1,10 +1,10 @@
 ---
-title: "Deploy Qwen Instruct with Open WebUI through the Linode Marketplace"
+title: "Deploy Qwen Instruct with Open WebUI"
 description: "This guide includes instructions on how to deploy Open WebUI with a self-hosted Qwen Instruct Large Language Model (LLM) on an Akamai Compute Instance."
 published: 2026-02-18
 modified: 2026-02-18
 keywords: ['qwen', 'qwen-instruct', 'open-webui', 'vllm', 'ai', 'llm', 'llm-inference', 'qwen-llm']
-tags: ["marketplace", "linode platform", "cloud manager", "ai", "llm-inference", "llm"]
+tags: ["quick deploy apps", "linode platform", "cloud manager", "ai", "llm-inference", "llm"]
 aliases: ['/products/tools/marketplace/guides/qwen-instruct-with-openwebui/']
 external_resources:
 - '[Open WebUI Documentation](https://docs.openwebui.com/getting-started/)'
@@ -20,7 +20,7 @@ Open WebUI is an open-source, self-hosted web interface for interacting with and
 
 The Marketplace application deployed in this guide uses a Qwen Instruct model as an instruction-tuned, open-weight LLM optimized for reasoning, code generation, and conversational tasks. Qwen models are designed for high-quality inference across a wide range of general-purpose and technical workloads and integrate seamlessly with self-hosted platforms like Open WebUI.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
