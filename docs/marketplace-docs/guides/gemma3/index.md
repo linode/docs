@@ -4,7 +4,7 @@ description: "Learn how to deploy Gemma3, the  open-source generative AI model f
 published: 2026-02-11
 modified: 2026-02-11
 keywords: ['artificial intelligence','ai','LLM','machine learning','gemma','open webui']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Gemma3 Official Documentation](https://ai.google.dev/gemma/docs/core)'
 - '[Google Gemma 3 4B Model](https://huggingface.co/google/gemma-3-4b-it)'
