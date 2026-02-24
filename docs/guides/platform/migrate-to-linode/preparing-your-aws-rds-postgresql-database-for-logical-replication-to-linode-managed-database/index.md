@@ -1,347 +1,421 @@
 ---
 slug: preparing-your-aws-rds-postgresql-database-for-logical-replication-to-linode-managed-database
 title: "Preparing Your AWS RDS PostgreSQL Database for Logical Replication to Linode Managed Database"
-description: "Two to three sentences describing your guide."
-og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
+description: "Prepare your Amazon RDS for PostgreSQL database for logical replication to a Linode Managed Database. Configure replication parameters, network access, and a replication user."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-10-10
-keywords: ['list','of','keywords','and key phrases']
+published: 2026-02-18
+keywords: ['aws rds postgresql logical replication','linode managed database','rds parameter group','pg_publication','aws replication setup']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[Setting up PostgreSQL logical replication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_MultiAZDBCluster_LogicalRepl.html#multi-az-db-clusters-logical-replication)'
+- '[Parameter groups for Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html)'
+- '[CLI documentation for AWS RDS](https://docs.aws.amazon.com/cli/latest/reference/rds/)'
 ---
 
-This guide explains how to prepare an AWS RDS PostgreSQL database for logical replication to a Linode Managed Database. If you're following the "Logical Replication to a Linode Managed PostgreSQL Database" guide, use this document to complete the AWS-side preparation before returning to create the subscription on Linode.
+[Logical replication](https://www.postgresql.org/docs/current/logical-replication.html) continuously synchronizes database tables, allowing you to prepare the destination database in advance. This approach minimizes downtime when you switch application traffic and retire the source database.
 
-Following the steps in this guide will help you to:
+This guide explains how to prepare an AWS RDS PostgreSQL database for logical replication to a [Linode Managed Database](https://www.linode.com/products/databases/). Follow this guide before returning to the [Logical Replication to a Linode Managed PostgreSQL Database](/docs/guides/logical-replication-to-a-linode-managed-postgresql-database/) guide to [create the subscription](https://www.postgresql.org/docs/current/sql-createsubscription.html) on Akamai Cloud.
 
-1.  Configure your RDS instance to support logical replication.
-1.  Ensure secure network access from Linode.
-1.  Create a dedicated replication user.
-1.  Set up a publication for the tables you wish to replicate.
+Follow the steps in this guide to:
 
-After completing these steps, return to the main replication guide to configure the subscriber and finalize the setup.
+-   Configure your RDS instance to support logical replication.
+-   Ensure secure network access from Linode.
+-   Create a dedicated replication user.
+-   Set up a publication for the tables you wish to replicate.
 
-## Prerequisites
+After completing these steps, return to [Logical Replication to a Linode Managed PostgreSQL Database](/docs/guides/logical-replication-to-a-linode-managed-postgresql-database/) to configure the subscriber and finalize the setup.
 
-You will need administrative access to your AWS account, including permissions to modify RDS instance settings and security groups. You’ll also need the AWS CLI installed and configured—with a user or role that has the necessary privileges.
+## Before You Begin
 
-In addition, you should have the IP address or CIDR range for the host machine of your Linode Managed Database so you can configure inbound access on the RDS instance.
+1.  Follow the [Logical Replication to a Linode Managed PostgreSQL Database](/docs/guides/logical-replication-to-a-linode-managed-postgresql-database/) guide up to the **Prepare the Source Database for Logical Replication** section to obtain the public IP address or CIDR range of your Linode Managed Database.
 
-## Modify the RDS Parameter Group
+1.  Ensure that you have administrative access to your AWS account, including permissions to modify RDS instance settings and security groups.
 
-To support logical replication, you must configure your RDS instance with the correct parameter settings. Follow these steps:
+1.  Install the AWS CLI on your local machine and configure it with a user or role that has the necessary privileges listed above.
 
-### Step 1: Locate Your RDS Instance’s Parameter Group
+### Placeholders and Examples
 
-In the AWS Management Console, go to **RDS > Databases**. Select your instance and look under the **Configuration** tab to find the associated DB instance parameter group (not to be confused with the "option group"). Click on the parameter group.
+The following placeholders and example values are used in commands throughout this guide:
 
-![](image5.png)
+| Parameter | Placeholder | Example Value |
+|------------|--------------|----------------|
+| AWS RDS Instance ID | {{< placeholder "DB_INSTANCE_ID" >}} | `source-postgres` |
+| AWS Region | {{< placeholder "AWS_REGION" >}} | `us-west-2` |
+| AWS Security Group ID | {{< placeholder "SECURITY_GROUP_ID" >}} | `sg-78944f70` |
+| Destination IP Address | {{< placeholder "DEST_IP" >}} | `172.232.188.122` |
+| Source Hostname (RDS Endpoint) | {{< placeholder "SOURCE_HOST" >}} | `source-postgres.abc123.us-west-2.rds.amazonaws.com` |
+| Source Port | {{< placeholder "SOURCE_PORT" >}} | `5432` |
+| Source Username | {{< placeholder "SOURCE_USER" >}} | `democoder` |
+| Source Database | {{< placeholder "SOURCE_DB" >}} | `postgres` |
+| Source Password | {{< placeholder "SOURCE_PASSWORD" >}} | `thisismysourcepassword` |
+| Replication Username | {{< placeholder "REPL_USER" >}} | `linode_replicator` |
+| Replication Password | {{< placeholder "REPL_PASSWORD" >}} | `thisismyreplicatorpassword` |
+| Publication Name | {{< placeholder "PUBLICATION_NAME" >}} | `my_publication` |
 
-When using the `aws` CLI, obtain the name of the parameter group with the following command:
+Replace these placeholders with your own connection details when running commands in your environment.
 
-```command {title="Retrieve name of parameter group for RDS instance"}
-aws rds describe-db-instances \
-  --db-instance-identifier {{< placeholder "DB_INSTANCE_ID" >}} \
-  --region {{< placeholder "AWS-REGION" >}} \
-  --query "DBInstances[0].DBParameterGroups[*].DBParameterGroupName"
-```
+Additionally, the examples used in this guide assume the source database contains three tables (`customers`, `products`, and `orders`) that you want to replicate to a Linode Managed Database.
 
-```output
-[
-  "default.postgres16"
-]
-```
+## Configure RDS Parameter Group
 
-### Step 2: Review Current Parameter Settings
+To support logical replication, you must configure your RDS instance with the correct parameter settings. Review your RDS instance’s current parameter group settings to determine if changes are required:
 
-In the list of parameters, filter the parameters to find the values for `rds.logical_replication`, `max_replication_slots`, and `max_wal_senders`. For example:
+{{< tabs >}}
+{{< tab "AWS Console" >}}
+1.  In the AWS Management Console, navigate to **RDS > Databases** and select your instance.
 
-![](image???)
+1.  Open the **Configuration** tab and select the associated **DB instance parameter group** (not to be confused with the **option group**):
 
-The values should be:
+    ![AWS RDS database configuration page showing the DB instance parameter group link.](aws-rds-db-parameter-group-link.png)
 
--   `rds.logical_replication`: 1 (which will subsequently set the PostgreSQL setting of `wal_level` to `logical`).
--   `max_replication_slots`: Greater than or equal to 1
+1.  Filter the list of parameters to find the values for `rds.logical_replication`, `max_replication_slots`, and `max_wal_senders`:
+
+    ![AWS RDS parameter group settings filtered to show rds.logical_replication, max_replication_slots, and max_wal_senders.](aws-rds-parameter-group-logical-replication-settings.png)
+
+{{< /tab >}}
+{{< tab "AWS CLI" >}}
+1.  Run the following `aws` CLI command to obtain the name of the parameter group, replacing {{< placeholder "DB_INSTANCE_ID" >}} (e.g., `source-postgres`) and {{< placeholder "AWS_REGION" >}} (e.g., `us-west-2`) with your own values:
+
+    ```command
+    aws rds describe-db-instances \
+      --db-instance-identifier {{< placeholder "DB_INSTANCE_ID" >}} \
+      --region {{< placeholder "AWS_REGION" >}} \
+      --query "DBInstances[0].DBParameterGroups[*].DBParameterGroupName"
+    ```
+
+    ```output
+    [
+      "default.postgres16"
+    ]
+    ```
+
+1.  Use the `describe-db-parameters` subcommand to obtain the parameter values for a given parameter group (e.g., `default.postgres16`):
+
+    ```command
+    aws rds describe-db-parameters \
+      --region {{< placeholder "AWS_REGION" >}} \
+      --db-parameter-group-name default.postgres16 \
+      --query "Parameters[?ParameterName=='rds.logical_replication' || ParameterName=='max_replication_slots' || ParameterName=='max_wal_senders'].[ParameterName, ParameterValue, ApplyType, Description]"
+    ```
+
+    ```output
+    [
+      [
+        "max_replication_slots",
+        "20",
+        "static",
+        "Sets the maximum number of replication slots that the server can support."
+      ],
+      [
+        "max_wal_senders",
+        "35",
+        "static",
+        "Sets the maximum number of simultaneously running WAL sender processes."
+      ],
+      [
+        "rds.logical_replication",
+        "0",
+        "static",
+        "Enables logical decoding."
+      ]
+    ]
+    ```
+{{< /tab >}}
+{{< /tabs >}}
+
+In order for logical replication to succeed, these values should be as follows:
+
+-   `max_replication_slots`: Greater than or equal to `1`
 -   `max_wal_senders`: Greater than or equal to `max_replication_slots`, depending on expected replication concurrency
+-   `rds.logical_replication`: `1` (which sets the PostgreSQL setting of `wal_level` to `logical`)
 
-To determine the parameter values for a given parameter group, use the `describe-db-parameters` subcommand. For example:
+If these values are already set correctly, skip the remainder of this section and continue with **Configure Network Access**. Otherwise, you need to modify the parameter group using the instructions below.
 
-```command {title="Obtain parameter values for a given parameter group"}
-aws rds describe-db-parameters \
-  --region {{< placeholder "AWS_REGION" >}} \
-  --db-parameter-group-name {{< placeholder "PARAMETER_GROUP_NAME" >}} \
-  --query "Parameters[?ParameterName=='rds.logical_replication' || ParameterName=='max_replication_slots' || ParameterName=='max_wal_senders'].[ParameterName, ParameterValue, ApplyType, Description]"
-```
+### Create a Custom Parameter Group
 
-```output
-[
-  [
-    "max_replication_slots",
-    "20",
-    "static",
-    "Sets the maximum number of replication slots that the server can support."
-  ],
-  [
-    "max_wal_senders",
-    "35",
-    "static",
-    "Sets the maximum number of simultaneously running WAL sender processes."
-  ],
-  [
-    "rds.logical_replication",
-    "0",
-    "static",
-    "Enables logical decoding."
-  ]
-]
-```
+The default parameter group cannot be modified. If your RDS instance is using the default parameter group, you must create a custom parameter group to make the necessary modifications.
 
-If these are already set correctly, you can skip ahead in this guide. Otherwise, you will need to modify the parameter group.
+{{< tabs >}}
+{{< tab "AWS Console" >}}
+1.  Navigate to **Parameter groups** and select **Create parameter group** to create a new custom parameter group.
 
-### Step 3: Determine If the Parameter Group Is Modifiable
+1.  Adjust the following fields to create a parameter group that begins with values that match the default parameter group:
 
-Your RDS instance may be using the default parameter group. You can determine this under the **Details** for this parameter group to see if it is "Default" or "Custom".
+    -   **Parameter group name**: Specify a name (e.g., `with-logical-replication-on`).
+    -   **Description**: Provide a description (e.g., `sets wal_level to logical`).
+    -   **Engine type**: Choose **PostgreSQL**.
+    -   **Parameter group family**: Choose based on the PostgreSQL version used by your RDS instance (e.g., **postgres16**).
 
-![](image2.png)
+1.  When done, click **Create**:
 
-The default parameter groups cannot be modified. If your RDS instance is using the default parameter group, you will need to create a custom parameter group to make the necessary modifications.
+    ![AWS console form for creating a custom RDS PostgreSQL parameter group.](aws-rds-create-custom-parameter-group.png)
 
-Create a new custom parameter group by navigating to **Parameter groups**. Click **Create parameter group**. Specify a name and description for the parameter group. Choose "PostgreSQL" for the engine type, then choose the appropriate parameter group family based on the version of PostgreSQL used by your RDS instance. Click **Create**.
+1.  On the details page for the newly created parameter group, click **Edit**.
 
-![](image6.png)
+1.  Search for each of the three parameters that may need modification and set their values as required:
 
-This creates a parameter group that begins with values that match the default parameter group.
+    -   `max_replication_slots`: Greater than or equal to `1`
+    -   `max_wal_senders`: Greater than or equal to `max_replication_slots`, depending on expected replication concurrency
+    -   `rds.logical_replication`: `1` (which sets the PostgreSQL setting of `wal_level` to `logical`)
 
-You can also create the parameter group with the CLI. For example:
+1.  When done, click **Save Changes**:
 
-```command {title="Create a new parameter group based on the postgres16 parameter group family"}
-aws rds create-db-parameter-group \
-  --region {{< placeholder "AWS_REGION" >}} \
-  --db-parameter-group-name with-logical-replication-on \
-  --db-parameter-group-family postgres16 \
-  --description "sets wal_level to logical"
-```
+    ![AWS RDS parameter group editor showing logical replication and WAL-related parameter values.](aws-rds-edit-parameter-group-values.png)
 
-```output
-{
-  "DBParameterGroup": {
-    "DBParameterGroupName": "with-logical-replication-on",
-    "DBParameterGroupFamily": "postgres16",
-    "Description": "sets wal_level to logical",
-    ...
-  }
-}
-```
+1.  Navigate to **Databases**, select your instance, and choose **Modify**.
 
-On the details page for the newly created parameter group, click **Edit**. Find each of the three parameters that may need modification. Set the values as required. Click **Save Changes**.
+1.  Under **Additional configuration**, set the **DB parameter group** to your newly created parameter group:
 
-![](image8.png)
+    ![AWS RDS modify database instance page showing selection of a custom DB parameter group.](aws-rds-attach-parameter-group-to-instance.png)
 
-With the CLI, you can set parameter values as follows:
+1.  Click **Continue**, select **Apply immediately** for the modification schedule, then click **Modify DB instance**.
 
-```command {title="Modify parameter values for a custom parameter group"}
-aws rds modify-db-parameter-group \
-  --region {{< placeholder "AWS_REGION" >}} \
-  --db-parameter-group-name with-logical-replication-on \
-  --parameters \
-"ParameterName=rds.logical_replication,ParameterValue=1,ApplyMethod=pending-reboot" \
-"ParameterName=max_replication_slots,ParameterValue=10,ApplyMethod=pending-reboot" \
-"ParameterName=max_wal_senders,ParameterValue=10,ApplyMethod=pending-reboot"
-```
+1.  Reboot the RDS instance to apply the changes.
+{{< /tab >}}
+{{< tab "AWS CLI" >}}
+1.  Create a new parameter group based on the `postgres16` parameter group family:
 
-### Step 4: Associate the Parameter Group with Your RDS Instance
+    ```command
+    aws rds create-db-parameter-group \
+      --region {{< placeholder "AWS_REGION" >}} \
+      --db-parameter-group-name with-logical-replication-on \
+      --db-parameter-group-family postgres16 \
+      --description "sets wal_level to logical"
+    ```
 
-Navigate to **Databases**, select your instance, and choose **Modify**. Under **Additional configuration**, set the DB parameter group to your modified (or newly created) parameter group.
+    This creates a parameter group that begins with values that match the default parameter group:
 
-![](image1.png)
+    ```output
+    {
+      "DBParameterGroup": {
+        "DBParameterGroupName": "with-logical-replication-on",
+        "DBParameterGroupFamily": "postgres16",
+        "Description": "sets wal_level to logical",
+        ...
+      }
+    }
+    ```
 
-Click **Continue**. For the modification schedule, select **Apply immediately**, then click **Modify DB instance**.
+1.  Modify parameter values for a custom parameter group as follows:
 
-With the AWS CLI, run the following command to associate your RDS instance with the parameter group:
+    ```command
+    aws rds modify-db-parameter-group \
+      --region {{< placeholder "AWS_REGION" >}} \
+      --db-parameter-group-name with-logical-replication-on \
+      --parameters \
+    "ParameterName=rds.logical_replication,ParameterValue=1,ApplyMethod=pending-reboot" \
+    "ParameterName=max_replication_slots,ParameterValue=10,ApplyMethod=pending-reboot" \
+    "ParameterName=max_wal_senders,ParameterValue=10,ApplyMethod=pending-reboot"
+    ```
 
-```command {title="Modify parameter group for an RDS instance"}
-aws rds modify-db-instance \
-  --region {{< placeholder "AWS_REGION" >}} \
-  --db-instance-identifier {{< placeholder "DB-INSTANCE-ID" >}} \
-  --db-parameter-group-name {{< placeholder "PARAMETER_GROUP_NAME" >}} \
-  --apply-immediately
-```
+1.  Associate your RDS instance with the parameter group:
 
-### Step 5: Reboot the RDS Instance
+    ```command
+    aws rds modify-db-instance \
+      --region {{< placeholder "AWS_REGION" >}} \
+      --db-instance-identifier {{< placeholder "DB_INSTANCE_ID" >}} \
+      --db-parameter-group-name with-logical-replication-on \
+      --apply-immediately
+    ```
 
-After applying the parameter group, reboot the database to apply the changes. For example
+1.  Reboot the RDS instance to apply the changes:
 
-```command {title="Reboot RDS instance"}
-aws rds reboot-db-instance \
-  --region {{< placeholder "AWS_REGION" >}} \
-  --db-instance-identifier {{< placeholder "DB_INSTANCE_ID" >}}
-```
+    ```command
+    aws rds reboot-db-instance \
+      --region {{< placeholder "AWS_REGION" >}} \
+      --db-instance-identifier {{< placeholder "DB_INSTANCE_ID" >}}
+    ```
+{{< /tab >}}
+{{< /tabs >}}
 
 ## Configure Network Access
 
-Before the Linode Managed Database can connect to your RDS instance, you must ensure that the RDS instance allows network access from the Linode database host.
+Ensure that the RDS instance allows network access from the Linode Managed Database.
 
-Under **Connectivity & security** for your database instance, find and click on the security group associated with the instance.
+{{< tabs >}}
+{{< tab "AWS Console" >}}
+1.  Under **Connectivity & security** for your database instance, find and click on the security group associated with the instance.
 
-To get the name of the security group with the AWS CLI, run the following command:
+1.  Examine the inbound rules for the security group. If an existing rule allows access from `0.0.0.0/0`, your Linode Managed Database should already have access. Otherwise, you must create one.
 
-```command {title="Retrieve name of security group for RDS instance"}
-aws rds describe-db-instances \
-  --db-instance-identifier {{< placeholder "DB_INSTANCE_ID" >}} \
-  --region {{< placeholder "AWS_REGION" >}} \
-  --query "DBInstances[0].{SecurityGroups:VpcSecurityGroups[*].VpcSecurityGroupId}"
-```
+1.  Click **Edit inbound rules**, then click **Add rule**.
 
-```output
-{
-    "SecurityGroups": [
-        "sg-78944f70"
-    ]
-}
-```
+1.  Set the rule type to "PostgreSQL" (TCP protocol to port `5432`). For source, add the CIDR block of your Linode Managed Database.
 
-Examine the inbound rules for the security group. With the CLI, use the following command:
+    ![AWS security group inbound rule allowing PostgreSQL traffic on port 5432 from a Linode Managed Database IP address.](aws-security-group-postgresql-inbound-rule.png)
 
-```command {title="Retrieve inbound rules for a security group"}
-aws ec2 describe-security-groups \
-  --group-ids sg-78944f70 \
-  --region {{< placeholder "AWS_REGION" >}} \
-  --query "SecurityGroups[0].IpPermissions"
-```
+1.  Click **Save rules**.
+{{< /tab >}}
+{{< tab "AWS CLI" >}}
+1.  Retrieve the name of the security group for your RDS instance:
 
-```output
-[
-  {
-    "FromPort": 5432,
-    "IpProtocol": "tcp",
-    "IpRanges": [
+    ```command
+    aws rds describe-db-instances \
+      --db-instance-identifier {{< placeholder "DB_INSTANCE_ID" >}} \
+      --region {{< placeholder "AWS_REGION" >}} \
+      --query "DBInstances[0].{SecurityGroups:VpcSecurityGroups[*].VpcSecurityGroupId}"
+    ```
+
+    This value is used as {{< placeholder "SECURITY_GROUP_ID" >}} in the following command:
+
+    ```output
+    {
+        "SecurityGroups": [
+            "sg-78944f70"
+        ]
+    }
+    ```
+
+1.  Retrieve inbound rules for a security group:
+
+    ```command
+    aws ec2 describe-security-groups \
+      --group-ids {{< placeholder "SECURITY_GROUP_ID" >}} \
+      --region {{< placeholder "AWS_REGION" >}} \
+      --query "SecurityGroups[0].IpPermissions"
+    ```
+
+    Examine the inbound rules for the security group:
+
+    ```output
+    [
       {
-        "CidrIp": "..."
+        "FromPort": 5432,
+        "IpProtocol": "tcp",
+        "IpRanges": [
+          {
+            "CidrIp": "..."
+          },
+          {
+            "CidrIp": "..."
+          }
+        ],
+        "Ipv6Ranges": [],
+        "PrefixListIds": [],
+        "ToPort": 5432,
+        "UserIdGroupPairs": []
       },
-      {
-        "CidrIp": "..."
-      }
-    ],
-    "Ipv6Ranges": [],
-    "PrefixListIds": [],
-    "ToPort": 5432,
-    "UserIdGroupPairs": []
-  },
-  ...
-]
-```
+      ...
+    ]
+    ```
 
-If an existing rule already allows access from `0.0.0.0/0`, then your Linode Managed Database likely already has access. However, it’s considered a security best practice to scope access more narrowly when possible.
+    If an existing rule allows access from `0.0.0.0/0`, your Linode Managed Database should already have access. Otherwise, you must create one.
 
-If no rule exists that would allow access by our Linode Managed Database, click **Edit inbound rules**. Then, click **Add rule**. Set the rule type to "PostgreSQL" (TCP protocol to port `5432`). For source, add the CIDR block of your Linode Managed Database host.
+1.  Add a firewall rule allowing access from your Linode Managed Database. Replace {{< placeholder "DEST_IP" >}} with the IP address from [Logical Replication to a Linode Managed PostgreSQL Database](/docs/guides/logical-replication-to-a-linode-managed-postgresql-database/) (e.g., `172.232.188.122`):
 
-![](image7.png)
+    ```command
+    aws ec2 authorize-security-group-ingress \
+      --group-id {{< placeholder "SECURITY_GROUP_ID" >}} \
+      --region {{< placeholder "AWS_REGION" >}} \
+      --protocol tcp \
+      --port 5432 \
+      --cidr {{< placeholder "DEST_IP" >}}/32
+    ```
+{{< /tab >}}
+{{< /tabs >}}
 
-Click **Save rules**.
-
-Using the AWS CLI, you would run the following command to add the inbound rule:
-
-```command {title="Add a CIDR block to allow inbound PostgreSQL traffic"}
-aws ec2 authorize-security-group-ingress \
-  --group-id sg-78944f70 \
-  --region {{< placeholder "AWS_REGION" >}} \
-  --protocol tcp \
-  --port 5432 \
-  --cidr 172.232.188.122/32
-```
-
-With network access configured, your Linode Managed Database should be able to reach the RDS instance during the subscription creation step in the main guide.
+With network access configured, your Linode Managed Database can reach the RDS instance during the subscription creation step in [Logical Replication to a Linode Managed PostgreSQL Database](/docs/guides/logical-replication-to-a-linode-managed-postgresql-database/).
 
 ## Create a Replication User
 
-While logical replication can technically be performed using the master user, it's strongly recommended to create a dedicated user with the `REPLICATION` privilege and appropriate access to the tables being published. Follow these steps to create this limited-privileges user on your RDS instance.
+While logical replication can technically be performed using the primary database user, it's best practice to create a dedicated replication user. This user should have the `rds_replication` privilege and `SELECT` access only to the tables being published.
 
-Connect to your RDS PostgreSQL instance using the `psql` client. The default database name for RDS PostgreSQL instances is `postgres`.
+Follow the steps below to create this limited-privileges user on your RDS instance.
 
-```command
-psql -h {{< placeholder "RDS_ENDPOINT" >}} -p {{< placeholder "RDS_PORT" >}} -U {{< placeholder "MASTER_USERNAME" >}} -d postgres
-```
+1.  Before connecting to your source database, determine the RDS endpoint hostname:
 
-Create a user, then grant it replication privileges. In RDS, this means attaching the `rds_replication` role. Then, grant SELECT privileges for the tables you plan to replicate. For example:
+    ```command
+    aws rds describe-db-instances \
+      --region {{< placeholder "AWS_REGION" >}} \
+      --db-instance-identifier {{< placeholder "DB_INSTANCE_ID" >}} \
+      --query "DBInstances[0].Endpoint.Address" \
+      --output text
+    ```
 
-```command {title="Create user and grant privileges"}
-CREATE ROLE linode_replicator LOGIN PASSWORD 'thisismyreplicatorpassword';
-GRANT rds_replication TO linode_replicator;
-GRANT SELECT ON customers, products, orders TO linode_replicator;
-```
+    This value is used as {{< placeholder "SOURCE_HOST" >}} in the following command:
 
-```output
-CREATE ROLE
-GRANT ROLE
-GRANT
-```
+    ```output
+    source-postgres.abc123.us-west-2.rds.amazonaws.com
+    ```
 
-Replace the table names with your actual schema as needed. For simplicity, this example assumes a public schema and three tables typically found in an ecommerce database. Alternatively, you can grant privileges on all tables with the following command:
+1.  Connect to your source PostgreSQL instance using the `psql` client. Replace {{< placeholder "SOURCE_HOST" >}} (e.g., `source-postgres.abc123.us-west-2.rds.amazonaws.com`), {{< placeholder "SOURCE_PORT" >}} (e.g., `5432`), {{< placeholder "SOURCE_USER" >}} (e.g., `democoder`), and {{< placeholder "SOURCE_DB" >}} (e.g., `postgres`) with your own values. You can find the endpoint on the **Connectivity & security** tab of your RDS instance. The default database name for RDS PostgreSQL instances is `postgres`.
 
-```command {title="Grant select privileges on all tables"}
-GRANT SELECT ON ALL TABLES in SCHEMA public to linode_replicator;
-```
+    ```command
+    psql \
+      -h {{< placeholder "SOURCE_HOST" >}} \
+      -p {{< placeholder "SOURCE_PORT" >}} \
+      -U {{< placeholder "SOURCE_USER" >}} \
+      -d {{< placeholder "SOURCE_DB" >}}
+    ```
 
-The newly created user (for example: `linode_replicator`) will be referenced by the Linode Managed Database when creating the subscription.
+    When prompted, enter your {{< placeholder "SOURCE_PASSWORD" >}} (e.g., `thisismysourcepassword`).
+
+1.  Run the following commands from the source `psql` prompt. Replace {{< placeholder "REPL_USER" >}} (e.g., `linode_replicator`) and {{< placeholder "REPL_PASSWORD" >}} (e.g., `thisismyreplicatorpassword`) with your own values. For simplicity, this example assumes a public schema and three sample tables (customers, products, and orders). Replace the table names with your actual schema as needed.
+
+    ```command {title="Source psql Prompt"}
+    CREATE ROLE {{< placeholder "REPL_USER" >}} LOGIN PASSWORD '{{< placeholder "REPL_PASSWORD" >}}';
+    GRANT rds_replication TO {{< placeholder "REPL_USER" >}};
+    GRANT SELECT ON customers, products, orders TO {{< placeholder "REPL_USER" >}};
+    ```
+
+    ```output
+    CREATE ROLE
+    GRANT ROLE
+    GRANT
+    ```
+
+    {{< note type="secondary" title="Alternative: Grant on All Tables" isCollapsible=yes >}}
+    You can also grant privileges on *all* tables with the following command:
+
+    ```command {title="Source psql Prompt"}
+    GRANT SELECT ON ALL TABLES IN SCHEMA public TO {{< placeholder "REPL_USER" >}};
+    ```
+
+    ```output
+    GRANT
+    ```
+    {{< /note >}}
+
+The newly created user is referenced by the Linode Managed Database when creating the subscription in [Logical Replication to a Linode Managed PostgreSQL Database](/docs/guides/logical-replication-to-a-linode-managed-postgresql-database/).
 
 ## Create a Publication
 
-A publication defines which tables and changes (inserts, updates, deletes) should be streamed to the subscriber. You'll need at least one publication for logical replication.
+A publication defines which tables and changes (e.g., `INSERT`, `UPDATE`, and `DELETE`) should be streamed to the subscriber. At least one publication is required for logical replication, and the subscriber must have matching tables with compatible schemas for replication to succeed.
 
-While still connected via the `psql` client, create a publication for specific tables. For example:
+1.  While still connected to your source database via the `psql` client, use the following command to create a publication. Replace {{< placeholder "PUBLICATION_NAME" >}} (e.g., `my_publication`) and the specific tables you want to replicate (e.g., `customers`, `products`, and `orders`):
 
-```command {title="PostgreSQL command to create a publication for specific tables"}
-CREATE PUBLICATION my_publication FOR TABLE customers, products, orders;
-```
+    ```command {title="Source psql Prompt"}
+    CREATE PUBLICATION {{< placeholder "PUBLICATION_NAME" >}} FOR TABLE customers, products, orders;
+    ```
 
-Alternatively, you can create a publication for all current and future tables in the database:
+    ```output
+    CREATE PUBLICATION
+    ```
 
-```command {title="PostgreSQL command to create a publication for all tables"}
-CREATE PUBLICATION my_publication FOR ALL TABLES;
-```
+    {{< note type="secondary" title="Alternative: Publish All Tables" isCollapsible=yes >}}
+    You can also create a publication for *all* tables in the database:
 
-The subscriber must have matching tables with compatible schemas for replication to succeed.
+    ```command {title="Source psql Prompt"}
+    CREATE PUBLICATION {{< placeholder "PUBLICATION_NAME" >}} FOR ALL TABLES;
+    ```
+    {{< /note >}}
 
-To view any created publications, run the following command:
+1.  Run the following command to view all existing publications:
 
-```command {title="PostgreSQL command to see existing publications"}
-SELECT * FROM pg_publication_tables;
-```
+    ```command {title="Source psql Prompt"}
+    SELECT * FROM pg_publication_tables;
+    ```
 
-```output
--[ RECORD 1 ]-----------------------------------------------
-pubname    | my_publication
-schemaname | public
-tablename  | customers
-attnames   | {id,name,email,created_at}
-rowfilter  |
--[ RECORD 2 ]-----------------------------------------------
-pubname    | my_publication
-schemaname | public
-tablename  | products
-attnames   | {id,name,price,in_stock}
-rowfilter  |
--[ RECORD 3 ]-----------------------------------------------
-pubname    | my_publication
-schemaname | public
-tablename  | orders
-attnames   | {id,customer_id,product_id,quantity,order_date}
-rowfilter  |
-```
+    ```output
+        pubname     | schemaname | tablename |                       attnames
+    ----------------+------------+-----------+-------------------------------------------------------
+     my_publication | public     | customers | {customer_id,name,email,created_at}
+     my_publication | public     | products  | {product_id,name,price,created_at}
+     my_publication | public     | orders    | {order_id,customer_id,product_id,quantity,created_at}
+    (3 rows)
+    ```
 
-Your source database is now ready for logical replication. Return to the main guide to configure the Linode Managed Database and create the subscription.
+1.  Type `\q` and press <kbd>Enter</kbd> to exit the source `psql` shell.
 
-## Additional Resources
-
-The resources below are provided to help you become familiar with logical replication with a PostgreSQL database when working with AWS RDS.
-
--   AWS:
-  -   [Setting up PostgreSQL logical replication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_MultiAZDBCluster_LogicalRepl.html#multi-az-db-clusters-logical-replication)
-  -   [Parameter groups for Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html)
-  -   [CLI documentation for AWS RDS](https://docs.aws.amazon.com/cli/latest/reference/rds/)
--   PostgreSQL:
-  -   [Logical replication](https://www.postgresql.org/docs/current/logical-replication.html)
-  -   [CREATE SUBSCRIPTION](https://www.postgresql.org/docs/current/sql-createsubscription.html)
+Your RDS source database is now ready for logical replication. Return to [Logical Replication to a Linode Managed PostgreSQL Database](/docs/guides/logical-replication-to-a-linode-managed-postgresql-database/) to configure the Linode Managed Database and create the subscription.

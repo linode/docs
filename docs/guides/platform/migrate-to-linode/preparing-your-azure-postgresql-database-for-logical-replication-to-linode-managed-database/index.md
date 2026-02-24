@@ -4,7 +4,7 @@ title: "Preparing Your Azure PostgreSQL Database for Logical Replication to Lino
 description: "Prepare your Azure Database for PostgreSQL for logical replication to a Linode Managed Database. Configure server parameters, network access, and a replication user."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-10-10
+published: 2026-02-18
 keywords: ['azure postgresql logical replication','linode managed database','flexible server','pg_publication','azure replication setup']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -17,18 +17,18 @@ external_resources:
 
 This guide explains how to prepare an Azure Database for PostgreSQL for logical replication to a [Linode Managed Database](https://www.linode.com/products/databases/). Follow this guide before returning to the [Logical Replication to a Linode Managed PostgreSQL Database](/docs/guides/logical-replication-to-a-linode-managed-postgresql-database/) guide to [create the subscription](https://www.postgresql.org/docs/current/sql-createsubscription.html) on Akamai Cloud.
 
-The steps presented in this guide cover:
+Follow the steps in this guide to:
 
--   Configuring your Azure Database instance to support logical replication.
--   Ensuring secure network access from Linode.
--   Creating a dedicated replication user.
--   Setting up a publication for the tables you wish to replicate.
+-   Configure your Azure Database instance to support logical replication.
+-   Ensure secure network access from Linode.
+-   Create a dedicated replication user.
+-   Set up a publication for the tables you wish to replicate.
 
-After completing these steps, return to the main replication guide to configure the subscriber and finalize the setup.
+After completing these steps, return to [Logical Replication to a Linode Managed PostgreSQL Database](/docs/guides/logical-replication-to-a-linode-managed-postgresql-database/) to configure the subscriber and finalize the setup.
 
 ## Before You Begin
 
-1.  Follow the [Logical Replication to a Linode Managed PostgreSQL Database](/docs/guides/logical-replication-to-a-linode-managed-postgresql-database/) guide up to the **Prepare the Source Database for Logical Replication** section to obtain the public IP address or CIDR range of your Linode Managed Database host.
+1.  Follow the [Logical Replication to a Linode Managed PostgreSQL Database](/docs/guides/logical-replication-to-a-linode-managed-postgresql-database/) guide up to the **Prepare the Source Database for Logical Replication** section to obtain the public IP address or CIDR range of your Linode Managed Database.
 
 1.  Ensure your Azure account has permissions to modify PostgreSQL server parameters, networking settings, and firewall rules.
 
@@ -39,7 +39,7 @@ After completing these steps, return to the main replication guide to configure 
     az account set --subscription {{< placeholder "YOUR_AZURE_SUBSCRIPTION_ID" >}}
     ```
 
-{{< note >}}
+{{< note title="Requirement: Flexible Server" >}}
 Ensure you have an *Azure Database for PostgreSQL – Flexible Server* instance. Logical replication requires Flexible Server, as Single Server was retired in March 2025.
 {{< /note >}}
 
@@ -51,10 +51,11 @@ The following placeholders and example values are used in commands throughout th
 |------------|--------------|----------------|
 | Azure Server Name | {{< placeholder "AZURE_SERVER_NAME" >}} | `source-database` |
 | Azure Resource Group | {{< placeholder "AZURE_RESOURCE_GROUP" >}} | `pg-repl-rg` |
-| Source Hostname or IP Address | {{< placeholder "SOURCE_HOST" >}} | `source-database.postgres.database.azure.com` |
-| Source Port Number | {{< placeholder "SOURCE_PORT" >}} | `5432` |
-| Source Database Name | {{< placeholder "SOURCE_DB" >}} | `postgres` |
+| Destination IP Address | {{< placeholder "DEST_IP" >}} | `172.232.188.122` |
+| Source Hostname | {{< placeholder "SOURCE_HOST" >}} | `source-database.postgres.database.azure.com` |
+| Source Port | {{< placeholder "SOURCE_PORT" >}} | `5432` |
 | Source Username | {{< placeholder "SOURCE_USER" >}} | `azureadmin` |
+| Source Database | {{< placeholder "SOURCE_DB" >}} | `postgres` |
 | Source Password | {{< placeholder "SOURCE_PASSWORD" >}} | `thisismysourcepassword` |
 | Replication Username | {{< placeholder "REPL_USER" >}} | `linode_replicator` |
 | Replication Password | {{< placeholder "REPL_PASSWORD" >}} | `thisismyreplicatorpassword` |
@@ -78,11 +79,13 @@ To support logical replication, you’ll need to adjust a few parameters on your
 
     ![Azure portal Server parameters page showing the wal_level parameter set to REPLICA by default.](azure-flexible-server-parameter-wal-level-default.png)
 
-    The values should be:
+    In order for logical replication to succeed, these values should be as follows:
 
-    -   `wal_level`: `LOGICAL`
     -   `max_replication_slots`: Greater than or equal to 1
     -   `max_wal_senders`: Greater than or equal to `max_replication_slots`, depending on expected replication concurrency
+    -   `wal_level`: `LOGICAL`
+
+    If these values are already set correctly, skip the remainder of this section and continue with Configure Network Access. Otherwise, you need to modify the parameter group using the instructions below.
 
 1.  Adjust the values as needed, then click **Save**:
 
@@ -92,11 +95,11 @@ To support logical replication, you’ll need to adjust a few parameters on your
 
 {{< /tab >}}
 {{< tab "Azure CLI" >}}
-1.  Run the following `az` CLI command to list the relevant server parameters for the instance:
+1.  Run the following `az` CLI command to list the relevant server parameters for the instance. Replace {{< placeholder "AZURE_SERVER_NAME" >}} with your Azure PostgreSQL server name (e.g., `source-database`) and {{< placeholder "AZURE_RESOURCE_GROUP" >}} with your resource group (e.g., `pg-repl-rg`):
 
     ```command
     az postgres flexible-server parameter list \
-      --server-name {{< placeholder "AZURE_DATABASE_SERVER" >}} \
+      --server-name {{< placeholder "AZURE_SERVER_NAME" >}} \
       --resource-group {{< placeholder "AZURE_RESOURCE_GROUP" >}} \
       --output json \
       --query "[?name=='wal_level' || name=='max_replication_slots' || name=='max_wal_senders'].{name:name, description:description, dataType:dataType, value:value}"
@@ -125,49 +128,51 @@ To support logical replication, you’ll need to adjust a few parameters on your
     ]
     ```
 
-    The values should be:
+    In order for logical replication to succeed, these values should be as follows:
 
-    -   `wal_level`: `LOGICAL`
     -   `max_replication_slots`: Greater than or equal to 1
     -   `max_wal_senders`: Greater than or equal to `max_replication_slots`, depending on expected replication concurrency
+    -   `wal_level`: `LOGICAL`
+
+    If these values are already set correctly, skip the remainder of this section and continue with Configure Network Access. Otherwise, you need to modify the parameter group using the instructions below.
 
     To adjust the values with the Azure CLI, you need to run the `parameter set` command for each parameter.
+
+1.  Use the following command to adjust the value of `max_replication_slots` to `10`:
+
+    ```command
+    az postgres flexible-server parameter set \
+      --server-name {{< placeholder "AZURE_SERVER_NAME" >}} \
+      --resource-group {{< placeholder "AZURE_RESOURCE_GROUP" >}} \
+      --name max_replication_slots \
+      --value 10
+    ```
+
+1.  Use the following command to adjust the value of `max_wal_senders` to `10`:
+
+    ```command
+    az postgres flexible-server parameter set \
+      --server-name {{< placeholder "AZURE_SERVER_NAME" >}} \
+      --resource-group {{< placeholder "AZURE_RESOURCE_GROUP" >}} \
+      --name max_wal_senders \
+      --value 10
+    ```
 
 1.  Use the following command to adjust the value of `wal_level` to `logical`:
 
     ```command {title="Modify server parameters to support logical replication"}
     az postgres flexible-server parameter set \
-      --server-name {{< placeholder "AZURE_DATABASE_SERVER" >}} \
+      --server-name {{< placeholder "AZURE_SERVER_NAME" >}} \
       --resource-group {{< placeholder "AZURE_RESOURCE_GROUP" >}} \
       --name wal_level \
       --value logical
-    ```
-
-1.  Use the following command to adjust the value of `max_replication_slots` to `5`:
-
-    ```command
-    az postgres flexible-server parameter set \
-      --server-name {{< placeholder "AZURE_DATABASE_SERVER" >}} \
-      --resource-group {{< placeholder "AZURE_RESOURCE_GROUP" >}} \
-      --name max_replication_slots \
-      --value 5
-    ```
-
-1.  Use the following command to adjust the value of `max_wal_senders` to `5`:
-
-    ```command
-    az postgres flexible-server parameter set \
-      --server-name {{< placeholder "AZURE_DATABASE_SERVER" >}} \
-      --resource-group {{< placeholder "AZURE_RESOURCE_GROUP" >}} \
-      --name max_wal_senders \
-      --value 5
     ```
 
 1.  After modifying these parameters, restart the database instance:
 
     ```command
     az postgres flexible-server restart \
-      --name {{< placeholder "AZURE_DATABASE_SERVER" >}} \
+      --name {{< placeholder "AZURE_SERVER_NAME" >}} \
       --resource-group {{< placeholder "AZURE_RESOURCE_GROUP" >}}
     ```
 {{< /tab >}}
@@ -175,44 +180,101 @@ To support logical replication, you’ll need to adjust a few parameters on your
 
 ## Configure Network Access
 
-Before the Linode Managed Database can connect to your Azure Database instance, ensure that the instance allows network access from the Linode database host.
+Before the Linode Managed Database can connect to your Azure Database instance, ensure that the instance allows network access from the Linode Managed Database.
 
+{{< tabs >}}
+{{< tab "Azure Portal" >}}
 1.  Navigate to the **Settings > Networking** page for the instance. Make sure that the **Public access** option is checked.
 
     ![Azure Database for PostgreSQL Networking page showing the Public access option enabled.](azure-flexible-server-networking-public-access.png)
 
-1.  In the list of firewall rules, add a rule to allow access to your Linode Managed Database. Specify a name for the firewall rule. Enter the IP address of your Linode Managed Database host as both the **Start IP address** and the **End IP address**:
+1.  In the list of firewall rules, add a rule to allow access to your Linode Managed Database. Specify a name for the firewall rule. Enter the IP address of your Linode Managed Database as both the **Start IP address** and the **End IP address**:
 
     ![Azure PostgreSQL Networking page showing a firewall rule named allow-linode-managed-database with the Linode host IP entered for Start and End addresses.](azure-flexible-server-firewall-rule-linode-managed-database.png)
 
 1.  Click **Save** at the top of the page.
+{{< /tab >}}
+{{< tab "Azure CLI" >}}
+1.  Determine if public network access is enabled:
 
-With network access configured, your Linode Managed Database can reach the Azure Database instance during the subscription creation step in the main guide.
+    ```command
+    az postgres flexible-server show \
+      --resource-group {{< placeholder "AZURE_RESOURCE_GROUP" >}} \
+      --name {{< placeholder "AZURE_SERVER_NAME" >}} \
+      --query "network.publicNetworkAccess"
+    ```
+
+    If the output is `"Enabled"`, skip the following command:
+
+    ```output
+    "Enabled"
+    ```
+
+1.  If the output is `"Disabled"`, use the following command to enable public network access:
+
+    ```command
+    az postgres flexible-server update \
+      --resource-group {{< placeholder "AZURE_RESOURCE_GROUP" >}} \
+      --name {{< placeholder "AZURE_SERVER_NAME" >}} \
+      --public-network-access Enabled
+    ```
+
+1.  Add a firewall rule allowing access from your Linode Managed Database. Replace {{< placeholder "DEST_IP" >}} with the IP address from [Logical Replication to a Linode Managed PostgreSQL Database](/docs/guides/logical-replication-to-a-linode-managed-postgresql-database/) (e.g., `172.232.188.122`):
+
+    ```command
+    az postgres flexible-server firewall-rule create \
+      --resource-group {{< placeholder "AZURE_RESOURCE_GROUP" >}} \
+      --name {{< placeholder "AZURE_SERVER_NAME" >}} \
+      --rule-name allow-linode-managed-database \
+      --start-ip-address {{< placeholder "DEST_IP" >}} \
+      --end-ip-address {{< placeholder "DEST_IP" >}}
+    ```
+
+1.  Verify the firewall rules:
+
+    ```command
+    az postgres flexible-server firewall-rule list \
+      --resource-group {{< placeholder "AZURE_RESOURCE_GROUP" >}} \
+      --name {{< placeholder "AZURE_SERVER_NAME" >}} \
+      -o table
+    ```
+
+    ```output
+    EndIpAddress     Name                           ResourceGroup    StartIpAddress
+    ---------------  -----------------------------  ---------------  ----------------
+    172.235.145.182  allow-linode-managed-database  pg-repl-rg       172.235.145.182
+    ```
+{{< /tab >}}
+{{< /tabs >}}
+
+With network access configured, your Linode Managed Database can reach the Azure Database instance during the subscription creation step in [Logical Replication to a Linode Managed PostgreSQL Database](/docs/guides/logical-replication-to-a-linode-managed-postgresql-database/).
 
 ## Create a Replication User
 
-The source database should have a dedicated replication user with the `REPLICATION` attribute and `SELECT` privileges to the tables to be replicated. While logical replication can be performed as administrator, it's a security best practice to create a dedicated user.
+While logical replication can technically be performed using the primary database user, it's best practice to create a dedicated replication user. This user should have the `REPLICATION` privilege and `SELECT` access only to the tables being published.
 
-Follow the steps below to create this scope-limited user on your Azure Database instance.
+Follow the steps below to create this dedicated user on your Azure Database instance.
 
-1.  Connect to your instance using the `psql` client and the connection string information found on the **Settings > Connect** page, replacing any placeholders with your own values:
+1.  Connect to your source PostgreSQL instance using the `psql` client. Replace {{< placeholder "SOURCE_HOST" >}} (e.g., `source-database.postgres.database.azure.com`), {{< placeholder "SOURCE_PORT" >}} (e.g., `5432`), {{< placeholder "SOURCE_USER" >}} (e.g., `azureadmin`), and {{< placeholder "SOURCE_DB" >}} (e.g., `postgres`) with your own values. You can find the connection details on the **Settings > Connect** page of your Azure Database instance.
 
     ```command
-    psql "host={{< placeholder "AZURE_SERVER_NAME" >}}.postgres.database.azure.com \
-          port=5432 \
-          dbname={{< placeholder "SOURCE_DB" >}} \
-          user={{< placeholder "SOURCE_USER" >}} \
-          password={{< placeholder "SOURCE_PASSWORD" >}} \
-          sslmode=require"
+    psql \
+      -h {{< placeholder "SOURCE_HOST" >}} \
+      -p {{< placeholder "SOURCE_PORT" >}} \
+      -U {{< placeholder "SOURCE_USER" >}} \
+      -d {{< placeholder "SOURCE_DB" >}} \
+      "sslmode=require"
     ```
 
-1.  After connecting successfully, create a user with replication privileges (e.g., `linode_replicator`), provide a password (e.g., `thisismyreplicatorpassword`), then grant SELECT privileges for the tables you plan to replicate. For simplicity, this example assumes a public schema and three tables typically found in an ecommerce database (e.g., `customers`, `products`, and `orders`). Replace the table names with your actual schema as needed:
+    When prompted, enter your {{< placeholder "SOURCE_PASSWORD" >}} (e.g., `thisismysourcepassword`).
+
+1.  Run the following commands from the source `psql` prompt. Replace {{< placeholder "REPL_USER" >}} (e.g., `linode_replicator`) and {{< placeholder "REPL_PASSWORD" >}} (e.g., `thisismyreplicatorpassword`) with your own values. For simplicity, this example assumes a public schema and three sample tables (customers, products, and orders). Replace the table names with your actual schema as needed.
 
     ```command {title="Source psql Prompt"}
-    CREATE ROLE linode_replicator
+    CREATE ROLE {{< placeholder "REPL_USER" >}}
            WITH REPLICATION
-           LOGIN PASSWORD 'thisismyreplicatorpassword';
-    GRANT SELECT ON customers, products, orders TO linode_replicator;
+           LOGIN PASSWORD '{{< placeholder "REPL_PASSWORD" >}}';
+    GRANT SELECT ON customers, products, orders TO {{< placeholder "REPL_USER" >}};
     ```
 
     ```output
@@ -220,60 +282,57 @@ Follow the steps below to create this scope-limited user on your Azure Database 
     GRANT
     ```
 
-    {{< note >}}
-    Alternatively, you can grant privileges on all tables with the following command:
+    {{< note type="secondary" title="Alternative: Grant on All Tables" isCollapsible=yes >}}
+    You can also grant privileges on *all* tables with the following command:
 
     ```command {title="Source psql Prompt"}
-    GRANT SELECT ON ALL TABLES in SCHEMA public to linode_replicator;
+    GRANT SELECT ON ALL TABLES IN SCHEMA public TO {{< placeholder "REPL_USER" >}};
+    ```
+
+    ```output
+    GRANT
     ```
     {{< /note >}}
 
-The newly created user is referenced by the Linode Managed Database when creating the subscription.
+The newly created user is referenced by the Linode Managed Database when creating the subscription in [Logical Replication to a Linode Managed PostgreSQL Database](/docs/guides/logical-replication-to-a-linode-managed-postgresql-database/).
 
 ## Create a Publication
 
-A publication defines which tables and changes (inserts, updates, deletes) should be streamed to the subscriber. You need at least one publication for logical replication.
+A publication defines which tables and changes (e.g., `INSERT`, `UPDATE`, and `DELETE`) should be streamed to the subscriber. At least one publication is required for logical replication, and the subscriber must have matching tables with compatible schemas for replication to succeed.
 
-1.  While still connected via the `psql` client, create a publication (e.g., `my_publication`) for specific tables (e.g., `customers` , `products`, and `orders`):
+1.  While still connected to your source database via the `psql` client, use the following command to create a publication. Replace {{< placeholder "PUBLICATION_NAME" >}} (e.g., `my_publication`) and the specific tables you want to replicate (e.g., `customers`, `products`, and `orders`):
 
     ```command {title="Source psql Prompt"}
     CREATE PUBLICATION {{< placeholder "PUBLICATION_NAME" >}} FOR TABLE customers, products, orders;
     ```
 
-    {{< note >}}
-    The subscriber must have matching tables with compatible schemas for replication to succeed. Alternatively, you can create a publication for all current and future tables in the database:
+    ```output
+    CREATE PUBLICATION
+    ```
+
+    {{< note type="secondary" title="Alternative: Publish All Tables" isCollapsible=yes >}}
+    You can also create a publication for *all* tables in the database:
 
     ```command {title="Source psql Prompt"}
     CREATE PUBLICATION {{< placeholder "PUBLICATION_NAME" >}} FOR ALL TABLES;
     ```
     {{< /note >}}
 
-
-1.  Run the following command to view any created publications:
+1.  Run the following command to view all existing publications:
 
     ```command {title="Source psql Prompt"}
     SELECT * FROM pg_publication_tables;
     ```
 
     ```output
-    -[ RECORD 1 ]-----------------------------------------------
-    pubname    | my_publication
-    schemaname | public
-    tablename  | customers
-    attnames   | {id,name,email,created_at}
-    rowfilter  |
-    -[ RECORD 2 ]-----------------------------------------------
-    pubname    | my_publication
-    schemaname | public
-    tablename  | products
-    attnames   | {id,name,price,in_stock}
-    rowfilter  |
-    -[ RECORD 3 ]-----------------------------------------------
-    pubname    | my_publication
-    schemaname | public
-    tablename  | orders
-    attnames   | {id,customer_id,product_id,quantity,order_date}
-    rowfilter  |
+        pubname     | schemaname | tablename |                       attnames                        | rowfilter
+    ----------------+------------+-----------+-------------------------------------------------------+-----------
+     my_publication | public     | customers | {customer_id,name,email,created_at}                   |
+     my_publication | public     | products  | {product_id,name,price,created_at}                    |
+     my_publication | public     | orders    | {order_id,customer_id,product_id,quantity,created_at} |
+    (3 rows)
     ```
 
-Your Azure source database is now ready for logical replication. Return to the main guide to configure the Linode Managed Database and create the subscription.
+1.  Type `\q` and press <kbd>Enter</kbd> to exit the source `psql` shell.
+
+Your Azure source database is now ready for logical replication. Return to [Logical Replication to a Linode Managed PostgreSQL Database](/docs/guides/logical-replication-to-a-linode-managed-postgresql-database/) to configure the Linode Managed Database and create the subscription.

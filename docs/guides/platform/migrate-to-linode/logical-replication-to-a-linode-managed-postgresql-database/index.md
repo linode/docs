@@ -4,7 +4,7 @@ title: "Logical Replication to a Linode Managed PostgreSQL Database"
 description: "Learn how to configure PostgreSQL logical replication from a cloud-hosted source database to a Linode Managed Database."
 authors: ["Akamai"]
 contributors: ["Akamai"]
-published: 2025-10-24
+published: 2026-02-18
 keywords: ['logical replication', 'postgresql logical replication', 'linode managed database', 'akamai cloud', 'database migration', 'low downtime migration', 'postgresql subscription', 'postgresql publication', 'replication slot', 'write-ahead log', 'pg_stat_subscription', 'pg_current_wal_lsn', 'pg_dump schema only']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
@@ -64,7 +64,7 @@ The source database should have a dedicated replication user. This user must hav
 
 ### Network Access
 
-Replication requires that the destination database can connect to the source over the network. This means ensuring the source database accepts connections from the Linode Managed Database host.
+Replication requires that the destination database can connect to the source over the network. This means ensuring the source database accepts connections from the Linode Managed Database.
 
 ## Before You Begin
 
@@ -90,17 +90,12 @@ The following placeholders and example values are used in commands throughout th
 
 | Parameter | Placeholder | Example Value |
 |------------|--------------|----------------|
-| Destination Hostname or IP Address | {{< placeholder "DEST_HOST" >}} | `a334568-akamai-prod-183144-default.g2a.akamaidb.net` |
-| Destination Port Number | {{< placeholder "DEST_PORT" >}} | `10033` |
-| Destination Database Name | {{< placeholder "DEST_DB" >}} | `defaultdb` |
+| Destination Hostname | {{< placeholder "DEST_HOST" >}} | `a334568-akamai-prod-183144-default.g2a.akamaidb.net` |
+| Destination IP Address | {{< placeholder "DEST_IP" >}} | `172.235.135.114` |
+| Destination Port | {{< placeholder "DEST_PORT" >}} | `10033` |
+| Destination Database | {{< placeholder "DEST_DB" >}} | `defaultdb` |
 | Destination Username | {{< placeholder "DEST_USER" >}} | `akmadmin` |
 | Destination Password | {{< placeholder "DEST_PASSWORD" >}} | `thisismydestinationpassword` |
-| Source Hostname or IP Address | {{< placeholder "SOURCE_HOST" >}} | `psql.managed-db-services.example.com` |
-| Source Port Number | {{< placeholder "SOURCE_PORT" >}} | `5432` |
-| Source Database Name | {{< placeholder "SOURCE_DB" >}} | `postgres` |
-| Replication Username | {{< placeholder "REPL_USER" >}} | `linode_replicator` |
-| Replication Password | {{< placeholder "REPL_PASSWORD" >}} | `thisismyreplicatorpassword` |
-| Publication Name | {{< placeholder "PUBLICATION_NAME" >}} | `my_publication` |
 | Subscription Name | {{< placeholder "SUBSCRIPTION_NAME" >}} | `my_subscription` |
 
 Replace these placeholders with your own connection details when running commands in your environment.
@@ -111,12 +106,11 @@ Additionally, the examples used in this guide assume the source database contain
 
 The examples used in this guide assume you have an existing PostgreSQL database hosted with a managed service from a cloud provider. This source database contains three tables (`customers`, `products`, and `orders`) that you want to replicate to a Linode Managed Database for PostgreSQL.
 
-
 ## Configure the Source Database
 
 The source PostgreSQL database must be properly configured to support logical replication and accept incoming connections from your Linode Managed Database.
 
-### Obtain the IP Address of the Destination Database Host
+### Obtain the IP Address of the Destination Database
 
 To configure access control on your source database, you first need the IP address of your Linode Managed Database. Begin by identifying your destination host ({{< placeholder "DEST_HOST" >}}).
 
@@ -132,7 +126,7 @@ To configure access control on your source database, you first need the IP addre
 1.  To find the host using the Linode CLI, run the following command to list your databases:
 
     ```command
-    linode databases list --json
+    linode databases list --json | jq
     ```
 
     Locate the `primary` host listed for your destination database:
@@ -165,11 +159,13 @@ To configure access control on your source database, you first need the IP addre
 {{< /tab >}}
 {{< /tabs >}}
 
-2.  Use an online service or `nslookup` to determine the IP address of the database host. Replace {{< placeholder "DEST_HOST" >}} with your actual value (e.g., `a334568-akamai-prod-183144-default.g2a.akamaidb.net`):
+2.  Use a DNS lookup tool such as `nslookup` to resolve the IP address of your Linode Managed Database. Replace {{< placeholder "DEST_HOST" >}} with your actual value (e.g., `a334568-akamai-prod-183144-default.g2a.akamaidb.net`):
 
     ```command
     nslookup {{< placeholder "DEST_HOST" >}}
     ```
+
+    In this example, `172.232.188.122` is the {{< placeholder "DEST_IP" >}}:
 
     ```output
     Non-authoritative answer:
@@ -179,9 +175,11 @@ To configure access control on your source database, you first need the IP addre
     Address: 2600:3c0a::2000:fbff:fe65:756d
     ```
 
+    Be sure to record your {{< placeholder "DEST_IP" >}}, as it is required in the cloud-specific preparation guides referenced in the next section.
+
 ### Prepare the Source Database for Logical Replication
 
-With your Linode Managed Database host’s IP address located, follow the corresponding guide to prepare your source database for logical replication:
+With your Linode Managed Database’s IP address located, follow the corresponding guide to prepare your source database for logical replication:
 
 -   [Preparing your AWS RDS PostgreSQL Database for Logical Replication to Linode Managed Database](/docs/guides/preparing-your-aws-rds-postgresql-database-for-logical-replication-to-linode-managed-database/)
 -   [Preparing your Azure PostgreSQL Database for Logical Replication to Linode Managed Database](/docs/guides/preparing-your-azure-postgresql-database-for-logical-replication-to-linode-managed-database/)
@@ -193,25 +191,29 @@ After completing the steps in one of the above guides, gather the following info
 |------------|--------------|----------------|
 | Source Hostname or IP Address | {{< placeholder "SOURCE_HOST" >}} | `psql.managed-db-services.example.com` |
 | Source Port Number | {{< placeholder "SOURCE_PORT" >}} | `5432` |
-| Source Database Name | {{< placeholder "SOURCE_DB" >}} | `postgres` |
+| Source Database | {{< placeholder "SOURCE_DB" >}} | `postgres` |
 | Replication Username | {{< placeholder "REPL_USER" >}} | `linode_replicator` |
 | Replication Password | {{< placeholder "REPL_PASSWORD" >}} | `thisismyreplicatorpassword` |
 | Publication Name | {{< placeholder "PUBLICATION_NAME" >}} | `my_publication` |
 
 The remainder of this guide uses the example values shown above.
 
+{{< note title="Note: Source Host Value" >}}
+{{< placeholder "SOURCE_HOST" >}} is your source database hostname or IP address. Depending on your source cloud provider, this may be an RDS endpoint, an Azure Flexible Server hostname, or a Cloud SQL public IP.
+{{< /note >}}
+
 ## Configure the Destination Database
 
 Configure your Linode Managed PostgreSQL database as the replication target. This involves two main tasks:
 
--   Recreating the schema
--   Subscribing to the publication you defined on the source
+-   Recreate the schema
+-   Create a subscription to the source publication
 
 ### Create the Database Schema
 
 Logical replication in PostgreSQL does not copy table definitions, it only replicates the data. This means you must manually create the destination tables to match the source database schema exactly. Use the same column names, types, constraints, and indexes to avoid replication errors.
 
-1.  At the command line, use `pg_dump` with the `--schema-only` flag to connect to your source database and write the resulting SQL statements to a file. Replace {{< placeholder "SOURCE_HOST" >}} (e.g. `psql.managed-db-services.example.com`), {{< placeholder "REPL_USER" >}} (e.g. `linode_replicator`), and {{< placeholder "SOURCE_PORT" >}} (e.g. `5432`) with your own values:
+1.  At the command line, use `pg_dump` with the `--schema-only` flag to connect to your source database and write the resulting SQL statements to a file. Replace {{< placeholder "SOURCE_HOST" >}} (e.g. `psql.managed-db-services.example.com`), {{< placeholder "REPL_USER" >}} (e.g., `linode_replicator`), and {{< placeholder "SOURCE_PORT" >}} (e.g. `5432`) with your own values:
 
     ```command
     pg_dump \
@@ -219,10 +221,15 @@ Logical replication in PostgreSQL does not copy table definitions, it only repli
       -U {{< placeholder "REPL_USER" >}} \
       -p {{< placeholder "SOURCE_PORT" >}} \
       --schema-only \
-      defaultdb > schema.sql
+      --no-owner \
+      --no-privileges \
+      --schema=public \
+      {{< placeholder "SOURCE_DB" >}} > schema.sql
     ```
 
-    {{< note >}}
+    When prompted enter your Replication Password (e.g., `thisismyreplicatorpassword`) and press <kbd>Enter</kbd>.
+
+    {{< note type="secondary" title="Alternative: Dump Specific Tables Only" isCollapsible=yes >}}
     If you only want to create the schema for specific tables rather than the entire database, use the `--table` flag. For example, the following command only dumps the schema for the `customers` and `orders` tables:
 
     ```command
@@ -231,118 +238,56 @@ Logical replication in PostgreSQL does not copy table definitions, it only repli
       -U {{< placeholder "REPL_USER" >}} \
       -p {{< placeholder "SOURCE_PORT" >}} \
       --schema-only \
+      --no-owner \
+      --no-privileges \
+      --schema=public \
       --table customers \
       --table orders \
-      defaultdb > schema.sql
+      postgres > schema.sql
     ```
     {{< /note >}}
 
-1.  Inspect the generated SQL statements to confirm that all expected tables and constraints are present:
-
-    ```command
-    cat schema.sql
-    ```
-
-    ```output
-    ...
-    CREATE TABLE public.customers (
-        id integer NOT NULL,
-        name text NOT NULL,
-        email text NOT NULL,
-        created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
-    );
-
-
-    ALTER TABLE public.customers OWNER TO demouser;
-
-    CREATE SEQUENCE public.customers_id_seq
-        AS integer
-        START WITH 1
-        INCREMENT BY 1
-        NO MINVALUE
-        NO MAXVALUE
-        CACHE 1;
-
-
-    ALTER SEQUENCE public.customers_id_seq OWNER TO demouser;
-
-    ALTER SEQUENCE public.customers_id_seq OWNED BY public.customers.id;
-    ...
-    ```
-
-1.  In the resulting file, remove or comment out any `ALTER` lines that change the `OWNER`. One way to accomplish this is with `sed`:
-
-    ```command
-    sed -i '/^ALTER .* OWNER TO /d' schema.sql
-    ```
-
-    {{< note >}}
-    On macOS, use `-i ''` instead of the above command:
-
-    ```command
-    sed -i '' '/^ALTER .* OWNER TO /d' schema.sql
-    ```
-    {{< /note >}}
-
-1.  Run the schema file on your Linode Managed Database to create the tables. Replace {{< placeholder "DEST_HOST" >}} (e.g, `a334568-akamai-prod-183144-default.g2a.akamaidb.net`), {{< placeholder "DEST_USER" >}} (e.g., `akmadmin`), {{< placeholder "DEST_PORT" >}} (e.g, `10033`), and {{< placeholder "DEST_DB" >}} (e.g., `defaultdb`) with your own values:
+1.  Connect to your Linode Managed Database using the `psql` client. Replace {{< placeholder "DEST_IP" >}} (e.g, `172.235.135.114`), {{< placeholder "DEST_USER" >}} (e.g., `akmadmin`), {{< placeholder "DEST_PORT" >}} (e.g, `10033`), and {{< placeholder "DEST_DB" >}} (e.g., `defaultdb`) with your own values:
 
     ```command
     psql \
-      -h {{< placeholder "DEST_HOST" >}} \
+      -h {{< placeholder "DEST_IP" >}} \
       -U {{< placeholder "DEST_USER" >}} \
       -p {{< placeholder "DEST_PORT" >}} \
-      -d {{< placeholder "DEST_DB" >}} \
-      -f schema.sql
+      -d {{< placeholder "DEST_DB" >}}
     ```
+
+1.  From the `psql` prompt, run the schema file to create the tables on the destination database:
+
+    ```command {title="Destination psql Prompt"}
+    \i schema.sql
+    ```
+
+Unless otherwise noted, remain logged in to the destination database for the remainder of this section.
 
 ### Create a Subscription
 
 Once the schema is in place, create a subscription on the destination database. This step connects your Linode Managed Database (the subscriber) to your source database (the publisher) and begins streaming changes.
 
-1.  Use the `psql` client to connect to your Linode Managed Database and enter the interactive prompt:
-
-    ```command
-    psql \
-      -h {{< placeholder "DEST_HOST" >}} \
-      -U {{< placeholder "DEST_USER" >}} \
-      -p {{< placeholder "DEST_PORT" >}} \
-      -d {{< placeholder "DEST_DB" >}}
-    ```
-
-1.  In the `psql` prompt, run the [`CREATE SUBSCRIPTION`](https://www.postgresql.org/docs/current/sql-createsubscription.html) command to create a subscription (e.g., `my_subscription`) on the destination database. Remember to substitute placeholders for your own source database values:
+1.  While still logged in to the `psql` prompt, run the [`CREATE SUBSCRIPTION`](https://www.postgresql.org/docs/current/sql-createsubscription.html) command to create a subscription (e.g., `my_subscription`) on the destination database. Remember to substitute placeholders for your own source database values:
 
     ```command {title="Destination psql Prompt"}
     CREATE SUBSCRIPTION {{< placeholder "SUBSCRIPTION_NAME" >}}
-      CONNECTION 'host={{< placeholder "SOURCE_HOST" >}} port={{< placeholder "SOURCE_PORT" >}} user={{< placeholder "REPL_USER" >}} password={{< placeholder "REPL_PASSWORD" >}} dbname={{< placeholder "SOURCE_DB" >}} sslmode=require'
-      PUBLICATION {{< placeholder "PUBLICATION_NAME" >}};
+    CONNECTION 'host={{< placeholder "SOURCE_HOST" >}} port={{< placeholder "SOURCE_PORT" >}} user={{< placeholder "REPL_USER" >}} password={{< placeholder "REPL_PASSWORD" >}} dbname={{< placeholder "SOURCE_DB" >}} sslmode=require'
+    PUBLICATION {{< placeholder "PUBLICATION_NAME" >}};
     ```
 
     ```output
-    NOTICE:  created replication slot "my_subscription" on publisher
     CREATE SUBSCRIPTION
     ```
 
     Once the subscription is created, PostgreSQL begins replicating data from the source to the destination.
 
-1.  When done, type `\q` and press <kbd>Enter</kbd> to exit the destination `psql` shell.
-
-## Monitor and Verify Replication
+### Check Subscription Status
 
 Once replication is active, monitor its status and verify that data is syncing correctly.
 
-### Check Subscription Status
-
-1.  Use `psql` to establish a connection to the destination (subscriber) database and enter the interactive prompt:
-
-    ```command
-    psql \
-      -h {{< placeholder "DEST_HOST" >}}  \
-      -U {{< placeholder "DEST_USER" >}} \
-      -p {{< placeholder "DEST_PORT" >}} \
-      -d {{< placeholder "DEST_DB" >}}
-    ```
-
-1.  On the destination database, run the following SQL command to retrieve information about the subscription:
+1.  While still logged in to the destination database, run the following SQL command to retrieve information about the subscription:
 
     ```command {title="Destination psql Prompt"}
     SELECT * FROM pg_catalog.pg_stat_subscription;
@@ -369,13 +314,11 @@ Once replication is active, monitor its status and verify that data is syncing c
     -   `latest_end_lsn`: The last WAL location applied
     -   `last_msg_send_time` and `last_msg_receipt_time`: Timestamps for the most recent activity
 
-1.  When done, type `\q` and press <kbd>Enter</kbd> to exit the destination `psql` shell.
-
 ### Compare WAL Positions
 
 To verify how far along the subscriber is, compare the `received_lsn` (or `latest_end_lsn`) from the destination with the current WAL position on the source.
 
-1.  Use `psql` to establish a connection to the source (publisher) database:
+1.  Open a new terminal window and use `psql` to establish a connection to the source (publisher) database:
 
     ```command
     psql \
@@ -400,36 +343,31 @@ To verify how far along the subscriber is, compare the `received_lsn` (or `lates
 
     Compare this value with the `latest_end_lsn` shown on the destination:
 
-    - If they match or are close, replication is current and lag-free.
-    - A large gap may indicate replication delay or a connectivity issue.
+    -   If they match or are close, replication is current and lag-free.
+    -   A large gap may indicate replication delay or a connectivity issue.
 
-    {{< note >}}
     Small differences are normal on active databases as new WAL entries are generated continuously.
-    {{< /note >}}
 
 1.  When done, type `\q` and press <kbd>Enter</kbd> to exit the source `psql` shell.
 
 ### Validate Replicated Data
 
-Verify that the expected data has appeared in the destination (subscriber) database.
+Verify that the expected data appears in the destination (subscriber) database.
 
-1.  Use `psql` to reconnect to your Linode Managed Database and enter the interactive prompt:
+1.  Return to the terminal window connected to the Linode Managed Database (destination) `psql` prompt and run validation queries and other table checks to ensure that all rows were copied and continue to stay in sync, for example:
 
-    ```command
-    psql \
-      -h {{< placeholder "DEST_HOST" >}} \
-      -U {{< placeholder "DEST_USER" >}} \
-      -p {{< placeholder "DEST_PORT" >}} \
-      -d {{< placeholder "DEST_DB" >}}
+    ```command {title="Destination psql Prompt"}
+    SELECT COUNT(*) FROM public.customers;
     ```
 
-1.  Run validation queries and other table checks to ensure that all rows were copied and continue to stay in sync for example:
-
-    ```command
-    SELECT COUNT(*) FROM customers
+    ```output
+     count
+    -------
+         2
+    (1 row)
     ```
 
-1.  When done, type `\q` and press <kbd>Enter</kbd> to exit the source `psql` shell.
+1.  When done, type `\q` and press <kbd>Enter</kbd> to exit the destination `psql` shell.
 
 You may want to repeat this validation periodically until the cutover is complete.
 
@@ -445,22 +383,22 @@ Test application connectivity to the new database in a staging environment or du
 
 ### Remove the Subscription
 
-After all applications are using the Linode Managed database as the primary data store, remove the subscription. This stops replication and turns the destination into an independent, writable database.
+After all applications are using the Linode Managed Database as the primary data store, remove the subscription. This stops replication and turns the destination into an independent, writable database.
 
 1.  Use `psql` to reconnect to your Linode Managed Database and enter the interactive prompt:
 
     ```command
     psql \
-      -h {{< placeholder "DEST_HOST" >}} \
+      -h {{< placeholder "DEST_IP" >}} \
       -U {{< placeholder "DEST_USER" >}} \
       -p {{< placeholder "DEST_PORT" >}} \
       -d {{< placeholder "DEST_DB" >}}
     ```
 
-1.  Run the following SQL command to remove the subscription from destination database:
+1.  Run the following SQL command to remove the subscription from the destination database:
 
     ```command {title="Destination psql Prompt"}
-    DROP SUBSCRIPTION {{< placeholder "SUBSCRIPTION_NAME" >}};
+    DROP SUBSCRIPTION my_subscription;
     ```
 
     ```output
@@ -470,7 +408,7 @@ After all applications are using the Linode Managed database as the primary data
 
     This command also removes the replication slot from the source database, preventing unnecessary WAL retention.
 
-1.  When done, type `\q` and press <kbd>Enter</kbd> to exit the `psql` shell.
+1.  When done, type `\q` and press <kbd>Enter</kbd> to exit the destination `psql` shell.
 
 ### Retire the Source Database
 
