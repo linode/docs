@@ -4,7 +4,7 @@ description: "This guide includes instructions on how to deploy Open WebUI with 
 published: 2026-02-12
 modified: 2026-02-12
 keywords: ['gpt-oss', 'open-webui', 'vllm', 'ai', 'llm', 'llm-inference', 'openai-gpt-oss']
-tags: ["marketplace", "linode platform", "cloud manager", "ai", "llm-inference", "llm"]
+tags: ["quick deploy apps", "cloud manager", "ai", "llm-inference", "llm"]
 aliases: ['/products/tools/marketplace/guides/gpt-oss-with-openwebui/']
 external_resources:
 - '[Open WebUI Documentation](https://docs.openwebui.com/getting-started/)'
