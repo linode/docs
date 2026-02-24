@@ -1489,6 +1489,7 @@ megatrends
 melilla
 memcached
 memcrashed
+Memgraph
 menuentry
 Merkle
 mesos
@@ -1506,6 +1507,7 @@ metricbeat
 metricset
 metricsets
 metroid
+mgconsole
 michael
 microblogging
 microblogs

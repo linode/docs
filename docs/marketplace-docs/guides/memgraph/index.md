@@ -40,9 +40,9 @@ For production deployments handling large graph datasets or real-time streaming 
 
 ### Memgraph Options
 
-- **Memgraph User** *(required)*: This will be the user for your memgraph database.
+- **Memgraph User** *(required)*: This is the user for your Memgraph database.
 
-- **Email address (for DNS SOA email)** *(optional)*: If you are deploying this with a domain, it will require an email address to add to the SOA record.
+- **Email address (for DNS SOA email)** *(optional)*: If you are deploying this with a domain, it requires an email address to add to the SOA record.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
@@ -61,8 +61,9 @@ When deployment completes, the system automatically generates credentials to adm
 
 2. Run the following command to access the contents of the `.credentials` file:
 
-```command
-cat /home/$USERNAME/.credentials
+   ```command
+   cat /home/$USERNAME/.credentials
+   ```
 
 ## Connecting to Memgraph
 
@@ -70,21 +71,26 @@ Memgraph listens on the Bolt protocol by default on port `7687`.
 
 You can connect using:
 
-- **mgconsole (CLI)** installed on the server
+- The [mgconsole CLI](https://github.com/memgraph/mgconsole) installed on the server
 - Any Bolt-compatible driver (Python, JavaScript, Go, Java, etc.)
 
-### Example using mgconsole locally on the server
+### Connect using mgconsole locally on the server
 
+See the below example for how to use the mgconsole CLI to connect to Memgraph while logged into your instance:
 
-        mgconsole --host 127.0.0.1 --port 7687 --username MEMGRAPH_USER --password YOUR_PASSWORD
+```command
+mgconsole --host 127.0.0.1 --port 7687 --username MEMGRAPH_USER --password YOUR_PASSWORD
+```
 
 ## Basic Verification Query
 
-After logging in through the mgconsole, you can run the following just to output the memgraph version and memgraph edition of your deployment:
+After logging in using mgconsole, you can run the following to output the Memgraph version and Memgraph edition of your deployment:
 
-        CALL dbms.components() YIELD name, version, edition
-        RETURN name, version, edition;
+```command
+CALL dbms.components() YIELD name, version, edition
+RETURN name, version, edition;
+```
 
-Now that you’ve accessed your memgraph instance, check out [the official Memgraph documentation](https://memgraph.com/docs) to learn how to further use your instance.
+Now that you’ve accessed your Memgraph instance, check out [the official Memgraph documentation](https://memgraph.com/docs) to learn how to further use your instance.
 
 {{% content "marketplace-update-note-shortguide" %}}
