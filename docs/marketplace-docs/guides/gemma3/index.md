@@ -1,5 +1,5 @@
 ---
-title: "Deploy Gemma3 through the Linode Marketplace"
+title: "Deploy Gemma3"
 description: "Learn how to deploy Gemma3, the  open-source generative AI model from Google DeepMind, on an Akamai Compute Instance."
 published: 2026-02-11
 modified: 2026-02-11
