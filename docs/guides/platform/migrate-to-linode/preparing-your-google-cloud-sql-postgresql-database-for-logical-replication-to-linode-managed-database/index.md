@@ -238,24 +238,14 @@ A publication defines which tables and changes (e.g., `INSERT`, `UPDATE`, and `D
     ```
 
     ```output
-    -[ RECORD 1 ]-----------------------------------------------
-    pubname    | my_publication
-    schemaname | public
-    tablename  | customers
-    attnames   | {id,name,email,created_at}
-    rowfilter  |
-    -[ RECORD 2 ]-----------------------------------------------
-    pubname    | my_publication
-    schemaname | public
-    tablename  | products
-    attnames   | {id,name,price,in_stock}
-    rowfilter  |
-    -[ RECORD 3 ]-----------------------------------------------
-    pubname    | my_publication
-    schemaname | public
-    tablename  | orders
-    attnames   | {id,customer_id,product_id,quantity,order_date}
-    rowfilter  |
+        pubname     | schemaname | tablename |                       attnames                        | rowfilter
+    ----------------+------------+-----------+-------------------------------------------------------+-----------
+     my_publication | public     | customers | {customer_id,name,email,created_at}                   |
+     my_publication | public     | products  | {product_id,name,price,created_at}                    |
+     my_publication | public     | orders    | {order_id,customer_id,product_id,quantity,created_at} |
+    (3 rows)
     ```
+
+1.  Type `\q` and press <kbd>Enter</kbd> to exit the source `psql` shell.
 
 Your Google Cloud source database is now ready for logical replication. Return to [Logical Replication to a Linode Managed PostgreSQL Database](/docs/guides/logical-replication-to-a-linode-managed-postgresql-database/) to configure the Linode Managed Database and create the subscription.

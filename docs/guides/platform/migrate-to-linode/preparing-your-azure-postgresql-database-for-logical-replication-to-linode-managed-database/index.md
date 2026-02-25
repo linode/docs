@@ -262,8 +262,7 @@ Follow the steps below to create this dedicated user on your Azure Database inst
       -h {{< placeholder "SOURCE_HOST" >}} \
       -p {{< placeholder "SOURCE_PORT" >}} \
       -U {{< placeholder "SOURCE_USER" >}} \
-      -d {{< placeholder "SOURCE_DB" >}} \
-      "sslmode=require"
+      -d {{< placeholder "SOURCE_DB" >}}
     ```
 
     When prompted, enter your {{< placeholder "SOURCE_PASSWORD" >}} (e.g., `thisismysourcepassword`).
