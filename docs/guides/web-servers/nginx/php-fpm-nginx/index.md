@@ -551,30 +551,32 @@ When PHP FPM restarts (for example, after a system reboot or a configuration rel
 
 These messages indicate that PHP FPM stopped and started cleanly. The `tail -f` command will remain open and display new events as they occur.
 
-PHP application level errors (syntax errors, fatal errors, ecceptons) are written to the file defined by the `error_log` directive in `/etc/php/8.1/fpm/php.ini`.
+PHP application-level errors are written to the file specified by the `error_log` directive in `/etc/php/8.1/fpm/php.ini`.
 
 ### Performance Monitoring
 
-Monitor CPU, memory, and network usage through [Cloud Manager's built-in metrics dashboard](https://techdocs.akamai.com/cloud-computing/docs/monitor-and-maintain-a-compute-instance). Track PHP-FPM process counts and memory consumption to identify resource constraints.
+Monitor CPU, memory, and network usage through [Cloud Manager's built-in metrics dashboard](https://techdocs.akamai.com/cloud-computing/docs/monitor-and-maintain-a-compute-instance). Track PHP-FPM process counts and memory consumption to identify resource constraints as your application begins handling real traffic.
 
 Key metrics to monitor:
 
-- **CPU usage**: Sustained high CPU indicates insufficient instance sizing or inefficient code
-- **Memory usage**: Approaching total RAM triggers swapping and performance degradation
-- **PHP-FPM process count**: Reaching `pm.max_children` indicates configuration adjustments needed
+- **CPU usage**: Sustained high CPU means the instance is too small for the workload or the application is doing more work than expected.
+- **Memory usage**: High memory usage forces the system to swap to disk, which significantly slows request processing.
+- **PHP-FPM process count**: Reaching `pm.max_children` means all workers are busy, so new requests queue and may slow down or time out (configuration adjustments needed).
 
-For advanced monitoring, integrate with external observability platforms. See the [NGINX](https://nginx.org/en/docs/http/ngx_http_stub_status_module.html) monitoring documentation for enabling the stub status module.
+For deeper visibility into request behavior and PHP-FPM saturation, integrate with an external observability platforms. See the [NGINX](https://nginx.org/en/docs/http/ngx_http_stub_status_module.html) monitoring documentation for enabling the stub status module.
 
-These metrics don't require a test step during deployment; they become relevant as your application begins handling real traffic.
+These metrics don’t require a test step during deployment; they become relevant once your application is serving real traffic. For help interpreting these metrics and resolving issues such as PHP-FPM saturation or slow requests, see the Troubleshooting section that follows.
 
 ## Troubleshooting
 
-If your PHP-FPM and NGINX configuration isn't working as expected, use the following steps to diagnose and resolve common issues. PHP, PHP-FPM, and NGINX each log different types of errors, so identifying which component is failing helps you choose the right log and to interpret the issue correctly.
+If your PHP-FPM and NGINX configuration isn't working as expected, use the steps below to identify where the issue is occurring and how to resolve it. PHP, PHP FPM, and NGINX each log different types of errors, so knowing which component to check helps you interpret problems quickly and accurately.
+
+These steps don't produce output unless an issue is present. Use them when your application shows errors, slowdowns, or unexpected behavior.
 
 1. Check the NGINX Error Log
 
 NGINX logs routing, FastCGI, and upstream connection issues. Common symptoms include:
-- 502 Bad Gateway → NGINX cannot reach PHP FPM
+- 502 Bad Gateway → NGINX cannot reach PHP-FPM
 - 403 or 404 errors → incorrect root path or permissions
 - PHP file downloads instead of executing → PHP module not loaded
 
@@ -583,9 +585,9 @@ View the log:
 sudo tail -f /var/log/nginx/error.log
 ```
 
-2. Check the PHP FPM Service Log
+2. Check the PHP-FPM Service Log
 
-PHP FPM logs process level issues such as pool misconfiguration, socket failures, crashes, or resource exhaustion.
+PHP-FPM logs process-level issues such as pool misconfiguration, socket failures, crashes, or resource exhaustion.
 ```command
 sudo tail -f /var/log/php8.1-fpm.log
 ```
@@ -603,9 +605,9 @@ PHP application level errors (syntax errors, fatal errors, exceptions) are writt
 
 Some frameworks override this setting. If the file is empty, check your application’s log directory or the NGINX error log.
 
-4. Verify the PHP FPM Socket or Port
+4. Verify the PHP-FPM Socket or Port
 
-If NGINX cannot reach PHP FPM, you may see:
+If NGINX cannot reach PHP-FPM, you may see:
 
 - 502 Bad Gateway
 - Connection refused
@@ -621,11 +623,11 @@ If your configuration uses TCP instead of a socket:
 fastcgi_pass 127.0.0.1:9000;
 ```
 
-Ensure PHP FPM is listening on that address.
+Ensure PHP-FPM is listening on that address.
 
 5. Check File and Directory Permissions
 
-Incorrect ownership or permissions can prevent PHP FPM from reading or executing files. A safe baseline for most deployments:
+Incorrect ownership or permissions can prevent PHP-FPM from reading or executing files. A safe baseline for most deployments:
 ```command
 sudo chown -R www-data:www-data /var/www/example.com
 sudo find /var/www/example.com -type d -exec chmod 755 {} \;
@@ -634,14 +636,25 @@ sudo find /var/www/example.com -type f -exec chmod 644 {} \;
 
 AppArmor Restrictions (Ubuntu Only)
 
-If you’re using custom directories or non standard paths, AppArmor may block PHP FPM from reading files even when permissions are correct. Check for denials:
+If you’re using custom directories or non-standard paths, AppArmor may block PHP-FPM from reading files even when permissions are correct. Check for denials:
 ```command
 sudo journalctl -xe | grep DENIED
 ```
 
-If AppArmor is the cause, update the PHP FPM AppArmor profile or place your files in approved locations.
+If AppArmor is the cause, update the PHP-FPM AppArmor profile or place your files in approved locations.
 
-6. Reload or Restart Services
+6. Check for PHP-FPM worker saturation
+
+If your application slows down or returns 504 errors, PHP-FPM may have reached pm.max_children. This means all workers are busy, new requests are waiting in a queue, and some may slow down or time out.
+
+Look for messages such as:
+
+•	server reached pm.max_children setting
+•	pool seems busy
+
+These indicate that PHP-FPM cannot spawn additional workers and is under load. See the Performance Monitoring section for guidance on watching process counts and memory usage.
+
+7. Reload or Restart Services
 
 After making configuration changes:
 ```command
@@ -653,30 +666,30 @@ Reloading NGINX applies configuration changes without dropping active connection
 
 ## Next Steps
 
-Expand your PHP-FPM deployment with database connectivity, advanced performance tuning, and high-availability configurations.
+Expand your PHP-FPM deployment with database connectivity, advanced performance tuning, and high-availability configurations as your application grows.
 
 ### Database Integration
 
 Connect your PHP application to a database server:
 
 - [MySQL on Ubuntu 22.04](https://www.linode.com/docs/guides/install-and-configure-mysql-on-ubuntu-22-04/) - Install and configure MySQL for PHP applications
-- [PostgreSQL on Ubuntu 22.04](https://www.postgresql.org/download/linux/ubuntu/) - Deploy PostgreSQL database server
-- [Akamai Managed Databases](https://techdocs.akamai.com/cloud-computing/docs/aiven-database-clusters) - Fully managed database clusters
+- [PostgreSQL on Ubuntu 22.04](https://www.postgresql.org/download/linux/ubuntu/) - Install PostgreSQL from official Ubuntu packages
+- [Akamai Managed Databases](https://techdocs.akamai.com/cloud-computing/docs/aiven-database-clusters) - Fully managed database clusters for production workloads
 
 ### Performance Optimization
 
-Advanced tuning for production workloads:
+Improve performance for production environments:
 
 - [NGINX Performance Tuning: Tips and Tricks](https://blog.nginx.org/blog/performance-tuning-tips-tricks) - Worker processes, connection limits, and buffer sizing
-- [PHP-FPM Performance](https://www.php.net/manual/en/install.fpm.configuration.php) - Process manager optimization and OPcache configuration
-- [PHP OPcache Configuration](https://www.php.net/manual/en/opcache.configuration.php) - Bytecode caching for improved performance
+- [PHP-FPM Configuration](https://www.php.net/manual/en/install.fpm.configuration.php) - Process manager tuning and OPcache settings
+- [PHP OPcache Configuration](https://www.php.net/manual/en/opcache.configuration.php) - Bytecode caching for PHP execution
 
 ### Security Hardening
 
-Additional security measures beyond basic hardening:
+Strengthen your deployment beyond basic hardening:
 
 - [PHP Security Best Practices](https://www.php.net/manual/en/security.php) - Official PHP security guidance
-- [NGINX Security Configuration](https://nginx.org/en/docs/http/ngx_http_ssl_module.html) - TLS/SSL configuration and security headers
+- [NGINX Security Configuration](https://nginx.org/en/docs/http/ngx_http_ssl_module.html) - TLS settings and security headers
 
 ### High Availability
 
