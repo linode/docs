@@ -251,34 +251,67 @@ Next, you need to determine which partition your root file system is installed o
 
     Depending upon your distribution, it may use different parameters for your root disk under the "options" section. These can be adjusted as needed. Note that you're using `/dev/sda` instead of the `sda1` root partition that was identified previously.
 
-1. Confirm the location of your `grub.cfg` file. Some distributions (notably, CentOS and Fedora) place this file under the `/boot/grub2` directory, while others have it under `/boot/grub`. Your new setup uses Linode's *Grub 2* mode, which looks for a configuration file under `/boot/grub/grub.cfg`. You can confirm if your `grub.cfg` is located in the necessary spot with the `ls` command:
+1. Confirm the location of your `grub.cfg` file. Some distributions (notably, CentOS and Fedora) place this file under the `/boot/grub2` directory, while others have it under `/boot/grub`. Your new setup uses Linode's *Grub 2* mode, which looks for a configuration file under `/boot/grub/grub.cfg`. 
+Use the following script to detect the correct path and set up the expected location without creating an unnecessary symlink:
 
-    ```command {title="Lish console or Glish command prompt"}
-    ls -la /boot/grub/grub.cfg
-    ```
+   ```bash
+   if [ -f /boot/grub2/grub.cfg ] && [ -f /boot/grub/grub.cfg ]; then
+     # Both exist — /boot/grub/grub.cfg is already in the right place
+     GRUB_CFG=/boot/grub/grub.cfg
+     echo "Using existing /boot/grub/grub.cfg"
+   elif [ -f /boot/grub2/grub.cfg ]; then
+     # Only grub2 path exists — create the directory and symlink
+     mkdir -p /boot/grub
+     ln -s /boot/grub2/grub.cfg /boot/grub/grub.cfg
+     GRUB_CFG=/boot/grub/grub.cfg
+     echo "Created symlink: /boot/grub/grub.cfg -> /boot/grub2/grub.cfg"
+   elif [ -f /boot/grub/grub.cfg ]; then
+     # Already in the standard location
+     GRUB_CFG=/boot/grub/grub.cfg
+     echo "Using existing /boot/grub/grub.cfg"
+   else
+     echo "ERROR: grub.cfg not found in /boot/grub/ or /boot/grub2/"
+     echo "Run 'update-grub' or 'grub2-mkconfig' first to generate it."
+     exit 1
+   fi
+   ```
 
-    The output should display information for that file, if it exists.
+This script defaults to `/boot/grub2/grub.cfg` when both paths exist on systems like CentOS/Fedora, and only creates the symlink when `/boot/grub2/grub.cfg` exists but `/boot/grub/grub.cfg` does not. This avoids overwriting an existing config with a symlink.
 
-    ``` {title="Lish console or Glish command prompt"}
-    -r--r--r-- 1 root root 5235 Dec 28 08:05 /boot/grub/grub.cfg
-    ```
+1. Open your `grub.cfg` file and replace all instances of the old partition location and UUID with the new intended location. Run the following commands, replacing the UUID value with the one for your current root partition (determined in step 2 of the current section).
 
-    If the Grub config is located under `/boot/grub2` instead, create a symlink to provide the correct configuration to the bootloader:
+   Change these example lines in `grub.cfg` referencing the old partition:
 
-    ```command {title="Lish console or Glish command prompt"}
-    mkdir /boot/grub
-    ln -s /boot/grub2/grub.cfg /boot/grub/grub.cfg
-    ```
+   ```
+   linux   /boot/vmlinuz-5.10.0-19-amd64 root=/dev/sda1 ro quiet
+   ```
+   ```
+   search --no-floppy --fs-uuid --set=root 59a7ea75-58c8-46cc-8b71-86f07b56f41f
+   ```
+   ```
+   set root='hd0,msdos1'
+   linux /vmlinuz root=UUID=59a7ea75-58c8-46cc-8b71-86f07b56f41f ro
+   ```
 
-1. Open your `grub.cfg` file and replace all instances of the old partition location and UUID with the new intended location. Run the following commands, replacing the UUID value with the one for your current root partition (determined in step 2 of the current section). You may also need to make adjustments to the following commands if your root partition is at a location other than `/dev/sda1`:
+   To these lines pointing to `/dev/sda`):
 
-    ```command {title="Lish console or Glish command prompt"}
-    sed -i -e 's$/dev/sda1$/dev/sda$g' /boot/grub/grub.cfg
-    sed -i -e 's$--fs-uuid --set=root 59a7ea75-58c8-46cc-8b71-86f07b56f41f$--set=root /dev/sda$g' /boot/grub/grub.cfg
-    sed -i -e 's$root=UUID=59a7ea75-58c8-46cc-8b71-86f07b56f41f$root=/dev/sda$g' /boot/grub/grub.cfg
-    ```
+   ```
+   linux   /boot/vmlinuz-5.10.0-19-amd64 root=/dev/sda ro quiet
+   ```
+   ```
+   search --no-floppy --set=root /dev/sda
+   ```
+   ```
+   set root='hd0'
+   linux /vmlinuz root=/dev/sda ro
+   ```
 
-    Keep in mind that if your `grub.cfg` is located under `/boot/grub2`, you should adjust this command to reflect that.
+   The specific lines in your file vary by distribution and kernel version. The general rule is: replace every occurrence of `/dev/sda1` with `/dev/sda`, and replace every occurrence of the UUID (`59a7ea75-58c8-46cc-8b71-86f07b56f41f` in this example with your actual UUID from step 2) with `/dev/sda`.
+
+{{< note >}}
+If your root partition is at a location other than `/dev/sda1`, adjust accordingly.
+{{< /note >}} 
+
 
 ### Transfer the System to a New Ext4 Disk
 
