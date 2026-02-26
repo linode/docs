@@ -21,10 +21,10 @@ For full configuration options, see the official [PHP-FPM](https://www.php.net/m
 
 ## Before You Begin
 
-Complete these prerequisites before installing PHP FPM and NGINX. Create and configure your instance using Akamai’s Creating a Compute Instance and Set Up and Secure a Compute Instance guides.
+Complete these prerequisites before installing PHP-FPM and NGINX. Create and configure your instance using Akamai’s Creating a Compute Instance and Set Up and Secure a Compute Instance guides.
 
-{{< note>}}:
-Before creating your instance, confirm that the plan you select provides enough CPU and RAM for your expected traffic and PHP FPM workload. Use the Instance Sizing Reference below as a quick planning guide.
+{{< note>}}
+Before creating your instance, confirm that the plan you select provides enough CPU and RAM for your expected traffic and PHP-FPM workload. Use the Instance Sizing Reference below as a quick planning guide.
 {{< /note>}}
 
 Create and configure your instance using Akamai's [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) and [Set Up and Secure a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides.
@@ -37,11 +37,11 @@ For OS-level documentation, see the [Ubuntu Server](https://ubuntu.com/server/do
 - SSH access to the instance with a non-root user account
 - Sudo privileges for package installation and service management
 - Cloud Manager access to configure firewall rules
-- Basic familiarity with Linux package management (apt)-
+- Basic familiarity with Linux package management (apt)
 
 **Instance Sizing Reference**
 
-Instance sizing affects PHP FPM performance, especially under concurrent load. Use this table as a planning reference when selecting your instance plan, and revisit it after deployment if you need to resize.
+Instance sizing affects PHP-FPM performance, especially under concurrent load. Use this table as a planning reference when selecting your instance plan, and revisit it after deployment if you need to resize.
 
 | Workload | Plan | RAM |
 |---|---|---|
@@ -57,21 +57,21 @@ Configure platform-specific settings for your PHP-FPM deployment including firew
 
 ### Cloud Firewall Configuration
 
-Configure Cloud Firewall rules to allow web traffic to your instance.Work through these steps promptly, as Cloud Manager sessions can time out and unsaved changes will be lost.
+Configure Cloud Firewall rules to allow web traffic to your instance. Work through these steps promptly, as Cloud Manager sessions can time out and unsaved changes will be lost.
 
 1. Navigate to Cloud Manager and select Firewalls from the sidebar under **Networking**.
 2. Create a new firewall or modify an existing one.
 3. Add each of the following as a separate inbound rule by clicking **Add an Inbound Rule**, completing the fields, and clicking **Add Rule** before starting the next:
 
-  - HTTP: Protocol: TCP, Port: 80, Action: Accept, Source: All IPv4 / All IPv6
-  - HTTPS: Protocol: TCP, Port: 443, Action: Accept, Source: All IPv4 / All IPv6
+    - HTTP: Protocol: TCP, Port: 80, Action: Accept, Source: All IPv4 / All IPv6
+    - HTTPS: Protocol: TCP, Port: 443, Action: Accept, Source: All IPv4 / All IPv6
 
 4. To apply the firewall to your compute instance:
 
-  - select the **Linodes** tab within your firewall
-  - click **Add Linodes To Firewall**
-  - select your instance from the list that appears, then click outside the dropdown to close it
-  - then click **Add**..
+    - select the **Linodes** tab within your firewall
+    - click **Add Linodes To Firewall**
+    - select your instance from the list that appears, click outside the dropdown to close it
+    - then click **Add**.
 
 For detailed firewall configuration, see [Getting Started with Cloud Firewalls](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-cloud-firewalls).
 
@@ -107,7 +107,7 @@ Install the required packages:
 sudo apt update
 sudo apt install nginx php8.1-fpm
 ```
-Type "Y" and enter to continue with installation when prompted about disk space usage.You are returned to the prompt.
+Type "Y" and enter to continue with installation when prompted about disk space usage. You are returned to the prompt.
 
 Then verify both services are installed and running:
 ```command
@@ -198,7 +198,7 @@ For comprehensive NGINX configuration options, see the official [NGINX](https://
 
 ### Verify FastCGI Communication
 
-NGINX forwards PHP requests to PHP-FPM via a Unix socket or TCP connection. The Unix socket method provides better performance for local communication between NGINX and PHP-FPM on the same instance.
+NGINX forwards PHP requests to PHP-FPM via a UNIX socket or TCP connection. The Unix socket method provides better performance for local communication between NGINX and PHP-FPM on the same instance.
 
 **Step 1**: Check the PHP-FPM socket location:
 
@@ -242,11 +242,11 @@ server {
 ```
 **Step 3**: Understand Key directives:
 
-- listen: Defines ports for IPv4 and IPv6
-- server_name: Domain names for this server block
-- root: Document root directory
-- fastcgi_pass: Socket path for PHP-FPM communication
-- include snippets/fastcgi-php.conf: Standard FastCGI parameters
+  - listen: Defines ports for IPv4 and IPv6
+  - server_name: Domain names for this server block
+  - root: Document root directory
+  - fastcgi_pass: Socket path for PHP-FPM communication
+  - include snippets/fastcgi-php.conf: Standard FastCGI parameters
 
 **Step 4**: Enable the server block and test the configuration:
 
@@ -255,7 +255,7 @@ sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
 sudo nginx -t
 ```
 {{< note>}}
-If the symlink already exists, you may see a"File exists" message. This means the site is already enable and you can continue to the next step.
+If the symlink already exists, you may see a "File exists" message. This means the site is already enabled and you can continue to the next step.
 {{< /note>}}
 
 Then after you run the next command you receive a confirmation message that the `syntax is okay` and the `test was successful`.
@@ -269,7 +269,7 @@ Success returns you to the prompt.
 
 ## Configure PHP-FPM
 
-The default pool configuration listens at `/etc/php/8.1/fpm/pool.d/www.conf` which matches the `fastcgi_pass` directive in you NGINX server block. No changes are required for standard deployments (for more information see the official PHP-FPM configuration documentation).
+The default pool configuration listens at `/etc/php/8.1/fpm/pool.d/www.conf` which matches the `fastcgi_pass` directive in your NGINX server block. No changes are required for standard deployments (for more information see the official PHP-FPM configuration documentation).
 
 ### Verify PHP-FPM Socket Configuration
 
@@ -305,11 +305,11 @@ pm.max_spare_servers = 3
 
 **Directive Description**
 
-- **pm = dynamic**: Spawns child processes based on demand
-- **pm.max_children**: Maximum concurrent PHP-FPM processes
-- **pm.start_servers**: Processes created at startup
-- **pm.min_spare_servers**: Minimum idle processes
-- **pm.max_spare_servers**: Maximum idle processes
+  - **pm = dynamic**: Spawns child processes based on demand
+  - **pm.max_children**: Maximum concurrent PHP-FPM processes
+  - **pm.start_servers**: Processes created at startup
+  - **pm.min_spare_servers**: Minimum idle processes
+   - **pm.max_spare_servers**: Maximum idle processes
 
 ### Performance Tuning (Advanced, Optional)
 
@@ -389,7 +389,7 @@ Apply foundational security measures to protect your PHP-FPM deployment. These s
 
 ### Disable Dangerous PHP Functions
 
-Restrict PHP functions that can execute system commands or access the filesystem in ways that pose security risks.
+Restrict PHP functions that can execute system commands or access the file system in ways that pose security risks.
 
 Edit the PHP configuration file:
 
@@ -434,7 +434,7 @@ Files should be readable by the web server but writable only by the owner. Direc
 
 Configure TLS/SSL certificates to encrypt traffic between clients and your server. HTTPS prevents credential interception and protects session data.
 
-For TLS/SSL certificate configuration on Akamai cloud compute, see [Use Certbot to Enable HTTPS with NGINX on Ubuntu](https://www.linode.com/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/).Although the linked Akamai guide references Ubuntu 18.04/20.04, the Certbot installation and NGINX integration steps are identical on Ubuntu 22.04. You can safely follow the Akamai guide as written.
+For TLS/SSL certificate configuration on Akamai cloud compute, see [Use Certbot to Enable HTTPS with NGINX on Ubuntu](https://www.linode.com/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/). Although the linked Akamai guide references Ubuntu 18.04/20.04, the Certbot installation and NGINX integration steps are identical on Ubuntu 22.04. You can safely follow the Akamai guide as written.
 
 For users who prefer the most current upstream reference, [Certbot’s official](https://certbot.eff.org/instructions) Ubuntu 22.04 instructions follow the same workflow and may be used interchangeably.
 
@@ -460,6 +460,7 @@ sudo systemctl reload nginx
 ### Production Environment Considerations
 
 **Critical: Disable PHP Error Display in Production**
+
 Displaying PHP errors in production exposes internal paths, configuration details, and environment information that attackers can exploit. Configure PHP to log errors privately instead.
 
 Edit the PHP configuration file (scroll or page down to the end of the file to place these directives):
@@ -481,6 +482,7 @@ Errors are logged to `/var/log/php-fpm/error.log` for debugging without exposing
 Restart PHP-FPM after making changes:
 ```command
 sudo systemctl reload php8.1-fpm
+```
 
 **Never deploy `phpinfo()` or similar diagnostic scripts in production**. These scripts expose details about your PHP environment--including file paths, loaded modules, extensions, environment variables, and configuration values--all of which can be used by attackers to map your system and target vulnerabilities.
 
@@ -541,7 +543,7 @@ sudo tail -f /var/log/php8.1-fpm.log
 
 Expected output:
 
-When PHP FPM restarts (for example, after a system reboot or a configuration reload), the process log records normal lifecycle events such as:
+When PHP-FPM restarts (for example, after a system reboot or a configuration reload), the process log records normal lifecycle events such as:
 
 - `NOTICE: Terminating ...`
 - `NOTICE: exiting, bye-bye!`
@@ -549,7 +551,7 @@ When PHP FPM restarts (for example, after a system reboot or a configuration rel
 - `NOTICE: ready to handle connections`
 - `NOTICE: systemd monitor interval set to 10000ms`
 
-These messages indicate that PHP FPM stopped and started cleanly. The `tail -f` command will remain open and display new events as they occur.
+These messages indicate that PHP-FPM stopped and started cleanly. The `tail -f` command will remain open and display new events as they occur.
 
 PHP application-level errors are written to the file specified by the `error_log` directive in `/etc/php/8.1/fpm/php.ini`.
 
@@ -563,13 +565,13 @@ Key metrics to monitor:
 - **Memory usage**: High memory usage forces the system to swap to disk, which significantly slows request processing.
 - **PHP-FPM process count**: Reaching `pm.max_children` means all workers are busy, so new requests queue and may slow down or time out (configuration adjustments needed).
 
-For deeper visibility into request behavior and PHP-FPM saturation, integrate with an external observability platforms. See the [NGINX](https://nginx.org/en/docs/http/ngx_http_stub_status_module.html) monitoring documentation for enabling the stub status module.
+For deeper visibility into request behavior and PHP-FPM saturation, integrate with external observability platforms. See the [NGINX](https://nginx.org/en/docs/http/ngx_http_stub_status_module.html) monitoring documentation for enabling the stub status module.
 
 These metrics don’t require a test step during deployment; they become relevant once your application is serving real traffic. For help interpreting these metrics and resolving issues such as PHP-FPM saturation or slow requests, see the Troubleshooting section that follows.
 
 ## Troubleshooting
 
-If your PHP-FPM and NGINX configuration isn't working as expected, use the steps below to identify where the issue is occurring and how to resolve it. PHP, PHP FPM, and NGINX each log different types of errors, so knowing which component to check helps you interpret problems quickly and accurately.
+If your PHP-FPM and NGINX configuration isn't working as expected, use the steps below to identify where the issue is occurring and how to resolve it. PHP, PHP-FPM, and NGINX each log different types of errors, so knowing which component to check helps you interpret problems quickly and accurately.
 
 These steps don't produce output unless an issue is present. Use them when your application shows errors, slowdowns, or unexpected behavior.
 
@@ -591,7 +593,7 @@ PHP-FPM logs process-level issues such as pool misconfiguration, socket failures
 ```command
 sudo tail -f /var/log/php8.1-fpm.log
 ```
-Restart PHP FPM if needed:
+Restart PHP-FPM if needed:
 ```command
 sudo systemctl restart php8.1-fpm
 ```
@@ -645,12 +647,12 @@ If AppArmor is the cause, update the PHP-FPM AppArmor profile or place your file
 
 6. Check for PHP-FPM worker saturation
 
-If your application slows down or returns 504 errors, PHP-FPM may have reached pm.max_children. This means all workers are busy, new requests are waiting in a queue, and some may slow down or time out.
+If your application slows down or returns 504 errors, PHP-FPM may have reached `pm.max_children`. This means all workers are busy, new requests are waiting in a queue, and some may slow down or time out.
 
 Look for messages such as:
 
-•	server reached pm.max_children setting
-•	pool seems busy
+  •	server reached `pm.max_children` setting
+  •	pool seems busy
 
 These indicate that PHP-FPM cannot spawn additional workers and is under load. See the Performance Monitoring section for guidance on watching process counts and memory usage.
 
@@ -662,7 +664,7 @@ sudo systemctl reload nginx
 sudo systemctl restart php8.1-fpm
 ```
 
-Reloading NGINX applies configuration changes without dropping active connections.
+**Reloading** NGINX applies configuration changes without dropping active connections.
 
 ## Next Steps
 
