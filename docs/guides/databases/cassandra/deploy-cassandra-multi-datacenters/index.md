@@ -281,7 +281,7 @@ Before proceeding to Cassandra installation, confirm:
 
 ## Installing Cassandra
 
-This guide uses Apache Cassandra 4.1.x, the current the current stable release recommended for production deployments. Newer major versions may still be in early adoption or require different tooling, so using the stable branch ensures compatibility and predictable behavior on Akamai Cloud Compute.
+This guide uses Apache Cassandra 4.1.x, the current stable release recommended for production deployments. Newer major versions may still be in early adoption or require different tooling, so using the stable branch ensures compatibility and predictable behavior on Akamai Cloud Compute.
 
 Because Cassandra 4.1.x is no longer included in Ubuntu’s default package repositories, installation begins by adding the official Apache Cassandra repository. This ensures that all nodes install the correct version and receive updates directly from the Cassandra project.
 
@@ -539,7 +539,7 @@ These are the correct defaults.
 
 If they are missing or incorrect, Cassandra may start but clients (including `cqlsh`) will not be able to connect to the node.
 
-Save the File.(Ctrl X, Y, Enter)
+Save the File. (Ctrl + X, "Y", Enter)
 
 ### Setting Data Center and Rack Topology
 
@@ -618,7 +618,7 @@ rack=rack2
 
 - Rack names must be unique within their data center.
 - Rack names may be reused across different data centers.
-- Save the file (Ctrl+X, Y, Enter).
+- Save the file (Ctrl + X, "Y", Enter).
 
 These values are read at startup, so any changes require restarting the node.
 
