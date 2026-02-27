@@ -1,10 +1,10 @@
 ---
-title: "Deploy Shadowsocks through the Linode Marketplace"
-description: "This guide provides you with instructions on how to deploy a Shadowsocks server to bypass network censorship on a Linode using the One-Click Marketplace App."
+title: "Deploy Shadowsocks"
+description: "This guide provides you with instructions on how to deploy a Shadowsocks server to bypass network censorship on a Linode using the Quick Deploy App."
 published: 2020-03-18
 modified: 2022-03-08
 keywords: ['shadowsocks','marketplace', 'server']
-tags: ["proxy","cloud-manager","linode platform","security","marketplace"]
+tags: ["proxy","cloud-manager","linode platform","security","quick deploy apps"]
 image: DeployShadowsocksServer_oneclickapps.png
 external_resources:
 - '[Shadowsocks Official](https://shadowsocks.org)'
@@ -20,7 +20,7 @@ marketplace_app_name: "Shadowsocks"
 
 Shadowsocks is a lightweight SOCKS5 web proxy tool primarily used to bypass network censorship and blocking on certain websites and web protocols. A full setup requires a Linode server to host the Shadowsocks daemon, and a client installed on PC, Mac, Linux, or a mobile device. Unlike other proxy software, Shadowsocks traffic is designed to be both indiscernible from other traffic to third-party monitoring tools, and also able to disguise itself as a normal direct connection. Data passing through Shadowsocks is encrypted for additional security and privacy.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -52,7 +52,7 @@ When the client has completed the installation process, ensure that you're setti
 | **Configuration** | **Description** |
 |-------------------|-----------------|
 | **Address** | Your linodes IPv4 address. Can be found in the `Linodes` section of [Cloud Manager](https://cloud.linode.com/linodes).
-| **Port** | The Shadowsocks Marketplace App connects through port `8000` by default. |
+| **Port** | The Shadowsocks Quick Deploy App connects through port `8000` by default. |
 | **Encryption** | Set to use the `aes-256-gcm` encryption mode. |
 | **Password** | This is the `Shadowsocks Password` field you created when initially deploying your app. |
 

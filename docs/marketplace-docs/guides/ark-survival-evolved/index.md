@@ -1,12 +1,12 @@
 ---
-title: "Deploy an ARK Survival Evolved Server through the Linode Marketplace"
-description: "Deploy a ARK: Survival Evolved Server on Linode using Marketplace Apps."
+title: "Deploy an ARK Survival Evolved Server"
+description: "Deploy a ARK: Survival Evolved Server on Linode using Quick Deploy Apps."
 published: 2019-04-03
 modified: 2024-01-22
 keywords: ['ark','survival evolved','marketplace apps', 'server']
 external_resources:
  - '[The Official ARK: Survival Evolved Wiki](https://ark.gamepedia.com/ARK_Survival_Evolved_Wiki)'
-tags: ["linode platform","marketplace","cloud-manager"]
+tags: ["linode platform","quick deploy apps","cloud-manager"]
 aliases: ['/products/tools/marketplace/guides/ark-survival-evolved/','/platform/marketplace/deploying-ark-survival-evolved-with-marketplace-apps/', '/platform/one-click/deploying-ark-survival-evolved-with-one-click-apps/','/guides/deploying-ark-survival-evolved-with-one-click-apps/','/guides/deploying-ark-survival-evolved-with-marketplace-apps/','/guides/ark-survival-evolved-marketplace-app/']
 _build:
   list: false
@@ -17,14 +17,14 @@ contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-ARK: Survival Evolved has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only. For information on how to deploy and set up ARK: Survival Evolved manually on a Compute Instance, see our [Creating a Dedicated ARK Server on Ubuntu](/docs/guides/create-an-ark-server-on-ubuntu) guide.
+ARK: Survival Evolved has been removed from the App Quick Deploy App and can no longer be deployed. This guide is retained for reference only. For information on how to deploy and set up ARK: Survival Evolved manually on a Compute Instance, see our [Creating a Dedicated ARK Server on Ubuntu](/docs/guides/create-an-ark-server-on-ubuntu) guide.
 {{< /note >}}
 
 [ARK: Survival Evolved](http://playark.com/ark-survival-evolved/) is a multiplayer action-survival game released in 2017. The game places you on a series of fictional islands inhabited by dinosaurs and other prehistoric animals. In ARK, the main objective is to survive. ARK is an ongoing battle where animals and other players have the ability to destroy you. To survive, you must build structures, farm resources, breed dinosaurs, and even set up trading hubs with neighboring tribes.
 
-This Marketplace App deploys the ARK: Survival Evolved server software through [SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD). Hosting an ARK server gives you control of the entire game. You can define the leveling speed, the amount of players, and the types of weapons that are available. While no additional license is required to run the server, each client needs to have a license for the game.
+This Quick Deploy App deploys the ARK: Survival Evolved server software through [SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD). Hosting an ARK server gives you control of the entire game. You can define the leveling speed, the amount of players, and the types of weapons that are available. While no additional license is required to run the server, each client needs to have a license for the game.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -55,7 +55,7 @@ This Marketplace App deploys the ARK: Survival Evolved server software through [
 
 Ensure that you have [installed Steam](https://store.steampowered.com/about/) on your personal computer and bought the ARK: Survival Evolved game on your Steam account before getting started with this section.
 
-After the Ark: Survival Evolved Server Marketplace App has finished installing, you will be able to access your server by copying your Linode's IPv4 address and entering it into the favorite servers list in your computer's Steam client:
+After the Ark: Survival Evolved Server Quick Deploy App has finished installing, you will be able to access your server by copying your Linode's IPv4 address and entering it into the favorite servers list in your computer's Steam client:
 
 1. Click on the **Linodes** link in the sidebar. You will see a list of all your Linodes.
 
@@ -81,7 +81,7 @@ After the Ark: Survival Evolved Server Marketplace App has finished installing, 
 
 ## Software Included
 
-The ARK: Survival Evolved Marketplace App will install the following required software on your Linode:
+The ARK: Survival Evolved Quick Deploy App will install the following required software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|

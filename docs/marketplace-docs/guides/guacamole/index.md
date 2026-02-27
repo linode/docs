@@ -1,10 +1,10 @@
 ---
-title: "Deploy Apache Guacamole through the Linode Marketplace"
+title: "Deploy Apache Guacamole"
 description: "Deploy Apache Guacamole, a clientless remote desktop gateway that supports VNC, RDP, and SSH protocols through a web browser, on an Akamai Compute Instance."
 published: 2020-12-11
 modified: 2025-10-03
 keywords: ['guacamole', 'marketplace', 'remote desktop']
-tags: ["cloud-manager","linode platform","marketplace"]
+tags: ["cloud-manager","linode platform","quick deploy apps"]
 aliases: ['/products/tools/marketplace/guides/guacamole/','/platform/marketplace/guacamole/','/guides/deploy-guacamole-with-marketplace-apps/','/guides/guacamole-marketplace-app/']
 external_resources:
  - '[Guacamole Documentation](https://guacamole.apache.org/doc/gug/)'
@@ -17,7 +17,7 @@ marketplace_app_name: "Apache Guacamole"
 
 [Apache Guacamole](https://guacamole.apache.org/) is a clientless remote desktop gateway that provides access to desktop environments using remote desktop protocols (VNC, RDP, SSH) through a standard web browser. Unlike traditional remote access solutions, Guacamole requires no plugins or client software installation, making it ideal for accessing remote systems from any device. This deployment uses Docker containers with PostgreSQL database backend for scalable user and connection management, NGINX reverse proxy for security, and automated SSL certificate management.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

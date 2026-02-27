@@ -1,10 +1,10 @@
 ---
-title: "Deploy Ant Media Server Community Edition through the Linode Marketplace"
-description: 'This guide will show you how to install and configure Ant Media Server so you can stream video online using the Linode One-Click Marketplace App.'
+title: "Deploy Ant Media Server Community Edition"
+description: 'This guide will show you how to install and configure Ant Media Server so you can stream video online using the Linode Quick Deploy App.'
 published: 2021-03-30
 modified: 2024-06-06
-keywords: ['streaming', "marketplace", "live video streaming"]
-tags: ["marketplace", "linode platform", "cloud manager"]
+keywords: ['streaming', "quick deploy apps", "live video streaming"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Ant Media](https://antmedia.io)'
 - '[Document](https://github.com/ant-media/Ant-Media-Server/wiki)'
@@ -16,7 +16,7 @@ marketplace_app_id: 804144
 marketplace_app_name: "Ant Media Server Community Edition"
 ---
 
-[Ant Media Server](https://antmedia.io/) is an [open source](https://github.com/ant-media/Ant-Media-Server) video streaming platform known for its scalability and low latency. It supports WebRTC live streaming, as well as CMAF and HLS streaming, and can be ingested through RTMP, WebRTC, or HLS. There are two editions of Ant Media Server: Community Edition and Enterprise Edition. This Marketplace App installs the Community Edition.
+[Ant Media Server](https://antmedia.io/) is an [open source](https://github.com/ant-media/Ant-Media-Server) video streaming platform known for its scalability and low latency. It supports WebRTC live streaming, as well as CMAF and HLS streaming, and can be ingested through RTMP, WebRTC, or HLS. There are two editions of Ant Media Server: Community Edition and Enterprise Edition. This Quick Deploy App installs the Community Edition.
 
 The Community Edition is a limited version of Ant Media Server Enterprise Edition and supports the following features.
 
@@ -33,7 +33,7 @@ The Community Edition is a limited version of Ant Media Server Enterprise Editio
 
 If you need adaptive streaming, cluster, load balancer, and hardware encoding, consider using the [Enterprise Edition](/docs/marketplace-docs/guides/antmediaenterpriseserver/).
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

@@ -1,9 +1,9 @@
 ---
-title: "Deploy MainConcept XAVC Transcoder Demo through the Linode Marketplace"
+title: "Deploy MainConcept XAVC Transcoder Demo"
 description: "Deploy MainConcept XAVC Transcoder demo, an enterprise ready tool to create Sony XAVC camera formats on a Linode Compute Instance."
 published: 2023-09-14
 keywords: ['transcoder','encoder','video','sony','xavc','xavc-intra','xavc long gop','xavc-s','rest api']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/mainconcept-xavc-transcoder-demo/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -18,7 +18,7 @@ The XAVC Transcoder includes MainConcept's codecs, pre-packaged as a single, opt
 
 This version of the XAVC Transcoder is a free version that demonstrates how MainConcept codecs and related libraries work and perform in a cloud environment. It adds a watermark to processed video and intermittently mutes audio. If you wish to deploy the full version of the XAVC Transcoder, please visit the [MainConcept on Linode](https://www.mainconcept.com/akamai-linode) website.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

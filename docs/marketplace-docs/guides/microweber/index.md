@@ -1,9 +1,9 @@
 ---
-title: "Deploy Microweber through the Linode Marketplace"
+title: "Deploy Microweber"
 description: "Deploy Microweber, an open-source, drag and drop website builder and CMS on a Linode Compute Instance."
 published: 2022-09-06
 keywords: ['Microweber','website builder','cms']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/microweber/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -18,7 +18,7 @@ marketplace_app_name: "Microweber"
 When self-hosting Microweber, you are responsible for the security of your server. Follow best practices for securing, updating, and backing up the software on your Compute Instance. See [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/).
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

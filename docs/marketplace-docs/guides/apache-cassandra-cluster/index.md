@@ -1,9 +1,9 @@
 ---
-title: "Deploy Apache Cassandra Cluster through the Linode Marketplace"
+title: "Deploy Apache Cassandra Cluster"
 description: "Apache Cassandra is an open-source, distributed NoSQL database management system designed for handling large amounts of data across many commodity servers, providing high availability with no single point of failure. Cassandra offers robust support for clusters with asynchronous masterless replication allowing low-latency operations for all clients. "
 published: 2024-08-05
 keywords: ['nosql','database', 'marketplace', 'cassandra']
-tags: ["ubuntu","marketplace", "database", "linode platform", "cloud manager", "ssl", "cloud storage", "high availability", "compute storage"]
+tags: ["ubuntu","quick deploy apps", "database", "linode platform", "cloud manager", "ssl", "cloud storage", "high availability", "compute storage"]
 external_resources:
 - '[About Apache Cassandra](https://cassandra.apache.org/)'
 - '[Apache Cassandra Documentation](https://cassandra.apache.org/doc/latest/cassandra/architecture/overview.html)'
@@ -15,9 +15,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 ## Cluster Deployment Architecture
 
-Create a highly available Apache Cassandra cluster through the Linode Marketplace. Apache Cassandra is an open-source, distributed NoSQL database management system designed for handling large amounts of data across many commodity servers, providing high availability with no single point of failure. Cassandra offers robust support for clusters with asynchronous masterless replication, allowing low-latency operations for all clients.
+Create a highly available Apache Cassandra cluster. Apache Cassandra is an open-source, distributed NoSQL database management system designed for handling large amounts of data across many commodity servers, providing high availability with no single point of failure. Cassandra offers robust support for clusters with asynchronous masterless replication, allowing low-latency operations for all clients.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -58,7 +58,7 @@ Create a highly available Apache Cassandra cluster through the Linode Marketplac
 
 ## Getting Started After Deployment
 
-This Marketplace App creates a 3-5 node cluster using Apache Cassandra. Authentication to the cluster is secured via a user-supplied username. The default `cassandra` database role is removed and superseded by the new user role provided by the client. In addition, cluster communication is secured via SSL/TLS with self-signed keystores.
+This Quick Deploy App creates a 3-5 node cluster using Apache Cassandra. Authentication to the cluster is secured via a user-supplied username. The default `cassandra` database role is removed and superseded by the new user role provided by the client. In addition, cluster communication is secured via SSL/TLS with self-signed keystores.
 
 Both certificates and keystores can be found on every node in the `/etc/cassandra/ssl` directory. Only the first Cassandra server will have client certificates. This playbook also creates *_n_* amount of client certificates so that applications can connect to the Cassandra cluster.
 
@@ -107,7 +107,7 @@ You can distribute the remainder of client certificates to the rest of the nodes
 
 ## Software Included
 
-The Apache Cassandra Marketplace App installs the following software on your Linode:
+The Apache Cassandra Quick Deploy App installs the following software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|

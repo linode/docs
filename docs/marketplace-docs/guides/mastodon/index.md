@@ -1,10 +1,10 @@
 ---
-title: "Deploy Mastodon through the Linode Marketplace"
-description: "Learn how to deploy Mastodon, a decentralized social network and micro-blogging platform, on the Linode Marketplace."
+title: "Deploy Mastodon"
+description: "Learn how to deploy Mastodon, a decentralized social network and micro-blogging platform, on the Linode Quick Deploy App."
 published: 2022-12-12
 modified: 2024-04-16
 keywords: ['social', 'messaging', 'mastodon']
-tags: ["linode platform","mastodon","marketplace","cloud-manager",]
+tags: ["linode platform","mastodon","quick deploy apps","cloud-manager",]
 external_resources:
   - '[Mastodon Deployment Github Repository](https://github.com/linode-solutions/mastodon-oca)'
   - '[Mastodon Official Documentation](https://docs.joinmastodon.org/)'
@@ -25,11 +25,11 @@ Mastodon servers range in size from small private instances to massive public in
 {{% content "email-warning-shortguide" %}}
 
 {{< note >}}
-The Mastodon Marketplace App *requires* a custom domain. After deploying Mastodon, see the instructions within the [Configure Your Domain's Name Servers](#configure-your-domains-name-servers) section. Depending on a variety of factors, new and updated DNS records can take up to 48 hours to fully propagate, though it usually happens much sooner. The deployment fails if the DNS has still not been propagated.
+The Mastodon Quick Deploy App *requires* a custom domain. After deploying Mastodon, see the instructions within the [Configure Your Domain's Name Servers](#configure-your-domains-name-servers) section. Depending on a variety of factors, new and updated DNS records can take up to 48 hours to fully propagate, though it usually happens much sooner. The deployment fails if the DNS has still not been propagated.
 
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

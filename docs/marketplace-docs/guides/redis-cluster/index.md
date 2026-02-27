@@ -1,9 +1,9 @@
 ---
-title: "Deploy a Redis Sentinel Cluster through the Linode Marketplace"
+title: "Deploy a Redis Sentinel Cluster"
 description: "This guide shows how you can install Redis database, a open-source, in-memory, data structure store, with optional write and persistence of data on a disk."
 published: 2023-03-20
 keywords: ['redis','data store','cluster','database']
-tags: ["linode platform","database","marketplace","cloud-manager"]
+tags: ["linode platform","database","quick deploy apps","cloud-manager"]
 external_resources:
 - '[Introduction to Redis Data Types](https://redis.io/topics/data-types-intro)'
 - '[Redis Replication](https://redis.io/topics/replication)'
@@ -17,11 +17,11 @@ marketplace_app_name: "Redis Sentinel"
 
 [Redis](https://redis.io/) is an open-source, in-memory, data-structure store, with the optional ability to write and persist data to a disk, which can be used as a key-value database, cache, and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets, and others.
 
-{{< note type="warning" title="Marketplace App Cluster Notice" >}}
-This Marketplace App deploys 3 or 5 Compute Instances to create a highly available and redundant Redis cluster using Redis Sentinel, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy Redis on a single Compute Instance, see [Deploy Redis through the Linode Marketplace](/docs/marketplace-docs/guides/redis/).
+{{< note type="warning" title="Quick Deploy App Cluster Notice" >}}
+This Quick Deploy App deploys 3 or 5 Compute Instances to create a highly available and redundant Redis cluster using Redis Sentinel, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy Redis on a single Compute Instance, see [Deploy Redis](/docs/marketplace-docs/guides/redis/).
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-app-cluster-shortguide" %}}
 

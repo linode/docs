@@ -1,10 +1,10 @@
 ---
-title: "Deploy Jaeger all-in-one through the Linode Marketplace"
+title: "Deploy Jaeger all-in-one"
 description: "Learn how to deploy the all-in-one configuration of Jaeger, a CNCF distributed tracing system for monitoring and troubleshooting microservices architectures, on an Akamai Compute Instance."
 published: 2025-09-04
 modified: 2025-09-04
 keywords: ['distributed tracing', 'tracing','microservices','monitoring','observability','jaeger','cncf']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Jaeger Official Documentation](https://www.jaegertracing.io/docs/)'
 aliases: ['/products/tools/marketplace/guides/jaeger/','/guides/jaeger-marketplace-app/']
@@ -17,7 +17,7 @@ marketplace_app_name: "Jaeger"
 
 [Jaeger](https://www.jaegertracing.io/) is a CNCF distributed tracing system designed for monitoring and troubleshooting microservices-based distributed systems. It helps developers understand the architecture of complex systems through data-driven dependency diagrams, analyze request timelines, identify performance bottlenecks, and diagnose issues across service boundaries. Jaeger supports OpenTelemetry for instrumentation and provides a comprehensive platform for distributed trace collection, storage, and visualization.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

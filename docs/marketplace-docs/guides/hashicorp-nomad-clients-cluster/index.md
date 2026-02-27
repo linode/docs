@@ -1,10 +1,10 @@
 ---
-title: "Deploy HashiCorp Nomad Clients Cluster through the Linode Marketplace"
+title: "Deploy HashiCorp Nomad Clients Cluster"
 description: "Deploy HashiCorp Nomad Clients Cluster, a flexible scheduling and orchestration for diverse workloads, on Linode Compute Instances.'"
 published: 2023-09-12
 modified: 2023-11-13
 keywords: ['HashiCorp','Nomad','Scheduling', 'orchestration']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/hashicorp-nomad-clients-cluster/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -16,10 +16,10 @@ The [HashiCorp Nomad](https://www.nomadproject.io/) Clients Cluster deploys 3, 5
 See our guide on deploying a [HashiCorp Nomad Cluster](/docs/marketplace-docs/guides/hashicorp-nomad-cluster/) if you have not already deployed a cluster.
 
 {{< note >}}
-Please be aware that each Compute Instance will appear on your invoice as a separate item. If you would rather deploy HashiCorp Nomad on a single Compute Instance, see [Deploy Hashicorp Nomad through the Linode Marketplace](/docs/marketplace-docs/guides/hashicorp-nomad/).
+Please be aware that each Compute Instance will appear on your invoice as a separate item. If you would rather deploy HashiCorp Nomad on a single Compute Instance, see [Deploy Hashicorp Nomad](/docs/marketplace-docs/guides/hashicorp-nomad/).
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
