@@ -1,10 +1,10 @@
 ---
-title: "Deploy a LAMP Stack through the Linode Marketplace"
-description: "This guide shows you how to use the Linode Marketplace One-Click Application to deploy a LAMP (Linux, Apache, MySQL, PHP) stack on a Linode running Linux."
+title: "Deploy a LAMP Stack"
+description: "This guide shows you how to use the Linode Quick Deploy App to deploy a LAMP (Linux, Apache, MySQL, PHP) stack on a Linode running Linux."
 published: 2019-03-26
 modified: 2025-04-29
 keywords: ['LAMP', 'apache', 'web server', 'mysql', 'php']
-tags: ["apache","lamp","cloud-manager","linode platform","php","mysql","marketplace"]
+tags: ["apache","lamp","cloud-manager","linode platform","php","mysql","quick deploy apps"]
 external_resources:
 - '[Apache Getting Started](http://httpd.apache.org/docs/current/getting-started.html)'
 aliases: ['/products/tools/marketplace/guides/lamp-stack/','/platform/marketplace/deploy-lamp-stack-with-marketplace-apps/', '/platform/marketplace/deploy-lamp-stack-with-one-click-apps/','/platform/one-click/deploy-lamp-stack-with-one-click-apps/','/guides/deploy-lamp-stack-with-one-click-apps/','/guides/deploy-lamp-stack-with-marketplace-apps/','/guides/lamp-stack-marketplace-app/']
@@ -15,9 +15,9 @@ marketplace_app_id: 401701
 marketplace_app_name: "LAMP"
 ---
 
-A LAMP (Linux, [Apache](https://www.apache.org), [MySQL](https://www.mysql.com), [PHP](https://www.php.net)) stack is a popular, free, and open-source web software bundle used for hosting websites on Linux. This software environment is a foundation for popular PHP application frameworks like WordPress, Drupal, and Laravel. After you deploy your LAMP Marketplace App, you can upload your existing PHP application code to it or use a PHP framework to write a new application on your Linode.
+A LAMP (Linux, [Apache](https://www.apache.org), [MySQL](https://www.mysql.com), [PHP](https://www.php.net)) stack is a popular, free, and open-source web software bundle used for hosting websites on Linux. This software environment is a foundation for popular PHP application frameworks like WordPress, Drupal, and Laravel. After you deploy your LAMP Quick Deploy App, you can upload your existing PHP application code to it or use a PHP framework to write a new application on your Linode.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -68,7 +68,7 @@ After your LAMP stack has finished deploying, you can:
 
 ## Software Included
 
-The LAMP Stack Marketplace App installs the following software on your Linode:
+The LAMP Stack Quick Deploy App installs the following software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|
@@ -79,6 +79,6 @@ The LAMP Stack Marketplace App installs the following software on your Linode:
 
 ## Going Further
 
-- [Marketplace Apps Repository](https://github.com/akamai-compute-marketplace/marketplace-apps): Review the deployment Ansible playbooks.
+- [Quick Deploy Apps Repository](https://github.com/akamai-compute-marketplace/marketplace-apps): Review the deployment Ansible playbooks.
 
 {{% content "marketplace-update-note-shortguide" %}}

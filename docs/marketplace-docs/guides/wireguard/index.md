@@ -1,10 +1,10 @@
 ---
-title: "Deploy WireGuard through the Linode Marketplace"
-description: 'Deploy a WireGuard Server or Client on Linode with Marketplace Apps.'
+title: "Deploy WireGuard"
+description: 'Deploy a WireGuard Server or Client on Linode with Quick Deploy Apps.'
 published: 2019-03-28
 modified: 2025-07-08
 keywords: ['vpn','wireguard','tunnel']
-tags: ["cloud-manager","linode platform","security","marketplace","vpn"]
+tags: ["cloud-manager","linode platform","security","quick deploy apps","vpn"]
 bundles: ['network-security']
 external_resources:
 - '[WireGuard Quick Start](https://www.wireguard.com/quickstart/)'
@@ -22,7 +22,7 @@ WireGuard&#174; is a simple, fast, and modern virtual private network (VPN) whic
 
 Configuring WireGuard is as simple as configuring SSH. A connection is established by an exchange of public keys between server and client, and only a client whose public key is present in the server's configuration file is considered authorized. WireGuard sets up standard network interfaces which behave similarly to other common network interfaces, like `eth0`. This makes it possible to configure and manage WireGuard interfaces using standard networking tools such as `ifconfig` and `ip`.
 
-The WireGuard Marketplace App provides two separate applications:
+The WireGuard Quick Deploy App provides two separate applications:
 1. **WireGuard Server**. Creates a Linode and sets up a WireGuard network device named `wg0` on it. This device acts as the central hub for your WireGuard network.
 2. **WireGuard Client**. Creates a Linode that can connect to your WireGuard server. You can deploy multiple clients to connect to the same server.
 
@@ -30,7 +30,7 @@ The WireGuard Marketplace App provides two separate applications:
 The WireGuard Server and Client apps can be deployed independently. If you already have a WireGuard server running, you can simply deploy the client app and configure it to connect to your existing server.
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -47,14 +47,14 @@ The WireGuard Server and Client apps can be deployed independently. If you alrea
 
 ### WireGuard Server Options
 
-The WireGuard Server Marketplace form includes the following fields:
+The WireGuard Server Quick Deploy App form includes the following fields:
 
 - **WireGuard Server Tunnel Address:** Your WireGuard server's tunnel IP address and subnet in CIDR notation. The default is: `10.0.0.1/24`. This is not the same as a private IP address that Linode can assign to your Linode instance; instead, this address is managed by the network that WireGuard creates.
 - **WireGuard Listen Port:** Your WireGuard server's listening port number. The default is: `51820`.
 
 ### WireGuard Client Options
 
-The WireGuard Client Marketplace form includes the following fields:
+The WireGuard Client Quick Deploy App form includes the following fields:
 
 - **WireGuard Server Public Key:** The public key of your WireGuard server. You can find it in `/etc/wireguard/server_public.key` on your server instance.
 - **WireGuard Server Endpoint:** The public IP address and port of your WireGuard server in the format `IP:PORT` (e.g., `192.0.2.1:51820`).
@@ -65,7 +65,7 @@ The WireGuard Client Marketplace form includes the following fields:
 
 ### Server-Side Configuration
 
-The deployment of the WireGuard Server Marketplace App automatically creates following files:
+The deployment of the WireGuard Server Quick Deploy App automatically creates following files:
 
 - `/etc/wireguard/server_private.key`: The server's private key.
 - `/etc/wireguard/server_public.key`: The server's public key.
@@ -82,7 +82,7 @@ ListenPort = <listen-port>
 
 ### Client-Side Configuration
 
-The deployment of the WireGuard Client Marketplace App automatically creates following files:
+The deployment of the WireGuard Client Quick Deploy App automatically creates following files:
 
 - `/etc/wireguard/client_private.key`: The client's private key.
 - `/etc/wireguard/client_public.key`: The client's public key.
@@ -107,7 +107,7 @@ Endpoint = <server-endpoint>
 
 To add a new client to your WireGuard server:
 
-1. Deploy a new WireGuard Client instance using the Marketplace App.
+1. Deploy a new WireGuard Client instance using the Quick Deploy App.
 2. On the client instance, locate the client's public key:
    ```bash
    cat /etc/wireguard/client_public.key

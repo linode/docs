@@ -1,9 +1,9 @@
 ---
-title: "Deploy Cribl Stream through the Linode Marketplace"
+title: "Deploy Cribl Stream"
 description: "Deploy Cribl Stream for data routing, shaping, and observability pipeline management"
 published: 2025-10-03
 keywords: ['cribl', 'stream', 'observability', 'log routing', 'data pipeline']
-tags: ["ubuntu", "marketplace", "observability", "developer", "linode platform", "cloud manager"]
+tags: ["ubuntu", "quick deploy apps", "observability", "developer", "linode platform", "cloud manager"]
 external_resources:
 - '[Cribl](https://cribl.io/)'
 - '[Cribl Stream official documentation](https://docs.cribl.io/stream/)'
@@ -16,9 +16,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 Cribl Stream is a vendor-agnostic observability pipeline that gives you full control over your data—allowing you to route, shape, enrich, and reduce event data from any source to any destination. It enables organizations to optimize costs and improve observability by filtering and transforming data before it reaches downstream systems like SIEMs, observability platforms, or data lakes. With its intuitive UI and powerful processing engine, Cribl Stream makes it easier to manage high-volume data ingestion without sacrificing visibility.
 
-This guide includes steps for deploying the Cribl Stream Marketplace App on a Linode instance.
+This guide includes steps for deploying the Cribl Stream Quick Deploy App on a Linode instance.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

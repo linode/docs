@@ -1,10 +1,10 @@
 ---
-title: "Deploy Mist.io through the Linode Marketplace"
-description: "This guide shows how you can deploy Mist.io, an open-source, multi-cloud management platform, on a Linode using the ONe-Click Marketplace Apps installer."
+title: "Deploy Mist.io"
+description: "This guide shows how you can deploy Mist.io, an open-source, multi-cloud management platform, on a Linode using the ONe-Click Quick Deploy Apps installer."
 published: 2020-03-18
 modified: 2024-01-22
 keywords: [ 'mist.io', 'marketplace', 'server']
-tags: ["cloud-manager", "linode platform", "marketplace"]
+tags: ["cloud-manager", "linode platform", "quick deploy apps"]
 external_resources:
 - '[Mist.io Official](https://mist.io/)'
 aliases: ['/products/tools/marketplace/guides/mistio/','/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platform/one-click/deploy-mistio-with-one-click-apps/','/guides/deploy-mistio-with-one-click-apps/','/guides/deploy-mistio-with-marketplace-apps/','/guides/mistio-marketplace-app/']
@@ -19,12 +19,12 @@ marketplace_app_id: 691614
 marketplace_app_name: "Mist Cloud Management Platform"
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-Mist.io has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
+Mist.io has been removed from the App Quick Deploy App and can no longer be deployed. This guide is retained for reference only.
 {{< /note >}}
 
 [Mist.io](https://mist.io/) is an open source, multi-cloud management platform. Mist supports all popular infrastructure technologies including public clouds, private clouds, hypervisors, containers, and bare metal servers. It provides a unified interface for performing common management tasks like provisioning, orchestration, monitoring, automation, and cost analysis. It also comes with a RESTful API so you can easily integrate it in your existing workflows.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -74,7 +74,7 @@ For more information and guidance for getting the most out of your Mist.io App, 
 
 ## Software Included
 
-The Mist.io Marketplace App installs the following software on your Linode:
+The Mist.io Quick Deploy App installs the following software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|

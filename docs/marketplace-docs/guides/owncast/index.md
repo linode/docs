@@ -1,10 +1,10 @@
 ---
-title: "Deploy Owncast through the Linode Marketplace"
-description: "This guide shows how to install Owncast, a self-hosted live video and webchat server that works with common broadcasting software, from the Linode One-Click Marketplace."
+title: "Deploy Owncast"
+description: "This guide shows how to install Owncast, a self-hosted live video and web chat server that works with common broadcasting software, from the Linode Quick Deploy App."
 published: 2021-03-31
 modified: 2025-03-10
 keywords: ['live streaming','marketplace','web chat']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Owncast](https://owncast.online/)'
 - '[Owncast Github](https://github.com/owncast/owncast)'
@@ -19,7 +19,7 @@ marketplace_app_name: "Owncast"
 
 [Owncast](https://owncast.online/) is a self-hosted, "Twitch in a box" live streaming and chat server for use with popular broadcasting software such as OBS. You can use Owncast to live stream anything from gaming with your friends to live events for you and your clients. Like other popular streaming platforms, you can use Owncast's APIs to build things such as chat bots and stream overlays to drive further audience engagement.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

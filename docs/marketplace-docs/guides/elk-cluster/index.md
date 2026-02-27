@@ -1,10 +1,10 @@
 ---
-title: "Deploy the Elastic Stack through the Linode Marketplace"
-description: "This guide helps you configure the Elastic Stack using the Akamai Compute Marketplace."
+title: "Deploy the Elastic Stack"
+description: "This guide helps you configure the Elastic Stack using the Akamai Compute Quick Deploy App."
 published: 2025-12-05
 modified: 2025-12-05
 keywords: ['elk stack', 'elk', 'kibana', 'logstash', 'elasticsearch', 'logging', 'siem', 'cluster', 'elastic stack']
-tags: ["marketplace", "linode platform", "cloud manager", "elk", "logging"]
+tags: ["quick deploy apps", "linode platform", "cloud manager", "elk", "logging"]
 aliases: ['/products/tools/marketplace/guides/elastic-stack/']
 external_resources:
 - '[Elastic Stack Documentation](https://www.elastic.co/docs)'
@@ -22,9 +22,9 @@ The Elastic Stack is a unified observability platform that brings together searc
 
 This solution is well-suited for log aggregation, application monitoring, infrastructure observability, and security analytics. Its open architecture and extensive ecosystem make it adaptable to a wide range of use cases—including distributed system debugging, SIEM workflows, API performance monitoring, and centralized logging.
 
-This Marketplace application stands up a multi-node Elastic Stack cluster using an automated deployment script configured by Akamai.
+This Quick Deploy App application stands up a multi-node Elastic Stack cluster using an automated deployment script configured by Akamai.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

@@ -1,12 +1,12 @@
 ---
-title: "Deploy Counter-Strike Global Offensive through the Linode Marketplace"
-description: "Deploy a Counter-Strike: Global Offensive server on Linode using Marketplace Apps."
+title: "Deploy Counter-Strike Global Offensive"
+description: "Deploy a Counter-Strike: Global Offensive server on Linode using Quick Deploy Apps."
 published: 2019-03-28
 modified: 2022-05-17
 keywords: ['counter-strike','cs', 'go','marketplace']
 external_resources:
 - '[List of CS:GO Cvar Commands to use with RCON](https://developer.valvesoftware.com/wiki/List_of_CS:GO_Cvars)'
-tags: ["linode platform","marketplace","cloud-manager"]
+tags: ["linode platform","quick deploy apps","cloud-manager"]
 aliases: ['/products/tools/marketplace/guides/counter-strike-go/','/platform/marketplace/deploying-cs-go-with-marketplace-apps/', '/platform/one-click/deploying-cs-go-with-one-click-apps/','/guides/deploying-cs-go-with-one-click-apps/','/guides/deploying-cs-go-with-marketplace-apps/','/guides/counter-strike-go-marketplace-app/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -15,9 +15,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 [Counter-Strike: Global Offensive](https://store.steampowered.com/app/730/CounterStrike_Global_Offensive/) (CS:GO) is a fast-paced first person shooter. Teams compete against each other to complete objectives or to eliminate the opposing team. A competitive match requires two teams of five players, but hosting your own server offers you control over team size and server location, so you and your friends can play with low latency. Up to 64 players can be hosted on a single server.
 
-This Marketplace App deploys the CS:GO server software through [LinuxGSM](https://linuxgsm.com/). While no additional license is required to run the server, each client needs to have a license for the game.
+This Quick Deploy App deploys the CS:GO server software through [LinuxGSM](https://linuxgsm.com/). While no additional license is required to run the server, each client needs to have a license for the game.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -77,7 +77,7 @@ After CS:GO has finished installing, you will be able to access your game server
 
 ## Software Included
 
-The CS:GO Marketplace App installs the following required software on your Linode:
+The CS:GO Quick Deploy App installs the following required software on your Linode:
 
 | **Software** | **Description** |
 |--------------|-----------------|

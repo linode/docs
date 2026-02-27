@@ -1,9 +1,9 @@
 ---
-title: "Deploy MainConcept Plugins for FFmpeg Demo through the Linode Marketplace"
+title: "Deploy MainConcept Plugins for FFmpeg Demo"
 description: "Deploy MainConcept Plugins for FFmpeg demo, an enterprise ready set of FFmpeg tools for creating transcoding workflows, on a Linode Compute Instance."
 published: 2023-09-14
 keywords: ['ffmpeg','encoding','decoding','video','vvc','hevc','avc','mpeg-h','xhe-aac','mpeg-2 ts']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/mainconcept-ffmpeg-plugins-demo/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -29,7 +29,7 @@ The following MainConcept Plugins for FFmpeg are included with this deployment:
 
 The versions of MainConcept Plugins for FFmpeg included in this deployment are free demos. They add a watermark to processed video, limit the multiplexing time, and intermittently mute audio. If you wish to deploy the full versions of MainConcept Plugins for FFmpeg, please visit the [MainConcept on Linode](https://www.mainconcept.com/akamai-linode) website.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

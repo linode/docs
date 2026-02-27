@@ -1,10 +1,10 @@
 ---
-title: "Deploy Docker through the Linode Marketplace"
-description: "This guide provides you with step-by-step instructions for deploying Docker, a tool which you can use to run containerized apps, from the Linode One-Click Marketplace."
+title: "Deploy Docker"
+description: "This guide provides you with step-by-step instructions for deploying Docker, a tool which you can use to run containerized apps, from the Linode Quick Deploy App."
 published: 2020-03-11
 modified: 2025-07-01
 keywords: ['docker','marketplace', 'container']
-tags: ["container","cloud-manager","linode platform","docker","marketplace"]
+tags: ["container","cloud-manager","linode platform","docker","quick deploy apps"]
 image: Docker_oneclickapps.png
 external_resources:
  - '[Docker Commands Cheat Sheet](/docs/guides/docker-commands-quick-reference-cheat-sheet/)'
@@ -21,7 +21,7 @@ marketplace_app_name: "Docker"
 
 [Docker](https://www.docker.com/) is a tool that enables you to create, deploy, and manage *containers*. Each container is a lightweight stand-alone package that containing the code, libraries, runtime, system settings, and dependencies that are required to run an application. Every container is deployed with its own CPU, memory, block I/O, and network resources, without having to depend upon an individual kernel and operating system. While it may be easiest to compare Docker to virtual machines, they differ in the way they share or dedicate resources.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

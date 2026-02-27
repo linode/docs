@@ -1,10 +1,10 @@
 ---
-title: "Deploy Plesk through the Linode Marketplace"
-description: "This guide shows how to install and configure Plesk using the Linode Marketplace Apps. Plesk is a leading WordPress and website management control panel."
+title: "Deploy Plesk"
+description: "This guide shows how to install and configure Plesk using the Linode Quick Deploy Apps. Plesk is a leading WordPress and website management control panel."
 published: 2019-03-25
 modified: 2024-05-21
 keywords: ['plesk','marketplace', 'cms']
-tags: ["linode platform","cms","marketplace","cloud-manager"]
+tags: ["linode platform","cms","quick deploy apps","cloud-manager"]
 external_resources:
  - '[Plesk Support](https://support.plesk.com/hc/en-us)'
  - '[Plesk Documentation](https://docs.plesk.com/en-US/obsidian/)'
@@ -17,9 +17,9 @@ marketplace_app_id: 593835
 marketplace_app_name: "Plesk"
 ---
 
-[Plesk](https://www.plesk.com) is a leading WordPress and website management platform and control panel. Plesk lets you build and manage multiple websites from a single dashboard to configure web services, email, and other applications. Plesk features hundreds of extensions, plus a complete WordPress toolkit. Use the Plesk Marketplace App to manage websites hosted on your Linode.
+[Plesk](https://www.plesk.com) is a leading WordPress and website management platform and control panel. Plesk lets you build and manage multiple websites from a single dashboard to configure web services, email, and other applications. Plesk features hundreds of extensions, plus a complete WordPress toolkit. Use the Plesk Quick Deploy App to manage websites hosted on your Linode.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

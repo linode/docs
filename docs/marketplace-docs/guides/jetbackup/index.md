@@ -1,10 +1,10 @@
 ---
-title: "Deploy JetBackup through the Linode Marketplace"
-description: "JetBackup is a backup solution designed for the web hosting industry. This tutorial walks you through deploying JetBackup using the Linode Marketplace."
+title: "Deploy JetBackup"
+description: "JetBackup is a backup solution designed for the web hosting industry. This tutorial walks you through deploying JetBackup using the Linode Quick Deploy App."
 published: 2021-08-13
 modified: 2022-05-17
 keywords: ['backups','cpanel', 'backup']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 aliases: ['/guides/deploying-jetbackup-marketplace-app/','/guides/jetbackup-marketplace-app/']
 external_resources:
 - '[JetBackup](https://www.jetbackup.com/)'
@@ -22,7 +22,7 @@ marketplace_app_name: "JetBackup"
 JetBackup requires a valid license to use the software beyond the available 10 day [free trial](https://cpanel.net/products/trial/) period. To purchase a license, visit [JetBackup's website](https://billing.jetapps.com/index.php?rp=/store/prorated-license) and select a plan that fits your needs. Licenses are not available directly through Linode.
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

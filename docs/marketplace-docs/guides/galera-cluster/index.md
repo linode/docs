@@ -1,10 +1,10 @@
 ---
-title: "Deploy a Galera Cluster through the Linode Marketplace"
-description: "This guide shows how to deploy a MySQL/MariaDB Galera Cluster through the Linode Marketplace."
+title: "Deploy a Galera Cluster"
+description: "This guide shows how to deploy a MySQL/MariaDB Galera Cluster."
 published: 2023-03-20
 modified: 2024-04-04
 keywords: ['database','mysql','rdbms','relational database','mariadb']
-tags: ["database","cloud-manager","linode platform","mysql","marketplace","mariadb"]
+tags: ["database","cloud-manager","linode platform","mysql","quick deploy apps","mariadb"]
 external_resources:
 - '[MySQL 5.6 Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/index.html)'
 - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
@@ -19,11 +19,11 @@ marketplace_app_name: "Galera Cluster"
 
 Galera provides a performant MariaDB database solution with synchronous replication to achieve high availability. Galera is deployed with MariaDB, which is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. MariaDB was originally based off of MySQL and maintains backward compatibility.
 
-{{< note type="warning" title="Marketplace App Cluster Notice" >}}
-This Marketplace App deploys 3 Compute Instances to create a highly available and redundant MariaDB Galera cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy MariaDB on a single Compute Instance, see [Deploy MySQL/MariaDB through the Linode Marketplace](/docs/marketplace-docs/guides/mysql/).
+{{< note type="warning" title="Quick Deploy App Cluster Notice" >}}
+This Quick Deploy App deploys 3 Compute Instances to create a highly available and redundant MariaDB Galera cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy MariaDB on a single Compute Instance, see [Deploy MySQL/MariaDB](/docs/marketplace-docs/guides/mysql/).
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-app-cluster-shortguide" %}}
 
@@ -76,7 +76,7 @@ The standard tool for interacting with MariaDB is the `mysql` client which insta
     sudo mysql -u root -p
     ```
 
-1.  When prompted, enter the MySQL root password that you set when launching the Marketplace App. You'll then be presented with a welcome header and the MySQL prompt as shown below:
+1.  When prompted, enter the MySQL root password that you set when launching the Quick Deploy App. You'll then be presented with a welcome header and the MySQL prompt as shown below:
 
     ```command
     MariaDB [(none)]>
@@ -117,7 +117,7 @@ The standard tool for interacting with MariaDB is the `mysql` client which insta
     MariaDB [(none)]>
     ```
 
-1.  Grant access to the database that you created when launching the Marketplace App for **MySQL User**. In this example, the database is called `webdata`, the user `webuser`, and password of the user is `password`. Be sure to enter your own password. This should be different from the root password for MySQL:
+1.  Grant access to the database that you created when launching the Quick Deploy App for **MySQL User**. In this example, the database is called `webdata`, the user `webuser`, and password of the user is `password`. Be sure to enter your own password. This should be different from the root password for MySQL:
 
     ```command
     GRANT ALL ON webdata.* TO 'webuser' IDENTIFIED BY 'password';
@@ -131,13 +131,13 @@ The standard tool for interacting with MariaDB is the `mysql` client which insta
 
 ### Create a Sample Table
 
-1.  Log back in as **MySQL User** that you set when launching the Marketplace App. In the following example the **MySQL User** is `webuser`.
+1.  Log back in as **MySQL User** that you set when launching the Quick Deploy App. In the following example the **MySQL User** is `webuser`.
 
     ```command
     sudo mysql -u webuser -p
     ```
 
-2.  Create a sample table called `customers`. This creates a table with a customer ID field of the type `INT` for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name. In the following example `webdata` is the database that you created when launching the Marketplace App.
+2.  Create a sample table called `customers`. This creates a table with a customer ID field of the type `INT` for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name. In the following example `webdata` is the database that you created when launching the Quick Deploy App.
 
     ```command
     use webdata;

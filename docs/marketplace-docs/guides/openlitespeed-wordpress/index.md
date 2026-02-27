@@ -1,10 +1,10 @@
 ---
-title: "Deploy OpenLiteSpeed WordPress through the Linode Marketplace"
+title: "Deploy OpenLiteSpeed WordPress"
 description: "Deploy OpenLiteSpeed on a Linode Compute Instance. This provides you with a high performance web server to manage your WordPress site."
 published: 2021-01-15
 modified: 2024-06-06
 keywords: [ 'openlitespeed','marketplace','hosting']
-tags: ["cloud-manager","linode platform", "marketplace"]
+tags: ["cloud-manager","linode platform", "quick deploy apps"]
 external_resources:
 - '[OpenLiteSpeed Quick Start guide](https://docs.litespeedtech.com/cloud/images/wordpress/#quick-start)'
 - '[OpenLiteSpeed Knowledge Base](https://openlitespeed.org/kb/)'
@@ -17,9 +17,9 @@ marketplace_app_id: 691622
 marketplace_app_name: "OpenLiteSpeed WordPress"
 ---
 
-This Marketplace App installs the OpenLiteSpeed web server, WordPress, the LiteSpeed caching plugin for WordPress, as well as other necessary software. Together, these applications provide an accelerated hosting platform for WordPress. [OpenLiteSpeed](https://openlitespeed.org/) is the open source edition of the LiteSpeed web server. It combines speed, security, scalability, optimization, and simplicity in one friendly open-source package.
+This Quick Deploy App installs the OpenLiteSpeed web server, WordPress, the LiteSpeed caching plugin for WordPress, as well as other necessary software. Together, these applications provide an accelerated hosting platform for WordPress. [OpenLiteSpeed](https://openlitespeed.org/) is the open source edition of the LiteSpeed web server. It combines speed, security, scalability, optimization, and simplicity in one friendly open-source package.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -62,7 +62,7 @@ cat /etc/motd
 
 ```output
 *********************************************************
-Akamai Cloud OpenLiteSpeed Wordpress Marketplace App
+Akamai Cloud OpenLiteSpeed Wordpress Quick Deploy App
 App URL:
 * The Wordpress site: https://example-domain.tld/
 * The Wordpress admin login site: https://example-domain.tld/wp-login.php
@@ -109,11 +109,11 @@ Now that OpenLiteSpeed WordPress has been fully deployed, you can begin adding c
 - [WordPress Support](https://wordpress.org/support/): Learn the basic workflows for using WordPress.
 - [Securing WordPress](/docs/guides/how-to-secure-wordpress/): Advice on securing WordPress through HTTPS, using a secure password, changing the admin username, and more.
 - [WordPress Themes](https://wordpress.org/themes/#): A collection of *thousands* of WordPress themes.
-- [Marketplace Apps Repository](https://github.com/akamai-compute-marketplace/marketplace-apps): Review the deployment Ansible playbooks.
+- [Quick Deploy Apps Repository](https://github.com/akamai-compute-marketplace/marketplace-apps): Review the deployment Ansible playbooks.
 
 ### Software Included
 
-The OpenLiteSpeed WordPress Marketplace App installs the following required software on your Linode:
+The OpenLiteSpeed WordPress Quick Deploy App installs the following required software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|

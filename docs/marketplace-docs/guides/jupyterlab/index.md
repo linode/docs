@@ -1,10 +1,10 @@
 ---
-title: "Deploy JupyterLab through the Linode Marketplace"
+title: "Deploy JupyterLab"
 description: "Deploy JupyterLab on a Linode Compute Instance. Jupyter is a web-based interactive development environment for notebooks, code, and data."
 published: 2024-02-20
 modified: 2024-03-04
 keywords: ['productivity','notebook','data science']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Project Jupyter](https://jupyter.org/)'
 aliases: ['/products/tools/marketplace/guides/jupyterlab/']
@@ -17,7 +17,7 @@ marketplace_app_name: "JupyterLab"
 
 [JupyterLab](https://jupyter.org/) stands as the cutting-edge web-based interactive development environment, catering to notebooks, code, and data. With a flexible interface, users can easily configure and arrange workflows in data science, scientific computing, computational journalism, and machine learning.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

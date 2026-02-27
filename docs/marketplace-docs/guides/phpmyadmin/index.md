@@ -1,10 +1,10 @@
 ---
-title: "Deploy phpMyAdmin through the Linode Marketplace"
-description: "Deploy phpMyAdmin on Linode using Marketplace Apps to administer your MySQL database with a convenient and powerful GUI web application."
+title: "Deploy phpMyAdmin"
+description: "Deploy phpMyAdmin on Linode using Quick Deploy Apps to administer your MySQL database with a convenient and powerful GUI web application."
 published: 2020-09-28
 modified: 2022-03-08
 keywords: ['php', 'phpmyadmin', 'mysql', 'mariadb', 'database', 'GUI']
-tags: ["debian","php","mysql","database","marketplace","ssl", "web applications","linode platform", "cloud manager"]
+tags: ["debian","php","mysql","database","quick deploy apps","ssl", "web applications","linode platform", "cloud manager"]
 external_resources:
 - '[phpMyAdmin Documentation](https://docs.phpmyadmin.net/en/latest/)'
 - '[MariaDB Documentation](https://mariadb.org/documentation/)'
@@ -16,9 +16,9 @@ marketplace_app_id: 609018
 marketplace_app_name: "phpMyAdmin"
 ---
 
-[phpMyAdmin](https://www.phpmyadmin.net/) is an open source web application that provides a GUI for MySQL database administration, giving you a convenient and powerful alternative to using the MySQL command line client. The phpMyAdmin Marketplace App deploys a Linode with phpMyAdmin installed and ready for you to begin managing a MySQL database.
+[phpMyAdmin](https://www.phpmyadmin.net/) is an open source web application that provides a GUI for MySQL database administration, giving you a convenient and powerful alternative to using the MySQL command line client. The phpMyAdmin Quick Deploy App deploys a Linode with phpMyAdmin installed and ready for you to begin managing a MySQL database.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -81,7 +81,7 @@ The following sections require that you own a domain that has been configured fo
 
         https://www.example.com/phpmyadmin
 
-1.  At the login screen enter the **phpMyAdmin/MySQL Admin User** and **phpMyAdmin/MySQL Admin Password** you chose when you deployed the phpMyAdmin Marketplace App.
+1.  At the login screen enter the **phpMyAdmin/MySQL Admin User** and **phpMyAdmin/MySQL Admin Password** you chose when you deployed the phpMyAdmin Quick Deploy App.
 
     ![phpMyAdmin Login Page](phpmyadmin-login.png "The phpMyAdmin Login Page.")
 
@@ -91,7 +91,7 @@ The following sections require that you own a domain that has been configured fo
 
 ## Software Included
 
-The phpMyAdmin Marketplace App will install the following required software on your Linode:
+The phpMyAdmin Quick Deploy App will install the following required software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|

@@ -1,10 +1,10 @@
 ---
-title: "Deploy Backstage Developer Portal through the Linode Marketplace"
+title: "Deploy Backstage Developer Portal"
 description: "Deploy a Backstage framework for developing developer portals"
 published: 2020-01-31
 modified: 2025-01-31
 keywords: ['backstage', 'developer portal']
-tags: ["ubuntu", "marketplace", "developer portal", "developer", "linode platform", "cloud manager"]
+tags: ["ubuntu", "quick deploy apps", "developer portal", "developer", "linode platform", "cloud manager"]
 external_resources:
 - '[Backstage](https://backstage.io/)'
 - '[Backstage documentation](https://backstage.io/docs/overview/what-is-backstage)'
@@ -37,7 +37,7 @@ Once done, save the following data to use in the following steps:
 - Client Secret,
 - Personal Access Token (not required).
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

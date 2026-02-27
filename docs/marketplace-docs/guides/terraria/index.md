@@ -1,12 +1,12 @@
 ---
-title: "Deploy Terraria through the Linode Marketplace"
-description: "This guide provides you with step-by-step instructions for deploying the two-dimensional sandbox survival game, Terraria, on a Linode using the One-Click Marketplace App."
+title: "Deploy Terraria"
+description: "This guide provides you with step-by-step instructions for deploying the two-dimensional sandbox survival game, Terraria, on a Linode using the Quick Deploy App."
 published: 2019-04-05
 modified: 2024-01-22
 keywords: ['terraria','marketplace app', 'game server']
 external_resources:
  - '[The Official Terraria Wiki](https://terraria.gamepedia.com/Terraria_Wiki)'
-tags: ["linode platform","marketplace","cloud-manager"]
+tags: ["linode platform","quick deploy apps","cloud-manager"]
 aliases: ['/products/tools/marketplace/guides/terraria/','/platform/marketplace/deploying-terraria-with-marketplace-apps/', '/platform/one-click/deploying-terraria-with-one-click-apps/','/guides/deploying-terraria-with-one-click-apps/','/guides/deploying-terraria-with-marketplace-apps/','/guides/terraria-marketplace-app/']
 _build:
   list: false
@@ -17,14 +17,14 @@ contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-Terraria has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only. For information on how to deploy and set up Terraria manually on a Compute Instance, see our [How to Setup a Terraria Linux Server](/docs/guides/host-a-terraria-server-on-your-linode/) guide.
+Terraria has been removed from Quick Deploy Apps and can no longer be deployed. This guide is retained for reference only. For information on how to deploy and set up Terraria manually on a Compute Instance, see our [How to Setup a Terraria Linux Server](/docs/guides/host-a-terraria-server-on-your-linode/) guide.
 {{< /note >}}
 
 Terraria is a two-dimensional sandbox game in which players explore the world, collect resources, build structures, and battle enemies in procedurally generated environments. In Terraria a player begins by digging for ore, and the further they dig the more adventure they find. Multiplayer mode can be either cooperative or PvP.
 
 Hosting your own Terraria server gives you control over the world, the players, and the objectives. Your world, your rules.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -83,7 +83,7 @@ To find your Linode's IPv4 address and connect to it:
 
     ![Enter your Linode's IP address.](terraria-marketplace-enter-ip.png)
 
-10. You will be prompted to enter in your Terraria Marketplace App's port. If you did not specify a different port in the advanced configuration section, use port 7777. Click **Accept**.
+10. You will be prompted to enter in your Terraria Quick Deploy App's port. If you did not specify a different port in the advanced configuration section, use port 7777. Click **Accept**.
 
     ![Enter the Terraria server's port](terraria-marketplace-enter-port.png)
 
@@ -91,7 +91,7 @@ To find your Linode's IPv4 address and connect to it:
 
 ## Software Included
 
-The Terraria Marketplace App will install the following required software on your Linode:
+The Terraria Quick Deploy App will install the following required software on your Linode:
 
 | **Software** | **Description** |
 |--------------|-----------------|
