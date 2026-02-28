@@ -735,6 +735,7 @@ failsafes
 falko
 fanout
 fastcgi
+fastcgi_pass
 Fastify
 fastmail
 fastopen
@@ -2319,6 +2320,7 @@ serv
 server1
 serverless
 servername
+server_name
 serverpassword
 serverspec
 servlet
