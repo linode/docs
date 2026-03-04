@@ -2,8 +2,10 @@
 slug: vector-db-benchmarking
 title: "Guide to Vector Database Benchmarking"
 description: "Adopting a vector database can be a significant investment in infrastructure costs and operational overhead"
-author: Andy Stevens
-contributors: Nathan Melehan
+author:
+  - Akamai
+contributors:
+  - Akamai
 published:
 keywords: ['vector databases','benchmarking','approximate nearest neighbor','ANN','recall','latency','throughput','embeddings','similarity search']
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"

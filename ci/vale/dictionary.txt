@@ -1168,6 +1168,7 @@ iterables
 iTerm
 itk
 ivanti
+IVFFlat
 jamstack
 Janca
 java6
@@ -1932,6 +1933,7 @@ phusion
 pid
 pidfile
 PIDs
+Pinecone
 pingable
 pinterest
 pipefs
@@ -3005,6 +3007,7 @@ zgrep
 zhao
 zigbee
 zile
+Zilliz
 zimbra
 zipkin
 zipkinhost
