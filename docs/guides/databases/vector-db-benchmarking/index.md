@@ -102,7 +102,7 @@ When running VectorDBBench with `pgvector`, you can configure parameters across 
   - `--load / --skip-load`: Whether to load data (useful for re-testing existing data)
   - `--search-serial / --skip-search-serial`: Enable/disable serial search testing
   - `--search-concurrent / --skip-search-concurrent`: Enable/disable concurrent search testing
-  -
+
 #### Interpreting your results
 
 To better understand how to interpret the data, consider the following example of a real benchmark results JSON file.
@@ -351,7 +351,7 @@ Calculate QP$ (queries per dollar) to compare cost-effectiveness.
 
 ```
 QP$ = Peak QPS / Monthly instance cost
-
+.
 HigherQP$ = better value
 ```
 
