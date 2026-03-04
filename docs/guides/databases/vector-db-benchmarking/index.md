@@ -349,11 +349,7 @@ The benchmark measured two accuracy metrics that are critical for vector search:
 
 Calculate QP$ (queries per dollar) to compare cost-effectiveness.
 
-```
-QP$ = Peak QPS / Monthly instance cost
-.
-HigherQP$ = better value
-```
+![QP$ formula](QPS2.png)
 
 Consider these example benchmarks:
 
