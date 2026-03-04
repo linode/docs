@@ -2,7 +2,7 @@
 slug: vector-db-benchmarking
 title: "Guide to Vector Database Benchmarking"
 description: "Adopting a vector database can be a significant investment in infrastructure costs and operational overhead"
-author:
+authors:
   - Akamai
 contributors:
   - Akamai
