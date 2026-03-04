@@ -54,7 +54,7 @@ When benchmarking vector databases, track metrics across the following three cat
 
 The fundamental tension in vector search is this: you can make searches faster by sacrificing accuracy, or more accurate by accepting slower performance. This isn't a limitation—it's an inherent characteristic of approximate nearest neighbor algorithms. Most production systems target 95-99% recall, finding that sweet spot where results are accurate enough for their use case while maintaining acceptable query latency. Understanding where your application falls on this spectrum is essential for proper benchmarking.
 
-## Benchmarking`pgvector` in PostgreSQL with VectorDBBench
+## Benchmarking `pgvector` in PostgreSQL with VectorDBBench
 
 `pgvector` is an open-source PostgreSQL extension that adds vector similarity search to your relational database. Instead of managing a separate vector database, you store embeddings alongside traditional data and query them with SQL. It supports two index types:
 
