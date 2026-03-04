@@ -6,7 +6,7 @@ author:
   - Akamai
 contributors:
   - Akamai
-published:
+# published:
 keywords: ['vector databases','benchmarking','approximate nearest neighbor','ANN','recall','latency','throughput','embeddings','similarity search']
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 ---
