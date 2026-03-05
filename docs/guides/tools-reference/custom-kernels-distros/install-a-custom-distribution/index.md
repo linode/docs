@@ -52,6 +52,12 @@ First, create the Compute Instance and add the necessary disks and configuration
         - If you do not plan on making this system compatible with [Linode platform actions, tools, and features](#make-the-system-compatible-with-the-linode-platform) (such as automatic network configuration, disk resizing, and more), this *System* disk can take up the rest of the free space available on your instance.
 
         - If you plan to make this system compatible with [Linode platform features](#make-the-system-compatible-with-the-linode-platform), another third disk needs to be created (outlined later in this guide). As a result, the System disk cannot take up the rest of the free space available on your instance. The System disk and that other third disk both need to be large enough to fit the operating system you wish to install. This is covered in a later step, but be sure to leave enough remaining storage space to create that disk.
+        -  Ensure that the disk allocated for the operating system installation is sufficiently large. If the disk size is too small, the installer may fail during the automatic partitioning step. You may see an error similar to:
+ ```
+ Failed to partition the selected disk — the disk or free space is too small to be automatically partitioned.
+ ```
+If this occurs, increase the allocated disk size and restart the installation process. The required disk size may vary depending on the operating system version, installation type, and selected packages.
+
 
 1. Navigate to the **Configurations** tab and create two configuration profiles for your new instance. See the [Create a Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) guide for instructions.
 
