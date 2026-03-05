@@ -1,16 +1,16 @@
 ---
-slug: self-host-vaultwarden-passwd-manager-on-ubuntu-24-04
-title: "Self-Hosting Vaultwarden Password Manager on Ubuntu 24.04"
+slug: self-host-vaultwarden-passwd-manager-on-ubuntu-22-04
+title: "Self-Hosting Vaultwarden Password Manager on Ubuntu 22.04"
 title_meta: "Self-Hosting Vaultwarden Password Manager"
-description: 'This guide provides prerequisites and a walkthrough for installing and using Vaultwarden on Ubuntu 24.04'
+description: 'This guide provides prerequisites and a walkthrough for installing and using Vaultwarden on Ubuntu 22.04'
 authors: ["Diana Hoober"]
 contributors: ["Diana Hoober"]
 published: 2025-10-10
-keywords: ['vaultwarden','bitwarden','password manager', 'install vaultwarden', 'open source password management', 'self-hosted', 'lightweight', 'Ubuntu 24.04', 'bitwarden replacement', 'bitwarden compatible']
+keywords: ['vaultwarden','bitwarden','password manager', 'install vaultwarden', 'open source password management', 'self-hosted', 'lightweight', 'Ubuntu 22.04', 'bitwarden replacement', 'bitwarden compatible']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-This guide walks you through deploying Vaultwarden—a lightweight, Bitwarden-compatible password manager—using Docker and NGINX on Ubuntu 24.04 LTS. It’s designed for clarity, validation, and long-term maintainability, with a focus on predictable behavior and user trust.
+This guide walks you through deploying Vaultwarden—a lightweight, Bitwarden-compatible password manager—using Docker and NGINX on Ubuntu 22.04 LTS. It’s designed for clarity, validation, and long-term maintainability, with a focus on predictable behavior and user trust.
 
 ## About This Deployment
 
@@ -26,7 +26,7 @@ Why this matters: Vaultwarden doesn’t handle HTTPS on its own. NGINX ensures s
 
 Before starting, ensure your server is secure and ready:
 
-- Ubuntu 24.04 LTS installed and configured
+- Ubuntu 22.04 LTS installed and configured
 - Root or sudo access to the server
 - A registered domain name with DNS records pointing to your server
 - Docker Engine with Docker Compose plugin (V2) installed
@@ -38,7 +38,7 @@ These steps are introduced in our [Get Started](/docs/products/platform/get-star
 
 ### For Testing and Configuration
 
-Set up your compute instance (Ubuntu 24.04 LTS) with a recognizable hostname and accurate timezone. While Vaultwarden functions without these settings, they help ensure consistent logging and system behavior especially if you're running multiple services or collaborating with others.
+Set up your compute instance (Ubuntu 22.04 LTS) with a recognizable hostname and accurate timezone. While Vaultwarden functions without these settings, they help ensure consistent logging and system behavior especially if you're running multiple services or collaborating with others.
 
 Set the hostname:
 
@@ -67,7 +67,7 @@ timedatectl
 Expected output similar to:
 ```output
 Static hostname: vaultserver
-Operating System: Ubuntu 24.04 LTS
+Operating System: Ubuntu 22.04 LTS
 Architecture: x86-64
 
 Local time: Wed 2025-11-05 09:45:00 PST
@@ -99,7 +99,7 @@ When setting up or starting a production system, you may see the message: **"Ena
 
 ### Prerequisite Support for Containerized Services
 
-To self-host Vaultwarden after preparing your Ubuntu 24.04 compute instance to run containerized applications, this setup ensures your system is ready to deploy Vaultwarden cleanly and securely.
+To self-host Vaultwarden after preparing your Ubuntu 22.04 compute instance to run containerized applications, this setup ensures your system is ready to deploy Vaultwarden cleanly and securely.
 
 #### Update system packages
 
@@ -115,9 +115,9 @@ If prompted about a modified configuration file (e.g., `sshd_config`), choose to
 If the commands complete without errors and you see confirmation messages like `Setting up [package]`, or `Restarting services...`, your system is up to date and ready for the next step.
 {{< /note >}}
 
-#### Understand Docker Compatibility on Ubuntu 24.04
+#### Understand Docker Compatibility on Ubuntu 22.04
 
-Ubuntu 24.04 uses the new codename `noble`, which may not yet be fully supported by Docker's official stable repository. This can cause issues when trying to install Docker CE using standard package commands.
+Ubuntu 22.04 uses the new codename `noble`, which may not yet be fully supported by Docker's official stable repository. This can cause issues when trying to install Docker CE using standard package commands.
 
 {{< note >}}
 Running `sudo apt update` and `sudo apt upgrade -y` **does not install Docker-CE** or prepare your system to use it. Attempting to install `docker-ce` without first adding Dockers' repository will result in:
@@ -128,7 +128,7 @@ Package 'docker-ce' has no installation candidate
 
 Installing `docker.io` from Ubuntu's default repository may appear to work, but it lacks the modern Compose plugin and may cause compatibility issues with Vaultwarden's setup.
 
-If you're using Ubuntu 24.04, expect potential friction when installing Docker CE. This is due to upstream repository timing--not a misstep on your part or a flaw in this guide.
+If you're using Ubuntu 22.04, expect potential friction when installing Docker CE. This is due to upstream repository timing--not a misstep on your part or a flaw in this guide.
 {{< /note >}}
 
 #### What This Guide Uses
@@ -141,7 +141,7 @@ This guide uses **Docker CE** for full compatibility with Vaultwarden's containe
 
 This ensures a clean, modern setup that aligns with Vaultwarden's current architecture and avoids silent conflicts--especially when integrating with a reverse proxy like NGINX.
 
-Vaultwarden runs inside Docker containers, so you’ll need to install Docker CE (Community Edition) and its Compose plugin. This section walks you through a validated setup for Ubuntu 24.04 (noble), including repository configuration and plugin installation.
+Vaultwarden runs inside Docker containers, so you’ll need to install Docker CE (Community Edition) and its Compose plugin. This section walks you through a validated setup for Ubuntu 22.04 (noble), including repository configuration and plugin installation.
 
 Step 1: Install Required Dependencies
 ```command
@@ -166,7 +166,7 @@ Step 4: Add Docker’s Official Repository
 ```command
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu noble stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
-This adds Docker’s stable channel for Ubuntu 24.04 (noble) to your system’s sources.
+This adds Docker’s stable channel for Ubuntu 22.04 (noble) to your system’s sources.
 
 Step 5: Update Package Index
 ```command
