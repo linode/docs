@@ -251,7 +251,7 @@ Next, you need to determine which partition your root file system is installed o
 
     Depending upon your distribution, it may use different parameters for your root disk under the "options" section. These can be adjusted as needed. Note that you're using `/dev/sda` instead of the `sda1` root partition that was identified previously.
 
-1. Confirm the location of your `grub.cfg` file. Some distributions (notably, CentOS and Fedora) place this file under the `/boot/grub2` directory, while others have it under `/boot/grub`. Your new setup uses Linode's *Grub 2* mode, which looks for a configuration file under `/boot/grub/grub.cfg`. 
+1. Confirm the location of your `grub.cfg` file. Some distributions (notably, CentOS and Fedora) place this file under the `/boot/grub2` directory, while others have it under `/boot/grub`. Your new setup uses Linode's *Grub 2* mode, which looks for a configuration file under `/boot/grub/grub.cfg`.
 Use the following script to detect the correct path and set up the expected location without creating an unnecessary symlink:
 
    ```bash
@@ -310,7 +310,7 @@ This script defaults to `/boot/grub2/grub.cfg` when both paths exist on systems 
 
 {{< note >}}
 If your root partition is at a location other than `/dev/sda1`, adjust accordingly.
-{{< /note >}} 
+{{< /note >}}
 
 
 ### Transfer the System to a New Ext4 Disk
