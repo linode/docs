@@ -125,7 +125,7 @@ After the installation disk is ready, you can install the distribution onto your
 
 1. Open [Glish](/docs/products/compute/compute-instances/guides/glish/) and, once the instance fully boots up, you should see your distribution's installer. The screenshot below shows the Debian 13 installer.
 
-    ![Screenshot of Debian installer in Glish](custom-distro-debian-installer.png)
+    ![Screenshot of Debian installer in Glish](custom-distro-debian-installer.jpg)
 
 1. Follow the prompts to install the distribution. When doing so, you may want to consult the installation instructions for that distribution. When selecting a disk or partition to install the system onto, be sure to select the `/dev/sda` volume. Most installers create separate root and swap partitions, but you can adjust this as needed.
 
