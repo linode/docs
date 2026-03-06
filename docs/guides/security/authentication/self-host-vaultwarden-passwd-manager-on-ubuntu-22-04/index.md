@@ -49,7 +49,7 @@ Replace`vaultwarden-test` with the environment name you want.
 
 {{< note>}}
 If you already set a hostname when preparing your Compute Instance (i.e., in the "Set Up and Secure" guide), you do not need to change it again here.
-{{< /Note>}}
+{{< /note>}}
 
 Set the timezone:
 
