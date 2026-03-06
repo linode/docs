@@ -317,7 +317,7 @@ For details, see the Docker [Compose file reference](https://docs.docker.com/ref
 
 ## Optional: Set an Admin Token
 
-Vaultwarden supports an admin interface for managing users and settings. To enable it you must define an admin token in your Docker Compose Configuratio.:
+Vaultwarden supports an admin interface for managing users and settings. To enable it you must define an admin token in your Docker Compose Configuration.:
 
 Step 1. Generate a secure admin token
 

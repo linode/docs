@@ -193,6 +193,7 @@ Bhushan
 bialek
 Bigtable
 bin_t
+binary_remote_addr
 bing
 binhex
 binlog
@@ -1361,6 +1362,7 @@ Lightroom
 lighttpd
 lighty
 ligttpd
+limit_req_zone
 linewise
 Linkedin
 linkerd
