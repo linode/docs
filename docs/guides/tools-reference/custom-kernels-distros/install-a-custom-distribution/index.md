@@ -123,7 +123,7 @@ After the installation disk is ready, you can install the distribution onto your
 
 1. In the Cloud Manager, reboot your Compute Instance using the *Installer* configuration profile.
 
-1. Open [Glish](/docs/products/compute/compute-instances/guides/glish/) and, once the instance fully boots up, you should see your distribution's installer. The screenshot below shows the Debian 11 installer.
+1. Open [Glish](/docs/products/compute/compute-instances/guides/glish/) and, once the instance fully boots up, you should see your distribution's installer. The screenshot below shows the Debian 13 installer.
 
     ![Screenshot of Debian installer in Glish](custom-distro-debian-installer.png)
 
