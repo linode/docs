@@ -47,6 +47,10 @@ sudo hostnamectl set-hostname vaultwarden-test
 ```
 Replace`vaultwarden-test` with the environment name you want.
 
+{{< note>}}
+If you already set a hostname when preparing your Compute Instance (i.e., in the "Set Up and Secure" guide), you do not need to change it again here.
+{{< /Note>}}
+
 Set the timezone:
 
 List available timezones:
@@ -137,11 +141,12 @@ This guide uses **Docker CE** for full compatibility with Vaultwarden's containe
 
 - Adding Docker's official repository (with `noble` codename)
 - Installing Docker CE and its plugins
-- Removing legacy packages like `docker.io` if present
 
 This ensures a clean, modern setup that aligns with Vaultwarden's current architecture and avoids silent conflicts--especially when integrating with a reverse proxy like NGINX.
 
 Vaultwarden runs inside Docker containers, so you’ll need to install Docker CE (Community Edition) and its Compose plugin. This section walks you through a validated setup for Ubuntu 22.04 (noble), including repository configuration and plugin installation.
+
+If Docker has been previously installed on this system, you may need to remove older packages. See Step 7 for cleanup.
 
 Step 1: Install Required Dependencies
 ```command
@@ -213,6 +218,165 @@ This ensures a clean environment for Vaultwarden and modern Compose workflows.Th
 
 If both `docker --version` and `docker compose version` return expected output, you're ready to deploy Vaultwarden, no further Docker configuration is needed.
 
+## Deploy Vaultwarden with Docker Compose
+
+With Docker CE and the Compose plugin installed and validated, you're ready to deploy Vaultwarden using Docker Compose. This section creates the working directory, defines the container configuration, launches the service, and verifies that it is running correctly.
+
+Step 1. Create a directory for Vaultwarden
+
+This keeps your deployment organized and isolated.
+```command
+mkdir ~/vaultwarden
+cd ~/vaultwarden
+```
+
+Step 2. Create a `docker-compose.yml` file
+
+This file defines the Vaultwarden service and its configuration.
+```command
+sudo nano docker-compose.yml
+```
+
+Paste the following content into the file:
+
+```command
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:3012:80
+    volumes:
+     - ./vw-data:/data
+    environment:
+      WEBSOCKET_ENABLED: true
+```
+
+{{< note >}}
+This configuration exposes Vaultwarden on host port 3012 mapped to port 80 inside the container. This leaves port 80 available for NGINX to use as a reverse proxy. Vaultwarden's data is stored in the local `vw-data` directory. Additional environment variables--such as SMTP settings or an admin token--can be added later.
+{{< /note >}}
+
+Step 3. Start Vaultwarden
+```command
+docker compose up -d
+```
+
+This launches Vaultwarden to run in the background.
+
+Step 4. Verify the container is running
+```command
+docker ps
+docker logs vaultwarden
+```
+You should see output like:
+```output
+CONTAINER ID    IMAGE                        STATUS       PORTS
+abc123          vaultwarden/server:latest    Up           0.0.0.0:80->80/tcp
+```
+
+If `docker ps` shows your container as "Up" and `docker logs vaultwarden` shows no errors, your deployment is successful.
+
+## Updating Vaultwarden
+
+Checking for updates often ensures you receive the latest security fixes and improvements. Subscribe to the [Vaultwarden GitHub releases](https://github.com/dani-garcia/vaultwarden/releases) to stay informed about new versions (be sure to read what is being updated before applying it). To update Vaultwarden to the latest version:
+
+1. Navigate to your compose directory
+```command
+cd ~/vaultwarden
+```
+This is the directory containing your `docker-compose.yml` file.
+
+2. Pull the latest image
+```command
+docker compose pull
+```
+This downloads the newest version of the Vaultwarden container image.
+
+3. Stop the running container:
+```command
+docker compose down
+```
+This cleanly stops the current Vaultwarden instance.
+
+4. Recreate and start the updated container:
+```command
+docker compose up -d
+```
+Vaultwarden will restart using the updated image with minimal downtime.
+
+{{< note >}}
+**See a warning?** Docker Compose may show warnings about deprecated keys or ignored attributes. These usually don't affect functionality. For example, you might see:
+
+`WARN[0000] /root/vaultwarden/docker-compose.yml: the attribute version is obsolete, it will be ignored, please remove it to avoid potential confusion`
+
+This means the `version:` line in your `docker-compose.yml` file is no longer needed. You can safely delete it—Docker Compose now auto-detects this file format.
+
+For details, see the Docker [Compose file reference](https://docs.docker.com/reference/compose-file/) to know what's safe to ignore and what might need attention.
+{{< /note >}}
+
+## Optional: Set an Admin Token
+
+Vaultwarden supports an admin interface for managing users and settings. To enable it you must define an admin token in your Docker Compose Configuratio.:
+
+Step 1. Generate a secure admin token
+
+You can use openssl or any password generator:
+```command
+openssl rand -base64 32
+```
+
+Step 2. Add the token to your Compose file
+
+Open your `docker-compose.yml` file and find the `environment:` section under the `vaultwarden` service. Add this line:
+
+```command
+ADMIN_TOKEN: your_generated_token_here
+```
+Your updated section should look like this:
+
+```command
+
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3012:80"
+    volumes:
+      - ./vw-data:/data
+    environment:
+      WEBSOCKET_ENABLED: true
+      ADMIN_TOKEN: your_generated_token_here
+```
+
+Replace `your_generated_token_here` with the secure admin token you created.
+
+Step 3. Restart the container
+```command
+docker compose down
+docker compose up -d
+```
+Once the container restarts, you can access the admin interface at:
+```
+http://your-server-ip:3012/admin
+```
+(or via your domain after NGINX is configured).
+
+Enter your admin token to log in and manage Vaultwarden settings.
+
+{{< note >}}
+Keep your admin token secure. Anyone with access to it can modify Vaultwarden settings.
+{{< /note >}}
+
+Final Validation Checklist
+
+- [ ] Vaultwarden is running and bound to 127.0.0.1:3012
+- [ ] NGINX is installed and configured to proxy to Vaultwarden
+- [ ] TLS is enabled via Certbot (recommended)
+- [ ] You can access Vaultwarden securely via `https://your-domain`
+
 ## Enable HTTPS and Reverse Proxy with NGINX (Recommended for Production)
 
 If you plan to access Vaultwarden over the internet, configuring a reverse proxy and enabling HTTPS are essential. We'll use NGINX—a modern web server that automatically provisions TLS certificates via Let's Encrypt and securely routes traffic to backend services like Vaultwarden.
@@ -267,392 +431,203 @@ server {
     }
 }
 ```
-Replace your-domain.com with your actual domain name. This configuration forwards all traffic to Vaultwarden running on localhost.
+Replace `your-domain.com` with your actual domain name. This configuration forwards all traffic to Vaultwarden running locally on port 80.
 
-Step 3: Configure Vaultwarden Environment Variables
-
-This ensures Vaultwarden knows its domain and admin token. Change to the Vaultwarden directory if you are not already there:
-```command
-cd /home/your-username/vaultwarden
-```
-Then open the .env file:
-```command
-sudo nano .env
-```
-And paste this into the`.env` file:
-```command
-# Use your actual domain name here
-DOMAIN=http://your-domain.com
-ADMIN_TOKEN=your-secure-token
-```
-Step 4: Then restart Vaultwarden:
-```command
-docker compose down
-docker compose up -d
-```
-
-If the container starts successfully and no warnings appear, Vaultwarden is now running in the background.
-
-To access the admin interface, open a browser and go to:
-
-- If using a domain name:
-`http://your-domain.com/admin`
-
-- If using your server's IP address directly (and not yet behind NGINX):
-`http://your server-ip:3012/admin`
-
-You should see a login field prompting you to enter your ADMIN_TOKEN—the same value defined in your `.env` file or `docker-compose.yml`.
-
-{{< note >}}
-This token is required to access the admin interface. Store it securely in a password manager like 1Password, Bitwarden, or another tool you trust. Label it clearly (e.g., "Vaultwarden Admin Token") so you can find it later.
-{{< /note >}}
-
-Once logged in, you’ll see configuration options for registration, email delivery, two-factor authentication, and more.
-
-This guide does not prescribe specific settings. Vaultwarden provides inline guidance for each option, and your choices should reflect your own security needs and usage patterns.
-
-Once saved, settings in the admin panel override any environment variables you previously set. It’s recommended to finalize your configuration here and avoid duplication. However, at this point, Vaultwarden is operational and the admin interface is accessible. You do not need to configure settings immediately—Vaultwarden will run with its defaults. You may proceed with NGINX setup to enable secure access via your domain name. Configuration can be completed later, based on your needs. Close the tab and return by visiting:
-```command
-http://your-domain.com/admin
-```
-or,
-```command
-http://your-server-ip:3012/admin
-```
-depending on whether NGINX is configured yet. (If you intend to shut down your compute instance, be sure to return to stop Vaultwarden first.)
-
-Step 5: Enable the NGINX Proxy Configuration
-
-Now that Vaultwarden is running and the admin interface is accessible, it’s time to configure NGINX as a reverse proxy. This allows Vaultwarden to be accessed securely via your domain name (e.g., https://your-domain.com) instead of a raw IP and port.
+Step 3: Enable the NGINX Proxy Configuration
 
 ```command
 sudo ln -s /etc/nginx/sites-available/vaultwarden /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl reload nginx
 ```
+**Validation Check**
 
-Validation Check:
+After running `sudo nginx -t`, look for:
 
-After running `sudo nginx -t`, look for both confirmation lines. If they appear, your proxy If `nginx -t` returns **“syntax is ok”** and **“test is successful,”** your proxy is active and ready to reload. If not, NGINX will point to the error line--fix it before proceeding.
+- syntax is ok
+- test is successful
 
-{{< note >}}
-If you see a warning about a deprecated `version:` line in your `docker-compose.yml`, it’s safe to remove it. Docker Compose now infers behavior automatically.
-{{< /note >}}
+If errors appear, NGINX will point to the exact line to fix.
 
-Final Verification:
+**Final Verification
 
-- Visit http://your-domain.com in a browser. You should see the Vaultwarden login screen.
-- If not, check:
-- `docker ps` -- confirm Vaultwarden is running
-- `sudo journalctl -u nginx` -- review logs for errors
+- Visit`http://your-domain.com` in a browser.
 
-{{< note >}}
-If the Vaultwarden login screen appears and no errors are shown in `journalctl` your HTTPS proxy setup is complete.
-{{< /note >}}
+You should see the Vaultwarden login screen.
 
-Step 6: Enable HTTPS with Certbot
+If not, check:
+- `docker ps`--confirm Vaultwarden is running.
+- `sudo journalctl -u nginx`--review NGINX logs for errors.
 
-Once Vaultwarden is accessible via HTTP, you can optionally enable HTTPS for secure access.
+Step 4: Enable HTTPS with Certbot
 
-HTTPS setup with Certbot (Requires DNS):
+Once Vaultwarden is accessible via HTTP, you can enable HTTPS for secure access.
 ```command
 sudo certbot --nginx -d your-domain.com
 ```
 Certbot will:
-- Prompt you for an email address and agreement to terms.
+
+- Prompt you for an email address
+- Request agreement to terms
 - Automatically configure TLS for NGINX
-- Set up automatic certificate renewal
+- Set up certificate renewal
 
-{{< note >}}
-Before running Certbot, ensure your domain's DNS records point to your server's public IP. You can verify this with a DNS lookup or by running `dig your-domain.com +short`. If Certbot completes successfully and reloads NGINX, HTTPS is now active.
-{{< /note >}}
-
-You can access Vaultwarden securely via `https//your-domain.com`.
-
-Step 7: Recovery: Fix Redirect Loop
-
-If HTTPS access fails or redirects endlessly, don’t panic. This is often caused by a mismatch between Vaultwarden’s internal domain setting and NGINX’s proxy configuration. You can recover—step by step.
-
-To fix Vaultwarden’s .env file open your .env file:
+**DNS Requirement**
+Before running Certbot, ensure your domain's DNS A record points to your server's public IP. You can verify this with:
 ```command
-sudo nano .env
+dig your-domain.com +short
 ```
-Update the `DOMAIN` line to use HTTPS:
+
+Once Certbot completes successfully and reloads NGINX, HTTPS is now active.
+
+You can now access Vaultwarden securely via:
+```
+https//your-domain.com
+```
+
+Step 5: Recovery--Fix Redirect Loop
+
+If HTTPS access fails or redirects endlessly, the issue is usually a mismatch between:
+
+- Vaultwarden’s internal `DOMAIN` setting
+- NGINX’s proxy configuration.
+
+**Fix**
+
+Update Vaultwarden’s .env file to use HTTPS:
+```command
+sudo nano /home/your-username/vaultwarden/.env
+```
+
+Change:
 ```env
 DOMAIN=https://your-domain.com
 ```
-Then restart Vaultwarden:
+Restart Vaultwarden:
 ```command
 docker compose down
 docker compose up -d
 ```
-Confirm NGINX is proxying HTTPS
-
-If you used a separate config file (e.g., /etc/nginx/sites-available/vaultwarden), ensure it includes:
-
-```nginx
-server {
-    listen 443 ssl;
-    server_name your-domain.com;
-
-    ssl_certificate /etc/letsencrypt/live/your-domain.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/your-domain.com/privkey.pem;
-
-    location / {
-        proxy_pass http://127.0.0.1:80;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-}
-```
-Then restart NGINX:
-```command
-sudo systemctl restart nginx
-```
-
-Retest:
-```command
-curl -v https://your-domain.com
-```
-If you see HTML output from Vaultwarden, the issue is resolved.
-
-## Deploy Vaultwarden with Docker Compose
-
-With Docker CE and the Compose plugin installed and validated, you're ready to deploy Vaultwarden using Docker Compose. This section walks through creating the configuration, launching the container, and verifying setup.
-
-1. Create a directory for Vaultwarden
-
-This keeps your deployment organized and isolated.
-```command
-mkdir ~/vaultwarden
-cd ~/vaultwarden
-```
-
-2. Create a `docker-compose.yml` file
-
-This file defines the Vaultwarden service and its configuration.
-```command
-sudo nano docker-compose.yml
-```
-
-Paste the following content into the file:
-
-```command
-services:
-  vaultwarden:
-    image: vaultwarden/server:latest
-    container_name: vaultwarden
-    restart: unless-stopped
-    ports:
-      - 127.0.0.1:3012:80
-    volumes:
-     - ./vw-data:/data
-    environment:
-      WEBSOCKET_ENABLED: true
-```
-
-{{< note >}}
-This configuration exposes Vaultwarden on host port 3012 (mapped to port 80 inside the container) and stores its data in a local `vw-data` folder. This leaves port 80 for use by NGINX reverse proxy traffic without conflicts. You can customize ports or add environment variables--such as SMTP, admin tokens, or HTTPS--later in the setup.
-{{< /note >}}
-
-3. Start Vaultwarden
-```command
-docker compose up -d
-```
-
-This launches Vaultwarden to run in the background. You can now check status via your server’s IP address or domain name.
-
-4. Verify the container is running
-```command
-docker ps
-docker logs vaultwarden
-```
-You should see output like:
-```output
-CONTAINER ID    IMAGE                        STATUS       PORTS
-abc123          vaultwarden/server:latest    Up           0.0.0.0:80->80/tcp
-```
-
-If `docker ps` shows your Vaultwarden container as "Up" and `docker logs vaultwarden` shows no errors, your deployment is successful.
-
-## Updating Vaultwarden
-
-It is good to check for updates often to ensure you have the latest solutions. Subscribe to the [Vaultwarden GitHub releases](https://github.com/dani-garcia/vaultwarden/releases) to stay informed (be sure to read what is being updated before applying it). To update Vaultwarden to the latest version:
-
-1. Navigate to your compose directory:
-```command
-cd ~/vaultwarden
-```
-
-2. Pull the latest image and recreate the container:
-```command
-docker compose pull
-```
-3. Stop the running container:
-```command
-docker compose down
-```
-4. Recreate and start the container with the updated image:
-```command
-docker compose up -d
-```
-This downloads the newest version and restarts Vaultwarden with minimal downtime.
-
-{{< note >}}
-**See a warning?** Docker Compose may show warnings about deprecated keys or ignored attributes. These usually don't affect functionality. For example, you might see:
-
-`WARN[0000] /root/vaultwarden/docker-compose.yml: the attribute version is obsolete, it will be ignored, please remove it to avoid potential confusion`
-
-This means the `version:` line in your `docker-compose.yml` file is no longer needed. You can safely delete it—Docker Compose now auto-detects the format and doesn’t require a version declaration.
-
-For details, see the Docker [Compose file reference](https://docs.docker.com/reference/compose-file/) to know what's safe to ignore and what might need attention.
-{{< /note >}}
-
-## Optional: Set an Admin Token
-
-Vaultwarden supports an admin interface for managing users and settings. To enable it:
-
-1. Generate a secure admin token
-
-You can use openssl or any password generator:
-```command
-openssl rand -base64 32
-```
-
-2. Add the token to your Compose file
-
-Open your `docker-compose.yml` file and find the `environment:` section under the `vaultwarden` service. Then add this line:
-
-```command
-ADMIN_TOKEN: your_generated_token_here
-```
-Your updated section should look like this:
-
-```command
-
-services:
-  vaultwarden:
-    image: vaultwarden/server:latest
-    container_name: vaultwarden
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:3012:80"
-    volumes:
-      - ./vw-data:/data
-    environment:
-      WEBSOCKET_ENABLED: true
-      ADMIN_TOKEN: your_generated_token_here
-```
-
-Replace `your_generated_token_here` with the secure admin token you created using `openssl rand -base64 32`.
-
-3. Restart the container
-```command
-docker compose down
-docker compose up -d
-```
-If the admin interface loads and accepts your token, your configuration is complete. You can now manage Vaultwarden settings securely.
-
-{{< note >}}
-Keep your admin token secure. Anyone with access to it can modify Vaultwarden settings.
-{{< /note >}}
-
-Final Validation Checklist
-
-- [ ] Vaultwarden is running and bound to 127.0.0.1:3012 (host->container:80)
-- [ ] NGINX is installed and configured to proxy to Vaultwarden
-- [ ] TLS is enabled via Certbot (optional but recommended)
-- [ ] You can access Vaultwarden securely via your domain 'https://your-domain'
+Once Vaultwarden restarts, NGINX should proxy HTTPS correctly.
 
 ## Security Hardening
 
-Reinforce your Vaultwarden instance against common threats--even before DNS is active:
+Strengthening your Vaultwarden deployment reduces exposure to common threats and ensures your password vault remains protected. These recommendations apply after Vaultwarden is deployed and NGINX is configured.
 
-### Disable Unused Endpoints
+**Restrict or Disable the Admin Interface**
 
-If you don't need the admin interface:
-- Set`ADMIN_TOKEN` to an empty string or omit it entirely in `docker-compose.yml`
-- Or disable it via environment variable:
+The admin interface is powerful and should be protected carefully
+
+- If you do not need the admin interface, remove the `ADMIN_TOKEN` line from your `docker-compose.yml` or set it to an empty value:
 ```command
 environment:
-  - ADMIN_TOKEN=
+  ADMIN_TOKEN=
 ```
-- Use a strong admin token if enabling the admin interface
-- Restrict access via firewall or NGINX rules
-- Consider fail2ban or rate limiting for brute-force protection
+If you do use the admin interface:
 
-Vaultwarden is lightweight but powerful — with a few simple tweaks, you can significantly reduce your attack surface.
+- Use a long, random token generated with openssl rand -base64 32.
+- Restrict access to /admin using firewall rules or NGINX allow/deny directives.
+- Avoid exposing the admin interface to the public internet unless absolutely necessary.
+
+Limit Exposure Through NGINX
+
+- Ensure Vaultwarden is only reachable through NGINX by keeping it bound to 127.0.0.1.
+- Use HTTPS exclusively once Certbot is configured.
+- Consider adding rate limiting to reduce brute force attempts:
+
+limit_req_zone $binary_remote_addr zone=one:10m rate=10r/s;
+
+Strengthen the Host Environment
+
+- Keep your system updated (sudo apt update && sudo apt upgrade).
+- Use a firewall (UFW or similar) to allow only required ports:
+  - o	22 (SSH)
+  - o	80 (HTTP)
+  - o	443 (HTTPS)
+- Consider installing Fail2ban to block repeated failed login attempts at the NGINX layer.
+
+Protect Docker Data
+
+- Ensure the vw-data directory is readable only by the user running Docker.
+- Back up the vw-data directory regularly; it contains all Vaultwarden data.
 
 ## Backup Strategy
 
-Vaultwarden stores all critical data in the  directory. This includes your encrypted vault, configuration files, and any attachments. To ensure resilience and peace of mind:
+Vaultwarden stores all critical data in the `vw-data` directory. This includes your encrypted vault, configuration files, and any attachments. Protecting this directory ensures you can recover your vault quickly and reliably.
 
-- Back up the entire volume regularly.
-- Use tools like `rsync`, `cron`, or a cloud sync service to automate backups.
-- Store at least one copy offsite (e.g., cloud storage or external drive).
-- Avoid relying solely on VM snapshots—they’re more fragile and harder to restore.
-- Restoring is simple: stop the container, reattach the backed-up volume, and restart. No database recovery steps are needed:
+*What to Back Up
+
+- The entire `vw-data` directory (your persistent volume)
+- Any custom configuration files you've added (rare)
+- Optional: your `docker-compose.yml` file for convenience
+
+Vaultwarden does**not** require database dumps or special export procedures. The data directory *is* the vault.
+
+How to Back Up
+
+Use any backup method you prefer:
+
+- rsync for incremental backups
+- cron for scheduled automation
+- Cloud sync (encrypted) for offsite redundancy
+- Encrypted backup tools like restic or borg
+
+A simple example using rsync:
 ```command
-docker stop vaultwarden
+rsync -av ~/vaultwarden/vw-data/ /path/to/backup/location/
 ```
-Replace the`/vw-data/` volume with your backup (if your backup is a folder):
+
+**Restoring from a Backup**
+
+Step 1. Stop the container
 ```command
-sudo cp -r /path/to/backup/* /vw-data/
+docker compose down
 ```
+
+Step 2. Restore your backup
+
+If your backup is a folder:
+```command
+sudo cp -r /path/to/backup/* ~/vaultwarden/vw-data/
+```
+
 If your backup is a tarball:
 ```command
-sudo tar -xvzf vaultwarden-backup.tar.gz -C /vw-data/
+sudo tar -xvzf vaultwarden-backup.tar.gz -C ~/vaultwarden/vw-data/
 ```
-If using `restic` or another encrypted tool, `decrypt and restore to /vw-data/`.
 
-Ensure correct permissions:
+If using an encrypted backup tool, decrypt and restore into ~/vaultwarden/vw-data/.
+
+Step 3. Fix permissions
 ```command
-chown -R 1000:1000/vw-data/
+sudo chown -R 1000:1000 ~/vaultwarden/vw-data/
 ```
-`1000:1000` is the default UID/GID Vaultwarden uses. Adjust if your container uses a different user.
-
-Restart the container:
+Step 4. Restart Vaultwarden
 ```command
-docker start vaultwarden
+docker compose up -d
 ```
-Your secrets remain safe as long as `/vw-data/` is backed up. Vaultwarden picks up restored data automatically and is designed to be lightweight and resilient, with straightforward restore procedures.
 
-For practical guidance on backup and restore strategies, see:
-[Vaultwarden Backup and Restore – Memos for Admins Vaultwarden part 4/4: Backup and Restore | Memos for Admins](https://www.memosforadmins.com/post/vaultwarden4/).
-Or, explore the official GitHub Wiki on Vaultwarden backups:
-[Backing up your vault - dani-garcia/vaultwarden GitHub Wiki](https://github-wiki-see.page/m/dani-garcia/vaultwarden/wiki/Backing-up-your-vault).
+Vaultwarden will automatically detect the restored data and start normally. No database migrations or manual recovery steps are required.
 
-## Update Hygiene
+Backup Best Practices
 
-The official [Vaultwarden update guide](https://github-wiki-see.page/m/dani-garcia/vaultwarden/wiki/Updating-the-vaultwarden-image) confirms this exact process for safely updating Vaultwarden and Docker, and recommends checking for updates monthly.
+- Keep at least one offsite backup (cloud or external drive).
+- Test your restore process occasionally to ensure backups are valid.
+- Avoid relying solely on VM snapshots—they are brittle and tied to the VM’s lifecycle.
+- Encrypt offsite backups to protect sensitive data.
 
-- Use the following safe update sequence:
-```command
-docker pull vaultwarden/server:latest
-docker stop vaultwarden
-docker rm vaultwarden
-docker run -d --name vaultwarden
-  -v /vw-data/:/data/
-  -p 80:80 vaultwarden/server:latest
-```
-- `-v /vw-data/:/data`ensures persistent data is preserved.
-- `-p 80:80` maps container port 80 to host port 80, which is standard unless you've customized it (e.g., using HTTPS or reverse proxy).
+Additional Resources
 
-Your data is preserved via the mounted volume.
-
-{{< note >}}
-Updates are safe and simple — just make sure your data volume is mounted correctly, and you’re good to go.
-{{< /note >}}
+- [Vaultwarden Backup and Restore – Memos for Admins Vaultwarden part 4/4: Backup and Restore | Memos for Admins](https://www.memosforadmins.com/post/vaultwarden4/)
+- [Backing up your vault - dani-garcia/vaultwarden GitHub Wiki](https://github-wiki-see.page/m/dani-garcia/vaultwarden/wiki/Backing-up-your-vault)
 
 ## Optional Enhancements
 
-Once your core Vaultwarden setup is stable, consider these upgrades to improve performance, security, and flexibility:
+Once your core Vaultwarden setup is stable, you can extend it with additional features that improve security, privacy, and usability.
 
-- **Enable WebSocket support** (`-p 3012:3012`) for real-time sync between clients and the server.
-- **Add two-factor authentication (2FA)** via Vaultwarden’s admin panel to strengthen account protection.
-- **Integrate with a VPN or private DNS** to isolate traffic and enhance privacy.
-- **Consider switching to Caddy as a reverse proxy** for automatic HTTPS and simplified certificate management.
+- **Confirm WebSocket support** — already enabled in your Compose file via WEBSOCKET_ENABLED: true, allowing real time sync between clients and the server.
+- **Enable two factor authentication (2FA)** through the admin interface to strengthen account protection.
+- **Integrate with a VPN or private DNS** to isolate traffic and improve privacy, especially for self hosted environments.
+- **Consider alternative reverse proxies** such as Caddy if you prefer automatic HTTPS and simplified certificate management. This requires replacing the NGINX configuration rather than adding to it.
 
-Vaultwarden is flexible — enhance it in ways that fit your workflow and threat model.
+Vaultwarden is flexible — choose enhancements that align with your workflow and security needs.
