@@ -14,11 +14,11 @@ external_resources:
 - '[NPM](https://www.npmjs.com/)'
 ---
 
-The [Linode Quick Deploy App](/docs/marketplace-docs/guides/mern-stack/) for the MERN stack (MongoDB, Express, React, Node.js) is a great way to create the base configuration equipped with all the essentials for a MERN stack quickly, however the Marketplace APP itself will still require tuning to host your MERN application. Transferring an application to a new host for example, can be a complex process depending on the specifics of your configuration. This guide was designed to serve as reference for users currently undergoing the migration process, and aims to clear up potential confusion and common issues that can occur.
+The [Quick Deploy App](/docs/marketplace-docs/guides/mern-stack/) for the MERN stack (MongoDB, Express, React, Node.js) is a great way to create the base configuration equipped with all the essentials for a MERN stack quickly, however the Akamai Quick Deploy App itself will still require tuning to host your MERN application. Transferring an application to a new host for example, can be a complex process depending on the specifics of your configuration. This guide was designed to serve as reference for users currently undergoing the migration process, and aims to clear up potential confusion and common issues that can occur.
 
 ## Transferring the Application
 
-Before proceeding with any migration, it is first recommended that the Marketplace APP for the MERN stack is fully deployed. This will install an up to date version of most of the essentials required for many working MERN applications including the following:
+Before proceeding with any migration, it is first recommended that the Akamai Quick Deploy App for the MERN stack is fully deployed. This will install an up to date version of most of the essentials required for many working MERN applications including the following:
 
 - UFW
 - Fail2Ban

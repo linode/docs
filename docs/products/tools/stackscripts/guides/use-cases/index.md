@@ -24,7 +24,7 @@ If you develop software, you can use StackScripts to deploy a demonstration inst
 Community StackScripts are publicly available to the entire Linode Community. This means if you have an open source project you'd like to make easily available to Linode users, you can write a StackScript that installs and configures your project's software on a Linode. Include [user defined variables](/docs/products/tools/stackscripts/guides/write-a-custom-script/#declare-user-defined-fields-udfs) in your StackScript to make it customizable to users during each deployment of the StackScript.
 
 {{< note >}}
-If you would also like to make your open source project available to the Linode Community as an App in the Linode Marketplace, see the [Linode App Marketplace page](https://www.linode.com/marketplace/) for details.
+If you would also like to make your open source project available to the Linode Community as a Quick Deploy App, see the [Akamai Quick Deploy Apps page](https://www.linode.com/marketplace/) for details.
 {{< /note >}}
 
 ## Deploy Cluster Instances

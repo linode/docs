@@ -56,7 +56,7 @@ As noted above, other variants exist, like the MEAN stack (which uses Angular) a
 
 To deploy a functional MERN stack on a server, select from one of the deployment options below:
 
-- **Linode Marketplace:** Deploy the [MERN App](https://www.linode.com/marketplace/apps/linode/mern/) through the Linode Marketplace to automatically install MongoDB, Node.JS, Express, and React. This is the easiest method and enables you to quickly get up and running without needing to install and configure everything manually. Just note, when choosing this method you are limited to the distribution images supported by the Quick Deploy App.
+- **Akamai Quick Deploy Apps:** Deploy the [MERN App](https://www.linode.com/marketplace/apps/linode/mern/) through Akamai Quick Deploy Apps to automatically install MongoDB, Node.JS, Express, and React. This is the easiest method and enables you to quickly get up and running without needing to install and configure everything manually. Just note, when choosing this method you are limited to the distribution images supported by the Quick Deploy App.
 
 - **Manual Installation:** If you wish to have full control over application versions and the initial configuration, you can manually install all required components. To do so, follow the [Manually Install the MERN Stack](#manually-install-the-mern-stack) section below.
 
@@ -206,7 +206,7 @@ To follow along, you can download the [MERN stack starter](https://github.com/rf
         sudo ufw reload
         ```
 
-        The above commands require you to have the UFW utility installed. It comes pre-installed if you use the Linode Marketplace one-click app. Otherwise, you can learn how to use UFW from our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide discussed above.
+        The above commands require you to have the UFW utility installed. It comes pre-installed if you use the Akamai Quick Deploy App. Otherwise, you can learn how to use UFW from our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide discussed above.
 
         You can now use `scp` from your Windows machine, with a command like the one below. Replace the path to your MERN project folder with the actual path. Likewise, replace `example-user` with your user on the server instance and `192.0.2.0` with the instance's IP address:
 
