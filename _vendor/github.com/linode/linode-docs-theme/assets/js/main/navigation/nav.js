@@ -73,7 +73,7 @@ const applyUIState = function (self, init = false) {
 	setClassAndWatch(self.$store.nav.pinned, '$store.nav.pinned', 'topbar-pinned');
 };
 
-export function newNavController(weglot_api_key) {
+export function newNavController() {
 	return {
 		init: function () {
 			applyUIState(this, true);
