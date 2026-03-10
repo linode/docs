@@ -1,6 +1,6 @@
 ---
 title: "Deploy MySQL/MariaDB"
-description: "This guide shows how to install and configure MySQL/MariaDB so you can run databases for anything from a CRM to WordPress by using the Linode Quick Deploy App."
+description: "This guide shows how to install and configure MySQL/MariaDB so you can run databases for anything from a CRM to WordPress by using the Akamai Quick Deploy App."
 published: 2020-03-13
 modified: 2025-02-28
 keywords: ['database','mysql','rdbms','relational database','mariadb']

@@ -14,7 +14,7 @@ external_resources:
 - '[Deployment Checklist](https://www.rabbitmq.com/docs/production-checklist)'
 - '[Plugins](https://www.rabbitmq.com/docs/plugins)'
 - '[Management CLI](https://www.rabbitmq.com/docs/management-cli)'
-- '[RabbitMQ Linode Quick Deploy App](https://www.linode.com/marketplace/apps/linode/rabbitmq/)'
+- '[RabbitMQ Akamai Quick Deploy App](https://www.linode.com/marketplace/apps/linode/rabbitmq/)'
 ---
 
 This guide provides step-by-step instructions for deploying RabbitMQ on Linode Kubernetes Engine (LKE) using the [RabbitMQ Kubernetes Operator](https://www.rabbitmq.com/kubernetes/operator/operator-overview). This is part of a set of tools that RabbitMQ provides to streamline its management on Kubernetes:

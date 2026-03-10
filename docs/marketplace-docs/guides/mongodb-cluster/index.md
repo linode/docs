@@ -1,6 +1,6 @@
 ---
 title: "Deploy a MongoDB Cluster"
-description: "This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the Linode Quick Deploy App."
+description: "This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the Akamai Quick Deploy App."
 published: 2023-03-20
 expiryDate: 2023-05-01
 keywords: ['mongodb','marketplace', 'database']

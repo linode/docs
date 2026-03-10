@@ -1,6 +1,6 @@
 ---
 title: "Deploy Peppermint"
-description: "This guide shows how to install Peppermint, a ticket management system that allows teams to create tickets, and more, with the Linode Quick Deploy App."
+description: "This guide shows how to install Peppermint, a ticket management system that allows teams to create tickets, and more, with the Akamai Quick Deploy App."
 published: 2021-03-31
 modified: 2023-10-27
 keywords: ["ticket management", "quick deploy apps"]

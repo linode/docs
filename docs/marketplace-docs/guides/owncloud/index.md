@@ -1,6 +1,6 @@
 ---
 title: "Deploy ownCloud Server"
-description: "Learn how to deploy ownCloud Server, a self-hosted file-sharing and collaboration platform on the Linode Quick Deploy App."
+description: "Learn how to deploy ownCloud Server, a self-hosted file-sharing and collaboration platform on the Akamai Quick Deploy App."
 published: 2023-06-26
 keywords: ['owncloud','filesharing','collaboration']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]

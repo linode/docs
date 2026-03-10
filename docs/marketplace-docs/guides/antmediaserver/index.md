@@ -1,6 +1,6 @@
 ---
 title: "Deploy Ant Media Server Community Edition"
-description: 'This guide will show you how to install and configure Ant Media Server so you can stream video online using the Linode Quick Deploy App.'
+description: 'This guide will show you how to install and configure Ant Media Server so you can stream video online using the Akamai Quick Deploy App.'
 published: 2021-03-30
 modified: 2024-06-06
 keywords: ['streaming', "quick deploy apps", "live video streaming"]

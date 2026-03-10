@@ -79,6 +79,6 @@ Follow the instructions below to view the unseal key and root token.
     https://www.vaultproject.io/docs/secrets/pki/setup
     {{< /note >}}
 
-1. Additional configurations are required to use the Linode Quick Deploy App Vault instance in a production environment. We recommend reviewing the [Configuration](https://www.vaultproject.io/docs/configuration), [Secrets Engine](https://www.vaultproject.io/docs/secrets), and [Authentication](https://www.vaultproject.io/docs/auth) documentation before proceeding further.
+1. Additional configurations are required to use the Akamai Quick Deploy App Vault instance in a production environment. We recommend reviewing the [Configuration](https://www.vaultproject.io/docs/configuration), [Secrets Engine](https://www.vaultproject.io/docs/secrets), and [Authentication](https://www.vaultproject.io/docs/auth) documentation before proceeding further.
 
 {{% content "marketplace-update-note-shortguide" %}}

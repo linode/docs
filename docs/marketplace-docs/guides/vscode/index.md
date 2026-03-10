@@ -1,6 +1,6 @@
 ---
 title: "Deploy VS Code"
-description: "This guide shows you how to run VS Code Server in the browser to create, edit, and manipulate code by using the VS Code app from the Linode Quick Deploy App."
+description: "This guide shows you how to run VS Code Server in the browser to create, edit, and manipulate code by using the VS Code app from the Akamai Quick Deploy App."
 published: 2020-12-02
 modified: 2022-03-08
 keywords: ['vscode', 'marketplace', 'vscode web browser']

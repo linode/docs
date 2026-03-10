@@ -1,6 +1,6 @@
 ---
 title: "Deploy Discourse"
-description: "In this guide, learn how to install Discourse, an open source discussion platform that provides powerful features using the Linode Quick Deploy App."
+description: "In this guide, learn how to install Discourse, an open source discussion platform that provides powerful features using the Akamai Quick Deploy App."
 published: 2020-11-19
 modified: 2022-03-08
 keywords: ['discourse','one-click', 'server']

@@ -1,7 +1,7 @@
 ---
 title: Cloud Manager
 title_meta: "Cloud Manager Product Documentation"
-description: "Cloud Manager gives you access to simple account management, user control and security, and performance monitoring; supports self-service data center migration; allows you to deploy Linode Quick Deploy Apps; and more."
+description: "Cloud Manager gives you access to simple account management, user control and security, and performance monitoring; supports self-service data center migration; allows you to deploy Akamai Quick Deploy Apps; and more."
 published: 2020-06-02
 tab_group_main:
     is_root: true
