@@ -1,8 +1,8 @@
 ---
 title: Resources
-title_meta: "Resources for the Linode Marketplace"
-description: "Resources and other information related to Linode Marketplace Apps including blog posts, community posts, and customer stories."
-keywords: ['linode marketplace']
+title_meta: "Resources for Akamai Quick Deploy Apps"
+description: "Resources and other information related to Akamai Quick Deploy Apps including blog posts, community posts, and customer stories."
+keywords: ['akamai quick deploy apps']
 tab_group_main:
     weight: 40
 aliases: ['/products/tools/marketplace/resources/','/products/tools/marketplace-one-click-apps/resources/']
@@ -10,38 +10,6 @@ authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
-
-## Blog Posts
-
-- [Self-Hosted Alternatives to Popular Business & Productivity Tools (Including G Suite)](https://www.linode.com/blog/devops/open-source-business-tool-alternatives-g-suite-2022/)
-
-- [Secure & Accelerate Development Projects with Linode Marketplace Apps](https://www.linode.com/blog/devops/secure-accelerate-development-projects-with-linode-marketplace-apps/)
-
-- [7 New Apps to Try on Linode Marketplace](https://www.linode.com/blog/devops/linode-one-click-apps-marketplace-release-august-21/)
-
-- [Ant Media, Owncast, and Peppermint Now on Marketplace](https://www.linode.com/blog/devops/linode-marketplace-april-2021-video-streaming/)
-
-- [Welcoming New Marketplace App Partners (And We Want Your Feedback!)](https://www.linode.com/blog/devops/welcoming-new-marketplace-app-partners-and-we-want-your-feedback/)
-
-- [11 New Apps Available on Linode Marketplace](https://www.linode.com/blog/devops/linode-marketplace-january-2021-release/)
-
-- [6 New One-Click Apps on Linode Marketplace](https://www.linode.com/blog/devops/linode-marketplace-october-releases/)
-
-- [Nextcloud and Percona added to Linode Marketplace](https://www.linode.com/blog/one-click-apps/nextcloud-and-percona-added-to-linode-marketplace/)
-
-- [Introducing Linode One-Click App Marketplace](https://www.linode.com/blog/marketplace-apps/introducing-linode-one-click-app-marketplace/)
-
-- [4 Alternative Ways to Collaborate in the Cloud](https://www.linode.com/blog/cloud-computing/4-alternative-ways-to-collaborate-in-the-cloud/)
-
-- [5 Videos to Help You Start Your Next Cloud Project](https://www.linode.com/blog/one-click-apps/5-videos-to-help-you-start-your-next-cloud-project/)
-
-- [New Web Development & Database Marketplace Apps](https://www.linode.com/blog/marketplace-apps/new-web-development-and-database-one-click-apps/)
-
-- [Seven New Marketplace Apps on Linode](https://www.linode.com/blog/one-click-apps/seven-new-one-click-apps-on-linode/)
-
-- [2019: A Big Year of Innovation for Linode and a Big Thank You to Our Customers](https://www.linode.com/blog/linode/2019-a-year-in-review/)
-
-- [New Marketplace Apps in the Linode Library](https://www.linode.com/blog/one-click-apps/new-one-click-apps-in-the-linode-library/)
 
 ## Community Posts
 
@@ -67,10 +35,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 Browse our [Linode Community Questions & Answers page](https://www.linode.com/community/questions/) for more [related questions](https://www.linode.com/community/questions/search?query=one+click+marketplace).
 
-## Customer Stories
-
-- [Craft of Code: Bernd Hilmar](https://www.linode.com/spotlight/bernd-hilmar/)
-
 ## External Resources
 
-- [Video: Continuous Integration Using Jenkins Marketplace APp](https://youtu.be/FHPtchw-eHA)
+- [Video: Continuous Integration Using Jenkins Quick Deploy App](https://youtu.be/FHPtchw-eHA)

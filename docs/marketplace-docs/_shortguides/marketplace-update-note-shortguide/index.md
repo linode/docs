@@ -1,14 +1,14 @@
 ---
-# Shortguide: A note on updating the software on a Linode deployed using the Marketplace
+# Shortguide: A note on updating the software on a Linode deployed using Quick Deploy Apps
 
 headless: true
 show_on_rss_feed: false
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-description: 'Marketplace software updates note shortguide'
+description: 'Quick Deploy App software updates note shortguide'
 ---
 
 {{< note >}}
-Currently, Akamai doesn't manage software and systems updates for Marketplace Apps. It is up to the user to perform routine maintenance on software deployed in this fashion.
+Currently, Akamai doesn't manage software and systems updates for Quick Deploy Apps. It is up to the user to perform routine maintenance on software deployed in this fashion.
 {{< /note >}}
