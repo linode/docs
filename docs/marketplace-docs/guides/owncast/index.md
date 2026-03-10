@@ -1,6 +1,6 @@
 ---
 title: "Deploy Owncast"
-description: "This guide shows how to install Owncast, a self-hosted live video and web chat server that works with common broadcasting software, from the Linode Quick Deploy App."
+description: "This guide shows how to install Owncast, a self-hosted live video and web chat server that works with common broadcasting software, from the Akamai Quick Deploy App."
 published: 2021-03-31
 modified: 2025-03-10
 keywords: ['live streaming','marketplace','web chat']

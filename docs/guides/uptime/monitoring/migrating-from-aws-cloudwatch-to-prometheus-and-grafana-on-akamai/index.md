@@ -28,8 +28,8 @@ This guide walks through how to migrate standard AWS CloudWatch service logs, me
 
 Prometheus and Grafana are considered industry standard, and are commonly used together to monitor service health, detect anomalies, and issue alerts. Being both open source and platfrom-agnostic allows them to be deployed across a diverse range of cloud providers and on-premise infrastructures. Organizations often adopt these tools to reduce operational costs while gaining greater control over how data is collected, stored, and visualized.
 
-{{< note title="Prometheus and Grafana Marketplace App" >}}
-If you prefer an automatic deployment rather than the manual installation steps in this guide, Prometheus and Grafana can be deployed through our [Prometheus and Grafana Marketplace app](https://www.linode.com/marketplace/apps/linode/prometheus-grafana/).
+{{< note title="Prometheus and Grafana Quick Deploy App" >}}
+If you prefer an automatic deployment rather than the manual installation steps in this guide, Prometheus and Grafana can be deployed through our [Prometheus and Grafana Quick Deploy App](https://www.linode.com/marketplace/apps/linode/prometheus-grafana/).
 {{< /note >}}
 
 ## Before You Begin

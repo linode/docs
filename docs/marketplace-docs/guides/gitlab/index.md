@@ -1,6 +1,6 @@
 ---
 title: "Deploy Gitlab"
-description: "This is a step-by-step guide on how to deploy the GitLab application, a solution for your software development needs, by using the Linode Quick Deploy App."
+description: "This is a step-by-step guide on how to deploy the GitLab application, a solution for your software development needs, by using the Akamai Quick Deploy App."
 published: 2019-03-27
 modified: 2022-03-08
 keywords: ['gitlab','marketplace apps','version control','git']

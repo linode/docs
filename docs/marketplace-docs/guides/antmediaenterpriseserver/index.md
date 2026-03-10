@@ -1,6 +1,6 @@
 ---
 title: "Deploy Ant Media Server Enterprise Edition"
-description: "Learn how to install and configure the Ant Media Server Enterprise Edition so you can stream video online using the Linode Quick Deploy App."
+description: "Learn how to install and configure the Ant Media Server Enterprise Edition so you can stream video online using the Akamai Quick Deploy App."
 published: 2022-03-29
 modified: 2024-04-24
 keywords: ['streaming', "quick deploy apps", "live video streaming"]

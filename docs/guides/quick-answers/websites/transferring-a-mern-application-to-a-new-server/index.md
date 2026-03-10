@@ -1,7 +1,7 @@
 ---
 slug: transferring-a-mern-application-to-a-new-server
-title: "Transfer a MERN application to Linode's MERN Marketplace App"
-description: "This guide discusses guidelines for quickly transferring a MERN stack application over to Linode built with Linode's Marketplace App."
+title: "Transfer a MERN application to Linode's MERN Quick Deploy App"
+description: "This guide discusses guidelines for quickly transferring a MERN stack application over to Linode built with Linode's Quick Deploy App."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2022-02-25
@@ -14,11 +14,11 @@ external_resources:
 - '[NPM](https://www.npmjs.com/)'
 ---
 
-The [Linode Marketplace App](/docs/marketplace-docs/guides/mern-stack/) for the MERN stack (MongoDB, Express, React, Node.js) is a great way to create the base configuration equipped with all the essentials for a MERN stack quickly, however the Marketplace APP itself will still require tuning to host your MERN application. Transferring an application to a new host for example, can be a complex process depending on the specifics of your configuration. This guide was designed to serve as reference for users currently undergoing the migration process, and aims to clear up potential confusion and common issues that can occur.
+The [Quick Deploy App](/docs/marketplace-docs/guides/mern-stack/) for the MERN stack (MongoDB, Express, React, Node.js) is a great way to create the base configuration equipped with all the essentials for a MERN stack quickly, however the Akamai Quick Deploy App itself will still require tuning to host your MERN application. Transferring an application to a new host for example, can be a complex process depending on the specifics of your configuration. This guide was designed to serve as reference for users currently undergoing the migration process, and aims to clear up potential confusion and common issues that can occur.
 
 ## Transferring the Application
 
-Before proceeding with any migration, it is first recommended that the Marketplace APP for the MERN stack is fully deployed. This will install an up to date version of most of the essentials required for many working MERN applications including the following:
+Before proceeding with any migration, it is first recommended that the Akamai Quick Deploy App for the MERN stack is fully deployed. This will install an up to date version of most of the essentials required for many working MERN applications including the following:
 
 - UFW
 - Fail2Ban
@@ -33,7 +33,7 @@ Additionally, this will install the default `hello-world` react application whic
 
 ## Removing the default Flask Application
 
-The default `hello-world` Flask application included as part of the MERN Marketplace App can be removed manually from the command line. For some use cases and application,this step may be required to ensure that the necessary resources are available. The commands to remove this application are as follows:
+The default `hello-world` Flask application included as part of the MERN Quick Deploy App can be removed manually from the command line. For some use cases and application,this step may be required to ensure that the necessary resources are available. The commands to remove this application are as follows:
 
     sudo systemctl disable hello-world
     sudo systemctl stop hello-world

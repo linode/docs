@@ -24,7 +24,7 @@ Since the mysqldump utility needs to connect to the database, the database manag
 
 ## Before You Begin
 
-- **Obtain the connection details for the MySQL instance you wish to use.** If you do not have a MySQL instance yet, you can [create a Managed Database](https://techdocs.akamai.com/cloud-computing/docs/managed-databases), [deploy the MySQL Marketplace App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/), or [install MySQL server (or MariaDB) on a Compute Instance](/docs/guides/install-mysql/).
+- **Obtain the connection details for the MySQL instance you wish to use.** If you do not have a MySQL instance yet, you can [create a Managed Database](https://techdocs.akamai.com/cloud-computing/docs/managed-databases), [deploy the MySQL Quick Deploy App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/), or [install MySQL server (or MariaDB) on a Compute Instance](/docs/guides/install-mysql/).
 
     {{% content "dbass-eos" %}}
 

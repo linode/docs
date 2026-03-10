@@ -1,6 +1,6 @@
 ---
 title: "Deploy JetBackup"
-description: "JetBackup is a backup solution designed for the web hosting industry. This tutorial walks you through deploying JetBackup using the Linode Quick Deploy App."
+description: "JetBackup is a backup solution designed for the web hosting industry. This tutorial walks you through deploying JetBackup using the Akamai Quick Deploy App."
 published: 2021-08-13
 modified: 2022-05-17
 keywords: ['backups','cpanel', 'backup']

@@ -16,15 +16,15 @@ MongoDB is an open-source NoSQL database utilizing JSON-like documents and schem
 
 ## Before You Begin
 
-To complete the examples in this guide, first set up and secure a Linode with Docker installed. You can accomplish this by utilizing the Docker Marketplace App, or through manual installation. Instructions for both approaches are provided below.
+To complete the examples in this guide, first set up and secure a Linode with Docker installed. You can accomplish this by utilizing the Docker Quick Deploy App, or through manual installation. Instructions for both approaches are provided below.
 
 This guide assumes you are comfortable with the *command-line interface* (CLI) on a Unix-like system and using it to work with programs.
 
 ### Set up a Linode with Docker
 
-#### Docker Marketplace App
+#### Docker Quick Deploy App
 
-You can quickly set up a secure, updated Linode with the Docker Marketplace App. For instructions, see our guide on [How to Deploy Docker with Marketplace Apps](/docs/marketplace-docs/guides/docker/). For the purposes of this guide, we recommend deploying the Docker Marketplace App with the [Docker Options](/docs/marketplace-docs/guides/docker/#docker-options):
+You can quickly set up a secure, updated Linode with the Docker Quick Deploy App. For instructions, see our guide on [How to Deploy Docker with Quick Deploy Apps](/docs/marketplace-docs/guides/docker/). For the purposes of this guide, we recommend deploying the Docker Quick Deploy App with the [Docker Options](/docs/marketplace-docs/guides/docker/#docker-options):
 
 - The limited sudo user to be created for the Linode
 - The password for the limited sudo user

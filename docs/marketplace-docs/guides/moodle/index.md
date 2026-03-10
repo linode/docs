@@ -1,6 +1,6 @@
 ---
 title: "Deploy Moodle"
-description: "Moodle is the leading open source learning management system. This tutorial walks you through deploying Moodle using the Linode Quick Deploy App."
+description: "Moodle is the leading open source learning management system. This tutorial walks you through deploying Moodle using the Akamai Quick Deploy App."
 published: 2021-08-13
 modified: 2023-04-11
 keywords: ['learning','educator','management', and 'school']
