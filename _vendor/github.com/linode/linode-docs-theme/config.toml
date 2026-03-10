@@ -121,7 +121,7 @@
         name          = "marketplace-docs"
         hugo_section  = "marketplace-docs"
         weight        = 25
-        title         = "Marketplace Docs"
+        title         = "Quick Deploy Apps"
         noun          = "Marketplace"
         filters       = "section.lvl0:marketplace-docs"
         explorer_icon = "#icon-explorer--marketplace"
