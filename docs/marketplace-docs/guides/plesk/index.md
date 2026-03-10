@@ -1,6 +1,6 @@
 ---
 title: "Deploy Plesk"
-description: "This guide shows how to install and configure Plesk using the Linode Quick Deploy Apps. Plesk is a leading WordPress and website management control panel."
+description: "This guide shows how to install and configure Plesk using the Akamai Quick Deploy Apps. Plesk is a leading WordPress and website management control panel."
 published: 2019-03-25
 modified: 2024-05-21
 keywords: ['plesk','marketplace', 'cms']

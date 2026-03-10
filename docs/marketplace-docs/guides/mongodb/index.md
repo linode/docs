@@ -1,6 +1,6 @@
 ---
 title: "Deploy MongoDB"
-description: "This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the Linode Quick Deploy App."
+description: "This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the Akamai Quick Deploy App."
 published: 2020-03-11
 modified: 2022-03-08
 keywords: ['mongodb','marketplace', 'database']

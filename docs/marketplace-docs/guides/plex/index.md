@@ -1,6 +1,6 @@
 ---
 title: "Deploy Plex Media Server"
-description: "Stream your personal media collection to nearly any device with your own Plex Media Server using Linode Quick Deploy Apps."
+description: "Stream your personal media collection to nearly any device with your own Plex Media Server using Akamai Quick Deploy Apps."
 published: 2020-09-28
 modified: 2025-02-19
 keywords: ['streaming','plex','video','media server']

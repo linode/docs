@@ -46,7 +46,7 @@ Both tools promote an open source ethos, but YunoHost operates on a totally open
 
 However, Cloudron provides a more polished and simplified presentation. The setup for YunoHost can be more complicated, and its interface may not be as clear for some users at the outset.
 
-Linode offers a streamlined Cloudron deployment through the Linode Marketplace. Learn more about Cloudron and its deployment process through its [Marketplace page](https://www.linode.com/marketplace/apps/cloudron/cloudron/).
+Linode offers a streamlined Cloudron deployment through Quick Deploy Apps. Learn more about Cloudron and its deployment process through its [Quick Deploy App page](https://www.linode.com/marketplace/apps/cloudron/cloudron/).
 
 ## How to Install YunoHost
 

@@ -1,6 +1,6 @@
 ---
 title: "Deploy Splunk"
-description: "This guide shows you how to install Splunk, a powerful data solution that collects, monitors, analyzes, and visualizes data, using the Linode Quick Deploy App."
+description: "This guide shows you how to install Splunk, a powerful data solution that collects, monitors, analyzes, and visualizes data, using the Akamai Quick Deploy App."
 published: 2021-09-03
 modified: 2024-01-31
 keywords: ['monitoring','splunk', 'data solution']

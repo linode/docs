@@ -49,6 +49,6 @@ marketplace_app_name: "HashiCorp Nomad"
     https://www.nomadproject.io/docs/configuration/tls#http
     {{< /note >}}
 
-1. Additional configurations are required to use the Linode Quick Deploy App Nomad Server in a production environment. We recommend reviewing the [Configuration](https://www.nomadproject.io/docs/configuration) and [Job Spec](https://www.nomadproject.io/docs/job-specification) documentation before proceeding.
+1. Additional configurations are required to use the Akamai Quick Deploy App Nomad Server in a production environment. We recommend reviewing the [Configuration](https://www.nomadproject.io/docs/configuration) and [Job Spec](https://www.nomadproject.io/docs/job-specification) documentation before proceeding.
 
 {{% content "marketplace-update-note-shortguide" %}}

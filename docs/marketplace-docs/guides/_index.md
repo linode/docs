@@ -1,7 +1,7 @@
 ---
 title: Guides
-title_meta: "Guides and Tutorials for the Linode Marketplace"
-description: "A collection of guides to help you learn how to deploy each Marketplace App that Linode offers."
+title_meta: "Guides and Tutorials for Akamai Quick Deploy Apps"
+description: "A collection of guides to help you learn how to deploy each Quick Deploy App that Akamai offers."
 modified: 2024-04-29
 tab_group_main:
     weight: 30
@@ -10,11 +10,9 @@ aliases: ['/products/tools/marketplace/guides/','/products/tools/marketplace-one
 
 ## Basics
 
-- [Get Started with Marketplace Apps](/docs/marketplace-docs/get-started/): Learn how to deploy and access a One-Click App from the Linode Marketplace.
+- [Get Started with Akamai Quick Deploy Apps](/docs/marketplace-docs/get-started/): Learn how to deploy and access a Quick Deploy App
 
-## List of Marketplace Apps
-
-See the [Marketplace](/docs/marketplace/) listing page for a full list of all Marketplace Apps sorted by category.
+## List of Quick Deploy Apps
 
 - [aaPanel](/docs/marketplace-docs/guides/aapanel/)
 - [Akaunting](/docs/marketplace-docs/guides/akaunting/)

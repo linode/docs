@@ -23,7 +23,7 @@ Apache Guacamole is an HTML5 application useful for accessing a remote desktop t
 
 Apache Guacamole can be installed and configured on a Linode Compute Instance using one of the following methods:
 
-1.  **Linode Marketplace:** Deploy the [Apache Guacamole App](https://www.linode.com/marketplace/apps/linode/apache-guacamole/) through the Linode Marketplace to automatically install Guacamole, VNC software, and a desktop environment. This is the easiest method and enables you to quickly get up and running without needing to install and configure everything manually. Just note, when choosing this method you are limited to the Distribution Images supported by the Marketplace App.
+1.  **Akamai Quick Deploy Apps:** Deploy the [Apache Guacamole App](https://www.linode.com/marketplace/apps/linode/apache-guacamole/) through Akamai Quick Deploy Apps to automatically install Guacamole, VNC software, and a desktop environment. This is the easiest method and enables you to quickly get up and running without needing to install and configure everything manually. Just note, when choosing this method you are limited to the Distribution Images supported by the Quick Deploy App.
 
 1.  **Docker:** Alternatively, you can deploy Apache Guacamole's Docker images and manually configure the software yourself. This method strikes a balance between ease of installation and custom configuration. It may be more advanced, but provides you with greater control over your environment and configuration. See [Installing Apache Guacamole through Docker](/docs/guides/installing-apache-guacamole-through-docker/) for instructions.
 

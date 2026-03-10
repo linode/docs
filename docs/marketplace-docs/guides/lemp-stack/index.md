@@ -1,6 +1,6 @@
 ---
 title: "Deploy a LEMP Stack"
-description: "This guide shows you how to use the Linode Quick Deploy App to deploy a LEMP (Linux, NGINX, MySQL, PHP) server stack on a Linode Compute Instance."
+description: "This guide shows you how to use the Akamai Quick Deploy App to deploy a LEMP (Linux, NGINX, MySQL, PHP) server stack on a Linode Compute Instance."
 published: 2020-03-11
 modified: 2022-03-08
 keywords: ['LEMP', 'nginx', 'web server', 'mysql', 'php']

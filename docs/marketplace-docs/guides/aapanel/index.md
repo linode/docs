@@ -1,6 +1,6 @@
 ---
 title: "Deploy aaPanel"
-description: "This tutorial will show you how to install and configure the free and open-source server app, aaPanel, using the Linode Quick Deploy App on CentOS 7."
+description: "This tutorial will show you how to install and configure the free and open-source server app, aaPanel, using the Akamai Quick Deploy App on CentOS 7."
 published: 2021-08-13
 modified: 2022-03-08
 keywords: ['control panel', 'web hosting']

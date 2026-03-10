@@ -1,6 +1,6 @@
 ---
 title: "Deploy a LAMP Stack"
-description: "This guide shows you how to use the Linode Quick Deploy App to deploy a LAMP (Linux, Apache, MySQL, PHP) stack on a Linode running Linux."
+description: "This guide shows you how to use the Akamai Quick Deploy App to deploy a LAMP (Linux, Apache, MySQL, PHP) stack on a Linode running Linux."
 published: 2019-03-26
 modified: 2025-04-29
 keywords: ['LAMP', 'apache', 'web server', 'mysql', 'php']

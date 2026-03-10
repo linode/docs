@@ -1,6 +1,6 @@
 ---
 title: "Deploy Docker"
-description: "This guide provides you with step-by-step instructions for deploying Docker, a tool which you can use to run containerized apps, from the Linode Quick Deploy App."
+description: "This guide provides you with step-by-step instructions for deploying Docker, a tool which you can use to run containerized apps, from the Akamai Quick Deploy App."
 published: 2020-03-11
 modified: 2025-07-01
 keywords: ['docker','marketplace', 'container']

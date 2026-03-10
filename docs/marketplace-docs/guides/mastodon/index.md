@@ -1,6 +1,6 @@
 ---
 title: "Deploy Mastodon"
-description: "Learn how to deploy Mastodon, a decentralized social network and micro-blogging platform, on the Linode Quick Deploy App."
+description: "Learn how to deploy Mastodon, a decentralized social network and micro-blogging platform, on the Akamai Quick Deploy App."
 published: 2022-12-12
 modified: 2024-04-16
 keywords: ['social', 'messaging', 'mastodon']

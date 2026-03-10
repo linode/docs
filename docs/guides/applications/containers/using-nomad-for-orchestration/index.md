@@ -23,9 +23,9 @@ This section outlines how to install Nomad and access its interface in order to 
 
 If, instead, you are ready to start deploying a Nomad cluster now, skip to the [How to Deploy a Cluster with Nomad](/docs/guides/using-nomad-for-orchestration/#how-to-deploy-a-cluster-with-nomad) section.
 
-### Deploying Nomad from the Linode Marketplace
+### Deploying Nomad from Akamai Quick Deploy Apps
 
-The most approachable solution for setting up a Nomad instance with Linode is through the Linode Marketplace. There, a Linode instance with Nomad already installed and configured can be quickly set up. To do so, take a look at our guide to [Deploy HashiCorp Nomad through the Linode Marketplace](/docs/marketplace-docs/guides/hashicorp-nomad/).
+The most approachable solution for setting up a Nomad instance with Linode is through Akamai Quick Deploy Apps. There, a Linode instance with Nomad already installed and configured can be quickly set up. To do so, take a look at our guide to [Deploy HashiCorp Nomad through Akamai Quick Deploy Apps](/docs/marketplace-docs/guides/hashicorp-nomad/).
 
 First, follow along with that guide to get a Nomad instance ready. Then skip to the section [How Nomad Works](/docs/guides/using-nomad-for-orchestration/#how-nomad-works) to become familiar with the new Nomad instance.
 
@@ -159,7 +159,7 @@ With the Nomad instance up and running, it's time to start exploring how Nomad w
     ```
 
     {{< note >}}
-    Nomad instances created through the Linode Marketplace are already running a Nomad agent at startup, so above command is not needed.
+    Nomad instances created through Akamai Quick Deploy Apps are already running a Nomad agent at startup, so above command is not needed.
     {{< /note >}}
 
 1.  The agent makes a Nomad web interface available, serving it on `localhost:4646`. Use an SSH tunnel to access this in a web browser from a remote machine:
