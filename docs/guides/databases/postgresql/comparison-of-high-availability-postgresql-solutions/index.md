@@ -109,9 +109,9 @@ For a concise discussion and comparison of the three main alternatives, see the 
 
 ### The Marketplace PostgreSQL HA Cluster
 
-Akamai allows users to configure a PostgreSQL HA cluster as a [Marketplace application](/docs/marketplace-docs/guides/postgresql-cluster/). Using this technique, database administrators can set up an HA cluster from the Linode Dashboard. This solution is supported on Ubuntu 22.04 LTS distribution on any plan type.
+Akamai allows users to configure a PostgreSQL HA cluster as a [Quick Deploy Application](/docs/marketplace-docs/guides/postgresql-cluster/). Using this technique, database administrators can set up an HA cluster from the Linode Dashboard. This solution is supported on Ubuntu 22.04 LTS distribution on any plan type.
 
-The Akamai Marketplace solution uses the [*repmgr*](https://www.repmgr.org/) replication manager to control the PostgreSQL high availability cluster. The Marketplace application automatically configures a three-node HA cluster. Users only have to create users, roles, schemas, and tables before deploying the database.
+The Akamai Marketplace solution uses the [*repmgr*](https://www.repmgr.org/) replication manager to control the PostgreSQL high availability cluster. The Quick Deploy Application automatically configures a three-node HA cluster. Users only have to create users, roles, schemas, and tables before deploying the database.
 
 This solution has some limitations. It is not possible to choose the size of the HA cluster or manually edit any application variables. It is a viable option for a smaller organization with less technical expertise. However, it might not meet the specific requirements of a more complicated network.
 

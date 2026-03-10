@@ -37,7 +37,7 @@ For additional instructions on installing MySQL on any supported operating syste
 
     {{% content "dbass-eos" %}}
 
-    - [MySQL/MariaDB Marketplace App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/): Deploy a new Compute Instance with either MySQL or MariaDB preinstalled.
+    - [MySQL/MariaDB Quick Deploy App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/): Deploy a new Compute Instance with either MySQL or MariaDB preinstalled.
 
 -   **Check to see if MySQL is already installed on your system.** To determine if MySQL is already installed, run the following command:
 

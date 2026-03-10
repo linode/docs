@@ -1,7 +1,7 @@
 ---
 title: Cloud Manager
 title_meta: "Cloud Manager Product Documentation"
-description: "Cloud Manager gives you access to simple account management, user control and security, and performance monitoring; supports self-service data center migration; allows you to deploy Linode Marketplace apps; and more."
+description: "Cloud Manager gives you access to simple account management, user control and security, and performance monitoring; supports self-service data center migration; allows you to deploy Linode Quick Deploy Apps; and more."
 published: 2020-06-02
 tab_group_main:
     is_root: true
@@ -25,9 +25,9 @@ Advanced search helps you quickly find your Linode resources. Search using simpl
 
 Manage your account, update payment information, review credits remaining, and print invoices.
 
-### Deploy Marketplace Apps
+### Deploy Quick Deploy Apps
 
-Whether you want to set up a game server, your own VPN, or self-host your software with GitLab, Marketplace Apps make it quick and easy to get up and running on your Linodes.
+Whether you want to set up a game server, your own VPN, or self-host your software with GitLab, Quick Deploy Apps make it quick and easy to get up and running on your Linodes.
 
 ### Performance Monitoring
 

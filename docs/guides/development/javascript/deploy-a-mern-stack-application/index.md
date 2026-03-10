@@ -15,7 +15,7 @@ external_resources:
 
 MERN is a stack for modern web applications. It consists of MongoDB, Express JS, React, and Node.js — all well-established open-source technologies that make a solid foundation for new web applications.
 
-This guide helps you deploy your existing MERN stack project onto Akamai cloud compute, using the MERN Marketplace App or by manually installing the MERN stack on a new Compute Instance. After your server is set up, learn how to copy your project to your server. If you do not yet have an existing project and wish to create a new MERN application, review one of the following guides instead:
+This guide helps you deploy your existing MERN stack project onto Akamai cloud compute, using the MERN Quick Deploy App or by manually installing the MERN stack on a new Compute Instance. After your server is set up, learn how to copy your project to your server. If you do not yet have an existing project and wish to create a new MERN application, review one of the following guides instead:
 
 - [Install the MERN Stack and Create an Example Application](/docs/guides/install-the-mern-stack/)
 
@@ -56,7 +56,7 @@ As noted above, other variants exist, like the MEAN stack (which uses Angular) a
 
 To deploy a functional MERN stack on a server, select from one of the deployment options below:
 
-- **Linode Marketplace:** Deploy the [MERN App](https://www.linode.com/marketplace/apps/linode/mern/) through the Linode Marketplace to automatically install MongoDB, Node.JS, Express, and React. This is the easiest method and enables you to quickly get up and running without needing to install and configure everything manually. Just note, when choosing this method you are limited to the distribution images supported by the Marketplace App.
+- **Linode Marketplace:** Deploy the [MERN App](https://www.linode.com/marketplace/apps/linode/mern/) through the Linode Marketplace to automatically install MongoDB, Node.JS, Express, and React. This is the easiest method and enables you to quickly get up and running without needing to install and configure everything manually. Just note, when choosing this method you are limited to the distribution images supported by the Quick Deploy App.
 
 - **Manual Installation:** If you wish to have full control over application versions and the initial configuration, you can manually install all required components. To do so, follow the [Manually Install the MERN Stack](#manually-install-the-mern-stack) section below.
 

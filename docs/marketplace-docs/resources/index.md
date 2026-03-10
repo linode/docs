@@ -23,7 +23,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 - [How can I deploy 1-Click Apps from the CLI?](https://www.linode.com/community/questions/18509/how-can-i-deploy-1-click-apps-from-the-cli)
 
-- [How can I use Marketplace Apps to deploy a Proxy Server?](https://www.linode.com/community/questions/18986/how-can-i-use-marketplace-apps-to-deploy-a-proxy-server)
+- [How can I use Quick Deploy Apps to deploy a Proxy Server?](https://www.linode.com/community/questions/18986/how-can-i-use-marketplace-apps-to-deploy-a-proxy-server)
 
 - [Installed a Django One click App, now what?](https://www.linode.com/community/questions/19899/installed-a-django-marketplace-app-now-what)
 
@@ -31,7 +31,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 - [Deploy multiple One-clicks to a single node?](https://www.linode.com/community/questions/19166/deploy-multiple-marketplaces-to-a-single-node)
 
-- [What’s the default MySQL my.cnf configuration from default WordPress Marketplace app in Linode](https://www.linode.com/community/questions/19910/whats-the-default-mysql-mycnf-configuration-from-default-wordpress-marketplace-app)
+- [What’s the default MySQL my.cnf configuration from default WordPress Quick Deploy App in Linode](https://www.linode.com/community/questions/19910/whats-the-default-mysql-mycnf-configuration-from-default-wordpress-marketplace-app)
 
 Browse our [Linode Community Questions & Answers page](https://www.linode.com/community/questions/) for more [related questions](https://www.linode.com/community/questions/search?query=one+click+marketplace).
 

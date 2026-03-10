@@ -96,7 +96,7 @@ This is a very dangerous and potentially destructive test. It must only be used 
 This command must only be used to test servers inside your organization and under your control. **DO NOT** use this command to probe external servers. Tampering with the public internet infrastructure is a serious offense in many jurisdictions.
 {{< /note >}}
 
-1.  Ensure any Kali Linux compute instances running the stress test are fully configured and up-to-date. A single Kali Linux instance can emulate a basic non-distributed denial-of-service attack. But multiple Kali Linux systems are more effective in creating a realistic DDoS scenario. For more information, consult the [Linode guide to deploying Kali Linux using the Marketplace App](https://www.linode.com/marketplace/apps/kali-linux/kali-linux/).
+1.  Ensure any Kali Linux compute instances running the stress test are fully configured and up-to-date. A single Kali Linux instance can emulate a basic non-distributed denial-of-service attack. But multiple Kali Linux systems are more effective in creating a realistic DDoS scenario. For more information, consult the [Linode guide to deploying Kali Linux using the Quick Deploy App](https://www.linode.com/marketplace/apps/kali-linux/kali-linux/).
 
 1.  Install the `hping3` package. This package might already be installed on the Kali Linux server.
 
