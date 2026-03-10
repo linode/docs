@@ -32,16 +32,10 @@
   type="font/woff2"
   crossorigin />
 <link href="{{ $styles.RelPermalink }}" rel="stylesheet" />
-<script
-  type="text/javascript"
-  src="https://cdn.weglot.com/weglot.min.js"
-  data-cfasync="false"
-  defer></script>
 
 {{ $params := (dict
   "search_config" site.Params.search_config2
   "file_issue_button" site.Params.file_issue_button
-  "weglot_api_key" site.Params.weglot_api_key
   "page_title_suffix" site.Params.page_title_suffix
   "is_production" (ne hugo.Environment "development")
   "is_test" $isTest )
