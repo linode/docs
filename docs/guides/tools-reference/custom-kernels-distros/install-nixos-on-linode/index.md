@@ -34,7 +34,7 @@ NixOS is not officially supported by Linode at the time of publishing this guide
 
 Familiarize yourself with [LISH](/docs/products/compute/compute-instances/guides/lish/) and [GLISH](/docs/products/compute/compute-instances/guides/glish/) to connect to your Linode. You will use them throughout this guide.
 
-The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for NixOS. It explores the concepts at a high level and serves as a reference for some system configuration concepts. This should have everything you need to know to get started, but there may be some deeper concepts that are not thoroughly addressed. For more in-depth information, visit the [NixOS](https://nixos.org/nixos/manual/) and [Nixpkgs](https://nixos.org/nixpkgs/manual/) manuals.
+The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for NixOS. It explores the concepts at a high level and serves as a reference for some system configuration concepts.
 
 ## Prepare Your Linode
 
@@ -48,7 +48,7 @@ To create a new Linode, go to the [Create Linode page](https://cloud.linode.com/
 
 [Create three disk images](/docs/products/compute/compute-instances/guides/disks-and-storage/#create-a-disk): One for the installer, one for a swap partition, and one for the root partition. Label them:
 
-- **Installer**: A type `ext4` disk, 1280 MB in size.
+- **Installer**: A type `ext4` disk, 2048 MB in size. The NixOS minimal installer ISO now exceeds 1.6 GB (as of 2024). 2048 MB provides sufficient headroom as the image continues to grow.
 - **Swap**: A `swap` disk no larger than 512 MB.
 - **NixOS**: A type `ext4` disk which takes up all remaining space.
 
@@ -79,7 +79,7 @@ To create a new Linode, go to the [Create Linode page](https://cloud.linode.com/
 
 1.  [Boot your Linode into rescue mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode) with the **Installer** disk mounted as `/dev/sda`.
 
-1.  Once in rescue mode, click the **Launch Console** link to launch the Finnix rescue console and run the following commands, replacing the URL with the latest 64-bit minimal installation image copied from the [NixOS download page](https://nixos.org/nixos/download.html):
+1.  Once in rescue mode, click the **Launch Console** link to launch the Finnix rescue console and run the following commands, replacing the URL with the latest 64-bit minimal installation image copied from the [NixOS download page](https://nixos.org/download/):
 
     ```command
     # Update SSL certificates to allow HTTPS connections:
@@ -138,24 +138,12 @@ cd /mnt/etc/nixos
 
 Within this directory there are two files: `configuration.nix` and `hardware-configuration.nix`. When realizing its configuration, NixOS only uses `configuration.nix`. It is common practice to keep a separate Nix file with hardware specific configuration and have the `configuration.nix` file source its contents.
 
-### Rewrite Device Identifiers
-
-The `nixos-generate-config` command in the [Set up the Install Environment](#set-up-the-install-environment) section generated the configuration from hardware details it gathered automatically. It prefers to use UUIDs to identify disks, but since Linode is a virtual platform you can choose the device identifiers that disks get attached to.
-
-Since you can modify these later, it is better to use the `/dev/sdX` identifiers where `X` is the assigned volume, like `sda` or `sdb`, to allow you to easily swap in backup disks without having to boot into rescue mode and rewrite the UUID to match the new disk:
-
-Replace the contents of the `fileSystems` and `swapDevices` sections with the following:
-
-```file {title="/mnt/etc/nixos/hardware-configuration.nix"}
-fileSystems."/" =
-  { device = "/dev/sda";
-    fsType = "ext4";
-  };
-
-swapDevices =
-  [ { device = "/dev/sdb"; }
-  ];
-```
+**Note on device identifiers:** `nixos-generate-config` automatically populates `hardware-configuration.nix` with stable UUID-based paths for `fileSystems` and `swapDevices`. **Leave these entries as-is.** Do not redefine `fileSystems."/"` or `swapDevices` in `configuration.nix`. This creates a conflict that causes `nixos-install` to fail with:
+ ```
+ The option fileSystems."/".device has conflicting definition values:
+ * configuration.nix: /dev/sda
+ * hardware-configuration.nix: /dev/disk/by-uuid/...
+ ```
 
 ### Enable LISH
 
