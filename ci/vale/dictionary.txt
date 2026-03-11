@@ -24,6 +24,7 @@ adodb
 adoptium
 aes
 ag
+agentic
 agentless
 Agones
 ahci0
