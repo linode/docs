@@ -2072,6 +2072,7 @@ qualys
 quickconnect
 quicklisp
 quickstart
+Qwen
 radeon
 rainloop
 Ramaze
