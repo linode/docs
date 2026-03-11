@@ -5,6 +5,7 @@ description: "Zot is a vendor-neutral Open Container Initiative (OCI) Native Reg
 authors: ["Vishwas Rajashekar"]
 contributors: ["Vishwas Rajashekar"]
 published: 2025-10-01
+modified: 2026-02-11
 keywords: ['container', 'cloud-native', 'oci', 'registry']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
@@ -24,7 +25,7 @@ Container images need to be stored and then distributed when an application is d
 
 - Security integrations including Single Sign-On (SSO) support with OpenID Connect (OIDC), htpasswd, and API keys
 - An authorization system that supports repository-level access control
-- Built-in artifact scanning with [Trivy](https://trivy.dev/latest/)
+- Built-in artifact scanning with [Trivy](https://trivy.dev)
 - Support for multiple backends for storing data, including S3-compatible services
 - Options for creating high-scale deployments
 - Monitoring with built-in metrics
@@ -280,7 +281,7 @@ For this guide, a simple setup with UI, security scanning, and password authenti
     }
     ```
 
-1. Enable the UI and [container security scanning](https://zotregistry.dev/v1.4.3/general/architecture/#security-scanning) extensions. These are specified under the `extensions` keyword in the configuration. Add these new highlighted lines to your file:
+1. Enable the UI and [container security scanning](https://zotregistry.dev/v2.1.14/general/architecture/#security-scanning) extensions. These are specified under the `extensions` keyword in the configuration. Add these new highlighted lines to your file:
 
     ```file {title="/etc/zot/config.json" lang="json" hl_lines="6-15"}
     {
@@ -326,7 +327,7 @@ For this guide, a simple setup with UI, security scanning, and password authenti
     }
     ```
 
-    More information about sync settings can be found in the [Zot documentation](https://zotregistry.dev/v2.1.8/admin-guide/admin-configuration/?h=sync#syncing-and-mirroring-registries).
+    More information about sync settings can be found in the [Zot documentation](https://zotregistry.dev/v2.1.14/admin-guide/admin-configuration/?h=sync#syncing-and-mirroring-registries).
 
 1. Enable TLS to secure connections to the Zot server. Add these highlighted lines to your file within the `http` block. Replace {{< placeholder "/path/to/certfile" >}} and {{< placeholder "/path/to/keyfile" >}} with the paths to your web certificate and key files respectively:
 
@@ -508,7 +509,7 @@ This output should appear:
 
 1. Access the Zot UI from a web browser by navigating to `https://{{< placeholder "ZOT_MACHINE_HOST_NAME_OR_IP" >}}:8080`. Replace {{< placeholder "ZOT_MACHINE_HOST_NAME_OR_IP" >}} with your machine's host name or IP address. This should bring up a login page:
 
-    ![zot login page](zot-login-page.png)
+    ![zot login page](zot-1-login-page.png)
 
     The credentials supplied for htpasswd file creation earlier can be used to login.
 
