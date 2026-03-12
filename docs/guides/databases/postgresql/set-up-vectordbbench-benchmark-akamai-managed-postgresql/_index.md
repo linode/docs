@@ -385,7 +385,7 @@ Change the configuration of the VectorDBBench run to remove the high-concurrency
 
 VectorDBBench runs 30-second tests with different levels of concurrency. By default, it runs a separate test for each of the following concurrency levels: [1, 5, 10, 20, 30, 40, 60, 80] Higher levels of concurrency (such as 60 or 80) may cause your Linode instance to run out of memory.
 
-To change the set of concurrency levels used in the test, set the num_concurrency to a comma-separated list of numbers in the pgvectorhnsw section of your config.yaml file. For example, the following line will result in only three runs, with concurrency levels of 1, 5, and 10.
+To change the set of concurrency levels used in the test, set the `num_concurrency` to a comma-separated list of numbers in the `pgvectorhnsw` section of your `config.yaml` file. For example, the following line will result in only three runs, with concurrency levels of 1, 5, and 10.
 
 ```
 num_concurrency: "1,5,10"
