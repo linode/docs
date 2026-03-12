@@ -165,11 +165,11 @@ Although VectorDBBench can be run with command-line arguments, you may find it s
 
 ```
 pgvectorhnsw:
-  db_label: my_postgresql_db
+  db_label: <my_postgresql_db>
   user_name: akmadmin
   password: <your-password>
   db_name:  defaultdb
-  host: a406247-akamai-prod-183144-default.g2a.akamaidb.net
+  host: <your-host>
   port: 10033
   m: 16
   ef_construction: 128
