@@ -2,7 +2,7 @@
 title: "Premium Compute Instances"
 description: "Premium instances guarantee a minimum hardware class utilizing the latest available AMD EPYC™ CPUs, providing consistent high-performance for your workloads."
 published: 2023-07-06
-modified: 2024-03-11
+modified: 2024-07-24
 linkTitle: "Premium"
 ---
 
@@ -46,9 +46,11 @@ Premium Compute Instances are currently available in select data centers.
 | Frankfurt (Germany) | *Not available* |
 | Fremont (California, USA) | *Not available* |
 | **Jakarta (Indonesia)** | **Available** |
-| **Los Angeles (California, USA)** | **Available** |
 | London (United Kingdom) | *Not available* |
+| **London 2 (United Kingdom)** | **Available** |
+| **Los Angeles (California, USA)** | **Available** |
 | **Madrid (Spain)** | **Available** |
+| **Melbourne (Australia)** | **Available** |
 | **Miami (Florida, USA)** | **Available** |
 | **Milan (Italy)** | **Available** |
 | Mumbai (India) | *Not available* |
