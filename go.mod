@@ -9,3 +9,5 @@ require (
 	github.com/linode/linode-api-docs/v4 v4.176.0 // indirect
 	github.com/linode/linode-docs-theme v0.0.0-20250902163319-d09d95b9ed25 // indirect
 )
+
+replace github.com/linode/linode-docs-theme => /home/nmelehan/workspace/linode-docs-theme

@@ -27,8 +27,11 @@
       {{ end }}
       {{ $open = eq $.FirstSection $section }}
     {{ end }}
-    {{ $root := dict "section" $section "config" . "page" $ "open" $open }}
-    {{ $roots = $roots | append $root }}
+    {{/* We used to show all sections, now only the current (or all if on home page). Keep this construct in case we change our minds. */}}
+    {{ if or $open $.IsHome }}
+      {{ $root := dict "section" $section "config" . "page" $ "open" $open }}
+      {{ $roots = $roots | append $root }}
+    {{ end }}
   {{ end }}
 
   {{ range $roots }}

@@ -3,7 +3,7 @@
   x-intersect.once="visible = true"
   data-testid="image-modal">
   <template x-if="!visible">
-    {{ $pix := resources.Get "images/pix.gif" }}
+    {{ $pix := resources.Get "tech-guides-assets/images/pix.gif" }}
     <div class="w-full bg-gray-200 rounded-lg">
       <img
         src="{{ $pix.RelPermalink }}"
