@@ -1,0 +1,59 @@
+name: Docs issue report
+description: Report an issue for an article on the Linode documentation site
+title: "[Docs issue]: "
+labels: ["triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to file an issue with an article on [https://www.linode.com/docs/](linode.com/docs).
+
+        - If you would prefer to provide a 1-5 star rating for a guide, a feedback form is linked to from the bottom of each article.
+        - A Disqus form is also available at the bottom of each article to discuss it with other readers.
+        - For issues with your Akamai/Linode account or resources, please [contact customer support](https://www.linode.com/docs/products/platform/get-started/guides/support/#contact-customer-support).
+        - For other cloud computing discussions not related to specific Linode documentation, visit the [Community Questions forum](https://www.linode.com/community/questions/).
+
+        Thank you for filing your report!
+  - type: input
+    id: file
+    attributes:
+      label: The source article
+      description: A link to an article on https://www.linode.com/docs/
+      placeholder: https://www.linode.com/docs/
+    validations:
+      required: false
+  - type: textarea
+    id: context
+    attributes:
+      label: Relevant material from article
+      description: The text, code samples, commands, from the article that the issue is in reference to
+      placeholder: Copy and paste relevant content from article here
+      render: shell
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: Description of issue
+      description: A summary of the problem, along with any suggested fixes you may have
+      placeholder: |
+        Tell us about any:
+        - Incorrect or outdated information
+        - Sample code or commands that produce errors
+        - Unclear instructions or missing steps
+        - Typos, spelling errors, or grammar issues
+        - Other problems not mentioned here
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Issue category
+      description: What category best describes the issue?
+      options:
+        - Information incorrect or outdated
+        - Sample code or command produces error
+        - Unclear instructions or missing steps
+        - Typo, spelling, or grammar issue
+        - Other
+      default: 4
+    validations:
+      required: true
