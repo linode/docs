@@ -52,6 +52,12 @@ First, create the Compute Instance and add the necessary disks and configuration
         - If you do not plan on making this system compatible with [Linode platform actions, tools, and features](#make-the-system-compatible-with-the-linode-platform) (such as automatic network configuration, disk resizing, and more), this *System* disk can take up the rest of the free space available on your instance.
 
         - If you plan to make this system compatible with [Linode platform features](#make-the-system-compatible-with-the-linode-platform), another third disk needs to be created (outlined later in this guide). As a result, the System disk cannot take up the rest of the free space available on your instance. The System disk and that other third disk both need to be large enough to fit the operating system you wish to install. This is covered in a later step, but be sure to leave enough remaining storage space to create that disk.
+        -  Ensure that the disk allocated for the operating system installation is sufficiently large. If the disk size is too small, the installer may fail during the automatic partitioning step. You may see an error similar to:
+     ```
+     Failed to partition the selected disk — the disk or free space is too small to be automatically partitioned.
+     ```
+    If this occurs, increase the allocated disk size and restart the installation process. The required disk size may vary depending on the operating system version, installation type, and selected packages.
+
 
 1. Navigate to the **Configurations** tab and create two configuration profiles for your new instance. See the [Create a Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) guide for instructions.
 
@@ -117,9 +123,9 @@ After the installation disk is ready, you can install the distribution onto your
 
 1. In the Cloud Manager, reboot your Compute Instance using the *Installer* configuration profile.
 
-1. Open [Glish](/docs/products/compute/compute-instances/guides/glish/) and, once the instance fully boots up, you should see your distribution's installer. The screenshot below shows the Debian 11 installer.
+1. Open [Glish](/docs/products/compute/compute-instances/guides/glish/) and, once the instance fully boots up, you should see your distribution's installer. The screenshot below shows the Debian 13 installer.
 
-    ![Screenshot of Debian installer in Glish](custom-distro-debian-installer.png)
+    ![Screenshot of Debian installer in Glish](custom-distro-debian-installer.jpg)
 
 1. Follow the prompts to install the distribution. When doing so, you may want to consult the installation instructions for that distribution. When selecting a disk or partition to install the system onto, be sure to select the `/dev/sda` volume. Most installers create separate root and swap partitions, but you can adjust this as needed.
 
@@ -251,34 +257,67 @@ Next, you need to determine which partition your root file system is installed o
 
     Depending upon your distribution, it may use different parameters for your root disk under the "options" section. These can be adjusted as needed. Note that you're using `/dev/sda` instead of the `sda1` root partition that was identified previously.
 
-1. Confirm the location of your `grub.cfg` file. Some distributions (notably, CentOS and Fedora) place this file under the `/boot/grub2` directory, while others have it under `/boot/grub`. Your new setup uses Linode's *Grub 2* mode, which looks for a configuration file under `/boot/grub/grub.cfg`. You can confirm if your `grub.cfg` is located in the necessary spot with the `ls` command:
+1. Confirm the location of your `grub.cfg` file. Some distributions (notably, CentOS and Fedora) place this file under the `/boot/grub2` directory, while others have it under `/boot/grub`. Your new setup uses Linode's *Grub 2* mode, which looks for a configuration file under `/boot/grub/grub.cfg`.
+Use the following script to detect the correct path and set up the expected location without creating an unnecessary symlink:
 
-    ```command {title="Lish console or Glish command prompt"}
-    ls -la /boot/grub/grub.cfg
-    ```
+   ```bash
+   if [ -f /boot/grub2/grub.cfg ] && [ -f /boot/grub/grub.cfg ]; then
+     # Both exist — /boot/grub/grub.cfg is already in the right place
+     GRUB_CFG=/boot/grub/grub.cfg
+     echo "Using existing /boot/grub/grub.cfg"
+   elif [ -f /boot/grub2/grub.cfg ]; then
+     # Only grub2 path exists — create the directory and symlink
+     mkdir -p /boot/grub
+     ln -s /boot/grub2/grub.cfg /boot/grub/grub.cfg
+     GRUB_CFG=/boot/grub/grub.cfg
+     echo "Created symlink: /boot/grub/grub.cfg -> /boot/grub2/grub.cfg"
+   elif [ -f /boot/grub/grub.cfg ]; then
+     # Already in the standard location
+     GRUB_CFG=/boot/grub/grub.cfg
+     echo "Using existing /boot/grub/grub.cfg"
+   else
+     echo "ERROR: grub.cfg not found in /boot/grub/ or /boot/grub2/"
+     echo "Run 'update-grub' or 'grub2-mkconfig' first to generate it."
+     exit 1
+   fi
+   ```
 
-    The output should display information for that file, if it exists.
+This script defaults to `/boot/grub2/grub.cfg` when both paths exist on systems like CentOS/Fedora, and only creates the symlink when `/boot/grub2/grub.cfg` exists but `/boot/grub/grub.cfg` does not. This avoids overwriting an existing config with a symlink.
 
-    ``` {title="Lish console or Glish command prompt"}
-    -r--r--r-- 1 root root 5235 Dec 28 08:05 /boot/grub/grub.cfg
-    ```
+1. Open your `grub.cfg` file and replace all instances of the old partition location and UUID with the new intended location. Run the following commands, replacing the UUID value with the one for your current root partition (determined in step 2 of the current section).
 
-    If the Grub config is located under `/boot/grub2` instead, create a symlink to provide the correct configuration to the bootloader:
+   Change these example lines in `grub.cfg` referencing the old partition:
 
-    ```command {title="Lish console or Glish command prompt"}
-    mkdir /boot/grub
-    ln -s /boot/grub2/grub.cfg /boot/grub/grub.cfg
-    ```
+   ```
+   linux   /boot/vmlinuz-5.10.0-19-amd64 root=/dev/sda1 ro quiet
+   ```
+   ```
+   search --no-floppy --fs-uuid --set=root 59a7ea75-58c8-46cc-8b71-86f07b56f41f
+   ```
+   ```
+   set root='hd0,msdos1'
+   linux /vmlinuz root=UUID=59a7ea75-58c8-46cc-8b71-86f07b56f41f ro
+   ```
 
-1. Open your `grub.cfg` file and replace all instances of the old partition location and UUID with the new intended location. Run the following commands, replacing the UUID value with the one for your current root partition (determined in step 2 of the current section). You may also need to make adjustments to the following commands if your root partition is at a location other than `/dev/sda1`:
+   To these lines pointing to `/dev/sda`):
 
-    ```command {title="Lish console or Glish command prompt"}
-    sed -i -e 's$/dev/sda1$/dev/sda$g' /boot/grub/grub.cfg
-    sed -i -e 's$--fs-uuid --set=root 59a7ea75-58c8-46cc-8b71-86f07b56f41f$--set=root /dev/sda$g' /boot/grub/grub.cfg
-    sed -i -e 's$root=UUID=59a7ea75-58c8-46cc-8b71-86f07b56f41f$root=/dev/sda$g' /boot/grub/grub.cfg
-    ```
+   ```
+   linux   /boot/vmlinuz-5.10.0-19-amd64 root=/dev/sda ro quiet
+   ```
+   ```
+   search --no-floppy --set=root /dev/sda
+   ```
+   ```
+   set root='hd0'
+   linux /vmlinuz root=/dev/sda ro
+   ```
 
-    Keep in mind that if your `grub.cfg` is located under `/boot/grub2`, you should adjust this command to reflect that.
+   The specific lines in your file vary by distribution and kernel version. The general rule is: replace every occurrence of `/dev/sda1` with `/dev/sda`, and replace every occurrence of the UUID (`59a7ea75-58c8-46cc-8b71-86f07b56f41f` in this example with your actual UUID from step 2) with `/dev/sda`.
+
+{{< note >}}
+If your root partition is at a location other than `/dev/sda1`, adjust accordingly.
+{{< /note >}}
+
 
 ### Transfer the System to a New Ext4 Disk
 
