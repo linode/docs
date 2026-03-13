@@ -1918,6 +1918,7 @@ pg_restore
 pgAdmin
 PGvector
 pgpass
+pgvector
 Phalcon
 pharmer
 pharo
@@ -2072,6 +2073,7 @@ qualys
 quickconnect
 quicklisp
 quickstart
+Qwen
 radeon
 rainloop
 Ramaze
