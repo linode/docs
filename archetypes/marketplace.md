@@ -11,6 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Link Title 1](http://www.example.com)'
 - '[Link Title 2](http://www.example.net)'
+marketplace_app_id:
+marketplace_app_name: "___App_Name___"
 ---
 
 <!-- Intro paragraph describing the app and what it accomplishes. -->
