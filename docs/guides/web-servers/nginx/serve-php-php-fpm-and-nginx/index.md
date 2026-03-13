@@ -8,7 +8,7 @@ published: 2018-02-19
 modified: 2021-12-29
 keywords: ["php", "php-fpm", "fastcgi"]
 tags: ["web server","ubuntu","php","nginx"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 aliases: ['/web-servers/nginx/serve-php-php-fpm-and-nginx/','/websites/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/','/web-servers/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/','/web-servers/nginx/nginx-phpfastcgi-ubuntu-14-04/','/web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/']
 image: serve-php-with-phpfpm-and-nginx-smp.jpg
 external_resources:
