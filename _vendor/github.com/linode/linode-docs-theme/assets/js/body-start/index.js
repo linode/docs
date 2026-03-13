@@ -1,6 +1,12 @@
-import { isMobile, toggleBooleanClass } from '../main/helpers/helpers';
+import { setIsTranslating, isMobile, toggleBooleanClass } from '../main/helpers/helpers';
 
 (function () {
+	if (!window.turbolinksLoaded) {
+		// If a language other than en is set, we need to try to prevent the
+		// untranslated content from being visible.
+		setIsTranslating(document.body);
+	}
+
 	if (!window.truste) {
 		window.truste = {};
 	}

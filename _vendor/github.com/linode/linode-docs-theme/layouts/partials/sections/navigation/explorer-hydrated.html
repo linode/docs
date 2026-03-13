@@ -67,7 +67,7 @@
     :data-testid="`{{ $testID }}`"
     :id="`{{ $id }}`"
     data-turbo-permanent
-    x-show="!{{ $.n }}.hidden && ({{ $.n }}.level === 1 || {{ $.n }}.count > 0)"
+    x-show="{{ $.n }}.level === 1 || {{ $.n }}.count > 0"
     :class="{'pl-6': {{ $.n }}.level == 2}"
     x-data="lncSearchExplorerNode({{ $.n }})">
     {{ $testID := printf "li-${ %s.level }" $.n }}

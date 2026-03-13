@@ -11,6 +11,6 @@
   {{/* Load the common Linode (from linode-website-partials repo), but only if onetrust.functional is set. */}}
   {{ $js := resources.Get "linode/footer-inline.js" }}
   <template x-if="$store.nav.onetrust.functional">
-    {{ partial "helpers/script-src.html" (dict "js" $js "targetPath" "tech-guides-assets/linode/footer-inline.js" "nodefer" true "params" (dict "is_production" (ne hugo.Environment "development") ) ) }}
+    {{ partial "helpers/script-src.html" (dict "js" $js "nodefer" true "params" (dict "is_production" (ne hugo.Environment "development") ) ) }}
   </template>
 </div>

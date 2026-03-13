@@ -13,9 +13,7 @@
   <meta name="robots" content="noindex" />
 {{ end }}
 <meta name="google" content="notranslate" />
-<meta
-  property="og:title"
-  content="{{ .Params.title_social | default (.Params.title_meta | default .Title) }}" />
+<meta property="og:title" content="{{ .Params.title_social | default (.Params.title_meta | default .Title) }}" />
 <meta
   property="og:type"
   content="{{ if .IsPage }}
@@ -50,7 +48,7 @@
 {{ else }}
   <meta
     property="og:image"
-    content="{{ "tech-guides-assets/mediaimages/default_social_image.png" | absURL }}" />
+    content="{{ "media/images/default_social_image.png" | absURL }}" />
 {{ end }}
 
 {{ if (isset .Params "twitter") }}
@@ -75,7 +73,7 @@
   <meta name="twitter:card" content="summary" />
   <meta
     name="twitter:image"
-    content="{{ "tech-guides-assets/mediaimages/default_social_image_small.png" | absURL }}" />
+    content="{{ "media/images/default_social_image_small.png" | absURL }}" />
 {{ end }}
 
 

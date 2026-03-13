@@ -1,0 +1,106 @@
+{{ define "main" }}
+  <div
+    class="max-w-none my-8"
+    x-data="lncFetch('/docs/maintenance/index.json')">
+    {{ template "maintenance/brokenlinks"  (dict "reason" "Not found") }}
+    {{ template "maintenance/brokenlinks" (dict "reason" "Fragment not found" "showFragment" true) }}
+  </div>
+  <div class="content prose prose-sm md:prose-lg max-w-content my-8">
+    {{ .Content }}
+  </div>
+{{ end }}
+{{ define "maintenance/brokenlinks" }}
+  <div class="mb-8">
+    <div class="sm:flex sm:items-center">
+      <div class="sm:flex-auto">
+        <h2 id="{{ $.reason | anchorize }}">
+          {{ $.reason }}
+        </h2>
+      </div>
+    </div>
+    <template x-if="data.brokenlinks">
+      <div class="mt-4">
+        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div
+            class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+            <table class="min-w-full divide-y divide-gray-300">
+              <thead>
+                <tr>
+                  <th
+                    scope="col"
+                    class="whitespace-nowrap py-3 pl-5 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
+                    Link
+                  </th>
+                  {{ if $.showFragment }}
+                    <th
+                      scope="col"
+                      class="whitespace-nowrap px-2 py-3 text-left text-sm font-semibold text-gray-900">
+                      Fragment
+                    </th>
+                  {{ end }}
+                  <th
+                    scope="col"
+                    class="whitespace-nowrap px-2 py-3 text-left text-sm font-semibold text-gray-900">
+                    Source Link
+                  </th>
+                  <th
+                    scope="col"
+                    class="relative whitespace-nowrap py-3 pl-3 pr-4 sm:pr-0">
+                    <span class="sr-only">Edit Source</span>
+                  </th>
+                  <th
+                    scope="col"
+                    class="relative whitespace-nowrap py-3 pl-3 pr-4 sm:pr-0">
+                    <span class="sr-only">Edit Target</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 bg-white">
+                <template
+                  x-for="l in (data.brokenlinks.filter(item => item.reason == '{{ $.reason }}'))">
+                  <tr class="hover:bg-gray-100">
+                    <td class="px-2 py-2 text-sm font-medium">
+                      <a
+                        class="text-brand hover:text-gray-60 inline-block w-40 truncate"
+                        :href="l.link"
+                        x-text="l.link"
+                        target="_blank"></a>
+                    </td>
+                    {{ if $.showFragment }}
+                      <td
+                        class="whitespace-nowrap px-2 py-2 text-sm font-medium inline-block w-40 truncate"
+                        x-text="l.fragment"></td>
+                    {{ end }}
+                    <td class="whitespace-nowrap px-2 py-2 text-sm font-medium">
+                      <a
+                        class="text-brand hover:text-gray-600 inline-block w-40 truncate"
+                        :href="l.sourceRef"
+                        x-text="l.sourceRef"
+                        target="_blank"></a>
+                    </td>
+                    <td
+                      class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium xs:pr-0">
+                      <a
+                        class="text-brand hover:text-gray-600"
+                        target="_blank"
+                        :href="l.sourceUri"
+                        x-text="l.sourceUri ? 'Edit Source' : ''"></a>
+                    </td>
+                    <td
+                      class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium xs:pr-0">
+                      <a
+                        class="text-brand hover:text-gray-600"
+                        target="_blank"
+                        :href="l.targetUri"
+                        x-text="l.targetUri ? 'Edit Target' : ''"></a>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+{{ end }}

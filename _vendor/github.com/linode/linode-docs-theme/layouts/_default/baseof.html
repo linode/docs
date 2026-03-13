@@ -54,6 +54,9 @@
       [x-cloak] {
         display: none !important;
       }
+      .is-translating {
+        opacity: 0 !important;
+      }
     </style>
   </head>
   <body
@@ -146,7 +149,7 @@
       </nav>
 
       {{/* Main content area. */}}
-      <main class="main bg-white h-full min-h-screen">
+      <main class="main bg-white h-full min-h-screen hide-on-lang-nav">
         <div class="main__inner">
           {{ if site.Params.enable_leak_checker }}
             {{ partial "helpers/leak-checker.html" }}
@@ -212,4 +215,7 @@
       {{ partial "sections/before-body-end.html" . }}
     </div>
   </body>
+  <template id="language-switcher-template">
+    {{ partial "sections/navigation/language-switcher.html" . }}
+  </template>
 </html>

@@ -7,7 +7,7 @@ import {
 	newRequestCallbackFactoryTarget,
 	SearchGroupIdentifier,
 	RequestCallBackStatus,
-} from '../../search/request';
+} from 'js/main/search/request';
 
 var debug = 0 ? console.log.bind(console, '[list]') : function () {};
 

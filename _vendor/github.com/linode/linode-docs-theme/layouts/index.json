@@ -1,1 +1,2 @@
-{}
+{{- $index := partialCached "sections/search/get-search-data.html" . -}}
+{{- $index | jsonify (dict "indent" "  ")  -}}

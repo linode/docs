@@ -27,7 +27,7 @@
   {{ if $images }}
     {{ $img = dict "img" (index $images 0) "isResource" true }}
   {{ else }}
-    {{ $img = dict "img" (resources.Get "tech-guides-assets/images/Linode-Default-416x234.jpg") "isResource" true }}
+    {{ $img = dict "img" (resources.Get "images/Linode-Default-416x234.jpg") "isResource" true }}
   {{ end }}
 {{ end }}
 {{ return $img }}
