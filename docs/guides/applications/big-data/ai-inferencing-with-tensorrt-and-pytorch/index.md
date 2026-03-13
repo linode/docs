@@ -1,0 +1,374 @@
+---
+slug: ai-inferencing-with-tensorrt-and-pytorch
+title: "Build an AI Inferencing Solution With TensorRt and PyTorch"
+description: "Enhance deep learning capabilities with TensorRT and PyTorch on Akamai Cloud. Optimize inferencing for various AI models using NVIDIA RTX 4000 Ada GPU instances."
+authors: ["Akamai"]
+contributors: ["Akamai"]
+published: 2025-08-08
+keywords: ['ai','inference','inferencing','llm','model','pytorch','tensorrt','gpu','nvidia']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+external_resources:
+- '[Akamai TechDocs: GPU Linodes](https://techdocs.akamai.com/cloud-computing/docs/gpu-compute-instances)'
+- '[Link Title 2](http://www.example.net)'
+---
+
+AI inference workloads are increasingly demanding, requiring low latency, high throughput, and cost-efficiency at scale. Whether working with computer vision or natural language AI models, processing power and efficiency are key; inference workloads must be able to handle real-time predictions while maintaining optimal resource utilization. Choosing the right infrastructure and optimization tools can dramatically impact both performance and operational costs.
+
+This guide shows how to build and benchmark a complete AI inferencing solution using TensorRT and PyTorch on Akamai Cloud's NVIDIA RTX 4000 Ada GPU instances. NVIDIA RTX 4000 Ada GPU instances are available across global core compute regions, delivering the specialized hardware required for heavy AI workloads. Using the steps in this guide, you can:
+
+- Deploy an RTX 4000 Ada GPU instance using Akamai Cloud infrastructure
+- Run an AI inference workload using PyTorch
+- Optimize your model with TensorRT for performance gains
+- Measure latency and throughput
+
+The primary AI model used in this guide is a ResNet50 computer vision (CV) model. However, the techniques used can be applied to other model architectures like object detection ([YOLO](https://en.wikipedia.org/wiki/You_Only_Look_Once); You Only Look Once) models, speech recognition systems (OpenAI's [Whisper](https://openai.com/index/whisper/)), and large language models (LLMs) like [ChatGPT](https://openai.com/index/chatgpt/), [Llama](https://www.llama.com/), or [Claude](https://www.anthropic.com/claude).
+
+{{< note title="GPU Plan Access" >}}
+In some cases, a $100 deposit may be required to deploy GPU Linodes. This may include new accounts that have been active for less than 90 days and accounts that have spent less than $100 on services. If you are unable to deploy GPU Linodes, contact [Support](https://www.linode.com/support/) for assistance.
+{{< /note >}}
+
+## AI Inferencing
+
+### What is AI Inference?
+
+AI inference occurs after model training - it’s the point at which the AI model generates an “opinion” or decision based on how it was trained. Think of inference like how people have the ability to form a point of view based on prior knowledge and experience.
+
+Consider an AI model trained on a data set that includes millions of images of dogs. If given a new image of a dog not in the data set, the AI model uses inference to determine information about the new dog (i.e. the dog’s breed).
+
+The goal of AI inference is to generate an educated, accurate result from a well-trained model with speed and efficiency.
+
+### What is Computer Vision (CV)?
+
+Computer vision is a type of artificial intelligence that interprets images and outputs physical information about what is detected in the image. This guide uses a CV model (ResNet50) that uses a specific pre-trained set of images and runs an example image against that set. In this example, inferencing occurs when the CV model returns information about the example image (i.e. "this is a picture of a dog") based on its pre-trained knowledge base of millions of sample images.
+
+## What are TensorRT and PyTorch?
+
+### TensorRt
+
+[TensorRT](https://developer.nvidia.com/tensorrt) is an API and tool ecosystem by NVIDIA that includes inference compilers, runtimes, and deep learning model optimizations. TensorRT is trained on all major frameworks and is used to improve performance on NVIDIA GPUs using techniques like kernel auto-tuning, dynamic tensor memory management, and multi-stream execution. It directly integrates with PyTorch using the TensorRT Framework Integrations API to achieve up to 6x faster inferencing.
+
+### PyTorch
+
+[PyTorch](https://pytorch.org/) is an open-source machine learning framework based on the [Torch library](https://docs.pytorch.org/docs/stable/library.html) and developed by Meta AI for training deep learning models. PyTorch is written in Python and integrates with TensorRT through [Torch-TensorRT](https://github.com/pytorch/TensorRT), so developers can optimize PyTorch models without changing existing codebases. PyTorch integrates with [CUDA](https://en.wikipedia.org/wiki/CUDA) (Compute Unified Device Architecture) to take advantage of parallel computing architectures found in NVIDIA GPUs.
+
+## Before You Begin
+
+The following prerequisites are recommended before starting the implementation steps in this tutorial:
+
+- An Akamai Cloud account with the ability to deploy GPU instances
+- The [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli) configured with proper permissions
+- An understanding of Python virtual environments and package management
+- General familiarity of deep learning concepts and models
+
+{{< note title="Sudo Users & Linux Distribution" >}}
+This guide is written for a non-root user on the Ubuntu 24.04 LTS Linux distribution. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](https://www.linode.com/docs/guides/linux-users-and-groups/) doc.
+{{< /note >}}
+
+## Architecture Diagram
+
+![PyTorch and TensorRT Diagram](PyTorch-TensorRT-Diagram.svg)
+
+1.  User connects to the NVIDIA RTX 4000 Ada GPU instance via SSH.
+
+1.  CUDA (Compute Unified Device Architecture) and NVIDIA drivers are installed via CUDA keyring to ensure the latest stable versions are running.
+
+1.  PyTorch, TensorRT, and their dependencies are installed in a Python Virtual Environment (venv) to prevent any conflicts with system-wide packages.
+
+1.  An inferencing script written in Python is created. The script imports a pre-trained AI model (ResNet50) and benchmarks the inference time against sample images to test GPU performance.
+
+1.  The inference script outputs the average time per inference across a number of runs for a given sample image.
+
+## Deploy an NVIDIA RTX 4000 Ada Instance
+
+Akamai's NVIDIA RTX 4000 Ada GPU instances can be deployed using Cloud Manager or the Linode CLI. Deployment instructions and technical requirements:
+
+- **Cloud Manager deployment**: For instructions on deploying a GPU instance via the Cloud Manager, see our [Create a Linode](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide.
+
+- **CLI deployment**: For guidance on deploying a GPU instance using the Linode CLI, see the [Create a Linode](https://techdocs.akamai.com/linode-api/reference/post-linode-instance) section of our API documentation.
+
+- **Distribution**: Select the latest stable Ubuntu version (Ubuntu 24.04 LTS as of this writing)
+
+- **Plan type**: All RTX 4000 Ada GPU plan types support the AI inference workload in this guide
+
+- **Region**: For a list of GPU region availability, see our [Choose a Data Center](https://techdocs.akamai.com/cloud-computing/docs/how-to-choose-a-data-center) guide. See our API documentation to see a [region's service availability](https://techdocs.akamai.com/linode-api/reference/get-account-availability) using the Linode API or CLI.
+
+## Set Up Your Development Environment
+
+Once your GPU is fully deployed, connect to your instance to update system packages and install system dependencies. It is recommended to first follow the steps in our [Set up and secure a Linode](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to configure a limited user with sudo access and secure your sever.
+
+### Update Packages
+
+1.  Log into your instance via SSH. Replace {{< placeholder "user" >}} with your sudo username and {{< placeholder "IP_ADDRESS" >}} with your Linode instance's IP address:
+
+    ```command
+    ssh {{< placeholder "user" >}}@{{< placeholder "IP_ADDRESS" >}}
+    ```
+
+1.  Update your system and install build tools and system dependencies:
+
+    ```command
+    sudo apt update && sudo apt install -y \
+        build-essential \
+        gcc \
+        wget \
+        gnupg \
+        software-properties-common \
+        python3-pip \
+        python3-venv
+    ```
+
+1.  Download and install NVIDIA CUDA keyring so you get the latest stable drivers and toolkits:
+
+    ```command
+    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+    sudo dpkg -i cuda-keyring_1.1-1_all.deb
+    ```
+
+1.  Update system packages after the keyring is installed:
+
+    ```command
+    sudo apt update
+    ```
+
+### Install NVIDIA Drivers and CUDA Toolkit
+
+1.  Install the NVIDIA driver repository along with the latest drivers compatible with the RTX 4000 Ada card:
+
+    ```command
+    sudo apt install -y cuda
+    ```
+
+1.  Reboot your instance to complete installation of the driver:
+
+    ```command
+    sudo reboot
+    ```
+
+1.  After the reboot is complete, log back into your instance:
+
+    ```command
+    ssh {{< placeholder "user" >}}@{{< placeholder "IP_ADDRESS" >}}
+    ```
+
+1.  Use the following command to verify successful driver installation:
+
+    ```command
+    nvidia-smi
+    ```
+
+    This displays basic information about your RTX 4000 Ada instance and its driver version. Your driver and software versions may vary based on release date:
+
+    ```output
+    +-----------------------------------------------------------------------------------------+
+    | NVIDIA-SMI 575.57.08              Driver Version: 575.57.08      CUDA Version: 12.9     |
+    |-----------------------------------------+------------------------+----------------------+
+    | GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+    | Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+    |                                         |                        |               MIG M. |
+    |=========================================+========================+======================|
+    |   0  NVIDIA RTX 4000 Ada Gene...    On  |   00000000:00:02.0 Off |                  Off |
+    | 30%   35C    P8              4W /  130W |       2MiB /  20475MiB |      0%      Default |
+    |                                         |                        |                  N/A |
+    +-----------------------------------------+------------------------+----------------------+
+
+    +-----------------------------------------------------------------------------------------+
+    | Processes:                                                                              |
+    |  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+    |        ID   ID                                                               Usage      |
+    |=========================================================================================|
+    |  No running processes found                                                             |
+    +-----------------------------------------------------------------------------------------+
+    ```
+
+## Configure Your Python Environment
+
+Set up and use a Python Virtual Environment (venv) so that you can isolate Python packages and prevent conflicts with system-wide packages and across projects.
+
+### Create the Virtual Environment
+
+1.  Using the python3-venv package downloaded during setup, set up the Python Virtual Environment:
+
+    ```command
+    python3 -m venv ~/venv
+    source ~/venv/bin/activate
+    ```
+
+    You can confirm you are using your virtual environment when you see `(venv)` at the beginning of your command prompt:
+
+    ```output
+    (venv) user@hostname
+    ```
+
+1.  While in your virtual environment, upgrade pip to the latest version to complete the setup:
+
+    ```command {title="(venv)"}
+    pip install --upgrade pip
+    ```
+
+### Install PyTorch and TensorRT
+
+Remain in your virtual environment to install PyTorch, TensorRT, and dependencies. These are the primary AI libraries needed to run your inference workloads.
+
+```command {title="(venv)"}
+pip install torch==2.5.1+cu121 torchvision==0.16.1+cu121 torchaudio==2.5.1+cu121 --index-url https://download.pytorch.org/whl/cu121
+pip install requests
+pip install nvidia-pyindex
+pip install nvidia-tensorrt
+pip install torch-tensorrt -U
+```
+
+## Run and Benchmark the ResNet50 Inference Model
+
+Create and run a Python script using a pre-trained ResNet50 computer vision model. Running this script tests to make sure the environment is configured correctly while providing a way to evaluate GPU performance using a real-world example. This example script is a foundation that can be adapted for other inference model architectures.
+
+1.  Using a text editor such as nano, create the Python script file. Replace {{< placeholder "inference_test.py" >}} with a script tile name of your choosing:
+
+    ```command
+    nano {{< placeholder "inference_test.py" >}}
+    ```
+
+1.  Copy and insert the below code content into the script. In order, the script performs the following actions:
+
+    - Imports the PyTorch framework and its pre-trained models
+
+    - Pulls an example sample image of a dog from PyTorch's GitHub repository on which to run AI inference
+
+    - Preprocessing for the sample image: Image resizing for compatibility with the ResNet50 model, format conversion for PyTorch, add a "batch dimension" to emulate multiple images, moves the processed data to the GPU
+
+    - Loads the ResNet50 pre-trained model, including a library of images
+
+    - GPU optimization and preparation for benchmarking
+
+    - Runs the inference benchmark 20 times against the ResNet50 AI model
+
+    ```file {title="inference_test.py"}
+    # import PyTorch, pre-trained models from torchvision and image utilities
+
+    import torch
+    import torchvision.models as models
+    import torchvision.transforms as transforms
+    from PIL import Image
+    import requests
+    from io import BytesIO
+    import time
+
+    # Download a sample image of a dog
+    # You could replace this with a local file or different URL
+
+    img_url = "https://github.com/pytorch/hub/raw/master/images/dog.jpg"
+    image = Image.open(BytesIO(requests.get(img_url).content))
+
+    # Preprocess
+    # Resize and crop to match ResNet50’s input size
+    # ResNet50 is trained on ImageNet where inputs are 224sx224 RGB
+    # Convert to a tensor array so PyTorch can understand it
+    # Use unsqueeze(0) to add a batch dimension, tricks model to think we are sending a batch of        # images
+    # Use cuda() to move the data to the GPU
+
+    transform = transforms.Compose([
+        transforms.Resize(256),
+        transforms.CenterCrop(224),
+        transforms.ToTensor(),
+    ])
+    input_tensor = transform(image).unsqueeze(0).cuda()
+
+    # Load a model (ResNet50) pretrained on the ImageNet dataset containing millions of images
+
+    model = models.resnet50(pretrained=True).cuda().eval()
+
+    # Warm-up the GPU
+    # Allows the GPU to optimize the necessary kernels prior to running the benchmark
+
+    for _ in range(5):
+        _ = model(input_tensor)
+
+    # Benchmark Inference Time using an average time across 20 inference runs
+
+    start = time.time()
+    with torch.no_grad():
+        for _ in range(20):
+            _ = model(input_tensor)
+    end = time.time()
+
+    print(f"Average inference time: {(end - start) / 20:.4f} seconds")
+    ```
+
+    When complete, press <kbd>Ctrl</kbd> + <kbd>X</kbd> to exit nano, <kbd>Y</kbd> to save, and <kbd>Enter</kbd> to confirm.
+
+1.  Run the Python script:
+
+    ```command
+    python inference_test.py
+    ```
+
+    If everything works correctly, you should see output similar to the below. Time results may vary:
+
+    ```output
+    Average inference time: 0.0025 seconds
+    ```
+
+    The model runs 20 times, and the total inference time is then divided by 20 to get the *average time per inference*. This provides an idea of how quickly your GPU can process input using this model.
+
+### Accelerate Inferencing with TensorRT
+
+If you want to accelerate your GPU's inferencing power further, you can use NVIDIA's optimized inference runtime, TensorRT, to deliver faster inference with lower latency.
+
+1.  Add the highlighted line (line 10) to the `import` section at the top of your inference script to import the TensorRT model (`torch_tensorrt`) previously installed:
+
+    ```file {title="inference_test.py" hl_lines="10"}
+    # import PyTorch, pre-trained models from torchvision and image utilities
+
+    import torch
+    import torchvision.models as models
+    import torchvision.transforms as transforms
+    from PIL import Image
+    import requests
+    from io import BytesIO
+    import time
+    import torch_tensorrt
+    ```
+
+1.  Next, add the highlighted code block (lines 35-51) after the `Load a model` section to load the TensorRT-optimized model:
+
+    ```file {title="inference_test.py" linenostart="31" hl_lines="5-21"}
+    # Load a model (ResNet50) pretrained on the ImageNet dataset containing millions of images
+
+    model = models.resnet50(pretrained=True).cuda().eval()
+
+    # Compile with TensorRT
+    model = torch_tensorrt.compile(
+        model,
+        inputs=[torch_tensorrt.Input(input_tensor.shape)],
+        enabled_precisions={torch.float}
+    )
+
+    # Benchmark TensorRT Inference
+    for _ in range(5):
+        _ = model_trt(input_tensor)
+
+    start = time.time()
+    with torch.no_grad():
+        for _ in range(20):
+            _ = model_trt(input_tensor)
+    end = time.time()
+    print(f" TensorRT average inference time: {(end - start) / 20:.4f} seconds")
+    ```
+
+    Save your changes when complete.
+
+1.  Run the script again, and compare the `Average inference time` output to that of your PyTorch results:
+
+    ```output
+    Average inference time:
+    ```
+
+As you scale your inference, using TensorRT can help keep your model smaller and more performant.
+
+## Next Steps
+
+Try switching out ResNet50 for different model architectures available in torchvision.models, such as:
+
+- `efficientnet_b0`: Lightweight and accurate
+- `vit_b_16`: Vision Transformer model for experimenting with newer architectures
+
+This can help you see how model complexity affects speed and accuracy.
