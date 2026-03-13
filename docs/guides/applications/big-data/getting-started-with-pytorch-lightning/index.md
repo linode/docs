@@ -15,9 +15,9 @@ external_resources:
 
 Lightning is a PyTorch module that works within a number of integrated development environments (IDEs). There are compelling reasons to familiarize yourself with it. It’s portable, enabling code usage across setups. Development can occur on a cheaper host before moving to a GPU, at which point PyTorch Lightning provides mechanisms that grant further savings.
 
-Linode offers GPU plans optimized for graphics and neural network (NN) development utilizing NVIDIA's RTX 6000 GPU. Linode GPU plans are available with a range of memory, storage, and GPUs.
+Linode offers GPU plans optimized for graphics and neural network (NN) development utilizing NVIDIA's RTX 4000 GPU. Linode GPU plans are available with a range of memory, storage, and GPUs.
 
-PyTorch Lightning can efficiently allocate the Nvidia RTX 6000's Compute Unified Device Architecture (CUDA) cores. The CUDA cores are allocated (either specifically or automatically) to match the demands of training loops and neural network modeling. Instances can be chained together and optimized for cost efficiency across training sessions.
+PyTorch Lightning can efficiently allocate the Nvidia RTX 4000's Compute Unified Device Architecture (CUDA) cores. The CUDA cores are allocated (either specifically or automatically) to match the demands of training loops and neural network modeling. Instances can be chained together and optimized for cost efficiency across training sessions.
 
 Several steps are recommended to optimize the compute time cost savings of GPU-based sessions. This guide covers structuring data training sets, optimizing the working instance for productivity, and managing storage considerations, along with tips for session repeatability and replication.
 
