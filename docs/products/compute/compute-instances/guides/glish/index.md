@@ -52,13 +52,19 @@ The instructions below install Xfce4 and LightDM on Debian 11. You are not limit
     sudo apt install xfce4 xfce4-goodies dbus-x11 firefox-esr
     ```
 
-1.  Install a display manager, which provides a graphical login screen. This lets you log in as your desired user and with your preferred desktop environment. There are many display managers available, including [LightDM](https://wiki.debian.org/LightDM), [GDM](https://wiki.debian.org/GDM) (Gnome Desktop Manager), [SDDM](https://wiki.debian.org/SDDM), and [Ly](https://github.com/fairyglade/ly). This guide uses LightDM.
+1.  Install a display manager, which provides a graphical login screen. This lets you log in as your desired user and with your preferred desktop environment. There are many display managers available, including [LightDM](https://wiki.debian.org/LightDM), [GDM](https://wiki.debian.org/GDM) (Gnome Desktop Manager), [SDDM](https://wiki.debian.org/SDDM), and [Ly](https://github.com/fairyglade/ly). This guide uses LightDM with the GTK greeter.
 
     ```command
-    sudo install lightdm
+    sudo apt install lightdm lightdm-gtk-greeter
     ```
 
-1.  Set your new display manager as the system default. The command below opens up a prompt that lets you select your preference from all display manager's that are currently installed.
+1.  Configure the system to boot into the graphical target so LightDM starts automatically on restart.
+
+    ```command
+    sudo systemctl set-default graphical.target
+    ```
+
+1.  (Optional) Confirm LightDM is selected as the default display manager. You may be prompted to select a default display manager when installing LightDM; if prompted, select LightDM. If you installed other display managers afterward, you can rerun the selector at any time.
 
     ```command
     sudo dpkg-reconfigure lightdm
@@ -90,7 +96,7 @@ The instructions below install Xfce4 and LightDM on Debian 11. You are not limit
 
     ![Select the desktop environment within LightDM](glish-login-lightdm-select-desktop.png)
 
-    If your display manager is not working properly, you may still see the tty prompt as shown below. If this is the case, go back to *weblish* and troubleshoot.
+    If your display manager is not working properly, you may still see the tty prompt as shown below. If this is the case, go back to *Weblish* or SSH and troubleshoot.
 
     ![Screenshot of tty in Glish](glish-tty1.png)
 
