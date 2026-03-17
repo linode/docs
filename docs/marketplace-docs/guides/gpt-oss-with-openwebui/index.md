@@ -1,5 +1,5 @@
 ---
-title: "Deploy GPT-OSS with Open WebUI through the Linode Marketplace"
+title: "Deploy GPT-OSS with Open WebUI"
 description: "This guide includes instructions on how to deploy Open WebUI with GPT-OSS self-hosted LLM on an Akamai Compute Instance."
 published: 2026-02-12
 modified: 2026-02-12
@@ -19,9 +19,9 @@ marketplace_app_name: "GPT-OSS with Open WebUI"
 
 Open WebUI is an open-source, self-hosted web interface for interacting with and managing Large Language Models (LLMs). It supports multiple AI backends, multi-user access, and extensible integrations, enabling secure and customizable deployment for local or remote model inference.
 
-The Marketplace application deployed in this guide uses OpenAI GPT-OSS, a family of open-weight large language models designed for powerful reasoning, agentic tasks, and versatile developer use cases. During deployment, you can choose between two model sizes: GPT-OSS 20B (default) or GPT-OSS 120B. These models are released under the permissive Apache 2.0 license and integrate well with self-hosted platforms like Open WebUI for general-purpose assistance, coding, and knowledge-based workflows.
+The Quick Deploy App deployed in this guide uses OpenAI GPT-OSS, a family of open-weight large language models designed for powerful reasoning, agentic tasks, and versatile developer use cases. During deployment, you can choose between two model sizes: GPT-OSS 20B (default) or GPT-OSS 120B. These models are released under the permissive Apache 2.0 license and integrate well with self-hosted platforms like Open WebUI for general-purpose assistance, coding, and knowledge-based workflows.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -37,7 +37,7 @@ Open WebUI with GPT-OSS should be fully installed within 5-10 minutes after the 
 - **Recommended plan for GPT-OSS 120B:** RTX4000 Ada x1 Large or higher (64GB RAM minimum)
 
 {{< note type="warning" >}}
-This Marketplace App only works with Akamai GPU instances. If you choose a plan other than GPUs, the provisioning will fail, and a notice will appear in the LISH console.
+This Quick Deploy App only works with Akamai GPU instances. If you choose a plan other than GPUs, the provisioning will fail, and a notice will appear in the LISH console.
 {{< /note >}}
 
 ### GPT-OSS Options

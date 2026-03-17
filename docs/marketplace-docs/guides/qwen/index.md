@@ -18,7 +18,7 @@ marketplace_app_name: "Qwen Instruct with Open WebUI"
 
 Open WebUI is an open-source, self-hosted web interface for interacting with and managing Large Language Models (LLMs). It supports multiple AI backends, multi-user access, and extensible integrations, enabling secure and customizable deployment for local or remote model inference.
 
-The Marketplace application deployed in this guide uses a Qwen Instruct model as an instruction-tuned, open-weight LLM optimized for reasoning, code generation, and conversational tasks. Qwen models are designed for high-quality inference across a wide range of general-purpose and technical workloads and integrate seamlessly with self-hosted platforms like Open WebUI.
+The Quick Deploy App deployed in this guide uses a Qwen Instruct model as an instruction-tuned, open-weight LLM optimized for reasoning, code generation, and conversational tasks. Qwen models are designed for high-quality inference across a wide range of general-purpose and technical workloads and integrate seamlessly with self-hosted platforms like Open WebUI.
 
 ## Deploying a Quick Deploy App
 
@@ -35,7 +35,7 @@ Open WebUI with Qwen Instruct should be fully installed within 5-10 minutes afte
 - **Recommended plan:** RTX4000 Ada x1 Small or Larger GPU Instance
 
 {{< note type="warning" >}}
-This Marketplace App only works with Akamai GPU instances. If you choose a plan other than GPUs, the provisioning will fail, and a notice will appear in the LISH console.
+This Quick Deploy App only works with Akamai GPU instances. If you choose a plan other than GPUs, the provisioning will fail, and a notice will appear in the LISH console.
 {{< /note >}}
 
 ### Open WebUI Options

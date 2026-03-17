@@ -49,7 +49,7 @@ Before deployment, you need a Hugging Face API token to access the Gemma 3 model
 1. Create a free account at [huggingface.co/join](https://huggingface.co/join).
 1. Accept the Gemma license at [huggingface.co/google/gemma-3-12b-it](https://huggingface.co/google/gemma-3-12b-it).
 1. Generate a token at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens). Read-only access is sufficient.
-1. Provide this token during the Marketplace deployment process.
+1. Provide this token during the deployment process.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
