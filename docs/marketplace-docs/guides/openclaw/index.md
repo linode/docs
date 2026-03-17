@@ -47,7 +47,7 @@ This Quick Deploy App creates an OpenClaw limited user on the system called `ope
 
 ## Getting Started after Deployment
 
-### Peforming OpenClaw Onboard
+### Performing OpenClaw Onboard
 
 Once the deployment is complete, `openclaw` will be installed on the instance but will not be running. Before you can start using OpenClaw, you will need to get through the onboarding wizard. This Quick Deploy App will trigger the onboarding for you when you log in as root.
 
