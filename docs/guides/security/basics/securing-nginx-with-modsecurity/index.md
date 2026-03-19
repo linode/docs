@@ -241,7 +241,7 @@ Now that you have configured ModSecurity to work with Nginx, you must enable Mod
     {{< note >}}
     Edit the file that is actually symlinked in `sites-enabled/`. Verify with `ls -la /etc/nginx/sites-enabled/`.
     {{< /note >}}
-    
+
     Here is an example configuration file that includes the above lines:
 
     {{< file "/etc/nginx/sites-available/default" nginx >}}
