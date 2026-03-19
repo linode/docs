@@ -1,10 +1,10 @@
 ---
-title: "Deploy Redis through the Linode Marketplace"
+title: "Deploy Redis"
 description: "This guide shows how you can install Redis database, a open-source, in-memory, data structure store, with optional write and persistence of data on a disk."
 published: 2020-03-13
 modified: 2025-04-03
 keywords: ['redis','data store','cluster','database']
-tags: ["linode platform","database","marketplace","cloud-manager"]
+tags: ["linode platform","database","quick deploy apps","cloud-manager"]
 external_resources:
 - '[Introduction to Redis Data Types](https://redis.io/topics/data-types-intro)'
 - '[Redis Replication](https://redis.io/topics/replication)'
@@ -20,7 +20,7 @@ marketplace_app_name: "Redis"
 
 The One-Click App for Redis installs Redis version 7.2.7.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

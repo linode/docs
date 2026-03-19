@@ -1,10 +1,10 @@
 ---
-title: "Secure Your Server through the Linode Marketplace"
-description: "Automate common security tasks on a Linode Compute Instance by using the Secure Your Server Marketplace App."
+title: "Secure Your Server"
+description: "Automate common security tasks on a Linode Compute Instance by using the Secure Your Server Quick Deploy App."
 published: 2023-01-24
 modified: 2025-07-02
 keywords: ['security']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/secure-your-server/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -13,9 +13,9 @@ marketplace_app_id: 692092
 marketplace_app_name: "Secure Your Server"
 ---
 
-This Marketplace App automatically configures a new Compute Instance with a limited user account and other best practices discussed in the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide. It also configures a basic firewall through [UFW](/docs/guides/configure-firewall-with-ufw/) and enables [Fail2Ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/).
+This Quick Deploy App automatically configures a new Compute Instance with a limited user account and other best practices discussed in the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide. It also configures a basic firewall through [UFW](/docs/guides/configure-firewall-with-ufw/) and enables [Fail2Ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/).
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

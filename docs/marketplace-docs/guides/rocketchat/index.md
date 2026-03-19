@@ -1,10 +1,10 @@
 ---
-title: "Deploy Rocket.Chat through the Linode Marketplace"
+title: "Deploy Rocket.Chat"
 description: "Deploy Rocket.Chat on a Linode Compute Instance. This provides you with a self-hosted open source chat application (Slack alternative)."
 published: 2021-11-12
 modified: 2025-06-03
 keywords: ['rocketchat','chat','slack','communication']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Rocket.Chat](https://rocket.chat/)'
 - '[Rocket.Chat documentation](https://docs.rocket.chat/guides/user-guides)'
@@ -18,7 +18,7 @@ marketplace_app_name: "Rocket.Chat"
 
 Rocket.Chat is a self-hosted open source chat application that can be used as an alternative to Slack. Rocket.Chat has many key features that you or your business can use to improve productivity in the workplace such as video conferencing, group chats, and platform integrations with some of the most popular applications.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

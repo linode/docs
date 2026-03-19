@@ -1,9 +1,9 @@
 ---
-title: "Deploy MainConcept XDCAM Transcoder Demo through the Linode Marketplace"
+title: "Deploy MainConcept XDCAM Transcoder Demo"
 description: "Deploy MainConcept XDCAM Transcoder demo, an enterprise ready tool to create Sony XDCAM camera formats on a Linode Compute Instance."
 published: 2023-09-14
 keywords: ['transcoder','encoder','video','sony','xdcam','xdcam hd','xdcam ex','xdcam imx','dvcam','rest api']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/mainconcept-xdcam-transcoder-demo/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -18,7 +18,7 @@ The XDCAM Transcoder includes MainConcept's codecs, pre-packaged as a single, op
 
 This version of the XDCAM Transcoder is a free version that demonstrates how MainConcept codecs and related libraries work and perform in a cloud environment. It adds a watermark to processed video and intermittently mutes audio. If you wish to deploy the full version of the XDCAM Transcoder, please visit the [MainConcept on Linode](https://www.mainconcept.com/akamai-linode) website.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

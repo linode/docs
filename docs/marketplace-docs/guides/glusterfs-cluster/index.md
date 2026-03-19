@@ -1,9 +1,9 @@
 ---
-title: "Deploy GlusterFS Cluster through the Linode Marketplace"
+title: "Deploy GlusterFS Cluster"
 description: "GlusterFS is an open-source, distributed network filesystem designed to scale out and handle large amounts of data across compute instances. It replicates data across multiple GlusterFS servers into a single application mount point, allowing seamless access to files to client instances. With its flexible architecture and ability to replicate data across nodes, GlusterFS provides high availability and fault tolerance, making it suitable for cloud storage and high availability architectures."
 published: 2024-04-26
 keywords: ['glusterfs','gluster', 'marketplace', 'server']
-tags: ["ubuntu","marketplace", "web applications", "linode platform", "cloud manager", "ssl", "cloud storage", "high availability", "compute storage"]
+tags: ["ubuntu","quick deploy apps", "web applications", "linode platform", "cloud manager", "ssl", "cloud storage", "high availability", "compute storage"]
 external_resources:
 - '[About GlusterFS](https://www.gluster.org/)'
 - '[GlusterFS Documentation](https://docs.gluster.org/en/latest/)'
@@ -21,7 +21,7 @@ marketplace_app_name: "GlusterFS Cluster"
 
 [GlusterFS](https://www.gluster.org/) GlusterFS is an open-source, distributed network filesystem designed to scale out and handle large amounts of data across compute instances. It replicates data across multiple GlusterFS servers into a single application mount point, allowing seamless access to files to client instances. With its flexible architecture and ability to replicate data across nodes, GlusterFS provides high availability and fault tolerance, making it suitable for cloud storage and high availability architectures.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -129,7 +129,7 @@ You are done!
 
 ## Software Included
 
-The GlusterFS Marketplace App installs the following software on your Linode:
+The GlusterFS Quick Deploy App installs the following software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|

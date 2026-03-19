@@ -1,9 +1,9 @@
 ---
-title: "Deploy SimpleX Chat on Linode through the Linode Marketplace"
-description: 'Deploy SimpleX Chat on Linode through the Linode Marketplace.'
+title: "Deploy SimpleX Chat on Linode"
+description: 'Deploy SimpleX Chat on Linode.'
 published: 2023-09-15
 keywords: [ 'simplex','chat', 'server']
-tags: ["cloud","linode platform", "marketplace"]
+tags: ["cloud","linode platform", "quick deploy apps"]
 external_resources:
 - '[SimpleX Official](https://simplex.chat/)'
 aliases: ['/products/tools/marketplace/guides/simplex/']
@@ -16,7 +16,7 @@ marketplace_app_name: "SimpleX Chat"
 
 SimpleX Chat is a private messaging platform that uses temporary anonymous identifiers to eliminate the need for long-term user identification. This app deploys a self-hosted SMP relay server used to pass messages in the SimpleX network. It also installs the XFTP server to support XFTP file transfer protocol.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

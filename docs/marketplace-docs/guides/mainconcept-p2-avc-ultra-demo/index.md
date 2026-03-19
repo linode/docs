@@ -1,9 +1,9 @@
 ---
-title: "Deploy MainConcept P2 AVC-ULTRA Transcoder Demo through the Linode Marketplace"
+title: "Deploy MainConcept P2 AVC-ULTRA Transcoder Demo"
 description: "Deploy MainConcept P2 AVC-ULTRA Transcoder demo, an enterprise ready tool to create Panasonic AVC-ULTRA camera formats on a Linode Compute Instance."
 published: 2023-09-14
 keywords: ['transcoder','encoder','video','panasonic','p2 avc-ultra','p2 avc-intra','p2 avc longg','avc-intra rp2027','rest api']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/mainconcept-p2-avc-ultra-demo/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -18,7 +18,7 @@ The P2 AVC-ULTRA Transcoder includes MainConcept's codecs, pre-packaged as a sin
 
 This version of the P2 AVC-ULTRA Transcoder is a free version that demonstrates how MainConcept codecs and related libraries work and perform in a cloud environment. It adds a watermark to processed video and intermittently mutes audio. If you wish to deploy the full version of the P2 AVC-ULTRA Transcoder, please visit the [MainConcept on Linode](https://www.mainconcept.com/akamai-linode) website.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

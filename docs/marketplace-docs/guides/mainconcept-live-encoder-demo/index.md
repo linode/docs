@@ -1,9 +1,9 @@
 ---
-title: "Deploy MainConcept Live Encoder Demo through the Linode Marketplace"
+title: "Deploy MainConcept Live Encoder Demo"
 description: "Deploy MainConcept Live Encoder demo, an enterprise ready live encoder for broadcast and OTT video workflows, on a Linode Compute Instance."
 published: 2023-09-14
 keywords: ['encoder','video','live','rtmp','rtsp','rtp','udp','zixi','srt','mpeg-dash','hls']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/mainconcept-live-encoder-demo/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -20,7 +20,7 @@ In addition to MPEG-H DC audio creation, output streaming protocols include: RTM
 
 The version of MainConcept Live Encoder in this deployment is a free demo. It adds a watermark to the processed video and intermittently mutes audio. If you wish to deploy the full version of the Live Encoder, please visit the [MainConcept on Linode](https://www.mainconcept.com/akamai-linode) website.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -44,7 +44,7 @@ The version of MainConcept Live Encoder in this deployment is a free demo. It ad
 
 ## Getting Started after Deployment
 
-Once your MainConcept Live Encoder Marketplace App is deployed, you can log in to the MainConcept Live Encoder Dashboard in your browser.
+Once your MainConcept Live Encoder Quick Deploy App is deployed, you can log in to the MainConcept Live Encoder Dashboard in your browser.
 
 1. Open a browser and navigate to the domain you created in the beginning of your deployment. If you did not use a domain, you can use your Compute Instance's rDNS, which may look like the example below:
 

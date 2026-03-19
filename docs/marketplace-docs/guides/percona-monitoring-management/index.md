@@ -1,10 +1,10 @@
 ---
-title: "Deploy Percona Monitoring and Management (PMM) through the Linode Marketplace"
-description: "Learn how to deploy Percona Monitoring & Management with Marketplace Apps and basic configuration steps to get you started monitoring your database."
+title: "Deploy Percona Monitoring and Management (PMM)"
+description: "Learn how to deploy Percona Monitoring & Management with Quick Deploy Apps and basic configuration steps to get you started monitoring your database."
 published: 2020-06-11
 modified: 2024-01-22
 keywords: ['percona','marketplace apps','monitoring', 'database']
-tags: ["database","monitoring","cloud-manager","linode platform","marketplace"]
+tags: ["database","monitoring","cloud-manager","linode platform","quick deploy apps"]
 image: 'deploy-percona-marketplace.png'
 aliases: ['/products/tools/marketplace/guides/percona-monitoring-management/','/platform/marketplace/how-to-deploy-percona-monitoring-management-with-marketplace-apps/', '/platform/one-click/how-to-deploy-percona-monitoring-management-with-one-click-apps/','/guides/how-to-deploy-percona-monitoring-management-with-one-click-apps/','/guides/how-to-deploy-percona-monitoring-management-with-marketplace-apps/','/guides/percona-marketplace-app/']
 _build:
@@ -18,25 +18,25 @@ marketplace_app_id: 644908
 marketplace_app_name: "Percona Monitoring & Management"
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-Percona Monitoring and Management has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
+Percona Monitoring and Management has been removed from Quick Deploy Apps and can no longer be deployed. This guide is retained for reference only.
 {{< /note >}}
 
-Percona Monitoring and Management (PMM) is an open-source tool which provides a GUI powered by [Grafana](https://grafana.com/) for monitoring and managing MySQL, MariaDB, PostgreSQL, and MongoDB databases. You can use PMM to easily observe important metrics, logging, and statistics related to your databases and the hosts they run on. Additionally, it includes a number of tools which can help to optimize your database's performance, manage all database instances, and track and identify potential security threats. Linode's Percona (PMM) Marketplace App deploys a Linode with PMM installed and ready for you to begin monitoring your databases.
+Percona Monitoring and Management (PMM) is an open-source tool which provides a GUI powered by [Grafana](https://grafana.com/) for monitoring and managing MySQL, MariaDB, PostgreSQL, and MongoDB databases. You can use PMM to easily observe important metrics, logging, and statistics related to your databases and the hosts they run on. Additionally, it includes a number of tools which can help to optimize your database's performance, manage all database instances, and track and identify potential security threats. Linode's Percona (PMM) Quick Deploy App deploys a Linode with PMM installed and ready for you to begin monitoring your databases.
 
 ## PMM Architecture Overview
 
-The PMM tool uses a client-server model which makes it easy to scale monitoring across several databases hosted on various remote hosts. See the table below to better understand how each PMM component fits into the context of Linode's Percona (PMM) Marketplace App.
+The PMM tool uses a client-server model which makes it easy to scale monitoring across several databases hosted on various remote hosts. See the table below to better understand how each PMM component fits into the context of Linode's Percona (PMM) Quick Deploy App.
 
 | **Component** | **Description** |
 |:-------:|:--------:|
-| **PMM Server** | The Percona (PMM) Marketplace App deploys an instance of the PMM Server, which includes the Grafana web interface to visualize all the data collected from the databases it monitors.|
+| **PMM Server** | The Percona (PMM) Quick Deploy App deploys an instance of the PMM Server, which includes the Grafana web interface to visualize all the data collected from the databases it monitors.|
 | **PMM Client** | You will need to install the PMM Client on any Linode that hosts a database that you would like to monitor. The PMM Client will help you connect to the PMM Server and relay host and database performance metrics to the PMM Server. |
 
 {{< note >}}
 For a more detailed information on PMM's architecture see [Percona's official documentation](https://www.percona.com/doc/percona-monitoring-and-management/2.x/concepts/architecture.html).
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -90,11 +90,11 @@ After the [PMM Server](https://www.percona.com/doc/percona-monitoring-and-manage
 
 To begin monitoring a database node, you will need to install the [PMM Client](https://www.percona.com/doc/percona-monitoring-and-management/2.x/concepts/architecture.html#pmm-client) on the Linode that hosts your database and connect the node to the PMM Server. For instructions on setting up a database on Linode that you can connect to your PMM Server, see our guides on:
 
--   [Deploying MySQL/MariaDB with Marketplace Apps](/docs/marketplace-docs/guides/mysql/)
--   [Deploying PostgreSQL with Marketplace Apps](/docs/marketplace-docs/guides/postgresql/)
+-   [Deploying MySQL/MariaDB with Quick Deploy Apps](/docs/marketplace-docs/guides/mysql/)
+-   [Deploying PostgreSQL with Quick Deploy Apps](/docs/marketplace-docs/guides/postgresql/)
 
 {{< note >}}
-The PMM Server deployed with Linode's Percona (PMM) Marketplace App is compatible with [**PMM Client version 2**](https://www.percona.com/doc/percona-monitoring-and-management/2.x/index.html).
+The PMM Server deployed with Linode's Percona (PMM) Quick Deploy App is compatible with [**PMM Client version 2**](https://www.percona.com/doc/percona-monitoring-and-management/2.x/index.html).
 {{< /note >}}
 
 1.  [Connect to your database Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) via SSH.
@@ -186,7 +186,7 @@ Once your database node and your PMM Server are communicating, the final step is
 
 ## Software Included
 
-The Percona (PMM) Marketplace App installs the following required software on your Linode:
+The Percona (PMM) Quick Deploy App installs the following required software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|

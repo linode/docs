@@ -1,8 +1,8 @@
 ---
 title: Developers
-title_meta: "Developer Resources for the Linode Marketplace"
-description: "Linode One-Click App Marketplace is managed easily with developer tools like the Linode API or CLI."
-keywords: ['linode marketplace','developer resources']
+title_meta: "Developer Resources for Akamai Quick Deploy Apps"
+description: "Akamai Quick Deploy Apps are managed easily with developer tools like the Linode API or CLI."
+keywords: ['akamai quick deploy apps','developer resources']
 tab_group_main:
     weight: 50
 aliases: ['/products/tools/marketplace/developers/','/products/tools/marketplace-one-click-apps/developers/']
@@ -13,7 +13,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 ## Linode API
 
-Marketplace applications are deployed in the API via the [StackScripts Endpoint Collection](/docs/api/stackscripts).
+Quick Deploy Apps are deployed in the API via the [StackScripts Endpoint Collection](/docs/api/stackscripts).
 
 ## Linode CLI
 

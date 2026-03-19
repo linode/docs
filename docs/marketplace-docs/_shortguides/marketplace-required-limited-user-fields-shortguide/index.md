@@ -1,12 +1,12 @@
 ---
-# Shortguide: Details the fields related to creating a required limited user account on a Marketplace App.
+# Shortguide: Details the fields related to creating a required limited user account on a Quick Deploy App.
 
 headless: true
 show_on_rss_feed: false
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-description: 'Marketplace sudo user shortguide'
+description: 'Quick Deploy App sudo user shortguide'
 ---
 
 #### Limited Sudo User

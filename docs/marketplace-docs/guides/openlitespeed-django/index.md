@@ -1,10 +1,10 @@
 ---
-title: "Deploy OpenLiteSpeed Django through the Linode Marketplace"
+title: "Deploy OpenLiteSpeed Django"
 description: "Deploy OpenLiteSpeed Django on a Linode Compute Instance. This provides you with a high performance web server to manage your Django application."
 published: 2021-11-12
 modified: 2024-06-10
 keywords: ['web server','django','openlitespeed']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[OpenLiteSpeed Django](https://docs.litespeedtech.com/cloud/images/django/)'
 aliases: ['/products/tools/marketplace/guides/openlitespeed-django/','/guides/deploying-openlitespeed-django-marketplace-app/','/guides/openlitespeed-django-marketplace-app/']
@@ -17,7 +17,7 @@ marketplace_app_name: "OpenLiteSpeed Django"
 
 The OpenLiteSpeed Django app automatically installs Linux, the performance web server OpenLiteSpeed, Python LSAPI, and CertBot. OpenLiteSpeed Django features HTTP/3 support and easy setup for SSL and RewriteRules. It’s flexible enough to host multiple Django apps and supports many other apps including Node.js, Ruby, and CMS software like WordPress.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -51,7 +51,7 @@ The OpenLiteSpeed Django app automatically installs Linux, the performance web s
 
     ```output
     *********************************************************
-    Akamai Cloud OpenLiteSpeed Django Marketplace App
+    Akamai Cloud OpenLiteSpeed Django Quick Deploy App
     App URL:
     * The OpenLiteSpeed Web Admin: https://$EXAMPLE_DOMAIN:7080
     * The sample Django site: https://EXAMPLE_DOMAIN/

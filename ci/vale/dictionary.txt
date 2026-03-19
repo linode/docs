@@ -24,6 +24,7 @@ adodb
 adoptium
 aes
 ag
+agentic
 agentless
 Agones
 ahci0
@@ -307,6 +308,8 @@ chatrooms
 chcon
 cheatsheet
 checkmarx
+checkpointer
+checkpointing
 checksummed
 checksums
 chefspec
@@ -1307,6 +1310,8 @@ Kyverno
 lambdabunker
 Laminas
 Langa
+langchain
+langgraph
 LANs
 laravel
 largebiomes
@@ -1489,6 +1494,7 @@ megatrends
 melilla
 memcached
 memcrashed
+Memgraph
 menuentry
 Merkle
 mesos
@@ -1506,6 +1512,7 @@ metricbeat
 metricset
 metricsets
 metroid
+mgconsole
 michael
 microblogging
 microblogs
@@ -1904,13 +1911,16 @@ permalink
 permalinks
 Petazzoni
 pflogsumm
+pgvector
 pg_auto_failover
 pg_dump
 pg_dumpall
 pg_restore
 pgAdmin
+PGvector
 pgpass
 Pgvector
+pgvector
 Phalcon
 pharmer
 pharo
@@ -2065,6 +2075,7 @@ qualys
 quickconnect
 quicklisp
 quickstart
+Qwen
 radeon
 rainloop
 Ramaze
@@ -2751,6 +2762,7 @@ utils
 UTunnel
 uuid
 uuids
+uvicorn
 uwls
 uwsgi
 v1
@@ -2846,6 +2858,7 @@ wazuh
 wc
 wchar
 wchar_t
+Weaviate
 webadmin
 webalizer
 webapp
@@ -3009,6 +3022,7 @@ znc
 zonefiles
 zope
 zorin
+zot
 zoxide
 zpool
 zsh

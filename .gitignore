@@ -25,7 +25,6 @@ Thumbs.dbi
 *.jar
 *.rar
 *.tar
-*.zip
 
 *.log
 *.sql

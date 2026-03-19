@@ -41,13 +41,13 @@ You can also use a GitLab SaaS (GitLab.com) instance. The steps for the GitLab R
 
 With Linode, you have three options effective for creating your own self-hosted GitLab instance.
 
-- Use the Linode Marketplace to deploy a ready instance with GitLab installed. This method requires the fewest manual steps and provides the surest and quickest way to get a GitLab instance running. You can follow along with our [Deploy Gitlab through the Linode Marketplace](/docs/marketplace-docs/guides/gitlab/) guide.
+- Use Akamai Quick Deploy Apps to deploy a ready instance with GitLab installed. This method requires the fewest manual steps and provides the surest and quickest way to get a GitLab instance running. You can follow along with our [Deploy Gitlab through Akamai Quick Deploy Apps](/docs/marketplace-docs/guides/gitlab/) guide.
 
 - Use the default package manager for your Linux distribution. GitLab maintains official installation packages for CentOS, Debian, Ubuntu, and others, and you can follow the instructions in their [official documentation](https://about.gitlab.com/install/). You may also refer to our [Install GitLab on Ubuntu 18.04](/docs/guides/install-gitlab-on-ubuntu-18-04/) for additional details on the installation process.
 
 - Use Docker to deploy your GitLab instance. This option requires the most effort and setup. But the option can be a boon for those familiar with Docker and wanting the benefits of a containerized instance. You can follow our [Install GitLab with Docker](/docs/guides/install-gitlab-with-docker/) guide to set up your GitLab instance with Docker.
 
-The rest of the guide assumes you have your GitLab instance up and running. This guide uses an instance deployed through the Linode Marketplace, but the steps should be compatible with any of the options above.
+The rest of the guide assumes you have your GitLab instance up and running. This guide uses an instance deployed through Akamai Quick Deploy Apps, but the steps should be compatible with any of the options above.
 
 ### Create an Instance for GitLab Runners
 

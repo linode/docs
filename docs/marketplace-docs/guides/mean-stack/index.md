@@ -1,10 +1,10 @@
 ---
-title: "Deploy a MEAN Stack through the Linode Marketplace"
-description: "Learn how to easily deploy MEAN (MongoDB, Express, Angular, Node.js) using Linode's Marketplace Apps."
+title: "Deploy a MEAN Stack"
+description: "Learn how to easily deploy MEAN (MongoDB, Express, Angular, Node.js) using Linode's Quick Deploy Apps."
 published: 2020-03-17
 modified: 2025-03-19
 keywords: ['mongodb','mean','angular','express', 'web app', 'node']
-tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
+tags: ["web server","database","cloud-manager","linode platform","web applications","quick deploy apps"]
 external_resources:
 - '[MongoDB Getting Started](https://docs.mongodb.com/manual/tutorial/getting-started/)'
 - '[Express Hello World Example](https://expressjs.com/en/starter/hello-world.html)'
@@ -31,7 +31,7 @@ A MEAN (MongoDB, Express, Angular, Node.js) stack is a free and open-source web 
 
 MEAN is a full-stack JavaScript-based framework consisting of MongoDB database, ExpressJS, AngularJS, and NodeJS. You can build entire web applications on JavaScript, from client to server to database with this stack. Single-language programming makes it easier to develop working applications more quickly without sacrificing functionality and features.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

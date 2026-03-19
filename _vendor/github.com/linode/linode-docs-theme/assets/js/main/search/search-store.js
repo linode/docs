@@ -1,7 +1,7 @@
 import { newQuery, QueryHandler } from './query';
-import { getCurrentLang, toDateString } from '../helpers/helpers';
+import { toDateString } from '../helpers/helpers';
 import { LRUMap } from '../helpers/lru';
-import { newCreateHref, addLangToHref } from '../navigation/index';
+import { newCreateHref } from '../navigation/index';
 import {
 	newRequestCallback,
 	newRequestCallbackFactories,
@@ -397,7 +397,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 	return store;
 }
 
-export function normalizeAlgoliaResult(result, lang = '') {
+export function normalizeAlgoliaResult(result) {
 	let index = result.index;
 	let queryID = result.queryID ? result.queryID : '';
 
@@ -441,10 +441,6 @@ export function normalizeAlgoliaResult(result, lang = '') {
 
 		if (hit.href) {
 			hit.isExternalLink = hit.href.startsWith('http');
-		}
-
-		if (lang && lang !== 'en' && hit.href) {
-			hit.href = addLangToHref(hit.href, lang);
 		}
 
 		hit.firstPublishedDateString = '';
@@ -571,9 +567,7 @@ const normalizeResult = function (self, result) {
 		return sections;
 	};
 
-	let lang = getCurrentLang();
-
-	normalizeAlgoliaResult(result, lang);
+	normalizeAlgoliaResult(result);
 };
 
 class SearchBatcher {

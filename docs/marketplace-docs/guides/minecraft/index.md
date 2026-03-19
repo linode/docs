@@ -1,12 +1,12 @@
 ---
-title: "Deploy a Minecraft Server through the Linode Marketplace"
-description: "This guide shows you how to deploy a Minecraft Server on a Linode using the One-Click Marketplace App so you can create your own world on your own or with friends."
+title: "Deploy a Minecraft Server"
+description: "This guide shows you how to deploy a Minecraft Server on a Linode using the Quick Deploy App so you can create your own world on your own or with friends."
 published: 2019-04-01
 modified: 2022-04-01
 keywords: ['minecraft','marketplace', 'server']
 external_resources:
 - '[Minecraft Wiki](https://minecraft.wiki/w/Server)'
-tags: ["linode platform","marketplace","cloud-manager"]
+tags: ["linode platform","quick deploy apps","cloud-manager"]
 aliases: ['/products/tools/marketplace/guides/minecraft/','/platform/marketplace/deploying-minecraft-with-marketplace-apps/', '/platform/one-click/deploying-minecraft-with-one-click-apps/', '/guides/deploying-minecraft-with-one-click-apps/', '/guides/deploying-minecraft-with-marketplace-apps/','/guides/deploy-minecraft-marketplace-app/','/guides/minecraft-marketplace-app/']
 image: deploy-a-minecraft-server-with-oneclick-apps.png
 authors: ["Akamai"]
@@ -18,7 +18,7 @@ marketplace_app_name: "Minecraft Game Server - Java Edition"
 
 With over 100 million users around the world, [Minecraft](https://www.minecraft.net/en-us/) is the most popular online game of all time. You and other players are free to build and explore in a 3D generated world made up of millions of mineable blocks. Collect resources by leveling mountains, taming forests, and venturing out to sea. Choose a home from the varied list of biomes like ice worlds, flower plains, and jungles. Build ancient castles or modern mega cities and fill them with redstone circuit contraptions and villagers. Fight off nightly invasions of Skeletons, Zombies, and explosive Creepers, or adventure to the End and the Nether to summon the fabled End Dragon and the chaotic Wither. If that is not enough, Minecraft is also highly moddable and customizable. You decide the rules when hosting your own Minecraft server for you and your friends to play together in this highly addictive game.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

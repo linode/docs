@@ -69,7 +69,7 @@ After determining which database management system to use for your application, 
 
     {{% content "dbass-eos" %}}
 
-- [Marketplace Apps (and Clusters)](#marketplace-apps-and-clusters)
+- [Quick Deploy Apps (and Clusters)](#marketplace-apps-and-clusters)
 - [Self or custom deployment on Compute Instances](#custom-deployment)
 
 {{< note >}}
@@ -93,33 +93,33 @@ Currently, the following databases are supported. Click on each database below t
 Updates and security patches are automatically applied to the underlying operating system but *not* to the database software. For more details, review the [Automatic Updates and Maintenance Windows](/docs/products/databases/managed-databases/guides/updates-and-maintenance/) guide.
 {{< /note >}}
 
-### Marketplace Apps and Clusters
+### Quick Deploy Apps and Clusters
 
-*Use Marketplace Apps when you want to automatically install popular databases but need to retain full control over the software and underlying system.*
+*Use Quick Deploy Apps when you want to automatically install popular databases but need to retain full control over the software and underlying system.*
 
-Another solution available on our platform is Marketplace Apps, which can greatly simplify application provisioning. When deploying a Marketplace App, a Compute Instance is created on your account. When the Compute Instance first boots up, a script runs to automatically install and configure the application. Beyond this automatic installation, you have root access and full control over the Compute Instance. This means that you are also responsible for managing and configuring the application, as well as installing updates and security patches.
+Another solution available on our platform is Quick Deploy Apps, which can greatly simplify application provisioning. When deploying a Quick Deploy App, a Compute Instance is created on your account. When the Compute Instance first boots up, a script runs to automatically install and configure the application. Beyond this automatic installation, you have root access and full control over the Compute Instance. This means that you are also responsible for managing and configuring the application, as well as installing updates and security patches.
 
-The following Marketplace Apps (and Clusters) are available on the Akamai cloud computing platform.
+The following Quick Deploy Apps (and Clusters) are available on the Akamai cloud computing platform.
 
-**Marketplace Apps** (single instance): Deploys a single Compute Instance. Additional manual configuration is needed for applications that require high availability and scalability.
+**Quick Deploy Apps** (single instance): Deploys a single Compute Instance. Additional manual configuration is needed for applications that require high availability and scalability.
 
 - [MySQL/MariaDB](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/)
 - [PostgreSQL](https://www.linode.com/marketplace/apps/linode/postgresql/)
 - [Redis](https://www.linode.com/marketplace/apps/linode/redis/)
 
-**Marketplace App Clusters** (multi-instance): Deploys multiple Compute Instances as part of a database cluster. This offers high availability, better fault tolerance, and increased scalability.
+**Quick Deploy App Clusters** (multi-instance): Deploys multiple Compute Instances as part of a database cluster. This offers high availability, better fault tolerance, and increased scalability.
 
 - [Galera cluster](https://www.linode.com/marketplace/apps/linode/galera-cluster/) (MariaDB)
 - [PostgreSQL cluster](https://www.linode.com/marketplace/apps/linode/postgresql-cluster/)
 - [Redis Sentinel cluster](https://www.linode.com/marketplace/apps/linode/redis-sentinel-cluster/)
 
-Other [database-related Marketplace Apps](https://www.linode.com/marketplace/category/databases/) are available, including [ClusterControl](https://www.linode.com/marketplace/apps/severalnines/clustercontrol/).
+Other [database-related Quick Deploy Apps](https://www.linode.com/marketplace/category/databases/) are available, including [ClusterControl](https://www.linode.com/marketplace/apps/severalnines/clustercontrol/).
 
 ### Custom Deployment or Self-Install {#custom-deployment}
 
 *Directly provision your databases on Compute Instances to have full control over the installation and configuration, ideal for applications that require extensive database customization or complex configurations.*
 
-Beyond Managed Databases and Marketplace Apps, you can deploy any of your database workloads to the cloud using Compute Instances. Since Compute Instances are Linux-based virtual machines, any compatible database software packages that are available on your chosen  Linux distribution can be installed. When manually hosting your database workloads, you are responsible for installation, configuration, and all aspects of database management (including applying regular security updates).
+Beyond Managed Databases and Quick Deploy Apps, you can deploy any of your database workloads to the cloud using Compute Instances. Since Compute Instances are Linux-based virtual machines, any compatible database software packages that are available on your chosen  Linux distribution can be installed. When manually hosting your database workloads, you are responsible for installation, configuration, and all aspects of database management (including applying regular security updates).
 
 There are many installation and configuration guides available on our docs site for the database management system discussed above. Click on the links below to view guides for the corresponding database:
 

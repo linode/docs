@@ -61,7 +61,7 @@ To use Zabbix to monitor a Linux host, the host must be running the official Zab
 
 ### How to Install the Zabbix Server
 
-Although Zabbix can be installed from the source code or packages, it is quicker and easier to use the Linode Marketplace. For information on how to install Zabbix using this method, see the [Zabbix Marketplace documentation](/docs/marketplace-docs/guides/zabbix/). Currently, the Marketplace only supports Zabbix installations on CentOS. For package installation guidelines for other Linux distributions, see the [Zabbix installation instructions](https://www.zabbix.com/documentation/6.0/en/manual/installation/install_from_packages).
+Although Zabbix can be installed from the source code or packages, it is quicker and easier to use the Linode Marketplace. For information on how to install Zabbix using this method, see the [Zabbix Quick Deploy App documentation](/docs/marketplace-docs/guides/zabbix/). Currently, the Quick Deploy App only supports Zabbix installations on CentOS. For package installation guidelines for other Linux distributions, see the [Zabbix installation instructions](https://www.zabbix.com/documentation/6.0/en/manual/installation/install_from_packages).
 
 ### How to Install the Zabbix Client
 

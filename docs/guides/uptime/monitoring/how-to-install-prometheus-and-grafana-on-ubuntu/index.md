@@ -58,8 +58,8 @@ Grafana supports a wide range of dashboards, including the Prometheus Node Expor
 
 Grafana supports alerts, annotations, dashboard variables, plugins, and authentication. It also provides a range of analytics tools to further deconstruct the data. The Grafana web interface can be accessed using port `3000` of the host server. For best results, run Prometheus and Grafana on the same server. For more background information, see the [Introduction to Grafana](https://grafana.com/docs/grafana/latest/introduction/).
 
-## Marketplace App
-Installing a complete Prometheus and Grafana-based system is a multi-step process. To streamline deployments, you can use the [Prometheus and Grafana Marketplace App](https://www.linode.com/marketplace/apps/linode/prometheus-grafana/). For a more traditional and hands-on deployment, follow the instructions below.
+## Quick Deploy App
+Installing a complete Prometheus and Grafana-based system is a multi-step process. To streamline deployments, you can use the [Prometheus and Grafana Quick Deploy App](https://www.linode.com/marketplace/apps/linode/prometheus-grafana/). For a more traditional and hands-on deployment, follow the instructions below.
 
 ## Before You Begin
 

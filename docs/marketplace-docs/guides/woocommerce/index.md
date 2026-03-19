@@ -1,10 +1,10 @@
 ---
-title: "Deploy WooCommerce through the Linode Marketplace"
-description: "Learn how to deploy WooCommerce, the most popular ecommerce plugin, on Wordpress through the Linode Marketplace."
+title: "Deploy WooCommerce"
+description: "Learn how to deploy WooCommerce, the most popular ecommerce plugin, on Wordpress."
 published: 2019-04-02
 modified: 2023-06-06
 keywords: ['woocommerce','wordpress','marketplace apps','ecommerce','e-commerce','cms']
-tags: ["cloud-manager","linode platform","cms","wordpress","marketplace"]
+tags: ["cloud-manager","linode platform","cms","wordpress","quick deploy apps"]
 aliases: ['/products/tools/marketplace/guides/woocommerce/','/platform/marketplace/marketplace-woocommerce/','/platform/marketplace/how-to-deploy-woocommerce-with-marketplace-apps/', '/platform/one-click/how-to-deploy-woocommerce-with-one-click-apps/','/platform/one-click/one-click-woocommerce/','/guides/how-to-deploy-woocommerce-with-one-click-apps/','/guides/how-to-deploy-woocommerce-with-marketplace-apps/','/guides/woocommerce-marketplace-app/']
 external_resources:
 - '[WooCommerce Docs](https://docs.woocommerce.com/)'
@@ -22,7 +22,7 @@ marketplace_app_name: "WooCommerce"
 
 [WooCommerce](https://woocommerce.com/) is a popular open source eCommerce plugin for WordPress that can power online storefronts to sell both digital and physical products for small-to-large businesses. A variety of [themes for WooCommerce](https://woocommerce.com/product-category/themes/storefront-child-theme-themes/) are available so you can create a store that looks the way you want it to.  WooCommerce takes payments via major credit cards, bank transfers, [PayPal](https://woocommerce.com/products/woocommerce-gateway-paypal-checkout/), and other providers like [Stripe](https://woocommerce.com/products/stripe/). The WooCommerce plugin is free, but some themes and extensions have a cost.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -120,6 +120,6 @@ Now that your WordPress installation is deployed, you can start adding content a
 - [WordPress Support](https://wordpress.org/support/): Learn the basic workflows for using WordPress.
 - [Securing WordPress](/docs/guides/how-to-secure-wordpress/): Advice on securing WordPress through HTTPS, using a secure password, changing the admin username, and more.
 - [WordPress Themes](https://wordpress.org/themes/#): A collection of *thousands* of WordPress themes.
-- [Marketplace Apps Repository](https://github.com/akamai-compute-marketplace/marketplace-apps): Review the deployment Ansible playbooks.
+- [Quick Deploy Apps Repository](https://github.com/akamai-compute-marketplace/marketplace-apps): Review the deployment Ansible playbooks.
 
 {{% content "marketplace-update-note-shortguide" %}}

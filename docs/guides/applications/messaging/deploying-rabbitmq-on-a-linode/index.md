@@ -15,7 +15,7 @@ external_resources:
 
 RabbitMQ is an open source message broker that facilitates communication between distributed applications. This guide covers steps for manually installing, configuring, and testing RabbitMQ on a Linode instance running Ubuntu 24.04 LTS.
 
-If you prefer an automated deployment, consider our [RabbitMQ Marketplace app](/docs/marketplace-docs/guides/rabbitmq/).
+If you prefer an automated deployment, consider our [RabbitMQ Quick Deploy App](/docs/marketplace-docs/guides/rabbitmq/).
 
 ## Before You Begin
 

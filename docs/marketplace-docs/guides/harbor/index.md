@@ -1,10 +1,10 @@
 ---
-title: "Deploy Harbor through the Linode Marketplace"
+title: "Deploy Harbor"
 description: "Deploy Harbor on a Linode Compute Instance. This provides you with an open source container registry that compliments the Linode Kubernetes Engine."
 published: 2021-11-12
 modified: 2023-10-27
 keywords: ['harbor','container','container registry','docker']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Harbor](https://goharbor.io/)'
 aliases: ['/guides/deploying-harbor-marketplace-app/','/guides/harbor-marketplace-app/']
@@ -19,7 +19,7 @@ marketplace_app_name: "Harbor"
 
 Harbor is an excellent compliment to the [Linode Kubernetes Engine (LKE)](/docs/products/compute/kubernetes/). However, you cannot install Harbor on an existing or new LKE clusters.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

@@ -1,9 +1,9 @@
 ---
-title: "Deploy Appwrite through the Linode Marketplace"
+title: "Deploy Appwrite"
 description: "Deploy Appwrite, an open-source Firebase alternative for Web, Mobile & Flutter Developers, on a Linode Compute Instance."
 published: 2023-06-26
 keywords: ['Appwrite','Firebase','backend', 'low-code']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/appwrite/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -14,7 +14,7 @@ marketplace_app_name: "Appwrite"
 
 [Appwrite](https://appwrite.io/) is an open-source, self-hosted back-end server that provides developers with a set of tools and services to build and manage web and mobile applications. It offers various features to simplify the development process, including user authentication, database management, file storage, and more.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

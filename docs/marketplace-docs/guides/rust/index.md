@@ -1,12 +1,12 @@
 ---
-title: "Deploy Rust through the Linode Marketplace"
-description: "This guide provides you with instructions for installing Rust, a multiplayer game where you play as a survivor, on a Linode using the One-Click Marketplace App."
+title: "Deploy Rust"
+description: "This guide provides you with instructions for installing Rust, a multiplayer game where you play as a survivor, on a Linode using the Quick Deploy App."
 published: 2019-03-25
 modified: 2024-04-29
 keywords: ['rust','marketplace', 'server']
 external_resources:
 - '[Rust Dedicated Server Wiki](https://developer.valvesoftware.com/wiki/Rust_Dedicated_Server)'
-tags: ["linode platform","marketplace","cloud-manager"]
+tags: ["linode platform","quick deploy apps","cloud-manager"]
 aliases: ['/products/tools/marketplace/guides/rust/','/platform/marketplace/deploying-rust-with-marketplace-apps/', '/platform/one-click/deploying-rust-with-one-click-apps/','/guides/deploying-rust-with-one-click-apps/', '/guides/deploying-rust-with-marketplace-apps/','/guides/rust-marketplace-app/']
 _build:
   list: false
@@ -18,14 +18,14 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-Rust has been removed from the App Marketplace and can no longer be deployed. This guide is retained for reference only.
+Rust has been removed from the App Quick Deploy App and can no longer be deployed. This guide is retained for reference only.
 {{< /note >}}
 
 [Rust](https://rust.facepunch.com/) is a multiplayer game where you play as a survivor that must work with or against other players to ensure your own survival. Players are able to steal, lie, cheat, or trick each other. You can build a shelter, hunt animals for food, craft weapons, craft armor, and much more.
 
 Hosting your own Rust server lets you customize settings and curate the number of players in the world.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -58,7 +58,7 @@ Hosting your own Rust server lets you customize settings and curate the number o
 
 Ensure that you have installed Rust to your computer before getting started with this section. You can install Rust from [Steam's Web Store](https://store.steampowered.com/).
 
-After the Rust Marketplace App has finished deploying to your Linode, you will be able to access your Rust server by copying your Linode's IPv4 address and entering it in to the Rust game installed on your computer. To find your Linode's IPv4 address:
+After the Rust Quick Deploy App has finished deploying to your Linode, you will be able to access your Rust server by copying your Linode's IPv4 address and entering it in to the Rust game installed on your computer. To find your Linode's IPv4 address:
 
 1. Click on the **Linodes** link in the sidebar. You will see a list of all your Linodes.
 
@@ -78,7 +78,7 @@ After the Rust Marketplace App has finished deploying to your Linode, you will b
 
 ## Software Included
 
-The Rust Marketplace App will install the following required software on your Linode:
+The Rust Quick Deploy App will install the following required software on your Linode:
 
 | **Software**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | **Description** |
 |:--------------|:------------|

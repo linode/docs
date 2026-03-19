@@ -1,9 +1,9 @@
 ---
-title: "Deploy Valkey through the Linode Marketplace"
+title: "Deploy Valkey"
 description: "Valkey is an open-source, keyvalue database driven by community development and supported by the Linux Foundation. Valkey is forked from Redis release 7.2, and maintains BSD-3 licensing. Valkey can serve production roles such as caching and message queues, or as a primary database."
 published: 2024-08-05
 keywords: ['nosql','database', 'marketplace', 'valkey']
-tags: ["ubuntu","marketplace", "database", "linode platform", "cloud manager", "ssl", "cloud storage", "high availability", "compute storage"]
+tags: ["ubuntu","quick deploy apps", "database", "linode platform", "cloud manager", "ssl", "cloud storage", "high availability", "compute storage"]
 external_resources:
 - '[About Valkey](https://valkey.io/)'
 - '[Valkey Documentation](https://valkey.io/docs/)'
@@ -21,7 +21,7 @@ Valkey natively supports a broad collection of data types, extensibility with bu
 While Valkey is a fork of a production-ready 7.2.4 release of Redis, the Valkey codebase is still early in development and is subject to change as development takes place. We recommend following the [release cycles](https://github.com/valkey-io/valkey/releases) for any breaking changes to minimize downtime on a production environment.
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -66,7 +66,7 @@ Connect to the compute instance using either `root` or the `sudo user` created d
 
 ```output
 *********************************************************
-Akamai Connected Cloud Valkey Marketplace App
+Akamai Connected Cloud Valkey Quick Deploy App
 Credentials File: /home/$SUDO_USER/.credentials
 Valkey Configuration Directory: /etc/valkey/
 Valkey Configuration File: /etc/valkey/valkey.conf

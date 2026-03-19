@@ -164,7 +164,7 @@ The number of application and database nodes deployed can be controlled via the 
 
 Linode's Terraform provider also has the ability to provision the architecture's NodeBalancer. But the NodeBalancer is a single unit and can be entirely managed from within the Linode Cloud Manager. Thus, the tutorial instead covers manual deployment of the NodeBalancer for better demonstration.
 
-The same is the case for the Prometheus-Grafana instance. Only one such instance is needed, and the Linode Marketplace provides the cleanest and most straightforward path for deploying it.
+The same is the case for the Prometheus-Grafana instance. Only one such instance is needed, and Akamai Quick Deploy Apps provide the cleanest and most straightforward path for deploying it.
 
 ### Completing Mayan EDMS Set Up
 
@@ -212,9 +212,9 @@ Otherwise, follow the steps given below. Since there is bi-directional replicati
 
 This architecture uses Prometheus for collecting metrics about the Mayan nodes and PostgreSQL databases. It then uses Grafana for visualizing and consuming those metrics.
 
-Prometheus and Grafana get their own node in the architecture. Deploying that node is a straightforward process through the Linode Marketplace.
+Prometheus and Grafana get their own node in the architecture. Deploying that node is a straightforward process through Akamai Quick Deploy Apps.
 
-1.  Follow our guide on [Deploying Prometheus and Grafana through the Linode Marketplace](/docs/marketplace-docs/guides/prometheus-grafana/) to get your Prometheus-Grafana node up and running.
+1.  Follow our guide on [Deploying Prometheus and Grafana through Akamai Quick Deploy Apps](/docs/marketplace-docs/guides/prometheus-grafana/) to get your Prometheus-Grafana node up and running.
 
     Be sure, when creating the instance, to add the VLAN created during the Terraform process. This VLAN should have a name like `vlan-us-southeast-1`. If you changed the region for the Terraform script, replace `us-southeast` in this example with the region you selected.
 
