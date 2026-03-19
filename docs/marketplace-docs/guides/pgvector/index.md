@@ -1,6 +1,6 @@
 ---
 title: "Deploy pgvector through the Linode Marketplace"
-description: "Deploy Pgvector, an open-source vector extension for Postgresql for similarity search and AI embeddings."
+description: "Deploy Pgvector, an open-source vector extension for PostgreSQL for similarity search and AI embeddings."
 published: 2026-02-09
 modified: 2026-02-09
 keywords: ['pgvector', 'postgresql', 'vector database', 'AI', 'embeddings', 'similarity search']
