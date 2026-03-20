@@ -22,7 +22,6 @@ external_resources:
 - '[Linode Object Storage Cluster data source](https://registry.terraform.io/providers/linode/linode/latest/docs/data-sources/object_storage_cluster)'
 - '[Linode Object Storage Bucket documentation](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_bucket)'
 - '[Linode Object Storage Objects documentation](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_object)'
-tags: ["saas"]
 ---
 
 [Terraform](https://www.terraform.io/) is a powerful *Infrastructure as Code* (IaC) application for deploying and managing infrastructure. It can be used to add, modify, and delete resources including servers, networking elements, and storage objects. Linode has partnered with Terraform to provide an API to configure common Linode infrastructure items. This guide provides a brief introduction to Terraform and explains how to use it to create [Linode Object Storage](/docs/products/storage/object-storage/) solutions.

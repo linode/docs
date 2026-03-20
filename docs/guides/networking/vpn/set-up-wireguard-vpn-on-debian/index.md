@@ -17,7 +17,6 @@ relations:
         keywords:
             - distribution: Debian 9
 aliases: ['/networking/vpn/set-up-wireguard-vpn-on-debian/']
-tags: ["saas"]
 ---
 
 ## What is WireGuard?

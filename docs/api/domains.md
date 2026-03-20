@@ -1,5 +1,0 @@
----
-slug: domains
-title: Domains
----
-

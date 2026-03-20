@@ -1,4 +1,0 @@
----
-slug: vpcs
-title: VPCs
----

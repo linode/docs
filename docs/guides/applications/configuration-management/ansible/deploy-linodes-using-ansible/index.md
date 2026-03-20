@@ -14,7 +14,6 @@ external_resources:
 aliases: ['/applications/configuration-management/ansible/deploy-linodes-using-ansible/','/applications/configuration-management/deploy-linodes-using-ansible/']
 tags: ["automation"]
 image: how-to-use-the-linode-ansible-module-to-deploy-linodes.png
-tags: ["saas"]
 deprecated: true
 deprecated_link: 'guides/deploy-linodes-using-linode-ansible-collection/'
 ---

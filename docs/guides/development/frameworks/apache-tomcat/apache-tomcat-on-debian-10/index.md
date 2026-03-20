@@ -10,7 +10,6 @@ keywords: ["apache tomcat debian 10", "tomcat java", "java debian 10", "tomcat d
 tags: ["web applications","java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/apache-tomcat-on-debian-10/','/development/frameworks/apache-tomcat/apache-tomcat-on-debian-10/','/development/frameworks/apache-tomcat-on-debian-10/']
-image: ApacheTomcat_Deb10.png
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
