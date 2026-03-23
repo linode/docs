@@ -24,11 +24,6 @@ Mastodon servers range in size from small private instances to massive public in
 
 {{% content "email-warning-shortguide" %}}
 
-{{< note >}}
-The Mastodon Quick Deploy App *requires* a custom domain. After deploying Mastodon, see the instructions within the [Configure Your Domain's Name Servers](#configure-your-domains-name-servers) section. Depending on a variety of factors, new and updated DNS records can take up to 48 hours to fully propagate, though it usually happens much sooner. The deployment fails if the DNS has still not been propagated.
-
-{{< /note >}}
-
 ## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
@@ -41,54 +36,42 @@ The Mastodon Quick Deploy App *requires* a custom domain. After deploying Mastod
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 22.04 LTS
+- **Supported distributions:** Ubuntu 24.04 LTS
 - **Recommended minimum plan:** 2GB Shared CPU Compute Instance or higher
 
 ### Mastodon Options
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
-- **Domain** (*required*): The domain name you wish to use for the mastodon server, such as *example.com*.
-- **Linode API Token** (*required*): A personal access token for your account. The Linode API is used to create DNS records for your custom domain through the [DNS Manager](/docs/products/networking/dns-manager/). See [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/).
+{{% content "marketplace-custom-domain-fields-shortguide" %}}
+
+{{% content "marketplace-special-character-limitations-shortguide" %}}
+
 - **Email for the Let's Encrypt certificate** (*required*): The email you wish to use when creating your TLS/SSL certificate through Let's Encrypt. This email address receives notifications when the certificate needs to be renewed.
 - **Username for the Mastodon Owner** (*required*): The username for the Owner user that will be created for the Mastodon server.
 - **Email Address for the Mastodon Owner** (*required*): The contact email for the Mastodon server's owner.
 - **Single-user mode** (*required*): Enabling Single User Mode prevents other users from joining the Mastodon Server.
 
+### Obtain the Credentials
+
+Once the app is deployed, you need to obtain the credentials from the server. To obtain the credentials:
+
+1. Log in to your new Compute Instance using one of the methods below:
+
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
+
+2. Run the following command to access the contents of the credentials file:
+
+    ```command
+    cat /home/$USERNAME/.credentials
+    ```
+
+This returns the admin password and other details that were automatically generated when the instance was deployed. Save them securely. Once saved, you can safely delete the file.
+
 ## Getting Started after Deployment
 
-### Configure Your Domain's Name Servers
-
-To use Mastodon with the custom domain you specified during deployment, you must configure the domain to use Linode's name servers. This is typically accomplished directly through your registrar. See [Use Linode’s Name Servers with Your Domain](/docs/products/networking/dns-manager/guides/authoritative-name-servers/).
-
-### View the Mastodon Site
-
-Open a web browser and navigate to the custom domain you entered when deploying Mastodon. This opens the Explore page in Mastodon, which displays public information about your site, public posts, and links to login or create an account.
-
-### Access Your Mastodon Account and Settings
-
-1. **Obtain and save passwords** that were generated on your behalf during deployment, including your Mastodon user's password.
-
-    1. Log in to your new Compute Instance through [Lish](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using the `root` user and the associated password you entered when creating the instance.
-
-    1. The passwords have been saved in the /root/.deployment-secrets.txt file. You can view this file in your preferred text editor or through the `cat` command:
-
-        ```command
-        cat /root/.deployment-secrets.txt
-        ```
-
-        The file contains your PSQL password and user's (owner's) password.
-
-        ```file {title="/root/.deployment-secrets.txt"}
-        # BEGIN ANSIBLE MANAGED BLOCK
-        # PSQL password
-        password: WiLjKhJSZE01TW3AoqViN3Kglu2bidWt
-        # Owner password
-        password: 3c4a675311ee52c0c1d7173d5169a10d
-        # END ANSIBLE MANAGED BLOCK
-        ```
-
-1. **Log in to Mastodon.** Within a web browser, navigate to `https://[domain.tld]/auth/sign_in`, replacing *[domain.tld]* with the custom domain you entered when deploying Mastodon. This opens the login page. Enter the owner's email address you created and the password that you obtained in the previous step. Once logged in, your user's home page is opened, which displays your own timeline, the post creation form, and links to navigate around.
+1. **Access Mastodon UI**. Open a web browser and navigate to `https://[domain.tld]/auth/sign_in`, replacing *[domain.tld]* with the domain you entered when deploying Mastodon or the rDNS domain `https://203-0-113-0.ip.linodeusercontent.com`. This opens the login page. Enter the owner's email address you created and the password that you obtained in the credentials file. 
 
     ![Screenshot of the Mastodon user home page](mastodon-user-home.png)
 
