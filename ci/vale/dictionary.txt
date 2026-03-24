@@ -2365,6 +2365,7 @@ sitename
 Skitch
 sklearn
 skopeo
+skupper
 slackpkg
 slackware
 SLAs
@@ -2972,6 +2973,7 @@ xsetroot
 xstartup
 xsys
 xtables
+xtrabackup
 xUnit
 xvda
 xvdb
