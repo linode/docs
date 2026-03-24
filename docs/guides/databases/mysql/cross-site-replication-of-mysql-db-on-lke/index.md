@@ -15,7 +15,7 @@ external_resources:
 
 Cross-site replication is a database pattern where changes written to a primary database in one location are copied to one or more replica databases in another location. In MySQL, this is commonly used to maintain a remote read-only copy of production data for disaster recovery testing, reporting, analytics, or standby capacity.
 
-This guide uses Skupper to provide cross-site connectivity across Linode Kubernetes Engine (LKE) clusters in different regions. Skupper creates a secure application network between Kubernetes clusters. It allows workloads in one cluster to reach selected services in another cluster without requiring direct Pod-to-Pod networking or a custom VPN. In this guide, Skupper exposes the writable MySQL primary in `site-1` to the MySQL Pods in `site-2` by using a shared service name.
+This guide uses Skupper to connect Linode Kubernetes Engine (LKE) clusters in different regions. Skupper creates a secure application network between Kubernetes clusters. It allows workloads in one cluster to reach selected services in another cluster without requiring direct Pod-to-Pod networking or a custom VPN. In this guide, Skupper exposes the writable MySQL primary in `site-1` to the MySQL Pods in `site-2` by using a shared service name.
 
 This solves a specific problem for MySQL deployed across LKE regions. The source and destination databases live in separate Kubernetes clusters with separate internal networks. The approach in this guide combines Skupper for connectivity, the MySQL Clone plugin for initial seeding, and GTID-based replication for ongoing change streaming.
 
@@ -47,7 +47,7 @@ This guide demonstrates a one-way replication setup from site-1 to site-2. It do
 
 ### Placeholders
 
-This tutorial contains a number of placeholders that are intended to be replaced by values from your own environment. The table below lists these placeholders, what they represent, and the example values used in this guide:
+Replace the following placeholders with values from your own environment:
 
 | Placeholder | Description | Example |
 | -- | -- | -- |
@@ -68,7 +68,7 @@ Additionally, this guide uses the following fixed example values consistently th
 
 ### Configure `kubectl` Contexts
 
-If you followed the guides linked above, you should have already installed `kubectl` and set up kubeconfig. For simplicity, rename these contexts to `site-1` and `site-2`, respectively.
+If you followed the guides linked above, you should already have `kubectl` installed and both cluster contexts available in your local kubeconfig. For simplicity, rename these contexts to `site-1` and `site-2`, respectively.
 
 1.  Use `kubectl` to list your context names:
 
@@ -139,13 +139,13 @@ This tutorial uses Skupper v2. The commands in this section are not compatible w
     ```
 
     ```output
-    COMPONENT		VERSION
-    router			3.4.2
-    controller		2.1.3
-    network-observer	2.1.3
-    cli			2.1.3
-    prometheus		v2.42.0
-    origin-oauth-proxy	4.14.0
+    COMPONENT            VERSION
+    router               3.4.2
+    controller           2.1.3
+    network-observer     2.1.3
+    cli                  2.1.3
+    prometheus           v2.42.0
+    origin-oauth-proxy   4.14.0
     ```
 
     {{< note >}}
@@ -214,7 +214,7 @@ If you are using a Cloud Firewall, ensure that site-1 allows inbound TCP port `9
     ```output
     Waiting for token status ...
 
-    Grant "site-1-a4c9d2f3-7b81-4e6a-9d2f-3c7b8e1a6f40" is ready
+    Grant "<grant-id>" is ready
     Token file ~/site1.token created
 
     Transfer this file to a remote site. At the remote site,
@@ -233,7 +233,7 @@ If you are using a Cloud Firewall, ensure that site-1 allows inbound TCP port `9
 
     ```output
     Waiting for token status ...
-    Token "site-1-a4c9d2f3-7b81-4e6a-9d2f-3c7b8e1a6f40" has been redeemed
+    Token "<grant-id>" has been redeemed
     ```
 
 1.  Before deploying the MySQL replication components, verify that the Skupper link between the clusters is active:
@@ -246,7 +246,7 @@ If you are using a Cloud Firewall, ensure that site-1 allows inbound TCP port `9
 
     ```output
     NAME                                          STATUS   COST   MESSAGE
-    site-1-a4c9d2f3-7b81-4e6a-9d2f-3c7b8e1a6f40   Ready    1      OK
+    <grant-id>                                    Ready    1      OK
     ```
 
 ## Deploy MySQL Configuration
@@ -319,7 +319,7 @@ The MySQL configuration is stored in a Kubernetes ConfigMap so that both cluster
     mysql   2      25s
     ```
 
-## Deploy the MySQL Services
+## Deploy MySQL Services
 
 The MySQL Service provides the stable network identity required by the StatefulSets in each cluster. The headless `mysql` Service provides predictable DNS names for each Pod so that MySQL instances can communicate directly for replication and management tasks.
 
@@ -382,7 +382,7 @@ The MySQL Service provides the stable network identity required by the StatefulS
 
     At this point, both clusters have the same Service layout. The StatefulSets in the next steps use the headless `mysql` Service for stable Pod-to-Pod communication and replication traffic within each cluster.
 
-## Deploy MySQL StatefulSet (site-1)
+## Deploy site-1 MySQL StatefulSet
 
 Deploy the MySQL StatefulSet in site-1 to create the primary MySQL cluster. In this cluster, `mysql-0` is configured as the writable primary, while `mysql-1` and `mysql-2` are configured as replica candidates. Replication is configured in a later section after the required MySQL users are created.
 
@@ -494,19 +494,16 @@ Deploy the MySQL StatefulSet in site-1 to create the primary MySQL cluster. In t
     ```
 
     ```output
-    NAME                              READY   STATUS    RESTARTS      AGE
-    mysql-0                           1/1     Running   0             3m9s
-    mysql-1                           1/1     Running   1 (86s ago)   2m29s
-    mysql-2                           1/1     Running   1 (46s ago)   102s
-    skupper-router-7b56568444-p6686   2/2     Running   0             9m42s
+    NAME                              READY   STATUS    RESTARTS            AGE
+    mysql-0                           1/1     Running   0                   <minutes>
+    mysql-1                           1/1     Running   1 (<minutes> ago)   <minutes>
+    mysql-2                           1/1     Running   1 (<minutes> ago)   <minutes>
+    skupper-router-7b56568444-p6686   2/2     Running   0                   <minutes>
     ```
 
 ## Create Replication and Clone Users
 
-Before configuring replication between the clusters, create the MySQL accounts required for replication and cloning. This guide uses the account names `repl` and `cloner` throughout:
-
--   A replication user that replicas use to read binary logs from the primary.
--   A clone user used by the MySQL Clone plugin when seeding replicas.
+Before configuring replication between the clusters, create the MySQL accounts required for replication and cloning. This guide uses the account names `repl` and `cloner` throughout.
 
 These users are created on the primary database (`mysql-0`) in site-1.
 
@@ -592,11 +589,11 @@ These users are created on the primary database (`mysql-0`) in site-1.
     repl	%
     ```
 
-## Configure Clone Initialization (site-2)
+## Prepare Site-2 for Cloning
 
 The site-2 Pods rely on a MySQL initialization script to install the Clone plugin and configure cloning during first startup. Because MySQL initialization scripts only run when the data directory is first created, this ConfigMap must be created before deploying the site-2 StatefulSet.
 
-This guide also uses the fixed listener name `mysql-primary` and the fixed clone user name `cloner` throughout the remaining sections.
+This guide also uses the fixed listener name `mysql-primary`.
 
 1.  Create a ConfigMap containing the site-2 initialization SQL (e.g., `mysql-site2-init-configmap.yaml`):
 
@@ -625,6 +622,8 @@ This guide also uses the fixed listener name `mysql-primary` and the fixed clone
         FLUSH PRIVILEGES;
     ```
 
+    When done, save and close the file.
+
 1.  Apply the site-2 initialization ConfigMap:
 
     ```command
@@ -635,7 +634,7 @@ This guide also uses the fixed listener name `mysql-primary` and the fixed clone
     configmap/mysql-site2-init created
     ```
 
-## Deploy MySQL StatefulSet (site-2)
+## Deploy site-2 MySQL StatefulSet
 
 Deploy the MySQL StatefulSet in site-2 to create the secondary MySQL cluster. In this cluster, all three Pods are configured as replica candidates. Each Pod starts with its MySQL configuration and persistent storage in place, but replication is configured after the replica data is seeded (covered later). This StatefulSet mounts the initialization ConfigMap so that each Pod is fully prepared for cloning upon first startup.
 
@@ -748,10 +747,10 @@ Deploy the MySQL StatefulSet in site-2 to create the secondary MySQL cluster. In
 
     ```output
     NAME                              READY   STATUS    RESTARTS   AGE
-    mysql-0                           1/1     Running   0          11m
-    mysql-1                           1/1     Running   0          10m
-    mysql-2                           1/1     Running   0          9m49s
-    skupper-router-7565975cb5-94x8b   2/2     Running   0          113m
+    mysql-0                           1/1     Running   0          <minutes>
+    mysql-1                           1/1     Running   0          <minutes>
+    mysql-2                           1/1     Running   0          <minutes>
+    skupper-router-7565975cb5-94x8b   2/2     Running   0          <minutes>
     ```
 
 ## Seed Replicas Using Clone Plugin
@@ -772,7 +771,7 @@ The MySQL Clone plugin is used to seed the site-2 Pods with data from the primar
     Listener "mysql-primary" is configured.
     ```
 
-1.  Wait for the site-2 Pods to return to the `Running` state:
+1.  Confirm that the site-2 Pods are in the `Running` state before cloning:
 
     ```command
     kubectl --context site-2 get pods
@@ -780,10 +779,10 @@ The MySQL Clone plugin is used to seed the site-2 Pods with data from the primar
 
     ```output
     NAME                              READY   STATUS    RESTARTS   AGE
-    mysql-0                           1/1     Running   0          18m
-    mysql-1                           1/1     Running   0          17m
-    mysql-2                           1/1     Running   0          16m
-    skupper-router-7565975cb5-94x8b   2/2     Running   0          120m
+    mysql-0                           1/1     Running   0          <minutes>
+    mysql-1                           1/1     Running   0          <minutes>
+    mysql-2                           1/1     Running   0          <minutes>
+    skupper-router-7565975cb5-94x8b   2/2     Running   0          <minutes>
     ```
 
 1.  Run the clone operation on one Pod first (mysql-0):
@@ -806,18 +805,18 @@ The MySQL Clone plugin is used to seed the site-2 Pods with data from the primar
     This is expected. The clone operation replaces the data directory and triggers a restart. In this environment, Kubernetes handles that restart instead of MySQL.
     {{< /note >}}
 
-1.  Check if `mysql-0` restarted and wait for the Pod to return to the `Running` state:
+1.  Wait for `mysql-0` to return to the `Running` state:
 
     ```command
     kubectl --context site-2 get pods
     ```
 
     ```output
-    NAME                              READY   STATUS    RESTARTS      AGE
-    mysql-0                           1/1     Running   1 (40m ago)   60m
-    mysql-1                           1/1     Running   0             59m
-    mysql-2                           1/1     Running   0             59m
-    skupper-router-7565975cb5-94x8b   2/2     Running   0             162m
+    NAME                              READY   STATUS    RESTARTS            AGE
+    mysql-0                           1/1     Running   1 (<minutes> ago)   <minutes>
+    mysql-1                           1/1     Running   0                   <minutes>
+    mysql-2                           1/1     Running   0                   <minutes>
+    skupper-router-7565975cb5-94x8b   2/2     Running   0                   <minutes>
     ```
 1.  Verify that the clone completed successfully:
 
@@ -835,9 +834,9 @@ The MySQL Clone plugin is used to seed the site-2 Pods with data from the primar
            ERROR_NO: 0
         BINLOG_FILE: mysql-bin.000003
     BINLOG_POSITION: 2270
-      GTID_EXECUTED: 77a0ed51-26fe-11f1-b19c-16978697c802:1-13
-         BEGIN_TIME: 2026-03-23 23:17:46.604
-           END_TIME: 2026-03-23 23:17:54.435
+      GTID_EXECUTED: <gtid-set>
+         BEGIN_TIME: <timestamp>
+           END_TIME: <timestamp>
     user	host
     cloner	%
     repl	%
@@ -852,7 +851,7 @@ The MySQL Clone plugin is used to seed the site-2 Pods with data from the primar
     "
     ```
 
-1.  Check if `mysql-1` restarted and wait for `mysql-1` to return to the `Running` state.
+1.  Wait for `mysql-1` to return to the `Running` state.
 
     ```command
     kubectl --context site-2 get pods
@@ -868,6 +867,8 @@ The MySQL Clone plugin is used to seed the site-2 Pods with data from the primar
     "
     ```
 
+    Confirm the same values shown for `mysql-0`.
+
 1.  Run the clone operation on `mysql-2`:
 
     ```command
@@ -877,7 +878,7 @@ The MySQL Clone plugin is used to seed the site-2 Pods with data from the primar
     "
     ```
 
-1.  Check if `mysql-2` restarted and wait for `mysql-2` to return to the `Running` state:
+1.  Wait for `mysql-2` to return to the `Running` state:
 
     ```command
     kubectl --context site-2 get pods
@@ -892,6 +893,8 @@ The MySQL Clone plugin is used to seed the site-2 Pods with data from the primar
     SELECT user, host FROM mysql.user WHERE user IN ('repl','cloner');
     "
     ```
+
+    Confirm the same values shown for `mysql-0`.
 
 Only after `mysql-0`, `mysql-1`, and `mysql-2` have each been cloned and individually verified with `performance_schema.clone_status` should you proceed to the replication section.
 
@@ -931,7 +934,7 @@ After cloning the site-2 Pods from the primary in site-1, configure each site-2 
               mountPath: /mnt/config-map
     ```
 
-    Save and close the file when done.
+    When done, save and close the file.
 
 1.  Apply the updated StatefulSet definition:
 
@@ -1050,9 +1053,9 @@ After cross-site replication is enabled, verify that each site-2 Pod is actively
 
     ```output
     Server_Id	Host	Port	Source_Id	Replica_UUID
-    202		    3306	100	    11da6a2e-270c-11f1-984d-5a8c68140dd6
-    201		    3306	100	    fc258ddf-270b-11f1-8cc5-1a122ea3d965
-    200		    3306	100	    e603a9da-270b-11f1-a0f4-76730864de28
+    202		    3306	100	    <replica-uuid>
+    201		    3306	100	    <replica-uuid>
+    200		    3306	100	    <replica-uuid>
     ```
 
 1.  Create a test database and table on the primary in site-1, then insert a row:
@@ -1076,7 +1079,7 @@ After cross-site replication is enabled, verify that each site-2 Pod is actively
 
     ```output
     id   message
-    1	 replication works
+    1    replication works
     ```
 
 If site-1 reports all three replicas and the test row appears on site-2, cross-site replication is working successfully.
