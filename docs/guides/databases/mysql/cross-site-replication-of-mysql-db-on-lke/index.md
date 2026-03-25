@@ -15,11 +15,11 @@ external_resources:
 
 Cross-site replication is a database pattern where changes written to a primary database in one location are copied to one or more replica databases in another location. In MySQL, this is commonly used to maintain a remote read-only copy of production data for disaster recovery testing, reporting, analytics, or standby capacity.
 
-This guide uses Skupper to connect Linode Kubernetes Engine (LKE) clusters in different regions. Skupper creates a secure application network between Kubernetes clusters. It allows workloads in one cluster to reach selected services in another cluster without requiring direct Pod-to-Pod networking or a custom VPN. In this guide, Skupper exposes the writable MySQL primary in `site-1` to the MySQL Pods in `site-2` by using a shared service name.
+This guide uses Skupper to connect Linode Kubernetes Engine (LKE) clusters in different regions. Skupper creates a secure application network between Kubernetes clusters. It allows workloads in one cluster to reach selected services in another cluster without requiring direct Pod-to-Pod networking or a custom VPN. In this guide, Skupper exposes the writable MySQL primary in `site-1` to the MySQL Pods in `site-2` using a shared service name.
 
-This solves a specific problem for MySQL deployed across LKE regions. The source and destination databases live in separate Kubernetes clusters with separate internal networks. The approach in this guide combines Skupper for connectivity, the MySQL Clone plugin for initial seeding, and GTID-based replication for ongoing change streaming.
+This solves a specific problem for MySQL deployed across LKE regions. The source and destination databases live in separate Kubernetes clusters with separate internal networks. The approach in this guide combines Skupper for connectivity, the MySQL Clone plugin for initial seeding, and GTID-based replication for ongoing updates.
 
-This guide shows how to create two LKE clusters in different regions and link them with Skupper. It then shows how to deploy MySQL in both clusters, clone the primary database from `site-1` into `site-2`, and enable replication so that writes made in `site-1` are received by the remote replicas in `site-2`.
+This guide shows how to link two LKE clusters in different regions with Skupper. It then shows how to deploy MySQL in both clusters, clone the primary database from `site-1` into `site-2`, and enable replication so that writes made in `site-1` are received by the remote replicas in `site-2`.
 
 ## Architecture Overview
 
@@ -29,11 +29,11 @@ This guide builds a cross-site MySQL replication topology spanning two LKE clust
 
 Each site runs a three-Pod MySQL StatefulSet behind a headless `mysql` Service. The Service provides stable DNS identities such as `mysql-0.mysql`. In site-1, the `mysql-0` Pod acts as the writable primary. In site-2, all Pods are configured as replicas after initialization.
 
-Skupper connects the two clusters by exposing the primary database in site-1 as a shared service named `mysql-primary`. This allows the MySQL instances in site-2 to reach the primary by using standard MySQL client connections. It does not require direct network routing between clusters.
+Skupper connects the two clusters by exposing the primary database in site-1 as a shared service named `mysql-primary`. This allows the MySQL instances in site-2 to reach the primary using standard MySQL client connections. It does not require direct network routing between clusters.
 
 To initialize replication, each Pod in site-2 is first started in a writable bootstrap state. This allows it to install the MySQL Clone plugin and accept a full data copy from the primary. The Clone plugin is then used to seed each replica from `mysql-0` in site-1. This provides a consistent starting point.
 
-After cloning is complete, the site-2 Pods are reconfigured as read-only replicas and connected back to the primary by using GTID-based replication. From that point forward, changes written to site-1 are streamed to all Pods in site-2 over the Skupper network.
+After cloning is complete, the site-2 Pods are reconfigured as read-only replicas and connected back to the primary using GTID-based replication. From that point, changes written to site-1 are streamed to all Pods in site-2 over the Skupper network.
 
 {{< note >}}
 This guide demonstrates a one-way replication setup from site-1 to site-2. It does not include automatic failover, bidirectional replication, or conflict handling.
@@ -43,7 +43,7 @@ This guide demonstrates a one-way replication setup from site-1 to site-2. It do
 
 1.  Follow our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide to create an Akamai Cloud account if you do not already have one.
 
-1.  Follow our [Getting started with LKE guide](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine) to create two LKE clusters in different regions (each with three nodes), install `kubectl`, and download your `kubeconfig` files.
+1.  Follow our [Getting started with LKE guide](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine) to create two LKE clusters in different regions (each with three nodes), install `kubectl`, and download your kubeconfig files.
 
 ### Placeholders
 
@@ -51,6 +51,8 @@ Replace the following placeholders with values from your own environment:
 
 | Placeholder | Description | Example |
 | -- | -- | -- |
+| {{< placeholder "SITE_1_KUBECONFIG_FILE" >}} | The filename of the kubeconfig file downloaded for the site-1 LKE cluster. | `site-1-kubeconfig.yaml` |
+| {{< placeholder "SITE_2_KUBECONFIG_FILE" >}} | The filename of the kubeconfig file downloaded for the site-2 LKE cluster. | `site-2-kubeconfig.yaml` |
 | {{< placeholder "SITE_1_CONTEXT_NAME" >}} | The original `kubectl` context name associated with the site-1 kubeconfig before it is renamed to `site-1`. | `lke12345-ctx` |
 | {{< placeholder "SITE_2_CONTEXT_NAME" >}} | The original `kubectl` context name associated with the site-2 kubeconfig before it is renamed to `site-2`. | `lke12346-ctx` |
 | {{< placeholder "MYSQL_ROOT_PASSWORD" >}} | The root password assigned to the MySQL containers in both StatefulSets. | `your-secure-root-password` |
@@ -64,11 +66,20 @@ Additionally, this guide uses the following fixed example values consistently th
 -   Token File Path: `~/site1.token`
 -   Replication User: `repl`
 -   Clone User: `cloner`
--   Skupper Connector and Listener Name for the Primary Database: `mysql-primary`
+-   Skupper Connector and Listener Name for the Primary DB: `mysql-primary`
 
 ### Configure `kubectl` Contexts
 
-If you followed the guides linked above, you should already have `kubectl` installed and both cluster contexts available in your local kubeconfig. For simplicity, rename these contexts to `site-1` and `site-2`, respectively.
+If you followed the guides linked above, you should already have `kubectl` installed and the kubeconfig files for both clusters downloaded. For simplicity, merge these files and rename their contexts to `site-1` and `site-2`.
+
+1.  Merge both kubeconfig files into the default `kubeconfig` directory:
+
+    ```command
+    mkdir -p ~/.kube
+    export KUBECONFIG=~/{{< placeholder "SITE_1_KUBECONFIG_FILE" >}}:~/{{< placeholder "SITE_2_KUBECONFIG_FILE" >}}
+    kubectl config view --merge --flatten > ~/.kube/config
+    unset KUBECONFIG
+    ```
 
 1.  Use `kubectl` to list your context names:
 
@@ -82,7 +93,7 @@ If you followed the guides linked above, you should already have `kubectl` insta
               lke123457-ctx   lke123457   lke123457-admin   default
     ```
 
-1.  Rename the contexts to the name of your clusters (e.g., `site-1` and `site-2`):
+1.  Rename the existing contexts (e.g., `lke123456-ctx` and `lke123457-ctx`) to `site-1` and `site-2`, respectively:
 
     ```command
     kubectl config rename-context {{< placeholder "SITE_1_CONTEXT_NAME" >}} site-1
@@ -345,7 +356,7 @@ The MySQL Service provides the stable network identity required by the StatefulS
         name: mysql
     ```
 
-    The `mysql` Service is a headless Service that provides stable DNS names for the Pods created by the StatefulSet, such as `mysql-0.mysql`, `mysql-1.mysql`, and `mysql-2.mysql`. These DNS names allow MySQL instances to address one another directly within the cluster.
+    The `mysql` Service is a headless Service that provides stable DNS names for the Pods created by the StatefulSet, such as `mysql-0.mysql`, `mysql-1.mysql`, and `mysql-2.mysql`. These DNS names allow MySQL instances to address each other directly within the cluster.
 
     When done, save and close the file.
 
@@ -503,9 +514,7 @@ Deploy the MySQL StatefulSet in site-1 to create the primary MySQL cluster. In t
 
 ## Create Replication and Clone Users
 
-Before configuring replication between the clusters, create the MySQL accounts required for replication and cloning. This guide uses the account names `repl` and `cloner` throughout.
-
-These users are created on the primary database (`mysql-0`) in site-1.
+Before configuring replication between the clusters, create the MySQL accounts required for replication and cloning on the primary database (`mysql-0`) in site-1. This guide uses the account names `repl` and `cloner`, along with the fixed listener name `mysql-primary`, throughout the remaining sections.
 
 1.  Create the replication user on the primary MySQL Pod:
 
@@ -591,11 +600,9 @@ These users are created on the primary database (`mysql-0`) in site-1.
 
 ## Prepare Site-2 for Cloning
 
-The site-2 Pods rely on a MySQL initialization script to install the Clone plugin and configure cloning during first startup. Because MySQL initialization scripts only run when the data directory is first created, this ConfigMap must be created before deploying the site-2 StatefulSet.
+The site-2 Pods rely on a MySQL initialization script to install the Clone plugin and configure cloning during first startup. Because MySQL initialization scripts only run when the data directory is first created, create this ConfigMap before deploying the site-2 StatefulSet.
 
-This guide also uses the fixed listener name `mysql-primary`.
-
-1.  Create a ConfigMap containing the site-2 initialization SQL (e.g., `mysql-site2-init-configmap.yaml`):
+1.  Create a ConfigMap file for site-2 in YAML format (e.g., `mysql-site2-init-configmap.yaml`):
 
     ```command
     nano mysql-site2-init-configmap.yaml
@@ -622,6 +629,8 @@ This guide also uses the fixed listener name `mysql-primary`.
         FLUSH PRIVILEGES;
     ```
 
+    The script installs the MySQL Clone plugin, creates the `cloner` user with the required privileges, and configures the donor source as `mysql-primary`. These steps prepare each Pod to receive a full data copy from the primary during the cloning process.
+
     When done, save and close the file.
 
 1.  Apply the site-2 initialization ConfigMap:
@@ -636,7 +645,7 @@ This guide also uses the fixed listener name `mysql-primary`.
 
 ## Deploy site-2 MySQL StatefulSet
 
-Deploy the MySQL StatefulSet in site-2 to create the secondary MySQL cluster. In this cluster, all three Pods are configured as replica candidates. Each Pod starts with its MySQL configuration and persistent storage in place, but replication is configured after the replica data is seeded (covered later). This StatefulSet mounts the initialization ConfigMap so that each Pod is fully prepared for cloning upon first startup.
+Deploy the MySQL StatefulSet in site-2 to create the secondary MySQL cluster. In this cluster, all three Pods are configured as replica candidates. This StatefulSet mounts the initialization ConfigMap so that each Pod is fully prepared for cloning upon first startup.
 
 1.  Create a MySQL StatefulSet file for site-2 in the YAML format (e.g., `mysql-site2-statefulset.yaml`):
 
@@ -725,7 +734,7 @@ Deploy the MySQL StatefulSet in site-2 to create the secondary MySQL cluster. In
               storage: 10Gi
     ```
 
-    This StatefulSet creates three MySQL Pods in site-2. Each Pod receives a unique MySQL server ID based on its ordinal index. The `init-mysql` init container applies the writable configuration during first startup so that the initialization SQL can prepare each Pod for cloning. Each Pod also receives its own persistent volume claim so that MySQL data persists across restarts. At this stage, the Pods are deployed and prepared for cloning. However, they are not yet seeded from site-1, and cross-site replication is not enabled until later sections in the guide.
+    This StatefulSet creates three MySQL Pods in site-2. Each Pod receives a unique MySQL server ID based on its ordinal index. The `init-mysql` init container applies the writable configuration during first startup so the initialization SQL can prepare each Pod for cloning. Each Pod also receives its own persistent volume claim so that MySQL data persists across restarts.
 
     When done, save and close the file.
 
@@ -752,6 +761,8 @@ Deploy the MySQL StatefulSet in site-2 to create the secondary MySQL cluster. In
     mysql-2                           1/1     Running   0          <minutes>
     skupper-router-7565975cb5-94x8b   2/2     Running   0          <minutes>
     ```
+
+At this stage, the Pods are deployed and prepared for cloning. However, they are not yet seeded from site-1, and cross-site replication is not enabled until later in this guide.
 
 ## Seed Replicas Using Clone Plugin
 
@@ -867,8 +878,6 @@ The MySQL Clone plugin is used to seed the site-2 Pods with data from the primar
     "
     ```
 
-    Confirm the same values shown for `mysql-0`.
-
 1.  Run the clone operation on `mysql-2`:
 
     ```command
@@ -894,15 +903,13 @@ The MySQL Clone plugin is used to seed the site-2 Pods with data from the primar
     "
     ```
 
-    Confirm the same values shown for `mysql-0`.
-
 Only after `mysql-0`, `mysql-1`, and `mysql-2` have each been cloned and individually verified with `performance_schema.clone_status` should you proceed to the replication section.
 
 ## Enable Cross-Site Replication
 
-After cloning the site-2 Pods from the primary in site-1, configure each site-2 Pod to connect back to the primary over the Skupper network. Before enabling replication, update the site-2 StatefulSet so future Pod restarts use the replica configuration instead of the writable bootstrap configuration.
+After cloning the site-2 Pods from the primary in site-1, configure each site-2 Pod to connect back to the primary over the Skupper network. Before enabling replication, update the site-2 StatefulSet so that future Pod restarts use the replica configuration instead of the writable bootstrap configuration.
 
-1.  Update the site-2 StatefulSet to use the replica configuration after cloning:
+1.  Update the site-2 StatefulSet to use the replica configuration:
 
     ```command
     nano mysql-site2-statefulset.yaml
