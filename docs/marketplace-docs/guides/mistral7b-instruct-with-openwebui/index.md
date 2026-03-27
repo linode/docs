@@ -1,10 +1,10 @@
 ---
-title: "Deploy Mistral 7B Instruct with Open WebUI through the Linode Marketplace"
+title: "Deploy Mistral 7B Instruct with Open WebUI"
 description: "This guide includes instructions on how to deploy Open WebUI with Mistral 7B Instruct self-hosted LLM on an Akamai Compute Instance."
 published: 2026-01-26
 modified: 2026-01-26
 keywords: ['mistral', 'mistral-7b-instruct', 'open-webui', 'vllm', 'ai', 'llm', 'llm-inference', 'mistral-7b']
-tags: ["marketplace", "linode platform", "cloud manager", "ai", "llm-inference", "llm"]
+tags: ["quick deploy apps", "linode platform", "cloud manager", "ai", "llm-inference", "llm"]
 aliases: ['/products/tools/marketplace/guides/mistral7b-instruct-with-openwebui/']
 external_resources:
 - '[Open WebUI Documentation](https://docs.openwebui.com/getting-started/)'
@@ -18,9 +18,9 @@ marketplace_app_name: "Mistral 7B Instruct with Open WebUI"
 
 Open WebUI is an open-source, self-hosted web interface for interacting with and managing Large Language Models (LLMs). It supports multiple AI backends, multi-user access, and extensible integrations, enabling secure and customizable deployment for local or remote model inference.
 
-The Marketplace application deployed in this guide uses Mistral-7B-Instruct-v0.3 as an instruction-tuned, open-weight LLM model optimized for prompt following, reasoning, and conversational tasks. It is designed for efficient inference and integrates well with self-hosted platforms like Open WebUI for general-purpose assistance, coding, and knowledge-based workflows.
+The Quick Deploy App application deployed in this guide uses Mistral-7B-Instruct-v0.3 as an instruction-tuned, open-weight LLM model optimized for prompt following, reasoning, and conversational tasks. It is designed for efficient inference and integrates well with self-hosted platforms like Open WebUI for general-purpose assistance, coding, and knowledge-based workflows.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -35,7 +35,7 @@ Open WebUI with Mistral 7B Instruct should be fully installed within 5-10 minute
 - **Recommended plan:** RTX4000 Ada x1 Small
 
 {{< note type="warning" >}}
-This Marketplace App only works with Akamai GPU instances. If you choose a plan other than GPUs, the provisioning will fail, and a notice will appear in the LISH console.
+This Quick Deploy App only works with Akamai GPU instances. If you choose a plan other than GPUs, the provisioning will fail, and a notice will appear in the LISH console.
 {{< /note >}}
 
 ### Open WebUI Options

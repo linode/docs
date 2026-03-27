@@ -1,7 +1,7 @@
 ---
 title: "Manage an LKE Cluster Using the Kubernetes Dashboard"
 title_meta: "An Overview of the Kubernetes Dashboard on LKE"
-description: "The Kubernetes Dashboard on LKE provides secure insight into the inner workings of kubernetes clusters in a seamless UI."
+description: "The Kubernetes Dashboard on LKE provides secure insight into the inner workings of Kubernetes clusters in a seamless UI."
 published: 2022-03-17
 modified: 2023-02-09
 keywords: ['kubernetes','cluster','analytics','dashboard','troubleshoot']

@@ -103,15 +103,15 @@ Another relevant set of concepts relates to how the HA cluster handles a split-b
 
 ## Deploying a PostgreSQL HA Cluster on Akamai Cloud Computing
 
-There are two main methods of deploying a PostgreSQL high-availability cluster on Akamai. There is the traditional manual configuration method and the [Akamai Marketplace](/docs/marketplace-docs/guides/postgresql-cluster/) solution.
+There are two main methods of deploying a PostgreSQL high-availability cluster on Akamai. There is the traditional manual configuration method and [Akamai Quick Deploy Apps](/docs/marketplace-docs/guides/postgresql-cluster/) solution.
 
 For a concise discussion and comparison of the three main alternatives, see the Akamai blog about PostgreSQL's high availability.
 
-### The Marketplace PostgreSQL HA Cluster
+### The Quick Deploy Apps PostgreSQL HA Cluster
 
-Akamai allows users to configure a PostgreSQL HA cluster as a [Marketplace application](/docs/marketplace-docs/guides/postgresql-cluster/). Using this technique, database administrators can set up an HA cluster from the Linode Dashboard. This solution is supported on Ubuntu 22.04 LTS distribution on any plan type.
+Akamai allows users to configure a PostgreSQL HA cluster as a [Quick Deploy Application](/docs/marketplace-docs/guides/postgresql-cluster/). Using this technique, database administrators can set up an HA cluster from the Linode Dashboard. This solution is supported on Ubuntu 22.04 LTS distribution on any plan type.
 
-The Akamai Marketplace solution uses the [*repmgr*](https://www.repmgr.org/) replication manager to control the PostgreSQL high availability cluster. The Marketplace application automatically configures a three-node HA cluster. Users only have to create users, roles, schemas, and tables before deploying the database.
+The Akamai Quick Deploy Apps solution uses the [*repmgr*](https://www.repmgr.org/) replication manager to control the PostgreSQL high availability cluster. The Quick Deploy Application automatically configures a three-node HA cluster. Users only have to create users, roles, schemas, and tables before deploying the database.
 
 This solution has some limitations. It is not possible to choose the size of the HA cluster or manually edit any application variables. It is a viable option for a smaller organization with less technical expertise. However, it might not meet the specific requirements of a more complicated network.
 
@@ -228,7 +228,7 @@ Patroni has the most features and is the most powerful replication manager. It i
 
 PAF has fewer features, but it is easier to use and performs very well in a wide range of failover and manual switchover scenarios. It automatically recovers from most failures and rarely requires manual intervention. PAF does not automate PostgreSQL installation and configuration, so it is not as useful in an automated setting. In addition, the requirement for a monitor node increases infrastructure costs and configuration demands. Overall, it is a well-balanced solution and a solid choice for a smaller organization in search of a reliable solution.
 
-The repmgr suite is a robust solution that has been around for a longer period of time. As a result, it is well-hardened and its capabilities are well-known. It does not require extra servers or additional network components. This makes it a good choice for administrators who want to deploy a streamlined solution. Unfortunately, it can be difficult to use and there are some scenarios where it requires manual intervention. Repmgr is the application used by the Akamai Marketplace PostgreSQL HA cluster solution. This is a good choice for users who want an easy hands-off GUI-driven deployment.
+The repmgr suite is a robust solution that has been around for a longer period of time. As a result, it is well-hardened and its capabilities are well-known. It does not require extra servers or additional network components. This makes it a good choice for administrators who want to deploy a streamlined solution. Unfortunately, it can be difficult to use and there are some scenarios where it requires manual intervention. Repmgr is the application used by the Akamai Quick Deploy Apps PostgreSQL HA cluster solution. This is a good choice for users who want an easy hands-off GUI-driven deployment.
 
 ## Conclusion
 

@@ -1,10 +1,10 @@
 ---
-title: "Deploy a MERN Stack through the Linode Marketplace"
-description: "This guide shows you how to install and configure a MERN (MongoDB, Express, React, Node.js) stack on a Linode using our One-Click Marketplace App."
+title: "Deploy a MERN Stack"
+description: "This guide shows you how to install and configure a MERN (MongoDB, Express, React, Node.js) stack on a Linode using our Quick Deploy App."
 published: 2019-04-02
 modified: 2025-03-10
 keywords: ['mongodb','mern','react','express', 'web app']
-tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
+tags: ["web server","database","cloud-manager","linode platform","web applications","quick deploy apps"]
 external_resources:
 - '[MongoDB Getting Started](https://docs.mongodb.com/manual/tutorial/getting-started/)'
 - '[Express Hello World Example](https://expressjs.com/en/starter/hello-world.html)'
@@ -30,7 +30,7 @@ A MERN (MongoDB, Express, React, Node.js) stack is a free and open-source web so
 
 All of these technologies are well-established, offer robust feature sets, and are well-supported by their maintaining organizations. These characteristics make them a great choice for your applications. Upload your existing MERN website code to your new Linode, or use MERN's scaffolding tool to start writing new web applications on the Linode.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

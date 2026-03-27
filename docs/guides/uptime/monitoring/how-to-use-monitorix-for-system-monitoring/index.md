@@ -2,7 +2,7 @@
 slug: how-to-use-monitorix-for-system-monitoring
 title: "Using Monitorix for System Monitoring"
 title_meta: "How to Use Monitorix for System Monitoring"
-description: 'This guide will show you how to use Monitorx, a free and open-source monitoring tool to keep track of several Linux services and system resources.'
+description: 'This guide will show you how to use Monitorix, a free and open-source monitoring tool to keep track of several Linux services and system resources.'
 authors: ["Steven J. Vaughan-Nichols"]
 contributors: ["Steven J. Vaughan-Nichols"]
 published: 2021-02-19

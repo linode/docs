@@ -1,7 +1,7 @@
 ---
 slug: manage-content-with-markdown-and-mango-on-debian-6-squeeze
 title: 'Manage Content with Markdown and Mango on Debian 6 (Squeeze)'
-description: 'This guide will show you how Mango can publish markdown documents from plain text files into a fully customized and dynamic website using Debian 6.'
+description: 'This guide will show you how Mango can publish Markdown documents from plain text files into a fully customized and dynamic website using Debian 6.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-04-05

@@ -1,10 +1,10 @@
 ---
-title: "Deploy ArangoDB through the Linode Marketplace"
+title: "Deploy ArangoDB"
 description: "Learn how to deploy ArangoDB, a multi-model NoSQL database that combines graph, document, and search capabilities in a single platform, on an Akamai Compute Instance."
 published: 2025-07-10
 modified: 2025-07-10
 keywords: ['database','graph','document','nosql','multi-model','arangodb']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[ArangoDB](https://arangodb.com/community-server/)'
 - '[ArangoDB documentation](https://docs.arangodb.com/stable/about-arangodb/)'
@@ -18,7 +18,7 @@ marketplace_app_name: "ArangoDB"
 
 [ArangoDB](https://arangodb.com/community-server/) is a native multi-model database that combines graph, document, and search capabilities into a single platform. It provides a unified query language (AQL) to access all data models seamlessly. ArangoDB is designed for high performance and scalability, making it suitable for various applications including fraud detection, recommendation systems, knowledge graphs, and IoT data management. The Community Edition offers core functionality including native graph traversal, document storage, and ArangoSearch capabilities. With its flexible schema and powerful query capabilities, ArangoDB enables developers to build applications that can handle complex data relationships and perform sophisticated analytics.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

@@ -1,7 +1,7 @@
 ---
 slug: how-to-add-and-remove-sudo-access-in-ubuntu
 title: "Add and Remove sudo Access in Ubuntu"
-description: 'A guide explaining how to add admin users, or give users sudo privledges, using Unbuntu 20.10 Groovy Gorilla as an example.'
+description: 'A guide explaining how to add admin users, or give users sudo privileges, using Ubuntu 20.10 Groovy Gorilla as an example.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2021-04-01

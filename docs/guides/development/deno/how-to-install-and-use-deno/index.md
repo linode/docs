@@ -1,6 +1,6 @@
 ---
 slug: how-to-install-and-use-deno
-title: "Install and Use the Deno Javascript Runtime (Node.js Alternative)"
+title: "Install and Use the Deno JavaScript Runtime (Node.js Alternative)"
 description: 'This guide introduces the Deno JavaScript runtime and compares it to Node.js. It also explains how to install and use Deno.'
 authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]

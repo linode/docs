@@ -1,7 +1,7 @@
 ---
 slug: install-freebsd-on-linode
 title: 'Install FreeBSD on Linode'
-description: 'This guide will show you how to install FreeBSD, the free and open source operating system based on the Berkeley Software Software Distribution from the late 1970s.'
+description: 'This guide will show you how to install FreeBSD, the free and open source operating system based on the Berkeley Software Distribution from the late 1970s.'
 authors: ["Rainbow"]
 contributors: ["Rainbow"]
 published: 2016-03-14

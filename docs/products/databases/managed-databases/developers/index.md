@@ -11,7 +11,7 @@ tab_group_main:
 ## Linode API
 
 Linode’s API v4 provides the ability to programmatically manage the full range of Linode products and services.
-[Linode API documentation](/docs/api/databases)
+[Linode API documentation](https://techdocs.akamai.com/linode-api/reference/api-summary)
 
 ## Linode CLI
 

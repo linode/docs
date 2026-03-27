@@ -1,7 +1,7 @@
 ---
 slug: setting-up-round-robin-dns
 title: Setting up Round-Robin DNS
-description: 'Learn how to set up round-robin DNS on a set of Linodes as well as how to employ a NodeBalancer for loadbalancing support for those Linodes.'
+description: 'Learn how to set up round-robin DNS on a set of Linodes as well as how to employ a NodeBalancer for load balancing support for those Linodes.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2012-03-13

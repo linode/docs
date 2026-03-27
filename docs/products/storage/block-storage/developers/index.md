@@ -8,9 +8,9 @@ tab_group_main:
 
 ## Linode API
 
-Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
+Linode’s [API v4](https://techdocs.akamai.com/linode-api/reference/api) provides the ability to programmatically manage the full range of Linode products and services.
 
-- [Block Storage Endpoint Collection](/docs/api/volumes/)
+- [Block Storage Endpoint Collection](https://techdocs.akamai.com/linode-api/reference/api-summary)
 
 - [Manage Block Storage Volumes with the Linode API](/docs/products/storage/block-storage/guides/manage-block-storage-with-linode-api/).
 

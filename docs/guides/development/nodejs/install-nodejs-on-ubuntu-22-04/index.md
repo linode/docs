@@ -2,7 +2,7 @@
 slug: install-nodejs-on-ubuntu-22-04
 title: "How to Install Node.js on Ubuntu 22.04"
 title_meta: "Installing Node.js on Ubuntu 22.04"
-description: 'You need to know how to install Node.JS on Ubuntu 22.04 Linux if you work on a cloud server with cloud apps. This tutorial gets you started? ✓ Click here!'
+description: 'You need to know how to install Node.js on Ubuntu 22.04 Linux if you work on a cloud server with cloud apps. This tutorial gets you started? ✓ Click here!'
 authors: ["John Mueller"]
 contributors: ["John Mueller"]
 published: 2023-02-24

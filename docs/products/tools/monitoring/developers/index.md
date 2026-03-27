@@ -7,17 +7,17 @@ tab_group_main:
 
 ## Linode API
 
-Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
+Linode’s [API v4](https://techdocs.akamai.com/linode-api/reference/api) provides the ability to programmatically manage the full range of Linode products and services.
 
-- [View Linode Statistics](/docs/api/linode-instances/#view-linode-statistics)
+- [View Linode Statistics](https://techdocs.akamai.com/linode-api/reference/api-summary#view-linode-statistics)
 
-- [View Statistics (year/month)](/docs/api/linode-instances/#view-statistics-yearmonth)
+- [View Statistics (year/month)](https://techdocs.akamai.com/linode-api/reference/api-summary#view-statistics-yearmonth)
 
-- [List Managed Stats](/docs/api/managed/#list-managed-stats)
+- [List Managed Stats](https://techdocs.akamai.com/linode-api/reference/api-summary#list-managed-stats)
 
-- [View NodeBalancer Statistics](/docs/api/nodebalancers/#view-nodebalancer-statistics)
+- [View NodeBalancer Statistics](https://techdocs.akamai.com/linode-api/reference/api-summary#view-nodebalancer-statistics)
 
-- [Longview Endpoints](/docs/api/longview/)
+- [Longview Endpoints](https://techdocs.akamai.com/linode-api/reference/api-summary)
 
 ## Linode CLI
 

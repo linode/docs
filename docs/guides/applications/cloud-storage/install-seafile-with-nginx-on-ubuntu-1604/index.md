@@ -40,7 +40,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 3.  Log out of your Linode's root user account and back in as *sfadmin*:
 
         exit
-        ssh sfadmin@<your_linode's_ip>
+        ssh sfadmin@<your_Linode_ip>
 
 
 4.  You should now be logged into your Linode as *sfadmin*. Use our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access) guide to harden SSH access.

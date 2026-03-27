@@ -2,7 +2,7 @@
 slug: secure-instance-with-fido2-key
 title: "Log in to Compute Instances Using the Akamai MFA FIDO2 Authenticator and the Krypton akr SSH Agent"
 title_meta: "Log in to Compute Instances Using the Akamai MFA FIDO2 Authenticator"
-description: "Learn how to access your Compute Instances using Akamai's own FIDO2 authentator and SSH agent."
+description: "Learn how to access your Compute Instances using Akamai's own FIDO2 authenticator and SSH agent."
 authors: ["Bill Huang"]
 contributors: ["Bill Huang"]
 published: 2023-05-22

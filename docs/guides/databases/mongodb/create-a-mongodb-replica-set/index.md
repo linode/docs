@@ -2,7 +2,7 @@
 slug: create-a-mongodb-replica-set
 title: "Creating a MongoDB Replica Set"
 title_meta: "How To Create a MongoDB Replica Set"
-description: "This guide will show you how to configure a MongoDB replicat set on Ubuntu 16.04 and CentOS 7."
+description: "This guide will show you how to configure a MongoDB replica set on Ubuntu 16.04 and CentOS 7."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2016-12-02

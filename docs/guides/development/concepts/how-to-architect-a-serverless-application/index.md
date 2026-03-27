@@ -1,7 +1,7 @@
 ---
 slug: how-to-architect-a-serverless-application
 title: "How to Architect a Serverless Application"
-description: 'Learn about back-end and front-end services, microservices, and serverless applications. Understand their strenghts and weaknesses to design the optimal solution.'
+description: 'Learn about back-end and front-end services, microservices, and serverless applications. Understand their strengths and weaknesses to design the optimal solution.'
 authors: ["John Mueller"]
 contributors: ["John Mueller"]
 published: 2023-05-16

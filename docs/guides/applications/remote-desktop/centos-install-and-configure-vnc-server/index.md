@@ -1,6 +1,6 @@
 ---
 slug: centos-install-and-configure-vnc-server
-title: "Install and Configure VNC Server on Centos 8"
+title: "Install and Configure VNC Server on CentOS 8"
 description: 'This guide will show you how to install and configure a VNC server which you can remotely connect to and run a desktop environment with on CentOS 8.'
 og_description: 'This guide shows you how to install, configure, and use a VNC server to connect to a CentOS 8 remotely.'
 authors: ["Nathaniel Stickman"]

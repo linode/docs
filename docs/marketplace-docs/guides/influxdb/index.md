@@ -1,9 +1,9 @@
 ---
 description: "Deploy InfluxDB on a Linode Compute Instance. InfluxDB is a high-performance time series database designed to handle massive volumes of data with ease."
 keywords: ['time series database','monitoring','analytics','data']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 published: 2024-08-05
-title: "Deploy InfluxDB through the Linode Marketplace"
+title: "Deploy InfluxDB"
 external_resources:
 - '[InfluxData](https://www.influxdata.com/)'
 aliases: ['/products/tools/marketplace/guides/influxdb/']
@@ -14,7 +14,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 [InfluxDB](https://www.influxdata.com/) is a high-performance time series database designed to handle massive volumes of data with ease. Its intuitive query language and powerful visualization capabilities make it the go-to choice for monitoring, analytics, and IoT applications.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

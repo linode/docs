@@ -1,5 +1,5 @@
 ---
-title: "Deploy Passbolt Community Edition through the Linode Marketplace"
+title: "Deploy Passbolt Community Edition"
 description: "Learn how to deploy Passbolt Community Edition, an open-source password manager, on the Akamai cloud computing platform."
 published: 2024-03-19
 modified: 2024-08-05
@@ -12,14 +12,14 @@ marketplace_app_id: 1329430
 marketplace_app_name: "Passbolt Community Edition"
 ---
 
-This Marketplace App deploys the latest unmodified version of [Passbolt Community Edition](https://github.com/passbolt/passbolt_api), an open-source password manager designed for teams and businesses. It allows users to securely store, share, and manage passwords.
+This Quick Deploy App deploys the latest unmodified version of [Passbolt Community Edition](https://github.com/passbolt/passbolt_api), an open-source password manager designed for teams and businesses. It allows users to securely store, share, and manage passwords.
 
 {{< note >}}
 Passbolt and the Passbolt logo are registered trademarks of Passbolt S.A.
 This service is provided by Akamai and is not affiliated with Passbolt S.A.
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -45,7 +45,7 @@ To start registration follow the link provided in `/etc/motd` to visit the DNS y
 ```output
 cat /etc/motd
 *********************************************************
-Akamai Cloud passbolt Marketplace App
+Akamai Cloud passbolt Quick Deploy App
 
 Registering admin user: https://$DNS_NAME/setup/start/$UUID
 
@@ -70,7 +70,7 @@ For more information, visit [Passbolt Community Edition Installation Documentati
 
 ### Email Configuration
 
-Postfix is installed as part of the Marketplace App, allowing you to send a test email. Unless you've manually configured your own SMTP provider, to send a test email through the SMTP screen (https://<example.com>/app/administration/smtp-settings), use the following (replace `example.com` with your FQDN):
+Postfix is installed as part of the Quick Deploy App, allowing you to send a test email. Unless you've manually configured your own SMTP provider, to send a test email through the SMTP screen (https://<example.com>/app/administration/smtp-settings), use the following (replace `example.com` with your FQDN):
 
 * **Email provider**: Other
 * **Authentication method**: None

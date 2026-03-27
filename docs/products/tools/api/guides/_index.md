@@ -15,7 +15,7 @@ aliases: ['/products/tools/linode-api/guides/']
 
 - [Send an API Request with cURL](/docs/products/tools/api/guides/curl/): Learn how to use cURL to quickly send an API call
 
-- [API developer documentation](/docs/api/): The official documentation for each API endpoint, as well as essential information on using the Linode API.
+- [API developer documentation](https://techdocs.akamai.com/linode-api/reference/api): The official documentation for each API endpoint, as well as essential information on using the Linode API.
 
 ## Using the Linode API with Linode's Products
 

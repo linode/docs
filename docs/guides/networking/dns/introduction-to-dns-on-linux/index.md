@@ -1,7 +1,7 @@
 ---
 slug: introduction-to-dns-on-linux
 title: "Introduction to DNS on Linux"
-description: 'Learn the basics of DNS on Linux by configuting a primary name server with NSD.'
+description: 'Learn the basics of DNS on Linux by configuring a primary name server with NSD.'
 authors: ["David Robert Newman"]
 contributors: ["David Robert Newman"]
 published: 2023-06-09

@@ -10,9 +10,9 @@ tab_group_main:
 
 ## Linode API
 
-Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
+Linode’s [API v4](https://techdocs.akamai.com/linode-api/reference/api) provides the ability to programmatically manage the full range of Linode products and services.
 
--  [Linode Kubernetes Engine Endpoint Collection](/docs/api/linode-kubernetes-engine-lke)
+-  [Linode Kubernetes Engine Endpoint Collection](https://techdocs.akamai.com/linode-api/reference/api-summary)
 
 ## Linode CLI
 

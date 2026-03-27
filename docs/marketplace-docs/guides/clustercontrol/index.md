@@ -1,14 +1,13 @@
 ---
-title: "Deploy ClusterControl through the Linode Marketplace"
+title: "Deploy ClusterControl"
 description: "Manage the most popular open-source databases on-premise or in the cloud."
 published: 2021-08-13
 modified: 2022-05-17
 keywords: ['database','cluster','backups','configuration management']
-tags: ["marketplace", "linode platform", "cloud manager"]
-aliases: ['/guides/deploying-clustercontrol-marketplace-app/','/guides/clustercontrol-marketplace-app/']
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[ClusterControl](https://severalnines.com/product/clustercontrol/clustercontrol-community-edition)'
-aliases: ['/products/tools/marketplace/guides/clustercontrol/']
+aliases: ['/products/tools/marketplace/guides/clustercontrol/','/guides/deploying-clustercontrol-marketplace-app/','/guides/clustercontrol-marketplace-app/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -24,7 +23,7 @@ marketplace_app_name: "ClusterControl"
 ClusterControl offers both free and paid plans. Visit [Severalnines' website](https://severalnines.com/pricing) to view available plans and pricing information.
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

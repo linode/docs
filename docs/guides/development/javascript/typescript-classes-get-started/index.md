@@ -1,6 +1,6 @@
 ---
 slug: typescript-classes-get-started
-title: "Getting Started with Typescript Classes"
+title: "Getting Started with TypeScript Classes"
 title_meta: "TypeScript Classes: Get Started"
 description: 'This guide discusses TypeScript classes with information on initializers, constructors, member visibility, and more.'
 authors: ["Martin Heller"]

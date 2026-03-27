@@ -24,6 +24,7 @@ adodb
 adoptium
 aes
 ag
+agentic
 agentless
 Agones
 ahci0
@@ -107,6 +108,7 @@ atera
 atlanta
 Auditbeat
 auditd
+auth_socket
 authdaemonrc
 authg
 authlib
@@ -192,10 +194,10 @@ bgpd
 Bhushan
 bialek
 Bigtable
-bin_t
 bing
 binhex
 binlog
+bin_t
 bioinformaticists
 biomes
 bitbucket
@@ -596,12 +598,13 @@ dmitriy
 dmz
 dnf
 dns
-dns_linode
 DNSdumpster
 dnsleaktest
+dns_linode
 dnsmasq
 DNSPerf
 DNSRecon
+dnssec
 dockercompose
 dockerfile
 dockerfiles
@@ -613,10 +616,10 @@ docstring
 docstrings
 doctest
 dokku
-domain_id
 domain1
 domain2
 domain3
+domain_id
 domainkey
 domainname
 donenfeld
@@ -630,6 +633,8 @@ downscaled
 dpkg
 dport
 dragos
+dropbox
+Dropbox
 dropdown
 drupal
 drush
@@ -815,6 +820,7 @@ freeipa
 Freemarker
 freemium
 freenom
+FreePBX
 fremont
 freshclam
 freshdesk
@@ -951,6 +957,7 @@ h2
 h3
 h4x0r123
 hackage
+HackerSploit
 hadoop
 halls3
 Haltdos
@@ -976,6 +983,7 @@ hebb
 hebbian
 hebern
 Heinemeier
+Helpdesk
 heredoc
 heroku
 hexo
@@ -1001,6 +1009,7 @@ hotfixes
 hotlink
 hotlinked
 hotlinking
+Hotmail
 hotspot
 hotspots
 Hotwire
@@ -1017,15 +1026,15 @@ htmldir
 htop
 htpasswd
 http
-http_get_request
 httpchk
 httpd
+http_get_request
 httpie
 https
 Hubzilla
 huginn
-Hugo
 hugo
+Hugo
 hulu
 husch
 hvc0
@@ -1034,6 +1043,7 @@ Hydrolix
 hykes
 hypercorn
 Hyperdisk
+Hyperdisks
 hyperefficient
 HyperLogLog
 hyperparameter
@@ -1108,6 +1118,9 @@ inotify
 inrupt
 insmod
 inspec
+install_elasticsearch_centos
+install_elasticsearch_debian_ubuntu
+install_python_miniconda
 Instructure
 intel
 interconnectivity
@@ -1160,21 +1173,21 @@ isp
 ISPConfig
 isps
 issuewild
-Istio
 istio
+Istio
 istioctl
 iterable
 iterables
 iTerm
 itk
 ivanti
+jaegeradmin
 jamstack
 Janca
 java6
 javac
 javalin
 javascript
-jaegeradmin
 JBoss
 jdbc
 jdk
@@ -1208,8 +1221,8 @@ JRuby
 js
 jshell
 json
-json_pp
 jsonpath
+json_pp
 jsonpp
 julialang
 jumpbox
@@ -1295,8 +1308,8 @@ kubeconfig
 Kubecost
 kubectl
 kubectx
-Kubeflow
 kubeflow
+Kubeflow
 kubelet
 kubelets
 kubernetes
@@ -1364,8 +1377,8 @@ linewise
 Linkedin
 linkerd
 linode
-linode's
 linodego
+linode_instance
 linodes
 linroot
 linter
@@ -1493,6 +1506,7 @@ megatrends
 melilla
 memcached
 memcrashed
+Memgraph
 menuentry
 Merkle
 mesos
@@ -1510,6 +1524,7 @@ metricbeat
 metricset
 metricsets
 metroid
+mgconsole
 michael
 microblogging
 microblogs
@@ -1561,11 +1576,13 @@ moby
 mod_alias
 mod_autoindex
 mod_cluster
+moddable
 mod_deflate
 mod_evasive
 mod_expires
 mod_fastcgi
 mod_fcgid
+modinfo
 mod_jk
 mod_mono
 mod_perl
@@ -1573,14 +1590,12 @@ mod_php
 mod_proxy
 mod_python
 mod_rewrite
+modsecurity
 mod_setenvif
 mod_ssi
 mod_status
-mod_wsgi
-moddable
-modinfo
-modsecurity
 modularization
+mod_wsgi
 Mojang
 mongocryptd
 mongod
@@ -1634,6 +1649,7 @@ multiplatform
 Multiplo
 multiport
 multiprotocol
+multiqueue
 multirepo
 multiset
 multisite
@@ -1658,13 +1674,13 @@ myproject
 mypy
 myserver
 mysql
-mysql_config_editor
-mysql_secure_installation
 mysqlclient10
+mysql_config_editor
 mysqld
 mysqldefault
 mysqldump
 mysqli
+mysql_secure_installation
 mytestdb
 myuser
 mzet
@@ -1884,6 +1900,7 @@ passwd
 passwdcolumn
 passwdfile
 passwordless
+pathlib
 pathnames
 patroni
 Paulo
@@ -1908,14 +1925,14 @@ permalink
 permalinks
 Petazzoni
 pflogsumm
-pgvector
+pgAdmin
 pg_auto_failover
 pg_dump
 pg_dumpall
-pg_restore
-pgAdmin
-PGvector
 pgpass
+pg_restore
+pgvector
+PGvector
 Phalcon
 pharmer
 pharo
@@ -1924,7 +1941,7 @@ photoshop
 php
 php5
 php7
-phpFox
+phpfox
 PHPMailer
 phpmyadmin
 Phrack
@@ -1943,6 +1960,7 @@ piwik
 pixelfed
 pixid
 pixid
+pkgtool
 pki
 plaintext
 platformer
@@ -1991,6 +2009,7 @@ preinstalled
 preload
 preloaded
 preloader
+preloading
 premade
 prepend
 prepended
@@ -2005,8 +2024,8 @@ preselection
 prestashop
 prettifier
 prettifiers
-Printf
 printf
+Printf
 prismic
 pritunl
 privesc
@@ -2070,6 +2089,7 @@ qualys
 quickconnect
 quicklisp
 quickstart
+Qwen
 radeon
 rainloop
 Ramaze
@@ -2111,6 +2131,7 @@ rebootuser
 rebranded
 recompiles
 reconnections
+Recordkeeping
 recordset
 recoverability
 recursing
@@ -2579,6 +2600,7 @@ timewait
 timey
 tinc
 tincd
+Tiny Tiny
 tinydb
 tiobe
 titlebar
@@ -2621,6 +2643,7 @@ tracebacks
 traceroute
 trackbar
 traefik
+TrafficPeak
 transcode
 transcoded
 transcoder
@@ -2652,7 +2675,7 @@ turborepo
 turtl
 tv
 tw
-TWiki
+twiki
 twilio
 txt
 txz
@@ -2686,6 +2709,7 @@ unban
 unbans
 unbilled
 unbundle
+Unbundling
 uncategorized
 uncheck
 unchecking
@@ -2775,9 +2799,9 @@ varnishlog
 varonis
 vaultwarden
 vBulletin
+vcns
 vCPU
 vCPUs
-vcns
 vcs
 vdev
 vdevs
@@ -2874,6 +2898,7 @@ webserver
 webservers
 webservice
 websocket
+WebSockets
 webtatic
 webupd8
 webuzo
@@ -2918,8 +2943,8 @@ wordcount
 wordfence
 wordlist
 wordlists
-Wordpress
 wordpress
+Wordpress
 worker1
 worker2
 workgroup
@@ -3024,3 +3049,4 @@ zshrc
 zxvf
 ZYpp
 Zypper
+Zypperauth_socket

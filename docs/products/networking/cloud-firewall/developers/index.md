@@ -8,20 +8,20 @@ tab_group_main:
 
 ## Linode API
 
-Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
+Linode’s [API v4](https://techdocs.akamai.com/linode-api/reference/api) provides the ability to programmatically manage the full range of Linode products and services.
 
 The Cloud Firewall endpoints:
 
-- [Firewalls List](/docs/api/networking/#firewalls-list)
-- [Firewall Create](/docs/api/networking/#firewall-create)
-- [Firewall Delete](/docs/api/networking/#firewall-delete)
-- [Firewall View](/docs/api/networking/#firewall-view)
-- [Firewall Update](/docs/api/networking/#firewall-update)
-- [Firewall Devices List](/docs/api/networking/#firewall-devices-list)
-- [Firewall Device Delete](/docs/api/networking/#firewall-device-delete)
-- [Firewall Device View](/docs/api/networking/#firewall-device-view)
-- [Firewall Rules List](/docs/api/networking/#firewall-rules-list)
-- [Firewall Rules Update](/docs/api/networking/#firewall-rules-update)
+- [Firewalls List](https://techdocs.akamai.com/linode-api/reference/api-summary#firewalls-list)
+- [Firewall Create](https://techdocs.akamai.com/linode-api/reference/api-summary#firewall-create)
+- [Firewall Delete](https://techdocs.akamai.com/linode-api/reference/api-summary#firewall-delete)
+- [Firewall View](https://techdocs.akamai.com/linode-api/reference/api-summary#firewall-view)
+- [Firewall Update](https://techdocs.akamai.com/linode-api/reference/api-summary#firewall-update)
+- [Firewall Devices List](https://techdocs.akamai.com/linode-api/reference/api-summary#firewall-devices-list)
+- [Firewall Device Delete](https://techdocs.akamai.com/linode-api/reference/api-summary#firewall-device-delete)
+- [Firewall Device View](https://techdocs.akamai.com/linode-api/reference/api-summary#firewall-device-view)
+- [Firewall Rules List](https://techdocs.akamai.com/linode-api/reference/api-summary#firewall-rules-list)
+- [Firewall Rules Update](https://techdocs.akamai.com/linode-api/reference/api-summary#firewall-rules-update)
 
 ## Linode CLI
 

@@ -1,7 +1,7 @@
 ---
 slug: how-to-choose-a-control-panel
 title: 'How to Choose a Control Panel'
-description: 'Control panels offer simplfied GUIs for complicated Linux system administrastion tasks.'
+description: 'Control panels offer simplified GUIs for complicated Linux system administration tasks.'
 authors: ["Nathan Melehan"]
 contributors: ["Nathan Melehan"]
 published: 2018-08-01

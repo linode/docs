@@ -12,7 +12,6 @@ image: feature.png
 external_resources:
 - '[Terraform Linode Provider Official Documentation](https://registry.terraform.io/providers/linode/linode/latest/docs)'
 aliases: ['/applications/configuration-management/terraform/how-to-deploy-secure-linodes-using-cloud-firewalls-and-terraform/']
-tags: ["saas"]
 ---
 
 Terraform modules allow you to better organize your configuration code and to distribute and reuse it. You can host your Terraform modules on remote version control services, like GitHub, for others to use. The Terraform Module Registry hosts community modules that you can reuse for your own Terraform configurations, or you can publish your own modules for consumption by the Terraform community.
@@ -341,7 +340,7 @@ Now that all the Cloud Firewalls child modules have been created, you can create
     }
     ```
 
-    - The `provider` block is a requirement to use the Linode provider. Since Cloud Firewalls is currently in an open beta, you must use the `api_version` argument to tell Terraform to use Linode's beta [API v4 endpoints](/docs/api/).
+    - The `provider` block is a requirement to use the Linode provider. Since Cloud Firewalls is currently in an open beta, you must use the `api_version` argument to tell Terraform to use Linode's beta [API v4 endpoints](https://techdocs.akamai.com/linode-api/reference/api).
 
     - The `locals` block declares a local variable `key` whose value will be provided by an input variable. The `linode_ids` local variable is used by the `web_server` module instance in the next block to retrieve the Linode ids for the Linodes to be assigned to the Cloud Firewall that will be created.
 

@@ -1,12 +1,12 @@
 ---
-# Shortguide: Details the optional fields related to creating a limited user account on a Marketplace App.
+# Shortguide: Details the optional fields related to creating a limited user account on a Quick Deploy App.
 
 headless: true
 show_on_rss_feed: false
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-description: 'Marketplace limited user shortguide'
+description: 'Quick Deploy App limited user shortguide'
 ---
 
 #### Limited User (Optional)

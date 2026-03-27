@@ -1,7 +1,7 @@
 ---
 slug: twiki-on-ubuntu-12-04-precise-pangolin
 title: 'TWiki on Ubuntu 12.04 (Precise Pangolin)'
-description: 'Twiki is a robust wiki compared to other apps such as Confluence. This guide provides you with instructions for installing Twiki on Ubuntu 12.04 "Precise Pangolin".'
+description: 'TWiki is a robust wiki compared to other apps such as Confluence. This guide provides you with instructions for installing TWiki on Ubuntu 12.04 "Precise Pangolin".'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2012-10-24

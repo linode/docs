@@ -14,7 +14,6 @@ external_resources:
 aliases: ['/applications/configuration-management/ansible/deploy-linodes-using-ansible/','/applications/configuration-management/deploy-linodes-using-ansible/']
 tags: ["automation"]
 image: how-to-use-the-linode-ansible-module-to-deploy-linodes.png
-tags: ["saas"]
 deprecated: true
 deprecated_link: 'guides/deploy-linodes-using-linode-ansible-collection/'
 ---
@@ -25,7 +24,7 @@ This guide shows how to use the older *Linode Ansible module* to manage Linode i
 The community-maintained module still functions, but using the Ansible collection is recommended. Review our [Using the Linode Ansible Collection to Deploy a Linode](/docs/guides/deploy-linodes-using-linode-ansible-collection/) guide for more information.
 {{< /note >}}
 
-Ansible is a popular open-source tool that can be used to automate common IT tasks, like cloud provisioning and configuration management. With [Ansible's 2.8 release](https://docs.ansible.com/ansible/latest/roadmap/ROADMAP_2_8.html), you can deploy Linode instances using our latest [API (v4)](/docs/api/). Ansible's `linode_v4` module adds the functionality needed to deploy and manage Linodes via the command line or in your [Ansible Playbooks](/docs/guides/running-ansible-playbooks/). While the dynamic inventory plugin for Linode helps you source your Ansible inventory directly from the Linode API (v4).
+Ansible is a popular open-source tool that can be used to automate common IT tasks, like cloud provisioning and configuration management. With [Ansible's 2.8 release](https://docs.ansible.com/ansible/latest/roadmap/ROADMAP_2_8.html), you can deploy Linode instances using our latest [API (v4)](https://techdocs.akamai.com/linode-api/reference/api). Ansible's `linode_v4` module adds the functionality needed to deploy and manage Linodes via the command line or in your [Ansible Playbooks](/docs/guides/running-ansible-playbooks/). While the dynamic inventory plugin for Linode helps you source your Ansible inventory directly from the Linode API (v4).
 
 In this guide you will learn how to:
 

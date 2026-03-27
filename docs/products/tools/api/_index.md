@@ -1,7 +1,7 @@
 ---
 title: Linode API
 title_meta: "Linode API Product Documentation"
-description: "The Linode API lets you build the apps you want and programmitically manage your account. It offers secure authentication and third-party integrations and plugins."
+description: "The Linode API lets you build the apps you want and programmatically manage your account. It offers secure authentication and third-party integrations and plugins."
 published: 2020-09-11
 modified: 2022-12-06
 tab_group_main:
@@ -14,7 +14,7 @@ aliases: ['/products/tools/linode-api/','/platform/api/','/guides/platform/api/'
 ---
 
 {{< note >}}
-To view the official documentation on each Linode API endpoint, see the [API developer documentation](/docs/api/).
+To view the official documentation on each Linode API endpoint, see the [API developer documentation](https://techdocs.akamai.com/linode-api/reference/api).
 {{< /note >}}
 
 ## Features
@@ -48,4 +48,4 @@ Access to the Linode API is available at no charge across [all regions](https://
 
 ## Limits and Considerations
 
-- Rate limiting may vary by endpoint. See [Linode APIv4 Rate Limits](/docs/api/#linode-apiv4-rate-limits)
+- Rate limiting may vary by endpoint. See [Linode APIv4 Rate Limits](https://techdocs.akamai.com/linode-api/reference/api#linode-apiv4-rate-limits)

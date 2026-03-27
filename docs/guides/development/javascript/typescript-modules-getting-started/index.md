@@ -1,7 +1,7 @@
 ---
 slug: typescript-modules-getting-started
 title: "Get Started with TypeScript Modules"
-description: 'In this guide, you learn about Typescript modules, how to use the import and export keywords in your code, and the differences between Typescript modules and namespaces.'
+description: 'In this guide, you learn about TypeScript modules, how to use the import and export keywords in your code, and the differences between TypeScript modules and namespaces.'
 authors: ["John Mueller"]
 contributors: ["John Mueller"]
 published: 2021-10-08

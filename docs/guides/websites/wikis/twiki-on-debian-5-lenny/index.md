@@ -1,7 +1,7 @@
 ---
 slug: twiki-on-debian-5-lenny
 title: 'TWiki on Debian 5 (Lenny)'
-description: 'Twiki is a robust structured wiki compared to other solutions such as Confluence. This guide provides you with instructions for installing Twiki on Debian 5 "Lenny".'
+description: 'TWiki is a robust structured wiki compared to other solutions such as Confluence. This guide provides you with instructions for installing TWiki on Debian 5 "Lenny".'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-01-28

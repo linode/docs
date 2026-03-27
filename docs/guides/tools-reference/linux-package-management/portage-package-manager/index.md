@@ -2,7 +2,7 @@
 slug: portage-package-manager
 title: "Using Portage to Manage Packages in Gentoo"
 title_meta: "How to Use Portage to Manage Packages in Gentoo"
-description: "This guide walks you through the core features and common features of Portage, the default package manager on Gentoo linux, so you can install software on your system."
+description: "This guide walks you through the core features and common features of Portage, the default package manager on Gentoo Linux, so you can install software on your system."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2021-07-15

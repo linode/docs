@@ -10,7 +10,7 @@ aliases: ['/products/tools/linode-api/developers/']
 
 ## Linode API
 
-Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
+Linode’s [API v4](https://techdocs.akamai.com/linode-api/reference/api) provides the ability to programmatically manage the full range of Linode products and services.
 
 ## Linode CLI
 
@@ -54,7 +54,7 @@ The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the L
 
 ## Linode Developed/Supported Libraries
 
-- [Linode JavaScript SDK](https://github.com/linode/manager/tree/develop/packages/api-v4): JavaScript client for the [Linode APIv4](/docs/api).
+- [Linode JavaScript SDK](https://github.com/linode/manager/tree/develop/packages/api-v4): JavaScript client for the [Linode APIv4](https://techdocs.akamai.com/linode-api/reference/api).
 
 - [linode_api4-python](https://github.com/linode/linode_api4-python): The official python library for the Linode APIv4 in python.
 

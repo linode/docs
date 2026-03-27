@@ -37,7 +37,7 @@ The general consensus in the gaming community is that Debian or Ubuntu are the b
 
 ### Linode One-Click App Marketplace
 
-[Linode's One-Click App Marketplace](https://www.linode.com/marketplace/apps/) offers easy to deploy gaming servers for some games including [Ark](https://www.linode.com/marketplace/apps/linode/ark-game-server/), [Team Fortress 2](https://www.linode.com/marketplace/apps/linode/tf2-game-server/) and [Terraria](https://www.linode.com/marketplace/apps/linode/terraria-game-server/). You can refer to each [Marketplace App's Linode documentation](/docs/marketplace-docs/guides/) to learn how to deploy your game server, provide the appropriate configurations, and select the server's appropriate plan size.
+[Linode's One-Click App Marketplace](https://www.linode.com/marketplace/apps/) offers easy to deploy gaming servers for some games including [Ark](https://www.linode.com/marketplace/apps/linode/ark-game-server/), [Team Fortress 2](https://www.linode.com/marketplace/apps/linode/tf2-game-server/) and [Terraria](https://www.linode.com/marketplace/apps/linode/terraria-game-server/). You can refer to each [Quick Deploy App's Linode documentation](/docs/marketplace-docs/guides/) to learn how to deploy your game server, provide the appropriate configurations, and select the server's appropriate plan size.
 
 {{< note >}}
 You can watch the developer Gardiner Bryant explaining [how to set up a Rust game server](https://www.youtube.com/watch?v=RPbIRbj0GyA) on Linode's YouTube channel.
@@ -45,7 +45,7 @@ You can watch the developer Gardiner Bryant explaining [how to set up a Rust gam
 
 ### Manually Installing Linux Game Servers
 
-If your game isn't available as a Marketplace App, you can deploy a Linode and manually install and configure your game. There are several command line tools like [LinuxGSM](https://linuxgsm.com/lgsm/sdtdserver/) and [SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD) that automate the process of installing Steam games and their dependencies. You can check out the following guides in our documentation library, to get started:
+If your game isn't available as a Quick Deploy App, you can deploy a Linode and manually install and configure your game. There are several command line tools like [LinuxGSM](https://linuxgsm.com/lgsm/sdtdserver/) and [SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD) that automate the process of installing Steam games and their dependencies. You can check out the following guides in our documentation library, to get started:
 
 - [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/)
 - [Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu](/docs/guides/install-a-half-life-2-deathmatch-dedicated-server-on-debian-or-ubuntu/)

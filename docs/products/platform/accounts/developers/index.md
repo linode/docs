@@ -9,25 +9,25 @@ tab_group_main:
 
 ## Linode API
 
-Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
+Linode’s [API v4](https://techdocs.akamai.com/linode-api/reference/api) provides the ability to programmatically manage the full range of Linode products and services.
 
-- [Account View](/docs/api/account/#account-view)
+- [Account View](https://techdocs.akamai.com/linode-api/reference/api-summary#account-view)
 
-- [Account Update](/docs/api/account/#account-update)
+- [Account Update](https://techdocs.akamai.com/linode-api/reference/api-summary#account-update)
 
-- [Account Cancel](/docs/api/account/#account-cancel)
+- [Account Cancel](https://techdocs.akamai.com/linode-api/reference/api-summary#account-cancel)
 
-- [Users List](/docs/api/account/#users-list)
+- [Users List](https://techdocs.akamai.com/linode-api/reference/api-summary#users-list)
 
-- [Users Create](/docs/api/account/#user-create)
+- [Users Create](https://techdocs.akamai.com/linode-api/reference/api-summary#user-create)
 
-- [Users View](/docs/api/account/#user-view)
+- [Users View](https://techdocs.akamai.com/linode-api/reference/api-summary#user-view)
 
-- [User Update](/docs/api/account/#user-update)
+- [User Update](https://techdocs.akamai.com/linode-api/reference/api-summary#user-update)
 
-- [User's Grants View](/docs/api/account/#users-grants-view)
+- [User's Grants View](https://techdocs.akamai.com/linode-api/reference/api-summary#users-grants-view)
 
-- [User's Grants Update](/docs/api/account/#users-grants-update)
+- [User's Grants Update](https://techdocs.akamai.com/linode-api/reference/api-summary#users-grants-update)
 
 ## Linode CLI
 

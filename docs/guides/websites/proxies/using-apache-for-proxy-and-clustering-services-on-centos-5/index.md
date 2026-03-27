@@ -1,7 +1,7 @@
 ---
 slug: using-apache-for-proxy-and-clustering-services-on-centos-5
 title: Using Apache for Proxy and Clustering Services on CentOS 5
-description: 'How to cluster Apache web servers and proxy requests for content to external servers on Centos 5.'
+description: 'How to cluster Apache web servers and proxy requests for content to external servers on CentOS 5.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2010-03-22

@@ -1,6 +1,6 @@
 ---
 slug: hackersploit-red-team-series
-title: "Hackersploit Red Team Series"
+title: "HackerSploit Red Team Series"
 description: "In this series, learn red team techniques to determine vulnerabilities in your organization's security."
 authors: ["HackerSploit"]
 contributors: ["HackerSploit"]

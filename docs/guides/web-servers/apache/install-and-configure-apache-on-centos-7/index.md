@@ -1,7 +1,7 @@
 ---
 slug: install-and-configure-apache-on-centos-7
 title: How to Install Apache on CentOS 7
-description: 'Learn how to install & configure Apache web server on Centos 7 on a Linode.'
+description: 'Learn how to install & configure Apache web server on CentOS 7 on a Linode.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2016-11-18

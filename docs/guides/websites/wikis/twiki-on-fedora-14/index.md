@@ -1,7 +1,7 @@
 ---
 slug: twiki-on-fedora-14
 title: TWiki on Fedora 14
-description: 'Twiki is a robust structured wiki compared to other solutions such as Confluence. This guide provides you with instructions for installing Twiki on Fedora 14.'
+description: 'TWiki is a robust structured wiki compared to other solutions such as Confluence. This guide provides you with instructions for installing TWiki on Fedora 14.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-04-05

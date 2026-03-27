@@ -1,6 +1,6 @@
 ---
 title: "Secure a Cluster with User Permissions and RBAC"
-description: 'This guide describes how to create roles and set contexts for specific users to create an environment with limited kubernetes permissions.'
+description: 'This guide describes how to create roles and set contexts for specific users to create an environment with limited Kubernetes permissions.'
 contributors: ["Ryan Syracuse"]
 published: 2018-02-28
 modified: 2023-02-09

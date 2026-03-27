@@ -10,25 +10,25 @@ aliases: ['/products/tools/billing/developers/']
 
 ## Linode API
 
-Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
+Linode’s [API v4](https://techdocs.akamai.com/linode-api/reference/api) provides the ability to programmatically manage the full range of Linode products and services.
 
-- [List Invoices](/docs/api/account/#list-invoices)
+- [List Invoices](https://techdocs.akamai.com/linode-api/reference/api-summary#list-invoices)
 
-- [View Invoice](/docs/api/account/#view-invoice)
+- [View Invoice](https://techdocs.akamai.com/linode-api/reference/api-summary#view-invoice)
 
-- [List Invoice Items](/docs/api/account/#list-invoice-items)
+- [List Invoice Items](https://techdocs.akamai.com/linode-api/reference/api-summary#list-invoice-items)
 
-- [List Payments](/docs/api/account/#list-payments)
+- [List Payments](https://techdocs.akamai.com/linode-api/reference/api-summary#list-payments)
 
-- [Make Payment](/docs/api/account/#make-payment)
+- [Make Payment](https://techdocs.akamai.com/linode-api/reference/api-summary#make-payment)
 
-- [View Payment](/docs/api/account/#view-payment)
+- [View Payment](https://techdocs.akamai.com/linode-api/reference/api-summary#view-payment)
 
-- [Stage PayPal Payment](/docs/api/account/#stage-paypal-payment)
+- [Stage PayPal Payment](https://techdocs.akamai.com/linode-api/reference/api-summary#stage-paypal-payment)
 
-- [Staged/Approved PayPal Payment Execute](/docs/api/account/#stagedapproved-paypal-payment-execute)
+- [Staged/Approved PayPal Payment Execute](https://techdocs.akamai.com/linode-api/reference/api-summary#stagedapproved-paypal-payment-execute)
 
-- [Add/Edit Credit Card](/docs/api/account/#addedit-credit-card)
+- [Add/Edit Credit Card](https://techdocs.akamai.com/linode-api/reference/api-summary#addedit-credit-card)
 
 ## Linode CLI
 

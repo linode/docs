@@ -1,6 +1,6 @@
 ---
 slug: install-java-on-centos
-title: Install Java on Centos 7
+title: Install Java on CentOS 7
 description: 'This guide shows how to install the OpenJDK 8 runtime environment to support Java app execution and development on a Linode running CentOS 7.'
 authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]

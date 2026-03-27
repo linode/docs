@@ -127,7 +127,6 @@ export function newSearchExplorerHydrated(searchConfig) {
 				return;
 			}
 			let stack = this.$store.search.explorer.keyOpenStack;
-			debugDev('handleKeyOpenStack', stack.length, this.explorer.facets.length);
 			if (!stack.length || !this.explorer.facets.length) {
 				return;
 			}
@@ -216,7 +215,6 @@ export function newSearchExplorerHydrated(searchConfig) {
 
 				this.openAndCloseNodes();
 				this.$store.search.explorer.hydrated = true;
-				debugDev('hydrated');
 			}, createExplorerNodeRequest);
 		},
 
@@ -256,7 +254,16 @@ export function newSearchExplorerHydrated(searchConfig) {
 			if (!pageInfo) {
 				return;
 			}
-			debug('openAndCloseNodes', pageInfo.href);
+			debugDev('openAndCloseNodes', pageInfo.href, window.location.href, 'sec', pageInfo.hrefSection);
+			let roots = this.explorer.rootNodes;
+			for (let i = 0; i < roots.length; i++) {
+				let n = roots[i];
+				if (n.level === 1) {
+					// Only show the current section unless on home page.
+					n.hidden = !(pageInfo.kind == 'home' || (n.href && pageInfo.href.startsWith(n.href)));
+				}
+			}
+			// return pageInfo.kind == 'home' || n.href == pageInfo.href;
 			if (pageInfo.kind === 'home') {
 				closeLevel(1, this.explorer.facets);
 			} else {

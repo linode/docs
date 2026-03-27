@@ -1,6 +1,6 @@
 ---
 slug: install-magento-2-4-on-centos-8
-title: "Install Magento 2.4 on Centos 8"
+title: "Install Magento 2.4 on CentOS 8"
 description: 'This guide describes how to install Magento 2.4 on CentOS8, including any configuration required by the LAMP stack and the Elasticsearch software.'
 authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]

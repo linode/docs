@@ -23,7 +23,6 @@ external_resources:
 - '[DynamoDB service](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SettingUp.DynamoWebService.html)'
 - '[AWS Provider in the Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)'
 - '[Build, update, or destroy AWS infrastructure with Terraform](https://learn.hashicorp.com/collections/terraform/aws-get-started)'
-tags: ["saas"]
 ---
 
 [*Terraform*](https://www.terraform.io/) is an open-source tool that is built by [*HashiCorp*](https://www.hashicorp.com). Using the *HashiCorp Configuration Language* (HCL), you can automate deploying your infrastructure, and provisioning its resources.
@@ -62,7 +61,7 @@ Code that declares the final state of your desired infrastructure is referred to
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. You need a personal access token for [Linode’s API v4](/docs/api/) to use with Terraform and the Terraform Linode Provider. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
+1. You need a personal access token for [Linode’s API v4](https://techdocs.akamai.com/linode-api/reference/api) to use with Terraform and the Terraform Linode Provider. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.

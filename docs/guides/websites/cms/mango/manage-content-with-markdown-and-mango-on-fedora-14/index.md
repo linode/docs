@@ -1,7 +1,7 @@
 ---
 slug: manage-content-with-markdown-and-mango-on-fedora-14
 title: Manage Content with Markdown and Mango on Fedora 14
-description: 'This guide will show you how Mango can publish markdown documents from plain text files into a fully customized and dynamic website using Fedora 14.'
+description: 'This guide will show you how Mango can publish Markdown documents from plain text files into a fully customized and dynamic website using Fedora 14.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-04-05

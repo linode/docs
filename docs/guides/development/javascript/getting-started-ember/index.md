@@ -2,7 +2,7 @@
 slug: getting-started-ember
 title: "How to Build a Website with the Ember Framework"
 title_meta: "Building a Website with the Ember Framework"
-description: "Ember offers a full framework for constructing modern web applications. Using an MVC structure, Ember comes with everyting you need, from templates and routing through components and services. Follow this tutorial to learn more about Ember and see how you can start making your own applications with it."
+description: "Ember offers a full framework for constructing modern web applications. Using an MVC structure, Ember comes with everything you need, from templates and routing through components and services. Follow this tutorial to learn more about Ember and see how you can start making your own applications with it."
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2023-04-03

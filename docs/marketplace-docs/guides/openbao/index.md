@@ -1,9 +1,9 @@
 ---
-title: "Deploy OpenBao through the Linode Marketplace"
+title: "Deploy OpenBao"
 description: "OpenBao is a open source tool secrets management tool that helps to provide secure, automated access to sensitive data."
 published: 2024-08-05
 keywords: ['openbao','marketplace', 'vault']
-tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager", "secrets", "education"]
+tags: ["ubuntu","quick deploy apps", "web applications","linode platform", "cloud manager", "secrets", "education"]
 external_resources:
 - '[About OpenBao](https://openbao.org/)'
 - '[OpenBao] Documentation](https://openbao.org/docs/)'
@@ -19,7 +19,7 @@ OpenBao is an open source solution to manage, store, and distribute sensitive da
 While OpenBao is a fork of a production-ready 1.14.x release of Hashicorp Vault, the OpenBao codebase is still early in development and is subject to change as development takes place. We recommend following the [release cycles](https://github.com/openbao/openbao/releases) for any breaking changes to minimize any downtime on a production environment.
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

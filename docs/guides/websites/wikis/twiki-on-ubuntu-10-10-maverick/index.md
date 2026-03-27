@@ -1,7 +1,7 @@
 ---
 slug: twiki-on-ubuntu-10-10-maverick
 title: 'TWiki on Ubuntu 10.10 (Maverick)'
-description: 'Twiki is a robust structured wiki compared to other solutions such as Confluence. This guide provides you with instructions for installing Twiki on Ubuntu 10.10 "Maverick".'
+description: 'TWiki is a robust structured wiki compared to other solutions such as Confluence. This guide provides you with instructions for installing TWiki on Ubuntu 10.10 "Maverick".'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-02-15

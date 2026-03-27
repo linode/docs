@@ -1,7 +1,7 @@
 ---
 slug: host-static-site-object-storage
 title: "Deploy a Static Site using Hugo and Object Storage"
-description: "This article shows you how you can host a static website from Linode's object storage by creating your site in markdown and using a static site generator."
+description: "This article shows you how you can host a static website from Linode's object storage by creating your site in Markdown and using a static site generator."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2019-04-09

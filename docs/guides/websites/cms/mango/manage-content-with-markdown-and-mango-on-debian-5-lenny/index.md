@@ -1,7 +1,7 @@
 ---
 slug: manage-content-with-markdown-and-mango-on-debian-5-lenny
 title: 'Manage Content with Markdown and Mango on Debian 5 (Lenny)'
-description: 'Mango publishes markdown documents from plain text files in a dynamic website.'
+description: 'Mango publishes Markdown documents from plain text files in a dynamic website.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-02-15

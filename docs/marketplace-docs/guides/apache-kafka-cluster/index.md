@@ -1,10 +1,10 @@
 ---
-title: "Deploy Apache Kafka through the Linode Marketplace"
+title: "Deploy Apache Kafka"
 description: Apache Kafka is a robust, scalable, and high-performance system for managing real-time data streams. Its versatile architecture and feature set make it an essential component for modern data infrastructure, supporting a wide range of applications from log aggregation to real-time analytics and more. Whether you are building data pipelines, event-driven architectures, or stream processing applications, Kafka provides a reliable foundation for your data needs."
 published: 2024-06-10
 modified: 2024-06-10
 keywords: ['kafka','apache kafka', 'marketplace', 'streaming', 'queue']
-tags: ["ubuntu","marketplace", "streaming applications", "linode platform", "cloud manager", "ssl", "cloud storage", "high availability", "compute storage"]
+tags: ["ubuntu","quick deploy apps", "streaming applications", "linode platform", "cloud manager", "ssl", "cloud storage", "high availability", "compute storage"]
 external_resources:
 - '[About Apache Kafka](https://kafka.apache.org/)'
 - '[Apache Kafka Documentation](https://kafka.apache.org/documentation/)'
@@ -28,7 +28,7 @@ Our marketplace application allows the deployment of a Kafka cluster using Kafka
 
 ![Kafka Architecture](kafka-cluster.png)
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -125,7 +125,7 @@ You can run a quick test from any of the Kafka nodes using Kafka's utilities fou
 
 ## Software Included
 
-The Apache Kafka Marketplace App installs the following software on your Linode:
+The Apache Kafka Quick Deploy App installs the following software on your Linode:
 
 | **Software**  | **Version**   | **Description**   |
 | :---      | :----     | :---          |

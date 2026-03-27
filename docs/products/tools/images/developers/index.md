@@ -9,7 +9,7 @@ tab_group_main:
 ## Linode API
 
 Linode’s API v4 provides the ability to programmatically manage the full range of Linode products and services.
-[Linode Images Endpoint Collection](/docs/api/images/)
+[Linode Images Endpoint Collection](https://techdocs.akamai.com/linode-api/reference/api-summary)
 
 ## Linode CLI
 

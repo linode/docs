@@ -8,11 +8,11 @@ tab_group_main:
 
 ## Linode API
 
-Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services, including VLANs.
+Linode’s [API v4](https://techdocs.akamai.com/linode-api/reference/api) provides the ability to programmatically manage the full range of Linode products and services, including VLANs.
 
 - [Creating a Private Network Using Linode API and Linode VLAN](/docs/products/networking/vlans/guides/manage-vlans-using-linode-api/): This guide shows you how to create a VLAN and attach Linodes to it using the Linode APIv4.
 
--  **Linode VLANs Endpoint Collection:** Use [VLANs List](/docs/api/networking/#vlans-list) and the [Configuration Profiles View](/docs/api/linode-instances/#configuration-profile-view) (as part of the `interfaces array`) to view VLANs. Create and manage VLANs through the [Configuration Profile Create](/docs/api/linode-instances/#configuration-profile-create) and [Configuration Profile Update](/docs/api/linode-instances/#configuration-profile-update) endpoints.
+-  **Linode VLANs Endpoint Collection:** Use [VLANs List](https://techdocs.akamai.com/linode-api/reference/api-summary#vlans-list) and the [Configuration Profiles View](https://techdocs.akamai.com/linode-api/reference/api-summary#configuration-profile-view) (as part of the `interfaces array`) to view VLANs. Create and manage VLANs through the [Configuration Profile Create](https://techdocs.akamai.com/linode-api/reference/api-summary#configuration-profile-create) and [Configuration Profile Update](https://techdocs.akamai.com/linode-api/reference/api-summary#configuration-profile-update) endpoints.
 
 ## Linode CLI
 

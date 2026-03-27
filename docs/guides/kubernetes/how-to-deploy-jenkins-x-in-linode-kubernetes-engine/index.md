@@ -9,7 +9,6 @@ published: 2020-07-29
 keywords: ['kubernetes','pipelines','ci/cd','kubernetes','jenkins x','jenkins']
 tags: ["docker","kubernetes","container","automation","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-image: DeployJenkinsX_LinodeKubEng.png
 image: 'learnk8s_jenkinsX.png'
 external_resources:
 - '[How to run Jenkins X Boot](https://jenkins-x.io/docs/install-setup/boot/how-it-works/)'

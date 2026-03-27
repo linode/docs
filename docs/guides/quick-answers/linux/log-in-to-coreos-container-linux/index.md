@@ -21,7 +21,7 @@ The `root` user is not active by default in Container Linux, so root login is no
 
 1.  From your local terminal, enter:
 
-        ssh core@<your_linode's_IP>
+        ssh core@<your_Linode_IP>
 
 2.  At the `password:` prompt, enter the `core` user's password you assigned when first having deployed Container Linux.
 

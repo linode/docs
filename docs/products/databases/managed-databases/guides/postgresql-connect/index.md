@@ -1,6 +1,6 @@
 ---
 title: "Connect to a PostgreSQL Database"
-description: "Learn how to connect to a PostgreSQL Managed Databse through the command line or pgAdmin."
+description: "Learn how to connect to a PostgreSQL Managed Database through the command line or pgAdmin."
 published: 2022-06-06
 modified: 2022-07-28
 ---

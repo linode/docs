@@ -1,6 +1,6 @@
 ---
 slug: beginners-guide-to-lxd-reverse-proxy
-title: "A Beginner's Guide to LXD: Setting Up a Reverse Proxy to Host Mulitple Websites"
+title: "A Beginner's Guide to LXD: Setting Up a Reverse Proxy to Host Multiple Websites"
 title_meta: "How to Set Up a Reverse Proxy to Host Websites in LXD"
 description: "In this tutorial, we explain how to create a reverse proxy in an LXD container in order to host multiple websites, each in their own additional containers."
 authors: ["Simos Xenitellis"]

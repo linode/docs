@@ -9,19 +9,19 @@ tab_group_main:
 
 ## Linode API
 
-Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
+Linode’s [API v4](https://techdocs.akamai.com/linode-api/reference/api) provides the ability to programmatically manage the full range of Linode products and services.
 
-- [List Backups](/docs/api/linode-instances/#backups-list)
+- [List Backups](https://techdocs.akamai.com/linode-api/reference/api-summary#backups-list)
 
-- [Create Snapshot](/docs/api/linode-instances/#snapshot-create)
+- [Create Snapshot](https://techdocs.akamai.com/linode-api/reference/api-summary#snapshot-create)
 
-- [Cancel Backups](/docs/api/linode-instances/#backups-cancel)
+- [Cancel Backups](https://techdocs.akamai.com/linode-api/reference/api-summary#backups-cancel)
 
-- [Enable Backups](/docs/api/linode-instances/#backups-enable)
+- [Enable Backups](https://techdocs.akamai.com/linode-api/reference/api-summary#backups-enable)
 
-- [View Backup](/docs/api/linode-instances/#backup-view)
+- [View Backup](https://techdocs.akamai.com/linode-api/reference/api-summary#backup-view)
 
-- [Restore Backup](/docs/api/linode-instances/#backup-restore)
+- [Restore Backup](https://techdocs.akamai.com/linode-api/reference/api-summary#backup-restore)
 
 ## Linode CLI
 

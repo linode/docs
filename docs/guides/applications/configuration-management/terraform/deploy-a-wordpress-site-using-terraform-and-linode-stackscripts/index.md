@@ -323,7 +323,7 @@ Terraform will automatically load any file named `terraform.tfvars` and use its 
     {{< /note >}}
 
     {{< note >}}
-    It can be helpful to reference Terraform's [Linode provider](https://www.terraform.io/docs/providers/linode/) documentation and the [Linode APIv4 documentation](/docs/api/) for assistance in determining appropriate values for Linode resources.
+    It can be helpful to reference Terraform's [Linode provider](https://www.terraform.io/docs/providers/linode/) documentation and the [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/api) for assistance in determining appropriate values for Linode resources.
     {{< /note >}}
 
 1. Replace the following values in your new `.tfvars` files:

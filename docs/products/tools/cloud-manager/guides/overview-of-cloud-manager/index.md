@@ -10,7 +10,7 @@ image: AnOverviewoftheLinodeCloudManager.png
 tags: ["linode platform","cloud manager"]
 ---
 
-[Cloud Manager](https://cloud.linode.com/) provides a user-friendly interface to manage your infrastructure, user accounts, billing and payments, and to open and track support tickets. You can easily create Linode instances, manage Kubernetes clusters, add backups to your Linodes, deploy Marketplace Apps, track event notifications, create Object Storage buckets, and more. Cloud Manager is implemented solely atop our public [API](/docs/api), which gives you access to all our latest products and services.
+[Cloud Manager](https://cloud.linode.com/) provides a user-friendly interface to manage your infrastructure, user accounts, billing and payments, and to open and track support tickets. You can easily create Linode instances, manage Kubernetes clusters, add backups to your Linodes, deploy Quick Deploy Apps, track event notifications, create Object Storage buckets, and more. Cloud Manager is implemented solely atop our public [API](https://techdocs.akamai.com/linode-api/reference/api), which gives you access to all our latest products and services.
 
 ## In this Guide
 
@@ -68,9 +68,9 @@ To get started using Longview, see the [Understanding Linode Longview](/docs/pro
 
 ## Marketplace
 
-The **Marketplace** section of Cloud Manager gives you access to apps that make it easy to deploy and configure Marketplace Apps on a Linode. Some popular Marketplace Apps are [WordPress](/docs/marketplace-docs/guides/wordpress/), [Minecraft](/docs/marketplace-docs/guides/minecraft/), and [GitLab](/docs/marketplace-docs/guides/gitlab/). We are actively adding new and useful Marketplace apps. When a Marketplace App is deployed, a new Linode is created and the appropriate software is installed with the configurations you provide.
+The **Marketplace** section of Cloud Manager gives you access to apps that make it easy to deploy and configure Quick Deploy Apps on a Linode. Some popular Quick Deploy Apps are [WordPress](/docs/marketplace-docs/guides/wordpress/), [Minecraft](/docs/marketplace-docs/guides/minecraft/), and [GitLab](/docs/marketplace-docs/guides/gitlab/). We are actively adding new and useful Quick Deploy Apps. When a Quick Deploy App is deployed, a new Linode is created and the appropriate software is installed with the configurations you provide.
 
-See [How to Use Linode's Marketplace Apps](/docs/marketplace-docs/get-started/) to get started using Marketplace Apps in Cloud Manager.
+See [How to Use Linode's Quick Deploy Apps](/docs/marketplace-docs/get-started/) to get started using Quick Deploy Apps in Cloud Manager.
 
 ## Kubernetes (LKE)
 
@@ -112,7 +112,7 @@ Cloud Manager does not support forcing password expirations. Forcing password re
 
 ## Tags
 
-Both Cloud Manager and [API v4](/docs/api) allow you to create tags to help organize and group your Linode resources. Tags can be applied to [Linode instances](#linodes), [Block Storage Volumes](#volumes), [NodeBalancers](#nodebalancers), and [Domains](#domains-dns-manager). See the [Tags and Groups](/docs/products/tools/cloud-manager/guides/tags-and-groups/) guide to learn how to create, apply, and search for tags.
+Both Cloud Manager and [API v4](https://techdocs.akamai.com/linode-api/reference/api) allow you to create tags to help organize and group your Linode resources. Tags can be applied to [Linode instances](#linodes), [Block Storage Volumes](#volumes), [NodeBalancers](#nodebalancers), and [Domains](#domains-dns-manager). See the [Tags and Groups](/docs/products/tools/cloud-manager/guides/tags-and-groups/) guide to learn how to create, apply, and search for tags.
 
 ## Events and Activity Feeds
 
@@ -140,7 +140,7 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 
 Cloud Manager supports the OAuth 2 authorization protocol. OAuth 2 allows a user to safely grant a third-party app permission to act on their behalf. This means that a user could authorize an app to access data and / or make changes to their Linode account and services that are exposed by the Linode API. For example, an app could create or destroy Linodes, manage a NodeBalancer, or alter a domain.
 
-To learn how to get started with OAuth Apps see the [How To Create an OAuth App with the Linode Python API Library](/docs/guides/create-an-oauth-app-with-the-python-api-library/) guide. For details on the Linode API v4's OAuth workflow see the [Linode API v4 documentation](/docs/api/account/#oauth-clients-list).
+To learn how to get started with OAuth Apps see the [How To Create an OAuth App with the Linode Python API Library](/docs/guides/create-an-oauth-app-with-the-python-api-library/) guide. For details on the Linode API v4's OAuth workflow see the [Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/api-summary#oauth-clients-list).
 
 ### Manage Email Event Notifications
 

@@ -1,10 +1,10 @@
 ---
-title: "Deploy NetFoundry Edge Router through the Linode Marketplace"
+title: "Deploy NetFoundry Edge Router"
 description: "Deploy a NetFoundry zero trust optimized connectivity Edge Router"
 published: 2020-01-31
 modified: 2025-01-31
 keywords: ['netfoundry', 'edge', 'networking']
-tags: ["ubuntu", "marketplace", "networking", "developer", "linode platform", "cloud manager"]
+tags: ["ubuntu", "quick deploy apps", "networking", "developer", "linode platform", "cloud manager"]
 external_resources:
 - '[NetFoundry](https://netfoundry.io/)'
 - '[NetFoundry official documentation](https://support.netfoundry.io/hc/en-us)'
@@ -17,7 +17,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 The NetFoundry Edge Router is a lightweight, software-based gateway that provides secure, zero-trust networking between endpoints, cloud environments, and private networks. Acting as a bridge between local networks and the NetFoundry overlay network, it enables encrypted, policy-driven connectivity without requiring traditional VPNs or complex firewall configurations. Edge Routers are deployed at the edge of networks or cloud instances and are key to enabling application-specific networking with high performance and security.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -61,7 +61,7 @@ This returns passwords that were automatically generated when the instance was d
 
 ## Getting Started After Deployment
 
-In order to utilize this Marketplace app, we assume you have a working account in the NetFoundry console and have the ability to create and manage endpoints and edge routers. If you don't have an account, you need to [create it](https://netfoundry.zendesk.com/auth/v2/login/registration) and log in to it in order to fully use this deployment.
+In order to utilize this Quick Deploy App app, we assume you have a working account in the NetFoundry console and have the ability to create and manage endpoints and edge routers. If you don't have an account, you need to [create it](https://netfoundry.zendesk.com/auth/v2/login/registration) and log in to it in order to fully use this deployment.
 
 
 {{% content "marketplace-update-note-shortguide" %}}

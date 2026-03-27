@@ -2,7 +2,7 @@
 slug: subversion-svn-tutorial
 title: "Install and Use the Subversion CLI Client"
 title_meta: "How to Install and Use the Subversion CLI Client"
-description: 'This guide shows you how to install the Subversion client and how to use the most essential SVN commands. These commands include checking out a branch and commiting your working copy changes.'
+description: 'This guide shows you how to install the Subversion client and how to use the most essential SVN commands. These commands include checking out a branch and committing your working copy changes.'
 authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 published: 2022-01-14

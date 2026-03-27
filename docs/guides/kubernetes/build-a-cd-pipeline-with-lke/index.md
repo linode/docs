@@ -1,7 +1,7 @@
 ---
 slug: build-a-cd-pipeline-with-lke
 title: "Building a CD Pipeline Using LKE, Helm, and GitLab"
-description: "This series of guides will walk you through setting up a continous deployment pipeline with GitLab, Helm, and LKE (Linode Kubernetes Engine)."
+description: "This series of guides will walk you through setting up a continuous deployment pipeline with GitLab, Helm, and LKE (Linode Kubernetes Engine)."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2021-05-06

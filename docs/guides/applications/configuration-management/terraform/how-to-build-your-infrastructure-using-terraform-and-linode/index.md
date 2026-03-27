@@ -37,7 +37,7 @@ The examples in this guide were originally written to be compatible with [Terraf
 
 -   When following this guide, your Linux user may need sudo privileges in order to install supplementary software packages.
 
--   You need a personal access token for Linode's [v4 API](/docs/api/) to use with Terraform. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
+-   You need a personal access token for Linode's [v4 API](https://techdocs.akamai.com/linode-api/reference/api) to use with Terraform. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
 
 ## Install Terraform
 

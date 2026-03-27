@@ -1,7 +1,7 @@
 ---
 title: Resources
 title_meta: "Resources for Object Storage"
-description: "Resources and other information related to Linode Object Storage including videos, blog posts, community posts, customer stories, ebooks, and press releases."
+description: "Resources and other information related to Linode Object Storage including videos, blog posts, community posts, customer stories, eBooks, and press releases."
 tab_group_main:
     weight: 40
 ---

@@ -2,7 +2,7 @@
 slug: squid-http-proxy-centos-8
 title: 'Creating an HTTP Proxy Using Squid on CentOS 8'
 title_meta: 'How to Create an HTTP Proxy Using Squid on CentOS 8'
-description: This guide shows how to use Squid to create an HTTP proxy server on your Linode running Centos 8.
+description: This guide shows how to use Squid to create an HTTP proxy server on your Linode running CentOS 8.
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2020-04-14
@@ -29,7 +29,7 @@ This guide will show you how to create your own HTTP proxy using Squid, a highly
 -   Bypass certain regional and local network restrictions.
 
 {{< note >}}
-The traffic passed from your client to your Squid HTTP proxy will not be encrypted and will still be visible on your local network. If you are looking for a solution that offers greater security, you may want to look at our guides on [Setting up an SSH Tunnel](/docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) or [Deploy OpenVPN Access Server with Marketplace Apps](/docs/marketplace-docs/guides/openvpn/).
+The traffic passed from your client to your Squid HTTP proxy will not be encrypted and will still be visible on your local network. If you are looking for a solution that offers greater security, you may want to look at our guides on [Setting up an SSH Tunnel](/docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) or [Deploy OpenVPN Access Server with Quick Deploy Apps](/docs/marketplace-docs/guides/openvpn/).
 {{< /note >}}
 
 ## Install Squid

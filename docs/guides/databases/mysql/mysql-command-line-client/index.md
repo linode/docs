@@ -22,7 +22,7 @@ If you wish to connect to a MySQL Managed Database, review the [Connect to a MyS
 
 ## Before You Begin
 
-- **Obtain the connection details for the MySQL instance you wish to use.** If you do not have a MySQL instance yet, you can [create a Managed Database](https://techdocs.akamai.com/cloud-computing/docs/managed-databases), [deploy the MySQL Marketplace App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/), or [install MySQL server (or MariaDB) on a Compute Instance](/docs/guides/install-mysql/). **This instance must allow remote connections or you must run the mysql command from within same system.**
+- **Obtain the connection details for the MySQL instance you wish to use.** If you do not have a MySQL instance yet, you can [create a Managed Database](https://techdocs.akamai.com/cloud-computing/docs/managed-databases), [deploy the MySQL Quick Deploy App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/), or [install MySQL server (or MariaDB) on a Compute Instance](/docs/guides/install-mysql/). **This instance must allow remote connections or you must run the mysql command from within same system.**
 
     {{% content "dbass-eos" %}}
 

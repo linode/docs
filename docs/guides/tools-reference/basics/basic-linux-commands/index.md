@@ -2,7 +2,7 @@
 slug: basic-linux-commands
 title: "Basic Linux Commands: A Beginner’s Guide "
 title_meta: "A List of the Most Common Linux Commands"
-description: 'What are the basic linux commands you should know? Use our Linux commands cheat sheet to learn beneficial commands, including useful commands that go beyond the basics.'
+description: 'What are the basic Linux commands you should know? Use our Linux commands cheat sheet to learn beneficial commands, including useful commands that go beyond the basics.'
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 published: 2021-12-23

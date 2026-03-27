@@ -2,7 +2,7 @@
 slug: create-terraform-module
 title: "Create a Terraform Module"
 title_meta: "How to Create a Terraform Module"
-description: 'This guide shows you how to create a Terraform module with nested root, linode_instance, and stackscripts modules using a Linode StackScripts installer.'
+description: 'This guide shows you how to create a Terraform module with nested root, Linode instance, and StackScripts modules using a Linode StackScripts installer.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2018-12-12
@@ -282,7 +282,7 @@ resource "linode_stackscript" "default" {
 }
 {{</ file >}}
 
-      The `main.tf` file creates the `linode_stackscript` resource and provides the required configurations. All argument values use interpolation syntax to access input variable values. You will declare the input variables next and provide the variable values in the root module’s `terraform.tfvars` file. For more information on StackScripts see the [StackScripts product page](/docs/products/tools/stackscripts/) and the [Linode APIv4 StackScripts reference](/docs/api/stackscripts).
+      The `main.tf` file creates the `linode_stackscript` resource and provides the required configurations. All argument values use interpolation syntax to access input variable values. You will declare the input variables next and provide the variable values in the root module’s `terraform.tfvars` file. For more information on StackScripts see the [StackScripts product page](/docs/products/tools/stackscripts/) and the [Linode APIv4 StackScripts reference](https://techdocs.akamai.com/linode-api/reference/api-summary).
 
 1. Create the `variables.tf` file to define your resource's required variables:
 

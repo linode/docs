@@ -220,7 +220,7 @@ There are three paths to deploy a new Compute Instance using your cloud-config i
       --metadata.user_data "$cloudconfigvar"
     ```
 
--   **Linode API**: Within the `instances/` endpoint of the API, you have access to a `metadata.user_data` option for inputting a cloud-config. Using this, you can initialize a new Compute Instance in a convenient `POST` request. Learn more about the Linode API in our documentation on the [Linode API](/docs/api/) and the [Linode Instances API](/docs/api/linode-instances/) documentation.
+-   **Linode API**: Within the `instances/` endpoint of the API, you have access to a `metadata.user_data` option for inputting a cloud-config. Using this, you can initialize a new Compute Instance in a convenient `POST` request. Learn more about the Linode API in our documentation on the [Linode API](https://techdocs.akamai.com/linode-api/reference/api) and the [Linode Instances API](/docs/api/linode-instances/) documentation.
 
     With versatility being one of its main advantages, there are numerous ways to use the Linode API to deploy a server. The steps below show a simple approach using just the command line. This example is easily adaptable for other contexts as well.
 

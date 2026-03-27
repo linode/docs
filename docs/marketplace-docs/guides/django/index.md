@@ -1,10 +1,10 @@
 ---
-title: "Deploy Django through the Linode Marketplace"
-description: "Learn how to deploy Django, a web framework that provides much of the core functionality required in modern web development, through the Linode Marketplace"
+title: "Deploy Django"
+description: "Learn how to deploy Django, a web framework that provides much of the core functionality required in modern web development."
 published: 2020-03-11
 modified: 2025-10-13
 keywords: ['django','marketplace', 'cms']
-tags: ["cloud-manager","linode platform","cms","django","marketplace","digital agencies"]
+tags: ["cloud-manager","linode platform","cms","django","quick deploy apps","digital agencies"]
 image: Django_oneclickapps.png
 aliases: ['/products/tools/marketplace/guides/django/','/platform/marketplace/how-to-deploy-django-with-marketplace-apps/','/platform/marketplace/deploying-django-with-marketplace-apps/', '/platform/one-click/how-to-deploy-django-with-one-click-apps/', '/platform/one-click/deploying-django-with-one-click-apps/','/guides/how-to-deploy-django-with-one-click-apps/','/guides/how-to-deploy-django-with-marketplace-apps/','/guides/django-marketplace-app/']
 external_resources:
@@ -19,7 +19,7 @@ marketplace_app_name: "Django"
 
 [Django](https://www.djangoproject.com/) is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications. It's also very flexible in its ability to facilitate many complex content management operations.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -50,7 +50,7 @@ marketplace_app_name: "Django"
 ### Access Django
 
 {{< note >}}
-The Django Marketplace App will assign `django_sample` as the [Django project name](https://docs.djangoproject.com/en/5.0/intro/tutorial01/#creating-a-project) at `/var/www/django_app/django_sample/`.
+The Django Quick Deploy App will assign `django_sample` as the [Django project name](https://docs.djangoproject.com/en/5.0/intro/tutorial01/#creating-a-project) at `/var/www/django_app/django_sample/`.
 {{< /note >}}
 
 1. Open your web browser and navigate to `https://[domain]`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.

@@ -1,7 +1,7 @@
 ---
 slug: optimizing-obj-bucket-architecture-for-akamai-cdn
 title: "Optimizing Object Storage Bucket Architecture for Akamai CDN"
-description: "This guide discusses design strategies and best practices for optimizing Linode Oject Storage bucket architecture for integrating with Akamai CDN."
+description: "This guide discusses design strategies and best practices for optimizing Linode Object Storage bucket architecture for integrating with Akamai CDN."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2024-09-27

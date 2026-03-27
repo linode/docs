@@ -1,7 +1,7 @@
 ---
 slug: building-a-website-with-astro
 title: "How to Build a Website with Astro"
-title_meta: "Building a Website wtih Astro"
+title_meta: "Building a Website with Astro"
 description: "Astro is a web development framework centered on content. With Astro you get a framework that adapts to the tools you use, and all of Astro's design favors putting your content out there. Learn about how Astro accomplishes this and how you can get started building your Astro website with this tutorial."
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]

@@ -1,10 +1,10 @@
 ---
-title: "Deploy WordPress through the Linode Marketplace"
-description: "WordPress is an industry standard CMS. Follow this guide to deploy WordPress on Linode using Marketplace Apps."
+title: "Deploy WordPress"
+description: "WordPress is an industry standard CMS. Follow this guide to deploy WordPress on Linode using Quick Deploy Apps."
 published: 2020-09-28
 modified: 2024-05-14
 keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress with marketplace', 'easy install wordpress']
-tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications"]
+tags: ["debian","cloud manager","linode platform","cms","wordpress","quick deploy apps","ssl","web applications"]
 external_resources:
 - '[WordPress Codex (Documentation)](https://codex.wordpress.org/)'
 aliases: ['/products/tools/marketplace/guides/wordpress/','/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/platform/one-click/deploying-wordpress-with-one-click-apps/','/guides/deploying-wordpress-with-one-click-apps/','/guides/deploying-wordpress-with-marketplace-apps/','/guides/wordpress-marketplace-app/']
@@ -17,7 +17,7 @@ marketplace_app_name: "WordPress"
 
 [WordPress](https://wordpress.org/) is an industry standard open source CMS (content management system) used by the majority of the web. With 60 million users around the globe, WordPress provides an intuitive platform for content-focused websites for both personal and business use. Its focus on best-in-class usability and flexibility makes it possible to have a customized website up and running in minutes.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -146,6 +146,6 @@ Now that your WordPress installation is deployed, you can start adding content a
 - [WordPress Support](https://wordpress.org/support/): Learn the basic workflows for using WordPress.
 - [Securing WordPress](/docs/guides/how-to-secure-wordpress/): Advice on securing WordPress through HTTPS, using a secure password, changing the admin username, and more.
 - [WordPress Themes](https://wordpress.org/themes/#): A collection of *thousands* of WordPress themes.
-- [Marketplace Apps Repository](https://github.com/akamai-compute-marketplace/marketplace-apps): Review the deployment Ansible playbooks.
+- [Quick Deploy Apps Repository](https://github.com/akamai-compute-marketplace/marketplace-apps): Review the deployment Ansible playbooks.
 
 {{% content "marketplace-update-note-shortguide" %}}

@@ -5,7 +5,7 @@ published: 2018-05-14
 modified: 2022-12-06
 image: manage-block-storage-volumes-with-the-linode-api.png
 external_resources:
-  - '[API Documentation](/docs/api/)'
+  - '[API Documentation](https://techdocs.akamai.com/linode-api/reference/api)'
 keywords: ["linode api", "block storage", "volume"]
 tags: ["linode platform"]
 aliases: ['/platform/api/create-block-storage-volumes-with-the-linode-api/','/guides/create-block-storage-volumes-with-the-linode-api/','/products/tools/api/guides/block-storage/']

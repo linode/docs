@@ -1,10 +1,10 @@
 ---
-title: "Deploy Prometheus and Grafana through the Linode Marketplace"
+title: "Deploy Prometheus and Grafana"
 description: "Deploy Prometheus & Grafana on a Linode Compute Instance. This application provides you with a reliable monitoring solution for all of your infrastructure. "
 published: 2022-03-29
 modified: 2025-09-30
 keywords: ['monitoring','observability']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Prometheus](https://prometheus.io/)'
 - '[Grafana](https://grafana.com/)'
@@ -16,7 +16,7 @@ marketplace_app_id: 985364
 marketplace_app_name: "Prometheus & Grafana"
 ---
 
-This Marketplace App installs both [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/oss/grafana/), two open source tools that are commonly used together to collect and view data. Optionally, you can also install [Loki](https://grafana.com/oss/loki/), a log aggregation system designed to work seamlessly with Grafana.
+This Quick Deploy App installs both [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/oss/grafana/), two open source tools that are commonly used together to collect and view data. Optionally, you can also install [Loki](https://grafana.com/oss/loki/), a log aggregation system designed to work seamlessly with Grafana.
 
 **Prometheus** is used to collect metrics and receive alerts. Prometheus monitors targets that you define at given intervals by scraping their metrics HTTP endpoints. This tool is particularly well-suited for numeric time series data, which makes it ideal for machine-centric monitoring as well as monitoring of highly dynamic service-oriented architectures.
 
@@ -24,7 +24,7 @@ This Marketplace App installs both [Prometheus](https://prometheus.io/) and [Gra
 
 **Loki** (optional) is a log aggregation and storage system inspired by Prometheus. It is designed to be cost-effective and easy to operate, as it does not index the contents of the logs, but rather a set of labels for each log stream. When installed, Loki is automatically configured as a data source in Grafana.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -97,7 +97,7 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 
     ```output
     *********************************************************
-    Akamai Connected Cloud Prometheus & Grafana Marketplace App
+    Akamai Connected Cloud Prometheus & Grafana Quick Deploy App
     Grafana URL: https://$EXAMPLE_DOMAIN.COM
     Prometheus URL: https://$EXAMPLE_DOMAIN.COM/prometheus
     Credentials File: /home/$SUDO_USER/.credentials

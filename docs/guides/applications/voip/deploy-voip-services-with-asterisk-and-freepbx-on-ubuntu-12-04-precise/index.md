@@ -1,6 +1,6 @@
 ---
 slug: deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-12-04-precise
-title: 'Deploy VoIP Services with Asterisk and Freepbx on Ubuntu 12.04'
+title: 'Deploy VoIP Services with Asterisk and FreePBX on Ubuntu 12.04'
 description: 'This guide will show you how to install Asterisk and FreePBX on Your Linode to Use and Manage a Telephone Exchange, also known as a PBX, on Ubuntu 12.04'
 authors: ["Alex Fornuto"]
 contributors: ["Alex Fornuto"]

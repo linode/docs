@@ -1,9 +1,9 @@
 ---
 slug: what-are-javascript-service-workers
-title: "Javascript Service Workers: An Introduction with Examples"
-title_meta: "What Are Javascript Service Workers?"
-description: "This guide provides you with an introduction to Javascript Service Workers and what they are capable of, as well as how to build an example service worker. "
-og_description:  "This guide provides you with an introduction to Javascript Service Workers and what they are capable of, as well as how to build an example service worker. "
+title: "JavaScript Service Workers: An Introduction with Examples"
+title_meta: "What Are JavaScript Service Workers?"
+description: "This guide provides you with an introduction to JavaScript Service Workers and what they are capable of, as well as how to build an example service worker. "
+og_description:  "This guide provides you with an introduction to JavaScript Service Workers and what they are capable of, as well as how to build an example service worker. "
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2021-07-09

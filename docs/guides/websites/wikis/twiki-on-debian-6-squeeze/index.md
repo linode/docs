@@ -1,7 +1,7 @@
 ---
 slug: twiki-on-debian-6-squeeze
 title: 'TWiki on Debian 6 (Squeeze)'
-description: 'Twiki is a robust structured wiki compared to other solutions such as Confluence. This guide provides you with instructions for installing Twiki on Debian 6 "Squeeze".'
+description: 'TWiki is a robust structured wiki compared to other solutions such as Confluence. This guide provides you with instructions for installing TWiki on Debian 6 "Squeeze".'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-04-05

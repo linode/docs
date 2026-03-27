@@ -2,7 +2,7 @@
 slug: how-to-install-anaconda
 title: "Installing Anaconda on Ubuntu"
 title_meta: "How to Install Anaconda on Ubuntu"
-description: "Learn how to install Anaconda, a Python/R distrihution designed for scientific computing, on Ubuntu."
+description: "Learn how to install Anaconda, a Python/R distribution designed for scientific computing, on Ubuntu."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2021-06-04

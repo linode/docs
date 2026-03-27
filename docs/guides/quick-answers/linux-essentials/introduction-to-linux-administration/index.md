@@ -10,7 +10,7 @@ tags: ["linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[Linux System Administration Basics](/docs/guides/linux-system-administration-basics/)'
-  - '[Linode API Documentation](/docs/api/)'
+  - '[Linode API Documentation](https://techdocs.akamai.com/linode-api/reference/api)'
 aliases: ['/quick-answers/linux-essentials/introduction-to-linux-administration/']
 ---
 

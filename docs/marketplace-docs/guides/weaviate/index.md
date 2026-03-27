@@ -1,10 +1,10 @@
 ---
-title: "Deploy Weaviate through the Linode Marketplace"
+title: "Deploy Weaviate"
 description: "Learn how to deploy Weaviate, an AI-native vector database with GPU-accelerated semantic search capabilities, on an Akamai Compute Instance."
 published: 2025-12-05
 modified: 2025-12-05
 keywords: ['vector database','database','weaviate']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Weaviate Official Documentation](https://docs.weaviate.io/weaviate)'
 aliases: ['/products/tools/marketplace/guides/weaviate/','/guides/weaviate-marketplace-app/']
@@ -17,7 +17,7 @@ marketplace_app_name: "Weaviate"
 
 [Weaviate](https://www.weaviate.io/) is an open-source AI-native vector database designed for building advanced AI applications. It stores and indexes both data objects and their vector embeddings, enabling semantic search, hybrid search, and Retrieval Augmented Generation (RAG) workflows. This deployment includes GPU acceleration for transformer models and comes pre-configured with the sentence-transformers model for high-performance semantic search capabilities.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 

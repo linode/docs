@@ -42,7 +42,7 @@ The PostgreSQL databases are implemented as an active-active cluster, using [Buc
     - [VLAN](/docs/products/networking/vlans/)
     - [NodeBalancer](/docs/products/networking/nodebalancers/)
     - [DNS Manager](/docs/products/networking/dns-manager/)
-    - [API](/docs/api/)
+    - [API](https://techdocs.akamai.com/linode-api/reference/api)
 
 ## Business Benefits
 

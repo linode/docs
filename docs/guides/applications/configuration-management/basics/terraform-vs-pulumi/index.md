@@ -3,7 +3,7 @@ slug: terraform-vs-pulumi
 title: "Pulumi vs Terraform"
 title_meta: "Comparing Pulumi and Terraform"
 description: 'This guide compares Terraform and Pulumi, with an explanation of how each tool works and what purpose it serves.'
-og_description: 'TThis guide compares Terraform and Pulumi, with an explanation of how each tool works and what purpose it serves.'
+og_description: 'This guide compares Terraform and Pulumi, with an explanation of how each tool works and what purpose it serves.'
 authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 published: 2021-03-22

@@ -1,6 +1,6 @@
 ---
 title: "Create a Managed Database"
-description: "A walkthough on creating a Managed Database through Cloud Manager"
+description: "A walkthrough on creating a Managed Database through Cloud Manager"
 published: 2022-06-06
 modified: 2022-08-09
 ---

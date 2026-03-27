@@ -21,7 +21,7 @@ export TOKEN=<token-string>
 ```
 
 {{< note >}}
-Not all endpoints require authentication. Public endpoints include the [region](/docs/api/regions/), distribution [images](/docs/api/images/), instance [types](/docs/api/linode-types/), and other endpoints.
+Not all endpoints require authentication. Public endpoints include the [region](/docs/api/regions/), distribution [images](https://techdocs.akamai.com/linode-api/reference/api-summary), instance [types](/docs/api/linode-types/), and other endpoints.
 {{< /note >}}
 
 ## Build the API Request
@@ -85,7 +85,7 @@ curl https://api.linode.com/v4/linode/kernels | json_pp page_size=50
 
 ## Filter Results
 
-The API also supports filtering lists of results. Filters are passed using the `X-Filter` header and use JSON format. You can filter on almost any field that appears in a response object and the [API documentation](/docs/api/) specifies which fields are filterable.
+The API also supports filtering lists of results. Filters are passed using the `X-Filter` header and use JSON format. You can filter on almost any field that appears in a response object and the [API documentation](https://techdocs.akamai.com/linode-api/reference/api) specifies which fields are filterable.
 
 The following query uses the `deprecated` and `vendor` fields to return all current Debian images:
 
@@ -173,4 +173,4 @@ More complex searches are possible through the use of logical operators. Use `or
 curl https://api.linode.com/v4/images/ -H 'X-Filter: {"+or": [{"vendor":"Debian"}, {"vendor":"Ubuntu"}]}' | json_pp
 ```
 
-See the [Linode API documentation](/docs/api/#filtering-and-sorting) for a full list of supported operators.
+See the [Linode API documentation](https://techdocs.akamai.com/linode-api/reference/api#filtering-and-sorting) for a full list of supported operators.

@@ -14,7 +14,7 @@ external_resources:
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
  - '[MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)'
 tags: ["debian","mariadb","database"]
-_build:
+build:
   list: false
 noindex: true
 deprecated: true

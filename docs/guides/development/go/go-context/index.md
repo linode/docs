@@ -1,7 +1,7 @@
 ---
 slug: go-context
 title: 'Using the context Go package'
-description: 'This article showcases some of the use cases of the context package which is part of Go, a programming language created by Google and uised in many popular apps.'
+description: 'This article showcases some of the use cases of the context package which is part of Go, a programming language created by Google and used in many popular apps.'
 authors: ["Mihalis Tsoukalos"]
 contributors: ["Mihalis Tsoukalos"]
 published: 2019-05-31

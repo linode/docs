@@ -56,7 +56,7 @@ The next several sections in this tutorial walk you through the steps to connect
 
 ### Preparing the Linode API
 
-To get started using the API, with the prerequisites you need for this Appsmith tutorial, follow our [Linode API documentation](/docs/api/).
+To get started using the API, with the prerequisites you need for this Appsmith tutorial, follow our [Linode API documentation](https://techdocs.akamai.com/linode-api/reference/api).
 
 Be sure particularly to follow the steps for authentication, getting either a personal access token or configuring OAuth, depending on your needs.
 
@@ -86,7 +86,7 @@ You may first have to create an organization to house the application under, whi
 
 1.  Select the **Authenticated API** option, which directs you to a form where you can enter the API information.
 
-1.  Fill out the form to create a datasource for the Linode API's [Linodes List](/docs/api/linode-instances/#linodes-list) endpoint. Click the pencil icon to rename it `Linode API - Linodes List`. Enter `https://api.linode.com/v4/linode/instances` in the **URL** field. In the **Bearer Token** field, enter your personal authentication token for the Linode API. When complete, your form should look like this:
+1.  Fill out the form to create a datasource for the Linode API's [Linodes List](https://techdocs.akamai.com/linode-api/reference/api-summary#linodes-list) endpoint. Click the pencil icon to rename it `Linode API - Linodes List`. Enter `https://api.linode.com/v4/linode/instances` in the **URL** field. In the **Bearer Token** field, enter your personal authentication token for the Linode API. When complete, your form should look like this:
 
     ![Authenticated API for the example application](appsmith-example-app-authenticated-api.png)
 

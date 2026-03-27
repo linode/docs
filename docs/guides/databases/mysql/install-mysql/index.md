@@ -11,7 +11,6 @@ tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Installing and Upgrading MySQL](https://dev.mysql.com/doc/refman/8.0/en/installing.html)'
-tags: ["saas"]
 ---
 
 [MySQL](/docs/guides/an-overview-of-mysql/) is one of the most popular SQL-based relational databases. The Community Edition is available at no charge and is widely used across the industry. This guide walks you through installing and updating MySQL Community on Windows, macOS, and Linux (either through the native repositories or MySQL's own repositories).
@@ -37,7 +36,7 @@ For additional instructions on installing MySQL on any supported operating syste
 
     {{% content "dbass-eos" %}}
 
-    - [MySQL/MariaDB Marketplace App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/): Deploy a new Compute Instance with either MySQL or MariaDB preinstalled.
+    - [MySQL/MariaDB Quick Deploy App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/): Deploy a new Compute Instance with either MySQL or MariaDB preinstalled.
 
 -   **Check to see if MySQL is already installed on your system.** To determine if MySQL is already installed, run the following command:
 

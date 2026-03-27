@@ -1,7 +1,7 @@
 ---
 slug: securely-store-mysql-credentials
 title: "Securely Store MySQL Credentials with mysql_config_editor"
-description: "Learn how to securely store MySQL crentials and connection details using the mysql_config_editor utility."
+description: "Learn how to securely store MySQL credentials and connection details using the mysql_config_editor utility."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2022-07-01

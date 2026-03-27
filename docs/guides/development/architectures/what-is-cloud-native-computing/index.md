@@ -1,7 +1,7 @@
 ---
 slug: what-is-cloud-native-computing
 title: "What is Cloud-Native Computing?"
-description: 'Cloud-native computing helps teams and organization develop applications that are dynamic and scaleable on public, private, and hybrid clouds.'
+description: 'Cloud-native computing helps teams and organization develop applications that are dynamic and scalable on public, private, and hybrid clouds.'
 authors: ["Steven J. Vaughan-Nichols"]
 contributors: ["Steven J. Vaughan-Nichols"]
 published: 2023-06-23

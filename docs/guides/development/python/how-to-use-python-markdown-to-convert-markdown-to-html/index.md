@@ -1,7 +1,7 @@
 ---
 slug: how-to-use-python-markdown-to-convert-markdown-to-html
 title: "Use Python-Markdown to Convert Markdown to HTML"
-description: 'This guide explains how to use the Python-Markdown library to convert markdown files to HTML.'
+description: 'This guide explains how to use the Python-Markdown library to convert Markdown files to HTML.'
 authors: ["Jeff Novotny"]
 contributors: ["Jeff Novotny"]
 published: 2022-07-21

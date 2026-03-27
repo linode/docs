@@ -2,7 +2,7 @@
 slug: how-to-add-javascript-to-html
 title: "Link JavaScript to HTML"
 title_meta: "An Essential Guide on How to Add JavaScript to HTML"
-description: "Wondering how to link javascript to HTML? Follow our step-by-step instructions, including examples, plus tips on how to add external javascript files."
+description: "Wondering how to link JavaScript to HTML? Follow our step-by-step instructions, including examples, plus tips on how to add external JavaScript files."
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2022-05-05

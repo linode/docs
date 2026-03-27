@@ -1,6 +1,6 @@
 ---
 slug: complete-observability-for-live-stream-events-with-trafficpeak
-title: "Complete Observability for Live Stream Events With Trafficpeak"
+title: "Complete Observability for Live Stream Events With TrafficPeak"
 description: "This guide discusses the requirements and challenges related to implementing a observability solution for large-scale live streaming events. These challenges are addressed with a TrafficPeak-based observability architecture used to support one of the largest streaming sporting events in the world."
 authors: ["John Dutton"]
 contributors: ["John Dutton"]

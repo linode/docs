@@ -1,7 +1,7 @@
 ---
 slug: how-to-install-kubectl
 title: "Install kubectl"
-description: 'This short-guide will provide you with step-by-step instructions on how to install kubectl, the Kubernetes command-line utility, using homebrew or your package manager.'
+description: 'This short-guide will provide you with step-by-step instructions on how to install kubectl, the Kubernetes command-line utility, using Homebrew or your package manager.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2019-11-08

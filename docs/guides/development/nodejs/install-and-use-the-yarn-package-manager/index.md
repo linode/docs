@@ -2,7 +2,7 @@
 slug: install-and-use-the-yarn-package-manager
 title: "Install and Use the Yarn Package Manager"
 title_meta: "How to Install and Use the Yarn Package Manager"
-description: 'This guide will show you how to install and use the Yarn package manager, a great alternative to NPM which you can use to manage your Javascript projects.'
+description: 'This guide will show you how to install and use the Yarn package manager, a great alternative to NPM which you can use to manage your JavaScript projects.'
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2021-09-03

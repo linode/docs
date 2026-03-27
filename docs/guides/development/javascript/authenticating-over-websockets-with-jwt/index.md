@@ -2,7 +2,7 @@
 slug: authenticating-over-websockets-with-jwt
 title: "Use JSON Web Tokens (JWT) to Authenticate Users over WebSockets"
 title_meta: "Authenticating Users Over WebSockets with JSON Web Tokens (JWT)"
-description: 'In this guide, you will learn how to use Websockets and JSON Web Tokens, which are also called JWTs, together in your app with several practical examples.'
+description: 'In this guide, you will learn how to use WebSockets and JSON Web Tokens, which are also called JWTs, together in your app with several practical examples.'
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2021-07-23

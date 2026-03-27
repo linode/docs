@@ -1,6 +1,6 @@
 ---
 slug: webalizer-on-centos-5
-title: Webalizer on Centos 5
+title: Webalizer on CentOS 5
 description: 'This guide shows how you can get detailed website statistics, such as visitor counts, page views, and more by installing the open-source Webalizer app on CentOS 5.'
 authors: ["Brett Kaplan"]
 contributors: ["Brett Kaplan"]

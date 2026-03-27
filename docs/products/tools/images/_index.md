@@ -1,7 +1,7 @@
 ---
 title: "Images"
 title_meta: "Custom Images Product Documentation"
-description: "Custom Images allow for rapid deployments of preconfigured disks to new or existing Compute Instances. They can be easily created by capturing a disk on an existing Instnace or uploading an image file."
+description: "Custom Images allow for rapid deployments of preconfigured disks to new or existing Compute Instances. They can be easily created by capturing a disk on an existing Instance or uploading an image file."
 published: 2020-06-02
 modified: 2023-11-29
 keywords: ["linode Images", "imagize"]

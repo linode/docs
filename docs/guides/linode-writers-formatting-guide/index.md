@@ -13,7 +13,7 @@ show_on_rss_feed: false
 external_resources:
  - '[GitHub Beginners Guide](/docs/guides/a-beginners-guide-to-github/)'
  - '[Red Hat Writing Style Guide](http://stylepedia.net/)'
-_build:
+build:
   list: false
 ---
 

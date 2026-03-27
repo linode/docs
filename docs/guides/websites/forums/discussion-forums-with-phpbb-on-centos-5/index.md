@@ -1,7 +1,7 @@
 ---
 slug: discussion-forums-with-phpbb-on-centos-5
-title: Discussion Forums with phpBB on Centos 5
-description: 'Configuring the phpBB system for hosting web-based discussion forums on Centos 5.'
+title: Discussion Forums with phpBB on CentOS 5
+description: 'Configuring the phpBB system for hosting web-based discussion forums on CentOS 5.'
 authors: ["Stan Schwertly"]
 contributors: ["Stan Schwertly"]
 published: 2010-04-02

@@ -275,11 +275,11 @@ export KEY_OU="MyOrganizationalUnit"
 
 3.  Upload the server credentials to your Linode, using `scp` from your local computer:
 
-        scp ./keys/{ca.crt,server.crt,server.key} root@<your_linode's_IP>:/etc/openvpn/server
+        scp ./keys/{ca.crt,server.crt,server.key} root@<your_Linode_IP>:/etc/openvpn/server
 
 4.  You'll also want a copy of the HMAC key you created earlier to distribute to each client device:
 
-        scp root@<your_linode's_IP>:/etc/openvpn/server/ta.key ./keys
+        scp root@<your_Linode_IP>:/etc/openvpn/server/ta.key ./keys
 
 
 ### Client Credentials
@@ -377,7 +377,7 @@ verb 3
 # Remote server's IP address and port. IP is
 # preferable over hostname so as not to rely
 # on DNS lookups.
-remote <your_linode's IP address> 1194
+remote <your_Linode_IP_address> 1194
 
 # To successfully import this profile, you
 # want the client device's CA certificate copy,

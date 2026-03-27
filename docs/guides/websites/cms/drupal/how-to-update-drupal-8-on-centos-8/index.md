@@ -1,6 +1,6 @@
 ---
 slug: how-to-update-drupal-8-on-centos-8
-title: Update Drupal 8 on Centos 8
+title: Update Drupal 8 on CentOS 8
 title_meta: How to Update Drupal 8 on CentOS 8
 description: 'This guide will show you how to update your Drupal 8 installation running on a CentOS 8 Linode.'
 authors: ["Linode"]

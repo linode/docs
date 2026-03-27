@@ -22,7 +22,7 @@ A Cloud Firewall sits between a service (Compute Instance or NodeBalancer) and t
 
 ## Simple Interface
 
-Control inbound and outbound traffic using the [Linode API](/docs/api/networking), [Linode CLI](/docs/products/tools/cli/get-started/) or [Cloud Manager](https://www.linode.com/products/cloud-manager/). Each interface can be integrated into your workflow for seamless control over firewall rules. The Cloud Firewall service makes security more accessible and enables you to secure your network traffic without needing to learn complicated software or access the command line.
+Control inbound and outbound traffic using the [Linode API](https://techdocs.akamai.com/linode-api/reference/api-summary), [Linode CLI](/docs/products/tools/cli/get-started/) or [Cloud Manager](https://www.linode.com/products/cloud-manager/). Each interface can be integrated into your workflow for seamless control over firewall rules. The Cloud Firewall service makes security more accessible and enables you to secure your network traffic without needing to learn complicated software or access the command line.
 
 ## Scalable Security in Seconds
 
