@@ -8,6 +8,7 @@ published: 2025-10-01
 modified: 2026-02-11
 keywords: ['container', 'cloud-native', 'oci', 'registry']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: zot-1-login-page.png
 external_resources:
 - '[Zot documentation](https://zotregistry.dev/latest/general/concepts/)'
 - '[Zot website](https://zotregistry.dev)'
