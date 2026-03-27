@@ -194,6 +194,7 @@ Bhushan
 bialek
 Bigtable
 bin_t
+binary_remote_addr
 bing
 binhex
 binlog
@@ -206,6 +207,7 @@ bitrate
 bitshift
 bitstream
 bitwarden
+Bitwarden
 bitwise
 Bjarne
 blkid
@@ -250,6 +252,7 @@ buildah
 buildbot
 buildpack
 Buildpacks
+buildx
 bukkit
 bundler
 bungeecord
@@ -286,6 +289,7 @@ centos7
 ceph
 cer
 certbot
+Certbot
 certcheck
 certutil
 cetera
@@ -1249,6 +1253,8 @@ keylogging
 keymap
 keypair
 keypairs
+keyring
+keyrings
 keysize
 keyspace
 keyspaces
@@ -1361,6 +1367,7 @@ Lightroom
 lighttpd
 lighty
 ligttpd
+limit_req_zone
 linewise
 Linkedin
 linkerd
@@ -2014,6 +2021,7 @@ Printf
 printf
 prismic
 pritunl
+privkey
 privesc
 prizm
 processhider
@@ -2780,6 +2788,8 @@ variadic
 varnishlog
 varonis
 vaultwarden
+Vaultwarden
+vaultserver
 vBulletin
 vCPU
 vCPUs
@@ -2983,6 +2993,7 @@ xvdc
 xvnc
 xxen
 xy
+xyzf
 xzio
 xzip
 yaml
