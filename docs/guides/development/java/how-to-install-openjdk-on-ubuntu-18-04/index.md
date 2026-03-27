@@ -21,6 +21,9 @@ relations:
             - distribution: Ubuntu 18.04
 ---
 
+deprecated:true
+deprecated link: "guides/how-to-install-openjdk-ubuntu-22-04/"
+
 [Java](https://www.oracle.com/java/index.html) is one of the world's most popular programming languages. Software written in Java can be compiled and run on any system, making Java a versatile platform that can be used to create anything from software to basic web applications. This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Ubuntu 18.04.
 
 OpenJDK is the free and open-source implementation of the Oracle Java Standard Edition (Java SE) Development Kit. OpenJDK and Java SE are equivalent JDKs that include a Java runtime environment (JRE) and tools for developing and compiling Java applications.
