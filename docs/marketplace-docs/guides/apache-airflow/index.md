@@ -2,6 +2,7 @@
 title: "Deploying Apache Airflow"
 description: "Deploy Apache Airflow on a Linode Compute Instance. This provides you with an open-source workflow management platform for data engineering pipelines."
 published: 2023-01-23
+modified: 2026-03-30
 keywords: ['airflow','workflow management','data engineering']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
@@ -47,38 +48,38 @@ To learn more about Airflow and determine if it's the right tool for you, read t
 
 ### Obtain the Credentials
 
-Once the app is deployed, you need to obtain the credentials from the server. To obtain the credentials:
+Once the app is deployed, you need to obtain the credentials from the server:
 
 1. Log in to your new Compute Instance using one of the methods below:
 
     - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
     - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
 
-2. Run the following command to access the contents of the credentials file:
+2. Run the following command to access the contents of the `.credentials` file:
 
     ```command
     cat /home/$USERNAME/.credentials
     ```
 
-This returns the admin password and other details that were automatically generated when the instance was deployed. Save them securely. Once saved, you can safely delete the file.
+This returns the admin password and other details that were automatically generated when the instance was deployed. Save them securely. After your credentials are saved, you can safely delete the file.
 
 ## Getting Started After Deployment
 
-Once you've obtained the credentials, you can access your Apache Airflow instance and open a browser and navigate to your Linode domain entered during deployment or the rDNS domain `https://203-0-113-0.ip.linodeusercontent.com`.
+Once you have the credentials, you can access your Apache Airflow instance. Open a browser, and navigate to your Linode domain entered during deployment or the rDNS domain `https://203-0-113-0.ip.linodeusercontent.com`.
 
-Within the Airflow login prompt that appears, enter the credentials provided in the credentials file and sign in.
+Within the Airflow login prompt that appears, enter the credentials provided in the `.credentials` file, and sign in.
 
-    ![Screenshot of the Airflow login prompt](airflow-login.png)
+![Screenshot of the Airflow login prompt](airflow-login.png)
 
-Once you are signed in, the Airflow dashboard appears. From here, you can view the DAGs (Directed Acyclic Graphs) and access all other areas of the dashboard.
+The Airflow dashboard appears once you're signed in. From here, you can view the DAGs (Directed Acyclic Graphs) and access all other areas of the dashboard.
 
-    ![Screenshot of Apache Airflow GUI](airflow-gui.png)
+![Screenshot of Apache Airflow GUI](airflow-gui.png)
 
-You can now start using Apache Airflow. If you are unfamiliar with it, consider reading through the official documentation or Linode's own guides:
+You can now start using Apache Airflow. If you are unfamiliar with it, consider reading through the official documentation or our provided guide:
 
-    - [Airflow > Tutorials](https://airflow.apache.org/docs/apache-airflow/stable/tutorial/index.html)
-    - [Airflow > How-to Guides](https://airflow.apache.org/docs/apache-airflow/stable/howto/index.html)
-    - [Create Connections and Variables in Apache Airflow](/docs/guides/apache-airflow-tutorial-creating-connections-and-variables/)
+- [Airflow > Tutorials](https://airflow.apache.org/docs/apache-airflow/stable/tutorial/index.html)
+- [Airflow > How-to Guides](https://airflow.apache.org/docs/apache-airflow/stable/howto/index.html)
+- [Create Connections and Variables in Apache Airflow](/docs/guides/apache-airflow-tutorial-creating-connections-and-variables/)
 
 {{< note type="warning">}}
 This Akamai Quick Deploy App deploys Apache Airflow in standalone mode, suitable for development, testing, and initial configurations. Standalone mode is not recommended for [production deployments](https://airflow.apache.org/docs/apache-airflow/stable/production-deployment.html).
