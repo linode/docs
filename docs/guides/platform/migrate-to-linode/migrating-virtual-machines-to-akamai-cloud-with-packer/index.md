@@ -1,902 +1,891 @@
 ---
 slug: migrating-virtual-machines-to-akamai-cloud-with-packer
 title: "Migrating Virtual Machines to Akamai Cloud With Packer"
-description: "Two to three sentences describing your guide."
+description: "Migrate a virtual machine to Akamai Cloud using Packer by capturing system data, rebuilding on a clean image, and creating a reusable golden image."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2026-03-31
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['packer','linode','akamai cloud','vm migration','image','nginx','nodejs']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
-Organizations may migrate to Akamai Cloud for various reasons, including cost optimization and improved performance. Whether you're looking to consolidate providers or take advantage of Akamai's competitive pricing and dedicated resources, migrating existing virtual machines can seem like a daunting task.
+Migrating existing virtual machines (VMs) between cloud providers can be challenging, especially when applications depend on specific system configurations, services, and data layouts. Rather than copying disks directly, many migrations involve rebuilding the system in a controlled and repeatable way.
 
-This guide provides a provider-agnostic approach to migrating a compute instance to Akamai Cloud using [HashiCorp Packer](https://developer.hashicorp.com/packer).
+This guide demonstrates how to migrate a VM to Akamai Cloud using [HashiCorp Packer](https://developer.hashicorp.com/packer). It uses an AWS EC2 instance as the working example, but the same approach applies to VMs from other cloud providers or on-premises environments.
 
-Although this guide uses an AWS EC2 instance as its primary example with screenshots and specific commands, the methodology applies to virtual machines from any cloud provider or on-premises infrastructure.
-
-By the end of this walkthrough, you'll have a repeatable, automated process for migrating your virtual machines that captures your applications, configurations, and data while leveraging the infrastructure advantages of Akamai Cloud.
+Follow these steps to capture system configuration and data from a source VM, rebuild it on a clean base image, and produce a reusable image that can be deployed as a new VM on Akamai Cloud.
 
 ## How Packer Works for VM Migration
 
-Understanding how Packer approaches VM migration is crucial for setting proper expectations and planning an effective migration strategy.
+Unlike traditional imaging tools that create bit-for-bit copies of existing disks, Packer takes a different approach. It creates a new VM from a base image (such as Ubuntu 24.04) and uses provisioners to replicate your configuration and bundle your data during the build process. The result is a "golden image" that contains your applications and data, ready to deploy on Akamai Cloud.
 
-Unlike traditional imaging tools that create bit-for-bit copies of existing disks, Packer takes a different approach. It creates a new virtual machine from a base image (such as Ubuntu 22.04) and then uses provisioners to replicate your configuration and bundle your data during the build process. The result is a "golden image" that contains your applications and data, ready for deployment on Linode's infrastructure.
+This approach means Packer creates a fresh installation rather than cloning your existing system state. While this requires more setup, it often results in a more reliable and optimized final image.
 
-This approach means Packer creates a fresh, clean installation rather than cloning your existing system state. While this requires more setup, it often results in a more reliable and optimized final image.
+### What Can Packer Migrate?
 
-### What gets migrated and what doesn't
+The table below summarizes what is migrated automatically, what is not migrated, and what requires additional handling:
 
-It's important to understand what Packer can and cannot migrate:
+| Successfully Migrated | Not Migrated | Requires Additional Planning |
+|----------------------|--------------|------------------------------|
+| Applications | Exact OS state | Large databases |
+| Installed packages | Kernel modules | SSL certificates with private keys |
+| Configuration files | Running processes | Secrets |
+| System settings | Process state | API keys |
+| User data | Temporary files | Third-party integrations |
+| Application files | Cached data | External dependencies |
+| User accounts | System logs | Large file stores and media libraries |
+| Database dumps | Transient data | Log archives |
+| Backups | | |
+| SSL certificates | | |
+| Environment files | | |
+| Service configurations | | |
+| Startup scripts | | |
 
-#### Successfully migrated
+### Why Use Packer Instead of a Direct Image Upload?
 
--   Applications and installed packages
--   Configuration files and system settings
--   User data and application files
--   Database dumps and backups
--   SSL certificates and environment files
--   Service configurations and startup scripts
+Akamai Cloud supports direct image uploads, but this approach has limitations (see our [Images documentation](https://techdocs.akamai.com/cloud-computing/docs/images) for more information). Direct uploads are constrained by size limits (6 GB uncompressed / 5 GB compressed) and require specific disk image formats. Many production systems exceed these size constraints, especially when including application data and databases.
 
-#### Not migrated
+Packer's [Akamai Cloud builder plugin](https://developer.hashicorp.com/packer/integrations/linode/linode/latest/components/builder/linode) provides an automated alternative that helps keep migrated disk sizes slim enough to stay within these size constraints while enabling repeatable builds. The process is API-driven and can be integrated into CI/CD pipelines for ongoing infrastructure management.
 
--   Exact OS state and kernel modules
--   Running processes and their current state
--   Temporary files and cached data
--   System logs and transient data
+![This diagram shows the Packer migration workflow from a source VM to a reusable Akamai Cloud image.](packer-migration-workflow.png)
 
-#### Requires special planning
+## Before You Begin
 
--   Large databases (may need a separate migration strategy)
--   SSL certificates with private keys
--   Secrets and API keys
--   Third-party integrations and external dependencies
+1.  Ensure you have a source VM that you can access via SSH with administrative (`sudo`) privileges.
 
-### Why use Packer instead of a direct image upload?
+    {{< note title="Example deployment" >}}
+    The examples in this article use an AWS EC2 instance running NGINX and a Node.js Express API, with user data stored in `/home/ubuntu/userdata`. You can deploy this example using the CloudFormation template in this [GitHub repository](https://github.com/alvinslee/simple-aws-ec2-with-nginx-and-express). To use this example deployment, you also need an AWS account with permission to create CloudFormation stacks and EC2 instances, and the AWS CLI installed and configured (`aws configure`).
+    {{< /note >}}
 
-Akamai Cloud supports direct image uploads, but this approach has limitations. Direct uploads are constrained by size limits (6GB uncompressed / 5GB compressed) and require specific disk image formats. Many production systems exceed these size constraints, especially when including application data and databases.
+1.  Ensure your local machine has an SSH client and access to the source VM using an SSH key.
 
-Packer's [Linode builder plugin](https://developer.hashicorp.com/packer/integrations/linode/linode/latest/components/builder/linode) provides an automated alternative that helps keep migrated disk sizes slim enough to stay within these size constraints, and it enables repeatable builds. The process is API-driven and version-controllable, and it can be integrated into CI/CD pipelines for ongoing infrastructure management.
+1.  Create an Akamai Cloud account if you do not already have one. Follow our [Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide.
 
-![](image2.png)
+1.  Generate an Akamai Cloud API token. Follow our [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide. This guide uses the placeholder {{< placeholder "AKAMAI_CLOUD_API_TOKEN" >}} to represent your Akamai Cloud API token in commands.
 
-## Prerequisites and Assumptions
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+{{< /note >}}
 
-The example used in this guide is a simple AWS EC2 environment running NGINX and an Express API, with additional user data stored in `/home/ubuntu/userdata`. You can replicate this environment by creating an AWS CloudFormation stack from the template found in this [GitHub repository](https://github.com/alvinslee/simple-aws-ec2-with-nginx-and-express).
+## Inspect the Source VM
 
-This guide assumes access to administrative credentials and CLI tools for both AWS (or your source VM cloud provider) and Akamai Cloud. You should have the ability to view and modify relevant cloud resources in both environments.
+The commands below provide a baseline inventory of the source VM, including installed packages, running services, disk usage, and listening ports.
 
-You will need SSH access to your source VM with the ability to install Packer (sudo access required). On the Akamai side, you will need an Akamai Cloud account and the ability to generate an API token.
+1.  List the installed packages and store the output in a file:
 
-## Pre-Migration Assessment and Planning
+    ```command
+    dpkg --get-selections > installed-packages.txt
+    ```
 
-Proper planning is essential for a successful migration. Take time to thoroughly assess your current environment before proceeding.
+1.  Check the running services:
 
-### Step 1: Inventory your environment
+    ```command
+    systemctl list-units --type=service --state=running
+    ```
 
-Start by documenting what's currently running on your source VM:
+    ```output
+     UNIT                           LOAD   ACTIVE SUB     DESCRIPTION
+      acpid.service                 loaded active running ACPI event daemon
+      chrony.service                loaded active running chrony, an NTP client/server
+      cron.service                  loaded active running Regular background program processing daemon
+      dbus.service                  loaded active running D-Bus System Message Bus
+      express-api.service           loaded active running Express API Service
+      fwupd.service                 loaded active running Firmware update daemon
+      getty@tty1.service            loaded active running Getty on tty1
+      irqbalance.service            loaded active running irqbalance daemon
+      ModemManager.service          loaded active running Modem Manager
+      multipathd.service            loaded active running Device-Mapper Multipath Device Controller
+      networkd-dispatcher.service   loaded active running Dispatcher daemon for systemd-networkd
+      nginx.service                 loaded active running A high performance web server and a reverse proxy server
+    ...
+    ```
 
-```command {title="List installed packages, store in file"}
-dpkg --get-selections > installed-packages.txt
-```
+1.  Review disk usage:
 
-```command {title="Check running services"}
-systemctl list-units --type=service --state=running
-```
+    ```command
+    df -h
+    sudo du -sh /var /opt /home/ubuntu
+    ```
 
-```output
- UNIT                           LOAD   ACTIVE SUB     DESCRIPTION
-  acpid.service                 loaded active running ACPI event daemon
-  chrony.service                loaded active running chrony, an NTP client/server
-  cron.service                  loaded active running Regular background program processing daemon
-  dbus.service                  loaded active running D-Bus System Message Bus
-  express-api.service           loaded active running Express API Service
-  fwupd.service                 loaded active running Firmware update daemon
-  getty@tty1.service            loaded active running Getty on tty1
-  irqbalance.service            loaded active running irqbalance daemon
-  ModemManager.service          loaded active running Modem Manager
-  multipathd.service            loaded active running Device-Mapper Multipath Device Controller
-  networkd-dispatcher.service   loaded active running Dispatcher daemon for systemd-networkd
-  nginx.service                 loaded active running A high performance web server and a reverse proxy server
-...
-```
-
-```command {title="Review disk usage"}
-df -h; du -sh /var /opt /home/ubuntu
-```
-
-```output
-Filesystem       Size  Used Avail Use% Mounted on
-/dev/root        6.8G  2.8G  4.0G  41% /
-tmpfs            458M     0  458M   0% /dev/shm
-tmpfs            183M  912K  182M   1% /run
-tmpfs            5.0M     0  5.0M   0% /run/lock
-efivarfs         128K  3.6K  120K   3% /sys/firmware/efi/efivars
-/dev/nvme0n1p16  881M  149M  671M  19% /boot
-/dev/nvme0n1p15  105M  6.2M   99M   6% /boot/efi
-tmpfs             92M   12K   92M   1% /run/user/1000
+    ```output
+    Filesystem       Size  Used Avail Use% Mounted on
+    /dev/root        6.8G  2.8G  4.0G  41% /
+    tmpfs            458M     0  458M   0% /dev/shm
+    tmpfs            183M  912K  182M   1% /run
+    tmpfs            5.0M     0  5.0M   0% /run/lock
+    efivarfs         128K  3.6K  120K   3% /sys/firmware/efi/efivars
+    /dev/nvme0n1p16  881M  149M  671M  19% /boot
+    /dev/nvme0n1p15  105M  6.2M   99M   6% /boot/efi
+    tmpfs             92M   12K   92M   1% /run/user/1000
 
 
-881M    /var
-4.0K    /opt
-12M     /home/ubuntu
-```
+    881M    /var
+    4.0K    /opt
+    12M     /home/ubuntu
+    ```
 
-```command {title="Check listening ports"}
-sudo ss -tulnp
-```
+1.  Check listening ports:
 
-```output
-Netid       State        Recv-Q       Send-Q                Local Address:Port             Peer Address:Port      Process
-udp         UNCONN       0            0                        127.0.0.54:53                    0.0.0.0:*          users:(("systemd-resolve",pid=8214,fd=16))
-udp         UNCONN       0            0                     127.0.0.53%lo:53                    0.0.0.0:*          users:(("systemd-resolve",pid=8214,fd=14))
-udp         UNCONN       0            0                  172.31.31.1%ens5:68                    0.0.0.0:*          users:(("systemd-network",pid=19258,fd=23))
-udp         UNCONN       0            0                         127.0.0.1:323                   0.0.0.0:*          users:(("chronyd",pid=13440,fd=5))
-udp         UNCONN       0            0                             [::1]:323                      [::]:*          users:(("chronyd",pid=13440,fd=6))
-tcp         LISTEN       0            4096                     127.0.0.54:53                    0.0.0.0:*          users:(("systemd-resolve",pid=8214,fd=17))
-tcp         LISTEN       0            511                         0.0.0.0:80                    0.0.0.0:*          users:(("nginx",pid=20521,fd=5),("nginx",pid=20520,fd=5),("nginx",pid=19520,fd=5))
-tcp         LISTEN       0            4096                        0.0.0.0:22                    0.0.0.0:*          users:(("sshd",pid=20549,fd=3),("systemd",pid=1,fd=193))
-tcp         LISTEN       0            511                         0.0.0.0:3000                  0.0.0.0:*          users:(("node",pid=20507,fd=18))
-tcp         LISTEN       0            4096                  127.0.0.53%lo:53                    0.0.0.0:*          users:(("systemd-resolve",pid=8214,fd=15))
-tcp         LISTEN       0            511                            [::]:80                       [::]:*          users:(("nginx",pid=20521,fd=6),("nginx",pid=20520,fd=6),("nginx",pid=19520,fd=6))
-tcp         LISTEN       0            4096                           [::]:22                       [::]:*          users:(("sshd",pid=20549,fd=4),("systemd",pid=1,fd=194))
-```
+    ```command
+    sudo ss -tulnp
+    ```
 
-Create a comprehensive inventory that includes:
+    ```output
+    Netid       State        Recv-Q       Send-Q                Local Address:Port             Peer Address:Port      Process
+    udp         UNCONN       0            0                        127.0.0.54:53                    0.0.0.0:*          users:(("systemd-resolve",pid=8214,fd=16))
+    udp         UNCONN       0            0                     127.0.0.53%lo:53                    0.0.0.0:*          users:(("systemd-resolve",pid=8214,fd=14))
+    udp         UNCONN       0            0                  172.31.31.1%ens5:68                    0.0.0.0:*          users:(("systemd-network",pid=19258,fd=23))
+    udp         UNCONN       0            0                         127.0.0.1:323                   0.0.0.0:*          users:(("chronyd",pid=13440,fd=5))
+    udp         UNCONN       0            0                             [::1]:323                      [::]:*          users:(("chronyd",pid=13440,fd=6))
+    tcp         LISTEN       0            4096                     127.0.0.54:53                    0.0.0.0:*          users:(("systemd-resolve",pid=8214,fd=17))
+    tcp         LISTEN       0            511                         0.0.0.0:80                    0.0.0.0:*          users:(("nginx",pid=20521,fd=5),("nginx",pid=20520,fd=5),("nginx",pid=19520,fd=5))
+    tcp         LISTEN       0            4096                        0.0.0.0:22                    0.0.0.0:*          users:(("sshd",pid=20549,fd=3),("systemd",pid=1,fd=193))
+    tcp         LISTEN       0            511                         0.0.0.0:3000                  0.0.0.0:*          users:(("node",pid=20507,fd=18))
+    tcp         LISTEN       0            4096                  127.0.0.53%lo:53                    0.0.0.0:*          users:(("systemd-resolve",pid=8214,fd=15))
+    tcp         LISTEN       0            511                            [::]:80                       [::]:*          users:(("nginx",pid=20521,fd=6),("nginx",pid=20520,fd=6),("nginx",pid=19520,fd=6))
+    tcp         LISTEN       0            4096                           [::]:22                       [::]:*          users:(("sshd",pid=20549,fd=4),("systemd",pid=1,fd=194))
+    ```
 
--   All installed applications and services
--   Custom configurations and their locations
--   User accounts and permission structures
--   Database systems and their data sizes
--   Web server configurations
--   SSL certificates and their renewal processes
+Use this inventory to verify that your source VM includes the services, data, and configuration you expect to migrate. Once you have reviewed the output, you can begin preparing the migration environment.
 
-### Step 2: Identify critical data and configurations
-
-Identify the essential files and configurations required for your applications to function properly. For example:
-
--   Application source code and binaries
--   Configuration files in `/etc/`
--   User data in home directories
--   Application-specific data directories
--   Database files or dump locations
--   Log files that contain critical historical data
-
-### Step 3: Plan your migration strategy
-
-Decide which data to bundle directly into the Packer image and which to migrate separately. For example:
-
-#### Bundle in the Packer image
-
--   Application code and configurations
--   System configurations
--   Small databases (< 1GB)
--   SSL certificates
--   User accounts and basic data
-
-#### Migrate separately
-
--   Large databases (use database-specific migration tools)
--   Large file stores and media libraries
--   Log archives
--   Backup files
-
-Consider your downtime requirements and plan accordingly. Some applications can be migrated with minimal downtime, while others may require a maintenance window.
-
-## Setting Up the Migration Environment
-
-### Step 1: Verify your source operating system
+### Verify the Source Operating System
 
 First, determine exactly what operating system you're running:
 
-```command {title="Check OS version and distribution"}
-lsb_release -a
-```
+1.  Check the OS version and distribution:
 
-```command {title="Alternative method to check OS version and distribution"}
-cat /etc/os-release
-```
+    ```command
+    lsb_release -a
+    ```
 
-For the example AWS EC2 environment, you might see output like the following:
+    For the example AWS EC2 environment, you might see output like the following:
 
-```output
-No LSB modules are available.
-Distributor ID: Ubuntu
-Description:    Ubuntu 24.04.3 LTS
-Release:        24.04
-Codename:       noble
-```
+    ```output
+    No LSB modules are available.
+    Distributor ID: Ubuntu
+    Description:    Ubuntu 24.04.3 LTS
+    Release:        24.04
+    Codename:       noble
+    ```
 
-```command {title="Check architecture"}
-uname -m
-```
+    {{< note title="Alternative" type="secondary" >}}
+    Here's an alternate command to check the OS version and distribution:
 
-```output
-x86_64
-```
+    ```command
+    cat /etc/os-release
+    ```
+    {{< /note >}}
 
-### Step 2: Find a compatible Linode base image
+1.  Check the architecture:
 
-Based on your source VM architecture, identify the corresponding base image available on Linode. Use the Linode API to list available images:
+    ```command
+    uname -m
+    ```
 
-```command {title="Set API token, then list available public images"}
-export LINODE_TOKEN="your_api_token_here"
+    ```output
+    x86_64
+    ```
 
-curl -H "Authorization: Bearer $LINODE_TOKEN" \
-  https://api.linode.com/v4/images | \
-  jq '.data[] | select(.is_public == true) | {id: .id, label: .label}'
-```
+### Find a Compatible Akamai Cloud Base Image
 
-To filter for Ubuntu images specifically, run the following command:
+Based on your source VM architecture, identify a compatible base image available on Akamai Cloud.
 
-```command {title="List available public Ubuntu images"}
-curl -H "Authorization: Bearer $LINODE_TOKEN" \
-  https://api.linode.com/v4/images | \
-  jq '.data[] | select(.id | contains("ubuntu")) | {id: .id, label: .label}'
-```
+1.  Set your Akamai Cloud API token as an environment variable, replacing {{< placeholder "AKAMAI_CLOUD_API_TOKEN" >}} with your actual token:
 
-```output
-{
-  "id": "linode/ubuntu22.04",
-  "label": "Ubuntu 22.04 LTS"
-}
-{
-  "id": "linode/ubuntu22.04-kube",
-  "label": "Ubuntu 22.04 LTS KPP"
-}
-{
-  "id": "linode/ubuntu24.04",
-  "label": "Ubuntu 24.04 LTS"
-}
-{
-  "id": "linode/ubuntu16.04lts",
-  "label": "Ubuntu 16.04 LTS"
-}
-{
-  "id": "linode/ubuntu18.04",
-  "label": "Ubuntu 18.04 LTS"
-}
-{
-  "id": "linode/ubuntu20.04",
-  "label": "Ubuntu 20.04 LTS"
-}
-{
-  "id": "linode/ubuntu24.10",
-  "label": "Ubuntu 24.10"
-}
-```
+    ```command
+    export AKAMAI_CLOUD_TOKEN="{{< placeholder "AKAMAI_CLOUD_API_TOKEN" >}}"
+    ```
 
-For maximum compatibility, choose the image that most closely matches the OS of your source VM.
+1.  List the available public images:
 
-### Step 3: Install and configure Packer
+    ```command
+    curl -H "Authorization: Bearer $AKAMAI_CLOUD_TOKEN" \
+      https://api.linode.com/v4/images | \
+      jq '.data[] | select(.is_public == true) | {id: .id, label: .label}'
+    ```
 
-Follow the instructions provided [here](https://developer.hashicorp.com/packer/tutorials/docker-get-started/get-started-install-cli) to install Packer on your source VM.
+    For maximum compatibility, choose the image that most closely matches the OS of your source VM:
 
-```command {title="Add HashiCorp's GPG key and repository"}
-udo mkdir -m 0755 -p /etc/apt/keyrings/
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/hashicorp-archive-keyring.gpg
+    ```output
+    ...
+    {
+      "id": "linode/ubuntu22.04",
+      "label": "Ubuntu 22.04 LTS"
+    }
+    {
+      "id": "linode/ubuntu22.04-kube",
+      "label": "Ubuntu 22.04 LTS KPP"
+    }
+    {
+      "id": "linode/ubuntu24.04",
+      "label": "Ubuntu 24.04 LTS"
+    }
+    {
+      "id": "linode/ubuntu16.04lts",
+      "label": "Ubuntu 16.04 LTS"
+    }
+    {
+      "id": "linode/ubuntu18.04",
+      "label": "Ubuntu 18.04 LTS"
+    }
+    {
+      "id": "linode/ubuntu20.04",
+      "label": "Ubuntu 20.04 LTS"
+    }
+    {
+      "id": "linode/ubuntu24.10",
+      "label": "Ubuntu 24.10"
+    }
+    ```
 
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-```
+    For the example used in this guide, select `linode/ubuntu24.04`.
 
-```command {title="Update package list and install Packer"}
-sudo apt-get update && sudo apt-get install packer
-```
+## Install and Configure Packer
 
-```command {title="Verify installation"}
-packer --version
-```
+Install Packer on your source VM by following the [official installation instructions](https://developer.hashicorp.com/packer/tutorials/docker-get-started/get-started-install-cli). For additional reference, see the [Packer CLI usage documentation](https://developer.hashicorp.com/packer/docs/commands).
 
-```output
-Packer v1.14.2
-```
+1.  Create a directory for trusted keys:
 
-```command {title="Install the official Linode builder plugin for Packer"}
-sudo packer plugins install github.com/linode/linode
-```
+    ```command
+    sudo mkdir -m 0755 -p /etc/apt/keyrings/
+    ```
 
-```output
-Installed plugin github.com/linode/linode v1.6.8 in "/home/ubuntu/.config/packer/plugins/github.com/linode/linode/packer-plugin-linode_v1.6.8_x5.0_linux_amd64"
-```
+1.  Download and install HashiCorp's GPG key:
 
-## Data Capture and Bundling
+    ```command
+    curl -fsSL https://apt.releases.hashicorp.com/gpg | \
+    sudo gpg --dearmor -o /etc/apt/keyrings/hashicorp-archive-keyring.gpg
+    ```
 
-The data capture phase is crucial for ensuring your migrated system has everything it needs to function properly.
+1.  Add the HashiCorp repository:
 
-### Step 1: Create a data capture script
+    ```command
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+    ```
 
-On your source VM, create a folder named `packer-migration`.
+1.  Update the package list and install Packer:
 
-```command {title="Create migration working directory"}
-sudo mkdir /usr/packer-migration
-sudo cd /usr/packer-migration
-```
+    ```command
+    sudo apt update
+    sudo apt install packer
+    ```
 
-Create a script (`capture-system.sh`) to systematically capture your system configuration and data. Using the example AWS EC2 environment for this guide, your data capture script may look like this:
+1.  Verify the installation:
 
-```bash {title="Data capture script"}
-#!/bin/bash
-set -e
+    ```command
+    packer --version
+    ```
 
-echo "Starting system capture for Packer migration..."
+    ```output
+    Packer v1.15.1
+    ```
 
-# Create bundle directory
-mkdir -p bundle-data
-cd bundle-data
+1.  Install the official Akamai Cloud builder plugin for Packer:
 
-# Capture system packages and services
-echo "Capturing system configuration..."
-dpkg --get-selections > installed-packages.txt
-systemctl list-unit-files --state=enabled > enabled-services.txt
-apt list --installed > apt-packages.txt
+    ```command
+    sudo packer plugins install github.com/linode/linode
+    ```
 
-# Capture important system configurations
-echo "Capturing configuration files..."
-mkdir -p configs
-sudo cp -r /etc/nginx configs/ 2>/dev/null || true
-sudo cp /etc/hosts configs/ 2>/dev/null || true
-sudo cp /etc/environment configs/ 2>/dev/null || true
-sudo cp -r /etc/systemd/system configs/ 2>/dev/null || true
+    ```output
+    Installed plugin github.com/linode/linode v1.10.1 in "/root/.config/packer/plugins/github.com/linode/linode/packer-plugin-linode_v1.10.1_x5.0_linux_amd64"
+    ```
 
-# Capture application data
-echo "Capturing application data..."
-mkdir -p apps
-sudo cp -r /var/www apps/ 2>/dev/null || true
-sudo cp -r /opt apps/ 2>/dev/null || true
-sudo cp -r /srv apps/ 2>/dev/null || true
+## Create a Data Capture Script
 
-# Node.js applications
-sudo cp -r /usr/local/lib/node_modules apps/ 2>/dev/null || true
+The data capture phase ensures that the migrated system has the files and configuration it needs to function correctly.
 
-# Capture user data
-echo "Capturing user configurations..."
-mkdir -p users
+1.  On your source VM, create a folder named `packer-migration` to serve as the migration working directory:
 
-# Capture all user directories in /home
-for user_home in /home/*; do
-    if [ -d "$user_home" ]; then
-        username=$(basename "$user_home")
-        echo "Capturing user directory: $username"
-        mkdir -p "users/$username" 2>/dev/null || true
+    ```command
+    sudo mkdir -p /usr/packer-migration
+    sudo chown ubuntu:ubuntu /usr/packer-migration
+    cd /usr/packer-migration
+    ```
 
-        # Copy common user files and directories
-        cp -r "$user_home"/.bashrc "users/$username/" 2>/dev/null || true
-        cp -r "$user_home"/.bash_profile "users/$username/" 2>/dev/null || true
-        cp -r "$user_home"/.ssh "users/$username/" 2>/dev/null || true
-        cp -r "$user_home"/.gitconfig "users/$username/" 2>/dev/null || true
-        cp -r "$user_home"/.config "users/$username/" 2>/dev/null || true
-        cp -r "$user_home"/.local "users/$username/" 2>/dev/null || true
+1.  Use a terminal-based text editor such as `nano` to create a script file (for example, `capture-system.sh`) to systematically capture your system configuration and data:
 
-        # Copy application and data directories
-        cp -r "$user_home"/userdata "users/$username/" 2>/dev/null || true
-        cp -r "$user_home"/api "users/$username/" 2>/dev/null || true
-        cp -r "$user_home"/projects "users/$username/" 2>/dev/null || true
-        cp -r "$user_home"/data "users/$username/" 2>/dev/null || true
-        cp -r "$user_home"/app "users/$username/" 2>/dev/null || true
-        cp -r "$user_home"/www "users/$username/" 2>/dev/null || true
+    ```command
+    sudo nano capture-system.sh
+    ```
 
-        # Copy any other directories that might contain application data
-        find "$user_home" -maxdepth 1 -type d -name ".*" -not -name ".ssh" -not -name ".config" -not -name ".local" -not -name ".cache" | \
-        while read dir; do
-            cp -r "$dir" "users/$username/" 2>/dev/null || true
-        done
+    Using the example AWS EC2 environment for this guide, the contents of your data capture script should look like this:
+
+    ```file {title="capture-system.sh" lang="bash"}
+    #!/bin/bash
+    set -e
+
+    echo "Starting system capture for Packer migration..."
+
+    # Create bundle directory
+    mkdir -p bundle-data
+    cd bundle-data
+
+    # Capture system packages and services
+    echo "Capturing system configuration..."
+    dpkg --get-selections > installed-packages.txt
+    apt list --installed > apt-packages.txt 2>/dev/null || true
+
+    # Capture important system configurations
+    echo "Capturing configuration files..."
+    mkdir -p configs
+    sudo cp -r /etc/nginx configs/ 2>/dev/null || true
+    sudo cp /etc/hosts configs/ 2>/dev/null || true
+    sudo cp /etc/environment configs/ 2>/dev/null || true
+    mkdir -p configs/systemd
+    sudo cp /etc/systemd/system/express-api.service configs/systemd/ 2>/dev/null || true
+
+    # Capture application data
+    echo "Capturing application data..."
+    mkdir -p apps
+    sudo cp -r /var/www apps/ 2>/dev/null || true
+    sudo cp -r /opt apps/ 2>/dev/null || true
+    sudo cp -r /srv apps/ 2>/dev/null || true
+
+    # Node.js applications
+    sudo cp -r /usr/local/lib/node_modules apps/ 2>/dev/null || true
+
+    # Capture user data
+    echo "Capturing user configurations..."
+    mkdir -p users
+
+    # Capture all user directories in /home
+    for user_home in /home/*; do
+        if [ -d "$user_home" ]; then
+            username=$(basename "$user_home")
+            echo "Capturing user directory: $username"
+            mkdir -p "users/$username" 2>/dev/null || true
+
+            # Copy common user files and directories
+            cp -r "$user_home"/.bashrc "users/$username/" 2>/dev/null || true
+            cp -r "$user_home"/.bash_profile "users/$username/" 2>/dev/null || true
+            cp -r "$user_home"/.ssh "users/$username/" 2>/dev/null || true
+            cp -r "$user_home"/.gitconfig "users/$username/" 2>/dev/null || true
+            cp -r "$user_home"/.config "users/$username/" 2>/dev/null || true
+            cp -r "$user_home"/.local "users/$username/" 2>/dev/null || true
+
+            # Copy application and data directories
+            cp -r "$user_home"/userdata "users/$username/" 2>/dev/null || true
+            cp -r "$user_home"/api "users/$username/" 2>/dev/null || true
+            cp -r "$user_home"/projects "users/$username/" 2>/dev/null || true
+            cp -r "$user_home"/data "users/$username/" 2>/dev/null || true
+            cp -r "$user_home"/app "users/$username/" 2>/dev/null || true
+            cp -r "$user_home"/www "users/$username/" 2>/dev/null || true
+
+            # Copy any other directories that might contain application data
+            find "$user_home" -maxdepth 1 -type d -name ".*" -not -name ".ssh" -not -name ".config" -not -name ".local" -not -name ".cache" | \
+            while read dir; do
+                cp -r "$dir" "users/$username/" 2>/dev/null || true
+            done
+        fi
+    done
+
+    # Also capture root user configurations if we're running as root
+    if [ "$(id -u)" -eq 0 ]; then
+        echo "Capturing root user configurations..."
+        mkdir -p users/root 2>/dev/null || true
+        cp -r /root/.bashrc users/root/ 2>/dev/null || true
+        cp -r /root/.bash_profile users/root/ 2>/dev/null || true
+        cp -r /root/.ssh users/root/ 2>/dev/null || true
+        cp -r /root/.gitconfig users/root/ 2>/dev/null || true
     fi
-done
 
-# Also capture root user configurations if we're running as root
-if [ "$EUID" -eq 0 ]; then
-    echo "Capturing root user configurations..."
-    mkdir -p users/root 2>/dev/null || true
-    cp -r /root/.bashrc users/root/ 2>/dev/null || true
-    cp -r /root/.bash_profile users/root/ 2>/dev/null || true
-    cp -r /root/.ssh users/root/ 2>/dev/null || true
-    cp -r /root/.gitconfig users/root/ 2>/dev/null || true
-fi
+    # Capture SSL certificates
+    echo "Capturing SSL certificates..."
+    mkdir -p ssl
+    sudo cp -r /etc/ssl/certs ssl/ 2>/dev/null || true
+    sudo cp -r /etc/letsencrypt ssl/ 2>/dev/null || true
 
-# Capture SSL certificates
-echo "Capturing SSL certificates..."
-mkdir -p ssl
-sudo cp -r /etc/ssl/certs ssl/ 2>/dev/null || true
-sudo cp -r /etc/letsencrypt ssl/ 2>/dev/null || true
+    # Capture environment files
+    echo "Capturing environment files..."
+    mkdir -p env-files
+    find /var/www /opt /home -name ".env*" -o -name "*.env" 2>/dev/null | \
+        xargs -I {} cp {} env-files/ 2>/dev/null || true
 
-# Capture environment files
-echo "Capturing environment files..."
-mkdir -p env-files
-find /var/www /opt /home -name ".env*" -o -name "*.env" 2>/dev/null | \
-    xargs -I {} cp {} env-files/ 2>/dev/null || true
+    # Capture logs for reference (recent only)
+    echo "Capturing recent logs..."
+    mkdir -p logs
+    sudo find /var/log -name "*.log" -mtime -7 -exec cp {} logs/ \; 2>/dev/null || true
 
-# Capture logs for reference (recent only)
-echo "Capturing recent logs..."
-mkdir -p logs
-sudo find /var/log -name "*.log" -mtime -7 -exec cp {} logs/ \; 2>/dev/null || true
+    # Capture cron jobs
+    echo "Capturing scheduled tasks..."
+    crontab -l > user-crontab.txt 2>/dev/null || true
+    sudo crontab -l > root-crontab.txt 2>/dev/null || true
 
-# Capture cron jobs
-echo "Capturing scheduled tasks..."
-crontab -l > user-crontab.txt 2>/dev/null || true
-sudo crontab -l > root-crontab.txt 2>/dev/null || true
+    # Create inventory file
+    echo "Creating inventory file..."
 
-# Create inventory file
-echo "Creating inventory file..."
-cat > inventory.txt << 'INNER_EOF'
-# EC2 to Linode Migration Inventory
-# Generated: $(date)
-# Source EC2 Instance: $(curl -s http://169.254.169.254/latest/meta-data/instance-id 2>/dev/null || echo "Unknown")
+    TOKEN=$(curl -sX PUT "http://169.254.169.254/latest/api/token" \
+      -H "X-aws-ec2-metadata-token-ttl-seconds: 21600" 2>/dev/null || true)
 
-## System Info
-OS: $(lsb_release -d | cut -f2)
-Kernel: $(uname -r)
-Architecture: $(uname -m)
+    INSTANCE_ID=$(curl -s \
+      -H "X-aws-ec2-metadata-token: $TOKEN" \
+      http://169.254.169.254/latest/meta-data/instance-id 2>/dev/null || echo "Unknown")
 
-## Network
-Private IP: $(hostname -I | awk '{print $1}')
-Hostname: $(hostname)
+    cat > inventory.txt <<INNER_EOF
+    # EC2 to Akamai Cloud Migration Inventory
+    # Generated: $(date)
+    # Source EC2 Instance: ${INSTANCE_ID:-Unknown}
 
-## Disk Usage
-$(df -h)
+    ## System Info
+    OS: $(lsb_release -d | cut -f2)
+    Kernel: $(uname -r)
+    Architecture: $(uname -m)
 
-## Memory
-$(free -h)
+    ## Network
+    Private IP: $(hostname -I | awk '{print $1}')
+    Hostname: $(hostname)
 
-## Running Services
-$(systemctl list-units --type=service --state=running --no-pager)
+    ## Disk Usage
+    $(df -h)
 
-## Listening Ports
-$(sudo netstat -tlnp)
-INNER_EOF
+    ## Memory
+    $(free -h)
 
-# Fix permissions on copied files
-sudo chown -R $USER:$USER .
+    ## Running Services
+    $(systemctl list-units --type=service --state=running --no-pager)
 
-cd ..
-echo "Data capture complete! Bundle located at: $(pwd)/bundle-data"
-echo "Bundle size: $(du -sh bundle-data | cut -f1)"
-```
+    ## Listening Ports
+    $(sudo ss -tulnp)
+    INNER_EOF
 
-Set the proper executable permissions on the script.
+    # Fix permissions on copied files
+    sudo chown -R "${SUDO_USER:-$USER}":"${SUDO_USER:-$USER}" .
 
-```command {title="Set capture script permissions"}
-sudo chmod +x /usr/packer-migration/capture-system.sh
-```
+    cd ..
+    echo "Data capture complete! Bundle located at: $(pwd)/bundle-data"
+    echo "Bundle size: $(du -sh bundle-data | cut -f1)"
+    ```
 
-### Step 2: Run the capture process
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-```command {title="Execute the capture script"}
-sudo /usr/packer-migration/capture-system.sh
-```
+1.  Set the proper executable permissions on the script.
 
-```output
-Starting system capture for Packer migration...
-Capturing system configuration...
+    ```command
+    sudo chmod +x /usr/packer-migration/capture-system.sh
+    ```
 
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+### Run the Capture Process
 
-Capturing configuration files...
-Capturing application data...
-Capturing user configurations...
-Capturing user directory: ubuntu
-Capturing root user configurations...
-Capturing database dumps...
-Capturing SSL certificates...
-Capturing environment files...
-Capturing recent logs...
-Capturing scheduled tasks...
-Creating inventory file...
-Data capture complete! Bundle located at: /usr/packer-migration/bundle-data
-Bundle size: 45M
-```
+1.  Execute the capture script:
 
-### Step 3: Review the captured data for completeness
+    ```command
+    sudo /usr/packer-migration/capture-system.sh
+    ```
 
-```command {title="Review the size of different components captured"}
-sudo du -sh /usr/packer-migration/bundle-data/*
-```
+    ```output
+    Starting system capture for Packer migration...
+    Capturing system configuration...
+    Capturing configuration files...
+    Capturing application data...
+    Capturing user configurations...
+    Capturing user directory: ubuntu
+    Capturing root user configurations...
+    Capturing SSL certificates...
+    Capturing environment files...
+    Capturing recent logs...
+    Capturing scheduled tasks...
+    Creating inventory file...
+    Data capture complete! Bundle located at: /usr/packer-migration/bundle-data
+    Bundle size: 14M
+    ```
 
-```output
-28K     /usr/packer-migration/bundle-data/apps
-48K     /usr/packer-migration/bundle-data/apt-packages.txt
-240K    /usr/packer-migration/bundle-data/configs
-3.7M    /usr/packer-migration/bundle-data/databases
-8.0K    /usr/packer-migration/bundle-data/enabled-services.txt
-4.0K    /usr/packer-migration/bundle-data/env-files
-20K     /usr/packer-migration/bundle-data/installed-packages.txt
-4.0K    /usr/packer-migration/bundle-data/inventory.txt
-864K    /usr/packer-migration/bundle-data/logs
-0       /usr/packer-migration/bundle-data/root-crontab.txt
-644K    /usr/packer-migration/bundle-data/ssl
-0       /usr/packer-migration/bundle-data/user-crontab.txt
-40M     /usr/packer-migration/bundle-data/users
-```
+1.  Review the size of different components captured:
 
-### Bundling best practices
+    ```command
+    sudo du -sh /usr/packer-migration/bundle-data/*
+    ```
 
-When deciding what to include in your bundle, consider adopting the following guidelines to keep your bundle size manageable:
+    ```output
+    28K     /usr/packer-migration/bundle-data/apps
+    52K     /usr/packer-migration/bundle-data/apt-packages.txt
+    232K    /usr/packer-migration/bundle-data/configs
+    4.0K    /usr/packer-migration/bundle-data/env-files
+    20K     /usr/packer-migration/bundle-data/installed-packages.txt
+    8.0K    /usr/packer-migration/bundle-data/inventory.txt
+    920K    /usr/packer-migration/bundle-data/logs
+    0       /usr/packer-migration/bundle-data/root-crontab.txt
+    644K    /usr/packer-migration/bundle-data/ssl
+    0       /usr/packer-migration/bundle-data/user-crontab.txt
+    13M     /usr/packer-migration/bundle-data/users
+    ```
 
--   Keep the total bundle under 1GB for optimal build times.
--   Use `.tar.gz` compression for large directories.
--   Remove unnecessary files before bundling.
--   Consider splitting very large applications across multiple images.
+    Before continuing, review the bundle for:
 
-For security considerations, be mindful of sensitive data in your bundle:
+    -   Unnecessary or oversized files
+    -   Hardcoded secrets in environment files
+    -   Private keys or development certificates
+    -   Sensitive data in database dumps
 
--   Review environment files for hardcoded secrets.
--   Consider using Linode's metadata service for secrets instead of bundling them.
--   Ensure proper file permissions are maintained during migration.
--   Remove or replace development keys and certificates.
--   Audit database dumps for sensitive information.
+## Create a Setup and Restore Script
 
-## Preparing the Destination Restore Process
+Create a setup and restore script for the destination Akamai Cloud VM. Packer copies this file to the destination VM during the build.
 
-On the destination VM, Packer will run a setup and restore script that installs the necessary applications and effectively mirrors the data capture process.
+1.  On the source VM, create a file called `setup-and-restore.sh` in `/usr/packer-migration`.
 
-### Step 1: Create a setup and restore script
+    ```command
+    sudo nano /usr/packer-migration/setup-and-restore.sh
+    ```
 
-On the source VM, in `/usr/packer-migration`, create a file called `setup-and-restore.sh`. Packer will copy this file over to the destination VM.
+    Using the example AWS EC2 instance, the contents of your setup and restore script should look like this:
 
-```bash {title="Setup and restore script to be used on destination VM"}
-#!/bin/bash
-set -e
+    ```file {title="/usr/packer-migration/setup-and-restore.sh" lang="bash"}
+    #!/bin/bash
+    set -e
 
-echo "Starting system restoration..."
+    echo "Starting system restoration..."
 
-BUNDLE_DIR="/tmp/bundle-data"
+    BUNDLE_DIR="/tmp/bundle-data"
 
-# Function to safely restore files
-restore_files() {
-    local src="$1"
-    local dest="$2"
-    local description="$3"
+    # Function to safely restore files
+    restore_files() {
+        local src="$1"
+        local dest="$2"
+        local description="$3"
 
-    if [ -d "$src" ] || [ -f "$src" ]; then
-        echo "Restoring $description..."
-        mkdir -p "$(dirname "$dest")"
-        cp -r "$src" "$dest" 2>/dev/null || true
+        if [ -d "$src" ]; then
+            echo "Restoring $description..."
+            mkdir -p "$dest"
+            cp -a "$src"/. "$dest"/ 2>/dev/null || true
+        elif [ -f "$src" ]; then
+            echo "Restoring $description..."
+            mkdir -p "$(dirname "$dest")"
+            cp -a "$src" "$dest" 2>/dev/null || true
+        fi
+    }
+
+    # 1. Install captured packages
+    echo "Installing system packages..."
+    if [ -f "$BUNDLE_DIR/installed-packages.txt" ]; then
+        # Reinstall captured packages, excluding kernel packages and Packer itself
+        grep "install" "$BUNDLE_DIR/installed-packages.txt" | \
+        grep -v "deinstall\|linux-image\|linux-headers\|linux-modules\|packer" | \
+        awk '{print $1}' | \
+        xargs -r env DEBIAN_FRONTEND=noninteractive apt-get install -y || true
     fi
-}
 
-# 1. Install captured packages
-echo "Installing system packages..."
-if [ -f "$BUNDLE_DIR/installed-packages.txt" ]; then
-    # Install packages, filtering out problematic ones
-    grep "install" "$BUNDLE_DIR/installed-packages.txt" | \
-    grep -v "deinstall\|linux-image\|linux-headers\|linux-modules" | \
-    awk '{print $1}' | \
-    xargs apt-get install -y || true
-fi
+    # Install additional packages that might be needed
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+        nginx \
+        nodejs \
+        npm \
+        certbot \
+        2>/dev/null || true
 
-# Install additional packages that might be needed
-apt-get install -y \
-    nginx \
-    nodejs \
-    npm \
-    certbot \
-    2>/dev/null || true
+    # 2. Restore system configurations
+    echo "Restoring system configurations..."
+    if [ -d "$BUNDLE_DIR/configs" ]; then
+        # Restore web server configs
+        restore_files "$BUNDLE_DIR/configs/nginx" "/etc/nginx" "Nginx configuration"
 
-# 2. Restore system configurations
-echo "Restoring system configurations..."
-if [ -d "$BUNDLE_DIR/configs" ]; then
-    # Restore web server configs
-    restore_files "$BUNDLE_DIR/configs/nginx" "/etc/nginx" "Nginx configuration"
+        # Restore system files
+        restore_files "$BUNDLE_DIR/configs/hosts" "/etc/hosts" "Hosts file"
+        restore_files "$BUNDLE_DIR/configs/environment" "/etc/environment" "Environment file"
+        restore_files "$BUNDLE_DIR/configs/systemd" "/etc/systemd/system" "Systemd service files"
+    fi
 
-    # Restore system files
-    restore_files "$BUNDLE_DIR/configs/hosts" "/etc/hosts" "Hosts file"
-    restore_files "$BUNDLE_DIR/configs/environment" "/etc/environment" "Environment file"
-    restore_files "$BUNDLE_DIR/configs/system/." "/etc/systemd/system" "Systemd services"
-fi
+    # 3. Restore applications
+    echo "Restoring application data..."
+    if [ -d "$BUNDLE_DIR/apps" ]; then
+        # Web applications
+        restore_files "$BUNDLE_DIR/apps/www" "/var/www" "Web applications"
+        restore_files "$BUNDLE_DIR/apps/opt" "/opt" "Optional applications"
+        restore_files "$BUNDLE_DIR/apps/srv" "/srv" "Service applications"
 
-# 3. Restore applications
-echo "Restoring application data..."
-if [ -d "$BUNDLE_DIR/apps" ]; then
-    # Web applications
-    restore_files "$BUNDLE_DIR/apps/www" "/var/www" "Web applications"
-    restore_files "$BUNDLE_DIR/apps/opt" "/opt" "Optional applications"
-    restore_files "$BUNDLE_DIR/apps/srv" "/srv" "Service applications"
+        # Node.js modules
+        restore_files "$BUNDLE_DIR/apps/node_modules" "/usr/local/lib/node_modules" "Node.js modules"
+    fi
 
-    # Node.js modules
-    restore_files "$BUNDLE_DIR/apps/node_modules" "/usr/local/lib/node_modules" "Node.js modules"
-fi
+    # 4. Restore all user accounts and data
+    echo "Restoring user accounts and data..."
+    if [ -d "$BUNDLE_DIR/users" ]; then
+        for user_dir in "$BUNDLE_DIR/users"/*; do
+            if [ -d "$user_dir" ]; then
+                username=$(basename "$user_dir")
+                echo "Restoring user: $username"
 
-# 4. Restore all user accounts and data
-echo "Restoring user accounts and data..."
-if [ -d "$BUNDLE_DIR/users" ]; then
-    for user_dir in "$BUNDLE_DIR/users"/*; do
-        if [ -d "$user_dir" ]; then
-            username=$(basename "$user_dir")
-            echo "Restoring user: $username"
-
-            # Create user account (skip if it's root)
-            if [ "$username" != "root" ]; then
-                useradd -m -s /bin/bash "$username" 2>/dev/null || true
-                # Add to sudo group if it's ubuntu user
-                if [ "$username" = "ubuntu" ]; then
-                    usermod -aG sudo "$username" 2>/dev/null || true
-                fi
-            fi
-
-            # Determine target home directory
-            if [ "$username" = "root" ]; then
-                user_home="/root"
-            else
-                user_home="/home/$username"
-            fi
-
-            # Create home directory if it doesn't exist
-            mkdir -p "$user_home"
-
-            # Restore user files and directories
-            if [ -f "$user_dir/.bashrc" ]; then
-                cp "$user_dir/.bashrc" "$user_home/" 2>/dev/null || true
-            fi
-            if [ -f "$user_dir/.bash_profile" ]; then
-                cp "$user_dir/.bash_profile" "$user_home/" 2>/dev/null || true
-            fi
-            if [ -f "$user_dir/.gitconfig" ]; then
-                cp "$user_dir/.gitconfig" "$user_home/" 2>/dev/null || true
-            fi
-            if [ -d "$user_dir/.ssh" ]; then
-                cp -r "$user_dir/.ssh" "$user_home/" 2>/dev/null || true
-                chmod 700 "$user_home/.ssh" 2>/dev/null || true
-                chmod 600 "$user_home/.ssh"/* 2>/dev/null || true
-            fi
-            if [ -d "$user_dir/.config" ]; then
-                cp -r "$user_dir/.config" "$user_home/" 2>/dev/null || true
-            fi
-            if [ -d "$user_dir/.local" ]; then
-                cp -r "$user_dir/.local" "$user_home/" 2>/dev/null || true
-            fi
-
-            # Restore application and data directories
-            if [ -d "$user_dir/userdata" ]; then
-                cp -r "$user_dir/userdata" "$user_home/" 2>/dev/null || true
-            fi
-            if [ -d "$user_dir/api" ]; then
-                cp -r "$user_dir/api" "$user_home/" 2>/dev/null || true
-            fi
-            if [ -d "$user_dir/projects" ]; then
-                cp -r "$user_dir/projects" "$user_home/" 2>/dev/null || true
-            fi
-            if [ -d "$user_dir/data" ]; then
-                cp -r "$user_dir/data" "$user_home/" 2>/dev/null || true
-            fi
-            if [ -d "$user_dir/app" ]; then
-                cp -r "$user_dir/app" "$user_home/" 2>/dev/null || true
-            fi
-            if [ -d "$user_dir/www" ]; then
-                cp -r "$user_dir/www" "$user_home/" 2>/dev/null || true
-            fi
-
-            # Restore any other directories
-            for item in "$user_dir"/*; do
-                if [ -d "$item" ]; then
-                    item_name=$(basename "$item")
-                    # Skip already handled directories
-                    if [[ ! "$item_name" =~ ^(\.ssh|\.config|\.local|userdata|api|projects|data|app|www)$ ]]; then
-                        cp -r "$item" "$user_home/" 2>/dev/null || true
+                # Create user account (skip if it's root)
+                if [ "$username" != "root" ]; then
+                    useradd -m -s /bin/bash "$username" 2>/dev/null || true
+                    # Add to sudo group if it's ubuntu user
+                    if [ "$username" = "ubuntu" ]; then
+                        usermod -aG sudo "$username" 2>/dev/null || true
                     fi
                 fi
-            done
 
-            # Set ownership
-            if [ "$username" != "root" ]; then
-                chown -R "$username:$username" "$user_home" 2>/dev/null || true
+                # Determine target home directory
+                if [ "$username" = "root" ]; then
+                    user_home="/root"
+                else
+                    user_home="/home/$username"
+                fi
+
+                # Create home directory if it doesn't exist
+                mkdir -p "$user_home"
+
+                # Restore user files and directories
+                if [ -f "$user_dir/.bashrc" ]; then
+                    cp "$user_dir/.bashrc" "$user_home/" 2>/dev/null || true
+                fi
+                if [ -f "$user_dir/.bash_profile" ]; then
+                    cp "$user_dir/.bash_profile" "$user_home/" 2>/dev/null || true
+                fi
+                if [ -f "$user_dir/.gitconfig" ]; then
+                    cp "$user_dir/.gitconfig" "$user_home/" 2>/dev/null || true
+                fi
+                if [ -d "$user_dir/.ssh" ]; then
+                    cp -r "$user_dir/.ssh" "$user_home/" 2>/dev/null || true
+                    chmod 700 "$user_home/.ssh" 2>/dev/null || true
+                    chmod 600 "$user_home/.ssh"/* 2>/dev/null || true
+                fi
+                if [ -d "$user_dir/.config" ]; then
+                    cp -r "$user_dir/.config" "$user_home/" 2>/dev/null || true
+                fi
+                if [ -d "$user_dir/.local" ]; then
+                    cp -r "$user_dir/.local" "$user_home/" 2>/dev/null || true
+                fi
+
+                # Restore application and data directories
+                if [ -d "$user_dir/userdata" ]; then
+                    cp -r "$user_dir/userdata" "$user_home/" 2>/dev/null || true
+                fi
+                if [ -d "$user_dir/api" ]; then
+                    cp -r "$user_dir/api" "$user_home/" 2>/dev/null || true
+                fi
+                if [ -d "$user_dir/projects" ]; then
+                    cp -r "$user_dir/projects" "$user_home/" 2>/dev/null || true
+                fi
+                if [ -d "$user_dir/data" ]; then
+                    cp -r "$user_dir/data" "$user_home/" 2>/dev/null || true
+                fi
+                if [ -d "$user_dir/app" ]; then
+                    cp -r "$user_dir/app" "$user_home/" 2>/dev/null || true
+                fi
+                if [ -d "$user_dir/www" ]; then
+                    cp -r "$user_dir/www" "$user_home/" 2>/dev/null || true
+                fi
+
+                # Restore any other directories
+                for item in "$user_dir"/*; do
+                    if [ -d "$item" ]; then
+                        item_name=$(basename "$item")
+                        # Skip already handled directories
+                        if [[ ! "$item_name" =~ ^(\.ssh|\.config|\.local|userdata|api|projects|data|app|www)$ ]]; then
+                            cp -r "$item" "$user_home/" 2>/dev/null || true
+                        fi
+                    fi
+                done
+
+                # Set ownership
+                if [ "$username" != "root" ]; then
+                    chown -R "$username:$username" "$user_home" 2>/dev/null || true
+                fi
             fi
-        fi
-    done
-fi
+        done
+    fi
 
-# 5. Restore SSL certificates
-echo "Restoring SSL certificates..."
-if [ -d "$BUNDLE_DIR/ssl" ]; then
-    restore_files "$BUNDLE_DIR/ssl/letsencrypt" "/etc/letsencrypt" "Let's Encrypt certificates"
-    restore_files "$BUNDLE_DIR/ssl/certs" "/etc/ssl/certs" "SSL certificates"
-fi
+    # 5. Restore SSL certificates
+    echo "Restoring SSL certificates..."
+    if [ -d "$BUNDLE_DIR/ssl" ]; then
+        restore_files "$BUNDLE_DIR/ssl/letsencrypt" "/etc/letsencrypt" "Let's Encrypt certificates"
+        restore_files "$BUNDLE_DIR/ssl/certs" "/etc/ssl/certs" "SSL certificates"
+    fi
 
-# 6. Restore environment files
-echo "Restoring environment files..."
-if [ -d "$BUNDLE_DIR/env-files" ]; then
-    find "$BUNDLE_DIR/env-files" -name "*.env*" | while read envfile; do
-        # Determine appropriate location based on filename
-        if [[ "$(basename "$envfile")" == *"www"* ]]; then
-            cp "$envfile" "/var/www/" 2>/dev/null || true
-        elif [[ "$(basename "$envfile")" == *"opt"* ]]; then
-            cp "$envfile" "/opt/" 2>/dev/null || true
-        else
-            cp "$envfile" "/home/ubuntu/" 2>/dev/null || true
-        fi
-    done
-fi
+    # 6. Restore environment files
+    echo "Restoring environment files..."
+    if [ -d "$BUNDLE_DIR/env-files" ]; then
+        find "$BUNDLE_DIR/env-files" -name "*.env*" | while read envfile; do
+            # Determine appropriate location based on filename
+            if [[ "$(basename "$envfile")" == *"www"* ]]; then
+                cp "$envfile" "/var/www/" 2>/dev/null || true
+            elif [[ "$(basename "$envfile")" == *"opt"* ]]; then
+                cp "$envfile" "/opt/" 2>/dev/null || true
+            else
+                cp "$envfile" "/home/ubuntu/" 2>/dev/null || true
+            fi
+        done
+    fi
 
-# 7. Restore cron jobs
-echo "Restoring scheduled tasks..."
-if [ -f "$BUNDLE_DIR/user-crontab.txt" ]; then
-    sudo -u ubuntu crontab "$BUNDLE_DIR/user-crontab.txt" 2>/dev/null || true
-fi
-if [ -f "$BUNDLE_DIR/root-crontab.txt" ]; then
-    crontab "$BUNDLE_DIR/root-crontab.txt" 2>/dev/null || true
-fi
+    # 7. Restore cron jobs
+    echo "Restoring scheduled tasks..."
+    if [ -f "$BUNDLE_DIR/user-crontab.txt" ]; then
+        sudo -u ubuntu crontab "$BUNDLE_DIR/user-crontab.txt" 2>/dev/null || true
+    fi
+    if [ -f "$BUNDLE_DIR/root-crontab.txt" ]; then
+        crontab "$BUNDLE_DIR/root-crontab.txt" 2>/dev/null || true
+    fi
 
-# 8. Enable services
-echo "Enabling services..."
-if [ -f "$BUNDLE_DIR/enabled-services.txt" ]; then
-    grep "enabled" "$BUNDLE_DIR/enabled-services.txt" | \
-    awk '{print $1}' | \
-    while read service; do
-        # Skip problematic services
-        if [[ ! "$service" =~ ^(cloud-|snap\.|.*\.mount).*$ ]]; then
-            systemctl enable "$service" 2>/dev/null || true
-        fi
-    done
-fi
+    # 8. Set correct permissions
+    echo "Setting permissions..."
+    chown -R www-data:www-data /var/www 2>/dev/null || true
 
-# 9. Set correct permissions
-echo "Setting permissions..."
-chown -R www-data:www-data /var/www 2>/dev/null || true
+    # 9. Reload systemd and enable required services
+    echo "Enabling and starting services..."
+    systemctl daemon-reload
 
-# 10. Reload systemd and start services
-echo "Starting services..."
-systemctl daemon-reload
-systemctl restart nginx 2>/dev/null || true
-systemctl restart mysql 2>/dev/null || true
-systemctl restart postgresql 2>/dev/null || true
-systemctl restart redis 2>/dev/null || true
+    systemctl enable nginx || true
+    systemctl enable express-api || true
 
-# Start any custom services (like express-api from CloudFormation)
-systemctl restart express-api 2>/dev/null || true
+    systemctl restart nginx || true
+    systemctl restart express-api || true
+    systemctl restart mysql 2>/dev/null || true
+    systemctl restart postgresql 2>/dev/null || true
+    systemctl restart redis 2>/dev/null || true
 
-apt-get clean
+    # Validate nginx configuration
+    nginx -t && systemctl reload nginx || true
 
-# 11. Final system configuration
-echo "Final system configuration..."
-# Set timezone
-timedatectl set-timezone UTC
+    apt-get clean
 
-# Generate SSH host keys if needed
-ssh-keygen -A 2>/dev/null || true
+    # 11. Final system configuration
+    echo "Final system configuration..."
+    # Set timezone
+    timedatectl set-timezone UTC
 
-echo "System restoration complete!"
-echo "Please review the inventory file for reference:"
-[ -f "$BUNDLE_DIR/inventory.txt" ] && cat "$BUNDLE_DIR/inventory.txt"
-```
+    # Generate SSH host keys if needed
+    ssh-keygen -A 2>/dev/null || true
 
-Set the proper executable permissions on the script.
+    echo "System restoration complete!"
+    echo "Please review the inventory file for reference:"
+    [ -f "$BUNDLE_DIR/inventory.txt" ] && cat "$BUNDLE_DIR/inventory.txt"
+    ```
 
-```command {title="Set restore script permissions"}
-sudo chmod +x /usr/packer-migration/setup-and-restore.sh
-```
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-## Building the Packer Template
+1.  Set the proper executable permissions on the script.
 
-The Packer template automates the entire migration by spinning up a temporary Linode, copying your data bundle to it, running scripts to install your applications and restore your configurations, then creating a snapshot of the configured system. This results in a custom Linode image that contains your migrated environment, ready to deploy as a new instance.
+    ```command
+    sudo chmod +x /usr/packer-migration/setup-and-restore.sh
+    ```
 
-### Step 1: Copy the working starter template
+## Build the Packer Template
 
-Rather than building a template from scratch, you can start with the following template that covers the most common migration scenarios. This file, `migrate-to-linode.pkr.hcl`, should also be placed in the `/usr/packer-migraton` folder.
+The Packer template automates the entire migration by spinning up a temporary Akamai Cloud VM, copying your data bundle to it, running scripts to install your applications and restore your configurations, then creating a snapshot of the configured system. This results in a custom Akamai Cloud VM image that contains your migrated environment, ready to deploy as a new VM.
 
-```hcl {title="Packer template file, starter template"}
-variable "linode_api_token" {
-  type    = string
-  default = env("LINODE_TOKEN")
-}
+Rather than building a template from scratch, you can start with the following template, which covers the most common migration scenarios.
 
-locals {
-  timestamp = regex_replace(timestamp(), "[- TZ:]", "")
-}
+1.  Create a Packer template file called `migrate-to-akamai-cloud.pkr.hcl` in `/usr/packer-migration`:
 
-source "linode" "migration" {
-  image               = "linode/ubuntu24.04"  # Match your source OS
-  image_description   = "Migrated system - ${local.timestamp}"
-  image_label         = "migrated-system-${local.timestamp}"
-  instance_label      = "temp-migration-${local.timestamp}"
-  instance_type       = "g6-nanode-1"
-  linode_token        = var.linode_api_token
-  region              = "us-lax"  # Choose your preferred region
-  ssh_username        = "root"
-}
+    ```command
+    sudo nano /usr/packer-migration/migrate-to-akamai-cloud.pkr.hcl
+    ```
 
-build {
-  sources = ["source.linode.migration"]
+    Give the file the following contents:
 
-  # Create destination directory
-  provisioner "shell" {
-    inline = ["mkdir -p /tmp/bundle-data"]
-  }
+    ```file {title="/usr/packer-migration/migrate-to-akamai-cloud.pkr.hcl" lang="hcl"}
+    variable "akamai_cloud_api_token" {
+      type    = string
+      default = env("AKAMAI_CLOUD_TOKEN")
+    }
 
-  # Upload captured data
-  provisioner "file" {
-    source      = "./bundle-data/"
-    destination = "/tmp/bundle-data"
-  }
+    locals {
+      timestamp = regex_replace(timestamp(), "[- TZ:]", "")
+    }
 
-  # Upload setup and restore script
-  provisioner "file" {
-    source      = "./setup-and-restore.sh"
-    destination = "/tmp/setup-and-restore.sh"
-  }
+    source "linode" "migration" {
+      image               = "linode/ubuntu24.04"  # Match your source OS
+      image_description   = "Migrated system - ${local.timestamp}"
+      image_label         = "migrated-system-${local.timestamp}"
+      instance_label      = "temp-migration-${local.timestamp}"
+      instance_type       = "g6-nanode-1"
+      linode_token        = var.akamai_cloud_api_token
+      region              = "us-lax"  # Choose your preferred region
+      ssh_username        = "root"
+    }
 
-  # Initial system setup
-  provisioner "shell" {
-    inline = [
-      "apt-get update",
-      "apt-get upgrade -y"
-    ]
-  }
+    build {
+      sources = ["source.linode.migration"]
 
-  # Restore the captured system
-  provisioner "shell" {
-    script = "./setup-and-restore.sh"
-  }
+      # Create destination directory
+      provisioner "shell" {
+        inline = ["mkdir -p /tmp/bundle-data"]
+      }
 
-  # Final cleanup
-  provisioner "shell" {
-    inline = [
-      "rm -rf /tmp/bundle-data",
-      "rm -f /tmp/setup-and-restore.sh",
-      "apt-get autoremove -y",
-      "apt-get autoclean"
-    ]
-  }
-}
-```
+      # Upload captured data
+      provisioner "file" {
+        source      = "./bundle-data/"
+        destination = "/tmp/bundle-data"
+      }
 
-Note that the template directs Packer to copy the `bundle-data` folder (created by the data capture script) to the destination VM. It also copies `setup-and-restore.sh` and executes the script on the destination VM.
+      # Upload setup and restore script
+      provisioner "file" {
+        source      = "./setup-and-restore.sh"
+        destination = "/tmp/setup-and-restore.sh"
+      }
 
-### Step 2: Validate and test the template
+      # Initial system setup
+      provisioner "shell" {
+        inline = [
+          "DEBIAN_FRONTEND=noninteractive apt-get update",
+          "DEBIAN_FRONTEND=noninteractive apt-get upgrade -y"
+        ]
+      }
 
-Before running the full build, validate your template with the following Packer command:
+      # Restore the captured system
+      provisioner "shell" {
+        script = "./setup-and-restore.sh"
+      }
 
-```command {title="Validate template syntax"}
-sudo LINODE_TOKEN="your_api_token_here" \
-     packer validate migrate-to-linode.pkr.hcl
-```
+      # Final cleanup
+      provisioner "shell" {
+        inline = [
+          "rm -rf /tmp/bundle-data",
+          "rm -f /tmp/setup-and-restore.sh",
+          "apt-get autoremove -y",
+          "apt-get autoclean"
+        ]
+      }
+    }
+    ```
 
-```output
-The configuration is valid.
-```
+    The template copies the `bundle-data` folder created by the data capture script to the destination Akamai Cloud VM. It also copies `setup-and-restore.sh` and runs it on the destination VM.
 
-### Advanced techniques
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
+1.  Before running the full build, validate the template syntax with the following Packer command, replacing {{< placeholder "AKAMAI_CLOUD_API_TOKEN" >}} with your actual API token:
+
+    ```command
+    sudo AKAMAI_CLOUD_TOKEN="{{< placeholder "AKAMAI_CLOUD_API_TOKEN" >}}" \
+         packer validate migrate-to-akamai-cloud.pkr.hcl
+    ```
+
+    ```output
+    The configuration is valid.
+    ```
+
+{{< note title="Advanced" type="secondary" >}}
 While the starter template covers most migration scenarios, Packer supports advanced techniques for complex configurations:
 
--   **Attach Linode metadata**: [Add user-defined metadata](https://techdocs.akamai.com/cloud-computing/docs/metadata-service-api) to the creation of the Linode, such as authorized public SSH keys, root password, or image naming configurations.
--   **Ansible provisioner**: For complex configuration management and orchestration
--   **Multiple builders**: To create images for multiple cloud providers simultaneously
--   **Post-processors**: For image compression, upload to registries, or integration with other tools
--   **Variable files**: For environment-specific configurations and secrets management
+-   **Attach Akamai Cloud metadata**: [Add user-defined metadata](https://techdocs.akamai.com/cloud-computing/docs/metadata-service-api) to the creation of the Akamai Cloud VM, such as authorized public SSH keys, root password, or image naming configurations.
+-   **Ansible provisioner**: For complex configuration management and orchestration.
+-   **Multiple builders**: To create images for multiple cloud providers simultaneously.
+-   **Post-processors**: For image compression, upload to registries, or integration with other tools.
+-   **Variable files**: For environment-specific configurations and secrets management.
 
-For detailed information on these advanced features, refer to the [HashiCorp Packer documentation](https://www.packer.io/docs).
+For detailed information on these advanced features, refer to the official [HashiCorp Packer documentation](https://www.packer.io/docs).
+{{< /note >}}
 
-## Executing the Migration Build
+## Run the Migration Build
 
-With your template ready and data captured, you're ready to execute the migration build.
+With your template ready and your data captured, you can run the migration build. During the build, Packer goes through several distinct phases:
 
-### Step 1: Run the complete migration build
+1.  **Create a temporary VM**: Provisions an Akamai Cloud VM using your specified base image.
+1.  **Connect via SSH**: Establishes SSH connectivity to the temporary VM.
+1.  **Run provisioners**: Executes each provisioner in sequence, such as file uploads and shell scripts.
+1.  **Create an image**: Takes a snapshot of the configured VM to create your custom image.
+1.  **Clean up**: Deletes the temporary VM, leaving only your custom image.
 
-Execute the build process with the following command, enabling detailed logging to monitor the build process.
+Run the following command to start the build and enable detailed logging:
 
-```command {title="Start the migration build"}
+```command
 sudo PACKER_LOG=1 \
      PACKER_LOG_PATH="./packer-build.log" \
-     LINODE_TOKEN="your_api_token_here" \
+     AKAMAI_CLOUD_TOKEN="{{< placeholder "AKAMAI_CLOUD_API_TOKEN" >}}" \
      packer build \
      --on-error=ask \
-     migrate-to-linode.pkr.hcl
+     migrate-to-akamai-cloud.pkr.hcl
 ```
 
-During the build, Packer goes through several distinct phases:
-
-1.  **Create temporary Linode**: Provision a Linode instance using your specified base image
-1.  **Connect via SSH**: Establish SSH connectivity to the temporary instance
-1.  **Run Provisioners**: Execute each provisioner in sequence (e.g., file uploads, shell scripts, etc.).
-1.  **Create Image**: Take a snapshot of the configured instance to create your custom image
-1.  **Cleanup**: Destroys the temporary instance, leaving only your custom image
-
-Soon after the build process begins, you will see in the Akamai Cloud Console that the temporary Linode has been provisioned.
-
-![](image4.png)
-
-The Packer output will show the result of running through its process.
+The Packer output shows the progress of the build process:
 
 ```output
 ==> linode.migration: Running builder ...
@@ -921,9 +910,7 @@ The Packer output will show the result of running through its process.
 ==> linode.migration: Creating image...
 ```
 
-![](image5.png)
-
-The build process may take 10 minutes or more, depending on the size of your bundle and the complexity of your restoration script. After the build completes successfully, you will see output that looks like this:
+This may take 10 minutes or longer, depending on the size of your bundle and restore complexity. After the build completes successfully, the output should look like this:
 
 ```output
 Build 'linode.migration' finished after 10 minutes 12 seconds.
@@ -934,141 +921,100 @@ Build 'linode.migration' finished after 10 minutes 12 seconds.
 --> linode.migration: Linode image: migrated-system-20250929190041 (private/34452080)
 ```
 
-The key information here is:
+The key information here is the **image label** (`migrated-system-20250929190041`) for identification in Cloud Manager and the **image ID** (`private/34452080`) for API and CLI usage.
 
--   **Image label**: `migrated-system-20250929024415` (for identification in Cloud Manager)
--   **Image ID**: `private/34451688` (for API and CLI usage)
+When the build completes, the image appears in the Images screen in Akamai Cloud Manager:
 
-![](image3.png)
+![The completed custom image from the migrated VM is listed in the Akamai Cloud Manager Images screen.](akamai-cloud-custom-image.png)
 
-### Step 3: Deploy a new Linode from the golden image
+## Deploy a New Akamai Cloud VM
 
-With your golden image created, [follow this guide for deploying an image to a new Linode](https://techdocs.akamai.com/cloud-computing/docs/deploy-an-image-to-a-new-compute-instance).
+With your golden image created, [follow this guide for deploying an image to a new Akamai Cloud VM](https://techdocs.akamai.com/cloud-computing/docs/deploy-an-image-to-a-new-compute-instance).
 
-### Step 4: Test the migrated instance
+Once deployed, run the following commands to verify the migrated VM is functioning correctly:
 
-Once your migrated Linode is running, connect via SSH. You can also reset the root password in the Akamai Cloud Console, on the **Settings** page for your Linode Compute Instance. Go through the following steps to test your migrated instance:
+```command
+systemctl status nginx --no-pager
+systemctl status express-api --no-pager
+ss -tulnp | grep :3000
+curl localhost
+curl localhost:3000
+curl localhost/api/
+ls -la /home/ubuntu/userdata
+systemctl --failed
+```
 
-1.   Check for basic network connectivity and system status.
-1.   Check disk usage and verify the presence of expected folders.
-1.   Verify that your expected services (web servers, databases, etc.) are running correctly.
-1.   Review any failed services (`systemctl --failed`).
-1.   Test API endpoints and functionality.
-1.   Check file permissions and ownership.
-1.   Validate SSL certificates and HTTPS functionality.
+Confirm that:
 
-You've successfully migrated your virtual machine to Linode using Packer. This automated approach gives you several advantages:
+-   `nginx` is `active` and `running`
+-   `express-api` is `active` and `enabled`
+-   Port `3000` is listening
+-   The `root` endpoint returns the expected HTML response
+-   The `/api/` endpoint returns JSON
+-   The `userdata` directory exists and contains expected files
+-   No failed `systemd` units are reported
 
--   **Repeatability**: Your templates can create identical environments
--   **Version Control**: Templates can be stored in git for tracking changes
--   **Automation**: The process works with CI/CD pipelines
--   **Documentation**: The template documents your infrastructure
+You have now migrated your VM to Akamai Cloud using Packer. This approach makes the migration process repeatable, easier to version, and simpler to automate.
 
-## Post-Migration Tasks and Optimization
+## Post-Migration Tasks
 
-### Final configuration adjustments
+After your migrated VM is running and validated, review your environment and make any remaining adjustments.
 
-After your migrated instance is running and validated, you'll need to make several final adjustments:
+Update firewall rules to match your desired network environment, either with a firewall installed on your Akamai Cloud VM or with an [Akamai Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall). Update hardcoded IP addresses in application configurations and database connection strings. Reconfigure any provider-specific services, such as AWS S3 or CloudWatch, to use appropriate Akamai Cloud services or other replacements.
 
--   Update firewall rules (either with a firewall installed on your Linode instance or with a [Linode Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall)) to match your desired network environment.
--   Review and update hardcoded IP addresses in application configurations and database connection strings.
--   Reconfigure cloud-provider-specific services (like AWS S3 or CloudWatch) to use Linode alternatives.
--   Monitor resource usage for a few days and resize your instance if needed.
--   Set up [automated backups](https://www.linode.com/products/backups/) of your VM disk.
-
-### Data migrations for large datasets or databases
-
-For databases and datasets that may be exceptionally large (for example, exceeding 1GB), migrate them separately from the Packer build. Use database-specific tools for reliable transfers. For guidance on migrating from self-hosted databases (such as MySQL or PostgreSQL) to managed database, see [here](https://www.linode.com/docs/guides/self-hosted-vs-managed-databases/#resources).
+For databases and datasets that may be exceptionally large (for example, over 1 GB), migrate them separately from the Packer build. Use database-specific tools for reliable transfers. For guidance on migrating from self-hosted databases (such as MySQL or PostgreSQL) to managed databases, see [these resources](/docs/guides/self-hosted-vs-managed-databases/#resources).
 
 For large file stores and media libraries, use [`rsync`](https://rsync.samba.org/) over SSH for direct transfers or [Akamai Object Storage](https://www.linode.com/products/object-storage/) as an intermediate location. Attach [Block Storage](https://techdocs.akamai.com/cloud-computing/docs/block-storage) volumes for large persistent datasets. For detailed guidance, see the following migration guides:
 
--   [Migrate from AWS EBS to Linode Block Storage](https://www.linode.com/docs/guides/migrate-from-aws-ebs-to-linode-block-storage/)
--   [Migrate from Azure Disk Storage to Linode Block Storage](https://www.linode.com/docs/guides/migrate-from-azure-disk-storage-to-linode-block-storage/)
--   [Migrate from GCP Hyperdisk and Persistent Disk to Linode Block Storage](https://www.linode.com/docs/guides/migrate-from-gcp-hyperdisk-and-persistent-disk-to-linode-block-storage/)
+-   [Migrate from AWS EBS to Akamai Block Storage](/docs/guides/migrate-from-aws-ebs-to-linode-block-storage/)
+-   [Migrate from Azure Disk Storage to Akamai Block Storage](/docs/guides/migrate-from-azure-disk-storage-to-linode-block-storage/)
+-   [Migrate from GCP Hyperdisk and Persistent Disk to Akamai Block Storage](/docs/guides/migrate-from-gcp-hyperdisk-and-persistent-disk-to-linode-block-storage/)
 
-### DNS updates and traffic cutover planning
+Plan your DNS cutover carefully to minimize downtime. Lower TTL values 24–48 hours before migration for faster propagation and document all DNS records requiring updates (such as `A`, `CNAME`, `MX`, and `TXT` records). Consider migrating staging systems first, then gradually shifting production traffic. Keep your old environment running for at least 24–72 hours after the transition in case a rollback is required.
 
-Plan your DNS cutover carefully to minimize downtime:
+Continue monitoring your migrated VM and adjust resources as needed. Use Akamai Cloud Manager compute metrics or tools like `htop`, `iostat`, and `vmstat` to monitor resources. Resize to a larger plan if you are experiencing CPU, memory, or I/O bottlenecks. Alternatively, if your resources are consistently underutilized, downsize to reduce costs. Tune web server worker processes and connection limits. Optimize database memory and cache sizes based on workload. Implement or expand caching layers (for example, Redis and Memcached) for better performance.
 
--   Lower DNS TTL values 24-48 hours before migration for faster propagation.
--   Document all DNS records requiring updates (A, CNAME, MX, TXT records).
--   Consider a phased cutover: migrate staging first, then gradually shift production traffic.
--   Keep your old environment running 24-72 hours after cutover to allow for the possibility of a rollback.
+Finally, set up [automated backups](https://www.linode.com/products/backups/) for your VM disk.
 
 ## Troubleshooting Common Issues
 
-### Failed image creation
+The most common build-time issue is failed image creation, while post-migration application issues typically stem from network problems or permission issues.
 
-It is possible that the Packer build process fails on image creation, and you see output that looks like the following:
+### Failed Image Creation
+
+If the Packer build fails during image creation, you may see output similar to the following:
 
 ```output {title="Packer build output when image creation fails"}
-==> linode.migration: Failed to wait for image creation: event 1146467561 has failed
 ==> linode.migration: Failed to wait for image creation: event 1146467561 has failed
 ==> linode.migration: Step "stepCreateImage" failed
 ```
 
-The cause of the image creation failure is likely related to custom image size limits imposed by Linode (6GB uncompressed). Ordinarily, if Packer encounters this kind of error, it will terminate the build process and perform clean up steps, including the deletion of the temporary Linode.
+Image creation failures are often caused by Akamai Cloud custom image size limits (6 GB uncompressed). By default, if Packer encounters this error, it terminates the build and cleans up the temporary VM.
 
-Because you ran the `packer build` command with `--on-error=ask`, Packer will instead ask you what it ought to do when it encounters the image creation error:
+Because the `packer build` command was run with the `--on-error=ask` flag, Packer prompts you to choose how to proceed when it encounters the image creation error:
 
 ```output {title="Packer asks how to proceed when image creation fails"}
 ==> linode.migration: [c] Clean up and exit, [a] abort without cleanup, or [r] retry step (build may fail even if retry succeeds)?
 ```
 
-If you select `[a] abort without cleanup`, then Packer will leave the temporary Linode intact. You can boot it up and use it directly as your migrated VM. If you still wish to create a golden image from this Linode, then:
+If you select `[a] abort without cleanup`, Packer leaves the temporary VM intact. You can boot it and use it directly as your migrated VM. If you still wish to create a golden image from this VM, then:
 
-1.   Perform any necessary disk cleanup to reduce the disk usage to approximately less than 4.5 GB (use `df -h` to see disk usage).
-1.   Power off the Linode.
-1.   Resize the storage disk to be 5500 MB, so that the resulting image will be less than 6 GB.
-1.   Create an image from the Linode.
+1.  Perform any necessary disk cleanup to reduce disk usage to under 4.5 GB (use `df -h` to see disk usage).
+1.  Power off the VM.
+1.  Resize the storage disk to be 5500 MB, so that the resulting image is less than 6 GB (see our guide on [capturing an image from an existing Akamai Cloud VM](https://techdocs.akamai.com/cloud-computing/docs/capture-an-image)).
+1.  Create an image from the VM.
 
-### Post-migration application issues
+### Networking Problems
 
-Application issues after migration typically stem from network problems or permission issues.
+-   Check logs for connection timeouts or "connection refused" errors.
+-   Verify that firewall rules allow required traffic.
+-   Update applications using cloud provider metadata services to use the Akamai Cloud Metadata Service API.
+-   Debug network issues with `tcpdump` or `ss`.
+-   Review system and application logs (such as NGINX, databases, and custom apps) with `journalctl -xe` and the relevant files in `/var/log/`.
 
-#### Network problems
+### Permission Issues
 
--   Check for connection timeouts or "connection refused" errors in logs.
--   Verify firewall rules allow necessary traffic.
--   Update applications using cloud-provider metadata services to use Linode's Metadata Service API.
-
-#### Permission issues
-
--   Verify web server files are owned by the correct user (typically `www-data`).
--   Check application directories have appropriate read/write permissions.
+-   Verify that web server files are owned by the correct user (typically `www-data`).
+-   Check that application directories have appropriate read/write permissions.
 -   Ensure environment variables are properly set and file paths are correct.
-
-### Performance tuning and resource sizing
-
-Monitor your migrated Linode's performance and optimize as needed:
-
--   Use Akamai Cloud Manager compute metrics or tools like `htop`, `iostat`, and `vmstat` to monitor resources.
--   Resize to a larger plan if you are experiencing CPU, memory, or I/O bottlenecks.
--   If your resources are consistently underutilized, downsize to reduce costs.
--   Tune web server worker processes and connection limits.
--   Optimize database memory and cache sizes based on workload.
--   Implement or expand caching layers (Redis, Memcached) for better performance.
-
-### Debugging techniques and log analysis
-
-Use systematic log analysis to troubleshoot issues:
-
--   Check systemd logs with `journalctl -xe`.
--   Review application logs in `/var/log/` (such as NGINX, databases, custom apps).
--   Check service status with `systemctl status <service-name>`.
--   When deeper investigation is needed, enable verbose logging temporarily.
--   Debug network issues with `tcpdump`, `netstat`, or `ss`.
--   Reference your inventory file to identify missing or misconfigured elements.
-
-### Additional resources
-
-Packer:
--   [Documentation](https://developer.hashicorp.com/packer/docs)
--   [CLI usage](https://developer.hashicorp.com/packer/docs/commands)
--   [Builder plugin for Linode](https://developer.hashicorp.com/packer/integrations/linode/linode)
--   [Including Linode metadata in build configuration](https://developer.hashicorp.com/packer/integrations/linode/linode/latest/components/builder/linode#optional)
-Akamai Cloud:
--   [Images documentation](https://techdocs.akamai.com/cloud-computing/docs/images)
--   [Deploy an image to a new Linode](https://techdocs.akamai.com/cloud-computing/docs/deploy-an-image-to-a-new-compute-instance)
--   [Capture an image from an existing Linode](https://techdocs.akamai.com/cloud-computing/docs/capture-an-image)
--   [Using the Metadata Service API](https://techdocs.akamai.com/cloud-computing/docs/metadata-service-api)
+-   Check service status with `systemctl status` when ownership or file path issues may be preventing startup.
