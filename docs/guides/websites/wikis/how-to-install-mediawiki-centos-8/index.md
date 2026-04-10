@@ -41,7 +41,7 @@ This guide is written for a non-root user. Commands that require elevated privil
         sudo systemctl enable httpd.service
         sudo systemctl start httpd.service
 
-3. See the guide for [How to Install Apache Web Server on CentOS 8](/docs/guides/how-to-install-apache-web-server-centos-8/) for more details and configuration options for the Apache web server.
+3. For more details and advanced configuration options, see the official [Apache HTTP Server documentation](https://httpd.apache.org/docs/).
 
 ## Install PHP
 
