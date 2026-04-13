@@ -685,6 +685,9 @@ Create a deployment for an imaginary client:
 [State](https://developer.hashicorp.com/terraform/language/state) data files are stored on a [backend](https://developer.hashicorp.com/terraform/language/settings/backends/configuration) by Terraform to log and track metadata, map resources to a configuration, and improve performance. By default, state is stored locally in the `terraform.tfstate` file.
 
 Using the configuration below with the `backend` block, you can set up Terraform to use Linode Object Storage to store state remotely. The `backend` block should be nested within the `terraform` block as noted in [Hashicorp's official backend documentation](https://developer.hashicorp.com/terraform/language/settings/backends/s3). In this guide, the `terraform` block is located in the `main.tf` configuration file.
+{{< note >}}
+HashiCorp only tests the S3 backend against Amazon S3 and offers support for S3-compatible providers on a best-effort basis only. As a result, terraform init may fail with recent versions of Terraform v1.6 or later even when all `skip_*` options are set. If you encounter errors, consider using [OpenTofu](https://opentofu.org/) as a drop-in replacement. You can use the same configuration works with `tofu init`, `tofu plan`, and `tofu apply`.
+{{< /note >}}
 
 Note that this module assumes an object storage bucket already exists on your account. Replace values with your bucket and key information:
 
@@ -700,6 +703,7 @@ backend "s3" {
     skip_credentials_validation = true
     skip_requesting_account_id = true
     skip_s3_checksum = true
+    use_path_style              = true   #required for non-AWS endpoints
     endpoints = {
       s3 = "{{< placeholder "https://us-southeast-1.linodeobjects.com" >}}"  # The endpoint for the s3 API based on the region your bucket is located https://techdocs.akamai.com/cloud-computing/docs/access-buckets-and-files-through-urls#cluster-url-s3-endpoint
     }
