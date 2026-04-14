@@ -686,7 +686,7 @@ Create a deployment for an imaginary client:
 
 Using the configuration below with the `backend` block, you can set up Terraform to use Linode Object Storage to store state remotely. The `backend` block should be nested within the `terraform` block as noted in [Hashicorp's official backend documentation](https://developer.hashicorp.com/terraform/language/settings/backends/s3). In this guide, the `terraform` block is located in the `main.tf` configuration file.
 {{< note >}}
-HashiCorp only tests the S3 backend against Amazon S3 and offers support for S3-compatible providers on a best-effort basis only. As a result, terraform init may fail with recent versions of Terraform v1.6 or later even when all `skip_*` options are set. If you encounter errors, consider using [OpenTofu](https://opentofu.org/) as a drop-in replacement. You can use the same configuration works with `tofu init`, `tofu plan`, and `tofu apply`.
+HashiCorp only tests the S3 backend against Amazon S3 and offers support for S3-compatible providers on a best-effort basis only.
 {{< /note >}}
 
 Note that this module assumes an object storage bucket already exists on your account. Replace values with your bucket and key information:
