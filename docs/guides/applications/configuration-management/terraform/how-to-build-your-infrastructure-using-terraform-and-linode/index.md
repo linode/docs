@@ -25,12 +25,12 @@ The configurations and commands used in this guide results in multiple Linodes b
 
 ## Before You Begin
 
-{{< note title ="Linode Provider Version 3.0.0" >}}
-As of June, 2025, the [Linode Terraform Provider](https://github.com/linode/terraform-provider-linode/) version is 3.0.0. To determine the current version, see the [Linode Namespace](https://registry.terraform.io/namespaces/linode) in the Terraform Registry.
+{{< note title ="Linode Provider Version 3.11.0" >}}
+As of April, 2026, the [Linode Terraform Provider](https://github.com/linode/terraform-provider-linode/) version is 3.11.0. To determine the current version, see the [Linode Namespace](https://registry.terraform.io/namespaces/linode) in the Terraform Registry.
 
-The Linode Terraform Provider version 3.0.0 requires `terraform` version 1.0 or greater. See [Terraform's developer documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/upgrade-guides/1-0) for guidance on upgrading to version 1.0.
+The Linode Terraform Provider version 3.11.0 requires `terraform` version 1.0 or greater. See [Terraform's developer documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/upgrade-guides/1-0) for guidance on upgrading to version 1.0.
 
-The examples in this guide were originally written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html).
+The examples in this guide were originally written to be compatible with [Terraform version 0.11](https://developer.hashicorp.com/terraform/language/configuration-0-11/terraform).
 {{< /note >}}
 
 -   This guide shows you how to install and use the Terraform client software from a Linux system. Terraform can be installed on other operating systems, and the instructions for those platforms are analogous to the commands presented in this guide.
@@ -124,7 +124,7 @@ Terraform uses a declarative approach in which configuration files specify the d
       required_providers {
         linode = {
           source = "linode/linode"
-          version = "3.0.0"
+          version = "3.11.0"
         }
       }
     }
@@ -161,9 +161,9 @@ Terraform uses a declarative approach in which configuration files specify the d
     ```output
     Initializing the backend...
     Initializing provider plugins...
-    - Finding linode/linode versions matching "3.0.0"...
-    - Installing linode/linode v3.0.0...
-    - Installed linode/linode v3.0.0 (signed by a HashiCorp partner, key ID F4E6BBD0EA4FE463)
+    - Finding linode/linode versions matching "3.11.0"...
+    - Installing linode/linode v3.11.0...
+    - Installed linode/linode v3.11.0 (signed by a HashiCorp partner, key ID F4E6BBD0EA4FE463)
     Partner and community providers are signed by their developers.
     If you'd like to know more about provider signing, you can read about it here:
     https://developer.hashicorp.com/terraform/cli/plugins/signing
@@ -183,7 +183,7 @@ Terraform uses a declarative approach in which configuration files specify the d
     ```
     {{< /note >}}
 
-1.  Run Terraform's [plan](https://www.terraform.io/docs/commands/plan.html) command:
+1.  Run Terraform's [plan](https://developer.hashicorp.com/terraform/cli/commands/plan) command:
 
     ```command
     terraform plan
@@ -211,7 +211,7 @@ Terraform uses a declarative approach in which configuration files specify the d
           backups.#:          <computed>
           backups_enabled:    <computed>
           boot_config_label:  <computed>
-          group:              "Terraform"
+          tags:              "Terraform"
           image:              "linode/ubuntu24.04"
           ip_address:         <computed>
           ipv4.#:             <computed>
@@ -268,7 +268,7 @@ Terraform uses a declarative approach in which configuration files specify the d
       backups.#:          "" => "<computed>"
       backups_enabled:    "" => "<computed>"
       boot_config_label:  "" => "<computed>"
-      group:              "" => "Terraform"
+      tags:              "" => "Terraform"
       image:              "" => "linode/ubuntu24.04"
       ip_address:         "" => "<computed>"
       ipv4.#:             "" => "<computed>"
@@ -308,7 +308,7 @@ In production environments, your SSH key and root password should be unique for 
 
     ```file {title="~/terraform/linode-terraform-db.tf"}
     resource "linode_instance" "terraform-db" {
-      image = "linode/centos7"
+      image = "linode/ubuntu24.04"
       label = "Terraform-Db-Example"
       group = "Terraform"
       region = "us-south"
@@ -434,7 +434,7 @@ To solve these issues, Terraform allows you to declare variables and insert thos
       required_providers {
         linode = {
           source = "linode/linode"
-          version = "3.0.0"
+          version = "3.11.0"
         }
       }
     }
@@ -445,9 +445,9 @@ To solve these issues, Terraform allows you to declare variables and insert thos
 
     # Example Web Server
     resource "linode_instance" "terraform-web" {
-            image = "linode/centos7"
+            image = "linode/ubuntu24.04"
             label = "Terraform-Web-Example"
-            group = "Terraform"
+            tags = "Terraform"
             region = var.region
             type = "g6-standard-1"
             swap_size = 1024
@@ -459,7 +459,7 @@ To solve these issues, Terraform allows you to declare variables and insert thos
     resource "linode_instance" "terraform-db" {
             image = "linode/ubuntu24.04"
             label = "Terraform-Db-Example"
-            group = "Terraform"
+            tags = "Terraform"
             region = var.region
             type = "g6-standard-1"
             swap_size = 1024
@@ -561,7 +561,7 @@ The module structure is flexible, so you can use as many Terraform files as need
     resource "linode_instance" "terraform-web" {
             image = "linode/ubuntu24.04"
             label = var.webserver_label
-            group = "Terraform"
+            tags = "Terraform"
             region = var.region
             type = "g6-standard-1"
             swap_size = 1024
@@ -573,7 +573,7 @@ The module structure is flexible, so you can use as many Terraform files as need
     resource "linode_instance" "terraform-db" {
             image = "linode/centos7"
             label = var.dbserver_label
-            group = "Terraform"
+            tags = "Terraform"
             region = var.region
             type = var.db_type
             swap_size = 1024
@@ -637,7 +637,7 @@ Create a deployment for an imaginary client:
       required_providers {
         linode = {
           source = "linode/linode"
-          version = "3.0.0"
+          version = "3.11.0"
         }
       }
     }
