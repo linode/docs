@@ -689,7 +689,7 @@ Using the configuration below with the `backend` block, you can set up Terraform
 HashiCorp only tests the S3 backend against Amazon S3 and offers support for S3-compatible providers on a best-effort basis only.
 {{< /note >}}
 
-Note that this module assumes an object storage bucket already exists on your account. Replace values with your bucket and key information:
+To proceed with this module, an [object storage bucket](/docs/guides/how-to-use-terraform-with-linode-object-storage/#using-terraform-to-configure-linode-object-storage) must already exist on your account. Replace values with your bucket and key information:
 
 ```file {title="obj-backend.tf"}
 # Backend Configuration
