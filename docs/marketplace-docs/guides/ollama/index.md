@@ -71,7 +71,7 @@ cat /home/$USERNAME/.credentials
 
 Once your app has finished deploying, you can log into Open WebUI using your browser.
 
-1.  Open your web browser and navigate to `https://DOMAIN/`, where *DOMAIN* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
+Open your web browser and navigate to `https://DOMAIN/`, where *DOMAIN* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
 
 Now that you’ve accessed your dashboard, check out [the official OpenWebUI documentation](https://docs.openwebui.com/) and [the official Ollama documentation](https://docs.ollama.com/) to learn how to further use your instance.
 
