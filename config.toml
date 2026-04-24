@@ -159,6 +159,9 @@ enable = false
 
 [minify]
 disableSVG = false
+[minify.tdewolff]
+  [minify.tdewolff.html]
+    keepComments = true
 
 [imaging]
 resampleFilter = "CatmullRom"
