@@ -211,6 +211,7 @@ bitwise
 Bjarne
 blkid
 blockchain
+blocklisted
 blocklists
 Blockly
 blockwise
@@ -2321,6 +2322,7 @@ seafile
 seahub
 searchbots
 searchterm
+seccomp
 secondsite
 secretpassword
 sed
