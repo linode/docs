@@ -1,12 +1,12 @@
 ---
 slug: linode-writers-formatting-guide
-title: Linode Writer's Formatting Guide
-description: 'This guide provides formatting and style guidelines for documentation and articles submitted to Linode from outside contributors via our Write for Linode program.'
+title: Linode writer's formatting guide
+description: 'This guide provides formatting and style guidelines for Linode documentation and articles.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2014-01-15
 modified: 2024-05-29
-keywords: ["style guide", "format", "formatting", "how to write", "write for us", "write for linode", "linode docs", "submissions"]
+keywords: ["style guide", "format", "formatting", "how to write", "linode docs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
 show_on_rss_feed: false
@@ -19,17 +19,11 @@ build:
 
 ![Linode Writer's Formatting Guide](linode-writers-formatting-guide.png)
 
-## Write Guides for Linode
+This guide provides templates and guidelines to use when creating or updating a guide for [Akamai Cloud Docs](/docs/). Updates, improvements, and bug fixes to Akamai Cloud documentation are always welcome through [GitHub](https://github.com/linode/docs) via pull requests (PRs) or issues.
 
-This guide provides templates and guidelines to use when creating or updating a guide for [Linode Docs](/docs/).
+## General layout
 
-Updates, improvements, and bug fixes to Linode documentation are always welcome through [GitHub](https://github.com/linode/docs) via pull requests (PRs) or issues.
-
-Through our Write For Linode program, authors can contribute new guides and be paid for their work. We ask that interested authors apply to the program with one or more writing samples so that we can evaluate your work. To learn more about the program and to complete an application, please visit our Write For Linode [program page](https://www.linode.com/lp/write-for-linode/).
-
-## General Layout
-
-Linode Guides & Tutorials are written in [Markdown](https://en.wikipedia.org/wiki/Markdown). Our documentation site uses [Hugo](https://gohugo.io), a static site generator. Hugo-specific Markdown formatting notes are given [further below](#markdown-formatting).
+Akamai Cloud guides and tutorials are written in [Markdown](https://en.wikipedia.org/wiki/Markdown). Our documentation site uses [Hugo](https://gohugo.io), a static site generator. Hugo-specific Markdown formatting notes are given [further below](#markdown-formatting).
 
 Markdown files for guides are stored under the `docs/guides/` content directory. This content directory is then further subdivided into categories for different technical topics. New guides should be placed with a category that they most closely align with. For example, if you are writing a new guide on the Apache web server, it would be placed under `docs/guides/web-servers/apache/`.
 
@@ -43,20 +37,20 @@ hugo new -k content docs/guides/web-servers/apache/my-apache-guide/index.md
 
 ### Header
 
-Linode Guides & Tutorials store metadata and other information in a [YAML](http://yaml.org/) header at the top of every page. Use the template below for your own guide.
+Akamai Cloud guides and tutorials store metadata and other information in a [YAML](http://yaml.org/) header at the top of every page. Use the template below for your own guide.
 
 {{< note >}}
 If you use the Hugo archetype command described in the previous section, the created Markdown file will be pre-populated with the frontmatter template below.
 {{< /note >}}
 
-```file {title="Author Submission" lang="yaml"}
+```file {title="Author submission" lang="yaml"}
 ---
 slug: {{ path.Base .File.Dir }}
 title: "{{ replace (path.Base .File.Dir) "-" " " | title }}"
 description: "Two to three sentences describing your guide."
 og_description: "Optional two to three sentences describing your guide when shared on social media. If omitted, the `description` parameter is used within social links."
-authors: ["Linode"]
-contributors: ["Linode"]
+authors: ["Akamai"]
+contributors: ["Akamai"]
 published: {{ now.Format "2006-01-02" }}
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -66,15 +60,17 @@ external_resources:
 ---
 ```
 
-If you're updating an existing guide in our repository, you may also notice a `deprecated` field in the header. This defaults to false, and setting it to *true* inserts a pre-written message near the beginning stating that the guide is no longer maintained. Typically, this will be used on guides specific to applications or distributions that have reached End of Life (EOL).
+Update the generated title to use sentence-style capitalization before publishing.
+
+If you're updating an existing guide in our repository, you may also notice a `deprecated` field in the header. This defaults to false, and setting it to *true* inserts a pre-written message near the beginning stating that the guide is no longer maintained. Typically, this will be used on guides specific to applications or distributions that have been discontinued.
 
 ### Introduction
 
 Introductions should be concise; explain what the goal of the guide is and why. If you're introducing new software to the system, include a brief description and link to its official website whenever possible.
 
-### Before You Begin
+### Before you begin
 
-The *Before You Begin* section is used to inform the reader of any prerequisites needed to successfully complete the guide. This may include the following:
+The *Before you begin* section is used to inform the reader of any prerequisites needed to successfully complete the guide. This may include the following:
 
 - Specific Akamai services or features that are needed, like Compute Instances, LKE clusters, or Object Storage buckets. This should include any hardware or plan requirements (see [Pricing](https://www.linode.com/pricing/)).
 
@@ -82,21 +78,21 @@ The *Before You Begin* section is used to inform the reader of any prerequisites
 
 - External requirements, such as a registered domain name or specific local software (such as a PC running Windows 11).
 
-- Software or applications that need to be installed or configured (i.e. LAMP stack, Docker, etc.), making sure to include links to instructions. Only include software that is directly used within the guide, but is not the focus of the guide. If the software needs additional configuration or usage information, it should likely be included in the guide's instructions and not in the *Before You Begin* section.
+- Software or applications that need to be installed or configured (for example, a LAMP stack, Docker, and so forth), making sure to include links to instructions. Only include software that is directly used within the guide, but is not the focus of the guide. If the software needs additional configuration or usage information, it should likely be included in the guide's instructions and not in the *Before You Begin* section.
 
 - Foundational knowledge, like an understanding of technology fundamentals (like container orchestration) or specific software or software stacks (like Kubernetes).
 
-Below is an example *Before You Begin* section. You may copy the example and edit it as needed:
+Below is an example *Before you begin* section. You may copy the example and edit it as needed:
 
-```file {title="Before You Begin"}
-## Before You Begin
+```file {title="Before you begin"}
+## Before you begin
 
-1.  If you do not already have a virtual machine to use, create a Compute Instance with at least 4 GB of memory. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you do not already have a virtual machine to use, create a compute instance with at least 4 GB of memory. See our [Getting started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Create a Linode](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Set up and secure a Linode](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 ```
 
-### Include a Note about Root or Non-Root users
+### Include a note about root or non-root users
 
 ```file {title="Guides Written for a Non-Root User" lang="txt"}
 {{</* note */>}}
@@ -110,9 +106,9 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 {{</* /note */>}}
 ```
 
-## Paragraph Structure
+## Paragraph structure
 
-Guides should be split into cohesive sections which flow from one sequence of events to the next. Each section title should be styled with an *H2* heading element, and each subsection with an *H3* heading so that scanning the *In This Guide* left sidebar should give the reader an overview of what will be done in the guide. Capitalize each noun, adjective, verb and adverb in the article title, H2 and H3 headers.
+Guides should be split into cohesive sections which flow from one sequence of events to the next. Each section title should be styled with an *H2* heading element, and each subsection with an *H3* heading so that scanning the *In This Guide* left sidebar should give the reader an overview of what will be done in the guide. Use sentence-style capitalization for article titles, headings, and subheadings. Capitalize only the first word, proper nouns, and acronyms.
 
 Each **subsection** should be split into numbered steps as shown below.
 
@@ -129,7 +125,7 @@ For example:
 
 1.  When prompted, enter the root password.
 
-### Create a New MySQL User and Database
+### Create a new MySQL user and database
 
 1.  In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user’s password.
 
@@ -144,7 +140,7 @@ For example:
     exit
     ```
 
-### Create a Sample Table
+### Create a sample table
 
 1.  Log back in as `testuser`:
 
@@ -157,9 +153,9 @@ For example:
 The tab size is set to four, and **only** soft tabs should be used. This can be configured in the settings of most text editors.
 {{< /note >}}
 
-## How to Use Markdown Formatting for Linode Style
+## How to use markdown formatting for Akamai style
 
-### Abbreviations and Acronyms
+### Abbreviations and acronyms
 
 Upon first mention of a new concept or software, use the full name or term, then note the abbreviation or acronym in parenthesis beside it. The abbreviation/acronym can then be used in the article from that point. For example: Lightweight Resource/Provider (LWRP).
 
@@ -171,7 +167,7 @@ This guide covers how to install Git, a *version control system*.
 
 **Output:** This guide covers how to install Git, a *version control system*.
 
-### Bold and Italics
+### Bold and italics
 
 Use a **Bold** font weight for buttons, menu selections and anything that requires emphasis or that you want to stand out to the reader. *Italicize* new terms and concepts the first time they are used.
 
@@ -182,7 +178,7 @@ Use a **Bold** font weight for buttons, menu selections and anything that requir
 
 ### Commands
 
-Commands that are not inline with paragraph text should be displayed with the *command shortcode*. This shortcode renders the command in a monospaced font with a light or dark background and a copy-to-clipboard button. Unlike other shortcodes (e.g. `content`, `note`, `caution`, etc), the command shortcode should be referenced with Markdown's *code fence* syntax.
+Commands that are not inline with paragraph text should be displayed with the *command shortcode*. This shortcode renders the command in a monospaced font with a light or dark background and a copy-to-clipboard button. Unlike other shortcodes (such as `content`, `note`, and `caution`), the command shortcode should be referenced with Markdown's *code fence* syntax.
 
 -   **Command shortcode example**
 
@@ -256,7 +252,7 @@ Commands that are not inline with paragraph text should be displayed with the *c
     sudo systemctl restart apache2
     ```
 
-### Commands (Deprecated Syntax)
+### Commands (deprecated syntax)
 
 In some existing guides, you may see commands displayed without the command shortcode. In these instances, the commands are simply indented with a tab or four spaces in the Markdown source text. For example:
 
@@ -268,7 +264,7 @@ Run the following command to restart Apache:
 
 *The older (tab or four space-indent) syntax should not be used for new content.* The code shortcode renders a copy-to-clipboard button for the reader's convenience, and the old syntax does not provide this feature.
 
-### Inline Commands
+### Inline commands
 
 Inline commands should be denoted by backticks.
 
@@ -278,7 +274,7 @@ Update your system by running `yum update`.
 
 **Output:** Update your system by running `yum update`.
 
-### Example IP Addresses
+### Example IP addresses
 
 When referencing IP address in the documentation, any real address should be obscured unless it is intended for the user to access that IP address. When possible, use the documentation address blocks given in [IETF RFC 5737](https://tools.ietf.org/html/rfc5737) and [IETF RFC 3849](https://datatracker.ietf.org/doc/html/rfc3849).
 
@@ -292,7 +288,7 @@ When referencing IP address in the documentation, any real address should be obs
 
     *Examples:* 2001:db8:1:1:1:1:1:1, 2001:db8::f03c:485f:b84e:6534
 
-### External Resources/More Information
+### External resources/more information
 
 If you wish to provide links to external sites for the user to review after going through your guide, do so using the `external_resources` parameter in the [page header](#header). This will automatically appear as a text block with links at the bottom of the page.
 
@@ -303,15 +299,15 @@ If you wish to provide links to external sites for the user to review after goin
 > - [Link Title 1](http://www.example.com)
 > - [Link Title 2](http://www.example.net)
 
-### Extend Markdown Using Shortguides
+### Extend markdown using shortguides
 
 Using shortcodes, it is possible to extend a Markdown file with another. For common tasks such as basic software installation, consider using the `content` shortcode. This allows our library to maintain consistent and up to date installation instructions for frequently used tools such as Python, MySQL, and Docker.
 
-Markdown files intended to be inserted into multiple guides are called shortguides. To create a shortguide, create a directory with the name of your shortguide anywhere within `docs/`, and then create an index.md within the directory for your content (e.g. `example-shortguide-name/index.md`).
+Markdown files intended to be inserted into multiple guides are called shortguides. To create a shortguide, create a directory with the name of your shortguide anywhere within `docs/`, and then create an index.md within the directory for your content (for example, `example-shortguide-name/index.md`).
 
 Inserting `headless: true` in the front matter will hide the guide from the site navigation as well as the search index.
 
-When using the `content` shortcode in a guide to embed a shortguide, the shortcode will take the name of your guide's directory (e.g. `example-shortguide-name`) as a parameter. A shortguide can be within a different part of the `docs` hierarchy from the guide that embeds it, so the guide directory name exists within a global namespace of all shortguides in the repository. In other words, two different shortguides can't use the same directory name.
+When using the `content` shortcode in a guide to embed a shortguide, the shortcode will take the name of your guide's directory (for example, `example-shortguide-name`) as a parameter. A shortguide can be within a different part of the `docs` hierarchy from the guide that embeds it, so the guide directory name exists within a global namespace of all shortguides in the repository. In other words, two different shortguides can't use the same directory name.
 
 To use an image in a shortguide, add the image to your shortguide's directory and then use the `image` shortcode to embed it:
 
@@ -319,13 +315,13 @@ To use an image in a shortguide, add the image to your shortguide's directory an
 {{</* image src="image-name.png" alt="image alt label" title="image title" */>}}
 ```
 
-#### Example Usage
+#### Example usage
 
 The following shortguide describes how to install Python via Miniconda. Create a directory named `install_python_miniconda` and filed named `index.md` within it:
 
 ```file {title="install_python_miniconda/index.md" lang="yaml"}
 ---
-title: "Install Python with Miniconda"
+title: "Install Python with miniconda"
 description: 'A shortguide that shows how to install Python via Miniconda.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -366,7 +362,7 @@ Be sure to use the `%` delimiter inside the surrounding `{{ }}` braces for `cont
 
 ### Files
 
-Use the *file shortcode* to present code examples, code snippets, and other text file contents in a guide. This shortcode renders the file content with line numbering, a specified filepath, syntax highlighting, and line highlighting. Unlike other shortcodes (e.g. `content`, `note`, `caution`, etc), the file shortcode should be referenced with Markdown's *code fence* syntax.
+Use the *file shortcode* to present code examples, code snippets, and other text file contents in a guide. This shortcode renders the file content with line numbering, a specified filepath, syntax highlighting, and line highlighting. Unlike other shortcodes (such as `content`, `note`, and `caution`), the file shortcode should be referenced with Markdown's *code fence* syntax.
 
 {{< note >}}
 Exceptionally long files should be shown in parts, if needed. In these cases, you can add the entire file to the same directory as your guide and link to it from within the guide.
@@ -478,7 +474,7 @@ Exceptionally long files should be shown in parts, if needed. In these cases, yo
         ```
     ```
 
-### Files (Deprecated Syntax)
+### Files (deprecated syntax)
 
 In some existing guides, you may see this older shortcode syntax for displaying a file:
 
@@ -502,7 +498,7 @@ This is equivalent to:
 
 *The older syntax should not be used for new content.* While they are rendered with the same presentation by Hugo, they are not displayed the same in the GitHub.com UI. When viewing a Markdown file in the library on GitHub, the newer code fence shortcode syntax will have enhanced styling, compared with the older shortcode syntax.
 
-### File Paths and File Names
+### File paths and file names
 
 Inline file paths and file names should be formatted as inline code blocks.
 
@@ -512,13 +508,13 @@ Inline file paths and file names should be formatted as inline code blocks.
 
 ### Headings
 
-Headings should be written in title case and can be up to 3 levels deep.
+Headings should use sentence-style capitalization and can be up to 3 levels deep.
 
 | Syntax | Output |
 | -- | -- |
 | `## Section title (h2)` | <font size="5"><strong>Section title (h2)</strong></font> |
-| `### Subsection (h3)` | <font size="4"><strong>Subsection (h3)</strong></font> |
-| `#### Subsection (h4)` | <strong>Subsection (h4)</strong> |
+| `### Subsection title (h3)` | <font size="4"><strong>Subsection title (h3)</strong></font> |
+| `#### Nested subsection title (h4)` | <strong>Nested subsection title (h4)</strong> |
 
 ### Images
 
@@ -538,7 +534,7 @@ To add an image to a guide, first move it the same directory as the guide or sho
 - **Filename:** The name of the file. Filenames cannot contain spaces and should use hyphens (-) and underscores (\_) instead.
 - **Title text:** This is the text that appears as a tooltip when a user hovers over the image. If no title is entered, the alt text is used in the `title` tag. In most cases, a specific title tag is not needed.
 
-#### Image Recommendations
+#### Image recommendations
 
 - **Image sizing:** The height of our images, especially screenshots, should be as minimal as possible. This is to avoid screenshots taking up a lot of vertical space within our documentation, which often results in visually breaking up content that otherwise should appear together. Our Cloud Manager favors vertically stacked fields and options, which can make it difficult to minimize the height of our screenshots. Use your best judgement when determining what part of the UI is needed to convey the required information.
 
@@ -548,7 +544,7 @@ To add an image to a guide, first move it the same directory as the guide or sho
 
 - **Remove personal information:** Ensure that all identifying attributes such as names and IP addresses are removed, obfuscated, or replaced with example text, such as **example_user** or an IP address from the **192.0.2.0/24** range. This aligns with a previous recommendation of only providing necessary detail and it keeps the writer's personal information from being shown to readers. This may involve using the browser's built-in development tools to manually replace values or delete information.
 
-#### Example Wide Image
+#### Example wide image
 
 Since this image is larger than the width of the content, the image is scaled to fit. When the image is clicked, a modal appears that displays the image at a larger size.
 
@@ -560,7 +556,7 @@ This example image might be used to supplement instructions asking the reader to
 
 ![Screenshot of Cloud Manager Compute Instance page with a single instance selected](compute_instance_list-select_instance.png "Select a Compute Instance from the list")
 
-#### Example Narrow Image
+#### Example narrow image
 
 Smaller images should be displayed using their true pixel size. When taking screenshots within some software on some operating systems, the pixel size is increased (likely to account for the operating system's scaling). For instance, taking a screenshot with the Skitch tool on macOS doubles the pixel count. In these cases, use another image editing tool (like macOS's built in preview) to scale down the image to match the intended pixel width.
 
@@ -570,26 +566,26 @@ Smaller images should be displayed using their true pixel size. When taking scre
 
 ![Screenshot of the Create Firewall panel in the Cloud Manager](cloud_firewalls-create_panel.png)
 
-### Key Combinations
+### Key combinations
 
 When instructing a reader to press hotkeys or other combinations of keys, enclose each individual key within a [kbd](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd) html element as shown in the example below.
 
 ```file {lang=html}
-Use <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy text.
+Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy text.
 ```
 
-**Output:** Use <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy text.
+**Output:** Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy text.
 
 ### Links
 
-Internal links to other Linode guides should be relative, starting at `/docs/`, and external links should be formatted as shown below and use HTTPS URLs whenever possible.
+Internal links to other Akamai Cloud guides should be relative, starting at `/docs/`, and external links should be formatted as shown below and use HTTPS URLs whenever possible.
 
 - **Internal link example:** `[Getting Started](/docs/products/platform/get-started/)`
 - **External link example:** `[Apache HTTP Server Documentation](https://httpd.apache.org/docs/)`
 
 ### Lists
 
-#### Ordered Lists
+#### Ordered lists
 
 Ordered lists are numbered and should be used to denote a series of steps or sequential items. Use the following guidance when creating ordered lists:
 
@@ -613,7 +609,7 @@ Ordered lists are numbered and should be used to denote a series of steps or seq
     3. Step 3
     ```
 
-#### Unordered Lists
+#### Unordered lists
 
 Unordered lists are bulleted and should be used for any collection of items that do not necessarily need to be ordered. These lists should be formatted by appending a `- ` to the beginning of each step.
 
@@ -637,7 +633,7 @@ Unordered lists are bulleted and should be used for any collection of items that
     - Item C
     ```
 
-#### Nested Content Within Lists
+#### Nested content within lists
 
 To remain consistent across all of our guides, nested content should be indented *four* spaces and a blank line should be used above and below the content. Our Markdown processor assumes nested content starts directly below the *first* character in the text of the list item above it. With this in mind, it's important to indent the text portion of the list item to match that four space indent. In practice, there should be *two* spaces after the number (for ordered lists) and *three* spaces after the bullet for unordered lists. If this spacing is not respected, the nested content may not render properly.
 
@@ -658,7 +654,7 @@ To remain consistent across all of our guides, nested content should be indented
 -   Item C
 ````
 
-### Note Shortcode
+### Note shortcode
 
 The **note** shortcode is used to display a note to the reader. Notes can be used to share relevant information that does not fit with the primary content. Example use cases include alternative methodologies, non-critical information, alerts, developer recommendations, and more. **Content included in a note must not be required for the reader to successfully understand or complete a task**.
 
@@ -700,7 +696,7 @@ When creating a new note, there are multiple parameters to consider pertaining t
 | `isCollapsible` | boolean | Sets the note as collapsible. The note must have a title defined. Defaults to false. See: [Collapsible](#collapsible) |
 | `respectIndent` | boolean | Only used for older note shortcodes (`{{</* note */>}}`) that have been converted to the newer shortcode. See: [Indentation](#indentation) |
 
-#### Note Types
+#### Note types
 
 There are four unique types of notes: **primary**, **secondary**, **warning**, and **alert**. Each type has specific use cases and varying levels of urgency that should determine the type of note you choose to make. Below are examples of each note type and their use cases:
 
@@ -720,7 +716,7 @@ There are four unique types of notes: **primary**, **secondary**, **warning**, a
     ```
     {{< /note >}}
 
--   **Warning** (`type="warning"`, title defaults to "Warning"): Notices that warn the reader to proceed with caution, including notices for beta programs, warnings of limited resource availability, etc. Not as urgent as alert notes.
+-   **Warning** (`type="warning"`, title defaults to "Warning"): Notices that warn the reader to proceed with caution, including notices for beta programs, warnings of limited resource availability, and so forth. Not as urgent as alert notes.
 
     {{< note type="warning" title="VPC Beta Notice" >}}
     VPCs are now publicly available in beta, providing customers with another method of isolating network traffic between Compute Instances (in addition to the [VLANs](/docs/products/networking/vlans/) feature). Not all data centers are currently supported. For more information, review the [Availability](/docs/products/networking/vpc/#availability) section.
@@ -740,12 +736,11 @@ Each note can also have a custom title, which is set using the `title` parameter
 - Example calls to attention: "Before moving forward", "This may result in data loss"
 
 **Title casing:**
-- If using a single word or phrase, use title casing. *Preferred.*
-- If using a sentence as your title, use sentence casing. Otherwise, use title casing.
+- Use sentence-style capitalization for all note titles.
 
 ```file {lang="text"}
 {{</* note title="Custom titles can be helpful" */>}}
-This is an example note with a helfpful custom title.
+This is an example note with a helpful custom title.
 {{</* /note */>}}
 ```
 
@@ -807,11 +802,11 @@ This content appears within the first list item but does not respect its indenta
 - Second list item.
 ```
 
-### Numerical Values
+### Numerical values
 
 | 1-10 | Greater than 10 |
 | -- | -- |
-| Use words (one, two, three, etc.)  | Use numerical digits (11, 22, 33). |
+| Use words (one, two, three, and so on)  | Use numerical digits (11, 22, 33). |
 
 ### Placeholders
 
@@ -853,7 +848,7 @@ The following example demonstrates a common use case for the placeholder shortco
     }
     ```
 
-### Sentence Spacing
+### Sentence spacing
 
 Use single spaces between sentences; do not double-space.
 
@@ -871,7 +866,7 @@ You can create tables using standard Markdown syntax. Additionally, you can embe
 | -- | -- |
 | **Example** | This is an example of text in the second column. |
 
-#### Column Text Alignment
+#### Column text alignment
 
 To align text within a table, modify the second row. This row separates the header from the body of the table and can be used for additional metadata, like text alignment.
 
@@ -890,7 +885,7 @@ To align text within a table, modify the second row. This row separates the head
 | -- | :--: | --: |
 | Example | Example | Example |
 
-#### Table Shortcode
+#### Table shortcode
 
 The table shortcode can be used to add additional functionality to Markdown tables. By default, it adds a scrollbar when the table width is larger than the content area. This means that it can accommodate wide tables with lots of columns. It also adds alternating row background colors so that tables are easier to parse.
 
@@ -912,7 +907,7 @@ The table shortcode can be used to add additional functionality to Markdown tabl
 | **Row 3** | Example | Example |
 {{< /table >}}
 
-#### Fixed First Column
+#### Fixed first column
 
 If you are creating a wide table and need the first column to be fixed when scrolling, use the **"first-sticky"** class.
 
@@ -971,7 +966,7 @@ And here is *Tab 2* in the second tab set. When *Tab 2* is selected on any tab s
 
 When a tab is selected, a `tab` parameter string appears in the URL along with the title of all selected tabs. For instance, if *Tab 2* is selected in the tab sets above, `?tabs=tab-2` is appended to the URL. This allows the URL to be saved or shared, keeping the same tabs selected on the page.
 
-### Terminal Output
+### Terminal output
 
 Output from terminal commands should be displayed with the *output shortcode*:
 
@@ -1009,7 +1004,7 @@ echo "Hello world!"
 Hello world!
 ```
 
-### Terminal Output (Deprecated Syntax)
+### Terminal output (deprecated syntax)
 
 In some existing guides, you may see this older shortcode syntax for displaying terminal output:
 
@@ -1029,7 +1024,7 @@ Hello world!
 
 *The older syntax should not be used for new content.* While they are rendered with the same presentation by Hugo, they are not displayed the same in the GitHub.com UI. When viewing a Markdown file in the library on GitHub, the newer code fence shortcode syntax will have enhanced styling, compared with the older shortcode syntax.
 
-## Author Pages
+## Author pages
 
 Profile pages for authors are listed at https://www.linode.com/docs/authors/. These are automatically generated from the `authors` frontmatter of the guides in the library. These pages list all of the guides that an author has published in the docs library.
 
@@ -1064,18 +1059,10 @@ The second step is optional. If you do not follow this step, a profile page is s
     title: "Nathan Smith"
     link: ""
     email: ""
-    description: "The Linode documentation library's profile page and submission listing for Nathan Smith"
+    description: "The Akamai Cloud documentation library's profile page and submission listing for Nathan Smith"
     ---
 
     A short biography of the docs author/contributor. This biography text is displayed above a listing of their published docs/content.
     ```
 
     You can set an email, website link, and short meta description in the frontmatter of this file. You can also update the body of the file with a biography of the author. This biography will be displayed above the author's published guides listing.
-
-## Legal Information
-
-COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer for the Linode Guides & Tutorials repository and that each form of Work is being created by the writer as a “work made for hire” under the United States Copyright Act and, at all stages of development, the Work shall be and remain the sole and exclusive property of Linode. At Linode's sole, absolute and unfettered discretion, Linode may make any alterations to the Work.
-
-CREDIT. Nothing contained in this Agreement shall be deeded to require Linode to use the Work, or any part thereof, in connection with Linode Guides & Tutorials or otherwise. Credit for the Work shall read, "Contributed by [writer's name]."
-
-PAYMENT. Upon publication of a submission to the Linode Guides & Tutorials Repository, the writer will be paid the sum agreed to by email by both Linode and the author. Author may choose payment either in the form of a credit to their Linode account, a hardcopy check, or as an electronic payment via PayPal.
