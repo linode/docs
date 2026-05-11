@@ -1,7 +1,7 @@
 ---
 slug: linode-writers-formatting-guide
 title: Linode writer's formatting guide
-description: 'This guide provides formatting and style guidelines for Linode documentation and articles.'
+description: 'This guide provides formatting and style guidelines for Akamai Cloud documentation and articles.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2014-01-15
@@ -87,20 +87,20 @@ Below is an example *Before you begin* section. You may copy the example and edi
 ```file {title="Before you begin"}
 ## Before you begin
 
-1.  If you do not already have a virtual machine to use, create a compute instance with at least 4 GB of memory. See our [Getting started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Create a Linode](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
+1.  If you do not already have a virtual machine to use, create a compute instance with at least 4 GB of memory. See our [Get started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Create a Linode](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
 1.  Follow our [Set up and secure a Linode](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 ```
 
 ### Include a note about root or non-root users
 
-```file {title="Guides Written for a Non-Root User" lang="txt"}
+```file {title="Guides written for a non-root user" lang="txt"}
 {{</* note */>}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{</* /note */>}}
 ```
 
-```file {title="Guides Written for a Root User" lang="txt"}
+```file {title="Guides written for a root user" lang="txt"}
 {{</* note */>}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{</* /note */>}}
@@ -153,7 +153,7 @@ For example:
 The tab size is set to four, and **only** soft tabs should be used. This can be configured in the settings of most text editors.
 {{< /note >}}
 
-## How to use markdown formatting for Akamai style
+## How to use Markdown formatting for Akamai style
 
 ### Abbreviations and acronyms
 
@@ -169,7 +169,7 @@ This guide covers how to install Git, a *version control system*.
 
 ### Bold and italics
 
-Use a **Bold** font weight for buttons, menu selections and anything that requires emphasis or that you want to stand out to the reader. *Italicize* new terms and concepts the first time they are used.
+Use a **Bold** font weight for UI elements such as buttons and menu selections. *Italicize* new terms and concepts the first time they are used and anything that requires emphasis or that you want to stand out to the reader.
 
 | Syntax | Output |
 | -- | -- |
@@ -299,7 +299,7 @@ If you wish to provide links to external sites for the user to review after goin
 > - [Link Title 1](http://www.example.com)
 > - [Link Title 2](http://www.example.net)
 
-### Extend markdown using shortguides
+### Extend Markdown using shortguides
 
 Using shortcodes, it is possible to extend a Markdown file with another. For common tasks such as basic software installation, consider using the `content` shortcode. This allows our library to maintain consistent and up to date installation instructions for frequently used tools such as Python, MySQL, and Docker.
 
@@ -321,7 +321,7 @@ The following shortguide describes how to install Python via Miniconda. Create a
 
 ```file {title="install_python_miniconda/index.md" lang="yaml"}
 ---
-title: "Install Python with miniconda"
+title: "Install Python with Miniconda"
 description: 'A shortguide that shows how to install Python via Miniconda.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
