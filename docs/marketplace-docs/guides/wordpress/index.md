@@ -37,12 +37,12 @@ marketplace_app_name: "WordPress"
 - **Webserver Stack** *(required)*: Choose which webserver to use for the WordPress deployment, Apache2 or NGINX.
 - **Email address** *(required)*: Enter the email address you wish to use when configuring the WordPress admin user, generating SSL certificates, and optionally creating DNS records for a custom domain.
 - **WordPress Admin Username** *(required)*: Username for your WordPress admin user account. Defaults to `admin` if no username is entered.
-- **WordPress Database Username** *(required)*: MySQL username for the WordPress database user. Defaults to `wordpress` if no username is entered.
-- **WordPress Database Name** *(required)*: Name for the WordPress MySQL database. Defaults to `wordpress` if no database name is defined.
+- **WordPress Database Username** *(required)*: MariaDB username for the WordPress database user. Defaults to `wordpress` if no username is entered.
+- **WordPress Database Name** *(required)*: Name for the WordPress MariaDB database. Defaults to `wordpress` if no database name is defined.
 - **Website Title:** Enter a title for your WordPress site.
 
     {{< note >}}
-    The passwords for the WordPress Admin User, WordPress Database User and MySQL root user are automatically generated and provided in the file `/home/$USERNAME/.credentials` when the WordPress deployment completes.
+    The passwords for the WordPress Admin User, WordPress Database User and MariaDB root user are automatically generated and provided in the file `/home/$USERNAME/.credentials` when the WordPress deployment completes.
     {{< /note >}}
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
@@ -50,7 +50,7 @@ marketplace_app_name: "WordPress"
 {{% content "marketplace-custom-domain-fields-shortguide" %}}
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
-- **Prometheus Exporter:** Option to include built in Prometheus endpoints for Node Exporter and MySQLd Exporter. See [Prometheus Exporters](https://prometheus.io/docs/instrumenting/exporters/).
+- **Prometheus Exporter:** Option to include built in Prometheus endpoints for Node Exporter and MySQL/MariaDB Exporter `mysqld_exporter`. See [Prometheus Exporters](https://prometheus.io/docs/instrumenting/exporters/).
 
 ## Getting Started After Deployment
 
