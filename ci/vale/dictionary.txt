@@ -813,6 +813,7 @@ fpm
 FQCNs
 fqdns
 fragging
+Fragnesia
 frakti
 framebuffer
 framesets

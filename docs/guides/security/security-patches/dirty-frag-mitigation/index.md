@@ -1,8 +1,8 @@
 ---
 slug: dirty-frag-mitigation
 title: '"DirtyFrag" (CVE-2026-43500, CVE-2026-43284) Mitigations'
-description: "Mitigating the 'DirtyFrag' priviledge escalation vulnerability in Linux."
-og_description: "Mitigating the 'DirtyFrag' priviledge escalation vulnerability in Linux."
+description: "Mitigating the 'DirtyFrag' privilege escalation vulnerability in Linux."
+og_description: "Mitigating the 'DirtyFrag' privilege escalation vulnerability in Linux."
 authors: ["Akamai"]
 contributors: ["Akamai"]
 published: 2026-05-14
@@ -81,7 +81,7 @@ For virtual machines (Linode VMs) you can:
 
     We will continue to update the OS versions as upstream providers issue new releases.
 
-- Older versions of the different linux distributions remain available for customers to launch.  The reason for this is that we cannot assess for our customers what risks they are willing to accept, and that we cannot break automated deployment pipelines for them.  We strongly recommend that customers who continue to deploy older releases manually mitigate the vulnerability as described above.
+- Older versions of the different Linux distributions remain available for customers to launch.  The reason for this is that we cannot assess for our customers what risks they are willing to accept, and that we cannot break automated deployment pipelines for them.  We strongly recommend that customers who continue to deploy older releases manually mitigate the vulnerability as described above.
 -  If you are using "GRUB 2" (default since August 2018), your Linode will boot with the kernel in the OS disk image.  However, if you are [still using one of our kernels to boot](https://techdocs.akamai.com/cloud-computing/docs/manage-the-kernel-on-a-compute-instance), the latest kernel configuration (version 7.0.5) contains the patch for the DirtyFrag vulnerabilities. Older Linode provided kernel configurations (e.g., "6.15.7-x86_64-linode169", but notably including the 7.0.3 kernel we published in response to the CopyFail vulnerability) remain vulnerable.  We will also provide yet another update to fix Fragnesia, which is why we are strongly encouraging customers to switch to the "latest" kernel – that pointer will be updated to the newest kernel when it lands, then only requiring a reboot to take effect.  Alternatively, use Linode’s default approach of using the "GRUB 2" option to boot from your own (upstream) kernel on your primary disk.
 
 For Linode Kubernetes Engine (LKE and LKE-E), the underlying nodes run a Linux kernel based on the Debian 12 (for LKE) and Ubuntu 22/24 (for LKE-Enterprise) distribution. While we are still waiting for Ubuntu to release an update, we have made available the latest Debian images.  However, existing deployments will need patching.  You can choose one of the following options:
