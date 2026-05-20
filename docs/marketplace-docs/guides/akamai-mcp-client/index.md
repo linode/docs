@@ -15,9 +15,7 @@ marketplace_app_id: 2107652
 marketplace_app_name: "Akamai MCP Gateway Client"
 ---
 
-The [Akamai Model Context Protocol](https://techdocs.akamai.com/mcp-gateway/docs/welcome) (MCP) Gateway is a managed service that helps you bridge AI agents and applications with the Akamai product ecosystem. This Quick Deploy Apps allows customers to connect LLMs as clients to Akamai's MCP Gateway and interact with various APIs from a single source.
-
-This Quick Deploy App configures Claude to Akamai's MCP Gateway so that you can interact with various APIs. In order to use this app, you will need an [Akamai MCP Gateway JWT](https://techdocs.akamai.com/mcp-gateway/docs/configure-the-mcp-server-endpoint) token.
+The [Akamai Model Context Protocol (MCP) Gateway](https://techdocs.akamai.com/mcp-gateway/docs/welcome) is a managed service that helps you bridge AI agents and applications with the Akamai product ecosystem. This Quick Deploy App configures Claude to use Akamai's MCP Gateway so that you can interact with Akamai APIs from Claude. In order to deploy this app, you first need an [Akamai MCP Gateway JWT](https://techdocs.akamai.com/mcp-gateway/docs/configure-the-mcp-server-endpoint) token.
 
 ## Deploying a Quick Deploy App
 
@@ -36,7 +34,7 @@ This Quick Deploy App configures Claude to Akamai's MCP Gateway so that you can 
 
 ## Akamai MCP Gateway Options
 
-- **Akamai JWT token** *(required)*: Enter the JWT token from your Akamai MCP Gateway
+- **Akamai JWT token** *(required)*: Enter your [Akamai MCP Gateway JWT](https://techdocs.akamai.com/mcp-gateway/docs/configure-the-mcp-server-endpoint) token.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
@@ -46,61 +44,55 @@ This Quick Deploy App configures Claude to Akamai's MCP Gateway so that you can 
 
 ## Getting Started after Deployment
 
-### Configuring Claude Code
+### Configure Claude Code
 
-Once the deployment is complete, you will need to authenticate to your Anthropic account. Claude Code will be installed on the `root` user so you will need to elevate privileges.
+Complete these steps on the Linode instance to authenticate to your Anthropic account:
 
-1.  Log into the instance.
-
-    If you disabled root login to the server during the setup of the app, you need to log into the server as the sudo user.
+1.  Log into the Linode instance:
 
     ```command
-    ssh admin@YOUR_INSTANCE_IP
+    ssh {{< placeholder "YOUR_LINODE_USERNAME" >}}@{{< placeholder "YOUR_LINODE_IP" >}}
     ```
 
-    Replace `YOUR_INSTANCE_IP` with the IP address of your Linode instance and `admin` with the sudo user you created.
+    Replace {{< placeholder "YOUR_LINODE_IP" >}} with the IP address of the new Linode instance, and replace {{< placeholder "YOUR_LINODE_USERNAME" >}} with the sudo user you created.
 
-1.  Escalate privileges to root.
-
-    Once you've logged in, note the [motd](https://man7.org/linux/man-pages/man5/motd.5.html):
+1.  After you log in, note the [motd](https://man7.org/linux/man-pages/man5/motd.5.html):
 
     ```output
     *********************************************************
     Akamai MCP Gateway Client
     Credentials File: /home/admin/.credentials
     Documentation: https://www.linode.com/docs/marketplace-docs/guides/akamai-mcp-gateway
-    *********************************************************    
+    *********************************************************
     ```
 
-    Copy the sudo password from `~/.credentials.txt` and enter the following command from the terminal:
+    Open and copy the sudo password from `~/.credentials.txt`, which is used in the next step.
+
+1. Switch to the root user:
 
     ```command
     sudo su -
     ```
 
-    When prompted for the password, paste the sudo password you got from the `~/.credentials.txt` file.
+    This command prompts you for your sudo password. Paste the sudo password from the `~/.credentials.txt` file.
 
-1. Authenticate to Anthropic
+1. Authenticate to Anthropic by running the `claude` executable:
 
-As the `root` user, issue the following command from the terminal:
+    ```command
+    claude
+    ```
 
-```command
-claude
-```
-
-![Claude Code Welcome](claude-welcome.jpg)
-
-Go ahead and proceed with the initial configuration for Claude Code.
+    Complete the initial configuration that you are prompted with by Claude.
 
 ### Verify Akamai MCP Gateway Status
 
-To confirm that the Akamai MCP Gateway is connected, you can issue the following command from the terminal:
+Confirm that the Akamai MCP Gateway is connected:
 
 ```command
 claude mcp get akamai
 ```
 
-You will see a similar output:
+Output like the following should appear:
 
 ```output
 akamai:
