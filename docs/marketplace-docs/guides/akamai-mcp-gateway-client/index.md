@@ -54,7 +54,7 @@ Complete these steps on the Linode instance to authenticate to your Anthropic ac
     ssh {{< placeholder "YOUR_LINODE_USERNAME" >}}@{{< placeholder "YOUR_LINODE_IP" >}}
     ```
 
-    Replace {{< placeholder "YOUR_LINODE_IP" >}} with the IP address of the new Linode instance, and replace {{< placeholder "YOUR_LINODE_USERNAME" >}} with the sudo user you created.
+    Replace {{< placeholder "YOUR_LINODE_IP" >}} with the IP address of the new Linode instance, and replace {{< placeholder "YOUR_LINODE_USERNAME" >}} with the sudo user you configured when the Quick Deploy App was deployed.
 
 1.  After you log in, note the [motd](https://man7.org/linux/man-pages/man5/motd.5.html):
 
