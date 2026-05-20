@@ -32,7 +32,7 @@ Ollama with Open WebUI should be fully installed within 5-10 minutes after the C
 
 ## Configuration Options
 
-- **Recommended plan:** RTX4000 Ada x1 Small or Larger GPU Instance for best performance. 
+- **Recommended plan:** RTX4000 Ada x1 Small or Larger GPU Instance for best performance.
 
 ### Open WebUI Options
 
@@ -44,7 +44,7 @@ Ollama with Open WebUI should be fully installed within 5-10 minutes after the C
 
 - **Open WebUI admin email** *(required)*: This email address is used to log into Open WebUI.
 
-- **LLM** *(required)*: Enter a valid Ollama supported LLM model, you can view all the latest models at https://ollama.com/search.
+- **LLM** *(required)*: Enter a valid Ollama supported LLM model. You can view all the latest models at https://ollama.com/search.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
@@ -63,15 +63,15 @@ When deployment completes, the system generates the necessary environment config
 
 2. Run the following command to access the contents of the `.credentials` file:
 
-```command
-cat /home/$USERNAME/.credentials
-```
+    ```command
+    less /home/$USERNAME/.credentials
+    ```
 
-### Accessing Open WebUI Frontend
+### Accessing the Open WebUI Frontend
 
 Once your app has finished deploying, you can log into Open WebUI using your browser.
 
-Open your web browser and navigate to `https://DOMAIN/`, where *DOMAIN* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
+Open your web browser and navigate to `https://{{< placeholder "DOMAIN" >}}/`, where {{< placeholder "DOMAIN" >}} can be replaced with the custom domain you entered during deployment, or your Linode instance's rDNS domain (for example, `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
 
 Now that you’ve accessed your dashboard, check out [the official OpenWebUI documentation](https://docs.openwebui.com/) and [the official Ollama documentation](https://docs.ollama.com/) to learn how to further use your instance.
 
