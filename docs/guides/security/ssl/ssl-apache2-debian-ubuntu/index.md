@@ -1,89 +1,256 @@
 ---
 slug: ssl-apache2-debian-ubuntu
 title: "SSL Certificates with Apache on Debian & Ubuntu"
-description: 'This guide provides you with step-by-step instructions on how to enable SSL to secure websites served through the Apache web server on Debian or Ubuntu.'
+description: "This guide shows you how to enable SSL to secure websites served through Apache on Debian 11, Debian 12, Ubuntu 22.04, and Ubuntu 24.04."
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2014-11-19
-modified: 2021-12-29
-keywords: ["apache SSL", "ssl on debian", "web server", "debian", "apache", "ssl", "ubuntu", "ssl on ubuntu"]
-tags: ["ubuntu","debian","apache","security","ssl"]
+modified: 2026-05-29
+keywords: ['ssl','tls','apache','debian','ubuntu','certbot','https','let\'s encrypt']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/ssl/ssl-certificates-with-apache-2-on-ubuntu/','/security/ssl/ssl-apache2-debian-ubuntu/','/web-servers/apache/ssl-guides/ubuntu-12.04-precise-pangolin/']
-image: SSL_Certificates_with_Apache_on_Debian_Ubuntu_smg.jpg
 external_resources:
- - '[Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.4/)'
-relations:
-    platform:
-        key: ssl-certificate-apache
-        keywords:
-            - distribution: Debian/Ubuntu
+  - '[Apache HTTP Server Documentation](https://httpd.apache.org/docs/2.4/)'
+  - '[Certbot Documentation](https://certbot.eff.org/)'
+  - '[SSL Labs Server Test](https://www.ssllabs.com/ssltest/)'
 ---
 
-This guide shows you how to enable SSL to secure websites served through Apache on Debian and Ubuntu.
+This guide shows you how to enable HTTPS on websites served through Apache on Debian 11, Debian 12, Ubuntu 22.04, and Ubuntu 24.04. You can obtain a free TLS certificate from Let's Encrypt using Certbot, or configure Apache manually with a certificate you already have.
+
+HTTPS encrypts traffic between your server and visitors, protects credentials and sensitive data, and improves security and SEO.
+
+## System Versions and Kernel Requirements
+
+This guide supports:
+
+  - Debian 11 (Bullseye)
+  - Debian 12 (Bookworm)
+  - Ubuntu 22.04 (Jammy)
+  - Ubuntu 24.04 (Noble)
+
+Before continuing, update your system packages and reboot if a new kernel is installed. This ensures consistent behavior when installing Apache, Certbot, and related dependencies.
 
 ## Before You Begin
 
-This guide assumes that you are running Apache 2.4 or higher on Debian 8 or Ubuntu 14.04 or above. Prior to following this guide, ensure that the following steps have been taken on your Linode:
+1. **Prepare your Compute Instance**. Ensure your system has a hostname, correct timezone, a non root user with sudo privileges, SSH access, and basic security configuration (such as a firewall). If you’re new to server setup, see the reliable external resources listed at the end of this section.
+2. **Ensure Apache is installed and serving your site over HTTP**. HTTPS requires a working HTTP virtual host on port 80. If Apache is not already serving your site, configure a virtual host first. Helpful references:
+  - Virtual Hosts Overview: https://httpd.apache.org/docs/2.4/vhosts/
+  - Name Based Virtual Hosts: https://httpd.apache.org/docs/2.4/vhosts/name-based.html
+3. **Verify DNS is configured correctly**. Your domain’s **A record** must point to your server’s public IP address. Certbot uses this during the HTTP-01 challenge.
+4. **Update your system packages and reboot if a new kernel is installed**.
 
--  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+```command
+sudo apt update && sudo apt upgrade -y
+```
 
--  Complete our [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide, and create a site that you wish to secure with SSL.
+{{< note >}} This guide uses example.com as a placeholder. Replace it with your actual domain name throughout. {{< /note >}}
 
--  Follow our guide to obtain either a [self-signed](/docs/guides/create-a-self-signed-tls-certificate/) or [commercial](/docs/guides/obtain-a-commercially-signed-tls-certificate/) SSL certificate.
+## Reliable External Resources (Optional)
 
--  If hosting multiple websites with commercial SSL certificates on the same IP address, use the [Server Name Identification (SNI) extension](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) of TLS. SNI is accepted by most modern web browsers. If you expect to receive connections from clients running legacy browsers (like Internet Explorer for Windows XP), you will need to [contact support](/docs/products/platform/get-started/guides/support/) to request an additional IP address.
+These resources provide accurate, distro specific guidance for initial server setup and security. They are stable, widely trusted, and safe to link to.
 
-## Configure Apache to use the SSL Certificate
+### Initial Server Setup
 
-1.  Edit the virtual host configuration files located in `/etc/apache2/sites-available` to provide the certificate file paths. For each virtual host, replicate the configuration shown below. Replace each mention of `example.com` with your own domain. You will also need to ensure that the `SSLCACertificateFile` value is configured to point to the `ca-certificates.crt` file updated in the previous step:
+  - Ubuntu 22.04: https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04
+  - Debian 12: https://www.digitalocean.com/community/tutorials/initial-server-setup-with-debian-12
 
-    {{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
-<VirtualHost *:443>
-    ServerAdmin info@example.com
-    ServerName example.com
-    ServerAlias www.example.com
+### SSH Hardening
 
-    DocumentRoot /var/www/html/example.com/public_html/
-    DirectoryIndex index.html
+  - Ubuntu Server SSH Security: https://ubuntu.com/server/docs/security-ssh
 
-    # SSL configuration
-    SSLEngine On
-    SSLCertificateFile /etc/ssl/certs/example.com.crt
-    SSLCertificateKeyFile /etc/ssl/private/example.com.key
-    SSLCACertificateFile /etc/ssl/certs/ca-certificates.crt  #If not using a self-signed certificate, omit this line
+Firewall Basics
 
-    # Log files
-    ErrorLog /var/www/html/example.com/log/error.log
-    CustomLog /var/www/html/example.com/log/access.log combined
-</VirtualHost>
-<VirtualHost *:80>
-    ServerName example.com
-    ServerAlias www.example.com
-    Redirect permanent / https://example.com/
-</VirtualHost>
-{{< /file >}}
+  - UFW (Uncomplicated Firewall): https://help.ubuntu.com/community/UFW
 
+## Install Certbot
 
-2.  Ensure that the Apache SSL module is enabled, and enable the virtualhost configuration:
+Certbot is the recommended tool for obtaining and renewing Let’s Encrypt certificates.
 
-        a2enmod ssl
-        a2ensite example.com
+### Option 1: Install Certbot via Snap (Recommended)
 
-3.  Restart Apache:
+Snap provides the most up to date Certbot version and is the preferred installation method on all supported distributions.
 
-        service apache2 restart
+1. Install Snap (if not already installed):
 
-4.  If troubleshooting issues, a system reboot may be required.
+```command
+sudo apt install snapd -y
+```
+
+2. Ensure Snap’s core is up to date:
+
+```command
+sudo snap install core
+sudo snap refresh core
+```
+
+3. Install Certbot:
+
+```command
+sudo snap install --classic certbot
+```
+
+4. Create a symlink so Certbot is available in your PATH:
+
+```command
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+```
+
+### Option 2: Install Certbot via apt (Fallback)
+
+Use this only if Snap is unavailable or restricted in your environment.
+
+```command
+sudo apt install certbot python3-certbot-apache -y
+```
+
+{{< note >}} The apt version of Certbot may lag behind the Snap version. Use Snap when possible. {{< /note >}}
+
+## Obtain a Let’s Encrypt Certificate
+
+Certbot can automatically configure Apache for you, or you can obtain the certificate only and configure Apache manually.
+
+### Option 1: Automatic Apache Configuration (Recommended)
+
+```command
+sudo certbot --apache -d example.com -d www.example.com
+```
+Certbot will:
+  - verify DNS
+  - obtain the certificate
+  - update your Apache configuration
+  - reload Apache
+
+Follow the prompts to enable the HTTPS redirect.
+
+### Option 2: Obtain Certificate Only (Manual Apache Configuration)
+
+```command
+sudo certbot certonly --apache -d example.com -d www.example.com
+```
+
+Your certificates will be stored in:
+
+```Code
+/etc/letsencrypt/live/example.com/
+```
+
+You will configure Apache manually in the next section.
+
+## Configure Apache for HTTPS (Manual Method)
+
+If you used certbot --apache, this section is already complete.
+
+To configure Apache manually:
+
+1. Open your site’s SSL virtual host file:
+
+```command
+sudo nano /etc/apache2/sites-available/example.com-le-ssl.conf
+```
+
+2. Ensure it contains:
+
+```Code
+SSLEngine on
+SSLCertificateFile /etc/letsencrypt/live/example.com/fullchain.pem
+SSLCertificateKeyFile /etc/letsencrypt/live/example.com/privkey.pem
+
+3. Enable the SSL module and the SSL site:
+
+```command
+sudo a2enmod ssl
+sudo a2ensite example.com-le-ssl.conf
+```
+
+4. Reload Apache:
+
+```command
+sudo systemctl reload apache2
+```
+### Redirect HTTP to HTTPS
+
+If Certbot did not configure the redirect automatically, enable it manually.
+
+1. Open your HTTP virtual host:
+
+```command
+sudo nano /etc/apache2/sites-available/example.com.conf
+```
+
+2. Add this inside the <VirtualHost *:80> block:
+
+```Code
+Redirect permanent / https://example.com/
+```
+
+3.	Reload Apache:
+
+```command
+sudo systemctl reload apache2
+```
 
 ## Test Your Configuration
 
-After configuration, some browsers may display the site correctly although errors still exist. Test your SSL configuration using the test page at your certificate issuer's website, then perform the following steps.
+1. Visit your site in a browser:
 
-1.  Check for errors using `openssl s_client`:
+```Code
+https://example.com
+```
 
-        openssl s_client -CApath /etc/ssl/certs/ -connect example.com:443
+2. Verify:
 
-2.  Perform a deep analysis through the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/)
+  - the certificate is valid
+  - the padlock icon appears
+  - HTTP redirects to HTTPS
 
-You should now be able to visit your site with SSL enabled.
+3. Test renewal:
+
+```command
+sudo certbot renew --dry-run
+```
+
+## Automatic Renewal
+
+Certbot installs a systemd timer that runs twice daily.
+
+To check its status:
+
+```command
+sudo systemctl status snap.certbot.renew.timer
+```
+
+To test renewal manually:
+
+```command
+sudo certbot renew --dry-run
+```
+
+{{< note >}} Apache is not reloaded during a dry-run test. A reload only occurs during a real certificate renewal, when Certbot installs a new certificate and triggers its deploy hook.{{< /note >}}
+
+## Troubleshooting
+
+**Certbot cannot bind to port 80**
+
+Ensure Apache is running and serving your site over HTTP.
+
+**DNS challenge fails**
+
+Verify your A record points to your server’s public IP.
+
+**Apache fails to reload**
+
+Check for syntax errors:
+
+```command
+sudo apachectl configtest
+```
+
+**Mixed content warnings**
+
+Update your site’s URLs to use HTTPS.
+
+
+## Additional Resources
+
+- Apache SSL/TLS Configuration: https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html
+- Let’s Encrypt Documentation: https://letsencrypt.org/docs/
+- Certbot User Guide: https://certbot.eff.org/docs/
