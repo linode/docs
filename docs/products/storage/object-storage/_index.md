@@ -25,7 +25,7 @@ Linode Object Storage is a globally-available, S3 Compatible storage solution, m
 
 ### No Compute Instance Required
 
-Object storage does not require the use of a Compute Instance. Instead, Object Storage gives each object a unique URL which you can use to access your data.
+Object Storage does not require the use of a Compute Instance. Instead, Object Storage gives each object a unique URL which you can use to access your data.
 
 ### Host Static Sites
 
