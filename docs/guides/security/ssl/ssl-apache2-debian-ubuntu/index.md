@@ -33,14 +33,14 @@ Before continuing, update your system packages and reboot if a new kernel is ins
 
 1. **Prepare your Compute Instance**. Ensure your system has a hostname, correct timezone, a non root user with sudo privileges, SSH access, and basic security configuration (such as a firewall). If you’re new to server setup, see the reliable external resources listed at the end of this section.
 2. **Ensure Apache is installed and serving your site over HTTP**. HTTPS requires a working HTTP virtual host on port 80. If Apache is not already serving your site, configure a virtual host first. Helpful references:
-  - Virtual Hosts Overview: https://httpd.apache.org/docs/2.4/vhosts/
-  - Name Based Virtual Hosts: https://httpd.apache.org/docs/2.4/vhosts/name-based.html
+   - Virtual Hosts Overview: https://httpd.apache.org/docs/2.4/vhosts/
+   - Name Based Virtual Hosts: https://httpd.apache.org/docs/2.4/vhosts/name-based.html
 3. **Verify DNS is configured correctly**. Your domain’s **A record** must point to your server’s public IP address. Certbot uses this during the HTTP-01 challenge.
 4. **Update your system packages and reboot if a new kernel is installed**.
 
-```command
-sudo apt update && sudo apt upgrade -y
-```
+   ```command
+   sudo apt update && sudo apt upgrade -y
+   ```
 
 {{< note >}} This guide uses example.com as a placeholder. Replace it with your actual domain name throughout. {{< /note >}}
 
@@ -149,10 +149,11 @@ sudo nano /etc/apache2/sites-available/example.com-le-ssl.conf
 
 2. Ensure it contains:
 
-```Code
+```code
 SSLEngine on
 SSLCertificateFile /etc/letsencrypt/live/example.com/fullchain.pem
 SSLCertificateKeyFile /etc/letsencrypt/live/example.com/privkey.pem
+```
 
 3. Enable the SSL module and the SSL site:
 
@@ -178,11 +179,11 @@ sudo nano /etc/apache2/sites-available/example.com.conf
 
 2. Add this inside the <VirtualHost *:80> block:
 
-```Code
+```code
 Redirect permanent / https://example.com/
 ```
 
-3.	Reload Apache:
+3. Reload Apache:
 
 ```command
 sudo systemctl reload apache2
