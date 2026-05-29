@@ -39,7 +39,7 @@ When you clear the cache the performance of the system and application is enhanc
  - Cookies and other site data
  - Cached images and files
 
-      Choose the period of time for which you want to clear cached information. To clear your entire cache, select **All time** from the **More** timerange drop-down menu.
+      Choose the period of time for which you want to clear cached information. To clear your entire cache, select **All time** from the **More** drop-down menu.
 
 1.  Click the **Delete data** button.
 1.  Close all windows in the browser and re-open the browser.
