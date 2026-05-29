@@ -20,7 +20,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 ### HTTPS and TLS/SSL
 
-HTTPS builds upon the original *Hypertext Transfer Protocol* (HTTP) standard to offer a more secure browsing experience. It encrypts network traffic using the *Transport Layer Security* (TLS) protocol, which replaces the older (and now deprecated) *Secure Sockets Layer* (SSL) technology. HTTPS protects the privacy and integrity of any data in transit and authenticates a website for the end-user. For this reason, HTTPS must be implemented on websites that handle financial or personal data. However, all domains are strongly encouraged to enable HTTPS and a majority of all sites now use it. Review the [Understanding TLS Certificates and Connections](/docs/guides/what-is-a-tls-certificate/) to learn more about TLS.
+HTTPS builds upon the original *Hypertext Transfer Protocol* (HTTP) standard to offer a more secure browsing experience. It encrypts network traffic using the *Transport Layer Security* (TLS) protocol, which replaces the older (and now deprecated) *Secure Sockets Layer* (SSL) technology. HTTPS protects the privacy and integrity of any data in transit and authenticates a website for the end-user. For this reason, HTTPS must be implemented on websites that handle financial or personal data. However, all domains are strongly encouraged to enable HTTPS and a majority of all sites now use it. Review the [Understanding TLS Certificates and Connections](/cloud/guides/what-is-a-tls-certificate/) to learn more about TLS.
 
 ### Let's Encrypt
 

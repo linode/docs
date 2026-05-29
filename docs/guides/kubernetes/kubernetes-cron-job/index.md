@@ -14,17 +14,17 @@ external_resources:
 - '[CronJobs](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/)'
 ---
 
-Linode Kubernetes Engine (LKE) is an open source container orchestration system that helps deploy and manage containerized applications. If you are not familiar with Kubernetes, read our [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/). Kubernetes (K8s) includes the capability to schedule jobs to run at a particular time with [CronJobs](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/). CronJobs use the same scheduling syntax as **cron** and **crontab**, which are standard Linux utilities. If you are not familiar with cron, you can refer to our [Schedule Tasks with Cron](/docs/guides/schedule-tasks-with-cron/) guide.
+Linode Kubernetes Engine (LKE) is an open source container orchestration system that helps deploy and manage containerized applications. If you are not familiar with Kubernetes, read our [Beginner's Guide to Kubernetes](/cloud/guides/beginners-guide-to-kubernetes-part-1-introduction/). Kubernetes (K8s) includes the capability to schedule jobs to run at a particular time with [CronJobs](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/). CronJobs use the same scheduling syntax as **cron** and **crontab**, which are standard Linux utilities. If you are not familiar with cron, you can refer to our [Schedule Tasks with Cron](/cloud/guides/schedule-tasks-with-cron/) guide.
 
 In this guide, you learn the syntax for creating Kubernetes CronJobs. You also learn how to generate automatic daily backups for a Drupal website using Kubernetes CronJobs.
 
 ## Before You Begin
 
-1. Ensure you have deployed a Kubernetes cluster. To deploy a Linode Kubernetes Engine (LKE) cluster, see our [Deploy and Manage a Cluster with Linode Kubernetes Engine](/docs/products/compute/kubernetes/) guide.
+1. Ensure you have deployed a Kubernetes cluster. To deploy a Linode Kubernetes Engine (LKE) cluster, see our [Deploy and Manage a Cluster with Linode Kubernetes Engine](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) guide.
 
-1. After deploying your Kubernetes cluster, make sure your local environment has [kubectl installed](/docs/products/compute/kubernetes/guides/kubectl/), and you can access your cluster using `kubectl`.
+1. After deploying your Kubernetes cluster, make sure your local environment has [kubectl installed](https://techdocs.akamai.com/cloud-computing/docs/manage-a-cluster-with-kubectl), and you can access your cluster using `kubectl`.
 
-1. This guide uses a Drupal website deployed with LKE to demonstrate how to back up a MySQL database. To follow along, ensure you use the [How to Install Drupal with Linode Kubernetes Engine](/docs/guides/how-to-install-drupal-with-linode-kubernetes-engine/) guide to deploy your own Drupal site.
+1. This guide uses a Drupal website deployed with LKE to demonstrate how to back up a MySQL database. To follow along, ensure you use the [How to Install Drupal with Linode Kubernetes Engine](/cloud/guides/how-to-install-drupal-with-linode-kubernetes-engine/) guide to deploy your own Drupal site.
 
 ## An Overview of a Kubernetes CronJob
 
@@ -56,7 +56,7 @@ spec:
 The manifest file above uses the example provided in the [Kubernetes official documentation](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#example).
 {{< /note >}}
 
-A Kubernetes CronJob must contain the `apiVersion`, `kind`, and `metadata` fields. It must also contain the `spec.schedule` field which defines the time interval for the CronJob. The time interval syntax for a Kubernetes is the same as Linux system Cron jobs. You can refer to the [How to Use Cron and crontab - The Basics](/docs/guides/schedule-tasks-with-cron/#how-to-use-cron-and-crontab---the-basics) section of our Cron guide for time interval syntax details. Finally, the `jobTemplate` field is required. This field defines the requirements for the Pod that executes your CronJob. It also defines the commands to execute from the Pod. To learn more about defining `jobTemplates`, see the [Kubernetes Jobs](https://kubernetes.io/docs/concepts/workloads/controllers/job/) documentation.
+A Kubernetes CronJob must contain the `apiVersion`, `kind`, and `metadata` fields. It must also contain the `spec.schedule` field which defines the time interval for the CronJob. The time interval syntax for a Kubernetes is the same as Linux system Cron jobs. You can refer to the [How to Use Cron and crontab - The Basics](/cloud/guides/schedule-tasks-with-cron/#how-to-use-cron-and-crontab---the-basics) section of our Cron guide for time interval syntax details. Finally, the `jobTemplate` field is required. This field defines the requirements for the Pod that executes your CronJob. It also defines the commands to execute from the Pod. To learn more about defining `jobTemplates`, see the [Kubernetes Jobs](https://kubernetes.io/docs/concepts/workloads/controllers/job/) documentation.
 
 To launch a CronJob, execute the command below. Ensure your replace `cronjob.yaml` with the name of your CronJob's manifest file.
 
@@ -75,7 +75,7 @@ This section shows you how to back up a MySQL database. The example assumes a Dr
 - Schedule your CronJob
 
 {{< note >}}
-Ensure your terminal is using your desired [Kubeconfig context](/docs/products/compute/kubernetes/guides/kubectl/#persist-the-kubeconfig-context).
+Ensure your terminal is using your desired [Kubeconfig context](https://techdocs.akamai.com/cloud-computing/docs/manage-a-cluster-with-kubectl#persist-the-kubeconfig-context).
 {{< /note >}}
 
 ### Test Your CronJob Command
@@ -103,7 +103,7 @@ kubectl exec -it mysql-56f9846bb7-tlbv6 -- /bin/bash
 Viewing your MySQL Pod's terminal prompt, run the `mysqldump` command to generate a backup copy of your database. Enter your database's password when prompted. You can verify the `dump.sql` backup file created using the `ls` command.
 
 {{< note >}}
-If you deployed your Kubernetes cluster following the [How to Install Drupal with Linode Kubernetes Engine](/docs/guides/how-to-install-drupal-with-linode-kubernetes-engine/), your password should be the same one used in your `kustomization.yaml` file.
+If you deployed your Kubernetes cluster following the [How to Install Drupal with Linode Kubernetes Engine](/cloud/guides/how-to-install-drupal-with-linode-kubernetes-engine/), your password should be the same one used in your `kustomization.yaml` file.
 {{< /note >}}
 
 ### Create your CronJob

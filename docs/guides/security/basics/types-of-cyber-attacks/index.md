@@ -59,7 +59,7 @@ Keyloggers and spyware both fall into the same category. They lurk in your compu
 
 #### Keyloggers and Spyware Mitigation
 
-Common sense is key in not opening emails from unknown sources. Regular antivirus scans pick up spyware. Network monitoring tools watch for suspicious outbound traffic. You can also check for unusual activity using a [system monitoring tool like gtop](/docs/guides/installing-and-using-gtop-on-linux/).
+Common sense is key in not opening emails from unknown sources. Regular antivirus scans pick up spyware. Network monitoring tools watch for suspicious outbound traffic. You can also check for unusual activity using a [system monitoring tool like gtop](/cloud/guides/installing-and-using-gtop-on-linux/).
 
 ### Rootkits
 

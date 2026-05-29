@@ -26,7 +26,7 @@ In this guide, you will find the following information about bash scripts:
 - [solving other real world problems](#bash-scripts-for-administrators)
 - [additional examples](#additional-examples)
 {{< note >}}
-This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Functions in bash shell
@@ -598,7 +598,7 @@ while read -d ':' dir; do
 done <<< "$DIRECTORIES:"
 {{< /file >}}
 
-The counting of the files is done with the `find $dir -type f | wc -l` command. You can read more about the find command in [our guide](/docs/guides/find-files-in-linux-using-the-command-line/).
+The counting of the files is done with the `find $dir -type f | wc -l` command. You can read more about the find command in [our guide](/cloud/guides/find-files-in-linux-using-the-command-line/).
 
 Run the `countFiles` script:
 

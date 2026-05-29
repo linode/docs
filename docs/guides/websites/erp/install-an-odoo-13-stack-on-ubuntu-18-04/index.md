@@ -15,10 +15,10 @@ external_resources:
   - '[Odoo User Documentation](https://www.odoo.com/documentation/user/13.0/)'
   - '[Odoo Developer Documentation](https://www.odoo.com/documentation/13.0)'
   - '[PostgreSQL 10 Documentation](https://www.postgresql.org/docs/10/static/index.html)'
-  - '[Install an Odoo 11 Stack on Ubuntu 16.04 using Linode](/docs/guides/install-an-odoo-11-stack-on-ubuntu-16-04/)'
-  - '[Install an SSL certificate with LetsEncrypt](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/)'
-  - '[How to Set up tinc, a Peer-to-Peer VPN](/docs/guides/how-to-set-up-tinc-peer-to-peer-vpn/)'
-  - '[Using Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/)'
+  - '[Install an Odoo 11 Stack on Ubuntu 16.04 using Linode](/cloud/guides/install-an-odoo-11-stack-on-ubuntu-16-04/)'
+  - '[Install an SSL certificate with LetsEncrypt](/cloud/guides/install-lets-encrypt-to-create-ssl-certificates/)'
+  - '[How to Set up tinc, a Peer-to-Peer VPN](/cloud/guides/how-to-set-up-tinc-peer-to-peer-vpn/)'
+  - '[Using Terraform to Provision Linode Environments](/cloud/guides/how-to-build-your-infrastructure-using-terraform-and-linode/)'
 relations:
     platform:
         key: install-an-odoo-13-stack
@@ -30,7 +30,7 @@ relations:
 
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is a self-hosted suite of over 10,000 open source applications for a variety of business needs, including CRM, eCommerce, accounting, inventory, point of sale, and project management. These applications are all fully integrated and can be installed and accessed through a web interface, making it easy to automate and manage your company's processes.
 
-For simple installations, Odoo and its dependencies can be installed on a single Linode (see our [Install Odoo 10 on Ubuntu 16.04](/docs/guides/install-odoo-10-on-ubuntu-16-04/) guide for an example of this). However, this single-server setup is not suited for production deployments. This guide covers how to configure a production Odoo 13 cluster where the Odoo server and PostgreSQL database are hosted on separate Linodes. This configuration gives you more flexibility and scalability while allowing you to use PostgreSQL database replication for added performance and reliability.
+For simple installations, Odoo and its dependencies can be installed on a single Linode (see our [Install Odoo 10 on Ubuntu 16.04](/cloud/guides/install-odoo-10-on-ubuntu-16-04/) guide for an example of this). However, this single-server setup is not suited for production deployments. This guide covers how to configure a production Odoo 13 cluster where the Odoo server and PostgreSQL database are hosted on separate Linodes. This configuration gives you more flexibility and scalability while allowing you to use PostgreSQL database replication for added performance and reliability.
 
 ## System Requirements
 
@@ -45,9 +45,9 @@ All examples in this guide are for Ubuntu 18.04. If you plan to use a different 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your systems:
 
@@ -66,7 +66,7 @@ Ports `22`, `80`, and `5432` are the defaults for SSH, HTTP, and PostgreSQL comm
 
     sudo ufw allow 22/tcp
 
-For more detailed information about firewall setup please read our guide [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
+For more detailed information about firewall setup please read our guide [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/).
 
 ## Hostname Assignment
 
@@ -362,7 +362,7 @@ You have two options to backup your production database:
 
 1. You can install PostgreSQL 10 on the **Odoo** server using the procedure described on this guide. This installs `pg_dump` and other utilities, allowing you to use the Odoo GUI as before. Since Odoo configuration is explicit about database connection you do not have to worry about anything else. This method restores the database to the **PostgreSQL** server rather than **Odoo**.
 
-2. You can also use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](/docs/guides/back-up-a-postgresql-database/) from the backend **PostgreSQL** server.
+2. You can also use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](/cloud/guides/back-up-a-postgresql-database/) from the backend **PostgreSQL** server.
 
 ### Update Odoo Modules
 

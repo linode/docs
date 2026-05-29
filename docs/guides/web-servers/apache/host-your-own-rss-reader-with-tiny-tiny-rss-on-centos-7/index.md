@@ -21,9 +21,9 @@ This guide will walk through the steps necessary to install and configure Tiny T
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Follow the steps in the [LAMP on CentOS 7](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/) guide.
+2.  Follow the steps in the [LAMP on CentOS 7](/cloud/guides/how-to-install-a-lamp-stack-on-centos-7/) guide.
 
 3.  Make sure your system is up to date:
 

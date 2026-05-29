@@ -23,18 +23,18 @@ To be successful, backups should be automatic, reliable, and secure. This guide 
 Restic is a backup utility written in Go. It is cross-platform and works on most Linux distributions with a kernel newer than 2.6.23. Each backup is stored as a *snapshot* in a *repository*. The repository can be stored on most cloud storage providers, or even in a separate directory on your Linode (not recommended.) This guide explains how to use Linode Object Storage to hold your backup repository.
 
 {{< note >}}
-The steps in this guide require root privileges, and commands are run with `sudo` unless otherwise noted. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide require root privileges, and commands are run with `sudo` unless otherwise noted. For more information on privileges, see our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1. Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
+1. Ensure that you have followed the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides.
 
-1.  Create an Object Storage bucket to hold your backup repository. Follow the [Create a Bucket](/docs/products/storage/object-storage/get-started/#create-a-bucket) section of the [How to Use Linode Object Storage](/docs/products/storage/object-storage/get-started/) guide if you do not already have one.
+1.  Create an Object Storage bucket to hold your backup repository. Follow the [Create a Bucket](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-object-storage#create-a-bucket) section of the [How to Use Linode Object Storage](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-object-storage) guide if you do not already have one.
 
     {{% content "object-storage-cancellation-shortguide" %}}
 
-1.  [Generate Object Storage access keys](/docs/products/storage/object-storage/guides/access-keys/).
+1.  [Generate Object Storage access keys](https://techdocs.akamai.com/cloud-computing/docs/manage-access-keys).
 
 1.  Ensure your Linode has the `wget` and `bzip2` utilities installed. Install them with the following commands:
 
@@ -141,7 +141,7 @@ System Cron jobs exist as entries in the `/etc/crontab` file. Open your systems 
 sudo crontab -e
 ```
 
-Add a line pointing to your backup script. This example runs the backup at 12am every day. See the [Schedule tasks with Cron](/docs/guides/schedule-tasks-with-cron/) article for additional scheduling options.
+Add a line pointing to your backup script. This example runs the backup at 12am every day. See the [Schedule tasks with Cron](/cloud/guides/schedule-tasks-with-cron/) article for additional scheduling options.
 
 ```command
 0 0 * * * /usr/local/bin/backup_files > /tmp/backup-log.txt 2>&1
@@ -219,7 +219,7 @@ It can get tedious typing out the arguments to the Restic command. To make life 
 Because the credentials that Restic uses were created under the root user's home folder, the example alias in this section only works for the root user.
 {{< /note >}}
 
-In your `root` user's `.profile` file, add the lines in the example. For example, on an Ubuntu system this file is located in `/root/.profile`. To learn more about creating reusable aliases, see the [How to Add the Linux alias Command in the .bashrc File](/docs/guides/how-to-add-linux-alias-command-in-bashrc-file/) guide.
+In your `root` user's `.profile` file, add the lines in the example. For example, on an Ubuntu system this file is located in `/root/.profile`. To learn more about creating reusable aliases, see the [How to Add the Linux alias Command in the .bashrc File](/cloud/guides/how-to-add-linux-alias-command-in-bashrc-file/) guide.
 
 ```file {title="/root/.profile"}
 ...

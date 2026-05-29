@@ -29,14 +29,14 @@ Beyond that, Rocket emphasizes an easy and minimalistic path to putting together
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Throughout, this guide uses `example-app` as the name of the Rocket application. Replace it with your preferred application name.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Rust
@@ -96,7 +96,7 @@ In this section, you complete the following steps:
 
     Rocket serves the application on localhost port `8000`. To visit the application remotely, you can use an SSH tunnel:
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Connecting to a Remote Server Over SSH using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/) guide, replacing the example port number there with `8000`.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Connecting to a Remote Server Over SSH using PuTTY](/cloud/guides/connect-to-server-over-ssh-using-putty/) guide, replacing the example port number there with `8000`.
 
     - On macOS or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address:
 
@@ -117,7 +117,7 @@ In this section, you complete the following steps:
 
     Unless noted otherwise, all subsequent commands in this guide assume you are still in the application directory.
 
-1. Open the `Cargo.toml` file, and add Rocket as a dependency for the project. Use the version number for the latest version of Rocket. Refer to the [Example Applications](/docs/guides/build-a-website-using-rust-and-the-rocket-web-framework/#example-applications) section above for how to identify the latest Rocket release.
+1. Open the `Cargo.toml` file, and add Rocket as a dependency for the project. Use the version number for the latest version of Rocket. Refer to the [Example Applications](/cloud/guides/build-a-website-using-rust-and-the-rocket-web-framework/#example-applications) section above for how to identify the latest Rocket release.
 
     {{< file "~/example-app/Cargo.toml" >}}
 # [...]
@@ -151,7 +151,7 @@ Rocket can easily be set up to provide web service APIs based on the above examp
 
 Pairing Rocket with a template engine like [Handlebars](https://handlebarsjs.com/) makes it ready to run a full website. The steps below show you how to do just that and set you up with the foundations for going off and building your own templates.
 
-1. Follow the steps in the [Create an Application](/docs/guides/build-a-website-using-rust-and-the-rocket-web-framework/#create-an-application) section above to create a base Rocket application to work off.
+1. Follow the steps in the [Create an Application](/cloud/guides/build-a-website-using-rust-and-the-rocket-web-framework/#create-an-application) section above to create a base Rocket application to work off.
 
 1. Open the project's `Cargo.toml`, and modify with the additional  lines in the example below:
 
@@ -298,7 +298,7 @@ fn about() -> Template {
 {{~> (parent)~}}
     {{< /file >}}
 
-1. Now you can run the application using the `cargo run` command as shown in the [Example Applications](/docs/guides/build-a-website-using-rust-and-the-rocket-web-framework/#example-applications) section above.
+1. Now you can run the application using the `cargo run` command as shown in the [Example Applications](/cloud/guides/build-a-website-using-rust-and-the-rocket-web-framework/#example-applications) section above.
 
     ![Example Rocket website using Handlebars templates](rocket-template-example.png)
 

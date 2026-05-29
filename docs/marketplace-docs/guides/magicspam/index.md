@@ -19,7 +19,7 @@ marketplace_app_id: 869159
 marketplace_app_name: "MagicSpam"
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-MagicSpam has been removed from the App Quick Deploy App and can no longer be deployed. This guide is retained for reference only. For information on how to configure MagicSpam, see our [Using MagicSpam to Secure your Email Server](/docs/guides/using-magicspam-email-authentication) guide.
+MagicSpam has been removed from the App Quick Deploy App and can no longer be deployed. This guide is retained for reference only. For information on how to configure MagicSpam, see our [Using MagicSpam to Secure your Email Server](/cloud/guides/using-magicspam-email-authentication) guide.
 {{< /note >}}
 
 [MagicSpam](https://magicspam.com/) is a powerful anti-spam and email security solution for Linux systems. It integrates directly with popular control panels, such as cPanel and Plesk. It's primary function is to stop inbound spam from entering your server right at the SMTP layer, which lowers bandwidth and overhead. It also secure mailboxes on your server from being compromised and used to send outbound spam.
@@ -56,7 +56,7 @@ If you want to deploy MagicSpam onto an existing Linode Compute Instance, do not
 
 - **Control Panel** *(required)*: The Control Panel to deploy alongside MagicSpam.
 - **MagicSpam License Key** *(required)*: Your MagicSpam license key to for the selected Control Panel.
-- **Hostname** *(required)*: Enter a hostname for your new instance. See [Configure a Custom Hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) for examples.
+- **Hostname** *(required)*: Enter a hostname for your new instance. See [Configure a Custom Hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname) for examples.
 
 ## Getting Started after Deployment
 

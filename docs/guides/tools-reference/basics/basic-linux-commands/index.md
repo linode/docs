@@ -22,7 +22,7 @@ The person starting the Linux command-line session, is called the current user. 
 
 These Linux commands in this guide are common to most releases. Some of them have been upgraded, augmented, or modified to suit changing needs, times, or different syntax.
 
-Like other Unix operating systems, Linux has the ability to chain commands together into shell scripts, which in turn, have rudimentary to intermediate programmability. [Shell scripting](/docs/guides/intro-bash-shell-scripting/), or the use of commands arranged to execute a series of Linux command line apps, is common. Variables can be passed, and jobs can also be programmed to execute a script at certain times.
+Like other Unix operating systems, Linux has the ability to chain commands together into shell scripts, which in turn, have rudimentary to intermediate programmability. [Shell scripting](/cloud/guides/intro-bash-shell-scripting/), or the use of commands arranged to execute a series of Linux command line apps, is common. Variables can be passed, and jobs can also be programmed to execute a script at certain times.
 
 This cheat sheet contains the most commonly-used Linux commands for remote servers, like a Linode. The GNU command-line apps are re-writes of Unix, BSD, Solaris, and other operating systems versions. These are updated, or even re-written to adapt to newer host technologies and infrastructure. Technologies like Bluetooth, Wireless Ethernet, USB, the PCI bus were only dreams when many of the early versions of these commands were written. Although different versions of these commands exist, by tradition, each Linux version has *man pages* which are authoritative for the version of the command found on the specific Linux distribution under consideration.
 
@@ -130,7 +130,7 @@ For example, to change a user's home directory, use the following command:
 
     sudo usermod -d /home/example-user-new-home example-user
 
-Consult our [An Overview of the usermod Command and How It's Used](/docs/guides/what-is-usermod-and-how-to-use-it/) to learn more.
+Consult our [An Overview of the usermod Command and How It's Used](/cloud/guides/what-is-usermod-and-how-to-use-it/) to learn more.
 
 ## Disk and Media Management Commands
 
@@ -436,7 +436,7 @@ The `mv` command moves a file to a different directory:
 
     mv [options] <source_path> <destination_path>
 
-To learn more about the `mv` command see our guide [How to Navigate the Linux Terminal and File System](/docs/guides/linux-navigation-commands/).
+To learn more about the `mv` command see our guide [How to Navigate the Linux Terminal and File System](/cloud/guides/linux-navigation-commands/).
 
 ### Change File Permissions
 
@@ -444,7 +444,7 @@ The `chmod` command changes the file permissions and executable and symbolic lin
 
     chmod [executable or symbolic file option] [permissions mask] <target_files_location(s)>
 
-You can use both symbolic and octal notation with the `chmod` command. To learn more about the `chmod` command see our guide [Modify File Permissions with chmod](/docs/guides/modify-file-permissions-with-chmod/)
+You can use both symbolic and octal notation with the `chmod` command. To learn more about the `chmod` command see our guide [Modify File Permissions with chmod](/cloud/guides/modify-file-permissions-with-chmod/)
 
 ### Delete a File
 
@@ -538,7 +538,7 @@ tcp6       0      0 :::22                   :::*                    LISTEN      
 udp        0      0 0.0.0.0:68              0.0.0.0:*                           390/dhclient
 {{</ output >}}
 
-The `netstat` command has many powerful options to view information about different areas of your network. For a deeper dive, view our [Inspecting Network Information with netstat](/docs/guides/inspecting-network-information-with-netstat/).
+The `netstat` command has many powerful options to view information about different areas of your network. For a deeper dive, view our [Inspecting Network Information with netstat](/cloud/guides/inspecting-network-information-with-netstat/).
 
 {{< note >}}
 Some Linux distributions use the `ss` command, a direct replacement for `netstat`.
@@ -560,4 +560,4 @@ The `ping` command uses ICMP messaging to determine if a host is reachable. If a
 
 ## Conclusion
 
-These basic Linux commands work in any shell on any Linode Linux edition, no matter the distribution family. To reference more in-depth information about common Linux commands, browse our [documentation library](/docs/).
+These basic Linux commands work in any shell on any Linode Linux edition, no matter the distribution family. To reference more in-depth information about common Linux commands, browse our [documentation library](/cloud/).

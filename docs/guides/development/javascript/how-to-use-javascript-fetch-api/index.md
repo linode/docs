@@ -17,7 +17,7 @@ This guide explains what the JavaScript Filter API is, what role it plays, and h
 
 ## Before You Begin
 
-1.  This guide assumes you have a basic understanding of JavaScript. Depending on your level of familiarity, you may also want to go further and look at our [An Introduction to JavaScript Objects](/docs/guides/javascript-objects-tutorial/) guide.
+1.  This guide assumes you have a basic understanding of JavaScript. Depending on your level of familiarity, you may also want to go further and look at our [An Introduction to JavaScript Objects](/cloud/guides/javascript-objects-tutorial/) guide.
 
 1.  To follow along with the examples in this guide, you can use your browser's JavaScript console:
 

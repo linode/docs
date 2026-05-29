@@ -21,12 +21,12 @@ external_resources:
 
 This guide is the parent to the five-part series of Beginner's Guides to Kubernetes:
 
- - [A Beginner's Guide to Kubernetes (Part 1): Introduction](/docs/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/)
+ - [A Beginner's Guide to Kubernetes (Part 1): Introduction](/cloud/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/)
 
- - [A Beginner's Guide to Kubernetes (Part 2): Master, Nodes, and the Control Plane](/docs/kubernetes/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/)
+ - [A Beginner's Guide to Kubernetes (Part 2): Master, Nodes, and the Control Plane](/cloud/kubernetes/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/)
 
- - [A Beginner's Guide to Kubernetes (Part 3): Pods, Services, and Namespaces](/docs/kubernetes/beginners-guide-to-kubernetes-part-3-objects/)
+ - [A Beginner's Guide to Kubernetes (Part 3): Pods, Services, and Namespaces](/cloud/kubernetes/beginners-guide-to-kubernetes-part-3-objects/)
 
- - [A Beginner's Guide to Kubernetes (Part 4): Controllers](/docs/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/)
+ - [A Beginner's Guide to Kubernetes (Part 4): Controllers](/cloud/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/)
 
- - [A Beginner's Guide to Kubernetes (Part 5): Conclusion](/docs/kubernetes/beginners-guide-to-kubernetes-part-5-conclusion/)
+ - [A Beginner's Guide to Kubernetes (Part 5): Conclusion](/cloud/kubernetes/beginners-guide-to-kubernetes-part-5-conclusion/)

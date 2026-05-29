@@ -12,7 +12,7 @@ external_resources:
 tags: ["mariadb","database","mysql"]
 ---
 
-MySQL includes the [mysql_config_editor](https://dev.mysql.com/doc/refman/8.0/en/mysql-config-editor.html) utility, which is used to store your MySQL credentials inside of an encrypted file in your home directory: `~/.mylogin.cnf`. The file is obfuscated and cannot be viewed in plaintext unless running the [print](#view-stored-credentials) command. Any stored passwords are never made visible. This arrangement adds a layer of security and convenience when connecting to your database using command-line tools like mysql or [mysqldump](/docs/guides/mysqldump-backups).
+MySQL includes the [mysql_config_editor](https://dev.mysql.com/doc/refman/8.0/en/mysql-config-editor.html) utility, which is used to store your MySQL credentials inside of an encrypted file in your home directory: `~/.mylogin.cnf`. The file is obfuscated and cannot be viewed in plaintext unless running the [print](#view-stored-credentials) command. Any stored passwords are never made visible. This arrangement adds a layer of security and convenience when connecting to your database using command-line tools like mysql or [mysqldump](/cloud/guides/mysqldump-backups).
 
 Each set of credentials is stored in option groups called *login paths*. You can create your own custom login paths, which you can then specify when connecting to your database.
 

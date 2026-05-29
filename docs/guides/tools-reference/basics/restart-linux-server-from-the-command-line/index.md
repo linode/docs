@@ -19,7 +19,7 @@ While your Linux server can run continuously for weeks or months, some configura
 Generally, you do not need to regularly restart your Linux server. It should be able to keep running for weeks or months, without needing to be "refreshed" with a reboot.
 
 However, several factors may make you want to restart your server. Some software installations require a manual reboot after installation, and some applications benefit from the system being periodically rebooted. There are also many administrative processes that require restarting the server for changes to take effect.
-Linode Compute Instances have a feature called Lassie (Linode Autonomous System Shutdown Intelligent rEbooter), also referred to as the Shutdown Watchdog. When this feature is enabled, a Compute Instance automatically reboots if it ever powers off unexpectedly. To have a normal `reboot` functionality, ensure that you have enabled this feature. For more information, see the [Shutdown Watchdog guide](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/).
+Linode Compute Instances have a feature called Lassie (Linode Autonomous System Shutdown Intelligent rEbooter), also referred to as the Shutdown Watchdog. When this feature is enabled, a Compute Instance automatically reboots if it ever powers off unexpectedly. To have a normal `reboot` functionality, ensure that you have enabled this feature. For more information, see the [Shutdown Watchdog guide](https://techdocs.akamai.com/cloud-computing/docs/recover-from-unexpected-shutdowns-with-lassie).
 
 For those cases and others, it is helpful to know the available commands to quickly initiate a graceful system reboot.
 
@@ -77,4 +77,4 @@ Finally, you may want to cancel a scheduled reboot. You can do that with the fol
 
 The process for restarting your Linux server over PuTTY is the same as above. The only difference is that you need to use PuTTY to open an SSH connection to your server.
 
-If you are unsure how to do that, take a look at our guide on [Connecting to a Remote Server Over SSH using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/).
+If you are unsure how to do that, take a look at our guide on [Connecting to a Remote Server Over SSH using PuTTY](/cloud/guides/connect-to-server-over-ssh-using-putty/).

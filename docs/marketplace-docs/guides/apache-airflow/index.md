@@ -47,7 +47,7 @@ To learn more about Airflow and determine if it's the right tool for you, read t
 
 ## Getting Started after Deployment
 
-1. Log into your new Compute Instance through [LISH](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) using the root user and the password you entered when creating the instance.
+1. Log into your new Compute Instance through [LISH](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) or [SSH](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance) using the root user and the password you entered when creating the instance.
 
 1. If you log in on the same day you deployed the app, a message is displayed with a link to your Apache Airflow GUI and the username and password to use.
 
@@ -68,7 +68,7 @@ To learn more about Airflow and determine if it's the right tool for you, read t
     cat /etc/motd
     ```
 
-1. Open your web browser and navigate to the Airflow URL provided in the last step. This should be the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing the rDNS.
+1. Open your web browser and navigate to the Airflow URL provided in the last step. This should be the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing the rDNS.
 
 1. Within the Airflow login prompt that appears, enter the credentials provided in a previous step and sign in.
 
@@ -82,7 +82,7 @@ To learn more about Airflow and determine if it's the right tool for you, read t
 
     - [Airflow > Tutorials](https://airflow.apache.org/docs/apache-airflow/stable/tutorial/index.html)
     - [Airflow > How-to Guides](https://airflow.apache.org/docs/apache-airflow/stable/howto/index.html)
-    - [Create Connections and Variables in Apache Airflow](/docs/guides/apache-airflow-tutorial-creating-connections-and-variables/)
+    - [Create Connections and Variables in Apache Airflow](/cloud/guides/apache-airflow-tutorial-creating-connections-and-variables/)
 
 {{< note type="warning">}}
 The Akamai Quick Deploy App app deploys Apache Airflow in standalone mode, suitable for development, testing, and initial configurations. Standalone mode is not recommended for [production deployments](https://airflow.apache.org/docs/apache-airflow/stable/production-deployment.html).

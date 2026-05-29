@@ -19,7 +19,7 @@ image: host-a-static-site-using-linode-object-storage.png
 
 ## Why Host a Static Site on Object Storage?
 
-[Static site generators](/docs/guides/how-to-choose-static-site-generator/) are a popular solution for creating simple, fast, flexible, and attractive websites that are easy to update. You can contribute new pages and content to a static site in two steps:
+[Static site generators](/cloud/guides/how-to-choose-static-site-generator/) are a popular solution for creating simple, fast, flexible, and attractive websites that are easy to update. You can contribute new pages and content to a static site in two steps:
 
 1.  First, write the content for your site's new page using [Markdown](https://www.markdownguide.org), an easy-to-learn and light-weight markup language.
 
@@ -29,7 +29,7 @@ The second compilation step only needs to happen once for each time that you upd
 
 ### Benefits of Hosting on Object Storage
 
-Traditionally, these static HTML files would be served by a web server (like [NGINX](/docs/guides/web-servers/nginx/) or [Apache](/docs/guides/web-servers/apache/)) running on a Linode. Using Object Storage to host your static site files means you do not have to worry about maintaining your site's infrastructure. It is no longer necessary to perform typical server maintenance tasks, like software upgrades, web server configuration, and security upkeep.
+Traditionally, these static HTML files would be served by a web server (like [NGINX](/cloud/guides/web-servers/nginx/) or [Apache](/cloud/guides/web-servers/apache/)) running on a Linode. Using Object Storage to host your static site files means you do not have to worry about maintaining your site's infrastructure. It is no longer necessary to perform typical server maintenance tasks, like software upgrades, web server configuration, and security upkeep.
 
 Object Storage provides an HTTP REST gateway to objects, which means a unique URL over HTTP is available for every object. Once your static site is built, making it available publicly over the Internet is as easy uploading files to an Object Storage bucket.
 
@@ -43,16 +43,16 @@ At a high-level, the required steps to host a static site using Object Storage a
 
 1. [Upload](#upload-your-static-site-to-linode-object-storage) the static files to your Object Storage bucket to make the content publicly available over the Internet.
 
-This guide uses [Hugo](https://gohugo.io/) to demonstrate how to create a static site and hosts it on Linode Object Storage. However, there are [many other static site generators](https://www.staticgen.com) to choose from--[Jekyll](https://jekyllrb.com/) and [Gatsby](https://www.gatsbyjs.org/) are popular choices, and the general steps outlined in this guide could be adapted to them. For more information on choosing a static site generator, see the [How to Choose a Static Site Generator](/docs/guides/how-to-choose-static-site-generator/) guide.
+This guide uses [Hugo](https://gohugo.io/) to demonstrate how to create a static site and hosts it on Linode Object Storage. However, there are [many other static site generators](https://www.staticgen.com) to choose from--[Jekyll](https://jekyllrb.com/) and [Gatsby](https://www.gatsbyjs.org/) are popular choices, and the general steps outlined in this guide could be adapted to them. For more information on choosing a static site generator, see the [How to Choose a Static Site Generator](/cloud/guides/how-to-choose-static-site-generator/) guide.
 
 ## Before You Begin
 
-1. Read the [Get Started with Object Storage](/docs/products/storage/object-storage/get-started/) guide or take a look through all the [Object Storage guides](/docs/products/storage/object-storage/guides/) to familiarize yourself with Object Storage on Linode. Specifically, be sure that you have:
+1. Read the [Get Started with Object Storage](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-object-storage) guide or take a look through all the [Object Storage guides](https://techdocs.akamai.com/cloud-computing/docs/object-storage) to familiarize yourself with Object Storage on Linode. Specifically, be sure that you have:
 
     - Created your Object Storage access and secret keys.
     - Installed and configure the [s3cmd tool](https://s3tools.org/download).
 
-1. [Install and configure Git](/docs/guides/how-to-install-git-and-clone-a-github-repository/#install-and-configure-git) on your local computer.
+1. [Install and configure Git](/cloud/guides/how-to-install-git-and-clone-a-github-repository/#install-and-configure-git) on your local computer.
 
 ## Install the Hugo Static Site Generator
 
@@ -220,7 +220,7 @@ Press Ctrl+C to stop
 
             git commit -m 'Add my first post.'
 
-    Once you have used Git to track your local Hugo site files, you can easily push them to a remote Git repository, like [GitHub](https://github.com/) or [GitLab](https://about.gitlab.com/). Storing your static site files on a remote Git repository opens up many possibilities for collaboration and automating your static site's deployment to Linode Object Storage. To learn more about Git, see the [Getting Started with Git](/docs/guides/how-to-configure-git/) guide.
+    Once you have used Git to track your local Hugo site files, you can easily push them to a remote Git repository, like [GitHub](https://github.com/) or [GitLab](https://about.gitlab.com/). Storing your static site files on a remote Git repository opens up many possibilities for collaboration and automating your static site's deployment to Linode Object Storage. To learn more about Git, see the [Getting Started with Git](/cloud/guides/how-to-configure-git/) guide.
     {{< /note >}}
 
 ## Upload your Static Site to Linode Object Storage
@@ -309,8 +309,8 @@ Alternatively, you can freely create a custom subdomain that does not need to ma
 
     subdomain.mydomain.tld    CNAME	my-new-bucket.us-east-1.linodeobjects.com
 
-To learn about managing DNS records on Linode, see the [DNS Manager](/docs/products/networking/dns-manager/) and [DNS Records: An Introduction](/docs/guides/dns-overview/) guides.
+To learn about managing DNS records on Linode, see the [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) and [DNS Records: An Introduction](/cloud/guides/dns-overview/) guides.
 
-For instructions on how to set up `https` access for your custom domain, see the  [Configure a Custom Domain (with a TLS/SSL Certificate)](/docs/products/storage/object-storage/guides/custom-domain/) guide.
+For instructions on how to set up `https` access for your custom domain, see the  [Configure a Custom Domain (with a TLS/SSL Certificate)](https://techdocs.akamai.com/cloud-computing/docs/configure-a-custom-domain-with-a-tls-ssl-certificate) guide.
 
 As noted before, it's possible to trigger automatic deployments to the Object Storage service when you push new content updates to GitHub or GitLab. This is done by leveraging a CI/CD (continuous integration/continuous delivery) tool like [Travis CI](https://travis-ci.org). Essentially, you would build your Hugo site within the Travis environment and then run the `s3cmd sync` command from it to your bucket.

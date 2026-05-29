@@ -70,7 +70,7 @@ It is not uncommon for users to go back and forth between the writing and planni
 
 Although Terraform is not a configuration management tool, it can be used in conjunction with one to provide an end-to-end solution. Terraform provides the higher-level layout of the network, while the configuration management tool operates on the individual devices. Another approach to integrate these components is to have Terraform bootstrap a configuration management service. Terraform offers the paid Terraform Cloud service, which is free for up to five people. Cloud streamlines the Terraform workflow and adds workspaces. It is designed for teams who are working together on the same network.
 
-Linode offers several [Terraform guides](/docs/applications/configuration-management/terraform), which explain how to install and use Terraform.
+Linode offers several [Terraform guides](/cloud/applications/configuration-management/terraform), which explain how to install and use Terraform.
 
 ## An Introduction to Pulumi
 
@@ -127,7 +127,7 @@ Pulumi is not a configuration management tool. It works best in conjunction with
 
 Pulumi requires a paid account for more than one user. The paid Pulumi for Teams product delivers code sharing features, Git and Slack integration, and support for CI/CD deployments. Pulumi uses the Pulumi Console web-based service to manage concurrency, which reduces some complexity and helps with the learning curve. The Pulumi CLI uses this service by default, but you are allowed to manage the state yourself.
 
-Linode provides a guide explaining how to [get started with Pulumi](/docs/guides/deploy-in-code-with-pulumi/). The guide explains how to install and use the tool.
+Linode provides a guide explaining how to [get started with Pulumi](/cloud/guides/deploy-in-code-with-pulumi/). The guide explains how to install and use the tool.
 
 ## Comparing Terraform and Pulumi
 

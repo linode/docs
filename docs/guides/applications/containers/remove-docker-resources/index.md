@@ -20,9 +20,9 @@ Learn in this guide how to clean up your Docker resources. Here, you can see how
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started on the Linode Platform](/docs/products/platform/get-started/) guide, and complete the steps for setting your instance's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started on the Linode Platform](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and complete the steps for setting your instance's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your system.
 
@@ -38,12 +38,12 @@ Learn in this guide how to clean up your Docker resources. Here, you can see how
         sudo dnf upgrade
         ```
 
-1.  Follow the steps in our [Installing and Using Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) guide to install, set up, and run a Docker instance. You can use the drop-down at the top of the page to select the Linux distribution matching your system.
+1.  Follow the steps in our [Installing and Using Docker](/cloud/guides/installing-and-using-docker-on-ubuntu-and-debian/) guide to install, set up, and run a Docker instance. You can use the drop-down at the top of the page to select the Linux distribution matching your system.
 
 Additionally, this guide assumes that you are logged in as a non-root user within the `docker` user group. You can learn how to add a non-root user to this group in the guide above. Otherwise, if your user is not in the `docker` group, you need to begin each of the commands given throughout this guide with `sudo`.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Remove All Dangling or Unused Resources

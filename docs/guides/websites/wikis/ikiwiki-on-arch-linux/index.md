@@ -18,7 +18,7 @@ tags: ["wiki"]
 deprecated: true
 ---
 
-Ikiwiki is a static website content management system. Originally designed as a wiki "engine", the package is built on top of plain text files and standard revision control components. Ikiwiki also contains support for blogging, an advanced template system, and an extensive plugin system and library that provide users with great flexibility and features. The installation procedure outlined in this document will guide you through deploying an ikiwiki site using [git](/docs/guides/how-to-configure-git/) for version control, and either the [Apache](/docs/web-servers/apache/) or [nginx](/docs/web-servers/nginx/) web server.
+Ikiwiki is a static website content management system. Originally designed as a wiki "engine", the package is built on top of plain text files and standard revision control components. Ikiwiki also contains support for blogging, an advanced template system, and an extensive plugin system and library that provide users with great flexibility and features. The installation procedure outlined in this document will guide you through deploying an ikiwiki site using [git](/cloud/guides/how-to-configure-git/) for version control, and either the [Apache](/cloud/web-servers/apache/) or [nginx](/cloud/web-servers/nginx/) web server.
 
 ## Install Ikiwiki
 
@@ -222,7 +222,7 @@ Configure the `username` user's identity within git. Modify the following model 
     git config --global user.email "username@example.com"
     git config --global user.name "username example"
 
-Issue the following commands to copy the default `basewiki` and `templates` to the `~/wiki` directory, download a [sample ikiwiki configuration file](/docs/assets/694-ikiwiki.yaml), and create an initial commit in the `~/wiki` repository:
+Issue the following commands to copy the default `basewiki` and `templates` to the `~/wiki` directory, download a [sample ikiwiki configuration file](/cloud/assets/694-ikiwiki.yaml), and create an initial commit in the `~/wiki` repository:
 
     cd ~/wiki
     cp -R /usr/share/ikiwiki/templates ~/wiki/

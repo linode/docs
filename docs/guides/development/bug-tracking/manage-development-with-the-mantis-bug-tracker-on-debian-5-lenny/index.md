@@ -20,7 +20,7 @@ deprecated: true
 
 Mantis Bug Tracker (commonly referred to as MantisBT) is a free web-based bug tracking system. Mantis offers many of the same capabilities as other trackers like Bugzilla, but is simpler and easy to set up.
 
-Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/products/compute/compute-instances/faqs/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/). Additionally, you'll need to have followed both the [LAMP guide for Debian Lenny](/docs/guides/how-to-install-a-lamp-stack-on-debian-11/) as well as the [Exim guide](/docs/guides/sendonly-mail-server-with-exim-on-debian-5-lenny/) if you don't already have a means of sending mail from your server.
+Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). If you are new to Linux server administration, we recommend considering the [beginner's guide](https://techdocs.akamai.com/cloud-computing/docs/faqs-for-compute-instances) and the article concerning [systems administration basics](/cloud/guides/linux-system-administration-basics/). Additionally, you'll need to have followed both the [LAMP guide for Debian Lenny](/cloud/guides/how-to-install-a-lamp-stack-on-debian-11/) as well as the [Exim guide](/cloud/guides/sendonly-mail-server-with-exim-on-debian-5-lenny/) if you don't already have a means of sending mail from your server.
 
 ## Installing Prerequisites
 
@@ -55,7 +55,7 @@ Next, move the `mantisbt-1.2.1` directory to the `public_html` directory under t
     chmod -R 755 /srv/www/example.com/public_html/mantis/
     chmod 777 /srv/www/example.com/public_html/mantis/
 
-Visit the location of MantisBT in your browser. In this example, the URL would be `http://example.com/mantis`. Follow the installation instructions by providing the credentials to the MySQL database you created in the LAMP guide, or especially for Mantis. For additional information regarding MySQL, see the [MySQL guide](/docs/guides/use-mysql-relational-databases-on-debian-5-lenny/). At this point Mantis is installed and ready to configure.
+Visit the location of MantisBT in your browser. In this example, the URL would be `http://example.com/mantis`. Follow the installation instructions by providing the credentials to the MySQL database you created in the LAMP guide, or especially for Mantis. For additional information regarding MySQL, see the [MySQL guide](/cloud/guides/use-mysql-relational-databases-on-debian-5-lenny/). At this point Mantis is installed and ready to configure.
 
 ## Configuring Mantis
 

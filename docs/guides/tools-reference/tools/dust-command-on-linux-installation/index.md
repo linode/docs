@@ -60,12 +60,12 @@ A good strategy is to use dust to get a quick overview of the system's disk spac
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Dust
@@ -76,7 +76,7 @@ There are three main ways of installing Dust. Either use the Cargo or Homebrew p
 
 The easiest way to install Dust is by using the Cargo utility. Cargo is the package manager for [*Rust*](https://www.rust-lang.org/), a popular high-performance programming language. If Rust is already installed on the system, then Cargo is installed too. If not, Cargo can be installed as a stand-alone application by using `apt`.
 
-1. Ensure the system is fully updated using the instructions in the [Before You Begin](/docs/guides/dust-command-on-linux-installation/#before-you-begin) section. Install Cargo using `apt`.
+1. Ensure the system is fully updated using the instructions in the [Before You Begin](/cloud/guides/dust-command-on-linux-installation/#before-you-begin) section. Install Cargo using `apt`.
 
         sudo apt install cargo
 

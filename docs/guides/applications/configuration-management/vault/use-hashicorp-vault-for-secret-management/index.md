@@ -61,15 +61,15 @@ The configuration outlined in this guide is suitable for small deployments. In s
 
 ### Before you Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
     {{< note respectIndent=false >}}
 Setting the full hostname correctly in `/etc/hosts` is important in this guide in order to terminate TLS on Vault correctly. Your Linode's fully qualified domain name and short hostname should be present in the `/etc/hosts` file before continuing.
 {{< /note >}}
 
-3.  Follow our [UFW Guide](/docs/guides/configure-firewall-with-ufw/) in order to install and configure a firewall on your Ubuntu or Debian-based system, or our [FirewallD Guide](/docs/guides/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. Consider reviewing Vault's [Production Hardening](https://www.vaultproject.io/guides/operations/production) recommendations if this will be used in a production environment.
+3.  Follow our [UFW Guide](/cloud/guides/configure-firewall-with-ufw/) in order to install and configure a firewall on your Ubuntu or Debian-based system, or our [FirewallD Guide](/cloud/guides/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. Consider reviewing Vault's [Production Hardening](https://www.vaultproject.io/guides/operations/production) recommendations if this will be used in a production environment.
 
     {{< note respectIndent=false >}}
 When configuring a firewall, keep in mind that Vault listens on port 8200 by default and Let's Encrypt utilizes ports 80 (HTTP) and 443 (HTTPS).
@@ -77,7 +77,7 @@ When configuring a firewall, keep in mind that Vault listens on port 8200 by def
 
 ### Acquire a TLS Certificate
 
-1.  Follow the steps in our [Secure HTTP Traffic with Certbot](/docs/guides/secure-http-traffic-certbot/) guide to acquire a TLS certificate.
+1.  Follow the steps in our [Secure HTTP Traffic with Certbot](/cloud/guides/secure-http-traffic-certbot/) guide to acquire a TLS certificate.
 
 2.  Add a system group in order to grant limited read access to the TLS files created by Certbot.
 

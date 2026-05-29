@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
 show_on_rss_feed: false
 external_resources:
- - '[GitHub Beginners Guide](/docs/guides/a-beginners-guide-to-github/)'
+ - '[GitHub Beginners Guide](/cloud/guides/a-beginners-guide-to-github/)'
  - '[Red Hat Writing Style Guide](http://stylepedia.net/)'
 build:
   list: false
@@ -21,7 +21,7 @@ build:
 
 ## Write Guides for Linode
 
-This guide provides templates and guidelines to use when creating or updating a guide for [Linode Docs](/docs/).
+This guide provides templates and guidelines to use when creating or updating a guide for [Linode Docs](/cloud/).
 
 Updates, improvements, and bug fixes to Linode documentation are always welcome through [GitHub](https://github.com/linode/docs) via pull requests (PRs) or issues.
 
@@ -91,22 +91,22 @@ Below is an example *Before You Begin* section. You may copy the example and edi
 ```file {title="Before You Begin"}
 ## Before You Begin
 
-1.  If you do not already have a virtual machine to use, create a Compute Instance with at least 4 GB of memory. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you do not already have a virtual machine to use, create a Compute Instance with at least 4 GB of memory. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 ```
 
 ### Include a Note about Root or Non-Root users
 
 ```file {title="Guides Written for a Non-Root User" lang="txt"}
 {{</* note */>}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{</* /note */>}}
 ```
 
 ```file {title="Guides Written for a Root User" lang="txt"}
 {{</* note */>}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{</* /note */>}}
 ```
 
@@ -584,7 +584,7 @@ Use <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy text.
 
 Internal links to other Linode guides should be relative, starting at `/docs/`, and external links should be formatted as shown below and use HTTPS URLs whenever possible.
 
-- **Internal link example:** `[Getting Started](/docs/products/platform/get-started/)`
+- **Internal link example:** `[Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started)`
 - **External link example:** `[Apache HTTP Server Documentation](https://httpd.apache.org/docs/)`
 
 ### Lists
@@ -723,7 +723,7 @@ There are four unique types of notes: **primary**, **secondary**, **warning**, a
 -   **Warning** (`type="warning"`, title defaults to "Warning"): Notices that warn the reader to proceed with caution, including notices for beta programs, warnings of limited resource availability, etc. Not as urgent as alert notes.
 
     {{< note type="warning" title="VPC Beta Notice" >}}
-    VPCs are now publicly available in beta, providing customers with another method of isolating network traffic between Compute Instances (in addition to the [VLANs](/docs/products/networking/vlans/) feature). Not all data centers are currently supported. For more information, review the [Availability](/docs/products/networking/vpc/#availability) section.
+    VPCs are now publicly available in beta, providing customers with another method of isolating network traffic between Compute Instances (in addition to the [VLANs](https://techdocs.akamai.com/cloud-computing/docs/vlan) feature). Not all data centers are currently supported. For more information, review the [Availability](https://techdocs.akamai.com/cloud-computing/docs/vpc#availability) section.
     {{< /note >}}
 
 -   **Alert** (`type="alert"`, title defaults to "Important"): The most urgent of all note types. **Alert** notes should be used to notify of potential *destructive* actions such as situations resulting in data loss or where there is no undoing what has been done. Anything critical to the success of a task should still be included in the primary content and not solely live in the note.

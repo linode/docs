@@ -22,11 +22,11 @@ In this tutorial, learn the most useful methods for implementing secrets managem
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account. See our [Getting Started with Linode](/docs/products/platform/get-started/) guide.
+1.  If you have not already done so, create a Linode account. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide.
 
-1.  Follow our guide on [Getting Started With Ansible: Basic Installation and Setup](/docs/guides/getting-started-with-ansible/). Specifically, follow the sections on setting up a control node and managed nodes, configuring Ansible, and creating an Ansible inventory.
+1.  Follow our guide on [Getting Started With Ansible: Basic Installation and Setup](/cloud/guides/getting-started-with-ansible/). Specifically, follow the sections on setting up a control node and managed nodes, configuring Ansible, and creating an Ansible inventory.
 
-1.  Refer to our guide [Automate Server Configuration with Ansible Playbooks](/docs/guides/running-ansible-playbooks/) for an overview of Ansible playbooks and their operations.
+1.  Refer to our guide [Automate Server Configuration with Ansible Playbooks](/cloud/guides/running-ansible-playbooks/) for an overview of Ansible playbooks and their operations.
 
 ## Secrets in Ansible
 
@@ -52,12 +52,12 @@ With this option, you configure your Ansible playbook to prompt users to manuall
 
 Of course, this option comes with some significant drawbacks. By not storing the secrets, you also prevent Ansible from accessing them automatically, reducing the ability to integrate your playbooks into automated processes. Additionally, leaving the secrets to manual entry introduces its own risks, as users can mishandle secrets.
 
-Here is an example Ansible playbook from our [Automate Server Configuration with Ansible Playbooks](/docs/guides/running-ansible-playbooks/) guide. This playbook adds a new non-root user to the managed nodes.
+Here is an example Ansible playbook from our [Automate Server Configuration with Ansible Playbooks](/cloud/guides/running-ansible-playbooks/) guide. This playbook adds a new non-root user to the managed nodes.
 
 The playbook uses the `vars_prompt` option to prompt the user to input a password for the new user. Ansible then hashes the password and deploys the new user to each of the managed nodes.
 
 {{< note >}}
-This playbook assumes you have an SSH public key on your control node. The public key allows for secure passwordless connections to the new user in the future. Learn more in our guide [Using SSH Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/).
+This playbook assumes you have an SSH public key on your control node. The public key allows for secure passwordless connections to the new user in the future. Learn more in our guide [Using SSH Public Key Authentication](/cloud/guides/use-public-key-authentication-with-ssh/).
 
 This tutorial also assumes that your control node’s SSH key is secured by a password, and hence uses the `--ask-pass` option in some of the Ansible playbook commands below. If your SSH key is not secured by a password, remove the `--ask-pass` option from the Ansible playbook commands shown in this tutorial.
 {{< /note >}}
@@ -130,7 +130,7 @@ The vault password can either be entered manually or automatically through a pas
 
 This example of Ansible Vault deploys [rclone](https://rclone.org/) to the managed nodes and configures it to connect to a Linode Object Storage instance. The secrets are the access keys for the object storage instance.
 
-To follow along, you need to set up a Linode Object Storage instance with access keys and at least one bucket. You can learn how to do so in our guide [Object Storage - Get Started](/docs/products/storage/object-storage/get-started/).
+To follow along, you need to set up a Linode Object Storage instance with access keys and at least one bucket. You can learn how to do so in our guide [Object Storage - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-object-storage).
 
 1.  Create a file with the access keys for your Linode Object Storage instance. You can do so with the following command, just replace the text in arrow brackets with your corresponding object storage keys:
 
@@ -248,7 +248,7 @@ Ansible maintains a plugin for interacting with HashiCorp's Vault, the [`hashi_v
 
 The following steps walk you through an example using HashiCorp's Vault with Ansible. The example accomplishes the same ends as the example in the previous section, so you can more easily compare the two.
 
-1.  Follow along with our guide on [Setting Up and Using a Vault Server](/docs/guides/how-to-setup-and-use-a-vault-server/). By the end, you should have HashiCorp's Vault installed, a vault server running and unsealed, and be logged into the vault.
+1.  Follow along with our guide on [Setting Up and Using a Vault Server](/cloud/guides/how-to-setup-and-use-a-vault-server/). By the end, you should have HashiCorp's Vault installed, a vault server running and unsealed, and be logged into the vault.
 
 1.  Ensure that the key-value (`kv`) engine is enabled for the `secret` path:
 
@@ -354,4 +354,4 @@ The following steps walk you through an example using HashiCorp's Vault with Ans
 
 You now have some options to ensure that your Ansible setup has secure secrets. Choosing between these options comes down to scale and accessibility. Manual entry is simple to start with, but only suits smaller projects and teams. Ansible Vault is in many ways ideal, but an external solution may better fit your team and organization.
 
-To keep learning about Ansible and efficiently automating your server tasks, read more of our [guides on Ansible](/docs/guides/applications/configuration-management/ansible/).
+To keep learning about Ansible and efficiently automating your server tasks, read more of our [guides on Ansible](/cloud/guides/applications/configuration-management/ansible/).

@@ -17,19 +17,19 @@ external_resources:
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Huginn supports Debian and Ubuntu Linux distributions, and this guide's instructions are intended for these distributions as well.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Docker and Docker Compose
 
-This guide uses [Docker](https://www.docker.com/) to run Huginn. Huginn maintains an [official Docker setup](https://github.com/huginn/huginn/blob/master/doc/docker/install.md), to help you get your instance up and running. If you are new to using Docker, it is recommended that you review the [Introduction to Docker](/docs/guides/introduction-to-docker/) guide.
+This guide uses [Docker](https://www.docker.com/) to run Huginn. Huginn maintains an [official Docker setup](https://github.com/huginn/huginn/blob/master/doc/docker/install.md), to help you get your instance up and running. If you are new to using Docker, it is recommended that you review the [Introduction to Docker](/cloud/guides/introduction-to-docker/) guide.
 
 It is possible to manually install Huginn. However, the Docker method is used in this guide since Huginn does not support the manual installation method for the latest Debian and Ubuntu releases. However, Huginn maintains [manual installation instructions](https://github.com/huginn/huginn/tree/master/doc/manual) if you prefer that installation path.
 
@@ -43,7 +43,7 @@ Once you have Docker installed, you can quickly run an instance of Huginn to try
 
 1. Navigate to `localhost:3000` in a web browser. You can use an SSH tunnel to visit the Huginn instance remotely.
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Connecting to a Remote Server Over SSH using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/) guide, replacing the example port number there with **3000**.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Connecting to a Remote Server Over SSH using PuTTY](/cloud/guides/connect-to-server-over-ssh-using-putty/) guide, replacing the example port number there with **3000**.
     - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
             ssh -L3000:localhost:3000 example-user@192.0.2.0
@@ -72,7 +72,7 @@ Docker can also be used to set up a full-fledged and persistent instance of Hugi
 
         EMAIL_FROM_ADDRESS=huginn@example-smtp-domain.com
 
-    You can create your own SMTP server by following the [Email with Postfix, Dovecot, and MySQL/MariaDB](/docs/guides/email-with-postfix-dovecot-and-mysql/) guide.
+    You can create your own SMTP server by following the [Email with Postfix, Dovecot, and MySQL/MariaDB](/cloud/guides/email-with-postfix-dovecot-and-mysql/) guide.
 
     Alternatively, you can use a third-party SMTP service, like [Mailgun](https://www.mailgun.com/). The following is an example of the above configuration for a Mailgun SMTP account.
 

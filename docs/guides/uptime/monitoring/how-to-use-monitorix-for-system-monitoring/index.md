@@ -12,9 +12,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: UseMonitorix_sysmon.png
 ---
 
-[Monitorix](https://www.monitorix.org/) is a free, open-source system monitoring tool that keeps track of several Linux services and system resources. This Linux system monitoring tool is composed of two programs. The first, monitorix, is a system data logging daemon written in [Perl](/docs/guides/development/perl/). The second, its web interface, uses the CGI script, `monitorix.cgi`.
+[Monitorix](https://www.monitorix.org/) is a free, open-source system monitoring tool that keeps track of several Linux services and system resources. This Linux system monitoring tool is composed of two programs. The first, monitorix, is a system data logging daemon written in [Perl](/cloud/guides/development/perl/). The second, its web interface, uses the CGI script, `monitorix.cgi`.
 
-Besides tracking Linux server elements such as overall system load, file system activity, and global kernel usage, Monitorix also tracks hardware data such as sub-system temperatures, battery status, and UPS statistics. It also monitors popular third-party Linux programs such as mail servers; [libvirt](https://libvirt.org/)-based virtual machines; and [MySQL](https://www.mysql.com/), [Nginx](/docs/guides/web-servers/nginx/), and [MongoDB](/docs/guides/databases/mongodb/) databases.
+Besides tracking Linux server elements such as overall system load, file system activity, and global kernel usage, Monitorix also tracks hardware data such as sub-system temperatures, battery status, and UPS statistics. It also monitors popular third-party Linux programs such as mail servers; [libvirt](https://libvirt.org/)-based virtual machines; and [MySQL](https://www.mysql.com/), [Nginx](/cloud/guides/web-servers/nginx/), and [MongoDB](/cloud/guides/databases/mongodb/) databases.
 
 Monitorix was originally designed for the [Red Hat Enterprise Linux](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) operating system family. Now, licensed under [GPLv2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html), it works on all major Linux server distributions. Beginning with version 3.0, Monitorix comes with its own web server, which is useful for remote Linux server monitoring. With its simple graphical interface, it's also good for interactive server monitoring.
 
@@ -22,9 +22,9 @@ Monitorix was originally designed for the [Red Hat Enterprise Linux](https://www
 
 If you are using a Linode, make sure you run the steps in this section to configure your Linode, secure your server, and update your system's packages.
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Installing Monitorix
 
@@ -68,14 +68,14 @@ Debian and Ubuntu Linux systems contain an additional configuration file, `/etc/
 
         sudo service monitorix restart
 {{< note >}}
-By default, Monitorix uses its built-in web server. However, it can be set to work with the [Apache](/docs/guides/web-servers/apache/), [Lighttpd](/docs/guides/web-servers/lighttpd/), or Nginx web servers.
+By default, Monitorix uses its built-in web server. However, it can be set to work with the [Apache](/cloud/guides/web-servers/apache/), [Lighttpd](/cloud/guides/web-servers/lighttpd/), or Nginx web servers.
 {{< /note >}}
 
 ## Getting started with Monitorix
 
 Monitorix is meant to be used as an interactive program. It's not suitable for use in shell programs. In this section, you access the Monitorix graphical user interface (GUI) to view some of the monitoring information provided by Monitorix.
 
-1. To access the Monitorix interface running on your Linode, [find your Linode's IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). Open a browser window and navigate to the following URL, `http://192.0.2.0:8080/monitorix`. Replace `192.0.2.0` with your own IP address.
+1. To access the Monitorix interface running on your Linode, [find your Linode's IP address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance). Open a browser window and navigate to the following URL, `http://192.0.2.0:8080/monitorix`. Replace `192.0.2.0` with your own IP address.
 
     {{< note respectIndent=false >}}
 If you are running Monitorix on your computer, instead, navigate to `http://localhost:8080/monitorix`.
@@ -109,7 +109,7 @@ If you are running Monitorix on your computer, instead, navigate to `http://loca
 
 - The Monitorix daemon stores its log files by default to `/var/log/monitorix`. The data within these logs are typically displayed by the built-in web server. Monitorix's default web address is `http://localhost:8080/monitorix`.
 
-- For authentication, Monitorix uses [HTTP basic access authentication](/docs/guides/apache-access-control/#the-caveats-of-http-authentication). User passwords are set using the [htpasswd.pl script](https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/).
+- For authentication, Monitorix uses [HTTP basic access authentication](/cloud/guides/apache-access-control/#the-caveats-of-http-authentication). User passwords are set using the [htpasswd.pl script](https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/).
 
 - The Monitorix web interface can also [monitor multiple Linux servers](https://www.monitorix.org/documentation.html#58).
 

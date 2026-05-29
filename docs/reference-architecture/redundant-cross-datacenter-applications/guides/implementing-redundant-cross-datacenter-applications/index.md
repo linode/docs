@@ -21,7 +21,7 @@ This guide presents a walkthrough for implementing a redundant cross–data cent
 
 A redundant cross–data center architecture utilizes a software-defined network to host Software-as-a-Service (SaaS) applications between multiple data centers. The architecture uses Linode's VLAN service along with WireGuard&#174; to create a virtual network safe from general access. NGINX, along with WireGuard&#174;, facilitates external networking.
 
-Learn more about the architecture itself in our overview documentation for [Redundant Cross–Data Center Applications](/docs/reference-architecture/redundant-cross-datacenter-applications/).
+Learn more about the architecture itself in our overview documentation for [Redundant Cross–Data Center Applications](/cloud/reference-architecture/redundant-cross-datacenter-applications/).
 
 ## How to Implement a Redundant Cross–Data Center Architecture
 
@@ -51,7 +51,7 @@ The setup assumes you have a DNS load balancer configured. The infrastructure ut
 
 The redundant cross-data center architecture as it is implemented here requires you to create numerous nodes, many of which are similar to others. To streamline the process, the tutorial uses [Terraform](https://www.terraform.io/).
 
-Terraform is a tool for automating the process of provisioning infrastructure. You can learn more about using Terraform to provision Linode instances in our [Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/).
+Terraform is a tool for automating the process of provisioning infrastructure. You can learn more about using Terraform to provision Linode instances in our [Beginner's Guide to Terraform](/cloud/guides/beginners-guide-to-terraform/).
 
 The steps below give you everything you need to run the Terraform script for implementing the infrastructure here. Afterwards, you can find a high-level breakdown of what the script does.
 
@@ -74,12 +74,12 @@ The configurations and commands used in this guide add multiple Linode instances
 
 1.  With a text editor, open the `terraform.tfvars` file in the `rcdc-terraform`. Replace the `LINODE_API_TOKEN` and `INSTANCE_ROOT_PASSWORD` values with your own.
 
-    -   The value for `token` needs to be your Linode API access token. You can follow our [Get an API Access Token](/docs/products/tools/linode-api/guides/get-access-token/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
+    -   The value for `token` needs to be your Linode API access token. You can follow our [Get an API Access Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
 
     -   The `password` value should be the root password you intend to use for the nodes in the infrastructure.
 
     {{< note type="warning" >}}
-    Sensitive infrastructure data (like passwords and tokens) are visible in plain text within the `terraform.tfvars` file. Review [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
+    Sensitive infrastructure data (like passwords and tokens) are visible in plain text within the `terraform.tfvars` file. Review [Secrets Management with Terraform](/cloud/applications/configuration-management/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
     {{< /note >}}
 
     {{< note >}}
@@ -91,7 +91,7 @@ The configurations and commands used in this guide add multiple Linode instances
     ssh_key = "~/id_rsa.pub"
     ```
 
-    Learn more about SSH public keys in our tutorial [How to Use SSH Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/)
+    Learn more about SSH public keys in our tutorial [How to Use SSH Public Key Authentication](/cloud/guides/use-public-key-authentication-with-ssh/)
     {{< /note >}}
 
 1.  **Optional:** Adjust the `node_count` value to control the number of nodes created in each region. The script as it is does not work properly if anything other than two regions are specified, however, you can adjust the specific `regions` values.
@@ -143,7 +143,7 @@ The script used above handles several of the necessary provisioning tasks. Here'
 
 -   Executes the delivered shell script. This shell script handles network setup along with the installation and configuration of necessary software.
 
-    The network configuration includes `networkd` routing, `iptables` rules for forwarding, and a `keepalive` configuration. You can learn more about some parts of the network configuration in our guide to [Configure Linux as a Router](/docs/guides/linux-router-and-ip-forwarding/).
+    The network configuration includes `networkd` routing, `iptables` rules for forwarding, and a `keepalive` configuration. You can learn more about some parts of the network configuration in our guide to [Configure Linux as a Router](/cloud/guides/linux-router-and-ip-forwarding/).
 
     The necessary software includes WireGuard&#174; and NGINX. WireGuard&#174; provides a VPN for communications between the two gateways, and NGINX performs load balancing between each region's array of application nodes. The shell script handles the initial configuration for these applications.
 
@@ -313,7 +313,7 @@ Setting up a cloud firewall is optional for testing the infrastructure, but it i
 
 The Linode Cloud Firewall provides an easy-to-implement firewall that you can attach to the gateway instances deployed above.
 
-Learn more about Linode Cloud Firewalls in our [selection of guides](/docs/products/networking/cloud-firewall/guides/) on the topic.
+Learn more about Linode Cloud Firewalls in our [selection of guides](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) on the topic.
 
 The steps below outline a basic configuration you can use with the infrastructure deployed in this tutorial.
 

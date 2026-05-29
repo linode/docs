@@ -19,12 +19,12 @@ Through this tutorial, learn more about load testing and how to get started usin
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 The commands, file contents, and other instructions provided throughout this guide may include example values. These are typically domain names, IP addresses, usernames, passwords, and other values that are unique to you. The table below identifies these example values and explains what to replace them with:
@@ -98,7 +98,7 @@ You should see the JMeter GUI start up:
 ![The initial view of the JMeter GUI.](jmeter-startup.png)
 
 {{< note >}}
-For Linux and macOS, you can follow our guide on how to [Add a Directory to the PATH on Linux](/docs/guides/how-to-add-directory-to-path/). Add the `bin` directory to your shell path to start up JMeter with the simpler `jmeter` command.
+For Linux and macOS, you can follow our guide on how to [Add a Directory to the PATH on Linux](/cloud/guides/how-to-add-directory-to-path/). Add the `bin` directory to your shell path to start up JMeter with the simpler `jmeter` command.
 {{< /note >}}
 
 ## How to Start Load Testing with JMeter
@@ -111,7 +111,7 @@ To help get started, this tutorial also includes steps for creating a simple web
 
 To create a base web application to test with JMeter, follow the steps here on an application server. These steps specifically assume a Linode Compute Instance server is used. The instructions should work with most Debian-based and RHEL-derived distributions.
 
-1.  Follow our guide on how to [Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/). NPM handles the installation of the application framework and its dependencies as well as running the example application itself.
+1.  Follow our guide on how to [Install and Use the Node Package Manager (NPM) on Linux](/cloud/guides/install-and-use-npm-on-linux/). NPM handles the installation of the application framework and its dependencies as well as running the example application itself.
 
 1.  Next.js works well for this example as it can create a base web application with only a few commands. Use the commands here to create a base Next.js project named `example-app` using the `create-next-app` executor. These commands put the application in the current user's home directory and then changes into the new application directory.
 
@@ -123,13 +123,13 @@ To create a base web application to test with JMeter, follow the steps here on a
 
     Answer the prompts however you like or simply stick with the default values.
 
-    Learn more about building web applications with Next.js in our guide [Getting Started with Next.js](/docs/guides/getting-started-next-js/).
+    Learn more about building web applications with Next.js in our guide [Getting Started with Next.js](/cloud/guides/getting-started-next-js/).
 
 1.  Open port `3000` on your system's firewall. This is the default port for the example Next.js application. This port needs to be open in order for your browser and JMeter to access the application.
 
-    -   For **Debian-based** distributions refer to our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
+    -   For **Debian-based** distributions refer to our guide on [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/).
 
-    -   For **RHEL-derived** distributions refer to our guide on [Enabling and Configuring FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/).
+    -   For **RHEL-derived** distributions refer to our guide on [Enabling and Configuring FirewallD on CentOS](/cloud/guides/introduction-to-firewalld-on-centos/).
 
 1.  Start up the Next.js application. This runs the included "Welcome" application on a development server. While this should not be used for production applications, it works well to demonstrate JMeter's capabilities.
 

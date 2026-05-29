@@ -21,9 +21,9 @@ The `usermod` command lets you change an existing Linux user's settings. Most th
 
 ### Comparison to useradd and chmod
 
-The difference between `useradd` and `usermod` is that the former is used for creating new users and the latter is used for modifying existing users. While `useradd` can define a Linux user's settings, it does so for new users, not existing users. See our [Linux Users and Groups](/docs/guides/linux-users-and-groups/#creating-and-deleting-user-accounts) guide for more on the `useradd` command.
+The difference between `useradd` and `usermod` is that the former is used for creating new users and the latter is used for modifying existing users. While `useradd` can define a Linux user's settings, it does so for new users, not existing users. See our [Linux Users and Groups](/cloud/guides/linux-users-and-groups/#creating-and-deleting-user-accounts) guide for more on the `useradd` command.
 
-On the other hand, `chmod`, like `usermod`, modifies existing resources. But where `usermod` modifies settings for an existing user, `chmod` modifies the permissions on a given file or directory. For instance, while `usermod` allows you to change a user's home directory, `chmod` lets you give a file in that directory executable permissions. Learn more about what `chmod` is and how to use it in our guide [Modify File Permissions with chmod](/docs/guides/modify-file-permissions-with-chmod/).
+On the other hand, `chmod`, like `usermod`, modifies existing resources. But where `usermod` modifies settings for an existing user, `chmod` modifies the permissions on a given file or directory. For instance, while `usermod` allows you to change a user's home directory, `chmod` lets you give a file in that directory executable permissions. Learn more about what `chmod` is and how to use it in our guide [Modify File Permissions with chmod](/cloud/guides/modify-file-permissions-with-chmod/).
 
 ## Using usermod to Add a User to a Group
 

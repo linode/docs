@@ -17,7 +17,7 @@ external_resources:
 [MongoDB](https://www.mongodb.com/) is a NoSQL database, that provides more flexible and less rigidly structured data storage than traditional relational databases. This MongoDB guide introduces you to all the basic MongoDB operations you need to get started, including commands for operations like queries, inserts, updates, and deletions. It sets you up to begin effectively populating and using your MongoDB instance.
 
 {{< note >}}
-To learn all about what MongoDB is and how it works, see out [Introduction to MongoDB and its Use Cases](/docs/guides/mongodb-introduction/) guide.
+To learn all about what MongoDB is and how it works, see out [Introduction to MongoDB and its Use Cases](/cloud/guides/mongodb-introduction/) guide.
 {{< /note >}}
 
 ## Before You Begin
@@ -351,7 +351,7 @@ For demonstration, the following are some of the useful operators for filtering 
     { "_id" : ObjectId("62757b4298fcda5eac416191"), "id" : 4, "name" : "Another Entry for Testing" }
     ```
 
-Learn more about comparison and logical query operations in our guide on [How to Navigate Your Data in MongoDB Databases](/docs/guides/navigate-mongodb-databases/).
+Learn more about comparison and logical query operations in our guide on [How to Navigate Your Data in MongoDB Databases](/cloud/guides/navigate-mongodb-databases/).
 
 ### Updating Documents
 
@@ -453,4 +453,4 @@ true
 
 This tutorial has laid out the basics of MongoDB you need for getting started. From how to work with databases and collections, to inserting and modifying documents, this guide gives you the tools you need.
 
-Looking to dive deeper into MongoDB? Be sure to peruse our other [MongoDB guides](/docs/guides/databases/mongodb/) for more on setting up and getting the most out of MongoDB. And take a look at our [How to Navigate Your Data in MongoDB Databases](/docs/guides/navigate-mongodb-databases/) for more on querying and text searches.
+Looking to dive deeper into MongoDB? Be sure to peruse our other [MongoDB guides](/cloud/guides/databases/mongodb/) for more on setting up and getting the most out of MongoDB. And take a look at our [How to Navigate Your Data in MongoDB Databases](/cloud/guides/navigate-mongodb-databases/) for more on querying and text searches.

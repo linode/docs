@@ -17,7 +17,7 @@ Kloxo is a web-based control panel that is a free alternative to options such as
 
 ## Initial Setup
 
-Before getting started, you'll need to make sure that your [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) has been properly set and that [static networking](/docs/products/compute/compute-instances/guides/manual-network-configuration/) has been configured **even if you only have one IP address**. You will also need to install MySQL. To do so, issue the following commands:
+Before getting started, you'll need to make sure that your [hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname) has been properly set and that [static networking](https://techdocs.akamai.com/cloud-computing/docs/manual-network-configuration-on-a-compute-instance) has been configured **even if you only have one IP address**. You will also need to install MySQL. To do so, issue the following commands:
 
     yum update
     yum install mysql-server

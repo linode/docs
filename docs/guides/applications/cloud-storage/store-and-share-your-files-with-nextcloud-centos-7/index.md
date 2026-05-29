@@ -25,9 +25,9 @@ relations:
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Install the *EPEL* repository:
 
@@ -184,4 +184,4 @@ Once you have successfully installed you Nextcloud environment, you may want to 
 
 Although Apache was used as the web server in this guide, installing Nextcloud with nginx is possible as well. Navigate to the [Nextcloud NGINX Configuration](https://docs.nextcloud.com/server/12/admin_manual/installation/nginx.html) documentation to setup Nextcloud with NGINX.
 
-[Nextcloud Talk](https://nextcloud.com/talk/), is an addon to Nextcloud that allows for secure text and video conferencing through Nextcloud's platform. Check out our guide on how to [Install Nextcloud Talk](/docs/guides/install-nextcloud-talk/).
+[Nextcloud Talk](https://nextcloud.com/talk/), is an addon to Nextcloud that allows for secure text and video conferencing through Nextcloud's platform. Check out our guide on how to [Install Nextcloud Talk](/cloud/guides/install-nextcloud-talk/).

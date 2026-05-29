@@ -20,18 +20,18 @@ This tutorial gets you started using Redis. It explains how to connect to a Redi
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. Follow the instructions in our [How to Install and Configure Redis on Ubuntu 20.04](/docs/guides/install-redis-ubuntu/) guide to install a Redis server and command-line interface (CLI). Be sure to use the drop down menu at the top of that page to select your Linux distribution and get the appropriate steps.
+1. Follow the instructions in our [How to Install and Configure Redis on Ubuntu 20.04](/cloud/guides/install-redis-ubuntu/) guide to install a Redis server and command-line interface (CLI). Be sure to use the drop down menu at the top of that page to select your Linux distribution and get the appropriate steps.
 
 1. Replace `/etc/redis/redis.conf` throughout this guide with the actual location of your Redis server's configuration file.
 
     Generally, on **Debian** and **Ubuntu**, the location defaults to the above. On **AlmaLinux**, **CentOS**, and **Fedora**, the default location is usually `/etc/redis.conf`.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Connect to Your Redis Server
@@ -84,12 +84,12 @@ To connect to your Redis server remotely, you first need to open the appropriate
 
 1. Open port `6379` on your system's firewall.
 
-    - On **Debian** and **Ubuntu**, you can do so using UFW. See our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide for more information on using UFW. Typically, you can open the port using the following commands:
+    - On **Debian** and **Ubuntu**, you can do so using UFW. See our [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/) guide for more information on using UFW. Typically, you can open the port using the following commands:
 
             sudo ufw allow 6379
             sudo ufw reload
 
-    - On **CentOS** and **Fedora**, you can use FirewallD. Take a look at our guide [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/) for more information on using FirewallD. You can usually open the port using the following commands:
+    - On **CentOS** and **Fedora**, you can use FirewallD. Take a look at our guide [Introduction to FirewallD on CentOS](/cloud/guides/introduction-to-firewalld-on-centos/) for more information on using FirewallD. You can usually open the port using the following commands:
 
             sudo firewall-cmd --zone=public --add-port=6379/tcp --permanent
             sudo firewall-cmd --reload
@@ -166,7 +166,7 @@ The Redis CLI gives you two options for moving data between Redis databases.
 
 - You can migrate keys from a database on one Redis server to another using the `MIGRATE` command. It takes the address of the destination server, its port number, the key name, and a number of milliseconds for a timeout.
 
-    Migration requires that you set up the remote server for remote access, as described in the [Connect to a Remote Redis Server](/docs/guides/redis-getting-started/#connect-to-a-remote-redis-server) section above.
+    Migration requires that you set up the remote server for remote access, as described in the [Connect to a Remote Redis Server](/cloud/guides/redis-getting-started/#connect-to-a-remote-redis-server) section above.
 
     The example below migrates a key called `key_1` from the current database to a remote database at `192.0.2.0`:
 

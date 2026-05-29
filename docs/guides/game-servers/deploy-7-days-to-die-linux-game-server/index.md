@@ -11,15 +11,15 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: Deploy7DtoD_Linux.png
 ---
 
-Even eight years after its release, the Zombie Horde Survival game [7 Days to Die](https://7daystodie.com/) (7DTD) is still going strong. Its community is active and the zombie fun hasn't stopped. The game is even better when you and your friends play on your own server, using your own rules. Plus, when you [host a game server yourself](/docs/guides/get-started-with-linux-game-server-hosting), you don't have to worry about lag time that can interrupt your gameplay. This guide shows you how to set up your own 7DTD server, using LinuxGSM.
+Even eight years after its release, the Zombie Horde Survival game [7 Days to Die](https://7daystodie.com/) (7DTD) is still going strong. Its community is active and the zombie fun hasn't stopped. The game is even better when you and your friends play on your own server, using your own rules. Plus, when you [host a game server yourself](/cloud/guides/get-started-with-linux-game-server-hosting), you don't have to worry about lag time that can interrupt your gameplay. This guide shows you how to set up your own 7DTD server, using LinuxGSM.
 
 ![7DTD](Linux_game_7days.png)
 
 ## Before You Begin
 
-1. Deploy an **Ubuntu 20.04** Linode in a [data center region](https://www.linode.com/global-infrastructure/) close to your player's geographic location. Ensure you select a [Linode plan](/docs/products/compute/compute-instances/plans/choosing-a-plan/) with enough RAM and CPU for the game. The [7 Days to Die official documentation](https://store.steampowered.com/app/251570/7_Days_to_Die/) recommends 4 CPU cores.
+1. Deploy an **Ubuntu 20.04** Linode in a [data center region](https://www.linode.com/global-infrastructure/) close to your player's geographic location. Ensure you select a [Linode plan](https://techdocs.akamai.com/cloud-computing/docs/how-to-choose-a-compute-instance-plan) with enough RAM and CPU for the game. The [7 Days to Die official documentation](https://store.steampowered.com/app/251570/7_Days_to_Die/) recommends 4 CPU cores.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 In order to play 7 Days to Die, you have to [purchase the game on Steam](https://store.steampowered.com/app/251570/7_Days_to_Die/).
@@ -42,7 +42,7 @@ The Linux Game Server manager ([LinuxGSM](https://linuxgsm.com/)) is a command-l
         sudo adduser sdtdserver
         sudo adduser sdtdserver sudo
 
-1. Switch your terminal session to the new `sdtdserver` user. You can exit your current session by typing **exit**, then [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) using as the `sdtdserver` user. Ensure you replace the example command with your [Linode's IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/).
+1. Switch your terminal session to the new `sdtdserver` user. You can exit your current session by typing **exit**, then [SSH into your Linode](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance) using as the `sdtdserver` user. Ensure you replace the example command with your [Linode's IP address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance).
 
         ssh sdtdserver@192.0.2.0
 
@@ -109,7 +109,7 @@ To start server type:
 Execute the `./sdtdserver` command to get a list of all available 7 Days to Die server commands.
     {{< /note >}}
 
-1. On your computer, use Steam to fire up the game and connect to your [Linode server's IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/).
+1. On your computer, use Steam to fire up the game and connect to your [Linode server's IP address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance).
 
     ![7dtd server status](Linux_game_server_7dtd_server.png)
 

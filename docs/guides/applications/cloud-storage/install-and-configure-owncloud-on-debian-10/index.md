@@ -38,20 +38,20 @@ Why would you want to host your own cloud? Some common reasons are:
 - You own a small business and want to keep everything in-house.
 - You need an expandable storage solution.
 
-This tutorial walks you through the steps to install ownCloud on Debian 10, one of the most reliable operating systems on the market. There are only a few steps to install ownCloud on Debian. You [install the LAMP (Linux Apache MySQL/MariaDB PHP) stack](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/); create a database and database user; configure Apache; and set up ownCloud using its graphical user interface.
+This tutorial walks you through the steps to install ownCloud on Debian 10, one of the most reliable operating systems on the market. There are only a few steps to install ownCloud on Debian. You [install the LAMP (Linux Apache MySQL/MariaDB PHP) stack](/cloud/guides/how-to-install-a-lamp-stack-on-debian-10/); create a database and database user; configure Apache; and set up ownCloud using its graphical user interface.
 
 {{< note >}}
-To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/marketplace-docs/guides/owncloud/).
+To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/cloud/marketplace-docs/guides/owncloud/).
 {{< /note >}}
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-If you have a registered domain name that you want to point to your ownCloud instance, then use the [Linode DNS Manager to point the domain](/docs/products/networking/dns-manager/) to the Linode server on which you plan to install ownCloud. If you do not have a registered domain name, then replace example.com with the IP address of the Linode server when following the steps in the [Create an Apache Configuration File](#create-an-apache-configuration-file) section.
+If you have a registered domain name that you want to point to your ownCloud instance, then use the [Linode DNS Manager to point the domain](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) to the Linode server on which you plan to install ownCloud. If you do not have a registered domain name, then replace example.com with the IP address of the Linode server when following the steps in the [Create an Apache Configuration File](#create-an-apache-configuration-file) section.
 {{< /note >}}
 
 ## Install ownCloud
@@ -59,7 +59,7 @@ If you have a registered domain name that you want to point to your ownCloud ins
 
 In this section, you install the Apache web server and all of the necessary PHP components.
 
-1. [Connect to your Linode via SSH](/docs/products/compute/compute-instances/get-started/#connect-to-the-instance).
+1. [Connect to your Linode via SSH](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-compute-instances#connect-to-the-instance).
 
 1. Install Apache and all the required PHP packages:
 
@@ -162,7 +162,7 @@ Apache requires a [virtual host configuration file](https://httpd.apache.org/doc
         sudo nano /etc/apache2/sites-available/owncloud.conf
 
 
-1. Paste the following text into the new file. Replace mentions of `example.com` with your own domain name or your [Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/):
+1. Paste the following text into the new file. Replace mentions of `example.com` with your own domain name or your [Linode's IP Address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance):
 
 {{< file "/etc/apache2/sites-available/owncloud.conf">}}
 <VirtualHost \*:80>

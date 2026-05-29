@@ -29,9 +29,9 @@ Webmin is a web interface that allows you to manage configuration files and relo
 
 The commands in this guide work with either Debian 8 or Ubuntu 16.04.
 
-1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services. You do not have to complete the Configure a Firewall section. If you choose to set up a firewall, ensure that incoming connections are allowed on port `10000`.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access and remove unnecessary network services. You do not have to complete the Configure a Firewall section. If you choose to set up a firewall, ensure that incoming connections are allowed on port `10000`.
 
 3.  Update your system:
 
@@ -39,7 +39,7 @@ The commands in this guide work with either Debian 8 or Ubuntu 16.04.
 
 ### Check the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

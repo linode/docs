@@ -32,15 +32,15 @@ In this guide you'll deploy Ghost using Docker Compose on Ubuntu 18.04. Ghost is
 
 ## Before you Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
     {{< note respectIndent=false >}}
 Replace each instance of example.com in this guide with your Ghost site’s domain name.
 {{< /note >}}
 
-1.  Complete the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Ghost Linode.
+1.  Complete the [Add DNS Records](/cloud/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Ghost Linode.
 
 1.  Your Ghost site will serve its content over HTTPS, so you will need to obtain an SSL/TLS certificate. Use [Certbot](https://certbot.eff.org/) to request and download a free certificate from [Let's Encrypt](https://letsencrypt.org/):
 
@@ -58,7 +58,7 @@ Replace each instance of example.com in this guide with your Ghost site’s doma
     In your deployment, the web server will run in its own container, and the Certbot container would not be able to directly reload it. A workaround for this limitation would be needed to enable this architecture.
     {{< /note >}}
 
-1.  Install Docker and Docker Compose before proceeding. If you haven't used Docker before, review the [Introduction to Docker](/docs/guides/introduction-to-docker/), [When and Why to Use Docker](/docs/guides/when-and-why-to-use-docker/), and [How to Use Docker Compose](/docs/guides/how-to-use-docker-compose/) guides for some context on how these technologies work.
+1.  Install Docker and Docker Compose before proceeding. If you haven't used Docker before, review the [Introduction to Docker](/cloud/guides/introduction-to-docker/), [When and Why to Use Docker](/cloud/guides/when-and-why-to-use-docker/), and [How to Use Docker Compose](/cloud/guides/how-to-use-docker-compose/) guides for some context on how these technologies work.
 
 ### Install Docker
 

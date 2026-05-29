@@ -20,9 +20,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 Any firewall configured on your server needs to allow connections over HTTPS (in addition to HTTP and any other services/ports you require). This section covers enabling and configuring [firewalld](https://firewalld.org/). Firewalld is the default firewall management tool on Fedora 18+, openSUSE 15+, and CentOS/RHEL 7/8, including derivatives like AlmaLinux 8 and Rocky Linux 8. Depending on the distribution, it operates as a front-end for either iptables or the newer nftables.
 
-You can skip this section if you are using a different firewall (such as Linode's [Cloud Firewall](/docs/products/networking/cloud-firewall/) service), have already configured your firewall rules, or do not wish to use any firewall.
+You can skip this section if you are using a different firewall (such as Linode's [Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) service), have already configured your firewall rules, or do not wish to use any firewall.
 
-1.  If firewalld is not installed, install it now using [YUM](/docs/guides/yum-package-manager/) or [DNF](/docs/guides/dnf-package-manager/).
+1.  If firewalld is not installed, install it now using [YUM](/cloud/guides/yum-package-manager/) or [DNF](/cloud/guides/dnf-package-manager/).
 
         sudo yum install firewalld
 

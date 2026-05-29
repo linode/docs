@@ -25,10 +25,10 @@ This guide shows how to create, maintain, and secure a Garry's Mod server.
 
 1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Garry's Mod](http://store.steampowered.com/app/4000/).
 
-2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/cloud/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites for Garry's Mod
@@ -93,7 +93,7 @@ screen -S "Garry's Mod Server" ./srcds_run -game garrysmod +maxplayers 20 +map g
 {{< /file >}}
 
 
-    When run, the script will change directories to `~/Steam/gmod` and execute Garry's Mod in a [Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session. The `srcds_run` binary can take many more arguments which you can see at [Valve's Developer wiki](https://developer.valvesoftware.com/wiki/Command_Line_Options#Source_Dedicated_Server).
+    When run, the script will change directories to `~/Steam/gmod` and execute Garry's Mod in a [Screen](/cloud/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session. The `srcds_run` binary can take many more arguments which you can see at [Valve's Developer wiki](https://developer.valvesoftware.com/wiki/Command_Line_Options#Source_Dedicated_Server).
 
 2.  Make the script executable:
 

@@ -98,15 +98,15 @@ In this guide, the rsync command is run from a Linode instance and connects to a
 
 Linux distributions (on both Linode instances and Azure virtual machines) can have software firewalls configured inside the instance. The following guides describe some software firewalls that your instances may use:
 
-- [Configure a Firewall with Firewalld](/docs/guides/introduction-to-firewalld-on-centos/)
-- [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/)
-- [A Tutorial for Controlling Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/)
+- [Configure a Firewall with Firewalld](/cloud/guides/introduction-to-firewalld-on-centos/)
+- [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/)
+- [A Tutorial for Controlling Network Traffic with iptables](/cloud/guides/control-network-traffic-with-iptables/)
 
 You may also configure Cloud Firewalls to control traffic before it arrives at your computing instance. Our [Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall/) product documentation describes how to configure these rules. The [Comparing Cloud Firewalls to Linux firewall software](https://techdocs.akamai.com/cloud-computing/docs/comparing-cloud-firewalls-to-linux-firewall-software) guide further describes the difference between network firewalls and software firewalls. [Microsoft Azure's product documentation](https://learn.microsoft.com/en-us/azure/firewall/overview) describes how to configure Azure network firewalls.
 
 ### Configure SSH Key Pair
 
-This guide uses SSH public key authentication for the rsync connection. You must have a public and private key pair installed on the Linode instance and Azure virtual machine. The [Generate an SSH Key Pair](/docs/guides/use-public-key-authentication-with-ssh/#generate-an-ssh-key-pair) section of the [SSH Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/) guide describes how to create and use a key pair.
+This guide uses SSH public key authentication for the rsync connection. You must have a public and private key pair installed on the Linode instance and Azure virtual machine. The [Generate an SSH Key Pair](/cloud/guides/use-public-key-authentication-with-ssh/#generate-an-ssh-key-pair) section of the [SSH Public Key Authentication](/cloud/guides/use-public-key-authentication-with-ssh/) guide describes how to create and use a key pair.
 
 This guide assumes the public and private keys are named `id_rsa.pub` and `id_rsa`, but your keys may have different names depending on the type of key pair you are using.
 
@@ -128,7 +128,7 @@ These instructions implement two recommended practices:
 
 Migrations can take a long time, so having them run independently of your SSH session is important. This guide uses `tmux` to create a terminal session that persists between SSH connections. By sending output and errors to log files, you can keep a record of any migration failures that may happen.
 
-Review our [tmux guide](/docs/guides/persistent-terminal-sessions-with-tmux/) for help with other tmux commands.
+Review our [tmux guide](/cloud/guides/persistent-terminal-sessions-with-tmux/) for help with other tmux commands.
 
 1. Install the `tmux` utility on your Linode instance using the official tmux instructions: [Installing tmux](https://github.com/tmux/tmux/wiki/Installing#installing-tmux).
 

@@ -31,18 +31,18 @@ deprecated_link: 'applications/configuration-management/install-and-manage-mysql
 In this guide, you'll use Puppet to deploy [modules](https://docs.puppet.com/puppet/latest/modules_fundamentals.html) on your server. At the end, you will have MySQL installed, configured, and ready to use for a variety of applications that require a database backend.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Install and Configure Puppet
 
-Follow these steps to set up Puppet for single-host, local-only deployment. If you need to configure more than one server or to deploy a Puppet master, follow our [multi-server Puppet guide](/docs/guides/install-and-configure-puppet/).
+Follow these steps to set up Puppet for single-host, local-only deployment. If you need to configure more than one server or to deploy a Puppet master, follow our [multi-server Puppet guide](/cloud/guides/install-and-configure-puppet/).
 
 ### Install the Puppet Package
 
@@ -75,7 +75,7 @@ Follow these steps to set up Puppet for single-host, local-only deployment. If y
 
 ### Puppet MySQL Manifest
 
-This guide uses a Puppet *manifest* to provide Puppet with installation and configuration instructions. Alternatively, you can configure [a Puppet master](/docs/guides/install-and-configure-puppet/).
+This guide uses a Puppet *manifest* to provide Puppet with installation and configuration instructions. Alternatively, you can configure [a Puppet master](/cloud/guides/install-and-configure-puppet/).
 
 While the entirety of a Puppet *manifest* can contain the desired configuration for a host, values for Puppet *classes* or *types* can also be defined in a Hiera configuration file to simplify writing Puppet manifests in most cases. In this example, the `mysql::server` class parameters will be defined in Hiera, but the class must first be applied to the host.
 

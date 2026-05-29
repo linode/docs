@@ -63,7 +63,7 @@ The members of a set must be *[hashable](https://docs.python.org/3/glossary.html
 Technically, a hashable object's `__hash__()` function must always return the same value for the lifetime of the object, rather than the object itself being immutable. [This blog post](https://inventwithpython.com/blog/2019/02/01/hashable-objects-must-be-immutable/) describes why, in practice, hashable objects used with sets are also immutable.
 {{< /note >}}
 
-Integers and strings are built-in Python types that are hashable and can be stored in a set. Mutable container types like lists, dictionaries, and sets are not hashable, because their contents can change. A [Python tuple](/docs/guides/python-tuples/) is hashable if each of its values is hashable.
+Integers and strings are built-in Python types that are hashable and can be stored in a set. Mutable container types like lists, dictionaries, and sets are not hashable, because their contents can change. A [Python tuple](/cloud/guides/python-tuples/) is hashable if each of its values is hashable.
 
 ## Create a Python Set
 
@@ -75,7 +75,7 @@ Python provides a few ways to create sets:
     example_set = {2, 4, 6, 8}
     ```
 
-    An empty set cannot be expressed with the set literal syntax. An empty pair of curly braces `{}` represents an empty [Python dictionary](/docs/guides/python-3-dictionaries/). Use the `set()` constructor (below) to create an empty set.
+    An empty set cannot be expressed with the set literal syntax. An empty pair of curly braces `{}` represents an empty [Python dictionary](/cloud/guides/python-3-dictionaries/). Use the `set()` constructor (below) to create an empty set.
 
 - The [`set()` constructor function](https://docs.python.org/3/library/stdtypes.html#set) accepts a Python list (or any other [iterable](https://docs.python.org/3/glossary.html#term-iterable) object) as input and returns a set with unique values from the list. The items in the input list/iterable must be hashable.
 
@@ -136,8 +136,8 @@ The operations for Python sets differ from those available for lists and arrays.
 {{< note >}}
 The Linode docs library has guides for learning about Python lists and arrays:
 
-- [Python Lists and How to Use Them](/docs/guides/python-lists-and-how-to-use-them/)
-- [Python Arrays: What They Are and How to Use Them](/docs/guides/python-arrays/)
+- [Python Lists and How to Use Them](/cloud/guides/python-lists-and-how-to-use-them/)
+- [Python Arrays: What They Are and How to Use Them](/cloud/guides/python-arrays/)
 {{< /note >}}
 
 ## Fetch from a Set

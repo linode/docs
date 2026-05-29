@@ -47,7 +47,7 @@ Plenty of web applications already fit the Jamstack architecture. However, not a
 
 - Automate your application's builds and deployments. Automation helps you deliver your application quickly, consistently, and lets you focus on developing your application.
 
-- If you need something from the server-side, make use of [microservices](/docs/guides/what-is-jamstack/#microservices). These keep your server-side logic in self-contained, maintainable units. Each microservice exposes its own RESTful API that your frontend can use.
+- If you need something from the server-side, make use of [microservices](/cloud/guides/what-is-jamstack/#microservices). These keep your server-side logic in self-contained, maintainable units. Each microservice exposes its own RESTful API that your frontend can use.
 
 ## Building a Jamstack Application
 
@@ -55,12 +55,12 @@ This section provides a starting point for you to set up your own Jamstack appli
 
 ### Static Site Generators and Automated Deployments
 
-It is common for a Jamstack application to use a static site generator to build the static content from a markup language. The Jamstack website maintains an [extensive list of static site generators](https://jamstack.org/generators/). To help narrow down the list, check out our guide on [How to Choose a Static Site Generator](/docs/guides/how-to-choose-static-site-generator/).
+It is common for a Jamstack application to use a static site generator to build the static content from a markup language. The Jamstack website maintains an [extensive list of static site generators](https://jamstack.org/generators/). To help narrow down the list, check out our guide on [How to Choose a Static Site Generator](/cloud/guides/how-to-choose-static-site-generator/).
 
 Static site generators render your site's content into static files that you can then host on a CDN, object storage, or similar server. For some ideas, take a look at the following guides:
 
-- [Host a Static Site Using Linode Object Storage](/docs/guides/host-static-site-object-storage/), which features the [Hugo](https://gohugo.io/) static site generator.
-- [Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI](/docs/guides/install-gatsbyjs/) which focuses on the [Gatsby](https://www.gatsbyjs.com/) static site generator.
+- [Host a Static Site Using Linode Object Storage](/cloud/guides/host-static-site-object-storage/), which features the [Hugo](https://gohugo.io/) static site generator.
+- [Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI](/cloud/guides/install-gatsbyjs/) which focuses on the [Gatsby](https://www.gatsbyjs.com/) static site generator.
 
 Here is an example of how you might set up a CI/CD (Continuous Integration/Continuous Delivery) pipeline for a static site generator.
 
@@ -70,9 +70,9 @@ Here is an example of how you might set up a CI/CD (Continuous Integration/Conti
 
 1. Move your site's static files to the CDN or object storage server.
 
-    If you are using Linode's Object Storage, you can follow the relevant section of the [Host a Static Site Using Linode Object Storage](/docs/guides/host-static-site-object-storage/#upload-your-static-site-to-linode-object-storage) guide.
+    If you are using Linode's Object Storage, you can follow the relevant section of the [Host a Static Site Using Linode Object Storage](/cloud/guides/host-static-site-object-storage/#upload-your-static-site-to-linode-object-storage) guide.
 
-If you are looking for a more advanced and automated solution for static site deployment, you can follow the steps in the [guide linked above](/docs/guides/install-gatsbyjs/) featuring Gatsby. Those steps use Git to store your static site generator's project and [Travis CI](https://travis-ci.com/) to test and automatically deploy the static site to your object storage server.
+If you are looking for a more advanced and automated solution for static site deployment, you can follow the steps in the [guide linked above](/cloud/guides/install-gatsbyjs/) featuring Gatsby. Those steps use Git to store your static site generator's project and [Travis CI](https://travis-ci.com/) to test and automatically deploy the static site to your object storage server.
 
 ### Microservices
 
@@ -84,9 +84,9 @@ Within a Jamstack application, microservices lean into the decoupling of compone
 
 The following are a couple of our guides that may help get you started with your own microservices.
 
-- If you are looking to start out developing microservices of your own, you can use [FastAPI](https://fastapi.tiangolo.com/), a Python micro-framework for building REST APIs quickly and easily. Take a look at [CRUD Read Operations: Use FastAPI to Write an API](/docs/guides/crud-read-operations-use-fastapi-to-write-an-api/) for designing end-points that read data and the [CRUD Write Operations: Use FastAPI to Write an API](/docs/guides/crud-write-operations-use-fastapi-to-write-an-api/) for APIs that write data.
+- If you are looking to start out developing microservices of your own, you can use [FastAPI](https://fastapi.tiangolo.com/), a Python micro-framework for building REST APIs quickly and easily. Take a look at [CRUD Read Operations: Use FastAPI to Write an API](/cloud/guides/crud-read-operations-use-fastapi-to-write-an-api/) for designing end-points that read data and the [CRUD Write Operations: Use FastAPI to Write an API](/cloud/guides/crud-write-operations-use-fastapi-to-write-an-api/) for APIs that write data.
 
-- If you already have some microservices built and want some ideas on how you can deploy them, check out the guide on [How to Deploy Microservices with Docker](/docs/guides/deploying-microservices-with-docker/).
+- If you already have some microservices built and want some ideas on how you can deploy them, check out the guide on [How to Deploy Microservices with Docker](/cloud/guides/deploying-microservices-with-docker/).
 
 ## Where to Go Next
 

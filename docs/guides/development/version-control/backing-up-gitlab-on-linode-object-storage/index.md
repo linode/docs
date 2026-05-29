@@ -18,13 +18,13 @@ All modern GitLab installations additionally include tooling to create backups o
 
 ## Before you Begin
 
-- Follow the guide for [Deploying Gitlab Through the Linode Marketplace](/docs/marketplace-docs/guides/gitlab/) to completion, or otherwise ensure that a Gitlab installation is available and accessible over SSH.
+- Follow the guide for [Deploying Gitlab Through the Linode Marketplace](/cloud/marketplace-docs/guides/gitlab/) to completion, or otherwise ensure that a Gitlab installation is available and accessible over SSH.
 
-- Create an Object Storage access key and a bucket. See the [Manage Access Keys](/docs/products/storage/object-storage/guides/access-keys/) and Create and Manage Buckets](/docs/products/storage/object-storage/guides/manage-buckets/) guides.
+- Create an Object Storage access key and a bucket. See the [Manage Access Keys](https://techdocs.akamai.com/cloud-computing/docs/manage-access-keys) and Create and Manage Buckets](https://techdocs.akamai.com/cloud-computing/docs/create-and-manage-buckets) guides.
 
 ## Configuring Gitlab For Object Storage Backups
 
-In order to configure Gitlab on Linode's Object Storage, the Gitlab instance must first be [Accessed Directly Over SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). To do this, enter the following command, replacing the username and IP address with the unique username and IP address of your Linode:
+In order to configure Gitlab on Linode's Object Storage, the Gitlab instance must first be [Accessed Directly Over SSH](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance). To do this, enter the following command, replacing the username and IP address with the unique username and IP address of your Linode:
 
     ssh username@198.51.100.4
 
@@ -47,12 +47,12 @@ The following chart will explain each configuration settings in additional detai
 
 | Descriptor | Setting|
 | ------------| --------------------- |
-| `provider` | AWS (The provider must be set to AWS because it is dependent on [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/)) |
-| `region` | The region the bucket was created in. A full list of regions can be found in the [Product Documentation](/docs/products/storage/object-storage/). |
+| `provider` | AWS (The provider must be set to AWS because it is dependent on [s3cmd](https://techdocs.akamai.com/cloud-computing/docs/using-s3cmd-with-object-storage)) |
+| `region` | The region the bucket was created in. A full list of regions can be found in the [Product Documentation](https://techdocs.akamai.com/cloud-computing/docs/object-storage). |
 | `endpoint` | The endpoint url for the data center. Uses the syntax of **region.linodeobjects.com** |
-| `aws_access_key-id` | The Object Storage [Access Key](/docs/products/storage/object-storage/guides/access-keys/) created in a previous step. |
-| `aws_secret_access_key` | The Object Storage [Secret Key](/docs/products/storage/object-storage/guides/access-keys/) created in a previous step. |
-| `gitlab_rails['backup_upload_remote_directory']` | The [label](/docs/products/storage/object-storage/get-started/#create-a-bucket) of the bucket created during bucket creation.
+| `aws_access_key-id` | The Object Storage [Access Key](https://techdocs.akamai.com/cloud-computing/docs/manage-access-keys) created in a previous step. |
+| `aws_secret_access_key` | The Object Storage [Secret Key](https://techdocs.akamai.com/cloud-computing/docs/manage-access-keys) created in a previous step. |
+| `gitlab_rails['backup_upload_remote_directory']` | The [label](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-object-storage#create-a-bucket) of the bucket created during bucket creation.
 
 Once the configuration settings are completed, apply the configuration with the following command:
 

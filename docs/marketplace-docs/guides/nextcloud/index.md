@@ -62,7 +62,7 @@ Before you can use Nextcloud, you must set up your deployment with the [Nextclou
 
     ![Screenshot of the Nextcloud AIO log in prompt](nextcloud-aio-login.png)
 
-1. Once you have successfully logged in, you are prompted to either create a new AIO instance or restore from a backup. If your intention is to install a fresh Nextcloud instance, enter the domain you specified earlier when deploying the Quick Deploy App app or use your [rDNS](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) value if no domain was specified. Then, click **Submit**.
+1. Once you have successfully logged in, you are prompted to either create a new AIO instance or restore from a backup. If your intention is to install a fresh Nextcloud instance, enter the domain you specified earlier when deploying the Quick Deploy App app or use your [rDNS](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses) value if no domain was specified. Then, click **Submit**.
 
     ![Screenshot of the domain name prompt](nextcloud-aio-new.png)
 
@@ -92,5 +92,5 @@ After performing the [initial setup and configuration steps](#configure-nextclou
 
 {{% content "marketplace-update-note-shortguide" %}}
 
-- [Configure Nextcloud to use Linode Object Storage as an External Storage Mount](/docs/guides/how-to-configure-nextcloud-to-use-linode-object-storage-as-an-external-storage-mount/).  You can use Object Storage as a secondary place to store your Nextcloud files. Using Linode Object Storage to store files prevents you from running out of storage space that is limited by your Linode's plan size.
+- [Configure Nextcloud to use Linode Object Storage as an External Storage Mount](/cloud/guides/how-to-configure-nextcloud-to-use-linode-object-storage-as-an-external-storage-mount/).  You can use Object Storage as a secondary place to store your Nextcloud files. Using Linode Object Storage to store files prevents you from running out of storage space that is limited by your Linode's plan size.
 - Install the [Nextcloud desktop synchronization client](https://docs.nextcloud.com/desktop/2.3/installing.html) on a local computer to easily synchronize the desktop files to the Nextcloud server.

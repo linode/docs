@@ -18,24 +18,24 @@ The following tutorials outline how to install and use Certbot with either Apach
 
 ## Apache
 
-- **CentOS/RHEL 7**:[Use Certbot to Enable HTTPS with Apache on CentOS 7](/docs/guides/enabling-https-using-certbot-with-apache-on-centos-7)
+- **CentOS/RHEL 7**:[Use Certbot to Enable HTTPS with Apache on CentOS 7](/cloud/guides/enabling-https-using-certbot-with-apache-on-centos-7)
 
-- **CentOS/RHEL 8**:[Use Certbot to Enable HTTPS with Apache on CentOS 8](/docs/guides/enabling-https-using-certbot-with-apache-on-centos-8)
+- **CentOS/RHEL 8**:[Use Certbot to Enable HTTPS with Apache on CentOS 8](/cloud/guides/enabling-https-using-certbot-with-apache-on-centos-8)
 
-- **Debian**:[Use Certbot to Enable HTTPS with Apache on Debian](/docs/guides/enabling-https-using-certbot-with-apache-on-debian)
+- **Debian**:[Use Certbot to Enable HTTPS with Apache on Debian](/cloud/guides/enabling-https-using-certbot-with-apache-on-debian)
 
-- **Fedora**:[Use Certbot to Enable HTTPS with Apache on Fedora](/docs/guides/enabling-https-using-certbot-with-apache-on-fedora)
+- **Fedora**:[Use Certbot to Enable HTTPS with Apache on Fedora](/cloud/guides/enabling-https-using-certbot-with-apache-on-fedora)
 
-- **Ubuntu**:[Use Certbot to Enable HTTPS with Apache on Ubuntu 20.04](/docs/guides/enabling-https-using-certbot-with-apache-on-ubuntu)
+- **Ubuntu**:[Use Certbot to Enable HTTPS with Apache on Ubuntu 20.04](/cloud/guides/enabling-https-using-certbot-with-apache-on-ubuntu)
 
 ## NGINX
 
-- **CentOS/RHEL 7**:[Use Certbot to Enable HTTPS with NGINX on CentOS 7](/docs/guides/enabling-https-using-certbot-with-nginx-on-centos-7)
+- **CentOS/RHEL 7**:[Use Certbot to Enable HTTPS with NGINX on CentOS 7](/cloud/guides/enabling-https-using-certbot-with-nginx-on-centos-7)
 
-- **CentOS/RHEL 8**:[Use Certbot to Enable HTTPS with NGINX on CentOS 8](/docs/guides/enabling-https-using-certbot-with-nginx-on-centos-8)
+- **CentOS/RHEL 8**:[Use Certbot to Enable HTTPS with NGINX on CentOS 8](/cloud/guides/enabling-https-using-certbot-with-nginx-on-centos-8)
 
-- **Debian**:[Use Certbot to Enable HTTPS with NGINX on Debian](/docs/guides/enabling-https-using-certbot-with-nginx-on-debian)
+- **Debian**:[Use Certbot to Enable HTTPS with NGINX on Debian](/cloud/guides/enabling-https-using-certbot-with-nginx-on-debian)
 
-- **Fedora**:[Use Certbot to Enable HTTPS with NGINX on Fedora](/docs/guides/enabling-https-using-certbot-with-nginx-on-fedora)
+- **Fedora**:[Use Certbot to Enable HTTPS with NGINX on Fedora](/cloud/guides/enabling-https-using-certbot-with-nginx-on-fedora)
 
-- **Ubuntu**:[Use Certbot to Enable HTTPS with NGINX on Ubuntu](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu)
+- **Ubuntu**:[Use Certbot to Enable HTTPS with NGINX on Ubuntu](/cloud/guides/enabling-https-using-certbot-with-nginx-on-ubuntu)

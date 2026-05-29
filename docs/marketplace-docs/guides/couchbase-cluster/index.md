@@ -67,7 +67,7 @@ Deploying the Couchbase Enterprise Server One-Click Cluster on a plan with less 
 
 ### Accessing the Couchbase Server
 
-Access Couchbase's web UI by launching your preferred web browser and navigating to either the reverse DNS address of the *cluster provisioner*. This is the instance labeled `couchbase-occ-1-$region-$uuid`. Refer to the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for instructions on how to find your instance's IP addresses and rDNS information.
+Access Couchbase's web UI by launching your preferred web browser and navigating to either the reverse DNS address of the *cluster provisioner*. This is the instance labeled `couchbase-occ-1-$region-$uuid`. Refer to the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for instructions on how to find your instance's IP addresses and rDNS information.
 
 To access the Dashboard, use the username "Administrator" along with the generated password located in `/home/$sudo_username/.credentials`.
 
@@ -83,7 +83,7 @@ The Couchbase Cluster deploys with preconfigured UFW firewall rules. These rules
 
 Only the *cluster provisioner* has firewall access configured for web and client ports.
 
-The Couchbase Enterprise Server Cluster Quick Deploy App manages these UFW configurations with `application profile` files in the `/etc/ufw/appplications.d` directory. See [Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) for more details on using UFW.
+The Couchbase Enterprise Server Cluster Quick Deploy App manages these UFW configurations with `application profile` files in the `/etc/ufw/appplications.d` directory. See [Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/) for more details on using UFW.
 
 ## Next Steps
 

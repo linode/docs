@@ -27,7 +27,7 @@ Nagios is a monitoring tool that allows you to monitor services on a single serv
 
 ## Install Nagios
 
-Before installing Nagios, make sure your hostname is properly set by following the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). You also need to have a functioning [LAMP stack](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/) set up on your Linode.
+Before installing Nagios, make sure your hostname is properly set by following the steps outlined in the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). You also need to have a functioning [LAMP stack](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/) set up on your Linode.
 
 Now you're ready to install Nagios. Here's how:
 
@@ -51,7 +51,7 @@ If you do not already have an email server installed on your Linode, Postfix wil
 You can now access the Nagios web interface for administration and reporting by visiting `http://example.com/nagios3/`, where `example.com` refers to your Linode's default virtual host. You may also access this interface by visiting `http://12.34.56.78/nagios3/`, where `12.34.56.78` is the IP address of your Linode. You will need to authenticate with the `nagiosadmin` user you created earlier.
 
 {{< note >}}
-The above example does not use SSL, and your password will be sent unencrypted. If you want to use encryption, you will need to generate (or purchase) and install an SSL certificate. Steps for generating and using your own certificate can be found in our [SSL guide](/docs/guides/create-a-self-signed-tls-certificate/).
+The above example does not use SSL, and your password will be sent unencrypted. If you want to use encryption, you will need to generate (or purchase) and install an SSL certificate. Steps for generating and using your own certificate can be found in our [SSL guide](/cloud/guides/create-a-self-signed-tls-certificate/).
 {{< /note >}}
 
 ## Configure Notifications
@@ -84,7 +84,7 @@ define contact{
 
 
     {{< note respectIndent=false >}}
-To send email alerts to more than one user, duplicate the `define contact` section for as many users as you want. Or, to configure notifications to a [group](/docs/guides/linux-users-and-groups/), edit the `define contactgroup` section.
+To send email alerts to more than one user, duplicate the `define contact` section for as many users as you want. Or, to configure notifications to a [group](/cloud/guides/linux-users-and-groups/), edit the `define contactgroup` section.
 {{< /note >}}
 
 3.  Save the changes to the configuration file by pressing `Control + x` and then pressing `y`.

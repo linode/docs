@@ -9,7 +9,7 @@ keywords: ["git", "dvcs", "vcs", "scm", "gitweb", "github"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/development/developing-git-github/','/development/version-control/how-to-install-git-and-clone-a-github-repository/','/development/version-control/developing-git-github/']
 external_resources:
- - '[Working with the Git Repository](/docs/guides/how-to-configure-git/)'
+ - '[Working with the Git Repository](/cloud/guides/how-to-configure-git/)'
  - '[GitHub Help Pages](https://help.github.com/)'
 audiences: ["beginner"]
 tags: ["version control system"]
@@ -20,7 +20,7 @@ tags: ["version control system"]
 GitHub is a website that allows collaboration between developers using the Git version control system. With Git and GitHub, programmers from across the world can share ideas and code in an organized and up-to-date process.
 
 ## Install and Configure Git
-The directions below are for Debian or Ubuntu. For installation on Mac, Windows, or other Linux distributions, find instructions in the  [Git Source Control Management](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) guide. While that guide focuses on Git, this guide focuses more on Git with GitHub.
+The directions below are for Debian or Ubuntu. For installation on Mac, Windows, or other Linux distributions, find instructions in the  [Git Source Control Management](/cloud/guides/how-to-install-git-on-linux-mac-and-windows/) guide. While that guide focuses on Git, this guide focuses more on Git with GitHub.
 
 1.  Install:
 

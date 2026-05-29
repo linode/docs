@@ -79,6 +79,6 @@ Typically in such a setup, NGINX acts as the **static content server**. Any requ
 
 When deciding on a web server, take a look at the characteristics of each, and determine which one best fits your needs. If you are looking for simplicity and flexibility and a more traditional web application, look no further than Apache. If performance is paramount, or you want an efficient webserver to work with microservices or containerized services, go with NGINX. If you want the best of both, try using them in conjunction.
 
-To learn how to install Apache on your Linux server, check out our guide for [How to Install Apache Web Server](/docs/guides/how-to-install-apache-web-server-debian-10/). You can use the drop-down menu at the top of the guide to select your desired Linux distribution.
+To learn how to install Apache on your Linux server, check out our guide for [How to Install Apache Web Server](/cloud/guides/how-to-install-apache-web-server-debian-10/). You can use the drop-down menu at the top of the guide to select your desired Linux distribution.
 
-To learn how to install NGINX on your Linux server, check out our guide for [How to Install NGINX](/docs/guides/how-to-install-nginx-debian-10/). Likewise, use the drop-down at the beginning of the guide to select your Linux distribution.
+To learn how to install NGINX on your Linux server, check out our guide for [How to Install NGINX](/cloud/guides/how-to-install-nginx-debian-10/). Likewise, use the drop-down at the beginning of the guide to select your Linux distribution.

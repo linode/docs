@@ -14,9 +14,9 @@ external_resources:
   - '[Odoo User Documentation](https://www.odoo.com/documentation/user/11.0/)'
   - '[Odoo Developer Documentation](https://www.odoo.com/documentation/11.0)'
   - '[PostgreSQL 9.6 Documentation](https://www.postgresql.org/docs/9.6/static/index.html)'
-  - '[Install an SSL certificate with LetsEncrypt](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/)'
-  - '[How to Set up tinc, a Peer-to-Peer VPN](/docs/guides/how-to-set-up-tinc-peer-to-peer-vpn/)'
-  - '[Using Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/)'
+  - '[Install an SSL certificate with LetsEncrypt](/cloud/guides/install-lets-encrypt-to-create-ssl-certificates/)'
+  - '[How to Set up tinc, a Peer-to-Peer VPN](/cloud/guides/how-to-set-up-tinc-peer-to-peer-vpn/)'
+  - '[Using Terraform to Provision Linode Environments](/cloud/guides/how-to-build-your-infrastructure-using-terraform-and-linode/)'
 deprecated: true
 ---
 
@@ -26,7 +26,7 @@ deprecated: true
 
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is a self-hosted suite of over 10,000 open source applications for a variety of business needs, including CRM, eCommerce, accounting, inventory, point of sale, and project management. These applications are all fully integrated and can be installed and accessed through a web interface, making it easy to automate and manage your company's processes.
 
-For simple installations, Odoo and its dependencies can be installed on a single Linode (see our [Install Odoo 10 on Ubuntu](/docs/guides/install-odoo-10-on-ubuntu-16-04/) guide for details). However, this single-server setup is not suited for production deployments. This guide covers how to configure a production Odoo 11 cluster in which the Odoo server and PostgreSQL database are hosted on separate Linodes, with database replication for added performance and reliability.
+For simple installations, Odoo and its dependencies can be installed on a single Linode (see our [Install Odoo 10 on Ubuntu](/cloud/guides/install-odoo-10-on-ubuntu-16-04/) guide for details). However, this single-server setup is not suited for production deployments. This guide covers how to configure a production Odoo 11 cluster in which the Odoo server and PostgreSQL database are hosted on separate Linodes, with database replication for added performance and reliability.
 
 ## System Requirements
 
@@ -41,9 +41,9 @@ All examples in this guide are for Ubuntu 16.04. If you plan to use a different 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -66,7 +66,7 @@ Ports `22`, `80`, and `5432` are the defaults for SSH, HTTP and PostgreSQL commu
 
     sudo ufw allow 22/tcp
 
-For more detailed information about firewall setup please read our guide [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
+For more detailed information about firewall setup please read our guide [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/).
 
 ## Hostname Assignment
 

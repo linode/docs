@@ -47,7 +47,7 @@ marketplace_app_name: "ArangoDB"
 
 ### Accessing the ArangoDB Web Interface
 
-1.  Open your web browser and navigate to `https://[domain]`, where *[domain]* is the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, but this connection is not encrypted. To learn more about viewing IP addresses and rDNS, see the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/).
+1.  Open your web browser and navigate to `https://[domain]`, where *[domain]* is the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, but this connection is not encrypted. To learn more about viewing IP addresses and rDNS, see the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance).
 
 ![Screenshot of the ArangoDB login page](arangodb-login.png)
 

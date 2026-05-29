@@ -25,7 +25,7 @@ When an attempted compromise is located, using the defined parameters, Fail2ban 
 Fail2ban is primarily focused on SSH attacks, although it can be further configured to work for any service that uses log files and can be subject to a compromise.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/cloud/guides/linux-users-and-groups) guide.
 {{< /note >}}
 
 {{< note type="alert" >}}
@@ -34,7 +34,7 @@ Fail2ban is intended to be used in conjunction with an already-hardened server a
 
 ## How to Install Fail2ban
 
-Follow the [Getting Started](/docs/products/platform/get-started/) guide to configure your basic server. You may also want to review the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide before beginning.
+Follow the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide to configure your basic server. You may also want to review the [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide before beginning.
 
 ### CentOS/CentOS Stream/RHEL Based Operating Systems
 
@@ -240,7 +240,7 @@ action_mwl = %(banaction)s...
 
 For example, if you set the `usedns` setting to `no`, Fail2ban does not use reverse DNS to set its bans, and instead bans the IP address. When set as `warn`, Fail2ban performs a reverse lookup of the hostname and uses it to perform a ban.
 
-The `chain` setting refers to the series of [iptables](/docs/guides/what-is-iptables/) rules where jumps should be added in ban-actions. By default, this is set to the `INPUT` chain. You can read more about iptables chains in our [What is iptables](/docs/guides/what-is-iptables/#chains) guide.
+The `chain` setting refers to the series of [iptables](/cloud/guides/what-is-iptables/) rules where jumps should be added in ban-actions. By default, this is set to the `INPUT` chain. You can read more about iptables chains in our [What is iptables](/cloud/guides/what-is-iptables/#chains) guide.
 
 ### Fail2ban Chain Traffic Drop Configuration
 
@@ -571,7 +571,7 @@ For additional information about `fail2ban-client` commands, see the [Fail2ban w
 
 ## Lockout Recovery
 
-In the event that you find yourself locked out of your Linode due to fail2ban, you can still gain access by using our out-of-band [Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+In the event that you find yourself locked out of your Linode due to fail2ban, you can still gain access by using our out-of-band [Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
 
 From here, you can view your firewall rules to ensure that it is fail2ban that blocked your IP, and not something else. To do this, enter the following command:
 

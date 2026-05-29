@@ -19,19 +19,19 @@ In this guide, learn how to install and get started with the Glances system moni
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 # What is the Glances System Monitoring Tool?
 
 Glances gives you an extensive dashboard for monitoring your system, with the goal of giving you everything you need at a single glance.
 
-It follows on the precedent set by system monitoring tools like `htop` and more recent iterations like `gtop` and `bottom`. You can learn more about these last two in our guides [How to Install and Use gtop on Linux](/docs/guides/installing-and-using-gtop-on-linux/) and [How to Install and Use bottom on Linux](/docs/guides/installing-and-using-bottom-on-linux/), respectively.
+It follows on the precedent set by system monitoring tools like `htop` and more recent iterations like `gtop` and `bottom`. You can learn more about these last two in our guides [How to Install and Use gtop on Linux](/cloud/guides/installing-and-using-gtop-on-linux/) and [How to Install and Use bottom on Linux](/cloud/guides/installing-and-using-bottom-on-linux/), respectively.
 
 Glances sets itself apart primarily in two ways.
 
@@ -43,7 +43,7 @@ These features make Glances ideal for monitoring your system remotely and having
 
 ## How to Install Glances
 
-1. Install Python 3 (if it isn't already installed), along with the [Pip package manager](/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/#what-is-pip), and the Python developer package.
+1. Install Python 3 (if it isn't already installed), along with the [Pip package manager](/cloud/guides/how-to-manage-packages-and-virtual-environments-on-linux/#what-is-pip), and the Python developer package.
 
     - On **Debian** and **Ubuntu**, use:
 
@@ -102,7 +102,7 @@ The next few sections walk you through some of these options, aiming to get you 
 
 ### Basic Usage
 
-You can open up the default glances view with the basic command alone. This includes any modules you've set up using the Glances configuration file, which you can learn more about in the [Example Configurations](/docs/guides/how-to-use-glances-system-monitoring/#example-configurations) section below:
+You can open up the default glances view with the basic command alone. This includes any modules you've set up using the Glances configuration file, which you can learn more about in the [Example Configurations](/cloud/guides/how-to-use-glances-system-monitoring/#example-configurations) section below:
 
     glances
 
@@ -138,9 +138,9 @@ Once you're in Glances, there are plenty of interactive commands you can use to 
 
 - The **5** key toggles the top bar, which displays details about CPU, memory, and load.
 
-- The **6** key toggles the GPU display mode. This only applies for systems with GPUs and with the appropriate module installed. See the [Installing Optional Modules](/docs/guides/how-to-use-glances-system-monitoring/#installing-optional-modules) section above for more on this.
+- The **6** key toggles the GPU display mode. This only applies for systems with GPUs and with the appropriate module installed. See the [Installing Optional Modules](/cloud/guides/how-to-use-glances-system-monitoring/#installing-optional-modules) section above for more on this.
 
-Glances also has a suite of command-line options, a few of which you can see in the next section ([Setting Up Clients and Servers](/docs/guides/how-to-use-glances-system-monitoring/#setting-up-clients-and-servers)). The full list is available in the [official documentation](https://glances.readthedocs.io/en/latest/cmds.html#command-line-options). The list below aims to give you two of the other most useful kinds of command-line options for getting you started with Glances.
+Glances also has a suite of command-line options, a few of which you can see in the next section ([Setting Up Clients and Servers](/cloud/guides/how-to-use-glances-system-monitoring/#setting-up-clients-and-servers)). The full list is available in the [official documentation](https://glances.readthedocs.io/en/latest/cmds.html#command-line-options). The list below aims to give you two of the other most useful kinds of command-line options for getting you started with Glances.
 
 - You can use the `--enable-plugin` and `--disable-plugin` flags to enable and disable particular plugins. For example:
 
@@ -158,12 +158,12 @@ Glances has the ability to be run as a server, which lets you access the dashboa
 
 Before running Glances as a server, you need to open the appropriate port on the server machine's firewall to allow remote access. The default port for Glances is **61209**, so the options below show how to open that port based on your Linux distribution.
 
-- On **Debian** and **Ubuntu**, make sure you have UFW installed and enabled, which you can learn about in our guide [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). Then, you can use the command below to open the port for Glances:
+- On **Debian** and **Ubuntu**, make sure you have UFW installed and enabled, which you can learn about in our guide [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/). Then, you can use the command below to open the port for Glances:
 
         sudo ufw allow 61209
         sudo ufw reload
 
-- On **AlmaLinux**, **CentOS**, and **Fedora**, use the command below to open the port with FirewallD. You can read the [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/) guide for more on this firewall tool:
+- On **AlmaLinux**, **CentOS**, and **Fedora**, use the command below to open the port with FirewallD. You can read the [Introduction to FirewallD on CentOS](/cloud/guides/introduction-to-firewalld-on-centos/) guide for more on this firewall tool:
 
         sudo firewall-cmd --zone=public --add-port=61209/tcp --permanent
         sudo firewall-cmd --reload

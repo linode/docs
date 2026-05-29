@@ -28,7 +28,7 @@ This guide walks you through the process of migrating an application from [Azure
 1.  Install [`yq`](https://github.com/mikefarah/yq), a YAML processor for the command line.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Connect `kubectl` to Your AKS Cluster
@@ -513,7 +513,7 @@ There are multiple ways to define the resources you want to deploy to Kubernetes
 
 ### Update Manifests for Compatibility with LKE
 
-You may need to update your manifests to accommodate for differences between AKS and LKE. For example, your configuration on AKS may use [ingress services from AKS](https://learn.microsoft.com/en-us/azure/aks/concepts-network-ingress) and the [Azure LoadBalancer Service](https://learn.microsoft.com/en-us/azure/aks/concepts-network-services#loadbalancer) to provide access to clients located outside of your AKS cluster. As an alternative to using these Azure services, you can [deploy a dedicated NGINX Ingress on LKE](/docs/guides/deploy-nginx-ingress-on-lke/).
+You may need to update your manifests to accommodate for differences between AKS and LKE. For example, your configuration on AKS may use [ingress services from AKS](https://learn.microsoft.com/en-us/azure/aks/concepts-network-ingress) and the [Azure LoadBalancer Service](https://learn.microsoft.com/en-us/azure/aks/concepts-network-services#loadbalancer) to provide access to clients located outside of your AKS cluster. As an alternative to using these Azure services, you can [deploy a dedicated NGINX Ingress on LKE](/cloud/guides/deploy-nginx-ingress-on-lke/).
 
 The deployment image may point to Azure Container Registry. Modify this to point to an alternative registry. For example, the `Deployment` section of your application manifest may look like this:
 
@@ -539,7 +539,7 @@ The container image, pointing to Microsoft Container Registry, has the following
 {{< placeholder "REGISTRY_NAME" >}}.azurecr.io/{{< placeholder "IMAGE_NAME" >}}:{{< placeholder "TAG" >}}
 ```
 
-To migrate away from Azure Container Registry, upload the container image to another registry service (e.g. Docker Hub) or [Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/). Then, modify your Kubernetes manifest to point to the new location for your image.
+To migrate away from Azure Container Registry, upload the container image to another registry service (e.g. Docker Hub) or [Set Up a Docker Registry with LKE and Object Storage](/cloud/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/). Then, modify your Kubernetes manifest to point to the new location for your image.
 
 {{< note >}}
 Since the image for the example service application in this guide comes from Docker Hub, redirecting the registry is unnecessary.
@@ -549,8 +549,8 @@ Since the image for the example service application in this guide comes from Doc
 
 If the workload depends on persistent data in Azure Storage or a database, then transfer the data or make it available to LKE. See the following guides for more information:
 
-- [How to Migrate From Azure Blob Storage to Linode Object Storage](/docs/guides/migrate-from-azure-blob-storage-to-linode-object-storage/)
-- [Migrate From Azure Disk Storage to Linode Block Storage](/docs/guides/migrate-from-azure-disk-storage-to-linode-block-storage/)
+- [How to Migrate From Azure Blob Storage to Linode Object Storage](/cloud/guides/migrate-from-azure-blob-storage-to-linode-object-storage/)
+- [Migrate From Azure Disk Storage to Linode Block Storage](/cloud/guides/migrate-from-azure-disk-storage-to-linode-block-storage/)
 
 {{< note >}}
 The example application, with its in-memory configuration, does not rely on any persistent data.
@@ -696,7 +696,7 @@ If you use Azure DNS and plan to migrate away from it, [our DNS Manager](https:/
 
 LKE doesn't have its own container registry. To migrate away from Azure Container Registry, set up a third-party private container registry, such as [Docker Hub](https://hub.docker.com/) or [GitHub Container Registry](https://github.blog/news-insights/product-news/introducing-github-container-registry/).
 
-Alternatively, you can set up your own container registry, see [How to Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/) for instructions.
+Alternatively, you can set up your own container registry, see [How to Set Up a Docker Registry with LKE and Object Storage](/cloud/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/) for instructions.
 
 ### Alternative to Azure Monitor
 
@@ -716,9 +716,9 @@ Microsoft uses [Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-mon
 
 See the following guides for more information:
 
-- [Migrating From Azure Monitor to Prometheus and Grafana on Akamai](/docs/guides/migrating-from-azure-monitor-to-prometheus-and-grafana-on-akamai/)
-- [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-tobs-on-linode-kubernetes-engine/)
+- [Migrating From Azure Monitor to Prometheus and Grafana on Akamai](/cloud/guides/migrating-from-azure-monitor-to-prometheus-and-grafana-on-akamai/)
+- [How to Deploy TOBS (The Observability Stack) on LKE](/cloud/guides/deploy-tobs-on-linode-kubernetes-engine/)
 
 ### Alternative to Azure Key Vault
 
-The [Azure Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/general/overview) can be leveraged to provide Kubernetes secrets on Azure. With LKE, you need an alternative solution, such as [OpenBao on Akamai Cloud](/docs/marketplace-docs/guides/openbao/).
+The [Azure Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/general/overview) can be leveraged to provide Kubernetes secrets on Azure. With LKE, you need an alternative solution, such as [OpenBao on Akamai Cloud](/cloud/marketplace-docs/guides/openbao/).

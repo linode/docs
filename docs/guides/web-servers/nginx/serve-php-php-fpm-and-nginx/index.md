@@ -19,7 +19,7 @@ The [PHP Fast Process Manager](https://php-fpm.org/) is a [FastCGI](https://en.w
 
 ## Before You Begin
 
-- **You need a working NGINX setup.** If you do not already have that, complete Part 1 of our Getting Started with NGINX series: [*Basic Installation and Setup*](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
+- **You need a working NGINX setup.** If you do not already have that, complete Part 1 of our Getting Started with NGINX series: [*Basic Installation and Setup*](/cloud/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
 
 - You will need root access to the system, or a user account with `sudo` privileges.
 
@@ -46,7 +46,7 @@ The [PHP Fast Process Manager](https://php-fpm.org/) is a [FastCGI](https://en.w
         /etc/php/7.0/fpm/pool.d/www.conf
         /etc/php/7.0/cli/php.ini
 
-3.  The `listen.owner` and `listen.group` directives determines owner for PHP-FPM socket. Those are set to `www-data` by default, but they need to match the user and group NGINX is running as. If you installed NGINX using our [*Getting Started with NGINX*](/docs/web-servers/) series, then your setup will be using the `nginx` user and group. You can verify with:
+3.  The `listen.owner` and `listen.group` directives determines owner for PHP-FPM socket. Those are set to `www-data` by default, but they need to match the user and group NGINX is running as. If you installed NGINX using our [*Getting Started with NGINX*](/cloud/web-servers/) series, then your setup will be using the `nginx` user and group. You can verify with:
 
         ps -aux | grep nginx
 
@@ -84,7 +84,7 @@ The [PHP Fast Process Manager](https://php-fpm.org/) is a [FastCGI](https://en.w
 
 ## Configure the NGINX Server Block
 
-1.  Again pulling from [Part 1 of our NGINX series](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/#configuration-recap), we'll start with a basic Server Block for a static HTTP page being served from `/var/www/example.com`. Replace `example.com` with your site's domain or IP address, and the `root` directive with your site's root directory.
+1.  Again pulling from [Part 1 of our NGINX series](/cloud/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/#configuration-recap), we'll start with a basic Server Block for a static HTTP page being served from `/var/www/example.com`. Replace `example.com` with your site's domain or IP address, and the `root` directive with your site's root directory.
 
     {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {

@@ -11,10 +11,10 @@ tags: ['kubernetes', 'container']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-If you are [deploying your first Kubernetes cluster](/docs/guides/deploy-kubernetes-cluster-using-kubeadm/), it's important to consider the security best practices that are available to keep your workload safe. Kubernetes provides several out-of-the-box features to help secure your cluster. This guide provides an overview of three Kubernetes features to you can use to secure different components of a cluster. The three areas covered are Role-Based Access Control (RBAC), Secrets, and Network Policies.
+If you are [deploying your first Kubernetes cluster](/cloud/guides/deploy-kubernetes-cluster-using-kubeadm/), it's important to consider the security best practices that are available to keep your workload safe. Kubernetes provides several out-of-the-box features to help secure your cluster. This guide provides an overview of three Kubernetes features to you can use to secure different components of a cluster. The three areas covered are Role-Based Access Control (RBAC), Secrets, and Network Policies.
 
 {{< note >}}
-This guide assumes some familiarity with Kubernetes terminology and concepts. If you are newer to Kubernetes, refer to our [A Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/).
+This guide assumes some familiarity with Kubernetes terminology and concepts. If you are newer to Kubernetes, refer to our [A Beginner's Guide to Kubernetes](/cloud/guides/beginners-guide-to-kubernetes-part-1-introduction/).
 {{< /note >}}
 
 ## Use Security Policies and Role-Based Access Control

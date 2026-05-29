@@ -21,9 +21,9 @@ Learn how to install and start using Buildah in this tutorial. Below, find steps
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your system.
 
@@ -36,7 +36,7 @@ Learn how to install and start using Buildah in this tutorial. Below, find steps
             sudo apt update && sudo apt upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is Buildah?
@@ -61,7 +61,7 @@ Buildah also gives the user precise control of images, and specifically image la
 
 However, Buildah is not as useful when it comes to running and deploying container images. It can run them, but lacks some of the features to be found in other tools. Instead, Buildah puts the vast majority of its emphasis on creating containers and building container images.
 
-For that reason, users often build their OCI images in Buildah and run them using Podman, a tool for running and managing containers. You can learn more about Podman in our guide [Podman vs Docker: Comparing the Two Containerization Tools](/docs/guides/podman-vs-docker/).
+For that reason, users often build their OCI images in Buildah and run them using Podman, a tool for running and managing containers. You can learn more about Podman in our guide [Podman vs Docker: Comparing the Two Containerization Tools](/cloud/guides/podman-vs-docker/).
 
 ## How to Install Buildah
 
@@ -228,9 +228,9 @@ daadb647b880  localhost/fedora-http-server:latest  /usr/sbin/httpd -...  8 secon
 
         exit
 
-Learn more about Podman in our guide [How to Install Podman for Running Containers](/docs/guides/using-podman/).
+Learn more about Podman in our guide [How to Install Podman for Running Containers](/cloud/guides/using-podman/).
 
-You can also learn more about crafting Dockerfiles in our guide [How to Use a Dockerfile to Build a Docker Image](/docs/guides/how-to-use-dockerfiles/). This guide also includes links to further tutorials with more in-depth coverage of Dockerfiles.
+You can also learn more about crafting Dockerfiles in our guide [How to Use a Dockerfile to Build a Docker Image](/cloud/guides/how-to-use-dockerfiles/). This guide also includes links to further tutorials with more in-depth coverage of Dockerfiles.
 
 ### Creating an Image from Scratch
 
@@ -241,7 +241,7 @@ Buildah's commands for working with containers can involve a few keywords, so of
 
     fedoracontainer=$(buildah from fedora)
 
-Learn more about how environment variables work in our guide [How to Use and Set Environment Variables](/docs/guides/how-to-set-linux-environment-variables/).
+Learn more about how environment variables work in our guide [How to Use and Set Environment Variables](/cloud/guides/how-to-set-linux-environment-variables/).
 {{< /note >}}
 
 The example container that follows starts with an empty container. It then adds Bash and some other core utilities to that container to demonstrate how you can add programs to create a minimal container image.

@@ -23,12 +23,12 @@ Learn how to get started with Nagios on CentOS, AlmaLinux, and Rocky Linux in th
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install Nagios
@@ -41,7 +41,7 @@ While the steps in this tutorial focus on CentOS Stream 8, they should also work
 
 ### Preparing the System
 
-In addition to the steps in the [Before You Begin](/docs/guides/install-nagios-on-centos-8/#before-you-begin) section above, Nagios has a few more installation prerequisites.
+In addition to the steps in the [Before You Begin](/cloud/guides/install-nagios-on-centos-8/#before-you-begin) section above, Nagios has a few more installation prerequisites.
 
 1.  First, set SELinux to permissive mode. This limits SELinux to issuing warnings rather than rules enforcement.
 
@@ -53,7 +53,7 @@ In addition to the steps in the [Before You Begin](/docs/guides/install-nagios-o
     sudo setenforce 0
     ```
 
-    Learn more about SELinux in our guides [Getting Started with SELinux on CentOS 8](/docs/guides/a-beginners-guide-to-selinux-on-centos-8/) and [Changing SELinux Modes](/docs/guides/how-to-change-selinux-modes/).
+    Learn more about SELinux in our guides [Getting Started with SELinux on CentOS 8](/cloud/guides/a-beginners-guide-to-selinux-on-centos-8/) and [Changing SELinux Modes](/cloud/guides/how-to-change-selinux-modes/).
 
 1.  Typically, CentOS and similar RHEL-based systems use Firewalld for managing firewall rules. Use the following commands to open the server's HTTP and HTTPS ports and then reload Firewalld:
 
@@ -63,7 +63,7 @@ In addition to the steps in the [Before You Begin](/docs/guides/install-nagios-o
     sudo firewall-cmd --reload
     ```
 
-    See more on using Firewalld in our guide [Configure a Firewall with Firewalld](/docs/guides/introduction-to-firewalld-on-centos/).
+    See more on using Firewalld in our guide [Configure a Firewall with Firewalld](/cloud/guides/introduction-to-firewalld-on-centos/).
 
 1.  Install the prerequisite packages for the Nagios installation:
 
@@ -77,7 +77,7 @@ In addition to the steps in the [Before You Begin](/docs/guides/install-nagios-o
 
 ### Setting Up the LAMP Stack
 
-Nagios uses a LAMP stack for its base application and to serve its monitoring interface. Learn more about LAMP stacks, as well as how to set them up, in our guide [Installing a LAMP Stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/).
+Nagios uses a LAMP stack for its base application and to serve its monitoring interface. Learn more about LAMP stacks, as well as how to set them up, in our guide [Installing a LAMP Stack on CentOS 8](/cloud/guides/how-to-install-a-lamp-stack-on-centos-8/).
 
 However, Nagios only needs to install two parts of the LAMP stack: the Apache Web Server and PHP. The following steps just set up these necessary parts.
 
@@ -192,7 +192,7 @@ With the new Nagios instance installed and running, access the Nagios interface 
 For example, if your public IP is `192.0.2.0`, then you would navigate to `http://192.0.2.0/nagios`. Alternatively, if your domain name is `example.com`, you would navigate to `example.com/nagios`.
 
 {{< note >}}
-Learn more about setting up a domain name for your system through the Linode DNS Manager with our guide [DNS Manager - Get Started](/docs/products/networking/dns-manager/get-started/). While other DNS managers can set up a domain name, Linode's provides added convenience. Regardless, this guide can serve as a general introduction to the process.
+Learn more about setting up a domain name for your system through the Linode DNS Manager with our guide [DNS Manager - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager). While other DNS managers can set up a domain name, Linode's provides added convenience. Regardless, this guide can serve as a general introduction to the process.
 {{< /note >}}
 
 The browser should prompt for a login. Use the `nagiosadmin` username and the password configured with the `htpasswd` command above. Once logged in, you should arrive at the Nagios dashboard:

@@ -23,7 +23,7 @@ Several steps are recommended to optimize the compute time cost savings of GPU-b
 
 ## What Is PyTorch Lightning?
 
-PyTorch Lightning is a module of [PyTorch](/docs/guides/pytorch-installation-ubuntu-2004/), a developer framework for deep learning. PyTorch builds upon Python's established strengths in data modeling and neural network training through the addition of GPU-optimized capabilities. PyTorch Lightning adds a framework to PyTorch that optimizes productivity in the research and modeling process. This allows portability of code while achieving the same results, as underlying hardware permits.
+PyTorch Lightning is a module of [PyTorch](/cloud/guides/pytorch-installation-ubuntu-2004/), a developer framework for deep learning. PyTorch builds upon Python's established strengths in data modeling and neural network training through the addition of GPU-optimized capabilities. PyTorch Lightning adds a framework to PyTorch that optimizes productivity in the research and modeling process. This allows portability of code while achieving the same results, as underlying hardware permits.
 
 PyTorch Lightning allows developers to remove repetitive PyTorch setup code. The framework adds scaling and a command-line interface that allows developers to write modular code with repeatable results. Furthermore, PyTorch Lightning adds scaled GPU utilization that works well with Linode’s specialized GPU-enabled instances. In fact, no code change to existing PyTorch or PyTorch Lightning is needed to take advantage of Linode GPU instances.
 

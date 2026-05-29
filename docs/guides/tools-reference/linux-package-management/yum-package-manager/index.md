@@ -16,7 +16,7 @@ external_resources:
 - '[YUM Package Manager](http://yum.baseurl.org/)'
 ---
 
-*Yellowdog Updater, Modified*, more commonly known as **YUM**, is a package management tool for a variety of Linux distributions. It provides an easy-to-use interface on top of the low-level functions available in the RPM Package Manger (RPM). YUM is the default package manager for CentOS 7 as well as older versions of RHEL and Fedora. It has largely been replaced by it successor *Dandified YUM*, also called **DNF**, on most newer RPM-based distributions, including CentOS 8, RHEL 8, and Fedora 22 (and later). If you are interested in learning about the DNF package manager, see the [Using the DNF Package Manager](/docs/guides/dnf-package-manager/) guide.
+*Yellowdog Updater, Modified*, more commonly known as **YUM**, is a package management tool for a variety of Linux distributions. It provides an easy-to-use interface on top of the low-level functions available in the RPM Package Manger (RPM). YUM is the default package manager for CentOS 7 as well as older versions of RHEL and Fedora. It has largely been replaced by it successor *Dandified YUM*, also called **DNF**, on most newer RPM-based distributions, including CentOS 8, RHEL 8, and Fedora 22 (and later). If you are interested in learning about the DNF package manager, see the [Using the DNF Package Manager](/cloud/guides/dnf-package-manager/) guide.
 
 This guide aims to familiarize you with the YUM commands you are most likely to encounter. By the end, you should feel comfortable navigating YUM in all but its more advanced features. And for those, you can find some helpful resources at the end of this guide.
 
@@ -24,12 +24,12 @@ This guide aims to familiarize you with the YUM commands you are most likely to 
 
 Before running the commands within this guide, you will need:
 
-1. **A system running on CentOS/RHEL 7, Fedora 21, or earlier versions of either distribution.** Other Linux distributions that employ the YUM package manager can also be used. Review the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide if you do not yet have a compatible system.
+1. **A system running on CentOS/RHEL 7, Fedora 21, or earlier versions of either distribution.** Other Linux distributions that employ the YUM package manager can also be used. Review the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide if you do not yet have a compatible system.
 
-1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
+1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/cloud/guides/connect-to-server-over-ssh/) or [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish). Review the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide for assistance on creating and securing a standard user account.
 
 {{< note >}}
-Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
+Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 
 ## Upgrading Packages
@@ -98,7 +98,7 @@ YUM provides numerous options in common between many of its commands. The exampl
 
         sudo yum list
 
-    YUM's `list` command provides some additional options to list more specific groups of packages. Here are three useful examples. You can find another example in the [Useful Options](/docs/guides/yum-package-manager/#useful-options) section above.
+    YUM's `list` command provides some additional options to list more specific groups of packages. Here are three useful examples. You can find another example in the [Useful Options](/cloud/guides/yum-package-manager/#useful-options) section above.
 
     The `available` option lists all of the packages that can be installed on your system through YUM's repositories:
 

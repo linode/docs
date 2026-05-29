@@ -18,7 +18,7 @@ relations:
 deprecated: true
 ---
 
-TWiki is a robust "structured wiki" roughly comparable to other "Enterprise" wiki solutions such as [Confluence](/docs/guides/confluence-on-debian-5-lenny/). Structured wikis provide a powerful way to share, store, and work with information in task centric applications. TWiki is a foundation for supporting content-centric workflows including bug and issue tracking, knowledge management, and data entry. Written in Perl and distributed under the terms of the GNU GPL, TWiki is highly extensible and has a robust and active plug-in infrastructure. Because of this flexibility, TWiki straddles the boundary between web application and web application framework. This guide outlines a basic TWiki installation, setup, and configuration process.
+TWiki is a robust "structured wiki" roughly comparable to other "Enterprise" wiki solutions such as [Confluence](/cloud/guides/confluence-on-debian-5-lenny/). Structured wikis provide a powerful way to share, store, and work with information in task centric applications. TWiki is a foundation for supporting content-centric workflows including bug and issue tracking, knowledge management, and data entry. Written in Perl and distributed under the terms of the GNU GPL, TWiki is highly extensible and has a robust and active plug-in infrastructure. Because of this flexibility, TWiki straddles the boundary between web application and web application framework. This guide outlines a basic TWiki installation, setup, and configuration process.
 
 ## Prepare System and Install TWiki
 
@@ -139,7 +139,7 @@ Before you can proceed with the installation process, you will need to configure
 {{< /file >}}
 
 
-Add your local IP address to the `Allow from` directive in the `FilesMatch` block to allow access to the configuration scripts. For more information about access control with Apache, consider the [Rule Based Access Control](/docs/guides/rulebased-access-control-for-apache/) document.
+Add your local IP address to the `Allow from` directive in the `FilesMatch` block to allow access to the configuration scripts. For more information about access control with Apache, consider the [Rule Based Access Control](/cloud/guides/rulebased-access-control-for-apache/) document.
 
 When you've completed these modifications, reload the web server configuration by issuing the following command:
 
@@ -166,9 +166,9 @@ Congratulations! You have successfully installed TWiki. You can now visit your w
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [TWiki Project Upstream](http://twiki.org/)
-- [Apache HTTP Server Documentation](/docs/web-servers/apache)
-- [Exim Send Only MTA](/docs/guides/sendonly-mail-server-with-exim-on-debian-6-squeeze/)
-- [Postfix Mail Gateway MTA](/docs/guides/basic-postfix-email-gateway-on-debian-6-squeeze/)
+- [Apache HTTP Server Documentation](/cloud/web-servers/apache)
+- [Exim Send Only MTA](/cloud/guides/sendonly-mail-server-with-exim-on-debian-6-squeeze/)
+- [Postfix Mail Gateway MTA](/cloud/guides/basic-postfix-email-gateway-on-debian-6-squeeze/)
 
 
 

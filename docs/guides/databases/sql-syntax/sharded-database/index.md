@@ -60,7 +60,7 @@ The second shard contains the remainder of the rows.
 
 Sharding does not necessarily make any backup copies of the data. Each record is still only stored on a single server. *Replication* is used to copy information to another server, resulting in primary and secondary copies of the data. Replication enhances reliability and robustness at the cost of additional complexity and resources. Sharded databases can be replicated, but the procedure for doing so can be very complex.
 
-Replication and caching are both potential alternatives to sharding, particular in applications which mainly read data from a database. Replication spreads out the queries to multiple servers, while caching speeds up the requests. See our guide [How to Configure Source-Replica Replication in MySQL](/docs/guides/configure-source-replica-replication-in-mysql/) to learn more about  data replication.
+Replication and caching are both potential alternatives to sharding, particular in applications which mainly read data from a database. Replication spreads out the queries to multiple servers, while caching speeds up the requests. See our guide [How to Configure Source-Replica Replication in MySQL](/cloud/guides/configure-source-replica-replication-in-mysql/) to learn more about  data replication.
 
 ## Pros and Cons of a Sharded Database
 
@@ -81,7 +81,7 @@ Unfortunately, sharding also has drawbacks. Some of the downsides include:
 
 - Sharding greatly increases the complexity of a software development project. Additional logic is required to shard the database and properly direct queries to the correct shard. This increases development time and cost. A more elaborate network mesh is often necessary, which leads to an increase in lab and infrastructure costs.
 - Latency can be higher than with a standard database design.
-- [SQL join operations](/docs/guides/sql-joins/) affecting multiple shards are more difficult to execute and take longer to complete. Some operations might become too slow to be feasible. However, the right design can facilitate better performance on common queries.
+- [SQL join operations](/cloud/guides/sql-joins/) affecting multiple shards are more difficult to execute and take longer to complete. Some operations might become too slow to be feasible. However, the right design can facilitate better performance on common queries.
 - Sharding requires a lot of tuning and tweaking as the database grows. This sometimes requires a reconsideration of the entire sharding strategy and database design. Uneven shard distribution can happen even with proper planning, causing the distribution to unexpectedly become lopsided.
 - It is not always obvious how many shards and servers to use, or how to choose the sharding key. Poor sharding keys can adversely affect performance or data distribution. This causes some shards to be overloaded while others are almost empty, leading to hotspots and inefficiencies.
 - It is more challenging to change the database schema after sharding is implemented. It is also difficult to convert the database back to its pre-sharded state.

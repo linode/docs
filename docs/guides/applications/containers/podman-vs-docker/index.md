@@ -39,7 +39,7 @@ Today, most containerization tools follow the OCI standards. Any containerizatio
 
 Docker has become an incredibly popular containerization tool, at least in part due to its relative simplicity. Its straightforward commands and the wealth of available documentation make Docker immanently approachable.
 
-Learn more about Docker in our guide [An Introduction to Docker](/docs/guides/introduction-to-docker/).
+Learn more about Docker in our guide [An Introduction to Docker](/cloud/guides/introduction-to-docker/).
 
 ## What Is Podman?
 
@@ -49,7 +49,7 @@ The Podman engine was originally developed by Red Hat with the intention of prov
 
 Additionally, Podman's daemonless architecture grants it a truly rootless mode. Docker commands can be run by non-root users, but its daemon that executes those commands continues to run on root. Podman, instead, executes commands directly and avoids the need for root privileges.
 
-Learn more about getting started with Podman in our guide [How to Install Podman for Running Containers](/docs/guides/using-podman/).
+Learn more about getting started with Podman in our guide [How to Install Podman for Running Containers](/cloud/guides/using-podman/).
 
 ## Docker vs Podman
 
@@ -103,7 +103,7 @@ Docker covers the full container life cycle, from container composition to deplo
 
 Docker has established usage with many companies and has a proliferation of people experienced with it. When it comes to containerization tools, you are more likely to find people familiar with Docker than most other tools.
 
-Looking to go forward with Docker? Be sure to reference the guide linked above, as well as our guide [When and Why to Use Docker](/docs/guides/when-and-why-to-use-docker/). To see Docker in action, you may also want to look at our guide on [How to install Docker and deploy a LAMP Stack](/docs/guides/how-to-install-docker-and-deploy-a-lamp-stack/).
+Looking to go forward with Docker? Be sure to reference the guide linked above, as well as our guide [When and Why to Use Docker](/cloud/guides/when-and-why-to-use-docker/). To see Docker in action, you may also want to look at our guide on [How to install Docker and deploy a LAMP Stack](/cloud/guides/how-to-install-docker-and-deploy-a-lamp-stack/).
 
 ### When to Use Podman
 
@@ -117,7 +117,7 @@ This specialization and light footprint are useful in contexts where you want mo
 
 In fact, you can effectively use Docker and Podman side-by-side, considering both tools are OCI-compliant. For instance, you can use Docker for your development environment, where you are creating application images but security is less of a concern. Then, use Podman to run and maintain those images in a production environment.
 
-Start moving forward with Podman by checking out our guide [How to Install Podman for Running Containers](/docs/guides/using-podman/). You may also be interested in taking a look at Buildah via our guide [How to Use Buildah to Build OCI Container Images](/docs/guides/using-buildah-oci-images/).
+Start moving forward with Podman by checking out our guide [How to Install Podman for Running Containers](/cloud/guides/using-podman/). You may also be interested in taking a look at Buildah via our guide [How to Use Buildah to Build OCI Container Images](/cloud/guides/using-buildah-oci-images/).
 
 ## Conclusion
 

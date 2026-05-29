@@ -16,7 +16,7 @@ marketplace_app_id: 662119
 marketplace_app_name: "Plex Media Server"
 ---
 
-[Plex](https://www.plex.tv/) is a feature-rich streaming platform that lets you organize and stream your own digital video and audio to your devices. This guide shows you how to deploy the [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) using Linode's Plex Quick Deploy App, upload media to your Plex Server, and connect to it from a Plex client application. Your Plex Media Server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this app.
+[Plex](https://www.plex.tv/) is a feature-rich streaming platform that lets you organize and stream your own digital video and audio to your devices. This guide shows you how to deploy the [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) using Linode's Plex Quick Deploy App, upload media to your Plex Server, and connect to it from a Plex client application. Your Plex Media Server could benefit from large amounts of disk space, so consider using our [Block Storage](https://techdocs.akamai.com/cloud-computing/docs/block-storage) service with this app.
 
 ## Why Use Plex Media Server
 
@@ -88,13 +88,13 @@ You can now access [uploaded media](#uploading-media) and manage your Plex Serve
 
 ### (Optional) Connecting a Linode Block Storage Volume
 
-If your media collection is larger than the space available from your Linode plan, [Block Storage](/docs/products/storage/block-storage/) is a convenient solution. This section outlines the steps for creating and connecting a Block Storage Volume for use with your Plex Server.
+If your media collection is larger than the space available from your Linode plan, [Block Storage](https://techdocs.akamai.com/cloud-computing/docs/block-storage) is a convenient solution. This section outlines the steps for creating and connecting a Block Storage Volume for use with your Plex Server.
 
 {{< note >}}
 For future reference, you can find examples of the instructions provided in this section in Cloud Manager by navigating to [**Volumes**](https://cloud.linode.com/volumes), then selecting **Show Configuration** from the option menu for your Volume.
 {{< /note >}}
 
-1.  [View, Create, and Delete Block Storage Volumes](/docs/products/storage/block-storage/guides/manage-volumes/) if you don't have one already prepared.
+1.  [View, Create, and Delete Block Storage Volumes](https://techdocs.akamai.com/cloud-computing/docs/manage-block-storage-volumes) if you don't have one already prepared.
 
 1.  Establish an SSH connection to your Plex Server Linode as your [Limited User](#plex-marketplace-app-options).
 
@@ -140,21 +140,21 @@ Media on your Volume is now accessible through the Plex web interface at the mou
 Your Plex Server is set up to access media files in the `~/plex/media` directory. You have many options for uploading or downloading media to your Plex Server. This section shows you how to organize and upload files to your Plex Server using the `scp` command.
 
 {{< note >}}
-This section directs you to run commands either on your Plex Server Linode through an SSH connection as your [Limited User](#plex-options), or from the workstation [terminal](/docs/guides/using-the-terminal/) where the media files you wish to upload are stored.
+This section directs you to run commands either on your Plex Server Linode through an SSH connection as your [Limited User](#plex-options), or from the workstation [terminal](/cloud/guides/using-the-terminal/) where the media files you wish to upload are stored.
 {{< /note >}}
 
 1.  On your Plex Server Linode, create a subdirectory within `~/plex/media` to store your media files. Plex recommends [organizing media by type](https://support.plex.tv/articles/naming-and-organizing-your-movie-media-files/), so pick a subdirectory name that matches the type of media you plan to upload. For example, to create a directory to store movie files, enter the following command:
 
         mkdir ~/plex/media/movies
 
-1.  From your media workstation, use the `scp` command to move media to your Plex Server's media subdirectory, substituting `$USERNAME` with your Linux [Limited User Name](#plex-marketplace-app-options), and `$IP_ADDRESS` with the [IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) of your Plex Server Linode:
+1.  From your media workstation, use the `scp` command to move media to your Plex Server's media subdirectory, substituting `$USERNAME` with your Linux [Limited User Name](#plex-marketplace-app-options), and `$IP_ADDRESS` with the [IP address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) of your Plex Server Linode:
 
         scp example_video.mp4 $USERNAME@$IP_ADDRESS:~/plex/media/movies
 
     Depending on the files' size, this may take a few minutes.
 
     {{< note >}}
-    There are other ways to upload files to your Plex Server Linode. See our section in [Linux System Administration Basics](/docs/guides/linux-system-administration-basics/#upload-files-to-a-remote-server) for more information.
+    There are other ways to upload files to your Plex Server Linode. See our section in [Linux System Administration Basics](/cloud/guides/linux-system-administration-basics/#upload-files-to-a-remote-server) for more information.
     {{< /note >}}
 
 ### Adding Media Libraries
@@ -193,8 +193,8 @@ The Plex Quick Deploy App installs the following required software on your Linod
 
 | **Software** | **Description** |
 |:--------------|:------------|
-| [**NGINX**](https://www.nginx.com/) | Open Source webserver and reverse proxy. See our guide on [Getting Started with NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) for more information. |
-| [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Ports 22/tcp, 80/tcp, and 443/tcp for IPv4 and IPv6 are enabled with installation of this app. Additional ports must be opened to send email from your Linode for use with this app. To learn more, see [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). |
+| [**NGINX**](https://www.nginx.com/) | Open Source webserver and reverse proxy. See our guide on [Getting Started with NGINX](/cloud/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) for more information. |
+| [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Ports 22/tcp, 80/tcp, and 443/tcp for IPv4 and IPv6 are enabled with installation of this app. Additional ports must be opened to send email from your Linode for use with this app. To learn more, see [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/). |
 | [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) | The Plex Media Server transmits locally-stored media files, enabling you to stream your personal media collection to any device that can support a [Plex Client](https://www.plex.tv/apps-devices/). The Latest release in Plex's Public Main branch is installed by this deployment. |
 
 

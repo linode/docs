@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/migrate-to-linode/migrate-a-lamp-website-to-linode/']
 ---
 
-This guide describes how to migrate a website running in a [LAMP](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#what-is-a-lamp-stack) environment on another host to a new Linode. Read the [Best Practices when Migrating to Linode](/docs/guides/best-practices-when-migrating-to-linode/) guide prior to following this guide for more information about migrating your site.
+This guide describes how to migrate a website running in a [LAMP](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#what-is-a-lamp-stack) environment on another host to a new Linode. Read the [Best Practices when Migrating to Linode](/cloud/guides/best-practices-when-migrating-to-linode/) guide prior to following this guide for more information about migrating your site.
 
 This guide includes commands that need to be run at the command line of your current host, which may not be available if you have a shared hosting environment. Ubuntu 18.04 is used as the distribution for the new Linode deployment in this guide. If you'd like to choose another distribution, us the examples here as an approximation for the commands you'll need to run.
 
@@ -19,13 +19,13 @@ This guide includes commands that need to be run at the command line of your cur
 
 ### Deploy Your Linode
 
-1.  Follow Linode's [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and choose Ubuntu 18.04 as your Linux image when deploying. Choose a Linode plan with enough storage space to accommodate the website data from your current host.
+1.  Follow Linode's [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide and choose Ubuntu 18.04 as your Linux image when deploying. Choose a Linode plan with enough storage space to accommodate the website data from your current host.
 
-1.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide and create a limited Linux user with `sudo` privileges. The examples below assume this user is named `linode_user`.
+1.  Follow the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide and create a limited Linux user with `sudo` privileges. The examples below assume this user is named `linode_user`.
 
 ### Install LAMP
 
-1.  [Connect to your Linode via SSH.](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance)
+1.  [Connect to your Linode via SSH.](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance)
 
 1.  If you did not do so previously, update your software:
 
@@ -134,7 +134,7 @@ Go to your Linode's IP address in a web browser. Your website should appear.
 
 If your website does not load normally, one possible reason is that your IP address could be hard-coded in some areas of the website files or in the database. If this is the case, consult your PHP application framework's documentation for ways to search for and replace those values. For example, WordPress's [WP-CLI interface](https://developer.wordpress.org/cli/commands/search-replace/) and Drupal's [Drush interface](https://www.drupal.org/project/sar) provide methods that help with this task.
 
-Another reason the site may not load is if your website configuration expects your domain name to be supplied in the HTTP headers of a web request. When you visit your IP directly, this information is not supplied in your request. The [Previewing Websites Without DNS](/docs/guides/previewing-websites-without-dns/) guide describes a workaround for this issue. When you have updated your DNS records, the workaround will no longer be necessary to view your site.
+Another reason the site may not load is if your website configuration expects your domain name to be supplied in the HTTP headers of a web request. When you visit your IP directly, this information is not supplied in your request. The [Previewing Websites Without DNS](/cloud/guides/previewing-websites-without-dns/) guide describes a workaround for this issue. When you have updated your DNS records, the workaround will no longer be necessary to view your site.
 
 If you are seeing any other errors on your site, try reviewing Apache's error logs for further clues. The locations for these logs will be listed in your `/etc/apache2/apache2.conf` or `/etc/apache2/sites-available/` files.
 

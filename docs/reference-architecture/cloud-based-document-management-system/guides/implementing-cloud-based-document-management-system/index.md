@@ -22,7 +22,7 @@ Follow along to fully provision your own production-ready and highly available d
 
 Numerous cloud EDMS services exist to handle document management. However, these may not meet your individual needs, especially as your number of documents increases. Implementing your own cloud-based document management system can provide a solution more fit to your particular needs. The architecture for a cloud-based document management system outlined here aims to be a strong base for that. The result is a highly available system that leverages technologies like Linode's Cloud Firewall and VLANs to ensure secure and efficient communication between nodes.
 
-The best way to learn more about the architecture and what it offers is our overview documentation for [Redundant Cross-Datacenter Applications](/docs/reference-architecture/redundant-cross-datacenter-applications/). You may also be interested in reading our blog post, [Highly Available Mayan EDMS Reference Architecture](https://www.linode.com/blog/databases/deploy-a-cloud-based-electronic-document-management-system/).
+The best way to learn more about the architecture and what it offers is our overview documentation for [Redundant Cross-Datacenter Applications](/cloud/reference-architecture/redundant-cross-datacenter-applications/). You may also be interested in reading our blog post, [Highly Available Mayan EDMS Reference Architecture](https://www.linode.com/blog/databases/deploy-a-cloud-based-electronic-document-management-system/).
 
 ## How to Provision a Cloud-based Document Management System
 
@@ -34,21 +34,21 @@ This architecture requires deployment of several parallel nodes. In order to mak
 
 Before you get started provisioning the architecture, you need to prepare the following:
 
--   A personal access token for the Linode API in order to run the Terraform script used in this tutorial. You can follow our [Get an API Access Token](/docs/products/tools/linode-api/guides/get-access-token/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
+-   A personal access token for the Linode API in order to run the Terraform script used in this tutorial. You can follow our [Get an API Access Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
 
 -   This tutorial uses [Terraform](https://www.terraform.io/) for provisioning instances, and you need to install Terraform to follow along. Terraform automates the process of provisioning infrastructure, making it an excellent solution when you need to deploy multiple similar nodes simultaneously.
 
     Install Terraform by following the [official installation guide](https://learn.hashicorp.com/tutorials/terraform/install-cli). This sets you up with the Terraform command line interface (CLI).
 
-    You can learn more about using Terraform, particularly for provisioning Linode instances, in our [Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/).
+    You can learn more about using Terraform, particularly for provisioning Linode instances, in our [Beginner's Guide to Terraform](/cloud/guides/beginners-guide-to-terraform/).
 
 -   A domain name set up for use with your cloud-based document management system. Linode does not provide domain names, but Linode does employ DNS servers. These allow you to manage your domain name within the Linode Cloud Manager. More importantly for this tutorial, using Linode's DNS servers allows for the Certbot `dns_linode` plugin. This automates the process of procuring SSL certificates, which allows the Terraform process to completely handle the SSL setup.
 
     Once you have a domain name, you should configure Linode as its DNS name server. Then add that domain to your Linode Cloud Manager via the **Domains** option.
 
-    Learn more about this process through our guide [DNS Manager - Get Started](/docs/products/networking/dns-manager/get-started/) and our other [DNS Manager guides](/docs/products/networking/dns-manager/guides/).
+    Learn more about this process through our guide [DNS Manager - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager) and our other [DNS Manager guides](https://techdocs.akamai.com/cloud-computing/docs/dns-manager).
 
--   The Terraform script handles creation of a Linode Object Storage bucket. However, the script needs an access key to do so. Follow our guide on how to [Manage Access Keys](/docs/products/storage/object-storage/guides/access-keys/#create-an-access-key) for steps to create an access key for your Linode Object Storage. Keep in mind that you need both the **Access Key** and the **Secret Key** for the Terraform script.
+-   The Terraform script handles creation of a Linode Object Storage bucket. However, the script needs an access key to do so. Follow our guide on how to [Manage Access Keys](https://techdocs.akamai.com/cloud-computing/docs/manage-access-keys#create-an-access-key) for steps to create an access key for your Linode Object Storage. Keep in mind that you need both the **Access Key** and the **Secret Key** for the Terraform script.
 
 ### Application and Database Nodes
 
@@ -95,7 +95,7 @@ On Linux systems, you may need to install `unzip` in order to unzip the package.
     -   `WEBMASTER_EMAIL_ADDRESS` should be the email address to be associated with the application. Specifically, this email address is used for registering an SSL certificate.
 
     {{< note type="warning" >}}
-    Sensitive infrastructure data, such as passwords and tokens, are visible in plain text within the `terraform.tfvars` file. Review [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
+    Sensitive infrastructure data, such as passwords and tokens, are visible in plain text within the `terraform.tfvars` file. Review [Secrets Management with Terraform](/cloud/applications/configuration-management/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
     {{< /note >}}
 
 1.  The Terraform script assumes that you have an SSH public key file stored at `~/.ssh/id_rsa.pub`. If this is not the case, add an `ssh_key` field to the `terraform.tfvars` file, and give it a string value designating the location of your SSH public key.
@@ -106,7 +106,7 @@ On Linux systems, you may need to install `unzip` in order to unzip the package.
     ssh_key = "~/id_rsa.pub"
     ```
 
-    Learn more about SSH public keys in our tutorial [How to Use SSH Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/)
+    Learn more about SSH public keys in our tutorial [How to Use SSH Public Key Authentication](/cloud/guides/use-public-key-authentication-with-ssh/)
 
 1.  Initialize the Terraform project. Doing so has Terraform download the necessary provisions for deploying the infrastructure.
 
@@ -178,9 +178,9 @@ Otherwise, follow the steps given below. Since there is bi-directional replicati
 
 1.  Access the shell as a root user on one of your application nodes. You can do this either through SSH using the node's IP address or through the Linode Shell (Lish) console in the Linode Cloud Manager.
 
-    -   For SSH, see our guide on [Connection to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
+    -   For SSH, see our guide on [Connection to a Remote Server Over SSH](/cloud/guides/connect-to-server-over-ssh/).
 
-    -   For the Lish console, see our guide [Access Your System Console Using Lish](/docs/guides/lish/).
+    -   For the Lish console, see our guide [Access Your System Console Using Lish](/cloud/guides/lish/).
 
 1.  Once logged in as root, execute the following command:
 
@@ -214,7 +214,7 @@ This architecture uses Prometheus for collecting metrics about the Mayan nodes a
 
 Prometheus and Grafana get their own node in the architecture. Deploying that node is a straightforward process through Akamai Quick Deploy Apps.
 
-1.  Follow our guide on [Deploying Prometheus and Grafana through Akamai Quick Deploy Apps](/docs/marketplace-docs/guides/prometheus-grafana/) to get your Prometheus-Grafana node up and running.
+1.  Follow our guide on [Deploying Prometheus and Grafana through Akamai Quick Deploy Apps](/cloud/marketplace-docs/guides/prometheus-grafana/) to get your Prometheus-Grafana node up and running.
 
     Be sure, when creating the instance, to add the VLAN created during the Terraform process. This VLAN should have a name like `vlan-us-southeast-1`. If you changed the region for the Terraform script, replace `us-southeast` in this example with the region you selected.
 
@@ -257,7 +257,7 @@ Prometheus and Grafana get their own node in the architecture. Deploying that no
 
 ### NodeBalancer
 
-The process for provisioning a Linode NodeBalancer instance can be managed entirely from within the Linode Cloud Manager. Follow along with our [Create a NodeBalancer](/docs/products/networking/nodebalancers/guides/create/) guide to set up your NodeBalancer.
+The process for provisioning a Linode NodeBalancer instance can be managed entirely from within the Linode Cloud Manager. Follow along with our [Create a NodeBalancer](https://techdocs.akamai.com/cloud-computing/docs/create-a-nodebalancer) guide to set up your NodeBalancer.
 
 Give your NodeBalancer the following settings:
 
@@ -271,13 +271,13 @@ Any other configuration options you can leave at their defaults or adjust as you
 
 With your NodeBalancer established, you can have the Linode DNS name servers point your domain at it. The two application nodes were granted SSL certificates under the domain name. The NodeBalancer proxies requests for the domain to the nodes, where the SSL certification resides.
 
-To complete this setup, you need to add an **A/AAAA** record for the domain name, with the record pointing to the IP address of the NodeBalancer. Follow our guide on how to [Manage DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/#add-or-edit-a-dns-record) for steps to do so. You need to have your domain name set up in the Linode Cloud Manager, as indicated towards the beginning of this tutorial.
+To complete this setup, you need to add an **A/AAAA** record for the domain name, with the record pointing to the IP address of the NodeBalancer. Follow our guide on how to [Manage DNS Records](https://techdocs.akamai.com/cloud-computing/docs/manage-dns-records#add-or-edit-a-dns-record) for steps to do so. You need to have your domain name set up in the Linode Cloud Manager, as indicated towards the beginning of this tutorial.
 
-You can learn more about DNS records through our guide [Overview of DNS and DNS Records](/docs/guides/dns-overview/#a-and-aaaa).
+You can learn more about DNS records through our guide [Overview of DNS and DNS Records](/cloud/guides/dns-overview/#a-and-aaaa).
 
 ### Cloud Firewalls
 
-The Linode Cloud Firewall provides an easy-to-implement and robust firewall that you can attach to your Linode instances via the Cloud Manager. You can learn more about Linode Cloud Firewalls in our [selection of guides](/docs/products/networking/cloud-firewall/guides/) on the topic.
+The Linode Cloud Firewall provides an easy-to-implement and robust firewall that you can attach to your Linode instances via the Cloud Manager. You can learn more about Linode Cloud Firewalls in our [selection of guides](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) on the topic.
 
 The cloud-based document management system architecture employs a Cloud Firewall on each node. Most of the nodes' communications between each other take place over the VLAN. Combining this with the Cloud Firewall for public Internet connections can give your system a potent security setup.
 

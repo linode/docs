@@ -39,4 +39,4 @@ In this example, the main bottleneck is the */notifications* endpoint of a mobil
 
 ## Diagrams
 
-[![Thumbnail of the horizontally scaling high-traffic application reference architecture](ha-scaling-diagram-thumbnail.png)](/docs/reference-architecture/horizontally-scaling-high-traffic-apps-with-observability-and-monitoring/diagrams/)
+[![Thumbnail of the horizontally scaling high-traffic application reference architecture](ha-scaling-diagram-thumbnail.png)](/cloud/reference-architecture/horizontally-scaling-high-traffic-apps-with-observability-and-monitoring/diagrams/)

@@ -15,7 +15,7 @@ external_resources:
 
 RabbitMQ is an open source message broker that facilitates communication between distributed applications. This guide covers steps for manually installing, configuring, and testing RabbitMQ on a Linode instance running Ubuntu 24.04 LTS.
 
-If you prefer an automated deployment, consider our [RabbitMQ Quick Deploy App](/docs/marketplace-docs/guides/rabbitmq/).
+If you prefer an automated deployment, consider our [RabbitMQ Quick Deploy App](/cloud/marketplace-docs/guides/rabbitmq/).
 
 ## Before You Begin
 
@@ -47,7 +47,7 @@ If you prefer an automated deployment, consider our [RabbitMQ Quick Deploy App](
 1.  Follow our [Set Up and Secure a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system and create a limited user account. You may also wish to set the timezone, configure your hostname, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install RabbitMQ as a Service

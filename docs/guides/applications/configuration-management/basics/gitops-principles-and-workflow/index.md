@@ -11,17 +11,17 @@ tags: ['kubernetes', 'container', 'monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-If you're a developer, chances are you know what [Git](/docs/guides/a-beginners-guide-to-github/) is. However, you may not be as familiar with *GitOps*. This guide gives you an understanding of GitOps, compares GitOps to DevOps, describes the GitOps workflow, and the tools often used with this methodology.
+If you're a developer, chances are you know what [Git](/cloud/guides/a-beginners-guide-to-github/) is. However, you may not be as familiar with *GitOps*. This guide gives you an understanding of GitOps, compares GitOps to DevOps, describes the GitOps workflow, and the tools often used with this methodology.
 
 ## What is GitOps?
 
 GitOps is a paradigm that empowers developers to undertake tasks that might otherwise be handled by operations. Operations are the processes and services that are overseen by a company's IT department. This may include technology and infrastructure management (including software), quality assurance, network administration, and device management.
 
-Traditionally, developers don't function under the operations umbrella. This can place development and operations in their own silos. GitOps aims to remove those silos, and enable operations to employ the same tools and methodologies that developers use for efficient collaboration. GitOps, as its name implies, relies on Git as the only source of truth; even for code related to IT operations. GitOps is possible due to [Infrastructure as Code (IaC)](/docs/guides/introduction-to-infrastructure-as-code/) tools that allow you to create and manage your infrastructure using declarative configuration files.
+Traditionally, developers don't function under the operations umbrella. This can place development and operations in their own silos. GitOps aims to remove those silos, and enable operations to employ the same tools and methodologies that developers use for efficient collaboration. GitOps, as its name implies, relies on Git as the only source of truth; even for code related to IT operations. GitOps is possible due to [Infrastructure as Code (IaC)](/cloud/guides/introduction-to-infrastructure-as-code/) tools that allow you to create and manage your infrastructure using declarative configuration files.
 
 ## GitOps Principles
 
-GitOps relies on version control tools like [Git](/docs/guides/how-to-use-git/), [GitHub](/docs/guides/a-beginners-guide-to-github/), [GitLab](/docs/guides/install-gitlab-on-ubuntu-18-04/), and Bitbucket. These platforms serve as the centralized repository for your IaC and orchestration files.
+GitOps relies on version control tools like [Git](/cloud/guides/how-to-use-git/), [GitHub](/cloud/guides/a-beginners-guide-to-github/), [GitLab](/cloud/guides/install-gitlab-on-ubuntu-18-04/), and Bitbucket. These platforms serve as the centralized repository for your IaC and orchestration files.
 
 Another central idea behind GitOps is that the desired state of a system is described using declarative specifications for every environment in the software development lifecycle. Some of these environments include testing, staging, and production. Declarative configuration files are housed within the same repository as the code, so they can be accessed by all relevant members of your project.
 
@@ -29,9 +29,9 @@ The next crucial element of GitOps is *observability*. Observability is the abil
 
 The three basic components of GitOps are the following:
 
-- [Infrastructure as Code](/docs/guides/introduction-to-infrastructure-as-code/) (IaC), a methodology that stores all infrastructure configuration as code.
-- [Merge Requests](/docs/guides/resolving-git-merge-conflicts/) (MRs) to serve as a change mechanism for infrastructure updates.
-- [Continuous Integration/Continuous Delivery](/docs/guides/introduction-ci-cd/) (CI/CD) that automates building, testing, and deploying applications, and services.
+- [Infrastructure as Code](/cloud/guides/introduction-to-infrastructure-as-code/) (IaC), a methodology that stores all infrastructure configuration as code.
+- [Merge Requests](/cloud/guides/resolving-git-merge-conflicts/) (MRs) to serve as a change mechanism for infrastructure updates.
+- [Continuous Integration/Continuous Delivery](/cloud/guides/introduction-ci-cd/) (CI/CD) that automates building, testing, and deploying applications, and services.
 
 ## GitOps vs. DevOps
 
@@ -46,7 +46,7 @@ GitOps focuses on automating infrastructure, so it's a perfect workflow for busi
 - GitOps ensures everything operates as it was intended.
 - Kubernetes ensures stability and availability.
 
-[Kubernetes](/docs/products/compute/kubernetes/get-started/) always makes sure a deployed application or service remains in a stable state and scales as needed. When GitOps is along for the ride, it ensures everything runs as it should, including the infrastructure necessary for the deployments. GitOps serves as the glue between application build/delivery (Kubernetes) and where the application is to run.
+[Kubernetes](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine) always makes sure a deployed application or service remains in a stable state and scales as needed. When GitOps is along for the ride, it ensures everything runs as it should, including the infrastructure necessary for the deployments. GitOps serves as the glue between application build/delivery (Kubernetes) and where the application is to run.
 
 ## The GitOps Workflow
 

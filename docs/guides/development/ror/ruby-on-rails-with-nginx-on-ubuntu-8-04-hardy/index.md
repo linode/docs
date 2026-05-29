@@ -120,7 +120,7 @@ The configuration file for Nginx is located at `/opt/nginx/conf/nginx.conf`. Thi
 
 ## Install MySQL Support (optional)
 
-If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 8.04 LTS (Hardy) guide](/docs/databases/mysql/ubuntu-8-04-hardy). Once it's installed and configured properly, issue the following commands:
+If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 8.04 LTS (Hardy) guide](/cloud/databases/mysql/ubuntu-8-04-hardy). Once it's installed and configured properly, issue the following commands:
 
     apt-get install libmysqlclient15-dev libmysql-ruby
     gem install mysql --no-rdoc --no-ri -- --with-mysql-dir=/usr/bin --with-mysql-lib=/usr/lib/mysql --with-mysql-include=/usr/include/mysql
@@ -133,7 +133,7 @@ You may wish to consult the following resources for additional information on th
 - [Ruby on Rails Documentation](http://rubyonrails.org/documentation)
 - [Nginx Home Page](http://nginx.org/)
 - [Nginx Documentation](http://nginx.org/en/docs/)
-- [Nginx Configuration](/docs/guides/how-to-configure-nginx/)
+- [Nginx Configuration](/cloud/guides/how-to-configure-nginx/)
 
 
 

@@ -30,7 +30,7 @@ This guide walks you through the process of migrating an application from [Amazo
 1.  Install [ripgrep (`rg`)](https://github.com/BurntSushi/ripgrep), an alternative to `grep` written in Rust.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Connect `kubectl` to Your EKS Cluster
@@ -508,7 +508,7 @@ There are multiple ways to define the resources you want to deploy to Kubernetes
 
 ### Update Manifests for Compatibility With LKE
 
-You may need to update your manifests to accommodate for differences between EKS and LKE. For example, your configuration on EKS may use the [AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/), which helps manage AWS Application Load Balancers (ALB) as Kubernetes [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resources. As an alternative to AWS ALBs, you can [deploy a dedicated NGINX Ingress on LKE](/docs/guides/deploy-nginx-ingress-on-lke/).
+You may need to update your manifests to accommodate for differences between EKS and LKE. For example, your configuration on EKS may use the [AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/), which helps manage AWS Application Load Balancers (ALB) as Kubernetes [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resources. As an alternative to AWS ALBs, you can [deploy a dedicated NGINX Ingress on LKE](/cloud/guides/deploy-nginx-ingress-on-lke/).
 
 The deployment image may point to AWS Elastic Container Registry (ECR). Modify this to point to an alternative registry. For example, the `Deployment` section of your application manifest may look like this:
 
@@ -534,7 +534,7 @@ The container image, pointing to AWS ECR, has the following format:
 {{< placeholder "AWS_ACCOUNT_ID" >}}.dkr.ecr.{{< placeholder "REGION" >}}.amazonaws.com/{{< placeholder "REPOSITORY_NAME" >}}:{{< placeholder "TAG" >}}
 ```
 
-To migrate away from AWS ECR, upload the container image to another registry service (e.g. Docker Hub) or [Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/). Then, modify your Kubernetes manifest to point to the new location for your image.
+To migrate away from AWS ECR, upload the container image to another registry service (e.g. Docker Hub) or [Set Up a Docker Registry with LKE and Object Storage](/cloud/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/). Then, modify your Kubernetes manifest to point to the new location for your image.
 
 {{< note >}}
 Since the image for the example service application in this guide comes from Docker Hub, redirecting the registry is unnecessary.
@@ -544,8 +544,8 @@ Since the image for the example service application in this guide comes from Doc
 
 If the workload depends on persistent data in AWS S3 or a database, then transfer the data or make it available to LKE. See the following guides for more information:
 
-- [How to Migrate From AWS S3 to Linode Object Storage](/docs/guides/migrate-from-aws-s3-to-linode-object-storage/)
-- [Migrate From AWS EBS to Linode Block Storage](/docs/guides/migrate-from-aws-ebs-to-linode-block-storage/)
+- [How to Migrate From AWS S3 to Linode Object Storage](/cloud/guides/migrate-from-aws-s3-to-linode-object-storage/)
+- [Migrate From AWS EBS to Linode Block Storage](/cloud/guides/migrate-from-aws-ebs-to-linode-block-storage/)
 
 {{< note >}}
 The example application, with its in-memory configuration, does not rely on any persistent data.
@@ -692,7 +692,7 @@ If you use Route53, the AWS DNS service, and plan to migrate away from it, [our 
 
 LKE doesn't have its own container registry. To migrate away from AWS ECR, set up a third-party private container registry, such as [Docker Hub](https://hub.docker.com/) or [GitHub Container Registry](https://github.blog/news-insights/product-news/introducing-github-container-registry/).
 
-Alternatively, you can set up your own container registry, see [How to Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/) for instructions.
+Alternatively, you can set up your own container registry, see [How to Set Up a Docker Registry with LKE and Object Storage](/cloud/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/) for instructions.
 
 ### Alternative to AWS CloudWatch
 
@@ -712,9 +712,9 @@ AWS uses CloudWatch for Kubernetes cluster observability. With Akamai Cloud, you
 
 See the following guides for additional information:
 
-- [Migrating From AWS CloudWatch to Prometheus and Grafana on Akamai](/docs/guides/migrating-from-aws-cloudwatch-to-prometheus-and-grafana-on-akamai/)
-- [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-tobs-on-linode-kubernetes-engine/)
+- [Migrating From AWS CloudWatch to Prometheus and Grafana on Akamai](/cloud/guides/migrating-from-aws-cloudwatch-to-prometheus-and-grafana-on-akamai/)
+- [How to Deploy TOBS (The Observability Stack) on LKE](/cloud/guides/deploy-tobs-on-linode-kubernetes-engine/)
 
 ### Alternative to AWS Secrets Manager
 
-The AWS Secrets Manager can be leveraged to provide Kubernetes secrets on EKS. With LKE, you need an alternative solution, such as [OpenBao on Akamai Cloud](/docs/marketplace-docs/guides/openbao/).
+The AWS Secrets Manager can be leveraged to provide Kubernetes secrets on EKS. With LKE, you need an alternative solution, such as [OpenBao on Akamai Cloud](/cloud/marketplace-docs/guides/openbao/).

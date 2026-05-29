@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 [OpenBao](https://openbao.org/) is an open source secrets management solution and fork of HashiCorp Vault. This guide walks through a manual installation of OpenBao on a single Linode instance running the Ubuntu 24.04 LTS distribution.
 
-For a Kubernetes cluster deployment, see our [Deploy OpenBao on Linode Kubernetes Engine](/docs/guides/deploy-openbao-on-linode-kubernetes-engine/) guide. If you prefer an automated one-click deployment, see our [OpenBao Quick Deploy App](/docs/marketplace-docs/guides/openbao/).
+For a Kubernetes cluster deployment, see our [Deploy OpenBao on Linode Kubernetes Engine](/cloud/guides/deploy-openbao-on-linode-kubernetes-engine/) guide. If you prefer an automated one-click deployment, see our [OpenBao Quick Deploy App](/cloud/marketplace-docs/guides/openbao/).
 
 ## Before You Begin
 
@@ -45,7 +45,7 @@ For a Kubernetes cluster deployment, see our [Deploy OpenBao on Linode Kubernete
 1.  Follow our [Set Up and Secure a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system and create a limited user account. You may also wish to set the timezone, configure your hostname, and harden SSH access.
 
     {{< note >}}
-    This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+    This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
     {{< /note >}}
 
 ## Install OpenBao

@@ -16,7 +16,7 @@ Cryptography is a cornerstone of modern secure communication practices. From dig
 
 The discipline of cryptography includes the study and practice of transforming data from its original format into an unintelligible format. The goal of cryptography is to keep information secure at rest and during its transfer. In the context of computer science, cryptography focuses on the mathematical concepts and algorithms that keep communications hidden from unauthorized viewers. There are three basic types of cryptographic algorithms that are used: secret key, public key, and hash function algorithms. Data encryption applies the principles of cryptography and refers to the method used to encode data into an unintelligible format.
 
-Cryptography enables cybersecurity professionals to [secure sensitive company information](/docs/guides/cloud-security-checklist/#protect-your-data-and-your-cloud-environment). Well-known examples of cryptographic techniques used in cybersecurity are digital signatures, time stamping, the SSL protocol, and [public key authentication with secure shell (SSH)](/docs/guides/use-public-key-authentication-with-ssh/).
+Cryptography enables cybersecurity professionals to [secure sensitive company information](/cloud/guides/cloud-security-checklist/#protect-your-data-and-your-cloud-environment). Well-known examples of cryptographic techniques used in cybersecurity are digital signatures, time stamping, the SSL protocol, and [public key authentication with secure shell (SSH)](/cloud/guides/use-public-key-authentication-with-ssh/).
 
 ### History of Cryptography
 
@@ -54,7 +54,7 @@ The key must be transmitted when the sender and receiver are not in the same loc
 
 By comparison, asymmetric cryptography uses two linked keys, one public and the other private, on each side of the conversation or transaction. Both sender and receiver have a private key in their possession alone. Each also has a public key – meaning a unique key of their own made public only by virtue of being exchanged with another person. The sender uses the recipient’s public key to encrypt the file. The recipient then uses their private key to decrypt it. Only the recipient can decrypt the file because no one else has access to that person’s private key. Asymmetric encryption also enables digital signature authentication.
 
-Examples of asymmetric cryptography in everyday use include [RSA](https://csrc.nist.gov/glossary/term/rsa), the [Digital Signature Standard (DSS/DSA)](https://csrc.nist.gov/glossary/term/digital_signature_algorithm), and the [TLS/SSL protocol](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/).
+Examples of asymmetric cryptography in everyday use include [RSA](https://csrc.nist.gov/glossary/term/rsa), the [Digital Signature Standard (DSS/DSA)](https://csrc.nist.gov/glossary/term/digital_signature_algorithm), and the [TLS/SSL protocol](/cloud/guides/getting-started-with-nginx-part-3-enable-tls-for-https/).
 
 Both forms are considered secure, but the level of security in any given encrypted message has more to do with the size of the key(s) than the form of encryption. Just like passwords, keys must be complex, difficult to obtain, decode, or reveal.
 
@@ -66,7 +66,7 @@ Of these goals, confidentiality carries the most weight. The need to ensure that
 
 Data integrity is vital to ensure that the message has not been altered in some way. Otherwise, the receiving party could be manipulated into taking a wrong or undesirable action. Whether a spy is sending a message to their country’s leadership, or a company is sending instructions to a field office, both sender and receiver need assurance that the message sent is identical to the message received.
 
-Authenticity is essential to ensure that the user or system is known and trusted. Establishing the identity of the user (sender or recipient) is the crux of this assurance. However, the system must also be known in order to [prevent ransomware attacks](/docs/guides/ransomware-attack) that involve phishing (fraudulent emails), vishing (fraudulent voice mails and phone calls), smishing (fraudulent texts), and other deceptive forms of communication.
+Authenticity is essential to ensure that the user or system is known and trusted. Establishing the identity of the user (sender or recipient) is the crux of this assurance. However, the system must also be known in order to [prevent ransomware attacks](/cloud/guides/ransomware-attack) that involve phishing (fraudulent emails), vishing (fraudulent voice mails and phone calls), smishing (fraudulent texts), and other deceptive forms of communication.
 
 ## Types of Cryptography
 
@@ -74,7 +74,7 @@ There are three types of cryptography: secret key cryptography, public key crypt
 
 The least complicated and fastest to use is secret key cryptography, also known as symmetric cryptography. This type uses one key to encrypt and decrypt communications. It protects data at rest and data in transit, and is most often used on data at rest. The most well-known algorithms used in secret key cryptography are [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), [Triple Data Encryption Standard (3DES)](https://en.wikipedia.org/wiki/Triple_DES), and [Rivest Cipher 4 (RC4)](https://en.wikipedia.org/wiki/RC4).
 
-Public key cryptography, or asymmetric cryptography, uses two keys on each end of the communication. Each pair consists of a public and a private key. Public keys are exchanged between sender and recipient. The sender then uses the recipient’s public key to encrypt the message. The recipient uses their private key to decrypt the message. Examples of public key use are plentiful in just about any communication over the Internet such as [HTTPS](/docs/guides/introducing-http-2/), [SSH](/docs/guides/connect-to-server-over-ssh-on-linux/), [OpenPGP](https://www.openpgp.org/), [S/MIME](https://en.wikipedia.org/wiki/S/MIME), and a [website’s SSL/TLS certificate](/docs/guides/what-is-a-tls-certificate/).
+Public key cryptography, or asymmetric cryptography, uses two keys on each end of the communication. Each pair consists of a public and a private key. Public keys are exchanged between sender and recipient. The sender then uses the recipient’s public key to encrypt the message. The recipient uses their private key to decrypt the message. Examples of public key use are plentiful in just about any communication over the Internet such as [HTTPS](/cloud/guides/introducing-http-2/), [SSH](/cloud/guides/connect-to-server-over-ssh-on-linux/), [OpenPGP](https://www.openpgp.org/), [S/MIME](https://en.wikipedia.org/wiki/S/MIME), and a [website’s SSL/TLS certificate](/cloud/guides/what-is-a-tls-certificate/).
 
 The math connecting public and private keys makes it impossible to derive the private key from the public key. However, the public key is derived from the private key, which is why private keys should never be shared.
 
@@ -92,9 +92,9 @@ The central assumption with cryptography is that other parties are going to try 
 
 Other forms of cybersecurity focus on other fronts such as protecting the network, limiting or stopping access to data, and protecting data from manipulation, i.e. deliberate corruption of meaning or readability.
 
-[Layers of different cybersecurity methods](/docs/guides/cloud-security-checklist/) work in tandem to provide a better, stronger defense. Even so, encrypting data is a primary defense used across all efforts in protecting data. Its use is of particular value to secure communications which by necessity must be shared with parties beyond secure company walls.
+[Layers of different cybersecurity methods](/cloud/guides/cloud-security-checklist/) work in tandem to provide a better, stronger defense. Even so, encrypting data is a primary defense used across all efforts in protecting data. Its use is of particular value to secure communications which by necessity must be shared with parties beyond secure company walls.
 
 ## Conclusion
 
-Cybersecurity and encryption are tasks that require research, time, and effort in order to be effective. Many companies prefer to leverage the efforts of vendor teams rather than overburden their internal cybersecurity teams to develop these additional layers of protection. However, there are many tools available to encrypt areas of your infrastructure and network. For example, you can use [LUKS to encrypt a Linux server's filesystem disk](/docs/guides/use-luks-for-full-disk-encryption/). Similarly, you can use [GPG keys to send encrypted messages via email](/docs/guides/gpg-keys-to-send-encrypted-messages/).
+Cybersecurity and encryption are tasks that require research, time, and effort in order to be effective. Many companies prefer to leverage the efforts of vendor teams rather than overburden their internal cybersecurity teams to develop these additional layers of protection. However, there are many tools available to encrypt areas of your infrastructure and network. For example, you can use [LUKS to encrypt a Linux server's filesystem disk](/cloud/guides/use-luks-for-full-disk-encryption/). Similarly, you can use [GPG keys to send encrypted messages via email](/cloud/guides/gpg-keys-to-send-encrypted-messages/).
 

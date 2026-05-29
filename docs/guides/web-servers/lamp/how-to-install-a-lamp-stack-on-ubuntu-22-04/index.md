@@ -39,12 +39,12 @@ The LAMP Stack is sufficient to host web applications and implement a modern com
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Installing a LAMP Stack on Ubuntu
@@ -52,7 +52,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 This section explains how to install a LAMP Stack on Ubuntu 22.04 LTS. These instructions are also generally valid for Ubuntu 20.04 LTS.
 
 {{< note >}}
-These instructions are valid with or without a registered domain name. If a domain name maps to the IP address of the server, a virtual host should also be configured. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
+These instructions are valid with or without a registered domain name. If a domain name maps to the IP address of the server, a virtual host should also be configured. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](https://techdocs.akamai.com/cloud-computing/docs/dns-manager).
 {{< /note >}}
 
 To install the LAMP stack on Ubuntu 22.04 LTS, follow these steps. In all cases, enter `y` to proceed with the installation when asked for confirmation.

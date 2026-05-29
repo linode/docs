@@ -15,7 +15,7 @@ deprecated: true
 
 Filezilla is a free, open source file transfer program written for Linux, Mac OS X, and Windows systems. It implements several file transfer protocols, most notably SFTP via SSH. This tool allows you to securely transfer files to and from your Linode using an encrypted channel, avoiding the security problems and usability issues inherent in traditional FTP client/server systems. Filezilla can send both your login credentials and file transfers over the network securely encrypted (provided you're using SFTP), while standard FTP clients send this information as plaintext.
 
-You'll need to make sure your Linode is running an SSH daemon (all Linodes run an OpenSSH server by default), and that you have a user account on the server before following these instructions. If you wish, you may use the `root` account on your Linode to perform file transfers, although you may need to change [file ownership and permissions](/docs/guides/linux-users-and-groups/) on the server after doing so.
+You'll need to make sure your Linode is running an SSH daemon (all Linodes run an OpenSSH server by default), and that you have a user account on the server before following these instructions. If you wish, you may use the `root` account on your Linode to perform file transfers, although you may need to change [file ownership and permissions](/cloud/guides/linux-users-and-groups/) on the server after doing so.
 
 ## Installing Filezilla
 
@@ -81,7 +81,7 @@ If you're asked for a password, please double-check the preceding steps in this 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Filezilla Documentation](http://wiki.filezilla-project.org/Documentation)
-- [Tools & Resources](/docs/tools-reference/)
+- [Tools & Resources](/cloud/tools-reference/)
 
 
 

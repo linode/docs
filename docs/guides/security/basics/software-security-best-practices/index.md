@@ -54,7 +54,7 @@ There are a number of best practices you can employ to access the highest applic
 
 - **Catalog your software assets** and how they are protected. This exercise isn’t trivial, because it can help you quickly locate a compromised computer and have you block any future unauthorized access.
 
-- **Use encryption often**. Use hashes to store private data, [use HTTPS to encrypt your web traffic](/docs/guides/enabling-https-using-certbot/) everywhere, and choose the strongest possible encryption algorithms whenever possible.
+- **Use encryption often**. Use hashes to store private data, [use HTTPS to encrypt your web traffic](/cloud/guides/enabling-https-using-certbot/) everywhere, and choose the strongest possible encryption algorithms whenever possible.
 
 - On a related note, **secure your secrets**. Ensure that your tokens for third-party encryption services are secured properly and managed by the right trusted staffers.
 
@@ -84,6 +84,6 @@ A more complete catalog of these tools can be found in these sources:
 
 ## Conclusion
 
-To learn more about application security, [check out this guide which discusses two of the more common application exploits](/docs/guides/security-weaknesses-in-web-apps/) that can be prevented by using some of the above tools. You can also refer to this author's [more in depth discussion about the need for application security](/docs/guides/security-weaknesses-in-web-apps/). For more details about best practices in container security, read the [How to Improve Container Security](https://www.csoonline.com/article/3388025/how-to-improve-container-security.html) article.
+To learn more about application security, [check out this guide which discusses two of the more common application exploits](/cloud/guides/security-weaknesses-in-web-apps/) that can be prevented by using some of the above tools. You can also refer to this author's [more in depth discussion about the need for application security](/cloud/guides/security-weaknesses-in-web-apps/). For more details about best practices in container security, read the [How to Improve Container Security](https://www.csoonline.com/article/3388025/how-to-improve-container-security.html) article.
 
-You can also checkout our [documentation library's security section](/docs/guides/security/) to find guides on installing and using popular open source security tools.
+You can also checkout our [documentation library's security section](/cloud/guides/security/) to find guides on installing and using popular open source security tools.

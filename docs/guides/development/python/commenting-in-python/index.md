@@ -22,11 +22,11 @@ Leaving informative comments on any code is important, as it helps others unders
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-2.  This guide assumes your Linode is running Python 3 or has a Python Virtual Environment installed. If not, then see our [Python guides](/docs/guides/development/python/) to find instructions for installing on your preferred Linux distribution.
+2.  This guide assumes your Linode is running Python 3 or has a Python Virtual Environment installed. If not, then see our [Python guides](/cloud/guides/development/python/) to find instructions for installing on your preferred Linux distribution.
 
 2.  Finally, this guide assumes you have a basic knowledge of Python and are comfortable editing using a text editor. If you are new to Python, then see the Python Software Foundation's ["Python for Beginners"](https://www.python.org/about/gettingstarted/) guide for more information on what Python is, what it can do, and how to learn to use it.
 

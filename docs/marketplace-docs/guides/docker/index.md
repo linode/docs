@@ -7,7 +7,7 @@ keywords: ['docker','marketplace', 'container']
 tags: ["container","cloud-manager","linode platform","docker","quick deploy apps"]
 image: Docker_oneclickapps.png
 external_resources:
- - '[Docker Commands Cheat Sheet](/docs/guides/docker-commands-quick-reference-cheat-sheet/)'
+ - '[Docker Commands Cheat Sheet](/cloud/guides/docker-commands-quick-reference-cheat-sheet/)'
  - '[Docker Documentation](https://docs.docker.com/)'
  - '[Play with Docker](https://training.play-with-docker.com/)'
  - '[Docker Hub](https://www.docker.com/products/docker-hub)'
@@ -53,7 +53,7 @@ Docker is now installed and ready to use. The following steps provide a sample a
 
 After Docker has finished installing, you can access Docker from your terminal and deploy a sample application or any application that you intend on running.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) using the limited user account you may have created during deployment. If you do not yet have one, login as the `root` user and [create a limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
+1.  Log in to your Compute Instance via [SSH](/cloud/guides/connect-to-server-over-ssh/) or [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) using the limited user account you may have created during deployment. If you do not yet have one, login as the `root` user and [create a limited user account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account).
 
 1.  Locate the application or sample application you wish to deploy.
 
@@ -63,15 +63,15 @@ After Docker has finished installing, you can access Docker from your terminal a
 
 1.  Learn how to use Docker by running through the [Docker for Beginners](https://github.com/docker/labs/tree/master/beginner/) lab or by reading the documentation below:
 
-    - [An Introduction to Docker](/docs/guides/introduction-to-docker/)
-    - [How to Deploy an nginx Container with Docker on Linode](/docs/guides/how-to-deploy-an-nginx-container-with-docker/)
-    - [Docker Commands Quick Reference Cheat Sheet](/docs/guides/docker-commands-quick-reference-cheat-sheet/)
-    - [How to Use Docker Files](/docs/guides/how-to-use-dockerfiles/)
-    - [How to Use Docker Compose](/docs/guides/how-to-use-docker-compose/)
-    - [How to Connect Docker Containers](/docs/guides/docker-container-communication/)
-    - [How to Create a Docker Swarm Manager and Nodes on a Linode](/docs/guides/how-to-create-a-docker-swarm-manager-and-nodes-on-linode/)
-    - [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/guides/deploy-container-image-to-kubernetes/)
-    - [Manage a Docker Cluster with Kubernetes](/docs/guides/manage-a-docker-cluster-with-kubernetes/)
+    - [An Introduction to Docker](/cloud/guides/introduction-to-docker/)
+    - [How to Deploy an nginx Container with Docker on Linode](/cloud/guides/how-to-deploy-an-nginx-container-with-docker/)
+    - [Docker Commands Quick Reference Cheat Sheet](/cloud/guides/docker-commands-quick-reference-cheat-sheet/)
+    - [How to Use Docker Files](/cloud/guides/how-to-use-dockerfiles/)
+    - [How to Use Docker Compose](/cloud/guides/how-to-use-docker-compose/)
+    - [How to Connect Docker Containers](/cloud/guides/docker-container-communication/)
+    - [How to Create a Docker Swarm Manager and Nodes on a Linode](/cloud/guides/how-to-create-a-docker-swarm-manager-and-nodes-on-linode/)
+    - [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/cloud/guides/deploy-container-image-to-kubernetes/)
+    - [Manage a Docker Cluster with Kubernetes](/cloud/guides/manage-a-docker-cluster-with-kubernetes/)
 
 
 {{% content "marketplace-update-note-shortguide" %}}

@@ -28,7 +28,7 @@ This guide serves as an introduction to several useful data types in Go. Specifi
 
 ## Before You Begin
 
-If you're just starting with Go, we recommend reading our [Beginner's Guide to Go](/docs/guides/beginners-guide-to-go/) guide first.
+If you're just starting with Go, we recommend reading our [Beginner's Guide to Go](/cloud/guides/beginners-guide-to-go/) guide first.
 
 {{% content "before-you-begin-install-go-shortguide" %}}
 
@@ -77,7 +77,7 @@ fmt.Println(anInteger)
 
 More complex examples of pointers are illustrated in `pointers.go`, including how a pointer can be used with a function:
 {{< note >}}
-For more information on how to use functions in Go, review our [functions, loops, and errors guide](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/).
+For more information on how to use functions in Go, review our [functions, loops, and errors guide](/cloud/guides/learning-go-functions-loops-and-errors-a-tutorial/).
 {{< /note >}}
 
 {{< file "pointers.go" go >}}
@@ -335,7 +335,7 @@ Iterating through threeDimension:
 5 -1 7 0
 {{< /output >}}
 {{< note >}}
-This example uses the `range` keyword and `for` loops to iterate through the elements of the `threeDimension` array. For more information on how to use loops in Go, review our [functions, loops, and errors guide](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/).
+This example uses the `range` keyword and `for` loops to iterate through the elements of the `threeDimension` array. For more information on how to use loops in Go, review our [functions, loops, and errors guide](/cloud/guides/learning-go-functions-loops-and-errors-a-tutorial/).
 {{< /note >}}
 
 ### Disadvantages of Arrays
@@ -630,7 +630,7 @@ Descending order:        [90 50 45 45 0]
 
 The `sort.Slice()` function rearranges the elements in the slice according to a sorting function that you provide. The sorting function defines the way any two elements in the slice should be ordered. This function is passed as an argument to `sort.Slice()`.
 
-If a slice contains numeric values or strings, then sorting them is straightforward because the `<` and `>` operators can be used in the sorting function. If you want to sort a slice of [structures](/docs/guides/go-structures/) based on a given structure field, then the implementation of the sorting function will be slightly more complex.
+If a slice contains numeric values or strings, then sorting them is straightforward because the `<` and `>` operators can be used in the sorting function. If you want to sort a slice of [structures](/cloud/guides/go-structures/) based on a given structure field, then the implementation of the sorting function will be slightly more complex.
 
 ### Appending an Array's Elements to a Slice
 
@@ -683,7 +683,7 @@ aSlice + aSlice:                 [-1 -2 -3 -1 -2 -3]
 
     -   Unpacking separates the elements of `sliceFromArray` into individual arguments that are passed to the `append()` function.
 
-    -   This unpacking is performed because `append()` is a [*variadic* function](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/#variadic-functions).
+    -   This unpacking is performed because `append()` is a [*variadic* function](/cloud/guides/learning-go-functions-loops-and-errors-a-tutorial/#variadic-functions).
 
 -    Line 21 shows that a slice can be appended to itself.
 
@@ -811,4 +811,4 @@ k2 : 13
 
 ## Next Steps
 
-If you haven't visited them yet, then our [Learning Go Functions, Loops, and Errors](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/) and [Structs in Go](/docs/guides/go-structures/) tutorials are good next steps when learning Go. Afterwards, other advanced topics are covered in the [Go](/docs/development/go/) section of our library.
+If you haven't visited them yet, then our [Learning Go Functions, Loops, and Errors](/cloud/guides/learning-go-functions-loops-and-errors-a-tutorial/) and [Structs in Go](/cloud/guides/go-structures/) tutorials are good next steps when learning Go. Afterwards, other advanced topics are covered in the [Go](/cloud/development/go/) section of our library.

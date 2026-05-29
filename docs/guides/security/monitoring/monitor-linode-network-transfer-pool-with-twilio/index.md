@@ -14,16 +14,16 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 Each Linode account has a monthly *outbound* network transfer pool. The network transfer pool is the total amount of free outbound bandwidth that is shared between all the Linode services in your account.
 
 {{< note >}}
-For more information on how your network transfer pool's size is computed, and which services can consume your outbound network transfer pool, review the [Transfer Allowance](/docs/products/platform/get-started/guides/network-transfer/#transfer-allowance) section of the [Network Transfer Usage and Costs](/docs/products/platform/get-started/guides/network-transfer/) guide.
+For more information on how your network transfer pool's size is computed, and which services can consume your outbound network transfer pool, review the [Transfer Allowance](https://techdocs.akamai.com/cloud-computing/docs/network-transfer-usage-and-costs#transfer-allowance) section of the [Network Transfer Usage and Costs](https://techdocs.akamai.com/cloud-computing/docs/network-transfer-usage-and-costs) guide.
 {{< /note >}}
 
 It's important to keep track of how much bandwidth your account has. If you use more than your pool size in a given month, then you are billed an overage fee for that month. If you observe that you have used a high percentage of your transfer pool, then you can start to plan or budget for a possible transfer overage. Linode provides a few ways to monitor your transfer usage:
 
-- The [Cloud Manager](/docs/products/platform/get-started/guides/network-transfer/#cloud-manager) displays your current transfer usage.
+- The [Cloud Manager](https://techdocs.akamai.com/cloud-computing/docs/network-transfer-usage-and-costs#cloud-manager) displays your current transfer usage.
 
-- The [Linode CLI](/docs/products/platform/get-started/guides/network-transfer/#linode-cli) can report your current transfer usage.
+- The [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/network-transfer-usage-and-costs#linode-cli) can report your current transfer usage.
 
-- Linode sends [email alerts](/docs/products/platform/get-started/guides/network-transfer/#email-alerts) at 80%, 90%, and 100% of your transfer usage.
+- Linode sends [email alerts](https://techdocs.akamai.com/cloud-computing/docs/network-transfer-usage-and-costs#email-alerts) at 80%, 90%, and 100% of your transfer usage.
 
 Using Twilio, you can also build a custom text message notification system for your transfer usage. Such a system would periodically send notifications to help you be aware of your transfer usage without manually checking on it. You can also configure the system to send notifications at custom transfer usage percents, instead of the standard 80%, 90%, and 100% Linode email alerts. This custom notification system relies on the [Network Transfer View endpoint](https://techdocs.akamai.com/linode-api/reference/api-summary#network-transfer-view) of the Linode API.
 
@@ -41,19 +41,19 @@ Using Twilio, you can also build a custom text message notification system for y
 
 1. This guide shows how to set up the notification system on a Linode instance. A Linode instance is used because it can remain powered on at all times.
 
-    If you want to implement the notification system, [create a Linode in the Cloud Manager](/docs/products/compute/compute-instances/get-started/). The lowest-cost Shared CPU instance type is appropriate for this guide. If you already have a Linode instance that you want to set up the notification system on, you can use that instead of a new instance. This guide was tested with Ubuntu 20.04, but should also work with other Linux distributions and versions.
+    If you want to implement the notification system, [create a Linode in the Cloud Manager](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-compute-instances). The lowest-cost Shared CPU instance type is appropriate for this guide. If you already have a Linode instance that you want to set up the notification system on, you can use that instead of a new instance. This guide was tested with Ubuntu 20.04, but should also work with other Linux distributions and versions.
 
-    After you create your Linode, follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to reduce the threat of a system compromise. Specifically, make sure you [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) to the Linode. The notification system in this guide should be installed under a limited Linux user.
+    After you create your Linode, follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to reduce the threat of a system compromise. Specifically, make sure you [Add a Limited User Account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) to the Linode. The notification system in this guide should be installed under a limited Linux user.
 
-1.  Another guide in our library, [How to Use the Linode API with Twilio](/docs/guides/how-to-use-the-linode-api-with-twilio/), shows the prerequisite steps for using the Linode API and Twilio API together. Follow this guide, starting with its [Before You Begin](/docs/guides/how-to-use-the-linode-api-with-twilio/#before-you-begin) section, up to and including the [Install the Python Bindings for the Linode API](/docs/guides/how-to-use-the-linode-api-with-twilio/#install-the-python-bindings-for-the-linode-api) section.
+1.  Another guide in our library, [How to Use the Linode API with Twilio](/cloud/guides/how-to-use-the-linode-api-with-twilio/), shows the prerequisite steps for using the Linode API and Twilio API together. Follow this guide, starting with its [Before You Begin](/cloud/guides/how-to-use-the-linode-api-with-twilio/#before-you-begin) section, up to and including the [Install the Python Bindings for the Linode API](/cloud/guides/how-to-use-the-linode-api-with-twilio/#install-the-python-bindings-for-the-linode-api) section.
 
     The guide instructs you to install the Linode API and Twilio API clients for Python. When following these instructions, run the commands under the limited Linux user on your Linode instance.
 
     {{< note respectIndent=false >}}
-The prerequisite guide instructs you to select the **Account** resource [when creating the Linode API key](/docs/guides/how-to-use-the-linode-api-with-twilio/#get-a-linode-api-token). This resource is also used for the [Network Transfer View endpoint](https://techdocs.akamai.com/linode-api/reference/api-summary#network-transfer-view) that's accessed by the network transfer usage notification system in the current guide.
+The prerequisite guide instructs you to select the **Account** resource [when creating the Linode API key](/cloud/guides/how-to-use-the-linode-api-with-twilio/#get-a-linode-api-token). This resource is also used for the [Network Transfer View endpoint](https://techdocs.akamai.com/linode-api/reference/api-summary#network-transfer-view) that's accessed by the network transfer usage notification system in the current guide.
 {{< /note >}}
 
-1. This guide instructs you to create a Python script from within an SSH session on your Linode. You need to install and use a terminal text editor to write the script on your Linode. Common text editors include [nano](/docs/guides/use-nano-to-edit-files-in-linux/) (the easiest option for terminal beginners), [emacs](https://www.gnu.org/software/emacs/), and [vim](https://www.vim.org/).
+1. This guide instructs you to create a Python script from within an SSH session on your Linode. You need to install and use a terminal text editor to write the script on your Linode. Common text editors include [nano](/cloud/guides/use-nano-to-edit-files-in-linux/) (the easiest option for terminal beginners), [emacs](https://www.gnu.org/software/emacs/), and [vim](https://www.vim.org/).
 
 ## Send Network Transfer Usage in a Text Message
 
@@ -63,7 +63,7 @@ The last part of this section shows how to run the script manually to deliver a 
 
 ### Import Modules and Initialize Service Credentials
 
-1.  Log into your Linode under your limited Linux user [using SSH](/docs/guides/connect-to-server-over-ssh/).
+1.  Log into your Linode under your limited Linux user [using SSH](/cloud/guides/connect-to-server-over-ssh/).
 
 1.  Create a new file named `transfer-pool-notification-twilio.py` with your preferred terminal text editor. For example, when using `nano`, run:
 
@@ -209,7 +209,7 @@ The code example is now complete. Your script should now look like the code in [
 
 ### Run the Code
 
-1.  Before you run the script, set the [environment variables](/docs/guides/how-to-set-linux-environment-variables/) that the script expects in your terminal. In your SSH session with your Linode, run the following commands. After the `=` symbol in each command, insert the corresponding value:
+1.  Before you run the script, set the [environment variables](/cloud/guides/how-to-set-linux-environment-variables/) that the script expects in your terminal. In your SSH session with your Linode, run the following commands. After the `=` symbol in each command, insert the corresponding value:
 
         export TWILIO_ACCOUNT_SID=
         export TWILIO_AUTH_TOKEN=
@@ -231,11 +231,11 @@ export LINODE_API_TOKEN=bKfoAoV8Awo8e9CVTFTYKEdojkpHdD8BNU6UvV66izq6KjduPikfQTGH
 
     | Variable | Value |
     |----------|-------|
-    | TWILIO_ACCOUNT_SID | The Twilio account SID [located in your Twilio console](/docs/guides/how-to-use-the-linode-api-with-twilio/#locate-your-twilio-api-credentials) |
-    | TWILIO_AUTH_TOKEN | The Twilio auth token [located in your Twilio console](/docs/guides/how-to-use-the-linode-api-with-twilio/#locate-your-twilio-api-credentials). The phone number needs to be entered using [E.164](https://www.twilio.com/docs/glossary/what-e164) formatting. |
-    | TWILIO_FROM_PHONE_NUMBER | The new number that you selected in the Twilio console [when you first signed up](/docs/guides/how-to-use-the-linode-api-with-twilio/#sign-up-for-twilio) |
+    | TWILIO_ACCOUNT_SID | The Twilio account SID [located in your Twilio console](/cloud/guides/how-to-use-the-linode-api-with-twilio/#locate-your-twilio-api-credentials) |
+    | TWILIO_AUTH_TOKEN | The Twilio auth token [located in your Twilio console](/cloud/guides/how-to-use-the-linode-api-with-twilio/#locate-your-twilio-api-credentials). The phone number needs to be entered using [E.164](https://www.twilio.com/docs/glossary/what-e164) formatting. |
+    | TWILIO_FROM_PHONE_NUMBER | The new number that you selected in the Twilio console [when you first signed up](/cloud/guides/how-to-use-the-linode-api-with-twilio/#sign-up-for-twilio) |
     | TWILIO_TO_PHONE_NUMBER | Your personal or testing phone number that you signed up to Twilio with. The phone number needs to be entered using [E.164](https://www.twilio.com/docs/glossary/what-e164) formatting. |
-    | LINODE_API_TOKEN | [The Linode API token that you generated](/docs/guides/how-to-use-the-linode-api-with-twilio/#get-a-linode-api-token) and recorded |
+    | LINODE_API_TOKEN | [The Linode API token that you generated](/cloud/guides/how-to-use-the-linode-api-with-twilio/#get-a-linode-api-token) and recorded |
 
 1.  Run the script:
 
@@ -265,7 +265,7 @@ https://www.linode.com/docs/products/platform/get-started/guides/network-transfe
 
 The notification system should be set up to run periodically on its own. By sending periodic notifications, you can be informed of your transfer usage throughout the month.
 
-To run the Python script automatically, set up a cron job on your Linode. [Cron](/docs/guides/schedule-tasks-with-cron/) is a Linux tool that runs processes at different time intervals that you specify.
+To run the Python script automatically, set up a cron job on your Linode. [Cron](/cloud/guides/schedule-tasks-with-cron/) is a Linux tool that runs processes at different time intervals that you specify.
 
 1.  In your SSH session, start the *crontab* editor:
 
@@ -311,7 +311,7 @@ You might want to be informed of your network transfer usage more frequently, or
 
 - Using `* * * * *` would run the task every minute. This is useful if you're testing the script to make sure it works as expected. You probably would not want to keep this schedule after you've finished testing.
 
-Our [Schedule Tasks with Cron](/docs/guides/schedule-tasks-with-cron/) guide shows how other scheduled times can be set.
+Our [Schedule Tasks with Cron](/cloud/guides/schedule-tasks-with-cron/) guide shows how other scheduled times can be set.
 
 After changing the scheduling string, save the crontab file in your text editor and exit the editor.
 
@@ -494,7 +494,7 @@ elif pool_used_ratio > USAGE_NOTIFICATION_THRESHOLD_RATIO:
     {{< note type="secondary" title="About the code" isCollapsible=true >}}
     - Line 3 defines a new overage notification threshold ratio and sets it to `1` (representing 100% of your transfer pool size).
 
-    - Line 4 defines a variable to store the cost of network transfer overage, which is [$.01 per GB](/docs/products/platform/get-started/guides/network-transfer/#usage-costs).
+    - Line 4 defines a variable to store the cost of network transfer overage, which is [$.01 per GB](https://techdocs.akamai.com/cloud-computing/docs/network-transfer-usage-and-costs#usage-costs).
 
     - On line 6, the computed `pool_used_ratio` is compared with the overage threshold ratio number.
 
@@ -541,7 +541,7 @@ When testing, it can also be helpful to change the cron job schedule to run ever
 
 ## Troubleshooting
 
-Several troubleshooting scenarios are outlined in the [Troubleshooting](/docs/guides/how-to-use-the-linode-api-with-twilio/#troubleshooting) section of the [How to Use the Linode API with Twilio](/docs/guides/how-to-use-the-linode-api-with-twilio/) guide. Review that section for possible solutions.
+Several troubleshooting scenarios are outlined in the [Troubleshooting](/cloud/guides/how-to-use-the-linode-api-with-twilio/#troubleshooting) section of the [How to Use the Linode API with Twilio](/cloud/guides/how-to-use-the-linode-api-with-twilio/) guide. Review that section for possible solutions.
 
 As well, the following possible solution may help:
 

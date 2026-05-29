@@ -15,21 +15,21 @@ This guide provides the commands you can use to list tables in MySQL and MariaDB
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. Install MySQL or MariaDB on your server. You can follow our guide on [How to Install MySQL](/docs/guides/how-to-install-mysql-on-debian-8/) or on [How to Install MariaDB](/docs/guides/how-to-install-mariadb-on-debian-9/). Use the **Distribution** drop down at the top of each guide to select the Linux distribution you want to install on.
+1. Install MySQL or MariaDB on your server. You can follow our guide on [How to Install MySQL](/cloud/guides/how-to-install-mysql-on-debian-8/) or on [How to Install MariaDB](/cloud/guides/how-to-install-mariadb-on-debian-9/). Use the **Distribution** drop down at the top of each guide to select the Linux distribution you want to install on.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Connect to a Remote Database
 
- - Check out our guide [How to Connect to a MySQL or MariaDB Database](/docs/guides/mysql-command-line-client/) for the steps to establish a remote connection to your database via the MySQL command line, or CLI tool.
+ - Check out our guide [How to Connect to a MySQL or MariaDB Database](/cloud/guides/mysql-command-line-client/) for the steps to establish a remote connection to your database via the MySQL command line, or CLI tool.
 
-- Refer to our [Install MySQL Workbench for Database Administration](/docs/guides/deploy-mysql-workbench-for-database-administration/) guide for the steps to install MySQL Workbench and use it to connect to your remote database.
+- Refer to our [Install MySQL Workbench for Database Administration](/cloud/guides/deploy-mysql-workbench-for-database-administration/) guide for the steps to install MySQL Workbench and use it to connect to your remote database.
 
 ## How to List Tables in MySQL or MariaDB
 
@@ -80,7 +80,7 @@ The example below connects to the database as `example_user` and uses the MySQL 
 
 1. Open the MySQL Workbench, and select the connection you set up for the database.
 
-    If you have not set up the database connection yet, follow the steps in the [How to Connect to a Remote Database](/docs/guides/list-tables-in-mysql-and-mariadb/#how-to-connect-to-a-remote-database) guide first.
+    If you have not set up the database connection yet, follow the steps in the [How to Connect to a Remote Database](/cloud/guides/list-tables-in-mysql-and-mariadb/#how-to-connect-to-a-remote-database) guide first.
 
 1. In the query field, enter the following MySQL command:
 
@@ -99,4 +99,4 @@ The example below connects to the database as `example_user` and uses the MySQL 
 
 ## Conclusion
 
-To learn more about working with MySQL/MariaDB, take a look through our extensive [list of MySQL guides](/docs/guides/databases/mysql/). You can find plenty of resources there to solve common database related issues, sharpen your skills, and become more proficient with managing your database.
+To learn more about working with MySQL/MariaDB, take a look through our extensive [list of MySQL guides](/cloud/guides/databases/mysql/). You can find plenty of resources there to solve common database related issues, sharpen your skills, and become more proficient with managing your database.

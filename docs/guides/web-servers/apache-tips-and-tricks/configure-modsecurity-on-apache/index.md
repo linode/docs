@@ -27,7 +27,7 @@ Although ModSecurity comes with a default configuration, this guide will use OWA
 
 ## Install ModSecurity
 
-Before you install ModSecurity, you will need to have Apache installed on your Linode. This guide will use a LAMP stack; for installation instructions, see the [LAMP Guides](/docs/websites/lamp/).
+Before you install ModSecurity, you will need to have Apache installed on your Linode. This guide will use a LAMP stack; for installation instructions, see the [LAMP Guides](/cloud/websites/lamp/).
 
 
 ### Ubuntu or Debian

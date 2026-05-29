@@ -18,7 +18,7 @@ marketplace_app_name: "HashiCorp Nomad Cluster"
 {{< note type="warning" title="Quick Deploy App Cluster Notice" >}}
 This Quick Deploy App deploys 6 Compute Instances to create a highly available, redundant Hashicorp Nomad Cluster. The plan type and size you select is applied to each individual instance.
 
-Please be aware that each Compute Instance will appear on your invoice as a separate item. If you would rather deploy Hashicorp Nomad on a single Compute Instance, see [Deploy Hashicorp Nomad](/docs/marketplace-docs/guides/hashicorp-nomad/).
+Please be aware that each Compute Instance will appear on your invoice as a separate item. If you would rather deploy Hashicorp Nomad on a single Compute Instance, see [Deploy Hashicorp Nomad](/cloud/marketplace-docs/guides/hashicorp-nomad/).
 {{< /note >}}
 
 ## Deploying a Quick Deploy App
@@ -40,7 +40,7 @@ Please be aware that each Compute Instance will appear on your invoice as a sepa
 
 ### Nomad Cluster Options
 
-- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) to create one.
+- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) to create one.
 
 - **Limited sudo user** *(required)*: A limited user account with sudo access is created as part of this cluster deployment. Enter your preferred username for this limited user. The sudo password is automatically created and stored in the `~/.deployment_secrets.txt` file. See [Accessing the Nomad Web UI](#accessing-the-nomad-web-ui) below.
 
@@ -75,7 +75,7 @@ Please be aware that each Compute Instance will appear on your invoice as a sepa
     ```
     In this file, there are multiple generated tokens, as well as your limited sudo user password. These tokens are used for authenticating to the Nomad Web UI, adding Nomad clients to the cluster, managing jobs, and managing the Consul service mesh. Save the contents of this file somewhere secure as you will need the tokens later.
 
-1.  Open your web browser and navigate to `http://[rDNS]`, where `[rDNS]` is the reverse DNS address of your Compute Instance labeled `server-1`. See our [How to Configure rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/) guide for more information about viewing and editing rDNS.
+1.  Open your web browser and navigate to `http://[rDNS]`, where `[rDNS]` is the reverse DNS address of your Compute Instance labeled `server-1`. See our [How to Configure rDNS](https://techdocs.akamai.com/cloud-computing/docs/configure-rdns-reverse-dns-on-a-compute-instance) guide for more information about viewing and editing rDNS.
 
 1.  The [Nomad Web UI](https://learn.hashicorp.com/collections/nomad/web-ui) should be displayed with a link to enter a token. Click the token link, and enter the `nomad_user_token` from the `~/.deployment-secrets.txt` file (see above) to authenticate to the UI.
 
@@ -96,6 +96,6 @@ Please be aware that each Compute Instance will appear on your invoice as a sepa
 
 The HashiCorp Nomad Cluster provides default configurations to get you started. We recommend reviewing HashiCorp's [Configuration](https://www.nomadproject.io/docs/configuration) and [Job Spec](https://www.nomadproject.io/docs/job-specification) documentation to customize your Nomad Cluster for your specific workload.
 
-If you find that you need additional Clients for your Nomad Cluster, the [Nomad Clients Cluster](/docs/marketplace-docs/guides/hashicorp-nomad-clients-cluster/) deployment lets you scale horizontally by deploying 3, 5, or 7 additional Compute Instances as Clients.
+If you find that you need additional Clients for your Nomad Cluster, the [Nomad Clients Cluster](/cloud/marketplace-docs/guides/hashicorp-nomad-clients-cluster/) deployment lets you scale horizontally by deploying 3, 5, or 7 additional Compute Instances as Clients.
 
 {{% content "marketplace-update-note-shortguide" %}}

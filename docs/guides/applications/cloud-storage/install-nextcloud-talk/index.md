@@ -63,7 +63,7 @@ Nextcloud Talk is built using [WebRTC](https://simplewebrtc.com/), and works in 
 
 3.  Click this icon to enter Talk and allow the use of your system's camera and microphone when prompted. Once this is done, you will be able to start a chat or video call with any of the users you have created.
 
-The basic configuration here allows you to make video calls using Firefox. Google Chrome requires an HTTPS connection in order to allow access to the camera and microphone. To do this, create an [SSL certificate](/docs/security/ssl/) or place Nextcloud behind a [reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/).
+The basic configuration here allows you to make video calls using Firefox. Google Chrome requires an HTTPS connection in order to allow access to the camera and microphone. To do this, create an [SSL certificate](/cloud/security/ssl/) or place Nextcloud behind a [reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/).
 
 ## Docker Compose
 

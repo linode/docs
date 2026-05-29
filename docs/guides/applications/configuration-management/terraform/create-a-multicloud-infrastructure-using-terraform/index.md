@@ -57,14 +57,14 @@ Code that declares the final state of your desired infrastructure is referred to
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. You need a personal access token for [Linode’s API v4](https://techdocs.akamai.com/linode-api/reference/api) to use with Terraform and the Terraform Linode Provider. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
+1. You need a personal access token for [Linode’s API v4](https://techdocs.akamai.com/linode-api/reference/api) to use with Terraform and the Terraform Linode Provider. Follow the [Getting Started with the Linode API](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token) to get a token.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Downloading Terraform on your Linode Server
@@ -73,7 +73,7 @@ In this section, you install Terraform on an Ubuntu 24.04 LTS Linode. These step
 
 To download Terraform on a Linode server, follow the steps below:
 
-1. [Login to the Linode server via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). This is the Linode server where you want to install Terraform. Replace `192.0.2.0` with your [Linode's IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/).
+1. [Login to the Linode server via SSH](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance). This is the Linode server where you want to install Terraform. Replace `192.0.2.0` with your [Linode's IP address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance).
 
        ssh username@192.0.2.0
 
@@ -198,7 +198,7 @@ The following steps explain how you can construct a multicloud configuration con
         cd terraform
         vi linode-terraform.tf
 
-1. At the top of the file, add a `terraform` block to define the [Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs), followed by the declaration of the Linode provider itself. Within the provider block, add the `token` declaration. See Linode’s guide on [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to learn how to create an API token, if you have not done so already.
+1. At the top of the file, add a `terraform` block to define the [Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs), followed by the declaration of the Linode provider itself. Within the provider block, add the `token` declaration. See Linode’s guide on [Getting Started with the Linode API](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token) to learn how to create an API token, if you have not done so already.
 
     {{< note title ="Linode Provider Version 3.0.0" >}}
     As of June, 2025, the Linode Terraform Provider version is 3.0.0. To determine the current version, see the [Linode Namespace](https://registry.terraform.io/namespaces/linode) in the Terraform Registry.
@@ -241,7 +241,7 @@ resource  "linode_instance"  "terraform" {
 
 1. The full `linode-terraform.tf` file, including both the `provider` and `resource` sections, is shown below.
 
-    These configurations create a Linode 2GB labeled `terraform-example` and place it in the `terraform` Linodes group. You can replace the values with your own desired values. Lists of the allowable values for each of the fields, such as the `region`, are found in the [*Linode API*](/docs/api/linode-instances/).
+    These configurations create a Linode 2GB labeled `terraform-example` and place it in the `terraform` Linodes group. You can replace the values with your own desired values. Lists of the allowable values for each of the fields, such as the `region`, are found in the [*Linode API*](/cloud/api/linode-instances/).
 
     {{< file "~/terraform/linode-terraform.tf" >}}
 
@@ -761,7 +761,7 @@ This command permanently deletes your resources. This operation cannot be undone
 
 Terraform is revolutionizing the DevOps ecosystem by transforming the way infrastructure is managed. It offers many advanced techniques to help streamline common IaC tasks. For instance, Terraform modules can package frequently-used configuration tasks together.
 
-See Linode's [Guide to Creating a Terraform Module](/docs/guides/create-terraform-module/) for instructions on how to create a module.
+See Linode's [Guide to Creating a Terraform Module](/cloud/guides/create-terraform-module/) for instructions on how to create a module.
 
 **Useful References:**
 

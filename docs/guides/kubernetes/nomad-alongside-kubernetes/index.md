@@ -14,7 +14,7 @@ external_resources:
 
 Kubernetes and Nomad are both orchestration tools that each come with a compelling set of features. Despite some overlap, each tool has unique strengths and a favorable set of use cases.
 
-Review our [Kubernetes vs Nomad?](/docs/guides/kubernetes-vs-nomad/) article to see how Kubernetes and Nomad excel in different orchestration areas.
+Review our [Kubernetes vs Nomad?](/cloud/guides/kubernetes-vs-nomad/) article to see how Kubernetes and Nomad excel in different orchestration areas.
 
 As that guide points out, there are cases where you may want the benefits of both tools side-by-side. While you can accomplish this with two distinct parallel setups, it's also possible to directly run Nomad on a Kubernetes cluster.
 
@@ -26,7 +26,7 @@ Kubernetes tends to be best for large and complicated applications, but it is re
 
 Many organizations can effectively leverage both use cases. Often, you need to run more than just large and containerized applications. You may need to orchestrate batch applications or other non-containerized applications that benefit from a higher degree of flexibility.
 
-Running a distinct Nomad cluster in addition to a Kubernetes cluster is a possibility for handling this. Learn everything you need to get started with a Nomad cluster in our guide [How to Use Nomad for Container Orchestration](/docs/guides/using-nomad-for-orchestration/).
+Running a distinct Nomad cluster in addition to a Kubernetes cluster is a possibility for handling this. Learn everything you need to get started with a Nomad cluster in our guide [How to Use Nomad for Container Orchestration](/cloud/guides/using-nomad-for-orchestration/).
 
 However, that model may be restrictive, and price-inefficient depending on your needs.
 
@@ -46,11 +46,11 @@ The infrastructure in this tutorial builds on a Kubernetes base. For that reason
 
 The most straightforward way to deploy a Kubernetes cluster with Linode is using the Linode Kubernetes Engine (LKE). LKE lets you configure and deploy a full Kubernetes cluster through the Linode Cloud Manager.
 
-Learn how to deploy an LKE cluster through our guide [Linode Kubernetes Engine - Getting Started](/docs/products/compute/kubernetes/get-started/).
+Learn how to deploy an LKE cluster through our guide [Linode Kubernetes Engine - Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine).
 
 The present tutorial assumes you followed the guide above to create an LKE cluster with three nodes. The tutorial has been tested with Dedicated 4GB nodes, but that can be adjusted to fit your needs.
 
-For an alternative method to deploy a Kubernetes cluster onto Linode, see our guide [Using kubeadm to Deploy a Kubernetes Cluster](/docs/guides/deploy-kubernetes-cluster-using-kubeadm/). The guide covers using the `kubeadm` tool to set up a cluster, but the guide also highlights and links to further options for Kubernetes deployments.
+For an alternative method to deploy a Kubernetes cluster onto Linode, see our guide [Using kubeadm to Deploy a Kubernetes Cluster](/cloud/guides/deploy-kubernetes-cluster-using-kubeadm/). The guide covers using the `kubeadm` tool to set up a cluster, but the guide also highlights and links to further options for Kubernetes deployments.
 
 This tutorial additionally requires that `kubectl` is installed locally and set up with the `kubeconfig` file to connect to your LKE cluster. Learn more about this in the guides linked above, depending on your method for setting up the Kubernetes cluster.
 
@@ -58,7 +58,7 @@ This tutorial additionally requires that `kubectl` is installed locally and set 
 
 Nomad typically uses [Consul](https://www.consul.io/) for network discovery. Fortunately, a Consul mesh can be set up on a Kubernetes cluster with relative ease through the official Helm chart.
 
-Learn more about setting up a Consul service mesh on Kubernetes through our guide [Install HashiCorp Consul Service Mesh](/docs/guides/how-to-install-hashicorp-consul-service-mesh/).
+Learn more about setting up a Consul service mesh on Kubernetes through our guide [Install HashiCorp Consul Service Mesh](/cloud/guides/how-to-install-hashicorp-consul-service-mesh/).
 
 The steps that follow are based on those covered in the guide above. Some alterations have been made and more specifics given to fit smoothly with Nomad on the cluster.
 

@@ -24,15 +24,15 @@ This guide shows a first example of how to send data from the Linode API to the 
 
 1. The code example in this guide uses Python 3. The examples were tested on version 3.6. Make sure you install Python 3.6 or newer on your workstation. Linode has guides that show how to install Python 3 or verify that you have it installed on several Linux distributions:
 
-    - [How to Install Python 3 on Ubuntu 20.04](/docs/guides/how-to-install-python-on-ubuntu-20-04)
+    - [How to Install Python 3 on Ubuntu 20.04](/cloud/guides/how-to-install-python-on-ubuntu-20-04)
 
-    - [How to Install Python 3 on Debian 10](/docs/guides/how-to-install-python-on-debian-10)
+    - [How to Install Python 3 on Debian 10](/cloud/guides/how-to-install-python-on-debian-10)
 
-    - [How to Install Python 3 on CentOS 8](/docs/guides/how-to-install-python-on-centos-8)
+    - [How to Install Python 3 on CentOS 8](/cloud/guides/how-to-install-python-on-centos-8)
 
     On Windows, Python can be downloaded [from the Windows Store](https://www.microsoft.com/en-us/p/python-39/9p7qfqmjrfp7?activetab=pivot:overviewtab).
 
-1. This guide uses the [pip3](https://pip.pypa.io/en/stable/installation/) tool to install dependencies for the example code. Our [Managing Python Packages and Versions on Linux](/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/) guide shows how to install and use pip3 on Linux. On Windows, pip3 is automatically installed when you install Python [from the Windows Store](https://www.microsoft.com/en-us/p/python-39/9p7qfqmjrfp7?activetab=pivot:overviewtab). This guide does not use a [Python virtual environment](/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/#manage-virtual-environments-in-linux), but you can alter the instructions if you prefer to use one.
+1. This guide uses the [pip3](https://pip.pypa.io/en/stable/installation/) tool to install dependencies for the example code. Our [Managing Python Packages and Versions on Linux](/cloud/guides/how-to-manage-packages-and-virtual-environments-on-linux/) guide shows how to install and use pip3 on Linux. On Windows, pip3 is automatically installed when you install Python [from the Windows Store](https://www.microsoft.com/en-us/p/python-39/9p7qfqmjrfp7?activetab=pivot:overviewtab). This guide does not use a [Python virtual environment](/cloud/guides/how-to-manage-packages-and-virtual-environments-on-linux/#manage-virtual-environments-in-linux), but you can alter the instructions if you prefer to use one.
 
 1. An active phone number is needed to sign up for a Twilio account, so be sure to have one if you want to implement the code example.
 
@@ -98,7 +98,7 @@ Before you can work with the Linode API, you need a personal access token that i
 
 Your Linode account does not have any personal access tokens by default. To create a new token:
 
-1. Follow our [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) instructions. For the code example in this guide, you should create a token that has **Read Only** access to the **Account** resource.
+1. Follow our [Get an API Access Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) instructions. For the code example in this guide, you should create a token that has **Read Only** access to the **Account** resource.
 
 1. When you have created the token, it is displayed in your browser. Unlike the Twilio access token, you are not able to view the token in your browser after you have closed this page. Be sure to copy the token into a temporary text file or a password manager on your computer. Later in this guide, you add this token to the example code.
 
@@ -262,7 +262,7 @@ The code example is now complete. The completed example should look like the cod
 
 ### Run the Code
 
-1. Before you run the script, set the [environment variables](/docs/guides/how-to-set-linux-environment-variables/) that the script expects in your terminal:
+1. Before you run the script, set the [environment variables](/cloud/guides/how-to-set-linux-environment-variables/) that the script expects in your terminal:
 
     {{< tabs >}}
     {{< tab "Linux and macOS" >}}

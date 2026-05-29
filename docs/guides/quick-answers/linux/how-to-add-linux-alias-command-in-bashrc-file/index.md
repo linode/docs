@@ -24,7 +24,7 @@ This guide covers two ways to alias commands:
 
 There are two ways to create aliases for your use, temporary and permanent. Temporary aliases are only available to use until you close your current terminal session. Permanent aliases are saved to the shell configuration file and are available for every new session you create.
 
-Again, temporary aliases are only good for the current terminal session. Once you close that session, they are no longer available. To make them permanent, you can save your aliases in the shell configuration file. You can read more about temporary aliases in our general guide on aliases, [How to Use the Linux alias Command](/docs/guides/how-to-use-the-linux-alias-command/).
+Again, temporary aliases are only good for the current terminal session. Once you close that session, they are no longer available. To make them permanent, you can save your aliases in the shell configuration file. You can read more about temporary aliases in our general guide on aliases, [How to Use the Linux alias Command](/cloud/guides/how-to-use-the-linux-alias-command/).
 
 In the Bash shell, you can save aliases directly in a configuration file. There are several files you can save aliases to:
 
@@ -150,4 +150,4 @@ Then run the function with the following syntax:
 
 You are changed into that directory and get a directory listing with common options with a single command.
 
-These are a simplistic examples meant to illustrate what you can achieve with aliasing. Bash functions are powerful and allow you to do much more complex operations. For more on Bash shell scripting, see the guide series starting with [Introduction to Bash Shell Scripting](/docs/guides/intro-bash-shell-scripting/).
+These are a simplistic examples meant to illustrate what you can achieve with aliasing. Bash functions are powerful and allow you to do much more complex operations. For more on Bash shell scripting, see the guide series starting with [Introduction to Bash Shell Scripting](/cloud/guides/intro-bash-shell-scripting/).

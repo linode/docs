@@ -21,9 +21,9 @@ With this guide, learn what Ember has to offer and how it structures its applica
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
@@ -40,7 +40,7 @@ With this guide, learn what Ember has to offer and how it structures its applica
         ```
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is the Ember Framework?
@@ -79,7 +79,7 @@ But Ember does have tools that you likely want to install to make working with E
 
 These steps walk you through installing the Ember tooling.
 
-1. Follow our tutorial on how to [Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/).
+1. Follow our tutorial on how to [Install and Use the Node Package Manager (NPM) on Linux](/cloud/guides/install-and-use-npm-on-linux/).
 
 1. Install the Ember command-line (CLI) tool as a global NPM package:
 
@@ -138,9 +138,9 @@ Ember serves the application on port `4200` by default. You can access the appli
 {{< note >}}
 To access this remotely, you may first need to open the port in your system's firewall. You can learn about how to do that in one of the guides linked below, depending on your system's Linux distribution.
 
-- For **Debian** and **Ubuntu**, refer to our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
+- For **Debian** and **Ubuntu**, refer to our guide on [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/).
 
-- For **AlmaLinux**, **CentOS**, and **Fedora**, refer to our guide on [Enabling and Configuring FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/)
+- For **AlmaLinux**, **CentOS**, and **Fedora**, refer to our guide on [Enabling and Configuring FirewallD on CentOS](/cloud/guides/introduction-to-firewalld-on-centos/)
 {{< /note >}}
 
 ![Ember welcome page](ember-default-app.png)

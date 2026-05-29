@@ -23,7 +23,7 @@ A wide variety of filters can be added to the `rsync` command line. File managem
 
 On Linux and Unix-derivative operating systems, file movement is accomplished with FTP/SFTP, `scp`, `cp`, `mv`, and other tools, but these lack `rsync` file filters and options. Rsync jobs permit strong filtration and tailoring for backup, data file set synchronization and archiving using these filters. Importantly, `rsync` does not require root or sudo permission(s) although they are confined by the user permissions of the account invoking `rsync`.
 
-To learn more about `rsync`, see our [Introduction to Rsync guide](/docs/guides/introduction-to-rsync).
+To learn more about `rsync`, see our [Introduction to Rsync guide](/cloud/guides/introduction-to-rsync).
 
 ## Basic Command Syntax and Implications
 

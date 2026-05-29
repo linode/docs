@@ -14,7 +14,7 @@ external_resources:
 - '[A brief YAML reference](https://camel.readthedocs.io/en/latest/yamlref.html)'
 ---
 
-YAML is a data interchange language commonly used in configuration files. It is used with configuration management tools like [Ansible](/docs/guides/applications/configuration-management/ansible/) and container orchestration tools, like [Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/). YAML 1.2 is a superset of JSON, and is extensible with custom data types. Since YAML is very popular with automated builds and [continuous delivery](/docs/guides/introduction-ci-cd/), you can find YAML files used through many public GitHub repositories. This reference guide serves as an introduction to YAML, and provides examples to clarify the language's characteristics.
+YAML is a data interchange language commonly used in configuration files. It is used with configuration management tools like [Ansible](/cloud/guides/applications/configuration-management/ansible/) and container orchestration tools, like [Kubernetes](/cloud/guides/beginners-guide-to-kubernetes-part-1-introduction/). YAML 1.2 is a superset of JSON, and is extensible with custom data types. Since YAML is very popular with automated builds and [continuous delivery](/cloud/guides/introduction-ci-cd/), you can find YAML files used through many public GitHub repositories. This reference guide serves as an introduction to YAML, and provides examples to clarify the language's characteristics.
 
 Consider the example snippet from a Kubernetes YAML file:
 
@@ -31,7 +31,7 @@ This YAML file defines the version of the API in use, the kind of Kubernetes res
 
 ## Getting Started with YAML
 
-YAML works across operating systems, virtual environments, and data platforms. It is used most often to control how systems operate. For instance, you can configure [GitHub Actions](/docs/guides/kubernetes/) using YAML. The metadata you define in a GitHub Actions YAML file identifies the inputs and outputs needed to complete tasks in your GitHub repository.
+YAML works across operating systems, virtual environments, and data platforms. It is used most often to control how systems operate. For instance, you can configure [GitHub Actions](/cloud/guides/kubernetes/) using YAML. The metadata you define in a GitHub Actions YAML file identifies the inputs and outputs needed to complete tasks in your GitHub repository.
 
 You can also use YAML for data interchange. You might use YAML as a data format for transmission of an invoice, for recording the instantaneous state of a long-lasting game, or for communication between subsystems in complex physical machinery.
 

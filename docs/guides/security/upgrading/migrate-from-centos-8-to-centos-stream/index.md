@@ -77,7 +77,7 @@ Alternatively, ISO images or RPM packages can be downloaded from [The CentOS Dow
         sudo dnf update -y
         sudo reboot
 
-1. Ensure the Linode is running a recent version of CentOS 8. If it is still running CentOS 7, [upgrade to version 8](/docs/guides/how-to-upgrade-from-centos-7-to-centos-8/) first.
+1. Ensure the Linode is running a recent version of CentOS 8. If it is still running CentOS 7, [upgrade to version 8](/cloud/guides/how-to-upgrade-from-centos-7-to-centos-8/) first.
 
         cat /etc/centos-release
     {{< output >}}

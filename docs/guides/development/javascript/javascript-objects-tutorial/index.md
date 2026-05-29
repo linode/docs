@@ -18,7 +18,7 @@ Objects play a fundamental role in JavaScript and appear just about everywhere t
 
 ## Before You Begin
 
-This guide's JavaScript examples were originally run in the Node.js interpreter. You can use our [How to Install and Use the Node Version Manager NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide to install Node.js on your computer.
+This guide's JavaScript examples were originally run in the Node.js interpreter. You can use our [How to Install and Use the Node Version Manager NVM](/cloud/guides/how-to-install-use-node-version-manager-nvm/) guide to install Node.js on your computer.
 
 Alternatively, you can use your web browser's JavaScript console to run this guide's example JavaScript code.
 
@@ -126,7 +126,7 @@ JavaScript offers you a few different ways to create objects. Each one has its o
 
 ### Using an Initializer
 
-Object initializers provide the most direct approach for creating an object. You can see it used to declare the `house` example in the [JavaScript Object Properties](/docs/guides/javascript-objects-tutorial/#javascript-object-properties) section. With this approach, you declare your object as a variable using object literal notation.
+Object initializers provide the most direct approach for creating an object. You can see it used to declare the `house` example in the [JavaScript Object Properties](/cloud/guides/javascript-objects-tutorial/#javascript-object-properties) section. With this approach, you declare your object as a variable using object literal notation.
 
 It has the advantage of being straightforward and is useful when declaring a standalone object that does not need inheritance.
 

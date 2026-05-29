@@ -23,14 +23,14 @@ relations:
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. In the examples that follow, change `192.0.2.0` to the IP address for your CentOS 8 machine.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install a Desktop GUI
@@ -116,7 +116,7 @@ VNC connections are, by default, unencrypted. Therefore, you should use *SSH tun
 
 The steps for SSH tunneling vary based on the operating system of the machine you are using to connect to the VNC server.
 
-See [Setting up an SSH Tunnel with Your Linode for Safe Browsing](/docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) guide for more details and information on using SSH tunneling.
+See [Setting up an SSH Tunnel with Your Linode for Safe Browsing](/cloud/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) guide for more details and information on using SSH tunneling.
 
 ### Linux and macOS
 
@@ -150,7 +150,7 @@ Of the VNC client options for macOS and Windows, [RealVNC Viewer](https://www.re
 
     ![Entering a host address in RealVNC Viewer](realvnc-enter-host.png)
 
-1. You are notified that the connection is unencrypted. However, the steps in the [Secure Your VNC Connection](/docs/guides/centos-install-and-configure-vnc-server/#secure-your-vnc-connection) section above ensure that your connection is securely tunneled. Click **Continue**.
+1. You are notified that the connection is unencrypted. However, the steps in the [Secure Your VNC Connection](/cloud/guides/centos-install-and-configure-vnc-server/#secure-your-vnc-connection) section above ensure that your connection is securely tunneled. Click **Continue**.
 
     ![Notification of unencrypted connection in RealVNC Viewer](realvnc-unencrypted-notification.png "Notification of unencrypted connection in RealVNC Viewer.")
 

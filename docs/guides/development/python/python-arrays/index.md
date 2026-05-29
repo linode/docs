@@ -37,11 +37,11 @@ When creating an array in Python, you must indicate the type of data to be store
 
 Generally, though, for arrays containing numbers, you can focus on using just two of the available codes. Use the `i` code for arrays containing integers. Use the `d` code for arrays containing floating point numbers.
 
-You can see an example showing how to use a code to initiate an array at the beginning of the [How to Use Arrays in Python](/docs/guides/python-arrays/#how-to-use-arrays-in-python) section of this guide.
+You can see an example showing how to use a code to initiate an array at the beginning of the [How to Use Arrays in Python](/cloud/guides/python-arrays/#how-to-use-arrays-in-python) section of this guide.
 
 ### Python Arrays vs. Lists
 
-Often, people talking about arrays in Python are actually referring to [Python *lists*](/docs/guides/python-lists-and-how-to-use-them/). While lists and arrays share some similarities in Python, they are two distinct types of collections.
+Often, people talking about arrays in Python are actually referring to [Python *lists*](/cloud/guides/python-lists-and-how-to-use-them/). While lists and arrays share some similarities in Python, they are two distinct types of collections.
 
 The main difference between lists and arrays is that arrays constrain the object type it can store. Lists do not give you a way to limit the types of objects they contain. When using an array, you can be sure that it only contains the type that was specified upon creation.
 
@@ -114,7 +114,7 @@ The next example slices the range from index `0` through index `3`. It progresse
 array('i', [2, 6])
 {{< /output >}}
 
-Python's slice notation is a powerful tool that can be used to perform many more complicated operations than demonstrated in this guide. To see more examples with in-depth explanations, check out our guides [How to Slice and Index Strings in Python](/docs/guides/how-to-slice-and-index-strings-in-python/) and [Python Lists and How to Use Them](/docs/guides/python-lists-and-how-to-use-them/). While these guides do not deal directly with Python arrays, the concepts apply equally well.
+Python's slice notation is a powerful tool that can be used to perform many more complicated operations than demonstrated in this guide. To see more examples with in-depth explanations, check out our guides [How to Slice and Index Strings in Python](/cloud/guides/how-to-slice-and-index-strings-in-python/) and [Python Lists and How to Use Them](/cloud/guides/python-lists-and-how-to-use-them/). While these guides do not deal directly with Python arrays, the concepts apply equally well.
 
 #### Looping Over Array Elements
 

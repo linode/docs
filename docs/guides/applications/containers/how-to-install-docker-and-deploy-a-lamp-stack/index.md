@@ -21,7 +21,7 @@ Docker is a container platform for applications. With Docker, users can download
 
 ![How to Install Docker and deploy a LAMP Stack](how-to-install-docker-and-deploy-a-lamp-stack.png)
 
-*If you are familiar with Docker containers, also try [Linode Images](/docs/products/tools/images/) to capture and deploy larger system profiles.*
+*If you are familiar with Docker containers, also try [Linode Images](https://techdocs.akamai.com/cloud-computing/docs/images) to capture and deploy larger system profiles.*
 
 ## Install Prerequisites
 Due to a [known issue](https://github.com/docker/docker/issues/23347) with the dependencies of the docker .deb, installing docker on a Debian/Ubuntu VM requires an additional step:
@@ -45,7 +45,7 @@ Warning: current kernel is not supported by the linux-image-extra-virtual
           linux-image-virtual kernel and linux-image-extra-virtual for AUFS support.
           + sleep 10
 
-This message can be safely ignored, as the script will continue the installation using DeviceMapper or OverlayFS.  If you require AUFS support, you will need to configure a [distribution supplied](/docs/guides/run-a-distributionsupplied-kernel-with-pvgrub/) or [custom compiled](/docs/guides/custom-compiled-kernel-with-pvgrub-debian-ubuntu/) kernel.
+This message can be safely ignored, as the script will continue the installation using DeviceMapper or OverlayFS.  If you require AUFS support, you will need to configure a [distribution supplied](/cloud/guides/run-a-distributionsupplied-kernel-with-pvgrub/) or [custom compiled](/cloud/guides/custom-compiled-kernel-with-pvgrub-debian-ubuntu/) kernel.
 {{< /note >}}
 
 2.  If necessary, add the non-root user to the "docker" group:
@@ -94,4 +94,4 @@ Congratulations, you have installed a configured LAMP stack using Docker!
 
 
 ## Where to Find Configuration Settings
-The LAMP image was installed using the [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide on a Ubuntu container. The configuration files and settings can be found there, or on the [Docker Hub linode/lamp](https://registry.hub.docker.com/u/linode/lamp/) page.
+The LAMP image was installed using the [Hosting a Website](/cloud/guides/hosting-a-website-ubuntu-18-04/) guide on a Ubuntu container. The configuration files and settings can be found there, or on the [Docker Hub linode/lamp](https://registry.hub.docker.com/u/linode/lamp/) page.

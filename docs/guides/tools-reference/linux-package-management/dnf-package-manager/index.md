@@ -33,12 +33,12 @@ This guide aims to familiarize you with the DNF commands you are most likely to 
 
 Before running the commands within this guide, you will need:
 
-1. **A system running on CentOS/RHEL 8, AlmaLinux 8, Rocky Linux 8, Fedora 22, or later versions of these distributions.** Other Linux distributions that employ the DNF package manager can also be used. Review the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide if you do not yet have a compatible system.
+1. **A system running on CentOS/RHEL 8, AlmaLinux 8, Rocky Linux 8, Fedora 22, or later versions of these distributions.** Other Linux distributions that employ the DNF package manager can also be used. Review the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide if you do not yet have a compatible system.
 
-1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
+1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/cloud/guides/connect-to-server-over-ssh/) or [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish). Review the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide for assistance on creating and securing a standard user account.
 
 {{< note >}}
-Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
+Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 
 ## Upgrade Packages
@@ -123,7 +123,7 @@ DNF provides numerous options in common between many of its commands. The exampl
 
             sudo dnf list recent
 
-    -   You can also give the name of a package along with the `--showduplicates` flag. This gives a list of available versions of the package. You can see a version of this command used in the [Useful Options](/docs/guides/dnf-package-manager/#useful-options) section above. The example below shows all of the versions of Git available in DNF's repositories:
+    -   You can also give the name of a package along with the `--showduplicates` flag. This gives a list of available versions of the package. You can see a version of this command used in the [Useful Options](/cloud/guides/dnf-package-manager/#useful-options) section above. The example below shows all of the versions of Git available in DNF's repositories:
 
             sudo dnf list git --showduplicates
 

@@ -16,7 +16,7 @@ aliases: ['/databases/mysql/create-physical-backups-of-your-mariadb-or-mysql-dat
 
 While the `mysqldump` tool is the preferred backup method for a MariaDB or MySQL database or database system it only works when the database server is accessible and running. If the database cannot be started or the host system is inaccessible, the database can still be copied directly.
 
-A *physical backup* is often necessary in situations when you only have access to a recovery environment (such as [Finnix](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/)) where you mount your system's disks as external storage devices. If you want to read about *logical backups* using `mysqldump`, [see our guide](/docs/guides/mysqldump-backups/) on the topic.
+A *physical backup* is often necessary in situations when you only have access to a recovery environment (such as [Finnix](https://techdocs.akamai.com/cloud-computing/docs/rescue-and-rebuild)) where you mount your system's disks as external storage devices. If you want to read about *logical backups* using `mysqldump`, [see our guide](/cloud/guides/mysqldump-backups/) on the topic.
 
 For simplification, the name MySQL will be used throughout this guide but the instructions will work for both MySQL and MariaDB.
 

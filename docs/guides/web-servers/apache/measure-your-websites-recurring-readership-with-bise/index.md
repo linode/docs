@@ -66,13 +66,13 @@ So, if your website's logs indicate that a user at a certain IP address spent a 
 
 To use Bise, you should have the following:
 
-* A website running on Apache, or another web server configured to write out its access logs in the Common Log Format. Visit the [Apache section](/docs/web-servers/apache/) for help with installing Apache.
+* A website running on Apache, or another web server configured to write out its access logs in the Common Log Format. Visit the [Apache section](/cloud/web-servers/apache/) for help with installing Apache.
 
 * Access to those logs! Bise needs read-access to those log files in order to work. The [If You Don't Have Read-Access to the Logs](#if-you-don-t-have-read-access-to-the-logs) section will provide suggestions if you don't currently have read access.
 
-* [Cpanminus](/docs/guides/manage-cpan-modules-with-cpan-minus/), to install Bise's prerequisite libraries.
+* [Cpanminus](/cloud/guides/manage-cpan-modules-with-cpan-minus/), to install Bise's prerequisite libraries.
 
-* [Cron](/docs/guides/schedule-tasks-with-cron/), if you plan to run Bise on a regular schedule. Any Linux machine almost certainly has this installed as well.
+* [Cron](/cloud/guides/schedule-tasks-with-cron/), if you plan to run Bise on a regular schedule. Any Linux machine almost certainly has this installed as well.
 
     {{< note respectIndent=false >}}
 Any other scheduling software that can run command-line scripts for you will also work, but this guide will demonstrate using Bise with Cron, specifically.
@@ -90,7 +90,7 @@ At the time of this writing, Bise lacks any kind of one-step installation soluti
         git clone https://github.com/jmacdotorg/bise.git
 
     {{< note respectIndent=false >}}
-You can follow the [How to Install Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) guide if `git` is not installed on your system.
+You can follow the [How to Install Git](/cloud/guides/how-to-install-git-on-linux-mac-and-windows/) guide if `git` is not installed on your system.
 {{< /note >}}
 
 1. In your terminal, set your current working directory to your new `bise` directory:
@@ -115,7 +115,7 @@ Install Bise's prerequisites using `cpanm`:
 
 - **If you do not have `cpanm` installed**, then you have two options:
 
-    * Install `cpanm`, as described in [this Linode guide](/docs/guides/manage-cpan-modules-with-cpan-minus/). Then, run the command described above.
+    * Install `cpanm`, as described in [this Linode guide](/cloud/guides/manage-cpan-modules-with-cpan-minus/). Then, run the command described above.
 
     * Run this command, which will load and run a temporary copy of `cpanm` and then proceed to install Bise's dependencies:
 
@@ -272,7 +272,7 @@ If you're happy with the behavior of the default rows, you can certainly continu
 There are four kinds of rows you can define, each of which examines a different part of your access logs. These correspond to the values for the `test_type` parameter: [`path`](#test_type-path), [`path_regex`](#test_type-path_regex), [`referer_regex`](#test_type-referer_regex), and [`agent_regex`](#test_type-agent_regex).
 
 {{< note >}}
-Three of the row types involve the use of regular expressions. You should probably understand [the basics of this text-processing technology](/docs/guides/how-to-use-grep-command/#regular-expression-overview) before defining your own row definitions with any of these types.
+Three of the row types involve the use of regular expressions. You should probably understand [the basics of this text-processing technology](/cloud/guides/how-to-use-grep-command/#regular-expression-overview) before defining your own row definitions with any of these types.
 
 Note also that Bise ignores whitespace in regular expressions, allowing you to write more complex regexes with inline comments, as one of the examples below will illustrate.
 {{< /note >}}
@@ -342,7 +342,7 @@ The configuration file lets you set these optional directives as well:
 
 ## Running Bise as a cron Task
 
-Once you have Bise creating meaningful reports about your website's readership, consider having your system run it regularly. For example, you could automatically run the report once a week. The [Cron utility](/docs/guides/schedule-tasks-with-cron/) can be used to schedule this task.
+Once you have Bise creating meaningful reports about your website's readership, consider having your system run it regularly. For example, you could automatically run the report once a week. The [Cron utility](/cloud/guides/schedule-tasks-with-cron/) can be used to schedule this task.
 
 Cron's normal behavior is to mail you anything a scheduled program prints as output or error messages. So, you can use Cron to receive periodic emails about your website's readership levels.
 

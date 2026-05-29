@@ -16,7 +16,7 @@ external_resources:
 
 This guide walks through creating a scalable Jitsi Meet cluster using [Ansible](https://www.ansible.com/). The provided Ansible playbook creates an initial deployment that can then be scaled up or down as needed.
 
-If you wish to deploy Jitsi automatically rather than manually, consider either our single-instance [Jitsi Quick Deploy App deployment](/docs/marketplace-docs/guides/jitsi/) or our [Jitsi Cluster Quick Deploy App deployment](/docs/marketplace-docs/guides/jitsi-cluster/).
+If you wish to deploy Jitsi automatically rather than manually, consider either our single-instance [Jitsi Quick Deploy App deployment](/cloud/marketplace-docs/guides/jitsi/) or our [Jitsi Cluster Quick Deploy App deployment](/cloud/marketplace-docs/guides/jitsi-cluster/).
 
 ## Architecture Diagram
 
@@ -54,9 +54,9 @@ The following software and components must be installed and configured on your l
 
 -   The [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html) Python library
 
--   A [Linode API access token](/docs/products/tools/api/get-started/#get-an-access-token)
+-   A [Linode API access token](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token)
 
--   A configured [SSH key pair](/docs/guides/use-public-key-authentication-with-ssh/) along with your public key
+-   A configured [SSH key pair](/cloud/guides/use-public-key-authentication-with-ssh/) along with your public key
 
 -   The [Git](https://git-scm.com/) utility
 
@@ -189,11 +189,11 @@ All secrets are encrypted with the Ansible Vault utility as a best practice.
     - `jitsi_type`: Compute Instance type and plan for the Jitsi Meet instance
     - `jvb_type`: Compute Instance type and plan for each JVB instance
     - `region`: The data center region for the cluster
-    - `group` and `linode_tags` (optional): Any [groups or tags](/docs/guides/tags-and-groups/) you wish to apply to your cluster's instances for organizational purposes
+    - `group` and `linode_tags` (optional): Any [groups or tags](/cloud/guides/tags-and-groups/) you wish to apply to your cluster's instances for organizational purposes
     - `soa_email_address`: An SOA administrator email for DNS records
     - `jvb_cluster_size`: The number of JVB instances in the cluster deployment
     - `sudo_username`: A sudo username for each cluster instance
-    - `subdomain` and `subdomain` (optional): If you have a FQDN, you can use these optional values to customize your Jitsi meet URL. If you choose to leave these blank, you can navigate to your Jitsi meet using the Jitsi meet instance's default rDNS value once the cluster is provisioned. See our guide on [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) for how to find an instance's rDNS value.
+    - `subdomain` and `subdomain` (optional): If you have a FQDN, you can use these optional values to customize your Jitsi meet URL. If you choose to leave these blank, you can navigate to your Jitsi meet using the Jitsi meet instance's default rDNS value once the cluster is provisioned. See our guide on [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses) for how to find an instance's rDNS value.
 
     ```file {title="group_vars/jitsi/vars"}
     ssh_keys:

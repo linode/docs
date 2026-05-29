@@ -67,25 +67,25 @@ The pros and cons of a clean install are as follows:
 - This method takes a lot more effort and is more error prone. It is easy to forget to port over important applications and application data.
 - This method is a better choice if the system is running a much older release of Ubuntu or if the configuration is very convoluted. It is also a good choice for systems under the control of an *Infrastructure as Code* (IaC) application, like Terraform or Chef. These applications allow administrators to automatically provision a new remote node with a standard configuration.
 
-For an in-depth explanation of the clean install method, see the [Linode guide to manually upgrading a node](/docs/guides/manually-upgrading-to-latest-distribution-version/).
+For an in-depth explanation of the clean install method, see the [Linode guide to manually upgrading a node](/cloud/guides/manually-upgrading-to-latest-distribution-version/).
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Ensure there is at least 20 GB of disk space available. Verify the amount of disk space availability using the `df -Th` command.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Upgrade to Ubuntu 22.04 LTS
 
 This guide is designed for users who want to upgrade from Ubuntu 20.04 LTS to Ubuntu 22.04 LTS. However, it is generally applicable for upgrades to Ubuntu 22.04 from any release of Ubuntu 20.xx or 21.xx.
 
-If the Linode is running Ubuntu 18.xx or any earlier release, first upgrade it to Ubuntu 20.04 LTS. Then perform the steps in this guide to upgrade from Ubuntu 20.04 LTS to the 22.04 LTS. See the [Linode guide to Upgrade to Ubuntu 20.04](/docs/guides/upgrade-to-ubuntu-20-04/) for more information. Alternatively, if the Ubuntu software and applications are very old, it might make more sense to perform a clean install instead.
+If the Linode is running Ubuntu 18.xx or any earlier release, first upgrade it to Ubuntu 20.04 LTS. Then perform the steps in this guide to upgrade from Ubuntu 20.04 LTS to the 22.04 LTS. See the [Linode guide to Upgrade to Ubuntu 20.04](/cloud/guides/upgrade-to-ubuntu-20-04/) for more information. Alternatively, if the Ubuntu software and applications are very old, it might make more sense to perform a clean install instead.
 
 {{< note type="alert" >}}
 This operation cannot be canceled after it is started. Ensure there is a stable connection to the Linode and backup power is available.
@@ -109,13 +109,13 @@ To prepare the Ubuntu system for the upgrade, follow these steps.
     sudo apt autoremove -y && sudo apt autoclean -y
     ```
 
-3.  Reboot the node to ensure any new kernel upgrades are installed. Linode makes new kernels available through the Linode cloud manager. Any updates are automatically applied to the node upon a reboot. For more information, see the [Linode guide to monitoring and maintaining a system](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#apply-kernel-updates).
+3.  Reboot the node to ensure any new kernel upgrades are installed. Linode makes new kernels available through the Linode cloud manager. Any updates are automatically applied to the node upon a reboot. For more information, see the [Linode guide to monitoring and maintaining a system](https://techdocs.akamai.com/cloud-computing/docs/monitor-and-maintain-a-compute-instance#apply-kernel-updates).
 
     ```command
     sudo reboot
     ```
 
-4.  Make a backup copy of the system configuration and all application data. The easiest way to do this is to back up the entire system. Subscribing to the [Linode Backup Service](/docs/products/storage/backups/) allows you to take a manual snapshot before the upgrade.
+4.  Make a backup copy of the system configuration and all application data. The easiest way to do this is to back up the entire system. Subscribing to the [Linode Backup Service](https://techdocs.akamai.com/cloud-computing/docs/backup-service) allows you to take a manual snapshot before the upgrade.
 
 5.  Stop as many non-critical user applications services as possible, including web and database servers. Focus on applications that might be subject to data corruption. To see a list of the active services, use the command `systemctl | grep running`.
 

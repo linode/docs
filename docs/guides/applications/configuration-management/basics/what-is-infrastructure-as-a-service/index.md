@@ -93,10 +93,10 @@ Each IaaS deployment is unique, but the following high-level principles generall
 
 - Understand and be clear about the business requirements and the budget before proceeding with any deployments.
 - Carefully review and understand the policies of the cloud provider and their plans, packages, and products. Be clear about the capabilities of the virtualized infrastructure, including the throughput, storage, and memory/performance of each item.
-- Consider how any existing databases and servers should be migrated using one of the techniques in the [Migration Strategies](/docs/guides/what-is-infrastructure-as-a-service/#migration-strategies) section.
+- Consider how any existing databases and servers should be migrated using one of the techniques in the [Migration Strategies](/cloud/guides/what-is-infrastructure-as-a-service/#migration-strategies) section.
 - Attempt to reduce downtime. Schedule a maintenance window for the migration.
 - Test the new network before live deployment.
-- Consider how much storage and what storage types should be used. The main types of storage are [object storage](/docs/products/storage/object-storage/guides/use-cases/), file storage, and [block storage](/docs/products/storage/block-storage/guides/use-cases/). Object storage has become more popular recently because its distributed architecture fits well with the IaaS model.
+- Consider how much storage and what storage types should be used. The main types of storage are [object storage](https://techdocs.akamai.com/cloud-computing/docs/use-cases-for-object-storage), file storage, and [block storage](https://techdocs.akamai.com/cloud-computing/docs/common-use-cases-for-block-storage). Object storage has become more popular recently because its distributed architecture fits well with the IaaS model.
 - Consider the resiliency and reliability requirements for the network.
 - If necessary, determine the level of support and the service package that is required.
 - Decide what network metrics are important, and monitor these items during and after the initial deployment. Scrutinize the entire network as a single system and continue to regularly maintain, adjust, and optimize it.

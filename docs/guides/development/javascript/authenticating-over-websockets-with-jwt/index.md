@@ -28,7 +28,7 @@ The WebSocket Protocol is an open standard ([RFC 6455](https://tools.ietf.org/ht
 
 WebSockets can be useful in numerous contexts where real-time information transmission is key. A typical example is an instant messenger or chat application. WebSockets can also handle things like collaborative document editing and online multiplayer games.
 
-To learn more about WebSockets, take a look at our [Introduction to WebSockets](/docs/guides/introduction-to-websockets/) guide.
+To learn more about WebSockets, take a look at our [Introduction to WebSockets](/cloud/guides/introduction-to-websockets/) guide.
 
 ## What Are JSON Web Tokens?
 
@@ -36,7 +36,7 @@ JSON Web Token (JWT) is also an open standard ([RCF 7519](https://tools.ietf.org
 
 Decoded JWTs are formatted as JSON, as opposed to the XML format often used in similar token standards. This tends to make them more approachable for web development, and also opens up JSON's extensive web development tooling.
 
-For more on JWTs, check out our [How to Authenticate with JSON Web Tokens (JWTs)](/docs/guides/how-to-authenticate-using-jwt/) guide.
+For more on JWTs, check out our [How to Authenticate with JSON Web Tokens (JWTs)](/cloud/guides/how-to-authenticate-using-jwt/) guide.
 
 ## Using WebSockets and JWTs Together
 
@@ -67,12 +67,12 @@ In this section, you learn how to implement a WebSocket server and how to use JW
 
 ### Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ### Install Node.js
@@ -376,7 +376,7 @@ The example application is ready for a test run. Follow the steps below to try i
 
     Express serves the application on `localhost:3000`. To visit the application remotely, you can use an SSH tunnel.
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Connecting to a Remote Server Over SSH using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/) guide, replacing the example port number there with `3000`.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Connecting to a Remote Server Over SSH using PuTTY](/cloud/guides/connect-to-server-over-ssh-using-putty/) guide, replacing the example port number there with `3000`.
     - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
             ssh -L3000:localhost:3000 example-user@192.0.2.0

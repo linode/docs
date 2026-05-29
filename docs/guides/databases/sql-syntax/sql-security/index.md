@@ -152,5 +152,5 @@ User management, permissions, and roles are essential to SQL database security. 
 
 In SQL databases, every action must pass through a validity check that determines if the database action can be completed by a particular user. The appropriate permissions are required to access SQL database objects and execute statements. The integrity of a SQL database relies on secure and well-designed user management.
 
-Now that you are familiar with SQL user management, you can learn about some different aspects of the SQL language, like [joins](/docs/guides/sql-joins/), [data types](/docs/guides/sql-data-types/), and [grouping and totaling](/docs/guides/sql-grouping-and-totaling/).
+Now that you are familiar with SQL user management, you can learn about some different aspects of the SQL language, like [joins](/cloud/guides/sql-joins/), [data types](/cloud/guides/sql-data-types/), and [grouping and totaling](/cloud/guides/sql-grouping-and-totaling/).
 

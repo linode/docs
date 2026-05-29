@@ -24,7 +24,7 @@ In August 2024, the National Institute of Standards and Technology (NIST) [relea
 Deploying this algorithm for your web server currently requires the use of a recent library that implements the hybrid key exchange, such as the [Open Quantum Safe OpenSSL provider](https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider) or [OpenSSL 3.5.0](https://github.com/openssl/openssl/releases/tag/openssl-3.5.0).  This guide shows how to deploy this algorithm with NGINX on Debian 11.
 
 {{< note >}}
-On Debian 11, the versions of OpenSSL and NGINX available from apt are not compatible with post quantum encryption, so this guide shows how to build them from source instead. You can also check the [guide for Ubuntu 24.04](/docs/guides/post-quantum-encryption-nginx-ubuntu2404/), which explains how to configure the encryption algorithm on that distribution.
+On Debian 11, the versions of OpenSSL and NGINX available from apt are not compatible with post quantum encryption, so this guide shows how to build them from source instead. You can also check the [guide for Ubuntu 24.04](/cloud/guides/post-quantum-encryption-nginx-ubuntu2404/), which explains how to configure the encryption algorithm on that distribution.
 {{< /note >}}
 
 ## Before You Begin
@@ -35,10 +35,10 @@ On Debian 11, the versions of OpenSSL and NGINX available from apt are not compa
 
 1. To implement the algorithm in NGINX, a TLS certificate is required. When using a certificate from a public certificate authority, a domain name or subdomain must be assigned to your Linode instance. Visit your domain name registrar's website to assign a new record to your Linode instance's IP address. Your IP address is [displayed in the cloud manager](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses). If you use the Linode DNS Manager, visit the [manage DNS records](https://techdocs.akamai.com/cloud-computing/docs/manage-domains) product documentation to view instructions for assigning a new A/AAAA record to your IP address.
 
-1.  For an overview of how TLS encryption works, review the [Understanding TLS Certificates and Connections](/docs/guides/what-is-a-tls-certificate/) guide.
+1.  For an overview of how TLS encryption works, review the [Understanding TLS Certificates and Connections](/cloud/guides/what-is-a-tls-certificate/) guide.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ### Install Dependencies
@@ -486,9 +486,9 @@ A couple of libraries are required before building NGINX:
 
 Ensure that you include the necessary certificates (whether self-signed or from a trusted Certificate Authority) to enable proper TLS/SSL functionality. Without certificates, you won’t be able to establish a secure HTTPS connection.
 
--   **Using Let's Encrpyt (Recommended for Production)**: To use automatic certificate renewal with Let's Encrypt, follow [Use Certbot to Enable HTTPS with NGINX on Ubuntu](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) to properly configure the NGINX server.
+-   **Using Let's Encrpyt (Recommended for Production)**: To use automatic certificate renewal with Let's Encrypt, follow [Use Certbot to Enable HTTPS with NGINX on Ubuntu](/cloud/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) to properly configure the NGINX server.
 
--   **Using Self-Signed Certificate (Suitable for Testing/Development)**: To use a self-signed certificate, see our [Enable TLS/SSL for HTTPS](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) guide, or create certificates using the following command:
+-   **Using Self-Signed Certificate (Suitable for Testing/Development)**: To use a self-signed certificate, see our [Enable TLS/SSL for HTTPS](/cloud/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) guide, or create certificates using the following command:
 
     1.  First create the directory for your certificates:
 

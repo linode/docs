@@ -24,19 +24,19 @@ aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-o
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname) and [timezone](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#set-the-timezone).
 
-1. Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1. Follow our [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to [create a standard user account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account), [harden SSH access](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#harden-ssh-access), and [create firewall rules](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
     {{% content "limited-user-note-shortguide" %}}
 
-1.  Install and configure a [LAMP stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/)
+1.  Install and configure a [LAMP stack on Debian 10](/cloud/guides/how-to-install-a-lamp-stack-on-debian-10/)
 
-1.  Install [Composer and Drush on Debian 10](/docs/guides/how-to-install-drush-on-debian-10/)
+1.  Install [Composer and Drush on Debian 10](/cloud/guides/how-to-install-drush-on-debian-10/)
 
 ## Download and Prepare Drupal 8
 
-1. Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
+1. Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on Ubuntu 18.04](/cloud/guides/how-to-install-a-lamp-stack-on-debian-10/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
 
         cd /var/www/html/example.com
 
@@ -56,7 +56,7 @@ Ensure that the version number matches the Drupal 8 version you wish to download
 
         sudo apt-get install php-gd php-xml php-dom php-simplexml php-mbstring
 
-1. Create your Drupal 8 installation's `settings.php` file from the default settings file. This file will be configured when you run through Drupal's automated web configuration. See the [Install and Configure Drupal on Debian 10](/docs/guides/how-to-install-and-configure-drupal-on-debian-10/#drupal-first-start) guide for more details.
+1. Create your Drupal 8 installation's `settings.php` file from the default settings file. This file will be configured when you run through Drupal's automated web configuration. See the [Install and Configure Drupal on Debian 10](/cloud/guides/how-to-install-and-configure-drupal-on-debian-10/#drupal-first-start) guide for more details.
 
         sudo cp /var/www/html/example.com/public_html/sites/default/default.settings.php /var/www/html/example.com/public_html/sites/default/settings.php
 
@@ -80,7 +80,7 @@ $settings['trusted_host_patterns'] = array(
 
         sudo a2enmod rewrite
 
-2.  Specify the rewrite conditions for your Drupal site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide, the configuration file for your site is located at `/etc/apache2/sites-available/example.com.conf`.
+2.  Specify the rewrite conditions for your Drupal site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on Debian 10](/cloud/guides/how-to-install-a-lamp-stack-on-debian-10/) guide, the configuration file for your site is located at `/etc/apache2/sites-available/example.com.conf`.
 
     {{< file "/etc/apache2/sites-available/example.com.conf" conf >}}
 <Directory /var/www/html/example.com/public_html>
@@ -111,7 +111,7 @@ In this section, you will use [Drush](https://www.drush.org/) to install a Drupa
 
         cd  /var/www/html/example.com/public_html
 
-1.  Your Linode is now ready for you to install a Drupal site. In the command below, replace `mysql://username:password@localhost/databasename` with your own site's username, password, and database. For example, if you followed the [How to Install a LAMP stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) your username is `webuser`, password is `password`, and the database is `webdata`. Also, replace `--site-name=example.com` with your own website's name.
+1.  Your Linode is now ready for you to install a Drupal site. In the command below, replace `mysql://username:password@localhost/databasename` with your own site's username, password, and database. For example, if you followed the [How to Install a LAMP stack on Ubuntu 18.04](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) your username is `webuser`, password is `password`, and the database is `webdata`. Also, replace `--site-name=example.com` with your own website's name.
 
         drush si standard --db-url=mysql://username:password@localhost/databasename --site-name=example.com
 
@@ -136,7 +136,7 @@ If you encounter errors related to writing to the `sites/default` directory, fol
 
 In server administration, there are many options for user and group permissions. The directions below create a site owner and a site owner's group. The Apache user, named `www-data`, is added to the site owner's group. Then, read, write, and execute permissions are granted to both the site owner and the site owner's group.
 
-1. To create a new user for the site owner position, see the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+1. To create a new user for the site owner position, see the [Add a Limited User Account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) section of the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide.
 
 1.  From the `public_html` directory, change ownership of the site to the site owner and group. Replace `example_user` below with the chosen owner's username:
 
@@ -174,13 +174,13 @@ There are many ways to set up administration for a website. Below are sections e
 
 The above setup is designed for ease of use. However, there are setups designed for tighter security and other considerations.
 
-- To design your own setup, read Linode's documentation on [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide
+- To design your own setup, read Linode's documentation on [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide
 - For an extremely secure setup, read Drupal's [Securing File Permissions and Ownership](https://www.drupal.org/node/244924) guide
 
 ### Multi-site Servers
 
 At a high-level, the steps you will need to follow to begin configuring a Drupal multisite set up are:
 
-- Add a new [MySQL user, password, and database](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#mysql)
-- Create a new [Apache virtual hosts file and corresponding directories](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#virtual-hosts)
+- Add a new [MySQL user, password, and database](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#mysql)
+- Create a new [Apache virtual hosts file and corresponding directories](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#virtual-hosts)
 - See [Drupal's Multisite documentation](https://www.drupal.org/docs/8/multisite/drupal-8-multisite) for more details.

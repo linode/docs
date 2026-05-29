@@ -10,7 +10,7 @@ keywords: ['ansible best practices','ansible documentation','ansible testing','a
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-[Ansible](/docs/guides/applications/configuration-management/ansible/) is an important open source automation tool and platform. It is used for configuration management, application deployment, task automation, and [orchestration](https://www.databricks.com/glossary/orchestration) of complex workflows.
+[Ansible](/cloud/guides/applications/configuration-management/ansible/) is an important open source automation tool and platform. It is used for configuration management, application deployment, task automation, and [orchestration](https://www.databricks.com/glossary/orchestration) of complex workflows.
 
 Ansible figures prominently in DevOps. It allows Information Technology (IT) administrators and developers to automate repetitive tasks and streamline the management and deployment of infrastructure, applications, and services. Ansible’s business and strategic features include:
 
@@ -24,11 +24,11 @@ Data centers effectively require Ansible, or one of its competitors. Businesses 
 
 The following is a list of key terms that cover the [fundamental components and concepts associated with Ansible](https://docs.ansible.com/ansible/latest/getting_started/basic_concepts.html):
 
--   **Target State**: Ansible is a [**declarative**](http://www.it-automation.com/2021/06/05/is-ansible-declarative-or-imperative.html) language. It details target states for computing systems and how those states are achieved. It then takes responsibility for achievement of the target states. This creates a kind of [teamwork](https://www.linkedin.com/pulse/delegating-goals-versus-tasks-karl-maier) between users and Ansible, where users take the lead in telling what they want, and Ansible works out the details of how it's done. This is different from older styles of [system administration](/docs/guides/linux-system-administration-basics/) and system administration tools.
+-   **Target State**: Ansible is a [**declarative**](http://www.it-automation.com/2021/06/05/is-ansible-declarative-or-imperative.html) language. It details target states for computing systems and how those states are achieved. It then takes responsibility for achievement of the target states. This creates a kind of [teamwork](https://www.linkedin.com/pulse/delegating-goals-versus-tasks-karl-maier) between users and Ansible, where users take the lead in telling what they want, and Ansible works out the details of how it's done. This is different from older styles of [system administration](/cloud/guides/linux-system-administration-basics/) and system administration tools.
 
     An important aspect of target state is how it applies. Many practitioners have strong experience with Ansible's use in provisioning and deployment, but don't realize it also applies in other automations. While it is good at "spinning up" a new server or updating an existing one, it's also handy for many more uses that aid overall system health. For example, daily checks of certificate expirations, or hourly confirmations that file systems have at least 10% free storage. It only takes a few lines of Ansible to implement these and many other target states and verifications.
 
--   **Playbooks**: Ansible [playbooks](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html) are written in [YAML](/docs/guides/yaml-reference/) and define a sequence of steps, or "plays", to execute on a target system or group of systems. Playbooks express desired states for systems and how those states are achieved. Ansible then takes responsibility for achieving those states. That dynamic is Ansible’s fundamental accomplishment.
+-   **Playbooks**: Ansible [playbooks](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html) are written in [YAML](/cloud/guides/yaml-reference/) and define a sequence of steps, or "plays", to execute on a target system or group of systems. Playbooks express desired states for systems and how those states are achieved. Ansible then takes responsibility for achieving those states. That dynamic is Ansible’s fundamental accomplishment.
 
 -   **Modules**: Ansible [modules](https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_general.html) are the building blocks of playbooks. Modules are discrete units of code that enact specific tasks such as package management, file configuration, or launching services. One of Ansible's great assets is its enormous collection of built–in modules and the ability for users to author custom ones.
 
@@ -42,7 +42,7 @@ The following is a list of key terms that cover the [fundamental components and 
 
 -   **Facts**: Ansible gathers information about target systems using modules called [facts](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html). Examples of gathered information include hardware, operating systems, and internet addresses. Playbooks inform the decisions they make with such facts.
 
--   **Templates**: Ansible [templates](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/template_module.html) are files structured in [Jinja2 syntax](/docs/guides/introduction-to-jinja-templates-for-salt/) with placeholders. Playbook execution dynamically populates the placeholders with variables. Templates can generate configuration files, scripts, and other Ansible artifacts.
+-   **Templates**: Ansible [templates](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/template_module.html) are files structured in [Jinja2 syntax](/cloud/guides/introduction-to-jinja-templates-for-salt/) with placeholders. Playbook execution dynamically populates the placeholders with variables. Templates can generate configuration files, scripts, and other Ansible artifacts.
 
 -   **Handlers**: Various specific Ansible events trigger [handlers](https://docs.ansible.com/ansible/latest/getting_started/basic_concepts.html#handlers), typically at the conclusion of a playbook run. A common handler responsibility is to restart services after a configuration change.
 
@@ -54,7 +54,7 @@ While best practices certainly improve run-time efficiency, they also improve or
 
 As Abelson and Sussman wrote: "[Programs must be written for people to read, and only incidentally for machines to execute.](https://medium.com/javarevisited/epic-programmers-quotes-explained-aed933257b93#:~:text=The%20quote%20implies%20that%20writing,involves%20continuous%20updates%20and%20maintenance.)" In much the same way, the best Ansible playbooks are an ongoing asset for their *human* readers.
 
-Recognize that Ansible playbooks and related specifications are source, or "[code](https://www.cloudbees.com/blog/configuration-as-code-everything-need-know#)". Like all other sources, they deserve a [version-controlled source code control system](/docs/guides/introduction-to-version-control/) to call home. Think of this as "best practice zero", which precedes the following top 12 best practices for using Ansible.
+Recognize that Ansible playbooks and related specifications are source, or "[code](https://www.cloudbees.com/blog/configuration-as-code-everything-need-know#)". Like all other sources, they deserve a [version-controlled source code control system](/cloud/guides/introduction-to-version-control/) to call home. Think of this as "best practice zero", which precedes the following top 12 best practices for using Ansible.
 
 ### File System Layout
 

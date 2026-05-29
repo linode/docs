@@ -26,7 +26,7 @@ aliases: ['/development/r/how-to-deploy-rshiny-server-on-ubuntu-and-debian/']
 
 ## Before You Begin
 
-If you do not have RStudio installed on your local computer, follow our [How to Deploy RStudio Using an NGINX Reverse Proxy](/docs/guides/how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy/) guide to set up a remote workstation on a Linode.
+If you do not have RStudio installed on your local computer, follow our [How to Deploy RStudio Using an NGINX Reverse Proxy](/cloud/guides/how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy/) guide to set up a remote workstation on a Linode.
 
 ## Build a Shiny Test App
 

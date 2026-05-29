@@ -23,9 +23,9 @@ Learn all that you need to get started with Next.js in this tutorial. It explain
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
@@ -38,7 +38,7 @@ Learn all that you need to get started with Next.js in this tutorial. It explain
             sudo dnf upgrade
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is Next.js?
@@ -77,7 +77,7 @@ One of the best ways to get to know Next.js is by building an application with i
 
 Throughout, the guide also attempts to show off some of the main features that Next.js boasts. The goal is to not only get started with Next.js, but to also have a practical demonstration of some of what sets it apart.
 
-Next.js also offers first-class support for TypeScript. This guide only covers a JavaScript approach to Next, but you can learn about using Next with TypeScript in our [Building a Next.js App with TypeScript](/docs/guides/next-js-with-typescript) guide.
+Next.js also offers first-class support for TypeScript. This guide only covers a JavaScript approach to Next, but you can learn about using Next with TypeScript in our [Building a Next.js App with TypeScript](/cloud/guides/next-js-with-typescript) guide.
 
 ### Set Up a Next.js App
 
@@ -85,7 +85,7 @@ Next.js has its own script for boostrapping a project template. This guide makes
 
 For that and to help with managing application dependencies, the guide uses NPM. You can find a link in the steps below to help you install NPM if you do not already have it.
 
-1. Follow our guide on how to [Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/). NPM handles the project's dependencies and runs the Next.js frontend.
+1. Follow our guide on how to [Install and Use the Node Package Manager (NPM) on Linux](/cloud/guides/install-and-use-npm-on-linux/). NPM handles the project's dependencies and runs the Next.js frontend.
 
 1. Create a base Next.js project using `create-next-app`. The example below also names the new project — `example-app` — in the same command.
 
@@ -111,9 +111,9 @@ Now in a web browser navigate to port `3000` on your server. For instance, assum
 {{< note >}}
 To access this remotely, you may first need to open the port in your system's firewall. You can learn about how to do that in one of the guides linked below, depending on your system's Linux distribution.
 
-- For **Debian** and **Ubuntu**, refer to our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
+- For **Debian** and **Ubuntu**, refer to our guide on [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/).
 
-- For **AlmaLinux**, **CentOS**, and **Fedora**, refer to our guide on [Enabling and Configuring FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/)
+- For **AlmaLinux**, **CentOS**, and **Fedora**, refer to our guide on [Enabling and Configuring FirewallD on CentOS](/cloud/guides/introduction-to-firewalld-on-centos/)
 {{< /note >}}
 
 [![Next.js welcome page](next-template-app_small.png)](next-template-app.png)
@@ -355,7 +355,7 @@ export async function getStaticProps({ params }) {
 }
 {{< /file >}}
 
-The two functions at the end of this file, `getStaticPaths` and `getStaticProps`, should be elaborated on. You can learn more about the `getStaticProps` function in the [server-side pre-rendering](/docs/guides/getting-started-next-js/#server-side-pre-rendering) section.
+The two functions at the end of this file, `getStaticPaths` and `getStaticProps`, should be elaborated on. You can learn more about the `getStaticProps` function in the [server-side pre-rendering](/cloud/guides/getting-started-next-js/#server-side-pre-rendering) section.
 
 As part of its pre-rendering process, Next requires the `getStaticPaths` function for any dynamic routes. This function provides Next with an array of possible path IDs for the dynamic route.
 

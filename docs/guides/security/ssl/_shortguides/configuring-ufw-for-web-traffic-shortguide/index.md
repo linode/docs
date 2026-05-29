@@ -18,9 +18,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 ## Configuring Firewall Rules with UFW
 
-Any firewall configured on your server needs to allow connections over HTTPS (in addition to HTTP and any other services/ports you require). This section covers enabling and configuring [UFW](https://wiki.ubuntu.com/UncomplicatedFirewall) (UncomplicatedFirewall). UFW is the default firewall management tool on Ubuntu and is also available on Debian and Fedora. It operates as a easy to use front-end for [iptables](/docs/guides/what-is-iptables/).
+Any firewall configured on your server needs to allow connections over HTTPS (in addition to HTTP and any other services/ports you require). This section covers enabling and configuring [UFW](https://wiki.ubuntu.com/UncomplicatedFirewall) (UncomplicatedFirewall). UFW is the default firewall management tool on Ubuntu and is also available on Debian and Fedora. It operates as a easy to use front-end for [iptables](/cloud/guides/what-is-iptables/).
 
-You can skip this section if you are using a different firewall (such as Linode's [Cloud Firewall](/docs/products/networking/cloud-firewall/) service), have already configured your firewall rules, or do not wish to use any firewall.
+You can skip this section if you are using a different firewall (such as Linode's [Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) service), have already configured your firewall rules, or do not wish to use any firewall.
 
 1.  If UFW is not installed, install it now using `apt` or `apt-get`.
 
@@ -45,4 +45,4 @@ You can skip this section if you are using a different firewall (such as Linode'
 
     This should return a status of *active* and output the firewall rules that you just added.
 
-For more advanced configuration, review the [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide.
+For more advanced configuration, review the [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/) guide.

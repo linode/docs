@@ -61,7 +61,7 @@ This lack of vendor lock-in plays into cost, reliability, and flexibility. Any c
 
 ## More Web-Based Tools
 
-The world depends on the cloud and other web-based systems. Although many traditional administrators still prefer to configure and manage from the command-line, the tide is shifting to a web-based frontier. Many open-source operating systems, such as Red Hat, Alma Linux, and Rocky Linux, now ship with Cockpit, a web-based admin GUI, installed by default. The Linux operating system is turning more toward web-based tools for those users who prefer them. Tools like Cockpit, [Webmin](/docs/marketplace-docs/guides/webmin/), [phpMyAdmin](/docs/marketplace-docs/guides/phpmyadmin/), [cPanel](/docs/marketplace-docs/guides/cpanel/), VestaCP, Ajenti, froxlor, aaPanel, ISPConfig, and Sentora, provide companies with centralized administration of their servers and services.
+The world depends on the cloud and other web-based systems. Although many traditional administrators still prefer to configure and manage from the command-line, the tide is shifting to a web-based frontier. Many open-source operating systems, such as Red Hat, Alma Linux, and Rocky Linux, now ship with Cockpit, a web-based admin GUI, installed by default. The Linux operating system is turning more toward web-based tools for those users who prefer them. Tools like Cockpit, [Webmin](/cloud/marketplace-docs/guides/webmin/), [phpMyAdmin](/cloud/marketplace-docs/guides/phpmyadmin/), [cPanel](/cloud/marketplace-docs/guides/cpanel/), VestaCP, Ajenti, froxlor, aaPanel, ISPConfig, and Sentora, provide companies with centralized administration of their servers and services.
 
 The need for more web-based tools is continuing to rise because more companies are migrating their servers from on-premises data centers to third-party hosting services, where Linux enjoys the largest deployment market share.
 
@@ -81,7 +81,7 @@ The advantage of open-source software support is that it's everywhere. Most Linu
 
 ## Containers
 
-Nearly every business now depends on [containers](/docs/guides/applications/containers/). Containerized applications make it possible for businesses to be more agile, more highly scalable, save money, deploy more reliable applications and services, and better lean into cloud-native development.
+Nearly every business now depends on [containers](/cloud/guides/applications/containers/). Containerized applications make it possible for businesses to be more agile, more highly scalable, save money, deploy more reliable applications and services, and better lean into cloud-native development.
 
 Containers and open-source go hand-in-hand. They are built with open-source software and deployed on open-source platforms. In fact, without open-source, containers would either not exist or be as readily available. According to the "[Application Container Market - Growth, Trends, COVID-19 Impact, and Forecast (2021-2026)](https://www.researchandmarkets.com/reports/4845968/application-container-market-growth-trends)" the container market is expected to register a compound annual growth rate of 29% between 2021-2026. That's significant and means more businesses will come to depend on containerized technology. This wouldn't be possible without open-source.
 

@@ -31,7 +31,7 @@ nftables uses a *tables -> chains -> rules* structure for managing network rules
 
 Because nftables has superseded iptables, you should opt to use it when possible. The main exception is older Linux systems, many of which do not support nftables. Alternatively, you may prefer a high-level tool like those covered [below](#high-level-firewall-configuration-managers).
 
-You can learn more about nftables and its usage in our [Getting Started with nftables](/docs/guides/how-to-use-nftables/) guide.
+You can learn more about nftables and its usage in our [Getting Started with nftables](/cloud/guides/how-to-use-nftables/) guide.
 
 ### iptables
 
@@ -39,7 +39,7 @@ You can learn more about nftables and its usage in our [Getting Started with nft
 
 Even though nftables has replaced iptables as the default, some systems, particularly ones using older Linux versions, only support iptables. Unless you are looking for higher-level firewall configuration (see [High-Level Firewall Configuration Managers](#high-Level-firewall-configuration-managers) section below), you need to use iptables in those cases.
 
-You can learn more about iptables and how to configure network rules with them in our [Controlling Network Traffics with iptables](/docs/guides/control-network-traffic-with-iptables/) guide.
+You can learn more about iptables and how to configure network rules with them in our [Controlling Network Traffics with iptables](/cloud/guides/control-network-traffic-with-iptables/) guide.
 
 ## High-Level Firewall Configuration Managers
 
@@ -51,7 +51,7 @@ To some users, low-level tools may prove overly cumbersome. High-level tools off
 
 What especially sets UFW apart is the simplicity its commands bring to firewall configuration. Setting up your desired firewall rules and enabling the firewall follows an *uncomplicated* set of commands.
 
-See more on UFW and steps for getting started in our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide.
+See more on UFW and steps for getting started in our [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/) guide.
 
 ### Firewalld
 
@@ -59,17 +59,17 @@ See more on UFW and steps for getting started in our [How to Configure a Firewal
 
 Firewalld supports most Linux distributions, and it is included by default on RHEL-related systems (e.g., CentOS, Fedora, AlmaLinux, Rocky Linux) and openSUSE.
 
-Take a look at our [Configure a Firewall with Firewalld](/docs/guides/introduction-to-firewalld-on-centos/) guide to find out more about using firewalld.
+Take a look at our [Configure a Firewall with Firewalld](/cloud/guides/introduction-to-firewalld-on-centos/) guide to find out more about using firewalld.
 
 ## Managed Cloud Firewall Service
 
-Cloud firewall services, like Akamai's [Cloud Firewall](/docs/products/networking/cloud-firewall/), offer a different approach to cloud security and have some advantages over local software firewalls. For instance, Akamai's Cloud Firewall can configure and manage firewall rules across multiple cloud instances.
+Cloud firewall services, like Akamai's [Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall), offer a different approach to cloud security and have some advantages over local software firewalls. For instance, Akamai's Cloud Firewall can configure and manage firewall rules across multiple cloud instances.
 
 That said, cloud firewalls often do not cover all of the features of software firewalls. Typically, a software firewall can offer more configuration options and advanced control of network traffic.
 
 One solution — cloud or software firewall — is likely to better fit your needs than the other. But often you can get the best results by using both together. As an example, you can use a cloud firewall to apply "absolute" network rules across multiple cloud instances and prevent unwanted traffic from ever reaching your servers. Then, use a software firewall to fine-tune your network filtering on each server.
 
-Learn more about cloud firewalls and how they compare to software firewalls in our [Comparing Cloud Firewalls to Linux Firewall Software](/docs/products/networking/cloud-firewall/guides/comparing-firewalls/) guide.
+Learn more about cloud firewalls and how they compare to software firewalls in our [Comparing Cloud Firewalls to Linux Firewall Software](https://techdocs.akamai.com/cloud-computing/docs/comparing-cloud-firewalls-to-linux-firewall-software) guide.
 
 ## Basic Usage Comparison
 

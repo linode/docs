@@ -18,8 +18,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 To install Docker CE (Community Edition), follow the instructions within one of the guides below:
 
-- [Installing and Using Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/)
+- [Installing and Using Docker on Ubuntu and Debian](/cloud/guides/installing-and-using-docker-on-ubuntu-and-debian/)
 
-- [Installing and Using Docker on CentOS and Fedora](/docs/guides/installing-and-using-docker-on-centos-and-fedora/)
+- [Installing and Using Docker on CentOS and Fedora](/cloud/guides/installing-and-using-docker-on-centos-and-fedora/)
 
 To see installation instructions for other Linux distributions or operating systems like Mac or Windows, reference Docker's official documentation here: [Install Docker Engine](https://docs.docker.com/engine/install/)

@@ -22,13 +22,13 @@ This guide demonstrates how to install HAProxy onto three Linux distributions: U
 
 ## Before You Begin
 
-1.  To be used as your HAProxy instance, deploy a Compute Instance running one of the `Ubuntu 24.04 LTS`, `CentOS Stream 9`, or `openSUSE Leap 15.6` distributions, and assign the instance to a VLAN. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  To be used as your HAProxy instance, deploy a Compute Instance running one of the `Ubuntu 24.04 LTS`, `CentOS Stream 9`, or `openSUSE Leap 15.6` distributions, and assign the instance to a VLAN. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
     HAProxy can be deployed using a [Nanode](https://www.linode.com/pricing/) plan for testing purposes. See HAProxy's [hardware recommendations](https://www.haproxy.com/documentation/haproxy-enterprise/getting-started/installation/linux/#hardware-recommendations) for production-level workloads.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  This guide uses WordPress backend instances to demonstrate how HAProxy controls network traffic flows at both the TCP/Network (Layer 4) and HTTP/Application (Layer 7) levels. Follow the steps in our [Deploy WordPress through the Linode Marketplace](/docs/marketplace-docs/guides/wordpress/) guide to create three backend WordPress test instances. Fill out all required fields under **WordPress Setup**, and use default values along with the following options:
+1.  This guide uses WordPress backend instances to demonstrate how HAProxy controls network traffic flows at both the TCP/Network (Layer 4) and HTTP/Application (Layer 7) levels. Follow the steps in our [Deploy WordPress through the Linode Marketplace](/cloud/marketplace-docs/guides/wordpress/) guide to create three backend WordPress test instances. Fill out all required fields under **WordPress Setup**, and use default values along with the following options:
 
     -   **The stack you are looking to deploy Wordpress on**: Choose either **LAMP** or **LEMP**.
     -   **Website title**: For each instance, enter `backend1`, `backend2`, and `backend3`, respectively.
@@ -40,7 +40,7 @@ This guide demonstrates how to install HAProxy onto three Linux distributions: U
     Each server is generated with an `index.html` home page that indicates the given title of the website hosted on the instance (`backend1`, `backend2`, or `backend3`). Open a web browser and navigate to each server's IP address to verify that the example test servers are functioning. Take note of the IP addresses of each backend instance, as they are used later.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install HAProxy

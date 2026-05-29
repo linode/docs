@@ -44,7 +44,7 @@ This Quick Deploy App only works with Akamai GPU instances. If you choose a plan
 
 ### DeepSeek R1 Options
 
-- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) to create one.
+- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) to create one.
 
 - **Email address (for the Let's Encrypt SSL certificate)** *(required)*: Your email is used for Let's Encrypt renewal notices. This allows you to visit Open WebUI securely through a browser.
 

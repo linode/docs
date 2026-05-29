@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Analytics Help](https://support.google.com/analytics/?hl=en#topic=3544906)'
  - '[Google Analytics Developers](https://developers.google.com/analytics/)'
- - '[Google Analytics for WordPress](/docs/guides/google-analytics-on-wordpress/)'
+ - '[Google Analytics for WordPress](/cloud/guides/google-analytics-on-wordpress/)'
 tags: ["statistics","analytics"]
 aliases: ['/uptime/analytics/google-analytics-for-websites/']
 ---
@@ -20,9 +20,9 @@ Google Analytics offers detailed statistics related to visitor traffic and sales
 Although Google Analytics provides a way to add the tracking code to your webpages, if you are not using PHP includes, Server Side Includes, or another form of layout template, the process can be tedious and inefficient. This guide provides two alternatives to inserting the Google Analytics tracking code to your website, depending on your website's set-up.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 
-This guide also assumes you have configured your Apache server as described in our [LAMP](/docs/websites/lamp/) guides with your publicly accessible directory located at something similar to `/var/www/example.com/public_html`. Replace all instances of `example.com` with your own domain information.
+This guide also assumes you have configured your Apache server as described in our [LAMP](/cloud/websites/lamp/) guides with your publicly accessible directory located at something similar to `/var/www/example.com/public_html`. Replace all instances of `example.com` with your own domain information.
 {{< /note >}}
 
 ## Signing Up for Google Analytics

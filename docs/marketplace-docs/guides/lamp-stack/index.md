@@ -52,19 +52,19 @@ A LAMP (Linux, [Apache](https://www.apache.org), [MySQL](https://www.mysql.com),
 
 After your LAMP stack has finished deploying, you can:
 
-- [Connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). You will need your Linode's root password to proceed. Note that your Linode's web root will be located in the `/var/www/html` directory.
+- [Connect to your Linode via SSH](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance). You will need your Linode's root password to proceed. Note that your Linode's web root will be located in the `/var/www/html` directory.
 
-- [Navigate to the public IP address or domain entered during creation](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) of your Linode in a browser. You will see the default Apache webpage.
+- [Navigate to the public IP address or domain entered during creation](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) of your Linode in a browser. You will see the default Apache webpage.
 
 - Consult the following guides to learn more about working with the various components of the LAMP stack:
 
-    - [Secure HTTP Traffic with Certbot](/docs/guides/secure-http-traffic-certbot/)
-    - [Apache Configuration Basics](/docs/guides/apache-configuration-basics/)
-    - [How to Optimize MySQL Performance Using MySQLTuner](/docs/guides/how-to-optimize-mysql-performance-using-mysqltuner/)
+    - [Secure HTTP Traffic with Certbot](/cloud/guides/secure-http-traffic-certbot/)
+    - [Apache Configuration Basics](/cloud/guides/apache-configuration-basics/)
+    - [How to Optimize MySQL Performance Using MySQLTuner](/cloud/guides/how-to-optimize-mysql-performance-using-mysqltuner/)
 
--   Upload files to your web root directory with an SFTP application like [FileZilla](/docs/guides/filezilla/). Use the same root credentials that you would use for SSH.
+-   Upload files to your web root directory with an SFTP application like [FileZilla](/cloud/guides/filezilla/). Use the same root credentials that you would use for SSH.
 
--   Assign a domain name to your Linode's IP address. Review the [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions on setting up your DNS records in Cloud Manager, and read through [DNS Records: An Introduction](/docs/guides/dns-overview/) for general information about how DNS works.
+-   Assign a domain name to your Linode's IP address. Review the [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) guide for instructions on setting up your DNS records in Cloud Manager, and read through [DNS Records: An Introduction](/cloud/guides/dns-overview/) for general information about how DNS works.
 
 ## Software Included
 

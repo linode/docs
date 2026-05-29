@@ -19,16 +19,16 @@ MongoDB is a popular non-relationship database management system that stores key
 Backing up the data stored in a MongoDB database is an important step to maintain data integrity and disaster recovery plans. To assure that the MongoDB databases are backed up regularly to an external source such as a Linode Object Storage bucket, a simple Bash script can be created. Then, the Bash script can be configured to run daily using the Linux Cron job workflow.
 ## Before You Begin
 
-1. Learn about the fundamentals of Linode Object Storage by viewing the [Get Started with Object Storage](/docs/products/storage/object-storage/get-started/) guide or by reviewing the available [Object Storage guides](/docs/products/storage/object-storage/guides/).
+1. Learn about the fundamentals of Linode Object Storage by viewing the [Get Started with Object Storage](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-object-storage) guide or by reviewing the available [Object Storage guides](https://techdocs.akamai.com/cloud-computing/docs/object-storage).
 
-1. Create a [Linode Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/). This bucket is used to store your MongoDB backups.
+1. Create a [Linode Object Storage bucket](https://techdocs.akamai.com/cloud-computing/docs/create-and-manage-buckets). This bucket is used to store your MongoDB backups.
 
-1. Create a pair of [Access Keys](/docs/products/storage/object-storage/guides/access-keys/) for your Linode Object Storage bucket.
+1. Create a pair of [Access Keys](https://techdocs.akamai.com/cloud-computing/docs/manage-access-keys) for your Linode Object Storage bucket.
 
-1. Install [MongoDB](/docs/guides/install-mongodb-on-ubuntu-16-04/) on your Linux system.
+1. Install [MongoDB](/cloud/guides/install-mongodb-on-ubuntu-16-04/) on your Linux system.
 
 {{< note >}}
-The steps in this guide are written for a non-root user account. For any commands that require elevated privileges, `sudo` is prefixed at the start of the command syntax. If you’re unfamiliar with the `sudo` command workflow, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user account. For any commands that require elevated privileges, `sudo` is prefixed at the start of the command syntax. If you’re unfamiliar with the `sudo` command workflow, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Cyberduck CLI
@@ -117,7 +117,7 @@ Refer to the comments in the code to learn what each line in the code does.
 
 ## Run the Bash Script
 
-Before setting the above script to run automatically, execute the script to configure your Linode bucket's access key pair. You need to set the appropriate permissions for this script to be executed. For more information on Linux file permissions, review our guide on [Modifying File Permissions with chmod](/docs/guides/modify-file-permissions-with-chmod/).
+Before setting the above script to run automatically, execute the script to configure your Linode bucket's access key pair. You need to set the appropriate permissions for this script to be executed. For more information on Linux file permissions, review our guide on [Modifying File Permissions with chmod](/cloud/guides/modify-file-permissions-with-chmod/).
 
 Modify the script's permissions, then execute the script with the following commands:
 
@@ -142,4 +142,4 @@ Select your preferred text editor from the menu and enter the following line in 
 
 Replace `/path/to/` from the above line with the full directory path to your `backup_mongodb.sh` file.
 
-The above Cron job is scheduled to run daily at 9:00 AM in your system's configured time zone. For more information on Cron job configuration parameters, review our guide on [Using Cron to Schedule Tasks for Certain Times or Intervals](/docs/guides/schedule-tasks-with-cron).
+The above Cron job is scheduled to run daily at 9:00 AM in your system's configured time zone. For more information on Cron job configuration parameters, review our guide on [Using Cron to Schedule Tasks for Certain Times or Intervals](/cloud/guides/schedule-tasks-with-cron).

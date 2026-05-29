@@ -34,22 +34,22 @@ This guide shows you how to get a Canvas website up and running on an Ubuntu 20.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Prepare an SMTP server that Canvas can use to send email notifications to users. You can use a third-party SMTP service for this purpose. This guide's example configurations use [Mailgun](https://www.mailgun.com/) as the third-party SMTP provider.
 
-    You can, alternatively, create your SMTP server by following the [Email with Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) guide. However, because of Canvas's resource demands, you may want to run the SMTP server on a separate machine than the one running Canvas.
+    You can, alternatively, create your SMTP server by following the [Email with Postfix, Dovecot, and MySQL](/cloud/guides/email-with-postfix-dovecot-and-mysql/) guide. However, because of Canvas's resource demands, you may want to run the SMTP server on a separate machine than the one running Canvas.
 
 1. Canvas recommends a minimum of 8 GB of RAM. The website may operate with fewer, but doing so may result in installation and/or runtime issues. This is especially the case when all of the Canvas components are running on a single machine.
 
     You can run some of the components of your Canvas installation on separate machines to improve performance if needed. Refer to Canvas's [Production Start](https://github.com/instructure/canvas-lms/wiki/Production-Start) guide for more on what components can be installed independently. Be aware that this approach requires some additional configuration to enable communications between the components.
 
-1. Replace `example.com` in this guide with your server's domain name. You can complete the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name for your Linode server.
+1. Replace `example.com` in this guide with your server's domain name. You can complete the [Add DNS Records](/cloud/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name for your Linode server.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Apache

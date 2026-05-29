@@ -33,9 +33,9 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 1.  To use a Minecraft server you must also have a version of the game client from [Minecraft.net](https://minecraft.net/).
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account.
 
 1.  Update your Linode's software:
 
@@ -60,14 +60,14 @@ Minecraft version 1.13 is only compatible with OpenJDK 8. If you are using OpenJ
 
         sudo adduser minecraft
 
-    Assign a secure password, and configure any additional [SSH hardening](/docs/guides/use-public-key-authentication-with-ssh/) options at this time.
+    Assign a secure password, and configure any additional [SSH hardening](/cloud/guides/use-public-key-authentication-with-ssh/) options at this time.
 
 {{< note >}}
-If you have a firewall configured according to the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
+If you have a firewall configured according to the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
 
 `-A INPUT -p tcp --dport 25565 -j ACCEPT`
 
-For more information, see [Controlling Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/).
+For more information, see [Controlling Network Traffic with iptables](/cloud/guides/control-network-traffic-with-iptables/).
 {{< /note >}}
 
 ## Install Minecraft
@@ -165,7 +165,7 @@ And you are now running an updated Minecraft server on Ubuntu or Debian.
 eula=true
 {{< /file >}}
 
-1.  To ensure that the Minecraft server runs independent of an SSH connection, execute `run.sh` from within a [GNU Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session:
+1.  To ensure that the Minecraft server runs independent of an SSH connection, execute `run.sh` from within a [GNU Screen](/cloud/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session:
 
         screen /home/minecraft/run.sh
 
@@ -215,7 +215,7 @@ For more information on available settings and how to modify them, or how to run
 
     ![Minecraft Players.](minecraft-gameplay.png)
 
-Congratulations! Now that you have setup a Minecraft server on Linux, you can play Minecraft in a persistent world with your friends. For more information on working with `screen`, check out our guide on [GNU Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/).
+Congratulations! Now that you have setup a Minecraft server on Linux, you can play Minecraft in a persistent world with your friends. For more information on working with `screen`, check out our guide on [GNU Screen](/cloud/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/).
 
 ## Configure Your Minecraft Server Firewall
 
@@ -234,7 +234,7 @@ Here are some of the most common port numbers and network services that use them
 - `Minecraft Server`: 25565
 - `FTP or File Transfer Protocol`: 21
 
-When you install the Minecraft servers on Ubuntu or Debian, the default settings currently only allow SSH traffic to be able to access this server and block every other request. Minecraft uses the port 25565 to allow connections to a server which means you need to enable traffic to pass through this port. For more information, see [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
+When you install the Minecraft servers on Ubuntu or Debian, the default settings currently only allow SSH traffic to be able to access this server and block every other request. Minecraft uses the port 25565 to allow connections to a server which means you need to enable traffic to pass through this port. For more information, see [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/).
 
 You can also add a firewall rule using the ufw by running the following command:
 

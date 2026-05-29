@@ -20,12 +20,12 @@ InspIRCd is a free and open-source IRC server application. It has been designed 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install InspIRCd
@@ -112,7 +112,7 @@ Not all IRC clients support the `/rules` command. The popular client WeeChat, fo
 
 To verify that your IRC server is running properly, you should connect to it using an IRC client. There are many options, and this guide uses the popular WeeChat client as an example.
 
-If you want more information on WeeChat and its usage, refer to the [Using WeeChat for Internet Relay Chat](/docs/guides/using-weechat-for-irc/) guide.
+If you want more information on WeeChat and its usage, refer to the [Using WeeChat for Internet Relay Chat](/cloud/guides/using-weechat-for-irc/) guide.
 
 1. Install the WeeChat IRC client.
 
@@ -230,7 +230,7 @@ In both of the examples that follow, replace `example-irc-alias` with your serve
 
 Certificates from Let's Encrypt expire after 90 days. Certbot automatically renews your certificate, but the renewed certificate needs to be copied to the `inspircd` folder. The following steps show you how to set up a Cron job to copy the certificate files automatically.
 
-You can learn more about using Cron in the [Schedule Tasks with Cron](/docs/guides/schedule-tasks-with-cron/) guide.
+You can learn more about using Cron in the [Schedule Tasks with Cron](/cloud/guides/schedule-tasks-with-cron/) guide.
 
 1. Make a `/etc/inspircd/cron` directory. Using your preferred text editor, create and open a `copy-inspircd-certs.sh` in that directory. The Nano text editor is used in this example.
 

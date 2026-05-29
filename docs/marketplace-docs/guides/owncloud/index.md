@@ -51,7 +51,7 @@ After deployment, follow the instructions below to access your application.
 
 ### Access the ownCloud Site
 
-1.  Open a web browser and enter the following URL, where *[domain]* is either your Compute Instance's default rDNS domain or your own domain name (if you entered one during deployment). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing the IP address and rDNS value.
+1.  Open a web browser and enter the following URL, where *[domain]* is either your Compute Instance's default rDNS domain or your own domain name (if you entered one during deployment). See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing the IP address and rDNS value.
 
     ```command
     https://[domain]/

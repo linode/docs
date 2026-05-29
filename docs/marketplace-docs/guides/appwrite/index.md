@@ -33,7 +33,7 @@ marketplace_app_name: "Appwrite"
 
 ### Accessing the Appwrite Web UI
 
-1.  Open your web browser and navigate to `http://[ip-address]`, where *[ip-address]* is your Compute Instance's IPv4 address or default rDNS domain. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
+1.  Open your web browser and navigate to `http://[ip-address]`, where *[ip-address]* is your Compute Instance's IPv4 address or default rDNS domain. See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing IP addresses.
 
 1.  In the **Sign in** page that is displayed, click the **Sign Up** link if this is your first time accessing the app.
 

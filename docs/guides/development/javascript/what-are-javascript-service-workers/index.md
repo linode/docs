@@ -33,7 +33,7 @@ A typical scenario has service workers intercepting fetch requests when the brow
 
 Theoretically, an API for caching web content already exists in AppCache. So why would you want to use service workers instead? While AppCache's API can make the caching process easy, it makes an array of assumptions about how the cache may be used. AppCache's ease of use made it difficult for developers to deviate from the assumed path without possibly breaking their applications. With service workers, by contrast, you can decide precisely how to manage requests, and caching.
 
-To get started using service workers for crafting offline experiences, take a look at the section below, [Example Service Worker](/docs/guides/what-are-javascript-service-workers/#example-service-worker), for more details. You may also want to explore the [Caching Strategies](https://serviceworke.rs/caching-strategies.html) section of Mozilla's Service Worker Cookbook.
+To get started using service workers for crafting offline experiences, take a look at the section below, [Example Service Worker](/cloud/guides/what-are-javascript-service-workers/#example-service-worker), for more details. You may also want to explore the [Caching Strategies](https://serviceworke.rs/caching-strategies.html) section of Mozilla's Service Worker Cookbook.
 
 ### Push Notifications
 
@@ -55,12 +55,12 @@ This service worker caches content from a web server and intercepts requests to 
 
 ### Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ### Install Node.js
@@ -268,7 +268,7 @@ You are all set to run your website with a service worker.
 
     Express serves the application on `localhost:3000`. To visit the application remotely, you can use an SSH tunnel.
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Connecting to a Remote Server Over SSH using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/) guide, replacing the example port number there with **3000**.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Connecting to a Remote Server Over SSH using PuTTY](/cloud/guides/connect-to-server-over-ssh-using-putty/) guide, replacing the example port number there with **3000**.
     - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
             ssh -L3000:localhost:3000 example-user@192.0.2.0

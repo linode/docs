@@ -18,7 +18,7 @@ marketplace_app_name: "PostgreSQL Cluster"
 The PostgreSQL relational database system is a powerful, scalable, and standards-compliant open-source database platform. It is designed to handle a range of workloads, from single machines to data warehouses or Web services with many concurrent users.
 
 {{< note type="warning" title="Quick Deploy App Cluster Notice" >}}
-This Quick Deploy App deploys 3 Compute Instances to create a highly available and redundant PostgreSQL cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy PostgreSQL on a single Compute Instance, see [Deploy PostgreSQL](/docs/marketplace-docs/guides/postgresql/).
+This Quick Deploy App deploys 3 Compute Instances to create a highly available and redundant PostgreSQL cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy PostgreSQL on a single Compute Instance, see [Deploy PostgreSQL](/cloud/marketplace-docs/guides/postgresql/).
 {{< /note >}}
 
 ## Deploying a Quick Deploy App
@@ -38,11 +38,11 @@ This Quick Deploy App deploys 3 Compute Instances to create a highly available a
 
 ### PostgreSQL Options
 
-- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) to create one.
+- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) to create one.
 
 - **Limited sudo user** *(required)*: A limited user account with sudo access is created as part of this cluster deployment. Enter your preferred username for this limited user. The password is automatically created. See [Obtaining Usernames and Passwords](#obtaining-usernames-and-passwords).
 
-- **Domain** *(required)*: The domain name you wish to use, such as *example.com*. This domain name is only used to identify your cluster and as part of the system's hostname. No domain records are created within Linode's [DNS Manager](/docs/products/networking/dns-manager/).
+- **Domain** *(required)*: The domain name you wish to use, such as *example.com*. This domain name is only used to identify your cluster and as part of the system's hostname. No domain records are created within Linode's [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager).
 
 - **Add SSH Keys to all nodes?** If you select *yes*, any SSH Keys that are added to the root user account (in the **SSH Keys** section), are also added to your limited user account on all deployed Compute Instances.
 
@@ -56,7 +56,7 @@ This Quick Deploy App deploys 3 Compute Instances to create a highly available a
 
 After your cluster has been fully provisioned, use the instructs below to obtain and save passwords that were generated on your behalf during deployment.
 
-1. Log in to your new Compute Instance through [Lish](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using the `root` user and the associated password you entered when creating the instance. If you opted to include your SSH keys as part of this deployment, you can also log in using those keys as either the `root` user or the limited user account you specified during deployment.
+1. Log in to your new Compute Instance through [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) or [SSH](/cloud/guides/connect-to-server-over-ssh/) using the `root` user and the associated password you entered when creating the instance. If you opted to include your SSH keys as part of this deployment, you can also log in using those keys as either the `root` user or the limited user account you specified during deployment.
 
 1. The passwords have been saved in a `.deployment-secrets.txt` file located in your user's home directory. You can view this file in your preferred text editor or through the `cat` command. In the command below, replace *[username]* with the limited sudo user you created during deployment.
 
@@ -198,4 +198,4 @@ The example commands in this section should be run as the `postgres` Linux user.
 
 For more on PostgreSQL, checkout the following guides:
 
-- [Securely Manage Remote PostgreSQL Servers](/docs/guides/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/)
+- [Securely Manage Remote PostgreSQL Servers](/cloud/guides/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/)

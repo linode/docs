@@ -11,21 +11,21 @@ tags: ['linux', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-[Curlie](https://github.com/rs/curlie) is a frontend to the ubiquitous command-line HTTP client cURL. With curlie, you get all of the features and versatility of cURL with a modern and user-friendly interface similar to the HTTP client, [HTTPie](/docs/guides/installing-and-using-httpie-on-linux/). In this guide, you learn about the benefits of curlie and how to install and start using it on a Linux system.
+[Curlie](https://github.com/rs/curlie) is a frontend to the ubiquitous command-line HTTP client cURL. With curlie, you get all of the features and versatility of cURL with a modern and user-friendly interface similar to the HTTP client, [HTTPie](/cloud/guides/installing-and-using-httpie-on-linux/). In this guide, you learn about the benefits of curlie and how to install and start using it on a Linux system.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is curlie?
 
-curlie is a command-line frontend for cURL that takes inspiration from HTTPie. HTTPie is a an HTTP client designed with readability and modern web APIs in mind. You can learn more about HTTPie from our [How to Install and Use HTTPie on Linux](/docs/guides/installing-and-using-httpie-on-linux/) guide.
+curlie is a command-line frontend for cURL that takes inspiration from HTTPie. HTTPie is a an HTTP client designed with readability and modern web APIs in mind. You can learn more about HTTPie from our [How to Install and Use HTTPie on Linux](/cloud/guides/installing-and-using-httpie-on-linux/) guide.
 
 ### How Is Curlie Different From HTTPie
 

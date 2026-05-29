@@ -31,10 +31,10 @@ Do not use WireGuard for critical applications. The project is still undergoing 
 ## Before You Begin
 
 - You will need root access to your Linode, or a user account with `sudo` privilege.
-- Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
+- Set your system's [hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname).
 
 {{< note >}}
-The `GRUB 2` kernel is required for this guide. All distributions for all new Linodes now boot with the `GRUB 2` kernel by default. However, if you are running an older distribution, you will need to check to see which kernel you are running. You can use the [Update Kernel Guide](/docs/products/compute/compute-instances/guides/manage-the-kernel/) to check your kernel version and change it using the Cloud Manager. Select `GRUB 2` from the *Boot Settings: Select a Kernel* dropdown menu in Step 4 of [Update Your Linode Kernel with Linode's Cloud Manager](/docs/products/compute/compute-instances/guides/manage-the-kernel/#view-and-modify-the-kernel-in-cloud-manager).
+The `GRUB 2` kernel is required for this guide. All distributions for all new Linodes now boot with the `GRUB 2` kernel by default. However, if you are running an older distribution, you will need to check to see which kernel you are running. You can use the [Update Kernel Guide](https://techdocs.akamai.com/cloud-computing/docs/manage-the-kernel-on-a-compute-instance) to check your kernel version and change it using the Cloud Manager. Select `GRUB 2` from the *Boot Settings: Select a Kernel* dropdown menu in Step 4 of [Update Your Linode Kernel with Linode's Cloud Manager](https://techdocs.akamai.com/cloud-computing/docs/manage-the-kernel-on-a-compute-instance#view-and-modify-the-kernel-in-cloud-manager).
 {{< /note >}}
 
 ## Install WireGuard

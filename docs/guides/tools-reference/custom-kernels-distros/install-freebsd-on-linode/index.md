@@ -11,8 +11,8 @@ tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[The FreeBSD Handbook](https://www.freebsd.org/doc/handbook/)'
- - '[Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/)'
- - '[Access Your Linux Desktop Using Glish](/docs/products/compute/compute-instances/guides/glish/)'
+ - '[Using the Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish)'
+ - '[Access Your Linux Desktop Using Glish](https://techdocs.akamai.com/cloud-computing/docs/access-your-desktop-environment-using-glish)'
  - '[FreeBSD Handbook - Comparing BSD and Linux](https://www.freebsd.org/doc/en/articles/explaining-bsd/comparing-bsd-and-linux.html)'
  - '[FreeBSD Handbook - Linux® Binary Compatibility](https://www.freebsd.org/doc/handbook/linuxemu.html)'
 relations:
@@ -37,16 +37,16 @@ Briefly, Linux is a term used for a group of operating systems that all use the 
 
 Though FreeBSD grew out of the original UNIX codebase, no UNIX code currently remains. Every part of FreeBSD is developed in the same source tree and code is released under the more permissive FreeBSD License as opposed to the GNU GPL's copyleft stance. More information on the differences between these operating systems is available in the FreeBSD [Quickstart Guide for Linux Users](https://www.freebsd.org/doc/en/articles/linux-users/article.html).
 {{< note type="alert" >}}
-FreeBSD is not officially supported by Linode at this time. This means that the [Linode Backup](/docs/products/storage/backups/) service would be unavailable to you and issues with FreeBSD on your Linode would be outside the scope of Linode Support.
+FreeBSD is not officially supported by Linode at this time. This means that the [Linode Backup](https://techdocs.akamai.com/cloud-computing/docs/backup-service) service would be unavailable to you and issues with FreeBSD on your Linode would be outside the scope of Linode Support.
 {{< /note >}}
 
 ## Preparing Your Linode
 
 Begin by creating the Linode and making some preliminary changes.
 
-1.  Create your Linode in your preferred data center. For the purposes of this tutorial, we recommend turning [Lassie](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/) *off* to prevent the watchdog from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
+1.  Create your Linode in your preferred data center. For the purposes of this tutorial, we recommend turning [Lassie](https://techdocs.akamai.com/cloud-computing/docs/recover-from-unexpected-shutdowns-with-lassie) *off* to prevent the watchdog from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
 
-2.  [Create two disk images](/docs/products/compute/compute-instances/guides/disks-and-storage/#create-a-disk); both should be in the RAW format.
+2.  [Create two disk images](https://techdocs.akamai.com/cloud-computing/docs/manage-disks-on-a-compute-instance#create-a-disk); both should be in the RAW format.
 
     - The first should be a 1024 MB image labeled *Installer*.
     - The second should use the Linode's remaining space. Label it *FreeBSD*.
@@ -68,7 +68,7 @@ Begin by creating the Linode and making some preliminary changes.
     - /dev/sda: FreeBSD disk image.
     - root / boot device: Standard /dev/sda
 
-4.  [Boot into **Rescue Mode**](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode) with the installer disk mounted to `/dev/sda` and access your Linode using [Lish via SSH](/docs/products/compute/compute-instances/guides/lish/) by clicking on the **Launch Console** link from your Linode's dashboard of the Linode Cloud Manager.
+4.  [Boot into **Rescue Mode**](https://techdocs.akamai.com/cloud-computing/docs/rescue-and-rebuild#boot-into-rescue-mode) with the installer disk mounted to `/dev/sda` and access your Linode using [Lish via SSH](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) by clicking on the **Launch Console** link from your Linode's dashboard of the Linode Cloud Manager.
 
 5.  Once in Rescue Mode, run the following command, replacing latest with the latest `memstick.img` file from the [FreeBSD download page](ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/):
 
@@ -80,7 +80,7 @@ Begin by creating the Linode and making some preliminary changes.
 
 6.  When the command finishes, reboot into your **Installer profile**.
 
-7.  Go to the **Networking** tab in the Linode Cloud Manager. Access your Linode using [Glish](/docs/products/compute/compute-instances/guides/glish/) to start the installation. Note that Glish **must** be used to complete the installation of FreeBSD.
+7.  Go to the **Networking** tab in the Linode Cloud Manager. Access your Linode using [Glish](https://techdocs.akamai.com/cloud-computing/docs/access-your-desktop-environment-using-glish) to start the installation. Note that Glish **must** be used to complete the installation of FreeBSD.
 
 ## Installing FreeBSD
 

@@ -51,7 +51,7 @@ marketplace_app_name: "Zabbix"
 
 After Zabbix has finished installing, you must first obtain the login credentials. You can then use these credentials to log in to your Zabbix App via a web browser.
 
-1.  From your terminal, log in to your new Compute Instance as the `root` user, or the `sudo` user created during deployment. Use the following command, replacing `192.0.2.1` with your instance's [IPv4 address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/):
+1.  From your terminal, log in to your new Compute Instance as the `root` user, or the `sudo` user created during deployment. Use the following command, replacing `192.0.2.1` with your instance's [IPv4 address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance):
 
     ```command
     ssh root@192.0.2.1
@@ -71,7 +71,7 @@ After Zabbix has finished installing, you must first obtain the login credential
     MySQL Root Password: fpzdhOpcyw0arno6pw9SGr5vlRiu4GeyrH45kFlypXKrR
     ```
 
-1.  Access the Zabbix Admin panel by opening a web browser and navigating to the following URL: `https://[domain]`, replacing *[domain]* with the rDNS domain assigned to your new Compute Instance, or the custom domain entered on deployment. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
+1.  Access the Zabbix Admin panel by opening a web browser and navigating to the following URL: `https://[domain]`, replacing *[domain]* with the rDNS domain assigned to your new Compute Instance, or the custom domain entered on deployment. See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing IP addresses.
 
     ![A screenshot of the Zabbix log in prompt](zabbix-login.png)
 

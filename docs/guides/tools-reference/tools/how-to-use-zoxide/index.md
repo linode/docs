@@ -18,9 +18,9 @@ Learn more about `zoxide` in this guide, including how to install and get starte
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
@@ -37,7 +37,7 @@ Learn more about `zoxide` in this guide, including how to install and get starte
             sudo yum update
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is zoxide?
@@ -98,7 +98,7 @@ Second, `zoxide` aims for a minimal and ergonomic interface rather than an abund
 
 ### Set Up fzf Integration (Optional)
 
-`zoxide` can integrate with [`fzf`](https://github.com/junegunn/fzf) to provide you with interactive selection when you have multiple matching directories. All you need to do is install `fzf`, which you can learn how to do in our guide [How to Install and Use fzf](/docs/guides/how-to-use-fzf).
+`zoxide` can integrate with [`fzf`](https://github.com/junegunn/fzf) to provide you with interactive selection when you have multiple matching directories. All you need to do is install `fzf`, which you can learn how to do in our guide [How to Install and Use fzf](/cloud/guides/how-to-use-fzf).
 
 ## How to Use zoxide
 
@@ -138,4 +138,4 @@ If you have `fzf` installed, `zoxide` can use it to let you select from a list o
 
 ![zoxide uses fzf for interactive selection](zoxide-interactive-selection.png)
 
-Take a look at the [Set Up fzf Integration](/docs/guides/how-to-use-zoxide/#set-up-fzf-integration-optional) section above to learn how to install `fzf` if you don't have it already.
+Take a look at the [Set Up fzf Integration](/cloud/guides/how-to-use-zoxide/#set-up-fzf-integration-optional) section above to learn how to install `fzf` if you don't have it already.

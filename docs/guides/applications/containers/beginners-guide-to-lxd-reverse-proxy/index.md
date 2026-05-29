@@ -50,7 +50,7 @@ For simplicity, the term *container* is used throughout this guide to describe t
 
 ### Before You Begin
 
-1.  Complete [A Beginner's Guide to LXD: Setting Up an Apache Web Server In a Container](/docs/guides/beginners-guide-to-lxd/). The guide instructs you to create a container called `web` with the Apache web server for testing purposes. Remove this container by running the following commands.
+1.  Complete [A Beginner's Guide to LXD: Setting Up an Apache Web Server In a Container](/cloud/guides/beginners-guide-to-lxd/). The guide instructs you to create a container called `web` with the Apache web server for testing purposes. Remove this container by running the following commands.
 
         lxc stop web
         lxc delete web
@@ -60,12 +60,12 @@ For this guide LXD version 3.3 or later is needed. Check the version with the fo
 
     lxd --version
 
-If the version is not 3.3 or later, update to the latest version by installing the snap package as instructed in [A Beginner's Guide to LXD: Setting Up an Apache Webserver In a Container](/docs/guides/beginners-guide-to-lxd/) and use the following command:
+If the version is not 3.3 or later, update to the latest version by installing the snap package as instructed in [A Beginner's Guide to LXD: Setting Up an Apache Webserver In a Container](/cloud/guides/beginners-guide-to-lxd/) and use the following command:
 
     sudo lxd.migrate
 {{< /note >}}
 
-2. This guide uses the hostnames `apache1.example.com` and `nginx1.example.com` for the two example websites. Replace these names with hostnames you own and setup their DNS entries to point them to the IP address of the server you created. For help with DNS see our [DNS Manager Guide](/docs/products/networking/dns-manager/).
+2. This guide uses the hostnames `apache1.example.com` and `nginx1.example.com` for the two example websites. Replace these names with hostnames you own and setup their DNS entries to point them to the IP address of the server you created. For help with DNS see our [DNS Manager Guide](https://techdocs.akamai.com/cloud-computing/docs/dns-manager).
 
 ## Creating the Containers
 
@@ -306,7 +306,7 @@ server {
     ![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
 
     {{< note respectIndent=false >}}
-If you look at the Apache access.log file (default file `/var/log/apache2/access.log`), it still shows the private IP address of the `proxy` container instead of the real IP address. This issue is specific to the Apache web server and has to do with how the server prints the logs. Other software on the web server is able to use the real IP. To fix this through the Apache logs, see the section [Troubleshooting](/docs/guides/beginners-guide-to-lxd-reverse-proxy/#troubleshooting).
+If you look at the Apache access.log file (default file `/var/log/apache2/access.log`), it still shows the private IP address of the `proxy` container instead of the real IP address. This issue is specific to the Apache web server and has to do with how the server prints the logs. Other software on the web server is able to use the real IP. To fix this through the Apache logs, see the section [Troubleshooting](/cloud/guides/beginners-guide-to-lxd-reverse-proxy/#troubleshooting).
 {{< /note >}}
 
 ### Direct Traffic to the NGINX Web Server From the Reverse Proxy

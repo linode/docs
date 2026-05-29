@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 [HAProxy](http://www.haproxy.org) is an intermediary gateway application that manages traffic between frontend clients and backend server resources. HAProxy can be configured to load balance traffic between a set of backend servers, and it can be configured to route HTTP requests according to the URL path of the request.
 
-This guide is the second part in a series on HAProxy. The first guide, [Getting Started with HAProxy TCP Load Balancing and Health Checks](/docs/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks/), provided steps to build a minimally configured network of Nanodes:
+This guide is the second part in a series on HAProxy. The first guide, [Getting Started with HAProxy TCP Load Balancing and Health Checks](/cloud/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks/), provided steps to build a minimally configured network of Nanodes:
 
 - An HAProxy node was set up as a TCP load balancer
 - Three Akamai Quick Deploy App WordPress servers served as the backends
@@ -21,10 +21,10 @@ This second guide presents another configuration for this server cluster that de
 
 ## Before You Begin
 
-Follow the [Before You Begin](/docs/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks/#before-you-begin) and [Install HAProxy](/docs/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks/#install-haproxy) sections of the [Getting Started with HAProxy TCP Load Balancing and Health Checks](/docs/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks/) guide.
+Follow the [Before You Begin](/cloud/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks/#before-you-begin) and [Install HAProxy](/cloud/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks/#install-haproxy) sections of the [Getting Started with HAProxy TCP Load Balancing and Health Checks](/cloud/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks/) guide.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## HTTP Path-based Routing
@@ -117,7 +117,7 @@ To demonstrate how path-based routing works in practice, follow these steps for 
 
 ## HTTP Health Checks
 
-In [Getting Started with HAProxy TCP Load Balancing and Health Checks](/docs/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks/), the HAProxy gateway was configured to test TCP and Layer 4 connectivity, marking servers as down when errors accumulate over time. HTTP health checks work similarly, but use standard HTTP response codes to mark servers as "down" based on their performance over a specified interval.
+In [Getting Started with HAProxy TCP Load Balancing and Health Checks](/cloud/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks/), the HAProxy gateway was configured to test TCP and Layer 4 connectivity, marking servers as down when errors accumulate over time. HTTP health checks work similarly, but use standard HTTP response codes to mark servers as "down" based on their performance over a specified interval.
 
 Like TCP health checks, HTTP health checks continue to test a server marked as "down" to see if it begins to respond. If it starts responding correctly, the server is added back to the pool of active servers.
 

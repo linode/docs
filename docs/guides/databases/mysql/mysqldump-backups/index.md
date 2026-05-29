@@ -19,12 +19,12 @@ image: mysqldump-backup-title.jpg
 [MySQL](http://www.mysql.com/) (and [MariaDB](https://mariadb.com/)) include the [mysqldump](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html) utility to simplify the process to create a backup of a database or system of databases. Using `mysqldump` creates a *logical backup* and generates the SQL statements needed to reproduce the original database structure and data.
 
 {{< note >}}
-Since the mysqldump utility needs to connect to the database, the database management software must be running and accessible. If the database is not accessible for any reason, you can instead create a [*physical backup*](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/), which is a copy of the file system directory containing your MySQL database.
+Since the mysqldump utility needs to connect to the database, the database management software must be running and accessible. If the database is not accessible for any reason, you can instead create a [*physical backup*](/cloud/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/), which is a copy of the file system directory containing your MySQL database.
 {{< /note >}}
 
 ## Before You Begin
 
-- **Obtain the connection details for the MySQL instance you wish to use.** If you do not have a MySQL instance yet, you can [create a Managed Database](https://techdocs.akamai.com/cloud-computing/docs/managed-databases), [deploy the MySQL Quick Deploy App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/), or [install MySQL server (or MariaDB) on a Compute Instance](/docs/guides/install-mysql/).
+- **Obtain the connection details for the MySQL instance you wish to use.** If you do not have a MySQL instance yet, you can [create a Managed Database](https://techdocs.akamai.com/cloud-computing/docs/managed-databases), [deploy the MySQL Quick Deploy App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/), or [install MySQL server (or MariaDB) on a Compute Instance](/cloud/guides/install-mysql/).
 
     {{% content "dbass-eos" %}}
 
@@ -32,7 +32,7 @@ Since the mysqldump utility needs to connect to the database, the database manag
 
         mysqldump --version
 
-    This should inform you which version you are using as well, needed when referencing the documentation. If mysqldump and mysql are not installed, see the [Installing MySQL](/docs/guides/install-mysql/) guide.
+    This should inform you which version you are using as well, needed when referencing the documentation. If mysqldump and mysql are not installed, see the [Installing MySQL](/cloud/guides/install-mysql/) guide.
 
 - **Ensure your MySQL user has proper grants:** The MySQL user you intend to use to export your existing database must have `SELECT`, `LOCK TABLES`, `SHOW VIEW`, and `TRIGGER` grants.
 
@@ -82,7 +82,7 @@ When backing up a MySQL [Managed Database](https://techdocs.akamai.com/cloud-com
 
 - **Output file** (`> backup.sql`): The name of the output file. To keep your backups organized with unique filenames, it may be helpful to add an automatically generated timestamp (ex: `backup-$(date +%F).sql` for just the date or `backup-$(date +%Y%m%d-%H%M%S).sql` for the date and time). You can reference the formatting options on the [date manual page](https://man7.org/linux/man-pages/man1/date.1.html) to further customize it.
 
-If you are frequently backing up a database with mysqldump or running a backup through a cron job, you can securely store many of these options (including the password). See the [Securely Storing Credentials](/docs/guides/securely-store-mysql-credentials/) guide. Other options can be stored in an [option file](https://dev.mysql.com/doc/refman/8.0/en/option-files.html).
+If you are frequently backing up a database with mysqldump or running a backup through a cron job, you can securely store many of these options (including the password). See the [Securely Storing Credentials](/cloud/guides/securely-store-mysql-credentials/) guide. Other options can be stored in an [option file](https://dev.mysql.com/doc/refman/8.0/en/option-files.html).
 
 ### Additional Options
 
@@ -112,7 +112,7 @@ To schedule regular backups of your database, you can use the mysqldump command 
 
 1.  Log in to the system where you wish to capture and store your backups. This system should likely be a remote / cloud-based Linux server that is always running and should have a MySQL client installed.
 
-1.  Store your database credentials and connection details using the `mysql_config_editor set` command. An example command is provided below, though be sure to replace the values with your own. See [Securely Storing Credentials](/docs/guides/securely-store-mysql-credentials/) guide for additional details and options.
+1.  Store your database credentials and connection details using the `mysql_config_editor set` command. An example command is provided below, though be sure to replace the values with your own. See [Securely Storing Credentials](/cloud/guides/securely-store-mysql-credentials/) guide for additional details and options.
 
         mysql_config_editor set --login-path=[name] --user=[username] --host=[host] --password --warn
 
@@ -130,7 +130,7 @@ To schedule regular backups of your database, you can use the mysqldump command 
 0 1 * * * /usr/bin/mysqldump --login-path=[name] --single-transaction [database-name] > ~/database-backups/backup-$(date +%F-%H.%M.%S).sql
 {{< /file >}}
 
-For more information on cron, see our [Using Cron](/docs/guides/schedule-tasks-with-cron/) guide or review the [cron(8)](https://linux.die.net/man/8/cron) and [cron(5)](https://linux.die.net/man/5/crontab) manual pages.
+For more information on cron, see our [Using Cron](/cloud/guides/schedule-tasks-with-cron/) guide or review the [cron(8)](https://linux.die.net/man/8/cron) and [cron(5)](https://linux.die.net/man/5/crontab) manual pages.
 
 ## Restore a Backup
 

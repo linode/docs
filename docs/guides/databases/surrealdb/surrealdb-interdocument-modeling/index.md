@@ -231,7 +231,7 @@ This section walks you through just that. While the data here may not distill al
 
 ### Setting Up the Prerequisites
 
-To get started, you need to have installed SurrealDB on your system and have placed the SurrealDB binary in your shell path. Follow along with our [Getting Started with SurrealDB](/docs/guides/getting-started-with-surrealdb/) guide to see how.
+To get started, you need to have installed SurrealDB on your system and have placed the SurrealDB binary in your shell path. Follow along with our [Getting Started with SurrealDB](/cloud/guides/getting-started-with-surrealdb/) guide to see how.
 
 This tutorial assumes that you have followed that guide up through the *How to Install SurrealDB* section, with SurrealDB installed and accessible via the `surreal` command.
 
@@ -545,8 +545,8 @@ You now have a foundation in how SurrealDB employs inter-document relations and 
 
 Continue learning everything you need to make the most of SurrealDB with our other tutorials:
 
--   [Managing Security and Access Control for SurrealDB](/docs/guides/managing-security-and-access-for-surrealdb/)
+-   [Managing Security and Access Control for SurrealDB](/cloud/guides/managing-security-and-access-for-surrealdb/)
 
--   [Building an Web Application on Top of SurrealDB](/docs/guides/surrealdb-for-web-applications)
+-   [Building an Web Application on Top of SurrealDB](/cloud/guides/surrealdb-for-web-applications)
 
--   [Deploying a SurrealDB Cluster](/docs/guides/deploy-surrealdb-cluster/)
+-   [Deploying a SurrealDB Cluster](/cloud/guides/deploy-surrealdb-cluster/)

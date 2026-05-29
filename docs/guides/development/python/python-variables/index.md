@@ -201,7 +201,7 @@ Traceback (most recent call last):
 TypeError: can only concatenate str (not "int") to str
 ```
 
-There are many more data types than integers and strings, and much more to know about them. To keep learning more, take a look at our [The Basics of Python Data Types](/docs/guides/python-data-types/) guide.
+There are many more data types than integers and strings, and much more to know about them. To keep learning more, take a look at our [The Basics of Python Data Types](/cloud/guides/python-data-types/) guide.
 
 ### Casting Variables
 
@@ -226,4 +226,4 @@ Hello, 5!
 
 This guide has covered the foundations you need to start working with variables in Python, including variable assignment, variable operations, types, and scopes.
 
-In addition to this guide, you may be interested in [The Basics of Python Data Types](/docs/guides/python-data-types/), or our other [guides on Python development](/docs/guides/development/python/). These can give you tools to elevate your Python skills and start making your Python code more effective.
+In addition to this guide, you may be interested in [The Basics of Python Data Types](/cloud/guides/python-data-types/), or our other [guides on Python development](/cloud/guides/development/python/). These can give you tools to elevate your Python skills and start making your Python code more effective.

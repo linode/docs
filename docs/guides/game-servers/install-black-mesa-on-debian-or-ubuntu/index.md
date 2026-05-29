@@ -25,10 +25,10 @@ This guide will show you how to set up your own [Black Mesa](https://blackmesaso
 
 1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Black Mesa](http://store.steampowered.com/app/362890/).
 
-2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/cloud/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites for Black Mesa
@@ -77,7 +77,7 @@ The **maxplayers** parameter specifies the maximum number of players allowed to 
 You can read the entire list of parameters on the [Valve Wiki](https://developer.valvesoftware.com/wiki/Command_Line_Options).
 {{< /note >}}
 {{< note >}}
-To keep the server running, execute it using [Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/):
+To keep the server running, execute it using [Screen](/cloud/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/):
 
     screen ./srcds_run -game bms +map gasworks +maxplayers 24
 {{< /note >}}

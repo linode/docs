@@ -30,16 +30,16 @@ The schedule for a cron job is specified using a formal syntax. The initial five
 
 There are a variety of methods used to display the cron jobs. Cron jobs can be listed on a per-user or per-application basis. It is also possible to list all jobs sharing a specific schedule. These instructions are designed for Ubuntu 22.04, but are valid for most recent releases of Ubuntu. The `cron` utility works similarly in other Linux distributions, but the names and locations of the files might differ.
 
-For more information about creating cron jobs, see the Linode guides to [Scheduling Cron Jobs](/docs/guides/schedule-tasks-with-cron/) and [Running Cron Jobs at Boot](/docs/guides/run-jobs-or-scripts-using-crontab-on-boot/). On Ubuntu systems, use the `man crontab` command to view user information.
+For more information about creating cron jobs, see the Linode guides to [Scheduling Cron Jobs](/cloud/guides/schedule-tasks-with-cron/) and [Running Cron Jobs at Boot](/cloud/guides/run-jobs-or-scripts-using-crontab-on-boot/). On Ubuntu systems, use the `man crontab` command to view user information.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Listing Active Cron Jobs

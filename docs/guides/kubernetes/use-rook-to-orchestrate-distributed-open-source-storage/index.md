@@ -31,7 +31,7 @@ Rook automates the deployment and management of Ceph to create self-managing, se
 
 1.  Before you can work with Ceph and Rook, you need a Kubernetes cluster running Kubernetes version 1.28 or later with `kubectl` configured to communicate with your cluster. The recommended minimum Kubernetes setup for Rook includes three nodes with 4 GB memory and 2 CPUs each.
 
-    To create a cluster and configure `kubectl`, follow the instructions in our [Linode Kubernetes Engine - Get Started](/docs/products/compute/kubernetes/get-started/) guide.
+    To create a cluster and configure `kubectl`, follow the instructions in our [Linode Kubernetes Engine - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine) guide.
 
 1.  The Ceph storage cluster configured by Rook requires one of the following local storage options as a [prerequisite](https://rook.io/docs/rook/latest-release/Getting-Started/Prerequisites/prerequisites/):
 
@@ -42,10 +42,10 @@ Rook automates the deployment and management of Ceph to create self-managing, se
     -   Multipath Devices
     -   Persistent Volumes
 
-    This guide utilizes Linode Block Storage Volumes attached to individual cluster nodes to demonstrate initial Rook and Ceph configuration. For production environments, we recommend utilizing [persistent volumes](/docs/guides/deploy-volumes-with-the-linode-block-storage-csi-driver/) or another local storage option.
+    This guide utilizes Linode Block Storage Volumes attached to individual cluster nodes to demonstrate initial Rook and Ceph configuration. For production environments, we recommend utilizing [persistent volumes](/cloud/guides/deploy-volumes-with-the-linode-block-storage-csi-driver/) or another local storage option.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Creating and Attaching Volumes

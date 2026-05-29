@@ -28,7 +28,7 @@ Once your server has been created, deploying updates becomes as clear and painle
 
 1.  Sign up for a [Laravel Forge](https://forge.laravel.com/auth/register) account if you don't have one.
 
-1.  Create a Linode API key, which Laravel Forge will use to interface with your account. [Forge uses Linode's new APIv4](https://blog.laravel.com/forge-switching-to-the-new-linode-manager), and APIv4 tokens are created in the [Linode Cloud Manager](https://cloud.linode.com). Refer to the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to learn how to create your key.
+1.  Create a Linode API key, which Laravel Forge will use to interface with your account. [Forge uses Linode's new APIv4](https://blog.laravel.com/forge-switching-to-the-new-linode-manager), and APIv4 tokens are created in the [Linode Cloud Manager](https://cloud.linode.com). Refer to the [Getting Started with the Linode API](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token) to learn how to create your key.
 
 1.  If you don't have a registered domain name for your website, purchase one from a domain name registrar.
 
@@ -109,7 +109,7 @@ If you do not want to use a domain with your website, you can configure the *def
 
 ### Add a New Site
 
-1.  Set up your DNS records for your domain. [Create a Domain Zone and an *A record*](/docs/products/networking/dns-manager/get-started/) assigned to your Linode's IP address. If you use Linode's name servers, review the [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions.
+1.  Set up your DNS records for your domain. [Create a Domain Zone and an *A record*](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager) assigned to your Linode's IP address. If you use Linode's name servers, review the [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) guide for instructions.
 
     If you use another DNS provider, check their documentation for instructions.
 

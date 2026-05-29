@@ -29,7 +29,7 @@ There are two main drawbacks of `lsof`. First, it can only display information a
 
 ## Before You Begin
 {{< note >}}
-Running `lsof` without root privileges only returns the results available to the current user. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+Running `lsof` without root privileges only returns the results available to the current user. If you are not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 On most major distributions, `lsof` comes pre-installed and you can begin using it immediately. If for any reason it is not found, you can install `lsof` using your preferred package manager.
@@ -294,7 +294,7 @@ apache2      24571    www-data  6u     IPv6    8626157   0t0       TCP   *:https
 
 #### Internet Connections
 
-If you process the output of `lsof` with some traditional UNIX command line tools, like [grep](/docs/guides/how-to-use-grep/) and `awk`, you can list all active network connections:
+If you process the output of `lsof` with some traditional UNIX command line tools, like [grep](/cloud/guides/how-to-use-grep/) and `awk`, you can list all active network connections:
 
     sudo lsof -i -n -P | grep ESTABLISHED | awk '{print $1, $9}' | sort -u
 

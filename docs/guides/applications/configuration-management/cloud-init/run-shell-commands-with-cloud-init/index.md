@@ -13,11 +13,11 @@ external_resources:
 
 [Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) is an industry-standard, cross-platform tool that automates the process of initializing new servers. Cloud-init leverages metadata from your cloud platform to handle the deployment while taking custom user data to script the server setup to your needs.
 
-Akamai's [Metadata](/docs/products/compute/compute-instances/guides/metadata/) service lets you deploy Compute Instances using cloud-init. Applying a cloud-config script, you can define everything from security and user setup to software installation and shell script execution.
+Akamai's [Metadata](https://techdocs.akamai.com/cloud-computing/docs/overview-of-the-metadata-service) service lets you deploy Compute Instances using cloud-init. Applying a cloud-config script, you can define everything from security and user setup to software installation and shell script execution.
 
 This guide covers how to use cloud-init to run shell commands as part of server deployment. Whether you need to execute a single shell statement or a full Bash script, cloud-init can automatically run the necessary commands on your system's first boot.
 
-Before getting started, review our guide on how to [Use Cloud-Init to Automatically Configure and Secure Your Servers](/docs/guides/configure-and-secure-servers-with-cloud-init/). There, you can see how to create a cloud-config file, which you need to follow along with this guide. When you are ready to deploy your cloud-config, the guide linked above shows how.
+Before getting started, review our guide on how to [Use Cloud-Init to Automatically Configure and Secure Your Servers](/cloud/guides/configure-and-secure-servers-with-cloud-init/). There, you can see how to create a cloud-config file, which you need to follow along with this guide. When you are ready to deploy your cloud-config, the guide linked above shows how.
 
 ## Run Commands with `runcmd` Directive
 
@@ -63,9 +63,9 @@ bootcmd:
 
 More than just commands, cloud-init's `runcmd` can be used to execute shell scripts. Doing so requires that you deliver the script to the new server and use a shell command (via `runcmd`) to execute the script.
 
-If your script is hosted and accessible remotely, the most straightforward solution is to use a `wget` command to download it. From there, you can use a `runcmd` command to execute the script. [Object Storage](/docs/products/storage/object-storage/get-started/) can provide an effective way to host script files.
+If your script is hosted and accessible remotely, the most straightforward solution is to use a `wget` command to download it. From there, you can use a `runcmd` command to execute the script. [Object Storage](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-object-storage) can provide an effective way to host script files.
 
-However, most use cases favor adding the shell script directly as part of the cloud-init initialization, without hosting the script file elsewhere. In such cases, you can use cloud-init's `write_files` option to create the script file on initialization. To learn more about writing files with cloud-init, read our guide on how to [Use Cloud-Init to Write to a File](/docs/guides/write-files-with-cloud-init/). The guide includes explanations of all the `write_files` options used here.
+However, most use cases favor adding the shell script directly as part of the cloud-init initialization, without hosting the script file elsewhere. In such cases, you can use cloud-init's `write_files` option to create the script file on initialization. To learn more about writing files with cloud-init, read our guide on how to [Use Cloud-Init to Write to a File](/cloud/guides/write-files-with-cloud-init/). The guide includes explanations of all the `write_files` options used here.
 
 The example that follows demonstrates how `write_files` and `runcmd` can operate together in your cloud-config to create and execute a shell script. `write_files` creates a simple script file at `/run/scripts/test-script.sh` and gives the script executable permissions. The script `content` runs with Bash and appends a line to the `/run/testing.txt` file. `runcmd` executes the `test-script.sh` file as a command. This example uses the `sh` command to run the shell script:
 

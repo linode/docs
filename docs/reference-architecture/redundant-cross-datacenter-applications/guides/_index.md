@@ -9,4 +9,4 @@ tab_group_main:
     weight: 30
 ---
 
-- [Implementing Redundant Cross-Data Center Applications](/docs/reference-architecture/redundant-cross-datacenter-applications/guides/implementing-redundant-cross-datacenter-applications/)
+- [Implementing Redundant Cross-Data Center Applications](/cloud/reference-architecture/redundant-cross-datacenter-applications/guides/implementing-redundant-cross-datacenter-applications/)

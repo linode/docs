@@ -71,14 +71,14 @@ A drawback of repmgr is that it cannot recover resources or restore the state of
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with the Akamai cloud computing platform](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with the Akamai cloud computing platform](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  This guide requires at least two compute instances. The examples here only require Shared CPU instances with 4GB of RAM, to accommodate larger data sets, use High Memory instances. One system must be designated as the primary node and the other as a standby or backup node. Additional standby systems can be added depending upon business requirements. All servers within the same HA cluster must use the same release of the same Linux distribution. The steps that follow are geared towards Ubuntu 22.04 LTS users, but are generally applicable for earlier releases and other Linux distributions.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## An Overview of the PostgreSQL and repmgr HA Solution
@@ -109,14 +109,14 @@ The complete list of steps required to provision PostgreSQL and repmgr follows t
 After the configuration process, it is important to verify the cluster status. Add some data to the primary database instance and ensure it is replicated to the standby. It is also possible to test a failover process, but the failed primary must be recovered manually afterwards.
 
 {{< note >}}
-An alternative to manual installation is the [Akamai Quick Deploy Apps PostgreSQL cluster application](/docs/marketplace-docs/guides/postgresql-cluster/). The Quick Deploy Application uses repmgr to manage a multi-node HA PostgreSQL cluster. While it's easy to provision this solution using the Akamai Cloud Compute Dashboard, you cannot choose the cluster size or customize the configuration. The Quick Deploy Application is a reasonable option for a smaller organization looking for ease of use. It is currently only supported on Ubuntu 22.04 LTS (with all regions and plan types).
+An alternative to manual installation is the [Akamai Quick Deploy Apps PostgreSQL cluster application](/cloud/marketplace-docs/guides/postgresql-cluster/). The Quick Deploy Application uses repmgr to manage a multi-node HA PostgreSQL cluster. While it's easy to provision this solution using the Akamai Cloud Compute Dashboard, you cannot choose the cluster size or customize the configuration. The Quick Deploy Application is a reasonable option for a smaller organization looking for ease of use. It is currently only supported on Ubuntu 22.04 LTS (with all regions and plan types).
 {{< /note >}}
 
 ## How to Install PostgreSQL and repmgr
 
 ### How to Install PostgreSQL
 
-PostgreSQL can be installed using a variety of methods, but the easiest approach is to use `apt` to install the PostgreSQL package. For more information on installing and configuring PostgreSQL, including instructions on using the database, see the [How to install PostgreSQL guide](/docs/guides/how-to-install-use-postgresql-ubuntu-20-04/). The [PostgreSQL downloads page](https://www.postgresql.org/download/) has information on other install options, including how to build PostgreSQL from source code.
+PostgreSQL can be installed using a variety of methods, but the easiest approach is to use `apt` to install the PostgreSQL package. For more information on installing and configuring PostgreSQL, including instructions on using the database, see the [How to install PostgreSQL guide](/cloud/guides/how-to-install-use-postgresql-ubuntu-20-04/). The [PostgreSQL downloads page](https://www.postgresql.org/download/) has information on other install options, including how to build PostgreSQL from source code.
 
 {{< note >}}
 Users can choose to install PostgreSQL either from the default Ubuntu packages or from the PostgreSQL apt repository. Installing the PostgreSQL repository allows more control over which release to use. This guide demonstrates how to install the official PostgreSQL repository, which guarantees access to the current release.
@@ -125,7 +125,7 @@ Users can choose to install PostgreSQL either from the default Ubuntu packages o
 To install PostgreSQL, execute the instructions in this section on both the primary and standby nodes.
 
 {{< note >}}
-Instead of running the same commands on both nodes, users have the option of cloning the primary server configuration to the standby server. Users selecting this option must perform the clone operation before adding any primary-specific PostgreSQL or repmgr configuration. See the [Instance Cloning guide](/docs/products/compute/compute-instances/guides/clone-instance/) for more information.
+Instead of running the same commands on both nodes, users have the option of cloning the primary server configuration to the standby server. Users selecting this option must perform the clone operation before adding any primary-specific PostgreSQL or repmgr configuration. See the [Instance Cloning guide](https://techdocs.akamai.com/cloud-computing/docs/clone-a-compute-instance) for more information.
 {{< /note >}}
 
 1.  Ensure the server is up to date. Use the `apt update` command to install any updates. Reboot the server if necessary.
@@ -262,7 +262,7 @@ PostgreSQL creates a default `postgres` user account at installation time. This 
 
 1.  Type `exit` again to log out as the `postgres` user and return to your Linux user account with `sudo` access.
 
-1.  **Optional**: By default, local users can log into PostgreSQL without a password using `peer` authentication. For multi-user environments, this can create a security risk. To enforce password authentication for local users (other than the `postgres` account) edit the `pg_hba.conf` file. Change the `METHOD` attribute for `local` accounts from `peer` to `md5`. See the [How to install PostgreSQL guide](/docs/guides/how-to-install-use-postgresql-ubuntu-20-04/) for detailed instructions.
+1.  **Optional**: By default, local users can log into PostgreSQL without a password using `peer` authentication. For multi-user environments, this can create a security risk. To enforce password authentication for local users (other than the `postgres` account) edit the `pg_hba.conf` file. Change the `METHOD` attribute for `local` accounts from `peer` to `md5`. See the [How to install PostgreSQL guide](/cloud/guides/how-to-install-use-postgresql-ubuntu-20-04/) for detailed instructions.
 
 ### How to Install repmgr
 
@@ -759,7 +759,7 @@ To confirm the HA cluster is working, follow these steps.
     ```
 
     {{< note >}}
-    For an explanation of the most common `psql` commands, see the [How to Install and Use PostgreSQL guide](/docs/guides/how-to-install-use-postgresql-ubuntu-20-04/).
+    For an explanation of the most common `psql` commands, see the [How to Install and Use PostgreSQL guide](/cloud/guides/how-to-install-use-postgresql-ubuntu-20-04/).
     {{< /note >}}
 
 1.  Ensure the table is successfully created:

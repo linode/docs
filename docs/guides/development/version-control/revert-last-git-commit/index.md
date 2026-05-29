@@ -18,13 +18,13 @@ Git is a widely used Version Control System (VCS) known for its versatility. It 
 
 You might need that recoverability after an inadvertent commit or to undo a commit for any reason. This tutorial shows you how to use the `git` command line utility to revert a commit. It covers methods using both the `git revert` and `git reset` commands and explains the differences.
 
-Learn more about Git generally in our guide [Git vs SVN: Pros and Cons of Each Version Control System](/docs/guides/svn-vs-git/#what-is-the-git-version-control-system). For a more general, and thorough, coverage of reverting Git commits, take a look at our guide on [How to Undo a Git Commit](/docs/guides/how-to-undo-git-commit/).
+Learn more about Git generally in our guide [Git vs SVN: Pros and Cons of Each Version Control System](/cloud/guides/svn-vs-git/#what-is-the-git-version-control-system). For a more general, and thorough, coverage of reverting Git commits, take a look at our guide on [How to Undo a Git Commit](/cloud/guides/how-to-undo-git-commit/).
 
 ## Optional: Create a Test Repository
 
 If you'd like to test reverting and resetting in a separate repository from one you actively work in, follow the steps below. This will set up an example Git repository similar to the one used for the examples in this tutorial. The commit IDs may be different, but the contents of the repository should otherwise be the same.
 
-The steps presume you have already installed Git and done basic configuration (e.g. user email address and name). If you have not done this yet, you can learn how in our guide [How to Install Git and Clone a GitHub Repository](/docs/guides/how-to-install-git-and-clone-a-github-repository/).
+The steps presume you have already installed Git and done basic configuration (e.g. user email address and name). If you have not done this yet, you can learn how in our guide [How to Install Git and Clone a GitHub Repository](/cloud/guides/how-to-install-git-and-clone-a-github-repository/).
 
 1.  Create a new directory for your Git repository, and change it into that directory. Here, the new directory, `git-example` is created in the current user's home directory.
 
@@ -186,4 +186,4 @@ The `git reset` command should be used sparingly. Take a good look at the situat
 
 That covers all you need to revert recent Git commits. Moreover, the techniques covered in this tutorial can also help you manage Git commits more generally. The `git revert` command can be useful for precisely removing past commits while retaining your commit history. The `git reset` command, on the other hand, provides a more radical option, completely reverting a repository to a previous commit, including the commit history.
 
-To keep learning, refer to the links at the beginning of this guide. These give you more on Git generally as well as more on the commands covered in this tutorial. You may also want to look at our entire lineup of [guides on version control](/docs/guides/development/version-control/). These cover everything from the fundamentals to particular use cases, and provide steps to deepen your version control knowledge.
+To keep learning, refer to the links at the beginning of this guide. These give you more on Git generally as well as more on the commands covered in this tutorial. You may also want to look at our entire lineup of [guides on version control](/cloud/guides/development/version-control/). These cover everything from the fundamentals to particular use cases, and provide steps to deepen your version control knowledge.

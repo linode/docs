@@ -17,7 +17,7 @@ This guide provides an introduction to popular Python testing frameworks used to
 
 The list below includes some of the most popular Python testing frameworks and what you can expect from each one.
 
-- [**doctest**](https://docs.python.org/3/library/doctest.html): Provides an interactive command-line shell and can be integrated with tools like [Jupyter Notebook](/docs/guides/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy/) with greater ease than other testing packages.
+- [**doctest**](https://docs.python.org/3/library/doctest.html): Provides an interactive command-line shell and can be integrated with tools like [Jupyter Notebook](/cloud/guides/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy/) with greater ease than other testing packages.
 
     Doctest is not as feature-rich as other frameworks, which limits it to simpler testing scenarios.
 
@@ -208,7 +208,7 @@ If you’re looking for a more feature-rich test tool, then Pytest is a good cho
 Before you can use Pytest, you must install it on your system.
 
 {{< note >}}
-If you have not already installed `conda`, see our [How to Install Anaconda](/docs/guides/how-to-install-anaconda/) guide for the installation instructions.
+If you have not already installed `conda`, see our [How to Install Anaconda](/cloud/guides/how-to-install-anaconda/) guide for the installation instructions.
 {{< /note >}}
 
 To install Pytest using conda, issue the following command:

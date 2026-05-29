@@ -15,7 +15,7 @@ external_resources:
 - '[Sed](https://www.gnu.org/software/sed/manual/sed.html)'
 ---
 
-When working from the command line, it can be convenient to write to files without the need to open a text editor like [Nano](/docs/guides/use-nano-to-edit-files-in-linux/), or Vim. There are some handy Linux operators and commands to make writing to files simple to accomplish. This guide shows you how to use key operators and commands to write to files from the shell. These commands work with [Bash](/docs/guides/intro-bash-shell-scripting/#bash-basics), [Zsh](https://www.zsh.org/) shells, and several other Unix shells.
+When working from the command line, it can be convenient to write to files without the need to open a text editor like [Nano](/cloud/guides/use-nano-to-edit-files-in-linux/), or Vim. There are some handy Linux operators and commands to make writing to files simple to accomplish. This guide shows you how to use key operators and commands to write to files from the shell. These commands work with [Bash](/cloud/guides/intro-bash-shell-scripting/#bash-basics), [Zsh](https://www.zsh.org/) shells, and several other Unix shells.
 
 ## Writing to a File Using Redirection Operators
 
@@ -152,7 +152,7 @@ without evaluating either.
 
 ## Advanced Editing with Sed
 
-[Sed](/docs/guides/manipulate-text-from-the-command-line-with-sed/) is a command-line stream editor that gives you access to advanced file writing features while still working from the shell.
+[Sed](/cloud/guides/manipulate-text-from-the-command-line-with-sed/) is a command-line stream editor that gives you access to advanced file writing features while still working from the shell.
 
 The operators in the sections above give you ways to write to files and append content to them. Sed can write to files, but also provides powerful tools for editing and manipulating files.
 
@@ -229,4 +229,4 @@ without evaluating it.
 
 ## Conclusion
 
-With the redirect operators and Sed commands above, you should be able to write to files directly right from the command line. The operators and commands used in this guide are also helpful when you need to work with files in Bash scripts and other shell scripts. If you are interested in learning more about Bash scripts, check out our [series of guides on Bash scripting](/docs/guides/development/bash/).
+With the redirect operators and Sed commands above, you should be able to write to files directly right from the command line. The operators and commands used in this guide are also helpful when you need to work with files in Bash scripts and other shell scripts. If you are interested in learning more about Bash scripts, check out our [series of guides on Bash scripting](/cloud/guides/development/bash/).

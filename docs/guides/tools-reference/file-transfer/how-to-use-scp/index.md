@@ -53,9 +53,9 @@ Both SCP and the SSH File Transfer Protocol (SFTP) are methods to more securely 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and at least two Compute Instances. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and at least two Compute Instances. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Create the following example files and directories on your local machine:
 
@@ -77,7 +77,7 @@ Both SCP and the SSH File Transfer Protocol (SFTP) are methods to more securely 
     ```
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## SCP Basic Syntax
@@ -110,7 +110,7 @@ The `scp` command permits users to choose from a list of options. The most commo
 - **-r**: Copy directories recursively.
 - **-v**: Print debug messages.
 
-To use `scp`, the user must have read access for the files they are transferring and write permission on the destination directory. For authentication purposes, either an SSH key or user password is required for the destination. For more information on SSH, see our guide on [Connecting to a Remote Server Over SSH on Linux](/docs/guides/connect-to-server-over-ssh-on-linux/).
+To use `scp`, the user must have read access for the files they are transferring and write permission on the destination directory. For authentication purposes, either an SSH key or user password is required for the destination. For more information on SSH, see our guide on [Connecting to a Remote Server Over SSH on Linux](/cloud/guides/connect-to-server-over-ssh-on-linux/).
 
 {{< note type="alert" >}}
 Exercise a high degree of caution when using `scp`. It does not provide any warnings or ask for confirmation before overwriting an existing file with the same name. It is very easy to accidentally overwrite files or directories, especially when using `scp` in recursive mode.

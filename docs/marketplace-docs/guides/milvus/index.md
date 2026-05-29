@@ -48,8 +48,8 @@ When deployment completes, the system automatically generates credentials for in
 
 1. Log in to your Compute Instance using one of the methods below:
 
-    - **Lish Console**: Log in to Cloud Manager, click **Linodes**, select your instance, and click **Launch LISH Console**. Log in as `root`. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
-    - **SSH**: Log in to your instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
+    - **Lish Console**: Log in to Cloud Manager, click **Linodes**, select your instance, and click **Launch LISH Console**. Log in as `root`. To learn more, see [Using the Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
+    - **SSH**: Log in to your instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/cloud/guides/connect-to-server-over-ssh/).
 
 2. Run the following command to access the `.credentials` file:
 
@@ -80,7 +80,7 @@ You should see containers for Milvus, etcd, and MinIO in a running state.
 ### Access the MinIO Dashboard
 Milvus uses MinIO as its object storage backend. You can access the MinIO web interface to verify bucket creation and storage activity.
 
-To access your MinIO Dashboard, Open a browser and navigate to your Linode rDNS domain `https://203-0-113-0.ip.linodeusercontent.com`. Replace `https://203-0-113-0.ip.linodeusercontent.com` with your [Linode's RDNS domain](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses). The credentials can be found in the `.credentials` file (/home/$USERNAME/.credentials).
+To access your MinIO Dashboard, Open a browser and navigate to your Linode rDNS domain `https://203-0-113-0.ip.linodeusercontent.com`. Replace `https://203-0-113-0.ip.linodeusercontent.com` with your [Linode's RDNS domain](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses). The credentials can be found in the `.credentials` file (/home/$USERNAME/.credentials).
 
 If you want to learn more about Milvus, checkout [the official Milvus documentation](https://milvus.io/docs) to learn how to further utilize your instance.
 

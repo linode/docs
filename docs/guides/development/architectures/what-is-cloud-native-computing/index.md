@@ -31,12 +31,12 @@ As the name suggests, cloud-native programs live and die on clouds. They're deve
 
 ## Managing Cloud-Native Applications
 
-To manage cloud-computing systems, administrators orchestrate the containers with [Kubernetes](/docs/guides/kubernetes/). Some would argue that Kubernetes is essential to cloud-native computing.
+To manage cloud-computing systems, administrators orchestrate the containers with [Kubernetes](/cloud/guides/kubernetes/). Some would argue that Kubernetes is essential to cloud-native computing.
 
 Applications run inside Linux-based containers. They rarely use old-school development languages such as C++ or Java. Instead, cloud-native applications usually are written using web-centric languages, such as Go, Node.js, Rust, and Ruby. There's nothing wrong with the older languages, but cloud-native programming emphasizes flexibility and interoperability.
 
-To further those goals, cloud-native computing also makes use of two other concepts: [serverless computing](/docs/guides/what-is-serverless-computing/) and [micro-services](/docs/guides/deploying-microservices-with-docker/).
+To further those goals, cloud-native computing also makes use of two other concepts: [serverless computing](/cloud/guides/what-is-serverless-computing/) and [micro-services](/cloud/guides/deploying-microservices-with-docker/).
 
 In serverless computing, applications don't need to know about the hardware its running on or how it's managed. The software calls on the functions that the serverless platform provides without needing more knowledge of anything else. That means developers can focus on an application's business logic, rather than on architectural issues (for example, whether the server has enough RAM).
 
-Micro-services provides lightweight, loosely coupled services via an API endpoint. These are connected by lightweight protocols such as [Representational State Transfer](https://www.service-architecture.com/articles/web-services/representational_state_transfer_rest.html) (REST) or [gRPC](/docs/guides/using-grpc-for-remote-procedural-calls/). In cloud-native computing, data tends to be represented by [JavaScript Object Notation](https://www.json.org/) (JSON) or [Protobuf](https://github.com/google/protobuf/). They provide modular and basic services. It may be helpful to think of these as akin to Linux shell programs, which provide single services done well, but for the cloud.
+Micro-services provides lightweight, loosely coupled services via an API endpoint. These are connected by lightweight protocols such as [Representational State Transfer](https://www.service-architecture.com/articles/web-services/representational_state_transfer_rest.html) (REST) or [gRPC](/cloud/guides/using-grpc-for-remote-procedural-calls/). In cloud-native computing, data tends to be represented by [JavaScript Object Notation](https://www.json.org/) (JSON) or [Protobuf](https://github.com/google/protobuf/). They provide modular and basic services. It may be helpful to think of these as akin to Linux shell programs, which provide single services done well, but for the cloud.

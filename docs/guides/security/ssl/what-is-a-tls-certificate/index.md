@@ -67,7 +67,7 @@ The `https` invocation specifically requests TLS/SSL (although SSL is usually di
 
 Once the initiating TLS transaction is done, a relationship between the two hosts occurs, as a stateful entity called a *session*. A series of messages constituting a handshake occurs between the hosts. This establishes message encryption, and therefore privacy. in TLS 1.3, a single request-and-answer then causes the next parts of the TLS protocol to be encrypted.
 
-Next, the authenticity of the server's credentials is checked. These are checked against either a local browser certificate cache or against a chain-of-authorities to a [Certificate Authority](/docs/guides/obtain-a-commercially-signed-tls-certificate/). If all matches correctly, a session is established. It may have a stated maximum lifetime/expiration.
+Next, the authenticity of the server's credentials is checked. These are checked against either a local browser certificate cache or against a chain-of-authorities to a [Certificate Authority](/cloud/guides/obtain-a-commercially-signed-tls-certificate/). If all matches correctly, a session is established. It may have a stated maximum lifetime/expiration.
 
 Once the TLS connection is made between the two hosts, it's time to pick common encryption mechanisms/ciphers (and hopefully the highest common denominator between the two hosts). In the web service example, a browser has trust information presented by the web service. The browser looks to either its own cache of certificates, or to a chain-of-authorities statement made by the web server to prove its trust. If trust can be proven satisfactorily, and multiple options are possible, then a trust relationship is established (or rejected, ending the conversation).
 

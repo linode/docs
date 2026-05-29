@@ -31,7 +31,7 @@ NPM is also the most popular Node.js package manager. With that popularity comes
 Yarn was originally designed to address performance and security concerns in NPM. And while Yarn still outshines NPM in terms of speed, NPM has made vast security improvements that put it about even with Yarn.
 
 {{< note >}}
-You can learn more about Yarn in our [How to Install and Use the Yarn Package Manager](/docs/guides/install-and-use-the-yarn-package-manager) guide.
+You can learn more about Yarn in our [How to Install and Use the Yarn Package Manager](/cloud/guides/install-and-use-the-yarn-package-manager) guide.
 
 To learn how to install Node.js, jump to the [How to Install NPM](#how-to-install-npm) section of this guide.
 {{< /note >}}
@@ -42,7 +42,7 @@ The steps in this section show you how to install NPM along with Node.js. It als
 
 ### How to Install NPM
 
-Since NPM is packaged with Node.js, you just need to install Node.js. The installation path recommended by NPM is using a the Node Version Manager (nvm). This version manager helps you avoid permissions issues and version conflicts with NPM packages. To install nvm follow the steps in our [How to Install and Use the Node Version Manager NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide.
+Since NPM is packaged with Node.js, you just need to install Node.js. The installation path recommended by NPM is using a the Node Version Manager (nvm). This version manager helps you avoid permissions issues and version conflicts with NPM packages. To install nvm follow the steps in our [How to Install and Use the Node Version Manager NVM](/cloud/guides/how-to-install-use-node-version-manager-nvm/) guide.
 
 Using nvm, you can install the current stable version of Node.js, and its accompanying version of NPM using the following command:
 

@@ -13,7 +13,7 @@ image: deploy-lke-cluster-with-terraform.png
 external_resources:
 - '[LKE Product Documentation](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine)'
 - '[LKE Enterprise Product Documentation](https://techdocs.akamai.com/cloud-computing/docs/lke-enterprise)'
-- '[Setting Up a Private Docker Registry with Linode Kubernetes Engine and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)'
+- '[Setting Up a Private Docker Registry with Linode Kubernetes Engine and Object Storage](/cloud/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)'
 - '[Linode Provider Terraform Documentation](https://www.terraform.io/docs/providers/linode/index.html)'
 aliases: ['/kubernetes/how-to-deploy-an-lke-cluster-using-terraform/','/guides/how-to-deploy-an-lke-cluster-using-terraform/','/products/compute/kubernetes/guides/deploy-cluster-using-terraform/']
 ---
@@ -28,19 +28,19 @@ This guide will walk you through the steps needed to deploy a Kubernetes cluster
 
 ## Before you Begin
 
-1. Create a personal access token for [Linode's API v4](https://developers.linode.com/api/v4). Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token. You will need a token to be able to create Linode resources using Terraform.
+1. Create a personal access token for [Linode's API v4](https://developers.linode.com/api/v4). Follow the [Getting Started with the Linode API](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token) to get a token. You will need a token to be able to create Linode resources using Terraform.
 
     {{< note >}}
     Ensure that your token has, at minimum, Read/Write permissions for Compute Instances, Kubernetes, NodeBalancers, and Volumes.
     {{< /note >}}
 
-1. Review the [A Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/) to familiarize yourself with Terraform concepts if you have not used the tool before. This guide assumes familiarity with Terraform and its native [HCL syntax](https://www.terraform.io/docs/configuration/syntax.html).
+1. Review the [A Beginner's Guide to Terraform](/cloud/guides/beginners-guide-to-terraform/) to familiarize yourself with Terraform concepts if you have not used the tool before. This guide assumes familiarity with Terraform and its native [HCL syntax](https://www.terraform.io/docs/configuration/syntax.html).
 
 ## Prepare your Local Environment
 
 ### Install Terraform
 
-Install Terraform on your computer by following the [Install Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) section of our [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide.
+Install Terraform on your computer by following the [Install Terraform](/cloud/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) section of our [Use Terraform to Provision Linode Environments](/cloud/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide.
 
 ### Install kubectl
 
@@ -189,7 +189,7 @@ You are now ready to define the input variables that were referenced in your `ma
     }
     ```
 
-    This file describes each variable and provides them with default values. You should review and update the file with your own preferred default values, ensuring that they match currently available [versions of Kubernetes on LKE](/docs/products/compute/kubernetes/release-notes/), as well as [Available Plans](/docs/products/compute/compute-instances/plans/choosing-a-plan/) and [Data Centers](/docs/products/platform/get-started/guides/choose-a-data-center/)
+    This file describes each variable and provides them with default values. You should review and update the file with your own preferred default values, ensuring that they match currently available [versions of Kubernetes on LKE](https://techdocs.akamai.com/cloud-computing/docs/release-notes-for-lke-linode-kubernetes-engine), as well as [Available Plans](https://techdocs.akamai.com/cloud-computing/docs/how-to-choose-a-compute-instance-plan) and [Data Centers](https://techdocs.akamai.com/cloud-computing/docs/how-to-choose-a-data-center)
 
 ### Assign Values to your Input Variables
 
@@ -376,7 +376,7 @@ Now that your Kubernetes cluster is deployed, you can use kubectl to connect to 
     lke4377-5673-5eb331acd6c2   Ready    <none>   17h   v1.17.0
     ```
 
-    Now that you are connected to your LKE cluster, you can begin using kubectl to deploy applications, [inspect and manage](/docs/guides/troubleshooting-kubernetes/#kubectl-get) cluster resources, and [view logs](/docs/guides/troubleshooting-kubernetes/#kubectl-logs).
+    Now that you are connected to your LKE cluster, you can begin using kubectl to deploy applications, [inspect and manage](/cloud/guides/troubleshooting-kubernetes/#kubectl-get) cluster resources, and [view logs](/cloud/guides/troubleshooting-kubernetes/#kubectl-logs).
 
 ## Destroy your Kubernetes Cluster (optional)
 

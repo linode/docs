@@ -19,9 +19,9 @@ This tutorial introduces you to Appwrite, highlighting its features and how it c
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Update your system:
 
@@ -34,7 +34,7 @@ This tutorial introduces you to Appwrite, highlighting its features and how it c
     ```
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is Appwrite?
@@ -66,7 +66,7 @@ Appwrite, on the other hand, uses a NoSQL approach to its database interface, an
 These steps take you through everything from installing the prerequisites to starting-up and running your own Appwrite instance.
 
 {{< note >}}
-To automatically install Appwrite on a Compute Instance, consider deploying [Appwrite through the Linode Marketplace](/docs/marketplace-docs/guides/appwrite/).
+To automatically install Appwrite on a Compute Instance, consider deploying [Appwrite through the Linode Marketplace](/cloud/marketplace-docs/guides/appwrite/).
 {{< /note >}}
 
 ### Installing Docker
@@ -75,9 +75,9 @@ The first step is to install Docker, which is used to both install and run your 
 
 1.  Install Docker using the steps outlined in one of the following guides, depending on your Linux distribution.
 
-    -  **Debian** and **Ubuntu**: Use our guide [How to Install and Use Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
+    -  **Debian** and **Ubuntu**: Use our guide [How to Install and Use Docker on Ubuntu and Debian](/cloud/guides/installing-and-using-docker-on-ubuntu-and-debian/).
 
-    -  **AlmaLinux**, **CentOS Stream**, **Fedora**, and **Rocky Linux**: Use our guide [How to Install and Use Docker on CentOS and Fedora](/docs/guides/installing-and-using-docker-on-centos-and-fedora/).
+    -  **AlmaLinux**, **CentOS Stream**, **Fedora**, and **Rocky Linux**: Use our guide [How to Install and Use Docker on CentOS and Fedora](/cloud/guides/installing-and-using-docker-on-centos-and-fedora/).
 
 1.  Install the Docker Compose plugin using your distribution's package manager.
 
@@ -131,9 +131,9 @@ Appwrite is now up and running. You can access the dashboard by navigating to `h
 
 However, doing so is often not feasible. Likely, you want to access the dashboard remotely. You can do so by navigating to the Appwrite server's URL, which may be an IP address, such as `192.0.2.0`. But first, you need to ensure the server's firewall provides external access to the HTTP port (`80`).
 
--   **Debian** and **Ubuntu**: Refer to our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
+-   **Debian** and **Ubuntu**: Refer to our guide on [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/).
 
--   **AlmaLinux**, **CentOS Stream**, **Fedora**, and **Rocky Linux**: Refer to our guide on [Enabling and Configuring FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/).
+-   **AlmaLinux**, **CentOS Stream**, **Fedora**, and **Rocky Linux**: Refer to our guide on [Enabling and Configuring FirewallD on CentOS](/cloud/guides/introduction-to-firewalld-on-centos/).
 
 Having opened the port, navigate to the server's URL/IP address, and you should be greeted by the Appwrite sign-up form.
 
@@ -233,11 +233,11 @@ To get you started, here are a few particularly useful environmental variables A
 
 ## How to Create an Appwrite Project
 
-It's beyond the scope of this tutorial to showcase all of Appwrite's features for creating a fully functioning backend server. For that, refer to the links at the end of this tutorial and to our guide [How to Create a React App with Appwrite](/docs/guides/create-react-app-with-appwrite/).
+It's beyond the scope of this tutorial to showcase all of Appwrite's features for creating a fully functioning backend server. For that, refer to the links at the end of this tutorial and to our guide [How to Create a React App with Appwrite](/cloud/guides/create-react-app-with-appwrite/).
 
 Here you can see the initial steps for creating an Appwrite project. This can serve as the basis for anything else you want to do with Appwrite.
 
-1.  Navigate to the Appwrite dashboard, as described in the [Starting Appwrite](/docs/guides/getting-started-appwrite/#starting-appwrite) section above.
+1.  Navigate to the Appwrite dashboard, as described in the [Starting Appwrite](/cloud/guides/getting-started-appwrite/#starting-appwrite) section above.
 
 1.  Click the **Create Project** button, and enter the name for your project. This takes you to the dashboard for the new project.
 
@@ -255,4 +255,4 @@ Here you can see the initial steps for creating an Appwrite project. This can se
 
 This tutorial covers everything you need to start working with Appwrite as your next backend server. From here, everything is in place to start putting together an Appwrite instance ready to support your application frontend.
 
-Want to learn more about how to get started on such an application? Take a look at the Appwrite documentation linked below as well as at our guide [How to Create a React App with Appwrite](/docs/guides/create-react-app-with-appwrite/).
+Want to learn more about how to get started on such an application? Take a look at the Appwrite documentation linked below as well as at our guide [How to Create a React App with Appwrite](/cloud/guides/create-react-app-with-appwrite/).

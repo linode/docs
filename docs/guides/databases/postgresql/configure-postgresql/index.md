@@ -18,16 +18,16 @@ aliases: ['/databases/postgresql/configure-postgresql/']
 
 ## What is PostgreSQL?
 
-[PostgreSQL](https://www.postgresql.org/) is a popular, open source relational database system. Our [PostgreSQL section](/docs/databases/postgresql/) has detailed instructions on how to install PostgreSQL on different distributions. These basic installations will be sufficient for many use cases; however, PostgreSQL provides many advanced configuration options that can help optimize your databases's performance in a production environment.
+[PostgreSQL](https://www.postgresql.org/) is a popular, open source relational database system. Our [PostgreSQL section](/cloud/databases/postgresql/) has detailed instructions on how to install PostgreSQL on different distributions. These basic installations will be sufficient for many use cases; however, PostgreSQL provides many advanced configuration options that can help optimize your databases's performance in a production environment.
 
 PostgreSQL can be configured and tuned through a series of configuration files. In this guide you will learn about the configuration files and how to fine-tune your database to fit your specific needs.
 
 ## Before You Begin
 
-You should have a working installation of PostgreSQL on your system before beginning this guide. Go through our [How to Install PostgreSQL on Ubuntu guide](/docs/guides/how-to-install-postgresql-on-ubuntu-16-04/) to install PostgreSQL and create a sample database.
+You should have a working installation of PostgreSQL on your system before beginning this guide. Go through our [How to Install PostgreSQL on Ubuntu guide](/cloud/guides/how-to-install-postgresql-on-ubuntu-16-04/) to install PostgreSQL and create a sample database.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 

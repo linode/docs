@@ -9,11 +9,11 @@ keywords: ['cloud-init','migrate','migration','disk image','aws','azure','google
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Linode API & CLI Documentation](https://techdocs.akamai.com/linode-api/reference/api)'
-- '[Akamai Cloud-Init Guides](/docs/guides/applications/configuration-management/cloud-init/)'
+- '[Akamai Cloud-Init Guides](/cloud/guides/applications/configuration-management/cloud-init/)'
 - '[Cloud-Init Official Documentation](https://cloudinit.readthedocs.io/en/latest/)'
 ---
 
-The ability to migrate a virtual machine’s disk image across cloud providers is essential to cloud architecture durability and a key component of multi-cloud portability. There are numerous methods of migrating a disk image, several of which can be found in our documentation library: [Migrate to Linode](/docs/guides/platform/migrate-to-linode/)
+The ability to migrate a virtual machine’s disk image across cloud providers is essential to cloud architecture durability and a key component of multi-cloud portability. There are numerous methods of migrating a disk image, several of which can be found in our documentation library: [Migrate to Linode](/cloud/guides/platform/migrate-to-linode/)
 
 This tutorial includes steps for deploying a disk image to a new compute instance using *cloud-init* and the Ubuntu 24.04 LTS distribution. Cloud-init is an industry standard configuration tool that helps automate the configuration of new compute instances upon initial boot.
 
@@ -55,7 +55,7 @@ There are several requirements that must be met for your disk image to successfu
 The provided cloud-init configuration uses a file’s metadata to gather information and does not look for specific file extensions.
 {{< /note >}}
 
-If you are using a disk image that requires direct disk to boot (i.e. an image with partitioned disks or a Master Boot Record, or MBR), you may need to take additional steps to configure your system before image creation or after deployment for full compatibility with the Akamai Cloud platform. See our guide on [Installing a Custom Distribution](/docs/guides/install-a-custom-distribution/#make-the-system-compatible-with-the-linode-platform) for guidance and configuration options for a direct disk image.
+If you are using a disk image that requires direct disk to boot (i.e. an image with partitioned disks or a Master Boot Record, or MBR), you may need to take additional steps to configure your system before image creation or after deployment for full compatibility with the Akamai Cloud platform. See our guide on [Installing a Custom Distribution](/cloud/guides/install-a-custom-distribution/#make-the-system-compatible-with-the-linode-platform) for guidance and configuration options for a direct disk image.
 
 ## Upload a Disk Image to Object Storage
 

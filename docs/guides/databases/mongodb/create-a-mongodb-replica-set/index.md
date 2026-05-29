@@ -24,14 +24,14 @@ This guide has been tested with Ubuntu 16.04 and CentOS 7. Because most of the c
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and *at least 3* Compute Instances. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and *at least 3* Compute Instances. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Follow the guide on how to install MongoDB for your distribution. See [MongoDB guides](/docs/databases/mongodb/)
+1.  Follow the guide on how to install MongoDB for your distribution. See [MongoDB guides](/cloud/databases/mongodb/)
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Configure Networking
@@ -42,11 +42,11 @@ To allow for consistent replication, each node will need to communicate with all
 
 There are two major ways to allow the members of your replica set to communicate.
 
-The first method is to use [private IP addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for each member of the replica set. This allows the Linodes in your replica set to communicate without exposing your data to the public internet. This method is recommended, but note that it requires all members of the replica set be in the same data center.
+The first method is to use [private IP addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#adding-an-ip-address) for each member of the replica set. This allows the Linodes in your replica set to communicate without exposing your data to the public internet. This method is recommended, but note that it requires all members of the replica set be in the same data center.
 
 The second method is to simply use the public IP address assigned to each Linode. You'll need to use this method if your Linodes are located in different data centers, although this is not recommended because network latency will have a negative impact on replication. If you must use public IP addresses, you should [configure SSL/TLS encryption](https://docs.mongodb.com/manual/tutorial/configure-ssl/) for data sent between your hosts, or configure them to communicate over a VPN.
 
-Whether you're using public or private IP addresses to send data, you'll need to secure each Linode with a [firewall](/docs/security/firewalls/) before deploying your replica set into production.
+Whether you're using public or private IP addresses to send data, you'll need to secure each Linode with a [firewall](/cloud/security/firewalls/) before deploying your replica set into production.
 
 ### Configure Hosts Files
 
@@ -132,7 +132,7 @@ replication:
 
 The `port` value of 27017 is the default. If you have reason to use a different port you may do so, but the rest of this guide will use the default. The `bindIp` directive specifies the IP address on which the MongoDB daemon will listen, and since we're connecting several hosts, this should be the IP address that corresponds with the Linode on which you're configuring it (the same address added to the hosts files in the previous section). Leaving the default of `127.0.0.1` allows you to connect locally as well, which may be useful for testing replication.
 
-Uncomment the `security` section, and use the `keyFile` option to direct MongoDB to the key you created previously. Enabling `keyFile` authentication automatically enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/) as well, so you will need to [create users](/docs/guides/install-mongodb-on-ubuntu-16-04/#create-database-users) and assign them privileges to access specific databases.
+Uncomment the `security` section, and use the `keyFile` option to direct MongoDB to the key you created previously. Enabling `keyFile` authentication automatically enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/) as well, so you will need to [create users](/cloud/guides/install-mongodb-on-ubuntu-16-04/#create-database-users) and assign them privileges to access specific databases.
 
 The `replication` section needs to be uncommented to be enabled. Directives in this section are what directly affect the configuration of your replica set. The value `rs0` is the name we're using for our replica set; you can use a different naming convention if you like, but we'll be using `rs0` throughout this guide.
 
@@ -222,4 +222,4 @@ At this stage, your replica set is fully functional and ready to use. The steps 
 
 ## Next Steps
 
-Replica sets can be used as standalone components of a high availability system, or as part of a [sharded database cluster](https://docs.mongodb.com/manual/core/sharded-cluster-shards/). For larger datasets, a cluster allows you to distribute data across many database servers or replica sets and route queries to them based on criteria you specify. For more information on how to create a sharded cluster, see our guide on [building database clusters with MongoDB](/docs/guides/build-database-clusters-with-mongodb/).
+Replica sets can be used as standalone components of a high availability system, or as part of a [sharded database cluster](https://docs.mongodb.com/manual/core/sharded-cluster-shards/). For larger datasets, a cluster allows you to distribute data across many database servers or replica sets and route queries to them based on criteria you specify. For more information on how to create a sharded cluster, see our guide on [building database clusters with MongoDB](/cloud/guides/build-database-clusters-with-mongodb/).

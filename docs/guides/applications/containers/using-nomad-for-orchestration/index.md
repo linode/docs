@@ -13,7 +13,7 @@ external_resources:
 - '[Pavel Sklenar: Creating Two Node Nomad Cluster](https://blog.pavelsklenar.com/two-node-nomad-cluster/)'
 ---
 
-[Nomad](https://www.nomadproject.io/) is an open source workload orchestration and scheduling system that offers a simplified and flexible alternative to Kubernetes. Nomad can deploy and manage both containerized and non-containerized applications across efficient, highly scalable clusters. Nomad is part of the HashiCorp ecosystem, giving it built-in integration with tools like Consul, Terraform, and Vault. Learn more about Nomad and how it compares to Kubernetes in our guide [Kubernetes vs Nomad: Which Is Better?](/docs/guides/kubernetes-vs-nomad/).
+[Nomad](https://www.nomadproject.io/) is an open source workload orchestration and scheduling system that offers a simplified and flexible alternative to Kubernetes. Nomad can deploy and manage both containerized and non-containerized applications across efficient, highly scalable clusters. Nomad is part of the HashiCorp ecosystem, giving it built-in integration with tools like Consul, Terraform, and Vault. Learn more about Nomad and how it compares to Kubernetes in our guide [Kubernetes vs Nomad: Which Is Better?](/cloud/guides/kubernetes-vs-nomad/).
 
 In this tutorial, learn how to get started understanding and using Nomad effectively. Begin by installing a single Nomad instance to get a sense of its interface and cluster structure. Then see how to leverage Terraform and Consul to deploy a full Nomad cluster with Docker for containerized applications.
 
@@ -21,13 +21,13 @@ In this tutorial, learn how to get started understanding and using Nomad effecti
 
 This section outlines how to install Nomad and access its interface in order to familiarize yourself with Nomad's method of handling jobs.
 
-If, instead, you are ready to start deploying a Nomad cluster now, skip to the [How to Deploy a Cluster with Nomad](/docs/guides/using-nomad-for-orchestration/#how-to-deploy-a-cluster-with-nomad) section.
+If, instead, you are ready to start deploying a Nomad cluster now, skip to the [How to Deploy a Cluster with Nomad](/cloud/guides/using-nomad-for-orchestration/#how-to-deploy-a-cluster-with-nomad) section.
 
 ### Deploying Nomad from Akamai Quick Deploy Apps
 
-The most approachable solution for setting up a Nomad instance with Linode is through Akamai Quick Deploy Apps. There, a Linode instance with Nomad already installed and configured can be quickly set up. To do so, take a look at our guide to [Deploy HashiCorp Nomad through Akamai Quick Deploy Apps](/docs/marketplace-docs/guides/hashicorp-nomad/).
+The most approachable solution for setting up a Nomad instance with Linode is through Akamai Quick Deploy Apps. There, a Linode instance with Nomad already installed and configured can be quickly set up. To do so, take a look at our guide to [Deploy HashiCorp Nomad through Akamai Quick Deploy Apps](/cloud/marketplace-docs/guides/hashicorp-nomad/).
 
-First, follow along with that guide to get a Nomad instance ready. Then skip to the section [How Nomad Works](/docs/guides/using-nomad-for-orchestration/#how-nomad-works) to become familiar with the new Nomad instance.
+First, follow along with that guide to get a Nomad instance ready. Then skip to the section [How Nomad Works](/cloud/guides/using-nomad-for-orchestration/#how-nomad-works) to become familiar with the new Nomad instance.
 
 ### Manually Installing Nomad
 
@@ -35,13 +35,13 @@ Follow the steps here to install Nomad manually. These walk through everything n
 
 #### Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 A Linode instance is needed to run Nomad on, so follow the linked guides here to start up and configure your own instance:
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 #### Installing Nomad on Debian and Ubuntu
@@ -164,7 +164,7 @@ With the Nomad instance up and running, it's time to start exploring how Nomad w
 
 1.  The agent makes a Nomad web interface available, serving it on `localhost:4646`. Use an SSH tunnel to access this in a web browser from a remote machine:
 
-    -   On **Windows**, use the PuTTY tool to set up the SSH tunnel. Follow the PuTTY section of our guide on how to [Create an SSH Tunnel for MySQL Remote Access](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/#how-to-access-mysql-remotely-by-creating-an-ssh-tunnel-with-putty). Use `4646` as the **Source port** and `127.0.0.1:4646` as the **Destination**.
+    -   On **Windows**, use the PuTTY tool to set up the SSH tunnel. Follow the PuTTY section of our guide on how to [Create an SSH Tunnel for MySQL Remote Access](/cloud/guides/create-an-ssh-tunnel-for-mysql-remote-access/#how-to-access-mysql-remotely-by-creating-an-ssh-tunnel-with-putty). Use `4646` as the **Source port** and `127.0.0.1:4646` as the **Destination**.
 
     -   On **macOS** or **Linux**, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the remote server and `192.0.2.0` with the remote server's IP address:
 
@@ -200,13 +200,13 @@ This setup is meant to serve as a basis for your own specific use case. For that
 
 ### Overview of Terraform Provisioning
 
-Probably the most effective way to deploy a Nomad cluster is through [Terraform](https://www.terraform.io/), another tool by HashiCorp. With Terraform, you can provision infrastructure as code, automating the deployment process. This is especially convenient with Nomad. Terraform coordinates configuration and deployment between all nodes in a cluster, in addition to saving manual installation and setup time on each node. Learn more about using Terraform, particularly for provisioning Linode instances, in our [Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/).
+Probably the most effective way to deploy a Nomad cluster is through [Terraform](https://www.terraform.io/), another tool by HashiCorp. With Terraform, you can provision infrastructure as code, automating the deployment process. This is especially convenient with Nomad. Terraform coordinates configuration and deployment between all nodes in a cluster, in addition to saving manual installation and setup time on each node. Learn more about using Terraform, particularly for provisioning Linode instances, in our [Beginner's Guide to Terraform](/cloud/guides/beginners-guide-to-terraform/).
 
 This tutorial leverages our custom Terraform script to deploy the Nomad cluster. The Terraform script here emphasizes simplicity and readability, which is helpful for getting started with your own uses.
 
 Here's a rundown of what the Terraform script does:
 
--   Creates a given number of Nomad server and client nodes. All instances deploy within a single region and leverage [Linode's VLAN](/docs/products/networking/vlans/) feature for virtual private cloud (VPC) communications between nodes.
+-   Creates a given number of Nomad server and client nodes. All instances deploy within a single region and leverage [Linode's VLAN](https://techdocs.akamai.com/cloud-computing/docs/vlan) feature for virtual private cloud (VPC) communications between nodes.
 
 -   Executes a script on each node to install Nomad, Consul, and Docker.
 
@@ -246,7 +246,7 @@ The configurations and commands used in this guide add multiple Linode instances
 
 1.  Open the `terraform.tfvars` file, and configure the variables there. Here is a breakdown of the variables and how to set them:
 
-    -   `token` needs your Linode API token. Terraform uses this to provision Linode instances. Follow our [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
+    -   `token` needs your Linode API token. Terraform uses this to provision Linode instances. Follow our [Get an API Access Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
 
     -   `ssh_keys` takes a list of SSH public keys. These keys are added to the known hosts on each node, allowing SSH access to the nodes. Enter the full public key for your local machine in one line.
 
@@ -254,14 +254,14 @@ The configurations and commands used in this guide add multiple Linode instances
 
     -   `server_count` and `client_count` dictate the number of Nomad server and client nodes to provision, respectively. Nomad recommends three or five server nodes for each region. This tutorial uses three server nodes and three client nodes.
 
-    -   `region` determines what Linode region the nodes should be created in. The full list of regions and their designations is available via the [Linode regions API](https://api.linode.com/v4/regions). However, this tutorial uses Linode's VLAN feature, which is only available for certain regions. Those regions are listed on the [VLAN Overview](/docs/products/networking/vlans/#availability) page.
+    -   `region` determines what Linode region the nodes should be created in. The full list of regions and their designations is available via the [Linode regions API](https://api.linode.com/v4/regions). However, this tutorial uses Linode's VLAN feature, which is only available for certain regions. Those regions are listed on the [VLAN Overview](https://techdocs.akamai.com/cloud-computing/docs/vlan#availability) page.
 
     -   `linode_image` points to an image to use for each node. The default for this tutorial is an Ubuntu 20.04 LTS image. Find a list of possible images via the [Linode images API](https://api.linode.com/v4/images). Be aware that changing the image requires accordingly adjusting the scripts for installing Consul, Nomad, and Docker.
 
     -   `server_type` and `client_type` indicate the Linode instance types to use for the server and client nodes, respectively. The default provides a Dedicated 4GB instance for each Nomad server, as recommended, and a Linode (shared) 4GB instance for each Nomad client. Find a full list of the instance type designations via the [Linode types API](https://api.linode.com/v4/linode/types).
 
     {{< note type="warning" >}}
-    Sensitive infrastructure data, such as passwords and tokens, are visible in plain text within the `terraform.tfvars` file. Review [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
+    Sensitive infrastructure data, such as passwords and tokens, are visible in plain text within the `terraform.tfvars` file. Review [Secrets Management with Terraform](/cloud/guides/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
     {{< /note >}}
 
 1.  Initialize the Terraform script, which installs the required provisioners, then apply the script to start the provisioning process:
@@ -357,7 +357,7 @@ You now know how to start orchestrating workloads with Nomad. This tutorial cont
 
 The Terraform deployment above is meant as a simple, accessible base. Continue enhancing this to better meet your own specific needs. The following are some initial ideas to start out with:
 
--   Use Packer to build initial images. This saves deployment time and would replace the steps in the `nomad-installations.sh` script. Learn more about Packer and using it to create Linode images in our guide [Using the Linode Packer Builder to Create Custom Images](/docs/guides/how-to-use-linode-packer-builder/).
+-   Use Packer to build initial images. This saves deployment time and would replace the steps in the `nomad-installations.sh` script. Learn more about Packer and using it to create Linode images in our guide [Using the Linode Packer Builder to Create Custom Images](/cloud/guides/how-to-use-linode-packer-builder/).
 
 -   Leverage Consul's Access Control List (ACL) features to bolster the cluster's security. These features can secure the cluster's access points through ACL policies. Learn more in HashiCorp's [Secure Consul with Access Control Lists](https://developer.hashicorp.com/consul/tutorials/security/access-control-setup-production) documentation.
 

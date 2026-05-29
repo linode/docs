@@ -14,7 +14,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 Application security testing products come in two basic groups and you need more than one. The umbrella groups: testing and shielding. The former run various automated and manual tests on your code to identify security weaknesses. The application shielding products are used to harden your apps to make attacks more difficult to implement. These products go beyond the testing process and are used to be more proactive in your protection and flag bad spots as you write the code within your development environment.
 
-The two previous guides in this series explained [why automation is useful for application developers](/docs/guides/security-automation-business) and what are two common app security problems that can lead towards security issues. This guide delves into the differences between the tools and reviews and recommends a series of application security testing products.
+The two previous guides in this series explained [why automation is useful for application developers](/cloud/guides/security-automation-business) and what are two common app security problems that can lead towards security issues. This guide delves into the differences between the tools and reviews and recommends a series of application security testing products.
 
 The testing tools fall into three different categories:
 

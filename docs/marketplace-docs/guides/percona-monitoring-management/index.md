@@ -90,14 +90,14 @@ After the [PMM Server](https://www.percona.com/doc/percona-monitoring-and-manage
 
 To begin monitoring a database node, you will need to install the [PMM Client](https://www.percona.com/doc/percona-monitoring-and-management/2.x/concepts/architecture.html#pmm-client) on the Linode that hosts your database and connect the node to the PMM Server. For instructions on setting up a database on Linode that you can connect to your PMM Server, see our guides on:
 
--   [Deploying MySQL/MariaDB with Quick Deploy Apps](/docs/marketplace-docs/guides/mysql/)
--   [Deploying PostgreSQL with Quick Deploy Apps](/docs/marketplace-docs/guides/postgresql/)
+-   [Deploying MySQL/MariaDB with Quick Deploy Apps](/cloud/marketplace-docs/guides/mysql/)
+-   [Deploying PostgreSQL with Quick Deploy Apps](/cloud/marketplace-docs/guides/postgresql/)
 
 {{< note >}}
 The PMM Server deployed with Linode's Percona (PMM) Quick Deploy App is compatible with [**PMM Client version 2**](https://www.percona.com/doc/percona-monitoring-and-management/2.x/index.html).
 {{< /note >}}
 
-1.  [Connect to your database Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) via SSH.
+1.  [Connect to your database Linode](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance) via SSH.
 
 1.  Update your system's software.
 
@@ -141,7 +141,7 @@ The PMM Server deployed with Linode's Percona (PMM) Quick Deploy App is compatib
 1.  Connect your database node to the PMM Server. Replace `admin_password` with your PMM Server's [Grafana password](#access-your-PMM-server-s-grafana-dashboard), and `192.0.2.0` with your PMM Server's IPv4 address.
 
     {{< note >}}
-    Follow the steps in [Find Your Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) to retrieve your PMM Server's IPv4 address.
+    Follow the steps in [Find Your Linode's IP Address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) to retrieve your PMM Server's IPv4 address.
     {{< /note >}}
 
         pmm-admin \
@@ -167,7 +167,7 @@ The PMM Server deployed with Linode's Percona (PMM) Quick Deploy App is compatib
 
 Once your database node and your PMM Server are communicating, the final step is to add your database instance to be monitored by your PMM Server. These steps are completed on your database node.
 
-1. [Connect to your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) via SSH.
+1. [Connect to your Linode](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance) via SSH.
 
 1. Add your database instance to be monitored by your PMM Server. This command will add a MySQL database instance to be monitored. Replace `db_user` with your database's user name, and `db_user_password` with that user's password. You can also replace `mysql` with the database type that your node is hosting (i.e. `postgresql` or `mongodb`). See Percona's [Using PMM Client](https://www.percona.com/doc/percona-monitoring-and-management/2.x/manage/index-using-pmm-client.html) documentation for details.
 

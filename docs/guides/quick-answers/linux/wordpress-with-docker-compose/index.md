@@ -95,7 +95,7 @@ volumes:
 
     ![WordPress setup screen in the web browser](docker-compose-wordpress-wizard.png "WordPress setup screen in the web browser")
 
-5.  You can optionally set up a domain for your WordPress site. Our [DNS Manager Overview](/docs/products/networking/dns-manager/) guide includes instructions for associating your domain with your Linode's IP address.
+5.  You can optionally set up a domain for your WordPress site. Our [DNS Manager Overview](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) guide includes instructions for associating your domain with your Linode's IP address.
 
     Once you set up your DNS records, you should also replace your IP address with your domain in the WordPress Settings screen:
 
@@ -125,4 +125,4 @@ The `docker-compose.yml` specifies the `latest` version of the WordPress image, 
 
 ## Next Steps
 
-More extensive documentation on Docker is available in the [Containers](/docs/guides/applications/containers/) section of the Linode Guides & Tutorials site.
+More extensive documentation on Docker is available in the [Containers](/cloud/guides/applications/containers/) section of the Linode Guides & Tutorials site.

@@ -46,7 +46,7 @@ marketplace_app_name: "Passky"
 
 ### Accessing the Passky App
 
-1.  Open your web browser and navigate to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-rdns) guide for information on viewing the rDNS value.
+1.  Open your web browser and navigate to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#configuring-rdns) guide for information on viewing the rDNS value.
 
 1. On the Passky front page, enter the username and password you set during deployment to access the server GUI.
 

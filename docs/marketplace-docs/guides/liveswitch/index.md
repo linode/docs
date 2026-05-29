@@ -48,7 +48,7 @@ After deployment, follow the instructions below to access your application.
 
 ### Accessing the LiveSwitch App
 
-1. In a web browser, go to `https://[ip-address]/admin`, replacing *[ip-address]* with your Compute Instance's IP address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1. In a web browser, go to `https://[ip-address]/admin`, replacing *[ip-address]* with your Compute Instance's IP address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing IP addresses and rDNS.
 
 1. Follow the *Welcome* setup wizard to input your license key and create your user.
 

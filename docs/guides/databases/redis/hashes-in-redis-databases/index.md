@@ -19,9 +19,9 @@ Redis, the open-source NoSQL database, is frequently used for caching, messaging
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
@@ -33,15 +33,15 @@ Redis, the open-source NoSQL database, is frequently used for caching, messaging
 
             sudo dnf upgrade
 
-1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to installing a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
+1. Follow the instructions in our [How to Install and Configure Redis](/cloud/guides/install-redis-ubuntu/) guide to installing a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
 
 {{< note >}}
-The steps in this guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Are Hashes in Redis?
 
-Redis Hashes are maps of field and value pairs. They're similar to what you would expect if you have worked with hashes in programming languages like [Python](/docs/guides/development/python/) and [Ruby](/docs/guides/development/ror/).
+Redis Hashes are maps of field and value pairs. They're similar to what you would expect if you have worked with hashes in programming languages like [Python](/cloud/guides/development/python/) and [Ruby](/cloud/guides/development/ror/).
 
 With hashes, you can have a single Redis entry (called a "key") with numerous field-value pairs. This essentially allows you to associate properties with a given item in Redis.
 
@@ -178,4 +178,4 @@ You can also delete an entire hash using the `DEL` command.
 
 ## Conclusion
 
-With this tutorial, you should be prepared to start making use of hashes in your Redis databases. These can significantly improve many storage tasks, especially object storage for web application caching. Check out other [Redis guides and tutorials](/docs/guides/databases/redis/). They cover topics like, [Using Sorted Sets in Redis Databases](/docs/guides/using-sorted-sets-in-redis-database/) and [Using Lists and Sets in Redis Databases](/docs/guides/using-lists-and-sets-in-redis-database/).
+With this tutorial, you should be prepared to start making use of hashes in your Redis databases. These can significantly improve many storage tasks, especially object storage for web application caching. Check out other [Redis guides and tutorials](/cloud/guides/databases/redis/). They cover topics like, [Using Sorted Sets in Redis Databases](/cloud/guides/using-sorted-sets-in-redis-database/) and [Using Lists and Sets in Redis Databases](/cloud/guides/using-lists-and-sets-in-redis-database/).

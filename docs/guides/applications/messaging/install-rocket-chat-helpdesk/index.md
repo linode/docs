@@ -43,7 +43,7 @@ For a comprehensive comparison between plan types, including features and limita
 
 There are multiple methods for deploying Rocket.Chat. This guide reviews manual deployment on a single Compute Instance, as well as deploying to a Kubernetes cluster:
 
--   Deploy using our [Rocket.Chat Quick Deploy App](/docs/marketplace-docs/guides/rocketchat/). This installs and configures all necessary software and is the fastest deployment method.
+-   Deploy using our [Rocket.Chat Quick Deploy App](/cloud/marketplace-docs/guides/rocketchat/). This installs and configures all necessary software and is the fastest deployment method.
 -   Manually deploy to a [Compute Instance](#deploying-to-a-compute-instance).
 -   Deploy to a [Kubernetes cluster](#deploying-to-a-kubernetes-cluster) with Linode Kubernetes Engine (LKE).
 -   Use Rocket.Chat's instructions for deploying via [Docker and Docker Compose](https://docs.rocket.chat/deploy/deploy-rocket.chat/deploy-with-docker-and-docker-compose) using Rocket.Chat's Docker image.
@@ -94,7 +94,7 @@ You can access the Rocket.Chat instance once installation is complete, but it is
 
 The instructions below require you to be logged into your instance as a user with root permissions.
 
-1.  Install NGINX using the instructions in our [Installing and Using NGINX](/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/) guide. NGINX will act as your reverse proxy server.
+1.  Install NGINX using the instructions in our [Installing and Using NGINX](/cloud/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/) guide. NGINX will act as your reverse proxy server.
 
 1.  Create the `sites-available` and `sites-enabled` directories in `/etc/nginx/` if they do not already exist:
 
@@ -192,10 +192,10 @@ The instructions below require you to be logged into your instance as a user wit
 With a reverse proxy in place, you can enable SSL encryption and secure the web traffic for your Rocket.Chat instance using [Certbot](https://certbot.eff.org/).
 
 {{< note title="Domain Name" >}}
-Completing these steps require your system's public IP address to be associated with a domain name. For information on managing and setting up domains with your Compute Instance, see our [DNS Manager](/docs/products/networking/dns-manager/get-started/) guide.
+Completing these steps require your system's public IP address to be associated with a domain name. For information on managing and setting up domains with your Compute Instance, see our [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager) guide.
 {{< /note >}}
 
-1.  Follow the instructions in our [Use Certbot to Enable HTTPS with NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) guide to install Certbot and obtain an SSL certificate.
+1.  Follow the instructions in our [Use Certbot to Enable HTTPS with NGINX](/cloud/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) guide to install Certbot and obtain an SSL certificate.
 
 1.  Using a text editor, open the site's NGINX configuration in the `rocketchat.conf` file created earlier. Replace {{< placeholder "rocketchat.conf" >}} with the name of your file:
 
@@ -260,8 +260,8 @@ For a scalable solution, Rocket.Chat supports Kubernetes deployments. The steps 
 
 This requires the following prerequisites:
 
--   An active LKE cluster with the `kubectl` tool configured. See [Linode Kubernetes Engine - Get Started](/docs/products/compute/kubernetes/get-started/).
--   Helm installed and configured on your local machine. See [Installing Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-the-helm-client).
+-   An active LKE cluster with the `kubectl` tool configured. See [Linode Kubernetes Engine - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine).
+-   Helm installed and configured on your local machine. See [Installing Apps on Kubernetes with Helm 3](/cloud/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-the-helm-client).
 
 1.  Once your LKE cluster is running and `kubectl` is configured, use the following `kubectl` command to view the cluster's context name:
 
@@ -329,9 +329,9 @@ There are multiple options for accessing the Rocket.Chat instance from the Kuber
 
 -   **Ingress Deployment**: NGINX Ingress can be deployed to a Kubernetes cluster to provide routing. Using this method, it can act as a kind of reverse proxy on the Kubernetes cluster.
 
-    For more on this method, and steps for implementing it, follow our guide on [Deploying NGINX Ingress on Linode Kubernetes Engine](/docs/guides/deploy-nginx-ingress-on-lke/#install-the-nginx-ingress-controller) starting with the **Install the NGINX Ingress Controller** section.
+    For more on this method, and steps for implementing it, follow our guide on [Deploying NGINX Ingress on Linode Kubernetes Engine](/cloud/guides/deploy-nginx-ingress-on-lke/#install-the-nginx-ingress-controller) starting with the **Install the NGINX Ingress Controller** section.
 
-    To enable TLS for the Ingress, follow [Getting Started with Load Balancing on an LKE Cluster](/docs/products/compute/kubernetes/guides/load-balancing/#configuring-linode-nodebalancers-for-tls-encryption) starting with the **Configuring NodeBalancers for TLS Encryption** section.
+    To enable TLS for the Ingress, follow [Getting Started with Load Balancing on an LKE Cluster](https://techdocs.akamai.com/cloud-computing/docs/get-started-with-load-balancing-on-an-lke-cluster#configuring-linode-nodebalancers-for-tls-encryption) starting with the **Configuring NodeBalancers for TLS Encryption** section.
 
 ## Getting Started With Rocket.Chat After Deployment
 

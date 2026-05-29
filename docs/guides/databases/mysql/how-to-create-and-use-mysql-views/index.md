@@ -29,15 +29,15 @@ In this guide you will learn:
 
 To follow along with this guide, make sure you have the following:
 
-1.  A Linode, which you run the MySQL software on. You can follow the [Getting Started with Linode](/docs/products/platform/get-started/) guide to provision a Linode.
+1.  A Linode, which you run the MySQL software on. You can follow the [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide to provision a Linode.
 
-1.  The MySQL server software (or MariaDB) installed on your Linode. Please refer to the [MySQL section](/docs/guides/databases/mysql/), which contains guides that describe how to install MySQL on several Linux distributions.
+1.  The MySQL server software (or MariaDB) installed on your Linode. Please refer to the [MySQL section](/cloud/guides/databases/mysql/), which contains guides that describe how to install MySQL on several Linux distributions.
 
 ## Preparing the Database
 
 Before you create your MySQL views, create a sample database, define a few tables, and populate them with some data first:
 
-1.  [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) to your Linode. Then, enter this command to log in to MySQL as the root user:
+1.  [SSH](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance) to your Linode. Then, enter this command to log in to MySQL as the root user:
 
         mysql -u root -p
 

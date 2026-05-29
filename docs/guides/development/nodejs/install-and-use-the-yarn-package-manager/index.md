@@ -29,7 +29,7 @@ Yarn previously had an advantage with its `yarn.lock` file. Yarn creates this fi
 
 ## How to Install Yarn
 
-1. Follow the steps for installing NPM in our [How to Install and Use Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/#how-to-install-npm) guide.
+1. Follow the steps for installing NPM in our [How to Install and Use Node Package Manager (NPM) on Linux](/cloud/guides/install-and-use-npm-on-linux/#how-to-install-npm) guide.
 
 1. Install Yarn using NPM. The `-g` flag has NPM install Yarn as a global package, rather than a project package.
 
@@ -54,7 +54,7 @@ Initialize the new project using Yarn.
 
     yarn init
 
-Yarn prompts you for information about the project. You can use the defaults for this example. The result is an initial `package.json` file representing the project. For more on the `package.json`, take a look our [How to Install and Use Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/#packagejson) guide.
+Yarn prompts you for information about the project. You can use the defaults for this example. The result is an initial `package.json` file representing the project. For more on the `package.json`, take a look our [How to Install and Use Node Package Manager (NPM) on Linux](/cloud/guides/install-and-use-npm-on-linux/#packagejson) guide.
 
 ### How to Install a Package with Yarn
 

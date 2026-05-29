@@ -28,7 +28,7 @@ This guide walks you through the process of migrating an application from [Googl
 1.  Install [`yq`](https://github.com/mikefarah/yq), a YAML processor for the command line.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Connect `kubectl` to Your GKE Cluster
@@ -557,7 +557,7 @@ There are multiple ways to define the resources you want to deploy to Kubernetes
 
 ### Update Manifests for Compatibility with LKE
 
-You may need to update your manifests to accommodate for differences between GKE and LKE. For example, your configuration on GKE may use the [Ingress Controller for Google Cloud](https://github.com/kubernetes/ingress-gce) and the [External LoadBalancer Service](https://cloud.google.com/kubernetes-engine/docs/concepts/service-load-balancer) to provide access to clients located outside of your Google Cloud VPC. As an alternative to using these GCP load balancer and ingress services, you can [deploy a dedicated NGINX Ingress on LKE](/docs/guides/deploy-nginx-ingress-on-lke/).
+You may need to update your manifests to accommodate for differences between GKE and LKE. For example, your configuration on GKE may use the [Ingress Controller for Google Cloud](https://github.com/kubernetes/ingress-gce) and the [External LoadBalancer Service](https://cloud.google.com/kubernetes-engine/docs/concepts/service-load-balancer) to provide access to clients located outside of your Google Cloud VPC. As an alternative to using these GCP load balancer and ingress services, you can [deploy a dedicated NGINX Ingress on LKE](/cloud/guides/deploy-nginx-ingress-on-lke/).
 
 The deployment image may point to GCP Artifact Registry. Modify this to point to an alternative registry. For example, the `Deployment` section of your application manifest may look like this:
 
@@ -583,7 +583,7 @@ The container image, pointing to GCP Artifact Registry, has the following format
 {{< placeholder "REGION" >}}-docker.pkg.dev/{{< placeholder "PROJECT_ID" >}}/{{< placeholder "REPOSITORY_NAME" >}}/{{< placeholder "IMAGE_NAME" >}}:{{< placeholder "TAG" >}}
 ```
 
-To migrate away from GCP Artifact Registry, upload the container image to another registry service (e.g. Docker Hub) or [Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/). Then, modify your Kubernetes manifest to point to the new location for your image.
+To migrate away from GCP Artifact Registry, upload the container image to another registry service (e.g. Docker Hub) or [Set Up a Docker Registry with LKE and Object Storage](/cloud/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/). Then, modify your Kubernetes manifest to point to the new location for your image.
 
 {{< note >}}
 Since the image for the example service application in this guide comes from Docker Hub, redirecting the registry is unnecessary.
@@ -593,8 +593,8 @@ Since the image for the example service application in this guide comes from Doc
 
 If the workload depends on persistent data in Google Cloud Storage or a database, then transfer the data or make it available to LKE. See the following guides for more information:
 
-- [How to Migrate From Google Cloud Storage to Linode Object Storage](/docs/guides/migrate-from-google-cloud-storage-to-linode-object-storage/)
-- [Migrate from GCP Hyperdisk and Persistent Disk to Linode Block Storage](/docs/guides/migrate-from-gcp-hyperdisk-and-persistent-disk-to-linode-block-storage/)
+- [How to Migrate From Google Cloud Storage to Linode Object Storage](/cloud/guides/migrate-from-google-cloud-storage-to-linode-object-storage/)
+- [Migrate from GCP Hyperdisk and Persistent Disk to Linode Block Storage](/cloud/guides/migrate-from-gcp-hyperdisk-and-persistent-disk-to-linode-block-storage/)
 
 {{< note >}}
 The example application, with its in-memory configuration, does not rely on any persistent data.
@@ -740,7 +740,7 @@ If you use Google Cloud DNS and plan to migrate away from it, [our DNS Manager](
 
 LKE doesn't have its own container registry. To migrate away from GCP Artifact Registry, set up a third-party private container registry, such as [Docker Hub](https://hub.docker.com/) or [GitHub Container Registry](https://github.blog/news-insights/product-news/introducing-github-container-registry/).
 
-Alternatively, you can set up your own container registry, see [How to Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/) for instructions.
+Alternatively, you can set up your own container registry, see [How to Set Up a Docker Registry with LKE and Object Storage](/cloud/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/) for instructions.
 
 ### Alternative to Google Cloud Operations Suite
 
@@ -760,9 +760,9 @@ GCP uses its [cloud operations suite](https://cloud.google.com/blog/topics/devel
 
 See the following guides for more information:
 
-- [Migrating From GCP Cloud Monitoring to Prometheus and Grafana on Akamai](/docs/guides/migrating-from-gcp-cloud-monitoring-to-prometheus-and-grafana-on-akamai/)
-- [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-tobs-on-linode-kubernetes-engine/)
+- [Migrating From GCP Cloud Monitoring to Prometheus and Grafana on Akamai](/cloud/guides/migrating-from-gcp-cloud-monitoring-to-prometheus-and-grafana-on-akamai/)
+- [How to Deploy TOBS (The Observability Stack) on LKE](/cloud/guides/deploy-tobs-on-linode-kubernetes-engine/)
 
 ### Alternative to GCP Secrets Manager
 
-The [GCP Secrets Manager](https://cloud.google.com/security/products/secret-manager) can be leveraged to provide Kubernetes secrets on GKE. With LKE, you need an alternative solution, such as [OpenBao on Akamai Cloud](/docs/marketplace-docs/guides/openbao/).
+The [GCP Secrets Manager](https://cloud.google.com/security/products/secret-manager) can be leveraged to provide Kubernetes secrets on GKE. With LKE, you need an alternative solution, such as [OpenBao on Akamai Cloud](/cloud/marketplace-docs/guides/openbao/).

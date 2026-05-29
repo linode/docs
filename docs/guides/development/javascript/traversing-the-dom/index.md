@@ -14,7 +14,7 @@ external_resources:
 - '[MDN Web Docs: Document.querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)'
 ---
 
-The Document Object Model (DOM) is an interface that gives scripting languages, like JavaScript, access to a web page's structure and content. You can learn more about the DOM and how it represents HTML in our guide [Introduction to the DOM](/docs/guides/document-object-model/).
+The Document Object Model (DOM) is an interface that gives scripting languages, like JavaScript, access to a web page's structure and content. You can learn more about the DOM and how it represents HTML in our guide [Introduction to the DOM](/cloud/guides/document-object-model/).
 
 The DOM is organized as a tree of objects, called nodes, that give access to everything from HTML elements to the text displayed on a web page. Understanding how to navigate and access nodes on this tree is essential to working with the DOM. This guide explains the DOM tree, how to navigate it, and how to access its nodes using JavaScript.
 
@@ -56,7 +56,7 @@ In the following sections, you learn more about the structure of the DOM tree. Y
 
 ### What Is the DOM Tree?
 
-The [`document` object](/docs/guides/document-object-model/#document-object) is the base of all of the DOM's nodes. The nodes are arranged as a tree, with nodes nested under other nodes. Below, is an example of the DOM representation of a simple web page:
+The [`document` object](/cloud/guides/document-object-model/#document-object) is the base of all of the DOM's nodes. The nodes are arranged as a tree, with nodes nested under other nodes. Below, is an example of the DOM representation of a simple web page:
 
     <body>
         <div>
@@ -88,9 +88,9 @@ Plotting the nesting structure out, the DOM resembles the following tree:
              \_ li
                  \_ [text]
 
-Knowing the arrangement of the DOM tree and its leaves, helps you understand how to access specific nodes when working with JavaScript. This is especially true when you are working with more complicated web pages. The [Navigating the DOM Tree](/docs/guides/traversing-the-dom/#navigating-the-dom-tree) section of this guide includes a more in-depth discussion on moving around the nodes of the DOM tree.
+Knowing the arrangement of the DOM tree and its leaves, helps you understand how to access specific nodes when working with JavaScript. This is especially true when you are working with more complicated web pages. The [Navigating the DOM Tree](/cloud/guides/traversing-the-dom/#navigating-the-dom-tree) section of this guide includes a more in-depth discussion on moving around the nodes of the DOM tree.
 
-The diagram below provides a visualization of the DOM tree for this guide's [example web page](example-page.html). You can also view the `example-page.html` file in the [Before You Begin](/docs/guides/traversing-the-dom/#before-you-begin) section of this guide.
+The diagram below provides a visualization of the DOM tree for this guide's [example web page](example-page.html). You can also view the `example-page.html` file in the [Before You Begin](/cloud/guides/traversing-the-dom/#before-you-begin) section of this guide.
 
 ![A DOM tree for an example web page](dom-tree-example.png)
 
@@ -108,7 +108,7 @@ Although this is not always the case, the arrangement of these components above 
 - A **class** can identify a smaller set of those `div` elements.
 - An **ID** can identify a specific `div` element.
 
-The [Navigating the DOM Tree](/docs/guides/traversing-the-dom/#navigating-the-dom-tree) section below shows how these components can be used to access particular elements or set of elements.
+The [Navigating the DOM Tree](/cloud/guides/traversing-the-dom/#navigating-the-dom-tree) section below shows how these components can be used to access particular elements or set of elements.
 
 #### Query Selectors
 
@@ -227,9 +227,9 @@ The following examples display some key ways in which you can use query selector
 
         document.querySelectorAll("p:not(#first-div > p)")
 
-The above is, in fact, just a selection of some of the most commonly used features of the query selector. You can get more examples of query selector options in the [More Information](/docs/guides/traversing-the-dom/#more-information) section of this guide.
+The above is, in fact, just a selection of some of the most commonly used features of the query selector. You can get more examples of query selector options in the [More Information](/cloud/guides/traversing-the-dom/#more-information) section of this guide.
 
 ## Conclusion
 
-This tutorial walked you through what the DOM tree looks like, how to navigate its parts, and how to start accessing them. The [links below](/docs/guides/traversing-the-dom/#more-information) give you some resources to learn more about navigating the DOM, with more examples and coverage of advanced options and scenarios.
+This tutorial walked you through what the DOM tree looks like, how to navigate its parts, and how to start accessing them. The [links below](/cloud/guides/traversing-the-dom/#more-information) give you some resources to learn more about navigating the DOM, with more examples and coverage of advanced options and scenarios.
 

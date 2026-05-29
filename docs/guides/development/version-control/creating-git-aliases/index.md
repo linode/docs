@@ -93,7 +93,7 @@ Use the command below to locate where Git stores its core commands. On most Linu
 /usr/lib/git-core
 {{</ output >}}
 
-For information on Bash scripting, refer to our [Introduction to Bash Shell Scripting](/docs/guides/intro-bash-shell-scripting/) guide. This guide on Bash includes topics like, Bash variables, if statements, and getting user input from the command line. The examples found in the Bash shell scripting guide can help you construct your scripts to modify Git's behavior.
+For information on Bash scripting, refer to our [Introduction to Bash Shell Scripting](/cloud/guides/intro-bash-shell-scripting/) guide. This guide on Bash includes topics like, Bash variables, if statements, and getting user input from the command line. The examples found in the Bash shell scripting guide can help you construct your scripts to modify Git's behavior.
 
 ### Git Script Example
 

@@ -22,7 +22,7 @@ Ruby on Rails is a popular rapid development web framework that allows web desig
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -102,7 +102,7 @@ The configuration file for Nginx is located at `/opt/nginx/conf/nginx.conf`. Thi
 
 ## Install MySQL Support (optional)
 
-If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 10.10 (Maverick) guide](/docs/databases/mysql/ubuntu-10-10-maverick). Once it's installed and configured properly, issue the following commands:
+If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 10.10 (Maverick) guide](/cloud/databases/mysql/ubuntu-10-10-maverick). Once it's installed and configured properly, issue the following commands:
 
     apt-get install libmysqlclient15-dev libmysql-ruby
     gem install mysql --no-rdoc --no-ri -- --with-mysql-dir=/usr/bin --with-mysql-lib=/usr/lib/mysql --with-mysql-include=/usr/include/mysql
@@ -115,7 +115,7 @@ You may wish to consult the following resources for additional information on th
 - [Ruby on Rails Documentation](http://rubyonrails.org/documentation)
 - [Nginx Home Page](http://nginx.org/)
 - [Nginx Documentation](http://nginx.org/en/docs/)
-- [Nginx Configuration](/docs/guides/how-to-configure-nginx/)
+- [Nginx Configuration](/cloud/guides/how-to-configure-nginx/)
 
 
 

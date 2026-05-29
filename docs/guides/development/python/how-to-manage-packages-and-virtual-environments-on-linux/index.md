@@ -26,9 +26,9 @@ Several tools exist to manage virtual environments. This guide covers tools such
 
 This guide covers the basic concepts of using Python Virtual Environments and installing Python packages. This guide uses Python 3. If you want to install Python 3 on your system, please refer to the following guides:
 
-- [How to Install Python on Ubuntu 20.04](/docs/guides/how-to-install-python-on-ubuntu-20-04)
-- [How to Install Python on Debian](/docs/guides/how-to-install-python-on-debian-10)
-- [How to Install Python on CentOS](/docs/guides/how-to-install-python-on-centos-8)
+- [How to Install Python on Ubuntu 20.04](/cloud/guides/how-to-install-python-on-ubuntu-20-04)
+- [How to Install Python on Debian](/cloud/guides/how-to-install-python-on-debian-10)
+- [How to Install Python on CentOS](/cloud/guides/how-to-install-python-on-centos-8)
 
 ## What is Pip
 
@@ -133,7 +133,7 @@ If you do not have virtualenv on your machine install it using Pip:
 Pipenv combines the process of using Pip and Virtualenv and merges it into one command, `pipenv`. Pipenv also opts to using a `pipfile`, and `pipfile.lock` to manage dependencies for projects.
 
 {{< note >}}
-To install Pipenv, or to learn about `pipfile`, please check out our guide: [How to Manage Python Packages and Virtual Environments with pipenv](/docs/guides/manage-python-environments-pipenv/).
+To install Pipenv, or to learn about `pipfile`, please check out our guide: [How to Manage Python Packages and Virtual Environments with pipenv](/cloud/guides/manage-python-environments-pipenv/).
 {{< /note >}}
 
 Pipenv introduces the ability to use separate Python binaries for each project. For example, projects that depend on Python 3.8 and projects that depend on Python 3.7 can be installed on the same system. To create a virtual environment that utilizes Python 3.8, you would use the following syntax:

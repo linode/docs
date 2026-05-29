@@ -28,9 +28,9 @@ Jupyter Notebook is being replaced by [JupyterLab](https://jupyterlab.readthedoc
 
 Because this guide is written for Linodes running Ubuntu 16.04, you should:
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Install Anaconda Package Manager
 
@@ -52,7 +52,7 @@ Anaconda is a package manager with built-in support for virtual environments. It
 
 ## Create a Self-Signed Certificate
 
-The official documentation recommends generating a self-signed SSL certificate to prevent sending unencrypted passwords in the Notebook from the browser. This is especially important because Jupyter Notebooks can run bash scripts. If you have a domain name, consider using [Certbot](/docs/guides/secure-http-traffic-certbot/) rather than a self-signed certificate.
+The official documentation recommends generating a self-signed SSL certificate to prevent sending unencrypted passwords in the Notebook from the browser. This is especially important because Jupyter Notebooks can run bash scripts. If you have a domain name, consider using [Certbot](/cloud/guides/secure-http-traffic-certbot/) rather than a self-signed certificate.
 
 1.  Create a self-signed certificate valid for 365 days:
 

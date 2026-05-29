@@ -18,9 +18,9 @@ This tutorial shows you how to start using Countly for your analytics needs. Cou
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your system.
 
@@ -32,7 +32,7 @@ This tutorial shows you how to start using Countly for your analytics needs. Cou
     sudo dnf upgrade
     ```
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install Countly Analytics Community Edition
@@ -110,7 +110,7 @@ These steps show you how to download the Git repository for Countly and use the 
 
 Countly does not require you to use DNS for your server. However, doing so can make your Countly instance easier to access. It gives you access to your instance via a custom domain name, rather than just the remote IP address.
 
-To set up DNS on a Linode server, refer to our collection of guides on the [Linode DNS manager](/docs/products/networking/dns-manager/guides/). The process there is straightforward and can have your server running through a DNS quickly.
+To set up DNS on a Linode server, refer to our collection of guides on the [Linode DNS manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager). The process there is straightforward and can have your server running through a DNS quickly.
 
 ### (Optional) Assigning Countly TLS via Let’s Encrypt
 
@@ -219,7 +219,7 @@ To have Countly start collecting analytics, you need to embed one of its client 
 
 Countly has numerous client SDKs available to fit your needs, from web and mobile apps, to the desktop, server, and beyond. You can see Countly's [full list of client SDKs](https://support.count.ly/hc/en-us/articles/360037236571-Downloading-and-Installing-SDKs) for more information on how to download and operate each.
 
-To get you started and to demonstrate, the rest of this section walks you through an example using Countly's web application SDK. It covers how you can make the client available for your web application and even includes example code to embed it. If you don't have a web application ready, follow our guide [Deploy a Static Site using Hugo and Object Storage](/docs/guides/host-static-site-object-storage/).
+To get you started and to demonstrate, the rest of this section walks you through an example using Countly's web application SDK. It covers how you can make the client available for your web application and even includes example code to embed it. If you don't have a web application ready, follow our guide [Deploy a Static Site using Hugo and Object Storage](/cloud/guides/host-static-site-object-storage/).
 
 1.  Ensure your web application's client-side code includes or has access to the Countly web SDK file. This can be done multiple ways:
 

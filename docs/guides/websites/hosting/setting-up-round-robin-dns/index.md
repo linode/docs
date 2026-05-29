@@ -24,11 +24,11 @@ This guide will explain how to configure round-robin DNS in it's most basic conf
 
 To continue following this guide, you will need a website that's hosted on a Linode and accessible through a domain name. If you already have a Linode configured this way, you can skip this section.
 
-- [Create a Linode](/docs/products/platform/get-started/) on any plan that will host your website or web application. While a round-robin DNS configuration is possible with all major distros, the steps in this guide were specifically created using Debian 10.
+- [Create a Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) on any plan that will host your website or web application. While a round-robin DNS configuration is possible with all major distros, the steps in this guide were specifically created using Debian 10.
 
-- [Add a domain and configure an A record](/docs/products/networking/dns-manager/get-started/) to point to your new Linode. When using round-robin DNS, a low TTL is recommended.
+- [Add a domain and configure an A record](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager) to point to your new Linode. When using round-robin DNS, a low TTL is recommended.
 
-- [Install and configure a web server](/docs/guides/how-to-install-nginx-debian-10/), adding a site that uses your domain name. While any major web server will be able to accommodate round-robin DNS, this guide was specifically created using NGINX.
+- [Install and configure a web server](/cloud/guides/how-to-install-nginx-debian-10/), adding a site that uses your domain name. While any major web server will be able to accommodate round-robin DNS, this guide was specifically created using NGINX.
 
 After creating your Linode, configuring DNS, and setting up your web server, you should be able to freely access a webpage using your domain name:
 
@@ -64,7 +64,7 @@ Once your Linode is fully configured, the next step is to copy your configuratio
 
 ### Configuring Your Clone
 
-1. Create an [A record](/docs/products/networking/dns-manager/get-started/) for each new Linode. Use the same domain name as before and point the new record to the IP address of the new Linode. You should now have two or more A records pointing to two or more different Linodes in different data centers, all using the same domain name.
+1. Create an [A record](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager) for each new Linode. Use the same domain name as before and point the new record to the IP address of the new Linode. You should now have two or more A records pointing to two or more different Linodes in different data centers, all using the same domain name.
 
 ![DNS record round robin.](dns-record-round-robin.png)
 
@@ -98,13 +98,13 @@ In this example, round-robin DNS will be used to alternate between two NodeBalan
     If using NodeBalancers, DNS records should not be configured for the individual Linodes since they will instead be created for the NodeBalancers themselves. You should delete any A records for the individual Linodes now.
     {{< /note >}}
 
-1. [Add a Private IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for each Linode that has been pre-configured for round-robin DNS.
+1. [Add a Private IP Address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#adding-an-ip-address) for each Linode that has been pre-configured for round-robin DNS.
 
 1. Boot or Reboot all Linodes once they have been given a private IP address to ensure that the network configuration will be applied.
 
 1.  Visit the NodeBalancers page in the [Cloud Manager](http://cloud.linode.com) and select **Create NodeBalancer**.
 
-1.  For the purpose of this guide, you can keep the default settings for the new NodeBalancer's port configuration and health checks. Specifically, the port should be set to *80* and the protocol should be *HTTP*. If your website is already configured to use HTTPS, additional configuration will be required. See both [Getting Started with NodeBalancers](/docs/products/networking/nodebalancers/get-started/) and [NodeBalancer SSL Configuration](/docs/products/networking/nodebalancers/guides/ssl-termination/).
+1.  For the purpose of this guide, you can keep the default settings for the new NodeBalancer's port configuration and health checks. Specifically, the port should be set to *80* and the protocol should be *HTTP*. If your website is already configured to use HTTPS, additional configuration will be required. See both [Getting Started with NodeBalancers](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-nodebalancers) and [NodeBalancer SSL Configuration](https://techdocs.akamai.com/cloud-computing/docs/tls-ssl-termination-on-nodebalancers).
 
 1.  Under the **Backend Nodes** section, add two backend nodes - one for each Linode within the same data center as the NodeBalancer. For each backend, select the private IP address of the corresponding Linode.
 
@@ -114,6 +114,6 @@ In this example, round-robin DNS will be used to alternate between two NodeBalan
 
 1.  Now that the NodeBalancers are up, go directly to your NodeBalancer's IP addresses in a browser. You should see your web application freely available as the NodeBalancer proxies the traffic through.
 
-1. After confirming that the NodeBalancer is working, [Add a domain and configure two A records](/docs/products/networking/dns-manager/get-started/) pointing towards the NodeBalancers you have created. Each A record should be using the same DNS name, and pointing towards the public IP address of your NodeBalancers.
+1. After confirming that the NodeBalancer is working, [Add a domain and configure two A records](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager) pointing towards the NodeBalancers you have created. Each A record should be using the same DNS name, and pointing towards the public IP address of your NodeBalancers.
 
 After completing these steps, round-robin DNS is now successfully configured for your NodeBalancers. Additional Linodes and NodeBalancers can be added to suit your application's specific needs.

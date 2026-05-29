@@ -17,12 +17,12 @@ In this guide, learn everything you need to get started using SonarQube. The gui
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is Static Code Analysis?
@@ -31,7 +31,7 @@ Static code analysis reviews code for issues, bugs, and standards violations. On
 
 Tools for static code analysis can prevent potential issues from reaching production environments, and they can also enforce coding standards and legibility in your codebase.
 
-You can learn more about static code analysis and what it has to offer in our [What is Static Code Analysis?](/docs/guides/what-is-static-code-analysis/) guide.
+You can learn more about static code analysis and what it has to offer in our [What is Static Code Analysis?](/cloud/guides/what-is-static-code-analysis/) guide.
 
 ### Why SonarQube?
 
@@ -486,6 +486,6 @@ You can get more details still by selecting the issue. There, you can see the of
 
 You now have an operating SonarQube server, and an example Maven project to start building off of for your own projects. SonarQube integrates with a wide range of project frameworks, and you can see more on those from the link further above.
 
-One of the other benefits of SonarQube is its integration with CI/CD pipelines, like Jenkins. And you can start getting an idea for what that might look like through our [Jenkins CI/CD on Linode to Any Hyperscaler](/docs/reference-architecture/jenkins-ci-cd-on-linode-to-any-hyperscaler/) reference architecture. The architecture gives a robust CI/CD system and includes a code analysis step.
+One of the other benefits of SonarQube is its integration with CI/CD pipelines, like Jenkins. And you can start getting an idea for what that might look like through our [Jenkins CI/CD on Linode to Any Hyperscaler](/cloud/reference-architecture/jenkins-ci-cd-on-linode-to-any-hyperscaler/) reference architecture. The architecture gives a robust CI/CD system and includes a code analysis step.
 
 To keep learning what SonarQube is capable of, be sure to look over the official SonarQube documentation linked below. There, you can see more of what the tool is capable of and how to get the most out of it.

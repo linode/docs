@@ -163,4 +163,4 @@ Here are five examples of popular relational databases:
 
 Graph databases are here to stay. When you have highly complex relationships between data, this is the type of database you should consider. They are outstanding options for fraud detection, 360-degree customer views, recommendation engines, network/operations mapping, AI knowledge graphs, social networking, and supply chain mapping. Any use case where data relationships are constantly changing is an ideal place for graph databases.
 
-To find out how you can work with various databases on Linode, check out the[ list of supported databases](/docs/guides/list-of-databases/), which includes links on how to install them.
+To find out how you can work with various databases on Linode, check out the[ list of supported databases](/cloud/guides/list-of-databases/), which includes links on how to install them.

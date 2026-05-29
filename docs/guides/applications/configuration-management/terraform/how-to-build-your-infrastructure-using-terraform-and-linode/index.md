@@ -37,7 +37,7 @@ The examples in this guide were originally written to be compatible with [Terraf
 
 -   When following this guide, your Linux user may need sudo privileges in order to install supplementary software packages.
 
--   You need a personal access token for Linode's [v4 API](https://techdocs.akamai.com/linode-api/reference/api) to use with Terraform. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
+-   You need a personal access token for Linode's [v4 API](https://techdocs.akamai.com/linode-api/reference/api) to use with Terraform. Follow the [Getting Started with the Linode API](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token) to get a token.
 
 ## Install Terraform
 
@@ -487,7 +487,7 @@ To solve these issues, Terraform allows you to declare variables and insert thos
 Terraform allows you to change a server's name, size, or other attributes without needing to destroy and rebuild it. Terraform handles this through changes to the configuration files.
 
 {{< note type="alert" >}}
-Changing the size of your Linode forces your server to be powered off and migrated to a different host in the same data center. The associated disk migration takes approximately 1 minute for every 3-5 gigabytes of data. See our [Resizing a Linode](/docs/products/compute/compute-instances/guides/resize/) guide for more information.
+Changing the size of your Linode forces your server to be powered off and migrated to a different host in the same data center. The associated disk migration takes approximately 1 minute for every 3-5 gigabytes of data. See our [Resizing a Linode](https://techdocs.akamai.com/cloud-computing/docs/resize-a-compute-instance) guide for more information.
 {{< /note >}}
 
 1.  Modify `linode-terraform-template.tf` and update the `type` value to `g6-standard-4` for the `terraform-db` resource.

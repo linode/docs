@@ -38,7 +38,7 @@ Your cluster should be fully installed within 5-10 minutes with a cluster of 5 n
 
 ### Elastic Stack Options
 
-- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) to create one.
+- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) to create one.
 
 - **Email address (for the Let's Encrypt SSL certificate)** *(required)*: Your email is used for Let's Encrypt renewal notices. A valid SSL certificate is validated through certbot and installed on the Kibana instance in the cluster. This allows you to visit Kibana securely through a browser.
 

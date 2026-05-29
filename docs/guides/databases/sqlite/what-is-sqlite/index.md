@@ -12,7 +12,7 @@ image: SQLiteOverview.png
 tags: ["database"]
 ---
 
-There are two major types of databases: client/server relational databases (such as [MySQL](/docs/guides/databases/mysql/) or [PostgreSQL](/docs/guides/databases/postgresql/)), and NoSQL databases (like [MongoDB](/docs/guides/databases/mongodb/) or [CouchDB](/docs/guides/databases/couchdb/)). There is, however, a third option that straddles the gap, *serverless SQL databases*. This type of database offers relational SQL capabilities without the need to set up and maintain a database server.
+There are two major types of databases: client/server relational databases (such as [MySQL](/cloud/guides/databases/mysql/) or [PostgreSQL](/cloud/guides/databases/postgresql/)), and NoSQL databases (like [MongoDB](/cloud/guides/databases/mongodb/) or [CouchDB](/cloud/guides/databases/couchdb/)). There is, however, a third option that straddles the gap, *serverless SQL databases*. This type of database offers relational SQL capabilities without the need to set up and maintain a database server.
 
 [SQLite](https://www.sqlite.org/index.html) is the most popular of the serverless SQL databases. Part of its success lies in the large number of operating systems and languages with which it is compatible.
 

@@ -20,9 +20,9 @@ tags: ["automation","salt"]
 
 -  You will need at least two Linodes: One will function as the Salt Master and the other(s) as Salt Minions.
 
--  Set each Linode's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). The hostname will be used to identify each Linode within Salt so be specific with their naming (e.g. master, minion1, minion2, etc.).
+-  Set each Linode's [hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). The hostname will be used to identify each Linode within Salt so be specific with their naming (e.g. master, minion1, minion2, etc.).
 
--  We recommend that you configure [private IP addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for each system if your Linodes are located in the same data center.
+-  We recommend that you configure [private IP addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#adding-an-ip-address) for each system if your Linodes are located in the same data center.
 
 
 ## Install Using Salt Bootstrap

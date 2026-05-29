@@ -17,15 +17,15 @@ external_resources:
 
 Podman is an open source containerization tool. Like Docker, Podman is a solution for creating, running, and managing containers. But Podman goes beyond Docker, using a secure daemonless process to run containers in rootless mode.
 
-For more on what Podman is and how it compares to Docker, you can refer to our guide [Podman vs Docker](/docs/guides/podman-vs-docker/). The guide familiarizes you with the basics of Podman and Docker and compares and contrast the two tools.
+For more on what Podman is and how it compares to Docker, you can refer to our guide [Podman vs Docker](/cloud/guides/podman-vs-docker/). The guide familiarizes you with the basics of Podman and Docker and compares and contrast the two tools.
 
 In this tutorial, learn everything you need to install and start using Podman on your Linux system. By the end, you can run and manage containers using Podman.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
@@ -38,7 +38,7 @@ In this tutorial, learn everything you need to install and start using Podman on
             sudo dnf upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install Podman
@@ -157,7 +157,7 @@ Getting image source signatures
 
 Like Docker, Podman also gives you the ability to create a container image from a file. Typically, this build process uses the Dockerfile format, though Podman supports the Containerfile format as well.
 
-You can learn more about crafting Dockerfiles in our guide [How to Use a Dockerfile to Build a Docker Image](/docs/guides/how-to-use-dockerfiles/). This guide also includes links to further tutorials with more in-depth coverage of Dockerfiles.
+You can learn more about crafting Dockerfiles in our guide [How to Use a Dockerfile to Build a Docker Image](/cloud/guides/how-to-use-dockerfiles/). This guide also includes links to further tutorials with more in-depth coverage of Dockerfiles.
 
 But for now, as an example to see Podman's build capabilities in action, you can use the following Dockerfile:
 
@@ -183,13 +183,13 @@ Place these contents in a file named `Dockerfile`. Then, working from the same d
 
 The `-t` option allows you to give the image a tag, or name - `fedora-http-server` in this case. The `.` at the end of the command specifies the directory in which the Dockerfile can be found, where a `.` represents the current directory.
 
-Keep reading onto the section below titled [Running a Container Image](/docs/guides/using-podman/#running-a-container-image) to see how you can run a container from an image built as shown above.
+Keep reading onto the section below titled [Running a Container Image](/cloud/guides/using-podman/#running-a-container-image) to see how you can run a container from an image built as shown above.
 
 Podman's `build` command works much like Docker's, but is actually a subset of the build functionality within Buildah. In fact, Podman uses a portion of Buildah's source code to implement its build function.
 
 Buildah offers more features and fine-grained control when it comes to building containers. For that reason, many see Podman and Buildah as complementary tools. Buildah provides a robust tool for crafting container images from both container files (e.g. Dockerfiles) and from scratch. Podman then excels at running and managing the resulting containers.
 
-You can learn more about Buildah, including steps for setup and usage, in our guide [How to Use Buildah to Build OCI Container Images](/docs/guides/using-buildah-oci-images/).
+You can learn more about Buildah, including steps for setup and usage, in our guide [How to Use Buildah to Build OCI Container Images](/cloud/guides/using-buildah-oci-images/).
 
 ### Listing Local Images
 

@@ -27,12 +27,12 @@ Because currently, there is no Shadowsocks package available for Ubuntu or CentO
 
 ## Before You Begin
 
-1.  The commands in this guide require root privileges. To run the steps as an elevated user with sudo privileges, prepend each command with `sudo`. If two commands are presented in the same instance (separated by `&&`), remember to use `sudo` after the `&&` (ex. `sudo [command] && sudo [command]`). To create a standard user account with `sudo` privileges, complete the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of our Securing your Server guide.
+1.  The commands in this guide require root privileges. To run the steps as an elevated user with sudo privileges, prepend each command with `sudo`. If two commands are presented in the same instance (separated by `&&`), remember to use `sudo` after the `&&` (ex. `sudo [command] && sudo [command]`). To create a standard user account with `sudo` privileges, complete the [Add a Limited User Account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) section of our Securing your Server guide.
 
 1.  A working firewall is a necessary security measure. Firewall instructions [are provided](#open-firewall-port-for-shadowsocks-client) for UFW, FirewallD, and Iptables. To configure a firewall on a Linode, visit one of the following guides:
 
-    *  [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/)
-    *  [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/)
+    *  [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/)
+    *  [Introduction to FirewallD on CentOS](/cloud/guides/introduction-to-firewalld-on-centos/)
 
 ## What Is SOCKS5 Proxy Service?
 SOCKS5 is an internet protocol of SOCKS that helps to route packets through a proxy between a client and a server. To carry out a secure communication, SOCKS5 uses three different modes of authentication: Null authentication, GSS-API based authentication, and a username-password based authentication.

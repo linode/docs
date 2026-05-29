@@ -20,24 +20,24 @@ MySQL is an open-source relational database management system. This guide will s
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides. Ensure that the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
+1.  Ensure that you have followed the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides. Ensure that the Linode's [hostname is set](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname).
 
     Check your Linode's hostname. The first command should show your short hostname and the second should show your fully qualified domain name (FQDN).
 
         hostname
         hostname -f
 
-    {{< note respectIndent=false >}} If you have a registered domain name for your website, then [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
+    {{< note respectIndent=false >}} If you have a registered domain name for your website, then [add the domain](https://techdocs.akamai.com/cloud-computing/docs/create-a-domain) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
 
 1.  Update your system:
 
         sudo yum update
 
     {{< note respectIndent=false >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
     {{< /note >}}
 
-1. In order to secure and audit  MySQL, you need to have a Linux server with the `MySQL Server` services running. For information about installing MySQL please see [Install MySQL ](/docs/guides/install-mysql-on-ubuntu-14-04)
+1. In order to secure and audit  MySQL, you need to have a Linux server with the `MySQL Server` services running. For information about installing MySQL please see [Install MySQL ](/cloud/guides/install-mysql-on-ubuntu-14-04)
 
     {{< note respectIndent=false >}}The instructions in this guide are based on Ubuntu 18.04, though all the steps are distribution agnostic with the exception of package names and package managers.{{< /note >}}
 

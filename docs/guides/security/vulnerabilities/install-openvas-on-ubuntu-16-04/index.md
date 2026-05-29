@@ -31,12 +31,12 @@ OpenVAS is a powerful security tool that is capable of scanning remote hosts as 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install OpenVAS
@@ -70,7 +70,7 @@ The `openvas` repository and its packages are not officially supported by Ubuntu
         sudo openvas-nvt-sync
 
     {{< note respectIndent=false >}}
-This feed is maintained by OpenVAS and is updated about once per week. To keep your NVT feed current, we recommend running this command regularly, or setting up a [cron job](/docs/guides/schedule-tasks-with-cron/) to automate the process.
+This feed is maintained by OpenVAS and is updated about once per week. To keep your NVT feed current, we recommend running this command regularly, or setting up a [cron job](/cloud/guides/schedule-tasks-with-cron/) to automate the process.
 {{< /note >}}
 
 5.  Sync Security Content Automation Protocol (SCAP) and Computer Emergency Readiness Team (CERT) vulnerability data to a local database. The synchronization will take several minutes, and you can monitor its progress in the output:

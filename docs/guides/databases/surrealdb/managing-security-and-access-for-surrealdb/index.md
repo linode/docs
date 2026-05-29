@@ -21,7 +21,7 @@ Continue reading to find out how to regulate root access and work with limited u
 
 ### Setting Up SurrealDB
 
-For this tutorial, you need to have installed SurrealDB on your system and placed the SurrealDB binary in your shell path. To do so, follow along with the instructions in our [Getting Started with SurrealDB](/docs/guides/getting-started-with-surrealdb/) guide.
+For this tutorial, you need to have installed SurrealDB on your system and placed the SurrealDB binary in your shell path. To do so, follow along with the instructions in our [Getting Started with SurrealDB](/cloud/guides/getting-started-with-surrealdb/) guide.
 
 The tutorial assumes you have followed that guide up through the *How to Install SurrealDB* section, with SurrealDB installed and accessible via the `surreal` command.
 
@@ -39,7 +39,7 @@ In this case, data is accessed using limited users created within particular nam
 
 The example that follows sets up a limited user on your SurrealDB server. This example names the user `exampleUser` and relegates their access to the database level, specifically within `exampleDb`.
 
-1.  Start up the server just as shown in the [Getting Started](/docs/guides/getting-started-with-surrealdb/#running-the-surrealdb-server) guide linked above, using a root user and password. This example initially limits the server to `localhost` (`127.0.0.1`), shutting off external access. The example also stores the database as a file rather than in memory.
+1.  Start up the server just as shown in the [Getting Started](/cloud/guides/getting-started-with-surrealdb/#running-the-surrealdb-server) guide linked above, using a root user and password. This example initially limits the server to `localhost` (`127.0.0.1`), shutting off external access. The example also stores the database as a file rather than in memory.
 
     ```command {title="Terminal #1"}
     surreal start --bind 127.0.0.1:8000 --user root --pass exampleRootPass file:///home/example-user/.surrealdb/exampleDb.db
@@ -83,7 +83,7 @@ The example that follows sets up a limited user on your SurrealDB server. This e
     RELATE article:third->tagged->tags:test;
     ```
 
-1.  Define a new SurrealDB limited user. The command below provides a basic example for a database-level user. Learn more about this command's usage in the section on [Creating a New SurrealDB User](/docs/guides/managing-security-and-access-for-surrealdb/#creating-a-new-surrealdb-user) further on.
+1.  Define a new SurrealDB limited user. The command below provides a basic example for a database-level user. Learn more about this command's usage in the section on [Creating a New SurrealDB User](/cloud/guides/managing-security-and-access-for-surrealdb/#creating-a-new-surrealdb-user) further on.
 
     ```command {title="Terminal #2"}
     DEFINE LOGIN exampleUser ON DATABASE PASSWORD 'examplePass';
@@ -97,7 +97,7 @@ The example that follows sets up a limited user on your SurrealDB server. This e
     surreal start --bind 0.0.0.0:8000 file:///home/example-user/.surrealdb/exampleDb.db
     ```
 
-    You can now use the limited user to access the SurrealDB server's APIs. Learn more about doing so in the section on [Accessing SurrealDB as a Limited User](/docs/guides/managing-security-and-access-for-surrealdb/#accessing-surrealdb-as-a-limited-user) further on.
+    You can now use the limited user to access the SurrealDB server's APIs. Learn more about doing so in the section on [Accessing SurrealDB as a Limited User](/cloud/guides/managing-security-and-access-for-surrealdb/#accessing-surrealdb-as-a-limited-user) further on.
 
 1.  To get started, here is a simple example that fetches information about the database using the SurrealDB server's `/sql` HTTP API endpoint.
 
@@ -474,6 +474,6 @@ You now have what you need to secure your SurrealDB instance and start managing 
 
 With a secured SurrealDB server, you're in an excellent position to consider setting up SurrealDB for a particular use case. Get a head start by following along with one of our other guides on SurrealDB:
 
--   [Building an Web Application on Top of SurrealDB](/docs/guides/surrealdb-for-web-applications)
--   [Modeling Data with SurrealDB’s Inter-document Relations](/docs/guides/surrealdb-interdocument-modeling)
--   [Deploying a SurrealDB Cluster](/docs/guides/deploy-surrealdb-cluster/)
+-   [Building an Web Application on Top of SurrealDB](/cloud/guides/surrealdb-for-web-applications)
+-   [Modeling Data with SurrealDB’s Inter-document Relations](/cloud/guides/surrealdb-interdocument-modeling)
+-   [Deploying a SurrealDB Cluster](/cloud/guides/deploy-surrealdb-cluster/)

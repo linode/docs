@@ -11,7 +11,7 @@ external_resources:
 - '[Beats](https://www.elastic.co/beats/)'
 - '[Packetbeat](https://www.elastic.co/beats/packetbeat)'
 - '[Auditbeat](https://www.elastic.co/beats/auditbeat)'
-- '[Elasticsearch](/docs/guides/a-guide-to-elasticsearch-plugins/#elasticsearch)'
+- '[Elasticsearch](/cloud/guides/a-guide-to-elasticsearch-plugins/#elasticsearch)'
 - '[Kibana Query Language (KQL)](https://www.elastic.co/guide/en/kibana/current/kuery-query.html)'
 - '[File Integrity Module](https://www.elastic.co/guide/en/beats/auditbeat/current/auditbeat-module-file_integrity.html)'
 ---
@@ -58,13 +58,13 @@ These industries use often cross-categories. For example, [John Deere](https://w
 
 ## Run Filebeat from the Command Line and Kibana
 
-To begin using the Beats products, create a simple setup and then experiment with it. Creating a Filebeat command line interface gives you an essential understanding of how the various Beats products work without investing a lot of time in configuration and setup. This section relies on a Linode 4 GB plan on an Ubuntu 22.04 LTS distribution, which is the smallest setup that works. The process works best with a [non-root user who has sudo access](/docs/guides/how-to-add-and-remove-sudo-access-in-ubuntu/). Before installing Filebeat, ensure you have logged in as a non-root user, and you install the following prerequisites:
+To begin using the Beats products, create a simple setup and then experiment with it. Creating a Filebeat command line interface gives you an essential understanding of how the various Beats products work without investing a lot of time in configuration and setup. This section relies on a Linode 4 GB plan on an Ubuntu 22.04 LTS distribution, which is the smallest setup that works. The process works best with a [non-root user who has sudo access](/cloud/guides/how-to-add-and-remove-sudo-access-in-ubuntu/). Before installing Filebeat, ensure you have logged in as a non-root user, and you install the following prerequisites:
 
--   [OpenJDK](/docs/guides/how-to-install-openjdk-ubuntu-22-04/): Ensure you install Java 11, as newer versions may not be compatible.
+-   [OpenJDK](/cloud/guides/how-to-install-openjdk-ubuntu-22-04/): Ensure you install Java 11, as newer versions may not be compatible.
 
--   [Nginx](/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/): Ensure you stop after completing the **Install NGINX** section.
+-   [Nginx](/cloud/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/): Ensure you stop after completing the **Install NGINX** section.
 
--   [Elasticsearch](/docs/guides/a-guide-to-elasticsearch-plugins/#elasticsearch): There have been recent modifications to the standard installation procedure due to changes in the security setup for Ubuntu. Follow the updated command instead for step 1 for installing the signing key:
+-   [Elasticsearch](/cloud/guides/a-guide-to-elasticsearch-plugins/#elasticsearch): There have been recent modifications to the standard installation procedure due to changes in the security setup for Ubuntu. Follow the updated command instead for step 1 for installing the signing key:
 
     ```command
     curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch |sudo gpg --dearmor -o /usr/share/keyrings/elastic.gpg
@@ -352,7 +352,7 @@ Filebeat monitors the logs that containerized applications produce. To make this
 
 ## Check Activity Levels Using Metricbeat
 
-Tracking your servers’ resource use and activity levels helps to determine server health and allows potential problem remediation before the server goes down. As with Filebeat, you can [install Metricbeat](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-installation-configuration.html#install) using a self-managed configuration (see the [Run Filebeat from the Command Line and Kibana](/docs/guides/monitor-server-activities-using-beats/#run-filebeat-from-the-command-line-and-kibana) section of this guide for details). The Metricbeat configuration information resides in the `/etc/metricbeat/metricbeat.yml` file. Metricbeat appears in your Kibana dashboard and you can use the filtering options to select the metrics you want to see.
+Tracking your servers’ resource use and activity levels helps to determine server health and allows potential problem remediation before the server goes down. As with Filebeat, you can [install Metricbeat](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-installation-configuration.html#install) using a self-managed configuration (see the [Run Filebeat from the Command Line and Kibana](/cloud/guides/monitor-server-activities-using-beats/#run-filebeat-from-the-command-line-and-kibana) section of this guide for details). The Metricbeat configuration information resides in the `/etc/metricbeat/metricbeat.yml` file. Metricbeat appears in your Kibana dashboard and you can use the filtering options to select the metrics you want to see.
 
 ### Understanding the Kinds of Metrics You Can Collect
 
@@ -372,7 +372,7 @@ Metricbeat also works with modules so you can work with services. Each module pr
 
 ## Ensuring a Secure Environment with Auditbeat
 
-Creating a paper trail of activities on your system helps show patterns that may indicate unwanted actions by actors who access the system. As with Filebeat, you can install Auditbeat as a [self-managed](https://www.elastic.co/guide/en/beats/auditbeat/current/auditbeat-installation-configuration.html#install) application (see the [Run Filebeat from the Command Line and Kibana](/docs/guides/monitor-server-activities-using-beats/#run-filebeat-from-the-command-line-and-kibana) section of this guide). Unlike the other Beats, Auditbeat always relies on modules to determine which information to collect and these modules are platform-specific. To modify the modules that Auditbeat uses, modify the contents of the `/etc/auditbeat/auditbeat.yml` file. Like Metricbeat, Auditbeat requires that you [configure modules individually](https://www.elastic.co/guide/en/beats/auditbeat/current/configuration-auditbeat.html).
+Creating a paper trail of activities on your system helps show patterns that may indicate unwanted actions by actors who access the system. As with Filebeat, you can install Auditbeat as a [self-managed](https://www.elastic.co/guide/en/beats/auditbeat/current/auditbeat-installation-configuration.html#install) application (see the [Run Filebeat from the Command Line and Kibana](/cloud/guides/monitor-server-activities-using-beats/#run-filebeat-from-the-command-line-and-kibana) section of this guide). Unlike the other Beats, Auditbeat always relies on modules to determine which information to collect and these modules are platform-specific. To modify the modules that Auditbeat uses, modify the contents of the `/etc/auditbeat/auditbeat.yml` file. Like Metricbeat, Auditbeat requires that you [configure modules individually](https://www.elastic.co/guide/en/beats/auditbeat/current/configuration-auditbeat.html).
 
 ### Using Auditbeat as a auditd Replacement
 

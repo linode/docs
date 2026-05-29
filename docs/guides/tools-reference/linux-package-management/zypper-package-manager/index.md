@@ -21,12 +21,12 @@ In this guide, you learn how to use Zypper to execute common package management 
 
 Before running the commands within this guide, you need:
 
-1. **A system running on openSUSE.** Other Linux distributions that employ the Zypper package manager can also be used. Review the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide if you do not yet have a compatible system.
+1. **A system running on openSUSE.** Other Linux distributions that employ the Zypper package manager can also be used. Review the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide if you do not yet have a compatible system.
 
-1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance with creating and securing a standard user account.
+1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/cloud/guides/connect-to-server-over-ssh/) or [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish). Review the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide for assistance with creating and securing a standard user account.
 
     {{< note >}}
-    Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root user (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
+    Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root user (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
     {{< /note >}}
 
 ## Install Packages
@@ -37,7 +37,7 @@ Zypper's `install` command installs or updates a given package along with the pa
 sudo zypper install php8
 ```
 
-Zypper can also specify a particular version of a package. Take a look further at the section on [viewing package information](/docs/guides/zypper-package-manager/#view-information-about-packages) for a method to get a list of available versions for a given package.
+Zypper can also specify a particular version of a package. Take a look further at the section on [viewing package information](/cloud/guides/zypper-package-manager/#view-information-about-packages) for a method to get a list of available versions for a given package.
 
 Once you have a specific version, append it after the package name using a comparison operator. The simplest form of this is using the `=` operator to specify the exact version.
 
@@ -227,7 +227,7 @@ S | Name                         | Type       | Version           | Arch   | Rep
 
 ## Update Package Repositories
 
-Zypper does not usually require you to manually refresh repository metadata. This contrasts with some other package managers, like [APT](/docs/guides/apt-package-manager/), that require manual repository refreshes.
+Zypper does not usually require you to manually refresh repository metadata. This contrasts with some other package managers, like [APT](/cloud/guides/apt-package-manager/), that require manual repository refreshes.
 
 Zypper accomplishes this with its *auto refresh* feature. This feature is enabled on all of the default repositories, and it ensures that the repositories are automatically refreshed whenever necessary.
 

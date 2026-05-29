@@ -16,7 +16,7 @@ external_resources:
 - '[Open Container Initiative](https://opencontainers.org/)'
 ---
 
-A wide range of internet services, embedded software, and other applications are packaged and run with [containers](/docs/guides/cloud-containers/). Many tools have been developed around the container ecosystem, and a common standard known as [Open Container Initiative (OCI)](https://opencontainers.org/) facilitates interoperability between these tools.
+A wide range of internet services, embedded software, and other applications are packaged and run with [containers](/cloud/guides/cloud-containers/). Many tools have been developed around the container ecosystem, and a common standard known as [Open Container Initiative (OCI)](https://opencontainers.org/) facilitates interoperability between these tools.
 
 Container images need to be stored and then distributed when an application is deployed. This guide explores storage and distribution of OCI container images with Zot. In particular, this guide shows how to set up Zot as a cache for images stored on Docker Hub. By setting up your own container cache, you can reduce latency and avoid rate limits of public container registries.
 
@@ -64,10 +64,10 @@ While this guide focuses on how to configure and use Zot as a pull through cache
 
     - A domain name needs to be assigned to the IP address of the compute instance. If you use Akamai's DNS Manager, [assign a domain, or a subdomain, to your instance's IP](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager#add-dns-records). If you use another DNS provider, like your domain registrar's DNS management, use that service to create the DNS record.
 
-    - Ensure you have generated a set of certificates for the server to use. To learn more about SSL certification, review the [Understanding TLS Certificates and Connections](/docs/guides/what-is-a-tls-certificate/) guide. Free certificates are available from the [Let's Encrypt](https://letsencrypt.org/) authority, and you can use [Certbot](https://certbot.eff.org/) to get a certificate. If using Certbot, the [`--standalone`](https://eff-certbot.readthedocs.io/en/stable/using.html#standalone) option can be used, because no web server proxy is set up in this guide.
+    - Ensure you have generated a set of certificates for the server to use. To learn more about SSL certification, review the [Understanding TLS Certificates and Connections](/cloud/guides/what-is-a-tls-certificate/) guide. Free certificates are available from the [Let's Encrypt](https://letsencrypt.org/) authority, and you can use [Certbot](https://certbot.eff.org/) to get a certificate. If using Certbot, the [`--standalone`](https://eff-certbot.readthedocs.io/en/stable/using.html#standalone) option can be used, because no web server proxy is set up in this guide.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Deploy Zot

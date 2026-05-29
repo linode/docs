@@ -19,7 +19,7 @@ aliases: ['/applications/configuration-management/deploy-in-code-with-pulumi/','
 
 [*Pulumi*](https://www.pulumi.com/) is a development tool that allows you to write computer programs which deploy cloud resources--a practice referred to as *infrastructure as code (IaC)*. Pulumi integrates with multiple cloud platforms, and Pulumi programs can be authored in a number of common programming languages.
 
-With Pulumi's Linode integration, you can manage your Linode resources as you would with our [API](/docs/products/tools/api/) or [CLI](/docs/products/tools/cli/), but in a language you may already be familiar with. This guide will present examples written in JavaScript, but Pulumi is also compatible with Go, Python, and TypeScript.
+With Pulumi's Linode integration, you can manage your Linode resources as you would with our [API](https://techdocs.akamai.com/linode-api/reference/api-summary) or [CLI](https://techdocs.akamai.com/cloud-computing/docs/cli-1), but in a language you may already be familiar with. This guide will present examples written in JavaScript, but Pulumi is also compatible with Go, Python, and TypeScript.
 
 Pulumi also comes with a CLI interface for running the cloud infrastructure programs that you write. Once you've written a program, you can create your cloud resources with a single command:
 
@@ -33,11 +33,11 @@ In this guide you will learn how to:
 
 ##  Before You Begin
 
-1. If you haven't yet, [create a Linode API token](/docs/products/platform/accounts/guides/manage-api-tokens/#create-an-api-token).
+1. If you haven't yet, [create a Linode API token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens#create-an-api-token).
 
 1. [Create a free Pulumi Cloud account](https://app.pulumi.com/signup).
 
-1. Create a new Debian 9 Linode. Follow our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide to deploy the Linode, and then follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. Be sure to create a [limited  Linux user with sudo privileges](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) on your server. All commands in this guide are to be run from a sudo user.
+1. Create a new Debian 9 Linode. Follow our [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide to deploy the Linode, and then follow the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide. Be sure to create a [limited  Linux user with sudo privileges](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) on your server. All commands in this guide are to be run from a sudo user.
 
 1. [Install Pulumi](https://www.pulumi.com/docs/install/) on your Linode using their installation script:
 
@@ -271,7 +271,7 @@ exports.nodeBalancerPort = nodeBalancerConfig.port;
 {{< /file >}}
 
     {{< note >}}
-    In our `index.js` file we've created and configured two Linodes using an existing [StackScript](/docs/products/tools/stackscripts/) which installs NGINX. Pulumi's Linode integration allows for the creation of entirely [new StackScripts](https://www.pulumi.com/registry/packages/linode/api-docs/stackscript/) directly in code, which can help you to automate your deployments even further.
+    In our `index.js` file we've created and configured two Linodes using an existing [StackScript](https://techdocs.akamai.com/cloud-computing/docs/stackscripts) which installs NGINX. Pulumi's Linode integration allows for the creation of entirely [new StackScripts](https://www.pulumi.com/registry/packages/linode/api-docs/stackscript/) directly in code, which can help you to automate your deployments even further.
 
     If you're interested in seeing how this StackScript works, you can view it [here](https://www.linode.com/stackscripts/view/526246).
     {{< /note >}}

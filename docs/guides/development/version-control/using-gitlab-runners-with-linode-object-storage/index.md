@@ -41,11 +41,11 @@ You can also use a GitLab SaaS (GitLab.com) instance. The steps for the GitLab R
 
 With Linode, you have three options effective for creating your own self-hosted GitLab instance.
 
-- Use Akamai Quick Deploy Apps to deploy a ready instance with GitLab installed. This method requires the fewest manual steps and provides the surest and quickest way to get a GitLab instance running. You can follow along with our [Deploy Gitlab through Akamai Quick Deploy Apps](/docs/marketplace-docs/guides/gitlab/) guide.
+- Use Akamai Quick Deploy Apps to deploy a ready instance with GitLab installed. This method requires the fewest manual steps and provides the surest and quickest way to get a GitLab instance running. You can follow along with our [Deploy Gitlab through Akamai Quick Deploy Apps](/cloud/marketplace-docs/guides/gitlab/) guide.
 
-- Use the default package manager for your Linux distribution. GitLab maintains official installation packages for CentOS, Debian, Ubuntu, and others, and you can follow the instructions in their [official documentation](https://about.gitlab.com/install/). You may also refer to our [Install GitLab on Ubuntu 18.04](/docs/guides/install-gitlab-on-ubuntu-18-04/) for additional details on the installation process.
+- Use the default package manager for your Linux distribution. GitLab maintains official installation packages for CentOS, Debian, Ubuntu, and others, and you can follow the instructions in their [official documentation](https://about.gitlab.com/install/). You may also refer to our [Install GitLab on Ubuntu 18.04](/cloud/guides/install-gitlab-on-ubuntu-18-04/) for additional details on the installation process.
 
-- Use Docker to deploy your GitLab instance. This option requires the most effort and setup. But the option can be a boon for those familiar with Docker and wanting the benefits of a containerized instance. You can follow our [Install GitLab with Docker](/docs/guides/install-gitlab-with-docker/) guide to set up your GitLab instance with Docker.
+- Use Docker to deploy your GitLab instance. This option requires the most effort and setup. But the option can be a boon for those familiar with Docker and wanting the benefits of a containerized instance. You can follow our [Install GitLab with Docker](/cloud/guides/install-gitlab-with-docker/) guide to set up your GitLab instance with Docker.
 
 The rest of the guide assumes you have your GitLab instance up and running. This guide uses an instance deployed through Akamai Quick Deploy Apps, but the steps should be compatible with any of the options above.
 
@@ -57,12 +57,12 @@ The dedicated instance you use for your GitLab Runners is referred to as the Run
 
 These next steps refer you to guides for creating, updating, and securing a new Linode Compute Instance, where you can install the GitLab Runners. Follow them before going forward with the rest of this guide.
 
-1. Create a Linode Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1. Create a Linode Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update the instance. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update the instance. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-Throughout the rest of this guide, commands are provided for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+Throughout the rest of this guide, commands are provided for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ### Install GitLab Runner
@@ -267,7 +267,7 @@ Your Runner Manager thus needs to have both Docker and Docker Manager installed 
 Docker Machine has been deprecated by Docker. However, GitLab maintains its own fork of the Docker Machine project to support GitLab Runners, until GitLab can mobilize another solution. The steps here install GitLab's fork of Docker Machine.
 {{< /note >}}
 
-1. Follow our [Installing and Using Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) guide to set up Docker on your Runner Manager instance. Use the dropdown at the top of the guide to select the appropriate distribution for your instance.
+1. Follow our [Installing and Using Docker](/cloud/guides/installing-and-using-docker-on-ubuntu-and-debian/) guide to set up Docker on your Runner Manager instance. Use the dropdown at the top of the guide to select the appropriate distribution for your instance.
 
 1. Use the commands here to download the Docker Machine executable, move it to your instance's path, and give it executable permissions.
 
@@ -315,7 +315,7 @@ Your GitLab Runner needs some changes to its configuration now to support autosc
 
         The configuration here keeps two idle machines at any time, which can be picked up by any jobs needing them.
 
-        The `linode-` options define how the Linode instances should be created. You need to replace `<LINODE_API_TOKEN>` with your actual Linode API token, which you can procure by following our [Getting Started with Linode API](/docs/products/tools/api/get-started/) guide.
+        The `linode-` options define how the Linode instances should be created. You need to replace `<LINODE_API_TOKEN>` with your actual Linode API token, which you can procure by following our [Getting Started with Linode API](https://techdocs.akamai.com/linode-api/reference/get-started) guide.
 
         Otherwise, replace the values as desired. You can learn more about the options, along with links to possible values, in the Linode Docker Machine driver [documentation](https://github.com/linode/docker-machine-driver-linode#options)
 
@@ -395,11 +395,11 @@ test-job-1:
 
 By default, cached files are stored locally alongside your GitLab Runner Manager. But that option may not be the most efficient, especially as your GitLab pipelines become more complicated and your projects' storage needs expand.
 
-To remedy this, you can adjust your GitLab Runner configuration to use an Amazon S3-compatible object storage solution, like [Linode Object Storage](/docs/products/storage/object-storage/get-started/).
+To remedy this, you can adjust your GitLab Runner configuration to use an Amazon S3-compatible object storage solution, like [Linode Object Storage](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-object-storage).
 
 These next steps show you how you can integrate a Linode Object Storage bucket with your GitLab Runner to store cached resources from CI/CD jobs.
 
-1. Follow our [Getting Started with Object Storage](/docs/products/storage/object-storage/get-started/) guide to enable Linode Object Storage, create a bucket, and get an access key.
+1. Follow our [Getting Started with Object Storage](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-object-storage) guide to enable Linode Object Storage, create a bucket, and get an access key.
 
     This guide uses a bucket named `gitlab-example-bucket` and was created in the Atlanta, GA region, designated `us-southeast-1`.
 

@@ -28,7 +28,7 @@ This guide walks you through the process of migrating an application from Oracle
 1.  Install [`yq`](https://github.com/mikefarah/yq), a YAML processor for the command line.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Connect `kubectl` to Your OKE Cluster
@@ -531,7 +531,7 @@ There are multiple ways to define the resources you want to deploy to Kubernetes
 
 ### Update Manifests for Compatibility with LKE
 
-You may need to update your manifests to accommodate for differences between OKE and LKE. For example, your configuration on OKE may use the [OCI native ingress controller](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengsettingupnativeingresscontroller.htm) and the [LoadBalancer Service](https://docs.oracle.com/en-us/iaas/Content/Balance/Tasks/managingloadbalancer_topic-Creating_Load_Balancers.htm#top) to provide access to clients located outside of your Oracle virtual cloud network. As an alternative to using these OCI load balancer and ingress services, you can [deploy a dedicated NGINX Ingress on LKE](/docs/guides/deploy-nginx-ingress-on-lke/).
+You may need to update your manifests to accommodate for differences between OKE and LKE. For example, your configuration on OKE may use the [OCI native ingress controller](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengsettingupnativeingresscontroller.htm) and the [LoadBalancer Service](https://docs.oracle.com/en-us/iaas/Content/Balance/Tasks/managingloadbalancer_topic-Creating_Load_Balancers.htm#top) to provide access to clients located outside of your Oracle virtual cloud network. As an alternative to using these OCI load balancer and ingress services, you can [deploy a dedicated NGINX Ingress on LKE](/cloud/guides/deploy-nginx-ingress-on-lke/).
 
 The deployment image may point to Oracle Cloud Infrastructure Container Registry. Modify this to point to an alternative registry. For example, the `Deployment` section of your application manifest may look like this:
 
@@ -557,7 +557,7 @@ The container image, pointing to Oracle Container Registry, has the following fo
 ocir.{{< placeholder "REGION" >}}.oci.oraclecloud.com/{{< placeholder "TENANCY_OBJECT_STORAGE_NAMESPACE" >}}/{{< placeholder "REPOSITORY_NAME" >}}/{{< placeholder "IMAGE_NAME" >}}:{{< placeholder "TAG" >}}
 ```
 
-To migrate away from the Oracle Container Registry, upload the container image to another registry service (e.g. Docker Hub) or [Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/). Then, modify your Kubernetes manifest to point to the new location for your image.
+To migrate away from the Oracle Container Registry, upload the container image to another registry service (e.g. Docker Hub) or [Set Up a Docker Registry with LKE and Object Storage](/cloud/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/). Then, modify your Kubernetes manifest to point to the new location for your image.
 
 {{< note >}}
 Since the image for the example service application in this guide comes from Docker Hub, redirecting the registry is unnecessary.
@@ -711,7 +711,7 @@ If you use OCI DNS and plan to migrate away from it, [our DNS Manager](https://t
 
 LKE doesn't have its own container registry. To migrate away from the Oracle Container Registry, set up a third-party private container registry, such as [Docker Hub](https://hub.docker.com/) or [GitHub Container Registry](https://github.blog/news-insights/product-news/introducing-github-container-registry/).
 
-Alternatively, you can set up your own container registry, see [How to Set Up a Docker Registry with LKE and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/) for instructions.
+Alternatively, you can set up your own container registry, see [How to Set Up a Docker Registry with LKE and Object Storage](/cloud/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/) for instructions.
 
 ### Alternative to the Oracle Cloud Observability and Management Platform
 
@@ -729,8 +729,8 @@ Oracle provides its [Cloud Observability and Management Platform](https://www.or
     -   Postgres-Exporter
 -   OpenTelemetry-Operator
 
-See [How to Deploy TOBS (The Observability Stack) on LKE](/docs/guides/deploy-tobs-on-linode-kubernetes-engine/) for more information.
+See [How to Deploy TOBS (The Observability Stack) on LKE](/cloud/guides/deploy-tobs-on-linode-kubernetes-engine/) for more information.
 
 ### Alternative to OCI Vault
 
-The [OCI Vault](https://docs.oracle.com/en-us/iaas/Content/KeyManagement/home.htm) can be leveraged to provide Kubernetes secrets on OKE. With LKE, you need an alternative solution, such as [OpenBao on Akamai Cloud](/docs/marketplace-docs/guides/openbao/).
+The [OCI Vault](https://docs.oracle.com/en-us/iaas/Content/KeyManagement/home.htm) can be leveraged to provide Kubernetes secrets on OKE. With LKE, you need an alternative solution, such as [OpenBao on Akamai Cloud](/cloud/marketplace-docs/guides/openbao/).

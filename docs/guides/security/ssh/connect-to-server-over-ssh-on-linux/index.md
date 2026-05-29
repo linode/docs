@@ -24,7 +24,7 @@ This article covers the basics of connecting to a remote server (such as a Linod
 
 ## Before You Begin
 
-1. Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide to create a Linode.
+1. Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide to create a Linode.
 
 1. Your local computer needs an SSH client that can be used through a terminal application. Most modern Linux distributions have SSH installed and ready to use.
 
@@ -65,7 +65,7 @@ If this key combination does not work for you, other instructions for opening a 
     Are you sure you want to continue connecting (yes/no)?
     ```
 
-    You can verify the fingerprint by following the instructions on the [Verifying the Authenticity of a Remote Server](/docs/guides/verifying-the-authenticity-of-remote-host/) guide.
+    You can verify the fingerprint by following the instructions on the [Verifying the Authenticity of a Remote Server](/cloud/guides/verifying-the-authenticity-of-remote-host/) guide.
 
     {{< note >}}
     If you recently rebuilt your server, you might receive an error message when you try to connect. This happens when the remote host key changes. To fix this, revoke the key for that IP address.
@@ -81,7 +81,7 @@ If this key combination does not work for you, other instructions for opening a 
     Warning: Permanently added 'example' (ECDSA) to the list of known hosts.
     ```
 
-Once you have successfully connected, your terminal should be using the remote shell environment for the server. Your command prompt should now show the username and hostname configured for the server. You can now run any commands that you have available on that server. This includes many of the basic Linux commands, such as `ls`, `cd`, `rm`, and those covered in [Using the Terminal](/docs/guides/using-the-terminal/) guide. Getting to know these commands will help you navigate around your server.
+Once you have successfully connected, your terminal should be using the remote shell environment for the server. Your command prompt should now show the username and hostname configured for the server. You can now run any commands that you have available on that server. This includes many of the basic Linux commands, such as `ls`, `cd`, `rm`, and those covered in [Using the Terminal](/cloud/guides/using-the-terminal/) guide. Getting to know these commands will help you navigate around your server.
 
 ## Ending the SSH Session
 
@@ -126,10 +126,10 @@ It's recommended to disable root access over SSH and only log in to your remote 
 
 ### Troubleshooting SSH Connection Issues
 
-If SSH isn't connecting you to your Linode, you may need to investigate the state of your server. See the guide [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) for assistance.
+If SSH isn't connecting you to your Linode, you may need to investigate the state of your server. See the guide [Troubleshooting SSH](https://techdocs.akamai.com/cloud-computing/docs/troubleshooting-ssh-on-compute-instances) for assistance.
 
 ### Increasing Security
 
-- Now that you can connect from your Linux machine to the Linode over SSH, save not only time but also make the connection even more secure by using SSH public key authentication. For more information, see [SSH add keys](/docs/guides/use-public-key-authentication-with-ssh/).
+- Now that you can connect from your Linux machine to the Linode over SSH, save not only time but also make the connection even more secure by using SSH public key authentication. For more information, see [SSH add keys](/cloud/guides/use-public-key-authentication-with-ssh/).
 
-- See the "Harden SSH Access" section of [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to review how to secure SSH on the server's side, and the [Advanced SSH Server Security](/docs/guides/advanced-ssh-server-security/) for more information on making it even more secure.
+- See the "Harden SSH Access" section of [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to review how to secure SSH on the server's side, and the [Advanced SSH Server Security](/cloud/guides/advanced-ssh-server-security/) for more information on making it even more secure.

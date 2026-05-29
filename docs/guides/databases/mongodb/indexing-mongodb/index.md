@@ -15,7 +15,7 @@ external_resources:
 - '[MongoDB: Performance Best Practices — Indexing](https://www.mongodb.com/blog/post/performance-best-practices-indexing)'
 ---
 
-[MongoDB](https://www.mongodb.com/) is a NoSQL database, an alternative to relational SQL databases that uses JSON-like documents to store data. To learn about what MongoDB is and how it works, review our [Introduction to MongoDB and its Use Cases](/docs/guides/mongodb-introduction/) guide. Know more about the basics of using MongoDB in our [Getting Started with MongoDB](/docs/guides/getting-started-with-mongodb/) guide.
+[MongoDB](https://www.mongodb.com/) is a NoSQL database, an alternative to relational SQL databases that uses JSON-like documents to store data. To learn about what MongoDB is and how it works, review our [Introduction to MongoDB and its Use Cases](/cloud/guides/mongodb-introduction/) guide. Know more about the basics of using MongoDB in our [Getting Started with MongoDB](/cloud/guides/getting-started-with-mongodb/) guide.
 
 To have efficient performance on queries, your MongoDB database should make use of indices. An index prevents a query from having to scan every document in a collection, instead letting the query focus on just the relevant documents.
 
@@ -283,4 +283,4 @@ The list that follows is not comprehensive, but it includes key principles for m
 
 ## Conclusion
 
-In this guide, you have learned major MongoDB indexing strategies and options for getting the most out of indices. With performance best practices and concrete examples, this guide can be a useful reference when working on making your MongoDB databases more efficient. Looking to dive deeper into MongoDB? Be sure to peruse our other [MongoDB guides](/docs/guides/databases/mongodb/) for more on setting up and getting the most out of MongoDB.
+In this guide, you have learned major MongoDB indexing strategies and options for getting the most out of indices. With performance best practices and concrete examples, this guide can be a useful reference when working on making your MongoDB databases more efficient. Looking to dive deeper into MongoDB? Be sure to peruse our other [MongoDB guides](/cloud/guides/databases/mongodb/) for more on setting up and getting the most out of MongoDB.

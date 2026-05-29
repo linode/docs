@@ -11,7 +11,7 @@ tags: ['database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-This guide is the second in a series of articles that covers SQL Server security best practices. [Part 1 of this series](/docs/guides/sql-server-security/) discussed a SQL Server installation's physical security, operating system security, and application maintenance. Additionally, the previous guide outlined how to disable unnecessary features, enable encryption, and implement data masking.
+This guide is the second in a series of articles that covers SQL Server security best practices. [Part 1 of this series](/cloud/guides/sql-server-security/) discussed a SQL Server installation's physical security, operating system security, and application maintenance. Additionally, the previous guide outlined how to disable unnecessary features, enable encryption, and implement data masking.
 
 The second part of this series describes how and why you should:
 
@@ -82,11 +82,11 @@ Database servers typically have one or more servers connecting to them. Access t
 
 These IP restrictions can be managed with different solutions on different platforms:
 
-- [*iptables*](/docs/guides/control-network-traffic-with-iptables/) can control traffic on Linux operating systems. Other popular firewall options are also available, including [UFW](/docs/guides/configure-firewall-with-ufw/), [nftables](/docs/guides/how-to-use-nftables/), and [FirewallD](/docs/guides/introduction-to-firewalld-on-centos/).
+- [*iptables*](/cloud/guides/control-network-traffic-with-iptables/) can control traffic on Linux operating systems. Other popular firewall options are also available, including [UFW](/cloud/guides/configure-firewall-with-ufw/), [nftables](/cloud/guides/how-to-use-nftables/), and [FirewallD](/cloud/guides/introduction-to-firewalld-on-centos/).
 
 - Use the Windows firewall (or any dedicate hardware firewall) on Microsoft platforms.
 
-- You can also [add the free Linode Cloud Firewalls service](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) to a Linode Compute Instance that hosts SQL Server.
+- You can also [add the free Linode Cloud Firewalls service](https://techdocs.akamai.com/cloud-computing/docs/create-a-cloud-firewall) to a Linode Compute Instance that hosts SQL Server.
 
 ## SQL Server Patches (Service Packs)
 
@@ -126,4 +126,4 @@ Hardware and/or software firewall logs (that is, external to SQL Server) should 
 
 ## Conclusion
 
-In part two of this article series, you reviewed additional methods of enhancing the security of SQL Server databases. These included choosing an [authentication mode](#sql-server-authentication), restricting the [System Administrator account](#system-administrator-sa-account), assignment of [security-friendly accounts](#high-privileged-operating-system-accounts) to SQL Server, [restricting SQL traffic](#restrict-sql-traffic), application of [patch updates](#sql-server-patches-service-packs), [backup strategies](#backups), and use of [auditing](#auditing). To review earlier security recommendations, revisit [Part 1: SQL Server Security Best Practices](/docs/guides/sql-server-security/).
+In part two of this article series, you reviewed additional methods of enhancing the security of SQL Server databases. These included choosing an [authentication mode](#sql-server-authentication), restricting the [System Administrator account](#system-administrator-sa-account), assignment of [security-friendly accounts](#high-privileged-operating-system-accounts) to SQL Server, [restricting SQL traffic](#restrict-sql-traffic), application of [patch updates](#sql-server-patches-service-packs), [backup strategies](#backups), and use of [auditing](#auditing). To review earlier security recommendations, revisit [Part 1: SQL Server Security Best Practices](/cloud/guides/sql-server-security/).

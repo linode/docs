@@ -25,13 +25,13 @@ Typically, SurrealDB uses either in-memory or in-file storage, but SurrealDB als
 
 To get started, you need to have a Kubernetes cluster up and running, along with `kubectl` or a similar tool set up to manage the cluster. This tutorial provides commands specifically for `kubectl`.
 
-Linode offers the Linode Kubernetes Engine (LKE) as a convenient way to get started. You can deploy a cluster directly from the Cloud Manager. Our guide [Linode Kubernetes Engine - Getting Started](/docs/products/compute/kubernetes/get-started/) includes steps for deploying a new cluster and setting up a `kubectl` instance to manage it.
+Linode offers the Linode Kubernetes Engine (LKE) as a convenient way to get started. You can deploy a cluster directly from the Cloud Manager. Our guide [Linode Kubernetes Engine - Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine) includes steps for deploying a new cluster and setting up a `kubectl` instance to manage it.
 
 The rest of this tutorial assumes you have a Kubernetes cluster up and running and configured for management with a local `kubectl` instance. The examples in this tutorial also assume that your cluster has three nodes, so adjust accordingly throughout if your cluster differs.
 
-Additionally, you need to have [Helm](https://helm.sh/) installed to follow along with this tutorial. Helm is used here to deploy TiKV to the cluster. To install Helm, follow the relevant section of our guide [Installing Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm).
+Additionally, you need to have [Helm](https://helm.sh/) installed to follow along with this tutorial. Helm is used here to deploy TiKV to the cluster. To install Helm, follow the relevant section of our guide [Installing Apps on Kubernetes with Helm 3](/cloud/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm).
 
-Also, you must install SurrealDB on your local machine to run `surreal` commands on the Kubernetes cluster via port forwarding. Follow the steps in the relevant section of our guide [Getting Started with SurrealDB](/docs/guides/getting-started-with-surrealdb/#how-to-install-surrealdb).
+Also, you must install SurrealDB on your local machine to run `surreal` commands on the Kubernetes cluster via port forwarding. Follow the steps in the relevant section of our guide [Getting Started with SurrealDB](/cloud/guides/getting-started-with-surrealdb/#how-to-install-surrealdb).
 
 ### Deploying TiKV for Persistence
 
@@ -327,7 +327,7 @@ Follow along to access the SurrealDB Kubernetes service using port forwarding, t
 
 The SurrealDB cluster is now operable. You can use the port forwarding feature and set up traffic to the cluster to best fit your needs. However, it's likely you want to secure your SurrealDB cluster before taking it to production.
 
-Find thorough coverage of how to secure SurrealDB and manage user access in our guide [Managing Security and Access Control for SurrealDB](/docs/guides/managing-security-and-access-for-surrealdb/).
+Find thorough coverage of how to secure SurrealDB and manage user access in our guide [Managing Security and Access Control for SurrealDB](/cloud/guides/managing-security-and-access-for-surrealdb/).
 
 Below are some steps to get you started and demonstrate how these configurations might be applied to your SurrealDB cluster. These steps set up a limited SurrealDB user and disable root access on your SurrealDB servers.
 
@@ -501,6 +501,6 @@ As the beginning of this tutorial indicated, SurrealDB can fit a range of use ca
 
 To keep learning about SurrealDB, and to get more ideas for using it with your applications, take a look at our other SurrealDB guides:
 
--   [Building an Web Application on Top of SurrealDB](/docs/guides/surrealdb-for-web-applications)
+-   [Building an Web Application on Top of SurrealDB](/cloud/guides/surrealdb-for-web-applications)
 
--   [Modeling Data with SurrealDB’s Inter-document Relations](/docs/guides/surrealdb-interdocument-modeling)
+-   [Modeling Data with SurrealDB’s Inter-document Relations](/cloud/guides/surrealdb-interdocument-modeling)

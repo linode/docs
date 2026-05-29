@@ -71,7 +71,7 @@ gRPC has many advantages over traditional client-server architectures.
 gRPC is often compared and contrasted with **Representational State Transfer** (REST). REST also uses a client-server architecture. Both systems are useful for implementing microservices. However, there are major differences between the two technologies.
 
 - REST does not use RPCs. In a RESTful system, a client sends a request to a remote **Uniform Resource Identifier** (URI). It later receives a response encoded in XML, HTML, JSON, or another similar format. The request and reply typically use HTTP/HTTPS methods such as `GET` and `POST`.
-- All browsers support REST, and it is widely used throughout the internet. gRPC has more limited web capabilities. **gRPC Web** does provide some measure of web support. (gRPC Web is explained in the [next section](/docs/guides/using-grpc-for-remote-procedural-calls/#grpc-web)). In general, REST is more commonly used for web applications, while gRPC is used inside internal networks. gRPC is also frequently used in embedded systems, facilitating communication between the different components of the device.
+- All browsers support REST, and it is widely used throughout the internet. gRPC has more limited web capabilities. **gRPC Web** does provide some measure of web support. (gRPC Web is explained in the [next section](/cloud/guides/using-grpc-for-remote-procedural-calls/#grpc-web)). In general, REST is more commonly used for web applications, while gRPC is used inside internal networks. gRPC is also frequently used in embedded systems, facilitating communication between the different components of the device.
 - gRPC uses HTTP/2 and can take advantage of its inherent client-response communication model. This allows it to transmit requests or responses via a stream. REST uses HTTP version 1.1 and has to handle one request at a time using inefficient short-lived connections.
 - Performance is better with gRPC compared to REST. It also more efficiently uses bandwidth due to its lightweight design.
 - gRPC can be quickly translated into the target programming language for the application using the protoc compiler. REST does not have an equivalent feature, although third-party tools can streamline the process somewhat.
@@ -106,12 +106,12 @@ This procedure is geared towards Ubuntu users but is generally applicable to all
 
 **### Before You Begin**
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ### Install Python**

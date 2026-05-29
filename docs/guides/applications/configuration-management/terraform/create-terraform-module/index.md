@@ -34,7 +34,7 @@ This guide covers the creation of a Terraform module used to deploy a Linode ins
 
 ## Before You Begin
 
-1. Install Terraform on your local computer using the steps found in the **Install Terraform** section of the [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide. Your Terraform project directory should be named `linode_stackscripts`.
+1. Install Terraform on your local computer using the steps found in the **Install Terraform** section of the [Use Terraform to Provision Linode Environments](/cloud/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide. Your Terraform project directory should be named `linode_stackscripts`.
 
     {{< note title ="Linode Provider Version 3.0.0" >}}
     As of June, 2025, the [Linode Terraform Provider](https://github.com/linode/terraform-provider-linode/) version is 3.0.0. To determine the current version, see the [Linode Namespace](https://registry.terraform.io/namespaces/linode) in the Terraform Registry.
@@ -42,11 +42,11 @@ This guide covers the creation of a Terraform module used to deploy a Linode ins
     The Linode Terraform Provider version 3.0.0 requires `terraform` version 1.0 or greater. See [Terraform's developer documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/upgrade-guides/1-0) for guidance on upgrading to version 1.0.
     {{< /note >}}
 
-2. Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) guide to obtain a token.
+2. Terraform requires an API access token. Follow the [Getting Started with the Linode API](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token) guide to obtain a token.
 
-3. Complete the steps in the **Configure Git** section of the [Getting Started with Git](/docs/guides/how-to-configure-git/#configure-git) guide.
+3. Complete the steps in the **Configure Git** section of the [Getting Started with Git](/cloud/guides/how-to-configure-git/#configure-git) guide.
 
-4. Review [Deploy a WordPress Site using Terraform and StackScripts](/docs/guides/deploy-a-wordpress-site-using-terraform-and-linode-stackscripts/) to familiarize yourself with the Linode provider's StackScript resource.
+4. Review [Deploy a WordPress Site using Terraform and StackScripts](/cloud/guides/deploy-a-wordpress-site-using-terraform-and-linode-stackscripts/) to familiarize yourself with the Linode provider's StackScript resource.
 
 ## Standard Terraform Module Structure
 
@@ -162,7 +162,7 @@ resource "linode_sshkey" "main_key" {
       - The `linode_sshkey` resource will create Linode SSH Keys tied to your Linode account. These keys can be reused for future Linode deployments once the resource has been created. `ssh_key = chomp(file(local.key))` uses Terraform’s built-in function `file()` to provide a local file path to the public SSH key’s location. The location of the file path is the value of the local variable `key`. The `chomp()` built-in function removes trailing new lines from the SSH key.
 
         {{< note respectIndent=false >}}
-If you do not already have SSH keys, follow the steps in the **Create an Authentication Key-pair** section of the our guide [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/#upload-ssh-key).
+If you do not already have SSH keys, follow the steps in the **Create an Authentication Key-pair** section of the our guide [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#upload-ssh-key).
 {{< /note >}}
 
       {{< file >}}
@@ -282,7 +282,7 @@ resource "linode_stackscript" "default" {
 }
 {{</ file >}}
 
-      The `main.tf` file creates the `linode_stackscript` resource and provides the required configurations. All argument values use interpolation syntax to access input variable values. You will declare the input variables next and provide the variable values in the root module’s `terraform.tfvars` file. For more information on StackScripts see the [StackScripts product page](/docs/products/tools/stackscripts/) and the [Linode APIv4 StackScripts reference](https://techdocs.akamai.com/linode-api/reference/api-summary).
+      The `main.tf` file creates the `linode_stackscript` resource and provides the required configurations. All argument values use interpolation syntax to access input variable values. You will declare the input variables next and provide the variable values in the root module’s `terraform.tfvars` file. For more information on StackScripts see the [StackScripts product page](https://techdocs.akamai.com/cloud-computing/docs/stackscripts) and the [Linode APIv4 StackScripts reference](https://techdocs.akamai.com/linode-api/reference/api-summary).
 
 1. Create the `variables.tf` file to define your resource's required variables:
 
@@ -553,7 +553,7 @@ In Terraform 0.12, variables with map and object values will use the last value 
     {{< /note >}}
 
     {{< note respectIndent=false >}}
-  There are several other options available for secrets management with Terraform. For more information on this subject, see [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform).
+  There are several other options available for secrets management with Terraform. For more information on this subject, see [Secrets Management with Terraform](/cloud/guides/secrets-management-with-terraform).
     {{< /note >}}
 
 You are now ready to apply your `linode_stackscripts` module's Terraform configuration. These steps will be completed in the next section.
@@ -602,7 +602,7 @@ Whenever a new provider is used in a Terraform configuration, it must first be i
 
 ## Version Control Your Terraform Module
 
-To make the `linode_stackscripts` module available to other team members, you can version control it using [GitHub](https://github.com/). Before completing the steps in this section, ensure you have completed the steps in the **Configure Git** section of the [Getting Started with Git](/docs/guides/how-to-configure-git/#configure-git) guide.
+To make the `linode_stackscripts` module available to other team members, you can version control it using [GitHub](https://github.com/). Before completing the steps in this section, ensure you have completed the steps in the **Configure Git** section of the [Getting Started with Git](/cloud/guides/how-to-configure-git/#configure-git) guide.
 
 1. In the `linode_stackscripts` directory create a `.gitignore` file:
 

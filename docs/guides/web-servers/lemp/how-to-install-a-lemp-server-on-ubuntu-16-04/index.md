@@ -27,7 +27,7 @@ The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configurati
 ## Before You Begin
 
 1.  You will need root access to the system, or a user account with `sudo` privilege.
-2.  Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
+2.  Set your system's [hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname).
 3.  Update your system.
 
 ## Installation

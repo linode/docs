@@ -13,7 +13,7 @@ external_resources:
 - '[GNU Bash](https://www.gnu.org/software/bash/)'
 ---
 
-This guide expands extends the [Introduction to Bash Shell Scripting](/docs/guides/intro-bash-shell-scripting/) guide and our [Intermediate Guide to Bash Shell Scripting](/docs/guides/an-intermediate-guide-to-bash-scripting/) guide by demonstrating the use of Bash functions, list constructs, arrays, aliases, and regular expressions.
+This guide expands extends the [Introduction to Bash Shell Scripting](/cloud/guides/intro-bash-shell-scripting/) guide and our [Intermediate Guide to Bash Shell Scripting](/cloud/guides/an-intermediate-guide-to-bash-scripting/) guide by demonstrating the use of Bash functions, list constructs, arrays, aliases, and regular expressions.
 
 ## Using Functions to Reuse Code
 

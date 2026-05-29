@@ -27,7 +27,7 @@ A *symlink* is a type of special file whose "data" is a path to the name of a fi
 -   directory
 -   pipe - via `mkfifo`
 -   special device
--   symlink - see [Chains of Soft Links](/docs/guides/linux-symlinks/#chains-of-soft-links) below
+-   symlink - see [Chains of Soft Links](/cloud/guides/linux-symlinks/#chains-of-soft-links) below
 
 Also known as a "soft link" in Linux, the term "shortcut" describes symlinks in other operating systems.
 
@@ -134,7 +134,7 @@ Almost all file-based actions on a symlink act on or affect the target file, but
 
 The exceptions to the above-described rule are the Linux commands `unlink`, `rm`, `rmdir`, and their associated system calls. These commands either fail or remove the symlink itself instead of the target file or directory. These exceptions prevent the inadvertent removal of the target.
 
-See more information about removing symlinks in our [Remove Symbolic Links](/docs/guides/linux-remove-symbolic-link/).
+See more information about removing symlinks in our [Remove Symbolic Links](/cloud/guides/linux-remove-symbolic-link/).
 
 ## Finding Dangling Symlinks
 

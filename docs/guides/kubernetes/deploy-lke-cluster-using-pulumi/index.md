@@ -10,8 +10,8 @@ tags: ["linode platform","kubernetes","automation","managed hosting"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 aliases: ['/products/compute/kubernetes/guides/deploy-cluster-using-pulumi/']
 external_resources:
-- '[Setting Up a Private Docker Registry with Linode Kubernetes Engine and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)'
-- '[Deploying a Static Site on Linode Kubernetes Engine](/docs/guides/how-to-deploy-a-static-site-on-linode-kubernetes-engine/)'
+- '[Setting Up a Private Docker Registry with Linode Kubernetes Engine and Object Storage](/cloud/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)'
+- '[Deploying a Static Site on Linode Kubernetes Engine](/cloud/guides/how-to-deploy-a-static-site-on-linode-kubernetes-engine/)'
 - '[Linode Provider Pulumi Documentation](https://www.pulumi.com/registry/packages/linode/)'
 ---
 
@@ -23,15 +23,15 @@ This guide walks you through the steps needed to deploy a Kubernetes cluster usi
 
 ## Before you Begin
 
-1. Create a personal access token for [Linode's API v4](https://developers.linode.com/api/v4). Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token. You will need a token to be able to create Linode resources using Pulumi.
+1. Create a personal access token for [Linode's API v4](https://developers.linode.com/api/v4). Follow the [Getting Started with the Linode API](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token) to get a token. You will need a token to be able to create Linode resources using Pulumi.
 
     {{< note >}}
     Ensure that your token has, at minimum, Read/Write permissions for Compute Instances, Kubernetes, NodeBalancers, and Volumes.
     {{< /note >}}
 1. Download and [install Pulumi](https://www.pulumi.com/docs/install/) on your local machine.
 1. Create a free [Pulumi Cloud account](https://app.pulumi.com/signup).
-1. Review the [Getting Started With Pulumi](/docs/guides/deploy-in-code-with-pulumi/) guide to familiarize yourself with Pulumi concepts if you have not used the tool before. You need to be familiar with Pulumi and one of the [supported programming languages](https://www.pulumi.com/docs/languages-sdks/). In this guide, TypeScript is used for the code examples.
-1. [Install kubectl](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#install-kubectl) on your local machine.
+1. Review the [Getting Started With Pulumi](/cloud/guides/deploy-in-code-with-pulumi/) guide to familiarize yourself with Pulumi concepts if you have not used the tool before. You need to be familiar with Pulumi and one of the [supported programming languages](https://www.pulumi.com/docs/languages-sdks/). In this guide, TypeScript is used for the code examples.
+1. [Install kubectl](https://techdocs.akamai.com/cloud-computing/docs/deploy-and-manage-a-kubernetes-cluster-with-the-api#install-kubectl) on your local machine.
 
 ## Create your Pulumi Infrastructure Code
 
@@ -301,7 +301,7 @@ Now that your Kubernetes cluster is deployed, you can use kubectl to connect to 
     lke126299-187151-64e4b54376b5   Ready    <none>   4m22s   v1.26.3
     ```
 
-    Now that you are connected to your LKE cluster, you can begin using kubectl to deploy applications, [inspect and manage](/docs/guides/troubleshooting-kubernetes/#kubectl-get) cluster resources, and [view logs](/docs/guides/troubleshooting-kubernetes/#kubectl-logs).
+    Now that you are connected to your LKE cluster, you can begin using kubectl to deploy applications, [inspect and manage](/cloud/guides/troubleshooting-kubernetes/#kubectl-get) cluster resources, and [view logs](/cloud/guides/troubleshooting-kubernetes/#kubectl-logs).
 
 ## Destroy your Kubernetes Cluster (optional)
 

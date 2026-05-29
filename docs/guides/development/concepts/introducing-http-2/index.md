@@ -63,6 +63,6 @@ While HTTP/2 is widely seen as a big improvement over HTTP/1.1, the new version 
 
 ## Implement HTTP/2 on Apache or NGINX
 
-More in-depth resources on HTTP/2 are available for those who want to learn more about the protocol. You can refer to our [How to Configure HTTP/2 on Apache](/docs/guides/how-to-configure-http-2-on-apache) and [NGINX](/docs/guides/how-to-configure-http-2-on-nginx) to use the protocol for your websites.
+More in-depth resources on HTTP/2 are available for those who want to learn more about the protocol. You can refer to our [How to Configure HTTP/2 on Apache](/cloud/guides/how-to-configure-http-2-on-apache) and [NGINX](/cloud/guides/how-to-configure-http-2-on-nginx) to use the protocol for your websites.
 
 
